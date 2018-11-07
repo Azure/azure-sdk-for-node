@@ -25,7 +25,7 @@ export { CloudError } from 'ms-rest-azure';
  * custom input schema. Currently, the only supported type of
  * InputSchemaMapping is 'JsonInputSchemaMapping'.
  *
- * @member {string} inputSchemaMappingType Polymorphic Discriminator
+ * @property {string} inputSchemaMappingType Polymorphic Discriminator
  */
 export interface InputSchemaMapping {
   inputSchemaMappingType: string;
@@ -37,9 +37,9 @@ export interface InputSchemaMapping {
  * @constructor
  * Definition of a Resource
  *
- * @member {string} [id] Fully qualified identifier of the resource
- * @member {string} [name] Name of the resource
- * @member {string} [type] Type of the resource
+ * @property {string} [id] Fully qualified identifier of the resource
+ * @property {string} [name] Name of the resource
+ * @property {string} [type] Type of the resource
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -53,8 +53,8 @@ export interface Resource extends BaseResource {
  * @constructor
  * Definition of a Tracked Resource
  *
- * @member {string} location Location of the resource
- * @member {object} [tags] Tags of the resource
+ * @property {string} location Location of the resource
+ * @property {object} [tags] Tags of the resource
  */
 export interface TrackedResource extends Resource {
   location: string;
@@ -67,16 +67,16 @@ export interface TrackedResource extends Resource {
  * @constructor
  * EventGrid Domain
  *
- * @member {string} [provisioningState] Provisioning state of the domain.
+ * @property {string} [provisioningState] Provisioning state of the domain.
  * Possible values include: 'Creating', 'Updating', 'Deleting', 'Succeeded',
  * 'Canceled', 'Failed'
- * @member {string} [endpoint] Endpoint for the domain.
- * @member {string} [inputSchema] This determines the format that Event Grid
+ * @property {string} [endpoint] Endpoint for the domain.
+ * @property {string} [inputSchema] This determines the format that Event Grid
  * should expect for incoming events published to the domain. Possible values
  * include: 'EventGridSchema', 'CustomEventSchema', 'CloudEventV01Schema'
- * @member {object} [inputSchemaMapping] Information about the
+ * @property {object} [inputSchemaMapping] Information about the
  * InputSchemaMapping which specified the info about mapping event payload.
- * @member {string} [inputSchemaMapping.inputSchemaMappingType] Polymorphic
+ * @property {string} [inputSchemaMapping.inputSchemaMappingType] Polymorphic
  * Discriminator
  */
 export interface Domain extends TrackedResource {
@@ -92,7 +92,7 @@ export interface Domain extends TrackedResource {
  * @constructor
  * Properties of the Domain update
  *
- * @member {object} [tags] Tags of the domains resource
+ * @property {object} [tags] Tags of the domains resource
  */
 export interface DomainUpdateParameters {
   tags?: { [propertyName: string]: string };
@@ -104,8 +104,8 @@ export interface DomainUpdateParameters {
  * @constructor
  * Shared access keys of the Domain
  *
- * @member {string} [key1] Shared access key1 for the domain.
- * @member {string} [key2] Shared access key2 for the domain.
+ * @property {string} [key1] Shared access key1 for the domain.
+ * @property {string} [key2] Shared access key2 for the domain.
  */
 export interface DomainSharedAccessKeys {
   key1?: string;
@@ -118,7 +118,7 @@ export interface DomainSharedAccessKeys {
  * @constructor
  * Domain regenerate share access key request
  *
- * @member {string} keyName Key name to regenerate key1 or key2
+ * @property {string} keyName Key name to regenerate key1 or key2
  */
 export interface DomainRegenerateKeyRequest {
   keyName: string;
@@ -140,7 +140,7 @@ export interface DomainTopic extends Resource {
  * @constructor
  * Information about the destination for an event subscription
  *
- * @member {string} endpointType Polymorphic Discriminator
+ * @property {string} endpointType Polymorphic Discriminator
  */
 export interface EventSubscriptionDestination {
   endpointType: string;
@@ -153,9 +153,9 @@ export interface EventSubscriptionDestination {
  * Represents an advanced filter that can be used to filter events based on
  * various event envelope/data fields.
  *
- * @member {string} [key] The filter key. Represents an event property with
+ * @property {string} [key] The filter key. Represents an event property with
  * upto two levels of nesting.
- * @member {string} operatorType Polymorphic Discriminator
+ * @property {string} operatorType Polymorphic Discriminator
  */
 export interface AdvancedFilter {
   key?: string;
@@ -168,21 +168,21 @@ export interface AdvancedFilter {
  * @constructor
  * Filter for the Event Subscription
  *
- * @member {string} [subjectBeginsWith] An optional string to filter events for
- * an event subscription based on a resource path prefix.
+ * @property {string} [subjectBeginsWith] An optional string to filter events
+ * for an event subscription based on a resource path prefix.
  * The format of this depends on the publisher of the events.
  * Wildcard characters are not supported in this path.
- * @member {string} [subjectEndsWith] An optional string to filter events for
+ * @property {string} [subjectEndsWith] An optional string to filter events for
  * an event subscription based on a resource path suffix.
  * Wildcard characters are not supported in this path.
- * @member {array} [includedEventTypes] A list of applicable event types that
+ * @property {array} [includedEventTypes] A list of applicable event types that
  * need to be part of the event subscription.
  * If it is desired to subscribe to all event types, the string "all" needs to
  * be specified as an element in this list.
- * @member {boolean} [isSubjectCaseSensitive] Specifies if the
+ * @property {boolean} [isSubjectCaseSensitive] Specifies if the
  * SubjectBeginsWith and SubjectEndsWith properties of the filter
  * should be compared in a case sensitive manner. Default value: false .
- * @member {array} [advancedFilters] A list of advanced filters.
+ * @property {array} [advancedFilters] A list of advanced filters.
  */
 export interface EventSubscriptionFilter {
   subjectBeginsWith?: string;
@@ -198,9 +198,9 @@ export interface EventSubscriptionFilter {
  * @constructor
  * Information about the retry policy for an event subscription
  *
- * @member {number} [maxDeliveryAttempts] Maximum number of delivery retry
+ * @property {number} [maxDeliveryAttempts] Maximum number of delivery retry
  * attempts for events.
- * @member {number} [eventTimeToLiveInMinutes] Time To Live (in minutes) for
+ * @property {number} [eventTimeToLiveInMinutes] Time To Live (in minutes) for
  * events.
  */
 export interface RetryPolicy {
@@ -218,7 +218,7 @@ export interface RetryPolicy {
  * StorageBlobDeadLetterDestination is the only class that derives from this
  * class.
  *
- * @member {string} endpointType Polymorphic Discriminator
+ * @property {string} endpointType Polymorphic Discriminator
  */
 export interface DeadLetterDestination {
   endpointType: string;
@@ -230,7 +230,7 @@ export interface DeadLetterDestination {
  * @constructor
  * NumberIn filter
  *
- * @member {array} [values] The set of filter values
+ * @property {array} [values] The set of filter values
  */
 export interface NumberInAdvancedFilter extends AdvancedFilter {
   values?: number[];
@@ -242,10 +242,10 @@ export interface NumberInAdvancedFilter extends AdvancedFilter {
  * @constructor
  * Information about the storage blob based dead letter destination.
  *
- * @member {string} [resourceId] The Azure Resource ID of the storage account
+ * @property {string} [resourceId] The Azure Resource ID of the storage account
  * that is the destination of the deadletter events
- * @member {string} [blobContainerName] The name of the Storage blob container
- * that is the destination of the deadletter events
+ * @property {string} [blobContainerName] The name of the Storage blob
+ * container that is the destination of the deadletter events
  */
 export interface StorageBlobDeadLetterDestination extends DeadLetterDestination {
   resourceId?: string;
@@ -258,7 +258,7 @@ export interface StorageBlobDeadLetterDestination extends DeadLetterDestination 
  * @constructor
  * NumberNotIn Filter
  *
- * @member {array} [values] The set of filter values
+ * @property {array} [values] The set of filter values
  */
 export interface NumberNotInAdvancedFilter extends AdvancedFilter {
   values?: number[];
@@ -270,7 +270,7 @@ export interface NumberNotInAdvancedFilter extends AdvancedFilter {
  * @constructor
  * NumberLessThan Filter
  *
- * @member {number} [value] The filter value
+ * @property {number} [value] The filter value
  */
 export interface NumberLessThanAdvancedFilter extends AdvancedFilter {
   value?: number;
@@ -282,7 +282,7 @@ export interface NumberLessThanAdvancedFilter extends AdvancedFilter {
  * @constructor
  * NumberGreaterThan Filter
  *
- * @member {number} [value] The filter value
+ * @property {number} [value] The filter value
  */
 export interface NumberGreaterThanAdvancedFilter extends AdvancedFilter {
   value?: number;
@@ -294,7 +294,7 @@ export interface NumberGreaterThanAdvancedFilter extends AdvancedFilter {
  * @constructor
  * NumberLessThanOrEquals Filter
  *
- * @member {number} [value] The filter value
+ * @property {number} [value] The filter value
  */
 export interface NumberLessThanOrEqualsAdvancedFilter extends AdvancedFilter {
   value?: number;
@@ -306,7 +306,7 @@ export interface NumberLessThanOrEqualsAdvancedFilter extends AdvancedFilter {
  * @constructor
  * NumberGreaterThanOrEquals Filter
  *
- * @member {number} [value] The filter value
+ * @property {number} [value] The filter value
  */
 export interface NumberGreaterThanOrEqualsAdvancedFilter extends AdvancedFilter {
   value?: number;
@@ -318,7 +318,7 @@ export interface NumberGreaterThanOrEqualsAdvancedFilter extends AdvancedFilter 
  * @constructor
  * BoolEquals Filter
  *
- * @member {boolean} [value] The filter value
+ * @property {boolean} [value] The filter value
  */
 export interface BoolEqualsAdvancedFilter extends AdvancedFilter {
   value?: boolean;
@@ -330,7 +330,7 @@ export interface BoolEqualsAdvancedFilter extends AdvancedFilter {
  * @constructor
  * StringIn Filter
  *
- * @member {array} [values] The set of filter values
+ * @property {array} [values] The set of filter values
  */
 export interface StringInAdvancedFilter extends AdvancedFilter {
   values?: string[];
@@ -342,7 +342,7 @@ export interface StringInAdvancedFilter extends AdvancedFilter {
  * @constructor
  * StringNotIn Filter
  *
- * @member {array} [values] The set of filter values
+ * @property {array} [values] The set of filter values
  */
 export interface StringNotInAdvancedFilter extends AdvancedFilter {
   values?: string[];
@@ -354,7 +354,7 @@ export interface StringNotInAdvancedFilter extends AdvancedFilter {
  * @constructor
  * StringBeginsWith Filter
  *
- * @member {array} [values] The set of filter values
+ * @property {array} [values] The set of filter values
  */
 export interface StringBeginsWithAdvancedFilter extends AdvancedFilter {
   values?: string[];
@@ -366,7 +366,7 @@ export interface StringBeginsWithAdvancedFilter extends AdvancedFilter {
  * @constructor
  * StringEndsWith Filter
  *
- * @member {array} [values] The set of filter values
+ * @property {array} [values] The set of filter values
  */
 export interface StringEndsWithAdvancedFilter extends AdvancedFilter {
   values?: string[];
@@ -378,7 +378,7 @@ export interface StringEndsWithAdvancedFilter extends AdvancedFilter {
  * @constructor
  * StringContains Filter
  *
- * @member {array} [values] The set of filter values
+ * @property {array} [values] The set of filter values
  */
 export interface StringContainsAdvancedFilter extends AdvancedFilter {
   values?: string[];
@@ -390,10 +390,10 @@ export interface StringContainsAdvancedFilter extends AdvancedFilter {
  * @constructor
  * Information about the webhook destination for an event subscription
  *
- * @member {string} [endpointUrl] The URL that represents the endpoint of the
+ * @property {string} [endpointUrl] The URL that represents the endpoint of the
  * destination of an event subscription.
- * @member {string} [endpointBaseUrl] The base URL that represents the endpoint
- * of the destination of an event subscription.
+ * @property {string} [endpointBaseUrl] The base URL that represents the
+ * endpoint of the destination of an event subscription.
  */
 export interface WebHookEventSubscriptionDestination extends EventSubscriptionDestination {
   endpointUrl?: string;
@@ -406,7 +406,7 @@ export interface WebHookEventSubscriptionDestination extends EventSubscriptionDe
  * @constructor
  * Information about the event hub destination for an event subscription
  *
- * @member {string} [resourceId] The Azure Resource Id that represents the
+ * @property {string} [resourceId] The Azure Resource Id that represents the
  * endpoint of an Event Hub destination of an event subscription.
  */
 export interface EventHubEventSubscriptionDestination extends EventSubscriptionDestination {
@@ -419,9 +419,9 @@ export interface EventHubEventSubscriptionDestination extends EventSubscriptionD
  * @constructor
  * Information about the storage queue destination for an event subscription.
  *
- * @member {string} [resourceId] The Azure Resource ID of the storage account
+ * @property {string} [resourceId] The Azure Resource ID of the storage account
  * that contains the queue that is the destination of an event subscription.
- * @member {string} [queueName] The name of the Storage queue under a storage
+ * @property {string} [queueName] The name of the Storage queue under a storage
  * account that is the destination of an event subscription.
  */
 export interface StorageQueueEventSubscriptionDestination extends EventSubscriptionDestination {
@@ -436,8 +436,8 @@ export interface StorageQueueEventSubscriptionDestination extends EventSubscript
  * Information about the HybridConnection destination for an event
  * subscription.
  *
- * @member {string} [resourceId] The Azure Resource ID of an hybrid connection
- * that is the destination of an event subscription.
+ * @property {string} [resourceId] The Azure Resource ID of an hybrid
+ * connection that is the destination of an event subscription.
  */
 export interface HybridConnectionEventSubscriptionDestination extends EventSubscriptionDestination {
   resourceId?: string;
@@ -449,46 +449,46 @@ export interface HybridConnectionEventSubscriptionDestination extends EventSubsc
  * @constructor
  * Event Subscription
  *
- * @member {string} [topic] Name of the topic of the event subscription.
- * @member {string} [provisioningState] Provisioning state of the event
+ * @property {string} [topic] Name of the topic of the event subscription.
+ * @property {string} [provisioningState] Provisioning state of the event
  * subscription. Possible values include: 'Creating', 'Updating', 'Deleting',
  * 'Succeeded', 'Canceled', 'Failed', 'AwaitingManualAction'
- * @member {object} [destination] Information about the destination where
+ * @property {object} [destination] Information about the destination where
  * events have to be delivered for the event subscription.
- * @member {string} [destination.endpointType] Polymorphic Discriminator
- * @member {object} [filter] Information about the filter for the event
+ * @property {string} [destination.endpointType] Polymorphic Discriminator
+ * @property {object} [filter] Information about the filter for the event
  * subscription.
- * @member {string} [filter.subjectBeginsWith] An optional string to filter
+ * @property {string} [filter.subjectBeginsWith] An optional string to filter
  * events for an event subscription based on a resource path prefix.
  * The format of this depends on the publisher of the events.
  * Wildcard characters are not supported in this path.
- * @member {string} [filter.subjectEndsWith] An optional string to filter
+ * @property {string} [filter.subjectEndsWith] An optional string to filter
  * events for an event subscription based on a resource path suffix.
  * Wildcard characters are not supported in this path.
- * @member {array} [filter.includedEventTypes] A list of applicable event types
- * that need to be part of the event subscription.
+ * @property {array} [filter.includedEventTypes] A list of applicable event
+ * types that need to be part of the event subscription.
  * If it is desired to subscribe to all event types, the string "all" needs to
  * be specified as an element in this list.
- * @member {boolean} [filter.isSubjectCaseSensitive] Specifies if the
+ * @property {boolean} [filter.isSubjectCaseSensitive] Specifies if the
  * SubjectBeginsWith and SubjectEndsWith properties of the filter
  * should be compared in a case sensitive manner.
- * @member {array} [filter.advancedFilters] A list of advanced filters.
- * @member {array} [labels] List of user defined labels.
- * @member {date} [expirationTimeUtc] Expiration time of the event
+ * @property {array} [filter.advancedFilters] A list of advanced filters.
+ * @property {array} [labels] List of user defined labels.
+ * @property {date} [expirationTimeUtc] Expiration time of the event
  * subscription.
- * @member {string} [eventDeliverySchema] The event delivery schema for the
+ * @property {string} [eventDeliverySchema] The event delivery schema for the
  * event subscription. Possible values include: 'EventGridSchema',
  * 'CloudEventV01Schema', 'CustomInputSchema'
- * @member {object} [retryPolicy] The retry policy for events. This can be used
- * to configure maximum number of delivery attempts and time to live for
+ * @property {object} [retryPolicy] The retry policy for events. This can be
+ * used to configure maximum number of delivery attempts and time to live for
  * events.
- * @member {number} [retryPolicy.maxDeliveryAttempts] Maximum number of
+ * @property {number} [retryPolicy.maxDeliveryAttempts] Maximum number of
  * delivery retry attempts for events.
- * @member {number} [retryPolicy.eventTimeToLiveInMinutes] Time To Live (in
+ * @property {number} [retryPolicy.eventTimeToLiveInMinutes] Time To Live (in
  * minutes) for events.
- * @member {object} [deadLetterDestination] The DeadLetter destination of the
+ * @property {object} [deadLetterDestination] The DeadLetter destination of the
  * event subscription.
- * @member {string} [deadLetterDestination.endpointType] Polymorphic
+ * @property {string} [deadLetterDestination.endpointType] Polymorphic
  * Discriminator
  */
 export interface EventSubscription extends Resource {
@@ -509,42 +509,42 @@ export interface EventSubscription extends Resource {
  * @constructor
  * Properties of the Event Subscription update
  *
- * @member {object} [destination] Information about the destination where
+ * @property {object} [destination] Information about the destination where
  * events have to be delivered for the event subscription.
- * @member {string} [destination.endpointType] Polymorphic Discriminator
- * @member {object} [filter] Information about the filter for the event
+ * @property {string} [destination.endpointType] Polymorphic Discriminator
+ * @property {object} [filter] Information about the filter for the event
  * subscription.
- * @member {string} [filter.subjectBeginsWith] An optional string to filter
+ * @property {string} [filter.subjectBeginsWith] An optional string to filter
  * events for an event subscription based on a resource path prefix.
  * The format of this depends on the publisher of the events.
  * Wildcard characters are not supported in this path.
- * @member {string} [filter.subjectEndsWith] An optional string to filter
+ * @property {string} [filter.subjectEndsWith] An optional string to filter
  * events for an event subscription based on a resource path suffix.
  * Wildcard characters are not supported in this path.
- * @member {array} [filter.includedEventTypes] A list of applicable event types
- * that need to be part of the event subscription.
+ * @property {array} [filter.includedEventTypes] A list of applicable event
+ * types that need to be part of the event subscription.
  * If it is desired to subscribe to all event types, the string "all" needs to
  * be specified as an element in this list.
- * @member {boolean} [filter.isSubjectCaseSensitive] Specifies if the
+ * @property {boolean} [filter.isSubjectCaseSensitive] Specifies if the
  * SubjectBeginsWith and SubjectEndsWith properties of the filter
  * should be compared in a case sensitive manner.
- * @member {array} [filter.advancedFilters] A list of advanced filters.
- * @member {array} [labels] List of user defined labels.
- * @member {date} [expirationTimeUtc] Information about the expiration time for
- * the event subscription.
- * @member {string} [eventDeliverySchema] The event delivery schema for the
+ * @property {array} [filter.advancedFilters] A list of advanced filters.
+ * @property {array} [labels] List of user defined labels.
+ * @property {date} [expirationTimeUtc] Information about the expiration time
+ * for the event subscription.
+ * @property {string} [eventDeliverySchema] The event delivery schema for the
  * event subscription. Possible values include: 'EventGridSchema',
  * 'CloudEventV01Schema', 'CustomInputSchema'
- * @member {object} [retryPolicy] The retry policy for events. This can be used
- * to configure maximum number of delivery attempts and time to live for
+ * @property {object} [retryPolicy] The retry policy for events. This can be
+ * used to configure maximum number of delivery attempts and time to live for
  * events.
- * @member {number} [retryPolicy.maxDeliveryAttempts] Maximum number of
+ * @property {number} [retryPolicy.maxDeliveryAttempts] Maximum number of
  * delivery retry attempts for events.
- * @member {number} [retryPolicy.eventTimeToLiveInMinutes] Time To Live (in
+ * @property {number} [retryPolicy.eventTimeToLiveInMinutes] Time To Live (in
  * minutes) for events.
- * @member {object} [deadLetterDestination] The DeadLetter destination of the
+ * @property {object} [deadLetterDestination] The DeadLetter destination of the
  * event subscription.
- * @member {string} [deadLetterDestination.endpointType] Polymorphic
+ * @property {string} [deadLetterDestination.endpointType] Polymorphic
  * Discriminator
  */
 export interface EventSubscriptionUpdateParameters {
@@ -563,7 +563,7 @@ export interface EventSubscriptionUpdateParameters {
  * @constructor
  * Full endpoint url of an event subscription
  *
- * @member {string} [endpointUrl] The URL that represents the endpoint of the
+ * @property {string} [endpointUrl] The URL that represents the endpoint of the
  * destination of an event subscription.
  */
 export interface EventSubscriptionFullUrl {
@@ -576,10 +576,10 @@ export interface EventSubscriptionFullUrl {
  * @constructor
  * Information about an operation
  *
- * @member {string} [provider] Name of the provider
- * @member {string} [resource] Name of the resource type
- * @member {string} [operation] Name of the operation
- * @member {string} [description] Description of the operation
+ * @property {string} [provider] Name of the provider
+ * @property {string} [resource] Name of the resource type
+ * @property {string} [operation] Name of the operation
+ * @property {string} [description] Description of the operation
  */
 export interface OperationInfo {
   provider?: string;
@@ -594,14 +594,14 @@ export interface OperationInfo {
  * @constructor
  * Represents an operation returned by the GetOperations request
  *
- * @member {string} [name] Name of the operation
- * @member {object} [display] Display name of the operation
- * @member {string} [display.provider] Name of the provider
- * @member {string} [display.resource] Name of the resource type
- * @member {string} [display.operation] Name of the operation
- * @member {string} [display.description] Description of the operation
- * @member {string} [origin] Origin of the operation
- * @member {object} [properties] Properties of the operation
+ * @property {string} [name] Name of the operation
+ * @property {object} [display] Display name of the operation
+ * @property {string} [display.provider] Name of the provider
+ * @property {string} [display.resource] Name of the resource type
+ * @property {string} [display.operation] Name of the operation
+ * @property {string} [display.description] Description of the operation
+ * @property {string} [origin] Origin of the operation
+ * @property {object} [properties] Properties of the operation
  */
 export interface Operation {
   name?: string;
@@ -619,7 +619,7 @@ export interface Operation {
  * mappings for the 'id','topic' and 'eventtime' properties. This represents a
  * field in the input event schema.
  *
- * @member {string} [sourceField] Name of a field in the input event schema
+ * @property {string} [sourceField] Name of a field in the input event schema
  * that's to be used as the source of a mapping.
  */
 export interface JsonField {
@@ -636,9 +636,9 @@ export interface JsonField {
  * represents a field in the input event schema along with a default value to
  * be used, and at least one of these two properties should be provided.
  *
- * @member {string} [sourceField] Name of a field in the input event schema
+ * @property {string} [sourceField] Name of a field in the input event schema
  * that's to be used as the source of a mapping.
- * @member {string} [defaultValue] The default value to be used for mapping
+ * @property {string} [defaultValue] The default value to be used for mapping
  * when a SourceField is not provided or if there's no property with the
  * specified name in the published JSON event payload.
  */
@@ -655,39 +655,39 @@ export interface JsonFieldWithDefault {
  * be used to map properties from a custom input JSON schema to the Event Grid
  * event schema.
  *
- * @member {object} [id] The mapping information for the Id property of the
+ * @property {object} [id] The mapping information for the Id property of the
  * Event Grid Event.
- * @member {string} [id.sourceField] Name of a field in the input event schema
- * that's to be used as the source of a mapping.
- * @member {object} [topic] The mapping information for the Topic property of
+ * @property {string} [id.sourceField] Name of a field in the input event
+ * schema that's to be used as the source of a mapping.
+ * @property {object} [topic] The mapping information for the Topic property of
  * the Event Grid Event.
- * @member {string} [topic.sourceField] Name of a field in the input event
+ * @property {string} [topic.sourceField] Name of a field in the input event
  * schema that's to be used as the source of a mapping.
- * @member {object} [eventTime] The mapping information for the EventTime
+ * @property {object} [eventTime] The mapping information for the EventTime
  * property of the Event Grid Event.
- * @member {string} [eventTime.sourceField] Name of a field in the input event
- * schema that's to be used as the source of a mapping.
- * @member {object} [eventType] The mapping information for the EventType
- * property of the Event Grid Event.
- * @member {string} [eventType.sourceField] Name of a field in the input event
- * schema that's to be used as the source of a mapping.
- * @member {string} [eventType.defaultValue] The default value to be used for
- * mapping when a SourceField is not provided or if there's no property with
- * the specified name in the published JSON event payload.
- * @member {object} [subject] The mapping information for the Subject property
- * of the Event Grid Event.
- * @member {string} [subject.sourceField] Name of a field in the input event
- * schema that's to be used as the source of a mapping.
- * @member {string} [subject.defaultValue] The default value to be used for
- * mapping when a SourceField is not provided or if there's no property with
- * the specified name in the published JSON event payload.
- * @member {object} [dataVersion] The mapping information for the DataVersion
- * property of the Event Grid Event.
- * @member {string} [dataVersion.sourceField] Name of a field in the input
+ * @property {string} [eventTime.sourceField] Name of a field in the input
  * event schema that's to be used as the source of a mapping.
- * @member {string} [dataVersion.defaultValue] The default value to be used for
+ * @property {object} [eventType] The mapping information for the EventType
+ * property of the Event Grid Event.
+ * @property {string} [eventType.sourceField] Name of a field in the input
+ * event schema that's to be used as the source of a mapping.
+ * @property {string} [eventType.defaultValue] The default value to be used for
  * mapping when a SourceField is not provided or if there's no property with
  * the specified name in the published JSON event payload.
+ * @property {object} [subject] The mapping information for the Subject
+ * property of the Event Grid Event.
+ * @property {string} [subject.sourceField] Name of a field in the input event
+ * schema that's to be used as the source of a mapping.
+ * @property {string} [subject.defaultValue] The default value to be used for
+ * mapping when a SourceField is not provided or if there's no property with
+ * the specified name in the published JSON event payload.
+ * @property {object} [dataVersion] The mapping information for the DataVersion
+ * property of the Event Grid Event.
+ * @property {string} [dataVersion.sourceField] Name of a field in the input
+ * event schema that's to be used as the source of a mapping.
+ * @property {string} [dataVersion.defaultValue] The default value to be used
+ * for mapping when a SourceField is not provided or if there's no property
+ * with the specified name in the published JSON event payload.
  */
 export interface JsonInputSchemaMapping extends InputSchemaMapping {
   id?: JsonField;
@@ -704,19 +704,19 @@ export interface JsonInputSchemaMapping extends InputSchemaMapping {
  * @constructor
  * EventGrid Topic
  *
- * @member {string} [provisioningState] Provisioning state of the topic.
+ * @property {string} [provisioningState] Provisioning state of the topic.
  * Possible values include: 'Creating', 'Updating', 'Deleting', 'Succeeded',
  * 'Canceled', 'Failed'
- * @member {string} [endpoint] Endpoint for the topic.
- * @member {string} [inputSchema] This determines the format that Event Grid
+ * @property {string} [endpoint] Endpoint for the topic.
+ * @property {string} [inputSchema] This determines the format that Event Grid
  * should expect for incoming events published to the topic. Possible values
  * include: 'EventGridSchema', 'CustomEventSchema', 'CloudEventV01Schema'.
  * Default value: 'EventGridSchema' .
- * @member {object} [inputSchemaMapping] This enables publishing using custom
+ * @property {object} [inputSchemaMapping] This enables publishing using custom
  * event schemas. An InputSchemaMapping can be specified to map various
  * properties of a source schema to various required properties of the
  * EventGridEvent schema.
- * @member {string} [inputSchemaMapping.inputSchemaMappingType] Polymorphic
+ * @property {string} [inputSchemaMapping.inputSchemaMappingType] Polymorphic
  * Discriminator
  */
 export interface Topic extends TrackedResource {
@@ -732,7 +732,7 @@ export interface Topic extends TrackedResource {
  * @constructor
  * Properties of the Topic update
  *
- * @member {object} [tags] Tags of the resource
+ * @property {object} [tags] Tags of the resource
  */
 export interface TopicUpdateParameters {
   tags?: { [propertyName: string]: string };
@@ -744,8 +744,8 @@ export interface TopicUpdateParameters {
  * @constructor
  * Shared access keys of the Topic
  *
- * @member {string} [key1] Shared access key1 for the topic.
- * @member {string} [key2] Shared access key2 for the topic.
+ * @property {string} [key1] Shared access key1 for the topic.
+ * @property {string} [key2] Shared access key2 for the topic.
  */
 export interface TopicSharedAccessKeys {
   key1?: string;
@@ -758,7 +758,7 @@ export interface TopicSharedAccessKeys {
  * @constructor
  * Topic regenerate share access key request
  *
- * @member {string} keyName Key name to regenerate key1 or key2
+ * @property {string} keyName Key name to regenerate key1 or key2
  */
 export interface TopicRegenerateKeyRequest {
   keyName: string;
@@ -770,9 +770,9 @@ export interface TopicRegenerateKeyRequest {
  * @constructor
  * Event Type for a subject under a topic
  *
- * @member {string} [displayName] Display name of the event type.
- * @member {string} [description] Description of the event type.
- * @member {string} [schemaUrl] Url of the schema for this event type.
+ * @property {string} [displayName] Display name of the event type.
+ * @property {string} [description] Description of the event type.
+ * @property {string} [schemaUrl] Url of the schema for this event type.
  */
 export interface EventType extends Resource {
   displayName?: string;
@@ -786,15 +786,15 @@ export interface EventType extends Resource {
  * @constructor
  * Properties of a topic type info.
  *
- * @member {string} [provider] Namespace of the provider of the topic type.
- * @member {string} [displayName] Display Name for the topic type.
- * @member {string} [description] Description of the topic type.
- * @member {string} [resourceRegionType] Region type of the resource. Possible
- * values include: 'RegionalResource', 'GlobalResource'
- * @member {string} [provisioningState] Provisioning state of the topic type.
+ * @property {string} [provider] Namespace of the provider of the topic type.
+ * @property {string} [displayName] Display Name for the topic type.
+ * @property {string} [description] Description of the topic type.
+ * @property {string} [resourceRegionType] Region type of the resource.
+ * Possible values include: 'RegionalResource', 'GlobalResource'
+ * @property {string} [provisioningState] Provisioning state of the topic type.
  * Possible values include: 'Creating', 'Updating', 'Deleting', 'Succeeded',
  * 'Canceled', 'Failed'
- * @member {array} [supportedLocations] List of locations supported by this
+ * @property {array} [supportedLocations] List of locations supported by this
  * topic type.
  */
 export interface TopicTypeInfo extends Resource {

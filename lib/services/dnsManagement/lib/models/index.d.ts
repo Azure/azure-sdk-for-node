@@ -22,7 +22,7 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * An A record.
  *
- * @member {string} [ipv4Address] The IPv4 address of this A record.
+ * @property {string} [ipv4Address] The IPv4 address of this A record.
  */
 export interface ARecord {
   ipv4Address?: string;
@@ -34,7 +34,7 @@ export interface ARecord {
  * @constructor
  * An AAAA record.
  *
- * @member {string} [ipv6Address] The IPv6 address of this AAAA record.
+ * @property {string} [ipv6Address] The IPv6 address of this AAAA record.
  */
 export interface AaaaRecord {
   ipv6Address?: string;
@@ -46,8 +46,8 @@ export interface AaaaRecord {
  * @constructor
  * An MX record.
  *
- * @member {number} [preference] The preference value for this MX record.
- * @member {string} [exchange] The domain name of the mail host for this MX
+ * @property {number} [preference] The preference value for this MX record.
+ * @property {string} [exchange] The domain name of the mail host for this MX
  * record.
  */
 export interface MxRecord {
@@ -61,7 +61,7 @@ export interface MxRecord {
  * @constructor
  * An NS record.
  *
- * @member {string} [nsdname] The name server name for this NS record.
+ * @property {string} [nsdname] The name server name for this NS record.
  */
 export interface NsRecord {
   nsdname?: string;
@@ -73,7 +73,8 @@ export interface NsRecord {
  * @constructor
  * A PTR record.
  *
- * @member {string} [ptrdname] The PTR target domain name for this PTR record.
+ * @property {string} [ptrdname] The PTR target domain name for this PTR
+ * record.
  */
 export interface PtrRecord {
   ptrdname?: string;
@@ -85,10 +86,10 @@ export interface PtrRecord {
  * @constructor
  * An SRV record.
  *
- * @member {number} [priority] The priority value for this SRV record.
- * @member {number} [weight] The weight value for this SRV record.
- * @member {number} [port] The port value for this SRV record.
- * @member {string} [target] The target domain name for this SRV record.
+ * @property {number} [priority] The priority value for this SRV record.
+ * @property {number} [weight] The weight value for this SRV record.
+ * @property {number} [port] The port value for this SRV record.
+ * @property {string} [target] The target domain name for this SRV record.
  */
 export interface SrvRecord {
   priority?: number;
@@ -103,7 +104,7 @@ export interface SrvRecord {
  * @constructor
  * A TXT record.
  *
- * @member {array} [value] The text value of this TXT record.
+ * @property {array} [value] The text value of this TXT record.
  */
 export interface TxtRecord {
   value?: string[];
@@ -115,7 +116,7 @@ export interface TxtRecord {
  * @constructor
  * A CNAME record.
  *
- * @member {string} [cname] The canonical name for this CNAME record.
+ * @property {string} [cname] The canonical name for this CNAME record.
  */
 export interface CnameRecord {
   cname?: string;
@@ -127,14 +128,14 @@ export interface CnameRecord {
  * @constructor
  * An SOA record.
  *
- * @member {string} [host] The domain name of the authoritative name server for
- * this SOA record.
- * @member {string} [email] The email contact for this SOA record.
- * @member {number} [serialNumber] The serial number for this SOA record.
- * @member {number} [refreshTime] The refresh value for this SOA record.
- * @member {number} [retryTime] The retry time for this SOA record.
- * @member {number} [expireTime] The expire time for this SOA record.
- * @member {number} [minimumTtl] The minimum value for this SOA record. By
+ * @property {string} [host] The domain name of the authoritative name server
+ * for this SOA record.
+ * @property {string} [email] The email contact for this SOA record.
+ * @property {number} [serialNumber] The serial number for this SOA record.
+ * @property {number} [refreshTime] The refresh value for this SOA record.
+ * @property {number} [retryTime] The retry time for this SOA record.
+ * @property {number} [expireTime] The expire time for this SOA record.
+ * @property {number} [minimumTtl] The minimum value for this SOA record. By
  * convention this is used to determine the negative caching duration.
  */
 export interface SoaRecord {
@@ -153,10 +154,10 @@ export interface SoaRecord {
  * @constructor
  * A CAA record.
  *
- * @member {number} [flags] The flags for this CAA record as an integer between
- * 0 and 255.
- * @member {string} [tag] The tag for this CAA record.
- * @member {string} [value] The value for this CAA record.
+ * @property {number} [flags] The flags for this CAA record as an integer
+ * between 0 and 255.
+ * @property {string} [tag] The tag for this CAA record.
+ * @property {string} [value] The value for this CAA record.
  */
 export interface CaaRecord {
   flags?: number;
@@ -166,43 +167,60 @@ export interface CaaRecord {
 
 /**
  * @class
+ * Initializes a new instance of the SubResource class.
+ * @constructor
+ * A reference to a another resource
+ *
+ * @property {string} [id] Resource Id.
+ */
+export interface SubResource {
+  id?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RecordSet class.
  * @constructor
  * Describes a DNS record set (a collection of DNS records with the same name
  * and type).
  *
- * @member {string} [id] The ID of the record set.
- * @member {string} [name] The name of the record set.
- * @member {string} [type] The type of the record set.
- * @member {string} [etag] The etag of the record set.
- * @member {object} [metadata] The metadata attached to the record set.
- * @member {number} [tTL] The TTL (time-to-live) of the records in the record
+ * @property {string} [id] The ID of the record set.
+ * @property {string} [name] The name of the record set.
+ * @property {string} [type] The type of the record set.
+ * @property {string} [etag] The etag of the record set.
+ * @property {object} [metadata] The metadata attached to the record set.
+ * @property {number} [tTL] The TTL (time-to-live) of the records in the record
  * set.
- * @member {string} [fqdn] Fully qualified domain name of the record set.
- * @member {array} [aRecords] The list of A records in the record set.
- * @member {array} [aaaaRecords] The list of AAAA records in the record set.
- * @member {array} [mxRecords] The list of MX records in the record set.
- * @member {array} [nsRecords] The list of NS records in the record set.
- * @member {array} [ptrRecords] The list of PTR records in the record set.
- * @member {array} [srvRecords] The list of SRV records in the record set.
- * @member {array} [txtRecords] The list of TXT records in the record set.
- * @member {object} [cnameRecord] The CNAME record in the  record set.
- * @member {string} [cnameRecord.cname] The canonical name for this CNAME
+ * @property {string} [fqdn] Fully qualified domain name of the record set.
+ * @property {string} [provisioningState] provisioning State of the record set.
+ * @property {object} [targetResource] A reference to an azure resource from
+ * where the dns resource value is taken.
+ * @property {string} [targetResource.id] Resource Id.
+ * @property {array} [aRecords] The list of A records in the record set.
+ * @property {array} [aaaaRecords] The list of AAAA records in the record set.
+ * @property {array} [mxRecords] The list of MX records in the record set.
+ * @property {array} [nsRecords] The list of NS records in the record set.
+ * @property {array} [ptrRecords] The list of PTR records in the record set.
+ * @property {array} [srvRecords] The list of SRV records in the record set.
+ * @property {array} [txtRecords] The list of TXT records in the record set.
+ * @property {object} [cnameRecord] The CNAME record in the  record set.
+ * @property {string} [cnameRecord.cname] The canonical name for this CNAME
  * record.
- * @member {object} [soaRecord] The SOA record in the record set.
- * @member {string} [soaRecord.host] The domain name of the authoritative name
- * server for this SOA record.
- * @member {string} [soaRecord.email] The email contact for this SOA record.
- * @member {number} [soaRecord.serialNumber] The serial number for this SOA
+ * @property {object} [soaRecord] The SOA record in the record set.
+ * @property {string} [soaRecord.host] The domain name of the authoritative
+ * name server for this SOA record.
+ * @property {string} [soaRecord.email] The email contact for this SOA record.
+ * @property {number} [soaRecord.serialNumber] The serial number for this SOA
  * record.
- * @member {number} [soaRecord.refreshTime] The refresh value for this SOA
+ * @property {number} [soaRecord.refreshTime] The refresh value for this SOA
  * record.
- * @member {number} [soaRecord.retryTime] The retry time for this SOA record.
- * @member {number} [soaRecord.expireTime] The expire time for this SOA record.
- * @member {number} [soaRecord.minimumTtl] The minimum value for this SOA
+ * @property {number} [soaRecord.retryTime] The retry time for this SOA record.
+ * @property {number} [soaRecord.expireTime] The expire time for this SOA
+ * record.
+ * @property {number} [soaRecord.minimumTtl] The minimum value for this SOA
  * record. By convention this is used to determine the negative caching
  * duration.
- * @member {array} [caaRecords] The list of CAA records in the record set.
+ * @property {array} [caaRecords] The list of CAA records in the record set.
  */
 export interface RecordSet extends BaseResource {
   readonly id?: string;
@@ -212,6 +230,8 @@ export interface RecordSet extends BaseResource {
   metadata?: { [propertyName: string]: string };
   tTL?: number;
   readonly fqdn?: string;
+  readonly provisioningState?: string;
+  targetResource?: SubResource;
   aRecords?: ARecord[];
   aaaaRecords?: AaaaRecord[];
   mxRecords?: MxRecord[];
@@ -230,54 +250,59 @@ export interface RecordSet extends BaseResource {
  * @constructor
  * Parameters supplied to update a record set.
  *
- * @member {object} [recordSet] Specifies information about the record set
+ * @property {object} [recordSet] Specifies information about the record set
  * being updated.
- * @member {string} [recordSet.id] The ID of the record set.
- * @member {string} [recordSet.name] The name of the record set.
- * @member {string} [recordSet.type] The type of the record set.
- * @member {string} [recordSet.etag] The etag of the record set.
- * @member {object} [recordSet.metadata] The metadata attached to the record
+ * @property {string} [recordSet.id] The ID of the record set.
+ * @property {string} [recordSet.name] The name of the record set.
+ * @property {string} [recordSet.type] The type of the record set.
+ * @property {string} [recordSet.etag] The etag of the record set.
+ * @property {object} [recordSet.metadata] The metadata attached to the record
  * set.
- * @member {number} [recordSet.tTL] The TTL (time-to-live) of the records in
+ * @property {number} [recordSet.tTL] The TTL (time-to-live) of the records in
  * the record set.
- * @member {string} [recordSet.fqdn] Fully qualified domain name of the record
- * set.
- * @member {array} [recordSet.aRecords] The list of A records in the record
- * set.
- * @member {array} [recordSet.aaaaRecords] The list of AAAA records in the
+ * @property {string} [recordSet.fqdn] Fully qualified domain name of the
  * record set.
- * @member {array} [recordSet.mxRecords] The list of MX records in the record
+ * @property {string} [recordSet.provisioningState] provisioning State of the
+ * record set.
+ * @property {object} [recordSet.targetResource] A reference to an azure
+ * resource from where the dns resource value is taken.
+ * @property {string} [recordSet.targetResource.id] Resource Id.
+ * @property {array} [recordSet.aRecords] The list of A records in the record
  * set.
- * @member {array} [recordSet.nsRecords] The list of NS records in the record
+ * @property {array} [recordSet.aaaaRecords] The list of AAAA records in the
+ * record set.
+ * @property {array} [recordSet.mxRecords] The list of MX records in the record
  * set.
- * @member {array} [recordSet.ptrRecords] The list of PTR records in the record
+ * @property {array} [recordSet.nsRecords] The list of NS records in the record
  * set.
- * @member {array} [recordSet.srvRecords] The list of SRV records in the record
+ * @property {array} [recordSet.ptrRecords] The list of PTR records in the
+ * record set.
+ * @property {array} [recordSet.srvRecords] The list of SRV records in the
+ * record set.
+ * @property {array} [recordSet.txtRecords] The list of TXT records in the
+ * record set.
+ * @property {object} [recordSet.cnameRecord] The CNAME record in the  record
  * set.
- * @member {array} [recordSet.txtRecords] The list of TXT records in the record
- * set.
- * @member {object} [recordSet.cnameRecord] The CNAME record in the  record
- * set.
- * @member {string} [recordSet.cnameRecord.cname] The canonical name for this
+ * @property {string} [recordSet.cnameRecord.cname] The canonical name for this
  * CNAME record.
- * @member {object} [recordSet.soaRecord] The SOA record in the record set.
- * @member {string} [recordSet.soaRecord.host] The domain name of the
+ * @property {object} [recordSet.soaRecord] The SOA record in the record set.
+ * @property {string} [recordSet.soaRecord.host] The domain name of the
  * authoritative name server for this SOA record.
- * @member {string} [recordSet.soaRecord.email] The email contact for this SOA
- * record.
- * @member {number} [recordSet.soaRecord.serialNumber] The serial number for
- * this SOA record.
- * @member {number} [recordSet.soaRecord.refreshTime] The refresh value for
- * this SOA record.
- * @member {number} [recordSet.soaRecord.retryTime] The retry time for this SOA
- * record.
- * @member {number} [recordSet.soaRecord.expireTime] The expire time for this
+ * @property {string} [recordSet.soaRecord.email] The email contact for this
  * SOA record.
- * @member {number} [recordSet.soaRecord.minimumTtl] The minimum value for this
- * SOA record. By convention this is used to determine the negative caching
- * duration.
- * @member {array} [recordSet.caaRecords] The list of CAA records in the record
- * set.
+ * @property {number} [recordSet.soaRecord.serialNumber] The serial number for
+ * this SOA record.
+ * @property {number} [recordSet.soaRecord.refreshTime] The refresh value for
+ * this SOA record.
+ * @property {number} [recordSet.soaRecord.retryTime] The retry time for this
+ * SOA record.
+ * @property {number} [recordSet.soaRecord.expireTime] The expire time for this
+ * SOA record.
+ * @property {number} [recordSet.soaRecord.minimumTtl] The minimum value for
+ * this SOA record. By convention this is used to determine the negative
+ * caching duration.
+ * @property {array} [recordSet.caaRecords] The list of CAA records in the
+ * record set.
  */
 export interface RecordSetUpdateParameters {
   recordSet?: RecordSet;
@@ -285,44 +310,22 @@ export interface RecordSetUpdateParameters {
 
 /**
  * @class
- * Initializes a new instance of the SubResource class.
- * @constructor
- * A reference to a another resource
- *
- * @member {string} [id] Resource Id.
- */
-export interface SubResource {
-  id?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Resource class.
  * @constructor
- * @member {string} [id] Fully qualified resource Id for the resource. Ex -
- * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
- * @member {string} [name] The name of the resource
- * @member {string} [type] The type of the resource. Ex-
- * Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+ * Common properties of an Azure Resource Manager resource
+ *
+ * @property {string} [id] Resource ID.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
+ * @property {string} location Resource location.
+ * @property {object} [tags] Resource tags.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TrackedResource class.
- * @constructor
- * The resource model definition for a ARM tracked top level resource
- *
- * @member {object} [tags] Resource tags.
- * @member {string} location The geo-location where the resource lives
- */
-export interface TrackedResource extends Resource {
-  tags?: { [propertyName: string]: string };
   location: string;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -331,25 +334,25 @@ export interface TrackedResource extends Resource {
  * @constructor
  * Describes a DNS zone.
  *
- * @member {string} [etag] The etag of the zone.
- * @member {number} [maxNumberOfRecordSets] The maximum number of record sets
+ * @property {string} [etag] The etag of the zone.
+ * @property {number} [maxNumberOfRecordSets] The maximum number of record sets
  * that can be created in this DNS zone.  This is a read-only property and any
  * attempt to set this value will be ignored.
- * @member {number} [numberOfRecordSets] The current number of record sets in
+ * @property {number} [numberOfRecordSets] The current number of record sets in
  * this DNS zone.  This is a read-only property and any attempt to set this
  * value will be ignored.
- * @member {array} [nameServers] The name servers for this DNS zone. This is a
- * read-only property and any attempt to set this value will be ignored.
- * @member {string} [zoneType] The type of this DNS zone (Public or Private).
+ * @property {array} [nameServers] The name servers for this DNS zone. This is
+ * a read-only property and any attempt to set this value will be ignored.
+ * @property {string} [zoneType] The type of this DNS zone (Public or Private).
  * Possible values include: 'Public', 'Private'. Default value: 'Public' .
- * @member {array} [registrationVirtualNetworks] A list of references to
+ * @property {array} [registrationVirtualNetworks] A list of references to
  * virtual networks that register hostnames in this DNS zone. This is a only
  * when ZoneType is Private.
- * @member {array} [resolutionVirtualNetworks] A list of references to virtual
- * networks that resolve records in this DNS zone. This is a only when ZoneType
- * is Private.
+ * @property {array} [resolutionVirtualNetworks] A list of references to
+ * virtual networks that resolve records in this DNS zone. This is a only when
+ * ZoneType is Private.
  */
-export interface Zone extends TrackedResource {
+export interface Zone extends Resource {
   etag?: string;
   readonly maxNumberOfRecordSets?: number;
   readonly numberOfRecordSets?: number;
@@ -365,7 +368,7 @@ export interface Zone extends TrackedResource {
  * @constructor
  * Describes a request to update a DNS zone.
  *
- * @member {object} [tags] Resource tags.
+ * @property {object} [tags] Resource tags.
  */
 export interface ZoneUpdate {
   tags?: { [propertyName: string]: string };
@@ -373,26 +376,45 @@ export interface ZoneUpdate {
 
 /**
  * @class
- * Initializes a new instance of the ProxyResource class.
+ * Initializes a new instance of the DnsResourceReferenceRequest class.
  * @constructor
- * The resource model definition for a ARM proxy resource. It will have
- * everything other than required location and tags
+ * Represents the properties of the Dns Resource Reference Request.
  *
+ * @property {array} [targetResources] A list of references to azure resources
+ * for which referencing dns records need to be queried.
  */
-export interface ProxyResource extends Resource {
+export interface DnsResourceReferenceRequest {
+  targetResources?: SubResource[];
 }
 
 /**
  * @class
- * Initializes a new instance of the AzureEntityResource class.
+ * Initializes a new instance of the DnsResourceReference class.
  * @constructor
- * The resource model definition for a Azure Resource Manager resource with an
- * etag.
+ * Represents a single Azure resource and its referencing DNS records.
  *
- * @member {string} [etag] Resource Etag.
+ * @property {array} [dnsResources] A list of dns Records
+ * @property {object} [targetResource] A reference to an azure resource from
+ * where the dns resource value is taken.
+ * @property {string} [targetResource.id] Resource Id.
  */
-export interface AzureEntityResource extends Resource {
-  readonly etag?: string;
+export interface DnsResourceReference {
+  dnsResources?: SubResource[];
+  targetResource?: SubResource;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DnsResourceReferenceResult class.
+ * @constructor
+ * Represents the properties of the Dns Resource Reference Result.
+ *
+ * @property {array} [dnsResourceReferences] The result of dns resource
+ * reference request. A list of dns resource references for each of the azure
+ * resource in the request
+ */
+export interface DnsResourceReferenceResult {
+  dnsResourceReferences?: DnsResourceReference[];
 }
 
 
@@ -402,7 +424,7 @@ export interface AzureEntityResource extends Resource {
  * @constructor
  * The response to a record set List operation.
  *
- * @member {string} [nextLink] The continuation token for the next page of
+ * @property {string} [nextLink] The continuation token for the next page of
  * results.
  */
 export interface RecordSetListResult extends Array<RecordSet> {
@@ -415,7 +437,7 @@ export interface RecordSetListResult extends Array<RecordSet> {
  * @constructor
  * The response to a Zone List or ListAll operation.
  *
- * @member {string} [nextLink] The continuation token for the next page of
+ * @property {string} [nextLink] The continuation token for the next page of
  * results.
  */
 export interface ZoneListResult extends Array<Zone> {

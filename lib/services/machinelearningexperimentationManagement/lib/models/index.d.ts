@@ -22,12 +22,12 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * An Azure resource.
  *
- * @member {string} [id] The resource ID.
- * @member {string} [name] The name of the resource.
- * @member {string} [type] The type of the resource.
- * @member {string} location The location of the resource. This cannot be
+ * @property {string} [id] The resource ID.
+ * @property {string} [name] The name of the resource.
+ * @property {string} [type] The type of the resource.
+ * @property {string} location The location of the resource. This cannot be
  * changed after the resource is created.
- * @member {object} [tags] The tags of the resource.
+ * @property {object} [tags] The tags of the resource.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -43,16 +43,16 @@ export interface Resource extends BaseResource {
  * @constructor
  * An object that represents a machine learning team account workspace.
  *
- * @member {string} [description] The description of this workspace.
- * @member {string} [accountId] The immutable id of the team account which
+ * @property {string} [description] The description of this workspace.
+ * @property {string} [accountId] The immutable id of the team account which
  * contains this workspace.
- * @member {string} [workspaceId] The immutable id of this workspace.
- * @member {string} friendlyName The friendly name for this workspace. This
+ * @property {string} [workspaceId] The immutable id of this workspace.
+ * @property {string} friendlyName The friendly name for this workspace. This
  * will be the workspace name in the arm id when the workspace object gets
  * created
- * @member {date} [creationDate] The creation date of the machine learning
+ * @property {date} [creationDate] The creation date of the machine learning
  * workspace in ISO8601 format.
- * @member {string} [provisioningState] The current deployment state of team
+ * @property {string} [provisioningState] The current deployment state of team
  * account workspace resource. The provisioningState is to indicate states for
  * resource provisioning. Possible values include: 'Creating', 'Succeeded',
  * 'Updating', 'Deleting', 'Failed'
@@ -72,10 +72,10 @@ export interface Workspace extends Resource {
  * @constructor
  * The parameters for updating a machine learning team account workspace.
  *
- * @member {object} [tags] The resource tags for the machine learning team
+ * @property {object} [tags] The resource tags for the machine learning team
  * account workspace.
- * @member {string} [friendlyName] Friendly name of this workspace.
- * @member {string} [description] Description for this workspace.
+ * @property {string} [friendlyName] Friendly name of this workspace.
+ * @property {string} [description] Description for this workspace.
  */
 export interface WorkspaceUpdateParameters {
   tags?: { [propertyName: string]: string };
@@ -89,18 +89,18 @@ export interface WorkspaceUpdateParameters {
  * @constructor
  * An object that represents a machine learning project.
  *
- * @member {string} [description] The description of this project.
- * @member {string} [accountId] The immutable id of the team account which
+ * @property {string} [description] The description of this project.
+ * @property {string} [accountId] The immutable id of the team account which
  * contains this project.
- * @member {string} [workspaceId] The immutable id of the workspace which
+ * @property {string} [workspaceId] The immutable id of the workspace which
  * contains this project.
- * @member {string} [projectId] The immutable id of this project.
- * @member {string} [gitrepo] The reference to git repo for this project.
- * @member {string} friendlyName The friendly name for this project.
- * @member {date} [creationDate] The creation date of the project in ISO8601
+ * @property {string} [projectId] The immutable id of this project.
+ * @property {string} [gitrepo] The reference to git repo for this project.
+ * @property {string} friendlyName The friendly name for this project.
+ * @property {date} [creationDate] The creation date of the project in ISO8601
  * format.
- * @member {string} [provisioningState] The current deployment state of project
- * resource. The provisioningState is to indicate states for resource
+ * @property {string} [provisioningState] The current deployment state of
+ * project resource. The provisioningState is to indicate states for resource
  * provisioning. Possible values include: 'Creating', 'Succeeded', 'Updating',
  * 'Deleting', 'Failed'
  */
@@ -121,10 +121,11 @@ export interface Project extends Resource {
  * @constructor
  * The parameters for updating a machine learning project.
  *
- * @member {object} [tags] The resource tags for the machine learning project.
- * @member {string} [friendlyName] The friendly name for this project.
- * @member {string} [description] The description of this project.
- * @member {string} [gitrepo] The reference to git repo for this project.
+ * @property {object} [tags] The resource tags for the machine learning
+ * project.
+ * @property {string} [friendlyName] The friendly name for this project.
+ * @property {string} [description] The description of this project.
+ * @property {string} [gitrepo] The reference to git repo for this project.
  */
 export interface ProjectUpdateParameters {
   tags?: { [propertyName: string]: string };
@@ -139,8 +140,8 @@ export interface ProjectUpdateParameters {
  * @constructor
  * The error response send when an operation fails.
  *
- * @member {string} code error code
- * @member {string} message error message
+ * @property {string} code error code
+ * @property {string} message error message
  */
 export interface ErrorResponse {
   code: string;
@@ -153,9 +154,9 @@ export interface ErrorResponse {
  * @constructor
  * The properties of a storage account for a machine learning team account.
  *
- * @member {string} storageAccountId The fully qualified arm Id of the storage
- * account.
- * @member {string} accessKey The access key to the storage account.
+ * @property {string} storageAccountId The fully qualified arm Id of the
+ * storage account.
+ * @property {string} accessKey The access key to the storage account.
  */
 export interface StorageAccountProperties {
   storageAccountId: string;
@@ -168,29 +169,29 @@ export interface StorageAccountProperties {
  * @constructor
  * An object that represents a machine learning team account.
  *
- * @member {string} vsoAccountId The fully qualified arm id of the vso account
- * to be used for this team account.
- * @member {string} [accountId] The immutable id associated with this team
+ * @property {string} vsoAccountId The fully qualified arm id of the vso
+ * account to be used for this team account.
+ * @property {string} [accountId] The immutable id associated with this team
  * account.
- * @member {string} [description] The description of this workspace.
- * @member {string} [friendlyName] The friendly name for this workspace. This
+ * @property {string} [description] The description of this workspace.
+ * @property {string} [friendlyName] The friendly name for this workspace. This
  * will be the workspace name in the arm id when the workspace object gets
  * created
- * @member {string} keyVaultId The fully qualified arm id of the user key
+ * @property {string} keyVaultId The fully qualified arm id of the user key
  * vault.
- * @member {string} [seats] The no of users/seats who can access this team
+ * @property {string} [seats] The no of users/seats who can access this team
  * account. This property defines the charge on the team account.
- * @member {string} [discoveryUri] The uri for this machine learning team
+ * @property {string} [discoveryUri] The uri for this machine learning team
  * account.
- * @member {date} [creationDate] The creation date of the machine learning team
- * account in ISO8601 format.
- * @member {object} storageAccount The properties of the storage account for
+ * @property {date} [creationDate] The creation date of the machine learning
+ * team account in ISO8601 format.
+ * @property {object} storageAccount The properties of the storage account for
  * the machine learning team account.
- * @member {string} [storageAccount.storageAccountId] The fully qualified arm
+ * @property {string} [storageAccount.storageAccountId] The fully qualified arm
  * Id of the storage account.
- * @member {string} [storageAccount.accessKey] The access key to the storage
+ * @property {string} [storageAccount.accessKey] The access key to the storage
  * account.
- * @member {string} [provisioningState] The current deployment state of team
+ * @property {string} [provisioningState] The current deployment state of team
  * account resource. The provisioningState is to indicate states for resource
  * provisioning. Possible values include: 'Creating', 'Succeeded', 'Updating',
  * 'Deleting', 'Failed'
@@ -214,16 +215,16 @@ export interface Account extends Resource {
  * @constructor
  * The parameters for updating a machine learning team account.
  *
- * @member {object} [tags] The resource tags for the machine learning team
+ * @property {object} [tags] The resource tags for the machine learning team
  * account.
- * @member {string} [description] The description of this workspace.
- * @member {string} [friendlyName] The friendly name for this workspace. This
+ * @property {string} [description] The description of this workspace.
+ * @property {string} [friendlyName] The friendly name for this workspace. This
  * will be the workspace name in the arm id when the workspace object gets
  * created
- * @member {string} [seats] The no of users/seats who can access this team
+ * @property {string} [seats] The no of users/seats who can access this team
  * account. This property defines the charge on the team account.
- * @member {string} [storageAccountKey] The key for storage account associated
- * with this team account
+ * @property {string} [storageAccountKey] The key for storage account
+ * associated with this team account
  */
 export interface AccountUpdateParameters {
   tags?: { [propertyName: string]: string };
@@ -239,12 +240,12 @@ export interface AccountUpdateParameters {
  * @constructor
  * Display name of operation
  *
- * @member {string} [provider] The resource provider name:
+ * @property {string} [provider] The resource provider name:
  * Microsoft.MachineLearningExperimentation
- * @member {string} [resource] The resource on which the operation is
+ * @property {string} [resource] The resource on which the operation is
  * performed.
- * @member {string} [operation] The operation that users can perform.
- * @member {string} [description] The description for the operation.
+ * @property {string} [operation] The operation that users can perform.
+ * @property {string} [description] The description for the operation.
  */
 export interface OperationDisplay {
   provider?: string;
@@ -259,14 +260,14 @@ export interface OperationDisplay {
  * @constructor
  * Azure Machine Learning team account REST API operation
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] Display name of operation
- * @member {string} [display.provider] The resource provider name:
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] Display name of operation
+ * @property {string} [display.provider] The resource provider name:
  * Microsoft.MachineLearningExperimentation
- * @member {string} [display.resource] The resource on which the operation is
+ * @property {string} [display.resource] The resource on which the operation is
  * performed.
- * @member {string} [display.operation] The operation that users can perform.
- * @member {string} [display.description] The description for the operation.
+ * @property {string} [display.operation] The operation that users can perform.
+ * @property {string} [display.description] The description for the operation.
  */
 export interface Operation {
   name?: string;
@@ -290,7 +291,7 @@ export interface OperationListResult extends Array<Operation> {
  * @constructor
  * The result of a request to list machine learning team accounts.
  *
- * @member {string} [nextLink] The URI that can be used to request the next
+ * @property {string} [nextLink] The URI that can be used to request the next
  * list of machine learning team accounts.
  */
 export interface AccountListResult extends Array<Account> {
@@ -303,7 +304,7 @@ export interface AccountListResult extends Array<Account> {
  * @constructor
  * The result of a request to list machine learning team account workspaces.
  *
- * @member {string} [nextLink] The URI that can be used to request the next
+ * @property {string} [nextLink] The URI that can be used to request the next
  * list of machine learning workspaces.
  */
 export interface WorkspaceListResult extends Array<Workspace> {
@@ -316,7 +317,7 @@ export interface WorkspaceListResult extends Array<Workspace> {
  * @constructor
  * The result of a request to list projects.
  *
- * @member {string} [nextLink] The URI that can be used to request the next
+ * @property {string} [nextLink] The URI that can be used to request the next
  * list of projects.
  */
 export interface ProjectListResult extends Array<Project> {

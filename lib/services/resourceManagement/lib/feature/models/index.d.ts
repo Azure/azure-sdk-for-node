@@ -22,7 +22,7 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Information about feature.
  *
- * @member {string} [state] The registration state of the feature for the
+ * @property {string} [state] The registration state of the feature for the
  * subscription.
  */
 export interface FeatureProperties {
@@ -35,12 +35,12 @@ export interface FeatureProperties {
  * @constructor
  * Previewed feature information.
  *
- * @member {string} [name] The name of the feature.
- * @member {object} [properties] Properties of the previewed feature.
- * @member {string} [properties.state] The registration state of the feature
+ * @property {string} [name] The name of the feature.
+ * @property {object} [properties] Properties of the previewed feature.
+ * @property {string} [properties.state] The registration state of the feature
  * for the subscription.
- * @member {string} [id] The resource ID of the feature.
- * @member {string} [type] The resource type of the feature.
+ * @property {string} [id] The resource ID of the feature.
+ * @property {string} [type] The resource type of the feature.
  */
 export interface FeatureResult {
   name?: string;
@@ -55,10 +55,10 @@ export interface FeatureResult {
  * @constructor
  * The object that represents the operation.
  *
- * @member {string} [provider] Service provider: Microsoft.Features
- * @member {string} [resource] Resource on which the operation is performed:
+ * @property {string} [provider] Service provider: Microsoft.Features
+ * @property {string} [resource] Resource on which the operation is performed:
  * Profile, endpoint, etc.
- * @member {string} [operation] Operation type: Read, write, delete, etc.
+ * @property {string} [operation] Operation type: Read, write, delete, etc.
  */
 export interface OperationDisplay {
   provider?: string;
@@ -72,12 +72,12 @@ export interface OperationDisplay {
  * @constructor
  * Microsoft.Features operation
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Service provider: Microsoft.Features
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] The object that represents the operation.
+ * @property {string} [display.provider] Service provider: Microsoft.Features
+ * @property {string} [display.resource] Resource on which the operation is
  * performed: Profile, endpoint, etc.
- * @member {string} [display.operation] Operation type: Read, write, delete,
+ * @property {string} [display.operation] Operation type: Read, write, delete,
  * etc.
  */
 export interface Operation {
@@ -93,7 +93,7 @@ export interface Operation {
  * Result of the request to list Microsoft.Features operations. It contains a
  * list of operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {
@@ -106,7 +106,7 @@ export interface OperationListResult extends Array<Operation> {
  * @constructor
  * List of previewed features.
  *
- * @member {string} [nextLink] The URL to use for getting the next set of
+ * @property {string} [nextLink] The URL to use for getting the next set of
  * results.
  */
 export interface FeatureOperationsListResult extends Array<FeatureResult> {

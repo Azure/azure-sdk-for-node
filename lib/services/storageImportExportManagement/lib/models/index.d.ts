@@ -18,23 +18,649 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
- * Initializes a new instance of the Resource class.
+ * Initializes a new instance of the ErrorResponseErrorDetailsItem class.
  * @constructor
- * The Resource model definition.
- *
- * @member {string} [id] Specifies the resource identifier of the job.
- * @member {string} [name] Specifies the name of the job.
- * @member {string} [type] Specifies the type of the job resource.
- * @member {string} location Specifies the Azure location where the job is
- * created.
- * @member {object} [tags] Specifies the tags that are assigned to the job.
+ * @property {string} [code] Provides information about the error code.
+ * @property {string} [target] Provides information about the error target.
+ * @property {string} [message] Provides information about the error message.
  */
-export interface Resource {
+export interface ErrorResponseErrorDetailsItem {
+  code?: string;
+  target?: string;
+  message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorResponse class.
+ * @constructor
+ * Response when errors occurred
+ *
+ * @property {string} [code] Provides information about the error code.
+ * @property {string} [message] Provides information about the error message.
+ * @property {string} [target] Provides information about the error target.
+ * @property {array} [details] Describes the error details if present.
+ * @property {object} [innererror] Inner error object if present.
+ */
+export interface ErrorResponse {
+  code?: string;
+  message?: string;
+  target?: string;
+  details?: ErrorResponseErrorDetailsItem[];
+  innererror?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReturnAddress class.
+ * @constructor
+ * Specifies the return address information for the job.
+ *
+ * @property {string} recipientName The name of the recipient who will receive
+ * the hard drives when they are returned.
+ * @property {string} streetAddress1 The first line of the street address to
+ * use when returning the drives.
+ * @property {string} [streetAddress2] The second line of the street address to
+ * use when returning the drives.
+ * @property {string} city The city name to use when returning the drives.
+ * @property {string} [stateOrProvince] The state or province to use when
+ * returning the drives.
+ * @property {string} postalCode The postal code to use when returning the
+ * drives.
+ * @property {string} countryOrRegion The country or region to use when
+ * returning the drives.
+ * @property {string} phone Phone number of the recipient of the returned
+ * drives.
+ * @property {string} email Email address of the recipient of the returned
+ * drives.
+ */
+export interface ReturnAddress {
+  recipientName: string;
+  streetAddress1: string;
+  streetAddress2?: string;
+  city: string;
+  stateOrProvince?: string;
+  postalCode: string;
+  countryOrRegion: string;
+  phone: string;
+  email: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReturnShipping class.
+ * @constructor
+ * Specifies the return carrier and customer's account with the carrier.
+ *
+ * @property {string} carrierName The carrier's name.
+ * @property {string} carrierAccountNumber The customer's account number with
+ * the carrier.
+ */
+export interface ReturnShipping {
+  carrierName: string;
+  carrierAccountNumber: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ShippingInformation class.
+ * @constructor
+ * Contains information about the Microsoft datacenter to which the drives
+ * should be shipped.
+ *
+ * @property {string} recipientName The name of the recipient who will receive
+ * the hard drives when they are returned.
+ * @property {string} streetAddress1 The first line of the street address to
+ * use when returning the drives.
+ * @property {string} [streetAddress2] The second line of the street address to
+ * use when returning the drives.
+ * @property {string} city The city name to use when returning the drives.
+ * @property {string} stateOrProvince The state or province to use when
+ * returning the drives.
+ * @property {string} postalCode The postal code to use when returning the
+ * drives.
+ * @property {string} countryOrRegion The country or region to use when
+ * returning the drives.
+ * @property {string} [phone] Phone number of the recipient of the returned
+ * drives.
+ */
+export interface ShippingInformation {
+  recipientName: string;
+  streetAddress1: string;
+  streetAddress2?: string;
+  city: string;
+  stateOrProvince: string;
+  postalCode: string;
+  countryOrRegion: string;
+  phone?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PackageInfomation class.
+ * @constructor
+ * Contains information about the package being shipped by the customer to the
+ * Microsoft data center.
+ *
+ * @property {string} carrierName The name of the carrier that is used to ship
+ * the import or export drives.
+ * @property {string} trackingNumber The tracking number of the package.
+ * @property {number} driveCount The number of drives included in the package.
+ * @property {string} shipDate The date when the package is shipped.
+ */
+export interface PackageInfomation {
+  carrierName: string;
+  trackingNumber: string;
+  driveCount: number;
+  shipDate: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DriveStatus class.
+ * @constructor
+ * Provides information about the drive's status
+ *
+ * @property {string} [driveId] The drive's hardware serial number, without
+ * spaces.
+ * @property {string} [bitLockerKey] The BitLocker key used to encrypt the
+ * drive.
+ * @property {string} [manifestFile] The relative path of the manifest file on
+ * the drive.
+ * @property {string} [manifestHash] The Base16-encoded MD5 hash of the
+ * manifest file on the drive.
+ * @property {string} [driveHeaderHash] The drive header hash value.
+ * @property {string} [state] The drive's current state. Possible values
+ * include: 'Specified', 'Received', 'NeverReceived', 'Transferring',
+ * 'Completed', 'CompletedMoreInfo', 'ShippedBack'
+ * @property {string} [copyStatus] Detailed status about the data transfer
+ * process. This field is not returned in the response until the drive is in
+ * the Transferring state.
+ * @property {number} [percentComplete] Percentage completed for the drive.
+ * @property {string} [verboseLogUri] A URI that points to the blob containing
+ * the verbose log for the data transfer operation.
+ * @property {string} [errorLogUri] A URI that points to the blob containing
+ * the error log for the data transfer operation.
+ * @property {string} [manifestUri] A URI that points to the blob containing
+ * the drive manifest file.
+ * @property {number} [bytesSucceeded] Bytes successfully transferred for the
+ * drive.
+ */
+export interface DriveStatus {
+  driveId?: string;
+  bitLockerKey?: string;
+  manifestFile?: string;
+  manifestHash?: string;
+  driveHeaderHash?: string;
+  state?: string;
+  copyStatus?: string;
+  percentComplete?: number;
+  verboseLogUri?: string;
+  errorLogUri?: string;
+  manifestUri?: string;
+  bytesSucceeded?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExportModel class.
+ * @constructor
+ * A property containing information about the blobs to be exported for an
+ * export job. This property is required for export jobs, but must not be
+ * specified for import jobs.
+ *
+ * @property {array} [blobPath] A collection of blob-path strings.
+ * @property {array} [blobPathPrefix] A collection of blob-prefix strings.
+ * @property {string} [blobListblobPath] The relative URI to the block blob
+ * that contains the list of blob paths or blob path prefixes as defined above,
+ * beginning with the container name. If the blob is in root container, the URI
+ * must begin with $root.
+ */
+export interface ExportModel {
+  blobPath?: string[];
+  blobPathPrefix?: string[];
+  blobListblobPath?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobDetails class.
+ * @constructor
+ * Specifies the job properties
+ *
+ * @property {string} [storageAccountId] The resource identifier of the storage
+ * account where data will be imported to or exported from.
+ * @property {string} [jobType] The type of job
+ * @property {object} [returnAddress] Specifies the return address information
+ * for the job.
+ * @property {string} [returnAddress.recipientName] The name of the recipient
+ * who will receive the hard drives when they are returned.
+ * @property {string} [returnAddress.streetAddress1] The first line of the
+ * street address to use when returning the drives.
+ * @property {string} [returnAddress.streetAddress2] The second line of the
+ * street address to use when returning the drives.
+ * @property {string} [returnAddress.city] The city name to use when returning
+ * the drives.
+ * @property {string} [returnAddress.stateOrProvince] The state or province to
+ * use when returning the drives.
+ * @property {string} [returnAddress.postalCode] The postal code to use when
+ * returning the drives.
+ * @property {string} [returnAddress.countryOrRegion] The country or region to
+ * use when returning the drives.
+ * @property {string} [returnAddress.phone] Phone number of the recipient of
+ * the returned drives.
+ * @property {string} [returnAddress.email] Email address of the recipient of
+ * the returned drives.
+ * @property {object} [returnShipping] Specifies the return carrier and
+ * customer's account with the carrier.
+ * @property {string} [returnShipping.carrierName] The carrier's name.
+ * @property {string} [returnShipping.carrierAccountNumber] The customer's
+ * account number with the carrier.
+ * @property {object} [shippingInformation] Contains information about the
+ * Microsoft datacenter to which the drives should be shipped.
+ * @property {string} [shippingInformation.recipientName] The name of the
+ * recipient who will receive the hard drives when they are returned.
+ * @property {string} [shippingInformation.streetAddress1] The first line of
+ * the street address to use when returning the drives.
+ * @property {string} [shippingInformation.streetAddress2] The second line of
+ * the street address to use when returning the drives.
+ * @property {string} [shippingInformation.city] The city name to use when
+ * returning the drives.
+ * @property {string} [shippingInformation.stateOrProvince] The state or
+ * province to use when returning the drives.
+ * @property {string} [shippingInformation.postalCode] The postal code to use
+ * when returning the drives.
+ * @property {string} [shippingInformation.countryOrRegion] The country or
+ * region to use when returning the drives.
+ * @property {string} [shippingInformation.phone] Phone number of the recipient
+ * of the returned drives.
+ * @property {object} [deliveryPackage] Contains information about the package
+ * being shipped by the customer to the Microsoft data center.
+ * @property {string} [deliveryPackage.carrierName] The name of the carrier
+ * that is used to ship the import or export drives.
+ * @property {string} [deliveryPackage.trackingNumber] The tracking number of
+ * the package.
+ * @property {number} [deliveryPackage.driveCount] The number of drives
+ * included in the package.
+ * @property {string} [deliveryPackage.shipDate] The date when the package is
+ * shipped.
+ * @property {object} [returnPackage] Contains information about the package
+ * being shipped from the Microsoft data center to the customer to return the
+ * drives. The format is the same as the deliveryPackage property above. This
+ * property is not included if the drives have not yet been returned.
+ * @property {string} [returnPackage.carrierName] The name of the carrier that
+ * is used to ship the import or export drives.
+ * @property {string} [returnPackage.trackingNumber] The tracking number of the
+ * package.
+ * @property {number} [returnPackage.driveCount] The number of drives included
+ * in the package.
+ * @property {string} [returnPackage.shipDate] The date when the package is
+ * shipped.
+ * @property {string} [diagnosticsPath] The virtual blob directory to which the
+ * copy logs and backups of drive manifest files (if enabled) will be stored.
+ * @property {string} [logLevel] Default value is Error. Indicates whether
+ * error logging or verbose logging will be enabled.
+ * @property {boolean} [backupDriveManifest] Default value is false. Indicates
+ * whether the manifest files on the drives should be copied to block blobs.
+ * @property {string} [state] Current state of the job.
+ * @property {boolean} [cancelRequested] Indicates whether a request has been
+ * submitted to cancel the job.
+ * @property {number} [percentComplete] Overall percentage completed for the
+ * job.
+ * @property {string} [incompleteBlobListUri] A blob path that points to a
+ * block blob containing a list of blob names that were not exported due to
+ * insufficient drive space. If all blobs were exported successfully, then this
+ * element is not included in the response.
+ * @property {array} [driveList] List of up to ten drives that comprise the
+ * job. The drive list is a required element for an import job; it is not
+ * specified for export jobs.
+ * @property {object} [exportProperty] A property containing information about
+ * the blobs to be exported for an export job. This property is included for
+ * export jobs only.
+ * @property {array} [exportProperty.blobPath] A collection of blob-path
+ * strings.
+ * @property {array} [exportProperty.blobPathPrefix] A collection of
+ * blob-prefix strings.
+ * @property {string} [exportProperty.blobListblobPath] The relative URI to the
+ * block blob that contains the list of blob paths or blob path prefixes as
+ * defined above, beginning with the container name. If the blob is in root
+ * container, the URI must begin with $root.
+ * @property {string} [provisioningState] Specifies the provisioning state of
+ * the job.
+ */
+export interface JobDetails {
+  storageAccountId?: string;
+  jobType?: string;
+  returnAddress?: ReturnAddress;
+  returnShipping?: ReturnShipping;
+  shippingInformation?: ShippingInformation;
+  deliveryPackage?: PackageInfomation;
+  returnPackage?: PackageInfomation;
+  diagnosticsPath?: string;
+  logLevel?: string;
+  backupDriveManifest?: boolean;
+  state?: string;
+  cancelRequested?: boolean;
+  percentComplete?: number;
+  incompleteBlobListUri?: string;
+  driveList?: DriveStatus[];
+  exportProperty?: ExportModel;
+  provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PutJobParameters class.
+ * @constructor
+ * Put Job parameters
+ *
+ * @property {string} [location] Specifies the supported Azure location where
+ * the job should be created
+ * @property {object} [tags] Specifies the tags that will be assigned to the
+ * job.
+ * @property {object} [properties] Specifies the job properties
+ * @property {string} [properties.storageAccountId] The resource identifier of
+ * the storage account where data will be imported to or exported from.
+ * @property {string} [properties.jobType] The type of job
+ * @property {object} [properties.returnAddress] Specifies the return address
+ * information for the job.
+ * @property {string} [properties.returnAddress.recipientName] The name of the
+ * recipient who will receive the hard drives when they are returned.
+ * @property {string} [properties.returnAddress.streetAddress1] The first line
+ * of the street address to use when returning the drives.
+ * @property {string} [properties.returnAddress.streetAddress2] The second line
+ * of the street address to use when returning the drives.
+ * @property {string} [properties.returnAddress.city] The city name to use when
+ * returning the drives.
+ * @property {string} [properties.returnAddress.stateOrProvince] The state or
+ * province to use when returning the drives.
+ * @property {string} [properties.returnAddress.postalCode] The postal code to
+ * use when returning the drives.
+ * @property {string} [properties.returnAddress.countryOrRegion] The country or
+ * region to use when returning the drives.
+ * @property {string} [properties.returnAddress.phone] Phone number of the
+ * recipient of the returned drives.
+ * @property {string} [properties.returnAddress.email] Email address of the
+ * recipient of the returned drives.
+ * @property {object} [properties.returnShipping] Specifies the return carrier
+ * and customer's account with the carrier.
+ * @property {string} [properties.returnShipping.carrierName] The carrier's
+ * name.
+ * @property {string} [properties.returnShipping.carrierAccountNumber] The
+ * customer's account number with the carrier.
+ * @property {object} [properties.shippingInformation] Contains information
+ * about the Microsoft datacenter to which the drives should be shipped.
+ * @property {string} [properties.shippingInformation.recipientName] The name
+ * of the recipient who will receive the hard drives when they are returned.
+ * @property {string} [properties.shippingInformation.streetAddress1] The first
+ * line of the street address to use when returning the drives.
+ * @property {string} [properties.shippingInformation.streetAddress2] The
+ * second line of the street address to use when returning the drives.
+ * @property {string} [properties.shippingInformation.city] The city name to
+ * use when returning the drives.
+ * @property {string} [properties.shippingInformation.stateOrProvince] The
+ * state or province to use when returning the drives.
+ * @property {string} [properties.shippingInformation.postalCode] The postal
+ * code to use when returning the drives.
+ * @property {string} [properties.shippingInformation.countryOrRegion] The
+ * country or region to use when returning the drives.
+ * @property {string} [properties.shippingInformation.phone] Phone number of
+ * the recipient of the returned drives.
+ * @property {object} [properties.deliveryPackage] Contains information about
+ * the package being shipped by the customer to the Microsoft data center.
+ * @property {string} [properties.deliveryPackage.carrierName] The name of the
+ * carrier that is used to ship the import or export drives.
+ * @property {string} [properties.deliveryPackage.trackingNumber] The tracking
+ * number of the package.
+ * @property {number} [properties.deliveryPackage.driveCount] The number of
+ * drives included in the package.
+ * @property {string} [properties.deliveryPackage.shipDate] The date when the
+ * package is shipped.
+ * @property {object} [properties.returnPackage] Contains information about the
+ * package being shipped from the Microsoft data center to the customer to
+ * return the drives. The format is the same as the deliveryPackage property
+ * above. This property is not included if the drives have not yet been
+ * returned.
+ * @property {string} [properties.returnPackage.carrierName] The name of the
+ * carrier that is used to ship the import or export drives.
+ * @property {string} [properties.returnPackage.trackingNumber] The tracking
+ * number of the package.
+ * @property {number} [properties.returnPackage.driveCount] The number of
+ * drives included in the package.
+ * @property {string} [properties.returnPackage.shipDate] The date when the
+ * package is shipped.
+ * @property {string} [properties.diagnosticsPath] The virtual blob directory
+ * to which the copy logs and backups of drive manifest files (if enabled) will
+ * be stored.
+ * @property {string} [properties.logLevel] Default value is Error. Indicates
+ * whether error logging or verbose logging will be enabled.
+ * @property {boolean} [properties.backupDriveManifest] Default value is false.
+ * Indicates whether the manifest files on the drives should be copied to block
+ * blobs.
+ * @property {string} [properties.state] Current state of the job.
+ * @property {boolean} [properties.cancelRequested] Indicates whether a request
+ * has been submitted to cancel the job.
+ * @property {number} [properties.percentComplete] Overall percentage completed
+ * for the job.
+ * @property {string} [properties.incompleteBlobListUri] A blob path that
+ * points to a block blob containing a list of blob names that were not
+ * exported due to insufficient drive space. If all blobs were exported
+ * successfully, then this element is not included in the response.
+ * @property {array} [properties.driveList] List of up to ten drives that
+ * comprise the job. The drive list is a required element for an import job; it
+ * is not specified for export jobs.
+ * @property {object} [properties.exportProperty] A property containing
+ * information about the blobs to be exported for an export job. This property
+ * is included for export jobs only.
+ * @property {array} [properties.exportProperty.blobPath] A collection of
+ * blob-path strings.
+ * @property {array} [properties.exportProperty.blobPathPrefix] A collection of
+ * blob-prefix strings.
+ * @property {string} [properties.exportProperty.blobListblobPath] The relative
+ * URI to the block blob that contains the list of blob paths or blob path
+ * prefixes as defined above, beginning with the container name. If the blob is
+ * in root container, the URI must begin with $root.
+ * @property {string} [properties.provisioningState] Specifies the provisioning
+ * state of the job.
+ */
+export interface PutJobParameters {
+  location?: string;
+  tags?: any;
+  properties?: JobDetails;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateJobParameters class.
+ * @constructor
+ * Update Job parameters
+ *
+ * @property {object} [tags] Specifies the tags that will be assigned to the
+ * job
+ * @property {boolean} [cancelRequested] If specified, the value must be true.
+ * The service will attempt to cancel the job.
+ * @property {string} [state] If specified, the value must be Shipping, which
+ * tells the Import/Export service that the package for the job has been
+ * shipped. The ReturnAddress and DeliveryPackage properties must have been set
+ * either in this request or in a previous request, otherwise the request will
+ * fail.
+ * @property {object} [returnAddress] Specifies the return address information
+ * for the job.
+ * @property {string} [returnAddress.recipientName] The name of the recipient
+ * who will receive the hard drives when they are returned.
+ * @property {string} [returnAddress.streetAddress1] The first line of the
+ * street address to use when returning the drives.
+ * @property {string} [returnAddress.streetAddress2] The second line of the
+ * street address to use when returning the drives.
+ * @property {string} [returnAddress.city] The city name to use when returning
+ * the drives.
+ * @property {string} [returnAddress.stateOrProvince] The state or province to
+ * use when returning the drives.
+ * @property {string} [returnAddress.postalCode] The postal code to use when
+ * returning the drives.
+ * @property {string} [returnAddress.countryOrRegion] The country or region to
+ * use when returning the drives.
+ * @property {string} [returnAddress.phone] Phone number of the recipient of
+ * the returned drives.
+ * @property {string} [returnAddress.email] Email address of the recipient of
+ * the returned drives.
+ * @property {object} [returnShipping] Specifies the return carrier and
+ * customer's account with the carrier.
+ * @property {string} [returnShipping.carrierName] The carrier's name.
+ * @property {string} [returnShipping.carrierAccountNumber] The customer's
+ * account number with the carrier.
+ * @property {object} [deliveryPackage] Contains information about the package
+ * being shipped by the customer to the Microsoft data center.
+ * @property {string} [deliveryPackage.carrierName] The name of the carrier
+ * that is used to ship the import or export drives.
+ * @property {string} [deliveryPackage.trackingNumber] The tracking number of
+ * the package.
+ * @property {number} [deliveryPackage.driveCount] The number of drives
+ * included in the package.
+ * @property {string} [deliveryPackage.shipDate] The date when the package is
+ * shipped.
+ * @property {string} [logLevel] Indicates whether error logging or verbose
+ * logging is enabled.
+ * @property {boolean} [backupDriveManifest] Indicates whether the manifest
+ * files on the drives should be copied to block blobs.
+ * @property {array} [driveList] List of drives that comprise the job.
+ */
+export interface UpdateJobParameters {
+  tags?: any;
+  cancelRequested?: boolean;
+  state?: string;
+  returnAddress?: ReturnAddress;
+  returnShipping?: ReturnShipping;
+  deliveryPackage?: PackageInfomation;
+  logLevel?: string;
+  backupDriveManifest?: boolean;
+  driveList?: DriveStatus[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobResponse class.
+ * @constructor
+ * Contains the job information.
+ *
+ * @property {string} [id] Specifies the resource identifier of the job.
+ * @property {string} [name] Specifies the name of the job.
+ * @property {string} [type] Specifies the type of the job resource.
+ * @property {string} [location] Specifies the Azure location where the job is
+ * created.
+ * @property {object} [tags] Specifies the tags that are assigned to the job.
+ * @property {object} [properties] Specifies the job properties
+ * @property {string} [properties.storageAccountId] The resource identifier of
+ * the storage account where data will be imported to or exported from.
+ * @property {string} [properties.jobType] The type of job
+ * @property {object} [properties.returnAddress] Specifies the return address
+ * information for the job.
+ * @property {string} [properties.returnAddress.recipientName] The name of the
+ * recipient who will receive the hard drives when they are returned.
+ * @property {string} [properties.returnAddress.streetAddress1] The first line
+ * of the street address to use when returning the drives.
+ * @property {string} [properties.returnAddress.streetAddress2] The second line
+ * of the street address to use when returning the drives.
+ * @property {string} [properties.returnAddress.city] The city name to use when
+ * returning the drives.
+ * @property {string} [properties.returnAddress.stateOrProvince] The state or
+ * province to use when returning the drives.
+ * @property {string} [properties.returnAddress.postalCode] The postal code to
+ * use when returning the drives.
+ * @property {string} [properties.returnAddress.countryOrRegion] The country or
+ * region to use when returning the drives.
+ * @property {string} [properties.returnAddress.phone] Phone number of the
+ * recipient of the returned drives.
+ * @property {string} [properties.returnAddress.email] Email address of the
+ * recipient of the returned drives.
+ * @property {object} [properties.returnShipping] Specifies the return carrier
+ * and customer's account with the carrier.
+ * @property {string} [properties.returnShipping.carrierName] The carrier's
+ * name.
+ * @property {string} [properties.returnShipping.carrierAccountNumber] The
+ * customer's account number with the carrier.
+ * @property {object} [properties.shippingInformation] Contains information
+ * about the Microsoft datacenter to which the drives should be shipped.
+ * @property {string} [properties.shippingInformation.recipientName] The name
+ * of the recipient who will receive the hard drives when they are returned.
+ * @property {string} [properties.shippingInformation.streetAddress1] The first
+ * line of the street address to use when returning the drives.
+ * @property {string} [properties.shippingInformation.streetAddress2] The
+ * second line of the street address to use when returning the drives.
+ * @property {string} [properties.shippingInformation.city] The city name to
+ * use when returning the drives.
+ * @property {string} [properties.shippingInformation.stateOrProvince] The
+ * state or province to use when returning the drives.
+ * @property {string} [properties.shippingInformation.postalCode] The postal
+ * code to use when returning the drives.
+ * @property {string} [properties.shippingInformation.countryOrRegion] The
+ * country or region to use when returning the drives.
+ * @property {string} [properties.shippingInformation.phone] Phone number of
+ * the recipient of the returned drives.
+ * @property {object} [properties.deliveryPackage] Contains information about
+ * the package being shipped by the customer to the Microsoft data center.
+ * @property {string} [properties.deliveryPackage.carrierName] The name of the
+ * carrier that is used to ship the import or export drives.
+ * @property {string} [properties.deliveryPackage.trackingNumber] The tracking
+ * number of the package.
+ * @property {number} [properties.deliveryPackage.driveCount] The number of
+ * drives included in the package.
+ * @property {string} [properties.deliveryPackage.shipDate] The date when the
+ * package is shipped.
+ * @property {object} [properties.returnPackage] Contains information about the
+ * package being shipped from the Microsoft data center to the customer to
+ * return the drives. The format is the same as the deliveryPackage property
+ * above. This property is not included if the drives have not yet been
+ * returned.
+ * @property {string} [properties.returnPackage.carrierName] The name of the
+ * carrier that is used to ship the import or export drives.
+ * @property {string} [properties.returnPackage.trackingNumber] The tracking
+ * number of the package.
+ * @property {number} [properties.returnPackage.driveCount] The number of
+ * drives included in the package.
+ * @property {string} [properties.returnPackage.shipDate] The date when the
+ * package is shipped.
+ * @property {string} [properties.diagnosticsPath] The virtual blob directory
+ * to which the copy logs and backups of drive manifest files (if enabled) will
+ * be stored.
+ * @property {string} [properties.logLevel] Default value is Error. Indicates
+ * whether error logging or verbose logging will be enabled.
+ * @property {boolean} [properties.backupDriveManifest] Default value is false.
+ * Indicates whether the manifest files on the drives should be copied to block
+ * blobs.
+ * @property {string} [properties.state] Current state of the job.
+ * @property {boolean} [properties.cancelRequested] Indicates whether a request
+ * has been submitted to cancel the job.
+ * @property {number} [properties.percentComplete] Overall percentage completed
+ * for the job.
+ * @property {string} [properties.incompleteBlobListUri] A blob path that
+ * points to a block blob containing a list of blob names that were not
+ * exported due to insufficient drive space. If all blobs were exported
+ * successfully, then this element is not included in the response.
+ * @property {array} [properties.driveList] List of up to ten drives that
+ * comprise the job. The drive list is a required element for an import job; it
+ * is not specified for export jobs.
+ * @property {object} [properties.exportProperty] A property containing
+ * information about the blobs to be exported for an export job. This property
+ * is included for export jobs only.
+ * @property {array} [properties.exportProperty.blobPath] A collection of
+ * blob-path strings.
+ * @property {array} [properties.exportProperty.blobPathPrefix] A collection of
+ * blob-prefix strings.
+ * @property {string} [properties.exportProperty.blobListblobPath] The relative
+ * URI to the block blob that contains the list of blob paths or blob path
+ * prefixes as defined above, beginning with the container name. If the blob is
+ * in root container, the URI must begin with $root.
+ * @property {string} [properties.provisioningState] Specifies the provisioning
+ * state of the job.
+ */
+export interface JobResponse extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
-  location: string;
+  location?: string;
   tags?: any;
+  properties?: JobDetails;
 }
 
 /**
@@ -43,13 +669,13 @@ export interface Resource {
  * @constructor
  * Describes a supported operation by the Storage Import/Export job API.
  *
- * @member {string} name Name of the operation.
- * @member {string} [provider] The resource provider name to which the
+ * @property {string} name Name of the operation.
+ * @property {string} [provider] The resource provider name to which the
  * operation belongs.
- * @member {string} [resource] The name of the resource to which the operation
- * belongs.
- * @member {string} [operation] The display name of the operation.
- * @member {string} [description] Short description of the operation.
+ * @property {string} [resource] The name of the resource to which the
+ * operation belongs.
+ * @property {string} [operation] The display name of the operation.
+ * @property {string} [description] Short description of the operation.
  */
 export interface Operation {
   name: string;
@@ -61,126 +687,32 @@ export interface Operation {
 
 /**
  * @class
- * Initializes a new instance of the SupportedOperationsListResult class.
- * @constructor
- * List of supported operations by the import/export resource provider.
- *
- * @member {array} [value] List of supported operations by the import/export
- * resource provider.
- */
-export interface SupportedOperationsListResult {
-  value?: Operation[];
-}
-
-/**
- * @class
- * Initializes a new instance of the Drive class.
- * @constructor
- * Provides information about the drive that contains information about the
- * import/export jobs.
- *
- * @member {string} driveId The drive's hardware serial number, without spaces.
- * @member {string} bitLockerKey The BitLocker key used to encrypt the drive.
- * @member {string} manifestFile The relative path of the manifest file on the
- * drive.
- * @member {string} manifestHash The Base16-encoded MD5 hash of the manifest
- * file on the drive.
- */
-export interface Drive {
-  driveId: string;
-  bitLockerKey: string;
-  manifestFile: string;
-  manifestHash: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DriveStatus class.
- * @constructor
- * Provides information about the drive's status.
- *
- * @member {string} [state] The drive's current state. Possible values include:
- * 'Specified', 'Received', 'NeverReceived', 'Transferring', 'Completed',
- * 'CompletedMoreInfo', 'ShippedBack'
- * @member {string} [copyStatus] Detailed status about the data transfer
- * process. This field is not returned in the response until the drive is in
- * the Transferring state.
- * @member {number} [percentComplete] Percentage completed for the drive.
- * @member {string} [verboseLogUri] A URI that points to the blob containing
- * the verbose log for the data transfer operation.
- * @member {string} [errorLogUri] A URI that points to the blob containing the
- * error log for the data transfer operation.
- * @member {string} [manifestUri] A URI that points to the blob containing the
- * drive manifest file.
- */
-export interface DriveStatus extends Drive {
-  state?: string;
-  copyStatus?: string;
-  percentComplete?: number;
-  verboseLogUri?: string;
-  errorLogUri?: string;
-  manifestUri?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the BitLockerKeysListResult class.
- * @constructor
- * List of BitLocker keys for the specified import/export job.
- *
- * @member {array} [value] List of BitLocker keys for the specified
- * import/export job.
- */
-export interface BitLockerKeysListResult {
-  value?: DriveStatus[];
-}
-
-/**
- * @class
- * Initializes a new instance of the MoveJobParameters class.
- * @constructor
- * Defines the parameters that need to be provided for moving an import/export
- * job from one reesource group to another.
- *
- * @member {string} targetResourceGroup Specifies the target resource group ID
- * to move the jobs to.
- * @member {array} resources Specifies the list of jobs to move to the target
- * resource group. The jobs must be from the current resource group from the
- * request URL.
- */
-export interface MoveJobParameters {
-  targetResourceGroup: string;
-  resources: string[];
-}
-
-/**
- * @class
  * Initializes a new instance of the Location class.
  * @constructor
  * Provides information about an Azure data center location.
  *
- * @member {string} [id] Specifies the resource identifier of the location.
- * @member {string} [name] Specifies the name of the location. Use List
+ * @property {string} [id] Specifies the resource identifier of the location.
+ * @property {string} [name] Specifies the name of the location. Use List
  * Locations to get all supported locations.
- * @member {string} [type] Specifies the resource type of the location.
- * @member {string} [recipientName] The recipient name to use when shipping the
- * drives to the Azure data center.
- * @member {string} [streetAddress1] The first line of the street address to
+ * @property {string} [type] Specifies the type of the location.
+ * @property {string} [recipientName] The recipient name to use when shipping
+ * the drives to the Azure data center.
+ * @property {string} [streetAddress1] The first line of the street address to
  * use when shipping the drives to the Azure data center.
- * @member {string} [streetAddress2] The second line of the street address to
+ * @property {string} [streetAddress2] The second line of the street address to
  * use when shipping the drives to the Azure data center.
- * @member {string} [city] The city name to use when shipping the drives to the
- * Azure data center.
- * @member {string} [stateOrProvince] The state or province to use when
+ * @property {string} [city] The city name to use when shipping the drives to
+ * the Azure data center.
+ * @property {string} [stateOrProvince] The state or province to use when
  * shipping the drives to the Azure data center.
- * @member {string} [postalCode] The postal code to use when shipping the
+ * @property {string} [postalCode] The postal code to use when shipping the
  * drives to the Azure data center.
- * @member {string} [countryOrRegion] The country or region to use when
+ * @property {string} [countryOrRegion] The country or region to use when
  * shipping the drives to the Azure data center.
- * @member {string} [phone] The phone number for the Azure data center.
- * @member {array} [supportedCarriers] A list of carriers that are supported at
- * this location.
- * @member {array} [alternateLocations] A list of location IDs that should be
+ * @property {string} [phone] The phone number for the Azure data center.
+ * @property {array} [supportedCarriers] A list of carriers that are supported
+ * at this location.
+ * @property {array} [alternateLocations] A list of location IDs that should be
  * used to ship shipping drives to for jobs created against the current
  * location. If the current location is active, it will be part of the list. If
  * it is temporarily closed due to maintenance, this list may contain other
@@ -204,354 +736,57 @@ export interface Location {
 
 /**
  * @class
- * Initializes a new instance of the LocationsListResult class.
+ * Initializes a new instance of the DriveBitLockerKey class.
  * @constructor
- * List of locations.
+ * BitLocker recovery key or password to the specified drive
  *
- * @member {array} value List of locations.
+ * @property {string} [bitLockerKey] BitLocker recovery key or password
+ * @property {string} [driveId] Drive ID
  */
-export interface LocationsListResult {
-  value: Location[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ErrorBase class.
- * @constructor
- * Describes the common properties of the Error object
- *
- * @member {string} [code] Provides information about the error code.
- * @member {string} [message] Provides information about the error message.
- * @member {string} [target] Provides information about the error target.
- */
-export interface ErrorBase {
-  code?: string;
-  message?: string;
-  target?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ErrorInfo class.
- * @constructor
- * Describes the error information.
- *
- * @member {array} [details] Describes the error details if present.
- */
-export interface ErrorInfo extends ErrorBase {
-  details?: ErrorBase[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ErrorResponse class.
- * @constructor
- * Describes the model for Error Response.
- *
- * @member {object} [error] Describes the error information
- * @member {array} [error.details] Describes the error details if present.
- */
-export interface ErrorResponse {
-  error?: ErrorInfo;
-}
-
-/**
- * @class
- * Initializes a new instance of the ReturnAddress class.
- * @constructor
- * Specifies the return address information for the job.
- *
- * @member {string} recipientName The name of the recipient who will receive
- * the hard drives when they are returned.
- * @member {string} streetAddress1 The first line of the street address to use
- * when returning the drives.
- * @member {string} [streetAddress2] The second line of the street address to
- * use when returning the drives.
- * @member {string} city The city name to use when returning the drives.
- * @member {string} [stateOrProvince] The state or province to use when
- * returning the drives.
- * @member {string} postalCode The postal code to use when returning the
- * drives.
- * @member {string} countryOrRegion The country or region to use when returning
- * the drives.
- * @member {string} phone Phone number of the recipient of the returned drives.
- * @member {string} email Email address of the recipient of the returned
- * drives.
- */
-export interface ReturnAddress {
-  recipientName: string;
-  streetAddress1: string;
-  streetAddress2?: string;
-  city: string;
-  stateOrProvince?: string;
-  postalCode: string;
-  countryOrRegion: string;
-  phone: string;
-  email: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ReturnShipping class.
- * @constructor
- * Specifies the return carrier and customer's account with the carrier.
- *
- * @member {string} carrierName The carrier's name.
- * @member {string} carrierAccountNumber The customer's account number with the
- * carrier.
- */
-export interface ReturnShipping {
-  carrierName: string;
-  carrierAccountNumber: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the PackageInfomation class.
- * @constructor
- * Provides information about the package being shipped by the customer to the
- * Microsoft data center.
- *
- * @member {string} carrierName The name of the carrier that is used to ship
- * the import or export drives.
- * @member {string} trackingNumber The tracking number of the package.
- * @member {number} driveCount The number of drives included in the package.
- * @member {string} shipDate The date the package is shipped.
- */
-export interface PackageInfomation {
-  carrierName: string;
-  trackingNumber: string;
-  driveCount: number;
-  shipDate: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the MutableJob class.
- * @constructor
- * Describes the updatable properties of the job
- *
- * @member {object} [tags]
- * @member {boolean} [cancelRequested] If specified, the value must be true.
- * The service will attempt to cancel the job.
- * @member {string} [state] If specified, the value must be Shipping, which
- * tells the Import/Export service that the package for the job has been
- * shipped. The ReturnAddress and DeliveryPackage properties must have been set
- * either in this request or in a previous request, otherwise the request will
- * fail. Possible values include: 'Shipping'
- * @member {object} [returnAddress] Specifies the return address information
- * for the job.
- * @member {string} [returnAddress.recipientName] The name of the recipient who
- * will receive the hard drives when they are returned.
- * @member {string} [returnAddress.streetAddress1] The first line of the street
- * address to use when returning the drives.
- * @member {string} [returnAddress.streetAddress2] The second line of the
- * street address to use when returning the drives.
- * @member {string} [returnAddress.city] The city name to use when returning
- * the drives.
- * @member {string} [returnAddress.stateOrProvince] The state or province to
- * use when returning the drives.
- * @member {string} [returnAddress.postalCode] The postal code to use when
- * returning the drives.
- * @member {string} [returnAddress.countryOrRegion] The country or region to
- * use when returning the drives.
- * @member {string} [returnAddress.phone] Phone number of the recipient of the
- * returned drives.
- * @member {string} [returnAddress.email] Email address of the recipient of the
- * returned drives.
- * @member {object} [returnShipping] Specifies the return carrier and
- * customer's account with the carrier.
- * @member {string} [returnShipping.carrierName] The carrier's name.
- * @member {string} [returnShipping.carrierAccountNumber] The customer's
- * account number with the carrier.
- * @member {object} [deliveryPackage] Contains information about the package
- * being shipped by the customer to the Microsoft data center.
- * @member {string} [deliveryPackage.carrierName] The name of the carrier that
- * is used to ship the import or export drives.
- * @member {string} [deliveryPackage.trackingNumber] The tracking number of the
- * package.
- * @member {number} [deliveryPackage.driveCount] The number of drives included
- * in the package.
- * @member {string} [deliveryPackage.shipDate] The date the package is shipped.
- * @member {string} [logLevel] Indicates whether error logging or verbose
- * logging is enabled.
- * @member {boolean} [backupDriveManifest] Indicates whether the manifest files
- * on the drives should be copied to block blobs.
- */
-export interface MutableJob {
-  tags?: any;
-  cancelRequested?: boolean;
-  state?: string;
-  returnAddress?: ReturnAddress;
-  returnShipping?: ReturnShipping;
-  deliveryPackage?: PackageInfomation;
-  logLevel?: string;
-  backupDriveManifest?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the ShippingInformation class.
- * @constructor
- * Provides information about the Microsoft datacenter to which the drives
- * should be shipped.
- *
- * @member {string} name The name of the recipient at the datacenter.
- * @member {string} address The address of the datacenter.
- */
-export interface ShippingInformation {
-  name: string;
-  address: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ExportModel class.
- * @constructor
- * A property containing information about the blobs to be exported for an
- * export job. This property is required for export jobs, but must not be
- * specified for import jobs.
- *
- * @member {array} [blobPath] A collection of blob-path strings.
- * @member {array} [blobPathPrefix] A collection of blob-prefix strings.
- * @member {string} [blobListblobPath] The relative URI to the block blob that
- * contains the list of blob paths or blob path prefixes as defined above,
- * beginning with the container name. If the blob is in the root container, the
- * URI must begin with $root.
- */
-export interface ExportModel {
-  blobPath?: string[];
-  blobPathPrefix?: string[];
-  blobListblobPath?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Job class.
- * @constructor
- * Describes an import/export job.
- *
- * @member {string} storageAccountId The resource identifier of the storage
- * account where data will be imported to or exported from.
- * @member {string} [containerSas] The container shared access signature (SAS)
- * to be used to import or export data to or from the storage account.
- * @member {string} jobType The type of job: Import or Export. Possible values
- * include: 'Import', 'Export'
- * @member {object} returnAddress Specifies the return address information for
- * the job.
- * @member {string} [returnAddress.recipientName] The name of the recipient who
- * will receive the hard drives when they are returned.
- * @member {string} [returnAddress.streetAddress1] The first line of the street
- * address to use when returning the drives.
- * @member {string} [returnAddress.streetAddress2] The second line of the
- * street address to use when returning the drives.
- * @member {string} [returnAddress.city] The city name to use when returning
- * the drives.
- * @member {string} [returnAddress.stateOrProvince] The state or province to
- * use when returning the drives.
- * @member {string} [returnAddress.postalCode] The postal code to use when
- * returning the drives.
- * @member {string} [returnAddress.countryOrRegion] The country or region to
- * use when returning the drives.
- * @member {string} [returnAddress.phone] Phone number of the recipient of the
- * returned drives.
- * @member {string} [returnAddress.email] Email address of the recipient of the
- * returned drives.
- * @member {object} returnShipping Specifies the return carrier and customer's
- * account with the carrier.
- * @member {string} [returnShipping.carrierName] The carrier's name.
- * @member {string} [returnShipping.carrierAccountNumber] The customer's
- * account number with the carrier.
- * @member {object} [shippingInformation] Contains information about the
- * Microsoft datacenter to which the drives should be shipped.
- * @member {string} [shippingInformation.name] The name of the recipient at the
- * datacenter.
- * @member {string} [shippingInformation.address] The address of the
- * datacenter.
- * @member {object} [deliveryPackage] Contains information about the package
- * being shipped by the customer to the Microsoft data center.
- * @member {string} [deliveryPackage.carrierName] The name of the carrier that
- * is used to ship the import or export drives.
- * @member {string} [deliveryPackage.trackingNumber] The tracking number of the
- * package.
- * @member {number} [deliveryPackage.driveCount] The number of drives included
- * in the package.
- * @member {string} [deliveryPackage.shipDate] The date the package is shipped.
- * @member {object} [returnPackage] Contains information about the package
- * being shipped from the Microsoft data center to the customer to return the
- * drives. The format is the same as the deliveryPackage property above. This
- * property is not included if the drives have not yet been returned.
- * @member {string} [returnPackage.carrierName] The name of the carrier that is
- * used to ship the import or export drives.
- * @member {string} [returnPackage.trackingNumber] The tracking number of the
- * package.
- * @member {number} [returnPackage.driveCount] The number of drives included in
- * the package.
- * @member {string} [returnPackage.shipDate] The date the package is shipped.
- * @member {string} diagnosticsPath The virtual blob directory to which the
- * copy logs and backups of drive manifest files (if enabled) will be stored.
- * @member {string} [logLevel] Default value is Error. Indicates whether error
- * logging or verbose logging will be enabled. Possible values include:
- * 'Error', 'Verbose'. Default value: 'Error' .
- * @member {boolean} [backupDriveManifest] Default value is false. Indicates
- * whether the manifest files on the drives should be copied to block blobs.
- * Default value: false .
- * @member {string} [state] Current state of the job. Possible values include:
- * 'Creating', 'Shipping', 'Received', 'Transferring', 'Packaging', 'Closed',
- * 'Completed'
- * @member {boolean} [cancelRequested] Indicates whether a request has been
- * submitted to cancel the job.
- * @member {number} [percentComplete] Overall percentage completed for the job.
- * @member {string} [incompleteBlobListUri] A blob path that points to a block
- * blob containing a list of blob names that were not exported due to
- * insufficient drive space. If all blobs were exported successfully, then this
- * element is not included in the response.
- * @member {array} [driveList] List of up to ten drives that comprise the job.
- * The drive list is a required element for an import job; it is not specified
- * for export jobs.
- * @member {object} [exportProperty] A property containing information about
- * the blobs to be exported for an export job. This property is included for
- * export jobs only.
- * @member {array} [exportProperty.blobPath] A collection of blob-path strings.
- * @member {array} [exportProperty.blobPathPrefix] A collection of blob-prefix
- * strings.
- * @member {string} [exportProperty.blobListblobPath] The relative URI to the
- * block blob that contains the list of blob paths or blob path prefixes as
- * defined above, beginning with the container name. If the blob is in the root
- * container, the URI must begin with $root.
- * @member {string} [provisioningState] Specifies the provisioning state of the
- * job.
- */
-export interface Job extends Resource {
-  storageAccountId: string;
-  containerSas?: string;
-  jobType: string;
-  returnAddress: ReturnAddress;
-  returnShipping: ReturnShipping;
-  readonly shippingInformation?: ShippingInformation;
-  deliveryPackage?: PackageInfomation;
-  readonly returnPackage?: PackageInfomation;
-  diagnosticsPath: string;
-  logLevel?: string;
-  backupDriveManifest?: boolean;
-  readonly state?: string;
-  cancelRequested?: boolean;
-  readonly percentComplete?: number;
-  readonly incompleteBlobListUri?: string;
-  driveList?: DriveStatus[];
-  exportProperty?: ExportModel;
-  readonly provisioningState?: string;
+export interface DriveBitLockerKey {
+  bitLockerKey?: string;
+  driveId?: string;
 }
 
 
 /**
  * @class
- * Initializes a new instance of the JobListResult class.
+ * Initializes a new instance of the LocationsResponse class.
  * @constructor
- * List of import/export jobs.
+ * Locations response
  *
- * @member {string} [nextLink]
  */
-export interface JobListResult extends Array<Job> {
+export interface LocationsResponse extends Array<Location> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListJobsResponse class.
+ * @constructor
+ * List jobs response
+ *
+ * @property {string} [nextLink] link to next batch of jobs
+ */
+export interface ListJobsResponse extends Array<JobResponse> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GetBitLockerKeysResponse class.
+ * @constructor
+ * GetBitLockerKeys response
+ *
+ */
+export interface GetBitLockerKeysResponse extends Array<DriveBitLockerKey> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListOperationsResponse class.
+ * @constructor
+ * List operations response
+ *
+ */
+export interface ListOperationsResponse extends Array<Operation> {
 }

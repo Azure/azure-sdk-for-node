@@ -22,10 +22,10 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * The object that represents the operation.
  *
- * @member {string} [provider] Service provider: Microsoft.PowerBIDedicated.
- * @member {string} [resource] Resource on which the operation is performed:
+ * @property {string} [provider] Service provider: Microsoft.PowerBIDedicated.
+ * @property {string} [resource] Resource on which the operation is performed:
  * capacity, etc.
- * @member {string} [operation] Operation type: create, update, delete, etc.
+ * @property {string} [operation] Operation type: create, update, delete, etc.
  */
 export interface OperationDisplay {
   readonly provider?: string;
@@ -39,14 +39,14 @@ export interface OperationDisplay {
  * @constructor
  * Capacities REST API operation.
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}.
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Service provider:
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}.
+ * @property {object} [display] The object that represents the operation.
+ * @property {string} [display.provider] Service provider:
  * Microsoft.PowerBIDedicated.
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [display.resource] Resource on which the operation is
  * performed: capacity, etc.
- * @member {string} [display.operation] Operation type: create, update, delete,
- * etc.
+ * @property {string} [display.operation] Operation type: create, update,
+ * delete, etc.
  */
 export interface Operation {
   readonly name?: string;
@@ -60,9 +60,9 @@ export interface Operation {
  * Represents the SKU name and Azure pricing tier for PowerBI Dedicated
  * resource.
  *
- * @member {string} name Name of the SKU level.
- * @member {string} [tier] The name of the Azure pricing tier to which the SKU
- * applies. Possible values include: 'PBIE_Azure'
+ * @property {string} name Name of the SKU level.
+ * @property {string} [tier] The name of the Azure pricing tier to which the
+ * SKU applies. Possible values include: 'PBIE_Azure'
  */
 export interface ResourceSku {
   name: string;
@@ -75,17 +75,17 @@ export interface ResourceSku {
  * @constructor
  * Represents an instance of an PowerBI Dedicated resource.
  *
- * @member {string} [id] An identifier that represents the PowerBI Dedicated
+ * @property {string} [id] An identifier that represents the PowerBI Dedicated
  * resource.
- * @member {string} [name] The name of the PowerBI Dedicated resource.
- * @member {string} [type] The type of the PowerBI Dedicated resource.
- * @member {string} location Location of the PowerBI Dedicated resource.
- * @member {object} sku The SKU of the PowerBI Dedicated resource.
- * @member {string} [sku.name] Name of the SKU level.
- * @member {string} [sku.tier] The name of the Azure pricing tier to which the
- * SKU applies. Possible values include: 'PBIE_Azure'
- * @member {object} [tags] Key-value pairs of additional resource provisioning
- * properties.
+ * @property {string} [name] The name of the PowerBI Dedicated resource.
+ * @property {string} [type] The type of the PowerBI Dedicated resource.
+ * @property {string} location Location of the PowerBI Dedicated resource.
+ * @property {object} sku The SKU of the PowerBI Dedicated resource.
+ * @property {string} [sku.name] Name of the SKU level.
+ * @property {string} [sku.tier] The name of the Azure pricing tier to which
+ * the SKU applies. Possible values include: 'PBIE_Azure'
+ * @property {object} [tags] Key-value pairs of additional resource
+ * provisioning properties.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -102,20 +102,20 @@ export interface Resource extends BaseResource {
  * @constructor
  * Represents an instance of a Dedicated Capacity resource.
  *
- * @member {object} [administration] A collection of Dedicated capacity
+ * @property {object} [administration] A collection of Dedicated capacity
  * administrators
- * @member {array} [administration.members] An array of administrator user
+ * @property {array} [administration.members] An array of administrator user
  * identities.
- * @member {string} [state] The current state of PowerBI Dedicated resource.
+ * @property {string} [state] The current state of PowerBI Dedicated resource.
  * The state is to indicate more states outside of resource provisioning.
  * Possible values include: 'Deleting', 'Succeeded', 'Failed', 'Paused',
  * 'Suspended', 'Provisioning', 'Updating', 'Suspending', 'Pausing',
  * 'Resuming', 'Preparing', 'Scaling'
- * @member {string} [provisioningState] The current deployment state of PowerBI
- * Dedicatedresource. The provisioningState is to indicate states for resource
- * provisioning. Possible values include: 'Deleting', 'Succeeded', 'Failed',
- * 'Paused', 'Suspended', 'Provisioning', 'Updating', 'Suspending', 'Pausing',
- * 'Resuming', 'Preparing', 'Scaling'
+ * @property {string} [provisioningState] The current deployment state of
+ * PowerBI Dedicatedresource. The provisioningState is to indicate states for
+ * resource provisioning. Possible values include: 'Deleting', 'Succeeded',
+ * 'Failed', 'Paused', 'Suspended', 'Provisioning', 'Updating', 'Suspending',
+ * 'Pausing', 'Resuming', 'Preparing', 'Scaling'
  */
 export interface DedicatedCapacity extends Resource {
   administration?: DedicatedCapacityAdministrators;
@@ -129,7 +129,7 @@ export interface DedicatedCapacity extends Resource {
  * @constructor
  * An array of administrator user identities
  *
- * @member {array} [members] An array of administrator user identities.
+ * @property {array} [members] An array of administrator user identities.
  */
 export interface DedicatedCapacityAdministrators {
   members?: string[];
@@ -141,15 +141,15 @@ export interface DedicatedCapacityAdministrators {
  * @constructor
  * Provision request specification
  *
- * @member {object} [sku] The SKU of the Dedicated capacity resource.
- * @member {string} [sku.name] Name of the SKU level.
- * @member {string} [sku.tier] The name of the Azure pricing tier to which the
- * SKU applies. Possible values include: 'PBIE_Azure'
- * @member {object} [tags] Key-value pairs of additional provisioning
+ * @property {object} [sku] The SKU of the Dedicated capacity resource.
+ * @property {string} [sku.name] Name of the SKU level.
+ * @property {string} [sku.tier] The name of the Azure pricing tier to which
+ * the SKU applies. Possible values include: 'PBIE_Azure'
+ * @property {object} [tags] Key-value pairs of additional provisioning
  * properties.
- * @member {object} [administration] A collection of Dedicated capacity
+ * @property {object} [administration] A collection of Dedicated capacity
  * administrators
- * @member {array} [administration.members] An array of administrator user
+ * @property {array} [administration.members] An array of administrator user
  * identities.
  */
 export interface DedicatedCapacityUpdateParameters {
@@ -164,7 +164,7 @@ export interface DedicatedCapacityUpdateParameters {
  * @constructor
  * An object that represents enumerating SKUs for new resources
  *
- * @member {array} [value] The collection of available SKUs for new resources
+ * @property {array} [value] The collection of available SKUs for new resources
  */
 export interface SkuEnumerationForNewResourceResult {
   value?: ResourceSku[];
@@ -176,10 +176,10 @@ export interface SkuEnumerationForNewResourceResult {
  * @constructor
  * An object that represents SKU details for existing resources
  *
- * @member {object} [sku] The SKU in SKU details for existing resources.
- * @member {string} [sku.name] Name of the SKU level.
- * @member {string} [sku.tier] The name of the Azure pricing tier to which the
- * SKU applies. Possible values include: 'PBIE_Azure'
+ * @property {object} [sku] The SKU in SKU details for existing resources.
+ * @property {string} [sku.name] Name of the SKU level.
+ * @property {string} [sku.tier] The name of the Azure pricing tier to which
+ * the SKU applies. Possible values include: 'PBIE_Azure'
  */
 export interface SkuDetailsForExistingResource {
   sku?: ResourceSku;
@@ -191,7 +191,7 @@ export interface SkuDetailsForExistingResource {
  * @constructor
  * An object that represents enumerating SKUs for existing resources
  *
- * @member {array} [value] The collection of available SKUs for existing
+ * @property {array} [value] The collection of available SKUs for existing
  * resources
  */
 export interface SkuEnumerationForExistingResourceResult {
@@ -204,12 +204,45 @@ export interface SkuEnumerationForExistingResourceResult {
  * @constructor
  * Describes the format of Error response.
  *
- * @member {string} [code] Error code
- * @member {string} [message] Error message indicating why the operation
+ * @property {string} [code] Error code
+ * @property {string} [message] Error message indicating why the operation
  * failed.
  */
 export interface ErrorResponse {
   code?: string;
+  message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckCapacityNameAvailabilityParameters class.
+ * @constructor
+ * Details of capacity name request body.
+ *
+ * @property {string} [name] Name for checking availability.
+ * @property {string} [type] The resource type of powerbi dedicated. Default
+ * value: 'Microsoft.PowerBIDedicated/capacities' .
+ */
+export interface CheckCapacityNameAvailabilityParameters {
+  name?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckCapacityNameAvailabilityResult class.
+ * @constructor
+ * The checking result of capacity name availibility.
+ *
+ * @property {boolean} [nameAvailable] Indicator of availablity of the capacity
+ * name.
+ * @property {string} [reason] The reason of unavailability.
+ * @property {string} [message] The detailed message of the request
+ * unavailability.
+ */
+export interface CheckCapacityNameAvailabilityResult {
+  nameAvailable?: boolean;
+  reason?: string;
   message?: string;
 }
 
@@ -231,7 +264,7 @@ export interface DedicatedCapacities extends Array<DedicatedCapacity> {
  * Result listing capacities. It contains a list of operations and a URL link
  * to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {

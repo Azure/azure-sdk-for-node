@@ -22,7 +22,7 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Provider specific input for apply recovery point.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface ApplyRecoveryPointProviderSpecificInput {
   instanceType: string;
@@ -44,7 +44,7 @@ export interface A2AApplyRecoveryPointInput extends ApplyRecoveryPointProviderSp
  * @constructor
  * Provider specific input for container creation operation.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface ReplicationProviderSpecificContainerCreationInput {
   instanceType: string;
@@ -66,7 +66,7 @@ export interface A2AContainerCreationInput extends ReplicationProviderSpecificCo
  * @constructor
  * Provider specific input for pairing operations.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface ReplicationProviderSpecificContainerMappingInput {
   instanceType: string;
@@ -78,9 +78,9 @@ export interface ReplicationProviderSpecificContainerMappingInput {
  * @constructor
  * A2A container mapping input.
  *
- * @member {string} [agentAutoUpdateStatus] A value indicating whether the auto
- * update is enabled. Possible values include: 'Disabled', 'Enabled'
- * @member {string} [automationAccountArmId] The automation account arm id.
+ * @property {string} [agentAutoUpdateStatus] A value indicating whether the
+ * auto update is enabled. Possible values include: 'Disabled', 'Enabled'
+ * @property {string} [automationAccountArmId] The automation account arm id.
  */
 export interface A2AContainerMappingInput extends ReplicationProviderSpecificContainerMappingInput {
   agentAutoUpdateStatus?: string;
@@ -93,10 +93,10 @@ export interface A2AContainerMappingInput extends ReplicationProviderSpecificCon
  * @constructor
  * Azure VM disk input details.
  *
- * @member {string} [diskUri] The disk Uri.
- * @member {string} [recoveryAzureStorageAccountId] The recovery VHD storage
+ * @property {string} [diskUri] The disk Uri.
+ * @property {string} [recoveryAzureStorageAccountId] The recovery VHD storage
  * account Id.
- * @member {string} [primaryStagingAzureStorageAccountId] The primary staging
+ * @property {string} [primaryStagingAzureStorageAccountId] The primary staging
  * storage account Id.
  */
 export interface A2AVmDiskInputDetails {
@@ -111,15 +111,17 @@ export interface A2AVmDiskInputDetails {
  * @constructor
  * Azure VM managed disk input details.
  *
- * @member {string} [diskId] The disk Id.
- * @member {string} [primaryStagingAzureStorageAccountId] The primary staging
+ * @property {string} [diskId] The disk Id.
+ * @property {string} [primaryStagingAzureStorageAccountId] The primary staging
  * storage account Arm Id.
- * @member {string} [recoveryResourceGroupId] The target resource group Arm Id.
- * @member {string} [recoveryReplicaDiskAccountType] The replica disk type. Its
- * an optional value and will be same as source disk type if not user provided.
- * @member {string} [recoveryTargetDiskAccountType] The target disk type after
- * failover. Its an optional value and will be same as source disk type if not
- * user provided.
+ * @property {string} [recoveryResourceGroupId] The target resource group Arm
+ * Id.
+ * @property {string} [recoveryReplicaDiskAccountType] The replica disk type.
+ * Its an optional value and will be same as source disk type if not user
+ * provided.
+ * @property {string} [recoveryTargetDiskAccountType] The target disk type
+ * after failover. Its an optional value and will be same as source disk type
+ * if not user provided.
  */
 export interface A2AVmManagedDiskInputDetails {
   diskId?: string;
@@ -135,8 +137,8 @@ export interface A2AVmManagedDiskInputDetails {
  * @constructor
  * Disk Encryption Key Information (BitLocker Encryption Key (BEK) on Windows).
  *
- * @member {string} [secretIdentifier] The secret url / identifier.
- * @member {string} [keyVaultResourceArmId] The KeyVault resource ARM id for
+ * @property {string} [secretIdentifier] The secret url / identifier.
+ * @property {string} [keyVaultResourceArmId] The KeyVault resource ARM id for
  * secret.
  */
 export interface DiskEncryptionKeyInfo {
@@ -150,8 +152,8 @@ export interface DiskEncryptionKeyInfo {
  * @constructor
  * Key Encryption Key (KEK) information.
  *
- * @member {string} [keyIdentifier] The key url / identifier.
- * @member {string} [keyVaultResourceArmId] The KeyVault resource ARM id for
+ * @property {string} [keyIdentifier] The key url / identifier.
+ * @property {string} [keyVaultResourceArmId] The KeyVault resource ARM id for
  * key.
  */
 export interface KeyEncryptionKeyInfo {
@@ -165,17 +167,17 @@ export interface KeyEncryptionKeyInfo {
  * @constructor
  * Recovery disk encryption info (BEK and KEK).
  *
- * @member {object} [diskEncryptionKeyInfo] The recovery KeyVault reference for
- * secret.
- * @member {string} [diskEncryptionKeyInfo.secretIdentifier] The secret url /
+ * @property {object} [diskEncryptionKeyInfo] The recovery KeyVault reference
+ * for secret.
+ * @property {string} [diskEncryptionKeyInfo.secretIdentifier] The secret url /
  * identifier.
- * @member {string} [diskEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
- * resource ARM id for secret.
- * @member {object} [keyEncryptionKeyInfo] The recovery KeyVault reference for
- * key.
- * @member {string} [keyEncryptionKeyInfo.keyIdentifier] The key url /
+ * @property {string} [diskEncryptionKeyInfo.keyVaultResourceArmId] The
+ * KeyVault resource ARM id for secret.
+ * @property {object} [keyEncryptionKeyInfo] The recovery KeyVault reference
+ * for key.
+ * @property {string} [keyEncryptionKeyInfo.keyIdentifier] The key url /
  * identifier.
- * @member {string} [keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
+ * @property {string} [keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
  * resource ARM id for key.
  */
 export interface DiskEncryptionInfo {
@@ -189,7 +191,7 @@ export interface DiskEncryptionInfo {
  * @constructor
  * Enable protection provider specific input.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface EnableProtectionProviderSpecificInput {
   instanceType: string;
@@ -201,34 +203,35 @@ export interface EnableProtectionProviderSpecificInput {
  * @constructor
  * A2A enable protection input.
  *
- * @member {string} [fabricObjectId] The fabric specific object Id of the
+ * @property {string} [fabricObjectId] The fabric specific object Id of the
  * virtual machine.
- * @member {string} [recoveryContainerId] The recovery container Id.
- * @member {string} [recoveryResourceGroupId] The recovery resource group Id.
+ * @property {string} [recoveryContainerId] The recovery container Id.
+ * @property {string} [recoveryResourceGroupId] The recovery resource group Id.
  * Valid for V2 scenarios.
- * @member {string} [recoveryCloudServiceId] The recovery cloud service Id.
+ * @property {string} [recoveryCloudServiceId] The recovery cloud service Id.
  * Valid for V1 scenarios.
- * @member {string} [recoveryAvailabilitySetId] The recovery availability set
+ * @property {string} [recoveryAvailabilitySetId] The recovery availability set
  * Id.
- * @member {array} [vmDisks] The list of vm disk details.
- * @member {array} [vmManagedDisks] The list of vm managed disk details.
- * @member {string} [multiVmGroupName] The multi vm group name.
- * @member {string} [recoveryBootDiagStorageAccountId] The boot diagnostic
+ * @property {array} [vmDisks] The list of vm disk details.
+ * @property {array} [vmManagedDisks] The list of vm managed disk details.
+ * @property {string} [multiVmGroupName] The multi vm group name.
+ * @property {string} [recoveryBootDiagStorageAccountId] The boot diagnostic
  * storage account.
- * @member {object} [diskEncryptionInfo] The recovery disk encryption
+ * @property {object} [diskEncryptionInfo] The recovery disk encryption
  * information.
- * @member {object} [diskEncryptionInfo.diskEncryptionKeyInfo] The recovery
+ * @property {object} [diskEncryptionInfo.diskEncryptionKeyInfo] The recovery
  * KeyVault reference for secret.
- * @member {string} [diskEncryptionInfo.diskEncryptionKeyInfo.secretIdentifier]
- * The secret url / identifier.
- * @member {string}
+ * @property {string}
+ * [diskEncryptionInfo.diskEncryptionKeyInfo.secretIdentifier] The secret url /
+ * identifier.
+ * @property {string}
  * [diskEncryptionInfo.diskEncryptionKeyInfo.keyVaultResourceArmId] The
  * KeyVault resource ARM id for secret.
- * @member {object} [diskEncryptionInfo.keyEncryptionKeyInfo] The recovery
+ * @property {object} [diskEncryptionInfo.keyEncryptionKeyInfo] The recovery
  * KeyVault reference for key.
- * @member {string} [diskEncryptionInfo.keyEncryptionKeyInfo.keyIdentifier] The
- * key url / identifier.
- * @member {string}
+ * @property {string} [diskEncryptionInfo.keyEncryptionKeyInfo.keyIdentifier]
+ * The key url / identifier.
+ * @property {string}
  * [diskEncryptionInfo.keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
  * resource ARM id for key.
  */
@@ -251,7 +254,7 @@ export interface A2AEnableProtectionInput extends EnableProtectionProviderSpecif
  * @constructor
  * Model class for provider specific details for an event.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface EventProviderSpecificDetails {
   instanceType: string;
@@ -263,12 +266,12 @@ export interface EventProviderSpecificDetails {
  * @constructor
  * Model class for event details of a A2A event.
  *
- * @member {string} [protectedItemName] The protected item arm name.
- * @member {string} [fabricObjectId] The azure vm arm id.
- * @member {string} [fabricName] Fabric arm name.
- * @member {string} [fabricLocation] The fabric location.
- * @member {string} [remoteFabricName] Remote fabric arm name.
- * @member {string} [remoteFabricLocation] Remote fabric location.
+ * @property {string} [protectedItemName] The protected item arm name.
+ * @property {string} [fabricObjectId] The azure vm arm id.
+ * @property {string} [fabricName] Fabric arm name.
+ * @property {string} [fabricLocation] The fabric location.
+ * @property {string} [remoteFabricName] Remote fabric arm name.
+ * @property {string} [remoteFabricLocation] Remote fabric location.
  */
 export interface A2AEventDetails extends EventProviderSpecificDetails {
   protectedItemName?: string;
@@ -285,7 +288,7 @@ export interface A2AEventDetails extends EventProviderSpecificDetails {
  * @constructor
  * Provider specific failover input.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface ProviderSpecificFailoverInput {
   instanceType: string;
@@ -297,11 +300,11 @@ export interface ProviderSpecificFailoverInput {
  * @constructor
  * A2A provider specific input for failover.
  *
- * @member {string} [recoveryPointId] The recovery point id to be passed to
+ * @property {string} [recoveryPointId] The recovery point id to be passed to
  * failover to a particular recovery point. In case of latest recovery point,
  * null should be passed.
- * @member {string} [cloudServiceCreationOption] A value indicating whether to
- * use recovery cloud service for TFO or not.
+ * @property {string} [cloudServiceCreationOption] A value indicating whether
+ * to use recovery cloud service for TFO or not.
  */
 export interface A2AFailoverProviderInput extends ProviderSpecificFailoverInput {
   recoveryPointId?: string;
@@ -314,7 +317,7 @@ export interface A2AFailoverProviderInput extends ProviderSpecificFailoverInput 
  * @constructor
  * Base class for provider specific input
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface PolicyProviderSpecificInput {
   instanceType: string;
@@ -326,15 +329,15 @@ export interface PolicyProviderSpecificInput {
  * @constructor
  * A2A Policy creation input.
  *
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
- * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
+ * @property {number} [recoveryPointHistory] The duration in minutes until
+ * which the recovery points need to be stored.
+ * @property {number} [crashConsistentFrequencyInMinutes] The crash consistent
  * snapshot frequency (in minutes).
- * @member {number} [appConsistentFrequencyInMinutes] The app consistent
+ * @property {number} [appConsistentFrequencyInMinutes] The app consistent
  * snapshot frequency (in minutes).
- * @member {string} multiVmSyncStatus A value indicating whether multi-VM sync
- * has to be enabled. Value should be 'Enabled' or 'Disabled'. Possible values
- * include: 'Enable', 'Disable'
+ * @property {string} multiVmSyncStatus A value indicating whether multi-VM
+ * sync has to be enabled. Value should be 'Enabled' or 'Disabled'. Possible
+ * values include: 'Enable', 'Disable'
  */
 export interface A2APolicyCreationInput extends PolicyProviderSpecificInput {
   recoveryPointHistory?: number;
@@ -349,7 +352,7 @@ export interface A2APolicyCreationInput extends PolicyProviderSpecificInput {
  * @constructor
  * Base class for Provider specific details for policies.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface PolicyProviderSpecificDetails {
   instanceType: string;
@@ -361,15 +364,15 @@ export interface PolicyProviderSpecificDetails {
  * @constructor
  * A2A specific policy details.
  *
- * @member {number} [recoveryPointThresholdInMinutes] The recovery point
+ * @property {number} [recoveryPointThresholdInMinutes] The recovery point
  * threshold in minutes.
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
- * @member {number} [appConsistentFrequencyInMinutes] The app consistent
+ * @property {number} [recoveryPointHistory] The duration in minutes until
+ * which the recovery points need to be stored.
+ * @property {number} [appConsistentFrequencyInMinutes] The app consistent
  * snapshot frequency in minutes.
- * @member {string} [multiVmSyncStatus] A value indicating whether multi-VM
+ * @property {string} [multiVmSyncStatus] A value indicating whether multi-VM
  * sync has to be enabled.
- * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
+ * @property {number} [crashConsistentFrequencyInMinutes] The crash consistent
  * snapshot frequency in minutes.
  */
 export interface A2APolicyDetails extends PolicyProviderSpecificDetails {
@@ -386,37 +389,38 @@ export interface A2APolicyDetails extends PolicyProviderSpecificDetails {
  * @constructor
  * A2A protected disk details.
  *
- * @member {string} [diskUri] The disk uri.
- * @member {string} [recoveryAzureStorageAccountId] The recovery disk storage
+ * @property {string} [diskUri] The disk uri.
+ * @property {string} [recoveryAzureStorageAccountId] The recovery disk storage
  * account.
- * @member {string} [primaryDiskAzureStorageAccountId] The primary disk storage
- * account.
- * @member {string} [recoveryDiskUri] Recovery disk uri.
- * @member {string} [diskName] The disk name.
- * @member {number} [diskCapacityInBytes] The disk capacity in bytes.
- * @member {string} [primaryStagingAzureStorageAccountId] The primary staging
+ * @property {string} [primaryDiskAzureStorageAccountId] The primary disk
  * storage account.
- * @member {string} [diskType] The type of disk.
- * @member {boolean} [resyncRequired] A value indicating whether resync is
+ * @property {string} [recoveryDiskUri] Recovery disk uri.
+ * @property {string} [diskName] The disk name.
+ * @property {number} [diskCapacityInBytes] The disk capacity in bytes.
+ * @property {string} [primaryStagingAzureStorageAccountId] The primary staging
+ * storage account.
+ * @property {string} [diskType] The type of disk.
+ * @property {boolean} [resyncRequired] A value indicating whether resync is
  * required for this disk.
- * @member {number} [monitoringPercentageCompletion] The percentage of the
+ * @property {number} [monitoringPercentageCompletion] The percentage of the
  * monitoring job. The type of the monitoring job is defined by
  * MonitoringJobType property.
- * @member {string} [monitoringJobType] The type of the monitoring job. The
+ * @property {string} [monitoringJobType] The type of the monitoring job. The
  * progress is contained in MonitoringPercentageCompletion property.
- * @member {number} [dataPendingInStagingStorageAccountInMB] The data pending
+ * @property {number} [dataPendingInStagingStorageAccountInMB] The data pending
  * for replication in MB at staging account.
- * @member {number} [dataPendingAtSourceAgentInMB] The data pending at source
+ * @property {number} [dataPendingAtSourceAgentInMB] The data pending at source
  * virtual machine in MB.
- * @member {boolean} [isDiskEncrypted] A value indicating whether vm has
+ * @property {boolean} [isDiskEncrypted] A value indicating whether vm has
  * encrypted os disk or not.
- * @member {string} [secretIdentifier] The secret URL / identifier (BEK).
- * @member {string} [dekKeyVaultArmId] The KeyVault resource id for secret
+ * @property {string} [secretIdentifier] The secret URL / identifier (BEK).
+ * @property {string} [dekKeyVaultArmId] The KeyVault resource id for secret
  * (BEK).
- * @member {boolean} [isDiskKeyEncrypted] A value indicating whether disk key
+ * @property {boolean} [isDiskKeyEncrypted] A value indicating whether disk key
  * got encrypted or not.
- * @member {string} [keyIdentifier] The key URL / identifier (KEK).
- * @member {string} [kekKeyVaultArmId] The KeyVault resource id for key (KEK).
+ * @property {string} [keyIdentifier] The key URL / identifier (KEK).
+ * @property {string} [kekKeyVaultArmId] The KeyVault resource id for key
+ * (KEK).
  */
 export interface A2AProtectedDiskDetails {
   diskUri?: string;
@@ -446,41 +450,43 @@ export interface A2AProtectedDiskDetails {
  * @constructor
  * A2A protected managed disk details.
  *
- * @member {string} [diskId] The managed disk Arm id.
- * @member {string} [recoveryResourceGroupId] The recovery disk resource group
- * Arm Id.
- * @member {string} [recoveryTargetDiskId] Recovery target disk Arm Id.
- * @member {string} [recoveryReplicaDiskId] Recovery replica disk Arm Id.
- * @member {string} [recoveryReplicaDiskAccountType] The replica disk type. Its
- * an optional value and will be same as source disk type if not user provided.
- * @member {string} [recoveryTargetDiskAccountType] The target disk type after
- * failover. Its an optional value and will be same as source disk type if not
- * user provided.
- * @member {string} [diskName] The disk name.
- * @member {number} [diskCapacityInBytes] The disk capacity in bytes.
- * @member {string} [primaryStagingAzureStorageAccountId] The primary staging
+ * @property {string} [diskId] The managed disk Arm id.
+ * @property {string} [recoveryResourceGroupId] The recovery disk resource
+ * group Arm Id.
+ * @property {string} [recoveryTargetDiskId] Recovery target disk Arm Id.
+ * @property {string} [recoveryReplicaDiskId] Recovery replica disk Arm Id.
+ * @property {string} [recoveryReplicaDiskAccountType] The replica disk type.
+ * Its an optional value and will be same as source disk type if not user
+ * provided.
+ * @property {string} [recoveryTargetDiskAccountType] The target disk type
+ * after failover. Its an optional value and will be same as source disk type
+ * if not user provided.
+ * @property {string} [diskName] The disk name.
+ * @property {number} [diskCapacityInBytes] The disk capacity in bytes.
+ * @property {string} [primaryStagingAzureStorageAccountId] The primary staging
  * storage account.
- * @member {string} [diskType] The type of disk.
- * @member {boolean} [resyncRequired] A value indicating whether resync is
+ * @property {string} [diskType] The type of disk.
+ * @property {boolean} [resyncRequired] A value indicating whether resync is
  * required for this disk.
- * @member {number} [monitoringPercentageCompletion] The percentage of the
+ * @property {number} [monitoringPercentageCompletion] The percentage of the
  * monitoring job. The type of the monitoring job is defined by
  * MonitoringJobType property.
- * @member {string} [monitoringJobType] The type of the monitoring job. The
+ * @property {string} [monitoringJobType] The type of the monitoring job. The
  * progress is contained in MonitoringPercentageCompletion property.
- * @member {number} [dataPendingInStagingStorageAccountInMB] The data pending
+ * @property {number} [dataPendingInStagingStorageAccountInMB] The data pending
  * for replication in MB at staging account.
- * @member {number} [dataPendingAtSourceAgentInMB] The data pending at source
+ * @property {number} [dataPendingAtSourceAgentInMB] The data pending at source
  * virtual machine in MB.
- * @member {boolean} [isDiskEncrypted] A value indicating whether vm has
+ * @property {boolean} [isDiskEncrypted] A value indicating whether vm has
  * encrypted os disk or not.
- * @member {string} [secretIdentifier] The secret URL / identifier (BEK).
- * @member {string} [dekKeyVaultArmId] The KeyVault resource id for secret
+ * @property {string} [secretIdentifier] The secret URL / identifier (BEK).
+ * @property {string} [dekKeyVaultArmId] The KeyVault resource id for secret
  * (BEK).
- * @member {boolean} [isDiskKeyEncrypted] A value indicating whether disk key
+ * @property {boolean} [isDiskKeyEncrypted] A value indicating whether disk key
  * got encrypted or not.
- * @member {string} [keyIdentifier] The key URL / identifier (KEK).
- * @member {string} [kekKeyVaultArmId] The KeyVault resource id for key (KEK).
+ * @property {string} [keyIdentifier] The key URL / identifier (KEK).
+ * @property {string} [kekKeyVaultArmId] The KeyVault resource id for key
+ * (KEK).
  */
 export interface A2AProtectedManagedDiskDetails {
   diskId?: string;
@@ -512,7 +518,7 @@ export interface A2AProtectedManagedDiskDetails {
  * @constructor
  * Container mapping provider specific details.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface ProtectionContainerMappingProviderSpecificDetails {
   instanceType: string;
@@ -524,11 +530,11 @@ export interface ProtectionContainerMappingProviderSpecificDetails {
  * @constructor
  * A2A provider specific settings.
  *
- * @member {string} [agentAutoUpdateStatus] A value indicating whether the auto
- * update is enabled. Possible values include: 'Disabled', 'Enabled'
- * @member {string} [automationAccountArmId] The automation account arm id.
- * @member {string} [scheduleName] The schedule arm name.
- * @member {string} [jobScheduleName] The job schedule arm name.
+ * @property {string} [agentAutoUpdateStatus] A value indicating whether the
+ * auto update is enabled. Possible values include: 'Disabled', 'Enabled'
+ * @property {string} [automationAccountArmId] The automation account arm id.
+ * @property {string} [scheduleName] The schedule arm name.
+ * @property {string} [jobScheduleName] The job schedule arm name.
  */
 export interface A2AProtectionContainerMappingDetails extends ProtectionContainerMappingProviderSpecificDetails {
   agentAutoUpdateStatus?: string;
@@ -543,7 +549,7 @@ export interface A2AProtectionContainerMappingDetails extends ProtectionContaine
  * @constructor
  * Replication provider specific recovery point details.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface ProviderSpecificRecoveryPointDetails {
   instanceType: string;
@@ -555,7 +561,7 @@ export interface ProviderSpecificRecoveryPointDetails {
  * @constructor
  * A2A provider specific recovery point details.
  *
- * @member {string} [recoveryPointSyncType] A value indicating whether the
+ * @property {string} [recoveryPointSyncType] A value indicating whether the
  * recovery point is multi VM consistent. Possible values include:
  * 'MultiVmSyncRecoveryPoint', 'PerVmRecoveryPoint'
  */
@@ -569,21 +575,23 @@ export interface A2ARecoveryPointDetails extends ProviderSpecificRecoveryPointDe
  * @constructor
  * Hyper V VM network details.
  *
- * @member {string} [nicId] The nic Id.
- * @member {string} [replicaNicId] The replica nic Id.
- * @member {string} [sourceNicArmId] The source nic ARM Id.
- * @member {string} [vMSubnetName] VM subnet name.
- * @member {string} [vMNetworkName] VM network name.
- * @member {string} [recoveryVMNetworkId] Recovery VM network Id.
- * @member {string} [recoveryVMSubnetName] Recovery VM subnet name.
- * @member {string} [ipAddressType] Ip address type.
- * @member {string} [primaryNicStaticIPAddress] Primary nic static IP address.
- * @member {string} [replicaNicStaticIPAddress] Replica nic static IP address.
- * @member {string} [selectionType] Selection type for failover.
- * @member {string} [recoveryNicIpAddressType] IP allocation type for recovery
- * VM.
- * @member {boolean} [enableAcceleratedNetworkingOnRecovery] A value indicating
- * whether the NIC has accerated networking enabled.
+ * @property {string} [nicId] The nic Id.
+ * @property {string} [replicaNicId] The replica nic Id.
+ * @property {string} [sourceNicArmId] The source nic ARM Id.
+ * @property {string} [vMSubnetName] VM subnet name.
+ * @property {string} [vMNetworkName] VM network name.
+ * @property {string} [recoveryVMNetworkId] Recovery VM network Id.
+ * @property {string} [recoveryVMSubnetName] Recovery VM subnet name.
+ * @property {string} [ipAddressType] Ip address type.
+ * @property {string} [primaryNicStaticIPAddress] Primary nic static IP
+ * address.
+ * @property {string} [replicaNicStaticIPAddress] Replica nic static IP
+ * address.
+ * @property {string} [selectionType] Selection type for failover.
+ * @property {string} [recoveryNicIpAddressType] IP allocation type for
+ * recovery VM.
+ * @property {boolean} [enableAcceleratedNetworkingOnRecovery] A value
+ * indicating whether the NIC has accerated networking enabled.
  */
 export interface VMNicDetails {
   nicId?: string;
@@ -607,11 +615,11 @@ export interface VMNicDetails {
  * @constructor
  * Azure role assignment details.
  *
- * @member {string} [id] The ARM Id of the role assignment.
- * @member {string} [name] The name of the role assignment.
- * @member {string} [scope] Role assignment scope.
- * @member {string} [principalId] Principal Id.
- * @member {string} [roleDefinitionId] Role definition id.
+ * @property {string} [id] The ARM Id of the role assignment.
+ * @property {string} [name] The name of the role assignment.
+ * @property {string} [scope] Role assignment scope.
+ * @property {string} [principalId] Principal Id.
+ * @property {string} [roleDefinitionId] Role definition id.
  */
 export interface RoleAssignment {
   id?: string;
@@ -627,10 +635,10 @@ export interface RoleAssignment {
  * @constructor
  * Azure VM input endpoint details.
  *
- * @member {string} [endpointName] The input endpoint name.
- * @member {number} [privatePort] The input endpoint private port.
- * @member {number} [publicPort] The input endpoint public port.
- * @member {string} [protocol] The input endpoint protocol.
+ * @property {string} [endpointName] The input endpoint name.
+ * @property {number} [privatePort] The input endpoint private port.
+ * @property {number} [publicPort] The input endpoint public port.
+ * @property {string} [protocol] The input endpoint protocol.
  */
 export interface InputEndpoint {
   endpointName?: string;
@@ -645,9 +653,9 @@ export interface InputEndpoint {
  * @constructor
  * Azure to Azure VM synced configuration details.
  *
- * @member {object} [tags] The Azure VM tags.
- * @member {array} [roleAssignments] The Azure role assignments.
- * @member {array} [inputEndpoints] The Azure VM input endpoints.
+ * @property {object} [tags] The Azure VM tags.
+ * @property {array} [roleAssignments] The Azure role assignments.
+ * @property {array} [inputEndpoints] The Azure VM input endpoints.
  */
 export interface AzureToAzureVmSyncedConfigDetails {
   tags?: { [propertyName: string]: string };
@@ -661,7 +669,7 @@ export interface AzureToAzureVmSyncedConfigDetails {
  * @constructor
  * Replication provider specific settings.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface ReplicationProviderSpecificSettings {
   instanceType: string;
@@ -673,58 +681,62 @@ export interface ReplicationProviderSpecificSettings {
  * @constructor
  * A2A provider specific settings.
  *
- * @member {string} [fabricObjectId] The fabric specific object Id of the
+ * @property {string} [fabricObjectId] The fabric specific object Id of the
  * virtual machine.
- * @member {string} [multiVmGroupId] The multi vm group Id.
- * @member {string} [multiVmGroupName] The multi vm group name.
- * @member {string} [multiVmGroupCreateOption] Whether Multi VM group is auto
+ * @property {string} [multiVmGroupId] The multi vm group Id.
+ * @property {string} [multiVmGroupName] The multi vm group name.
+ * @property {string} [multiVmGroupCreateOption] Whether Multi VM group is auto
  * created or specified by user. Possible values include: 'AutoCreated',
  * 'UserSpecified'
- * @member {string} [managementId] The management Id.
- * @member {array} [protectedDisks] The list of protected disks.
- * @member {array} [protectedManagedDisks] The list of protected managed disks.
- * @member {string} [recoveryBootDiagStorageAccountId] The recovery boot
+ * @property {string} [managementId] The management Id.
+ * @property {array} [protectedDisks] The list of protected disks.
+ * @property {array} [protectedManagedDisks] The list of protected managed
+ * disks.
+ * @property {string} [recoveryBootDiagStorageAccountId] The recovery boot
  * diagnostic storage account Arm Id.
- * @member {string} [primaryFabricLocation] Primary fabric location.
- * @member {string} [recoveryFabricLocation] The recovery fabric location.
- * @member {string} [osType] The type of operating system.
- * @member {string} [recoveryAzureVMSize] The size of recovery virtual machine.
- * @member {string} [recoveryAzureVMName] The name of recovery virtual machine.
- * @member {string} [recoveryAzureResourceGroupId] The recovery resource group.
- * @member {string} [recoveryCloudService] The recovery cloud service.
- * @member {string} [recoveryAvailabilitySet] The recovery availability set.
- * @member {string} [selectedRecoveryAzureNetworkId] The recovery virtual
+ * @property {string} [primaryFabricLocation] Primary fabric location.
+ * @property {string} [recoveryFabricLocation] The recovery fabric location.
+ * @property {string} [osType] The type of operating system.
+ * @property {string} [recoveryAzureVMSize] The size of recovery virtual
+ * machine.
+ * @property {string} [recoveryAzureVMName] The name of recovery virtual
+ * machine.
+ * @property {string} [recoveryAzureResourceGroupId] The recovery resource
+ * group.
+ * @property {string} [recoveryCloudService] The recovery cloud service.
+ * @property {string} [recoveryAvailabilitySet] The recovery availability set.
+ * @property {string} [selectedRecoveryAzureNetworkId] The recovery virtual
  * network.
- * @member {array} [vmNics] The virtual machine nic details.
- * @member {object} [vmSyncedConfigDetails] The synced configuration details.
- * @member {object} [vmSyncedConfigDetails.tags] The Azure VM tags.
- * @member {array} [vmSyncedConfigDetails.roleAssignments] The Azure role
+ * @property {array} [vmNics] The virtual machine nic details.
+ * @property {object} [vmSyncedConfigDetails] The synced configuration details.
+ * @property {object} [vmSyncedConfigDetails.tags] The Azure VM tags.
+ * @property {array} [vmSyncedConfigDetails.roleAssignments] The Azure role
  * assignments.
- * @member {array} [vmSyncedConfigDetails.inputEndpoints] The Azure VM input
+ * @property {array} [vmSyncedConfigDetails.inputEndpoints] The Azure VM input
  * endpoints.
- * @member {number} [monitoringPercentageCompletion] The percentage of the
+ * @property {number} [monitoringPercentageCompletion] The percentage of the
  * monitoring job. The type of the monitoring job is defined by
  * MonitoringJobType property.
- * @member {string} [monitoringJobType] The type of the monitoring job. The
+ * @property {string} [monitoringJobType] The type of the monitoring job. The
  * progress is contained in MonitoringPercentageCompletion property.
- * @member {date} [lastHeartbeat] The last heartbeat received from the source
+ * @property {date} [lastHeartbeat] The last heartbeat received from the source
  * server.
- * @member {string} [agentVersion] The agent version.
- * @member {boolean} [isReplicationAgentUpdateRequired] A value indicating
+ * @property {string} [agentVersion] The agent version.
+ * @property {boolean} [isReplicationAgentUpdateRequired] A value indicating
  * whether replication agent update is required.
- * @member {string} [recoveryFabricObjectId] The recovery fabric object Id.
- * @member {string} [vmProtectionState] The protection state for the vm.
- * @member {string} [vmProtectionStateDescription] The protection state
+ * @property {string} [recoveryFabricObjectId] The recovery fabric object Id.
+ * @property {string} [vmProtectionState] The protection state for the vm.
+ * @property {string} [vmProtectionStateDescription] The protection state
  * description for the vm.
- * @member {string} [lifecycleId] An id associated with the PE that survives
+ * @property {string} [lifecycleId] An id associated with the PE that survives
  * actions like switch protection which change the backing PE/CPE objects
  * internally.The lifecycle id gets carried forward to have a link/continuity
  * in being able to have an Id that denotes the "same" protected item even
  * though other internal Ids/ARM Id might be changing.
- * @member {string} [testFailoverRecoveryFabricObjectId] The test failover
+ * @property {string} [testFailoverRecoveryFabricObjectId] The test failover
  * fabric object Id.
- * @member {number} [rpoInSeconds] The last RPO value in seconds.
- * @member {date} [lastRpoCalculatedTime] The time (in UTC) when the last RPO
+ * @property {number} [rpoInSeconds] The last RPO value in seconds.
+ * @property {date} [lastRpoCalculatedTime] The time (in UTC) when the last RPO
  * value was calculated by Protection Service.
  */
 export interface A2AReplicationDetails extends ReplicationProviderSpecificSettings {
@@ -767,7 +779,7 @@ export interface A2AReplicationDetails extends ReplicationProviderSpecificSettin
  * @constructor
  * Provider specific reverse replication input.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface ReverseReplicationProviderSpecificInput {
   instanceType: string;
@@ -779,14 +791,15 @@ export interface ReverseReplicationProviderSpecificInput {
  * @constructor
  * Azure specific reprotect input.
  *
- * @member {string} [recoveryContainerId] The recovery container Id.
- * @member {array} [vmDisks] The list of vm disk details.
- * @member {string} [recoveryResourceGroupId] The recovery resource group Id.
+ * @property {string} [recoveryContainerId] The recovery container Id.
+ * @property {array} [vmDisks] The list of vm disk details.
+ * @property {string} [recoveryResourceGroupId] The recovery resource group Id.
  * Valid for V2 scenarios.
- * @member {string} [recoveryCloudServiceId] The recovery cloud service Id.
+ * @property {string} [recoveryCloudServiceId] The recovery cloud service Id.
  * Valid for V1 scenarios.
- * @member {string} [recoveryAvailabilitySetId] The recovery availability set.
- * @member {string} [policyId] The Policy Id.
+ * @property {string} [recoveryAvailabilitySetId] The recovery availability
+ * set.
+ * @property {string} [policyId] The Policy Id.
  */
 export interface A2AReprotectInput extends ReverseReplicationProviderSpecificInput {
   recoveryContainerId?: string;
@@ -803,7 +816,7 @@ export interface A2AReprotectInput extends ReverseReplicationProviderSpecificInp
  * @constructor
  * Provider specific switch protection input.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface SwitchProtectionProviderSpecificInput {
   instanceType: string;
@@ -815,31 +828,33 @@ export interface SwitchProtectionProviderSpecificInput {
  * @constructor
  * A2A specific switch protection input.
  *
- * @member {string} [recoveryContainerId] The recovery container Id.
- * @member {array} [vmDisks] The list of vm disk details.
- * @member {array} [vmManagedDisks] The list of vm managed disk details.
- * @member {string} [recoveryResourceGroupId] The recovery resource group Id.
+ * @property {string} [recoveryContainerId] The recovery container Id.
+ * @property {array} [vmDisks] The list of vm disk details.
+ * @property {array} [vmManagedDisks] The list of vm managed disk details.
+ * @property {string} [recoveryResourceGroupId] The recovery resource group Id.
  * Valid for V2 scenarios.
- * @member {string} [recoveryCloudServiceId] The recovery cloud service Id.
+ * @property {string} [recoveryCloudServiceId] The recovery cloud service Id.
  * Valid for V1 scenarios.
- * @member {string} [recoveryAvailabilitySetId] The recovery availability set.
- * @member {string} [policyId] The Policy Id.
- * @member {string} [recoveryBootDiagStorageAccountId] The boot diagnostic
+ * @property {string} [recoveryAvailabilitySetId] The recovery availability
+ * set.
+ * @property {string} [policyId] The Policy Id.
+ * @property {string} [recoveryBootDiagStorageAccountId] The boot diagnostic
  * storage account.
- * @member {object} [diskEncryptionInfo] The recovery disk encryption
+ * @property {object} [diskEncryptionInfo] The recovery disk encryption
  * information.
- * @member {object} [diskEncryptionInfo.diskEncryptionKeyInfo] The recovery
+ * @property {object} [diskEncryptionInfo.diskEncryptionKeyInfo] The recovery
  * KeyVault reference for secret.
- * @member {string} [diskEncryptionInfo.diskEncryptionKeyInfo.secretIdentifier]
- * The secret url / identifier.
- * @member {string}
+ * @property {string}
+ * [diskEncryptionInfo.diskEncryptionKeyInfo.secretIdentifier] The secret url /
+ * identifier.
+ * @property {string}
  * [diskEncryptionInfo.diskEncryptionKeyInfo.keyVaultResourceArmId] The
  * KeyVault resource ARM id for secret.
- * @member {object} [diskEncryptionInfo.keyEncryptionKeyInfo] The recovery
+ * @property {object} [diskEncryptionInfo.keyEncryptionKeyInfo] The recovery
  * KeyVault reference for key.
- * @member {string} [diskEncryptionInfo.keyEncryptionKeyInfo.keyIdentifier] The
- * key url / identifier.
- * @member {string}
+ * @property {string} [diskEncryptionInfo.keyEncryptionKeyInfo.keyIdentifier]
+ * The key url / identifier.
+ * @property {string}
  * [diskEncryptionInfo.keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
  * resource ARM id for key.
  */
@@ -861,7 +876,7 @@ export interface A2ASwitchProtectionInput extends SwitchProtectionProviderSpecif
  * @constructor
  * Provider specific input for update pairing operations.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface ReplicationProviderSpecificUpdateContainerMappingInput {
   instanceType: string;
@@ -873,9 +888,9 @@ export interface ReplicationProviderSpecificUpdateContainerMappingInput {
  * @constructor
  * A2A update protection container mapping.
  *
- * @member {string} [agentAutoUpdateStatus] A value indicating whether the auto
- * update is enabled. Possible values include: 'Disabled', 'Enabled'
- * @member {string} [automationAccountArmId] The automation account arm id.
+ * @property {string} [agentAutoUpdateStatus] A value indicating whether the
+ * auto update is enabled. Possible values include: 'Disabled', 'Enabled'
+ * @property {string} [automationAccountArmId] The automation account arm id.
  */
 export interface A2AUpdateContainerMappingInput extends ReplicationProviderSpecificUpdateContainerMappingInput {
   agentAutoUpdateStatus?: string;
@@ -888,10 +903,10 @@ export interface A2AUpdateContainerMappingInput extends ReplicationProviderSpeci
  * @constructor
  * Azure VM managed disk update input details.
  *
- * @member {string} [diskId] The disk Id.
- * @member {string} [recoveryTargetDiskAccountType] The target disk type before
- * failover.
- * @member {string} [recoveryReplicaDiskAccountType] The replica disk type
+ * @property {string} [diskId] The disk Id.
+ * @property {string} [recoveryTargetDiskAccountType] The target disk type
+ * before failover.
+ * @property {string} [recoveryReplicaDiskAccountType] The replica disk type
  * before failover.
  */
 export interface A2AVmManagedDiskUpdateDetails {
@@ -906,7 +921,7 @@ export interface A2AVmManagedDiskUpdateDetails {
  * @constructor
  * Update replication protected item provider specific input.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface UpdateReplicationProtectedItemProviderInput {
   instanceType: string;
@@ -918,27 +933,28 @@ export interface UpdateReplicationProtectedItemProviderInput {
  * @constructor
  * InMage Azure V2 input to update replication protected item.
  *
- * @member {string} [recoveryCloudServiceId] The target cloud service ARM Id
+ * @property {string} [recoveryCloudServiceId] The target cloud service ARM Id
  * (for V1).
- * @member {string} [recoveryResourceGroupId] The target resource group ARM Id
- * (for V2).
- * @member {array} [managedDiskUpdateDetails] Managed disk update details.
- * @member {string} [recoveryBootDiagStorageAccountId] The boot diagnostic
+ * @property {string} [recoveryResourceGroupId] The target resource group ARM
+ * Id (for V2).
+ * @property {array} [managedDiskUpdateDetails] Managed disk update details.
+ * @property {string} [recoveryBootDiagStorageAccountId] The boot diagnostic
  * storage account.
- * @member {object} [diskEncryptionInfo] The recovery os disk encryption
+ * @property {object} [diskEncryptionInfo] The recovery os disk encryption
  * information.
- * @member {object} [diskEncryptionInfo.diskEncryptionKeyInfo] The recovery
+ * @property {object} [diskEncryptionInfo.diskEncryptionKeyInfo] The recovery
  * KeyVault reference for secret.
- * @member {string} [diskEncryptionInfo.diskEncryptionKeyInfo.secretIdentifier]
- * The secret url / identifier.
- * @member {string}
+ * @property {string}
+ * [diskEncryptionInfo.diskEncryptionKeyInfo.secretIdentifier] The secret url /
+ * identifier.
+ * @property {string}
  * [diskEncryptionInfo.diskEncryptionKeyInfo.keyVaultResourceArmId] The
  * KeyVault resource ARM id for secret.
- * @member {object} [diskEncryptionInfo.keyEncryptionKeyInfo] The recovery
+ * @property {object} [diskEncryptionInfo.keyEncryptionKeyInfo] The recovery
  * KeyVault reference for key.
- * @member {string} [diskEncryptionInfo.keyEncryptionKeyInfo.keyIdentifier] The
- * key url / identifier.
- * @member {string}
+ * @property {string} [diskEncryptionInfo.keyEncryptionKeyInfo.keyIdentifier]
+ * The key url / identifier.
+ * @property {string}
  * [diskEncryptionInfo.keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
  * resource ARM id for key.
  */
@@ -956,12 +972,13 @@ export interface A2AUpdateReplicationProtectedItemInput extends UpdateReplicatio
  * @constructor
  * The properties of an add vCenter request.
  *
- * @member {string} [friendlyName] The friendly name of the vCenter.
- * @member {string} [ipAddress] The IP address of the vCenter to be discovered.
- * @member {string} [processServerId] The process server Id from where the
+ * @property {string} [friendlyName] The friendly name of the vCenter.
+ * @property {string} [ipAddress] The IP address of the vCenter to be
+ * discovered.
+ * @property {string} [processServerId] The process server Id from where the
  * discovery is orchestrated.
- * @member {string} [port] The port number for discovery.
- * @member {string} [runAsAccountId] The account Id which has privileges to
+ * @property {string} [port] The port number for discovery.
+ * @property {string} [runAsAccountId] The account Id which has privileges to
  * discover the vCenter.
  */
 export interface AddVCenterRequestProperties {
@@ -978,14 +995,15 @@ export interface AddVCenterRequestProperties {
  * @constructor
  * Input required to add vCenter.
  *
- * @member {object} [properties] The properties of an add vCenter request.
- * @member {string} [properties.friendlyName] The friendly name of the vCenter.
- * @member {string} [properties.ipAddress] The IP address of the vCenter to be
- * discovered.
- * @member {string} [properties.processServerId] The process server Id from
+ * @property {object} [properties] The properties of an add vCenter request.
+ * @property {string} [properties.friendlyName] The friendly name of the
+ * vCenter.
+ * @property {string} [properties.ipAddress] The IP address of the vCenter to
+ * be discovered.
+ * @property {string} [properties.processServerId] The process server Id from
  * where the discovery is orchestrated.
- * @member {string} [properties.port] The port number for discovery.
- * @member {string} [properties.runAsAccountId] The account Id which has
+ * @property {string} [properties.port] The port number for discovery.
+ * @property {string} [properties.runAsAccountId] The account Id which has
  * privileges to discover the vCenter.
  */
 export interface AddVCenterRequest {
@@ -998,11 +1016,11 @@ export interface AddVCenterRequest {
  * @constructor
  * The proprties of an alert.
  *
- * @member {string} [sendToOwners] A value indicating whether to send email to
- * subscription administrator.
- * @member {array} [customEmailAddresses] The custom email address for sending
- * emails.
- * @member {string} [locale] The locale for the email notification.
+ * @property {string} [sendToOwners] A value indicating whether to send email
+ * to subscription administrator.
+ * @property {array} [customEmailAddresses] The custom email address for
+ * sending emails.
+ * @property {string} [locale] The locale for the email notification.
  */
 export interface AlertProperties {
   sendToOwners?: string;
@@ -1016,10 +1034,10 @@ export interface AlertProperties {
  * @constructor
  * Azure resource.
  *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource Name
- * @member {string} [type] Resource Type
- * @member {string} [location] Resource Location
+ * @property {string} [id] Resource Id
+ * @property {string} [name] Resource Name
+ * @property {string} [type] Resource Type
+ * @property {string} [location] Resource Location
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -1034,12 +1052,13 @@ export interface Resource extends BaseResource {
  * @constructor
  * Implements the Alert class.
  *
- * @member {object} [properties] Alert related data.
- * @member {string} [properties.sendToOwners] A value indicating whether to
+ * @property {object} [properties] Alert related data.
+ * @property {string} [properties.sendToOwners] A value indicating whether to
  * send email to subscription administrator.
- * @member {array} [properties.customEmailAddresses] The custom email address
+ * @property {array} [properties.customEmailAddresses] The custom email address
  * for sending emails.
- * @member {string} [properties.locale] The locale for the email notification.
+ * @property {string} [properties.locale] The locale for the email
+ * notification.
  */
 export interface Alert extends Resource {
   properties?: AlertProperties;
@@ -1051,10 +1070,10 @@ export interface Alert extends Resource {
  * @constructor
  * Input properties to apply recovery point.
  *
- * @member {string} [recoveryPointId] The recovery point Id.
- * @member {object} [providerSpecificDetails] Provider specific input for
+ * @property {string} [recoveryPointId] The recovery point Id.
+ * @property {object} [providerSpecificDetails] Provider specific input for
  * applying recovery point.
- * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * @property {string} [providerSpecificDetails.instanceType] Polymorphic
  * Discriminator
  */
 export interface ApplyRecoveryPointInputProperties {
@@ -1068,11 +1087,12 @@ export interface ApplyRecoveryPointInputProperties {
  * @constructor
  * Input to apply recovery point.
  *
- * @member {object} [properties] The input properties to apply recovery point.
- * @member {string} [properties.recoveryPointId] The recovery point Id.
- * @member {object} [properties.providerSpecificDetails] Provider specific
+ * @property {object} [properties] The input properties to apply recovery
+ * point.
+ * @property {string} [properties.recoveryPointId] The recovery point Id.
+ * @property {object} [properties.providerSpecificDetails] Provider specific
  * input for applying recovery point.
- * @member {string} [properties.providerSpecificDetails.instanceType]
+ * @property {string} [properties.providerSpecificDetails.instanceType]
  * Polymorphic Discriminator
  */
 export interface ApplyRecoveryPointInput {
@@ -1085,10 +1105,10 @@ export interface ApplyRecoveryPointInput {
  * @constructor
  * Job details based on specific job type.
  *
- * @member {object} [affectedObjectDetails] The affected object properties like
- * source server, source cloud, target server, target cloud etc. based on the
- * workflow object details.
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {object} [affectedObjectDetails] The affected object properties
+ * like source server, source cloud, target server, target cloud etc. based on
+ * the workflow object details.
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface JobDetails {
   affectedObjectDetails?: { [propertyName: string]: string };
@@ -1111,7 +1131,7 @@ export interface AsrJobDetails extends JobDetails {
  * @constructor
  * Task details based on specific task type.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface TaskTypeDetails {
   instanceType: string;
@@ -1124,8 +1144,8 @@ export interface TaskTypeDetails {
  * This class represents the group task details when parent child relationship
  * exists in the drill down.
  *
- * @member {array} [childTasks] The child tasks.
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {array} [childTasks] The child tasks.
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface GroupTaskDetails {
   childTasks?: ASRTask[];
@@ -1138,11 +1158,11 @@ export interface GroupTaskDetails {
  * @constructor
  * ASR error model
  *
- * @member {string} [code] Error code.
- * @member {string} [message] Error message.
- * @member {string} [possibleCauses] Possible causes of error.
- * @member {string} [recommendedAction] Recommended action to resolve error.
- * @member {string} [activityId] Activity Id.
+ * @property {string} [code] Error code.
+ * @property {string} [message] Error message.
+ * @property {string} [possibleCauses] Possible causes of error.
+ * @property {string} [recommendedAction] Recommended action to resolve error.
+ * @property {string} [activityId] Activity Id.
  */
 export interface ServiceError {
   code?: string;
@@ -1158,11 +1178,11 @@ export interface ServiceError {
  * @constructor
  * This class contains the error details per object.
  *
- * @member {number} [errorCode] The Error code.
- * @member {string} [errorMessage] The Error message.
- * @member {string} [errorId] The Provider error Id.
- * @member {string} [possibleCauses] The possible causes for the error.
- * @member {string} [recommendedAction] The recommended action to resolve the
+ * @property {number} [errorCode] The Error code.
+ * @property {string} [errorMessage] The Error message.
+ * @property {string} [errorId] The Provider error Id.
+ * @property {string} [possibleCauses] The possible causes for the error.
+ * @property {string} [recommendedAction] The recommended action to resolve the
  * error.
  */
 export interface ProviderError {
@@ -1179,25 +1199,25 @@ export interface ProviderError {
  * @constructor
  * This class contains the error details per object.
  *
- * @member {object} [serviceErrorDetails] The Service error details.
- * @member {string} [serviceErrorDetails.code] Error code.
- * @member {string} [serviceErrorDetails.message] Error message.
- * @member {string} [serviceErrorDetails.possibleCauses] Possible causes of
+ * @property {object} [serviceErrorDetails] The Service error details.
+ * @property {string} [serviceErrorDetails.code] Error code.
+ * @property {string} [serviceErrorDetails.message] Error message.
+ * @property {string} [serviceErrorDetails.possibleCauses] Possible causes of
  * error.
- * @member {string} [serviceErrorDetails.recommendedAction] Recommended action
- * to resolve error.
- * @member {string} [serviceErrorDetails.activityId] Activity Id.
- * @member {object} [providerErrorDetails] The Provider error details.
- * @member {number} [providerErrorDetails.errorCode] The Error code.
- * @member {string} [providerErrorDetails.errorMessage] The Error message.
- * @member {string} [providerErrorDetails.errorId] The Provider error Id.
- * @member {string} [providerErrorDetails.possibleCauses] The possible causes
+ * @property {string} [serviceErrorDetails.recommendedAction] Recommended
+ * action to resolve error.
+ * @property {string} [serviceErrorDetails.activityId] Activity Id.
+ * @property {object} [providerErrorDetails] The Provider error details.
+ * @property {number} [providerErrorDetails.errorCode] The Error code.
+ * @property {string} [providerErrorDetails.errorMessage] The Error message.
+ * @property {string} [providerErrorDetails.errorId] The Provider error Id.
+ * @property {string} [providerErrorDetails.possibleCauses] The possible causes
  * for the error.
- * @member {string} [providerErrorDetails.recommendedAction] The recommended
+ * @property {string} [providerErrorDetails.recommendedAction] The recommended
  * action to resolve the error.
- * @member {string} [errorLevel] Error level of error.
- * @member {date} [creationTime] The creation time of job error.
- * @member {string} [taskId] The Id of the task.
+ * @property {string} [errorLevel] Error level of error.
+ * @property {date} [creationTime] The creation time of job error.
+ * @property {string} [taskId] The Id of the task.
  */
 export interface JobErrorDetails {
   serviceErrorDetails?: ServiceError;
@@ -1213,29 +1233,30 @@ export interface JobErrorDetails {
  * @constructor
  * Task of the Job.
  *
- * @member {string} [taskId] The Id.
- * @member {string} [name] The unique Task name.
- * @member {date} [startTime] The start time.
- * @member {date} [endTime] The end time.
- * @member {array} [allowedActions] The state/actions applicable on this task.
- * @member {string} [friendlyName] The name.
- * @member {string} [state] The State. It is one of these values - NotStarted,
- * InProgress, Succeeded, Failed, Cancelled, Suspended or Other.
- * @member {string} [stateDescription] The description of the task state. For
+ * @property {string} [taskId] The Id.
+ * @property {string} [name] The unique Task name.
+ * @property {date} [startTime] The start time.
+ * @property {date} [endTime] The end time.
+ * @property {array} [allowedActions] The state/actions applicable on this
+ * task.
+ * @property {string} [friendlyName] The name.
+ * @property {string} [state] The State. It is one of these values -
+ * NotStarted, InProgress, Succeeded, Failed, Cancelled, Suspended or Other.
+ * @property {string} [stateDescription] The description of the task state. For
  * example - For Succeeded state, description can be Completed,
  * PartiallySucceeded, CompletedWithInformation or Skipped.
- * @member {string} [taskType] The type of task. Details in CustomDetails
+ * @property {string} [taskType] The type of task. Details in CustomDetails
  * property depend on this type.
- * @member {object} [customDetails] The custom task details based on the task
+ * @property {object} [customDetails] The custom task details based on the task
  * type.
- * @member {string} [customDetails.instanceType] Polymorphic Discriminator
- * @member {object} [groupTaskCustomDetails] The custom task details based on
+ * @property {string} [customDetails.instanceType] Polymorphic Discriminator
+ * @property {object} [groupTaskCustomDetails] The custom task details based on
  * the task type, if the task type is GroupTaskDetails or one of the types
  * derived from it.
- * @member {array} [groupTaskCustomDetails.childTasks] The child tasks.
- * @member {string} [groupTaskCustomDetails.instanceType] Polymorphic
+ * @property {array} [groupTaskCustomDetails.childTasks] The child tasks.
+ * @property {string} [groupTaskCustomDetails.instanceType] Polymorphic
  * Discriminator
- * @member {array} [errors] The task error details.
+ * @property {array} [errors] The task error details.
  */
 export interface ASRTask {
   taskId?: string;
@@ -1258,17 +1279,17 @@ export interface ASRTask {
  * @constructor
  * This class represents the task details for an automation runbook.
  *
- * @member {string} [name] The recovery plan task name.
- * @member {string} [cloudServiceName] The cloud service of the automation
+ * @property {string} [name] The recovery plan task name.
+ * @property {string} [cloudServiceName] The cloud service of the automation
  * runbook account.
- * @member {string} [subscriptionId] The subscription Id of the automation
+ * @property {string} [subscriptionId] The subscription Id of the automation
  * runbook account.
- * @member {string} [accountName] The automation account name of the runbook.
- * @member {string} [runbookId] The runbook Id.
- * @member {string} [runbookName] The runbook name.
- * @member {string} [jobId] The job Id of the runbook execution.
- * @member {string} [jobOutput] The execution output of the runbook.
- * @member {boolean} [isPrimarySideScript] A value indicating whether it is a
+ * @property {string} [accountName] The automation account name of the runbook.
+ * @property {string} [runbookId] The runbook Id.
+ * @property {string} [runbookName] The runbook name.
+ * @property {string} [jobId] The job Id of the runbook execution.
+ * @property {string} [jobOutput] The execution output of the runbook.
+ * @property {boolean} [isPrimarySideScript] A value indicating whether it is a
  * primary side script or not.
  */
 export interface AutomationRunbookTaskDetails extends TaskTypeDetails {
@@ -1289,7 +1310,7 @@ export interface AutomationRunbookTaskDetails extends TaskTypeDetails {
  * @constructor
  * Fabric provider specific settings.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface FabricSpecificCreationInput {
   instanceType: string;
@@ -1301,7 +1322,7 @@ export interface FabricSpecificCreationInput {
  * @constructor
  * Fabric provider specific settings.
  *
- * @member {string} [location] The Location.
+ * @property {string} [location] The Location.
  */
 export interface AzureFabricCreationInput extends FabricSpecificCreationInput {
   location?: string;
@@ -1313,7 +1334,7 @@ export interface AzureFabricCreationInput extends FabricSpecificCreationInput {
  * @constructor
  * Fabric specific details.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface FabricSpecificDetails {
   instanceType: string;
@@ -1325,8 +1346,8 @@ export interface FabricSpecificDetails {
  * @constructor
  * Azure Fabric Specific Details.
  *
- * @member {string} [location] The Location for the Azure fabric.
- * @member {array} [containerIds] The container Ids for the Azure fabric.
+ * @property {string} [location] The Location for the Azure fabric.
+ * @property {array} [containerIds] The container Ids for the Azure fabric.
  */
 export interface AzureFabricSpecificDetails extends FabricSpecificDetails {
   location?: string;
@@ -1339,7 +1360,7 @@ export interface AzureFabricSpecificDetails extends FabricSpecificDetails {
  * @constructor
  * Input details specific to fabrics during Network Mapping.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface FabricSpecificCreateNetworkMappingInput {
   instanceType: string;
@@ -1352,7 +1373,7 @@ export interface FabricSpecificCreateNetworkMappingInput {
  * Create network mappings input properties/behaviour specific to Azure to
  * Azure Network mapping.
  *
- * @member {string} [primaryNetworkId] The primary azure vnet Id.
+ * @property {string} [primaryNetworkId] The primary azure vnet Id.
  */
 export interface AzureToAzureCreateNetworkMappingInput extends FabricSpecificCreateNetworkMappingInput {
   primaryNetworkId?: string;
@@ -1364,7 +1385,7 @@ export interface AzureToAzureCreateNetworkMappingInput extends FabricSpecificCre
  * @constructor
  * Network Mapping fabric specific settings.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface NetworkMappingFabricSpecificSettings {
   instanceType: string;
@@ -1376,8 +1397,8 @@ export interface NetworkMappingFabricSpecificSettings {
  * @constructor
  * A2A Network Mapping fabric specific settings.
  *
- * @member {string} [primaryFabricLocation] The primary fabric location.
- * @member {string} [recoveryFabricLocation] The recovery fabric location.
+ * @property {string} [primaryFabricLocation] The primary fabric location.
+ * @property {string} [recoveryFabricLocation] The recovery fabric location.
  */
 export interface AzureToAzureNetworkMappingSettings extends NetworkMappingFabricSpecificSettings {
   primaryFabricLocation?: string;
@@ -1390,7 +1411,7 @@ export interface AzureToAzureNetworkMappingSettings extends NetworkMappingFabric
  * @constructor
  * Input details specific to fabrics during Network Mapping.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface FabricSpecificUpdateNetworkMappingInput {
   instanceType: string;
@@ -1402,7 +1423,7 @@ export interface FabricSpecificUpdateNetworkMappingInput {
  * @constructor
  * Updates network mappings input.
  *
- * @member {string} [primaryNetworkId] The primary azure vnet Id.
+ * @property {string} [primaryNetworkId] The primary azure vnet Id.
  */
 export interface AzureToAzureUpdateNetworkMappingInput extends FabricSpecificUpdateNetworkMappingInput {
   primaryNetworkId?: string;
@@ -1414,13 +1435,13 @@ export interface AzureToAzureUpdateNetworkMappingInput extends FabricSpecificUpd
  * @constructor
  * Disk details for E2A provider.
  *
- * @member {string} [vhdType] VHD type.
- * @member {string} [vhdId] The VHD id.
- * @member {string} [vhdName] VHD name.
- * @member {string} [maxSizeMB] Max side in MB.
- * @member {string} [targetDiskLocation] Blob uri of the Azure disk.
- * @member {string} [targetDiskName] The target Azure disk name.
- * @member {string} [lunId] Ordinal\LunId of the disk for the Azure VM.
+ * @property {string} [vhdType] VHD type.
+ * @property {string} [vhdId] The VHD id.
+ * @property {string} [vhdName] VHD name.
+ * @property {string} [maxSizeMB] Max side in MB.
+ * @property {string} [targetDiskLocation] Blob uri of the Azure disk.
+ * @property {string} [targetDiskName] The target Azure disk name.
+ * @property {string} [lunId] Ordinal\LunId of the disk for the Azure VM.
  */
 export interface AzureVmDiskDetails {
   vhdType?: string;
@@ -1439,8 +1460,8 @@ export interface AzureVmDiskDetails {
  * Represents the error used to indicate why the target compute size is not
  * applicable.
  *
- * @member {string} [message] The error message.
- * @member {string} [severity] The severity of the error.
+ * @property {string} [message] The error message.
+ * @property {string} [severity] The severity of the error.
  */
 export interface ComputeSizeErrorDetails {
   message?: string;
@@ -1453,7 +1474,7 @@ export interface ComputeSizeErrorDetails {
  * @constructor
  * Replication provider specific settings.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface ConfigurationSettings {
   instanceType: string;
@@ -1465,11 +1486,11 @@ export interface ConfigurationSettings {
  * @constructor
  * Properties of a configure alert request.
  *
- * @member {string} [sendToOwners] A value indicating whether to send email to
- * subscription administrator.
- * @member {array} [customEmailAddresses] The custom email address for sending
- * emails.
- * @member {string} [locale] The locale for the email notification.
+ * @property {string} [sendToOwners] A value indicating whether to send email
+ * to subscription administrator.
+ * @property {array} [customEmailAddresses] The custom email address for
+ * sending emails.
+ * @property {string} [locale] The locale for the email notification.
  */
 export interface ConfigureAlertRequestProperties {
   sendToOwners?: string;
@@ -1483,12 +1504,13 @@ export interface ConfigureAlertRequestProperties {
  * @constructor
  * Request to configure alerts for the system.
  *
- * @member {object} [properties] The properties of a configure alert request.
- * @member {string} [properties.sendToOwners] A value indicating whether to
+ * @property {object} [properties] The properties of a configure alert request.
+ * @property {string} [properties.sendToOwners] A value indicating whether to
  * send email to subscription administrator.
- * @member {array} [properties.customEmailAddresses] The custom email address
+ * @property {array} [properties.customEmailAddresses] The custom email address
  * for sending emails.
- * @member {string} [properties.locale] The locale for the email notification.
+ * @property {string} [properties.locale] The locale for the email
+ * notification.
  */
 export interface ConfigureAlertRequest {
   properties?: ConfigureAlertRequestProperties;
@@ -1501,11 +1523,11 @@ export interface ConfigureAlertRequest {
  * This class stores the monitoring details for consistency check of
  * inconsistent Protected Entity.
  *
- * @member {string} [vmName] The Vm name.
- * @member {string} [cloudName] The Cloud name.
- * @member {array} [details] The list of details regarding state of the
+ * @property {string} [vmName] The Vm name.
+ * @property {string} [cloudName] The Cloud name.
+ * @property {array} [details] The list of details regarding state of the
  * Protected Entity in SRS and On prem.
- * @member {array} [errorIds] The list of error ids.
+ * @property {array} [errorIds] The list of error ids.
  */
 export interface InconsistentVmDetails {
   vmName?: string;
@@ -1521,7 +1543,7 @@ export interface InconsistentVmDetails {
  * This class contains monitoring details of all the inconsistent Protected
  * Entites in Vmm.
  *
- * @member {array} [vmDetails] The list of inconsistent Vm details.
+ * @property {array} [vmDetails] The list of inconsistent Vm details.
  */
 export interface ConsistencyCheckTaskDetails extends TaskTypeDetails {
   vmDetails?: InconsistentVmDetails[];
@@ -1533,10 +1555,10 @@ export interface ConsistencyCheckTaskDetails extends TaskTypeDetails {
  * @constructor
  * Common input details for network mapping operation.
  *
- * @member {string} [recoveryFabricName] Recovery fabric Name.
- * @member {string} [recoveryNetworkId] Recovery network Id.
- * @member {object} [fabricSpecificDetails] Fabric specific input properties.
- * @member {string} [fabricSpecificDetails.instanceType] Polymorphic
+ * @property {string} [recoveryFabricName] Recovery fabric Name.
+ * @property {string} [recoveryNetworkId] Recovery network Id.
+ * @property {object} [fabricSpecificDetails] Fabric specific input properties.
+ * @property {string} [fabricSpecificDetails.instanceType] Polymorphic
  * Discriminator
  */
 export interface CreateNetworkMappingInputProperties {
@@ -1551,13 +1573,14 @@ export interface CreateNetworkMappingInputProperties {
  * @constructor
  * Create network mappings input.
  *
- * @member {object} [properties] Input properties for creating network mapping.
- * @member {string} [properties.recoveryFabricName] Recovery fabric Name.
- * @member {string} [properties.recoveryNetworkId] Recovery network Id.
- * @member {object} [properties.fabricSpecificDetails] Fabric specific input
+ * @property {object} [properties] Input properties for creating network
+ * mapping.
+ * @property {string} [properties.recoveryFabricName] Recovery fabric Name.
+ * @property {string} [properties.recoveryNetworkId] Recovery network Id.
+ * @property {object} [properties.fabricSpecificDetails] Fabric specific input
  * properties.
- * @member {string} [properties.fabricSpecificDetails.instanceType] Polymorphic
- * Discriminator
+ * @property {string} [properties.fabricSpecificDetails.instanceType]
+ * Polymorphic Discriminator
  */
 export interface CreateNetworkMappingInput {
   properties?: CreateNetworkMappingInputProperties;
@@ -1569,8 +1592,8 @@ export interface CreateNetworkMappingInput {
  * @constructor
  * Policy creation properties.
  *
- * @member {object} [providerSpecificInput] The ReplicationProviderSettings.
- * @member {string} [providerSpecificInput.instanceType] Polymorphic
+ * @property {object} [providerSpecificInput] The ReplicationProviderSettings.
+ * @property {string} [providerSpecificInput.instanceType] Polymorphic
  * Discriminator
  */
 export interface CreatePolicyInputProperties {
@@ -1583,11 +1606,11 @@ export interface CreatePolicyInputProperties {
  * @constructor
  * Protection Policy input.
  *
- * @member {object} [properties] Policy creation properties.
- * @member {object} [properties.providerSpecificInput] The
+ * @property {object} [properties] Policy creation properties.
+ * @property {object} [properties.providerSpecificInput] The
  * ReplicationProviderSettings.
- * @member {string} [properties.providerSpecificInput.instanceType] Polymorphic
- * Discriminator
+ * @property {string} [properties.providerSpecificInput.instanceType]
+ * Polymorphic Discriminator
  */
 export interface CreatePolicyInput {
   properties?: CreatePolicyInputProperties;
@@ -1599,7 +1622,7 @@ export interface CreatePolicyInput {
  * @constructor
  * Create protection container input properties.
  *
- * @member {array} [providerSpecificInput] Provider specific inputs for
+ * @property {array} [providerSpecificInput] Provider specific inputs for
  * container creation.
  */
 export interface CreateProtectionContainerInputProperties {
@@ -1612,9 +1635,10 @@ export interface CreateProtectionContainerInputProperties {
  * @constructor
  * Create protection container input.
  *
- * @member {object} [properties] Create protection container input properties.
- * @member {array} [properties.providerSpecificInput] Provider specific inputs
- * for container creation.
+ * @property {object} [properties] Create protection container input
+ * properties.
+ * @property {array} [properties.providerSpecificInput] Provider specific
+ * inputs for container creation.
  */
 export interface CreateProtectionContainerInput {
   properties?: CreateProtectionContainerInputProperties;
@@ -1626,12 +1650,12 @@ export interface CreateProtectionContainerInput {
  * @constructor
  * Configure pairing input properties.
  *
- * @member {string} [targetProtectionContainerId] The target unique protection
- * container name.
- * @member {string} [policyId] Applicable policy.
- * @member {object} [providerSpecificInput] Provider specific input for
+ * @property {string} [targetProtectionContainerId] The target unique
+ * protection container name.
+ * @property {string} [policyId] Applicable policy.
+ * @property {object} [providerSpecificInput] Provider specific input for
  * pairing.
- * @member {string} [providerSpecificInput.instanceType] Polymorphic
+ * @property {string} [providerSpecificInput.instanceType] Polymorphic
  * Discriminator
  */
 export interface CreateProtectionContainerMappingInputProperties {
@@ -1646,14 +1670,14 @@ export interface CreateProtectionContainerMappingInputProperties {
  * @constructor
  * Configure pairing input.
  *
- * @member {object} [properties] Configure protection input properties.
- * @member {string} [properties.targetProtectionContainerId] The target unique
- * protection container name.
- * @member {string} [properties.policyId] Applicable policy.
- * @member {object} [properties.providerSpecificInput] Provider specific input
- * for pairing.
- * @member {string} [properties.providerSpecificInput.instanceType] Polymorphic
- * Discriminator
+ * @property {object} [properties] Configure protection input properties.
+ * @property {string} [properties.targetProtectionContainerId] The target
+ * unique protection container name.
+ * @property {string} [properties.policyId] Applicable policy.
+ * @property {object} [properties.providerSpecificInput] Provider specific
+ * input for pairing.
+ * @property {string} [properties.providerSpecificInput.instanceType]
+ * Polymorphic Discriminator
  */
 export interface CreateProtectionContainerMappingInput {
   properties?: CreateProtectionContainerMappingInputProperties;
@@ -1665,8 +1689,8 @@ export interface CreateProtectionContainerMappingInput {
  * @constructor
  * Recovery plan protected item.
  *
- * @member {string} [id] The ARM Id of the recovery plan protected item.
- * @member {string} [virtualMachineId] The virtual machine Id.
+ * @property {string} [id] The ARM Id of the recovery plan protected item.
+ * @property {string} [virtualMachineId] The virtual machine Id.
  */
 export interface RecoveryPlanProtectedItem {
   id?: string;
@@ -1679,7 +1703,7 @@ export interface RecoveryPlanProtectedItem {
  * @constructor
  * Recovery plan action custom details.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface RecoveryPlanActionDetails {
   instanceType: string;
@@ -1691,11 +1715,11 @@ export interface RecoveryPlanActionDetails {
  * @constructor
  * Recovery plan action details.
  *
- * @member {string} actionName The action name.
- * @member {array} failoverTypes The list of failover types.
- * @member {array} failoverDirections The list of failover directions.
- * @member {object} customDetails The custom details.
- * @member {string} [customDetails.instanceType] Polymorphic Discriminator
+ * @property {string} actionName The action name.
+ * @property {array} failoverTypes The list of failover types.
+ * @property {array} failoverDirections The list of failover directions.
+ * @property {object} customDetails The custom details.
+ * @property {string} [customDetails.instanceType] Polymorphic Discriminator
  */
 export interface RecoveryPlanAction {
   actionName: string;
@@ -1710,11 +1734,11 @@ export interface RecoveryPlanAction {
  * @constructor
  * Recovery plan group details.
  *
- * @member {string} groupType The group type. Possible values include:
+ * @property {string} groupType The group type. Possible values include:
  * 'Shutdown', 'Boot', 'Failover'
- * @member {array} [replicationProtectedItems] The list of protected items.
- * @member {array} [startGroupActions] The start group actions.
- * @member {array} [endGroupActions] The end group actions.
+ * @property {array} [replicationProtectedItems] The list of protected items.
+ * @property {array} [startGroupActions] The start group actions.
+ * @property {array} [endGroupActions] The end group actions.
  */
 export interface RecoveryPlanGroup {
   groupType: string;
@@ -1729,11 +1753,11 @@ export interface RecoveryPlanGroup {
  * @constructor
  * Recovery plan creation properties.
  *
- * @member {string} primaryFabricId The primary fabric Id.
- * @member {string} recoveryFabricId The recovery fabric Id.
- * @member {string} [failoverDeploymentModel] The failover deployment model.
+ * @property {string} primaryFabricId The primary fabric Id.
+ * @property {string} recoveryFabricId The recovery fabric Id.
+ * @property {string} [failoverDeploymentModel] The failover deployment model.
  * Possible values include: 'NotApplicable', 'Classic', 'ResourceManager'
- * @member {array} groups The recovery plan groups.
+ * @property {array} groups The recovery plan groups.
  */
 export interface CreateRecoveryPlanInputProperties {
   primaryFabricId: string;
@@ -1748,13 +1772,13 @@ export interface CreateRecoveryPlanInputProperties {
  * @constructor
  * Create recovery plan input class.
  *
- * @member {object} properties Recovery plan creation properties.
- * @member {string} [properties.primaryFabricId] The primary fabric Id.
- * @member {string} [properties.recoveryFabricId] The recovery fabric Id.
- * @member {string} [properties.failoverDeploymentModel] The failover
+ * @property {object} properties Recovery plan creation properties.
+ * @property {string} [properties.primaryFabricId] The primary fabric Id.
+ * @property {string} [properties.recoveryFabricId] The recovery fabric Id.
+ * @property {string} [properties.failoverDeploymentModel] The failover
  * deployment model. Possible values include: 'NotApplicable', 'Classic',
  * 'ResourceManager'
- * @member {array} [properties.groups] The recovery plan groups.
+ * @property {array} [properties.groups] The recovery plan groups.
  */
 export interface CreateRecoveryPlanInput {
   properties: CreateRecoveryPlanInputProperties;
@@ -1766,9 +1790,9 @@ export interface CreateRecoveryPlanInput {
  * @constructor
  * Current scenario details of the protected entity.
  *
- * @member {string} [scenarioName] Scenario name.
- * @member {string} [jobId] ARM Id of the job being executed.
- * @member {date} [startTime] Start time of the workflow.
+ * @property {string} [scenarioName] Scenario name.
+ * @property {string} [jobId] ARM Id of the job being executed.
+ * @property {date} [startTime] Start time of the workflow.
  */
 export interface CurrentScenarioDetails {
   scenarioName?: string;
@@ -1782,11 +1806,11 @@ export interface CurrentScenarioDetails {
  * @constructor
  * The datastore details of the MT.
  *
- * @member {string} [symbolicName] The symbolic name of data store.
- * @member {string} [uuid] The uuid of data store.
- * @member {string} [capacity] The capacity of data store in GBs.
- * @member {string} [freeSpace] The free space of data store in GBs.
- * @member {string} [type] The type of data store.
+ * @property {string} [symbolicName] The symbolic name of data store.
+ * @property {string} [uuid] The uuid of data store.
+ * @property {string} [capacity] The capacity of data store in GBs.
+ * @property {string} [freeSpace] The free space of data store in GBs.
+ * @property {string} [type] The type of data store.
  */
 export interface DataStore {
   symbolicName?: string;
@@ -1802,7 +1826,7 @@ export interface DataStore {
  * @constructor
  * Disable protection provider specific input.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface DisableProtectionProviderSpecificInput {
   instanceType: string;
@@ -1814,12 +1838,12 @@ export interface DisableProtectionProviderSpecificInput {
  * @constructor
  * Disable protection input properties.
  *
- * @member {string} [disableProtectionReason] Disable protection reason. It can
- * have values NotSpecified/MigrationComplete. Possible values include:
+ * @property {string} [disableProtectionReason] Disable protection reason. It
+ * can have values NotSpecified/MigrationComplete. Possible values include:
  * 'NotSpecified', 'MigrationComplete'
- * @member {object} [replicationProviderInput] Replication provider specific
+ * @property {object} [replicationProviderInput] Replication provider specific
  * input.
- * @member {string} [replicationProviderInput.instanceType] Polymorphic
+ * @property {string} [replicationProviderInput.instanceType] Polymorphic
  * Discriminator
  */
 export interface DisableProtectionInputProperties {
@@ -1833,13 +1857,13 @@ export interface DisableProtectionInputProperties {
  * @constructor
  * Disable protection input.
  *
- * @member {object} [properties] Disable protection input properties.
- * @member {string} [properties.disableProtectionReason] Disable protection
+ * @property {object} [properties] Disable protection input properties.
+ * @property {string} [properties.disableProtectionReason] Disable protection
  * reason. It can have values NotSpecified/MigrationComplete. Possible values
  * include: 'NotSpecified', 'MigrationComplete'
- * @member {object} [properties.replicationProviderInput] Replication provider
- * specific input.
- * @member {string} [properties.replicationProviderInput.instanceType]
+ * @property {object} [properties.replicationProviderInput] Replication
+ * provider specific input.
+ * @property {string} [properties.replicationProviderInput.instanceType]
  * Polymorphic Discriminator
  */
 export interface DisableProtectionInput {
@@ -1852,10 +1876,10 @@ export interface DisableProtectionInput {
  * @constructor
  * Discover protectable item properties.
  *
- * @member {string} [friendlyName] The friendly name of the physical machine.
- * @member {string} [ipAddress] The IP address of the physical machine to be
+ * @property {string} [friendlyName] The friendly name of the physical machine.
+ * @property {string} [ipAddress] The IP address of the physical machine to be
  * discovered.
- * @member {string} [osType] The OS type on the physical machine.
+ * @property {string} [osType] The OS type on the physical machine.
  */
 export interface DiscoverProtectableItemRequestProperties {
   friendlyName?: string;
@@ -1869,13 +1893,13 @@ export interface DiscoverProtectableItemRequestProperties {
  * @constructor
  * Request to add a physical machine as a protectable item in a container.
  *
- * @member {object} [properties] The properties of a discover protectable item
- * request.
- * @member {string} [properties.friendlyName] The friendly name of the physical
- * machine.
- * @member {string} [properties.ipAddress] The IP address of the physical
+ * @property {object} [properties] The properties of a discover protectable
+ * item request.
+ * @property {string} [properties.friendlyName] The friendly name of the
+ * physical machine.
+ * @property {string} [properties.ipAddress] The IP address of the physical
  * machine to be discovered.
- * @member {string} [properties.osType] The OS type on the physical machine.
+ * @property {string} [properties.osType] The OS type on the physical machine.
  */
 export interface DiscoverProtectableItemRequest {
   properties?: DiscoverProtectableItemRequestProperties;
@@ -1887,10 +1911,10 @@ export interface DiscoverProtectableItemRequest {
  * @constructor
  * Onprem disk details data.
  *
- * @member {number} [maxSizeMB] The hard disk max size in MB.
- * @member {string} [vhdType] The type of the volume.
- * @member {string} [vhdId] The VHD Id.
- * @member {string} [vhdName] The VHD name.
+ * @property {number} [maxSizeMB] The hard disk max size in MB.
+ * @property {string} [vhdType] The type of the volume.
+ * @property {string} [vhdId] The VHD Id.
+ * @property {string} [vhdName] The VHD name.
  */
 export interface DiskDetails {
   maxSizeMB?: number;
@@ -1905,8 +1929,8 @@ export interface DiskDetails {
  * @constructor
  * Volume details.
  *
- * @member {string} [label] The volume label.
- * @member {string} [name] The volume name.
+ * @property {string} [label] The volume label.
+ * @property {string} [name] The volume name.
  */
 export interface DiskVolumeDetails {
   label?: string;
@@ -1922,23 +1946,24 @@ export interface DiskVolumeDetails {
  * definitions for RBAC; (2) complex query filters for the event service; and
  * (3) audit history / records for management operations.
  *
- * @member {string} [provider] The provider. The localized friendly form of the
- * resource provider name – it is expected to also include the
+ * @property {string} [provider] The provider. The localized friendly form of
+ * the resource provider name – it is expected to also include the
  * publisher/company responsible. It should use Title Casing and begin with
  * "Microsoft" for 1st party services. e.g. "Microsoft Monitoring Insights" or
  * "Microsoft Compute."
- * @member {string} [resource] The resource. The localized friendly form of the
- * resource related to this action/operation – it should match the public
+ * @property {string} [resource] The resource. The localized friendly form of
+ * the resource related to this action/operation – it should match the public
  * documentation for the resource provider. It should use Title Casing. This
  * value should be unique for a particular URL type (e.g. nested types should
  * *not* reuse their parent’s display.resource field). e.g. "Virtual Machines"
  * or "Scheduler Job Collections", or "Virtual Machine VM Sizes" or "Scheduler
  * Jobs"
- * @member {string} [operation] The operation. The localized friendly name for
- * the operation, as it should be shown to the user. It should be concise (to
- * fit in drop downs) but clear (i.e. self-documenting). It should use Title
- * Casing. Prescriptive guidance: Read Create or Update Delete 'ActionName'
- * @member {string} [description] The description. The localized friendly
+ * @property {string} [operation] The operation. The localized friendly name
+ * for the operation, as it should be shown to the user. It should be concise
+ * (to fit in drop downs) but clear (i.e. self-documenting). It should use
+ * Title Casing. Prescriptive guidance: Read Create or Update Delete
+ * 'ActionName'
+ * @property {string} [description] The description. The localized friendly
  * description for the operation, as it should be shown to the user. It should
  * be thorough, yet concise – it will be used in tool tips and detailed views.
  * Prescriptive guidance for namespaces: Read any 'display.provider' resource
@@ -1961,13 +1986,13 @@ export interface Display {
  * @constructor
  * Enable protection input properties.
  *
- * @member {string} [policyId] The Policy Id.
- * @member {string} [protectableItemId] The protectable item Id.
- * @member {object} [providerSpecificDetails] The ReplicationProviderInput. For
- * HyperVReplicaAzure provider, it will be AzureEnableProtectionInput object.
- * For San provider, it will be SanEnableProtectionInput object. For
+ * @property {string} [policyId] The Policy Id.
+ * @property {string} [protectableItemId] The protectable item Id.
+ * @property {object} [providerSpecificDetails] The ReplicationProviderInput.
+ * For HyperVReplicaAzure provider, it will be AzureEnableProtectionInput
+ * object. For San provider, it will be SanEnableProtectionInput object. For
  * HyperVReplicaAzure provider, it can be null.
- * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * @property {string} [providerSpecificDetails.instanceType] Polymorphic
  * Discriminator
  */
 export interface EnableProtectionInputProperties {
@@ -1982,15 +2007,15 @@ export interface EnableProtectionInputProperties {
  * @constructor
  * Enable protection input.
  *
- * @member {object} [properties] Enable protection input properties.
- * @member {string} [properties.policyId] The Policy Id.
- * @member {string} [properties.protectableItemId] The protectable item Id.
- * @member {object} [properties.providerSpecificDetails] The
+ * @property {object} [properties] Enable protection input properties.
+ * @property {string} [properties.policyId] The Policy Id.
+ * @property {string} [properties.protectableItemId] The protectable item Id.
+ * @property {object} [properties.providerSpecificDetails] The
  * ReplicationProviderInput. For HyperVReplicaAzure provider, it will be
  * AzureEnableProtectionInput object. For San provider, it will be
  * SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be
  * null.
- * @member {string} [properties.providerSpecificDetails.instanceType]
+ * @property {string} [properties.providerSpecificDetails.instanceType]
  * Polymorphic Discriminator
  */
 export interface EnableProtectionInput {
@@ -2003,11 +2028,11 @@ export interface EnableProtectionInput {
  * @constructor
  * Encryption details for the fabric.
  *
- * @member {string} [kekState] The key encryption key state for the Vmm.
- * @member {string} [kekCertThumbprint] The key encryption key certificate
+ * @property {string} [kekState] The key encryption key state for the Vmm.
+ * @property {string} [kekCertThumbprint] The key encryption key certificate
  * thumbprint.
- * @member {date} [kekCertExpiryDate] The key encryption key certificate expiry
- * date.
+ * @property {date} [kekCertExpiryDate] The key encryption key certificate
+ * expiry date.
  */
 export interface EncryptionDetails {
   kekState?: string;
@@ -2021,7 +2046,7 @@ export interface EncryptionDetails {
  * @constructor
  * Model class for event specific details for an event.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface EventSpecificDetails {
   instanceType: string;
@@ -2038,18 +2063,18 @@ export interface EventSpecificDetails {
  * inner health errors and all API consumers can utilize this in the same
  * fashion as Exception -&gt; InnerException.
  *
- * @member {string} [errorSource] Source of error.
- * @member {string} [errorType] Type of error.
- * @member {string} [errorLevel] Level of error.
- * @member {string} [errorCategory] Category of error.
- * @member {string} [errorCode] Error code.
- * @member {string} [summaryMessage] Summary message of the entity.
- * @member {string} [errorMessage] Error message.
- * @member {string} [possibleCauses] Possible causes of error.
- * @member {string} [recommendedAction] Recommended action to resolve error.
- * @member {date} [creationTimeUtc] Error creation time (UTC)
- * @member {string} [recoveryProviderErrorMessage] DRA error message.
- * @member {string} [entityId] ID of the entity.
+ * @property {string} [errorSource] Source of error.
+ * @property {string} [errorType] Type of error.
+ * @property {string} [errorLevel] Level of error.
+ * @property {string} [errorCategory] Category of error.
+ * @property {string} [errorCode] Error code.
+ * @property {string} [summaryMessage] Summary message of the entity.
+ * @property {string} [errorMessage] Error message.
+ * @property {string} [possibleCauses] Possible causes of error.
+ * @property {string} [recommendedAction] Recommended action to resolve error.
+ * @property {date} [creationTimeUtc] Error creation time (UTC)
+ * @property {string} [recoveryProviderErrorMessage] DRA error message.
+ * @property {string} [entityId] ID of the entity.
  */
 export interface InnerHealthError {
   errorSource?: string;
@@ -2072,24 +2097,24 @@ export interface InnerHealthError {
  * @constructor
  * Health Error
  *
- * @member {array} [innerHealthErrors] The inner health errors. HealthError
+ * @property {array} [innerHealthErrors] The inner health errors. HealthError
  * having a list of HealthError as child errors is problematic.
  * InnerHealthError is used because this will prevent an infinite loop of
  * structures when Hydra tries to auto-generate the contract. We are exposing
  * the related health errors as inner health errors and all API consumers can
  * utilize this in the same fashion as Exception -&gt; InnerException.
- * @member {string} [errorSource] Source of error.
- * @member {string} [errorType] Type of error.
- * @member {string} [errorLevel] Level of error.
- * @member {string} [errorCategory] Category of error.
- * @member {string} [errorCode] Error code.
- * @member {string} [summaryMessage] Summary message of the entity.
- * @member {string} [errorMessage] Error message.
- * @member {string} [possibleCauses] Possible causes of error.
- * @member {string} [recommendedAction] Recommended action to resolve error.
- * @member {date} [creationTimeUtc] Error creation time (UTC)
- * @member {string} [recoveryProviderErrorMessage] DRA error message.
- * @member {string} [entityId] ID of the entity.
+ * @property {string} [errorSource] Source of error.
+ * @property {string} [errorType] Type of error.
+ * @property {string} [errorLevel] Level of error.
+ * @property {string} [errorCategory] Category of error.
+ * @property {string} [errorCode] Error code.
+ * @property {string} [summaryMessage] Summary message of the entity.
+ * @property {string} [errorMessage] Error message.
+ * @property {string} [possibleCauses] Possible causes of error.
+ * @property {string} [recommendedAction] Recommended action to resolve error.
+ * @property {date} [creationTimeUtc] Error creation time (UTC)
+ * @property {string} [recoveryProviderErrorMessage] DRA error message.
+ * @property {string} [entityId] ID of the entity.
  */
 export interface HealthError {
   innerHealthErrors?: InnerHealthError[];
@@ -2113,22 +2138,22 @@ export interface HealthError {
  * @constructor
  * The properties of a monitoring event.
  *
- * @member {string} [eventCode] The Id of the monitoring event.
- * @member {string} [description] The event name.
- * @member {string} [eventType] The type of the event. for example: VM Health,
- * Server Health, Job Failure etc.
- * @member {string} [affectedObjectFriendlyName] The friendly name of the
+ * @property {string} [eventCode] The Id of the monitoring event.
+ * @property {string} [description] The event name.
+ * @property {string} [eventType] The type of the event. for example: VM
+ * Health, Server Health, Job Failure etc.
+ * @property {string} [affectedObjectFriendlyName] The friendly name of the
  * source of the event on which it is raised (for example, VM, VMM etc).
- * @member {string} [severity] The severity of the event.
- * @member {date} [timeOfOccurrence] The time of occurence of the event.
- * @member {string} [fabricId] The ARM ID of the fabric.
- * @member {object} [providerSpecificDetails] The provider specific settings.
- * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * @property {string} [severity] The severity of the event.
+ * @property {date} [timeOfOccurrence] The time of occurence of the event.
+ * @property {string} [fabricId] The ARM ID of the fabric.
+ * @property {object} [providerSpecificDetails] The provider specific settings.
+ * @property {string} [providerSpecificDetails.instanceType] Polymorphic
  * Discriminator
- * @member {object} [eventSpecificDetails] The event specific settings.
- * @member {string} [eventSpecificDetails.instanceType] Polymorphic
+ * @property {object} [eventSpecificDetails] The event specific settings.
+ * @property {string} [eventSpecificDetails.instanceType] Polymorphic
  * Discriminator
- * @member {array} [healthErrors] The list of errors / warnings capturing
+ * @property {array} [healthErrors] The list of errors / warnings capturing
  * details associated with the issue(s).
  */
 export interface EventProperties {
@@ -2150,26 +2175,26 @@ export interface EventProperties {
  * @constructor
  * Implements the Event class.
  *
- * @member {object} [properties] Event related data.
- * @member {string} [properties.eventCode] The Id of the monitoring event.
- * @member {string} [properties.description] The event name.
- * @member {string} [properties.eventType] The type of the event. for example:
- * VM Health, Server Health, Job Failure etc.
- * @member {string} [properties.affectedObjectFriendlyName] The friendly name
+ * @property {object} [properties] Event related data.
+ * @property {string} [properties.eventCode] The Id of the monitoring event.
+ * @property {string} [properties.description] The event name.
+ * @property {string} [properties.eventType] The type of the event. for
+ * example: VM Health, Server Health, Job Failure etc.
+ * @property {string} [properties.affectedObjectFriendlyName] The friendly name
  * of the source of the event on which it is raised (for example, VM, VMM etc).
- * @member {string} [properties.severity] The severity of the event.
- * @member {date} [properties.timeOfOccurrence] The time of occurence of the
+ * @property {string} [properties.severity] The severity of the event.
+ * @property {date} [properties.timeOfOccurrence] The time of occurence of the
  * event.
- * @member {string} [properties.fabricId] The ARM ID of the fabric.
- * @member {object} [properties.providerSpecificDetails] The provider specific
- * settings.
- * @member {string} [properties.providerSpecificDetails.instanceType]
+ * @property {string} [properties.fabricId] The ARM ID of the fabric.
+ * @property {object} [properties.providerSpecificDetails] The provider
+ * specific settings.
+ * @property {string} [properties.providerSpecificDetails.instanceType]
  * Polymorphic Discriminator
- * @member {object} [properties.eventSpecificDetails] The event specific
+ * @property {object} [properties.eventSpecificDetails] The event specific
  * settings.
- * @member {string} [properties.eventSpecificDetails.instanceType] Polymorphic
- * Discriminator
- * @member {array} [properties.healthErrors] The list of errors / warnings
+ * @property {string} [properties.eventSpecificDetails.instanceType]
+ * Polymorphic Discriminator
+ * @property {array} [properties.healthErrors] The list of errors / warnings
  * capturing details associated with the issue(s).
  */
 export interface Event extends Resource {
@@ -2182,16 +2207,16 @@ export interface Event extends Resource {
  * @constructor
  * Implements the event query parameter.
  *
- * @member {string} [eventCode] The source id of the events to be queried.
- * @member {string} [severity] The severity of the events to be queried.
- * @member {string} [eventType] The type of the events to be queried.
- * @member {string} [fabricName] The affected object server id of the events to
- * be queried.
- * @member {string} [affectedObjectFriendlyName] The affected object name of
+ * @property {string} [eventCode] The source id of the events to be queried.
+ * @property {string} [severity] The severity of the events to be queried.
+ * @property {string} [eventType] The type of the events to be queried.
+ * @property {string} [fabricName] The affected object server id of the events
+ * to be queried.
+ * @property {string} [affectedObjectFriendlyName] The affected object name of
  * the events to be queried.
- * @member {date} [startTime] The start time of the time range within which the
- * events are to be queried.
- * @member {date} [endTime] The end time of the time range within which the
+ * @property {date} [startTime] The start time of the time range within which
+ * the events are to be queried.
+ * @property {date} [endTime] The end time of the time range within which the
  * events are to be queried.
  */
 export interface EventQueryParameter {
@@ -2210,8 +2235,8 @@ export interface EventQueryParameter {
  * @constructor
  * This class represents details for export jobs workflow.
  *
- * @member {string} [blobUri] BlobUri of the exported jobs.
- * @member {string} [sasToken] The sas token to access blob.
+ * @property {string} [blobUri] BlobUri of the exported jobs.
+ * @property {string} [sasToken] The sas token to access blob.
  */
 export interface ExportJobDetails extends JobDetails {
   blobUri?: string;
@@ -2224,28 +2249,28 @@ export interface ExportJobDetails extends JobDetails {
  * @constructor
  * Fabric properties.
  *
- * @member {string} [friendlyName] Friendly name of the fabric.
- * @member {object} [encryptionDetails] Encryption details for the fabric.
- * @member {string} [encryptionDetails.kekState] The key encryption key state
+ * @property {string} [friendlyName] Friendly name of the fabric.
+ * @property {object} [encryptionDetails] Encryption details for the fabric.
+ * @property {string} [encryptionDetails.kekState] The key encryption key state
  * for the Vmm.
- * @member {string} [encryptionDetails.kekCertThumbprint] The key encryption
+ * @property {string} [encryptionDetails.kekCertThumbprint] The key encryption
  * key certificate thumbprint.
- * @member {date} [encryptionDetails.kekCertExpiryDate] The key encryption key
- * certificate expiry date.
- * @member {object} [rolloverEncryptionDetails] Rollover encryption details for
- * the fabric.
- * @member {string} [rolloverEncryptionDetails.kekState] The key encryption key
- * state for the Vmm.
- * @member {string} [rolloverEncryptionDetails.kekCertThumbprint] The key
+ * @property {date} [encryptionDetails.kekCertExpiryDate] The key encryption
+ * key certificate expiry date.
+ * @property {object} [rolloverEncryptionDetails] Rollover encryption details
+ * for the fabric.
+ * @property {string} [rolloverEncryptionDetails.kekState] The key encryption
+ * key state for the Vmm.
+ * @property {string} [rolloverEncryptionDetails.kekCertThumbprint] The key
  * encryption key certificate thumbprint.
- * @member {date} [rolloverEncryptionDetails.kekCertExpiryDate] The key
+ * @property {date} [rolloverEncryptionDetails.kekCertExpiryDate] The key
  * encryption key certificate expiry date.
- * @member {string} [internalIdentifier] Dra Registration Id.
- * @member {string} [bcdrState] BCDR state of the fabric.
- * @member {object} [customDetails] Fabric specific settings.
- * @member {string} [customDetails.instanceType] Polymorphic Discriminator
- * @member {array} [healthErrorDetails] Fabric health error details.
- * @member {string} [health] Health of fabric.
+ * @property {string} [internalIdentifier] Dra Registration Id.
+ * @property {string} [bcdrState] BCDR state of the fabric.
+ * @property {object} [customDetails] Fabric specific settings.
+ * @property {string} [customDetails.instanceType] Polymorphic Discriminator
+ * @property {array} [healthErrorDetails] Fabric health error details.
+ * @property {string} [health] Health of fabric.
  */
 export interface FabricProperties {
   friendlyName?: string;
@@ -2264,31 +2289,32 @@ export interface FabricProperties {
  * @constructor
  * Fabric definition.
  *
- * @member {object} [properties] Fabric related data.
- * @member {string} [properties.friendlyName] Friendly name of the fabric.
- * @member {object} [properties.encryptionDetails] Encryption details for the
+ * @property {object} [properties] Fabric related data.
+ * @property {string} [properties.friendlyName] Friendly name of the fabric.
+ * @property {object} [properties.encryptionDetails] Encryption details for the
  * fabric.
- * @member {string} [properties.encryptionDetails.kekState] The key encryption
- * key state for the Vmm.
- * @member {string} [properties.encryptionDetails.kekCertThumbprint] The key
- * encryption key certificate thumbprint.
- * @member {date} [properties.encryptionDetails.kekCertExpiryDate] The key
- * encryption key certificate expiry date.
- * @member {object} [properties.rolloverEncryptionDetails] Rollover encryption
- * details for the fabric.
- * @member {string} [properties.rolloverEncryptionDetails.kekState] The key
+ * @property {string} [properties.encryptionDetails.kekState] The key
  * encryption key state for the Vmm.
- * @member {string} [properties.rolloverEncryptionDetails.kekCertThumbprint]
+ * @property {string} [properties.encryptionDetails.kekCertThumbprint] The key
+ * encryption key certificate thumbprint.
+ * @property {date} [properties.encryptionDetails.kekCertExpiryDate] The key
+ * encryption key certificate expiry date.
+ * @property {object} [properties.rolloverEncryptionDetails] Rollover
+ * encryption details for the fabric.
+ * @property {string} [properties.rolloverEncryptionDetails.kekState] The key
+ * encryption key state for the Vmm.
+ * @property {string} [properties.rolloverEncryptionDetails.kekCertThumbprint]
  * The key encryption key certificate thumbprint.
- * @member {date} [properties.rolloverEncryptionDetails.kekCertExpiryDate] The
- * key encryption key certificate expiry date.
- * @member {string} [properties.internalIdentifier] Dra Registration Id.
- * @member {string} [properties.bcdrState] BCDR state of the fabric.
- * @member {object} [properties.customDetails] Fabric specific settings.
- * @member {string} [properties.customDetails.instanceType] Polymorphic
+ * @property {date} [properties.rolloverEncryptionDetails.kekCertExpiryDate]
+ * The key encryption key certificate expiry date.
+ * @property {string} [properties.internalIdentifier] Dra Registration Id.
+ * @property {string} [properties.bcdrState] BCDR state of the fabric.
+ * @property {object} [properties.customDetails] Fabric specific settings.
+ * @property {string} [properties.customDetails.instanceType] Polymorphic
  * Discriminator
- * @member {array} [properties.healthErrorDetails] Fabric health error details.
- * @member {string} [properties.health] Health of fabric.
+ * @property {array} [properties.healthErrorDetails] Fabric health error
+ * details.
+ * @property {string} [properties.health] Health of fabric.
  */
 export interface Fabric extends Resource {
   properties?: FabricProperties;
@@ -2300,8 +2326,8 @@ export interface Fabric extends Resource {
  * @constructor
  * Properties of site details provided during the time of site creation
  *
- * @member {object} [customDetails] Fabric provider specific creation input.
- * @member {string} [customDetails.instanceType] Polymorphic Discriminator
+ * @property {object} [customDetails] Fabric provider specific creation input.
+ * @property {string} [customDetails.instanceType] Polymorphic Discriminator
  */
 export interface FabricCreationInputProperties {
   customDetails?: FabricSpecificCreationInput;
@@ -2313,10 +2339,10 @@ export interface FabricCreationInputProperties {
  * @constructor
  * Site details provided during the time of site creation
  *
- * @member {object} [properties] Fabric creation input.
- * @member {object} [properties.customDetails] Fabric provider specific
+ * @property {object} [properties] Fabric creation input.
+ * @property {object} [properties.customDetails] Fabric provider specific
  * creation input.
- * @member {string} [properties.customDetails.instanceType] Polymorphic
+ * @property {string} [properties.customDetails.instanceType] Polymorphic
  * Discriminator
  */
 export interface FabricCreationInput {
@@ -2330,12 +2356,12 @@ export interface FabricCreationInput {
  * This class contains the minimal job details required to navigate to the
  * desired drill down.
  *
- * @member {string} [jobId] The job id.
- * @member {string} [jobFriendlyName] The job display name.
- * @member {string} [targetObjectId] The object id.
- * @member {string} [targetObjectName] The object name.
- * @member {string} [targetInstanceType] The workflow affected object type.
- * @member {string} [jobScenarioName] The job name. Enum type ScenarioName.
+ * @property {string} [jobId] The job id.
+ * @property {string} [jobFriendlyName] The job display name.
+ * @property {string} [targetObjectId] The object id.
+ * @property {string} [targetObjectName] The object name.
+ * @property {string} [targetInstanceType] The workflow affected object type.
+ * @property {string} [jobScenarioName] The job name. Enum type ScenarioName.
  */
 export interface JobEntity {
   jobId?: string;
@@ -2352,16 +2378,16 @@ export interface JobEntity {
  * @constructor
  * This class represents the fabric replication group task details.
  *
- * @member {string} [skippedReason] The skipped reason.
- * @member {string} [skippedReasonString] The skipped reason string.
- * @member {object} [jobTask] The job entity.
- * @member {string} [jobTask.jobId] The job id.
- * @member {string} [jobTask.jobFriendlyName] The job display name.
- * @member {string} [jobTask.targetObjectId] The object id.
- * @member {string} [jobTask.targetObjectName] The object name.
- * @member {string} [jobTask.targetInstanceType] The workflow affected object
+ * @property {string} [skippedReason] The skipped reason.
+ * @property {string} [skippedReasonString] The skipped reason string.
+ * @property {object} [jobTask] The job entity.
+ * @property {string} [jobTask.jobId] The job id.
+ * @property {string} [jobTask.jobFriendlyName] The job display name.
+ * @property {string} [jobTask.targetObjectId] The object id.
+ * @property {string} [jobTask.targetObjectName] The object name.
+ * @property {string} [jobTask.targetInstanceType] The workflow affected object
  * type.
- * @member {string} [jobTask.jobScenarioName] The job name. Enum type
+ * @property {string} [jobTask.jobScenarioName] The job name. Enum type
  * ScenarioName.
  */
 export interface FabricReplicationGroupTaskDetails extends TaskTypeDetails {
@@ -2376,15 +2402,15 @@ export interface FabricReplicationGroupTaskDetails extends TaskTypeDetails {
  * @constructor
  * Failover details for a replication protected item.
  *
- * @member {string} [name] The name.
- * @member {string} [friendlyName] The friendly name.
- * @member {string} [testVmName] The test Vm name.
- * @member {string} [testVmFriendlyName] The test Vm friendly name.
- * @member {string} [networkConnectionStatus] The network connection status.
- * @member {string} [networkFriendlyName] The network friendly name.
- * @member {string} [subnet] The network subnet.
- * @member {string} [recoveryPointId] The recovery point Id.
- * @member {date} [recoveryPointTime] The recovery point time.
+ * @property {string} [name] The name.
+ * @property {string} [friendlyName] The friendly name.
+ * @property {string} [testVmName] The test Vm name.
+ * @property {string} [testVmFriendlyName] The test Vm friendly name.
+ * @property {string} [networkConnectionStatus] The network connection status.
+ * @property {string} [networkFriendlyName] The network friendly name.
+ * @property {string} [subnet] The network subnet.
+ * @property {string} [recoveryPointId] The recovery point Id.
+ * @property {date} [recoveryPointTime] The recovery point time.
  */
 export interface FailoverReplicationProtectedItemDetails {
   name?: string;
@@ -2404,7 +2430,7 @@ export interface FailoverReplicationProtectedItemDetails {
  * @constructor
  * This class represents the details for a failover job.
  *
- * @member {array} [protectedItemDetails] The test VM details.
+ * @property {array} [protectedItemDetails] The test VM details.
  */
 export interface FailoverJobDetails extends JobDetails {
   protectedItemDetails?: FailoverReplicationProtectedItemDetails[];
@@ -2416,11 +2442,11 @@ export interface FailoverJobDetails extends JobDetails {
  * @constructor
  * The properties of the Failover Process Server request.
  *
- * @member {string} [containerName] The container identifier.
- * @member {string} [sourceProcessServerId] The source process server.
- * @member {string} [targetProcessServerId] The new process server.
- * @member {array} [vmsToMigrate] The VMS to migrate.
- * @member {string} [updateType] A value for failover type. It can be
+ * @property {string} [containerName] The container identifier.
+ * @property {string} [sourceProcessServerId] The source process server.
+ * @property {string} [targetProcessServerId] The new process server.
+ * @property {array} [vmsToMigrate] The VMS to migrate.
+ * @property {string} [updateType] A value for failover type. It can be
  * systemlevel/serverlevel
  */
 export interface FailoverProcessServerRequestProperties {
@@ -2437,13 +2463,14 @@ export interface FailoverProcessServerRequestProperties {
  * @constructor
  * Request to failover a process server.
  *
- * @member {object} [properties] The properties of the PS Failover request.
- * @member {string} [properties.containerName] The container identifier.
- * @member {string} [properties.sourceProcessServerId] The source process
+ * @property {object} [properties] The properties of the PS Failover request.
+ * @property {string} [properties.containerName] The container identifier.
+ * @property {string} [properties.sourceProcessServerId] The source process
  * server.
- * @member {string} [properties.targetProcessServerId] The new process server.
- * @member {array} [properties.vmsToMigrate] The VMS to migrate.
- * @member {string} [properties.updateType] A value for failover type. It can
+ * @property {string} [properties.targetProcessServerId] The new process
+ * server.
+ * @property {array} [properties.vmsToMigrate] The VMS to migrate.
+ * @property {string} [properties.updateType] A value for failover type. It can
  * be systemlevel/serverlevel
  */
 export interface FailoverProcessServerRequest {
@@ -2456,18 +2483,18 @@ export interface FailoverProcessServerRequest {
  * @constructor
  * class to define the summary of the health error details.
  *
- * @member {string} [summaryCode] The code of the health error.
- * @member {string} [category] The category of the health error. Possible
+ * @property {string} [summaryCode] The code of the health error.
+ * @property {string} [category] The category of the health error. Possible
  * values include: 'None', 'Replication', 'TestFailover', 'Configuration',
  * 'FabricInfrastructure', 'VersionExpiry', 'AgentAutoUpdate'
- * @member {string} [severity] Severity of error. Possible values include:
+ * @property {string} [severity] Severity of error. Possible values include:
  * 'NONE', 'Warning', 'Error', 'Info'
- * @member {string} [summaryMessage] The summary message of the health error.
- * @member {string} [affectedResourceType] The type of affected ARM resource.
- * @member {string} [affectedResourceSubtype] The sub type of any subcomponent
- * within the ARM resource that this might be applicable. Value remains null if
- * not applicable.
- * @member {array} [affectedResourceCorrelationIds] The list of affected
+ * @property {string} [summaryMessage] The summary message of the health error.
+ * @property {string} [affectedResourceType] The type of affected ARM resource.
+ * @property {string} [affectedResourceSubtype] The sub type of any
+ * subcomponent within the ARM resource that this might be applicable. Value
+ * remains null if not applicable.
+ * @property {array} [affectedResourceCorrelationIds] The list of affected
  * resource correlation Ids. This can be used to uniquely identify the count of
  * items affected by a specific category and severity as well as count of item
  * affected by an specific issue.
@@ -2488,10 +2515,10 @@ export interface HealthErrorSummary {
  * @constructor
  * Model class for event details of a HyperVReplica E2E event.
  *
- * @member {string} [containerName] The container friendly name.
- * @member {string} [fabricName] The fabric friendly name.
- * @member {string} [remoteContainerName] The remote container name.
- * @member {string} [remoteFabricName] The remote fabric name.
+ * @property {string} [containerName] The container friendly name.
+ * @property {string} [fabricName] The fabric friendly name.
+ * @property {string} [remoteContainerName] The remote container name.
+ * @property {string} [remoteFabricName] The remote fabric name.
  */
 export interface HyperVReplica2012EventDetails extends EventProviderSpecificDetails {
   containerName?: string;
@@ -2506,10 +2533,10 @@ export interface HyperVReplica2012EventDetails extends EventProviderSpecificDeta
  * @constructor
  * Model class for event details of a HyperVReplica blue E2E event.
  *
- * @member {string} [containerName] The container friendly name.
- * @member {string} [fabricName] The fabric friendly name.
- * @member {string} [remoteContainerName] The remote container name.
- * @member {string} [remoteFabricName] The remote fabric name.
+ * @property {string} [containerName] The container friendly name.
+ * @property {string} [fabricName] The fabric friendly name.
+ * @property {string} [remoteContainerName] The remote container name.
+ * @property {string} [remoteFabricName] The remote fabric name.
  */
 export interface HyperVReplica2012R2EventDetails extends EventProviderSpecificDetails {
   containerName?: string;
@@ -2524,11 +2551,12 @@ export interface HyperVReplica2012R2EventDetails extends EventProviderSpecificDe
  * @constructor
  * ApplyRecoveryPoint input specific to HyperVReplicaAzure provider.
  *
- * @member {string} [vaultLocation] The vault location where the recovery Vm
+ * @property {string} [vaultLocation] The vault location where the recovery Vm
  * resides.
- * @member {string} [primaryKekCertificatePfx] The primary kek certificate pfx.
- * @member {string} [secondaryKekCertificatePfx] The secondary kek certificate
+ * @property {string} [primaryKekCertificatePfx] The primary kek certificate
  * pfx.
+ * @property {string} [secondaryKekCertificatePfx] The secondary kek
+ * certificate pfx.
  */
 export interface HyperVReplicaAzureApplyRecoveryPointInput extends ApplyRecoveryPointProviderSpecificInput {
   vaultLocation?: string;
@@ -2542,30 +2570,31 @@ export interface HyperVReplicaAzureApplyRecoveryPointInput extends ApplyRecovery
  * @constructor
  * Azure specific enable protection input.
  *
- * @member {string} [hvHostVmId] The Hyper-V host Vm Id.
- * @member {string} [vmName] The Vm Name.
- * @member {string} [osType] The OS type associated with vm.
- * @member {string} [vhdId] The OS disk VHD id associated with vm.
- * @member {string} [targetStorageAccountId] The storage account name.
- * @member {string} [targetAzureNetworkId] The selected target Azure network
+ * @property {string} [hvHostVmId] The Hyper-V host Vm Id.
+ * @property {string} [vmName] The Vm Name.
+ * @property {string} [osType] The OS type associated with vm.
+ * @property {string} [vhdId] The OS disk VHD id associated with vm.
+ * @property {string} [targetStorageAccountId] The storage account name.
+ * @property {string} [targetAzureNetworkId] The selected target Azure network
  * Id.
- * @member {string} [targetAzureSubnetId] The selected target Azure subnet Id.
- * @member {string} [enableRdpOnTargetOption] The selected option to enable
+ * @property {string} [targetAzureSubnetId] The selected target Azure subnet
+ * Id.
+ * @property {string} [enableRdpOnTargetOption] The selected option to enable
  * RDP\SSH on target vm after failover. String value of
  * {SrsDataContract.EnableRDPOnTargetOption} enum.
- * @member {string} [targetAzureVmName] The target azure Vm Name.
- * @member {string} [logStorageAccountId] The storage account to be used for
+ * @property {string} [targetAzureVmName] The target azure Vm Name.
+ * @property {string} [logStorageAccountId] The storage account to be used for
  * logging during replication.
- * @member {array} [disksToInclude] The list of VHD IDs of disks to be
+ * @property {array} [disksToInclude] The list of VHD IDs of disks to be
  * protected.
- * @member {string} [targetAzureV1ResourceGroupId] The Id of the target
+ * @property {string} [targetAzureV1ResourceGroupId] The Id of the target
  * resource group (for classic deployment) in which the failover VM is to be
  * created.
- * @member {string} [targetAzureV2ResourceGroupId] The Id of the target
+ * @property {string} [targetAzureV2ResourceGroupId] The Id of the target
  * resource group (for resource manager deployment) in which the failover VM is
  * to be created.
- * @member {string} [useManagedDisks] A value indicating whether managed disks
- * should be used during failover.
+ * @property {string} [useManagedDisks] A value indicating whether managed
+ * disks should be used during failover.
  */
 export interface HyperVReplicaAzureEnableProtectionInput extends EnableProtectionProviderSpecificInput {
   hvHostVmId?: string;
@@ -2590,9 +2619,9 @@ export interface HyperVReplicaAzureEnableProtectionInput extends EnableProtectio
  * @constructor
  * Model class for event details of a HyperVReplica E2A event.
  *
- * @member {string} [containerName] The container friendly name.
- * @member {string} [fabricName] The fabric friendly name.
- * @member {string} [remoteContainerName] The remote container name.
+ * @property {string} [containerName] The container friendly name.
+ * @property {string} [fabricName] The fabric friendly name.
+ * @property {string} [remoteContainerName] The remote container name.
  */
 export interface HyperVReplicaAzureEventDetails extends EventProviderSpecificDetails {
   containerName?: string;
@@ -2606,11 +2635,11 @@ export interface HyperVReplicaAzureEventDetails extends EventProviderSpecificDet
  * @constructor
  * HvrA provider specific input for failback.
  *
- * @member {string} [dataSyncOption] Data sync option.
- * @member {string} [recoveryVmCreationOption] ALR options to create alternate
- * recovery.
- * @member {string} [providerIdForAlternateRecovery] Provider ID for alternate
- * location
+ * @property {string} [dataSyncOption] Data sync option.
+ * @property {string} [recoveryVmCreationOption] ALR options to create
+ * alternate recovery.
+ * @property {string} [providerIdForAlternateRecovery] Provider ID for
+ * alternate location
  */
 export interface HyperVReplicaAzureFailbackProviderInput extends ProviderSpecificFailoverInput {
   dataSyncOption?: string;
@@ -2624,10 +2653,11 @@ export interface HyperVReplicaAzureFailbackProviderInput extends ProviderSpecifi
  * @constructor
  * HvrA provider specific input for failover.
  *
- * @member {string} [vaultLocation] Location of the vault.
- * @member {string} [primaryKekCertificatePfx] Primary kek certificate pfx.
- * @member {string} [secondaryKekCertificatePfx] Secondary kek certificate pfx.
- * @member {string} [recoveryPointId] The recovery point id to be passed to
+ * @property {string} [vaultLocation] Location of the vault.
+ * @property {string} [primaryKekCertificatePfx] Primary kek certificate pfx.
+ * @property {string} [secondaryKekCertificatePfx] Secondary kek certificate
+ * pfx.
+ * @property {string} [recoveryPointId] The recovery point id to be passed to
  * failover to a particular recovery point. In case of latest recovery point,
  * null should be passed.
  */
@@ -2644,18 +2674,18 @@ export interface HyperVReplicaAzureFailoverProviderInput extends ProviderSpecifi
  * @constructor
  * Hyper-V Replica Azure specific protection profile details.
  *
- * @member {number} [recoveryPointHistoryDurationInHours] The duration (in
+ * @property {number} [recoveryPointHistoryDurationInHours] The duration (in
  * hours) to which point the recovery history needs to be maintained.
- * @member {number} [applicationConsistentSnapshotFrequencyInHours] The
+ * @property {number} [applicationConsistentSnapshotFrequencyInHours] The
  * interval (in hours) at which Hyper-V Replica should create an application
  * consistent snapshot within the VM.
- * @member {number} [replicationInterval] The replication interval.
- * @member {string} [onlineReplicationStartTime] The scheduled start time for
+ * @property {number} [replicationInterval] The replication interval.
+ * @property {string} [onlineReplicationStartTime] The scheduled start time for
  * the initial replication. If this parameter is Null, the initial replication
  * starts immediately.
- * @member {string} [encryption] A value indicating whether encryption is
+ * @property {string} [encryption] A value indicating whether encryption is
  * enabled for virtual machines in this cloud.
- * @member {string} [activeStorageAccountId] The active storage account Id.
+ * @property {string} [activeStorageAccountId] The active storage account Id.
  */
 export interface HyperVReplicaAzurePolicyDetails extends PolicyProviderSpecificDetails {
   recoveryPointHistoryDurationInHours?: number;
@@ -2672,17 +2702,17 @@ export interface HyperVReplicaAzurePolicyDetails extends PolicyProviderSpecificD
  * @constructor
  * Hyper-V Replica Azure specific input for creating a protection profile.
  *
- * @member {number} [recoveryPointHistoryDuration] The duration (in hours) to
+ * @property {number} [recoveryPointHistoryDuration] The duration (in hours) to
  * which point the recovery history needs to be maintained.
- * @member {number} [applicationConsistentSnapshotFrequencyInHours] The
+ * @property {number} [applicationConsistentSnapshotFrequencyInHours] The
  * interval (in hours) at which Hyper-V Replica should create an application
  * consistent snapshot within the VM.
- * @member {number} [replicationInterval] The replication interval.
- * @member {string} [onlineReplicationStartTime] The scheduled start time for
+ * @property {number} [replicationInterval] The replication interval.
+ * @property {string} [onlineReplicationStartTime] The scheduled start time for
  * the initial replication. If this parameter is Null, the initial replication
  * starts immediately.
- * @member {array} [storageAccounts] The list of storage accounts to which the
- * VMs in the primary cloud can replicate to.
+ * @property {array} [storageAccounts] The list of storage accounts to which
+ * the VMs in the primary cloud can replicate to.
  */
 export interface HyperVReplicaAzurePolicyInput extends PolicyProviderSpecificInput {
   recoveryPointHistoryDuration?: number;
@@ -2698,8 +2728,8 @@ export interface HyperVReplicaAzurePolicyInput extends PolicyProviderSpecificInp
  * @constructor
  * Initial replication details.
  *
- * @member {string} [initialReplicationType] Initial replication type.
- * @member {string} [initialReplicationProgressPercentage] The initial
+ * @property {string} [initialReplicationType] Initial replication type.
+ * @property {string} [initialReplicationProgressPercentage] The initial
  * replication progress percentage.
  */
 export interface InitialReplicationDetails {
@@ -2713,12 +2743,12 @@ export interface InitialReplicationDetails {
  * @constructor
  * Disk Details.
  *
- * @member {string} [osType] VM Disk details.
- * @member {string} [productType] Product type.
- * @member {string} [osEdition] The OSEdition.
- * @member {string} [oSVersion] The OS Version.
- * @member {string} [oSMajorVersion] The OS Major Version.
- * @member {string} [oSMinorVersion] The OS Minor Version.
+ * @property {string} [osType] VM Disk details.
+ * @property {string} [productType] Product type.
+ * @property {string} [osEdition] The OSEdition.
+ * @property {string} [oSVersion] The OS Version.
+ * @property {string} [oSMajorVersion] The OS Major Version.
+ * @property {string} [oSMinorVersion] The OS Minor Version.
  */
 export interface OSDetails {
   osType?: string;
@@ -2735,54 +2765,54 @@ export interface OSDetails {
  * @constructor
  * Hyper V Replica Azure provider specific settings.
  *
- * @member {array} [azureVmDiskDetails] Azure VM Disk details.
- * @member {string} [recoveryAzureVmName] Recovery Azure given name.
- * @member {string} [recoveryAzureVMSize] The Recovery Azure VM size.
- * @member {string} [recoveryAzureStorageAccount] The recovery Azure storage
+ * @property {array} [azureVmDiskDetails] Azure VM Disk details.
+ * @property {string} [recoveryAzureVmName] Recovery Azure given name.
+ * @property {string} [recoveryAzureVMSize] The Recovery Azure VM size.
+ * @property {string} [recoveryAzureStorageAccount] The recovery Azure storage
  * account.
- * @member {string} [recoveryAzureLogStorageAccountId] The ARM id of the log
+ * @property {string} [recoveryAzureLogStorageAccountId] The ARM id of the log
  * storage account used for replication. This will be set to null if no log
  * storage account was provided during enable protection.
- * @member {date} [lastReplicatedTime] The Last replication time.
- * @member {number} [rpoInSeconds] Last RPO value.
- * @member {date} [lastRpoCalculatedTime] The last RPO calculated time.
- * @member {string} [vmId] The virtual machine Id.
- * @member {string} [vmProtectionState] The protection state for the vm.
- * @member {string} [vmProtectionStateDescription] The protection state
+ * @property {date} [lastReplicatedTime] The Last replication time.
+ * @property {number} [rpoInSeconds] Last RPO value.
+ * @property {date} [lastRpoCalculatedTime] The last RPO calculated time.
+ * @property {string} [vmId] The virtual machine Id.
+ * @property {string} [vmProtectionState] The protection state for the vm.
+ * @property {string} [vmProtectionStateDescription] The protection state
  * description for the vm.
- * @member {object} [initialReplicationDetails] Initial replication details.
- * @member {string} [initialReplicationDetails.initialReplicationType] Initial
- * replication type.
- * @member {string}
+ * @property {object} [initialReplicationDetails] Initial replication details.
+ * @property {string} [initialReplicationDetails.initialReplicationType]
+ * Initial replication type.
+ * @property {string}
  * [initialReplicationDetails.initialReplicationProgressPercentage] The initial
  * replication progress percentage.
- * @member {array} [vmNics] The PE Network details.
- * @member {string} [selectedRecoveryAzureNetworkId] The selected recovery
+ * @property {array} [vmNics] The PE Network details.
+ * @property {string} [selectedRecoveryAzureNetworkId] The selected recovery
  * azure network Id.
- * @member {string} [selectedSourceNicId] The selected source nic Id which will
- * be used as the primary nic during failover.
- * @member {string} [encryption] The encryption info.
- * @member {object} [oSDetails] The operating system info.
- * @member {string} [oSDetails.osType] VM Disk details.
- * @member {string} [oSDetails.productType] Product type.
- * @member {string} [oSDetails.osEdition] The OSEdition.
- * @member {string} [oSDetails.oSVersion] The OS Version.
- * @member {string} [oSDetails.oSMajorVersion] The OS Major Version.
- * @member {string} [oSDetails.oSMinorVersion] The OS Minor Version.
- * @member {number} [sourceVmRamSizeInMB] The RAM size of the VM on the primary
+ * @property {string} [selectedSourceNicId] The selected source nic Id which
+ * will be used as the primary nic during failover.
+ * @property {string} [encryption] The encryption info.
+ * @property {object} [oSDetails] The operating system info.
+ * @property {string} [oSDetails.osType] VM Disk details.
+ * @property {string} [oSDetails.productType] Product type.
+ * @property {string} [oSDetails.osEdition] The OSEdition.
+ * @property {string} [oSDetails.oSVersion] The OS Version.
+ * @property {string} [oSDetails.oSMajorVersion] The OS Major Version.
+ * @property {string} [oSDetails.oSMinorVersion] The OS Minor Version.
+ * @property {number} [sourceVmRamSizeInMB] The RAM size of the VM on the
+ * primary side.
+ * @property {number} [sourceVmCpuCount] The CPU count of the VM on the primary
  * side.
- * @member {number} [sourceVmCpuCount] The CPU count of the VM on the primary
- * side.
- * @member {string} [enableRdpOnTargetOption] The selected option to enable
+ * @property {string} [enableRdpOnTargetOption] The selected option to enable
  * RDP\SSH on target vm after failover. String value of
  * {SrsDataContract.EnableRDPOnTargetOption} enum.
- * @member {string} [recoveryAzureResourceGroupId] The target resource group
+ * @property {string} [recoveryAzureResourceGroupId] The target resource group
  * Id.
- * @member {string} [recoveryAvailabilitySetId] The recovery availability set
+ * @property {string} [recoveryAvailabilitySetId] The recovery availability set
  * Id.
- * @member {string} [useManagedDisks] A value indicating whether managed disks
- * should be used during failover.
- * @member {string} [licenseType] License Type of the VM to be used.
+ * @property {string} [useManagedDisks] A value indicating whether managed
+ * disks should be used during failover.
+ * @property {string} [licenseType] License Type of the VM to be used.
  */
 export interface HyperVReplicaAzureReplicationDetails extends ReplicationProviderSpecificSettings {
   azureVmDiskDetails?: AzureVmDiskDetails[];
@@ -2817,12 +2847,12 @@ export interface HyperVReplicaAzureReplicationDetails extends ReplicationProvide
  * @constructor
  * Azure specific reprotect input.
  *
- * @member {string} [hvHostVmId] The Hyper-V host Vm Id.
- * @member {string} [vmName] The Vm Name.
- * @member {string} [osType] The OS type associated with vm.
- * @member {string} [vHDId] The OS disk VHD id associated with vm.
- * @member {string} [storageAccountId] The storage account name.
- * @member {string} [logStorageAccountId] The storage account to be used for
+ * @property {string} [hvHostVmId] The Hyper-V host Vm Id.
+ * @property {string} [vmName] The Vm Name.
+ * @property {string} [osType] The OS type associated with vm.
+ * @property {string} [vHDId] The OS disk VHD id associated with vm.
+ * @property {string} [storageAccountId] The storage account name.
+ * @property {string} [logStorageAccountId] The storage account to be used for
  * logging during replication.
  */
 export interface HyperVReplicaAzureReprotectInput extends ReverseReplicationProviderSpecificInput {
@@ -2840,12 +2870,12 @@ export interface HyperVReplicaAzureReprotectInput extends ReverseReplicationProv
  * @constructor
  * HyperV replica Azure input to update replication protected item.
  *
- * @member {string} [recoveryAzureV1ResourceGroupId] The recovery Azure
+ * @property {string} [recoveryAzureV1ResourceGroupId] The recovery Azure
  * resource group Id for classic deployment.
- * @member {string} [recoveryAzureV2ResourceGroupId] The recovery Azure
+ * @property {string} [recoveryAzureV2ResourceGroupId] The recovery Azure
  * resource group Id for resource manager deployment.
- * @member {string} [useManagedDisks] A value indicating whether managed disks
- * should be used during failover.
+ * @property {string} [useManagedDisks] A value indicating whether managed
+ * disks should be used during failover.
  */
 export interface HyperVReplicaAzureUpdateReplicationProtectedItemInput extends UpdateReplicationProtectedItemProviderInput {
   recoveryAzureV1ResourceGroupId?: string;
@@ -2859,10 +2889,10 @@ export interface HyperVReplicaAzureUpdateReplicationProtectedItemInput extends U
  * @constructor
  * Abstract model class for event details of a HyperVReplica E2E event.
  *
- * @member {string} [containerName] The container friendly name.
- * @member {string} [fabricName] The fabric friendly name.
- * @member {string} [remoteContainerName] The remote container name.
- * @member {string} [remoteFabricName] The remote fabric name.
+ * @property {string} [containerName] The container friendly name.
+ * @property {string} [fabricName] The fabric friendly name.
+ * @property {string} [remoteContainerName] The remote container name.
+ * @property {string} [remoteFabricName] The remote fabric name.
  */
 export interface HyperVReplicaBaseEventDetails extends EventProviderSpecificDetails {
   containerName?: string;
@@ -2877,25 +2907,25 @@ export interface HyperVReplicaBaseEventDetails extends EventProviderSpecificDeta
  * @constructor
  * Base class for HyperVReplica policy details.
  *
- * @member {number} [recoveryPoints] A value indicating the number of recovery
- * points.
- * @member {number} [applicationConsistentSnapshotFrequencyInHours] A value
+ * @property {number} [recoveryPoints] A value indicating the number of
+ * recovery points.
+ * @property {number} [applicationConsistentSnapshotFrequencyInHours] A value
  * indicating the application consistent frequency.
- * @member {string} [compression] A value indicating whether compression has to
- * be enabled.
- * @member {string} [initialReplicationMethod] A value indicating whether IR is
- * online.
- * @member {string} [onlineReplicationStartTime] A value indicating the online
- * IR start time.
- * @member {string} [offlineReplicationImportPath] A value indicating the
+ * @property {string} [compression] A value indicating whether compression has
+ * to be enabled.
+ * @property {string} [initialReplicationMethod] A value indicating whether IR
+ * is online.
+ * @property {string} [onlineReplicationStartTime] A value indicating the
+ * online IR start time.
+ * @property {string} [offlineReplicationImportPath] A value indicating the
  * offline IR import path.
- * @member {string} [offlineReplicationExportPath] A value indicating the
+ * @property {string} [offlineReplicationExportPath] A value indicating the
  * offline IR export path.
- * @member {number} [replicationPort] A value indicating the recovery HTTPS
+ * @property {number} [replicationPort] A value indicating the recovery HTTPS
  * port.
- * @member {number} [allowedAuthenticationType] A value indicating the
+ * @property {number} [allowedAuthenticationType] A value indicating the
  * authentication type.
- * @member {string} [replicaDeletionOption] A value indicating whether the VM
+ * @property {string} [replicaDeletionOption] A value indicating whether the VM
  * has to be auto deleted. Supported Values: String.Empty, None,
  * OnRecoveryCloud
  */
@@ -2918,19 +2948,19 @@ export interface HyperVReplicaBasePolicyDetails extends PolicyProviderSpecificDe
  * @constructor
  * Hyper V replica provider specific settings base class.
  *
- * @member {date} [lastReplicatedTime] The Last replication time.
- * @member {array} [vmNics] The PE Network details.
- * @member {string} [vmId] The virtual machine Id.
- * @member {string} [vmProtectionState] The protection state for the vm.
- * @member {string} [vmProtectionStateDescription] The protection state
+ * @property {date} [lastReplicatedTime] The Last replication time.
+ * @property {array} [vmNics] The PE Network details.
+ * @property {string} [vmId] The virtual machine Id.
+ * @property {string} [vmProtectionState] The protection state for the vm.
+ * @property {string} [vmProtectionStateDescription] The protection state
  * description for the vm.
- * @member {object} [initialReplicationDetails] Initial replication details.
- * @member {string} [initialReplicationDetails.initialReplicationType] Initial
- * replication type.
- * @member {string}
+ * @property {object} [initialReplicationDetails] Initial replication details.
+ * @property {string} [initialReplicationDetails.initialReplicationType]
+ * Initial replication type.
+ * @property {string}
  * [initialReplicationDetails.initialReplicationProgressPercentage] The initial
  * replication progress percentage.
- * @member {array} [vMDiskDetails] VM disk details.
+ * @property {array} [vMDiskDetails] VM disk details.
  */
 export interface HyperVReplicaBaseReplicationDetails extends ReplicationProviderSpecificSettings {
   lastReplicatedTime?: Date;
@@ -2948,27 +2978,27 @@ export interface HyperVReplicaBaseReplicationDetails extends ReplicationProvider
  * @constructor
  * Hyper-V Replica Blue specific protection profile details.
  *
- * @member {number} [replicationFrequencyInSeconds] A value indicating the
+ * @property {number} [replicationFrequencyInSeconds] A value indicating the
  * replication interval.
- * @member {number} [recoveryPoints] A value indicating the number of recovery
- * points.
- * @member {number} [applicationConsistentSnapshotFrequencyInHours] A value
+ * @property {number} [recoveryPoints] A value indicating the number of
+ * recovery points.
+ * @property {number} [applicationConsistentSnapshotFrequencyInHours] A value
  * indicating the application consistent frequency.
- * @member {string} [compression] A value indicating whether compression has to
- * be enabled.
- * @member {string} [initialReplicationMethod] A value indicating whether IR is
- * online.
- * @member {string} [onlineReplicationStartTime] A value indicating the online
- * IR start time.
- * @member {string} [offlineReplicationImportPath] A value indicating the
+ * @property {string} [compression] A value indicating whether compression has
+ * to be enabled.
+ * @property {string} [initialReplicationMethod] A value indicating whether IR
+ * is online.
+ * @property {string} [onlineReplicationStartTime] A value indicating the
+ * online IR start time.
+ * @property {string} [offlineReplicationImportPath] A value indicating the
  * offline IR import path.
- * @member {string} [offlineReplicationExportPath] A value indicating the
+ * @property {string} [offlineReplicationExportPath] A value indicating the
  * offline IR export path.
- * @member {number} [replicationPort] A value indicating the recovery HTTPS
+ * @property {number} [replicationPort] A value indicating the recovery HTTPS
  * port.
- * @member {number} [allowedAuthenticationType] A value indicating the
+ * @property {number} [allowedAuthenticationType] A value indicating the
  * authentication type.
- * @member {string} [replicaDeletionOption] A value indicating whether the VM
+ * @property {string} [replicaDeletionOption] A value indicating whether the VM
  * has to be auto deleted. Supported Values: String.Empty, None,
  * OnRecoveryCloud
  */
@@ -2992,28 +3022,28 @@ export interface HyperVReplicaBluePolicyDetails extends PolicyProviderSpecificDe
  * @constructor
  * HyperV Replica Blue policy input.
  *
- * @member {number} [replicationFrequencyInSeconds] A value indicating the
+ * @property {number} [replicationFrequencyInSeconds] A value indicating the
  * replication interval.
- * @member {number} [recoveryPoints] A value indicating the number of recovery
- * points.
- * @member {number} [applicationConsistentSnapshotFrequencyInHours] A value
+ * @property {number} [recoveryPoints] A value indicating the number of
+ * recovery points.
+ * @property {number} [applicationConsistentSnapshotFrequencyInHours] A value
  * indicating the application consistent frequency.
- * @member {string} [compression] A value indicating whether compression has to
- * be enabled.
- * @member {string} [initialReplicationMethod] A value indicating whether IR is
- * online.
- * @member {string} [onlineReplicationStartTime] A value indicating the online
- * IR start time.
- * @member {string} [offlineReplicationImportPath] A value indicating the
+ * @property {string} [compression] A value indicating whether compression has
+ * to be enabled.
+ * @property {string} [initialReplicationMethod] A value indicating whether IR
+ * is online.
+ * @property {string} [onlineReplicationStartTime] A value indicating the
+ * online IR start time.
+ * @property {string} [offlineReplicationImportPath] A value indicating the
  * offline IR import path.
- * @member {string} [offlineReplicationExportPath] A value indicating the
+ * @property {string} [offlineReplicationExportPath] A value indicating the
  * offline IR export path.
- * @member {number} [replicationPort] A value indicating the recovery HTTPS
+ * @property {number} [replicationPort] A value indicating the recovery HTTPS
  * port.
- * @member {number} [allowedAuthenticationType] A value indicating the
+ * @property {number} [allowedAuthenticationType] A value indicating the
  * authentication type.
- * @member {string} [replicaDeletion] A value indicating whether the VM has to
- * be auto deleted.
+ * @property {string} [replicaDeletion] A value indicating whether the VM has
+ * to be auto deleted.
  */
 export interface HyperVReplicaBluePolicyInput extends PolicyProviderSpecificInput {
   replicationFrequencyInSeconds?: number;
@@ -3035,19 +3065,19 @@ export interface HyperVReplicaBluePolicyInput extends PolicyProviderSpecificInpu
  * @constructor
  * HyperV replica 2012 R2 (Blue) replication details.
  *
- * @member {date} [lastReplicatedTime] The Last replication time.
- * @member {array} [vmNics] The PE Network details.
- * @member {string} [vmId] The virtual machine Id.
- * @member {string} [vmProtectionState] The protection state for the vm.
- * @member {string} [vmProtectionStateDescription] The protection state
+ * @property {date} [lastReplicatedTime] The Last replication time.
+ * @property {array} [vmNics] The PE Network details.
+ * @property {string} [vmId] The virtual machine Id.
+ * @property {string} [vmProtectionState] The protection state for the vm.
+ * @property {string} [vmProtectionStateDescription] The protection state
  * description for the vm.
- * @member {object} [initialReplicationDetails] Initial replication details.
- * @member {string} [initialReplicationDetails.initialReplicationType] Initial
- * replication type.
- * @member {string}
+ * @property {object} [initialReplicationDetails] Initial replication details.
+ * @property {string} [initialReplicationDetails.initialReplicationType]
+ * Initial replication type.
+ * @property {string}
  * [initialReplicationDetails.initialReplicationProgressPercentage] The initial
  * replication progress percentage.
- * @member {array} [vMDiskDetails] VM disk details.
+ * @property {array} [vMDiskDetails] VM disk details.
  */
 export interface HyperVReplicaBlueReplicationDetails extends ReplicationProviderSpecificSettings {
   lastReplicatedTime?: Date;
@@ -3065,25 +3095,25 @@ export interface HyperVReplicaBlueReplicationDetails extends ReplicationProvider
  * @constructor
  * Hyper-V Replica Blue specific protection profile details.
  *
- * @member {number} [recoveryPoints] A value indicating the number of recovery
- * points.
- * @member {number} [applicationConsistentSnapshotFrequencyInHours] A value
+ * @property {number} [recoveryPoints] A value indicating the number of
+ * recovery points.
+ * @property {number} [applicationConsistentSnapshotFrequencyInHours] A value
  * indicating the application consistent frequency.
- * @member {string} [compression] A value indicating whether compression has to
- * be enabled.
- * @member {string} [initialReplicationMethod] A value indicating whether IR is
- * online.
- * @member {string} [onlineReplicationStartTime] A value indicating the online
- * IR start time.
- * @member {string} [offlineReplicationImportPath] A value indicating the
+ * @property {string} [compression] A value indicating whether compression has
+ * to be enabled.
+ * @property {string} [initialReplicationMethod] A value indicating whether IR
+ * is online.
+ * @property {string} [onlineReplicationStartTime] A value indicating the
+ * online IR start time.
+ * @property {string} [offlineReplicationImportPath] A value indicating the
  * offline IR import path.
- * @member {string} [offlineReplicationExportPath] A value indicating the
+ * @property {string} [offlineReplicationExportPath] A value indicating the
  * offline IR export path.
- * @member {number} [replicationPort] A value indicating the recovery HTTPS
+ * @property {number} [replicationPort] A value indicating the recovery HTTPS
  * port.
- * @member {number} [allowedAuthenticationType] A value indicating the
+ * @property {number} [allowedAuthenticationType] A value indicating the
  * authentication type.
- * @member {string} [replicaDeletionOption] A value indicating whether the VM
+ * @property {string} [replicaDeletionOption] A value indicating whether the VM
  * has to be auto deleted. Supported Values: String.Empty, None,
  * OnRecoveryCloud
  */
@@ -3106,26 +3136,26 @@ export interface HyperVReplicaPolicyDetails extends PolicyProviderSpecificDetail
  * @constructor
  * Hyper-V Replica specific policy Input.
  *
- * @member {number} [recoveryPoints] A value indicating the number of recovery
- * points.
- * @member {number} [applicationConsistentSnapshotFrequencyInHours] A value
+ * @property {number} [recoveryPoints] A value indicating the number of
+ * recovery points.
+ * @property {number} [applicationConsistentSnapshotFrequencyInHours] A value
  * indicating the application consistent frequency.
- * @member {string} [compression] A value indicating whether compression has to
- * be enabled.
- * @member {string} [initialReplicationMethod] A value indicating whether IR is
- * online.
- * @member {string} [onlineReplicationStartTime] A value indicating the online
- * IR start time.
- * @member {string} [offlineReplicationImportPath] A value indicating the
+ * @property {string} [compression] A value indicating whether compression has
+ * to be enabled.
+ * @property {string} [initialReplicationMethod] A value indicating whether IR
+ * is online.
+ * @property {string} [onlineReplicationStartTime] A value indicating the
+ * online IR start time.
+ * @property {string} [offlineReplicationImportPath] A value indicating the
  * offline IR import path.
- * @member {string} [offlineReplicationExportPath] A value indicating the
+ * @property {string} [offlineReplicationExportPath] A value indicating the
  * offline IR export path.
- * @member {number} [replicationPort] A value indicating the recovery HTTPS
+ * @property {number} [replicationPort] A value indicating the recovery HTTPS
  * port.
- * @member {number} [allowedAuthenticationType] A value indicating the
+ * @property {number} [allowedAuthenticationType] A value indicating the
  * authentication type.
- * @member {string} [replicaDeletion] A value indicating whether the VM has to
- * be auto deleted.
+ * @property {string} [replicaDeletion] A value indicating whether the VM has
+ * to be auto deleted.
  */
 export interface HyperVReplicaPolicyInput extends PolicyProviderSpecificInput {
   recoveryPoints?: number;
@@ -3146,19 +3176,19 @@ export interface HyperVReplicaPolicyInput extends PolicyProviderSpecificInput {
  * @constructor
  * HyperV replica 2012 replication details.
  *
- * @member {date} [lastReplicatedTime] The Last replication time.
- * @member {array} [vmNics] The PE Network details.
- * @member {string} [vmId] The virtual machine Id.
- * @member {string} [vmProtectionState] The protection state for the vm.
- * @member {string} [vmProtectionStateDescription] The protection state
+ * @property {date} [lastReplicatedTime] The Last replication time.
+ * @property {array} [vmNics] The PE Network details.
+ * @property {string} [vmId] The virtual machine Id.
+ * @property {string} [vmProtectionState] The protection state for the vm.
+ * @property {string} [vmProtectionStateDescription] The protection state
  * description for the vm.
- * @member {object} [initialReplicationDetails] Initial replication details.
- * @member {string} [initialReplicationDetails.initialReplicationType] Initial
- * replication type.
- * @member {string}
+ * @property {object} [initialReplicationDetails] Initial replication details.
+ * @property {string} [initialReplicationDetails.initialReplicationType]
+ * Initial replication type.
+ * @property {string}
  * [initialReplicationDetails.initialReplicationProgressPercentage] The initial
  * replication progress percentage.
- * @member {array} [vMDiskDetails] VM disk details.
+ * @property {array} [vMDiskDetails] VM disk details.
  */
 export interface HyperVReplicaReplicationDetails extends ReplicationProviderSpecificSettings {
   lastReplicatedTime?: Date;
@@ -3186,24 +3216,24 @@ export interface HyperVSiteDetails extends FabricSpecificDetails {
  * @constructor
  * Single Host fabric provider specific VM settings.
  *
- * @member {string} [sourceItemId] The source id of the object.
- * @member {string} [generation] The id of the object in fabric.
- * @member {object} [osDetails] The Last replication time.
- * @member {string} [osDetails.osType] VM Disk details.
- * @member {string} [osDetails.productType] Product type.
- * @member {string} [osDetails.osEdition] The OSEdition.
- * @member {string} [osDetails.oSVersion] The OS Version.
- * @member {string} [osDetails.oSMajorVersion] The OS Major Version.
- * @member {string} [osDetails.oSMinorVersion] The OS Minor Version.
- * @member {array} [diskDetails] The Last successful failover time.
- * @member {string} [hasPhysicalDisk] A value indicating whether the VM has a
+ * @property {string} [sourceItemId] The source id of the object.
+ * @property {string} [generation] The id of the object in fabric.
+ * @property {object} [osDetails] The Last replication time.
+ * @property {string} [osDetails.osType] VM Disk details.
+ * @property {string} [osDetails.productType] Product type.
+ * @property {string} [osDetails.osEdition] The OSEdition.
+ * @property {string} [osDetails.oSVersion] The OS Version.
+ * @property {string} [osDetails.oSMajorVersion] The OS Major Version.
+ * @property {string} [osDetails.oSMinorVersion] The OS Minor Version.
+ * @property {array} [diskDetails] The Last successful failover time.
+ * @property {string} [hasPhysicalDisk] A value indicating whether the VM has a
  * physical disk attached. String value of {SrsDataContract.PresenceStatus}
  * enum. Possible values include: 'Unknown', 'Present', 'NotPresent'
- * @member {string} [hasFibreChannelAdapter] A value indicating whether the VM
- * has a fibre channel adapter attached. String value of
+ * @property {string} [hasFibreChannelAdapter] A value indicating whether the
+ * VM has a fibre channel adapter attached. String value of
  * {SrsDataContract.PresenceStatus} enum. Possible values include: 'Unknown',
  * 'Present', 'NotPresent'
- * @member {string} [hasSharedVhd] A value indicating whether the VM has a
+ * @property {string} [hasSharedVhd] A value indicating whether the VM has a
  * shared VHD attached. String value of {SrsDataContract.PresenceStatus} enum.
  * Possible values include: 'Unknown', 'Present', 'NotPresent'
  */
@@ -3223,24 +3253,24 @@ export interface HyperVVirtualMachineDetails extends ConfigurationSettings {
  * @constructor
  * Identity details.
  *
- * @member {string} [identityProviderType] The identity provider type. Value is
- * the ToString() of a IdentityProviderType value. Possible values include:
+ * @property {string} [identityProviderType] The identity provider type. Value
+ * is the ToString() of a IdentityProviderType value. Possible values include:
  * 'RecoveryServicesActiveDirectory'
- * @member {string} [tenantId] The tenant Id for the service principal with
+ * @property {string} [tenantId] The tenant Id for the service principal with
  * which the on-premise management/data plane components would communicate with
  * our Azure services.
- * @member {string} [applicationId] The application/client Id for the service
+ * @property {string} [applicationId] The application/client Id for the service
  * principal with which the on-premise management/data plane components would
  * communicate with our Azure services.
- * @member {string} [objectId] The object Id of the service principal with
+ * @property {string} [objectId] The object Id of the service principal with
  * which the on-premise management/data plane components would communicate with
  * our Azure services.
- * @member {string} [audience] The intended Audience of the service principal
+ * @property {string} [audience] The intended Audience of the service principal
  * with which the on-premise management/data plane components would communicate
  * with our Azure services.
- * @member {string} [aadAuthority] The base authority for Azure Active
+ * @property {string} [aadAuthority] The base authority for Azure Active
  * Directory authentication.
- * @member {string} [certificateThumbprint] The certificate thumbprint.
+ * @property {string} [certificateThumbprint] The certificate thumbprint.
  * Applicable only if IdentityProviderType is RecoveryServicesActiveDirectory.
  */
 export interface IdentityInformation {
@@ -3259,7 +3289,7 @@ export interface IdentityInformation {
  * @constructor
  * This class represents the inline workflow task details.
  *
- * @member {array} [workflowIds] The list of child workflow ids.
+ * @property {array} [workflowIds] The list of child workflow ids.
  */
 export interface InlineWorkflowTaskDetails extends GroupTaskDetails {
   workflowIds?: string[];
@@ -3271,12 +3301,12 @@ export interface InlineWorkflowTaskDetails extends GroupTaskDetails {
  * @constructor
  * The details of the InMage agent.
  *
- * @member {string} [agentVersion] The agent version.
- * @member {string} [agentUpdateStatus] A value indicating whether installed
+ * @property {string} [agentVersion] The agent version.
+ * @property {string} [agentUpdateStatus] A value indicating whether installed
  * agent needs to be updated.
- * @member {string} [postUpdateRebootStatus] A value indicating whether reboot
- * is required after update is applied.
- * @member {date} [agentExpiryDate] Agent expiry date.
+ * @property {string} [postUpdateRebootStatus] A value indicating whether
+ * reboot is required after update is applied.
+ * @property {date} [agentExpiryDate] Agent expiry date.
  */
 export interface InMageAgentDetails {
   agentVersion?: string;
@@ -3291,11 +3321,11 @@ export interface InMageAgentDetails {
  * @constructor
  * InMage agent version details.
  *
- * @member {string} [postUpdateRebootStatus] A value indicating whether reboot
- * is required after update is applied.
- * @member {string} [version] The agent version.
- * @member {date} [expiryDate] Version expiry date.
- * @member {string} [status] A value indicating whether security update
+ * @property {string} [postUpdateRebootStatus] A value indicating whether
+ * reboot is required after update is applied.
+ * @property {string} [version] The agent version.
+ * @property {date} [expiryDate] Version expiry date.
+ * @property {string} [status] A value indicating whether security update
  * required. Possible values include: 'Supported', 'NotSupported',
  * 'Deprecated', 'UpdateRequired', 'SecurityUpdateRequired'
  */
@@ -3312,7 +3342,7 @@ export interface InMageAgentVersionDetails {
  * @constructor
  * ApplyRecoveryPoint input specific to InMageAzureV2 provider.
  *
- * @member {string} [vaultLocation] The vault location where the recovery Vm
+ * @property {string} [vaultLocation] The vault location where the recovery Vm
  * resides.
  */
 export interface InMageAzureV2ApplyRecoveryPointInput extends ApplyRecoveryPointProviderSpecificInput {
@@ -3325,30 +3355,31 @@ export interface InMageAzureV2ApplyRecoveryPointInput extends ApplyRecoveryPoint
  * @constructor
  * VMware Azure specific enable protection input.
  *
- * @member {string} [masterTargetId] The Master target Id.
- * @member {string} [processServerId] The Process Server Id.
- * @member {string} storageAccountId The storage account name.
- * @member {string} [runAsAccountId] The CS account Id.
- * @member {string} [multiVmGroupId] The multi vm group Id.
- * @member {string} [multiVmGroupName] The multi vm group name.
- * @member {array} [disksToInclude] The disks to include list.
- * @member {string} [targetAzureNetworkId] The selected target Azure network
+ * @property {string} [masterTargetId] The Master target Id.
+ * @property {string} [processServerId] The Process Server Id.
+ * @property {string} storageAccountId The storage account name.
+ * @property {string} [runAsAccountId] The CS account Id.
+ * @property {string} [multiVmGroupId] The multi vm group Id.
+ * @property {string} [multiVmGroupName] The multi vm group name.
+ * @property {array} [disksToInclude] The disks to include list.
+ * @property {string} [targetAzureNetworkId] The selected target Azure network
  * Id.
- * @member {string} [targetAzureSubnetId] The selected target Azure subnet Id.
- * @member {string} [enableRdpOnTargetOption] The selected option to enable
+ * @property {string} [targetAzureSubnetId] The selected target Azure subnet
+ * Id.
+ * @property {string} [enableRdpOnTargetOption] The selected option to enable
  * RDP\SSH on target vm after failover. String value of
  * {SrsDataContract.EnableRDPOnTargetOption} enum.
- * @member {string} [targetAzureVmName] The target azure Vm Name.
- * @member {string} [logStorageAccountId] The storage account to be used for
+ * @property {string} [targetAzureVmName] The target azure Vm Name.
+ * @property {string} [logStorageAccountId] The storage account to be used for
  * logging during replication.
- * @member {string} [targetAzureV1ResourceGroupId] The Id of the target
+ * @property {string} [targetAzureV1ResourceGroupId] The Id of the target
  * resource group (for classic deployment) in which the failover VM is to be
  * created.
- * @member {string} [targetAzureV2ResourceGroupId] The Id of the target
+ * @property {string} [targetAzureV2ResourceGroupId] The Id of the target
  * resource group (for resource manager deployment) in which the failover VM is
  * to be created.
- * @member {string} [useManagedDisks] A value indicating whether managed disks
- * should be used during failover.
+ * @property {string} [useManagedDisks] A value indicating whether managed
+ * disks should be used during failover.
  */
 export interface InMageAzureV2EnableProtectionInput extends EnableProtectionProviderSpecificInput {
   masterTargetId?: string;
@@ -3374,14 +3405,15 @@ export interface InMageAzureV2EnableProtectionInput extends EnableProtectionProv
  * @constructor
  * Model class for event details of a VMwareAzureV2 event.
  *
- * @member {string} [eventType] InMage Event type. Takes one of the values of
+ * @property {string} [eventType] InMage Event type. Takes one of the values of
  * {InMageDataContract.InMageMonitoringEventType}.
- * @member {string} [category] InMage Event Category.
- * @member {string} [component] InMage Event Component.
- * @member {string} [correctiveAction] Corrective Action string for the event.
- * @member {string} [details] InMage Event Details.
- * @member {string} [summary] InMage Event Summary.
- * @member {string} [siteName] VMware Site name.
+ * @property {string} [category] InMage Event Category.
+ * @property {string} [component] InMage Event Component.
+ * @property {string} [correctiveAction] Corrective Action string for the
+ * event.
+ * @property {string} [details] InMage Event Details.
+ * @property {string} [summary] InMage Event Summary.
+ * @property {string} [siteName] VMware Site name.
  */
 export interface InMageAzureV2EventDetails extends EventProviderSpecificDetails {
   eventType?: string;
@@ -3399,8 +3431,8 @@ export interface InMageAzureV2EventDetails extends EventProviderSpecificDetails 
  * @constructor
  * InMageAzureV2 provider specific input for failover.
  *
- * @member {string} [vaultLocation] Location of the vault.
- * @member {string} [recoveryPointId] The recovery point id to be passed to
+ * @property {string} [vaultLocation] Location of the vault.
+ * @property {string} [recoveryPointId] The recovery point id to be passed to
  * failover to a particular recovery point. In case of latest recovery point,
  * null should be passed.
  */
@@ -3415,15 +3447,15 @@ export interface InMageAzureV2FailoverProviderInput extends ProviderSpecificFail
  * @constructor
  * InMage Azure v2 specific protection profile details.
  *
- * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
+ * @property {number} [crashConsistentFrequencyInMinutes] The crash consistent
  * snapshot frequency in minutes.
- * @member {number} [recoveryPointThresholdInMinutes] The recovery point
+ * @property {number} [recoveryPointThresholdInMinutes] The recovery point
  * threshold in minutes.
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
- * @member {number} [appConsistentFrequencyInMinutes] The app consistent
+ * @property {number} [recoveryPointHistory] The duration in minutes until
+ * which the recovery points need to be stored.
+ * @property {number} [appConsistentFrequencyInMinutes] The app consistent
  * snapshot frequency in minutes.
- * @member {string} [multiVmSyncStatus] A value indicating whether multi-VM
+ * @property {string} [multiVmSyncStatus] A value indicating whether multi-VM
  * sync has to be enabled.
  */
 export interface InMageAzureV2PolicyDetails extends PolicyProviderSpecificDetails {
@@ -3440,17 +3472,17 @@ export interface InMageAzureV2PolicyDetails extends PolicyProviderSpecificDetail
  * @constructor
  * VMWare Azure specific policy Input.
  *
- * @member {number} [recoveryPointThresholdInMinutes] The recovery point
+ * @property {number} [recoveryPointThresholdInMinutes] The recovery point
  * threshold in minutes.
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
- * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
+ * @property {number} [recoveryPointHistory] The duration in minutes until
+ * which the recovery points need to be stored.
+ * @property {number} [crashConsistentFrequencyInMinutes] The crash consistent
  * snapshot frequency (in minutes).
- * @member {number} [appConsistentFrequencyInMinutes] The app consistent
+ * @property {number} [appConsistentFrequencyInMinutes] The app consistent
  * snapshot frequency (in minutes).
- * @member {string} multiVmSyncStatus A value indicating whether multi-VM sync
- * has to be enabled. Value should be 'Enabled' or 'Disabled'. Possible values
- * include: 'Enable', 'Disable'
+ * @property {string} multiVmSyncStatus A value indicating whether multi-VM
+ * sync has to be enabled. Value should be 'Enabled' or 'Disabled'. Possible
+ * values include: 'Enable', 'Disable'
  */
 export interface InMageAzureV2PolicyInput extends PolicyProviderSpecificInput {
   recoveryPointThresholdInMinutes?: number;
@@ -3466,23 +3498,24 @@ export interface InMageAzureV2PolicyInput extends PolicyProviderSpecificInput {
  * @constructor
  * InMageAzureV2 protected disk details.
  *
- * @member {string} [diskId] The disk id.
- * @member {string} [diskName] The disk name.
- * @member {string} [protectionStage] The protection stage.
- * @member {string} [healthErrorCode] The health error code for the disk.
- * @member {number} [rpoInSeconds] The RPO in seconds.
- * @member {string} [resyncRequired] A value indicating whether resync is
+ * @property {string} [diskId] The disk id.
+ * @property {string} [diskName] The disk name.
+ * @property {string} [protectionStage] The protection stage.
+ * @property {string} [healthErrorCode] The health error code for the disk.
+ * @property {number} [rpoInSeconds] The RPO in seconds.
+ * @property {string} [resyncRequired] A value indicating whether resync is
  * required for this disk.
- * @member {number} [resyncProgressPercentage] The resync progress percentage.
- * @member {number} [resyncDurationInSeconds] The resync duration in seconds.
- * @member {number} [diskCapacityInBytes] The disk capacity in bytes.
- * @member {number} [fileSystemCapacityInBytes] The disk file system capacity
+ * @property {number} [resyncProgressPercentage] The resync progress
+ * percentage.
+ * @property {number} [resyncDurationInSeconds] The resync duration in seconds.
+ * @property {number} [diskCapacityInBytes] The disk capacity in bytes.
+ * @property {number} [fileSystemCapacityInBytes] The disk file system capacity
  * in bytes.
- * @member {number} [sourceDataInMegaBytes] The source data transit in MB.
- * @member {number} [psDataInMegaBytes] The PS data transit in MB.
- * @member {number} [targetDataInMegaBytes] The target data transit in MB.
- * @member {string} [diskResized] A value indicating whether disk is resized.
- * @member {date} [lastRpoCalculatedTime] The last RPO calculated time.
+ * @property {number} [sourceDataInMegaBytes] The source data transit in MB.
+ * @property {number} [psDataInMegaBytes] The PS data transit in MB.
+ * @property {number} [targetDataInMegaBytes] The target data transit in MB.
+ * @property {string} [diskResized] A value indicating whether disk is resized.
+ * @property {date} [lastRpoCalculatedTime] The last RPO calculated time.
  */
 export interface InMageAzureV2ProtectedDiskDetails {
   diskId?: string;
@@ -3508,7 +3541,7 @@ export interface InMageAzureV2ProtectedDiskDetails {
  * @constructor
  * InMage Azure V2 provider specific recovery point details.
  *
- * @member {string} [isMultiVmSyncPoint] A value indicating whether the
+ * @property {string} [isMultiVmSyncPoint] A value indicating whether the
  * recovery point is multi VM consistent.
  */
 export interface InMageAzureV2RecoveryPointDetails extends ProviderSpecificRecoveryPointDetails {
@@ -3521,81 +3554,82 @@ export interface InMageAzureV2RecoveryPointDetails extends ProviderSpecificRecov
  * @constructor
  * InMageAzureV2 provider specific settings
  *
- * @member {string} [infrastructureVmId] The infrastructure VM Id.
- * @member {string} [vCenterInfrastructureId] The vCenter infrastructure Id.
- * @member {string} [protectionStage] The protection stage.
- * @member {string} [vmId] The virtual machine Id.
- * @member {string} [vmProtectionState] The protection state for the vm.
- * @member {string} [vmProtectionStateDescription] The protection state
+ * @property {string} [infrastructureVmId] The infrastructure VM Id.
+ * @property {string} [vCenterInfrastructureId] The vCenter infrastructure Id.
+ * @property {string} [protectionStage] The protection stage.
+ * @property {string} [vmId] The virtual machine Id.
+ * @property {string} [vmProtectionState] The protection state for the vm.
+ * @property {string} [vmProtectionStateDescription] The protection state
  * description for the vm.
- * @member {number} [resyncProgressPercentage] The resync progress percentage.
- * @member {number} [rpoInSeconds] The RPO in seconds.
- * @member {number} [compressedDataRateInMB] The compressed data change rate in
- * MB.
- * @member {number} [uncompressedDataRateInMB] The uncompressed data change
+ * @property {number} [resyncProgressPercentage] The resync progress
+ * percentage.
+ * @property {number} [rpoInSeconds] The RPO in seconds.
+ * @property {number} [compressedDataRateInMB] The compressed data change rate
+ * in MB.
+ * @property {number} [uncompressedDataRateInMB] The uncompressed data change
  * rate in MB.
- * @member {string} [ipAddress] The source IP address.
- * @member {string} [agentVersion] The agent version.
- * @member {date} [agentExpiryDate] Agent expiry date.
- * @member {string} [isAgentUpdateRequired] A value indicating whether
+ * @property {string} [ipAddress] The source IP address.
+ * @property {string} [agentVersion] The agent version.
+ * @property {date} [agentExpiryDate] Agent expiry date.
+ * @property {string} [isAgentUpdateRequired] A value indicating whether
  * installed agent needs to be updated.
- * @member {string} [isRebootAfterUpdateRequired] A value indicating whether
+ * @property {string} [isRebootAfterUpdateRequired] A value indicating whether
  * the source server requires a restart after update.
- * @member {date} [lastHeartbeat] The last heartbeat received from the source
+ * @property {date} [lastHeartbeat] The last heartbeat received from the source
  * server.
- * @member {string} [processServerId] The process server Id.
- * @member {string} [multiVmGroupId] The multi vm group Id.
- * @member {string} [multiVmGroupName] The multi vm group name.
- * @member {string} [multiVmSyncStatus] A value indicating whether multi vm
+ * @property {string} [processServerId] The process server Id.
+ * @property {string} [multiVmGroupId] The multi vm group Id.
+ * @property {string} [multiVmGroupName] The multi vm group name.
+ * @property {string} [multiVmSyncStatus] A value indicating whether multi vm
  * sync is enabled or disabled.
- * @member {array} [protectedDisks] The list of protected disks.
- * @member {string} [diskResized] A value indicating whether any disk is
+ * @property {array} [protectedDisks] The list of protected disks.
+ * @property {string} [diskResized] A value indicating whether any disk is
  * resized for this VM.
- * @member {string} [masterTargetId] The master target Id.
- * @member {number} [sourceVmCpuCount] The CPU count of the VM on the primary
+ * @property {string} [masterTargetId] The master target Id.
+ * @property {number} [sourceVmCpuCount] The CPU count of the VM on the primary
  * side.
- * @member {number} [sourceVmRamSizeInMB] The RAM size of the VM on the primary
- * side.
- * @member {string} [osType] The type of the OS on the VM.
- * @member {string} [vhdName] The OS disk VHD name.
- * @member {string} [osDiskId] The id of the disk containing the OS.
- * @member {array} [azureVMDiskDetails] Azure VM Disk details.
- * @member {string} [recoveryAzureVMName] Recovery Azure given name.
- * @member {string} [recoveryAzureVMSize] The Recovery Azure VM size.
- * @member {string} [recoveryAzureStorageAccount] The recovery Azure storage
+ * @property {number} [sourceVmRamSizeInMB] The RAM size of the VM on the
+ * primary side.
+ * @property {string} [osType] The type of the OS on the VM.
+ * @property {string} [vhdName] The OS disk VHD name.
+ * @property {string} [osDiskId] The id of the disk containing the OS.
+ * @property {array} [azureVMDiskDetails] Azure VM Disk details.
+ * @property {string} [recoveryAzureVMName] Recovery Azure given name.
+ * @property {string} [recoveryAzureVMSize] The Recovery Azure VM size.
+ * @property {string} [recoveryAzureStorageAccount] The recovery Azure storage
  * account.
- * @member {string} [recoveryAzureLogStorageAccountId] The ARM id of the log
+ * @property {string} [recoveryAzureLogStorageAccountId] The ARM id of the log
  * storage account used for replication. This will be set to null if no log
  * storage account was provided during enable protection.
- * @member {array} [vmNics] The PE Network details.
- * @member {string} [selectedRecoveryAzureNetworkId] The selected recovery
+ * @property {array} [vmNics] The PE Network details.
+ * @property {string} [selectedRecoveryAzureNetworkId] The selected recovery
  * azure network Id.
- * @member {string} [selectedSourceNicId] The selected source nic Id which will
- * be used as the primary nic during failover.
- * @member {string} [discoveryType] A value indicating the discovery type of
+ * @property {string} [selectedSourceNicId] The selected source nic Id which
+ * will be used as the primary nic during failover.
+ * @property {string} [discoveryType] A value indicating the discovery type of
  * the machine. Value can be vCenter or physical.
- * @member {string} [enableRdpOnTargetOption] The selected option to enable
+ * @property {string} [enableRdpOnTargetOption] The selected option to enable
  * RDP\SSH on target vm after failover. String value of
  * {SrsDataContract.EnableRDPOnTargetOption} enum.
- * @member {array} [datastores] The datastores of the on-premise machine. Value
- * can be list of strings that contain datastore names.
- * @member {string} [targetVmId] The ARM Id of the target Azure VM. This value
- * will be null until the VM is failed over. Only after failure it will be
- * populated with the ARM Id of the Azure VM.
- * @member {string} [recoveryAzureResourceGroupId] The target resource group
+ * @property {array} [datastores] The datastores of the on-premise machine.
+ * Value can be list of strings that contain datastore names.
+ * @property {string} [targetVmId] The ARM Id of the target Azure VM. This
+ * value will be null until the VM is failed over. Only after failure it will
+ * be populated with the ARM Id of the Azure VM.
+ * @property {string} [recoveryAzureResourceGroupId] The target resource group
  * Id.
- * @member {string} [recoveryAvailabilitySetId] The recovery availability set
+ * @property {string} [recoveryAvailabilitySetId] The recovery availability set
  * Id.
- * @member {string} [useManagedDisks] A value indicating whether managed disks
- * should be used during failover.
- * @member {string} [licenseType] License Type of the VM to be used.
- * @member {array} [validationErrors] The validation errors of the on-premise
+ * @property {string} [useManagedDisks] A value indicating whether managed
+ * disks should be used during failover.
+ * @property {string} [licenseType] License Type of the VM to be used.
+ * @property {array} [validationErrors] The validation errors of the on-premise
  * machine Value can be list of validation errors.
- * @member {date} [lastRpoCalculatedTime] The last RPO calculated time.
- * @member {date} [lastUpdateReceivedTime] The last update time received from
+ * @property {date} [lastRpoCalculatedTime] The last RPO calculated time.
+ * @property {date} [lastUpdateReceivedTime] The last update time received from
  * on-prem components.
- * @member {string} [replicaId] The replica id of the protected item.
- * @member {string} [osVersion] The OS Version of the protected item.
+ * @property {string} [replicaId] The replica id of the protected item.
+ * @property {string} [osVersion] The OS Version of the protected item.
  */
 export interface InMageAzureV2ReplicationDetails extends ReplicationProviderSpecificSettings {
   infrastructureVmId?: string;
@@ -3655,14 +3689,14 @@ export interface InMageAzureV2ReplicationDetails extends ReplicationProviderSpec
  * @constructor
  * InMageAzureV2 specific provider input.
  *
- * @member {string} [masterTargetId] The Master target Id.
- * @member {string} [processServerId] The Process Server Id.
- * @member {string} [storageAccountId] The storage account id.
- * @member {string} [runAsAccountId] The CS account Id.
- * @member {string} [policyId] The Policy Id.
- * @member {string} [logStorageAccountId] The storage account to be used for
+ * @property {string} [masterTargetId] The Master target Id.
+ * @property {string} [processServerId] The Process Server Id.
+ * @property {string} [storageAccountId] The storage account id.
+ * @property {string} [runAsAccountId] The CS account Id.
+ * @property {string} [policyId] The Policy Id.
+ * @property {string} [logStorageAccountId] The storage account to be used for
  * logging during replication.
- * @member {array} [disksToInclude] The disks to include list.
+ * @property {array} [disksToInclude] The disks to include list.
  */
 export interface InMageAzureV2ReprotectInput extends ReverseReplicationProviderSpecificInput {
   masterTargetId?: string;
@@ -3680,12 +3714,12 @@ export interface InMageAzureV2ReprotectInput extends ReverseReplicationProviderS
  * @constructor
  * InMage Azure V2 input to update replication protected item.
  *
- * @member {string} [recoveryAzureV1ResourceGroupId] The recovery Azure
+ * @property {string} [recoveryAzureV1ResourceGroupId] The recovery Azure
  * resource group Id for classic deployment.
- * @member {string} [recoveryAzureV2ResourceGroupId] The recovery Azure
+ * @property {string} [recoveryAzureV2ResourceGroupId] The recovery Azure
  * resource group Id for resource manager deployment.
- * @member {string} [useManagedDisks] A value indicating whether managed disks
- * should be used during failover.
+ * @property {string} [useManagedDisks] A value indicating whether managed
+ * disks should be used during failover.
  */
 export interface InMageAzureV2UpdateReplicationProtectedItemInput extends UpdateReplicationProtectedItemProviderInput {
   recoveryAzureV1ResourceGroupId?: string;
@@ -3699,13 +3733,13 @@ export interface InMageAzureV2UpdateReplicationProtectedItemInput extends Update
  * @constructor
  * Base class for the policies of providers using InMage replication.
  *
- * @member {number} [recoveryPointThresholdInMinutes] The recovery point
+ * @property {number} [recoveryPointThresholdInMinutes] The recovery point
  * threshold in minutes.
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
- * @member {number} [appConsistentFrequencyInMinutes] The app consistent
+ * @property {number} [recoveryPointHistory] The duration in minutes until
+ * which the recovery points need to be stored.
+ * @property {number} [appConsistentFrequencyInMinutes] The app consistent
  * snapshot frequency in minutes.
- * @member {string} [multiVmSyncStatus] A value indicating whether multi-VM
+ * @property {string} [multiVmSyncStatus] A value indicating whether multi-VM
  * sync has to be enabled.
  */
 export interface InMageBasePolicyDetails extends PolicyProviderSpecificDetails {
@@ -3721,7 +3755,7 @@ export interface InMageBasePolicyDetails extends PolicyProviderSpecificDetails {
  * @constructor
  * InMage disable protection provider specific input.
  *
- * @member {string} [replicaVmDeletionStatus] A value indicating whether the
+ * @property {string} [replicaVmDeletionStatus] A value indicating whether the
  * replica VM should be destroyed or retained. Values from Delete and Retain.
  */
 export interface InMageDisableProtectionProviderSpecificInput extends DisableProtectionProviderSpecificInput {
@@ -3734,13 +3768,13 @@ export interface InMageDisableProtectionProviderSpecificInput extends DisablePro
  * @constructor
  * VMware/Physical specific Disk Details
  *
- * @member {string} [diskId] The disk Id.
- * @member {string} [diskName] The disk name.
- * @member {string} [diskSizeInMB] The disk size in MB.
- * @member {string} [diskType] Whether disk is system disk or data disk.
- * @member {string} [diskConfiguration] Whether disk is dynamic disk or basic
+ * @property {string} [diskId] The disk Id.
+ * @property {string} [diskName] The disk name.
+ * @property {string} [diskSizeInMB] The disk size in MB.
+ * @property {string} [diskType] Whether disk is system disk or data disk.
+ * @property {string} [diskConfiguration] Whether disk is dynamic disk or basic
  * disk.
- * @member {array} [volumeList] Volumes of the disk.
+ * @property {array} [volumeList] Volumes of the disk.
  */
 export interface InMageDiskDetails {
   diskId?: string;
@@ -3758,11 +3792,11 @@ export interface InMageDiskDetails {
  * Guest disk signature based disk exclusion option when doing enable
  * protection of virtual machine in InMage provider.
  *
- * @member {string} [volumeLabel] The volume label. The disk having any volume
- * with this label will be excluded from replication.
- * @member {string} [onlyExcludeIfSingleVolume] The value indicating whether to
- * exclude multi volume disk or not. If a disk has multiple volumes and one of
- * the volume has label matching with VolumeLabel this disk will be excluded
+ * @property {string} [volumeLabel] The volume label. The disk having any
+ * volume with this label will be excluded from replication.
+ * @property {string} [onlyExcludeIfSingleVolume] The value indicating whether
+ * to exclude multi volume disk or not. If a disk has multiple volumes and one
+ * of the volume has label matching with VolumeLabel this disk will be excluded
  * from replication if OnlyExcludeIfSingleVolume is false.
  */
 export interface InMageVolumeExclusionOptions {
@@ -3777,8 +3811,8 @@ export interface InMageVolumeExclusionOptions {
  * Guest disk signature based disk exclusion option when doing enable
  * protection of virtual machine in InMage provider.
  *
- * @member {string} [diskSignature] The guest signature of disk to be excluded
- * from replication.
+ * @property {string} [diskSignature] The guest signature of disk to be
+ * excluded from replication.
  */
 export interface InMageDiskSignatureExclusionOptions {
   diskSignature?: string;
@@ -3791,10 +3825,10 @@ export interface InMageDiskSignatureExclusionOptions {
  * DiskExclusionInput when doing enable protection of virtual machine in InMage
  * provider.
  *
- * @member {array} [volumeOptions] The volume label based option for disk
+ * @property {array} [volumeOptions] The volume label based option for disk
  * exclusion.
- * @member {array} [diskSignatureOptions] The guest disk signature based option
- * for disk exclusion.
+ * @property {array} [diskSignatureOptions] The guest disk signature based
+ * option for disk exclusion.
  */
 export interface InMageDiskExclusionInput {
   volumeOptions?: InMageVolumeExclusionOptions[];
@@ -3807,20 +3841,20 @@ export interface InMageDiskExclusionInput {
  * @constructor
  * VMware Azure specific enable protection input.
  *
- * @member {string} [vmFriendlyName] The Vm Name.
- * @member {string} masterTargetId The Master Target Id.
- * @member {string} processServerId The Process Server Id.
- * @member {string} retentionDrive The retention drive to use on the MT.
- * @member {string} [runAsAccountId] The CS account Id.
- * @member {string} multiVmGroupId The multi vm group Id.
- * @member {string} multiVmGroupName The multi vm group name.
- * @member {string} [datastoreName] The target datastore name.
- * @member {object} [diskExclusionInput] The enable disk exclusion input.
- * @member {array} [diskExclusionInput.volumeOptions] The volume label based
+ * @property {string} [vmFriendlyName] The Vm Name.
+ * @property {string} masterTargetId The Master Target Id.
+ * @property {string} processServerId The Process Server Id.
+ * @property {string} retentionDrive The retention drive to use on the MT.
+ * @property {string} [runAsAccountId] The CS account Id.
+ * @property {string} multiVmGroupId The multi vm group Id.
+ * @property {string} multiVmGroupName The multi vm group name.
+ * @property {string} [datastoreName] The target datastore name.
+ * @property {object} [diskExclusionInput] The enable disk exclusion input.
+ * @property {array} [diskExclusionInput.volumeOptions] The volume label based
  * option for disk exclusion.
- * @member {array} [diskExclusionInput.diskSignatureOptions] The guest disk
+ * @property {array} [diskExclusionInput.diskSignatureOptions] The guest disk
  * signature based option for disk exclusion.
- * @member {array} [disksToInclude] The disks to include list.
+ * @property {array} [disksToInclude] The disks to include list.
  */
 export interface InMageEnableProtectionInput extends EnableProtectionProviderSpecificInput {
   vmFriendlyName?: string;
@@ -3841,12 +3875,12 @@ export interface InMageEnableProtectionInput extends EnableProtectionProviderSpe
  * @constructor
  * Provider specific input for InMage failover.
  *
- * @member {string} [recoveryPointType] The recovery point type. Values from
+ * @property {string} [recoveryPointType] The recovery point type. Values from
  * LatestTime, LatestTag or Custom. In the case of custom, the recovery point
  * provided by RecoveryPointId will be used. In the other two cases, recovery
  * point id will be ignored. Possible values include: 'LatestTime',
  * 'LatestTag', 'Custom'
- * @member {string} [recoveryPointId] The recovery point id to be passed to
+ * @property {string} [recoveryPointId] The recovery point id to be passed to
  * failover to a particular recovery point. In case of latest recovery point,
  * null should be passed.
  */
@@ -3861,13 +3895,13 @@ export interface InMageFailoverProviderInput extends ProviderSpecificFailoverInp
  * @constructor
  * InMage specific protection profile details.
  *
- * @member {number} [recoveryPointThresholdInMinutes] The recovery point
+ * @property {number} [recoveryPointThresholdInMinutes] The recovery point
  * threshold in minutes.
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
- * @member {number} [appConsistentFrequencyInMinutes] The app consistent
+ * @property {number} [recoveryPointHistory] The duration in minutes until
+ * which the recovery points need to be stored.
+ * @property {number} [appConsistentFrequencyInMinutes] The app consistent
  * snapshot frequency in minutes.
- * @member {string} [multiVmSyncStatus] A value indicating whether multi-VM
+ * @property {string} [multiVmSyncStatus] A value indicating whether multi-VM
  * sync has to be enabled.
  */
 export interface InMagePolicyDetails extends PolicyProviderSpecificDetails {
@@ -3883,15 +3917,15 @@ export interface InMagePolicyDetails extends PolicyProviderSpecificDetails {
  * @constructor
  * VMWare Azure specific protection profile Input.
  *
- * @member {number} [recoveryPointThresholdInMinutes] The recovery point
+ * @property {number} [recoveryPointThresholdInMinutes] The recovery point
  * threshold in minutes.
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
- * @member {number} [appConsistentFrequencyInMinutes] The app consistent
+ * @property {number} [recoveryPointHistory] The duration in minutes until
+ * which the recovery points need to be stored.
+ * @property {number} [appConsistentFrequencyInMinutes] The app consistent
  * snapshot frequency (in minutes).
- * @member {string} multiVmSyncStatus A value indicating whether multi-VM sync
- * has to be enabled. Value should be 'Enabled' or 'Disabled'. Possible values
- * include: 'Enable', 'Disable'
+ * @property {string} multiVmSyncStatus A value indicating whether multi-VM
+ * sync has to be enabled. Value should be 'Enabled' or 'Disabled'. Possible
+ * values include: 'Enable', 'Disable'
  */
 export interface InMagePolicyInput extends PolicyProviderSpecificInput {
   recoveryPointThresholdInMinutes?: number;
@@ -3906,23 +3940,24 @@ export interface InMagePolicyInput extends PolicyProviderSpecificInput {
  * @constructor
  * InMage protected disk details.
  *
- * @member {string} [diskId] The disk id.
- * @member {string} [diskName] The disk name.
- * @member {string} [protectionStage] The protection stage.
- * @member {string} [healthErrorCode] The health error code for the disk.
- * @member {number} [rpoInSeconds] The RPO in seconds.
- * @member {string} [resyncRequired] A value indicating whether resync is
+ * @property {string} [diskId] The disk id.
+ * @property {string} [diskName] The disk name.
+ * @property {string} [protectionStage] The protection stage.
+ * @property {string} [healthErrorCode] The health error code for the disk.
+ * @property {number} [rpoInSeconds] The RPO in seconds.
+ * @property {string} [resyncRequired] A value indicating whether resync is
  * required for this disk.
- * @member {number} [resyncProgressPercentage] The resync progress percentage.
- * @member {number} [resyncDurationInSeconds] The resync duration in seconds.
- * @member {number} [diskCapacityInBytes] The disk capacity in bytes.
- * @member {number} [fileSystemCapacityInBytes] The file system capacity in
+ * @property {number} [resyncProgressPercentage] The resync progress
+ * percentage.
+ * @property {number} [resyncDurationInSeconds] The resync duration in seconds.
+ * @property {number} [diskCapacityInBytes] The disk capacity in bytes.
+ * @property {number} [fileSystemCapacityInBytes] The file system capacity in
  * bytes.
- * @member {number} [sourceDataInMB] The source data transit in MB.
- * @member {number} [psDataInMB] The PS data transit in MB.
- * @member {number} [targetDataInMB] The target data transit in MB.
- * @member {string} [diskResized] A value indicating whether disk is resized.
- * @member {date} [lastRpoCalculatedTime] The last RPO calculated time.
+ * @property {number} [sourceDataInMB] The source data transit in MB.
+ * @property {number} [psDataInMB] The PS data transit in MB.
+ * @property {number} [targetDataInMB] The target data transit in MB.
+ * @property {string} [diskResized] A value indicating whether disk is resized.
+ * @property {date} [lastRpoCalculatedTime] The last RPO calculated time.
  */
 export interface InMageProtectedDiskDetails {
   diskId?: string;
@@ -3948,9 +3983,9 @@ export interface InMageProtectedDiskDetails {
  * @constructor
  * Details of the OS Disk.
  *
- * @member {string} [osVhdId] The id of the disk containing the OS.
- * @member {string} [osType] The type of the OS on the VM.
- * @member {string} [vhdName] The OS disk VHD name.
+ * @property {string} [osVhdId] The id of the disk containing the OS.
+ * @property {string} [osType] The type of the OS on the VM.
+ * @property {string} [vhdName] The OS disk VHD name.
  */
 export interface OSDiskDetails {
   osVhdId?: string;
@@ -3964,74 +3999,74 @@ export interface OSDiskDetails {
  * @constructor
  * InMage provider specific settings
  *
- * @member {string} [activeSiteType] The active location of the VM. If the VM
+ * @property {string} [activeSiteType] The active location of the VM. If the VM
  * is being protected from Azure, this field will take values from { Azure,
  * OnPrem }. If the VM is being protected between two data-centers, this field
  * will be OnPrem always.
- * @member {number} [sourceVmCpuCount] The CPU count of the VM on the primary
+ * @property {number} [sourceVmCpuCount] The CPU count of the VM on the primary
  * side.
- * @member {number} [sourceVmRamSizeInMB] The RAM size of the VM on the primary
- * side.
- * @member {object} [osDetails] The OS details.
- * @member {string} [osDetails.osVhdId] The id of the disk containing the OS.
- * @member {string} [osDetails.osType] The type of the OS on the VM.
- * @member {string} [osDetails.vhdName] The OS disk VHD name.
- * @member {string} [protectionStage] The protection stage.
- * @member {string} [vmId] The virtual machine Id.
- * @member {string} [vmProtectionState] The protection state for the vm.
- * @member {string} [vmProtectionStateDescription] The protection state
+ * @property {number} [sourceVmRamSizeInMB] The RAM size of the VM on the
+ * primary side.
+ * @property {object} [osDetails] The OS details.
+ * @property {string} [osDetails.osVhdId] The id of the disk containing the OS.
+ * @property {string} [osDetails.osType] The type of the OS on the VM.
+ * @property {string} [osDetails.vhdName] The OS disk VHD name.
+ * @property {string} [protectionStage] The protection stage.
+ * @property {string} [vmId] The virtual machine Id.
+ * @property {string} [vmProtectionState] The protection state for the vm.
+ * @property {string} [vmProtectionStateDescription] The protection state
  * description for the vm.
- * @member {object} [resyncDetails] The resync details of the machine
- * @member {string} [resyncDetails.initialReplicationType] Initial replication
- * type.
- * @member {string} [resyncDetails.initialReplicationProgressPercentage] The
+ * @property {object} [resyncDetails] The resync details of the machine
+ * @property {string} [resyncDetails.initialReplicationType] Initial
+ * replication type.
+ * @property {string} [resyncDetails.initialReplicationProgressPercentage] The
  * initial replication progress percentage.
- * @member {date} [retentionWindowStart] The retention window start time.
- * @member {date} [retentionWindowEnd] The retention window end time.
- * @member {number} [compressedDataRateInMB] The compressed data change rate in
- * MB.
- * @member {number} [uncompressedDataRateInMB] The uncompressed data change
+ * @property {date} [retentionWindowStart] The retention window start time.
+ * @property {date} [retentionWindowEnd] The retention window end time.
+ * @property {number} [compressedDataRateInMB] The compressed data change rate
+ * in MB.
+ * @property {number} [uncompressedDataRateInMB] The uncompressed data change
  * rate in MB.
- * @member {number} [rpoInSeconds] The RPO in seconds.
- * @member {array} [protectedDisks] The list of protected disks.
- * @member {string} [ipAddress] The source IP address.
- * @member {date} [lastHeartbeat] The last heartbeat received from the source
+ * @property {number} [rpoInSeconds] The RPO in seconds.
+ * @property {array} [protectedDisks] The list of protected disks.
+ * @property {string} [ipAddress] The source IP address.
+ * @property {date} [lastHeartbeat] The last heartbeat received from the source
  * server.
- * @member {string} [processServerId] The process server Id.
- * @member {string} [masterTargetId] The master target Id.
- * @member {object} [consistencyPoints] The collection of Consistency points.
- * @member {string} [diskResized] A value indicating whether any disk is
+ * @property {string} [processServerId] The process server Id.
+ * @property {string} [masterTargetId] The master target Id.
+ * @property {object} [consistencyPoints] The collection of Consistency points.
+ * @property {string} [diskResized] A value indicating whether any disk is
  * resized for this VM.
- * @member {string} [rebootAfterUpdateStatus] A value indicating whether the
+ * @property {string} [rebootAfterUpdateStatus] A value indicating whether the
  * source server requires a restart after update.
- * @member {string} [multiVmGroupId] The multi vm group Id, if any.
- * @member {string} [multiVmGroupName] The multi vm group name, if any.
- * @member {string} [multiVmSyncStatus] A value indicating whether the multi vm
- * sync is enabled or disabled.
- * @member {object} [agentDetails] The agent details.
- * @member {string} [agentDetails.agentVersion] The agent version.
- * @member {string} [agentDetails.agentUpdateStatus] A value indicating whether
- * installed agent needs to be updated.
- * @member {string} [agentDetails.postUpdateRebootStatus] A value indicating
+ * @property {string} [multiVmGroupId] The multi vm group Id, if any.
+ * @property {string} [multiVmGroupName] The multi vm group name, if any.
+ * @property {string} [multiVmSyncStatus] A value indicating whether the multi
+ * vm sync is enabled or disabled.
+ * @property {object} [agentDetails] The agent details.
+ * @property {string} [agentDetails.agentVersion] The agent version.
+ * @property {string} [agentDetails.agentUpdateStatus] A value indicating
+ * whether installed agent needs to be updated.
+ * @property {string} [agentDetails.postUpdateRebootStatus] A value indicating
  * whether reboot is required after update is applied.
- * @member {date} [agentDetails.agentExpiryDate] Agent expiry date.
- * @member {string} [vCenterInfrastructureId] The vCenter infrastructure Id.
- * @member {string} [infrastructureVmId] The infrastructure VM Id.
- * @member {array} [vmNics] The PE Network details.
- * @member {string} [discoveryType] A value indicating the discovery type of
+ * @property {date} [agentDetails.agentExpiryDate] Agent expiry date.
+ * @property {string} [vCenterInfrastructureId] The vCenter infrastructure Id.
+ * @property {string} [infrastructureVmId] The infrastructure VM Id.
+ * @property {array} [vmNics] The PE Network details.
+ * @property {string} [discoveryType] A value indicating the discovery type of
  * the machine.
- * @member {string} [azureStorageAccountId] A value indicating the underlying
+ * @property {string} [azureStorageAccountId] A value indicating the underlying
  * Azure storage account. If the VM is not running in Azure, this value shall
  * be set to null.
- * @member {array} [datastores] The datastores of the on-premise machine Value
- * can be list of strings that contain datastore names
- * @member {array} [validationErrors] The validation errors of the on-premise
+ * @property {array} [datastores] The datastores of the on-premise machine
+ * Value can be list of strings that contain datastore names
+ * @property {array} [validationErrors] The validation errors of the on-premise
  * machine Value can be list of validation errors
- * @member {date} [lastRpoCalculatedTime] The last RPO calculated time.
- * @member {date} [lastUpdateReceivedTime] The last update time received from
+ * @property {date} [lastRpoCalculatedTime] The last RPO calculated time.
+ * @property {date} [lastUpdateReceivedTime] The last update time received from
  * on-prem components.
- * @member {string} [replicaId] The replica id of the protected item.
- * @member {string} [osVersion] The OS Version of the protected item.
+ * @property {string} [replicaId] The replica id of the protected item.
+ * @property {string} [osVersion] The OS Version of the protected item.
  */
 export interface InMageReplicationDetails extends ReplicationProviderSpecificSettings {
   activeSiteType?: string;
@@ -4079,18 +4114,18 @@ export interface InMageReplicationDetails extends ReplicationProviderSpecificSet
  * @constructor
  * InMageAzureV2 specific provider input.
  *
- * @member {string} masterTargetId The Master Target Id.
- * @member {string} processServerId The Process Server Id.
- * @member {string} retentionDrive The retention drive to use on the MT.
- * @member {string} [runAsAccountId] The CS account Id.
- * @member {string} [datastoreName] The target datastore name.
- * @member {object} [diskExclusionInput] The enable disk exclusion input.
- * @member {array} [diskExclusionInput.volumeOptions] The volume label based
+ * @property {string} masterTargetId The Master Target Id.
+ * @property {string} processServerId The Process Server Id.
+ * @property {string} retentionDrive The retention drive to use on the MT.
+ * @property {string} [runAsAccountId] The CS account Id.
+ * @property {string} [datastoreName] The target datastore name.
+ * @property {object} [diskExclusionInput] The enable disk exclusion input.
+ * @property {array} [diskExclusionInput.volumeOptions] The volume label based
  * option for disk exclusion.
- * @member {array} [diskExclusionInput.diskSignatureOptions] The guest disk
+ * @property {array} [diskExclusionInput.diskSignatureOptions] The guest disk
  * signature based option for disk exclusion.
- * @member {string} profileId The Policy Id.
- * @member {array} [disksToInclude] The disks to include list.
+ * @property {string} profileId The Policy Id.
+ * @property {array} [disksToInclude] The disks to include list.
  */
 export interface InMageReprotectInput extends ReverseReplicationProviderSpecificInput {
   masterTargetId: string;
@@ -4109,29 +4144,30 @@ export interface InMageReprotectInput extends ReverseReplicationProviderSpecific
  * @constructor
  * Job custom data details.
  *
- * @member {string} [activityId] The activity id.
- * @member {string} [scenarioName] The ScenarioName.
- * @member {string} [friendlyName] The DisplayName.
- * @member {string} [state] The status of the Job. It is one of these values -
- * NotStarted, InProgress, Succeeded, Failed, Cancelled, Suspended or Other.
- * @member {string} [stateDescription] The description of the state of the Job.
- * For e.g. - For Succeeded state, description can be Completed,
+ * @property {string} [activityId] The activity id.
+ * @property {string} [scenarioName] The ScenarioName.
+ * @property {string} [friendlyName] The DisplayName.
+ * @property {string} [state] The status of the Job. It is one of these values
+ * - NotStarted, InProgress, Succeeded, Failed, Cancelled, Suspended or Other.
+ * @property {string} [stateDescription] The description of the state of the
+ * Job. For e.g. - For Succeeded state, description can be Completed,
  * PartiallySucceeded, CompletedWithInformation or Skipped.
- * @member {array} [tasks] The tasks.
- * @member {array} [errors] The errors.
- * @member {date} [startTime] The start time.
- * @member {date} [endTime] The end time.
- * @member {array} [allowedActions] The Allowed action the job.
- * @member {string} [targetObjectId] The affected Object Id.
- * @member {string} [targetObjectName] The name of the affected object.
- * @member {string} [targetInstanceType] The type of the affected object which
- * is of {Microsoft.Azure.SiteRecovery.V2015_11_10.AffectedObjectType} class.
- * @member {object} [customDetails] The custom job details like test failover
+ * @property {array} [tasks] The tasks.
+ * @property {array} [errors] The errors.
+ * @property {date} [startTime] The start time.
+ * @property {date} [endTime] The end time.
+ * @property {array} [allowedActions] The Allowed action the job.
+ * @property {string} [targetObjectId] The affected Object Id.
+ * @property {string} [targetObjectName] The name of the affected object.
+ * @property {string} [targetInstanceType] The type of the affected object
+ * which is of {Microsoft.Azure.SiteRecovery.V2015_11_10.AffectedObjectType}
+ * class.
+ * @property {object} [customDetails] The custom job details like test failover
  * job details.
- * @member {object} [customDetails.affectedObjectDetails] The affected object
+ * @property {object} [customDetails.affectedObjectDetails] The affected object
  * properties like source server, source cloud, target server, target cloud
  * etc. based on the workflow object details.
- * @member {string} [customDetails.instanceType] Polymorphic Discriminator
+ * @property {string} [customDetails.instanceType] Polymorphic Discriminator
  */
 export interface JobProperties {
   activityId?: string;
@@ -4156,33 +4192,33 @@ export interface JobProperties {
  * @constructor
  * Job details.
  *
- * @member {object} [properties] The custom data.
- * @member {string} [properties.activityId] The activity id.
- * @member {string} [properties.scenarioName] The ScenarioName.
- * @member {string} [properties.friendlyName] The DisplayName.
- * @member {string} [properties.state] The status of the Job. It is one of
+ * @property {object} [properties] The custom data.
+ * @property {string} [properties.activityId] The activity id.
+ * @property {string} [properties.scenarioName] The ScenarioName.
+ * @property {string} [properties.friendlyName] The DisplayName.
+ * @property {string} [properties.state] The status of the Job. It is one of
  * these values - NotStarted, InProgress, Succeeded, Failed, Cancelled,
  * Suspended or Other.
- * @member {string} [properties.stateDescription] The description of the state
- * of the Job. For e.g. - For Succeeded state, description can be Completed,
- * PartiallySucceeded, CompletedWithInformation or Skipped.
- * @member {array} [properties.tasks] The tasks.
- * @member {array} [properties.errors] The errors.
- * @member {date} [properties.startTime] The start time.
- * @member {date} [properties.endTime] The end time.
- * @member {array} [properties.allowedActions] The Allowed action the job.
- * @member {string} [properties.targetObjectId] The affected Object Id.
- * @member {string} [properties.targetObjectName] The name of the affected
+ * @property {string} [properties.stateDescription] The description of the
+ * state of the Job. For e.g. - For Succeeded state, description can be
+ * Completed, PartiallySucceeded, CompletedWithInformation or Skipped.
+ * @property {array} [properties.tasks] The tasks.
+ * @property {array} [properties.errors] The errors.
+ * @property {date} [properties.startTime] The start time.
+ * @property {date} [properties.endTime] The end time.
+ * @property {array} [properties.allowedActions] The Allowed action the job.
+ * @property {string} [properties.targetObjectId] The affected Object Id.
+ * @property {string} [properties.targetObjectName] The name of the affected
  * object.
- * @member {string} [properties.targetInstanceType] The type of the affected
+ * @property {string} [properties.targetInstanceType] The type of the affected
  * object which is of
  * {Microsoft.Azure.SiteRecovery.V2015_11_10.AffectedObjectType} class.
- * @member {object} [properties.customDetails] The custom job details like test
- * failover job details.
- * @member {object} [properties.customDetails.affectedObjectDetails] The
+ * @property {object} [properties.customDetails] The custom job details like
+ * test failover job details.
+ * @property {object} [properties.customDetails.affectedObjectDetails] The
  * affected object properties like source server, source cloud, target server,
  * target cloud etc. based on the workflow object details.
- * @member {string} [properties.customDetails.instanceType] Polymorphic
+ * @property {string} [properties.customDetails.instanceType] Polymorphic
  * Discriminator
  */
 export interface Job extends Resource {
@@ -4195,11 +4231,12 @@ export interface Job extends Resource {
  * @constructor
  * Query parameter to enumerate jobs.
  *
- * @member {string} [startTime] Date time to get jobs from.
- * @member {string} [endTime] Date time to get jobs upto.
- * @member {string} [fabricId] The Id of the fabric to search jobs under.
- * @member {string} [affectedObjectTypes] The type of objects.
- * @member {string} [jobStatus] The states of the job to be filtered can be in.
+ * @property {string} [startTime] Date time to get jobs from.
+ * @property {string} [endTime] Date time to get jobs upto.
+ * @property {string} [fabricId] The Id of the fabric to search jobs under.
+ * @property {string} [affectedObjectTypes] The type of objects.
+ * @property {string} [jobStatus] The states of the job to be filtered can be
+ * in.
  */
 export interface JobQueryParameter {
   startTime?: string;
@@ -4215,10 +4252,10 @@ export interface JobQueryParameter {
  * @constructor
  * Model class for event details of a job status event.
  *
- * @member {string} [jobId] Job arm id for the event.
- * @member {string} [jobFriendlyName] JobName for the Event.
- * @member {string} [jobStatus] JobStatus for the Event.
- * @member {string} [affectedObjectType] AffectedObjectType for the event.
+ * @property {string} [jobId] Job arm id for the event.
+ * @property {string} [jobFriendlyName] JobName for the Event.
+ * @property {string} [jobStatus] JobStatus for the Event.
+ * @property {string} [affectedObjectType] AffectedObjectType for the event.
  */
 export interface JobStatusEventDetails extends EventSpecificDetails {
   jobId?: string;
@@ -4234,14 +4271,14 @@ export interface JobStatusEventDetails extends EventSpecificDetails {
  * This class represents a task which is actually a workflow so that one can
  * navigate to its individual drill down.
  *
- * @member {object} [jobTask] The job entity.
- * @member {string} [jobTask.jobId] The job id.
- * @member {string} [jobTask.jobFriendlyName] The job display name.
- * @member {string} [jobTask.targetObjectId] The object id.
- * @member {string} [jobTask.targetObjectName] The object name.
- * @member {string} [jobTask.targetInstanceType] The workflow affected object
+ * @property {object} [jobTask] The job entity.
+ * @property {string} [jobTask.jobId] The job id.
+ * @property {string} [jobTask.jobFriendlyName] The job display name.
+ * @property {string} [jobTask.targetObjectId] The object id.
+ * @property {string} [jobTask.targetObjectName] The object name.
+ * @property {string} [jobTask.targetInstanceType] The workflow affected object
  * type.
- * @member {string} [jobTask.jobScenarioName] The job name. Enum type
+ * @property {string} [jobTask.jobScenarioName] The job name. Enum type
  * ScenarioName.
  */
 export interface JobTaskDetails extends TaskTypeDetails {
@@ -4254,12 +4291,12 @@ export interface JobTaskDetails extends TaskTypeDetails {
  * @constructor
  * Logical Network Properties.
  *
- * @member {string} [friendlyName] The Friendly Name.
- * @member {string} [networkVirtualizationStatus] A value indicating whether
+ * @property {string} [friendlyName] The Friendly Name.
+ * @property {string} [networkVirtualizationStatus] A value indicating whether
  * Network Virtualization is enabled for the logical network.
- * @member {string} [logicalNetworkUsage] A value indicating whether logical
+ * @property {string} [logicalNetworkUsage] A value indicating whether logical
  * network is used as private test network by test failover.
- * @member {string} [logicalNetworkDefinitionsStatus] A value indicating
+ * @property {string} [logicalNetworkDefinitionsStatus] A value indicating
  * whether logical network definitions are isolated.
  */
 export interface LogicalNetworkProperties {
@@ -4275,13 +4312,14 @@ export interface LogicalNetworkProperties {
  * @constructor
  * Logical network data model.
  *
- * @member {object} [properties] The Logical Network Properties.
- * @member {string} [properties.friendlyName] The Friendly Name.
- * @member {string} [properties.networkVirtualizationStatus] A value indicating
- * whether Network Virtualization is enabled for the logical network.
- * @member {string} [properties.logicalNetworkUsage] A value indicating whether
- * logical network is used as private test network by test failover.
- * @member {string} [properties.logicalNetworkDefinitionsStatus] A value
+ * @property {object} [properties] The Logical Network Properties.
+ * @property {string} [properties.friendlyName] The Friendly Name.
+ * @property {string} [properties.networkVirtualizationStatus] A value
+ * indicating whether Network Virtualization is enabled for the logical
+ * network.
+ * @property {string} [properties.logicalNetworkUsage] A value indicating
+ * whether logical network is used as private test network by test failover.
+ * @property {string} [properties.logicalNetworkDefinitionsStatus] A value
  * indicating whether logical network definitions are isolated.
  */
 export interface LogicalNetwork extends Resource {
@@ -4294,9 +4332,9 @@ export interface LogicalNetwork extends Resource {
  * @constructor
  * This class represents the manual action task details.
  *
- * @member {string} [name] The name.
- * @member {string} [instructions] The instructions.
- * @member {string} [observation] The observation.
+ * @property {string} [name] The name.
+ * @property {string} [instructions] The instructions.
+ * @property {string} [observation] The observation.
  */
 export interface ManualActionTaskDetails extends TaskTypeDetails {
   name?: string;
@@ -4310,10 +4348,11 @@ export interface ManualActionTaskDetails extends TaskTypeDetails {
  * @constructor
  * The retention details of the MT.
  *
- * @member {string} [volumeName] The volume name.
- * @member {number} [capacityInBytes] The volume capacity.
- * @member {number} [freeSpaceInBytes] The free space available in this volume.
- * @member {number} [thresholdPercentage] The threshold percentage.
+ * @property {string} [volumeName] The volume name.
+ * @property {number} [capacityInBytes] The volume capacity.
+ * @property {number} [freeSpaceInBytes] The free space available in this
+ * volume.
+ * @property {number} [thresholdPercentage] The threshold percentage.
  */
 export interface RetentionVolume {
   volumeName?: string;
@@ -4328,9 +4367,9 @@ export interface RetentionVolume {
  * @constructor
  * Version related details.
  *
- * @member {string} [version] The agent version.
- * @member {date} [expiryDate] Version expiry date.
- * @member {string} [status] A value indicating whether security update
+ * @property {string} [version] The agent version.
+ * @property {date} [expiryDate] Version expiry date.
+ * @property {string} [status] A value indicating whether security update
  * required. Possible values include: 'Supported', 'NotSupported',
  * 'Deprecated', 'UpdateRequired', 'SecurityUpdateRequired'
  */
@@ -4346,35 +4385,36 @@ export interface VersionDetails {
  * @constructor
  * Details of a Master Target Server.
  *
- * @member {string} [id] The server Id.
- * @member {string} [ipAddress] The IP address of the server.
- * @member {string} [name] The server name.
- * @member {string} [osType] The OS type of the server.
- * @member {string} [agentVersion] The version of the scout component on the
+ * @property {string} [id] The server Id.
+ * @property {string} [ipAddress] The IP address of the server.
+ * @property {string} [name] The server name.
+ * @property {string} [osType] The OS type of the server.
+ * @property {string} [agentVersion] The version of the scout component on the
  * server.
- * @member {date} [lastHeartbeat] The last heartbeat received from the server.
- * @member {string} [versionStatus] Version status
- * @member {array} [retentionVolumes] The retention volumes of Master target
+ * @property {date} [lastHeartbeat] The last heartbeat received from the
+ * server.
+ * @property {string} [versionStatus] Version status
+ * @property {array} [retentionVolumes] The retention volumes of Master target
  * Server.
- * @member {array} [dataStores] The list of data stores in the fabric.
- * @member {array} [validationErrors] Validation errors.
- * @member {array} [healthErrors] Health errors.
- * @member {number} [diskCount] Disk count of the master target.
- * @member {string} [osVersion] OS Version of the master target.
- * @member {date} [agentExpiryDate] Agent expiry date.
- * @member {string} [marsAgentVersion] MARS agent version.
- * @member {date} [marsAgentExpiryDate] MARS agent expiry date.
- * @member {object} [agentVersionDetails] Agent version details.
- * @member {string} [agentVersionDetails.version] The agent version.
- * @member {date} [agentVersionDetails.expiryDate] Version expiry date.
- * @member {string} [agentVersionDetails.status] A value indicating whether
+ * @property {array} [dataStores] The list of data stores in the fabric.
+ * @property {array} [validationErrors] Validation errors.
+ * @property {array} [healthErrors] Health errors.
+ * @property {number} [diskCount] Disk count of the master target.
+ * @property {string} [osVersion] OS Version of the master target.
+ * @property {date} [agentExpiryDate] Agent expiry date.
+ * @property {string} [marsAgentVersion] MARS agent version.
+ * @property {date} [marsAgentExpiryDate] MARS agent expiry date.
+ * @property {object} [agentVersionDetails] Agent version details.
+ * @property {string} [agentVersionDetails.version] The agent version.
+ * @property {date} [agentVersionDetails.expiryDate] Version expiry date.
+ * @property {string} [agentVersionDetails.status] A value indicating whether
  * security update required. Possible values include: 'Supported',
  * 'NotSupported', 'Deprecated', 'UpdateRequired', 'SecurityUpdateRequired'
- * @member {object} [marsAgentVersionDetails] Mars agent version details.
- * @member {string} [marsAgentVersionDetails.version] The agent version.
- * @member {date} [marsAgentVersionDetails.expiryDate] Version expiry date.
- * @member {string} [marsAgentVersionDetails.status] A value indicating whether
- * security update required. Possible values include: 'Supported',
+ * @property {object} [marsAgentVersionDetails] Mars agent version details.
+ * @property {string} [marsAgentVersionDetails.version] The agent version.
+ * @property {date} [marsAgentVersionDetails.expiryDate] Version expiry date.
+ * @property {string} [marsAgentVersionDetails.status] A value indicating
+ * whether security update required. Possible values include: 'Supported',
  * 'NotSupported', 'Deprecated', 'UpdateRequired', 'SecurityUpdateRequired'
  */
 export interface MasterTargetServer {
@@ -4404,10 +4444,10 @@ export interface MasterTargetServer {
  * @constructor
  * The Mobility Service update details.
  *
- * @member {string} [version] The version of the latest update.
- * @member {string} [rebootStatus] The reboot status of the update - whether it
- * is required or not.
- * @member {string} [osType] The OS type.
+ * @property {string} [version] The version of the latest update.
+ * @property {string} [rebootStatus] The reboot status of the update - whether
+ * it is required or not.
+ * @property {string} [osType] The OS type.
  */
 export interface MobilityServiceUpdate {
   version?: string;
@@ -4421,9 +4461,9 @@ export interface MobilityServiceUpdate {
  * @constructor
  * Subnets of the network.
  *
- * @member {string} [name] The subnet name.
- * @member {string} [friendlyName] The subnet friendly name.
- * @member {array} [addressList] The list of addresses for the subnet.
+ * @property {string} [name] The subnet name.
+ * @property {string} [friendlyName] The subnet friendly name.
+ * @property {array} [addressList] The list of addresses for the subnet.
  */
 export interface Subnet {
   name?: string;
@@ -4437,10 +4477,10 @@ export interface Subnet {
  * @constructor
  * Network Properties
  *
- * @member {string} [fabricType] The Fabric Type.
- * @member {array} [subnets] The List of subnets.
- * @member {string} [friendlyName] The Friendly Name.
- * @member {string} [networkType] The Network Type.
+ * @property {string} [fabricType] The Fabric Type.
+ * @property {array} [subnets] The List of subnets.
+ * @property {string} [friendlyName] The Friendly Name.
+ * @property {string} [networkType] The Network Type.
  */
 export interface NetworkProperties {
   fabricType?: string;
@@ -4455,11 +4495,11 @@ export interface NetworkProperties {
  * @constructor
  * Network model.
  *
- * @member {object} [properties] The Network Properties.
- * @member {string} [properties.fabricType] The Fabric Type.
- * @member {array} [properties.subnets] The List of subnets.
- * @member {string} [properties.friendlyName] The Friendly Name.
- * @member {string} [properties.networkType] The Network Type.
+ * @property {object} [properties] The Network Properties.
+ * @property {string} [properties.fabricType] The Fabric Type.
+ * @property {array} [properties.subnets] The List of subnets.
+ * @property {string} [properties.friendlyName] The Friendly Name.
+ * @property {string} [properties.networkType] The Network Type.
  */
 export interface Network extends Resource {
   properties?: NetworkProperties;
@@ -4471,22 +4511,22 @@ export interface Network extends Resource {
  * @constructor
  * Network Mapping Properties.
  *
- * @member {string} [state] The pairing state for network mapping.
- * @member {string} [primaryNetworkFriendlyName] The primary network friendly
+ * @property {string} [state] The pairing state for network mapping.
+ * @property {string} [primaryNetworkFriendlyName] The primary network friendly
  * name.
- * @member {string} [primaryNetworkId] The primary network id for network
+ * @property {string} [primaryNetworkId] The primary network id for network
  * mapping.
- * @member {string} [primaryFabricFriendlyName] The primary fabric friendly
+ * @property {string} [primaryFabricFriendlyName] The primary fabric friendly
  * name.
- * @member {string} [recoveryNetworkFriendlyName] The recovery network friendly
- * name.
- * @member {string} [recoveryNetworkId] The recovery network id for network
+ * @property {string} [recoveryNetworkFriendlyName] The recovery network
+ * friendly name.
+ * @property {string} [recoveryNetworkId] The recovery network id for network
  * mapping.
- * @member {string} [recoveryFabricArmId] The recovery fabric ARM id.
- * @member {string} [recoveryFabricFriendlyName] The recovery fabric friendly
+ * @property {string} [recoveryFabricArmId] The recovery fabric ARM id.
+ * @property {string} [recoveryFabricFriendlyName] The recovery fabric friendly
  * name.
- * @member {object} [fabricSpecificSettings] The fabric specific settings.
- * @member {string} [fabricSpecificSettings.instanceType] Polymorphic
+ * @property {object} [fabricSpecificSettings] The fabric specific settings.
+ * @property {string} [fabricSpecificSettings.instanceType] Polymorphic
  * Discriminator
  */
 export interface NetworkMappingProperties {
@@ -4512,25 +4552,25 @@ export interface NetworkMappingProperties {
  * required return type, the class has been introduced in its entirety with
  * references to base models to facilitate exensions in subsequent versions.
  *
- * @member {object} [properties] The Network Mapping Properties.
- * @member {string} [properties.state] The pairing state for network mapping.
- * @member {string} [properties.primaryNetworkFriendlyName] The primary network
- * friendly name.
- * @member {string} [properties.primaryNetworkId] The primary network id for
- * network mapping.
- * @member {string} [properties.primaryFabricFriendlyName] The primary fabric
- * friendly name.
- * @member {string} [properties.recoveryNetworkFriendlyName] The recovery
+ * @property {object} [properties] The Network Mapping Properties.
+ * @property {string} [properties.state] The pairing state for network mapping.
+ * @property {string} [properties.primaryNetworkFriendlyName] The primary
  * network friendly name.
- * @member {string} [properties.recoveryNetworkId] The recovery network id for
+ * @property {string} [properties.primaryNetworkId] The primary network id for
  * network mapping.
- * @member {string} [properties.recoveryFabricArmId] The recovery fabric ARM
- * id.
- * @member {string} [properties.recoveryFabricFriendlyName] The recovery fabric
+ * @property {string} [properties.primaryFabricFriendlyName] The primary fabric
  * friendly name.
- * @member {object} [properties.fabricSpecificSettings] The fabric specific
+ * @property {string} [properties.recoveryNetworkFriendlyName] The recovery
+ * network friendly name.
+ * @property {string} [properties.recoveryNetworkId] The recovery network id
+ * for network mapping.
+ * @property {string} [properties.recoveryFabricArmId] The recovery fabric ARM
+ * id.
+ * @property {string} [properties.recoveryFabricFriendlyName] The recovery
+ * fabric friendly name.
+ * @property {object} [properties.fabricSpecificSettings] The fabric specific
  * settings.
- * @member {string} [properties.fabricSpecificSettings.instanceType]
+ * @property {string} [properties.fabricSpecificSettings.instanceType]
  * Polymorphic Discriminator
  */
 export interface NetworkMapping extends Resource {
@@ -4543,7 +4583,7 @@ export interface NetworkMapping extends Resource {
  * @constructor
  * Operations discovery class.
  *
- * @member {string} [name] Name of the API. The name of the operation being
+ * @property {string} [name] Name of the API. The name of the operation being
  * performed on this particular object. It should match the action name that
  * appears in RBAC / the event service. Examples of operations include: *
  * Microsoft.Compute/virtualMachine/capture/action *
@@ -4561,25 +4601,25 @@ export interface NetworkMapping extends Resource {
  * their response. This API is used to register for their service, and should
  * include details about the operation (e.g. a localized name for the resource
  * provider + any special considerations like PII release)
- * @member {object} [display] Object type
- * @member {string} [display.provider] The provider. The localized friendly
+ * @property {object} [display] Object type
+ * @property {string} [display.provider] The provider. The localized friendly
  * form of the resource provider name – it is expected to also include the
  * publisher/company responsible. It should use Title Casing and begin with
  * "Microsoft" for 1st party services. e.g. "Microsoft Monitoring Insights" or
  * "Microsoft Compute."
- * @member {string} [display.resource] The resource. The localized friendly
+ * @property {string} [display.resource] The resource. The localized friendly
  * form of the resource related to this action/operation – it should match the
  * public documentation for the resource provider. It should use Title Casing.
  * This value should be unique for a particular URL type (e.g. nested types
  * should *not* reuse their parent’s display.resource field). e.g. "Virtual
  * Machines" or "Scheduler Job Collections", or "Virtual Machine VM Sizes" or
  * "Scheduler Jobs"
- * @member {string} [display.operation] The operation. The localized friendly
+ * @property {string} [display.operation] The operation. The localized friendly
  * name for the operation, as it should be shown to the user. It should be
  * concise (to fit in drop downs) but clear (i.e. self-documenting). It should
  * use Title Casing. Prescriptive guidance: Read Create or Update Delete
  * 'ActionName'
- * @member {string} [display.description] The description. The localized
+ * @property {string} [display.description] The description. The localized
  * friendly description for the operation, as it should be shown to the user.
  * It should be thorough, yet concise – it will be used in tool tips and
  * detailed views. Prescriptive guidance for namespaces: Read any
@@ -4588,10 +4628,10 @@ export interface NetworkMapping extends Resource {
  * 'display.provider' resource Prescriptive guidance for namespaces: Read any
  * 'display.resource' Create or Update any 'display.resource' Delete any
  * 'display.resource' 'ActionName' any 'display.resources'
- * @member {string} [origin] Origin. The intended executor of the operation;
+ * @property {string} [origin] Origin. The intended executor of the operation;
  * governs the display of the operation in the RBAC UX and the audit logs UX.
  * Default value is "user,system"
- * @member {object} [properties] Properties. Reserved for future use.
+ * @property {object} [properties] Properties. Reserved for future use.
  */
 export interface OperationsDiscovery {
   name?: string;
@@ -4606,9 +4646,9 @@ export interface OperationsDiscovery {
  * @constructor
  * Input definition for planned failover input properties.
  *
- * @member {string} [failoverDirection] Failover direction.
- * @member {object} [providerSpecificDetails] Provider specific settings
- * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * @property {string} [failoverDirection] Failover direction.
+ * @property {object} [providerSpecificDetails] Provider specific settings
+ * @property {string} [providerSpecificDetails.instanceType] Polymorphic
  * Discriminator
  */
 export interface PlannedFailoverInputProperties {
@@ -4622,11 +4662,11 @@ export interface PlannedFailoverInputProperties {
  * @constructor
  * Input definition for planned failover.
  *
- * @member {object} [properties] Planned failover input properties
- * @member {string} [properties.failoverDirection] Failover direction.
- * @member {object} [properties.providerSpecificDetails] Provider specific
+ * @property {object} [properties] Planned failover input properties
+ * @property {string} [properties.failoverDirection] Failover direction.
+ * @property {object} [properties.providerSpecificDetails] Provider specific
  * settings
- * @member {string} [properties.providerSpecificDetails.instanceType]
+ * @property {string} [properties.providerSpecificDetails.instanceType]
  * Polymorphic Discriminator
  */
 export interface PlannedFailoverInput {
@@ -4639,9 +4679,9 @@ export interface PlannedFailoverInput {
  * @constructor
  * Protection profile custom data details.
  *
- * @member {string} [friendlyName] The FriendlyName.
- * @member {object} [providerSpecificDetails] The ReplicationChannelSetting.
- * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * @property {string} [friendlyName] The FriendlyName.
+ * @property {object} [providerSpecificDetails] The ReplicationChannelSetting.
+ * @property {string} [providerSpecificDetails.instanceType] Polymorphic
  * Discriminator
  */
 export interface PolicyProperties {
@@ -4655,11 +4695,11 @@ export interface PolicyProperties {
  * @constructor
  * Protection profile details.
  *
- * @member {object} [properties] The custom data.
- * @member {string} [properties.friendlyName] The FriendlyName.
- * @member {object} [properties.providerSpecificDetails] The
+ * @property {object} [properties] The custom data.
+ * @property {string} [properties.friendlyName] The FriendlyName.
+ * @property {object} [properties.providerSpecificDetails] The
  * ReplicationChannelSetting.
- * @member {string} [properties.providerSpecificDetails.instanceType]
+ * @property {string} [properties.providerSpecificDetails.instanceType]
  * Polymorphic Discriminator
  */
 export interface Policy extends Resource {
@@ -4672,41 +4712,42 @@ export interface Policy extends Resource {
  * @constructor
  * Details of the Process Server.
  *
- * @member {string} [friendlyName] The Process Server's friendly name.
- * @member {string} [id] The Process Server Id.
- * @member {string} [ipAddress] The IP address of the server.
- * @member {string} [osType] The OS type of the server.
- * @member {string} [agentVersion] The version of the scout component on the
+ * @property {string} [friendlyName] The Process Server's friendly name.
+ * @property {string} [id] The Process Server Id.
+ * @property {string} [ipAddress] The IP address of the server.
+ * @property {string} [osType] The OS type of the server.
+ * @property {string} [agentVersion] The version of the scout component on the
  * server.
- * @member {date} [lastHeartbeat] The last heartbeat received from the server.
- * @member {string} [versionStatus] Version status
- * @member {array} [mobilityServiceUpdates] The list of the mobility service
+ * @property {date} [lastHeartbeat] The last heartbeat received from the
+ * server.
+ * @property {string} [versionStatus] Version status
+ * @property {array} [mobilityServiceUpdates] The list of the mobility service
  * updates available on the Process Server.
- * @member {string} [hostId] The agent generated Id.
- * @member {string} [machineCount] The servers configured with this PS.
- * @member {string} [replicationPairCount] The number of replication pairs
+ * @property {string} [hostId] The agent generated Id.
+ * @property {string} [machineCount] The servers configured with this PS.
+ * @property {string} [replicationPairCount] The number of replication pairs
  * configured in this PS.
- * @member {string} [systemLoad] The percentage of the system load.
- * @member {string} [systemLoadStatus] The system load status.
- * @member {string} [cpuLoad] The percentage of the CPU load.
- * @member {string} [cpuLoadStatus] The CPU load status.
- * @member {number} [totalMemoryInBytes] The total memory.
- * @member {number} [availableMemoryInBytes] The available memory.
- * @member {string} [memoryUsageStatus] The memory usage status.
- * @member {number} [totalSpaceInBytes] The total space.
- * @member {number} [availableSpaceInBytes] The available space.
- * @member {string} [spaceUsageStatus] The space usage status.
- * @member {string} [psServiceStatus] The PS service status.
- * @member {date} [sslCertExpiryDate] The PS SSL cert expiry date.
- * @member {number} [sslCertExpiryRemainingDays] CS SSL cert expiry date.
- * @member {string} [osVersion] OS Version of the process server. Note: This
+ * @property {string} [systemLoad] The percentage of the system load.
+ * @property {string} [systemLoadStatus] The system load status.
+ * @property {string} [cpuLoad] The percentage of the CPU load.
+ * @property {string} [cpuLoadStatus] The CPU load status.
+ * @property {number} [totalMemoryInBytes] The total memory.
+ * @property {number} [availableMemoryInBytes] The available memory.
+ * @property {string} [memoryUsageStatus] The memory usage status.
+ * @property {number} [totalSpaceInBytes] The total space.
+ * @property {number} [availableSpaceInBytes] The available space.
+ * @property {string} [spaceUsageStatus] The space usage status.
+ * @property {string} [psServiceStatus] The PS service status.
+ * @property {date} [sslCertExpiryDate] The PS SSL cert expiry date.
+ * @property {number} [sslCertExpiryRemainingDays] CS SSL cert expiry date.
+ * @property {string} [osVersion] OS Version of the process server. Note: This
  * will get populated if user has CS version greater than 9.12.0.0.
- * @member {array} [healthErrors] Health errors.
- * @member {date} [agentExpiryDate] Agent expiry date.
- * @member {object} [agentVersionDetails] The agent version details.
- * @member {string} [agentVersionDetails.version] The agent version.
- * @member {date} [agentVersionDetails.expiryDate] Version expiry date.
- * @member {string} [agentVersionDetails.status] A value indicating whether
+ * @property {array} [healthErrors] Health errors.
+ * @property {date} [agentExpiryDate] Agent expiry date.
+ * @property {object} [agentVersionDetails] The agent version details.
+ * @property {string} [agentVersionDetails.version] The agent version.
+ * @property {date} [agentVersionDetails.expiryDate] Version expiry date.
+ * @property {string} [agentVersionDetails.status] A value indicating whether
  * security update required. Possible values include: 'Supported',
  * 'NotSupported', 'Deprecated', 'UpdateRequired', 'SecurityUpdateRequired'
  */
@@ -4747,17 +4788,18 @@ export interface ProcessServer {
  * @constructor
  * Replication protected item custom data details.
  *
- * @member {string} [friendlyName] The name.
- * @member {string} [protectionStatus] The protection status.
- * @member {string} [replicationProtectedItemId] The ARM resource of protected
- * items.
- * @member {string} [recoveryServicesProviderId] The recovery provider ARM Id.
- * @member {array} [protectionReadinessErrors] The Current protection readiness
- * errors.
- * @member {array} [supportedReplicationProviders] The list of replication
+ * @property {string} [friendlyName] The name.
+ * @property {string} [protectionStatus] The protection status.
+ * @property {string} [replicationProtectedItemId] The ARM resource of
+ * protected items.
+ * @property {string} [recoveryServicesProviderId] The recovery provider ARM
+ * Id.
+ * @property {array} [protectionReadinessErrors] The Current protection
+ * readiness errors.
+ * @property {array} [supportedReplicationProviders] The list of replication
  * providers supported for the protectable item.
- * @member {object} [customDetails] The Replication provider custom settings.
- * @member {string} [customDetails.instanceType] Polymorphic Discriminator
+ * @property {object} [customDetails] The Replication provider custom settings.
+ * @property {string} [customDetails.instanceType] Polymorphic Discriminator
  */
 export interface ProtectableItemProperties {
   friendlyName?: string;
@@ -4775,20 +4817,20 @@ export interface ProtectableItemProperties {
  * @constructor
  * Replication protected item
  *
- * @member {object} [properties] The custom data.
- * @member {string} [properties.friendlyName] The name.
- * @member {string} [properties.protectionStatus] The protection status.
- * @member {string} [properties.replicationProtectedItemId] The ARM resource of
- * protected items.
- * @member {string} [properties.recoveryServicesProviderId] The recovery
+ * @property {object} [properties] The custom data.
+ * @property {string} [properties.friendlyName] The name.
+ * @property {string} [properties.protectionStatus] The protection status.
+ * @property {string} [properties.replicationProtectedItemId] The ARM resource
+ * of protected items.
+ * @property {string} [properties.recoveryServicesProviderId] The recovery
  * provider ARM Id.
- * @member {array} [properties.protectionReadinessErrors] The Current
+ * @property {array} [properties.protectionReadinessErrors] The Current
  * protection readiness errors.
- * @member {array} [properties.supportedReplicationProviders] The list of
+ * @property {array} [properties.supportedReplicationProviders] The list of
  * replication providers supported for the protectable item.
- * @member {object} [properties.customDetails] The Replication provider custom
- * settings.
- * @member {string} [properties.customDetails.instanceType] Polymorphic
+ * @property {object} [properties.customDetails] The Replication provider
+ * custom settings.
+ * @property {string} [properties.customDetails.instanceType] Polymorphic
  * Discriminator
  */
 export interface ProtectableItem extends Resource {
@@ -4801,7 +4843,7 @@ export interface ProtectableItem extends Resource {
  * @constructor
  * Query parameter to enumerate Protectable items.
  *
- * @member {string} [state] State of the Protectable item query filter.
+ * @property {string} [state] State of the Protectable item query filter.
  */
 export interface ProtectableItemQueryParameter {
   state?: string;
@@ -4813,11 +4855,11 @@ export interface ProtectableItemQueryParameter {
  * @constructor
  * Query parameter to enumerate protected items.
  *
- * @member {string} [sourceFabricName] The source fabric name filter.
- * @member {string} [recoveryPlanName] The recovery plan filter.
- * @member {string} [vCenterName] The vCenter name filter.
- * @member {string} [instanceType] The replication provider type.
- * @member {string} [multiVmGroupCreateOption] Whether Multi VM group is auto
+ * @property {string} [sourceFabricName] The source fabric name filter.
+ * @property {string} [recoveryPlanName] The recovery plan filter.
+ * @property {string} [vCenterName] The vCenter name filter.
+ * @property {string} [instanceType] The replication provider type.
+ * @property {string} [multiVmGroupCreateOption] Whether Multi VM group is auto
  * created or specified by user. Possible values include: 'AutoCreated',
  * 'UserSpecified'
  */
@@ -4835,7 +4877,7 @@ export interface ProtectedItemsQueryParameter {
  * @constructor
  * Base class for fabric specific details of container.
  *
- * @member {string} [instanceType] Gets the class type. Overriden in derived
+ * @property {string} [instanceType] Gets the class type. Overriden in derived
  * classes.
  */
 export interface ProtectionContainerFabricSpecificDetails {
@@ -4848,14 +4890,14 @@ export interface ProtectionContainerFabricSpecificDetails {
  * @constructor
  * Protection profile custom data details.
  *
- * @member {string} [fabricFriendlyName] Fabric friendly name.
- * @member {string} [friendlyName] The name.
- * @member {string} [fabricType] The fabric type.
- * @member {number} [protectedItemCount] Number of protected PEs
- * @member {string} [pairingStatus] The pairing status of this cloud.
- * @member {string} [role] The role of this cloud.
- * @member {object} [fabricSpecificDetails] Fabric specific details.
- * @member {string} [fabricSpecificDetails.instanceType] Gets the class type.
+ * @property {string} [fabricFriendlyName] Fabric friendly name.
+ * @property {string} [friendlyName] The name.
+ * @property {string} [fabricType] The fabric type.
+ * @property {number} [protectedItemCount] Number of protected PEs
+ * @property {string} [pairingStatus] The pairing status of this cloud.
+ * @property {string} [role] The role of this cloud.
+ * @property {object} [fabricSpecificDetails] Fabric specific details.
+ * @property {string} [fabricSpecificDetails.instanceType] Gets the class type.
  * Overriden in derived classes.
  */
 export interface ProtectionContainerProperties {
@@ -4874,16 +4916,17 @@ export interface ProtectionContainerProperties {
  * @constructor
  * Protection container details.
  *
- * @member {object} [properties] The custom data.
- * @member {string} [properties.fabricFriendlyName] Fabric friendly name.
- * @member {string} [properties.friendlyName] The name.
- * @member {string} [properties.fabricType] The fabric type.
- * @member {number} [properties.protectedItemCount] Number of protected PEs
- * @member {string} [properties.pairingStatus] The pairing status of this
+ * @property {object} [properties] The custom data.
+ * @property {string} [properties.fabricFriendlyName] Fabric friendly name.
+ * @property {string} [properties.friendlyName] The name.
+ * @property {string} [properties.fabricType] The fabric type.
+ * @property {number} [properties.protectedItemCount] Number of protected PEs
+ * @property {string} [properties.pairingStatus] The pairing status of this
  * cloud.
- * @member {string} [properties.role] The role of this cloud.
- * @member {object} [properties.fabricSpecificDetails] Fabric specific details.
- * @member {string} [properties.fabricSpecificDetails.instanceType] Gets the
+ * @property {string} [properties.role] The role of this cloud.
+ * @property {object} [properties.fabricSpecificDetails] Fabric specific
+ * details.
+ * @property {string} [properties.fabricSpecificDetails.instanceType] Gets the
  * class type. Overriden in derived classes.
  */
 export interface ProtectionContainer extends Resource {
@@ -4896,23 +4939,25 @@ export interface ProtectionContainer extends Resource {
  * @constructor
  * Protection container mapping properties.
  *
- * @member {string} [targetProtectionContainerId] Paired protection container
+ * @property {string} [targetProtectionContainerId] Paired protection container
  * ARM ID.
- * @member {string} [targetProtectionContainerFriendlyName] Friendly name of
+ * @property {string} [targetProtectionContainerFriendlyName] Friendly name of
  * paired container.
- * @member {object} [providerSpecificDetails] Provider specific provider
+ * @property {object} [providerSpecificDetails] Provider specific provider
  * details.
- * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * @property {string} [providerSpecificDetails.instanceType] Polymorphic
  * Discriminator
- * @member {string} [health] Health of pairing.
- * @member {array} [healthErrorDetails] Health error.
- * @member {string} [policyId] Policy ARM Id.
- * @member {string} [state] Association Status
- * @member {string} [sourceProtectionContainerFriendlyName] Friendly name of
+ * @property {string} [health] Health of pairing.
+ * @property {array} [healthErrorDetails] Health error.
+ * @property {string} [policyId] Policy ARM Id.
+ * @property {string} [state] Association Status
+ * @property {string} [sourceProtectionContainerFriendlyName] Friendly name of
  * source protection container.
- * @member {string} [sourceFabricFriendlyName] Friendly name of source fabric.
- * @member {string} [targetFabricFriendlyName] Friendly name of target fabric.
- * @member {string} [policyFriendlyName] Friendly name of replication policy.
+ * @property {string} [sourceFabricFriendlyName] Friendly name of source
+ * fabric.
+ * @property {string} [targetFabricFriendlyName] Friendly name of target
+ * fabric.
+ * @property {string} [policyFriendlyName] Friendly name of replication policy.
  */
 export interface ProtectionContainerMappingProperties {
   targetProtectionContainerId?: string;
@@ -4934,26 +4979,26 @@ export interface ProtectionContainerMappingProperties {
  * @constructor
  * Protection container mapping object.
  *
- * @member {object} [properties] The custom data.
- * @member {string} [properties.targetProtectionContainerId] Paired protection
- * container ARM ID.
- * @member {string} [properties.targetProtectionContainerFriendlyName] Friendly
- * name of paired container.
- * @member {object} [properties.providerSpecificDetails] Provider specific
+ * @property {object} [properties] The custom data.
+ * @property {string} [properties.targetProtectionContainerId] Paired
+ * protection container ARM ID.
+ * @property {string} [properties.targetProtectionContainerFriendlyName]
+ * Friendly name of paired container.
+ * @property {object} [properties.providerSpecificDetails] Provider specific
  * provider details.
- * @member {string} [properties.providerSpecificDetails.instanceType]
+ * @property {string} [properties.providerSpecificDetails.instanceType]
  * Polymorphic Discriminator
- * @member {string} [properties.health] Health of pairing.
- * @member {array} [properties.healthErrorDetails] Health error.
- * @member {string} [properties.policyId] Policy ARM Id.
- * @member {string} [properties.state] Association Status
- * @member {string} [properties.sourceProtectionContainerFriendlyName] Friendly
- * name of source protection container.
- * @member {string} [properties.sourceFabricFriendlyName] Friendly name of
+ * @property {string} [properties.health] Health of pairing.
+ * @property {array} [properties.healthErrorDetails] Health error.
+ * @property {string} [properties.policyId] Policy ARM Id.
+ * @property {string} [properties.state] Association Status
+ * @property {string} [properties.sourceProtectionContainerFriendlyName]
+ * Friendly name of source protection container.
+ * @property {string} [properties.sourceFabricFriendlyName] Friendly name of
  * source fabric.
- * @member {string} [properties.targetFabricFriendlyName] Friendly name of
+ * @property {string} [properties.targetFabricFriendlyName] Friendly name of
  * target fabric.
- * @member {string} [properties.policyFriendlyName] Friendly name of
+ * @property {string} [properties.policyFriendlyName] Friendly name of
  * replication policy.
  */
 export interface ProtectionContainerMapping extends Resource {
@@ -4966,15 +5011,15 @@ export interface ProtectionContainerMapping extends Resource {
  * @constructor
  * RCM based Azure migration specific policy details.
  *
- * @member {number} [recoveryPointThresholdInMinutes] The recovery point
+ * @property {number} [recoveryPointThresholdInMinutes] The recovery point
  * threshold in minutes.
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
- * @member {number} [appConsistentFrequencyInMinutes] The app consistent
+ * @property {number} [recoveryPointHistory] The duration in minutes until
+ * which the recovery points need to be stored.
+ * @property {number} [appConsistentFrequencyInMinutes] The app consistent
  * snapshot frequency in minutes.
- * @member {string} [multiVmSyncStatus] A value indicating whether multi-VM
+ * @property {string} [multiVmSyncStatus] A value indicating whether multi-VM
  * sync has to be enabled. Possible values include: 'Enabled', 'Disabled'
- * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
+ * @property {number} [crashConsistentFrequencyInMinutes] The crash consistent
  * snapshot frequency in minutes.
  */
 export interface RcmAzureMigrationPolicyDetails extends PolicyProviderSpecificDetails {
@@ -4991,30 +5036,30 @@ export interface RcmAzureMigrationPolicyDetails extends PolicyProviderSpecificDe
  * @constructor
  * Recovery plan custom details.
  *
- * @member {string} [friendlyName] The friendly name.
- * @member {string} [primaryFabricId] The primary fabric Id.
- * @member {string} [primaryFabricFriendlyName] The primary fabric friendly
+ * @property {string} [friendlyName] The friendly name.
+ * @property {string} [primaryFabricId] The primary fabric Id.
+ * @property {string} [primaryFabricFriendlyName] The primary fabric friendly
  * name.
- * @member {string} [recoveryFabricId] The recovery fabric Id.
- * @member {string} [recoveryFabricFriendlyName] The recovery fabric friendly
+ * @property {string} [recoveryFabricId] The recovery fabric Id.
+ * @property {string} [recoveryFabricFriendlyName] The recovery fabric friendly
  * name.
- * @member {string} [failoverDeploymentModel] The failover deployment model.
- * @member {array} [replicationProviders] The list of replication providers.
- * @member {array} [allowedOperations] The list of allowed operations.
- * @member {date} [lastPlannedFailoverTime] The start time of the last planned
- * failover.
- * @member {date} [lastUnplannedFailoverTime] The start time of the last
+ * @property {string} [failoverDeploymentModel] The failover deployment model.
+ * @property {array} [replicationProviders] The list of replication providers.
+ * @property {array} [allowedOperations] The list of allowed operations.
+ * @property {date} [lastPlannedFailoverTime] The start time of the last
+ * planned failover.
+ * @property {date} [lastUnplannedFailoverTime] The start time of the last
  * unplanned failover.
- * @member {date} [lastTestFailoverTime] The start time of the last test
+ * @property {date} [lastTestFailoverTime] The start time of the last test
  * failover.
- * @member {object} [currentScenario] The current scenario details.
- * @member {string} [currentScenario.scenarioName] Scenario name.
- * @member {string} [currentScenario.jobId] ARM Id of the job being executed.
- * @member {date} [currentScenario.startTime] Start time of the workflow.
- * @member {string} [currentScenarioStatus] The recovery plan status.
- * @member {string} [currentScenarioStatusDescription] The recovery plan status
- * description.
- * @member {array} [groups] The recovery plan groups.
+ * @property {object} [currentScenario] The current scenario details.
+ * @property {string} [currentScenario.scenarioName] Scenario name.
+ * @property {string} [currentScenario.jobId] ARM Id of the job being executed.
+ * @property {date} [currentScenario.startTime] Start time of the workflow.
+ * @property {string} [currentScenarioStatus] The recovery plan status.
+ * @property {string} [currentScenarioStatusDescription] The recovery plan
+ * status description.
+ * @property {array} [groups] The recovery plan groups.
  */
 export interface RecoveryPlanProperties {
   friendlyName?: string;
@@ -5040,37 +5085,38 @@ export interface RecoveryPlanProperties {
  * @constructor
  * Recovery plan details.
  *
- * @member {object} [properties] The custom details.
- * @member {string} [properties.friendlyName] The friendly name.
- * @member {string} [properties.primaryFabricId] The primary fabric Id.
- * @member {string} [properties.primaryFabricFriendlyName] The primary fabric
+ * @property {object} [properties] The custom details.
+ * @property {string} [properties.friendlyName] The friendly name.
+ * @property {string} [properties.primaryFabricId] The primary fabric Id.
+ * @property {string} [properties.primaryFabricFriendlyName] The primary fabric
  * friendly name.
- * @member {string} [properties.recoveryFabricId] The recovery fabric Id.
- * @member {string} [properties.recoveryFabricFriendlyName] The recovery fabric
- * friendly name.
- * @member {string} [properties.failoverDeploymentModel] The failover
+ * @property {string} [properties.recoveryFabricId] The recovery fabric Id.
+ * @property {string} [properties.recoveryFabricFriendlyName] The recovery
+ * fabric friendly name.
+ * @property {string} [properties.failoverDeploymentModel] The failover
  * deployment model.
- * @member {array} [properties.replicationProviders] The list of replication
+ * @property {array} [properties.replicationProviders] The list of replication
  * providers.
- * @member {array} [properties.allowedOperations] The list of allowed
+ * @property {array} [properties.allowedOperations] The list of allowed
  * operations.
- * @member {date} [properties.lastPlannedFailoverTime] The start time of the
+ * @property {date} [properties.lastPlannedFailoverTime] The start time of the
  * last planned failover.
- * @member {date} [properties.lastUnplannedFailoverTime] The start time of the
- * last unplanned failover.
- * @member {date} [properties.lastTestFailoverTime] The start time of the last
- * test failover.
- * @member {object} [properties.currentScenario] The current scenario details.
- * @member {string} [properties.currentScenario.scenarioName] Scenario name.
- * @member {string} [properties.currentScenario.jobId] ARM Id of the job being
- * executed.
- * @member {date} [properties.currentScenario.startTime] Start time of the
+ * @property {date} [properties.lastUnplannedFailoverTime] The start time of
+ * the last unplanned failover.
+ * @property {date} [properties.lastTestFailoverTime] The start time of the
+ * last test failover.
+ * @property {object} [properties.currentScenario] The current scenario
+ * details.
+ * @property {string} [properties.currentScenario.scenarioName] Scenario name.
+ * @property {string} [properties.currentScenario.jobId] ARM Id of the job
+ * being executed.
+ * @property {date} [properties.currentScenario.startTime] Start time of the
  * workflow.
- * @member {string} [properties.currentScenarioStatus] The recovery plan
+ * @property {string} [properties.currentScenarioStatus] The recovery plan
  * status.
- * @member {string} [properties.currentScenarioStatusDescription] The recovery
- * plan status description.
- * @member {array} [properties.groups] The recovery plan groups.
+ * @property {string} [properties.currentScenarioStatusDescription] The
+ * recovery plan status description.
+ * @property {array} [properties.groups] The recovery plan groups.
  */
 export interface RecoveryPlan extends Resource {
   properties?: RecoveryPlanProperties;
@@ -5082,7 +5128,7 @@ export interface RecoveryPlan extends Resource {
  * @constructor
  * Recovery plan provider specific failover input base class.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface RecoveryPlanProviderSpecificFailoverInput {
   instanceType: string;
@@ -5094,12 +5140,12 @@ export interface RecoveryPlanProviderSpecificFailoverInput {
  * @constructor
  * Recovery plan A2A failover input.
  *
- * @member {string} recoveryPointType The recovery point type. Possible values
- * include: 'Latest', 'LatestApplicationConsistent', 'LatestCrashConsistent',
- * 'LatestProcessed'
- * @member {string} [cloudServiceCreationOption] A value indicating whether to
- * use recovery cloud service for TFO or not.
- * @member {string} [multiVmSyncPointOption] A value indicating whether multi
+ * @property {string} recoveryPointType The recovery point type. Possible
+ * values include: 'Latest', 'LatestApplicationConsistent',
+ * 'LatestCrashConsistent', 'LatestProcessed'
+ * @property {string} [cloudServiceCreationOption] A value indicating whether
+ * to use recovery cloud service for TFO or not.
+ * @property {string} [multiVmSyncPointOption] A value indicating whether multi
  * VM sync enabled VMs should use multi VM sync points for failover. Possible
  * values include: 'UseMultiVmSyncRecoveryPoint', 'UsePerVmRecoveryPoint'
  */
@@ -5115,9 +5161,9 @@ export interface RecoveryPlanA2AFailoverInput extends RecoveryPlanProviderSpecif
  * @constructor
  * Recovery plan Automation runbook action details.
  *
- * @member {string} [runbookId] The runbook ARM Id.
- * @member {string} [timeout] The runbook timeout.
- * @member {string} fabricLocation The fabric location. Possible values
+ * @property {string} [runbookId] The runbook ARM Id.
+ * @property {string} [timeout] The runbook timeout.
+ * @property {string} fabricLocation The fabric location. Possible values
  * include: 'Primary', 'Recovery'
  */
 export interface RecoveryPlanAutomationRunbookActionDetails extends RecoveryPlanActionDetails {
@@ -5132,9 +5178,9 @@ export interface RecoveryPlanAutomationRunbookActionDetails extends RecoveryPlan
  * @constructor
  * This class represents the recovery plan group task.
  *
- * @member {string} [name] The name.
- * @member {string} [groupId] The group identifier.
- * @member {string} [rpGroupType] The group type.
+ * @property {string} [name] The name.
+ * @property {string} [groupId] The group identifier.
+ * @property {string} [rpGroupType] The group type.
  */
 export interface RecoveryPlanGroupTaskDetails extends GroupTaskDetails {
   name?: string;
@@ -5148,9 +5194,9 @@ export interface RecoveryPlanGroupTaskDetails extends GroupTaskDetails {
  * @constructor
  * Recovery plan HVR Azure failback input.
  *
- * @member {string} dataSyncOption The data sync option. Possible values
+ * @property {string} dataSyncOption The data sync option. Possible values
  * include: 'ForDownTime', 'ForSynchronization'
- * @member {string} recoveryVmCreationOption The ALR option. Possible values
+ * @property {string} recoveryVmCreationOption The ALR option. Possible values
  * include: 'CreateVmIfNotFound', 'NoAction'
  */
 export interface RecoveryPlanHyperVReplicaAzureFailbackInput extends RecoveryPlanProviderSpecificFailoverInput {
@@ -5164,11 +5210,12 @@ export interface RecoveryPlanHyperVReplicaAzureFailbackInput extends RecoveryPla
  * @constructor
  * Recovery plan HVR Azure failover input.
  *
- * @member {string} vaultLocation The vault location.
- * @member {string} [primaryKekCertificatePfx] The primary KEK certificate PFX.
- * @member {string} [secondaryKekCertificatePfx] The secondary KEK certificate
+ * @property {string} vaultLocation The vault location.
+ * @property {string} [primaryKekCertificatePfx] The primary KEK certificate
  * PFX.
- * @member {string} [recoveryPointType] The recovery point type. Possible
+ * @property {string} [secondaryKekCertificatePfx] The secondary KEK
+ * certificate PFX.
+ * @property {string} [recoveryPointType] The recovery point type. Possible
  * values include: 'Latest', 'LatestApplicationConsistent', 'LatestProcessed'
  */
 export interface RecoveryPlanHyperVReplicaAzureFailoverInput extends RecoveryPlanProviderSpecificFailoverInput {
@@ -5184,11 +5231,11 @@ export interface RecoveryPlanHyperVReplicaAzureFailoverInput extends RecoveryPla
  * @constructor
  * Recovery plan InMageAzureV2 failover input.
  *
- * @member {string} vaultLocation The vault location.
- * @member {string} recoveryPointType The recovery point type. Possible values
- * include: 'Latest', 'LatestApplicationConsistent', 'LatestCrashConsistent',
- * 'LatestProcessed'
- * @member {string} [useMultiVmSyncPoint] A value indicating whether multi VM
+ * @property {string} vaultLocation The vault location.
+ * @property {string} recoveryPointType The recovery point type. Possible
+ * values include: 'Latest', 'LatestApplicationConsistent',
+ * 'LatestCrashConsistent', 'LatestProcessed'
+ * @property {string} [useMultiVmSyncPoint] A value indicating whether multi VM
  * sync enabled VMs should use multi VM sync points for failover.
  */
 export interface RecoveryPlanInMageAzureV2FailoverInput extends RecoveryPlanProviderSpecificFailoverInput {
@@ -5203,8 +5250,8 @@ export interface RecoveryPlanInMageAzureV2FailoverInput extends RecoveryPlanProv
  * @constructor
  * Recovery plan InMage failover input.
  *
- * @member {string} recoveryPointType The recovery point type. Possible values
- * include: 'LatestTime', 'LatestTag', 'Custom'
+ * @property {string} recoveryPointType The recovery point type. Possible
+ * values include: 'LatestTime', 'LatestTag', 'Custom'
  */
 export interface RecoveryPlanInMageFailoverInput extends RecoveryPlanProviderSpecificFailoverInput {
   recoveryPointType: string;
@@ -5216,7 +5263,7 @@ export interface RecoveryPlanInMageFailoverInput extends RecoveryPlanProviderSpe
  * @constructor
  * Recovery plan manual action details.
  *
- * @member {string} [description] The manual action description.
+ * @property {string} [description] The manual action description.
  */
 export interface RecoveryPlanManualActionDetails extends RecoveryPlanActionDetails {
   description?: string;
@@ -5228,9 +5275,10 @@ export interface RecoveryPlanManualActionDetails extends RecoveryPlanActionDetai
  * @constructor
  * Recovery plan planned failover input properties.
  *
- * @member {string} failoverDirection The failover direction. Possible values
+ * @property {string} failoverDirection The failover direction. Possible values
  * include: 'PrimaryToRecovery', 'RecoveryToPrimary'
- * @member {array} [providerSpecificDetails] The provider specific properties.
+ * @property {array} [providerSpecificDetails] The provider specific
+ * properties.
  */
 export interface RecoveryPlanPlannedFailoverInputProperties {
   failoverDirection: string;
@@ -5243,11 +5291,11 @@ export interface RecoveryPlanPlannedFailoverInputProperties {
  * @constructor
  * Recovery plan planned failover input.
  *
- * @member {object} properties The recovery plan planned failover input
+ * @property {object} properties The recovery plan planned failover input
  * properties.
- * @member {string} [properties.failoverDirection] The failover direction.
+ * @property {string} [properties.failoverDirection] The failover direction.
  * Possible values include: 'PrimaryToRecovery', 'RecoveryToPrimary'
- * @member {array} [properties.providerSpecificDetails] The provider specific
+ * @property {array} [properties.providerSpecificDetails] The provider specific
  * properties.
  */
 export interface RecoveryPlanPlannedFailoverInput {
@@ -5260,9 +5308,9 @@ export interface RecoveryPlanPlannedFailoverInput {
  * @constructor
  * Recovery plan script action details.
  *
- * @member {string} path The script path.
- * @member {string} [timeout] The script timeout.
- * @member {string} fabricLocation The fabric location. Possible values
+ * @property {string} path The script path.
+ * @property {string} [timeout] The script timeout.
+ * @property {string} fabricLocation The fabric location. Possible values
  * include: 'Primary', 'Recovery'
  */
 export interface RecoveryPlanScriptActionDetails extends RecoveryPlanActionDetails {
@@ -5277,9 +5325,9 @@ export interface RecoveryPlanScriptActionDetails extends RecoveryPlanActionDetai
  * @constructor
  * This class represents the recovery plan shutdown group task details.
  *
- * @member {string} [name] The name.
- * @member {string} [groupId] The group identifier.
- * @member {string} [rpGroupType] The group type.
+ * @property {string} [name] The name.
+ * @property {string} [groupId] The group identifier.
+ * @property {string} [rpGroupType] The group type.
  */
 export interface RecoveryPlanShutdownGroupTaskDetails extends GroupTaskDetails {
   name?: string;
@@ -5293,7 +5341,7 @@ export interface RecoveryPlanShutdownGroupTaskDetails extends GroupTaskDetails {
  * @constructor
  * Recovery plan test failover cleanup input properties.
  *
- * @member {string} [comments] The test failover cleanup comments.
+ * @property {string} [comments] The test failover cleanup comments.
  */
 export interface RecoveryPlanTestFailoverCleanupInputProperties {
   comments?: string;
@@ -5305,9 +5353,9 @@ export interface RecoveryPlanTestFailoverCleanupInputProperties {
  * @constructor
  * Recovery plan test failover cleanup input.
  *
- * @member {object} properties The recovery plan test failover cleanup input
+ * @property {object} properties The recovery plan test failover cleanup input
  * properties.
- * @member {string} [properties.comments] The test failover cleanup comments.
+ * @property {string} [properties.comments] The test failover cleanup comments.
  */
 export interface RecoveryPlanTestFailoverCleanupInput {
   properties: RecoveryPlanTestFailoverCleanupInputProperties;
@@ -5319,14 +5367,16 @@ export interface RecoveryPlanTestFailoverCleanupInput {
  * @constructor
  * Recovery plan test failover input properties.
  *
- * @member {string} failoverDirection The failover direction. Possible values
+ * @property {string} failoverDirection The failover direction. Possible values
  * include: 'PrimaryToRecovery', 'RecoveryToPrimary'
- * @member {string} networkType The network type to be used for test failover.
- * @member {string} [networkId] The Id of the network to be used for test
+ * @property {string} networkType The network type to be used for test
  * failover.
- * @member {string} [skipTestFailoverCleanup] A value indicating whether the
+ * @property {string} [networkId] The Id of the network to be used for test
+ * failover.
+ * @property {string} [skipTestFailoverCleanup] A value indicating whether the
  * test failover cleanup is to be skipped.
- * @member {array} [providerSpecificDetails] The provider specific properties.
+ * @property {array} [providerSpecificDetails] The provider specific
+ * properties.
  */
 export interface RecoveryPlanTestFailoverInputProperties {
   failoverDirection: string;
@@ -5342,17 +5392,17 @@ export interface RecoveryPlanTestFailoverInputProperties {
  * @constructor
  * Recovery plan test failover input.
  *
- * @member {object} properties The recovery plan test failover input
+ * @property {object} properties The recovery plan test failover input
  * properties.
- * @member {string} [properties.failoverDirection] The failover direction.
+ * @property {string} [properties.failoverDirection] The failover direction.
  * Possible values include: 'PrimaryToRecovery', 'RecoveryToPrimary'
- * @member {string} [properties.networkType] The network type to be used for
+ * @property {string} [properties.networkType] The network type to be used for
  * test failover.
- * @member {string} [properties.networkId] The Id of the network to be used for
- * test failover.
- * @member {string} [properties.skipTestFailoverCleanup] A value indicating
+ * @property {string} [properties.networkId] The Id of the network to be used
+ * for test failover.
+ * @property {string} [properties.skipTestFailoverCleanup] A value indicating
  * whether the test failover cleanup is to be skipped.
- * @member {array} [properties.providerSpecificDetails] The provider specific
+ * @property {array} [properties.providerSpecificDetails] The provider specific
  * properties.
  */
 export interface RecoveryPlanTestFailoverInput {
@@ -5365,11 +5415,13 @@ export interface RecoveryPlanTestFailoverInput {
  * @constructor
  * Recovery plan unplanned failover input properties.
  *
- * @member {string} failoverDirection The failover direction. Possible values
+ * @property {string} failoverDirection The failover direction. Possible values
  * include: 'PrimaryToRecovery', 'RecoveryToPrimary'
- * @member {string} sourceSiteOperations A value indicating whether source site
- * operations are required. Possible values include: 'Required', 'NotRequired'
- * @member {array} [providerSpecificDetails] The provider specific properties.
+ * @property {string} sourceSiteOperations A value indicating whether source
+ * site operations are required. Possible values include: 'Required',
+ * 'NotRequired'
+ * @property {array} [providerSpecificDetails] The provider specific
+ * properties.
  */
 export interface RecoveryPlanUnplannedFailoverInputProperties {
   failoverDirection: string;
@@ -5383,14 +5435,14 @@ export interface RecoveryPlanUnplannedFailoverInputProperties {
  * @constructor
  * Recovery plan unplanned failover input.
  *
- * @member {object} properties The recovery plan unplanned failover input
+ * @property {object} properties The recovery plan unplanned failover input
  * properties.
- * @member {string} [properties.failoverDirection] The failover direction.
+ * @property {string} [properties.failoverDirection] The failover direction.
  * Possible values include: 'PrimaryToRecovery', 'RecoveryToPrimary'
- * @member {string} [properties.sourceSiteOperations] A value indicating
+ * @property {string} [properties.sourceSiteOperations] A value indicating
  * whether source site operations are required. Possible values include:
  * 'Required', 'NotRequired'
- * @member {array} [properties.providerSpecificDetails] The provider specific
+ * @property {array} [properties.providerSpecificDetails] The provider specific
  * properties.
  */
 export interface RecoveryPlanUnplannedFailoverInput {
@@ -5403,12 +5455,12 @@ export interface RecoveryPlanUnplannedFailoverInput {
  * @constructor
  * Recovery point properties.
  *
- * @member {date} [recoveryPointTime] The recovery point time.
- * @member {string} [recoveryPointType] The recovery point type:
+ * @property {date} [recoveryPointTime] The recovery point time.
+ * @property {string} [recoveryPointType] The recovery point type:
  * ApplicationConsistent, CrashConsistent.
- * @member {object} [providerSpecificDetails] The provider specific details for
- * the recovery point.
- * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * @property {object} [providerSpecificDetails] The provider specific details
+ * for the recovery point.
+ * @property {string} [providerSpecificDetails.instanceType] Polymorphic
  * Discriminator
  */
 export interface RecoveryPointProperties {
@@ -5423,13 +5475,13 @@ export interface RecoveryPointProperties {
  * @constructor
  * Base class representing a recovery point.
  *
- * @member {object} [properties] Recovery point related data.
- * @member {date} [properties.recoveryPointTime] The recovery point time.
- * @member {string} [properties.recoveryPointType] The recovery point type:
+ * @property {object} [properties] Recovery point related data.
+ * @property {date} [properties.recoveryPointTime] The recovery point time.
+ * @property {string} [properties.recoveryPointType] The recovery point type:
  * ApplicationConsistent, CrashConsistent.
- * @member {object} [properties.providerSpecificDetails] The provider specific
- * details for the recovery point.
- * @member {string} [properties.providerSpecificDetails.instanceType]
+ * @property {object} [properties.providerSpecificDetails] The provider
+ * specific details for the recovery point.
+ * @property {string} [properties.providerSpecificDetails.instanceType]
  * Polymorphic Discriminator
  */
 export interface RecoveryPoint extends Resource {
@@ -5442,48 +5494,49 @@ export interface RecoveryPoint extends Resource {
  * @constructor
  * Recovery services provider properties.
  *
- * @member {string} [fabricType] Type of the site.
- * @member {string} [friendlyName] Friendly name of the DRA.
- * @member {string} [providerVersion] The provider version.
- * @member {string} [serverVersion] The fabric provider.
- * @member {string} [providerVersionState] DRA version status.
- * @member {date} [providerVersionExpiryDate] Expiry date of the version.
- * @member {string} [fabricFriendlyName] The fabric friendly name.
- * @member {date} [lastHeartBeat] Time when last heartbeat was sent by the DRA.
- * @member {string} [connectionStatus] A value indicating whether DRA is
+ * @property {string} [fabricType] Type of the site.
+ * @property {string} [friendlyName] Friendly name of the DRA.
+ * @property {string} [providerVersion] The provider version.
+ * @property {string} [serverVersion] The fabric provider.
+ * @property {string} [providerVersionState] DRA version status.
+ * @property {date} [providerVersionExpiryDate] Expiry date of the version.
+ * @property {string} [fabricFriendlyName] The fabric friendly name.
+ * @property {date} [lastHeartBeat] Time when last heartbeat was sent by the
+ * DRA.
+ * @property {string} [connectionStatus] A value indicating whether DRA is
  * responsive.
- * @member {number} [protectedItemCount] Number of protected VMs currently
+ * @property {number} [protectedItemCount] Number of protected VMs currently
  * managed by the DRA.
- * @member {array} [allowedScenarios] The scenarios allowed on this provider.
- * @member {array} [healthErrorDetails] The recovery services provider health
+ * @property {array} [allowedScenarios] The scenarios allowed on this provider.
+ * @property {array} [healthErrorDetails] The recovery services provider health
  * error details.
- * @member {string} [draIdentifier] The DRA Id.
- * @member {object} [identityDetails] The identity details.
- * @member {string} [identityDetails.identityProviderType] The identity
+ * @property {string} [draIdentifier] The DRA Id.
+ * @property {object} [identityDetails] The identity details.
+ * @property {string} [identityDetails.identityProviderType] The identity
  * provider type. Value is the ToString() of a IdentityProviderType value.
  * Possible values include: 'RecoveryServicesActiveDirectory'
- * @member {string} [identityDetails.tenantId] The tenant Id for the service
+ * @property {string} [identityDetails.tenantId] The tenant Id for the service
  * principal with which the on-premise management/data plane components would
  * communicate with our Azure services.
- * @member {string} [identityDetails.applicationId] The application/client Id
+ * @property {string} [identityDetails.applicationId] The application/client Id
  * for the service principal with which the on-premise management/data plane
  * components would communicate with our Azure services.
- * @member {string} [identityDetails.objectId] The object Id of the service
+ * @property {string} [identityDetails.objectId] The object Id of the service
  * principal with which the on-premise management/data plane components would
  * communicate with our Azure services.
- * @member {string} [identityDetails.audience] The intended Audience of the
+ * @property {string} [identityDetails.audience] The intended Audience of the
  * service principal with which the on-premise management/data plane components
  * would communicate with our Azure services.
- * @member {string} [identityDetails.aadAuthority] The base authority for Azure
- * Active Directory authentication.
- * @member {string} [identityDetails.certificateThumbprint] The certificate
+ * @property {string} [identityDetails.aadAuthority] The base authority for
+ * Azure Active Directory authentication.
+ * @property {string} [identityDetails.certificateThumbprint] The certificate
  * thumbprint. Applicable only if IdentityProviderType is
  * RecoveryServicesActiveDirectory.
- * @member {object} [providerVersionDetails] The provider version details.
- * @member {string} [providerVersionDetails.version] The agent version.
- * @member {date} [providerVersionDetails.expiryDate] Version expiry date.
- * @member {string} [providerVersionDetails.status] A value indicating whether
- * security update required. Possible values include: 'Supported',
+ * @property {object} [providerVersionDetails] The provider version details.
+ * @property {string} [providerVersionDetails.version] The agent version.
+ * @property {date} [providerVersionDetails.expiryDate] Version expiry date.
+ * @property {string} [providerVersionDetails.status] A value indicating
+ * whether security update required. Possible values include: 'Supported',
  * 'NotSupported', 'Deprecated', 'UpdateRequired', 'SecurityUpdateRequired'
  */
 export interface RecoveryServicesProviderProperties {
@@ -5510,54 +5563,54 @@ export interface RecoveryServicesProviderProperties {
  * @constructor
  * Provider details.
  *
- * @member {object} [properties] Provider properties.
- * @member {string} [properties.fabricType] Type of the site.
- * @member {string} [properties.friendlyName] Friendly name of the DRA.
- * @member {string} [properties.providerVersion] The provider version.
- * @member {string} [properties.serverVersion] The fabric provider.
- * @member {string} [properties.providerVersionState] DRA version status.
- * @member {date} [properties.providerVersionExpiryDate] Expiry date of the
+ * @property {object} [properties] Provider properties.
+ * @property {string} [properties.fabricType] Type of the site.
+ * @property {string} [properties.friendlyName] Friendly name of the DRA.
+ * @property {string} [properties.providerVersion] The provider version.
+ * @property {string} [properties.serverVersion] The fabric provider.
+ * @property {string} [properties.providerVersionState] DRA version status.
+ * @property {date} [properties.providerVersionExpiryDate] Expiry date of the
  * version.
- * @member {string} [properties.fabricFriendlyName] The fabric friendly name.
- * @member {date} [properties.lastHeartBeat] Time when last heartbeat was sent
- * by the DRA.
- * @member {string} [properties.connectionStatus] A value indicating whether
+ * @property {string} [properties.fabricFriendlyName] The fabric friendly name.
+ * @property {date} [properties.lastHeartBeat] Time when last heartbeat was
+ * sent by the DRA.
+ * @property {string} [properties.connectionStatus] A value indicating whether
  * DRA is responsive.
- * @member {number} [properties.protectedItemCount] Number of protected VMs
+ * @property {number} [properties.protectedItemCount] Number of protected VMs
  * currently managed by the DRA.
- * @member {array} [properties.allowedScenarios] The scenarios allowed on this
- * provider.
- * @member {array} [properties.healthErrorDetails] The recovery services
+ * @property {array} [properties.allowedScenarios] The scenarios allowed on
+ * this provider.
+ * @property {array} [properties.healthErrorDetails] The recovery services
  * provider health error details.
- * @member {string} [properties.draIdentifier] The DRA Id.
- * @member {object} [properties.identityDetails] The identity details.
- * @member {string} [properties.identityDetails.identityProviderType] The
+ * @property {string} [properties.draIdentifier] The DRA Id.
+ * @property {object} [properties.identityDetails] The identity details.
+ * @property {string} [properties.identityDetails.identityProviderType] The
  * identity provider type. Value is the ToString() of a IdentityProviderType
  * value. Possible values include: 'RecoveryServicesActiveDirectory'
- * @member {string} [properties.identityDetails.tenantId] The tenant Id for the
- * service principal with which the on-premise management/data plane components
- * would communicate with our Azure services.
- * @member {string} [properties.identityDetails.applicationId] The
+ * @property {string} [properties.identityDetails.tenantId] The tenant Id for
+ * the service principal with which the on-premise management/data plane
+ * components would communicate with our Azure services.
+ * @property {string} [properties.identityDetails.applicationId] The
  * application/client Id for the service principal with which the on-premise
  * management/data plane components would communicate with our Azure services.
- * @member {string} [properties.identityDetails.objectId] The object Id of the
- * service principal with which the on-premise management/data plane components
- * would communicate with our Azure services.
- * @member {string} [properties.identityDetails.audience] The intended Audience
- * of the service principal with which the on-premise management/data plane
+ * @property {string} [properties.identityDetails.objectId] The object Id of
+ * the service principal with which the on-premise management/data plane
  * components would communicate with our Azure services.
- * @member {string} [properties.identityDetails.aadAuthority] The base
+ * @property {string} [properties.identityDetails.audience] The intended
+ * Audience of the service principal with which the on-premise management/data
+ * plane components would communicate with our Azure services.
+ * @property {string} [properties.identityDetails.aadAuthority] The base
  * authority for Azure Active Directory authentication.
- * @member {string} [properties.identityDetails.certificateThumbprint] The
+ * @property {string} [properties.identityDetails.certificateThumbprint] The
  * certificate thumbprint. Applicable only if IdentityProviderType is
  * RecoveryServicesActiveDirectory.
- * @member {object} [properties.providerVersionDetails] The provider version
+ * @property {object} [properties.providerVersionDetails] The provider version
  * details.
- * @member {string} [properties.providerVersionDetails.version] The agent
+ * @property {string} [properties.providerVersionDetails.version] The agent
  * version.
- * @member {date} [properties.providerVersionDetails.expiryDate] Version expiry
- * date.
- * @member {string} [properties.providerVersionDetails.status] A value
+ * @property {date} [properties.providerVersionDetails.expiryDate] Version
+ * expiry date.
+ * @property {string} [properties.providerVersionDetails.status] A value
  * indicating whether security update required. Possible values include:
  * 'Supported', 'NotSupported', 'Deprecated', 'UpdateRequired',
  * 'SecurityUpdateRequired'
@@ -5572,7 +5625,7 @@ export interface RecoveryServicesProvider extends Resource {
  * @constructor
  * Provider specific input for unpairing operations.
  *
- * @member {string} [instanceType] The class type.
+ * @property {string} [instanceType] The class type.
  */
 export interface ReplicationProviderContainerUnmappingInput {
   instanceType?: string;
@@ -5584,9 +5637,9 @@ export interface ReplicationProviderContainerUnmappingInput {
  * @constructor
  * Unpairing input properties.
  *
- * @member {object} [providerSpecificInput] Provider specific input for
+ * @property {object} [providerSpecificInput] Provider specific input for
  * unpairing.
- * @member {string} [providerSpecificInput.instanceType] The class type.
+ * @property {string} [providerSpecificInput.instanceType] The class type.
  */
 export interface RemoveProtectionContainerMappingInputProperties {
   providerSpecificInput?: ReplicationProviderContainerUnmappingInput;
@@ -5598,10 +5651,10 @@ export interface RemoveProtectionContainerMappingInputProperties {
  * @constructor
  * Container unpairing input.
  *
- * @member {object} [properties] Configure protection input properties.
- * @member {object} [properties.providerSpecificInput] Provider specific input
- * for unpairing.
- * @member {string} [properties.providerSpecificInput.instanceType] The class
+ * @property {object} [properties] Configure protection input properties.
+ * @property {object} [properties.providerSpecificInput] Provider specific
+ * input for unpairing.
+ * @property {string} [properties.providerSpecificInput.instanceType] The class
  * type.
  */
 export interface RemoveProtectionContainerMappingInput {
@@ -5614,7 +5667,7 @@ export interface RemoveProtectionContainerMappingInput {
  * @constructor
  * Renew Certificate input properties.
  *
- * @member {string} [renewCertificateType] Renew certificate type.
+ * @property {string} [renewCertificateType] Renew certificate type.
  */
 export interface RenewCertificateInputProperties {
   renewCertificateType?: string;
@@ -5626,8 +5679,8 @@ export interface RenewCertificateInputProperties {
  * @constructor
  * Certificate renewal input.
  *
- * @member {object} [properties] Renew certificate input properties.
- * @member {string} [properties.renewCertificateType] Renew certificate type.
+ * @property {object} [properties] Renew certificate input properties.
+ * @property {string} [properties.renewCertificateType] Renew certificate type.
  */
 export interface RenewCertificateInput {
   properties?: RenewCertificateInputProperties;
@@ -5649,54 +5702,56 @@ export interface ReplicationGroupDetails extends ConfigurationSettings {
  * @constructor
  * Replication protected item custom data details.
  *
- * @member {string} [friendlyName] The name.
- * @member {string} [protectedItemType] The type of protected item type.
- * @member {string} [protectableItemId] The protected item ARM Id.
- * @member {string} [recoveryServicesProviderId] The recovery provider ARM Id.
- * @member {string} [primaryFabricFriendlyName] The friendly name of the
+ * @property {string} [friendlyName] The name.
+ * @property {string} [protectedItemType] The type of protected item type.
+ * @property {string} [protectableItemId] The protected item ARM Id.
+ * @property {string} [recoveryServicesProviderId] The recovery provider ARM
+ * Id.
+ * @property {string} [primaryFabricFriendlyName] The friendly name of the
  * primary fabric.
- * @member {string} [primaryFabricProvider] The fabric provider of the primary
- * fabric.
- * @member {string} [recoveryFabricFriendlyName] The friendly name of recovery
- * fabric.
- * @member {string} [recoveryFabricId] The Arm Id of recovery fabric.
- * @member {string} [primaryProtectionContainerFriendlyName] The name of
+ * @property {string} [primaryFabricProvider] The fabric provider of the
+ * primary fabric.
+ * @property {string} [recoveryFabricFriendlyName] The friendly name of
+ * recovery fabric.
+ * @property {string} [recoveryFabricId] The Arm Id of recovery fabric.
+ * @property {string} [primaryProtectionContainerFriendlyName] The name of
  * primary protection container friendly name.
- * @member {string} [recoveryProtectionContainerFriendlyName] The name of
+ * @property {string} [recoveryProtectionContainerFriendlyName] The name of
  * recovery container friendly name.
- * @member {string} [protectionState] The protection status.
- * @member {string} [protectionStateDescription] The protection state
+ * @property {string} [protectionState] The protection status.
+ * @property {string} [protectionStateDescription] The protection state
  * description.
- * @member {string} [activeLocation] The Current active location of the PE.
- * @member {string} [testFailoverState] The Test failover state.
- * @member {string} [testFailoverStateDescription] The Test failover state
+ * @property {string} [activeLocation] The Current active location of the PE.
+ * @property {string} [testFailoverState] The Test failover state.
+ * @property {string} [testFailoverStateDescription] The Test failover state
  * description.
- * @member {array} [allowedOperations] The allowed operations on the
+ * @property {array} [allowedOperations] The allowed operations on the
  * Replication protected item.
- * @member {string} [replicationHealth] The consolidated protection health for
- * the VM taking any issues with SRS as well as all the replication units
+ * @property {string} [replicationHealth] The consolidated protection health
+ * for the VM taking any issues with SRS as well as all the replication units
  * associated with the VM's replication group into account. This is a string
  * representation of the ProtectionHealth enumeration.
- * @member {string} [failoverHealth] The consolidated failover health for the
+ * @property {string} [failoverHealth] The consolidated failover health for the
  * VM.
- * @member {array} [healthErrors] List of health errors.
- * @member {string} [policyId] The ID of Policy governing this PE.
- * @member {string} [policyFriendlyName] The name of Policy governing this PE.
- * @member {date} [lastSuccessfulFailoverTime] The Last successful failover
+ * @property {array} [healthErrors] List of health errors.
+ * @property {string} [policyId] The ID of Policy governing this PE.
+ * @property {string} [policyFriendlyName] The name of Policy governing this
+ * PE.
+ * @property {date} [lastSuccessfulFailoverTime] The Last successful failover
  * time.
- * @member {date} [lastSuccessfulTestFailoverTime] The Last successful test
+ * @property {date} [lastSuccessfulTestFailoverTime] The Last successful test
  * failover time.
- * @member {object} [currentScenario] The current scenario.
- * @member {string} [currentScenario.scenarioName] Scenario name.
- * @member {string} [currentScenario.jobId] ARM Id of the job being executed.
- * @member {date} [currentScenario.startTime] Start time of the workflow.
- * @member {string} [failoverRecoveryPointId] The recovery point ARM Id to
+ * @property {object} [currentScenario] The current scenario.
+ * @property {string} [currentScenario.scenarioName] Scenario name.
+ * @property {string} [currentScenario.jobId] ARM Id of the job being executed.
+ * @property {date} [currentScenario.startTime] Start time of the workflow.
+ * @property {string} [failoverRecoveryPointId] The recovery point ARM Id to
  * which the Vm was failed over.
- * @member {object} [providerSpecificDetails] The Replication provider custom
+ * @property {object} [providerSpecificDetails] The Replication provider custom
  * settings.
- * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * @property {string} [providerSpecificDetails.instanceType] Polymorphic
  * Discriminator
- * @member {string} [recoveryContainerId] The recovery container Id.
+ * @property {string} [recoveryContainerId] The recovery container Id.
  */
 export interface ReplicationProtectedItemProperties {
   friendlyName?: string;
@@ -5734,62 +5789,63 @@ export interface ReplicationProtectedItemProperties {
  * @constructor
  * Replication protected item.
  *
- * @member {object} [properties] The custom data.
- * @member {string} [properties.friendlyName] The name.
- * @member {string} [properties.protectedItemType] The type of protected item
+ * @property {object} [properties] The custom data.
+ * @property {string} [properties.friendlyName] The name.
+ * @property {string} [properties.protectedItemType] The type of protected item
  * type.
- * @member {string} [properties.protectableItemId] The protected item ARM Id.
- * @member {string} [properties.recoveryServicesProviderId] The recovery
+ * @property {string} [properties.protectableItemId] The protected item ARM Id.
+ * @property {string} [properties.recoveryServicesProviderId] The recovery
  * provider ARM Id.
- * @member {string} [properties.primaryFabricFriendlyName] The friendly name of
+ * @property {string} [properties.primaryFabricFriendlyName] The friendly name
+ * of the primary fabric.
+ * @property {string} [properties.primaryFabricProvider] The fabric provider of
  * the primary fabric.
- * @member {string} [properties.primaryFabricProvider] The fabric provider of
- * the primary fabric.
- * @member {string} [properties.recoveryFabricFriendlyName] The friendly name
+ * @property {string} [properties.recoveryFabricFriendlyName] The friendly name
  * of recovery fabric.
- * @member {string} [properties.recoveryFabricId] The Arm Id of recovery
+ * @property {string} [properties.recoveryFabricId] The Arm Id of recovery
  * fabric.
- * @member {string} [properties.primaryProtectionContainerFriendlyName] The
+ * @property {string} [properties.primaryProtectionContainerFriendlyName] The
  * name of primary protection container friendly name.
- * @member {string} [properties.recoveryProtectionContainerFriendlyName] The
+ * @property {string} [properties.recoveryProtectionContainerFriendlyName] The
  * name of recovery container friendly name.
- * @member {string} [properties.protectionState] The protection status.
- * @member {string} [properties.protectionStateDescription] The protection
+ * @property {string} [properties.protectionState] The protection status.
+ * @property {string} [properties.protectionStateDescription] The protection
  * state description.
- * @member {string} [properties.activeLocation] The Current active location of
- * the PE.
- * @member {string} [properties.testFailoverState] The Test failover state.
- * @member {string} [properties.testFailoverStateDescription] The Test failover
- * state description.
- * @member {array} [properties.allowedOperations] The allowed operations on the
- * Replication protected item.
- * @member {string} [properties.replicationHealth] The consolidated protection
- * health for the VM taking any issues with SRS as well as all the replication
- * units associated with the VM's replication group into account. This is a
- * string representation of the ProtectionHealth enumeration.
- * @member {string} [properties.failoverHealth] The consolidated failover
+ * @property {string} [properties.activeLocation] The Current active location
+ * of the PE.
+ * @property {string} [properties.testFailoverState] The Test failover state.
+ * @property {string} [properties.testFailoverStateDescription] The Test
+ * failover state description.
+ * @property {array} [properties.allowedOperations] The allowed operations on
+ * the Replication protected item.
+ * @property {string} [properties.replicationHealth] The consolidated
+ * protection health for the VM taking any issues with SRS as well as all the
+ * replication units associated with the VM's replication group into account.
+ * This is a string representation of the ProtectionHealth enumeration.
+ * @property {string} [properties.failoverHealth] The consolidated failover
  * health for the VM.
- * @member {array} [properties.healthErrors] List of health errors.
- * @member {string} [properties.policyId] The ID of Policy governing this PE.
- * @member {string} [properties.policyFriendlyName] The name of Policy
+ * @property {array} [properties.healthErrors] List of health errors.
+ * @property {string} [properties.policyId] The ID of Policy governing this PE.
+ * @property {string} [properties.policyFriendlyName] The name of Policy
  * governing this PE.
- * @member {date} [properties.lastSuccessfulFailoverTime] The Last successful
+ * @property {date} [properties.lastSuccessfulFailoverTime] The Last successful
  * failover time.
- * @member {date} [properties.lastSuccessfulTestFailoverTime] The Last
+ * @property {date} [properties.lastSuccessfulTestFailoverTime] The Last
  * successful test failover time.
- * @member {object} [properties.currentScenario] The current scenario.
- * @member {string} [properties.currentScenario.scenarioName] Scenario name.
- * @member {string} [properties.currentScenario.jobId] ARM Id of the job being
- * executed.
- * @member {date} [properties.currentScenario.startTime] Start time of the
+ * @property {object} [properties.currentScenario] The current scenario.
+ * @property {string} [properties.currentScenario.scenarioName] Scenario name.
+ * @property {string} [properties.currentScenario.jobId] ARM Id of the job
+ * being executed.
+ * @property {date} [properties.currentScenario.startTime] Start time of the
  * workflow.
- * @member {string} [properties.failoverRecoveryPointId] The recovery point ARM
- * Id to which the Vm was failed over.
- * @member {object} [properties.providerSpecificDetails] The Replication
+ * @property {string} [properties.failoverRecoveryPointId] The recovery point
+ * ARM Id to which the Vm was failed over.
+ * @property {object} [properties.providerSpecificDetails] The Replication
  * provider custom settings.
- * @member {string} [properties.providerSpecificDetails.instanceType]
+ * @property {string} [properties.providerSpecificDetails.instanceType]
  * Polymorphic Discriminator
- * @member {string} [properties.recoveryContainerId] The recovery container Id.
+ * @property {string} [properties.recoveryContainerId] The recovery container
+ * Id.
  */
 export interface ReplicationProtectedItem extends Resource {
   properties?: ReplicationProtectedItemProperties;
@@ -5802,9 +5858,9 @@ export interface ReplicationProtectedItem extends Resource {
  * Base class to define the health summary of the resources contained under an
  * Arm resource.
  *
- * @member {number} [resourceCount] The count of total resources umder the
+ * @property {number} [resourceCount] The count of total resources umder the
  * container.
- * @member {array} [issues] The list of summary of health errors across the
+ * @property {array} [issues] The list of summary of health errors across the
  * resources under the container.
  */
 export interface ResourceHealthSummary {
@@ -5818,7 +5874,7 @@ export interface ResourceHealthSummary {
  * @constructor
  * Resume job properties.
  *
- * @member {string} [comments] Resume job comments.
+ * @property {string} [comments] Resume job comments.
  */
 export interface ResumeJobParamsProperties {
   comments?: string;
@@ -5830,8 +5886,8 @@ export interface ResumeJobParamsProperties {
  * @constructor
  * Resume job params.
  *
- * @member {object} [properties] Resume job properties.
- * @member {string} [properties.comments] Resume job comments.
+ * @property {object} [properties] Resume job properties.
+ * @property {string} [properties.comments] Resume job comments.
  */
 export interface ResumeJobParams {
   properties?: ResumeJobParamsProperties;
@@ -5843,10 +5899,10 @@ export interface ResumeJobParams {
  * @constructor
  * Reverse replication input properties.
  *
- * @member {string} [failoverDirection] Failover direction.
- * @member {object} [providerSpecificDetails] Provider specific reverse
+ * @property {string} [failoverDirection] Failover direction.
+ * @property {object} [providerSpecificDetails] Provider specific reverse
  * replication input.
- * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * @property {string} [providerSpecificDetails.instanceType] Polymorphic
  * Discriminator
  */
 export interface ReverseReplicationInputProperties {
@@ -5860,11 +5916,11 @@ export interface ReverseReplicationInputProperties {
  * @constructor
  * Reverse replication input.
  *
- * @member {object} [properties] Reverse replication properties
- * @member {string} [properties.failoverDirection] Failover direction.
- * @member {object} [properties.providerSpecificDetails] Provider specific
+ * @property {object} [properties] Reverse replication properties
+ * @property {string} [properties.failoverDirection] Failover direction.
+ * @property {object} [properties.providerSpecificDetails] Provider specific
  * reverse replication input.
- * @member {string} [properties.providerSpecificDetails.instanceType]
+ * @property {string} [properties.providerSpecificDetails.instanceType]
  * Polymorphic Discriminator
  */
 export interface ReverseReplicationInput {
@@ -5877,8 +5933,8 @@ export interface ReverseReplicationInput {
  * @constructor
  * CS Accounts Details.
  *
- * @member {string} [accountId] The CS RunAs account Id.
- * @member {string} [accountName] The CS RunAs account name.
+ * @property {string} [accountId] The CS RunAs account Id.
+ * @property {string} [accountName] The CS RunAs account name.
  */
 export interface RunAsAccount {
   accountId?: string;
@@ -5901,10 +5957,10 @@ export interface SanEnableProtectionInput extends EnableProtectionProviderSpecif
  * @constructor
  * This class represents the script action task details.
  *
- * @member {string} [name] The name.
- * @member {string} [path] The path.
- * @member {string} [output] The output.
- * @member {boolean} [isPrimarySideScript] A value indicating whether it is a
+ * @property {string} [name] The name.
+ * @property {string} [path] The path.
+ * @property {string} [output] The output.
+ * @property {boolean} [isPrimarySideScript] A value indicating whether it is a
  * primary side script or not.
  */
 export interface ScriptActionTaskDetails extends TaskTypeDetails {
@@ -5920,7 +5976,8 @@ export interface ScriptActionTaskDetails extends TaskTypeDetails {
  * @constructor
  * Storage object properties.
  *
- * @member {string} [friendlyName] Friendly name of the Storage classification.
+ * @property {string} [friendlyName] Friendly name of the Storage
+ * classification.
  */
 export interface StorageClassificationProperties {
   friendlyName?: string;
@@ -5932,8 +5989,8 @@ export interface StorageClassificationProperties {
  * @constructor
  * Storage object definition.
  *
- * @member {object} [properties] Proprties of the storage object.
- * @member {string} [properties.friendlyName] Friendly name of the Storage
+ * @property {object} [properties] Proprties of the storage object.
+ * @property {string} [properties.friendlyName] Friendly name of the Storage
  * classification.
  */
 export interface StorageClassification extends Resource {
@@ -5946,7 +6003,7 @@ export interface StorageClassification extends Resource {
  * @constructor
  * Storage mapping properties.
  *
- * @member {string} [targetStorageClassificationId] Target storage object Id.
+ * @property {string} [targetStorageClassificationId] Target storage object Id.
  */
 export interface StorageClassificationMappingProperties {
   targetStorageClassificationId?: string;
@@ -5958,8 +6015,8 @@ export interface StorageClassificationMappingProperties {
  * @constructor
  * Storage mapping object.
  *
- * @member {object} [properties] Proprties of the storage mappping object.
- * @member {string} [properties.targetStorageClassificationId] Target storage
+ * @property {object} [properties] Proprties of the storage mappping object.
+ * @property {string} [properties.targetStorageClassificationId] Target storage
  * object Id.
  */
 export interface StorageClassificationMapping extends Resource {
@@ -5972,7 +6029,7 @@ export interface StorageClassificationMapping extends Resource {
  * @constructor
  * Storage mapping input properties.
  *
- * @member {string} [targetStorageClassificationId] The ID of the storage
+ * @property {string} [targetStorageClassificationId] The ID of the storage
  * object.
  */
 export interface StorageMappingInputProperties {
@@ -5985,8 +6042,8 @@ export interface StorageMappingInputProperties {
  * @constructor
  * Storage mapping input.
  *
- * @member {object} [properties] Storage mapping input properties.
- * @member {string} [properties.targetStorageClassificationId] The ID of the
+ * @property {object} [properties] Storage mapping input properties.
+ * @property {string} [properties.targetStorageClassificationId] The ID of the
  * storage object.
  */
 export interface StorageClassificationMappingInput {
@@ -5999,11 +6056,11 @@ export interface StorageClassificationMappingInput {
  * @constructor
  * Switch protection input properties.
  *
- * @member {string} [replicationProtectedItemName] The unique replication
+ * @property {string} [replicationProtectedItemName] The unique replication
  * protected item name.
- * @member {object} [providerSpecificDetails] Provider specific switch
+ * @property {object} [providerSpecificDetails] Provider specific switch
  * protection input.
- * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * @property {string} [providerSpecificDetails.instanceType] Polymorphic
  * Discriminator
  */
 export interface SwitchProtectionInputProperties {
@@ -6017,12 +6074,12 @@ export interface SwitchProtectionInputProperties {
  * @constructor
  * Switch protection input.
  *
- * @member {object} [properties] Switch protection properties
- * @member {string} [properties.replicationProtectedItemName] The unique
+ * @property {object} [properties] Switch protection properties
+ * @property {string} [properties.replicationProtectedItemName] The unique
  * replication protected item name.
- * @member {object} [properties.providerSpecificDetails] Provider specific
+ * @property {object} [properties.providerSpecificDetails] Provider specific
  * switch protection input.
- * @member {string} [properties.providerSpecificDetails.instanceType]
+ * @property {string} [properties.providerSpecificDetails.instanceType]
  * Polymorphic Discriminator
  */
 export interface SwitchProtectionInput {
@@ -6035,7 +6092,7 @@ export interface SwitchProtectionInput {
  * @constructor
  * This class represents details for switch protection job.
  *
- * @member {string} [newReplicationProtectedItemId] ARM Id of the new
+ * @property {string} [newReplicationProtectedItemId] ARM Id of the new
  * replication protected item.
  */
 export interface SwitchProtectionJobDetails extends JobDetails {
@@ -6048,20 +6105,20 @@ export interface SwitchProtectionJobDetails extends JobDetails {
  * @constructor
  * Represents applicable recovery vm sizes properties.
  *
- * @member {string} [name] Target compute size name.
- * @member {string} [friendlyName] Target compute size display name.
- * @member {number} [cpuCoresCount] The maximum cpu cores count supported by
+ * @property {string} [name] Target compute size name.
+ * @property {string} [friendlyName] Target compute size display name.
+ * @property {number} [cpuCoresCount] The maximum cpu cores count supported by
  * target compute size.
- * @member {number} [memoryInGB] The maximum memory in GB supported by target
+ * @property {number} [memoryInGB] The maximum memory in GB supported by target
  * compute size.
- * @member {number} [maxDataDiskCount] The maximum data disks count supported
+ * @property {number} [maxDataDiskCount] The maximum data disks count supported
  * by target compute size.
- * @member {number} [maxNicsCount] The maximum Nics count supported by target
+ * @property {number} [maxNicsCount] The maximum Nics count supported by target
  * compute size.
- * @member {array} [errors] The reasons why the target compute size is not
+ * @property {array} [errors] The reasons why the target compute size is not
  * applicable for the protected item.
- * @member {string} [highIopsSupported] The value indicating whether the target
- * compute size supports high Iops.
+ * @property {string} [highIopsSupported] The value indicating whether the
+ * target compute size supports high Iops.
  */
 export interface TargetComputeSizeProperties {
   name?: string;
@@ -6080,24 +6137,25 @@ export interface TargetComputeSizeProperties {
  * @constructor
  * Represents applicable recovery vm sizes.
  *
- * @member {string} [id] The Id.
- * @member {string} [name] The name.
- * @member {string} [type] The Type of the object.
- * @member {object} [properties] The custom data.
- * @member {string} [properties.name] Target compute size name.
- * @member {string} [properties.friendlyName] Target compute size display name.
- * @member {number} [properties.cpuCoresCount] The maximum cpu cores count
+ * @property {string} [id] The Id.
+ * @property {string} [name] The name.
+ * @property {string} [type] The Type of the object.
+ * @property {object} [properties] The custom data.
+ * @property {string} [properties.name] Target compute size name.
+ * @property {string} [properties.friendlyName] Target compute size display
+ * name.
+ * @property {number} [properties.cpuCoresCount] The maximum cpu cores count
  * supported by target compute size.
- * @member {number} [properties.memoryInGB] The maximum memory in GB supported
- * by target compute size.
- * @member {number} [properties.maxDataDiskCount] The maximum data disks count
+ * @property {number} [properties.memoryInGB] The maximum memory in GB
  * supported by target compute size.
- * @member {number} [properties.maxNicsCount] The maximum Nics count supported
- * by target compute size.
- * @member {array} [properties.errors] The reasons why the target compute size
- * is not applicable for the protected item.
- * @member {string} [properties.highIopsSupported] The value indicating whether
- * the target compute size supports high Iops.
+ * @property {number} [properties.maxDataDiskCount] The maximum data disks
+ * count supported by target compute size.
+ * @property {number} [properties.maxNicsCount] The maximum Nics count
+ * supported by target compute size.
+ * @property {array} [properties.errors] The reasons why the target compute
+ * size is not applicable for the protected item.
+ * @property {string} [properties.highIopsSupported] The value indicating
+ * whether the target compute size supports high Iops.
  */
 export interface TargetComputeSize {
   id?: string;
@@ -6112,7 +6170,7 @@ export interface TargetComputeSize {
  * @constructor
  * Input definition for test failover cleanup input properties.
  *
- * @member {string} [comments] Test failover cleanup comments.
+ * @property {string} [comments] Test failover cleanup comments.
  */
 export interface TestFailoverCleanupInputProperties {
   comments?: string;
@@ -6124,8 +6182,8 @@ export interface TestFailoverCleanupInputProperties {
  * @constructor
  * Input definition for test failover cleanup.
  *
- * @member {object} properties Test failover cleanup input properties.
- * @member {string} [properties.comments] Test failover cleanup comments.
+ * @property {object} properties Test failover cleanup input properties.
+ * @property {string} [properties.comments] Test failover cleanup comments.
  */
 export interface TestFailoverCleanupInput {
   properties: TestFailoverCleanupInputProperties;
@@ -6137,14 +6195,14 @@ export interface TestFailoverCleanupInput {
  * @constructor
  * Input definition for planned failover input properties.
  *
- * @member {string} [failoverDirection] Failover direction.
- * @member {string} [networkType] Network type to be used for test failover.
- * @member {string} [networkId] The id of the network to be used for test
+ * @property {string} [failoverDirection] Failover direction.
+ * @property {string} [networkType] Network type to be used for test failover.
+ * @property {string} [networkId] The id of the network to be used for test
  * failover
- * @member {string} [skipTestFailoverCleanup] A value indicating whether the
+ * @property {string} [skipTestFailoverCleanup] A value indicating whether the
  * test failover cleanup is to be skipped.
- * @member {object} [providerSpecificDetails] Provider specific settings
- * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * @property {object} [providerSpecificDetails] Provider specific settings
+ * @property {string} [providerSpecificDetails.instanceType] Polymorphic
  * Discriminator
  */
 export interface TestFailoverInputProperties {
@@ -6161,17 +6219,17 @@ export interface TestFailoverInputProperties {
  * @constructor
  * Input definition for planned failover.
  *
- * @member {object} [properties] Planned failover input properties
- * @member {string} [properties.failoverDirection] Failover direction.
- * @member {string} [properties.networkType] Network type to be used for test
+ * @property {object} [properties] Planned failover input properties
+ * @property {string} [properties.failoverDirection] Failover direction.
+ * @property {string} [properties.networkType] Network type to be used for test
  * failover.
- * @member {string} [properties.networkId] The id of the network to be used for
- * test failover
- * @member {string} [properties.skipTestFailoverCleanup] A value indicating
+ * @property {string} [properties.networkId] The id of the network to be used
+ * for test failover
+ * @property {string} [properties.skipTestFailoverCleanup] A value indicating
  * whether the test failover cleanup is to be skipped.
- * @member {object} [properties.providerSpecificDetails] Provider specific
+ * @property {object} [properties.providerSpecificDetails] Provider specific
  * settings
- * @member {string} [properties.providerSpecificDetails.instanceType]
+ * @property {string} [properties.providerSpecificDetails.instanceType]
  * Polymorphic Discriminator
  */
 export interface TestFailoverInput {
@@ -6184,13 +6242,13 @@ export interface TestFailoverInput {
  * @constructor
  * This class represents the details for a test failover job.
  *
- * @member {string} [testFailoverStatus] The test failover status.
- * @member {string} [comments] The test failover comments.
- * @member {string} [networkName] The test network name.
- * @member {string} [networkFriendlyName] The test network friendly name.
- * @member {string} [networkType] The test network type (see TestFailoverInput
- * enum for possible values).
- * @member {array} [protectedItemDetails] The test VM details.
+ * @property {string} [testFailoverStatus] The test failover status.
+ * @property {string} [comments] The test failover comments.
+ * @property {string} [networkName] The test network name.
+ * @property {string} [networkFriendlyName] The test network friendly name.
+ * @property {string} [networkType] The test network type (see
+ * TestFailoverInput enum for possible values).
+ * @property {array} [protectedItemDetails] The test VM details.
  */
 export interface TestFailoverJobDetails extends JobDetails {
   testFailoverStatus?: string;
@@ -6207,10 +6265,10 @@ export interface TestFailoverJobDetails extends JobDetails {
  * @constructor
  * Input definition for planned failover input properties.
  *
- * @member {string} [failoverDirection] Failover direction.
- * @member {string} [sourceSiteOperations] Source site operations status
- * @member {object} [providerSpecificDetails] Provider specific settings
- * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * @property {string} [failoverDirection] Failover direction.
+ * @property {string} [sourceSiteOperations] Source site operations status
+ * @property {object} [providerSpecificDetails] Provider specific settings
+ * @property {string} [providerSpecificDetails.instanceType] Polymorphic
  * Discriminator
  */
 export interface UnplannedFailoverInputProperties {
@@ -6225,13 +6283,13 @@ export interface UnplannedFailoverInputProperties {
  * @constructor
  * Input definition for planned failover.
  *
- * @member {object} [properties] Planned failover input properties
- * @member {string} [properties.failoverDirection] Failover direction.
- * @member {string} [properties.sourceSiteOperations] Source site operations
+ * @property {object} [properties] Planned failover input properties
+ * @property {string} [properties.failoverDirection] Failover direction.
+ * @property {string} [properties.sourceSiteOperations] Source site operations
  * status
- * @member {object} [properties.providerSpecificDetails] Provider specific
+ * @property {object} [properties.providerSpecificDetails] Provider specific
  * settings
- * @member {string} [properties.providerSpecificDetails.instanceType]
+ * @property {string} [properties.providerSpecificDetails.instanceType]
  * Polymorphic Discriminator
  */
 export interface UnplannedFailoverInput {
@@ -6244,7 +6302,7 @@ export interface UnplannedFailoverInput {
  * @constructor
  * The properties of an update mobility service request.
  *
- * @member {string} [runAsAccountId] The CS run as account Id.
+ * @property {string} [runAsAccountId] The CS run as account Id.
  */
 export interface UpdateMobilityServiceRequestProperties {
   runAsAccountId?: string;
@@ -6256,9 +6314,9 @@ export interface UpdateMobilityServiceRequestProperties {
  * @constructor
  * Request to update the mobility service on a protected item.
  *
- * @member {object} [properties] The properties of the update mobility service
- * request.
- * @member {string} [properties.runAsAccountId] The CS run as account Id.
+ * @property {object} [properties] The properties of the update mobility
+ * service request.
+ * @property {string} [properties.runAsAccountId] The CS run as account Id.
  */
 export interface UpdateMobilityServiceRequest {
   properties?: UpdateMobilityServiceRequestProperties;
@@ -6270,10 +6328,11 @@ export interface UpdateMobilityServiceRequest {
  * @constructor
  * Common input details for network mapping operation.
  *
- * @member {string} [recoveryFabricName] Recovery fabric name.
- * @member {string} [recoveryNetworkId] Recovery network Id.
- * @member {object} [fabricSpecificDetails] Fabrics specific input network Id.
- * @member {string} [fabricSpecificDetails.instanceType] Polymorphic
+ * @property {string} [recoveryFabricName] Recovery fabric name.
+ * @property {string} [recoveryNetworkId] Recovery network Id.
+ * @property {object} [fabricSpecificDetails] Fabrics specific input network
+ * Id.
+ * @property {string} [fabricSpecificDetails.instanceType] Polymorphic
  * Discriminator
  */
 export interface UpdateNetworkMappingInputProperties {
@@ -6288,14 +6347,14 @@ export interface UpdateNetworkMappingInputProperties {
  * @constructor
  * Update network mapping input.
  *
- * @member {object} [properties] The input properties needed to update network
- * mapping.
- * @member {string} [properties.recoveryFabricName] Recovery fabric name.
- * @member {string} [properties.recoveryNetworkId] Recovery network Id.
- * @member {object} [properties.fabricSpecificDetails] Fabrics specific input
+ * @property {object} [properties] The input properties needed to update
+ * network mapping.
+ * @property {string} [properties.recoveryFabricName] Recovery fabric name.
+ * @property {string} [properties.recoveryNetworkId] Recovery network Id.
+ * @property {object} [properties.fabricSpecificDetails] Fabrics specific input
  * network Id.
- * @member {string} [properties.fabricSpecificDetails.instanceType] Polymorphic
- * Discriminator
+ * @property {string} [properties.fabricSpecificDetails.instanceType]
+ * Polymorphic Discriminator
  */
 export interface UpdateNetworkMappingInput {
   properties?: UpdateNetworkMappingInputProperties;
@@ -6307,9 +6366,9 @@ export interface UpdateNetworkMappingInput {
  * @constructor
  * Policy update properties.
  *
- * @member {object} [replicationProviderSettings] The
+ * @property {object} [replicationProviderSettings] The
  * ReplicationProviderSettings.
- * @member {string} [replicationProviderSettings.instanceType] Polymorphic
+ * @property {string} [replicationProviderSettings.instanceType] Polymorphic
  * Discriminator
  */
 export interface UpdatePolicyInputProperties {
@@ -6322,10 +6381,10 @@ export interface UpdatePolicyInputProperties {
  * @constructor
  * Update policy input.
  *
- * @member {object} [properties] The ReplicationProviderSettings.
- * @member {object} [properties.replicationProviderSettings] The
+ * @property {object} [properties] The ReplicationProviderSettings.
+ * @property {object} [properties.replicationProviderSettings] The
  * ReplicationProviderSettings.
- * @member {string} [properties.replicationProviderSettings.instanceType]
+ * @property {string} [properties.replicationProviderSettings.instanceType]
  * Polymorphic Discriminator
  */
 export interface UpdatePolicyInput {
@@ -6338,9 +6397,9 @@ export interface UpdatePolicyInput {
  * @constructor
  * Container pairing update input.
  *
- * @member {object} [providerSpecificInput] Provider specific input for
+ * @property {object} [providerSpecificInput] Provider specific input for
  * updating protection container mapping.
- * @member {string} [providerSpecificInput.instanceType] Polymorphic
+ * @property {string} [providerSpecificInput.instanceType] Polymorphic
  * Discriminator
  */
 export interface UpdateProtectionContainerMappingInputProperties {
@@ -6353,12 +6412,12 @@ export interface UpdateProtectionContainerMappingInputProperties {
  * @constructor
  * Container pairing update input.
  *
- * @member {object} [properties] Update protection container mapping input
+ * @property {object} [properties] Update protection container mapping input
  * properties.
- * @member {object} [properties.providerSpecificInput] Provider specific input
- * for updating protection container mapping.
- * @member {string} [properties.providerSpecificInput.instanceType] Polymorphic
- * Discriminator
+ * @property {object} [properties.providerSpecificInput] Provider specific
+ * input for updating protection container mapping.
+ * @property {string} [properties.providerSpecificInput.instanceType]
+ * Polymorphic Discriminator
  */
 export interface UpdateProtectionContainerMappingInput {
   properties?: UpdateProtectionContainerMappingInputProperties;
@@ -6370,7 +6429,7 @@ export interface UpdateProtectionContainerMappingInput {
  * @constructor
  * Recovery plan updation properties.
  *
- * @member {array} [groups] The recovery plan groups.
+ * @property {array} [groups] The recovery plan groups.
  */
 export interface UpdateRecoveryPlanInputProperties {
   groups?: RecoveryPlanGroup[];
@@ -6382,8 +6441,8 @@ export interface UpdateRecoveryPlanInputProperties {
  * @constructor
  * Update recovery plan input class.
  *
- * @member {object} [properties] Recovery plan update properties.
- * @member {array} [properties.groups] The recovery plan groups.
+ * @property {object} [properties] Recovery plan update properties.
+ * @property {array} [properties.groups] The recovery plan groups.
  */
 export interface UpdateRecoveryPlanInput {
   properties?: UpdateRecoveryPlanInputProperties;
@@ -6395,11 +6454,12 @@ export interface UpdateRecoveryPlanInput {
  * @constructor
  * Hyper V VM network input details.
  *
- * @member {string} [nicId] The nic Id.
- * @member {string} [recoveryVMSubnetName] Recovery VM subnet name.
- * @member {string} [replicaNicStaticIPAddress] Replica nic static IP address.
- * @member {string} [selectionType] Selection type for failover.
- * @member {boolean} [enableAcceleratedNetworkingOnRecovery] Whether the NIC
+ * @property {string} [nicId] The nic Id.
+ * @property {string} [recoveryVMSubnetName] Recovery VM subnet name.
+ * @property {string} [replicaNicStaticIPAddress] Replica nic static IP
+ * address.
+ * @property {string} [selectionType] Selection type for failover.
+ * @property {boolean} [enableAcceleratedNetworkingOnRecovery] Whether the NIC
  * has accerated networking enabled.
  */
 export interface VMNicInputDetails {
@@ -6416,22 +6476,23 @@ export interface VMNicInputDetails {
  * @constructor
  * Update protected item input properties.
  *
- * @member {string} [recoveryAzureVMName] Target azure VM name given by the
+ * @property {string} [recoveryAzureVMName] Target azure VM name given by the
  * user.
- * @member {string} [recoveryAzureVMSize] Target Azure Vm size.
- * @member {string} [selectedRecoveryAzureNetworkId] Target Azure Network Id.
- * @member {string} [selectedSourceNicId] The selected source nic Id which will
- * be used as the primary nic during failover.
- * @member {string} [enableRdpOnTargetOption] The selected option to enable
+ * @property {string} [recoveryAzureVMSize] Target Azure Vm size.
+ * @property {string} [selectedRecoveryAzureNetworkId] Target Azure Network Id.
+ * @property {string} [selectedSourceNicId] The selected source nic Id which
+ * will be used as the primary nic during failover.
+ * @property {string} [enableRdpOnTargetOption] The selected option to enable
  * RDP\SSH on target vm after failover. String value of
  * {SrsDataContract.EnableRDPOnTargetOption} enum.
- * @member {array} [vmNics] The list of vm nic details.
- * @member {string} [licenseType] License type. Possible values include:
+ * @property {array} [vmNics] The list of vm nic details.
+ * @property {string} [licenseType] License type. Possible values include:
  * 'NotSpecified', 'NoLicenseType', 'WindowsServer'
- * @member {string} [recoveryAvailabilitySetId] The target availability set id.
- * @member {object} [providerSpecificDetails] The provider specific input to
+ * @property {string} [recoveryAvailabilitySetId] The target availability set
+ * id.
+ * @property {object} [providerSpecificDetails] The provider specific input to
  * update replication protected item.
- * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * @property {string} [providerSpecificDetails.instanceType] Polymorphic
  * Discriminator
  */
 export interface UpdateReplicationProtectedItemInputProperties {
@@ -6452,25 +6513,26 @@ export interface UpdateReplicationProtectedItemInputProperties {
  * @constructor
  * Update replication protected item input.
  *
- * @member {object} [properties] Update replication protected item properties.
- * @member {string} [properties.recoveryAzureVMName] Target azure VM name given
- * by the user.
- * @member {string} [properties.recoveryAzureVMSize] Target Azure Vm size.
- * @member {string} [properties.selectedRecoveryAzureNetworkId] Target Azure
+ * @property {object} [properties] Update replication protected item
+ * properties.
+ * @property {string} [properties.recoveryAzureVMName] Target azure VM name
+ * given by the user.
+ * @property {string} [properties.recoveryAzureVMSize] Target Azure Vm size.
+ * @property {string} [properties.selectedRecoveryAzureNetworkId] Target Azure
  * Network Id.
- * @member {string} [properties.selectedSourceNicId] The selected source nic Id
- * which will be used as the primary nic during failover.
- * @member {string} [properties.enableRdpOnTargetOption] The selected option to
- * enable RDP\SSH on target vm after failover. String value of
+ * @property {string} [properties.selectedSourceNicId] The selected source nic
+ * Id which will be used as the primary nic during failover.
+ * @property {string} [properties.enableRdpOnTargetOption] The selected option
+ * to enable RDP\SSH on target vm after failover. String value of
  * {SrsDataContract.EnableRDPOnTargetOption} enum.
- * @member {array} [properties.vmNics] The list of vm nic details.
- * @member {string} [properties.licenseType] License type. Possible values
+ * @property {array} [properties.vmNics] The list of vm nic details.
+ * @property {string} [properties.licenseType] License type. Possible values
  * include: 'NotSpecified', 'NoLicenseType', 'WindowsServer'
- * @member {string} [properties.recoveryAvailabilitySetId] The target
+ * @property {string} [properties.recoveryAvailabilitySetId] The target
  * availability set id.
- * @member {object} [properties.providerSpecificDetails] The provider specific
- * input to update replication protected item.
- * @member {string} [properties.providerSpecificDetails.instanceType]
+ * @property {object} [properties.providerSpecificDetails] The provider
+ * specific input to update replication protected item.
+ * @property {string} [properties.providerSpecificDetails.instanceType]
  * Polymorphic Discriminator
  */
 export interface UpdateReplicationProtectedItemInput {
@@ -6483,13 +6545,14 @@ export interface UpdateReplicationProtectedItemInput {
  * @constructor
  * The properties of an update vCenter request.
  *
- * @member {string} [friendlyName] The friendly name of the vCenter.
- * @member {string} [ipAddress] The IP address of the vCenter to be discovered.
- * @member {string} [processServerId] The process server Id from where the
+ * @property {string} [friendlyName] The friendly name of the vCenter.
+ * @property {string} [ipAddress] The IP address of the vCenter to be
+ * discovered.
+ * @property {string} [processServerId] The process server Id from where the
  * update can be orchestrated.
- * @member {string} [port] The port number for discovery.
- * @member {string} [runAsAccountId] The CS account Id which has priviliges to
- * update the vCenter.
+ * @property {string} [port] The port number for discovery.
+ * @property {string} [runAsAccountId] The CS account Id which has priviliges
+ * to update the vCenter.
  */
 export interface UpdateVCenterRequestProperties {
   friendlyName?: string;
@@ -6505,14 +6568,15 @@ export interface UpdateVCenterRequestProperties {
  * @constructor
  * Input required to update vCenter.
  *
- * @member {object} [properties] The update VCenter Request Properties.
- * @member {string} [properties.friendlyName] The friendly name of the vCenter.
- * @member {string} [properties.ipAddress] The IP address of the vCenter to be
- * discovered.
- * @member {string} [properties.processServerId] The process server Id from
+ * @property {object} [properties] The update VCenter Request Properties.
+ * @property {string} [properties.friendlyName] The friendly name of the
+ * vCenter.
+ * @property {string} [properties.ipAddress] The IP address of the vCenter to
+ * be discovered.
+ * @property {string} [properties.processServerId] The process server Id from
  * where the update can be orchestrated.
- * @member {string} [properties.port] The port number for discovery.
- * @member {string} [properties.runAsAccountId] The CS account Id which has
+ * @property {string} [properties.port] The port number for discovery.
+ * @property {string} [properties.runAsAccountId] The CS account Id which has
  * priviliges to update the vCenter.
  */
 export interface UpdateVCenterRequest {
@@ -6525,24 +6589,24 @@ export interface UpdateVCenterRequest {
  * @constructor
  * class to define the health summary of the Vault.
  *
- * @member {array} [vaultErrors] The list of errors on the vault.
- * @member {object} [protectedItemsHealth] The list of the health detail of the
- * protected items in the vault.
- * @member {number} [protectedItemsHealth.resourceCount] The count of total
+ * @property {array} [vaultErrors] The list of errors on the vault.
+ * @property {object} [protectedItemsHealth] The list of the health detail of
+ * the protected items in the vault.
+ * @property {number} [protectedItemsHealth.resourceCount] The count of total
  * resources umder the container.
- * @member {array} [protectedItemsHealth.issues] The list of summary of health
- * errors across the resources under the container.
- * @member {object} [fabricsHealth] The list of the health detail of the
+ * @property {array} [protectedItemsHealth.issues] The list of summary of
+ * health errors across the resources under the container.
+ * @property {object} [fabricsHealth] The list of the health detail of the
  * fabrics in the vault.
- * @member {number} [fabricsHealth.resourceCount] The count of total resources
- * umder the container.
- * @member {array} [fabricsHealth.issues] The list of summary of health errors
- * across the resources under the container.
- * @member {object} [containersHealth] The list of the health detail of the
- * containers in the vault.
- * @member {number} [containersHealth.resourceCount] The count of total
+ * @property {number} [fabricsHealth.resourceCount] The count of total
  * resources umder the container.
- * @member {array} [containersHealth.issues] The list of summary of health
+ * @property {array} [fabricsHealth.issues] The list of summary of health
+ * errors across the resources under the container.
+ * @property {object} [containersHealth] The list of the health detail of the
+ * containers in the vault.
+ * @property {number} [containersHealth.resourceCount] The count of total
+ * resources umder the container.
+ * @property {array} [containersHealth.issues] The list of summary of health
  * errors across the resources under the container.
  */
 export interface VaultHealthProperties {
@@ -6558,26 +6622,26 @@ export interface VaultHealthProperties {
  * @constructor
  * Vault health details definition.
  *
- * @member {object} [properties] The vault health related data.
- * @member {array} [properties.vaultErrors] The list of errors on the vault.
- * @member {object} [properties.protectedItemsHealth] The list of the health
+ * @property {object} [properties] The vault health related data.
+ * @property {array} [properties.vaultErrors] The list of errors on the vault.
+ * @property {object} [properties.protectedItemsHealth] The list of the health
  * detail of the protected items in the vault.
- * @member {number} [properties.protectedItemsHealth.resourceCount] The count
+ * @property {number} [properties.protectedItemsHealth.resourceCount] The count
  * of total resources umder the container.
- * @member {array} [properties.protectedItemsHealth.issues] The list of summary
- * of health errors across the resources under the container.
- * @member {object} [properties.fabricsHealth] The list of the health detail of
- * the fabrics in the vault.
- * @member {number} [properties.fabricsHealth.resourceCount] The count of total
- * resources umder the container.
- * @member {array} [properties.fabricsHealth.issues] The list of summary of
- * health errors across the resources under the container.
- * @member {object} [properties.containersHealth] The list of the health detail
- * of the containers in the vault.
- * @member {number} [properties.containersHealth.resourceCount] The count of
+ * @property {array} [properties.protectedItemsHealth.issues] The list of
+ * summary of health errors across the resources under the container.
+ * @property {object} [properties.fabricsHealth] The list of the health detail
+ * of the fabrics in the vault.
+ * @property {number} [properties.fabricsHealth.resourceCount] The count of
  * total resources umder the container.
- * @member {array} [properties.containersHealth.issues] The list of summary of
+ * @property {array} [properties.fabricsHealth.issues] The list of summary of
  * health errors across the resources under the container.
+ * @property {object} [properties.containersHealth] The list of the health
+ * detail of the containers in the vault.
+ * @property {number} [properties.containersHealth.resourceCount] The count of
+ * total resources umder the container.
+ * @property {array} [properties.containersHealth.issues] The list of summary
+ * of health errors across the resources under the container.
  */
 export interface VaultHealthDetails extends Resource {
   properties?: VaultHealthProperties;
@@ -6589,20 +6653,20 @@ export interface VaultHealthDetails extends Resource {
  * @constructor
  * vCenter properties.
  *
- * @member {string} [friendlyName] Friendly name of the vCenter.
- * @member {string} [internalId] VCenter internal ID.
- * @member {date} [lastHeartbeat] The time when the last heartbeat was reveived
- * by vCenter.
- * @member {string} [discoveryStatus] The VCenter discovery status.
- * @member {string} [processServerId] The process server Id.
- * @member {string} [ipAddress] The IP address of the vCenter.
- * @member {string} [infrastructureId] The infrastructure Id of vCenter.
- * @member {string} [port] The port number for discovery.
- * @member {string} [runAsAccountId] The account Id which has privileges to
+ * @property {string} [friendlyName] Friendly name of the vCenter.
+ * @property {string} [internalId] VCenter internal ID.
+ * @property {date} [lastHeartbeat] The time when the last heartbeat was
+ * reveived by vCenter.
+ * @property {string} [discoveryStatus] The VCenter discovery status.
+ * @property {string} [processServerId] The process server Id.
+ * @property {string} [ipAddress] The IP address of the vCenter.
+ * @property {string} [infrastructureId] The infrastructure Id of vCenter.
+ * @property {string} [port] The port number for discovery.
+ * @property {string} [runAsAccountId] The account Id which has privileges to
  * discover the vCenter.
- * @member {string} [fabricArmResourceName] The ARM resource name of the fabric
- * containing this VCenter.
- * @member {array} [healthErrors] The health errors for this VCenter.
+ * @property {string} [fabricArmResourceName] The ARM resource name of the
+ * fabric containing this VCenter.
+ * @property {array} [healthErrors] The health errors for this VCenter.
  */
 export interface VCenterProperties {
   friendlyName?: string;
@@ -6624,22 +6688,23 @@ export interface VCenterProperties {
  * @constructor
  * vCenter definition.
  *
- * @member {object} [properties] VCenter related data.
- * @member {string} [properties.friendlyName] Friendly name of the vCenter.
- * @member {string} [properties.internalId] VCenter internal ID.
- * @member {date} [properties.lastHeartbeat] The time when the last heartbeat
+ * @property {object} [properties] VCenter related data.
+ * @property {string} [properties.friendlyName] Friendly name of the vCenter.
+ * @property {string} [properties.internalId] VCenter internal ID.
+ * @property {date} [properties.lastHeartbeat] The time when the last heartbeat
  * was reveived by vCenter.
- * @member {string} [properties.discoveryStatus] The VCenter discovery status.
- * @member {string} [properties.processServerId] The process server Id.
- * @member {string} [properties.ipAddress] The IP address of the vCenter.
- * @member {string} [properties.infrastructureId] The infrastructure Id of
+ * @property {string} [properties.discoveryStatus] The VCenter discovery
+ * status.
+ * @property {string} [properties.processServerId] The process server Id.
+ * @property {string} [properties.ipAddress] The IP address of the vCenter.
+ * @property {string} [properties.infrastructureId] The infrastructure Id of
  * vCenter.
- * @member {string} [properties.port] The port number for discovery.
- * @member {string} [properties.runAsAccountId] The account Id which has
+ * @property {string} [properties.port] The port number for discovery.
+ * @property {string} [properties.runAsAccountId] The account Id which has
  * privileges to discover the vCenter.
- * @member {string} [properties.fabricArmResourceName] The ARM resource name of
- * the fabric containing this VCenter.
- * @member {array} [properties.healthErrors] The health errors for this
+ * @property {string} [properties.fabricArmResourceName] The ARM resource name
+ * of the fabric containing this VCenter.
+ * @property {array} [properties.healthErrors] The health errors for this
  * VCenter.
  */
 export interface VCenter extends Resource {
@@ -6652,16 +6717,16 @@ export interface VCenter extends Resource {
  * @constructor
  * This class represents the virtual machine task details.
  *
- * @member {string} [skippedReason] The skipped reason.
- * @member {string} [skippedReasonString] The skipped reason string.
- * @member {object} [jobTask] The job entity.
- * @member {string} [jobTask.jobId] The job id.
- * @member {string} [jobTask.jobFriendlyName] The job display name.
- * @member {string} [jobTask.targetObjectId] The object id.
- * @member {string} [jobTask.targetObjectName] The object name.
- * @member {string} [jobTask.targetInstanceType] The workflow affected object
+ * @property {string} [skippedReason] The skipped reason.
+ * @property {string} [skippedReasonString] The skipped reason string.
+ * @property {object} [jobTask] The job entity.
+ * @property {string} [jobTask.jobId] The job id.
+ * @property {string} [jobTask.jobFriendlyName] The job display name.
+ * @property {string} [jobTask.targetObjectId] The object id.
+ * @property {string} [jobTask.targetObjectName] The object name.
+ * @property {string} [jobTask.targetInstanceType] The workflow affected object
  * type.
- * @member {string} [jobTask.jobScenarioName] The job name. Enum type
+ * @property {string} [jobTask.jobScenarioName] The job name. Enum type
  * ScenarioName.
  */
 export interface VirtualMachineTaskDetails extends TaskTypeDetails {
@@ -6748,24 +6813,24 @@ export interface VmmToVmmUpdateNetworkMappingInput extends FabricSpecificUpdateN
  * @constructor
  * VMM fabric provider specific VM settings.
  *
- * @member {string} [sourceItemId] The source id of the object.
- * @member {string} [generation] The id of the object in fabric.
- * @member {object} [osDetails] The Last replication time.
- * @member {string} [osDetails.osType] VM Disk details.
- * @member {string} [osDetails.productType] Product type.
- * @member {string} [osDetails.osEdition] The OSEdition.
- * @member {string} [osDetails.oSVersion] The OS Version.
- * @member {string} [osDetails.oSMajorVersion] The OS Major Version.
- * @member {string} [osDetails.oSMinorVersion] The OS Minor Version.
- * @member {array} [diskDetails] The Last successful failover time.
- * @member {string} [hasPhysicalDisk] A value indicating whether the VM has a
+ * @property {string} [sourceItemId] The source id of the object.
+ * @property {string} [generation] The id of the object in fabric.
+ * @property {object} [osDetails] The Last replication time.
+ * @property {string} [osDetails.osType] VM Disk details.
+ * @property {string} [osDetails.productType] Product type.
+ * @property {string} [osDetails.osEdition] The OSEdition.
+ * @property {string} [osDetails.oSVersion] The OS Version.
+ * @property {string} [osDetails.oSMajorVersion] The OS Major Version.
+ * @property {string} [osDetails.oSMinorVersion] The OS Minor Version.
+ * @property {array} [diskDetails] The Last successful failover time.
+ * @property {string} [hasPhysicalDisk] A value indicating whether the VM has a
  * physical disk attached. String value of {SrsDataContract.PresenceStatus}
  * enum. Possible values include: 'Unknown', 'Present', 'NotPresent'
- * @member {string} [hasFibreChannelAdapter] A value indicating whether the VM
- * has a fibre channel adapter attached. String value of
+ * @property {string} [hasFibreChannelAdapter] A value indicating whether the
+ * VM has a fibre channel adapter attached. String value of
  * {SrsDataContract.PresenceStatus} enum. Possible values include: 'Unknown',
  * 'Present', 'NotPresent'
- * @member {string} [hasSharedVhd] A value indicating whether the VM has a
+ * @property {string} [hasSharedVhd] A value indicating whether the VM has a
  * shared VHD attached. String value of {SrsDataContract.PresenceStatus} enum.
  * Possible values include: 'Unknown', 'Present', 'NotPresent'
  */
@@ -6785,9 +6850,9 @@ export interface VmmVirtualMachineDetails extends ConfigurationSettings {
  * @constructor
  * This class represents the vm NicUpdates task details.
  *
- * @member {string} [vmId] Virtual machine Id.
- * @member {string} [nicId] Nic Id.
- * @member {string} [name] Name of the Nic.
+ * @property {string} [vmId] Virtual machine Id.
+ * @property {string} [nicId] Nic Id.
+ * @property {string} [name] Name of the Nic.
  */
 export interface VmNicUpdatesTaskDetails extends TaskTypeDetails {
   vmId?: string;
@@ -6801,11 +6866,11 @@ export interface VmNicUpdatesTaskDetails extends TaskTypeDetails {
  * @constructor
  * VMware Cbt Policy creation input.
  *
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
- * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
+ * @property {number} [recoveryPointHistory] The duration in minutes until
+ * which the recovery points need to be stored.
+ * @property {number} [crashConsistentFrequencyInMinutes] The crash consistent
  * snapshot frequency (in minutes).
- * @member {number} [appConsistentFrequencyInMinutes] The app consistent
+ * @property {number} [appConsistentFrequencyInMinutes] The app consistent
  * snapshot frequency (in minutes).
  */
 export interface VMwareCbtPolicyCreationInput extends PolicyProviderSpecificInput {
@@ -6820,13 +6885,13 @@ export interface VMwareCbtPolicyCreationInput extends PolicyProviderSpecificInpu
  * @constructor
  * VMware Cbt specific policy details.
  *
- * @member {number} [recoveryPointThresholdInMinutes] The recovery point
+ * @property {number} [recoveryPointThresholdInMinutes] The recovery point
  * threshold in minutes.
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
- * @member {number} [appConsistentFrequencyInMinutes] The app consistent
+ * @property {number} [recoveryPointHistory] The duration in minutes until
+ * which the recovery points need to be stored.
+ * @property {number} [appConsistentFrequencyInMinutes] The app consistent
  * snapshot frequency in minutes.
- * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
+ * @property {number} [crashConsistentFrequencyInMinutes] The crash consistent
  * snapshot frequency in minutes.
  */
 export interface VmwareCbtPolicyDetails extends PolicyProviderSpecificDetails {
@@ -6842,46 +6907,47 @@ export interface VmwareCbtPolicyDetails extends PolicyProviderSpecificDetails {
  * @constructor
  * Store the fabric details specific to the VMware fabric.
  *
- * @member {array} [processServers] The list of Process Servers associated with
- * the fabric.
- * @member {array} [masterTargetServers] The list of Master Target servers
+ * @property {array} [processServers] The list of Process Servers associated
+ * with the fabric.
+ * @property {array} [masterTargetServers] The list of Master Target servers
  * associated with the fabric.
- * @member {array} [runAsAccounts] The list of run as accounts created on the
+ * @property {array} [runAsAccounts] The list of run as accounts created on the
  * server.
- * @member {string} [replicationPairCount] The number of replication pairs
+ * @property {string} [replicationPairCount] The number of replication pairs
  * configured in this CS.
- * @member {string} [processServerCount] The number of process servers.
- * @member {string} [agentCount] The number of source and target servers
+ * @property {string} [processServerCount] The number of process servers.
+ * @property {string} [agentCount] The number of source and target servers
  * configured to talk to this CS.
- * @member {string} [protectedServers] The number of protected servers.
- * @member {string} [systemLoad] The percentage of the system load.
- * @member {string} [systemLoadStatus] The system load status.
- * @member {string} [cpuLoad] The percentage of the CPU load.
- * @member {string} [cpuLoadStatus] The CPU load status.
- * @member {number} [totalMemoryInBytes] The total memory.
- * @member {number} [availableMemoryInBytes] The available memory.
- * @member {string} [memoryUsageStatus] The memory usage status.
- * @member {number} [totalSpaceInBytes] The total space.
- * @member {number} [availableSpaceInBytes] The available space.
- * @member {string} [spaceUsageStatus] The space usage status.
- * @member {string} [webLoad] The web load.
- * @member {string} [webLoadStatus] The web load status.
- * @member {string} [databaseServerLoad] The database server load.
- * @member {string} [databaseServerLoadStatus] The database server load status.
- * @member {string} [csServiceStatus] The CS service status.
- * @member {string} [ipAddress] The IP address.
- * @member {string} [agentVersion] The agent Version.
- * @member {string} [hostName] The host name.
- * @member {date} [lastHeartbeat] The last heartbeat received from CS server.
- * @member {string} [versionStatus] Version status
- * @member {date} [sslCertExpiryDate] CS SSL cert expiry date.
- * @member {number} [sslCertExpiryRemainingDays] CS SSL cert expiry date.
- * @member {string} [psTemplateVersion] PS template version.
- * @member {date} [agentExpiryDate] Agent expiry date.
- * @member {object} [agentVersionDetails] The agent version details.
- * @member {string} [agentVersionDetails.version] The agent version.
- * @member {date} [agentVersionDetails.expiryDate] Version expiry date.
- * @member {string} [agentVersionDetails.status] A value indicating whether
+ * @property {string} [protectedServers] The number of protected servers.
+ * @property {string} [systemLoad] The percentage of the system load.
+ * @property {string} [systemLoadStatus] The system load status.
+ * @property {string} [cpuLoad] The percentage of the CPU load.
+ * @property {string} [cpuLoadStatus] The CPU load status.
+ * @property {number} [totalMemoryInBytes] The total memory.
+ * @property {number} [availableMemoryInBytes] The available memory.
+ * @property {string} [memoryUsageStatus] The memory usage status.
+ * @property {number} [totalSpaceInBytes] The total space.
+ * @property {number} [availableSpaceInBytes] The available space.
+ * @property {string} [spaceUsageStatus] The space usage status.
+ * @property {string} [webLoad] The web load.
+ * @property {string} [webLoadStatus] The web load status.
+ * @property {string} [databaseServerLoad] The database server load.
+ * @property {string} [databaseServerLoadStatus] The database server load
+ * status.
+ * @property {string} [csServiceStatus] The CS service status.
+ * @property {string} [ipAddress] The IP address.
+ * @property {string} [agentVersion] The agent Version.
+ * @property {string} [hostName] The host name.
+ * @property {date} [lastHeartbeat] The last heartbeat received from CS server.
+ * @property {string} [versionStatus] Version status
+ * @property {date} [sslCertExpiryDate] CS SSL cert expiry date.
+ * @property {number} [sslCertExpiryRemainingDays] CS SSL cert expiry date.
+ * @property {string} [psTemplateVersion] PS template version.
+ * @property {date} [agentExpiryDate] Agent expiry date.
+ * @property {object} [agentVersionDetails] The agent version details.
+ * @property {string} [agentVersionDetails.version] The agent version.
+ * @property {date} [agentVersionDetails.expiryDate] Version expiry date.
+ * @property {string} [agentVersionDetails.status] A value indicating whether
  * security update required. Possible values include: 'Supported',
  * 'NotSupported', 'Deprecated', 'UpdateRequired', 'SecurityUpdateRequired'
  */
@@ -6926,8 +6992,8 @@ export interface VMwareDetails extends FabricSpecificDetails {
  * @constructor
  * Fabric provider specific settings.
  *
- * @member {string} [keyVaultUrl] The Key Vault URL.
- * @member {string} [keyVaultResourceArmId] The Key Vault ARM Id.
+ * @property {string} [keyVaultUrl] The Key Vault URL.
+ * @property {string} [keyVaultResourceArmId] The Key Vault ARM Id.
  */
 export interface VMwareV2FabricCreationInput extends FabricSpecificCreationInput {
   keyVaultUrl?: string;
@@ -6940,12 +7006,12 @@ export interface VMwareV2FabricCreationInput extends FabricSpecificCreationInput
  * @constructor
  * VMwareV2 fabric Specific Details.
  *
- * @member {string} [srsServiceEndpoint] The endpoint for making requests to
+ * @property {string} [srsServiceEndpoint] The endpoint for making requests to
  * the SRS Service.
- * @member {string} [rcmServiceEndpoint] The endpoint for making requests to
+ * @property {string} [rcmServiceEndpoint] The endpoint for making requests to
  * the RCM Service.
- * @member {string} [keyVaultUrl] The Key Vault URL.
- * @member {string} [keyVaultResourceArmId] The Key Vault ARM Id.
+ * @property {string} [keyVaultUrl] The Key Vault URL.
+ * @property {string} [keyVaultResourceArmId] The Key Vault ARM Id.
  */
 export interface VMwareV2FabricSpecificDetails extends FabricSpecificDetails {
   srsServiceEndpoint?: string;
@@ -6960,20 +7026,21 @@ export interface VMwareV2FabricSpecificDetails extends FabricSpecificDetails {
  * @constructor
  * VMware provider specific settings
  *
- * @member {string} [agentGeneratedId] The ID generated by the InMage agent
+ * @property {string} [agentGeneratedId] The ID generated by the InMage agent
  * after it gets installed on guest. This is the ID to be used during InMage
  * CreateProtection.
- * @member {string} [agentInstalled] The value indicating if InMage scout agent
- * is installed on guest.
- * @member {string} [osType] The OsType installed on VM.
- * @member {string} [agentVersion] The agent version.
- * @member {string} [ipAddress] The IP address.
- * @member {string} [poweredOn] The value indicating whether VM is powered on.
- * @member {string} [vCenterInfrastructureId] The VCenter infrastructure Id.
- * @member {string} [discoveryType] A value inidicating the discovery type of
+ * @property {string} [agentInstalled] The value indicating if InMage scout
+ * agent is installed on guest.
+ * @property {string} [osType] The OsType installed on VM.
+ * @property {string} [agentVersion] The agent version.
+ * @property {string} [ipAddress] The IP address.
+ * @property {string} [poweredOn] The value indicating whether VM is powered
+ * on.
+ * @property {string} [vCenterInfrastructureId] The VCenter infrastructure Id.
+ * @property {string} [discoveryType] A value inidicating the discovery type of
  * the machine. Value can be vCenter or physical.
- * @member {array} [diskDetails] The disk details.
- * @member {array} [validationErrors] The validation errors.
+ * @property {array} [diskDetails] The disk details.
+ * @property {array} [validationErrors] The validation errors.
  */
 export interface VMwareVirtualMachineDetails extends ConfigurationSettings {
   agentGeneratedId?: string;
@@ -6995,7 +7062,7 @@ export interface VMwareVirtualMachineDetails extends ConfigurationSettings {
  * @constructor
  * Collection of ClientDiscovery details.
  *
- * @member {string} [nextLink] The value of next link.
+ * @property {string} [nextLink] The value of next link.
  */
 export interface OperationsDiscoveryCollection extends Array<OperationsDiscovery> {
   nextLink?: string;
@@ -7007,7 +7074,7 @@ export interface OperationsDiscoveryCollection extends Array<OperationsDiscovery
  * @constructor
  * Collection of alerts.
  *
- * @member {string} [nextLink] The value of next link.
+ * @property {string} [nextLink] The value of next link.
  */
 export interface AlertCollection extends Array<Alert> {
   nextLink?: string;
@@ -7019,7 +7086,7 @@ export interface AlertCollection extends Array<Alert> {
  * @constructor
  * Collection of fabric details.
  *
- * @member {string} [nextLink] The value of next link.
+ * @property {string} [nextLink] The value of next link.
  */
 export interface EventCollection extends Array<Event> {
   nextLink?: string;
@@ -7031,7 +7098,7 @@ export interface EventCollection extends Array<Event> {
  * @constructor
  * Collection of fabric details.
  *
- * @member {string} [nextLink] The value of next link.
+ * @property {string} [nextLink] The value of next link.
  */
 export interface FabricCollection extends Array<Fabric> {
   nextLink?: string;
@@ -7043,7 +7110,7 @@ export interface FabricCollection extends Array<Fabric> {
  * @constructor
  * List of logical networks.
  *
- * @member {string} [nextLink] The value of next link.
+ * @property {string} [nextLink] The value of next link.
  */
 export interface LogicalNetworkCollection extends Array<LogicalNetwork> {
   nextLink?: string;
@@ -7055,7 +7122,7 @@ export interface LogicalNetworkCollection extends Array<LogicalNetwork> {
  * @constructor
  * List of networks.
  *
- * @member {string} [nextLink] The value of next link.
+ * @property {string} [nextLink] The value of next link.
  */
 export interface NetworkCollection extends Array<Network> {
   nextLink?: string;
@@ -7071,7 +7138,7 @@ export interface NetworkCollection extends Array<Network> {
  * it makes sense to override Load with Base.NetworkMapping instead of existing
  * CurrentVersion.NetworkMapping.
  *
- * @member {string} [nextLink] The value of next link.
+ * @property {string} [nextLink] The value of next link.
  */
 export interface NetworkMappingCollection extends Array<NetworkMapping> {
   nextLink?: string;
@@ -7083,7 +7150,7 @@ export interface NetworkMappingCollection extends Array<NetworkMapping> {
  * @constructor
  * Protection Container collection.
  *
- * @member {string} [nextLink] The value of next link.
+ * @property {string} [nextLink] The value of next link.
  */
 export interface ProtectionContainerCollection extends Array<ProtectionContainer> {
   nextLink?: string;
@@ -7095,7 +7162,7 @@ export interface ProtectionContainerCollection extends Array<ProtectionContainer
  * @constructor
  * Protectable item collection.
  *
- * @member {string} [nextLink] The value of next link.
+ * @property {string} [nextLink] The value of next link.
  */
 export interface ProtectableItemCollection extends Array<ProtectableItem> {
   nextLink?: string;
@@ -7107,7 +7174,7 @@ export interface ProtectableItemCollection extends Array<ProtectableItem> {
  * @constructor
  * Replication protected item collection.
  *
- * @member {string} [nextLink] The value of next link.
+ * @property {string} [nextLink] The value of next link.
  */
 export interface ReplicationProtectedItemCollection extends Array<ReplicationProtectedItem> {
   nextLink?: string;
@@ -7119,7 +7186,7 @@ export interface ReplicationProtectedItemCollection extends Array<ReplicationPro
  * @constructor
  * Collection of recovery point details.
  *
- * @member {string} [nextLink] The value of next link.
+ * @property {string} [nextLink] The value of next link.
  */
 export interface RecoveryPointCollection extends Array<RecoveryPoint> {
   nextLink?: string;
@@ -7131,7 +7198,7 @@ export interface RecoveryPointCollection extends Array<RecoveryPoint> {
  * @constructor
  * Target compute size collection.
  *
- * @member {string} [nextLink] The value of next link.
+ * @property {string} [nextLink] The value of next link.
  */
 export interface TargetComputeSizeCollection extends Array<TargetComputeSize> {
   nextLink?: string;
@@ -7143,7 +7210,7 @@ export interface TargetComputeSizeCollection extends Array<TargetComputeSize> {
  * @constructor
  * Protection container mapping collection class.
  *
- * @member {string} [nextLink] Link to fetch rest of the data.
+ * @property {string} [nextLink] Link to fetch rest of the data.
  */
 export interface ProtectionContainerMappingCollection extends Array<ProtectionContainerMapping> {
   nextLink?: string;
@@ -7155,7 +7222,7 @@ export interface ProtectionContainerMappingCollection extends Array<ProtectionCo
  * @constructor
  * Collection of providers.
  *
- * @member {string} [nextLink] The value of next link.
+ * @property {string} [nextLink] The value of next link.
  */
 export interface RecoveryServicesProviderCollection extends Array<RecoveryServicesProvider> {
   nextLink?: string;
@@ -7167,7 +7234,7 @@ export interface RecoveryServicesProviderCollection extends Array<RecoveryServic
  * @constructor
  * Collection of storage details.
  *
- * @member {string} [nextLink] The value of next link.
+ * @property {string} [nextLink] The value of next link.
  */
 export interface StorageClassificationCollection extends Array<StorageClassification> {
   nextLink?: string;
@@ -7179,7 +7246,7 @@ export interface StorageClassificationCollection extends Array<StorageClassifica
  * @constructor
  * Collection of storage mapping details.
  *
- * @member {string} [nextLink] The value of next link.
+ * @property {string} [nextLink] The value of next link.
  */
 export interface StorageClassificationMappingCollection extends Array<StorageClassificationMapping> {
   nextLink?: string;
@@ -7191,7 +7258,7 @@ export interface StorageClassificationMappingCollection extends Array<StorageCla
  * @constructor
  * Collection of vCenter details.
  *
- * @member {string} [nextLink] The value of next link.
+ * @property {string} [nextLink] The value of next link.
  */
 export interface VCenterCollection extends Array<VCenter> {
   nextLink?: string;
@@ -7203,7 +7270,7 @@ export interface VCenterCollection extends Array<VCenter> {
  * @constructor
  * Collection of jobs.
  *
- * @member {string} [nextLink] The value of next link.
+ * @property {string} [nextLink] The value of next link.
  */
 export interface JobCollection extends Array<Job> {
   nextLink?: string;
@@ -7215,7 +7282,7 @@ export interface JobCollection extends Array<Job> {
  * @constructor
  * Protection Profile Collection details.
  *
- * @member {string} [nextLink] The value of next link.
+ * @property {string} [nextLink] The value of next link.
  */
 export interface PolicyCollection extends Array<Policy> {
   nextLink?: string;
@@ -7227,7 +7294,7 @@ export interface PolicyCollection extends Array<Policy> {
  * @constructor
  * Recovery plan collection details.
  *
- * @member {string} [nextLink] The value of next link.
+ * @property {string} [nextLink] The value of next link.
  */
 export interface RecoveryPlanCollection extends Array<RecoveryPlan> {
   nextLink?: string;

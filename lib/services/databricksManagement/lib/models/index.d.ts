@@ -22,10 +22,10 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * The workspace provider authorization.
  *
- * @member {uuid} principalId The provider's principal identifier. This is the
- * identity that the provider will use to call ARM to manage the workspace
+ * @property {uuid} principalId The provider's principal identifier. This is
+ * the identity that the provider will use to call ARM to manage the workspace
  * resources.
- * @member {uuid} roleDefinitionId The provider's role definition identifier.
+ * @property {uuid} roleDefinitionId The provider's role definition identifier.
  * This role will define all the permissions that the provider must have on the
  * workspace's container resource group. This role definition cannot have
  * permission to delete the resource group.
@@ -41,8 +41,8 @@ export interface WorkspaceProviderAuthorization {
  * @constructor
  * SKU for the resource.
  *
- * @member {string} name The SKU name.
- * @member {string} [tier] The SKU tier.
+ * @property {string} name The SKU name.
+ * @property {string} [tier] The SKU tier.
  */
 export interface Sku {
   name: string;
@@ -55,10 +55,10 @@ export interface Sku {
  * @constructor
  * The core properties of ARM resources
  *
- * @member {string} [id] Fully qualified resource Id for the resource. Ex -
+ * @property {string} [id] Fully qualified resource Id for the resource. Ex -
  * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
- * @member {string} [name] The name of the resource
- * @member {string} [type] The type of the resource. Ex-
+ * @property {string} [name] The name of the resource
+ * @property {string} [type] The type of the resource. Ex-
  * Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
  */
 export interface Resource extends BaseResource {
@@ -73,8 +73,8 @@ export interface Resource extends BaseResource {
  * @constructor
  * The resource model definition for a ARM tracked top level resource
  *
- * @member {object} [tags] Resource tags.
- * @member {string} location The geo-location where the resource lives
+ * @property {object} [tags] Resource tags.
+ * @property {string} location The geo-location where the resource lives
  */
 export interface TrackedResource extends Resource {
   tags?: { [propertyName: string]: string };
@@ -87,19 +87,19 @@ export interface TrackedResource extends Resource {
  * @constructor
  * Information about workspace.
  *
- * @member {string} managedResourceGroupId The managed resource group Id.
- * @member {object} [parameters] Name and value pairs that define the workspace
- * parameters.
- * @member {string} [provisioningState] The workspace provisioning state.
+ * @property {string} managedResourceGroupId The managed resource group Id.
+ * @property {object} [parameters] Name and value pairs that define the
+ * workspace parameters.
+ * @property {string} [provisioningState] The workspace provisioning state.
  * Possible values include: 'Accepted', 'Running', 'Ready', 'Creating',
  * 'Created', 'Deleting', 'Deleted', 'Canceled', 'Failed', 'Succeeded',
  * 'Updating'
- * @member {string} [uiDefinitionUri] The blob URI where the UI definition file
- * is located.
- * @member {array} [authorizations] The workspace provider authorizations.
- * @member {object} [sku] The SKU of the resource.
- * @member {string} [sku.name] The SKU name.
- * @member {string} [sku.tier] The SKU tier.
+ * @property {string} [uiDefinitionUri] The blob URI where the UI definition
+ * file is located.
+ * @property {array} [authorizations] The workspace provider authorizations.
+ * @property {object} [sku] The SKU of the resource.
+ * @property {string} [sku.name] The SKU name.
+ * @property {string} [sku.tier] The SKU tier.
  */
 export interface Workspace extends TrackedResource {
   managedResourceGroupId: string;
@@ -116,7 +116,7 @@ export interface Workspace extends TrackedResource {
  * @constructor
  * An update to a workspace.
  *
- * @member {object} [tags] Resource tags.
+ * @property {object} [tags] Resource tags.
  */
 export interface WorkspaceUpdate {
   tags?: { [propertyName: string]: string };
@@ -128,9 +128,9 @@ export interface WorkspaceUpdate {
  * @constructor
  * @summary Error details.
  *
- * @member {string} code The error's code.
- * @member {string} message A human readable error message.
- * @member {string} [target] Indicates which property in the request is
+ * @property {string} code The error's code.
+ * @property {string} message A human readable error message.
+ * @property {string} [target] Indicates which property in the request is
  * responsible for the error.
  */
 export interface ErrorDetail {
@@ -145,10 +145,10 @@ export interface ErrorDetail {
  * @constructor
  * @summary The code and message for an error.
  *
- * @member {string} code A machine readable error code.
- * @member {string} message A human readable error message.
- * @member {array} [details] error details.
- * @member {string} [innererror] Inner error details if they exist.
+ * @property {string} code A machine readable error code.
+ * @property {string} message A human readable error message.
+ * @property {array} [details] error details.
+ * @property {string} [innererror] Inner error details if they exist.
  */
 export interface ErrorInfo {
   code: string;
@@ -165,11 +165,11 @@ export interface ErrorInfo {
  *
  * Contains details when the response code indicates an error.
  *
- * @member {object} error The error details.
- * @member {string} [error.code] A machine readable error code.
- * @member {string} [error.message] A human readable error message.
- * @member {array} [error.details] error details.
- * @member {string} [error.innererror] Inner error details if they exist.
+ * @property {object} error The error details.
+ * @property {string} [error.code] A machine readable error code.
+ * @property {string} [error.message] A human readable error message.
+ * @property {array} [error.details] error details.
+ * @property {string} [error.innererror] Inner error details if they exist.
  */
 export interface ErrorResponse {
   error: ErrorInfo;
@@ -181,9 +181,9 @@ export interface ErrorResponse {
  * @constructor
  * The object that represents the operation.
  *
- * @member {string} [provider] Service provider: Microsoft.ResourceProvider
- * @member {string} [resource] Resource on which the operation is performed.
- * @member {string} [operation] Operation type: Read, write, delete, etc.
+ * @property {string} [provider] Service provider: Microsoft.ResourceProvider
+ * @property {string} [resource] Resource on which the operation is performed.
+ * @property {string} [operation] Operation type: Read, write, delete, etc.
  */
 export interface OperationDisplay {
   provider?: string;
@@ -197,13 +197,13 @@ export interface OperationDisplay {
  * @constructor
  * REST API operation
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Service provider:
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] The object that represents the operation.
+ * @property {string} [display.provider] Service provider:
  * Microsoft.ResourceProvider
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [display.resource] Resource on which the operation is
  * performed.
- * @member {string} [display.operation] Operation type: Read, write, delete,
+ * @property {string} [display.operation] Operation type: Read, write, delete,
  * etc.
  */
 export interface Operation {
@@ -218,7 +218,7 @@ export interface Operation {
  * @constructor
  * List of workspaces.
  *
- * @member {string} [nextLink] The URL to use for getting the next set of
+ * @property {string} [nextLink] The URL to use for getting the next set of
  * results.
  */
 export interface WorkspaceListResult extends Array<Workspace> {
@@ -232,7 +232,7 @@ export interface WorkspaceListResult extends Array<Workspace> {
  * Result of the request to list Resource Provider operations. It contains a
  * list of operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {

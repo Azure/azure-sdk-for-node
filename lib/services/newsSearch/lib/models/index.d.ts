@@ -17,7 +17,7 @@ import * as moment from "moment";
  * @constructor
  * Response base
  *
- * @member {string} _type Polymorphic Discriminator
+ * @property {string} _type Polymorphic Discriminator
  */
 export interface ResponseBase {
   _type: string;
@@ -29,7 +29,7 @@ export interface ResponseBase {
  * @constructor
  * Defines the identity of a resource.
  *
- * @member {string} [id] A String identifier.
+ * @property {string} [id] A String identifier.
  */
 export interface Identifiable extends ResponseBase {
   readonly id?: string;
@@ -42,7 +42,7 @@ export interface Identifiable extends ResponseBase {
  * Defines a response. All schemas that could be returned at the root of a
  * response should inherit from this
  *
- * @member {string} [webSearchUrl] The URL To Bing's search result for this
+ * @property {string} [webSearchUrl] The URL To Bing's search result for this
  * item.
  */
 export interface Response extends Identifiable {
@@ -55,14 +55,14 @@ export interface Response extends Identifiable {
  * @constructor
  * Defines a thing.
  *
- * @member {string} [name] The name of the thing represented by this object.
- * @member {string} [url] The URL to get more information about the thing
+ * @property {string} [name] The name of the thing represented by this object.
+ * @property {string} [url] The URL to get more information about the thing
  * represented by this object.
- * @member {object} [image] An image of the item.
- * @member {object} [image.thumbnail] The URL to a thumbnail of the image
- * @member {string} [description] A short description of the item.
- * @member {string} [alternateName] An alias for the item
- * @member {string} [bingId] An ID that uniquely identifies this item.
+ * @property {object} [image] An image of the item.
+ * @property {object} [image.thumbnail] The URL to a thumbnail of the image
+ * @property {string} [description] A short description of the item.
+ * @property {string} [alternateName] An alias for the item
+ * @property {string} [bingId] An ID that uniquely identifies this item.
  */
 export interface Thing extends Response {
   readonly name?: string;
@@ -80,22 +80,22 @@ export interface Thing extends Response {
  * The most generic kind of creative work, including books, movies,
  * photographs, software programs, etc.
  *
- * @member {string} [thumbnailUrl] The URL to a thumbnail of the item.
- * @member {array} [provider] The source of the creative work.
- * @member {string} [datePublished] The date on which the CreativeWork was
+ * @property {string} [thumbnailUrl] The URL to a thumbnail of the item.
+ * @property {array} [provider] The source of the creative work.
+ * @property {string} [datePublished] The date on which the CreativeWork was
  * published.
- * @member {object} [video] A video of the item.
- * @member {string} [video.motionThumbnailUrl]
- * @member {string} [video.motionThumbnailId]
- * @member {string} [video.embedHtml]
- * @member {boolean} [video.allowHttpsEmbed]
- * @member {number} [video.viewCount]
- * @member {object} [video.thumbnail]
- * @member {object} [video.thumbnail.thumbnail] The URL to a thumbnail of the
+ * @property {object} [video] A video of the item.
+ * @property {string} [video.motionThumbnailUrl]
+ * @property {string} [video.motionThumbnailId]
+ * @property {string} [video.embedHtml]
+ * @property {boolean} [video.allowHttpsEmbed]
+ * @property {number} [video.viewCount]
+ * @property {object} [video.thumbnail]
+ * @property {object} [video.thumbnail.thumbnail] The URL to a thumbnail of the
  * image
- * @member {string} [video.videoId]
- * @member {boolean} [video.allowMobileEmbed]
- * @member {boolean} [video.isSuperfresh]
+ * @property {string} [video.videoId]
+ * @property {boolean} [video.allowMobileEmbed]
+ * @property {boolean} [video.isSuperfresh]
  */
 export interface CreativeWork extends Thing {
   readonly thumbnailUrl?: string;
@@ -108,7 +108,8 @@ export interface CreativeWork extends Thing {
  * @class
  * Initializes a new instance of the Article class.
  * @constructor
- * @member {number} [wordCount] The number of words in the text of the Article.
+ * @property {number} [wordCount] The number of words in the text of the
+ * Article.
  */
 export interface Article extends CreativeWork {
   readonly wordCount?: number;
@@ -120,14 +121,14 @@ export interface Article extends CreativeWork {
  * @constructor
  * Defines a news article.
  *
- * @member {string} [category] The news category that the article belongs to.
+ * @property {string} [category] The news category that the article belongs to.
  * For example, Sports. If the news category cannot be determined, the article
  * does not include this field.
- * @member {boolean} [headline] A Boolean value that indicates whether the news
- * article is a headline. If true, the article is a headline. The article
+ * @property {boolean} [headline] A Boolean value that indicates whether the
+ * news article is a headline. If true, the article is a headline. The article
  * includes this field only for news categories requests that do not specify
  * the category query parameter.
- * @member {array} [clusteredArticles] A list of related news articles.
+ * @property {array} [clusteredArticles] A list of related news articles.
  */
 export interface NewsArticle extends Article {
   readonly category?: string;
@@ -141,7 +142,7 @@ export interface NewsArticle extends Article {
  * @constructor
  * Defines an answer.
  *
- * @member {array} [followUpQueries]
+ * @property {array} [followUpQueries]
  */
 export interface Answer extends Response {
   readonly followUpQueries?: Query[];
@@ -153,7 +154,7 @@ export interface Answer extends Response {
  * @constructor
  * Defines a search result answer.
  *
- * @member {number} [totalEstimatedMatches] The estimated number of webpages
+ * @property {number} [totalEstimatedMatches] The estimated number of webpages
  * that are relevant to the query. Use this number along with the count and
  * offset query parameters to page the results.
  */
@@ -167,10 +168,10 @@ export interface SearchResultsAnswer extends Answer {
  * @constructor
  * Defines a news answer.
  *
- * @member {array} value An array of NewsArticle objects that contain
+ * @property {array} value An array of NewsArticle objects that contain
  * information about news articles that are relevant to the query. If there are
  * no results to return for the request, the array is empty.
- * @member {string} [location] Location of local news
+ * @property {string} [location] Location of local news
  */
 export interface News extends SearchResultsAnswer {
   value: NewsArticle[];
@@ -183,10 +184,11 @@ export interface News extends SearchResultsAnswer {
  * @constructor
  * Defines a media object.
  *
- * @member {string} [contentUrl] Original URL to retrieve the source (file) for
- * the media object (e.g the source URL for the image).
- * @member {number} [width] The width of the source media object, in pixels.
- * @member {number} [height] The height of the source media object, in pixels.
+ * @property {string} [contentUrl] Original URL to retrieve the source (file)
+ * for the media object (e.g the source URL for the image).
+ * @property {number} [width] The width of the source media object, in pixels.
+ * @property {number} [height] The height of the source media object, in
+ * pixels.
  */
 export interface MediaObject extends CreativeWork {
   readonly contentUrl?: string;
@@ -200,7 +202,7 @@ export interface MediaObject extends CreativeWork {
  * @constructor
  * Defines an image
  *
- * @member {object} [thumbnail] The URL to a thumbnail of the image
+ * @property {object} [thumbnail] The URL to a thumbnail of the image
  */
 export interface ImageObject extends MediaObject {
   readonly thumbnail?: ImageObject;
@@ -212,22 +214,22 @@ export interface ImageObject extends MediaObject {
  * @constructor
  * Defines a search query.
  *
- * @member {string} text The query string. Use this string as the query term in
- * a new search request.
- * @member {string} [displayText] The display version of the query term. This
+ * @property {string} text The query string. Use this string as the query term
+ * in a new search request.
+ * @property {string} [displayText] The display version of the query term. This
  * version of the query term may contain special characters that highlight the
  * search term found in the query string. The string contains the highlighting
  * characters only if the query enabled hit highlighting
- * @member {string} [webSearchUrl] The URL that takes the user to the Bing
+ * @property {string} [webSearchUrl] The URL that takes the user to the Bing
  * search results page for the query.Only related search results include this
  * field.
- * @member {string} [searchLink] The URL that you use to get the results of the
- * related search. Before using the URL, you must append query parameters as
- * appropriate and include the Ocp-Apim-Subscription-Key header. Use this URL
- * if you're displaying the results in your own user interface. Otherwise, use
- * the webSearchUrl URL.
- * @member {object} [thumbnail] The URL to a thumbnail of a related image.
- * @member {object} [thumbnail.thumbnail] The URL to a thumbnail of the image
+ * @property {string} [searchLink] The URL that you use to get the results of
+ * the related search. Before using the URL, you must append query parameters
+ * as appropriate and include the Ocp-Apim-Subscription-Key header. Use this
+ * URL if you're displaying the results in your own user interface. Otherwise,
+ * use the webSearchUrl URL.
+ * @property {object} [thumbnail] The URL to a thumbnail of a related image.
+ * @property {object} [thumbnail.thumbnail] The URL to a thumbnail of the image
  */
 export interface Query {
   text: string;
@@ -241,31 +243,31 @@ export interface Query {
  * @class
  * Initializes a new instance of the NewsTopic class.
  * @constructor
- * @member {boolean} [isBreakingNews] A Boolean value that indicates whether
+ * @property {boolean} [isBreakingNews] A Boolean value that indicates whether
  * the topic is considered breaking news. If the topic is considered breaking
  * news, the value is true.
- * @member {object} [query] A search query term that returns this trending
+ * @property {object} [query] A search query term that returns this trending
  * topic.
- * @member {string} [query.text] The query string. Use this string as the query
- * term in a new search request.
- * @member {string} [query.displayText] The display version of the query term.
- * This version of the query term may contain special characters that highlight
- * the search term found in the query string. The string contains the
+ * @property {string} [query.text] The query string. Use this string as the
+ * query term in a new search request.
+ * @property {string} [query.displayText] The display version of the query
+ * term. This version of the query term may contain special characters that
+ * highlight the search term found in the query string. The string contains the
  * highlighting characters only if the query enabled hit highlighting
- * @member {string} [query.webSearchUrl] The URL that takes the user to the
+ * @property {string} [query.webSearchUrl] The URL that takes the user to the
  * Bing search results page for the query.Only related search results include
  * this field.
- * @member {string} [query.searchLink] The URL that you use to get the results
- * of the related search. Before using the URL, you must append query
+ * @property {string} [query.searchLink] The URL that you use to get the
+ * results of the related search. Before using the URL, you must append query
  * parameters as appropriate and include the Ocp-Apim-Subscription-Key header.
  * Use this URL if you're displaying the results in your own user interface.
  * Otherwise, use the webSearchUrl URL.
- * @member {object} [query.thumbnail] The URL to a thumbnail of a related
+ * @property {object} [query.thumbnail] The URL to a thumbnail of a related
  * image.
- * @member {object} [query.thumbnail.thumbnail] The URL to a thumbnail of the
+ * @property {object} [query.thumbnail.thumbnail] The URL to a thumbnail of the
  * image
- * @member {string} [newsSearchUrl] The URL to the Bing News search results for
- * the search query term
+ * @property {string} [newsSearchUrl] The URL to the Bing News search results
+ * for the search query term
  */
 export interface NewsTopic extends Thing {
   readonly isBreakingNews?: boolean;
@@ -277,7 +279,7 @@ export interface NewsTopic extends Thing {
  * @class
  * Initializes a new instance of the TrendingTopics class.
  * @constructor
- * @member {array} value A list of trending news topics on Bing
+ * @property {array} value A list of trending news topics on Bing
  */
 export interface TrendingTopics extends Answer {
   value: NewsTopic[];
@@ -289,16 +291,16 @@ export interface TrendingTopics extends Answer {
  * @constructor
  * Defines a video object that is relevant to the query.
  *
- * @member {string} [motionThumbnailUrl]
- * @member {string} [motionThumbnailId]
- * @member {string} [embedHtml]
- * @member {boolean} [allowHttpsEmbed]
- * @member {number} [viewCount]
- * @member {object} [thumbnail]
- * @member {object} [thumbnail.thumbnail] The URL to a thumbnail of the image
- * @member {string} [videoId]
- * @member {boolean} [allowMobileEmbed]
- * @member {boolean} [isSuperfresh]
+ * @property {string} [motionThumbnailUrl]
+ * @property {string} [motionThumbnailId]
+ * @property {string} [embedHtml]
+ * @property {boolean} [allowHttpsEmbed]
+ * @property {number} [viewCount]
+ * @property {object} [thumbnail]
+ * @property {object} [thumbnail.thumbnail] The URL to a thumbnail of the image
+ * @property {string} [videoId]
+ * @property {boolean} [allowMobileEmbed]
+ * @property {boolean} [isSuperfresh]
  */
 export interface VideoObject extends MediaObject {
   readonly motionThumbnailUrl?: string;
@@ -328,21 +330,21 @@ export interface Organization extends Thing {
  * @constructor
  * Defines the error that occurred.
  *
- * @member {string} code The error code that identifies the category of error.
- * Possible values include: 'None', 'ServerError', 'InvalidRequest',
+ * @property {string} code The error code that identifies the category of
+ * error. Possible values include: 'None', 'ServerError', 'InvalidRequest',
  * 'RateLimitExceeded', 'InvalidAuthorization', 'InsufficientAuthorization'.
  * Default value: 'None' .
- * @member {string} [subCode] The error code that further helps to identify the
- * error. Possible values include: 'UnexpectedError', 'ResourceError',
+ * @property {string} [subCode] The error code that further helps to identify
+ * the error. Possible values include: 'UnexpectedError', 'ResourceError',
  * 'NotImplemented', 'ParameterMissing', 'ParameterInvalidValue',
  * 'HttpNotAllowed', 'Blocked', 'AuthorizationMissing',
  * 'AuthorizationRedundancy', 'AuthorizationDisabled', 'AuthorizationExpired'
- * @member {string} message A description of the error.
- * @member {string} [moreDetails] A description that provides additional
+ * @property {string} message A description of the error.
+ * @property {string} [moreDetails] A description that provides additional
  * information about the error.
- * @member {string} [parameter] The parameter in the request that caused the
+ * @property {string} [parameter] The parameter in the request that caused the
  * error.
- * @member {string} [value] The parameter's value in the request that was not
+ * @property {string} [value] The parameter's value in the request that was not
  * valid.
  */
 export interface ErrorModel {
@@ -360,7 +362,7 @@ export interface ErrorModel {
  * @constructor
  * The top-level response that represents a failed request.
  *
- * @member {array} errors A list of errors that describe the reasons why the
+ * @property {array} errors A list of errors that describe the reasons why the
  * request failed.
  */
 export interface ErrorResponse extends Response {

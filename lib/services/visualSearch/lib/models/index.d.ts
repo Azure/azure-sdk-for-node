@@ -17,7 +17,7 @@ import * as moment from "moment";
  * @constructor
  * Response base.
  *
- * @member {string} _type Polymorphic Discriminator
+ * @property {string} _type Polymorphic Discriminator
  */
 export interface ResponseBase {
   _type: string;
@@ -29,7 +29,7 @@ export interface ResponseBase {
  * @constructor
  * Defines the identity of a resource.
  *
- * @member {string} [id] A String identifier.
+ * @property {string} [id] A String identifier.
  */
 export interface Identifiable extends ResponseBase {
   readonly id?: string;
@@ -42,10 +42,10 @@ export interface Identifiable extends ResponseBase {
  * Defines a response. All schemas that return at the root of the response must
  * inherit from this object.
  *
- * @member {string} [readLink] The URL that returns this resource. To use the
+ * @property {string} [readLink] The URL that returns this resource. To use the
  * URL, append query parameters as appropriate and include the
  * Ocp-Apim-Subscription-Key header.
- * @member {string} [webSearchUrl] The URL to Bing's search result for this
+ * @property {string} [webSearchUrl] The URL to Bing's search result for this
  * item.
  */
 export interface Response extends Identifiable {
@@ -59,43 +59,43 @@ export interface Response extends Identifiable {
  * @constructor
  * Defines a thing.
  *
- * @member {string} [name] The name of the thing represented by this object.
- * @member {string} [url] The URL to get more information about the thing
+ * @property {string} [name] The name of the thing represented by this object.
+ * @property {string} [url] The URL to get more information about the thing
  * represented by this object.
- * @member {object} [image] An image of the item.
- * @member {object} [image.thumbnail] The URL to a thumbnail of the image.
- * @member {string} [image.imageInsightsToken] The token that you use in a
+ * @property {object} [image] An image of the item.
+ * @property {object} [image.thumbnail] The URL to a thumbnail of the image.
+ * @property {string} [image.imageInsightsToken] The token that you use in a
  * subsequent call to Visual Search API to get additional information about the
  * image. For information about using this token, see the imageInsightsToken
  * field inside the knowledgeRequest request parameter.
- * @member {object} [image.insightsMetadata] A count of the number of websites
- * where you can shop or perform other actions related to the image. For
- * example, if the image is of an apple pie, this object includes a count of
- * the number of websites where you can buy an apple pie. To indicate the
+ * @property {object} [image.insightsMetadata] A count of the number of
+ * websites where you can shop or perform other actions related to the image.
+ * For example, if the image is of an apple pie, this object includes a count
+ * of the number of websites where you can buy an apple pie. To indicate the
  * number of offers in your UX, include badging such as a shopping cart icon
  * that contains the count. When the user clicks on the icon, use
  * imageInisghtsToken in a subsequent Visual Search API call to get the list of
  * shopping websites.
- * @member {number} [image.insightsMetadata.shoppingSourcesCount] The number of
- * websites that sell the products seen in the image.
- * @member {number} [image.insightsMetadata.recipeSourcesCount] The number of
+ * @property {number} [image.insightsMetadata.shoppingSourcesCount] The number
+ * of websites that sell the products seen in the image.
+ * @property {number} [image.insightsMetadata.recipeSourcesCount] The number of
  * websites that offer recipes of the food seen in the image.
- * @member {object} [image.insightsMetadata.aggregateOffer] A summary of the
+ * @property {object} [image.insightsMetadata.aggregateOffer] A summary of the
  * online offers of products found in the image. For example, if the image is
  * of a dress, the offer might identify the lowest price and the number of
  * offers found. Only visually similar products insights include this field.
  * The offer includes the following fields: Name, AggregateRating, OfferCount,
  * and LowPrice.
- * @member {array} [image.insightsMetadata.aggregateOffer.offers] A list of
+ * @property {array} [image.insightsMetadata.aggregateOffer.offers] A list of
  * offers from merchants that have offerings related to the image.
- * @member {string} [image.imageId] Unique Id for the image.
- * @member {string} [image.accentColor] A three-byte hexadecimal number that
+ * @property {string} [image.imageId] Unique Id for the image.
+ * @property {string} [image.accentColor] A three-byte hexadecimal number that
  * represents the color that dominates the image. Use the color as the
  * temporary background in your client until the image is loaded.
- * @member {string} [image.visualWords] For interal use only.
- * @member {string} [description] A short description of the item.
- * @member {string} [alternateName] An alias for the item.
- * @member {string} [bingId] An ID that uniquely identifies this item.
+ * @property {string} [image.visualWords] For interal use only.
+ * @property {string} [description] A short description of the item.
+ * @property {string} [alternateName] An alias for the item.
+ * @property {string} [bingId] An ID that uniquely identifies this item.
  */
 export interface Thing extends Response {
   readonly name?: string;
@@ -131,8 +131,8 @@ export interface StructuredValue extends Intangible {
  * @constructor
  * Defines a 2D point with X and Y coordinates.
  *
- * @member {number} x The x-coordinate of the point.
- * @member {number} y The y-coordinate of the point.
+ * @property {number} x The x-coordinate of the point.
+ * @property {number} y The y-coordinate of the point.
  */
 export interface Point2D extends StructuredValue {
   x: number;
@@ -148,18 +148,18 @@ export interface Point2D extends StructuredValue {
  * points. The coordinates are fractional values of the original image's width
  * and height in the range 0.0 through 1.0.
  *
- * @member {object} topLeft The top left corner coordinate.
- * @member {number} [topLeft.x] The x-coordinate of the point.
- * @member {number} [topLeft.y] The y-coordinate of the point.
- * @member {object} topRight The top right corner coordinate.
- * @member {number} [topRight.x] The x-coordinate of the point.
- * @member {number} [topRight.y] The y-coordinate of the point.
- * @member {object} bottomRight The bottom right corner coordinate.
- * @member {number} [bottomRight.x] The x-coordinate of the point.
- * @member {number} [bottomRight.y] The y-coordinate of the point.
- * @member {object} bottomLeft The bottom left corner coordinate.
- * @member {number} [bottomLeft.x] The x-coordinate of the point.
- * @member {number} [bottomLeft.y] The y-coordinate of the point.
+ * @property {object} topLeft The top left corner coordinate.
+ * @property {number} [topLeft.x] The x-coordinate of the point.
+ * @property {number} [topLeft.y] The y-coordinate of the point.
+ * @property {object} topRight The top right corner coordinate.
+ * @property {number} [topRight.x] The x-coordinate of the point.
+ * @property {number} [topRight.y] The y-coordinate of the point.
+ * @property {object} bottomRight The bottom right corner coordinate.
+ * @property {number} [bottomRight.x] The x-coordinate of the point.
+ * @property {number} [bottomRight.y] The y-coordinate of the point.
+ * @property {object} bottomLeft The bottom left corner coordinate.
+ * @property {number} [bottomLeft.x] The x-coordinate of the point.
+ * @property {number} [bottomLeft.y] The y-coordinate of the point.
  */
 export interface NormalizedQuadrilateral extends StructuredValue {
   topLeft: Point2D;
@@ -174,48 +174,54 @@ export interface NormalizedQuadrilateral extends StructuredValue {
  * @constructor
  * Defines an image region relevant to the ImageTag.
  *
- * @member {object} queryRectangle A rectangle that outlines the area of
+ * @property {object} queryRectangle A rectangle that outlines the area of
  * interest for this tag.
- * @member {object} [queryRectangle.topLeft] The top left corner coordinate.
- * @member {number} [queryRectangle.topLeft.x] The x-coordinate of the point.
- * @member {number} [queryRectangle.topLeft.y] The y-coordinate of the point.
- * @member {object} [queryRectangle.topRight] The top right corner coordinate.
- * @member {number} [queryRectangle.topRight.x] The x-coordinate of the point.
- * @member {number} [queryRectangle.topRight.y] The y-coordinate of the point.
- * @member {object} [queryRectangle.bottomRight] The bottom right corner
+ * @property {object} [queryRectangle.topLeft] The top left corner coordinate.
+ * @property {number} [queryRectangle.topLeft.x] The x-coordinate of the point.
+ * @property {number} [queryRectangle.topLeft.y] The y-coordinate of the point.
+ * @property {object} [queryRectangle.topRight] The top right corner
  * coordinate.
- * @member {number} [queryRectangle.bottomRight.x] The x-coordinate of the
+ * @property {number} [queryRectangle.topRight.x] The x-coordinate of the
  * point.
- * @member {number} [queryRectangle.bottomRight.y] The y-coordinate of the
+ * @property {number} [queryRectangle.topRight.y] The y-coordinate of the
  * point.
- * @member {object} [queryRectangle.bottomLeft] The bottom left corner
+ * @property {object} [queryRectangle.bottomRight] The bottom right corner
  * coordinate.
- * @member {number} [queryRectangle.bottomLeft.x] The x-coordinate of the
+ * @property {number} [queryRectangle.bottomRight.x] The x-coordinate of the
  * point.
- * @member {number} [queryRectangle.bottomLeft.y] The y-coordinate of the
+ * @property {number} [queryRectangle.bottomRight.y] The y-coordinate of the
  * point.
- * @member {object} displayRectangle A recommended rectangle to show to the
+ * @property {object} [queryRectangle.bottomLeft] The bottom left corner
+ * coordinate.
+ * @property {number} [queryRectangle.bottomLeft.x] The x-coordinate of the
+ * point.
+ * @property {number} [queryRectangle.bottomLeft.y] The y-coordinate of the
+ * point.
+ * @property {object} displayRectangle A recommended rectangle to show to the
  * user.
- * @member {object} [displayRectangle.topLeft] The top left corner coordinate.
- * @member {number} [displayRectangle.topLeft.x] The x-coordinate of the point.
- * @member {number} [displayRectangle.topLeft.y] The y-coordinate of the point.
- * @member {object} [displayRectangle.topRight] The top right corner
+ * @property {object} [displayRectangle.topLeft] The top left corner
  * coordinate.
- * @member {number} [displayRectangle.topRight.x] The x-coordinate of the
+ * @property {number} [displayRectangle.topLeft.x] The x-coordinate of the
  * point.
- * @member {number} [displayRectangle.topRight.y] The y-coordinate of the
+ * @property {number} [displayRectangle.topLeft.y] The y-coordinate of the
  * point.
- * @member {object} [displayRectangle.bottomRight] The bottom right corner
+ * @property {object} [displayRectangle.topRight] The top right corner
  * coordinate.
- * @member {number} [displayRectangle.bottomRight.x] The x-coordinate of the
+ * @property {number} [displayRectangle.topRight.x] The x-coordinate of the
  * point.
- * @member {number} [displayRectangle.bottomRight.y] The y-coordinate of the
+ * @property {number} [displayRectangle.topRight.y] The y-coordinate of the
  * point.
- * @member {object} [displayRectangle.bottomLeft] The bottom left corner
+ * @property {object} [displayRectangle.bottomRight] The bottom right corner
  * coordinate.
- * @member {number} [displayRectangle.bottomLeft.x] The x-coordinate of the
+ * @property {number} [displayRectangle.bottomRight.x] The x-coordinate of the
  * point.
- * @member {number} [displayRectangle.bottomLeft.y] The y-coordinate of the
+ * @property {number} [displayRectangle.bottomRight.y] The y-coordinate of the
+ * point.
+ * @property {object} [displayRectangle.bottomLeft] The bottom left corner
+ * coordinate.
+ * @property {number} [displayRectangle.bottomLeft.x] The x-coordinate of the
+ * point.
+ * @property {number} [displayRectangle.bottomLeft.y] The y-coordinate of the
  * point.
  */
 export interface ImageTagRegion {
@@ -230,11 +236,11 @@ export interface ImageTagRegion {
  * The most generic kind of creative work, including books, movies,
  * photographs, software programs, etc.
  *
- * @member {string} [thumbnailUrl] The URL to a thumbnail of the item.
- * @member {array} [provider] The source of the creative work.
- * @member {string} [datePublished] The date on which the CreativeWork was
+ * @property {string} [thumbnailUrl] The URL to a thumbnail of the item.
+ * @property {array} [provider] The source of the creative work.
+ * @property {string} [datePublished] The date on which the CreativeWork was
  * published.
- * @member {string} [text] Text content of this creative work.
+ * @property {string} [text] Text content of this creative work.
  */
 export interface CreativeWork extends Thing {
   readonly thumbnailUrl?: string;
@@ -249,11 +255,11 @@ export interface CreativeWork extends Thing {
  * @constructor
  * Defines an action.
  *
- * @member {array} [result] The result produced in the action.
- * @member {string} [displayName] A display name for the action.
- * @member {boolean} [isTopAction] A Boolean representing whether this result
+ * @property {array} [result] The result produced in the action.
+ * @property {string} [displayName] A display name for the action.
+ * @property {boolean} [isTopAction] A Boolean representing whether this result
  * is the top action.
- * @member {string} [serviceUrl] Use this URL to get additional data to
+ * @property {string} [serviceUrl] Use this URL to get additional data to
  * determine how to take the appropriate action. For example, the serviceUrl
  * might return JSON along with an image URL.
  */
@@ -270,7 +276,7 @@ export interface Action extends CreativeWork {
  * @constructor
  * Defines an image action.
  *
- * @member {string} [actionType] A string representing the type of action.
+ * @property {string} [actionType] A string representing the type of action.
  */
 export interface ImageAction extends Action {
   readonly actionType?: string;
@@ -282,63 +288,63 @@ export interface ImageAction extends Action {
  * @constructor
  * A visual search tag.
  *
- * @member {string} [displayName] Display name for this tag. For the default
+ * @property {string} [displayName] Display name for this tag. For the default
  * tag, the display name is empty.
- * @member {object} [boundingBox] The bounding box for this tag. For the
+ * @property {object} [boundingBox] The bounding box for this tag. For the
  * default tag, there is no bounding box.
- * @member {object} [boundingBox.queryRectangle] A rectangle that outlines the
- * area of interest for this tag.
- * @member {object} [boundingBox.queryRectangle.topLeft] The top left corner
+ * @property {object} [boundingBox.queryRectangle] A rectangle that outlines
+ * the area of interest for this tag.
+ * @property {object} [boundingBox.queryRectangle.topLeft] The top left corner
  * coordinate.
- * @member {number} [boundingBox.queryRectangle.topLeft.x] The x-coordinate of
- * the point.
- * @member {number} [boundingBox.queryRectangle.topLeft.y] The y-coordinate of
- * the point.
- * @member {object} [boundingBox.queryRectangle.topRight] The top right corner
- * coordinate.
- * @member {number} [boundingBox.queryRectangle.topRight.x] The x-coordinate of
- * the point.
- * @member {number} [boundingBox.queryRectangle.topRight.y] The y-coordinate of
- * the point.
- * @member {object} [boundingBox.queryRectangle.bottomRight] The bottom right
+ * @property {number} [boundingBox.queryRectangle.topLeft.x] The x-coordinate
+ * of the point.
+ * @property {number} [boundingBox.queryRectangle.topLeft.y] The y-coordinate
+ * of the point.
+ * @property {object} [boundingBox.queryRectangle.topRight] The top right
  * corner coordinate.
- * @member {number} [boundingBox.queryRectangle.bottomRight.x] The x-coordinate
+ * @property {number} [boundingBox.queryRectangle.topRight.x] The x-coordinate
  * of the point.
- * @member {number} [boundingBox.queryRectangle.bottomRight.y] The y-coordinate
+ * @property {number} [boundingBox.queryRectangle.topRight.y] The y-coordinate
  * of the point.
- * @member {object} [boundingBox.queryRectangle.bottomLeft] The bottom left
+ * @property {object} [boundingBox.queryRectangle.bottomRight] The bottom right
  * corner coordinate.
- * @member {number} [boundingBox.queryRectangle.bottomLeft.x] The x-coordinate
- * of the point.
- * @member {number} [boundingBox.queryRectangle.bottomLeft.y] The y-coordinate
- * of the point.
- * @member {object} [boundingBox.displayRectangle] A recommended rectangle to
+ * @property {number} [boundingBox.queryRectangle.bottomRight.x] The
+ * x-coordinate of the point.
+ * @property {number} [boundingBox.queryRectangle.bottomRight.y] The
+ * y-coordinate of the point.
+ * @property {object} [boundingBox.queryRectangle.bottomLeft] The bottom left
+ * corner coordinate.
+ * @property {number} [boundingBox.queryRectangle.bottomLeft.x] The
+ * x-coordinate of the point.
+ * @property {number} [boundingBox.queryRectangle.bottomLeft.y] The
+ * y-coordinate of the point.
+ * @property {object} [boundingBox.displayRectangle] A recommended rectangle to
  * show to the user.
- * @member {object} [boundingBox.displayRectangle.topLeft] The top left corner
- * coordinate.
- * @member {number} [boundingBox.displayRectangle.topLeft.x] The x-coordinate
- * of the point.
- * @member {number} [boundingBox.displayRectangle.topLeft.y] The y-coordinate
- * of the point.
- * @member {object} [boundingBox.displayRectangle.topRight] The top right
+ * @property {object} [boundingBox.displayRectangle.topLeft] The top left
  * corner coordinate.
- * @member {number} [boundingBox.displayRectangle.topRight.x] The x-coordinate
+ * @property {number} [boundingBox.displayRectangle.topLeft.x] The x-coordinate
  * of the point.
- * @member {number} [boundingBox.displayRectangle.topRight.y] The y-coordinate
+ * @property {number} [boundingBox.displayRectangle.topLeft.y] The y-coordinate
  * of the point.
- * @member {object} [boundingBox.displayRectangle.bottomRight] The bottom right
+ * @property {object} [boundingBox.displayRectangle.topRight] The top right
  * corner coordinate.
- * @member {number} [boundingBox.displayRectangle.bottomRight.x] The
+ * @property {number} [boundingBox.displayRectangle.topRight.x] The
  * x-coordinate of the point.
- * @member {number} [boundingBox.displayRectangle.bottomRight.y] The
+ * @property {number} [boundingBox.displayRectangle.topRight.y] The
  * y-coordinate of the point.
- * @member {object} [boundingBox.displayRectangle.bottomLeft] The bottom left
- * corner coordinate.
- * @member {number} [boundingBox.displayRectangle.bottomLeft.x] The
+ * @property {object} [boundingBox.displayRectangle.bottomRight] The bottom
+ * right corner coordinate.
+ * @property {number} [boundingBox.displayRectangle.bottomRight.x] The
  * x-coordinate of the point.
- * @member {number} [boundingBox.displayRectangle.bottomLeft.y] The
+ * @property {number} [boundingBox.displayRectangle.bottomRight.y] The
  * y-coordinate of the point.
- * @member {array} [actions] Actions within this tag. The order of the items
+ * @property {object} [boundingBox.displayRectangle.bottomLeft] The bottom left
+ * corner coordinate.
+ * @property {number} [boundingBox.displayRectangle.bottomLeft.x] The
+ * x-coordinate of the point.
+ * @property {number} [boundingBox.displayRectangle.bottomLeft.y] The
+ * y-coordinate of the point.
+ * @property {array} [actions] Actions within this tag. The order of the items
  * denotes the default ranking order of these actions, with the first action
  * being the most likely user intent.
  */
@@ -364,8 +370,8 @@ export interface Organization extends Thing {
  * @constructor
  * Defines an item.
  *
- * @member {string} [text] Text representation of an item.
- * @member {string} _type Polymorphic Discriminator
+ * @property {string} [text] Text representation of an item.
+ * @property {string} _type Polymorphic Discriminator
  */
 export interface PropertiesItem {
   readonly text?: string;
@@ -378,10 +384,10 @@ export interface PropertiesItem {
  * @constructor
  * Defines a rating.
  *
- * @member {number} ratingValue The mean (average) rating. The possible values
- * are 1.0 through 5.0.
- * @member {number} [bestRating] The highest rated review. The possible values
- * are 1.0 through 5.0.
+ * @property {number} ratingValue The mean (average) rating. The possible
+ * values are 1.0 through 5.0.
+ * @property {number} [bestRating] The highest rated review. The possible
+ * values are 1.0 through 5.0.
  */
 export interface Rating extends PropertiesItem {
   ratingValue: number;
@@ -394,8 +400,8 @@ export interface Rating extends PropertiesItem {
  * @constructor
  * Defines the metrics that indicate how well an item was rated by others.
  *
- * @member {number} [reviewCount] The number of times the recipe has been rated
- * or reviewed.
+ * @property {number} [reviewCount] The number of times the recipe has been
+ * rated or reviewed.
  */
 export interface AggregateRating extends Rating {
   readonly reviewCount?: number;
@@ -407,9 +413,9 @@ export interface AggregateRating extends Rating {
  * @constructor
  * Defines a merchant's offer.
  *
- * @member {object} [seller] Seller for this offer.
- * @member {number} [price] The item's price.
- * @member {string} [priceCurrency] The monetary currency. For example, USD.
+ * @property {object} [seller] Seller for this offer.
+ * @property {number} [price] The item's price.
+ * @property {string} [priceCurrency] The monetary currency. For example, USD.
  * Possible values include: 'USD', 'CAD', 'GBP', 'EUR', 'COP', 'JPY', 'CNY',
  * 'AUD', 'INR', 'AED', 'AFN', 'ALL', 'AMD', 'ANG', 'AOA', 'ARS', 'AWG', 'AZN',
  * 'BAM', 'BBD', 'BDT', 'BGN', 'BHD', 'BIF', 'BMD', 'BND', 'BOB', 'BOV', 'BRL',
@@ -426,17 +432,17 @@ export interface AggregateRating extends Rating {
  * 'TMT', 'TND', 'TOP', 'TRY', 'TTD', 'TWD', 'TZS', 'UAH', 'UGX', 'UYU', 'UZS',
  * 'VEF', 'VND', 'VUV', 'WST', 'XAF', 'XCD', 'XOF', 'XPF', 'YER', 'ZAR', 'ZMW'.
  * Default value: 'USD' .
- * @member {string} [availability] The item's availability. The following are
+ * @property {string} [availability] The item's availability. The following are
  * the possible values: Discontinued, InStock, InStoreOnly,
  * LimitedAvailability, OnlineOnly, OutOfStock, PreOrder, SoldOut. Possible
  * values include: 'Discontinued', 'InStock', 'InStoreOnly',
  * 'LimitedAvailability', 'OnlineOnly', 'OutOfStock', 'PreOrder', 'SoldOut'
- * @member {object} [aggregateRating] An aggregated rating that indicates how
+ * @property {object} [aggregateRating] An aggregated rating that indicates how
  * well the product has been rated by others.
- * @member {number} [aggregateRating.reviewCount] The number of times the
+ * @property {number} [aggregateRating.reviewCount] The number of times the
  * recipe has been rated or reviewed.
- * @member {string} [lastUpdated] The last date that the offer was updated. The
- * date is in the form YYYY-MM-DD.
+ * @property {string} [lastUpdated] The last date that the offer was updated.
+ * The date is in the form YYYY-MM-DD.
  */
 export interface Offer extends Thing {
   readonly seller?: Organization;
@@ -453,8 +459,8 @@ export interface Offer extends Thing {
  * @constructor
  * Defines a list of offers from merchants that are related to the image.
  *
- * @member {array} [offers] A list of offers from merchants that have offerings
- * related to the image.
+ * @property {array} [offers] A list of offers from merchants that have
+ * offerings related to the image.
  */
 export interface AggregateOffer extends Offer {
   readonly offers?: Offer[];
@@ -467,17 +473,17 @@ export interface AggregateOffer extends Offer {
  * Defines a count of the number of websites where you can shop or perform
  * other actions related to the image.
  *
- * @member {number} [shoppingSourcesCount] The number of websites that sell the
- * products seen in the image.
- * @member {number} [recipeSourcesCount] The number of websites that offer
+ * @property {number} [shoppingSourcesCount] The number of websites that sell
+ * the products seen in the image.
+ * @property {number} [recipeSourcesCount] The number of websites that offer
  * recipes of the food seen in the image.
- * @member {object} [aggregateOffer] A summary of the online offers of products
- * found in the image. For example, if the image is of a dress, the offer might
- * identify the lowest price and the number of offers found. Only visually
- * similar products insights include this field. The offer includes the
- * following fields: Name, AggregateRating, OfferCount, and LowPrice.
- * @member {array} [aggregateOffer.offers] A list of offers from merchants that
- * have offerings related to the image.
+ * @property {object} [aggregateOffer] A summary of the online offers of
+ * products found in the image. For example, if the image is of a dress, the
+ * offer might identify the lowest price and the number of offers found. Only
+ * visually similar products insights include this field. The offer includes
+ * the following fields: Name, AggregateRating, OfferCount, and LowPrice.
+ * @property {array} [aggregateOffer.offers] A list of offers from merchants
+ * that have offerings related to the image.
  */
 export interface ImagesImageMetadata {
   readonly shoppingSourcesCount?: number;
@@ -491,17 +497,18 @@ export interface ImagesImageMetadata {
  * @constructor
  * Defines a media object.
  *
- * @member {string} [contentUrl] Original URL to retrieve the source (file) for
- * the media object (e.g., the source URL for the image).
- * @member {string} [hostPageUrl] URL of the page that hosts the media object.
- * @member {string} [contentSize] Size of the media object content. Use format
- * "value unit" (e.g., "1024 B").
- * @member {string} [encodingFormat] Encoding format (e.g., png, gif, jpeg,
+ * @property {string} [contentUrl] Original URL to retrieve the source (file)
+ * for the media object (e.g., the source URL for the image).
+ * @property {string} [hostPageUrl] URL of the page that hosts the media
+ * object.
+ * @property {string} [contentSize] Size of the media object content. Use
+ * format "value unit" (e.g., "1024 B").
+ * @property {string} [encodingFormat] Encoding format (e.g., png, gif, jpeg,
  * etc).
- * @member {string} [hostPageDisplayUrl] Display URL of the page that hosts the
- * media object.
- * @member {number} [width] The width of the media object, in pixels.
- * @member {number} [height] The height of the media object, in pixels.
+ * @property {string} [hostPageDisplayUrl] Display URL of the page that hosts
+ * the media object.
+ * @property {number} [width] The width of the media object, in pixels.
+ * @property {number} [height] The height of the media object, in pixels.
  */
 export interface MediaObject extends CreativeWork {
   readonly contentUrl?: string;
@@ -519,35 +526,36 @@ export interface MediaObject extends CreativeWork {
  * @constructor
  * Defines an image.
  *
- * @member {object} [thumbnail] The URL to a thumbnail of the image.
- * @member {string} [imageInsightsToken] The token that you use in a subsequent
- * call to Visual Search API to get additional information about the image. For
- * information about using this token, see the imageInsightsToken field inside
- * the knowledgeRequest request parameter.
- * @member {object} [insightsMetadata] A count of the number of websites where
- * you can shop or perform other actions related to the image. For example, if
- * the image is of an apple pie, this object includes a count of the number of
- * websites where you can buy an apple pie. To indicate the number of offers in
- * your UX, include badging such as a shopping cart icon that contains the
- * count. When the user clicks on the icon, use imageInisghtsToken in a
- * subsequent Visual Search API call to get the list of shopping websites.
- * @member {number} [insightsMetadata.shoppingSourcesCount] The number of
+ * @property {object} [thumbnail] The URL to a thumbnail of the image.
+ * @property {string} [imageInsightsToken] The token that you use in a
+ * subsequent call to Visual Search API to get additional information about the
+ * image. For information about using this token, see the imageInsightsToken
+ * field inside the knowledgeRequest request parameter.
+ * @property {object} [insightsMetadata] A count of the number of websites
+ * where you can shop or perform other actions related to the image. For
+ * example, if the image is of an apple pie, this object includes a count of
+ * the number of websites where you can buy an apple pie. To indicate the
+ * number of offers in your UX, include badging such as a shopping cart icon
+ * that contains the count. When the user clicks on the icon, use
+ * imageInisghtsToken in a subsequent Visual Search API call to get the list of
+ * shopping websites.
+ * @property {number} [insightsMetadata.shoppingSourcesCount] The number of
  * websites that sell the products seen in the image.
- * @member {number} [insightsMetadata.recipeSourcesCount] The number of
+ * @property {number} [insightsMetadata.recipeSourcesCount] The number of
  * websites that offer recipes of the food seen in the image.
- * @member {object} [insightsMetadata.aggregateOffer] A summary of the online
+ * @property {object} [insightsMetadata.aggregateOffer] A summary of the online
  * offers of products found in the image. For example, if the image is of a
  * dress, the offer might identify the lowest price and the number of offers
  * found. Only visually similar products insights include this field. The offer
  * includes the following fields: Name, AggregateRating, OfferCount, and
  * LowPrice.
- * @member {array} [insightsMetadata.aggregateOffer.offers] A list of offers
+ * @property {array} [insightsMetadata.aggregateOffer.offers] A list of offers
  * from merchants that have offerings related to the image.
- * @member {string} [imageId] Unique Id for the image.
- * @member {string} [accentColor] A three-byte hexadecimal number that
+ * @property {string} [imageId] Unique Id for the image.
+ * @property {string} [accentColor] A three-byte hexadecimal number that
  * represents the color that dominates the image. Use the color as the
  * temporary background in your client until the image is loaded.
- * @member {string} [visualWords] For interal use only.
+ * @property {string} [visualWords] For interal use only.
  */
 export interface ImageObject extends MediaObject {
   readonly thumbnail?: ImageObject;
@@ -564,39 +572,39 @@ export interface ImageObject extends MediaObject {
  * @constructor
  * Defines a visual search API response.
  *
- * @member {array} [tags] A list of visual search tags.
- * @member {object} [image] Image object containing metadata about the
+ * @property {array} [tags] A list of visual search tags.
+ * @property {object} [image] Image object containing metadata about the
  * requested image.
- * @member {object} [image.thumbnail] The URL to a thumbnail of the image.
- * @member {string} [image.imageInsightsToken] The token that you use in a
+ * @property {object} [image.thumbnail] The URL to a thumbnail of the image.
+ * @property {string} [image.imageInsightsToken] The token that you use in a
  * subsequent call to Visual Search API to get additional information about the
  * image. For information about using this token, see the imageInsightsToken
  * field inside the knowledgeRequest request parameter.
- * @member {object} [image.insightsMetadata] A count of the number of websites
- * where you can shop or perform other actions related to the image. For
- * example, if the image is of an apple pie, this object includes a count of
- * the number of websites where you can buy an apple pie. To indicate the
+ * @property {object} [image.insightsMetadata] A count of the number of
+ * websites where you can shop or perform other actions related to the image.
+ * For example, if the image is of an apple pie, this object includes a count
+ * of the number of websites where you can buy an apple pie. To indicate the
  * number of offers in your UX, include badging such as a shopping cart icon
  * that contains the count. When the user clicks on the icon, use
  * imageInisghtsToken in a subsequent Visual Search API call to get the list of
  * shopping websites.
- * @member {number} [image.insightsMetadata.shoppingSourcesCount] The number of
- * websites that sell the products seen in the image.
- * @member {number} [image.insightsMetadata.recipeSourcesCount] The number of
+ * @property {number} [image.insightsMetadata.shoppingSourcesCount] The number
+ * of websites that sell the products seen in the image.
+ * @property {number} [image.insightsMetadata.recipeSourcesCount] The number of
  * websites that offer recipes of the food seen in the image.
- * @member {object} [image.insightsMetadata.aggregateOffer] A summary of the
+ * @property {object} [image.insightsMetadata.aggregateOffer] A summary of the
  * online offers of products found in the image. For example, if the image is
  * of a dress, the offer might identify the lowest price and the number of
  * offers found. Only visually similar products insights include this field.
  * The offer includes the following fields: Name, AggregateRating, OfferCount,
  * and LowPrice.
- * @member {array} [image.insightsMetadata.aggregateOffer.offers] A list of
+ * @property {array} [image.insightsMetadata.aggregateOffer.offers] A list of
  * offers from merchants that have offerings related to the image.
- * @member {string} [image.imageId] Unique Id for the image.
- * @member {string} [image.accentColor] A three-byte hexadecimal number that
+ * @property {string} [image.imageId] Unique Id for the image.
+ * @property {string} [image.accentColor] A three-byte hexadecimal number that
  * represents the color that dominates the image. Use the color as the
  * temporary background in your client until the image is loaded.
- * @member {string} [image.visualWords] For interal use only.
+ * @property {string} [image.visualWords] For interal use only.
  */
 export interface ImageKnowledge extends Response {
   readonly tags?: ImageTag[];
@@ -609,21 +617,21 @@ export interface ImageKnowledge extends Response {
  * @constructor
  * Defines the error that occurred.
  *
- * @member {string} code The error code that identifies the category of error.
- * Possible values include: 'None', 'ServerError', 'InvalidRequest',
+ * @property {string} code The error code that identifies the category of
+ * error. Possible values include: 'None', 'ServerError', 'InvalidRequest',
  * 'RateLimitExceeded', 'InvalidAuthorization', 'InsufficientAuthorization'.
  * Default value: 'None' .
- * @member {string} [subCode] The error code that further helps to identify the
- * error. Possible values include: 'UnexpectedError', 'ResourceError',
+ * @property {string} [subCode] The error code that further helps to identify
+ * the error. Possible values include: 'UnexpectedError', 'ResourceError',
  * 'NotImplemented', 'ParameterMissing', 'ParameterInvalidValue',
  * 'HttpNotAllowed', 'Blocked', 'AuthorizationMissing',
  * 'AuthorizationRedundancy', 'AuthorizationDisabled', 'AuthorizationExpired'
- * @member {string} message A description of the error.
- * @member {string} [moreDetails] A description that provides additional
+ * @property {string} message A description of the error.
+ * @property {string} [moreDetails] A description that provides additional
  * information about the error.
- * @member {string} [parameter] The parameter in the request that caused the
+ * @property {string} [parameter] The parameter in the request that caused the
  * error.
- * @member {string} [value] The parameter's value in the request that was not
+ * @property {string} [value] The parameter's value in the request that was not
  * valid.
  */
 export interface ErrorModel {
@@ -641,7 +649,7 @@ export interface ErrorModel {
  * @constructor
  * The top-level response that represents a failed request.
  *
- * @member {array} errors A list of errors that describe the reasons why the
+ * @property {array} errors A list of errors that describe the reasons why the
  * request failed.
  */
 export interface ErrorResponse extends Response {
@@ -654,8 +662,8 @@ export interface ErrorResponse extends Response {
  * @constructor
  * Defines a person.
  *
- * @member {string} [jobTitle] The person's job title.
- * @member {string} [twitterProfile] The URL of the person's twitter profile.
+ * @property {string} [jobTitle] The person's job title.
+ * @property {string} [twitterProfile] The URL of the person's twitter profile.
  */
 export interface Person extends Thing {
   readonly jobTitle?: string;
@@ -678,7 +686,7 @@ export interface ImageEntityAction extends ImageAction {
  * @constructor
  * Defines a list of images.
  *
- * @member {array} [value] A list of images.
+ * @property {array} [value] A list of images.
  */
 export interface ImagesModule {
   readonly value?: ImageObject[];
@@ -690,8 +698,8 @@ export interface ImagesModule {
  * @constructor
  * Defines an image list action.
  *
- * @member {object} [data] A list of images.
- * @member {array} [data.value] A list of images.
+ * @property {object} [data] A list of images.
+ * @property {array} [data.value] A list of images.
  */
 export interface ImageModuleAction extends ImageAction {
   readonly data?: ImagesModule;
@@ -703,13 +711,13 @@ export interface ImageModuleAction extends ImageAction {
  * @constructor
  * Defines a cooking recipe.
  *
- * @member {string} [cookTime] The amount of time the food takes to cook. For
+ * @property {string} [cookTime] The amount of time the food takes to cook. For
  * example, PT25M. For information about the time format, see
  * http://en.wikipedia.org/wiki/ISO_8601#Durations.
- * @member {string} [prepTime] The amount of time required to prepare the
+ * @property {string} [prepTime] The amount of time required to prepare the
  * ingredients. For example, PT15M. For information about the time format, see
  * http://en.wikipedia.org/wiki/ISO_8601#Durations.
- * @member {string} [totalTime] The total amount of time it takes to prepare
+ * @property {string} [totalTime] The total amount of time it takes to prepare
  * and cook the recipe. For example, PT45M. For information about the time
  * format, see http://en.wikipedia.org/wiki/ISO_8601#Durations.
  */
@@ -725,7 +733,7 @@ export interface Recipe extends CreativeWork {
  * @constructor
  * Defines a list of recipes.
  *
- * @member {array} [value] A list of recipes.
+ * @property {array} [value] A list of recipes.
  */
 export interface RecipesModule {
   readonly value?: Recipe[];
@@ -737,8 +745,8 @@ export interface RecipesModule {
  * @constructor
  * Defines an recipe action.
  *
- * @member {object} [data] A list of recipes related to the image.
- * @member {array} [data.value] A list of recipes.
+ * @property {object} [data] A list of recipes related to the image.
+ * @property {array} [data.value] A list of recipes.
  */
 export interface ImageRecipesAction extends ImageAction {
   readonly data?: RecipesModule;
@@ -750,23 +758,24 @@ export interface ImageRecipesAction extends ImageAction {
  * @constructor
  * Defines a search query.
  *
- * @member {string} text The query string. Use this string as the query term in
- * a new search request.
- * @member {string} [displayText] The display version of the query term.
- * @member {string} [webSearchUrl] The URL that takes the user to the Bing
+ * @property {string} text The query string. Use this string as the query term
+ * in a new search request.
+ * @property {string} [displayText] The display version of the query term.
+ * @property {string} [webSearchUrl] The URL that takes the user to the Bing
  * search results page for the query.
- * @member {string} [searchLink] The URL that you use to get the results of the
- * related search. Before using the URL, you must append query parameters as
- * appropriate and include the Ocp-Apim-Subscription-Key header. Use this URL
- * if you're displaying the results in your own user interface. Otherwise, use
- * the webSearchUrl URL.
- * @member {object} [thumbnail] The URL to a thumbnail of a related image.
- * @member {object} [thumbnail.thumbnail] The URL to a thumbnail of the image.
- * @member {string} [thumbnail.imageInsightsToken] The token that you use in a
- * subsequent call to Visual Search API to get additional information about the
- * image. For information about using this token, see the imageInsightsToken
- * field inside the knowledgeRequest request parameter.
- * @member {object} [thumbnail.insightsMetadata] A count of the number of
+ * @property {string} [searchLink] The URL that you use to get the results of
+ * the related search. Before using the URL, you must append query parameters
+ * as appropriate and include the Ocp-Apim-Subscription-Key header. Use this
+ * URL if you're displaying the results in your own user interface. Otherwise,
+ * use the webSearchUrl URL.
+ * @property {object} [thumbnail] The URL to a thumbnail of a related image.
+ * @property {object} [thumbnail.thumbnail] The URL to a thumbnail of the
+ * image.
+ * @property {string} [thumbnail.imageInsightsToken] The token that you use in
+ * a subsequent call to Visual Search API to get additional information about
+ * the image. For information about using this token, see the
+ * imageInsightsToken field inside the knowledgeRequest request parameter.
+ * @property {object} [thumbnail.insightsMetadata] A count of the number of
  * websites where you can shop or perform other actions related to the image.
  * For example, if the image is of an apple pie, this object includes a count
  * of the number of websites where you can buy an apple pie. To indicate the
@@ -774,23 +783,23 @@ export interface ImageRecipesAction extends ImageAction {
  * that contains the count. When the user clicks on the icon, use
  * imageInisghtsToken in a subsequent Visual Search API call to get the list of
  * shopping websites.
- * @member {number} [thumbnail.insightsMetadata.shoppingSourcesCount] The
+ * @property {number} [thumbnail.insightsMetadata.shoppingSourcesCount] The
  * number of websites that sell the products seen in the image.
- * @member {number} [thumbnail.insightsMetadata.recipeSourcesCount] The number
- * of websites that offer recipes of the food seen in the image.
- * @member {object} [thumbnail.insightsMetadata.aggregateOffer] A summary of
+ * @property {number} [thumbnail.insightsMetadata.recipeSourcesCount] The
+ * number of websites that offer recipes of the food seen in the image.
+ * @property {object} [thumbnail.insightsMetadata.aggregateOffer] A summary of
  * the online offers of products found in the image. For example, if the image
  * is of a dress, the offer might identify the lowest price and the number of
  * offers found. Only visually similar products insights include this field.
  * The offer includes the following fields: Name, AggregateRating, OfferCount,
  * and LowPrice.
- * @member {array} [thumbnail.insightsMetadata.aggregateOffer.offers] A list of
- * offers from merchants that have offerings related to the image.
- * @member {string} [thumbnail.imageId] Unique Id for the image.
- * @member {string} [thumbnail.accentColor] A three-byte hexadecimal number
+ * @property {array} [thumbnail.insightsMetadata.aggregateOffer.offers] A list
+ * of offers from merchants that have offerings related to the image.
+ * @property {string} [thumbnail.imageId] Unique Id for the image.
+ * @property {string} [thumbnail.accentColor] A three-byte hexadecimal number
  * that represents the color that dominates the image. Use the color as the
  * temporary background in your client until the image is loaded.
- * @member {string} [thumbnail.visualWords] For interal use only.
+ * @property {string} [thumbnail.visualWords] For interal use only.
  */
 export interface Query {
   text: string;
@@ -806,7 +815,7 @@ export interface Query {
  * @constructor
  * Defines a list of related searches.
  *
- * @member {array} [value] A list of related searches.
+ * @property {array} [value] A list of related searches.
  */
 export interface RelatedSearchesModule {
   readonly value?: Query[];
@@ -818,8 +827,8 @@ export interface RelatedSearchesModule {
  * @constructor
  * Defines an related search action.
  *
- * @member {object} [data] A list of queries related to the image.
- * @member {array} [data.value] A list of related searches.
+ * @property {object} [data] A list of queries related to the image.
+ * @property {array} [data.value] A list of related searches.
  */
 export interface ImageRelatedSearchesAction extends ImageAction {
   readonly data?: RelatedSearchesModule;
@@ -831,9 +840,9 @@ export interface ImageRelatedSearchesAction extends ImageAction {
  * @constructor
  * Defines a shopping sources action.
  *
- * @member {object} [data] A list of merchants that offer items related to the
- * image.
- * @member {array} [data.offers] A list of offers from merchants that have
+ * @property {object} [data] A list of merchants that offer items related to
+ * the image.
+ * @property {array} [data.offers] A list of offers from merchants that have
  * offerings related to the image.
  */
 export interface ImageShoppingSourcesAction extends ImageAction {
@@ -847,20 +856,20 @@ export interface ImageShoppingSourcesAction extends ImageAction {
  * A JSON object consisting of coordinates specifying the four corners of a
  * cropped rectangle within the input image.
  *
- * @member {number} top The top coordinate of the region to be cropped. The
+ * @property {number} top The top coordinate of the region to be cropped. The
  * coordinate is a fractional value of the original image's height and is
  * measured from the top edge of the image. Specify the coordinate as a value
  * from 0.0 through 1.0.
- * @member {number} bottom The bottom coordinate of the region to be cropped.
+ * @property {number} bottom The bottom coordinate of the region to be cropped.
  * The coordinate is a fractional value of the original image's height and is
  * measured from the top edge of the image. Specify the coordinate as a value
  * from 0.0 through 1.0.
- * @member {number} left The left coordinate of the region to be cropped. The
+ * @property {number} left The left coordinate of the region to be cropped. The
  * coordinate is a fractional value of the original image's width and is
  * measured from the left edge of the image. Specify the coordinate as a value
  * from 0.0 through 1.0.
- * @member {number} right The right coordinate of the region to be cropped. The
- * coordinate is a fractional value of the original image's width and is
+ * @property {number} right The right coordinate of the region to be cropped.
+ * The coordinate is a fractional value of the original image's width and is
  * measured from the left edge of the image. Specify the coordinate as a value
  * from 0.0 through 1.0.
  */
@@ -879,7 +888,7 @@ export interface CropArea {
  * includes the optional crop area that you use to identify the region of
  * interest in the image.
  *
- * @member {string} [imageInsightsToken] An image insights token. To get the
+ * @property {string} [imageInsightsToken] An image insights token. To get the
  * insights token, call one of the Image Search APIs (for example,
  * /images/search). In the search results, the
  * [Image](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bing-images-api-v7-reference#image)
@@ -888,27 +897,27 @@ export interface CropArea {
  * field contains the token. The imageInsightsToken and url fields mutually
  * exclusive; do not specify both. Do not specify an insights token if the
  * request includes the image form data.
- * @member {string} [url] The URL of the input image. The imageInsightsToken
+ * @property {string} [url] The URL of the input image. The imageInsightsToken
  * and url fields are mutually exclusive; do not specify both. Do not specify
  * the URL if the request includes the image form data.
- * @member {object} [cropArea] A JSON object consisting of coordinates
+ * @property {object} [cropArea] A JSON object consisting of coordinates
  * specifying the four corners of a cropped rectangle within the input image.
  * Use the crop area to identify the region of interest in the image. You can
  * apply the crop area to the images specified using the imageInsightsToken or
  * url fields, or an image binary specified in an image form data.
- * @member {number} [cropArea.top] The top coordinate of the region to be
+ * @property {number} [cropArea.top] The top coordinate of the region to be
  * cropped. The coordinate is a fractional value of the original image's height
  * and is measured from the top edge of the image. Specify the coordinate as a
  * value from 0.0 through 1.0.
- * @member {number} [cropArea.bottom] The bottom coordinate of the region to be
- * cropped. The coordinate is a fractional value of the original image's height
- * and is measured from the top edge of the image. Specify the coordinate as a
- * value from 0.0 through 1.0.
- * @member {number} [cropArea.left] The left coordinate of the region to be
+ * @property {number} [cropArea.bottom] The bottom coordinate of the region to
+ * be cropped. The coordinate is a fractional value of the original image's
+ * height and is measured from the top edge of the image. Specify the
+ * coordinate as a value from 0.0 through 1.0.
+ * @property {number} [cropArea.left] The left coordinate of the region to be
  * cropped. The coordinate is a fractional value of the original image's width
  * and is measured from the left edge of the image. Specify the coordinate as a
  * value from 0.0 through 1.0.
- * @member {number} [cropArea.right] The right coordinate of the region to be
+ * @property {number} [cropArea.right] The right coordinate of the region to be
  * cropped. The coordinate is a fractional value of the original image's width
  * and is measured from the left edge of the image. Specify the coordinate as a
  * value from 0.0 through 1.0.
@@ -926,7 +935,7 @@ export interface ImageInfo {
  * A key-value object consisting of filters that may be specified to limit the
  * results returned by the API. Current available filters: site.
  *
- * @member {string} [site] The URL of the site to return similar images and
+ * @property {string} [site] The URL of the site to return similar images and
  * similar products from. (e.g., "www.bing.com", "bing.com").
  */
 export interface Filters {
@@ -940,10 +949,10 @@ export interface Filters {
  * A JSON object containing information about the request, such as filters for
  * the resulting actions.
  *
- * @member {object} [filters] A key-value object consisting of filters that may
- * be specified to limit the results returned by the API.
- * @member {string} [filters.site] The URL of the site to return similar images
- * and similar products from. (e.g., "www.bing.com", "bing.com").
+ * @property {object} [filters] A key-value object consisting of filters that
+ * may be specified to limit the results returned by the API.
+ * @property {string} [filters.site] The URL of the site to return similar
+ * images and similar products from. (e.g., "www.bing.com", "bing.com").
  */
 export interface KnowledgeRequest {
   filters?: Filters;
@@ -956,10 +965,10 @@ export interface KnowledgeRequest {
  * A JSON object that contains information about the image to get insights of.
  * Specify this object only in a knowledgeRequest form data.
  *
- * @member {object} [imageInfo] A JSON object that identities the image to get
- * insights of.
- * @member {string} [imageInfo.imageInsightsToken] An image insights token. To
- * get the insights token, call one of the Image Search APIs (for example,
+ * @property {object} [imageInfo] A JSON object that identities the image to
+ * get insights of.
+ * @property {string} [imageInfo.imageInsightsToken] An image insights token.
+ * To get the insights token, call one of the Image Search APIs (for example,
  * /images/search). In the search results, the
  * [Image](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bing-images-api-v7-reference#image)
  * object's
@@ -967,36 +976,36 @@ export interface KnowledgeRequest {
  * field contains the token. The imageInsightsToken and url fields mutually
  * exclusive; do not specify both. Do not specify an insights token if the
  * request includes the image form data.
- * @member {string} [imageInfo.url] The URL of the input image. The
+ * @property {string} [imageInfo.url] The URL of the input image. The
  * imageInsightsToken and url fields are mutually exclusive; do not specify
  * both. Do not specify the URL if the request includes the image form data.
- * @member {object} [imageInfo.cropArea] A JSON object consisting of
+ * @property {object} [imageInfo.cropArea] A JSON object consisting of
  * coordinates specifying the four corners of a cropped rectangle within the
  * input image. Use the crop area to identify the region of interest in the
  * image. You can apply the crop area to the images specified using the
  * imageInsightsToken or url fields, or an image binary specified in an image
  * form data.
- * @member {number} [imageInfo.cropArea.top] The top coordinate of the region
+ * @property {number} [imageInfo.cropArea.top] The top coordinate of the region
  * to be cropped. The coordinate is a fractional value of the original image's
  * height and is measured from the top edge of the image. Specify the
  * coordinate as a value from 0.0 through 1.0.
- * @member {number} [imageInfo.cropArea.bottom] The bottom coordinate of the
+ * @property {number} [imageInfo.cropArea.bottom] The bottom coordinate of the
  * region to be cropped. The coordinate is a fractional value of the original
  * image's height and is measured from the top edge of the image. Specify the
  * coordinate as a value from 0.0 through 1.0.
- * @member {number} [imageInfo.cropArea.left] The left coordinate of the region
- * to be cropped. The coordinate is a fractional value of the original image's
- * width and is measured from the left edge of the image. Specify the
- * coordinate as a value from 0.0 through 1.0.
- * @member {number} [imageInfo.cropArea.right] The right coordinate of the
+ * @property {number} [imageInfo.cropArea.left] The left coordinate of the
  * region to be cropped. The coordinate is a fractional value of the original
  * image's width and is measured from the left edge of the image. Specify the
  * coordinate as a value from 0.0 through 1.0.
- * @member {object} [knowledgeRequest] A JSON object containing information
+ * @property {number} [imageInfo.cropArea.right] The right coordinate of the
+ * region to be cropped. The coordinate is a fractional value of the original
+ * image's width and is measured from the left edge of the image. Specify the
+ * coordinate as a value from 0.0 through 1.0.
+ * @property {object} [knowledgeRequest] A JSON object containing information
  * about the request, such as filters, or a description.
- * @member {object} [knowledgeRequest.filters] A key-value object consisting of
- * filters that may be specified to limit the results returned by the API.
- * @member {string} [knowledgeRequest.filters.site] The URL of the site to
+ * @property {object} [knowledgeRequest.filters] A key-value object consisting
+ * of filters that may be specified to limit the results returned by the API.
+ * @property {string} [knowledgeRequest.filters.site] The URL of the site to
  * return similar images and similar products from. (e.g., "www.bing.com",
  * "bing.com").
  */

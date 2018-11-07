@@ -2077,7 +2077,7 @@ export interface Inputs {
      *
      * @param {string} [options.select] The $select OData query parameter. This is
      * a comma-separated list of structural properties to include in the response,
-     * or “*” to include all properties. By default, all properties are returned
+     * or "*" to include all properties. By default, all properties are returned
      * except diagnostics. Currently only accepts '*' as a valid value.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2104,7 +2104,7 @@ export interface Inputs {
      *
      * @param {string} [options.select] The $select OData query parameter. This is
      * a comma-separated list of structural properties to include in the response,
-     * or “*” to include all properties. By default, all properties are returned
+     * or "*" to include all properties. By default, all properties are returned
      * except diagnostics. Currently only accepts '*' as a valid value.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2805,7 +2805,7 @@ export interface Outputs {
      *
      * @param {string} [options.select] The $select OData query parameter. This is
      * a comma-separated list of structural properties to include in the response,
-     * or “*” to include all properties. By default, all properties are returned
+     * or "*" to include all properties. By default, all properties are returned
      * except diagnostics. Currently only accepts '*' as a valid value.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2832,7 +2832,7 @@ export interface Outputs {
      *
      * @param {string} [options.select] The $select OData query parameter. This is
      * a comma-separated list of structural properties to include in the response,
-     * or “*” to include all properties. By default, all properties are returned
+     * or "*" to include all properties. By default, all properties are returned
      * except diagnostics. Currently only accepts '*' as a valid value.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -3815,7 +3815,7 @@ export interface Functions {
      *
      * @param {string} [options.select] The $select OData query parameter. This is
      * a comma-separated list of structural properties to include in the response,
-     * or “*” to include all properties. By default, all properties are returned
+     * or "*" to include all properties. By default, all properties are returned
      * except diagnostics. Currently only accepts '*' as a valid value.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -3842,7 +3842,7 @@ export interface Functions {
      *
      * @param {string} [options.select] The $select OData query parameter. This is
      * a comma-separated list of structural properties to include in the response,
-     * or “*” to include all properties. By default, all properties are returned
+     * or "*" to include all properties. By default, all properties are returned
      * except diagnostics. Currently only accepts '*' as a valid value.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the

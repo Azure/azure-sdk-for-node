@@ -22,11 +22,11 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Represents the base class for all other ARM object models
  *
- * @member {string} [id] The path ID that uniquely identifies the object.
- * @member {string} [name] The name of the object.
- * @member {string} [type] The hierarchical type of the object.
- * @member {string} [kind] The Kind of the object. Currently only Series8000 is
- * supported. Possible values include: 'Series8000'
+ * @property {string} [id] The path ID that uniquely identifies the object.
+ * @property {string} [name] The name of the object.
+ * @property {string} [type] The hierarchical type of the object.
+ * @property {string} [kind] The Kind of the object. Currently only Series8000
+ * is supported. Possible values include: 'Series8000'
  */
 export interface BaseModel {
   readonly id?: string;
@@ -41,8 +41,8 @@ export interface BaseModel {
  * @constructor
  * The access control record.
  *
- * @member {string} initiatorName The iSCSI initiator name (IQN).
- * @member {number} [volumeCount] The number of volumes using the access
+ * @property {string} initiatorName The iSCSI initiator name (IQN).
+ * @property {number} [volumeCount] The number of volumes using the access
  * control record.
  */
 export interface AccessControlRecord extends BaseModel {
@@ -56,9 +56,9 @@ export interface AccessControlRecord extends BaseModel {
  * @constructor
  * The ACS configuration.
  *
- * @member {string} namespace The namespace.
- * @member {string} realm The realm.
- * @member {string} serviceUrl The service URL.
+ * @property {string} namespace The namespace.
+ * @property {string} realm The realm.
+ * @property {string} serviceUrl The service URL.
  */
 export interface AcsConfiguration {
   namespace: string;
@@ -72,9 +72,9 @@ export interface AcsConfiguration {
  * @constructor
  * The source details at which the alert was raised
  *
- * @member {string} [name] The name of the source
- * @member {string} [timeZone] The time zone of the source
- * @member {string} [alertSourceType] The source type of the alert. Possible
+ * @property {string} [name] The name of the source
+ * @property {string} [timeZone] The time zone of the source
+ * @property {string} [alertSourceType] The source type of the alert. Possible
  * values include: 'Resource', 'Device'
  */
 export interface AlertSource {
@@ -89,9 +89,9 @@ export interface AlertSource {
  * @constructor
  * The details of the error for which the alert was raised
  *
- * @member {string} [errorCode] The error code
- * @member {string} [errorMessage] The error message
- * @member {number} [occurences] The number of occurences
+ * @property {string} [errorCode] The error code
+ * @property {string} [errorMessage] The error message
+ * @property {number} [occurences] The number of occurences
  */
 export interface AlertErrorDetails {
   errorCode?: string;
@@ -105,34 +105,34 @@ export interface AlertErrorDetails {
  * @constructor
  * The alert.
  *
- * @member {string} title The title of the alert
- * @member {string} scope The scope of the alert. Possible values include:
+ * @property {string} title The title of the alert
+ * @property {string} scope The scope of the alert. Possible values include:
  * 'Resource', 'Device'
- * @member {string} alertType The type of the alert
- * @member {date} appearedAtTime The UTC time at which the alert was raised
- * @member {date} appearedAtSourceTime The source time at which the alert was
+ * @property {string} alertType The type of the alert
+ * @property {date} appearedAtTime The UTC time at which the alert was raised
+ * @property {date} appearedAtSourceTime The source time at which the alert was
  * raised
- * @member {date} [clearedAtTime] The UTC time at which the alert was cleared
- * @member {date} [clearedAtSourceTime] The source time at which the alert was
- * cleared
- * @member {object} source The source at which the alert was raised
- * @member {string} [source.name] The name of the source
- * @member {string} [source.timeZone] The time zone of the source
- * @member {string} [source.alertSourceType] The source type of the alert.
+ * @property {date} [clearedAtTime] The UTC time at which the alert was cleared
+ * @property {date} [clearedAtSourceTime] The source time at which the alert
+ * was cleared
+ * @property {object} source The source at which the alert was raised
+ * @property {string} [source.name] The name of the source
+ * @property {string} [source.timeZone] The time zone of the source
+ * @property {string} [source.alertSourceType] The source type of the alert.
  * Possible values include: 'Resource', 'Device'
- * @member {string} [recommendation] The recommended action for the issue
+ * @property {string} [recommendation] The recommended action for the issue
  * raised in the alert
- * @member {string} [resolutionReason] The reason for resolving the alert
- * @member {string} severity The severity of the alert. Possible values
+ * @property {string} [resolutionReason] The reason for resolving the alert
+ * @property {string} severity The severity of the alert. Possible values
  * include: 'Informational', 'Warning', 'Critical'
- * @member {string} status The current status of the alert. Possible values
+ * @property {string} status The current status of the alert. Possible values
  * include: 'Active', 'Cleared'
- * @member {object} [errorDetails] The details of the error for which the alert
- * was raised
- * @member {string} [errorDetails.errorCode] The error code
- * @member {string} [errorDetails.errorMessage] The error message
- * @member {number} [errorDetails.occurences] The number of occurences
- * @member {object} [detailedInformation] More details about the alert
+ * @property {object} [errorDetails] The details of the error for which the
+ * alert was raised
+ * @property {string} [errorDetails.errorCode] The error code
+ * @property {string} [errorDetails.errorMessage] The error message
+ * @property {number} [errorDetails.occurences] The number of occurences
+ * @property {object} [detailedInformation] More details about the alert
  */
 export interface Alert extends BaseModel {
   title: string;
@@ -157,20 +157,20 @@ export interface Alert extends BaseModel {
  * @constructor
  * The OData filters to be used for Alert
  *
- * @member {string} [status] Specifies the status of the alerts to be filtered.
- * Only 'Equality' operator is supported for this property. Possible values
- * include: 'Active', 'Cleared'
- * @member {string} [severity] Specifies the severity of the alerts to be
+ * @property {string} [status] Specifies the status of the alerts to be
+ * filtered. Only 'Equality' operator is supported for this property. Possible
+ * values include: 'Active', 'Cleared'
+ * @property {string} [severity] Specifies the severity of the alerts to be
  * filtered. Only 'Equality' operator is supported for this property. Possible
  * values include: 'Informational', 'Warning', 'Critical'
- * @member {string} [sourceType] Specifies the source type of the alerts to be
- * filtered. Only 'Equality' operator is supported for this property. Possible
- * values include: 'Resource', 'Device'
- * @member {string} [sourceName] Specifies the source name of the alerts to be
- * filtered. Only 'Equality' operator is supported for this property.
- * @member {date} [appearedOnTime] Specifies the appeared time (in UTC) of the
- * alerts to be filtered. Only 'Greater-Than' and 'Lesser-Than' operators are
- * supported for this property.
+ * @property {string} [sourceType] Specifies the source type of the alerts to
+ * be filtered. Only 'Equality' operator is supported for this property.
+ * Possible values include: 'Resource', 'Device'
+ * @property {string} [sourceName] Specifies the source name of the alerts to
+ * be filtered. Only 'Equality' operator is supported for this property.
+ * @property {date} [appearedOnTime] Specifies the appeared time (in UTC) of
+ * the alerts to be filtered. Only 'Greater-Than' and 'Lesser-Than' operators
+ * are supported for this property.
  */
 export interface AlertFilter {
   status?: string;
@@ -186,14 +186,15 @@ export interface AlertFilter {
  * @constructor
  * The alert settings.
  *
- * @member {string} emailNotification Indicates whether email notification
+ * @property {string} emailNotification Indicates whether email notification
  * enabled or not. Possible values include: 'Enabled', 'Disabled'
- * @member {string} [alertNotificationCulture] The alert notification culture.
- * @member {string} [notificationToServiceOwners] The value indicating whether
- * alert notification enabled for admin or not. Possible values include:
- * 'Enabled', 'Disabled'
- * @member {array} [additionalRecipientEmailList] The alert notification email
- * list.
+ * @property {string} [alertNotificationCulture] The alert notification
+ * culture.
+ * @property {string} [notificationToServiceOwners] The value indicating
+ * whether alert notification enabled for admin or not. Possible values
+ * include: 'Enabled', 'Disabled'
+ * @property {array} [additionalRecipientEmailList] The alert notification
+ * email list.
  */
 export interface AlertSettings extends BaseModel {
   emailNotification: string;
@@ -208,11 +209,11 @@ export interface AlertSettings extends BaseModel {
  * @constructor
  * Represent the secrets intended for encryption with asymmetric key pair.
  *
- * @member {string} value The value of the secret.
- * @member {string} [encryptionCertThumbprint] Thumbprint certificate that was
- * used to encrypt "Value". If the value in unencrypted, it will be null.
- * @member {string} encryptionAlgorithm The algorithm used to encrypt "Value".
- * Possible values include: 'None', 'AES256', 'RSAES_PKCS1_v_1_5'
+ * @property {string} value The value of the secret.
+ * @property {string} [encryptionCertThumbprint] Thumbprint certificate that
+ * was used to encrypt "Value". If the value in unencrypted, it will be null.
+ * @property {string} encryptionAlgorithm The algorithm used to encrypt
+ * "Value". Possible values include: 'None', 'AES256', 'RSAES_PKCS1_v_1_5'
  */
 export interface AsymmetricEncryptedSecret {
   value: string;
@@ -229,19 +230,19 @@ export interface AsymmetricEncryptedSecret {
  * role definitions for RBAC, (b) complex query filters for the event service
  * and (c) audit history/records for management operations.
  *
- * @member {string} [provider] The localized friendly form of the resource
+ * @property {string} [provider] The localized friendly form of the resource
  * provider name - it is expected to also include the publisher/company
  * responsible. It should use Title Casing and begin with 'Microsoft' for 1st
  * party services.
- * @member {string} [resource] The localized friendly form of the resource type
- * related to this action/operation - it should match the public documentation
- * for the resource provider. It should use Title Casing - for examples, please
- * refer to the 'name' section.
- * @member {string} [operation] The localized friendly name for the operation,
- * as it should be shown to the user. It should be concise (to fit in drop
- * downs) but clear (i.e. self-documenting). It should use Title Casing and
- * include the entity/resource to which it applies.
- * @member {string} [description] The localized friendly description for the
+ * @property {string} [resource] The localized friendly form of the resource
+ * type related to this action/operation - it should match the public
+ * documentation for the resource provider. It should use Title Casing - for
+ * examples, please refer to the 'name' section.
+ * @property {string} [operation] The localized friendly name for the
+ * operation, as it should be shown to the user. It should be concise (to fit
+ * in drop downs) but clear (i.e. self-documenting). It should use Title Casing
+ * and include the entity/resource to which it applies.
+ * @property {string} [description] The localized friendly description for the
  * operation, as it should be shown to the user. It should be thorough, yet
  * concise - it will be used in tool tips and detailed views.
  */
@@ -258,32 +259,32 @@ export interface AvailableProviderOperationDisplay {
  * @constructor
  * Represents available provider operation.
  *
- * @member {string} [name] The name of the operation being performed on a
+ * @property {string} [name] The name of the operation being performed on a
  * particular object. Name format:
  * "{resourceProviderNamespace}/{resourceType}/{read|write|delete|action}". Eg.
  * Microsoft.StorSimple/managers/devices/volumeContainers/read,
  * Microsoft.StorSimple/managers/devices/alerts/clearAlerts/action
- * @member {object} [display] Contains the localized display information for
+ * @property {object} [display] Contains the localized display information for
  * this particular operation/action.
- * @member {string} [display.provider] The localized friendly form of the
+ * @property {string} [display.provider] The localized friendly form of the
  * resource provider name - it is expected to also include the
  * publisher/company responsible. It should use Title Casing and begin with
  * 'Microsoft' for 1st party services.
- * @member {string} [display.resource] The localized friendly form of the
+ * @property {string} [display.resource] The localized friendly form of the
  * resource type related to this action/operation - it should match the public
  * documentation for the resource provider. It should use Title Casing - for
  * examples, please refer to the 'name' section.
- * @member {string} [display.operation] The localized friendly name for the
+ * @property {string} [display.operation] The localized friendly name for the
  * operation, as it should be shown to the user. It should be concise (to fit
  * in drop downs) but clear (i.e. self-documenting). It should use Title Casing
  * and include the entity/resource to which it applies.
- * @member {string} [display.description] The localized friendly description
+ * @property {string} [display.description] The localized friendly description
  * for the operation, as it should be shown to the user. It should be thorough,
  * yet concise - it will be used in tool tips and detailed views.
- * @member {string} [origin] The intended executor of the operation; governs
+ * @property {string} [origin] The intended executor of the operation; governs
  * the display of the operation in the RBAC UX and the audit logs UX. Default
  * value is "user,system"
- * @member {object} [properties] Reserved for future use.
+ * @property {object} [properties] Reserved for future use.
  */
 export interface AvailableProviderOperation {
   name?: string;
@@ -298,14 +299,14 @@ export interface AvailableProviderOperation {
  * @constructor
  * The backup element.
  *
- * @member {string} elementId The path ID that uniquely identifies the backup
+ * @property {string} elementId The path ID that uniquely identifies the backup
  * element.
- * @member {string} elementName The name of the backup element.
- * @member {string} elementType The hierarchical type of the backup element.
- * @member {number} sizeInBytes The size in bytes.
- * @member {string} volumeName The name of the volume.
- * @member {string} volumeContainerId The path ID of the volume container.
- * @member {string} [volumeType] The volume type. Possible values include:
+ * @property {string} elementName The name of the backup element.
+ * @property {string} elementType The hierarchical type of the backup element.
+ * @property {number} sizeInBytes The size in bytes.
+ * @property {string} volumeName The name of the volume.
+ * @property {string} volumeContainerId The path ID of the volume container.
+ * @property {string} [volumeType] The volume type. Possible values include:
  * 'Tiered', 'Archival', 'LocallyPinned'
  */
 export interface BackupElement {
@@ -324,15 +325,15 @@ export interface BackupElement {
  * @constructor
  * The backup.
  *
- * @member {date} createdOn The time when the backup was created.
- * @member {number} sizeInBytes The backup size in bytes.
- * @member {string} [backupType] The type of the backup. Possible values
+ * @property {date} createdOn The time when the backup was created.
+ * @property {number} sizeInBytes The backup size in bytes.
+ * @property {string} [backupType] The type of the backup. Possible values
  * include: 'LocalSnapshot', 'CloudSnapshot'
- * @member {string} [backupJobCreationType] The backup job creation type.
+ * @property {string} [backupJobCreationType] The backup job creation type.
  * Possible values include: 'Adhoc', 'BySchedule', 'BySSM'
- * @member {string} [backupPolicyId] The path ID of the backup policy.
- * @member {string} [ssmHostName] The StorSimple Snapshot Manager host name.
- * @member {array} elements The backup elements.
+ * @property {string} [backupPolicyId] The path ID of the backup policy.
+ * @property {string} [ssmHostName] The StorSimple Snapshot Manager host name.
+ * @property {array} elements The backup elements.
  */
 export interface Backup extends BaseModel {
   createdOn: Date;
@@ -350,12 +351,12 @@ export interface Backup extends BaseModel {
  * @constructor
  * The OData filters to be used for backups.
  *
- * @member {string} [backupPolicyId] Specifies the backupPolicyId of the
+ * @property {string} [backupPolicyId] Specifies the backupPolicyId of the
  * backups to be filtered. Only 'Equality' operator is supported for this
  * property.
- * @member {string} [volumeId] Specifies the volumeId of the backups to be
+ * @property {string} [volumeId] Specifies the volumeId of the backups to be
  * filtered. Only 'Equality' operator is supported for this property.
- * @member {date} [createdTime] Specifies the creation time of the backups to
+ * @property {date} [createdTime] Specifies the creation time of the backups to
  * be filtered. Only 'Greater Than or Equal To' and 'Lesser Than or Equal To'
  * operators are supported for this property.
  */
@@ -371,21 +372,21 @@ export interface BackupFilter {
  * @constructor
  * The backup policy.
  *
- * @member {array} volumeIds The path IDs of the volumes which are part of the
- * backup policy.
- * @member {date} [nextBackupTime] The time of the next backup for the backup
+ * @property {array} volumeIds The path IDs of the volumes which are part of
+ * the backup policy.
+ * @property {date} [nextBackupTime] The time of the next backup for the backup
  * policy.
- * @member {date} [lastBackupTime] The time of the last backup for the backup
+ * @property {date} [lastBackupTime] The time of the last backup for the backup
  * policy.
- * @member {number} [schedulesCount] The count of schedules the backup policy
+ * @property {number} [schedulesCount] The count of schedules the backup policy
  * contains.
- * @member {string} [scheduledBackupStatus] Indicates whether atleast one of
+ * @property {string} [scheduledBackupStatus] Indicates whether atleast one of
  * the schedules in the backup policy is active or not. Possible values
  * include: 'Disabled', 'Enabled'
- * @member {string} [backupPolicyCreationType] The backup policy creation type.
- * Indicates whether this was created through SaaS or through StorSimple
+ * @property {string} [backupPolicyCreationType] The backup policy creation
+ * type. Indicates whether this was created through SaaS or through StorSimple
  * Snapshot Manager. Possible values include: 'BySaaS', 'BySSM'
- * @member {string} [ssmHostName] If the backup policy was created by
+ * @property {string} [ssmHostName] If the backup policy was created by
  * StorSimple Snapshot Manager, then this field indicates the hostname of the
  * StorSimple Snapshot Manager.
  */
@@ -405,10 +406,10 @@ export interface BackupPolicy extends BaseModel {
  * @constructor
  * The schedule recurrence.
  *
- * @member {string} recurrenceType The recurrence type. Possible values
+ * @property {string} recurrenceType The recurrence type. Possible values
  * include: 'Minutes', 'Hourly', 'Daily', 'Weekly'
- * @member {number} recurrenceValue The recurrence value.
- * @member {array} [weeklyDaysList] The week days list. Applicable only for
+ * @property {number} recurrenceValue The recurrence value.
+ * @property {array} [weeklyDaysList] The week days list. Applicable only for
  * schedules of recurrence type 'weekly'.
  */
 export interface ScheduleRecurrence {
@@ -423,20 +424,21 @@ export interface ScheduleRecurrence {
  * @constructor
  * The backup schedule.
  *
- * @member {object} scheduleRecurrence The schedule recurrence.
- * @member {string} [scheduleRecurrence.recurrenceType] The recurrence type.
+ * @property {object} scheduleRecurrence The schedule recurrence.
+ * @property {string} [scheduleRecurrence.recurrenceType] The recurrence type.
  * Possible values include: 'Minutes', 'Hourly', 'Daily', 'Weekly'
- * @member {number} [scheduleRecurrence.recurrenceValue] The recurrence value.
- * @member {array} [scheduleRecurrence.weeklyDaysList] The week days list.
+ * @property {number} [scheduleRecurrence.recurrenceValue] The recurrence
+ * value.
+ * @property {array} [scheduleRecurrence.weeklyDaysList] The week days list.
  * Applicable only for schedules of recurrence type 'weekly'.
- * @member {string} backupType The type of backup which needs to be taken.
+ * @property {string} backupType The type of backup which needs to be taken.
  * Possible values include: 'LocalSnapshot', 'CloudSnapshot'
- * @member {number} retentionCount The number of backups to be retained.
- * @member {date} startTime The start time of the schedule.
- * @member {string} scheduleStatus The schedule status. Possible values
+ * @property {number} retentionCount The number of backups to be retained.
+ * @property {date} startTime The start time of the schedule.
+ * @property {string} scheduleStatus The schedule status. Possible values
  * include: 'Enabled', 'Disabled'
- * @member {date} [lastSuccessfulRun] The last successful backup run which was
- * triggered for the schedule.
+ * @property {date} [lastSuccessfulRun] The last successful backup run which
+ * was triggered for the schedule.
  */
 export interface BackupSchedule extends BaseModel {
   scheduleRecurrence: ScheduleRecurrence;
@@ -453,9 +455,9 @@ export interface BackupSchedule extends BaseModel {
  * @constructor
  * The time.
  *
- * @member {number} hours The hour.
- * @member {number} minutes The minute.
- * @member {number} seconds The second.
+ * @property {number} hours The hour.
+ * @property {number} minutes The minute.
+ * @property {number} seconds The second.
  */
 export interface Time {
   hours: number;
@@ -469,16 +471,17 @@ export interface Time {
  * @constructor
  * The schedule for bandwidth setting.
  *
- * @member {object} start The start time of the schdule.
- * @member {number} [start.hours] The hour.
- * @member {number} [start.minutes] The minute.
- * @member {number} [start.seconds] The second.
- * @member {object} stop The stop time of the schedule.
- * @member {number} [stop.hours] The hour.
- * @member {number} [stop.minutes] The minute.
- * @member {number} [stop.seconds] The second.
- * @member {number} rateInMbps The rate in Mbps.
- * @member {array} days The days of the week when this schedule is applicable.
+ * @property {object} start The start time of the schdule.
+ * @property {number} [start.hours] The hour.
+ * @property {number} [start.minutes] The minute.
+ * @property {number} [start.seconds] The second.
+ * @property {object} stop The stop time of the schedule.
+ * @property {number} [stop.hours] The hour.
+ * @property {number} [stop.minutes] The minute.
+ * @property {number} [stop.seconds] The second.
+ * @property {number} rateInMbps The rate in Mbps.
+ * @property {array} days The days of the week when this schedule is
+ * applicable.
  */
 export interface BandwidthSchedule {
   start: Time;
@@ -493,9 +496,9 @@ export interface BandwidthSchedule {
  * @constructor
  * The bandwidth setting.
  *
- * @member {array} schedules The schedules.
- * @member {number} [volumeCount] The number of volumes that uses the bandwidth
- * setting.
+ * @property {array} schedules The schedules.
+ * @property {number} [volumeCount] The number of volumes that uses the
+ * bandwidth setting.
  */
 export interface BandwidthSetting extends BaseModel {
   schedules: BandwidthSchedule[];
@@ -508,22 +511,22 @@ export interface BandwidthSetting extends BaseModel {
  * @constructor
  * The Challenge-Handshake Authentication Protocol (CHAP) settings.
  *
- * @member {string} [initiatorUser] The CHAP initiator user.
- * @member {object} [initiatorSecret] The CHAP initiator secret.
- * @member {string} [initiatorSecret.value] The value of the secret.
- * @member {string} [initiatorSecret.encryptionCertThumbprint] Thumbprint
+ * @property {string} [initiatorUser] The CHAP initiator user.
+ * @property {object} [initiatorSecret] The CHAP initiator secret.
+ * @property {string} [initiatorSecret.value] The value of the secret.
+ * @property {string} [initiatorSecret.encryptionCertThumbprint] Thumbprint
  * certificate that was used to encrypt "Value". If the value in unencrypted,
  * it will be null.
- * @member {string} [initiatorSecret.encryptionAlgorithm] The algorithm used to
- * encrypt "Value". Possible values include: 'None', 'AES256',
+ * @property {string} [initiatorSecret.encryptionAlgorithm] The algorithm used
+ * to encrypt "Value". Possible values include: 'None', 'AES256',
  * 'RSAES_PKCS1_v_1_5'
- * @member {string} [targetUser] The CHAP target user.
- * @member {object} [targetSecret] The target secret.
- * @member {string} [targetSecret.value] The value of the secret.
- * @member {string} [targetSecret.encryptionCertThumbprint] Thumbprint
+ * @property {string} [targetUser] The CHAP target user.
+ * @property {object} [targetSecret] The target secret.
+ * @property {string} [targetSecret.value] The value of the secret.
+ * @property {string} [targetSecret.encryptionCertThumbprint] Thumbprint
  * certificate that was used to encrypt "Value". If the value in unencrypted,
  * it will be null.
- * @member {string} [targetSecret.encryptionAlgorithm] The algorithm used to
+ * @property {string} [targetSecret.encryptionAlgorithm] The algorithm used to
  * encrypt "Value". Possible values include: 'None', 'AES256',
  * 'RSAES_PKCS1_v_1_5'
  */
@@ -540,9 +543,9 @@ export interface ChapSettings {
  * @constructor
  * The request for clearing the alert
  *
- * @member {string} [resolutionMessage] The resolution message while clearing
+ * @property {string} [resolutionMessage] The resolution message while clearing
  * the alert
- * @member {array} alerts The list of alert IDs to be cleared
+ * @property {array} alerts The list of alert IDs to be cleared
  */
 export interface ClearAlertRequest {
   resolutionMessage?: string;
@@ -555,24 +558,25 @@ export interface ClearAlertRequest {
  * @constructor
  * The clone job request.
  *
- * @member {string} targetDeviceId The path ID of the device which will act as
- * the clone target.
- * @member {string} targetVolumeName The name of the new volume which will be
+ * @property {string} targetDeviceId The path ID of the device which will act
+ * as the clone target.
+ * @property {string} targetVolumeName The name of the new volume which will be
  * created and the backup will be cloned into.
- * @member {array} targetAccessControlRecordIds The list of path IDs of the
+ * @property {array} targetAccessControlRecordIds The list of path IDs of the
  * access control records to be associated to the new cloned volume.
- * @member {object} backupElement The backup element that is cloned.
- * @member {string} [backupElement.elementId] The path ID that uniquely
+ * @property {object} backupElement The backup element that is cloned.
+ * @property {string} [backupElement.elementId] The path ID that uniquely
  * identifies the backup element.
- * @member {string} [backupElement.elementName] The name of the backup element.
- * @member {string} [backupElement.elementType] The hierarchical type of the
+ * @property {string} [backupElement.elementName] The name of the backup
+ * element.
+ * @property {string} [backupElement.elementType] The hierarchical type of the
  * backup element.
- * @member {number} [backupElement.sizeInBytes] The size in bytes.
- * @member {string} [backupElement.volumeName] The name of the volume.
- * @member {string} [backupElement.volumeContainerId] The path ID of the volume
- * container.
- * @member {string} [backupElement.volumeType] The volume type. Possible values
- * include: 'Tiered', 'Archival', 'LocallyPinned'
+ * @property {number} [backupElement.sizeInBytes] The size in bytes.
+ * @property {string} [backupElement.volumeName] The name of the volume.
+ * @property {string} [backupElement.volumeContainerId] The path ID of the
+ * volume container.
+ * @property {string} [backupElement.volumeType] The volume type. Possible
+ * values include: 'Tiered', 'Archival', 'LocallyPinned'
  */
 export interface CloneRequest {
   targetDeviceId: string;
@@ -587,19 +591,19 @@ export interface CloneRequest {
  * @constructor
  * The cloud appliance.
  *
- * @member {string} name The name.
- * @member {string} [vnetName] The name of the virtual network.
- * @member {string} vnetRegion The virtual network region.
- * @member {boolean} [isVnetDnsConfigured] Indicates whether virtual network
+ * @property {string} name The name.
+ * @property {string} [vnetName] The name of the virtual network.
+ * @property {string} vnetRegion The virtual network region.
+ * @property {boolean} [isVnetDnsConfigured] Indicates whether virtual network
  * used is configured with DNS or not.
- * @member {boolean} [isVnetExpressConfigured] Indicates whether virtual
+ * @property {boolean} [isVnetExpressConfigured] Indicates whether virtual
  * network used is configured with express route or not.
- * @member {string} [subnetName] The name of the subnet.
- * @member {string} [storageAccountName] The name of the storage account.
- * @member {string} [storageAccountType] The type of the storage account.
- * @member {string} [vmType] The type of the virtual machine.
- * @member {string} [vmImageName] The name of the virtual machine image.
- * @member {string} [modelNumber] The model number.
+ * @property {string} [subnetName] The name of the subnet.
+ * @property {string} [storageAccountName] The name of the storage account.
+ * @property {string} [storageAccountType] The type of the storage account.
+ * @property {string} [vmType] The type of the virtual machine.
+ * @property {string} [vmImageName] The name of the virtual machine image.
+ * @property {string} [modelNumber] The model number.
  */
 export interface CloudAppliance {
   name: string;
@@ -621,11 +625,11 @@ export interface CloudAppliance {
  * @constructor
  * The virtual machine image.
  *
- * @member {string} name The name.
- * @member {string} version The version.
- * @member {string} offer The offer.
- * @member {string} publisher The publisher.
- * @member {string} sku The SKU.
+ * @property {string} name The name.
+ * @property {string} version The version.
+ * @property {string} offer The offer.
+ * @property {string} publisher The publisher.
+ * @property {string} sku The SKU.
  */
 export interface VmImage {
   name: string;
@@ -641,17 +645,17 @@ export interface VmImage {
  * @constructor
  * The cloud appliance configuration
  *
- * @member {string} modelNumber The model number.
- * @member {string} cloudPlatform The cloud platform.
- * @member {object} acsConfiguration The ACS configuration.
- * @member {string} [acsConfiguration.namespace] The namespace.
- * @member {string} [acsConfiguration.realm] The realm.
- * @member {string} [acsConfiguration.serviceUrl] The service URL.
- * @member {array} supportedStorageAccountTypes The supported storage account
+ * @property {string} modelNumber The model number.
+ * @property {string} cloudPlatform The cloud platform.
+ * @property {object} acsConfiguration The ACS configuration.
+ * @property {string} [acsConfiguration.namespace] The namespace.
+ * @property {string} [acsConfiguration.realm] The realm.
+ * @property {string} [acsConfiguration.serviceUrl] The service URL.
+ * @property {array} supportedStorageAccountTypes The supported storage account
  * types.
- * @member {array} supportedRegions The supported regions.
- * @member {array} supportedVmTypes The supported virtual machine types.
- * @member {array} supportedVmImages The supported virtual machine images.
+ * @property {array} supportedRegions The supported regions.
+ * @property {array} supportedVmTypes The supported virtual machine types.
+ * @property {array} supportedVmImages The supported virtual machine images.
  */
 export interface CloudApplianceConfiguration extends BaseModel {
   modelNumber: string;
@@ -669,22 +673,22 @@ export interface CloudApplianceConfiguration extends BaseModel {
  * @constructor
  * The cloud appliance settings.
  *
- * @member {object} [serviceDataEncryptionKey] The service data encryption key
- * (encrypted with DAK).
- * @member {string} [serviceDataEncryptionKey.value] The value of the secret.
- * @member {string} [serviceDataEncryptionKey.encryptionCertThumbprint]
+ * @property {object} [serviceDataEncryptionKey] The service data encryption
+ * key (encrypted with DAK).
+ * @property {string} [serviceDataEncryptionKey.value] The value of the secret.
+ * @property {string} [serviceDataEncryptionKey.encryptionCertThumbprint]
  * Thumbprint certificate that was used to encrypt "Value". If the value in
  * unencrypted, it will be null.
- * @member {string} [serviceDataEncryptionKey.encryptionAlgorithm] The
+ * @property {string} [serviceDataEncryptionKey.encryptionAlgorithm] The
  * algorithm used to encrypt "Value". Possible values include: 'None',
  * 'AES256', 'RSAES_PKCS1_v_1_5'
- * @member {object} [channelIntegrityKey] The channel integrity key (encrypted
- * with DAK).
- * @member {string} [channelIntegrityKey.value] The value of the secret.
- * @member {string} [channelIntegrityKey.encryptionCertThumbprint] Thumbprint
+ * @property {object} [channelIntegrityKey] The channel integrity key
+ * (encrypted with DAK).
+ * @property {string} [channelIntegrityKey.value] The value of the secret.
+ * @property {string} [channelIntegrityKey.encryptionCertThumbprint] Thumbprint
  * certificate that was used to encrypt "Value". If the value in unencrypted,
  * it will be null.
- * @member {string} [channelIntegrityKey.encryptionAlgorithm] The algorithm
+ * @property {string} [channelIntegrityKey.encryptionAlgorithm] The algorithm
  * used to encrypt "Value". Possible values include: 'None', 'AES256',
  * 'RSAES_PKCS1_v_1_5'
  */
@@ -699,7 +703,7 @@ export interface CloudApplianceSettings {
  * @constructor
  * The secondary DNS settings.
  *
- * @member {array} [secondaryDnsServers] The list of secondary DNS Server IP
+ * @property {array} [secondaryDnsServers] The list of secondary DNS Server IP
  * addresses.
  */
 export interface SecondaryDNSSettings {
@@ -712,8 +716,8 @@ export interface SecondaryDNSSettings {
  * @constructor
  * The 'Data 0' network interface card settings.
  *
- * @member {string} [controllerZeroIp] The controller 0's IPv4 address.
- * @member {string} [controllerOneIp] The controller 1's IPv4 address.
+ * @property {string} [controllerZeroIp] The controller 0's IPv4 address.
+ * @property {string} [controllerOneIp] The controller 1's IPv4 address.
  */
 export interface NetworkInterfaceData0Settings {
   controllerZeroIp?: string;
@@ -726,18 +730,18 @@ export interface NetworkInterfaceData0Settings {
  * @constructor
  * The mandatory device configuration request.
  *
- * @member {string} friendlyName The friendly name for the device.
- * @member {string} currentDeviceName The current name of the device.
- * @member {string} timeZone The device time zone. For eg: "Pacific Standard
+ * @property {string} friendlyName The friendly name for the device.
+ * @property {string} currentDeviceName The current name of the device.
+ * @property {string} timeZone The device time zone. For eg: "Pacific Standard
  * Time"
- * @member {object} [dnsSettings] The secondary DNS Settings of the device.
- * @member {array} [dnsSettings.secondaryDnsServers] The list of secondary DNS
- * Server IP addresses.
- * @member {object} [networkInterfaceData0Settings] The 'Data 0' network
+ * @property {object} [dnsSettings] The secondary DNS Settings of the device.
+ * @property {array} [dnsSettings.secondaryDnsServers] The list of secondary
+ * DNS Server IP addresses.
+ * @property {object} [networkInterfaceData0Settings] The 'Data 0' network
  * interface card settings.
- * @member {string} [networkInterfaceData0Settings.controllerZeroIp] The
+ * @property {string} [networkInterfaceData0Settings.controllerZeroIp] The
  * controller 0's IPv4 address.
- * @member {string} [networkInterfaceData0Settings.controllerOneIp] The
+ * @property {string} [networkInterfaceData0Settings.controllerOneIp] The
  * controller 1's IPv4 address.
  */
 export interface ConfigureDeviceRequest extends BaseModel {
@@ -754,17 +758,17 @@ export interface ConfigureDeviceRequest extends BaseModel {
  * @constructor
  * The controller power state change request.
  *
- * @member {string} action The power state that the request is expecting for
+ * @property {string} action The power state that the request is expecting for
  * the controller of the device. Possible values include: 'Start', 'Restart',
  * 'Shutdown'
- * @member {string} activeController The active controller that the request is
- * expecting on the device. Possible values include: 'Unknown', 'None',
+ * @property {string} activeController The active controller that the request
+ * is expecting on the device. Possible values include: 'Unknown', 'None',
  * 'Controller0', 'Controller1'
- * @member {string} controller0State The controller 0's status that the request
- * is expecting on the device. Possible values include: 'NotPresent',
+ * @property {string} controller0State The controller 0's status that the
+ * request is expecting on the device. Possible values include: 'NotPresent',
  * 'PoweredOff', 'Ok', 'Recovering', 'Warning', 'Failure'
- * @member {string} controller1State The controller 1's status that the request
- * is expecting on the device. Possible values include: 'NotPresent',
+ * @property {string} controller1State The controller 1's status that the
+ * request is expecting on the device. Possible values include: 'NotPresent',
  * 'PoweredOff', 'Ok', 'Recovering', 'Warning', 'Failure'
  */
 export interface ControllerPowerStateChangeRequest extends BaseModel {
@@ -781,13 +785,13 @@ export interface ControllerPowerStateChangeRequest extends BaseModel {
  * The additional details related to the data related statistics of a job.
  * Currently applicable only for Backup, Clone and Restore jobs.
  *
- * @member {number} [totalData] The total bytes of data to be processed, as
+ * @property {number} [totalData] The total bytes of data to be processed, as
  * part of the job.
- * @member {number} [processedData] The number of bytes of data processed till
- * now, as part of the job.
- * @member {number} [cloudData] The number of bytes of data written to cloud,
+ * @property {number} [processedData] The number of bytes of data processed
+ * till now, as part of the job.
+ * @property {number} [cloudData] The number of bytes of data written to cloud,
  * as part of the job.
- * @member {number} [throughput] The average throughput of data
+ * @property {number} [throughput] The average throughput of data
  * processed(bytes/sec), as part of the job.
  */
 export interface DataStatistics {
@@ -804,9 +808,9 @@ export interface DataStatistics {
  * The additional device details regarding the end point count and volume
  * container count.
  *
- * @member {number} [endpointCount] The total number of endpoints that are
+ * @property {number} [endpointCount] The total number of endpoints that are
  * currently on the device ( i.e. number of volumes).
- * @member {number} [volumeContainerCount] The total number of volume
+ * @property {number} [volumeContainerCount] The total number of volume
  * containers on the device.
  */
 export interface DeviceDetails {
@@ -820,13 +824,13 @@ export interface DeviceDetails {
  * @constructor
  * The additional device details for the service data encryption key rollover.
  *
- * @member {string} [authorizationEligibility] The eligibility status of device
- * for service data encryption key rollover. Possible values include:
+ * @property {string} [authorizationEligibility] The eligibility status of
+ * device for service data encryption key rollover. Possible values include:
  * 'InEligible', 'Eligible'
- * @member {string} [authorizationStatus] The authorization status of the
+ * @property {string} [authorizationStatus] The authorization status of the
  * device for service data encryption key rollover. Possible values include:
  * 'Disabled', 'Enabled'
- * @member {string} [inEligibilityReason] The reason for inEligibility of
+ * @property {string} [inEligibilityReason] The reason for inEligibility of
  * device, in case it's not eligible for service data encryption key rollover.
  * Possible values include: 'DeviceNotOnline', 'NotSupportedAppliance',
  * 'RolloverPending'
@@ -843,67 +847,69 @@ export interface DeviceRolloverDetails {
  * @constructor
  * The StorSimple device.
  *
- * @member {string} friendlyName The friendly name of the device.
- * @member {date} activationTime The UTC time at which the device was activated
- * @member {string} culture The language culture setting on the device. For eg:
- * "en-US"
- * @member {string} deviceDescription The device description.
- * @member {string} deviceSoftwareVersion The version number of the software
+ * @property {string} friendlyName The friendly name of the device.
+ * @property {date} activationTime The UTC time at which the device was
+ * activated
+ * @property {string} culture The language culture setting on the device. For
+ * eg: "en-US"
+ * @property {string} deviceDescription The device description.
+ * @property {string} deviceSoftwareVersion The version number of the software
  * running on the device.
- * @member {string} [friendlySoftwareName] The friendly name of the software
+ * @property {string} [friendlySoftwareName] The friendly name of the software
  * running on the device.
- * @member {string} deviceConfigurationStatus The current configuration status
- * of the device. Possible values include: 'Complete', 'Pending'
- * @member {string} targetIqn The target IQN.
- * @member {string} modelDescription The device model.
- * @member {string} status The current status of the device. Possible values
+ * @property {string} deviceConfigurationStatus The current configuration
+ * status of the device. Possible values include: 'Complete', 'Pending'
+ * @property {string} targetIqn The target IQN.
+ * @property {string} modelDescription The device model.
+ * @property {string} status The current status of the device. Possible values
  * include: 'Unknown', 'Online', 'Offline', 'Deactivated', 'RequiresAttention',
  * 'MaintenanceMode', 'Creating', 'Provisioning', 'Deactivating', 'Deleted',
  * 'ReadyToSetup'
- * @member {string} serialNumber The serial number.
- * @member {string} deviceType The type of the device. Possible values include:
- * 'Invalid', 'Series8000VirtualAppliance', 'Series8000PhysicalAppliance'
- * @member {string} activeController The identifier of the active controller of
- * the device. Possible values include: 'Unknown', 'None', 'Controller0',
+ * @property {string} serialNumber The serial number.
+ * @property {string} deviceType The type of the device. Possible values
+ * include: 'Invalid', 'Series8000VirtualAppliance',
+ * 'Series8000PhysicalAppliance'
+ * @property {string} activeController The identifier of the active controller
+ * of the device. Possible values include: 'Unknown', 'None', 'Controller0',
  * 'Controller1'
- * @member {string} friendlySoftwareVersion The device friendly software
+ * @property {string} friendlySoftwareVersion The device friendly software
  * version.
- * @member {number} [availableLocalStorageInBytes] The storage in bytes that is
- * available locally on the device.
- * @member {number} [availableTieredStorageInBytes] The storage in bytes that
+ * @property {number} [availableLocalStorageInBytes] The storage in bytes that
+ * is available locally on the device.
+ * @property {number} [availableTieredStorageInBytes] The storage in bytes that
  * is available on the device for tiered volumes.
- * @member {number} [provisionedTieredStorageInBytes] The storage in bytes that
- * has been provisioned on the device for tiered volumes.
- * @member {number} [provisionedLocalStorageInBytes] The storage in bytes used
- * for locally pinned volumes on the device (including additional local
+ * @property {number} [provisionedTieredStorageInBytes] The storage in bytes
+ * that has been provisioned on the device for tiered volumes.
+ * @property {number} [provisionedLocalStorageInBytes] The storage in bytes
+ * used for locally pinned volumes on the device (including additional local
  * reservation).
- * @member {number} [provisionedVolumeSizeInBytes] Total capacity in bytes of
+ * @property {number} [provisionedVolumeSizeInBytes] Total capacity in bytes of
  * tiered and locally pinned volumes on the device
- * @member {number} [usingStorageInBytes] The storage in bytes that is
+ * @property {number} [usingStorageInBytes] The storage in bytes that is
  * currently being used on the device, including both local and cloud.
- * @member {number} [totalTieredStorageInBytes] The total tiered storage
+ * @property {number} [totalTieredStorageInBytes] The total tiered storage
  * available on the device in bytes.
- * @member {number} [agentGroupVersion] The device agent group version.
- * @member {number} [networkInterfaceCardCount] The number of network interface
- * cards
- * @member {string} [deviceLocation] The location of the virtual appliance.
- * @member {string} [virtualMachineApiType] The virtual machine API type.
+ * @property {number} [agentGroupVersion] The device agent group version.
+ * @property {number} [networkInterfaceCardCount] The number of network
+ * interface cards
+ * @property {string} [deviceLocation] The location of the virtual appliance.
+ * @property {string} [virtualMachineApiType] The virtual machine API type.
  * Possible values include: 'Classic', 'Arm'
- * @member {object} [details] The additional device details regarding the end
+ * @property {object} [details] The additional device details regarding the end
  * point count and volume container count.
- * @member {number} [details.endpointCount] The total number of endpoints that
- * are currently on the device ( i.e. number of volumes).
- * @member {number} [details.volumeContainerCount] The total number of volume
+ * @property {number} [details.endpointCount] The total number of endpoints
+ * that are currently on the device ( i.e. number of volumes).
+ * @property {number} [details.volumeContainerCount] The total number of volume
  * containers on the device.
- * @member {object} [rolloverDetails] The additional device details for the
+ * @property {object} [rolloverDetails] The additional device details for the
  * service data encryption key rollover.
- * @member {string} [rolloverDetails.authorizationEligibility] The eligibility
- * status of device for service data encryption key rollover. Possible values
- * include: 'InEligible', 'Eligible'
- * @member {string} [rolloverDetails.authorizationStatus] The authorization
+ * @property {string} [rolloverDetails.authorizationEligibility] The
+ * eligibility status of device for service data encryption key rollover.
+ * Possible values include: 'InEligible', 'Eligible'
+ * @property {string} [rolloverDetails.authorizationStatus] The authorization
  * status of the device for service data encryption key rollover. Possible
  * values include: 'Disabled', 'Enabled'
- * @member {string} [rolloverDetails.inEligibilityReason] The reason for
+ * @property {string} [rolloverDetails.inEligibilityReason] The reason for
  * inEligibility of device, in case it's not eligible for service data
  * encryption key rollover. Possible values include: 'DeviceNotOnline',
  * 'NotSupportedAppliance', 'RolloverPending'
@@ -944,7 +950,8 @@ export interface Device extends BaseModel {
  * @constructor
  * The device patch.
  *
- * @member {string} [deviceDescription] Short description given for the device
+ * @property {string} [deviceDescription] Short description given for the
+ * device
  */
 export interface DevicePatch {
   deviceDescription?: string;
@@ -956,12 +963,12 @@ export interface DevicePatch {
  * @constructor
  * The dimension filter.
  *
- * @member {string} [name] Specifies the dimension name. E.g.,
+ * @property {string} [name] Specifies the dimension name. E.g.,
  * NetworkInterface. Valid values are the ones specified in the field
  * "dimensions" in the ListMetricDefinitions call. Only 'Equality' operator is
  * supported for this property.
- * @member {string} [values] Specifies the dimension value. E.g., Data0. Valid
- * values are the ones returned in the field "dimensions" in the
+ * @property {string} [values] Specifies the dimension value. E.g., Data0.
+ * Valid values are the ones returned in the field "dimensions" in the
  * ListMetricDefinitions call. Only 'Equality' operator is supported for this
  * property.
  */
@@ -976,14 +983,14 @@ export interface DimensionFilter {
  * @constructor
  * The DNS(Domain Name Server) settings of a device.
  *
- * @member {string} [primaryDnsServer] The primary IPv4 DNS server for the
+ * @property {string} [primaryDnsServer] The primary IPv4 DNS server for the
  * device
- * @member {string} [primaryIpv6DnsServer] The primary IPv6 DNS server for the
- * device
- * @member {array} [secondaryDnsServers] The secondary IPv4 DNS server for the
- * device
- * @member {array} [secondaryIpv6DnsServers] The secondary IPv6 DNS server for
+ * @property {string} [primaryIpv6DnsServer] The primary IPv6 DNS server for
  * the device
+ * @property {array} [secondaryDnsServers] The secondary IPv4 DNS server for
+ * the device
+ * @property {array} [secondaryIpv6DnsServers] The secondary IPv6 DNS server
+ * for the device
  */
 export interface DNSSettings {
   primaryDnsServer?: string;
@@ -998,9 +1005,9 @@ export interface DNSSettings {
  * @constructor
  * The encryption settings.
  *
- * @member {string} encryptionStatus The encryption status to indicates if
+ * @property {string} encryptionStatus The encryption status to indicates if
  * encryption is enabled or not. Possible values include: 'Enabled', 'Disabled'
- * @member {string} keyRolloverStatus The key rollover status to indicates if
+ * @property {string} keyRolloverStatus The key rollover status to indicates if
  * key rollover is required or not. If secret's encryption has been upgraded,
  * then it requires key rollover. Possible values include: 'Required',
  * 'NotRequired'
@@ -1017,9 +1024,9 @@ export interface EncryptionSettings extends BaseModel {
  * The request object for triggering a failover of volume containers, from a
  * source device to a target device.
  *
- * @member {string} [targetDeviceId] The ARM path ID of the device which will
+ * @property {string} [targetDeviceId] The ARM path ID of the device which will
  * act as the failover target.
- * @member {array} [volumeContainers] The list of path IDs of the volume
+ * @property {array} [volumeContainers] The list of path IDs of the volume
  * containers which needs to be failed-over to the target device.
  */
 export interface FailoverRequest {
@@ -1033,16 +1040,17 @@ export interface FailoverRequest {
  * @constructor
  * The metadata of a volume that has valid cloud snapshot.
  *
- * @member {string} [volumeId] The path ID of the volume.
- * @member {string} [volumeType] The type of the volume. Possible values
+ * @property {string} [volumeId] The path ID of the volume.
+ * @property {string} [volumeType] The type of the volume. Possible values
  * include: 'Tiered', 'Archival', 'LocallyPinned'
- * @member {number} [sizeInBytes] The size of the volume in bytes at the time
+ * @property {number} [sizeInBytes] The size of the volume in bytes at the time
  * the snapshot was taken.
- * @member {date} [backupCreatedDate] The date at which the snapshot was taken.
- * @member {string} [backupElementId] The path ID of the backup-element for
+ * @property {date} [backupCreatedDate] The date at which the snapshot was
+ * taken.
+ * @property {string} [backupElementId] The path ID of the backup-element for
  * this volume, inside the backup set.
- * @member {string} [backupId] The path ID of the backup set.
- * @member {string} [backupPolicyId] The path ID of the backup policy using
+ * @property {string} [backupId] The path ID of the backup set.
+ * @property {string} [backupPolicyId] The path ID of the backup policy using
  * which the snapshot was taken.
  */
 export interface VolumeFailoverMetadata {
@@ -1062,9 +1070,9 @@ export interface VolumeFailoverMetadata {
  * The metadata of the volume container, that is being considered as part of a
  * failover set.
  *
- * @member {string} [volumeContainerId] The path ID of the volume container.
- * @member {array} [volumes] The list of metadata of volumes inside the volume
- * container, which contains valid cloud snapshots.
+ * @property {string} [volumeContainerId] The path ID of the volume container.
+ * @property {array} [volumes] The list of metadata of volumes inside the
+ * volume container, which contains valid cloud snapshots.
  */
 export interface VolumeContainerFailoverMetadata {
   volumeContainerId?: string;
@@ -1077,9 +1085,9 @@ export interface VolumeContainerFailoverMetadata {
  * @constructor
  * The eligibility result of failover set, for failover.
  *
- * @member {boolean} [isEligibleForFailover] Represents if this failover set is
- * eligible for failover or not.
- * @member {string} [errorMessage] The error message, if the failover set is
+ * @property {boolean} [isEligibleForFailover] Represents if this failover set
+ * is eligible for failover or not.
+ * @property {string} [errorMessage] The error message, if the failover set is
  * not eligible for failover.
  */
 export interface FailoverSetEligibilityResult {
@@ -1093,14 +1101,14 @@ export interface FailoverSetEligibilityResult {
  * @constructor
  * The failover set on a device.
  *
- * @member {array} [volumeContainers] The list of meta data of volume
+ * @property {array} [volumeContainers] The list of meta data of volume
  * containers, which are part of the failover set.
- * @member {object} [eligibilityResult] The eligibility result of the failover
- * set, for failover.
- * @member {boolean} [eligibilityResult.isEligibleForFailover] Represents if
+ * @property {object} [eligibilityResult] The eligibility result of the
+ * failover set, for failover.
+ * @property {boolean} [eligibilityResult.isEligibleForFailover] Represents if
  * this failover set is eligible for failover or not.
- * @member {string} [eligibilityResult.errorMessage] The error message, if the
- * failover set is not eligible for failover.
+ * @property {string} [eligibilityResult.errorMessage] The error message, if
+ * the failover set is not eligible for failover.
  */
 export interface FailoverSet {
   volumeContainers?: VolumeContainerFailoverMetadata[];
@@ -1114,11 +1122,11 @@ export interface FailoverSet {
  * The error/warning message due to which the device is ineligible as a
  * failover target device.
  *
- * @member {string} [message] The localized error message stating the reason
+ * @property {string} [message] The localized error message stating the reason
  * why the device is not eligible as a target device.
- * @member {string} [resolution] The localized resolution message for the
+ * @property {string} [resolution] The localized resolution message for the
  * error.
- * @member {string} [resultCode] The result code for the error, due to which
+ * @property {string} [resultCode] The result code for the error, due to which
  * the device does not qualify as a failover target device. Possible values
  * include: 'TargetAndSourceCannotBeSameError', 'TargetIsNotOnlineError',
  * 'TargetSourceIncompatibleVersionError',
@@ -1138,10 +1146,10 @@ export interface TargetEligibilityErrorMessage {
  * @constructor
  * The eligibility result of device, as a failover target device.
  *
- * @member {string} [eligibilityStatus] The eligibility status of device, as a
- * failover target device. Possible values include: 'NotEligible', 'Eligible'
- * @member {array} [messages] The list of error messages, if a device does not
- * qualify as a failover target device.
+ * @property {string} [eligibilityStatus] The eligibility status of device, as
+ * a failover target device. Possible values include: 'NotEligible', 'Eligible'
+ * @property {array} [messages] The list of error messages, if a device does
+ * not qualify as a failover target device.
  */
 export interface TargetEligibilityResult {
   eligibilityStatus?: string;
@@ -1154,31 +1162,32 @@ export interface TargetEligibilityResult {
  * @constructor
  * Represents the eligibility of a device as a failover target device.
  *
- * @member {string} [deviceId] The path ID of the device.
- * @member {string} [deviceStatus] The status of the device. Possible values
+ * @property {string} [deviceId] The path ID of the device.
+ * @property {string} [deviceStatus] The status of the device. Possible values
  * include: 'Unknown', 'Online', 'Offline', 'Deactivated', 'RequiresAttention',
  * 'MaintenanceMode', 'Creating', 'Provisioning', 'Deactivating', 'Deleted',
  * 'ReadyToSetup'
- * @member {string} [modelDescription] The model number of the device.
- * @member {string} [deviceSoftwareVersion] The software version of the device.
- * @member {number} [dataContainersCount] The count of datacontainers on the
+ * @property {string} [modelDescription] The model number of the device.
+ * @property {string} [deviceSoftwareVersion] The software version of the
  * device.
- * @member {number} [volumesCount] The count of volumes on the device.
- * @member {number} [availableLocalStorageInBytes] The amount of free local
+ * @property {number} [dataContainersCount] The count of datacontainers on the
+ * device.
+ * @property {number} [volumesCount] The count of volumes on the device.
+ * @property {number} [availableLocalStorageInBytes] The amount of free local
  * storage available on the device in bytes.
- * @member {number} [availableTieredStorageInBytes] The amount of free tiered
+ * @property {number} [availableTieredStorageInBytes] The amount of free tiered
  * storage available for the device in bytes.
- * @member {string} [deviceLocation] The geo location (applicable only for
+ * @property {string} [deviceLocation] The geo location (applicable only for
  * cloud appliances) of the device.
- * @member {string} [friendlyDeviceSoftwareVersion] The friendly name for the
+ * @property {string} [friendlyDeviceSoftwareVersion] The friendly name for the
  * current version of software on the device.
- * @member {object} [eligibilityResult] The eligibility result of the device,
+ * @property {object} [eligibilityResult] The eligibility result of the device,
  * as a failover target device.
- * @member {string} [eligibilityResult.eligibilityStatus] The eligibility
+ * @property {string} [eligibilityResult.eligibilityStatus] The eligibility
  * status of device, as a failover target device. Possible values include:
  * 'NotEligible', 'Eligible'
- * @member {array} [eligibilityResult.messages] The list of error messages, if
- * a device does not qualify as a failover target device.
+ * @property {array} [eligibilityResult.messages] The list of error messages,
+ * if a device does not qualify as a failover target device.
  */
 export interface FailoverTarget {
   deviceId?: string;
@@ -1200,9 +1209,9 @@ export interface FailoverTarget {
  * @constructor
  * The feature.
  *
- * @member {string} name The name of the feature.
- * @member {string} status The feature support status. Possible values include:
- * 'NotAvailable', 'UnsupportedDeviceVersion', 'Supported'
+ * @property {string} name The name of the feature.
+ * @property {string} status The feature support status. Possible values
+ * include: 'NotAvailable', 'UnsupportedDeviceVersion', 'Supported'
  */
 export interface Feature {
   name: string;
@@ -1215,7 +1224,7 @@ export interface Feature {
  * @constructor
  * The OData filter to be used for features.
  *
- * @member {string} [deviceId] Specifies the device ID for which the features
+ * @property {string} [deviceId] Specifies the device ID for which the features
  * are required. Only 'Equality' operator is supported for this property.
  */
 export interface FeatureFilter {
@@ -1228,12 +1237,12 @@ export interface FeatureFilter {
  * @constructor
  * The hardware component.
  *
- * @member {string} componentId The component ID.
- * @member {string} displayName The display name of the hardware component.
- * @member {string} status The status of the hardware component. Possible
+ * @property {string} componentId The component ID.
+ * @property {string} displayName The display name of the hardware component.
+ * @property {string} status The status of the hardware component. Possible
  * values include: 'Unknown', 'NotPresent', 'PoweredOff', 'Ok', 'Recovering',
  * 'Warning', 'Failure'
- * @member {string} statusDisplayName The display name of the status of
+ * @property {string} statusDisplayName The display name of the status of
  * hardware component.
  */
 export interface HardwareComponent {
@@ -1249,9 +1258,10 @@ export interface HardwareComponent {
  * @constructor
  * The hardware component group.
  *
- * @member {string} displayName The display name the hardware component group.
- * @member {date} lastUpdatedTime The last updated time.
- * @member {array} components The list of hardware components.
+ * @property {string} displayName The display name the hardware component
+ * group.
+ * @property {date} lastUpdatedTime The last updated time.
+ * @property {array} components The list of hardware components.
  */
 export interface HardwareComponentGroup extends BaseModel {
   displayName: string;
@@ -1265,10 +1275,10 @@ export interface HardwareComponentGroup extends BaseModel {
  * @constructor
  * The job error items.
  *
- * @member {array} [recommendations] The recommended actions.
- * @member {string} code The error code intended for programmatic access.
- * @member {string} message The error message intended to describe the error in
- * detail.
+ * @property {array} [recommendations] The recommended actions.
+ * @property {string} code The error code intended for programmatic access.
+ * @property {string} message The error message intended to describe the error
+ * in detail.
  */
 export interface JobErrorItem {
   recommendations?: string[];
@@ -1282,10 +1292,10 @@ export interface JobErrorItem {
  * @constructor
  * The job error details. Contains list of job error items.
  *
- * @member {array} [errorDetails] The error details.
- * @member {string} code The error code intended for programmatic access.
- * @member {string} message The error message intended to describe the error in
- * detail.
+ * @property {array} [errorDetails] The error details.
+ * @property {string} code The error code intended for programmatic access.
+ * @property {string} message The error message intended to describe the error
+ * in detail.
  */
 export interface JobErrorDetails {
   errorDetails?: JobErrorItem[];
@@ -1299,11 +1309,11 @@ export interface JobErrorDetails {
  * @constructor
  * The details about the specific stage of a job.
  *
- * @member {string} [message] The message of the job stage.
- * @member {string} stageStatus The stage status. Possible values include:
+ * @property {string} [message] The message of the job stage.
+ * @property {string} stageStatus The stage status. Possible values include:
  * 'Running', 'Succeeded', 'Failed', 'Canceled'
- * @member {string} [detail] The details of the stage.
- * @member {string} [errorCode] The error code of the stage if any.
+ * @property {string} [detail] The details of the stage.
+ * @property {string} [errorCode] The error code of the stage if any.
  */
 export interface JobStage {
   message?: string;
@@ -1318,42 +1328,44 @@ export interface JobStage {
  * @constructor
  * The job.
  *
- * @member {string} status The current status of the job. Possible values
+ * @property {string} status The current status of the job. Possible values
  * include: 'Running', 'Succeeded', 'Failed', 'Canceled'
- * @member {date} [startTime] The UTC time at which the job was started.
- * @member {date} [endTime] The UTC time at which the job completed.
- * @member {number} percentComplete The percentage of the job that is already
+ * @property {date} [startTime] The UTC time at which the job was started.
+ * @property {date} [endTime] The UTC time at which the job completed.
+ * @property {number} percentComplete The percentage of the job that is already
  * complete.
- * @member {object} [error] The error details, if any, for the job.
- * @member {array} [error.errorDetails] The error details.
- * @member {string} [error.code] The error code intended for programmatic
+ * @property {object} [error] The error details, if any, for the job.
+ * @property {array} [error.errorDetails] The error details.
+ * @property {string} [error.code] The error code intended for programmatic
  * access.
- * @member {string} [error.message] The error message intended to describe the
- * error in detail.
- * @member {string} jobType The type of the job. Possible values include:
+ * @property {string} [error.message] The error message intended to describe
+ * the error in detail.
+ * @property {string} jobType The type of the job. Possible values include:
  * 'ScheduledBackup', 'ManualBackup', 'RestoreBackup', 'CloneVolume',
  * 'FailoverVolumeContainers', 'CreateLocallyPinnedVolume', 'ModifyVolume',
  * 'InstallUpdates', 'SupportPackageLogs', 'CreateCloudAppliance'
- * @member {object} [dataStats] The data statistics properties of the job.
- * @member {number} [dataStats.totalData] The total bytes of data to be
+ * @property {object} [dataStats] The data statistics properties of the job.
+ * @property {number} [dataStats.totalData] The total bytes of data to be
  * processed, as part of the job.
- * @member {number} [dataStats.processedData] The number of bytes of data
+ * @property {number} [dataStats.processedData] The number of bytes of data
  * processed till now, as part of the job.
- * @member {number} [dataStats.cloudData] The number of bytes of data written
+ * @property {number} [dataStats.cloudData] The number of bytes of data written
  * to cloud, as part of the job.
- * @member {number} [dataStats.throughput] The average throughput of data
+ * @property {number} [dataStats.throughput] The average throughput of data
  * processed(bytes/sec), as part of the job.
- * @member {string} [entityLabel] The entity identifier for which the job ran.
- * @member {string} [entityType] The entity type for which the job ran.
- * @member {array} [jobStages] The job stages.
- * @member {string} [deviceId] The device ID in which the job ran.
- * @member {boolean} [isCancellable] Represents whether the job is cancellable
- * or not.
- * @member {string} [backupType] The backup type (CloudSnapshot |
+ * @property {string} [entityLabel] The entity identifier for which the job
+ * ran.
+ * @property {string} [entityType] The entity type for which the job ran.
+ * @property {array} [jobStages] The job stages.
+ * @property {string} [deviceId] The device ID in which the job ran.
+ * @property {boolean} [isCancellable] Represents whether the job is
+ * cancellable or not.
+ * @property {string} [backupType] The backup type (CloudSnapshot |
  * LocalSnapshot). Applicable only for backup jobs. Possible values include:
  * 'LocalSnapshot', 'CloudSnapshot'
- * @member {string} [sourceDeviceId] The source device ID of the failover job.
- * @member {date} [backupPointInTime] The time of the backup used for the
+ * @property {string} [sourceDeviceId] The source device ID of the failover
+ * job.
+ * @property {date} [backupPointInTime] The time of the backup used for the
  * failover.
  */
 export interface Job extends BaseModel {
@@ -1380,15 +1392,15 @@ export interface Job extends BaseModel {
  * @constructor
  * The OData filter to be used for jobs.
  *
- * @member {string} [status] Specifies the status of the jobs to be filtered.
+ * @property {string} [status] Specifies the status of the jobs to be filtered.
  * For e.g., "Running", "Succeeded", "Failed" or "Canceled". Only 'Equality'
  * operator is supported for this property.
- * @member {string} [jobType] Specifies the type of the jobs to be filtered.
+ * @property {string} [jobType] Specifies the type of the jobs to be filtered.
  * For e.g., "ScheduledBackup", "ManualBackup", "RestoreBackup", "CloneVolume",
  * "FailoverVolumeContainers", "CreateLocallyPinnedVolume", "ModifyVolume",
  * "InstallUpdates", "SupportPackageLogs", or "CreateCloudAppliance". Only
  * 'Equality' operator can be used for this property.
- * @member {date} [startTime] Specifies the start time of the jobs to be
+ * @property {date} [startTime] Specifies the start time of the jobs to be
  * filtered.  Only 'Greater Than or Equal To' and 'Lesser Than or Equal To'
  * operators are supported for this property.
  */
@@ -1404,7 +1416,7 @@ export interface JobFilter {
  * @constructor
  * The key.
  *
- * @member {string} activationKey The activation key for the device.
+ * @property {string} activationKey The activation key for the device.
  */
 export interface Key {
   activationKey: string;
@@ -1417,7 +1429,7 @@ export interface Key {
  * The request object for fetching the list of failover targets (eligible
  * devices for failover).
  *
- * @member {array} [volumeContainers] The list of path IDs of the volume
+ * @property {array} [volumeContainers] The list of path IDs of the volume
  * containers that needs to be failed-over, for which we want to fetch the
  * eligible targets.
  */
@@ -1431,7 +1443,7 @@ export interface ListFailoverTargetsRequest {
  * @constructor
  * Intrinsic settings which refers to the type of the Storsimple Manager.
  *
- * @member {string} type The type of StorSimple Manager. Possible values
+ * @property {string} type The type of StorSimple Manager. Possible values
  * include: 'GardaV1', 'HelsinkiV1'
  */
 export interface ManagerIntrinsicSettings {
@@ -1454,11 +1466,11 @@ export interface ManagerSku {
  * @constructor
  * The Azure Resource.
  *
- * @member {string} [id] The resource ID.
- * @member {string} [name] The resource name.
- * @member {string} [type] The resource type.
- * @member {string} location The geo location of the resource.
- * @member {object} [tags] The tags attached to the resource.
+ * @property {string} [id] The resource ID.
+ * @property {string} [name] The resource name.
+ * @property {string} [type] The resource type.
+ * @property {string} location The geo location of the resource.
+ * @property {object} [tags] The tags attached to the resource.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -1474,14 +1486,14 @@ export interface Resource extends BaseResource {
  * @constructor
  * The StorSimple Manager.
  *
- * @member {object} [cisIntrinsicSettings] Represents the type of StorSimple
+ * @property {object} [cisIntrinsicSettings] Represents the type of StorSimple
  * Manager.
- * @member {string} [cisIntrinsicSettings.type] The type of StorSimple Manager.
- * Possible values include: 'GardaV1', 'HelsinkiV1'
- * @member {string} [provisioningState] Specifies the state of the resource as
- * it is getting provisioned. Value of "Succeeded" means the Manager was
+ * @property {string} [cisIntrinsicSettings.type] The type of StorSimple
+ * Manager. Possible values include: 'GardaV1', 'HelsinkiV1'
+ * @property {string} [provisioningState] Specifies the state of the resource
+ * as it is getting provisioned. Value of "Succeeded" means the Manager was
  * successfully created.
- * @member {string} [etag] The etag of the manager.
+ * @property {string} [etag] The etag of the manager.
  */
 export interface Manager extends Resource {
   cisIntrinsicSettings?: ManagerIntrinsicSettings;
@@ -1495,18 +1507,19 @@ export interface Manager extends Resource {
  * @constructor
  * The extended info of the manager.
  *
- * @member {string} [version] The version of the extended info being persisted.
- * @member {string} integrityKey Represents the CIK of the resource.
- * @member {string} [encryptionKey] Represents the CEK of the resource.
- * @member {string} [encryptionKeyThumbprint] Represents the Cert thumbprint
+ * @property {string} [version] The version of the extended info being
+ * persisted.
+ * @property {string} integrityKey Represents the CIK of the resource.
+ * @property {string} [encryptionKey] Represents the CEK of the resource.
+ * @property {string} [encryptionKeyThumbprint] Represents the Cert thumbprint
  * that was used to encrypt the CEK.
- * @member {string} [portalCertificateThumbprint] Represents the portal
+ * @property {string} [portalCertificateThumbprint] Represents the portal
  * thumbprint which can be used optionally to encrypt the entire data before
  * storing it.
- * @member {string} algorithm Represents the encryption algorithm used to
+ * @property {string} algorithm Represents the encryption algorithm used to
  * encrypt the keys. None - if Key is saved in plain text format. Algorithm
  * name - if key is encrypted
- * @member {string} [etag] The etag of the resource.
+ * @property {string} [etag] The etag of the resource.
  */
 export interface ManagerExtendedInfo extends BaseModel {
   version?: string;
@@ -1524,7 +1537,7 @@ export interface ManagerExtendedInfo extends BaseModel {
  * @constructor
  * The StorSimple Manager patch.
  *
- * @member {object} [tags] The tags attached to the Manager.
+ * @property {object} [tags] The tags attached to the Manager.
  */
 export interface ManagerPatch {
   tags?: { [propertyName: string]: string };
@@ -1536,8 +1549,8 @@ export interface ManagerPatch {
  * @constructor
  * The metric availability.
  *
- * @member {string} [timeGrain] The aggregation interval for the metric.
- * @member {string} [retention] The retention period for the metric at the
+ * @property {string} [timeGrain] The aggregation interval for the metric.
+ * @property {string} [retention] The retention period for the metric at the
  * specified timegrain.
  */
 export interface MetricAvailablity {
@@ -1551,12 +1564,12 @@ export interface MetricAvailablity {
  * @constructor
  * The metric data.
  *
- * @member {date} [timeStamp] The time stamp of the metric data.
- * @member {number} [sum] The sum of all samples at the time stamp.
- * @member {number} [count] The count of all samples at the time stamp.
- * @member {number} [average] The average of all samples at the time stamp.
- * @member {number} [minimum] The minimum of all samples at the time stamp.
- * @member {number} [maximum] The maximum of all samples at the time stamp.
+ * @property {date} [timeStamp] The time stamp of the metric data.
+ * @property {number} [sum] The sum of all samples at the time stamp.
+ * @property {number} [count] The count of all samples at the time stamp.
+ * @property {number} [average] The average of all samples at the time stamp.
+ * @property {number} [minimum] The minimum of all samples at the time stamp.
+ * @property {number} [maximum] The maximum of all samples at the time stamp.
  */
 export interface MetricData {
   timeStamp?: Date;
@@ -1573,8 +1586,8 @@ export interface MetricData {
  * @constructor
  * The metric name.
  *
- * @member {string} [value] The metric name.
- * @member {string} [localizedValue] The localized metric name.
+ * @property {string} [value] The metric name.
+ * @property {string} [localizedValue] The localized metric name.
  */
 export interface MetricName {
   value?: string;
@@ -1587,8 +1600,8 @@ export interface MetricName {
  * @constructor
  * The metric dimension. It indicates the source of the metric.
  *
- * @member {string} [name] The metric dimension name.
- * @member {string} [value] The metric dimension values.
+ * @property {string} [name] The metric dimension name.
+ * @property {string} [value] The metric dimension values.
  */
 export interface MetricDimension {
   name?: string;
@@ -1601,19 +1614,19 @@ export interface MetricDimension {
  * @constructor
  * The monitoring metric definition.
  *
- * @member {object} [name] The metric name.
- * @member {string} [name.value] The metric name.
- * @member {string} [name.localizedValue] The localized metric name.
- * @member {string} [unit] The metric unit. Possible values include: 'Bytes',
+ * @property {object} [name] The metric name.
+ * @property {string} [name.value] The metric name.
+ * @property {string} [name.localizedValue] The localized metric name.
+ * @property {string} [unit] The metric unit. Possible values include: 'Bytes',
  * 'BytesPerSecond', 'Count', 'CountPerSecond', 'Percent', 'Seconds'
- * @member {string} [primaryAggregationType] The metric aggregation type.
+ * @property {string} [primaryAggregationType] The metric aggregation type.
  * Possible values include: 'Average', 'Last', 'Maximum', 'Minimum', 'None',
  * 'Total'
- * @member {string} [resourceId] The metric source ID.
- * @member {array} [metricAvailabilities] The available metric granularities.
- * @member {array} [dimensions] The available metric dimensions.
- * @member {string} [category] The category of the metric.
- * @member {string} [type] The metric definition type.
+ * @property {string} [resourceId] The metric source ID.
+ * @property {array} [metricAvailabilities] The available metric granularities.
+ * @property {array} [dimensions] The available metric dimensions.
+ * @property {string} [category] The category of the metric.
+ * @property {string} [type] The metric definition type.
  */
 export interface MetricDefinition {
   name?: MetricName;
@@ -1632,10 +1645,10 @@ export interface MetricDefinition {
  * @constructor
  * The metric name filter, specifying the name of the metric to be filtered on.
  *
- * @member {string} [value] Specifies the metric name to be filtered on. E.g.,
- * CloudStorageUsed. Valid values are the ones returned in the field "name" in
- * the ListMetricDefinitions call. Only 'Equality' operator is supported for
- * this property.
+ * @property {string} [value] Specifies the metric name to be filtered on.
+ * E.g., CloudStorageUsed. Valid values are the ones returned in the field
+ * "name" in the ListMetricDefinitions call. Only 'Equality' operator is
+ * supported for this property.
  */
 export interface MetricNameFilter {
   value?: string;
@@ -1647,35 +1660,35 @@ export interface MetricNameFilter {
  * @constructor
  * The OData filters to be used for metrics.
  *
- * @member {object} [name] Specifies the metric name filter specifying the name
- * of the metric to be filtered on. Only 'Equality' operator is supported for
- * this property.
- * @member {string} [name.value] Specifies the metric name to be filtered on.
+ * @property {object} [name] Specifies the metric name filter specifying the
+ * name of the metric to be filtered on. Only 'Equality' operator is supported
+ * for this property.
+ * @property {string} [name.value] Specifies the metric name to be filtered on.
  * E.g., CloudStorageUsed. Valid values are the ones returned in the field
  * "name" in the ListMetricDefinitions call. Only 'Equality' operator is
  * supported for this property.
- * @member {date} [startTime] Specifies the start time of the time range to be
- * queried. Only 'Greater Than Or Equal To' operator is supported for this
+ * @property {date} [startTime] Specifies the start time of the time range to
+ * be queried. Only 'Greater Than Or Equal To' operator is supported for this
  * property.
- * @member {date} [endTime] Specifies the end time of the time range to be
+ * @property {date} [endTime] Specifies the end time of the time range to be
  * queried. Only 'Less Than Or Equal To' operator is supported for this
  * property.
- * @member {string} [timeGrain] Specifies the time granularity of the metrics
+ * @property {string} [timeGrain] Specifies the time granularity of the metrics
  * to be returned. E.g., "P1D". Valid values are the ones returned as the field
  * "timeGrain" in the ListMetricDefinitions call. Only 'Equality' operator is
  * supported for this property.
- * @member {string} category Specifies the category of the metrics to be
+ * @property {string} category Specifies the category of the metrics to be
  * filtered. E.g., "CapacityUtilization". Valid values are the ones returned as
  * the field "category" in the ListMetricDefinitions call. Only 'Equality'
  * operator is supported for this property.
- * @member {object} [dimensions] Specifies the source(the dimension) of the
+ * @property {object} [dimensions] Specifies the source(the dimension) of the
  * metrics to be filtered. Only 'Equality' operator is supported for this
  * property.
- * @member {string} [dimensions.name] Specifies the dimension name. E.g.,
+ * @property {string} [dimensions.name] Specifies the dimension name. E.g.,
  * NetworkInterface. Valid values are the ones specified in the field
  * "dimensions" in the ListMetricDefinitions call. Only 'Equality' operator is
  * supported for this property.
- * @member {string} [dimensions.values] Specifies the dimension value. E.g.,
+ * @property {string} [dimensions.values] Specifies the dimension value. E.g.,
  * Data0. Valid values are the ones returned in the field "dimensions" in the
  * ListMetricDefinitions call. Only 'Equality' operator is supported for this
  * property.
@@ -1695,21 +1708,22 @@ export interface MetricFilter {
  * @constructor
  * The monitoring metric.
  *
- * @member {string} [resourceId] The ID of metric source.
- * @member {date} [startTime] The start time of the metric data.
- * @member {date} [endTime] The end time of the metric data.
- * @member {string} [timeGrain] The time granularity of the metric data.
- * @member {string} [primaryAggregation] The metric aggregation type. Possible
- * values include: 'Average', 'Last', 'Maximum', 'Minimum', 'None', 'Total'
- * @member {object} [name] The name of the metric.
- * @member {string} [name.value] The metric name.
- * @member {string} [name.localizedValue] The localized metric name.
- * @member {array} [dimensions] The metric dimensions.
- * @member {string} [unit] The unit of the metric data. Possible values
+ * @property {string} [resourceId] The ID of metric source.
+ * @property {date} [startTime] The start time of the metric data.
+ * @property {date} [endTime] The end time of the metric data.
+ * @property {string} [timeGrain] The time granularity of the metric data.
+ * @property {string} [primaryAggregation] The metric aggregation type.
+ * Possible values include: 'Average', 'Last', 'Maximum', 'Minimum', 'None',
+ * 'Total'
+ * @property {object} [name] The name of the metric.
+ * @property {string} [name.value] The metric name.
+ * @property {string} [name.localizedValue] The localized metric name.
+ * @property {array} [dimensions] The metric dimensions.
+ * @property {string} [unit] The unit of the metric data. Possible values
  * include: 'Bytes', 'BytesPerSecond', 'Count', 'CountPerSecond', 'Percent',
  * 'Seconds'
- * @member {string} [type] The type of the metric data.
- * @member {array} [values] The list of the metric data.
+ * @property {string} [type] The type of the metric data.
+ * @property {array} [values] The list of the metric data.
  */
 export interface Metrics {
   resourceId?: string;
@@ -1730,11 +1744,11 @@ export interface Metrics {
  * @constructor
  * Details related to the IPv4 address configuration.
  *
- * @member {string} [ipv4Address] The IPv4 address of the network adapter.
- * @member {string} [ipv4Netmask] The IPv4 netmask of the network adapter.
- * @member {string} [ipv4Gateway] The IPv4 gateway of the network adapter.
- * @member {string} [controller0Ipv4Address] The IPv4 address of Controller0.
- * @member {string} [controller1Ipv4Address] The IPv4 address of Controller1.
+ * @property {string} [ipv4Address] The IPv4 address of the network adapter.
+ * @property {string} [ipv4Netmask] The IPv4 netmask of the network adapter.
+ * @property {string} [ipv4Gateway] The IPv4 gateway of the network adapter.
+ * @property {string} [controller0Ipv4Address] The IPv4 address of Controller0.
+ * @property {string} [controller1Ipv4Address] The IPv4 address of Controller1.
  */
 export interface NicIPv4 {
   ipv4Address?: string;
@@ -1750,11 +1764,11 @@ export interface NicIPv4 {
  * @constructor
  * Details related to the IPv6 address configuration.
  *
- * @member {string} [ipv6Address] The IPv6 address of the network adapter.
- * @member {string} [ipv6Prefix] The IPv6 prefix of the network adapter.
- * @member {string} [ipv6Gateway] The IPv6 gateway of the network adapter.
- * @member {string} [controller0Ipv6Address] The IPv6 address of Controller0.
- * @member {string} [controller1Ipv6Address] The IPv6 address of Controller1.
+ * @property {string} [ipv6Address] The IPv6 address of the network adapter.
+ * @property {string} [ipv6Prefix] The IPv6 prefix of the network adapter.
+ * @property {string} [ipv6Gateway] The IPv6 gateway of the network adapter.
+ * @property {string} [controller0Ipv6Address] The IPv6 address of Controller0.
+ * @property {string} [controller1Ipv6Address] The IPv6 address of Controller1.
  */
 export interface NicIPv6 {
   ipv6Address?: string;
@@ -1770,41 +1784,42 @@ export interface NicIPv6 {
  * @constructor
  * Represents the network adapter on device.
  *
- * @member {string} interfaceId The ID of the network adapter. Possible values
- * include: 'Invalid', 'Data0', 'Data1', 'Data2', 'Data3', 'Data4', 'Data5'
- * @member {string} netInterfaceStatus Value indicating status of network
+ * @property {string} interfaceId The ID of the network adapter. Possible
+ * values include: 'Invalid', 'Data0', 'Data1', 'Data2', 'Data3', 'Data4',
+ * 'Data5'
+ * @property {string} netInterfaceStatus Value indicating status of network
  * adapter. Possible values include: 'Enabled', 'Disabled'
- * @member {boolean} [isDefault] Value indicating whether this instance is
+ * @property {boolean} [isDefault] Value indicating whether this instance is
  * default.
- * @member {string} iscsiAndCloudStatus Value indicating cloud and ISCSI status
- * of network adapter. Possible values include: 'Disabled', 'IscsiEnabled',
- * 'CloudEnabled', 'IscsiAndCloudEnabled'
- * @member {number} [speed] The speed of the network adapter.
- * @member {string} mode The mode of network adapter, either IPv4, IPv6 or
+ * @property {string} iscsiAndCloudStatus Value indicating cloud and ISCSI
+ * status of network adapter. Possible values include: 'Disabled',
+ * 'IscsiEnabled', 'CloudEnabled', 'IscsiAndCloudEnabled'
+ * @property {number} [speed] The speed of the network adapter.
+ * @property {string} mode The mode of network adapter, either IPv4, IPv6 or
  * both. Possible values include: 'Invalid', 'IPV4', 'IPV6', 'BOTH'
- * @member {object} [nicIpv4Settings] The IPv4 configuration of the network
+ * @property {object} [nicIpv4Settings] The IPv4 configuration of the network
  * adapter.
- * @member {string} [nicIpv4Settings.ipv4Address] The IPv4 address of the
+ * @property {string} [nicIpv4Settings.ipv4Address] The IPv4 address of the
  * network adapter.
- * @member {string} [nicIpv4Settings.ipv4Netmask] The IPv4 netmask of the
+ * @property {string} [nicIpv4Settings.ipv4Netmask] The IPv4 netmask of the
  * network adapter.
- * @member {string} [nicIpv4Settings.ipv4Gateway] The IPv4 gateway of the
+ * @property {string} [nicIpv4Settings.ipv4Gateway] The IPv4 gateway of the
  * network adapter.
- * @member {string} [nicIpv4Settings.controller0Ipv4Address] The IPv4 address
+ * @property {string} [nicIpv4Settings.controller0Ipv4Address] The IPv4 address
  * of Controller0.
- * @member {string} [nicIpv4Settings.controller1Ipv4Address] The IPv4 address
+ * @property {string} [nicIpv4Settings.controller1Ipv4Address] The IPv4 address
  * of Controller1.
- * @member {object} [nicIpv6Settings] The IPv6 configuration of the network
+ * @property {object} [nicIpv6Settings] The IPv6 configuration of the network
  * adapter.
- * @member {string} [nicIpv6Settings.ipv6Address] The IPv6 address of the
+ * @property {string} [nicIpv6Settings.ipv6Address] The IPv6 address of the
  * network adapter.
- * @member {string} [nicIpv6Settings.ipv6Prefix] The IPv6 prefix of the network
- * adapter.
- * @member {string} [nicIpv6Settings.ipv6Gateway] The IPv6 gateway of the
+ * @property {string} [nicIpv6Settings.ipv6Prefix] The IPv6 prefix of the
  * network adapter.
- * @member {string} [nicIpv6Settings.controller0Ipv6Address] The IPv6 address
+ * @property {string} [nicIpv6Settings.ipv6Gateway] The IPv6 gateway of the
+ * network adapter.
+ * @property {string} [nicIpv6Settings.controller0Ipv6Address] The IPv6 address
  * of Controller0.
- * @member {string} [nicIpv6Settings.controller1Ipv6Address] The IPv6 address
+ * @property {string} [nicIpv6Settings.controller1Ipv6Address] The IPv6 address
  * of Controller1.
  */
 export interface NetworkAdapters {
@@ -1824,7 +1839,7 @@ export interface NetworkAdapters {
  * @constructor
  * The collection of network adapters on the device.
  *
- * @member {array} value The value.
+ * @property {array} value The value.
  */
 export interface NetworkAdapterList {
   value: NetworkAdapters[];
@@ -1836,10 +1851,10 @@ export interface NetworkAdapterList {
  * @constructor
  * The web proxy settings on the device.
  *
- * @member {string} [connectionUri] The connection URI.
- * @member {string} authentication The authentication type. Possible values
+ * @property {string} [connectionUri] The connection URI.
+ * @property {string} authentication The authentication type. Possible values
  * include: 'Invalid', 'None', 'Basic', 'NTLM'
- * @member {string} username The webproxy username.
+ * @property {string} username The webproxy username.
  */
 export interface WebproxySettings {
   connectionUri?: string;
@@ -1853,23 +1868,23 @@ export interface WebproxySettings {
  * @constructor
  * Represents the network settings of a device.
  *
- * @member {object} dnsSettings The DNS (Domain Name System) settings of
+ * @property {object} dnsSettings The DNS (Domain Name System) settings of
  * device.
- * @member {string} [dnsSettings.primaryDnsServer] The primary IPv4 DNS server
- * for the device
- * @member {string} [dnsSettings.primaryIpv6DnsServer] The primary IPv6 DNS
+ * @property {string} [dnsSettings.primaryDnsServer] The primary IPv4 DNS
  * server for the device
- * @member {array} [dnsSettings.secondaryDnsServers] The secondary IPv4 DNS
+ * @property {string} [dnsSettings.primaryIpv6DnsServer] The primary IPv6 DNS
  * server for the device
- * @member {array} [dnsSettings.secondaryIpv6DnsServers] The secondary IPv6 DNS
+ * @property {array} [dnsSettings.secondaryDnsServers] The secondary IPv4 DNS
  * server for the device
- * @member {object} networkAdapters The network adapter list of device.
- * @member {array} [networkAdapters.value] The value.
- * @member {object} webproxySettings The webproxy settings of device.
- * @member {string} [webproxySettings.connectionUri] The connection URI.
- * @member {string} [webproxySettings.authentication] The authentication type.
- * Possible values include: 'Invalid', 'None', 'Basic', 'NTLM'
- * @member {string} [webproxySettings.username] The webproxy username.
+ * @property {array} [dnsSettings.secondaryIpv6DnsServers] The secondary IPv6
+ * DNS server for the device
+ * @property {object} networkAdapters The network adapter list of device.
+ * @property {array} [networkAdapters.value] The value.
+ * @property {object} webproxySettings The webproxy settings of device.
+ * @property {string} [webproxySettings.connectionUri] The connection URI.
+ * @property {string} [webproxySettings.authentication] The authentication
+ * type. Possible values include: 'Invalid', 'None', 'Basic', 'NTLM'
+ * @property {string} [webproxySettings.username] The webproxy username.
  */
 export interface NetworkSettings extends BaseModel {
   dnsSettings: DNSSettings;
@@ -1883,18 +1898,18 @@ export interface NetworkSettings extends BaseModel {
  * @constructor
  * Represents the patch request for the network settings of a device.
  *
- * @member {object} [dnsSettings] The DNS (Domain Name System) settings of
+ * @property {object} [dnsSettings] The DNS (Domain Name System) settings of
  * device.
- * @member {string} [dnsSettings.primaryDnsServer] The primary IPv4 DNS server
- * for the device
- * @member {string} [dnsSettings.primaryIpv6DnsServer] The primary IPv6 DNS
+ * @property {string} [dnsSettings.primaryDnsServer] The primary IPv4 DNS
  * server for the device
- * @member {array} [dnsSettings.secondaryDnsServers] The secondary IPv4 DNS
+ * @property {string} [dnsSettings.primaryIpv6DnsServer] The primary IPv6 DNS
  * server for the device
- * @member {array} [dnsSettings.secondaryIpv6DnsServers] The secondary IPv6 DNS
+ * @property {array} [dnsSettings.secondaryDnsServers] The secondary IPv4 DNS
  * server for the device
- * @member {object} [networkAdapters] The network adapter list of device.
- * @member {array} [networkAdapters.value] The value.
+ * @property {array} [dnsSettings.secondaryIpv6DnsServers] The secondary IPv6
+ * DNS server for the device
+ * @property {object} [networkAdapters] The network adapter list of device.
+ * @property {array} [networkAdapters.value] The value.
  */
 export interface NetworkSettingsPatch {
   dnsSettings?: DNSSettings;
@@ -1907,7 +1922,7 @@ export interface NetworkSettingsPatch {
  * @constructor
  * The public key.
  *
- * @member {string} key The key.
+ * @property {string} key The key.
  */
 export interface PublicKey {
   key: string;
@@ -1919,9 +1934,9 @@ export interface PublicKey {
  * @constructor
  * The settings for remote management of a device.
  *
- * @member {string} remoteManagementMode The remote management mode. Possible
+ * @property {string} remoteManagementMode The remote management mode. Possible
  * values include: 'Unknown', 'Disabled', 'HttpsEnabled', 'HttpsAndHttpEnabled'
- * @member {string} [remoteManagementCertificate] The remote management
+ * @property {string} [remoteManagementCertificate] The remote management
  * certificates.
  */
 export interface RemoteManagementSettings {
@@ -1935,7 +1950,7 @@ export interface RemoteManagementSettings {
  * @constructor
  * The settings for updating remote management mode of the device.
  *
- * @member {string} remoteManagementMode The remote management mode. Possible
+ * @property {string} remoteManagementMode The remote management mode. Possible
  * values include: 'Unknown', 'Disabled', 'HttpsEnabled', 'HttpsAndHttpEnabled'
  */
 export interface RemoteManagementSettingsPatch {
@@ -1948,32 +1963,33 @@ export interface RemoteManagementSettingsPatch {
  * @constructor
  * The security settings of a device.
  *
- * @member {object} remoteManagementSettings The settings for remote management
- * of a device.
- * @member {string} [remoteManagementSettings.remoteManagementMode] The remote
- * management mode. Possible values include: 'Unknown', 'Disabled',
+ * @property {object} remoteManagementSettings The settings for remote
+ * management of a device.
+ * @property {string} [remoteManagementSettings.remoteManagementMode] The
+ * remote management mode. Possible values include: 'Unknown', 'Disabled',
  * 'HttpsEnabled', 'HttpsAndHttpEnabled'
- * @member {string} [remoteManagementSettings.remoteManagementCertificate] The
- * remote management certificates.
- * @member {object} chapSettings The Challenge-Handshake Authentication
+ * @property {string} [remoteManagementSettings.remoteManagementCertificate]
+ * The remote management certificates.
+ * @property {object} chapSettings The Challenge-Handshake Authentication
  * Protocol (CHAP) settings.
- * @member {string} [chapSettings.initiatorUser] The CHAP initiator user.
- * @member {object} [chapSettings.initiatorSecret] The CHAP initiator secret.
- * @member {string} [chapSettings.initiatorSecret.value] The value of the
+ * @property {string} [chapSettings.initiatorUser] The CHAP initiator user.
+ * @property {object} [chapSettings.initiatorSecret] The CHAP initiator secret.
+ * @property {string} [chapSettings.initiatorSecret.value] The value of the
  * secret.
- * @member {string} [chapSettings.initiatorSecret.encryptionCertThumbprint]
+ * @property {string} [chapSettings.initiatorSecret.encryptionCertThumbprint]
  * Thumbprint certificate that was used to encrypt "Value". If the value in
  * unencrypted, it will be null.
- * @member {string} [chapSettings.initiatorSecret.encryptionAlgorithm] The
+ * @property {string} [chapSettings.initiatorSecret.encryptionAlgorithm] The
  * algorithm used to encrypt "Value". Possible values include: 'None',
  * 'AES256', 'RSAES_PKCS1_v_1_5'
- * @member {string} [chapSettings.targetUser] The CHAP target user.
- * @member {object} [chapSettings.targetSecret] The target secret.
- * @member {string} [chapSettings.targetSecret.value] The value of the secret.
- * @member {string} [chapSettings.targetSecret.encryptionCertThumbprint]
+ * @property {string} [chapSettings.targetUser] The CHAP target user.
+ * @property {object} [chapSettings.targetSecret] The target secret.
+ * @property {string} [chapSettings.targetSecret.value] The value of the
+ * secret.
+ * @property {string} [chapSettings.targetSecret.encryptionCertThumbprint]
  * Thumbprint certificate that was used to encrypt "Value". If the value in
  * unencrypted, it will be null.
- * @member {string} [chapSettings.targetSecret.encryptionAlgorithm] The
+ * @property {string} [chapSettings.targetSecret.encryptionAlgorithm] The
  * algorithm used to encrypt "Value". Possible values include: 'None',
  * 'AES256', 'RSAES_PKCS1_v_1_5'
  */
@@ -1988,68 +2004,70 @@ export interface SecuritySettings extends BaseModel {
  * @constructor
  * Represents the patch request for the security settings of a device.
  *
- * @member {object} [remoteManagementSettings] The remote management settings.
- * @member {string} [remoteManagementSettings.remoteManagementMode] The remote
- * management mode. Possible values include: 'Unknown', 'Disabled',
+ * @property {object} [remoteManagementSettings] The remote management
+ * settings.
+ * @property {string} [remoteManagementSettings.remoteManagementMode] The
+ * remote management mode. Possible values include: 'Unknown', 'Disabled',
  * 'HttpsEnabled', 'HttpsAndHttpEnabled'
- * @member {object} [deviceAdminPassword] The device administrator password.
- * @member {string} [deviceAdminPassword.value] The value of the secret.
- * @member {string} [deviceAdminPassword.encryptionCertThumbprint] Thumbprint
+ * @property {object} [deviceAdminPassword] The device administrator password.
+ * @property {string} [deviceAdminPassword.value] The value of the secret.
+ * @property {string} [deviceAdminPassword.encryptionCertThumbprint] Thumbprint
  * certificate that was used to encrypt "Value". If the value in unencrypted,
  * it will be null.
- * @member {string} [deviceAdminPassword.encryptionAlgorithm] The algorithm
+ * @property {string} [deviceAdminPassword.encryptionAlgorithm] The algorithm
  * used to encrypt "Value". Possible values include: 'None', 'AES256',
  * 'RSAES_PKCS1_v_1_5'
- * @member {object} [snapshotPassword] The snapshot manager password.
- * @member {string} [snapshotPassword.value] The value of the secret.
- * @member {string} [snapshotPassword.encryptionCertThumbprint] Thumbprint
+ * @property {object} [snapshotPassword] The snapshot manager password.
+ * @property {string} [snapshotPassword.value] The value of the secret.
+ * @property {string} [snapshotPassword.encryptionCertThumbprint] Thumbprint
  * certificate that was used to encrypt "Value". If the value in unencrypted,
  * it will be null.
- * @member {string} [snapshotPassword.encryptionAlgorithm] The algorithm used
+ * @property {string} [snapshotPassword.encryptionAlgorithm] The algorithm used
  * to encrypt "Value". Possible values include: 'None', 'AES256',
  * 'RSAES_PKCS1_v_1_5'
- * @member {object} [chapSettings] The device CHAP and reverse-CHAP settings.
- * @member {string} [chapSettings.initiatorUser] The CHAP initiator user.
- * @member {object} [chapSettings.initiatorSecret] The CHAP initiator secret.
- * @member {string} [chapSettings.initiatorSecret.value] The value of the
+ * @property {object} [chapSettings] The device CHAP and reverse-CHAP settings.
+ * @property {string} [chapSettings.initiatorUser] The CHAP initiator user.
+ * @property {object} [chapSettings.initiatorSecret] The CHAP initiator secret.
+ * @property {string} [chapSettings.initiatorSecret.value] The value of the
  * secret.
- * @member {string} [chapSettings.initiatorSecret.encryptionCertThumbprint]
+ * @property {string} [chapSettings.initiatorSecret.encryptionCertThumbprint]
  * Thumbprint certificate that was used to encrypt "Value". If the value in
  * unencrypted, it will be null.
- * @member {string} [chapSettings.initiatorSecret.encryptionAlgorithm] The
+ * @property {string} [chapSettings.initiatorSecret.encryptionAlgorithm] The
  * algorithm used to encrypt "Value". Possible values include: 'None',
  * 'AES256', 'RSAES_PKCS1_v_1_5'
- * @member {string} [chapSettings.targetUser] The CHAP target user.
- * @member {object} [chapSettings.targetSecret] The target secret.
- * @member {string} [chapSettings.targetSecret.value] The value of the secret.
- * @member {string} [chapSettings.targetSecret.encryptionCertThumbprint]
+ * @property {string} [chapSettings.targetUser] The CHAP target user.
+ * @property {object} [chapSettings.targetSecret] The target secret.
+ * @property {string} [chapSettings.targetSecret.value] The value of the
+ * secret.
+ * @property {string} [chapSettings.targetSecret.encryptionCertThumbprint]
  * Thumbprint certificate that was used to encrypt "Value". If the value in
  * unencrypted, it will be null.
- * @member {string} [chapSettings.targetSecret.encryptionAlgorithm] The
+ * @property {string} [chapSettings.targetSecret.encryptionAlgorithm] The
  * algorithm used to encrypt "Value". Possible values include: 'None',
  * 'AES256', 'RSAES_PKCS1_v_1_5'
- * @member {object} [cloudApplianceSettings] The cloud appliance settings.
- * @member {object} [cloudApplianceSettings.serviceDataEncryptionKey] The
+ * @property {object} [cloudApplianceSettings] The cloud appliance settings.
+ * @property {object} [cloudApplianceSettings.serviceDataEncryptionKey] The
  * service data encryption key (encrypted with DAK).
- * @member {string} [cloudApplianceSettings.serviceDataEncryptionKey.value] The
- * value of the secret.
- * @member {string}
+ * @property {string} [cloudApplianceSettings.serviceDataEncryptionKey.value]
+ * The value of the secret.
+ * @property {string}
  * [cloudApplianceSettings.serviceDataEncryptionKey.encryptionCertThumbprint]
  * Thumbprint certificate that was used to encrypt "Value". If the value in
  * unencrypted, it will be null.
- * @member {string}
+ * @property {string}
  * [cloudApplianceSettings.serviceDataEncryptionKey.encryptionAlgorithm] The
  * algorithm used to encrypt "Value". Possible values include: 'None',
  * 'AES256', 'RSAES_PKCS1_v_1_5'
- * @member {object} [cloudApplianceSettings.channelIntegrityKey] The channel
+ * @property {object} [cloudApplianceSettings.channelIntegrityKey] The channel
  * integrity key (encrypted with DAK).
- * @member {string} [cloudApplianceSettings.channelIntegrityKey.value] The
+ * @property {string} [cloudApplianceSettings.channelIntegrityKey.value] The
  * value of the secret.
- * @member {string}
+ * @property {string}
  * [cloudApplianceSettings.channelIntegrityKey.encryptionCertThumbprint]
  * Thumbprint certificate that was used to encrypt "Value". If the value in
  * unencrypted, it will be null.
- * @member {string}
+ * @property {string}
  * [cloudApplianceSettings.channelIntegrityKey.encryptionAlgorithm] The
  * algorithm used to encrypt "Value". Possible values include: 'None',
  * 'AES256', 'RSAES_PKCS1_v_1_5'
@@ -2068,7 +2086,8 @@ export interface SecuritySettingsPatch {
  * @constructor
  * The request for sending test alert email
  *
- * @member {array} emailList The list of email IDs to send the test alert email
+ * @property {array} emailList The list of email IDs to send the test alert
+ * email
  */
 export interface SendTestAlertEmailRequest {
   emailList: string[];
@@ -2080,18 +2099,18 @@ export interface SendTestAlertEmailRequest {
  * @constructor
  * The storage account credential.
  *
- * @member {string} endPoint The storage endpoint
- * @member {string} sslStatus Signifies whether SSL needs to be enabled or not.
- * Possible values include: 'Enabled', 'Disabled'
- * @member {object} [accessKey] The details of the storage account password.
- * @member {string} [accessKey.value] The value of the secret.
- * @member {string} [accessKey.encryptionCertThumbprint] Thumbprint certificate
- * that was used to encrypt "Value". If the value in unencrypted, it will be
- * null.
- * @member {string} [accessKey.encryptionAlgorithm] The algorithm used to
+ * @property {string} endPoint The storage endpoint
+ * @property {string} sslStatus Signifies whether SSL needs to be enabled or
+ * not. Possible values include: 'Enabled', 'Disabled'
+ * @property {object} [accessKey] The details of the storage account password.
+ * @property {string} [accessKey.value] The value of the secret.
+ * @property {string} [accessKey.encryptionCertThumbprint] Thumbprint
+ * certificate that was used to encrypt "Value". If the value in unencrypted,
+ * it will be null.
+ * @property {string} [accessKey.encryptionAlgorithm] The algorithm used to
  * encrypt "Value". Possible values include: 'None', 'AES256',
  * 'RSAES_PKCS1_v_1_5'
- * @member {number} [volumesCount] The count of volumes using this storage
+ * @property {number} [volumesCount] The count of volumes using this storage
  * account credential.
  */
 export interface StorageAccountCredential extends BaseModel {
@@ -2107,11 +2126,11 @@ export interface StorageAccountCredential extends BaseModel {
  * @constructor
  * Represents the secrets encrypted using Symmetric Encryption Key.
  *
- * @member {string} value The value of the secret itself. If the secret is in
+ * @property {string} value The value of the secret itself. If the secret is in
  * plaintext or null then EncryptionAlgorithm will be none.
- * @member {string} [valueCertificateThumbprint] The thumbprint of the cert
+ * @property {string} [valueCertificateThumbprint] The thumbprint of the cert
  * that was used to encrypt "Value".
- * @member {string} encryptionAlgorithm The algorithm used to encrypt the
+ * @property {string} encryptionAlgorithm The algorithm used to encrypt the
  * "Value". Possible values include: 'None', 'AES256', 'RSAES_PKCS1_v_1_5'
  */
 export interface SymmetricEncryptedSecret {
@@ -2126,11 +2145,11 @@ export interface SymmetricEncryptedSecret {
  * @constructor
  * The time settings of a device.
  *
- * @member {string} timeZone The timezone of device, like '(UTC -06:00) Central
- * America'
- * @member {string} [primaryTimeServer] The primary Network Time Protocol (NTP)
- * server name, like 'time.windows.com'.
- * @member {array} [secondaryTimeServer] The secondary Network Time Protocol
+ * @property {string} timeZone The timezone of device, like '(UTC -06:00)
+ * Central America'
+ * @property {string} [primaryTimeServer] The primary Network Time Protocol
+ * (NTP) server name, like 'time.windows.com'.
+ * @property {array} [secondaryTimeServer] The secondary Network Time Protocol
  * (NTP) server name, like 'time.contoso.com'. It's optional.
  */
 export interface TimeSettings extends BaseModel {
@@ -2145,13 +2164,13 @@ export interface TimeSettings extends BaseModel {
  * @constructor
  * The updates profile of a device.
  *
- * @member {boolean} [regularUpdatesAvailable] Set to 'true' if regular updates
- * are available for the device.
- * @member {boolean} [maintenanceModeUpdatesAvailable] Set to 'true' if
+ * @property {boolean} [regularUpdatesAvailable] Set to 'true' if regular
+ * updates are available for the device.
+ * @property {boolean} [maintenanceModeUpdatesAvailable] Set to 'true' if
  * maintenance mode update available.
- * @member {boolean} [isUpdateInProgress] Indicates whether an update is in
+ * @property {boolean} [isUpdateInProgress] Indicates whether an update is in
  * progress or not.
- * @member {date} [lastUpdatedTime] The time when the last update was
+ * @property {date} [lastUpdatedTime] The time when the last update was
  * completed.
  */
 export interface Updates extends BaseModel {
@@ -2167,22 +2186,22 @@ export interface Updates extends BaseModel {
  * @constructor
  * The volume.
  *
- * @member {number} sizeInBytes The size of the volume in bytes.
- * @member {string} volumeType The type of the volume. Possible values include:
- * 'Tiered', 'Archival', 'LocallyPinned'
- * @member {string} [volumeContainerId] The ID of the volume container, in
+ * @property {number} sizeInBytes The size of the volume in bytes.
+ * @property {string} volumeType The type of the volume. Possible values
+ * include: 'Tiered', 'Archival', 'LocallyPinned'
+ * @property {string} [volumeContainerId] The ID of the volume container, in
  * which this volume is created.
- * @member {array} accessControlRecordIds The IDs of the access control
+ * @property {array} accessControlRecordIds The IDs of the access control
  * records, associated with the volume.
- * @member {string} volumeStatus The volume status. Possible values include:
+ * @property {string} volumeStatus The volume status. Possible values include:
  * 'Online', 'Offline'
- * @member {string} [operationStatus] The operation status on the volume.
+ * @property {string} [operationStatus] The operation status on the volume.
  * Possible values include: 'None', 'Updating', 'Deleting', 'Restoring'
- * @member {string} [backupStatus] The backup status of the volume. Possible
+ * @property {string} [backupStatus] The backup status of the volume. Possible
  * values include: 'Enabled', 'Disabled'
- * @member {string} monitoringStatus The monitoring status of the volume.
+ * @property {string} monitoringStatus The monitoring status of the volume.
  * Possible values include: 'Enabled', 'Disabled'
- * @member {array} [backupPolicyIds] The IDs of the backup policies, in which
+ * @property {array} [backupPolicyIds] The IDs of the backup policies, in which
  * this volume is part of.
  */
 export interface Volume extends BaseModel {
@@ -2203,30 +2222,31 @@ export interface Volume extends BaseModel {
  * @constructor
  * The volume container.
  *
- * @member {object} [encryptionKey] The key used to encrypt data in the volume
- * container. It is required when property 'EncryptionStatus' is "Enabled".
- * @member {string} [encryptionKey.value] The value of the secret.
- * @member {string} [encryptionKey.encryptionCertThumbprint] Thumbprint
+ * @property {object} [encryptionKey] The key used to encrypt data in the
+ * volume container. It is required when property 'EncryptionStatus' is
+ * "Enabled".
+ * @property {string} [encryptionKey.value] The value of the secret.
+ * @property {string} [encryptionKey.encryptionCertThumbprint] Thumbprint
  * certificate that was used to encrypt "Value". If the value in unencrypted,
  * it will be null.
- * @member {string} [encryptionKey.encryptionAlgorithm] The algorithm used to
+ * @property {string} [encryptionKey.encryptionAlgorithm] The algorithm used to
  * encrypt "Value". Possible values include: 'None', 'AES256',
  * 'RSAES_PKCS1_v_1_5'
- * @member {string} [encryptionStatus] The flag to denote whether encryption is
- * enabled or not. Possible values include: 'Enabled', 'Disabled'
- * @member {number} [volumeCount] The number of volumes in the volume
+ * @property {string} [encryptionStatus] The flag to denote whether encryption
+ * is enabled or not. Possible values include: 'Enabled', 'Disabled'
+ * @property {number} [volumeCount] The number of volumes in the volume
  * Container.
- * @member {string} storageAccountCredentialId The path ID of storage account
+ * @property {string} storageAccountCredentialId The path ID of storage account
  * associated with the volume container.
- * @member {string} [ownerShipStatus] The owner ship status of the volume
+ * @property {string} [ownerShipStatus] The owner ship status of the volume
  * container. Only when the status is "NotOwned", the delete operation on the
  * volume container is permitted. Possible values include: 'Owned', 'NotOwned'
- * @member {number} [bandWidthRateInMbps] The bandwidth-rate set on the volume
- * container.
- * @member {string} [bandwidthSettingId] The ID of the bandwidth setting
+ * @property {number} [bandWidthRateInMbps] The bandwidth-rate set on the
+ * volume container.
+ * @property {string} [bandwidthSettingId] The ID of the bandwidth setting
  * associated with the volume container.
- * @member {number} [totalCloudStorageUsageInBytes] The total cloud storage for
- * the volume container.
+ * @property {number} [totalCloudStorageUsageInBytes] The total cloud storage
+ * for the volume container.
  */
 export interface VolumeContainer extends BaseModel {
   encryptionKey?: AsymmetricEncryptedSecret;
@@ -2246,7 +2266,7 @@ export interface VolumeContainer extends BaseModel {
  * @constructor
  * List of available provider operations.
  *
- * @member {string} [nextLink] The NextLink.
+ * @property {string} [nextLink] The NextLink.
  */
 export interface AvailableProviderOperationList extends Array<AvailableProviderOperation> {
   nextLink?: string;
@@ -2308,7 +2328,7 @@ export interface AccessControlRecordList extends Array<AccessControlRecord> {
  * @constructor
  * The collection of alerts.
  *
- * @member {string} [nextLink] The URI of the next page of alerts.
+ * @property {string} [nextLink] The URI of the next page of alerts.
  */
 export interface AlertList extends Array<Alert> {
   nextLink?: string;
@@ -2391,7 +2411,7 @@ export interface BackupScheduleList extends Array<BackupSchedule> {
  * @constructor
  * The collection of backups.
  *
- * @member {string} [nextLink] The NextLink.
+ * @property {string} [nextLink] The NextLink.
  */
 export interface BackupList extends Array<Backup> {
   nextLink?: string;
@@ -2413,7 +2433,7 @@ export interface HardwareComponentGroupList extends Array<HardwareComponentGroup
  * @constructor
  * The collection of jobs.
  *
- * @member {string} [nextLink] The NextLink.
+ * @property {string} [nextLink] The NextLink.
  */
 export interface JobList extends Array<Job> {
   nextLink?: string;

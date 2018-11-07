@@ -22,9 +22,9 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Error Details object.
  *
- * @member {string} [code] Error code of the given entry.
- * @member {string} [message] Error message of the given entry.
- * @member {string} [target] Target of the given entry.
+ * @property {string} [code] Error code of the given entry.
+ * @property {string} [message] Error message of the given entry.
+ * @property {string} [target] Target of the given entry.
  */
 export interface StorageSyncErrorDetails {
   code?: string;
@@ -38,13 +38,13 @@ export interface StorageSyncErrorDetails {
  * @constructor
  * Error type
  *
- * @member {string} [code] Error code of the given entry.
- * @member {string} [message] Error message of the given entry.
- * @member {string} [target] Target of the given error entry.
- * @member {object} [details] Error details of the given entry.
- * @member {string} [details.code] Error code of the given entry.
- * @member {string} [details.message] Error message of the given entry.
- * @member {string} [details.target] Target of the given entry.
+ * @property {string} [code] Error code of the given entry.
+ * @property {string} [message] Error message of the given entry.
+ * @property {string} [target] Target of the given error entry.
+ * @property {object} [details] Error details of the given entry.
+ * @property {string} [details.code] Error code of the given entry.
+ * @property {string} [details.message] Error message of the given entry.
+ * @property {string} [details.target] Target of the given entry.
  */
 export interface StorageSyncApiError {
   code?: string;
@@ -59,23 +59,23 @@ export interface StorageSyncApiError {
  * @constructor
  * Error type
  *
- * @member {object} [error] Error details of the given entry.
- * @member {string} [error.code] Error code of the given entry.
- * @member {string} [error.message] Error message of the given entry.
- * @member {string} [error.target] Target of the given error entry.
- * @member {object} [error.details] Error details of the given entry.
- * @member {string} [error.details.code] Error code of the given entry.
- * @member {string} [error.details.message] Error message of the given entry.
- * @member {string} [error.details.target] Target of the given entry.
- * @member {object} [innererror] Error details of the given entry.
- * @member {string} [innererror.code] Error code of the given entry.
- * @member {string} [innererror.message] Error message of the given entry.
- * @member {string} [innererror.target] Target of the given error entry.
- * @member {object} [innererror.details] Error details of the given entry.
- * @member {string} [innererror.details.code] Error code of the given entry.
- * @member {string} [innererror.details.message] Error message of the given
+ * @property {object} [error] Error details of the given entry.
+ * @property {string} [error.code] Error code of the given entry.
+ * @property {string} [error.message] Error message of the given entry.
+ * @property {string} [error.target] Target of the given error entry.
+ * @property {object} [error.details] Error details of the given entry.
+ * @property {string} [error.details.code] Error code of the given entry.
+ * @property {string} [error.details.message] Error message of the given entry.
+ * @property {string} [error.details.target] Target of the given entry.
+ * @property {object} [innererror] Error details of the given entry.
+ * @property {string} [innererror.code] Error code of the given entry.
+ * @property {string} [innererror.message] Error message of the given entry.
+ * @property {string} [innererror.target] Target of the given error entry.
+ * @property {object} [innererror.details] Error details of the given entry.
+ * @property {string} [innererror.details.code] Error code of the given entry.
+ * @property {string} [innererror.details.message] Error message of the given
  * entry.
- * @member {string} [innererror.details.target] Target of the given entry.
+ * @property {string} [innererror.details.target] Target of the given entry.
  */
 export interface StorageSyncError {
   error?: StorageSyncApiError;
@@ -88,10 +88,10 @@ export interface StorageSyncError {
  * @constructor
  * Subscription State object.
  *
- * @member {string} [state] State of Azure Subscription. Possible values
+ * @property {string} [state] State of Azure Subscription. Possible values
  * include: 'Registered', 'Unregistered', 'Warned', 'Suspended', 'Deleted'
- * @member {boolean} [istransitioning] Is Transitioning
- * @member {object} [properties] Subscription state properties.
+ * @property {boolean} [istransitioning] Is Transitioning
+ * @property {object} [properties] Subscription state properties.
  */
 export interface SubscriptionState {
   state?: string;
@@ -103,10 +103,10 @@ export interface SubscriptionState {
  * @class
  * Initializes a new instance of the Resource class.
  * @constructor
- * @member {string} [id] Fully qualified resource Id for the resource. Ex -
+ * @property {string} [id] Fully qualified resource Id for the resource. Ex -
  * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
- * @member {string} [name] The name of the resource
- * @member {string} [type] The type of the resource. Ex-
+ * @property {string} [name] The name of the resource
+ * @property {string} [type] The type of the resource. Ex-
  * Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
  */
 export interface Resource extends BaseResource {
@@ -121,8 +121,8 @@ export interface Resource extends BaseResource {
  * @constructor
  * The resource model definition for a ARM tracked top level resource
  *
- * @member {object} [tags] Resource tags.
- * @member {string} location The geo-location where the resource lives
+ * @property {object} [tags] Resource tags.
+ * @property {string} location The geo-location where the resource lives
  */
 export interface TrackedResource extends Resource {
   tags?: { [propertyName: string]: string };
@@ -135,8 +135,8 @@ export interface TrackedResource extends Resource {
  * @constructor
  * Storage Sync Service object.
  *
- * @member {number} [storageSyncServiceStatus] Storage Sync service status.
- * @member {string} [storageSyncServiceUid] Storage Sync service Uid
+ * @property {number} [storageSyncServiceStatus] Storage Sync service status.
+ * @property {string} [storageSyncServiceUid] Storage Sync service Uid
  */
 export interface StorageSyncService extends TrackedResource {
   readonly storageSyncServiceStatus?: number;
@@ -160,8 +160,8 @@ export interface ProxyResource extends Resource {
  * @constructor
  * Sync Group object.
  *
- * @member {string} [uniqueId] Unique Id
- * @member {string} [syncGroupStatus] Sync group status
+ * @property {string} [uniqueId] Unique Id
+ * @property {string} [syncGroupStatus] Sync group status
  */
 export interface SyncGroup extends ProxyResource {
   uniqueId?: string;
@@ -174,15 +174,15 @@ export interface SyncGroup extends ProxyResource {
  * @constructor
  * Cloud Endpoint object.
  *
- * @member {string} [storageAccountResourceId] Storage Account Resource Id
- * @member {string} [storageAccountShareName] Storage Account Share name
- * @member {string} [storageAccountTenantId] Storage Account Tenant Id
- * @member {string} [partnershipId] Partnership Id
- * @member {string} [friendlyName] Friendly Name
- * @member {boolean} [backupEnabled] Backup Enabled
- * @member {string} [provisioningState] CloudEndpoint Provisioning State
- * @member {string} [lastWorkflowId] CloudEndpoint lastWorkflowId
- * @member {string} [lastOperationName] Resource Last Operation Name
+ * @property {string} [storageAccountResourceId] Storage Account Resource Id
+ * @property {string} [storageAccountShareName] Storage Account Share name
+ * @property {string} [storageAccountTenantId] Storage Account Tenant Id
+ * @property {string} [partnershipId] Partnership Id
+ * @property {string} [friendlyName] Friendly Name
+ * @property {boolean} [backupEnabled] Backup Enabled
+ * @property {string} [provisioningState] CloudEndpoint Provisioning State
+ * @property {string} [lastWorkflowId] CloudEndpoint lastWorkflowId
+ * @property {string} [lastOperationName] Resource Last Operation Name
  */
 export interface CloudEndpoint extends ProxyResource {
   storageAccountResourceId?: string;
@@ -202,8 +202,8 @@ export interface CloudEndpoint extends ProxyResource {
  * @constructor
  * The parameters used when calling recall action on server endpoint.
  *
- * @member {string} [pattern] Pattern of the files.
- * @member {string} [recallPath] Recall path.
+ * @property {string} [pattern] Pattern of the files.
+ * @property {string} [recallPath] Recall path.
  */
 export interface RecallActionParameters {
   pattern?: string;
@@ -216,17 +216,17 @@ export interface RecallActionParameters {
  * @constructor
  * The parameters used when creating a storage sync service.
  *
- * @member {string} location Required. Gets or sets the location of the
+ * @property {string} location Required. Gets or sets the location of the
  * resource. This will be one of the supported and registered Azure Geo Regions
  * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
  * cannot be changed once it is created, but if an identical geo region is
  * specified on update, the request will succeed.
- * @member {object} [tags] Gets or sets a list of key value pairs that describe
- * the resource. These tags can be used for viewing and grouping this resource
- * (across resource groups). A maximum of 15 tags can be provided for a
- * resource. Each tag must have a key with a length no greater than 128
+ * @property {object} [tags] Gets or sets a list of key value pairs that
+ * describe the resource. These tags can be used for viewing and grouping this
+ * resource (across resource groups). A maximum of 15 tags can be provided for
+ * a resource. Each tag must have a key with a length no greater than 128
  * characters and a value with a length no greater than 256 characters.
- * @member {object} [properties]
+ * @property {object} [properties]
  */
 export interface StorageSyncServiceCreateParameters {
   location: string;
@@ -240,7 +240,7 @@ export interface StorageSyncServiceCreateParameters {
  * @constructor
  * The parameters used when creating a sync group.
  *
- * @member {object} [properties] The parameters used to create the sync group
+ * @property {object} [properties] The parameters used to create the sync group
  */
 export interface SyncGroupCreateParameters extends ProxyResource {
   properties?: any;
@@ -252,9 +252,9 @@ export interface SyncGroupCreateParameters extends ProxyResource {
  * @constructor
  * The parameters used when creating a cloud endpoint.
  *
- * @member {string} [storageAccountResourceId] Storage Account Resource Id
- * @member {string} [storageAccountShareName] Storage Account Share name
- * @member {string} [storageAccountTenantId] Storage Account Tenant Id
+ * @property {string} [storageAccountResourceId] Storage Account Resource Id
+ * @property {string} [storageAccountShareName] Storage Account Share name
+ * @property {string} [storageAccountTenantId] Storage Account Tenant Id
  */
 export interface CloudEndpointCreateParameters extends ProxyResource {
   storageAccountResourceId?: string;
@@ -268,14 +268,14 @@ export interface CloudEndpointCreateParameters extends ProxyResource {
  * @constructor
  * The parameters used when creating a server endpoint.
  *
- * @member {string} [serverLocalPath] Server Local path.
- * @member {string} [cloudTiering] Cloud Tiering. Possible values include:
+ * @property {string} [serverLocalPath] Server Local path.
+ * @property {string} [cloudTiering] Cloud Tiering. Possible values include:
  * 'on', 'off'
- * @member {number} [volumeFreeSpacePercent] Level of free space to be
+ * @property {number} [volumeFreeSpacePercent] Level of free space to be
  * maintained by Cloud Tiering if it is enabled.
- * @member {number} [tierFilesOlderThanDays] Tier files older than days.
- * @member {string} [friendlyName] Friendly Name
- * @member {string} [serverResourceId] Server Resource Id.
+ * @property {number} [tierFilesOlderThanDays] Tier files older than days.
+ * @property {string} [friendlyName] Friendly Name
+ * @property {string} [serverResourceId] Server Resource Id.
  */
 export interface ServerEndpointCreateParameters extends ProxyResource {
   serverLocalPath?: string;
@@ -292,7 +292,7 @@ export interface ServerEndpointCreateParameters extends ProxyResource {
  * @constructor
  * Trigger Rollover Request.
  *
- * @member {string} [serverCertificate] Certificate Data
+ * @property {string} [serverCertificate] Certificate Data
  */
 export interface TriggerRolloverRequest {
   serverCertificate?: string;
@@ -304,15 +304,15 @@ export interface TriggerRolloverRequest {
  * @constructor
  * The parameters used when creating a registered server.
  *
- * @member {string} [serverCertificate] Registered Server Certificate
- * @member {string} [agentVersion] Registered Server Agent Version
- * @member {string} [serverOSVersion] Registered Server OS Version
- * @member {string} [lastHeartBeat] Registered Server last heart beat
- * @member {string} [serverRole] Registered Server serverRole
- * @member {string} [clusterId] Registered Server clusterId
- * @member {string} [clusterName] Registered Server clusterName
- * @member {string} [serverId] Registered Server serverId
- * @member {string} [friendlyName] Friendly Name
+ * @property {string} [serverCertificate] Registered Server Certificate
+ * @property {string} [agentVersion] Registered Server Agent Version
+ * @property {string} [serverOSVersion] Registered Server OS Version
+ * @property {string} [lastHeartBeat] Registered Server last heart beat
+ * @property {string} [serverRole] Registered Server serverRole
+ * @property {string} [clusterId] Registered Server clusterId
+ * @property {string} [clusterName] Registered Server clusterName
+ * @property {string} [serverId] Registered Server serverId
+ * @property {string} [friendlyName] Friendly Name
  */
 export interface RegisteredServerCreateParameters extends ProxyResource {
   serverCertificate?: string;
@@ -332,11 +332,11 @@ export interface RegisteredServerCreateParameters extends ProxyResource {
  * @constructor
  * Parameters for updating an Server Endpoint.
  *
- * @member {string} [cloudTiering] Cloud Tiering. Possible values include:
+ * @property {string} [cloudTiering] Cloud Tiering. Possible values include:
  * 'on', 'off'
- * @member {number} [volumeFreeSpacePercent] Level of free space to be
+ * @property {number} [volumeFreeSpacePercent] Level of free space to be
  * maintained by Cloud Tiering if it is enabled.
- * @member {number} [tierFilesOlderThanDays] Tier files older than days.
+ * @property {number} [tierFilesOlderThanDays] Tier files older than days.
  */
 export interface ServerEndpointUpdateParameters {
   cloudTiering?: string;
@@ -350,18 +350,18 @@ export interface ServerEndpointUpdateParameters {
  * @constructor
  * Server Endpoint object.
  *
- * @member {string} [serverLocalPath] Server Local path.
- * @member {string} [cloudTiering] Cloud Tiering. Possible values include:
+ * @property {string} [serverLocalPath] Server Local path.
+ * @property {string} [cloudTiering] Cloud Tiering. Possible values include:
  * 'on', 'off'
- * @member {number} [volumeFreeSpacePercent] Level of free space to be
+ * @property {number} [volumeFreeSpacePercent] Level of free space to be
  * maintained by Cloud Tiering if it is enabled.
- * @member {number} [tierFilesOlderThanDays] Tier files older than days.
- * @member {string} [friendlyName] Friendly Name
- * @member {string} [serverResourceId] Server Resource Id.
- * @member {string} [provisioningState] ServerEndpoint Provisioning State
- * @member {string} [lastWorkflowId] ServerEndpoint lastWorkflowId
- * @member {string} [lastOperationName] Resource Last Operation Name
- * @member {object} [syncStatus] Sync Health Status
+ * @property {number} [tierFilesOlderThanDays] Tier files older than days.
+ * @property {string} [friendlyName] Friendly Name
+ * @property {string} [serverResourceId] Server Resource Id.
+ * @property {string} [provisioningState] ServerEndpoint Provisioning State
+ * @property {string} [lastWorkflowId] ServerEndpoint lastWorkflowId
+ * @property {string} [lastOperationName] Resource Last Operation Name
+ * @property {object} [syncStatus] Sync Health Status
  */
 export interface ServerEndpoint extends ProxyResource {
   serverLocalPath?: string;
@@ -382,27 +382,27 @@ export interface ServerEndpoint extends ProxyResource {
  * @constructor
  * Registered Server resource.
  *
- * @member {string} [serverCertificate] Registered Server Certificate
- * @member {string} [agentVersion] Registered Server Agent Version
- * @member {string} [serverOSVersion] Registered Server OS Version
- * @member {number} [serverManagementtErrorCode] Registered Server Management
+ * @property {string} [serverCertificate] Registered Server Certificate
+ * @property {string} [agentVersion] Registered Server Agent Version
+ * @property {string} [serverOSVersion] Registered Server OS Version
+ * @property {number} [serverManagementtErrorCode] Registered Server Management
  * Error Code
- * @member {string} [lastHeartBeat] Registered Server last heart beat
- * @member {string} [provisioningState] Registered Server Provisioning State
- * @member {string} [serverRole] Registered Server serverRole
- * @member {string} [clusterId] Registered Server clusterId
- * @member {string} [clusterName] Registered Server clusterName
- * @member {string} [serverId] Registered Server serverId
- * @member {string} [storageSyncServiceUid] Registered Server
+ * @property {string} [lastHeartBeat] Registered Server last heart beat
+ * @property {string} [provisioningState] Registered Server Provisioning State
+ * @property {string} [serverRole] Registered Server serverRole
+ * @property {string} [clusterId] Registered Server clusterId
+ * @property {string} [clusterName] Registered Server clusterName
+ * @property {string} [serverId] Registered Server serverId
+ * @property {string} [storageSyncServiceUid] Registered Server
  * storageSyncServiceUid
- * @member {string} [lastWorkflowId] Registered Server lastWorkflowId
- * @member {string} [lastOperationName] Resource Last Operation Name
- * @member {string} [discoveryEndpointUri] Resource discoveryEndpointUri
- * @member {string} [resourceLocation] Resource Location
- * @member {string} [serviceLocation] Service Location
- * @member {string} [friendlyName] Friendly Name
- * @member {string} [managementEndpointUri] Management Endpoint Uri
- * @member {string} [monitoringConfiguration] Monitoring Configuration
+ * @property {string} [lastWorkflowId] Registered Server lastWorkflowId
+ * @property {string} [lastOperationName] Resource Last Operation Name
+ * @property {string} [discoveryEndpointUri] Resource discoveryEndpointUri
+ * @property {string} [resourceLocation] Resource Location
+ * @property {string} [serviceLocation] Service Location
+ * @property {string} [friendlyName] Friendly Name
+ * @property {string} [managementEndpointUri] Management Endpoint Uri
+ * @property {string} [monitoringConfiguration] Monitoring Configuration
  */
 export interface RegisteredServer extends ProxyResource {
   serverCertificate?: string;
@@ -432,8 +432,8 @@ export interface RegisteredServer extends ProxyResource {
  * @constructor
  * Resource Move Info.
  *
- * @member {string} [targetResourceGroup] Target resource group.
- * @member {array} [resources] Collection of Resources.
+ * @property {string} [targetResourceGroup] Target resource group.
+ * @property {array} [resources] Collection of Resources.
  */
 export interface ResourcesMoveInfo {
   targetResourceGroup?: string;
@@ -446,13 +446,13 @@ export interface ResourcesMoveInfo {
  * @constructor
  * Workflow resource.
  *
- * @member {string} [lastStepName] last step name
- * @member {string} [status] workflow status. Possible values include:
+ * @property {string} [lastStepName] last step name
+ * @property {string} [status] workflow status. Possible values include:
  * 'active', 'expired', 'succeeded', 'aborted', 'failed'
- * @member {string} [operation] operation direction. Possible values include:
+ * @property {string} [operation] operation direction. Possible values include:
  * 'do', 'undo', 'cancel'
- * @member {string} [steps] workflow steps
- * @member {string} [lastOperationId] workflow last operation identifier.
+ * @property {string} [steps] workflow steps
+ * @property {string} [lastOperationId] workflow last operation identifier.
  */
 export interface Workflow extends ProxyResource {
   lastStepName?: string;
@@ -468,11 +468,11 @@ export interface Workflow extends ProxyResource {
  * @constructor
  * The operation supported by storage sync.
  *
- * @member {string} [description] The description of the operation.
- * @member {string} [operation] The action that users can perform, based on
+ * @property {string} [description] The description of the operation.
+ * @property {string} [operation] The action that users can perform, based on
  * their permission level.
- * @member {string} [provider] Service provider: Microsoft StorageSync.
- * @member {string} [resource] Resource on which the operation is performed.
+ * @property {string} [provider] Service provider: Microsoft StorageSync.
+ * @property {string} [resource] Resource on which the operation is performed.
  */
 export interface OperationDisplayInfo {
   description?: string;
@@ -487,15 +487,16 @@ export interface OperationDisplayInfo {
  * @constructor
  * The operation supported by storage sync.
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}.
- * @member {object} [display] The operation supported by storage sync.
- * @member {string} [display.description] The description of the operation.
- * @member {string} [display.operation] The action that users can perform,
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}.
+ * @property {object} [display] The operation supported by storage sync.
+ * @property {string} [display.description] The description of the operation.
+ * @property {string} [display.operation] The action that users can perform,
  * based on their permission level.
- * @member {string} [display.provider] Service provider: Microsoft StorageSync.
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [display.provider] Service provider: Microsoft
+ * StorageSync.
+ * @property {string} [display.resource] Resource on which the operation is
  * performed.
- * @member {string} [origin] The origin.
+ * @property {string} [origin] The origin.
  */
 export interface OperationEntity {
   name?: string;
@@ -509,10 +510,10 @@ export interface OperationEntity {
  * @constructor
  * Operation Display Resource object.
  *
- * @member {string} [provider] Operation Display Resource Provider.
- * @member {string} [resource] Operation Display Resource.
- * @member {string} [operation] Operation Display Resource Operation.
- * @member {string} [description] Operation Display Resource Description.
+ * @property {string} [provider] Operation Display Resource Provider.
+ * @property {string} [resource] Operation Display Resource.
+ * @property {string} [operation] Operation Display Resource Operation.
+ * @property {string} [description] Operation Display Resource Description.
  */
 export interface OperationDisplayResource {
   provider?: string;
@@ -527,7 +528,7 @@ export interface OperationDisplayResource {
  * @constructor
  * Parameters for a check name availability request.
  *
- * @member {string} name The name to check for availability
+ * @property {string} name The name to check for availability
  */
 export interface CheckNameAvailabilityParameters {
   name: string;
@@ -539,15 +540,15 @@ export interface CheckNameAvailabilityParameters {
  * @constructor
  * The CheckNameAvailability operation response.
  *
- * @member {boolean} [nameAvailable] Gets a boolean value that indicates
+ * @property {boolean} [nameAvailable] Gets a boolean value that indicates
  * whether the name is available for you to use. If true, the name is
  * available. If false, the name has already been taken or invalid and cannot
  * be used.
- * @member {string} [reason] Gets the reason that a Storage Sync Service name
+ * @property {string} [reason] Gets the reason that a Storage Sync Service name
  * could not be used. The Reason element is only returned if NameAvailable is
  * false. Possible values include: 'Invalid', 'AlreadyExists'
- * @member {string} [message] Gets an error message explaining the Reason value
- * in more detail.
+ * @property {string} [message] Gets an error message explaining the Reason
+ * value in more detail.
  */
 export interface CheckNameAvailabilityResult {
   readonly nameAvailable?: boolean;
@@ -561,8 +562,8 @@ export interface CheckNameAvailabilityResult {
  * @constructor
  * Restore file spec.
  *
- * @member {string} [path] Restore file spec path
- * @member {boolean} [isdir] Restore file spec isdir
+ * @property {string} [path] Restore file spec path
+ * @property {boolean} [isdir] Restore file spec isdir
  */
 export interface RestoreFileSpec {
   path?: string;
@@ -575,15 +576,15 @@ export interface RestoreFileSpec {
  * @constructor
  * Post Restore Request
  *
- * @member {string} [partition] Post Restore partition.
- * @member {string} [replicaGroup] Post Restore replica group.
- * @member {string} [requestId] Post Restore request id.
- * @member {string} [azureFileShareUri] Post Restore Azure file share uri.
- * @member {string} [status] Post Restore Azure status.
- * @member {string} [sourceAzureFileShareUri] Post Restore Azure source azure
+ * @property {string} [partition] Post Restore partition.
+ * @property {string} [replicaGroup] Post Restore replica group.
+ * @property {string} [requestId] Post Restore request id.
+ * @property {string} [azureFileShareUri] Post Restore Azure file share uri.
+ * @property {string} [status] Post Restore Azure status.
+ * @property {string} [sourceAzureFileShareUri] Post Restore Azure source azure
  * file share uri.
- * @member {string} [failedFileList] Post Restore Azure failed file list.
- * @member {array} [restoreFileSpec] Post Restore restore file spec array.
+ * @property {string} [failedFileList] Post Restore Azure failed file list.
+ * @property {array} [restoreFileSpec] Post Restore restore file spec array.
  */
 export interface PostRestoreRequest {
   partition?: string;
@@ -602,17 +603,17 @@ export interface PostRestoreRequest {
  * @constructor
  * Pre Restore request object.
  *
- * @member {string} [partition] Pre Restore partition.
- * @member {string} [replicaGroup] Pre Restore replica group.
- * @member {string} [requestId] Pre Restore request id.
- * @member {string} [azureFileShareUri] Pre Restore Azure file share uri.
- * @member {string} [status] Pre Restore Azure status.
- * @member {string} [sourceAzureFileShareUri] Pre Restore Azure source azure
+ * @property {string} [partition] Pre Restore partition.
+ * @property {string} [replicaGroup] Pre Restore replica group.
+ * @property {string} [requestId] Pre Restore request id.
+ * @property {string} [azureFileShareUri] Pre Restore Azure file share uri.
+ * @property {string} [status] Pre Restore Azure status.
+ * @property {string} [sourceAzureFileShareUri] Pre Restore Azure source azure
  * file share uri.
- * @member {string} [backupMetadataPropertyBag] Pre Restore backup metadata
+ * @property {string} [backupMetadataPropertyBag] Pre Restore backup metadata
  * property bag.
- * @member {array} [restoreFileSpec] Pre Restore restore file spec array.
- * @member {number} [pauseWaitForSyncDrainTimePeriodInSeconds] Pre Restore
+ * @property {array} [restoreFileSpec] Pre Restore restore file spec array.
+ * @property {number} [pauseWaitForSyncDrainTimePeriodInSeconds] Pre Restore
  * pause wait for sync drain time period in seconds.
  */
 export interface PreRestoreRequest {
@@ -633,7 +634,7 @@ export interface PreRestoreRequest {
  * @constructor
  * Backup request
  *
- * @member {string} [azureFileShare] Azure File Share.
+ * @property {string} [azureFileShare] Azure File Share.
  */
 export interface BackupRequest {
   azureFileShare?: string;
@@ -645,7 +646,7 @@ export interface BackupRequest {
  * @constructor
  * Post Backup Response
  *
- * @member {string} [cloudEndpointName] cloud endpoint Name.
+ * @property {string} [cloudEndpointName] cloud endpoint Name.
  */
 export interface PostBackupResponse {
   readonly cloudEndpointName?: string;
@@ -657,9 +658,9 @@ export interface PostBackupResponse {
  * @constructor
  * Parameters for updating an Storage sync service.
  *
- * @member {object} [tags] The user-specified tags associated with the storage
- * sync service.
- * @member {object} [properties] The properties of the storage sync service.
+ * @property {object} [tags] The user-specified tags associated with the
+ * storage sync service.
+ * @property {object} [properties] The properties of the storage sync service.
  */
 export interface StorageSyncServiceUpdateParameters {
   tags?: { [propertyName: string]: string };
@@ -673,7 +674,7 @@ export interface StorageSyncServiceUpdateParameters {
  * The resource model definition for a Azure Resource Manager resource with an
  * etag.
  *
- * @member {string} [etag] Resource Etag.
+ * @property {string} [etag] Resource Etag.
  */
 export interface AzureEntityResource extends Resource {
   readonly etag?: string;
@@ -686,7 +687,7 @@ export interface AzureEntityResource extends Resource {
  * @constructor
  * The list of storage sync operations.
  *
- * @member {string} [nextLink] The link used to get the next page of
+ * @property {string} [nextLink] The link used to get the next page of
  * operations.
  */
 export interface OperationEntityListResult extends Array<OperationEntity> {

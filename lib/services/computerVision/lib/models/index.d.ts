@@ -17,10 +17,11 @@ import * as moment from "moment";
  * @constructor
  * An object describing face rectangle.
  *
- * @member {number} [left] X-coordinate of the top left point of the face.
- * @member {number} [top] Y-coordinate of the top left point of the face.
- * @member {number} [width] Width measured from the top-left point of the face.
- * @member {number} [height] Height measured from the top-left point of the
+ * @property {number} [left] X-coordinate of the top left point of the face.
+ * @property {number} [top] Y-coordinate of the top left point of the face.
+ * @property {number} [width] Width measured from the top-left point of the
+ * face.
+ * @property {number} [height] Height measured from the top-left point of the
  * face.
  */
 export interface FaceRectangle {
@@ -36,16 +37,16 @@ export interface FaceRectangle {
  * @constructor
  * An object describing possible celebrity identification.
  *
- * @member {string} [name] Name of the celebrity.
- * @member {number} [confidence] Level of confidence ranging from 0 to 1.
- * @member {object} [faceRectangle]
- * @member {number} [faceRectangle.left] X-coordinate of the top left point of
+ * @property {string} [name] Name of the celebrity.
+ * @property {number} [confidence] Level of confidence ranging from 0 to 1.
+ * @property {object} [faceRectangle]
+ * @property {number} [faceRectangle.left] X-coordinate of the top left point
+ * of the face.
+ * @property {number} [faceRectangle.top] Y-coordinate of the top left point of
  * the face.
- * @member {number} [faceRectangle.top] Y-coordinate of the top left point of
- * the face.
- * @member {number} [faceRectangle.width] Width measured from the top-left
+ * @property {number} [faceRectangle.width] Width measured from the top-left
  * point of the face.
- * @member {number} [faceRectangle.height] Height measured from the top-left
+ * @property {number} [faceRectangle.height] Height measured from the top-left
  * point of the face.
  */
 export interface CelebritiesModel {
@@ -60,8 +61,9 @@ export interface CelebritiesModel {
  * @constructor
  * A landmark recognized in the image
  *
- * @member {string} [name] Name of the landmark.
- * @member {number} [confidence] Confidence level for the landmark recognition.
+ * @property {string} [name] Name of the landmark.
+ * @property {number} [confidence] Confidence level for the landmark
+ * recognition.
  */
 export interface LandmarksModel {
   name?: string;
@@ -74,8 +76,8 @@ export interface LandmarksModel {
  * @constructor
  * An object describing additional category details.
  *
- * @member {array} [celebrities] An array of celebrities if any identified.
- * @member {array} [landmarks] An array of landmarks if any identified.
+ * @property {array} [celebrities] An array of celebrities if any identified.
+ * @property {array} [landmarks] An array of landmarks if any identified.
  */
 export interface CategoryDetail {
   celebrities?: CelebritiesModel[];
@@ -88,12 +90,13 @@ export interface CategoryDetail {
  * @constructor
  * An object describing identified category.
  *
- * @member {string} [name] Name of the category.
- * @member {number} [score] Scoring of the category.
- * @member {object} [detail]
- * @member {array} [detail.celebrities] An array of celebrities if any
+ * @property {string} [name] Name of the category.
+ * @property {number} [score] Scoring of the category.
+ * @property {object} [detail]
+ * @property {array} [detail.celebrities] An array of celebrities if any
  * identified.
- * @member {array} [detail.landmarks] An array of landmarks if any identified.
+ * @property {array} [detail.landmarks] An array of landmarks if any
+ * identified.
  */
 export interface Category {
   name?: string;
@@ -108,13 +111,13 @@ export interface Category {
  * An object describing whether the image contains adult-oriented content
  * and/or is racy.
  *
- * @member {boolean} [isAdultContent] A value indicating if the image contains
- * adult-oriented content.
- * @member {boolean} [isRacyContent] A value indicating if the image is race.
- * @member {number} [adultScore] Score from 0 to 1 that indicates how much of
+ * @property {boolean} [isAdultContent] A value indicating if the image
+ * contains adult-oriented content.
+ * @property {boolean} [isRacyContent] A value indicating if the image is race.
+ * @property {number} [adultScore] Score from 0 to 1 that indicates how much of
  * adult content is within the image.
- * @member {number} [racyScore] Score from 0 to 1 that indicates how suggestive
- * is the image.
+ * @property {number} [racyScore] Score from 0 to 1 that indicates how
+ * suggestive is the image.
  */
 export interface AdultInfo {
   isAdultContent?: boolean;
@@ -129,13 +132,13 @@ export interface AdultInfo {
  * @constructor
  * An object providing additional metadata describing color attributes.
  *
- * @member {string} [dominantColorForeground] Possible dominant foreground
+ * @property {string} [dominantColorForeground] Possible dominant foreground
  * color.
- * @member {string} [dominantColorBackground] Possible dominant background
+ * @property {string} [dominantColorBackground] Possible dominant background
  * color.
- * @member {array} [dominantColors] An array of possible dominant colors.
- * @member {string} [accentColor] Possible accent color.
- * @member {boolean} [isBWImg] A value indicating if the image is black and
+ * @property {array} [dominantColors] An array of possible dominant colors.
+ * @property {string} [accentColor] Possible accent color.
+ * @property {boolean} [isBWImg] A value indicating if the image is black and
  * white.
  */
 export interface ColorInfo {
@@ -152,10 +155,10 @@ export interface ColorInfo {
  * @constructor
  * An object providing possible image types and matching confidence levels.
  *
- * @member {number} [clipArtType] Confidence level that the image is a clip
+ * @property {number} [clipArtType] Confidence level that the image is a clip
  * art.
- * @member {number} [lineDrawingType] Confidence level that the image is a line
- * drawing.
+ * @property {number} [lineDrawingType] Confidence level that the image is a
+ * line drawing.
  */
 export interface ImageType {
   clipArtType?: number;
@@ -168,10 +171,10 @@ export interface ImageType {
  * @constructor
  * An image caption, i.e. a brief description of what the image depicts.
  *
- * @member {string} [name] The tag value
- * @member {number} [confidence] The level of confidence the service has in the
- * caption
- * @member {string} [hint] Optional categorization for the tag
+ * @property {string} [name] The tag value
+ * @property {number} [confidence] The level of confidence the service has in
+ * the caption
+ * @property {string} [hint] Optional categorization for the tag
  */
 export interface ImageTag {
   name?: string;
@@ -185,9 +188,9 @@ export interface ImageTag {
  * @constructor
  * An image caption, i.e. a brief description of what the image depicts.
  *
- * @member {string} [text] The text of the caption
- * @member {number} [confidence] The level of confidence the service has in the
- * caption
+ * @property {string} [text] The text of the caption
+ * @property {number} [confidence] The level of confidence the service has in
+ * the caption
  */
 export interface ImageCaption {
   text?: string;
@@ -201,8 +204,8 @@ export interface ImageCaption {
  * A collection of content tags, along with a list of captions sorted by
  * confidence level, and image metadata.
  *
- * @member {array} [tags] A collection of image tags.
- * @member {array} [captions] A list of captions, sorted by confidence level.
+ * @property {array} [tags] A collection of image tags.
+ * @property {array} [captions] A list of captions, sorted by confidence level.
  */
 export interface ImageDescriptionDetails {
   tags?: string[];
@@ -215,17 +218,17 @@ export interface ImageDescriptionDetails {
  * @constructor
  * An object describing a face identified in the image.
  *
- * @member {number} [age] Possible age of the face.
- * @member {string} [gender] Possible gender of the face. Possible values
+ * @property {number} [age] Possible age of the face.
+ * @property {string} [gender] Possible gender of the face. Possible values
  * include: 'Male', 'Female'
- * @member {object} [faceRectangle]
- * @member {number} [faceRectangle.left] X-coordinate of the top left point of
+ * @property {object} [faceRectangle]
+ * @property {number} [faceRectangle.left] X-coordinate of the top left point
+ * of the face.
+ * @property {number} [faceRectangle.top] Y-coordinate of the top left point of
  * the face.
- * @member {number} [faceRectangle.top] Y-coordinate of the top left point of
- * the face.
- * @member {number} [faceRectangle.width] Width measured from the top-left
+ * @property {number} [faceRectangle.width] Width measured from the top-left
  * point of the face.
- * @member {number} [faceRectangle.height] Height measured from the top-left
+ * @property {number} [faceRectangle.height] Height measured from the top-left
  * point of the face.
  */
 export interface FaceDescription {
@@ -240,9 +243,9 @@ export interface FaceDescription {
  * @constructor
  * Image metadata
  *
- * @member {number} [width] Image width
- * @member {number} [height] Image height
- * @member {string} [format] Image format
+ * @property {number} [width] Image width
+ * @property {number} [height] Image height
+ * @property {string} [format] Image format
  */
 export interface ImageMetadata {
   width?: number;
@@ -256,41 +259,42 @@ export interface ImageMetadata {
  * @constructor
  * Result of AnalyzeImage operation.
  *
- * @member {array} [categories] An array indicating identified categories.
- * @member {object} [adult]
- * @member {boolean} [adult.isAdultContent] A value indicating if the image
+ * @property {array} [categories] An array indicating identified categories.
+ * @property {object} [adult]
+ * @property {boolean} [adult.isAdultContent] A value indicating if the image
  * contains adult-oriented content.
- * @member {boolean} [adult.isRacyContent] A value indicating if the image is
+ * @property {boolean} [adult.isRacyContent] A value indicating if the image is
  * race.
- * @member {number} [adult.adultScore] Score from 0 to 1 that indicates how
+ * @property {number} [adult.adultScore] Score from 0 to 1 that indicates how
  * much of adult content is within the image.
- * @member {number} [adult.racyScore] Score from 0 to 1 that indicates how
+ * @property {number} [adult.racyScore] Score from 0 to 1 that indicates how
  * suggestive is the image.
- * @member {object} [color]
- * @member {string} [color.dominantColorForeground] Possible dominant
+ * @property {object} [color]
+ * @property {string} [color.dominantColorForeground] Possible dominant
  * foreground color.
- * @member {string} [color.dominantColorBackground] Possible dominant
+ * @property {string} [color.dominantColorBackground] Possible dominant
  * background color.
- * @member {array} [color.dominantColors] An array of possible dominant colors.
- * @member {string} [color.accentColor] Possible accent color.
- * @member {boolean} [color.isBWImg] A value indicating if the image is black
+ * @property {array} [color.dominantColors] An array of possible dominant
+ * colors.
+ * @property {string} [color.accentColor] Possible accent color.
+ * @property {boolean} [color.isBWImg] A value indicating if the image is black
  * and white.
- * @member {object} [imageType]
- * @member {number} [imageType.clipArtType] Confidence level that the image is
- * a clip art.
- * @member {number} [imageType.lineDrawingType] Confidence level that the image
- * is a line drawing.
- * @member {array} [tags] A list of tags with confidence level.
- * @member {object} [description]
- * @member {array} [description.tags] A collection of image tags.
- * @member {array} [description.captions] A list of captions, sorted by
+ * @property {object} [imageType]
+ * @property {number} [imageType.clipArtType] Confidence level that the image
+ * is a clip art.
+ * @property {number} [imageType.lineDrawingType] Confidence level that the
+ * image is a line drawing.
+ * @property {array} [tags] A list of tags with confidence level.
+ * @property {object} [description]
+ * @property {array} [description.tags] A collection of image tags.
+ * @property {array} [description.captions] A list of captions, sorted by
  * confidence level.
- * @member {array} [faces] An array of possible faces within the image.
- * @member {string} [requestId] Id of the request for tracking purposes.
- * @member {object} [metadata]
- * @member {number} [metadata.width] Image width
- * @member {number} [metadata.height] Image height
- * @member {string} [metadata.format] Image format
+ * @property {array} [faces] An array of possible faces within the image.
+ * @property {string} [requestId] Id of the request for tracking purposes.
+ * @property {object} [metadata]
+ * @property {number} [metadata.width] Image width
+ * @property {number} [metadata.height] Image height
+ * @property {string} [metadata.format] Image format
  */
 export interface ImageAnalysis {
   categories?: Category[];
@@ -310,13 +314,13 @@ export interface ImageAnalysis {
  * @constructor
  * Information on a recognized word.
  *
- * @member {string} [boundingBox] Bounding box of a recognized word. The four
+ * @property {string} [boundingBox] Bounding box of a recognized word. The four
  * integers represent the x-coordinate of the left edge, the y-coordinate of
  * the top edge, width, and height of the bounding box, in the coordinate
  * system of the input image, after it has been rotated around its center
  * according to the detected text angle (see textAngle property), with the
  * origin at the top-left corner, and the y-axis pointing down.
- * @member {string} [text] String value of a recognized word.
+ * @property {string} [text] String value of a recognized word.
  */
 export interface OcrWord {
   boundingBox?: string;
@@ -329,14 +333,14 @@ export interface OcrWord {
  * @constructor
  * An object describing a single recognized line of text.
  *
- * @member {string} [boundingBox] Bounding box of a recognized line. The four
+ * @property {string} [boundingBox] Bounding box of a recognized line. The four
  * integers represent the x-coordinate of the left edge, the y-coordinate of
  * the top edge, width, and height of the bounding box, in the coordinate
  * system of the input image, after it has been rotated around its center
  * according to the detected text angle (see textAngle property), with the
  * origin at the top-left corner, and the y-axis pointing down.
- * @member {array} [words] An array of objects, where each object represents a
- * recognized word.
+ * @property {array} [words] An array of objects, where each object represents
+ * a recognized word.
  */
 export interface OcrLine {
   boundingBox?: string;
@@ -350,13 +354,13 @@ export interface OcrLine {
  * A region consists of multiple lines (e.g. a column of text in a multi-column
  * document).
  *
- * @member {string} [boundingBox] Bounding box of a recognized region. The four
- * integers represent the x-coordinate of the left edge, the y-coordinate of
- * the top edge, width, and height of the bounding box, in the coordinate
+ * @property {string} [boundingBox] Bounding box of a recognized region. The
+ * four integers represent the x-coordinate of the left edge, the y-coordinate
+ * of the top edge, width, and height of the bounding box, in the coordinate
  * system of the input image, after it has been rotated around its center
  * according to the detected text angle (see textAngle property), with the
  * origin at the top-left corner, and the y-axis pointing down.
- * @member {array} [lines]
+ * @property {array} [lines]
  */
 export interface OcrRegion {
   boundingBox?: string;
@@ -367,9 +371,9 @@ export interface OcrRegion {
  * @class
  * Initializes a new instance of the OcrResult class.
  * @constructor
- * @member {string} [language] The BCP-47 language code of the text in the
+ * @property {string} [language] The BCP-47 language code of the text in the
  * image.
- * @member {number} [textAngle] The angle, in degrees, of the detected text
+ * @property {number} [textAngle] The angle, in degrees, of the detected text
  * with respect to the closest horizontal or vertical direction. After rotating
  * the input image clockwise by this angle, the recognized text lines become
  * horizontal or vertical. In combination with the orientation property it can
@@ -379,13 +383,13 @@ export interface OcrRegion {
  * confidently detected, this property is not present. If the image contains
  * text at different angles, only part of the text will be recognized
  * correctly.
- * @member {string} [orientation] Orientation of the text recognized in the
+ * @property {string} [orientation] Orientation of the text recognized in the
  * image. The value (up,down,left, or right) refers to the direction that the
  * top of the recognized text is facing, after the image has been rotated
  * around its center according to the detected text angle (see textAngle
  * property).
- * @member {array} [regions] An array of objects, where each object represents
- * a region of recognized text.
+ * @property {array} [regions] An array of objects, where each object
+ * represents a region of recognized text.
  */
 export interface OcrResult {
   language?: string;
@@ -400,8 +404,8 @@ export interface OcrResult {
  * @constructor
  * An object describing supported model by name and categories.
  *
- * @member {string} [name]
- * @member {array} [categories]
+ * @property {string} [name]
+ * @property {array} [categories]
  */
 export interface ModelDescription {
   name?: string;
@@ -414,7 +418,7 @@ export interface ModelDescription {
  * @constructor
  * Result of the List Domain Models operation.
  *
- * @member {array} [modelsProperty] An array of supported models.
+ * @property {array} [modelsProperty] An array of supported models.
  */
 export interface ListModelsResult {
   readonly modelsProperty?: ModelDescription[];
@@ -427,12 +431,12 @@ export interface ListModelsResult {
  * Result of image analysis using a specific domain model including additional
  * metadata.
  *
- * @member {object} [result] Model-specific response
- * @member {string} [requestId] Id of the REST API request.
- * @member {object} [metadata]
- * @member {number} [metadata.width] Image width
- * @member {number} [metadata.height] Image height
- * @member {string} [metadata.format] Image format
+ * @property {object} [result] Model-specific response
+ * @property {string} [requestId] Id of the REST API request.
+ * @property {object} [metadata]
+ * @property {number} [metadata.width] Image width
+ * @property {number} [metadata.height] Image height
+ * @property {string} [metadata.format] Image format
  */
 export interface DomainModelResults {
   result?: any;
@@ -446,12 +450,12 @@ export interface DomainModelResults {
  * @constructor
  * List of celebrities recognized in the image.
  *
- * @member {array} [celebrities]
- * @member {string} [requestId] Id of the REST API request.
- * @member {object} [metadata]
- * @member {number} [metadata.width] Image width
- * @member {number} [metadata.height] Image height
- * @member {string} [metadata.format] Image format
+ * @property {array} [celebrities]
+ * @property {string} [requestId] Id of the REST API request.
+ * @property {object} [metadata]
+ * @property {number} [metadata.width] Image width
+ * @property {number} [metadata.height] Image height
+ * @property {string} [metadata.format] Image format
  */
 export interface CelebrityResults {
   celebrities?: CelebritiesModel[];
@@ -465,12 +469,12 @@ export interface CelebrityResults {
  * @constructor
  * List of landmarks recognized in the image.
  *
- * @member {array} [landmarks]
- * @member {string} [requestId] Id of the REST API request.
- * @member {object} [metadata]
- * @member {number} [metadata.width] Image width
- * @member {number} [metadata.height] Image height
- * @member {string} [metadata.format] Image format
+ * @property {array} [landmarks]
+ * @property {string} [requestId] Id of the REST API request.
+ * @property {object} [metadata]
+ * @property {number} [metadata.width] Image width
+ * @property {number} [metadata.height] Image height
+ * @property {string} [metadata.format] Image format
  */
 export interface LandmarkResults {
   landmarks?: LandmarksModel[];
@@ -485,13 +489,13 @@ export interface LandmarkResults {
  * A collection of content tags, along with a list of captions sorted by
  * confidence level, and image metadata.
  *
- * @member {array} [tags] A collection of image tags.
- * @member {array} [captions] A list of captions, sorted by confidence level.
- * @member {string} [requestId] Id of the REST API request.
- * @member {object} [metadata]
- * @member {number} [metadata.width] Image width
- * @member {number} [metadata.height] Image height
- * @member {string} [metadata.format] Image format
+ * @property {array} [tags] A collection of image tags.
+ * @property {array} [captions] A list of captions, sorted by confidence level.
+ * @property {string} [requestId] Id of the REST API request.
+ * @property {object} [metadata]
+ * @property {number} [metadata.width] Image width
+ * @property {number} [metadata.height] Image height
+ * @property {string} [metadata.format] Image format
  */
 export interface ImageDescription {
   tags?: string[];
@@ -506,12 +510,12 @@ export interface ImageDescription {
  * @constructor
  * The results of a image tag operation, including any tags and image metadata.
  *
- * @member {array} [tags] A list of tags with confidence level.
- * @member {string} [requestId] Id of the REST API request.
- * @member {object} [metadata]
- * @member {number} [metadata.width] Image width
- * @member {number} [metadata.height] Image height
- * @member {string} [metadata.format] Image format
+ * @property {array} [tags] A list of tags with confidence level.
+ * @property {string} [requestId] Id of the REST API request.
+ * @property {object} [metadata]
+ * @property {number} [metadata.width] Image width
+ * @property {number} [metadata.height] Image height
+ * @property {string} [metadata.format] Image format
  */
 export interface TagResult {
   tags?: ImageTag[];
@@ -523,14 +527,14 @@ export interface TagResult {
  * @class
  * Initializes a new instance of the ComputerVisionError class.
  * @constructor
- * @member {string} code The error code. Possible values include:
+ * @property {string} code The error code. Possible values include:
  * 'InvalidImageUrl', 'InvalidImageFormat', 'InvalidImageSize',
  * 'NotSupportedVisualFeature', 'NotSupportedImage', 'InvalidDetails',
  * 'NotSupportedLanguage', 'BadArgument', 'FailedToProcess', 'Timeout',
  * 'InternalServerError', 'Unspecified', 'StorageException'
- * @member {string} message A message explaining the error reported by the
+ * @property {string} message A message explaining the error reported by the
  * service.
- * @member {string} [requestId] A unique request identifier.
+ * @property {string} [requestId] A unique request identifier.
  */
 export interface ComputerVisionError {
   code: string;
@@ -542,7 +546,7 @@ export interface ComputerVisionError {
  * @class
  * Initializes a new instance of the ImageUrl class.
  * @constructor
- * @member {string} url Publicly reachable URL of an image
+ * @property {string} url Publicly reachable URL of an image
  */
 export interface ImageUrl {
   url: string;
@@ -552,8 +556,8 @@ export interface ImageUrl {
  * @class
  * Initializes a new instance of the Word class.
  * @constructor
- * @member {array} [boundingBox]
- * @member {string} [text]
+ * @property {array} [boundingBox]
+ * @property {string} [text]
  */
 export interface Word {
   boundingBox?: number[];
@@ -564,9 +568,9 @@ export interface Word {
  * @class
  * Initializes a new instance of the Line class.
  * @constructor
- * @member {array} [boundingBox]
- * @member {string} [text]
- * @member {array} [words]
+ * @property {array} [boundingBox]
+ * @property {string} [text]
+ * @property {array} [words]
  */
 export interface Line {
   boundingBox?: number[];
@@ -578,7 +582,7 @@ export interface Line {
  * @class
  * Initializes a new instance of the RecognitionResult class.
  * @constructor
- * @member {array} [lines]
+ * @property {array} [lines]
  */
 export interface RecognitionResult {
   lines?: Line[];
@@ -588,10 +592,10 @@ export interface RecognitionResult {
  * @class
  * Initializes a new instance of the TextOperationResult class.
  * @constructor
- * @member {string} [status] Status of the text operation. Possible values
+ * @property {string} [status] Status of the text operation. Possible values
  * include: 'Not Started', 'Running', 'Failed', 'Succeeded'
- * @member {object} [recognitionResult]
- * @member {array} [recognitionResult.lines]
+ * @property {object} [recognitionResult]
+ * @property {array} [recognitionResult.lines]
  */
 export interface TextOperationResult {
   status?: string;

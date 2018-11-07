@@ -22,9 +22,9 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Resource properties.
  *
- * @member {string} [id] Resource ID
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
+ * @property {string} [id] Resource ID
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
  */
 export interface ProxyResource extends BaseResource {
   readonly id?: string;
@@ -38,8 +38,8 @@ export interface ProxyResource extends BaseResource {
  * @constructor
  * Resource properties including location and tags for track resources.
  *
- * @member {string} location The location the resource resides in.
- * @member {object} [tags] Application-specific metadata in the form of
+ * @property {string} location The location the resource resides in.
+ * @property {object} [tags] Application-specific metadata in the form of
  * key-value pairs.
  */
 export interface TrackedResource extends ProxyResource {
@@ -53,10 +53,11 @@ export interface TrackedResource extends ProxyResource {
  * @constructor
  * Storage Profile properties of a server
  *
- * @member {number} [backupRetentionDays] Backup retention days for the server.
- * @member {string} [geoRedundantBackup] Enable Geo-redundant or not for server
- * backup. Possible values include: 'Enabled', 'Disabled'
- * @member {number} [storageMB] Max storage allowed for a server.
+ * @property {number} [backupRetentionDays] Backup retention days for the
+ * server.
+ * @property {string} [geoRedundantBackup] Enable Geo-redundant or not for
+ * server backup. Possible values include: 'Enabled', 'Disabled'
+ * @property {number} [storageMB] Max storage allowed for a server.
  */
 export interface StorageProfile {
   backupRetentionDays?: number;
@@ -70,18 +71,18 @@ export interface StorageProfile {
  * @constructor
  * The properties used to create a new server.
  *
- * @member {string} [version] Server version. Possible values include: '5.6',
+ * @property {string} [version] Server version. Possible values include: '5.6',
  * '5.7'
- * @member {string} [sslEnforcement] Enable ssl enforcement or not when connect
- * to server. Possible values include: 'Enabled', 'Disabled'
- * @member {object} [storageProfile] Storage profile of a server.
- * @member {number} [storageProfile.backupRetentionDays] Backup retention days
- * for the server.
- * @member {string} [storageProfile.geoRedundantBackup] Enable Geo-redundant or
- * not for server backup. Possible values include: 'Enabled', 'Disabled'
- * @member {number} [storageProfile.storageMB] Max storage allowed for a
+ * @property {string} [sslEnforcement] Enable ssl enforcement or not when
+ * connect to server. Possible values include: 'Enabled', 'Disabled'
+ * @property {object} [storageProfile] Storage profile of a server.
+ * @property {number} [storageProfile.backupRetentionDays] Backup retention
+ * days for the server.
+ * @property {string} [storageProfile.geoRedundantBackup] Enable Geo-redundant
+ * or not for server backup. Possible values include: 'Enabled', 'Disabled'
+ * @property {number} [storageProfile.storageMB] Max storage allowed for a
  * server.
- * @member {string} createMode Polymorphic Discriminator
+ * @property {string} createMode Polymorphic Discriminator
  */
 export interface ServerPropertiesForCreate {
   version?: string;
@@ -96,10 +97,10 @@ export interface ServerPropertiesForCreate {
  * @constructor
  * The properties used to create a new server.
  *
- * @member {string} administratorLogin The administrator's login name of a
+ * @property {string} administratorLogin The administrator's login name of a
  * server. Can only be specified when the server is being created (and is
  * required for creation).
- * @member {string} administratorLoginPassword The password of the
+ * @property {string} administratorLoginPassword The password of the
  * administrator login.
  */
 export interface ServerPropertiesForDefaultCreate extends ServerPropertiesForCreate {
@@ -113,8 +114,8 @@ export interface ServerPropertiesForDefaultCreate extends ServerPropertiesForCre
  * @constructor
  * The properties used to create a new server by restoring from a backup.
  *
- * @member {string} sourceServerId The source server id to restore from.
- * @member {date} restorePointInTime Restore point creation time (ISO8601
+ * @property {string} sourceServerId The source server id to restore from.
+ * @property {date} restorePointInTime Restore point creation time (ISO8601
  * format), specifying the time to restore from.
  */
 export interface ServerPropertiesForRestore extends ServerPropertiesForCreate {
@@ -129,7 +130,7 @@ export interface ServerPropertiesForRestore extends ServerPropertiesForCreate {
  * The properties used to create a new server by restoring to a different
  * region from a geo replicated backup.
  *
- * @member {string} sourceServerId The source server id to restore from.
+ * @property {string} sourceServerId The source server id to restore from.
  */
 export interface ServerPropertiesForGeoRestore extends ServerPropertiesForCreate {
   sourceServerId: string;
@@ -141,15 +142,15 @@ export interface ServerPropertiesForGeoRestore extends ServerPropertiesForCreate
  * @constructor
  * Billing information related properties of a server.
  *
- * @member {string} [name] The name of the sku, typically, tier + family +
+ * @property {string} [name] The name of the sku, typically, tier + family +
  * cores, e.g. B_Gen4_1, GP_Gen5_8.
- * @member {string} [tier] The tier of the particular SKU, e.g. Basic. Possible
- * values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
- * @member {number} [capacity] The scale up/out capacity, representing server's
- * compute units.
- * @member {string} [size] The size code, to be interpreted by resource as
+ * @property {string} [tier] The tier of the particular SKU, e.g. Basic.
+ * Possible values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
+ * @property {number} [capacity] The scale up/out capacity, representing
+ * server's compute units.
+ * @property {string} [size] The size code, to be interpreted by resource as
  * appropriate.
- * @member {string} [family] The family of hardware.
+ * @property {string} [family] The family of hardware.
  */
 export interface Sku {
   name?: string;
@@ -165,35 +166,35 @@ export interface Sku {
  * @constructor
  * Represents a server.
  *
- * @member {object} [sku] The SKU (pricing tier) of the server.
- * @member {string} [sku.name] The name of the sku, typically, tier + family +
- * cores, e.g. B_Gen4_1, GP_Gen5_8.
- * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic.
+ * @property {object} [sku] The SKU (pricing tier) of the server.
+ * @property {string} [sku.name] The name of the sku, typically, tier + family
+ * + cores, e.g. B_Gen4_1, GP_Gen5_8.
+ * @property {string} [sku.tier] The tier of the particular SKU, e.g. Basic.
  * Possible values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
- * @member {number} [sku.capacity] The scale up/out capacity, representing
+ * @property {number} [sku.capacity] The scale up/out capacity, representing
  * server's compute units.
- * @member {string} [sku.size] The size code, to be interpreted by resource as
- * appropriate.
- * @member {string} [sku.family] The family of hardware.
- * @member {string} [administratorLogin] The administrator's login name of a
+ * @property {string} [sku.size] The size code, to be interpreted by resource
+ * as appropriate.
+ * @property {string} [sku.family] The family of hardware.
+ * @property {string} [administratorLogin] The administrator's login name of a
  * server. Can only be specified when the server is being created (and is
  * required for creation).
- * @member {string} [version] Server version. Possible values include: '5.6',
+ * @property {string} [version] Server version. Possible values include: '5.6',
  * '5.7'
- * @member {string} [sslEnforcement] Enable ssl enforcement or not when connect
- * to server. Possible values include: 'Enabled', 'Disabled'
- * @member {string} [userVisibleState] A state of a server that is visible to
+ * @property {string} [sslEnforcement] Enable ssl enforcement or not when
+ * connect to server. Possible values include: 'Enabled', 'Disabled'
+ * @property {string} [userVisibleState] A state of a server that is visible to
  * user. Possible values include: 'Ready', 'Dropping', 'Disabled'
- * @member {string} [fullyQualifiedDomainName] The fully qualified domain name
- * of a server.
- * @member {date} [earliestRestoreDate] Earliest restore point creation time
+ * @property {string} [fullyQualifiedDomainName] The fully qualified domain
+ * name of a server.
+ * @property {date} [earliestRestoreDate] Earliest restore point creation time
  * (ISO8601 format)
- * @member {object} [storageProfile] Storage profile of a server.
- * @member {number} [storageProfile.backupRetentionDays] Backup retention days
- * for the server.
- * @member {string} [storageProfile.geoRedundantBackup] Enable Geo-redundant or
- * not for server backup. Possible values include: 'Enabled', 'Disabled'
- * @member {number} [storageProfile.storageMB] Max storage allowed for a
+ * @property {object} [storageProfile] Storage profile of a server.
+ * @property {number} [storageProfile.backupRetentionDays] Backup retention
+ * days for the server.
+ * @property {string} [storageProfile.geoRedundantBackup] Enable Geo-redundant
+ * or not for server backup. Possible values include: 'Enabled', 'Disabled'
+ * @property {number} [storageProfile.storageMB] Max storage allowed for a
  * server.
  */
 export interface Server extends TrackedResource {
@@ -213,32 +214,32 @@ export interface Server extends TrackedResource {
  * @constructor
  * Represents a server to be created.
  *
- * @member {object} [sku] The SKU (pricing tier) of the server.
- * @member {string} [sku.name] The name of the sku, typically, tier + family +
- * cores, e.g. B_Gen4_1, GP_Gen5_8.
- * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic.
+ * @property {object} [sku] The SKU (pricing tier) of the server.
+ * @property {string} [sku.name] The name of the sku, typically, tier + family
+ * + cores, e.g. B_Gen4_1, GP_Gen5_8.
+ * @property {string} [sku.tier] The tier of the particular SKU, e.g. Basic.
  * Possible values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
- * @member {number} [sku.capacity] The scale up/out capacity, representing
+ * @property {number} [sku.capacity] The scale up/out capacity, representing
  * server's compute units.
- * @member {string} [sku.size] The size code, to be interpreted by resource as
- * appropriate.
- * @member {string} [sku.family] The family of hardware.
- * @member {object} properties Properties of the server.
- * @member {string} [properties.version] Server version. Possible values
+ * @property {string} [sku.size] The size code, to be interpreted by resource
+ * as appropriate.
+ * @property {string} [sku.family] The family of hardware.
+ * @property {object} properties Properties of the server.
+ * @property {string} [properties.version] Server version. Possible values
  * include: '5.6', '5.7'
- * @member {string} [properties.sslEnforcement] Enable ssl enforcement or not
+ * @property {string} [properties.sslEnforcement] Enable ssl enforcement or not
  * when connect to server. Possible values include: 'Enabled', 'Disabled'
- * @member {object} [properties.storageProfile] Storage profile of a server.
- * @member {number} [properties.storageProfile.backupRetentionDays] Backup
+ * @property {object} [properties.storageProfile] Storage profile of a server.
+ * @property {number} [properties.storageProfile.backupRetentionDays] Backup
  * retention days for the server.
- * @member {string} [properties.storageProfile.geoRedundantBackup] Enable
+ * @property {string} [properties.storageProfile.geoRedundantBackup] Enable
  * Geo-redundant or not for server backup. Possible values include: 'Enabled',
  * 'Disabled'
- * @member {number} [properties.storageProfile.storageMB] Max storage allowed
+ * @property {number} [properties.storageProfile.storageMB] Max storage allowed
  * for a server.
- * @member {string} [properties.createMode] Polymorphic Discriminator
- * @member {string} location The location the resource resides in.
- * @member {object} [tags] Application-specific metadata in the form of
+ * @property {string} [properties.createMode] Polymorphic Discriminator
+ * @property {string} location The location the resource resides in.
+ * @property {object} [tags] Application-specific metadata in the form of
  * key-value pairs.
  */
 export interface ServerForCreate {
@@ -254,30 +255,30 @@ export interface ServerForCreate {
  * @constructor
  * Parameters allowd to update for a server.
  *
- * @member {object} [sku] The SKU (pricing tier) of the server.
- * @member {string} [sku.name] The name of the sku, typically, tier + family +
- * cores, e.g. B_Gen4_1, GP_Gen5_8.
- * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic.
+ * @property {object} [sku] The SKU (pricing tier) of the server.
+ * @property {string} [sku.name] The name of the sku, typically, tier + family
+ * + cores, e.g. B_Gen4_1, GP_Gen5_8.
+ * @property {string} [sku.tier] The tier of the particular SKU, e.g. Basic.
  * Possible values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
- * @member {number} [sku.capacity] The scale up/out capacity, representing
+ * @property {number} [sku.capacity] The scale up/out capacity, representing
  * server's compute units.
- * @member {string} [sku.size] The size code, to be interpreted by resource as
- * appropriate.
- * @member {string} [sku.family] The family of hardware.
- * @member {object} [storageProfile] Storage profile of a server.
- * @member {number} [storageProfile.backupRetentionDays] Backup retention days
- * for the server.
- * @member {string} [storageProfile.geoRedundantBackup] Enable Geo-redundant or
- * not for server backup. Possible values include: 'Enabled', 'Disabled'
- * @member {number} [storageProfile.storageMB] Max storage allowed for a
+ * @property {string} [sku.size] The size code, to be interpreted by resource
+ * as appropriate.
+ * @property {string} [sku.family] The family of hardware.
+ * @property {object} [storageProfile] Storage profile of a server.
+ * @property {number} [storageProfile.backupRetentionDays] Backup retention
+ * days for the server.
+ * @property {string} [storageProfile.geoRedundantBackup] Enable Geo-redundant
+ * or not for server backup. Possible values include: 'Enabled', 'Disabled'
+ * @property {number} [storageProfile.storageMB] Max storage allowed for a
  * server.
- * @member {string} [administratorLoginPassword] The password of the
+ * @property {string} [administratorLoginPassword] The password of the
  * administrator login.
- * @member {string} [version] The version of a server. Possible values include:
- * '5.6', '5.7'
- * @member {string} [sslEnforcement] Enable ssl enforcement or not when connect
- * to server. Possible values include: 'Enabled', 'Disabled'
- * @member {object} [tags] Application-specific metadata in the form of
+ * @property {string} [version] The version of a server. Possible values
+ * include: '5.6', '5.7'
+ * @property {string} [sslEnforcement] Enable ssl enforcement or not when
+ * connect to server. Possible values include: 'Enabled', 'Disabled'
+ * @property {object} [tags] Application-specific metadata in the form of
  * key-value pairs.
  */
 export interface ServerUpdateParameters {
@@ -295,9 +296,9 @@ export interface ServerUpdateParameters {
  * @constructor
  * Represents a server firewall rule.
  *
- * @member {string} startIpAddress The start IP address of the server firewall
- * rule. Must be IPv4 format.
- * @member {string} endIpAddress The end IP address of the server firewall
+ * @property {string} startIpAddress The start IP address of the server
+ * firewall rule. Must be IPv4 format.
+ * @property {string} endIpAddress The end IP address of the server firewall
  * rule. Must be IPv4 format.
  */
 export interface FirewallRule extends ProxyResource {
@@ -311,11 +312,11 @@ export interface FirewallRule extends ProxyResource {
  * @constructor
  * A virtual network rule.
  *
- * @member {string} virtualNetworkSubnetId The ARM resource id of the virtual
+ * @property {string} virtualNetworkSubnetId The ARM resource id of the virtual
  * network subnet.
- * @member {boolean} [ignoreMissingVnetServiceEndpoint] Create firewall rule
+ * @property {boolean} [ignoreMissingVnetServiceEndpoint] Create firewall rule
  * before the virtual network has vnet service endpoint enabled.
- * @member {string} [state] Virtual Network Rule State. Possible values
+ * @property {string} [state] Virtual Network Rule State. Possible values
  * include: 'Initializing', 'InProgress', 'Ready', 'Deleting', 'Unknown'
  */
 export interface VirtualNetworkRule extends ProxyResource {
@@ -330,8 +331,8 @@ export interface VirtualNetworkRule extends ProxyResource {
  * @constructor
  * Represents a Database.
  *
- * @member {string} [charset] The charset of the database.
- * @member {string} [collation] The collation of the database.
+ * @property {string} [charset] The charset of the database.
+ * @property {string} [collation] The collation of the database.
  */
 export interface Database extends ProxyResource {
   charset?: string;
@@ -344,12 +345,12 @@ export interface Database extends ProxyResource {
  * @constructor
  * Represents a Configuration.
  *
- * @member {string} [value] Value of the configuration.
- * @member {string} [description] Description of the configuration.
- * @member {string} [defaultValue] Default value of the configuration.
- * @member {string} [dataType] Data type of the configuration.
- * @member {string} [allowedValues] Allowed values of the configuration.
- * @member {string} [source] Source of the configuration.
+ * @property {string} [value] Value of the configuration.
+ * @property {string} [description] Description of the configuration.
+ * @property {string} [defaultValue] Default value of the configuration.
+ * @property {string} [dataType] Data type of the configuration.
+ * @property {string} [allowedValues] Allowed values of the configuration.
+ * @property {string} [source] Source of the configuration.
  */
 export interface Configuration extends ProxyResource {
   value?: string;
@@ -366,10 +367,10 @@ export interface Configuration extends ProxyResource {
  * @constructor
  * Display metadata associated with the operation.
  *
- * @member {string} [provider] Operation resource provider name.
- * @member {string} [resource] Resource on which the operation is performed.
- * @member {string} [operation] Localized friendly name for the operation.
- * @member {string} [description] Operation description.
+ * @property {string} [provider] Operation resource provider name.
+ * @property {string} [resource] Resource on which the operation is performed.
+ * @property {string} [operation] Localized friendly name for the operation.
+ * @property {string} [description] Operation description.
  */
 export interface OperationDisplay {
   readonly provider?: string;
@@ -384,19 +385,19 @@ export interface OperationDisplay {
  * @constructor
  * REST API operation definition.
  *
- * @member {string} [name] The name of the operation being performed on this
+ * @property {string} [name] The name of the operation being performed on this
  * particular object.
- * @member {object} [display] The localized display information for this
+ * @property {object} [display] The localized display information for this
  * particular operation or action.
- * @member {string} [display.provider] Operation resource provider name.
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [display.provider] Operation resource provider name.
+ * @property {string} [display.resource] Resource on which the operation is
  * performed.
- * @member {string} [display.operation] Localized friendly name for the
+ * @property {string} [display.operation] Localized friendly name for the
  * operation.
- * @member {string} [display.description] Operation description.
- * @member {string} [origin] The intended executor of the operation. Possible
+ * @property {string} [display.description] Operation description.
+ * @property {string} [origin] The intended executor of the operation. Possible
  * values include: 'NotSpecified', 'user', 'system'
- * @member {object} [properties] Additional descriptions for the operation.
+ * @property {object} [properties] Additional descriptions for the operation.
  */
 export interface Operation {
   readonly name?: string;
@@ -411,7 +412,7 @@ export interface Operation {
  * @constructor
  * A list of resource provider operations.
  *
- * @member {array} [value] The list of resource provider operations.
+ * @property {array} [value] The list of resource provider operations.
  */
 export interface OperationListResult {
   value?: Operation[];
@@ -423,11 +424,11 @@ export interface OperationListResult {
  * @constructor
  * Represents a log file.
  *
- * @member {number} [sizeInKB] Size of the log file.
- * @member {date} [createdTime] Creation timestamp of the log file.
- * @member {date} [lastModifiedTime] Last modified timestamp of the log file.
- * @member {string} [logFileType] Type of the log file.
- * @member {string} [url] The url to download the log file from.
+ * @property {number} [sizeInKB] Size of the log file.
+ * @property {date} [createdTime] Creation timestamp of the log file.
+ * @property {date} [lastModifiedTime] Last modified timestamp of the log file.
+ * @property {string} [logFileType] Type of the log file.
+ * @property {string} [url] The url to download the log file from.
  */
 export interface LogFile extends ProxyResource {
   sizeInKB?: number;
@@ -443,17 +444,17 @@ export interface LogFile extends ProxyResource {
  * @constructor
  * Service level objectives for performance tier.
  *
- * @member {string} [id] ID for the service level objective.
- * @member {string} [edition] Edition of the performance tier.
- * @member {number} [vCore] vCore associated with the service level objective
- * @member {string} [hardwareGeneration] Hardware generation associated with
+ * @property {string} [id] ID for the service level objective.
+ * @property {string} [edition] Edition of the performance tier.
+ * @property {number} [vCore] vCore associated with the service level objective
+ * @property {string} [hardwareGeneration] Hardware generation associated with
  * the service level objective
- * @member {number} [maxBackupRetentionDays] Maximum Backup retention in days
+ * @property {number} [maxBackupRetentionDays] Maximum Backup retention in days
  * for the performance tier edition
- * @member {number} [minBackupRetentionDays] Minimum Backup retention in days
+ * @property {number} [minBackupRetentionDays] Minimum Backup retention in days
  * for the performance tier edition
- * @member {number} [maxStorageMB] Max storage allowed for a server.
- * @member {number} [minStorageMB] Max storage allowed for a server.
+ * @property {number} [maxStorageMB] Max storage allowed for a server.
+ * @property {number} [minStorageMB] Max storage allowed for a server.
  */
 export interface PerformanceTierServiceLevelObjectives {
   id?: string;
@@ -472,9 +473,9 @@ export interface PerformanceTierServiceLevelObjectives {
  * @constructor
  * Performance tier properties
  *
- * @member {string} [id] ID of the performance tier.
- * @member {array} [serviceLevelObjectives] Service level objectives associated
- * with the performance tier
+ * @property {string} [id] ID of the performance tier.
+ * @property {array} [serviceLevelObjectives] Service level objectives
+ * associated with the performance tier
  */
 export interface PerformanceTierProperties {
   id?: string;
@@ -487,8 +488,8 @@ export interface PerformanceTierProperties {
  * @constructor
  * Request from client to check resource name availability.
  *
- * @member {string} name Resource name to verify.
- * @member {string} [type] Resource type used for verification.
+ * @property {string} name Resource name to verify.
+ * @property {string} [type] Resource type used for verification.
  */
 export interface NameAvailabilityRequest {
   name: string;
@@ -501,10 +502,10 @@ export interface NameAvailabilityRequest {
  * @constructor
  * Represents a resource name availability.
  *
- * @member {string} [message] Error Message.
- * @member {boolean} [nameAvailable] Indicates whether the resource name is
+ * @property {string} [message] Error Message.
+ * @property {boolean} [nameAvailable] Indicates whether the resource name is
  * available.
- * @member {string} [reason] Reason for name being unavailable.
+ * @property {string} [reason] Reason for name being unavailable.
  */
 export interface NameAvailability {
   message?: string;
@@ -518,22 +519,22 @@ export interface NameAvailability {
  * @constructor
  * A server security alert policy.
  *
- * @member {string} state Specifies the state of the policy, whether it is
+ * @property {string} state Specifies the state of the policy, whether it is
  * enabled or disabled. Possible values include: 'Enabled', 'Disabled'
- * @member {array} [disabledAlerts] Specifies an array of alerts that are
+ * @property {array} [disabledAlerts] Specifies an array of alerts that are
  * disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability,
  * Access_Anomaly
- * @member {array} [emailAddresses] Specifies an array of e-mail addresses to
+ * @property {array} [emailAddresses] Specifies an array of e-mail addresses to
  * which the alert is sent.
- * @member {boolean} [emailAccountAdmins] Specifies that the alert is sent to
+ * @property {boolean} [emailAccountAdmins] Specifies that the alert is sent to
  * the account administrators.
- * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
- * https://MyAccount.blob.core.windows.net). This blob storage will hold all
- * Threat Detection audit logs.
- * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * @property {string} [storageEndpoint] Specifies the blob storage endpoint
+ * (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold
+ * all Threat Detection audit logs.
+ * @property {string} [storageAccountAccessKey] Specifies the identifier key of
  * the Threat Detection audit storage account.
- * @member {number} [retentionDays] Specifies the number of days to keep in the
- * Threat Detection audit logs.
+ * @property {number} [retentionDays] Specifies the number of days to keep in
+ * the Threat Detection audit logs.
  */
 export interface ServerSecurityAlertPolicy extends ProxyResource {
   state: string;
@@ -572,7 +573,7 @@ export interface FirewallRuleListResult extends Array<FirewallRule> {
  * @constructor
  * A list of virtual network rules.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface VirtualNetworkRuleListResult extends Array<VirtualNetworkRule> {
   readonly nextLink?: string;

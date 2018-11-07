@@ -22,7 +22,7 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * SKU details
  *
- * @member {string} name SKU name to specify whether the key vault is a
+ * @property {string} name SKU name to specify whether the key vault is a
  * standard vault or a premium vault. Possible values include: 'standard',
  * 'premium'
  */
@@ -36,10 +36,10 @@ export interface Sku {
  * @constructor
  * Permissions the identity has for keys, secrets, certificates and storage.
  *
- * @member {array} [keys] Permissions to keys
- * @member {array} [secrets] Permissions to secrets
- * @member {array} [certificates] Permissions to certificates
- * @member {array} [storage] Permissions to storage accounts
+ * @property {array} [keys] Permissions to keys
+ * @property {array} [secrets] Permissions to secrets
+ * @property {array} [certificates] Permissions to certificates
+ * @property {array} [storage] Permissions to storage accounts
  */
 export interface Permissions {
   keys?: string[];
@@ -55,19 +55,19 @@ export interface Permissions {
  * An identity that have access to the key vault. All identities in the array
  * must use the same tenant ID as the key vault's tenant ID.
  *
- * @member {uuid} tenantId The Azure Active Directory tenant ID that should be
- * used for authenticating requests to the key vault.
- * @member {string} objectId The object ID of a user, service principal or
+ * @property {uuid} tenantId The Azure Active Directory tenant ID that should
+ * be used for authenticating requests to the key vault.
+ * @property {string} objectId The object ID of a user, service principal or
  * security group in the Azure Active Directory tenant for the vault. The
  * object ID must be unique for the list of access policies.
- * @member {uuid} [applicationId] Application ID of the client making request
+ * @property {uuid} [applicationId] Application ID of the client making request
  * on behalf of a principal
- * @member {object} permissions Permissions the identity has for keys, secrets
- * and certificates.
- * @member {array} [permissions.keys] Permissions to keys
- * @member {array} [permissions.secrets] Permissions to secrets
- * @member {array} [permissions.certificates] Permissions to certificates
- * @member {array} [permissions.storage] Permissions to storage accounts
+ * @property {object} permissions Permissions the identity has for keys,
+ * secrets and certificates.
+ * @property {array} [permissions.keys] Permissions to keys
+ * @property {array} [permissions.secrets] Permissions to secrets
+ * @property {array} [permissions.certificates] Permissions to certificates
+ * @property {array} [permissions.storage] Permissions to storage accounts
  */
 export interface AccessPolicyEntry {
   tenantId: string;
@@ -83,7 +83,7 @@ export interface AccessPolicyEntry {
  * A rule governing the accesibility of a vault from a specific ip address or
  * ip range.
  *
- * @member {string} value An IPv4 address range in CIDR notation, such as
+ * @property {string} value An IPv4 address range in CIDR notation, such as
  * '124.56.78.91' (simple IP address) or '124.56.78.0/24' (all addresses that
  * start with 124.56.78).
  */
@@ -98,7 +98,7 @@ export interface IPRule {
  * A rule governing the accesibility of a vault from a specific virtual
  * network.
  *
- * @member {string} id Full resource id of a vnet subnet, such as
+ * @property {string} id Full resource id of a vnet subnet, such as
  * '/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1'.
  */
 export interface VirtualNetworkRule {
@@ -111,14 +111,14 @@ export interface VirtualNetworkRule {
  * @constructor
  * A set of rules governing the network accessibility of a vault.
  *
- * @member {string} [bypass] Tells what traffic can bypass network rules. This
- * can be 'AzureServices' or 'None'.  If not specified the default is
+ * @property {string} [bypass] Tells what traffic can bypass network rules.
+ * This can be 'AzureServices' or 'None'.  If not specified the default is
  * 'AzureServices'. Possible values include: 'AzureServices', 'None'
- * @member {string} [defaultAction] The default action when no rule from
+ * @property {string} [defaultAction] The default action when no rule from
  * ipRules and from virtualNetworkRules match. This is only used after the
  * bypass property has been evaluated. Possible values include: 'Allow', 'Deny'
- * @member {array} [ipRules] The list of IP address rules.
- * @member {array} [virtualNetworkRules] The list of virtual network rules.
+ * @property {array} [ipRules] The list of IP address rules.
+ * @property {array} [virtualNetworkRules] The list of virtual network rules.
  */
 export interface NetworkRuleSet {
   bypass?: string;
@@ -133,48 +133,50 @@ export interface NetworkRuleSet {
  * @constructor
  * Properties of the vault
  *
- * @member {uuid} tenantId The Azure Active Directory tenant ID that should be
- * used for authenticating requests to the key vault.
- * @member {object} sku SKU details
- * @member {string} [sku.name] SKU name to specify whether the key vault is a
+ * @property {uuid} tenantId The Azure Active Directory tenant ID that should
+ * be used for authenticating requests to the key vault.
+ * @property {object} sku SKU details
+ * @property {string} [sku.name] SKU name to specify whether the key vault is a
  * standard vault or a premium vault. Possible values include: 'standard',
  * 'premium'
- * @member {array} [accessPolicies] An array of 0 to 16 identities that have
+ * @property {array} [accessPolicies] An array of 0 to 16 identities that have
  * access to the key vault. All identities in the array must use the same
  * tenant ID as the key vault's tenant ID.
- * @member {string} [vaultUri] The URI of the vault for performing operations
+ * @property {string} [vaultUri] The URI of the vault for performing operations
  * on keys and secrets.
- * @member {boolean} [enabledForDeployment] Property to specify whether Azure
+ * @property {boolean} [enabledForDeployment] Property to specify whether Azure
  * Virtual Machines are permitted to retrieve certificates stored as secrets
  * from the key vault.
- * @member {boolean} [enabledForDiskEncryption] Property to specify whether
+ * @property {boolean} [enabledForDiskEncryption] Property to specify whether
  * Azure Disk Encryption is permitted to retrieve secrets from the vault and
  * unwrap keys.
- * @member {boolean} [enabledForTemplateDeployment] Property to specify whether
- * Azure Resource Manager is permitted to retrieve secrets from the key vault.
- * @member {boolean} [enableSoftDelete] Property to specify whether the 'soft
+ * @property {boolean} [enabledForTemplateDeployment] Property to specify
+ * whether Azure Resource Manager is permitted to retrieve secrets from the key
+ * vault.
+ * @property {boolean} [enableSoftDelete] Property to specify whether the 'soft
  * delete' functionality is enabled for this key vault. It does not accept
  * false value.
- * @member {string} [createMode] The vault's create mode to indicate whether
+ * @property {string} [createMode] The vault's create mode to indicate whether
  * the vault need to be recovered or not. Possible values include: 'recover',
  * 'default'
- * @member {boolean} [enablePurgeProtection] Property specifying whether
+ * @property {boolean} [enablePurgeProtection] Property specifying whether
  * protection against purge is enabled for this vault. Setting this property to
  * true activates protection against purge for this vault and its content -
  * only the Key Vault service may initiate a hard, irrecoverable deletion. The
  * setting is effective only if soft delete is also enabled. Enabling this
  * functionality is irreversible - that is, the property does not accept false
  * as its value.
- * @member {object} [networkAcls] A collection of rules governing the
+ * @property {object} [networkAcls] A collection of rules governing the
  * accessibility of the vault from specific network locations.
- * @member {string} [networkAcls.bypass] Tells what traffic can bypass network
- * rules. This can be 'AzureServices' or 'None'.  If not specified the default
- * is 'AzureServices'. Possible values include: 'AzureServices', 'None'
- * @member {string} [networkAcls.defaultAction] The default action when no rule
- * from ipRules and from virtualNetworkRules match. This is only used after the
- * bypass property has been evaluated. Possible values include: 'Allow', 'Deny'
- * @member {array} [networkAcls.ipRules] The list of IP address rules.
- * @member {array} [networkAcls.virtualNetworkRules] The list of virtual
+ * @property {string} [networkAcls.bypass] Tells what traffic can bypass
+ * network rules. This can be 'AzureServices' or 'None'.  If not specified the
+ * default is 'AzureServices'. Possible values include: 'AzureServices', 'None'
+ * @property {string} [networkAcls.defaultAction] The default action when no
+ * rule from ipRules and from virtualNetworkRules match. This is only used
+ * after the bypass property has been evaluated. Possible values include:
+ * 'Allow', 'Deny'
+ * @property {array} [networkAcls.ipRules] The list of IP address rules.
+ * @property {array} [networkAcls.virtualNetworkRules] The list of virtual
  * network rules.
  */
 export interface VaultProperties {
@@ -197,46 +199,48 @@ export interface VaultProperties {
  * @constructor
  * Properties of the vault
  *
- * @member {uuid} [tenantId] The Azure Active Directory tenant ID that should
+ * @property {uuid} [tenantId] The Azure Active Directory tenant ID that should
  * be used for authenticating requests to the key vault.
- * @member {object} [sku] SKU details
- * @member {string} [sku.name] SKU name to specify whether the key vault is a
+ * @property {object} [sku] SKU details
+ * @property {string} [sku.name] SKU name to specify whether the key vault is a
  * standard vault or a premium vault. Possible values include: 'standard',
  * 'premium'
- * @member {array} [accessPolicies] An array of 0 to 16 identities that have
+ * @property {array} [accessPolicies] An array of 0 to 16 identities that have
  * access to the key vault. All identities in the array must use the same
  * tenant ID as the key vault's tenant ID.
- * @member {boolean} [enabledForDeployment] Property to specify whether Azure
+ * @property {boolean} [enabledForDeployment] Property to specify whether Azure
  * Virtual Machines are permitted to retrieve certificates stored as secrets
  * from the key vault.
- * @member {boolean} [enabledForDiskEncryption] Property to specify whether
+ * @property {boolean} [enabledForDiskEncryption] Property to specify whether
  * Azure Disk Encryption is permitted to retrieve secrets from the vault and
  * unwrap keys.
- * @member {boolean} [enabledForTemplateDeployment] Property to specify whether
- * Azure Resource Manager is permitted to retrieve secrets from the key vault.
- * @member {boolean} [enableSoftDelete] Property to specify whether the 'soft
+ * @property {boolean} [enabledForTemplateDeployment] Property to specify
+ * whether Azure Resource Manager is permitted to retrieve secrets from the key
+ * vault.
+ * @property {boolean} [enableSoftDelete] Property to specify whether the 'soft
  * delete' functionality is enabled for this key vault. It does not accept
  * false value.
- * @member {string} [createMode] The vault's create mode to indicate whether
+ * @property {string} [createMode] The vault's create mode to indicate whether
  * the vault need to be recovered or not. Possible values include: 'recover',
  * 'default'
- * @member {boolean} [enablePurgeProtection] Property specifying whether
+ * @property {boolean} [enablePurgeProtection] Property specifying whether
  * protection against purge is enabled for this vault. Setting this property to
  * true activates protection against purge for this vault and its content -
  * only the Key Vault service may initiate a hard, irrecoverable deletion. The
  * setting is effective only if soft delete is also enabled. Enabling this
  * functionality is irreversible - that is, the property does not accept false
  * as its value.
- * @member {object} [networkAcls] A collection of rules governing the
+ * @property {object} [networkAcls] A collection of rules governing the
  * accessibility of the vault from specific network locations.
- * @member {string} [networkAcls.bypass] Tells what traffic can bypass network
- * rules. This can be 'AzureServices' or 'None'.  If not specified the default
- * is 'AzureServices'. Possible values include: 'AzureServices', 'None'
- * @member {string} [networkAcls.defaultAction] The default action when no rule
- * from ipRules and from virtualNetworkRules match. This is only used after the
- * bypass property has been evaluated. Possible values include: 'Allow', 'Deny'
- * @member {array} [networkAcls.ipRules] The list of IP address rules.
- * @member {array} [networkAcls.virtualNetworkRules] The list of virtual
+ * @property {string} [networkAcls.bypass] Tells what traffic can bypass
+ * network rules. This can be 'AzureServices' or 'None'.  If not specified the
+ * default is 'AzureServices'. Possible values include: 'AzureServices', 'None'
+ * @property {string} [networkAcls.defaultAction] The default action when no
+ * rule from ipRules and from virtualNetworkRules match. This is only used
+ * after the bypass property has been evaluated. Possible values include:
+ * 'Allow', 'Deny'
+ * @property {array} [networkAcls.ipRules] The list of IP address rules.
+ * @property {array} [networkAcls.virtualNetworkRules] The list of virtual
  * network rules.
  */
 export interface VaultPatchProperties {
@@ -258,7 +262,7 @@ export interface VaultPatchProperties {
  * @constructor
  * Properties of the vault access policy
  *
- * @member {array} accessPolicies An array of 0 to 16 identities that have
+ * @property {array} accessPolicies An array of 0 to 16 identities that have
  * access to the key vault. All identities in the array must use the same
  * tenant ID as the key vault's tenant ID.
  */
@@ -272,11 +276,11 @@ export interface VaultAccessPolicyProperties {
  * @constructor
  * Properties of the deleted vault.
  *
- * @member {string} [vaultId] The resource id of the original vault.
- * @member {string} [location] The location of the original vault.
- * @member {date} [deletionDate] The deleted date.
- * @member {date} [scheduledPurgeDate] The scheduled purged date.
- * @member {object} [tags] Tags of the original vault.
+ * @property {string} [vaultId] The resource id of the original vault.
+ * @property {string} [location] The location of the original vault.
+ * @property {date} [deletionDate] The deleted date.
+ * @property {date} [scheduledPurgeDate] The scheduled purged date.
+ * @property {object} [tags] Tags of the original vault.
  */
 export interface DeletedVaultProperties {
   readonly vaultId?: string;
@@ -292,56 +296,56 @@ export interface DeletedVaultProperties {
  * @constructor
  * Parameters for creating or updating a vault
  *
- * @member {string} location The supported Azure location where the key vault
+ * @property {string} location The supported Azure location where the key vault
  * should be created.
- * @member {object} [tags] The tags that will be assigned to the key vault.
- * @member {object} properties Properties of the vault
- * @member {uuid} [properties.tenantId] The Azure Active Directory tenant ID
+ * @property {object} [tags] The tags that will be assigned to the key vault.
+ * @property {object} properties Properties of the vault
+ * @property {uuid} [properties.tenantId] The Azure Active Directory tenant ID
  * that should be used for authenticating requests to the key vault.
- * @member {object} [properties.sku] SKU details
- * @member {string} [properties.sku.name] SKU name to specify whether the key
+ * @property {object} [properties.sku] SKU details
+ * @property {string} [properties.sku.name] SKU name to specify whether the key
  * vault is a standard vault or a premium vault. Possible values include:
  * 'standard', 'premium'
- * @member {array} [properties.accessPolicies] An array of 0 to 16 identities
+ * @property {array} [properties.accessPolicies] An array of 0 to 16 identities
  * that have access to the key vault. All identities in the array must use the
  * same tenant ID as the key vault's tenant ID.
- * @member {string} [properties.vaultUri] The URI of the vault for performing
+ * @property {string} [properties.vaultUri] The URI of the vault for performing
  * operations on keys and secrets.
- * @member {boolean} [properties.enabledForDeployment] Property to specify
+ * @property {boolean} [properties.enabledForDeployment] Property to specify
  * whether Azure Virtual Machines are permitted to retrieve certificates stored
  * as secrets from the key vault.
- * @member {boolean} [properties.enabledForDiskEncryption] Property to specify
- * whether Azure Disk Encryption is permitted to retrieve secrets from the
- * vault and unwrap keys.
- * @member {boolean} [properties.enabledForTemplateDeployment] Property to
+ * @property {boolean} [properties.enabledForDiskEncryption] Property to
+ * specify whether Azure Disk Encryption is permitted to retrieve secrets from
+ * the vault and unwrap keys.
+ * @property {boolean} [properties.enabledForTemplateDeployment] Property to
  * specify whether Azure Resource Manager is permitted to retrieve secrets from
  * the key vault.
- * @member {boolean} [properties.enableSoftDelete] Property to specify whether
- * the 'soft delete' functionality is enabled for this key vault. It does not
- * accept false value.
- * @member {string} [properties.createMode] The vault's create mode to indicate
- * whether the vault need to be recovered or not. Possible values include:
- * 'recover', 'default'
- * @member {boolean} [properties.enablePurgeProtection] Property specifying
+ * @property {boolean} [properties.enableSoftDelete] Property to specify
+ * whether the 'soft delete' functionality is enabled for this key vault. It
+ * does not accept false value.
+ * @property {string} [properties.createMode] The vault's create mode to
+ * indicate whether the vault need to be recovered or not. Possible values
+ * include: 'recover', 'default'
+ * @property {boolean} [properties.enablePurgeProtection] Property specifying
  * whether protection against purge is enabled for this vault. Setting this
  * property to true activates protection against purge for this vault and its
  * content - only the Key Vault service may initiate a hard, irrecoverable
  * deletion. The setting is effective only if soft delete is also enabled.
  * Enabling this functionality is irreversible - that is, the property does not
  * accept false as its value.
- * @member {object} [properties.networkAcls] A collection of rules governing
+ * @property {object} [properties.networkAcls] A collection of rules governing
  * the accessibility of the vault from specific network locations.
- * @member {string} [properties.networkAcls.bypass] Tells what traffic can
+ * @property {string} [properties.networkAcls.bypass] Tells what traffic can
  * bypass network rules. This can be 'AzureServices' or 'None'.  If not
  * specified the default is 'AzureServices'. Possible values include:
  * 'AzureServices', 'None'
- * @member {string} [properties.networkAcls.defaultAction] The default action
+ * @property {string} [properties.networkAcls.defaultAction] The default action
  * when no rule from ipRules and from virtualNetworkRules match. This is only
  * used after the bypass property has been evaluated. Possible values include:
  * 'Allow', 'Deny'
- * @member {array} [properties.networkAcls.ipRules] The list of IP address
+ * @property {array} [properties.networkAcls.ipRules] The list of IP address
  * rules.
- * @member {array} [properties.networkAcls.virtualNetworkRules] The list of
+ * @property {array} [properties.networkAcls.virtualNetworkRules] The list of
  * virtual network rules.
  */
 export interface VaultCreateOrUpdateParameters extends BaseResource {
@@ -356,52 +360,52 @@ export interface VaultCreateOrUpdateParameters extends BaseResource {
  * @constructor
  * Parameters for creating or updating a vault
  *
- * @member {object} [tags] The tags that will be assigned to the key vault.
- * @member {object} [properties] Properties of the vault
- * @member {uuid} [properties.tenantId] The Azure Active Directory tenant ID
+ * @property {object} [tags] The tags that will be assigned to the key vault.
+ * @property {object} [properties] Properties of the vault
+ * @property {uuid} [properties.tenantId] The Azure Active Directory tenant ID
  * that should be used for authenticating requests to the key vault.
- * @member {object} [properties.sku] SKU details
- * @member {string} [properties.sku.name] SKU name to specify whether the key
+ * @property {object} [properties.sku] SKU details
+ * @property {string} [properties.sku.name] SKU name to specify whether the key
  * vault is a standard vault or a premium vault. Possible values include:
  * 'standard', 'premium'
- * @member {array} [properties.accessPolicies] An array of 0 to 16 identities
+ * @property {array} [properties.accessPolicies] An array of 0 to 16 identities
  * that have access to the key vault. All identities in the array must use the
  * same tenant ID as the key vault's tenant ID.
- * @member {boolean} [properties.enabledForDeployment] Property to specify
+ * @property {boolean} [properties.enabledForDeployment] Property to specify
  * whether Azure Virtual Machines are permitted to retrieve certificates stored
  * as secrets from the key vault.
- * @member {boolean} [properties.enabledForDiskEncryption] Property to specify
- * whether Azure Disk Encryption is permitted to retrieve secrets from the
- * vault and unwrap keys.
- * @member {boolean} [properties.enabledForTemplateDeployment] Property to
+ * @property {boolean} [properties.enabledForDiskEncryption] Property to
+ * specify whether Azure Disk Encryption is permitted to retrieve secrets from
+ * the vault and unwrap keys.
+ * @property {boolean} [properties.enabledForTemplateDeployment] Property to
  * specify whether Azure Resource Manager is permitted to retrieve secrets from
  * the key vault.
- * @member {boolean} [properties.enableSoftDelete] Property to specify whether
- * the 'soft delete' functionality is enabled for this key vault. It does not
- * accept false value.
- * @member {string} [properties.createMode] The vault's create mode to indicate
- * whether the vault need to be recovered or not. Possible values include:
- * 'recover', 'default'
- * @member {boolean} [properties.enablePurgeProtection] Property specifying
+ * @property {boolean} [properties.enableSoftDelete] Property to specify
+ * whether the 'soft delete' functionality is enabled for this key vault. It
+ * does not accept false value.
+ * @property {string} [properties.createMode] The vault's create mode to
+ * indicate whether the vault need to be recovered or not. Possible values
+ * include: 'recover', 'default'
+ * @property {boolean} [properties.enablePurgeProtection] Property specifying
  * whether protection against purge is enabled for this vault. Setting this
  * property to true activates protection against purge for this vault and its
  * content - only the Key Vault service may initiate a hard, irrecoverable
  * deletion. The setting is effective only if soft delete is also enabled.
  * Enabling this functionality is irreversible - that is, the property does not
  * accept false as its value.
- * @member {object} [properties.networkAcls] A collection of rules governing
+ * @property {object} [properties.networkAcls] A collection of rules governing
  * the accessibility of the vault from specific network locations.
- * @member {string} [properties.networkAcls.bypass] Tells what traffic can
+ * @property {string} [properties.networkAcls.bypass] Tells what traffic can
  * bypass network rules. This can be 'AzureServices' or 'None'.  If not
  * specified the default is 'AzureServices'. Possible values include:
  * 'AzureServices', 'None'
- * @member {string} [properties.networkAcls.defaultAction] The default action
+ * @property {string} [properties.networkAcls.defaultAction] The default action
  * when no rule from ipRules and from virtualNetworkRules match. This is only
  * used after the bypass property has been evaluated. Possible values include:
  * 'Allow', 'Deny'
- * @member {array} [properties.networkAcls.ipRules] The list of IP address
+ * @property {array} [properties.networkAcls.ipRules] The list of IP address
  * rules.
- * @member {array} [properties.networkAcls.virtualNetworkRules] The list of
+ * @property {array} [properties.networkAcls.virtualNetworkRules] The list of
  * virtual network rules.
  */
 export interface VaultPatchParameters extends BaseResource {
@@ -415,12 +419,12 @@ export interface VaultPatchParameters extends BaseResource {
  * @constructor
  * Parameters for updating the access policy in a vault
  *
- * @member {string} [id] The resource id of the access policy.
- * @member {string} [name] The resource name of the access policy.
- * @member {string} [type] The resource name of the access policy.
- * @member {string} [location] The resource type of the the access policy.
- * @member {object} properties Properties of the access policy
- * @member {array} [properties.accessPolicies] An array of 0 to 16 identities
+ * @property {string} [id] The resource id of the access policy.
+ * @property {string} [name] The resource name of the access policy.
+ * @property {string} [type] The resource name of the access policy.
+ * @property {string} [location] The resource type of the the access policy.
+ * @property {object} properties Properties of the access policy
+ * @property {array} [properties.accessPolicies] An array of 0 to 16 identities
  * that have access to the key vault. All identities in the array must use the
  * same tenant ID as the key vault's tenant ID.
  */
@@ -438,13 +442,13 @@ export interface VaultAccessPolicyParameters extends BaseResource {
  * @constructor
  * Key Vault resource
  *
- * @member {string} [id] The Azure Resource Manager resource ID for the key
+ * @property {string} [id] The Azure Resource Manager resource ID for the key
  * vault.
- * @member {string} [name] The name of the key vault.
- * @member {string} [type] The resource type of the key vault.
- * @member {string} location The supported Azure location where the key vault
+ * @property {string} [name] The name of the key vault.
+ * @property {string} [type] The resource type of the key vault.
+ * @property {string} location The supported Azure location where the key vault
  * should be created.
- * @member {object} [tags] The tags that will be assigned to the key vault.
+ * @property {object} [tags] The tags that will be assigned to the key vault.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -460,53 +464,53 @@ export interface Resource extends BaseResource {
  * @constructor
  * Resource information with extended details.
  *
- * @member {object} properties Properties of the vault
- * @member {uuid} [properties.tenantId] The Azure Active Directory tenant ID
+ * @property {object} properties Properties of the vault
+ * @property {uuid} [properties.tenantId] The Azure Active Directory tenant ID
  * that should be used for authenticating requests to the key vault.
- * @member {object} [properties.sku] SKU details
- * @member {string} [properties.sku.name] SKU name to specify whether the key
+ * @property {object} [properties.sku] SKU details
+ * @property {string} [properties.sku.name] SKU name to specify whether the key
  * vault is a standard vault or a premium vault. Possible values include:
  * 'standard', 'premium'
- * @member {array} [properties.accessPolicies] An array of 0 to 16 identities
+ * @property {array} [properties.accessPolicies] An array of 0 to 16 identities
  * that have access to the key vault. All identities in the array must use the
  * same tenant ID as the key vault's tenant ID.
- * @member {string} [properties.vaultUri] The URI of the vault for performing
+ * @property {string} [properties.vaultUri] The URI of the vault for performing
  * operations on keys and secrets.
- * @member {boolean} [properties.enabledForDeployment] Property to specify
+ * @property {boolean} [properties.enabledForDeployment] Property to specify
  * whether Azure Virtual Machines are permitted to retrieve certificates stored
  * as secrets from the key vault.
- * @member {boolean} [properties.enabledForDiskEncryption] Property to specify
- * whether Azure Disk Encryption is permitted to retrieve secrets from the
- * vault and unwrap keys.
- * @member {boolean} [properties.enabledForTemplateDeployment] Property to
+ * @property {boolean} [properties.enabledForDiskEncryption] Property to
+ * specify whether Azure Disk Encryption is permitted to retrieve secrets from
+ * the vault and unwrap keys.
+ * @property {boolean} [properties.enabledForTemplateDeployment] Property to
  * specify whether Azure Resource Manager is permitted to retrieve secrets from
  * the key vault.
- * @member {boolean} [properties.enableSoftDelete] Property to specify whether
- * the 'soft delete' functionality is enabled for this key vault. It does not
- * accept false value.
- * @member {string} [properties.createMode] The vault's create mode to indicate
- * whether the vault need to be recovered or not. Possible values include:
- * 'recover', 'default'
- * @member {boolean} [properties.enablePurgeProtection] Property specifying
+ * @property {boolean} [properties.enableSoftDelete] Property to specify
+ * whether the 'soft delete' functionality is enabled for this key vault. It
+ * does not accept false value.
+ * @property {string} [properties.createMode] The vault's create mode to
+ * indicate whether the vault need to be recovered or not. Possible values
+ * include: 'recover', 'default'
+ * @property {boolean} [properties.enablePurgeProtection] Property specifying
  * whether protection against purge is enabled for this vault. Setting this
  * property to true activates protection against purge for this vault and its
  * content - only the Key Vault service may initiate a hard, irrecoverable
  * deletion. The setting is effective only if soft delete is also enabled.
  * Enabling this functionality is irreversible - that is, the property does not
  * accept false as its value.
- * @member {object} [properties.networkAcls] A collection of rules governing
+ * @property {object} [properties.networkAcls] A collection of rules governing
  * the accessibility of the vault from specific network locations.
- * @member {string} [properties.networkAcls.bypass] Tells what traffic can
+ * @property {string} [properties.networkAcls.bypass] Tells what traffic can
  * bypass network rules. This can be 'AzureServices' or 'None'.  If not
  * specified the default is 'AzureServices'. Possible values include:
  * 'AzureServices', 'None'
- * @member {string} [properties.networkAcls.defaultAction] The default action
+ * @property {string} [properties.networkAcls.defaultAction] The default action
  * when no rule from ipRules and from virtualNetworkRules match. This is only
  * used after the bypass property has been evaluated. Possible values include:
  * 'Allow', 'Deny'
- * @member {array} [properties.networkAcls.ipRules] The list of IP address
+ * @property {array} [properties.networkAcls.ipRules] The list of IP address
  * rules.
- * @member {array} [properties.networkAcls.virtualNetworkRules] The list of
+ * @property {array} [properties.networkAcls.virtualNetworkRules] The list of
  * virtual network rules.
  */
 export interface Vault extends Resource {
@@ -519,15 +523,16 @@ export interface Vault extends Resource {
  * @constructor
  * Deleted vault information with extended details.
  *
- * @member {string} [id] The resource ID for the deleted key vault.
- * @member {string} [name] The name of the key vault.
- * @member {string} [type] The resource type of the key vault.
- * @member {object} [properties] Properties of the vault
- * @member {string} [properties.vaultId] The resource id of the original vault.
- * @member {string} [properties.location] The location of the original vault.
- * @member {date} [properties.deletionDate] The deleted date.
- * @member {date} [properties.scheduledPurgeDate] The scheduled purged date.
- * @member {object} [properties.tags] Tags of the original vault.
+ * @property {string} [id] The resource ID for the deleted key vault.
+ * @property {string} [name] The name of the key vault.
+ * @property {string} [type] The resource type of the key vault.
+ * @property {object} [properties] Properties of the vault
+ * @property {string} [properties.vaultId] The resource id of the original
+ * vault.
+ * @property {string} [properties.location] The location of the original vault.
+ * @property {date} [properties.deletionDate] The deleted date.
+ * @property {date} [properties.scheduledPurgeDate] The scheduled purged date.
+ * @property {object} [properties.tags] Tags of the original vault.
  */
 export interface DeletedVault {
   readonly id?: string;
@@ -542,7 +547,7 @@ export interface DeletedVault {
  * @constructor
  * The parameters used to check the availabity of the vault name.
  *
- * @member {string} name The vault name.
+ * @property {string} name The vault name.
  */
 export interface VaultCheckNameAvailabilityParameters {
   name: string;
@@ -554,13 +559,13 @@ export interface VaultCheckNameAvailabilityParameters {
  * @constructor
  * The CheckNameAvailability operation response.
  *
- * @member {boolean} [nameAvailable] A boolean value that indicates whether the
- * name is available for you to use. If true, the name is available. If false,
- * the name has already been taken or is invalid and cannot be used.
- * @member {string} [reason] The reason that a vault name could not be used.
+ * @property {boolean} [nameAvailable] A boolean value that indicates whether
+ * the name is available for you to use. If true, the name is available. If
+ * false, the name has already been taken or is invalid and cannot be used.
+ * @property {string} [reason] The reason that a vault name could not be used.
  * The Reason element is only returned if NameAvailable is false. Possible
  * values include: 'AccountNameInvalid', 'AlreadyExists'
- * @member {string} [message] An error message explaining the Reason value in
+ * @property {string} [message] An error message explaining the Reason value in
  * more detail.
  */
 export interface CheckNameAvailabilityResult {
@@ -575,11 +580,11 @@ export interface CheckNameAvailabilityResult {
  * @constructor
  * Display metadata associated with the operation.
  *
- * @member {string} [provider] Service provider: Microsoft Key Vault.
- * @member {string} [resource] Resource on which the operation is performed
+ * @property {string} [provider] Service provider: Microsoft Key Vault.
+ * @property {string} [resource] Resource on which the operation is performed
  * etc.
- * @member {string} [operation] Type of operation: get, read, delete, etc.
- * @member {string} [description] Decription of operation.
+ * @property {string} [operation] Type of operation: get, read, delete, etc.
+ * @property {string} [description] Decription of operation.
  */
 export interface OperationDisplay {
   provider?: string;
@@ -594,9 +599,9 @@ export interface OperationDisplay {
  * @constructor
  * Log specification of operation.
  *
- * @member {string} [name] Name of log specification.
- * @member {string} [displayName] Display name of log specification.
- * @member {string} [blobDuration] Blob duration of specification.
+ * @property {string} [name] Name of log specification.
+ * @property {string} [displayName] Display name of log specification.
+ * @property {string} [blobDuration] Blob duration of specification.
  */
 export interface LogSpecification {
   name?: string;
@@ -610,7 +615,7 @@ export interface LogSpecification {
  * @constructor
  * One property of operation, include log specifications.
  *
- * @member {array} [logSpecifications] Log specifications of operation.
+ * @property {array} [logSpecifications] Log specifications of operation.
  */
 export interface ServiceSpecification {
   logSpecifications?: LogSpecification[];
@@ -622,19 +627,19 @@ export interface ServiceSpecification {
  * @constructor
  * Key Vault REST API operation definition.
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] Display metadata associated with the operation.
- * @member {string} [display.provider] Service provider: Microsoft Key Vault.
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] Display metadata associated with the operation.
+ * @property {string} [display.provider] Service provider: Microsoft Key Vault.
+ * @property {string} [display.resource] Resource on which the operation is
  * performed etc.
- * @member {string} [display.operation] Type of operation: get, read, delete,
+ * @property {string} [display.operation] Type of operation: get, read, delete,
  * etc.
- * @member {string} [display.description] Decription of operation.
- * @member {string} [origin] The origin of operations.
- * @member {object} [serviceSpecification] One property of operation, include
+ * @property {string} [display.description] Decription of operation.
+ * @property {string} [origin] The origin of operations.
+ * @property {object} [serviceSpecification] One property of operation, include
  * metric specifications.
- * @member {array} [serviceSpecification.logSpecifications] Log specifications
- * of operation.
+ * @property {array} [serviceSpecification.logSpecifications] Log
+ * specifications of operation.
  */
 export interface Operation {
   name?: string;
@@ -650,7 +655,7 @@ export interface Operation {
  * @constructor
  * List of vaults
  *
- * @member {string} [nextLink] The URL to get the next set of vaults.
+ * @property {string} [nextLink] The URL to get the next set of vaults.
  */
 export interface VaultListResult extends Array<Vault> {
   nextLink?: string;
@@ -662,7 +667,7 @@ export interface VaultListResult extends Array<Vault> {
  * @constructor
  * List of vaults
  *
- * @member {string} [nextLink] The URL to get the next set of deleted vaults.
+ * @property {string} [nextLink] The URL to get the next set of deleted vaults.
  */
 export interface DeletedVaultListResult extends Array<DeletedVault> {
   nextLink?: string;
@@ -674,7 +679,8 @@ export interface DeletedVaultListResult extends Array<DeletedVault> {
  * @constructor
  * List of vault resources.
  *
- * @member {string} [nextLink] The URL to get the next set of vault resources.
+ * @property {string} [nextLink] The URL to get the next set of vault
+ * resources.
  */
 export interface ResourceListResult extends Array<Resource> {
   nextLink?: string;
@@ -687,7 +693,7 @@ export interface ResourceListResult extends Array<Resource> {
  * Result of the request to list Storage operations. It contains a list of
  * operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] The URL to get the next set of operations.
+ * @property {string} [nextLink] The URL to get the next set of operations.
  */
 export interface OperationListResult extends Array<Operation> {
   nextLink?: string;

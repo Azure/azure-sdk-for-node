@@ -14,6 +14,81 @@ import * as models from '../models';
 
 /**
  * @class
+ * ContainerHostMappings
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DevSpacesManagementClient.
+ */
+export interface ContainerHostMappings {
+
+
+    /**
+     * @summary Returns container host mapping object for a container host resource
+     * ID if an associated controller exists.
+     *
+     * @param {object} containerHostMapping
+     *
+     * @param {string} [containerHostMapping.containerHostResourceId] ARM ID of the
+     * Container Host resource
+     *
+     * @param {string} location Location of the container host.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getContainerHostMappingWithHttpOperationResponse(containerHostMapping: models.ContainerHostMapping, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Returns container host mapping object for a container host resource
+     * ID if an associated controller exists.
+     *
+     * @param {object} containerHostMapping
+     *
+     * @param {string} [containerHostMapping.containerHostResourceId] ARM ID of the
+     * Container Host resource
+     *
+     * @param {string} location Location of the container host.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getContainerHostMapping(containerHostMapping: models.ContainerHostMapping, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getContainerHostMapping(containerHostMapping: models.ContainerHostMapping, location: string, callback: ServiceCallback<any>): void;
+    getContainerHostMapping(containerHostMapping: models.ContainerHostMapping, location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+}
+
+/**
+ * @class
  * Controllers
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DevSpacesManagementClient.
@@ -268,7 +343,8 @@ export interface Controllers {
      *
      * @param {string} name Name of the resource.
      *
-     * @param {object} controllerUpdateParameters
+     * @param {object} controllerUpdateParameters Parameters for updating the Azure
+     * Dev Spaces Controller.
      *
      * @param {object} [controllerUpdateParameters.tags] Tags for the Azure Dev
      * Spaces Controller.
@@ -297,7 +373,8 @@ export interface Controllers {
      *
      * @param {string} name Name of the resource.
      *
-     * @param {object} controllerUpdateParameters
+     * @param {object} controllerUpdateParameters Parameters for updating the Azure
+     * Dev Spaces Controller.
      *
      * @param {object} [controllerUpdateParameters.tags] Tags for the Azure Dev
      * Spaces Controller.

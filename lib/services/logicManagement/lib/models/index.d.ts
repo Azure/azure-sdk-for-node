@@ -22,11 +22,11 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * The base resource type.
  *
- * @member {string} [id] The resource id.
- * @member {string} [name] Gets the resource name.
- * @member {string} [type] Gets the resource type.
- * @member {string} [location] The resource location.
- * @member {object} [tags] The resource tags.
+ * @property {string} [id] The resource id.
+ * @property {string} [name] Gets the resource name.
+ * @property {string} [type] Gets the resource type.
+ * @property {string} [location] The resource location.
+ * @property {object} [tags] The resource tags.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -42,7 +42,7 @@ export interface Resource extends BaseResource {
  * @constructor
  * The sub resource type.
  *
- * @member {string} [id] The resource id.
+ * @property {string} [id] The resource id.
  */
 export interface SubResource extends BaseResource {
   readonly id?: string;
@@ -54,9 +54,9 @@ export interface SubResource extends BaseResource {
  * @constructor
  * The resource reference.
  *
- * @member {string} [id] The resource id.
- * @member {string} [name] Gets the resource name.
- * @member {string} [type] Gets the resource type.
+ * @property {string} [id] The resource id.
+ * @property {string} [name] Gets the resource name.
+ * @property {string} [type] Gets the resource type.
  */
 export interface ResourceReference {
   readonly id?: string;
@@ -70,12 +70,12 @@ export interface ResourceReference {
  * @constructor
  * The sku type.
  *
- * @member {string} name The name. Possible values include: 'NotSpecified',
+ * @property {string} name The name. Possible values include: 'NotSpecified',
  * 'Free', 'Shared', 'Basic', 'Standard', 'Premium'
- * @member {object} [plan] The reference to plan.
- * @member {string} [plan.id] The resource id.
- * @member {string} [plan.name] Gets the resource name.
- * @member {string} [plan.type] Gets the resource type.
+ * @property {object} [plan] The reference to plan.
+ * @property {string} [plan.id] The resource id.
+ * @property {string} [plan.name] Gets the resource name.
+ * @property {string} [plan.type] Gets the resource type.
  */
 export interface Sku {
   name: string;
@@ -88,12 +88,12 @@ export interface Sku {
  * @constructor
  * The workflow parameters.
  *
- * @member {string} [type] The type. Possible values include: 'NotSpecified',
+ * @property {string} [type] The type. Possible values include: 'NotSpecified',
  * 'String', 'SecureString', 'Int', 'Float', 'Bool', 'Array', 'Object',
  * 'SecureObject'
- * @member {object} [value] The value.
- * @member {object} [metadata] The metadata.
- * @member {string} [description] The description.
+ * @property {object} [value] The value.
+ * @property {object} [metadata] The metadata.
+ * @property {string} [description] The description.
  */
 export interface WorkflowParameter {
   type?: string;
@@ -108,30 +108,30 @@ export interface WorkflowParameter {
  * @constructor
  * The workflow type.
  *
- * @member {string} [provisioningState] Gets the provisioning state. Possible
+ * @property {string} [provisioningState] Gets the provisioning state. Possible
  * values include: 'NotSpecified', 'Accepted', 'Running', 'Ready', 'Creating',
  * 'Created', 'Deleting', 'Deleted', 'Canceled', 'Failed', 'Succeeded',
  * 'Moving', 'Updating', 'Registering', 'Registered', 'Unregistering',
  * 'Unregistered', 'Completed'
- * @member {date} [createdTime] Gets the created time.
- * @member {date} [changedTime] Gets the changed time.
- * @member {string} [state] The state. Possible values include: 'NotSpecified',
- * 'Completed', 'Enabled', 'Disabled', 'Deleted', 'Suspended'
- * @member {string} [version] Gets the version.
- * @member {string} [accessEndpoint] Gets the access endpoint.
- * @member {object} [sku] The sku.
- * @member {string} [sku.name] The name. Possible values include:
+ * @property {date} [createdTime] Gets the created time.
+ * @property {date} [changedTime] Gets the changed time.
+ * @property {string} [state] The state. Possible values include:
+ * 'NotSpecified', 'Completed', 'Enabled', 'Disabled', 'Deleted', 'Suspended'
+ * @property {string} [version] Gets the version.
+ * @property {string} [accessEndpoint] Gets the access endpoint.
+ * @property {object} [sku] The sku.
+ * @property {string} [sku.name] The name. Possible values include:
  * 'NotSpecified', 'Free', 'Shared', 'Basic', 'Standard', 'Premium'
- * @member {object} [sku.plan] The reference to plan.
- * @member {string} [sku.plan.id] The resource id.
- * @member {string} [sku.plan.name] Gets the resource name.
- * @member {string} [sku.plan.type] Gets the resource type.
- * @member {object} [integrationAccount] The integration account.
- * @member {string} [integrationAccount.id] The resource id.
- * @member {string} [integrationAccount.name] Gets the resource name.
- * @member {string} [integrationAccount.type] Gets the resource type.
- * @member {object} [definition] The definition.
- * @member {object} [parameters] The parameters.
+ * @property {object} [sku.plan] The reference to plan.
+ * @property {string} [sku.plan.id] The resource id.
+ * @property {string} [sku.plan.name] Gets the resource name.
+ * @property {string} [sku.plan.type] Gets the resource type.
+ * @property {object} [integrationAccount] The integration account.
+ * @property {string} [integrationAccount.id] The resource id.
+ * @property {string} [integrationAccount.name] Gets the resource name.
+ * @property {string} [integrationAccount.type] Gets the resource type.
+ * @property {object} [definition] The definition.
+ * @property {object} [parameters] The parameters.
  */
 export interface Workflow extends Resource {
   readonly provisioningState?: string;
@@ -152,7 +152,7 @@ export interface Workflow extends Resource {
  * @constructor
  * The workflow filter.
  *
- * @member {string} [state] The state of workflows. Possible values include:
+ * @property {string} [state] The state of workflows. Possible values include:
  * 'NotSpecified', 'Completed', 'Enabled', 'Disabled', 'Deleted', 'Suspended'
  */
 export interface WorkflowFilter {
@@ -165,25 +165,25 @@ export interface WorkflowFilter {
  * @constructor
  * The workflow version.
  *
- * @member {date} [createdTime] Gets the created time.
- * @member {date} [changedTime] Gets the changed time.
- * @member {string} [state] The state. Possible values include: 'NotSpecified',
- * 'Completed', 'Enabled', 'Disabled', 'Deleted', 'Suspended'
- * @member {string} [version] Gets the version.
- * @member {string} [accessEndpoint] Gets the access endpoint.
- * @member {object} [sku] The sku.
- * @member {string} [sku.name] The name. Possible values include:
+ * @property {date} [createdTime] Gets the created time.
+ * @property {date} [changedTime] Gets the changed time.
+ * @property {string} [state] The state. Possible values include:
+ * 'NotSpecified', 'Completed', 'Enabled', 'Disabled', 'Deleted', 'Suspended'
+ * @property {string} [version] Gets the version.
+ * @property {string} [accessEndpoint] Gets the access endpoint.
+ * @property {object} [sku] The sku.
+ * @property {string} [sku.name] The name. Possible values include:
  * 'NotSpecified', 'Free', 'Shared', 'Basic', 'Standard', 'Premium'
- * @member {object} [sku.plan] The reference to plan.
- * @member {string} [sku.plan.id] The resource id.
- * @member {string} [sku.plan.name] Gets the resource name.
- * @member {string} [sku.plan.type] Gets the resource type.
- * @member {object} [integrationAccount] The integration account.
- * @member {string} [integrationAccount.id] The resource id.
- * @member {string} [integrationAccount.name] Gets the resource name.
- * @member {string} [integrationAccount.type] Gets the resource type.
- * @member {object} [definition] The definition.
- * @member {object} [parameters] The parameters.
+ * @property {object} [sku.plan] The reference to plan.
+ * @property {string} [sku.plan.id] The resource id.
+ * @property {string} [sku.plan.name] Gets the resource name.
+ * @property {string} [sku.plan.type] Gets the resource type.
+ * @property {object} [integrationAccount] The integration account.
+ * @property {string} [integrationAccount.id] The resource id.
+ * @property {string} [integrationAccount.name] Gets the resource name.
+ * @property {string} [integrationAccount.type] Gets the resource type.
+ * @property {object} [definition] The definition.
+ * @property {object} [parameters] The parameters.
  */
 export interface WorkflowVersion extends Resource {
   readonly createdTime?: Date;
@@ -203,9 +203,9 @@ export interface WorkflowVersion extends Resource {
  * @constructor
  * The recurrence schedule occurrence.
  *
- * @member {string} [day] The day of the week. Possible values include:
+ * @property {string} [day] The day of the week. Possible values include:
  * 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
- * @member {number} [occurrence] The occurrence.
+ * @property {number} [occurrence] The occurrence.
  */
 export interface RecurrenceScheduleOccurrence {
   day?: string;
@@ -218,11 +218,11 @@ export interface RecurrenceScheduleOccurrence {
  * @constructor
  * The recurrence schedule.
  *
- * @member {array} [minutes] The minutes.
- * @member {array} [hours] The hours.
- * @member {array} [weekDays] The days of the week.
- * @member {array} [monthDays] The month days.
- * @member {array} [monthlyOccurrences] The monthly occurrences.
+ * @property {array} [minutes] The minutes.
+ * @property {array} [hours] The hours.
+ * @property {array} [weekDays] The days of the week.
+ * @property {array} [monthDays] The month days.
+ * @property {array} [monthlyOccurrences] The monthly occurrences.
  */
 export interface RecurrenceSchedule {
   minutes?: number[];
@@ -238,18 +238,18 @@ export interface RecurrenceSchedule {
  * @constructor
  * The workflow trigger recurrence.
  *
- * @member {string} [frequency] The frequency. Possible values include:
+ * @property {string} [frequency] The frequency. Possible values include:
  * 'NotSpecified', 'Second', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
- * @member {number} [interval] The interval.
- * @member {string} [startTime] The start time.
- * @member {string} [endTime] The end time.
- * @member {string} [timeZone] The time zone.
- * @member {object} [schedule] The recurrence schedule.
- * @member {array} [schedule.minutes] The minutes.
- * @member {array} [schedule.hours] The hours.
- * @member {array} [schedule.weekDays] The days of the week.
- * @member {array} [schedule.monthDays] The month days.
- * @member {array} [schedule.monthlyOccurrences] The monthly occurrences.
+ * @property {number} [interval] The interval.
+ * @property {string} [startTime] The start time.
+ * @property {string} [endTime] The end time.
+ * @property {string} [timeZone] The time zone.
+ * @property {object} [schedule] The recurrence schedule.
+ * @property {array} [schedule.minutes] The minutes.
+ * @property {array} [schedule.hours] The hours.
+ * @property {array} [schedule.weekDays] The days of the week.
+ * @property {array} [schedule.monthDays] The month days.
+ * @property {array} [schedule.monthlyOccurrences] The monthly occurrences.
  */
 export interface WorkflowTriggerRecurrence {
   frequency?: string;
@@ -266,42 +266,42 @@ export interface WorkflowTriggerRecurrence {
  * @constructor
  * The workflow trigger.
  *
- * @member {string} [provisioningState] Gets the provisioning state. Possible
+ * @property {string} [provisioningState] Gets the provisioning state. Possible
  * values include: 'NotSpecified', 'Accepted', 'Running', 'Ready', 'Creating',
  * 'Created', 'Deleting', 'Deleted', 'Canceled', 'Failed', 'Succeeded',
  * 'Moving', 'Updating', 'Registering', 'Registered', 'Unregistering',
  * 'Unregistered', 'Completed'
- * @member {date} [createdTime] Gets the created time.
- * @member {date} [changedTime] Gets the changed time.
- * @member {string} [state] Gets the state. Possible values include:
+ * @property {date} [createdTime] Gets the created time.
+ * @property {date} [changedTime] Gets the changed time.
+ * @property {string} [state] Gets the state. Possible values include:
  * 'NotSpecified', 'Completed', 'Enabled', 'Disabled', 'Deleted', 'Suspended'
- * @member {string} [status] Gets the status. Possible values include:
+ * @property {string} [status] Gets the status. Possible values include:
  * 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded', 'Skipped',
  * 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut', 'Aborted',
  * 'Ignored'
- * @member {date} [lastExecutionTime] Gets the last execution time.
- * @member {date} [nextExecutionTime] Gets the next execution time.
- * @member {object} [recurrence] Gets the workflow trigger recurrence.
- * @member {string} [recurrence.frequency] The frequency. Possible values
+ * @property {date} [lastExecutionTime] Gets the last execution time.
+ * @property {date} [nextExecutionTime] Gets the next execution time.
+ * @property {object} [recurrence] Gets the workflow trigger recurrence.
+ * @property {string} [recurrence.frequency] The frequency. Possible values
  * include: 'NotSpecified', 'Second', 'Minute', 'Hour', 'Day', 'Week', 'Month',
  * 'Year'
- * @member {number} [recurrence.interval] The interval.
- * @member {string} [recurrence.startTime] The start time.
- * @member {string} [recurrence.endTime] The end time.
- * @member {string} [recurrence.timeZone] The time zone.
- * @member {object} [recurrence.schedule] The recurrence schedule.
- * @member {array} [recurrence.schedule.minutes] The minutes.
- * @member {array} [recurrence.schedule.hours] The hours.
- * @member {array} [recurrence.schedule.weekDays] The days of the week.
- * @member {array} [recurrence.schedule.monthDays] The month days.
- * @member {array} [recurrence.schedule.monthlyOccurrences] The monthly
+ * @property {number} [recurrence.interval] The interval.
+ * @property {string} [recurrence.startTime] The start time.
+ * @property {string} [recurrence.endTime] The end time.
+ * @property {string} [recurrence.timeZone] The time zone.
+ * @property {object} [recurrence.schedule] The recurrence schedule.
+ * @property {array} [recurrence.schedule.minutes] The minutes.
+ * @property {array} [recurrence.schedule.hours] The hours.
+ * @property {array} [recurrence.schedule.weekDays] The days of the week.
+ * @property {array} [recurrence.schedule.monthDays] The month days.
+ * @property {array} [recurrence.schedule.monthlyOccurrences] The monthly
  * occurrences.
- * @member {object} [workflow] Gets the reference to workflow.
- * @member {string} [workflow.id] The resource id.
- * @member {string} [workflow.name] Gets the resource name.
- * @member {string} [workflow.type] Gets the resource type.
- * @member {string} [name] Gets the workflow trigger name.
- * @member {string} [type] Gets the workflow trigger type.
+ * @property {object} [workflow] Gets the reference to workflow.
+ * @property {string} [workflow.id] The resource id.
+ * @property {string} [workflow.name] Gets the resource name.
+ * @property {string} [workflow.type] Gets the resource type.
+ * @property {string} [name] Gets the workflow trigger name.
+ * @property {string} [type] Gets the workflow trigger type.
  */
 export interface WorkflowTrigger extends SubResource {
   readonly provisioningState?: string;
@@ -323,7 +323,7 @@ export interface WorkflowTrigger extends SubResource {
  * @constructor
  * The workflow trigger filter.
  *
- * @member {string} [state] The state of workflow trigger. Possible values
+ * @property {string} [state] The state of workflow trigger. Possible values
  * include: 'NotSpecified', 'Completed', 'Enabled', 'Disabled', 'Deleted',
  * 'Suspended'
  */
@@ -337,11 +337,11 @@ export interface WorkflowTriggerFilter {
  * @constructor
  * Gets the workflow trigger callback URL query parameters.
  *
- * @member {string} [apiVersion] The api version.
- * @member {string} [sp] The SAS permissions.
- * @member {string} [sv] The SAS version.
- * @member {string} [sig] The SAS signature.
- * @member {string} [se] The SAS timestamp.
+ * @property {string} [apiVersion] The api version.
+ * @property {string} [sp] The SAS permissions.
+ * @property {string} [sv] The SAS version.
+ * @property {string} [sig] The SAS signature.
+ * @property {string} [se] The SAS timestamp.
  */
 export interface WorkflowTriggerListCallbackUrlQueries {
   apiVersion?: string;
@@ -357,22 +357,22 @@ export interface WorkflowTriggerListCallbackUrlQueries {
  * @constructor
  * The workflow trigger callback URL.
  *
- * @member {string} [value] Gets the workflow trigger callback URL.
- * @member {string} [method] Gets the workflow trigger callback URL HTTP
+ * @property {string} [value] Gets the workflow trigger callback URL.
+ * @property {string} [method] Gets the workflow trigger callback URL HTTP
  * method.
- * @member {string} [basePath] Gets the workflow trigger callback URL base
+ * @property {string} [basePath] Gets the workflow trigger callback URL base
  * path.
- * @member {string} [relativePath] Gets the workflow trigger callback URL
+ * @property {string} [relativePath] Gets the workflow trigger callback URL
  * relative path.
- * @member {array} [relativePathParameters] Gets the workflow trigger callback
- * URL relative path parameters.
- * @member {object} [queries] Gets the workflow trigger callback URL query
+ * @property {array} [relativePathParameters] Gets the workflow trigger
+ * callback URL relative path parameters.
+ * @property {object} [queries] Gets the workflow trigger callback URL query
  * parameters.
- * @member {string} [queries.apiVersion] The api version.
- * @member {string} [queries.sp] The SAS permissions.
- * @member {string} [queries.sv] The SAS version.
- * @member {string} [queries.sig] The SAS signature.
- * @member {string} [queries.se] The SAS timestamp.
+ * @property {string} [queries.apiVersion] The api version.
+ * @property {string} [queries.sp] The SAS permissions.
+ * @property {string} [queries.sv] The SAS version.
+ * @property {string} [queries.sig] The SAS signature.
+ * @property {string} [queries.se] The SAS timestamp.
  */
 export interface WorkflowTriggerCallbackUrl {
   readonly value?: string;
@@ -389,7 +389,7 @@ export interface WorkflowTriggerCallbackUrl {
  * @constructor
  * The correlation property.
  *
- * @member {string} [clientTrackingId] The client tracking id.
+ * @property {string} [clientTrackingId] The client tracking id.
  */
 export interface Correlation {
   clientTrackingId?: string;
@@ -401,8 +401,8 @@ export interface Correlation {
  * @constructor
  * The content hash.
  *
- * @member {string} [algorithm] The algorithm of the content hash.
- * @member {string} [value] The value of the content hash.
+ * @property {string} [algorithm] The algorithm of the content hash.
+ * @property {string} [value] The value of the content hash.
  */
 export interface ContentHash {
   algorithm?: string;
@@ -415,13 +415,14 @@ export interface ContentHash {
  * @constructor
  * The content link.
  *
- * @member {string} [uri] The content link URI.
- * @member {string} [contentVersion] The content version.
- * @member {number} [contentSize] The content size.
- * @member {object} [contentHash] The content hash.
- * @member {string} [contentHash.algorithm] The algorithm of the content hash.
- * @member {string} [contentHash.value] The value of the content hash.
- * @member {object} [metadata] The metadata.
+ * @property {string} [uri] The content link URI.
+ * @property {string} [contentVersion] The content version.
+ * @property {number} [contentSize] The content size.
+ * @property {object} [contentHash] The content hash.
+ * @property {string} [contentHash.algorithm] The algorithm of the content
+ * hash.
+ * @property {string} [contentHash.value] The value of the content hash.
+ * @property {object} [metadata] The metadata.
  */
 export interface ContentLink {
   uri?: string;
@@ -437,44 +438,45 @@ export interface ContentLink {
  * @constructor
  * The workflow trigger history.
  *
- * @member {date} [startTime] Gets the start time.
- * @member {date} [endTime] Gets the end time.
- * @member {string} [status] Gets the status. Possible values include:
+ * @property {date} [startTime] Gets the start time.
+ * @property {date} [endTime] Gets the end time.
+ * @property {string} [status] Gets the status. Possible values include:
  * 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded', 'Skipped',
  * 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut', 'Aborted',
  * 'Ignored'
- * @member {string} [code] Gets the code.
- * @member {object} [error] Gets the error.
- * @member {string} [trackingId] Gets the tracking id.
- * @member {object} [correlation] The run correlation.
- * @member {string} [correlation.clientTrackingId] The client tracking id.
- * @member {object} [inputsLink] Gets the link to input parameters.
- * @member {string} [inputsLink.uri] The content link URI.
- * @member {string} [inputsLink.contentVersion] The content version.
- * @member {number} [inputsLink.contentSize] The content size.
- * @member {object} [inputsLink.contentHash] The content hash.
- * @member {string} [inputsLink.contentHash.algorithm] The algorithm of the
+ * @property {string} [code] Gets the code.
+ * @property {object} [error] Gets the error.
+ * @property {string} [trackingId] Gets the tracking id.
+ * @property {object} [correlation] The run correlation.
+ * @property {string} [correlation.clientTrackingId] The client tracking id.
+ * @property {object} [inputsLink] Gets the link to input parameters.
+ * @property {string} [inputsLink.uri] The content link URI.
+ * @property {string} [inputsLink.contentVersion] The content version.
+ * @property {number} [inputsLink.contentSize] The content size.
+ * @property {object} [inputsLink.contentHash] The content hash.
+ * @property {string} [inputsLink.contentHash.algorithm] The algorithm of the
  * content hash.
- * @member {string} [inputsLink.contentHash.value] The value of the content
+ * @property {string} [inputsLink.contentHash.value] The value of the content
  * hash.
- * @member {object} [inputsLink.metadata] The metadata.
- * @member {object} [outputsLink] Gets the link to output parameters.
- * @member {string} [outputsLink.uri] The content link URI.
- * @member {string} [outputsLink.contentVersion] The content version.
- * @member {number} [outputsLink.contentSize] The content size.
- * @member {object} [outputsLink.contentHash] The content hash.
- * @member {string} [outputsLink.contentHash.algorithm] The algorithm of the
+ * @property {object} [inputsLink.metadata] The metadata.
+ * @property {object} [outputsLink] Gets the link to output parameters.
+ * @property {string} [outputsLink.uri] The content link URI.
+ * @property {string} [outputsLink.contentVersion] The content version.
+ * @property {number} [outputsLink.contentSize] The content size.
+ * @property {object} [outputsLink.contentHash] The content hash.
+ * @property {string} [outputsLink.contentHash.algorithm] The algorithm of the
  * content hash.
- * @member {string} [outputsLink.contentHash.value] The value of the content
+ * @property {string} [outputsLink.contentHash.value] The value of the content
  * hash.
- * @member {object} [outputsLink.metadata] The metadata.
- * @member {boolean} [fired] Gets a value indicating whether trigger was fired.
- * @member {object} [run] Gets the reference to workflow run.
- * @member {string} [run.id] The resource id.
- * @member {string} [run.name] Gets the resource name.
- * @member {string} [run.type] Gets the resource type.
- * @member {string} [name] Gets the workflow trigger history name.
- * @member {string} [type] Gets the workflow trigger history type.
+ * @property {object} [outputsLink.metadata] The metadata.
+ * @property {boolean} [fired] Gets a value indicating whether trigger was
+ * fired.
+ * @property {object} [run] Gets the reference to workflow run.
+ * @property {string} [run.id] The resource id.
+ * @property {string} [run.name] Gets the resource name.
+ * @property {string} [run.type] Gets the resource type.
+ * @property {string} [name] Gets the workflow trigger history name.
+ * @property {string} [type] Gets the workflow trigger history type.
  */
 export interface WorkflowTriggerHistory extends SubResource {
   readonly startTime?: Date;
@@ -498,7 +500,7 @@ export interface WorkflowTriggerHistory extends SubResource {
  * @constructor
  * The workflow trigger history filter.
  *
- * @member {string} [status] The status of workflow trigger history. Possible
+ * @property {string} [status] The status of workflow trigger history. Possible
  * values include: 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded',
  * 'Skipped', 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut',
  * 'Aborted', 'Ignored'
@@ -513,42 +515,42 @@ export interface WorkflowTriggerHistoryFilter {
  * @constructor
  * The workflow run trigger.
  *
- * @member {string} [name] Gets the name.
- * @member {object} [inputs] Gets the inputs.
- * @member {object} [inputsLink] Gets the link to inputs.
- * @member {string} [inputsLink.uri] The content link URI.
- * @member {string} [inputsLink.contentVersion] The content version.
- * @member {number} [inputsLink.contentSize] The content size.
- * @member {object} [inputsLink.contentHash] The content hash.
- * @member {string} [inputsLink.contentHash.algorithm] The algorithm of the
+ * @property {string} [name] Gets the name.
+ * @property {object} [inputs] Gets the inputs.
+ * @property {object} [inputsLink] Gets the link to inputs.
+ * @property {string} [inputsLink.uri] The content link URI.
+ * @property {string} [inputsLink.contentVersion] The content version.
+ * @property {number} [inputsLink.contentSize] The content size.
+ * @property {object} [inputsLink.contentHash] The content hash.
+ * @property {string} [inputsLink.contentHash.algorithm] The algorithm of the
  * content hash.
- * @member {string} [inputsLink.contentHash.value] The value of the content
+ * @property {string} [inputsLink.contentHash.value] The value of the content
  * hash.
- * @member {object} [inputsLink.metadata] The metadata.
- * @member {object} [outputs] Gets the outputs.
- * @member {object} [outputsLink] Gets the link to outputs.
- * @member {string} [outputsLink.uri] The content link URI.
- * @member {string} [outputsLink.contentVersion] The content version.
- * @member {number} [outputsLink.contentSize] The content size.
- * @member {object} [outputsLink.contentHash] The content hash.
- * @member {string} [outputsLink.contentHash.algorithm] The algorithm of the
+ * @property {object} [inputsLink.metadata] The metadata.
+ * @property {object} [outputs] Gets the outputs.
+ * @property {object} [outputsLink] Gets the link to outputs.
+ * @property {string} [outputsLink.uri] The content link URI.
+ * @property {string} [outputsLink.contentVersion] The content version.
+ * @property {number} [outputsLink.contentSize] The content size.
+ * @property {object} [outputsLink.contentHash] The content hash.
+ * @property {string} [outputsLink.contentHash.algorithm] The algorithm of the
  * content hash.
- * @member {string} [outputsLink.contentHash.value] The value of the content
+ * @property {string} [outputsLink.contentHash.value] The value of the content
  * hash.
- * @member {object} [outputsLink.metadata] The metadata.
- * @member {date} [scheduledTime] Gets the scheduled time.
- * @member {date} [startTime] Gets the start time.
- * @member {date} [endTime] Gets the end time.
- * @member {string} [trackingId] Gets the tracking id.
- * @member {object} [correlation] The run correlation.
- * @member {string} [correlation.clientTrackingId] The client tracking id.
- * @member {string} [code] Gets the code.
- * @member {string} [status] Gets the status. Possible values include:
+ * @property {object} [outputsLink.metadata] The metadata.
+ * @property {date} [scheduledTime] Gets the scheduled time.
+ * @property {date} [startTime] Gets the start time.
+ * @property {date} [endTime] Gets the end time.
+ * @property {string} [trackingId] Gets the tracking id.
+ * @property {object} [correlation] The run correlation.
+ * @property {string} [correlation.clientTrackingId] The client tracking id.
+ * @property {string} [code] Gets the code.
+ * @property {string} [status] Gets the status. Possible values include:
  * 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded', 'Skipped',
  * 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut', 'Aborted',
  * 'Ignored'
- * @member {object} [error] Gets the error.
- * @member {object} [trackedProperties] Gets the tracked properties.
+ * @property {object} [error] Gets the error.
+ * @property {object} [trackedProperties] Gets the tracked properties.
  */
 export interface WorkflowRunTrigger {
   readonly name?: string;
@@ -573,7 +575,7 @@ export interface WorkflowRunTrigger {
  * @constructor
  * The workflow output parameter.
  *
- * @member {object} [error] Gets the error.
+ * @property {object} [error] Gets the error.
  */
 export interface WorkflowOutputParameter extends WorkflowParameter {
   readonly error?: any;
@@ -585,101 +587,102 @@ export interface WorkflowOutputParameter extends WorkflowParameter {
  * @constructor
  * The workflow run.
  *
- * @member {date} [waitEndTime] Gets the wait end time.
- * @member {date} [startTime] Gets the start time.
- * @member {date} [endTime] Gets the end time.
- * @member {string} [status] Gets the status. Possible values include:
+ * @property {date} [waitEndTime] Gets the wait end time.
+ * @property {date} [startTime] Gets the start time.
+ * @property {date} [endTime] Gets the end time.
+ * @property {string} [status] Gets the status. Possible values include:
  * 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded', 'Skipped',
  * 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut', 'Aborted',
  * 'Ignored'
- * @member {string} [code] Gets the code.
- * @member {object} [error] Gets the error.
- * @member {string} [correlationId] Gets the correlation id.
- * @member {object} [correlation] The run correlation.
- * @member {string} [correlation.clientTrackingId] The client tracking id.
- * @member {object} [workflow] Gets the reference to workflow version.
- * @member {string} [workflow.id] The resource id.
- * @member {string} [workflow.name] Gets the resource name.
- * @member {string} [workflow.type] Gets the resource type.
- * @member {object} [trigger] Gets the fired trigger.
- * @member {string} [trigger.name] Gets the name.
- * @member {object} [trigger.inputs] Gets the inputs.
- * @member {object} [trigger.inputsLink] Gets the link to inputs.
- * @member {string} [trigger.inputsLink.uri] The content link URI.
- * @member {string} [trigger.inputsLink.contentVersion] The content version.
- * @member {number} [trigger.inputsLink.contentSize] The content size.
- * @member {object} [trigger.inputsLink.contentHash] The content hash.
- * @member {string} [trigger.inputsLink.contentHash.algorithm] The algorithm of
- * the content hash.
- * @member {string} [trigger.inputsLink.contentHash.value] The value of the
- * content hash.
- * @member {object} [trigger.inputsLink.metadata] The metadata.
- * @member {object} [trigger.outputs] Gets the outputs.
- * @member {object} [trigger.outputsLink] Gets the link to outputs.
- * @member {string} [trigger.outputsLink.uri] The content link URI.
- * @member {string} [trigger.outputsLink.contentVersion] The content version.
- * @member {number} [trigger.outputsLink.contentSize] The content size.
- * @member {object} [trigger.outputsLink.contentHash] The content hash.
- * @member {string} [trigger.outputsLink.contentHash.algorithm] The algorithm
+ * @property {string} [code] Gets the code.
+ * @property {object} [error] Gets the error.
+ * @property {string} [correlationId] Gets the correlation id.
+ * @property {object} [correlation] The run correlation.
+ * @property {string} [correlation.clientTrackingId] The client tracking id.
+ * @property {object} [workflow] Gets the reference to workflow version.
+ * @property {string} [workflow.id] The resource id.
+ * @property {string} [workflow.name] Gets the resource name.
+ * @property {string} [workflow.type] Gets the resource type.
+ * @property {object} [trigger] Gets the fired trigger.
+ * @property {string} [trigger.name] Gets the name.
+ * @property {object} [trigger.inputs] Gets the inputs.
+ * @property {object} [trigger.inputsLink] Gets the link to inputs.
+ * @property {string} [trigger.inputsLink.uri] The content link URI.
+ * @property {string} [trigger.inputsLink.contentVersion] The content version.
+ * @property {number} [trigger.inputsLink.contentSize] The content size.
+ * @property {object} [trigger.inputsLink.contentHash] The content hash.
+ * @property {string} [trigger.inputsLink.contentHash.algorithm] The algorithm
  * of the content hash.
- * @member {string} [trigger.outputsLink.contentHash.value] The value of the
+ * @property {string} [trigger.inputsLink.contentHash.value] The value of the
  * content hash.
- * @member {object} [trigger.outputsLink.metadata] The metadata.
- * @member {date} [trigger.scheduledTime] Gets the scheduled time.
- * @member {date} [trigger.startTime] Gets the start time.
- * @member {date} [trigger.endTime] Gets the end time.
- * @member {string} [trigger.trackingId] Gets the tracking id.
- * @member {object} [trigger.correlation] The run correlation.
- * @member {string} [trigger.correlation.clientTrackingId] The client tracking
- * id.
- * @member {string} [trigger.code] Gets the code.
- * @member {string} [trigger.status] Gets the status. Possible values include:
- * 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded', 'Skipped',
- * 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut', 'Aborted',
- * 'Ignored'
- * @member {object} [trigger.error] Gets the error.
- * @member {object} [trigger.trackedProperties] Gets the tracked properties.
- * @member {object} [outputs] Gets the outputs.
- * @member {object} [response] Gets the response of the flow run.
- * @member {string} [response.name] Gets the name.
- * @member {object} [response.inputs] Gets the inputs.
- * @member {object} [response.inputsLink] Gets the link to inputs.
- * @member {string} [response.inputsLink.uri] The content link URI.
- * @member {string} [response.inputsLink.contentVersion] The content version.
- * @member {number} [response.inputsLink.contentSize] The content size.
- * @member {object} [response.inputsLink.contentHash] The content hash.
- * @member {string} [response.inputsLink.contentHash.algorithm] The algorithm
+ * @property {object} [trigger.inputsLink.metadata] The metadata.
+ * @property {object} [trigger.outputs] Gets the outputs.
+ * @property {object} [trigger.outputsLink] Gets the link to outputs.
+ * @property {string} [trigger.outputsLink.uri] The content link URI.
+ * @property {string} [trigger.outputsLink.contentVersion] The content version.
+ * @property {number} [trigger.outputsLink.contentSize] The content size.
+ * @property {object} [trigger.outputsLink.contentHash] The content hash.
+ * @property {string} [trigger.outputsLink.contentHash.algorithm] The algorithm
  * of the content hash.
- * @member {string} [response.inputsLink.contentHash.value] The value of the
+ * @property {string} [trigger.outputsLink.contentHash.value] The value of the
  * content hash.
- * @member {object} [response.inputsLink.metadata] The metadata.
- * @member {object} [response.outputs] Gets the outputs.
- * @member {object} [response.outputsLink] Gets the link to outputs.
- * @member {string} [response.outputsLink.uri] The content link URI.
- * @member {string} [response.outputsLink.contentVersion] The content version.
- * @member {number} [response.outputsLink.contentSize] The content size.
- * @member {object} [response.outputsLink.contentHash] The content hash.
- * @member {string} [response.outputsLink.contentHash.algorithm] The algorithm
+ * @property {object} [trigger.outputsLink.metadata] The metadata.
+ * @property {date} [trigger.scheduledTime] Gets the scheduled time.
+ * @property {date} [trigger.startTime] Gets the start time.
+ * @property {date} [trigger.endTime] Gets the end time.
+ * @property {string} [trigger.trackingId] Gets the tracking id.
+ * @property {object} [trigger.correlation] The run correlation.
+ * @property {string} [trigger.correlation.clientTrackingId] The client
+ * tracking id.
+ * @property {string} [trigger.code] Gets the code.
+ * @property {string} [trigger.status] Gets the status. Possible values
+ * include: 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded',
+ * 'Skipped', 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut',
+ * 'Aborted', 'Ignored'
+ * @property {object} [trigger.error] Gets the error.
+ * @property {object} [trigger.trackedProperties] Gets the tracked properties.
+ * @property {object} [outputs] Gets the outputs.
+ * @property {object} [response] Gets the response of the flow run.
+ * @property {string} [response.name] Gets the name.
+ * @property {object} [response.inputs] Gets the inputs.
+ * @property {object} [response.inputsLink] Gets the link to inputs.
+ * @property {string} [response.inputsLink.uri] The content link URI.
+ * @property {string} [response.inputsLink.contentVersion] The content version.
+ * @property {number} [response.inputsLink.contentSize] The content size.
+ * @property {object} [response.inputsLink.contentHash] The content hash.
+ * @property {string} [response.inputsLink.contentHash.algorithm] The algorithm
  * of the content hash.
- * @member {string} [response.outputsLink.contentHash.value] The value of the
+ * @property {string} [response.inputsLink.contentHash.value] The value of the
  * content hash.
- * @member {object} [response.outputsLink.metadata] The metadata.
- * @member {date} [response.scheduledTime] Gets the scheduled time.
- * @member {date} [response.startTime] Gets the start time.
- * @member {date} [response.endTime] Gets the end time.
- * @member {string} [response.trackingId] Gets the tracking id.
- * @member {object} [response.correlation] The run correlation.
- * @member {string} [response.correlation.clientTrackingId] The client tracking
- * id.
- * @member {string} [response.code] Gets the code.
- * @member {string} [response.status] Gets the status. Possible values include:
- * 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded', 'Skipped',
- * 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut', 'Aborted',
- * 'Ignored'
- * @member {object} [response.error] Gets the error.
- * @member {object} [response.trackedProperties] Gets the tracked properties.
- * @member {string} [name] Gets the workflow run name.
- * @member {string} [type] Gets the workflow run type.
+ * @property {object} [response.inputsLink.metadata] The metadata.
+ * @property {object} [response.outputs] Gets the outputs.
+ * @property {object} [response.outputsLink] Gets the link to outputs.
+ * @property {string} [response.outputsLink.uri] The content link URI.
+ * @property {string} [response.outputsLink.contentVersion] The content
+ * version.
+ * @property {number} [response.outputsLink.contentSize] The content size.
+ * @property {object} [response.outputsLink.contentHash] The content hash.
+ * @property {string} [response.outputsLink.contentHash.algorithm] The
+ * algorithm of the content hash.
+ * @property {string} [response.outputsLink.contentHash.value] The value of the
+ * content hash.
+ * @property {object} [response.outputsLink.metadata] The metadata.
+ * @property {date} [response.scheduledTime] Gets the scheduled time.
+ * @property {date} [response.startTime] Gets the start time.
+ * @property {date} [response.endTime] Gets the end time.
+ * @property {string} [response.trackingId] Gets the tracking id.
+ * @property {object} [response.correlation] The run correlation.
+ * @property {string} [response.correlation.clientTrackingId] The client
+ * tracking id.
+ * @property {string} [response.code] Gets the code.
+ * @property {string} [response.status] Gets the status. Possible values
+ * include: 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded',
+ * 'Skipped', 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut',
+ * 'Aborted', 'Ignored'
+ * @property {object} [response.error] Gets the error.
+ * @property {object} [response.trackedProperties] Gets the tracked properties.
+ * @property {string} [name] Gets the workflow run name.
+ * @property {string} [type] Gets the workflow run type.
  */
 export interface WorkflowRun extends SubResource {
   readonly waitEndTime?: Date;
@@ -704,7 +707,7 @@ export interface WorkflowRun extends SubResource {
  * @constructor
  * The workflow run filter.
  *
- * @member {string} [status] The status of workflow run. Possible values
+ * @property {string} [status] The status of workflow run. Possible values
  * include: 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded',
  * 'Skipped', 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut',
  * 'Aborted', 'Ignored'
@@ -720,8 +723,8 @@ export interface WorkflowRunFilter {
  * Error properties indicate why the Logic service was not able to process the
  * incoming request. The reason is provided in the error message.
  *
- * @member {string} [code] Error code.
- * @member {string} [message] Error message indicating why the operation
+ * @property {string} [code] Error code.
+ * @property {string} [message] Error message indicating why the operation
  * failed.
  */
 export interface ErrorProperties {
@@ -736,10 +739,10 @@ export interface ErrorProperties {
  * Error response indicates Logic service is not able to process the incoming
  * request. The error property contains the error details.
  *
- * @member {object} [error] The error properties.
- * @member {string} [error.code] Error code.
- * @member {string} [error.message] Error message indicating why the operation
- * failed.
+ * @property {object} [error] The error properties.
+ * @property {string} [error.code] Error code.
+ * @property {string} [error.message] Error message indicating why the
+ * operation failed.
  */
 export interface ErrorResponse {
   error?: ErrorProperties;
@@ -751,15 +754,15 @@ export interface ErrorResponse {
  * @constructor
  * The retry history.
  *
- * @member {date} [startTime] Gets the start time.
- * @member {date} [endTime] Gets the end time.
- * @member {string} [code] Gets the status code.
- * @member {string} [clientRequestId] Gets the client request Id.
- * @member {string} [serviceRequestId] Gets the service request Id.
- * @member {object} [error] Gets the error response.
- * @member {object} [error.error] The error properties.
- * @member {string} [error.error.code] Error code.
- * @member {string} [error.error.message] Error message indicating why the
+ * @property {date} [startTime] Gets the start time.
+ * @property {date} [endTime] Gets the end time.
+ * @property {string} [code] Gets the status code.
+ * @property {string} [clientRequestId] Gets the client request Id.
+ * @property {string} [serviceRequestId] Gets the service request Id.
+ * @property {object} [error] Gets the error response.
+ * @property {object} [error.error] The error properties.
+ * @property {string} [error.error.code] Error code.
+ * @property {string} [error.error.message] Error message indicating why the
  * operation failed.
  */
 export interface RetryHistory {
@@ -777,41 +780,41 @@ export interface RetryHistory {
  * @constructor
  * The workflow run action.
  *
- * @member {date} [startTime] Gets the start time.
- * @member {date} [endTime] Gets the end time.
- * @member {string} [status] Gets the status. Possible values include:
+ * @property {date} [startTime] Gets the start time.
+ * @property {date} [endTime] Gets the end time.
+ * @property {string} [status] Gets the status. Possible values include:
  * 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded', 'Skipped',
  * 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut', 'Aborted',
  * 'Ignored'
- * @member {string} [code] Gets the code.
- * @member {object} [error] Gets the error.
- * @member {string} [trackingId] Gets the tracking id.
- * @member {object} [correlation] The correlation properties.
- * @member {string} [correlation.clientTrackingId] The client tracking id.
- * @member {object} [inputsLink] Gets the link to inputs.
- * @member {string} [inputsLink.uri] The content link URI.
- * @member {string} [inputsLink.contentVersion] The content version.
- * @member {number} [inputsLink.contentSize] The content size.
- * @member {object} [inputsLink.contentHash] The content hash.
- * @member {string} [inputsLink.contentHash.algorithm] The algorithm of the
+ * @property {string} [code] Gets the code.
+ * @property {object} [error] Gets the error.
+ * @property {string} [trackingId] Gets the tracking id.
+ * @property {object} [correlation] The correlation properties.
+ * @property {string} [correlation.clientTrackingId] The client tracking id.
+ * @property {object} [inputsLink] Gets the link to inputs.
+ * @property {string} [inputsLink.uri] The content link URI.
+ * @property {string} [inputsLink.contentVersion] The content version.
+ * @property {number} [inputsLink.contentSize] The content size.
+ * @property {object} [inputsLink.contentHash] The content hash.
+ * @property {string} [inputsLink.contentHash.algorithm] The algorithm of the
  * content hash.
- * @member {string} [inputsLink.contentHash.value] The value of the content
+ * @property {string} [inputsLink.contentHash.value] The value of the content
  * hash.
- * @member {object} [inputsLink.metadata] The metadata.
- * @member {object} [outputsLink] Gets the link to outputs.
- * @member {string} [outputsLink.uri] The content link URI.
- * @member {string} [outputsLink.contentVersion] The content version.
- * @member {number} [outputsLink.contentSize] The content size.
- * @member {object} [outputsLink.contentHash] The content hash.
- * @member {string} [outputsLink.contentHash.algorithm] The algorithm of the
+ * @property {object} [inputsLink.metadata] The metadata.
+ * @property {object} [outputsLink] Gets the link to outputs.
+ * @property {string} [outputsLink.uri] The content link URI.
+ * @property {string} [outputsLink.contentVersion] The content version.
+ * @property {number} [outputsLink.contentSize] The content size.
+ * @property {object} [outputsLink.contentHash] The content hash.
+ * @property {string} [outputsLink.contentHash.algorithm] The algorithm of the
  * content hash.
- * @member {string} [outputsLink.contentHash.value] The value of the content
+ * @property {string} [outputsLink.contentHash.value] The value of the content
  * hash.
- * @member {object} [outputsLink.metadata] The metadata.
- * @member {object} [trackedProperties] Gets the tracked properties.
- * @member {array} [retryHistory] Gets the retry histories.
- * @member {string} [name] Gets the workflow run action name.
- * @member {string} [type] Gets the workflow run action type.
+ * @property {object} [outputsLink.metadata] The metadata.
+ * @property {object} [trackedProperties] Gets the tracked properties.
+ * @property {array} [retryHistory] Gets the retry histories.
+ * @property {string} [name] Gets the workflow run action name.
+ * @property {string} [type] Gets the workflow run action type.
  */
 export interface WorkflowRunAction extends SubResource {
   readonly startTime?: Date;
@@ -835,8 +838,8 @@ export interface WorkflowRunAction extends SubResource {
  * @constructor
  * The workflow run action filter.
  *
- * @member {string} [status] The status of workflow run action. Possible values
- * include: 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded',
+ * @property {string} [status] The status of workflow run action. Possible
+ * values include: 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded',
  * 'Skipped', 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut',
  * 'Aborted', 'Ignored'
  */
@@ -850,7 +853,7 @@ export interface WorkflowRunActionFilter {
  * @constructor
  * The access key regenerate action content.
  *
- * @member {string} [keyType] The key type. Possible values include:
+ * @property {string} [keyType] The key type. Possible values include:
  * 'NotSpecified', 'Primary', 'Secondary'
  */
 export interface RegenerateActionParameter {
@@ -863,7 +866,7 @@ export interface RegenerateActionParameter {
  * @constructor
  * The parameters to generate upgraded definition.
  *
- * @member {string} [targetSchemaVersion] The target schema version.
+ * @property {string} [targetSchemaVersion] The target schema version.
  */
 export interface GenerateUpgradedDefinitionParameters {
   targetSchemaVersion?: string;
@@ -875,8 +878,8 @@ export interface GenerateUpgradedDefinitionParameters {
  * @constructor
  * The integration account sku.
  *
- * @member {string} name The sku name. Possible values include: 'NotSpecified',
- * 'Free', 'Basic', 'Standard'
+ * @property {string} name The sku name. Possible values include:
+ * 'NotSpecified', 'Free', 'Basic', 'Standard'
  */
 export interface IntegrationAccountSku {
   name: string;
@@ -888,9 +891,9 @@ export interface IntegrationAccountSku {
  * @constructor
  * The integration account.
  *
- * @member {object} [properties] The integration account properties.
- * @member {object} [sku] The sku.
- * @member {string} [sku.name] The sku name. Possible values include:
+ * @property {object} [properties] The integration account properties.
+ * @property {object} [sku] The sku.
+ * @property {string} [sku.name] The sku name. Possible values include:
  * 'NotSpecified', 'Free', 'Basic', 'Standard'
  */
 export interface IntegrationAccount extends Resource {
@@ -904,8 +907,8 @@ export interface IntegrationAccount extends Resource {
  * @constructor
  * The callback url parameters.
  *
- * @member {date} [notAfter] The expiry time.
- * @member {string} [keyType] The key type. Possible values include:
+ * @property {date} [notAfter] The expiry time.
+ * @property {string} [keyType] The key type. Possible values include:
  * 'NotSpecified', 'Primary', 'Secondary'
  */
 export interface GetCallbackUrlParameters {
@@ -919,7 +922,7 @@ export interface GetCallbackUrlParameters {
  * @constructor
  * The callback url.
  *
- * @member {string} [value] The URL value.
+ * @property {string} [value] The URL value.
  */
 export interface CallbackUrl {
   value?: string;
@@ -931,26 +934,26 @@ export interface CallbackUrl {
  * @constructor
  * The integration account schema.
  *
- * @member {string} schemaType The schema type. Possible values include:
+ * @property {string} schemaType The schema type. Possible values include:
  * 'NotSpecified', 'Xml'
- * @member {string} [targetNamespace] The target namespace of the schema.
- * @member {string} [documentName] The document name.
- * @member {string} [fileName] The file name.
- * @member {date} [createdTime] The created time.
- * @member {date} [changedTime] The changed time.
- * @member {object} [metadata] The metadata.
- * @member {string} [content] The content.
- * @member {string} [contentType] The content type.
- * @member {object} [contentLink] The content link.
- * @member {string} [contentLink.uri] The content link URI.
- * @member {string} [contentLink.contentVersion] The content version.
- * @member {number} [contentLink.contentSize] The content size.
- * @member {object} [contentLink.contentHash] The content hash.
- * @member {string} [contentLink.contentHash.algorithm] The algorithm of the
+ * @property {string} [targetNamespace] The target namespace of the schema.
+ * @property {string} [documentName] The document name.
+ * @property {string} [fileName] The file name.
+ * @property {date} [createdTime] The created time.
+ * @property {date} [changedTime] The changed time.
+ * @property {object} [metadata] The metadata.
+ * @property {string} [content] The content.
+ * @property {string} [contentType] The content type.
+ * @property {object} [contentLink] The content link.
+ * @property {string} [contentLink.uri] The content link URI.
+ * @property {string} [contentLink.contentVersion] The content version.
+ * @property {number} [contentLink.contentSize] The content size.
+ * @property {object} [contentLink.contentHash] The content hash.
+ * @property {string} [contentLink.contentHash.algorithm] The algorithm of the
  * content hash.
- * @member {string} [contentLink.contentHash.value] The value of the content
+ * @property {string} [contentLink.contentHash.value] The value of the content
  * hash.
- * @member {object} [contentLink.metadata] The metadata.
+ * @property {object} [contentLink.metadata] The metadata.
  */
 export interface IntegrationAccountSchema extends Resource {
   schemaType: string;
@@ -971,7 +974,7 @@ export interface IntegrationAccountSchema extends Resource {
  * @constructor
  * The integration account schema filter for odata query.
  *
- * @member {string} schemaType The schema type of integration account schema.
+ * @property {string} schemaType The schema type of integration account schema.
  * Possible values include: 'NotSpecified', 'Xml'
  */
 export interface IntegrationAccountSchemaFilter {
@@ -984,7 +987,7 @@ export interface IntegrationAccountSchemaFilter {
  * @constructor
  * The parameters schema of integration account map.
  *
- * @member {string} [ref] The reference name.
+ * @property {string} [ref] The reference name.
  */
 export interface IntegrationAccountMapPropertiesParametersSchema {
   ref?: string;
@@ -996,26 +999,26 @@ export interface IntegrationAccountMapPropertiesParametersSchema {
  * @constructor
  * The integration account map.
  *
- * @member {string} mapType The map type. Possible values include:
+ * @property {string} mapType The map type. Possible values include:
  * 'NotSpecified', 'Xslt', 'Xslt20', 'Xslt30', 'Liquid'
- * @member {object} [parametersSchema] The parameters schema of integration
+ * @property {object} [parametersSchema] The parameters schema of integration
  * account map.
- * @member {string} [parametersSchema.ref] The reference name.
- * @member {date} [createdTime] The created time.
- * @member {date} [changedTime] The changed time.
- * @member {string} [content] The content.
- * @member {string} [contentType] The content type.
- * @member {object} [contentLink] The content link.
- * @member {string} [contentLink.uri] The content link URI.
- * @member {string} [contentLink.contentVersion] The content version.
- * @member {number} [contentLink.contentSize] The content size.
- * @member {object} [contentLink.contentHash] The content hash.
- * @member {string} [contentLink.contentHash.algorithm] The algorithm of the
+ * @property {string} [parametersSchema.ref] The reference name.
+ * @property {date} [createdTime] The created time.
+ * @property {date} [changedTime] The changed time.
+ * @property {string} [content] The content.
+ * @property {string} [contentType] The content type.
+ * @property {object} [contentLink] The content link.
+ * @property {string} [contentLink.uri] The content link URI.
+ * @property {string} [contentLink.contentVersion] The content version.
+ * @property {number} [contentLink.contentSize] The content size.
+ * @property {object} [contentLink.contentHash] The content hash.
+ * @property {string} [contentLink.contentHash.algorithm] The algorithm of the
  * content hash.
- * @member {string} [contentLink.contentHash.value] The value of the content
+ * @property {string} [contentLink.contentHash.value] The value of the content
  * hash.
- * @member {object} [contentLink.metadata] The metadata.
- * @member {object} [metadata] The metadata.
+ * @property {object} [contentLink.metadata] The metadata.
+ * @property {object} [metadata] The metadata.
  */
 export interface IntegrationAccountMap extends Resource {
   mapType: string;
@@ -1034,7 +1037,7 @@ export interface IntegrationAccountMap extends Resource {
  * @constructor
  * The integration account map filter for odata query.
  *
- * @member {string} mapType The map type of integration account map. Possible
+ * @property {string} mapType The map type of integration account map. Possible
  * values include: 'NotSpecified', 'Xslt', 'Xslt20', 'Xslt30', 'Liquid'
  */
 export interface IntegrationAccountMapFilter {
@@ -1047,9 +1050,9 @@ export interface IntegrationAccountMapFilter {
  * @constructor
  * The integration account partner's business identity.
  *
- * @member {string} qualifier The business identity qualifier e.g. as2identity,
- * ZZ, ZZZ, 31, 32
- * @member {string} value The user defined business identity value.
+ * @property {string} qualifier The business identity qualifier e.g.
+ * as2identity, ZZ, ZZZ, 31, 32
+ * @property {string} value The user defined business identity value.
  */
 export interface BusinessIdentity {
   qualifier: string;
@@ -1062,7 +1065,7 @@ export interface BusinessIdentity {
  * @constructor
  * The B2B partner content.
  *
- * @member {array} [businessIdentities] The list of partner business
+ * @property {array} [businessIdentities] The list of partner business
  * identities.
  */
 export interface B2BPartnerContent {
@@ -1075,8 +1078,8 @@ export interface B2BPartnerContent {
  * @constructor
  * The integration account partner content.
  *
- * @member {object} [b2b] The B2B partner content.
- * @member {array} [b2b.businessIdentities] The list of partner business
+ * @property {object} [b2b] The B2B partner content.
+ * @property {array} [b2b.businessIdentities] The list of partner business
  * identities.
  */
 export interface PartnerContent {
@@ -1089,14 +1092,14 @@ export interface PartnerContent {
  * @constructor
  * The integration account partner.
  *
- * @member {string} partnerType The partner type. Possible values include:
+ * @property {string} partnerType The partner type. Possible values include:
  * 'NotSpecified', 'B2B'
- * @member {date} [createdTime] The created time.
- * @member {date} [changedTime] The changed time.
- * @member {object} [metadata] The metadata.
- * @member {object} content The partner content.
- * @member {object} [content.b2b] The B2B partner content.
- * @member {array} [content.b2b.businessIdentities] The list of partner
+ * @property {date} [createdTime] The created time.
+ * @property {date} [changedTime] The changed time.
+ * @property {object} [metadata] The metadata.
+ * @property {object} content The partner content.
+ * @property {object} [content.b2b] The B2B partner content.
+ * @property {array} [content.b2b.businessIdentities] The list of partner
  * business identities.
  */
 export interface IntegrationAccountPartner extends Resource {
@@ -1113,7 +1116,7 @@ export interface IntegrationAccountPartner extends Resource {
  * @constructor
  * The integration account partner filter for odata query.
  *
- * @member {string} partnerType The partner type of integration account
+ * @property {string} partnerType The partner type of integration account
  * partner. Possible values include: 'NotSpecified', 'B2B'
  */
 export interface IntegrationAccountPartnerFilter {
@@ -1126,13 +1129,13 @@ export interface IntegrationAccountPartnerFilter {
  * @constructor
  * The AS2 agreement message connection settings.
  *
- * @member {boolean} ignoreCertificateNameMismatch The value indicating whether
- * to ignore mismatch in certificate name.
- * @member {boolean} supportHttpStatusCodeContinue The value indicating whether
- * to support HTTP status code 'CONTINUE'.
- * @member {boolean} keepHttpConnectionAlive The value indicating whether to
+ * @property {boolean} ignoreCertificateNameMismatch The value indicating
+ * whether to ignore mismatch in certificate name.
+ * @property {boolean} supportHttpStatusCodeContinue The value indicating
+ * whether to support HTTP status code 'CONTINUE'.
+ * @property {boolean} keepHttpConnectionAlive The value indicating whether to
  * keep the connection alive.
- * @member {boolean} unfoldHttpHeaders The value indicating whether to unfold
+ * @property {boolean} unfoldHttpHeaders The value indicating whether to unfold
  * the HTTP headers.
  */
 export interface AS2MessageConnectionSettings {
@@ -1148,13 +1151,13 @@ export interface AS2MessageConnectionSettings {
  * @constructor
  * The AS2 agreement acknowledgement connection settings.
  *
- * @member {boolean} ignoreCertificateNameMismatch The value indicating whether
- * to ignore mismatch in certificate name.
- * @member {boolean} supportHttpStatusCodeContinue The value indicating whether
- * to support HTTP status code 'CONTINUE'.
- * @member {boolean} keepHttpConnectionAlive The value indicating whether to
+ * @property {boolean} ignoreCertificateNameMismatch The value indicating
+ * whether to ignore mismatch in certificate name.
+ * @property {boolean} supportHttpStatusCodeContinue The value indicating
+ * whether to support HTTP status code 'CONTINUE'.
+ * @property {boolean} keepHttpConnectionAlive The value indicating whether to
  * keep the connection alive.
- * @member {boolean} unfoldHttpHeaders The value indicating whether to unfold
+ * @property {boolean} unfoldHttpHeaders The value indicating whether to unfold
  * the HTTP headers.
  */
 export interface AS2AcknowledgementConnectionSettings {
@@ -1170,21 +1173,21 @@ export interface AS2AcknowledgementConnectionSettings {
  * @constructor
  * The AS2 agreement mdn settings.
  *
- * @member {boolean} needMdn The value indicating whether to send or request a
- * MDN.
- * @member {boolean} signMdn The value indicating whether the MDN needs to be
+ * @property {boolean} needMdn The value indicating whether to send or request
+ * a MDN.
+ * @property {boolean} signMdn The value indicating whether the MDN needs to be
  * signed or not.
- * @member {boolean} sendMdnAsynchronously The value indicating whether to send
- * the asynchronous MDN.
- * @member {string} [receiptDeliveryUrl] The receipt delivery URL.
- * @member {string} [dispositionNotificationTo] The disposition notification to
- * header value.
- * @member {boolean} signOutboundMdnIfOptional The value indicating whether to
- * sign the outbound MDN if optional.
- * @member {string} [mdnText] The MDN text.
- * @member {boolean} sendInboundMdnToMessageBox The value indicating whether to
- * send inbound MDN to message box.
- * @member {string} micHashingAlgorithm The signing or hashing algorithm.
+ * @property {boolean} sendMdnAsynchronously The value indicating whether to
+ * send the asynchronous MDN.
+ * @property {string} [receiptDeliveryUrl] The receipt delivery URL.
+ * @property {string} [dispositionNotificationTo] The disposition notification
+ * to header value.
+ * @property {boolean} signOutboundMdnIfOptional The value indicating whether
+ * to sign the outbound MDN if optional.
+ * @property {string} [mdnText] The MDN text.
+ * @property {boolean} sendInboundMdnToMessageBox The value indicating whether
+ * to send inbound MDN to message box.
+ * @property {string} micHashingAlgorithm The signing or hashing algorithm.
  * Possible values include: 'NotSpecified', 'None', 'MD5', 'SHA1', 'SHA2256',
  * 'SHA2384', 'SHA2512'
  */
@@ -1206,25 +1209,25 @@ export interface AS2MdnSettings {
  * @constructor
  * The AS2 agreement security settings.
  *
- * @member {boolean} overrideGroupSigningCertificate The value indicating
+ * @property {boolean} overrideGroupSigningCertificate The value indicating
  * whether to send or request a MDN.
- * @member {string} [signingCertificateName] The name of the signing
+ * @property {string} [signingCertificateName] The name of the signing
  * certificate.
- * @member {string} [encryptionCertificateName] The name of the encryption
+ * @property {string} [encryptionCertificateName] The name of the encryption
  * certificate.
- * @member {boolean} enableNrrForInboundEncodedMessages The value indicating
+ * @property {boolean} enableNrrForInboundEncodedMessages The value indicating
  * whether to enable NRR for inbound encoded messages.
- * @member {boolean} enableNrrForInboundDecodedMessages The value indicating
+ * @property {boolean} enableNrrForInboundDecodedMessages The value indicating
  * whether to enable NRR for inbound decoded messages.
- * @member {boolean} enableNrrForOutboundMdn The value indicating whether to
+ * @property {boolean} enableNrrForOutboundMdn The value indicating whether to
  * enable NRR for outbound MDN.
- * @member {boolean} enableNrrForOutboundEncodedMessages The value indicating
+ * @property {boolean} enableNrrForOutboundEncodedMessages The value indicating
  * whether to enable NRR for outbound encoded messages.
- * @member {boolean} enableNrrForOutboundDecodedMessages The value indicating
+ * @property {boolean} enableNrrForOutboundDecodedMessages The value indicating
  * whether to enable NRR for outbound decoded messages.
- * @member {boolean} enableNrrForInboundMdn The value indicating whether to
+ * @property {boolean} enableNrrForInboundMdn The value indicating whether to
  * enable NRR for inbound MDN.
- * @member {string} [sha2AlgorithmFormat] The Sha2 algorithm format. Valid
+ * @property {string} [sha2AlgorithmFormat] The Sha2 algorithm format. Valid
  * values are Sha2, ShaHashSize, ShaHyphenHashSize, Sha2UnderscoreHashSize.
  */
 export interface AS2SecuritySettings {
@@ -1246,26 +1249,26 @@ export interface AS2SecuritySettings {
  * @constructor
  * The AS2 agreement validation settings.
  *
- * @member {boolean} overrideMessageProperties The value indicating whether to
- * override incoming message properties with those in agreement.
- * @member {boolean} encryptMessage The value indicating whether the message
+ * @property {boolean} overrideMessageProperties The value indicating whether
+ * to override incoming message properties with those in agreement.
+ * @property {boolean} encryptMessage The value indicating whether the message
  * has to be encrypted.
- * @member {boolean} signMessage The value indicating whether the message has
+ * @property {boolean} signMessage The value indicating whether the message has
  * to be signed.
- * @member {boolean} compressMessage The value indicating whether the message
+ * @property {boolean} compressMessage The value indicating whether the message
  * has to be compressed.
- * @member {boolean} checkDuplicateMessage The value indicating whether to
+ * @property {boolean} checkDuplicateMessage The value indicating whether to
  * check for duplicate message.
- * @member {number} interchangeDuplicatesValidityDays The number of days to
+ * @property {number} interchangeDuplicatesValidityDays The number of days to
  * look back for duplicate interchange.
- * @member {boolean} checkCertificateRevocationListOnSend The value indicating
- * whether to check for certificate revocation list on send.
- * @member {boolean} checkCertificateRevocationListOnReceive The value
+ * @property {boolean} checkCertificateRevocationListOnSend The value
+ * indicating whether to check for certificate revocation list on send.
+ * @property {boolean} checkCertificateRevocationListOnReceive The value
  * indicating whether to check for certificate revocation list on receive.
- * @member {string} encryptionAlgorithm The encryption algorithm. Possible
+ * @property {string} encryptionAlgorithm The encryption algorithm. Possible
  * values include: 'NotSpecified', 'None', 'DES3', 'RC2', 'AES128', 'AES192',
  * 'AES256'
- * @member {string} [signingAlgorithm] The signing algorithm. Possible values
+ * @property {string} [signingAlgorithm] The signing algorithm. Possible values
  * include: 'NotSpecified', 'Default', 'SHA1', 'SHA2256', 'SHA2384', 'SHA2512'
  */
 export interface AS2ValidationSettings {
@@ -1287,14 +1290,14 @@ export interface AS2ValidationSettings {
  * @constructor
  * The AS2 agreement envelope settings.
  *
- * @member {string} messageContentType The message content type.
- * @member {boolean} transmitFileNameInMimeHeader The value indicating whether
- * to transmit file name in mime header.
- * @member {string} fileNameTemplate The template for file name.
- * @member {boolean} suspendMessageOnFileNameGenerationError The value
+ * @property {string} messageContentType The message content type.
+ * @property {boolean} transmitFileNameInMimeHeader The value indicating
+ * whether to transmit file name in mime header.
+ * @property {string} fileNameTemplate The template for file name.
+ * @property {boolean} suspendMessageOnFileNameGenerationError The value
  * indicating whether to suspend message on file name generation error.
- * @member {boolean} autogenerateFileName The value indicating whether to auto
- * generate file name.
+ * @property {boolean} autogenerateFileName The value indicating whether to
+ * auto generate file name.
  */
 export interface AS2EnvelopeSettings {
   messageContentType: string;
@@ -1310,9 +1313,9 @@ export interface AS2EnvelopeSettings {
  * @constructor
  * The AS2 agreement error settings.
  *
- * @member {boolean} suspendDuplicateMessage The value indicating whether to
+ * @property {boolean} suspendDuplicateMessage The value indicating whether to
  * suspend duplicate message.
- * @member {boolean} resendIfMdnNotReceived The value indicating whether to
+ * @property {boolean} resendIfMdnNotReceived The value indicating whether to
  * resend message If MDN is not received.
  */
 export interface AS2ErrorSettings {
@@ -1326,110 +1329,114 @@ export interface AS2ErrorSettings {
  * @constructor
  * The AS2 agreement protocol settings.
  *
- * @member {object} messageConnectionSettings The message connection settings.
- * @member {boolean} [messageConnectionSettings.ignoreCertificateNameMismatch]
- * The value indicating whether to ignore mismatch in certificate name.
- * @member {boolean} [messageConnectionSettings.supportHttpStatusCodeContinue]
- * The value indicating whether to support HTTP status code 'CONTINUE'.
- * @member {boolean} [messageConnectionSettings.keepHttpConnectionAlive] The
+ * @property {object} messageConnectionSettings The message connection
+ * settings.
+ * @property {boolean}
+ * [messageConnectionSettings.ignoreCertificateNameMismatch] The value
+ * indicating whether to ignore mismatch in certificate name.
+ * @property {boolean}
+ * [messageConnectionSettings.supportHttpStatusCodeContinue] The value
+ * indicating whether to support HTTP status code 'CONTINUE'.
+ * @property {boolean} [messageConnectionSettings.keepHttpConnectionAlive] The
  * value indicating whether to keep the connection alive.
- * @member {boolean} [messageConnectionSettings.unfoldHttpHeaders] The value
+ * @property {boolean} [messageConnectionSettings.unfoldHttpHeaders] The value
  * indicating whether to unfold the HTTP headers.
- * @member {object} acknowledgementConnectionSettings The acknowledgement
+ * @property {object} acknowledgementConnectionSettings The acknowledgement
  * connection settings.
- * @member {boolean}
+ * @property {boolean}
  * [acknowledgementConnectionSettings.ignoreCertificateNameMismatch] The value
  * indicating whether to ignore mismatch in certificate name.
- * @member {boolean}
+ * @property {boolean}
  * [acknowledgementConnectionSettings.supportHttpStatusCodeContinue] The value
  * indicating whether to support HTTP status code 'CONTINUE'.
- * @member {boolean}
+ * @property {boolean}
  * [acknowledgementConnectionSettings.keepHttpConnectionAlive] The value
  * indicating whether to keep the connection alive.
- * @member {boolean} [acknowledgementConnectionSettings.unfoldHttpHeaders] The
- * value indicating whether to unfold the HTTP headers.
- * @member {object} mdnSettings The MDN settings.
- * @member {boolean} [mdnSettings.needMdn] The value indicating whether to send
- * or request a MDN.
- * @member {boolean} [mdnSettings.signMdn] The value indicating whether the MDN
- * needs to be signed or not.
- * @member {boolean} [mdnSettings.sendMdnAsynchronously] The value indicating
+ * @property {boolean} [acknowledgementConnectionSettings.unfoldHttpHeaders]
+ * The value indicating whether to unfold the HTTP headers.
+ * @property {object} mdnSettings The MDN settings.
+ * @property {boolean} [mdnSettings.needMdn] The value indicating whether to
+ * send or request a MDN.
+ * @property {boolean} [mdnSettings.signMdn] The value indicating whether the
+ * MDN needs to be signed or not.
+ * @property {boolean} [mdnSettings.sendMdnAsynchronously] The value indicating
  * whether to send the asynchronous MDN.
- * @member {string} [mdnSettings.receiptDeliveryUrl] The receipt delivery URL.
- * @member {string} [mdnSettings.dispositionNotificationTo] The disposition
+ * @property {string} [mdnSettings.receiptDeliveryUrl] The receipt delivery
+ * URL.
+ * @property {string} [mdnSettings.dispositionNotificationTo] The disposition
  * notification to header value.
- * @member {boolean} [mdnSettings.signOutboundMdnIfOptional] The value
+ * @property {boolean} [mdnSettings.signOutboundMdnIfOptional] The value
  * indicating whether to sign the outbound MDN if optional.
- * @member {string} [mdnSettings.mdnText] The MDN text.
- * @member {boolean} [mdnSettings.sendInboundMdnToMessageBox] The value
+ * @property {string} [mdnSettings.mdnText] The MDN text.
+ * @property {boolean} [mdnSettings.sendInboundMdnToMessageBox] The value
  * indicating whether to send inbound MDN to message box.
- * @member {string} [mdnSettings.micHashingAlgorithm] The signing or hashing
+ * @property {string} [mdnSettings.micHashingAlgorithm] The signing or hashing
  * algorithm. Possible values include: 'NotSpecified', 'None', 'MD5', 'SHA1',
  * 'SHA2256', 'SHA2384', 'SHA2512'
- * @member {object} securitySettings The security settings.
- * @member {boolean} [securitySettings.overrideGroupSigningCertificate] The
+ * @property {object} securitySettings The security settings.
+ * @property {boolean} [securitySettings.overrideGroupSigningCertificate] The
  * value indicating whether to send or request a MDN.
- * @member {string} [securitySettings.signingCertificateName] The name of the
+ * @property {string} [securitySettings.signingCertificateName] The name of the
  * signing certificate.
- * @member {string} [securitySettings.encryptionCertificateName] The name of
+ * @property {string} [securitySettings.encryptionCertificateName] The name of
  * the encryption certificate.
- * @member {boolean} [securitySettings.enableNrrForInboundEncodedMessages] The
- * value indicating whether to enable NRR for inbound encoded messages.
- * @member {boolean} [securitySettings.enableNrrForInboundDecodedMessages] The
- * value indicating whether to enable NRR for inbound decoded messages.
- * @member {boolean} [securitySettings.enableNrrForOutboundMdn] The value
+ * @property {boolean} [securitySettings.enableNrrForInboundEncodedMessages]
+ * The value indicating whether to enable NRR for inbound encoded messages.
+ * @property {boolean} [securitySettings.enableNrrForInboundDecodedMessages]
+ * The value indicating whether to enable NRR for inbound decoded messages.
+ * @property {boolean} [securitySettings.enableNrrForOutboundMdn] The value
  * indicating whether to enable NRR for outbound MDN.
- * @member {boolean} [securitySettings.enableNrrForOutboundEncodedMessages] The
- * value indicating whether to enable NRR for outbound encoded messages.
- * @member {boolean} [securitySettings.enableNrrForOutboundDecodedMessages] The
- * value indicating whether to enable NRR for outbound decoded messages.
- * @member {boolean} [securitySettings.enableNrrForInboundMdn] The value
+ * @property {boolean} [securitySettings.enableNrrForOutboundEncodedMessages]
+ * The value indicating whether to enable NRR for outbound encoded messages.
+ * @property {boolean} [securitySettings.enableNrrForOutboundDecodedMessages]
+ * The value indicating whether to enable NRR for outbound decoded messages.
+ * @property {boolean} [securitySettings.enableNrrForInboundMdn] The value
  * indicating whether to enable NRR for inbound MDN.
- * @member {string} [securitySettings.sha2AlgorithmFormat] The Sha2 algorithm
+ * @property {string} [securitySettings.sha2AlgorithmFormat] The Sha2 algorithm
  * format. Valid values are Sha2, ShaHashSize, ShaHyphenHashSize,
  * Sha2UnderscoreHashSize.
- * @member {object} validationSettings The validation settings.
- * @member {boolean} [validationSettings.overrideMessageProperties] The value
+ * @property {object} validationSettings The validation settings.
+ * @property {boolean} [validationSettings.overrideMessageProperties] The value
  * indicating whether to override incoming message properties with those in
  * agreement.
- * @member {boolean} [validationSettings.encryptMessage] The value indicating
+ * @property {boolean} [validationSettings.encryptMessage] The value indicating
  * whether the message has to be encrypted.
- * @member {boolean} [validationSettings.signMessage] The value indicating
+ * @property {boolean} [validationSettings.signMessage] The value indicating
  * whether the message has to be signed.
- * @member {boolean} [validationSettings.compressMessage] The value indicating
- * whether the message has to be compressed.
- * @member {boolean} [validationSettings.checkDuplicateMessage] The value
+ * @property {boolean} [validationSettings.compressMessage] The value
+ * indicating whether the message has to be compressed.
+ * @property {boolean} [validationSettings.checkDuplicateMessage] The value
  * indicating whether to check for duplicate message.
- * @member {number} [validationSettings.interchangeDuplicatesValidityDays] The
- * number of days to look back for duplicate interchange.
- * @member {boolean} [validationSettings.checkCertificateRevocationListOnSend]
- * The value indicating whether to check for certificate revocation list on
- * send.
- * @member {boolean}
+ * @property {number} [validationSettings.interchangeDuplicatesValidityDays]
+ * The number of days to look back for duplicate interchange.
+ * @property {boolean}
+ * [validationSettings.checkCertificateRevocationListOnSend] The value
+ * indicating whether to check for certificate revocation list on send.
+ * @property {boolean}
  * [validationSettings.checkCertificateRevocationListOnReceive] The value
  * indicating whether to check for certificate revocation list on receive.
- * @member {string} [validationSettings.encryptionAlgorithm] The encryption
+ * @property {string} [validationSettings.encryptionAlgorithm] The encryption
  * algorithm. Possible values include: 'NotSpecified', 'None', 'DES3', 'RC2',
  * 'AES128', 'AES192', 'AES256'
- * @member {string} [validationSettings.signingAlgorithm] The signing
+ * @property {string} [validationSettings.signingAlgorithm] The signing
  * algorithm. Possible values include: 'NotSpecified', 'Default', 'SHA1',
  * 'SHA2256', 'SHA2384', 'SHA2512'
- * @member {object} envelopeSettings The envelope settings.
- * @member {string} [envelopeSettings.messageContentType] The message content
+ * @property {object} envelopeSettings The envelope settings.
+ * @property {string} [envelopeSettings.messageContentType] The message content
  * type.
- * @member {boolean} [envelopeSettings.transmitFileNameInMimeHeader] The value
- * indicating whether to transmit file name in mime header.
- * @member {string} [envelopeSettings.fileNameTemplate] The template for file
+ * @property {boolean} [envelopeSettings.transmitFileNameInMimeHeader] The
+ * value indicating whether to transmit file name in mime header.
+ * @property {string} [envelopeSettings.fileNameTemplate] The template for file
  * name.
- * @member {boolean} [envelopeSettings.suspendMessageOnFileNameGenerationError]
- * The value indicating whether to suspend message on file name generation
- * error.
- * @member {boolean} [envelopeSettings.autogenerateFileName] The value
+ * @property {boolean}
+ * [envelopeSettings.suspendMessageOnFileNameGenerationError] The value
+ * indicating whether to suspend message on file name generation error.
+ * @property {boolean} [envelopeSettings.autogenerateFileName] The value
  * indicating whether to auto generate file name.
- * @member {object} errorSettings The error settings.
- * @member {boolean} [errorSettings.suspendDuplicateMessage] The value
+ * @property {object} errorSettings The error settings.
+ * @property {boolean} [errorSettings.suspendDuplicateMessage] The value
  * indicating whether to suspend duplicate message.
- * @member {boolean} [errorSettings.resendIfMdnNotReceived] The value
+ * @property {boolean} [errorSettings.resendIfMdnNotReceived] The value
  * indicating whether to resend message If MDN is not received.
  */
 export interface AS2ProtocolSettings {
@@ -1448,143 +1455,148 @@ export interface AS2ProtocolSettings {
  * @constructor
  * The integration account AS2 one-way agreement.
  *
- * @member {object} senderBusinessIdentity The sender business identity
- * @member {string} [senderBusinessIdentity.qualifier] The business identity
+ * @property {object} senderBusinessIdentity The sender business identity
+ * @property {string} [senderBusinessIdentity.qualifier] The business identity
  * qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [senderBusinessIdentity.value] The user defined business
+ * @property {string} [senderBusinessIdentity.value] The user defined business
  * identity value.
- * @member {object} receiverBusinessIdentity The receiver business identity
- * @member {string} [receiverBusinessIdentity.qualifier] The business identity
- * qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [receiverBusinessIdentity.value] The user defined business
- * identity value.
- * @member {object} protocolSettings The AS2 protocol settings.
- * @member {object} [protocolSettings.messageConnectionSettings] The message
+ * @property {object} receiverBusinessIdentity The receiver business identity
+ * @property {string} [receiverBusinessIdentity.qualifier] The business
+ * identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
+ * @property {string} [receiverBusinessIdentity.value] The user defined
+ * business identity value.
+ * @property {object} protocolSettings The AS2 protocol settings.
+ * @property {object} [protocolSettings.messageConnectionSettings] The message
  * connection settings.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.messageConnectionSettings.ignoreCertificateNameMismatch]
  * The value indicating whether to ignore mismatch in certificate name.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.messageConnectionSettings.supportHttpStatusCodeContinue]
  * The value indicating whether to support HTTP status code 'CONTINUE'.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.messageConnectionSettings.keepHttpConnectionAlive] The
  * value indicating whether to keep the connection alive.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.messageConnectionSettings.unfoldHttpHeaders] The value
  * indicating whether to unfold the HTTP headers.
- * @member {object} [protocolSettings.acknowledgementConnectionSettings] The
+ * @property {object} [protocolSettings.acknowledgementConnectionSettings] The
  * acknowledgement connection settings.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.acknowledgementConnectionSettings.ignoreCertificateNameMismatch]
  * The value indicating whether to ignore mismatch in certificate name.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.acknowledgementConnectionSettings.supportHttpStatusCodeContinue]
  * The value indicating whether to support HTTP status code 'CONTINUE'.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.acknowledgementConnectionSettings.keepHttpConnectionAlive]
  * The value indicating whether to keep the connection alive.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.acknowledgementConnectionSettings.unfoldHttpHeaders] The
  * value indicating whether to unfold the HTTP headers.
- * @member {object} [protocolSettings.mdnSettings] The MDN settings.
- * @member {boolean} [protocolSettings.mdnSettings.needMdn] The value
+ * @property {object} [protocolSettings.mdnSettings] The MDN settings.
+ * @property {boolean} [protocolSettings.mdnSettings.needMdn] The value
  * indicating whether to send or request a MDN.
- * @member {boolean} [protocolSettings.mdnSettings.signMdn] The value
+ * @property {boolean} [protocolSettings.mdnSettings.signMdn] The value
  * indicating whether the MDN needs to be signed or not.
- * @member {boolean} [protocolSettings.mdnSettings.sendMdnAsynchronously] The
+ * @property {boolean} [protocolSettings.mdnSettings.sendMdnAsynchronously] The
  * value indicating whether to send the asynchronous MDN.
- * @member {string} [protocolSettings.mdnSettings.receiptDeliveryUrl] The
+ * @property {string} [protocolSettings.mdnSettings.receiptDeliveryUrl] The
  * receipt delivery URL.
- * @member {string} [protocolSettings.mdnSettings.dispositionNotificationTo]
+ * @property {string} [protocolSettings.mdnSettings.dispositionNotificationTo]
  * The disposition notification to header value.
- * @member {boolean} [protocolSettings.mdnSettings.signOutboundMdnIfOptional]
+ * @property {boolean} [protocolSettings.mdnSettings.signOutboundMdnIfOptional]
  * The value indicating whether to sign the outbound MDN if optional.
- * @member {string} [protocolSettings.mdnSettings.mdnText] The MDN text.
- * @member {boolean} [protocolSettings.mdnSettings.sendInboundMdnToMessageBox]
- * The value indicating whether to send inbound MDN to message box.
- * @member {string} [protocolSettings.mdnSettings.micHashingAlgorithm] The
+ * @property {string} [protocolSettings.mdnSettings.mdnText] The MDN text.
+ * @property {boolean}
+ * [protocolSettings.mdnSettings.sendInboundMdnToMessageBox] The value
+ * indicating whether to send inbound MDN to message box.
+ * @property {string} [protocolSettings.mdnSettings.micHashingAlgorithm] The
  * signing or hashing algorithm. Possible values include: 'NotSpecified',
  * 'None', 'MD5', 'SHA1', 'SHA2256', 'SHA2384', 'SHA2512'
- * @member {object} [protocolSettings.securitySettings] The security settings.
- * @member {boolean}
+ * @property {object} [protocolSettings.securitySettings] The security
+ * settings.
+ * @property {boolean}
  * [protocolSettings.securitySettings.overrideGroupSigningCertificate] The
  * value indicating whether to send or request a MDN.
- * @member {string} [protocolSettings.securitySettings.signingCertificateName]
- * The name of the signing certificate.
- * @member {string}
+ * @property {string}
+ * [protocolSettings.securitySettings.signingCertificateName] The name of the
+ * signing certificate.
+ * @property {string}
  * [protocolSettings.securitySettings.encryptionCertificateName] The name of
  * the encryption certificate.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.securitySettings.enableNrrForInboundEncodedMessages] The
  * value indicating whether to enable NRR for inbound encoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.securitySettings.enableNrrForInboundDecodedMessages] The
  * value indicating whether to enable NRR for inbound decoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.securitySettings.enableNrrForOutboundMdn] The value
  * indicating whether to enable NRR for outbound MDN.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.securitySettings.enableNrrForOutboundEncodedMessages] The
  * value indicating whether to enable NRR for outbound encoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.securitySettings.enableNrrForOutboundDecodedMessages] The
  * value indicating whether to enable NRR for outbound decoded messages.
- * @member {boolean} [protocolSettings.securitySettings.enableNrrForInboundMdn]
- * The value indicating whether to enable NRR for inbound MDN.
- * @member {string} [protocolSettings.securitySettings.sha2AlgorithmFormat] The
- * Sha2 algorithm format. Valid values are Sha2, ShaHashSize,
+ * @property {boolean}
+ * [protocolSettings.securitySettings.enableNrrForInboundMdn] The value
+ * indicating whether to enable NRR for inbound MDN.
+ * @property {string} [protocolSettings.securitySettings.sha2AlgorithmFormat]
+ * The Sha2 algorithm format. Valid values are Sha2, ShaHashSize,
  * ShaHyphenHashSize, Sha2UnderscoreHashSize.
- * @member {object} [protocolSettings.validationSettings] The validation
+ * @property {object} [protocolSettings.validationSettings] The validation
  * settings.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.validationSettings.overrideMessageProperties] The value
  * indicating whether to override incoming message properties with those in
  * agreement.
- * @member {boolean} [protocolSettings.validationSettings.encryptMessage] The
+ * @property {boolean} [protocolSettings.validationSettings.encryptMessage] The
  * value indicating whether the message has to be encrypted.
- * @member {boolean} [protocolSettings.validationSettings.signMessage] The
+ * @property {boolean} [protocolSettings.validationSettings.signMessage] The
  * value indicating whether the message has to be signed.
- * @member {boolean} [protocolSettings.validationSettings.compressMessage] The
- * value indicating whether the message has to be compressed.
- * @member {boolean}
+ * @property {boolean} [protocolSettings.validationSettings.compressMessage]
+ * The value indicating whether the message has to be compressed.
+ * @property {boolean}
  * [protocolSettings.validationSettings.checkDuplicateMessage] The value
  * indicating whether to check for duplicate message.
- * @member {number}
+ * @property {number}
  * [protocolSettings.validationSettings.interchangeDuplicatesValidityDays] The
  * number of days to look back for duplicate interchange.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.validationSettings.checkCertificateRevocationListOnSend]
  * The value indicating whether to check for certificate revocation list on
  * send.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.validationSettings.checkCertificateRevocationListOnReceive]
  * The value indicating whether to check for certificate revocation list on
  * receive.
- * @member {string} [protocolSettings.validationSettings.encryptionAlgorithm]
+ * @property {string} [protocolSettings.validationSettings.encryptionAlgorithm]
  * The encryption algorithm. Possible values include: 'NotSpecified', 'None',
  * 'DES3', 'RC2', 'AES128', 'AES192', 'AES256'
- * @member {string} [protocolSettings.validationSettings.signingAlgorithm] The
- * signing algorithm. Possible values include: 'NotSpecified', 'Default',
+ * @property {string} [protocolSettings.validationSettings.signingAlgorithm]
+ * The signing algorithm. Possible values include: 'NotSpecified', 'Default',
  * 'SHA1', 'SHA2256', 'SHA2384', 'SHA2512'
- * @member {object} [protocolSettings.envelopeSettings] The envelope settings.
- * @member {string} [protocolSettings.envelopeSettings.messageContentType] The
- * message content type.
- * @member {boolean}
+ * @property {object} [protocolSettings.envelopeSettings] The envelope
+ * settings.
+ * @property {string} [protocolSettings.envelopeSettings.messageContentType]
+ * The message content type.
+ * @property {boolean}
  * [protocolSettings.envelopeSettings.transmitFileNameInMimeHeader] The value
  * indicating whether to transmit file name in mime header.
- * @member {string} [protocolSettings.envelopeSettings.fileNameTemplate] The
+ * @property {string} [protocolSettings.envelopeSettings.fileNameTemplate] The
  * template for file name.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.envelopeSettings.suspendMessageOnFileNameGenerationError]
  * The value indicating whether to suspend message on file name generation
  * error.
- * @member {boolean} [protocolSettings.envelopeSettings.autogenerateFileName]
+ * @property {boolean} [protocolSettings.envelopeSettings.autogenerateFileName]
  * The value indicating whether to auto generate file name.
- * @member {object} [protocolSettings.errorSettings] The error settings.
- * @member {boolean} [protocolSettings.errorSettings.suspendDuplicateMessage]
+ * @property {object} [protocolSettings.errorSettings] The error settings.
+ * @property {boolean} [protocolSettings.errorSettings.suspendDuplicateMessage]
  * The value indicating whether to suspend duplicate message.
- * @member {boolean} [protocolSettings.errorSettings.resendIfMdnNotReceived]
+ * @property {boolean} [protocolSettings.errorSettings.resendIfMdnNotReceived]
  * The value indicating whether to resend message If MDN is not received.
  */
 export interface AS2OneWayAgreement {
@@ -1599,338 +1611,340 @@ export interface AS2OneWayAgreement {
  * @constructor
  * The integration account AS2 agreement content.
  *
- * @member {object} receiveAgreement The AS2 one-way receive agreement.
- * @member {object} [receiveAgreement.senderBusinessIdentity] The sender
+ * @property {object} receiveAgreement The AS2 one-way receive agreement.
+ * @property {object} [receiveAgreement.senderBusinessIdentity] The sender
  * business identity
- * @member {string} [receiveAgreement.senderBusinessIdentity.qualifier] The
+ * @property {string} [receiveAgreement.senderBusinessIdentity.qualifier] The
  * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [receiveAgreement.senderBusinessIdentity.value] The user
+ * @property {string} [receiveAgreement.senderBusinessIdentity.value] The user
  * defined business identity value.
- * @member {object} [receiveAgreement.receiverBusinessIdentity] The receiver
+ * @property {object} [receiveAgreement.receiverBusinessIdentity] The receiver
  * business identity
- * @member {string} [receiveAgreement.receiverBusinessIdentity.qualifier] The
+ * @property {string} [receiveAgreement.receiverBusinessIdentity.qualifier] The
  * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [receiveAgreement.receiverBusinessIdentity.value] The user
- * defined business identity value.
- * @member {object} [receiveAgreement.protocolSettings] The AS2 protocol
+ * @property {string} [receiveAgreement.receiverBusinessIdentity.value] The
+ * user defined business identity value.
+ * @property {object} [receiveAgreement.protocolSettings] The AS2 protocol
  * settings.
- * @member {object}
+ * @property {object}
  * [receiveAgreement.protocolSettings.messageConnectionSettings] The message
  * connection settings.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.messageConnectionSettings.ignoreCertificateNameMismatch]
  * The value indicating whether to ignore mismatch in certificate name.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.messageConnectionSettings.supportHttpStatusCodeContinue]
  * The value indicating whether to support HTTP status code 'CONTINUE'.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.messageConnectionSettings.keepHttpConnectionAlive]
  * The value indicating whether to keep the connection alive.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.messageConnectionSettings.unfoldHttpHeaders]
  * The value indicating whether to unfold the HTTP headers.
- * @member {object}
+ * @property {object}
  * [receiveAgreement.protocolSettings.acknowledgementConnectionSettings] The
  * acknowledgement connection settings.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.acknowledgementConnectionSettings.ignoreCertificateNameMismatch]
  * The value indicating whether to ignore mismatch in certificate name.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.acknowledgementConnectionSettings.supportHttpStatusCodeContinue]
  * The value indicating whether to support HTTP status code 'CONTINUE'.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.acknowledgementConnectionSettings.keepHttpConnectionAlive]
  * The value indicating whether to keep the connection alive.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.acknowledgementConnectionSettings.unfoldHttpHeaders]
  * The value indicating whether to unfold the HTTP headers.
- * @member {object} [receiveAgreement.protocolSettings.mdnSettings] The MDN
+ * @property {object} [receiveAgreement.protocolSettings.mdnSettings] The MDN
  * settings.
- * @member {boolean} [receiveAgreement.protocolSettings.mdnSettings.needMdn]
+ * @property {boolean} [receiveAgreement.protocolSettings.mdnSettings.needMdn]
  * The value indicating whether to send or request a MDN.
- * @member {boolean} [receiveAgreement.protocolSettings.mdnSettings.signMdn]
+ * @property {boolean} [receiveAgreement.protocolSettings.mdnSettings.signMdn]
  * The value indicating whether the MDN needs to be signed or not.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.mdnSettings.sendMdnAsynchronously] The
  * value indicating whether to send the asynchronous MDN.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.mdnSettings.receiptDeliveryUrl] The
  * receipt delivery URL.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.mdnSettings.dispositionNotificationTo]
  * The disposition notification to header value.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.mdnSettings.signOutboundMdnIfOptional]
  * The value indicating whether to sign the outbound MDN if optional.
- * @member {string} [receiveAgreement.protocolSettings.mdnSettings.mdnText] The
- * MDN text.
- * @member {boolean}
+ * @property {string} [receiveAgreement.protocolSettings.mdnSettings.mdnText]
+ * The MDN text.
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.mdnSettings.sendInboundMdnToMessageBox]
  * The value indicating whether to send inbound MDN to message box.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.mdnSettings.micHashingAlgorithm] The
  * signing or hashing algorithm. Possible values include: 'NotSpecified',
  * 'None', 'MD5', 'SHA1', 'SHA2256', 'SHA2384', 'SHA2512'
- * @member {object} [receiveAgreement.protocolSettings.securitySettings] The
+ * @property {object} [receiveAgreement.protocolSettings.securitySettings] The
  * security settings.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.securitySettings.overrideGroupSigningCertificate]
  * The value indicating whether to send or request a MDN.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.securitySettings.signingCertificateName]
  * The name of the signing certificate.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.securitySettings.encryptionCertificateName]
  * The name of the encryption certificate.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.securitySettings.enableNrrForInboundEncodedMessages]
  * The value indicating whether to enable NRR for inbound encoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.securitySettings.enableNrrForInboundDecodedMessages]
  * The value indicating whether to enable NRR for inbound decoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.securitySettings.enableNrrForOutboundMdn]
  * The value indicating whether to enable NRR for outbound MDN.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.securitySettings.enableNrrForOutboundEncodedMessages]
  * The value indicating whether to enable NRR for outbound encoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.securitySettings.enableNrrForOutboundDecodedMessages]
  * The value indicating whether to enable NRR for outbound decoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.securitySettings.enableNrrForInboundMdn]
  * The value indicating whether to enable NRR for inbound MDN.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.securitySettings.sha2AlgorithmFormat] The
  * Sha2 algorithm format. Valid values are Sha2, ShaHashSize,
  * ShaHyphenHashSize, Sha2UnderscoreHashSize.
- * @member {object} [receiveAgreement.protocolSettings.validationSettings] The
- * validation settings.
- * @member {boolean}
+ * @property {object} [receiveAgreement.protocolSettings.validationSettings]
+ * The validation settings.
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.overrideMessageProperties]
  * The value indicating whether to override incoming message properties with
  * those in agreement.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.encryptMessage] The
  * value indicating whether the message has to be encrypted.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.signMessage] The value
  * indicating whether the message has to be signed.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.compressMessage] The
  * value indicating whether the message has to be compressed.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.checkDuplicateMessage]
  * The value indicating whether to check for duplicate message.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.validationSettings.interchangeDuplicatesValidityDays]
  * The number of days to look back for duplicate interchange.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.checkCertificateRevocationListOnSend]
  * The value indicating whether to check for certificate revocation list on
  * send.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.checkCertificateRevocationListOnReceive]
  * The value indicating whether to check for certificate revocation list on
  * receive.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.validationSettings.encryptionAlgorithm]
  * The encryption algorithm. Possible values include: 'NotSpecified', 'None',
  * 'DES3', 'RC2', 'AES128', 'AES192', 'AES256'
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.validationSettings.signingAlgorithm] The
  * signing algorithm. Possible values include: 'NotSpecified', 'Default',
  * 'SHA1', 'SHA2256', 'SHA2384', 'SHA2512'
- * @member {object} [receiveAgreement.protocolSettings.envelopeSettings] The
+ * @property {object} [receiveAgreement.protocolSettings.envelopeSettings] The
  * envelope settings.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.messageContentType] The
  * message content type.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.envelopeSettings.transmitFileNameInMimeHeader]
  * The value indicating whether to transmit file name in mime header.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.fileNameTemplate] The
  * template for file name.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.envelopeSettings.suspendMessageOnFileNameGenerationError]
  * The value indicating whether to suspend message on file name generation
  * error.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.envelopeSettings.autogenerateFileName]
  * The value indicating whether to auto generate file name.
- * @member {object} [receiveAgreement.protocolSettings.errorSettings] The error
- * settings.
- * @member {boolean}
+ * @property {object} [receiveAgreement.protocolSettings.errorSettings] The
+ * error settings.
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.errorSettings.suspendDuplicateMessage]
  * The value indicating whether to suspend duplicate message.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.errorSettings.resendIfMdnNotReceived] The
  * value indicating whether to resend message If MDN is not received.
- * @member {object} sendAgreement The AS2 one-way send agreement.
- * @member {object} [sendAgreement.senderBusinessIdentity] The sender business
- * identity
- * @member {string} [sendAgreement.senderBusinessIdentity.qualifier] The
- * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [sendAgreement.senderBusinessIdentity.value] The user
- * defined business identity value.
- * @member {object} [sendAgreement.receiverBusinessIdentity] The receiver
+ * @property {object} sendAgreement The AS2 one-way send agreement.
+ * @property {object} [sendAgreement.senderBusinessIdentity] The sender
  * business identity
- * @member {string} [sendAgreement.receiverBusinessIdentity.qualifier] The
+ * @property {string} [sendAgreement.senderBusinessIdentity.qualifier] The
  * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [sendAgreement.receiverBusinessIdentity.value] The user
+ * @property {string} [sendAgreement.senderBusinessIdentity.value] The user
  * defined business identity value.
- * @member {object} [sendAgreement.protocolSettings] The AS2 protocol settings.
- * @member {object} [sendAgreement.protocolSettings.messageConnectionSettings]
- * The message connection settings.
- * @member {boolean}
+ * @property {object} [sendAgreement.receiverBusinessIdentity] The receiver
+ * business identity
+ * @property {string} [sendAgreement.receiverBusinessIdentity.qualifier] The
+ * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
+ * @property {string} [sendAgreement.receiverBusinessIdentity.value] The user
+ * defined business identity value.
+ * @property {object} [sendAgreement.protocolSettings] The AS2 protocol
+ * settings.
+ * @property {object}
+ * [sendAgreement.protocolSettings.messageConnectionSettings] The message
+ * connection settings.
+ * @property {boolean}
  * [sendAgreement.protocolSettings.messageConnectionSettings.ignoreCertificateNameMismatch]
  * The value indicating whether to ignore mismatch in certificate name.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.messageConnectionSettings.supportHttpStatusCodeContinue]
  * The value indicating whether to support HTTP status code 'CONTINUE'.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.messageConnectionSettings.keepHttpConnectionAlive]
  * The value indicating whether to keep the connection alive.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.messageConnectionSettings.unfoldHttpHeaders]
  * The value indicating whether to unfold the HTTP headers.
- * @member {object}
+ * @property {object}
  * [sendAgreement.protocolSettings.acknowledgementConnectionSettings] The
  * acknowledgement connection settings.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.acknowledgementConnectionSettings.ignoreCertificateNameMismatch]
  * The value indicating whether to ignore mismatch in certificate name.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.acknowledgementConnectionSettings.supportHttpStatusCodeContinue]
  * The value indicating whether to support HTTP status code 'CONTINUE'.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.acknowledgementConnectionSettings.keepHttpConnectionAlive]
  * The value indicating whether to keep the connection alive.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.acknowledgementConnectionSettings.unfoldHttpHeaders]
  * The value indicating whether to unfold the HTTP headers.
- * @member {object} [sendAgreement.protocolSettings.mdnSettings] The MDN
+ * @property {object} [sendAgreement.protocolSettings.mdnSettings] The MDN
  * settings.
- * @member {boolean} [sendAgreement.protocolSettings.mdnSettings.needMdn] The
+ * @property {boolean} [sendAgreement.protocolSettings.mdnSettings.needMdn] The
  * value indicating whether to send or request a MDN.
- * @member {boolean} [sendAgreement.protocolSettings.mdnSettings.signMdn] The
+ * @property {boolean} [sendAgreement.protocolSettings.mdnSettings.signMdn] The
  * value indicating whether the MDN needs to be signed or not.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.mdnSettings.sendMdnAsynchronously] The value
  * indicating whether to send the asynchronous MDN.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.mdnSettings.receiptDeliveryUrl] The receipt
  * delivery URL.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.mdnSettings.dispositionNotificationTo] The
  * disposition notification to header value.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.mdnSettings.signOutboundMdnIfOptional] The
  * value indicating whether to sign the outbound MDN if optional.
- * @member {string} [sendAgreement.protocolSettings.mdnSettings.mdnText] The
+ * @property {string} [sendAgreement.protocolSettings.mdnSettings.mdnText] The
  * MDN text.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.mdnSettings.sendInboundMdnToMessageBox] The
  * value indicating whether to send inbound MDN to message box.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.mdnSettings.micHashingAlgorithm] The signing
  * or hashing algorithm. Possible values include: 'NotSpecified', 'None',
  * 'MD5', 'SHA1', 'SHA2256', 'SHA2384', 'SHA2512'
- * @member {object} [sendAgreement.protocolSettings.securitySettings] The
+ * @property {object} [sendAgreement.protocolSettings.securitySettings] The
  * security settings.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.securitySettings.overrideGroupSigningCertificate]
  * The value indicating whether to send or request a MDN.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.securitySettings.signingCertificateName] The
  * name of the signing certificate.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.securitySettings.encryptionCertificateName]
  * The name of the encryption certificate.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.securitySettings.enableNrrForInboundEncodedMessages]
  * The value indicating whether to enable NRR for inbound encoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.securitySettings.enableNrrForInboundDecodedMessages]
  * The value indicating whether to enable NRR for inbound decoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.securitySettings.enableNrrForOutboundMdn]
  * The value indicating whether to enable NRR for outbound MDN.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.securitySettings.enableNrrForOutboundEncodedMessages]
  * The value indicating whether to enable NRR for outbound encoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.securitySettings.enableNrrForOutboundDecodedMessages]
  * The value indicating whether to enable NRR for outbound decoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.securitySettings.enableNrrForInboundMdn] The
  * value indicating whether to enable NRR for inbound MDN.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.securitySettings.sha2AlgorithmFormat] The
  * Sha2 algorithm format. Valid values are Sha2, ShaHashSize,
  * ShaHyphenHashSize, Sha2UnderscoreHashSize.
- * @member {object} [sendAgreement.protocolSettings.validationSettings] The
+ * @property {object} [sendAgreement.protocolSettings.validationSettings] The
  * validation settings.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.overrideMessageProperties]
  * The value indicating whether to override incoming message properties with
  * those in agreement.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.encryptMessage] The value
  * indicating whether the message has to be encrypted.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.signMessage] The value
  * indicating whether the message has to be signed.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.compressMessage] The
  * value indicating whether the message has to be compressed.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.checkDuplicateMessage]
  * The value indicating whether to check for duplicate message.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.validationSettings.interchangeDuplicatesValidityDays]
  * The number of days to look back for duplicate interchange.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.checkCertificateRevocationListOnSend]
  * The value indicating whether to check for certificate revocation list on
  * send.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.checkCertificateRevocationListOnReceive]
  * The value indicating whether to check for certificate revocation list on
  * receive.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.validationSettings.encryptionAlgorithm] The
  * encryption algorithm. Possible values include: 'NotSpecified', 'None',
  * 'DES3', 'RC2', 'AES128', 'AES192', 'AES256'
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.validationSettings.signingAlgorithm] The
  * signing algorithm. Possible values include: 'NotSpecified', 'Default',
  * 'SHA1', 'SHA2256', 'SHA2384', 'SHA2512'
- * @member {object} [sendAgreement.protocolSettings.envelopeSettings] The
+ * @property {object} [sendAgreement.protocolSettings.envelopeSettings] The
  * envelope settings.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.messageContentType] The
  * message content type.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.envelopeSettings.transmitFileNameInMimeHeader]
  * The value indicating whether to transmit file name in mime header.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.fileNameTemplate] The
  * template for file name.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.envelopeSettings.suspendMessageOnFileNameGenerationError]
  * The value indicating whether to suspend message on file name generation
  * error.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.envelopeSettings.autogenerateFileName] The
  * value indicating whether to auto generate file name.
- * @member {object} [sendAgreement.protocolSettings.errorSettings] The error
+ * @property {object} [sendAgreement.protocolSettings.errorSettings] The error
  * settings.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.errorSettings.suspendDuplicateMessage] The
  * value indicating whether to suspend duplicate message.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.errorSettings.resendIfMdnNotReceived] The
  * value indicating whether to resend message If MDN is not received.
  */
@@ -1945,25 +1959,25 @@ export interface AS2AgreementContent {
  * @constructor
  * The X12 agreement validation settings.
  *
- * @member {boolean} validateCharacterSet The value indicating whether to
+ * @property {boolean} validateCharacterSet The value indicating whether to
  * validate character set in the message.
- * @member {boolean} checkDuplicateInterchangeControlNumber The value
+ * @property {boolean} checkDuplicateInterchangeControlNumber The value
  * indicating whether to check for duplicate interchange control number.
- * @member {number} interchangeControlNumberValidityDays The validity period of
- * interchange control number.
- * @member {boolean} checkDuplicateGroupControlNumber The value indicating
+ * @property {number} interchangeControlNumberValidityDays The validity period
+ * of interchange control number.
+ * @property {boolean} checkDuplicateGroupControlNumber The value indicating
  * whether to check for duplicate group control number.
- * @member {boolean} checkDuplicateTransactionSetControlNumber The value
+ * @property {boolean} checkDuplicateTransactionSetControlNumber The value
  * indicating whether to check for duplicate transaction set control number.
- * @member {boolean} validateEdiTypes The value indicating whether to Whether
+ * @property {boolean} validateEdiTypes The value indicating whether to Whether
  * to validate EDI types.
- * @member {boolean} validateXsdTypes The value indicating whether to Whether
+ * @property {boolean} validateXsdTypes The value indicating whether to Whether
  * to validate XSD types.
- * @member {boolean} allowLeadingAndTrailingSpacesAndZeroes The value
+ * @property {boolean} allowLeadingAndTrailingSpacesAndZeroes The value
  * indicating whether to allow leading and trailing spaces and zeroes.
- * @member {boolean} trimLeadingAndTrailingSpacesAndZeroes The value indicating
- * whether to trim leading and trailing spaces and zeroes.
- * @member {string} trailingSeparatorPolicy The trailing separator policy.
+ * @property {boolean} trimLeadingAndTrailingSpacesAndZeroes The value
+ * indicating whether to trim leading and trailing spaces and zeroes.
+ * @property {string} trailingSeparatorPolicy The trailing separator policy.
  * Possible values include: 'NotSpecified', 'NotAllowed', 'Optional',
  * 'Mandatory'
  */
@@ -1986,15 +2000,15 @@ export interface X12ValidationSettings {
  * @constructor
  * The X12 agreement framing settings.
  *
- * @member {number} dataElementSeparator The data element separator.
- * @member {number} componentSeparator The component separator.
- * @member {boolean} replaceSeparatorsInPayload The value indicating whether to
- * replace separators in payload.
- * @member {number} replaceCharacter The replacement character.
- * @member {number} segmentTerminator The segment terminator.
- * @member {string} characterSet The X12 character set. Possible values
+ * @property {number} dataElementSeparator The data element separator.
+ * @property {number} componentSeparator The component separator.
+ * @property {boolean} replaceSeparatorsInPayload The value indicating whether
+ * to replace separators in payload.
+ * @property {number} replaceCharacter The replacement character.
+ * @property {number} segmentTerminator The segment terminator.
+ * @property {string} characterSet The X12 character set. Possible values
  * include: 'NotSpecified', 'Basic', 'Extended', 'UTF8'
- * @member {string} segmentTerminatorSuffix The segment terminator suffix.
+ * @property {string} segmentTerminatorSuffix The segment terminator suffix.
  * Possible values include: 'NotSpecified', 'None', 'CR', 'LF', 'CRLF'
  */
 export interface X12FramingSettings {
@@ -2013,47 +2027,47 @@ export interface X12FramingSettings {
  * @constructor
  * The X12 agreement envelope settings.
  *
- * @member {number} controlStandardsId The controls standards id.
- * @member {boolean} useControlStandardsIdAsRepetitionCharacter The value
+ * @property {number} controlStandardsId The controls standards id.
+ * @property {boolean} useControlStandardsIdAsRepetitionCharacter The value
  * indicating whether to use control standards id as repetition character.
- * @member {string} senderApplicationId The sender application id.
- * @member {string} receiverApplicationId The receiver application id.
- * @member {string} controlVersionNumber The control version number.
- * @member {number} interchangeControlNumberLowerBound The interchange  control
- * number lower bound.
- * @member {number} interchangeControlNumberUpperBound The interchange  control
- * number upper bound.
- * @member {boolean} rolloverInterchangeControlNumber The value indicating
- * whether to rollover interchange control number.
- * @member {boolean} enableDefaultGroupHeaders The value indicating whether to
- * enable default group headers.
- * @member {string} [functionalGroupId] The functional group id.
- * @member {number} groupControlNumberLowerBound The group control number lower
- * bound.
- * @member {number} groupControlNumberUpperBound The group control number upper
- * bound.
- * @member {boolean} rolloverGroupControlNumber The value indicating whether to
- * rollover group control number.
- * @member {string} groupHeaderAgencyCode The group header agency code.
- * @member {string} groupHeaderVersion The group header version.
- * @member {number} transactionSetControlNumberLowerBound The transaction set
+ * @property {string} senderApplicationId The sender application id.
+ * @property {string} receiverApplicationId The receiver application id.
+ * @property {string} controlVersionNumber The control version number.
+ * @property {number} interchangeControlNumberLowerBound The interchange
  * control number lower bound.
- * @member {number} transactionSetControlNumberUpperBound The transaction set
+ * @property {number} interchangeControlNumberUpperBound The interchange
  * control number upper bound.
- * @member {boolean} rolloverTransactionSetControlNumber The value indicating
+ * @property {boolean} rolloverInterchangeControlNumber The value indicating
+ * whether to rollover interchange control number.
+ * @property {boolean} enableDefaultGroupHeaders The value indicating whether
+ * to enable default group headers.
+ * @property {string} [functionalGroupId] The functional group id.
+ * @property {number} groupControlNumberLowerBound The group control number
+ * lower bound.
+ * @property {number} groupControlNumberUpperBound The group control number
+ * upper bound.
+ * @property {boolean} rolloverGroupControlNumber The value indicating whether
+ * to rollover group control number.
+ * @property {string} groupHeaderAgencyCode The group header agency code.
+ * @property {string} groupHeaderVersion The group header version.
+ * @property {number} transactionSetControlNumberLowerBound The transaction set
+ * control number lower bound.
+ * @property {number} transactionSetControlNumberUpperBound The transaction set
+ * control number upper bound.
+ * @property {boolean} rolloverTransactionSetControlNumber The value indicating
  * whether to rollover transaction set control number.
- * @member {string} [transactionSetControlNumberPrefix] The transaction set
+ * @property {string} [transactionSetControlNumberPrefix] The transaction set
  * control number prefix.
- * @member {string} [transactionSetControlNumberSuffix] The transaction set
+ * @property {string} [transactionSetControlNumberSuffix] The transaction set
  * control number suffix.
- * @member {boolean} overwriteExistingTransactionSetControlNumber The value
+ * @property {boolean} overwriteExistingTransactionSetControlNumber The value
  * indicating whether to overwrite existing transaction set control number.
- * @member {string} groupHeaderDateFormat The group header date format.
+ * @property {string} groupHeaderDateFormat The group header date format.
  * Possible values include: 'NotSpecified', 'CCYYMMDD', 'YYMMDD'
- * @member {string} groupHeaderTimeFormat The group header time format.
+ * @property {string} groupHeaderTimeFormat The group header time format.
  * Possible values include: 'NotSpecified', 'HHMM', 'HHMMSS', 'HHMMSSdd',
  * 'HHMMSSd'
- * @member {string} usageIndicator The usage indicator. Possible values
+ * @property {string} usageIndicator The usage indicator. Possible values
  * include: 'NotSpecified', 'Test', 'Information', 'Production'
  */
 export interface X12EnvelopeSettings {
@@ -2089,36 +2103,36 @@ export interface X12EnvelopeSettings {
  * @constructor
  * The X12 agreement acknowledgement settings.
  *
- * @member {boolean} needTechnicalAcknowledgement The value indicating whether
- * technical acknowledgement is needed.
- * @member {boolean} batchTechnicalAcknowledgements The value indicating
+ * @property {boolean} needTechnicalAcknowledgement The value indicating
+ * whether technical acknowledgement is needed.
+ * @property {boolean} batchTechnicalAcknowledgements The value indicating
  * whether to batch the technical acknowledgements.
- * @member {boolean} needFunctionalAcknowledgement The value indicating whether
- * functional acknowledgement is needed.
- * @member {string} [functionalAcknowledgementVersion] The functional
+ * @property {boolean} needFunctionalAcknowledgement The value indicating
+ * whether functional acknowledgement is needed.
+ * @property {string} [functionalAcknowledgementVersion] The functional
  * acknowledgement version.
- * @member {boolean} batchFunctionalAcknowledgements The value indicating
+ * @property {boolean} batchFunctionalAcknowledgements The value indicating
  * whether to batch functional acknowledgements.
- * @member {boolean} needImplementationAcknowledgement The value indicating
+ * @property {boolean} needImplementationAcknowledgement The value indicating
  * whether implementation acknowledgement is needed.
- * @member {string} [implementationAcknowledgementVersion] The implementation
+ * @property {string} [implementationAcknowledgementVersion] The implementation
  * acknowledgement version.
- * @member {boolean} batchImplementationAcknowledgements The value indicating
+ * @property {boolean} batchImplementationAcknowledgements The value indicating
  * whether to batch implementation acknowledgements.
- * @member {boolean} needLoopForValidMessages The value indicating whether a
+ * @property {boolean} needLoopForValidMessages The value indicating whether a
  * loop is needed for valid messages.
- * @member {boolean} sendSynchronousAcknowledgement The value indicating
+ * @property {boolean} sendSynchronousAcknowledgement The value indicating
  * whether to send synchronous acknowledgement.
- * @member {string} [acknowledgementControlNumberPrefix] The acknowledgement
+ * @property {string} [acknowledgementControlNumberPrefix] The acknowledgement
  * control number prefix.
- * @member {string} [acknowledgementControlNumberSuffix] The acknowledgement
+ * @property {string} [acknowledgementControlNumberSuffix] The acknowledgement
  * control number suffix.
- * @member {number} acknowledgementControlNumberLowerBound The acknowledgement
- * control number lower bound.
- * @member {number} acknowledgementControlNumberUpperBound The acknowledgement
- * control number upper bound.
- * @member {boolean} rolloverAcknowledgementControlNumber The value indicating
- * whether to rollover acknowledgement control number.
+ * @property {number} acknowledgementControlNumberLowerBound The
+ * acknowledgement control number lower bound.
+ * @property {number} acknowledgementControlNumberUpperBound The
+ * acknowledgement control number upper bound.
+ * @property {boolean} rolloverAcknowledgementControlNumber The value
+ * indicating whether to rollover acknowledgement control number.
  */
 export interface X12AcknowledgementSettings {
   needTechnicalAcknowledgement: boolean;
@@ -2144,8 +2158,8 @@ export interface X12AcknowledgementSettings {
  * @constructor
  * The X12 message filter for odata query.
  *
- * @member {string} messageFilterType The message filter type. Possible values
- * include: 'NotSpecified', 'Include', 'Exclude'
+ * @property {string} messageFilterType The message filter type. Possible
+ * values include: 'NotSpecified', 'Include', 'Exclude'
  */
 export interface X12MessageFilter {
   messageFilterType: string;
@@ -2157,10 +2171,10 @@ export interface X12MessageFilter {
  * @constructor
  * The X12 agreement security settings.
  *
- * @member {string} authorizationQualifier The authorization qualifier.
- * @member {string} [authorizationValue] The authorization value.
- * @member {string} securityQualifier The security qualifier.
- * @member {string} [passwordValue] The password value.
+ * @property {string} authorizationQualifier The authorization qualifier.
+ * @property {string} [authorizationValue] The authorization value.
+ * @property {string} securityQualifier The security qualifier.
+ * @property {string} [passwordValue] The password value.
  */
 export interface X12SecuritySettings {
   authorizationQualifier: string;
@@ -2175,17 +2189,17 @@ export interface X12SecuritySettings {
  * @constructor
  * The X12 processing settings.
  *
- * @member {boolean} maskSecurityInfo The value indicating whether to mask
+ * @property {boolean} maskSecurityInfo The value indicating whether to mask
  * security information.
- * @member {boolean} convertImpliedDecimal The value indicating whether to
+ * @property {boolean} convertImpliedDecimal The value indicating whether to
  * convert numerical type to implied decimal.
- * @member {boolean} preserveInterchange The value indicating whether to
+ * @property {boolean} preserveInterchange The value indicating whether to
  * preserve interchange.
- * @member {boolean} suspendInterchangeOnError The value indicating whether to
- * suspend interchange on error.
- * @member {boolean} createEmptyXmlTagsForTrailingSeparators The value
+ * @property {boolean} suspendInterchangeOnError The value indicating whether
+ * to suspend interchange on error.
+ * @property {boolean} createEmptyXmlTagsForTrailingSeparators The value
  * indicating whether to create empty xml tags for trailing separators.
- * @member {boolean} useDotAsDecimalSeparator The value indicating whether to
+ * @property {boolean} useDotAsDecimalSeparator The value indicating whether to
  * use dot as decimal separator.
  */
 export interface X12ProcessingSettings {
@@ -2203,20 +2217,21 @@ export interface X12ProcessingSettings {
  * @constructor
  * The X12 envelope override settings.
  *
- * @member {string} targetNamespace The target namespace on which this envelope
- * settings has to be applied.
- * @member {string} protocolVersion The protocol version on which this envelope
- * settings has to be applied.
- * @member {string} messageId The message id on which this envelope settings
+ * @property {string} targetNamespace The target namespace on which this
+ * envelope settings has to be applied.
+ * @property {string} protocolVersion The protocol version on which this
+ * envelope settings has to be applied.
+ * @property {string} messageId The message id on which this envelope settings
  * has to be applied.
- * @member {string} responsibleAgencyCode The responsible agency code.
- * @member {string} headerVersion The header version.
- * @member {string} senderApplicationId The sender application id.
- * @member {string} receiverApplicationId The receiver application id.
- * @member {string} [functionalIdentifierCode] The functional identifier code.
- * @member {string} dateFormat The date format. Possible values include:
+ * @property {string} responsibleAgencyCode The responsible agency code.
+ * @property {string} headerVersion The header version.
+ * @property {string} senderApplicationId The sender application id.
+ * @property {string} receiverApplicationId The receiver application id.
+ * @property {string} [functionalIdentifierCode] The functional identifier
+ * code.
+ * @property {string} dateFormat The date format. Possible values include:
  * 'NotSpecified', 'CCYYMMDD', 'YYMMDD'
- * @member {string} timeFormat The time format. Possible values include:
+ * @property {string} timeFormat The time format. Possible values include:
  * 'NotSpecified', 'HHMM', 'HHMMSS', 'HHMMSSdd', 'HHMMSSd'
  */
 export interface X12EnvelopeOverride {
@@ -2238,19 +2253,19 @@ export interface X12EnvelopeOverride {
  * @constructor
  * The X12 validation override settings.
  *
- * @member {string} messageId The message id on which the validation settings
+ * @property {string} messageId The message id on which the validation settings
  * has to be applied.
- * @member {boolean} validateEdiTypes The value indicating whether to validate
- * EDI types.
- * @member {boolean} validateXsdTypes The value indicating whether to validate
- * XSD types.
- * @member {boolean} allowLeadingAndTrailingSpacesAndZeroes The value
+ * @property {boolean} validateEdiTypes The value indicating whether to
+ * validate EDI types.
+ * @property {boolean} validateXsdTypes The value indicating whether to
+ * validate XSD types.
+ * @property {boolean} allowLeadingAndTrailingSpacesAndZeroes The value
  * indicating whether to allow leading and trailing spaces and zeroes.
- * @member {boolean} validateCharacterSet The value indicating whether to
+ * @property {boolean} validateCharacterSet The value indicating whether to
  * validate character Set.
- * @member {boolean} trimLeadingAndTrailingSpacesAndZeroes The value indicating
- * whether to trim leading and trailing spaces and zeroes.
- * @member {string} trailingSeparatorPolicy The trailing separator policy.
+ * @property {boolean} trimLeadingAndTrailingSpacesAndZeroes The value
+ * indicating whether to trim leading and trailing spaces and zeroes.
+ * @property {string} trailingSeparatorPolicy The trailing separator policy.
  * Possible values include: 'NotSpecified', 'NotAllowed', 'Optional',
  * 'Mandatory'
  */
@@ -2270,7 +2285,7 @@ export interface X12ValidationOverride {
  * @constructor
  * The X12 message identifier.
  *
- * @member {string} messageId The message id.
+ * @property {string} messageId The message id.
  */
 export interface X12MessageIdentifier {
   messageId: string;
@@ -2282,10 +2297,10 @@ export interface X12MessageIdentifier {
  * @constructor
  * The X12 schema reference.
  *
- * @member {string} messageId The message id.
- * @member {string} [senderApplicationId] The sender application id.
- * @member {string} schemaVersion The schema version.
- * @member {string} schemaName The schema name.
+ * @property {string} messageId The message id.
+ * @property {string} [senderApplicationId] The sender application id.
+ * @property {string} schemaVersion The schema version.
+ * @property {string} schemaName The schema name.
  */
 export interface X12SchemaReference {
   messageId: string;
@@ -2300,17 +2315,17 @@ export interface X12SchemaReference {
  * @constructor
  * The X12 delimiter override settings.
  *
- * @member {string} [protocolVersion] The protocol version.
- * @member {string} [messageId] The message id.
- * @member {number} dataElementSeparator The data element separator.
- * @member {number} componentSeparator The component separator.
- * @member {number} segmentTerminator The segment terminator.
- * @member {string} segmentTerminatorSuffix The segment terminator suffix.
+ * @property {string} [protocolVersion] The protocol version.
+ * @property {string} [messageId] The message id.
+ * @property {number} dataElementSeparator The data element separator.
+ * @property {number} componentSeparator The component separator.
+ * @property {number} segmentTerminator The segment terminator.
+ * @property {string} segmentTerminatorSuffix The segment terminator suffix.
  * Possible values include: 'NotSpecified', 'None', 'CR', 'LF', 'CRLF'
- * @member {number} replaceCharacter The replacement character.
- * @member {boolean} replaceSeparatorsInPayload The value indicating whether to
- * replace separators in payload.
- * @member {string} [targetNamespace] The target namespace on which this
+ * @property {number} replaceCharacter The replacement character.
+ * @property {boolean} replaceSeparatorsInPayload The value indicating whether
+ * to replace separators in payload.
+ * @property {string} [targetNamespace] The target namespace on which this
  * delimiter settings has to be applied.
  */
 export interface X12DelimiterOverrides {
@@ -2331,167 +2346,173 @@ export interface X12DelimiterOverrides {
  * @constructor
  * The X12 agreement protocol settings.
  *
- * @member {object} validationSettings The X12 validation settings.
- * @member {boolean} [validationSettings.validateCharacterSet] The value
+ * @property {object} validationSettings The X12 validation settings.
+ * @property {boolean} [validationSettings.validateCharacterSet] The value
  * indicating whether to validate character set in the message.
- * @member {boolean}
+ * @property {boolean}
  * [validationSettings.checkDuplicateInterchangeControlNumber] The value
  * indicating whether to check for duplicate interchange control number.
- * @member {number} [validationSettings.interchangeControlNumberValidityDays]
+ * @property {number} [validationSettings.interchangeControlNumberValidityDays]
  * The validity period of interchange control number.
- * @member {boolean} [validationSettings.checkDuplicateGroupControlNumber] The
- * value indicating whether to check for duplicate group control number.
- * @member {boolean}
+ * @property {boolean} [validationSettings.checkDuplicateGroupControlNumber]
+ * The value indicating whether to check for duplicate group control number.
+ * @property {boolean}
  * [validationSettings.checkDuplicateTransactionSetControlNumber] The value
  * indicating whether to check for duplicate transaction set control number.
- * @member {boolean} [validationSettings.validateEdiTypes] The value indicating
- * whether to Whether to validate EDI types.
- * @member {boolean} [validationSettings.validateXsdTypes] The value indicating
- * whether to Whether to validate XSD types.
- * @member {boolean}
+ * @property {boolean} [validationSettings.validateEdiTypes] The value
+ * indicating whether to Whether to validate EDI types.
+ * @property {boolean} [validationSettings.validateXsdTypes] The value
+ * indicating whether to Whether to validate XSD types.
+ * @property {boolean}
  * [validationSettings.allowLeadingAndTrailingSpacesAndZeroes] The value
  * indicating whether to allow leading and trailing spaces and zeroes.
- * @member {boolean} [validationSettings.trimLeadingAndTrailingSpacesAndZeroes]
- * The value indicating whether to trim leading and trailing spaces and zeroes.
- * @member {string} [validationSettings.trailingSeparatorPolicy] The trailing
+ * @property {boolean}
+ * [validationSettings.trimLeadingAndTrailingSpacesAndZeroes] The value
+ * indicating whether to trim leading and trailing spaces and zeroes.
+ * @property {string} [validationSettings.trailingSeparatorPolicy] The trailing
  * separator policy. Possible values include: 'NotSpecified', 'NotAllowed',
  * 'Optional', 'Mandatory'
- * @member {object} framingSettings The X12 framing settings.
- * @member {number} [framingSettings.dataElementSeparator] The data element
+ * @property {object} framingSettings The X12 framing settings.
+ * @property {number} [framingSettings.dataElementSeparator] The data element
  * separator.
- * @member {number} [framingSettings.componentSeparator] The component
+ * @property {number} [framingSettings.componentSeparator] The component
  * separator.
- * @member {boolean} [framingSettings.replaceSeparatorsInPayload] The value
+ * @property {boolean} [framingSettings.replaceSeparatorsInPayload] The value
  * indicating whether to replace separators in payload.
- * @member {number} [framingSettings.replaceCharacter] The replacement
+ * @property {number} [framingSettings.replaceCharacter] The replacement
  * character.
- * @member {number} [framingSettings.segmentTerminator] The segment terminator.
- * @member {string} [framingSettings.characterSet] The X12 character set.
+ * @property {number} [framingSettings.segmentTerminator] The segment
+ * terminator.
+ * @property {string} [framingSettings.characterSet] The X12 character set.
  * Possible values include: 'NotSpecified', 'Basic', 'Extended', 'UTF8'
- * @member {string} [framingSettings.segmentTerminatorSuffix] The segment
+ * @property {string} [framingSettings.segmentTerminatorSuffix] The segment
  * terminator suffix. Possible values include: 'NotSpecified', 'None', 'CR',
  * 'LF', 'CRLF'
- * @member {object} envelopeSettings The X12 envelope settings.
- * @member {number} [envelopeSettings.controlStandardsId] The controls
+ * @property {object} envelopeSettings The X12 envelope settings.
+ * @property {number} [envelopeSettings.controlStandardsId] The controls
  * standards id.
- * @member {boolean}
+ * @property {boolean}
  * [envelopeSettings.useControlStandardsIdAsRepetitionCharacter] The value
  * indicating whether to use control standards id as repetition character.
- * @member {string} [envelopeSettings.senderApplicationId] The sender
+ * @property {string} [envelopeSettings.senderApplicationId] The sender
  * application id.
- * @member {string} [envelopeSettings.receiverApplicationId] The receiver
+ * @property {string} [envelopeSettings.receiverApplicationId] The receiver
  * application id.
- * @member {string} [envelopeSettings.controlVersionNumber] The control version
- * number.
- * @member {number} [envelopeSettings.interchangeControlNumberLowerBound] The
+ * @property {string} [envelopeSettings.controlVersionNumber] The control
+ * version number.
+ * @property {number} [envelopeSettings.interchangeControlNumberLowerBound] The
  * interchange  control number lower bound.
- * @member {number} [envelopeSettings.interchangeControlNumberUpperBound] The
+ * @property {number} [envelopeSettings.interchangeControlNumberUpperBound] The
  * interchange  control number upper bound.
- * @member {boolean} [envelopeSettings.rolloverInterchangeControlNumber] The
+ * @property {boolean} [envelopeSettings.rolloverInterchangeControlNumber] The
  * value indicating whether to rollover interchange control number.
- * @member {boolean} [envelopeSettings.enableDefaultGroupHeaders] The value
+ * @property {boolean} [envelopeSettings.enableDefaultGroupHeaders] The value
  * indicating whether to enable default group headers.
- * @member {string} [envelopeSettings.functionalGroupId] The functional group
+ * @property {string} [envelopeSettings.functionalGroupId] The functional group
  * id.
- * @member {number} [envelopeSettings.groupControlNumberLowerBound] The group
+ * @property {number} [envelopeSettings.groupControlNumberLowerBound] The group
  * control number lower bound.
- * @member {number} [envelopeSettings.groupControlNumberUpperBound] The group
+ * @property {number} [envelopeSettings.groupControlNumberUpperBound] The group
  * control number upper bound.
- * @member {boolean} [envelopeSettings.rolloverGroupControlNumber] The value
+ * @property {boolean} [envelopeSettings.rolloverGroupControlNumber] The value
  * indicating whether to rollover group control number.
- * @member {string} [envelopeSettings.groupHeaderAgencyCode] The group header
+ * @property {string} [envelopeSettings.groupHeaderAgencyCode] The group header
  * agency code.
- * @member {string} [envelopeSettings.groupHeaderVersion] The group header
+ * @property {string} [envelopeSettings.groupHeaderVersion] The group header
  * version.
- * @member {number} [envelopeSettings.transactionSetControlNumberLowerBound]
+ * @property {number} [envelopeSettings.transactionSetControlNumberLowerBound]
  * The transaction set control number lower bound.
- * @member {number} [envelopeSettings.transactionSetControlNumberUpperBound]
+ * @property {number} [envelopeSettings.transactionSetControlNumberUpperBound]
  * The transaction set control number upper bound.
- * @member {boolean} [envelopeSettings.rolloverTransactionSetControlNumber] The
- * value indicating whether to rollover transaction set control number.
- * @member {string} [envelopeSettings.transactionSetControlNumberPrefix] The
+ * @property {boolean} [envelopeSettings.rolloverTransactionSetControlNumber]
+ * The value indicating whether to rollover transaction set control number.
+ * @property {string} [envelopeSettings.transactionSetControlNumberPrefix] The
  * transaction set control number prefix.
- * @member {string} [envelopeSettings.transactionSetControlNumberSuffix] The
+ * @property {string} [envelopeSettings.transactionSetControlNumberSuffix] The
  * transaction set control number suffix.
- * @member {boolean}
+ * @property {boolean}
  * [envelopeSettings.overwriteExistingTransactionSetControlNumber] The value
  * indicating whether to overwrite existing transaction set control number.
- * @member {string} [envelopeSettings.groupHeaderDateFormat] The group header
+ * @property {string} [envelopeSettings.groupHeaderDateFormat] The group header
  * date format. Possible values include: 'NotSpecified', 'CCYYMMDD', 'YYMMDD'
- * @member {string} [envelopeSettings.groupHeaderTimeFormat] The group header
+ * @property {string} [envelopeSettings.groupHeaderTimeFormat] The group header
  * time format. Possible values include: 'NotSpecified', 'HHMM', 'HHMMSS',
  * 'HHMMSSdd', 'HHMMSSd'
- * @member {string} [envelopeSettings.usageIndicator] The usage indicator.
+ * @property {string} [envelopeSettings.usageIndicator] The usage indicator.
  * Possible values include: 'NotSpecified', 'Test', 'Information', 'Production'
- * @member {object} acknowledgementSettings The X12 acknowledgment settings.
- * @member {boolean} [acknowledgementSettings.needTechnicalAcknowledgement] The
- * value indicating whether technical acknowledgement is needed.
- * @member {boolean} [acknowledgementSettings.batchTechnicalAcknowledgements]
+ * @property {object} acknowledgementSettings The X12 acknowledgment settings.
+ * @property {boolean} [acknowledgementSettings.needTechnicalAcknowledgement]
+ * The value indicating whether technical acknowledgement is needed.
+ * @property {boolean} [acknowledgementSettings.batchTechnicalAcknowledgements]
  * The value indicating whether to batch the technical acknowledgements.
- * @member {boolean} [acknowledgementSettings.needFunctionalAcknowledgement]
+ * @property {boolean} [acknowledgementSettings.needFunctionalAcknowledgement]
  * The value indicating whether functional acknowledgement is needed.
- * @member {string} [acknowledgementSettings.functionalAcknowledgementVersion]
- * The functional acknowledgement version.
- * @member {boolean} [acknowledgementSettings.batchFunctionalAcknowledgements]
- * The value indicating whether to batch functional acknowledgements.
- * @member {boolean}
+ * @property {string}
+ * [acknowledgementSettings.functionalAcknowledgementVersion] The functional
+ * acknowledgement version.
+ * @property {boolean}
+ * [acknowledgementSettings.batchFunctionalAcknowledgements] The value
+ * indicating whether to batch functional acknowledgements.
+ * @property {boolean}
  * [acknowledgementSettings.needImplementationAcknowledgement] The value
  * indicating whether implementation acknowledgement is needed.
- * @member {string}
+ * @property {string}
  * [acknowledgementSettings.implementationAcknowledgementVersion] The
  * implementation acknowledgement version.
- * @member {boolean}
+ * @property {boolean}
  * [acknowledgementSettings.batchImplementationAcknowledgements] The value
  * indicating whether to batch implementation acknowledgements.
- * @member {boolean} [acknowledgementSettings.needLoopForValidMessages] The
+ * @property {boolean} [acknowledgementSettings.needLoopForValidMessages] The
  * value indicating whether a loop is needed for valid messages.
- * @member {boolean} [acknowledgementSettings.sendSynchronousAcknowledgement]
+ * @property {boolean} [acknowledgementSettings.sendSynchronousAcknowledgement]
  * The value indicating whether to send synchronous acknowledgement.
- * @member {string}
+ * @property {string}
  * [acknowledgementSettings.acknowledgementControlNumberPrefix] The
  * acknowledgement control number prefix.
- * @member {string}
+ * @property {string}
  * [acknowledgementSettings.acknowledgementControlNumberSuffix] The
  * acknowledgement control number suffix.
- * @member {number}
+ * @property {number}
  * [acknowledgementSettings.acknowledgementControlNumberLowerBound] The
  * acknowledgement control number lower bound.
- * @member {number}
+ * @property {number}
  * [acknowledgementSettings.acknowledgementControlNumberUpperBound] The
  * acknowledgement control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [acknowledgementSettings.rolloverAcknowledgementControlNumber] The value
  * indicating whether to rollover acknowledgement control number.
- * @member {object} messageFilter The X12 message filter.
- * @member {string} [messageFilter.messageFilterType] The message filter type.
- * Possible values include: 'NotSpecified', 'Include', 'Exclude'
- * @member {object} securitySettings The X12 security settings.
- * @member {string} [securitySettings.authorizationQualifier] The authorization
- * qualifier.
- * @member {string} [securitySettings.authorizationValue] The authorization
+ * @property {object} messageFilter The X12 message filter.
+ * @property {string} [messageFilter.messageFilterType] The message filter
+ * type. Possible values include: 'NotSpecified', 'Include', 'Exclude'
+ * @property {object} securitySettings The X12 security settings.
+ * @property {string} [securitySettings.authorizationQualifier] The
+ * authorization qualifier.
+ * @property {string} [securitySettings.authorizationValue] The authorization
  * value.
- * @member {string} [securitySettings.securityQualifier] The security
+ * @property {string} [securitySettings.securityQualifier] The security
  * qualifier.
- * @member {string} [securitySettings.passwordValue] The password value.
- * @member {object} processingSettings The X12 processing settings.
- * @member {boolean} [processingSettings.maskSecurityInfo] The value indicating
- * whether to mask security information.
- * @member {boolean} [processingSettings.convertImpliedDecimal] The value
+ * @property {string} [securitySettings.passwordValue] The password value.
+ * @property {object} processingSettings The X12 processing settings.
+ * @property {boolean} [processingSettings.maskSecurityInfo] The value
+ * indicating whether to mask security information.
+ * @property {boolean} [processingSettings.convertImpliedDecimal] The value
  * indicating whether to convert numerical type to implied decimal.
- * @member {boolean} [processingSettings.preserveInterchange] The value
+ * @property {boolean} [processingSettings.preserveInterchange] The value
  * indicating whether to preserve interchange.
- * @member {boolean} [processingSettings.suspendInterchangeOnError] The value
+ * @property {boolean} [processingSettings.suspendInterchangeOnError] The value
  * indicating whether to suspend interchange on error.
- * @member {boolean}
+ * @property {boolean}
  * [processingSettings.createEmptyXmlTagsForTrailingSeparators] The value
  * indicating whether to create empty xml tags for trailing separators.
- * @member {boolean} [processingSettings.useDotAsDecimalSeparator] The value
+ * @property {boolean} [processingSettings.useDotAsDecimalSeparator] The value
  * indicating whether to use dot as decimal separator.
- * @member {array} [envelopeOverrides] The X12 envelope override settings.
- * @member {array} [validationOverrides] The X12 validation override settings.
- * @member {array} [messageFilterList] The X12 message filter list.
- * @member {array} schemaReferences The X12 schema references.
- * @member {array} [x12DelimiterOverrides] The X12 delimiter override settings.
+ * @property {array} [envelopeOverrides] The X12 envelope override settings.
+ * @property {array} [validationOverrides] The X12 validation override
+ * settings.
+ * @property {array} [messageFilterList] The X12 message filter list.
+ * @property {array} schemaReferences The X12 schema references.
+ * @property {array} [x12DelimiterOverrides] The X12 delimiter override
+ * settings.
  */
 export interface X12ProtocolSettings {
   validationSettings: X12ValidationSettings;
@@ -2514,227 +2535,231 @@ export interface X12ProtocolSettings {
  * @constructor
  * The X12 one-way agreement.
  *
- * @member {object} senderBusinessIdentity The sender business identity
- * @member {string} [senderBusinessIdentity.qualifier] The business identity
+ * @property {object} senderBusinessIdentity The sender business identity
+ * @property {string} [senderBusinessIdentity.qualifier] The business identity
  * qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [senderBusinessIdentity.value] The user defined business
+ * @property {string} [senderBusinessIdentity.value] The user defined business
  * identity value.
- * @member {object} receiverBusinessIdentity The receiver business identity
- * @member {string} [receiverBusinessIdentity.qualifier] The business identity
- * qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [receiverBusinessIdentity.value] The user defined business
- * identity value.
- * @member {object} protocolSettings The X12 protocol settings.
- * @member {object} [protocolSettings.validationSettings] The X12 validation
+ * @property {object} receiverBusinessIdentity The receiver business identity
+ * @property {string} [receiverBusinessIdentity.qualifier] The business
+ * identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
+ * @property {string} [receiverBusinessIdentity.value] The user defined
+ * business identity value.
+ * @property {object} protocolSettings The X12 protocol settings.
+ * @property {object} [protocolSettings.validationSettings] The X12 validation
  * settings.
- * @member {boolean} [protocolSettings.validationSettings.validateCharacterSet]
- * The value indicating whether to validate character set in the message.
- * @member {boolean}
+ * @property {boolean}
+ * [protocolSettings.validationSettings.validateCharacterSet] The value
+ * indicating whether to validate character set in the message.
+ * @property {boolean}
  * [protocolSettings.validationSettings.checkDuplicateInterchangeControlNumber]
  * The value indicating whether to check for duplicate interchange control
  * number.
- * @member {number}
+ * @property {number}
  * [protocolSettings.validationSettings.interchangeControlNumberValidityDays]
  * The validity period of interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.validationSettings.checkDuplicateGroupControlNumber] The
  * value indicating whether to check for duplicate group control number.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.validationSettings.checkDuplicateTransactionSetControlNumber]
  * The value indicating whether to check for duplicate transaction set control
  * number.
- * @member {boolean} [protocolSettings.validationSettings.validateEdiTypes] The
- * value indicating whether to Whether to validate EDI types.
- * @member {boolean} [protocolSettings.validationSettings.validateXsdTypes] The
- * value indicating whether to Whether to validate XSD types.
- * @member {boolean}
+ * @property {boolean} [protocolSettings.validationSettings.validateEdiTypes]
+ * The value indicating whether to Whether to validate EDI types.
+ * @property {boolean} [protocolSettings.validationSettings.validateXsdTypes]
+ * The value indicating whether to Whether to validate XSD types.
+ * @property {boolean}
  * [protocolSettings.validationSettings.allowLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to allow leading and trailing spaces and
  * zeroes.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.validationSettings.trimLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to trim leading and trailing spaces and zeroes.
- * @member {string}
+ * @property {string}
  * [protocolSettings.validationSettings.trailingSeparatorPolicy] The trailing
  * separator policy. Possible values include: 'NotSpecified', 'NotAllowed',
  * 'Optional', 'Mandatory'
- * @member {object} [protocolSettings.framingSettings] The X12 framing
+ * @property {object} [protocolSettings.framingSettings] The X12 framing
  * settings.
- * @member {number} [protocolSettings.framingSettings.dataElementSeparator] The
- * data element separator.
- * @member {number} [protocolSettings.framingSettings.componentSeparator] The
+ * @property {number} [protocolSettings.framingSettings.dataElementSeparator]
+ * The data element separator.
+ * @property {number} [protocolSettings.framingSettings.componentSeparator] The
  * component separator.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.framingSettings.replaceSeparatorsInPayload] The value
  * indicating whether to replace separators in payload.
- * @member {number} [protocolSettings.framingSettings.replaceCharacter] The
+ * @property {number} [protocolSettings.framingSettings.replaceCharacter] The
  * replacement character.
- * @member {number} [protocolSettings.framingSettings.segmentTerminator] The
+ * @property {number} [protocolSettings.framingSettings.segmentTerminator] The
  * segment terminator.
- * @member {string} [protocolSettings.framingSettings.characterSet] The X12
+ * @property {string} [protocolSettings.framingSettings.characterSet] The X12
  * character set. Possible values include: 'NotSpecified', 'Basic', 'Extended',
  * 'UTF8'
- * @member {string} [protocolSettings.framingSettings.segmentTerminatorSuffix]
- * The segment terminator suffix. Possible values include: 'NotSpecified',
- * 'None', 'CR', 'LF', 'CRLF'
- * @member {object} [protocolSettings.envelopeSettings] The X12 envelope
+ * @property {string}
+ * [protocolSettings.framingSettings.segmentTerminatorSuffix] The segment
+ * terminator suffix. Possible values include: 'NotSpecified', 'None', 'CR',
+ * 'LF', 'CRLF'
+ * @property {object} [protocolSettings.envelopeSettings] The X12 envelope
  * settings.
- * @member {number} [protocolSettings.envelopeSettings.controlStandardsId] The
- * controls standards id.
- * @member {boolean}
+ * @property {number} [protocolSettings.envelopeSettings.controlStandardsId]
+ * The controls standards id.
+ * @property {boolean}
  * [protocolSettings.envelopeSettings.useControlStandardsIdAsRepetitionCharacter]
  * The value indicating whether to use control standards id as repetition
  * character.
- * @member {string} [protocolSettings.envelopeSettings.senderApplicationId] The
- * sender application id.
- * @member {string} [protocolSettings.envelopeSettings.receiverApplicationId]
+ * @property {string} [protocolSettings.envelopeSettings.senderApplicationId]
+ * The sender application id.
+ * @property {string} [protocolSettings.envelopeSettings.receiverApplicationId]
  * The receiver application id.
- * @member {string} [protocolSettings.envelopeSettings.controlVersionNumber]
+ * @property {string} [protocolSettings.envelopeSettings.controlVersionNumber]
  * The control version number.
- * @member {number}
+ * @property {number}
  * [protocolSettings.envelopeSettings.interchangeControlNumberLowerBound] The
  * interchange  control number lower bound.
- * @member {number}
+ * @property {number}
  * [protocolSettings.envelopeSettings.interchangeControlNumberUpperBound] The
  * interchange  control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.envelopeSettings.rolloverInterchangeControlNumber] The
  * value indicating whether to rollover interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.envelopeSettings.enableDefaultGroupHeaders] The value
  * indicating whether to enable default group headers.
- * @member {string} [protocolSettings.envelopeSettings.functionalGroupId] The
+ * @property {string} [protocolSettings.envelopeSettings.functionalGroupId] The
  * functional group id.
- * @member {number}
+ * @property {number}
  * [protocolSettings.envelopeSettings.groupControlNumberLowerBound] The group
  * control number lower bound.
- * @member {number}
+ * @property {number}
  * [protocolSettings.envelopeSettings.groupControlNumberUpperBound] The group
  * control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.envelopeSettings.rolloverGroupControlNumber] The value
  * indicating whether to rollover group control number.
- * @member {string} [protocolSettings.envelopeSettings.groupHeaderAgencyCode]
+ * @property {string} [protocolSettings.envelopeSettings.groupHeaderAgencyCode]
  * The group header agency code.
- * @member {string} [protocolSettings.envelopeSettings.groupHeaderVersion] The
- * group header version.
- * @member {number}
+ * @property {string} [protocolSettings.envelopeSettings.groupHeaderVersion]
+ * The group header version.
+ * @property {number}
  * [protocolSettings.envelopeSettings.transactionSetControlNumberLowerBound]
  * The transaction set control number lower bound.
- * @member {number}
+ * @property {number}
  * [protocolSettings.envelopeSettings.transactionSetControlNumberUpperBound]
  * The transaction set control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.envelopeSettings.rolloverTransactionSetControlNumber] The
  * value indicating whether to rollover transaction set control number.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.transactionSetControlNumberPrefix] The
  * transaction set control number prefix.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.transactionSetControlNumberSuffix] The
  * transaction set control number suffix.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.envelopeSettings.overwriteExistingTransactionSetControlNumber]
  * The value indicating whether to overwrite existing transaction set control
  * number.
- * @member {string} [protocolSettings.envelopeSettings.groupHeaderDateFormat]
+ * @property {string} [protocolSettings.envelopeSettings.groupHeaderDateFormat]
  * The group header date format. Possible values include: 'NotSpecified',
  * 'CCYYMMDD', 'YYMMDD'
- * @member {string} [protocolSettings.envelopeSettings.groupHeaderTimeFormat]
+ * @property {string} [protocolSettings.envelopeSettings.groupHeaderTimeFormat]
  * The group header time format. Possible values include: 'NotSpecified',
  * 'HHMM', 'HHMMSS', 'HHMMSSdd', 'HHMMSSd'
- * @member {string} [protocolSettings.envelopeSettings.usageIndicator] The
+ * @property {string} [protocolSettings.envelopeSettings.usageIndicator] The
  * usage indicator. Possible values include: 'NotSpecified', 'Test',
  * 'Information', 'Production'
- * @member {object} [protocolSettings.acknowledgementSettings] The X12
+ * @property {object} [protocolSettings.acknowledgementSettings] The X12
  * acknowledgment settings.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.acknowledgementSettings.needTechnicalAcknowledgement] The
  * value indicating whether technical acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.acknowledgementSettings.batchTechnicalAcknowledgements]
  * The value indicating whether to batch the technical acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.acknowledgementSettings.needFunctionalAcknowledgement] The
  * value indicating whether functional acknowledgement is needed.
- * @member {string}
+ * @property {string}
  * [protocolSettings.acknowledgementSettings.functionalAcknowledgementVersion]
  * The functional acknowledgement version.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.acknowledgementSettings.batchFunctionalAcknowledgements]
  * The value indicating whether to batch functional acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.acknowledgementSettings.needImplementationAcknowledgement]
  * The value indicating whether implementation acknowledgement is needed.
- * @member {string}
+ * @property {string}
  * [protocolSettings.acknowledgementSettings.implementationAcknowledgementVersion]
  * The implementation acknowledgement version.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.acknowledgementSettings.batchImplementationAcknowledgements]
  * The value indicating whether to batch implementation acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.acknowledgementSettings.needLoopForValidMessages] The
  * value indicating whether a loop is needed for valid messages.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.acknowledgementSettings.sendSynchronousAcknowledgement]
  * The value indicating whether to send synchronous acknowledgement.
- * @member {string}
+ * @property {string}
  * [protocolSettings.acknowledgementSettings.acknowledgementControlNumberPrefix]
  * The acknowledgement control number prefix.
- * @member {string}
+ * @property {string}
  * [protocolSettings.acknowledgementSettings.acknowledgementControlNumberSuffix]
  * The acknowledgement control number suffix.
- * @member {number}
+ * @property {number}
  * [protocolSettings.acknowledgementSettings.acknowledgementControlNumberLowerBound]
  * The acknowledgement control number lower bound.
- * @member {number}
+ * @property {number}
  * [protocolSettings.acknowledgementSettings.acknowledgementControlNumberUpperBound]
  * The acknowledgement control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.acknowledgementSettings.rolloverAcknowledgementControlNumber]
  * The value indicating whether to rollover acknowledgement control number.
- * @member {object} [protocolSettings.messageFilter] The X12 message filter.
- * @member {string} [protocolSettings.messageFilter.messageFilterType] The
+ * @property {object} [protocolSettings.messageFilter] The X12 message filter.
+ * @property {string} [protocolSettings.messageFilter.messageFilterType] The
  * message filter type. Possible values include: 'NotSpecified', 'Include',
  * 'Exclude'
- * @member {object} [protocolSettings.securitySettings] The X12 security
+ * @property {object} [protocolSettings.securitySettings] The X12 security
  * settings.
- * @member {string} [protocolSettings.securitySettings.authorizationQualifier]
- * The authorization qualifier.
- * @member {string} [protocolSettings.securitySettings.authorizationValue] The
- * authorization value.
- * @member {string} [protocolSettings.securitySettings.securityQualifier] The
+ * @property {string}
+ * [protocolSettings.securitySettings.authorizationQualifier] The authorization
+ * qualifier.
+ * @property {string} [protocolSettings.securitySettings.authorizationValue]
+ * The authorization value.
+ * @property {string} [protocolSettings.securitySettings.securityQualifier] The
  * security qualifier.
- * @member {string} [protocolSettings.securitySettings.passwordValue] The
+ * @property {string} [protocolSettings.securitySettings.passwordValue] The
  * password value.
- * @member {object} [protocolSettings.processingSettings] The X12 processing
+ * @property {object} [protocolSettings.processingSettings] The X12 processing
  * settings.
- * @member {boolean} [protocolSettings.processingSettings.maskSecurityInfo] The
- * value indicating whether to mask security information.
- * @member {boolean}
+ * @property {boolean} [protocolSettings.processingSettings.maskSecurityInfo]
+ * The value indicating whether to mask security information.
+ * @property {boolean}
  * [protocolSettings.processingSettings.convertImpliedDecimal] The value
  * indicating whether to convert numerical type to implied decimal.
- * @member {boolean} [protocolSettings.processingSettings.preserveInterchange]
- * The value indicating whether to preserve interchange.
- * @member {boolean}
+ * @property {boolean}
+ * [protocolSettings.processingSettings.preserveInterchange] The value
+ * indicating whether to preserve interchange.
+ * @property {boolean}
  * [protocolSettings.processingSettings.suspendInterchangeOnError] The value
  * indicating whether to suspend interchange on error.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.processingSettings.createEmptyXmlTagsForTrailingSeparators]
  * The value indicating whether to create empty xml tags for trailing
  * separators.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.processingSettings.useDotAsDecimalSeparator] The value
  * indicating whether to use dot as decimal separator.
- * @member {array} [protocolSettings.envelopeOverrides] The X12 envelope
+ * @property {array} [protocolSettings.envelopeOverrides] The X12 envelope
  * override settings.
- * @member {array} [protocolSettings.validationOverrides] The X12 validation
+ * @property {array} [protocolSettings.validationOverrides] The X12 validation
  * override settings.
- * @member {array} [protocolSettings.messageFilterList] The X12 message filter
- * list.
- * @member {array} [protocolSettings.schemaReferences] The X12 schema
+ * @property {array} [protocolSettings.messageFilterList] The X12 message
+ * filter list.
+ * @property {array} [protocolSettings.schemaReferences] The X12 schema
  * references.
- * @member {array} [protocolSettings.x12DelimiterOverrides] The X12 delimiter
+ * @property {array} [protocolSettings.x12DelimiterOverrides] The X12 delimiter
  * override settings.
  */
 export interface X12OneWayAgreement {
@@ -2749,509 +2774,511 @@ export interface X12OneWayAgreement {
  * @constructor
  * The X12 agreement content.
  *
- * @member {object} receiveAgreement The X12 one-way receive agreement.
- * @member {object} [receiveAgreement.senderBusinessIdentity] The sender
+ * @property {object} receiveAgreement The X12 one-way receive agreement.
+ * @property {object} [receiveAgreement.senderBusinessIdentity] The sender
  * business identity
- * @member {string} [receiveAgreement.senderBusinessIdentity.qualifier] The
+ * @property {string} [receiveAgreement.senderBusinessIdentity.qualifier] The
  * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [receiveAgreement.senderBusinessIdentity.value] The user
+ * @property {string} [receiveAgreement.senderBusinessIdentity.value] The user
  * defined business identity value.
- * @member {object} [receiveAgreement.receiverBusinessIdentity] The receiver
+ * @property {object} [receiveAgreement.receiverBusinessIdentity] The receiver
  * business identity
- * @member {string} [receiveAgreement.receiverBusinessIdentity.qualifier] The
+ * @property {string} [receiveAgreement.receiverBusinessIdentity.qualifier] The
  * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [receiveAgreement.receiverBusinessIdentity.value] The user
- * defined business identity value.
- * @member {object} [receiveAgreement.protocolSettings] The X12 protocol
+ * @property {string} [receiveAgreement.receiverBusinessIdentity.value] The
+ * user defined business identity value.
+ * @property {object} [receiveAgreement.protocolSettings] The X12 protocol
  * settings.
- * @member {object} [receiveAgreement.protocolSettings.validationSettings] The
- * X12 validation settings.
- * @member {boolean}
+ * @property {object} [receiveAgreement.protocolSettings.validationSettings]
+ * The X12 validation settings.
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.validateCharacterSet]
  * The value indicating whether to validate character set in the message.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.checkDuplicateInterchangeControlNumber]
  * The value indicating whether to check for duplicate interchange control
  * number.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.validationSettings.interchangeControlNumberValidityDays]
  * The validity period of interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.checkDuplicateGroupControlNumber]
  * The value indicating whether to check for duplicate group control number.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.checkDuplicateTransactionSetControlNumber]
  * The value indicating whether to check for duplicate transaction set control
  * number.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.validateEdiTypes] The
  * value indicating whether to Whether to validate EDI types.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.validateXsdTypes] The
  * value indicating whether to Whether to validate XSD types.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.allowLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to allow leading and trailing spaces and
  * zeroes.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.trimLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to trim leading and trailing spaces and zeroes.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.validationSettings.trailingSeparatorPolicy]
  * The trailing separator policy. Possible values include: 'NotSpecified',
  * 'NotAllowed', 'Optional', 'Mandatory'
- * @member {object} [receiveAgreement.protocolSettings.framingSettings] The X12
- * framing settings.
- * @member {number}
+ * @property {object} [receiveAgreement.protocolSettings.framingSettings] The
+ * X12 framing settings.
+ * @property {number}
  * [receiveAgreement.protocolSettings.framingSettings.dataElementSeparator] The
  * data element separator.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.framingSettings.componentSeparator] The
  * component separator.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.framingSettings.replaceSeparatorsInPayload]
  * The value indicating whether to replace separators in payload.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.framingSettings.replaceCharacter] The
  * replacement character.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.framingSettings.segmentTerminator] The
  * segment terminator.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.framingSettings.characterSet] The X12
  * character set. Possible values include: 'NotSpecified', 'Basic', 'Extended',
  * 'UTF8'
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.framingSettings.segmentTerminatorSuffix]
  * The segment terminator suffix. Possible values include: 'NotSpecified',
  * 'None', 'CR', 'LF', 'CRLF'
- * @member {object} [receiveAgreement.protocolSettings.envelopeSettings] The
+ * @property {object} [receiveAgreement.protocolSettings.envelopeSettings] The
  * X12 envelope settings.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.envelopeSettings.controlStandardsId] The
  * controls standards id.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.envelopeSettings.useControlStandardsIdAsRepetitionCharacter]
  * The value indicating whether to use control standards id as repetition
  * character.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.senderApplicationId] The
  * sender application id.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.receiverApplicationId]
  * The receiver application id.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.controlVersionNumber]
  * The control version number.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.envelopeSettings.interchangeControlNumberLowerBound]
  * The interchange  control number lower bound.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.envelopeSettings.interchangeControlNumberUpperBound]
  * The interchange  control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.envelopeSettings.rolloverInterchangeControlNumber]
  * The value indicating whether to rollover interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.envelopeSettings.enableDefaultGroupHeaders]
  * The value indicating whether to enable default group headers.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.functionalGroupId] The
  * functional group id.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.envelopeSettings.groupControlNumberLowerBound]
  * The group control number lower bound.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.envelopeSettings.groupControlNumberUpperBound]
  * The group control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.envelopeSettings.rolloverGroupControlNumber]
  * The value indicating whether to rollover group control number.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.groupHeaderAgencyCode]
  * The group header agency code.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.groupHeaderVersion] The
  * group header version.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberLowerBound]
  * The transaction set control number lower bound.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberUpperBound]
  * The transaction set control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.envelopeSettings.rolloverTransactionSetControlNumber]
  * The value indicating whether to rollover transaction set control number.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberPrefix]
  * The transaction set control number prefix.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberSuffix]
  * The transaction set control number suffix.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.envelopeSettings.overwriteExistingTransactionSetControlNumber]
  * The value indicating whether to overwrite existing transaction set control
  * number.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.groupHeaderDateFormat]
  * The group header date format. Possible values include: 'NotSpecified',
  * 'CCYYMMDD', 'YYMMDD'
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.groupHeaderTimeFormat]
  * The group header time format. Possible values include: 'NotSpecified',
  * 'HHMM', 'HHMMSS', 'HHMMSSdd', 'HHMMSSd'
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.usageIndicator] The
  * usage indicator. Possible values include: 'NotSpecified', 'Test',
  * 'Information', 'Production'
- * @member {object} [receiveAgreement.protocolSettings.acknowledgementSettings]
- * The X12 acknowledgment settings.
- * @member {boolean}
+ * @property {object}
+ * [receiveAgreement.protocolSettings.acknowledgementSettings] The X12
+ * acknowledgment settings.
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.needTechnicalAcknowledgement]
  * The value indicating whether technical acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.batchTechnicalAcknowledgements]
  * The value indicating whether to batch the technical acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.needFunctionalAcknowledgement]
  * The value indicating whether functional acknowledgement is needed.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.functionalAcknowledgementVersion]
  * The functional acknowledgement version.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.batchFunctionalAcknowledgements]
  * The value indicating whether to batch functional acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.needImplementationAcknowledgement]
  * The value indicating whether implementation acknowledgement is needed.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.implementationAcknowledgementVersion]
  * The implementation acknowledgement version.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.batchImplementationAcknowledgements]
  * The value indicating whether to batch implementation acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.needLoopForValidMessages]
  * The value indicating whether a loop is needed for valid messages.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.sendSynchronousAcknowledgement]
  * The value indicating whether to send synchronous acknowledgement.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberPrefix]
  * The acknowledgement control number prefix.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberSuffix]
  * The acknowledgement control number suffix.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberLowerBound]
  * The acknowledgement control number lower bound.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberUpperBound]
  * The acknowledgement control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.rolloverAcknowledgementControlNumber]
  * The value indicating whether to rollover acknowledgement control number.
- * @member {object} [receiveAgreement.protocolSettings.messageFilter] The X12
+ * @property {object} [receiveAgreement.protocolSettings.messageFilter] The X12
  * message filter.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.messageFilter.messageFilterType] The
  * message filter type. Possible values include: 'NotSpecified', 'Include',
  * 'Exclude'
- * @member {object} [receiveAgreement.protocolSettings.securitySettings] The
+ * @property {object} [receiveAgreement.protocolSettings.securitySettings] The
  * X12 security settings.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.securitySettings.authorizationQualifier]
  * The authorization qualifier.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.securitySettings.authorizationValue] The
  * authorization value.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.securitySettings.securityQualifier] The
  * security qualifier.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.securitySettings.passwordValue] The
  * password value.
- * @member {object} [receiveAgreement.protocolSettings.processingSettings] The
- * X12 processing settings.
- * @member {boolean}
+ * @property {object} [receiveAgreement.protocolSettings.processingSettings]
+ * The X12 processing settings.
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.processingSettings.maskSecurityInfo] The
  * value indicating whether to mask security information.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.processingSettings.convertImpliedDecimal]
  * The value indicating whether to convert numerical type to implied decimal.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.processingSettings.preserveInterchange]
  * The value indicating whether to preserve interchange.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.processingSettings.suspendInterchangeOnError]
  * The value indicating whether to suspend interchange on error.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.processingSettings.createEmptyXmlTagsForTrailingSeparators]
  * The value indicating whether to create empty xml tags for trailing
  * separators.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.processingSettings.useDotAsDecimalSeparator]
  * The value indicating whether to use dot as decimal separator.
- * @member {array} [receiveAgreement.protocolSettings.envelopeOverrides] The
+ * @property {array} [receiveAgreement.protocolSettings.envelopeOverrides] The
  * X12 envelope override settings.
- * @member {array} [receiveAgreement.protocolSettings.validationOverrides] The
- * X12 validation override settings.
- * @member {array} [receiveAgreement.protocolSettings.messageFilterList] The
+ * @property {array} [receiveAgreement.protocolSettings.validationOverrides]
+ * The X12 validation override settings.
+ * @property {array} [receiveAgreement.protocolSettings.messageFilterList] The
  * X12 message filter list.
- * @member {array} [receiveAgreement.protocolSettings.schemaReferences] The X12
- * schema references.
- * @member {array} [receiveAgreement.protocolSettings.x12DelimiterOverrides]
+ * @property {array} [receiveAgreement.protocolSettings.schemaReferences] The
+ * X12 schema references.
+ * @property {array} [receiveAgreement.protocolSettings.x12DelimiterOverrides]
  * The X12 delimiter override settings.
- * @member {object} sendAgreement The X12 one-way send agreement.
- * @member {object} [sendAgreement.senderBusinessIdentity] The sender business
- * identity
- * @member {string} [sendAgreement.senderBusinessIdentity.qualifier] The
- * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [sendAgreement.senderBusinessIdentity.value] The user
- * defined business identity value.
- * @member {object} [sendAgreement.receiverBusinessIdentity] The receiver
+ * @property {object} sendAgreement The X12 one-way send agreement.
+ * @property {object} [sendAgreement.senderBusinessIdentity] The sender
  * business identity
- * @member {string} [sendAgreement.receiverBusinessIdentity.qualifier] The
+ * @property {string} [sendAgreement.senderBusinessIdentity.qualifier] The
  * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [sendAgreement.receiverBusinessIdentity.value] The user
+ * @property {string} [sendAgreement.senderBusinessIdentity.value] The user
  * defined business identity value.
- * @member {object} [sendAgreement.protocolSettings] The X12 protocol settings.
- * @member {object} [sendAgreement.protocolSettings.validationSettings] The X12
- * validation settings.
- * @member {boolean}
+ * @property {object} [sendAgreement.receiverBusinessIdentity] The receiver
+ * business identity
+ * @property {string} [sendAgreement.receiverBusinessIdentity.qualifier] The
+ * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
+ * @property {string} [sendAgreement.receiverBusinessIdentity.value] The user
+ * defined business identity value.
+ * @property {object} [sendAgreement.protocolSettings] The X12 protocol
+ * settings.
+ * @property {object} [sendAgreement.protocolSettings.validationSettings] The
+ * X12 validation settings.
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.validateCharacterSet] The
  * value indicating whether to validate character set in the message.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.checkDuplicateInterchangeControlNumber]
  * The value indicating whether to check for duplicate interchange control
  * number.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.validationSettings.interchangeControlNumberValidityDays]
  * The validity period of interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.checkDuplicateGroupControlNumber]
  * The value indicating whether to check for duplicate group control number.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.checkDuplicateTransactionSetControlNumber]
  * The value indicating whether to check for duplicate transaction set control
  * number.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.validateEdiTypes] The
  * value indicating whether to Whether to validate EDI types.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.validateXsdTypes] The
  * value indicating whether to Whether to validate XSD types.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.allowLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to allow leading and trailing spaces and
  * zeroes.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.trimLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to trim leading and trailing spaces and zeroes.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.validationSettings.trailingSeparatorPolicy]
  * The trailing separator policy. Possible values include: 'NotSpecified',
  * 'NotAllowed', 'Optional', 'Mandatory'
- * @member {object} [sendAgreement.protocolSettings.framingSettings] The X12
+ * @property {object} [sendAgreement.protocolSettings.framingSettings] The X12
  * framing settings.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.framingSettings.dataElementSeparator] The
  * data element separator.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.framingSettings.componentSeparator] The
  * component separator.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.framingSettings.replaceSeparatorsInPayload]
  * The value indicating whether to replace separators in payload.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.framingSettings.replaceCharacter] The
  * replacement character.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.framingSettings.segmentTerminator] The
  * segment terminator.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.framingSettings.characterSet] The X12
  * character set. Possible values include: 'NotSpecified', 'Basic', 'Extended',
  * 'UTF8'
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.framingSettings.segmentTerminatorSuffix] The
  * segment terminator suffix. Possible values include: 'NotSpecified', 'None',
  * 'CR', 'LF', 'CRLF'
- * @member {object} [sendAgreement.protocolSettings.envelopeSettings] The X12
+ * @property {object} [sendAgreement.protocolSettings.envelopeSettings] The X12
  * envelope settings.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.envelopeSettings.controlStandardsId] The
  * controls standards id.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.envelopeSettings.useControlStandardsIdAsRepetitionCharacter]
  * The value indicating whether to use control standards id as repetition
  * character.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.senderApplicationId] The
  * sender application id.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.receiverApplicationId] The
  * receiver application id.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.controlVersionNumber] The
  * control version number.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.envelopeSettings.interchangeControlNumberLowerBound]
  * The interchange  control number lower bound.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.envelopeSettings.interchangeControlNumberUpperBound]
  * The interchange  control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.envelopeSettings.rolloverInterchangeControlNumber]
  * The value indicating whether to rollover interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.envelopeSettings.enableDefaultGroupHeaders]
  * The value indicating whether to enable default group headers.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.functionalGroupId] The
  * functional group id.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.envelopeSettings.groupControlNumberLowerBound]
  * The group control number lower bound.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.envelopeSettings.groupControlNumberUpperBound]
  * The group control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.envelopeSettings.rolloverGroupControlNumber]
  * The value indicating whether to rollover group control number.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.groupHeaderAgencyCode] The
  * group header agency code.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.groupHeaderVersion] The
  * group header version.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberLowerBound]
  * The transaction set control number lower bound.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberUpperBound]
  * The transaction set control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.envelopeSettings.rolloverTransactionSetControlNumber]
  * The value indicating whether to rollover transaction set control number.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberPrefix]
  * The transaction set control number prefix.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberSuffix]
  * The transaction set control number suffix.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.envelopeSettings.overwriteExistingTransactionSetControlNumber]
  * The value indicating whether to overwrite existing transaction set control
  * number.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.groupHeaderDateFormat] The
  * group header date format. Possible values include: 'NotSpecified',
  * 'CCYYMMDD', 'YYMMDD'
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.groupHeaderTimeFormat] The
  * group header time format. Possible values include: 'NotSpecified', 'HHMM',
  * 'HHMMSS', 'HHMMSSdd', 'HHMMSSd'
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.usageIndicator] The usage
  * indicator. Possible values include: 'NotSpecified', 'Test', 'Information',
  * 'Production'
- * @member {object} [sendAgreement.protocolSettings.acknowledgementSettings]
+ * @property {object} [sendAgreement.protocolSettings.acknowledgementSettings]
  * The X12 acknowledgment settings.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.acknowledgementSettings.needTechnicalAcknowledgement]
  * The value indicating whether technical acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.acknowledgementSettings.batchTechnicalAcknowledgements]
  * The value indicating whether to batch the technical acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.acknowledgementSettings.needFunctionalAcknowledgement]
  * The value indicating whether functional acknowledgement is needed.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.acknowledgementSettings.functionalAcknowledgementVersion]
  * The functional acknowledgement version.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.acknowledgementSettings.batchFunctionalAcknowledgements]
  * The value indicating whether to batch functional acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.acknowledgementSettings.needImplementationAcknowledgement]
  * The value indicating whether implementation acknowledgement is needed.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.acknowledgementSettings.implementationAcknowledgementVersion]
  * The implementation acknowledgement version.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.acknowledgementSettings.batchImplementationAcknowledgements]
  * The value indicating whether to batch implementation acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.acknowledgementSettings.needLoopForValidMessages]
  * The value indicating whether a loop is needed for valid messages.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.acknowledgementSettings.sendSynchronousAcknowledgement]
  * The value indicating whether to send synchronous acknowledgement.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberPrefix]
  * The acknowledgement control number prefix.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberSuffix]
  * The acknowledgement control number suffix.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberLowerBound]
  * The acknowledgement control number lower bound.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberUpperBound]
  * The acknowledgement control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.acknowledgementSettings.rolloverAcknowledgementControlNumber]
  * The value indicating whether to rollover acknowledgement control number.
- * @member {object} [sendAgreement.protocolSettings.messageFilter] The X12
+ * @property {object} [sendAgreement.protocolSettings.messageFilter] The X12
  * message filter.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.messageFilter.messageFilterType] The message
  * filter type. Possible values include: 'NotSpecified', 'Include', 'Exclude'
- * @member {object} [sendAgreement.protocolSettings.securitySettings] The X12
+ * @property {object} [sendAgreement.protocolSettings.securitySettings] The X12
  * security settings.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.securitySettings.authorizationQualifier] The
  * authorization qualifier.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.securitySettings.authorizationValue] The
  * authorization value.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.securitySettings.securityQualifier] The
  * security qualifier.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.securitySettings.passwordValue] The password
  * value.
- * @member {object} [sendAgreement.protocolSettings.processingSettings] The X12
- * processing settings.
- * @member {boolean}
+ * @property {object} [sendAgreement.protocolSettings.processingSettings] The
+ * X12 processing settings.
+ * @property {boolean}
  * [sendAgreement.protocolSettings.processingSettings.maskSecurityInfo] The
  * value indicating whether to mask security information.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.processingSettings.convertImpliedDecimal]
  * The value indicating whether to convert numerical type to implied decimal.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.processingSettings.preserveInterchange] The
  * value indicating whether to preserve interchange.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.processingSettings.suspendInterchangeOnError]
  * The value indicating whether to suspend interchange on error.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.processingSettings.createEmptyXmlTagsForTrailingSeparators]
  * The value indicating whether to create empty xml tags for trailing
  * separators.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.processingSettings.useDotAsDecimalSeparator]
  * The value indicating whether to use dot as decimal separator.
- * @member {array} [sendAgreement.protocolSettings.envelopeOverrides] The X12
+ * @property {array} [sendAgreement.protocolSettings.envelopeOverrides] The X12
  * envelope override settings.
- * @member {array} [sendAgreement.protocolSettings.validationOverrides] The X12
- * validation override settings.
- * @member {array} [sendAgreement.protocolSettings.messageFilterList] The X12
+ * @property {array} [sendAgreement.protocolSettings.validationOverrides] The
+ * X12 validation override settings.
+ * @property {array} [sendAgreement.protocolSettings.messageFilterList] The X12
  * message filter list.
- * @member {array} [sendAgreement.protocolSettings.schemaReferences] The X12
+ * @property {array} [sendAgreement.protocolSettings.schemaReferences] The X12
  * schema references.
- * @member {array} [sendAgreement.protocolSettings.x12DelimiterOverrides] The
+ * @property {array} [sendAgreement.protocolSettings.x12DelimiterOverrides] The
  * X12 delimiter override settings.
  */
 export interface X12AgreementContent {
@@ -3265,25 +3292,25 @@ export interface X12AgreementContent {
  * @constructor
  * The Edifact agreement validation settings.
  *
- * @member {boolean} validateCharacterSet The value indicating whether to
+ * @property {boolean} validateCharacterSet The value indicating whether to
  * validate character set in the message.
- * @member {boolean} checkDuplicateInterchangeControlNumber The value
+ * @property {boolean} checkDuplicateInterchangeControlNumber The value
  * indicating whether to check for duplicate interchange control number.
- * @member {number} interchangeControlNumberValidityDays The validity period of
- * interchange control number.
- * @member {boolean} checkDuplicateGroupControlNumber The value indicating
+ * @property {number} interchangeControlNumberValidityDays The validity period
+ * of interchange control number.
+ * @property {boolean} checkDuplicateGroupControlNumber The value indicating
  * whether to check for duplicate group control number.
- * @member {boolean} checkDuplicateTransactionSetControlNumber The value
+ * @property {boolean} checkDuplicateTransactionSetControlNumber The value
  * indicating whether to check for duplicate transaction set control number.
- * @member {boolean} validateEdiTypes The value indicating whether to Whether
+ * @property {boolean} validateEdiTypes The value indicating whether to Whether
  * to validate EDI types.
- * @member {boolean} validateXsdTypes The value indicating whether to Whether
+ * @property {boolean} validateXsdTypes The value indicating whether to Whether
  * to validate XSD types.
- * @member {boolean} allowLeadingAndTrailingSpacesAndZeroes The value
+ * @property {boolean} allowLeadingAndTrailingSpacesAndZeroes The value
  * indicating whether to allow leading and trailing spaces and zeroes.
- * @member {boolean} trimLeadingAndTrailingSpacesAndZeroes The value indicating
- * whether to trim leading and trailing spaces and zeroes.
- * @member {string} trailingSeparatorPolicy The trailing separator policy.
+ * @property {boolean} trimLeadingAndTrailingSpacesAndZeroes The value
+ * indicating whether to trim leading and trailing spaces and zeroes.
+ * @property {string} trailingSeparatorPolicy The trailing separator policy.
  * Possible values include: 'NotSpecified', 'NotAllowed', 'Optional',
  * 'Mandatory'
  */
@@ -3306,22 +3333,22 @@ export interface EdifactValidationSettings {
  * @constructor
  * The Edifact agreement framing settings.
  *
- * @member {string} [serviceCodeListDirectoryVersion] The service code list
+ * @property {string} [serviceCodeListDirectoryVersion] The service code list
  * directory version.
- * @member {string} [characterEncoding] The character encoding.
- * @member {number} protocolVersion The protocol version.
- * @member {number} dataElementSeparator The data element separator.
- * @member {number} componentSeparator The component separator.
- * @member {number} segmentTerminator The segment terminator.
- * @member {number} releaseIndicator The release indicator.
- * @member {number} repetitionSeparator The repetition separator.
- * @member {string} characterSet The EDIFACT frame setting characterSet.
+ * @property {string} [characterEncoding] The character encoding.
+ * @property {number} protocolVersion The protocol version.
+ * @property {number} dataElementSeparator The data element separator.
+ * @property {number} componentSeparator The component separator.
+ * @property {number} segmentTerminator The segment terminator.
+ * @property {number} releaseIndicator The release indicator.
+ * @property {number} repetitionSeparator The repetition separator.
+ * @property {string} characterSet The EDIFACT frame setting characterSet.
  * Possible values include: 'NotSpecified', 'UNOB', 'UNOA', 'UNOC', 'UNOD',
  * 'UNOE', 'UNOF', 'UNOG', 'UNOH', 'UNOI', 'UNOJ', 'UNOK', 'UNOX', 'UNOY',
  * 'KECA'
- * @member {string} decimalPointIndicator The EDIFACT frame setting decimal
+ * @property {string} decimalPointIndicator The EDIFACT frame setting decimal
  * indicator. Possible values include: 'NotSpecified', 'Comma', 'Decimal'
- * @member {string} segmentTerminatorSuffix The EDIFACT frame setting segment
+ * @property {string} segmentTerminatorSuffix The EDIFACT frame setting segment
  * terminator suffix. Possible values include: 'NotSpecified', 'None', 'CR',
  * 'LF', 'CRLF'
  */
@@ -3345,77 +3372,82 @@ export interface EdifactFramingSettings {
  * @constructor
  * The Edifact agreement envelope settings.
  *
- * @member {string} [groupAssociationAssignedCode] The group association
+ * @property {string} [groupAssociationAssignedCode] The group association
  * assigned code.
- * @member {string} [communicationAgreementId] The communication agreement id.
- * @member {boolean} applyDelimiterStringAdvice The value indicating whether to
- * apply delimiter string advice.
- * @member {boolean} createGroupingSegments The value indicating whether to
- * create grouping segments.
- * @member {boolean} enableDefaultGroupHeaders The value indicating whether to
- * enable default group headers.
- * @member {string} [recipientReferencePasswordValue] The recipient reference
- * password value.
- * @member {string} [recipientReferencePasswordQualifier] The recipient
- * reference password qualifier.
- * @member {string} [applicationReferenceId] The application reference id.
- * @member {string} [processingPriorityCode] The processing priority code.
- * @member {number} interchangeControlNumberLowerBound The interchange control
- * number lower bound.
- * @member {number} interchangeControlNumberUpperBound The interchange control
- * number upper bound.
- * @member {boolean} rolloverInterchangeControlNumber The value indicating
- * whether to rollover interchange control number.
- * @member {string} [interchangeControlNumberPrefix] The interchange control
- * number prefix.
- * @member {string} [interchangeControlNumberSuffix] The interchange control
- * number suffix.
- * @member {string} [senderReverseRoutingAddress] The sender reverse routing
- * address.
- * @member {string} [receiverReverseRoutingAddress] The receiver reverse
- * routing address.
- * @member {string} [functionalGroupId] The functional group id.
- * @member {string} [groupControllingAgencyCode] The group controlling agency
- * code.
- * @member {string} [groupMessageVersion] The group message version.
- * @member {string} [groupMessageRelease] The group message release.
- * @member {number} groupControlNumberLowerBound The group control number lower
- * bound.
- * @member {number} groupControlNumberUpperBound The group control number upper
- * bound.
- * @member {boolean} rolloverGroupControlNumber The value indicating whether to
- * rollover group control number.
- * @member {string} [groupControlNumberPrefix] The group control number prefix.
- * @member {string} [groupControlNumberSuffix] The group control number suffix.
- * @member {string} [groupApplicationReceiverQualifier] The group application
- * receiver qualifier.
- * @member {string} [groupApplicationReceiverId] The group application receiver
+ * @property {string} [communicationAgreementId] The communication agreement
  * id.
- * @member {string} [groupApplicationSenderQualifier] The group application
- * sender qualifier.
- * @member {string} [groupApplicationSenderId] The group application sender id.
- * @member {string} [groupApplicationPassword] The group application password.
- * @member {boolean} overwriteExistingTransactionSetControlNumber The value
- * indicating whether to overwrite existing transaction set control number.
- * @member {string} [transactionSetControlNumberPrefix] The transaction set
- * control number prefix.
- * @member {string} [transactionSetControlNumberSuffix] The transaction set
- * control number suffix.
- * @member {number} transactionSetControlNumberLowerBound The transaction set
+ * @property {boolean} applyDelimiterStringAdvice The value indicating whether
+ * to apply delimiter string advice.
+ * @property {boolean} createGroupingSegments The value indicating whether to
+ * create grouping segments.
+ * @property {boolean} enableDefaultGroupHeaders The value indicating whether
+ * to enable default group headers.
+ * @property {string} [recipientReferencePasswordValue] The recipient reference
+ * password value.
+ * @property {string} [recipientReferencePasswordQualifier] The recipient
+ * reference password qualifier.
+ * @property {string} [applicationReferenceId] The application reference id.
+ * @property {string} [processingPriorityCode] The processing priority code.
+ * @property {number} interchangeControlNumberLowerBound The interchange
  * control number lower bound.
- * @member {number} transactionSetControlNumberUpperBound The transaction set
+ * @property {number} interchangeControlNumberUpperBound The interchange
  * control number upper bound.
- * @member {boolean} rolloverTransactionSetControlNumber The value indicating
+ * @property {boolean} rolloverInterchangeControlNumber The value indicating
+ * whether to rollover interchange control number.
+ * @property {string} [interchangeControlNumberPrefix] The interchange control
+ * number prefix.
+ * @property {string} [interchangeControlNumberSuffix] The interchange control
+ * number suffix.
+ * @property {string} [senderReverseRoutingAddress] The sender reverse routing
+ * address.
+ * @property {string} [receiverReverseRoutingAddress] The receiver reverse
+ * routing address.
+ * @property {string} [functionalGroupId] The functional group id.
+ * @property {string} [groupControllingAgencyCode] The group controlling agency
+ * code.
+ * @property {string} [groupMessageVersion] The group message version.
+ * @property {string} [groupMessageRelease] The group message release.
+ * @property {number} groupControlNumberLowerBound The group control number
+ * lower bound.
+ * @property {number} groupControlNumberUpperBound The group control number
+ * upper bound.
+ * @property {boolean} rolloverGroupControlNumber The value indicating whether
+ * to rollover group control number.
+ * @property {string} [groupControlNumberPrefix] The group control number
+ * prefix.
+ * @property {string} [groupControlNumberSuffix] The group control number
+ * suffix.
+ * @property {string} [groupApplicationReceiverQualifier] The group application
+ * receiver qualifier.
+ * @property {string} [groupApplicationReceiverId] The group application
+ * receiver id.
+ * @property {string} [groupApplicationSenderQualifier] The group application
+ * sender qualifier.
+ * @property {string} [groupApplicationSenderId] The group application sender
+ * id.
+ * @property {string} [groupApplicationPassword] The group application
+ * password.
+ * @property {boolean} overwriteExistingTransactionSetControlNumber The value
+ * indicating whether to overwrite existing transaction set control number.
+ * @property {string} [transactionSetControlNumberPrefix] The transaction set
+ * control number prefix.
+ * @property {string} [transactionSetControlNumberSuffix] The transaction set
+ * control number suffix.
+ * @property {number} transactionSetControlNumberLowerBound The transaction set
+ * control number lower bound.
+ * @property {number} transactionSetControlNumberUpperBound The transaction set
+ * control number upper bound.
+ * @property {boolean} rolloverTransactionSetControlNumber The value indicating
  * whether to rollover transaction set control number.
- * @member {boolean} isTestInterchange The value indicating whether the message
- * is a test interchange.
- * @member {string} [senderInternalIdentification] The sender internal
+ * @property {boolean} isTestInterchange The value indicating whether the
+ * message is a test interchange.
+ * @property {string} [senderInternalIdentification] The sender internal
  * identification.
- * @member {string} [senderInternalSubIdentification] The sender internal sub
+ * @property {string} [senderInternalSubIdentification] The sender internal sub
  * identification.
- * @member {string} [receiverInternalIdentification] The receiver internal
+ * @property {string} [receiverInternalIdentification] The receiver internal
  * identification.
- * @member {string} [receiverInternalSubIdentification] The receiver internal
+ * @property {string} [receiverInternalSubIdentification] The receiver internal
  * sub identification.
  */
 export interface EdifactEnvelopeSettings {
@@ -3468,28 +3500,28 @@ export interface EdifactEnvelopeSettings {
  * @constructor
  * The Edifact agreement acknowledgement settings.
  *
- * @member {boolean} needTechnicalAcknowledgement The value indicating whether
- * technical acknowledgement is needed.
- * @member {boolean} batchTechnicalAcknowledgements The value indicating
+ * @property {boolean} needTechnicalAcknowledgement The value indicating
+ * whether technical acknowledgement is needed.
+ * @property {boolean} batchTechnicalAcknowledgements The value indicating
  * whether to batch the technical acknowledgements.
- * @member {boolean} needFunctionalAcknowledgement The value indicating whether
- * functional acknowledgement is needed.
- * @member {boolean} batchFunctionalAcknowledgements The value indicating
+ * @property {boolean} needFunctionalAcknowledgement The value indicating
+ * whether functional acknowledgement is needed.
+ * @property {boolean} batchFunctionalAcknowledgements The value indicating
  * whether to batch functional acknowledgements.
- * @member {boolean} needLoopForValidMessages The value indicating whether a
+ * @property {boolean} needLoopForValidMessages The value indicating whether a
  * loop is needed for valid messages.
- * @member {boolean} sendSynchronousAcknowledgement The value indicating
+ * @property {boolean} sendSynchronousAcknowledgement The value indicating
  * whether to send synchronous acknowledgement.
- * @member {string} [acknowledgementControlNumberPrefix] The acknowledgement
+ * @property {string} [acknowledgementControlNumberPrefix] The acknowledgement
  * control number prefix.
- * @member {string} [acknowledgementControlNumberSuffix] The acknowledgement
+ * @property {string} [acknowledgementControlNumberSuffix] The acknowledgement
  * control number suffix.
- * @member {number} acknowledgementControlNumberLowerBound The acknowledgement
- * control number lower bound.
- * @member {number} acknowledgementControlNumberUpperBound The acknowledgement
- * control number upper bound.
- * @member {boolean} rolloverAcknowledgementControlNumber The value indicating
- * whether to rollover acknowledgement control number.
+ * @property {number} acknowledgementControlNumberLowerBound The
+ * acknowledgement control number lower bound.
+ * @property {number} acknowledgementControlNumberUpperBound The
+ * acknowledgement control number upper bound.
+ * @property {boolean} rolloverAcknowledgementControlNumber The value
+ * indicating whether to rollover acknowledgement control number.
  */
 export interface EdifactAcknowledgementSettings {
   needTechnicalAcknowledgement: boolean;
@@ -3511,8 +3543,8 @@ export interface EdifactAcknowledgementSettings {
  * @constructor
  * The Edifact message filter for odata query.
  *
- * @member {string} messageFilterType The message filter type. Possible values
- * include: 'NotSpecified', 'Include', 'Exclude'
+ * @property {string} messageFilterType The message filter type. Possible
+ * values include: 'NotSpecified', 'Include', 'Exclude'
  */
 export interface EdifactMessageFilter {
   messageFilterType: string;
@@ -3524,15 +3556,15 @@ export interface EdifactMessageFilter {
  * @constructor
  * The Edifact agreement protocol settings.
  *
- * @member {boolean} maskSecurityInfo The value indicating whether to mask
+ * @property {boolean} maskSecurityInfo The value indicating whether to mask
  * security information.
- * @member {boolean} preserveInterchange The value indicating whether to
+ * @property {boolean} preserveInterchange The value indicating whether to
  * preserve interchange.
- * @member {boolean} suspendInterchangeOnError The value indicating whether to
- * suspend interchange on error.
- * @member {boolean} createEmptyXmlTagsForTrailingSeparators The value
+ * @property {boolean} suspendInterchangeOnError The value indicating whether
+ * to suspend interchange on error.
+ * @property {boolean} createEmptyXmlTagsForTrailingSeparators The value
  * indicating whether to create empty xml tags for trailing separators.
- * @member {boolean} useDotAsDecimalSeparator The value indicating whether to
+ * @property {boolean} useDotAsDecimalSeparator The value indicating whether to
  * use dot as decimal separator.
  */
 export interface EdifactProcessingSettings {
@@ -3549,30 +3581,30 @@ export interface EdifactProcessingSettings {
  * @constructor
  * The Edifact envelope override settings.
  *
- * @member {string} [messageId] The message id on which this envelope settings
- * has to be applied.
- * @member {string} [messageVersion] The message version on which this envelope
+ * @property {string} [messageId] The message id on which this envelope
  * settings has to be applied.
- * @member {string} [messageRelease] The message release version on which this
+ * @property {string} [messageVersion] The message version on which this
  * envelope settings has to be applied.
- * @member {string} [messageAssociationAssignedCode] The message association
+ * @property {string} [messageRelease] The message release version on which
+ * this envelope settings has to be applied.
+ * @property {string} [messageAssociationAssignedCode] The message association
  * assigned code.
- * @member {string} [targetNamespace] The target namespace on which this
+ * @property {string} [targetNamespace] The target namespace on which this
  * envelope settings has to be applied.
- * @member {string} [functionalGroupId] The functional group id.
- * @member {string} [senderApplicationQualifier] The sender application
+ * @property {string} [functionalGroupId] The functional group id.
+ * @property {string} [senderApplicationQualifier] The sender application
  * qualifier.
- * @member {string} [senderApplicationId] The sender application id.
- * @member {string} [receiverApplicationQualifier] The receiver application
+ * @property {string} [senderApplicationId] The sender application id.
+ * @property {string} [receiverApplicationQualifier] The receiver application
  * qualifier.
- * @member {string} [receiverApplicationId] The receiver application id.
- * @member {string} [controllingAgencyCode] The controlling agency code.
- * @member {string} [groupHeaderMessageVersion] The group header message
+ * @property {string} [receiverApplicationId] The receiver application id.
+ * @property {string} [controllingAgencyCode] The controlling agency code.
+ * @property {string} [groupHeaderMessageVersion] The group header message
  * version.
- * @member {string} [groupHeaderMessageRelease] The group header message
+ * @property {string} [groupHeaderMessageRelease] The group header message
  * release.
- * @member {string} [associationAssignedCode] The association assigned code.
- * @member {string} [applicationPassword] The application password.
+ * @property {string} [associationAssignedCode] The association assigned code.
+ * @property {string} [applicationPassword] The application password.
  */
 export interface EdifactEnvelopeOverride {
   messageId?: string;
@@ -3598,7 +3630,7 @@ export interface EdifactEnvelopeOverride {
  * @constructor
  * The Edifact message identifier.
  *
- * @member {string} messageId The message id on which this envelope settings
+ * @property {string} messageId The message id on which this envelope settings
  * has to be applied.
  */
 export interface EdifactMessageIdentifier {
@@ -3611,14 +3643,14 @@ export interface EdifactMessageIdentifier {
  * @constructor
  * The Edifact schema reference.
  *
- * @member {string} messageId The message id.
- * @member {string} messageVersion The message version.
- * @member {string} messageRelease The message release version.
- * @member {string} [senderApplicationId] The sender application id.
- * @member {string} [senderApplicationQualifier] The sender application
+ * @property {string} messageId The message id.
+ * @property {string} messageVersion The message version.
+ * @property {string} messageRelease The message release version.
+ * @property {string} [senderApplicationId] The sender application id.
+ * @property {string} [senderApplicationQualifier] The sender application
  * qualifier.
- * @member {string} [associationAssignedCode] The association assigned code.
- * @member {string} schemaName The schema name.
+ * @property {string} [associationAssignedCode] The association assigned code.
+ * @property {string} schemaName The schema name.
  */
 export interface EdifactSchemaReference {
   messageId: string;
@@ -3636,21 +3668,21 @@ export interface EdifactSchemaReference {
  * @constructor
  * The Edifact validation override settings.
  *
- * @member {string} messageId The message id on which the validation settings
+ * @property {string} messageId The message id on which the validation settings
  * has to be applied.
- * @member {boolean} enforceCharacterSet The value indicating whether to
+ * @property {boolean} enforceCharacterSet The value indicating whether to
  * validate character Set.
- * @member {boolean} validateEdiTypes The value indicating whether to validate
- * EDI types.
- * @member {boolean} validateXsdTypes The value indicating whether to validate
- * XSD types.
- * @member {boolean} allowLeadingAndTrailingSpacesAndZeroes The value
+ * @property {boolean} validateEdiTypes The value indicating whether to
+ * validate EDI types.
+ * @property {boolean} validateXsdTypes The value indicating whether to
+ * validate XSD types.
+ * @property {boolean} allowLeadingAndTrailingSpacesAndZeroes The value
  * indicating whether to allow leading and trailing spaces and zeroes.
- * @member {string} trailingSeparatorPolicy The trailing separator policy.
+ * @property {string} trailingSeparatorPolicy The trailing separator policy.
  * Possible values include: 'NotSpecified', 'NotAllowed', 'Optional',
  * 'Mandatory'
- * @member {boolean} trimLeadingAndTrailingSpacesAndZeroes The value indicating
- * whether to trim leading and trailing spaces and zeroes.
+ * @property {boolean} trimLeadingAndTrailingSpacesAndZeroes The value
+ * indicating whether to trim leading and trailing spaces and zeroes.
  */
 export interface EdifactValidationOverride {
   messageId: string;
@@ -3668,21 +3700,21 @@ export interface EdifactValidationOverride {
  * @constructor
  * The Edifact delimiter override settings.
  *
- * @member {string} [messageId] The message id.
- * @member {string} [messageVersion] The message version.
- * @member {string} [messageRelease] The message release.
- * @member {number} dataElementSeparator The data element separator.
- * @member {number} componentSeparator The component separator.
- * @member {number} segmentTerminator The segment terminator.
- * @member {number} repetitionSeparator The repetition separator.
- * @member {string} segmentTerminatorSuffix The segment terminator suffix.
+ * @property {string} [messageId] The message id.
+ * @property {string} [messageVersion] The message version.
+ * @property {string} [messageRelease] The message release.
+ * @property {number} dataElementSeparator The data element separator.
+ * @property {number} componentSeparator The component separator.
+ * @property {number} segmentTerminator The segment terminator.
+ * @property {number} repetitionSeparator The repetition separator.
+ * @property {string} segmentTerminatorSuffix The segment terminator suffix.
  * Possible values include: 'NotSpecified', 'None', 'CR', 'LF', 'CRLF'
- * @member {string} decimalPointIndicator The decimal point indicator. Possible
- * values include: 'NotSpecified', 'Comma', 'Decimal'
- * @member {number} releaseIndicator The release indicator.
- * @member {string} [messageAssociationAssignedCode] The message association
+ * @property {string} decimalPointIndicator The decimal point indicator.
+ * Possible values include: 'NotSpecified', 'Comma', 'Decimal'
+ * @property {number} releaseIndicator The release indicator.
+ * @property {string} [messageAssociationAssignedCode] The message association
  * assigned code.
- * @member {string} [targetNamespace] The target namespace on which this
+ * @property {string} [targetNamespace] The target namespace on which this
  * delimiter settings has to be applied.
  */
 export interface EdifactDelimiterOverride {
@@ -3706,188 +3738,193 @@ export interface EdifactDelimiterOverride {
  * @constructor
  * The Edifact agreement protocol settings.
  *
- * @member {object} validationSettings The EDIFACT validation settings.
- * @member {boolean} [validationSettings.validateCharacterSet] The value
+ * @property {object} validationSettings The EDIFACT validation settings.
+ * @property {boolean} [validationSettings.validateCharacterSet] The value
  * indicating whether to validate character set in the message.
- * @member {boolean}
+ * @property {boolean}
  * [validationSettings.checkDuplicateInterchangeControlNumber] The value
  * indicating whether to check for duplicate interchange control number.
- * @member {number} [validationSettings.interchangeControlNumberValidityDays]
+ * @property {number} [validationSettings.interchangeControlNumberValidityDays]
  * The validity period of interchange control number.
- * @member {boolean} [validationSettings.checkDuplicateGroupControlNumber] The
- * value indicating whether to check for duplicate group control number.
- * @member {boolean}
+ * @property {boolean} [validationSettings.checkDuplicateGroupControlNumber]
+ * The value indicating whether to check for duplicate group control number.
+ * @property {boolean}
  * [validationSettings.checkDuplicateTransactionSetControlNumber] The value
  * indicating whether to check for duplicate transaction set control number.
- * @member {boolean} [validationSettings.validateEdiTypes] The value indicating
- * whether to Whether to validate EDI types.
- * @member {boolean} [validationSettings.validateXsdTypes] The value indicating
- * whether to Whether to validate XSD types.
- * @member {boolean}
+ * @property {boolean} [validationSettings.validateEdiTypes] The value
+ * indicating whether to Whether to validate EDI types.
+ * @property {boolean} [validationSettings.validateXsdTypes] The value
+ * indicating whether to Whether to validate XSD types.
+ * @property {boolean}
  * [validationSettings.allowLeadingAndTrailingSpacesAndZeroes] The value
  * indicating whether to allow leading and trailing spaces and zeroes.
- * @member {boolean} [validationSettings.trimLeadingAndTrailingSpacesAndZeroes]
- * The value indicating whether to trim leading and trailing spaces and zeroes.
- * @member {string} [validationSettings.trailingSeparatorPolicy] The trailing
+ * @property {boolean}
+ * [validationSettings.trimLeadingAndTrailingSpacesAndZeroes] The value
+ * indicating whether to trim leading and trailing spaces and zeroes.
+ * @property {string} [validationSettings.trailingSeparatorPolicy] The trailing
  * separator policy. Possible values include: 'NotSpecified', 'NotAllowed',
  * 'Optional', 'Mandatory'
- * @member {object} framingSettings The EDIFACT framing settings.
- * @member {string} [framingSettings.serviceCodeListDirectoryVersion] The
+ * @property {object} framingSettings The EDIFACT framing settings.
+ * @property {string} [framingSettings.serviceCodeListDirectoryVersion] The
  * service code list directory version.
- * @member {string} [framingSettings.characterEncoding] The character encoding.
- * @member {number} [framingSettings.protocolVersion] The protocol version.
- * @member {number} [framingSettings.dataElementSeparator] The data element
+ * @property {string} [framingSettings.characterEncoding] The character
+ * encoding.
+ * @property {number} [framingSettings.protocolVersion] The protocol version.
+ * @property {number} [framingSettings.dataElementSeparator] The data element
  * separator.
- * @member {number} [framingSettings.componentSeparator] The component
+ * @property {number} [framingSettings.componentSeparator] The component
  * separator.
- * @member {number} [framingSettings.segmentTerminator] The segment terminator.
- * @member {number} [framingSettings.releaseIndicator] The release indicator.
- * @member {number} [framingSettings.repetitionSeparator] The repetition
+ * @property {number} [framingSettings.segmentTerminator] The segment
+ * terminator.
+ * @property {number} [framingSettings.releaseIndicator] The release indicator.
+ * @property {number} [framingSettings.repetitionSeparator] The repetition
  * separator.
- * @member {string} [framingSettings.characterSet] The EDIFACT frame setting
+ * @property {string} [framingSettings.characterSet] The EDIFACT frame setting
  * characterSet. Possible values include: 'NotSpecified', 'UNOB', 'UNOA',
  * 'UNOC', 'UNOD', 'UNOE', 'UNOF', 'UNOG', 'UNOH', 'UNOI', 'UNOJ', 'UNOK',
  * 'UNOX', 'UNOY', 'KECA'
- * @member {string} [framingSettings.decimalPointIndicator] The EDIFACT frame
+ * @property {string} [framingSettings.decimalPointIndicator] The EDIFACT frame
  * setting decimal indicator. Possible values include: 'NotSpecified', 'Comma',
  * 'Decimal'
- * @member {string} [framingSettings.segmentTerminatorSuffix] The EDIFACT frame
- * setting segment terminator suffix. Possible values include: 'NotSpecified',
- * 'None', 'CR', 'LF', 'CRLF'
- * @member {object} envelopeSettings The EDIFACT envelope settings.
- * @member {string} [envelopeSettings.groupAssociationAssignedCode] The group
+ * @property {string} [framingSettings.segmentTerminatorSuffix] The EDIFACT
+ * frame setting segment terminator suffix. Possible values include:
+ * 'NotSpecified', 'None', 'CR', 'LF', 'CRLF'
+ * @property {object} envelopeSettings The EDIFACT envelope settings.
+ * @property {string} [envelopeSettings.groupAssociationAssignedCode] The group
  * association assigned code.
- * @member {string} [envelopeSettings.communicationAgreementId] The
+ * @property {string} [envelopeSettings.communicationAgreementId] The
  * communication agreement id.
- * @member {boolean} [envelopeSettings.applyDelimiterStringAdvice] The value
+ * @property {boolean} [envelopeSettings.applyDelimiterStringAdvice] The value
  * indicating whether to apply delimiter string advice.
- * @member {boolean} [envelopeSettings.createGroupingSegments] The value
+ * @property {boolean} [envelopeSettings.createGroupingSegments] The value
  * indicating whether to create grouping segments.
- * @member {boolean} [envelopeSettings.enableDefaultGroupHeaders] The value
+ * @property {boolean} [envelopeSettings.enableDefaultGroupHeaders] The value
  * indicating whether to enable default group headers.
- * @member {string} [envelopeSettings.recipientReferencePasswordValue] The
+ * @property {string} [envelopeSettings.recipientReferencePasswordValue] The
  * recipient reference password value.
- * @member {string} [envelopeSettings.recipientReferencePasswordQualifier] The
- * recipient reference password qualifier.
- * @member {string} [envelopeSettings.applicationReferenceId] The application
+ * @property {string} [envelopeSettings.recipientReferencePasswordQualifier]
+ * The recipient reference password qualifier.
+ * @property {string} [envelopeSettings.applicationReferenceId] The application
  * reference id.
- * @member {string} [envelopeSettings.processingPriorityCode] The processing
+ * @property {string} [envelopeSettings.processingPriorityCode] The processing
  * priority code.
- * @member {number} [envelopeSettings.interchangeControlNumberLowerBound] The
+ * @property {number} [envelopeSettings.interchangeControlNumberLowerBound] The
  * interchange control number lower bound.
- * @member {number} [envelopeSettings.interchangeControlNumberUpperBound] The
+ * @property {number} [envelopeSettings.interchangeControlNumberUpperBound] The
  * interchange control number upper bound.
- * @member {boolean} [envelopeSettings.rolloverInterchangeControlNumber] The
+ * @property {boolean} [envelopeSettings.rolloverInterchangeControlNumber] The
  * value indicating whether to rollover interchange control number.
- * @member {string} [envelopeSettings.interchangeControlNumberPrefix] The
+ * @property {string} [envelopeSettings.interchangeControlNumberPrefix] The
  * interchange control number prefix.
- * @member {string} [envelopeSettings.interchangeControlNumberSuffix] The
+ * @property {string} [envelopeSettings.interchangeControlNumberSuffix] The
  * interchange control number suffix.
- * @member {string} [envelopeSettings.senderReverseRoutingAddress] The sender
+ * @property {string} [envelopeSettings.senderReverseRoutingAddress] The sender
  * reverse routing address.
- * @member {string} [envelopeSettings.receiverReverseRoutingAddress] The
+ * @property {string} [envelopeSettings.receiverReverseRoutingAddress] The
  * receiver reverse routing address.
- * @member {string} [envelopeSettings.functionalGroupId] The functional group
+ * @property {string} [envelopeSettings.functionalGroupId] The functional group
  * id.
- * @member {string} [envelopeSettings.groupControllingAgencyCode] The group
+ * @property {string} [envelopeSettings.groupControllingAgencyCode] The group
  * controlling agency code.
- * @member {string} [envelopeSettings.groupMessageVersion] The group message
+ * @property {string} [envelopeSettings.groupMessageVersion] The group message
  * version.
- * @member {string} [envelopeSettings.groupMessageRelease] The group message
+ * @property {string} [envelopeSettings.groupMessageRelease] The group message
  * release.
- * @member {number} [envelopeSettings.groupControlNumberLowerBound] The group
+ * @property {number} [envelopeSettings.groupControlNumberLowerBound] The group
  * control number lower bound.
- * @member {number} [envelopeSettings.groupControlNumberUpperBound] The group
+ * @property {number} [envelopeSettings.groupControlNumberUpperBound] The group
  * control number upper bound.
- * @member {boolean} [envelopeSettings.rolloverGroupControlNumber] The value
+ * @property {boolean} [envelopeSettings.rolloverGroupControlNumber] The value
  * indicating whether to rollover group control number.
- * @member {string} [envelopeSettings.groupControlNumberPrefix] The group
+ * @property {string} [envelopeSettings.groupControlNumberPrefix] The group
  * control number prefix.
- * @member {string} [envelopeSettings.groupControlNumberSuffix] The group
+ * @property {string} [envelopeSettings.groupControlNumberSuffix] The group
  * control number suffix.
- * @member {string} [envelopeSettings.groupApplicationReceiverQualifier] The
+ * @property {string} [envelopeSettings.groupApplicationReceiverQualifier] The
  * group application receiver qualifier.
- * @member {string} [envelopeSettings.groupApplicationReceiverId] The group
+ * @property {string} [envelopeSettings.groupApplicationReceiverId] The group
  * application receiver id.
- * @member {string} [envelopeSettings.groupApplicationSenderQualifier] The
+ * @property {string} [envelopeSettings.groupApplicationSenderQualifier] The
  * group application sender qualifier.
- * @member {string} [envelopeSettings.groupApplicationSenderId] The group
+ * @property {string} [envelopeSettings.groupApplicationSenderId] The group
  * application sender id.
- * @member {string} [envelopeSettings.groupApplicationPassword] The group
+ * @property {string} [envelopeSettings.groupApplicationPassword] The group
  * application password.
- * @member {boolean}
+ * @property {boolean}
  * [envelopeSettings.overwriteExistingTransactionSetControlNumber] The value
  * indicating whether to overwrite existing transaction set control number.
- * @member {string} [envelopeSettings.transactionSetControlNumberPrefix] The
+ * @property {string} [envelopeSettings.transactionSetControlNumberPrefix] The
  * transaction set control number prefix.
- * @member {string} [envelopeSettings.transactionSetControlNumberSuffix] The
+ * @property {string} [envelopeSettings.transactionSetControlNumberSuffix] The
  * transaction set control number suffix.
- * @member {number} [envelopeSettings.transactionSetControlNumberLowerBound]
+ * @property {number} [envelopeSettings.transactionSetControlNumberLowerBound]
  * The transaction set control number lower bound.
- * @member {number} [envelopeSettings.transactionSetControlNumberUpperBound]
+ * @property {number} [envelopeSettings.transactionSetControlNumberUpperBound]
  * The transaction set control number upper bound.
- * @member {boolean} [envelopeSettings.rolloverTransactionSetControlNumber] The
- * value indicating whether to rollover transaction set control number.
- * @member {boolean} [envelopeSettings.isTestInterchange] The value indicating
- * whether the message is a test interchange.
- * @member {string} [envelopeSettings.senderInternalIdentification] The sender
- * internal identification.
- * @member {string} [envelopeSettings.senderInternalSubIdentification] The
+ * @property {boolean} [envelopeSettings.rolloverTransactionSetControlNumber]
+ * The value indicating whether to rollover transaction set control number.
+ * @property {boolean} [envelopeSettings.isTestInterchange] The value
+ * indicating whether the message is a test interchange.
+ * @property {string} [envelopeSettings.senderInternalIdentification] The
+ * sender internal identification.
+ * @property {string} [envelopeSettings.senderInternalSubIdentification] The
  * sender internal sub identification.
- * @member {string} [envelopeSettings.receiverInternalIdentification] The
+ * @property {string} [envelopeSettings.receiverInternalIdentification] The
  * receiver internal identification.
- * @member {string} [envelopeSettings.receiverInternalSubIdentification] The
+ * @property {string} [envelopeSettings.receiverInternalSubIdentification] The
  * receiver internal sub identification.
- * @member {object} acknowledgementSettings The EDIFACT acknowledgement
+ * @property {object} acknowledgementSettings The EDIFACT acknowledgement
  * settings.
- * @member {boolean} [acknowledgementSettings.needTechnicalAcknowledgement] The
- * value indicating whether technical acknowledgement is needed.
- * @member {boolean} [acknowledgementSettings.batchTechnicalAcknowledgements]
+ * @property {boolean} [acknowledgementSettings.needTechnicalAcknowledgement]
+ * The value indicating whether technical acknowledgement is needed.
+ * @property {boolean} [acknowledgementSettings.batchTechnicalAcknowledgements]
  * The value indicating whether to batch the technical acknowledgements.
- * @member {boolean} [acknowledgementSettings.needFunctionalAcknowledgement]
+ * @property {boolean} [acknowledgementSettings.needFunctionalAcknowledgement]
  * The value indicating whether functional acknowledgement is needed.
- * @member {boolean} [acknowledgementSettings.batchFunctionalAcknowledgements]
- * The value indicating whether to batch functional acknowledgements.
- * @member {boolean} [acknowledgementSettings.needLoopForValidMessages] The
+ * @property {boolean}
+ * [acknowledgementSettings.batchFunctionalAcknowledgements] The value
+ * indicating whether to batch functional acknowledgements.
+ * @property {boolean} [acknowledgementSettings.needLoopForValidMessages] The
  * value indicating whether a loop is needed for valid messages.
- * @member {boolean} [acknowledgementSettings.sendSynchronousAcknowledgement]
+ * @property {boolean} [acknowledgementSettings.sendSynchronousAcknowledgement]
  * The value indicating whether to send synchronous acknowledgement.
- * @member {string}
+ * @property {string}
  * [acknowledgementSettings.acknowledgementControlNumberPrefix] The
  * acknowledgement control number prefix.
- * @member {string}
+ * @property {string}
  * [acknowledgementSettings.acknowledgementControlNumberSuffix] The
  * acknowledgement control number suffix.
- * @member {number}
+ * @property {number}
  * [acknowledgementSettings.acknowledgementControlNumberLowerBound] The
  * acknowledgement control number lower bound.
- * @member {number}
+ * @property {number}
  * [acknowledgementSettings.acknowledgementControlNumberUpperBound] The
  * acknowledgement control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [acknowledgementSettings.rolloverAcknowledgementControlNumber] The value
  * indicating whether to rollover acknowledgement control number.
- * @member {object} messageFilter The EDIFACT message filter.
- * @member {string} [messageFilter.messageFilterType] The message filter type.
- * Possible values include: 'NotSpecified', 'Include', 'Exclude'
- * @member {object} processingSettings The EDIFACT processing Settings.
- * @member {boolean} [processingSettings.maskSecurityInfo] The value indicating
- * whether to mask security information.
- * @member {boolean} [processingSettings.preserveInterchange] The value
+ * @property {object} messageFilter The EDIFACT message filter.
+ * @property {string} [messageFilter.messageFilterType] The message filter
+ * type. Possible values include: 'NotSpecified', 'Include', 'Exclude'
+ * @property {object} processingSettings The EDIFACT processing Settings.
+ * @property {boolean} [processingSettings.maskSecurityInfo] The value
+ * indicating whether to mask security information.
+ * @property {boolean} [processingSettings.preserveInterchange] The value
  * indicating whether to preserve interchange.
- * @member {boolean} [processingSettings.suspendInterchangeOnError] The value
+ * @property {boolean} [processingSettings.suspendInterchangeOnError] The value
  * indicating whether to suspend interchange on error.
- * @member {boolean}
+ * @property {boolean}
  * [processingSettings.createEmptyXmlTagsForTrailingSeparators] The value
  * indicating whether to create empty xml tags for trailing separators.
- * @member {boolean} [processingSettings.useDotAsDecimalSeparator] The value
+ * @property {boolean} [processingSettings.useDotAsDecimalSeparator] The value
  * indicating whether to use dot as decimal separator.
- * @member {array} [envelopeOverrides] The EDIFACT envelope override settings.
- * @member {array} [messageFilterList] The EDIFACT message filter list.
- * @member {array} schemaReferences The EDIFACT schema references.
- * @member {array} [validationOverrides] The EDIFACT validation override
+ * @property {array} [envelopeOverrides] The EDIFACT envelope override
  * settings.
- * @member {array} [edifactDelimiterOverrides] The EDIFACT delimiter override
+ * @property {array} [messageFilterList] The EDIFACT message filter list.
+ * @property {array} schemaReferences The EDIFACT schema references.
+ * @property {array} [validationOverrides] The EDIFACT validation override
+ * settings.
+ * @property {array} [edifactDelimiterOverrides] The EDIFACT delimiter override
  * settings.
  */
 export interface EdifactProtocolSettings {
@@ -3910,263 +3947,269 @@ export interface EdifactProtocolSettings {
  * @constructor
  * The Edifact one way agreement.
  *
- * @member {object} senderBusinessIdentity The sender business identity
- * @member {string} [senderBusinessIdentity.qualifier] The business identity
+ * @property {object} senderBusinessIdentity The sender business identity
+ * @property {string} [senderBusinessIdentity.qualifier] The business identity
  * qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [senderBusinessIdentity.value] The user defined business
+ * @property {string} [senderBusinessIdentity.value] The user defined business
  * identity value.
- * @member {object} receiverBusinessIdentity The receiver business identity
- * @member {string} [receiverBusinessIdentity.qualifier] The business identity
- * qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [receiverBusinessIdentity.value] The user defined business
- * identity value.
- * @member {object} protocolSettings The EDIFACT protocol settings.
- * @member {object} [protocolSettings.validationSettings] The EDIFACT
+ * @property {object} receiverBusinessIdentity The receiver business identity
+ * @property {string} [receiverBusinessIdentity.qualifier] The business
+ * identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
+ * @property {string} [receiverBusinessIdentity.value] The user defined
+ * business identity value.
+ * @property {object} protocolSettings The EDIFACT protocol settings.
+ * @property {object} [protocolSettings.validationSettings] The EDIFACT
  * validation settings.
- * @member {boolean} [protocolSettings.validationSettings.validateCharacterSet]
- * The value indicating whether to validate character set in the message.
- * @member {boolean}
+ * @property {boolean}
+ * [protocolSettings.validationSettings.validateCharacterSet] The value
+ * indicating whether to validate character set in the message.
+ * @property {boolean}
  * [protocolSettings.validationSettings.checkDuplicateInterchangeControlNumber]
  * The value indicating whether to check for duplicate interchange control
  * number.
- * @member {number}
+ * @property {number}
  * [protocolSettings.validationSettings.interchangeControlNumberValidityDays]
  * The validity period of interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.validationSettings.checkDuplicateGroupControlNumber] The
  * value indicating whether to check for duplicate group control number.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.validationSettings.checkDuplicateTransactionSetControlNumber]
  * The value indicating whether to check for duplicate transaction set control
  * number.
- * @member {boolean} [protocolSettings.validationSettings.validateEdiTypes] The
- * value indicating whether to Whether to validate EDI types.
- * @member {boolean} [protocolSettings.validationSettings.validateXsdTypes] The
- * value indicating whether to Whether to validate XSD types.
- * @member {boolean}
+ * @property {boolean} [protocolSettings.validationSettings.validateEdiTypes]
+ * The value indicating whether to Whether to validate EDI types.
+ * @property {boolean} [protocolSettings.validationSettings.validateXsdTypes]
+ * The value indicating whether to Whether to validate XSD types.
+ * @property {boolean}
  * [protocolSettings.validationSettings.allowLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to allow leading and trailing spaces and
  * zeroes.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.validationSettings.trimLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to trim leading and trailing spaces and zeroes.
- * @member {string}
+ * @property {string}
  * [protocolSettings.validationSettings.trailingSeparatorPolicy] The trailing
  * separator policy. Possible values include: 'NotSpecified', 'NotAllowed',
  * 'Optional', 'Mandatory'
- * @member {object} [protocolSettings.framingSettings] The EDIFACT framing
+ * @property {object} [protocolSettings.framingSettings] The EDIFACT framing
  * settings.
- * @member {string}
+ * @property {string}
  * [protocolSettings.framingSettings.serviceCodeListDirectoryVersion] The
  * service code list directory version.
- * @member {string} [protocolSettings.framingSettings.characterEncoding] The
+ * @property {string} [protocolSettings.framingSettings.characterEncoding] The
  * character encoding.
- * @member {number} [protocolSettings.framingSettings.protocolVersion] The
+ * @property {number} [protocolSettings.framingSettings.protocolVersion] The
  * protocol version.
- * @member {number} [protocolSettings.framingSettings.dataElementSeparator] The
- * data element separator.
- * @member {number} [protocolSettings.framingSettings.componentSeparator] The
+ * @property {number} [protocolSettings.framingSettings.dataElementSeparator]
+ * The data element separator.
+ * @property {number} [protocolSettings.framingSettings.componentSeparator] The
  * component separator.
- * @member {number} [protocolSettings.framingSettings.segmentTerminator] The
+ * @property {number} [protocolSettings.framingSettings.segmentTerminator] The
  * segment terminator.
- * @member {number} [protocolSettings.framingSettings.releaseIndicator] The
+ * @property {number} [protocolSettings.framingSettings.releaseIndicator] The
  * release indicator.
- * @member {number} [protocolSettings.framingSettings.repetitionSeparator] The
- * repetition separator.
- * @member {string} [protocolSettings.framingSettings.characterSet] The EDIFACT
- * frame setting characterSet. Possible values include: 'NotSpecified', 'UNOB',
- * 'UNOA', 'UNOC', 'UNOD', 'UNOE', 'UNOF', 'UNOG', 'UNOH', 'UNOI', 'UNOJ',
- * 'UNOK', 'UNOX', 'UNOY', 'KECA'
- * @member {string} [protocolSettings.framingSettings.decimalPointIndicator]
+ * @property {number} [protocolSettings.framingSettings.repetitionSeparator]
+ * The repetition separator.
+ * @property {string} [protocolSettings.framingSettings.characterSet] The
+ * EDIFACT frame setting characterSet. Possible values include: 'NotSpecified',
+ * 'UNOB', 'UNOA', 'UNOC', 'UNOD', 'UNOE', 'UNOF', 'UNOG', 'UNOH', 'UNOI',
+ * 'UNOJ', 'UNOK', 'UNOX', 'UNOY', 'KECA'
+ * @property {string} [protocolSettings.framingSettings.decimalPointIndicator]
  * The EDIFACT frame setting decimal indicator. Possible values include:
  * 'NotSpecified', 'Comma', 'Decimal'
- * @member {string} [protocolSettings.framingSettings.segmentTerminatorSuffix]
- * The EDIFACT frame setting segment terminator suffix. Possible values
- * include: 'NotSpecified', 'None', 'CR', 'LF', 'CRLF'
- * @member {object} [protocolSettings.envelopeSettings] The EDIFACT envelope
+ * @property {string}
+ * [protocolSettings.framingSettings.segmentTerminatorSuffix] The EDIFACT frame
+ * setting segment terminator suffix. Possible values include: 'NotSpecified',
+ * 'None', 'CR', 'LF', 'CRLF'
+ * @property {object} [protocolSettings.envelopeSettings] The EDIFACT envelope
  * settings.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.groupAssociationAssignedCode] The group
  * association assigned code.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.communicationAgreementId] The
  * communication agreement id.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.envelopeSettings.applyDelimiterStringAdvice] The value
  * indicating whether to apply delimiter string advice.
- * @member {boolean} [protocolSettings.envelopeSettings.createGroupingSegments]
- * The value indicating whether to create grouping segments.
- * @member {boolean}
+ * @property {boolean}
+ * [protocolSettings.envelopeSettings.createGroupingSegments] The value
+ * indicating whether to create grouping segments.
+ * @property {boolean}
  * [protocolSettings.envelopeSettings.enableDefaultGroupHeaders] The value
  * indicating whether to enable default group headers.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.recipientReferencePasswordValue] The
  * recipient reference password value.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.recipientReferencePasswordQualifier] The
  * recipient reference password qualifier.
- * @member {string} [protocolSettings.envelopeSettings.applicationReferenceId]
- * The application reference id.
- * @member {string} [protocolSettings.envelopeSettings.processingPriorityCode]
- * The processing priority code.
- * @member {number}
+ * @property {string}
+ * [protocolSettings.envelopeSettings.applicationReferenceId] The application
+ * reference id.
+ * @property {string}
+ * [protocolSettings.envelopeSettings.processingPriorityCode] The processing
+ * priority code.
+ * @property {number}
  * [protocolSettings.envelopeSettings.interchangeControlNumberLowerBound] The
  * interchange control number lower bound.
- * @member {number}
+ * @property {number}
  * [protocolSettings.envelopeSettings.interchangeControlNumberUpperBound] The
  * interchange control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.envelopeSettings.rolloverInterchangeControlNumber] The
  * value indicating whether to rollover interchange control number.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.interchangeControlNumberPrefix] The
  * interchange control number prefix.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.interchangeControlNumberSuffix] The
  * interchange control number suffix.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.senderReverseRoutingAddress] The sender
  * reverse routing address.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.receiverReverseRoutingAddress] The
  * receiver reverse routing address.
- * @member {string} [protocolSettings.envelopeSettings.functionalGroupId] The
+ * @property {string} [protocolSettings.envelopeSettings.functionalGroupId] The
  * functional group id.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.groupControllingAgencyCode] The group
  * controlling agency code.
- * @member {string} [protocolSettings.envelopeSettings.groupMessageVersion] The
- * group message version.
- * @member {string} [protocolSettings.envelopeSettings.groupMessageRelease] The
- * group message release.
- * @member {number}
+ * @property {string} [protocolSettings.envelopeSettings.groupMessageVersion]
+ * The group message version.
+ * @property {string} [protocolSettings.envelopeSettings.groupMessageRelease]
+ * The group message release.
+ * @property {number}
  * [protocolSettings.envelopeSettings.groupControlNumberLowerBound] The group
  * control number lower bound.
- * @member {number}
+ * @property {number}
  * [protocolSettings.envelopeSettings.groupControlNumberUpperBound] The group
  * control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.envelopeSettings.rolloverGroupControlNumber] The value
  * indicating whether to rollover group control number.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.groupControlNumberPrefix] The group
  * control number prefix.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.groupControlNumberSuffix] The group
  * control number suffix.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.groupApplicationReceiverQualifier] The
  * group application receiver qualifier.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.groupApplicationReceiverId] The group
  * application receiver id.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.groupApplicationSenderQualifier] The
  * group application sender qualifier.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.groupApplicationSenderId] The group
  * application sender id.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.groupApplicationPassword] The group
  * application password.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.envelopeSettings.overwriteExistingTransactionSetControlNumber]
  * The value indicating whether to overwrite existing transaction set control
  * number.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.transactionSetControlNumberPrefix] The
  * transaction set control number prefix.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.transactionSetControlNumberSuffix] The
  * transaction set control number suffix.
- * @member {number}
+ * @property {number}
  * [protocolSettings.envelopeSettings.transactionSetControlNumberLowerBound]
  * The transaction set control number lower bound.
- * @member {number}
+ * @property {number}
  * [protocolSettings.envelopeSettings.transactionSetControlNumberUpperBound]
  * The transaction set control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.envelopeSettings.rolloverTransactionSetControlNumber] The
  * value indicating whether to rollover transaction set control number.
- * @member {boolean} [protocolSettings.envelopeSettings.isTestInterchange] The
- * value indicating whether the message is a test interchange.
- * @member {string}
+ * @property {boolean} [protocolSettings.envelopeSettings.isTestInterchange]
+ * The value indicating whether the message is a test interchange.
+ * @property {string}
  * [protocolSettings.envelopeSettings.senderInternalIdentification] The sender
  * internal identification.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.senderInternalSubIdentification] The
  * sender internal sub identification.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.receiverInternalIdentification] The
  * receiver internal identification.
- * @member {string}
+ * @property {string}
  * [protocolSettings.envelopeSettings.receiverInternalSubIdentification] The
  * receiver internal sub identification.
- * @member {object} [protocolSettings.acknowledgementSettings] The EDIFACT
+ * @property {object} [protocolSettings.acknowledgementSettings] The EDIFACT
  * acknowledgement settings.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.acknowledgementSettings.needTechnicalAcknowledgement] The
  * value indicating whether technical acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.acknowledgementSettings.batchTechnicalAcknowledgements]
  * The value indicating whether to batch the technical acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.acknowledgementSettings.needFunctionalAcknowledgement] The
  * value indicating whether functional acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.acknowledgementSettings.batchFunctionalAcknowledgements]
  * The value indicating whether to batch functional acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.acknowledgementSettings.needLoopForValidMessages] The
  * value indicating whether a loop is needed for valid messages.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.acknowledgementSettings.sendSynchronousAcknowledgement]
  * The value indicating whether to send synchronous acknowledgement.
- * @member {string}
+ * @property {string}
  * [protocolSettings.acknowledgementSettings.acknowledgementControlNumberPrefix]
  * The acknowledgement control number prefix.
- * @member {string}
+ * @property {string}
  * [protocolSettings.acknowledgementSettings.acknowledgementControlNumberSuffix]
  * The acknowledgement control number suffix.
- * @member {number}
+ * @property {number}
  * [protocolSettings.acknowledgementSettings.acknowledgementControlNumberLowerBound]
  * The acknowledgement control number lower bound.
- * @member {number}
+ * @property {number}
  * [protocolSettings.acknowledgementSettings.acknowledgementControlNumberUpperBound]
  * The acknowledgement control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.acknowledgementSettings.rolloverAcknowledgementControlNumber]
  * The value indicating whether to rollover acknowledgement control number.
- * @member {object} [protocolSettings.messageFilter] The EDIFACT message
+ * @property {object} [protocolSettings.messageFilter] The EDIFACT message
  * filter.
- * @member {string} [protocolSettings.messageFilter.messageFilterType] The
+ * @property {string} [protocolSettings.messageFilter.messageFilterType] The
  * message filter type. Possible values include: 'NotSpecified', 'Include',
  * 'Exclude'
- * @member {object} [protocolSettings.processingSettings] The EDIFACT
+ * @property {object} [protocolSettings.processingSettings] The EDIFACT
  * processing Settings.
- * @member {boolean} [protocolSettings.processingSettings.maskSecurityInfo] The
- * value indicating whether to mask security information.
- * @member {boolean} [protocolSettings.processingSettings.preserveInterchange]
- * The value indicating whether to preserve interchange.
- * @member {boolean}
+ * @property {boolean} [protocolSettings.processingSettings.maskSecurityInfo]
+ * The value indicating whether to mask security information.
+ * @property {boolean}
+ * [protocolSettings.processingSettings.preserveInterchange] The value
+ * indicating whether to preserve interchange.
+ * @property {boolean}
  * [protocolSettings.processingSettings.suspendInterchangeOnError] The value
  * indicating whether to suspend interchange on error.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.processingSettings.createEmptyXmlTagsForTrailingSeparators]
  * The value indicating whether to create empty xml tags for trailing
  * separators.
- * @member {boolean}
+ * @property {boolean}
  * [protocolSettings.processingSettings.useDotAsDecimalSeparator] The value
  * indicating whether to use dot as decimal separator.
- * @member {array} [protocolSettings.envelopeOverrides] The EDIFACT envelope
+ * @property {array} [protocolSettings.envelopeOverrides] The EDIFACT envelope
  * override settings.
- * @member {array} [protocolSettings.messageFilterList] The EDIFACT message
+ * @property {array} [protocolSettings.messageFilterList] The EDIFACT message
  * filter list.
- * @member {array} [protocolSettings.schemaReferences] The EDIFACT schema
+ * @property {array} [protocolSettings.schemaReferences] The EDIFACT schema
  * references.
- * @member {array} [protocolSettings.validationOverrides] The EDIFACT
+ * @property {array} [protocolSettings.validationOverrides] The EDIFACT
  * validation override settings.
- * @member {array} [protocolSettings.edifactDelimiterOverrides] The EDIFACT
+ * @property {array} [protocolSettings.edifactDelimiterOverrides] The EDIFACT
  * delimiter override settings.
  */
 export interface EdifactOneWayAgreement {
@@ -4181,575 +4224,576 @@ export interface EdifactOneWayAgreement {
  * @constructor
  * The Edifact agreement content.
  *
- * @member {object} receiveAgreement The EDIFACT one-way receive agreement.
- * @member {object} [receiveAgreement.senderBusinessIdentity] The sender
+ * @property {object} receiveAgreement The EDIFACT one-way receive agreement.
+ * @property {object} [receiveAgreement.senderBusinessIdentity] The sender
  * business identity
- * @member {string} [receiveAgreement.senderBusinessIdentity.qualifier] The
+ * @property {string} [receiveAgreement.senderBusinessIdentity.qualifier] The
  * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [receiveAgreement.senderBusinessIdentity.value] The user
+ * @property {string} [receiveAgreement.senderBusinessIdentity.value] The user
  * defined business identity value.
- * @member {object} [receiveAgreement.receiverBusinessIdentity] The receiver
+ * @property {object} [receiveAgreement.receiverBusinessIdentity] The receiver
  * business identity
- * @member {string} [receiveAgreement.receiverBusinessIdentity.qualifier] The
+ * @property {string} [receiveAgreement.receiverBusinessIdentity.qualifier] The
  * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [receiveAgreement.receiverBusinessIdentity.value] The user
- * defined business identity value.
- * @member {object} [receiveAgreement.protocolSettings] The EDIFACT protocol
+ * @property {string} [receiveAgreement.receiverBusinessIdentity.value] The
+ * user defined business identity value.
+ * @property {object} [receiveAgreement.protocolSettings] The EDIFACT protocol
  * settings.
- * @member {object} [receiveAgreement.protocolSettings.validationSettings] The
- * EDIFACT validation settings.
- * @member {boolean}
+ * @property {object} [receiveAgreement.protocolSettings.validationSettings]
+ * The EDIFACT validation settings.
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.validateCharacterSet]
  * The value indicating whether to validate character set in the message.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.checkDuplicateInterchangeControlNumber]
  * The value indicating whether to check for duplicate interchange control
  * number.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.validationSettings.interchangeControlNumberValidityDays]
  * The validity period of interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.checkDuplicateGroupControlNumber]
  * The value indicating whether to check for duplicate group control number.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.checkDuplicateTransactionSetControlNumber]
  * The value indicating whether to check for duplicate transaction set control
  * number.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.validateEdiTypes] The
  * value indicating whether to Whether to validate EDI types.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.validateXsdTypes] The
  * value indicating whether to Whether to validate XSD types.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.allowLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to allow leading and trailing spaces and
  * zeroes.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.validationSettings.trimLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to trim leading and trailing spaces and zeroes.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.validationSettings.trailingSeparatorPolicy]
  * The trailing separator policy. Possible values include: 'NotSpecified',
  * 'NotAllowed', 'Optional', 'Mandatory'
- * @member {object} [receiveAgreement.protocolSettings.framingSettings] The
+ * @property {object} [receiveAgreement.protocolSettings.framingSettings] The
  * EDIFACT framing settings.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.framingSettings.serviceCodeListDirectoryVersion]
  * The service code list directory version.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.framingSettings.characterEncoding] The
  * character encoding.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.framingSettings.protocolVersion] The
  * protocol version.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.framingSettings.dataElementSeparator] The
  * data element separator.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.framingSettings.componentSeparator] The
  * component separator.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.framingSettings.segmentTerminator] The
  * segment terminator.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.framingSettings.releaseIndicator] The
  * release indicator.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.framingSettings.repetitionSeparator] The
  * repetition separator.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.framingSettings.characterSet] The EDIFACT
  * frame setting characterSet. Possible values include: 'NotSpecified', 'UNOB',
  * 'UNOA', 'UNOC', 'UNOD', 'UNOE', 'UNOF', 'UNOG', 'UNOH', 'UNOI', 'UNOJ',
  * 'UNOK', 'UNOX', 'UNOY', 'KECA'
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.framingSettings.decimalPointIndicator]
  * The EDIFACT frame setting decimal indicator. Possible values include:
  * 'NotSpecified', 'Comma', 'Decimal'
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.framingSettings.segmentTerminatorSuffix]
  * The EDIFACT frame setting segment terminator suffix. Possible values
  * include: 'NotSpecified', 'None', 'CR', 'LF', 'CRLF'
- * @member {object} [receiveAgreement.protocolSettings.envelopeSettings] The
+ * @property {object} [receiveAgreement.protocolSettings.envelopeSettings] The
  * EDIFACT envelope settings.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.groupAssociationAssignedCode]
  * The group association assigned code.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.communicationAgreementId]
  * The communication agreement id.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.envelopeSettings.applyDelimiterStringAdvice]
  * The value indicating whether to apply delimiter string advice.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.envelopeSettings.createGroupingSegments]
  * The value indicating whether to create grouping segments.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.envelopeSettings.enableDefaultGroupHeaders]
  * The value indicating whether to enable default group headers.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.recipientReferencePasswordValue]
  * The recipient reference password value.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.recipientReferencePasswordQualifier]
  * The recipient reference password qualifier.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.applicationReferenceId]
  * The application reference id.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.processingPriorityCode]
  * The processing priority code.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.envelopeSettings.interchangeControlNumberLowerBound]
  * The interchange control number lower bound.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.envelopeSettings.interchangeControlNumberUpperBound]
  * The interchange control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.envelopeSettings.rolloverInterchangeControlNumber]
  * The value indicating whether to rollover interchange control number.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.interchangeControlNumberPrefix]
  * The interchange control number prefix.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.interchangeControlNumberSuffix]
  * The interchange control number suffix.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.senderReverseRoutingAddress]
  * The sender reverse routing address.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.receiverReverseRoutingAddress]
  * The receiver reverse routing address.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.functionalGroupId] The
  * functional group id.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.groupControllingAgencyCode]
  * The group controlling agency code.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.groupMessageVersion] The
  * group message version.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.groupMessageRelease] The
  * group message release.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.envelopeSettings.groupControlNumberLowerBound]
  * The group control number lower bound.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.envelopeSettings.groupControlNumberUpperBound]
  * The group control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.envelopeSettings.rolloverGroupControlNumber]
  * The value indicating whether to rollover group control number.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.groupControlNumberPrefix]
  * The group control number prefix.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.groupControlNumberSuffix]
  * The group control number suffix.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.groupApplicationReceiverQualifier]
  * The group application receiver qualifier.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.groupApplicationReceiverId]
  * The group application receiver id.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.groupApplicationSenderQualifier]
  * The group application sender qualifier.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.groupApplicationSenderId]
  * The group application sender id.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.groupApplicationPassword]
  * The group application password.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.envelopeSettings.overwriteExistingTransactionSetControlNumber]
  * The value indicating whether to overwrite existing transaction set control
  * number.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberPrefix]
  * The transaction set control number prefix.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberSuffix]
  * The transaction set control number suffix.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberLowerBound]
  * The transaction set control number lower bound.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberUpperBound]
  * The transaction set control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.envelopeSettings.rolloverTransactionSetControlNumber]
  * The value indicating whether to rollover transaction set control number.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.envelopeSettings.isTestInterchange] The
  * value indicating whether the message is a test interchange.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.senderInternalIdentification]
  * The sender internal identification.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.senderInternalSubIdentification]
  * The sender internal sub identification.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.receiverInternalIdentification]
  * The receiver internal identification.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.envelopeSettings.receiverInternalSubIdentification]
  * The receiver internal sub identification.
- * @member {object} [receiveAgreement.protocolSettings.acknowledgementSettings]
- * The EDIFACT acknowledgement settings.
- * @member {boolean}
+ * @property {object}
+ * [receiveAgreement.protocolSettings.acknowledgementSettings] The EDIFACT
+ * acknowledgement settings.
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.needTechnicalAcknowledgement]
  * The value indicating whether technical acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.batchTechnicalAcknowledgements]
  * The value indicating whether to batch the technical acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.needFunctionalAcknowledgement]
  * The value indicating whether functional acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.batchFunctionalAcknowledgements]
  * The value indicating whether to batch functional acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.needLoopForValidMessages]
  * The value indicating whether a loop is needed for valid messages.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.sendSynchronousAcknowledgement]
  * The value indicating whether to send synchronous acknowledgement.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberPrefix]
  * The acknowledgement control number prefix.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberSuffix]
  * The acknowledgement control number suffix.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberLowerBound]
  * The acknowledgement control number lower bound.
- * @member {number}
+ * @property {number}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberUpperBound]
  * The acknowledgement control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.acknowledgementSettings.rolloverAcknowledgementControlNumber]
  * The value indicating whether to rollover acknowledgement control number.
- * @member {object} [receiveAgreement.protocolSettings.messageFilter] The
+ * @property {object} [receiveAgreement.protocolSettings.messageFilter] The
  * EDIFACT message filter.
- * @member {string}
+ * @property {string}
  * [receiveAgreement.protocolSettings.messageFilter.messageFilterType] The
  * message filter type. Possible values include: 'NotSpecified', 'Include',
  * 'Exclude'
- * @member {object} [receiveAgreement.protocolSettings.processingSettings] The
- * EDIFACT processing Settings.
- * @member {boolean}
+ * @property {object} [receiveAgreement.protocolSettings.processingSettings]
+ * The EDIFACT processing Settings.
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.processingSettings.maskSecurityInfo] The
  * value indicating whether to mask security information.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.processingSettings.preserveInterchange]
  * The value indicating whether to preserve interchange.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.processingSettings.suspendInterchangeOnError]
  * The value indicating whether to suspend interchange on error.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.processingSettings.createEmptyXmlTagsForTrailingSeparators]
  * The value indicating whether to create empty xml tags for trailing
  * separators.
- * @member {boolean}
+ * @property {boolean}
  * [receiveAgreement.protocolSettings.processingSettings.useDotAsDecimalSeparator]
  * The value indicating whether to use dot as decimal separator.
- * @member {array} [receiveAgreement.protocolSettings.envelopeOverrides] The
+ * @property {array} [receiveAgreement.protocolSettings.envelopeOverrides] The
  * EDIFACT envelope override settings.
- * @member {array} [receiveAgreement.protocolSettings.messageFilterList] The
+ * @property {array} [receiveAgreement.protocolSettings.messageFilterList] The
  * EDIFACT message filter list.
- * @member {array} [receiveAgreement.protocolSettings.schemaReferences] The
+ * @property {array} [receiveAgreement.protocolSettings.schemaReferences] The
  * EDIFACT schema references.
- * @member {array} [receiveAgreement.protocolSettings.validationOverrides] The
- * EDIFACT validation override settings.
- * @member {array}
+ * @property {array} [receiveAgreement.protocolSettings.validationOverrides]
+ * The EDIFACT validation override settings.
+ * @property {array}
  * [receiveAgreement.protocolSettings.edifactDelimiterOverrides] The EDIFACT
  * delimiter override settings.
- * @member {object} sendAgreement The EDIFACT one-way send agreement.
- * @member {object} [sendAgreement.senderBusinessIdentity] The sender business
- * identity
- * @member {string} [sendAgreement.senderBusinessIdentity.qualifier] The
- * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [sendAgreement.senderBusinessIdentity.value] The user
- * defined business identity value.
- * @member {object} [sendAgreement.receiverBusinessIdentity] The receiver
+ * @property {object} sendAgreement The EDIFACT one-way send agreement.
+ * @property {object} [sendAgreement.senderBusinessIdentity] The sender
  * business identity
- * @member {string} [sendAgreement.receiverBusinessIdentity.qualifier] The
+ * @property {string} [sendAgreement.senderBusinessIdentity.qualifier] The
  * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [sendAgreement.receiverBusinessIdentity.value] The user
+ * @property {string} [sendAgreement.senderBusinessIdentity.value] The user
  * defined business identity value.
- * @member {object} [sendAgreement.protocolSettings] The EDIFACT protocol
+ * @property {object} [sendAgreement.receiverBusinessIdentity] The receiver
+ * business identity
+ * @property {string} [sendAgreement.receiverBusinessIdentity.qualifier] The
+ * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
+ * @property {string} [sendAgreement.receiverBusinessIdentity.value] The user
+ * defined business identity value.
+ * @property {object} [sendAgreement.protocolSettings] The EDIFACT protocol
  * settings.
- * @member {object} [sendAgreement.protocolSettings.validationSettings] The
+ * @property {object} [sendAgreement.protocolSettings.validationSettings] The
  * EDIFACT validation settings.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.validateCharacterSet] The
  * value indicating whether to validate character set in the message.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.checkDuplicateInterchangeControlNumber]
  * The value indicating whether to check for duplicate interchange control
  * number.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.validationSettings.interchangeControlNumberValidityDays]
  * The validity period of interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.checkDuplicateGroupControlNumber]
  * The value indicating whether to check for duplicate group control number.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.checkDuplicateTransactionSetControlNumber]
  * The value indicating whether to check for duplicate transaction set control
  * number.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.validateEdiTypes] The
  * value indicating whether to Whether to validate EDI types.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.validateXsdTypes] The
  * value indicating whether to Whether to validate XSD types.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.allowLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to allow leading and trailing spaces and
  * zeroes.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.validationSettings.trimLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to trim leading and trailing spaces and zeroes.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.validationSettings.trailingSeparatorPolicy]
  * The trailing separator policy. Possible values include: 'NotSpecified',
  * 'NotAllowed', 'Optional', 'Mandatory'
- * @member {object} [sendAgreement.protocolSettings.framingSettings] The
+ * @property {object} [sendAgreement.protocolSettings.framingSettings] The
  * EDIFACT framing settings.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.framingSettings.serviceCodeListDirectoryVersion]
  * The service code list directory version.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.framingSettings.characterEncoding] The
  * character encoding.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.framingSettings.protocolVersion] The
  * protocol version.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.framingSettings.dataElementSeparator] The
  * data element separator.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.framingSettings.componentSeparator] The
  * component separator.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.framingSettings.segmentTerminator] The
  * segment terminator.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.framingSettings.releaseIndicator] The
  * release indicator.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.framingSettings.repetitionSeparator] The
  * repetition separator.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.framingSettings.characterSet] The EDIFACT
  * frame setting characterSet. Possible values include: 'NotSpecified', 'UNOB',
  * 'UNOA', 'UNOC', 'UNOD', 'UNOE', 'UNOF', 'UNOG', 'UNOH', 'UNOI', 'UNOJ',
  * 'UNOK', 'UNOX', 'UNOY', 'KECA'
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.framingSettings.decimalPointIndicator] The
  * EDIFACT frame setting decimal indicator. Possible values include:
  * 'NotSpecified', 'Comma', 'Decimal'
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.framingSettings.segmentTerminatorSuffix] The
  * EDIFACT frame setting segment terminator suffix. Possible values include:
  * 'NotSpecified', 'None', 'CR', 'LF', 'CRLF'
- * @member {object} [sendAgreement.protocolSettings.envelopeSettings] The
+ * @property {object} [sendAgreement.protocolSettings.envelopeSettings] The
  * EDIFACT envelope settings.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.groupAssociationAssignedCode]
  * The group association assigned code.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.communicationAgreementId]
  * The communication agreement id.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.envelopeSettings.applyDelimiterStringAdvice]
  * The value indicating whether to apply delimiter string advice.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.envelopeSettings.createGroupingSegments] The
  * value indicating whether to create grouping segments.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.envelopeSettings.enableDefaultGroupHeaders]
  * The value indicating whether to enable default group headers.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.recipientReferencePasswordValue]
  * The recipient reference password value.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.recipientReferencePasswordQualifier]
  * The recipient reference password qualifier.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.applicationReferenceId] The
  * application reference id.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.processingPriorityCode] The
  * processing priority code.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.envelopeSettings.interchangeControlNumberLowerBound]
  * The interchange control number lower bound.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.envelopeSettings.interchangeControlNumberUpperBound]
  * The interchange control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.envelopeSettings.rolloverInterchangeControlNumber]
  * The value indicating whether to rollover interchange control number.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.interchangeControlNumberPrefix]
  * The interchange control number prefix.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.interchangeControlNumberSuffix]
  * The interchange control number suffix.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.senderReverseRoutingAddress]
  * The sender reverse routing address.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.receiverReverseRoutingAddress]
  * The receiver reverse routing address.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.functionalGroupId] The
  * functional group id.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.groupControllingAgencyCode]
  * The group controlling agency code.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.groupMessageVersion] The
  * group message version.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.groupMessageRelease] The
  * group message release.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.envelopeSettings.groupControlNumberLowerBound]
  * The group control number lower bound.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.envelopeSettings.groupControlNumberUpperBound]
  * The group control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.envelopeSettings.rolloverGroupControlNumber]
  * The value indicating whether to rollover group control number.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.groupControlNumberPrefix]
  * The group control number prefix.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.groupControlNumberSuffix]
  * The group control number suffix.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.groupApplicationReceiverQualifier]
  * The group application receiver qualifier.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.groupApplicationReceiverId]
  * The group application receiver id.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.groupApplicationSenderQualifier]
  * The group application sender qualifier.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.groupApplicationSenderId]
  * The group application sender id.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.groupApplicationPassword]
  * The group application password.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.envelopeSettings.overwriteExistingTransactionSetControlNumber]
  * The value indicating whether to overwrite existing transaction set control
  * number.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberPrefix]
  * The transaction set control number prefix.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberSuffix]
  * The transaction set control number suffix.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberLowerBound]
  * The transaction set control number lower bound.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberUpperBound]
  * The transaction set control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.envelopeSettings.rolloverTransactionSetControlNumber]
  * The value indicating whether to rollover transaction set control number.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.envelopeSettings.isTestInterchange] The
  * value indicating whether the message is a test interchange.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.senderInternalIdentification]
  * The sender internal identification.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.senderInternalSubIdentification]
  * The sender internal sub identification.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.receiverInternalIdentification]
  * The receiver internal identification.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.envelopeSettings.receiverInternalSubIdentification]
  * The receiver internal sub identification.
- * @member {object} [sendAgreement.protocolSettings.acknowledgementSettings]
+ * @property {object} [sendAgreement.protocolSettings.acknowledgementSettings]
  * The EDIFACT acknowledgement settings.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.acknowledgementSettings.needTechnicalAcknowledgement]
  * The value indicating whether technical acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.acknowledgementSettings.batchTechnicalAcknowledgements]
  * The value indicating whether to batch the technical acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.acknowledgementSettings.needFunctionalAcknowledgement]
  * The value indicating whether functional acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.acknowledgementSettings.batchFunctionalAcknowledgements]
  * The value indicating whether to batch functional acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.acknowledgementSettings.needLoopForValidMessages]
  * The value indicating whether a loop is needed for valid messages.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.acknowledgementSettings.sendSynchronousAcknowledgement]
  * The value indicating whether to send synchronous acknowledgement.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberPrefix]
  * The acknowledgement control number prefix.
- * @member {string}
+ * @property {string}
  * [sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberSuffix]
  * The acknowledgement control number suffix.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberLowerBound]
  * The acknowledgement control number lower bound.
- * @member {number}
+ * @property {number}
  * [sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberUpperBound]
  * The acknowledgement control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.acknowledgementSettings.rolloverAcknowledgementControlNumber]
  * The value indicating whether to rollover acknowledgement control number.
- * @member {object} [sendAgreement.protocolSettings.messageFilter] The EDIFACT
- * message filter.
- * @member {string}
+ * @property {object} [sendAgreement.protocolSettings.messageFilter] The
+ * EDIFACT message filter.
+ * @property {string}
  * [sendAgreement.protocolSettings.messageFilter.messageFilterType] The message
  * filter type. Possible values include: 'NotSpecified', 'Include', 'Exclude'
- * @member {object} [sendAgreement.protocolSettings.processingSettings] The
+ * @property {object} [sendAgreement.protocolSettings.processingSettings] The
  * EDIFACT processing Settings.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.processingSettings.maskSecurityInfo] The
  * value indicating whether to mask security information.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.processingSettings.preserveInterchange] The
  * value indicating whether to preserve interchange.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.processingSettings.suspendInterchangeOnError]
  * The value indicating whether to suspend interchange on error.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.processingSettings.createEmptyXmlTagsForTrailingSeparators]
  * The value indicating whether to create empty xml tags for trailing
  * separators.
- * @member {boolean}
+ * @property {boolean}
  * [sendAgreement.protocolSettings.processingSettings.useDotAsDecimalSeparator]
  * The value indicating whether to use dot as decimal separator.
- * @member {array} [sendAgreement.protocolSettings.envelopeOverrides] The
+ * @property {array} [sendAgreement.protocolSettings.envelopeOverrides] The
  * EDIFACT envelope override settings.
- * @member {array} [sendAgreement.protocolSettings.messageFilterList] The
+ * @property {array} [sendAgreement.protocolSettings.messageFilterList] The
  * EDIFACT message filter list.
- * @member {array} [sendAgreement.protocolSettings.schemaReferences] The
+ * @property {array} [sendAgreement.protocolSettings.schemaReferences] The
  * EDIFACT schema references.
- * @member {array} [sendAgreement.protocolSettings.validationOverrides] The
+ * @property {array} [sendAgreement.protocolSettings.validationOverrides] The
  * EDIFACT validation override settings.
- * @member {array} [sendAgreement.protocolSettings.edifactDelimiterOverrides]
+ * @property {array} [sendAgreement.protocolSettings.edifactDelimiterOverrides]
  * The EDIFACT delimiter override settings.
  */
 export interface EdifactAgreementContent {
@@ -4763,1436 +4807,1448 @@ export interface EdifactAgreementContent {
  * @constructor
  * The integration account agreement content.
  *
- * @member {object} [aS2] The AS2 agreement content.
- * @member {object} [aS2.receiveAgreement] The AS2 one-way receive agreement.
- * @member {object} [aS2.receiveAgreement.senderBusinessIdentity] The sender
+ * @property {object} [aS2] The AS2 agreement content.
+ * @property {object} [aS2.receiveAgreement] The AS2 one-way receive agreement.
+ * @property {object} [aS2.receiveAgreement.senderBusinessIdentity] The sender
  * business identity
- * @member {string} [aS2.receiveAgreement.senderBusinessIdentity.qualifier] The
- * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [aS2.receiveAgreement.senderBusinessIdentity.value] The
- * user defined business identity value.
- * @member {object} [aS2.receiveAgreement.receiverBusinessIdentity] The
- * receiver business identity
- * @member {string} [aS2.receiveAgreement.receiverBusinessIdentity.qualifier]
+ * @property {string} [aS2.receiveAgreement.senderBusinessIdentity.qualifier]
  * The business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [aS2.receiveAgreement.receiverBusinessIdentity.value] The
+ * @property {string} [aS2.receiveAgreement.senderBusinessIdentity.value] The
  * user defined business identity value.
- * @member {object} [aS2.receiveAgreement.protocolSettings] The AS2 protocol
+ * @property {object} [aS2.receiveAgreement.receiverBusinessIdentity] The
+ * receiver business identity
+ * @property {string} [aS2.receiveAgreement.receiverBusinessIdentity.qualifier]
+ * The business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
+ * @property {string} [aS2.receiveAgreement.receiverBusinessIdentity.value] The
+ * user defined business identity value.
+ * @property {object} [aS2.receiveAgreement.protocolSettings] The AS2 protocol
  * settings.
- * @member {object}
+ * @property {object}
  * [aS2.receiveAgreement.protocolSettings.messageConnectionSettings] The
  * message connection settings.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.messageConnectionSettings.ignoreCertificateNameMismatch]
  * The value indicating whether to ignore mismatch in certificate name.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.messageConnectionSettings.supportHttpStatusCodeContinue]
  * The value indicating whether to support HTTP status code 'CONTINUE'.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.messageConnectionSettings.keepHttpConnectionAlive]
  * The value indicating whether to keep the connection alive.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.messageConnectionSettings.unfoldHttpHeaders]
  * The value indicating whether to unfold the HTTP headers.
- * @member {object}
+ * @property {object}
  * [aS2.receiveAgreement.protocolSettings.acknowledgementConnectionSettings]
  * The acknowledgement connection settings.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.acknowledgementConnectionSettings.ignoreCertificateNameMismatch]
  * The value indicating whether to ignore mismatch in certificate name.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.acknowledgementConnectionSettings.supportHttpStatusCodeContinue]
  * The value indicating whether to support HTTP status code 'CONTINUE'.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.acknowledgementConnectionSettings.keepHttpConnectionAlive]
  * The value indicating whether to keep the connection alive.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.acknowledgementConnectionSettings.unfoldHttpHeaders]
  * The value indicating whether to unfold the HTTP headers.
- * @member {object} [aS2.receiveAgreement.protocolSettings.mdnSettings] The MDN
- * settings.
- * @member {boolean}
+ * @property {object} [aS2.receiveAgreement.protocolSettings.mdnSettings] The
+ * MDN settings.
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.mdnSettings.needMdn] The value
  * indicating whether to send or request a MDN.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.mdnSettings.signMdn] The value
  * indicating whether the MDN needs to be signed or not.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.mdnSettings.sendMdnAsynchronously]
  * The value indicating whether to send the asynchronous MDN.
- * @member {string}
+ * @property {string}
  * [aS2.receiveAgreement.protocolSettings.mdnSettings.receiptDeliveryUrl] The
  * receipt delivery URL.
- * @member {string}
+ * @property {string}
  * [aS2.receiveAgreement.protocolSettings.mdnSettings.dispositionNotificationTo]
  * The disposition notification to header value.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.mdnSettings.signOutboundMdnIfOptional]
  * The value indicating whether to sign the outbound MDN if optional.
- * @member {string} [aS2.receiveAgreement.protocolSettings.mdnSettings.mdnText]
- * The MDN text.
- * @member {boolean}
+ * @property {string}
+ * [aS2.receiveAgreement.protocolSettings.mdnSettings.mdnText] The MDN text.
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.mdnSettings.sendInboundMdnToMessageBox]
  * The value indicating whether to send inbound MDN to message box.
- * @member {string}
+ * @property {string}
  * [aS2.receiveAgreement.protocolSettings.mdnSettings.micHashingAlgorithm] The
  * signing or hashing algorithm. Possible values include: 'NotSpecified',
  * 'None', 'MD5', 'SHA1', 'SHA2256', 'SHA2384', 'SHA2512'
- * @member {object} [aS2.receiveAgreement.protocolSettings.securitySettings]
+ * @property {object} [aS2.receiveAgreement.protocolSettings.securitySettings]
  * The security settings.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.securitySettings.overrideGroupSigningCertificate]
  * The value indicating whether to send or request a MDN.
- * @member {string}
+ * @property {string}
  * [aS2.receiveAgreement.protocolSettings.securitySettings.signingCertificateName]
  * The name of the signing certificate.
- * @member {string}
+ * @property {string}
  * [aS2.receiveAgreement.protocolSettings.securitySettings.encryptionCertificateName]
  * The name of the encryption certificate.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.securitySettings.enableNrrForInboundEncodedMessages]
  * The value indicating whether to enable NRR for inbound encoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.securitySettings.enableNrrForInboundDecodedMessages]
  * The value indicating whether to enable NRR for inbound decoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.securitySettings.enableNrrForOutboundMdn]
  * The value indicating whether to enable NRR for outbound MDN.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.securitySettings.enableNrrForOutboundEncodedMessages]
  * The value indicating whether to enable NRR for outbound encoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.securitySettings.enableNrrForOutboundDecodedMessages]
  * The value indicating whether to enable NRR for outbound decoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.securitySettings.enableNrrForInboundMdn]
  * The value indicating whether to enable NRR for inbound MDN.
- * @member {string}
+ * @property {string}
  * [aS2.receiveAgreement.protocolSettings.securitySettings.sha2AlgorithmFormat]
  * The Sha2 algorithm format. Valid values are Sha2, ShaHashSize,
  * ShaHyphenHashSize, Sha2UnderscoreHashSize.
- * @member {object} [aS2.receiveAgreement.protocolSettings.validationSettings]
- * The validation settings.
- * @member {boolean}
+ * @property {object}
+ * [aS2.receiveAgreement.protocolSettings.validationSettings] The validation
+ * settings.
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.validationSettings.overrideMessageProperties]
  * The value indicating whether to override incoming message properties with
  * those in agreement.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.validationSettings.encryptMessage]
  * The value indicating whether the message has to be encrypted.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.validationSettings.signMessage] The
  * value indicating whether the message has to be signed.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.validationSettings.compressMessage]
  * The value indicating whether the message has to be compressed.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.validationSettings.checkDuplicateMessage]
  * The value indicating whether to check for duplicate message.
- * @member {number}
+ * @property {number}
  * [aS2.receiveAgreement.protocolSettings.validationSettings.interchangeDuplicatesValidityDays]
  * The number of days to look back for duplicate interchange.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.validationSettings.checkCertificateRevocationListOnSend]
  * The value indicating whether to check for certificate revocation list on
  * send.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.validationSettings.checkCertificateRevocationListOnReceive]
  * The value indicating whether to check for certificate revocation list on
  * receive.
- * @member {string}
+ * @property {string}
  * [aS2.receiveAgreement.protocolSettings.validationSettings.encryptionAlgorithm]
  * The encryption algorithm. Possible values include: 'NotSpecified', 'None',
  * 'DES3', 'RC2', 'AES128', 'AES192', 'AES256'
- * @member {string}
+ * @property {string}
  * [aS2.receiveAgreement.protocolSettings.validationSettings.signingAlgorithm]
  * The signing algorithm. Possible values include: 'NotSpecified', 'Default',
  * 'SHA1', 'SHA2256', 'SHA2384', 'SHA2512'
- * @member {object} [aS2.receiveAgreement.protocolSettings.envelopeSettings]
+ * @property {object} [aS2.receiveAgreement.protocolSettings.envelopeSettings]
  * The envelope settings.
- * @member {string}
+ * @property {string}
  * [aS2.receiveAgreement.protocolSettings.envelopeSettings.messageContentType]
  * The message content type.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.envelopeSettings.transmitFileNameInMimeHeader]
  * The value indicating whether to transmit file name in mime header.
- * @member {string}
+ * @property {string}
  * [aS2.receiveAgreement.protocolSettings.envelopeSettings.fileNameTemplate]
  * The template for file name.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.envelopeSettings.suspendMessageOnFileNameGenerationError]
  * The value indicating whether to suspend message on file name generation
  * error.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.envelopeSettings.autogenerateFileName]
  * The value indicating whether to auto generate file name.
- * @member {object} [aS2.receiveAgreement.protocolSettings.errorSettings] The
+ * @property {object} [aS2.receiveAgreement.protocolSettings.errorSettings] The
  * error settings.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.errorSettings.suspendDuplicateMessage]
  * The value indicating whether to suspend duplicate message.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.receiveAgreement.protocolSettings.errorSettings.resendIfMdnNotReceived]
  * The value indicating whether to resend message If MDN is not received.
- * @member {object} [aS2.sendAgreement] The AS2 one-way send agreement.
- * @member {object} [aS2.sendAgreement.senderBusinessIdentity] The sender
+ * @property {object} [aS2.sendAgreement] The AS2 one-way send agreement.
+ * @property {object} [aS2.sendAgreement.senderBusinessIdentity] The sender
  * business identity
- * @member {string} [aS2.sendAgreement.senderBusinessIdentity.qualifier] The
+ * @property {string} [aS2.sendAgreement.senderBusinessIdentity.qualifier] The
  * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [aS2.sendAgreement.senderBusinessIdentity.value] The user
+ * @property {string} [aS2.sendAgreement.senderBusinessIdentity.value] The user
  * defined business identity value.
- * @member {object} [aS2.sendAgreement.receiverBusinessIdentity] The receiver
+ * @property {object} [aS2.sendAgreement.receiverBusinessIdentity] The receiver
  * business identity
- * @member {string} [aS2.sendAgreement.receiverBusinessIdentity.qualifier] The
- * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [aS2.sendAgreement.receiverBusinessIdentity.value] The user
- * defined business identity value.
- * @member {object} [aS2.sendAgreement.protocolSettings] The AS2 protocol
+ * @property {string} [aS2.sendAgreement.receiverBusinessIdentity.qualifier]
+ * The business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
+ * @property {string} [aS2.sendAgreement.receiverBusinessIdentity.value] The
+ * user defined business identity value.
+ * @property {object} [aS2.sendAgreement.protocolSettings] The AS2 protocol
  * settings.
- * @member {object}
+ * @property {object}
  * [aS2.sendAgreement.protocolSettings.messageConnectionSettings] The message
  * connection settings.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.messageConnectionSettings.ignoreCertificateNameMismatch]
  * The value indicating whether to ignore mismatch in certificate name.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.messageConnectionSettings.supportHttpStatusCodeContinue]
  * The value indicating whether to support HTTP status code 'CONTINUE'.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.messageConnectionSettings.keepHttpConnectionAlive]
  * The value indicating whether to keep the connection alive.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.messageConnectionSettings.unfoldHttpHeaders]
  * The value indicating whether to unfold the HTTP headers.
- * @member {object}
+ * @property {object}
  * [aS2.sendAgreement.protocolSettings.acknowledgementConnectionSettings] The
  * acknowledgement connection settings.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.acknowledgementConnectionSettings.ignoreCertificateNameMismatch]
  * The value indicating whether to ignore mismatch in certificate name.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.acknowledgementConnectionSettings.supportHttpStatusCodeContinue]
  * The value indicating whether to support HTTP status code 'CONTINUE'.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.acknowledgementConnectionSettings.keepHttpConnectionAlive]
  * The value indicating whether to keep the connection alive.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.acknowledgementConnectionSettings.unfoldHttpHeaders]
  * The value indicating whether to unfold the HTTP headers.
- * @member {object} [aS2.sendAgreement.protocolSettings.mdnSettings] The MDN
+ * @property {object} [aS2.sendAgreement.protocolSettings.mdnSettings] The MDN
  * settings.
- * @member {boolean} [aS2.sendAgreement.protocolSettings.mdnSettings.needMdn]
+ * @property {boolean} [aS2.sendAgreement.protocolSettings.mdnSettings.needMdn]
  * The value indicating whether to send or request a MDN.
- * @member {boolean} [aS2.sendAgreement.protocolSettings.mdnSettings.signMdn]
+ * @property {boolean} [aS2.sendAgreement.protocolSettings.mdnSettings.signMdn]
  * The value indicating whether the MDN needs to be signed or not.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.mdnSettings.sendMdnAsynchronously] The
  * value indicating whether to send the asynchronous MDN.
- * @member {string}
+ * @property {string}
  * [aS2.sendAgreement.protocolSettings.mdnSettings.receiptDeliveryUrl] The
  * receipt delivery URL.
- * @member {string}
+ * @property {string}
  * [aS2.sendAgreement.protocolSettings.mdnSettings.dispositionNotificationTo]
  * The disposition notification to header value.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.mdnSettings.signOutboundMdnIfOptional]
  * The value indicating whether to sign the outbound MDN if optional.
- * @member {string} [aS2.sendAgreement.protocolSettings.mdnSettings.mdnText]
+ * @property {string} [aS2.sendAgreement.protocolSettings.mdnSettings.mdnText]
  * The MDN text.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.mdnSettings.sendInboundMdnToMessageBox]
  * The value indicating whether to send inbound MDN to message box.
- * @member {string}
+ * @property {string}
  * [aS2.sendAgreement.protocolSettings.mdnSettings.micHashingAlgorithm] The
  * signing or hashing algorithm. Possible values include: 'NotSpecified',
  * 'None', 'MD5', 'SHA1', 'SHA2256', 'SHA2384', 'SHA2512'
- * @member {object} [aS2.sendAgreement.protocolSettings.securitySettings] The
+ * @property {object} [aS2.sendAgreement.protocolSettings.securitySettings] The
  * security settings.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.securitySettings.overrideGroupSigningCertificate]
  * The value indicating whether to send or request a MDN.
- * @member {string}
+ * @property {string}
  * [aS2.sendAgreement.protocolSettings.securitySettings.signingCertificateName]
  * The name of the signing certificate.
- * @member {string}
+ * @property {string}
  * [aS2.sendAgreement.protocolSettings.securitySettings.encryptionCertificateName]
  * The name of the encryption certificate.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.securitySettings.enableNrrForInboundEncodedMessages]
  * The value indicating whether to enable NRR for inbound encoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.securitySettings.enableNrrForInboundDecodedMessages]
  * The value indicating whether to enable NRR for inbound decoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.securitySettings.enableNrrForOutboundMdn]
  * The value indicating whether to enable NRR for outbound MDN.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.securitySettings.enableNrrForOutboundEncodedMessages]
  * The value indicating whether to enable NRR for outbound encoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.securitySettings.enableNrrForOutboundDecodedMessages]
  * The value indicating whether to enable NRR for outbound decoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.securitySettings.enableNrrForInboundMdn]
  * The value indicating whether to enable NRR for inbound MDN.
- * @member {string}
+ * @property {string}
  * [aS2.sendAgreement.protocolSettings.securitySettings.sha2AlgorithmFormat]
  * The Sha2 algorithm format. Valid values are Sha2, ShaHashSize,
  * ShaHyphenHashSize, Sha2UnderscoreHashSize.
- * @member {object} [aS2.sendAgreement.protocolSettings.validationSettings] The
- * validation settings.
- * @member {boolean}
+ * @property {object} [aS2.sendAgreement.protocolSettings.validationSettings]
+ * The validation settings.
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.validationSettings.overrideMessageProperties]
  * The value indicating whether to override incoming message properties with
  * those in agreement.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.validationSettings.encryptMessage] The
  * value indicating whether the message has to be encrypted.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.validationSettings.signMessage] The
  * value indicating whether the message has to be signed.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.validationSettings.compressMessage] The
  * value indicating whether the message has to be compressed.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.validationSettings.checkDuplicateMessage]
  * The value indicating whether to check for duplicate message.
- * @member {number}
+ * @property {number}
  * [aS2.sendAgreement.protocolSettings.validationSettings.interchangeDuplicatesValidityDays]
  * The number of days to look back for duplicate interchange.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.validationSettings.checkCertificateRevocationListOnSend]
  * The value indicating whether to check for certificate revocation list on
  * send.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.validationSettings.checkCertificateRevocationListOnReceive]
  * The value indicating whether to check for certificate revocation list on
  * receive.
- * @member {string}
+ * @property {string}
  * [aS2.sendAgreement.protocolSettings.validationSettings.encryptionAlgorithm]
  * The encryption algorithm. Possible values include: 'NotSpecified', 'None',
  * 'DES3', 'RC2', 'AES128', 'AES192', 'AES256'
- * @member {string}
+ * @property {string}
  * [aS2.sendAgreement.protocolSettings.validationSettings.signingAlgorithm] The
  * signing algorithm. Possible values include: 'NotSpecified', 'Default',
  * 'SHA1', 'SHA2256', 'SHA2384', 'SHA2512'
- * @member {object} [aS2.sendAgreement.protocolSettings.envelopeSettings] The
+ * @property {object} [aS2.sendAgreement.protocolSettings.envelopeSettings] The
  * envelope settings.
- * @member {string}
+ * @property {string}
  * [aS2.sendAgreement.protocolSettings.envelopeSettings.messageContentType] The
  * message content type.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.envelopeSettings.transmitFileNameInMimeHeader]
  * The value indicating whether to transmit file name in mime header.
- * @member {string}
+ * @property {string}
  * [aS2.sendAgreement.protocolSettings.envelopeSettings.fileNameTemplate] The
  * template for file name.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.envelopeSettings.suspendMessageOnFileNameGenerationError]
  * The value indicating whether to suspend message on file name generation
  * error.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.envelopeSettings.autogenerateFileName]
  * The value indicating whether to auto generate file name.
- * @member {object} [aS2.sendAgreement.protocolSettings.errorSettings] The
+ * @property {object} [aS2.sendAgreement.protocolSettings.errorSettings] The
  * error settings.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.errorSettings.suspendDuplicateMessage]
  * The value indicating whether to suspend duplicate message.
- * @member {boolean}
+ * @property {boolean}
  * [aS2.sendAgreement.protocolSettings.errorSettings.resendIfMdnNotReceived]
  * The value indicating whether to resend message If MDN is not received.
- * @member {object} [x12] The X12 agreement content.
- * @member {object} [x12.receiveAgreement] The X12 one-way receive agreement.
- * @member {object} [x12.receiveAgreement.senderBusinessIdentity] The sender
+ * @property {object} [x12] The X12 agreement content.
+ * @property {object} [x12.receiveAgreement] The X12 one-way receive agreement.
+ * @property {object} [x12.receiveAgreement.senderBusinessIdentity] The sender
  * business identity
- * @member {string} [x12.receiveAgreement.senderBusinessIdentity.qualifier] The
- * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [x12.receiveAgreement.senderBusinessIdentity.value] The
- * user defined business identity value.
- * @member {object} [x12.receiveAgreement.receiverBusinessIdentity] The
- * receiver business identity
- * @member {string} [x12.receiveAgreement.receiverBusinessIdentity.qualifier]
+ * @property {string} [x12.receiveAgreement.senderBusinessIdentity.qualifier]
  * The business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [x12.receiveAgreement.receiverBusinessIdentity.value] The
+ * @property {string} [x12.receiveAgreement.senderBusinessIdentity.value] The
  * user defined business identity value.
- * @member {object} [x12.receiveAgreement.protocolSettings] The X12 protocol
+ * @property {object} [x12.receiveAgreement.receiverBusinessIdentity] The
+ * receiver business identity
+ * @property {string} [x12.receiveAgreement.receiverBusinessIdentity.qualifier]
+ * The business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
+ * @property {string} [x12.receiveAgreement.receiverBusinessIdentity.value] The
+ * user defined business identity value.
+ * @property {object} [x12.receiveAgreement.protocolSettings] The X12 protocol
  * settings.
- * @member {object} [x12.receiveAgreement.protocolSettings.validationSettings]
- * The X12 validation settings.
- * @member {boolean}
+ * @property {object}
+ * [x12.receiveAgreement.protocolSettings.validationSettings] The X12
+ * validation settings.
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.validationSettings.validateCharacterSet]
  * The value indicating whether to validate character set in the message.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.validationSettings.checkDuplicateInterchangeControlNumber]
  * The value indicating whether to check for duplicate interchange control
  * number.
- * @member {number}
+ * @property {number}
  * [x12.receiveAgreement.protocolSettings.validationSettings.interchangeControlNumberValidityDays]
  * The validity period of interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.validationSettings.checkDuplicateGroupControlNumber]
  * The value indicating whether to check for duplicate group control number.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.validationSettings.checkDuplicateTransactionSetControlNumber]
  * The value indicating whether to check for duplicate transaction set control
  * number.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.validationSettings.validateEdiTypes]
  * The value indicating whether to Whether to validate EDI types.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.validationSettings.validateXsdTypes]
  * The value indicating whether to Whether to validate XSD types.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.validationSettings.allowLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to allow leading and trailing spaces and
  * zeroes.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.validationSettings.trimLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to trim leading and trailing spaces and zeroes.
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.validationSettings.trailingSeparatorPolicy]
  * The trailing separator policy. Possible values include: 'NotSpecified',
  * 'NotAllowed', 'Optional', 'Mandatory'
- * @member {object} [x12.receiveAgreement.protocolSettings.framingSettings] The
- * X12 framing settings.
- * @member {number}
+ * @property {object} [x12.receiveAgreement.protocolSettings.framingSettings]
+ * The X12 framing settings.
+ * @property {number}
  * [x12.receiveAgreement.protocolSettings.framingSettings.dataElementSeparator]
  * The data element separator.
- * @member {number}
+ * @property {number}
  * [x12.receiveAgreement.protocolSettings.framingSettings.componentSeparator]
  * The component separator.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.framingSettings.replaceSeparatorsInPayload]
  * The value indicating whether to replace separators in payload.
- * @member {number}
+ * @property {number}
  * [x12.receiveAgreement.protocolSettings.framingSettings.replaceCharacter] The
  * replacement character.
- * @member {number}
+ * @property {number}
  * [x12.receiveAgreement.protocolSettings.framingSettings.segmentTerminator]
  * The segment terminator.
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.framingSettings.characterSet] The X12
  * character set. Possible values include: 'NotSpecified', 'Basic', 'Extended',
  * 'UTF8'
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.framingSettings.segmentTerminatorSuffix]
  * The segment terminator suffix. Possible values include: 'NotSpecified',
  * 'None', 'CR', 'LF', 'CRLF'
- * @member {object} [x12.receiveAgreement.protocolSettings.envelopeSettings]
+ * @property {object} [x12.receiveAgreement.protocolSettings.envelopeSettings]
  * The X12 envelope settings.
- * @member {number}
+ * @property {number}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.controlStandardsId]
  * The controls standards id.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.useControlStandardsIdAsRepetitionCharacter]
  * The value indicating whether to use control standards id as repetition
  * character.
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.senderApplicationId]
  * The sender application id.
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.receiverApplicationId]
  * The receiver application id.
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.controlVersionNumber]
  * The control version number.
- * @member {number}
+ * @property {number}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.interchangeControlNumberLowerBound]
  * The interchange  control number lower bound.
- * @member {number}
+ * @property {number}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.interchangeControlNumberUpperBound]
  * The interchange  control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.rolloverInterchangeControlNumber]
  * The value indicating whether to rollover interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.enableDefaultGroupHeaders]
  * The value indicating whether to enable default group headers.
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.functionalGroupId]
  * The functional group id.
- * @member {number}
+ * @property {number}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.groupControlNumberLowerBound]
  * The group control number lower bound.
- * @member {number}
+ * @property {number}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.groupControlNumberUpperBound]
  * The group control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.rolloverGroupControlNumber]
  * The value indicating whether to rollover group control number.
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.groupHeaderAgencyCode]
  * The group header agency code.
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.groupHeaderVersion]
  * The group header version.
- * @member {number}
+ * @property {number}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberLowerBound]
  * The transaction set control number lower bound.
- * @member {number}
+ * @property {number}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberUpperBound]
  * The transaction set control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.rolloverTransactionSetControlNumber]
  * The value indicating whether to rollover transaction set control number.
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberPrefix]
  * The transaction set control number prefix.
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberSuffix]
  * The transaction set control number suffix.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.overwriteExistingTransactionSetControlNumber]
  * The value indicating whether to overwrite existing transaction set control
  * number.
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.groupHeaderDateFormat]
  * The group header date format. Possible values include: 'NotSpecified',
  * 'CCYYMMDD', 'YYMMDD'
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.groupHeaderTimeFormat]
  * The group header time format. Possible values include: 'NotSpecified',
  * 'HHMM', 'HHMMSS', 'HHMMSSdd', 'HHMMSSd'
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.envelopeSettings.usageIndicator] The
  * usage indicator. Possible values include: 'NotSpecified', 'Test',
  * 'Information', 'Production'
- * @member {object}
+ * @property {object}
  * [x12.receiveAgreement.protocolSettings.acknowledgementSettings] The X12
  * acknowledgment settings.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.acknowledgementSettings.needTechnicalAcknowledgement]
  * The value indicating whether technical acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.acknowledgementSettings.batchTechnicalAcknowledgements]
  * The value indicating whether to batch the technical acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.acknowledgementSettings.needFunctionalAcknowledgement]
  * The value indicating whether functional acknowledgement is needed.
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.acknowledgementSettings.functionalAcknowledgementVersion]
  * The functional acknowledgement version.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.acknowledgementSettings.batchFunctionalAcknowledgements]
  * The value indicating whether to batch functional acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.acknowledgementSettings.needImplementationAcknowledgement]
  * The value indicating whether implementation acknowledgement is needed.
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.acknowledgementSettings.implementationAcknowledgementVersion]
  * The implementation acknowledgement version.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.acknowledgementSettings.batchImplementationAcknowledgements]
  * The value indicating whether to batch implementation acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.acknowledgementSettings.needLoopForValidMessages]
  * The value indicating whether a loop is needed for valid messages.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.acknowledgementSettings.sendSynchronousAcknowledgement]
  * The value indicating whether to send synchronous acknowledgement.
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberPrefix]
  * The acknowledgement control number prefix.
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberSuffix]
  * The acknowledgement control number suffix.
- * @member {number}
+ * @property {number}
  * [x12.receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberLowerBound]
  * The acknowledgement control number lower bound.
- * @member {number}
+ * @property {number}
  * [x12.receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberUpperBound]
  * The acknowledgement control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.acknowledgementSettings.rolloverAcknowledgementControlNumber]
  * The value indicating whether to rollover acknowledgement control number.
- * @member {object} [x12.receiveAgreement.protocolSettings.messageFilter] The
+ * @property {object} [x12.receiveAgreement.protocolSettings.messageFilter] The
  * X12 message filter.
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.messageFilter.messageFilterType] The
  * message filter type. Possible values include: 'NotSpecified', 'Include',
  * 'Exclude'
- * @member {object} [x12.receiveAgreement.protocolSettings.securitySettings]
+ * @property {object} [x12.receiveAgreement.protocolSettings.securitySettings]
  * The X12 security settings.
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.securitySettings.authorizationQualifier]
  * The authorization qualifier.
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.securitySettings.authorizationValue]
  * The authorization value.
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.securitySettings.securityQualifier]
  * The security qualifier.
- * @member {string}
+ * @property {string}
  * [x12.receiveAgreement.protocolSettings.securitySettings.passwordValue] The
  * password value.
- * @member {object} [x12.receiveAgreement.protocolSettings.processingSettings]
- * The X12 processing settings.
- * @member {boolean}
+ * @property {object}
+ * [x12.receiveAgreement.protocolSettings.processingSettings] The X12
+ * processing settings.
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.processingSettings.maskSecurityInfo]
  * The value indicating whether to mask security information.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.processingSettings.convertImpliedDecimal]
  * The value indicating whether to convert numerical type to implied decimal.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.processingSettings.preserveInterchange]
  * The value indicating whether to preserve interchange.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.processingSettings.suspendInterchangeOnError]
  * The value indicating whether to suspend interchange on error.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.processingSettings.createEmptyXmlTagsForTrailingSeparators]
  * The value indicating whether to create empty xml tags for trailing
  * separators.
- * @member {boolean}
+ * @property {boolean}
  * [x12.receiveAgreement.protocolSettings.processingSettings.useDotAsDecimalSeparator]
  * The value indicating whether to use dot as decimal separator.
- * @member {array} [x12.receiveAgreement.protocolSettings.envelopeOverrides]
+ * @property {array} [x12.receiveAgreement.protocolSettings.envelopeOverrides]
  * The X12 envelope override settings.
- * @member {array} [x12.receiveAgreement.protocolSettings.validationOverrides]
- * The X12 validation override settings.
- * @member {array} [x12.receiveAgreement.protocolSettings.messageFilterList]
+ * @property {array}
+ * [x12.receiveAgreement.protocolSettings.validationOverrides] The X12
+ * validation override settings.
+ * @property {array} [x12.receiveAgreement.protocolSettings.messageFilterList]
  * The X12 message filter list.
- * @member {array} [x12.receiveAgreement.protocolSettings.schemaReferences] The
- * X12 schema references.
- * @member {array}
+ * @property {array} [x12.receiveAgreement.protocolSettings.schemaReferences]
+ * The X12 schema references.
+ * @property {array}
  * [x12.receiveAgreement.protocolSettings.x12DelimiterOverrides] The X12
  * delimiter override settings.
- * @member {object} [x12.sendAgreement] The X12 one-way send agreement.
- * @member {object} [x12.sendAgreement.senderBusinessIdentity] The sender
+ * @property {object} [x12.sendAgreement] The X12 one-way send agreement.
+ * @property {object} [x12.sendAgreement.senderBusinessIdentity] The sender
  * business identity
- * @member {string} [x12.sendAgreement.senderBusinessIdentity.qualifier] The
+ * @property {string} [x12.sendAgreement.senderBusinessIdentity.qualifier] The
  * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [x12.sendAgreement.senderBusinessIdentity.value] The user
+ * @property {string} [x12.sendAgreement.senderBusinessIdentity.value] The user
  * defined business identity value.
- * @member {object} [x12.sendAgreement.receiverBusinessIdentity] The receiver
+ * @property {object} [x12.sendAgreement.receiverBusinessIdentity] The receiver
  * business identity
- * @member {string} [x12.sendAgreement.receiverBusinessIdentity.qualifier] The
- * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [x12.sendAgreement.receiverBusinessIdentity.value] The user
- * defined business identity value.
- * @member {object} [x12.sendAgreement.protocolSettings] The X12 protocol
+ * @property {string} [x12.sendAgreement.receiverBusinessIdentity.qualifier]
+ * The business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
+ * @property {string} [x12.sendAgreement.receiverBusinessIdentity.value] The
+ * user defined business identity value.
+ * @property {object} [x12.sendAgreement.protocolSettings] The X12 protocol
  * settings.
- * @member {object} [x12.sendAgreement.protocolSettings.validationSettings] The
- * X12 validation settings.
- * @member {boolean}
+ * @property {object} [x12.sendAgreement.protocolSettings.validationSettings]
+ * The X12 validation settings.
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.validationSettings.validateCharacterSet]
  * The value indicating whether to validate character set in the message.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.validationSettings.checkDuplicateInterchangeControlNumber]
  * The value indicating whether to check for duplicate interchange control
  * number.
- * @member {number}
+ * @property {number}
  * [x12.sendAgreement.protocolSettings.validationSettings.interchangeControlNumberValidityDays]
  * The validity period of interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.validationSettings.checkDuplicateGroupControlNumber]
  * The value indicating whether to check for duplicate group control number.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.validationSettings.checkDuplicateTransactionSetControlNumber]
  * The value indicating whether to check for duplicate transaction set control
  * number.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.validationSettings.validateEdiTypes] The
  * value indicating whether to Whether to validate EDI types.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.validationSettings.validateXsdTypes] The
  * value indicating whether to Whether to validate XSD types.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.validationSettings.allowLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to allow leading and trailing spaces and
  * zeroes.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.validationSettings.trimLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to trim leading and trailing spaces and zeroes.
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.validationSettings.trailingSeparatorPolicy]
  * The trailing separator policy. Possible values include: 'NotSpecified',
  * 'NotAllowed', 'Optional', 'Mandatory'
- * @member {object} [x12.sendAgreement.protocolSettings.framingSettings] The
+ * @property {object} [x12.sendAgreement.protocolSettings.framingSettings] The
  * X12 framing settings.
- * @member {number}
+ * @property {number}
  * [x12.sendAgreement.protocolSettings.framingSettings.dataElementSeparator]
  * The data element separator.
- * @member {number}
+ * @property {number}
  * [x12.sendAgreement.protocolSettings.framingSettings.componentSeparator] The
  * component separator.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.framingSettings.replaceSeparatorsInPayload]
  * The value indicating whether to replace separators in payload.
- * @member {number}
+ * @property {number}
  * [x12.sendAgreement.protocolSettings.framingSettings.replaceCharacter] The
  * replacement character.
- * @member {number}
+ * @property {number}
  * [x12.sendAgreement.protocolSettings.framingSettings.segmentTerminator] The
  * segment terminator.
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.framingSettings.characterSet] The X12
  * character set. Possible values include: 'NotSpecified', 'Basic', 'Extended',
  * 'UTF8'
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.framingSettings.segmentTerminatorSuffix]
  * The segment terminator suffix. Possible values include: 'NotSpecified',
  * 'None', 'CR', 'LF', 'CRLF'
- * @member {object} [x12.sendAgreement.protocolSettings.envelopeSettings] The
+ * @property {object} [x12.sendAgreement.protocolSettings.envelopeSettings] The
  * X12 envelope settings.
- * @member {number}
+ * @property {number}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.controlStandardsId] The
  * controls standards id.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.useControlStandardsIdAsRepetitionCharacter]
  * The value indicating whether to use control standards id as repetition
  * character.
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.senderApplicationId]
  * The sender application id.
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.receiverApplicationId]
  * The receiver application id.
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.controlVersionNumber]
  * The control version number.
- * @member {number}
+ * @property {number}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.interchangeControlNumberLowerBound]
  * The interchange  control number lower bound.
- * @member {number}
+ * @property {number}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.interchangeControlNumberUpperBound]
  * The interchange  control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.rolloverInterchangeControlNumber]
  * The value indicating whether to rollover interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.enableDefaultGroupHeaders]
  * The value indicating whether to enable default group headers.
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.functionalGroupId] The
  * functional group id.
- * @member {number}
+ * @property {number}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.groupControlNumberLowerBound]
  * The group control number lower bound.
- * @member {number}
+ * @property {number}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.groupControlNumberUpperBound]
  * The group control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.rolloverGroupControlNumber]
  * The value indicating whether to rollover group control number.
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.groupHeaderAgencyCode]
  * The group header agency code.
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.groupHeaderVersion] The
  * group header version.
- * @member {number}
+ * @property {number}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberLowerBound]
  * The transaction set control number lower bound.
- * @member {number}
+ * @property {number}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberUpperBound]
  * The transaction set control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.rolloverTransactionSetControlNumber]
  * The value indicating whether to rollover transaction set control number.
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberPrefix]
  * The transaction set control number prefix.
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberSuffix]
  * The transaction set control number suffix.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.overwriteExistingTransactionSetControlNumber]
  * The value indicating whether to overwrite existing transaction set control
  * number.
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.groupHeaderDateFormat]
  * The group header date format. Possible values include: 'NotSpecified',
  * 'CCYYMMDD', 'YYMMDD'
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.groupHeaderTimeFormat]
  * The group header time format. Possible values include: 'NotSpecified',
  * 'HHMM', 'HHMMSS', 'HHMMSSdd', 'HHMMSSd'
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.envelopeSettings.usageIndicator] The
  * usage indicator. Possible values include: 'NotSpecified', 'Test',
  * 'Information', 'Production'
- * @member {object}
+ * @property {object}
  * [x12.sendAgreement.protocolSettings.acknowledgementSettings] The X12
  * acknowledgment settings.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.acknowledgementSettings.needTechnicalAcknowledgement]
  * The value indicating whether technical acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.acknowledgementSettings.batchTechnicalAcknowledgements]
  * The value indicating whether to batch the technical acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.acknowledgementSettings.needFunctionalAcknowledgement]
  * The value indicating whether functional acknowledgement is needed.
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.acknowledgementSettings.functionalAcknowledgementVersion]
  * The functional acknowledgement version.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.acknowledgementSettings.batchFunctionalAcknowledgements]
  * The value indicating whether to batch functional acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.acknowledgementSettings.needImplementationAcknowledgement]
  * The value indicating whether implementation acknowledgement is needed.
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.acknowledgementSettings.implementationAcknowledgementVersion]
  * The implementation acknowledgement version.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.acknowledgementSettings.batchImplementationAcknowledgements]
  * The value indicating whether to batch implementation acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.acknowledgementSettings.needLoopForValidMessages]
  * The value indicating whether a loop is needed for valid messages.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.acknowledgementSettings.sendSynchronousAcknowledgement]
  * The value indicating whether to send synchronous acknowledgement.
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberPrefix]
  * The acknowledgement control number prefix.
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberSuffix]
  * The acknowledgement control number suffix.
- * @member {number}
+ * @property {number}
  * [x12.sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberLowerBound]
  * The acknowledgement control number lower bound.
- * @member {number}
+ * @property {number}
  * [x12.sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberUpperBound]
  * The acknowledgement control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.acknowledgementSettings.rolloverAcknowledgementControlNumber]
  * The value indicating whether to rollover acknowledgement control number.
- * @member {object} [x12.sendAgreement.protocolSettings.messageFilter] The X12
- * message filter.
- * @member {string}
+ * @property {object} [x12.sendAgreement.protocolSettings.messageFilter] The
+ * X12 message filter.
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.messageFilter.messageFilterType] The
  * message filter type. Possible values include: 'NotSpecified', 'Include',
  * 'Exclude'
- * @member {object} [x12.sendAgreement.protocolSettings.securitySettings] The
+ * @property {object} [x12.sendAgreement.protocolSettings.securitySettings] The
  * X12 security settings.
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.securitySettings.authorizationQualifier]
  * The authorization qualifier.
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.securitySettings.authorizationValue] The
  * authorization value.
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.securitySettings.securityQualifier] The
  * security qualifier.
- * @member {string}
+ * @property {string}
  * [x12.sendAgreement.protocolSettings.securitySettings.passwordValue] The
  * password value.
- * @member {object} [x12.sendAgreement.protocolSettings.processingSettings] The
- * X12 processing settings.
- * @member {boolean}
+ * @property {object} [x12.sendAgreement.protocolSettings.processingSettings]
+ * The X12 processing settings.
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.processingSettings.maskSecurityInfo] The
  * value indicating whether to mask security information.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.processingSettings.convertImpliedDecimal]
  * The value indicating whether to convert numerical type to implied decimal.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.processingSettings.preserveInterchange]
  * The value indicating whether to preserve interchange.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.processingSettings.suspendInterchangeOnError]
  * The value indicating whether to suspend interchange on error.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.processingSettings.createEmptyXmlTagsForTrailingSeparators]
  * The value indicating whether to create empty xml tags for trailing
  * separators.
- * @member {boolean}
+ * @property {boolean}
  * [x12.sendAgreement.protocolSettings.processingSettings.useDotAsDecimalSeparator]
  * The value indicating whether to use dot as decimal separator.
- * @member {array} [x12.sendAgreement.protocolSettings.envelopeOverrides] The
+ * @property {array} [x12.sendAgreement.protocolSettings.envelopeOverrides] The
  * X12 envelope override settings.
- * @member {array} [x12.sendAgreement.protocolSettings.validationOverrides] The
- * X12 validation override settings.
- * @member {array} [x12.sendAgreement.protocolSettings.messageFilterList] The
+ * @property {array} [x12.sendAgreement.protocolSettings.validationOverrides]
+ * The X12 validation override settings.
+ * @property {array} [x12.sendAgreement.protocolSettings.messageFilterList] The
  * X12 message filter list.
- * @member {array} [x12.sendAgreement.protocolSettings.schemaReferences] The
+ * @property {array} [x12.sendAgreement.protocolSettings.schemaReferences] The
  * X12 schema references.
- * @member {array} [x12.sendAgreement.protocolSettings.x12DelimiterOverrides]
+ * @property {array} [x12.sendAgreement.protocolSettings.x12DelimiterOverrides]
  * The X12 delimiter override settings.
- * @member {object} [edifact] The EDIFACT agreement content.
- * @member {object} [edifact.receiveAgreement] The EDIFACT one-way receive
+ * @property {object} [edifact] The EDIFACT agreement content.
+ * @property {object} [edifact.receiveAgreement] The EDIFACT one-way receive
  * agreement.
- * @member {object} [edifact.receiveAgreement.senderBusinessIdentity] The
+ * @property {object} [edifact.receiveAgreement.senderBusinessIdentity] The
  * sender business identity
- * @member {string} [edifact.receiveAgreement.senderBusinessIdentity.qualifier]
- * The business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [edifact.receiveAgreement.senderBusinessIdentity.value] The
- * user defined business identity value.
- * @member {object} [edifact.receiveAgreement.receiverBusinessIdentity] The
+ * @property {string}
+ * [edifact.receiveAgreement.senderBusinessIdentity.qualifier] The business
+ * identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
+ * @property {string} [edifact.receiveAgreement.senderBusinessIdentity.value]
+ * The user defined business identity value.
+ * @property {object} [edifact.receiveAgreement.receiverBusinessIdentity] The
  * receiver business identity
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.receiverBusinessIdentity.qualifier] The business
  * identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [edifact.receiveAgreement.receiverBusinessIdentity.value]
+ * @property {string} [edifact.receiveAgreement.receiverBusinessIdentity.value]
  * The user defined business identity value.
- * @member {object} [edifact.receiveAgreement.protocolSettings] The EDIFACT
+ * @property {object} [edifact.receiveAgreement.protocolSettings] The EDIFACT
  * protocol settings.
- * @member {object}
+ * @property {object}
  * [edifact.receiveAgreement.protocolSettings.validationSettings] The EDIFACT
  * validation settings.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.validationSettings.validateCharacterSet]
  * The value indicating whether to validate character set in the message.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.validationSettings.checkDuplicateInterchangeControlNumber]
  * The value indicating whether to check for duplicate interchange control
  * number.
- * @member {number}
+ * @property {number}
  * [edifact.receiveAgreement.protocolSettings.validationSettings.interchangeControlNumberValidityDays]
  * The validity period of interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.validationSettings.checkDuplicateGroupControlNumber]
  * The value indicating whether to check for duplicate group control number.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.validationSettings.checkDuplicateTransactionSetControlNumber]
  * The value indicating whether to check for duplicate transaction set control
  * number.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.validationSettings.validateEdiTypes]
  * The value indicating whether to Whether to validate EDI types.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.validationSettings.validateXsdTypes]
  * The value indicating whether to Whether to validate XSD types.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.validationSettings.allowLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to allow leading and trailing spaces and
  * zeroes.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.validationSettings.trimLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to trim leading and trailing spaces and zeroes.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.validationSettings.trailingSeparatorPolicy]
  * The trailing separator policy. Possible values include: 'NotSpecified',
  * 'NotAllowed', 'Optional', 'Mandatory'
- * @member {object} [edifact.receiveAgreement.protocolSettings.framingSettings]
- * The EDIFACT framing settings.
- * @member {string}
+ * @property {object}
+ * [edifact.receiveAgreement.protocolSettings.framingSettings] The EDIFACT
+ * framing settings.
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.framingSettings.serviceCodeListDirectoryVersion]
  * The service code list directory version.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.framingSettings.characterEncoding]
  * The character encoding.
- * @member {number}
+ * @property {number}
  * [edifact.receiveAgreement.protocolSettings.framingSettings.protocolVersion]
  * The protocol version.
- * @member {number}
+ * @property {number}
  * [edifact.receiveAgreement.protocolSettings.framingSettings.dataElementSeparator]
  * The data element separator.
- * @member {number}
+ * @property {number}
  * [edifact.receiveAgreement.protocolSettings.framingSettings.componentSeparator]
  * The component separator.
- * @member {number}
+ * @property {number}
  * [edifact.receiveAgreement.protocolSettings.framingSettings.segmentTerminator]
  * The segment terminator.
- * @member {number}
+ * @property {number}
  * [edifact.receiveAgreement.protocolSettings.framingSettings.releaseIndicator]
  * The release indicator.
- * @member {number}
+ * @property {number}
  * [edifact.receiveAgreement.protocolSettings.framingSettings.repetitionSeparator]
  * The repetition separator.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.framingSettings.characterSet] The
  * EDIFACT frame setting characterSet. Possible values include: 'NotSpecified',
  * 'UNOB', 'UNOA', 'UNOC', 'UNOD', 'UNOE', 'UNOF', 'UNOG', 'UNOH', 'UNOI',
  * 'UNOJ', 'UNOK', 'UNOX', 'UNOY', 'KECA'
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.framingSettings.decimalPointIndicator]
  * The EDIFACT frame setting decimal indicator. Possible values include:
  * 'NotSpecified', 'Comma', 'Decimal'
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.framingSettings.segmentTerminatorSuffix]
  * The EDIFACT frame setting segment terminator suffix. Possible values
  * include: 'NotSpecified', 'None', 'CR', 'LF', 'CRLF'
- * @member {object}
+ * @property {object}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings] The EDIFACT
  * envelope settings.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.groupAssociationAssignedCode]
  * The group association assigned code.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.communicationAgreementId]
  * The communication agreement id.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.applyDelimiterStringAdvice]
  * The value indicating whether to apply delimiter string advice.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.createGroupingSegments]
  * The value indicating whether to create grouping segments.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.enableDefaultGroupHeaders]
  * The value indicating whether to enable default group headers.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.recipientReferencePasswordValue]
  * The recipient reference password value.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.recipientReferencePasswordQualifier]
  * The recipient reference password qualifier.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.applicationReferenceId]
  * The application reference id.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.processingPriorityCode]
  * The processing priority code.
- * @member {number}
+ * @property {number}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.interchangeControlNumberLowerBound]
  * The interchange control number lower bound.
- * @member {number}
+ * @property {number}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.interchangeControlNumberUpperBound]
  * The interchange control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.rolloverInterchangeControlNumber]
  * The value indicating whether to rollover interchange control number.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.interchangeControlNumberPrefix]
  * The interchange control number prefix.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.interchangeControlNumberSuffix]
  * The interchange control number suffix.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.senderReverseRoutingAddress]
  * The sender reverse routing address.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.receiverReverseRoutingAddress]
  * The receiver reverse routing address.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.functionalGroupId]
  * The functional group id.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.groupControllingAgencyCode]
  * The group controlling agency code.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.groupMessageVersion]
  * The group message version.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.groupMessageRelease]
  * The group message release.
- * @member {number}
+ * @property {number}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.groupControlNumberLowerBound]
  * The group control number lower bound.
- * @member {number}
+ * @property {number}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.groupControlNumberUpperBound]
  * The group control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.rolloverGroupControlNumber]
  * The value indicating whether to rollover group control number.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.groupControlNumberPrefix]
  * The group control number prefix.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.groupControlNumberSuffix]
  * The group control number suffix.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.groupApplicationReceiverQualifier]
  * The group application receiver qualifier.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.groupApplicationReceiverId]
  * The group application receiver id.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.groupApplicationSenderQualifier]
  * The group application sender qualifier.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.groupApplicationSenderId]
  * The group application sender id.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.groupApplicationPassword]
  * The group application password.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.overwriteExistingTransactionSetControlNumber]
  * The value indicating whether to overwrite existing transaction set control
  * number.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberPrefix]
  * The transaction set control number prefix.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberSuffix]
  * The transaction set control number suffix.
- * @member {number}
+ * @property {number}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberLowerBound]
  * The transaction set control number lower bound.
- * @member {number}
+ * @property {number}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberUpperBound]
  * The transaction set control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.rolloverTransactionSetControlNumber]
  * The value indicating whether to rollover transaction set control number.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.isTestInterchange]
  * The value indicating whether the message is a test interchange.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.senderInternalIdentification]
  * The sender internal identification.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.senderInternalSubIdentification]
  * The sender internal sub identification.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.receiverInternalIdentification]
  * The receiver internal identification.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.envelopeSettings.receiverInternalSubIdentification]
  * The receiver internal sub identification.
- * @member {object}
+ * @property {object}
  * [edifact.receiveAgreement.protocolSettings.acknowledgementSettings] The
  * EDIFACT acknowledgement settings.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.acknowledgementSettings.needTechnicalAcknowledgement]
  * The value indicating whether technical acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.acknowledgementSettings.batchTechnicalAcknowledgements]
  * The value indicating whether to batch the technical acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.acknowledgementSettings.needFunctionalAcknowledgement]
  * The value indicating whether functional acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.acknowledgementSettings.batchFunctionalAcknowledgements]
  * The value indicating whether to batch functional acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.acknowledgementSettings.needLoopForValidMessages]
  * The value indicating whether a loop is needed for valid messages.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.acknowledgementSettings.sendSynchronousAcknowledgement]
  * The value indicating whether to send synchronous acknowledgement.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberPrefix]
  * The acknowledgement control number prefix.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberSuffix]
  * The acknowledgement control number suffix.
- * @member {number}
+ * @property {number}
  * [edifact.receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberLowerBound]
  * The acknowledgement control number lower bound.
- * @member {number}
+ * @property {number}
  * [edifact.receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberUpperBound]
  * The acknowledgement control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.acknowledgementSettings.rolloverAcknowledgementControlNumber]
  * The value indicating whether to rollover acknowledgement control number.
- * @member {object} [edifact.receiveAgreement.protocolSettings.messageFilter]
+ * @property {object} [edifact.receiveAgreement.protocolSettings.messageFilter]
  * The EDIFACT message filter.
- * @member {string}
+ * @property {string}
  * [edifact.receiveAgreement.protocolSettings.messageFilter.messageFilterType]
  * The message filter type. Possible values include: 'NotSpecified', 'Include',
  * 'Exclude'
- * @member {object}
+ * @property {object}
  * [edifact.receiveAgreement.protocolSettings.processingSettings] The EDIFACT
  * processing Settings.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.processingSettings.maskSecurityInfo]
  * The value indicating whether to mask security information.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.processingSettings.preserveInterchange]
  * The value indicating whether to preserve interchange.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.processingSettings.suspendInterchangeOnError]
  * The value indicating whether to suspend interchange on error.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.processingSettings.createEmptyXmlTagsForTrailingSeparators]
  * The value indicating whether to create empty xml tags for trailing
  * separators.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.receiveAgreement.protocolSettings.processingSettings.useDotAsDecimalSeparator]
  * The value indicating whether to use dot as decimal separator.
- * @member {array}
+ * @property {array}
  * [edifact.receiveAgreement.protocolSettings.envelopeOverrides] The EDIFACT
  * envelope override settings.
- * @member {array}
+ * @property {array}
  * [edifact.receiveAgreement.protocolSettings.messageFilterList] The EDIFACT
  * message filter list.
- * @member {array} [edifact.receiveAgreement.protocolSettings.schemaReferences]
- * The EDIFACT schema references.
- * @member {array}
+ * @property {array}
+ * [edifact.receiveAgreement.protocolSettings.schemaReferences] The EDIFACT
+ * schema references.
+ * @property {array}
  * [edifact.receiveAgreement.protocolSettings.validationOverrides] The EDIFACT
  * validation override settings.
- * @member {array}
+ * @property {array}
  * [edifact.receiveAgreement.protocolSettings.edifactDelimiterOverrides] The
  * EDIFACT delimiter override settings.
- * @member {object} [edifact.sendAgreement] The EDIFACT one-way send agreement.
- * @member {object} [edifact.sendAgreement.senderBusinessIdentity] The sender
+ * @property {object} [edifact.sendAgreement] The EDIFACT one-way send
+ * agreement.
+ * @property {object} [edifact.sendAgreement.senderBusinessIdentity] The sender
  * business identity
- * @member {string} [edifact.sendAgreement.senderBusinessIdentity.qualifier]
+ * @property {string} [edifact.sendAgreement.senderBusinessIdentity.qualifier]
  * The business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [edifact.sendAgreement.senderBusinessIdentity.value] The
+ * @property {string} [edifact.sendAgreement.senderBusinessIdentity.value] The
  * user defined business identity value.
- * @member {object} [edifact.sendAgreement.receiverBusinessIdentity] The
+ * @property {object} [edifact.sendAgreement.receiverBusinessIdentity] The
  * receiver business identity
- * @member {string} [edifact.sendAgreement.receiverBusinessIdentity.qualifier]
- * The business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [edifact.sendAgreement.receiverBusinessIdentity.value] The
- * user defined business identity value.
- * @member {object} [edifact.sendAgreement.protocolSettings] The EDIFACT
+ * @property {string}
+ * [edifact.sendAgreement.receiverBusinessIdentity.qualifier] The business
+ * identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
+ * @property {string} [edifact.sendAgreement.receiverBusinessIdentity.value]
+ * The user defined business identity value.
+ * @property {object} [edifact.sendAgreement.protocolSettings] The EDIFACT
  * protocol settings.
- * @member {object} [edifact.sendAgreement.protocolSettings.validationSettings]
- * The EDIFACT validation settings.
- * @member {boolean}
+ * @property {object}
+ * [edifact.sendAgreement.protocolSettings.validationSettings] The EDIFACT
+ * validation settings.
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.validationSettings.validateCharacterSet]
  * The value indicating whether to validate character set in the message.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.validationSettings.checkDuplicateInterchangeControlNumber]
  * The value indicating whether to check for duplicate interchange control
  * number.
- * @member {number}
+ * @property {number}
  * [edifact.sendAgreement.protocolSettings.validationSettings.interchangeControlNumberValidityDays]
  * The validity period of interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.validationSettings.checkDuplicateGroupControlNumber]
  * The value indicating whether to check for duplicate group control number.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.validationSettings.checkDuplicateTransactionSetControlNumber]
  * The value indicating whether to check for duplicate transaction set control
  * number.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.validationSettings.validateEdiTypes]
  * The value indicating whether to Whether to validate EDI types.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.validationSettings.validateXsdTypes]
  * The value indicating whether to Whether to validate XSD types.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.validationSettings.allowLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to allow leading and trailing spaces and
  * zeroes.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.validationSettings.trimLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to trim leading and trailing spaces and zeroes.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.validationSettings.trailingSeparatorPolicy]
  * The trailing separator policy. Possible values include: 'NotSpecified',
  * 'NotAllowed', 'Optional', 'Mandatory'
- * @member {object} [edifact.sendAgreement.protocolSettings.framingSettings]
+ * @property {object} [edifact.sendAgreement.protocolSettings.framingSettings]
  * The EDIFACT framing settings.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.framingSettings.serviceCodeListDirectoryVersion]
  * The service code list directory version.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.framingSettings.characterEncoding]
  * The character encoding.
- * @member {number}
+ * @property {number}
  * [edifact.sendAgreement.protocolSettings.framingSettings.protocolVersion] The
  * protocol version.
- * @member {number}
+ * @property {number}
  * [edifact.sendAgreement.protocolSettings.framingSettings.dataElementSeparator]
  * The data element separator.
- * @member {number}
+ * @property {number}
  * [edifact.sendAgreement.protocolSettings.framingSettings.componentSeparator]
  * The component separator.
- * @member {number}
+ * @property {number}
  * [edifact.sendAgreement.protocolSettings.framingSettings.segmentTerminator]
  * The segment terminator.
- * @member {number}
+ * @property {number}
  * [edifact.sendAgreement.protocolSettings.framingSettings.releaseIndicator]
  * The release indicator.
- * @member {number}
+ * @property {number}
  * [edifact.sendAgreement.protocolSettings.framingSettings.repetitionSeparator]
  * The repetition separator.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.framingSettings.characterSet] The
  * EDIFACT frame setting characterSet. Possible values include: 'NotSpecified',
  * 'UNOB', 'UNOA', 'UNOC', 'UNOD', 'UNOE', 'UNOF', 'UNOG', 'UNOH', 'UNOI',
  * 'UNOJ', 'UNOK', 'UNOX', 'UNOY', 'KECA'
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.framingSettings.decimalPointIndicator]
  * The EDIFACT frame setting decimal indicator. Possible values include:
  * 'NotSpecified', 'Comma', 'Decimal'
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.framingSettings.segmentTerminatorSuffix]
  * The EDIFACT frame setting segment terminator suffix. Possible values
  * include: 'NotSpecified', 'None', 'CR', 'LF', 'CRLF'
- * @member {object} [edifact.sendAgreement.protocolSettings.envelopeSettings]
+ * @property {object} [edifact.sendAgreement.protocolSettings.envelopeSettings]
  * The EDIFACT envelope settings.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.groupAssociationAssignedCode]
  * The group association assigned code.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.communicationAgreementId]
  * The communication agreement id.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.applyDelimiterStringAdvice]
  * The value indicating whether to apply delimiter string advice.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.createGroupingSegments]
  * The value indicating whether to create grouping segments.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.enableDefaultGroupHeaders]
  * The value indicating whether to enable default group headers.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.recipientReferencePasswordValue]
  * The recipient reference password value.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.recipientReferencePasswordQualifier]
  * The recipient reference password qualifier.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.applicationReferenceId]
  * The application reference id.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.processingPriorityCode]
  * The processing priority code.
- * @member {number}
+ * @property {number}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.interchangeControlNumberLowerBound]
  * The interchange control number lower bound.
- * @member {number}
+ * @property {number}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.interchangeControlNumberUpperBound]
  * The interchange control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.rolloverInterchangeControlNumber]
  * The value indicating whether to rollover interchange control number.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.interchangeControlNumberPrefix]
  * The interchange control number prefix.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.interchangeControlNumberSuffix]
  * The interchange control number suffix.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.senderReverseRoutingAddress]
  * The sender reverse routing address.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.receiverReverseRoutingAddress]
  * The receiver reverse routing address.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.functionalGroupId]
  * The functional group id.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.groupControllingAgencyCode]
  * The group controlling agency code.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.groupMessageVersion]
  * The group message version.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.groupMessageRelease]
  * The group message release.
- * @member {number}
+ * @property {number}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.groupControlNumberLowerBound]
  * The group control number lower bound.
- * @member {number}
+ * @property {number}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.groupControlNumberUpperBound]
  * The group control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.rolloverGroupControlNumber]
  * The value indicating whether to rollover group control number.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.groupControlNumberPrefix]
  * The group control number prefix.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.groupControlNumberSuffix]
  * The group control number suffix.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.groupApplicationReceiverQualifier]
  * The group application receiver qualifier.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.groupApplicationReceiverId]
  * The group application receiver id.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.groupApplicationSenderQualifier]
  * The group application sender qualifier.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.groupApplicationSenderId]
  * The group application sender id.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.groupApplicationPassword]
  * The group application password.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.overwriteExistingTransactionSetControlNumber]
  * The value indicating whether to overwrite existing transaction set control
  * number.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberPrefix]
  * The transaction set control number prefix.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberSuffix]
  * The transaction set control number suffix.
- * @member {number}
+ * @property {number}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberLowerBound]
  * The transaction set control number lower bound.
- * @member {number}
+ * @property {number}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberUpperBound]
  * The transaction set control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.rolloverTransactionSetControlNumber]
  * The value indicating whether to rollover transaction set control number.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.isTestInterchange]
  * The value indicating whether the message is a test interchange.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.senderInternalIdentification]
  * The sender internal identification.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.senderInternalSubIdentification]
  * The sender internal sub identification.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.receiverInternalIdentification]
  * The receiver internal identification.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.envelopeSettings.receiverInternalSubIdentification]
  * The receiver internal sub identification.
- * @member {object}
+ * @property {object}
  * [edifact.sendAgreement.protocolSettings.acknowledgementSettings] The EDIFACT
  * acknowledgement settings.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.acknowledgementSettings.needTechnicalAcknowledgement]
  * The value indicating whether technical acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.acknowledgementSettings.batchTechnicalAcknowledgements]
  * The value indicating whether to batch the technical acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.acknowledgementSettings.needFunctionalAcknowledgement]
  * The value indicating whether functional acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.acknowledgementSettings.batchFunctionalAcknowledgements]
  * The value indicating whether to batch functional acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.acknowledgementSettings.needLoopForValidMessages]
  * The value indicating whether a loop is needed for valid messages.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.acknowledgementSettings.sendSynchronousAcknowledgement]
  * The value indicating whether to send synchronous acknowledgement.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberPrefix]
  * The acknowledgement control number prefix.
- * @member {string}
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberSuffix]
  * The acknowledgement control number suffix.
- * @member {number}
+ * @property {number}
  * [edifact.sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberLowerBound]
  * The acknowledgement control number lower bound.
- * @member {number}
+ * @property {number}
  * [edifact.sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberUpperBound]
  * The acknowledgement control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.acknowledgementSettings.rolloverAcknowledgementControlNumber]
  * The value indicating whether to rollover acknowledgement control number.
- * @member {object} [edifact.sendAgreement.protocolSettings.messageFilter] The
- * EDIFACT message filter.
- * @member {string}
+ * @property {object} [edifact.sendAgreement.protocolSettings.messageFilter]
+ * The EDIFACT message filter.
+ * @property {string}
  * [edifact.sendAgreement.protocolSettings.messageFilter.messageFilterType] The
  * message filter type. Possible values include: 'NotSpecified', 'Include',
  * 'Exclude'
- * @member {object} [edifact.sendAgreement.protocolSettings.processingSettings]
- * The EDIFACT processing Settings.
- * @member {boolean}
+ * @property {object}
+ * [edifact.sendAgreement.protocolSettings.processingSettings] The EDIFACT
+ * processing Settings.
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.processingSettings.maskSecurityInfo]
  * The value indicating whether to mask security information.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.processingSettings.preserveInterchange]
  * The value indicating whether to preserve interchange.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.processingSettings.suspendInterchangeOnError]
  * The value indicating whether to suspend interchange on error.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.processingSettings.createEmptyXmlTagsForTrailingSeparators]
  * The value indicating whether to create empty xml tags for trailing
  * separators.
- * @member {boolean}
+ * @property {boolean}
  * [edifact.sendAgreement.protocolSettings.processingSettings.useDotAsDecimalSeparator]
  * The value indicating whether to use dot as decimal separator.
- * @member {array} [edifact.sendAgreement.protocolSettings.envelopeOverrides]
+ * @property {array} [edifact.sendAgreement.protocolSettings.envelopeOverrides]
  * The EDIFACT envelope override settings.
- * @member {array} [edifact.sendAgreement.protocolSettings.messageFilterList]
+ * @property {array} [edifact.sendAgreement.protocolSettings.messageFilterList]
  * The EDIFACT message filter list.
- * @member {array} [edifact.sendAgreement.protocolSettings.schemaReferences]
+ * @property {array} [edifact.sendAgreement.protocolSettings.schemaReferences]
  * The EDIFACT schema references.
- * @member {array} [edifact.sendAgreement.protocolSettings.validationOverrides]
- * The EDIFACT validation override settings.
- * @member {array}
+ * @property {array}
+ * [edifact.sendAgreement.protocolSettings.validationOverrides] The EDIFACT
+ * validation override settings.
+ * @property {array}
  * [edifact.sendAgreement.protocolSettings.edifactDelimiterOverrides] The
  * EDIFACT delimiter override settings.
  */
@@ -6208,1519 +6264,1529 @@ export interface AgreementContent {
  * @constructor
  * The integration account agreement.
  *
- * @member {date} [createdTime] The created time.
- * @member {date} [changedTime] The changed time.
- * @member {object} [metadata] The metadata.
- * @member {string} agreementType The agreement type. Possible values include:
- * 'NotSpecified', 'AS2', 'X12', 'Edifact'
- * @member {string} hostPartner The integration account partner that is set as
- * host partner for this agreement.
- * @member {string} guestPartner The integration account partner that is set as
- * guest partner for this agreement.
- * @member {object} hostIdentity The business identity of the host partner.
- * @member {string} [hostIdentity.qualifier] The business identity qualifier
+ * @property {date} [createdTime] The created time.
+ * @property {date} [changedTime] The changed time.
+ * @property {object} [metadata] The metadata.
+ * @property {string} agreementType The agreement type. Possible values
+ * include: 'NotSpecified', 'AS2', 'X12', 'Edifact'
+ * @property {string} hostPartner The integration account partner that is set
+ * as host partner for this agreement.
+ * @property {string} guestPartner The integration account partner that is set
+ * as guest partner for this agreement.
+ * @property {object} hostIdentity The business identity of the host partner.
+ * @property {string} [hostIdentity.qualifier] The business identity qualifier
  * e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [hostIdentity.value] The user defined business identity
+ * @property {string} [hostIdentity.value] The user defined business identity
  * value.
- * @member {object} guestIdentity The business identity of the guest partner.
- * @member {string} [guestIdentity.qualifier] The business identity qualifier
+ * @property {object} guestIdentity The business identity of the guest partner.
+ * @property {string} [guestIdentity.qualifier] The business identity qualifier
  * e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [guestIdentity.value] The user defined business identity
+ * @property {string} [guestIdentity.value] The user defined business identity
  * value.
- * @member {object} content The agreement content.
- * @member {object} [content.aS2] The AS2 agreement content.
- * @member {object} [content.aS2.receiveAgreement] The AS2 one-way receive
+ * @property {object} content The agreement content.
+ * @property {object} [content.aS2] The AS2 agreement content.
+ * @property {object} [content.aS2.receiveAgreement] The AS2 one-way receive
  * agreement.
- * @member {object} [content.aS2.receiveAgreement.senderBusinessIdentity] The
+ * @property {object} [content.aS2.receiveAgreement.senderBusinessIdentity] The
  * sender business identity
- * @member {string}
+ * @property {string}
  * [content.aS2.receiveAgreement.senderBusinessIdentity.qualifier] The business
  * identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [content.aS2.receiveAgreement.senderBusinessIdentity.value]
- * The user defined business identity value.
- * @member {object} [content.aS2.receiveAgreement.receiverBusinessIdentity] The
- * receiver business identity
- * @member {string}
+ * @property {string}
+ * [content.aS2.receiveAgreement.senderBusinessIdentity.value] The user defined
+ * business identity value.
+ * @property {object} [content.aS2.receiveAgreement.receiverBusinessIdentity]
+ * The receiver business identity
+ * @property {string}
  * [content.aS2.receiveAgreement.receiverBusinessIdentity.qualifier] The
  * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string}
+ * @property {string}
  * [content.aS2.receiveAgreement.receiverBusinessIdentity.value] The user
  * defined business identity value.
- * @member {object} [content.aS2.receiveAgreement.protocolSettings] The AS2
+ * @property {object} [content.aS2.receiveAgreement.protocolSettings] The AS2
  * protocol settings.
- * @member {object}
+ * @property {object}
  * [content.aS2.receiveAgreement.protocolSettings.messageConnectionSettings]
  * The message connection settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.messageConnectionSettings.ignoreCertificateNameMismatch]
  * The value indicating whether to ignore mismatch in certificate name.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.messageConnectionSettings.supportHttpStatusCodeContinue]
  * The value indicating whether to support HTTP status code 'CONTINUE'.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.messageConnectionSettings.keepHttpConnectionAlive]
  * The value indicating whether to keep the connection alive.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.messageConnectionSettings.unfoldHttpHeaders]
  * The value indicating whether to unfold the HTTP headers.
- * @member {object}
+ * @property {object}
  * [content.aS2.receiveAgreement.protocolSettings.acknowledgementConnectionSettings]
  * The acknowledgement connection settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.acknowledgementConnectionSettings.ignoreCertificateNameMismatch]
  * The value indicating whether to ignore mismatch in certificate name.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.acknowledgementConnectionSettings.supportHttpStatusCodeContinue]
  * The value indicating whether to support HTTP status code 'CONTINUE'.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.acknowledgementConnectionSettings.keepHttpConnectionAlive]
  * The value indicating whether to keep the connection alive.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.acknowledgementConnectionSettings.unfoldHttpHeaders]
  * The value indicating whether to unfold the HTTP headers.
- * @member {object} [content.aS2.receiveAgreement.protocolSettings.mdnSettings]
- * The MDN settings.
- * @member {boolean}
+ * @property {object}
+ * [content.aS2.receiveAgreement.protocolSettings.mdnSettings] The MDN
+ * settings.
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.mdnSettings.needMdn] The
  * value indicating whether to send or request a MDN.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.mdnSettings.signMdn] The
  * value indicating whether the MDN needs to be signed or not.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.mdnSettings.sendMdnAsynchronously]
  * The value indicating whether to send the asynchronous MDN.
- * @member {string}
+ * @property {string}
  * [content.aS2.receiveAgreement.protocolSettings.mdnSettings.receiptDeliveryUrl]
  * The receipt delivery URL.
- * @member {string}
+ * @property {string}
  * [content.aS2.receiveAgreement.protocolSettings.mdnSettings.dispositionNotificationTo]
  * The disposition notification to header value.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.mdnSettings.signOutboundMdnIfOptional]
  * The value indicating whether to sign the outbound MDN if optional.
- * @member {string}
+ * @property {string}
  * [content.aS2.receiveAgreement.protocolSettings.mdnSettings.mdnText] The MDN
  * text.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.mdnSettings.sendInboundMdnToMessageBox]
  * The value indicating whether to send inbound MDN to message box.
- * @member {string}
+ * @property {string}
  * [content.aS2.receiveAgreement.protocolSettings.mdnSettings.micHashingAlgorithm]
  * The signing or hashing algorithm. Possible values include: 'NotSpecified',
  * 'None', 'MD5', 'SHA1', 'SHA2256', 'SHA2384', 'SHA2512'
- * @member {object}
+ * @property {object}
  * [content.aS2.receiveAgreement.protocolSettings.securitySettings] The
  * security settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.securitySettings.overrideGroupSigningCertificate]
  * The value indicating whether to send or request a MDN.
- * @member {string}
+ * @property {string}
  * [content.aS2.receiveAgreement.protocolSettings.securitySettings.signingCertificateName]
  * The name of the signing certificate.
- * @member {string}
+ * @property {string}
  * [content.aS2.receiveAgreement.protocolSettings.securitySettings.encryptionCertificateName]
  * The name of the encryption certificate.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.securitySettings.enableNrrForInboundEncodedMessages]
  * The value indicating whether to enable NRR for inbound encoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.securitySettings.enableNrrForInboundDecodedMessages]
  * The value indicating whether to enable NRR for inbound decoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.securitySettings.enableNrrForOutboundMdn]
  * The value indicating whether to enable NRR for outbound MDN.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.securitySettings.enableNrrForOutboundEncodedMessages]
  * The value indicating whether to enable NRR for outbound encoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.securitySettings.enableNrrForOutboundDecodedMessages]
  * The value indicating whether to enable NRR for outbound decoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.securitySettings.enableNrrForInboundMdn]
  * The value indicating whether to enable NRR for inbound MDN.
- * @member {string}
+ * @property {string}
  * [content.aS2.receiveAgreement.protocolSettings.securitySettings.sha2AlgorithmFormat]
  * The Sha2 algorithm format. Valid values are Sha2, ShaHashSize,
  * ShaHyphenHashSize, Sha2UnderscoreHashSize.
- * @member {object}
+ * @property {object}
  * [content.aS2.receiveAgreement.protocolSettings.validationSettings] The
  * validation settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.validationSettings.overrideMessageProperties]
  * The value indicating whether to override incoming message properties with
  * those in agreement.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.validationSettings.encryptMessage]
  * The value indicating whether the message has to be encrypted.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.validationSettings.signMessage]
  * The value indicating whether the message has to be signed.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.validationSettings.compressMessage]
  * The value indicating whether the message has to be compressed.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.validationSettings.checkDuplicateMessage]
  * The value indicating whether to check for duplicate message.
- * @member {number}
+ * @property {number}
  * [content.aS2.receiveAgreement.protocolSettings.validationSettings.interchangeDuplicatesValidityDays]
  * The number of days to look back for duplicate interchange.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.validationSettings.checkCertificateRevocationListOnSend]
  * The value indicating whether to check for certificate revocation list on
  * send.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.validationSettings.checkCertificateRevocationListOnReceive]
  * The value indicating whether to check for certificate revocation list on
  * receive.
- * @member {string}
+ * @property {string}
  * [content.aS2.receiveAgreement.protocolSettings.validationSettings.encryptionAlgorithm]
  * The encryption algorithm. Possible values include: 'NotSpecified', 'None',
  * 'DES3', 'RC2', 'AES128', 'AES192', 'AES256'
- * @member {string}
+ * @property {string}
  * [content.aS2.receiveAgreement.protocolSettings.validationSettings.signingAlgorithm]
  * The signing algorithm. Possible values include: 'NotSpecified', 'Default',
  * 'SHA1', 'SHA2256', 'SHA2384', 'SHA2512'
- * @member {object}
+ * @property {object}
  * [content.aS2.receiveAgreement.protocolSettings.envelopeSettings] The
  * envelope settings.
- * @member {string}
+ * @property {string}
  * [content.aS2.receiveAgreement.protocolSettings.envelopeSettings.messageContentType]
  * The message content type.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.envelopeSettings.transmitFileNameInMimeHeader]
  * The value indicating whether to transmit file name in mime header.
- * @member {string}
+ * @property {string}
  * [content.aS2.receiveAgreement.protocolSettings.envelopeSettings.fileNameTemplate]
  * The template for file name.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.envelopeSettings.suspendMessageOnFileNameGenerationError]
  * The value indicating whether to suspend message on file name generation
  * error.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.envelopeSettings.autogenerateFileName]
  * The value indicating whether to auto generate file name.
- * @member {object}
+ * @property {object}
  * [content.aS2.receiveAgreement.protocolSettings.errorSettings] The error
  * settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.errorSettings.suspendDuplicateMessage]
  * The value indicating whether to suspend duplicate message.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.receiveAgreement.protocolSettings.errorSettings.resendIfMdnNotReceived]
  * The value indicating whether to resend message If MDN is not received.
- * @member {object} [content.aS2.sendAgreement] The AS2 one-way send agreement.
- * @member {object} [content.aS2.sendAgreement.senderBusinessIdentity] The
+ * @property {object} [content.aS2.sendAgreement] The AS2 one-way send
+ * agreement.
+ * @property {object} [content.aS2.sendAgreement.senderBusinessIdentity] The
  * sender business identity
- * @member {string}
+ * @property {string}
  * [content.aS2.sendAgreement.senderBusinessIdentity.qualifier] The business
  * identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [content.aS2.sendAgreement.senderBusinessIdentity.value]
+ * @property {string} [content.aS2.sendAgreement.senderBusinessIdentity.value]
  * The user defined business identity value.
- * @member {object} [content.aS2.sendAgreement.receiverBusinessIdentity] The
+ * @property {object} [content.aS2.sendAgreement.receiverBusinessIdentity] The
  * receiver business identity
- * @member {string}
+ * @property {string}
  * [content.aS2.sendAgreement.receiverBusinessIdentity.qualifier] The business
  * identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [content.aS2.sendAgreement.receiverBusinessIdentity.value]
- * The user defined business identity value.
- * @member {object} [content.aS2.sendAgreement.protocolSettings] The AS2
+ * @property {string}
+ * [content.aS2.sendAgreement.receiverBusinessIdentity.value] The user defined
+ * business identity value.
+ * @property {object} [content.aS2.sendAgreement.protocolSettings] The AS2
  * protocol settings.
- * @member {object}
+ * @property {object}
  * [content.aS2.sendAgreement.protocolSettings.messageConnectionSettings] The
  * message connection settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.messageConnectionSettings.ignoreCertificateNameMismatch]
  * The value indicating whether to ignore mismatch in certificate name.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.messageConnectionSettings.supportHttpStatusCodeContinue]
  * The value indicating whether to support HTTP status code 'CONTINUE'.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.messageConnectionSettings.keepHttpConnectionAlive]
  * The value indicating whether to keep the connection alive.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.messageConnectionSettings.unfoldHttpHeaders]
  * The value indicating whether to unfold the HTTP headers.
- * @member {object}
+ * @property {object}
  * [content.aS2.sendAgreement.protocolSettings.acknowledgementConnectionSettings]
  * The acknowledgement connection settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.acknowledgementConnectionSettings.ignoreCertificateNameMismatch]
  * The value indicating whether to ignore mismatch in certificate name.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.acknowledgementConnectionSettings.supportHttpStatusCodeContinue]
  * The value indicating whether to support HTTP status code 'CONTINUE'.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.acknowledgementConnectionSettings.keepHttpConnectionAlive]
  * The value indicating whether to keep the connection alive.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.acknowledgementConnectionSettings.unfoldHttpHeaders]
  * The value indicating whether to unfold the HTTP headers.
- * @member {object} [content.aS2.sendAgreement.protocolSettings.mdnSettings]
+ * @property {object} [content.aS2.sendAgreement.protocolSettings.mdnSettings]
  * The MDN settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.mdnSettings.needMdn] The value
  * indicating whether to send or request a MDN.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.mdnSettings.signMdn] The value
  * indicating whether the MDN needs to be signed or not.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.mdnSettings.sendMdnAsynchronously]
  * The value indicating whether to send the asynchronous MDN.
- * @member {string}
+ * @property {string}
  * [content.aS2.sendAgreement.protocolSettings.mdnSettings.receiptDeliveryUrl]
  * The receipt delivery URL.
- * @member {string}
+ * @property {string}
  * [content.aS2.sendAgreement.protocolSettings.mdnSettings.dispositionNotificationTo]
  * The disposition notification to header value.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.mdnSettings.signOutboundMdnIfOptional]
  * The value indicating whether to sign the outbound MDN if optional.
- * @member {string}
+ * @property {string}
  * [content.aS2.sendAgreement.protocolSettings.mdnSettings.mdnText] The MDN
  * text.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.mdnSettings.sendInboundMdnToMessageBox]
  * The value indicating whether to send inbound MDN to message box.
- * @member {string}
+ * @property {string}
  * [content.aS2.sendAgreement.protocolSettings.mdnSettings.micHashingAlgorithm]
  * The signing or hashing algorithm. Possible values include: 'NotSpecified',
  * 'None', 'MD5', 'SHA1', 'SHA2256', 'SHA2384', 'SHA2512'
- * @member {object}
+ * @property {object}
  * [content.aS2.sendAgreement.protocolSettings.securitySettings] The security
  * settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.securitySettings.overrideGroupSigningCertificate]
  * The value indicating whether to send or request a MDN.
- * @member {string}
+ * @property {string}
  * [content.aS2.sendAgreement.protocolSettings.securitySettings.signingCertificateName]
  * The name of the signing certificate.
- * @member {string}
+ * @property {string}
  * [content.aS2.sendAgreement.protocolSettings.securitySettings.encryptionCertificateName]
  * The name of the encryption certificate.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.securitySettings.enableNrrForInboundEncodedMessages]
  * The value indicating whether to enable NRR for inbound encoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.securitySettings.enableNrrForInboundDecodedMessages]
  * The value indicating whether to enable NRR for inbound decoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.securitySettings.enableNrrForOutboundMdn]
  * The value indicating whether to enable NRR for outbound MDN.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.securitySettings.enableNrrForOutboundEncodedMessages]
  * The value indicating whether to enable NRR for outbound encoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.securitySettings.enableNrrForOutboundDecodedMessages]
  * The value indicating whether to enable NRR for outbound decoded messages.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.securitySettings.enableNrrForInboundMdn]
  * The value indicating whether to enable NRR for inbound MDN.
- * @member {string}
+ * @property {string}
  * [content.aS2.sendAgreement.protocolSettings.securitySettings.sha2AlgorithmFormat]
  * The Sha2 algorithm format. Valid values are Sha2, ShaHashSize,
  * ShaHyphenHashSize, Sha2UnderscoreHashSize.
- * @member {object}
+ * @property {object}
  * [content.aS2.sendAgreement.protocolSettings.validationSettings] The
  * validation settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.validationSettings.overrideMessageProperties]
  * The value indicating whether to override incoming message properties with
  * those in agreement.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.validationSettings.encryptMessage]
  * The value indicating whether the message has to be encrypted.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.validationSettings.signMessage]
  * The value indicating whether the message has to be signed.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.validationSettings.compressMessage]
  * The value indicating whether the message has to be compressed.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.validationSettings.checkDuplicateMessage]
  * The value indicating whether to check for duplicate message.
- * @member {number}
+ * @property {number}
  * [content.aS2.sendAgreement.protocolSettings.validationSettings.interchangeDuplicatesValidityDays]
  * The number of days to look back for duplicate interchange.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.validationSettings.checkCertificateRevocationListOnSend]
  * The value indicating whether to check for certificate revocation list on
  * send.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.validationSettings.checkCertificateRevocationListOnReceive]
  * The value indicating whether to check for certificate revocation list on
  * receive.
- * @member {string}
+ * @property {string}
  * [content.aS2.sendAgreement.protocolSettings.validationSettings.encryptionAlgorithm]
  * The encryption algorithm. Possible values include: 'NotSpecified', 'None',
  * 'DES3', 'RC2', 'AES128', 'AES192', 'AES256'
- * @member {string}
+ * @property {string}
  * [content.aS2.sendAgreement.protocolSettings.validationSettings.signingAlgorithm]
  * The signing algorithm. Possible values include: 'NotSpecified', 'Default',
  * 'SHA1', 'SHA2256', 'SHA2384', 'SHA2512'
- * @member {object}
+ * @property {object}
  * [content.aS2.sendAgreement.protocolSettings.envelopeSettings] The envelope
  * settings.
- * @member {string}
+ * @property {string}
  * [content.aS2.sendAgreement.protocolSettings.envelopeSettings.messageContentType]
  * The message content type.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.envelopeSettings.transmitFileNameInMimeHeader]
  * The value indicating whether to transmit file name in mime header.
- * @member {string}
+ * @property {string}
  * [content.aS2.sendAgreement.protocolSettings.envelopeSettings.fileNameTemplate]
  * The template for file name.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.envelopeSettings.suspendMessageOnFileNameGenerationError]
  * The value indicating whether to suspend message on file name generation
  * error.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.envelopeSettings.autogenerateFileName]
  * The value indicating whether to auto generate file name.
- * @member {object} [content.aS2.sendAgreement.protocolSettings.errorSettings]
- * The error settings.
- * @member {boolean}
+ * @property {object}
+ * [content.aS2.sendAgreement.protocolSettings.errorSettings] The error
+ * settings.
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.errorSettings.suspendDuplicateMessage]
  * The value indicating whether to suspend duplicate message.
- * @member {boolean}
+ * @property {boolean}
  * [content.aS2.sendAgreement.protocolSettings.errorSettings.resendIfMdnNotReceived]
  * The value indicating whether to resend message If MDN is not received.
- * @member {object} [content.x12] The X12 agreement content.
- * @member {object} [content.x12.receiveAgreement] The X12 one-way receive
+ * @property {object} [content.x12] The X12 agreement content.
+ * @property {object} [content.x12.receiveAgreement] The X12 one-way receive
  * agreement.
- * @member {object} [content.x12.receiveAgreement.senderBusinessIdentity] The
+ * @property {object} [content.x12.receiveAgreement.senderBusinessIdentity] The
  * sender business identity
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.senderBusinessIdentity.qualifier] The business
  * identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [content.x12.receiveAgreement.senderBusinessIdentity.value]
- * The user defined business identity value.
- * @member {object} [content.x12.receiveAgreement.receiverBusinessIdentity] The
- * receiver business identity
- * @member {string}
+ * @property {string}
+ * [content.x12.receiveAgreement.senderBusinessIdentity.value] The user defined
+ * business identity value.
+ * @property {object} [content.x12.receiveAgreement.receiverBusinessIdentity]
+ * The receiver business identity
+ * @property {string}
  * [content.x12.receiveAgreement.receiverBusinessIdentity.qualifier] The
  * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.receiverBusinessIdentity.value] The user
  * defined business identity value.
- * @member {object} [content.x12.receiveAgreement.protocolSettings] The X12
+ * @property {object} [content.x12.receiveAgreement.protocolSettings] The X12
  * protocol settings.
- * @member {object}
+ * @property {object}
  * [content.x12.receiveAgreement.protocolSettings.validationSettings] The X12
  * validation settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.validationSettings.validateCharacterSet]
  * The value indicating whether to validate character set in the message.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.validationSettings.checkDuplicateInterchangeControlNumber]
  * The value indicating whether to check for duplicate interchange control
  * number.
- * @member {number}
+ * @property {number}
  * [content.x12.receiveAgreement.protocolSettings.validationSettings.interchangeControlNumberValidityDays]
  * The validity period of interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.validationSettings.checkDuplicateGroupControlNumber]
  * The value indicating whether to check for duplicate group control number.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.validationSettings.checkDuplicateTransactionSetControlNumber]
  * The value indicating whether to check for duplicate transaction set control
  * number.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.validationSettings.validateEdiTypes]
  * The value indicating whether to Whether to validate EDI types.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.validationSettings.validateXsdTypes]
  * The value indicating whether to Whether to validate XSD types.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.validationSettings.allowLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to allow leading and trailing spaces and
  * zeroes.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.validationSettings.trimLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to trim leading and trailing spaces and zeroes.
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.validationSettings.trailingSeparatorPolicy]
  * The trailing separator policy. Possible values include: 'NotSpecified',
  * 'NotAllowed', 'Optional', 'Mandatory'
- * @member {object}
+ * @property {object}
  * [content.x12.receiveAgreement.protocolSettings.framingSettings] The X12
  * framing settings.
- * @member {number}
+ * @property {number}
  * [content.x12.receiveAgreement.protocolSettings.framingSettings.dataElementSeparator]
  * The data element separator.
- * @member {number}
+ * @property {number}
  * [content.x12.receiveAgreement.protocolSettings.framingSettings.componentSeparator]
  * The component separator.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.framingSettings.replaceSeparatorsInPayload]
  * The value indicating whether to replace separators in payload.
- * @member {number}
+ * @property {number}
  * [content.x12.receiveAgreement.protocolSettings.framingSettings.replaceCharacter]
  * The replacement character.
- * @member {number}
+ * @property {number}
  * [content.x12.receiveAgreement.protocolSettings.framingSettings.segmentTerminator]
  * The segment terminator.
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.framingSettings.characterSet]
  * The X12 character set. Possible values include: 'NotSpecified', 'Basic',
  * 'Extended', 'UTF8'
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.framingSettings.segmentTerminatorSuffix]
  * The segment terminator suffix. Possible values include: 'NotSpecified',
  * 'None', 'CR', 'LF', 'CRLF'
- * @member {object}
+ * @property {object}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings] The X12
  * envelope settings.
- * @member {number}
+ * @property {number}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.controlStandardsId]
  * The controls standards id.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.useControlStandardsIdAsRepetitionCharacter]
  * The value indicating whether to use control standards id as repetition
  * character.
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.senderApplicationId]
  * The sender application id.
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.receiverApplicationId]
  * The receiver application id.
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.controlVersionNumber]
  * The control version number.
- * @member {number}
+ * @property {number}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.interchangeControlNumberLowerBound]
  * The interchange  control number lower bound.
- * @member {number}
+ * @property {number}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.interchangeControlNumberUpperBound]
  * The interchange  control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.rolloverInterchangeControlNumber]
  * The value indicating whether to rollover interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.enableDefaultGroupHeaders]
  * The value indicating whether to enable default group headers.
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.functionalGroupId]
  * The functional group id.
- * @member {number}
+ * @property {number}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.groupControlNumberLowerBound]
  * The group control number lower bound.
- * @member {number}
+ * @property {number}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.groupControlNumberUpperBound]
  * The group control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.rolloverGroupControlNumber]
  * The value indicating whether to rollover group control number.
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.groupHeaderAgencyCode]
  * The group header agency code.
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.groupHeaderVersion]
  * The group header version.
- * @member {number}
+ * @property {number}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberLowerBound]
  * The transaction set control number lower bound.
- * @member {number}
+ * @property {number}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberUpperBound]
  * The transaction set control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.rolloverTransactionSetControlNumber]
  * The value indicating whether to rollover transaction set control number.
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberPrefix]
  * The transaction set control number prefix.
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberSuffix]
  * The transaction set control number suffix.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.overwriteExistingTransactionSetControlNumber]
  * The value indicating whether to overwrite existing transaction set control
  * number.
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.groupHeaderDateFormat]
  * The group header date format. Possible values include: 'NotSpecified',
  * 'CCYYMMDD', 'YYMMDD'
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.groupHeaderTimeFormat]
  * The group header time format. Possible values include: 'NotSpecified',
  * 'HHMM', 'HHMMSS', 'HHMMSSdd', 'HHMMSSd'
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.envelopeSettings.usageIndicator]
  * The usage indicator. Possible values include: 'NotSpecified', 'Test',
  * 'Information', 'Production'
- * @member {object}
+ * @property {object}
  * [content.x12.receiveAgreement.protocolSettings.acknowledgementSettings] The
  * X12 acknowledgment settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.acknowledgementSettings.needTechnicalAcknowledgement]
  * The value indicating whether technical acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.acknowledgementSettings.batchTechnicalAcknowledgements]
  * The value indicating whether to batch the technical acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.acknowledgementSettings.needFunctionalAcknowledgement]
  * The value indicating whether functional acknowledgement is needed.
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.acknowledgementSettings.functionalAcknowledgementVersion]
  * The functional acknowledgement version.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.acknowledgementSettings.batchFunctionalAcknowledgements]
  * The value indicating whether to batch functional acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.acknowledgementSettings.needImplementationAcknowledgement]
  * The value indicating whether implementation acknowledgement is needed.
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.acknowledgementSettings.implementationAcknowledgementVersion]
  * The implementation acknowledgement version.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.acknowledgementSettings.batchImplementationAcknowledgements]
  * The value indicating whether to batch implementation acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.acknowledgementSettings.needLoopForValidMessages]
  * The value indicating whether a loop is needed for valid messages.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.acknowledgementSettings.sendSynchronousAcknowledgement]
  * The value indicating whether to send synchronous acknowledgement.
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberPrefix]
  * The acknowledgement control number prefix.
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberSuffix]
  * The acknowledgement control number suffix.
- * @member {number}
+ * @property {number}
  * [content.x12.receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberLowerBound]
  * The acknowledgement control number lower bound.
- * @member {number}
+ * @property {number}
  * [content.x12.receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberUpperBound]
  * The acknowledgement control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.acknowledgementSettings.rolloverAcknowledgementControlNumber]
  * The value indicating whether to rollover acknowledgement control number.
- * @member {object}
+ * @property {object}
  * [content.x12.receiveAgreement.protocolSettings.messageFilter] The X12
  * message filter.
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.messageFilter.messageFilterType]
  * The message filter type. Possible values include: 'NotSpecified', 'Include',
  * 'Exclude'
- * @member {object}
+ * @property {object}
  * [content.x12.receiveAgreement.protocolSettings.securitySettings] The X12
  * security settings.
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.securitySettings.authorizationQualifier]
  * The authorization qualifier.
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.securitySettings.authorizationValue]
  * The authorization value.
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.securitySettings.securityQualifier]
  * The security qualifier.
- * @member {string}
+ * @property {string}
  * [content.x12.receiveAgreement.protocolSettings.securitySettings.passwordValue]
  * The password value.
- * @member {object}
+ * @property {object}
  * [content.x12.receiveAgreement.protocolSettings.processingSettings] The X12
  * processing settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.processingSettings.maskSecurityInfo]
  * The value indicating whether to mask security information.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.processingSettings.convertImpliedDecimal]
  * The value indicating whether to convert numerical type to implied decimal.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.processingSettings.preserveInterchange]
  * The value indicating whether to preserve interchange.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.processingSettings.suspendInterchangeOnError]
  * The value indicating whether to suspend interchange on error.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.processingSettings.createEmptyXmlTagsForTrailingSeparators]
  * The value indicating whether to create empty xml tags for trailing
  * separators.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.receiveAgreement.protocolSettings.processingSettings.useDotAsDecimalSeparator]
  * The value indicating whether to use dot as decimal separator.
- * @member {array}
+ * @property {array}
  * [content.x12.receiveAgreement.protocolSettings.envelopeOverrides] The X12
  * envelope override settings.
- * @member {array}
+ * @property {array}
  * [content.x12.receiveAgreement.protocolSettings.validationOverrides] The X12
  * validation override settings.
- * @member {array}
+ * @property {array}
  * [content.x12.receiveAgreement.protocolSettings.messageFilterList] The X12
  * message filter list.
- * @member {array}
+ * @property {array}
  * [content.x12.receiveAgreement.protocolSettings.schemaReferences] The X12
  * schema references.
- * @member {array}
+ * @property {array}
  * [content.x12.receiveAgreement.protocolSettings.x12DelimiterOverrides] The
  * X12 delimiter override settings.
- * @member {object} [content.x12.sendAgreement] The X12 one-way send agreement.
- * @member {object} [content.x12.sendAgreement.senderBusinessIdentity] The
+ * @property {object} [content.x12.sendAgreement] The X12 one-way send
+ * agreement.
+ * @property {object} [content.x12.sendAgreement.senderBusinessIdentity] The
  * sender business identity
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.senderBusinessIdentity.qualifier] The business
  * identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [content.x12.sendAgreement.senderBusinessIdentity.value]
+ * @property {string} [content.x12.sendAgreement.senderBusinessIdentity.value]
  * The user defined business identity value.
- * @member {object} [content.x12.sendAgreement.receiverBusinessIdentity] The
+ * @property {object} [content.x12.sendAgreement.receiverBusinessIdentity] The
  * receiver business identity
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.receiverBusinessIdentity.qualifier] The business
  * identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string} [content.x12.sendAgreement.receiverBusinessIdentity.value]
- * The user defined business identity value.
- * @member {object} [content.x12.sendAgreement.protocolSettings] The X12
+ * @property {string}
+ * [content.x12.sendAgreement.receiverBusinessIdentity.value] The user defined
+ * business identity value.
+ * @property {object} [content.x12.sendAgreement.protocolSettings] The X12
  * protocol settings.
- * @member {object}
+ * @property {object}
  * [content.x12.sendAgreement.protocolSettings.validationSettings] The X12
  * validation settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.validationSettings.validateCharacterSet]
  * The value indicating whether to validate character set in the message.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.validationSettings.checkDuplicateInterchangeControlNumber]
  * The value indicating whether to check for duplicate interchange control
  * number.
- * @member {number}
+ * @property {number}
  * [content.x12.sendAgreement.protocolSettings.validationSettings.interchangeControlNumberValidityDays]
  * The validity period of interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.validationSettings.checkDuplicateGroupControlNumber]
  * The value indicating whether to check for duplicate group control number.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.validationSettings.checkDuplicateTransactionSetControlNumber]
  * The value indicating whether to check for duplicate transaction set control
  * number.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.validationSettings.validateEdiTypes]
  * The value indicating whether to Whether to validate EDI types.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.validationSettings.validateXsdTypes]
  * The value indicating whether to Whether to validate XSD types.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.validationSettings.allowLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to allow leading and trailing spaces and
  * zeroes.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.validationSettings.trimLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to trim leading and trailing spaces and zeroes.
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.validationSettings.trailingSeparatorPolicy]
  * The trailing separator policy. Possible values include: 'NotSpecified',
  * 'NotAllowed', 'Optional', 'Mandatory'
- * @member {object}
+ * @property {object}
  * [content.x12.sendAgreement.protocolSettings.framingSettings] The X12 framing
  * settings.
- * @member {number}
+ * @property {number}
  * [content.x12.sendAgreement.protocolSettings.framingSettings.dataElementSeparator]
  * The data element separator.
- * @member {number}
+ * @property {number}
  * [content.x12.sendAgreement.protocolSettings.framingSettings.componentSeparator]
  * The component separator.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.framingSettings.replaceSeparatorsInPayload]
  * The value indicating whether to replace separators in payload.
- * @member {number}
+ * @property {number}
  * [content.x12.sendAgreement.protocolSettings.framingSettings.replaceCharacter]
  * The replacement character.
- * @member {number}
+ * @property {number}
  * [content.x12.sendAgreement.protocolSettings.framingSettings.segmentTerminator]
  * The segment terminator.
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.framingSettings.characterSet]
  * The X12 character set. Possible values include: 'NotSpecified', 'Basic',
  * 'Extended', 'UTF8'
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.framingSettings.segmentTerminatorSuffix]
  * The segment terminator suffix. Possible values include: 'NotSpecified',
  * 'None', 'CR', 'LF', 'CRLF'
- * @member {object}
+ * @property {object}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings] The X12
  * envelope settings.
- * @member {number}
+ * @property {number}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.controlStandardsId]
  * The controls standards id.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.useControlStandardsIdAsRepetitionCharacter]
  * The value indicating whether to use control standards id as repetition
  * character.
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.senderApplicationId]
  * The sender application id.
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.receiverApplicationId]
  * The receiver application id.
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.controlVersionNumber]
  * The control version number.
- * @member {number}
+ * @property {number}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.interchangeControlNumberLowerBound]
  * The interchange  control number lower bound.
- * @member {number}
+ * @property {number}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.interchangeControlNumberUpperBound]
  * The interchange  control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.rolloverInterchangeControlNumber]
  * The value indicating whether to rollover interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.enableDefaultGroupHeaders]
  * The value indicating whether to enable default group headers.
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.functionalGroupId]
  * The functional group id.
- * @member {number}
+ * @property {number}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.groupControlNumberLowerBound]
  * The group control number lower bound.
- * @member {number}
+ * @property {number}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.groupControlNumberUpperBound]
  * The group control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.rolloverGroupControlNumber]
  * The value indicating whether to rollover group control number.
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.groupHeaderAgencyCode]
  * The group header agency code.
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.groupHeaderVersion]
  * The group header version.
- * @member {number}
+ * @property {number}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberLowerBound]
  * The transaction set control number lower bound.
- * @member {number}
+ * @property {number}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberUpperBound]
  * The transaction set control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.rolloverTransactionSetControlNumber]
  * The value indicating whether to rollover transaction set control number.
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberPrefix]
  * The transaction set control number prefix.
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberSuffix]
  * The transaction set control number suffix.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.overwriteExistingTransactionSetControlNumber]
  * The value indicating whether to overwrite existing transaction set control
  * number.
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.groupHeaderDateFormat]
  * The group header date format. Possible values include: 'NotSpecified',
  * 'CCYYMMDD', 'YYMMDD'
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.groupHeaderTimeFormat]
  * The group header time format. Possible values include: 'NotSpecified',
  * 'HHMM', 'HHMMSS', 'HHMMSSdd', 'HHMMSSd'
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.envelopeSettings.usageIndicator]
  * The usage indicator. Possible values include: 'NotSpecified', 'Test',
  * 'Information', 'Production'
- * @member {object}
+ * @property {object}
  * [content.x12.sendAgreement.protocolSettings.acknowledgementSettings] The X12
  * acknowledgment settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.acknowledgementSettings.needTechnicalAcknowledgement]
  * The value indicating whether technical acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.acknowledgementSettings.batchTechnicalAcknowledgements]
  * The value indicating whether to batch the technical acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.acknowledgementSettings.needFunctionalAcknowledgement]
  * The value indicating whether functional acknowledgement is needed.
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.acknowledgementSettings.functionalAcknowledgementVersion]
  * The functional acknowledgement version.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.acknowledgementSettings.batchFunctionalAcknowledgements]
  * The value indicating whether to batch functional acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.acknowledgementSettings.needImplementationAcknowledgement]
  * The value indicating whether implementation acknowledgement is needed.
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.acknowledgementSettings.implementationAcknowledgementVersion]
  * The implementation acknowledgement version.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.acknowledgementSettings.batchImplementationAcknowledgements]
  * The value indicating whether to batch implementation acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.acknowledgementSettings.needLoopForValidMessages]
  * The value indicating whether a loop is needed for valid messages.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.acknowledgementSettings.sendSynchronousAcknowledgement]
  * The value indicating whether to send synchronous acknowledgement.
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberPrefix]
  * The acknowledgement control number prefix.
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberSuffix]
  * The acknowledgement control number suffix.
- * @member {number}
+ * @property {number}
  * [content.x12.sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberLowerBound]
  * The acknowledgement control number lower bound.
- * @member {number}
+ * @property {number}
  * [content.x12.sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberUpperBound]
  * The acknowledgement control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.acknowledgementSettings.rolloverAcknowledgementControlNumber]
  * The value indicating whether to rollover acknowledgement control number.
- * @member {object} [content.x12.sendAgreement.protocolSettings.messageFilter]
- * The X12 message filter.
- * @member {string}
+ * @property {object}
+ * [content.x12.sendAgreement.protocolSettings.messageFilter] The X12 message
+ * filter.
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.messageFilter.messageFilterType]
  * The message filter type. Possible values include: 'NotSpecified', 'Include',
  * 'Exclude'
- * @member {object}
+ * @property {object}
  * [content.x12.sendAgreement.protocolSettings.securitySettings] The X12
  * security settings.
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.securitySettings.authorizationQualifier]
  * The authorization qualifier.
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.securitySettings.authorizationValue]
  * The authorization value.
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.securitySettings.securityQualifier]
  * The security qualifier.
- * @member {string}
+ * @property {string}
  * [content.x12.sendAgreement.protocolSettings.securitySettings.passwordValue]
  * The password value.
- * @member {object}
+ * @property {object}
  * [content.x12.sendAgreement.protocolSettings.processingSettings] The X12
  * processing settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.processingSettings.maskSecurityInfo]
  * The value indicating whether to mask security information.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.processingSettings.convertImpliedDecimal]
  * The value indicating whether to convert numerical type to implied decimal.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.processingSettings.preserveInterchange]
  * The value indicating whether to preserve interchange.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.processingSettings.suspendInterchangeOnError]
  * The value indicating whether to suspend interchange on error.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.processingSettings.createEmptyXmlTagsForTrailingSeparators]
  * The value indicating whether to create empty xml tags for trailing
  * separators.
- * @member {boolean}
+ * @property {boolean}
  * [content.x12.sendAgreement.protocolSettings.processingSettings.useDotAsDecimalSeparator]
  * The value indicating whether to use dot as decimal separator.
- * @member {array}
+ * @property {array}
  * [content.x12.sendAgreement.protocolSettings.envelopeOverrides] The X12
  * envelope override settings.
- * @member {array}
+ * @property {array}
  * [content.x12.sendAgreement.protocolSettings.validationOverrides] The X12
  * validation override settings.
- * @member {array}
+ * @property {array}
  * [content.x12.sendAgreement.protocolSettings.messageFilterList] The X12
  * message filter list.
- * @member {array}
+ * @property {array}
  * [content.x12.sendAgreement.protocolSettings.schemaReferences] The X12 schema
  * references.
- * @member {array}
+ * @property {array}
  * [content.x12.sendAgreement.protocolSettings.x12DelimiterOverrides] The X12
  * delimiter override settings.
- * @member {object} [content.edifact] The EDIFACT agreement content.
- * @member {object} [content.edifact.receiveAgreement] The EDIFACT one-way
+ * @property {object} [content.edifact] The EDIFACT agreement content.
+ * @property {object} [content.edifact.receiveAgreement] The EDIFACT one-way
  * receive agreement.
- * @member {object} [content.edifact.receiveAgreement.senderBusinessIdentity]
+ * @property {object} [content.edifact.receiveAgreement.senderBusinessIdentity]
  * The sender business identity
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.senderBusinessIdentity.qualifier] The
  * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.senderBusinessIdentity.value] The user
  * defined business identity value.
- * @member {object} [content.edifact.receiveAgreement.receiverBusinessIdentity]
- * The receiver business identity
- * @member {string}
+ * @property {object}
+ * [content.edifact.receiveAgreement.receiverBusinessIdentity] The receiver
+ * business identity
+ * @property {string}
  * [content.edifact.receiveAgreement.receiverBusinessIdentity.qualifier] The
  * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.receiverBusinessIdentity.value] The user
  * defined business identity value.
- * @member {object} [content.edifact.receiveAgreement.protocolSettings] The
+ * @property {object} [content.edifact.receiveAgreement.protocolSettings] The
  * EDIFACT protocol settings.
- * @member {object}
+ * @property {object}
  * [content.edifact.receiveAgreement.protocolSettings.validationSettings] The
  * EDIFACT validation settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.validationSettings.validateCharacterSet]
  * The value indicating whether to validate character set in the message.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.validationSettings.checkDuplicateInterchangeControlNumber]
  * The value indicating whether to check for duplicate interchange control
  * number.
- * @member {number}
+ * @property {number}
  * [content.edifact.receiveAgreement.protocolSettings.validationSettings.interchangeControlNumberValidityDays]
  * The validity period of interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.validationSettings.checkDuplicateGroupControlNumber]
  * The value indicating whether to check for duplicate group control number.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.validationSettings.checkDuplicateTransactionSetControlNumber]
  * The value indicating whether to check for duplicate transaction set control
  * number.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.validationSettings.validateEdiTypes]
  * The value indicating whether to Whether to validate EDI types.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.validationSettings.validateXsdTypes]
  * The value indicating whether to Whether to validate XSD types.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.validationSettings.allowLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to allow leading and trailing spaces and
  * zeroes.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.validationSettings.trimLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to trim leading and trailing spaces and zeroes.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.validationSettings.trailingSeparatorPolicy]
  * The trailing separator policy. Possible values include: 'NotSpecified',
  * 'NotAllowed', 'Optional', 'Mandatory'
- * @member {object}
+ * @property {object}
  * [content.edifact.receiveAgreement.protocolSettings.framingSettings] The
  * EDIFACT framing settings.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.framingSettings.serviceCodeListDirectoryVersion]
  * The service code list directory version.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.framingSettings.characterEncoding]
  * The character encoding.
- * @member {number}
+ * @property {number}
  * [content.edifact.receiveAgreement.protocolSettings.framingSettings.protocolVersion]
  * The protocol version.
- * @member {number}
+ * @property {number}
  * [content.edifact.receiveAgreement.protocolSettings.framingSettings.dataElementSeparator]
  * The data element separator.
- * @member {number}
+ * @property {number}
  * [content.edifact.receiveAgreement.protocolSettings.framingSettings.componentSeparator]
  * The component separator.
- * @member {number}
+ * @property {number}
  * [content.edifact.receiveAgreement.protocolSettings.framingSettings.segmentTerminator]
  * The segment terminator.
- * @member {number}
+ * @property {number}
  * [content.edifact.receiveAgreement.protocolSettings.framingSettings.releaseIndicator]
  * The release indicator.
- * @member {number}
+ * @property {number}
  * [content.edifact.receiveAgreement.protocolSettings.framingSettings.repetitionSeparator]
  * The repetition separator.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.framingSettings.characterSet]
  * The EDIFACT frame setting characterSet. Possible values include:
  * 'NotSpecified', 'UNOB', 'UNOA', 'UNOC', 'UNOD', 'UNOE', 'UNOF', 'UNOG',
  * 'UNOH', 'UNOI', 'UNOJ', 'UNOK', 'UNOX', 'UNOY', 'KECA'
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.framingSettings.decimalPointIndicator]
  * The EDIFACT frame setting decimal indicator. Possible values include:
  * 'NotSpecified', 'Comma', 'Decimal'
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.framingSettings.segmentTerminatorSuffix]
  * The EDIFACT frame setting segment terminator suffix. Possible values
  * include: 'NotSpecified', 'None', 'CR', 'LF', 'CRLF'
- * @member {object}
+ * @property {object}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings] The
  * EDIFACT envelope settings.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.groupAssociationAssignedCode]
  * The group association assigned code.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.communicationAgreementId]
  * The communication agreement id.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.applyDelimiterStringAdvice]
  * The value indicating whether to apply delimiter string advice.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.createGroupingSegments]
  * The value indicating whether to create grouping segments.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.enableDefaultGroupHeaders]
  * The value indicating whether to enable default group headers.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.recipientReferencePasswordValue]
  * The recipient reference password value.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.recipientReferencePasswordQualifier]
  * The recipient reference password qualifier.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.applicationReferenceId]
  * The application reference id.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.processingPriorityCode]
  * The processing priority code.
- * @member {number}
+ * @property {number}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.interchangeControlNumberLowerBound]
  * The interchange control number lower bound.
- * @member {number}
+ * @property {number}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.interchangeControlNumberUpperBound]
  * The interchange control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.rolloverInterchangeControlNumber]
  * The value indicating whether to rollover interchange control number.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.interchangeControlNumberPrefix]
  * The interchange control number prefix.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.interchangeControlNumberSuffix]
  * The interchange control number suffix.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.senderReverseRoutingAddress]
  * The sender reverse routing address.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.receiverReverseRoutingAddress]
  * The receiver reverse routing address.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.functionalGroupId]
  * The functional group id.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.groupControllingAgencyCode]
  * The group controlling agency code.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.groupMessageVersion]
  * The group message version.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.groupMessageRelease]
  * The group message release.
- * @member {number}
+ * @property {number}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.groupControlNumberLowerBound]
  * The group control number lower bound.
- * @member {number}
+ * @property {number}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.groupControlNumberUpperBound]
  * The group control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.rolloverGroupControlNumber]
  * The value indicating whether to rollover group control number.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.groupControlNumberPrefix]
  * The group control number prefix.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.groupControlNumberSuffix]
  * The group control number suffix.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.groupApplicationReceiverQualifier]
  * The group application receiver qualifier.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.groupApplicationReceiverId]
  * The group application receiver id.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.groupApplicationSenderQualifier]
  * The group application sender qualifier.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.groupApplicationSenderId]
  * The group application sender id.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.groupApplicationPassword]
  * The group application password.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.overwriteExistingTransactionSetControlNumber]
  * The value indicating whether to overwrite existing transaction set control
  * number.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberPrefix]
  * The transaction set control number prefix.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberSuffix]
  * The transaction set control number suffix.
- * @member {number}
+ * @property {number}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberLowerBound]
  * The transaction set control number lower bound.
- * @member {number}
+ * @property {number}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberUpperBound]
  * The transaction set control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.rolloverTransactionSetControlNumber]
  * The value indicating whether to rollover transaction set control number.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.isTestInterchange]
  * The value indicating whether the message is a test interchange.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.senderInternalIdentification]
  * The sender internal identification.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.senderInternalSubIdentification]
  * The sender internal sub identification.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.receiverInternalIdentification]
  * The receiver internal identification.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeSettings.receiverInternalSubIdentification]
  * The receiver internal sub identification.
- * @member {object}
+ * @property {object}
  * [content.edifact.receiveAgreement.protocolSettings.acknowledgementSettings]
  * The EDIFACT acknowledgement settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.acknowledgementSettings.needTechnicalAcknowledgement]
  * The value indicating whether technical acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.acknowledgementSettings.batchTechnicalAcknowledgements]
  * The value indicating whether to batch the technical acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.acknowledgementSettings.needFunctionalAcknowledgement]
  * The value indicating whether functional acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.acknowledgementSettings.batchFunctionalAcknowledgements]
  * The value indicating whether to batch functional acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.acknowledgementSettings.needLoopForValidMessages]
  * The value indicating whether a loop is needed for valid messages.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.acknowledgementSettings.sendSynchronousAcknowledgement]
  * The value indicating whether to send synchronous acknowledgement.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberPrefix]
  * The acknowledgement control number prefix.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberSuffix]
  * The acknowledgement control number suffix.
- * @member {number}
+ * @property {number}
  * [content.edifact.receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberLowerBound]
  * The acknowledgement control number lower bound.
- * @member {number}
+ * @property {number}
  * [content.edifact.receiveAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberUpperBound]
  * The acknowledgement control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.acknowledgementSettings.rolloverAcknowledgementControlNumber]
  * The value indicating whether to rollover acknowledgement control number.
- * @member {object}
+ * @property {object}
  * [content.edifact.receiveAgreement.protocolSettings.messageFilter] The
  * EDIFACT message filter.
- * @member {string}
+ * @property {string}
  * [content.edifact.receiveAgreement.protocolSettings.messageFilter.messageFilterType]
  * The message filter type. Possible values include: 'NotSpecified', 'Include',
  * 'Exclude'
- * @member {object}
+ * @property {object}
  * [content.edifact.receiveAgreement.protocolSettings.processingSettings] The
  * EDIFACT processing Settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.processingSettings.maskSecurityInfo]
  * The value indicating whether to mask security information.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.processingSettings.preserveInterchange]
  * The value indicating whether to preserve interchange.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.processingSettings.suspendInterchangeOnError]
  * The value indicating whether to suspend interchange on error.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.processingSettings.createEmptyXmlTagsForTrailingSeparators]
  * The value indicating whether to create empty xml tags for trailing
  * separators.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.receiveAgreement.protocolSettings.processingSettings.useDotAsDecimalSeparator]
  * The value indicating whether to use dot as decimal separator.
- * @member {array}
+ * @property {array}
  * [content.edifact.receiveAgreement.protocolSettings.envelopeOverrides] The
  * EDIFACT envelope override settings.
- * @member {array}
+ * @property {array}
  * [content.edifact.receiveAgreement.protocolSettings.messageFilterList] The
  * EDIFACT message filter list.
- * @member {array}
+ * @property {array}
  * [content.edifact.receiveAgreement.protocolSettings.schemaReferences] The
  * EDIFACT schema references.
- * @member {array}
+ * @property {array}
  * [content.edifact.receiveAgreement.protocolSettings.validationOverrides] The
  * EDIFACT validation override settings.
- * @member {array}
+ * @property {array}
  * [content.edifact.receiveAgreement.protocolSettings.edifactDelimiterOverrides]
  * The EDIFACT delimiter override settings.
- * @member {object} [content.edifact.sendAgreement] The EDIFACT one-way send
+ * @property {object} [content.edifact.sendAgreement] The EDIFACT one-way send
  * agreement.
- * @member {object} [content.edifact.sendAgreement.senderBusinessIdentity] The
- * sender business identity
- * @member {string}
+ * @property {object} [content.edifact.sendAgreement.senderBusinessIdentity]
+ * The sender business identity
+ * @property {string}
  * [content.edifact.sendAgreement.senderBusinessIdentity.qualifier] The
  * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.senderBusinessIdentity.value] The user
  * defined business identity value.
- * @member {object} [content.edifact.sendAgreement.receiverBusinessIdentity]
+ * @property {object} [content.edifact.sendAgreement.receiverBusinessIdentity]
  * The receiver business identity
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.receiverBusinessIdentity.qualifier] The
  * business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.receiverBusinessIdentity.value] The user
  * defined business identity value.
- * @member {object} [content.edifact.sendAgreement.protocolSettings] The
+ * @property {object} [content.edifact.sendAgreement.protocolSettings] The
  * EDIFACT protocol settings.
- * @member {object}
+ * @property {object}
  * [content.edifact.sendAgreement.protocolSettings.validationSettings] The
  * EDIFACT validation settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.validationSettings.validateCharacterSet]
  * The value indicating whether to validate character set in the message.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.validationSettings.checkDuplicateInterchangeControlNumber]
  * The value indicating whether to check for duplicate interchange control
  * number.
- * @member {number}
+ * @property {number}
  * [content.edifact.sendAgreement.protocolSettings.validationSettings.interchangeControlNumberValidityDays]
  * The validity period of interchange control number.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.validationSettings.checkDuplicateGroupControlNumber]
  * The value indicating whether to check for duplicate group control number.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.validationSettings.checkDuplicateTransactionSetControlNumber]
  * The value indicating whether to check for duplicate transaction set control
  * number.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.validationSettings.validateEdiTypes]
  * The value indicating whether to Whether to validate EDI types.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.validationSettings.validateXsdTypes]
  * The value indicating whether to Whether to validate XSD types.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.validationSettings.allowLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to allow leading and trailing spaces and
  * zeroes.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.validationSettings.trimLeadingAndTrailingSpacesAndZeroes]
  * The value indicating whether to trim leading and trailing spaces and zeroes.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.validationSettings.trailingSeparatorPolicy]
  * The trailing separator policy. Possible values include: 'NotSpecified',
  * 'NotAllowed', 'Optional', 'Mandatory'
- * @member {object}
+ * @property {object}
  * [content.edifact.sendAgreement.protocolSettings.framingSettings] The EDIFACT
  * framing settings.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.framingSettings.serviceCodeListDirectoryVersion]
  * The service code list directory version.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.framingSettings.characterEncoding]
  * The character encoding.
- * @member {number}
+ * @property {number}
  * [content.edifact.sendAgreement.protocolSettings.framingSettings.protocolVersion]
  * The protocol version.
- * @member {number}
+ * @property {number}
  * [content.edifact.sendAgreement.protocolSettings.framingSettings.dataElementSeparator]
  * The data element separator.
- * @member {number}
+ * @property {number}
  * [content.edifact.sendAgreement.protocolSettings.framingSettings.componentSeparator]
  * The component separator.
- * @member {number}
+ * @property {number}
  * [content.edifact.sendAgreement.protocolSettings.framingSettings.segmentTerminator]
  * The segment terminator.
- * @member {number}
+ * @property {number}
  * [content.edifact.sendAgreement.protocolSettings.framingSettings.releaseIndicator]
  * The release indicator.
- * @member {number}
+ * @property {number}
  * [content.edifact.sendAgreement.protocolSettings.framingSettings.repetitionSeparator]
  * The repetition separator.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.framingSettings.characterSet]
  * The EDIFACT frame setting characterSet. Possible values include:
  * 'NotSpecified', 'UNOB', 'UNOA', 'UNOC', 'UNOD', 'UNOE', 'UNOF', 'UNOG',
  * 'UNOH', 'UNOI', 'UNOJ', 'UNOK', 'UNOX', 'UNOY', 'KECA'
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.framingSettings.decimalPointIndicator]
  * The EDIFACT frame setting decimal indicator. Possible values include:
  * 'NotSpecified', 'Comma', 'Decimal'
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.framingSettings.segmentTerminatorSuffix]
  * The EDIFACT frame setting segment terminator suffix. Possible values
  * include: 'NotSpecified', 'None', 'CR', 'LF', 'CRLF'
- * @member {object}
+ * @property {object}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings] The
  * EDIFACT envelope settings.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.groupAssociationAssignedCode]
  * The group association assigned code.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.communicationAgreementId]
  * The communication agreement id.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.applyDelimiterStringAdvice]
  * The value indicating whether to apply delimiter string advice.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.createGroupingSegments]
  * The value indicating whether to create grouping segments.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.enableDefaultGroupHeaders]
  * The value indicating whether to enable default group headers.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.recipientReferencePasswordValue]
  * The recipient reference password value.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.recipientReferencePasswordQualifier]
  * The recipient reference password qualifier.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.applicationReferenceId]
  * The application reference id.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.processingPriorityCode]
  * The processing priority code.
- * @member {number}
+ * @property {number}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.interchangeControlNumberLowerBound]
  * The interchange control number lower bound.
- * @member {number}
+ * @property {number}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.interchangeControlNumberUpperBound]
  * The interchange control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.rolloverInterchangeControlNumber]
  * The value indicating whether to rollover interchange control number.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.interchangeControlNumberPrefix]
  * The interchange control number prefix.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.interchangeControlNumberSuffix]
  * The interchange control number suffix.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.senderReverseRoutingAddress]
  * The sender reverse routing address.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.receiverReverseRoutingAddress]
  * The receiver reverse routing address.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.functionalGroupId]
  * The functional group id.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.groupControllingAgencyCode]
  * The group controlling agency code.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.groupMessageVersion]
  * The group message version.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.groupMessageRelease]
  * The group message release.
- * @member {number}
+ * @property {number}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.groupControlNumberLowerBound]
  * The group control number lower bound.
- * @member {number}
+ * @property {number}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.groupControlNumberUpperBound]
  * The group control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.rolloverGroupControlNumber]
  * The value indicating whether to rollover group control number.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.groupControlNumberPrefix]
  * The group control number prefix.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.groupControlNumberSuffix]
  * The group control number suffix.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.groupApplicationReceiverQualifier]
  * The group application receiver qualifier.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.groupApplicationReceiverId]
  * The group application receiver id.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.groupApplicationSenderQualifier]
  * The group application sender qualifier.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.groupApplicationSenderId]
  * The group application sender id.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.groupApplicationPassword]
  * The group application password.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.overwriteExistingTransactionSetControlNumber]
  * The value indicating whether to overwrite existing transaction set control
  * number.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberPrefix]
  * The transaction set control number prefix.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberSuffix]
  * The transaction set control number suffix.
- * @member {number}
+ * @property {number}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberLowerBound]
  * The transaction set control number lower bound.
- * @member {number}
+ * @property {number}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.transactionSetControlNumberUpperBound]
  * The transaction set control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.rolloverTransactionSetControlNumber]
  * The value indicating whether to rollover transaction set control number.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.isTestInterchange]
  * The value indicating whether the message is a test interchange.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.senderInternalIdentification]
  * The sender internal identification.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.senderInternalSubIdentification]
  * The sender internal sub identification.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.receiverInternalIdentification]
  * The receiver internal identification.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.envelopeSettings.receiverInternalSubIdentification]
  * The receiver internal sub identification.
- * @member {object}
+ * @property {object}
  * [content.edifact.sendAgreement.protocolSettings.acknowledgementSettings] The
  * EDIFACT acknowledgement settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.acknowledgementSettings.needTechnicalAcknowledgement]
  * The value indicating whether technical acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.acknowledgementSettings.batchTechnicalAcknowledgements]
  * The value indicating whether to batch the technical acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.acknowledgementSettings.needFunctionalAcknowledgement]
  * The value indicating whether functional acknowledgement is needed.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.acknowledgementSettings.batchFunctionalAcknowledgements]
  * The value indicating whether to batch functional acknowledgements.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.acknowledgementSettings.needLoopForValidMessages]
  * The value indicating whether a loop is needed for valid messages.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.acknowledgementSettings.sendSynchronousAcknowledgement]
  * The value indicating whether to send synchronous acknowledgement.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberPrefix]
  * The acknowledgement control number prefix.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberSuffix]
  * The acknowledgement control number suffix.
- * @member {number}
+ * @property {number}
  * [content.edifact.sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberLowerBound]
  * The acknowledgement control number lower bound.
- * @member {number}
+ * @property {number}
  * [content.edifact.sendAgreement.protocolSettings.acknowledgementSettings.acknowledgementControlNumberUpperBound]
  * The acknowledgement control number upper bound.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.acknowledgementSettings.rolloverAcknowledgementControlNumber]
  * The value indicating whether to rollover acknowledgement control number.
- * @member {object}
+ * @property {object}
  * [content.edifact.sendAgreement.protocolSettings.messageFilter] The EDIFACT
  * message filter.
- * @member {string}
+ * @property {string}
  * [content.edifact.sendAgreement.protocolSettings.messageFilter.messageFilterType]
  * The message filter type. Possible values include: 'NotSpecified', 'Include',
  * 'Exclude'
- * @member {object}
+ * @property {object}
  * [content.edifact.sendAgreement.protocolSettings.processingSettings] The
  * EDIFACT processing Settings.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.processingSettings.maskSecurityInfo]
  * The value indicating whether to mask security information.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.processingSettings.preserveInterchange]
  * The value indicating whether to preserve interchange.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.processingSettings.suspendInterchangeOnError]
  * The value indicating whether to suspend interchange on error.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.processingSettings.createEmptyXmlTagsForTrailingSeparators]
  * The value indicating whether to create empty xml tags for trailing
  * separators.
- * @member {boolean}
+ * @property {boolean}
  * [content.edifact.sendAgreement.protocolSettings.processingSettings.useDotAsDecimalSeparator]
  * The value indicating whether to use dot as decimal separator.
- * @member {array}
+ * @property {array}
  * [content.edifact.sendAgreement.protocolSettings.envelopeOverrides] The
  * EDIFACT envelope override settings.
- * @member {array}
+ * @property {array}
  * [content.edifact.sendAgreement.protocolSettings.messageFilterList] The
  * EDIFACT message filter list.
- * @member {array}
+ * @property {array}
  * [content.edifact.sendAgreement.protocolSettings.schemaReferences] The
  * EDIFACT schema references.
- * @member {array}
+ * @property {array}
  * [content.edifact.sendAgreement.protocolSettings.validationOverrides] The
  * EDIFACT validation override settings.
- * @member {array}
+ * @property {array}
  * [content.edifact.sendAgreement.protocolSettings.edifactDelimiterOverrides]
  * The EDIFACT delimiter override settings.
  */
@@ -7742,7 +7808,7 @@ export interface IntegrationAccountAgreement extends Resource {
  * @constructor
  * The integration account agreement filter for odata query.
  *
- * @member {string} agreementType The agreement type of integration account
+ * @property {string} agreementType The agreement type of integration account
  * agreement. Possible values include: 'NotSpecified', 'AS2', 'X12', 'Edifact'
  */
 export interface IntegrationAccountAgreementFilter {
@@ -7755,9 +7821,9 @@ export interface IntegrationAccountAgreementFilter {
  * @constructor
  * The key vault reference.
  *
- * @member {string} [id] The resource id.
- * @member {string} [name] The resource name.
- * @member {string} [type] The resource type.
+ * @property {string} [id] The resource id.
+ * @property {string} [name] The resource name.
+ * @property {string} [type] The resource type.
  */
 export interface KeyVaultKeyReferenceKeyVault {
   id?: string;
@@ -7771,12 +7837,12 @@ export interface KeyVaultKeyReferenceKeyVault {
  * @constructor
  * The reference to the key vault key.
  *
- * @member {object} keyVault The key vault reference.
- * @member {string} [keyVault.id] The resource id.
- * @member {string} [keyVault.name] The resource name.
- * @member {string} [keyVault.type] The resource type.
- * @member {string} keyName The private key name in key vault.
- * @member {string} [keyVersion] The private key version in key vault.
+ * @property {object} keyVault The key vault reference.
+ * @property {string} [keyVault.id] The resource id.
+ * @property {string} [keyVault.name] The resource name.
+ * @property {string} [keyVault.type] The resource type.
+ * @property {string} keyName The private key name in key vault.
+ * @property {string} [keyVersion] The private key version in key vault.
  */
 export interface KeyVaultKeyReference {
   keyVault: KeyVaultKeyReferenceKeyVault;
@@ -7790,17 +7856,17 @@ export interface KeyVaultKeyReference {
  * @constructor
  * The integration account certificate.
  *
- * @member {date} [createdTime] The created time.
- * @member {date} [changedTime] The changed time.
- * @member {object} [metadata] The metadata.
- * @member {object} [key] The key details in the key vault.
- * @member {object} [key.keyVault] The key vault reference.
- * @member {string} [key.keyVault.id] The resource id.
- * @member {string} [key.keyVault.name] The resource name.
- * @member {string} [key.keyVault.type] The resource type.
- * @member {string} [key.keyName] The private key name in key vault.
- * @member {string} [key.keyVersion] The private key version in key vault.
- * @member {string} [publicCertificate] The public certificate.
+ * @property {date} [createdTime] The created time.
+ * @property {date} [changedTime] The changed time.
+ * @property {object} [metadata] The metadata.
+ * @property {object} [key] The key details in the key vault.
+ * @property {object} [key.keyVault] The key vault reference.
+ * @property {string} [key.keyVault.id] The resource id.
+ * @property {string} [key.keyVault.name] The resource name.
+ * @property {string} [key.keyVault.type] The resource type.
+ * @property {string} [key.keyName] The private key name in key vault.
+ * @property {string} [key.keyVersion] The private key version in key vault.
+ * @property {string} [publicCertificate] The public certificate.
  */
 export interface IntegrationAccountCertificate extends Resource {
   readonly createdTime?: Date;
@@ -7816,7 +7882,8 @@ export interface IntegrationAccountCertificate extends Resource {
  * @constructor
  * The integration account session filter.
  *
- * @member {date} changedTime The changed time of integration account sessions.
+ * @property {date} changedTime The changed time of integration account
+ * sessions.
  */
 export interface IntegrationAccountSessionFilter {
   changedTime: Date;
@@ -7828,9 +7895,9 @@ export interface IntegrationAccountSessionFilter {
  * @constructor
  * The integration account session.
  *
- * @member {date} [createdTime] The created time.
- * @member {date} [changedTime] The changed time.
- * @member {object} [content] The session content.
+ * @property {date} [createdTime] The created time.
+ * @property {date} [changedTime] The changed time.
+ * @property {object} [content] The session content.
  */
 export interface IntegrationAccountSession extends Resource {
   readonly createdTime?: Date;
@@ -7844,10 +7911,10 @@ export interface IntegrationAccountSession extends Resource {
  * @constructor
  * The object that represents the operation.
  *
- * @member {string} [provider] Service provider: Microsoft.Logic
- * @member {string} [resource] Resource on which the operation is performed:
+ * @property {string} [provider] Service provider: Microsoft.Logic
+ * @property {string} [resource] Resource on which the operation is performed:
  * Profile, endpoint, etc.
- * @member {string} [operation] Operation type: Read, write, delete, etc.
+ * @property {string} [operation] Operation type: Read, write, delete, etc.
  */
 export interface OperationDisplay {
   provider?: string;
@@ -7861,12 +7928,12 @@ export interface OperationDisplay {
  * @constructor
  * Logic REST API operation
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Service provider: Microsoft.Logic
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] The object that represents the operation.
+ * @property {string} [display.provider] Service provider: Microsoft.Logic
+ * @property {string} [display.resource] Resource on which the operation is
  * performed: Profile, endpoint, etc.
- * @member {string} [display.operation] Operation type: Read, write, delete,
+ * @property {string} [display.operation] Operation type: Read, write, delete,
  * etc.
  */
 export interface Operation {
@@ -7890,8 +7957,8 @@ export interface KeyVaultReference extends ResourceReference {
  * @constructor
  * The list key vault keys definition.
  *
- * @member {object} keyVault The key vault reference.
- * @member {string} [skipToken] The skip token.
+ * @property {object} keyVault The key vault reference.
+ * @property {string} [skipToken] The skip token.
  */
 export interface ListKeyVaultKeysDefinition {
   keyVault: KeyVaultReference;
@@ -7904,9 +7971,9 @@ export interface ListKeyVaultKeysDefinition {
  * @constructor
  * The key attributes.
  *
- * @member {boolean} [enabled] Whether the key is enabled or not.
- * @member {number} [created] When the key was created.
- * @member {number} [updated] When the key was updated.
+ * @property {boolean} [enabled] Whether the key is enabled or not.
+ * @property {number} [created] When the key was created.
+ * @property {number} [updated] When the key was updated.
  */
 export interface KeyVaultKeyAttributes {
   enabled?: boolean;
@@ -7920,11 +7987,11 @@ export interface KeyVaultKeyAttributes {
  * @constructor
  * The key vault key.
  *
- * @member {string} [kid] The key id.
- * @member {object} [attributes] The key attributes.
- * @member {boolean} [attributes.enabled] Whether the key is enabled or not.
- * @member {number} [attributes.created] When the key was created.
- * @member {number} [attributes.updated] When the key was updated.
+ * @property {string} [kid] The key id.
+ * @property {object} [attributes] The key attributes.
+ * @property {boolean} [attributes.enabled] Whether the key is enabled or not.
+ * @property {number} [attributes.created] When the key was created.
+ * @property {number} [attributes.updated] When the key was updated.
  */
 export interface KeyVaultKey {
   kid?: string;
@@ -7935,8 +8002,8 @@ export interface KeyVaultKey {
  * @class
  * Initializes a new instance of the TrackingEventErrorInfo class.
  * @constructor
- * @member {string} [message]
- * @member {string} [code]
+ * @property {string} [message]
+ * @property {string} [code]
  */
 export interface TrackingEventErrorInfo {
   message?: string;
@@ -7947,19 +8014,19 @@ export interface TrackingEventErrorInfo {
  * @class
  * Initializes a new instance of the TrackingEvent class.
  * @constructor
- * @member {string} eventLevel Possible values include: 'LogAlways',
+ * @property {string} eventLevel Possible values include: 'LogAlways',
  * 'Critical', 'Error', 'Warning', 'Informational', 'Verbose'
- * @member {date} eventTime
- * @member {string} recordType Possible values include: 'NotSpecified',
+ * @property {date} eventTime
+ * @property {string} recordType Possible values include: 'NotSpecified',
  * 'Custom', 'AS2Message', 'AS2MDN', 'X12Interchange', 'X12FunctionalGroup',
  * 'X12TransactionSet', 'X12InterchangeAcknowledgment',
  * 'X12FunctionalGroupAcknowledgment', 'X12TransactionSetAcknowledgment',
  * 'EdifactInterchange', 'EdifactFunctionalGroup', 'EdifactTransactionSet',
  * 'EdifactInterchangeAcknowledgment', 'EdifactFunctionalGroupAcknowledgment',
  * 'EdifactTransactionSetAcknowledgment'
- * @member {object} [error]
- * @member {string} [error.message]
- * @member {string} [error.code]
+ * @property {object} [error]
+ * @property {string} [error.message]
+ * @property {string} [error.code]
  */
 export interface TrackingEvent {
   eventLevel: string;
@@ -7972,10 +8039,10 @@ export interface TrackingEvent {
  * @class
  * Initializes a new instance of the TrackingEventsDefinition class.
  * @constructor
- * @member {string} sourceType
- * @member {string} [trackEventsOptions] Possible values include: 'None',
+ * @property {string} sourceType
+ * @property {string} [trackEventsOptions] Possible values include: 'None',
  * 'DisableSourceInfoEnrich'
- * @member {array} events
+ * @property {array} events
  */
 export interface TrackingEventsDefinition {
   sourceType: string;
@@ -7987,43 +8054,44 @@ export interface TrackingEventsDefinition {
  * @class
  * Initializes a new instance of the SetTriggerStateActionDefinition class.
  * @constructor
- * @member {object} source
- * @member {string} [source.provisioningState] Gets the provisioning state.
+ * @property {object} source
+ * @property {string} [source.provisioningState] Gets the provisioning state.
  * Possible values include: 'NotSpecified', 'Accepted', 'Running', 'Ready',
  * 'Creating', 'Created', 'Deleting', 'Deleted', 'Canceled', 'Failed',
  * 'Succeeded', 'Moving', 'Updating', 'Registering', 'Registered',
  * 'Unregistering', 'Unregistered', 'Completed'
- * @member {date} [source.createdTime] Gets the created time.
- * @member {date} [source.changedTime] Gets the changed time.
- * @member {string} [source.state] Gets the state. Possible values include:
+ * @property {date} [source.createdTime] Gets the created time.
+ * @property {date} [source.changedTime] Gets the changed time.
+ * @property {string} [source.state] Gets the state. Possible values include:
  * 'NotSpecified', 'Completed', 'Enabled', 'Disabled', 'Deleted', 'Suspended'
- * @member {string} [source.status] Gets the status. Possible values include:
+ * @property {string} [source.status] Gets the status. Possible values include:
  * 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded', 'Skipped',
  * 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut', 'Aborted',
  * 'Ignored'
- * @member {date} [source.lastExecutionTime] Gets the last execution time.
- * @member {date} [source.nextExecutionTime] Gets the next execution time.
- * @member {object} [source.recurrence] Gets the workflow trigger recurrence.
- * @member {string} [source.recurrence.frequency] The frequency. Possible
+ * @property {date} [source.lastExecutionTime] Gets the last execution time.
+ * @property {date} [source.nextExecutionTime] Gets the next execution time.
+ * @property {object} [source.recurrence] Gets the workflow trigger recurrence.
+ * @property {string} [source.recurrence.frequency] The frequency. Possible
  * values include: 'NotSpecified', 'Second', 'Minute', 'Hour', 'Day', 'Week',
  * 'Month', 'Year'
- * @member {number} [source.recurrence.interval] The interval.
- * @member {string} [source.recurrence.startTime] The start time.
- * @member {string} [source.recurrence.endTime] The end time.
- * @member {string} [source.recurrence.timeZone] The time zone.
- * @member {object} [source.recurrence.schedule] The recurrence schedule.
- * @member {array} [source.recurrence.schedule.minutes] The minutes.
- * @member {array} [source.recurrence.schedule.hours] The hours.
- * @member {array} [source.recurrence.schedule.weekDays] The days of the week.
- * @member {array} [source.recurrence.schedule.monthDays] The month days.
- * @member {array} [source.recurrence.schedule.monthlyOccurrences] The monthly
- * occurrences.
- * @member {object} [source.workflow] Gets the reference to workflow.
- * @member {string} [source.workflow.id] The resource id.
- * @member {string} [source.workflow.name] Gets the resource name.
- * @member {string} [source.workflow.type] Gets the resource type.
- * @member {string} [source.name] Gets the workflow trigger name.
- * @member {string} [source.type] Gets the workflow trigger type.
+ * @property {number} [source.recurrence.interval] The interval.
+ * @property {string} [source.recurrence.startTime] The start time.
+ * @property {string} [source.recurrence.endTime] The end time.
+ * @property {string} [source.recurrence.timeZone] The time zone.
+ * @property {object} [source.recurrence.schedule] The recurrence schedule.
+ * @property {array} [source.recurrence.schedule.minutes] The minutes.
+ * @property {array} [source.recurrence.schedule.hours] The hours.
+ * @property {array} [source.recurrence.schedule.weekDays] The days of the
+ * week.
+ * @property {array} [source.recurrence.schedule.monthDays] The month days.
+ * @property {array} [source.recurrence.schedule.monthlyOccurrences] The
+ * monthly occurrences.
+ * @property {object} [source.workflow] Gets the reference to workflow.
+ * @property {string} [source.workflow.id] The resource id.
+ * @property {string} [source.workflow.name] Gets the resource name.
+ * @property {string} [source.workflow.type] Gets the resource type.
+ * @property {string} [source.name] Gets the workflow trigger name.
+ * @property {string} [source.type] Gets the workflow trigger type.
  */
 export interface SetTriggerStateActionDefinition {
   source: WorkflowTrigger;
@@ -8033,12 +8101,12 @@ export interface SetTriggerStateActionDefinition {
  * @class
  * Initializes a new instance of the Expression class.
  * @constructor
- * @member {string} [text]
- * @member {object} [value]
- * @member {array} [subexpressions]
- * @member {object} [error]
- * @member {string} [error.message] The error message.
- * @member {array} [error.details] The error details.
+ * @property {string} [text]
+ * @property {object} [value]
+ * @property {array} [subexpressions]
+ * @property {object} [error]
+ * @property {string} [error.message] The error message.
+ * @property {array} [error.details] The error details.
  */
 export interface Expression {
   text?: string;
@@ -8051,7 +8119,7 @@ export interface Expression {
  * @class
  * Initializes a new instance of the ExpressionRoot class.
  * @constructor
- * @member {string} [path] The path.
+ * @property {string} [path] The path.
  */
 export interface ExpressionRoot extends Expression {
   path?: string;
@@ -8063,7 +8131,7 @@ export interface ExpressionRoot extends Expression {
  * @constructor
  * The error info.
  *
- * @member {string} code The error code.
+ * @property {string} code The error code.
  */
 export interface ErrorInfo {
   code: string;
@@ -8075,8 +8143,8 @@ export interface ErrorInfo {
  * @constructor
  * The azure resource error info.
  *
- * @member {string} message The error message.
- * @member {array} [details] The error details.
+ * @property {string} message The error message.
+ * @property {array} [details] The error details.
  */
 export interface AzureResourceErrorInfo extends ErrorInfo {
   message: string;
@@ -8089,8 +8157,8 @@ export interface AzureResourceErrorInfo extends ErrorInfo {
  * @constructor
  * The workflow run action repetition index.
  *
- * @member {string} [scopeName] The scope.
- * @member {number} itemIndex The index.
+ * @property {string} [scopeName] The scope.
+ * @property {number} itemIndex The index.
  */
 export interface RepetitionIndex {
   scopeName?: string;
@@ -8103,44 +8171,45 @@ export interface RepetitionIndex {
  * @constructor
  * The workflow run action repetition definition.
  *
- * @member {date} [startTime] The start time of the workflow scope repetition.
- * @member {date} [endTime] The end time of the workflow scope repetition.
- * @member {object} [correlation] The correlation properties.
- * @member {string} [correlation.actionTrackingId] The action tracking
+ * @property {date} [startTime] The start time of the workflow scope
+ * repetition.
+ * @property {date} [endTime] The end time of the workflow scope repetition.
+ * @property {object} [correlation] The correlation properties.
+ * @property {string} [correlation.actionTrackingId] The action tracking
  * identifier.
- * @member {string} [status] The status of the workflow scope repetition.
+ * @property {string} [status] The status of the workflow scope repetition.
  * Possible values include: 'NotSpecified', 'Paused', 'Running', 'Waiting',
  * 'Succeeded', 'Skipped', 'Suspended', 'Cancelled', 'Failed', 'Faulted',
  * 'TimedOut', 'Aborted', 'Ignored'
- * @member {string} [code] The workflow scope repetition code.
- * @member {object} [error]
- * @member {string} [trackingId] Gets the tracking id.
- * @member {object} [inputs] Gets the inputs.
- * @member {object} [inputsLink] Gets the link to inputs.
- * @member {string} [inputsLink.uri] The content link URI.
- * @member {string} [inputsLink.contentVersion] The content version.
- * @member {number} [inputsLink.contentSize] The content size.
- * @member {object} [inputsLink.contentHash] The content hash.
- * @member {string} [inputsLink.contentHash.algorithm] The algorithm of the
+ * @property {string} [code] The workflow scope repetition code.
+ * @property {object} [error]
+ * @property {string} [trackingId] Gets the tracking id.
+ * @property {object} [inputs] Gets the inputs.
+ * @property {object} [inputsLink] Gets the link to inputs.
+ * @property {string} [inputsLink.uri] The content link URI.
+ * @property {string} [inputsLink.contentVersion] The content version.
+ * @property {number} [inputsLink.contentSize] The content size.
+ * @property {object} [inputsLink.contentHash] The content hash.
+ * @property {string} [inputsLink.contentHash.algorithm] The algorithm of the
  * content hash.
- * @member {string} [inputsLink.contentHash.value] The value of the content
+ * @property {string} [inputsLink.contentHash.value] The value of the content
  * hash.
- * @member {object} [inputsLink.metadata] The metadata.
- * @member {object} [outputs] Gets the outputs.
- * @member {object} [outputsLink] Gets the link to outputs.
- * @member {string} [outputsLink.uri] The content link URI.
- * @member {string} [outputsLink.contentVersion] The content version.
- * @member {number} [outputsLink.contentSize] The content size.
- * @member {object} [outputsLink.contentHash] The content hash.
- * @member {string} [outputsLink.contentHash.algorithm] The algorithm of the
+ * @property {object} [inputsLink.metadata] The metadata.
+ * @property {object} [outputs] Gets the outputs.
+ * @property {object} [outputsLink] Gets the link to outputs.
+ * @property {string} [outputsLink.uri] The content link URI.
+ * @property {string} [outputsLink.contentVersion] The content version.
+ * @property {number} [outputsLink.contentSize] The content size.
+ * @property {object} [outputsLink.contentHash] The content hash.
+ * @property {string} [outputsLink.contentHash.algorithm] The algorithm of the
  * content hash.
- * @member {string} [outputsLink.contentHash.value] The value of the content
+ * @property {string} [outputsLink.contentHash.value] The value of the content
  * hash.
- * @member {object} [outputsLink.metadata] The metadata.
- * @member {object} [trackedProperties] Gets the tracked properties.
- * @member {array} [retryHistory] Gets the retry histories.
- * @member {number} [iterationCount]
- * @member {array} [repetitionIndexes] The repetition indexes.
+ * @property {object} [outputsLink.metadata] The metadata.
+ * @property {object} [trackedProperties] Gets the tracked properties.
+ * @property {array} [retryHistory] Gets the retry histories.
+ * @property {number} [iterationCount]
+ * @property {array} [repetitionIndexes] The repetition indexes.
  */
 export interface WorkflowRunActionRepetitionDefinition extends Resource {
   startTime?: Date;
@@ -8166,17 +8235,18 @@ export interface WorkflowRunActionRepetitionDefinition extends Resource {
  * @constructor
  * The run operation result properties.
  *
- * @member {date} [startTime] The start time of the workflow scope repetition.
- * @member {date} [endTime] The end time of the workflow scope repetition.
- * @member {object} [correlation] The correlation properties.
- * @member {string} [correlation.actionTrackingId] The action tracking
+ * @property {date} [startTime] The start time of the workflow scope
+ * repetition.
+ * @property {date} [endTime] The end time of the workflow scope repetition.
+ * @property {object} [correlation] The correlation properties.
+ * @property {string} [correlation.actionTrackingId] The action tracking
  * identifier.
- * @member {string} [status] The status of the workflow scope repetition.
+ * @property {string} [status] The status of the workflow scope repetition.
  * Possible values include: 'NotSpecified', 'Paused', 'Running', 'Waiting',
  * 'Succeeded', 'Skipped', 'Suspended', 'Cancelled', 'Failed', 'Faulted',
  * 'TimedOut', 'Aborted', 'Ignored'
- * @member {string} [code] The workflow scope repetition code.
- * @member {object} [error]
+ * @property {string} [code] The workflow scope repetition code.
+ * @property {object} [error]
  */
 export interface OperationResultProperties {
   startTime?: Date;
@@ -8193,32 +8263,32 @@ export interface OperationResultProperties {
  * @constructor
  * The operation result definition.
  *
- * @member {string} [trackingId] Gets the tracking id.
- * @member {object} [inputs] Gets the inputs.
- * @member {object} [inputsLink] Gets the link to inputs.
- * @member {string} [inputsLink.uri] The content link URI.
- * @member {string} [inputsLink.contentVersion] The content version.
- * @member {number} [inputsLink.contentSize] The content size.
- * @member {object} [inputsLink.contentHash] The content hash.
- * @member {string} [inputsLink.contentHash.algorithm] The algorithm of the
+ * @property {string} [trackingId] Gets the tracking id.
+ * @property {object} [inputs] Gets the inputs.
+ * @property {object} [inputsLink] Gets the link to inputs.
+ * @property {string} [inputsLink.uri] The content link URI.
+ * @property {string} [inputsLink.contentVersion] The content version.
+ * @property {number} [inputsLink.contentSize] The content size.
+ * @property {object} [inputsLink.contentHash] The content hash.
+ * @property {string} [inputsLink.contentHash.algorithm] The algorithm of the
  * content hash.
- * @member {string} [inputsLink.contentHash.value] The value of the content
+ * @property {string} [inputsLink.contentHash.value] The value of the content
  * hash.
- * @member {object} [inputsLink.metadata] The metadata.
- * @member {object} [outputs] Gets the outputs.
- * @member {object} [outputsLink] Gets the link to outputs.
- * @member {string} [outputsLink.uri] The content link URI.
- * @member {string} [outputsLink.contentVersion] The content version.
- * @member {number} [outputsLink.contentSize] The content size.
- * @member {object} [outputsLink.contentHash] The content hash.
- * @member {string} [outputsLink.contentHash.algorithm] The algorithm of the
+ * @property {object} [inputsLink.metadata] The metadata.
+ * @property {object} [outputs] Gets the outputs.
+ * @property {object} [outputsLink] Gets the link to outputs.
+ * @property {string} [outputsLink.uri] The content link URI.
+ * @property {string} [outputsLink.contentVersion] The content version.
+ * @property {number} [outputsLink.contentSize] The content size.
+ * @property {object} [outputsLink.contentHash] The content hash.
+ * @property {string} [outputsLink.contentHash.algorithm] The algorithm of the
  * content hash.
- * @member {string} [outputsLink.contentHash.value] The value of the content
+ * @property {string} [outputsLink.contentHash.value] The value of the content
  * hash.
- * @member {object} [outputsLink.metadata] The metadata.
- * @member {object} [trackedProperties] Gets the tracked properties.
- * @member {array} [retryHistory] Gets the retry histories.
- * @member {number} [iterationCount]
+ * @property {object} [outputsLink.metadata] The metadata.
+ * @property {object} [trackedProperties] Gets the tracked properties.
+ * @property {array} [retryHistory] Gets the retry histories.
+ * @property {number} [iterationCount]
  */
 export interface OperationResult extends OperationResultProperties {
   readonly trackingId?: string;
@@ -8237,8 +8307,8 @@ export interface OperationResult extends OperationResultProperties {
  * @constructor
  * The correlation properties.
  *
- * @member {string} [clientTrackingId] The client tracking identifier.
- * @member {array} [clientKeywords] The client keywords.
+ * @property {string} [clientTrackingId] The client tracking identifier.
+ * @property {array} [clientKeywords] The client keywords.
  */
 export interface RunCorrelation {
   clientTrackingId?: string;
@@ -8251,7 +8321,7 @@ export interface RunCorrelation {
  * @constructor
  * The workflow run action correlation properties.
  *
- * @member {string} [actionTrackingId] The action tracking identifier.
+ * @property {string} [actionTrackingId] The action tracking identifier.
  */
 export interface RunActionCorrelation extends RunCorrelation {
   actionTrackingId?: string;
@@ -8263,8 +8333,8 @@ export interface RunActionCorrelation extends RunCorrelation {
  * @constructor
  * The JSON schema.
  *
- * @member {string} [title] The JSON title.
- * @member {string} [content] The JSON content.
+ * @property {string} [title] The JSON title.
+ * @property {string} [content] The JSON content.
  */
 export interface JsonSchema {
   title?: string;
@@ -8277,9 +8347,9 @@ export interface JsonSchema {
  * @constructor
  * The artifact properties definition.
  *
- * @member {date} [createdTime] The artifact creation time.
- * @member {date} [changedTime] The artifact changed time.
- * @member {object} [metadata]
+ * @property {date} [createdTime] The artifact creation time.
+ * @property {date} [changedTime] The artifact changed time.
+ * @property {object} [metadata]
  */
 export interface ArtifactProperties {
   createdTime?: Date;
@@ -8293,18 +8363,18 @@ export interface ArtifactProperties {
  * @constructor
  * The artifact content properties definition.
  *
- * @member {object} [content]
- * @member {string} [contentType] The content type.
- * @member {object} [contentLink] The content link.
- * @member {string} [contentLink.uri] The content link URI.
- * @member {string} [contentLink.contentVersion] The content version.
- * @member {number} [contentLink.contentSize] The content size.
- * @member {object} [contentLink.contentHash] The content hash.
- * @member {string} [contentLink.contentHash.algorithm] The algorithm of the
+ * @property {object} [content]
+ * @property {string} [contentType] The content type.
+ * @property {object} [contentLink] The content link.
+ * @property {string} [contentLink.uri] The content link URI.
+ * @property {string} [contentLink.contentVersion] The content version.
+ * @property {number} [contentLink.contentSize] The content size.
+ * @property {object} [contentLink.contentHash] The content hash.
+ * @property {string} [contentLink.contentHash.algorithm] The algorithm of the
  * content hash.
- * @member {string} [contentLink.contentHash.value] The value of the content
+ * @property {string} [contentLink.contentHash.value] The value of the content
  * hash.
- * @member {object} [contentLink.metadata] The metadata.
+ * @property {object} [contentLink.metadata] The metadata.
  */
 export interface ArtifactContentPropertiesDefinition extends ArtifactProperties {
   content?: any;
@@ -8318,10 +8388,10 @@ export interface ArtifactContentPropertiesDefinition extends ArtifactProperties 
  * @constructor
  * The assembly properties definition.
  *
- * @member {string} assemblyName The assembly name.
- * @member {string} [assemblyVersion] The assembly version.
- * @member {string} [assemblyCulture] The assembly culture.
- * @member {string} [assemblyPublicKeyToken] The assembly public key token.
+ * @property {string} assemblyName The assembly name.
+ * @property {string} [assemblyVersion] The assembly version.
+ * @property {string} [assemblyCulture] The assembly culture.
+ * @property {string} [assemblyPublicKeyToken] The assembly public key token.
  */
 export interface AssemblyProperties extends ArtifactContentPropertiesDefinition {
   assemblyName: string;
@@ -8336,12 +8406,12 @@ export interface AssemblyProperties extends ArtifactContentPropertiesDefinition 
  * @constructor
  * The assembly definition.
  *
- * @member {object} properties The assembly properties.
- * @member {string} [properties.assemblyName] The assembly name.
- * @member {string} [properties.assemblyVersion] The assembly version.
- * @member {string} [properties.assemblyCulture] The assembly culture.
- * @member {string} [properties.assemblyPublicKeyToken] The assembly public key
- * token.
+ * @property {object} properties The assembly properties.
+ * @property {string} [properties.assemblyName] The assembly name.
+ * @property {string} [properties.assemblyVersion] The assembly version.
+ * @property {string} [properties.assemblyCulture] The assembly culture.
+ * @property {string} [properties.assemblyPublicKeyToken] The assembly public
+ * key token.
  */
 export interface AssemblyDefinition extends Resource {
   properties: AssemblyProperties;
@@ -8353,22 +8423,22 @@ export interface AssemblyDefinition extends Resource {
  * @constructor
  * The batch release criteria.
  *
- * @member {number} [messageCount] The message count.
- * @member {number} [batchSize] The batch size in bytes.
- * @member {object} [recurrence] The recurrence.
- * @member {string} [recurrence.frequency] The frequency. Possible values
+ * @property {number} [messageCount] The message count.
+ * @property {number} [batchSize] The batch size in bytes.
+ * @property {object} [recurrence] The recurrence.
+ * @property {string} [recurrence.frequency] The frequency. Possible values
  * include: 'NotSpecified', 'Second', 'Minute', 'Hour', 'Day', 'Week', 'Month',
  * 'Year'
- * @member {number} [recurrence.interval] The interval.
- * @member {string} [recurrence.startTime] The start time.
- * @member {string} [recurrence.endTime] The end time.
- * @member {string} [recurrence.timeZone] The time zone.
- * @member {object} [recurrence.schedule] The recurrence schedule.
- * @member {array} [recurrence.schedule.minutes] The minutes.
- * @member {array} [recurrence.schedule.hours] The hours.
- * @member {array} [recurrence.schedule.weekDays] The days of the week.
- * @member {array} [recurrence.schedule.monthDays] The month days.
- * @member {array} [recurrence.schedule.monthlyOccurrences] The monthly
+ * @property {number} [recurrence.interval] The interval.
+ * @property {string} [recurrence.startTime] The start time.
+ * @property {string} [recurrence.endTime] The end time.
+ * @property {string} [recurrence.timeZone] The time zone.
+ * @property {object} [recurrence.schedule] The recurrence schedule.
+ * @property {array} [recurrence.schedule.minutes] The minutes.
+ * @property {array} [recurrence.schedule.hours] The hours.
+ * @property {array} [recurrence.schedule.weekDays] The days of the week.
+ * @property {array} [recurrence.schedule.monthDays] The month days.
+ * @property {array} [recurrence.schedule.monthlyOccurrences] The monthly
  * occurrences.
  */
 export interface BatchReleaseCriteria {
@@ -8383,28 +8453,28 @@ export interface BatchReleaseCriteria {
  * @constructor
  * The batch configuration properties definition.
  *
- * @member {string} batchGroupName The name of the batch group.
- * @member {object} releaseCriteria The batch release criteria.
- * @member {number} [releaseCriteria.messageCount] The message count.
- * @member {number} [releaseCriteria.batchSize] The batch size in bytes.
- * @member {object} [releaseCriteria.recurrence] The recurrence.
- * @member {string} [releaseCriteria.recurrence.frequency] The frequency.
+ * @property {string} batchGroupName The name of the batch group.
+ * @property {object} releaseCriteria The batch release criteria.
+ * @property {number} [releaseCriteria.messageCount] The message count.
+ * @property {number} [releaseCriteria.batchSize] The batch size in bytes.
+ * @property {object} [releaseCriteria.recurrence] The recurrence.
+ * @property {string} [releaseCriteria.recurrence.frequency] The frequency.
  * Possible values include: 'NotSpecified', 'Second', 'Minute', 'Hour', 'Day',
  * 'Week', 'Month', 'Year'
- * @member {number} [releaseCriteria.recurrence.interval] The interval.
- * @member {string} [releaseCriteria.recurrence.startTime] The start time.
- * @member {string} [releaseCriteria.recurrence.endTime] The end time.
- * @member {string} [releaseCriteria.recurrence.timeZone] The time zone.
- * @member {object} [releaseCriteria.recurrence.schedule] The recurrence
+ * @property {number} [releaseCriteria.recurrence.interval] The interval.
+ * @property {string} [releaseCriteria.recurrence.startTime] The start time.
+ * @property {string} [releaseCriteria.recurrence.endTime] The end time.
+ * @property {string} [releaseCriteria.recurrence.timeZone] The time zone.
+ * @property {object} [releaseCriteria.recurrence.schedule] The recurrence
  * schedule.
- * @member {array} [releaseCriteria.recurrence.schedule.minutes] The minutes.
- * @member {array} [releaseCriteria.recurrence.schedule.hours] The hours.
- * @member {array} [releaseCriteria.recurrence.schedule.weekDays] The days of
+ * @property {array} [releaseCriteria.recurrence.schedule.minutes] The minutes.
+ * @property {array} [releaseCriteria.recurrence.schedule.hours] The hours.
+ * @property {array} [releaseCriteria.recurrence.schedule.weekDays] The days of
  * the week.
- * @member {array} [releaseCriteria.recurrence.schedule.monthDays] The month
+ * @property {array} [releaseCriteria.recurrence.schedule.monthDays] The month
  * days.
- * @member {array} [releaseCriteria.recurrence.schedule.monthlyOccurrences] The
- * monthly occurrences.
+ * @property {array} [releaseCriteria.recurrence.schedule.monthlyOccurrences]
+ * The monthly occurrences.
  */
 export interface BatchConfigurationProperties extends ArtifactProperties {
   batchGroupName: string;
@@ -8417,36 +8487,36 @@ export interface BatchConfigurationProperties extends ArtifactProperties {
  * @constructor
  * The batch configuration resource definition.
  *
- * @member {object} properties The batch configuration properties.
- * @member {string} [properties.batchGroupName] The name of the batch group.
- * @member {object} [properties.releaseCriteria] The batch release criteria.
- * @member {number} [properties.releaseCriteria.messageCount] The message
+ * @property {object} properties The batch configuration properties.
+ * @property {string} [properties.batchGroupName] The name of the batch group.
+ * @property {object} [properties.releaseCriteria] The batch release criteria.
+ * @property {number} [properties.releaseCriteria.messageCount] The message
  * count.
- * @member {number} [properties.releaseCriteria.batchSize] The batch size in
+ * @property {number} [properties.releaseCriteria.batchSize] The batch size in
  * bytes.
- * @member {object} [properties.releaseCriteria.recurrence] The recurrence.
- * @member {string} [properties.releaseCriteria.recurrence.frequency] The
+ * @property {object} [properties.releaseCriteria.recurrence] The recurrence.
+ * @property {string} [properties.releaseCriteria.recurrence.frequency] The
  * frequency. Possible values include: 'NotSpecified', 'Second', 'Minute',
  * 'Hour', 'Day', 'Week', 'Month', 'Year'
- * @member {number} [properties.releaseCriteria.recurrence.interval] The
+ * @property {number} [properties.releaseCriteria.recurrence.interval] The
  * interval.
- * @member {string} [properties.releaseCriteria.recurrence.startTime] The start
+ * @property {string} [properties.releaseCriteria.recurrence.startTime] The
+ * start time.
+ * @property {string} [properties.releaseCriteria.recurrence.endTime] The end
  * time.
- * @member {string} [properties.releaseCriteria.recurrence.endTime] The end
- * time.
- * @member {string} [properties.releaseCriteria.recurrence.timeZone] The time
+ * @property {string} [properties.releaseCriteria.recurrence.timeZone] The time
  * zone.
- * @member {object} [properties.releaseCriteria.recurrence.schedule] The
+ * @property {object} [properties.releaseCriteria.recurrence.schedule] The
  * recurrence schedule.
- * @member {array} [properties.releaseCriteria.recurrence.schedule.minutes] The
- * minutes.
- * @member {array} [properties.releaseCriteria.recurrence.schedule.hours] The
+ * @property {array} [properties.releaseCriteria.recurrence.schedule.minutes]
+ * The minutes.
+ * @property {array} [properties.releaseCriteria.recurrence.schedule.hours] The
  * hours.
- * @member {array} [properties.releaseCriteria.recurrence.schedule.weekDays]
+ * @property {array} [properties.releaseCriteria.recurrence.schedule.weekDays]
  * The days of the week.
- * @member {array} [properties.releaseCriteria.recurrence.schedule.monthDays]
+ * @property {array} [properties.releaseCriteria.recurrence.schedule.monthDays]
  * The month days.
- * @member {array}
+ * @property {array}
  * [properties.releaseCriteria.recurrence.schedule.monthlyOccurrences] The
  * monthly occurrences.
  */
@@ -8461,7 +8531,7 @@ export interface BatchConfiguration extends Resource {
  * @constructor
  * The list of workflows.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface WorkflowListResult extends Array<Workflow> {
   nextLink?: string;
@@ -8473,7 +8543,7 @@ export interface WorkflowListResult extends Array<Workflow> {
  * @constructor
  * The list of workflow versions.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface WorkflowVersionListResult extends Array<WorkflowVersion> {
   nextLink?: string;
@@ -8485,7 +8555,7 @@ export interface WorkflowVersionListResult extends Array<WorkflowVersion> {
  * @constructor
  * The list of workflow triggers.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface WorkflowTriggerListResult extends Array<WorkflowTrigger> {
   nextLink?: string;
@@ -8497,7 +8567,7 @@ export interface WorkflowTriggerListResult extends Array<WorkflowTrigger> {
  * @constructor
  * The list of workflow trigger histories.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface WorkflowTriggerHistoryListResult extends Array<WorkflowTriggerHistory> {
   nextLink?: string;
@@ -8509,7 +8579,7 @@ export interface WorkflowTriggerHistoryListResult extends Array<WorkflowTriggerH
  * @constructor
  * The list of workflow runs.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface WorkflowRunListResult extends Array<WorkflowRun> {
   nextLink?: string;
@@ -8521,7 +8591,7 @@ export interface WorkflowRunListResult extends Array<WorkflowRun> {
  * @constructor
  * The list of workflow run actions.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface WorkflowRunActionListResult extends Array<WorkflowRunAction> {
   nextLink?: string;
@@ -8531,7 +8601,7 @@ export interface WorkflowRunActionListResult extends Array<WorkflowRunAction> {
  * @class
  * Initializes a new instance of the ExpressionTraces class.
  * @constructor
- * @member {array} [inputs]
+ * @property {array} [inputs]
  */
 export interface ExpressionTraces extends Array<ExpressionRoot> {
 }
@@ -8552,7 +8622,7 @@ export interface WorkflowRunActionRepetitionDefinitionCollection extends Array<W
  * @constructor
  * The list of integration accounts.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface IntegrationAccountListResult extends Array<IntegrationAccount> {
   nextLink?: string;
@@ -8564,7 +8634,7 @@ export interface IntegrationAccountListResult extends Array<IntegrationAccount> 
  * @constructor
  * Collection of key vault keys.
  *
- * @member {string} [skipToken] The skip token.
+ * @property {string} [skipToken] The skip token.
  */
 export interface KeyVaultKeyCollection extends Array<KeyVaultKey> {
 }
@@ -8595,7 +8665,7 @@ export interface BatchConfigurationCollection extends Array<BatchConfiguration> 
  * @constructor
  * The list of integration account schemas.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface IntegrationAccountSchemaListResult extends Array<IntegrationAccountSchema> {
   nextLink?: string;
@@ -8607,7 +8677,7 @@ export interface IntegrationAccountSchemaListResult extends Array<IntegrationAcc
  * @constructor
  * The list of integration account maps.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface IntegrationAccountMapListResult extends Array<IntegrationAccountMap> {
   nextLink?: string;
@@ -8619,7 +8689,7 @@ export interface IntegrationAccountMapListResult extends Array<IntegrationAccoun
  * @constructor
  * The list of integration account partners.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface IntegrationAccountPartnerListResult extends Array<IntegrationAccountPartner> {
   nextLink?: string;
@@ -8631,7 +8701,7 @@ export interface IntegrationAccountPartnerListResult extends Array<IntegrationAc
  * @constructor
  * The list of integration account agreements.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface IntegrationAccountAgreementListResult extends Array<IntegrationAccountAgreement> {
   nextLink?: string;
@@ -8643,7 +8713,7 @@ export interface IntegrationAccountAgreementListResult extends Array<Integration
  * @constructor
  * The list of integration account certificates.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface IntegrationAccountCertificateListResult extends Array<IntegrationAccountCertificate> {
   nextLink?: string;
@@ -8655,7 +8725,7 @@ export interface IntegrationAccountCertificateListResult extends Array<Integrati
  * @constructor
  * The list of integration account sessions.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface IntegrationAccountSessionListResult extends Array<IntegrationAccountSession> {
   nextLink?: string;
@@ -8668,7 +8738,7 @@ export interface IntegrationAccountSessionListResult extends Array<IntegrationAc
  * Result of the request to list Logic operations. It contains a list of
  * operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {

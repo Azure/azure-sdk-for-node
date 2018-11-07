@@ -22,11 +22,11 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * The resource model definition.
  *
- * @member {string} [id] Resource ID
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
- * @member {string} [location] Resource location
- * @member {object} [tags] Resource tags
+ * @property {string} [id] Resource ID
+ * @property {string} [name] Resource name
+ * @property {string} [type] Resource type
+ * @property {string} [location] Resource location
+ * @property {object} [tags] Resource tags
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -42,9 +42,9 @@ export interface Resource extends BaseResource {
  * @constructor
  * Specifies the hardware settings for the HANA instance.
  *
- * @member {string} [hardwareType] Name of the hardware type (vendor and/or
+ * @property {string} [hardwareType] Name of the hardware type (vendor and/or
  * their product name). Possible values include: 'Cisco_UCS', 'HPE'
- * @member {string} [hanaInstanceSize] Specifies the HANA instance SKU.
+ * @property {string} [hanaInstanceSize] Specifies the HANA instance SKU.
  * Possible values include: 'S72m', 'S144m', 'S72', 'S144', 'S192', 'S192m',
  * 'S192xm', 'S384', 'S384m', 'S384xm', 'S384xxm', 'S576m', 'S576xm', 'S768',
  * 'S768m', 'S768xm', 'S960m'
@@ -60,10 +60,10 @@ export interface HardwareProfile {
  * @constructor
  * Specifies the disk information fo the HANA instance
  *
- * @member {string} [name] The disk name.
- * @member {number} [diskSizeGB] Specifies the size of an empty data disk in
+ * @property {string} [name] The disk name.
+ * @property {number} [diskSizeGB] Specifies the size of an empty data disk in
  * gigabytes.
- * @member {number} [lun] Specifies the logical unit number of the data disk.
+ * @property {number} [lun] Specifies the logical unit number of the data disk.
  * This value is used to identify data disks within the VM and therefore must
  * be unique for each data disk attached to a VM.
  */
@@ -79,8 +79,8 @@ export interface Disk {
  * @constructor
  * Specifies the storage settings for the HANA instance disks.
  *
- * @member {string} [nfsIpAddress] IP Address to connect to storage.
- * @member {array} [osDisks] Specifies information about the operating system
+ * @property {string} [nfsIpAddress] IP Address to connect to storage.
+ * @property {array} [osDisks] Specifies information about the operating system
  * disk used by the hana instance.
  */
 export interface StorageProfile {
@@ -94,11 +94,11 @@ export interface StorageProfile {
  * @constructor
  * Specifies the operating system settings for the HANA instance.
  *
- * @member {string} [computerName] Specifies the host OS name of the HANA
+ * @property {string} [computerName] Specifies the host OS name of the HANA
  * instance.
- * @member {string} [osType] This property allows you to specify the type of
+ * @property {string} [osType] This property allows you to specify the type of
  * the OS.
- * @member {string} [version] Specifies version of operating system.
+ * @property {string} [version] Specifies version of operating system.
  */
 export interface OSProfile {
   readonly computerName?: string;
@@ -112,7 +112,7 @@ export interface OSProfile {
  * @constructor
  * Specifies the IP address of the network interaface.
  *
- * @member {string} [ipAddress] Specifies the IP address of the network
+ * @property {string} [ipAddress] Specifies the IP address of the network
  * interface.
  */
 export interface IpAddress {
@@ -125,9 +125,9 @@ export interface IpAddress {
  * @constructor
  * Specifies the network settings for the HANA instance disks.
  *
- * @member {array} [networkInterfaces] Specifies the network interfaces for the
- * HANA instance.
- * @member {string} [circuitId] Specifies the circuit id for connecting to
+ * @property {array} [networkInterfaces] Specifies the network interfaces for
+ * the HANA instance.
+ * @property {string} [circuitId] Specifies the circuit id for connecting to
  * express route.
  */
 export interface NetworkProfile {
@@ -141,37 +141,39 @@ export interface NetworkProfile {
  * @constructor
  * HANA instance info on Azure (ARM properties and HANA properties)
  *
- * @member {object} [hardwareProfile] Specifies the hardware settings for the
+ * @property {object} [hardwareProfile] Specifies the hardware settings for the
  * HANA instance.
- * @member {string} [hardwareProfile.hardwareType] Name of the hardware type
+ * @property {string} [hardwareProfile.hardwareType] Name of the hardware type
  * (vendor and/or their product name). Possible values include: 'Cisco_UCS',
  * 'HPE'
- * @member {string} [hardwareProfile.hanaInstanceSize] Specifies the HANA
+ * @property {string} [hardwareProfile.hanaInstanceSize] Specifies the HANA
  * instance SKU. Possible values include: 'S72m', 'S144m', 'S72', 'S144',
  * 'S192', 'S192m', 'S192xm', 'S384', 'S384m', 'S384xm', 'S384xxm', 'S576m',
  * 'S576xm', 'S768', 'S768m', 'S768xm', 'S960m'
- * @member {object} [storageProfile] Specifies the storage settings for the
+ * @property {object} [storageProfile] Specifies the storage settings for the
  * HANA instance disks.
- * @member {string} [storageProfile.nfsIpAddress] IP Address to connect to
+ * @property {string} [storageProfile.nfsIpAddress] IP Address to connect to
  * storage.
- * @member {array} [storageProfile.osDisks] Specifies information about the
+ * @property {array} [storageProfile.osDisks] Specifies information about the
  * operating system disk used by the hana instance.
- * @member {object} [osProfile] Specifies the operating system settings for the
+ * @property {object} [osProfile] Specifies the operating system settings for
+ * the HANA instance.
+ * @property {string} [osProfile.computerName] Specifies the host OS name of
+ * the HANA instance.
+ * @property {string} [osProfile.osType] This property allows you to specify
+ * the type of the OS.
+ * @property {string} [osProfile.version] Specifies version of operating
+ * system.
+ * @property {object} [networkProfile] Specifies the network settings for the
  * HANA instance.
- * @member {string} [osProfile.computerName] Specifies the host OS name of the
- * HANA instance.
- * @member {string} [osProfile.osType] This property allows you to specify the
- * type of the OS.
- * @member {string} [osProfile.version] Specifies version of operating system.
- * @member {object} [networkProfile] Specifies the network settings for the
- * HANA instance.
- * @member {array} [networkProfile.networkInterfaces] Specifies the network
+ * @property {array} [networkProfile.networkInterfaces] Specifies the network
  * interfaces for the HANA instance.
- * @member {string} [networkProfile.circuitId] Specifies the circuit id for
+ * @property {string} [networkProfile.circuitId] Specifies the circuit id for
  * connecting to express route.
- * @member {string} [hanaInstanceId] Specifies the HANA instance unique ID.
- * @member {string} [powerState] Resource power state. Possible values include:
- * 'starting', 'started', 'stopping', 'stopped', 'restarting', 'unknown'
+ * @property {string} [hanaInstanceId] Specifies the HANA instance unique ID.
+ * @property {string} [powerState] Resource power state. Possible values
+ * include: 'starting', 'started', 'stopping', 'stopped', 'restarting',
+ * 'unknown'
  */
 export interface HanaInstance extends Resource {
   hardwareProfile?: HardwareProfile;
@@ -188,22 +190,22 @@ export interface HanaInstance extends Resource {
  * @constructor
  * Detailed HANA operation information
  *
- * @member {string} [provider] The localized friendly form of the resource
+ * @property {string} [provider] The localized friendly form of the resource
  * provider name. This form is also expected to include the publisher/company
  * responsible. Use Title Casing. Begin with "Microsoft" for 1st party
  * services.
- * @member {string} [resource] The localized friendly form of the resource type
- * related to this action/operation. This form should match the public
+ * @property {string} [resource] The localized friendly form of the resource
+ * type related to this action/operation. This form should match the public
  * documentation for the resource provider. Use Title Casing. For examples,
  * refer to the “name” section.
- * @member {string} [operation] The localized friendly name for the operation
+ * @property {string} [operation] The localized friendly name for the operation
  * as shown to the user. This name should be concise (to fit in drop downs),
  * but clear (self-documenting). Use Title Casing and include the
  * entity/resource to which it applies.
- * @member {string} [description] The localized friendly description for the
+ * @property {string} [description] The localized friendly description for the
  * operation as shown to the user. This description should be thorough, yet
  * concise. It will be used in tool-tips and detailed views.
- * @member {string} [origin] The intended executor of the operation; governs
+ * @property {string} [origin] The intended executor of the operation; governs
  * the display of the operation in the RBAC UX and the audit logs UX. Default
  * value is 'user,system'
  */
@@ -221,26 +223,26 @@ export interface Display {
  * @constructor
  * HANA operation information
  *
- * @member {string} [name] The name of the operation being performed on this
+ * @property {string} [name] The name of the operation being performed on this
  * particular object. This name should match the action name that appears in
  * RBAC / the event service.
- * @member {object} [display] Displayed HANA operation information
- * @member {string} [display.provider] The localized friendly form of the
+ * @property {object} [display] Displayed HANA operation information
+ * @property {string} [display.provider] The localized friendly form of the
  * resource provider name. This form is also expected to include the
  * publisher/company responsible. Use Title Casing. Begin with "Microsoft" for
  * 1st party services.
- * @member {string} [display.resource] The localized friendly form of the
+ * @property {string} [display.resource] The localized friendly form of the
  * resource type related to this action/operation. This form should match the
  * public documentation for the resource provider. Use Title Casing. For
  * examples, refer to the “name” section.
- * @member {string} [display.operation] The localized friendly name for the
+ * @property {string} [display.operation] The localized friendly name for the
  * operation as shown to the user. This name should be concise (to fit in drop
  * downs), but clear (self-documenting). Use Title Casing and include the
  * entity/resource to which it applies.
- * @member {string} [display.description] The localized friendly description
+ * @property {string} [display.description] The localized friendly description
  * for the operation as shown to the user. This description should be thorough,
  * yet concise. It will be used in tool-tips and detailed views.
- * @member {string} [display.origin] The intended executor of the operation;
+ * @property {string} [display.origin] The intended executor of the operation;
  * governs the display of the operation in the RBAC UX and the audit logs UX.
  * Default value is 'user,system'
  */
@@ -255,8 +257,8 @@ export interface Operation {
  * @constructor
  * Describes the format of Error response.
  *
- * @member {string} [code] Error code
- * @member {string} [message] Error message indicating why the operation
+ * @property {string} [code] Error code
+ * @property {string} [message] Error message indicating why the operation
  * failed.
  */
 export interface ErrorResponse {
@@ -281,7 +283,7 @@ export interface OperationList extends Array<Operation> {
  * @constructor
  * The response from the List HANA Instances operation.
  *
- * @member {string} [nextLink] The URL to get the next set of HANA instances.
+ * @property {string} [nextLink] The URL to get the next set of HANA instances.
  */
 export interface HanaInstancesListResult extends Array<HanaInstance> {
   nextLink?: string;

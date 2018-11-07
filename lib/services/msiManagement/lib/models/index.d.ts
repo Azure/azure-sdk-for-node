@@ -22,19 +22,19 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Describes an identity resource.
  *
- * @member {string} [id] The id of the created identity.
- * @member {string} [name] The name of the created identity.
- * @member {string} [location] The Azure region where the identity lives.
- * @member {object} [tags] Resource tags
- * @member {uuid} [tenantId] The id of the tenant which the identity belongs
+ * @property {string} [id] The id of the created identity.
+ * @property {string} [name] The name of the created identity.
+ * @property {string} [location] The Azure region where the identity lives.
+ * @property {object} [tags] Resource tags
+ * @property {uuid} [tenantId] The id of the tenant which the identity belongs
  * to.
- * @member {uuid} [principalId] The id of the service principal object
+ * @property {uuid} [principalId] The id of the service principal object
  * associated with the created identity.
- * @member {uuid} [clientId] The id of the app associated with the identity.
+ * @property {uuid} [clientId] The id of the app associated with the identity.
  * This is a random generated UUID by MSI.
- * @member {string} [clientSecretUrl] The ManagedServiceIdentity DataPlane URL
- * that can be queried to obtain the identity credentials.
- * @member {string} [type] The type of resource i.e.
+ * @property {string} [clientSecretUrl] The ManagedServiceIdentity DataPlane
+ * URL that can be queried to obtain the identity credentials.
+ * @property {string} [type] The type of resource i.e.
  * Microsoft.ManagedIdentity/userAssignedIdentities. Possible values include:
  * 'Microsoft.ManagedIdentity/userAssignedIdentities'
  */
@@ -58,13 +58,13 @@ export interface Identity extends BaseResource {
  *
  * The object that describes the operation.
  *
- * @member {string} [provider] Resource Provider Name. Friendly name of the
+ * @property {string} [provider] Resource Provider Name. Friendly name of the
  * resource provider.
- * @member {string} [operation] Operation Type. The type of operation. For
+ * @property {string} [operation] Operation Type. The type of operation. For
  * example: read, write, delete.
- * @member {string} [resource] Resource Type. The resource type on which the
+ * @property {string} [resource] Resource Type. The resource type on which the
  * operation is performed.
- * @member {string} [description] Operation description. A description of the
+ * @property {string} [description] Operation description. A description of the
  * operation.
  */
 export interface OperationDisplay {
@@ -82,16 +82,17 @@ export interface OperationDisplay {
  *
  * Operation supported by the Microsoft.ManagedIdentity REST API.
  *
- * @member {string} [name] Operation Name. The name of the REST Operation. This
- * is of the format {provider}/{resource}/{operation}.
- * @member {object} [display] Operation Display. The object that describes the
- * operation.
- * @member {string} [display.provider] Friendly name of the resource provider.
- * @member {string} [display.operation] The type of operation. For example:
+ * @property {string} [name] Operation Name. The name of the REST Operation.
+ * This is of the format {provider}/{resource}/{operation}.
+ * @property {object} [display] Operation Display. The object that describes
+ * the operation.
+ * @property {string} [display.provider] Friendly name of the resource
+ * provider.
+ * @property {string} [display.operation] The type of operation. For example:
  * read, write, delete.
- * @member {string} [display.resource] The resource type on which the operation
- * is performed.
- * @member {string} [display.description] A description of the operation.
+ * @property {string} [display.resource] The resource type on which the
+ * operation is performed.
+ * @property {string} [display.description] A description of the operation.
  */
 export interface Operation {
   name?: string;
@@ -108,7 +109,8 @@ export interface Operation {
  * A list of operations supported by Microsoft.ManagedIdentity Resource
  * Provider.
  *
- * @member {string} [nextLink] The url to get the next page of results, if any.
+ * @property {string} [nextLink] The url to get the next page of results, if
+ * any.
  */
 export interface OperationListResult extends Array<Operation> {
   nextLink?: string;
@@ -120,7 +122,8 @@ export interface OperationListResult extends Array<Operation> {
  * @constructor
  * Values returned by the List operation.
  *
- * @member {string} [nextLink] The url to get the next page of results, if any.
+ * @property {string} [nextLink] The url to get the next page of results, if
+ * any.
  */
 export interface UserAssignedIdentitiesListResult extends Array<Identity> {
   nextLink?: string;

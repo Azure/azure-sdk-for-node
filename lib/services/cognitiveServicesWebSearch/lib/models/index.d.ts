@@ -17,21 +17,23 @@ import * as moment from "moment";
  * @constructor
  * Defines the query context that Bing used for the request.
  *
- * @member {string} originalQuery The query string as specified in the request.
- * @member {string} [alteredQuery] The query string used by Bing to perform the
- * query. Bing uses the altered query string if the original query string
+ * @property {string} originalQuery The query string as specified in the
+ * request.
+ * @property {string} [alteredQuery] The query string used by Bing to perform
+ * the query. Bing uses the altered query string if the original query string
  * contained spelling mistakes. For example, if the query string is "saling
  * downwind", the altered query string will be "sailing downwind". This field
  * is included only if the original query string contains a spelling mistake.
- * @member {string} [alterationOverrideQuery] The query string to use to force
- * Bing to use the original string. For example, if the query string is "saling
- * downwind", the override query string will be "+saling downwind". Remember to
- * encode the query string which results in "%2Bsaling+downwind". This field is
- * included only if the original query string contains a spelling mistake.
- * @member {boolean} [adultIntent] A Boolean value that indicates whether the
+ * @property {string} [alterationOverrideQuery] The query string to use to
+ * force Bing to use the original string. For example, if the query string is
+ * "saling downwind", the override query string will be "+saling downwind".
+ * Remember to encode the query string which results in "%2Bsaling+downwind".
+ * This field is included only if the original query string contains a spelling
+ * mistake.
+ * @property {boolean} [adultIntent] A Boolean value that indicates whether the
  * specified query has adult intent. The value is true if the query has adult
  * intent; otherwise, false.
- * @member {boolean} [askUserForLocation] A Boolean value that indicates
+ * @property {boolean} [askUserForLocation] A Boolean value that indicates
  * whether Bing requires the user's location to provide accurate results. If
  * you specified the user's location by using the X-MSEdge-ClientIP and
  * X-Search-Location headers, you can ignore this field. For location aware
@@ -40,7 +42,7 @@ import * as moment from "moment";
  * location aware queries that include the location (for example, "Seattle
  * weather"), this field is set to false. This field is also set to false for
  * queries that are not location aware, such as "best sellers".
- * @member {boolean} [isTransactional]
+ * @property {boolean} [isTransactional]
  */
 export interface QueryContext {
   originalQuery: string;
@@ -57,8 +59,8 @@ export interface QueryContext {
  * @constructor
  * Defines a webpage's metadata.
  *
- * @member {string} [name] The metadata.
- * @member {string} [content] The name of the metadata.
+ * @property {string} [name] The metadata.
+ * @property {string} [content] The name of the metadata.
  */
 export interface WebMetaTag {
   readonly name?: string;
@@ -69,7 +71,7 @@ export interface WebMetaTag {
  * @class
  * Initializes a new instance of the ResponseBase class.
  * @constructor
- * @member {string} _type Polymorphic Discriminator
+ * @property {string} _type Polymorphic Discriminator
  */
 export interface ResponseBase {
   _type: string;
@@ -81,7 +83,7 @@ export interface ResponseBase {
  * @constructor
  * Defines the identity of a resource.
  *
- * @member {string} [id] A String identifier.
+ * @property {string} [id] A String identifier.
  */
 export interface Identifiable extends ResponseBase {
   readonly id?: string;
@@ -94,7 +96,7 @@ export interface Identifiable extends ResponseBase {
  * Defines a response. All schemas that could be returned at the root of a
  * response should inherit from this
  *
- * @member {string} [webSearchUrl] The URL To Bing's search result for this
+ * @property {string} [webSearchUrl] The URL To Bing's search result for this
  * item.
  */
 export interface Response extends Identifiable {
@@ -105,13 +107,13 @@ export interface Response extends Identifiable {
  * @class
  * Initializes a new instance of the Thing class.
  * @constructor
- * @member {string} [name] The name of the thing represented by this object.
- * @member {string} [url] The URL to get more information about the thing
+ * @property {string} [name] The name of the thing represented by this object.
+ * @property {string} [url] The URL to get more information about the thing
  * represented by this object.
- * @member {object} [image]
- * @member {object} [image.thumbnail] The URL to a thumbnail of the image
- * @member {string} [description] A short description of the item.
- * @member {string} [bingId] An ID that uniquely identifies this item.
+ * @property {object} [image]
+ * @property {object} [image.thumbnail] The URL to a thumbnail of the image
+ * @property {string} [description] A short description of the item.
+ * @property {string} [bingId] An ID that uniquely identifies this item.
  */
 export interface Thing extends Response {
   readonly name?: string;
@@ -125,9 +127,9 @@ export interface Thing extends Response {
  * @class
  * Initializes a new instance of the CreativeWork class.
  * @constructor
- * @member {string} [thumbnailUrl] The URL to a thumbnail of the item.
- * @member {array} [provider] The source of the creative work.
- * @member {string} [text]
+ * @property {string} [thumbnailUrl] The URL to a thumbnail of the item.
+ * @property {array} [provider] The source of the creative work.
+ * @property {string} [text]
  */
 export interface CreativeWork extends Thing {
   readonly thumbnailUrl?: string;
@@ -139,11 +141,13 @@ export interface CreativeWork extends Thing {
  * @class
  * Initializes a new instance of the MediaObject class.
  * @constructor
- * @member {string} [contentUrl] Original URL to retrieve the source (file) for
- * the media object (e.g the source URL for the image).
- * @member {string} [hostPageUrl] URL of the page that hosts the media object.
- * @member {number} [width] The width of the source media object, in pixels.
- * @member {number} [height] The height of the source media object, in pixels.
+ * @property {string} [contentUrl] Original URL to retrieve the source (file)
+ * for the media object (e.g the source URL for the image).
+ * @property {string} [hostPageUrl] URL of the page that hosts the media
+ * object.
+ * @property {number} [width] The width of the source media object, in pixels.
+ * @property {number} [height] The height of the source media object, in
+ * pixels.
  */
 export interface MediaObject extends CreativeWork {
   readonly contentUrl?: string;
@@ -158,7 +162,7 @@ export interface MediaObject extends CreativeWork {
  * @constructor
  * Defines an image
  *
- * @member {object} [thumbnail] The URL to a thumbnail of the image
+ * @property {object} [thumbnail] The URL to a thumbnail of the image
  */
 export interface ImageObject extends MediaObject {
   readonly thumbnail?: ImageObject;
@@ -170,23 +174,23 @@ export interface ImageObject extends MediaObject {
  * @constructor
  * Defines a webpage that is relevant to the query.
  *
- * @member {string} [displayUrl] The display URL of the webpage. The URL is
+ * @property {string} [displayUrl] The display URL of the webpage. The URL is
  * meant for display purposes only and is not well formed.
- * @member {string} [snippet] A snippet of text from the webpage that describes
- * its contents.
- * @member {array} [deepLinks] A list of links to related content that Bing
+ * @property {string} [snippet] A snippet of text from the webpage that
+ * describes its contents.
+ * @property {array} [deepLinks] A list of links to related content that Bing
  * found in the website that contains this webpage. The Webpage object in this
  * context includes only the name, url, urlPingSuffix, and snippet fields.
- * @member {string} [dateLastCrawled] The last time that Bing crawled the
+ * @property {string} [dateLastCrawled] The last time that Bing crawled the
  * webpage. The date is in the form, YYYY-MM-DDTHH:MM:SS. For example,
  * 2015-04-13T05:23:39.
- * @member {array} [searchTags] A list of search tags that the webpage owner
+ * @property {array} [searchTags] A list of search tags that the webpage owner
  * specified on the webpage. The API returns only indexed search tags. The name
  * field of the MetaTag object contains the indexed search tag. Search tags
  * begin with search.* (for example, search.assetId). The content field
  * contains the tag's value.
- * @member {object} [primaryImageOfPage]
- * @member {object} [primaryImageOfPage.thumbnail] The URL to a thumbnail of
+ * @property {object} [primaryImageOfPage]
+ * @property {object} [primaryImageOfPage.thumbnail] The URL to a thumbnail of
  * the image
  */
 export interface WebPage extends CreativeWork {
@@ -202,7 +206,7 @@ export interface WebPage extends CreativeWork {
  * @class
  * Initializes a new instance of the Answer class.
  * @constructor
- * @member {array} [followUpQueries]
+ * @property {array} [followUpQueries]
  */
 export interface Answer extends Response {
   readonly followUpQueries?: Query[];
@@ -212,25 +216,25 @@ export interface Answer extends Response {
  * @class
  * Initializes a new instance of the SearchResultsAnswer class.
  * @constructor
- * @member {object} [queryContext]
- * @member {string} [queryContext.originalQuery] The query string as specified
- * in the request.
- * @member {string} [queryContext.alteredQuery] The query string used by Bing
+ * @property {object} [queryContext]
+ * @property {string} [queryContext.originalQuery] The query string as
+ * specified in the request.
+ * @property {string} [queryContext.alteredQuery] The query string used by Bing
  * to perform the query. Bing uses the altered query string if the original
  * query string contained spelling mistakes. For example, if the query string
  * is "saling downwind", the altered query string will be "sailing downwind".
  * This field is included only if the original query string contains a spelling
  * mistake.
- * @member {string} [queryContext.alterationOverrideQuery] The query string to
- * use to force Bing to use the original string. For example, if the query
+ * @property {string} [queryContext.alterationOverrideQuery] The query string
+ * to use to force Bing to use the original string. For example, if the query
  * string is "saling downwind", the override query string will be "+saling
  * downwind". Remember to encode the query string which results in
  * "%2Bsaling+downwind". This field is included only if the original query
  * string contains a spelling mistake.
- * @member {boolean} [queryContext.adultIntent] A Boolean value that indicates
- * whether the specified query has adult intent. The value is true if the query
- * has adult intent; otherwise, false.
- * @member {boolean} [queryContext.askUserForLocation] A Boolean value that
+ * @property {boolean} [queryContext.adultIntent] A Boolean value that
+ * indicates whether the specified query has adult intent. The value is true if
+ * the query has adult intent; otherwise, false.
+ * @property {boolean} [queryContext.askUserForLocation] A Boolean value that
  * indicates whether Bing requires the user's location to provide accurate
  * results. If you specified the user's location by using the X-MSEdge-ClientIP
  * and X-Search-Location headers, you can ignore this field. For location aware
@@ -239,11 +243,11 @@ export interface Answer extends Response {
  * location aware queries that include the location (for example, "Seattle
  * weather"), this field is set to false. This field is also set to false for
  * queries that are not location aware, such as "best sellers".
- * @member {boolean} [queryContext.isTransactional]
- * @member {number} [totalEstimatedMatches] The estimated number of webpages
+ * @property {boolean} [queryContext.isTransactional]
+ * @property {number} [totalEstimatedMatches] The estimated number of webpages
  * that are relevant to the query. Use this number along with the count and
  * offset query parameters to page the results.
- * @member {boolean} [isFamilyFriendly]
+ * @property {boolean} [isFamilyFriendly]
  */
 export interface SearchResultsAnswer extends Answer {
   readonly queryContext?: QueryContext;
@@ -257,8 +261,8 @@ export interface SearchResultsAnswer extends Answer {
  * @constructor
  * Defines a list of relevant webpage links.
  *
- * @member {array} value A list of webpages that are relevant to the query.
- * @member {boolean} [someResultsRemoved] A Boolean value that indicates
+ * @property {array} value A list of webpages that are relevant to the query.
+ * @property {boolean} [someResultsRemoved] A Boolean value that indicates
  * whether the response excluded some results from the answer. If Bing excluded
  * some results, the value is true.
  */
@@ -273,18 +277,18 @@ export interface WebWebAnswer extends SearchResultsAnswer {
  * @constructor
  * Defines a search query.
  *
- * @member {string} text The query string. Use this string as the query term in
- * a new search request.
- * @member {string} [displayText] The display version of the query term. This
+ * @property {string} text The query string. Use this string as the query term
+ * in a new search request.
+ * @property {string} [displayText] The display version of the query term. This
  * version of the query term may contain special characters that highlight the
  * search term found in the query string. The string contains the highlighting
  * characters only if the query enabled hit highlighting
- * @member {string} [webSearchUrl] The URL that takes the user to the Bing
+ * @property {string} [webSearchUrl] The URL that takes the user to the Bing
  * search results page for the query.Only related search results include this
  * field.
- * @member {string} [searchLink]
- * @member {object} [thumbnail]
- * @member {object} [thumbnail.thumbnail] The URL to a thumbnail of the image
+ * @property {string} [searchLink]
+ * @property {object} [thumbnail]
+ * @property {object} [thumbnail.thumbnail] The URL to a thumbnail of the image
  */
 export interface Query {
   text: string;
@@ -300,12 +304,12 @@ export interface Query {
  * @constructor
  * Defines an image answer
  *
- * @member {number} [nextOffset]
- * @member {array} value A list of image objects that are relevant to the
+ * @property {number} [nextOffset]
+ * @property {array} value A list of image objects that are relevant to the
  * query. If there are no results, the List is empty.
- * @member {array} [queryExpansions]
- * @member {array} [similarTerms]
- * @member {array} [relatedSearches]
+ * @property {array} [queryExpansions]
+ * @property {array} [similarTerms]
+ * @property {array} [relatedSearches]
  */
 export interface Images extends SearchResultsAnswer {
   readonly nextOffset?: number;
@@ -319,7 +323,8 @@ export interface Images extends SearchResultsAnswer {
  * @class
  * Initializes a new instance of the Article class.
  * @constructor
- * @member {number} [wordCount] The number of words in the text of the Article.
+ * @property {number} [wordCount] The number of words in the text of the
+ * Article.
  */
 export interface Article extends CreativeWork {
   readonly wordCount?: number;
@@ -341,10 +346,10 @@ export interface NewsArticle extends Article {
  * @constructor
  * Defines a news answer.
  *
- * @member {array} value An array of NewsArticle objects that contain
+ * @property {array} value An array of NewsArticle objects that contain
  * information about news articles that are relevant to the query. If there are
  * no results to return for the request, the array is empty.
- * @member {string} [location]
+ * @property {string} [location]
  */
 export interface News extends SearchResultsAnswer {
   value: NewsArticle[];
@@ -357,7 +362,7 @@ export interface News extends SearchResultsAnswer {
  * @constructor
  * Defines a list of related queries made by others.
  *
- * @member {array} value A list of related queries that were made by others.
+ * @property {array} value A list of related queries that were made by others.
  */
 export interface RelatedSearchesRelatedSearchAnswer extends SearchResultsAnswer {
   value: Query[];
@@ -374,7 +379,7 @@ export interface RelatedSearchesRelatedSearchAnswer extends SearchResultsAnswer 
  * intended to search for Alton Brown instead (based on past searches by others
  * of Alon Brown).
  *
- * @member {array} value A list of suggested query strings that may represent
+ * @property {array} value A list of suggested query strings that may represent
  * the user's intention. The list contains only one Query object.
  */
 export interface SpellSuggestions extends SearchResultsAnswer {
@@ -387,11 +392,11 @@ export interface SpellSuggestions extends SearchResultsAnswer {
  * @constructor
  * Defines a date and time for a geographical location.
  *
- * @member {string} location The name of the geographical location.For example,
- * County; City; City, State; City, State, Country; or Time Zone.
- * @member {string} time The data and time specified in the form,
+ * @property {string} location The name of the geographical location.For
+ * example, County; City; City, State; City, State, Country; or Time Zone.
+ * @property {string} time The data and time specified in the form,
  * YYYY-MM-DDThh;mm:ss.ssssssZ.
- * @member {string} utcOffset The offset from UTC. For example, UTC-7.
+ * @property {string} utcOffset The offset from UTC. For example, UTC-7.
  */
 export interface TimeZoneTimeZoneInformation {
   location: string;
@@ -405,7 +410,7 @@ export interface TimeZoneTimeZoneInformation {
  * @constructor
  * Defines the data and time of one or more geographic locations.
  *
- * @member {object} primaryCityTime The data and time, in UTC, of the
+ * @property {object} primaryCityTime The data and time, in UTC, of the
  * geographic location specified in the query. If the query specified a
  * specific geographic location (for example, a city), this object contains the
  * name of the geographic location and the current date and time of the
@@ -414,14 +419,14 @@ export interface TimeZoneTimeZoneInformation {
  * city or state found in the specified state or country. If the location
  * contains additional time zones, the otherCityTimes field contains the data
  * and time of cities or states located in the other time zones.
- * @member {string} [primaryCityTime.location] The name of the geographical
+ * @property {string} [primaryCityTime.location] The name of the geographical
  * location.For example, County; City; City, State; City, State, Country; or
  * Time Zone.
- * @member {string} [primaryCityTime.time] The data and time specified in the
+ * @property {string} [primaryCityTime.time] The data and time specified in the
  * form, YYYY-MM-DDThh;mm:ss.ssssssZ.
- * @member {string} [primaryCityTime.utcOffset] The offset from UTC. For
+ * @property {string} [primaryCityTime.utcOffset] The offset from UTC. For
  * example, UTC-7.
- * @member {array} [otherCityTimes] A list of dates and times of nearby time
+ * @property {array} [otherCityTimes] A list of dates and times of nearby time
  * zones.
  */
 export interface TimeZone extends SearchResultsAnswer {
@@ -435,16 +440,16 @@ export interface TimeZone extends SearchResultsAnswer {
  * @constructor
  * Defines a video object that is relevant to the query.
  *
- * @member {string} [motionThumbnailUrl]
- * @member {string} [motionThumbnailId]
- * @member {string} [embedHtml]
- * @member {boolean} [allowHttpsEmbed]
- * @member {number} [viewCount]
- * @member {object} [thumbnail]
- * @member {object} [thumbnail.thumbnail] The URL to a thumbnail of the image
- * @member {string} [videoId]
- * @member {boolean} [allowMobileEmbed]
- * @member {boolean} [isSuperfresh]
+ * @property {string} [motionThumbnailUrl]
+ * @property {string} [motionThumbnailId]
+ * @property {string} [embedHtml]
+ * @property {boolean} [allowHttpsEmbed]
+ * @property {number} [viewCount]
+ * @property {object} [thumbnail]
+ * @property {object} [thumbnail.thumbnail] The URL to a thumbnail of the image
+ * @property {string} [videoId]
+ * @property {boolean} [allowMobileEmbed]
+ * @property {boolean} [isSuperfresh]
  */
 export interface VideoObject extends MediaObject {
   readonly motionThumbnailUrl?: string;
@@ -464,11 +469,11 @@ export interface VideoObject extends MediaObject {
  * @constructor
  * Defines a video answer.
  *
- * @member {array} value A list of video objects that are relevant to the
+ * @property {array} value A list of video objects that are relevant to the
  * query.
- * @member {number} [nextOffset]
- * @member {array} [queryExpansions]
- * @member {array} [relatedSearches]
+ * @property {number} [nextOffset]
+ * @property {array} [queryExpansions]
+ * @property {array} [relatedSearches]
  */
 export interface Videos extends SearchResultsAnswer {
   value: VideoObject[];
@@ -483,8 +488,8 @@ export interface Videos extends SearchResultsAnswer {
  * @constructor
  * Defines an expression and its answer
  *
- * @member {string} expression The math or conversion expression. If the query
- * contains a request to convert units of measure (for example, meters to
+ * @property {string} expression The math or conversion expression. If the
+ * query contains a request to convert units of measure (for example, meters to
  * feet), this field contains the from units and value contains the to units.
  * If the query contains a mathematical expression such as 2+2, this field
  * contains the expression and value contains the answer. Note that
@@ -494,7 +499,7 @@ export interface Videos extends SearchResultsAnswer {
  * set to true, the expression string may include formatting markers. For
  * example, if the user's query is log(2), the normalized expression includes
  * the subscript markers. For more information, see Hit Highlighting.
- * @member {string} value The expression's answer.
+ * @property {string} value The expression's answer.
  */
 export interface Computation extends Answer {
   expression: string;
@@ -507,21 +512,21 @@ export interface Computation extends Answer {
  * @constructor
  * Defines a search result item to display
  *
- * @member {string} answerType The answer that contains the item to display.
+ * @property {string} answerType The answer that contains the item to display.
  * Use the type to find the answer in the SearchResponse object. The type is
  * the name of a SearchResponse field. Possible values include: 'WebPages',
  * 'Images', 'SpellSuggestions', 'News', 'RelatedSearches', 'Videos',
  * 'Computation', 'TimeZone'. Default value: 'WebPages' .
- * @member {number} [resultIndex] A zero-based index of the item in the
+ * @property {number} [resultIndex] A zero-based index of the item in the
  * answer.If the item does not include this field, display all items in the
  * answer. For example, display all news articles in the News answer.
- * @member {object} [value] The ID that identifies either an answer to display
- * or an item of an answer to display. If the ID identifies an answer, display
- * all items of the answer.
- * @member {string} [value.id] A String identifier.
- * @member {number} [htmlIndex]
- * @member {number} [textualIndex]
- * @member {number} [screenshotIndex]
+ * @property {object} [value] The ID that identifies either an answer to
+ * display or an item of an answer to display. If the ID identifies an answer,
+ * display all items of the answer.
+ * @property {string} [value.id] A String identifier.
+ * @property {number} [htmlIndex]
+ * @property {number} [textualIndex]
+ * @property {number} [screenshotIndex]
  */
 export interface RankingRankingItem {
   answerType: string;
@@ -538,7 +543,8 @@ export interface RankingRankingItem {
  * @constructor
  * Defines a search results group, such as mainline.
  *
- * @member {array} items A list of search result items to display in the group.
+ * @property {array} items A list of search result items to display in the
+ * group.
  */
 export interface RankingRankingGroup {
   items: RankingRankingItem[];
@@ -551,16 +557,17 @@ export interface RankingRankingGroup {
  * Defines where on the search results page content should be placed and in
  * what order.
  *
- * @member {object} [pole] The search results that should be afforded the most
- * visible treatment (for example, displayed above the mainline and sidebar).
- * @member {array} [pole.items] A list of search result items to display in the
- * group.
- * @member {object} [mainline] The search results to display in the mainline.
- * @member {array} [mainline.items] A list of search result items to display in
+ * @property {object} [pole] The search results that should be afforded the
+ * most visible treatment (for example, displayed above the mainline and
+ * sidebar).
+ * @property {array} [pole.items] A list of search result items to display in
  * the group.
- * @member {object} [sidebar] The search results to display in the sidebar.
- * @member {array} [sidebar.items] A list of search result items to display in
- * the group.
+ * @property {object} [mainline] The search results to display in the mainline.
+ * @property {array} [mainline.items] A list of search result items to display
+ * in the group.
+ * @property {object} [sidebar] The search results to display in the sidebar.
+ * @property {array} [sidebar.items] A list of search result items to display
+ * in the group.
  */
 export interface RankingRankingResponse {
   readonly pole?: RankingRankingGroup;
@@ -575,28 +582,28 @@ export interface RankingRankingResponse {
  * Defines the top-level object that the response includes when the request
  * succeeds.
  *
- * @member {object} [queryContext] An object that contains the query string
+ * @property {object} [queryContext] An object that contains the query string
  * that Bing used for the request. This object contains the query string as
  * entered by the user. It may also contain an altered query string that Bing
  * used for the query if the query string contained a spelling mistake.
- * @member {string} [queryContext.originalQuery] The query string as specified
- * in the request.
- * @member {string} [queryContext.alteredQuery] The query string used by Bing
+ * @property {string} [queryContext.originalQuery] The query string as
+ * specified in the request.
+ * @property {string} [queryContext.alteredQuery] The query string used by Bing
  * to perform the query. Bing uses the altered query string if the original
  * query string contained spelling mistakes. For example, if the query string
  * is "saling downwind", the altered query string will be "sailing downwind".
  * This field is included only if the original query string contains a spelling
  * mistake.
- * @member {string} [queryContext.alterationOverrideQuery] The query string to
- * use to force Bing to use the original string. For example, if the query
+ * @property {string} [queryContext.alterationOverrideQuery] The query string
+ * to use to force Bing to use the original string. For example, if the query
  * string is "saling downwind", the override query string will be "+saling
  * downwind". Remember to encode the query string which results in
  * "%2Bsaling+downwind". This field is included only if the original query
  * string contains a spelling mistake.
- * @member {boolean} [queryContext.adultIntent] A Boolean value that indicates
- * whether the specified query has adult intent. The value is true if the query
- * has adult intent; otherwise, false.
- * @member {boolean} [queryContext.askUserForLocation] A Boolean value that
+ * @property {boolean} [queryContext.adultIntent] A Boolean value that
+ * indicates whether the specified query has adult intent. The value is true if
+ * the query has adult intent; otherwise, false.
+ * @property {boolean} [queryContext.askUserForLocation] A Boolean value that
  * indicates whether Bing requires the user's location to provide accurate
  * results. If you specified the user's location by using the X-MSEdge-ClientIP
  * and X-Search-Location headers, you can ignore this field. For location aware
@@ -605,39 +612,40 @@ export interface RankingRankingResponse {
  * location aware queries that include the location (for example, "Seattle
  * weather"), this field is set to false. This field is also set to false for
  * queries that are not location aware, such as "best sellers".
- * @member {boolean} [queryContext.isTransactional]
- * @member {object} [webPages] A list of webpages that are relevant to the
+ * @property {boolean} [queryContext.isTransactional]
+ * @property {object} [webPages] A list of webpages that are relevant to the
  * search query.
- * @member {array} [webPages.value] A list of webpages that are relevant to the
- * query.
- * @member {boolean} [webPages.someResultsRemoved] A Boolean value that
+ * @property {array} [webPages.value] A list of webpages that are relevant to
+ * the query.
+ * @property {boolean} [webPages.someResultsRemoved] A Boolean value that
  * indicates whether the response excluded some results from the answer. If
  * Bing excluded some results, the value is true.
- * @member {object} [images] A list of images that are relevant to the search
+ * @property {object} [images] A list of images that are relevant to the search
  * query.
- * @member {number} [images.nextOffset]
- * @member {array} [images.value] A list of image objects that are relevant to
- * the query. If there are no results, the List is empty.
- * @member {array} [images.queryExpansions]
- * @member {array} [images.similarTerms]
- * @member {array} [images.relatedSearches]
- * @member {object} [news] A list of news articles that are relevant to the
+ * @property {number} [images.nextOffset]
+ * @property {array} [images.value] A list of image objects that are relevant
+ * to the query. If there are no results, the List is empty.
+ * @property {array} [images.queryExpansions]
+ * @property {array} [images.similarTerms]
+ * @property {array} [images.relatedSearches]
+ * @property {object} [news] A list of news articles that are relevant to the
  * search query.
- * @member {array} [news.value] An array of NewsArticle objects that contain
+ * @property {array} [news.value] An array of NewsArticle objects that contain
  * information about news articles that are relevant to the query. If there are
  * no results to return for the request, the array is empty.
- * @member {string} [news.location]
- * @member {object} [relatedSearches] A list of related queries made by others.
- * @member {array} [relatedSearches.value] A list of related queries that were
- * made by others.
- * @member {object} [spellSuggestions] The query string that likely represents
- * the user's intent.
- * @member {array} [spellSuggestions.value] A list of suggested query strings
+ * @property {string} [news.location]
+ * @property {object} [relatedSearches] A list of related queries made by
+ * others.
+ * @property {array} [relatedSearches.value] A list of related queries that
+ * were made by others.
+ * @property {object} [spellSuggestions] The query string that likely
+ * represents the user's intent.
+ * @property {array} [spellSuggestions.value] A list of suggested query strings
  * that may represent the user's intention. The list contains only one Query
  * object.
- * @member {object} [timeZone] The date and time of one or more geographic
+ * @property {object} [timeZone] The date and time of one or more geographic
  * locations.
- * @member {object} [timeZone.primaryCityTime] The data and time, in UTC, of
+ * @property {object} [timeZone.primaryCityTime] The data and time, in UTC, of
  * the geographic location specified in the query. If the query specified a
  * specific geographic location (for example, a city), this object contains the
  * name of the geographic location and the current date and time of the
@@ -646,50 +654,51 @@ export interface RankingRankingResponse {
  * city or state found in the specified state or country. If the location
  * contains additional time zones, the otherCityTimes field contains the data
  * and time of cities or states located in the other time zones.
- * @member {string} [timeZone.primaryCityTime.location] The name of the
+ * @property {string} [timeZone.primaryCityTime.location] The name of the
  * geographical location.For example, County; City; City, State; City, State,
  * Country; or Time Zone.
- * @member {string} [timeZone.primaryCityTime.time] The data and time specified
- * in the form, YYYY-MM-DDThh;mm:ss.ssssssZ.
- * @member {string} [timeZone.primaryCityTime.utcOffset] The offset from UTC.
+ * @property {string} [timeZone.primaryCityTime.time] The data and time
+ * specified in the form, YYYY-MM-DDThh;mm:ss.ssssssZ.
+ * @property {string} [timeZone.primaryCityTime.utcOffset] The offset from UTC.
  * For example, UTC-7.
- * @member {array} [timeZone.otherCityTimes] A list of dates and times of
+ * @property {array} [timeZone.otherCityTimes] A list of dates and times of
  * nearby time zones.
- * @member {object} [videos] A list of videos that are relevant to the search
+ * @property {object} [videos] A list of videos that are relevant to the search
  * query.
- * @member {array} [videos.value] A list of video objects that are relevant to
- * the query.
- * @member {number} [videos.nextOffset]
- * @member {array} [videos.queryExpansions]
- * @member {array} [videos.relatedSearches]
- * @member {object} [computation] The answer to a math expression or units
+ * @property {array} [videos.value] A list of video objects that are relevant
+ * to the query.
+ * @property {number} [videos.nextOffset]
+ * @property {array} [videos.queryExpansions]
+ * @property {array} [videos.relatedSearches]
+ * @property {object} [computation] The answer to a math expression or units
  * conversion expression.
- * @member {string} [computation.expression] The math or conversion expression.
- * If the query contains a request to convert units of measure (for example,
- * meters to feet), this field contains the from units and value contains the
- * to units. If the query contains a mathematical expression such as 2+2, this
- * field contains the expression and value contains the answer. Note that
- * mathematical expressions may be normalized. For example, if the query was
- * sqrt(4^2+8^2), the normalized expression may be sqrt((4^2)+(8^2)). If the
- * user's query is a math question and the textDecorations query parameter is
- * set to true, the expression string may include formatting markers. For
- * example, if the user's query is log(2), the normalized expression includes
- * the subscript markers. For more information, see Hit Highlighting.
- * @member {string} [computation.value] The expression's answer.
- * @member {object} [rankingResponse] The order that Bing suggests that you
+ * @property {string} [computation.expression] The math or conversion
+ * expression. If the query contains a request to convert units of measure (for
+ * example, meters to feet), this field contains the from units and value
+ * contains the to units. If the query contains a mathematical expression such
+ * as 2+2, this field contains the expression and value contains the answer.
+ * Note that mathematical expressions may be normalized. For example, if the
+ * query was sqrt(4^2+8^2), the normalized expression may be sqrt((4^2)+(8^2)).
+ * If the user's query is a math question and the textDecorations query
+ * parameter is set to true, the expression string may include formatting
+ * markers. For example, if the user's query is log(2), the normalized
+ * expression includes the subscript markers. For more information, see Hit
+ * Highlighting.
+ * @property {string} [computation.value] The expression's answer.
+ * @property {object} [rankingResponse] The order that Bing suggests that you
  * display the search results in.
- * @member {object} [rankingResponse.pole] The search results that should be
+ * @property {object} [rankingResponse.pole] The search results that should be
  * afforded the most visible treatment (for example, displayed above the
  * mainline and sidebar).
- * @member {array} [rankingResponse.pole.items] A list of search result items
+ * @property {array} [rankingResponse.pole.items] A list of search result items
  * to display in the group.
- * @member {object} [rankingResponse.mainline] The search results to display in
- * the mainline.
- * @member {array} [rankingResponse.mainline.items] A list of search result
+ * @property {object} [rankingResponse.mainline] The search results to display
+ * in the mainline.
+ * @property {array} [rankingResponse.mainline.items] A list of search result
  * items to display in the group.
- * @member {object} [rankingResponse.sidebar] The search results to display in
- * the sidebar.
- * @member {array} [rankingResponse.sidebar.items] A list of search result
+ * @property {object} [rankingResponse.sidebar] The search results to display
+ * in the sidebar.
+ * @property {array} [rankingResponse.sidebar.items] A list of search result
  * items to display in the group.
  */
 export interface SearchResponse extends Response {
@@ -711,7 +720,7 @@ export interface SearchResponse extends Response {
  * @constructor
  * Defines a local entity answer.
  *
- * @member {array} value A list of local entities, such as restaurants or
+ * @property {array} value A list of local entities, such as restaurants or
  * hotels.
  */
 export interface Places extends SearchResultsAnswer {
@@ -724,21 +733,21 @@ export interface Places extends SearchResultsAnswer {
  * @constructor
  * Defines the error that occurred.
  *
- * @member {string} code The error code that identifies the category of error.
- * Possible values include: 'None', 'ServerError', 'InvalidRequest',
+ * @property {string} code The error code that identifies the category of
+ * error. Possible values include: 'None', 'ServerError', 'InvalidRequest',
  * 'RateLimitExceeded', 'InvalidAuthorization', 'InsufficientAuthorization'.
  * Default value: 'None' .
- * @member {string} [subCode] The error code that further helps to identify the
- * error. Possible values include: 'UnexpectedError', 'ResourceError',
+ * @property {string} [subCode] The error code that further helps to identify
+ * the error. Possible values include: 'UnexpectedError', 'ResourceError',
  * 'NotImplemented', 'ParameterMissing', 'ParameterInvalidValue',
  * 'HttpNotAllowed', 'Blocked', 'AuthorizationMissing',
  * 'AuthorizationRedundancy', 'AuthorizationDisabled', 'AuthorizationExpired'
- * @member {string} message A description of the error.
- * @member {string} [moreDetails] A description that provides additional
+ * @property {string} message A description of the error.
+ * @property {string} [moreDetails] A description that provides additional
  * information about the error.
- * @member {string} [parameter] The parameter in the request that caused the
+ * @property {string} [parameter] The parameter in the request that caused the
  * error.
- * @member {string} [value] The parameter's value in the request that was not
+ * @property {string} [value] The parameter's value in the request that was not
  * valid.
  */
 export interface ErrorModel {
@@ -756,7 +765,7 @@ export interface ErrorModel {
  * @constructor
  * The top-level response that represents a failed request.
  *
- * @member {array} errors A list of errors that describe the reasons why the
+ * @property {array} errors A list of errors that describe the reasons why the
  * request failed.
  */
 export interface ErrorResponse extends Response {
@@ -767,8 +776,8 @@ export interface ErrorResponse extends Response {
  * @class
  * Initializes a new instance of the WebWebGrouping class.
  * @constructor
- * @member {array} webPages
- * @member {string} _type Polymorphic Discriminator
+ * @property {array} webPages
+ * @property {string} _type Polymorphic Discriminator
  */
 export interface WebWebGrouping {
   webPages: WebPage[];

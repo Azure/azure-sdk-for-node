@@ -22,11 +22,11 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * A generic Azure Resource Manager resource.
  *
- * @member {string} [id] Unique identifier of the resource.
- * @member {string} [location] Resource location.
- * @member {string} [name] Resource name.
- * @member {object} [tags] Resource tags.
- * @member {string} [type] Resource type.
+ * @property {string} [id] Unique identifier of the resource.
+ * @property {string} [location] Resource location.
+ * @property {string} [name] Resource name.
+ * @property {object} [tags] Resource tags.
+ * @property {string} [type] Resource type.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -42,7 +42,7 @@ export interface Resource extends BaseResource {
  * @constructor
  * The response to an account resource GET request.
  *
- * @member {object} [properties] Resource properties.
+ * @property {object} [properties] Resource properties.
  */
 export interface AccountResource extends Resource {
   properties?: { [propertyName: string]: string };
@@ -54,7 +54,7 @@ export interface AccountResource extends Resource {
  * @constructor
  * The response to an account resource list GET request.
  *
- * @member {array} [value] Array of resource details.
+ * @property {array} [value] Array of resource details.
  */
 export interface AccountResourceListResult {
   value?: AccountResource[];
@@ -66,7 +66,7 @@ export interface AccountResourceListResult {
  * @constructor
  * The body of a Patch request to add tags to a Visual Studio account resource.
  *
- * @member {object} [tags] The custom tags of the resource.
+ * @property {object} [tags] The custom tags of the resource.
  */
 export interface AccountTagRequest {
   tags?: { [propertyName: string]: string };
@@ -78,11 +78,11 @@ export interface AccountTagRequest {
  * @constructor
  * The body of a PUT request to modify a Visual Studio account resource.
  *
- * @member {string} [accountName] The account name.
- * @member {string} [location] The Azure instance location.
- * @member {object} [operationType] The type of the operation.
- * @member {object} [properties] The custom properties of the resource.
- * @member {object} [tags] The custom tags of the resource.
+ * @property {string} [accountName] The account name.
+ * @property {string} [location] The Azure instance location.
+ * @property {object} [operationType] The type of the operation.
+ * @property {object} [properties] The custom properties of the resource.
+ * @property {object} [tags] The custom tags of the resource.
  */
 export interface AccountResourceRequest {
   accountName?: string;
@@ -98,9 +98,9 @@ export interface AccountResourceRequest {
  * @constructor
  * The body of a POST request to check name availability.
  *
- * @member {string} [resourceName] The name of the resource to check
+ * @property {string} [resourceName] The name of the resource to check
  * availability for.
- * @member {string} [resourceType] The type of resource to check availability
+ * @property {string} [resourceType] The type of resource to check availability
  * for.
  */
 export interface CheckNameAvailabilityParameter {
@@ -114,8 +114,8 @@ export interface CheckNameAvailabilityParameter {
  * @constructor
  * The response to a name availability request.
  *
- * @member {string} [message] The message describing the detailed reason.
- * @member {boolean} [nameAvailable] The value which indicates whether the
+ * @property {string} [message] The message describing the detailed reason.
+ * @property {boolean} [nameAvailable] The value which indicates whether the
  * provided name is available.
  */
 export interface CheckNameAvailabilityResult {
@@ -129,12 +129,12 @@ export interface CheckNameAvailabilityResult {
  * @constructor
  * Plan data for an extension resource.
  *
- * @member {string} [name] Name of the plan.
- * @member {string} [product] Product name.
- * @member {string} [promotionCode] Optional: the promotion code associated
+ * @property {string} [name] Name of the plan.
+ * @property {string} [product] Product name.
+ * @property {string} [promotionCode] Optional: the promotion code associated
  * with the plan.
- * @member {string} [publisher] Name of the extension publisher.
- * @member {string} [version] A string that uniquely identifies the plan
+ * @property {string} [publisher] Name of the extension publisher.
+ * @property {string} [version] A string that uniquely identifies the plan
  * version.
  */
 export interface ExtensionResourcePlan {
@@ -151,15 +151,15 @@ export interface ExtensionResourcePlan {
  * @constructor
  * The response to an extension resource GET request.
  *
- * @member {object} [plan] The extension plan that was purchased.
- * @member {string} [plan.name] Name of the plan.
- * @member {string} [plan.product] Product name.
- * @member {string} [plan.promotionCode] Optional: the promotion code
+ * @property {object} [plan] The extension plan that was purchased.
+ * @property {string} [plan.name] Name of the plan.
+ * @property {string} [plan.product] Product name.
+ * @property {string} [plan.promotionCode] Optional: the promotion code
  * associated with the plan.
- * @member {string} [plan.publisher] Name of the extension publisher.
- * @member {string} [plan.version] A string that uniquely identifies the plan
+ * @property {string} [plan.publisher] Name of the extension publisher.
+ * @property {string} [plan.version] A string that uniquely identifies the plan
  * version.
- * @member {object} [properties] Resource properties.
+ * @property {object} [properties] Resource properties.
  */
 export interface ExtensionResource extends Resource {
   plan?: ExtensionResourcePlan;
@@ -172,7 +172,7 @@ export interface ExtensionResource extends Resource {
  * @constructor
  * The response to an extension resource list GET request.
  *
- * @member {array} [value] Array of extension resource details.
+ * @property {array} [value] Array of extension resource details.
  */
 export interface ExtensionResourceListResult {
   value?: ExtensionResource[];
@@ -184,21 +184,21 @@ export interface ExtensionResourceListResult {
  * @constructor
  * The body of an extension resource PUT request.
  *
- * @member {string} [location] The Azure region of the Visual Studio account
+ * @property {string} [location] The Azure region of the Visual Studio account
  * associated with this request (i.e 'southcentralus'.)
- * @member {object} [plan] Extended information about the plan being purchased
- * for this extension resource.
- * @member {string} [plan.name] Name of the plan.
- * @member {string} [plan.product] Product name.
- * @member {string} [plan.promotionCode] Optional: the promotion code
+ * @property {object} [plan] Extended information about the plan being
+ * purchased for this extension resource.
+ * @property {string} [plan.name] Name of the plan.
+ * @property {string} [plan.product] Product name.
+ * @property {string} [plan.promotionCode] Optional: the promotion code
  * associated with the plan.
- * @member {string} [plan.publisher] Name of the extension publisher.
- * @member {string} [plan.version] A string that uniquely identifies the plan
+ * @property {string} [plan.publisher] Name of the extension publisher.
+ * @property {string} [plan.version] A string that uniquely identifies the plan
  * version.
- * @member {object} [properties] A dictionary of extended properties. This
+ * @property {object} [properties] A dictionary of extended properties. This
  * property is currently unused.
- * @member {object} [tags] A dictionary of user-defined tags to be stored with
- * the extension resource.
+ * @property {object} [tags] A dictionary of user-defined tags to be stored
+ * with the extension resource.
  */
 export interface ExtensionResourceRequest {
   location?: string;
@@ -213,10 +213,10 @@ export interface ExtensionResourceRequest {
  * @constructor
  * Properties of an operation supported by the resource provider.
  *
- * @member {string} [description] The description of the resource operation.
- * @member {string} [operation] The operation name.
- * @member {string} [provider] The provider name.
- * @member {string} [resource] The resource name.
+ * @property {string} [description] The description of the resource operation.
+ * @property {string} [operation] The operation name.
+ * @property {string} [provider] The provider name.
+ * @property {string} [resource] The resource name.
  */
 export interface OperationProperties {
   description?: string;
@@ -231,13 +231,13 @@ export interface OperationProperties {
  * @constructor
  * Properties of an operation supported by the resource provider.
  *
- * @member {object} [display] The properties of the resource operation.
- * @member {string} [display.description] The description of the resource
+ * @property {object} [display] The properties of the resource operation.
+ * @property {string} [display.description] The description of the resource
  * operation.
- * @member {string} [display.operation] The operation name.
- * @member {string} [display.provider] The provider name.
- * @member {string} [display.resource] The resource name.
- * @member {string} [name] The name of the resource operation.
+ * @property {string} [display.operation] The operation name.
+ * @property {string} [display.provider] The provider name.
+ * @property {string} [display.resource] The resource name.
+ * @property {string} [name] The name of the resource operation.
  */
 export interface Operation {
   display?: OperationProperties;
@@ -250,7 +250,7 @@ export interface Operation {
  * @constructor
  * Container for a list of operations supported by a resource provider.
  *
- * @member {array} [value] A list of operations supported by a resource
+ * @property {array} [value] A list of operations supported by a resource
  * provider.
  */
 export interface OperationListResult {
@@ -263,7 +263,7 @@ export interface OperationListResult {
  * @constructor
  * A Visual Studio Team Services project resource.
  *
- * @member {object} [properties] Key/value pair of resource properties.
+ * @property {object} [properties] Key/value pair of resource properties.
  */
 export interface ProjectResource extends Resource {
   properties?: { [propertyName: string]: string };
@@ -276,7 +276,7 @@ export interface ProjectResource extends Resource {
  * The response to a request to list Team Services project resources in a
  * resource group/account.
  *
- * @member {array} [value] List of project resource details.
+ * @property {array} [value] List of project resource details.
  */
 export interface ProjectResourceListResult {
   value?: ProjectResource[];

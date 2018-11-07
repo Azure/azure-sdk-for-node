@@ -22,9 +22,9 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * The Resource model definition.
  *
- * @member {string} [id] Resource Id.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
+ * @property {string} [id] Resource Id.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -38,7 +38,7 @@ export interface Resource extends BaseResource {
  * @constructor
  * An enrollment account resource.
  *
- * @member {string} [principalName] The account owner's principal name.
+ * @property {string} [principalName] The account owner's principal name.
  */
 export interface EnrollmentAccount extends Resource {
   readonly principalName?: string;
@@ -50,11 +50,11 @@ export interface EnrollmentAccount extends Resource {
  * @constructor
  * A billing period resource.
  *
- * @member {date} [billingPeriodStartDate] The start of the date range covered
- * by the billing period.
- * @member {date} [billingPeriodEndDate] The end of the date range covered by
+ * @property {date} [billingPeriodStartDate] The start of the date range
+ * covered by the billing period.
+ * @property {date} [billingPeriodEndDate] The end of the date range covered by
  * the billing period.
- * @member {array} [invoiceIds] Array of invoice ids that associated with.
+ * @property {array} [invoiceIds] Array of invoice ids that associated with.
  */
 export interface BillingPeriod extends Resource {
   readonly billingPeriodStartDate?: Date;
@@ -69,9 +69,9 @@ export interface BillingPeriod extends Resource {
  * A secure URL that can be used to download a PDF invoice until the URL
  * expires.
  *
- * @member {date} [expiryTime] The time in UTC at which this download URL will
- * expire.
- * @member {string} [url] The URL to the PDF file.
+ * @property {date} [expiryTime] The time in UTC at which this download URL
+ * will expire.
+ * @property {string} [url] The URL to the PDF file.
  */
 export interface DownloadUrl {
   readonly expiryTime?: Date;
@@ -84,10 +84,10 @@ export interface DownloadUrl {
  * @constructor
  * The details of the error.
  *
- * @member {string} [code] Error code.
- * @member {string} [message] Error message indicating why the operation
+ * @property {string} [code] Error code.
+ * @property {string} [message] Error message indicating why the operation
  * failed.
- * @member {string} [target] The target of the particular error.
+ * @property {string} [target] The target of the particular error.
  */
 export interface ErrorDetails {
   readonly code?: string;
@@ -102,11 +102,11 @@ export interface ErrorDetails {
  * Error response indicates that the service is not able to process the
  * incoming request. The reason is provided in the error message.
  *
- * @member {object} [error] The details of the error.
- * @member {string} [error.code] Error code.
- * @member {string} [error.message] Error message indicating why the operation
- * failed.
- * @member {string} [error.target] The target of the particular error.
+ * @property {object} [error] The details of the error.
+ * @property {string} [error.code] Error code.
+ * @property {string} [error.message] Error message indicating why the
+ * operation failed.
+ * @property {string} [error.target] The target of the particular error.
  */
 export interface ErrorResponse {
   error?: ErrorDetails;
@@ -118,16 +118,16 @@ export interface ErrorResponse {
  * @constructor
  * An invoice resource can be used download a PDF version of an invoice.
  *
- * @member {object} [downloadUrl] A secure link to download the PDF version of
- * an invoice. The link will cease to work after its expiry time is reached.
- * @member {date} [downloadUrl.expiryTime] The time in UTC at which this
+ * @property {object} [downloadUrl] A secure link to download the PDF version
+ * of an invoice. The link will cease to work after its expiry time is reached.
+ * @property {date} [downloadUrl.expiryTime] The time in UTC at which this
  * download URL will expire.
- * @member {string} [downloadUrl.url] The URL to the PDF file.
- * @member {date} [invoicePeriodStartDate] The start of the date range covered
- * by the invoice.
- * @member {date} [invoicePeriodEndDate] The end of the date range covered by
+ * @property {string} [downloadUrl.url] The URL to the PDF file.
+ * @property {date} [invoicePeriodStartDate] The start of the date range
+ * covered by the invoice.
+ * @property {date} [invoicePeriodEndDate] The end of the date range covered by
  * the invoice.
- * @member {array} [billingPeriodIds] Array of billing perdiod ids that the
+ * @property {array} [billingPeriodIds] Array of billing perdiod ids that the
  * invoice is attributed to.
  */
 export interface Invoice extends Resource {
@@ -143,10 +143,10 @@ export interface Invoice extends Resource {
  * @constructor
  * The object that represents the operation.
  *
- * @member {string} [provider] Service provider: Microsoft.Billing.
- * @member {string} [resource] Resource on which the operation is performed:
+ * @property {string} [provider] Service provider: Microsoft.Billing.
+ * @property {string} [resource] Resource on which the operation is performed:
  * Invoice, etc.
- * @member {string} [operation] Operation type: Read, write, delete, etc.
+ * @property {string} [operation] Operation type: Read, write, delete, etc.
  */
 export interface OperationDisplay {
   readonly provider?: string;
@@ -160,12 +160,12 @@ export interface OperationDisplay {
  * @constructor
  * A Billing REST API operation.
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}.
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Service provider: Microsoft.Billing.
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}.
+ * @property {object} [display] The object that represents the operation.
+ * @property {string} [display.provider] Service provider: Microsoft.Billing.
+ * @property {string} [display.resource] Resource on which the operation is
  * performed: Invoice, etc.
- * @member {string} [display.operation] Operation type: Read, write, delete,
+ * @property {string} [display.operation] Operation type: Read, write, delete,
  * etc.
  */
 export interface Operation {
@@ -180,7 +180,7 @@ export interface Operation {
  * @constructor
  * Result of listing enrollment accounts.
  *
- * @member {string} [nextLink] The link (url) to the next page of results.
+ * @property {string} [nextLink] The link (url) to the next page of results.
  */
 export interface EnrollmentAccountListResult extends Array<EnrollmentAccount> {
   readonly nextLink?: string;
@@ -193,7 +193,7 @@ export interface EnrollmentAccountListResult extends Array<EnrollmentAccount> {
  * Result of listing billing periods. It contains a list of available billing
  * periods in reverse chronological order.
  *
- * @member {string} [nextLink] The link (url) to the next page of results.
+ * @property {string} [nextLink] The link (url) to the next page of results.
  */
 export interface BillingPeriodsListResult extends Array<BillingPeriod> {
   readonly nextLink?: string;
@@ -206,7 +206,7 @@ export interface BillingPeriodsListResult extends Array<BillingPeriod> {
  * Result of listing invoices. It contains a list of available invoices in
  * reverse chronological order.
  *
- * @member {string} [nextLink] The link (url) to the next page of results.
+ * @property {string} [nextLink] The link (url) to the next page of results.
  */
 export interface InvoicesListResult extends Array<Invoice> {
   readonly nextLink?: string;
@@ -219,7 +219,7 @@ export interface InvoicesListResult extends Array<Invoice> {
  * Result listing billing operations. It contains a list of operations and a
  * URL link to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {

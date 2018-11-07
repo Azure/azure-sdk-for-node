@@ -22,11 +22,11 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Azure resource
  *
- * @member {string} [id] Specifies the resource ID.
- * @member {string} [name] Specifies the name of the resource.
- * @member {string} location Specifies the location of the resource.
- * @member {string} [type] Specifies the type of the resource.
- * @member {object} [tags] Contains resource tags defined as key/value pairs.
+ * @property {string} [id] Specifies the resource ID.
+ * @property {string} [name] Specifies the name of the resource.
+ * @property {string} location Specifies the location of the resource.
+ * @property {string} [type] Specifies the type of the resource.
+ * @property {object} [tags] Contains resource tags defined as key/value pairs.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -42,8 +42,8 @@ export interface Resource extends BaseResource {
  * @constructor
  * Error detail information.
  *
- * @member {string} code Error code.
- * @member {string} message Error message.
+ * @property {string} code Error code.
+ * @property {string} message Error message.
  */
 export interface ErrorDetail {
   code: string;
@@ -56,9 +56,9 @@ export interface ErrorDetail {
  * @constructor
  * Error response information.
  *
- * @member {string} code Error code.
- * @member {string} message Error message.
- * @member {array} [details] An array of error detail objects.
+ * @property {string} code Error code.
+ * @property {string} message Error message.
+ * @property {array} [details] An array of error detail objects.
  */
 export interface ErrorResponse {
   code: string;
@@ -72,10 +72,10 @@ export interface ErrorResponse {
  * @constructor
  * Wrapper for error response to follow ARM guidelines.
  *
- * @member {object} [error] The error response.
- * @member {string} [error.code] Error code.
- * @member {string} [error.message] Error message.
- * @member {array} [error.details] An array of error detail objects.
+ * @property {object} [error] The error response.
+ * @property {string} [error.code] Error code.
+ * @property {string} [error.message] Error message.
+ * @property {array} [error.details] An array of error detail objects.
  */
 export interface ErrorResponseWrapper {
   error?: ErrorResponse;
@@ -87,7 +87,7 @@ export interface ErrorResponseWrapper {
  * @constructor
  * Properties of Storage Account.
  *
- * @member {string} [resourceId] ARM resource ID of the Azure Storage Account
+ * @property {string} [resourceId] ARM resource ID of the Azure Storage Account
  * to store CLI specific files. If not provided one will be created. This
  * cannot be changed once the cluster is created.
  */
@@ -101,7 +101,7 @@ export interface StorageAccountProperties {
  * @constructor
  * Properties of Azure Container Registry.
  *
- * @member {string} [resourceId] ARM resource ID of the Azure Container
+ * @property {string} [resourceId] ARM resource ID of the Azure Container
  * Registry used to store Docker images for web services in the cluster. If not
  * provided one will be created. This cannot be changed once the cluster is
  * created.
@@ -117,8 +117,8 @@ export interface ContainerRegistryProperties {
  * The Azure service principal used by Kubernetes for configuring load
  * balancers
  *
- * @member {string} clientId The service principal client ID
- * @member {string} secret The service principal secret. This is not returned
+ * @property {string} clientId The service principal client ID
+ * @property {string} secret The service principal secret. This is not returned
  * in response of GET/PUT on the resource. To see this please call listKeys.
  */
 export interface ServicePrincipalProperties {
@@ -132,15 +132,16 @@ export interface ServicePrincipalProperties {
  * @constructor
  * Kubernetes cluster specific properties
  *
- * @member {object} servicePrincipal The Azure Service Principal used by
+ * @property {object} [servicePrincipal] The Azure Service Principal used by
  * Kubernetes
- * @member {string} [servicePrincipal.clientId] The service principal client ID
- * @member {string} [servicePrincipal.secret] The service principal secret.
+ * @property {string} [servicePrincipal.clientId] The service principal client
+ * ID
+ * @property {string} [servicePrincipal.secret] The service principal secret.
  * This is not returned in response of GET/PUT on the resource. To see this
  * please call listKeys.
  */
 export interface KubernetesClusterProperties {
-  servicePrincipal: ServicePrincipalProperties;
+  servicePrincipal?: ServicePrincipalProperties;
 }
 
 /**
@@ -149,11 +150,11 @@ export interface KubernetesClusterProperties {
  * @constructor
  * Information about a system service deployed in the cluster
  *
- * @member {string} systemServiceType The system service type. Possible values
- * include: 'None', 'ScoringFrontEnd', 'BatchFrontEnd'
- * @member {string} [publicIpAddress] The public IP address of the system
+ * @property {string} systemServiceType The system service type. Possible
+ * values include: 'None', 'ScoringFrontEnd', 'BatchFrontEnd'
+ * @property {string} [publicIpAddress] The public IP address of the system
  * service
- * @member {string} [version] The state of the system service
+ * @property {string} [version] The state of the system service
  */
 export interface SystemService {
   systemServiceType: string;
@@ -167,25 +168,27 @@ export interface SystemService {
  * @constructor
  * Information about the container service backing the cluster
  *
- * @member {string} [clusterFqdn] The FQDN of the cluster.
- * @member {string} orchestratorType Type of orchestrator. It cannot be changed
- * once the cluster is created. Possible values include: 'Kubernetes', 'None'
- * @member {object} orchestratorProperties Orchestrator specific properties
- * @member {object} [orchestratorProperties.servicePrincipal] The Azure Service
- * Principal used by Kubernetes
- * @member {string} [orchestratorProperties.servicePrincipal.clientId] The
+ * @property {string} [clusterFqdn] The FQDN of the cluster.
+ * @property {string} orchestratorType Type of orchestrator. It cannot be
+ * changed once the cluster is created. Possible values include: 'Kubernetes',
+ * 'None'
+ * @property {object} [orchestratorProperties] Orchestrator specific properties
+ * @property {object} [orchestratorProperties.servicePrincipal] The Azure
+ * Service Principal used by Kubernetes
+ * @property {string} [orchestratorProperties.servicePrincipal.clientId] The
  * service principal client ID
- * @member {string} [orchestratorProperties.servicePrincipal.secret] The
+ * @property {string} [orchestratorProperties.servicePrincipal.secret] The
  * service principal secret. This is not returned in response of GET/PUT on the
  * resource. To see this please call listKeys.
- * @member {array} [systemServices] The system services deployed to the cluster
- * @member {number} [masterCount] The number of master nodes in the container
+ * @property {array} [systemServices] The system services deployed to the
+ * cluster
+ * @property {number} [masterCount] The number of master nodes in the container
  * service. Default value: 1 .
- * @member {number} [agentCount] The number of agent nodes in the Container
+ * @property {number} [agentCount] The number of agent nodes in the Container
  * Service. This can be changed to scale the cluster. Default value: 2 .
- * @member {string} [agentVmSize] The Azure VM size of the agent VM nodes. This
- * cannot be changed once the cluster is created. This list is non exhaustive;
- * refer to
+ * @property {string} [agentVmSize] The Azure VM size of the agent VM nodes.
+ * This cannot be changed once the cluster is created. This list is non
+ * exhaustive; refer to
  * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes for
  * the possible VM sizes. Possible values include: 'Standard_A0',
  * 'Standard_A1', 'Standard_A2', 'Standard_A3', 'Standard_A4', 'Standard_A5',
@@ -204,7 +207,7 @@ export interface SystemService {
 export interface AcsClusterProperties {
   readonly clusterFqdn?: string;
   orchestratorType: string;
-  orchestratorProperties: KubernetesClusterProperties;
+  orchestratorProperties?: KubernetesClusterProperties;
   systemServices?: SystemService[];
   masterCount?: number;
   agentCount?: number;
@@ -217,7 +220,7 @@ export interface AcsClusterProperties {
  * @constructor
  * Properties of App Insights.
  *
- * @member {string} [resourceId] ARM resource ID of the App Insights.
+ * @property {string} [resourceId] ARM resource ID of the App Insights.
  */
 export interface AppInsightsProperties {
   resourceId?: string;
@@ -230,15 +233,14 @@ export interface AppInsightsProperties {
  * SSL configuration. If configured data-plane calls to user services will be
  * exposed over SSL only.
  *
- * @member {string} [status] SSL status. Allowed values are Enabled and
+ * @property {string} [status] SSL status. Allowed values are Enabled and
  * Disabled. Possible values include: 'Enabled', 'Disabled'. Default value:
  * 'Enabled' .
- * @member {string} [cert] The SSL cert data in PEM format encoded as base64
- * string
- * @member {string} [key] The SSL key data in PEM format encoded as base64
- * string. This is not returned in response of GET/PUT on the resource. To see
- * this please call listKeys API.
- * @member {string} [cname] The CName of the certificate.
+ * @property {string} [cert] The SSL cert data in PEM format.
+ * @property {string} [key] The SSL key data in PEM format. This is not
+ * returned in response of GET/PUT on the resource. To see this please call
+ * listKeys API.
+ * @property {string} [cname] The CName of the certificate.
  */
 export interface SslConfiguration {
   status?: string;
@@ -254,10 +256,10 @@ export interface SslConfiguration {
  * Global service auth configuration properties. These are the data-plane
  * authorization keys and are used if a service doesn't define it's own.
  *
- * @member {string} primaryAuthKeyHash The primary auth key hash. This is not
+ * @property {string} primaryAuthKeyHash The primary auth key hash. This is not
  * returned in response of GET/PUT on the resource.. To see this please call
  * listKeys API.
- * @member {string} secondaryAuthKeyHash The secondary auth key hash. This is
+ * @property {string} secondaryAuthKeyHash The secondary auth key hash. This is
  * not returned in response of GET/PUT on the resource.. To see this please
  * call listKeys API.
  */
@@ -272,15 +274,15 @@ export interface ServiceAuthConfiguration {
  * @constructor
  * AutoScale configuration properties.
  *
- * @member {string} [status] If auto-scale is enabled for all services. Each
+ * @property {string} [status] If auto-scale is enabled for all services. Each
  * service can turn it off individually. Possible values include: 'Enabled',
  * 'Disabled'. Default value: 'Disabled' .
- * @member {number} [minReplicas] The minimum number of replicas for each
+ * @property {number} [minReplicas] The minimum number of replicas for each
  * service. Default value: 1 .
- * @member {number} [maxReplicas] The maximum number of replicas for each
+ * @property {number} [maxReplicas] The maximum number of replicas for each
  * service. Default value: 100 .
- * @member {number} [targetUtilization] The target utilization.
- * @member {number} [refreshPeriodInSeconds] Refresh period in seconds.
+ * @property {number} [targetUtilization] The target utilization.
+ * @property {number} [refreshPeriodInSeconds] Refresh period in seconds.
  */
 export interface AutoScaleConfiguration {
   status?: string;
@@ -296,45 +298,46 @@ export interface AutoScaleConfiguration {
  * @constructor
  * Global configuration for services in the cluster.
  *
- * @member {object} [additionalProperties] Unmatched properties from the
- * message are deserialized this collection
- * @member {string} [etag] The configuartion ETag for updates.
- * @member {object} [ssl] The SSL configuration properties
- * @member {string} [ssl.status] SSL status. Allowed values are Enabled and
+ * @property {string} [etag] The configuartion ETag for updates.
+ * @property {object} [ssl] The SSL configuration properties
+ * @property {string} [ssl.status] SSL status. Allowed values are Enabled and
  * Disabled. Possible values include: 'Enabled', 'Disabled'
- * @member {string} [ssl.cert] The SSL cert data in PEM format encoded as
- * base64 string
- * @member {string} [ssl.key] The SSL key data in PEM format encoded as base64
- * string. This is not returned in response of GET/PUT on the resource. To see
- * this please call listKeys API.
- * @member {string} [ssl.cname] The CName of the certificate.
- * @member {object} [serviceAuth] Optional global authorization keys for all
+ * @property {string} [ssl.cert] The SSL cert data in PEM format.
+ * @property {string} [ssl.key] The SSL key data in PEM format. This is not
+ * returned in response of GET/PUT on the resource. To see this please call
+ * listKeys API.
+ * @property {string} [ssl.cname] The CName of the certificate.
+ * @property {object} [serviceAuth] Optional global authorization keys for all
  * user services deployed in cluster. These are used if the service does not
  * have auth keys.
- * @member {string} [serviceAuth.primaryAuthKeyHash] The primary auth key hash.
- * This is not returned in response of GET/PUT on the resource.. To see this
- * please call listKeys API.
- * @member {string} [serviceAuth.secondaryAuthKeyHash] The secondary auth key
+ * @property {string} [serviceAuth.primaryAuthKeyHash] The primary auth key
  * hash. This is not returned in response of GET/PUT on the resource.. To see
  * this please call listKeys API.
- * @member {object} [autoScale] The auto-scale configuration
- * @member {string} [autoScale.status] If auto-scale is enabled for all
+ * @property {string} [serviceAuth.secondaryAuthKeyHash] The secondary auth key
+ * hash. This is not returned in response of GET/PUT on the resource.. To see
+ * this please call listKeys API.
+ * @property {object} [autoScale] The auto-scale configuration
+ * @property {string} [autoScale.status] If auto-scale is enabled for all
  * services. Each service can turn it off individually. Possible values
  * include: 'Enabled', 'Disabled'
- * @member {number} [autoScale.minReplicas] The minimum number of replicas for
- * each service.
- * @member {number} [autoScale.maxReplicas] The maximum number of replicas for
- * each service.
- * @member {number} [autoScale.targetUtilization] The target utilization.
- * @member {number} [autoScale.refreshPeriodInSeconds] Refresh period in
+ * @property {number} [autoScale.minReplicas] The minimum number of replicas
+ * for each service.
+ * @property {number} [autoScale.maxReplicas] The maximum number of replicas
+ * for each service.
+ * @property {number} [autoScale.targetUtilization] The target utilization.
+ * @property {number} [autoScale.refreshPeriodInSeconds] Refresh period in
  * seconds.
  */
 export interface GlobalServiceConfiguration {
-  additionalProperties?: { [propertyName: string]: any };
   etag?: string;
   ssl?: SslConfiguration;
   serviceAuth?: ServiceAuthConfiguration;
   autoScale?: AutoScaleConfiguration;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -343,51 +346,52 @@ export interface GlobalServiceConfiguration {
  * @constructor
  * Instance of an Azure ML Operationalization Cluster resource.
  *
- * @member {string} [description] The description of the cluster.
- * @member {date} [createdOn] The date and time when the cluster was created.
- * @member {date} [modifiedOn] The date and time when the cluster was last
+ * @property {string} [description] The description of the cluster.
+ * @property {date} [createdOn] The date and time when the cluster was created.
+ * @property {date} [modifiedOn] The date and time when the cluster was last
  * modified.
- * @member {string} [provisioningState] The provision state of the cluster.
+ * @property {string} [provisioningState] The provision state of the cluster.
  * Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
  * Possible values include: 'Unknown', 'Updating', 'Creating', 'Deleting',
  * 'Succeeded', 'Failed', 'Canceled'
- * @member {array} [provisioningErrors] List of provisioning errors reported by
- * the resource provider.
- * @member {string} clusterType The cluster type. Possible values include:
+ * @property {array} [provisioningErrors] List of provisioning errors reported
+ * by the resource provider.
+ * @property {string} clusterType The cluster type. Possible values include:
  * 'ACS', 'Local'
- * @member {object} [storageAccount] Storage Account properties.
- * @member {string} [storageAccount.resourceId] ARM resource ID of the Azure
+ * @property {object} [storageAccount] Storage Account properties.
+ * @property {string} [storageAccount.resourceId] ARM resource ID of the Azure
  * Storage Account to store CLI specific files. If not provided one will be
  * created. This cannot be changed once the cluster is created.
- * @member {object} [containerRegistry] Container Registry properties.
- * @member {string} [containerRegistry.resourceId] ARM resource ID of the Azure
- * Container Registry used to store Docker images for web services in the
+ * @property {object} [containerRegistry] Container Registry properties.
+ * @property {string} [containerRegistry.resourceId] ARM resource ID of the
+ * Azure Container Registry used to store Docker images for web services in the
  * cluster. If not provided one will be created. This cannot be changed once
  * the cluster is created.
- * @member {object} [containerService] Parameters for the Azure Container
+ * @property {object} [containerService] Parameters for the Azure Container
  * Service cluster.
- * @member {string} [containerService.clusterFqdn] The FQDN of the cluster.
- * @member {string} [containerService.orchestratorType] Type of orchestrator.
+ * @property {string} [containerService.clusterFqdn] The FQDN of the cluster.
+ * @property {string} [containerService.orchestratorType] Type of orchestrator.
  * It cannot be changed once the cluster is created. Possible values include:
  * 'Kubernetes', 'None'
- * @member {object} [containerService.orchestratorProperties] Orchestrator
+ * @property {object} [containerService.orchestratorProperties] Orchestrator
  * specific properties
- * @member {object} [containerService.orchestratorProperties.servicePrincipal]
- * The Azure Service Principal used by Kubernetes
- * @member {string}
+ * @property {object}
+ * [containerService.orchestratorProperties.servicePrincipal] The Azure Service
+ * Principal used by Kubernetes
+ * @property {string}
  * [containerService.orchestratorProperties.servicePrincipal.clientId] The
  * service principal client ID
- * @member {string}
+ * @property {string}
  * [containerService.orchestratorProperties.servicePrincipal.secret] The
  * service principal secret. This is not returned in response of GET/PUT on the
  * resource. To see this please call listKeys.
- * @member {array} [containerService.systemServices] The system services
+ * @property {array} [containerService.systemServices] The system services
  * deployed to the cluster
- * @member {number} [containerService.masterCount] The number of master nodes
+ * @property {number} [containerService.masterCount] The number of master nodes
  * in the container service.
- * @member {number} [containerService.agentCount] The number of agent nodes in
- * the Container Service. This can be changed to scale the cluster.
- * @member {string} [containerService.agentVmSize] The Azure VM size of the
+ * @property {number} [containerService.agentCount] The number of agent nodes
+ * in the Container Service. This can be changed to scale the cluster.
+ * @property {string} [containerService.agentVmSize] The Azure VM size of the
  * agent VM nodes. This cannot be changed once the cluster is created. This
  * list is non exhaustive; refer to
  * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes for
@@ -403,49 +407,48 @@ export interface GlobalServiceConfiguration {
  * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
  * 'Standard_DS13', 'Standard_DS14', 'Standard_GS1', 'Standard_GS2',
  * 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'
- * @member {object} [appInsights] AppInsights configuration.
- * @member {string} [appInsights.resourceId] ARM resource ID of the App
+ * @property {object} [appInsights] AppInsights configuration.
+ * @property {string} [appInsights.resourceId] ARM resource ID of the App
  * Insights.
- * @member {object} [globalServiceConfiguration] Contains global configuration
- * for the web services in the cluster.
- * @member {object} [globalServiceConfiguration.additionalProperties] Unmatched
- * properties from the message are deserialized this collection
- * @member {string} [globalServiceConfiguration.etag] The configuartion ETag
+ * @property {object} [globalServiceConfiguration] Contains global
+ * configuration for the web services in the cluster.
+ * @property {string} [globalServiceConfiguration.etag] The configuartion ETag
  * for updates.
- * @member {object} [globalServiceConfiguration.ssl] The SSL configuration
+ * @property {object} [globalServiceConfiguration.ssl] The SSL configuration
  * properties
- * @member {string} [globalServiceConfiguration.ssl.status] SSL status. Allowed
- * values are Enabled and Disabled. Possible values include: 'Enabled',
+ * @property {string} [globalServiceConfiguration.ssl.status] SSL status.
+ * Allowed values are Enabled and Disabled. Possible values include: 'Enabled',
  * 'Disabled'
- * @member {string} [globalServiceConfiguration.ssl.cert] The SSL cert data in
- * PEM format encoded as base64 string
- * @member {string} [globalServiceConfiguration.ssl.key] The SSL key data in
- * PEM format encoded as base64 string. This is not returned in response of
- * GET/PUT on the resource. To see this please call listKeys API.
- * @member {string} [globalServiceConfiguration.ssl.cname] The CName of the
+ * @property {string} [globalServiceConfiguration.ssl.cert] The SSL cert data
+ * in PEM format.
+ * @property {string} [globalServiceConfiguration.ssl.key] The SSL key data in
+ * PEM format. This is not returned in response of GET/PUT on the resource. To
+ * see this please call listKeys API.
+ * @property {string} [globalServiceConfiguration.ssl.cname] The CName of the
  * certificate.
- * @member {object} [globalServiceConfiguration.serviceAuth] Optional global
+ * @property {object} [globalServiceConfiguration.serviceAuth] Optional global
  * authorization keys for all user services deployed in cluster. These are used
  * if the service does not have auth keys.
- * @member {string} [globalServiceConfiguration.serviceAuth.primaryAuthKeyHash]
- * The primary auth key hash. This is not returned in response of GET/PUT on
- * the resource.. To see this please call listKeys API.
- * @member {string}
+ * @property {string}
+ * [globalServiceConfiguration.serviceAuth.primaryAuthKeyHash] The primary auth
+ * key hash. This is not returned in response of GET/PUT on the resource.. To
+ * see this please call listKeys API.
+ * @property {string}
  * [globalServiceConfiguration.serviceAuth.secondaryAuthKeyHash] The secondary
  * auth key hash. This is not returned in response of GET/PUT on the resource..
  * To see this please call listKeys API.
- * @member {object} [globalServiceConfiguration.autoScale] The auto-scale
+ * @property {object} [globalServiceConfiguration.autoScale] The auto-scale
  * configuration
- * @member {string} [globalServiceConfiguration.autoScale.status] If auto-scale
- * is enabled for all services. Each service can turn it off individually.
- * Possible values include: 'Enabled', 'Disabled'
- * @member {number} [globalServiceConfiguration.autoScale.minReplicas] The
+ * @property {string} [globalServiceConfiguration.autoScale.status] If
+ * auto-scale is enabled for all services. Each service can turn it off
+ * individually. Possible values include: 'Enabled', 'Disabled'
+ * @property {number} [globalServiceConfiguration.autoScale.minReplicas] The
  * minimum number of replicas for each service.
- * @member {number} [globalServiceConfiguration.autoScale.maxReplicas] The
+ * @property {number} [globalServiceConfiguration.autoScale.maxReplicas] The
  * maximum number of replicas for each service.
- * @member {number} [globalServiceConfiguration.autoScale.targetUtilization]
+ * @property {number} [globalServiceConfiguration.autoScale.targetUtilization]
  * The target utilization.
- * @member {number}
+ * @property {number}
  * [globalServiceConfiguration.autoScale.refreshPeriodInSeconds] Refresh period
  * in seconds.
  */
@@ -469,11 +472,11 @@ export interface OperationalizationCluster extends Resource {
  * @constructor
  * Parameters for PATCH operation on an operationalization cluster
  *
- * @member {object} [tags] Gets or sets a list of key value pairs that describe
- * the resource. These tags can be used in viewing and grouping this resource
- * (across resource groups). A maximum of 15 tags can be provided for a
- * resource. Each tag must have a key no greater in length than 128 characters
- * and a value no greater in length than 256 characters.
+ * @property {object} [tags] Gets or sets a list of key value pairs that
+ * describe the resource. These tags can be used in viewing and grouping this
+ * resource (across resource groups). A maximum of 15 tags can be provided for
+ * a resource. Each tag must have a key no greater in length than 128
+ * characters and a value no greater in length than 256 characters.
  */
 export interface OperationalizationClusterUpdateParameters {
   tags?: { [propertyName: string]: string };
@@ -485,9 +488,9 @@ export interface OperationalizationClusterUpdateParameters {
  * @constructor
  * Access information for the storage account.
  *
- * @member {string} [resourceId] The ARM resource ID of the storage account.
- * @member {string} [primaryKey] The primary key of the storage account.
- * @member {string} [secondaryKey] The secondary key of the storage account.
+ * @property {string} [resourceId] The ARM resource ID of the storage account.
+ * @property {string} [primaryKey] The primary key of the storage account.
+ * @property {string} [secondaryKey] The secondary key of the storage account.
  */
 export interface StorageAccountCredentials {
   readonly resourceId?: string;
@@ -502,11 +505,11 @@ export interface StorageAccountCredentials {
  * Information about the Azure Container Registry which contains the images
  * deployed to the cluster.
  *
- * @member {string} [loginServer] The ACR login server name. User name is the
+ * @property {string} [loginServer] The ACR login server name. User name is the
  * first part of the FQDN.
- * @member {string} [password] The ACR primary password.
- * @member {string} [password2] The ACR secondary password.
- * @member {string} [username] The ACR login username.
+ * @property {string} [password] The ACR primary password.
+ * @property {string} [password2] The ACR secondary password.
+ * @property {string} [username] The ACR login username.
  */
 export interface ContainerRegistryCredentials {
   readonly loginServer?: string;
@@ -522,16 +525,16 @@ export interface ContainerRegistryCredentials {
  * Information about the Azure Container Registry which contains the images
  * deployed to the cluster.
  *
- * @member {string} [acsKubeConfig] The ACS kube config file.
- * @member {object} [servicePrincipalConfiguration] Service principal
+ * @property {string} [acsKubeConfig] The ACS kube config file.
+ * @property {object} [servicePrincipalConfiguration] Service principal
  * configuration used by Kubernetes.
- * @member {string} [servicePrincipalConfiguration.clientId] The service
+ * @property {string} [servicePrincipalConfiguration.clientId] The service
  * principal client ID
- * @member {string} [servicePrincipalConfiguration.secret] The service
+ * @property {string} [servicePrincipalConfiguration.secret] The service
  * principal secret. This is not returned in response of GET/PUT on the
  * resource. To see this please call listKeys.
- * @member {string} [imagePullSecretName] The ACR image pull secret name which
- * was created in Kubernetes.
+ * @property {string} [imagePullSecretName] The ACR image pull secret name
+ * which was created in Kubernetes.
  */
 export interface ContainerServiceCredentials {
   readonly acsKubeConfig?: string;
@@ -545,8 +548,8 @@ export interface ContainerServiceCredentials {
  * @constructor
  * AppInsights credentials.
  *
- * @member {string} [appId] The AppInsights application ID.
- * @member {string} [instrumentationKey] The AppInsights instrumentation key.
+ * @property {string} [appId] The AppInsights application ID.
+ * @property {string} [instrumentationKey] The AppInsights instrumentation key.
  * This is not returned in response of GET/PUT on the resource. To see this
  * please call listKeys API.
  */
@@ -561,54 +564,56 @@ export interface AppInsightsCredentials {
  * @constructor
  * Credentials to resources in the cluster.
  *
- * @member {object} [storageAccount] Credentials for the Storage Account.
- * @member {string} [storageAccount.resourceId] The ARM resource ID of the
+ * @property {object} [storageAccount] Credentials for the Storage Account.
+ * @property {string} [storageAccount.resourceId] The ARM resource ID of the
  * storage account.
- * @member {string} [storageAccount.primaryKey] The primary key of the storage
- * account.
- * @member {string} [storageAccount.secondaryKey] The secondary key of the
+ * @property {string} [storageAccount.primaryKey] The primary key of the
  * storage account.
- * @member {object} [containerRegistry] Credentials for Azure Container
+ * @property {string} [storageAccount.secondaryKey] The secondary key of the
+ * storage account.
+ * @property {object} [containerRegistry] Credentials for Azure Container
  * Registry.
- * @member {string} [containerRegistry.loginServer] The ACR login server name.
- * User name is the first part of the FQDN.
- * @member {string} [containerRegistry.password] The ACR primary password.
- * @member {string} [containerRegistry.password2] The ACR secondary password.
- * @member {string} [containerRegistry.username] The ACR login username.
- * @member {object} [containerService] Credentials for Azure Container Service.
- * @member {string} [containerService.acsKubeConfig] The ACS kube config file.
- * @member {object} [containerService.servicePrincipalConfiguration] Service
+ * @property {string} [containerRegistry.loginServer] The ACR login server
+ * name. User name is the first part of the FQDN.
+ * @property {string} [containerRegistry.password] The ACR primary password.
+ * @property {string} [containerRegistry.password2] The ACR secondary password.
+ * @property {string} [containerRegistry.username] The ACR login username.
+ * @property {object} [containerService] Credentials for Azure Container
+ * Service.
+ * @property {string} [containerService.acsKubeConfig] The ACS kube config
+ * file.
+ * @property {object} [containerService.servicePrincipalConfiguration] Service
  * principal configuration used by Kubernetes.
- * @member {string} [containerService.servicePrincipalConfiguration.clientId]
+ * @property {string} [containerService.servicePrincipalConfiguration.clientId]
  * The service principal client ID
- * @member {string} [containerService.servicePrincipalConfiguration.secret] The
- * service principal secret. This is not returned in response of GET/PUT on the
- * resource. To see this please call listKeys.
- * @member {string} [containerService.imagePullSecretName] The ACR image pull
+ * @property {string} [containerService.servicePrincipalConfiguration.secret]
+ * The service principal secret. This is not returned in response of GET/PUT on
+ * the resource. To see this please call listKeys.
+ * @property {string} [containerService.imagePullSecretName] The ACR image pull
  * secret name which was created in Kubernetes.
- * @member {object} [appInsights] Credentials for Azure AppInsights.
- * @member {string} [appInsights.appId] The AppInsights application ID.
- * @member {string} [appInsights.instrumentationKey] The AppInsights
+ * @property {object} [appInsights] Credentials for Azure AppInsights.
+ * @property {string} [appInsights.appId] The AppInsights application ID.
+ * @property {string} [appInsights.instrumentationKey] The AppInsights
  * instrumentation key. This is not returned in response of GET/PUT on the
  * resource. To see this please call listKeys API.
- * @member {object} [serviceAuthConfiguration] Global authorization keys for
+ * @property {object} [serviceAuthConfiguration] Global authorization keys for
  * all user services deployed in cluster. These are used if the service does
  * not have auth keys.
- * @member {string} [serviceAuthConfiguration.primaryAuthKeyHash] The primary
+ * @property {string} [serviceAuthConfiguration.primaryAuthKeyHash] The primary
  * auth key hash. This is not returned in response of GET/PUT on the resource..
  * To see this please call listKeys API.
- * @member {string} [serviceAuthConfiguration.secondaryAuthKeyHash] The
+ * @property {string} [serviceAuthConfiguration.secondaryAuthKeyHash] The
  * secondary auth key hash. This is not returned in response of GET/PUT on the
  * resource.. To see this please call listKeys API.
- * @member {object} [sslConfiguration] The SSL configuration for the services.
- * @member {string} [sslConfiguration.status] SSL status. Allowed values are
+ * @property {object} [sslConfiguration] The SSL configuration for the
+ * services.
+ * @property {string} [sslConfiguration.status] SSL status. Allowed values are
  * Enabled and Disabled. Possible values include: 'Enabled', 'Disabled'
- * @member {string} [sslConfiguration.cert] The SSL cert data in PEM format
- * encoded as base64 string
- * @member {string} [sslConfiguration.key] The SSL key data in PEM format
- * encoded as base64 string. This is not returned in response of GET/PUT on the
- * resource. To see this please call listKeys API.
- * @member {string} [sslConfiguration.cname] The CName of the certificate.
+ * @property {string} [sslConfiguration.cert] The SSL cert data in PEM format.
+ * @property {string} [sslConfiguration.key] The SSL key data in PEM format.
+ * This is not returned in response of GET/PUT on the resource. To see this
+ * please call listKeys API.
+ * @property {string} [sslConfiguration.cname] The CName of the certificate.
  */
 export interface OperationalizationClusterCredentials {
   storageAccount?: StorageAccountCredentials;
@@ -625,7 +630,7 @@ export interface OperationalizationClusterCredentials {
  * @constructor
  * Information about updates available for system services in a cluster.
  *
- * @member {string} [updatesAvailable] Yes if updates are available for the
+ * @property {string} [updatesAvailable] Yes if updates are available for the
  * system services, No if not. Possible values include: 'Yes', 'No'
  */
 export interface CheckSystemServicesUpdatesAvailableResponse {
@@ -638,12 +643,12 @@ export interface CheckSystemServicesUpdatesAvailableResponse {
  * @constructor
  * Response of the update system services API
  *
- * @member {string} [updateStatus] Update status. Possible values include:
+ * @property {string} [updateStatus] Update status. Possible values include:
  * 'Unknown', 'Updating', 'Creating', 'Deleting', 'Succeeded', 'Failed',
  * 'Canceled'
- * @member {date} [updateStartedOn] The date and time when the last system
+ * @property {date} [updateStartedOn] The date and time when the last system
  * services update was started.
- * @member {date} [updateCompletedOn] The date and time when the last system
+ * @property {date} [updateCompletedOn] The date and time when the last system
  * services update completed.
  */
 export interface UpdateSystemServicesResponse {
@@ -658,10 +663,10 @@ export interface UpdateSystemServicesResponse {
  * @constructor
  * Display of the operation.
  *
- * @member {string} [provider] The resource provider name.
- * @member {string} [resource] The resource name.
- * @member {string} [operation] The operation.
- * @member {string} [description] The description of the operation.
+ * @property {string} [provider] The resource provider name.
+ * @property {string} [resource] The resource name.
+ * @property {string} [operation] The operation.
+ * @property {string} [description] The description of the operation.
  */
 export interface ResourceOperationDisplay {
   provider?: string;
@@ -676,13 +681,13 @@ export interface ResourceOperationDisplay {
  * @constructor
  * Resource operation.
  *
- * @member {string} [name] Name of this operation.
- * @member {object} [display] Display of the operation.
- * @member {string} [display.provider] The resource provider name.
- * @member {string} [display.resource] The resource name.
- * @member {string} [display.operation] The operation.
- * @member {string} [display.description] The description of the operation.
- * @member {string} [origin] The operation origin.
+ * @property {string} [name] Name of this operation.
+ * @property {object} [display] Display of the operation.
+ * @property {string} [display.provider] The resource provider name.
+ * @property {string} [display.resource] The resource name.
+ * @property {string} [display.operation] The operation.
+ * @property {string} [display.description] The description of the operation.
+ * @property {string} [origin] The operation origin.
  */
 export interface ResourceOperation {
   name?: string;
@@ -696,7 +701,7 @@ export interface ResourceOperation {
  * @constructor
  * Available operation list.
  *
- * @member {array} [value] An array of available operations.
+ * @property {array} [value] An array of available operations.
  */
 export interface AvailableOperations {
   value?: ResourceOperation[];
@@ -709,7 +714,7 @@ export interface AvailableOperations {
  * @constructor
  * Paginated list of operationalization clusters.
  *
- * @member {string} [nextLink] A continuation link (absolute URI) to the next
+ * @property {string} [nextLink] A continuation link (absolute URI) to the next
  * page of results in the list.
  */
 export interface PaginatedOperationalizationClustersList extends Array<OperationalizationCluster> {

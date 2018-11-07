@@ -18,12 +18,29 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the ContainerHostMapping class.
+ * @constructor
+ * Container host mapping object specifying the Container host resource ID and
+ * its associated Controller resource.
+ *
+ * @property {string} [containerHostResourceId] ARM ID of the Container Host
+ * resource
+ * @property {string} [mappedControllerResourceId] ARM ID of the mapped
+ * Controller resource
+ */
+export interface ContainerHostMapping {
+  containerHostResourceId?: string;
+  readonly mappedControllerResourceId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Sku class.
  * @constructor
  * Model representing SKU for Azure Dev Spaces Controller.
  *
- * @member {string} [tier] The tier of the SKU for Azure Dev Spaces Controller.
- * Possible values include: 'Standard'
+ * @property {string} [tier] The tier of the SKU for Azure Dev Spaces
+ * Controller. Possible values include: 'Standard'
  */
 export interface Sku {
   tier?: string;
@@ -35,9 +52,9 @@ export interface Sku {
  * @constructor
  * An Azure resource.
  *
- * @member {string} [id] Fully qualified resource Id for the resource.
- * @member {string} [name] The name of the resource.
- * @member {string} [type] The type of the resource.
+ * @property {string} [id] Fully qualified resource Id for the resource.
+ * @property {string} [name] The name of the resource.
+ * @property {string} [type] The type of the resource.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -51,8 +68,8 @@ export interface Resource extends BaseResource {
  * @constructor
  * The resource model definition for a ARM tracked top level resource.
  *
- * @member {object} [tags] Tags for the Azure resource.
- * @member {string} [location] Region where the Azure resource is located.
+ * @property {object} [tags] Tags for the Azure resource.
+ * @property {string} [location] Region where the Azure resource is located.
  */
 export interface TrackedResource extends Resource {
   tags?: { [propertyName: string]: string };
@@ -63,18 +80,18 @@ export interface TrackedResource extends Resource {
  * @class
  * Initializes a new instance of the Controller class.
  * @constructor
- * @member {string} [provisioningState] Provisioning state of the Azure Dev
+ * @property {string} [provisioningState] Provisioning state of the Azure Dev
  * Spaces Controller. Possible values include: 'Succeeded', 'Failed',
- * 'Canceled', 'Updating', 'Creating', 'Deleting'
- * @member {string} hostSuffix DNS suffix for public endpoints running in the
+ * 'Canceled', 'Updating', 'Creating', 'Deleting', 'Deleted'
+ * @property {string} hostSuffix DNS suffix for public endpoints running in the
  * Azure Dev Spaces Controller.
- * @member {string} [dataPlaneFqdn] DNS name for accessing DataPlane services
- * @member {string} targetContainerHostResourceId Resource ID of the target
+ * @property {string} [dataPlaneFqdn] DNS name for accessing DataPlane services
+ * @property {string} targetContainerHostResourceId Resource ID of the target
  * container host
- * @member {string} targetContainerHostCredentialsBase64 Credentials of the
+ * @property {string} targetContainerHostCredentialsBase64 Credentials of the
  * target container host (base64).
- * @member {object} sku
- * @member {string} [sku.tier] The tier of the SKU for Azure Dev Spaces
+ * @property {object} sku
+ * @property {string} [sku.tier] The tier of the SKU for Azure Dev Spaces
  * Controller. Possible values include: 'Standard'
  */
 export interface Controller extends TrackedResource {
@@ -92,7 +109,7 @@ export interface Controller extends TrackedResource {
  * @constructor
  * Parameters for updating an Azure Dev Spaces Controller.
  *
- * @member {object} [tags] Tags for the Azure Dev Spaces Controller.
+ * @property {object} [tags] Tags for the Azure Dev Spaces Controller.
  */
 export interface ControllerUpdateParameters {
   tags?: { [propertyName: string]: string };
@@ -102,7 +119,10 @@ export interface ControllerUpdateParameters {
  * @class
  * Initializes a new instance of the OrchestratorSpecificConnectionDetails class.
  * @constructor
- * @member {string} instanceType Polymorphic Discriminator
+ * Base class for types that supply values used to connect to container
+ * orchestrators
+ *
+ * @property {string} instanceType Polymorphic Discriminator
  */
 export interface OrchestratorSpecificConnectionDetails {
   instanceType: string;
@@ -112,14 +132,14 @@ export interface OrchestratorSpecificConnectionDetails {
  * @class
  * Initializes a new instance of the ControllerConnectionDetails class.
  * @constructor
- * @member {string} [authKey] Authentication key for communicating with
+ * @property {string} [authKey] Authentication key for communicating with
  * services.
- * @member {string} [workspaceStorageAccountName] Workspace storage account
+ * @property {string} [workspaceStorageAccountName] Workspace storage account
  * name.
- * @member {string} [workspaceStorageSasToken] Workspace storage account SAS
+ * @property {string} [workspaceStorageSasToken] Workspace storage account SAS
  * token.
- * @member {object} [orchestratorSpecificConnectionDetails]
- * @member {string} [orchestratorSpecificConnectionDetails.instanceType]
+ * @property {object} [orchestratorSpecificConnectionDetails]
+ * @property {string} [orchestratorSpecificConnectionDetails.instanceType]
  * Polymorphic Discriminator
  */
 export interface ControllerConnectionDetails {
@@ -133,8 +153,8 @@ export interface ControllerConnectionDetails {
  * @class
  * Initializes a new instance of the ControllerConnectionDetailsList class.
  * @constructor
- * @member {array} [connectionDetailsList] List of Azure Dev Spaces Controller
- * connection details.
+ * @property {array} [connectionDetailsList] List of Azure Dev Spaces
+ * Controller connection details.
  */
 export interface ControllerConnectionDetailsList {
   connectionDetailsList?: ControllerConnectionDetails[];
@@ -144,10 +164,10 @@ export interface ControllerConnectionDetailsList {
  * @class
  * Initializes a new instance of the ResourceProviderOperationDisplay class.
  * @constructor
- * @member {string} [provider] Name of the resource provider.
- * @member {string} [resource] Name of the resource type.
- * @member {string} [operation] Name of the resource provider operation.
- * @member {string} [description] Description of the resource provider
+ * @property {string} [provider] Name of the resource provider.
+ * @property {string} [resource] Name of the resource type.
+ * @property {string} [operation] Name of the resource provider operation.
+ * @property {string} [description] Description of the resource provider
  * operation.
  */
 export interface ResourceProviderOperationDisplay {
@@ -161,14 +181,14 @@ export interface ResourceProviderOperationDisplay {
  * @class
  * Initializes a new instance of the ResourceProviderOperationDefinition class.
  * @constructor
- * @member {string} [name] Resource provider operation name.
- * @member {object} [display]
- * @member {string} [display.provider] Name of the resource provider.
- * @member {string} [display.resource] Name of the resource type.
- * @member {string} [display.operation] Name of the resource provider
+ * @property {string} [name] Resource provider operation name.
+ * @property {object} [display]
+ * @property {string} [display.provider] Name of the resource provider.
+ * @property {string} [display.resource] Name of the resource type.
+ * @property {string} [display.operation] Name of the resource provider
  * operation.
- * @member {string} [display.description] Description of the resource provider
- * operation.
+ * @property {string} [display.description] Description of the resource
+ * provider operation.
  */
 export interface ResourceProviderOperationDefinition {
   name?: string;
@@ -179,7 +199,9 @@ export interface ResourceProviderOperationDefinition {
  * @class
  * Initializes a new instance of the KubernetesConnectionDetails class.
  * @constructor
- * @member {string} [kubeConfig] Gets the kubeconfig for the cluster.
+ * Contains information used to connect to a Kubernetes cluster
+ *
+ * @property {string} [kubeConfig] Gets the kubeconfig for the cluster.
  */
 export interface KubernetesConnectionDetails extends OrchestratorSpecificConnectionDetails {
   kubeConfig?: string;
@@ -189,9 +211,9 @@ export interface KubernetesConnectionDetails extends OrchestratorSpecificConnect
  * @class
  * Initializes a new instance of the ErrorDetails class.
  * @constructor
- * @member {string} [code] Status code for the error.
- * @member {string} [message] Error message describing the error in detail.
- * @member {string} [target] The target of the particular error.
+ * @property {string} [code] Status code for the error.
+ * @property {string} [message] Error message describing the error in detail.
+ * @property {string} [target] The target of the particular error.
  */
 export interface ErrorDetails {
   readonly code?: string;
@@ -206,11 +228,11 @@ export interface ErrorDetails {
  * Error response indicates that the service is not able to process the
  * incoming request. The reason is provided in the error message.
  *
- * @member {object} [error] The details of the error.
- * @member {string} [error.code] Status code for the error.
- * @member {string} [error.message] Error message describing the error in
+ * @property {object} [error] The details of the error.
+ * @property {string} [error.code] Status code for the error.
+ * @property {string} [error.message] Error message describing the error in
  * detail.
- * @member {string} [error.target] The target of the particular error.
+ * @property {string} [error.target] The target of the particular error.
  */
 export interface ErrorResponse {
   error?: ErrorDetails;
@@ -221,7 +243,7 @@ export interface ErrorResponse {
  * @class
  * Initializes a new instance of the ControllerList class.
  * @constructor
- * @member {string} [nextLink] The URI that can be used to request the next
+ * @property {string} [nextLink] The URI that can be used to request the next
  * page for list of Azure Dev Spaces Controllers.
  */
 export interface ControllerList extends Array<Controller> {
@@ -232,7 +254,7 @@ export interface ControllerList extends Array<Controller> {
  * @class
  * Initializes a new instance of the ResourceProviderOperationList class.
  * @constructor
- * @member {string} [nextLink] The URI that can be used to request the next
+ * @property {string} [nextLink] The URI that can be used to request the next
  * page for list of Azure operations.
  */
 export interface ResourceProviderOperationList extends Array<ResourceProviderOperationDefinition> {

@@ -22,7 +22,7 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Lock owner properties.
  *
- * @member {string} [applicationId] The application ID of the lock owner.
+ * @property {string} [applicationId] The application ID of the lock owner.
  */
 export interface ManagementLockOwner {
   applicationId?: string;
@@ -34,18 +34,18 @@ export interface ManagementLockOwner {
  * @constructor
  * The lock information.
  *
- * @member {string} level The level of the lock. Possible values are:
+ * @property {string} level The level of the lock. Possible values are:
  * NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users
  * are able to read and modify the resources, but not delete. ReadOnly means
  * authorized users can only read from a resource, but they can't modify or
  * delete it. Possible values include: 'NotSpecified', 'CanNotDelete',
  * 'ReadOnly'
- * @member {string} [notes] Notes about the lock. Maximum of 512 characters.
- * @member {array} [owners] The owners of the lock.
- * @member {string} [id] The resource ID of the lock.
- * @member {string} [type] The resource type of the lock -
+ * @property {string} [notes] Notes about the lock. Maximum of 512 characters.
+ * @property {array} [owners] The owners of the lock.
+ * @property {string} [id] The resource ID of the lock.
+ * @property {string} [type] The resource type of the lock -
  * Microsoft.Authorization/locks.
- * @member {string} [name] The name of the lock.
+ * @property {string} [name] The name of the lock.
  */
 export interface ManagementLockObject extends BaseResource {
   level: string;
@@ -62,10 +62,10 @@ export interface ManagementLockObject extends BaseResource {
  * @constructor
  * The object that represents the operation.
  *
- * @member {string} [provider] Service provider: Microsoft.Authorization
- * @member {string} [resource] Resource on which the operation is performed:
+ * @property {string} [provider] Service provider: Microsoft.Authorization
+ * @property {string} [resource] Resource on which the operation is performed:
  * Profile, endpoint, etc.
- * @member {string} [operation] Operation type: Read, write, delete, etc.
+ * @property {string} [operation] Operation type: Read, write, delete, etc.
  */
 export interface OperationDisplay {
   provider?: string;
@@ -79,13 +79,13 @@ export interface OperationDisplay {
  * @constructor
  * Microsoft.Authorization operation
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Service provider:
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] The object that represents the operation.
+ * @property {string} [display.provider] Service provider:
  * Microsoft.Authorization
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [display.resource] Resource on which the operation is
  * performed: Profile, endpoint, etc.
- * @member {string} [display.operation] Operation type: Read, write, delete,
+ * @property {string} [display.operation] Operation type: Read, write, delete,
  * etc.
  */
 export interface Operation {
@@ -101,7 +101,7 @@ export interface Operation {
  * Result of the request to list Microsoft.Authorization operations. It
  * contains a list of operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {
@@ -114,7 +114,7 @@ export interface OperationListResult extends Array<Operation> {
  * @constructor
  * The list of locks.
  *
- * @member {string} [nextLink] The URL to use for getting the next set of
+ * @property {string} [nextLink] The URL to use for getting the next set of
  * results.
  */
 export interface ManagementLockListResult extends Array<ManagementLockObject> {

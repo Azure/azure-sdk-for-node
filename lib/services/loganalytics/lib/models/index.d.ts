@@ -18,11 +18,11 @@ import * as moment from "moment";
  * The Analytics query. Learn more about the [Analytics query
  * syntax](https://azure.microsoft.com/documentation/articles/app-insights-analytics-reference/)
  *
- * @member {string} query The query to execute.
- * @member {string} [timespan] Optional. The timespan over which to query data.
- * This is an ISO8601 time period value.  This timespan is applied in addition
- * to any that are specified in the query expression.
- * @member {array} [workspaces] A list of workspaces that are included in the
+ * @property {string} query The query to execute.
+ * @property {string} [timespan] Optional. The timespan over which to query
+ * data. This is an ISO8601 time period value.  This timespan is applied in
+ * addition to any that are specified in the query expression.
+ * @property {array} [workspaces] A list of workspaces that are included in the
  * query.
  */
 export interface QueryBody {
@@ -39,8 +39,8 @@ export interface QueryBody {
  *
  * A column in a table.
  *
- * @member {string} [name] The name of this column.
- * @member {string} [type] The data type of this column.
+ * @property {string} [name] The name of this column.
+ * @property {string} [type] The data type of this column.
  */
 export interface Column {
   name?: string;
@@ -55,9 +55,9 @@ export interface Column {
  *
  * Contains the columns and rows for one table in a query response.
  *
- * @member {string} name The name of the table.
- * @member {array} columns The list of columns in this table.
- * @member {array} rows The resulting rows from this query.
+ * @property {string} name The name of the table.
+ * @property {array} columns The list of columns in this table.
+ * @property {array} rows The resulting rows from this query.
  */
 export interface Table {
   name: string;
@@ -73,7 +73,7 @@ export interface Table {
  *
  * Contains the tables, columns & rows resulting from a query.
  *
- * @member {array} tables The list of tables, columns and rows.
+ * @property {array} tables The list of tables, columns and rows.
  */
 export interface QueryResults {
   tables: Table[];
@@ -85,15 +85,15 @@ export interface QueryResults {
  * @constructor
  * @summary Error details.
  *
- * @member {string} code The error's code.
- * @member {string} message A human readable error message.
- * @member {string} [target] Indicates which property in the request is
+ * @property {string} code The error's code.
+ * @property {string} message A human readable error message.
+ * @property {string} [target] Indicates which property in the request is
  * responsible for the error.
- * @member {string} [value] Indicates which value in 'target' is responsible
+ * @property {string} [value] Indicates which value in 'target' is responsible
  * for the error.
- * @member {array} [resources] Indicates resources which were responsible for
+ * @property {array} [resources] Indicates resources which were responsible for
  * the error.
- * @member {object} [additionalProperties]
+ * @property {object} [additionalProperties]
  */
 export interface ErrorDetail {
   code: string;
@@ -110,11 +110,11 @@ export interface ErrorDetail {
  * @constructor
  * @summary The code and message for an error.
  *
- * @member {string} code A machine readable error code.
- * @member {string} message A human readable error message.
- * @member {array} [details] error details.
- * @member {object} [innererror] Inner error details if they exist.
- * @member {object} [additionalProperties]
+ * @property {string} code A machine readable error code.
+ * @property {string} message A human readable error message.
+ * @property {array} [details] error details.
+ * @property {object} [innererror] Inner error details if they exist.
+ * @property {object} [additionalProperties]
  */
 export interface ErrorInfo {
   code: string;
@@ -132,12 +132,12 @@ export interface ErrorInfo {
  *
  * Contains details when the response code indicates an error.
  *
- * @member {object} error The error details.
- * @member {string} [error.code] A machine readable error code.
- * @member {string} [error.message] A human readable error message.
- * @member {array} [error.details] error details.
- * @member {object} [error.innererror] Inner error details if they exist.
- * @member {object} [error.additionalProperties]
+ * @property {object} error The error details.
+ * @property {string} [error.code] A machine readable error code.
+ * @property {string} [error.message] A human readable error message.
+ * @property {array} [error.details] error details.
+ * @property {object} [error.innererror] Inner error details if they exist.
+ * @property {object} [error.additionalProperties]
  */
 export interface ErrorResponse {
   error: ErrorInfo;

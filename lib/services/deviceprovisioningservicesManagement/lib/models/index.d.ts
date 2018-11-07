@@ -22,9 +22,9 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Error response containing message and code.
  *
- * @member {string} [code] standard error code
- * @member {string} [message] standard error description
- * @member {string} [details] detailed summary of error
+ * @property {string} [code] standard error code
+ * @property {string} [message] standard error description
+ * @property {string} [details] detailed summary of error
  */
 export interface ErrorMesssage {
   code?: string;
@@ -38,12 +38,12 @@ export interface ErrorMesssage {
  * @constructor
  * Result of a long running operation.
  *
- * @member {string} [status] current status of a long running operation.
- * @member {object} [error] Error message containing code, description and
+ * @property {string} [status] current status of a long running operation.
+ * @property {object} [error] Error message containing code, description and
  * details
- * @member {string} [error.code] standard error code
- * @member {string} [error.message] standard error description
- * @member {string} [error.details] detailed summary of error
+ * @property {string} [error.code] standard error code
+ * @property {string} [error.message] standard error description
+ * @property {string} [error.details] detailed summary of error
  */
 export interface AsyncOperationResult {
   status?: string;
@@ -56,13 +56,13 @@ export interface AsyncOperationResult {
  * @constructor
  * The description of an X509 CA Certificate.
  *
- * @member {string} [subject] The certificate's subject name.
- * @member {date} [expiry] The certificate's expiration date and time.
- * @member {string} [thumbprint] The certificate's thumbprint.
- * @member {boolean} [isVerified] Determines whether certificate has been
+ * @property {string} [subject] The certificate's subject name.
+ * @property {date} [expiry] The certificate's expiration date and time.
+ * @property {string} [thumbprint] The certificate's thumbprint.
+ * @property {boolean} [isVerified] Determines whether certificate has been
  * verified.
- * @member {date} [created] The certificate's creation date and time.
- * @member {date} [updated] The certificate's last update date and time.
+ * @property {date} [created] The certificate's creation date and time.
+ * @property {date} [updated] The certificate's last update date and time.
  */
 export interface CertificateProperties {
   readonly subject?: string;
@@ -79,21 +79,21 @@ export interface CertificateProperties {
  * @constructor
  * The X509 Certificate.
  *
- * @member {object} [properties] properties of a certificate
- * @member {string} [properties.subject] The certificate's subject name.
- * @member {date} [properties.expiry] The certificate's expiration date and
+ * @property {object} [properties] properties of a certificate
+ * @property {string} [properties.subject] The certificate's subject name.
+ * @property {date} [properties.expiry] The certificate's expiration date and
  * time.
- * @member {string} [properties.thumbprint] The certificate's thumbprint.
- * @member {boolean} [properties.isVerified] Determines whether certificate has
- * been verified.
- * @member {date} [properties.created] The certificate's creation date and
+ * @property {string} [properties.thumbprint] The certificate's thumbprint.
+ * @property {boolean} [properties.isVerified] Determines whether certificate
+ * has been verified.
+ * @property {date} [properties.created] The certificate's creation date and
  * time.
- * @member {date} [properties.updated] The certificate's last update date and
+ * @property {date} [properties.updated] The certificate's last update date and
  * time.
- * @member {string} [id] The resource identifier.
- * @member {string} [name] The name of the certificate.
- * @member {string} [etag] The entity tag.
- * @member {string} [type] The resource type.
+ * @property {string} [id] The resource identifier.
+ * @property {string} [name] The name of the certificate.
+ * @property {string} [etag] The entity tag.
+ * @property {string} [type] The resource type.
  */
 export interface CertificateResponse extends BaseResource {
   properties?: CertificateProperties;
@@ -109,7 +109,7 @@ export interface CertificateResponse extends BaseResource {
  * @constructor
  * The JSON-serialized array of Certificate objects.
  *
- * @member {array} [value] The array of Certificate objects.
+ * @property {array} [value] The array of Certificate objects.
  */
 export interface CertificateListDescription {
   value?: CertificateResponse[];
@@ -121,7 +121,7 @@ export interface CertificateListDescription {
  * @constructor
  * The JSON-serialized X509 Certificate.
  *
- * @member {string} [certificate] Base-64 representation of the X509 leaf
+ * @property {string} [certificate] Base-64 representation of the X509 leaf
  * certificate .cer file or just .pem file content.
  */
 export interface CertificateBodyDescription {
@@ -134,9 +134,9 @@ export interface CertificateBodyDescription {
  * @constructor
  * List of possible provisoning service SKUs.
  *
- * @member {string} [name] Sku name. Possible values include: 'S1'
- * @member {string} [tier] Pricing tier name of the provisioning service.
- * @member {number} [capacity] The number of units to provision
+ * @property {string} [name] Sku name. Possible values include: 'S1'
+ * @property {string} [tier] Pricing tier name of the provisioning service.
+ * @property {number} [capacity] The number of units to provision
  */
 export interface IotDpsSkuInfo {
   name?: string;
@@ -150,12 +150,12 @@ export interface IotDpsSkuInfo {
  * @constructor
  * Description of the IoT hub.
  *
- * @member {boolean} [applyAllocationPolicy] flag for applying allocationPolicy
- * or not for a given iot hub.
- * @member {number} [allocationWeight] weight to apply for a given iot h.
- * @member {string} [name] Host name of the IoT hub.
- * @member {string} connectionString Connection string og the IoT hub.
- * @member {string} location ARM region of the IoT hub.
+ * @property {boolean} [applyAllocationPolicy] flag for applying
+ * allocationPolicy or not for a given iot hub.
+ * @property {number} [allocationWeight] weight to apply for a given iot h.
+ * @property {string} [name] Host name of the IoT hub.
+ * @property {string} connectionString Connection string og the IoT hub.
+ * @property {string} location ARM region of the IoT hub.
  */
 export interface IotHubDefinitionDescription {
   applyAllocationPolicy?: boolean;
@@ -171,10 +171,10 @@ export interface IotHubDefinitionDescription {
  * @constructor
  * Description of the shared access key.
  *
- * @member {string} keyName Name of the key.
- * @member {string} [primaryKey] Primary SAS key value.
- * @member {string} [secondaryKey] Secondary SAS key value.
- * @member {string} rights Rights that this key has. Possible values include:
+ * @property {string} keyName Name of the key.
+ * @property {string} [primaryKey] Primary SAS key value.
+ * @property {string} [secondaryKey] Secondary SAS key value.
+ * @property {string} rights Rights that this key has. Possible values include:
  * 'ServiceConfig', 'EnrollmentRead', 'EnrollmentWrite', 'DeviceConnect',
  * 'RegistrationStatusRead', 'RegistrationStatusWrite'
  */
@@ -193,23 +193,23 @@ export interface SharedAccessSignatureAuthorizationRuleAccessRightsDescription {
  * linked iot hubs, current state, and system generated properties such as
  * hostname and idScope
  *
- * @member {string} [state] Current state of the provisioning service. Possible
- * values include: 'Activating', 'Active', 'Deleting', 'Deleted',
+ * @property {string} [state] Current state of the provisioning service.
+ * Possible values include: 'Activating', 'Active', 'Deleting', 'Deleted',
  * 'ActivationFailed', 'DeletionFailed', 'Transitioning', 'Suspending',
  * 'Suspended', 'Resuming', 'FailingOver', 'FailoverFailed'
- * @member {string} [provisioningState] The ARM provisioning state of the
+ * @property {string} [provisioningState] The ARM provisioning state of the
  * provisioning service.
- * @member {array} [iotHubs] List of IoT hubs assosciated with this
+ * @property {array} [iotHubs] List of IoT hubs assosciated with this
  * provisioning service.
- * @member {string} [allocationPolicy] Allocation policy to be used by this
+ * @property {string} [allocationPolicy] Allocation policy to be used by this
  * provisioning service. Possible values include: 'Hashed', 'GeoLatency',
  * 'Static'
- * @member {string} [serviceOperationsHostName] Service endpoint for
+ * @property {string} [serviceOperationsHostName] Service endpoint for
  * provisioning service.
- * @member {string} [deviceProvisioningHostName] Device endpoint for this
+ * @property {string} [deviceProvisioningHostName] Device endpoint for this
  * provisioning service.
- * @member {string} [idScope] Unique identifier of this provisioning service.
- * @member {array} [authorizationPolicies] List of authorization keys for a
+ * @property {string} [idScope] Unique identifier of this provisioning service.
+ * @property {array} [authorizationPolicies] List of authorization keys for a
  * provisioning service.
  */
 export interface IotDpsPropertiesDescription {
@@ -229,11 +229,11 @@ export interface IotDpsPropertiesDescription {
  * @constructor
  * The common properties of an Azure resource.
  *
- * @member {string} [id] The resource identifier.
- * @member {string} [name] The resource name.
- * @member {string} [type] The resource type.
- * @member {string} location The resource location.
- * @member {object} [tags] The resource tags.
+ * @property {string} [id] The resource identifier.
+ * @property {string} [name] The resource name.
+ * @property {string} [type] The resource type.
+ * @property {string} location The resource location.
+ * @property {object} [tags] The resource tags.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -249,34 +249,34 @@ export interface Resource extends BaseResource {
  * @constructor
  * The description of the provisioning service.
  *
- * @member {string} [etag] The Etag field is *not* required. If it is provided
- * in the response body, it must also be provided as a header per the normal
- * ETag convention.
- * @member {object} properties Service specific properties for a provisioning
+ * @property {string} [etag] The Etag field is *not* required. If it is
+ * provided in the response body, it must also be provided as a header per the
+ * normal ETag convention.
+ * @property {object} properties Service specific properties for a provisioning
  * service
- * @member {string} [properties.state] Current state of the provisioning
+ * @property {string} [properties.state] Current state of the provisioning
  * service. Possible values include: 'Activating', 'Active', 'Deleting',
  * 'Deleted', 'ActivationFailed', 'DeletionFailed', 'Transitioning',
  * 'Suspending', 'Suspended', 'Resuming', 'FailingOver', 'FailoverFailed'
- * @member {string} [properties.provisioningState] The ARM provisioning state
+ * @property {string} [properties.provisioningState] The ARM provisioning state
  * of the provisioning service.
- * @member {array} [properties.iotHubs] List of IoT hubs assosciated with this
- * provisioning service.
- * @member {string} [properties.allocationPolicy] Allocation policy to be used
- * by this provisioning service. Possible values include: 'Hashed',
- * 'GeoLatency', 'Static'
- * @member {string} [properties.serviceOperationsHostName] Service endpoint for
- * provisioning service.
- * @member {string} [properties.deviceProvisioningHostName] Device endpoint for
+ * @property {array} [properties.iotHubs] List of IoT hubs assosciated with
  * this provisioning service.
- * @member {string} [properties.idScope] Unique identifier of this provisioning
- * service.
- * @member {array} [properties.authorizationPolicies] List of authorization
+ * @property {string} [properties.allocationPolicy] Allocation policy to be
+ * used by this provisioning service. Possible values include: 'Hashed',
+ * 'GeoLatency', 'Static'
+ * @property {string} [properties.serviceOperationsHostName] Service endpoint
+ * for provisioning service.
+ * @property {string} [properties.deviceProvisioningHostName] Device endpoint
+ * for this provisioning service.
+ * @property {string} [properties.idScope] Unique identifier of this
+ * provisioning service.
+ * @property {array} [properties.authorizationPolicies] List of authorization
  * keys for a provisioning service.
- * @member {object} sku Sku info for a provisioning Service.
- * @member {string} [sku.name] Sku name. Possible values include: 'S1'
- * @member {string} [sku.tier] Pricing tier name of the provisioning service.
- * @member {number} [sku.capacity] The number of units to provision
+ * @property {object} sku Sku info for a provisioning Service.
+ * @property {string} [sku.name] Sku name. Possible values include: 'S1'
+ * @property {string} [sku.tier] Pricing tier name of the provisioning service.
+ * @property {number} [sku.capacity] The number of units to provision
  */
 export interface ProvisioningServiceDescription extends Resource {
   etag?: string;
@@ -290,9 +290,9 @@ export interface ProvisioningServiceDescription extends Resource {
  * @constructor
  * The object that represents the operation.
  *
- * @member {string} [provider] Service provider: Microsoft Devices.
- * @member {string} [resource] Resource Type: ProvisioningServices.
- * @member {string} [operation] Name of the operation.
+ * @property {string} [provider] Service provider: Microsoft Devices.
+ * @property {string} [resource] Resource Type: ProvisioningServices.
+ * @property {string} [operation] Name of the operation.
  */
 export interface OperationDisplay {
   readonly provider?: string;
@@ -306,12 +306,12 @@ export interface OperationDisplay {
  * @constructor
  * IoT Hub REST API operation.
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{read | write
- * | action | delete}
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Service provider: Microsoft Devices.
- * @member {string} [display.resource] Resource Type: ProvisioningServices.
- * @member {string} [display.operation] Name of the operation.
+ * @property {string} [name] Operation name: {provider}/{resource}/{read |
+ * write | action | delete}
+ * @property {object} [display] The object that represents the operation.
+ * @property {string} [display.provider] Service provider: Microsoft Devices.
+ * @property {string} [display.resource] Resource Type: ProvisioningServices.
+ * @property {string} [display.operation] Name of the operation.
  */
 export interface Operation {
   readonly name?: string;
@@ -324,10 +324,10 @@ export interface Operation {
  * @constructor
  * Error details.
  *
- * @member {string} [code] The error code.
- * @member {string} [httpStatusCode] The HTTP status code.
- * @member {string} [message] The error message.
- * @member {string} [details] The error details.
+ * @property {string} [code] The error code.
+ * @property {string} [httpStatusCode] The HTTP status code.
+ * @property {string} [message] The error message.
+ * @property {string} [details] The error details.
  */
 export interface ErrorDetails {
   readonly code?: string;
@@ -342,7 +342,7 @@ export interface ErrorDetails {
  * @constructor
  * Available Sku's of tier and units.
  *
- * @member {string} [name] Sku name. Possible values include: 'S1'
+ * @property {string} [name] Sku name. Possible values include: 'S1'
  */
 export interface IotDpsSkuDefinition {
   name?: string;
@@ -354,7 +354,7 @@ export interface IotDpsSkuDefinition {
  * @constructor
  * Input values for operation results call.
  *
- * @member {string} name The name of the Provisioning Service to check.
+ * @property {string} name The name of the Provisioning Service to check.
  */
 export interface OperationInputs {
   name: string;
@@ -366,10 +366,10 @@ export interface OperationInputs {
  * @constructor
  * Description of name availability.
  *
- * @member {boolean} [nameAvailable] specifies if a name is available or not
- * @member {string} [reason] specifies the reason a name is unavailable.
+ * @property {boolean} [nameAvailable] specifies if a name is available or not
+ * @property {string} [reason] specifies the reason a name is unavailable.
  * Possible values include: 'Invalid', 'AlreadyExists'
- * @member {string} [message] message containing a etailed reason name is
+ * @property {string} [message] message containing a etailed reason name is
  * unavailable
  */
 export interface NameAvailabilityInfo {
@@ -385,7 +385,7 @@ export interface NameAvailabilityInfo {
  * A container holding only the Tags for a resource, allowing the user to
  * update the tags on a Provisioning Service instance.
  *
- * @member {object} [tags] Resource tags
+ * @property {object} [tags] Resource tags
  */
 export interface TagsResource {
   tags?: { [propertyName: string]: string };
@@ -395,14 +395,14 @@ export interface TagsResource {
  * @class
  * Initializes a new instance of the VerificationCodeResponseProperties class.
  * @constructor
- * @member {string} [verificationCode] Verification code.
- * @member {string} [subject] Certificate subject.
- * @member {string} [expiry] Code expiry.
- * @member {string} [thumbprint] Certificate thumbprint.
- * @member {boolean} [isVerified] Indicate if the certificate is verified by
+ * @property {string} [verificationCode] Verification code.
+ * @property {string} [subject] Certificate subject.
+ * @property {string} [expiry] Code expiry.
+ * @property {string} [thumbprint] Certificate thumbprint.
+ * @property {boolean} [isVerified] Indicate if the certificate is verified by
  * owner of private key.
- * @member {string} [created] Certificate created time.
- * @member {string} [updated] Certificate updated time.
+ * @property {string} [created] Certificate created time.
+ * @property {string} [updated] Certificate updated time.
  */
 export interface VerificationCodeResponseProperties {
   verificationCode?: string;
@@ -420,19 +420,19 @@ export interface VerificationCodeResponseProperties {
  * @constructor
  * Description of the response of the verification code.
  *
- * @member {string} [name] Name of certificate.
- * @member {string} [etag] Request etag.
- * @member {string} [id] The resource identifier.
- * @member {string} [type] The resource type.
- * @member {object} [properties]
- * @member {string} [properties.verificationCode] Verification code.
- * @member {string} [properties.subject] Certificate subject.
- * @member {string} [properties.expiry] Code expiry.
- * @member {string} [properties.thumbprint] Certificate thumbprint.
- * @member {boolean} [properties.isVerified] Indicate if the certificate is
+ * @property {string} [name] Name of certificate.
+ * @property {string} [etag] Request etag.
+ * @property {string} [id] The resource identifier.
+ * @property {string} [type] The resource type.
+ * @property {object} [properties]
+ * @property {string} [properties.verificationCode] Verification code.
+ * @property {string} [properties.subject] Certificate subject.
+ * @property {string} [properties.expiry] Code expiry.
+ * @property {string} [properties.thumbprint] Certificate thumbprint.
+ * @property {boolean} [properties.isVerified] Indicate if the certificate is
  * verified by owner of private key.
- * @member {string} [properties.created] Certificate created time.
- * @member {string} [properties.updated] Certificate updated time.
+ * @property {string} [properties.created] Certificate created time.
+ * @property {string} [properties.updated] Certificate updated time.
  */
 export interface VerificationCodeResponse extends BaseResource {
   readonly name?: string;
@@ -448,7 +448,7 @@ export interface VerificationCodeResponse extends BaseResource {
  * @constructor
  * The JSON-serialized leaf certificate
  *
- * @member {string} [certificate] base-64 representation of X509 certificate
+ * @property {string} [certificate] base-64 representation of X509 certificate
  * .cer file or just .pem file content.
  */
 export interface VerificationCodeRequest {
@@ -463,7 +463,7 @@ export interface VerificationCodeRequest {
  * Result of the request to list IoT Hub operations. It contains a list of
  * operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {
@@ -476,7 +476,7 @@ export interface OperationListResult extends Array<Operation> {
  * @constructor
  * List of provisioning service descriptions.
  *
- * @member {string} [nextLink] the next link
+ * @property {string} [nextLink] the next link
  */
 export interface ProvisioningServiceDescriptionListResult extends Array<ProvisioningServiceDescription> {
   readonly nextLink?: string;
@@ -488,7 +488,7 @@ export interface ProvisioningServiceDescriptionListResult extends Array<Provisio
  * @constructor
  * List of available SKUs.
  *
- * @member {string} [nextLink] The next link.
+ * @property {string} [nextLink] The next link.
  */
 export interface IotDpsSkuDefinitionListResult extends Array<IotDpsSkuDefinition> {
   readonly nextLink?: string;
@@ -500,7 +500,7 @@ export interface IotDpsSkuDefinitionListResult extends Array<IotDpsSkuDefinition
  * @constructor
  * List of shared access keys.
  *
- * @member {string} [nextLink] The next link.
+ * @property {string} [nextLink] The next link.
  */
 export interface SharedAccessSignatureAuthorizationRuleListResult extends Array<SharedAccessSignatureAuthorizationRuleAccessRightsDescription> {
   readonly nextLink?: string;

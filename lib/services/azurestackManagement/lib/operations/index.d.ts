@@ -573,10 +573,8 @@ export interface Registrations {
      * @param {string} token.registrationToken The token identifying registered
      * Azure Stack
      *
-     * @param {object} [token.tags] Custom tags for the resource.
-     *
-     * @param {string} [token.etag] The entity tag used for optimistic concurency
-     * when modifying the resource.
+     * @param {string} [token.location] Location of the resource. Possible values
+     * include: 'global'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -603,10 +601,8 @@ export interface Registrations {
      * @param {string} token.registrationToken The token identifying registered
      * Azure Stack
      *
-     * @param {object} [token.tags] Custom tags for the resource.
-     *
-     * @param {string} [token.etag] The entity tag used for optimistic concurency
-     * when modifying the resource.
+     * @param {string} [token.location] Location of the resource. Possible values
+     * include: 'global'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -638,6 +634,81 @@ export interface Registrations {
     createOrUpdate(resourceGroup: string, registrationName: string, token: models.RegistrationParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Registration>;
     createOrUpdate(resourceGroup: string, registrationName: string, token: models.RegistrationParameter, callback: ServiceCallback<models.Registration>): void;
     createOrUpdate(resourceGroup: string, registrationName: string, token: models.RegistrationParameter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Registration>): void;
+
+
+    /**
+     * Patch an Azure Stack registration.
+     *
+     * @param {string} resourceGroup Name of the resource group.
+     *
+     * @param {string} registrationName Name of the Azure Stack registration.
+     *
+     * @param {object} token Registration token
+     *
+     * @param {string} token.registrationToken The token identifying registered
+     * Azure Stack
+     *
+     * @param {string} [token.location] Location of the resource. Possible values
+     * include: 'global'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Registration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroup: string, registrationName: string, token: models.RegistrationParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Registration>>;
+
+    /**
+     * Patch an Azure Stack registration.
+     *
+     * @param {string} resourceGroup Name of the resource group.
+     *
+     * @param {string} registrationName Name of the Azure Stack registration.
+     *
+     * @param {object} token Registration token
+     *
+     * @param {string} token.registrationToken The token identifying registered
+     * Azure Stack
+     *
+     * @param {string} [token.location] Location of the resource. Possible values
+     * include: 'global'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Registration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Registration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Registration} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroup: string, registrationName: string, token: models.RegistrationParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Registration>;
+    update(resourceGroup: string, registrationName: string, token: models.RegistrationParameter, callback: ServiceCallback<models.Registration>): void;
+    update(resourceGroup: string, registrationName: string, token: models.RegistrationParameter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Registration>): void;
 
 
     /**
@@ -964,9 +1035,6 @@ export interface CustomerSubscriptions {
      *
      * @param {string} [customerCreationParameters.tenantId] Tenant Id.
      *
-     * @param {object} [customerCreationParameters.tags] Custom tags for the
-     * resource.
-     *
      * @param {string} [customerCreationParameters.etag] The entity tag used for
      * optimistic concurency when modifying the resource.
      *
@@ -996,9 +1064,6 @@ export interface CustomerSubscriptions {
      * customer subscription.
      *
      * @param {string} [customerCreationParameters.tenantId] Tenant Id.
-     *
-     * @param {object} [customerCreationParameters.tags] Custom tags for the
-     * resource.
      *
      * @param {string} [customerCreationParameters.etag] The entity tag used for
      * optimistic concurency when modifying the resource.

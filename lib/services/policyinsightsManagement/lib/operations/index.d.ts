@@ -14,6 +14,3268 @@ import * as models from '../models';
 
 /**
  * @class
+ * PolicyTrackedResources
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the PolicyInsightsClient.
+ */
+export interface PolicyTrackedResources {
+
+
+    /**
+     * Queries policy tracked resources under the management group.
+     *
+     * @param {string} managementGroupName Management group name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyTrackedResourcesQueryResults>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listQueryResultsForManagementGroupWithHttpOperationResponse(managementGroupName: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyTrackedResourcesQueryResults>>;
+
+    /**
+     * Queries policy tracked resources under the management group.
+     *
+     * @param {string} managementGroupName Management group name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyTrackedResourcesQueryResults} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyTrackedResourcesQueryResults} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyTrackedResourcesQueryResults} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listQueryResultsForManagementGroup(managementGroupName: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyTrackedResourcesQueryResults>;
+    listQueryResultsForManagementGroup(managementGroupName: string, callback: ServiceCallback<models.PolicyTrackedResourcesQueryResults>): void;
+    listQueryResultsForManagementGroup(managementGroupName: string, options: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyTrackedResourcesQueryResults>): void;
+
+
+    /**
+     * Queries policy tracked resources under the subscription.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyTrackedResourcesQueryResults>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listQueryResultsForSubscriptionWithHttpOperationResponse(subscriptionId: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyTrackedResourcesQueryResults>>;
+
+    /**
+     * Queries policy tracked resources under the subscription.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyTrackedResourcesQueryResults} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyTrackedResourcesQueryResults} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyTrackedResourcesQueryResults} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listQueryResultsForSubscription(subscriptionId: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyTrackedResourcesQueryResults>;
+    listQueryResultsForSubscription(subscriptionId: string, callback: ServiceCallback<models.PolicyTrackedResourcesQueryResults>): void;
+    listQueryResultsForSubscription(subscriptionId: string, options: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyTrackedResourcesQueryResults>): void;
+
+
+    /**
+     * Queries policy tracked resources under the resource group.
+     *
+     * @param {string} resourceGroupName Resource group name.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyTrackedResourcesQueryResults>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listQueryResultsForResourceGroupWithHttpOperationResponse(resourceGroupName: string, subscriptionId: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyTrackedResourcesQueryResults>>;
+
+    /**
+     * Queries policy tracked resources under the resource group.
+     *
+     * @param {string} resourceGroupName Resource group name.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyTrackedResourcesQueryResults} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyTrackedResourcesQueryResults} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyTrackedResourcesQueryResults} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listQueryResultsForResourceGroup(resourceGroupName: string, subscriptionId: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyTrackedResourcesQueryResults>;
+    listQueryResultsForResourceGroup(resourceGroupName: string, subscriptionId: string, callback: ServiceCallback<models.PolicyTrackedResourcesQueryResults>): void;
+    listQueryResultsForResourceGroup(resourceGroupName: string, subscriptionId: string, options: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyTrackedResourcesQueryResults>): void;
+
+
+    /**
+     * Queries policy tracked resources under the resource.
+     *
+     * @param {string} resourceId Resource ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyTrackedResourcesQueryResults>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listQueryResultsForResourceWithHttpOperationResponse(resourceId: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyTrackedResourcesQueryResults>>;
+
+    /**
+     * Queries policy tracked resources under the resource.
+     *
+     * @param {string} resourceId Resource ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyTrackedResourcesQueryResults} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyTrackedResourcesQueryResults} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyTrackedResourcesQueryResults} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listQueryResultsForResource(resourceId: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyTrackedResourcesQueryResults>;
+    listQueryResultsForResource(resourceId: string, callback: ServiceCallback<models.PolicyTrackedResourcesQueryResults>): void;
+    listQueryResultsForResource(resourceId: string, options: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyTrackedResourcesQueryResults>): void;
+
+
+    /**
+     * Queries policy tracked resources under the management group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyTrackedResourcesQueryResults>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listQueryResultsForManagementGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyTrackedResourcesQueryResults>>;
+
+    /**
+     * Queries policy tracked resources under the management group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyTrackedResourcesQueryResults} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyTrackedResourcesQueryResults} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyTrackedResourcesQueryResults} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listQueryResultsForManagementGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyTrackedResourcesQueryResults>;
+    listQueryResultsForManagementGroupNext(nextPageLink: string, callback: ServiceCallback<models.PolicyTrackedResourcesQueryResults>): void;
+    listQueryResultsForManagementGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyTrackedResourcesQueryResults>): void;
+
+
+    /**
+     * Queries policy tracked resources under the subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyTrackedResourcesQueryResults>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listQueryResultsForSubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyTrackedResourcesQueryResults>>;
+
+    /**
+     * Queries policy tracked resources under the subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyTrackedResourcesQueryResults} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyTrackedResourcesQueryResults} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyTrackedResourcesQueryResults} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listQueryResultsForSubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyTrackedResourcesQueryResults>;
+    listQueryResultsForSubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.PolicyTrackedResourcesQueryResults>): void;
+    listQueryResultsForSubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyTrackedResourcesQueryResults>): void;
+
+
+    /**
+     * Queries policy tracked resources under the resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyTrackedResourcesQueryResults>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listQueryResultsForResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyTrackedResourcesQueryResults>>;
+
+    /**
+     * Queries policy tracked resources under the resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyTrackedResourcesQueryResults} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyTrackedResourcesQueryResults} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyTrackedResourcesQueryResults} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listQueryResultsForResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyTrackedResourcesQueryResults>;
+    listQueryResultsForResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.PolicyTrackedResourcesQueryResults>): void;
+    listQueryResultsForResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyTrackedResourcesQueryResults>): void;
+
+
+    /**
+     * Queries policy tracked resources under the resource.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyTrackedResourcesQueryResults>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listQueryResultsForResourceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyTrackedResourcesQueryResults>>;
+
+    /**
+     * Queries policy tracked resources under the resource.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyTrackedResourcesQueryResults} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyTrackedResourcesQueryResults} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyTrackedResourcesQueryResults} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listQueryResultsForResourceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyTrackedResourcesQueryResults>;
+    listQueryResultsForResourceNext(nextPageLink: string, callback: ServiceCallback<models.PolicyTrackedResourcesQueryResults>): void;
+    listQueryResultsForResourceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyTrackedResourcesQueryResults>): void;
+}
+
+/**
+ * @class
+ * Remediations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the PolicyInsightsClient.
+ */
+export interface Remediations {
+
+
+    /**
+     * Gets all deployments for a remediation at management group scope.
+     *
+     * @param {string} managementGroupId Management group ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RemediationDeploymentsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listDeploymentsAtManagementGroupWithHttpOperationResponse(managementGroupId: string, remediationName: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RemediationDeploymentsListResult>>;
+
+    /**
+     * Gets all deployments for a remediation at management group scope.
+     *
+     * @param {string} managementGroupId Management group ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RemediationDeploymentsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RemediationDeploymentsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RemediationDeploymentsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listDeploymentsAtManagementGroup(managementGroupId: string, remediationName: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.RemediationDeploymentsListResult>;
+    listDeploymentsAtManagementGroup(managementGroupId: string, remediationName: string, callback: ServiceCallback<models.RemediationDeploymentsListResult>): void;
+    listDeploymentsAtManagementGroup(managementGroupId: string, remediationName: string, options: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemediationDeploymentsListResult>): void;
+
+
+    /**
+     * Cancels a remediation at management group scope.
+     *
+     * @param {string} managementGroupId Management group ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Remediation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    cancelAtManagementGroupWithHttpOperationResponse(managementGroupId: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Remediation>>;
+
+    /**
+     * Cancels a remediation at management group scope.
+     *
+     * @param {string} managementGroupId Management group ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Remediation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Remediation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Remediation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    cancelAtManagementGroup(managementGroupId: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Remediation>;
+    cancelAtManagementGroup(managementGroupId: string, remediationName: string, callback: ServiceCallback<models.Remediation>): void;
+    cancelAtManagementGroup(managementGroupId: string, remediationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Remediation>): void;
+
+
+    /**
+     * Gets all remediations for the management group.
+     *
+     * @param {string} managementGroupId Management group ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RemediationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForManagementGroupWithHttpOperationResponse(managementGroupId: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RemediationListResult>>;
+
+    /**
+     * Gets all remediations for the management group.
+     *
+     * @param {string} managementGroupId Management group ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RemediationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RemediationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RemediationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForManagementGroup(managementGroupId: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.RemediationListResult>;
+    listForManagementGroup(managementGroupId: string, callback: ServiceCallback<models.RemediationListResult>): void;
+    listForManagementGroup(managementGroupId: string, options: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemediationListResult>): void;
+
+
+    /**
+     * Creates or updates a remediation at management group scope.
+     *
+     * @param {string} managementGroupId Management group ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} parameters The remediation parameters.
+     *
+     * @param {string} [parameters.policyAssignmentId] The resource ID of the
+     * policy assignment that should be remediated.
+     *
+     * @param {string} [parameters.policyDefinitionReferenceId] The policy
+     * definition reference ID of the individual definition that should be
+     * remediated. Required when the policy assignment being remediated assigns a
+     * policy set definition.
+     *
+     * @param {object} [parameters.filters] The filters that will be applied to
+     * determine which resources to remediate.
+     *
+     * @param {array} [parameters.filters.locations] The resource locations that
+     * will be remediated.
+     *
+     * @param {object} [parameters.deploymentStatus] The deployment status summary
+     * for all deplyoments created by the remediation.
+     *
+     * @param {number} [parameters.deploymentStatus.totalDeployments] The number of
+     * deployments required by the remediation.
+     *
+     * @param {number} [parameters.deploymentStatus.successfulDeployments] The
+     * number of deployments required by the remediation that have succeeded.
+     *
+     * @param {number} [parameters.deploymentStatus.failedDeployments] The number
+     * of deployments required by the remediation that have failed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Remediation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateAtManagementGroupWithHttpOperationResponse(managementGroupId: string, remediationName: string, parameters: models.Remediation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Remediation>>;
+
+    /**
+     * Creates or updates a remediation at management group scope.
+     *
+     * @param {string} managementGroupId Management group ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} parameters The remediation parameters.
+     *
+     * @param {string} [parameters.policyAssignmentId] The resource ID of the
+     * policy assignment that should be remediated.
+     *
+     * @param {string} [parameters.policyDefinitionReferenceId] The policy
+     * definition reference ID of the individual definition that should be
+     * remediated. Required when the policy assignment being remediated assigns a
+     * policy set definition.
+     *
+     * @param {object} [parameters.filters] The filters that will be applied to
+     * determine which resources to remediate.
+     *
+     * @param {array} [parameters.filters.locations] The resource locations that
+     * will be remediated.
+     *
+     * @param {object} [parameters.deploymentStatus] The deployment status summary
+     * for all deplyoments created by the remediation.
+     *
+     * @param {number} [parameters.deploymentStatus.totalDeployments] The number of
+     * deployments required by the remediation.
+     *
+     * @param {number} [parameters.deploymentStatus.successfulDeployments] The
+     * number of deployments required by the remediation that have succeeded.
+     *
+     * @param {number} [parameters.deploymentStatus.failedDeployments] The number
+     * of deployments required by the remediation that have failed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Remediation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Remediation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Remediation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateAtManagementGroup(managementGroupId: string, remediationName: string, parameters: models.Remediation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Remediation>;
+    createOrUpdateAtManagementGroup(managementGroupId: string, remediationName: string, parameters: models.Remediation, callback: ServiceCallback<models.Remediation>): void;
+    createOrUpdateAtManagementGroup(managementGroupId: string, remediationName: string, parameters: models.Remediation, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Remediation>): void;
+
+
+    /**
+     * Gets an existing remediation at management group scope.
+     *
+     * @param {string} managementGroupId Management group ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Remediation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getAtManagementGroupWithHttpOperationResponse(managementGroupId: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Remediation>>;
+
+    /**
+     * Gets an existing remediation at management group scope.
+     *
+     * @param {string} managementGroupId Management group ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Remediation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Remediation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Remediation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getAtManagementGroup(managementGroupId: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Remediation>;
+    getAtManagementGroup(managementGroupId: string, remediationName: string, callback: ServiceCallback<models.Remediation>): void;
+    getAtManagementGroup(managementGroupId: string, remediationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Remediation>): void;
+
+
+    /**
+     * Deletes an existing remediation at management group scope.
+     *
+     * @param {string} managementGroupId Management group ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Remediation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteAtManagementGroupWithHttpOperationResponse(managementGroupId: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Remediation>>;
+
+    /**
+     * Deletes an existing remediation at management group scope.
+     *
+     * @param {string} managementGroupId Management group ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Remediation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Remediation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Remediation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteAtManagementGroup(managementGroupId: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Remediation>;
+    deleteAtManagementGroup(managementGroupId: string, remediationName: string, callback: ServiceCallback<models.Remediation>): void;
+    deleteAtManagementGroup(managementGroupId: string, remediationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Remediation>): void;
+
+
+    /**
+     * Gets all deployments for a remediation at subscription scope.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RemediationDeploymentsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listDeploymentsAtSubscriptionWithHttpOperationResponse(subscriptionId: string, remediationName: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RemediationDeploymentsListResult>>;
+
+    /**
+     * Gets all deployments for a remediation at subscription scope.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RemediationDeploymentsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RemediationDeploymentsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RemediationDeploymentsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listDeploymentsAtSubscription(subscriptionId: string, remediationName: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.RemediationDeploymentsListResult>;
+    listDeploymentsAtSubscription(subscriptionId: string, remediationName: string, callback: ServiceCallback<models.RemediationDeploymentsListResult>): void;
+    listDeploymentsAtSubscription(subscriptionId: string, remediationName: string, options: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemediationDeploymentsListResult>): void;
+
+
+    /**
+     * Cancels a remediation at subscription scope.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Remediation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    cancelAtSubscriptionWithHttpOperationResponse(subscriptionId: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Remediation>>;
+
+    /**
+     * Cancels a remediation at subscription scope.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Remediation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Remediation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Remediation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    cancelAtSubscription(subscriptionId: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Remediation>;
+    cancelAtSubscription(subscriptionId: string, remediationName: string, callback: ServiceCallback<models.Remediation>): void;
+    cancelAtSubscription(subscriptionId: string, remediationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Remediation>): void;
+
+
+    /**
+     * Gets all remediations for the subscription.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RemediationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForSubscriptionWithHttpOperationResponse(subscriptionId: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RemediationListResult>>;
+
+    /**
+     * Gets all remediations for the subscription.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RemediationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RemediationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RemediationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForSubscription(subscriptionId: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.RemediationListResult>;
+    listForSubscription(subscriptionId: string, callback: ServiceCallback<models.RemediationListResult>): void;
+    listForSubscription(subscriptionId: string, options: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemediationListResult>): void;
+
+
+    /**
+     * Creates or updates a remediation at subscription scope.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} parameters The remediation parameters.
+     *
+     * @param {string} [parameters.policyAssignmentId] The resource ID of the
+     * policy assignment that should be remediated.
+     *
+     * @param {string} [parameters.policyDefinitionReferenceId] The policy
+     * definition reference ID of the individual definition that should be
+     * remediated. Required when the policy assignment being remediated assigns a
+     * policy set definition.
+     *
+     * @param {object} [parameters.filters] The filters that will be applied to
+     * determine which resources to remediate.
+     *
+     * @param {array} [parameters.filters.locations] The resource locations that
+     * will be remediated.
+     *
+     * @param {object} [parameters.deploymentStatus] The deployment status summary
+     * for all deplyoments created by the remediation.
+     *
+     * @param {number} [parameters.deploymentStatus.totalDeployments] The number of
+     * deployments required by the remediation.
+     *
+     * @param {number} [parameters.deploymentStatus.successfulDeployments] The
+     * number of deployments required by the remediation that have succeeded.
+     *
+     * @param {number} [parameters.deploymentStatus.failedDeployments] The number
+     * of deployments required by the remediation that have failed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Remediation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateAtSubscriptionWithHttpOperationResponse(subscriptionId: string, remediationName: string, parameters: models.Remediation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Remediation>>;
+
+    /**
+     * Creates or updates a remediation at subscription scope.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} parameters The remediation parameters.
+     *
+     * @param {string} [parameters.policyAssignmentId] The resource ID of the
+     * policy assignment that should be remediated.
+     *
+     * @param {string} [parameters.policyDefinitionReferenceId] The policy
+     * definition reference ID of the individual definition that should be
+     * remediated. Required when the policy assignment being remediated assigns a
+     * policy set definition.
+     *
+     * @param {object} [parameters.filters] The filters that will be applied to
+     * determine which resources to remediate.
+     *
+     * @param {array} [parameters.filters.locations] The resource locations that
+     * will be remediated.
+     *
+     * @param {object} [parameters.deploymentStatus] The deployment status summary
+     * for all deplyoments created by the remediation.
+     *
+     * @param {number} [parameters.deploymentStatus.totalDeployments] The number of
+     * deployments required by the remediation.
+     *
+     * @param {number} [parameters.deploymentStatus.successfulDeployments] The
+     * number of deployments required by the remediation that have succeeded.
+     *
+     * @param {number} [parameters.deploymentStatus.failedDeployments] The number
+     * of deployments required by the remediation that have failed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Remediation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Remediation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Remediation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateAtSubscription(subscriptionId: string, remediationName: string, parameters: models.Remediation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Remediation>;
+    createOrUpdateAtSubscription(subscriptionId: string, remediationName: string, parameters: models.Remediation, callback: ServiceCallback<models.Remediation>): void;
+    createOrUpdateAtSubscription(subscriptionId: string, remediationName: string, parameters: models.Remediation, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Remediation>): void;
+
+
+    /**
+     * Gets an existing remediation at subscription scope.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Remediation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getAtSubscriptionWithHttpOperationResponse(subscriptionId: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Remediation>>;
+
+    /**
+     * Gets an existing remediation at subscription scope.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Remediation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Remediation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Remediation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getAtSubscription(subscriptionId: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Remediation>;
+    getAtSubscription(subscriptionId: string, remediationName: string, callback: ServiceCallback<models.Remediation>): void;
+    getAtSubscription(subscriptionId: string, remediationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Remediation>): void;
+
+
+    /**
+     * Deletes an existing remediation at subscription scope.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Remediation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteAtSubscriptionWithHttpOperationResponse(subscriptionId: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Remediation>>;
+
+    /**
+     * Deletes an existing remediation at subscription scope.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Remediation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Remediation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Remediation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteAtSubscription(subscriptionId: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Remediation>;
+    deleteAtSubscription(subscriptionId: string, remediationName: string, callback: ServiceCallback<models.Remediation>): void;
+    deleteAtSubscription(subscriptionId: string, remediationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Remediation>): void;
+
+
+    /**
+     * Gets all deployments for a remediation at resource group scope.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} resourceGroupName Resource group name.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RemediationDeploymentsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listDeploymentsAtResourceGroupWithHttpOperationResponse(subscriptionId: string, resourceGroupName: string, remediationName: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RemediationDeploymentsListResult>>;
+
+    /**
+     * Gets all deployments for a remediation at resource group scope.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} resourceGroupName Resource group name.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RemediationDeploymentsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RemediationDeploymentsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RemediationDeploymentsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listDeploymentsAtResourceGroup(subscriptionId: string, resourceGroupName: string, remediationName: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.RemediationDeploymentsListResult>;
+    listDeploymentsAtResourceGroup(subscriptionId: string, resourceGroupName: string, remediationName: string, callback: ServiceCallback<models.RemediationDeploymentsListResult>): void;
+    listDeploymentsAtResourceGroup(subscriptionId: string, resourceGroupName: string, remediationName: string, options: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemediationDeploymentsListResult>): void;
+
+
+    /**
+     * Cancels a remediation at resource group scope.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} resourceGroupName Resource group name.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Remediation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    cancelAtResourceGroupWithHttpOperationResponse(subscriptionId: string, resourceGroupName: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Remediation>>;
+
+    /**
+     * Cancels a remediation at resource group scope.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} resourceGroupName Resource group name.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Remediation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Remediation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Remediation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    cancelAtResourceGroup(subscriptionId: string, resourceGroupName: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Remediation>;
+    cancelAtResourceGroup(subscriptionId: string, resourceGroupName: string, remediationName: string, callback: ServiceCallback<models.Remediation>): void;
+    cancelAtResourceGroup(subscriptionId: string, resourceGroupName: string, remediationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Remediation>): void;
+
+
+    /**
+     * Gets all remediations for the subscription.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} resourceGroupName Resource group name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RemediationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForResourceGroupWithHttpOperationResponse(subscriptionId: string, resourceGroupName: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RemediationListResult>>;
+
+    /**
+     * Gets all remediations for the subscription.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} resourceGroupName Resource group name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RemediationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RemediationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RemediationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForResourceGroup(subscriptionId: string, resourceGroupName: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.RemediationListResult>;
+    listForResourceGroup(subscriptionId: string, resourceGroupName: string, callback: ServiceCallback<models.RemediationListResult>): void;
+    listForResourceGroup(subscriptionId: string, resourceGroupName: string, options: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemediationListResult>): void;
+
+
+    /**
+     * Creates or updates a remediation at resource group scope.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} resourceGroupName Resource group name.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} parameters The remediation parameters.
+     *
+     * @param {string} [parameters.policyAssignmentId] The resource ID of the
+     * policy assignment that should be remediated.
+     *
+     * @param {string} [parameters.policyDefinitionReferenceId] The policy
+     * definition reference ID of the individual definition that should be
+     * remediated. Required when the policy assignment being remediated assigns a
+     * policy set definition.
+     *
+     * @param {object} [parameters.filters] The filters that will be applied to
+     * determine which resources to remediate.
+     *
+     * @param {array} [parameters.filters.locations] The resource locations that
+     * will be remediated.
+     *
+     * @param {object} [parameters.deploymentStatus] The deployment status summary
+     * for all deplyoments created by the remediation.
+     *
+     * @param {number} [parameters.deploymentStatus.totalDeployments] The number of
+     * deployments required by the remediation.
+     *
+     * @param {number} [parameters.deploymentStatus.successfulDeployments] The
+     * number of deployments required by the remediation that have succeeded.
+     *
+     * @param {number} [parameters.deploymentStatus.failedDeployments] The number
+     * of deployments required by the remediation that have failed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Remediation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateAtResourceGroupWithHttpOperationResponse(subscriptionId: string, resourceGroupName: string, remediationName: string, parameters: models.Remediation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Remediation>>;
+
+    /**
+     * Creates or updates a remediation at resource group scope.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} resourceGroupName Resource group name.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} parameters The remediation parameters.
+     *
+     * @param {string} [parameters.policyAssignmentId] The resource ID of the
+     * policy assignment that should be remediated.
+     *
+     * @param {string} [parameters.policyDefinitionReferenceId] The policy
+     * definition reference ID of the individual definition that should be
+     * remediated. Required when the policy assignment being remediated assigns a
+     * policy set definition.
+     *
+     * @param {object} [parameters.filters] The filters that will be applied to
+     * determine which resources to remediate.
+     *
+     * @param {array} [parameters.filters.locations] The resource locations that
+     * will be remediated.
+     *
+     * @param {object} [parameters.deploymentStatus] The deployment status summary
+     * for all deplyoments created by the remediation.
+     *
+     * @param {number} [parameters.deploymentStatus.totalDeployments] The number of
+     * deployments required by the remediation.
+     *
+     * @param {number} [parameters.deploymentStatus.successfulDeployments] The
+     * number of deployments required by the remediation that have succeeded.
+     *
+     * @param {number} [parameters.deploymentStatus.failedDeployments] The number
+     * of deployments required by the remediation that have failed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Remediation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Remediation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Remediation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateAtResourceGroup(subscriptionId: string, resourceGroupName: string, remediationName: string, parameters: models.Remediation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Remediation>;
+    createOrUpdateAtResourceGroup(subscriptionId: string, resourceGroupName: string, remediationName: string, parameters: models.Remediation, callback: ServiceCallback<models.Remediation>): void;
+    createOrUpdateAtResourceGroup(subscriptionId: string, resourceGroupName: string, remediationName: string, parameters: models.Remediation, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Remediation>): void;
+
+
+    /**
+     * Gets an existing remediation at resource group scope.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} resourceGroupName Resource group name.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Remediation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getAtResourceGroupWithHttpOperationResponse(subscriptionId: string, resourceGroupName: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Remediation>>;
+
+    /**
+     * Gets an existing remediation at resource group scope.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} resourceGroupName Resource group name.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Remediation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Remediation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Remediation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getAtResourceGroup(subscriptionId: string, resourceGroupName: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Remediation>;
+    getAtResourceGroup(subscriptionId: string, resourceGroupName: string, remediationName: string, callback: ServiceCallback<models.Remediation>): void;
+    getAtResourceGroup(subscriptionId: string, resourceGroupName: string, remediationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Remediation>): void;
+
+
+    /**
+     * Deletes an existing remediation at resource group scope.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} resourceGroupName Resource group name.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Remediation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteAtResourceGroupWithHttpOperationResponse(subscriptionId: string, resourceGroupName: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Remediation>>;
+
+    /**
+     * Deletes an existing remediation at resource group scope.
+     *
+     * @param {string} subscriptionId Microsoft Azure subscription ID.
+     *
+     * @param {string} resourceGroupName Resource group name.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Remediation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Remediation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Remediation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteAtResourceGroup(subscriptionId: string, resourceGroupName: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Remediation>;
+    deleteAtResourceGroup(subscriptionId: string, resourceGroupName: string, remediationName: string, callback: ServiceCallback<models.Remediation>): void;
+    deleteAtResourceGroup(subscriptionId: string, resourceGroupName: string, remediationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Remediation>): void;
+
+
+    /**
+     * Gets all deployments for a remediation at resource scope.
+     *
+     * @param {string} resourceId Resource ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RemediationDeploymentsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listDeploymentsAtResourceWithHttpOperationResponse(resourceId: string, remediationName: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RemediationDeploymentsListResult>>;
+
+    /**
+     * Gets all deployments for a remediation at resource scope.
+     *
+     * @param {string} resourceId Resource ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RemediationDeploymentsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RemediationDeploymentsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RemediationDeploymentsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listDeploymentsAtResource(resourceId: string, remediationName: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.RemediationDeploymentsListResult>;
+    listDeploymentsAtResource(resourceId: string, remediationName: string, callback: ServiceCallback<models.RemediationDeploymentsListResult>): void;
+    listDeploymentsAtResource(resourceId: string, remediationName: string, options: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemediationDeploymentsListResult>): void;
+
+
+    /**
+     * Cancel a remediation at resource scope.
+     *
+     * @param {string} resourceId Resource ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Remediation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    cancelAtResourceWithHttpOperationResponse(resourceId: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Remediation>>;
+
+    /**
+     * Cancel a remediation at resource scope.
+     *
+     * @param {string} resourceId Resource ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Remediation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Remediation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Remediation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    cancelAtResource(resourceId: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Remediation>;
+    cancelAtResource(resourceId: string, remediationName: string, callback: ServiceCallback<models.Remediation>): void;
+    cancelAtResource(resourceId: string, remediationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Remediation>): void;
+
+
+    /**
+     * Gets all remediations for a resource.
+     *
+     * @param {string} resourceId Resource ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RemediationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForResourceWithHttpOperationResponse(resourceId: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RemediationListResult>>;
+
+    /**
+     * Gets all remediations for a resource.
+     *
+     * @param {string} resourceId Resource ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {number} [options.queryOptions.top] Maximum number of records to
+     * return.
+     *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
+     * @param {string} [options.queryOptions.orderBy] Ordering expression using
+     * OData notation. One or more comma-separated column names with an optional
+     * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
+     * asc".
+     *
+     * @param {string} [options.queryOptions.select] Select expression using OData
+     * notation. Limits the columns on each record to just those requested, e.g.
+     * "$select=PolicyAssignmentId, ResourceId".
+     *
+     * @param {date} [options.queryOptions.from] ISO 8601 formatted timestamp
+     * specifying the start time of the interval to query. When not specified, the
+     * service uses ($to - 1-day).
+     *
+     * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
+     * specifying the end time of the interval to query. When not specified, the
+     * service uses request time.
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression for
+     * aggregations.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RemediationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RemediationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RemediationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForResource(resourceId: string, options?: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.RemediationListResult>;
+    listForResource(resourceId: string, callback: ServiceCallback<models.RemediationListResult>): void;
+    listForResource(resourceId: string, options: { queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemediationListResult>): void;
+
+
+    /**
+     * Creates or updates a remediation at resource scope.
+     *
+     * @param {string} resourceId Resource ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} parameters The remediation parameters.
+     *
+     * @param {string} [parameters.policyAssignmentId] The resource ID of the
+     * policy assignment that should be remediated.
+     *
+     * @param {string} [parameters.policyDefinitionReferenceId] The policy
+     * definition reference ID of the individual definition that should be
+     * remediated. Required when the policy assignment being remediated assigns a
+     * policy set definition.
+     *
+     * @param {object} [parameters.filters] The filters that will be applied to
+     * determine which resources to remediate.
+     *
+     * @param {array} [parameters.filters.locations] The resource locations that
+     * will be remediated.
+     *
+     * @param {object} [parameters.deploymentStatus] The deployment status summary
+     * for all deplyoments created by the remediation.
+     *
+     * @param {number} [parameters.deploymentStatus.totalDeployments] The number of
+     * deployments required by the remediation.
+     *
+     * @param {number} [parameters.deploymentStatus.successfulDeployments] The
+     * number of deployments required by the remediation that have succeeded.
+     *
+     * @param {number} [parameters.deploymentStatus.failedDeployments] The number
+     * of deployments required by the remediation that have failed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Remediation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateAtResourceWithHttpOperationResponse(resourceId: string, remediationName: string, parameters: models.Remediation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Remediation>>;
+
+    /**
+     * Creates or updates a remediation at resource scope.
+     *
+     * @param {string} resourceId Resource ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} parameters The remediation parameters.
+     *
+     * @param {string} [parameters.policyAssignmentId] The resource ID of the
+     * policy assignment that should be remediated.
+     *
+     * @param {string} [parameters.policyDefinitionReferenceId] The policy
+     * definition reference ID of the individual definition that should be
+     * remediated. Required when the policy assignment being remediated assigns a
+     * policy set definition.
+     *
+     * @param {object} [parameters.filters] The filters that will be applied to
+     * determine which resources to remediate.
+     *
+     * @param {array} [parameters.filters.locations] The resource locations that
+     * will be remediated.
+     *
+     * @param {object} [parameters.deploymentStatus] The deployment status summary
+     * for all deplyoments created by the remediation.
+     *
+     * @param {number} [parameters.deploymentStatus.totalDeployments] The number of
+     * deployments required by the remediation.
+     *
+     * @param {number} [parameters.deploymentStatus.successfulDeployments] The
+     * number of deployments required by the remediation that have succeeded.
+     *
+     * @param {number} [parameters.deploymentStatus.failedDeployments] The number
+     * of deployments required by the remediation that have failed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Remediation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Remediation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Remediation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateAtResource(resourceId: string, remediationName: string, parameters: models.Remediation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Remediation>;
+    createOrUpdateAtResource(resourceId: string, remediationName: string, parameters: models.Remediation, callback: ServiceCallback<models.Remediation>): void;
+    createOrUpdateAtResource(resourceId: string, remediationName: string, parameters: models.Remediation, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Remediation>): void;
+
+
+    /**
+     * Gets an existing remediation at resource scope.
+     *
+     * @param {string} resourceId Resource ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Remediation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getAtResourceWithHttpOperationResponse(resourceId: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Remediation>>;
+
+    /**
+     * Gets an existing remediation at resource scope.
+     *
+     * @param {string} resourceId Resource ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Remediation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Remediation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Remediation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getAtResource(resourceId: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Remediation>;
+    getAtResource(resourceId: string, remediationName: string, callback: ServiceCallback<models.Remediation>): void;
+    getAtResource(resourceId: string, remediationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Remediation>): void;
+
+
+    /**
+     * Deletes an existing remediation at individual resource scope.
+     *
+     * @param {string} resourceId Resource ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Remediation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteAtResourceWithHttpOperationResponse(resourceId: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Remediation>>;
+
+    /**
+     * Deletes an existing remediation at individual resource scope.
+     *
+     * @param {string} resourceId Resource ID.
+     *
+     * @param {string} remediationName The name of the remediation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Remediation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Remediation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Remediation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteAtResource(resourceId: string, remediationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Remediation>;
+    deleteAtResource(resourceId: string, remediationName: string, callback: ServiceCallback<models.Remediation>): void;
+    deleteAtResource(resourceId: string, remediationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Remediation>): void;
+
+
+    /**
+     * Gets all deployments for a remediation at management group scope.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RemediationDeploymentsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listDeploymentsAtManagementGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RemediationDeploymentsListResult>>;
+
+    /**
+     * Gets all deployments for a remediation at management group scope.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RemediationDeploymentsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RemediationDeploymentsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RemediationDeploymentsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listDeploymentsAtManagementGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RemediationDeploymentsListResult>;
+    listDeploymentsAtManagementGroupNext(nextPageLink: string, callback: ServiceCallback<models.RemediationDeploymentsListResult>): void;
+    listDeploymentsAtManagementGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemediationDeploymentsListResult>): void;
+
+
+    /**
+     * Gets all remediations for the management group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RemediationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForManagementGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RemediationListResult>>;
+
+    /**
+     * Gets all remediations for the management group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RemediationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RemediationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RemediationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForManagementGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RemediationListResult>;
+    listForManagementGroupNext(nextPageLink: string, callback: ServiceCallback<models.RemediationListResult>): void;
+    listForManagementGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemediationListResult>): void;
+
+
+    /**
+     * Gets all deployments for a remediation at subscription scope.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RemediationDeploymentsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listDeploymentsAtSubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RemediationDeploymentsListResult>>;
+
+    /**
+     * Gets all deployments for a remediation at subscription scope.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RemediationDeploymentsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RemediationDeploymentsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RemediationDeploymentsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listDeploymentsAtSubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RemediationDeploymentsListResult>;
+    listDeploymentsAtSubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.RemediationDeploymentsListResult>): void;
+    listDeploymentsAtSubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemediationDeploymentsListResult>): void;
+
+
+    /**
+     * Gets all remediations for the subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RemediationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForSubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RemediationListResult>>;
+
+    /**
+     * Gets all remediations for the subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RemediationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RemediationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RemediationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForSubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RemediationListResult>;
+    listForSubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.RemediationListResult>): void;
+    listForSubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemediationListResult>): void;
+
+
+    /**
+     * Gets all deployments for a remediation at resource group scope.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RemediationDeploymentsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listDeploymentsAtResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RemediationDeploymentsListResult>>;
+
+    /**
+     * Gets all deployments for a remediation at resource group scope.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RemediationDeploymentsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RemediationDeploymentsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RemediationDeploymentsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listDeploymentsAtResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RemediationDeploymentsListResult>;
+    listDeploymentsAtResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.RemediationDeploymentsListResult>): void;
+    listDeploymentsAtResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemediationDeploymentsListResult>): void;
+
+
+    /**
+     * Gets all remediations for the subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RemediationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RemediationListResult>>;
+
+    /**
+     * Gets all remediations for the subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RemediationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RemediationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RemediationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RemediationListResult>;
+    listForResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.RemediationListResult>): void;
+    listForResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemediationListResult>): void;
+
+
+    /**
+     * Gets all deployments for a remediation at resource scope.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RemediationDeploymentsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listDeploymentsAtResourceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RemediationDeploymentsListResult>>;
+
+    /**
+     * Gets all deployments for a remediation at resource scope.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RemediationDeploymentsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RemediationDeploymentsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RemediationDeploymentsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listDeploymentsAtResourceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RemediationDeploymentsListResult>;
+    listDeploymentsAtResourceNext(nextPageLink: string, callback: ServiceCallback<models.RemediationDeploymentsListResult>): void;
+    listDeploymentsAtResourceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemediationDeploymentsListResult>): void;
+
+
+    /**
+     * Gets all remediations for a resource.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RemediationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForResourceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RemediationListResult>>;
+
+    /**
+     * Gets all remediations for a resource.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RemediationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RemediationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RemediationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForResourceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RemediationListResult>;
+    listForResourceNext(nextPageLink: string, callback: ServiceCallback<models.RemediationListResult>): void;
+    listForResourceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemediationListResult>): void;
+}
+
+/**
+ * @class
  * PolicyEvents
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the PolicyInsightsClient.
@@ -34,6 +3296,8 @@ export interface PolicyEvents {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -50,8 +3314,6 @@ export interface PolicyEvents {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -80,6 +3342,8 @@ export interface PolicyEvents {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -96,8 +3360,6 @@ export interface PolicyEvents {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -146,6 +3408,8 @@ export interface PolicyEvents {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -162,8 +3426,6 @@ export interface PolicyEvents {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -192,6 +3454,8 @@ export interface PolicyEvents {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -208,8 +3472,6 @@ export interface PolicyEvents {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -260,6 +3522,8 @@ export interface PolicyEvents {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -276,8 +3540,6 @@ export interface PolicyEvents {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -308,6 +3570,8 @@ export interface PolicyEvents {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -324,8 +3588,6 @@ export interface PolicyEvents {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -374,6 +3636,8 @@ export interface PolicyEvents {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -390,8 +3654,6 @@ export interface PolicyEvents {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -420,6 +3682,8 @@ export interface PolicyEvents {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -436,8 +3700,6 @@ export interface PolicyEvents {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -488,6 +3750,8 @@ export interface PolicyEvents {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -504,8 +3768,6 @@ export interface PolicyEvents {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -536,6 +3798,8 @@ export interface PolicyEvents {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -552,8 +3816,6 @@ export interface PolicyEvents {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -604,6 +3866,8 @@ export interface PolicyEvents {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -620,8 +3884,6 @@ export interface PolicyEvents {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -652,6 +3914,8 @@ export interface PolicyEvents {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -668,8 +3932,6 @@ export interface PolicyEvents {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -720,6 +3982,8 @@ export interface PolicyEvents {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -736,8 +4000,6 @@ export interface PolicyEvents {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -768,6 +4030,8 @@ export interface PolicyEvents {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -784,8 +4048,6 @@ export interface PolicyEvents {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -838,6 +4100,8 @@ export interface PolicyEvents {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -854,8 +4118,6 @@ export interface PolicyEvents {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -888,6 +4150,8 @@ export interface PolicyEvents {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -904,8 +4168,6 @@ export interface PolicyEvents {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -1026,6 +4288,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -1042,8 +4306,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -1077,6 +4339,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -1093,8 +4357,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -1143,6 +4405,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -1159,8 +4423,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -1189,6 +4451,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -1205,8 +4469,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -1259,6 +4521,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -1275,8 +4539,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -1310,6 +4572,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -1326,8 +4590,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -1376,6 +4638,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -1392,8 +4656,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -1422,6 +4684,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -1438,8 +4702,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -1494,6 +4756,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -1510,8 +4774,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -1547,6 +4809,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -1563,8 +4827,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -1615,6 +4877,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -1631,8 +4895,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -1663,6 +4925,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -1679,8 +4943,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -1733,6 +4995,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -1749,8 +5013,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -1784,6 +5046,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -1800,8 +5064,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -1850,6 +5112,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -1866,8 +5130,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -1896,6 +5158,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -1912,8 +5176,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -1968,6 +5230,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -1984,8 +5248,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -2021,6 +5283,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -2037,8 +5301,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -2089,6 +5351,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -2105,8 +5369,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -2137,6 +5399,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -2153,8 +5417,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -2209,6 +5471,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -2225,8 +5489,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -2262,6 +5524,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -2278,8 +5542,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -2330,6 +5592,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -2346,8 +5610,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -2378,6 +5640,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -2394,8 +5658,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -2450,6 +5712,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -2466,8 +5730,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -2503,6 +5765,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -2519,8 +5783,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -2571,6 +5833,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -2587,8 +5851,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -2619,6 +5881,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -2635,8 +5899,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -2693,6 +5955,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -2709,8 +5973,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -2748,6 +6010,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -2764,8 +6028,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -2818,6 +6080,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -2834,8 +6098,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.
@@ -2868,6 +6130,8 @@ export interface PolicyStates {
      * @param {number} [options.queryOptions.top] Maximum number of records to
      * return.
      *
+     * @param {string} [options.queryOptions.filter] OData filter expression.
+     *
      * @param {string} [options.queryOptions.orderBy] Ordering expression using
      * OData notation. One or more comma-separated column names with an optional
      * "desc" (the default) or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId
@@ -2884,8 +6148,6 @@ export interface PolicyStates {
      * @param {date} [options.queryOptions.to] ISO 8601 formatted timestamp
      * specifying the end time of the interval to query. When not specified, the
      * service uses request time.
-     *
-     * @param {string} [options.queryOptions.filter] OData filter expression.
      *
      * @param {string} [options.queryOptions.apply] OData apply expression for
      * aggregations.

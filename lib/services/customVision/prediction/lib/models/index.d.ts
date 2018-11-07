@@ -15,7 +15,7 @@ import * as moment from "moment";
  * @class
  * Initializes a new instance of the ImageUrl class.
  * @constructor
- * @member {string} [url]
+ * @property {string} [url]
  */
 export interface ImageUrl {
   url?: string;
@@ -25,10 +25,10 @@ export interface ImageUrl {
  * @class
  * Initializes a new instance of the BoundingBox class.
  * @constructor
- * @member {number} [left]
- * @member {number} [top]
- * @member {number} [width]
- * @member {number} [height]
+ * @property {number} [left]
+ * @property {number} [top]
+ * @property {number} [width]
+ * @property {number} [height]
  */
 export interface BoundingBox {
   left?: number;
@@ -41,14 +41,14 @@ export interface BoundingBox {
  * @class
  * Initializes a new instance of the Prediction class.
  * @constructor
- * @member {number} [probability]
- * @member {uuid} [tagId]
- * @member {string} [tagName]
- * @member {object} [boundingBox]
- * @member {number} [boundingBox.left]
- * @member {number} [boundingBox.top]
- * @member {number} [boundingBox.width]
- * @member {number} [boundingBox.height]
+ * @property {number} [probability]
+ * @property {uuid} [tagId]
+ * @property {string} [tagName]
+ * @property {object} [boundingBox]
+ * @property {number} [boundingBox.left]
+ * @property {number} [boundingBox.top]
+ * @property {number} [boundingBox.width]
+ * @property {number} [boundingBox.height]
  */
 export interface Prediction {
   readonly probability?: number;
@@ -61,11 +61,11 @@ export interface Prediction {
  * @class
  * Initializes a new instance of the ImagePrediction class.
  * @constructor
- * @member {uuid} [id]
- * @member {uuid} [project]
- * @member {uuid} [iteration]
- * @member {date} [created]
- * @member {array} [predictions]
+ * @property {uuid} [id]
+ * @property {uuid} [project]
+ * @property {uuid} [iteration]
+ * @property {date} [created]
+ * @property {array} [predictions]
  */
 export interface ImagePrediction {
   readonly id?: string;

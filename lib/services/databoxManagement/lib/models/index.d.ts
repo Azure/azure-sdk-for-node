@@ -22,13 +22,13 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Credential details of the shares in account.
  *
- * @member {string} [shareName] Name of the share.
- * @member {string} [shareType] Type of the share. Possible values include:
+ * @property {string} [shareName] Name of the share.
+ * @property {string} [shareType] Type of the share. Possible values include:
  * 'UnknownType', 'HCS', 'BlockBlob', 'PageBlob', 'AzureFile'
- * @member {string} [userName] User name for the share.
- * @member {string} [password] Password for the share.
- * @member {array} [supportedAccessProtocols] Access protocols supported on the
- * device.
+ * @property {string} [userName] User name for the share.
+ * @property {string} [password] Password for the share.
+ * @property {array} [supportedAccessProtocols] Access protocols supported on
+ * the device.
  */
 export interface ShareCredentialDetails {
   readonly shareName?: string;
@@ -44,11 +44,11 @@ export interface ShareCredentialDetails {
  * @constructor
  * Credential details of the account.
  *
- * @member {string} [accountName] Name of the account.
- * @member {string} [accountConnectionString] Connection string of the account
- * endpoint to use the account as a storage endpoint on the device.
- * @member {array} [shareCredentialDetails] Per share level unencrypted access
- * credentials.
+ * @property {string} [accountName] Name of the account.
+ * @property {string} [accountConnectionString] Connection string of the
+ * account endpoint to use the account as a storage endpoint on the device.
+ * @property {array} [shareCredentialDetails] Per share level unencrypted
+ * access credentials.
  */
 export interface AccountCredentialDetails {
   readonly accountName?: string;
@@ -62,16 +62,16 @@ export interface AccountCredentialDetails {
  * @constructor
  * Shipping address where customer wishes to receive the device.
  *
- * @member {string} streetAddress1 Street Address line 1.
- * @member {string} [streetAddress2] Street Address line 2.
- * @member {string} [streetAddress3] Street Address line 3.
- * @member {string} [city] Name of the City.
- * @member {string} [stateOrProvince] Name of the State or Province.
- * @member {string} country Name of the Country.
- * @member {string} postalCode Postal code.
- * @member {string} [zipExtendedCode] Extended Zip Code.
- * @member {string} [companyName] Name of the company.
- * @member {string} [addressType] Type of address. Possible values include:
+ * @property {string} streetAddress1 Street Address line 1.
+ * @property {string} [streetAddress2] Street Address line 2.
+ * @property {string} [streetAddress3] Street Address line 3.
+ * @property {string} [city] Name of the City.
+ * @property {string} [stateOrProvince] Name of the State or Province.
+ * @property {string} country Name of the Country.
+ * @property {string} postalCode Postal code.
+ * @property {string} [zipExtendedCode] Extended Zip Code.
+ * @property {string} [companyName] Name of the company.
+ * @property {string} [addressType] Type of address. Possible values include:
  * 'None', 'Residential', 'Commercial'
  */
 export interface ShippingAddress {
@@ -93,9 +93,9 @@ export interface ShippingAddress {
  * @constructor
  * Output of the address validation api.
  *
- * @member {string} [validationStatus] The address validation status. Possible
- * values include: 'Valid', 'Invalid', 'Ambiguous'
- * @member {array} [alternateAddresses] List of alternate addresses.
+ * @property {string} [validationStatus] The address validation status.
+ * Possible values include: 'Valid', 'Invalid', 'Ambiguous'
+ * @property {array} [alternateAddresses] List of alternate addresses.
  */
 export interface AddressValidationOutput {
   readonly validationStatus?: string;
@@ -108,8 +108,8 @@ export interface AddressValidationOutput {
  * @constructor
  * The Network Adapter configuration of a DataBox.
  *
- * @member {string} [name] Name of the network.
- * @member {string} [macAddress] Mac Address.
+ * @property {string} [name] Name of the network.
+ * @property {string} [macAddress] Mac Address.
  */
 export interface ApplianceNetworkConfiguration {
   readonly name?: string;
@@ -122,9 +122,9 @@ export interface ApplianceNetworkConfiguration {
  * @constructor
  * Base class for all objects under resource.
  *
- * @member {string} [name] Name of the object.
- * @member {string} [id] Id of the object.
- * @member {string} [type] Type of the object.
+ * @property {string} [name] Name of the object.
+ * @property {string} [id] Id of the object.
+ * @property {string} [type] Type of the object.
  */
 export interface ArmBaseObject {
   readonly name?: string;
@@ -138,12 +138,12 @@ export interface ArmBaseObject {
  * @constructor
  * The filters for showing the available skus.
  *
- * @member {string} country ISO country code. Country for hardware shipment.
+ * @property {string} country ISO country code. Country for hardware shipment.
  * For codes check:
  * https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
- * @member {string} location Location for data transfer. For locations check:
+ * @property {string} location Location for data transfer. For locations check:
  * https://management.azure.com/subscriptions/SUBSCRIPTIONID/locations?api-version=2018-01-01
- * @member {array} [skuNames] Sku Names to filter for available skus
+ * @property {array} [skuNames] Sku Names to filter for available skus
  */
 export interface AvailableSkuRequest {
   country: string;
@@ -157,10 +157,10 @@ export interface AvailableSkuRequest {
  * @constructor
  * The Sku.
  *
- * @member {string} name The sku name. Possible values include: 'DataBox',
+ * @property {string} name The sku name. Possible values include: 'DataBox',
  * 'DataBoxDisk', 'DataBoxHeavy'
- * @member {string} [displayName] The display name of the sku.
- * @member {string} [family] The sku family.
+ * @property {string} [displayName] The display name of the sku.
+ * @property {string} [family] The sku family.
  */
 export interface Sku {
   name: string;
@@ -174,8 +174,8 @@ export interface Sku {
  * @constructor
  * Map of destination location to service location
  *
- * @member {string} [destinationLocation] Location of the destination.
- * @member {string} [serviceLocation] Location of the service.
+ * @property {string} [destinationLocation] Location of the destination.
+ * @property {string} [serviceLocation] Location of the service.
  */
 export interface DestinationToServiceLocationMap {
   readonly destinationLocation?: string;
@@ -188,8 +188,8 @@ export interface DestinationToServiceLocationMap {
  * @constructor
  * Capacity of the sku.
  *
- * @member {string} [usable] Usable capacity in TB.
- * @member {string} [maximum] Maximum capacity in TB.
+ * @property {string} [usable] Usable capacity in TB.
+ * @property {string} [maximum] Maximum capacity in TB.
  */
 export interface SkuCapacity {
   readonly usable?: string;
@@ -202,8 +202,8 @@ export interface SkuCapacity {
  * @constructor
  * Describes metadata for retrieving price info.
  *
- * @member {string} [meterId] Meter id of the Sku.
- * @member {string} [meterType] The type of the meter.
+ * @property {string} [meterId] Meter id of the Sku.
+ * @property {string} [meterType] The type of the meter.
  */
 export interface SkuCost {
   readonly meterId?: string;
@@ -216,24 +216,24 @@ export interface SkuCost {
  * @constructor
  * Information of the sku.
  *
- * @member {object} [sku] The Sku.
- * @member {string} [sku.name] The sku name. Possible values include:
+ * @property {object} [sku] The Sku.
+ * @property {string} [sku.name] The sku name. Possible values include:
  * 'DataBox', 'DataBoxDisk', 'DataBoxHeavy'
- * @member {string} [sku.displayName] The display name of the sku.
- * @member {string} [sku.family] The sku family.
- * @member {boolean} [enabled] The sku is enabled or not.
- * @member {array} [destinationToServiceLocationMap] The map of destination
+ * @property {string} [sku.displayName] The display name of the sku.
+ * @property {string} [sku.family] The sku family.
+ * @property {boolean} [enabled] The sku is enabled or not.
+ * @property {array} [destinationToServiceLocationMap] The map of destination
  * location to service location.
- * @member {object} [capacity] Capacity of the Sku.
- * @member {string} [capacity.usable] Usable capacity in TB.
- * @member {string} [capacity.maximum] Maximum capacity in TB.
- * @member {array} [costs] Cost of the Sku.
- * @member {array} [apiVersions] Api versions that support this Sku.
- * @member {string} [disabledReason] Reason why the Sku is disabled. Possible
+ * @property {object} [capacity] Capacity of the Sku.
+ * @property {string} [capacity.usable] Usable capacity in TB.
+ * @property {string} [capacity.maximum] Maximum capacity in TB.
+ * @property {array} [costs] Cost of the Sku.
+ * @property {array} [apiVersions] Api versions that support this Sku.
+ * @property {string} [disabledReason] Reason why the Sku is disabled. Possible
  * values include: 'None', 'Country', 'Region', 'Feature', 'OfferType'
- * @member {string} [disabledReasonMessage] Message for why the Sku is
+ * @property {string} [disabledReasonMessage] Message for why the Sku is
  * disabled.
- * @member {string} [requiredFeature] Required feature to access the sku.
+ * @property {string} [requiredFeature] Required feature to access the sku.
  */
 export interface SkuInformation {
   readonly sku?: Sku;
@@ -253,7 +253,7 @@ export interface SkuInformation {
  * @constructor
  * Reason for cancellation.
  *
- * @member {string} reason Reason for cancellation.
+ * @property {string} reason Reason for cancellation.
  */
 export interface CancellationReason {
   reason: string;
@@ -265,10 +265,10 @@ export interface CancellationReason {
  * @constructor
  * Notification preference for a job stage.
  *
- * @member {string} stageName Name of the stage. Possible values include:
+ * @property {string} stageName Name of the stage. Possible values include:
  * 'DevicePrepared', 'Dispatched', 'Delivered', 'PickedUp', 'AtAzureDC',
  * 'DataCopy'
- * @member {boolean} sendNotification Notification is required or not.
+ * @property {boolean} sendNotification Notification is required or not.
  */
 export interface NotificationPreference {
   stageName: string;
@@ -281,14 +281,14 @@ export interface NotificationPreference {
  * @constructor
  * Contact Details.
  *
- * @member {string} contactName Contact name of the person.
- * @member {string} phone Phone number of the contact person.
- * @member {string} [phoneExtension] Phone extension number of the contact
+ * @property {string} contactName Contact name of the person.
+ * @property {string} phone Phone number of the contact person.
+ * @property {string} [phoneExtension] Phone extension number of the contact
  * person.
- * @member {string} [mobile] Mobile number of the contact person.
- * @member {array} emailList List of Email-ids to be notified about job
+ * @property {string} [mobile] Mobile number of the contact person.
+ * @property {array} emailList List of Email-ids to be notified about job
  * progress.
- * @member {array} [notificationPreference] Notification preference for a job
+ * @property {array} [notificationPreference] Notification preference for a job
  * stage.
  */
 export interface ContactDetails {
@@ -306,7 +306,7 @@ export interface ContactDetails {
  * @constructor
  * Details for log generated during copy.
  *
- * @member {string} copyLogDetailsType Polymorphic Discriminator
+ * @property {string} copyLogDetailsType Polymorphic Discriminator
  */
 export interface CopyLogDetails {
   copyLogDetailsType: string;
@@ -318,14 +318,14 @@ export interface CopyLogDetails {
  * @constructor
  * Copy progress.
  *
- * @member {string} [storageAccountName] Name of the storage account where the
- * data needs to be uploaded.
- * @member {string} [accountId] Id of the account where the data needs to be
+ * @property {string} [storageAccountName] Name of the storage account where
+ * the data needs to be uploaded.
+ * @property {string} [accountId] Id of the account where the data needs to be
  * uploaded.
- * @member {number} [bytesSentToCloud] Amount of data uploaded by the job as of
- * now.
- * @member {number} [totalBytesToProcess] Total amount of data to be processed
- * by the job.
+ * @property {number} [bytesSentToCloud] Amount of data uploaded by the job as
+ * of now.
+ * @property {number} [totalBytesToProcess] Total amount of data to be
+ * processed by the job.
  */
 export interface CopyProgress {
   readonly storageAccountName?: string;
@@ -340,8 +340,8 @@ export interface CopyProgress {
  * @constructor
  * Copy log details for a storage account of a DataBox job
  *
- * @member {string} [accountName] Destination account name.
- * @member {string} [copyLogLink] Link for copy logs.
+ * @property {string} [accountName] Destination account name.
+ * @property {string} [copyLogLink] Link for copy logs.
  */
 export interface DataBoxAccountCopyLogDetails extends CopyLogDetails {
   readonly accountName?: string;
@@ -354,9 +354,9 @@ export interface DataBoxAccountCopyLogDetails extends CopyLogDetails {
  * @constructor
  * Copy Log Details for a disk
  *
- * @member {string} [diskSerialNumber] Disk Serial Number.
- * @member {string} [errorLogLink] Link for copy error logs.
- * @member {string} [verboseLogLink] Link for copy verbose logs.
+ * @property {string} [diskSerialNumber] Disk Serial Number.
+ * @property {string} [errorLogLink] Link for copy error logs.
+ * @property {string} [verboseLogLink] Link for copy verbose logs.
  */
 export interface DataBoxDiskCopyLogDetails extends CopyLogDetails {
   readonly diskSerialNumber?: string;
@@ -370,11 +370,11 @@ export interface DataBoxDiskCopyLogDetails extends CopyLogDetails {
  * @constructor
  * DataBox Disk Copy Progress
  *
- * @member {string} [serialNumber] The serial number of the disk
- * @member {number} [bytesCopied] Bytes copied during the copy of disk.
- * @member {number} [percentComplete] Indicates the percentage completed for
+ * @property {string} [serialNumber] The serial number of the disk
+ * @property {number} [bytesCopied] Bytes copied during the copy of disk.
+ * @property {number} [percentComplete] Indicates the percentage completed for
  * the copy of the disk.
- * @member {string} [status] The Status of the copy. Possible values include:
+ * @property {string} [status] The Status of the copy. Possible values include:
  * 'NotStarted', 'InProgress', 'Completed', 'CompletedWithErrors', 'Failed',
  * 'NotReturned'
  */
@@ -391,54 +391,56 @@ export interface DataBoxDiskCopyProgress {
  * @constructor
  * Job details.
  *
- * @member {number} [expectedDataSizeInTeraBytes] The expected size of the
+ * @property {number} [expectedDataSizeInTeraBytes] The expected size of the
  * data, which needs to be transfered in this job, in tera bytes.
- * @member {array} [jobStages] List of stages that run in the job.
- * @member {object} contactDetails Contact details for notification and
+ * @property {array} [jobStages] List of stages that run in the job.
+ * @property {object} contactDetails Contact details for notification and
  * shipping.
- * @member {string} [contactDetails.contactName] Contact name of the person.
- * @member {string} [contactDetails.phone] Phone number of the contact person.
- * @member {string} [contactDetails.phoneExtension] Phone extension number of
- * the contact person.
- * @member {string} [contactDetails.mobile] Mobile number of the contact
+ * @property {string} [contactDetails.contactName] Contact name of the person.
+ * @property {string} [contactDetails.phone] Phone number of the contact
  * person.
- * @member {array} [contactDetails.emailList] List of Email-ids to be notified
- * about job progress.
- * @member {array} [contactDetails.notificationPreference] Notification
+ * @property {string} [contactDetails.phoneExtension] Phone extension number of
+ * the contact person.
+ * @property {string} [contactDetails.mobile] Mobile number of the contact
+ * person.
+ * @property {array} [contactDetails.emailList] List of Email-ids to be
+ * notified about job progress.
+ * @property {array} [contactDetails.notificationPreference] Notification
  * preference for a job stage.
- * @member {object} shippingAddress Shipping address of the customer.
- * @member {string} [shippingAddress.streetAddress1] Street Address line 1.
- * @member {string} [shippingAddress.streetAddress2] Street Address line 2.
- * @member {string} [shippingAddress.streetAddress3] Street Address line 3.
- * @member {string} [shippingAddress.city] Name of the City.
- * @member {string} [shippingAddress.stateOrProvince] Name of the State or
+ * @property {object} shippingAddress Shipping address of the customer.
+ * @property {string} [shippingAddress.streetAddress1] Street Address line 1.
+ * @property {string} [shippingAddress.streetAddress2] Street Address line 2.
+ * @property {string} [shippingAddress.streetAddress3] Street Address line 3.
+ * @property {string} [shippingAddress.city] Name of the City.
+ * @property {string} [shippingAddress.stateOrProvince] Name of the State or
  * Province.
- * @member {string} [shippingAddress.country] Name of the Country.
- * @member {string} [shippingAddress.postalCode] Postal code.
- * @member {string} [shippingAddress.zipExtendedCode] Extended Zip Code.
- * @member {string} [shippingAddress.companyName] Name of the company.
- * @member {string} [shippingAddress.addressType] Type of address. Possible
+ * @property {string} [shippingAddress.country] Name of the Country.
+ * @property {string} [shippingAddress.postalCode] Postal code.
+ * @property {string} [shippingAddress.zipExtendedCode] Extended Zip Code.
+ * @property {string} [shippingAddress.companyName] Name of the company.
+ * @property {string} [shippingAddress.addressType] Type of address. Possible
  * values include: 'None', 'Residential', 'Commercial'
- * @member {object} [deliveryPackage] Delivery package shipping details.
- * @member {string} [deliveryPackage.carrierName] Name of the carrier.
- * @member {string} [deliveryPackage.trackingId] Tracking Id of shipment.
- * @member {string} [deliveryPackage.trackingUrl] Url where shipment can be
+ * @property {object} [deliveryPackage] Delivery package shipping details.
+ * @property {string} [deliveryPackage.carrierName] Name of the carrier.
+ * @property {string} [deliveryPackage.trackingId] Tracking Id of shipment.
+ * @property {string} [deliveryPackage.trackingUrl] Url where shipment can be
  * tracked.
- * @member {object} [returnPackage] Return package shipping details.
- * @member {string} [returnPackage.carrierName] Name of the carrier.
- * @member {string} [returnPackage.trackingId] Tracking Id of shipment.
- * @member {string} [returnPackage.trackingUrl] Url where shipment can be
+ * @property {object} [returnPackage] Return package shipping details.
+ * @property {string} [returnPackage.carrierName] Name of the carrier.
+ * @property {string} [returnPackage.trackingId] Tracking Id of shipment.
+ * @property {string} [returnPackage.trackingUrl] Url where shipment can be
  * tracked.
- * @member {array} destinationAccountDetails Destination account details.
- * @member {array} [errorDetails] Error details for failure. This is optional.
- * @member {object} [preferences] Preferences for the order.
- * @member {array} [preferences.preferredDataCenterRegion]
- * @member {array} [copyLogDetails] List of copy log details.
- * @member {string} [reverseShipmentLabelSasKey] Shared access key to download
- * the return shipment label
- * @member {string} [chainOfCustodySasKey] Shared access key to download the
+ * @property {array} destinationAccountDetails Destination account details.
+ * @property {array} [errorDetails] Error details for failure. This is
+ * optional.
+ * @property {object} [preferences] Preferences for the order.
+ * @property {array} [preferences.preferredDataCenterRegion]
+ * @property {array} [copyLogDetails] List of copy log details.
+ * @property {string} [reverseShipmentLabelSasKey] Shared access key to
+ * download the return shipment label
+ * @property {string} [chainOfCustodySasKey] Shared access key to download the
  * chain of custody logs
- * @member {string} jobDetailsType Polymorphic Discriminator
+ * @property {string} jobDetailsType Polymorphic Discriminator
  */
 export interface JobDetails {
   expectedDataSizeInTeraBytes?: number;
@@ -462,15 +464,15 @@ export interface JobDetails {
  * @constructor
  * DataBox Disk Job Details.
  *
- * @member {object} [preferredDisks] User preference on what size disks are
+ * @property {object} [preferredDisks] User preference on what size disks are
  * needed for the job. The map is from the disk size in TB to the count. Eg.
  * {2,5} means 5 disks of 2 TB size. Key is string but will be checked against
  * an int.
- * @member {array} [copyProgress] Copy progress per disk.
- * @member {object} [disksAndSizeDetails] Contains the map of disk serial
+ * @property {array} [copyProgress] Copy progress per disk.
+ * @property {object} [disksAndSizeDetails] Contains the map of disk serial
  * number to the disk size being used for the job. Is returned only after the
  * disks are shipped to the customer.
- * @member {string} [passkey] User entered passkey for DataBox Disk job.
+ * @property {string} [passkey] User entered passkey for DataBox Disk job.
  */
 export interface DataBoxDiskJobDetails extends JobDetails {
   preferredDisks?: { [propertyName: string]: number };
@@ -485,9 +487,9 @@ export interface DataBoxDiskJobDetails extends JobDetails {
  * @constructor
  * Contains all the secrets of a Disk.
  *
- * @member {string} [diskSerialNumber] Serial number of the assigned disk.
- * @member {string} [bitLockerKey] Bit Locker key of the disk which can be used
- * to unlock the disk to copy data.
+ * @property {string} [diskSerialNumber] Serial number of the assigned disk.
+ * @property {string} [bitLockerKey] Bit Locker key of the disk which can be
+ * used to unlock the disk to copy data.
  */
 export interface DiskSecret {
   readonly diskSerialNumber?: string;
@@ -500,7 +502,7 @@ export interface DiskSecret {
  * @constructor
  * The base class for the secrets
  *
- * @member {string} jobSecretsType Polymorphic Discriminator
+ * @property {string} jobSecretsType Polymorphic Discriminator
  */
 export interface JobSecrets {
   jobSecretsType: string;
@@ -512,10 +514,10 @@ export interface JobSecrets {
  * @constructor
  * The secrets related to disk job.
  *
- * @member {array} [diskSecrets] Contains the list of secrets object for that
+ * @property {array} [diskSecrets] Contains the list of secrets object for that
  * device.
- * @member {string} [passKey] PassKey for the disk Job.
- * @member {boolean} [isPasskeyUserDefined] Whether passkey was provided by
+ * @property {string} [passKey] PassKey for the disk Job.
+ * @property {boolean} [isPasskeyUserDefined] Whether passkey was provided by
  * user.
  */
 export interface DataBoxDiskJobSecrets extends JobSecrets {
@@ -530,8 +532,8 @@ export interface DataBoxDiskJobSecrets extends JobSecrets {
  * @constructor
  * Copy log details for a storage account for Databox heavy
  *
- * @member {string} [accountName] Destination account name.
- * @member {array} [copyLogLink] Link for copy logs.
+ * @property {string} [accountName] Destination account name.
+ * @property {array} [copyLogLink] Link for copy logs.
  */
 export interface DataBoxHeavyAccountCopyLogDetails extends CopyLogDetails {
   readonly accountName?: string;
@@ -544,7 +546,7 @@ export interface DataBoxHeavyAccountCopyLogDetails extends CopyLogDetails {
  * @constructor
  * Databox Heavy Device Job Details
  *
- * @member {array} [copyProgress] Copy progress per account.
+ * @property {array} [copyProgress] Copy progress per account.
  */
 export interface DataBoxHeavyJobDetails extends JobDetails {
   readonly copyProgress?: CopyProgress[];
@@ -556,14 +558,15 @@ export interface DataBoxHeavyJobDetails extends JobDetails {
  * @constructor
  * The secrets related to a databox heavy.
  *
- * @member {string} [deviceSerialNumber] Serial number of the assigned device.
- * @member {string} [devicePassword] Password for out of the box experience on
+ * @property {string} [deviceSerialNumber] Serial number of the assigned
  * device.
- * @member {array} [networkConfigurations] Network configuration of the
+ * @property {string} [devicePassword] Password for out of the box experience
+ * on device.
+ * @property {array} [networkConfigurations] Network configuration of the
  * appliance.
- * @member {string} [encodedValidationCertPubKey] The base 64 encoded public
+ * @property {string} [encodedValidationCertPubKey] The base 64 encoded public
  * key to authenticate with the device
- * @member {array} [accountCredentialDetails] Per account level access
+ * @property {array} [accountCredentialDetails] Per account level access
  * credentials.
  */
 export interface DataBoxHeavySecret {
@@ -580,8 +583,8 @@ export interface DataBoxHeavySecret {
  * @constructor
  * The secrets related to a databox heavy job.
  *
- * @member {array} [cabinetPodSecrets] Contains the list of secret objects for
- * a databox heavy job.
+ * @property {array} [cabinetPodSecrets] Contains the list of secret objects
+ * for a databox heavy job.
  */
 export interface DataBoxHeavyJobSecrets extends JobSecrets {
   readonly cabinetPodSecrets?: DataBoxHeavySecret[];
@@ -593,7 +596,7 @@ export interface DataBoxHeavyJobSecrets extends JobSecrets {
  * @constructor
  * Databox Job Details
  *
- * @member {array} [copyProgress] Copy progress per storage account.
+ * @property {array} [copyProgress] Copy progress per storage account.
  */
 export interface DataBoxJobDetails extends JobDetails {
   readonly copyProgress?: CopyProgress[];
@@ -605,14 +608,15 @@ export interface DataBoxJobDetails extends JobDetails {
  * @constructor
  * The secrets related to a DataBox.
  *
- * @member {string} [deviceSerialNumber] Serial number of the assigned device.
- * @member {string} [devicePassword] Password for out of the box experience on
+ * @property {string} [deviceSerialNumber] Serial number of the assigned
  * device.
- * @member {array} [networkConfigurations] Network configuration of the
+ * @property {string} [devicePassword] Password for out of the box experience
+ * on device.
+ * @property {array} [networkConfigurations] Network configuration of the
  * appliance.
- * @member {string} [encodedValidationCertPubKey] The base 64 encoded public
+ * @property {string} [encodedValidationCertPubKey] The base 64 encoded public
  * key to authenticate with the device
- * @member {array} [accountCredentialDetails] Per account level access
+ * @property {array} [accountCredentialDetails] Per account level access
  * credentials.
  */
 export interface DataBoxSecret {
@@ -629,7 +633,8 @@ export interface DataBoxSecret {
  * @constructor
  * The secrets related to a databox job.
  *
- * @member {array} [podSecrets] Contains the list of secret objects for a job.
+ * @property {array} [podSecrets] Contains the list of secret objects for a
+ * job.
  */
 export interface DataboxJobSecrets extends JobSecrets {
   podSecrets?: DataBoxSecret[];
@@ -641,7 +646,7 @@ export interface DataboxJobSecrets extends JobSecrets {
  * @constructor
  * Details for the destination account.
  *
- * @member {string} accountId Destination storage account id.
+ * @property {string} accountId Destination storage account id.
  */
 export interface DestinationAccountDetails {
   accountId: string;
@@ -653,9 +658,9 @@ export interface DestinationAccountDetails {
  * @constructor
  * Top level error for the job.
  *
- * @member {string} [code] Error code that can be used to programmatically
+ * @property {string} [code] Error code that can be used to programmatically
  * identify the error.
- * @member {string} [message] Describes the error in detail and provides
+ * @property {string} [message] Describes the error in detail and provides
  * debugging information.
  */
 export interface ErrorModel {
@@ -669,10 +674,10 @@ export interface ErrorModel {
  * @constructor
  * Job Error Details for providing the information and recommended action.
  *
- * @member {string} [errorMessage] Message for the error.
- * @member {number} [errorCode] Code for the error.
- * @member {string} [recommendedAction] Recommended action for the error.
- * @member {string} [exceptionMessage] Contains the non localized exception
+ * @property {string} [errorMessage] Message for the error.
+ * @property {number} [errorCode] Code for the error.
+ * @property {string} [recommendedAction] Recommended action for the error.
+ * @property {string} [exceptionMessage] Contains the non localized exception
  * message
  */
 export interface JobErrorDetails {
@@ -688,17 +693,18 @@ export interface JobErrorDetails {
  * @constructor
  * Job stages.
  *
- * @member {string} [stageName] Name of the job stage. Possible values include:
- * 'DeviceOrdered', 'DevicePrepared', 'Dispatched', 'Delivered', 'PickedUp',
- * 'AtAzureDC', 'DataCopy', 'Completed', 'CompletedWithErrors', 'Cancelled',
- * 'Failed_IssueReportedAtCustomer', 'Failed_IssueDetectedAtAzureDC', 'Aborted'
- * @member {string} [displayName] Display name of the job stage.
- * @member {string} [stageStatus] Status of the job stage. Possible values
+ * @property {string} [stageName] Name of the job stage. Possible values
+ * include: 'DeviceOrdered', 'DevicePrepared', 'Dispatched', 'Delivered',
+ * 'PickedUp', 'AtAzureDC', 'DataCopy', 'Completed', 'CompletedWithErrors',
+ * 'Cancelled', 'Failed_IssueReportedAtCustomer',
+ * 'Failed_IssueDetectedAtAzureDC', 'Aborted'
+ * @property {string} [displayName] Display name of the job stage.
+ * @property {string} [stageStatus] Status of the job stage. Possible values
  * include: 'None', 'InProgress', 'Succeeded', 'Failed', 'Cancelled',
  * 'Cancelling', 'SucceededWithErrors'
- * @member {date} [stageTime] Time for the job stage in UTC ISO 8601 format.
- * @member {object} [jobStageDetails] Job Stage Details
- * @member {array} [errorDetails] Error details for the stage.
+ * @property {date} [stageTime] Time for the job stage in UTC ISO 8601 format.
+ * @property {object} [jobStageDetails] Job Stage Details
+ * @property {array} [errorDetails] Error details for the stage.
  */
 export interface JobStages {
   readonly stageName?: string;
@@ -715,9 +721,9 @@ export interface JobStages {
  * @constructor
  * Shipping details.
  *
- * @member {string} [carrierName] Name of the carrier.
- * @member {string} [trackingId] Tracking Id of shipment.
- * @member {string} [trackingUrl] Url where shipment can be tracked.
+ * @property {string} [carrierName] Name of the carrier.
+ * @property {string} [trackingId] Tracking Id of shipment.
+ * @property {string} [trackingUrl] Url where shipment can be tracked.
  */
 export interface PackageShippingDetails {
   readonly carrierName?: string;
@@ -731,7 +737,7 @@ export interface PackageShippingDetails {
  * @constructor
  * Preferences related to the order
  *
- * @member {array} [preferredDataCenterRegion]
+ * @property {array} [preferredDataCenterRegion]
  */
 export interface Preferences {
   preferredDataCenterRegion?: string[];
@@ -743,18 +749,19 @@ export interface Preferences {
  * @constructor
  * Model of the Resource.
  *
- * @member {string} location The location of the resource. This will be one of
- * the supported and registered Azure Regions (e.g. West US, East US, Southeast
- * Asia, etc.). The region of a resource cannot be changed once it is created,
- * but if an identical region is specified on update the request will succeed.
- * @member {object} [tags] The list of key value pairs that describe the
+ * @property {string} location The location of the resource. This will be one
+ * of the supported and registered Azure Regions (e.g. West US, East US,
+ * Southeast Asia, etc.). The region of a resource cannot be changed once it is
+ * created, but if an identical region is specified on update the request will
+ * succeed.
+ * @property {object} [tags] The list of key value pairs that describe the
  * resource. These tags can be used in viewing and grouping this resource
  * (across resource groups).
- * @member {object} sku The sku type.
- * @member {string} [sku.name] The sku name. Possible values include:
+ * @property {object} sku The sku type.
+ * @property {string} [sku.name] The sku name. Possible values include:
  * 'DataBox', 'DataBoxDisk', 'DataBoxHeavy'
- * @member {string} [sku.displayName] The display name of the sku.
- * @member {string} [sku.family] The sku family.
+ * @property {string} [sku.displayName] The display name of the sku.
+ * @property {string} [sku.family] The sku family.
  */
 export interface Resource extends BaseResource {
   location: string;
@@ -768,88 +775,92 @@ export interface Resource extends BaseResource {
  * @constructor
  * Job Resource.
  *
- * @member {boolean} [isCancellable] Describes whether the job is cancellable
+ * @property {boolean} [isCancellable] Describes whether the job is cancellable
  * or not.
- * @member {boolean} [isDeletable] Describes whether the job is deletable or
+ * @property {boolean} [isDeletable] Describes whether the job is deletable or
  * not.
- * @member {boolean} [isShippingAddressEditable] Describes whether the shipping
- * address is editable or not.
- * @member {string} [status] Name of the stage which is in progress. Possible
+ * @property {boolean} [isShippingAddressEditable] Describes whether the
+ * shipping address is editable or not.
+ * @property {string} [status] Name of the stage which is in progress. Possible
  * values include: 'DeviceOrdered', 'DevicePrepared', 'Dispatched',
  * 'Delivered', 'PickedUp', 'AtAzureDC', 'DataCopy', 'Completed',
  * 'CompletedWithErrors', 'Cancelled', 'Failed_IssueReportedAtCustomer',
  * 'Failed_IssueDetectedAtAzureDC', 'Aborted'
- * @member {date} [startTime] Time at which the job was started in UTC ISO 8601
- * format.
- * @member {object} [error] Top level error for the job.
- * @member {string} [error.code] Error code that can be used to
+ * @property {date} [startTime] Time at which the job was started in UTC ISO
+ * 8601 format.
+ * @property {object} [error] Top level error for the job.
+ * @property {string} [error.code] Error code that can be used to
  * programmatically identify the error.
- * @member {string} [error.message] Describes the error in detail and provides
- * debugging information.
- * @member {object} [details] Details of a job run. This field will only be
+ * @property {string} [error.message] Describes the error in detail and
+ * provides debugging information.
+ * @property {object} [details] Details of a job run. This field will only be
  * sent for expand details filter.
- * @member {number} [details.expectedDataSizeInTeraBytes] The expected size of
- * the data, which needs to be transfered in this job, in tera bytes.
- * @member {array} [details.jobStages] List of stages that run in the job.
- * @member {object} [details.contactDetails] Contact details for notification
+ * @property {number} [details.expectedDataSizeInTeraBytes] The expected size
+ * of the data, which needs to be transfered in this job, in tera bytes.
+ * @property {array} [details.jobStages] List of stages that run in the job.
+ * @property {object} [details.contactDetails] Contact details for notification
  * and shipping.
- * @member {string} [details.contactDetails.contactName] Contact name of the
+ * @property {string} [details.contactDetails.contactName] Contact name of the
  * person.
- * @member {string} [details.contactDetails.phone] Phone number of the contact
- * person.
- * @member {string} [details.contactDetails.phoneExtension] Phone extension
- * number of the contact person.
- * @member {string} [details.contactDetails.mobile] Mobile number of the
+ * @property {string} [details.contactDetails.phone] Phone number of the
  * contact person.
- * @member {array} [details.contactDetails.emailList] List of Email-ids to be
+ * @property {string} [details.contactDetails.phoneExtension] Phone extension
+ * number of the contact person.
+ * @property {string} [details.contactDetails.mobile] Mobile number of the
+ * contact person.
+ * @property {array} [details.contactDetails.emailList] List of Email-ids to be
  * notified about job progress.
- * @member {array} [details.contactDetails.notificationPreference] Notification
- * preference for a job stage.
- * @member {object} [details.shippingAddress] Shipping address of the customer.
- * @member {string} [details.shippingAddress.streetAddress1] Street Address
+ * @property {array} [details.contactDetails.notificationPreference]
+ * Notification preference for a job stage.
+ * @property {object} [details.shippingAddress] Shipping address of the
+ * customer.
+ * @property {string} [details.shippingAddress.streetAddress1] Street Address
  * line 1.
- * @member {string} [details.shippingAddress.streetAddress2] Street Address
+ * @property {string} [details.shippingAddress.streetAddress2] Street Address
  * line 2.
- * @member {string} [details.shippingAddress.streetAddress3] Street Address
+ * @property {string} [details.shippingAddress.streetAddress3] Street Address
  * line 3.
- * @member {string} [details.shippingAddress.city] Name of the City.
- * @member {string} [details.shippingAddress.stateOrProvince] Name of the State
- * or Province.
- * @member {string} [details.shippingAddress.country] Name of the Country.
- * @member {string} [details.shippingAddress.postalCode] Postal code.
- * @member {string} [details.shippingAddress.zipExtendedCode] Extended Zip
+ * @property {string} [details.shippingAddress.city] Name of the City.
+ * @property {string} [details.shippingAddress.stateOrProvince] Name of the
+ * State or Province.
+ * @property {string} [details.shippingAddress.country] Name of the Country.
+ * @property {string} [details.shippingAddress.postalCode] Postal code.
+ * @property {string} [details.shippingAddress.zipExtendedCode] Extended Zip
  * Code.
- * @member {string} [details.shippingAddress.companyName] Name of the company.
- * @member {string} [details.shippingAddress.addressType] Type of address.
+ * @property {string} [details.shippingAddress.companyName] Name of the
+ * company.
+ * @property {string} [details.shippingAddress.addressType] Type of address.
  * Possible values include: 'None', 'Residential', 'Commercial'
- * @member {object} [details.deliveryPackage] Delivery package shipping
+ * @property {object} [details.deliveryPackage] Delivery package shipping
  * details.
- * @member {string} [details.deliveryPackage.carrierName] Name of the carrier.
- * @member {string} [details.deliveryPackage.trackingId] Tracking Id of
+ * @property {string} [details.deliveryPackage.carrierName] Name of the
+ * carrier.
+ * @property {string} [details.deliveryPackage.trackingId] Tracking Id of
  * shipment.
- * @member {string} [details.deliveryPackage.trackingUrl] Url where shipment
+ * @property {string} [details.deliveryPackage.trackingUrl] Url where shipment
  * can be tracked.
- * @member {object} [details.returnPackage] Return package shipping details.
- * @member {string} [details.returnPackage.carrierName] Name of the carrier.
- * @member {string} [details.returnPackage.trackingId] Tracking Id of shipment.
- * @member {string} [details.returnPackage.trackingUrl] Url where shipment can
- * be tracked.
- * @member {array} [details.destinationAccountDetails] Destination account
+ * @property {object} [details.returnPackage] Return package shipping details.
+ * @property {string} [details.returnPackage.carrierName] Name of the carrier.
+ * @property {string} [details.returnPackage.trackingId] Tracking Id of
+ * shipment.
+ * @property {string} [details.returnPackage.trackingUrl] Url where shipment
+ * can be tracked.
+ * @property {array} [details.destinationAccountDetails] Destination account
  * details.
- * @member {array} [details.errorDetails] Error details for failure. This is
+ * @property {array} [details.errorDetails] Error details for failure. This is
  * optional.
- * @member {object} [details.preferences] Preferences for the order.
- * @member {array} [details.preferences.preferredDataCenterRegion]
- * @member {array} [details.copyLogDetails] List of copy log details.
- * @member {string} [details.reverseShipmentLabelSasKey] Shared access key to
+ * @property {object} [details.preferences] Preferences for the order.
+ * @property {array} [details.preferences.preferredDataCenterRegion]
+ * @property {array} [details.copyLogDetails] List of copy log details.
+ * @property {string} [details.reverseShipmentLabelSasKey] Shared access key to
  * download the return shipment label
- * @member {string} [details.chainOfCustodySasKey] Shared access key to
+ * @property {string} [details.chainOfCustodySasKey] Shared access key to
  * download the chain of custody logs
- * @member {string} [details.jobDetailsType] Polymorphic Discriminator
- * @member {string} [cancellationReason] Reason for cancellation.
- * @member {string} [name] Name of the object.
- * @member {string} [id] Id of the object.
- * @member {string} [type] Type of the object.
+ * @property {string} [details.jobDetailsType] Polymorphic Discriminator
+ * @property {string} [cancellationReason] Reason for cancellation.
+ * @property {string} [name] Name of the object.
+ * @property {string} [id] Id of the object.
+ * @property {string} [type] Type of the object.
  */
 export interface JobResource extends Resource {
   readonly isCancellable?: boolean;
@@ -871,30 +882,31 @@ export interface JobResource extends Resource {
  * @constructor
  * Job details for update.
  *
- * @member {object} [contactDetails] Contact details for notification and
+ * @property {object} [contactDetails] Contact details for notification and
  * shipping.
- * @member {string} [contactDetails.contactName] Contact name of the person.
- * @member {string} [contactDetails.phone] Phone number of the contact person.
- * @member {string} [contactDetails.phoneExtension] Phone extension number of
- * the contact person.
- * @member {string} [contactDetails.mobile] Mobile number of the contact
+ * @property {string} [contactDetails.contactName] Contact name of the person.
+ * @property {string} [contactDetails.phone] Phone number of the contact
  * person.
- * @member {array} [contactDetails.emailList] List of Email-ids to be notified
- * about job progress.
- * @member {array} [contactDetails.notificationPreference] Notification
+ * @property {string} [contactDetails.phoneExtension] Phone extension number of
+ * the contact person.
+ * @property {string} [contactDetails.mobile] Mobile number of the contact
+ * person.
+ * @property {array} [contactDetails.emailList] List of Email-ids to be
+ * notified about job progress.
+ * @property {array} [contactDetails.notificationPreference] Notification
  * preference for a job stage.
- * @member {object} [shippingAddress] Shipping address of the customer.
- * @member {string} [shippingAddress.streetAddress1] Street Address line 1.
- * @member {string} [shippingAddress.streetAddress2] Street Address line 2.
- * @member {string} [shippingAddress.streetAddress3] Street Address line 3.
- * @member {string} [shippingAddress.city] Name of the City.
- * @member {string} [shippingAddress.stateOrProvince] Name of the State or
+ * @property {object} [shippingAddress] Shipping address of the customer.
+ * @property {string} [shippingAddress.streetAddress1] Street Address line 1.
+ * @property {string} [shippingAddress.streetAddress2] Street Address line 2.
+ * @property {string} [shippingAddress.streetAddress3] Street Address line 3.
+ * @property {string} [shippingAddress.city] Name of the City.
+ * @property {string} [shippingAddress.stateOrProvince] Name of the State or
  * Province.
- * @member {string} [shippingAddress.country] Name of the Country.
- * @member {string} [shippingAddress.postalCode] Postal code.
- * @member {string} [shippingAddress.zipExtendedCode] Extended Zip Code.
- * @member {string} [shippingAddress.companyName] Name of the company.
- * @member {string} [shippingAddress.addressType] Type of address. Possible
+ * @property {string} [shippingAddress.country] Name of the Country.
+ * @property {string} [shippingAddress.postalCode] Postal code.
+ * @property {string} [shippingAddress.zipExtendedCode] Extended Zip Code.
+ * @property {string} [shippingAddress.companyName] Name of the company.
+ * @property {string} [shippingAddress.addressType] Type of address. Possible
  * values include: 'None', 'Residential', 'Commercial'
  */
 export interface UpdateJobDetails {
@@ -908,40 +920,42 @@ export interface UpdateJobDetails {
  * @constructor
  * The JobResourceUpdateParameter.
  *
- * @member {object} [details] Details of a job to be updated.
- * @member {object} [details.contactDetails] Contact details for notification
+ * @property {object} [details] Details of a job to be updated.
+ * @property {object} [details.contactDetails] Contact details for notification
  * and shipping.
- * @member {string} [details.contactDetails.contactName] Contact name of the
+ * @property {string} [details.contactDetails.contactName] Contact name of the
  * person.
- * @member {string} [details.contactDetails.phone] Phone number of the contact
- * person.
- * @member {string} [details.contactDetails.phoneExtension] Phone extension
- * number of the contact person.
- * @member {string} [details.contactDetails.mobile] Mobile number of the
+ * @property {string} [details.contactDetails.phone] Phone number of the
  * contact person.
- * @member {array} [details.contactDetails.emailList] List of Email-ids to be
+ * @property {string} [details.contactDetails.phoneExtension] Phone extension
+ * number of the contact person.
+ * @property {string} [details.contactDetails.mobile] Mobile number of the
+ * contact person.
+ * @property {array} [details.contactDetails.emailList] List of Email-ids to be
  * notified about job progress.
- * @member {array} [details.contactDetails.notificationPreference] Notification
- * preference for a job stage.
- * @member {object} [details.shippingAddress] Shipping address of the customer.
- * @member {string} [details.shippingAddress.streetAddress1] Street Address
+ * @property {array} [details.contactDetails.notificationPreference]
+ * Notification preference for a job stage.
+ * @property {object} [details.shippingAddress] Shipping address of the
+ * customer.
+ * @property {string} [details.shippingAddress.streetAddress1] Street Address
  * line 1.
- * @member {string} [details.shippingAddress.streetAddress2] Street Address
+ * @property {string} [details.shippingAddress.streetAddress2] Street Address
  * line 2.
- * @member {string} [details.shippingAddress.streetAddress3] Street Address
+ * @property {string} [details.shippingAddress.streetAddress3] Street Address
  * line 3.
- * @member {string} [details.shippingAddress.city] Name of the City.
- * @member {string} [details.shippingAddress.stateOrProvince] Name of the State
- * or Province.
- * @member {string} [details.shippingAddress.country] Name of the Country.
- * @member {string} [details.shippingAddress.postalCode] Postal code.
- * @member {string} [details.shippingAddress.zipExtendedCode] Extended Zip
+ * @property {string} [details.shippingAddress.city] Name of the City.
+ * @property {string} [details.shippingAddress.stateOrProvince] Name of the
+ * State or Province.
+ * @property {string} [details.shippingAddress.country] Name of the Country.
+ * @property {string} [details.shippingAddress.postalCode] Postal code.
+ * @property {string} [details.shippingAddress.zipExtendedCode] Extended Zip
  * Code.
- * @member {string} [details.shippingAddress.companyName] Name of the company.
- * @member {string} [details.shippingAddress.addressType] Type of address.
+ * @property {string} [details.shippingAddress.companyName] Name of the
+ * company.
+ * @property {string} [details.shippingAddress.addressType] Type of address.
  * Possible values include: 'None', 'Residential', 'Commercial'
- * @member {array} [destinationAccountDetails] Destination account details.
- * @member {object} [tags] The list of key value pairs that describe the
+ * @property {array} [destinationAccountDetails] Destination account details.
+ * @property {object} [tags] The list of key value pairs that describe the
  * resource. These tags can be used in viewing and grouping this resource
  * (across resource groups).
  */
@@ -957,11 +971,11 @@ export interface JobResourceUpdateParameter {
  * @constructor
  * Operation display
  *
- * @member {string} [provider] Provider name.
- * @member {string} [resource] Resource name.
- * @member {string} [operation] Localized name of the operation for display
+ * @property {string} [provider] Provider name.
+ * @property {string} [resource] Resource name.
+ * @property {string} [operation] Localized name of the operation for display
  * purpose.
- * @member {string} [description] Localized description of the operation for
+ * @property {string} [description] Localized description of the operation for
  * display purpose.
  */
 export interface OperationDisplay {
@@ -977,17 +991,17 @@ export interface OperationDisplay {
  * @constructor
  * Operation entity.
  *
- * @member {string} [name] Name of the operation. Format:
+ * @property {string} [name] Name of the operation. Format:
  * {resourceProviderNamespace}/{resourceType}/{read|write|delete|action}
- * @member {object} [display] Operation display values.
- * @member {string} [display.provider] Provider name.
- * @member {string} [display.resource] Resource name.
- * @member {string} [display.operation] Localized name of the operation for
+ * @property {object} [display] Operation display values.
+ * @property {string} [display.provider] Provider name.
+ * @property {string} [display.resource] Resource name.
+ * @property {string} [display.operation] Localized name of the operation for
  * display purpose.
- * @member {string} [display.description] Localized description of the
+ * @property {string} [display.description] Localized description of the
  * operation for display purpose.
- * @member {object} [properties] Operation properties.
- * @member {string} [origin] Origin of the operation. Can be :
+ * @property {object} [properties] Operation properties.
+ * @property {string} [origin] Origin of the operation. Can be :
  * user|system|user,system
  */
 export interface Operation {
@@ -1003,11 +1017,11 @@ export interface Operation {
  * @constructor
  * Shipment pick up request details.
  *
- * @member {date} startTime Minimum date after which the pick up should
+ * @property {date} startTime Minimum date after which the pick up should
  * commence, this must be in local time of pick up area.
- * @member {date} endTime Maximum date before which the pick up should
+ * @property {date} endTime Maximum date before which the pick up should
  * commence, this must be in local time of pick up area.
- * @member {string} shipmentLocation Shipment Location in the pickup place.
+ * @property {string} shipmentLocation Shipment Location in the pickup place.
  * Eg.front desk
  */
 export interface ShipmentPickUpRequest {
@@ -1022,10 +1036,10 @@ export interface ShipmentPickUpRequest {
  * @constructor
  * Shipment pick up response.
  *
- * @member {string} [confirmationNumber] Confirmation number for the pick up
+ * @property {string} [confirmationNumber] Confirmation number for the pick up
  * request.
- * @member {date} [readyByTime] Time by which shipment should be ready for pick
- * up, this is in local time of pick up area.
+ * @property {date} [readyByTime] Time by which shipment should be ready for
+ * pick up, this is in local time of pick up area.
  */
 export interface ShipmentPickUpResponse {
   readonly confirmationNumber?: string;
@@ -1038,9 +1052,9 @@ export interface ShipmentPickUpResponse {
  * @constructor
  * Unencrypted credentials for accessing device.
  *
- * @member {string} [jobName] Name of the job.
- * @member {object} [jobSecrets] Secrets related to this job.
- * @member {string} [jobSecrets.jobSecretsType] Polymorphic Discriminator
+ * @property {string} [jobName] Name of the job.
+ * @property {object} [jobSecrets] Secrets related to this job.
+ * @property {string} [jobSecrets.jobSecretsType] Polymorphic Discriminator
  */
 export interface UnencryptedCredentials {
   readonly jobName?: string;
@@ -1054,20 +1068,20 @@ export interface UnencryptedCredentials {
  * The requirements to validate customer address where the device needs to be
  * shipped.
  *
- * @member {object} shippingAddress Shipping address of the customer.
- * @member {string} [shippingAddress.streetAddress1] Street Address line 1.
- * @member {string} [shippingAddress.streetAddress2] Street Address line 2.
- * @member {string} [shippingAddress.streetAddress3] Street Address line 3.
- * @member {string} [shippingAddress.city] Name of the City.
- * @member {string} [shippingAddress.stateOrProvince] Name of the State or
+ * @property {object} shippingAddress Shipping address of the customer.
+ * @property {string} [shippingAddress.streetAddress1] Street Address line 1.
+ * @property {string} [shippingAddress.streetAddress2] Street Address line 2.
+ * @property {string} [shippingAddress.streetAddress3] Street Address line 3.
+ * @property {string} [shippingAddress.city] Name of the City.
+ * @property {string} [shippingAddress.stateOrProvince] Name of the State or
  * Province.
- * @member {string} [shippingAddress.country] Name of the Country.
- * @member {string} [shippingAddress.postalCode] Postal code.
- * @member {string} [shippingAddress.zipExtendedCode] Extended Zip Code.
- * @member {string} [shippingAddress.companyName] Name of the company.
- * @member {string} [shippingAddress.addressType] Type of address. Possible
+ * @property {string} [shippingAddress.country] Name of the Country.
+ * @property {string} [shippingAddress.postalCode] Postal code.
+ * @property {string} [shippingAddress.zipExtendedCode] Extended Zip Code.
+ * @property {string} [shippingAddress.companyName] Name of the company.
+ * @property {string} [shippingAddress.addressType] Type of address. Possible
  * values include: 'None', 'Residential', 'Commercial'
- * @member {string} deviceType Device type to be used for the job. Possible
+ * @property {string} deviceType Device type to be used for the job. Possible
  * values include: 'DataBox', 'DataBoxDisk', 'DataBoxHeavy'
  */
 export interface ValidateAddress {
@@ -1082,7 +1096,7 @@ export interface ValidateAddress {
  * @constructor
  * Operation Collection.
  *
- * @member {string} [nextLink] Link for the next set of operations.
+ * @property {string} [nextLink] Link for the next set of operations.
  */
 export interface OperationList extends Array<Operation> {
   nextLink?: string;
@@ -1094,7 +1108,7 @@ export interface OperationList extends Array<Operation> {
  * @constructor
  * Job Resource Collection
  *
- * @member {string} [nextLink] Link for the next set of job resources.
+ * @property {string} [nextLink] Link for the next set of job resources.
  */
 export interface JobResourceList extends Array<JobResource> {
   nextLink?: string;
@@ -1106,7 +1120,7 @@ export interface JobResourceList extends Array<JobResource> {
  * @constructor
  * List of unencrypted credentials for accessing device.
  *
- * @member {string} [nextLink] Link for the next set of unencrypted
+ * @property {string} [nextLink] Link for the next set of unencrypted
  * credentials.
  */
 export interface UnencryptedCredentialsList extends Array<UnencryptedCredentials> {
@@ -1119,7 +1133,7 @@ export interface UnencryptedCredentialsList extends Array<UnencryptedCredentials
  * @constructor
  * The available skus operation response.
  *
- * @member {string} [nextLink] Link for the next set of skus.
+ * @property {string} [nextLink] Link for the next set of skus.
  */
 export interface AvailableSkusResult extends Array<SkuInformation> {
   nextLink?: string;

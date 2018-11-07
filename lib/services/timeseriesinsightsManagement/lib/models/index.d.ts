@@ -23,12 +23,13 @@ export { CloudError } from 'ms-rest-azure';
  * Contains the localized display information for this particular operation /
  * action.
  *
- * @member {string} [provider] The localized friendly form of the resource
+ * @property {string} [provider] The localized friendly form of the resource
  * provider name.
- * @member {string} [resource] The localized friendly form of the resource type
- * related to this action/operation.
- * @member {string} [operation] The localized friendly name for the operation.
- * @member {string} [description] The localized friendly description for the
+ * @property {string} [resource] The localized friendly form of the resource
+ * type related to this action/operation.
+ * @property {string} [operation] The localized friendly name for the
+ * operation.
+ * @property {string} [description] The localized friendly description for the
  * operation.
  */
 export interface OperationDisplay {
@@ -44,17 +45,17 @@ export interface OperationDisplay {
  * @constructor
  * A Time Series Insights REST API operation
  *
- * @member {string} [name] The name of the operation being performed on this
+ * @property {string} [name] The name of the operation being performed on this
  * particular object.
- * @member {object} [display] Contains the localized display information for
+ * @property {object} [display] Contains the localized display information for
  * this particular operation / action.
- * @member {string} [display.provider] The localized friendly form of the
+ * @property {string} [display.provider] The localized friendly form of the
  * resource provider name.
- * @member {string} [display.resource] The localized friendly form of the
+ * @property {string} [display.resource] The localized friendly form of the
  * resource type related to this action/operation.
- * @member {string} [display.operation] The localized friendly name for the
+ * @property {string} [display.operation] The localized friendly name for the
  * operation.
- * @member {string} [display.description] The localized friendly description
+ * @property {string} [display.description] The localized friendly description
  * for the operation.
  */
 export interface Operation {
@@ -68,9 +69,9 @@ export interface Operation {
  * @constructor
  * Time Series Insights resource
  *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
+ * @property {string} [id] Resource Id
+ * @property {string} [name] Resource name
+ * @property {string} [type] Resource type
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -84,8 +85,8 @@ export interface Resource extends BaseResource {
  * @constructor
  * Time Series Insights resource that is tracked by Azure Resource Manager.
  *
- * @member {string} location Resource location
- * @member {object} [tags] Resource tags
+ * @property {string} location Resource location
+ * @property {object} [tags] Resource tags
  */
 export interface TrackedResource extends Resource {
   location: string;
@@ -98,10 +99,10 @@ export interface TrackedResource extends Resource {
  * @constructor
  * Properties that are common to all tracked resources.
  *
- * @member {string} [provisioningState] Provisioning state of the resource.
+ * @property {string} [provisioningState] Provisioning state of the resource.
  * Possible values include: 'Accepted', 'Creating', 'Updating', 'Succeeded',
  * 'Failed', 'Deleting'
- * @member {date} [creationTime] The time the resource was created.
+ * @property {date} [creationTime] The time the resource was created.
  */
 export interface ResourceProperties {
   provisioningState?: string;
@@ -115,10 +116,10 @@ export interface ResourceProperties {
  * The sku determines the capacity of the environment, the SLA (in
  * queries-per-minute and total capacity), and the billing rate.
  *
- * @member {string} name The name of this SKU. Possible values include: 'S1',
+ * @property {string} name The name of this SKU. Possible values include: 'S1',
  * 'S2'
- * @member {number} capacity The capacity of the sku. This value can be changed
- * to support scale out of environments after they have been created.
+ * @property {number} capacity The capacity of the sku. This value can be
+ * changed to support scale out of environments after they have been created.
  */
 export interface Sku {
   name: string;
@@ -132,8 +133,8 @@ export interface Sku {
  * Properties required to create any resource tracked by Azure Resource
  * Manager.
  *
- * @member {string} location The location of the resource.
- * @member {object} [tags] Key-value pairs of additional properties for the
+ * @property {string} location The location of the resource.
+ * @property {object} [tags] Key-value pairs of additional properties for the
  * resource.
  */
 export interface CreateOrUpdateTrackedResourceProperties {
@@ -148,8 +149,8 @@ export interface CreateOrUpdateTrackedResourceProperties {
  * The structure of the property that a partition key can have. An environment
  * can have multiple such properties.
  *
- * @member {string} [name] The name of the property.
- * @member {string} [type] The type of the property. Possible values include:
+ * @property {string} [name] The name of the property.
+ * @property {string} [type] The type of the property. Possible values include:
  * 'String'
  */
 export interface PartitionKeyProperty {
@@ -163,22 +164,23 @@ export interface PartitionKeyProperty {
  * @constructor
  * Parameters supplied to the CreateOrUpdate Environment operation.
  *
- * @member {object} sku The sku determines the capacity of the environment, the
- * SLA (in queries-per-minute and total capacity), and the billing rate.
- * @member {string} [sku.name] The name of this SKU. Possible values include:
+ * @property {object} sku The sku determines the capacity of the environment,
+ * the SLA (in queries-per-minute and total capacity), and the billing rate.
+ * @property {string} [sku.name] The name of this SKU. Possible values include:
  * 'S1', 'S2'
- * @member {number} [sku.capacity] The capacity of the sku. This value can be
+ * @property {number} [sku.capacity] The capacity of the sku. This value can be
  * changed to support scale out of environments after they have been created.
- * @member {moment.duration} dataRetentionTime ISO8601 timespan specifying the
- * minimum number of days the environment's events will be available for query.
- * @member {string} [storageLimitExceededBehavior] The behavior the Time Series
- * Insights service should take when the environment's capacity has been
+ * @property {moment.duration} dataRetentionTime ISO8601 timespan specifying
+ * the minimum number of days the environment's events will be available for
+ * query.
+ * @property {string} [storageLimitExceededBehavior] The behavior the Time
+ * Series Insights service should take when the environment's capacity has been
  * exceeded. If "PauseIngress" is specified, new events will not be read from
  * the event source. If "PurgeOldData" is specified, new events will continue
  * to be read and old events will be deleted from the environment. The default
  * behavior is PurgeOldData. Possible values include: 'PurgeOldData',
  * 'PauseIngress'
- * @member {array} [partitionKeyProperties] The list of partition keys
+ * @property {array} [partitionKeyProperties] The list of partition keys
  * according to which the data in the environment will be ordered.
  */
 export interface EnvironmentCreateOrUpdateParameters extends CreateOrUpdateTrackedResourceProperties {
@@ -194,25 +196,25 @@ export interface EnvironmentCreateOrUpdateParameters extends CreateOrUpdateTrack
  * @constructor
  * Parameters supplied to the Update Environment operation.
  *
- * @member {object} [sku] The sku of the environment.
- * @member {string} [sku.name] The name of this SKU. Possible values include:
+ * @property {object} [sku] The sku of the environment.
+ * @property {string} [sku.name] The name of this SKU. Possible values include:
  * 'S1', 'S2'
- * @member {number} [sku.capacity] The capacity of the sku. This value can be
+ * @property {number} [sku.capacity] The capacity of the sku. This value can be
  * changed to support scale out of environments after they have been created.
- * @member {object} [tags] Key-value pairs of additional properties for the
+ * @property {object} [tags] Key-value pairs of additional properties for the
  * environment.
- * @member {moment.duration} [dataRetentionTime] ISO8601 timespan specifying
+ * @property {moment.duration} [dataRetentionTime] ISO8601 timespan specifying
  * the minimum number of days the environment's events will be available for
  * query.
- * @member {string} [storageLimitExceededBehavior] The behavior the Time Series
- * Insights service should take when the environment's capacity has been
+ * @property {string} [storageLimitExceededBehavior] The behavior the Time
+ * Series Insights service should take when the environment's capacity has been
  * exceeded. If "PauseIngress" is specified, new events will not be read from
  * the event source. If "PurgeOldData" is specified, new events will continue
  * to be read and old events will be deleted from the environment. The default
  * behavior is PurgeOldData. Possible values include: 'PurgeOldData',
  * 'PauseIngress'
- * @member {array} [partitionKeyProperties] The list of event properties which
- * will be used to partition data in the environment.
+ * @property {array} [partitionKeyProperties] The list of event properties
+ * which will be used to partition data in the environment.
  */
 export interface EnvironmentUpdateParameters {
   sku?: Sku;
@@ -228,10 +230,10 @@ export interface EnvironmentUpdateParameters {
  * @constructor
  * An object that contains the details about an environment's state.
  *
- * @member {string} [code] Contains the code that represents the reason of an
+ * @property {string} [code] Contains the code that represents the reason of an
  * environment being in a particular state. Can be used to programatically
  * handle specific cases.
- * @member {string} [message] A message that describes the state in detail.
+ * @property {string} [message] A message that describes the state in detail.
  */
 export interface EnvironmentStateDetails {
   code?: string;
@@ -244,16 +246,16 @@ export interface EnvironmentStateDetails {
  * @constructor
  * An object that represents the status of ingress on an environment.
  *
- * @member {string} [state] This string represents the state of ingress
+ * @property {string} [state] This string represents the state of ingress
  * operations on an environment. It can be "Disabled", "Ready", "Running",
  * "Paused" or "Unknown". Possible values include: 'Disabled', 'Ready',
  * 'Running', 'Paused', 'Unknown'
- * @member {object} [stateDetails] An object that contains the details about an
- * environment's state.
- * @member {string} [stateDetails.code] Contains the code that represents the
+ * @property {object} [stateDetails] An object that contains the details about
+ * an environment's state.
+ * @property {string} [stateDetails.code] Contains the code that represents the
  * reason of an environment being in a particular state. Can be used to
  * programatically handle specific cases.
- * @member {string} [stateDetails.message] A message that describes the state
+ * @property {string} [stateDetails.message] A message that describes the state
  * in detail.
  */
 export interface IngressEnvironmentStatus {
@@ -268,19 +270,19 @@ export interface IngressEnvironmentStatus {
  * An object that represents the status of the environment, and its internal
  * state in the Time Series Insights service.
  *
- * @member {object} [ingress] An object that represents the status of ingress
+ * @property {object} [ingress] An object that represents the status of ingress
  * on an environment.
- * @member {string} [ingress.state] This string represents the state of ingress
- * operations on an environment. It can be "Disabled", "Ready", "Running",
- * "Paused" or "Unknown". Possible values include: 'Disabled', 'Ready',
- * 'Running', 'Paused', 'Unknown'
- * @member {object} [ingress.stateDetails] An object that contains the details
- * about an environment's state.
- * @member {string} [ingress.stateDetails.code] Contains the code that
+ * @property {string} [ingress.state] This string represents the state of
+ * ingress operations on an environment. It can be "Disabled", "Ready",
+ * "Running", "Paused" or "Unknown". Possible values include: 'Disabled',
+ * 'Ready', 'Running', 'Paused', 'Unknown'
+ * @property {object} [ingress.stateDetails] An object that contains the
+ * details about an environment's state.
+ * @property {string} [ingress.stateDetails.code] Contains the code that
  * represents the reason of an environment being in a particular state. Can be
  * used to programatically handle specific cases.
- * @member {string} [ingress.stateDetails.message] A message that describes the
- * state in detail.
+ * @property {string} [ingress.stateDetails.message] A message that describes
+ * the state in detail.
  */
 export interface EnvironmentStatus {
   ingress?: IngressEnvironmentStatus;
@@ -293,47 +295,48 @@ export interface EnvironmentStatus {
  * An environment is a set of time-series data avaliable for query, and is the
  * top level Azure Time Series Insights resource.
  *
- * @member {object} [sku] The sku determines the capacity of the environment,
+ * @property {object} [sku] The sku determines the capacity of the environment,
  * the SLA (in queries-per-minute and total capacity), and the billing rate.
- * @member {string} [sku.name] The name of this SKU. Possible values include:
+ * @property {string} [sku.name] The name of this SKU. Possible values include:
  * 'S1', 'S2'
- * @member {number} [sku.capacity] The capacity of the sku. This value can be
+ * @property {number} [sku.capacity] The capacity of the sku. This value can be
  * changed to support scale out of environments after they have been created.
- * @member {moment.duration} dataRetentionTime ISO8601 timespan specifying the
- * minimum number of days the environment's events will be available for query.
- * @member {string} [storageLimitExceededBehavior] The behavior the Time Series
- * Insights service should take when the environment's capacity has been
+ * @property {moment.duration} dataRetentionTime ISO8601 timespan specifying
+ * the minimum number of days the environment's events will be available for
+ * query.
+ * @property {string} [storageLimitExceededBehavior] The behavior the Time
+ * Series Insights service should take when the environment's capacity has been
  * exceeded. If "PauseIngress" is specified, new events will not be read from
  * the event source. If "PurgeOldData" is specified, new events will continue
  * to be read and old events will be deleted from the environment. The default
  * behavior is PurgeOldData. Possible values include: 'PurgeOldData',
  * 'PauseIngress'
- * @member {array} [partitionKeyProperties] The list of partition keys
+ * @property {array} [partitionKeyProperties] The list of partition keys
  * according to which the data in the environment will be ordered.
- * @member {string} [provisioningState] Provisioning state of the resource.
+ * @property {string} [provisioningState] Provisioning state of the resource.
  * Possible values include: 'Accepted', 'Creating', 'Updating', 'Succeeded',
  * 'Failed', 'Deleting'
- * @member {date} [creationTime] The time the resource was created.
- * @member {uuid} [dataAccessId] An id used to access the environment data,
+ * @property {date} [creationTime] The time the resource was created.
+ * @property {uuid} [dataAccessId] An id used to access the environment data,
  * e.g. to query the environment's events or upload reference data for the
  * environment.
- * @member {string} [dataAccessFqdn] The fully qualified domain name used to
+ * @property {string} [dataAccessFqdn] The fully qualified domain name used to
  * access the environment data, e.g. to query the environment's events or
  * upload reference data for the environment.
- * @member {object} [status] An object that represents the status of the
+ * @property {object} [status] An object that represents the status of the
  * environment, and its internal state in the Time Series Insights service.
- * @member {object} [status.ingress] An object that represents the status of
+ * @property {object} [status.ingress] An object that represents the status of
  * ingress on an environment.
- * @member {string} [status.ingress.state] This string represents the state of
- * ingress operations on an environment. It can be "Disabled", "Ready",
+ * @property {string} [status.ingress.state] This string represents the state
+ * of ingress operations on an environment. It can be "Disabled", "Ready",
  * "Running", "Paused" or "Unknown". Possible values include: 'Disabled',
  * 'Ready', 'Running', 'Paused', 'Unknown'
- * @member {object} [status.ingress.stateDetails] An object that contains the
+ * @property {object} [status.ingress.stateDetails] An object that contains the
  * details about an environment's state.
- * @member {string} [status.ingress.stateDetails.code] Contains the code that
+ * @property {string} [status.ingress.stateDetails.code] Contains the code that
  * represents the reason of an environment being in a particular state. Can be
  * used to programatically handle specific cases.
- * @member {string} [status.ingress.stateDetails.message] A message that
+ * @property {string} [status.ingress.stateDetails.message] A message that
  * describes the state in detail.
  */
 export interface EnvironmentResource extends TrackedResource {
@@ -354,7 +357,7 @@ export interface EnvironmentResource extends TrackedResource {
  * @constructor
  * The response of the List Environments operation.
  *
- * @member {array} [value] Result of the List Environments operation.
+ * @property {array} [value] Result of the List Environments operation.
  */
 export interface EnvironmentListResponse {
   value?: EnvironmentResource[];
@@ -366,7 +369,7 @@ export interface EnvironmentListResponse {
  * @constructor
  * Parameters supplied to the Create or Update Event Source operation.
  *
- * @member {string} kind Polymorphic Discriminator
+ * @property {string} kind Polymorphic Discriminator
  */
 export interface EventSourceCreateOrUpdateParameters extends CreateOrUpdateTrackedResourceProperties {
   kind: string;
@@ -379,25 +382,25 @@ export interface EventSourceCreateOrUpdateParameters extends CreateOrUpdateTrack
  * Parameters supplied to the Create or Update Event Source operation for an
  * EventHub event source.
  *
- * @member {string} [provisioningState] Provisioning state of the resource.
+ * @property {string} [provisioningState] Provisioning state of the resource.
  * Possible values include: 'Accepted', 'Creating', 'Updating', 'Succeeded',
  * 'Failed', 'Deleting'
- * @member {date} [creationTime] The time the resource was created.
- * @member {string} [timestampPropertyName] The event property that will be
+ * @property {date} [creationTime] The time the resource was created.
+ * @property {string} [timestampPropertyName] The event property that will be
  * used as the event source's timestamp. If a value isn't specified for
  * timestampPropertyName, or if null or empty-string is specified, the event
  * creation time will be used.
- * @member {string} eventSourceResourceId The resource id of the event source
+ * @property {string} eventSourceResourceId The resource id of the event source
  * in Azure Resource Manager.
- * @member {string} serviceBusNamespace The name of the service bus that
+ * @property {string} serviceBusNamespace The name of the service bus that
  * contains the event hub.
- * @member {string} eventHubName The name of the event hub.
- * @member {string} consumerGroupName The name of the event hub's consumer
+ * @property {string} eventHubName The name of the event hub.
+ * @property {string} consumerGroupName The name of the event hub's consumer
  * group that holds the partitions from which events will be read.
- * @member {string} keyName The name of the SAS key that grants the Time Series
- * Insights service access to the event hub. The shared access policies for
- * this key must grant 'Listen' permissions to the event hub.
- * @member {string} sharedAccessKey The value of the shared access key that
+ * @property {string} keyName The name of the SAS key that grants the Time
+ * Series Insights service access to the event hub. The shared access policies
+ * for this key must grant 'Listen' permissions to the event hub.
+ * @property {string} sharedAccessKey The value of the shared access key that
  * grants the Time Series Insights service read access to the event hub. This
  * property is not shown in event source responses.
  */
@@ -420,23 +423,23 @@ export interface EventHubEventSourceCreateOrUpdateParameters extends EventSource
  * Parameters supplied to the Create or Update Event Source operation for an
  * IoTHub event source.
  *
- * @member {string} [provisioningState] Provisioning state of the resource.
+ * @property {string} [provisioningState] Provisioning state of the resource.
  * Possible values include: 'Accepted', 'Creating', 'Updating', 'Succeeded',
  * 'Failed', 'Deleting'
- * @member {date} [creationTime] The time the resource was created.
- * @member {string} [timestampPropertyName] The event property that will be
+ * @property {date} [creationTime] The time the resource was created.
+ * @property {string} [timestampPropertyName] The event property that will be
  * used as the event source's timestamp. If a value isn't specified for
  * timestampPropertyName, or if null or empty-string is specified, the event
  * creation time will be used.
- * @member {string} eventSourceResourceId The resource id of the event source
+ * @property {string} eventSourceResourceId The resource id of the event source
  * in Azure Resource Manager.
- * @member {string} iotHubName The name of the iot hub.
- * @member {string} consumerGroupName The name of the iot hub's consumer group
- * that holds the partitions from which events will be read.
- * @member {string} keyName The name of the Shared Access Policy key that
+ * @property {string} iotHubName The name of the iot hub.
+ * @property {string} consumerGroupName The name of the iot hub's consumer
+ * group that holds the partitions from which events will be read.
+ * @property {string} keyName The name of the Shared Access Policy key that
  * grants the Time Series Insights service access to the iot hub. This shared
  * access policy key must grant 'service connect' permissions to the iot hub.
- * @member {string} sharedAccessKey The value of the Shared Access Policy key
+ * @property {string} sharedAccessKey The value of the Shared Access Policy key
  * that grants the Time Series Insights service read access to the iot hub.
  * This property is not shown in event source responses.
  */
@@ -457,7 +460,7 @@ export interface IoTHubEventSourceCreateOrUpdateParameters extends EventSourceCr
  * @constructor
  * Parameters supplied to the Update Event Source operation.
  *
- * @member {object} [tags] Key-value pairs of additional properties for the
+ * @property {object} [tags] Key-value pairs of additional properties for the
  * event source.
  */
 export interface EventSourceUpdateParameters {
@@ -471,29 +474,29 @@ export interface EventSourceUpdateParameters {
  * Parameters supplied to the Update Event Source operation to update an
  * EventHub event source.
  *
- * @member {string} [timestampPropertyName] The event property that will be
+ * @property {string} [timestampPropertyName] The event property that will be
  * used as the event source's timestamp. If a value isn't specified for
  * timestampPropertyName, or if null or empty-string is specified, the event
  * creation time will be used.
- * @member {object} [localTimestamp] An object that represents the local
+ * @property {object} [localTimestamp] An object that represents the local
  * timestamp property. It contains the format of local timestamp that needs to
  * be used and the corresponding timezone offset information. If a value isn't
  * specified for localTimestamp, or if null, then the local timestamp will not
  * be ingressed with the events.
- * @member {string} [localTimestamp.format] An enum that represents the format
- * of the local timestamp property that needs to be set. Possible values
+ * @property {string} [localTimestamp.format] An enum that represents the
+ * format of the local timestamp property that needs to be set. Possible values
  * include: 'Embedded', 'Iana', 'TimeSpan'
- * @member {object} [localTimestamp.timeZoneOffset] An object that represents
+ * @property {object} [localTimestamp.timeZoneOffset] An object that represents
  * the offset information for the local timestamp format specified. Should not
  * be specified for LocalTimestampFormat - Embedded.
- * @member {string} [localTimestamp.timeZoneOffset.propertyName] The event
+ * @property {string} [localTimestamp.timeZoneOffset.propertyName] The event
  * property that will be contain the offset information to calculate the local
  * timestamp. When the LocalTimestampFormat is Iana, the property name will
  * contain the name of the column which contains IANA Timezone Name (eg:
  * Americas/Los Angeles). When LocalTimestampFormat is Timespan, it contains
  * the name of property which contains values representing the offset (eg: P1D
  * or 1.00:00:00)
- * @member {string} [sharedAccessKey] The value of the shared access key that
+ * @property {string} [sharedAccessKey] The value of the shared access key that
  * grants the Time Series Insights service read access to the event hub. This
  * property is not shown in event source responses.
  */
@@ -510,29 +513,29 @@ export interface EventHubEventSourceUpdateParameters extends EventSourceUpdatePa
  * Parameters supplied to the Update Event Source operation to update an IoTHub
  * event source.
  *
- * @member {string} [timestampPropertyName] The event property that will be
+ * @property {string} [timestampPropertyName] The event property that will be
  * used as the event source's timestamp. If a value isn't specified for
  * timestampPropertyName, or if null or empty-string is specified, the event
  * creation time will be used.
- * @member {object} [localTimestamp] An object that represents the local
+ * @property {object} [localTimestamp] An object that represents the local
  * timestamp property. It contains the format of local timestamp that needs to
  * be used and the corresponding timezone offset information. If a value isn't
  * specified for localTimestamp, or if null, then the local timestamp will not
  * be ingressed with the events.
- * @member {string} [localTimestamp.format] An enum that represents the format
- * of the local timestamp property that needs to be set. Possible values
+ * @property {string} [localTimestamp.format] An enum that represents the
+ * format of the local timestamp property that needs to be set. Possible values
  * include: 'Embedded', 'Iana', 'TimeSpan'
- * @member {object} [localTimestamp.timeZoneOffset] An object that represents
+ * @property {object} [localTimestamp.timeZoneOffset] An object that represents
  * the offset information for the local timestamp format specified. Should not
  * be specified for LocalTimestampFormat - Embedded.
- * @member {string} [localTimestamp.timeZoneOffset.propertyName] The event
+ * @property {string} [localTimestamp.timeZoneOffset.propertyName] The event
  * property that will be contain the offset information to calculate the local
  * timestamp. When the LocalTimestampFormat is Iana, the property name will
  * contain the name of the column which contains IANA Timezone Name (eg:
  * Americas/Los Angeles). When LocalTimestampFormat is Timespan, it contains
  * the name of property which contains values representing the offset (eg: P1D
  * or 1.00:00:00)
- * @member {string} [sharedAccessKey] The value of the shared access key that
+ * @property {string} [sharedAccessKey] The value of the shared access key that
  * grants the Time Series Insights service read access to the iot hub. This
  * property is not shown in event source responses.
  */
@@ -550,7 +553,7 @@ export interface IoTHubEventSourceUpdateParameters extends EventSourceUpdatePara
  * source has associated connection info that allows the Time Series Insights
  * ingress pipeline to connect to and pull data from the event source
  *
- * @member {string} kind Polymorphic Discriminator
+ * @property {string} kind Polymorphic Discriminator
  */
 export interface EventSourceResource extends TrackedResource {
   kind: string;
@@ -562,7 +565,7 @@ export interface EventSourceResource extends TrackedResource {
  * @constructor
  * The response of the List EventSources operation.
  *
- * @member {array} [value] Result of the List EventSources operation.
+ * @property {array} [value] Result of the List EventSources operation.
  */
 export interface EventSourceListResponse {
   value?: EventSourceResource[];
@@ -574,24 +577,24 @@ export interface EventSourceListResponse {
  * @constructor
  * An event source that receives its data from an Azure EventHub.
  *
- * @member {string} [provisioningState] Provisioning state of the resource.
+ * @property {string} [provisioningState] Provisioning state of the resource.
  * Possible values include: 'Accepted', 'Creating', 'Updating', 'Succeeded',
  * 'Failed', 'Deleting'
- * @member {date} [creationTime] The time the resource was created.
- * @member {string} [timestampPropertyName] The event property that will be
+ * @property {date} [creationTime] The time the resource was created.
+ * @property {string} [timestampPropertyName] The event property that will be
  * used as the event source's timestamp. If a value isn't specified for
  * timestampPropertyName, or if null or empty-string is specified, the event
  * creation time will be used.
- * @member {string} eventSourceResourceId The resource id of the event source
+ * @property {string} eventSourceResourceId The resource id of the event source
  * in Azure Resource Manager.
- * @member {string} serviceBusNamespace The name of the service bus that
+ * @property {string} serviceBusNamespace The name of the service bus that
  * contains the event hub.
- * @member {string} eventHubName The name of the event hub.
- * @member {string} consumerGroupName The name of the event hub's consumer
+ * @property {string} eventHubName The name of the event hub.
+ * @property {string} consumerGroupName The name of the event hub's consumer
  * group that holds the partitions from which events will be read.
- * @member {string} keyName The name of the SAS key that grants the Time Series
- * Insights service access to the event hub. The shared access policies for
- * this key must grant 'Listen' permissions to the event hub.
+ * @property {string} keyName The name of the SAS key that grants the Time
+ * Series Insights service access to the event hub. The shared access policies
+ * for this key must grant 'Listen' permissions to the event hub.
  */
 export interface EventHubEventSourceResource extends EventSourceResource {
   provisioningState?: string;
@@ -610,20 +613,20 @@ export interface EventHubEventSourceResource extends EventSourceResource {
  * @constructor
  * An event source that receives its data from an Azure IoTHub.
  *
- * @member {string} [provisioningState] Provisioning state of the resource.
+ * @property {string} [provisioningState] Provisioning state of the resource.
  * Possible values include: 'Accepted', 'Creating', 'Updating', 'Succeeded',
  * 'Failed', 'Deleting'
- * @member {date} [creationTime] The time the resource was created.
- * @member {string} [timestampPropertyName] The event property that will be
+ * @property {date} [creationTime] The time the resource was created.
+ * @property {string} [timestampPropertyName] The event property that will be
  * used as the event source's timestamp. If a value isn't specified for
  * timestampPropertyName, or if null or empty-string is specified, the event
  * creation time will be used.
- * @member {string} eventSourceResourceId The resource id of the event source
+ * @property {string} eventSourceResourceId The resource id of the event source
  * in Azure Resource Manager.
- * @member {string} iotHubName The name of the iot hub.
- * @member {string} consumerGroupName The name of the iot hub's consumer group
- * that holds the partitions from which events will be read.
- * @member {string} keyName The name of the Shared Access Policy key that
+ * @property {string} iotHubName The name of the iot hub.
+ * @property {string} consumerGroupName The name of the iot hub's consumer
+ * group that holds the partitions from which events will be read.
+ * @property {string} keyName The name of the Shared Access Policy key that
  * grants the Time Series Insights service access to the iot hub. This shared
  * access policy key must grant 'service connect' permissions to the iot hub.
  */
@@ -643,7 +646,7 @@ export interface IoTHubEventSourceResource extends EventSourceResource {
  * @constructor
  * Properties of the event source.
  *
- * @member {string} [timestampPropertyName] The event property that will be
+ * @property {string} [timestampPropertyName] The event property that will be
  * used as the event source's timestamp. If a value isn't specified for
  * timestampPropertyName, or if null or empty-string is specified, the event
  * creation time will be used.
@@ -659,7 +662,7 @@ export interface EventSourceCommonProperties extends ResourceProperties {
  * Properties of an event source that reads events from an event broker in
  * Azure.
  *
- * @member {string} eventSourceResourceId The resource id of the event source
+ * @property {string} eventSourceResourceId The resource id of the event source
  * in Azure Resource Manager.
  */
 export interface AzureEventSourceProperties extends EventSourceCommonProperties {
@@ -672,14 +675,14 @@ export interface AzureEventSourceProperties extends EventSourceCommonProperties 
  * @constructor
  * Properties of the EventHub event source.
  *
- * @member {string} serviceBusNamespace The name of the service bus that
+ * @property {string} serviceBusNamespace The name of the service bus that
  * contains the event hub.
- * @member {string} eventHubName The name of the event hub.
- * @member {string} consumerGroupName The name of the event hub's consumer
+ * @property {string} eventHubName The name of the event hub.
+ * @property {string} consumerGroupName The name of the event hub's consumer
  * group that holds the partitions from which events will be read.
- * @member {string} keyName The name of the SAS key that grants the Time Series
- * Insights service access to the event hub. The shared access policies for
- * this key must grant 'Listen' permissions to the event hub.
+ * @property {string} keyName The name of the SAS key that grants the Time
+ * Series Insights service access to the event hub. The shared access policies
+ * for this key must grant 'Listen' permissions to the event hub.
  */
 export interface EventHubEventSourceCommonProperties extends AzureEventSourceProperties {
   serviceBusNamespace: string;
@@ -694,10 +697,10 @@ export interface EventHubEventSourceCommonProperties extends AzureEventSourcePro
  * @constructor
  * Properties of the IoTHub event source.
  *
- * @member {string} iotHubName The name of the iot hub.
- * @member {string} consumerGroupName The name of the iot hub's consumer group
- * that holds the partitions from which events will be read.
- * @member {string} keyName The name of the Shared Access Policy key that
+ * @property {string} iotHubName The name of the iot hub.
+ * @property {string} consumerGroupName The name of the iot hub's consumer
+ * group that holds the partitions from which events will be read.
+ * @property {string} keyName The name of the Shared Access Policy key that
  * grants the Time Series Insights service access to the iot hub. This shared
  * access policy key must grant 'service connect' permissions to the iot hub.
  */
@@ -715,8 +718,8 @@ export interface IoTHubEventSourceCommonProperties extends AzureEventSourcePrope
  * format specified. Should not be specified for LocalTimestampFormat -
  * Embedded.
  *
- * @member {string} [propertyName] The event property that will be contain the
- * offset information to calculate the local timestamp. When the
+ * @property {string} [propertyName] The event property that will be contain
+ * the offset information to calculate the local timestamp. When the
  * LocalTimestampFormat is Iana, the property name will contain the name of the
  * column which contains IANA Timezone Name (eg: Americas/Los Angeles). When
  * LocalTimestampFormat is Timespan, it contains the name of property which
@@ -735,18 +738,19 @@ export interface LocalTimestampTimeZoneOffset {
  * timezone offset information. If a value isn't specified for localTimestamp,
  * or if null, then the local timestamp will not be ingressed with the events.
  *
- * @member {string} [format] An enum that represents the format of the local
+ * @property {string} [format] An enum that represents the format of the local
  * timestamp property that needs to be set. Possible values include:
  * 'Embedded', 'Iana', 'TimeSpan'
- * @member {object} [timeZoneOffset] An object that represents the offset
+ * @property {object} [timeZoneOffset] An object that represents the offset
  * information for the local timestamp format specified. Should not be
  * specified for LocalTimestampFormat - Embedded.
- * @member {string} [timeZoneOffset.propertyName] The event property that will
- * be contain the offset information to calculate the local timestamp. When the
- * LocalTimestampFormat is Iana, the property name will contain the name of the
- * column which contains IANA Timezone Name (eg: Americas/Los Angeles). When
- * LocalTimestampFormat is Timespan, it contains the name of property which
- * contains values representing the offset (eg: P1D or 1.00:00:00)
+ * @property {string} [timeZoneOffset.propertyName] The event property that
+ * will be contain the offset information to calculate the local timestamp.
+ * When the LocalTimestampFormat is Iana, the property name will contain the
+ * name of the column which contains IANA Timezone Name (eg: Americas/Los
+ * Angeles). When LocalTimestampFormat is Timespan, it contains the name of
+ * property which contains values representing the offset (eg: P1D or
+ * 1.00:00:00)
  */
 export interface LocalTimestamp {
   format?: string;
@@ -759,22 +763,22 @@ export interface LocalTimestamp {
  * @constructor
  * An object that represents a set of mutable event source resource properties.
  *
- * @member {string} [timestampPropertyName] The event property that will be
+ * @property {string} [timestampPropertyName] The event property that will be
  * used as the event source's timestamp. If a value isn't specified for
  * timestampPropertyName, or if null or empty-string is specified, the event
  * creation time will be used.
- * @member {object} [localTimestamp] An object that represents the local
+ * @property {object} [localTimestamp] An object that represents the local
  * timestamp property. It contains the format of local timestamp that needs to
  * be used and the corresponding timezone offset information. If a value isn't
  * specified for localTimestamp, or if null, then the local timestamp will not
  * be ingressed with the events.
- * @member {string} [localTimestamp.format] An enum that represents the format
- * of the local timestamp property that needs to be set. Possible values
+ * @property {string} [localTimestamp.format] An enum that represents the
+ * format of the local timestamp property that needs to be set. Possible values
  * include: 'Embedded', 'Iana', 'TimeSpan'
- * @member {object} [localTimestamp.timeZoneOffset] An object that represents
+ * @property {object} [localTimestamp.timeZoneOffset] An object that represents
  * the offset information for the local timestamp format specified. Should not
  * be specified for LocalTimestampFormat - Embedded.
- * @member {string} [localTimestamp.timeZoneOffset.propertyName] The event
+ * @property {string} [localTimestamp.timeZoneOffset.propertyName] The event
  * property that will be contain the offset information to calculate the local
  * timestamp. When the LocalTimestampFormat is Iana, the property name will
  * contain the name of the column which contains IANA Timezone Name (eg:
@@ -794,8 +798,8 @@ export interface EventSourceMutableProperties {
  * A key property for the reference data set. A reference data set can have
  * multiple key properties.
  *
- * @member {string} [name] The name of the key property.
- * @member {string} [type] The type of the key property. Possible values
+ * @property {string} [name] The name of the key property.
+ * @property {string} [type] The type of the key property. Possible values
  * include: 'String', 'Double', 'Bool', 'DateTime'
  */
 export interface ReferenceDataSetKeyProperty {
@@ -807,9 +811,9 @@ export interface ReferenceDataSetKeyProperty {
  * @class
  * Initializes a new instance of the ReferenceDataSetCreateOrUpdateParameters class.
  * @constructor
- * @member {array} keyProperties The list of key properties for the reference
+ * @property {array} keyProperties The list of key properties for the reference
  * data set.
- * @member {string} [dataStringComparisonBehavior] The reference data set key
+ * @property {string} [dataStringComparisonBehavior] The reference data set key
  * comparison behavior can be set using this property. By default, the value is
  * 'Ordinal' - which means case sensitive key comparison will be performed
  * while joining reference data with events or while adding new reference data.
@@ -827,7 +831,7 @@ export interface ReferenceDataSetCreateOrUpdateParameters extends CreateOrUpdate
  * @constructor
  * Parameters supplied to the Update Reference Data Set operation.
  *
- * @member {object} [tags] Key-value pairs of additional properties for the
+ * @property {object} [tags] Key-value pairs of additional properties for the
  * reference data set.
  */
 export interface ReferenceDataSetUpdateParameters {
@@ -843,18 +847,18 @@ export interface ReferenceDataSetUpdateParameters {
  * read from event sources. The metadata that makes up the reference data set
  * is uploaded or modified through the Time Series Insights data plane APIs.
  *
- * @member {array} keyProperties The list of key properties for the reference
+ * @property {array} keyProperties The list of key properties for the reference
  * data set.
- * @member {string} [dataStringComparisonBehavior] The reference data set key
+ * @property {string} [dataStringComparisonBehavior] The reference data set key
  * comparison behavior can be set using this property. By default, the value is
  * 'Ordinal' - which means case sensitive key comparison will be performed
  * while joining reference data with events or while adding new reference data.
  * When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used.
  * Possible values include: 'Ordinal', 'OrdinalIgnoreCase'
- * @member {string} [provisioningState] Provisioning state of the resource.
+ * @property {string} [provisioningState] Provisioning state of the resource.
  * Possible values include: 'Accepted', 'Creating', 'Updating', 'Succeeded',
  * 'Failed', 'Deleting'
- * @member {date} [creationTime] The time the resource was created.
+ * @property {date} [creationTime] The time the resource was created.
  */
 export interface ReferenceDataSetResource extends TrackedResource {
   keyProperties: ReferenceDataSetKeyProperty[];
@@ -869,7 +873,7 @@ export interface ReferenceDataSetResource extends TrackedResource {
  * @constructor
  * The response of the List Reference Data Sets operation.
  *
- * @member {array} [value] Result of the List Reference Data Sets operation.
+ * @property {array} [value] Result of the List Reference Data Sets operation.
  */
 export interface ReferenceDataSetListResponse {
   value?: ReferenceDataSetResource[];
@@ -879,10 +883,10 @@ export interface ReferenceDataSetListResponse {
  * @class
  * Initializes a new instance of the AccessPolicyCreateOrUpdateParameters class.
  * @constructor
- * @member {string} [principalObjectId] The objectId of the principal in Azure
- * Active Directory.
- * @member {string} [description] An description of the access policy.
- * @member {array} [roles] The list of roles the principal is assigned on the
+ * @property {string} [principalObjectId] The objectId of the principal in
+ * Azure Active Directory.
+ * @property {string} [description] An description of the access policy.
+ * @property {array} [roles] The list of roles the principal is assigned on the
  * environment.
  */
 export interface AccessPolicyCreateOrUpdateParameters {
@@ -895,8 +899,8 @@ export interface AccessPolicyCreateOrUpdateParameters {
  * @class
  * Initializes a new instance of the AccessPolicyUpdateParameters class.
  * @constructor
- * @member {string} [description] An description of the access policy.
- * @member {array} [roles] The list of roles the principal is assigned on the
+ * @property {string} [description] An description of the access policy.
+ * @property {array} [roles] The list of roles the principal is assigned on the
  * environment.
  */
 export interface AccessPolicyUpdateParameters {
@@ -913,10 +917,10 @@ export interface AccessPolicyUpdateParameters {
  * Directory. These roles define the actions the principal can perform through
  * the Time Series Insights data plane APIs.
  *
- * @member {string} [principalObjectId] The objectId of the principal in Azure
- * Active Directory.
- * @member {string} [description] An description of the access policy.
- * @member {array} [roles] The list of roles the principal is assigned on the
+ * @property {string} [principalObjectId] The objectId of the principal in
+ * Azure Active Directory.
+ * @property {string} [description] An description of the access policy.
+ * @property {array} [roles] The list of roles the principal is assigned on the
  * environment.
  */
 export interface AccessPolicyResource extends Resource {
@@ -931,7 +935,7 @@ export interface AccessPolicyResource extends Resource {
  * @constructor
  * The response of the List access policies operation.
  *
- * @member {array} [value] Result of the List access policies operation.
+ * @property {array} [value] Result of the List access policies operation.
  */
 export interface AccessPolicyListResponse {
   value?: AccessPolicyResource[];
@@ -945,7 +949,7 @@ export interface AccessPolicyListResponse {
  * Result of the request to list Time Series Insights operations. It contains a
  * list of operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {

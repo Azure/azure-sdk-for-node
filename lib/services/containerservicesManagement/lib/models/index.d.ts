@@ -22,11 +22,11 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * The Resource model definition.
  *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
- * @member {string} location Resource location
- * @member {object} [tags] Resource tags
+ * @property {string} [id] Resource Id
+ * @property {string} [name] Resource name
+ * @property {string} [type] Resource type
+ * @property {string} location Resource location
+ * @property {object} [tags] Resource tags
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -43,12 +43,12 @@ export interface Resource extends BaseResource {
  * Used for establishing the purchase context of any 3rd Party artifact through
  * MarketPlace.
  *
- * @member {string} [name] The plan ID.
- * @member {string} [product] Specifies the product of the image from the
+ * @property {string} [name] The plan ID.
+ * @property {string} [product] Specifies the product of the image from the
  * marketplace. This is the same value as Offer under the imageReference
  * element.
- * @member {string} [promotionCode] The promotion code.
- * @member {string} [publisher] The plan ID.
+ * @property {string} [promotionCode] The promotion code.
+ * @property {string} [publisher] The plan ID.
  */
 export interface PurchasePlan {
   name?: string;
@@ -63,9 +63,9 @@ export interface PurchasePlan {
  * @constructor
  * Represents an OpenShift router
  *
- * @member {string} [name] Name of the router profile.
- * @member {string} [publicSubdomain] DNS subdomain for openshift router.
- * @member {string} [fqdn] Auto-allocated FQDN for the OpenShift router.
+ * @property {string} [name] Name of the router profile.
+ * @property {string} [publicSubdomain] DNS subdomain for openshift router.
+ * @property {string} [fqdn] Auto-allocated FQDN for the OpenShift router.
  */
 export interface OpenShiftRouterProfile {
   name?: string;
@@ -79,9 +79,9 @@ export interface OpenShiftRouterProfile {
  * @constructor
  * Represents the OpenShift networking configuration
  *
- * @member {string} [vnetCidr] CIDR for the OpenShift Vnet. Default value:
+ * @property {string} [vnetCidr] CIDR for the OpenShift Vnet. Default value:
  * '10.0.0.0/8' .
- * @member {string} [peerVnetId] CIDR of the Vnet to peer.
+ * @property {string} [peerVnetId] CIDR of the Vnet to peer.
  */
 export interface NetworkProfile {
   vnetCidr?: string;
@@ -95,15 +95,15 @@ export interface NetworkProfile {
  * OpenShiftManagedClusterMaterPoolProfile contains configuration for OpenShift
  * master VMs.
  *
- * @member {string} [name] Unique name of the master pool profile in the
+ * @property {string} [name] Unique name of the master pool profile in the
  * context of the subscription and resource group.
- * @member {number} count Number of masters (VMs) to host docker containers.
+ * @property {number} count Number of masters (VMs) to host docker containers.
  * The default value is 3. Default value: 3 .
- * @member {string} vmSize Size of agent VMs. Possible values include:
+ * @property {string} vmSize Size of agent VMs. Possible values include:
  * 'Standard_D2s_v3', 'Standard_D4s_v3'
- * @member {string} [subnetCidr] Subnet CIDR for the peering.
- * @member {string} [osType] OsType to be used to specify os type. Choose from
- * Linux and Windows. Default to Linux. Possible values include: 'Linux',
+ * @property {string} [subnetCidr] Subnet CIDR for the peering.
+ * @property {string} [osType] OsType to be used to specify os type. Choose
+ * from Linux and Windows. Default to Linux. Possible values include: 'Linux',
  * 'Windows'. Default value: 'Linux' .
  */
 export interface OpenShiftManagedClusterMasterPoolProfile {
@@ -120,19 +120,19 @@ export interface OpenShiftManagedClusterMasterPoolProfile {
  * @constructor
  * Defines the configuration of the OpenShift cluster VMs.
  *
- * @member {string} name Unique name of the pool profile in the context of the
- * subscription and resource group.
- * @member {number} count Number of agents (VMs) to host docker containers.
+ * @property {string} name Unique name of the pool profile in the context of
+ * the subscription and resource group.
+ * @property {number} count Number of agents (VMs) to host docker containers.
  * Allowed values must be in the range of 1 to 5 (inclusive). The default value
  * is 2. . Default value: 2 .
- * @member {string} vmSize Size of agent VMs. Possible values include:
+ * @property {string} vmSize Size of agent VMs. Possible values include:
  * 'Standard_D2s_v3', 'Standard_D4s_v3'
- * @member {string} [subnetCidr] Subnet CIDR for the peering. Default value:
+ * @property {string} [subnetCidr] Subnet CIDR for the peering. Default value:
  * '10.0.0.0/24' .
- * @member {string} [osType] OsType to be used to specify os type. Choose from
- * Linux and Windows. Default to Linux. Possible values include: 'Linux',
+ * @property {string} [osType] OsType to be used to specify os type. Choose
+ * from Linux and Windows. Default to Linux. Possible values include: 'Linux',
  * 'Windows'. Default value: 'Linux' .
- * @member {string} [role] Define the role of the AgentPoolProfile. Possible
+ * @property {string} [role] Define the role of the AgentPoolProfile. Possible
  * values include: 'compute', 'infra'
  */
 export interface OpenShiftManagedClusterAgentPoolProfile {
@@ -150,7 +150,7 @@ export interface OpenShiftManagedClusterAgentPoolProfile {
  * @constructor
  * Structure for any Identity provider.
  *
- * @member {string} kind Polymorphic Discriminator
+ * @property {string} kind Polymorphic Discriminator
  */
 export interface OpenShiftManagedClusterBaseIdentityProvider {
   kind: string;
@@ -163,9 +163,9 @@ export interface OpenShiftManagedClusterBaseIdentityProvider {
  * Defines the configuration of the identity providers to be used in the
  * OpenShift cluster.
  *
- * @member {string} [name] Name of the provider.
- * @member {object} [provider] Configuration of the provider.
- * @member {string} [provider.kind] Polymorphic Discriminator
+ * @property {string} [name] Name of the provider.
+ * @property {object} [provider] Configuration of the provider.
+ * @property {string} [provider.kind] Polymorphic Discriminator
  */
 export interface OpenShiftManagedClusterIdentityProvider {
   name?: string;
@@ -178,7 +178,7 @@ export interface OpenShiftManagedClusterIdentityProvider {
  * @constructor
  * Defines all possible authentication profiles for the OpenShift cluster.
  *
- * @member {array} [identityProviders] Type of authentication profile to use.
+ * @property {array} [identityProviders] Type of authentication profile to use.
  */
 export interface OpenShiftManagedClusterAuthProfile {
   identityProviders?: OpenShiftManagedClusterIdentityProvider[];
@@ -190,40 +190,43 @@ export interface OpenShiftManagedClusterAuthProfile {
  * @constructor
  * OpenShift Managed cluster.
  *
- * @member {object} [plan] Define the resource plan as required by ARM for
+ * @property {object} [plan] Define the resource plan as required by ARM for
  * billing purposes
- * @member {string} [plan.name] The plan ID.
- * @member {string} [plan.product] Specifies the product of the image from the
- * marketplace. This is the same value as Offer under the imageReference
+ * @property {string} [plan.name] The plan ID.
+ * @property {string} [plan.product] Specifies the product of the image from
+ * the marketplace. This is the same value as Offer under the imageReference
  * element.
- * @member {string} [plan.promotionCode] The promotion code.
- * @member {string} [plan.publisher] The plan ID.
- * @member {string} [provisioningState] The current deployment or provisioning
- * state, which only appears in the response.
- * @member {string} openShiftVersion Version of OpenShift specified when
+ * @property {string} [plan.promotionCode] The promotion code.
+ * @property {string} [plan.publisher] The plan ID.
+ * @property {string} [provisioningState] The current deployment or
+ * provisioning state, which only appears in the response.
+ * @property {string} openShiftVersion Version of OpenShift specified when
  * creating the cluster.
- * @member {string} [publicHostname] Optional user-specified FQDN for OpenShift
- * API server.
- * @member {string} [fqdn] User-specified FQDN for OpenShift API server
+ * @property {string} [publicHostname] Optional user-specified FQDN for
+ * OpenShift API server.
+ * @property {string} [fqdn] User-specified FQDN for OpenShift API server
  * loadbalancer internal hostname.
- * @member {object} [networkProfile] Configuration for OpenShift networking.
- * @member {string} [networkProfile.vnetCidr] CIDR for the OpenShift Vnet.
- * @member {string} [networkProfile.peerVnetId] CIDR of the Vnet to peer.
- * @member {array} [routerProfiles] Configuration for OpenShift router(s).
- * @member {object} [masterPoolProfile] Configuration for OpenShift master VMs.
- * @member {string} [masterPoolProfile.name] Unique name of the master pool
+ * @property {object} [networkProfile] Configuration for OpenShift networking.
+ * @property {string} [networkProfile.vnetCidr] CIDR for the OpenShift Vnet.
+ * @property {string} [networkProfile.peerVnetId] CIDR of the Vnet to peer.
+ * @property {array} [routerProfiles] Configuration for OpenShift router(s).
+ * @property {object} [masterPoolProfile] Configuration for OpenShift master
+ * VMs.
+ * @property {string} [masterPoolProfile.name] Unique name of the master pool
  * profile in the context of the subscription and resource group.
- * @member {number} [masterPoolProfile.count] Number of masters (VMs) to host
+ * @property {number} [masterPoolProfile.count] Number of masters (VMs) to host
  * docker containers. The default value is 3.
- * @member {string} [masterPoolProfile.vmSize] Size of agent VMs. Possible
+ * @property {string} [masterPoolProfile.vmSize] Size of agent VMs. Possible
  * values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
- * @member {string} [masterPoolProfile.subnetCidr] Subnet CIDR for the peering.
- * @member {string} [masterPoolProfile.osType] OsType to be used to specify os
- * type. Choose from Linux and Windows. Default to Linux. Possible values
+ * @property {string} [masterPoolProfile.subnetCidr] Subnet CIDR for the
+ * peering.
+ * @property {string} [masterPoolProfile.osType] OsType to be used to specify
+ * os type. Choose from Linux and Windows. Default to Linux. Possible values
  * include: 'Linux', 'Windows'
- * @member {array} [agentPoolProfiles] Configuration of OpenShift cluster VMs.
- * @member {object} [authProfile] Configures OpenShift authentication.
- * @member {array} [authProfile.identityProviders] Type of authentication
+ * @property {array} [agentPoolProfiles] Configuration of OpenShift cluster
+ * VMs.
+ * @property {object} [authProfile] Configures OpenShift authentication.
+ * @property {array} [authProfile.identityProviders] Type of authentication
  * profile to use.
  */
 export interface OpenShiftManagedCluster extends Resource {
@@ -245,10 +248,11 @@ export interface OpenShiftManagedCluster extends Resource {
  * @constructor
  * Defines the Identity provider for MS AAD.
  *
- * @member {string} [clientId] The clientId password associated with the
+ * @property {string} [clientId] The clientId password associated with the
  * provider.
- * @member {string} [secret] The secret password associated with the provider.
- * @member {string} [tenantId] The tenantId associated with the provider.
+ * @property {string} [secret] The secret password associated with the
+ * provider.
+ * @property {string} [tenantId] The tenantId associated with the provider.
  */
 export interface OpenShiftManagedClusterAADIdentityProvider extends OpenShiftManagedClusterBaseIdentityProvider {
   clientId?: string;
@@ -262,7 +266,7 @@ export interface OpenShiftManagedClusterAADIdentityProvider extends OpenShiftMan
  * @constructor
  * Tags object for patch operations.
  *
- * @member {object} [tags] Resource tags.
+ * @property {object} [tags] Resource tags.
  */
 export interface TagsObject {
   tags?: { [propertyName: string]: string };
@@ -274,7 +278,7 @@ export interface TagsObject {
  * @constructor
  * Properties to configure a custom container service cluster.
  *
- * @member {string} orchestrator The name of the custom orchestrator to use.
+ * @property {string} orchestrator The name of the custom orchestrator to use.
  */
 export interface ContainerServiceCustomProfile {
   orchestrator: string;
@@ -286,9 +290,9 @@ export interface ContainerServiceCustomProfile {
  * @constructor
  * Reference to a secret stored in Azure Key Vault.
  *
- * @member {string} vaultID Key vault identifier.
- * @member {string} secretName The secret name.
- * @member {string} [version] The secret version.
+ * @property {string} vaultID Key vault identifier.
+ * @property {string} secretName The secret name.
+ * @property {string} [version] The secret version.
  */
 export interface KeyVaultSecretRef {
   vaultID: string;
@@ -304,14 +308,14 @@ export interface KeyVaultSecretRef {
  * manipulating Azure APIs. Either secret or keyVaultSecretRef must be
  * specified.
  *
- * @member {string} clientId The ID for the service principal.
- * @member {string} [secret] The secret password associated with the service
+ * @property {string} clientId The ID for the service principal.
+ * @property {string} [secret] The secret password associated with the service
  * principal in plain text.
- * @member {object} [keyVaultSecretRef] Reference to a secret stored in Azure
+ * @property {object} [keyVaultSecretRef] Reference to a secret stored in Azure
  * Key Vault.
- * @member {string} [keyVaultSecretRef.vaultID] Key vault identifier.
- * @member {string} [keyVaultSecretRef.secretName] The secret name.
- * @member {string} [keyVaultSecretRef.version] The secret version.
+ * @property {string} [keyVaultSecretRef.vaultID] Key vault identifier.
+ * @property {string} [keyVaultSecretRef.secretName] The secret name.
+ * @property {string} [keyVaultSecretRef.version] The secret version.
  */
 export interface ContainerServiceServicePrincipalProfile {
   clientId: string;
@@ -325,11 +329,11 @@ export interface ContainerServiceServicePrincipalProfile {
  * @constructor
  * Profile for the container service orchestrator.
  *
- * @member {string} orchestratorType The orchestrator to use to manage
+ * @property {string} orchestratorType The orchestrator to use to manage
  * container service cluster resources. Valid values are Kubernetes, Swarm,
  * DCOS, DockerCE and Custom. Possible values include: 'Kubernetes', 'Swarm',
  * 'DCOS', 'DockerCE', 'Custom'
- * @member {string} [orchestratorVersion] The version of the orchestrator to
+ * @property {string} [orchestratorVersion] The version of the orchestrator to
  * use. You can specify the major.minor.patch part of the actual version.For
  * example, you can specify version as "1.6.11".
  */
@@ -344,12 +348,12 @@ export interface ContainerServiceOrchestratorProfile {
  * @constructor
  * Profile for the container service master.
  *
- * @member {number} [count] Number of masters (VMs) in the container service
+ * @property {number} [count] Number of masters (VMs) in the container service
  * cluster. Allowed values are 1, 3, and 5. The default value is 1. Default
  * value: 1 .
- * @member {string} dnsPrefix DNS prefix to be used to create the FQDN for the
- * master pool.
- * @member {string} vmSize Size of agent VMs. Possible values include:
+ * @property {string} dnsPrefix DNS prefix to be used to create the FQDN for
+ * the master pool.
+ * @property {string} vmSize Size of agent VMs. Possible values include:
  * 'Standard_A1', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
  * 'Standard_A2', 'Standard_A2_v2', 'Standard_A2m_v2', 'Standard_A3',
  * 'Standard_A4', 'Standard_A4_v2', 'Standard_A4m_v2', 'Standard_A5',
@@ -399,18 +403,18 @@ export interface ContainerServiceOrchestratorProfile {
  * 'Standard_NC24s_v3', 'Standard_NC6', 'Standard_NC6s_v2', 'Standard_NC6s_v3',
  * 'Standard_ND12s', 'Standard_ND24rs', 'Standard_ND24s', 'Standard_ND6s',
  * 'Standard_NV12', 'Standard_NV24', 'Standard_NV6'
- * @member {number} [osDiskSizeGB] OS Disk Size in GB to be used to specify the
- * disk size for every machine in this master/agent pool. If you specify 0, it
- * will apply the default osDisk size according to the vmSize specified.
- * @member {string} [vnetSubnetID] VNet SubnetID specifies the vnet's subnet
+ * @property {number} [osDiskSizeGB] OS Disk Size in GB to be used to specify
+ * the disk size for every machine in this master/agent pool. If you specify 0,
+ * it will apply the default osDisk size according to the vmSize specified.
+ * @property {string} [vnetSubnetID] VNet SubnetID specifies the vnet's subnet
  * identifier.
- * @member {string} [firstConsecutiveStaticIP] FirstConsecutiveStaticIP used to
- * specify the first static ip of masters. Default value: '10.240.255.5' .
- * @member {string} [storageProfile] Storage profile specifies what kind of
+ * @property {string} [firstConsecutiveStaticIP] FirstConsecutiveStaticIP used
+ * to specify the first static ip of masters. Default value: '10.240.255.5' .
+ * @property {string} [storageProfile] Storage profile specifies what kind of
  * storage used. Choose from StorageAccount and ManagedDisks. Leave it empty,
  * we will choose for you based on the orchestrator choice. Possible values
  * include: 'StorageAccount', 'ManagedDisks'
- * @member {string} [fqdn] FDQN for the master pool.
+ * @property {string} [fqdn] FDQN for the master pool.
  */
 export interface ContainerServiceMasterProfile {
   count?: number;
@@ -429,12 +433,12 @@ export interface ContainerServiceMasterProfile {
  * @constructor
  * Profile for the container service agent pool.
  *
- * @member {string} name Unique name of the agent pool profile in the context
+ * @property {string} name Unique name of the agent pool profile in the context
  * of the subscription and resource group.
- * @member {number} [count] Number of agents (VMs) to host docker containers.
+ * @property {number} [count] Number of agents (VMs) to host docker containers.
  * Allowed values must be in the range of 1 to 100 (inclusive). The default
  * value is 1. . Default value: 1 .
- * @member {string} vmSize Size of agent VMs. Possible values include:
+ * @property {string} vmSize Size of agent VMs. Possible values include:
  * 'Standard_A1', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
  * 'Standard_A2', 'Standard_A2_v2', 'Standard_A2m_v2', 'Standard_A3',
  * 'Standard_A4', 'Standard_A4_v2', 'Standard_A4m_v2', 'Standard_A5',
@@ -484,23 +488,23 @@ export interface ContainerServiceMasterProfile {
  * 'Standard_NC24s_v3', 'Standard_NC6', 'Standard_NC6s_v2', 'Standard_NC6s_v3',
  * 'Standard_ND12s', 'Standard_ND24rs', 'Standard_ND24s', 'Standard_ND6s',
  * 'Standard_NV12', 'Standard_NV24', 'Standard_NV6'
- * @member {number} [osDiskSizeGB] OS Disk Size in GB to be used to specify the
- * disk size for every machine in this master/agent pool. If you specify 0, it
- * will apply the default osDisk size according to the vmSize specified.
- * @member {string} [dnsPrefix] DNS prefix to be used to create the FQDN for
+ * @property {number} [osDiskSizeGB] OS Disk Size in GB to be used to specify
+ * the disk size for every machine in this master/agent pool. If you specify 0,
+ * it will apply the default osDisk size according to the vmSize specified.
+ * @property {string} [dnsPrefix] DNS prefix to be used to create the FQDN for
  * the agent pool.
- * @member {string} [fqdn] FDQN for the agent pool.
- * @member {array} [ports] Ports number array used to expose on this agent
+ * @property {string} [fqdn] FDQN for the agent pool.
+ * @property {array} [ports] Ports number array used to expose on this agent
  * pool. The default opened ports are different based on your choice of
  * orchestrator.
- * @member {string} [storageProfile] Storage profile specifies what kind of
+ * @property {string} [storageProfile] Storage profile specifies what kind of
  * storage used. Choose from StorageAccount and ManagedDisks. Leave it empty,
  * we will choose for you based on the orchestrator choice. Possible values
  * include: 'StorageAccount', 'ManagedDisks'
- * @member {string} [vnetSubnetID] VNet SubnetID specifies the vnet's subnet
+ * @property {string} [vnetSubnetID] VNet SubnetID specifies the vnet's subnet
  * identifier.
- * @member {string} [osType] OsType to be used to specify os type. Choose from
- * Linux and Windows. Default to Linux. Possible values include: 'Linux',
+ * @property {string} [osType] OsType to be used to specify os type. Choose
+ * from Linux and Windows. Default to Linux. Possible values include: 'Linux',
  * 'Windows'. Default value: 'Linux' .
  */
 export interface ContainerServiceAgentPoolProfile {
@@ -522,10 +526,10 @@ export interface ContainerServiceAgentPoolProfile {
  * @constructor
  * Profile for Windows VMs in the container service cluster.
  *
- * @member {string} adminUsername The administrator username to use for Windows
- * VMs.
- * @member {string} adminPassword The administrator password to use for Windows
- * VMs.
+ * @property {string} adminUsername The administrator username to use for
+ * Windows VMs.
+ * @property {string} adminPassword The administrator password to use for
+ * Windows VMs.
  */
 export interface ContainerServiceWindowsProfile {
   adminUsername: string;
@@ -538,7 +542,7 @@ export interface ContainerServiceWindowsProfile {
  * @constructor
  * Contains information about SSH certificate public key data.
  *
- * @member {string} keyData Certificate public key used to authenticate with
+ * @property {string} keyData Certificate public key used to authenticate with
  * VMs through SSH. The certificate must be in PEM format with or without
  * headers.
  */
@@ -552,8 +556,8 @@ export interface ContainerServiceSshPublicKey {
  * @constructor
  * SSH configuration for Linux-based VMs running on Azure.
  *
- * @member {array} publicKeys The list of SSH public keys used to authenticate
- * with Linux-based VMs. Only expect one key specified.
+ * @property {array} publicKeys The list of SSH public keys used to
+ * authenticate with Linux-based VMs. Only expect one key specified.
  */
 export interface ContainerServiceSshConfiguration {
   publicKeys: ContainerServiceSshPublicKey[];
@@ -565,10 +569,11 @@ export interface ContainerServiceSshConfiguration {
  * @constructor
  * Profile for Linux VMs in the container service cluster.
  *
- * @member {string} adminUsername The administrator username to use for Linux
+ * @property {string} adminUsername The administrator username to use for Linux
  * VMs.
- * @member {object} ssh SSH configuration for Linux-based VMs running on Azure.
- * @member {array} [ssh.publicKeys] The list of SSH public keys used to
+ * @property {object} ssh SSH configuration for Linux-based VMs running on
+ * Azure.
+ * @property {array} [ssh.publicKeys] The list of SSH public keys used to
  * authenticate with Linux-based VMs. Only expect one key specified.
  */
 export interface ContainerServiceLinuxProfile {
@@ -582,9 +587,9 @@ export interface ContainerServiceLinuxProfile {
  * @constructor
  * Profile for diagnostics on the container service VMs.
  *
- * @member {boolean} enabled Whether the VM diagnostic agent is provisioned on
- * the VM.
- * @member {string} [storageUri] The URI of the storage account where
+ * @property {boolean} enabled Whether the VM diagnostic agent is provisioned
+ * on the VM.
+ * @property {string} [storageUri] The URI of the storage account where
  * diagnostics are stored.
  */
 export interface ContainerServiceVMDiagnostics {
@@ -598,11 +603,11 @@ export interface ContainerServiceVMDiagnostics {
  * @constructor
  * Profile for diagnostics on the container service cluster.
  *
- * @member {object} vmDiagnostics Profile for diagnostics on the container
+ * @property {object} vmDiagnostics Profile for diagnostics on the container
  * service VMs.
- * @member {boolean} [vmDiagnostics.enabled] Whether the VM diagnostic agent is
- * provisioned on the VM.
- * @member {string} [vmDiagnostics.storageUri] The URI of the storage account
+ * @property {boolean} [vmDiagnostics.enabled] Whether the VM diagnostic agent
+ * is provisioned on the VM.
+ * @property {string} [vmDiagnostics.storageUri] The URI of the storage account
  * where diagnostics are stored.
  */
 export interface ContainerServiceDiagnosticsProfile {
@@ -615,43 +620,43 @@ export interface ContainerServiceDiagnosticsProfile {
  * @constructor
  * Container service.
  *
- * @member {string} [provisioningState] The current deployment or provisioning
- * state, which only appears in the response.
- * @member {object} orchestratorProfile Profile for the container service
+ * @property {string} [provisioningState] The current deployment or
+ * provisioning state, which only appears in the response.
+ * @property {object} orchestratorProfile Profile for the container service
  * orchestrator.
- * @member {string} [orchestratorProfile.orchestratorType] The orchestrator to
- * use to manage container service cluster resources. Valid values are
+ * @property {string} [orchestratorProfile.orchestratorType] The orchestrator
+ * to use to manage container service cluster resources. Valid values are
  * Kubernetes, Swarm, DCOS, DockerCE and Custom. Possible values include:
  * 'Kubernetes', 'Swarm', 'DCOS', 'DockerCE', 'Custom'
- * @member {string} [orchestratorProfile.orchestratorVersion] The version of
+ * @property {string} [orchestratorProfile.orchestratorVersion] The version of
  * the orchestrator to use. You can specify the major.minor.patch part of the
  * actual version.For example, you can specify version as "1.6.11".
- * @member {object} [customProfile] Properties to configure a custom container
- * service cluster.
- * @member {string} [customProfile.orchestrator] The name of the custom
+ * @property {object} [customProfile] Properties to configure a custom
+ * container service cluster.
+ * @property {string} [customProfile.orchestrator] The name of the custom
  * orchestrator to use.
- * @member {object} [servicePrincipalProfile] Information about a service
+ * @property {object} [servicePrincipalProfile] Information about a service
  * principal identity for the cluster to use for manipulating Azure APIs. Exact
  * one of secret or keyVaultSecretRef need to be specified.
- * @member {string} [servicePrincipalProfile.clientId] The ID for the service
+ * @property {string} [servicePrincipalProfile.clientId] The ID for the service
  * principal.
- * @member {string} [servicePrincipalProfile.secret] The secret password
+ * @property {string} [servicePrincipalProfile.secret] The secret password
  * associated with the service principal in plain text.
- * @member {object} [servicePrincipalProfile.keyVaultSecretRef] Reference to a
- * secret stored in Azure Key Vault.
- * @member {string} [servicePrincipalProfile.keyVaultSecretRef.vaultID] Key
+ * @property {object} [servicePrincipalProfile.keyVaultSecretRef] Reference to
+ * a secret stored in Azure Key Vault.
+ * @property {string} [servicePrincipalProfile.keyVaultSecretRef.vaultID] Key
  * vault identifier.
- * @member {string} [servicePrincipalProfile.keyVaultSecretRef.secretName] The
- * secret name.
- * @member {string} [servicePrincipalProfile.keyVaultSecretRef.version] The
+ * @property {string} [servicePrincipalProfile.keyVaultSecretRef.secretName]
+ * The secret name.
+ * @property {string} [servicePrincipalProfile.keyVaultSecretRef.version] The
  * secret version.
- * @member {object} masterProfile Profile for the container service master.
- * @member {number} [masterProfile.count] Number of masters (VMs) in the
+ * @property {object} masterProfile Profile for the container service master.
+ * @property {number} [masterProfile.count] Number of masters (VMs) in the
  * container service cluster. Allowed values are 1, 3, and 5. The default value
  * is 1.
- * @member {string} [masterProfile.dnsPrefix] DNS prefix to be used to create
+ * @property {string} [masterProfile.dnsPrefix] DNS prefix to be used to create
  * the FQDN for the master pool.
- * @member {string} [masterProfile.vmSize] Size of agent VMs. Possible values
+ * @property {string} [masterProfile.vmSize] Size of agent VMs. Possible values
  * include: 'Standard_A1', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
  * 'Standard_A2', 'Standard_A2_v2', 'Standard_A2m_v2', 'Standard_A3',
  * 'Standard_A4', 'Standard_A4_v2', 'Standard_A4m_v2', 'Standard_A5',
@@ -701,41 +706,41 @@ export interface ContainerServiceDiagnosticsProfile {
  * 'Standard_NC24s_v3', 'Standard_NC6', 'Standard_NC6s_v2', 'Standard_NC6s_v3',
  * 'Standard_ND12s', 'Standard_ND24rs', 'Standard_ND24s', 'Standard_ND6s',
  * 'Standard_NV12', 'Standard_NV24', 'Standard_NV6'
- * @member {number} [masterProfile.osDiskSizeGB] OS Disk Size in GB to be used
- * to specify the disk size for every machine in this master/agent pool. If you
- * specify 0, it will apply the default osDisk size according to the vmSize
- * specified.
- * @member {string} [masterProfile.vnetSubnetID] VNet SubnetID specifies the
+ * @property {number} [masterProfile.osDiskSizeGB] OS Disk Size in GB to be
+ * used to specify the disk size for every machine in this master/agent pool.
+ * If you specify 0, it will apply the default osDisk size according to the
+ * vmSize specified.
+ * @property {string} [masterProfile.vnetSubnetID] VNet SubnetID specifies the
  * vnet's subnet identifier.
- * @member {string} [masterProfile.firstConsecutiveStaticIP]
+ * @property {string} [masterProfile.firstConsecutiveStaticIP]
  * FirstConsecutiveStaticIP used to specify the first static ip of masters.
- * @member {string} [masterProfile.storageProfile] Storage profile specifies
+ * @property {string} [masterProfile.storageProfile] Storage profile specifies
  * what kind of storage used. Choose from StorageAccount and ManagedDisks.
  * Leave it empty, we will choose for you based on the orchestrator choice.
  * Possible values include: 'StorageAccount', 'ManagedDisks'
- * @member {string} [masterProfile.fqdn] FDQN for the master pool.
- * @member {array} [agentPoolProfiles] Properties of the agent pool.
- * @member {object} [windowsProfile] Profile for Windows VMs in the container
+ * @property {string} [masterProfile.fqdn] FDQN for the master pool.
+ * @property {array} [agentPoolProfiles] Properties of the agent pool.
+ * @property {object} [windowsProfile] Profile for Windows VMs in the container
  * service cluster.
- * @member {string} [windowsProfile.adminUsername] The administrator username
+ * @property {string} [windowsProfile.adminUsername] The administrator username
  * to use for Windows VMs.
- * @member {string} [windowsProfile.adminPassword] The administrator password
+ * @property {string} [windowsProfile.adminPassword] The administrator password
  * to use for Windows VMs.
- * @member {object} linuxProfile Profile for Linux VMs in the container service
- * cluster.
- * @member {string} [linuxProfile.adminUsername] The administrator username to
- * use for Linux VMs.
- * @member {object} [linuxProfile.ssh] SSH configuration for Linux-based VMs
+ * @property {object} linuxProfile Profile for Linux VMs in the container
+ * service cluster.
+ * @property {string} [linuxProfile.adminUsername] The administrator username
+ * to use for Linux VMs.
+ * @property {object} [linuxProfile.ssh] SSH configuration for Linux-based VMs
  * running on Azure.
- * @member {array} [linuxProfile.ssh.publicKeys] The list of SSH public keys
+ * @property {array} [linuxProfile.ssh.publicKeys] The list of SSH public keys
  * used to authenticate with Linux-based VMs. Only expect one key specified.
- * @member {object} [diagnosticsProfile] Profile for diagnostics in the
+ * @property {object} [diagnosticsProfile] Profile for diagnostics in the
  * container service cluster.
- * @member {object} [diagnosticsProfile.vmDiagnostics] Profile for diagnostics
- * on the container service VMs.
- * @member {boolean} [diagnosticsProfile.vmDiagnostics.enabled] Whether the VM
- * diagnostic agent is provisioned on the VM.
- * @member {string} [diagnosticsProfile.vmDiagnostics.storageUri] The URI of
+ * @property {object} [diagnosticsProfile.vmDiagnostics] Profile for
+ * diagnostics on the container service VMs.
+ * @property {boolean} [diagnosticsProfile.vmDiagnostics.enabled] Whether the
+ * VM diagnostic agent is provisioned on the VM.
+ * @property {string} [diagnosticsProfile.vmDiagnostics.storageUri] The URI of
  * the storage account where diagnostics are stored.
  */
 export interface ContainerService extends Resource {
@@ -756,13 +761,13 @@ export interface ContainerService extends Resource {
  * @constructor
  * Describes the properties of a Compute Operation value.
  *
- * @member {string} [origin] The origin of the compute operation.
- * @member {string} [name] The name of the compute operation.
- * @member {string} [operation] The display name of the compute operation.
- * @member {string} [resource] The display name of the resource the operation
+ * @property {string} [origin] The origin of the compute operation.
+ * @property {string} [name] The name of the compute operation.
+ * @property {string} [operation] The display name of the compute operation.
+ * @property {string} [resource] The display name of the resource the operation
  * applies to.
- * @member {string} [description] The description of the operation.
- * @member {string} [provider] The resource provider for the operation.
+ * @property {string} [description] The description of the operation.
+ * @property {string} [provider] The resource provider for the operation.
  */
 export interface OperationValue {
   readonly origin?: string;
@@ -780,8 +785,8 @@ export interface OperationValue {
  * Information about a service principal identity for the cluster to use for
  * manipulating Azure APIs.
  *
- * @member {string} clientId The ID for the service principal.
- * @member {string} [secret] The secret password associated with the service
+ * @property {string} clientId The ID for the service principal.
+ * @property {string} [secret] The secret password associated with the service
  * principal in plain text.
  */
 export interface ManagedClusterServicePrincipalProfile {
@@ -795,12 +800,12 @@ export interface ManagedClusterServicePrincipalProfile {
  * @constructor
  * Profile for the container service agent pool.
  *
- * @member {string} name Unique name of the agent pool profile in the context
+ * @property {string} name Unique name of the agent pool profile in the context
  * of the subscription and resource group.
- * @member {number} count Number of agents (VMs) to host docker containers.
+ * @property {number} count Number of agents (VMs) to host docker containers.
  * Allowed values must be in the range of 1 to 100 (inclusive). The default
  * value is 1. . Default value: 1 .
- * @member {string} vmSize Size of agent VMs. Possible values include:
+ * @property {string} vmSize Size of agent VMs. Possible values include:
  * 'Standard_A1', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
  * 'Standard_A2', 'Standard_A2_v2', 'Standard_A2m_v2', 'Standard_A3',
  * 'Standard_A4', 'Standard_A4_v2', 'Standard_A4m_v2', 'Standard_A5',
@@ -850,19 +855,19 @@ export interface ManagedClusterServicePrincipalProfile {
  * 'Standard_NC24s_v3', 'Standard_NC6', 'Standard_NC6s_v2', 'Standard_NC6s_v3',
  * 'Standard_ND12s', 'Standard_ND24rs', 'Standard_ND24s', 'Standard_ND6s',
  * 'Standard_NV12', 'Standard_NV24', 'Standard_NV6'
- * @member {number} [osDiskSizeGB] OS Disk Size in GB to be used to specify the
- * disk size for every machine in this master/agent pool. If you specify 0, it
- * will apply the default osDisk size according to the vmSize specified.
- * @member {string} [vnetSubnetID] VNet SubnetID specifies the vnet's subnet
+ * @property {number} [osDiskSizeGB] OS Disk Size in GB to be used to specify
+ * the disk size for every machine in this master/agent pool. If you specify 0,
+ * it will apply the default osDisk size according to the vmSize specified.
+ * @property {string} [vnetSubnetID] VNet SubnetID specifies the vnet's subnet
  * identifier.
- * @member {number} [maxPods] Maximum number of pods that can run on a node.
- * @member {string} [osType] OsType to be used to specify os type. Choose from
- * Linux and Windows. Default to Linux. Possible values include: 'Linux',
+ * @property {number} [maxPods] Maximum number of pods that can run on a node.
+ * @property {string} [osType] OsType to be used to specify os type. Choose
+ * from Linux and Windows. Default to Linux. Possible values include: 'Linux',
  * 'Windows'. Default value: 'Linux' .
- * @member {number} [maxCount] Maximum number of nodes for auto-scaling
- * @member {number} [minCount] Minimum number of nodes for auto-scaling
- * @member {boolean} [enableAutoScaling] Whether to enable auto-scaler
- * @member {string} [type] AgentPoolType represents types of agentpool.
+ * @property {number} [maxCount] Maximum number of nodes for auto-scaling
+ * @property {number} [minCount] Minimum number of nodes for auto-scaling
+ * @property {boolean} [enableAutoScaling] Whether to enable auto-scaler
+ * @property {string} [type] AgentPoolType represents types of agentpool.
  * Possible values include: 'VirtualMachineScaleSets', 'AvailabilitySet'
  */
 export interface ManagedClusterAgentPoolProfile {
@@ -885,22 +890,22 @@ export interface ManagedClusterAgentPoolProfile {
  * @constructor
  * Profile of network configuration.
  *
- * @member {string} [networkPlugin] Network plugin used for building Kubernetes
- * network. Possible values include: 'azure', 'kubenet'. Default value:
- * 'kubenet' .
- * @member {string} [networkPolicy] Network policy used for building Kubernetes
- * network. Possible values include: 'calico'
- * @member {string} [podCidr] A CIDR notation IP range from which to assign pod
- * IPs when kubenet is used. Default value: '10.244.0.0/16' .
- * @member {string} [serviceCidr] A CIDR notation IP range from which to assign
- * service cluster IPs. It must not overlap with any Subnet IP ranges. Default
- * value: '10.0.0.0/16' .
- * @member {string} [dnsServiceIP] An IP address assigned to the Kubernetes DNS
- * service. It must be within the Kubernetes service address range specified in
- * serviceCidr. Default value: '10.0.0.10' .
- * @member {string} [dockerBridgeCidr] A CIDR notation IP range assigned to the
- * Docker bridge network. It must not overlap with any Subnet IP ranges or the
- * Kubernetes service address range. Default value: '172.17.0.1/16' .
+ * @property {string} [networkPlugin] Network plugin used for building
+ * Kubernetes network. Possible values include: 'azure', 'kubenet'. Default
+ * value: 'kubenet' .
+ * @property {string} [networkPolicy] Network policy used for building
+ * Kubernetes network. Possible values include: 'calico'
+ * @property {string} [podCidr] A CIDR notation IP range from which to assign
+ * pod IPs when kubenet is used. Default value: '10.244.0.0/16' .
+ * @property {string} [serviceCidr] A CIDR notation IP range from which to
+ * assign service cluster IPs. It must not overlap with any Subnet IP ranges.
+ * Default value: '10.0.0.0/16' .
+ * @property {string} [dnsServiceIP] An IP address assigned to the Kubernetes
+ * DNS service. It must be within the Kubernetes service address range
+ * specified in serviceCidr. Default value: '10.0.0.10' .
+ * @property {string} [dockerBridgeCidr] A CIDR notation IP range assigned to
+ * the Docker bridge network. It must not overlap with any Subnet IP ranges or
+ * the Kubernetes service address range. Default value: '172.17.0.1/16' .
  */
 export interface ContainerServiceNetworkProfile {
   networkPlugin?: string;
@@ -917,8 +922,8 @@ export interface ContainerServiceNetworkProfile {
  * @constructor
  * A Kubernetes add-on profile for a managed cluster.
  *
- * @member {boolean} enabled Whether the add-on is enabled or not.
- * @member {object} [config] Key-value pairs for configuring an add-on.
+ * @property {boolean} enabled Whether the add-on is enabled or not.
+ * @property {object} [config] Key-value pairs for configuring an add-on.
  */
 export interface ManagedClusterAddonProfile {
   enabled: boolean;
@@ -931,11 +936,11 @@ export interface ManagedClusterAddonProfile {
  * @constructor
  * AADProfile specifies attributes for Azure Active Directory integration.
  *
- * @member {string} clientAppID The client AAD application ID.
- * @member {string} serverAppID The server AAD application ID.
- * @member {string} [serverAppSecret] The server AAD application secret.
- * @member {string} [tenantID] The AAD tenant ID to use for authentication. If
- * not specified, will use the tenant of the deployment subscription.
+ * @property {string} clientAppID The client AAD application ID.
+ * @property {string} serverAppID The server AAD application ID.
+ * @property {string} [serverAppSecret] The server AAD application secret.
+ * @property {string} [tenantID] The AAD tenant ID to use for authentication.
+ * If not specified, will use the tenant of the deployment subscription.
  */
 export interface ManagedClusterAADProfile {
   clientAppID: string;
@@ -950,56 +955,56 @@ export interface ManagedClusterAADProfile {
  * @constructor
  * Managed cluster.
  *
- * @member {string} [provisioningState] The current deployment or provisioning
- * state, which only appears in the response.
- * @member {string} [kubernetesVersion] Version of Kubernetes specified when
+ * @property {string} [provisioningState] The current deployment or
+ * provisioning state, which only appears in the response.
+ * @property {string} [kubernetesVersion] Version of Kubernetes specified when
  * creating the managed cluster.
- * @member {string} [dnsPrefix] DNS prefix specified when creating the managed
- * cluster.
- * @member {string} [fqdn] FDQN for the master pool.
- * @member {array} [agentPoolProfiles] Properties of the agent pool.
- * @member {object} [linuxProfile] Profile for Linux VMs in the container
+ * @property {string} [dnsPrefix] DNS prefix specified when creating the
+ * managed cluster.
+ * @property {string} [fqdn] FDQN for the master pool.
+ * @property {array} [agentPoolProfiles] Properties of the agent pool.
+ * @property {object} [linuxProfile] Profile for Linux VMs in the container
  * service cluster.
- * @member {string} [linuxProfile.adminUsername] The administrator username to
- * use for Linux VMs.
- * @member {object} [linuxProfile.ssh] SSH configuration for Linux-based VMs
+ * @property {string} [linuxProfile.adminUsername] The administrator username
+ * to use for Linux VMs.
+ * @property {object} [linuxProfile.ssh] SSH configuration for Linux-based VMs
  * running on Azure.
- * @member {array} [linuxProfile.ssh.publicKeys] The list of SSH public keys
+ * @property {array} [linuxProfile.ssh.publicKeys] The list of SSH public keys
  * used to authenticate with Linux-based VMs. Only expect one key specified.
- * @member {object} [servicePrincipalProfile] Information about a service
+ * @property {object} [servicePrincipalProfile] Information about a service
  * principal identity for the cluster to use for manipulating Azure APIs.
- * @member {string} [servicePrincipalProfile.clientId] The ID for the service
+ * @property {string} [servicePrincipalProfile.clientId] The ID for the service
  * principal.
- * @member {string} [servicePrincipalProfile.secret] The secret password
+ * @property {string} [servicePrincipalProfile.secret] The secret password
  * associated with the service principal in plain text.
- * @member {object} [addonProfiles] Profile of managed cluster add-on.
- * @member {string} [nodeResourceGroup] Name of the resource group containing
+ * @property {object} [addonProfiles] Profile of managed cluster add-on.
+ * @property {string} [nodeResourceGroup] Name of the resource group containing
  * agent pool nodes.
- * @member {boolean} [enableRBAC] Whether to enable Kubernetes Role-Based
+ * @property {boolean} [enableRBAC] Whether to enable Kubernetes Role-Based
  * Access Control.
- * @member {object} [networkProfile] Profile of network configuration.
- * @member {string} [networkProfile.networkPlugin] Network plugin used for
+ * @property {object} [networkProfile] Profile of network configuration.
+ * @property {string} [networkProfile.networkPlugin] Network plugin used for
  * building Kubernetes network. Possible values include: 'azure', 'kubenet'
- * @member {string} [networkProfile.networkPolicy] Network policy used for
+ * @property {string} [networkProfile.networkPolicy] Network policy used for
  * building Kubernetes network. Possible values include: 'calico'
- * @member {string} [networkProfile.podCidr] A CIDR notation IP range from
+ * @property {string} [networkProfile.podCidr] A CIDR notation IP range from
  * which to assign pod IPs when kubenet is used.
- * @member {string} [networkProfile.serviceCidr] A CIDR notation IP range from
- * which to assign service cluster IPs. It must not overlap with any Subnet IP
- * ranges.
- * @member {string} [networkProfile.dnsServiceIP] An IP address assigned to the
- * Kubernetes DNS service. It must be within the Kubernetes service address
+ * @property {string} [networkProfile.serviceCidr] A CIDR notation IP range
+ * from which to assign service cluster IPs. It must not overlap with any
+ * Subnet IP ranges.
+ * @property {string} [networkProfile.dnsServiceIP] An IP address assigned to
+ * the Kubernetes DNS service. It must be within the Kubernetes service address
  * range specified in serviceCidr.
- * @member {string} [networkProfile.dockerBridgeCidr] A CIDR notation IP range
- * assigned to the Docker bridge network. It must not overlap with any Subnet
- * IP ranges or the Kubernetes service address range.
- * @member {object} [aadProfile] Profile of Azure Active Directory
+ * @property {string} [networkProfile.dockerBridgeCidr] A CIDR notation IP
+ * range assigned to the Docker bridge network. It must not overlap with any
+ * Subnet IP ranges or the Kubernetes service address range.
+ * @property {object} [aadProfile] Profile of Azure Active Directory
  * configuration.
- * @member {string} [aadProfile.clientAppID] The client AAD application ID.
- * @member {string} [aadProfile.serverAppID] The server AAD application ID.
- * @member {string} [aadProfile.serverAppSecret] The server AAD application
+ * @property {string} [aadProfile.clientAppID] The client AAD application ID.
+ * @property {string} [aadProfile.serverAppID] The server AAD application ID.
+ * @property {string} [aadProfile.serverAppSecret] The server AAD application
  * secret.
- * @member {string} [aadProfile.tenantID] The AAD tenant ID to use for
+ * @property {string} [aadProfile.tenantID] The AAD tenant ID to use for
  * authentication. If not specified, will use the tenant of the deployment
  * subscription.
  */
@@ -1024,8 +1029,8 @@ export interface ManagedCluster extends Resource {
  * @constructor
  * Contains information about orchestrator.
  *
- * @member {string} orchestratorType Orchestrator type.
- * @member {string} orchestratorVersion Orchestrator version (major, minor,
+ * @property {string} orchestratorType Orchestrator type.
+ * @property {string} orchestratorVersion Orchestrator version (major, minor,
  * patch).
  */
 export interface OrchestratorProfile {
@@ -1039,7 +1044,8 @@ export interface OrchestratorProfile {
  * @constructor
  * Managed cluster Access Profile.
  *
- * @member {buffer} [kubeConfig] Base64-encoded Kubernetes configuration file.
+ * @property {buffer} [kubeConfig] Base64-encoded Kubernetes configuration
+ * file.
  */
 export interface ManagedClusterAccessProfile extends Resource {
   kubeConfig?: Buffer;
@@ -1051,13 +1057,14 @@ export interface ManagedClusterAccessProfile extends Resource {
  * @constructor
  * The list of available upgrade versions.
  *
- * @member {string} kubernetesVersion Kubernetes version (major, minor, patch).
- * @member {string} [name] Pool name.
- * @member {string} osType OsType to be used to specify os type. Choose from
+ * @property {string} kubernetesVersion Kubernetes version (major, minor,
+ * patch).
+ * @property {string} [name] Pool name.
+ * @property {string} osType OsType to be used to specify os type. Choose from
  * Linux and Windows. Default to Linux. Possible values include: 'Linux',
  * 'Windows'. Default value: 'Linux' .
- * @member {array} [upgrades] List of orchestrator types and versions available
- * for upgrade.
+ * @property {array} [upgrades] List of orchestrator types and versions
+ * available for upgrade.
  */
 export interface ManagedClusterPoolUpgradeProfile {
   kubernetesVersion: string;
@@ -1072,21 +1079,21 @@ export interface ManagedClusterPoolUpgradeProfile {
  * @constructor
  * The list of available upgrades for compute pools.
  *
- * @member {string} [id] Id of upgrade profile.
- * @member {string} [name] Name of upgrade profile.
- * @member {string} [type] Type of upgrade profile.
- * @member {object} controlPlaneProfile The list of available upgrade versions
- * for the control plane.
- * @member {string} [controlPlaneProfile.kubernetesVersion] Kubernetes version
- * (major, minor, patch).
- * @member {string} [controlPlaneProfile.name] Pool name.
- * @member {string} [controlPlaneProfile.osType] OsType to be used to specify
+ * @property {string} [id] Id of upgrade profile.
+ * @property {string} [name] Name of upgrade profile.
+ * @property {string} [type] Type of upgrade profile.
+ * @property {object} controlPlaneProfile The list of available upgrade
+ * versions for the control plane.
+ * @property {string} [controlPlaneProfile.kubernetesVersion] Kubernetes
+ * version (major, minor, patch).
+ * @property {string} [controlPlaneProfile.name] Pool name.
+ * @property {string} [controlPlaneProfile.osType] OsType to be used to specify
  * os type. Choose from Linux and Windows. Default to Linux. Possible values
  * include: 'Linux', 'Windows'
- * @member {array} [controlPlaneProfile.upgrades] List of orchestrator types
+ * @property {array} [controlPlaneProfile.upgrades] List of orchestrator types
  * and versions available for upgrade.
- * @member {array} agentPoolProfiles The list of available upgrade versions for
- * agent pools.
+ * @property {array} agentPoolProfiles The list of available upgrade versions
+ * for agent pools.
  */
 export interface ManagedClusterUpgradeProfile {
   readonly id?: string;
@@ -1102,8 +1109,8 @@ export interface ManagedClusterUpgradeProfile {
  * @constructor
  * The credential result response.
  *
- * @member {string} [name] The name of the credential.
- * @member {buffer} [value] Base64-encoded Kubernetes configuration file.
+ * @property {string} [name] The name of the credential.
+ * @property {buffer} [value] Base64-encoded Kubernetes configuration file.
  */
 export interface CredentialResult {
   readonly name?: string;
@@ -1116,7 +1123,7 @@ export interface CredentialResult {
  * @constructor
  * The list of credential result response.
  *
- * @member {array} [kubeconfigs]
+ * @property {array} [kubeconfigs]
  */
 export interface CredentialResults {
   readonly kubeconfigs?: CredentialResult[];
@@ -1128,11 +1135,12 @@ export interface CredentialResults {
  * @constructor
  * The profile of an orchestrator and its available versions.
  *
- * @member {string} orchestratorType Orchestrator type.
- * @member {string} orchestratorVersion Orchestrator version (major, minor,
+ * @property {string} orchestratorType Orchestrator type.
+ * @property {string} orchestratorVersion Orchestrator version (major, minor,
  * patch).
- * @member {boolean} default Installed by default if version is not specified.
- * @member {array} upgrades The list of available upgrade versions.
+ * @property {boolean} default Installed by default if version is not
+ * specified.
+ * @property {array} upgrades The list of available upgrade versions.
  */
 export interface OrchestratorVersionProfile {
   orchestratorType: string;
@@ -1147,12 +1155,12 @@ export interface OrchestratorVersionProfile {
  * @constructor
  * The list of versions for supported orchestrators.
  *
- * @member {string} [id] Id of the orchestrator version profile list result.
- * @member {string} [name] Name of the orchestrator version profile list
+ * @property {string} [id] Id of the orchestrator version profile list result.
+ * @property {string} [name] Name of the orchestrator version profile list
  * result.
- * @member {string} [type] Type of the orchestrator version profile list
+ * @property {string} [type] Type of the orchestrator version profile list
  * result.
- * @member {array} orchestrators List of orchestrator version profiles.
+ * @property {array} orchestrators List of orchestrator version profiles.
  */
 export interface OrchestratorVersionProfileListResult {
   readonly id?: string;
@@ -1168,8 +1176,8 @@ export interface OrchestratorVersionProfileListResult {
  * @constructor
  * The response from the List Container Services operation.
  *
- * @member {string} [nextLink] The URL to get the next set of container service
- * results.
+ * @property {string} [nextLink] The URL to get the next set of container
+ * service results.
  */
 export interface ContainerServiceListResult extends Array<ContainerService> {
   readonly nextLink?: string;
@@ -1191,7 +1199,7 @@ export interface OperationListResult extends Array<OperationValue> {
  * @constructor
  * The response from the List Managed Clusters operation.
  *
- * @member {string} [nextLink] The URL to get the next set of managed cluster
+ * @property {string} [nextLink] The URL to get the next set of managed cluster
  * results.
  */
 export interface ManagedClusterListResult extends Array<ManagedCluster> {

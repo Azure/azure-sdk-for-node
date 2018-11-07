@@ -18,53 +18,385 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the PolicyDetails class.
+ * @constructor
+ * The policy details.
+ *
+ * @property {string} [policyDefinitionId] The ID of the policy definition.
+ * @property {string} [policyAssignmentId] The ID of the policy assignment.
+ * @property {string} [policyAssignmentDisplayName] The display name of the
+ * policy assignment.
+ * @property {string} [policyAssignmentScope] The scope of the policy
+ * assignment.
+ * @property {string} [policySetDefinitionId] The ID of the policy set
+ * definition.
+ * @property {string} [policyDefinitionReferenceId] The policy definition
+ * reference ID within the policy set definition.
+ */
+export interface PolicyDetails {
+  readonly policyDefinitionId?: string;
+  readonly policyAssignmentId?: string;
+  readonly policyAssignmentDisplayName?: string;
+  readonly policyAssignmentScope?: string;
+  readonly policySetDefinitionId?: string;
+  readonly policyDefinitionReferenceId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrackedResourceModificationDetails class.
+ * @constructor
+ * The details of the policy triggered deployment that created or modified the
+ * tracked resource.
+ *
+ * @property {object} [policyDetails] The details of the policy that created or
+ * modified the tracked resource.
+ * @property {string} [policyDetails.policyDefinitionId] The ID of the policy
+ * definition.
+ * @property {string} [policyDetails.policyAssignmentId] The ID of the policy
+ * assignment.
+ * @property {string} [policyDetails.policyAssignmentDisplayName] The display
+ * name of the policy assignment.
+ * @property {string} [policyDetails.policyAssignmentScope] The scope of the
+ * policy assignment.
+ * @property {string} [policyDetails.policySetDefinitionId] The ID of the
+ * policy set definition.
+ * @property {string} [policyDetails.policyDefinitionReferenceId] The policy
+ * definition reference ID within the policy set definition.
+ * @property {string} [deploymentId] The ID of the deployment that created or
+ * modified the tracked resource.
+ * @property {date} [deploymentTime] Timestamp of the deployment that created
+ * or modified the tracked resource.
+ */
+export interface TrackedResourceModificationDetails {
+  readonly policyDetails?: PolicyDetails;
+  readonly deploymentId?: string;
+  readonly deploymentTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PolicyTrackedResource class.
+ * @constructor
+ * Policy tracked resource record.
+ *
+ * @property {string} [trackedResourceId] The ID of the policy tracked
+ * resource.
+ * @property {object} [policyDetails] The details of the policy that require
+ * the tracked resource.
+ * @property {string} [policyDetails.policyDefinitionId] The ID of the policy
+ * definition.
+ * @property {string} [policyDetails.policyAssignmentId] The ID of the policy
+ * assignment.
+ * @property {string} [policyDetails.policyAssignmentDisplayName] The display
+ * name of the policy assignment.
+ * @property {string} [policyDetails.policyAssignmentScope] The scope of the
+ * policy assignment.
+ * @property {string} [policyDetails.policySetDefinitionId] The ID of the
+ * policy set definition.
+ * @property {string} [policyDetails.policyDefinitionReferenceId] The policy
+ * definition reference ID within the policy set definition.
+ * @property {object} [createdBy] The details of the policy triggered
+ * deployment that created the tracked resource.
+ * @property {object} [createdBy.policyDetails] The details of the policy that
+ * created or modified the tracked resource.
+ * @property {string} [createdBy.policyDetails.policyDefinitionId] The ID of
+ * the policy definition.
+ * @property {string} [createdBy.policyDetails.policyAssignmentId] The ID of
+ * the policy assignment.
+ * @property {string} [createdBy.policyDetails.policyAssignmentDisplayName] The
+ * display name of the policy assignment.
+ * @property {string} [createdBy.policyDetails.policyAssignmentScope] The scope
+ * of the policy assignment.
+ * @property {string} [createdBy.policyDetails.policySetDefinitionId] The ID of
+ * the policy set definition.
+ * @property {string} [createdBy.policyDetails.policyDefinitionReferenceId] The
+ * policy definition reference ID within the policy set definition.
+ * @property {string} [createdBy.deploymentId] The ID of the deployment that
+ * created or modified the tracked resource.
+ * @property {date} [createdBy.deploymentTime] Timestamp of the deployment that
+ * created or modified the tracked resource.
+ * @property {object} [lastModifiedBy] The details of the policy triggered
+ * deployment that modified the tracked resource.
+ * @property {object} [lastModifiedBy.policyDetails] The details of the policy
+ * that created or modified the tracked resource.
+ * @property {string} [lastModifiedBy.policyDetails.policyDefinitionId] The ID
+ * of the policy definition.
+ * @property {string} [lastModifiedBy.policyDetails.policyAssignmentId] The ID
+ * of the policy assignment.
+ * @property {string}
+ * [lastModifiedBy.policyDetails.policyAssignmentDisplayName] The display name
+ * of the policy assignment.
+ * @property {string} [lastModifiedBy.policyDetails.policyAssignmentScope] The
+ * scope of the policy assignment.
+ * @property {string} [lastModifiedBy.policyDetails.policySetDefinitionId] The
+ * ID of the policy set definition.
+ * @property {string}
+ * [lastModifiedBy.policyDetails.policyDefinitionReferenceId] The policy
+ * definition reference ID within the policy set definition.
+ * @property {string} [lastModifiedBy.deploymentId] The ID of the deployment
+ * that created or modified the tracked resource.
+ * @property {date} [lastModifiedBy.deploymentTime] Timestamp of the deployment
+ * that created or modified the tracked resource.
+ * @property {date} [lastUpdateUtc] Timestamp of the last update to the tracked
+ * resource.
+ */
+export interface PolicyTrackedResource {
+  readonly trackedResourceId?: string;
+  readonly policyDetails?: PolicyDetails;
+  readonly createdBy?: TrackedResourceModificationDetails;
+  readonly lastModifiedBy?: TrackedResourceModificationDetails;
+  readonly lastUpdateUtc?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the QueryFailureError class.
+ * @constructor
+ * Error definition.
+ *
+ * @property {string} [code] Service specific error code which serves as the
+ * substatus for the HTTP error code.
+ * @property {string} [message] Description of the error.
+ */
+export interface QueryFailureError {
+  readonly code?: string;
+  readonly message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the QueryFailure class.
+ * @constructor
+ * Error response.
+ *
+ * @property {object} [error] Error definition.
+ * @property {string} [error.code] Service specific error code which serves as
+ * the substatus for the HTTP error code.
+ * @property {string} [error.message] Description of the error.
+ */
+export interface QueryFailure {
+  error?: QueryFailureError;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RemediationFilters class.
+ * @constructor
+ * The filters that will be applied to determine which resources to remediate.
+ *
+ * @property {array} [locations] The resource locations that will be
+ * remediated.
+ */
+export interface RemediationFilters {
+  locations?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RemediationDeploymentSummary class.
+ * @constructor
+ * The deployment status summary for all deplyoments created by the
+ * remediation.
+ *
+ * @property {number} [totalDeployments] The number of deployments required by
+ * the remediation.
+ * @property {number} [successfulDeployments] The number of deployments
+ * required by the remediation that have succeeded.
+ * @property {number} [failedDeployments] The number of deployments required by
+ * the remediation that have failed.
+ */
+export interface RemediationDeploymentSummary {
+  totalDeployments?: number;
+  successfulDeployments?: number;
+  failedDeployments?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Remediation class.
+ * @constructor
+ * The remediation definition.
+ *
+ * @property {string} [policyAssignmentId] The resource ID of the policy
+ * assignment that should be remediated.
+ * @property {string} [policyDefinitionReferenceId] The policy definition
+ * reference ID of the individual definition that should be remediated.
+ * Required when the policy assignment being remediated assigns a policy set
+ * definition.
+ * @property {string} [provisioningState] The status of the remediation.
+ * @property {date} [createdOn] The time at which the remediation was created.
+ * @property {date} [lastUpdatedOn] The time at which the remediation was last
+ * updated.
+ * @property {object} [filters] The filters that will be applied to determine
+ * which resources to remediate.
+ * @property {array} [filters.locations] The resource locations that will be
+ * remediated.
+ * @property {object} [deploymentStatus] The deployment status summary for all
+ * deplyoments created by the remediation.
+ * @property {number} [deploymentStatus.totalDeployments] The number of
+ * deployments required by the remediation.
+ * @property {number} [deploymentStatus.successfulDeployments] The number of
+ * deployments required by the remediation that have succeeded.
+ * @property {number} [deploymentStatus.failedDeployments] The number of
+ * deployments required by the remediation that have failed.
+ * @property {string} [id] The ID of the remediation.
+ * @property {string} [type] The type of the remediation.
+ * @property {string} [name] The name of the remediation.
+ */
+export interface Remediation extends BaseResource {
+  policyAssignmentId?: string;
+  policyDefinitionReferenceId?: string;
+  readonly provisioningState?: string;
+  readonly createdOn?: Date;
+  readonly lastUpdatedOn?: Date;
+  filters?: RemediationFilters;
+  deploymentStatus?: RemediationDeploymentSummary;
+  readonly id?: string;
+  readonly type?: string;
+  readonly name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TypedErrorInfo class.
+ * @constructor
+ * Scenario specific error details.
+ *
+ * @property {string} [type] The type of included error details.
+ * @property {object} [info] The scenario specific error details.
+ */
+export interface TypedErrorInfo {
+  readonly type?: string;
+  readonly info?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorDefinition class.
+ * @constructor
+ * Error definition.
+ *
+ * @property {string} [code] Service specific error code which serves as the
+ * substatus for the HTTP error code.
+ * @property {string} [message] Description of the error.
+ * @property {string} [target] The target of the error.
+ * @property {array} [details] Internal error details.
+ * @property {array} [additionalInfo] Additional scenario specific error
+ * details.
+ */
+export interface ErrorDefinition {
+  readonly code?: string;
+  readonly message?: string;
+  readonly target?: string;
+  readonly details?: ErrorDefinition[];
+  readonly additionalInfo?: TypedErrorInfo[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RemediationDeployment class.
+ * @constructor
+ * Details of a single deployment created by the remediation.
+ *
+ * @property {string} [remediatedResourceId] Resource ID of the resource that
+ * is being remediated by the deployment.
+ * @property {string} [deploymentId] Resource ID of the template deployment
+ * that will remediate the resource.
+ * @property {string} [status] Status of the remediation deployment.
+ * @property {string} [resourceLocation] Location of the resource that is being
+ * remediated.
+ * @property {object} [error] Error encountered while remediated the resource.
+ * @property {string} [error.code] Service specific error code which serves as
+ * the substatus for the HTTP error code.
+ * @property {string} [error.message] Description of the error.
+ * @property {string} [error.target] The target of the error.
+ * @property {array} [error.details] Internal error details.
+ * @property {array} [error.additionalInfo] Additional scenario specific error
+ * details.
+ * @property {date} [createdOn] The time at which the remediation was created.
+ * @property {date} [lastUpdatedOn] The time at which the remediation
+ * deployment was last updated.
+ */
+export interface RemediationDeployment {
+  readonly remediatedResourceId?: string;
+  readonly deploymentId?: string;
+  readonly status?: string;
+  readonly resourceLocation?: string;
+  readonly error?: ErrorDefinition;
+  readonly createdOn?: Date;
+  readonly lastUpdatedOn?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorResponse class.
+ * @constructor
+ * Error response.
+ *
+ * @property {object} [error] The error details.
+ * @property {string} [error.code] Service specific error code which serves as
+ * the substatus for the HTTP error code.
+ * @property {string} [error.message] Description of the error.
+ * @property {string} [error.target] The target of the error.
+ * @property {array} [error.details] Internal error details.
+ * @property {array} [error.additionalInfo] Additional scenario specific error
+ * details.
+ */
+export interface ErrorResponse {
+  error?: ErrorDefinition;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PolicyEvent class.
  * @constructor
  * Policy event record.
  *
- * @member {string} [odataid] OData entity ID; always set to null since policy
- * event records do not have an entity ID.
- * @member {string} [odatacontext] OData context string; used by OData clients
- * to resolve type information based on metadata.
- * @member {date} [timestamp] Timestamp for the policy event record.
- * @member {string} [resourceId] Resource ID.
- * @member {string} [policyAssignmentId] Policy assignment ID.
- * @member {string} [policyDefinitionId] Policy definition ID.
- * @member {string} [effectiveParameters] Effective parameters for the policy
+ * @property {string} [odataid] OData entity ID; always set to null since
+ * policy event records do not have an entity ID.
+ * @property {string} [odatacontext] OData context string; used by OData
+ * clients to resolve type information based on metadata.
+ * @property {date} [timestamp] Timestamp for the policy event record.
+ * @property {string} [resourceId] Resource ID.
+ * @property {string} [policyAssignmentId] Policy assignment ID.
+ * @property {string} [policyDefinitionId] Policy definition ID.
+ * @property {string} [effectiveParameters] Effective parameters for the policy
  * assignment.
- * @member {boolean} [isCompliant] Flag which states whether the resource is
+ * @property {boolean} [isCompliant] Flag which states whether the resource is
  * compliant against the policy assignment it was evaluated against.
- * @member {string} [subscriptionId] Subscription ID.
- * @member {string} [resourceType] Resource type.
- * @member {string} [resourceLocation] Resource location.
- * @member {string} [resourceGroup] Resource group name.
- * @member {string} [resourceTags] List of resource tags.
- * @member {string} [policyAssignmentName] Policy assignment name.
- * @member {string} [policyAssignmentOwner] Policy assignment owner.
- * @member {string} [policyAssignmentParameters] Policy assignment parameters.
- * @member {string} [policyAssignmentScope] Policy assignment scope.
- * @member {string} [policyDefinitionName] Policy definition name.
- * @member {string} [policyDefinitionAction] Policy definition action, i.e.
+ * @property {string} [subscriptionId] Subscription ID.
+ * @property {string} [resourceType] Resource type.
+ * @property {string} [resourceLocation] Resource location.
+ * @property {string} [resourceGroup] Resource group name.
+ * @property {string} [resourceTags] List of resource tags.
+ * @property {string} [policyAssignmentName] Policy assignment name.
+ * @property {string} [policyAssignmentOwner] Policy assignment owner.
+ * @property {string} [policyAssignmentParameters] Policy assignment
+ * parameters.
+ * @property {string} [policyAssignmentScope] Policy assignment scope.
+ * @property {string} [policyDefinitionName] Policy definition name.
+ * @property {string} [policyDefinitionAction] Policy definition action, i.e.
  * effect.
- * @member {string} [policyDefinitionCategory] Policy definition category.
- * @member {string} [policySetDefinitionId] Policy set definition ID, if the
+ * @property {string} [policyDefinitionCategory] Policy definition category.
+ * @property {string} [policySetDefinitionId] Policy set definition ID, if the
  * policy assignment is for a policy set.
- * @member {string} [policySetDefinitionName] Policy set definition name, if
+ * @property {string} [policySetDefinitionName] Policy set definition name, if
  * the policy assignment is for a policy set.
- * @member {string} [policySetDefinitionOwner] Policy set definition owner, if
- * the policy assignment is for a policy set.
- * @member {string} [policySetDefinitionCategory] Policy set definition
+ * @property {string} [policySetDefinitionOwner] Policy set definition owner,
+ * if the policy assignment is for a policy set.
+ * @property {string} [policySetDefinitionCategory] Policy set definition
  * category, if the policy assignment is for a policy set.
- * @member {string} [policySetDefinitionParameters] Policy set definition
+ * @property {string} [policySetDefinitionParameters] Policy set definition
  * parameters, if the policy assignment is for a policy set.
- * @member {string} [managementGroupIds] Comma seperated list of management
+ * @property {string} [managementGroupIds] Comma seperated list of management
  * group IDs, which represent the hierarchy of the management groups the
  * resource is under.
- * @member {string} [policyDefinitionReferenceId] Reference ID for the policy
+ * @property {string} [policyDefinitionReferenceId] Reference ID for the policy
  * definition inside the policy set, if the policy assignment is for a policy
  * set.
- * @member {string} [tenantId] Tenant ID for the policy event record.
- * @member {string} [principalOid] Principal object ID for the user who
+ * @property {string} [tenantId] Tenant ID for the policy event record.
+ * @property {string} [principalOid] Principal object ID for the user who
  * initiated the resource operation that triggered the policy event.
  */
 export interface PolicyEvent {
@@ -110,11 +442,11 @@ export interface PolicyEvent {
  * @constructor
  * Query results.
  *
- * @member {string} [odatacontext] OData context string; used by OData clients
- * to resolve type information based on metadata.
- * @member {number} [odatacount] OData entity count; represents the number of
+ * @property {string} [odatacontext] OData context string; used by OData
+ * clients to resolve type information based on metadata.
+ * @property {number} [odatacount] OData entity count; represents the number of
  * policy event records returned.
- * @member {array} [value] Query results.
+ * @property {array} [value] Query results.
  */
 export interface PolicyEventsQueryResults {
   odatacontext?: string;
@@ -124,79 +456,50 @@ export interface PolicyEventsQueryResults {
 
 /**
  * @class
- * Initializes a new instance of the QueryFailureError class.
- * @constructor
- * Error definition.
- *
- * @member {string} [code] Service specific error code which serves as the
- * substatus for the HTTP error code.
- * @member {string} [message] Description of the error.
- */
-export interface QueryFailureError {
-  code?: string;
-  message?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the QueryFailure class.
- * @constructor
- * Error response.
- *
- * @member {object} [error] Error definition.
- * @member {string} [error.code] Service specific error code which serves as
- * the substatus for the HTTP error code.
- * @member {string} [error.message] Description of the error.
- */
-export interface QueryFailure {
-  error?: QueryFailureError;
-}
-
-/**
- * @class
  * Initializes a new instance of the PolicyState class.
  * @constructor
  * Policy state record.
  *
- * @member {string} [odataid] OData entity ID; always set to null since policy
- * state records do not have an entity ID.
- * @member {string} [odatacontext] OData context string; used by OData clients
- * to resolve type information based on metadata.
- * @member {date} [timestamp] Timestamp for the policy state record.
- * @member {string} [resourceId] Resource ID.
- * @member {string} [policyAssignmentId] Policy assignment ID.
- * @member {string} [policyDefinitionId] Policy definition ID.
- * @member {string} [effectiveParameters] Effective parameters for the policy
+ * @property {string} [odataid] OData entity ID; always set to null since
+ * policy state records do not have an entity ID.
+ * @property {string} [odatacontext] OData context string; used by OData
+ * clients to resolve type information based on metadata.
+ * @property {date} [timestamp] Timestamp for the policy state record.
+ * @property {string} [resourceId] Resource ID.
+ * @property {string} [policyAssignmentId] Policy assignment ID.
+ * @property {string} [policyDefinitionId] Policy definition ID.
+ * @property {string} [effectiveParameters] Effective parameters for the policy
  * assignment.
- * @member {boolean} [isCompliant] Flag which states whether the resource is
+ * @property {boolean} [isCompliant] Flag which states whether the resource is
  * compliant against the policy assignment it was evaluated against.
- * @member {string} [subscriptionId] Subscription ID.
- * @member {string} [resourceType] Resource type.
- * @member {string} [resourceLocation] Resource location.
- * @member {string} [resourceGroup] Resource group name.
- * @member {string} [resourceTags] List of resource tags.
- * @member {string} [policyAssignmentName] Policy assignment name.
- * @member {string} [policyAssignmentOwner] Policy assignment owner.
- * @member {string} [policyAssignmentParameters] Policy assignment parameters.
- * @member {string} [policyAssignmentScope] Policy assignment scope.
- * @member {string} [policyDefinitionName] Policy definition name.
- * @member {string} [policyDefinitionAction] Policy definition action, i.e.
+ * @property {string} [subscriptionId] Subscription ID.
+ * @property {string} [resourceType] Resource type.
+ * @property {string} [resourceLocation] Resource location.
+ * @property {string} [resourceGroup] Resource group name.
+ * @property {string} [resourceTags] List of resource tags.
+ * @property {string} [policyAssignmentName] Policy assignment name.
+ * @property {string} [policyAssignmentOwner] Policy assignment owner.
+ * @property {string} [policyAssignmentParameters] Policy assignment
+ * parameters.
+ * @property {string} [policyAssignmentScope] Policy assignment scope.
+ * @property {string} [policyDefinitionName] Policy definition name.
+ * @property {string} [policyDefinitionAction] Policy definition action, i.e.
  * effect.
- * @member {string} [policyDefinitionCategory] Policy definition category.
- * @member {string} [policySetDefinitionId] Policy set definition ID, if the
+ * @property {string} [policyDefinitionCategory] Policy definition category.
+ * @property {string} [policySetDefinitionId] Policy set definition ID, if the
  * policy assignment is for a policy set.
- * @member {string} [policySetDefinitionName] Policy set definition name, if
+ * @property {string} [policySetDefinitionName] Policy set definition name, if
  * the policy assignment is for a policy set.
- * @member {string} [policySetDefinitionOwner] Policy set definition owner, if
- * the policy assignment is for a policy set.
- * @member {string} [policySetDefinitionCategory] Policy set definition
+ * @property {string} [policySetDefinitionOwner] Policy set definition owner,
+ * if the policy assignment is for a policy set.
+ * @property {string} [policySetDefinitionCategory] Policy set definition
  * category, if the policy assignment is for a policy set.
- * @member {string} [policySetDefinitionParameters] Policy set definition
+ * @property {string} [policySetDefinitionParameters] Policy set definition
  * parameters, if the policy assignment is for a policy set.
- * @member {string} [managementGroupIds] Comma seperated list of management
+ * @property {string} [managementGroupIds] Comma seperated list of management
  * group IDs, which represent the hierarchy of the management groups the
  * resource is under.
- * @member {string} [policyDefinitionReferenceId] Reference ID for the policy
+ * @property {string} [policyDefinitionReferenceId] Reference ID for the policy
  * definition inside the policy set, if the policy assignment is for a policy
  * set.
  */
@@ -241,11 +544,11 @@ export interface PolicyState {
  * @constructor
  * Query results.
  *
- * @member {string} [odatacontext] OData context string; used by OData clients
- * to resolve type information based on metadata.
- * @member {number} [odatacount] OData entity count; represents the number of
+ * @property {string} [odatacontext] OData context string; used by OData
+ * clients to resolve type information based on metadata.
+ * @property {number} [odatacount] OData entity count; represents the number of
  * policy state records returned.
- * @member {array} [value] Query results.
+ * @property {array} [value] Query results.
  */
 export interface PolicyStatesQueryResults {
   odatacontext?: string;
@@ -259,11 +562,12 @@ export interface PolicyStatesQueryResults {
  * @constructor
  * Non-compliance summary on a particular summary level.
  *
- * @member {string} [queryResultsUri] HTTP POST URI for queryResults action on
- * Microsoft.PolicyInsights to retrieve raw results for the non-compliance
+ * @property {string} [queryResultsUri] HTTP POST URI for queryResults action
+ * on Microsoft.PolicyInsights to retrieve raw results for the non-compliance
  * summary.
- * @member {number} [nonCompliantResources] Number of non-compliant resources.
- * @member {number} [nonCompliantPolicies] Number of non-compliant policies.
+ * @property {number} [nonCompliantResources] Number of non-compliant
+ * resources.
+ * @property {number} [nonCompliantPolicies] Number of non-compliant policies.
  */
 export interface SummaryResults {
   queryResultsUri?: string;
@@ -277,19 +581,23 @@ export interface SummaryResults {
  * @constructor
  * Policy definition summary.
  *
- * @member {string} [policyDefinitionId] Policy definition ID.
- * @member {string} [effect] Policy effect, i.e. policy definition action.
- * @member {object} [results] Non-compliance summary for the policy definition.
- * @member {string} [results.queryResultsUri] HTTP POST URI for queryResults
+ * @property {string} [policyDefinitionId] Policy definition ID.
+ * @property {string} [policyDefinitionReferenceId] Policy definition reference
+ * ID.
+ * @property {string} [effect] Policy effect, i.e. policy definition action.
+ * @property {object} [results] Non-compliance summary for the policy
+ * definition.
+ * @property {string} [results.queryResultsUri] HTTP POST URI for queryResults
  * action on Microsoft.PolicyInsights to retrieve raw results for the
  * non-compliance summary.
- * @member {number} [results.nonCompliantResources] Number of non-compliant
+ * @property {number} [results.nonCompliantResources] Number of non-compliant
  * resources.
- * @member {number} [results.nonCompliantPolicies] Number of non-compliant
+ * @property {number} [results.nonCompliantPolicies] Number of non-compliant
  * policies.
  */
 export interface PolicyDefinitionSummary {
   policyDefinitionId?: string;
+  policyDefinitionReferenceId?: string;
   effect?: string;
   results?: SummaryResults;
 }
@@ -300,18 +608,19 @@ export interface PolicyDefinitionSummary {
  * @constructor
  * Policy assignment summary.
  *
- * @member {string} [policyAssignmentId] Policy assignment ID.
- * @member {string} [policySetDefinitionId] Policy set definition ID, if the
+ * @property {string} [policyAssignmentId] Policy assignment ID.
+ * @property {string} [policySetDefinitionId] Policy set definition ID, if the
  * policy assignment is for a policy set.
- * @member {object} [results] Non-compliance summary for the policy assignment.
- * @member {string} [results.queryResultsUri] HTTP POST URI for queryResults
+ * @property {object} [results] Non-compliance summary for the policy
+ * assignment.
+ * @property {string} [results.queryResultsUri] HTTP POST URI for queryResults
  * action on Microsoft.PolicyInsights to retrieve raw results for the
  * non-compliance summary.
- * @member {number} [results.nonCompliantResources] Number of non-compliant
+ * @property {number} [results.nonCompliantResources] Number of non-compliant
  * resources.
- * @member {number} [results.nonCompliantPolicies] Number of non-compliant
+ * @property {number} [results.nonCompliantPolicies] Number of non-compliant
  * policies.
- * @member {array} [policyDefinitions] Policy definitions summary.
+ * @property {array} [policyDefinitions] Policy definitions summary.
  */
 export interface PolicyAssignmentSummary {
   policyAssignmentId?: string;
@@ -326,20 +635,20 @@ export interface PolicyAssignmentSummary {
  * @constructor
  * Summary results.
  *
- * @member {string} [odataid] OData entity ID; always set to null since
+ * @property {string} [odataid] OData entity ID; always set to null since
  * summaries do not have an entity ID.
- * @member {string} [odatacontext] OData context string; used by OData clients
- * to resolve type information based on metadata.
- * @member {object} [results] Non-compliance summary for all policy
+ * @property {string} [odatacontext] OData context string; used by OData
+ * clients to resolve type information based on metadata.
+ * @property {object} [results] Non-compliance summary for all policy
  * assignments.
- * @member {string} [results.queryResultsUri] HTTP POST URI for queryResults
+ * @property {string} [results.queryResultsUri] HTTP POST URI for queryResults
  * action on Microsoft.PolicyInsights to retrieve raw results for the
  * non-compliance summary.
- * @member {number} [results.nonCompliantResources] Number of non-compliant
+ * @property {number} [results.nonCompliantResources] Number of non-compliant
  * resources.
- * @member {number} [results.nonCompliantPolicies] Number of non-compliant
+ * @property {number} [results.nonCompliantPolicies] Number of non-compliant
  * policies.
- * @member {array} [policyAssignments] Policy assignments summary.
+ * @property {array} [policyAssignments] Policy assignments summary.
  */
 export interface Summary {
   odataid?: string;
@@ -354,11 +663,11 @@ export interface Summary {
  * @constructor
  * Summarize action results.
  *
- * @member {string} [odatacontext] OData context string; used by OData clients
- * to resolve type information based on metadata.
- * @member {number} [odatacount] OData entity count; represents the number of
+ * @property {string} [odatacontext] OData context string; used by OData
+ * clients to resolve type information based on metadata.
+ * @property {number} [odatacount] OData entity count; represents the number of
  * summaries returned; always set to 1.
- * @member {array} [value] Summarize action results.
+ * @property {array} [value] Summarize action results.
  */
 export interface SummarizeResults {
   odatacontext?: string;
@@ -372,11 +681,11 @@ export interface SummarizeResults {
  * @constructor
  * Display metadata associated with the operation.
  *
- * @member {string} [provider] Resource provider name.
- * @member {string} [resource] Resource name on which the operation is
+ * @property {string} [provider] Resource provider name.
+ * @property {string} [resource] Resource name on which the operation is
  * performed.
- * @member {string} [operation] Operation name.
- * @member {string} [description] Operation description.
+ * @property {string} [operation] Operation name.
+ * @property {string} [description] Operation description.
  */
 export interface OperationDisplay {
   provider?: string;
@@ -391,13 +700,13 @@ export interface OperationDisplay {
  * @constructor
  * Operation definition.
  *
- * @member {string} [name] Operation name.
- * @member {object} [display] Display metadata associated with the operation.
- * @member {string} [display.provider] Resource provider name.
- * @member {string} [display.resource] Resource name on which the operation is
- * performed.
- * @member {string} [display.operation] Operation name.
- * @member {string} [display.description] Operation description.
+ * @property {string} [name] Operation name.
+ * @property {object} [display] Display metadata associated with the operation.
+ * @property {string} [display.provider] Resource provider name.
+ * @property {string} [display.resource] Resource name on which the operation
+ * is performed.
+ * @property {string} [display.operation] Operation name.
+ * @property {string} [display.description] Operation description.
  */
 export interface Operation {
   name?: string;
@@ -410,9 +719,9 @@ export interface Operation {
  * @constructor
  * List of available operations.
  *
- * @member {number} [odatacount] OData entity count; represents the number of
+ * @property {number} [odatacount] OData entity count; represents the number of
  * operations returned.
- * @member {array} [value] List of available operations.
+ * @property {array} [value] List of available operations.
  */
 export interface OperationsListResults {
   odatacount?: number;
@@ -425,28 +734,64 @@ export interface OperationsListResults {
  * @constructor
  * Additional parameters for a set of operations.
  *
- * @member {number} [top] Maximum number of records to return.
- * @member {string} [orderBy] Ordering expression using OData notation. One or
- * more comma-separated column names with an optional "desc" (the default) or
- * "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
- * @member {string} [select] Select expression using OData notation. Limits the
- * columns on each record to just those requested, e.g.
+ * @property {number} [top] Maximum number of records to return.
+ * @property {string} [filter] OData filter expression.
+ * @property {string} [orderBy] Ordering expression using OData notation. One
+ * or more comma-separated column names with an optional "desc" (the default)
+ * or "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
+ * @property {string} [select] Select expression using OData notation. Limits
+ * the columns on each record to just those requested, e.g.
  * "$select=PolicyAssignmentId, ResourceId".
- * @member {date} [from] ISO 8601 formatted timestamp specifying the start time
- * of the interval to query. When not specified, the service uses ($to -
+ * @property {date} [from] ISO 8601 formatted timestamp specifying the start
+ * time of the interval to query. When not specified, the service uses ($to -
  * 1-day).
- * @member {date} [to] ISO 8601 formatted timestamp specifying the end time of
- * the interval to query. When not specified, the service uses request time.
- * @member {string} [filter] OData filter expression.
- * @member {string} [apply] OData apply expression for aggregations.
+ * @property {date} [to] ISO 8601 formatted timestamp specifying the end time
+ * of the interval to query. When not specified, the service uses request time.
+ * @property {string} [apply] OData apply expression for aggregations.
  */
 export interface QueryOptions {
   top?: number;
+  filter?: string;
   orderBy?: string;
   select?: string;
   from?: Date;
   to?: Date;
-  filter?: string;
   apply?: string;
 }
 
+
+/**
+ * @class
+ * Initializes a new instance of the PolicyTrackedResourcesQueryResults class.
+ * @constructor
+ * Query results.
+ *
+ * @property {string} [nextLink] The URL to get the next set of results.
+ */
+export interface PolicyTrackedResourcesQueryResults extends Array<PolicyTrackedResource> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RemediationDeploymentsListResult class.
+ * @constructor
+ * List of deployments for a remediation.
+ *
+ * @property {string} [nextLink] The URL to get the next set of results.
+ */
+export interface RemediationDeploymentsListResult extends Array<RemediationDeployment> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RemediationListResult class.
+ * @constructor
+ * List of remediations.
+ *
+ * @property {string} [nextLink] The URL to get the next set of results.
+ */
+export interface RemediationListResult extends Array<Remediation> {
+  readonly nextLink?: string;
+}

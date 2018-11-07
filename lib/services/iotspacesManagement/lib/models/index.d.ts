@@ -22,13 +22,13 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * The properties of the Azure Storage Container for file archive.
  *
- * @member {string} [connectionString] The connection string of the storage
+ * @property {string} [connectionString] The connection string of the storage
  * account.
- * @member {string} [subscriptionId] The subscription identifier of the storage
- * account.
- * @member {string} [resourceGroup] The name of the resource group of the
+ * @property {string} [subscriptionId] The subscription identifier of the
  * storage account.
- * @member {string} [containerName] The name of storage container in the
+ * @property {string} [resourceGroup] The name of the resource group of the
+ * storage account.
+ * @property {string} [containerName] The name of storage container in the
  * storage account.
  */
 export interface StorageContainerProperties {
@@ -44,19 +44,20 @@ export interface StorageContainerProperties {
  * @constructor
  * The properties of an IoTSpaces instance.
  *
- * @member {string} [provisioningState] The provisioning state. Possible values
- * include: 'Provisioning', 'Deleting', 'Succeeded', 'Failed', 'Canceled'
- * @member {string} [managementApiUrl] The management Api endpoint.
- * @member {string} [webPortalUrl] The management UI endpoint.
- * @member {object} [storageContainer] The properties of the designated storage
- * container.
- * @member {string} [storageContainer.connectionString] The connection string
+ * @property {string} [provisioningState] The provisioning state. Possible
+ * values include: 'Provisioning', 'Deleting', 'Succeeded', 'Failed',
+ * 'Canceled'
+ * @property {string} [managementApiUrl] The management Api endpoint.
+ * @property {string} [webPortalUrl] The management UI endpoint.
+ * @property {object} [storageContainer] The properties of the designated
+ * storage container.
+ * @property {string} [storageContainer.connectionString] The connection string
  * of the storage account.
- * @member {string} [storageContainer.subscriptionId] The subscription
+ * @property {string} [storageContainer.subscriptionId] The subscription
  * identifier of the storage account.
- * @member {string} [storageContainer.resourceGroup] The name of the resource
+ * @property {string} [storageContainer.resourceGroup] The name of the resource
  * group of the storage account.
- * @member {string} [storageContainer.containerName] The name of storage
+ * @property {string} [storageContainer.containerName] The name of storage
  * container in the storage account.
  */
 export interface IoTSpacesProperties {
@@ -72,7 +73,7 @@ export interface IoTSpacesProperties {
  * @constructor
  * Information about the SKU of the IoTSpaces instance.
  *
- * @member {string} name The name of the SKU. Possible values include: 'F1',
+ * @property {string} name The name of the SKU. Possible values include: 'F1',
  * 'S1', 'S2', 'S3'
  */
 export interface IoTSpacesSkuInfo {
@@ -85,11 +86,11 @@ export interface IoTSpacesSkuInfo {
  * @constructor
  * The common properties of an IoTSpaces service.
  *
- * @member {string} [id] The resource identifier.
- * @member {string} [name] The resource name.
- * @member {string} [type] The resource type.
- * @member {string} location The resource location.
- * @member {object} [tags] The resource tags.
+ * @property {string} [id] The resource identifier.
+ * @property {string} [name] The resource name.
+ * @property {string} [type] The resource type.
+ * @property {string} location The resource location.
+ * @property {object} [tags] The resource tags.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -105,24 +106,26 @@ export interface Resource extends BaseResource {
  * @constructor
  * The description of the IoTSpaces service.
  *
- * @member {object} [properties] The common properties of a IoTSpaces service.
- * @member {string} [properties.provisioningState] The provisioning state.
+ * @property {object} [properties] The common properties of a IoTSpaces
+ * service.
+ * @property {string} [properties.provisioningState] The provisioning state.
  * Possible values include: 'Provisioning', 'Deleting', 'Succeeded', 'Failed',
  * 'Canceled'
- * @member {string} [properties.managementApiUrl] The management Api endpoint.
- * @member {string} [properties.webPortalUrl] The management UI endpoint.
- * @member {object} [properties.storageContainer] The properties of the
+ * @property {string} [properties.managementApiUrl] The management Api
+ * endpoint.
+ * @property {string} [properties.webPortalUrl] The management UI endpoint.
+ * @property {object} [properties.storageContainer] The properties of the
  * designated storage container.
- * @member {string} [properties.storageContainer.connectionString] The
+ * @property {string} [properties.storageContainer.connectionString] The
  * connection string of the storage account.
- * @member {string} [properties.storageContainer.subscriptionId] The
+ * @property {string} [properties.storageContainer.subscriptionId] The
  * subscription identifier of the storage account.
- * @member {string} [properties.storageContainer.resourceGroup] The name of the
- * resource group of the storage account.
- * @member {string} [properties.storageContainer.containerName] The name of
+ * @property {string} [properties.storageContainer.resourceGroup] The name of
+ * the resource group of the storage account.
+ * @property {string} [properties.storageContainer.containerName] The name of
  * storage container in the storage account.
- * @member {object} sku A valid instance SKU.
- * @member {string} [sku.name] The name of the SKU. Possible values include:
+ * @property {object} sku A valid instance SKU.
+ * @property {string} [sku.name] The name of the SKU. Possible values include:
  * 'F1', 'S1', 'S2', 'S3'
  */
 export interface IoTSpacesDescription extends Resource {
@@ -136,22 +139,24 @@ export interface IoTSpacesDescription extends Resource {
  * @constructor
  * The description of the IoTSpaces service.
  *
- * @member {object} [tags] Instance tags
- * @member {object} [properties] The common properties of an IoTSpaces service.
- * @member {string} [properties.provisioningState] The provisioning state.
+ * @property {object} [tags] Instance tags
+ * @property {object} [properties] The common properties of an IoTSpaces
+ * service.
+ * @property {string} [properties.provisioningState] The provisioning state.
  * Possible values include: 'Provisioning', 'Deleting', 'Succeeded', 'Failed',
  * 'Canceled'
- * @member {string} [properties.managementApiUrl] The management Api endpoint.
- * @member {string} [properties.webPortalUrl] The management UI endpoint.
- * @member {object} [properties.storageContainer] The properties of the
+ * @property {string} [properties.managementApiUrl] The management Api
+ * endpoint.
+ * @property {string} [properties.webPortalUrl] The management UI endpoint.
+ * @property {object} [properties.storageContainer] The properties of the
  * designated storage container.
- * @member {string} [properties.storageContainer.connectionString] The
+ * @property {string} [properties.storageContainer.connectionString] The
  * connection string of the storage account.
- * @member {string} [properties.storageContainer.subscriptionId] The
+ * @property {string} [properties.storageContainer.subscriptionId] The
  * subscription identifier of the storage account.
- * @member {string} [properties.storageContainer.resourceGroup] The name of the
- * resource group of the storage account.
- * @member {string} [properties.storageContainer.containerName] The name of
+ * @property {string} [properties.storageContainer.resourceGroup] The name of
+ * the resource group of the storage account.
+ * @property {string} [properties.storageContainer.containerName] The name of
  * storage container in the storage account.
  */
 export interface IoTSpacesPatchDescription {
@@ -165,9 +170,9 @@ export interface IoTSpacesPatchDescription {
  * @constructor
  * Error details.
  *
- * @member {string} [code] The error code.
- * @member {string} [message] The error message.
- * @member {string} [target] The target of the particular error.
+ * @property {string} [code] The error code.
+ * @property {string} [message] The error message.
+ * @property {string} [target] The target of the particular error.
  */
 export interface ErrorDetails {
   readonly code?: string;
@@ -181,10 +186,10 @@ export interface ErrorDetails {
  * @constructor
  * The object that represents the operation.
  *
- * @member {string} [provider] Service provider: Microsoft IoTSpaces
- * @member {string} [resource] Resource Type: IoTSpaces
- * @member {string} [operation] Name of the operation
- * @member {string} [description] Friendly description for the operation,
+ * @property {string} [provider] Service provider: Microsoft IoTSpaces
+ * @property {string} [resource] Resource Type: IoTSpaces
+ * @property {string} [operation] Name of the operation
+ * @property {string} [description] Friendly description for the operation,
  */
 export interface OperationDisplay {
   readonly provider?: string;
@@ -199,13 +204,13 @@ export interface OperationDisplay {
  * @constructor
  * IoTSpaces service REST API operation
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{read | write
- * | action | delete}
- * @member {object} [display]
- * @member {string} [display.provider] Service provider: Microsoft IoTSpaces
- * @member {string} [display.resource] Resource Type: IoTSpaces
- * @member {string} [display.operation] Name of the operation
- * @member {string} [display.description] Friendly description for the
+ * @property {string} [name] Operation name: {provider}/{resource}/{read |
+ * write | action | delete}
+ * @property {object} [display]
+ * @property {string} [display.provider] Service provider: Microsoft IoTSpaces
+ * @property {string} [display.resource] Resource Type: IoTSpaces
+ * @property {string} [display.operation] Name of the operation
+ * @property {string} [display.description] Friendly description for the
  * operation,
  */
 export interface Operation {
@@ -219,7 +224,7 @@ export interface Operation {
  * @constructor
  * Input values.
  *
- * @member {string} name The name of the IoTSpaces service instance to check.
+ * @property {string} name The name of the IoTSpaces service instance to check.
  */
 export interface OperationInputs {
   name: string;
@@ -232,11 +237,11 @@ export interface OperationInputs {
  * The properties indicating whether a given IoTSpaces service name is
  * available.
  *
- * @member {boolean} [nameAvailable] The value which indicates whether the
+ * @property {boolean} [nameAvailable] The value which indicates whether the
  * provided name is available.
- * @member {string} [reason] The reason for unavailability. Possible values
+ * @property {string} [reason] The reason for unavailability. Possible values
  * include: 'Invalid', 'AlreadyExists'
- * @member {string} [message] The detailed reason message.
+ * @property {string} [message] The detailed reason message.
  */
 export interface IoTSpacesNameAvailabilityInfo {
   readonly nameAvailable?: boolean;
@@ -251,8 +256,8 @@ export interface IoTSpacesNameAvailabilityInfo {
  * @constructor
  * A list of IoTSpaces description objects with a next link.
  *
- * @member {string} [nextLink] The link used to get the next page of IoTSpaces
- * description objects.
+ * @property {string} [nextLink] The link used to get the next page of
+ * IoTSpaces description objects.
  */
 export interface IoTSpacesDescriptionListResult extends Array<IoTSpacesDescription> {
   nextLink?: string;
@@ -265,8 +270,8 @@ export interface IoTSpacesDescriptionListResult extends Array<IoTSpacesDescripti
  * A list of IoTSpaces service operations. It contains a list of operations and
  * a URL link to get the next set of results.
  *
- * @member {string} [nextLink] The link used to get the next page of IoTSpaces
- * description objects.
+ * @property {string} [nextLink] The link used to get the next page of
+ * IoTSpaces description objects.
  */
 export interface OperationListResult extends Array<Operation> {
   nextLink?: string;

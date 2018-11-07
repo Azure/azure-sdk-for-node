@@ -22,14 +22,33 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Base resource object.
  *
- * @member {string} [id] ID of the resource.
- * @member {string} [name] Name of the resource.
- * @member {string} [type] Type of Resource.
- * @member {object} [tags] Custom tags for the resource.
- * @member {string} [etag] The entity tag used for optimistic concurency when
+ * @property {string} [id] ID of the resource.
+ * @property {string} [name] Name of the resource.
+ * @property {string} [type] Type of Resource.
+ * @property {string} [etag] The entity tag used for optimistic concurency when
  * modifying the resource.
  */
 export interface Resource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrackedResource class.
+ * @constructor
+ * Base resource object.
+ *
+ * @property {string} [id] ID of the resource.
+ * @property {string} [name] Name of the resource.
+ * @property {string} [type] Type of Resource.
+ * @property {object} [tags] Custom tags for the resource.
+ * @property {string} [etag] The entity tag used for optimistic concurency when
+ * modifying the resource.
+ */
+export interface TrackedResource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
@@ -44,14 +63,14 @@ export interface Resource extends BaseResource {
  * Contains the localized display information for this particular operation or
  * action.
  *
- * @member {string} [provider] The localized, friendly version of the resource
- * provider name.
- * @member {string} [resource] The localized, friendly version of the resource
- * type related to this action or operation; the resource type should match the
- * public documentation for the resource provider.
- * @member {string} [operation] The localized, friendly name for the operation.
- * Use the name as it will displayed to the user.
- * @member {string} [description] The localized, friendly description for the
+ * @property {string} [provider] The localized, friendly version of the
+ * resource provider name.
+ * @property {string} [resource] The localized, friendly version of the
+ * resource type related to this action or operation; the resource type should
+ * match the public documentation for the resource provider.
+ * @property {string} [operation] The localized, friendly name for the
+ * operation. Use the name as it will displayed to the user.
+ * @property {string} [description] The localized, friendly description for the
  * operation. The description will be displayed to the user. It should be
  * thorough and concise for used in both tooltips and detailed views.
  */
@@ -68,21 +87,21 @@ export interface Display {
  * @constructor
  * Describes the supported REST operation.
  *
- * @member {string} [name] The name of the operation being performed on this
+ * @property {string} [name] The name of the operation being performed on this
  * particular object.
- * @member {object} [display] Contains the localized display information for
+ * @property {object} [display] Contains the localized display information for
  * this particular operation or action.
- * @member {string} [display.provider] The localized, friendly version of the
+ * @property {string} [display.provider] The localized, friendly version of the
  * resource provider name.
- * @member {string} [display.resource] The localized, friendly version of the
+ * @property {string} [display.resource] The localized, friendly version of the
  * resource type related to this action or operation; the resource type should
  * match the public documentation for the resource provider.
- * @member {string} [display.operation] The localized, friendly name for the
+ * @property {string} [display.operation] The localized, friendly name for the
  * operation. Use the name as it will displayed to the user.
- * @member {string} [display.description] The localized, friendly description
+ * @property {string} [display.description] The localized, friendly description
  * for the operation. The description will be displayed to the user. It should
  * be thorough and concise for used in both tooltips and detailed views.
- * @member {string} [origin] The intended executor of the operation.
+ * @property {string} [origin] The intended executor of the operation.
  */
 export interface Operation {
   name?: string;
@@ -92,13 +111,47 @@ export interface Operation {
 
 /**
  * @class
+ * Initializes a new instance of the ErrorDetails class.
+ * @constructor
+ * The details of the error.
+ *
+ * @property {string} [code] Error code.
+ * @property {string} [message] Error message indicating why the operation
+ * failed.
+ * @property {string} [target] The target of the particular error.
+ */
+export interface ErrorDetails {
+  readonly code?: string;
+  readonly message?: string;
+  readonly target?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorResponse class.
+ * @constructor
+ * Error response indicates that the service is not able to process the
+ * incoming request. The reason is provided in the error message.
+ *
+ * @property {object} [error] The details of the error.
+ * @property {string} [error.code] Error code.
+ * @property {string} [error.message] Error message indicating why the
+ * operation failed.
+ * @property {string} [error.target] The target of the particular error.
+ */
+export interface ErrorResponse {
+  error?: ErrorDetails;
+}
+
+/**
+ * @class
  * Initializes a new instance of the OsDiskImage class.
  * @constructor
  * OS disk image.
  *
- * @member {string} [operatingSystem] OS operating system type. Possible values
- * include: 'None', 'Windows', 'Linux'
- * @member {string} [sourceBlobSasUri] SAS key for source blob.
+ * @property {string} [operatingSystem] OS operating system type. Possible
+ * values include: 'None', 'Windows', 'Linux'
+ * @property {string} [sourceBlobSasUri] SAS key for source blob.
  */
 export interface OsDiskImage {
   readonly operatingSystem?: string;
@@ -111,8 +164,8 @@ export interface OsDiskImage {
  * @constructor
  * Data disk image.
  *
- * @member {number} [lun] The LUN.
- * @member {string} [sourceBlobSasUri] SAS key for source blob.
+ * @property {number} [lun] The LUN.
+ * @property {string} [sourceBlobSasUri] SAS key for source blob.
  */
 export interface DataDiskImage {
   readonly lun?: number;
@@ -126,27 +179,27 @@ export interface DataDiskImage {
  * Extended description about the product required for installing it into Azure
  * Stack.
  *
- * @member {string} [galleryPackageBlobSasUri] The URI to the .azpkg file that
- * provides information required for showing product in the gallery.
- * @member {string} [productKind] Specifies the kind of the product
+ * @property {string} [galleryPackageBlobSasUri] The URI to the .azpkg file
+ * that provides information required for showing product in the gallery.
+ * @property {string} [productKind] Specifies the kind of the product
  * (virtualMachine or virtualMachineExtension).
- * @member {string} [computeRole] Specifies kind of compute role inclided in
+ * @property {string} [computeRole] Specifies kind of compute role inclided in
  * the package. Possible values include: 'None', 'IaaS', 'PaaS'
- * @member {boolean} [isSystemExtension] Specifies if product is a Virtual
+ * @property {boolean} [isSystemExtension] Specifies if product is a Virtual
  * Machine Extension.
- * @member {string} [uri] The URI.
- * @member {boolean} [supportMultipleExtensions] Indicates if specified product
- * supports multiple extensions.
- * @member {string} [version] Specifies product version.
- * @member {string} [vmOsType] Specifies operating system used by the product.
+ * @property {string} [uri] The URI.
+ * @property {boolean} [supportMultipleExtensions] Indicates if specified
+ * product supports multiple extensions.
+ * @property {string} [version] Specifies product version.
+ * @property {string} [vmOsType] Specifies operating system used by the
+ * product. Possible values include: 'None', 'Windows', 'Linux'
+ * @property {boolean} [vmScaleSetEnabled] Indicates if virtual machine Scale
+ * Set is enabled in the specified product.
+ * @property {object} [osDiskImage] OS disk image used by product.
+ * @property {string} [osDiskImage.operatingSystem] OS operating system type.
  * Possible values include: 'None', 'Windows', 'Linux'
- * @member {boolean} [vmScaleSetEnabled] Indicates if virtual machine Scale Set
- * is enabled in the specified product.
- * @member {object} [osDiskImage] OS disk image used by product.
- * @member {string} [osDiskImage.operatingSystem] OS operating system type.
- * Possible values include: 'None', 'Windows', 'Linux'
- * @member {string} [osDiskImage.sourceBlobSasUri] SAS key for source blob.
- * @member {array} [dataDiskImages] List of attached data disks.
+ * @property {string} [osDiskImage.sourceBlobSasUri] SAS key for source blob.
+ * @property {array} [dataDiskImages] List of attached data disks.
  */
 export interface ExtendedProduct {
   readonly galleryPackageBlobSasUri?: string;
@@ -168,18 +221,18 @@ export interface ExtendedProduct {
  * @constructor
  * Product information.
  *
- * @member {string} [computeRole] Specifies kind of compute role inclided in
+ * @property {string} [computeRole] Specifies kind of compute role inclided in
  * the package. Possible values include: 'None', 'IaaS', 'PaaS'
- * @member {boolean} [isSystemExtension] Specifies if product is a Virtual
+ * @property {boolean} [isSystemExtension] Specifies if product is a Virtual
  * Machine Extension.
- * @member {string} [uri] The URI.
- * @member {boolean} [supportMultipleExtensions] Indicates if specified product
- * supports multiple extensions.
- * @member {string} [version] Specifies product version.
- * @member {string} [vmOsType] Specifies operating system used by the product.
- * Possible values include: 'None', 'Windows', 'Linux'
- * @member {boolean} [vmScaleSetEnabled] Indicates if virtual machine Scale Set
- * is enabled in the specified product.
+ * @property {string} [uri] The URI.
+ * @property {boolean} [supportMultipleExtensions] Indicates if specified
+ * product supports multiple extensions.
+ * @property {string} [version] Specifies product version.
+ * @property {string} [vmOsType] Specifies operating system used by the
+ * product. Possible values include: 'None', 'Windows', 'Linux'
+ * @property {boolean} [vmScaleSetEnabled] Indicates if virtual machine Scale
+ * Set is enabled in the specified product.
  */
 export interface VirtualMachineExtensionProductProperties {
   readonly computeRole?: string;
@@ -197,12 +250,12 @@ export interface VirtualMachineExtensionProductProperties {
  * @constructor
  * Product information.
  *
- * @member {string} [version] Specifies product version.
- * @member {object} [osDiskImage] OS disk image used by product.
- * @member {string} [osDiskImage.operatingSystem] OS operating system type.
+ * @property {string} [version] Specifies product version.
+ * @property {object} [osDiskImage] OS disk image used by product.
+ * @property {string} [osDiskImage.operatingSystem] OS operating system type.
  * Possible values include: 'None', 'Windows', 'Linux'
- * @member {string} [osDiskImage.sourceBlobSasUri] SAS key for source blob.
- * @member {array} [dataDiskImages] List of attached data disks.
+ * @property {string} [osDiskImage.sourceBlobSasUri] SAS key for source blob.
+ * @property {array} [dataDiskImages] List of attached data disks.
  */
 export interface VirtualMachineProductProperties {
   readonly version?: string;
@@ -216,11 +269,11 @@ export interface VirtualMachineProductProperties {
  * @constructor
  * Links to product icons.
  *
- * @member {string} [large] URI to large icon.
- * @member {string} [wide] URI to wide icon.
- * @member {string} [medium] URI to medium icon.
- * @member {string} [small] URI to small icon.
- * @member {string} [hero] URI to hero icon.
+ * @property {string} [large] URI to large icon.
+ * @property {string} [wide] URI to wide icon.
+ * @property {string} [medium] URI to medium icon.
+ * @property {string} [small] URI to small icon.
+ * @property {string} [hero] URI to hero icon.
  */
 export interface IconUris {
   large?: string;
@@ -236,8 +289,8 @@ export interface IconUris {
  * @constructor
  * Link with additional information about a product.
  *
- * @member {string} [displayName] The description of the link.
- * @member {string} [uri] The URI corresponding to the link.
+ * @property {string} [displayName] The description of the link.
+ * @property {string} [uri] The URI corresponding to the link.
  */
 export interface ProductLink {
   displayName?: string;
@@ -250,7 +303,7 @@ export interface ProductLink {
  * @constructor
  * Additional properties of the product
  *
- * @member {string} [version] The version.
+ * @property {string} [version] The version.
  */
 export interface ProductProperties {
   version?: string;
@@ -262,34 +315,35 @@ export interface ProductProperties {
  * @constructor
  * Product information.
  *
- * @member {string} [displayName] The display name of the product.
- * @member {string} [description] The description of the product.
- * @member {string} [publisherDisplayName] The user-friendly name of the
+ * @property {string} [displayName] The display name of the product.
+ * @property {string} [description] The description of the product.
+ * @property {string} [publisherDisplayName] The user-friendly name of the
  * product publisher.
- * @member {string} [publisherIdentifier] Publisher identifier.
- * @member {string} [offer] The offer representing the product.
- * @member {string} [offerVersion] The version of the product offer.
- * @member {string} [sku] The product SKU.
- * @member {string} [billingPartNumber] The part number used for billing
+ * @property {string} [publisherIdentifier] Publisher identifier.
+ * @property {string} [offer] The offer representing the product.
+ * @property {string} [offerVersion] The version of the product offer.
+ * @property {string} [sku] The product SKU.
+ * @property {string} [billingPartNumber] The part number used for billing
  * purposes.
- * @member {string} [vmExtensionType] The type of the Virtual Machine
+ * @property {string} [vmExtensionType] The type of the Virtual Machine
  * Extension.
- * @member {string} [galleryItemIdentity] The identifier of the gallery item
+ * @property {string} [galleryItemIdentity] The identifier of the gallery item
  * corresponding to the product.
- * @member {object} [iconUris] Additional links available for this product.
- * @member {string} [iconUris.large] URI to large icon.
- * @member {string} [iconUris.wide] URI to wide icon.
- * @member {string} [iconUris.medium] URI to medium icon.
- * @member {string} [iconUris.small] URI to small icon.
- * @member {string} [iconUris.hero] URI to hero icon.
- * @member {array} [links] Additional links available for this product.
- * @member {string} [legalTerms] The legal terms.
- * @member {string} [privacyPolicy] The privacy policy.
- * @member {number} [payloadLength] The length of product content.
- * @member {string} [productKind] The kind of the product (virtualMachine or
+ * @property {object} [iconUris] Additional links available for this product.
+ * @property {string} [iconUris.large] URI to large icon.
+ * @property {string} [iconUris.wide] URI to wide icon.
+ * @property {string} [iconUris.medium] URI to medium icon.
+ * @property {string} [iconUris.small] URI to small icon.
+ * @property {string} [iconUris.hero] URI to hero icon.
+ * @property {array} [links] Additional links available for this product.
+ * @property {string} [legalTerms] The legal terms.
+ * @property {string} [privacyPolicy] The privacy policy.
+ * @property {number} [payloadLength] The length of product content.
+ * @property {string} [productKind] The kind of the product (virtualMachine or
  * virtualMachineExtension)
- * @member {object} [productProperties] Additional properties for the product.
- * @member {string} [productProperties.version] The version.
+ * @property {object} [productProperties] Additional properties for the
+ * product.
+ * @property {string} [productProperties.version] The version.
  */
 export interface Product extends Resource {
   displayName?: string;
@@ -317,13 +371,13 @@ export interface Product extends Resource {
  * @constructor
  * Registration information.
  *
- * @member {string} [objectId] The object identifier associated with the Azure
- * Stack connecting to Azure.
- * @member {string} [cloudId] The identifier of the registered Azure Stack.
- * @member {string} [billingModel] Specifies the billing mode for the Azure
+ * @property {string} [objectId] The object identifier associated with the
+ * Azure Stack connecting to Azure.
+ * @property {string} [cloudId] The identifier of the registered Azure Stack.
+ * @property {string} [billingModel] Specifies the billing mode for the Azure
  * Stack registration.
  */
-export interface Registration extends Resource {
+export interface Registration extends TrackedResource {
   objectId?: string;
   cloudId?: string;
   billingModel?: string;
@@ -335,7 +389,7 @@ export interface Registration extends Resource {
  * @constructor
  * The resource containing the Azure Stack activation key.
  *
- * @member {string} [activationKey] Azure Stack activation key.
+ * @property {string} [activationKey] Azure Stack activation key.
  */
 export interface ActivationKeyResult {
   activationKey?: string;
@@ -347,11 +401,14 @@ export interface ActivationKeyResult {
  * @constructor
  * Registration resource
  *
- * @member {string} registrationToken The token identifying registered Azure
+ * @property {string} registrationToken The token identifying registered Azure
  * Stack
+ * @property {string} [location] Location of the resource. Possible values
+ * include: 'global'
  */
-export interface RegistrationParameter extends Resource {
+export interface RegistrationParameter {
   registrationToken: string;
+  location?: string;
 }
 
 /**
@@ -360,7 +417,7 @@ export interface RegistrationParameter extends Resource {
  * @constructor
  * Customer subcription.
  *
- * @member {string} [tenantId] Tenant Id.
+ * @property {string} [tenantId] Tenant Id.
  */
 export interface CustomerSubscription extends Resource {
   tenantId?: string;
@@ -373,7 +430,7 @@ export interface CustomerSubscription extends Resource {
  * @constructor
  * List of Operations
  *
- * @member {string} [nextLink] URI to the next page of operations.
+ * @property {string} [nextLink] URI to the next page of operations.
  */
 export interface OperationList extends Array<Operation> {
   nextLink?: string;
@@ -385,7 +442,7 @@ export interface OperationList extends Array<Operation> {
  * @constructor
  * Pageable list of products.
  *
- * @member {string} [nextLink] URI to the next page.
+ * @property {string} [nextLink] URI to the next page.
  */
 export interface ProductList extends Array<Product> {
   nextLink?: string;
@@ -397,7 +454,7 @@ export interface ProductList extends Array<Product> {
  * @constructor
  * Pageable list of registrations.
  *
- * @member {string} [nextLink] URI to the next page.
+ * @property {string} [nextLink] URI to the next page.
  */
 export interface RegistrationList extends Array<Registration> {
   nextLink?: string;
@@ -409,7 +466,7 @@ export interface RegistrationList extends Array<Registration> {
  * @constructor
  * Pageable list of customer subscriptions.
  *
- * @member {string} [nextLink] URI to the next page.
+ * @property {string} [nextLink] URI to the next page.
  */
 export interface CustomerSubscriptionList extends Array<CustomerSubscription> {
   nextLink?: string;

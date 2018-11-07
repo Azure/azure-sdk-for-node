@@ -22,36 +22,37 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Azure Migrate Project.
  *
- * @member {string} [id] Path reference to this project
+ * @property {string} [id] Path reference to this project
  * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}
- * @member {string} [name] Name of the project.
- * @member {string} [type] Type of the object = [Microsoft.Migrate/projects].
- * @member {string} [eTag] For optimistic concurrency control.
- * @member {string} [location] Azure location in which project is created.
- * @member {object} [tags] Tags provided by Azure Tagging service.
- * @member {date} [createdTimestamp] Time when this project was created.
+ * @property {string} [name] Name of the project.
+ * @property {string} [type] Type of the object = [Microsoft.Migrate/projects].
+ * @property {string} [eTag] For optimistic concurrency control.
+ * @property {string} [location] Azure location in which project is created.
+ * @property {object} [tags] Tags provided by Azure Tagging service.
+ * @property {date} [createdTimestamp] Time when this project was created.
  * Date-Time represented in ISO-8601 format.
- * @member {date} [updatedTimestamp] Time when this project was last updated.
+ * @property {date} [updatedTimestamp] Time when this project was last updated.
  * Date-Time represented in ISO-8601 format.
- * @member {string} [discoveryStatus] Reports whether project is under
+ * @property {string} [discoveryStatus] Reports whether project is under
  * discovery. Possible values include: 'Unknown', 'NotStarted', 'InProgress',
  * 'Completed'
- * @member {string} [customerWorkspaceId] ARM ID of the Service Map workspace
+ * @property {string} [customerWorkspaceId] ARM ID of the Service Map workspace
  * created by user.
- * @member {string} [customerWorkspaceLocation] Location of the Service Map
+ * @property {string} [customerWorkspaceLocation] Location of the Service Map
  * workspace created by user.
- * @member {date} [lastDiscoveryTimestamp] Time when this project was created.
- * Date-Time represented in ISO-8601 format. This value will be null until
- * discovery is complete.
- * @member {string} [lastDiscoverySessionId] Session id of the last discovery.
- * @member {number} [numberOfGroups] Number of groups created in the project.
- * @member {number} [numberOfMachines] Number of machines in the project.
- * @member {number} [numberOfAssessments] Number of assessments created in the
- * project.
- * @member {date} [lastAssessmentTimestamp] Time when last assessment was
+ * @property {date} [lastDiscoveryTimestamp] Time when this project was
+ * created. Date-Time represented in ISO-8601 format. This value will be null
+ * until discovery is complete.
+ * @property {string} [lastDiscoverySessionId] Session id of the last
+ * discovery.
+ * @property {number} [numberOfGroups] Number of groups created in the project.
+ * @property {number} [numberOfMachines] Number of machines in the project.
+ * @property {number} [numberOfAssessments] Number of assessments created in
+ * the project.
+ * @property {date} [lastAssessmentTimestamp] Time when last assessment was
  * created. Date-Time represented in ISO-8601 format. This value will be null
  * until assessment is created.
- * @member {string} [provisioningState] Provisioning state of the project.
+ * @property {string} [provisioningState] Provisioning state of the project.
  * Possible values include: 'Accepted', 'Creating', 'Deleting', 'Failed',
  * 'Moving', 'Succeeded'
  */
@@ -82,18 +83,19 @@ export interface Project extends BaseResource {
  * @constructor
  * A group created in a Migration project.
  *
- * @member {string} [id] Path reference to this group.
+ * @property {string} [id] Path reference to this group.
  * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}
- * @member {string} [name] Name of the group.
- * @member {string} [eTag] For optimistic concurrency control.
- * @member {string} [type] Type of the object =
+ * @property {string} [name] Name of the group.
+ * @property {string} [eTag] For optimistic concurrency control.
+ * @property {string} [type] Type of the object =
  * [Microsoft.Migrate/projects/groups].
- * @member {array} machines List of machine names that are part of this group.
- * @member {array} [assessments] List of References to Assessments created on
+ * @property {array} machines List of machine names that are part of this
+ * group.
+ * @property {array} [assessments] List of References to Assessments created on
  * this group.
- * @member {date} [createdTimestamp] Time when this project was created.
+ * @property {date} [createdTimestamp] Time when this project was created.
  * Date-Time represented in ISO-8601 format.
- * @member {date} [updatedTimestamp] Time when this project was last updated.
+ * @property {date} [updatedTimestamp] Time when this project was last updated.
  * Date-Time represented in ISO-8601 format.
  */
 export interface Group extends BaseResource {
@@ -113,22 +115,22 @@ export interface Group extends BaseResource {
  * @constructor
  * An assessment created for a group in the Migration project.
  *
- * @member {string} [id] Path reference to this assessment.
+ * @property {string} [id] Path reference to this assessment.
  * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessment/{assessmentName}
- * @member {string} [name] Unique name of an assessment.
- * @member {string} [eTag] For optimistic concurrency control.
- * @member {string} [type] Type of the object =
+ * @property {string} [name] Unique name of an assessment.
+ * @property {string} [eTag] For optimistic concurrency control.
+ * @property {string} [type] Type of the object =
  * [Microsoft.Migrate/projects/groups/assessments].
- * @member {string} azureLocation Target Azure location for which the machines
- * should be assessed. These enums are the same as used by Compute API.
- * Possible values include: 'Unknown', 'EastAsia', 'SoutheastAsia',
+ * @property {string} azureLocation Target Azure location for which the
+ * machines should be assessed. These enums are the same as used by Compute
+ * API. Possible values include: 'Unknown', 'EastAsia', 'SoutheastAsia',
  * 'AustraliaEast', 'AustraliaSoutheast', 'BrazilSouth', 'CanadaCentral',
  * 'CanadaEast', 'WestEurope', 'NorthEurope', 'CentralIndia', 'SouthIndia',
  * 'WestIndia', 'JapanEast', 'JapanWest', 'KoreaCentral', 'KoreaSouth',
  * 'UkWest', 'UkSouth', 'NorthCentralUs', 'EastUs', 'WestUs2',
  * 'SouthCentralUs', 'CentralUs', 'EastUs2', 'WestUs', 'WestCentralUs',
  * 'GermanyCentral', 'GermanyNortheast', 'ChinaNorth', 'ChinaEast'
- * @member {string} azureOfferCode Offer code according to which cost
+ * @property {string} azureOfferCode Offer code according to which cost
  * estimation is done. Possible values include: 'Unknown', 'MSAZR0003P',
  * 'MSAZR0044P', 'MSAZR0059P', 'MSAZR0060P', 'MSAZR0062P', 'MSAZR0063P',
  * 'MSAZR0064P', 'MSAZR0029P', 'MSAZR0022P', 'MSAZR0023P', 'MSAZR0148P',
@@ -138,52 +140,54 @@ export interface Group extends BaseResource {
  * 'MSAZR0149P', 'MSMCAZR0044P', 'MSMCAZR0059P', 'MSMCAZR0060P',
  * 'MSMCAZR0063P', 'MSMCAZR0120P', 'MSMCAZR0121P', 'MSMCAZR0125P',
  * 'MSMCAZR0128P', 'MSAZRDE0003P', 'MSAZRDE0044P'
- * @member {string} azurePricingTier Pricing tier for Size evaluation. Possible
- * values include: 'Standard', 'Basic'
- * @member {string} azureStorageRedundancy Storage Redundancy type offered by
+ * @property {string} azurePricingTier Pricing tier for Size evaluation.
+ * Possible values include: 'Standard', 'Basic'
+ * @property {string} azureStorageRedundancy Storage Redundancy type offered by
  * Azure. Possible values include: 'Unknown', 'LocallyRedundant',
  * 'ZoneRedundant', 'GeoRedundant', 'ReadAccessGeoRedundant'
- * @member {number} scalingFactor Scaling factor used over utilization data to
- * add a performance buffer for new machines to be created in Azure. Min Value
- * = 1.0, Max value = 1.9, Default = 1.3.
- * @member {string} percentile Percentile of performance data used to recommend
- * Azure size. Possible values include: 'Percentile50', 'Percentile90',
- * 'Percentile95', 'Percentile99'
- * @member {string} timeRange Time range of performance data used to recommend
- * a size. Possible values include: 'Day', 'Week', 'Month'
- * @member {string} stage User configurable setting that describes the status
+ * @property {number} scalingFactor Scaling factor used over utilization data
+ * to add a performance buffer for new machines to be created in Azure. Min
+ * Value = 1.0, Max value = 1.9, Default = 1.3.
+ * @property {string} percentile Percentile of performance data used to
+ * recommend Azure size. Possible values include: 'Percentile50',
+ * 'Percentile90', 'Percentile95', 'Percentile99'
+ * @property {string} timeRange Time range of performance data used to
+ * recommend a size. Possible values include: 'Day', 'Week', 'Month'
+ * @property {string} stage User configurable setting that describes the status
  * of the assessment. Possible values include: 'InProgress', 'UnderReview',
  * 'Approved'
- * @member {string} currency Currency to report prices in. Possible values
+ * @property {string} currency Currency to report prices in. Possible values
  * include: 'Unknown', 'USD', 'DKK', 'CAD', 'IDR', 'JPY', 'KRW', 'NZD', 'NOK',
  * 'RUB', 'SAR', 'ZAR', 'SEK', 'TRY', 'GBP', 'MXN', 'MYR', 'INR', 'HKD', 'BRL',
  * 'TWD', 'EUR', 'CHF', 'ARS', 'AUD', 'CNY'
- * @member {string} azureHybridUseBenefit AHUB discount on windows virtual
+ * @property {string} azureHybridUseBenefit AHUB discount on windows virtual
  * machines. Possible values include: 'Unknown', 'Yes', 'No'
- * @member {number} discountPercentage Custom discount percentage to be applied
- * on final costs. Can be in the range [0, 100].
- * @member {number} [confidenceRatingInPercentage] Confidence rating percentage
- * for assessment. Can be in the range [0, 100].
- * @member {string} sizingCriterion Assessment sizing criterion. Possible
+ * @property {number} discountPercentage Custom discount percentage to be
+ * applied on final costs. Can be in the range [0, 100].
+ * @property {number} [confidenceRatingInPercentage] Confidence rating
+ * percentage for assessment. Can be in the range [0, 100].
+ * @property {string} sizingCriterion Assessment sizing criterion. Possible
  * values include: 'PerformanceBased', 'AsOnPremises'
- * @member {date} [pricesTimestamp] Time when the Azure Prices were queried.
+ * @property {date} [pricesTimestamp] Time when the Azure Prices were queried.
  * Date-Time represented in ISO-8601 format.
- * @member {date} [createdTimestamp] Time when this project was created.
+ * @property {date} [createdTimestamp] Time when this project was created.
  * Date-Time represented in ISO-8601 format.
- * @member {date} [updatedTimestamp] Time when this project was last updated.
+ * @property {date} [updatedTimestamp] Time when this project was last updated.
  * Date-Time represented in ISO-8601 format.
- * @member {number} [monthlyComputeCost] Monthly compute cost estimate for the
- * machines that are part of this assessment as a group, for a 31-day month.
- * @member {number} [monthlyBandwidthCost] Monthly network cost estimate for
+ * @property {number} [monthlyComputeCost] Monthly compute cost estimate for
  * the machines that are part of this assessment as a group, for a 31-day
  * month.
- * @member {number} [monthlyStorageCost] Monthly storage cost estimate for the
- * machines that are part of this assessment as a group, for a 31-day month.
- * @member {string} [status] Wheter the assessment has been created and is
+ * @property {number} [monthlyBandwidthCost] Monthly network cost estimate for
+ * the machines that are part of this assessment as a group, for a 31-day
+ * month.
+ * @property {number} [monthlyStorageCost] Monthly storage cost estimate for
+ * the machines that are part of this assessment as a group, for a 31-day
+ * month.
+ * @property {string} [status] Wheter the assessment has been created and is
  * valid. Possible values include: 'Created', 'Updated', 'Running',
  * 'Completed', 'Invalid'
- * @member {number} [numberOfMachines] Number of assessed machines part of this
- * assessment.
+ * @property {number} [numberOfMachines] Number of assessed machines part of
+ * this assessment.
  */
 export interface Assessment extends BaseResource {
   readonly id?: string;
@@ -219,9 +223,9 @@ export interface Assessment extends BaseResource {
  * @constructor
  * A disk discovered on a machine.
  *
- * @member {number} [gigabytesAllocated] Gigabytes of storage provisioned for
+ * @property {number} [gigabytesAllocated] Gigabytes of storage provisioned for
  * this disk.
- * @member {number} [gigabytesConsumed] Gigabytes of storage consumed by this
+ * @property {number} [gigabytesConsumed] Gigabytes of storage consumed by this
  * disk.
  */
 export interface Disk {
@@ -235,8 +239,8 @@ export interface Disk {
  * @constructor
  * A network adapter discovered on a machine.
  *
- * @member {string} [macAddress] MAC Address of the network adapter.
- * @member {array} [ipAddresses] List of IP Addresses on the network adapter.
+ * @property {string} [macAddress] MAC Address of the network adapter.
+ * @property {array} [ipAddresses] List of IP Addresses on the network adapter.
  */
 export interface NetworkAdapter {
   readonly macAddress?: string;
@@ -249,41 +253,41 @@ export interface NetworkAdapter {
  * @constructor
  * A machine in a migration project.
  *
- * @member {string} [id] Path reference to this machine.
+ * @property {string} [id] Path reference to this machine.
  * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/machines/{machineName}
- * @member {string} [name] Name of the machine. It is a GUID which is unique
+ * @property {string} [name] Name of the machine. It is a GUID which is unique
  * identifier of machine in private data center. For user-readable name, we
  * have a displayName property on this machine.
- * @member {string} [eTag] For optimistic concurrency control.
- * @member {string} [type] Type of the object =
+ * @property {string} [eTag] For optimistic concurrency control.
+ * @property {string} [type] Type of the object =
  * [Microsoft.Migrate/projects/machines].
- * @member {string} [bootType] Boot type of the machine. Possible values
+ * @property {string} [bootType] Boot type of the machine. Possible values
  * include: 'Unknown', 'EFI', 'BIOS'
- * @member {string} [datacenterContainer] Container defined in the management
+ * @property {string} [datacenterContainer] Container defined in the management
  * solution that this machine is part of in the datacenter.
- * @member {string} [datacenterManagementServer] Name of the server hosting the
+ * @property {string} [datacenterManagementServer] Name of the server hosting
+ * the datacenter management solution.
+ * @property {string} [datacenterMachineId] ID of the machine as tracked by the
  * datacenter management solution.
- * @member {string} [datacenterMachineId] ID of the machine as tracked by the
- * datacenter management solution.
- * @member {string} [datacenterManagementServerId] ID of the server hosting the
- * datacenter management solution.
- * @member {string} [description] Description of the machine
- * @member {string} [displayName] User readable name of the machine as defined
- * by the user in their private datacenter.
- * @member {number} [megabytesOfMemory] Memory in Megabytes.
- * @member {number} [numberOfCores] Processor count.
- * @member {string} [operatingSystem] Operating System of the machine.
- * @member {array} [groups] List of references to the groups that the machine
+ * @property {string} [datacenterManagementServerId] ID of the server hosting
+ * the datacenter management solution.
+ * @property {string} [description] Description of the machine
+ * @property {string} [displayName] User readable name of the machine as
+ * defined by the user in their private datacenter.
+ * @property {number} [megabytesOfMemory] Memory in Megabytes.
+ * @property {number} [numberOfCores] Processor count.
+ * @property {string} [operatingSystem] Operating System of the machine.
+ * @property {array} [groups] List of references to the groups that the machine
  * is member of.
- * @member {date} [createdTimestamp] Time when this machine was created.
+ * @property {date} [createdTimestamp] Time when this machine was created.
  * Date-Time represented in ISO-8601 format.
- * @member {date} [updatedTimestamp] Time when this machine was last updated.
+ * @property {date} [updatedTimestamp] Time when this machine was last updated.
  * Date-Time represented in ISO-8601 format.
- * @member {date} [discoveredTimestamp] Time when this machine was discovered
+ * @property {date} [discoveredTimestamp] Time when this machine was discovered
  * by Azure Migrate agent. Date-Time represented in ISO-8601 format.
- * @member {object} [disks] Dictionary of disks attached to the machine. Key is
- * ID of disk. Value is a disk object
- * @member {object} [networkAdapters] Dictionary of network adapters attached
+ * @property {object} [disks] Dictionary of disks attached to the machine. Key
+ * is ID of disk. Value is a disk object
+ * @property {object} [networkAdapters] Dictionary of network adapters attached
  * to the machine. Key is ID of network adapter. Value is a network adapter
  * object
  */
@@ -316,53 +320,53 @@ export interface Machine extends BaseResource {
  * @constructor
  * A disk assessed for an assessment.
  *
- * @member {string} [name] Name of the assessed disk.
- * @member {number} [gigabytesProvisioned] Gigabytes of storage provisioned for
- * this disk.
- * @member {number} [gigabytesConsumed] Gigabytes of storage consumed by this
+ * @property {string} [name] Name of the assessed disk.
+ * @property {number} [gigabytesProvisioned] Gigabytes of storage provisioned
+ * for this disk.
+ * @property {number} [gigabytesConsumed] Gigabytes of storage consumed by this
  * disk.
- * @member {number} [megabytesPerSecondOfRead] Disk throughput in MegaBytes per
- * second.
- * @member {number} [megabytesPerSecondOfReadDataPointsExpected] Expected data
- * points for MegaBytes per second of read.
- * @member {number} [megabytesPerSecondOfReadDataPointsReceived] Received data
- * points for MegaBytes per second of read.
- * @member {number} [megabytesPerSecondOfWrite] Disk throughput in MegaBytes
+ * @property {number} [megabytesPerSecondOfRead] Disk throughput in MegaBytes
  * per second.
- * @member {number} [megabytesPerSecondOfWriteDataPointsExpected] Expected data
- * points for MegaBytes per second of write.
- * @member {number} [megabytesPerSecondOfWriteDataPointsReceived] Received data
- * points for MegaBytes per second of write.
- * @member {number} [numberOfReadOperationsPerSecond] Number of read operations
- * per second for the disk.
- * @member {number} [numberOfReadOperationsPerSecondDataPointsExpected]
- * Expected number of data points for read operations per second.
- * @member {number} [numberOfReadOperationsPerSecondDataPointsReceived]
- * Received number of data points for read operations per second.
- * @member {number} [numberOfWriteOperationsPerSecond] Number of read and write
+ * @property {number} [megabytesPerSecondOfReadDataPointsExpected] Expected
+ * data points for MegaBytes per second of read.
+ * @property {number} [megabytesPerSecondOfReadDataPointsReceived] Received
+ * data points for MegaBytes per second of read.
+ * @property {number} [megabytesPerSecondOfWrite] Disk throughput in MegaBytes
+ * per second.
+ * @property {number} [megabytesPerSecondOfWriteDataPointsExpected] Expected
+ * data points for MegaBytes per second of write.
+ * @property {number} [megabytesPerSecondOfWriteDataPointsReceived] Received
+ * data points for MegaBytes per second of write.
+ * @property {number} [numberOfReadOperationsPerSecond] Number of read
  * operations per second for the disk.
- * @member {number} [numberOfWriteOperationsPerSecondDataPointsExpected]
+ * @property {number} [numberOfReadOperationsPerSecondDataPointsExpected]
+ * Expected number of data points for read operations per second.
+ * @property {number} [numberOfReadOperationsPerSecondDataPointsReceived]
+ * Received number of data points for read operations per second.
+ * @property {number} [numberOfWriteOperationsPerSecond] Number of read and
+ * write operations per second for the disk.
+ * @property {number} [numberOfWriteOperationsPerSecondDataPointsExpected]
  * Expected number of data points for write operations per second.
- * @member {number} [numberOfWriteOperationsPerSecondDataPointsReceived]
+ * @property {number} [numberOfWriteOperationsPerSecondDataPointsReceived]
  * Received number of data points for write operations per second.
- * @member {number} [monthlyStorageCost] Estimated aggregate storage cost for a
- * 31-day month for this disk.
- * @member {string} [recommendedDiskType] Storage type selected for this disk.
- * Possible values include: 'Unknown', 'Standard', 'Premium'
- * @member {string} [recommendedDiskSize] Recommended Azure size for the disk,
- * given utilization data and preferences set on Assessment. Possible values
- * include: 'Unknown', 'Standard_S4', 'Standard_S6', 'Standard_S10',
+ * @property {number} [monthlyStorageCost] Estimated aggregate storage cost for
+ * a 31-day month for this disk.
+ * @property {string} [recommendedDiskType] Storage type selected for this
+ * disk. Possible values include: 'Unknown', 'Standard', 'Premium'
+ * @property {string} [recommendedDiskSize] Recommended Azure size for the
+ * disk, given utilization data and preferences set on Assessment. Possible
+ * values include: 'Unknown', 'Standard_S4', 'Standard_S6', 'Standard_S10',
  * 'Standard_S20', 'Standard_S30', 'Standard_S40', 'Standard_S50',
  * 'Premium_P4', 'Premium_P6', 'Premium_P10', 'Premium_P20', 'Premium_P30',
  * 'Premium_P40', 'Premium_P50'
- * @member {number} [gigabytesForRecommendedDiskSize] Gigabytes of storage
+ * @property {number} [gigabytesForRecommendedDiskSize] Gigabytes of storage
  * provided by the recommended Azure disk size.
- * @member {string} [suitability] Whether this disk is suitable for Azure.
+ * @property {string} [suitability] Whether this disk is suitable for Azure.
  * Possible values include: 'Unknown', 'NotSuitable', 'Suitable',
  * 'ConditionallySuitable', 'ReadinessUnknown'
- * @member {string} [suitabilityExplanation] If disk is suitable, this explains
- * the reasons and mitigation steps. Possible values include: 'Unknown',
- * 'NotApplicable', 'DiskSizeGreaterThanSupported',
+ * @property {string} [suitabilityExplanation] If disk is suitable, this
+ * explains the reasons and mitigation steps. Possible values include:
+ * 'Unknown', 'NotApplicable', 'DiskSizeGreaterThanSupported',
  * 'NoSuitableDiskSizeForIops', 'NoSuitableDiskSizeForThroughput',
  * 'NoDiskSizeFoundInSelectedLocation', 'NoDiskSizeFoundForSelectedRedundancy',
  * 'InternalErrorOccurredForDiskEvaluation'
@@ -397,28 +401,28 @@ export interface AssessedDisk {
  * @constructor
  * A network adapter assessed for an assessment.
  *
- * @member {string} [macAddress] MAC Address of the network adapter.
- * @member {array} [ipAddresses] List of IP Addresses on the network adapter.
- * @member {number} [monthlyBandwidthCosts] Monthly cost estimate for network
+ * @property {string} [macAddress] MAC Address of the network adapter.
+ * @property {array} [ipAddresses] List of IP Addresses on the network adapter.
+ * @property {number} [monthlyBandwidthCosts] Monthly cost estimate for network
  * bandwidth used by this network adapter.
- * @member {number} [megabytesPerSecondReceived] Adapter throughput for
+ * @property {number} [megabytesPerSecondReceived] Adapter throughput for
  * incoming traffic in MegaBytes per second.
- * @member {number} [megabytesPerSecondReceivedDataPointsExpected] Expected
+ * @property {number} [megabytesPerSecondReceivedDataPointsExpected] Expected
  * data points for incoming traffic in MegaBytes per second.
- * @member {number} [megabytesPerSecondOfReadDataPointsReceived] Received data
- * points for incoming traffic in MegaBytes per second.
- * @member {number} [megabytesPerSecondTransmitted] Adapter throughput for
+ * @property {number} [megabytesPerSecondOfReadDataPointsReceived] Received
+ * data points for incoming traffic in MegaBytes per second.
+ * @property {number} [megabytesPerSecondTransmitted] Adapter throughput for
  * outgoing traffic in MegaBytes per second.
- * @member {number} [megabytesPerSecondTransmittedDataPointsExpected] Expected
- * data points for outgoing traffic in MegaBytes per second.
- * @member {number} [megabytesPerSecondTransmittedDataPointsReceived] Received
- * data points for outgoing traffic in MegaBytes per second.
- * @member {number} [netGigabytesTransmittedPerMonth] Gigabytes transmitted
+ * @property {number} [megabytesPerSecondTransmittedDataPointsExpected]
+ * Expected data points for outgoing traffic in MegaBytes per second.
+ * @property {number} [megabytesPerSecondTransmittedDataPointsReceived]
+ * Received data points for outgoing traffic in MegaBytes per second.
+ * @property {number} [netGigabytesTransmittedPerMonth] Gigabytes transmitted
  * through this adapter each month.
- * @member {string} [suitability] Whether this adapter is suitable for Azure.
+ * @property {string} [suitability] Whether this adapter is suitable for Azure.
  * Possible values include: 'Unknown', 'NotSuitable', 'Suitable',
  * 'ConditionallySuitable', 'ReadinessUnknown'
- * @member {string} [suitabilityExplanation] If network adapter is suitable,
+ * @property {string} [suitabilityExplanation] If network adapter is suitable,
  * this explains the reasons and mitigation steps. Possible values include:
  * 'Unknown', 'NotApplicable', 'InternalErrorOccured'
  */
@@ -443,47 +447,47 @@ export interface AssessedNetworkAdapter {
  * @constructor
  * A machine evaluated as part of an assessment.
  *
- * @member {string} [id] Path reference to this assessed machine.
+ * @property {string} [id] Path reference to this assessed machine.
  * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/assessedMachines/{assessedMachineName}
- * @member {string} [name] Name of the machine.
- * @member {string} [eTag] For optimistic concurrency control.
- * @member {string} [type] Type of the object =
+ * @property {string} [name] Name of the machine.
+ * @property {string} [eTag] For optimistic concurrency control.
+ * @property {string} [type] Type of the object =
  * [Microsoft.Migrate/projects/groups/assessments/assessedMachines].
- * @member {array} [groups] List of references to the groups that the machine
+ * @property {array} [groups] List of references to the groups that the machine
  * is member of.
- * @member {date} [discoveredTimestamp] Time when this machine was discovered
+ * @property {date} [discoveredTimestamp] Time when this machine was discovered
  * by Azure Migrate agent. Date-Time represented in ISO-8601 format.
- * @member {string} [bootType] Boot type of the machine. Possible values
+ * @property {string} [bootType] Boot type of the machine. Possible values
  * include: 'Unknown', 'EFI', 'BIOS'
- * @member {string} [datacenterContainer] Container defined in the management
+ * @property {string} [datacenterContainer] Container defined in the management
  * solution that this machine is part of in the datacenter.
- * @member {string} [datacenterManagementServer] Name of the server hosting the
+ * @property {string} [datacenterManagementServer] Name of the server hosting
+ * the datacenter management solution.
+ * @property {string} [datacenterMachineId] ID of the machine as tracked by the
  * datacenter management solution.
- * @member {string} [datacenterMachineId] ID of the machine as tracked by the
- * datacenter management solution.
- * @member {string} [datacenterManagementServerId] ID of the server hosting the
- * datacenter management solution.
- * @member {string} [description] Description of the machine
- * @member {string} [displayName] User readable name of the machine as defined
- * by the user in their private datacenter.
- * @member {number} [megabytesOfMemory] Memory in Megabytes.
- * @member {number} [numberOfCores] Processor count.
- * @member {string} [operatingSystem] Operating System of the machine.
- * @member {number} [monthlyBandwidthCost] Monthly network cost estimate for
+ * @property {string} [datacenterManagementServerId] ID of the server hosting
+ * the datacenter management solution.
+ * @property {string} [description] Description of the machine
+ * @property {string} [displayName] User readable name of the machine as
+ * defined by the user in their private datacenter.
+ * @property {number} [megabytesOfMemory] Memory in Megabytes.
+ * @property {number} [numberOfCores] Processor count.
+ * @property {string} [operatingSystem] Operating System of the machine.
+ * @property {number} [monthlyBandwidthCost] Monthly network cost estimate for
  * the network adapters that are attached to this machine as a group, for a
  * 31-day month.
- * @member {number} [monthlyStorageCost] Monthly storage cost estimate for the
- * disks that are attached to this machine as a group, for a 31-day month.
- * @member {object} [disks] Dictionary of disks attached to the machine. Key is
- * ID of disk. Value is a disk object.
- * @member {object} [networkAdapters] Dictionary of network adapters attached
+ * @property {number} [monthlyStorageCost] Monthly storage cost estimate for
+ * the disks that are attached to this machine as a group, for a 31-day month.
+ * @property {object} [disks] Dictionary of disks attached to the machine. Key
+ * is ID of disk. Value is a disk object.
+ * @property {object} [networkAdapters] Dictionary of network adapters attached
  * to the machine. Key is name of the adapter. Value is a network adapter
  * object.
- * @member {string} [recommendedSize] Recommended Azure size for this machine.
- * Possible values include: 'Unknown', 'Basic_A0', 'Basic_A1', 'Basic_A2',
- * 'Basic_A3', 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2',
- * 'Standard_A3', 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7',
- * 'Standard_A8', 'Standard_A9', 'Standard_A10', 'Standard_A11',
+ * @property {string} [recommendedSize] Recommended Azure size for this
+ * machine. Possible values include: 'Unknown', 'Basic_A0', 'Basic_A1',
+ * 'Basic_A2', 'Basic_A3', 'Basic_A4', 'Standard_A0', 'Standard_A1',
+ * 'Standard_A2', 'Standard_A3', 'Standard_A4', 'Standard_A5', 'Standard_A6',
+ * 'Standard_A7', 'Standard_A8', 'Standard_A9', 'Standard_A10', 'Standard_A11',
  * 'Standard_A1_v2', 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2',
  * 'Standard_A2m_v2', 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_D1',
  * 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11', 'Standard_D12',
@@ -502,32 +506,32 @@ export interface AssessedNetworkAdapter {
  * 'Standard_GS5', 'Standard_H8', 'Standard_H16', 'Standard_H8m',
  * 'Standard_H16m', 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s',
  * 'Standard_L8s', 'Standard_L16s', 'Standard_L32s'
- * @member {number} [numberOfCoresForRecommendedSize] Number of CPU cores in
+ * @property {number} [numberOfCoresForRecommendedSize] Number of CPU cores in
  * the Recommended Azure VM Size.
- * @member {number} [megabytesOfMemoryForRecommendedSize] Megabytes of memory
+ * @property {number} [megabytesOfMemoryForRecommendedSize] Megabytes of memory
  * in the Recommended Azure VM Size.
- * @member {number} [monthlyComputeCostForRecommendedSize] Compute Cost for a
+ * @property {number} [monthlyComputeCostForRecommendedSize] Compute Cost for a
  * 31-day month, if the machine is migrated to Azure with the Recommended Size.
- * @member {number} [percentageCoresUtilization] Utilization percentage of the
- * processor core as observed in the private data center, in the Time Range
+ * @property {number} [percentageCoresUtilization] Utilization percentage of
+ * the processor core as observed in the private data center, in the Time Range
  * selected on Assessment, reported as the Percentile value based on the
  * percentile number selected in assessment.
- * @member {number} [percentageMemoryUtilization] Utilization percentage of the
- * memory as observed in the private data center, in the Time Range selected on
- * Assessment, reported as the Percentile value based on the percentile number
- * selected in assessment.
- * @member {number} [percentageCoresUtilizationDataPointsExpected] Expected
+ * @property {number} [percentageMemoryUtilization] Utilization percentage of
+ * the memory as observed in the private data center, in the Time Range
+ * selected on Assessment, reported as the Percentile value based on the
+ * percentile number selected in assessment.
+ * @property {number} [percentageCoresUtilizationDataPointsExpected] Expected
  * data points for percentage of cores utilization.
- * @member {number} [percentageCoresUtilizationDataPointsReceived] Received
+ * @property {number} [percentageCoresUtilizationDataPointsReceived] Received
  * data points for percentage of cores utilization.
- * @member {number} [percentageMemoryUtilizationDataPointsExpected] Expected
+ * @property {number} [percentageMemoryUtilizationDataPointsExpected] Expected
  * data points for percentage of memory utilization.
- * @member {number} [percentageMemoryUtilizationDataPointsReceived] Received
+ * @property {number} [percentageMemoryUtilizationDataPointsReceived] Received
  * data points for percentage of memory utilization.
- * @member {string} [suitability] Whether machine is suitable for migration to
- * Azure. Possible values include: 'Unknown', 'NotSuitable', 'Suitable',
+ * @property {string} [suitability] Whether machine is suitable for migration
+ * to Azure. Possible values include: 'Unknown', 'NotSuitable', 'Suitable',
  * 'ConditionallySuitable', 'ReadinessUnknown'
- * @member {string} [suitabilityExplanation] If machine is not ready to be
+ * @property {string} [suitabilityExplanation] If machine is not ready to be
  * migrated, this explains the reasons and mitigation steps. Possible values
  * include: 'Unknown', 'NotApplicable',
  * 'GuestOperatingSystemArchitectureNotSupported',
@@ -550,9 +554,9 @@ export interface AssessedNetworkAdapter {
  * 'WindowsOSNoLongerUnderMSSupport',
  * 'EndorsedWithConditionsLinuxDistributions', 'UnendorsedLinuxDistributions',
  * 'NoVmSizeForStandardPricingTier', 'NoVmSizeForBasicPricingTier'
- * @member {date} [createdTimestamp] Time when this machine was created.
+ * @property {date} [createdTimestamp] Time when this machine was created.
  * Date-Time represented in ISO-8601 format.
- * @member {date} [updatedTimestamp] Time when this machine was last updated.
+ * @property {date} [updatedTimestamp] Time when this machine was last updated.
  * Date-Time represented in ISO-8601 format.
  */
 export interface AssessedMachine extends BaseResource {
@@ -598,8 +602,8 @@ export interface AssessedMachine extends BaseResource {
  * @constructor
  * ID and Key for Migration Project.
  *
- * @member {string} [workspaceId] ID of Migration Project.
- * @member {string} [workspaceKey] Key of Migration Project.
+ * @property {string} [workspaceId] ID of Migration Project.
+ * @property {string} [workspaceKey] Key of Migration Project.
  */
 export interface ProjectKey extends BaseResource {
   readonly workspaceId?: string;
@@ -612,10 +616,10 @@ export interface ProjectKey extends BaseResource {
  * @constructor
  * Displayable properties of the operation.
  *
- * @member {string} [provider] Provider of the operation.
- * @member {string} [resource] Resource operated on by the operation.
- * @member {string} [operation] Operation Type.
- * @member {string} [description] Description of the operation.
+ * @property {string} [provider] Provider of the operation.
+ * @property {string} [resource] Resource operated on by the operation.
+ * @property {string} [operation] Operation Type.
+ * @property {string} [description] Description of the operation.
  */
 export interface OperationDisplay {
   readonly provider?: string;
@@ -630,13 +634,13 @@ export interface OperationDisplay {
  * @constructor
  * A REST API operation supported by the provider.
  *
- * @member {string} [name] Name of the operation.
- * @member {object} [display] Displayable properties of the operation.
- * @member {string} [display.provider] Provider of the operation.
- * @member {string} [display.resource] Resource operated on by the operation.
- * @member {string} [display.operation] Operation Type.
- * @member {string} [display.description] Description of the operation.
- * @member {string} [origin] Origin of the operation.
+ * @property {string} [name] Name of the operation.
+ * @property {object} [display] Displayable properties of the operation.
+ * @property {string} [display.provider] Provider of the operation.
+ * @property {string} [display.resource] Resource operated on by the operation.
+ * @property {string} [display.operation] Operation Type.
+ * @property {string} [display.description] Description of the operation.
+ * @property {string} [origin] Origin of the operation.
  */
 export interface Operation {
   readonly name?: string;
@@ -650,12 +654,80 @@ export interface Operation {
  * @constructor
  * Download URL for assessment report.
  *
- * @member {string} [assessmentReportUrl] Hyperlink to download report.
- * @member {date} [expirationTime] Expiry date of download url.
+ * @property {string} [assessmentReportUrl] Hyperlink to download report.
+ * @property {date} [expirationTime] Expiry date of download url.
  */
 export interface DownloadUrl {
   readonly assessmentReportUrl?: string;
   readonly expirationTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VmFamily class.
+ * @constructor
+ * VM family name, the list of targeted azure locations and the category of the
+ * family.
+ *
+ * @property {string} [familyName] Name of the VM family.
+ * @property {array} [targetLocations] List of Azure regions.
+ * @property {array} [category] Category of the VM family.
+ */
+export interface VmFamily {
+  readonly familyName?: string;
+  readonly targetLocations?: string[];
+  readonly category?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AssessmentOptionsResultList class.
+ * @constructor
+ * List of assessment options.
+ *
+ * @property {array} [vmFamilies] Dictionary of VM families grouped by vm
+ * family name describing the targeted azure locations of VM family and the
+ * category of the family.
+ * @property {array} [reservedInstanceVmFamilies] List of supported VM
+ * Families.
+ */
+export interface AssessmentOptionsResultList {
+  readonly vmFamilies?: VmFamily[];
+  readonly reservedInstanceVmFamilies?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckNameAvailabilityParameters class.
+ * @constructor
+ * Parameters for a check name availability request.
+ *
+ * @property {string} name The name to check for availability
+ */
+export interface CheckNameAvailabilityParameters {
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckNameAvailabilityResult class.
+ * @constructor
+ * The CheckNameAvailability operation response.
+ *
+ * @property {boolean} [nameAvailable] Gets a boolean value that indicates
+ * whether the name is available for you to use. If true, the name is
+ * available. If false, the name has already been taken or invalid and cannot
+ * be used.
+ * @property {string} [reason] Gets the reason that a project name could not be
+ * used. The Reason element is only returned if NameAvailable is false.
+ * Possible values include: 'Available', 'Invalid', 'AlreadyExists'
+ * @property {string} [message] Gets an error message explaining the Reason
+ * value in more detail.
+ */
+export interface CheckNameAvailabilityResult {
+  readonly nameAvailable?: boolean;
+  readonly reason?: string;
+  readonly message?: string;
 }
 
 

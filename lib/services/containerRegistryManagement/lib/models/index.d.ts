@@ -20,10 +20,10 @@ export { CloudError } from 'ms-rest-azure';
  * @class
  * Initializes a new instance of the ImportSourceCredentials class.
  * @constructor
- * @member {string} [username] The username to authenticate with the source
+ * @property {string} [username] The username to authenticate with the source
  * registry.
- * @member {string} password The password used to authenticate with the source
- * registry.
+ * @property {string} password The password used to authenticate with the
+ * source registry.
  */
 export interface ImportSourceCredentials {
   username?: string;
@@ -34,17 +34,17 @@ export interface ImportSourceCredentials {
  * @class
  * Initializes a new instance of the ImportSource class.
  * @constructor
- * @member {string} [resourceId] The resource identifier of the source Azure
+ * @property {string} [resourceId] The resource identifier of the source Azure
  * Container Registry.
- * @member {string} [registryUri] The address of the source registry (e.g.
+ * @property {string} [registryUri] The address of the source registry (e.g.
  * 'mcr.microsoft.com').
- * @member {object} [credentials] Credentials used when importing from a
+ * @property {object} [credentials] Credentials used when importing from a
  * registry uri.
- * @member {string} [credentials.username] The username to authenticate with
+ * @property {string} [credentials.username] The username to authenticate with
  * the source registry.
- * @member {string} [credentials.password] The password used to authenticate
+ * @property {string} [credentials.password] The password used to authenticate
  * with the source registry.
- * @member {string} sourceImage Repository name of the source image.
+ * @property {string} sourceImage Repository name of the source image.
  * Specify an image by repository ('hello-world'). This will use the 'latest'
  * tag.
  * Specify an image by tag ('hello-world:latest').
@@ -62,29 +62,29 @@ export interface ImportSource {
  * @class
  * Initializes a new instance of the ImportImageParameters class.
  * @constructor
- * @member {object} source The source of the image.
- * @member {string} [source.resourceId] The resource identifier of the source
+ * @property {object} source The source of the image.
+ * @property {string} [source.resourceId] The resource identifier of the source
  * Azure Container Registry.
- * @member {string} [source.registryUri] The address of the source registry
+ * @property {string} [source.registryUri] The address of the source registry
  * (e.g. 'mcr.microsoft.com').
- * @member {object} [source.credentials] Credentials used when importing from a
- * registry uri.
- * @member {string} [source.credentials.username] The username to authenticate
- * with the source registry.
- * @member {string} [source.credentials.password] The password used to
+ * @property {object} [source.credentials] Credentials used when importing from
+ * a registry uri.
+ * @property {string} [source.credentials.username] The username to
  * authenticate with the source registry.
- * @member {string} [source.sourceImage] Repository name of the source image.
+ * @property {string} [source.credentials.password] The password used to
+ * authenticate with the source registry.
+ * @property {string} [source.sourceImage] Repository name of the source image.
  * Specify an image by repository ('hello-world'). This will use the 'latest'
  * tag.
  * Specify an image by tag ('hello-world:latest').
  * Specify an image by sha256-based manifest digest
  * ('hello-world@sha256:abc123').
- * @member {array} [targetTags] List of strings of the form repo[:tag]. When
+ * @property {array} [targetTags] List of strings of the form repo[:tag]. When
  * tag is omitted the source will be used (or 'latest' if source tag is also
  * omitted).
- * @member {array} [untaggedTargetRepositories] List of strings of repository
+ * @property {array} [untaggedTargetRepositories] List of strings of repository
  * names to do a manifest only copy. No tag will be created.
- * @member {string} [mode] When Force, any existing target tags will be
+ * @property {string} [mode] When Force, any existing target tags will be
  * overwritten. When NoForce, any existing target tags will fail the operation
  * before any copying begins. Possible values include: 'NoForce', 'Force'.
  * Default value: 'NoForce' .
@@ -102,7 +102,7 @@ export interface ImportImageParameters {
  * @constructor
  * A request to check whether a container registry name is available.
  *
- * @member {string} name The name of the container registry.
+ * @property {string} name The name of the container registry.
  */
 export interface RegistryNameCheckRequest {
   name: string;
@@ -115,10 +115,11 @@ export interface RegistryNameCheckRequest {
  * The result of a request to check the availability of a container registry
  * name.
  *
- * @member {boolean} [nameAvailable] The value that indicates whether the name
- * is available.
- * @member {string} [reason] If any, the reason that the name is not available.
- * @member {string} [message] If any, the error message that provides more
+ * @property {boolean} [nameAvailable] The value that indicates whether the
+ * name is available.
+ * @property {string} [reason] If any, the reason that the name is not
+ * available.
+ * @property {string} [message] If any, the error message that provides more
  * detail for the reason that the name is not available.
  */
 export interface RegistryNameStatus {
@@ -133,12 +134,12 @@ export interface RegistryNameStatus {
  * @constructor
  * The display information for a container registry operation.
  *
- * @member {string} [provider] The resource provider name:
+ * @property {string} [provider] The resource provider name:
  * Microsoft.ContainerRegistry.
- * @member {string} [resource] The resource on which the operation is
+ * @property {string} [resource] The resource on which the operation is
  * performed.
- * @member {string} [operation] The operation that users can perform.
- * @member {string} [description] The description for the operation.
+ * @property {string} [operation] The operation that users can perform.
+ * @property {string} [description] The description for the operation.
  */
 export interface OperationDisplayDefinition {
   provider?: string;
@@ -153,12 +154,12 @@ export interface OperationDisplayDefinition {
  * @constructor
  * The definition of Azure Monitoring metric.
  *
- * @member {string} [name] Metric name.
- * @member {string} [displayName] Metric display name.
- * @member {string} [displayDescription] Metric description.
- * @member {string} [unit] Metric unit.
- * @member {string} [aggregationType] Metric aggregation type.
- * @member {string} [internalMetricName] Internal metric name.
+ * @property {string} [name] Metric name.
+ * @property {string} [displayName] Metric display name.
+ * @property {string} [displayDescription] Metric description.
+ * @property {string} [unit] Metric unit.
+ * @property {string} [aggregationType] Metric aggregation type.
+ * @property {string} [internalMetricName] Internal metric name.
  */
 export interface OperationMetricSpecificationDefinition {
   name?: string;
@@ -175,7 +176,7 @@ export interface OperationMetricSpecificationDefinition {
  * @constructor
  * The definition of Azure Monitoring metrics list.
  *
- * @member {array} [metricSpecifications] A list of Azure Monitoring metrics
+ * @property {array} [metricSpecifications] A list of Azure Monitoring metrics
  * definition.
  */
 export interface OperationServiceSpecificationDefinition {
@@ -188,21 +189,21 @@ export interface OperationServiceSpecificationDefinition {
  * @constructor
  * The definition of a container registry operation.
  *
- * @member {string} [origin] The origin information of the container registry
+ * @property {string} [origin] The origin information of the container registry
  * operation.
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}.
- * @member {object} [display] The display information for the container
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}.
+ * @property {object} [display] The display information for the container
  * registry operation.
- * @member {string} [display.provider] The resource provider name:
+ * @property {string} [display.provider] The resource provider name:
  * Microsoft.ContainerRegistry.
- * @member {string} [display.resource] The resource on which the operation is
+ * @property {string} [display.resource] The resource on which the operation is
  * performed.
- * @member {string} [display.operation] The operation that users can perform.
- * @member {string} [display.description] The description for the operation.
- * @member {object} [serviceSpecification] The definition of Azure Monitoring
+ * @property {string} [display.operation] The operation that users can perform.
+ * @property {string} [display.description] The description for the operation.
+ * @property {object} [serviceSpecification] The definition of Azure Monitoring
  * service.
- * @member {array} [serviceSpecification.metricSpecifications] A list of Azure
- * Monitoring metrics definition.
+ * @property {array} [serviceSpecification.metricSpecifications] A list of
+ * Azure Monitoring metrics definition.
  */
 export interface OperationDefinition {
   origin?: string;
@@ -217,11 +218,11 @@ export interface OperationDefinition {
  * @constructor
  * The SKU of a container registry.
  *
- * @member {string} name The SKU name of the container registry. Required for
+ * @property {string} name The SKU name of the container registry. Required for
  * registry creation. Possible values include: 'Classic', 'Basic', 'Standard',
  * 'Premium'
- * @member {string} [tier] The SKU tier based on the SKU name. Possible values
- * include: 'Classic', 'Basic', 'Standard', 'Premium'
+ * @property {string} [tier] The SKU tier based on the SKU name. Possible
+ * values include: 'Classic', 'Basic', 'Standard', 'Premium'
  */
 export interface Sku {
   name: string;
@@ -234,11 +235,11 @@ export interface Sku {
  * @constructor
  * The status of an Azure resource at the time the operation was called.
  *
- * @member {string} [displayStatus] The short label for the status.
- * @member {string} [message] The detailed message for the status, including
+ * @property {string} [displayStatus] The short label for the status.
+ * @property {string} [message] The detailed message for the status, including
  * alerts and error messages.
- * @member {date} [timestamp] The timestamp when the status was changed to the
- * current value.
+ * @property {date} [timestamp] The timestamp when the status was changed to
+ * the current value.
  */
 export interface Status {
   readonly displayStatus?: string;
@@ -253,7 +254,7 @@ export interface Status {
  * The properties of a storage account for a container registry. Only
  * applicable to Classic SKU.
  *
- * @member {string} id The resource ID of the storage account.
+ * @property {string} id The resource ID of the storage account.
  */
 export interface StorageAccountProperties {
   id: string;
@@ -265,12 +266,12 @@ export interface StorageAccountProperties {
  * @constructor
  * An Azure resource.
  *
- * @member {string} [id] The resource ID.
- * @member {string} [name] The name of the resource.
- * @member {string} [type] The type of the resource.
- * @member {string} location The location of the resource. This cannot be
+ * @property {string} [id] The resource ID.
+ * @property {string} [name] The name of the resource.
+ * @property {string} [type] The type of the resource.
+ * @property {string} location The location of the resource. This cannot be
  * changed after the resource is created.
- * @member {object} [tags] The tags of the resource.
+ * @property {object} [tags] The tags of the resource.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -286,31 +287,33 @@ export interface Resource extends BaseResource {
  * @constructor
  * An object that represents a container registry.
  *
- * @member {object} sku The SKU of the container registry.
- * @member {string} [sku.name] The SKU name of the container registry. Required
- * for registry creation. Possible values include: 'Classic', 'Basic',
+ * @property {object} sku The SKU of the container registry.
+ * @property {string} [sku.name] The SKU name of the container registry.
+ * Required for registry creation. Possible values include: 'Classic', 'Basic',
  * 'Standard', 'Premium'
- * @member {string} [sku.tier] The SKU tier based on the SKU name. Possible
+ * @property {string} [sku.tier] The SKU tier based on the SKU name. Possible
  * values include: 'Classic', 'Basic', 'Standard', 'Premium'
- * @member {string} [loginServer] The URL that can be used to log into the
+ * @property {string} [loginServer] The URL that can be used to log into the
  * container registry.
- * @member {date} [creationDate] The creation date of the container registry in
- * ISO8601 format.
- * @member {string} [provisioningState] The provisioning state of the container
- * registry at the time the operation was called. Possible values include:
- * 'Creating', 'Updating', 'Deleting', 'Succeeded', 'Failed', 'Canceled'
- * @member {object} [status] The status of the container registry at the time
+ * @property {date} [creationDate] The creation date of the container registry
+ * in ISO8601 format.
+ * @property {string} [provisioningState] The provisioning state of the
+ * container registry at the time the operation was called. Possible values
+ * include: 'Creating', 'Updating', 'Deleting', 'Succeeded', 'Failed',
+ * 'Canceled'
+ * @property {object} [status] The status of the container registry at the time
  * the operation was called.
- * @member {string} [status.displayStatus] The short label for the status.
- * @member {string} [status.message] The detailed message for the status,
+ * @property {string} [status.displayStatus] The short label for the status.
+ * @property {string} [status.message] The detailed message for the status,
  * including alerts and error messages.
- * @member {date} [status.timestamp] The timestamp when the status was changed
- * to the current value.
- * @member {boolean} [adminUserEnabled] The value that indicates whether the
+ * @property {date} [status.timestamp] The timestamp when the status was
+ * changed to the current value.
+ * @property {boolean} [adminUserEnabled] The value that indicates whether the
  * admin user is enabled. Default value: false .
- * @member {object} [storageAccount] The properties of the storage account for
- * the container registry. Only applicable to Classic SKU.
- * @member {string} [storageAccount.id] The resource ID of the storage account.
+ * @property {object} [storageAccount] The properties of the storage account
+ * for the container registry. Only applicable to Classic SKU.
+ * @property {string} [storageAccount.id] The resource ID of the storage
+ * account.
  */
 export interface Registry extends Resource {
   sku: Sku;
@@ -328,20 +331,21 @@ export interface Registry extends Resource {
  * @constructor
  * The parameters for updating a container registry.
  *
- * @member {object} [tags] The tags for the container registry.
- * @member {object} [sku] The SKU of the container registry.
- * @member {string} [sku.name] The SKU name of the container registry. Required
- * for registry creation. Possible values include: 'Classic', 'Basic',
+ * @property {object} [tags] The tags for the container registry.
+ * @property {object} [sku] The SKU of the container registry.
+ * @property {string} [sku.name] The SKU name of the container registry.
+ * Required for registry creation. Possible values include: 'Classic', 'Basic',
  * 'Standard', 'Premium'
- * @member {string} [sku.tier] The SKU tier based on the SKU name. Possible
+ * @property {string} [sku.tier] The SKU tier based on the SKU name. Possible
  * values include: 'Classic', 'Basic', 'Standard', 'Premium'
- * @member {boolean} [adminUserEnabled] The value that indicates whether the
+ * @property {boolean} [adminUserEnabled] The value that indicates whether the
  * admin user is enabled.
- * @member {object} [storageAccount] The parameters of a storage account for
+ * @property {object} [storageAccount] The parameters of a storage account for
  * the container registry. Only applicable to Classic SKU. If specified, the
  * storage account must be in the same physical location as the container
  * registry.
- * @member {string} [storageAccount.id] The resource ID of the storage account.
+ * @property {string} [storageAccount.id] The resource ID of the storage
+ * account.
  */
 export interface RegistryUpdateParameters {
   tags?: { [propertyName: string]: string };
@@ -356,9 +360,9 @@ export interface RegistryUpdateParameters {
  * @constructor
  * The login password for the container registry.
  *
- * @member {string} [name] The password name. Possible values include:
+ * @property {string} [name] The password name. Possible values include:
  * 'password', 'password2'
- * @member {string} [value] The password value.
+ * @property {string} [value] The password value.
  */
 export interface RegistryPassword {
   name?: string;
@@ -371,8 +375,9 @@ export interface RegistryPassword {
  * @constructor
  * The response from the ListCredentials operation.
  *
- * @member {string} [username] The username for a container registry.
- * @member {array} [passwords] The list of passwords for a container registry.
+ * @property {string} [username] The username for a container registry.
+ * @property {array} [passwords] The list of passwords for a container
+ * registry.
  */
 export interface RegistryListCredentialsResult {
   username?: string;
@@ -385,7 +390,7 @@ export interface RegistryListCredentialsResult {
  * @constructor
  * The parameters used to regenerate the login credential.
  *
- * @member {string} name Specifies name of the password which should be
+ * @property {string} name Specifies name of the password which should be
  * regenerated -- password or password2. Possible values include: 'password',
  * 'password2'
  */
@@ -399,10 +404,10 @@ export interface RegenerateCredentialParameters {
  * @constructor
  * The quota usage for a container registry.
  *
- * @member {string} [name] The name of the usage.
- * @member {number} [limit] The limit of the usage.
- * @member {number} [currentValue] The current value of the usage.
- * @member {string} [unit] The unit of measurement. Possible values include:
+ * @property {string} [name] The name of the usage.
+ * @property {number} [limit] The limit of the usage.
+ * @property {number} [currentValue] The current value of the usage.
+ * @property {string} [unit] The unit of measurement. Possible values include:
  * 'Count', 'Bytes'
  */
 export interface RegistryUsage {
@@ -418,7 +423,7 @@ export interface RegistryUsage {
  * @constructor
  * The result of a request to get container registry quota usages.
  *
- * @member {array} [value] The list of container registry quota usages.
+ * @property {array} [value] The list of container registry quota usages.
  */
 export interface RegistryUsageListResult {
   value?: RegistryUsage[];
@@ -430,7 +435,7 @@ export interface RegistryUsageListResult {
  * @constructor
  * An object that represents quarantine policy for a container registry.
  *
- * @member {string} [status] The value that indicates whether the policy is
+ * @property {string} [status] The value that indicates whether the policy is
  * enabled or not. Possible values include: 'enabled', 'disabled'
  */
 export interface QuarantinePolicy {
@@ -443,9 +448,9 @@ export interface QuarantinePolicy {
  * @constructor
  * An object that represents content trust policy for a container registry.
  *
- * @member {string} [type] The type of trust policy. Possible values include:
+ * @property {string} [type] The type of trust policy. Possible values include:
  * 'Notary'
- * @member {string} [status] The value that indicates whether the policy is
+ * @property {string} [status] The value that indicates whether the policy is
  * enabled or not. Possible values include: 'enabled', 'disabled'
  */
 export interface TrustPolicy {
@@ -459,15 +464,16 @@ export interface TrustPolicy {
  * @constructor
  * An object that represents policies for a container registry.
  *
- * @member {object} [quarantinePolicy] An object that represents quarantine
+ * @property {object} [quarantinePolicy] An object that represents quarantine
  * policy for a container registry.
- * @member {string} [quarantinePolicy.status] The value that indicates whether
- * the policy is enabled or not. Possible values include: 'enabled', 'disabled'
- * @member {object} [trustPolicy] An object that represents content trust
+ * @property {string} [quarantinePolicy.status] The value that indicates
+ * whether the policy is enabled or not. Possible values include: 'enabled',
+ * 'disabled'
+ * @property {object} [trustPolicy] An object that represents content trust
  * policy for a container registry.
- * @member {string} [trustPolicy.type] The type of trust policy. Possible
+ * @property {string} [trustPolicy.type] The type of trust policy. Possible
  * values include: 'Notary'
- * @member {string} [trustPolicy.status] The value that indicates whether the
+ * @property {string} [trustPolicy.status] The value that indicates whether the
  * policy is enabled or not. Possible values include: 'enabled', 'disabled'
  */
 export interface RegistryPolicies {
@@ -481,16 +487,16 @@ export interface RegistryPolicies {
  * @constructor
  * An object that represents a replication for a container registry.
  *
- * @member {string} [provisioningState] The provisioning state of the
+ * @property {string} [provisioningState] The provisioning state of the
  * replication at the time the operation was called. Possible values include:
  * 'Creating', 'Updating', 'Deleting', 'Succeeded', 'Failed', 'Canceled'
- * @member {object} [status] The status of the replication at the time the
+ * @property {object} [status] The status of the replication at the time the
  * operation was called.
- * @member {string} [status.displayStatus] The short label for the status.
- * @member {string} [status.message] The detailed message for the status,
+ * @property {string} [status.displayStatus] The short label for the status.
+ * @property {string} [status.message] The detailed message for the status,
  * including alerts and error messages.
- * @member {date} [status.timestamp] The timestamp when the status was changed
- * to the current value.
+ * @property {date} [status.timestamp] The timestamp when the status was
+ * changed to the current value.
  */
 export interface Replication extends Resource {
   readonly provisioningState?: string;
@@ -503,7 +509,7 @@ export interface Replication extends Resource {
  * @constructor
  * The parameters for updating a replication.
  *
- * @member {object} [tags] The tags for the replication.
+ * @property {object} [tags] The tags for the replication.
  */
 export interface ReplicationUpdateParameters {
   tags?: { [propertyName: string]: string };
@@ -515,15 +521,15 @@ export interface ReplicationUpdateParameters {
  * @constructor
  * An object that represents a webhook for a container registry.
  *
- * @member {string} [status] The status of the webhook at the time the
+ * @property {string} [status] The status of the webhook at the time the
  * operation was called. Possible values include: 'enabled', 'disabled'
- * @member {string} [scope] The scope of repositories where the event can be
+ * @property {string} [scope] The scope of repositories where the event can be
  * triggered. For example, 'foo:*' means events for all tags under repository
  * 'foo'. 'foo:bar' means events for 'foo:bar' only. 'foo' is equivalent to
  * 'foo:latest'. Empty means all events.
- * @member {array} actions The list of actions that trigger the webhook to post
- * notifications.
- * @member {string} [provisioningState] The provisioning state of the webhook
+ * @property {array} actions The list of actions that trigger the webhook to
+ * post notifications.
+ * @property {string} [provisioningState] The provisioning state of the webhook
  * at the time the operation was called. Possible values include: 'Creating',
  * 'Updating', 'Deleting', 'Succeeded', 'Failed', 'Canceled'
  */
@@ -540,21 +546,21 @@ export interface Webhook extends Resource {
  * @constructor
  * The parameters for creating a webhook.
  *
- * @member {object} [tags] The tags for the webhook.
- * @member {string} location The location of the webhook. This cannot be
+ * @property {object} [tags] The tags for the webhook.
+ * @property {string} location The location of the webhook. This cannot be
  * changed after the resource is created.
- * @member {string} serviceUri The service URI for the webhook to post
+ * @property {string} serviceUri The service URI for the webhook to post
  * notifications.
- * @member {object} [customHeaders] Custom headers that will be added to the
+ * @property {object} [customHeaders] Custom headers that will be added to the
  * webhook notifications.
- * @member {string} [status] The status of the webhook at the time the
+ * @property {string} [status] The status of the webhook at the time the
  * operation was called. Possible values include: 'enabled', 'disabled'
- * @member {string} [scope] The scope of repositories where the event can be
+ * @property {string} [scope] The scope of repositories where the event can be
  * triggered. For example, 'foo:*' means events for all tags under repository
  * 'foo'. 'foo:bar' means events for 'foo:bar' only. 'foo' is equivalent to
  * 'foo:latest'. Empty means all events.
- * @member {array} actions The list of actions that trigger the webhook to post
- * notifications.
+ * @property {array} actions The list of actions that trigger the webhook to
+ * post notifications.
  */
 export interface WebhookCreateParameters {
   tags?: { [propertyName: string]: string };
@@ -572,18 +578,18 @@ export interface WebhookCreateParameters {
  * @constructor
  * The parameters for updating a webhook.
  *
- * @member {object} [tags] The tags for the webhook.
- * @member {string} [serviceUri] The service URI for the webhook to post
+ * @property {object} [tags] The tags for the webhook.
+ * @property {string} [serviceUri] The service URI for the webhook to post
  * notifications.
- * @member {object} [customHeaders] Custom headers that will be added to the
+ * @property {object} [customHeaders] Custom headers that will be added to the
  * webhook notifications.
- * @member {string} [status] The status of the webhook at the time the
+ * @property {string} [status] The status of the webhook at the time the
  * operation was called. Possible values include: 'enabled', 'disabled'
- * @member {string} [scope] The scope of repositories where the event can be
+ * @property {string} [scope] The scope of repositories where the event can be
  * triggered. For example, 'foo:*' means events for all tags under repository
  * 'foo'. 'foo:bar' means events for 'foo:bar' only. 'foo' is equivalent to
  * 'foo:latest'. Empty means all events.
- * @member {array} [actions] The list of actions that trigger the webhook to
+ * @property {array} [actions] The list of actions that trigger the webhook to
  * post notifications.
  */
 export interface WebhookUpdateParameters {
@@ -601,7 +607,7 @@ export interface WebhookUpdateParameters {
  * @constructor
  * The basic information of an event.
  *
- * @member {string} [id] The event ID.
+ * @property {string} [id] The event ID.
  */
 export interface EventInfo {
   id?: string;
@@ -613,9 +619,9 @@ export interface EventInfo {
  * @constructor
  * The configuration of service URI and custom headers for the webhook.
  *
- * @member {string} serviceUri The service URI for the webhook to post
+ * @property {string} serviceUri The service URI for the webhook to post
  * notifications.
- * @member {object} [customHeaders] Custom headers that will be added to the
+ * @property {object} [customHeaders] Custom headers that will be added to the
  * webhook notifications.
  */
 export interface CallbackConfig {
@@ -629,16 +635,16 @@ export interface CallbackConfig {
  * @constructor
  * The target of the event.
  *
- * @member {string} [mediaType] The MIME type of the referenced object.
- * @member {number} [size] The number of bytes of the content. Same as Length
+ * @property {string} [mediaType] The MIME type of the referenced object.
+ * @property {number} [size] The number of bytes of the content. Same as Length
  * field.
- * @member {string} [digest] The digest of the content, as defined by the
+ * @property {string} [digest] The digest of the content, as defined by the
  * Registry V2 HTTP API Specification.
- * @member {number} [length] The number of bytes of the content. Same as Size
+ * @property {number} [length] The number of bytes of the content. Same as Size
  * field.
- * @member {string} [repository] The repository name.
- * @member {string} [url] The direct URL to the content.
- * @member {string} [tag] The tag name.
+ * @property {string} [repository] The repository name.
+ * @property {string} [url] The direct URL to the content.
+ * @property {string} [tag] The tag name.
  */
 export interface Target {
   mediaType?: string;
@@ -656,14 +662,14 @@ export interface Target {
  * @constructor
  * The request that generated the event.
  *
- * @member {string} [id] The ID of the request that initiated the event.
- * @member {string} [addr] The IP or hostname and possibly port of the client
+ * @property {string} [id] The ID of the request that initiated the event.
+ * @property {string} [addr] The IP or hostname and possibly port of the client
  * connection that initiated the event. This is the RemoteAddr from the
  * standard http request.
- * @member {string} [host] The externally accessible hostname of the registry
+ * @property {string} [host] The externally accessible hostname of the registry
  * instance, as specified by the http host header on incoming requests.
- * @member {string} [method] The request method that generated the event.
- * @member {string} [useragent] The user agent header of the request.
+ * @property {string} [method] The request method that generated the event.
+ * @property {string} [useragent] The user agent header of the request.
  */
 export interface Request {
   id?: string;
@@ -680,8 +686,8 @@ export interface Request {
  * The agent that initiated the event. For most situations, this could be from
  * the authorization context of the request.
  *
- * @member {string} [name] The subject or username associated with the request
- * context that generated the event.
+ * @property {string} [name] The subject or username associated with the
+ * request context that generated the event.
  */
 export interface Actor {
   name?: string;
@@ -694,10 +700,10 @@ export interface Actor {
  * The registry node that generated the event. Put differently, while the actor
  * initiates the event, the source generates it.
  *
- * @member {string} [addr] The IP or hostname and the port of the registry node
- * that generated the event. Generally, this will be resolved by os.Hostname()
- * along with the running port.
- * @member {string} [instanceID] The running instance of an application.
+ * @property {string} [addr] The IP or hostname and the port of the registry
+ * node that generated the event. Generally, this will be resolved by
+ * os.Hostname() along with the running port.
+ * @property {string} [instanceID] The running instance of an application.
  * Changes after each restart.
  */
 export interface Source {
@@ -711,43 +717,44 @@ export interface Source {
  * @constructor
  * The content of the event request message.
  *
- * @member {string} [id] The event ID.
- * @member {date} [timestamp] The time at which the event occurred.
- * @member {string} [action] The action that encompasses the provided event.
- * @member {object} [target] The target of the event.
- * @member {string} [target.mediaType] The MIME type of the referenced object.
- * @member {number} [target.size] The number of bytes of the content. Same as
+ * @property {string} [id] The event ID.
+ * @property {date} [timestamp] The time at which the event occurred.
+ * @property {string} [action] The action that encompasses the provided event.
+ * @property {object} [target] The target of the event.
+ * @property {string} [target.mediaType] The MIME type of the referenced
+ * object.
+ * @property {number} [target.size] The number of bytes of the content. Same as
  * Length field.
- * @member {string} [target.digest] The digest of the content, as defined by
+ * @property {string} [target.digest] The digest of the content, as defined by
  * the Registry V2 HTTP API Specification.
- * @member {number} [target.length] The number of bytes of the content. Same as
- * Size field.
- * @member {string} [target.repository] The repository name.
- * @member {string} [target.url] The direct URL to the content.
- * @member {string} [target.tag] The tag name.
- * @member {object} [request] The request that generated the event.
- * @member {string} [request.id] The ID of the request that initiated the
+ * @property {number} [target.length] The number of bytes of the content. Same
+ * as Size field.
+ * @property {string} [target.repository] The repository name.
+ * @property {string} [target.url] The direct URL to the content.
+ * @property {string} [target.tag] The tag name.
+ * @property {object} [request] The request that generated the event.
+ * @property {string} [request.id] The ID of the request that initiated the
  * event.
- * @member {string} [request.addr] The IP or hostname and possibly port of the
- * client connection that initiated the event. This is the RemoteAddr from the
- * standard http request.
- * @member {string} [request.host] The externally accessible hostname of the
+ * @property {string} [request.addr] The IP or hostname and possibly port of
+ * the client connection that initiated the event. This is the RemoteAddr from
+ * the standard http request.
+ * @property {string} [request.host] The externally accessible hostname of the
  * registry instance, as specified by the http host header on incoming
  * requests.
- * @member {string} [request.method] The request method that generated the
+ * @property {string} [request.method] The request method that generated the
  * event.
- * @member {string} [request.useragent] The user agent header of the request.
- * @member {object} [actor] The agent that initiated the event. For most
+ * @property {string} [request.useragent] The user agent header of the request.
+ * @property {object} [actor] The agent that initiated the event. For most
  * situations, this could be from the authorization context of the request.
- * @member {string} [actor.name] The subject or username associated with the
+ * @property {string} [actor.name] The subject or username associated with the
  * request context that generated the event.
- * @member {object} [source] The registry node that generated the event. Put
+ * @property {object} [source] The registry node that generated the event. Put
  * differently, while the actor initiates the event, the source generates it.
- * @member {string} [source.addr] The IP or hostname and the port of the
+ * @property {string} [source.addr] The IP or hostname and the port of the
  * registry node that generated the event. Generally, this will be resolved by
  * os.Hostname() along with the running port.
- * @member {string} [source.instanceID] The running instance of an application.
- * Changes after each restart.
+ * @property {string} [source.instanceID] The running instance of an
+ * application. Changes after each restart.
  */
 export interface EventContent {
   id?: string;
@@ -765,55 +772,55 @@ export interface EventContent {
  * @constructor
  * The event request message sent to the service URI.
  *
- * @member {object} [content] The content of the event request message.
- * @member {string} [content.id] The event ID.
- * @member {date} [content.timestamp] The time at which the event occurred.
- * @member {string} [content.action] The action that encompasses the provided
+ * @property {object} [content] The content of the event request message.
+ * @property {string} [content.id] The event ID.
+ * @property {date} [content.timestamp] The time at which the event occurred.
+ * @property {string} [content.action] The action that encompasses the provided
  * event.
- * @member {object} [content.target] The target of the event.
- * @member {string} [content.target.mediaType] The MIME type of the referenced
- * object.
- * @member {number} [content.target.size] The number of bytes of the content.
+ * @property {object} [content.target] The target of the event.
+ * @property {string} [content.target.mediaType] The MIME type of the
+ * referenced object.
+ * @property {number} [content.target.size] The number of bytes of the content.
  * Same as Length field.
- * @member {string} [content.target.digest] The digest of the content, as
+ * @property {string} [content.target.digest] The digest of the content, as
  * defined by the Registry V2 HTTP API Specification.
- * @member {number} [content.target.length] The number of bytes of the content.
- * Same as Size field.
- * @member {string} [content.target.repository] The repository name.
- * @member {string} [content.target.url] The direct URL to the content.
- * @member {string} [content.target.tag] The tag name.
- * @member {object} [content.request] The request that generated the event.
- * @member {string} [content.request.id] The ID of the request that initiated
+ * @property {number} [content.target.length] The number of bytes of the
+ * content. Same as Size field.
+ * @property {string} [content.target.repository] The repository name.
+ * @property {string} [content.target.url] The direct URL to the content.
+ * @property {string} [content.target.tag] The tag name.
+ * @property {object} [content.request] The request that generated the event.
+ * @property {string} [content.request.id] The ID of the request that initiated
  * the event.
- * @member {string} [content.request.addr] The IP or hostname and possibly port
- * of the client connection that initiated the event. This is the RemoteAddr
- * from the standard http request.
- * @member {string} [content.request.host] The externally accessible hostname
+ * @property {string} [content.request.addr] The IP or hostname and possibly
+ * port of the client connection that initiated the event. This is the
+ * RemoteAddr from the standard http request.
+ * @property {string} [content.request.host] The externally accessible hostname
  * of the registry instance, as specified by the http host header on incoming
  * requests.
- * @member {string} [content.request.method] The request method that generated
- * the event.
- * @member {string} [content.request.useragent] The user agent header of the
+ * @property {string} [content.request.method] The request method that
+ * generated the event.
+ * @property {string} [content.request.useragent] The user agent header of the
  * request.
- * @member {object} [content.actor] The agent that initiated the event. For
+ * @property {object} [content.actor] The agent that initiated the event. For
  * most situations, this could be from the authorization context of the
  * request.
- * @member {string} [content.actor.name] The subject or username associated
+ * @property {string} [content.actor.name] The subject or username associated
  * with the request context that generated the event.
- * @member {object} [content.source] The registry node that generated the
+ * @property {object} [content.source] The registry node that generated the
  * event. Put differently, while the actor initiates the event, the source
  * generates it.
- * @member {string} [content.source.addr] The IP or hostname and the port of
+ * @property {string} [content.source.addr] The IP or hostname and the port of
  * the registry node that generated the event. Generally, this will be resolved
  * by os.Hostname() along with the running port.
- * @member {string} [content.source.instanceID] The running instance of an
+ * @property {string} [content.source.instanceID] The running instance of an
  * application. Changes after each restart.
- * @member {object} [headers] The headers of the event request message.
- * @member {string} [method] The HTTP method used to send the event request
+ * @property {object} [headers] The headers of the event request message.
+ * @property {string} [method] The HTTP method used to send the event request
  * message.
- * @member {string} [requestUri] The URI used to send the event request
+ * @property {string} [requestUri] The URI used to send the event request
  * message.
- * @member {string} [version] The HTTP message version.
+ * @property {string} [version] The HTTP message version.
  */
 export interface EventRequestMessage {
   content?: EventContent;
@@ -829,12 +836,13 @@ export interface EventRequestMessage {
  * @constructor
  * The event response message received from the service URI.
  *
- * @member {string} [content] The content of the event response message.
- * @member {object} [headers] The headers of the event response message.
- * @member {string} [reasonPhrase] The reason phrase of the event response
+ * @property {string} [content] The content of the event response message.
+ * @property {object} [headers] The headers of the event response message.
+ * @property {string} [reasonPhrase] The reason phrase of the event response
  * message.
- * @member {string} [statusCode] The status code of the event response message.
- * @member {string} [version] The HTTP message version.
+ * @property {string} [statusCode] The status code of the event response
+ * message.
+ * @property {string} [version] The HTTP message version.
  */
 export interface EventResponseMessage {
   content?: string;
@@ -850,76 +858,76 @@ export interface EventResponseMessage {
  * @constructor
  * The event for a webhook.
  *
- * @member {object} [eventRequestMessage] The event request message sent to the
- * service URI.
- * @member {object} [eventRequestMessage.content] The content of the event
+ * @property {object} [eventRequestMessage] The event request message sent to
+ * the service URI.
+ * @property {object} [eventRequestMessage.content] The content of the event
  * request message.
- * @member {string} [eventRequestMessage.content.id] The event ID.
- * @member {date} [eventRequestMessage.content.timestamp] The time at which the
- * event occurred.
- * @member {string} [eventRequestMessage.content.action] The action that
+ * @property {string} [eventRequestMessage.content.id] The event ID.
+ * @property {date} [eventRequestMessage.content.timestamp] The time at which
+ * the event occurred.
+ * @property {string} [eventRequestMessage.content.action] The action that
  * encompasses the provided event.
- * @member {object} [eventRequestMessage.content.target] The target of the
+ * @property {object} [eventRequestMessage.content.target] The target of the
  * event.
- * @member {string} [eventRequestMessage.content.target.mediaType] The MIME
+ * @property {string} [eventRequestMessage.content.target.mediaType] The MIME
  * type of the referenced object.
- * @member {number} [eventRequestMessage.content.target.size] The number of
+ * @property {number} [eventRequestMessage.content.target.size] The number of
  * bytes of the content. Same as Length field.
- * @member {string} [eventRequestMessage.content.target.digest] The digest of
+ * @property {string} [eventRequestMessage.content.target.digest] The digest of
  * the content, as defined by the Registry V2 HTTP API Specification.
- * @member {number} [eventRequestMessage.content.target.length] The number of
+ * @property {number} [eventRequestMessage.content.target.length] The number of
  * bytes of the content. Same as Size field.
- * @member {string} [eventRequestMessage.content.target.repository] The
+ * @property {string} [eventRequestMessage.content.target.repository] The
  * repository name.
- * @member {string} [eventRequestMessage.content.target.url] The direct URL to
- * the content.
- * @member {string} [eventRequestMessage.content.target.tag] The tag name.
- * @member {object} [eventRequestMessage.content.request] The request that
+ * @property {string} [eventRequestMessage.content.target.url] The direct URL
+ * to the content.
+ * @property {string} [eventRequestMessage.content.target.tag] The tag name.
+ * @property {object} [eventRequestMessage.content.request] The request that
  * generated the event.
- * @member {string} [eventRequestMessage.content.request.id] The ID of the
+ * @property {string} [eventRequestMessage.content.request.id] The ID of the
  * request that initiated the event.
- * @member {string} [eventRequestMessage.content.request.addr] The IP or
+ * @property {string} [eventRequestMessage.content.request.addr] The IP or
  * hostname and possibly port of the client connection that initiated the
  * event. This is the RemoteAddr from the standard http request.
- * @member {string} [eventRequestMessage.content.request.host] The externally
+ * @property {string} [eventRequestMessage.content.request.host] The externally
  * accessible hostname of the registry instance, as specified by the http host
  * header on incoming requests.
- * @member {string} [eventRequestMessage.content.request.method] The request
+ * @property {string} [eventRequestMessage.content.request.method] The request
  * method that generated the event.
- * @member {string} [eventRequestMessage.content.request.useragent] The user
+ * @property {string} [eventRequestMessage.content.request.useragent] The user
  * agent header of the request.
- * @member {object} [eventRequestMessage.content.actor] The agent that
+ * @property {object} [eventRequestMessage.content.actor] The agent that
  * initiated the event. For most situations, this could be from the
  * authorization context of the request.
- * @member {string} [eventRequestMessage.content.actor.name] The subject or
+ * @property {string} [eventRequestMessage.content.actor.name] The subject or
  * username associated with the request context that generated the event.
- * @member {object} [eventRequestMessage.content.source] The registry node that
- * generated the event. Put differently, while the actor initiates the event,
- * the source generates it.
- * @member {string} [eventRequestMessage.content.source.addr] The IP or
+ * @property {object} [eventRequestMessage.content.source] The registry node
+ * that generated the event. Put differently, while the actor initiates the
+ * event, the source generates it.
+ * @property {string} [eventRequestMessage.content.source.addr] The IP or
  * hostname and the port of the registry node that generated the event.
  * Generally, this will be resolved by os.Hostname() along with the running
  * port.
- * @member {string} [eventRequestMessage.content.source.instanceID] The running
- * instance of an application. Changes after each restart.
- * @member {object} [eventRequestMessage.headers] The headers of the event
+ * @property {string} [eventRequestMessage.content.source.instanceID] The
+ * running instance of an application. Changes after each restart.
+ * @property {object} [eventRequestMessage.headers] The headers of the event
  * request message.
- * @member {string} [eventRequestMessage.method] The HTTP method used to send
+ * @property {string} [eventRequestMessage.method] The HTTP method used to send
  * the event request message.
- * @member {string} [eventRequestMessage.requestUri] The URI used to send the
+ * @property {string} [eventRequestMessage.requestUri] The URI used to send the
  * event request message.
- * @member {string} [eventRequestMessage.version] The HTTP message version.
- * @member {object} [eventResponseMessage] The event response message received
- * from the service URI.
- * @member {string} [eventResponseMessage.content] The content of the event
+ * @property {string} [eventRequestMessage.version] The HTTP message version.
+ * @property {object} [eventResponseMessage] The event response message
+ * received from the service URI.
+ * @property {string} [eventResponseMessage.content] The content of the event
  * response message.
- * @member {object} [eventResponseMessage.headers] The headers of the event
+ * @property {object} [eventResponseMessage.headers] The headers of the event
  * response message.
- * @member {string} [eventResponseMessage.reasonPhrase] The reason phrase of
+ * @property {string} [eventResponseMessage.reasonPhrase] The reason phrase of
  * the event response message.
- * @member {string} [eventResponseMessage.statusCode] The status code of the
+ * @property {string} [eventResponseMessage.statusCode] The status code of the
  * event response message.
- * @member {string} [eventResponseMessage.version] The HTTP message version.
+ * @property {string} [eventResponseMessage.version] The HTTP message version.
  */
 export interface Event extends EventInfo {
   eventRequestMessage?: EventRequestMessage;
@@ -932,9 +940,9 @@ export interface Event extends EventInfo {
  * @constructor
  * The request parameters for scheduling a run.
  *
- * @member {boolean} [isArchiveEnabled] The value that indicates whether
+ * @property {boolean} [isArchiveEnabled] The value that indicates whether
  * archiving is enabled for the run or not. Default value: false .
- * @member {string} type Polymorphic Discriminator
+ * @property {string} type Polymorphic Discriminator
  */
 export interface RunRequest {
   isArchiveEnabled?: boolean;
@@ -947,10 +955,10 @@ export interface RunRequest {
  * @constructor
  * Properties for a registry image.
  *
- * @member {string} [registry] The registry login server.
- * @member {string} [repository] The repository name.
- * @member {string} [tag] The tag name.
- * @member {string} [digest] The sha256-based digest of the image manifest.
+ * @property {string} [registry] The registry login server.
+ * @property {string} [repository] The repository name.
+ * @property {string} [tag] The tag name.
+ * @property {string} [digest] The sha256-based digest of the image manifest.
  */
 export interface ImageDescriptor {
   registry?: string;
@@ -965,9 +973,9 @@ export interface ImageDescriptor {
  * @constructor
  * The image update trigger that caused a build.
  *
- * @member {string} [id] The unique ID of the trigger.
- * @member {date} [timestamp] The timestamp when the image update happened.
- * @member {array} [images] The list of image updates that caused the build.
+ * @property {string} [id] The unique ID of the trigger.
+ * @property {date} [timestamp] The timestamp when the image update happened.
+ * @property {array} [images] The list of image updates that caused the build.
  */
 export interface ImageUpdateTrigger {
   id?: string;
@@ -981,13 +989,14 @@ export interface ImageUpdateTrigger {
  * @constructor
  * The source trigger that caused a run.
  *
- * @member {string} [id] The unique ID of the trigger.
- * @member {string} [eventType] The event type of the trigger.
- * @member {string} [commitId] The unique ID that identifies a commit.
- * @member {string} [pullRequestId] The unique ID that identifies pull request.
- * @member {string} [repositoryUrl] The repository URL.
- * @member {string} [branchName] The branch name in the repository.
- * @member {string} [providerType] The source control provider type.
+ * @property {string} [id] The unique ID of the trigger.
+ * @property {string} [eventType] The event type of the trigger.
+ * @property {string} [commitId] The unique ID that identifies a commit.
+ * @property {string} [pullRequestId] The unique ID that identifies pull
+ * request.
+ * @property {string} [repositoryUrl] The repository URL.
+ * @property {string} [branchName] The branch name in the repository.
+ * @property {string} [providerType] The source control provider type.
  */
 export interface SourceTriggerDescriptor {
   id?: string;
@@ -1005,11 +1014,11 @@ export interface SourceTriggerDescriptor {
  * @constructor
  * The platform properties against which the run has to happen.
  *
- * @member {string} os The operating system type required for the run. Possible
- * values include: 'Windows', 'Linux'
- * @member {string} [architecture] The OS architecture. Possible values
+ * @property {string} os The operating system type required for the run.
+ * Possible values include: 'Windows', 'Linux'
+ * @property {string} [architecture] The OS architecture. Possible values
  * include: 'amd64', 'x86', 'arm'
- * @member {string} [variant] Variant of the CPU. Possible values include:
+ * @property {string} [variant] Variant of the CPU. Possible values include:
  * 'v6', 'v7', 'v8'
  */
 export interface PlatformProperties {
@@ -1024,7 +1033,7 @@ export interface PlatformProperties {
  * @constructor
  * The properties that determine the run agent configuration.
  *
- * @member {number} [cpu] The CPU configuration in terms of number of cores
+ * @property {number} [cpu] The CPU configuration in terms of number of cores
  * required for the run.
  */
 export interface AgentProperties {
@@ -1038,9 +1047,9 @@ export interface AgentProperties {
  * The resource model definition for a ARM proxy resource. It will have
  * everything other than required location and tags.
  *
- * @member {string} [id] The resource ID.
- * @member {string} [name] The name of the resource.
- * @member {string} [type] The type of the resource.
+ * @property {string} [id] The resource ID.
+ * @property {string} [name] The name of the resource.
+ * @property {string} [type] The type of the resource.
  */
 export interface ProxyResource extends BaseResource {
   readonly id?: string;
@@ -1054,54 +1063,54 @@ export interface ProxyResource extends BaseResource {
  * @constructor
  * Run resource properties
  *
- * @member {string} [runId] The unique identifier for the run.
- * @member {string} [status] The current status of the run. Possible values
+ * @property {string} [runId] The unique identifier for the run.
+ * @property {string} [status] The current status of the run. Possible values
  * include: 'Queued', 'Started', 'Running', 'Succeeded', 'Failed', 'Canceled',
  * 'Error', 'Timeout'
- * @member {date} [lastUpdatedTime] The last updated time for the run.
- * @member {string} [runType] The type of run. Possible values include:
+ * @property {date} [lastUpdatedTime] The last updated time for the run.
+ * @property {string} [runType] The type of run. Possible values include:
  * 'QuickBuild', 'QuickRun', 'AutoBuild', 'AutoRun'
- * @member {date} [createTime] The time the run was scheduled.
- * @member {date} [startTime] The time the run started.
- * @member {date} [finishTime] The time the run finished.
- * @member {array} [outputImages] The list of all images that were generated
+ * @property {date} [createTime] The time the run was scheduled.
+ * @property {date} [startTime] The time the run started.
+ * @property {date} [finishTime] The time the run finished.
+ * @property {array} [outputImages] The list of all images that were generated
  * from the run. This is applicable if the run generates base image
  * dependencies.
- * @member {string} [task] The task against which run was scheduled.
- * @member {object} [imageUpdateTrigger] The image update trigger that caused
+ * @property {string} [task] The task against which run was scheduled.
+ * @property {object} [imageUpdateTrigger] The image update trigger that caused
  * the run. This is applicable if the task has base image trigger configured.
- * @member {string} [imageUpdateTrigger.id] The unique ID of the trigger.
- * @member {date} [imageUpdateTrigger.timestamp] The timestamp when the image
+ * @property {string} [imageUpdateTrigger.id] The unique ID of the trigger.
+ * @property {date} [imageUpdateTrigger.timestamp] The timestamp when the image
  * update happened.
- * @member {array} [imageUpdateTrigger.images] The list of image updates that
+ * @property {array} [imageUpdateTrigger.images] The list of image updates that
  * caused the build.
- * @member {object} [sourceTrigger] The source trigger that caused the run.
- * @member {string} [sourceTrigger.id] The unique ID of the trigger.
- * @member {string} [sourceTrigger.eventType] The event type of the trigger.
- * @member {string} [sourceTrigger.commitId] The unique ID that identifies a
+ * @property {object} [sourceTrigger] The source trigger that caused the run.
+ * @property {string} [sourceTrigger.id] The unique ID of the trigger.
+ * @property {string} [sourceTrigger.eventType] The event type of the trigger.
+ * @property {string} [sourceTrigger.commitId] The unique ID that identifies a
  * commit.
- * @member {string} [sourceTrigger.pullRequestId] The unique ID that identifies
- * pull request.
- * @member {string} [sourceTrigger.repositoryUrl] The repository URL.
- * @member {string} [sourceTrigger.branchName] The branch name in the
+ * @property {string} [sourceTrigger.pullRequestId] The unique ID that
+ * identifies pull request.
+ * @property {string} [sourceTrigger.repositoryUrl] The repository URL.
+ * @property {string} [sourceTrigger.branchName] The branch name in the
  * repository.
- * @member {string} [sourceTrigger.providerType] The source control provider
+ * @property {string} [sourceTrigger.providerType] The source control provider
  * type.
- * @member {boolean} [isArchiveEnabled] The value that indicates whether
+ * @property {boolean} [isArchiveEnabled] The value that indicates whether
  * archiving is enabled or not. Default value: false .
- * @member {object} [platform] The platform properties against which the run
+ * @property {object} [platform] The platform properties against which the run
  * will happen.
- * @member {string} [platform.os] The operating system type required for the
+ * @property {string} [platform.os] The operating system type required for the
  * run. Possible values include: 'Windows', 'Linux'
- * @member {string} [platform.architecture] The OS architecture. Possible
+ * @property {string} [platform.architecture] The OS architecture. Possible
  * values include: 'amd64', 'x86', 'arm'
- * @member {string} [platform.variant] Variant of the CPU. Possible values
+ * @property {string} [platform.variant] Variant of the CPU. Possible values
  * include: 'v6', 'v7', 'v8'
- * @member {object} [agentConfiguration] The machine configuration of the run
+ * @property {object} [agentConfiguration] The machine configuration of the run
  * agent.
- * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
- * number of cores required for the run.
- * @member {string} [provisioningState] The provisioning state of a run.
+ * @property {number} [agentConfiguration.cpu] The CPU configuration in terms
+ * of number of cores required for the run.
+ * @property {string} [provisioningState] The provisioning state of a run.
  * Possible values include: 'Creating', 'Updating', 'Deleting', 'Succeeded',
  * 'Failed', 'Canceled'
  */
@@ -1129,8 +1138,9 @@ export interface Run extends ProxyResource {
  * @constructor
  * The properties of a response to source upload request.
  *
- * @member {string} [uploadUrl] The URL where the client can upload the source.
- * @member {string} [relativePath] The relative path to the source. This is
+ * @property {string} [uploadUrl] The URL where the client can upload the
+ * source.
+ * @property {string} [relativePath] The relative path to the source. This is
  * used to submit the subsequent queue build request.
  */
 export interface SourceUploadDefinition {
@@ -1144,21 +1154,21 @@ export interface SourceUploadDefinition {
  * @constructor
  * Properties that are enabled for Odata querying on runs.
  *
- * @member {string} [runId] The unique identifier for the run.
- * @member {string} [runType] The type of run. Possible values include:
+ * @property {string} [runId] The unique identifier for the run.
+ * @property {string} [runType] The type of run. Possible values include:
  * 'QuickBuild', 'QuickRun', 'AutoBuild', 'AutoRun'
- * @member {string} [status] The current status of the run. Possible values
+ * @property {string} [status] The current status of the run. Possible values
  * include: 'Queued', 'Started', 'Running', 'Succeeded', 'Failed', 'Canceled',
  * 'Error', 'Timeout'
- * @member {date} [createTime] The create time for a run.
- * @member {date} [finishTime] The time the run finished.
- * @member {string} [outputImageManifests] The list of comma-separated image
+ * @property {date} [createTime] The create time for a run.
+ * @property {date} [finishTime] The time the run finished.
+ * @property {string} [outputImageManifests] The list of comma-separated image
  * manifests that were generated from the run. This is applicable if the run is
  * of
  * build type.
- * @member {boolean} [isArchiveEnabled] The value that indicates whether
+ * @property {boolean} [isArchiveEnabled] The value that indicates whether
  * archiving is enabled or not.
- * @member {string} [taskName] The name of the task that the run corresponds
+ * @property {string} [taskName] The name of the task that the run corresponds
  * to.
  */
 export interface RunFilter {
@@ -1178,7 +1188,7 @@ export interface RunFilter {
  * @constructor
  * The set of run properties that can be updated.
  *
- * @member {boolean} [isArchiveEnabled] The value that indicates whether
+ * @property {boolean} [isArchiveEnabled] The value that indicates whether
  * archiving is enabled or not.
  */
 export interface RunUpdateParameters {
@@ -1191,7 +1201,7 @@ export interface RunUpdateParameters {
  * @constructor
  * The result of get log link operation.
  *
- * @member {string} [logLink] The link to logs for a run on a azure container
+ * @property {string} [logLink] The link to logs for a run on a azure container
  * registry.
  */
 export interface RunGetLogResult {
@@ -1204,12 +1214,12 @@ export interface RunGetLogResult {
  * @constructor
  * Properties that describe a base image dependency.
  *
- * @member {string} [type] The type of the base image dependency. Possible
+ * @property {string} [type] The type of the base image dependency. Possible
  * values include: 'BuildTime', 'RunTime'
- * @member {string} [registry] The registry login server.
- * @member {string} [repository] The repository name.
- * @member {string} [tag] The tag name.
- * @member {string} [digest] The sha256-based digest of the image manifest.
+ * @property {string} [registry] The registry login server.
+ * @property {string} [repository] The repository name.
+ * @property {string} [tag] The tag name.
+ * @property {string} [digest] The sha256-based digest of the image manifest.
  */
 export interface BaseImageDependency {
   type?: string;
@@ -1225,13 +1235,13 @@ export interface BaseImageDependency {
  * @constructor
  * Base properties for any task step.
  *
- * @member {array} [baseImageDependencies] List of base image dependencies for
- * a step.
- * @member {string} [contextPath] The URL(absolute or relative) of the source
+ * @property {array} [baseImageDependencies] List of base image dependencies
+ * for a step.
+ * @property {string} [contextPath] The URL(absolute or relative) of the source
  * context for the task step.
- * @member {string} [contextAccessToken] The token (git PAT or SAS token of
+ * @property {string} [contextAccessToken] The token (git PAT or SAS token of
  * storage account blob) associated with the context for a step.
- * @member {string} type Polymorphic Discriminator
+ * @property {string} type Polymorphic Discriminator
  */
 export interface TaskStepProperties {
   readonly baseImageDependencies?: BaseImageDependency[];
@@ -1246,14 +1256,14 @@ export interface TaskStepProperties {
  * @constructor
  * The authorization properties for accessing the source code repository.
  *
- * @member {string} tokenType The type of Auth token. Possible values include:
- * 'PAT', 'OAuth'
- * @member {string} token The access token used to access the source control
+ * @property {string} tokenType The type of Auth token. Possible values
+ * include: 'PAT', 'OAuth'
+ * @property {string} token The access token used to access the source control
  * provider.
- * @member {string} [refreshToken] The refresh token used to refresh the access
- * token.
- * @member {string} [scope] The scope of the access token.
- * @member {number} [expiresIn] Time in seconds that the token remains valid
+ * @property {string} [refreshToken] The refresh token used to refresh the
+ * access token.
+ * @property {string} [scope] The scope of the access token.
+ * @property {number} [expiresIn] Time in seconds that the token remains valid
  */
 export interface AuthInfo {
   tokenType: string;
@@ -1269,22 +1279,22 @@ export interface AuthInfo {
  * @constructor
  * The properties of the source code repository.
  *
- * @member {string} sourceControlType The type of source control service.
+ * @property {string} sourceControlType The type of source control service.
  * Possible values include: 'Github', 'VisualStudioTeamService'
- * @member {string} repositoryUrl The full URL to the source code respository
- * @member {string} [branch] The branch name of the source code.
- * @member {object} [sourceControlAuthProperties] The authorization properties
- * for accessing the source code repository and to set up
+ * @property {string} repositoryUrl The full URL to the source code respository
+ * @property {string} [branch] The branch name of the source code.
+ * @property {object} [sourceControlAuthProperties] The authorization
+ * properties for accessing the source code repository and to set up
  * webhooks for notifications.
- * @member {string} [sourceControlAuthProperties.tokenType] The type of Auth
+ * @property {string} [sourceControlAuthProperties.tokenType] The type of Auth
  * token. Possible values include: 'PAT', 'OAuth'
- * @member {string} [sourceControlAuthProperties.token] The access token used
+ * @property {string} [sourceControlAuthProperties.token] The access token used
  * to access the source control provider.
- * @member {string} [sourceControlAuthProperties.refreshToken] The refresh
+ * @property {string} [sourceControlAuthProperties.refreshToken] The refresh
  * token used to refresh the access token.
- * @member {string} [sourceControlAuthProperties.scope] The scope of the access
- * token.
- * @member {number} [sourceControlAuthProperties.expiresIn] Time in seconds
+ * @property {string} [sourceControlAuthProperties.scope] The scope of the
+ * access token.
+ * @property {number} [sourceControlAuthProperties.expiresIn] Time in seconds
  * that the token remains valid
  */
 export interface SourceProperties {
@@ -1300,34 +1310,35 @@ export interface SourceProperties {
  * @constructor
  * The properties of a source based trigger.
  *
- * @member {object} sourceRepository The properties that describes the
+ * @property {object} sourceRepository The properties that describes the
  * source(code) for the task.
- * @member {string} [sourceRepository.sourceControlType] The type of source
+ * @property {string} [sourceRepository.sourceControlType] The type of source
  * control service. Possible values include: 'Github',
  * 'VisualStudioTeamService'
- * @member {string} [sourceRepository.repositoryUrl] The full URL to the source
- * code respository
- * @member {string} [sourceRepository.branch] The branch name of the source
+ * @property {string} [sourceRepository.repositoryUrl] The full URL to the
+ * source code respository
+ * @property {string} [sourceRepository.branch] The branch name of the source
  * code.
- * @member {object} [sourceRepository.sourceControlAuthProperties] The
+ * @property {object} [sourceRepository.sourceControlAuthProperties] The
  * authorization properties for accessing the source code repository and to set
  * up
  * webhooks for notifications.
- * @member {string} [sourceRepository.sourceControlAuthProperties.tokenType]
+ * @property {string} [sourceRepository.sourceControlAuthProperties.tokenType]
  * The type of Auth token. Possible values include: 'PAT', 'OAuth'
- * @member {string} [sourceRepository.sourceControlAuthProperties.token] The
+ * @property {string} [sourceRepository.sourceControlAuthProperties.token] The
  * access token used to access the source control provider.
- * @member {string} [sourceRepository.sourceControlAuthProperties.refreshToken]
- * The refresh token used to refresh the access token.
- * @member {string} [sourceRepository.sourceControlAuthProperties.scope] The
+ * @property {string}
+ * [sourceRepository.sourceControlAuthProperties.refreshToken] The refresh
+ * token used to refresh the access token.
+ * @property {string} [sourceRepository.sourceControlAuthProperties.scope] The
  * scope of the access token.
- * @member {number} [sourceRepository.sourceControlAuthProperties.expiresIn]
+ * @property {number} [sourceRepository.sourceControlAuthProperties.expiresIn]
  * Time in seconds that the token remains valid
- * @member {array} sourceTriggerEvents The source event corresponding to the
+ * @property {array} sourceTriggerEvents The source event corresponding to the
  * trigger.
- * @member {string} [status] The current status of trigger. Possible values
+ * @property {string} [status] The current status of trigger. Possible values
  * include: 'Disabled', 'Enabled'
- * @member {string} name The name of the trigger.
+ * @property {string} name The name of the trigger.
  */
 export interface SourceTrigger {
   sourceRepository: SourceProperties;
@@ -1342,11 +1353,11 @@ export interface SourceTrigger {
  * @constructor
  * The trigger based on base image dependency.
  *
- * @member {string} baseImageTriggerType The type of the auto trigger for base
- * image dependency updates. Possible values include: 'All', 'Runtime'
- * @member {string} [status] The current status of trigger. Possible values
+ * @property {string} baseImageTriggerType The type of the auto trigger for
+ * base image dependency updates. Possible values include: 'All', 'Runtime'
+ * @property {string} [status] The current status of trigger. Possible values
  * include: 'Disabled', 'Enabled'
- * @member {string} name The name of the trigger.
+ * @property {string} name The name of the trigger.
  */
 export interface BaseImageTrigger {
   baseImageTriggerType: string;
@@ -1360,16 +1371,16 @@ export interface BaseImageTrigger {
  * @constructor
  * The properties of a trigger.
  *
- * @member {array} [sourceTriggers] The collection of triggers based on source
- * code repository.
- * @member {object} [baseImageTrigger] The trigger based on base image
+ * @property {array} [sourceTriggers] The collection of triggers based on
+ * source code repository.
+ * @property {object} [baseImageTrigger] The trigger based on base image
  * dependencies.
- * @member {string} [baseImageTrigger.baseImageTriggerType] The type of the
+ * @property {string} [baseImageTrigger.baseImageTriggerType] The type of the
  * auto trigger for base image dependency updates. Possible values include:
  * 'All', 'Runtime'
- * @member {string} [baseImageTrigger.status] The current status of trigger.
+ * @property {string} [baseImageTrigger.status] The current status of trigger.
  * Possible values include: 'Disabled', 'Enabled'
- * @member {string} [baseImageTrigger.name] The name of the trigger.
+ * @property {string} [baseImageTrigger.name] The name of the trigger.
  */
 export interface TriggerProperties {
   sourceTriggers?: SourceTrigger[];
@@ -1383,45 +1394,45 @@ export interface TriggerProperties {
  * The task that has the ARM resource and task properties.
  * The  task will have all information to schedule a run against it.
  *
- * @member {string} [provisioningState] The provisioning state of the task.
+ * @property {string} [provisioningState] The provisioning state of the task.
  * Possible values include: 'Creating', 'Updating', 'Deleting', 'Succeeded',
  * 'Failed', 'Canceled'
- * @member {date} [creationDate] The creation date of task.
- * @member {string} [status] The current status of task. Possible values
+ * @property {date} [creationDate] The creation date of task.
+ * @property {string} [status] The current status of task. Possible values
  * include: 'Disabled', 'Enabled'
- * @member {object} platform The platform properties against which the run has
- * to happen.
- * @member {string} [platform.os] The operating system type required for the
+ * @property {object} platform The platform properties against which the run
+ * has to happen.
+ * @property {string} [platform.os] The operating system type required for the
  * run. Possible values include: 'Windows', 'Linux'
- * @member {string} [platform.architecture] The OS architecture. Possible
+ * @property {string} [platform.architecture] The OS architecture. Possible
  * values include: 'amd64', 'x86', 'arm'
- * @member {string} [platform.variant] Variant of the CPU. Possible values
+ * @property {string} [platform.variant] Variant of the CPU. Possible values
  * include: 'v6', 'v7', 'v8'
- * @member {object} [agentConfiguration] The machine configuration of the run
+ * @property {object} [agentConfiguration] The machine configuration of the run
  * agent.
- * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
- * number of cores required for the run.
- * @member {number} [timeout] Run timeout in seconds. Default value: 3600 .
- * @member {object} step The properties of a task step.
- * @member {array} [step.baseImageDependencies] List of base image dependencies
- * for a step.
- * @member {string} [step.contextPath] The URL(absolute or relative) of the
+ * @property {number} [agentConfiguration.cpu] The CPU configuration in terms
+ * of number of cores required for the run.
+ * @property {number} [timeout] Run timeout in seconds. Default value: 3600 .
+ * @property {object} step The properties of a task step.
+ * @property {array} [step.baseImageDependencies] List of base image
+ * dependencies for a step.
+ * @property {string} [step.contextPath] The URL(absolute or relative) of the
  * source context for the task step.
- * @member {string} [step.contextAccessToken] The token (git PAT or SAS token
+ * @property {string} [step.contextAccessToken] The token (git PAT or SAS token
  * of storage account blob) associated with the context for a step.
- * @member {string} [step.type] Polymorphic Discriminator
- * @member {object} [trigger] The properties that describe all triggers for the
- * task.
- * @member {array} [trigger.sourceTriggers] The collection of triggers based on
- * source code repository.
- * @member {object} [trigger.baseImageTrigger] The trigger based on base image
- * dependencies.
- * @member {string} [trigger.baseImageTrigger.baseImageTriggerType] The type of
- * the auto trigger for base image dependency updates. Possible values include:
- * 'All', 'Runtime'
- * @member {string} [trigger.baseImageTrigger.status] The current status of
+ * @property {string} [step.type] Polymorphic Discriminator
+ * @property {object} [trigger] The properties that describe all triggers for
+ * the task.
+ * @property {array} [trigger.sourceTriggers] The collection of triggers based
+ * on source code repository.
+ * @property {object} [trigger.baseImageTrigger] The trigger based on base
+ * image dependencies.
+ * @property {string} [trigger.baseImageTrigger.baseImageTriggerType] The type
+ * of the auto trigger for base image dependency updates. Possible values
+ * include: 'All', 'Runtime'
+ * @property {string} [trigger.baseImageTrigger.status] The current status of
  * trigger. Possible values include: 'Disabled', 'Enabled'
- * @member {string} [trigger.baseImageTrigger.name] The name of the trigger.
+ * @property {string} [trigger.baseImageTrigger.name] The name of the trigger.
  */
 export interface Task extends Resource {
   readonly provisioningState?: string;
@@ -1440,11 +1451,11 @@ export interface Task extends Resource {
  * @constructor
  * The properties for updating the platform configuration.
  *
- * @member {string} [os] The operating system type required for the run.
+ * @property {string} [os] The operating system type required for the run.
  * Possible values include: 'Windows', 'Linux'
- * @member {string} [architecture] The OS architecture. Possible values
+ * @property {string} [architecture] The OS architecture. Possible values
  * include: 'amd64', 'x86', 'arm'
- * @member {string} [variant] Variant of the CPU. Possible values include:
+ * @property {string} [variant] Variant of the CPU. Possible values include:
  * 'v6', 'v7', 'v8'
  */
 export interface PlatformUpdateParameters {
@@ -1459,11 +1470,11 @@ export interface PlatformUpdateParameters {
  * @constructor
  * Base properties for updating any task step.
  *
- * @member {string} [contextPath] The URL(absolute or relative) of the source
+ * @property {string} [contextPath] The URL(absolute or relative) of the source
  * context for the task step.
- * @member {string} [contextAccessToken] The token (git PAT or SAS token of
+ * @property {string} [contextAccessToken] The token (git PAT or SAS token of
  * storage account blob) associated with the context for a step.
- * @member {string} type Polymorphic Discriminator
+ * @property {string} type Polymorphic Discriminator
  */
 export interface TaskStepUpdateParameters {
   contextPath?: string;
@@ -1477,14 +1488,14 @@ export interface TaskStepUpdateParameters {
  * @constructor
  * The authorization properties for accessing the source code repository.
  *
- * @member {string} [tokenType] The type of Auth token. Possible values
+ * @property {string} [tokenType] The type of Auth token. Possible values
  * include: 'PAT', 'OAuth'
- * @member {string} [token] The access token used to access the source control
- * provider.
- * @member {string} [refreshToken] The refresh token used to refresh the access
- * token.
- * @member {string} [scope] The scope of the access token.
- * @member {number} [expiresIn] Time in seconds that the token remains valid
+ * @property {string} [token] The access token used to access the source
+ * control provider.
+ * @property {string} [refreshToken] The refresh token used to refresh the
+ * access token.
+ * @property {string} [scope] The scope of the access token.
+ * @property {number} [expiresIn] Time in seconds that the token remains valid
  */
 export interface AuthInfoUpdateParameters {
   tokenType?: string;
@@ -1500,22 +1511,23 @@ export interface AuthInfoUpdateParameters {
  * @constructor
  * The properties for updating the source code repository.
  *
- * @member {string} [sourceControlType] The type of source control service.
+ * @property {string} [sourceControlType] The type of source control service.
  * Possible values include: 'Github', 'VisualStudioTeamService'
- * @member {string} [repositoryUrl] The full URL to the source code respository
- * @member {string} [branch] The branch name of the source code.
- * @member {object} [sourceControlAuthProperties] The authorization properties
- * for accessing the source code repository and to set up
+ * @property {string} [repositoryUrl] The full URL to the source code
+ * respository
+ * @property {string} [branch] The branch name of the source code.
+ * @property {object} [sourceControlAuthProperties] The authorization
+ * properties for accessing the source code repository and to set up
  * webhooks for notifications.
- * @member {string} [sourceControlAuthProperties.tokenType] The type of Auth
+ * @property {string} [sourceControlAuthProperties.tokenType] The type of Auth
  * token. Possible values include: 'PAT', 'OAuth'
- * @member {string} [sourceControlAuthProperties.token] The access token used
+ * @property {string} [sourceControlAuthProperties.token] The access token used
  * to access the source control provider.
- * @member {string} [sourceControlAuthProperties.refreshToken] The refresh
+ * @property {string} [sourceControlAuthProperties.refreshToken] The refresh
  * token used to refresh the access token.
- * @member {string} [sourceControlAuthProperties.scope] The scope of the access
- * token.
- * @member {number} [sourceControlAuthProperties.expiresIn] Time in seconds
+ * @property {string} [sourceControlAuthProperties.scope] The scope of the
+ * access token.
+ * @property {number} [sourceControlAuthProperties.expiresIn] Time in seconds
  * that the token remains valid
  */
 export interface SourceUpdateParameters {
@@ -1531,34 +1543,35 @@ export interface SourceUpdateParameters {
  * @constructor
  * The properties for updating a source based trigger.
  *
- * @member {object} [sourceRepository] The properties that describes the
+ * @property {object} [sourceRepository] The properties that describes the
  * source(code) for the task.
- * @member {string} [sourceRepository.sourceControlType] The type of source
+ * @property {string} [sourceRepository.sourceControlType] The type of source
  * control service. Possible values include: 'Github',
  * 'VisualStudioTeamService'
- * @member {string} [sourceRepository.repositoryUrl] The full URL to the source
- * code respository
- * @member {string} [sourceRepository.branch] The branch name of the source
+ * @property {string} [sourceRepository.repositoryUrl] The full URL to the
+ * source code respository
+ * @property {string} [sourceRepository.branch] The branch name of the source
  * code.
- * @member {object} [sourceRepository.sourceControlAuthProperties] The
+ * @property {object} [sourceRepository.sourceControlAuthProperties] The
  * authorization properties for accessing the source code repository and to set
  * up
  * webhooks for notifications.
- * @member {string} [sourceRepository.sourceControlAuthProperties.tokenType]
+ * @property {string} [sourceRepository.sourceControlAuthProperties.tokenType]
  * The type of Auth token. Possible values include: 'PAT', 'OAuth'
- * @member {string} [sourceRepository.sourceControlAuthProperties.token] The
+ * @property {string} [sourceRepository.sourceControlAuthProperties.token] The
  * access token used to access the source control provider.
- * @member {string} [sourceRepository.sourceControlAuthProperties.refreshToken]
- * The refresh token used to refresh the access token.
- * @member {string} [sourceRepository.sourceControlAuthProperties.scope] The
+ * @property {string}
+ * [sourceRepository.sourceControlAuthProperties.refreshToken] The refresh
+ * token used to refresh the access token.
+ * @property {string} [sourceRepository.sourceControlAuthProperties.scope] The
  * scope of the access token.
- * @member {number} [sourceRepository.sourceControlAuthProperties.expiresIn]
+ * @property {number} [sourceRepository.sourceControlAuthProperties.expiresIn]
  * Time in seconds that the token remains valid
- * @member {array} [sourceTriggerEvents] The source event corresponding to the
- * trigger.
- * @member {string} [status] The current status of trigger. Possible values
+ * @property {array} [sourceTriggerEvents] The source event corresponding to
+ * the trigger.
+ * @property {string} [status] The current status of trigger. Possible values
  * include: 'Disabled', 'Enabled'
- * @member {string} name The name of the trigger.
+ * @property {string} name The name of the trigger.
  */
 export interface SourceTriggerUpdateParameters {
   sourceRepository?: SourceUpdateParameters;
@@ -1573,11 +1586,11 @@ export interface SourceTriggerUpdateParameters {
  * @constructor
  * The properties for updating base image dependency trigger.
  *
- * @member {string} [baseImageTriggerType] The type of the auto trigger for
+ * @property {string} [baseImageTriggerType] The type of the auto trigger for
  * base image dependency updates. Possible values include: 'All', 'Runtime'
- * @member {string} [status] The current status of trigger. Possible values
+ * @property {string} [status] The current status of trigger. Possible values
  * include: 'Disabled', 'Enabled'
- * @member {string} name The name of the trigger.
+ * @property {string} name The name of the trigger.
  */
 export interface BaseImageTriggerUpdateParameters {
   baseImageTriggerType?: string;
@@ -1591,16 +1604,16 @@ export interface BaseImageTriggerUpdateParameters {
  * @constructor
  * The properties for updating triggers.
  *
- * @member {array} [sourceTriggers] The collection of triggers based on source
- * code repository.
- * @member {object} [baseImageTrigger] The trigger based on base image
+ * @property {array} [sourceTriggers] The collection of triggers based on
+ * source code repository.
+ * @property {object} [baseImageTrigger] The trigger based on base image
  * dependencies.
- * @member {string} [baseImageTrigger.baseImageTriggerType] The type of the
+ * @property {string} [baseImageTrigger.baseImageTriggerType] The type of the
  * auto trigger for base image dependency updates. Possible values include:
  * 'All', 'Runtime'
- * @member {string} [baseImageTrigger.status] The current status of trigger.
+ * @property {string} [baseImageTrigger.status] The current status of trigger.
  * Possible values include: 'Disabled', 'Enabled'
- * @member {string} [baseImageTrigger.name] The name of the trigger.
+ * @property {string} [baseImageTrigger.name] The name of the trigger.
  */
 export interface TriggerUpdateParameters {
   sourceTriggers?: SourceTriggerUpdateParameters[];
@@ -1613,39 +1626,39 @@ export interface TriggerUpdateParameters {
  * @constructor
  * The parameters for updating a task.
  *
- * @member {string} [status] The current status of task. Possible values
+ * @property {string} [status] The current status of task. Possible values
  * include: 'Disabled', 'Enabled'
- * @member {object} [platform] The platform properties against which the run
+ * @property {object} [platform] The platform properties against which the run
  * has to happen.
- * @member {string} [platform.os] The operating system type required for the
+ * @property {string} [platform.os] The operating system type required for the
  * run. Possible values include: 'Windows', 'Linux'
- * @member {string} [platform.architecture] The OS architecture. Possible
+ * @property {string} [platform.architecture] The OS architecture. Possible
  * values include: 'amd64', 'x86', 'arm'
- * @member {string} [platform.variant] Variant of the CPU. Possible values
+ * @property {string} [platform.variant] Variant of the CPU. Possible values
  * include: 'v6', 'v7', 'v8'
- * @member {object} [agentConfiguration] The machine configuration of the run
+ * @property {object} [agentConfiguration] The machine configuration of the run
  * agent.
- * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
- * number of cores required for the run.
- * @member {number} [timeout] Run timeout in seconds.
- * @member {object} [step] The properties for updating a task step.
- * @member {string} [step.contextPath] The URL(absolute or relative) of the
+ * @property {number} [agentConfiguration.cpu] The CPU configuration in terms
+ * of number of cores required for the run.
+ * @property {number} [timeout] Run timeout in seconds.
+ * @property {object} [step] The properties for updating a task step.
+ * @property {string} [step.contextPath] The URL(absolute or relative) of the
  * source context for the task step.
- * @member {string} [step.contextAccessToken] The token (git PAT or SAS token
+ * @property {string} [step.contextAccessToken] The token (git PAT or SAS token
  * of storage account blob) associated with the context for a step.
- * @member {string} [step.type] Polymorphic Discriminator
- * @member {object} [trigger] The properties for updating trigger properties.
- * @member {array} [trigger.sourceTriggers] The collection of triggers based on
- * source code repository.
- * @member {object} [trigger.baseImageTrigger] The trigger based on base image
- * dependencies.
- * @member {string} [trigger.baseImageTrigger.baseImageTriggerType] The type of
- * the auto trigger for base image dependency updates. Possible values include:
- * 'All', 'Runtime'
- * @member {string} [trigger.baseImageTrigger.status] The current status of
+ * @property {string} [step.type] Polymorphic Discriminator
+ * @property {object} [trigger] The properties for updating trigger properties.
+ * @property {array} [trigger.sourceTriggers] The collection of triggers based
+ * on source code repository.
+ * @property {object} [trigger.baseImageTrigger] The trigger based on base
+ * image dependencies.
+ * @property {string} [trigger.baseImageTrigger.baseImageTriggerType] The type
+ * of the auto trigger for base image dependency updates. Possible values
+ * include: 'All', 'Runtime'
+ * @property {string} [trigger.baseImageTrigger.status] The current status of
  * trigger. Possible values include: 'Disabled', 'Enabled'
- * @member {string} [trigger.baseImageTrigger.name] The name of the trigger.
- * @member {object} [tags] The ARM resource tags.
+ * @property {string} [trigger.baseImageTrigger.name] The name of the trigger.
+ * @property {object} [tags] The ARM resource tags.
  */
 export interface TaskUpdateParameters {
   status?: string;
@@ -1663,9 +1676,9 @@ export interface TaskUpdateParameters {
  * @constructor
  * The properties of a run argument.
  *
- * @member {string} name The name of the argument.
- * @member {string} value The value of the argument.
- * @member {boolean} [isSecret] Flag to indicate whether the argument
+ * @property {string} name The name of the argument.
+ * @property {string} value The value of the argument.
+ * @property {boolean} [isSecret] Flag to indicate whether the argument
  * represents a secret and want to be removed from build logs. Default value:
  * false .
  */
@@ -1681,31 +1694,31 @@ export interface Argument {
  * @constructor
  * The parameters for a docker quick build.
  *
- * @member {array} [imageNames] The fully qualified image names including the
+ * @property {array} [imageNames] The fully qualified image names including the
  * repository and tag.
- * @member {boolean} [isPushEnabled] The value of this property indicates
+ * @property {boolean} [isPushEnabled] The value of this property indicates
  * whether the image built should be pushed to the registry or not. Default
  * value: true .
- * @member {boolean} [noCache] The value of this property indicates whether the
- * image cache is enabled or not. Default value: false .
- * @member {string} dockerFilePath The Docker file path relative to the source
- * location.
- * @member {array} [argumentsProperty] The collection of override arguments to
- * be used when executing the run.
- * @member {number} [timeout] Run timeout in seconds. Default value: 3600 .
- * @member {object} platform The platform properties against which the run has
- * to happen.
- * @member {string} [platform.os] The operating system type required for the
+ * @property {boolean} [noCache] The value of this property indicates whether
+ * the image cache is enabled or not. Default value: false .
+ * @property {string} dockerFilePath The Docker file path relative to the
+ * source location.
+ * @property {array} [argumentsProperty] The collection of override arguments
+ * to be used when executing the run.
+ * @property {number} [timeout] Run timeout in seconds. Default value: 3600 .
+ * @property {object} platform The platform properties against which the run
+ * has to happen.
+ * @property {string} [platform.os] The operating system type required for the
  * run. Possible values include: 'Windows', 'Linux'
- * @member {string} [platform.architecture] The OS architecture. Possible
+ * @property {string} [platform.architecture] The OS architecture. Possible
  * values include: 'amd64', 'x86', 'arm'
- * @member {string} [platform.variant] Variant of the CPU. Possible values
+ * @property {string} [platform.variant] Variant of the CPU. Possible values
  * include: 'v6', 'v7', 'v8'
- * @member {object} [agentConfiguration] The machine configuration of the run
+ * @property {object} [agentConfiguration] The machine configuration of the run
  * agent.
- * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
- * number of cores required for the run.
- * @member {string} [sourceLocation] The URL(absolute or relative) of the
+ * @property {number} [agentConfiguration.cpu] The CPU configuration in terms
+ * of number of cores required for the run.
+ * @property {string} [sourceLocation] The URL(absolute or relative) of the
  * source context. It can be an URL to a tar or git repoistory.
  * If it is relative URL, the relative path should be obtained from calling
  * listBuildSourceUploadUrl API.
@@ -1728,10 +1741,10 @@ export interface DockerBuildRequest extends RunRequest {
  * @constructor
  * The properties of a overridable value that can be passed to a task template.
  *
- * @member {string} name The name of the overridable value.
- * @member {string} value The overridable value.
- * @member {boolean} [isSecret] Flag to indicate whether the value represents a
- * secret or not. Default value: false .
+ * @property {string} name The name of the overridable value.
+ * @property {string} value The overridable value.
+ * @property {boolean} [isSecret] Flag to indicate whether the value represents
+ * a secret or not. Default value: false .
  */
 export interface SetValue {
   name: string;
@@ -1745,26 +1758,26 @@ export interface SetValue {
  * @constructor
  * The request parameters for a scheduling run against a task file.
  *
- * @member {string} taskFilePath The template/definition file path relative to
- * the source.
- * @member {string} [valuesFilePath] The values/parameters file path relative
+ * @property {string} taskFilePath The template/definition file path relative
  * to the source.
- * @member {array} [values] The collection of overridable values that can be
+ * @property {string} [valuesFilePath] The values/parameters file path relative
+ * to the source.
+ * @property {array} [values] The collection of overridable values that can be
  * passed when running a task.
- * @member {number} [timeout] Run timeout in seconds. Default value: 3600 .
- * @member {object} platform The platform properties against which the run has
- * to happen.
- * @member {string} [platform.os] The operating system type required for the
+ * @property {number} [timeout] Run timeout in seconds. Default value: 3600 .
+ * @property {object} platform The platform properties against which the run
+ * has to happen.
+ * @property {string} [platform.os] The operating system type required for the
  * run. Possible values include: 'Windows', 'Linux'
- * @member {string} [platform.architecture] The OS architecture. Possible
+ * @property {string} [platform.architecture] The OS architecture. Possible
  * values include: 'amd64', 'x86', 'arm'
- * @member {string} [platform.variant] Variant of the CPU. Possible values
+ * @property {string} [platform.variant] Variant of the CPU. Possible values
  * include: 'v6', 'v7', 'v8'
- * @member {object} [agentConfiguration] The machine configuration of the run
+ * @property {object} [agentConfiguration] The machine configuration of the run
  * agent.
- * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
- * number of cores required for the run.
- * @member {string} [sourceLocation] The URL(absolute or relative) of the
+ * @property {number} [agentConfiguration.cpu] The CPU configuration in terms
+ * of number of cores required for the run.
+ * @property {string} [sourceLocation] The URL(absolute or relative) of the
  * source context. It can be an URL to a tar or git repoistory.
  * If it is relative URL, the relative path should be obtained from calling
  * listBuildSourceUploadUrl API.
@@ -1785,9 +1798,9 @@ export interface FileTaskRunRequest extends RunRequest {
  * @constructor
  * The parameters for a task run request.
  *
- * @member {string} taskName The name of task against which run has to be
+ * @property {string} taskName The name of task against which run has to be
  * queued.
- * @member {array} [values] The collection of overridable values that can be
+ * @property {array} [values] The collection of overridable values that can be
  * passed when running a task.
  */
 export interface TaskRunRequest extends RunRequest {
@@ -1801,26 +1814,26 @@ export interface TaskRunRequest extends RunRequest {
  * @constructor
  * The parameters for a quick task run request.
  *
- * @member {string} encodedTaskContent Base64 encoded value of the
+ * @property {string} encodedTaskContent Base64 encoded value of the
  * template/definition file content.
- * @member {string} [encodedValuesContent] Base64 encoded value of the
+ * @property {string} [encodedValuesContent] Base64 encoded value of the
  * parameters/values file content.
- * @member {array} [values] The collection of overridable values that can be
+ * @property {array} [values] The collection of overridable values that can be
  * passed when running a task.
- * @member {number} [timeout] Run timeout in seconds. Default value: 3600 .
- * @member {object} platform The platform properties against which the run has
- * to happen.
- * @member {string} [platform.os] The operating system type required for the
+ * @property {number} [timeout] Run timeout in seconds. Default value: 3600 .
+ * @property {object} platform The platform properties against which the run
+ * has to happen.
+ * @property {string} [platform.os] The operating system type required for the
  * run. Possible values include: 'Windows', 'Linux'
- * @member {string} [platform.architecture] The OS architecture. Possible
+ * @property {string} [platform.architecture] The OS architecture. Possible
  * values include: 'amd64', 'x86', 'arm'
- * @member {string} [platform.variant] Variant of the CPU. Possible values
+ * @property {string} [platform.variant] Variant of the CPU. Possible values
  * include: 'v6', 'v7', 'v8'
- * @member {object} [agentConfiguration] The machine configuration of the run
+ * @property {object} [agentConfiguration] The machine configuration of the run
  * agent.
- * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
- * number of cores required for the run.
- * @member {string} [sourceLocation] The URL(absolute or relative) of the
+ * @property {number} [agentConfiguration.cpu] The CPU configuration in terms
+ * of number of cores required for the run.
+ * @property {string} [sourceLocation] The URL(absolute or relative) of the
  * source context. It can be an URL to a tar or git repoistory.
  * If it is relative URL, the relative path should be obtained from calling
  * listBuildSourceUploadUrl API.
@@ -1841,17 +1854,17 @@ export interface EncodedTaskRunRequest extends RunRequest {
  * @constructor
  * The Docker build step.
  *
- * @member {array} [imageNames] The fully qualified image names including the
+ * @property {array} [imageNames] The fully qualified image names including the
  * repository and tag.
- * @member {boolean} [isPushEnabled] The value of this property indicates
+ * @property {boolean} [isPushEnabled] The value of this property indicates
  * whether the image built should be pushed to the registry or not. Default
  * value: true .
- * @member {boolean} [noCache] The value of this property indicates whether the
- * image cache is enabled or not. Default value: false .
- * @member {string} dockerFilePath The Docker file path relative to the source
- * context.
- * @member {array} [argumentsProperty] The collection of override arguments to
- * be used when executing this build step.
+ * @property {boolean} [noCache] The value of this property indicates whether
+ * the image cache is enabled or not. Default value: false .
+ * @property {string} dockerFilePath The Docker file path relative to the
+ * source context.
+ * @property {array} [argumentsProperty] The collection of override arguments
+ * to be used when executing this build step.
  */
 export interface DockerBuildStep extends TaskStepProperties {
   imageNames?: string[];
@@ -1867,11 +1880,11 @@ export interface DockerBuildStep extends TaskStepProperties {
  * @constructor
  * The properties of a task step.
  *
- * @member {string} taskFilePath The task template/definition file path
+ * @property {string} taskFilePath The task template/definition file path
  * relative to the source context.
- * @member {string} [valuesFilePath] The task values/parameters file path
+ * @property {string} [valuesFilePath] The task values/parameters file path
  * relative to the source context.
- * @member {array} [values] The collection of overridable values that can be
+ * @property {array} [values] The collection of overridable values that can be
  * passed when running a task.
  */
 export interface FileTaskStep extends TaskStepProperties {
@@ -1886,11 +1899,11 @@ export interface FileTaskStep extends TaskStepProperties {
  * @constructor
  * The properties of a encoded task step.
  *
- * @member {string} encodedTaskContent Base64 encoded value of the
+ * @property {string} encodedTaskContent Base64 encoded value of the
  * template/definition file content.
- * @member {string} [encodedValuesContent] Base64 encoded value of the
+ * @property {string} [encodedValuesContent] Base64 encoded value of the
  * parameters/values file content.
- * @member {array} [values] The collection of overridable values that can be
+ * @property {array} [values] The collection of overridable values that can be
  * passed when running a task.
  */
 export interface EncodedTaskStep extends TaskStepProperties {
@@ -1905,16 +1918,16 @@ export interface EncodedTaskStep extends TaskStepProperties {
  * @constructor
  * The properties for updating a docker build step.
  *
- * @member {array} [imageNames] The fully qualified image names including the
+ * @property {array} [imageNames] The fully qualified image names including the
  * repository and tag.
- * @member {boolean} [isPushEnabled] The value of this property indicates
+ * @property {boolean} [isPushEnabled] The value of this property indicates
  * whether the image built should be pushed to the registry or not.
- * @member {boolean} [noCache] The value of this property indicates whether the
- * image cache is enabled or not.
- * @member {string} [dockerFilePath] The Docker file path relative to the
+ * @property {boolean} [noCache] The value of this property indicates whether
+ * the image cache is enabled or not.
+ * @property {string} [dockerFilePath] The Docker file path relative to the
  * source context.
- * @member {array} [argumentsProperty] The collection of override arguments to
- * be used when executing this build step.
+ * @property {array} [argumentsProperty] The collection of override arguments
+ * to be used when executing this build step.
  */
 export interface DockerBuildStepUpdateParameters extends TaskStepUpdateParameters {
   imageNames?: string[];
@@ -1930,11 +1943,11 @@ export interface DockerBuildStepUpdateParameters extends TaskStepUpdateParameter
  * @constructor
  * The properties of updating a task step.
  *
- * @member {string} [taskFilePath] The task template/definition file path
+ * @property {string} [taskFilePath] The task template/definition file path
  * relative to the source context.
- * @member {string} [valuesFilePath] The values/parameters file path relative
+ * @property {string} [valuesFilePath] The values/parameters file path relative
  * to the source context.
- * @member {array} [values] The collection of overridable values that can be
+ * @property {array} [values] The collection of overridable values that can be
  * passed when running a task.
  */
 export interface FileTaskStepUpdateParameters extends TaskStepUpdateParameters {
@@ -1949,11 +1962,11 @@ export interface FileTaskStepUpdateParameters extends TaskStepUpdateParameters {
  * @constructor
  * The properties for updating encoded task step.
  *
- * @member {string} [encodedTaskContent] Base64 encoded value of the
+ * @property {string} [encodedTaskContent] Base64 encoded value of the
  * template/definition file content.
- * @member {string} [encodedValuesContent] Base64 encoded value of the
+ * @property {string} [encodedValuesContent] Base64 encoded value of the
  * parameters/values file content.
- * @member {array} [values] The collection of overridable values that can be
+ * @property {array} [values] The collection of overridable values that can be
  * passed when running a task.
  */
 export interface EncodedTaskStepUpdateParameters extends TaskStepUpdateParameters {
@@ -1969,7 +1982,7 @@ export interface EncodedTaskStepUpdateParameters extends TaskStepUpdateParameter
  * @constructor
  * The result of a request to list container registries.
  *
- * @member {string} [nextLink] The URI that can be used to request the next
+ * @property {string} [nextLink] The URI that can be used to request the next
  * list of container registries.
  */
 export interface RegistryListResult extends Array<Registry> {
@@ -1982,7 +1995,7 @@ export interface RegistryListResult extends Array<Registry> {
  * @constructor
  * The result of a request to list container registry operations.
  *
- * @member {string} [nextLink] The URI that can be used to request the next
+ * @property {string} [nextLink] The URI that can be used to request the next
  * list of container registry operations.
  */
 export interface OperationListResult extends Array<OperationDefinition> {
@@ -1995,7 +2008,7 @@ export interface OperationListResult extends Array<OperationDefinition> {
  * @constructor
  * The result of a request to list replications for a container registry.
  *
- * @member {string} [nextLink] The URI that can be used to request the next
+ * @property {string} [nextLink] The URI that can be used to request the next
  * list of replications.
  */
 export interface ReplicationListResult extends Array<Replication> {
@@ -2008,7 +2021,7 @@ export interface ReplicationListResult extends Array<Replication> {
  * @constructor
  * The result of a request to list webhooks for a container registry.
  *
- * @member {string} [nextLink] The URI that can be used to request the next
+ * @property {string} [nextLink] The URI that can be used to request the next
  * list of webhooks.
  */
 export interface WebhookListResult extends Array<Webhook> {
@@ -2021,7 +2034,7 @@ export interface WebhookListResult extends Array<Webhook> {
  * @constructor
  * The result of a request to list events for a webhook.
  *
- * @member {string} [nextLink] The URI that can be used to request the next
+ * @property {string} [nextLink] The URI that can be used to request the next
  * list of events.
  */
 export interface EventListResult extends Array<Event> {
@@ -2034,8 +2047,8 @@ export interface EventListResult extends Array<Event> {
  * @constructor
  * Collection of runs.
  *
- * @member {string} [nextLink] The URI that can be used to request the next set
- * of paged results.
+ * @property {string} [nextLink] The URI that can be used to request the next
+ * set of paged results.
  */
 export interface RunListResult extends Array<Run> {
   nextLink?: string;
@@ -2047,8 +2060,8 @@ export interface RunListResult extends Array<Run> {
  * @constructor
  * The collection of tasks.
  *
- * @member {string} [nextLink] The URI that can be used to request the next set
- * of paged results.
+ * @property {string} [nextLink] The URI that can be used to request the next
+ * set of paged results.
  */
 export interface TaskListResult extends Array<Task> {
   nextLink?: string;

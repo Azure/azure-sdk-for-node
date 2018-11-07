@@ -23,12 +23,13 @@ export { CloudError } from 'ms-rest-azure';
  * Contains the localized display information for this particular operation /
  * action.
  *
- * @member {string} [provider] The localized friendly form of the resource
+ * @property {string} [provider] The localized friendly form of the resource
  * provider name.
- * @member {string} [resource] The localized friendly form of the resource type
- * related to this action/operation.
- * @member {string} [operation] The localized friendly name for the operation.
- * @member {string} [description] The localized friendly description for the
+ * @property {string} [resource] The localized friendly form of the resource
+ * type related to this action/operation.
+ * @property {string} [operation] The localized friendly name for the
+ * operation.
+ * @property {string} [description] The localized friendly description for the
  * operation.
  */
 export interface OperationDisplay {
@@ -44,17 +45,17 @@ export interface OperationDisplay {
  * @constructor
  * A Stream Analytics REST API operation
  *
- * @member {string} [name] The name of the operation being performed on this
+ * @property {string} [name] The name of the operation being performed on this
  * particular object.
- * @member {object} [display] Contains the localized display information for
+ * @property {object} [display] Contains the localized display information for
  * this particular operation / action.
- * @member {string} [display.provider] The localized friendly form of the
+ * @property {string} [display.provider] The localized friendly form of the
  * resource provider name.
- * @member {string} [display.resource] The localized friendly form of the
+ * @property {string} [display.resource] The localized friendly form of the
  * resource type related to this action/operation.
- * @member {string} [display.operation] The localized friendly name for the
+ * @property {string} [display.operation] The localized friendly name for the
  * operation.
- * @member {string} [display.description] The localized friendly description
+ * @property {string} [display.description] The localized friendly description
  * for the operation.
  */
 export interface Operation {
@@ -68,7 +69,7 @@ export interface Operation {
  * @constructor
  * The properties that are associated with a SKU.
  *
- * @member {string} [name] The name of the SKU. Required on PUT
+ * @property {string} [name] The name of the SKU. Required on PUT
  * (CreateOrReplace) requests. Possible values include: 'Standard'
  */
 export interface Sku {
@@ -82,7 +83,7 @@ export interface Sku {
  * Describes how data from an input is serialized or how data is serialized
  * when written to an output.
  *
- * @member {string} type Polymorphic Discriminator
+ * @property {string} type Polymorphic Discriminator
  */
 export interface Serialization {
   type: string;
@@ -95,11 +96,11 @@ export interface Serialization {
  * Condition applicable to the resource, or to the job overall, that warrant
  * customer attention.
  *
- * @member {string} [since] The UTC timestamp of when the condition started.
+ * @property {string} [since] The UTC timestamp of when the condition started.
  * Customers should be able to find a corresponding event in the ops log around
  * this time.
- * @member {string} [code] The opaque diagnostic code.
- * @member {string} [message] The human-readable message describing the
+ * @property {string} [code] The opaque diagnostic code.
+ * @property {string} [message] The human-readable message describing the
  * condition in detail. Localized in the Accept-Language of the client request.
  */
 export interface DiagnosticCondition {
@@ -115,7 +116,7 @@ export interface DiagnosticCondition {
  * Describes conditions applicable to the Input, Output, or the job overall,
  * that warrant customer attention.
  *
- * @member {array} [conditions] A collection of zero or more conditions
+ * @property {array} [conditions] A collection of zero or more conditions
  * applicable to the resource, or to the job overall, that warrant customer
  * attention.
  */
@@ -129,20 +130,20 @@ export interface Diagnostics {
  * @constructor
  * The properties that are associated with an input.
  *
- * @member {object} [serialization] Describes how data from an input is
+ * @property {object} [serialization] Describes how data from an input is
  * serialized or how data is serialized when written to an output. Required on
  * PUT (CreateOrReplace) requests.
- * @member {string} [serialization.type] Polymorphic Discriminator
- * @member {object} [diagnostics] Describes conditions applicable to the Input,
- * Output, or the job overall, that warrant customer attention.
- * @member {array} [diagnostics.conditions] A collection of zero or more
+ * @property {string} [serialization.type] Polymorphic Discriminator
+ * @property {object} [diagnostics] Describes conditions applicable to the
+ * Input, Output, or the job overall, that warrant customer attention.
+ * @property {array} [diagnostics.conditions] A collection of zero or more
  * conditions applicable to the resource, or to the job overall, that warrant
  * customer attention.
- * @member {string} [etag] The current entity tag for the input. This is an
+ * @property {string} [etag] The current entity tag for the input. This is an
  * opaque string. You can use it to detect whether the resource has changed
  * between requests. You can also use it in the If-Match or If-None-Match
  * headers for write operations for optimistic concurrency.
- * @member {string} type Polymorphic Discriminator
+ * @property {string} type Polymorphic Discriminator
  */
 export interface InputProperties {
   serialization?: Serialization;
@@ -157,9 +158,9 @@ export interface InputProperties {
  * @constructor
  * The base sub-resource model definition.
  *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
+ * @property {string} [id] Resource Id
+ * @property {string} [name] Resource name
+ * @property {string} [type] Resource type
  */
 export interface SubResource extends BaseResource {
   readonly id?: string;
@@ -174,22 +175,22 @@ export interface SubResource extends BaseResource {
  * An input object, containing all information associated with the named input.
  * All inputs are contained under a streaming job.
  *
- * @member {object} [properties] The properties that are associated with an
+ * @property {object} [properties] The properties that are associated with an
  * input. Required on PUT (CreateOrReplace) requests.
- * @member {object} [properties.serialization] Describes how data from an input
- * is serialized or how data is serialized when written to an output. Required
- * on PUT (CreateOrReplace) requests.
- * @member {string} [properties.serialization.type] Polymorphic Discriminator
- * @member {object} [properties.diagnostics] Describes conditions applicable to
- * the Input, Output, or the job overall, that warrant customer attention.
- * @member {array} [properties.diagnostics.conditions] A collection of zero or
- * more conditions applicable to the resource, or to the job overall, that
+ * @property {object} [properties.serialization] Describes how data from an
+ * input is serialized or how data is serialized when written to an output.
+ * Required on PUT (CreateOrReplace) requests.
+ * @property {string} [properties.serialization.type] Polymorphic Discriminator
+ * @property {object} [properties.diagnostics] Describes conditions applicable
+ * to the Input, Output, or the job overall, that warrant customer attention.
+ * @property {array} [properties.diagnostics.conditions] A collection of zero
+ * or more conditions applicable to the resource, or to the job overall, that
  * warrant customer attention.
- * @member {string} [properties.etag] The current entity tag for the input.
+ * @property {string} [properties.etag] The current entity tag for the input.
  * This is an opaque string. You can use it to detect whether the resource has
  * changed between requests. You can also use it in the If-Match or
  * If-None-Match headers for write operations for optimistic concurrency.
- * @member {string} [properties.type] Polymorphic Discriminator
+ * @property {string} [properties.type] Polymorphic Discriminator
  */
 export interface Input extends SubResource {
   properties?: InputProperties;
@@ -203,14 +204,14 @@ export interface Input extends SubResource {
  * named transformation. All transformations are contained under a streaming
  * job.
  *
- * @member {number} [streamingUnits] Specifies the number of streaming units
+ * @property {number} [streamingUnits] Specifies the number of streaming units
  * that the streaming job uses.
- * @member {string} [query] Specifies the query that will be run in the
+ * @property {string} [query] Specifies the query that will be run in the
  * streaming job. You can learn more about the Stream Analytics Query Language
  * (SAQL) here: https://msdn.microsoft.com/library/azure/dn834998 . Required on
  * PUT (CreateOrReplace) requests.
- * @member {string} [etag] The current entity tag for the transformation. This
- * is an opaque string. You can use it to detect whether the resource has
+ * @property {string} [etag] The current entity tag for the transformation.
+ * This is an opaque string. You can use it to detect whether the resource has
  * changed between requests. You can also use it in the If-Match or
  * If-None-Match headers for write operations for optimistic concurrency.
  */
@@ -226,7 +227,7 @@ export interface Transformation extends SubResource {
  * @constructor
  * Describes the data source that output will be written to.
  *
- * @member {string} type Polymorphic Discriminator
+ * @property {string} type Polymorphic Discriminator
  */
 export interface OutputDataSource {
   type: string;
@@ -239,19 +240,19 @@ export interface OutputDataSource {
  * An output object, containing all information associated with the named
  * output. All outputs are contained under a streaming job.
  *
- * @member {object} [datasource] Describes the data source that output will be
- * written to. Required on PUT (CreateOrReplace) requests.
- * @member {string} [datasource.type] Polymorphic Discriminator
- * @member {object} [serialization] Describes how data from an input is
+ * @property {object} [datasource] Describes the data source that output will
+ * be written to. Required on PUT (CreateOrReplace) requests.
+ * @property {string} [datasource.type] Polymorphic Discriminator
+ * @property {object} [serialization] Describes how data from an input is
  * serialized or how data is serialized when written to an output. Required on
  * PUT (CreateOrReplace) requests.
- * @member {string} [serialization.type] Polymorphic Discriminator
- * @member {object} [diagnostics] Describes conditions applicable to the Input,
- * Output, or the job overall, that warrant customer attention.
- * @member {array} [diagnostics.conditions] A collection of zero or more
+ * @property {string} [serialization.type] Polymorphic Discriminator
+ * @property {object} [diagnostics] Describes conditions applicable to the
+ * Input, Output, or the job overall, that warrant customer attention.
+ * @property {array} [diagnostics.conditions] A collection of zero or more
  * conditions applicable to the resource, or to the job overall, that warrant
  * customer attention.
- * @member {string} [etag] The current entity tag for the output. This is an
+ * @property {string} [etag] The current entity tag for the output. This is an
  * opaque string. You can use it to detect whether the resource has changed
  * between requests. You can also use it in the If-Match or If-None-Match
  * headers for write operations for optimistic concurrency.
@@ -269,11 +270,11 @@ export interface Output extends SubResource {
  * @constructor
  * The properties that are associated with a function.
  *
- * @member {string} [etag] The current entity tag for the function. This is an
- * opaque string. You can use it to detect whether the resource has changed
+ * @property {string} [etag] The current entity tag for the function. This is
+ * an opaque string. You can use it to detect whether the resource has changed
  * between requests. You can also use it in the If-Match or If-None-Match
  * headers for write operations for optimistic concurrency.
- * @member {string} type Polymorphic Discriminator
+ * @property {string} type Polymorphic Discriminator
  */
 export interface FunctionProperties {
   readonly etag?: string;
@@ -287,13 +288,13 @@ export interface FunctionProperties {
  * A function object, containing all information associated with the named
  * function. All functions are contained under a streaming job.
  *
- * @member {object} [properties] The properties that are associated with a
+ * @property {object} [properties] The properties that are associated with a
  * function.
- * @member {string} [properties.etag] The current entity tag for the function.
- * This is an opaque string. You can use it to detect whether the resource has
- * changed between requests. You can also use it in the If-Match or
- * If-None-Match headers for write operations for optimistic concurrency.
- * @member {string} [properties.type] Polymorphic Discriminator
+ * @property {string} [properties.etag] The current entity tag for the
+ * function. This is an opaque string. You can use it to detect whether the
+ * resource has changed between requests. You can also use it in the If-Match
+ * or If-None-Match headers for write operations for optimistic concurrency.
+ * @property {string} [properties.type] Polymorphic Discriminator
  */
 export interface FunctionModel extends SubResource {
   properties?: FunctionProperties;
@@ -305,12 +306,12 @@ export interface FunctionModel extends SubResource {
  * @constructor
  * The base resource model definition.
  *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
- * @member {string} [location] Resource location. Required on PUT
+ * @property {string} [id] Resource Id
+ * @property {string} [name] Resource name
+ * @property {string} [type] Resource type
+ * @property {string} [location] Resource location. Required on PUT
  * (CreateOrReplace) requests.
- * @member {object} [tags] Resource tags
+ * @property {object} [tags] Resource tags
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -327,84 +328,85 @@ export interface Resource extends BaseResource {
  * A streamng job object, containing all information associated with the named
  * streaming job.
  *
- * @member {object} [sku] Describes the SKU of the streaming job. Required on
+ * @property {object} [sku] Describes the SKU of the streaming job. Required on
  * PUT (CreateOrReplace) requests.
- * @member {string} [sku.name] The name of the SKU. Required on PUT
+ * @property {string} [sku.name] The name of the SKU. Required on PUT
  * (CreateOrReplace) requests. Possible values include: 'Standard'
- * @member {string} [jobId] A GUID uniquely identifying the streaming job. This
- * GUID is generated upon creation of the streaming job.
- * @member {string} [provisioningState] Describes the provisioning status of
+ * @property {string} [jobId] A GUID uniquely identifying the streaming job.
+ * This GUID is generated upon creation of the streaming job.
+ * @property {string} [provisioningState] Describes the provisioning status of
  * the streaming job.
- * @member {string} [jobState] Describes the state of the streaming job.
- * @member {string} [outputStartMode] This property should only be utilized
+ * @property {string} [jobState] Describes the state of the streaming job.
+ * @property {string} [outputStartMode] This property should only be utilized
  * when it is desired that the job be started immediately upon creation. Value
  * may be JobStartTime, CustomTime, or LastOutputEventTime to indicate whether
  * the starting point of the output event stream should start whenever the job
  * is started, start at a custom user time stamp specified via the
  * outputStartTime property, or start from the last event output time. Possible
  * values include: 'JobStartTime', 'CustomTime', 'LastOutputEventTime'
- * @member {date} [outputStartTime] Value is either an ISO-8601 formatted time
- * stamp that indicates the starting point of the output event stream, or null
- * to indicate that the output event stream will start whenever the streaming
- * job is started. This property must have a value if outputStartMode is set to
- * CustomTime.
- * @member {date} [lastOutputEventTime] Value is either an ISO-8601 formatted
+ * @property {date} [outputStartTime] Value is either an ISO-8601 formatted
+ * time stamp that indicates the starting point of the output event stream, or
+ * null to indicate that the output event stream will start whenever the
+ * streaming job is started. This property must have a value if outputStartMode
+ * is set to CustomTime.
+ * @property {date} [lastOutputEventTime] Value is either an ISO-8601 formatted
  * timestamp indicating the last output event time of the streaming job or null
  * indicating that output has not yet been produced. In case of multiple
  * outputs or multiple streams, this shows the latest value in that set.
- * @member {string} [eventsOutOfOrderPolicy] Indicates the policy to apply to
+ * @property {string} [eventsOutOfOrderPolicy] Indicates the policy to apply to
  * events that arrive out of order in the input event stream. Possible values
  * include: 'Adjust', 'Drop'
- * @member {string} [outputErrorPolicy] Indicates the policy to apply to events
- * that arrive at the output and cannot be written to the external storage due
- * to being malformed (missing column values, column values of wrong type or
- * size). Possible values include: 'Stop', 'Drop'
- * @member {number} [eventsOutOfOrderMaxDelayInSeconds] The maximum tolerable
+ * @property {string} [outputErrorPolicy] Indicates the policy to apply to
+ * events that arrive at the output and cannot be written to the external
+ * storage due to being malformed (missing column values, column values of
+ * wrong type or size). Possible values include: 'Stop', 'Drop'
+ * @property {number} [eventsOutOfOrderMaxDelayInSeconds] The maximum tolerable
  * delay in seconds where out-of-order events can be adjusted to be back in
  * order.
- * @member {number} [eventsLateArrivalMaxDelayInSeconds] The maximum tolerable
- * delay in seconds where events arriving late could be included.  Supported
- * range is -1 to 1814399 (20.23:59:59 days) and -1 is used to specify wait
- * indefinitely. If the property is absent, it is interpreted to have a value
- * of -1.
- * @member {string} [dataLocale] The data locale of the stream analytics job.
+ * @property {number} [eventsLateArrivalMaxDelayInSeconds] The maximum
+ * tolerable delay in seconds where events arriving late could be included.
+ * Supported range is -1 to 1814399 (20.23:59:59 days) and -1 is used to
+ * specify wait indefinitely. If the property is absent, it is interpreted to
+ * have a value of -1.
+ * @property {string} [dataLocale] The data locale of the stream analytics job.
  * Value should be the name of a supported .NET Culture from the set
  * https://msdn.microsoft.com/en-us/library/system.globalization.culturetypes(v=vs.110).aspx.
  * Defaults to 'en-US' if none specified.
- * @member {string} [compatibilityLevel] Controls certain runtime behaviors of
- * the streaming job. Possible values include: '1.0'
- * @member {date} [createdDate] Value is an ISO-8601 formatted UTC timestamp
+ * @property {string} [compatibilityLevel] Controls certain runtime behaviors
+ * of the streaming job. Possible values include: '1.0'
+ * @property {date} [createdDate] Value is an ISO-8601 formatted UTC timestamp
  * indicating when the streaming job was created.
- * @member {array} [inputs] A list of one or more inputs to the streaming job.
- * The name property for each input is required when specifying this property
- * in a PUT request. This property cannot be modify via a PATCH operation. You
- * must use the PATCH API available for the individual input.
- * @member {object} [transformation] Indicates the query and the number of
+ * @property {array} [inputs] A list of one or more inputs to the streaming
+ * job. The name property for each input is required when specifying this
+ * property in a PUT request. This property cannot be modify via a PATCH
+ * operation. You must use the PATCH API available for the individual input.
+ * @property {object} [transformation] Indicates the query and the number of
  * streaming units to use for the streaming job. The name property of the
  * transformation is required when specifying this property in a PUT request.
  * This property cannot be modify via a PATCH operation. You must use the PATCH
  * API available for the individual tranformation.
- * @member {number} [transformation.streamingUnits] Specifies the number of
+ * @property {number} [transformation.streamingUnits] Specifies the number of
  * streaming units that the streaming job uses.
- * @member {string} [transformation.query] Specifies the query that will be run
- * in the streaming job. You can learn more about the Stream Analytics Query
- * Language (SAQL) here: https://msdn.microsoft.com/library/azure/dn834998 .
- * Required on PUT (CreateOrReplace) requests.
- * @member {string} [transformation.etag] The current entity tag for the
+ * @property {string} [transformation.query] Specifies the query that will be
+ * run in the streaming job. You can learn more about the Stream Analytics
+ * Query Language (SAQL) here:
+ * https://msdn.microsoft.com/library/azure/dn834998 . Required on PUT
+ * (CreateOrReplace) requests.
+ * @property {string} [transformation.etag] The current entity tag for the
  * transformation. This is an opaque string. You can use it to detect whether
  * the resource has changed between requests. You can also use it in the
  * If-Match or If-None-Match headers for write operations for optimistic
  * concurrency.
- * @member {array} [outputs] A list of one or more outputs for the streaming
+ * @property {array} [outputs] A list of one or more outputs for the streaming
  * job. The name property for each output is required when specifying this
  * property in a PUT request. This property cannot be modify via a PATCH
  * operation. You must use the PATCH API available for the individual output.
- * @member {array} [functions] A list of one or more functions for the
+ * @property {array} [functions] A list of one or more functions for the
  * streaming job. The name property for each function is required when
  * specifying this property in a PUT request. This property cannot be modify
  * via a PATCH operation. You must use the PATCH API available for the
  * individual transformation.
- * @member {string} [etag] The current entity tag for the streaming job. This
+ * @property {string} [etag] The current entity tag for the streaming job. This
  * is an opaque string. You can use it to detect whether the resource has
  * changed between requests. You can also use it in the If-Match or
  * If-None-Match headers for write operations for optimistic concurrency.
@@ -437,17 +439,17 @@ export interface StreamingJob extends Resource {
  * @constructor
  * Parameters supplied to the Start Streaming Job operation.
  *
- * @member {string} [outputStartMode] Value may be JobStartTime, CustomTime, or
- * LastOutputEventTime to indicate whether the starting point of the output
+ * @property {string} [outputStartMode] Value may be JobStartTime, CustomTime,
+ * or LastOutputEventTime to indicate whether the starting point of the output
  * event stream should start whenever the job is started, start at a custom
  * user time stamp specified via the outputStartTime property, or start from
  * the last event output time. Possible values include: 'JobStartTime',
  * 'CustomTime', 'LastOutputEventTime'
- * @member {date} [outputStartTime] Value is either an ISO-8601 formatted time
- * stamp that indicates the starting point of the output event stream, or null
- * to indicate that the output event stream will start whenever the streaming
- * job is started. This property must have a value if outputStartMode is set to
- * CustomTime.
+ * @property {date} [outputStartTime] Value is either an ISO-8601 formatted
+ * time stamp that indicates the starting point of the output event stream, or
+ * null to indicate that the output event stream will start whenever the
+ * streaming job is started. This property must have a value if outputStartMode
+ * is set to CustomTime.
  */
 export interface StartStreamingJobParameters {
   outputStartMode?: string;
@@ -461,7 +463,7 @@ export interface StartStreamingJobParameters {
  * The physical binding of the function. For example, in the Azure Machine
  * Learning web service’s case, this describes the endpoint.
  *
- * @member {string} type Polymorphic Discriminator
+ * @property {string} type Polymorphic Discriminator
  */
 export interface FunctionBinding {
   type: string;
@@ -473,7 +475,7 @@ export interface FunctionBinding {
  * @constructor
  * The binding to a JavaScript function.
  *
- * @member {string} [script] The JavaScript code containing a single function
+ * @property {string} [script] The JavaScript code containing a single function
  * definition. For example: 'function (x, y) { return x + y; }'
  */
 export interface JavaScriptFunctionBinding extends FunctionBinding {
@@ -487,10 +489,11 @@ export interface JavaScriptFunctionBinding extends FunctionBinding {
  * Describes an output column for the Azure Machine Learning web service
  * endpoint.
  *
- * @member {string} [name] The name of the output column.
- * @member {string} [dataType] The (Azure Machine Learning supported) data type
- * of the output column. A list of valid  Azure Machine Learning data types are
- * described at https://msdn.microsoft.com/en-us/library/azure/dn905923.aspx .
+ * @property {string} [name] The name of the output column.
+ * @property {string} [dataType] The (Azure Machine Learning supported) data
+ * type of the output column. A list of valid  Azure Machine Learning data
+ * types are described at
+ * https://msdn.microsoft.com/en-us/library/azure/dn905923.aspx .
  */
 export interface AzureMachineLearningWebServiceOutputColumn {
   name?: string;
@@ -504,12 +507,13 @@ export interface AzureMachineLearningWebServiceOutputColumn {
  * Describes an input column for the Azure Machine Learning web service
  * endpoint.
  *
- * @member {string} [name] The name of the input column.
- * @member {string} [dataType] The (Azure Machine Learning supported) data type
- * of the input column. A list of valid  Azure Machine Learning data types are
- * described at https://msdn.microsoft.com/en-us/library/azure/dn905923.aspx .
- * @member {number} [mapTo] The zero based index of the function parameter this
- * input maps to.
+ * @property {string} [name] The name of the input column.
+ * @property {string} [dataType] The (Azure Machine Learning supported) data
+ * type of the input column. A list of valid  Azure Machine Learning data types
+ * are described at
+ * https://msdn.microsoft.com/en-us/library/azure/dn905923.aspx .
+ * @property {number} [mapTo] The zero based index of the function parameter
+ * this input maps to.
  */
 export interface AzureMachineLearningWebServiceInputColumn {
   name?: string;
@@ -523,10 +527,10 @@ export interface AzureMachineLearningWebServiceInputColumn {
  * @constructor
  * The inputs for the Azure Machine Learning web service endpoint.
  *
- * @member {string} [name] The name of the input. This is the name provided
+ * @property {string} [name] The name of the input. This is the name provided
  * while authoring the endpoint.
- * @member {array} [columnNames] A list of input columns for the Azure Machine
- * Learning web service endpoint.
+ * @property {array} [columnNames] A list of input columns for the Azure
+ * Machine Learning web service endpoint.
  */
 export interface AzureMachineLearningWebServiceInputs {
   name?: string;
@@ -539,20 +543,20 @@ export interface AzureMachineLearningWebServiceInputs {
  * @constructor
  * The binding to an Azure Machine Learning web service.
  *
- * @member {string} [endpoint] The Request-Response execute endpoint of the
+ * @property {string} [endpoint] The Request-Response execute endpoint of the
  * Azure Machine Learning web service. Find out more here:
  * https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-consume-web-services#request-response-service-rrs
- * @member {string} [apiKey] The API key used to authenticate with
+ * @property {string} [apiKey] The API key used to authenticate with
  * Request-Response endpoint.
- * @member {object} [inputs] The inputs for the Azure Machine Learning web
+ * @property {object} [inputs] The inputs for the Azure Machine Learning web
  * service endpoint.
- * @member {string} [inputs.name] The name of the input. This is the name
+ * @property {string} [inputs.name] The name of the input. This is the name
  * provided while authoring the endpoint.
- * @member {array} [inputs.columnNames] A list of input columns for the Azure
+ * @property {array} [inputs.columnNames] A list of input columns for the Azure
  * Machine Learning web service endpoint.
- * @member {array} [outputs] A list of outputs from the Azure Machine Learning
- * web service endpoint execution.
- * @member {number} [batchSize] Number between 1 and 10000 describing maximum
+ * @property {array} [outputs] A list of outputs from the Azure Machine
+ * Learning web service endpoint execution.
+ * @property {number} [batchSize] Number between 1 and 10000 describing maximum
  * number of rows for every Azure ML RRS execute request. Default is 1000.
  */
 export interface AzureMachineLearningWebServiceFunctionBinding extends FunctionBinding {
@@ -569,9 +573,9 @@ export interface AzureMachineLearningWebServiceFunctionBinding extends FunctionB
  * @constructor
  * Describes the output of a function.
  *
- * @member {string} [dataType] The (Azure Stream Analytics supported) data type
- * of the function output. A list of valid Azure Stream Analytics data types
- * are described at
+ * @property {string} [dataType] The (Azure Stream Analytics supported) data
+ * type of the function output. A list of valid Azure Stream Analytics data
+ * types are described at
  * https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
  */
 export interface FunctionOutput {
@@ -584,11 +588,11 @@ export interface FunctionOutput {
  * @constructor
  * Describes one input parameter of a function.
  *
- * @member {string} [dataType] The (Azure Stream Analytics supported) data type
- * of the function input parameter. A list of valid Azure Stream Analytics data
- * types are described at
+ * @property {string} [dataType] The (Azure Stream Analytics supported) data
+ * type of the function input parameter. A list of valid Azure Stream Analytics
+ * data types are described at
  * https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
- * @member {boolean} [isConfigurationParameter] A flag indicating if the
+ * @property {boolean} [isConfigurationParameter] A flag indicating if the
  * parameter is a configuration parameter. True if this input parameter is
  * expected to be a constant. Default is false.
  */
@@ -603,17 +607,17 @@ export interface FunctionInput {
  * @constructor
  * The properties that are associated with a scalar function.
  *
- * @member {array} [inputs] A list of inputs describing the parameters of the
+ * @property {array} [inputs] A list of inputs describing the parameters of the
  * function.
- * @member {object} [output] The output of the function.
- * @member {string} [output.dataType] The (Azure Stream Analytics supported)
+ * @property {object} [output] The output of the function.
+ * @property {string} [output.dataType] The (Azure Stream Analytics supported)
  * data type of the function output. A list of valid Azure Stream Analytics
  * data types are described at
  * https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
- * @member {object} [binding] The physical binding of the function. For
+ * @property {object} [binding] The physical binding of the function. For
  * example, in the Azure Machine Learning web service’s case, this describes
  * the endpoint.
- * @member {string} [binding.type] Polymorphic Discriminator
+ * @property {string} [binding.type] Polymorphic Discriminator
  */
 export interface ScalarFunctionProperties extends FunctionProperties {
   inputs?: FunctionInput[];
@@ -623,60 +627,12 @@ export interface ScalarFunctionProperties extends FunctionProperties {
 
 /**
  * @class
- * Initializes a new instance of the FunctionRetrieveDefaultDefinitionParameters class.
- * @constructor
- * Parameters used to specify the type of function to retrieve the default
- * definition for.
- *
- * @member {string} bindingType Polymorphic Discriminator
- */
-export interface FunctionRetrieveDefaultDefinitionParameters {
-  bindingType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JavaScriptFunctionRetrieveDefaultDefinitionParameters class.
- * @constructor
- * The parameters needed to retrieve the default function definition for a
- * JavaScript function.
- *
- * @member {string} [script] The JavaScript code containing a single function
- * definition. For example: 'function (x, y) { return x + y; }'.
- * @member {string} [udfType] The function type. Possible values include:
- * 'Scalar'
- */
-export interface JavaScriptFunctionRetrieveDefaultDefinitionParameters extends FunctionRetrieveDefaultDefinitionParameters {
-  script?: string;
-  udfType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureMachineLearningWebServiceFunctionRetrieveDefaultDefinitionParameters class.
- * @constructor
- * The parameters needed to retrieve the default function definition for an
- * Azure Machine Learning web service function.
- *
- * @member {string} [executeEndpoint] The Request-Response execute endpoint of
- * the Azure Machine Learning web service. Find out more here:
- * https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-consume-web-services#request-response-service-rrs
- * @member {string} [udfType] The function type. Possible values include:
- * 'Scalar'
- */
-export interface AzureMachineLearningWebServiceFunctionRetrieveDefaultDefinitionParameters extends FunctionRetrieveDefaultDefinitionParameters {
-  executeEndpoint?: string;
-  udfType?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the AvroSerialization class.
  * @constructor
  * Describes how data from an input is serialized or how data is serialized
  * when written to an output in Avro format.
  *
- * @member {object} [properties] The properties that are associated with the
+ * @property {object} [properties] The properties that are associated with the
  * Avro serialization type. Required on PUT (CreateOrReplace) requests.
  */
 export interface AvroSerialization extends Serialization {
@@ -690,10 +646,10 @@ export interface AvroSerialization extends Serialization {
  * Describes how data from an input is serialized or how data is serialized
  * when written to an output in JSON format.
  *
- * @member {string} [encoding] Specifies the encoding of the incoming data in
+ * @property {string} [encoding] Specifies the encoding of the incoming data in
  * the case of input and the encoding of outgoing data in the case of output.
  * Required on PUT (CreateOrReplace) requests. Possible values include: 'UTF8'
- * @member {string} [format] This property only applies to JSON serialization
+ * @property {string} [format] This property only applies to JSON serialization
  * of outputs only. It is not applicable to inputs. This property specifies the
  * format of the JSON the output will be written in. The currently supported
  * values are 'lineSeparated' indicating the output will be formatted by having
@@ -714,13 +670,13 @@ export interface JsonSerialization extends Serialization {
  * Describes how data from an input is serialized or how data is serialized
  * when written to an output in CSV format.
  *
- * @member {string} [fieldDelimiter] Specifies the delimiter that will be used
- * to separate comma-separated value (CSV) records. See
+ * @property {string} [fieldDelimiter] Specifies the delimiter that will be
+ * used to separate comma-separated value (CSV) records. See
  * https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input
  * or
  * https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output
  * for a list of supported values. Required on PUT (CreateOrReplace) requests.
- * @member {string} [encoding] Specifies the encoding of the incoming data in
+ * @property {string} [encoding] Specifies the encoding of the incoming data in
  * the case of input and the encoding of outgoing data in the case of output.
  * Required on PUT (CreateOrReplace) requests. Possible values include: 'UTF8'
  */
@@ -736,17 +692,17 @@ export interface CsvSerialization extends Serialization {
  * The properties that are associated with data sources that use OAuth as their
  * authentication model.
  *
- * @member {string} [refreshToken] A refresh token that can be used to obtain a
- * valid access token that can then be used to authenticate with the data
+ * @property {string} [refreshToken] A refresh token that can be used to obtain
+ * a valid access token that can then be used to authenticate with the data
  * source. A valid refresh token is currently only obtainable via the Azure
  * Portal. It is recommended to put a dummy string value here when creating the
  * data source and then going to the Azure Portal to authenticate the data
  * source which will update this property with a valid refresh token. Required
  * on PUT (CreateOrReplace) requests.
- * @member {string} [tokenUserPrincipalName] The user principal name (UPN) of
+ * @property {string} [tokenUserPrincipalName] The user principal name (UPN) of
  * the user that was used to obtain the refresh token. Use this property to
  * help remember which user was used to obtain the refresh token.
- * @member {string} [tokenUserDisplayName] The user display name of the user
+ * @property {string} [tokenUserDisplayName] The user display name of the user
  * that was used to obtain the refresh token. Use this property to help
  * remember which user was used to obtain the refresh token.
  */
@@ -762,29 +718,29 @@ export interface OAuthBasedDataSourceProperties {
  * @constructor
  * Describes an Azure Data Lake Store output data source.
  *
- * @member {string} [refreshToken] A refresh token that can be used to obtain a
- * valid access token that can then be used to authenticate with the data
+ * @property {string} [refreshToken] A refresh token that can be used to obtain
+ * a valid access token that can then be used to authenticate with the data
  * source. A valid refresh token is currently only obtainable via the Azure
  * Portal. It is recommended to put a dummy string value here when creating the
  * data source and then going to the Azure Portal to authenticate the data
  * source which will update this property with a valid refresh token. Required
  * on PUT (CreateOrReplace) requests.
- * @member {string} [tokenUserPrincipalName] The user principal name (UPN) of
+ * @property {string} [tokenUserPrincipalName] The user principal name (UPN) of
  * the user that was used to obtain the refresh token. Use this property to
  * help remember which user was used to obtain the refresh token.
- * @member {string} [tokenUserDisplayName] The user display name of the user
+ * @property {string} [tokenUserDisplayName] The user display name of the user
  * that was used to obtain the refresh token. Use this property to help
  * remember which user was used to obtain the refresh token.
- * @member {string} [accountName] The name of the Azure Data Lake Store
+ * @property {string} [accountName] The name of the Azure Data Lake Store
  * account. Required on PUT (CreateOrReplace) requests.
- * @member {string} [tenantId] The tenant id of the user used to obtain the
+ * @property {string} [tenantId] The tenant id of the user used to obtain the
  * refresh token. Required on PUT (CreateOrReplace) requests.
- * @member {string} [filePathPrefix] The location of the file to which the
+ * @property {string} [filePathPrefix] The location of the file to which the
  * output should be written to. Required on PUT (CreateOrReplace) requests.
- * @member {string} [dateFormat] The date format. Wherever {date} appears in
+ * @property {string} [dateFormat] The date format. Wherever {date} appears in
  * filePathPrefix, the value of this property is used as the date format
  * instead.
- * @member {string} [timeFormat] The time format. Wherever {time} appears in
+ * @property {string} [timeFormat] The time format. Wherever {time} appears in
  * filePathPrefix, the value of this property is used as the time format
  * instead.
  */
@@ -805,25 +761,25 @@ export interface AzureDataLakeStoreOutputDataSource extends OutputDataSource {
  * @constructor
  * Describes a Power BI output data source.
  *
- * @member {string} [refreshToken] A refresh token that can be used to obtain a
- * valid access token that can then be used to authenticate with the data
+ * @property {string} [refreshToken] A refresh token that can be used to obtain
+ * a valid access token that can then be used to authenticate with the data
  * source. A valid refresh token is currently only obtainable via the Azure
  * Portal. It is recommended to put a dummy string value here when creating the
  * data source and then going to the Azure Portal to authenticate the data
  * source which will update this property with a valid refresh token. Required
  * on PUT (CreateOrReplace) requests.
- * @member {string} [tokenUserPrincipalName] The user principal name (UPN) of
+ * @property {string} [tokenUserPrincipalName] The user principal name (UPN) of
  * the user that was used to obtain the refresh token. Use this property to
  * help remember which user was used to obtain the refresh token.
- * @member {string} [tokenUserDisplayName] The user display name of the user
+ * @property {string} [tokenUserDisplayName] The user display name of the user
  * that was used to obtain the refresh token. Use this property to help
  * remember which user was used to obtain the refresh token.
- * @member {string} [dataset] The name of the Power BI dataset. Required on PUT
- * (CreateOrReplace) requests.
- * @member {string} [table] The name of the Power BI table under the specified
- * dataset. Required on PUT (CreateOrReplace) requests.
- * @member {string} [groupId] The ID of the Power BI group.
- * @member {string} [groupName] The name of the Power BI group. Use this
+ * @property {string} [dataset] The name of the Power BI dataset. Required on
+ * PUT (CreateOrReplace) requests.
+ * @property {string} [table] The name of the Power BI table under the
+ * specified dataset. Required on PUT (CreateOrReplace) requests.
+ * @property {string} [groupId] The ID of the Power BI group.
+ * @property {string} [groupName] The name of the Power BI group. Use this
  * property to help remember which specific Power BI group id was used.
  */
 export interface PowerBIOutputDataSource extends OutputDataSource {
@@ -843,13 +799,13 @@ export interface PowerBIOutputDataSource extends OutputDataSource {
  * The common properties that are associated with Service Bus data sources
  * (Queues, Topics, Event Hubs, etc.).
  *
- * @member {string} [serviceBusNamespace] The namespace that is associated with
- * the desired Event Hub, Service Bus Queue, Service Bus Topic, etc. Required
- * on PUT (CreateOrReplace) requests.
- * @member {string} [sharedAccessPolicyName] The shared access policy name for
- * the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT
- * (CreateOrReplace) requests.
- * @member {string} [sharedAccessPolicyKey] The shared access policy key for
+ * @property {string} [serviceBusNamespace] The namespace that is associated
+ * with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc.
+ * Required on PUT (CreateOrReplace) requests.
+ * @property {string} [sharedAccessPolicyName] The shared access policy name
+ * for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on
+ * PUT (CreateOrReplace) requests.
+ * @property {string} [sharedAccessPolicyKey] The shared access policy key for
  * the specified shared access policy. Required on PUT (CreateOrReplace)
  * requests.
  */
@@ -865,7 +821,7 @@ export interface ServiceBusDataSourceProperties {
  * @constructor
  * The common properties that are associated with Event Hub data sources.
  *
- * @member {string} [eventHubName] The name of the Event Hub. Required on PUT
+ * @property {string} [eventHubName] The name of the Event Hub. Required on PUT
  * (CreateOrReplace) requests.
  */
 export interface EventHubDataSourceProperties extends ServiceBusDataSourceProperties {
@@ -878,18 +834,18 @@ export interface EventHubDataSourceProperties extends ServiceBusDataSourceProper
  * @constructor
  * Describes a Service Bus Topic output data source.
  *
- * @member {string} [serviceBusNamespace] The namespace that is associated with
- * the desired Event Hub, Service Bus Queue, Service Bus Topic, etc. Required
- * on PUT (CreateOrReplace) requests.
- * @member {string} [sharedAccessPolicyName] The shared access policy name for
- * the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT
- * (CreateOrReplace) requests.
- * @member {string} [sharedAccessPolicyKey] The shared access policy key for
+ * @property {string} [serviceBusNamespace] The namespace that is associated
+ * with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc.
+ * Required on PUT (CreateOrReplace) requests.
+ * @property {string} [sharedAccessPolicyName] The shared access policy name
+ * for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on
+ * PUT (CreateOrReplace) requests.
+ * @property {string} [sharedAccessPolicyKey] The shared access policy key for
  * the specified shared access policy. Required on PUT (CreateOrReplace)
  * requests.
- * @member {string} [topicName] The name of the Service Bus Topic. Required on
- * PUT (CreateOrReplace) requests.
- * @member {array} [propertyColumns] A string array of the names of output
+ * @property {string} [topicName] The name of the Service Bus Topic. Required
+ * on PUT (CreateOrReplace) requests.
+ * @property {array} [propertyColumns] A string array of the names of output
  * columns to be attached to Service Bus messages as custom properties.
  */
 export interface ServiceBusTopicOutputDataSource extends OutputDataSource {
@@ -906,18 +862,18 @@ export interface ServiceBusTopicOutputDataSource extends OutputDataSource {
  * @constructor
  * Describes a Service Bus Queue output data source.
  *
- * @member {string} [serviceBusNamespace] The namespace that is associated with
- * the desired Event Hub, Service Bus Queue, Service Bus Topic, etc. Required
- * on PUT (CreateOrReplace) requests.
- * @member {string} [sharedAccessPolicyName] The shared access policy name for
- * the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT
- * (CreateOrReplace) requests.
- * @member {string} [sharedAccessPolicyKey] The shared access policy key for
+ * @property {string} [serviceBusNamespace] The namespace that is associated
+ * with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc.
+ * Required on PUT (CreateOrReplace) requests.
+ * @property {string} [sharedAccessPolicyName] The shared access policy name
+ * for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on
+ * PUT (CreateOrReplace) requests.
+ * @property {string} [sharedAccessPolicyKey] The shared access policy key for
  * the specified shared access policy. Required on PUT (CreateOrReplace)
  * requests.
- * @member {string} [queueName] The name of the Service Bus Queue. Required on
- * PUT (CreateOrReplace) requests.
- * @member {array} [propertyColumns] A string array of the names of output
+ * @property {string} [queueName] The name of the Service Bus Queue. Required
+ * on PUT (CreateOrReplace) requests.
+ * @property {array} [propertyColumns] A string array of the names of output
  * columns to be attached to Service Bus messages as custom properties.
  */
 export interface ServiceBusQueueOutputDataSource extends OutputDataSource {
@@ -934,24 +890,24 @@ export interface ServiceBusQueueOutputDataSource extends OutputDataSource {
  * @constructor
  * Describes a DocumentDB output data source.
  *
- * @member {string} [accountId] The DocumentDB account name or ID. Required on
- * PUT (CreateOrReplace) requests.
- * @member {string} [accountKey] The account key for the DocumentDB account.
+ * @property {string} [accountId] The DocumentDB account name or ID. Required
+ * on PUT (CreateOrReplace) requests.
+ * @property {string} [accountKey] The account key for the DocumentDB account.
  * Required on PUT (CreateOrReplace) requests.
- * @member {string} [database] The name of the DocumentDB database. Required on
- * PUT (CreateOrReplace) requests.
- * @member {string} [collectionNamePattern] The collection name pattern for the
- * collections to be used. The collection name format can be constructed using
- * the optional {partition} token, where partitions start from 0. See the
+ * @property {string} [database] The name of the DocumentDB database. Required
+ * on PUT (CreateOrReplace) requests.
+ * @property {string} [collectionNamePattern] The collection name pattern for
+ * the collections to be used. The collection name format can be constructed
+ * using the optional {partition} token, where partitions start from 0. See the
  * DocumentDB section of
  * https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output
  * for more information. Required on PUT (CreateOrReplace) requests.
- * @member {string} [partitionKey] The name of the field in output events used
- * to specify the key for partitioning output across collections. If
+ * @property {string} [partitionKey] The name of the field in output events
+ * used to specify the key for partitioning output across collections. If
  * 'collectionNamePattern' contains the {partition} token, this property is
  * required to be specified.
- * @member {string} [documentId] The name of the field in output events used to
- * specify the primary key which insert or update operations are based on.
+ * @property {string} [documentId] The name of the field in output events used
+ * to specify the primary key which insert or update operations are based on.
  */
 export interface DocumentDbOutputDataSource extends OutputDataSource {
   accountId?: string;
@@ -968,15 +924,15 @@ export interface DocumentDbOutputDataSource extends OutputDataSource {
  * @constructor
  * The properties that are associated with an Azure SQL database data source.
  *
- * @member {string} [server] The name of the SQL server containing the Azure
+ * @property {string} [server] The name of the SQL server containing the Azure
  * SQL database. Required on PUT (CreateOrReplace) requests.
- * @member {string} [database] The name of the Azure SQL database. Required on
- * PUT (CreateOrReplace) requests.
- * @member {string} [user] The user name that will be used to connect to the
+ * @property {string} [database] The name of the Azure SQL database. Required
+ * on PUT (CreateOrReplace) requests.
+ * @property {string} [user] The user name that will be used to connect to the
  * Azure SQL database. Required on PUT (CreateOrReplace) requests.
- * @member {string} [password] The password that will be used to connect to the
- * Azure SQL database. Required on PUT (CreateOrReplace) requests.
- * @member {string} [table] The name of the table in the Azure SQL database.
+ * @property {string} [password] The password that will be used to connect to
+ * the Azure SQL database. Required on PUT (CreateOrReplace) requests.
+ * @property {string} [table] The name of the table in the Azure SQL database.
  * Required on PUT (CreateOrReplace) requests.
  */
 export interface AzureSqlDatabaseDataSourceProperties {
@@ -993,15 +949,15 @@ export interface AzureSqlDatabaseDataSourceProperties {
  * @constructor
  * Describes an Azure SQL database output data source.
  *
- * @member {string} [server] The name of the SQL server containing the Azure
+ * @property {string} [server] The name of the SQL server containing the Azure
  * SQL database. Required on PUT (CreateOrReplace) requests.
- * @member {string} [database] The name of the Azure SQL database. Required on
- * PUT (CreateOrReplace) requests.
- * @member {string} [user] The user name that will be used to connect to the
+ * @property {string} [database] The name of the Azure SQL database. Required
+ * on PUT (CreateOrReplace) requests.
+ * @property {string} [user] The user name that will be used to connect to the
  * Azure SQL database. Required on PUT (CreateOrReplace) requests.
- * @member {string} [password] The password that will be used to connect to the
- * Azure SQL database. Required on PUT (CreateOrReplace) requests.
- * @member {string} [table] The name of the table in the Azure SQL database.
+ * @property {string} [password] The password that will be used to connect to
+ * the Azure SQL database. Required on PUT (CreateOrReplace) requests.
+ * @property {string} [table] The name of the table in the Azure SQL database.
  * Required on PUT (CreateOrReplace) requests.
  */
 export interface AzureSqlDatabaseOutputDataSource extends OutputDataSource {
@@ -1018,19 +974,19 @@ export interface AzureSqlDatabaseOutputDataSource extends OutputDataSource {
  * @constructor
  * Describes an Event Hub output data source.
  *
- * @member {string} [serviceBusNamespace] The namespace that is associated with
- * the desired Event Hub, Service Bus Queue, Service Bus Topic, etc. Required
- * on PUT (CreateOrReplace) requests.
- * @member {string} [sharedAccessPolicyName] The shared access policy name for
- * the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT
- * (CreateOrReplace) requests.
- * @member {string} [sharedAccessPolicyKey] The shared access policy key for
+ * @property {string} [serviceBusNamespace] The namespace that is associated
+ * with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc.
+ * Required on PUT (CreateOrReplace) requests.
+ * @property {string} [sharedAccessPolicyName] The shared access policy name
+ * for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on
+ * PUT (CreateOrReplace) requests.
+ * @property {string} [sharedAccessPolicyKey] The shared access policy key for
  * the specified shared access policy. Required on PUT (CreateOrReplace)
  * requests.
- * @member {string} [eventHubName] The name of the Event Hub. Required on PUT
+ * @property {string} [eventHubName] The name of the Event Hub. Required on PUT
  * (CreateOrReplace) requests.
- * @member {string} [partitionKey] The key/column that is used to determine to
- * which partition to send event data.
+ * @property {string} [partitionKey] The key/column that is used to determine
+ * to which partition to send event data.
  */
 export interface EventHubOutputDataSource extends OutputDataSource {
   serviceBusNamespace?: string;
@@ -1046,22 +1002,23 @@ export interface EventHubOutputDataSource extends OutputDataSource {
  * @constructor
  * Describes an Azure Table output data source.
  *
- * @member {string} [accountName] The name of the Azure Storage account.
+ * @property {string} [accountName] The name of the Azure Storage account.
  * Required on PUT (CreateOrReplace) requests.
- * @member {string} [accountKey] The account key for the Azure Storage account.
- * Required on PUT (CreateOrReplace) requests.
- * @member {string} [table] The name of the Azure Table. Required on PUT
+ * @property {string} [accountKey] The account key for the Azure Storage
+ * account. Required on PUT (CreateOrReplace) requests.
+ * @property {string} [table] The name of the Azure Table. Required on PUT
  * (CreateOrReplace) requests.
- * @member {string} [partitionKey] This element indicates the name of a column
- * from the SELECT statement in the query that will be used as the partition
- * key for the Azure Table. Required on PUT (CreateOrReplace) requests.
- * @member {string} [rowKey] This element indicates the name of a column from
+ * @property {string} [partitionKey] This element indicates the name of a
+ * column from the SELECT statement in the query that will be used as the
+ * partition key for the Azure Table. Required on PUT (CreateOrReplace)
+ * requests.
+ * @property {string} [rowKey] This element indicates the name of a column from
  * the SELECT statement in the query that will be used as the row key for the
  * Azure Table. Required on PUT (CreateOrReplace) requests.
- * @member {array} [columnsToRemove] If specified, each item in the array is
+ * @property {array} [columnsToRemove] If specified, each item in the array is
  * the name of a column to remove (if present) from output event entities.
- * @member {number} [batchSize] The number of rows to write to the Azure Table
- * at a time.
+ * @property {number} [batchSize] The number of rows to write to the Azure
+ * Table at a time.
  */
 export interface AzureTableOutputDataSource extends OutputDataSource {
   accountName?: string;
@@ -1079,10 +1036,10 @@ export interface AzureTableOutputDataSource extends OutputDataSource {
  * @constructor
  * The properties that are associated with an Azure Storage account
  *
- * @member {string} [accountName] The name of the Azure Storage account.
+ * @property {string} [accountName] The name of the Azure Storage account.
  * Required on PUT (CreateOrReplace) requests.
- * @member {string} [accountKey] The account key for the Azure Storage account.
- * Required on PUT (CreateOrReplace) requests.
+ * @property {string} [accountKey] The account key for the Azure Storage
+ * account. Required on PUT (CreateOrReplace) requests.
  */
 export interface StorageAccount {
   accountName?: string;
@@ -1095,12 +1052,12 @@ export interface StorageAccount {
  * @constructor
  * The properties that are associated with a blob data source.
  *
- * @member {array} [storageAccounts] A list of one or more Azure Storage
+ * @property {array} [storageAccounts] A list of one or more Azure Storage
  * accounts. Required on PUT (CreateOrReplace) requests.
- * @member {string} [container] The name of a container within the associated
+ * @property {string} [container] The name of a container within the associated
  * Storage account. This container contains either the blob(s) to be read from
  * or written to. Required on PUT (CreateOrReplace) requests.
- * @member {string} [pathPattern] The blob path pattern. Not a regular
+ * @property {string} [pathPattern] The blob path pattern. Not a regular
  * expression. It represents a pattern against which blob names will be matched
  * to determine whether or not they should be included as input or output to
  * the job. See
@@ -1108,9 +1065,9 @@ export interface StorageAccount {
  * or
  * https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output
  * for a more detailed explanation and example.
- * @member {string} [dateFormat] The date format. Wherever {date} appears in
+ * @property {string} [dateFormat] The date format. Wherever {date} appears in
  * pathPattern, the value of this property is used as the date format instead.
- * @member {string} [timeFormat] The time format. Wherever {time} appears in
+ * @property {string} [timeFormat] The time format. Wherever {time} appears in
  * pathPattern, the value of this property is used as the time format instead.
  */
 export interface BlobDataSourceProperties {
@@ -1127,12 +1084,12 @@ export interface BlobDataSourceProperties {
  * @constructor
  * Describes a blob output data source.
  *
- * @member {array} [storageAccounts] A list of one or more Azure Storage
+ * @property {array} [storageAccounts] A list of one or more Azure Storage
  * accounts. Required on PUT (CreateOrReplace) requests.
- * @member {string} [container] The name of a container within the associated
+ * @property {string} [container] The name of a container within the associated
  * Storage account. This container contains either the blob(s) to be read from
  * or written to. Required on PUT (CreateOrReplace) requests.
- * @member {string} [pathPattern] The blob path pattern. Not a regular
+ * @property {string} [pathPattern] The blob path pattern. Not a regular
  * expression. It represents a pattern against which blob names will be matched
  * to determine whether or not they should be included as input or output to
  * the job. See
@@ -1140,9 +1097,9 @@ export interface BlobDataSourceProperties {
  * or
  * https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output
  * for a more detailed explanation and example.
- * @member {string} [dateFormat] The date format. Wherever {date} appears in
+ * @property {string} [dateFormat] The date format. Wherever {date} appears in
  * pathPattern, the value of this property is used as the date format instead.
- * @member {string} [timeFormat] The time format. Wherever {time} appears in
+ * @property {string} [timeFormat] The time format. Wherever {time} appears in
  * pathPattern, the value of this property is used as the time format instead.
  */
 export interface BlobOutputDataSource extends OutputDataSource {
@@ -1159,7 +1116,7 @@ export interface BlobOutputDataSource extends OutputDataSource {
  * @constructor
  * Describes an input data source that contains reference data.
  *
- * @member {string} type Polymorphic Discriminator
+ * @property {string} type Polymorphic Discriminator
  */
 export interface ReferenceInputDataSource {
   type: string;
@@ -1171,12 +1128,12 @@ export interface ReferenceInputDataSource {
  * @constructor
  * Describes a blob input data source that contains reference data.
  *
- * @member {array} [storageAccounts] A list of one or more Azure Storage
+ * @property {array} [storageAccounts] A list of one or more Azure Storage
  * accounts. Required on PUT (CreateOrReplace) requests.
- * @member {string} [container] The name of a container within the associated
+ * @property {string} [container] The name of a container within the associated
  * Storage account. This container contains either the blob(s) to be read from
  * or written to. Required on PUT (CreateOrReplace) requests.
- * @member {string} [pathPattern] The blob path pattern. Not a regular
+ * @property {string} [pathPattern] The blob path pattern. Not a regular
  * expression. It represents a pattern against which blob names will be matched
  * to determine whether or not they should be included as input or output to
  * the job. See
@@ -1184,9 +1141,9 @@ export interface ReferenceInputDataSource {
  * or
  * https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output
  * for a more detailed explanation and example.
- * @member {string} [dateFormat] The date format. Wherever {date} appears in
+ * @property {string} [dateFormat] The date format. Wherever {date} appears in
  * pathPattern, the value of this property is used as the date format instead.
- * @member {string} [timeFormat] The time format. Wherever {time} appears in
+ * @property {string} [timeFormat] The time format. Wherever {time} appears in
  * pathPattern, the value of this property is used as the time format instead.
  */
 export interface BlobReferenceInputDataSource extends ReferenceInputDataSource {
@@ -1203,9 +1160,9 @@ export interface BlobReferenceInputDataSource extends ReferenceInputDataSource {
  * @constructor
  * The properties that are associated with an input containing reference data.
  *
- * @member {object} [datasource] Describes an input data source that contains
+ * @property {object} [datasource] Describes an input data source that contains
  * reference data. Required on PUT (CreateOrReplace) requests.
- * @member {string} [datasource.type] Polymorphic Discriminator
+ * @property {string} [datasource.type] Polymorphic Discriminator
  */
 export interface ReferenceInputProperties extends InputProperties {
   datasource?: ReferenceInputDataSource;
@@ -1217,7 +1174,7 @@ export interface ReferenceInputProperties extends InputProperties {
  * @constructor
  * Describes an input data source that contains stream data.
  *
- * @member {string} type Polymorphic Discriminator
+ * @property {string} type Polymorphic Discriminator
  */
 export interface StreamInputDataSource {
   type: string;
@@ -1229,18 +1186,18 @@ export interface StreamInputDataSource {
  * @constructor
  * Describes an IoT Hub input data source that contains stream data.
  *
- * @member {string} [iotHubNamespace] The name or the URI of the IoT Hub.
+ * @property {string} [iotHubNamespace] The name or the URI of the IoT Hub.
  * Required on PUT (CreateOrReplace) requests.
- * @member {string} [sharedAccessPolicyName] The shared access policy name for
- * the IoT Hub. This policy must contain at least the Service connect
+ * @property {string} [sharedAccessPolicyName] The shared access policy name
+ * for the IoT Hub. This policy must contain at least the Service connect
  * permission. Required on PUT (CreateOrReplace) requests.
- * @member {string} [sharedAccessPolicyKey] The shared access policy key for
+ * @property {string} [sharedAccessPolicyKey] The shared access policy key for
  * the specified shared access policy. Required on PUT (CreateOrReplace)
  * requests.
- * @member {string} [consumerGroupName] The name of an IoT Hub Consumer Group
+ * @property {string} [consumerGroupName] The name of an IoT Hub Consumer Group
  * that should be used to read events from the IoT Hub. If not specified, the
  * input uses the Iot Hub’s default consumer group.
- * @member {string} [endpoint] The IoT Hub endpoint to connect to (ie.
+ * @property {string} [endpoint] The IoT Hub endpoint to connect to (ie.
  * messages/events, messages/operationsMonitoringEvents, etc.).
  */
 export interface IoTHubStreamInputDataSource extends StreamInputDataSource {
@@ -1257,22 +1214,22 @@ export interface IoTHubStreamInputDataSource extends StreamInputDataSource {
  * @constructor
  * Describes an Event Hub input data source that contains stream data.
  *
- * @member {string} [serviceBusNamespace] The namespace that is associated with
- * the desired Event Hub, Service Bus Queue, Service Bus Topic, etc. Required
- * on PUT (CreateOrReplace) requests.
- * @member {string} [sharedAccessPolicyName] The shared access policy name for
- * the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT
- * (CreateOrReplace) requests.
- * @member {string} [sharedAccessPolicyKey] The shared access policy key for
+ * @property {string} [serviceBusNamespace] The namespace that is associated
+ * with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc.
+ * Required on PUT (CreateOrReplace) requests.
+ * @property {string} [sharedAccessPolicyName] The shared access policy name
+ * for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on
+ * PUT (CreateOrReplace) requests.
+ * @property {string} [sharedAccessPolicyKey] The shared access policy key for
  * the specified shared access policy. Required on PUT (CreateOrReplace)
  * requests.
- * @member {string} [eventHubName] The name of the Event Hub. Required on PUT
+ * @property {string} [eventHubName] The name of the Event Hub. Required on PUT
  * (CreateOrReplace) requests.
- * @member {string} [consumerGroupName] The name of an Event Hub Consumer Group
- * that should be used to read events from the Event Hub. Specifying distinct
- * consumer group names for multiple inputs allows each of those inputs to
- * receive the same events from the Event Hub. If not specified, the input uses
- * the Event Hub’s default consumer group.
+ * @property {string} [consumerGroupName] The name of an Event Hub Consumer
+ * Group that should be used to read events from the Event Hub. Specifying
+ * distinct consumer group names for multiple inputs allows each of those
+ * inputs to receive the same events from the Event Hub. If not specified, the
+ * input uses the Event Hub’s default consumer group.
  */
 export interface EventHubStreamInputDataSource extends StreamInputDataSource {
   serviceBusNamespace?: string;
@@ -1288,12 +1245,12 @@ export interface EventHubStreamInputDataSource extends StreamInputDataSource {
  * @constructor
  * Describes a blob input data source that contains stream data.
  *
- * @member {array} [storageAccounts] A list of one or more Azure Storage
+ * @property {array} [storageAccounts] A list of one or more Azure Storage
  * accounts. Required on PUT (CreateOrReplace) requests.
- * @member {string} [container] The name of a container within the associated
+ * @property {string} [container] The name of a container within the associated
  * Storage account. This container contains either the blob(s) to be read from
  * or written to. Required on PUT (CreateOrReplace) requests.
- * @member {string} [pathPattern] The blob path pattern. Not a regular
+ * @property {string} [pathPattern] The blob path pattern. Not a regular
  * expression. It represents a pattern against which blob names will be matched
  * to determine whether or not they should be included as input or output to
  * the job. See
@@ -1301,11 +1258,11 @@ export interface EventHubStreamInputDataSource extends StreamInputDataSource {
  * or
  * https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output
  * for a more detailed explanation and example.
- * @member {string} [dateFormat] The date format. Wherever {date} appears in
+ * @property {string} [dateFormat] The date format. Wherever {date} appears in
  * pathPattern, the value of this property is used as the date format instead.
- * @member {string} [timeFormat] The time format. Wherever {time} appears in
+ * @property {string} [timeFormat] The time format. Wherever {time} appears in
  * pathPattern, the value of this property is used as the time format instead.
- * @member {number} [sourcePartitionCount] The partition count of the blob
+ * @property {number} [sourcePartitionCount] The partition count of the blob
  * input data source. Range 1 - 256.
  */
 export interface BlobStreamInputDataSource extends StreamInputDataSource {
@@ -1323,9 +1280,9 @@ export interface BlobStreamInputDataSource extends StreamInputDataSource {
  * @constructor
  * The properties that are associated with an input containing stream data.
  *
- * @member {object} [datasource] Describes an input data source that contains
+ * @property {object} [datasource] Describes an input data source that contains
  * stream data. Required on PUT (CreateOrReplace) requests.
- * @member {string} [datasource.type] Polymorphic Discriminator
+ * @property {string} [datasource.type] Polymorphic Discriminator
  */
 export interface StreamInputProperties extends InputProperties {
   datasource?: StreamInputDataSource;
@@ -1337,8 +1294,9 @@ export interface StreamInputProperties extends InputProperties {
  * @constructor
  * Describes the error that occurred.
  *
- * @member {string} [code] Error code associated with the error that occurred.
- * @member {string} [message] Describes the error in detail.
+ * @property {string} [code] Error code associated with the error that
+ * occurred.
+ * @property {string} [message] Describes the error in detail.
  */
 export interface ErrorResponse {
   readonly code?: string;
@@ -1352,11 +1310,11 @@ export interface ErrorResponse {
  * Describes the status of the test operation along with error information, if
  * applicable.
  *
- * @member {string} [status] The status of the test operation.
- * @member {object} [error] Describes the error that occurred.
- * @member {string} [error.code] Error code associated with the error that
+ * @property {string} [status] The status of the test operation.
+ * @property {object} [error] Describes the error that occurred.
+ * @property {string} [error.code] Error code associated with the error that
  * occurred.
- * @member {string} [error.message] Describes the error in detail.
+ * @property {string} [error.message] Describes the error in detail.
  */
 export interface ResourceTestStatus {
   readonly status?: string;
@@ -1365,12 +1323,60 @@ export interface ResourceTestStatus {
 
 /**
  * @class
+ * Initializes a new instance of the FunctionRetrieveDefaultDefinitionParameters class.
+ * @constructor
+ * Parameters used to specify the type of function to retrieve the default
+ * definition for.
+ *
+ * @property {string} bindingType Polymorphic Discriminator
+ */
+export interface FunctionRetrieveDefaultDefinitionParameters {
+  bindingType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureMachineLearningWebServiceFunctionRetrieveDefaultDefinitionParameters class.
+ * @constructor
+ * The parameters needed to retrieve the default function definition for an
+ * Azure Machine Learning web service function.
+ *
+ * @property {string} [executeEndpoint] The Request-Response execute endpoint
+ * of the Azure Machine Learning web service. Find out more here:
+ * https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-consume-web-services#request-response-service-rrs
+ * @property {string} [udfType] The function type. Possible values include:
+ * 'Scalar'
+ */
+export interface AzureMachineLearningWebServiceFunctionRetrieveDefaultDefinitionParameters extends FunctionRetrieveDefaultDefinitionParameters {
+  executeEndpoint?: string;
+  udfType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JavaScriptFunctionRetrieveDefaultDefinitionParameters class.
+ * @constructor
+ * The parameters needed to retrieve the default function definition for a
+ * JavaScript function.
+ *
+ * @property {string} [script] The JavaScript code containing a single function
+ * definition. For example: 'function (x, y) { return x + y; }'.
+ * @property {string} [udfType] The function type. Possible values include:
+ * 'Scalar'
+ */
+export interface JavaScriptFunctionRetrieveDefaultDefinitionParameters extends FunctionRetrieveDefaultDefinitionParameters {
+  script?: string;
+  udfType?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SubscriptionQuota class.
  * @constructor
  * Describes the current quota for the subscription.
  *
- * @member {number} [maxCount] The max permitted usage of this resource.
- * @member {number} [currentCount] The current usage of this resource.
+ * @property {number} [maxCount] The max permitted usage of this resource.
+ * @property {number} [currentCount] The current usage of this resource.
  */
 export interface SubscriptionQuota extends SubResource {
   readonly maxCount?: number;
@@ -1384,8 +1390,8 @@ export interface SubscriptionQuota extends SubResource {
  * Result of the GetQuotas operation. It contains a list of quotas for the
  * subscription in a particular region.
  *
- * @member {array} [value] List of quotas for the subscription in a particular
- * region.
+ * @property {array} [value] List of quotas for the subscription in a
+ * particular region.
  */
 export interface SubscriptionQuotasListResult {
   readonly value?: SubscriptionQuota[];
@@ -1399,7 +1405,7 @@ export interface SubscriptionQuotasListResult {
  * Result of the request to list Stream Analytics operations. It contains a
  * list of operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {
@@ -1412,7 +1418,7 @@ export interface OperationListResult extends Array<Operation> {
  * @constructor
  * Object containing a list of streaming jobs.
  *
- * @member {string} [nextLink] The link (url) to the next page of results.
+ * @property {string} [nextLink] The link (url) to the next page of results.
  */
 export interface StreamingJobListResult extends Array<StreamingJob> {
   readonly nextLink?: string;
@@ -1424,7 +1430,7 @@ export interface StreamingJobListResult extends Array<StreamingJob> {
  * @constructor
  * Object containing a list of inputs under a streaming job.
  *
- * @member {string} [nextLink] The link (url) to the next page of results.
+ * @property {string} [nextLink] The link (url) to the next page of results.
  */
 export interface InputListResult extends Array<Input> {
   readonly nextLink?: string;
@@ -1436,7 +1442,7 @@ export interface InputListResult extends Array<Input> {
  * @constructor
  * Object containing a list of outputs under a streaming job.
  *
- * @member {string} [nextLink] The link (url) to the next page of results.
+ * @property {string} [nextLink] The link (url) to the next page of results.
  */
 export interface OutputListResult extends Array<Output> {
   readonly nextLink?: string;
@@ -1448,7 +1454,7 @@ export interface OutputListResult extends Array<Output> {
  * @constructor
  * Object containing a list of functions under a streaming job.
  *
- * @member {string} [nextLink] The link (url) to the next page of results.
+ * @property {string} [nextLink] The link (url) to the next page of results.
  */
 export interface FunctionListResult extends Array<FunctionModel> {
   readonly nextLink?: string;

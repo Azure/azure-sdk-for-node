@@ -22,9 +22,9 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Resource model definition.
  *
- * @member {string} [id] Resource identifier.
- * @member {string} [type] Resource type.
- * @member {string} [name] Resource name.
+ * @property {string} [id] Resource identifier.
+ * @property {string} [type] Resource type.
+ * @property {string} [name] Resource name.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -38,10 +38,10 @@ export interface Resource extends BaseResource {
  * @constructor
  * Represents a reference to another resource.
  *
- * @member {string} id Resource URI.
- * @member {string} [type] Resource type qualifier.
- * @member {string} [name] Resource name.
- * @member {string} kind Polymorphic Discriminator
+ * @property {string} id Resource URI.
+ * @property {string} [type] Resource type qualifier.
+ * @property {string} [name] Resource name.
+ * @property {string} kind Polymorphic Discriminator
  */
 export interface ResourceReference {
   id: string;
@@ -66,7 +66,7 @@ export interface MachineReference extends ResourceReference {
  * @constructor
  * Reference to a process.
  *
- * @member {object} [machine] Machine hosting the process.
+ * @property {object} [machine] Machine hosting the process.
  */
 export interface ProcessReference extends ResourceReference {
   readonly machine?: MachineReference;
@@ -78,9 +78,9 @@ export interface ProcessReference extends ResourceReference {
  * @constructor
  * Reference to a port.
  *
- * @member {object} [machine] Machine hosting the port.
- * @member {string} [ipAddress] IP address of the port.
- * @member {number} [portNumber] Port number.
+ * @property {object} [machine] Machine hosting the port.
+ * @property {string} [ipAddress] IP address of the port.
+ * @property {number} [portNumber] Port number.
  */
 export interface PortReference extends ResourceReference {
   readonly machine?: MachineReference;
@@ -94,9 +94,9 @@ export interface PortReference extends ResourceReference {
  * @constructor
  * A machine reference with a hint of the machine's name and operating system.
  *
- * @member {string} [displayNameHint] Last known display name.
- * @member {string} [osFamilyHint] Last known operating system family. Possible
- * values include: 'unknown', 'windows', 'linux', 'solaris', 'aix'
+ * @property {string} [displayNameHint] Last known display name.
+ * @property {string} [osFamilyHint] Last known operating system family.
+ * Possible values include: 'unknown', 'windows', 'linux', 'solaris', 'aix'
  */
 export interface MachineReferenceWithHints extends ResourceReference {
   readonly displayNameHint?: string;
@@ -119,8 +119,8 @@ export interface ClientGroupReference extends ResourceReference {
  * @constructor
  * Marker resource for the core Service Map resources
  *
- * @member {string} [etag] Resource ETAG.
- * @member {string} kind Polymorphic Discriminator
+ * @property {string} [etag] Resource ETAG.
+ * @property {string} kind Polymorphic Discriminator
  */
 export interface CoreResource extends Resource {
   etag?: string;
@@ -133,7 +133,7 @@ export interface CoreResource extends Resource {
  * @constructor
  * Describes a timezone.
  *
- * @member {string} [fullName] Timezone full name.
+ * @property {string} [fullName] Timezone full name.
  */
 export interface Timezone {
   fullName?: string;
@@ -145,14 +145,15 @@ export interface Timezone {
  * @constructor
  * Describes the configuration of the Dependency Agent installed on a machine.
  *
- * @member {string} agentId Health Service Agent unique identifier.
- * @member {string} [dependencyAgentId] Dependency Agent unique identifier.
- * @member {string} [dependencyAgentVersion] Dependency Agent version number.
- * @member {string} [dependencyAgentRevision] Dependency Agent revision number.
- * @member {string} [rebootStatus] Specifies whether the machine has been
+ * @property {string} agentId Health Service Agent unique identifier.
+ * @property {string} [dependencyAgentId] Dependency Agent unique identifier.
+ * @property {string} [dependencyAgentVersion] Dependency Agent version number.
+ * @property {string} [dependencyAgentRevision] Dependency Agent revision
+ * number.
+ * @property {string} [rebootStatus] Specifies whether the machine has been
  * rebooted since the Dependency Agent installation. Possible values include:
  * 'unknown', 'rebooted', 'notRebooted'
- * @member {number} [clockGranularity] Machine clock granularity in
+ * @property {number} [clockGranularity] Machine clock granularity in
  * milliseconds.
  */
 export interface AgentConfiguration {
@@ -170,10 +171,10 @@ export interface AgentConfiguration {
  * @constructor
  * Describes the resources of a machine.
  *
- * @member {number} [physicalMemory] Physical memory in megabytes (MB).
- * @member {number} [cpus] Number of CPUs.
- * @member {number} [cpuSpeed] CPU speed in megahertz (Mhz).
- * @member {string} [cpuSpeedAccuracy] Describes the accuracy of the cpuSpeed
+ * @property {number} [physicalMemory] Physical memory in megabytes (MB).
+ * @property {number} [cpus] Number of CPUs.
+ * @property {number} [cpuSpeed] CPU speed in megahertz (Mhz).
+ * @property {string} [cpuSpeedAccuracy] Describes the accuracy of the cpuSpeed
  * field. Possible values include: 'actual', 'estimated'
  */
 export interface MachineResourcesConfiguration {
@@ -189,8 +190,8 @@ export interface MachineResourcesConfiguration {
  * @constructor
  * Describes an IPv4 network interface.
  *
- * @member {string} ipAddress IPv4 address.
- * @member {string} [subnetMask] IPv4 subnet mask. Default value:
+ * @property {string} ipAddress IPv4 address.
+ * @property {string} [subnetMask] IPv4 subnet mask. Default value:
  * '255.255.255.255' .
  */
 export interface Ipv4NetworkInterface {
@@ -204,7 +205,7 @@ export interface Ipv4NetworkInterface {
  * @constructor
  * Describes an IPv6 network interface.
  *
- * @member {string} ipAddress IPv6 address.
+ * @property {string} ipAddress IPv6 address.
  */
 export interface Ipv6NetworkInterface {
   ipAddress: string;
@@ -216,12 +217,12 @@ export interface Ipv6NetworkInterface {
  * @constructor
  * Describes the network configuration of a machine.
  *
- * @member {array} [ipv4Interfaces] IPv4 interfaces.
- * @member {array} [ipv6Interfaces] IPv6 interfaces.
- * @member {array} [defaultIpv4Gateways] Default IPv4 gateways.
- * @member {array} [macAddresses] MAC addresses of all active network
+ * @property {array} [ipv4Interfaces] IPv4 interfaces.
+ * @property {array} [ipv6Interfaces] IPv6 interfaces.
+ * @property {array} [defaultIpv4Gateways] Default IPv4 gateways.
+ * @property {array} [macAddresses] MAC addresses of all active network
  * interfaces.
- * @member {array} [dnsNames] DNS names associated with the machine.
+ * @property {array} [dnsNames] DNS names associated with the machine.
  */
 export interface NetworkConfiguration {
   ipv4Interfaces?: Ipv4NetworkInterface[];
@@ -237,10 +238,10 @@ export interface NetworkConfiguration {
  * @constructor
  * Describes the configuration of the operating system of a machine.
  *
- * @member {string} family Windows, Linux, etc. Possible values include:
+ * @property {string} family Windows, Linux, etc. Possible values include:
  * 'unknown', 'windows', 'linux', 'solaris', 'aix'
- * @member {string} fullName Operating system full name.
- * @member {string} bitness Operating system bitness (32-bit or 64-bit).
+ * @property {string} fullName Operating system full name.
+ * @property {string} bitness Operating system bitness (32-bit or 64-bit).
  * Possible values include: '32bit', '64bit'
  */
 export interface OperatingSystemConfiguration {
@@ -255,14 +256,14 @@ export interface OperatingSystemConfiguration {
  * @constructor
  * Describes the virtualizaton-related configuration of a machine.
  *
- * @member {string} [virtualMachineType] Specifies the virtualization
+ * @property {string} [virtualMachineType] Specifies the virtualization
  * technology used by the machine (hyperv, vmware, etc.). Possible values
  * include: 'unknown', 'hyperv', 'ldom', 'lpar', 'vmware', 'virtualPc', 'xen'
- * @member {string} [nativeMachineId] The unique identifier of the virtual
+ * @property {string} [nativeMachineId] The unique identifier of the virtual
  * machine as reported by the underlying virtualization sytem.
- * @member {string} [virtualMachineName] The Name of the virtual machine.
- * @member {string} [nativeHostMachineId] The unique identifier of the host of
- * this virtual machine as reported by the underlying virtualization system.
+ * @property {string} [virtualMachineName] The Name of the virtual machine.
+ * @property {string} [nativeHostMachineId] The unique identifier of the host
+ * of this virtual machine as reported by the underlying virtualization system.
  */
 export interface VirtualMachineConfiguration {
   virtualMachineType?: string;
@@ -277,10 +278,10 @@ export interface VirtualMachineConfiguration {
  * @constructor
  * Describes the hypervisor configuration of a machine.
  *
- * @member {string} [hypervisorType] Specifies the virtualization technology
+ * @property {string} [hypervisorType] Specifies the virtualization technology
  * used by the hypervisor (hyperv, vmware, etc.). Possible values include:
  * 'unknown', 'hyperv'
- * @member {string} [nativeHostMachineId] The unique identifier of the
+ * @property {string} [nativeHostMachineId] The unique identifier of the
  * hypervisor machine as reported by the underlying virtualization system.
  */
 export interface HypervisorConfiguration {
@@ -294,9 +295,9 @@ export interface HypervisorConfiguration {
  * @constructor
  * Describes the hosting configuration of a machine.
  *
- * @member {string} [provider] The hosting provider of the VM. Possible values
- * include: 'azure'
- * @member {string} kind Polymorphic Discriminator
+ * @property {string} [provider] The hosting provider of the VM. Possible
+ * values include: 'azure'
+ * @property {string} kind Polymorphic Discriminator
  */
 export interface HostingConfiguration {
   provider?: string;
@@ -316,79 +317,81 @@ export interface HostingConfiguration {
  * that interval, or a Dependency agent running on other machines has reported
  * activity associated with the machine.
  *
- * @member {date} [timestamp] UTC date and time when this resource was updated
- * in the system.
- * @member {string} [monitoringState] Specifies whether the machine is actively
- * monitored or discovered. Possible values include: 'monitored', 'discovered'
- * @member {string} [virtualizationState] Specifies whether the machine is
+ * @property {date} [timestamp] UTC date and time when this resource was
+ * updated in the system.
+ * @property {string} [monitoringState] Specifies whether the machine is
+ * actively monitored or discovered. Possible values include: 'monitored',
+ * 'discovered'
+ * @property {string} [virtualizationState] Specifies whether the machine is
  * virtualized. Possible values include: 'unknown', 'physical', 'virtual',
  * 'hypervisor'
- * @member {string} [displayName] Name to use for display purposes
- * @member {string} [computerName] Name of the machine, e.g., server
- * @member {string} [fullyQualifiedDomainName] Fully-qualified name of the
+ * @property {string} [displayName] Name to use for display purposes
+ * @property {string} [computerName] Name of the machine, e.g., server
+ * @property {string} [fullyQualifiedDomainName] Fully-qualified name of the
  * machine, e.g., server.company.com
- * @member {date} [bootTime] UTC date and time when the machine last booted
- * @member {object} [timezone] Timezone of the machine.
- * @member {string} [timezone.fullName] Timezone full name.
- * @member {object} [agent] Dependency Agent configuration.
- * @member {string} [agent.agentId] Health Service Agent unique identifier.
- * @member {string} [agent.dependencyAgentId] Dependency Agent unique
+ * @property {date} [bootTime] UTC date and time when the machine last booted
+ * @property {object} [timezone] Timezone of the machine.
+ * @property {string} [timezone.fullName] Timezone full name.
+ * @property {object} [agent] Dependency Agent configuration.
+ * @property {string} [agent.agentId] Health Service Agent unique identifier.
+ * @property {string} [agent.dependencyAgentId] Dependency Agent unique
  * identifier.
- * @member {string} [agent.dependencyAgentVersion] Dependency Agent version
+ * @property {string} [agent.dependencyAgentVersion] Dependency Agent version
  * number.
- * @member {string} [agent.dependencyAgentRevision] Dependency Agent revision
+ * @property {string} [agent.dependencyAgentRevision] Dependency Agent revision
  * number.
- * @member {string} [agent.rebootStatus] Specifies whether the machine has been
- * rebooted since the Dependency Agent installation. Possible values include:
- * 'unknown', 'rebooted', 'notRebooted'
- * @member {number} [agent.clockGranularity] Machine clock granularity in
+ * @property {string} [agent.rebootStatus] Specifies whether the machine has
+ * been rebooted since the Dependency Agent installation. Possible values
+ * include: 'unknown', 'rebooted', 'notRebooted'
+ * @property {number} [agent.clockGranularity] Machine clock granularity in
  * milliseconds.
- * @member {object} [resources] Machine resources (memory, cpu, etc.).
- * @member {number} [resources.physicalMemory] Physical memory in megabytes
+ * @property {object} [resources] Machine resources (memory, cpu, etc.).
+ * @property {number} [resources.physicalMemory] Physical memory in megabytes
  * (MB).
- * @member {number} [resources.cpus] Number of CPUs.
- * @member {number} [resources.cpuSpeed] CPU speed in megahertz (Mhz).
- * @member {string} [resources.cpuSpeedAccuracy] Describes the accuracy of the
- * cpuSpeed field. Possible values include: 'actual', 'estimated'
- * @member {object} [networking] Network configuration (ips, gateways, dns,
+ * @property {number} [resources.cpus] Number of CPUs.
+ * @property {number} [resources.cpuSpeed] CPU speed in megahertz (Mhz).
+ * @property {string} [resources.cpuSpeedAccuracy] Describes the accuracy of
+ * the cpuSpeed field. Possible values include: 'actual', 'estimated'
+ * @property {object} [networking] Network configuration (ips, gateways, dns,
  * etc.)
- * @member {array} [networking.ipv4Interfaces] IPv4 interfaces.
- * @member {array} [networking.ipv6Interfaces] IPv6 interfaces.
- * @member {array} [networking.defaultIpv4Gateways] Default IPv4 gateways.
- * @member {array} [networking.macAddresses] MAC addresses of all active
+ * @property {array} [networking.ipv4Interfaces] IPv4 interfaces.
+ * @property {array} [networking.ipv6Interfaces] IPv6 interfaces.
+ * @property {array} [networking.defaultIpv4Gateways] Default IPv4 gateways.
+ * @property {array} [networking.macAddresses] MAC addresses of all active
  * network interfaces.
- * @member {array} [networking.dnsNames] DNS names associated with the machine.
- * @member {object} [operatingSystem] Operating system information.
- * @member {string} [operatingSystem.family] Windows, Linux, etc. Possible
+ * @property {array} [networking.dnsNames] DNS names associated with the
+ * machine.
+ * @property {object} [operatingSystem] Operating system information.
+ * @property {string} [operatingSystem.family] Windows, Linux, etc. Possible
  * values include: 'unknown', 'windows', 'linux', 'solaris', 'aix'
- * @member {string} [operatingSystem.fullName] Operating system full name.
- * @member {string} [operatingSystem.bitness] Operating system bitness (32-bit
- * or 64-bit). Possible values include: '32bit', '64bit'
- * @member {object} [virtualMachine] Virtualization-related configuration.
+ * @property {string} [operatingSystem.fullName] Operating system full name.
+ * @property {string} [operatingSystem.bitness] Operating system bitness
+ * (32-bit or 64-bit). Possible values include: '32bit', '64bit'
+ * @property {object} [virtualMachine] Virtualization-related configuration.
  * Present only when `virtualizationState` is `virtual`.
- * @member {string} [virtualMachine.virtualMachineType] Specifies the
+ * @property {string} [virtualMachine.virtualMachineType] Specifies the
  * virtualization technology used by the machine (hyperv, vmware, etc.).
  * Possible values include: 'unknown', 'hyperv', 'ldom', 'lpar', 'vmware',
  * 'virtualPc', 'xen'
- * @member {string} [virtualMachine.nativeMachineId] The unique identifier of
+ * @property {string} [virtualMachine.nativeMachineId] The unique identifier of
  * the virtual machine as reported by the underlying virtualization sytem.
- * @member {string} [virtualMachine.virtualMachineName] The Name of the virtual
- * machine.
- * @member {string} [virtualMachine.nativeHostMachineId] The unique identifier
- * of the host of this virtual machine as reported by the underlying
+ * @property {string} [virtualMachine.virtualMachineName] The Name of the
+ * virtual machine.
+ * @property {string} [virtualMachine.nativeHostMachineId] The unique
+ * identifier of the host of this virtual machine as reported by the underlying
  * virtualization system.
- * @member {object} [hypervisor] Hypervisor-related configuration. Present only
- * when 'virtualizationState' is `hypervisor`.
- * @member {string} [hypervisor.hypervisorType] Specifies the virtualization
+ * @property {object} [hypervisor] Hypervisor-related configuration. Present
+ * only when 'virtualizationState' is `hypervisor`.
+ * @property {string} [hypervisor.hypervisorType] Specifies the virtualization
  * technology used by the hypervisor (hyperv, vmware, etc.). Possible values
  * include: 'unknown', 'hyperv'
- * @member {string} [hypervisor.nativeHostMachineId] The unique identifier of
+ * @property {string} [hypervisor.nativeHostMachineId] The unique identifier of
  * the hypervisor machine as reported by the underlying virtualization system.
- * @member {object} [hosting] Hosting-related configuration. Present if hosting
- * information is discovered for the VM.
- * @member {string} [hosting.provider] The hosting provider of the VM. Possible
- * values include: 'azure'
- * @member {string} [hosting.kind] Polymorphic Discriminator
+ * @property {object} [hosting] Hosting-related configuration. Present if
+ * hosting information is discovered for the VM.
+ * @property {string} [hosting.provider] The hosting provider of the VM.
+ * Possible values include: 'azure'
+ * @property {string} [hosting.kind] Polymorphic Discriminator
  */
 export interface Machine extends CoreResource {
   timestamp?: Date;
@@ -414,8 +417,8 @@ export interface Machine extends CoreResource {
  * @constructor
  * A service hosted by a process.
  *
- * @member {string} [name] The name of the service.
- * @member {string} [displayName] The service's display name.
+ * @property {string} [name] The name of the service.
+ * @property {string} [displayName] The service's display name.
  */
 export interface ProcessHostedService {
   name?: string;
@@ -428,25 +431,25 @@ export interface ProcessHostedService {
  * @constructor
  * Describes process metadata.
  *
- * @member {string} [persistentKey] A unique indentifier for a process,
+ * @property {string} [persistentKey] A unique indentifier for a process,
  * generally resilient to process restart, computed by Service Map.
- * @member {number} [poolId] Represents the identity of the process pool
+ * @property {number} [poolId] Represents the identity of the process pool
  * assigned to the process by Dependency Agent.
- * @member {number} [firstPid] The Operating System Process Idendifier (PID) of
- * the first process in this process pool.
- * @member {string} [description] Process description.
- * @member {string} [companyName] Name of company that created the process
+ * @property {number} [firstPid] The Operating System Process Idendifier (PID)
+ * of the first process in this process pool.
+ * @property {string} [description] Process description.
+ * @property {string} [companyName] Name of company that created the process
  * executable.
- * @member {string} [internalName] Internal process name.
- * @member {string} [productName] Product name.
- * @member {string} [productVersion] Product version.
- * @member {string} [fileVersion] File version.
- * @member {string} [commandLine] Process command line.
- * @member {string} [executablePath] Process executable path.
- * @member {string} [workingDirectory] Process workingDirectory.
- * @member {array} [services] Collection of services hosted by this Process
+ * @property {string} [internalName] Internal process name.
+ * @property {string} [productName] Product name.
+ * @property {string} [productVersion] Product version.
+ * @property {string} [fileVersion] File version.
+ * @property {string} [commandLine] Process command line.
+ * @property {string} [executablePath] Process executable path.
+ * @property {string} [workingDirectory] Process workingDirectory.
+ * @property {array} [services] Collection of services hosted by this Process
  * (Windows only).
- * @member {string} [zoneName] Process zone name (Linux only).
+ * @property {string} [zoneName] Process zone name (Linux only).
  */
 export interface ProcessDetails {
   persistentKey?: string;
@@ -471,8 +474,8 @@ export interface ProcessDetails {
  * @constructor
  * Describes the user under which a process is running.
  *
- * @member {string} [userName] User name under which the process is running.
- * @member {string} [userDomain] Domain name for the user.
+ * @property {string} [userName] User name under which the process is running.
+ * @property {string} [userDomain] Domain name for the user.
  */
 export interface ProcessUser {
   userName?: string;
@@ -485,9 +488,9 @@ export interface ProcessUser {
  * @constructor
  * Describes the hosting configuration of a process.
  *
- * @member {string} [provider] The hosting provider of the VM. Possible values
- * include: 'azure'
- * @member {string} kind Polymorphic Discriminator
+ * @property {string} [provider] The hosting provider of the VM. Possible
+ * values include: 'azure'
+ * @property {string} kind Polymorphic Discriminator
  */
 export interface ProcessHostingConfiguration {
   provider?: string;
@@ -507,67 +510,68 @@ export interface ProcessHostingConfiguration {
  * are preserved and available for access. A process is live during an interval
  * of time, if that process is executing during (parts) of that interval
  *
- * @member {date} [timestamp] UTC date and time when this process resource was
- * updated in the system
- * @member {string} [monitoringState] Specifies whether the process is actively
- * monitored or discovered. Possible values include: 'monitored', 'discovered'
- * @member {object} [machine] Machine hosting this process.
- * @member {string} [machine.id] Resource URI.
- * @member {string} [machine.type] Resource type qualifier.
- * @member {string} [machine.name] Resource name.
- * @member {string} [machine.kind] Polymorphic Discriminator
- * @member {string} [executableName] The name of the process executable
- * @member {string} [displayName] Name to use for display purposes
- * @member {date} [startTime] UTC date and time when the process started
- * @member {string} [role] The inferred role of this process based on its name,
- * command line, etc. Possible values include: 'webServer', 'appServer',
+ * @property {date} [timestamp] UTC date and time when this process resource
+ * was updated in the system
+ * @property {string} [monitoringState] Specifies whether the process is
+ * actively monitored or discovered. Possible values include: 'monitored',
+ * 'discovered'
+ * @property {object} [machine] Machine hosting this process.
+ * @property {string} [machine.id] Resource URI.
+ * @property {string} [machine.type] Resource type qualifier.
+ * @property {string} [machine.name] Resource name.
+ * @property {string} [machine.kind] Polymorphic Discriminator
+ * @property {string} [executableName] The name of the process executable
+ * @property {string} [displayName] Name to use for display purposes
+ * @property {date} [startTime] UTC date and time when the process started
+ * @property {string} [role] The inferred role of this process based on its
+ * name, command line, etc. Possible values include: 'webServer', 'appServer',
  * 'databaseServer', 'ldapServer', 'smbServer'
- * @member {string} [group] The name of the product or suite of the process.
+ * @property {string} [group] The name of the product or suite of the process.
  * The group is determined by its executable name, command line, etc.
- * @member {object} [details] Process metadata (command line, product name,
+ * @property {object} [details] Process metadata (command line, product name,
  * etc.).
- * @member {string} [details.persistentKey] A unique indentifier for a process,
- * generally resilient to process restart, computed by Service Map.
- * @member {number} [details.poolId] Represents the identity of the process
+ * @property {string} [details.persistentKey] A unique indentifier for a
+ * process, generally resilient to process restart, computed by Service Map.
+ * @property {number} [details.poolId] Represents the identity of the process
  * pool assigned to the process by Dependency Agent.
- * @member {number} [details.firstPid] The Operating System Process Idendifier
- * (PID) of the first process in this process pool.
- * @member {string} [details.description] Process description.
- * @member {string} [details.companyName] Name of company that created the
+ * @property {number} [details.firstPid] The Operating System Process
+ * Idendifier (PID) of the first process in this process pool.
+ * @property {string} [details.description] Process description.
+ * @property {string} [details.companyName] Name of company that created the
  * process executable.
- * @member {string} [details.internalName] Internal process name.
- * @member {string} [details.productName] Product name.
- * @member {string} [details.productVersion] Product version.
- * @member {string} [details.fileVersion] File version.
- * @member {string} [details.commandLine] Process command line.
- * @member {string} [details.executablePath] Process executable path.
- * @member {string} [details.workingDirectory] Process workingDirectory.
- * @member {array} [details.services] Collection of services hosted by this
+ * @property {string} [details.internalName] Internal process name.
+ * @property {string} [details.productName] Product name.
+ * @property {string} [details.productVersion] Product version.
+ * @property {string} [details.fileVersion] File version.
+ * @property {string} [details.commandLine] Process command line.
+ * @property {string} [details.executablePath] Process executable path.
+ * @property {string} [details.workingDirectory] Process workingDirectory.
+ * @property {array} [details.services] Collection of services hosted by this
  * Process (Windows only).
- * @member {string} [details.zoneName] Process zone name (Linux only).
- * @member {object} [user] Information about the account under which the
+ * @property {string} [details.zoneName] Process zone name (Linux only).
+ * @property {object} [user] Information about the account under which the
  * process is executing.
- * @member {string} [user.userName] User name under which the process is
+ * @property {string} [user.userName] User name under which the process is
  * running.
- * @member {string} [user.userDomain] Domain name for the user.
- * @member {object} [clientOf] Present only for a discovered process acting as
- * a client of a monitored process/machine/port. References the monitored
+ * @property {string} [user.userDomain] Domain name for the user.
+ * @property {object} [clientOf] Present only for a discovered process acting
+ * as a client of a monitored process/machine/port. References the monitored
  * process/machine/port that this process is a client of.
- * @member {string} [clientOf.id] Resource URI.
- * @member {string} [clientOf.type] Resource type qualifier.
- * @member {string} [clientOf.name] Resource name.
- * @member {string} [clientOf.kind] Polymorphic Discriminator
- * @member {object} [acceptorOf] Present only for a discovered process acting
+ * @property {string} [clientOf.id] Resource URI.
+ * @property {string} [clientOf.type] Resource type qualifier.
+ * @property {string} [clientOf.name] Resource name.
+ * @property {string} [clientOf.kind] Polymorphic Discriminator
+ * @property {object} [acceptorOf] Present only for a discovered process acting
  * as a server. References the port on which the discovered process is
  * accepting.
- * @member {string} [acceptorOf.id] Resource URI.
- * @member {string} [acceptorOf.type] Resource type qualifier.
- * @member {string} [acceptorOf.name] Resource name.
- * @member {string} [acceptorOf.kind] Polymorphic Discriminator
- * @member {object} [hosting] Information about the hosting environment
- * @member {string} [hosting.provider] The hosting provider of the VM. Possible
- * values include: 'azure'
- * @member {string} [hosting.kind] Polymorphic Discriminator
+ * @property {string} [acceptorOf.id] Resource URI.
+ * @property {string} [acceptorOf.type] Resource type qualifier.
+ * @property {string} [acceptorOf.name] Resource name.
+ * @property {string} [acceptorOf.kind] Polymorphic Discriminator
+ * @property {object} [hosting] Information about the hosting environment
+ * @property {string} [hosting.provider] The hosting provider of the VM.
+ * Possible values include: 'azure'
+ * @property {string} [hosting.kind] Polymorphic Discriminator
  */
 export interface Process extends CoreResource {
   timestamp?: Date;
@@ -595,17 +599,17 @@ export interface Process extends CoreResource {
  * from monitored machines. A port is live during an interval of time, if that
  * port had associated activity during (parts) of that interval.
  *
- * @member {string} [monitoringState] Specifies whether the port is actively
+ * @property {string} [monitoringState] Specifies whether the port is actively
  * monitored or discovered. Possible values include: 'monitored', 'discovered'
- * @member {object} [machine] Machine hosting this port.
- * @member {string} [machine.id] Resource URI.
- * @member {string} [machine.type] Resource type qualifier.
- * @member {string} [machine.name] Resource name.
- * @member {string} [machine.kind] Polymorphic Discriminator
- * @member {string} [displayName] Name to use for display purposes.
- * @member {string} [ipAddress] IP address associated with the port. At present
- * only IPv4 addresses are supported.
- * @member {number} [portNumber] Port number.
+ * @property {object} [machine] Machine hosting this port.
+ * @property {string} [machine.id] Resource URI.
+ * @property {string} [machine.type] Resource type qualifier.
+ * @property {string} [machine.name] Resource name.
+ * @property {string} [machine.kind] Polymorphic Discriminator
+ * @property {string} [displayName] Name to use for display purposes.
+ * @property {string} [ipAddress] IP address associated with the port. At
+ * present only IPv4 addresses are supported.
+ * @property {number} [portNumber] Port number.
  */
 export interface Port extends CoreResource {
   monitoringState?: string;
@@ -622,12 +626,12 @@ export interface Port extends CoreResource {
  * Represents a collection of clients of a resource. A client group can
  * represent the clients of a port, process, or a machine.
  *
- * @member {object} clientsOf Reference to the resource whose clients are
+ * @property {object} clientsOf Reference to the resource whose clients are
  * represented by this group.
- * @member {string} [clientsOf.id] Resource URI.
- * @member {string} [clientsOf.type] Resource type qualifier.
- * @member {string} [clientsOf.name] Resource name.
- * @member {string} [clientsOf.kind] Polymorphic Discriminator
+ * @property {string} [clientsOf.id] Resource URI.
+ * @property {string} [clientsOf.type] Resource type qualifier.
+ * @property {string} [clientsOf.name] Resource name.
+ * @property {string} [clientsOf.kind] Polymorphic Discriminator
  */
 export interface ClientGroup extends CoreResource {
   clientsOf: ResourceReference;
@@ -639,12 +643,12 @@ export interface ClientGroup extends CoreResource {
  * @constructor
  * Represents a member of a client group
  *
- * @member {string} [ipAddress] IP address.
- * @member {object} [port] Port into which this client connected
- * @member {object} [port.machine] Machine hosting the port.
- * @member {string} [port.ipAddress] IP address of the port.
- * @member {number} [port.portNumber] Port number.
- * @member {array} [processes] Processes accepting on the above port that
+ * @property {string} [ipAddress] IP address.
+ * @property {object} [port] Port into which this client connected
+ * @property {object} [port.machine] Machine hosting the port.
+ * @property {string} [port.ipAddress] IP address of the port.
+ * @property {number} [port.portNumber] Port number.
+ * @property {array} [processes] Processes accepting on the above port that
  * received connections from this client.
  */
 export interface ClientGroupMember extends Resource {
@@ -659,13 +663,14 @@ export interface ClientGroupMember extends Resource {
  * @constructor
  * A user-defined logical grouping of machines.
  *
- * @member {string} [groupType] Type of the machine group. Possible values
+ * @property {string} [groupType] Type of the machine group. Possible values
  * include: 'unknown', 'azure-cs', 'azure-sf', 'azure-vmss', 'user-static'
- * @member {string} displayName User defined name for the group
- * @member {number} [count] Count of machines in this group. The value of count
- * may be bigger than the number of machines in case of the group has been
- * truncated due to exceeding the max number of machines a group can handle.
- * @member {array} [machines] References of the machines in this group. The
+ * @property {string} displayName User defined name for the group
+ * @property {number} [count] Count of machines in this group. The value of
+ * count may be bigger than the number of machines in case of the group has
+ * been truncated due to exceeding the max number of machines a group can
+ * handle.
+ * @property {array} [machines] References of the machines in this group. The
  * hints within each reference do not represent the current value of the
  * corresponding fields. They are a snapshot created during the last time the
  * machine group was updated.
@@ -693,8 +698,8 @@ export interface Summary extends Resource {
  * @constructor
  * Machines by operating system.
  *
- * @member {number} windows Number of live Windows machines.
- * @member {number} linux Number of live Linux machines.
+ * @property {number} windows Number of live Windows machines.
+ * @property {number} linux Number of live Linux machines.
  */
 export interface MachineCountsByOperatingSystem {
   windows: number;
@@ -707,13 +712,13 @@ export interface MachineCountsByOperatingSystem {
  * @constructor
  * A summary of the machines in the workspace.
  *
- * @member {date} startTime Summary interval start time.
- * @member {date} endTime Summary interval end time.
- * @member {number} total Total number of machines.
- * @member {number} live Number of live machines.
- * @member {object} os Machine counts by operating system.
- * @member {number} [os.windows] Number of live Windows machines.
- * @member {number} [os.linux] Number of live Linux machines.
+ * @property {date} startTime Summary interval start time.
+ * @property {date} endTime Summary interval end time.
+ * @property {number} total Total number of machines.
+ * @property {number} live Number of live machines.
+ * @property {object} os Machine counts by operating system.
+ * @property {number} [os.windows] Number of live Windows machines.
+ * @property {number} [os.linux] Number of live Linux machines.
  */
 export interface MachinesSummary extends Summary {
   startTime: Date;
@@ -729,7 +734,7 @@ export interface MachinesSummary extends Summary {
  * @constructor
  * A typed relationship between two entities.
  *
- * @member {string} kind Polymorphic Discriminator
+ * @property {string} kind Polymorphic Discriminator
  */
 export interface Relationship extends Resource {
   kind: string;
@@ -741,26 +746,26 @@ export interface Relationship extends Resource {
  * @constructor
  * A network connection.
  *
- * @member {object} source Source resource of the relationship.
- * @member {string} [source.id] Resource URI.
- * @member {string} [source.type] Resource type qualifier.
- * @member {string} [source.name] Resource name.
- * @member {string} [source.kind] Polymorphic Discriminator
- * @member {object} destination Destination resource of the relationship.
- * @member {string} [destination.id] Resource URI.
- * @member {string} [destination.type] Resource type qualifier.
- * @member {string} [destination.name] Resource name.
- * @member {string} [destination.kind] Polymorphic Discriminator
- * @member {date} [startTime] Relationship start time.
- * @member {date} [endTime] Relationship end time.
- * @member {object} [serverPort] Reference to the server port via which this
+ * @property {object} source Source resource of the relationship.
+ * @property {string} [source.id] Resource URI.
+ * @property {string} [source.type] Resource type qualifier.
+ * @property {string} [source.name] Resource name.
+ * @property {string} [source.kind] Polymorphic Discriminator
+ * @property {object} destination Destination resource of the relationship.
+ * @property {string} [destination.id] Resource URI.
+ * @property {string} [destination.type] Resource type qualifier.
+ * @property {string} [destination.name] Resource name.
+ * @property {string} [destination.kind] Polymorphic Discriminator
+ * @property {date} [startTime] Relationship start time.
+ * @property {date} [endTime] Relationship end time.
+ * @property {object} [serverPort] Reference to the server port via which this
  * connection has been established.
- * @member {object} [serverPort.machine] Machine hosting the port.
- * @member {string} [serverPort.ipAddress] IP address of the port.
- * @member {number} [serverPort.portNumber] Port number.
- * @member {string} [failureState] Specifies whether there are only successful,
- * failed or a mixture of both connections represented by this resource.
- * Possible values include: 'ok', 'failed', 'mixed'
+ * @property {object} [serverPort.machine] Machine hosting the port.
+ * @property {string} [serverPort.ipAddress] IP address of the port.
+ * @property {number} [serverPort.portNumber] Port number.
+ * @property {string} [failureState] Specifies whether there are only
+ * successful, failed or a mixture of both connections represented by this
+ * resource. Possible values include: 'ok', 'failed', 'mixed'
  */
 export interface Connection extends Relationship {
   source: ResourceReference;
@@ -777,14 +782,14 @@ export interface Connection extends Relationship {
  * @constructor
  * A process accepting on a port.
  *
- * @member {object} source Port being accepted.
- * @member {object} [source.machine] Machine hosting the port.
- * @member {string} [source.ipAddress] IP address of the port.
- * @member {number} [source.portNumber] Port number.
- * @member {object} destination Accepting process.
- * @member {object} [destination.machine] Machine hosting the process.
- * @member {date} [startTime] Relationship start time.
- * @member {date} [endTime] Relationship end time.
+ * @property {object} source Port being accepted.
+ * @property {object} [source.machine] Machine hosting the port.
+ * @property {string} [source.ipAddress] IP address of the port.
+ * @property {number} [source.portNumber] Port number.
+ * @property {object} destination Accepting process.
+ * @property {object} [destination.machine] Machine hosting the process.
+ * @property {date} [startTime] Relationship start time.
+ * @property {date} [endTime] Relationship end time.
  */
 export interface Acceptor extends Relationship {
   source: PortReference;
@@ -799,8 +804,8 @@ export interface Acceptor extends Relationship {
  * @constructor
  * Base for all summaries.
  *
- * @member {date} startTime Summary interval start time.
- * @member {date} endTime Summary interval end time.
+ * @property {date} startTime Summary interval start time.
+ * @property {date} endTime Summary interval end time.
  */
 export interface SummaryProperties {
   startTime: Date;
@@ -813,18 +818,18 @@ export interface SummaryProperties {
  * @constructor
  * Relationship properties.
  *
- * @member {object} source Source resource of the relationship.
- * @member {string} [source.id] Resource URI.
- * @member {string} [source.type] Resource type qualifier.
- * @member {string} [source.name] Resource name.
- * @member {string} [source.kind] Polymorphic Discriminator
- * @member {object} destination Destination resource of the relationship.
- * @member {string} [destination.id] Resource URI.
- * @member {string} [destination.type] Resource type qualifier.
- * @member {string} [destination.name] Resource name.
- * @member {string} [destination.kind] Polymorphic Discriminator
- * @member {date} [startTime] Relationship start time.
- * @member {date} [endTime] Relationship end time.
+ * @property {object} source Source resource of the relationship.
+ * @property {string} [source.id] Resource URI.
+ * @property {string} [source.type] Resource type qualifier.
+ * @property {string} [source.name] Resource name.
+ * @property {string} [source.kind] Polymorphic Discriminator
+ * @property {object} destination Destination resource of the relationship.
+ * @property {string} [destination.id] Resource URI.
+ * @property {string} [destination.type] Resource type qualifier.
+ * @property {string} [destination.name] Resource name.
+ * @property {string} [destination.kind] Polymorphic Discriminator
+ * @property {date} [startTime] Relationship start time.
+ * @property {date} [endTime] Relationship end time.
  */
 export interface RelationshipProperties {
   source: ResourceReference;
@@ -839,10 +844,10 @@ export interface RelationshipProperties {
  * @constructor
  * Describes the VM image of a machine.
  *
- * @member {string} [publisher] Publisher of the VM image.
- * @member {string} [offering] Offering of the VM image.
- * @member {string} [sku] SKU of the VM image.
- * @member {string} [version] Version of the VM image.
+ * @property {string} [publisher] Publisher of the VM image.
+ * @property {string} [offering] Offering of the VM image.
+ * @property {string} [sku] SKU of the VM image.
+ * @property {string} [version] Version of the VM image.
  */
 export interface ImageConfiguration {
   publisher?: string;
@@ -857,11 +862,11 @@ export interface ImageConfiguration {
  * @constructor
  * Describes an Azure Cloud Service
  *
- * @member {string} [name] Cloud Service name
- * @member {string} [instanceId] Cloud Service instance identifier
- * @member {string} [deployment] Cloud Service deployment identifier
- * @member {string} [roleName] Cloud Service role name
- * @member {string} [roleType] Used to specify type of an Azure Cloud Service
+ * @property {string} [name] Cloud Service name
+ * @property {string} [instanceId] Cloud Service instance identifier
+ * @property {string} [deployment] Cloud Service deployment identifier
+ * @property {string} [roleName] Cloud Service role name
+ * @property {string} [roleType] Used to specify type of an Azure Cloud Service
  * role. Possible values include: 'unknown', 'worker', 'web'
  */
 export interface AzureCloudServiceConfiguration {
@@ -878,11 +883,12 @@ export interface AzureCloudServiceConfiguration {
  * @constructor
  * Describes an Azure Virtual Machine Scale Set
  *
- * @member {string} [name] Virtual Machine Scale Set name
- * @member {string} [instanceId] Virtual Machine Scale Set instance identifier
- * @member {string} [deployment] Virtual Machine Scale Set deployment
+ * @property {string} [name] Virtual Machine Scale Set name
+ * @property {string} [instanceId] Virtual Machine Scale Set instance
  * identifier
- * @member {string} [resourceId] Unique identifier of the resource.
+ * @property {string} [deployment] Virtual Machine Scale Set deployment
+ * identifier
+ * @property {string} [resourceId] Unique identifier of the resource.
  */
 export interface AzureVmScaleSetConfiguration {
   name?: string;
@@ -897,8 +903,8 @@ export interface AzureVmScaleSetConfiguration {
  * @constructor
  * Describes an Azure Service Fabric Cluster
  *
- * @member {string} [name] Service Fabric cluster name.
- * @member {string} [clusterId] Service Fabric cluster indentifier.
+ * @property {string} [name] Service Fabric cluster name.
+ * @property {string} [clusterId] Service Fabric cluster indentifier.
  */
 export interface AzureServiceFabricClusterConfiguration {
   name?: string;
@@ -911,42 +917,44 @@ export interface AzureServiceFabricClusterConfiguration {
  * @constructor
  * Provides information about how a machine is hosted in Azure
  *
- * @member {string} [vmId] Virtual Machine ID (unique identifier).
- * @member {string} [location] Geographical location of the VM.
- * @member {string} [name] Machine name according to the hosting provider.
- * @member {string} [size] Size of the VM.
- * @member {string} [updateDomain] Update domain of the VM.
- * @member {string} [faultDomain] Fault domain of the VM.
- * @member {string} [subscriptionId] Subscription ID.
- * @member {string} [resourceGroup] Resource group name within the specified
+ * @property {string} [vmId] Virtual Machine ID (unique identifier).
+ * @property {string} [location] Geographical location of the VM.
+ * @property {string} [name] Machine name according to the hosting provider.
+ * @property {string} [size] Size of the VM.
+ * @property {string} [updateDomain] Update domain of the VM.
+ * @property {string} [faultDomain] Fault domain of the VM.
+ * @property {string} [subscriptionId] Subscription ID.
+ * @property {string} [resourceGroup] Resource group name within the specified
  * subscription.
- * @member {string} [resourceId] Unique identifier of the resource.
- * @member {object} [image] Image of the machine.
- * @member {string} [image.publisher] Publisher of the VM image.
- * @member {string} [image.offering] Offering of the VM image.
- * @member {string} [image.sku] SKU of the VM image.
- * @member {string} [image.version] Version of the VM image.
- * @member {object} [cloudService] Contains information about machines hosted
+ * @property {string} [resourceId] Unique identifier of the resource.
+ * @property {object} [image] Image of the machine.
+ * @property {string} [image.publisher] Publisher of the VM image.
+ * @property {string} [image.offering] Offering of the VM image.
+ * @property {string} [image.sku] SKU of the VM image.
+ * @property {string} [image.version] Version of the VM image.
+ * @property {object} [cloudService] Contains information about machines hosted
  * as an Azure Cloud Service
- * @member {string} [cloudService.name] Cloud Service name
- * @member {string} [cloudService.instanceId] Cloud Service instance identifier
- * @member {string} [cloudService.deployment] Cloud Service deployment
+ * @property {string} [cloudService.name] Cloud Service name
+ * @property {string} [cloudService.instanceId] Cloud Service instance
  * identifier
- * @member {string} [cloudService.roleName] Cloud Service role name
- * @member {string} [cloudService.roleType] Used to specify type of an Azure
+ * @property {string} [cloudService.deployment] Cloud Service deployment
+ * identifier
+ * @property {string} [cloudService.roleName] Cloud Service role name
+ * @property {string} [cloudService.roleType] Used to specify type of an Azure
  * Cloud Service role. Possible values include: 'unknown', 'worker', 'web'
- * @member {object} [vmScaleSet] Contains information about machines hosted as
- * an Azure Virtual Machine Scale Set
- * @member {string} [vmScaleSet.name] Virtual Machine Scale Set name
- * @member {string} [vmScaleSet.instanceId] Virtual Machine Scale Set instance
- * identifier
- * @member {string} [vmScaleSet.deployment] Virtual Machine Scale Set
+ * @property {object} [vmScaleSet] Contains information about machines hosted
+ * as an Azure Virtual Machine Scale Set
+ * @property {string} [vmScaleSet.name] Virtual Machine Scale Set name
+ * @property {string} [vmScaleSet.instanceId] Virtual Machine Scale Set
+ * instance identifier
+ * @property {string} [vmScaleSet.deployment] Virtual Machine Scale Set
  * deployment identifier
- * @member {string} [vmScaleSet.resourceId] Unique identifier of the resource.
- * @member {object} [serviceFabricCluster] Contains information about machines
- * that belong an Azure Service Fabric Cluster
- * @member {string} [serviceFabricCluster.name] Service Fabric cluster name.
- * @member {string} [serviceFabricCluster.clusterId] Service Fabric cluster
+ * @property {string} [vmScaleSet.resourceId] Unique identifier of the
+ * resource.
+ * @property {object} [serviceFabricCluster] Contains information about
+ * machines that belong an Azure Service Fabric Cluster
+ * @property {string} [serviceFabricCluster.name] Service Fabric cluster name.
+ * @property {string} [serviceFabricCluster.clusterId] Service Fabric cluster
  * indentifier.
  */
 export interface AzureHostingConfiguration extends HostingConfiguration {
@@ -971,14 +979,15 @@ export interface AzureHostingConfiguration extends HostingConfiguration {
  * @constructor
  * Describes the hosting configuration of a process when hosted on azure
  *
- * @member {object} [cloudService] Contains information about the cloud service
- * the process belongs to
- * @member {string} [cloudService.name] Cloud Service name
- * @member {string} [cloudService.instanceId] Cloud Service instance identifier
- * @member {string} [cloudService.deployment] Cloud Service deployment
+ * @property {object} [cloudService] Contains information about the cloud
+ * service the process belongs to
+ * @property {string} [cloudService.name] Cloud Service name
+ * @property {string} [cloudService.instanceId] Cloud Service instance
  * identifier
- * @member {string} [cloudService.roleName] Cloud Service role name
- * @member {string} [cloudService.roleType] Used to specify type of an Azure
+ * @property {string} [cloudService.deployment] Cloud Service deployment
+ * identifier
+ * @property {string} [cloudService.roleName] Cloud Service role name
+ * @property {string} [cloudService.roleType] Used to specify type of an Azure
  * Cloud Service role. Possible values include: 'unknown', 'worker', 'web'
  */
 export interface AzureProcessHostingConfiguration extends ProcessHostingConfiguration {
@@ -991,10 +1000,10 @@ export interface AzureProcessHostingConfiguration extends ProcessHostingConfigur
  * @constructor
  * The nodes (entities) of a map.
  *
- * @member {array} [machines] Machine resources.
- * @member {array} [processes] Process resources.
- * @member {array} [ports] Port resources.
- * @member {array} [clientGroups] Client Group resources.
+ * @property {array} [machines] Machine resources.
+ * @property {array} [processes] Process resources.
+ * @property {array} [ports] Port resources.
+ * @property {array} [clientGroups] Client Group resources.
  */
 export interface MapNodes {
   machines?: Machine[];
@@ -1009,8 +1018,8 @@ export interface MapNodes {
  * @constructor
  * The edges (relationships) of a map.
  *
- * @member {array} [connections] Network connections.
- * @member {array} [acceptors] Processes accepting on a port.
+ * @property {array} [connections] Network connections.
+ * @property {array} [acceptors] Processes accepting on a port.
  */
 export interface MapEdges {
   connections?: Connection[];
@@ -1023,14 +1032,14 @@ export interface MapEdges {
  * @constructor
  * A map of resources and relationships between them.
  *
- * @member {object} nodes
- * @member {array} [nodes.machines] Machine resources.
- * @member {array} [nodes.processes] Process resources.
- * @member {array} [nodes.ports] Port resources.
- * @member {array} [nodes.clientGroups] Client Group resources.
- * @member {object} edges
- * @member {array} [edges.connections] Network connections.
- * @member {array} [edges.acceptors] Processes accepting on a port.
+ * @property {object} nodes
+ * @property {array} [nodes.machines] Machine resources.
+ * @property {array} [nodes.processes] Process resources.
+ * @property {array} [nodes.ports] Port resources.
+ * @property {array} [nodes.clientGroups] Client Group resources.
+ * @property {object} edges
+ * @property {array} [edges.connections] Network connections.
+ * @property {array} [edges.acceptors] Processes accepting on a port.
  */
 export interface Map {
   nodes: MapNodes;
@@ -1043,9 +1052,9 @@ export interface Map {
  * @constructor
  * Specifies the contents of a check liveness response.
  *
- * @member {date} startTime Liveness interval start time.
- * @member {date} endTime Liveness interval end time.
- * @member {boolean} live `true` if the resource is live during [startTime,
+ * @property {date} startTime Liveness interval start time.
+ * @property {date} endTime Liveness interval end time.
+ * @property {boolean} live `true` if the resource is live during [startTime,
  * endTime], `false` otherwise
  */
 export interface Liveness {
@@ -1060,9 +1069,9 @@ export interface Liveness {
  * @constructor
  * Specifies the contents of request to generate a map.
  *
- * @member {date} [startTime] Map interval start time.
- * @member {date} [endTime] Map interval end time.
- * @member {string} kind Polymorphic Discriminator
+ * @property {date} [startTime] Map interval start time.
+ * @property {date} [endTime] Map interval end time.
+ * @property {string} kind Polymorphic Discriminator
  */
 export interface MapRequest {
   startTime?: Date;
@@ -1077,8 +1086,8 @@ export interface MapRequest {
  * Specifies the computation of a single server dependency map. A single server
  * dependency map includes all direct dependencies of a given machine.
  *
- * @member {string} machineId URI of machine resource for which to generate the
- * map.
+ * @property {string} machineId URI of machine resource for which to generate
+ * the map.
  */
 export interface SingleMachineDependencyMapRequest extends MapRequest {
   machineId: string;
@@ -1091,7 +1100,7 @@ export interface SingleMachineDependencyMapRequest extends MapRequest {
  * Provides a base class for describing map requests for a collection of
  * machines
  *
- * @member {boolean} [filterProcesses] If true, only processes between
+ * @property {boolean} [filterProcesses] If true, only processes between
  * specified machines will be included. Any connections in or out of those
  * processes will be included.
  */
@@ -1107,8 +1116,8 @@ export interface MultipleMachinesMapRequest extends MapRequest {
  * machines. The resulting map includes all direct dependencies for the
  * specified machines.
  *
- * @member {array} machineIds a list of URIs of machine resources for which to
- * generate the map.
+ * @property {array} machineIds a list of URIs of machine resources for which
+ * to generate the map.
  */
 export interface MachineListMapRequest extends MultipleMachinesMapRequest {
   machineIds: string[];
@@ -1121,7 +1130,7 @@ export interface MachineListMapRequest extends MultipleMachinesMapRequest {
  * Specifies the computation of a machine group dependency map. A machine group
  * dependency map includes all direct dependencies the machines in the group.
  *
- * @member {string} machineGroupId URI of machine group resource for which to
+ * @property {string} machineGroupId URI of machine group resource for which to
  * generate the map.
  */
 export interface MachineGroupMapRequest extends MultipleMachinesMapRequest {
@@ -1134,17 +1143,17 @@ export interface MachineGroupMapRequest extends MultipleMachinesMapRequest {
  * @constructor
  * Specified the contents of a map response.
  *
- * @member {date} startTime Map interval start time.
- * @member {date} endTime Map interval end time.
- * @member {object} map The generated map.
- * @member {object} [map.nodes]
- * @member {array} [map.nodes.machines] Machine resources.
- * @member {array} [map.nodes.processes] Process resources.
- * @member {array} [map.nodes.ports] Port resources.
- * @member {array} [map.nodes.clientGroups] Client Group resources.
- * @member {object} [map.edges]
- * @member {array} [map.edges.connections] Network connections.
- * @member {array} [map.edges.acceptors] Processes accepting on a port.
+ * @property {date} startTime Map interval start time.
+ * @property {date} endTime Map interval end time.
+ * @property {object} map The generated map.
+ * @property {object} [map.nodes]
+ * @property {array} [map.nodes.machines] Machine resources.
+ * @property {array} [map.nodes.processes] Process resources.
+ * @property {array} [map.nodes.ports] Port resources.
+ * @property {array} [map.nodes.clientGroups] Client Group resources.
+ * @property {object} [map.edges]
+ * @property {array} [map.edges.connections] Network connections.
+ * @property {array} [map.edges.acceptors] Processes accepting on a port.
  */
 export interface MapResponse {
   startTime: Date;
@@ -1158,15 +1167,15 @@ export interface MapResponse {
  * @constructor
  * Specifies the number of members in a client group.
  *
- * @member {date} startTime Membership interval start time.
- * @member {date} endTime Membership interval start time.
- * @member {string} groupId Client Group URI.
- * @member {number} count Number of members in the client group. Use this value
- * together with the value of ```accuracy```. If accuracy is `exact` then the
- * value represents the actual number of members in the cloud. When accuracy is
- * `estimated`, the actual number of members is larger than the value of
- * ```count```.
- * @member {string} accuracy Accuracy of the reported count. Possible values
+ * @property {date} startTime Membership interval start time.
+ * @property {date} endTime Membership interval start time.
+ * @property {string} groupId Client Group URI.
+ * @property {number} count Number of members in the client group. Use this
+ * value together with the value of ```accuracy```. If accuracy is `exact` then
+ * the value represents the actual number of members in the cloud. When
+ * accuracy is `estimated`, the actual number of members is larger than the
+ * value of ```count```.
+ * @property {string} accuracy Accuracy of the reported count. Possible values
  * include: 'actual', 'estimated'
  */
 export interface ClientGroupMembersCount {
@@ -1183,8 +1192,8 @@ export interface ClientGroupMembersCount {
  * @constructor
  * Error details.
  *
- * @member {string} code Error code identifying the specific error.
- * @member {string} [message] Error message in the caller's locale.
+ * @property {string} code Error code identifying the specific error.
+ * @property {string} [message] Error message in the caller's locale.
  */
 export interface ErrorModel {
   code: string;
@@ -1197,9 +1206,9 @@ export interface ErrorModel {
  * @constructor
  * An error response from the API.
  *
- * @member {object} error Error information.
- * @member {string} [error.code] Error code identifying the specific error.
- * @member {string} [error.message] Error message in the caller's locale.
+ * @property {object} error Error information.
+ * @property {string} [error.code] Error code identifying the specific error.
+ * @property {string} [error.message] Error message in the caller's locale.
  */
 export interface ErrorResponse {
   error: ErrorModel;
@@ -1212,7 +1221,7 @@ export interface ErrorResponse {
  * @constructor
  * Collection of Machine resources.
  *
- * @member {string} [nextLink] The URL to the next set of resources.
+ * @property {string} [nextLink] The URL to the next set of resources.
  */
 export interface MachineCollection extends Array<Machine> {
   nextLink?: string;
@@ -1224,7 +1233,7 @@ export interface MachineCollection extends Array<Machine> {
  * @constructor
  * Collection of Connection resources.
  *
- * @member {string} [nextLink] The URL to the next set of resources.
+ * @property {string} [nextLink] The URL to the next set of resources.
  */
 export interface ConnectionCollection extends Array<Connection> {
   nextLink?: string;
@@ -1236,7 +1245,7 @@ export interface ConnectionCollection extends Array<Connection> {
  * @constructor
  * Collection of Process resources.
  *
- * @member {string} [nextLink] The URL to the next set of resources.
+ * @property {string} [nextLink] The URL to the next set of resources.
  */
 export interface ProcessCollection extends Array<Process> {
   nextLink?: string;
@@ -1248,7 +1257,7 @@ export interface ProcessCollection extends Array<Process> {
  * @constructor
  * Collection of Port resources.
  *
- * @member {string} [nextLink] The URL to the next set of resources.
+ * @property {string} [nextLink] The URL to the next set of resources.
  */
 export interface PortCollection extends Array<Port> {
   nextLink?: string;
@@ -1260,7 +1269,7 @@ export interface PortCollection extends Array<Port> {
  * @constructor
  * Collection of Machine Group resources.
  *
- * @member {string} [nextLink] The URL to the next set of resources.
+ * @property {string} [nextLink] The URL to the next set of resources.
  */
 export interface MachineGroupCollection extends Array<MachineGroup> {
   nextLink?: string;
@@ -1272,7 +1281,7 @@ export interface MachineGroupCollection extends Array<MachineGroup> {
  * @constructor
  * Collection of ClientGroupMember resources.
  *
- * @member {string} [nextLink] The URL to the next set of resources.
+ * @property {string} [nextLink] The URL to the next set of resources.
  */
 export interface ClientGroupMembersCollection extends Array<ClientGroupMember> {
   nextLink?: string;

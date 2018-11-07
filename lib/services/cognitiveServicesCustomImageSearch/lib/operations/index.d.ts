@@ -25,7 +25,7 @@ export interface CustomInstance {
      * @summary The Custom Image Search API lets you send an image search query to
      * Bing and get image results found in your custom view of the web.
      *
-     * @param {number} customConfig The identifier for the custom search
+     * @param {string} customConfig The identifier for the custom search
      * configuration
      *
      * @param {string} query The user's search query term. The term cannot be
@@ -370,13 +370,13 @@ export interface CustomInstance {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    imageSearchWithHttpOperationResponse(customConfig: number, query: string, options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, aspect? : string, color? : string, countryCode? : string, count? : number, freshness? : string, height? : number, id? : string, imageContent? : string, imageType? : string, license? : string, market? : string, maxFileSize? : number, maxHeight? : number, maxWidth? : number, minFileSize? : number, minHeight? : number, minWidth? : number, offset? : number, safeSearch? : string, size? : string, setLang? : string, width? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Images>>;
+    imageSearchWithHttpOperationResponse(customConfig: string, query: string, options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, aspect? : string, color? : string, countryCode? : string, count? : number, freshness? : string, height? : number, id? : string, imageContent? : string, imageType? : string, license? : string, market? : string, maxFileSize? : number, maxHeight? : number, maxWidth? : number, minFileSize? : number, minHeight? : number, minWidth? : number, offset? : number, safeSearch? : string, size? : string, setLang? : string, width? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Images>>;
 
     /**
      * @summary The Custom Image Search API lets you send an image search query to
      * Bing and get image results found in your custom view of the web.
      *
-     * @param {number} customConfig The identifier for the custom search
+     * @param {string} customConfig The identifier for the custom search
      * configuration
      *
      * @param {string} query The user's search query term. The term cannot be
@@ -737,7 +737,7 @@ export interface CustomInstance {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    imageSearch(customConfig: number, query: string, options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, aspect? : string, color? : string, countryCode? : string, count? : number, freshness? : string, height? : number, id? : string, imageContent? : string, imageType? : string, license? : string, market? : string, maxFileSize? : number, maxHeight? : number, maxWidth? : number, minFileSize? : number, minHeight? : number, minWidth? : number, offset? : number, safeSearch? : string, size? : string, setLang? : string, width? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.Images>;
-    imageSearch(customConfig: number, query: string, callback: ServiceCallback<models.Images>): void;
-    imageSearch(customConfig: number, query: string, options: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, aspect? : string, color? : string, countryCode? : string, count? : number, freshness? : string, height? : number, id? : string, imageContent? : string, imageType? : string, license? : string, market? : string, maxFileSize? : number, maxHeight? : number, maxWidth? : number, minFileSize? : number, minHeight? : number, minWidth? : number, offset? : number, safeSearch? : string, size? : string, setLang? : string, width? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Images>): void;
+    imageSearch(customConfig: string, query: string, options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, aspect? : string, color? : string, countryCode? : string, count? : number, freshness? : string, height? : number, id? : string, imageContent? : string, imageType? : string, license? : string, market? : string, maxFileSize? : number, maxHeight? : number, maxWidth? : number, minFileSize? : number, minHeight? : number, minWidth? : number, offset? : number, safeSearch? : string, size? : string, setLang? : string, width? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.Images>;
+    imageSearch(customConfig: string, query: string, callback: ServiceCallback<models.Images>): void;
+    imageSearch(customConfig: string, query: string, options: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, aspect? : string, color? : string, countryCode? : string, count? : number, freshness? : string, height? : number, id? : string, imageContent? : string, imageType? : string, license? : string, market? : string, maxFileSize? : number, maxHeight? : number, maxWidth? : number, minFileSize? : number, minHeight? : number, minWidth? : number, offset? : number, safeSearch? : string, size? : string, setLang? : string, width? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Images>): void;
 }

@@ -17,8 +17,9 @@ import * as moment from "moment";
  * @constructor
  * An intent detected from the utterance.
  *
- * @member {string} [intent] Name of the intent, as defined in LUIS.
- * @member {number} [score] Associated prediction score for the intent (float).
+ * @property {string} [intent] Name of the intent, as defined in LUIS.
+ * @property {number} [score] Associated prediction score for the intent
+ * (float).
  */
 export interface IntentModel {
   intent?: string;
@@ -31,12 +32,12 @@ export interface IntentModel {
  * @constructor
  * An entity extracted from the utterance.
  *
- * @member {string} entity Name of the entity, as defined in LUIS.
- * @member {string} type Type of the entity, as defined in LUIS.
- * @member {number} startIndex The position of the first character of the
+ * @property {string} entity Name of the entity, as defined in LUIS.
+ * @property {string} type Type of the entity, as defined in LUIS.
+ * @property {number} startIndex The position of the first character of the
  * matched entity within the utterance.
- * @member {number} endIndex The position of the last character of the matched
- * entity within the utterance.
+ * @property {number} endIndex The position of the last character of the
+ * matched entity within the utterance.
  */
 export interface EntityModel {
   entity: string;
@@ -56,8 +57,8 @@ export interface EntityModel {
  * @constructor
  * Child entity in a LUIS Composite Entity.
  *
- * @member {string} type Type of child entity.
- * @member {string} value Value extracted by LUIS.
+ * @property {string} type Type of child entity.
+ * @property {string} value Value extracted by LUIS.
  */
 export interface CompositeChildModel {
   type: string;
@@ -70,9 +71,9 @@ export interface CompositeChildModel {
  * @constructor
  * LUIS Composite Entity.
  *
- * @member {string} parentType Type/name of parent entity.
- * @member {string} value Value for composite entity extracted by LUIS.
- * @member {array} children Child entities.
+ * @property {string} parentType Type/name of parent entity.
+ * @property {string} value Value for composite entity extracted by LUIS.
+ * @property {array} children Child entities.
  */
 export interface CompositeEntityModel {
   parentType: string;
@@ -86,9 +87,9 @@ export interface CompositeEntityModel {
  * @constructor
  * Sentiment of the input utterance.
  *
- * @member {string} [label] The polarity of the sentiment, can be positive,
+ * @property {string} [label] The polarity of the sentiment, can be positive,
  * neutral or negative.
- * @member {number} [score] Score of the sentiment, ranges from 0 (most
+ * @property {number} [score] Score of the sentiment, ranges from 0 (most
  * negative) to 1 (most positive).
  */
 export interface Sentiment {
@@ -102,23 +103,23 @@ export interface Sentiment {
  * @constructor
  * Prediction, based on the input query, containing intent(s) and entities.
  *
- * @member {string} [query] The input utterance that was analized.
- * @member {string} [alteredQuery] The corrected utterance (when spell checking
- * was enabled).
- * @member {object} [topScoringIntent]
- * @member {string} [topScoringIntent.intent] Name of the intent, as defined in
- * LUIS.
- * @member {number} [topScoringIntent.score] Associated prediction score for
+ * @property {string} [query] The input utterance that was analized.
+ * @property {string} [alteredQuery] The corrected utterance (when spell
+ * checking was enabled).
+ * @property {object} [topScoringIntent]
+ * @property {string} [topScoringIntent.intent] Name of the intent, as defined
+ * in LUIS.
+ * @property {number} [topScoringIntent.score] Associated prediction score for
  * the intent (float).
- * @member {array} [intents] All the intents (and their score) that were
+ * @property {array} [intents] All the intents (and their score) that were
  * detected from utterance.
- * @member {array} [entities] The entities extracted from the utterance.
- * @member {array} [compositeEntities] The composite entities extracted from
+ * @property {array} [entities] The entities extracted from the utterance.
+ * @property {array} [compositeEntities] The composite entities extracted from
  * the utterance.
- * @member {object} [sentimentAnalysis]
- * @member {string} [sentimentAnalysis.label] The polarity of the sentiment,
+ * @property {object} [sentimentAnalysis]
+ * @property {string} [sentimentAnalysis.label] The polarity of the sentiment,
  * can be positive, neutral or negative.
- * @member {number} [sentimentAnalysis.score] Score of the sentiment, ranges
+ * @property {number} [sentimentAnalysis.score] Score of the sentiment, ranges
  * from 0 (most negative) to 1 (most positive).
  */
 export interface LuisResult {
@@ -135,7 +136,7 @@ export interface LuisResult {
  * @class
  * Initializes a new instance of the EntityWithScore class.
  * @constructor
- * @member {number} score Associated prediction score for the intent (float).
+ * @property {number} score Associated prediction score for the intent (float).
  */
 export interface EntityWithScore extends EntityModel {
   score: number;
@@ -145,7 +146,7 @@ export interface EntityWithScore extends EntityModel {
  * @class
  * Initializes a new instance of the EntityWithResolution class.
  * @constructor
- * @member {object} resolution Resolution values for pre-built LUIS entities.
+ * @property {object} resolution Resolution values for pre-built LUIS entities.
  */
 export interface EntityWithResolution extends EntityModel {
   resolution: any;
@@ -157,8 +158,8 @@ export interface EntityWithResolution extends EntityModel {
  * @constructor
  * Error information returned by the API
  *
- * @member {string} [statusCode] HTTP Status code
- * @member {string} [message] Cause of the error.
+ * @property {string} [statusCode] HTTP Status code
+ * @property {string} [message] Cause of the error.
  */
 export interface APIError {
   statusCode?: string;

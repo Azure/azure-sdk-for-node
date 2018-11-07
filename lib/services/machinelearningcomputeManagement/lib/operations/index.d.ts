@@ -58,11 +58,11 @@ export interface OperationalizationClusters {
      * orchestrator. It cannot be changed once the cluster is created. Possible
      * values include: 'Kubernetes', 'None'
      *
-     * @param {object} parameters.containerService.orchestratorProperties
+     * @param {object} [parameters.containerService.orchestratorProperties]
      * Orchestrator specific properties
      *
      * @param {object}
-     * parameters.containerService.orchestratorProperties.servicePrincipal The
+     * [parameters.containerService.orchestratorProperties.servicePrincipal] The
      * Azure Service Principal used by Kubernetes
      *
      * @param {string}
@@ -108,9 +108,6 @@ export interface OperationalizationClusters {
      * @param {object} [parameters.globalServiceConfiguration] Contains global
      * configuration for the web services in the cluster.
      *
-     * @param {object} [parameters.globalServiceConfiguration.additionalProperties]
-     * Unmatched properties from the message are deserialized this collection
-     *
      * @param {string} [parameters.globalServiceConfiguration.etag] The
      * configuartion ETag for updates.
      *
@@ -122,11 +119,11 @@ export interface OperationalizationClusters {
      * 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.globalServiceConfiguration.ssl.cert] The SSL
-     * cert data in PEM format encoded as base64 string
+     * cert data in PEM format.
      *
      * @param {string} [parameters.globalServiceConfiguration.ssl.key] The SSL key
-     * data in PEM format encoded as base64 string. This is not returned in
-     * response of GET/PUT on the resource. To see this please call listKeys API.
+     * data in PEM format. This is not returned in response of GET/PUT on the
+     * resource. To see this please call listKeys API.
      *
      * @param {string} [parameters.globalServiceConfiguration.ssl.cname] The CName
      * of the certificate.
@@ -223,11 +220,11 @@ export interface OperationalizationClusters {
      * orchestrator. It cannot be changed once the cluster is created. Possible
      * values include: 'Kubernetes', 'None'
      *
-     * @param {object} parameters.containerService.orchestratorProperties
+     * @param {object} [parameters.containerService.orchestratorProperties]
      * Orchestrator specific properties
      *
      * @param {object}
-     * parameters.containerService.orchestratorProperties.servicePrincipal The
+     * [parameters.containerService.orchestratorProperties.servicePrincipal] The
      * Azure Service Principal used by Kubernetes
      *
      * @param {string}
@@ -273,9 +270,6 @@ export interface OperationalizationClusters {
      * @param {object} [parameters.globalServiceConfiguration] Contains global
      * configuration for the web services in the cluster.
      *
-     * @param {object} [parameters.globalServiceConfiguration.additionalProperties]
-     * Unmatched properties from the message are deserialized this collection
-     *
      * @param {string} [parameters.globalServiceConfiguration.etag] The
      * configuartion ETag for updates.
      *
@@ -287,11 +281,11 @@ export interface OperationalizationClusters {
      * 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.globalServiceConfiguration.ssl.cert] The SSL
-     * cert data in PEM format encoded as base64 string
+     * cert data in PEM format.
      *
      * @param {string} [parameters.globalServiceConfiguration.ssl.key] The SSL key
-     * data in PEM format encoded as base64 string. This is not returned in
-     * response of GET/PUT on the resource. To see this please call listKeys API.
+     * data in PEM format. This is not returned in response of GET/PUT on the
+     * resource. To see this please call listKeys API.
      *
      * @param {string} [parameters.globalServiceConfiguration.ssl.cname] The CName
      * of the certificate.
@@ -525,6 +519,9 @@ export interface OperationalizationClusters {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {boolean} [options.deleteAll] If true, deletes all resources
+     * associated with this cluster.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -534,7 +531,7 @@ export interface OperationalizationClusters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { deleteAll? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes the specified cluster.
@@ -545,6 +542,9 @@ export interface OperationalizationClusters {
      * @param {string} clusterName The name of the cluster.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.deleteAll] If true, deletes all resources
+     * associated with this cluster.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -570,9 +570,9 @@ export interface OperationalizationClusters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, clusterName: string, options?: { deleteAll? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, clusterName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, clusterName: string, options: { deleteAll? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -920,11 +920,11 @@ export interface OperationalizationClusters {
      * orchestrator. It cannot be changed once the cluster is created. Possible
      * values include: 'Kubernetes', 'None'
      *
-     * @param {object} parameters.containerService.orchestratorProperties
+     * @param {object} [parameters.containerService.orchestratorProperties]
      * Orchestrator specific properties
      *
      * @param {object}
-     * parameters.containerService.orchestratorProperties.servicePrincipal The
+     * [parameters.containerService.orchestratorProperties.servicePrincipal] The
      * Azure Service Principal used by Kubernetes
      *
      * @param {string}
@@ -970,9 +970,6 @@ export interface OperationalizationClusters {
      * @param {object} [parameters.globalServiceConfiguration] Contains global
      * configuration for the web services in the cluster.
      *
-     * @param {object} [parameters.globalServiceConfiguration.additionalProperties]
-     * Unmatched properties from the message are deserialized this collection
-     *
      * @param {string} [parameters.globalServiceConfiguration.etag] The
      * configuartion ETag for updates.
      *
@@ -984,11 +981,11 @@ export interface OperationalizationClusters {
      * 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.globalServiceConfiguration.ssl.cert] The SSL
-     * cert data in PEM format encoded as base64 string
+     * cert data in PEM format.
      *
      * @param {string} [parameters.globalServiceConfiguration.ssl.key] The SSL key
-     * data in PEM format encoded as base64 string. This is not returned in
-     * response of GET/PUT on the resource. To see this please call listKeys API.
+     * data in PEM format. This is not returned in response of GET/PUT on the
+     * resource. To see this please call listKeys API.
      *
      * @param {string} [parameters.globalServiceConfiguration.ssl.cname] The CName
      * of the certificate.
@@ -1085,11 +1082,11 @@ export interface OperationalizationClusters {
      * orchestrator. It cannot be changed once the cluster is created. Possible
      * values include: 'Kubernetes', 'None'
      *
-     * @param {object} parameters.containerService.orchestratorProperties
+     * @param {object} [parameters.containerService.orchestratorProperties]
      * Orchestrator specific properties
      *
      * @param {object}
-     * parameters.containerService.orchestratorProperties.servicePrincipal The
+     * [parameters.containerService.orchestratorProperties.servicePrincipal] The
      * Azure Service Principal used by Kubernetes
      *
      * @param {string}
@@ -1135,9 +1132,6 @@ export interface OperationalizationClusters {
      * @param {object} [parameters.globalServiceConfiguration] Contains global
      * configuration for the web services in the cluster.
      *
-     * @param {object} [parameters.globalServiceConfiguration.additionalProperties]
-     * Unmatched properties from the message are deserialized this collection
-     *
      * @param {string} [parameters.globalServiceConfiguration.etag] The
      * configuartion ETag for updates.
      *
@@ -1149,11 +1143,11 @@ export interface OperationalizationClusters {
      * 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.globalServiceConfiguration.ssl.cert] The SSL
-     * cert data in PEM format encoded as base64 string
+     * cert data in PEM format.
      *
      * @param {string} [parameters.globalServiceConfiguration.ssl.key] The SSL key
-     * data in PEM format encoded as base64 string. This is not returned in
-     * response of GET/PUT on the resource. To see this please call listKeys API.
+     * data in PEM format. This is not returned in response of GET/PUT on the
+     * resource. To see this please call listKeys API.
      *
      * @param {string} [parameters.globalServiceConfiguration.ssl.cname] The CName
      * of the certificate.
@@ -1243,6 +1237,9 @@ export interface OperationalizationClusters {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {boolean} [options.deleteAll] If true, deletes all resources
+     * associated with this cluster.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -1252,7 +1249,7 @@ export interface OperationalizationClusters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { deleteAll? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes the specified cluster.
@@ -1263,6 +1260,9 @@ export interface OperationalizationClusters {
      * @param {string} clusterName The name of the cluster.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.deleteAll] If true, deletes all resources
+     * associated with this cluster.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1288,9 +1288,9 @@ export interface OperationalizationClusters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, clusterName: string, options?: { deleteAll? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginDeleteMethod(resourceGroupName: string, clusterName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, clusterName: string, options: { deleteAll? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**

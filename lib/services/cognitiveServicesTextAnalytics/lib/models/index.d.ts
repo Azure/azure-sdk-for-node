@@ -15,10 +15,10 @@ import * as moment from "moment";
  * @class
  * Initializes a new instance of the MultiLanguageInput class.
  * @constructor
- * @member {string} [language] This is the 2 letter ISO 639-1 representation of
- * a language. For example, use "en" for English; "es" for Spanish etc.,
- * @member {string} [id] Unique, non-empty document identifier.
- * @member {string} [text]
+ * @property {string} [language] This is the 2 letter ISO 639-1 representation
+ * of a language. For example, use "en" for English; "es" for Spanish etc.,
+ * @property {string} [id] Unique, non-empty document identifier.
+ * @property {string} [text]
  */
 export interface MultiLanguageInput {
   language?: string;
@@ -30,7 +30,7 @@ export interface MultiLanguageInput {
  * @class
  * Initializes a new instance of the MultiLanguageBatchInput class.
  * @constructor
- * @member {array} [documents]
+ * @property {array} [documents]
  */
 export interface MultiLanguageBatchInput {
   documents?: MultiLanguageInput[];
@@ -40,10 +40,10 @@ export interface MultiLanguageBatchInput {
  * @class
  * Initializes a new instance of the KeyPhraseBatchResultItem class.
  * @constructor
- * @member {array} [keyPhrases] A list of representative words or phrases. The
- * number of key phrases returned is proportional to the number of words in the
- * input document.
- * @member {string} [id] Unique document identifier.
+ * @property {array} [keyPhrases] A list of representative words or phrases.
+ * The number of key phrases returned is proportional to the number of words in
+ * the input document.
+ * @property {string} [id] Unique document identifier.
  */
 export interface KeyPhraseBatchResultItem {
   readonly keyPhrases?: string[];
@@ -54,8 +54,9 @@ export interface KeyPhraseBatchResultItem {
  * @class
  * Initializes a new instance of the ErrorRecord class.
  * @constructor
- * @member {string} [id] Input document unique identifier the error refers to.
- * @member {string} [message] Error message.
+ * @property {string} [id] Input document unique identifier the error refers
+ * to.
+ * @property {string} [message] Error message.
  */
 export interface ErrorRecord {
   id?: string;
@@ -66,8 +67,8 @@ export interface ErrorRecord {
  * @class
  * Initializes a new instance of the KeyPhraseBatchResult class.
  * @constructor
- * @member {array} [documents]
- * @member {array} [errors]
+ * @property {array} [documents]
+ * @property {array} [errors]
  */
 export interface KeyPhraseBatchResult {
   readonly documents?: KeyPhraseBatchResultItem[];
@@ -78,9 +79,9 @@ export interface KeyPhraseBatchResult {
  * @class
  * Initializes a new instance of the InternalError class.
  * @constructor
- * @member {string} [code]
- * @member {string} [message]
- * @member {object} [innerError]
+ * @property {string} [code]
+ * @property {string} [message]
+ * @property {object} [innerError]
  */
 export interface InternalError {
   code?: string;
@@ -92,13 +93,13 @@ export interface InternalError {
  * @class
  * Initializes a new instance of the ErrorResponse class.
  * @constructor
- * @member {string} [code]
- * @member {string} [message]
- * @member {string} [target]
- * @member {object} [innerError]
- * @member {string} [innerError.code]
- * @member {string} [innerError.message]
- * @member {object} [innerError.innerError]
+ * @property {string} [code]
+ * @property {string} [message]
+ * @property {string} [target]
+ * @property {object} [innerError]
+ * @property {string} [innerError.code]
+ * @property {string} [innerError.message]
+ * @property {object} [innerError.innerError]
  */
 export interface ErrorResponse {
   code?: string;
@@ -111,8 +112,8 @@ export interface ErrorResponse {
  * @class
  * Initializes a new instance of the Input class.
  * @constructor
- * @member {string} [id] Unique, non-empty document identifier.
- * @member {string} [text]
+ * @property {string} [id] Unique, non-empty document identifier.
+ * @property {string} [text]
  */
 export interface Input {
   id?: string;
@@ -123,7 +124,7 @@ export interface Input {
  * @class
  * Initializes a new instance of the BatchInput class.
  * @constructor
- * @member {array} [documents]
+ * @property {array} [documents]
  */
 export interface BatchInput {
   documents?: Input[];
@@ -133,12 +134,12 @@ export interface BatchInput {
  * @class
  * Initializes a new instance of the DetectedLanguage class.
  * @constructor
- * @member {string} [name] Long name of a detected language (e.g. English,
+ * @property {string} [name] Long name of a detected language (e.g. English,
  * French).
- * @member {string} [iso6391Name] A two letter representation of the detected
+ * @property {string} [iso6391Name] A two letter representation of the detected
  * language according to the ISO 639-1 standard (e.g. en, fr).
- * @member {number} [score] A confidence score between 0 and 1. Scores close to
- * 1 indicate 100% certainty that the identified language is true.
+ * @property {number} [score] A confidence score between 0 and 1. Scores close
+ * to 1 indicate 100% certainty that the identified language is true.
  */
 export interface DetectedLanguage {
   name?: string;
@@ -150,8 +151,8 @@ export interface DetectedLanguage {
  * @class
  * Initializes a new instance of the LanguageBatchResultItem class.
  * @constructor
- * @member {string} [id] Unique document identifier.
- * @member {array} [detectedLanguages] A list of extracted languages.
+ * @property {string} [id] Unique document identifier.
+ * @property {array} [detectedLanguages] A list of extracted languages.
  */
 export interface LanguageBatchResultItem {
   readonly id?: string;
@@ -162,8 +163,8 @@ export interface LanguageBatchResultItem {
  * @class
  * Initializes a new instance of the LanguageBatchResult class.
  * @constructor
- * @member {array} [documents]
- * @member {array} [errors]
+ * @property {array} [documents]
+ * @property {array} [errors]
  */
 export interface LanguageBatchResult {
   readonly documents?: LanguageBatchResultItem[];
@@ -174,11 +175,11 @@ export interface LanguageBatchResult {
  * @class
  * Initializes a new instance of the SentimentBatchResultItem class.
  * @constructor
- * @member {number} [score] A decimal number between 0 and 1 denoting the
+ * @property {number} [score] A decimal number between 0 and 1 denoting the
  * sentiment of the document. A score above 0.7 usually refers to a positive
  * document while a score below 0.3 normally has a negative connotation. Mid
  * values refer to neutral text.
- * @member {string} [id] Unique document identifier.
+ * @property {string} [id] Unique document identifier.
  */
 export interface SentimentBatchResultItem {
   readonly score?: number;
@@ -189,8 +190,8 @@ export interface SentimentBatchResultItem {
  * @class
  * Initializes a new instance of the SentimentBatchResult class.
  * @constructor
- * @member {array} [documents]
- * @member {array} [errors]
+ * @property {array} [documents]
+ * @property {array} [errors]
  */
 export interface SentimentBatchResult {
   readonly documents?: SentimentBatchResultItem[];
@@ -201,10 +202,10 @@ export interface SentimentBatchResult {
  * @class
  * Initializes a new instance of the MatchRecord class.
  * @constructor
- * @member {string} [text] Entity text as appears in the request.
- * @member {number} [offset] Start position (in Unicode characters) for the
+ * @property {string} [text] Entity text as appears in the request.
+ * @property {number} [offset] Start position (in Unicode characters) for the
  * entity match text.
- * @member {number} [length] Length (in Unicode characters) for the entity
+ * @property {number} [length] Length (in Unicode characters) for the entity
  * match text.
  */
 export interface MatchRecord {
@@ -217,14 +218,16 @@ export interface MatchRecord {
  * @class
  * Initializes a new instance of the EntityRecord class.
  * @constructor
- * @member {string} [name] Entity formal name.
- * @member {array} [matches] List of instances this entity appears in the text.
- * @member {string} [wikipediaLanguage] Wikipedia language for which the
+ * @property {string} [name] Entity formal name.
+ * @property {array} [matches] List of instances this entity appears in the
+ * text.
+ * @property {string} [wikipediaLanguage] Wikipedia language for which the
  * WikipediaId and WikipediaUrl refers to.
- * @member {string} [wikipediaId] Wikipedia unique identifier of the recognized
- * entity.
- * @member {string} [wikipediaUrl] URL for the entity's English Wikipedia page.
- * @member {string} [bingId] Bing unique identifier of the recognized entity.
+ * @property {string} [wikipediaId] Wikipedia unique identifier of the
+ * recognized entity.
+ * @property {string} [wikipediaUrl] URL for the entity's English Wikipedia
+ * page.
+ * @property {string} [bingId] Bing unique identifier of the recognized entity.
  * Use in conjunction with the Bing Entity Search API to fetch additional
  * relevant information.
  */
@@ -241,8 +244,8 @@ export interface EntityRecord {
  * @class
  * Initializes a new instance of the EntitiesBatchResultItem class.
  * @constructor
- * @member {string} [id] Unique document identifier.
- * @member {array} [entities] Recognized entities in the document.
+ * @property {string} [id] Unique document identifier.
+ * @property {array} [entities] Recognized entities in the document.
  */
 export interface EntitiesBatchResultItem {
   readonly id?: string;
@@ -253,8 +256,8 @@ export interface EntitiesBatchResultItem {
  * @class
  * Initializes a new instance of the EntitiesBatchResult class.
  * @constructor
- * @member {array} [documents]
- * @member {array} [errors]
+ * @property {array} [documents]
+ * @property {array} [errors]
  */
 export interface EntitiesBatchResult {
   readonly documents?: EntitiesBatchResultItem[];

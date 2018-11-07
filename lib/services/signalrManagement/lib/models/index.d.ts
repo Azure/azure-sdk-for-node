@@ -22,11 +22,12 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * The object that describes a operation.
  *
- * @member {string} [provider] Friendly name of the resource provider
- * @member {string} [resource] Resource type on which the operation is
+ * @property {string} [provider] Friendly name of the resource provider
+ * @property {string} [resource] Resource type on which the operation is
  * performed.
- * @member {string} [operation] The localized friendly name for the operation.
- * @member {string} [description] The localized friendly description for the
+ * @property {string} [operation] The localized friendly name for the
+ * operation.
+ * @property {string} [description] The localized friendly description for the
  * operation
  */
 export interface OperationDisplay {
@@ -42,12 +43,13 @@ export interface OperationDisplay {
  * @constructor
  * Specifications of the Dimension of metrics.
  *
- * @member {string} [name] The public facing name of the dimension.
- * @member {string} [displayName] Localized friendly display name of the
+ * @property {string} [name] The public facing name of the dimension.
+ * @property {string} [displayName] Localized friendly display name of the
  * dimension.
- * @member {string} [internalName] Name of the dimension as it appears in MDM.
- * @member {boolean} [toBeExportedForShoebox] A Boolean flag indicating whether
- * this dimension should be included for the shoebox export scenario.
+ * @property {string} [internalName] Name of the dimension as it appears in
+ * MDM.
+ * @property {boolean} [toBeExportedForShoebox] A Boolean flag indicating
+ * whether this dimension should be included for the shoebox export scenario.
  */
 export interface Dimension {
   name?: string;
@@ -62,23 +64,23 @@ export interface Dimension {
  * @constructor
  * Specifications of the Metrics for Azure Monitoring.
  *
- * @member {string} [name] Name of the metric.
- * @member {string} [displayName] Localized friendly display name of the
+ * @property {string} [name] Name of the metric.
+ * @property {string} [displayName] Localized friendly display name of the
  * metric.
- * @member {string} [displayDescription] Localized friendly description of the
- * metric.
- * @member {string} [unit] The unit that makes sense for the metric.
- * @member {string} [aggregationType] Only provide one value for this field.
+ * @property {string} [displayDescription] Localized friendly description of
+ * the metric.
+ * @property {string} [unit] The unit that makes sense for the metric.
+ * @property {string} [aggregationType] Only provide one value for this field.
  * Valid values: Average, Minimum, Maximum, Total, Count.
- * @member {string} [fillGapWithZero] Optional. If set to true, then zero will
- * be returned for time duration where no metric is emitted/published.
+ * @property {string} [fillGapWithZero] Optional. If set to true, then zero
+ * will be returned for time duration where no metric is emitted/published.
  * Ex. a metric that returns the number of times a particular error code was
  * emitted. The error code may not appear
  * often, instead of the RP publishing 0, Shoebox can auto fill in 0s for time
  * periods where nothing was emitted.
- * @member {string} [category] The name of the metric category that the metric
- * belongs to. A metric can only belong to a single category.
- * @member {array} [dimensions] The dimensions of the metrics.
+ * @property {string} [category] The name of the metric category that the
+ * metric belongs to. A metric can only belong to a single category.
+ * @property {array} [dimensions] The dimensions of the metrics.
  */
 export interface MetricSpecification {
   name?: string;
@@ -97,7 +99,7 @@ export interface MetricSpecification {
  * @constructor
  * An object that describes a specification.
  *
- * @member {array} [metricSpecifications] Specifications of the Metrics for
+ * @property {array} [metricSpecifications] Specifications of the Metrics for
  * Azure Monitoring.
  */
 export interface ServiceSpecification {
@@ -110,8 +112,8 @@ export interface ServiceSpecification {
  * @constructor
  * Extra Operation properties.
  *
- * @member {object} [serviceSpecification] The service specifications.
- * @member {array} [serviceSpecification.metricSpecifications] Specifications
+ * @property {object} [serviceSpecification] The service specifications.
+ * @property {array} [serviceSpecification.metricSpecifications] Specifications
  * of the Metrics for Azure Monitoring.
  */
 export interface OperationProperties {
@@ -124,22 +126,23 @@ export interface OperationProperties {
  * @constructor
  * REST API operation supported by SignalR resource provider.
  *
- * @member {string} [name] Name of the operation with format:
+ * @property {string} [name] Name of the operation with format:
  * {provider}/{resource}/{operation}
- * @member {object} [display] The object that describes the operation.
- * @member {string} [display.provider] Friendly name of the resource provider
- * @member {string} [display.resource] Resource type on which the operation is
- * performed.
- * @member {string} [display.operation] The localized friendly name for the
+ * @property {object} [display] The object that describes the operation.
+ * @property {string} [display.provider] Friendly name of the resource provider
+ * @property {string} [display.resource] Resource type on which the operation
+ * is performed.
+ * @property {string} [display.operation] The localized friendly name for the
  * operation.
- * @member {string} [display.description] The localized friendly description
+ * @property {string} [display.description] The localized friendly description
  * for the operation
- * @member {string} [origin] Optional. The intended executor of the operation;
- * governs the display of the operation in the RBAC UX and the audit logs UX.
- * @member {object} [properties] Extra properties for the operation.
- * @member {object} [properties.serviceSpecification] The service
+ * @property {string} [origin] Optional. The intended executor of the
+ * operation; governs the display of the operation in the RBAC UX and the audit
+ * logs UX.
+ * @property {object} [properties] Extra properties for the operation.
+ * @property {object} [properties.serviceSpecification] The service
  * specifications.
- * @member {array} [properties.serviceSpecification.metricSpecifications]
+ * @property {array} [properties.serviceSpecification.metricSpecifications]
  * Specifications of the Metrics for Azure Monitoring.
  */
 export interface Operation {
@@ -155,9 +158,9 @@ export interface Operation {
  * @constructor
  * Data POST-ed to the nameAvailability action
  *
- * @member {string} type The resource type. Should be always
+ * @property {string} type The resource type. Should be always
  * "Microsoft.SignalRService/SignalR".
- * @member {string} name The SignalR service name to validate.
+ * @property {string} name The SignalR service name to validate.
  * e.g."my-signalR-name-here"
  */
 export interface NameAvailabilityParameters {
@@ -172,11 +175,11 @@ export interface NameAvailabilityParameters {
  * Result of the request to check name availability. It contains a flag and
  * possible reason of failure.
  *
- * @member {boolean} [nameAvailable] Indicates whether the name is available or
- * not.
- * @member {string} [reason] The reason of the availability. Required if name
+ * @property {boolean} [nameAvailable] Indicates whether the name is available
+ * or not.
+ * @property {string} [reason] The reason of the availability. Required if name
  * is not available.
- * @member {string} [message] The message of the operation.
+ * @property {string} [message] The message of the operation.
  */
 export interface NameAvailability {
   nameAvailable?: boolean;
@@ -190,16 +193,16 @@ export interface NameAvailability {
  * @constructor
  * The billing information of the resource.(e.g. basic vs. standard)
  *
- * @member {string} name The name of the SKU. This is typically a letter +
+ * @property {string} name The name of the SKU. This is typically a letter +
  * number code, such as A0 or P3.  Required (if sku is specified)
- * @member {string} [tier] Optional tier of this particular SKU. `Basic` is
+ * @property {string} [tier] Optional tier of this particular SKU. `Basic` is
  * deprecated, use `Standard` instead for Basic tier. Possible values include:
  * 'Free', 'Basic', 'Standard', 'Premium'
- * @member {string} [size] Optional, string. When the name field is the
+ * @property {string} [size] Optional, string. When the name field is the
  * combination of tier and some other value, this would be the standalone code.
- * @member {string} [family] Optional, string. If the service has different
+ * @property {string} [family] Optional, string. If the service has different
  * generations of hardware, for the same SKU, then that can be captured here.
- * @member {number} [capacity] Optional, integer. If the SKU supports scale
+ * @property {number} [capacity] Optional, integer. If the SKU supports scale
  * out/in then the capacity integer should be included. If scale out/in is not
  * possible for the resource this may be omitted.
  */
@@ -217,9 +220,9 @@ export interface ResourceSku {
  * @constructor
  * The core properties of ARM resources.
  *
- * @member {string} [id] Fully qualified resource Id for the resource.
- * @member {string} [name] The name of the resouce.
- * @member {string} [type] The type of the service - e.g.
+ * @property {string} [id] Fully qualified resource Id for the resource.
+ * @property {string} [name] The name of the resouce.
+ * @property {string} [type] The type of the service - e.g.
  * "Microsoft.SignalRService/SignalR"
  */
 export interface Resource extends BaseResource {
@@ -234,9 +237,9 @@ export interface Resource extends BaseResource {
  * @constructor
  * The resource model definition for a ARM tracked top level resource.
  *
- * @member {string} [location] The GEO location of the SignalR service. e.g.
+ * @property {string} [location] The GEO location of the SignalR service. e.g.
  * West US | East US | North Central US | South Central US.
- * @member {object} [tags] Tags of the service which is a list of key value
+ * @property {object} [tags] Tags of the service which is a list of key value
  * pairs that describe the resource.
  */
 export interface TrackedResource extends Resource {
@@ -250,34 +253,36 @@ export interface TrackedResource extends Resource {
  * @constructor
  * A class represent a SignalR service resource.
  *
- * @member {object} [sku] SKU of the service.
- * @member {string} [sku.name] The name of the SKU. This is typically a letter
- * + number code, such as A0 or P3.  Required (if sku is specified)
- * @member {string} [sku.tier] Optional tier of this particular SKU. `Basic` is
- * deprecated, use `Standard` instead for Basic tier. Possible values include:
- * 'Free', 'Basic', 'Standard', 'Premium'
- * @member {string} [sku.size] Optional, string. When the name field is the
+ * @property {object} [sku] SKU of the service.
+ * @property {string} [sku.name] The name of the SKU. This is typically a
+ * letter + number code, such as A0 or P3.  Required (if sku is specified)
+ * @property {string} [sku.tier] Optional tier of this particular SKU. `Basic`
+ * is deprecated, use `Standard` instead for Basic tier. Possible values
+ * include: 'Free', 'Basic', 'Standard', 'Premium'
+ * @property {string} [sku.size] Optional, string. When the name field is the
  * combination of tier and some other value, this would be the standalone code.
- * @member {string} [sku.family] Optional, string. If the service has different
- * generations of hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] Optional, integer. If the SKU supports scale
- * out/in then the capacity integer should be included. If scale out/in is not
+ * @property {string} [sku.family] Optional, string. If the service has
+ * different generations of hardware, for the same SKU, then that can be
+ * captured here.
+ * @property {number} [sku.capacity] Optional, integer. If the SKU supports
+ * scale out/in then the capacity integer should be included. If scale out/in
+ * is not
  * possible for the resource this may be omitted.
- * @member {string} [hostNamePrefix] Prefix for the hostName of the SignalR
+ * @property {string} [hostNamePrefix] Prefix for the hostName of the SignalR
  * service. Retained for future use.
  * The hostname will be of format: &lt;hostNamePrefix&gt;.service.signalr.net.
- * @member {string} [provisioningState] Provisioning state of the resource.
+ * @property {string} [provisioningState] Provisioning state of the resource.
  * Possible values include: 'Unknown', 'Succeeded', 'Failed', 'Canceled',
  * 'Running', 'Creating', 'Updating', 'Deleting', 'Moving'
- * @member {string} [externalIP] The publicly accessible IP of the SignalR
+ * @property {string} [externalIP] The publicly accessible IP of the SignalR
  * service.
- * @member {string} [hostName] FQDN of the SignalR service instance. Format:
+ * @property {string} [hostName] FQDN of the SignalR service instance. Format:
  * xxx.service.signalr.net
- * @member {number} [publicPort] The publicly accessibly port of the SignalR
+ * @property {number} [publicPort] The publicly accessibly port of the SignalR
  * service which is designed for browser/client side usage.
- * @member {number} [serverPort] The publicly accessibly port of the SignalR
+ * @property {number} [serverPort] The publicly accessibly port of the SignalR
  * service which is designed for customer server side usage.
- * @member {string} [version] Version of the SignalR resource. Probably you
+ * @property {string} [version] Version of the SignalR resource. Probably you
  * need the same or higher version of client SDKs.
  */
 export interface SignalRResource extends TrackedResource {
@@ -297,7 +302,7 @@ export interface SignalRResource extends TrackedResource {
  * @constructor
  * Settings used to provision or configure the resource.
  *
- * @member {string} [hostNamePrefix] Prefix for the hostName of the SignalR
+ * @property {string} [hostNamePrefix] Prefix for the hostName of the SignalR
  * service. Retained for future use.
  * The hostname will be of format: &lt;hostNamePrefix&gt;.service.signalr.net.
  */
@@ -311,11 +316,11 @@ export interface SignalRCreateOrUpdateProperties {
  * @constructor
  * A class represents the access keys of SignalR service.
  *
- * @member {string} [primaryKey] The primary access key.
- * @member {string} [secondaryKey] The secondary access key.
- * @member {string} [primaryConnectionString] SignalR connection string
+ * @property {string} [primaryKey] The primary access key.
+ * @property {string} [secondaryKey] The secondary access key.
+ * @property {string} [primaryConnectionString] SignalR connection string
  * constructed via the primaryKey
- * @member {string} [secondaryConnectionString] SignalR connection string
+ * @property {string} [secondaryConnectionString] SignalR connection string
  * constructed via the secondaryKey
  */
 export interface SignalRKeys {
@@ -331,7 +336,7 @@ export interface SignalRKeys {
  * @constructor
  * Parameters describes the request to regenerate access keys
  *
- * @member {string} [keyType] The keyType to regenerate. Must be either
+ * @property {string} [keyType] The keyType to regenerate. Must be either
  * 'primary' or 'secondary'(case-insensitive). Possible values include:
  * 'Primary', 'Secondary'
  */
@@ -345,26 +350,28 @@ export interface RegenerateKeyParameters {
  * @constructor
  * Parameters for SignalR service update operation
  *
- * @member {object} [tags] A list of key value pairs that describe the
+ * @property {object} [tags] A list of key value pairs that describe the
  * resource.
- * @member {object} [sku] The billing information of the resource.(e.g. basic
+ * @property {object} [sku] The billing information of the resource.(e.g. basic
  * vs. standard)
- * @member {string} [sku.name] The name of the SKU. This is typically a letter
- * + number code, such as A0 or P3.  Required (if sku is specified)
- * @member {string} [sku.tier] Optional tier of this particular SKU. `Basic` is
- * deprecated, use `Standard` instead for Basic tier. Possible values include:
- * 'Free', 'Basic', 'Standard', 'Premium'
- * @member {string} [sku.size] Optional, string. When the name field is the
+ * @property {string} [sku.name] The name of the SKU. This is typically a
+ * letter + number code, such as A0 or P3.  Required (if sku is specified)
+ * @property {string} [sku.tier] Optional tier of this particular SKU. `Basic`
+ * is deprecated, use `Standard` instead for Basic tier. Possible values
+ * include: 'Free', 'Basic', 'Standard', 'Premium'
+ * @property {string} [sku.size] Optional, string. When the name field is the
  * combination of tier and some other value, this would be the standalone code.
- * @member {string} [sku.family] Optional, string. If the service has different
- * generations of hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] Optional, integer. If the SKU supports scale
- * out/in then the capacity integer should be included. If scale out/in is not
+ * @property {string} [sku.family] Optional, string. If the service has
+ * different generations of hardware, for the same SKU, then that can be
+ * captured here.
+ * @property {number} [sku.capacity] Optional, integer. If the SKU supports
+ * scale out/in then the capacity integer should be included. If scale out/in
+ * is not
  * possible for the resource this may be omitted.
- * @member {object} [properties] Settings used to provision or configure the
+ * @property {object} [properties] Settings used to provision or configure the
  * resource
- * @member {string} [properties.hostNamePrefix] Prefix for the hostName of the
- * SignalR service. Retained for future use.
+ * @property {string} [properties.hostNamePrefix] Prefix for the hostName of
+ * the SignalR service. Retained for future use.
  * The hostname will be of format: &lt;hostNamePrefix&gt;.service.signalr.net.
  */
 export interface SignalRUpdateParameters {
@@ -381,7 +388,7 @@ export interface SignalRUpdateParameters {
  *
  * Keep the same schema as AzSignalR.Models.SignalRResource
  *
- * @member {string} location Azure GEO region: e.g. West US | East US | North
+ * @property {string} location Azure GEO region: e.g. West US | East US | North
  * Central US | South Central US | West Europe | North Europe | East Asia |
  * Southeast Asia | etc.
  * The geo region of a resource never changes after it is created.
@@ -396,8 +403,8 @@ export interface SignalRCreateParameters extends SignalRUpdateParameters {
  * @constructor
  * Localizable String object containing the name and a localized value.
  *
- * @member {string} [value] The indentifier of the usage.
- * @member {string} [localizedValue] Localized name of the usage.
+ * @property {string} [value] The indentifier of the usage.
+ * @property {string} [localizedValue] Localized name of the usage.
  */
 export interface SignalRUsageName {
   value?: string;
@@ -410,16 +417,17 @@ export interface SignalRUsageName {
  * @constructor
  * Object that describes a specific usage of SignalR resources.
  *
- * @member {string} [id] Fully qualified ARM resource id
- * @member {number} [currentValue] Current value for the usage quota.
- * @member {number} [limit] The maximum permitted value for the usage quota. If
- * there is no limit, this value will be -1.
- * @member {object} [name] Localizable String object containing the name and a
- * localized value.
- * @member {string} [name.value] The indentifier of the usage.
- * @member {string} [name.localizedValue] Localized name of the usage.
- * @member {string} [unit] Representing the units of the usage quota. Possible
- * values are: Count, Bytes, Seconds, Percent, CountPerSecond, BytesPerSecond.
+ * @property {string} [id] Fully qualified ARM resource id
+ * @property {number} [currentValue] Current value for the usage quota.
+ * @property {number} [limit] The maximum permitted value for the usage quota.
+ * If there is no limit, this value will be -1.
+ * @property {object} [name] Localizable String object containing the name and
+ * a localized value.
+ * @property {string} [name.value] The indentifier of the usage.
+ * @property {string} [name.localizedValue] Localized name of the usage.
+ * @property {string} [unit] Representing the units of the usage quota.
+ * Possible values are: Count, Bytes, Seconds, Percent, CountPerSecond,
+ * BytesPerSecond.
  */
 export interface SignalRUsage {
   id?: string;
@@ -437,8 +445,8 @@ export interface SignalRUsage {
  * Result of the request to list REST API operations. It contains a list of
  * operations.
  *
- * @member {string} [nextLink] The URL the client should use to fetch the next
- * page (per server side paging).
+ * @property {string} [nextLink] The URL the client should use to fetch the
+ * next page (per server side paging).
  * It's null for now, added for future use.
  */
 export interface OperationList extends Array<Operation> {
@@ -452,8 +460,8 @@ export interface OperationList extends Array<Operation> {
  * Object that includes an array of SignalR services and a possible link for
  * next set.
  *
- * @member {string} [nextLink] The URL the client should use to fetch the next
- * page (per server side paging).
+ * @property {string} [nextLink] The URL the client should use to fetch the
+ * next page (per server side paging).
  * It's null for now, added for future use.
  */
 export interface SignalRResourceList extends Array<SignalRResource> {
@@ -467,8 +475,8 @@ export interface SignalRResourceList extends Array<SignalRResource> {
  * Object that includes an array of SignalR resource usages and a possible link
  * for next set.
  *
- * @member {string} [nextLink] The URL the client should use to fetch the next
- * page (per server side paging).
+ * @property {string} [nextLink] The URL the client should use to fetch the
+ * next page (per server side paging).
  * It's null for now, added for future use.
  */
 export interface SignalRUsageList extends Array<SignalRUsage> {

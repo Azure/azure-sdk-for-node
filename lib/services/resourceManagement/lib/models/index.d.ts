@@ -22,11 +22,11 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Plan for the appliance.
  *
- * @member {string} name The plan name.
- * @member {string} publisher The publisher ID.
- * @member {string} product The product code.
- * @member {string} [promotionCode] The promotion code.
- * @member {string} version The plan's version.
+ * @property {string} name The plan name.
+ * @property {string} publisher The publisher ID.
+ * @property {string} product The product code.
+ * @property {string} [promotionCode] The promotion code.
+ * @property {string} version The plan's version.
  */
 export interface Plan {
   name: string;
@@ -42,11 +42,11 @@ export interface Plan {
  * @constructor
  * Resource information.
  *
- * @member {string} [id] Resource ID
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
- * @member {string} [location] Resource location
- * @member {object} [tags] Resource tags
+ * @property {string} [id] Resource ID
+ * @property {string} [name] Resource name
+ * @property {string} [type] Resource type
+ * @property {string} [location] Resource location
+ * @property {object} [tags] Resource tags
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -62,20 +62,21 @@ export interface Resource extends BaseResource {
  * @constructor
  * Resource information.
  *
- * @member {string} [managedBy] ID of the resource that manages this resource.
- * @member {object} [sku] The SKU of the resource.
- * @member {string} [sku.name] The SKU name.
- * @member {string} [sku.tier] The SKU tier.
- * @member {string} [sku.size] The SKU size.
- * @member {string} [sku.family] The SKU family.
- * @member {string} [sku.model] The SKU model.
- * @member {number} [sku.capacity] The SKU capacity.
- * @member {object} [identity] The identity of the resource.
- * @member {string} [identity.principalId] The principal ID of resource
+ * @property {string} [managedBy] ID of the resource that manages this
+ * resource.
+ * @property {object} [sku] The SKU of the resource.
+ * @property {string} [sku.name] The SKU name.
+ * @property {string} [sku.tier] The SKU tier.
+ * @property {string} [sku.size] The SKU size.
+ * @property {string} [sku.family] The SKU family.
+ * @property {string} [sku.model] The SKU model.
+ * @property {number} [sku.capacity] The SKU capacity.
+ * @property {object} [identity] The identity of the resource.
+ * @property {string} [identity.principalId] The principal ID of resource
  * identity.
- * @member {string} [identity.tenantId] The tenant ID of resource.
- * @member {string} [identity.type] The identity type. Possible values include:
- * 'SystemAssigned'
+ * @property {string} [identity.tenantId] The tenant ID of resource.
+ * @property {string} [identity.type] The identity type. Possible values
+ * include: 'SystemAssigned'
  */
 export interface GenericResource extends Resource {
   managedBy?: string;
@@ -89,26 +90,26 @@ export interface GenericResource extends Resource {
  * @constructor
  * Information about appliance.
  *
- * @member {string} managedResourceGroupId The managed resource group Id.
- * @member {string} [applianceDefinitionId] The fully qualified path of
+ * @property {string} managedResourceGroupId The managed resource group Id.
+ * @property {string} [applianceDefinitionId] The fully qualified path of
  * appliance definition Id.
- * @member {object} [parameters] Name and value pairs that define the appliance
- * parameters. It can be a JObject or a well formed JSON string.
- * @member {object} [outputs] Name and value pairs that define the appliance
+ * @property {object} [parameters] Name and value pairs that define the
+ * appliance parameters. It can be a JObject or a well formed JSON string.
+ * @property {object} [outputs] Name and value pairs that define the appliance
  * outputs.
- * @member {string} [provisioningState] The appliance provisioning state.
+ * @property {string} [provisioningState] The appliance provisioning state.
  * Possible values include: 'Accepted', 'Running', 'Ready', 'Creating',
  * 'Created', 'Deleting', 'Deleted', 'Canceled', 'Failed', 'Succeeded',
  * 'Updating'
- * @member {string} [uiDefinitionUri] The blob URI where the UI definition file
- * is located.
- * @member {object} [plan] The plan information.
- * @member {string} [plan.name] The plan name.
- * @member {string} [plan.publisher] The publisher ID.
- * @member {string} [plan.product] The product code.
- * @member {string} [plan.promotionCode] The promotion code.
- * @member {string} [plan.version] The plan's version.
- * @member {string} [kind] The kind of the appliance. Allowed values are
+ * @property {string} [uiDefinitionUri] The blob URI where the UI definition
+ * file is located.
+ * @property {object} [plan] The plan information.
+ * @property {string} [plan.name] The plan name.
+ * @property {string} [plan.publisher] The publisher ID.
+ * @property {string} [plan.product] The product code.
+ * @property {string} [plan.promotionCode] The promotion code.
+ * @property {string} [plan.version] The plan's version.
+ * @property {string} [kind] The kind of the appliance. Allowed values are
  * MarketPlace and ServiceCatalog.
  */
 export interface Appliance extends GenericResource {
@@ -128,11 +129,11 @@ export interface Appliance extends GenericResource {
  * @constructor
  * Plan for the appliance.
  *
- * @member {string} [name] The plan name.
- * @member {string} [publisher] The publisher ID.
- * @member {string} [product] The product code.
- * @member {string} [promotionCode] The promotion code.
- * @member {string} [version] The plan's version.
+ * @property {string} [name] The plan name.
+ * @property {string} [publisher] The publisher ID.
+ * @property {string} [product] The product code.
+ * @property {string} [promotionCode] The promotion code.
+ * @property {string} [version] The plan's version.
  */
 export interface PlanPatchable {
   name?: string;
@@ -148,26 +149,26 @@ export interface PlanPatchable {
  * @constructor
  * Information about appliance.
  *
- * @member {string} [managedResourceGroupId] The managed resource group Id.
- * @member {string} [applianceDefinitionId] The fully qualified path of
+ * @property {string} [managedResourceGroupId] The managed resource group Id.
+ * @property {string} [applianceDefinitionId] The fully qualified path of
  * appliance definition Id.
- * @member {object} [parameters] Name and value pairs that define the appliance
- * parameters. It can be a JObject or a well formed JSON string.
- * @member {object} [outputs] Name and value pairs that define the appliance
+ * @property {object} [parameters] Name and value pairs that define the
+ * appliance parameters. It can be a JObject or a well formed JSON string.
+ * @property {object} [outputs] Name and value pairs that define the appliance
  * outputs.
- * @member {string} [provisioningState] The appliance provisioning state.
+ * @property {string} [provisioningState] The appliance provisioning state.
  * Possible values include: 'Accepted', 'Running', 'Ready', 'Creating',
  * 'Created', 'Deleting', 'Deleted', 'Canceled', 'Failed', 'Succeeded',
  * 'Updating'
- * @member {string} [uiDefinitionUri] The blob URI where the UI definition file
- * is located.
- * @member {object} [plan] The plan information.
- * @member {string} [plan.name] The plan name.
- * @member {string} [plan.publisher] The publisher ID.
- * @member {string} [plan.product] The product code.
- * @member {string} [plan.promotionCode] The promotion code.
- * @member {string} [plan.version] The plan's version.
- * @member {string} [kind] The kind of the appliance. Allowed values are
+ * @property {string} [uiDefinitionUri] The blob URI where the UI definition
+ * file is located.
+ * @property {object} [plan] The plan information.
+ * @property {string} [plan.name] The plan name.
+ * @property {string} [plan.publisher] The publisher ID.
+ * @property {string} [plan.product] The product code.
+ * @property {string} [plan.promotionCode] The promotion code.
+ * @property {string} [plan.version] The plan's version.
+ * @property {string} [kind] The kind of the appliance. Allowed values are
  * MarketPlace and ServiceCatalog.
  */
 export interface AppliancePatchable extends GenericResource {
@@ -187,13 +188,13 @@ export interface AppliancePatchable extends GenericResource {
  * @constructor
  * The appliance provider authorization.
  *
- * @member {string} principalId The provider's principal identifier. This is
+ * @property {string} principalId The provider's principal identifier. This is
  * the identity that the provider will use to call ARM to manage the appliance
  * resources.
- * @member {string} roleDefinitionId The provider's role definition identifier.
- * This role will define all the permissions that the provider must have on the
- * appliance's container resource group. This role definition cannot have
- * permission to delete the resource group.
+ * @property {string} roleDefinitionId The provider's role definition
+ * identifier. This role will define all the permissions that the provider must
+ * have on the appliance's container resource group. This role definition
+ * cannot have permission to delete the resource group.
  */
 export interface ApplianceProviderAuthorization {
   principalId: string;
@@ -206,9 +207,9 @@ export interface ApplianceProviderAuthorization {
  * @constructor
  * Appliance artifact.
  *
- * @member {string} [name] The appliance artifact name.
- * @member {string} [uri] The appliance artifact blob uri.
- * @member {string} [type] The the appliance artifact type. Possible values
+ * @property {string} [name] The appliance artifact name.
+ * @property {string} [uri] The appliance artifact blob uri.
+ * @property {string} [type] The the appliance artifact type. Possible values
  * include: 'Template', 'Custom'
  */
 export interface ApplianceArtifact {
@@ -223,15 +224,15 @@ export interface ApplianceArtifact {
  * @constructor
  * Information about appliance definition.
  *
- * @member {string} lockLevel The appliance lock level. Possible values
+ * @property {string} lockLevel The appliance lock level. Possible values
  * include: 'CanNotDelete', 'ReadOnly', 'None'
- * @member {string} [displayName] The appliance definition display name.
- * @member {array} authorizations The appliance provider authorizations.
- * @member {array} [artifacts] The collection of appliance artifacts. The
+ * @property {string} [displayName] The appliance definition display name.
+ * @property {array} authorizations The appliance provider authorizations.
+ * @property {array} [artifacts] The collection of appliance artifacts. The
  * portal will use the files specified as artifacts to construct the user
  * experience of creating an appliance from an appliance definition.
- * @member {string} [description] The appliance definition description.
- * @member {string} packageFileUri The appliance definition package file Uri.
+ * @property {string} [description] The appliance definition description.
+ * @property {string} packageFileUri The appliance definition package file Uri.
  */
 export interface ApplianceDefinition extends GenericResource {
   lockLevel: string;
@@ -248,12 +249,12 @@ export interface ApplianceDefinition extends GenericResource {
  * @constructor
  * SKU for the resource.
  *
- * @member {string} name The SKU name.
- * @member {string} [tier] The SKU tier.
- * @member {string} [size] The SKU size.
- * @member {string} [family] The SKU family.
- * @member {string} [model] The SKU model.
- * @member {number} [capacity] The SKU capacity.
+ * @property {string} name The SKU name.
+ * @property {string} [tier] The SKU tier.
+ * @property {string} [size] The SKU size.
+ * @property {string} [family] The SKU family.
+ * @property {string} [model] The SKU model.
+ * @property {number} [capacity] The SKU capacity.
  */
 export interface Sku {
   name: string;
@@ -270,9 +271,9 @@ export interface Sku {
  * @constructor
  * Identity for the resource.
  *
- * @member {string} [principalId] The principal ID of resource identity.
- * @member {string} [tenantId] The tenant ID of resource.
- * @member {string} [type] The identity type. Possible values include:
+ * @property {string} [principalId] The principal ID of resource identity.
+ * @property {string} [tenantId] The tenant ID of resource.
+ * @property {string} [type] The identity type. Possible values include:
  * 'SystemAssigned'
  */
 export interface Identity {
@@ -288,9 +289,9 @@ export interface Identity {
  * Error reponse indicates ARM appliance is not able to process the incoming
  * request. The reason is provided in the error message.
  *
- * @member {string} [httpStatus] Http status code.
- * @member {string} [errorCode] Error code.
- * @member {string} [errorMessage] Error message indicating why the operation
+ * @property {string} [httpStatus] Http status code.
+ * @property {string} [errorCode] Error code.
+ * @property {string} [errorMessage] Error message indicating why the operation
  * failed.
  */
 export interface ErrorResponse {
@@ -305,10 +306,10 @@ export interface ErrorResponse {
  * @constructor
  * The object that represents the operation.
  *
- * @member {string} [provider] Service provider: Microsoft.Solutions
- * @member {string} [resource] Resource on which the operation is performed:
+ * @property {string} [provider] Service provider: Microsoft.Solutions
+ * @property {string} [resource] Resource on which the operation is performed:
  * Profile, endpoint, etc.
- * @member {string} [operation] Operation type: Read, write, delete, etc.
+ * @property {string} [operation] Operation type: Read, write, delete, etc.
  */
 export interface OperationDisplay {
   provider?: string;
@@ -322,12 +323,12 @@ export interface OperationDisplay {
  * @constructor
  * Microsoft.Solutions operation
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Service provider: Microsoft.Solutions
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] The object that represents the operation.
+ * @property {string} [display.provider] Service provider: Microsoft.Solutions
+ * @property {string} [display.resource] Resource on which the operation is
  * performed: Profile, endpoint, etc.
- * @member {string} [display.operation] Operation type: Read, write, delete,
+ * @property {string} [display.operation] Operation type: Read, write, delete,
  * etc.
  */
 export interface Operation {
@@ -343,7 +344,7 @@ export interface Operation {
  * Result of the request to list Microsoft.Solutions operations. It contains a
  * list of operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {
@@ -356,7 +357,7 @@ export interface OperationListResult extends Array<Operation> {
  * @constructor
  * List of appliances.
  *
- * @member {string} [nextLink] The URL to use for getting the next set of
+ * @property {string} [nextLink] The URL to use for getting the next set of
  * results.
  */
 export interface ApplianceListResult extends Array<Appliance> {
@@ -369,7 +370,7 @@ export interface ApplianceListResult extends Array<Appliance> {
  * @constructor
  * List of appliance definitions.
  *
- * @member {string} [nextLink] The URL to use for getting the next set of
+ * @property {string} [nextLink] The URL to use for getting the next set of
  * results.
  */
 export interface ApplianceDefinitionListResult extends Array<ApplianceDefinition> {

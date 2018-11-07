@@ -17,21 +17,23 @@ import * as moment from "moment";
  * @constructor
  * Defines the query context that Bing used for the request.
  *
- * @member {string} originalQuery The query string as specified in the request.
- * @member {string} [alteredQuery] The query string used by Bing to perform the
- * query. Bing uses the altered query string if the original query string
+ * @property {string} originalQuery The query string as specified in the
+ * request.
+ * @property {string} [alteredQuery] The query string used by Bing to perform
+ * the query. Bing uses the altered query string if the original query string
  * contained spelling mistakes. For example, if the query string is "saling
  * downwind", the altered query string will be "sailing downwind". This field
  * is included only if the original query string contains a spelling mistake.
- * @member {string} [alterationOverrideQuery] The query string to use to force
- * Bing to use the original string. For example, if the query string is "saling
- * downwind", the override query string will be "+saling downwind". Remember to
- * encode the query string which results in "%2Bsaling+downwind". This field is
- * included only if the original query string contains a spelling mistake.
- * @member {boolean} [adultIntent] A Boolean value that indicates whether the
+ * @property {string} [alterationOverrideQuery] The query string to use to
+ * force Bing to use the original string. For example, if the query string is
+ * "saling downwind", the override query string will be "+saling downwind".
+ * Remember to encode the query string which results in "%2Bsaling+downwind".
+ * This field is included only if the original query string contains a spelling
+ * mistake.
+ * @property {boolean} [adultIntent] A Boolean value that indicates whether the
  * specified query has adult intent. The value is true if the query has adult
  * intent; otherwise, false.
- * @member {boolean} [askUserForLocation] A Boolean value that indicates
+ * @property {boolean} [askUserForLocation] A Boolean value that indicates
  * whether Bing requires the user's location to provide accurate results. If
  * you specified the user's location by using the X-MSEdge-ClientIP and
  * X-Search-Location headers, you can ignore this field. For location aware
@@ -53,7 +55,7 @@ export interface QueryContext {
  * @class
  * Initializes a new instance of the ResponseBase class.
  * @constructor
- * @member {string} _type Polymorphic Discriminator
+ * @property {string} _type Polymorphic Discriminator
  */
 export interface ResponseBase {
   _type: string;
@@ -65,7 +67,7 @@ export interface ResponseBase {
  * @constructor
  * Defines the identity of a resource.
  *
- * @member {string} [id] A String identifier.
+ * @property {string} [id] A String identifier.
  */
 export interface Identifiable extends ResponseBase {
   readonly id?: string;
@@ -78,9 +80,9 @@ export interface Identifiable extends ResponseBase {
  * Defines a response. All schemas that could be returned at the root of a
  * response should inherit from this
  *
- * @member {array} [contractualRules] A list of rules that you must adhere to
+ * @property {array} [contractualRules] A list of rules that you must adhere to
  * if you display the item.
- * @member {string} [webSearchUrl] The URL To Bing's search result for this
+ * @property {string} [webSearchUrl] The URL To Bing's search result for this
  * item.
  */
 export interface Response extends Identifiable {
@@ -92,27 +94,27 @@ export interface Response extends Identifiable {
  * @class
  * Initializes a new instance of the Thing class.
  * @constructor
- * @member {string} [name] The name of the thing represented by this object.
- * @member {string} [url] The URL to get more information about the thing
+ * @property {string} [name] The name of the thing represented by this object.
+ * @property {string} [url] The URL to get more information about the thing
  * represented by this object.
- * @member {object} [image]
- * @member {object} [image.thumbnail] The URL to a thumbnail of the image
- * @member {string} [description] A short description of the item.
- * @member {object} [entityPresentationInfo] Additional information about the
+ * @property {object} [image]
+ * @property {object} [image.thumbnail] The URL to a thumbnail of the image
+ * @property {string} [description] A short description of the item.
+ * @property {object} [entityPresentationInfo] Additional information about the
  * entity such as hints that you can use to determine the entity's type. To
  * determine the entity's type, use the entityScenario and entityTypeHint
  * fields.
- * @member {string} [entityPresentationInfo.entityScenario] The supported
+ * @property {string} [entityPresentationInfo.entityScenario] The supported
  * scenario. Possible values include: 'DominantEntity', 'DisambiguationItem',
  * 'ListItem'
- * @member {array} [entityPresentationInfo.entityTypeHints] A list of hints
+ * @property {array} [entityPresentationInfo.entityTypeHints] A list of hints
  * that indicate the entity's type. The list could contain a single hint such
  * as Movie or a list of hints such as Place, LocalBusiness, Restaurant. Each
  * successive hint in the array narrows the entity's type.
- * @member {string} [entityPresentationInfo.entityTypeDisplayHint] A display
+ * @property {string} [entityPresentationInfo.entityTypeDisplayHint] A display
  * version of the entity hint. For example, if entityTypeHints is Artist, this
  * field may be set to American Singer.
- * @member {string} [bingId] An ID that uniquely identifies this item.
+ * @property {string} [bingId] An ID that uniquely identifies this item.
  */
 export interface Thing extends Response {
   readonly name?: string;
@@ -127,9 +129,9 @@ export interface Thing extends Response {
  * @class
  * Initializes a new instance of the CreativeWork class.
  * @constructor
- * @member {string} [thumbnailUrl] The URL to a thumbnail of the item.
- * @member {array} [provider] The source of the creative work.
- * @member {string} [text]
+ * @property {string} [thumbnailUrl] The URL to a thumbnail of the item.
+ * @property {array} [provider] The source of the creative work.
+ * @property {string} [text]
  */
 export interface CreativeWork extends Thing {
   readonly thumbnailUrl?: string;
@@ -141,11 +143,13 @@ export interface CreativeWork extends Thing {
  * @class
  * Initializes a new instance of the MediaObject class.
  * @constructor
- * @member {string} [contentUrl] Original URL to retrieve the source (file) for
- * the media object (e.g the source URL for the image).
- * @member {string} [hostPageUrl] URL of the page that hosts the media object.
- * @member {number} [width] The width of the source media object, in pixels.
- * @member {number} [height] The height of the source media object, in pixels.
+ * @property {string} [contentUrl] Original URL to retrieve the source (file)
+ * for the media object (e.g the source URL for the image).
+ * @property {string} [hostPageUrl] URL of the page that hosts the media
+ * object.
+ * @property {number} [width] The width of the source media object, in pixels.
+ * @property {number} [height] The height of the source media object, in
+ * pixels.
  */
 export interface MediaObject extends CreativeWork {
   readonly contentUrl?: string;
@@ -160,7 +164,7 @@ export interface MediaObject extends CreativeWork {
  * @constructor
  * Defines an image
  *
- * @member {object} [thumbnail] The URL to a thumbnail of the image
+ * @property {object} [thumbnail] The URL to a thumbnail of the image
  */
 export interface ImageObject extends MediaObject {
   readonly thumbnail?: ImageObject;
@@ -172,14 +176,14 @@ export interface ImageObject extends MediaObject {
  * @constructor
  * Defines additional information about an entity such as type hints.
  *
- * @member {string} entityScenario The supported scenario. Possible values
+ * @property {string} entityScenario The supported scenario. Possible values
  * include: 'DominantEntity', 'DisambiguationItem', 'ListItem'. Default value:
  * 'DominantEntity' .
- * @member {array} [entityTypeHints] A list of hints that indicate the entity's
- * type. The list could contain a single hint such as Movie or a list of hints
- * such as Place, LocalBusiness, Restaurant. Each successive hint in the array
- * narrows the entity's type.
- * @member {string} [entityTypeDisplayHint] A display version of the entity
+ * @property {array} [entityTypeHints] A list of hints that indicate the
+ * entity's type. The list could contain a single hint such as Movie or a list
+ * of hints such as Place, LocalBusiness, Restaurant. Each successive hint in
+ * the array narrows the entity's type.
+ * @property {string} [entityTypeDisplayHint] A display version of the entity
  * hint. For example, if entityTypeHints is Artist, this field may be set to
  * American Singer.
  */
@@ -201,25 +205,25 @@ export interface Answer extends Response {
  * @class
  * Initializes a new instance of the SearchResultsAnswer class.
  * @constructor
- * @member {object} [queryContext]
- * @member {string} [queryContext.originalQuery] The query string as specified
- * in the request.
- * @member {string} [queryContext.alteredQuery] The query string used by Bing
+ * @property {object} [queryContext]
+ * @property {string} [queryContext.originalQuery] The query string as
+ * specified in the request.
+ * @property {string} [queryContext.alteredQuery] The query string used by Bing
  * to perform the query. Bing uses the altered query string if the original
  * query string contained spelling mistakes. For example, if the query string
  * is "saling downwind", the altered query string will be "sailing downwind".
  * This field is included only if the original query string contains a spelling
  * mistake.
- * @member {string} [queryContext.alterationOverrideQuery] The query string to
- * use to force Bing to use the original string. For example, if the query
+ * @property {string} [queryContext.alterationOverrideQuery] The query string
+ * to use to force Bing to use the original string. For example, if the query
  * string is "saling downwind", the override query string will be "+saling
  * downwind". Remember to encode the query string which results in
  * "%2Bsaling+downwind". This field is included only if the original query
  * string contains a spelling mistake.
- * @member {boolean} [queryContext.adultIntent] A Boolean value that indicates
- * whether the specified query has adult intent. The value is true if the query
- * has adult intent; otherwise, false.
- * @member {boolean} [queryContext.askUserForLocation] A Boolean value that
+ * @property {boolean} [queryContext.adultIntent] A Boolean value that
+ * indicates whether the specified query has adult intent. The value is true if
+ * the query has adult intent; otherwise, false.
+ * @property {boolean} [queryContext.askUserForLocation] A Boolean value that
  * indicates whether Bing requires the user's location to provide accurate
  * results. If you specified the user's location by using the X-MSEdge-ClientIP
  * and X-Search-Location headers, you can ignore this field. For location aware
@@ -239,8 +243,8 @@ export interface SearchResultsAnswer extends Answer {
  * @constructor
  * Defines an entity answer.
  *
- * @member {string} [queryScenario] The supported query scenario. This field is
- * set to DominantEntity or DisambiguationItem. The field is set to
+ * @property {string} [queryScenario] The supported query scenario. This field
+ * is set to DominantEntity or DisambiguationItem. The field is set to
  * DominantEntity if Bing determines that only a single entity satisfies the
  * request. For example, a book, movie, person, or attraction. If multiple
  * entities could satisfy the request, the field is set to DisambiguationItem.
@@ -250,7 +254,7 @@ export interface SearchResultsAnswer extends Answer {
  * likely be DominantEntity. Possible values include: 'DominantEntity',
  * 'DominantEntityWithDisambiguation', 'Disambiguation', 'List',
  * 'ListWithPivot'. Default value: 'DominantEntity' .
- * @member {array} value A list of entities.
+ * @property {array} value A list of entities.
  */
 export interface Entities extends SearchResultsAnswer {
   readonly queryScenario?: string;
@@ -263,7 +267,7 @@ export interface Entities extends SearchResultsAnswer {
  * @constructor
  * Defines a local entity answer.
  *
- * @member {array} value A list of local entities, such as restaurants or
+ * @property {array} value A list of local entities, such as restaurants or
  * hotels.
  */
 export interface Places extends SearchResultsAnswer {
@@ -277,28 +281,28 @@ export interface Places extends SearchResultsAnswer {
  * Defines the top-level object that the response includes when the request
  * succeeds.
  *
- * @member {object} [queryContext] An object that contains the query string
+ * @property {object} [queryContext] An object that contains the query string
  * that Bing used for the request. This object contains the query string as
  * entered by the user. It may also contain an altered query string that Bing
  * used for the query if the query string contained a spelling mistake.
- * @member {string} [queryContext.originalQuery] The query string as specified
- * in the request.
- * @member {string} [queryContext.alteredQuery] The query string used by Bing
+ * @property {string} [queryContext.originalQuery] The query string as
+ * specified in the request.
+ * @property {string} [queryContext.alteredQuery] The query string used by Bing
  * to perform the query. Bing uses the altered query string if the original
  * query string contained spelling mistakes. For example, if the query string
  * is "saling downwind", the altered query string will be "sailing downwind".
  * This field is included only if the original query string contains a spelling
  * mistake.
- * @member {string} [queryContext.alterationOverrideQuery] The query string to
- * use to force Bing to use the original string. For example, if the query
+ * @property {string} [queryContext.alterationOverrideQuery] The query string
+ * to use to force Bing to use the original string. For example, if the query
  * string is "saling downwind", the override query string will be "+saling
  * downwind". Remember to encode the query string which results in
  * "%2Bsaling+downwind". This field is included only if the original query
  * string contains a spelling mistake.
- * @member {boolean} [queryContext.adultIntent] A Boolean value that indicates
- * whether the specified query has adult intent. The value is true if the query
- * has adult intent; otherwise, false.
- * @member {boolean} [queryContext.askUserForLocation] A Boolean value that
+ * @property {boolean} [queryContext.adultIntent] A Boolean value that
+ * indicates whether the specified query has adult intent. The value is true if
+ * the query has adult intent; otherwise, false.
+ * @property {boolean} [queryContext.askUserForLocation] A Boolean value that
  * indicates whether Bing requires the user's location to provide accurate
  * results. If you specified the user's location by using the X-MSEdge-ClientIP
  * and X-Search-Location headers, you can ignore this field. For location aware
@@ -307,11 +311,11 @@ export interface Places extends SearchResultsAnswer {
  * location aware queries that include the location (for example, "Seattle
  * weather"), this field is set to false. This field is also set to false for
  * queries that are not location aware, such as "best sellers".
- * @member {object} [entities] A list of entities that are relevant to the
+ * @property {object} [entities] A list of entities that are relevant to the
  * search query.
- * @member {string} [entities.queryScenario] The supported query scenario. This
- * field is set to DominantEntity or DisambiguationItem. The field is set to
- * DominantEntity if Bing determines that only a single entity satisfies the
+ * @property {string} [entities.queryScenario] The supported query scenario.
+ * This field is set to DominantEntity or DisambiguationItem. The field is set
+ * to DominantEntity if Bing determines that only a single entity satisfies the
  * request. For example, a book, movie, person, or attraction. If multiple
  * entities could satisfy the request, the field is set to DisambiguationItem.
  * For example, if the request uses the generic title of a movie franchise, the
@@ -320,11 +324,11 @@ export interface Places extends SearchResultsAnswer {
  * likely be DominantEntity. Possible values include: 'DominantEntity',
  * 'DominantEntityWithDisambiguation', 'Disambiguation', 'List',
  * 'ListWithPivot'
- * @member {array} [entities.value] A list of entities.
- * @member {object} [places] A list of local entities such as restaurants or
+ * @property {array} [entities.value] A list of entities.
+ * @property {object} [places] A list of local entities such as restaurants or
  * hotels that are relevant to the query.
- * @member {array} [places.value] A list of local entities, such as restaurants
- * or hotels.
+ * @property {array} [places.value] A list of local entities, such as
+ * restaurants or hotels.
  */
 export interface SearchResponse extends Response {
   readonly queryContext?: QueryContext;
@@ -336,9 +340,9 @@ export interface SearchResponse extends Response {
  * @class
  * Initializes a new instance of the ContractualRulesContractualRule class.
  * @constructor
- * @member {string} [targetPropertyName] The name of the field that the rule
+ * @property {string} [targetPropertyName] The name of the field that the rule
  * applies to.
- * @member {string} _type Polymorphic Discriminator
+ * @property {string} _type Polymorphic Discriminator
  */
 export interface ContractualRulesContractualRule {
   readonly targetPropertyName?: string;
@@ -351,21 +355,21 @@ export interface ContractualRulesContractualRule {
  * @constructor
  * Defines the error that occurred.
  *
- * @member {string} code The error code that identifies the category of error.
- * Possible values include: 'None', 'ServerError', 'InvalidRequest',
+ * @property {string} code The error code that identifies the category of
+ * error. Possible values include: 'None', 'ServerError', 'InvalidRequest',
  * 'RateLimitExceeded', 'InvalidAuthorization', 'InsufficientAuthorization'.
  * Default value: 'None' .
- * @member {string} [subCode] The error code that further helps to identify the
- * error. Possible values include: 'UnexpectedError', 'ResourceError',
+ * @property {string} [subCode] The error code that further helps to identify
+ * the error. Possible values include: 'UnexpectedError', 'ResourceError',
  * 'NotImplemented', 'ParameterMissing', 'ParameterInvalidValue',
  * 'HttpNotAllowed', 'Blocked', 'AuthorizationMissing',
  * 'AuthorizationRedundancy', 'AuthorizationDisabled', 'AuthorizationExpired'
- * @member {string} message A description of the error.
- * @member {string} [moreDetails] A description that provides additional
+ * @property {string} message A description of the error.
+ * @property {string} [moreDetails] A description that provides additional
  * information about the error.
- * @member {string} [parameter] The parameter in the request that caused the
+ * @property {string} [parameter] The parameter in the request that caused the
  * error.
- * @member {string} [value] The parameter's value in the request that was not
+ * @property {string} [value] The parameter's value in the request that was not
  * valid.
  */
 export interface ErrorModel {
@@ -383,7 +387,7 @@ export interface ErrorModel {
  * @constructor
  * The top-level response that represents a failed request.
  *
- * @member {array} errors A list of errors that describe the reasons why the
+ * @property {array} errors A list of errors that describe the reasons why the
  * request failed.
  */
 export interface ErrorResponse extends Response {
@@ -412,27 +416,27 @@ export interface StructuredValue extends Intangible {
  * @constructor
  * Defines a postal address.
  *
- * @member {string} [streetAddress]
- * @member {string} [addressLocality] The city where the street address is
+ * @property {string} [streetAddress]
+ * @property {string} [addressLocality] The city where the street address is
  * located. For example, Seattle.
- * @member {string} [addressSubregion]
- * @member {string} [addressRegion] The state or province code where the street
- * address is located. This could be the two-letter code. For example, WA, or
- * the full name , Washington.
- * @member {string} [postalCode] The zip code or postal code where the street
+ * @property {string} [addressSubregion]
+ * @property {string} [addressRegion] The state or province code where the
+ * street address is located. This could be the two-letter code. For example,
+ * WA, or the full name , Washington.
+ * @property {string} [postalCode] The zip code or postal code where the street
  * address is located. For example, 98052.
- * @member {string} [postOfficeBoxNumber]
- * @member {string} [addressCountry] The country/region where the street
+ * @property {string} [postOfficeBoxNumber]
+ * @property {string} [addressCountry] The country/region where the street
  * address is located. This could be the two-letter ISO code. For example, US,
  * or the full name, United States.
- * @member {string} [countryIso] The two letter ISO code of this countr. For
+ * @property {string} [countryIso] The two letter ISO code of this countr. For
  * example, US.
- * @member {string} [neighborhood] The neighborhood where the street address is
- * located. For example, Westlake.
- * @member {string} [addressRegionAbbreviation] Region Abbreviation. For
+ * @property {string} [neighborhood] The neighborhood where the street address
+ * is located. For example, Westlake.
+ * @property {string} [addressRegionAbbreviation] Region Abbreviation. For
  * example, WA.
- * @member {string} [text] The complete address. For example, 2100 Westlake Ave
- * N, Bellevue, WA 98052.
+ * @property {string} [text] The complete address. For example, 2100 Westlake
+ * Ave N, Bellevue, WA 98052.
  */
 export interface PostalAddress extends StructuredValue {
   readonly streetAddress?: string;
@@ -454,29 +458,30 @@ export interface PostalAddress extends StructuredValue {
  * @constructor
  * Defines information about a local entity, such as a restaurant or hotel.
  *
- * @member {object} [address] The postal address of where the entity is located
- * @member {string} [address.streetAddress]
- * @member {string} [address.addressLocality] The city where the street address
- * is located. For example, Seattle.
- * @member {string} [address.addressSubregion]
- * @member {string} [address.addressRegion] The state or province code where
+ * @property {object} [address] The postal address of where the entity is
+ * located
+ * @property {string} [address.streetAddress]
+ * @property {string} [address.addressLocality] The city where the street
+ * address is located. For example, Seattle.
+ * @property {string} [address.addressSubregion]
+ * @property {string} [address.addressRegion] The state or province code where
  * the street address is located. This could be the two-letter code. For
  * example, WA, or the full name , Washington.
- * @member {string} [address.postalCode] The zip code or postal code where the
- * street address is located. For example, 98052.
- * @member {string} [address.postOfficeBoxNumber]
- * @member {string} [address.addressCountry] The country/region where the
+ * @property {string} [address.postalCode] The zip code or postal code where
+ * the street address is located. For example, 98052.
+ * @property {string} [address.postOfficeBoxNumber]
+ * @property {string} [address.addressCountry] The country/region where the
  * street address is located. This could be the two-letter ISO code. For
  * example, US, or the full name, United States.
- * @member {string} [address.countryIso] The two letter ISO code of this
+ * @property {string} [address.countryIso] The two letter ISO code of this
  * countr. For example, US.
- * @member {string} [address.neighborhood] The neighborhood where the street
+ * @property {string} [address.neighborhood] The neighborhood where the street
  * address is located. For example, Westlake.
- * @member {string} [address.addressRegionAbbreviation] Region Abbreviation.
+ * @property {string} [address.addressRegionAbbreviation] Region Abbreviation.
  * For example, WA.
- * @member {string} [address.text] The complete address. For example, 2100
+ * @property {string} [address.text] The complete address. For example, 2100
  * Westlake Ave N, Bellevue, WA 98052.
- * @member {string} [telephone] The entity's telephone number
+ * @property {string} [telephone] The entity's telephone number
  */
 export interface Place extends Thing {
   readonly address?: PostalAddress;
@@ -497,10 +502,10 @@ export interface Organization extends Thing {
  * @class
  * Initializes a new instance of the LocalBusiness class.
  * @constructor
- * @member {string} [priceRange] $$.
- * @member {array} [panoramas]
- * @member {boolean} [isPermanentlyClosed]
- * @member {string} [tagLine]
+ * @property {string} [priceRange] $$.
+ * @property {array} [panoramas]
+ * @property {boolean} [isPermanentlyClosed]
+ * @property {string} [tagLine]
  */
 export interface LocalBusiness extends Place {
   readonly priceRange?: string;
@@ -521,7 +526,7 @@ export interface EntertainmentBusiness extends LocalBusiness {
  * @class
  * Initializes a new instance of the MovieTheater class.
  * @constructor
- * @member {number} [screenCount]
+ * @property {number} [screenCount]
  */
 export interface MovieTheater extends EntertainmentBusiness {
   readonly screenCount?: number;
@@ -531,7 +536,7 @@ export interface MovieTheater extends EntertainmentBusiness {
  * @class
  * Initializes a new instance of the ContractualRulesAttribution class.
  * @constructor
- * @member {boolean} [mustBeCloseToContent] A Boolean value that determines
+ * @property {boolean} [mustBeCloseToContent] A Boolean value that determines
  * whether the contents of the rule must be placed in close proximity to the
  * field that the rule applies to. If true, the contents must be placed in
  * close proximity. If false, or this field does not exist, the contents may be
@@ -561,8 +566,8 @@ export interface TouristAttraction extends Place {
  * @class
  * Initializes a new instance of the Airport class.
  * @constructor
- * @member {string} [iataCode]
- * @member {string} [icaoCode]
+ * @property {string} [iataCode]
+ * @property {string} [icaoCode]
  */
 export interface Airport extends CivicStructure {
   readonly iataCode?: string;
@@ -585,9 +590,10 @@ export interface License extends CreativeWork {
  * @constructor
  * Defines a contractual rule for license attribution.
  *
- * @member {object} [license] The license under which the content may be used.
- * @member {string} [licenseNotice] The license to display next to the targeted
- * field.
+ * @property {object} [license] The license under which the content may be
+ * used.
+ * @property {string} [licenseNotice] The license to display next to the
+ * targeted field.
  */
 export interface ContractualRulesLicenseAttribution extends ContractualRulesAttribution {
   readonly license?: License;
@@ -600,11 +606,11 @@ export interface ContractualRulesLicenseAttribution extends ContractualRulesAttr
  * @constructor
  * Defines a contractual rule for link attribution.
  *
- * @member {string} text The attribution text.
- * @member {string} url The URL to the provider's website. Use text and URL to
- * create the hyperlink.
- * @member {boolean} [optionalForListDisplay] Indicates whether this provider's
- * attribution is optional.
+ * @property {string} text The attribution text.
+ * @property {string} url The URL to the provider's website. Use text and URL
+ * to create the hyperlink.
+ * @property {boolean} [optionalForListDisplay] Indicates whether this
+ * provider's attribution is optional.
  */
 export interface ContractualRulesLinkAttribution extends ContractualRulesAttribution {
   text: string;
@@ -618,7 +624,7 @@ export interface ContractualRulesLinkAttribution extends ContractualRulesAttribu
  * @constructor
  * Defines a contractual rule for media attribution.
  *
- * @member {string} [url] The URL that you use to create of hyperlink of the
+ * @property {string} [url] The URL that you use to create of hyperlink of the
  * media content. For example, if the target is an image, you would use the URL
  * to make the image clickable.
  */
@@ -632,13 +638,13 @@ export interface ContractualRulesMediaAttribution extends ContractualRulesAttrib
  * @constructor
  * Defines a contractual rule for text attribution.
  *
- * @member {string} text The attribution text. Text attribution applies to the
- * entity as a whole and should be displayed immediately following the entity
- * presentation. If there are multiple text or link attribution rules that do
- * not specify a target, you should concatenate them and display them using a
- * "Data from:" label.
- * @member {boolean} [optionalForListDisplay] Indicates whether this provider's
- * attribution is optional.
+ * @property {string} text The attribution text. Text attribution applies to
+ * the entity as a whole and should be displayed immediately following the
+ * entity presentation. If there are multiple text or link attribution rules
+ * that do not specify a target, you should concatenate them and display them
+ * using a "Data from:" label.
+ * @property {boolean} [optionalForListDisplay] Indicates whether this
+ * provider's attribution is optional.
  */
 export interface ContractualRulesTextAttribution extends ContractualRulesAttribution {
   text: string;
@@ -665,10 +671,10 @@ export interface LodgingBusiness extends LocalBusiness {
  * @class
  * Initializes a new instance of the Restaurant class.
  * @constructor
- * @member {boolean} [acceptsReservations]
- * @member {string} [reservationUrl]
- * @member {array} [servesCuisine]
- * @member {string} [menuUrl]
+ * @property {boolean} [acceptsReservations]
+ * @property {string} [reservationUrl]
+ * @property {array} [servesCuisine]
+ * @property {string} [menuUrl]
  */
 export interface Restaurant extends FoodEstablishment {
   readonly acceptsReservations?: boolean;
@@ -681,8 +687,8 @@ export interface Restaurant extends FoodEstablishment {
  * @class
  * Initializes a new instance of the Hotel class.
  * @constructor
- * @member {string} [hotelClass]
- * @member {array} [amenities]
+ * @property {string} [hotelClass]
+ * @property {array} [amenities]
  */
 export interface Hotel extends LodgingBusiness {
   readonly hotelClass?: string;

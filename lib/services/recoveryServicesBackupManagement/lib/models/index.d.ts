@@ -22,7 +22,7 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Base class for feature request
  *
- * @member {string} featureType Polymorphic Discriminator
+ * @property {string} featureType Polymorphic Discriminator
  */
 export interface FeatureSupportRequest {
   featureType: string;
@@ -44,11 +44,11 @@ export interface AzureBackupGoalFeatureSupportRequest extends FeatureSupportRequ
  * @constructor
  * Additional information about Azure File Share backup item.
  *
- * @member {date} [oldestRecoveryPoint] The oldest backup copy available for
+ * @property {date} [oldestRecoveryPoint] The oldest backup copy available for
  * this item in the service.
- * @member {number} [recoveryPointCount] Number of available backup copies
+ * @property {number} [recoveryPointCount] Number of available backup copies
  * associated with this backup item.
- * @member {string} [policyState] Indicates consistency of policy object and
+ * @property {string} [policyState] Indicates consistency of policy object and
  * policy applied to this backup item.
  */
 export interface AzureFileshareProtectedItemExtendedInfo {
@@ -63,26 +63,27 @@ export interface AzureFileshareProtectedItemExtendedInfo {
  * @constructor
  * Base class for backup items.
  *
- * @member {string} [backupManagementType] Type of backup managemenent for the
- * backed up item. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
- * 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
- * 'DefaultBackup'
- * @member {string} [workloadType] Type of workload this item represents.
+ * @property {string} [backupManagementType] Type of backup managemenent for
+ * the backed up item. Possible values include: 'Invalid', 'AzureIaasVM',
+ * 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage',
+ * 'AzureWorkload', 'DefaultBackup'
+ * @property {string} [workloadType] Type of workload this item represents.
  * Possible values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb',
  * 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
  * 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase'
- * @member {string} [containerName] Unique name of container
- * @member {string} [sourceResourceId] ARM ID of the resource to be backed up.
- * @member {string} [policyId] ID of the backup policy with which this item is
- * backed up.
- * @member {date} [lastRecoveryPoint] Timestamp when the last (latest) backup
+ * @property {string} [containerName] Unique name of container
+ * @property {string} [sourceResourceId] ARM ID of the resource to be backed
+ * up.
+ * @property {string} [policyId] ID of the backup policy with which this item
+ * is backed up.
+ * @property {date} [lastRecoveryPoint] Timestamp when the last (latest) backup
  * copy was created for this backup item.
- * @member {string} [backupSetName] Name of the backup set the backup item
+ * @property {string} [backupSetName] Name of the backup set the backup item
  * belongs to
- * @member {string} [createMode] Create mode to indicate recovery of existing
+ * @property {string} [createMode] Create mode to indicate recovery of existing
  * soft deleted data source or creation of new data source. Possible values
  * include: 'Invalid', 'Default', 'Recover'
- * @member {string} protectedItemType Polymorphic Discriminator
+ * @property {string} protectedItemType Polymorphic Discriminator
  */
 export interface ProtectedItem {
   backupManagementType?: string;
@@ -102,27 +103,27 @@ export interface ProtectedItem {
  * @constructor
  * Azure File Share workload-specific backup item.
  *
- * @member {string} [friendlyName] Friendly name of the fileshare represented
+ * @property {string} [friendlyName] Friendly name of the fileshare represented
  * by this backup item.
- * @member {string} [protectionStatus] Backup status of this backup item.
- * @member {string} [protectionState] Backup state of this backup item.
+ * @property {string} [protectionStatus] Backup status of this backup item.
+ * @property {string} [protectionState] Backup state of this backup item.
  * Possible values include: 'Invalid', 'IRPending', 'Protected',
  * 'ProtectionError', 'ProtectionStopped', 'ProtectionPaused'
- * @member {string} [healthStatus] backups running status for this backup item.
- * Possible values include: 'Passed', 'ActionRequired', 'ActionSuggested',
- * 'Invalid'
- * @member {string} [lastBackupStatus] Last backup operation status. Possible
+ * @property {string} [healthStatus] backups running status for this backup
+ * item. Possible values include: 'Passed', 'ActionRequired',
+ * 'ActionSuggested', 'Invalid'
+ * @property {string} [lastBackupStatus] Last backup operation status. Possible
  * values: Healthy, Unhealthy.
- * @member {date} [lastBackupTime] Timestamp of the last backup operation on
+ * @property {date} [lastBackupTime] Timestamp of the last backup operation on
  * this backup item.
- * @member {object} [extendedInfo] Additional information with this backup
+ * @property {object} [extendedInfo] Additional information with this backup
  * item.
- * @member {date} [extendedInfo.oldestRecoveryPoint] The oldest backup copy
+ * @property {date} [extendedInfo.oldestRecoveryPoint] The oldest backup copy
  * available for this item in the service.
- * @member {number} [extendedInfo.recoveryPointCount] Number of available
+ * @property {number} [extendedInfo.recoveryPointCount] Number of available
  * backup copies associated with this backup item.
- * @member {string} [extendedInfo.policyState] Indicates consistency of policy
- * object and policy applied to this backup item.
+ * @property {string} [extendedInfo.policyState] Indicates consistency of
+ * policy object and policy applied to this backup item.
  */
 export interface AzureFileshareProtectedItem extends ProtectedItem {
   friendlyName?: string;
@@ -140,7 +141,7 @@ export interface AzureFileshareProtectedItem extends ProtectedItem {
  * @constructor
  * Base class for backup schedule.
  *
- * @member {string} schedulePolicyType Polymorphic Discriminator
+ * @property {string} schedulePolicyType Polymorphic Discriminator
  */
 export interface SchedulePolicy {
   schedulePolicyType: string;
@@ -152,7 +153,7 @@ export interface SchedulePolicy {
  * @constructor
  * Base class for retention policy.
  *
- * @member {string} retentionPolicyType Polymorphic Discriminator
+ * @property {string} retentionPolicyType Polymorphic Discriminator
  */
 export interface RetentionPolicy {
   retentionPolicyType: string;
@@ -165,9 +166,9 @@ export interface RetentionPolicy {
  * Base class for backup policy. Workload-specific backup policies are derived
  * from this class.
  *
- * @member {number} [protectedItemsCount] Number of items associated with this
- * policy.
- * @member {string} backupManagementType Polymorphic Discriminator
+ * @property {number} [protectedItemsCount] Number of items associated with
+ * this policy.
+ * @property {string} backupManagementType Polymorphic Discriminator
  */
 export interface ProtectionPolicy {
   protectedItemsCount?: number;
@@ -180,20 +181,21 @@ export interface ProtectionPolicy {
  * @constructor
  * AzureStorage backup policy.
  *
- * @member {string} [workLoadType] Type of workload for the backup management.
- * Possible values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb',
- * 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
- * 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase'
- * @member {object} [schedulePolicy] Backup schedule specified as part of
+ * @property {string} [workLoadType] Type of workload for the backup
+ * management. Possible values include: 'Invalid', 'VM', 'FileFolder',
+ * 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState',
+ * 'Client', 'GenericDataSource', 'SQLDataBase', 'AzureFileShare',
+ * 'SAPHanaDatabase'
+ * @property {object} [schedulePolicy] Backup schedule specified as part of
  * backup policy.
- * @member {string} [schedulePolicy.schedulePolicyType] Polymorphic
+ * @property {string} [schedulePolicy.schedulePolicyType] Polymorphic
  * Discriminator
- * @member {object} [retentionPolicy] Retention policy with the details on
+ * @property {object} [retentionPolicy] Retention policy with the details on
  * backup copy retention ranges.
- * @member {string} [retentionPolicy.retentionPolicyType] Polymorphic
+ * @property {string} [retentionPolicy.retentionPolicyType] Polymorphic
  * Discriminator
- * @member {string} [timeZone] TimeZone optional input as string. For example:
- * TimeZone = "Pacific Standard Time".
+ * @property {string} [timeZone] TimeZone optional input as string. For
+ * example: TimeZone = "Pacific Standard Time".
  */
 export interface AzureFileShareProtectionPolicy extends ProtectionPolicy {
   workLoadType?: string;
@@ -208,9 +210,10 @@ export interface AzureFileShareProtectionPolicy extends ProtectionPolicy {
  * @constructor
  * Restore file specs like file path, type and target folder path info.
  *
- * @member {string} [path] Source File/Folder path
- * @member {string} [fileSpecType] Indicates what the Path variable stands for
- * @member {string} [targetFolderPath] Destination folder path in target
+ * @property {string} [path] Source File/Folder path
+ * @property {string} [fileSpecType] Indicates what the Path variable stands
+ * for
+ * @property {string} [targetFolderPath] Destination folder path in target
  * FileShare
  */
 export interface RestoreFileSpecs {
@@ -225,8 +228,8 @@ export interface RestoreFileSpecs {
  * @constructor
  * Target Azure File Share Info.
  *
- * @member {string} [name] File share name
- * @member {string} [targetResourceId] Target file share resource ARM ID
+ * @property {string} [name] File share name
+ * @property {string} [targetResourceId] Target file share resource ARM ID
  */
 export interface TargetAFSRestoreInfo {
   name?: string;
@@ -240,7 +243,7 @@ export interface TargetAFSRestoreInfo {
  * Base class for restore request. Workload-specific restore requests are
  * derived from this class.
  *
- * @member {string} objectType Polymorphic Discriminator
+ * @property {string} objectType Polymorphic Discriminator
  */
 export interface RestoreRequest {
   objectType: string;
@@ -252,21 +255,21 @@ export interface RestoreRequest {
  * @constructor
  * AzureFileShare Restore Request
  *
- * @member {string} [recoveryType] Type of this recovery. Possible values
+ * @property {string} [recoveryType] Type of this recovery. Possible values
  * include: 'Invalid', 'OriginalLocation', 'AlternateLocation', 'RestoreDisks'
- * @member {string} [sourceResourceId] Source storage account ARM Id
- * @member {string} [copyOptions] Options to resolve copy conflicts. Possible
+ * @property {string} [sourceResourceId] Source storage account ARM Id
+ * @property {string} [copyOptions] Options to resolve copy conflicts. Possible
  * values include: 'Invalid', 'CreateCopy', 'Skip', 'Overwrite',
  * 'FailOnConflict'
- * @member {string} [restoreRequestType] Restore Type (FullShareRestore or
+ * @property {string} [restoreRequestType] Restore Type (FullShareRestore or
  * ItemLevelRestore). Possible values include: 'Invalid', 'FullShareRestore',
  * 'ItemLevelRestore'
- * @member {array} [restoreFileSpecs] List of Source Files/Folders(which need
+ * @property {array} [restoreFileSpecs] List of Source Files/Folders(which need
  * to recover) and TargetFolderPath details
- * @member {object} [targetDetails] Target File Share Details
- * @member {string} [targetDetails.name] File share name
- * @member {string} [targetDetails.targetResourceId] Target file share resource
- * ARM ID
+ * @property {object} [targetDetails] Target File Share Details
+ * @property {string} [targetDetails.name] File share name
+ * @property {string} [targetDetails.targetResourceId] Target file share
+ * resource ARM ID
  */
 export interface AzureFileShareRestoreRequest extends RestoreRequest {
   recoveryType?: string;
@@ -283,27 +286,28 @@ export interface AzureFileShareRestoreRequest extends RestoreRequest {
  * @constructor
  * IaaS VM workload-specific backup item.
  *
- * @member {string} [friendlyName] Friendly name of the VM represented by this
- * backup item.
- * @member {string} [virtualMachineId] Fully qualified ARM ID of the virtual
+ * @property {string} [friendlyName] Friendly name of the VM represented by
+ * this backup item.
+ * @property {string} [virtualMachineId] Fully qualified ARM ID of the virtual
  * machine represented by this item.
- * @member {string} [protectionStatus] Backup status of this backup item.
- * @member {string} [protectionState] Backup state of this backup item.
+ * @property {string} [protectionStatus] Backup status of this backup item.
+ * @property {string} [protectionState] Backup state of this backup item.
  * Possible values include: 'Invalid', 'IRPending', 'Protected',
  * 'ProtectionError', 'ProtectionStopped', 'ProtectionPaused'
- * @member {string} [healthStatus] Health status of protected item. Possible
+ * @property {string} [healthStatus] Health status of protected item. Possible
  * values include: 'Passed', 'ActionRequired', 'ActionSuggested', 'Invalid'
- * @member {array} [healthDetails] Health details on this backup item.
- * @member {string} [lastBackupStatus] Last backup operation status.
- * @member {date} [lastBackupTime] Timestamp of the last backup operation on
+ * @property {array} [healthDetails] Health details on this backup item.
+ * @property {string} [lastBackupStatus] Last backup operation status.
+ * @property {date} [lastBackupTime] Timestamp of the last backup operation on
  * this backup item.
- * @member {string} [protectedItemDataId] Data ID of the protected item.
- * @member {object} [extendedInfo] Additional information for this backup item.
- * @member {date} [extendedInfo.oldestRecoveryPoint] The oldest backup copy
+ * @property {string} [protectedItemDataId] Data ID of the protected item.
+ * @property {object} [extendedInfo] Additional information for this backup
+ * item.
+ * @property {date} [extendedInfo.oldestRecoveryPoint] The oldest backup copy
  * available for this backup item.
- * @member {number} [extendedInfo.recoveryPointCount] Number of backup copies
+ * @property {number} [extendedInfo.recoveryPointCount] Number of backup copies
  * available for this backup item.
- * @member {boolean} [extendedInfo.policyInconsistent] Specifies if backup
+ * @property {boolean} [extendedInfo.policyInconsistent] Specifies if backup
  * policy associated with the backup item is inconsistent.
  */
 export interface AzureIaaSVMProtectedItem extends ProtectedItem {
@@ -346,11 +350,11 @@ export interface AzureIaaSComputeVMProtectedItem extends AzureIaaSVMProtectedIte
  * @constructor
  * Azure IaaS VM workload-specific error information.
  *
- * @member {number} [errorCode] Error code.
- * @member {string} [errorTitle] Title: Typically, the entity that the error
+ * @property {number} [errorCode] Error code.
+ * @property {string} [errorTitle] Title: Typically, the entity that the error
  * pertains to.
- * @member {string} [errorString] Localized error string.
- * @member {array} [recommendations] List of localized recommendations for
+ * @property {string} [errorString] Localized error string.
+ * @property {array} [recommendations] List of localized recommendations for
  * above error code.
  */
 export interface AzureIaaSVMErrorInfo {
@@ -366,10 +370,10 @@ export interface AzureIaaSVMErrorInfo {
  * @constructor
  * Azure IaaS VM workload-specific Health Details.
  *
- * @member {number} [code] Health Code
- * @member {string} [title] Health Title
- * @member {string} [message] Health Message
- * @member {array} [recommendations] Health Recommended Actions
+ * @property {number} [code] Health Code
+ * @property {string} [title] Health Title
+ * @property {string} [message] Health Message
+ * @property {array} [recommendations] Health Recommended Actions
  */
 export interface AzureIaaSVMHealthDetails {
   code?: number;
@@ -384,14 +388,15 @@ export interface AzureIaaSVMHealthDetails {
  * @constructor
  * Azure IaaS VM workload-specific job task details.
  *
- * @member {string} [taskId] The task display name.
- * @member {date} [startTime] The start time.
- * @member {date} [endTime] The end time.
- * @member {string} [instanceId] The instanceId.
- * @member {moment.duration} [duration] Time elapsed for task.
- * @member {string} [status] The status.
- * @member {number} [progressPercentage] Progress of the task.
- * @member {string} [taskExecutionDetails] Details about execution of the task.
+ * @property {string} [taskId] The task display name.
+ * @property {date} [startTime] The start time.
+ * @property {date} [endTime] The end time.
+ * @property {string} [instanceId] The instanceId.
+ * @property {moment.duration} [duration] Time elapsed for task.
+ * @property {string} [status] The status.
+ * @property {number} [progressPercentage] Progress of the task.
+ * @property {string} [taskExecutionDetails] Details about execution of the
+ * task.
  * eg: number of bytes transfered etc
  */
 export interface AzureIaaSVMJobTaskDetails {
@@ -411,14 +416,14 @@ export interface AzureIaaSVMJobTaskDetails {
  * @constructor
  * Azure IaaS VM workload-specific additional information for job.
  *
- * @member {array} [tasksList] List of tasks associated with this job.
- * @member {object} [propertyBag] Job properties.
- * @member {object} [internalPropertyBag] Job internal properties.
- * @member {number} [progressPercentage] Indicates progress of the job. Null if
- * it has not started or completed.
- * @member {string} [estimatedRemainingDuration] Time remaining for execution
+ * @property {array} [tasksList] List of tasks associated with this job.
+ * @property {object} [propertyBag] Job properties.
+ * @property {object} [internalPropertyBag] Job internal properties.
+ * @property {number} [progressPercentage] Indicates progress of the job. Null
+ * if it has not started or completed.
+ * @property {string} [estimatedRemainingDuration] Time remaining for execution
  * of this job.
- * @member {string} [dynamicErrorMessage] Non localized error message on job
+ * @property {string} [dynamicErrorMessage] Non localized error message on job
  * execution.
  */
 export interface AzureIaaSVMJobExtendedInfo {
@@ -436,18 +441,18 @@ export interface AzureIaaSVMJobExtendedInfo {
  * @constructor
  * Defines workload agnostic properties for a job.
  *
- * @member {string} [entityFriendlyName] Friendly name of the entity on which
+ * @property {string} [entityFriendlyName] Friendly name of the entity on which
  * the current job is executing.
- * @member {string} [backupManagementType] Backup management type to execute
+ * @property {string} [backupManagementType] Backup management type to execute
  * the current job. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
  * 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
  * 'DefaultBackup'
- * @member {string} [operation] The operation name.
- * @member {string} [status] Job status.
- * @member {date} [startTime] The start time.
- * @member {date} [endTime] The end time.
- * @member {string} [activityId] ActivityId of job.
- * @member {string} jobType Polymorphic Discriminator
+ * @property {string} [operation] The operation name.
+ * @property {string} [status] Job status.
+ * @property {date} [startTime] The start time.
+ * @property {date} [endTime] The end time.
+ * @property {string} [activityId] ActivityId of job.
+ * @property {string} jobType Polymorphic Discriminator
  */
 export interface Job {
   entityFriendlyName?: string;
@@ -466,23 +471,24 @@ export interface Job {
  * @constructor
  * Azure IaaS VM workload-specifc job object.
  *
- * @member {moment.duration} [duration] Time elapsed during the execution of
+ * @property {moment.duration} [duration] Time elapsed during the execution of
  * this job.
- * @member {array} [actionsInfo] Gets or sets the state/actions applicable on
+ * @property {array} [actionsInfo] Gets or sets the state/actions applicable on
  * this job like cancel/retry.
- * @member {array} [errorDetails] Error details on execution of this job.
- * @member {string} [virtualMachineVersion] Specifies whether the backup item
+ * @property {array} [errorDetails] Error details on execution of this job.
+ * @property {string} [virtualMachineVersion] Specifies whether the backup item
  * is a Classic or an Azure Resource Manager VM.
- * @member {object} [extendedInfo] Additional information for this job.
- * @member {array} [extendedInfo.tasksList] List of tasks associated with this
- * job.
- * @member {object} [extendedInfo.propertyBag] Job properties.
- * @member {object} [extendedInfo.internalPropertyBag] Job internal properties.
- * @member {number} [extendedInfo.progressPercentage] Indicates progress of the
- * job. Null if it has not started or completed.
- * @member {string} [extendedInfo.estimatedRemainingDuration] Time remaining
+ * @property {object} [extendedInfo] Additional information for this job.
+ * @property {array} [extendedInfo.tasksList] List of tasks associated with
+ * this job.
+ * @property {object} [extendedInfo.propertyBag] Job properties.
+ * @property {object} [extendedInfo.internalPropertyBag] Job internal
+ * properties.
+ * @property {number} [extendedInfo.progressPercentage] Indicates progress of
+ * the job. Null if it has not started or completed.
+ * @property {string} [extendedInfo.estimatedRemainingDuration] Time remaining
  * for execution of this job.
- * @member {string} [extendedInfo.dynamicErrorMessage] Non localized error
+ * @property {string} [extendedInfo.dynamicErrorMessage] Non localized error
  * message on job execution.
  */
 export interface AzureIaaSVMJob extends Job {
@@ -499,12 +505,12 @@ export interface AzureIaaSVMJob extends Job {
  * @constructor
  * Additional information on Azure IaaS VM specific backup item.
  *
- * @member {date} [oldestRecoveryPoint] The oldest backup copy available for
+ * @property {date} [oldestRecoveryPoint] The oldest backup copy available for
  * this backup item.
- * @member {number} [recoveryPointCount] Number of backup copies available for
- * this backup item.
- * @member {boolean} [policyInconsistent] Specifies if backup policy associated
- * with the backup item is inconsistent.
+ * @property {number} [recoveryPointCount] Number of backup copies available
+ * for this backup item.
+ * @property {boolean} [policyInconsistent] Specifies if backup policy
+ * associated with the backup item is inconsistent.
  */
 export interface AzureIaaSVMProtectedItemExtendedInfo {
   oldestRecoveryPoint?: Date;
@@ -518,18 +524,18 @@ export interface AzureIaaSVMProtectedItemExtendedInfo {
  * @constructor
  * IaaS VM workload-specific backup policy.
  *
- * @member {object} [schedulePolicy] Backup schedule specified as part of
+ * @property {object} [schedulePolicy] Backup schedule specified as part of
  * backup policy.
- * @member {string} [schedulePolicy.schedulePolicyType] Polymorphic
+ * @property {string} [schedulePolicy.schedulePolicyType] Polymorphic
  * Discriminator
- * @member {object} [retentionPolicy] Retention policy with the details on
+ * @property {object} [retentionPolicy] Retention policy with the details on
  * backup copy retention ranges.
- * @member {string} [retentionPolicy.retentionPolicyType] Polymorphic
+ * @property {string} [retentionPolicy.retentionPolicyType] Polymorphic
  * Discriminator
- * @member {number} [instantRpRetentionRangeInDays] Instant RP retention policy
- * range in days
- * @member {string} [timeZone] TimeZone optional input as string. For example:
- * TimeZone = "Pacific Standard Time".
+ * @property {number} [instantRpRetentionRangeInDays] Instant RP retention
+ * policy range in days
+ * @property {string} [timeZone] TimeZone optional input as string. For
+ * example: TimeZone = "Pacific Standard Time".
  */
 export interface AzureIaaSVMProtectionPolicy extends ProtectionPolicy {
   schedulePolicy?: SchedulePolicy;
@@ -544,19 +550,20 @@ export interface AzureIaaSVMProtectionPolicy extends ProtectionPolicy {
  * @constructor
  * Base class for backup ProtectionIntent.
  *
- * @member {string} [backupManagementType] Type of backup managemenent for the
- * backed up item. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
- * 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
- * 'DefaultBackup'
- * @member {string} [sourceResourceId] ARM ID of the resource to be backed up.
- * @member {string} [itemId] ID of the item which is getting protected, In case
- * of Azure Vm , it is ProtectedItemId
- * @member {string} [policyId] ID of the backup policy with which this item is
- * backed up.
- * @member {string} [protectionState] Backup state of this backup item.
+ * @property {string} [backupManagementType] Type of backup managemenent for
+ * the backed up item. Possible values include: 'Invalid', 'AzureIaasVM',
+ * 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage',
+ * 'AzureWorkload', 'DefaultBackup'
+ * @property {string} [sourceResourceId] ARM ID of the resource to be backed
+ * up.
+ * @property {string} [itemId] ID of the item which is getting protected, In
+ * case of Azure Vm , it is ProtectedItemId
+ * @property {string} [policyId] ID of the backup policy with which this item
+ * is backed up.
+ * @property {string} [protectionState] Backup state of this backup item.
  * Possible values include: 'Invalid', 'NotProtected', 'Protecting',
  * 'Protected', 'ProtectionFailed'
- * @member {string} protectionIntentItemType Polymorphic Discriminator
+ * @property {string} protectionIntentItemType Polymorphic Discriminator
  */
 export interface ProtectionIntent {
   backupManagementType?: string;
@@ -583,8 +590,8 @@ export interface AzureRecoveryServiceVaultProtectionIntent extends ProtectionInt
  * @constructor
  * IaaS VM specific backup protection intent item.
  *
- * @member {string} [friendlyName] Friendly name of the VM represented by this
- * backup item.
+ * @property {string} [friendlyName] Friendly name of the VM represented by
+ * this backup item.
  */
 export interface AzureResourceProtectionIntent extends ProtectionIntent {
   friendlyName?: string;
@@ -596,11 +603,11 @@ export interface AzureResourceProtectionIntent extends ProtectionIntent {
  * @constructor
  * Additional information on Azure Sql specific protected item.
  *
- * @member {date} [oldestRecoveryPoint] The oldest backup copy available for
+ * @property {date} [oldestRecoveryPoint] The oldest backup copy available for
  * this item in the service.
- * @member {number} [recoveryPointCount] Number of available backup copies
+ * @property {number} [recoveryPointCount] Number of available backup copies
  * associated with this backup item.
- * @member {string} [policyState] State of the backup policy associated with
+ * @property {string} [policyState] State of the backup policy associated with
  * this backup item.
  */
 export interface AzureSqlProtectedItemExtendedInfo {
@@ -615,17 +622,18 @@ export interface AzureSqlProtectedItemExtendedInfo {
  * @constructor
  * Azure SQL workload-specific backup item.
  *
- * @member {string} [protectedItemDataId] Internal ID of a backup item. Used by
- * Azure SQL Backup engine to contact Recovery Services.
- * @member {string} [protectionState] Backup state of the backed up item.
+ * @property {string} [protectedItemDataId] Internal ID of a backup item. Used
+ * by Azure SQL Backup engine to contact Recovery Services.
+ * @property {string} [protectionState] Backup state of the backed up item.
  * Possible values include: 'Invalid', 'IRPending', 'Protected',
  * 'ProtectionError', 'ProtectionStopped', 'ProtectionPaused'
- * @member {object} [extendedInfo] Additional information for this backup item.
- * @member {date} [extendedInfo.oldestRecoveryPoint] The oldest backup copy
+ * @property {object} [extendedInfo] Additional information for this backup
+ * item.
+ * @property {date} [extendedInfo.oldestRecoveryPoint] The oldest backup copy
  * available for this item in the service.
- * @member {number} [extendedInfo.recoveryPointCount] Number of available
+ * @property {number} [extendedInfo.recoveryPointCount] Number of available
  * backup copies associated with this backup item.
- * @member {string} [extendedInfo.policyState] State of the backup policy
+ * @property {string} [extendedInfo.policyState] State of the backup policy
  * associated with this backup item.
  */
 export interface AzureSqlProtectedItem extends ProtectedItem {
@@ -640,8 +648,8 @@ export interface AzureSqlProtectedItem extends ProtectedItem {
  * @constructor
  * Azure SQL workload-specific backup policy.
  *
- * @member {object} [retentionPolicy] Retention policy details.
- * @member {string} [retentionPolicy.retentionPolicyType] Polymorphic
+ * @property {object} [retentionPolicy] Retention policy details.
+ * @property {string} [retentionPolicy.retentionPolicyType] Polymorphic
  * Discriminator
  */
 export interface AzureSqlProtectionPolicy extends ProtectionPolicy {
@@ -654,9 +662,9 @@ export interface AzureSqlProtectionPolicy extends ProtectionPolicy {
  * @constructor
  * Azure storage specific error information
  *
- * @member {number} [errorCode] Error code.
- * @member {string} [errorString] Localized error string.
- * @member {array} [recommendations] List of localized recommendations for
+ * @property {number} [errorCode] Error code.
+ * @property {string} [errorString] Localized error string.
+ * @property {array} [recommendations] List of localized recommendations for
  * above error code.
  */
 export interface AzureStorageErrorInfo {
@@ -671,8 +679,8 @@ export interface AzureStorageErrorInfo {
  * @constructor
  * Azure storage workload specific job task details.
  *
- * @member {string} [taskId] The task display name.
- * @member {string} [status] The status.
+ * @property {string} [taskId] The task display name.
+ * @property {string} [status] The status.
  */
 export interface AzureStorageJobTaskDetails {
   taskId?: string;
@@ -685,9 +693,9 @@ export interface AzureStorageJobTaskDetails {
  * @constructor
  * Azure Storage workload-specific additional information for job.
  *
- * @member {array} [tasksList] List of tasks for this job
- * @member {object} [propertyBag] Job properties.
- * @member {string} [dynamicErrorMessage] Non localized error message on job
+ * @property {array} [tasksList] List of tasks for this job
+ * @property {object} [propertyBag] Job properties.
+ * @property {string} [dynamicErrorMessage] Non localized error message on job
  * execution.
  */
 export interface AzureStorageJobExtendedInfo {
@@ -702,19 +710,19 @@ export interface AzureStorageJobExtendedInfo {
  * @constructor
  * Azure storage specific job.
  *
- * @member {moment.duration} [duration] Time elapsed during the execution of
+ * @property {moment.duration} [duration] Time elapsed during the execution of
  * this job.
- * @member {array} [actionsInfo] Gets or sets the state/actions applicable on
+ * @property {array} [actionsInfo] Gets or sets the state/actions applicable on
  * this job like cancel/retry.
- * @member {array} [errorDetails] Error details on execution of this job.
- * @member {string} [storageAccountName] Specifies friendly name of the storage
- * account.
- * @member {string} [storageAccountVersion] Specifies whether the Storage
+ * @property {array} [errorDetails] Error details on execution of this job.
+ * @property {string} [storageAccountName] Specifies friendly name of the
+ * storage account.
+ * @property {string} [storageAccountVersion] Specifies whether the Storage
  * account is a Classic or an Azure Resource Manager Storage account.
- * @member {object} [extendedInfo] Additional information about the job.
- * @member {array} [extendedInfo.tasksList] List of tasks for this job
- * @member {object} [extendedInfo.propertyBag] Job properties.
- * @member {string} [extendedInfo.dynamicErrorMessage] Non localized error
+ * @property {object} [extendedInfo] Additional information about the job.
+ * @property {array} [extendedInfo.tasksList] List of tasks for this job
+ * @property {object} [extendedInfo.propertyBag] Job properties.
+ * @property {string} [extendedInfo.dynamicErrorMessage] Non localized error
  * message on job execution.
  */
 export interface AzureStorageJob extends Job {
@@ -732,9 +740,9 @@ export interface AzureStorageJob extends Job {
  * @constructor
  * AzureResource(IaaS VM) Specific feature support request
  *
- * @member {string} [vmSize] Size of the resource: VM size(A/D series etc) in
+ * @property {string} [vmSize] Size of the resource: VM size(A/D series etc) in
  * case of IaasVM
- * @member {string} [vmSku] SKUs (Premium/Managed etc) in case of IaasVM
+ * @property {string} [vmSku] SKUs (Premium/Managed etc) in case of IaasVM
  */
 export interface AzureVMResourceFeatureSupportRequest extends FeatureSupportRequest {
   vmSize?: string;
@@ -747,8 +755,9 @@ export interface AzureVMResourceFeatureSupportRequest extends FeatureSupportRequ
  * @constructor
  * Response for feature support requests for Azure IaasVm
  *
- * @member {string} [supportStatus] Support status of feature. Possible values
- * include: 'Invalid', 'Supported', 'DefaultOFF', 'DefaultON', 'NotSupported'
+ * @property {string} [supportStatus] Support status of feature. Possible
+ * values include: 'Invalid', 'Supported', 'DefaultOFF', 'DefaultON',
+ * 'NotSupported'
  */
 export interface AzureVMResourceFeatureSupportResponse {
   supportStatus?: string;
@@ -760,9 +769,9 @@ export interface AzureVMResourceFeatureSupportResponse {
  * @constructor
  * Error Detail class which encapsulates Code, Message and Recommendations.
  *
- * @member {string} [code] Error code.
- * @member {string} [message] Error Message related to the Code.
- * @member {array} [recommendations] List of recommendation strings.
+ * @property {string} [code] Error code.
+ * @property {string} [message] Error Message related to the Code.
+ * @property {array} [recommendations] List of recommendation strings.
  */
 export interface ErrorDetail {
   code?: string;
@@ -776,11 +785,11 @@ export interface ErrorDetail {
  * @constructor
  * Additional information on Azure Workload for SQL specific backup item.
  *
- * @member {date} [oldestRecoveryPoint] The oldest backup copy available for
+ * @property {date} [oldestRecoveryPoint] The oldest backup copy available for
  * this backup item.
- * @member {number} [recoveryPointCount] Number of backup copies available for
- * this backup item.
- * @member {string} [policyState] Indicates consistency of policy object and
+ * @property {number} [recoveryPointCount] Number of backup copies available
+ * for this backup item.
+ * @property {string} [policyState] Indicates consistency of policy object and
  * policy applied to this backup item.
  */
 export interface AzureVmWorkloadProtectedItemExtendedInfo {
@@ -795,39 +804,41 @@ export interface AzureVmWorkloadProtectedItemExtendedInfo {
  * @constructor
  * Azure VM workload-specific protected item.
  *
- * @member {string} [friendlyName] Friendly name of the DB represented by this
- * backup item.
- * @member {string} [serverName] Host/Cluster Name for instance or AG
- * @member {string} [parentName] Parent name of the DB such as Instance or
+ * @property {string} [friendlyName] Friendly name of the DB represented by
+ * this backup item.
+ * @property {string} [serverName] Host/Cluster Name for instance or AG
+ * @property {string} [parentName] Parent name of the DB such as Instance or
  * Availability Group.
- * @member {string} [parentType] Parent type of protected item, example: for a
- * DB, standalone server or distributed
- * @member {string} [protectionStatus] Backup status of this backup item.
- * @member {string} [protectionState] Backup state of this backup item.
+ * @property {string} [parentType] Parent type of protected item, example: for
+ * a DB, standalone server or distributed
+ * @property {string} [protectionStatus] Backup status of this backup item.
+ * @property {string} [protectionState] Backup state of this backup item.
  * Possible values include: 'Invalid', 'IRPending', 'Protected',
  * 'ProtectionError', 'ProtectionStopped', 'ProtectionPaused'
- * @member {string} [lastBackupStatus] Last backup operation status. Possible
+ * @property {string} [lastBackupStatus] Last backup operation status. Possible
  * values: Healthy, Unhealthy. Possible values include: 'Invalid', 'Healthy',
  * 'Unhealthy', 'IRPending'
- * @member {date} [lastBackupTime] Timestamp of the last backup operation on
+ * @property {date} [lastBackupTime] Timestamp of the last backup operation on
  * this backup item.
- * @member {object} [lastBackupErrorDetail] Error details in last backup
- * @member {string} [lastBackupErrorDetail.code] Error code.
- * @member {string} [lastBackupErrorDetail.message] Error Message related to
+ * @property {object} [lastBackupErrorDetail] Error details in last backup
+ * @property {string} [lastBackupErrorDetail.code] Error code.
+ * @property {string} [lastBackupErrorDetail.message] Error Message related to
  * the Code.
- * @member {array} [lastBackupErrorDetail.recommendations] List of
+ * @property {array} [lastBackupErrorDetail.recommendations] List of
  * recommendation strings.
- * @member {string} [protectedItemDataSourceId] Data ID of the protected item.
- * @member {string} [protectedItemHealthStatus] Health status of the backup
+ * @property {string} [protectedItemDataSourceId] Data ID of the protected
+ * item.
+ * @property {string} [protectedItemHealthStatus] Health status of the backup
  * item, evaluated based on last heartbeat received. Possible values include:
  * 'Invalid', 'Healthy', 'Unhealthy', 'NotReachable', 'IRPending'
- * @member {object} [extendedInfo] Additional information for this backup item.
- * @member {date} [extendedInfo.oldestRecoveryPoint] The oldest backup copy
+ * @property {object} [extendedInfo] Additional information for this backup
+ * item.
+ * @property {date} [extendedInfo.oldestRecoveryPoint] The oldest backup copy
  * available for this backup item.
- * @member {number} [extendedInfo.recoveryPointCount] Number of backup copies
+ * @property {number} [extendedInfo.recoveryPointCount] Number of backup copies
  * available for this backup item.
- * @member {string} [extendedInfo.policyState] Indicates consistency of policy
- * object and policy applied to this backup item.
+ * @property {string} [extendedInfo.policyState] Indicates consistency of
+ * policy object and policy applied to this backup item.
  */
 export interface AzureVmWorkloadProtectedItem extends ProtectedItem {
   friendlyName?: string;
@@ -850,10 +861,10 @@ export interface AzureVmWorkloadProtectedItem extends ProtectedItem {
  * @constructor
  * Common settings field for backup management
  *
- * @member {string} [timeZone] TimeZone optional input as string. For example:
- * TimeZone = "Pacific Standard Time".
- * @member {boolean} [issqlcompression] SQL compression flag
- * @member {boolean} [isCompression] Workload compression flag. This has been
+ * @property {string} [timeZone] TimeZone optional input as string. For
+ * example: TimeZone = "Pacific Standard Time".
+ * @property {boolean} [issqlcompression] SQL compression flag
+ * @property {boolean} [isCompression] Workload compression flag. This has been
  * added so that 'isSqlCompression'
  * will be deprecated once clients upgrade to consider this flag.
  */
@@ -869,15 +880,15 @@ export interface Settings {
  * @constructor
  * Sub-protection policy which includes schedule and retention
  *
- * @member {string} [policyType] Type of backup policy type. Possible values
+ * @property {string} [policyType] Type of backup policy type. Possible values
  * include: 'Invalid', 'Full', 'Differential', 'Log', 'CopyOnlyFull'
- * @member {object} [schedulePolicy] Backup schedule specified as part of
+ * @property {object} [schedulePolicy] Backup schedule specified as part of
  * backup policy.
- * @member {string} [schedulePolicy.schedulePolicyType] Polymorphic
+ * @property {string} [schedulePolicy.schedulePolicyType] Polymorphic
  * Discriminator
- * @member {object} [retentionPolicy] Retention policy with the details on
+ * @property {object} [retentionPolicy] Retention policy with the details on
  * backup copy retention ranges.
- * @member {string} [retentionPolicy.retentionPolicyType] Polymorphic
+ * @property {string} [retentionPolicy.retentionPolicyType] Polymorphic
  * Discriminator
  */
 export interface SubProtectionPolicy {
@@ -892,19 +903,20 @@ export interface SubProtectionPolicy {
  * @constructor
  * Azure VM (Mercury) workload-specific backup policy.
  *
- * @member {string} [workLoadType] Type of workload for the backup management.
- * Possible values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb',
- * 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
- * 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase'
- * @member {object} [settings] Common settings for the backup management
- * @member {string} [settings.timeZone] TimeZone optional input as string. For
- * example: TimeZone = "Pacific Standard Time".
- * @member {boolean} [settings.issqlcompression] SQL compression flag
- * @member {boolean} [settings.isCompression] Workload compression flag. This
+ * @property {string} [workLoadType] Type of workload for the backup
+ * management. Possible values include: 'Invalid', 'VM', 'FileFolder',
+ * 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState',
+ * 'Client', 'GenericDataSource', 'SQLDataBase', 'AzureFileShare',
+ * 'SAPHanaDatabase'
+ * @property {object} [settings] Common settings for the backup management
+ * @property {string} [settings.timeZone] TimeZone optional input as string.
+ * For example: TimeZone = "Pacific Standard Time".
+ * @property {boolean} [settings.issqlcompression] SQL compression flag
+ * @property {boolean} [settings.isCompression] Workload compression flag. This
  * has been added so that 'isSqlCompression'
  * will be deprecated once clients upgrade to consider this flag.
- * @member {array} [subProtectionPolicy] List of sub-protection policies which
- * includes schedule and retention
+ * @property {array} [subProtectionPolicy] List of sub-protection policies
+ * which includes schedule and retention
  */
 export interface AzureVmWorkloadProtectionPolicy extends ProtectionPolicy {
   workLoadType?: string;
@@ -928,38 +940,40 @@ export interface AzureVmWorkloadSAPHanaDatabaseProtectedItem extends AzureVmWork
  * @constructor
  * Azure VM workload-specific protected item representing SQL Database.
  *
- * @member {string} [friendlyName] Friendly name of the DB represented by this
- * backup item.
- * @member {string} [serverName] Host/Cluster Name for instance or AG
- * @member {string} [parentName] Parent name of the DB such as Instance or
+ * @property {string} [friendlyName] Friendly name of the DB represented by
+ * this backup item.
+ * @property {string} [serverName] Host/Cluster Name for instance or AG
+ * @property {string} [parentName] Parent name of the DB such as Instance or
  * Availability Group.
- * @member {string} [parentType] Parent type of DB, SQLAG or StandAlone
- * @member {string} [protectionStatus] Backup status of this backup item.
- * @member {string} [protectionState] Backup state of this backup item.
+ * @property {string} [parentType] Parent type of DB, SQLAG or StandAlone
+ * @property {string} [protectionStatus] Backup status of this backup item.
+ * @property {string} [protectionState] Backup state of this backup item.
  * Possible values include: 'Invalid', 'IRPending', 'Protected',
  * 'ProtectionError', 'ProtectionStopped', 'ProtectionPaused'
- * @member {string} [lastBackupStatus] Last backup operation status. Possible
+ * @property {string} [lastBackupStatus] Last backup operation status. Possible
  * values: Healthy, Unhealthy. Possible values include: 'Invalid', 'Healthy',
  * 'Unhealthy', 'IRPending'
- * @member {date} [lastBackupTime] Timestamp of the last backup operation on
+ * @property {date} [lastBackupTime] Timestamp of the last backup operation on
  * this backup item.
- * @member {object} [lastBackupErrorDetail] Error details in last backup
- * @member {string} [lastBackupErrorDetail.code] Error code.
- * @member {string} [lastBackupErrorDetail.message] Error Message related to
+ * @property {object} [lastBackupErrorDetail] Error details in last backup
+ * @property {string} [lastBackupErrorDetail.code] Error code.
+ * @property {string} [lastBackupErrorDetail.message] Error Message related to
  * the Code.
- * @member {array} [lastBackupErrorDetail.recommendations] List of
+ * @property {array} [lastBackupErrorDetail.recommendations] List of
  * recommendation strings.
- * @member {string} [protectedItemDataSourceId] Data ID of the protected item.
- * @member {string} [protectedItemHealthStatus] Health status of the backup
+ * @property {string} [protectedItemDataSourceId] Data ID of the protected
+ * item.
+ * @property {string} [protectedItemHealthStatus] Health status of the backup
  * item, evaluated based on last heartbeat received. Possible values include:
  * 'Invalid', 'Healthy', 'Unhealthy', 'NotReachable', 'IRPending'
- * @member {object} [extendedInfo] Additional information for this backup item.
- * @member {date} [extendedInfo.oldestRecoveryPoint] The oldest backup copy
+ * @property {object} [extendedInfo] Additional information for this backup
+ * item.
+ * @property {date} [extendedInfo.oldestRecoveryPoint] The oldest backup copy
  * available for this backup item.
- * @member {number} [extendedInfo.recoveryPointCount] Number of backup copies
+ * @property {number} [extendedInfo.recoveryPointCount] Number of backup copies
  * available for this backup item.
- * @member {string} [extendedInfo.policyState] Indicates consistency of policy
- * object and policy applied to this backup item.
+ * @property {string} [extendedInfo.policyState] Indicates consistency of
+ * policy object and policy applied to this backup item.
  */
 export interface AzureVmWorkloadSQLDatabaseProtectedItem extends ProtectedItem {
   friendlyName?: string;
@@ -992,13 +1006,13 @@ export interface AzureWorkloadAutoProtectionIntent extends AzureRecoveryServiceV
  * @constructor
  * Azure storage specific error information
  *
- * @member {number} [errorCode] Error code.
- * @member {string} [errorString] Localized error string.
- * @member {string} [errorTitle] Title: Typically, the entity that the error
+ * @property {number} [errorCode] Error code.
+ * @property {string} [errorString] Localized error string.
+ * @property {string} [errorTitle] Title: Typically, the entity that the error
  * pertains to.
- * @member {array} [recommendations] List of localized recommendations for
+ * @property {array} [recommendations] List of localized recommendations for
  * above error code.
- * @member {string} [additionalDetails] Additional details for above error
+ * @property {string} [additionalDetails] Additional details for above error
  * code.
  */
 export interface AzureWorkloadErrorInfo {
@@ -1015,8 +1029,8 @@ export interface AzureWorkloadErrorInfo {
  * @constructor
  * Azure VM workload specific job task details.
  *
- * @member {string} [taskId] The task display name.
- * @member {string} [status] The status.
+ * @property {string} [taskId] The task display name.
+ * @property {string} [status] The status.
  */
 export interface AzureWorkloadJobTaskDetails {
   taskId?: string;
@@ -1029,9 +1043,9 @@ export interface AzureWorkloadJobTaskDetails {
  * @constructor
  * Azure VM workload-specific additional information for job.
  *
- * @member {array} [tasksList] List of tasks for this job
- * @member {object} [propertyBag] Job properties.
- * @member {string} [dynamicErrorMessage] Non localized error message on job
+ * @property {array} [tasksList] List of tasks for this job
+ * @property {object} [propertyBag] Job properties.
+ * @property {string} [dynamicErrorMessage] Non localized error message on job
  * execution.
  */
 export interface AzureWorkloadJobExtendedInfo {
@@ -1046,16 +1060,16 @@ export interface AzureWorkloadJobExtendedInfo {
  * @constructor
  * Azure storage specific job.
  *
- * @member {string} [workloadType] Workload type of the job
- * @member {moment.duration} [duration] Time elapsed during the execution of
+ * @property {string} [workloadType] Workload type of the job
+ * @property {moment.duration} [duration] Time elapsed during the execution of
  * this job.
- * @member {array} [actionsInfo] Gets or sets the state/actions applicable on
+ * @property {array} [actionsInfo] Gets or sets the state/actions applicable on
  * this job like cancel/retry.
- * @member {array} [errorDetails] Error details on execution of this job.
- * @member {object} [extendedInfo] Additional information about the job.
- * @member {array} [extendedInfo.tasksList] List of tasks for this job
- * @member {object} [extendedInfo.propertyBag] Job properties.
- * @member {string} [extendedInfo.dynamicErrorMessage] Non localized error
+ * @property {array} [errorDetails] Error details on execution of this job.
+ * @property {object} [extendedInfo] Additional information about the job.
+ * @property {array} [extendedInfo.tasksList] List of tasks for this job
+ * @property {object} [extendedInfo.propertyBag] Job properties.
+ * @property {string} [extendedInfo.dynamicErrorMessage] Non localized error
  * message on job execution.
  */
 export interface AzureWorkloadJob extends Job {
@@ -1072,12 +1086,12 @@ export interface AzureWorkloadJob extends Job {
  * @constructor
  * AzureWorkload-specific restore.
  *
- * @member {string} [recoveryType] OLR/ALR, RestoreDisks is invalid option.
+ * @property {string} [recoveryType] OLR/ALR, RestoreDisks is invalid option.
  * Possible values include: 'Invalid', 'OriginalLocation', 'AlternateLocation',
  * 'RestoreDisks'
- * @member {string} [sourceResourceId] Fully qualified ARM ID of the VM on
+ * @property {string} [sourceResourceId] Fully qualified ARM ID of the VM on
  * which workload that was running is being recovered.
- * @member {object} [propertyBag] Workload specific property bag.
+ * @property {object} [propertyBag] Workload specific property bag.
  */
 export interface AzureWorkloadRestoreRequest extends RestoreRequest {
   recoveryType?: string;
@@ -1091,20 +1105,20 @@ export interface AzureWorkloadRestoreRequest extends RestoreRequest {
  * @constructor
  * AzureWorkload SAP Hana-specific restore.
  *
- * @member {object} [targetInfo] Details of target database
- * @member {string} [targetInfo.overwriteOption] Can Overwrite if Target
+ * @property {object} [targetInfo] Details of target database
+ * @property {string} [targetInfo.overwriteOption] Can Overwrite if Target
  * DataBase already exists. Possible values include: 'Invalid',
  * 'FailOnConflict', 'Overwrite'
- * @member {string} [targetInfo.containerId] Resource Id name of the container
- * in which Target DataBase resides
- * @member {string} [targetInfo.databaseName] Database name
+ * @property {string} [targetInfo.containerId] Resource Id name of the
+ * container in which Target DataBase resides
+ * @property {string} [targetInfo.databaseName] Database name
  * InstanceName/DataBaseName for SQL or System/DbName for SAP Hana
- * @member {string} [recoveryType] OLR/ALR, RestoreDisks is invalid option.
+ * @property {string} [recoveryType] OLR/ALR, RestoreDisks is invalid option.
  * Possible values include: 'Invalid', 'OriginalLocation', 'AlternateLocation',
  * 'RestoreDisks'
- * @member {string} [sourceResourceId] Fully qualified ARM ID of the VM on
+ * @property {string} [sourceResourceId] Fully qualified ARM ID of the VM on
  * which workload that was running is being recovered.
- * @member {object} [propertyBag] Workload specific property bag.
+ * @property {object} [propertyBag] Workload specific property bag.
  */
 export interface AzureWorkloadSAPHanaRestoreRequest extends RestoreRequest {
   targetInfo?: TargetRestoreInfo;
@@ -1120,7 +1134,7 @@ export interface AzureWorkloadSAPHanaRestoreRequest extends RestoreRequest {
  * AzureWorkload SAP Hana -specific restore. Specifically for PointInTime/Log
  * restore
  *
- * @member {date} [pointInTime] PointInTime value
+ * @property {date} [pointInTime] PointInTime value
  */
 export interface AzureWorkloadSAPHanaPointInTimeRestoreRequest extends AzureWorkloadSAPHanaRestoreRequest {
   pointInTime?: Date;
@@ -1132,12 +1146,13 @@ export interface AzureWorkloadSAPHanaPointInTimeRestoreRequest extends AzureWork
  * @constructor
  * Details about target workload during restore operation.
  *
- * @member {string} [overwriteOption] Can Overwrite if Target DataBase already
- * exists. Possible values include: 'Invalid', 'FailOnConflict', 'Overwrite'
- * @member {string} [containerId] Resource Id name of the container in which
+ * @property {string} [overwriteOption] Can Overwrite if Target DataBase
+ * already exists. Possible values include: 'Invalid', 'FailOnConflict',
+ * 'Overwrite'
+ * @property {string} [containerId] Resource Id name of the container in which
  * Target DataBase resides
- * @member {string} [databaseName] Database name InstanceName/DataBaseName for
- * SQL or System/DbName for SAP Hana
+ * @property {string} [databaseName] Database name InstanceName/DataBaseName
+ * for SQL or System/DbName for SAP Hana
  */
 export interface TargetRestoreInfo {
   overwriteOption?: string;
@@ -1151,9 +1166,9 @@ export interface TargetRestoreInfo {
  * @constructor
  * Azure Workload SQL Auto Protection intent item.
  *
- * @member {string} [workloadItemType] Workload item type of the item for which
- * intent is to be set. Possible values include: 'Invalid', 'SQLInstance',
- * 'SQLDataBase', 'SAPHanaSystem', 'SAPHanaDatabase'
+ * @property {string} [workloadItemType] Workload item type of the item for
+ * which intent is to be set. Possible values include: 'Invalid',
+ * 'SQLInstance', 'SQLDataBase', 'SAPHanaSystem', 'SAPHanaDatabase'
  */
 export interface AzureWorkloadSQLAutoProtectionIntent extends AzureWorkloadAutoProtectionIntent {
   workloadItemType?: string;
@@ -1165,19 +1180,19 @@ export interface AzureWorkloadSQLAutoProtectionIntent extends AzureWorkloadAutoP
  * @constructor
  * AzureWorkload SQL -specific restore. Specifically for full/diff restore
  *
- * @member {boolean} [shouldUseAlternateTargetLocation] Default option set to
+ * @property {boolean} [shouldUseAlternateTargetLocation] Default option set to
  * true. If this is set to false, alternate data directory must be provided
- * @member {boolean} [isNonRecoverable] SQL specific property where user can
+ * @property {boolean} [isNonRecoverable] SQL specific property where user can
  * chose to set no-recovery when restore operation is tried
- * @member {object} [targetInfo] Details of target database
- * @member {string} [targetInfo.overwriteOption] Can Overwrite if Target
+ * @property {object} [targetInfo] Details of target database
+ * @property {string} [targetInfo.overwriteOption] Can Overwrite if Target
  * DataBase already exists. Possible values include: 'Invalid',
  * 'FailOnConflict', 'Overwrite'
- * @member {string} [targetInfo.containerId] Resource Id name of the container
- * in which Target DataBase resides
- * @member {string} [targetInfo.databaseName] Database name
+ * @property {string} [targetInfo.containerId] Resource Id name of the
+ * container in which Target DataBase resides
+ * @property {string} [targetInfo.databaseName] Database name
  * InstanceName/DataBaseName for SQL or System/DbName for SAP Hana
- * @member {array} [alternateDirectoryPaths] Data directory details
+ * @property {array} [alternateDirectoryPaths] Data directory details
  */
 export interface AzureWorkloadSQLRestoreRequest extends AzureWorkloadRestoreRequest {
   shouldUseAlternateTargetLocation?: boolean;
@@ -1193,7 +1208,7 @@ export interface AzureWorkloadSQLRestoreRequest extends AzureWorkloadRestoreRequ
  * AzureWorkload SQL -specific restore. Specifically for PointInTime/Log
  * restore
  *
- * @member {date} [pointInTime] PointInTime value
+ * @property {date} [pointInTime] PointInTime value
  */
 export interface AzureWorkloadSQLPointInTimeRestoreRequest extends AzureWorkloadSQLRestoreRequest {
   pointInTime?: Date;
@@ -1205,11 +1220,11 @@ export interface AzureWorkloadSQLPointInTimeRestoreRequest extends AzureWorkload
  * @constructor
  * Encapsulates information regarding data directory
  *
- * @member {string} [mappingType] Type of data directory mapping. Possible
+ * @property {string} [mappingType] Type of data directory mapping. Possible
  * values include: 'Invalid', 'Data', 'Log'
- * @member {string} [sourceLogicalName] Restore source logical name path
- * @member {string} [sourcePath] Restore source path
- * @member {string} [targetPath] Target path
+ * @property {string} [sourceLogicalName] Restore source logical name path
+ * @property {string} [sourcePath] Restore source path
+ * @property {string} [targetPath] Target path
  */
 export interface SQLDataDirectoryMapping {
   mappingType?: string;
@@ -1224,8 +1239,8 @@ export interface SQLDataDirectoryMapping {
  * @constructor
  * The name of usage.
  *
- * @member {string} [value] Value of usage.
- * @member {string} [localizedValue] Localized value of usage.
+ * @property {string} [value] Value of usage.
+ * @property {string} [localizedValue] Localized value of usage.
  */
 export interface NameInfo {
   value?: string;
@@ -1238,15 +1253,15 @@ export interface NameInfo {
  * @constructor
  * Backup management usages of a vault.
  *
- * @member {string} [unit] Unit of the usage. Possible values include: 'Count',
- * 'Bytes', 'Seconds', 'Percent', 'CountPerSecond', 'BytesPerSecond'
- * @member {string} [quotaPeriod] Quota period of usage.
- * @member {date} [nextResetTime] Next reset time of usage.
- * @member {number} [currentValue] Current value of usage.
- * @member {number} [limit] Limit of usage.
- * @member {object} [name] Name of usage.
- * @member {string} [name.value] Value of usage.
- * @member {string} [name.localizedValue] Localized value of usage.
+ * @property {string} [unit] Unit of the usage. Possible values include:
+ * 'Count', 'Bytes', 'Seconds', 'Percent', 'CountPerSecond', 'BytesPerSecond'
+ * @property {string} [quotaPeriod] Quota period of usage.
+ * @property {date} [nextResetTime] Next reset time of usage.
+ * @property {number} [currentValue] Current value of usage.
+ * @property {number} [limit] Limit of usage.
+ * @property {object} [name] Name of usage.
+ * @property {string} [name.value] Value of usage.
+ * @property {string} [name.localizedValue] Localized value of usage.
  */
 export interface BackupManagementUsage {
   unit?: string;
@@ -1263,13 +1278,13 @@ export interface BackupManagementUsage {
  * @constructor
  * BackupStatus request.
  *
- * @member {string} [resourceType] Container Type - VM, SQLPaaS, DPM,
+ * @property {string} [resourceType] Container Type - VM, SQLPaaS, DPM,
  * AzureFileShare. Possible values include: 'Invalid', 'VM', 'FileFolder',
  * 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState',
  * 'Client', 'GenericDataSource', 'SQLDataBase', 'AzureFileShare',
  * 'SAPHanaDatabase'
- * @member {string} [resourceId] Entire ARM resource id of the resource
- * @member {string} [poLogicalName] Protectable Item Logical Name
+ * @property {string} [resourceId] Entire ARM resource id of the resource
+ * @property {string} [poLogicalName] Protectable Item Logical Name
  */
 export interface BackupStatusRequest {
   resourceType?: string;
@@ -1283,20 +1298,20 @@ export interface BackupStatusRequest {
  * @constructor
  * BackupStatus response.
  *
- * @member {string} [protectionStatus] Specifies whether the container is
+ * @property {string} [protectionStatus] Specifies whether the container is
  * registered or not. Possible values include: 'Invalid', 'NotProtected',
  * 'Protecting', 'Protected', 'ProtectionFailed'
- * @member {string} [fabricName] Specifies the fabric name - Azure or AD.
+ * @property {string} [fabricName] Specifies the fabric name - Azure or AD.
  * Possible values include: 'Invalid', 'Azure'
- * @member {string} [containerName] Specifies the product specific container
+ * @property {string} [containerName] Specifies the product specific container
  * name. E.g. iaasvmcontainer;iaasvmcontainer;csname;vmname.
- * @member {string} [protectedItemName] Specifies the product specific ds name.
- * E.g. vm;iaasvmcontainer;csname;vmname.
- * @member {string} [errorCode] ErrorCode in case of intent failed
- * @member {string} [errorMessage] ErrorMessage in case of intent failed.
- * @member {string} [policyName] Specifies the policy name which is used for
+ * @property {string} [protectedItemName] Specifies the product specific ds
+ * name. E.g. vm;iaasvmcontainer;csname;vmname.
+ * @property {string} [errorCode] ErrorCode in case of intent failed
+ * @property {string} [errorMessage] ErrorMessage in case of intent failed.
+ * @property {string} [policyName] Specifies the policy name which is used for
  * protection
- * @member {string} [registrationStatus] Container registration status
+ * @property {string} [registrationStatus] Container registration status
  */
 export interface BackupStatusResponse {
   protectionStatus?: string;
@@ -1315,8 +1330,8 @@ export interface BackupStatusResponse {
  * @constructor
  * Query parameters to fetch backup summaries.
  *
- * @member {string} [type] Backup management type for this container. Possible
- * values include: 'Invalid', 'BackupProtectedItemCountSummary',
+ * @property {string} [type] Backup management type for this container.
+ * Possible values include: 'Invalid', 'BackupProtectedItemCountSummary',
  * 'BackupProtectionContainerCountSummary'
  */
 export interface BMSBackupSummariesQueryObject {
@@ -1329,8 +1344,8 @@ export interface BMSBackupSummariesQueryObject {
  * @constructor
  * Day of the week.
  *
- * @member {number} [date] Date of the month
- * @member {boolean} [isLast] Whether Date is last date of month
+ * @property {number} [date] Date of the month
+ * @property {boolean} [isLast] Whether Date is last date of month
  */
 export interface Day {
   date?: number;
@@ -1343,7 +1358,7 @@ export interface Day {
  * @constructor
  * Daily retention format.
  *
- * @member {array} [daysOfTheMonth] List of days of the month.
+ * @property {array} [daysOfTheMonth] List of days of the month.
  */
 export interface DailyRetentionFormat {
   daysOfTheMonth?: Day[];
@@ -1355,12 +1370,13 @@ export interface DailyRetentionFormat {
  * @constructor
  * Retention duration.
  *
- * @member {number} [count] Count of duration types. Retention duration is
+ * @property {number} [count] Count of duration types. Retention duration is
  * obtained by the counting the duration type Count times.
  * For example, when Count = 3 and DurationType = Weeks, retention duration
  * will be three weeks.
- * @member {string} [durationType] Retention duration type of retention policy.
- * Possible values include: 'Invalid', 'Days', 'Weeks', 'Months', 'Years'
+ * @property {string} [durationType] Retention duration type of retention
+ * policy. Possible values include: 'Invalid', 'Days', 'Weeks', 'Months',
+ * 'Years'
  */
 export interface RetentionDuration {
   count?: number;
@@ -1373,15 +1389,16 @@ export interface RetentionDuration {
  * @constructor
  * Daily retention schedule.
  *
- * @member {array} [retentionTimes] Retention times of retention policy.
- * @member {object} [retentionDuration] Retention duration of retention Policy.
- * @member {number} [retentionDuration.count] Count of duration types.
+ * @property {array} [retentionTimes] Retention times of retention policy.
+ * @property {object} [retentionDuration] Retention duration of retention
+ * Policy.
+ * @property {number} [retentionDuration.count] Count of duration types.
  * Retention duration is obtained by the counting the duration type Count
  * times.
  * For example, when Count = 3 and DurationType = Weeks, retention duration
  * will be three weeks.
- * @member {string} [retentionDuration.durationType] Retention duration type of
- * retention policy. Possible values include: 'Invalid', 'Days', 'Weeks',
+ * @property {string} [retentionDuration.durationType] Retention duration type
+ * of retention policy. Possible values include: 'Invalid', 'Days', 'Weeks',
  * 'Months', 'Years'
  */
 export interface DailyRetentionSchedule {
@@ -1395,8 +1412,8 @@ export interface DailyRetentionSchedule {
  * @constructor
  * DPM workload-specific error information.
  *
- * @member {string} [errorString] Localized error string.
- * @member {array} [recommendations] List of localized recommendations for
+ * @property {string} [errorString] Localized error string.
+ * @property {array} [recommendations] List of localized recommendations for
  * above error code.
  */
 export interface DpmErrorInfo {
@@ -1410,11 +1427,11 @@ export interface DpmErrorInfo {
  * @constructor
  * DPM workload-specific job task details.
  *
- * @member {string} [taskId] The task display name.
- * @member {date} [startTime] The start time.
- * @member {date} [endTime] The end time.
- * @member {moment.duration} [duration] Time elapsed for task.
- * @member {string} [status] The status.
+ * @property {string} [taskId] The task display name.
+ * @property {date} [startTime] The start time.
+ * @property {date} [endTime] The end time.
+ * @property {moment.duration} [duration] Time elapsed for task.
+ * @property {string} [status] The status.
  */
 export interface DpmJobTaskDetails {
   taskId?: string;
@@ -1430,9 +1447,9 @@ export interface DpmJobTaskDetails {
  * @constructor
  * Additional information on the DPM workload-specific job.
  *
- * @member {array} [tasksList] List of tasks associated with this job.
- * @member {object} [propertyBag] The job properties.
- * @member {string} [dynamicErrorMessage] Non localized error message on job
+ * @property {array} [tasksList] List of tasks associated with this job.
+ * @property {object} [propertyBag] The job properties.
+ * @property {string} [dynamicErrorMessage] Non localized error message on job
  * execution.
  */
 export interface DpmJobExtendedInfo {
@@ -1447,21 +1464,21 @@ export interface DpmJobExtendedInfo {
  * @constructor
  * DPM workload-specifc job object.
  *
- * @member {moment.duration} [duration] Time elapsed for job.
- * @member {string} [dpmServerName] DPM server name managing the backup item or
- * backup job.
- * @member {string} [containerName] Name of cluster/server protecting current
+ * @property {moment.duration} [duration] Time elapsed for job.
+ * @property {string} [dpmServerName] DPM server name managing the backup item
+ * or backup job.
+ * @property {string} [containerName] Name of cluster/server protecting current
  * backup item, if any.
- * @member {string} [containerType] Type of container.
- * @member {string} [workloadType] Type of backup item.
- * @member {array} [actionsInfo] The state/actions applicable on this job like
- * cancel/retry.
- * @member {array} [errorDetails] The errors.
- * @member {object} [extendedInfo] Additional information for this job.
- * @member {array} [extendedInfo.tasksList] List of tasks associated with this
- * job.
- * @member {object} [extendedInfo.propertyBag] The job properties.
- * @member {string} [extendedInfo.dynamicErrorMessage] Non localized error
+ * @property {string} [containerType] Type of container.
+ * @property {string} [workloadType] Type of backup item.
+ * @property {array} [actionsInfo] The state/actions applicable on this job
+ * like cancel/retry.
+ * @property {array} [errorDetails] The errors.
+ * @property {object} [extendedInfo] Additional information for this job.
+ * @property {array} [extendedInfo.tasksList] List of tasks associated with
+ * this job.
+ * @property {object} [extendedInfo.propertyBag] The job properties.
+ * @property {string} [extendedInfo.dynamicErrorMessage] Non localized error
  * message on job execution.
  */
 export interface DpmJob extends Job {
@@ -1481,27 +1498,28 @@ export interface DpmJob extends Job {
  * @constructor
  * Additional information of DPM Protected item.
  *
- * @member {object} [protectableObjectLoadPath] Attribute to provide
+ * @property {object} [protectableObjectLoadPath] Attribute to provide
  * information on various DBs.
- * @member {boolean} [protectedProperty] To check if backup item is disk
+ * @property {boolean} [protectedProperty] To check if backup item is disk
  * protected.
- * @member {boolean} [isPresentOnCloud] To check if backup item is cloud
+ * @property {boolean} [isPresentOnCloud] To check if backup item is cloud
  * protected.
- * @member {string} [lastBackupStatus] Last backup status information on backup
- * item.
- * @member {date} [lastRefreshedAt] Last refresh time on backup item.
- * @member {date} [oldestRecoveryPoint] Oldest cloud recovery point time.
- * @member {number} [recoveryPointCount] cloud recovery point count.
- * @member {date} [onPremiseOldestRecoveryPoint] Oldest disk recovery point
+ * @property {string} [lastBackupStatus] Last backup status information on
+ * backup item.
+ * @property {date} [lastRefreshedAt] Last refresh time on backup item.
+ * @property {date} [oldestRecoveryPoint] Oldest cloud recovery point time.
+ * @property {number} [recoveryPointCount] cloud recovery point count.
+ * @property {date} [onPremiseOldestRecoveryPoint] Oldest disk recovery point
  * time.
- * @member {date} [onPremiseLatestRecoveryPoint] latest disk recovery point
+ * @property {date} [onPremiseLatestRecoveryPoint] latest disk recovery point
  * time.
- * @member {number} [onPremiseRecoveryPointCount] disk recovery point count.
- * @member {boolean} [isCollocated] To check if backup item is collocated.
- * @member {string} [protectionGroupName] Protection group name of the backup
+ * @property {number} [onPremiseRecoveryPointCount] disk recovery point count.
+ * @property {boolean} [isCollocated] To check if backup item is collocated.
+ * @property {string} [protectionGroupName] Protection group name of the backup
  * item.
- * @member {string} [diskStorageUsedInBytes] Used Disk storage in bytes.
- * @member {string} [totalDiskStorageSizeInBytes] total Disk storage in bytes.
+ * @property {string} [diskStorageUsedInBytes] Used Disk storage in bytes.
+ * @property {string} [totalDiskStorageSizeInBytes] total Disk storage in
+ * bytes.
  */
 export interface DPMProtectedItemExtendedInfo {
   protectableObjectLoadPath?: { [propertyName: string]: string };
@@ -1526,42 +1544,42 @@ export interface DPMProtectedItemExtendedInfo {
  * @constructor
  * Additional information on Backup engine specific backup item.
  *
- * @member {string} [friendlyName] Friendly name of the managed item
- * @member {string} [backupEngineName] Backup Management server protecting this
- * backup item
- * @member {string} [protectionState] Protection state of the backupengine.
+ * @property {string} [friendlyName] Friendly name of the managed item
+ * @property {string} [backupEngineName] Backup Management server protecting
+ * this backup item
+ * @property {string} [protectionState] Protection state of the backupengine.
  * Possible values include: 'Invalid', 'IRPending', 'Protected',
  * 'ProtectionError', 'ProtectionStopped', 'ProtectionPaused'
- * @member {boolean} [isScheduledForDeferredDelete] To check if backup item is
- * scheduled for deferred delete
- * @member {object} [extendedInfo] Extended info of the backup item.
- * @member {object} [extendedInfo.protectableObjectLoadPath] Attribute to
+ * @property {boolean} [isScheduledForDeferredDelete] To check if backup item
+ * is scheduled for deferred delete
+ * @property {object} [extendedInfo] Extended info of the backup item.
+ * @property {object} [extendedInfo.protectableObjectLoadPath] Attribute to
  * provide information on various DBs.
- * @member {boolean} [extendedInfo.protectedProperty] To check if backup item
+ * @property {boolean} [extendedInfo.protectedProperty] To check if backup item
  * is disk protected.
- * @member {boolean} [extendedInfo.isPresentOnCloud] To check if backup item is
- * cloud protected.
- * @member {string} [extendedInfo.lastBackupStatus] Last backup status
+ * @property {boolean} [extendedInfo.isPresentOnCloud] To check if backup item
+ * is cloud protected.
+ * @property {string} [extendedInfo.lastBackupStatus] Last backup status
  * information on backup item.
- * @member {date} [extendedInfo.lastRefreshedAt] Last refresh time on backup
+ * @property {date} [extendedInfo.lastRefreshedAt] Last refresh time on backup
  * item.
- * @member {date} [extendedInfo.oldestRecoveryPoint] Oldest cloud recovery
+ * @property {date} [extendedInfo.oldestRecoveryPoint] Oldest cloud recovery
  * point time.
- * @member {number} [extendedInfo.recoveryPointCount] cloud recovery point
+ * @property {number} [extendedInfo.recoveryPointCount] cloud recovery point
  * count.
- * @member {date} [extendedInfo.onPremiseOldestRecoveryPoint] Oldest disk
+ * @property {date} [extendedInfo.onPremiseOldestRecoveryPoint] Oldest disk
  * recovery point time.
- * @member {date} [extendedInfo.onPremiseLatestRecoveryPoint] latest disk
+ * @property {date} [extendedInfo.onPremiseLatestRecoveryPoint] latest disk
  * recovery point time.
- * @member {number} [extendedInfo.onPremiseRecoveryPointCount] disk recovery
+ * @property {number} [extendedInfo.onPremiseRecoveryPointCount] disk recovery
  * point count.
- * @member {boolean} [extendedInfo.isCollocated] To check if backup item is
+ * @property {boolean} [extendedInfo.isCollocated] To check if backup item is
  * collocated.
- * @member {string} [extendedInfo.protectionGroupName] Protection group name of
- * the backup item.
- * @member {string} [extendedInfo.diskStorageUsedInBytes] Used Disk storage in
- * bytes.
- * @member {string} [extendedInfo.totalDiskStorageSizeInBytes] total Disk
+ * @property {string} [extendedInfo.protectionGroupName] Protection group name
+ * of the backup item.
+ * @property {string} [extendedInfo.diskStorageUsedInBytes] Used Disk storage
+ * in bytes.
+ * @property {string} [extendedInfo.totalDiskStorageSizeInBytes] total Disk
  * storage in bytes.
  */
 export interface DPMProtectedItem extends ProtectedItem {
@@ -1578,12 +1596,13 @@ export interface DPMProtectedItem extends ProtectedItem {
  * @constructor
  * Details needed if the VM was encrypted at the time of backup.
  *
- * @member {boolean} [encryptionEnabled] Identifies whether this backup copy
+ * @property {boolean} [encryptionEnabled] Identifies whether this backup copy
  * represents an encrypted VM at the time of backup.
- * @member {string} [kekUrl] Key Url.
- * @member {string} [secretKeyUrl] Secret Url.
- * @member {string} [kekVaultId] ID of Key Vault where KEK is stored.
- * @member {string} [secretKeyVaultId] ID of Key Vault where Secret is stored.
+ * @property {string} [kekUrl] Key Url.
+ * @property {string} [secretKeyUrl] Secret Url.
+ * @property {string} [kekVaultId] ID of Key Vault where KEK is stored.
+ * @property {string} [secretKeyVaultId] ID of Key Vault where Secret is
+ * stored.
  */
 export interface EncryptionDetails {
   encryptionEnabled?: boolean;
@@ -1599,7 +1618,7 @@ export interface EncryptionDetails {
  * @constructor
  * Base class for operation result info.
  *
- * @member {string} objectType Polymorphic Discriminator
+ * @property {string} objectType Polymorphic Discriminator
  */
 export interface OperationResultInfoBase {
   objectType: string;
@@ -1611,9 +1630,9 @@ export interface OperationResultInfoBase {
  * @constructor
  * This class is used to send blob details after exporting jobs.
  *
- * @member {string} [blobUrl] URL of the blob into which the serialized string
- * of list of jobs is exported.
- * @member {string} [blobSasKey] SAS key to access the blob. It expires in 15
+ * @property {string} [blobUrl] URL of the blob into which the serialized
+ * string of list of jobs is exported.
+ * @property {string} [blobSasKey] SAS key to access the blob. It expires in 15
  * mins.
  */
 export interface ExportJobsOperationResultInfo extends OperationResultInfoBase {
@@ -1627,17 +1646,17 @@ export interface ExportJobsOperationResultInfo extends OperationResultInfoBase {
  * @constructor
  * Base class for backup items.
  *
- * @member {string} [friendlyName] Friendly name of the container.
- * @member {string} [policyState] Indicates consistency of policy object and
+ * @property {string} [friendlyName] Friendly name of the container.
+ * @property {string} [policyState] Indicates consistency of policy object and
  * policy applied to this backup item.
- * @member {string} [protectionState] Backup state of this backup item.
+ * @property {string} [protectionState] Backup state of this backup item.
  * Possible values include: 'Invalid', 'IRPending', 'Protected',
  * 'ProtectionError', 'ProtectionStopped', 'ProtectionPaused'
- * @member {number} [protectedItemId] Data Plane Service ID of the protected
+ * @property {number} [protectedItemId] Data Plane Service ID of the protected
  * item.
- * @member {object} [sourceAssociations] Loosely coupled (type, value)
+ * @property {object} [sourceAssociations] Loosely coupled (type, value)
  * associations (example - parent of a protected item)
- * @member {string} [fabricName] Name of this backup item's fabric.
+ * @property {string} [fabricName] Name of this backup item's fabric.
  */
 export interface GenericProtectedItem extends ProtectedItem {
   friendlyName?: string;
@@ -1654,11 +1673,11 @@ export interface GenericProtectedItem extends ProtectedItem {
  * @constructor
  * Azure VM (Mercury) workload-specific backup policy.
  *
- * @member {array} [subProtectionPolicy] List of sub-protection policies which
- * includes schedule and retention
- * @member {string} [timeZone] TimeZone optional input as string. For example:
- * TimeZone = "Pacific Standard Time".
- * @member {string} [fabricName] Name of this policy's fabric.
+ * @property {array} [subProtectionPolicy] List of sub-protection policies
+ * which includes schedule and retention
+ * @property {string} [timeZone] TimeZone optional input as string. For
+ * example: TimeZone = "Pacific Standard Time".
+ * @property {string} [fabricName] Name of this policy's fabric.
  */
 export interface GenericProtectionPolicy extends ProtectionPolicy {
   subProtectionPolicy?: SubProtectionPolicy[];
@@ -1672,50 +1691,51 @@ export interface GenericProtectionPolicy extends ProtectionPolicy {
  * @constructor
  * IaaS VM workload-specific restore.
  *
- * @member {string} [recoveryPointId] ID of the backup copy to be recovered.
- * @member {string} [recoveryType] Type of this recovery. Possible values
+ * @property {string} [recoveryPointId] ID of the backup copy to be recovered.
+ * @property {string} [recoveryType] Type of this recovery. Possible values
  * include: 'Invalid', 'OriginalLocation', 'AlternateLocation', 'RestoreDisks'
- * @member {string} [sourceResourceId] Fully qualified ARM ID of the VM which
+ * @property {string} [sourceResourceId] Fully qualified ARM ID of the VM which
  * is being recovered.
- * @member {string} [targetVirtualMachineId] This is the complete ARM Id of the
- * VM that will be created.
+ * @property {string} [targetVirtualMachineId] This is the complete ARM Id of
+ * the VM that will be created.
  * For e.g.
  * /subscriptions/{subId}/resourcegroups/{rg}/provider/Microsoft.Compute/virtualmachines/{vm}
- * @member {string} [targetResourceGroupId] This is the ARM Id of the resource
- * group that you want to create for this Virtual machine and other artifacts.
+ * @property {string} [targetResourceGroupId] This is the ARM Id of the
+ * resource group that you want to create for this Virtual machine and other
+ * artifacts.
  * For e.g. /subscriptions/{subId}/resourcegroups/{rg}
- * @member {string} [storageAccountId] Fully qualified ARM ID of the storage
+ * @property {string} [storageAccountId] Fully qualified ARM ID of the storage
  * account to which the VM has to be restored.
- * @member {string} [virtualNetworkId] This is the virtual network Id of the
+ * @property {string} [virtualNetworkId] This is the virtual network Id of the
  * vnet that will be attached to the virtual machine.
  * User will be validated for join action permissions in the linked access.
- * @member {string} [subnetId] Subnet ID, is the subnet ID associated with the
- * to be restored VM. For Classic VMs it would be
+ * @property {string} [subnetId] Subnet ID, is the subnet ID associated with
+ * the to be restored VM. For Classic VMs it would be
  * {VnetID}/Subnet/{SubnetName} and, for the Azure Resource Manager VMs it
  * would be ARM resource ID used to represent
  * the subnet.
- * @member {string} [targetDomainNameId] Fully qualified ARM ID of the domain
+ * @property {string} [targetDomainNameId] Fully qualified ARM ID of the domain
  * name to be associated to the VM being restored. This applies only to Classic
  * Virtual Machines.
- * @member {string} [region] Region in which the virtual machine is restored.
- * @member {string} [affinityGroup] Affinity group associated to VM to be
+ * @property {string} [region] Region in which the virtual machine is restored.
+ * @property {string} [affinityGroup] Affinity group associated to VM to be
  * restored. Used only for Classic Compute Virtual Machines.
- * @member {boolean} [createNewCloudService] Should a new cloud service be
+ * @property {boolean} [createNewCloudService] Should a new cloud service be
  * created while restoring the VM. If this is false, VM will be restored to the
  * same
  * cloud service as it was at the time of backup.
- * @member {boolean} [originalStorageAccountOption] Original Storage Account
+ * @property {boolean} [originalStorageAccountOption] Original Storage Account
  * Option
- * @member {object} [encryptionDetails] Details needed if the VM was encrypted
- * at the time of backup.
- * @member {boolean} [encryptionDetails.encryptionEnabled] Identifies whether
+ * @property {object} [encryptionDetails] Details needed if the VM was
+ * encrypted at the time of backup.
+ * @property {boolean} [encryptionDetails.encryptionEnabled] Identifies whether
  * this backup copy represents an encrypted VM at the time of backup.
- * @member {string} [encryptionDetails.kekUrl] Key Url.
- * @member {string} [encryptionDetails.secretKeyUrl] Secret Url.
- * @member {string} [encryptionDetails.kekVaultId] ID of Key Vault where KEK is
- * stored.
- * @member {string} [encryptionDetails.secretKeyVaultId] ID of Key Vault where
- * Secret is stored.
+ * @property {string} [encryptionDetails.kekUrl] Key Url.
+ * @property {string} [encryptionDetails.secretKeyUrl] Secret Url.
+ * @property {string} [encryptionDetails.kekVaultId] ID of Key Vault where KEK
+ * is stored.
+ * @property {string} [encryptionDetails.secretKeyVaultId] ID of Key Vault
+ * where Secret is stored.
  */
 export interface IaasVMRestoreRequest extends RestoreRequest {
   recoveryPointId?: string;
@@ -1740,19 +1760,19 @@ export interface IaasVMRestoreRequest extends RestoreRequest {
  * @constructor
  * Filters to list the jobs.
  *
- * @member {string} [status] Status of the job. Possible values include:
+ * @property {string} [status] Status of the job. Possible values include:
  * 'Invalid', 'InProgress', 'Completed', 'Failed', 'CompletedWithWarnings',
  * 'Cancelled', 'Cancelling'
- * @member {string} [backupManagementType] Type of backup managmenent for the
+ * @property {string} [backupManagementType] Type of backup managmenent for the
  * job. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM',
  * 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
  * 'DefaultBackup'
- * @member {string} [operation] Type of operation. Possible values include:
+ * @property {string} [operation] Type of operation. Possible values include:
  * 'Invalid', 'Register', 'UnRegister', 'ConfigureBackup', 'Backup', 'Restore',
  * 'DisableBackup', 'DeleteBackupData'
- * @member {string} [jobId] JobID represents the job uniquely.
- * @member {date} [startTime] Job has started at this time. Value is in UTC.
- * @member {date} [endTime] Job has ended at this time. Value is in UTC.
+ * @property {string} [jobId] JobID represents the job uniquely.
+ * @property {date} [startTime] Job has started at this time. Value is in UTC.
+ * @property {date} [endTime] Job has ended at this time. Value is in UTC.
  */
 export interface JobQueryObject {
   status?: string;
@@ -1769,14 +1789,14 @@ export interface JobQueryObject {
  * @constructor
  * ARM Resource.
  *
- * @member {string} [id] Resource Id represents the complete path to the
+ * @property {string} [id] Resource Id represents the complete path to the
  * resource.
- * @member {string} [name] Resource name associated with the resource.
- * @member {string} [type] Resource type represents the complete path of the
+ * @property {string} [name] Resource name associated with the resource.
+ * @property {string} [type] Resource type represents the complete path of the
  * form Namespace/ResourceType/ResourceType/...
- * @member {string} [location] Resource location.
- * @member {object} [tags] Resource tags.
- * @member {string} [eTag] Optional ETag.
+ * @property {string} [location] Resource location.
+ * @property {object} [tags] Resource tags.
+ * @property {string} [eTag] Optional ETag.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -1793,19 +1813,19 @@ export interface Resource extends BaseResource {
  * @constructor
  * Defines workload agnostic properties for a job.
  *
- * @member {object} [properties] JobResource properties
- * @member {string} [properties.entityFriendlyName] Friendly name of the entity
- * on which the current job is executing.
- * @member {string} [properties.backupManagementType] Backup management type to
- * execute the current job. Possible values include: 'Invalid', 'AzureIaasVM',
- * 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage',
- * 'AzureWorkload', 'DefaultBackup'
- * @member {string} [properties.operation] The operation name.
- * @member {string} [properties.status] Job status.
- * @member {date} [properties.startTime] The start time.
- * @member {date} [properties.endTime] The end time.
- * @member {string} [properties.activityId] ActivityId of job.
- * @member {string} [properties.jobType] Polymorphic Discriminator
+ * @property {object} [properties] JobResource properties
+ * @property {string} [properties.entityFriendlyName] Friendly name of the
+ * entity on which the current job is executing.
+ * @property {string} [properties.backupManagementType] Backup management type
+ * to execute the current job. Possible values include: 'Invalid',
+ * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql',
+ * 'AzureStorage', 'AzureWorkload', 'DefaultBackup'
+ * @property {string} [properties.operation] The operation name.
+ * @property {string} [properties.status] Job status.
+ * @property {date} [properties.startTime] The start time.
+ * @property {date} [properties.endTime] The end time.
+ * @property {string} [properties.activityId] ActivityId of job.
+ * @property {string} [properties.jobType] Polymorphic Discriminator
  */
 export interface JobResource extends Resource {
   properties?: Job;
@@ -1817,7 +1837,7 @@ export interface JobResource extends Resource {
  * @constructor
  * Log policy schedule.
  *
- * @member {number} [scheduleFrequencyInMins] Frequency of the log schedule
+ * @property {number} [scheduleFrequencyInMins] Frequency of the log schedule
  * operation of this policy in minutes.
  */
 export interface LogSchedulePolicy extends SchedulePolicy {
@@ -1830,17 +1850,18 @@ export interface LogSchedulePolicy extends SchedulePolicy {
  * @constructor
  * Weekly retention schedule.
  *
- * @member {array} [daysOfTheWeek] List of days of week for weekly retention
+ * @property {array} [daysOfTheWeek] List of days of week for weekly retention
  * policy.
- * @member {array} [retentionTimes] Retention times of retention policy.
- * @member {object} [retentionDuration] Retention duration of retention Policy.
- * @member {number} [retentionDuration.count] Count of duration types.
+ * @property {array} [retentionTimes] Retention times of retention policy.
+ * @property {object} [retentionDuration] Retention duration of retention
+ * Policy.
+ * @property {number} [retentionDuration.count] Count of duration types.
  * Retention duration is obtained by the counting the duration type Count
  * times.
  * For example, when Count = 3 and DurationType = Weeks, retention duration
  * will be three weeks.
- * @member {string} [retentionDuration.durationType] Retention duration type of
- * retention policy. Possible values include: 'Invalid', 'Days', 'Weeks',
+ * @property {string} [retentionDuration.durationType] Retention duration type
+ * of retention policy. Possible values include: 'Invalid', 'Days', 'Weeks',
  * 'Months', 'Years'
  */
 export interface WeeklyRetentionSchedule {
@@ -1855,8 +1876,8 @@ export interface WeeklyRetentionSchedule {
  * @constructor
  * Weekly retention format.
  *
- * @member {array} [daysOfTheWeek] List of days of the week.
- * @member {array} [weeksOfTheMonth] List of weeks of month.
+ * @property {array} [daysOfTheWeek] List of days of the week.
+ * @property {array} [weeksOfTheMonth] List of weeks of month.
  */
 export interface WeeklyRetentionFormat {
   daysOfTheWeek?: string[];
@@ -1869,28 +1890,29 @@ export interface WeeklyRetentionFormat {
  * @constructor
  * Monthly retention schedule.
  *
- * @member {string} [retentionScheduleFormatType] Retention schedule format
+ * @property {string} [retentionScheduleFormatType] Retention schedule format
  * type for monthly retention policy. Possible values include: 'Invalid',
  * 'Daily', 'Weekly'
- * @member {object} [retentionScheduleDaily] Daily retention format for monthly
- * retention policy.
- * @member {array} [retentionScheduleDaily.daysOfTheMonth] List of days of the
- * month.
- * @member {object} [retentionScheduleWeekly] Weekly retention format for
+ * @property {object} [retentionScheduleDaily] Daily retention format for
  * monthly retention policy.
- * @member {array} [retentionScheduleWeekly.daysOfTheWeek] List of days of the
- * week.
- * @member {array} [retentionScheduleWeekly.weeksOfTheMonth] List of weeks of
+ * @property {array} [retentionScheduleDaily.daysOfTheMonth] List of days of
+ * the month.
+ * @property {object} [retentionScheduleWeekly] Weekly retention format for
+ * monthly retention policy.
+ * @property {array} [retentionScheduleWeekly.daysOfTheWeek] List of days of
+ * the week.
+ * @property {array} [retentionScheduleWeekly.weeksOfTheMonth] List of weeks of
  * month.
- * @member {array} [retentionTimes] Retention times of retention policy.
- * @member {object} [retentionDuration] Retention duration of retention Policy.
- * @member {number} [retentionDuration.count] Count of duration types.
+ * @property {array} [retentionTimes] Retention times of retention policy.
+ * @property {object} [retentionDuration] Retention duration of retention
+ * Policy.
+ * @property {number} [retentionDuration.count] Count of duration types.
  * Retention duration is obtained by the counting the duration type Count
  * times.
  * For example, when Count = 3 and DurationType = Weeks, retention duration
  * will be three weeks.
- * @member {string} [retentionDuration.durationType] Retention duration type of
- * retention policy. Possible values include: 'Invalid', 'Days', 'Weeks',
+ * @property {string} [retentionDuration.durationType] Retention duration type
+ * of retention policy. Possible values include: 'Invalid', 'Days', 'Weeks',
  * 'Months', 'Years'
  */
 export interface MonthlyRetentionSchedule {
@@ -1907,30 +1929,31 @@ export interface MonthlyRetentionSchedule {
  * @constructor
  * Yearly retention schedule.
  *
- * @member {string} [retentionScheduleFormatType] Retention schedule format for
- * yearly retention policy. Possible values include: 'Invalid', 'Daily',
+ * @property {string} [retentionScheduleFormatType] Retention schedule format
+ * for yearly retention policy. Possible values include: 'Invalid', 'Daily',
  * 'Weekly'
- * @member {array} [monthsOfYear] List of months of year of yearly retention
+ * @property {array} [monthsOfYear] List of months of year of yearly retention
  * policy.
- * @member {object} [retentionScheduleDaily] Daily retention format for yearly
- * retention policy.
- * @member {array} [retentionScheduleDaily.daysOfTheMonth] List of days of the
- * month.
- * @member {object} [retentionScheduleWeekly] Weekly retention format for
+ * @property {object} [retentionScheduleDaily] Daily retention format for
  * yearly retention policy.
- * @member {array} [retentionScheduleWeekly.daysOfTheWeek] List of days of the
- * week.
- * @member {array} [retentionScheduleWeekly.weeksOfTheMonth] List of weeks of
+ * @property {array} [retentionScheduleDaily.daysOfTheMonth] List of days of
+ * the month.
+ * @property {object} [retentionScheduleWeekly] Weekly retention format for
+ * yearly retention policy.
+ * @property {array} [retentionScheduleWeekly.daysOfTheWeek] List of days of
+ * the week.
+ * @property {array} [retentionScheduleWeekly.weeksOfTheMonth] List of weeks of
  * month.
- * @member {array} [retentionTimes] Retention times of retention policy.
- * @member {object} [retentionDuration] Retention duration of retention Policy.
- * @member {number} [retentionDuration.count] Count of duration types.
+ * @property {array} [retentionTimes] Retention times of retention policy.
+ * @property {object} [retentionDuration] Retention duration of retention
+ * Policy.
+ * @property {number} [retentionDuration.count] Count of duration types.
  * Retention duration is obtained by the counting the duration type Count
  * times.
  * For example, when Count = 3 and DurationType = Weeks, retention duration
  * will be three weeks.
- * @member {string} [retentionDuration.durationType] Retention duration type of
- * retention policy. Possible values include: 'Invalid', 'Days', 'Weeks',
+ * @property {string} [retentionDuration.durationType] Retention duration type
+ * of retention policy. Possible values include: 'Invalid', 'Days', 'Weeks',
  * 'Months', 'Years'
  */
 export interface YearlyRetentionSchedule {
@@ -1948,90 +1971,90 @@ export interface YearlyRetentionSchedule {
  * @constructor
  * Long term retention policy.
  *
- * @member {object} [dailySchedule] Daily retention schedule of the protection
- * policy.
- * @member {array} [dailySchedule.retentionTimes] Retention times of retention
- * policy.
- * @member {object} [dailySchedule.retentionDuration] Retention duration of
+ * @property {object} [dailySchedule] Daily retention schedule of the
+ * protection policy.
+ * @property {array} [dailySchedule.retentionTimes] Retention times of
+ * retention policy.
+ * @property {object} [dailySchedule.retentionDuration] Retention duration of
  * retention Policy.
- * @member {number} [dailySchedule.retentionDuration.count] Count of duration
+ * @property {number} [dailySchedule.retentionDuration.count] Count of duration
  * types. Retention duration is obtained by the counting the duration type
  * Count times.
  * For example, when Count = 3 and DurationType = Weeks, retention duration
  * will be three weeks.
- * @member {string} [dailySchedule.retentionDuration.durationType] Retention
+ * @property {string} [dailySchedule.retentionDuration.durationType] Retention
  * duration type of retention policy. Possible values include: 'Invalid',
  * 'Days', 'Weeks', 'Months', 'Years'
- * @member {object} [weeklySchedule] Weekly retention schedule of the
+ * @property {object} [weeklySchedule] Weekly retention schedule of the
  * protection policy.
- * @member {array} [weeklySchedule.daysOfTheWeek] List of days of week for
+ * @property {array} [weeklySchedule.daysOfTheWeek] List of days of week for
  * weekly retention policy.
- * @member {array} [weeklySchedule.retentionTimes] Retention times of retention
- * policy.
- * @member {object} [weeklySchedule.retentionDuration] Retention duration of
+ * @property {array} [weeklySchedule.retentionTimes] Retention times of
+ * retention policy.
+ * @property {object} [weeklySchedule.retentionDuration] Retention duration of
  * retention Policy.
- * @member {number} [weeklySchedule.retentionDuration.count] Count of duration
- * types. Retention duration is obtained by the counting the duration type
- * Count times.
+ * @property {number} [weeklySchedule.retentionDuration.count] Count of
+ * duration types. Retention duration is obtained by the counting the duration
+ * type Count times.
  * For example, when Count = 3 and DurationType = Weeks, retention duration
  * will be three weeks.
- * @member {string} [weeklySchedule.retentionDuration.durationType] Retention
+ * @property {string} [weeklySchedule.retentionDuration.durationType] Retention
  * duration type of retention policy. Possible values include: 'Invalid',
  * 'Days', 'Weeks', 'Months', 'Years'
- * @member {object} [monthlySchedule] Monthly retention schedule of the
+ * @property {object} [monthlySchedule] Monthly retention schedule of the
  * protection policy.
- * @member {string} [monthlySchedule.retentionScheduleFormatType] Retention
+ * @property {string} [monthlySchedule.retentionScheduleFormatType] Retention
  * schedule format type for monthly retention policy. Possible values include:
  * 'Invalid', 'Daily', 'Weekly'
- * @member {object} [monthlySchedule.retentionScheduleDaily] Daily retention
+ * @property {object} [monthlySchedule.retentionScheduleDaily] Daily retention
  * format for monthly retention policy.
- * @member {array} [monthlySchedule.retentionScheduleDaily.daysOfTheMonth] List
- * of days of the month.
- * @member {object} [monthlySchedule.retentionScheduleWeekly] Weekly retention
- * format for monthly retention policy.
- * @member {array} [monthlySchedule.retentionScheduleWeekly.daysOfTheWeek] List
- * of days of the week.
- * @member {array} [monthlySchedule.retentionScheduleWeekly.weeksOfTheMonth]
+ * @property {array} [monthlySchedule.retentionScheduleDaily.daysOfTheMonth]
+ * List of days of the month.
+ * @property {object} [monthlySchedule.retentionScheduleWeekly] Weekly
+ * retention format for monthly retention policy.
+ * @property {array} [monthlySchedule.retentionScheduleWeekly.daysOfTheWeek]
+ * List of days of the week.
+ * @property {array} [monthlySchedule.retentionScheduleWeekly.weeksOfTheMonth]
  * List of weeks of month.
- * @member {array} [monthlySchedule.retentionTimes] Retention times of
+ * @property {array} [monthlySchedule.retentionTimes] Retention times of
  * retention policy.
- * @member {object} [monthlySchedule.retentionDuration] Retention duration of
+ * @property {object} [monthlySchedule.retentionDuration] Retention duration of
  * retention Policy.
- * @member {number} [monthlySchedule.retentionDuration.count] Count of duration
- * types. Retention duration is obtained by the counting the duration type
- * Count times.
+ * @property {number} [monthlySchedule.retentionDuration.count] Count of
+ * duration types. Retention duration is obtained by the counting the duration
+ * type Count times.
  * For example, when Count = 3 and DurationType = Weeks, retention duration
  * will be three weeks.
- * @member {string} [monthlySchedule.retentionDuration.durationType] Retention
- * duration type of retention policy. Possible values include: 'Invalid',
- * 'Days', 'Weeks', 'Months', 'Years'
- * @member {object} [yearlySchedule] Yearly retention schedule of the
+ * @property {string} [monthlySchedule.retentionDuration.durationType]
+ * Retention duration type of retention policy. Possible values include:
+ * 'Invalid', 'Days', 'Weeks', 'Months', 'Years'
+ * @property {object} [yearlySchedule] Yearly retention schedule of the
  * protection policy.
- * @member {string} [yearlySchedule.retentionScheduleFormatType] Retention
+ * @property {string} [yearlySchedule.retentionScheduleFormatType] Retention
  * schedule format for yearly retention policy. Possible values include:
  * 'Invalid', 'Daily', 'Weekly'
- * @member {array} [yearlySchedule.monthsOfYear] List of months of year of
+ * @property {array} [yearlySchedule.monthsOfYear] List of months of year of
  * yearly retention policy.
- * @member {object} [yearlySchedule.retentionScheduleDaily] Daily retention
+ * @property {object} [yearlySchedule.retentionScheduleDaily] Daily retention
  * format for yearly retention policy.
- * @member {array} [yearlySchedule.retentionScheduleDaily.daysOfTheMonth] List
- * of days of the month.
- * @member {object} [yearlySchedule.retentionScheduleWeekly] Weekly retention
+ * @property {array} [yearlySchedule.retentionScheduleDaily.daysOfTheMonth]
+ * List of days of the month.
+ * @property {object} [yearlySchedule.retentionScheduleWeekly] Weekly retention
  * format for yearly retention policy.
- * @member {array} [yearlySchedule.retentionScheduleWeekly.daysOfTheWeek] List
- * of days of the week.
- * @member {array} [yearlySchedule.retentionScheduleWeekly.weeksOfTheMonth]
+ * @property {array} [yearlySchedule.retentionScheduleWeekly.daysOfTheWeek]
+ * List of days of the week.
+ * @property {array} [yearlySchedule.retentionScheduleWeekly.weeksOfTheMonth]
  * List of weeks of month.
- * @member {array} [yearlySchedule.retentionTimes] Retention times of retention
- * policy.
- * @member {object} [yearlySchedule.retentionDuration] Retention duration of
+ * @property {array} [yearlySchedule.retentionTimes] Retention times of
+ * retention policy.
+ * @property {object} [yearlySchedule.retentionDuration] Retention duration of
  * retention Policy.
- * @member {number} [yearlySchedule.retentionDuration.count] Count of duration
- * types. Retention duration is obtained by the counting the duration type
- * Count times.
+ * @property {number} [yearlySchedule.retentionDuration.count] Count of
+ * duration types. Retention duration is obtained by the counting the duration
+ * type Count times.
  * For example, when Count = 3 and DurationType = Weeks, retention duration
  * will be three weeks.
- * @member {string} [yearlySchedule.retentionDuration.durationType] Retention
+ * @property {string} [yearlySchedule.retentionDuration.durationType] Retention
  * duration type of retention policy. Possible values include: 'Invalid',
  * 'Days', 'Weeks', 'Months', 'Years'
  */
@@ -2058,8 +2081,8 @@ export interface LongTermSchedulePolicy extends SchedulePolicy {
  * @constructor
  * MAB workload-specific error information.
  *
- * @member {string} [errorString] Localized error string.
- * @member {array} [recommendations] List of localized recommendations.
+ * @property {string} [errorString] Localized error string.
+ * @property {array} [recommendations] List of localized recommendations.
  */
 export interface MabErrorInfo {
   errorString?: string;
@@ -2072,10 +2095,10 @@ export interface MabErrorInfo {
  * @constructor
  * Additional information on the backed up item.
  *
- * @member {date} [lastRefreshedAt] Last time when the agent data synced to
+ * @property {date} [lastRefreshedAt] Last time when the agent data synced to
  * service.
- * @member {date} [oldestRecoveryPoint] The oldest backup copy available.
- * @member {number} [recoveryPointCount] Number of backup copies associated
+ * @property {date} [oldestRecoveryPoint] The oldest backup copy available.
+ * @property {number} [recoveryPointCount] Number of backup copies associated
  * with the backup item.
  */
 export interface MabFileFolderProtectedItemExtendedInfo {
@@ -2090,23 +2113,23 @@ export interface MabFileFolderProtectedItemExtendedInfo {
  * @constructor
  * MAB workload-specific backup item.
  *
- * @member {string} [friendlyName] Friendly name of this backup item.
- * @member {string} [computerName] Name of the computer associated with this
+ * @property {string} [friendlyName] Friendly name of this backup item.
+ * @property {string} [computerName] Name of the computer associated with this
  * backup item.
- * @member {string} [lastBackupStatus] Status of last backup operation.
- * @member {string} [protectionState] Protected, ProtectionStopped, IRPending
+ * @property {string} [lastBackupStatus] Status of last backup operation.
+ * @property {string} [protectionState] Protected, ProtectionStopped, IRPending
  * or ProtectionError
- * @member {boolean} [isScheduledForDeferredDelete] Specifies if the item is
+ * @property {boolean} [isScheduledForDeferredDelete] Specifies if the item is
  * scheduled for deferred deletion.
- * @member {number} [deferredDeleteSyncTimeInUTC] Sync time for deferred
+ * @property {number} [deferredDeleteSyncTimeInUTC] Sync time for deferred
  * deletion.
- * @member {object} [extendedInfo] Additional information with this backup
+ * @property {object} [extendedInfo] Additional information with this backup
  * item.
- * @member {date} [extendedInfo.lastRefreshedAt] Last time when the agent data
- * synced to service.
- * @member {date} [extendedInfo.oldestRecoveryPoint] The oldest backup copy
+ * @property {date} [extendedInfo.lastRefreshedAt] Last time when the agent
+ * data synced to service.
+ * @property {date} [extendedInfo.oldestRecoveryPoint] The oldest backup copy
  * available.
- * @member {number} [extendedInfo.recoveryPointCount] Number of backup copies
+ * @property {number} [extendedInfo.recoveryPointCount] Number of backup copies
  * associated with the backup item.
  */
 export interface MabFileFolderProtectedItem extends ProtectedItem {
@@ -2125,11 +2148,11 @@ export interface MabFileFolderProtectedItem extends ProtectedItem {
  * @constructor
  * MAB workload-specific job task details.
  *
- * @member {string} [taskId] The task display name.
- * @member {date} [startTime] The start time.
- * @member {date} [endTime] The end time.
- * @member {moment.duration} [duration] Time elapsed for task.
- * @member {string} [status] The status.
+ * @property {string} [taskId] The task display name.
+ * @property {date} [startTime] The start time.
+ * @property {date} [endTime] The end time.
+ * @property {moment.duration} [duration] Time elapsed for task.
+ * @property {string} [status] The status.
  */
 export interface MabJobTaskDetails {
   taskId?: string;
@@ -2145,10 +2168,10 @@ export interface MabJobTaskDetails {
  * @constructor
  * Additional information for the MAB workload-specific job.
  *
- * @member {array} [tasksList] List of tasks for this job.
- * @member {object} [propertyBag] The job properties.
- * @member {string} [dynamicErrorMessage] Non localized error message specific
- * to this job.
+ * @property {array} [tasksList] List of tasks for this job.
+ * @property {object} [propertyBag] The job properties.
+ * @property {string} [dynamicErrorMessage] Non localized error message
+ * specific to this job.
  */
 export interface MabJobExtendedInfo {
   tasksList?: MabJobTaskDetails[];
@@ -2162,25 +2185,25 @@ export interface MabJobExtendedInfo {
  * @constructor
  * MAB workload-specific job.
  *
- * @member {moment.duration} [duration] Time taken by job to run.
- * @member {array} [actionsInfo] The state/actions applicable on jobs like
+ * @property {moment.duration} [duration] Time taken by job to run.
+ * @property {array} [actionsInfo] The state/actions applicable on jobs like
  * cancel/retry.
- * @member {string} [mabServerName] Name of server protecting the DS.
- * @member {string} [mabServerType] Server type of MAB container. Possible
+ * @property {string} [mabServerName] Name of server protecting the DS.
+ * @property {string} [mabServerType] Server type of MAB container. Possible
  * values include: 'Invalid', 'Unknown', 'IaasVMContainer',
  * 'IaasVMServiceContainer', 'DPMContainer', 'AzureBackupServerContainer',
  * 'MABContainer', 'Cluster', 'AzureSqlContainer', 'Windows', 'VCenter',
  * 'VMAppContainer', 'SQLAGWorkLoadContainer', 'StorageContainer',
  * 'GenericContainer'
- * @member {string} [workloadType] Workload type of backup item. Possible
+ * @property {string} [workloadType] Workload type of backup item. Possible
  * values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb', 'SQLDB',
  * 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
  * 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase'
- * @member {array} [errorDetails] The errors.
- * @member {object} [extendedInfo] Additional information on the job.
- * @member {array} [extendedInfo.tasksList] List of tasks for this job.
- * @member {object} [extendedInfo.propertyBag] The job properties.
- * @member {string} [extendedInfo.dynamicErrorMessage] Non localized error
+ * @property {array} [errorDetails] The errors.
+ * @property {object} [extendedInfo] Additional information on the job.
+ * @property {array} [extendedInfo.tasksList] List of tasks for this job.
+ * @property {object} [extendedInfo.propertyBag] The job properties.
+ * @property {string} [extendedInfo.dynamicErrorMessage] Non localized error
  * message specific to this job.
  */
 export interface MabJob extends Job {
@@ -2199,11 +2222,11 @@ export interface MabJob extends Job {
  * @constructor
  * Mab container-specific backup policy.
  *
- * @member {object} [schedulePolicy] Backup schedule of backup policy.
- * @member {string} [schedulePolicy.schedulePolicyType] Polymorphic
+ * @property {object} [schedulePolicy] Backup schedule of backup policy.
+ * @property {string} [schedulePolicy.schedulePolicyType] Polymorphic
  * Discriminator
- * @member {object} [retentionPolicy] Retention policy details.
- * @member {string} [retentionPolicy.retentionPolicyType] Polymorphic
+ * @property {object} [retentionPolicy] Retention policy details.
+ * @property {string} [retentionPolicy.retentionPolicyType] Polymorphic
  * Discriminator
  */
 export interface MabProtectionPolicy extends ProtectionPolicy {
@@ -2217,7 +2240,7 @@ export interface MabProtectionPolicy extends ProtectionPolicy {
  * @constructor
  * Operation result info.
  *
- * @member {array} [jobList] List of jobs created by this operation.
+ * @property {array} [jobList] List of jobs created by this operation.
  */
 export interface OperationResultInfo extends OperationResultInfoBase {
   jobList?: string[];
@@ -2229,7 +2252,7 @@ export interface OperationResultInfo extends OperationResultInfoBase {
  * @constructor
  * This is the base class for operation result responses.
  *
- * @member {string} [statusCode] HTTP Status Code of the operation. Possible
+ * @property {string} [statusCode] HTTP Status Code of the operation. Possible
  * values include: 'Continue', 'SwitchingProtocols', 'OK', 'Created',
  * 'Accepted', 'NonAuthoritativeInformation', 'NoContent', 'ResetContent',
  * 'PartialContent', 'MultipleChoices', 'Ambiguous', 'MovedPermanently',
@@ -2242,7 +2265,7 @@ export interface OperationResultInfo extends OperationResultInfoBase {
  * 'UnsupportedMediaType', 'RequestedRangeNotSatisfiable', 'ExpectationFailed',
  * 'UpgradeRequired', 'InternalServerError', 'NotImplemented', 'BadGateway',
  * 'ServiceUnavailable', 'GatewayTimeout', 'HttpVersionNotSupported'
- * @member {object} [headers] HTTP headers associated with this operation.
+ * @property {object} [headers] HTTP headers associated with this operation.
  */
 export interface OperationWorkerResponse {
   statusCode?: string;
@@ -2255,8 +2278,8 @@ export interface OperationWorkerResponse {
  * @constructor
  * Base class for operation result info.
  *
- * @member {object} [operation] OperationResultInfoBaseResource operation
- * @member {string} [operation.objectType] Polymorphic Discriminator
+ * @property {object} [operation] OperationResultInfoBaseResource operation
+ * @property {string} [operation.objectType] Polymorphic Discriminator
  */
 export interface OperationResultInfoBaseResource extends OperationWorkerResponse {
   operation?: OperationResultInfoBase;
@@ -2273,13 +2296,13 @@ export interface OperationResultInfoBaseResource extends OperationWorkerResponse
  * 2. VM is already protected
  * 3. Any VM related configuration passed in properties.
  *
- * @member {string} [resourceType] ProtectedItem Type- VM, SqlDataBase,
+ * @property {string} [resourceType] ProtectedItem Type- VM, SqlDataBase,
  * AzureFileShare etc. Possible values include: 'Invalid', 'VM', 'FileFolder',
  * 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState',
  * 'Client', 'GenericDataSource', 'SQLDataBase', 'AzureFileShare',
  * 'SAPHanaDatabase'
- * @member {string} [resourceId] ARM Virtual Machine Id
- * @member {string} [properties] Configuration of VM if any needs to be
+ * @property {string} [resourceId] ARM Virtual Machine Id
+ * @property {string} [properties] Configuration of VM if any needs to be
  * validated like OS type etc
  */
 export interface PreValidateEnableBackupRequest {
@@ -2294,16 +2317,16 @@ export interface PreValidateEnableBackupRequest {
  * @constructor
  * Response contract for enable backup validation request
  *
- * @member {string} [status] Validation Status. Possible values include:
+ * @property {string} [status] Validation Status. Possible values include:
  * 'Invalid', 'Succeeded', 'Failed'
- * @member {string} [errorCode] Response error code
- * @member {string} [errorMessage] Response error message
- * @member {string} [recommendation] Recommended action for user
- * @member {string} [containerName] Specifies the product specific container
+ * @property {string} [errorCode] Response error code
+ * @property {string} [errorMessage] Response error message
+ * @property {string} [recommendation] Recommended action for user
+ * @property {string} [containerName] Specifies the product specific container
  * name. E.g. iaasvmcontainer;iaasvmcontainer;rgname;vmname. This is required
  * for portal
- * @member {string} [protectedItemName] Specifies the product specific ds name.
- * E.g. vm;iaasvmcontainer;rgname;vmname. This is required for portal
+ * @property {string} [protectedItemName] Specifies the product specific ds
+ * name. E.g. vm;iaasvmcontainer;rgname;vmname. This is required for portal
  */
 export interface PreValidateEnableBackupResponse {
   status?: string;
@@ -2320,23 +2343,24 @@ export interface PreValidateEnableBackupResponse {
  * @constructor
  * Filters to list backup items.
  *
- * @member {string} [healthState] Health State for the backed up item. Possible
- * values include: 'Passed', 'ActionRequired', 'ActionSuggested', 'Invalid'
- * @member {string} [backupManagementType] Backup management type for the
+ * @property {string} [healthState] Health State for the backed up item.
+ * Possible values include: 'Passed', 'ActionRequired', 'ActionSuggested',
+ * 'Invalid'
+ * @property {string} [backupManagementType] Backup management type for the
  * backed up item. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
  * 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
  * 'DefaultBackup'
- * @member {string} [itemType] Type of workload this item represents. Possible
- * values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb', 'SQLDB',
- * 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
+ * @property {string} [itemType] Type of workload this item represents.
+ * Possible values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb',
+ * 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
  * 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase'
- * @member {string} [policyName] Backup policy name associated with the backup
- * item.
- * @member {string} [containerName] Name of the container.
- * @member {string} [backupEngineName] Backup Engine name
- * @member {string} [friendlyName] Friendly name of protected item
- * @member {string} [fabricName] Name of the fabric.
- * @member {string} [backupSetName] Name of the backup set.
+ * @property {string} [policyName] Backup policy name associated with the
+ * backup item.
+ * @property {string} [containerName] Name of the container.
+ * @property {string} [backupEngineName] Backup Engine name
+ * @property {string} [friendlyName] Friendly name of protected item
+ * @property {string} [fabricName] Name of the fabric.
+ * @property {string} [backupSetName] Name of the backup set.
  */
 export interface ProtectedItemQueryObject {
   healthState?: string;
@@ -2356,29 +2380,29 @@ export interface ProtectedItemQueryObject {
  * @constructor
  * Base class for backup items.
  *
- * @member {object} [properties] ProtectedItemResource properties
- * @member {string} [properties.backupManagementType] Type of backup
+ * @property {object} [properties] ProtectedItemResource properties
+ * @property {string} [properties.backupManagementType] Type of backup
  * managemenent for the backed up item. Possible values include: 'Invalid',
  * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql',
  * 'AzureStorage', 'AzureWorkload', 'DefaultBackup'
- * @member {string} [properties.workloadType] Type of workload this item
+ * @property {string} [properties.workloadType] Type of workload this item
  * represents. Possible values include: 'Invalid', 'VM', 'FileFolder',
  * 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState',
  * 'Client', 'GenericDataSource', 'SQLDataBase', 'AzureFileShare',
  * 'SAPHanaDatabase'
- * @member {string} [properties.containerName] Unique name of container
- * @member {string} [properties.sourceResourceId] ARM ID of the resource to be
- * backed up.
- * @member {string} [properties.policyId] ID of the backup policy with which
+ * @property {string} [properties.containerName] Unique name of container
+ * @property {string} [properties.sourceResourceId] ARM ID of the resource to
+ * be backed up.
+ * @property {string} [properties.policyId] ID of the backup policy with which
  * this item is backed up.
- * @member {date} [properties.lastRecoveryPoint] Timestamp when the last
+ * @property {date} [properties.lastRecoveryPoint] Timestamp when the last
  * (latest) backup copy was created for this backup item.
- * @member {string} [properties.backupSetName] Name of the backup set the
+ * @property {string} [properties.backupSetName] Name of the backup set the
  * backup item belongs to
- * @member {string} [properties.createMode] Create mode to indicate recovery of
- * existing soft deleted data source or creation of new data source. Possible
- * values include: 'Invalid', 'Default', 'Recover'
- * @member {string} [properties.protectedItemType] Polymorphic Discriminator
+ * @property {string} [properties.createMode] Create mode to indicate recovery
+ * of existing soft deleted data source or creation of new data source.
+ * Possible values include: 'Invalid', 'Default', 'Recover'
+ * @property {string} [properties.protectedItemType] Polymorphic Discriminator
  */
 export interface ProtectedItemResource extends Resource {
   properties?: ProtectedItem;
@@ -2390,14 +2414,15 @@ export interface ProtectedItemResource extends Resource {
  * @constructor
  * Filters to list protection intent.
  *
- * @member {string} [backupManagementType] Backup management type for the
+ * @property {string} [backupManagementType] Backup management type for the
  * backed up item. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
  * 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
  * 'DefaultBackup'
- * @member {string} [itemType] Type of workload this item represents. Possible
- * values include: 'Invalid', 'SQLInstance', 'SQLAvailabilityGroupContainer'
- * @member {string} [parentName] Parent name of the intent
- * @member {string} [itemName] Item name of the intent
+ * @property {string} [itemType] Type of workload this item represents.
+ * Possible values include: 'Invalid', 'SQLInstance',
+ * 'SQLAvailabilityGroupContainer'
+ * @property {string} [parentName] Parent name of the intent
+ * @property {string} [itemName] Item name of the intent
  */
 export interface ProtectionIntentQueryObject {
   backupManagementType?: string;
@@ -2412,21 +2437,21 @@ export interface ProtectionIntentQueryObject {
  * @constructor
  * Base class for backup ProtectionIntent.
  *
- * @member {object} [properties] ProtectionIntentResource properties
- * @member {string} [properties.backupManagementType] Type of backup
+ * @property {object} [properties] ProtectionIntentResource properties
+ * @property {string} [properties.backupManagementType] Type of backup
  * managemenent for the backed up item. Possible values include: 'Invalid',
  * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql',
  * 'AzureStorage', 'AzureWorkload', 'DefaultBackup'
- * @member {string} [properties.sourceResourceId] ARM ID of the resource to be
- * backed up.
- * @member {string} [properties.itemId] ID of the item which is getting
+ * @property {string} [properties.sourceResourceId] ARM ID of the resource to
+ * be backed up.
+ * @property {string} [properties.itemId] ID of the item which is getting
  * protected, In case of Azure Vm , it is ProtectedItemId
- * @member {string} [properties.policyId] ID of the backup policy with which
+ * @property {string} [properties.policyId] ID of the backup policy with which
  * this item is backed up.
- * @member {string} [properties.protectionState] Backup state of this backup
+ * @property {string} [properties.protectionState] Backup state of this backup
  * item. Possible values include: 'Invalid', 'NotProtected', 'Protecting',
  * 'Protected', 'ProtectionFailed'
- * @member {string} [properties.protectionIntentItemType] Polymorphic
+ * @property {string} [properties.protectionIntentItemType] Polymorphic
  * Discriminator
  */
 export interface ProtectionIntentResource extends Resource {
@@ -2439,12 +2464,12 @@ export interface ProtectionIntentResource extends Resource {
  * @constructor
  * Filters the list backup policies API.
  *
- * @member {string} [backupManagementType] Backup management type for the
+ * @property {string} [backupManagementType] Backup management type for the
  * backup policy. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
  * 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
  * 'DefaultBackup'
- * @member {string} [fabricName] Fabric name for filter
- * @member {string} [workloadType] Workload type for the backup policy.
+ * @property {string} [fabricName] Fabric name for filter
+ * @property {string} [workloadType] Workload type for the backup policy.
  * Possible values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb',
  * 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
  * 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase'
@@ -2462,10 +2487,11 @@ export interface ProtectionPolicyQueryObject {
  * Base class for backup policy. Workload-specific backup policies are derived
  * from this class.
  *
- * @member {object} [properties] ProtectionPolicyResource properties
- * @member {number} [properties.protectedItemsCount] Number of items associated
- * with this policy.
- * @member {string} [properties.backupManagementType] Polymorphic Discriminator
+ * @property {object} [properties] ProtectionPolicyResource properties
+ * @property {number} [properties.protectedItemsCount] Number of items
+ * associated with this policy.
+ * @property {string} [properties.backupManagementType] Polymorphic
+ * Discriminator
  */
 export interface ProtectionPolicyResource extends Resource {
   properties?: ProtectionPolicy;
@@ -2477,7 +2503,7 @@ export interface ProtectionPolicyResource extends Resource {
  * @constructor
  * Base for all lists of resources.
  *
- * @member {string} [nextLink] The uri to fetch the next page of resources.
+ * @property {string} [nextLink] The uri to fetch the next page of resources.
  * Call ListNext() fetches next page of resources.
  */
 export interface ResourceList {
@@ -2490,15 +2516,15 @@ export interface ResourceList {
  * @constructor
  * Simple policy retention.
  *
- * @member {object} [retentionDuration] Retention duration of the protection
+ * @property {object} [retentionDuration] Retention duration of the protection
  * policy.
- * @member {number} [retentionDuration.count] Count of duration types.
+ * @property {number} [retentionDuration.count] Count of duration types.
  * Retention duration is obtained by the counting the duration type Count
  * times.
  * For example, when Count = 3 and DurationType = Weeks, retention duration
  * will be three weeks.
- * @member {string} [retentionDuration.durationType] Retention duration type of
- * retention policy. Possible values include: 'Invalid', 'Days', 'Weeks',
+ * @property {string} [retentionDuration.durationType] Retention duration type
+ * of retention policy. Possible values include: 'Invalid', 'Days', 'Weeks',
  * 'Months', 'Years'
  */
 export interface SimpleRetentionPolicy extends RetentionPolicy {
@@ -2511,13 +2537,14 @@ export interface SimpleRetentionPolicy extends RetentionPolicy {
  * @constructor
  * Simple policy schedule.
  *
- * @member {string} [scheduleRunFrequency] Frequency of the schedule operation
- * of this policy. Possible values include: 'Invalid', 'Daily', 'Weekly'
- * @member {array} [scheduleRunDays] List of days of week this schedule has to
- * be run.
- * @member {array} [scheduleRunTimes] List of times of day this schedule has to
- * be run.
- * @member {number} [scheduleWeeklyFrequency] At every number weeks this
+ * @property {string} [scheduleRunFrequency] Frequency of the schedule
+ * operation of this policy. Possible values include: 'Invalid', 'Daily',
+ * 'Weekly'
+ * @property {array} [scheduleRunDays] List of days of week this schedule has
+ * to be run.
+ * @property {array} [scheduleRunTimes] List of times of day this schedule has
+ * to be run.
+ * @property {number} [scheduleWeeklyFrequency] At every number weeks this
  * schedule has to be run.
  */
 export interface SimpleSchedulePolicy extends SchedulePolicy {
@@ -2533,7 +2560,7 @@ export interface SimpleSchedulePolicy extends SchedulePolicy {
  * @constructor
  * Base class for validate operation request.
  *
- * @member {string} objectType Polymorphic Discriminator
+ * @property {string} objectType Polymorphic Discriminator
  */
 export interface ValidateOperationRequest {
   objectType: string;
@@ -2545,8 +2572,8 @@ export interface ValidateOperationRequest {
  * @constructor
  * AzureRestoreValidation request.
  *
- * @member {object} [restoreRequest] Sets restore request to be validated
- * @member {string} [restoreRequest.objectType] Polymorphic Discriminator
+ * @property {object} [restoreRequest] Sets restore request to be validated
+ * @property {string} [restoreRequest.objectType] Polymorphic Discriminator
  */
 export interface ValidateRestoreOperationRequest extends ValidateOperationRequest {
   restoreRequest?: RestoreRequest;
@@ -2568,7 +2595,7 @@ export interface ValidateIaasVMRestoreOperationRequest extends ValidateRestoreOp
  * @constructor
  * Base class for validate operation response.
  *
- * @member {array} [validationResults] Gets the validation result
+ * @property {array} [validationResults] Gets the validation result
  */
 export interface ValidateOperationResponse {
   validationResults?: ErrorDetail[];
@@ -2578,8 +2605,8 @@ export interface ValidateOperationResponse {
  * @class
  * Initializes a new instance of the ValidateOperationsResponse class.
  * @constructor
- * @member {object} [validateOperationResponse]
- * @member {array} [validateOperationResponse.validationResults] Gets the
+ * @property {object} [validateOperationResponse]
+ * @property {array} [validateOperationResponse.validationResults] Gets the
  * validation result
  */
 export interface ValidateOperationsResponse {
@@ -2592,7 +2619,7 @@ export interface ValidateOperationsResponse {
  * @constructor
  * Additional information of the DPMContainer.
  *
- * @member {date} [lastRefreshedAt] Last refresh time of the DPMContainer.
+ * @property {date} [lastRefreshedAt] Last refresh time of the DPMContainer.
  */
 export interface DPMContainerExtendedInfo {
   lastRefreshedAt?: Date;
@@ -2605,15 +2632,15 @@ export interface DPMContainerExtendedInfo {
  * Base class for container with backup items. Containers with specific
  * workloads are derived from this class.
  *
- * @member {string} [friendlyName] Friendly name of the container.
- * @member {string} [backupManagementType] Type of backup managemenent for the
- * container. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM',
- * 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
+ * @property {string} [friendlyName] Friendly name of the container.
+ * @property {string} [backupManagementType] Type of backup managemenent for
+ * the container. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
+ * 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
  * 'DefaultBackup'
- * @member {string} [registrationStatus] Status of registration of the
+ * @property {string} [registrationStatus] Status of registration of the
  * container with the Recovery Services Vault.
- * @member {string} [healthStatus] Status of health of the container.
- * @member {string} containerType Polymorphic Discriminator
+ * @property {string} [healthStatus] Status of health of the container.
+ * @property {string} containerType Polymorphic Discriminator
  */
 export interface ProtectionContainer {
   friendlyName?: string;
@@ -2629,17 +2656,18 @@ export interface ProtectionContainer {
  * @constructor
  * AzureBackupServer (DPMVenus) workload-specific protection container.
  *
- * @member {boolean} [canReRegister] Specifies whether the container is
+ * @property {boolean} [canReRegister] Specifies whether the container is
  * re-registrable.
- * @member {string} [containerId] ID of container.
- * @member {number} [protectedItemCount] Number of protected items in the
+ * @property {string} [containerId] ID of container.
+ * @property {number} [protectedItemCount] Number of protected items in the
  * BackupEngine
- * @member {string} [dpmAgentVersion] Backup engine Agent version
- * @member {array} [dpmServers] List of BackupEngines protecting the container
- * @member {boolean} [upgradeAvailable] To check if upgrade available
- * @member {string} [protectionStatus] Protection status of the container.
- * @member {object} [extendedInfo] Extended Info of the container.
- * @member {date} [extendedInfo.lastRefreshedAt] Last refresh time of the
+ * @property {string} [dpmAgentVersion] Backup engine Agent version
+ * @property {array} [dpmServers] List of BackupEngines protecting the
+ * container
+ * @property {boolean} [upgradeAvailable] To check if upgrade available
+ * @property {string} [protectionStatus] Protection status of the container.
+ * @property {object} [extendedInfo] Extended Info of the container.
+ * @property {date} [extendedInfo.lastRefreshedAt] Last refresh time of the
  * DPMContainer.
  */
 export interface AzureBackupServerContainer extends ProtectionContainer {
@@ -2660,42 +2688,43 @@ export interface AzureBackupServerContainer extends ProtectionContainer {
  * The base backup engine class. All workload specific backup engines derive
  * from this class.
  *
- * @member {string} [friendlyName] Friendly name of the backup engine.
- * @member {string} [backupManagementType] Type of backup management for the
+ * @property {string} [friendlyName] Friendly name of the backup engine.
+ * @property {string} [backupManagementType] Type of backup management for the
  * backup engine. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
  * 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
  * 'DefaultBackup'
- * @member {string} [registrationStatus] Registration status of the backup
+ * @property {string} [registrationStatus] Registration status of the backup
  * engine with the Recovery Services Vault.
- * @member {string} [backupEngineState] Status of the backup engine with the
+ * @property {string} [backupEngineState] Status of the backup engine with the
  * Recovery Services Vault. = {Active/Deleting/DeleteFailed}
- * @member {string} [healthStatus] Backup status of the backup engine.
- * @member {boolean} [canReRegister] Flag indicating if the backup engine be
+ * @property {string} [healthStatus] Backup status of the backup engine.
+ * @property {boolean} [canReRegister] Flag indicating if the backup engine be
  * registered, once already registered.
- * @member {string} [backupEngineId] ID of the backup engine.
- * @member {string} [dpmVersion] Backup engine version
- * @member {string} [azureBackupAgentVersion] Backup agent version
- * @member {boolean} [isAzureBackupAgentUpgradeAvailable] To check if backup
+ * @property {string} [backupEngineId] ID of the backup engine.
+ * @property {string} [dpmVersion] Backup engine version
+ * @property {string} [azureBackupAgentVersion] Backup agent version
+ * @property {boolean} [isAzureBackupAgentUpgradeAvailable] To check if backup
  * agent upgrade available
- * @member {boolean} [isDpmUpgradeAvailable] To check if backup engine upgrade
- * available
- * @member {object} [extendedInfo] Extended info of the backupengine
- * @member {string} [extendedInfo.databaseName] Database name of backup engine.
- * @member {number} [extendedInfo.protectedItemsCount] Number of protected
+ * @property {boolean} [isDpmUpgradeAvailable] To check if backup engine
+ * upgrade available
+ * @property {object} [extendedInfo] Extended info of the backupengine
+ * @property {string} [extendedInfo.databaseName] Database name of backup
+ * engine.
+ * @property {number} [extendedInfo.protectedItemsCount] Number of protected
  * items in the backup engine.
- * @member {number} [extendedInfo.protectedServersCount] Number of protected
+ * @property {number} [extendedInfo.protectedServersCount] Number of protected
  * servers in the backup engine.
- * @member {number} [extendedInfo.diskCount] Number of disks in the backup
+ * @property {number} [extendedInfo.diskCount] Number of disks in the backup
  * engine.
- * @member {number} [extendedInfo.usedDiskSpace] Diskspace used in the backup
+ * @property {number} [extendedInfo.usedDiskSpace] Diskspace used in the backup
  * engine.
- * @member {number} [extendedInfo.availableDiskSpace] Diskspace currently
+ * @property {number} [extendedInfo.availableDiskSpace] Diskspace currently
  * available in the backup engine.
- * @member {date} [extendedInfo.refreshedAt] Last refresh time in the backup
+ * @property {date} [extendedInfo.refreshedAt] Last refresh time in the backup
  * engine.
- * @member {number} [extendedInfo.azureProtectedInstances] Protected instances
- * in the backup engine.
- * @member {string} backupEngineType Polymorphic Discriminator
+ * @property {number} [extendedInfo.azureProtectedInstances] Protected
+ * instances in the backup engine.
+ * @property {string} backupEngineType Polymorphic Discriminator
  */
 export interface BackupEngineBase {
   friendlyName?: string;
@@ -2730,7 +2759,7 @@ export interface AzureBackupServerEngine extends BackupEngineBase {
  * Base class for backup request. Workload-specific backup requests are derived
  * from this class.
  *
- * @member {string} objectType Polymorphic Discriminator
+ * @property {string} objectType Polymorphic Discriminator
  */
 export interface BackupRequest {
   objectType: string;
@@ -2742,8 +2771,8 @@ export interface BackupRequest {
  * @constructor
  * AzureFileShare workload-specific backup request.
  *
- * @member {date} [recoveryPointExpiryTimeInUTC] Backup copy will expire after
- * the time specified (UTC).
+ * @property {date} [recoveryPointExpiryTimeInUTC] Backup copy will expire
+ * after the time specified (UTC).
  */
 export interface AzureFileShareBackupRequest extends BackupRequest {
   recoveryPointExpiryTimeInUTC?: Date;
@@ -2756,14 +2785,14 @@ export interface AzureFileShareBackupRequest extends BackupRequest {
  * Base class for backup item. Workload-specific backup items are derived from
  * this class.
  *
- * @member {string} [backupManagementType] Type of backup managemenent to
+ * @property {string} [backupManagementType] Type of backup managemenent to
  * backup an item.
- * @member {string} [workloadType] Type of workload for the backup management
- * @member {string} [friendlyName] Friendly name of the backup item.
- * @member {string} [protectionState] State of the back up item. Possible
+ * @property {string} [workloadType] Type of workload for the backup management
+ * @property {string} [friendlyName] Friendly name of the backup item.
+ * @property {string} [protectionState] State of the back up item. Possible
  * values include: 'Invalid', 'NotProtected', 'Protecting', 'Protected',
  * 'ProtectionFailed'
- * @member {string} protectableItemType Polymorphic Discriminator
+ * @property {string} protectableItemType Polymorphic Discriminator
  */
 export interface WorkloadProtectableItem {
   backupManagementType?: string;
@@ -2779,11 +2808,11 @@ export interface WorkloadProtectableItem {
  * @constructor
  * Protectable item for Azure Fileshare workloads.
  *
- * @member {string} [parentContainerFabricId] Full Fabric ID of container to
+ * @property {string} [parentContainerFabricId] Full Fabric ID of container to
  * which this protectable item belongs. For example, ARM ID.
- * @member {string} [parentContainerFriendlyName] Friendly name of container to
- * which this protectable item belongs.
- * @member {string} [azureFileShareType] File Share type XSync or XSMB.
+ * @property {string} [parentContainerFriendlyName] Friendly name of container
+ * to which this protectable item belongs.
+ * @property {string} [azureFileShareType] File Share type XSync or XSMB.
  * Possible values include: 'Invalid', 'XSMB', 'XSync'
  */
 export interface AzureFileShareProtectableItem extends WorkloadProtectableItem {
@@ -2799,7 +2828,7 @@ export interface AzureFileShareProtectableItem extends WorkloadProtectableItem {
  * Base class for backup copies. Workload-specific backup copies are derived
  * from this class.
  *
- * @member {string} objectType Polymorphic Discriminator
+ * @property {string} objectType Polymorphic Discriminator
  */
 export interface RecoveryPoint {
   objectType: string;
@@ -2811,11 +2840,11 @@ export interface RecoveryPoint {
  * @constructor
  * Azure File Share workload specific backup copy.
  *
- * @member {string} [recoveryPointType] Type of the backup copy. Specifies
+ * @property {string} [recoveryPointType] Type of the backup copy. Specifies
  * whether it is a crash consistent backup or app consistent.
- * @member {date} [recoveryPointTime] Time at which this backup copy was
+ * @property {date} [recoveryPointTime] Time at which this backup copy was
  * created.
- * @member {string} [fileShareSnapshotUri] Contains Url to the snapshot of
+ * @property {string} [fileShareSnapshotUri] Contains Url to the snapshot of
  * fileshare, if applicable
  */
 export interface AzureFileShareRecoveryPoint extends RecoveryPoint {
@@ -2830,11 +2859,11 @@ export interface AzureFileShareRecoveryPoint extends RecoveryPoint {
  * @constructor
  * IaaS VM workload-specific container.
  *
- * @member {string} [virtualMachineId] Fully qualified ARM url of the virtual
+ * @property {string} [virtualMachineId] Fully qualified ARM url of the virtual
  * machine represented by this Azure IaaS VM container.
- * @member {string} [virtualMachineVersion] Specifies whether the container
+ * @property {string} [virtualMachineVersion] Specifies whether the container
  * represents a Classic or an Azure Resource Manager VM.
- * @member {string} [resourceGroup] Resource group name of Recovery Services
+ * @property {string} [resourceGroup] Resource group name of Recovery Services
  * Vault.
  */
 export interface IaaSVMContainer extends ProtectionContainer {
@@ -2860,7 +2889,7 @@ export interface AzureIaaSClassicComputeVMContainer extends IaaSVMContainer {
  * @constructor
  * IaaS VM workload-specific backup item.
  *
- * @member {string} [virtualMachineId] Fully qualified ARM ID of the virtual
+ * @property {string} [virtualMachineId] Fully qualified ARM ID of the virtual
  * machine.
  */
 export interface IaaSVMProtectableItem extends WorkloadProtectableItem {
@@ -2905,30 +2934,32 @@ export interface AzureIaaSComputeVMProtectableItem extends IaaSVMProtectableItem
  * @constructor
  * Container for the workloads running inside Azure Compute or Classic Compute.
  *
- * @member {string} [sourceResourceId] ARM ID of the virtual machine
+ * @property {string} [sourceResourceId] ARM ID of the virtual machine
  * represented by this Azure Workload Container
- * @member {date} [lastUpdatedTime] Time stamp when this container was updated.
- * @member {object} [extendedInfo] Additional details of a workload container.
- * @member {string} [extendedInfo.hostServerName] Host Os Name in case of Stand
- * Alone and Cluster Name in case of distributed container.
- * @member {object} [extendedInfo.inquiryInfo] Inquiry Status for the
+ * @property {date} [lastUpdatedTime] Time stamp when this container was
+ * updated.
+ * @property {object} [extendedInfo] Additional details of a workload
  * container.
- * @member {string} [extendedInfo.inquiryInfo.status] Inquiry Status for this
+ * @property {string} [extendedInfo.hostServerName] Host Os Name in case of
+ * Stand Alone and Cluster Name in case of distributed container.
+ * @property {object} [extendedInfo.inquiryInfo] Inquiry Status for the
+ * container.
+ * @property {string} [extendedInfo.inquiryInfo.status] Inquiry Status for this
  * container such as
  * InProgress | Failed | Succeeded
- * @member {object} [extendedInfo.inquiryInfo.errorDetail] Error Details if the
- * Status is non-success.
- * @member {string} [extendedInfo.inquiryInfo.errorDetail.code] Error code.
- * @member {string} [extendedInfo.inquiryInfo.errorDetail.message] Error
+ * @property {object} [extendedInfo.inquiryInfo.errorDetail] Error Details if
+ * the Status is non-success.
+ * @property {string} [extendedInfo.inquiryInfo.errorDetail.code] Error code.
+ * @property {string} [extendedInfo.inquiryInfo.errorDetail.message] Error
  * Message related to the Code.
- * @member {array} [extendedInfo.inquiryInfo.errorDetail.recommendations] List
- * of recommendation strings.
- * @member {array} [extendedInfo.inquiryInfo.inquiryDetails] Inquiry Details
+ * @property {array} [extendedInfo.inquiryInfo.errorDetail.recommendations]
+ * List of recommendation strings.
+ * @property {array} [extendedInfo.inquiryInfo.inquiryDetails] Inquiry Details
  * which will have workload specific details.
  * For e.g. - For SQL and oracle this will contain different details.
- * @member {array} [extendedInfo.nodesList] List of the nodes in case of
+ * @property {array} [extendedInfo.nodesList] List of the nodes in case of
  * distributed container.
- * @member {string} [workloadType] Workload type for which registration was
+ * @property {string} [workloadType] Workload type for which registration was
  * sent. Possible values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb',
  * 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
  * 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase'
@@ -2966,11 +2997,11 @@ export interface AzureSqlContainer extends ProtectionContainer {
  * @constructor
  * Azure Storage Account workload-specific container.
  *
- * @member {string} [sourceResourceId] Fully qualified ARM url.
- * @member {string} [storageAccountVersion] Storage account version.
- * @member {string} [resourceGroup] Resource group name of Recovery Services
+ * @property {string} [sourceResourceId] Fully qualified ARM url.
+ * @property {string} [storageAccountVersion] Storage account version.
+ * @property {string} [resourceGroup] Resource group name of Recovery Services
  * Vault.
- * @member {number} [protectedItemCount] Number of items backed up in this
+ * @property {number} [protectedItemCount] Number of items backed up in this
  * container.
  */
 export interface AzureStorageContainer extends ProtectionContainer {
@@ -2986,14 +3017,14 @@ export interface AzureStorageContainer extends ProtectionContainer {
  * @constructor
  * Protectable Container Class.
  *
- * @member {string} [friendlyName] Friendly name of the container.
- * @member {string} [backupManagementType] Type of backup managemenent for the
- * container. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM',
- * 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
+ * @property {string} [friendlyName] Friendly name of the container.
+ * @property {string} [backupManagementType] Type of backup managemenent for
+ * the container. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
+ * 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
  * 'DefaultBackup'
- * @member {string} [healthStatus] Status of health of the container.
- * @member {string} [containerId] Fabric Id of the container such as ARM Id.
- * @member {string} protectableContainerType Polymorphic Discriminator
+ * @property {string} [healthStatus] Status of health of the container.
+ * @property {string} [containerId] Fabric Id of the container such as ARM Id.
+ * @property {string} protectableContainerType Polymorphic Discriminator
  */
 export interface ProtectableContainer {
   friendlyName?: string;
@@ -3040,14 +3071,14 @@ export interface AzureVMAppContainerProtectionContainer extends AzureWorkloadCon
  * Base class for backup item. Workload-specific backup items are derived from
  * this class.
  *
- * @member {string} [backupManagementType] Type of backup managemenent to
+ * @property {string} [backupManagementType] Type of backup managemenent to
  * backup an item.
- * @member {string} [workloadType] Type of workload for the backup management
- * @member {string} [friendlyName] Friendly name of the backup item.
- * @member {string} [protectionState] State of the back up item. Possible
+ * @property {string} [workloadType] Type of workload for the backup management
+ * @property {string} [friendlyName] Friendly name of the backup item.
+ * @property {string} [protectionState] State of the back up item. Possible
  * values include: 'Invalid', 'NotProtected', 'Protecting', 'Protected',
  * 'ProtectionFailed'
- * @member {string} workloadItemType Polymorphic Discriminator
+ * @property {string} workloadItemType Polymorphic Discriminator
  */
 export interface WorkloadItem {
   backupManagementType?: string;
@@ -3063,14 +3094,14 @@ export interface WorkloadItem {
  * @constructor
  * Azure VM workload-specific workload item.
  *
- * @member {string} [parentName] Name for instance or AG
- * @member {string} [serverName] Host/Cluster Name for instance or AG
- * @member {boolean} [isAutoProtectable] Indicates if workload item is
+ * @property {string} [parentName] Name for instance or AG
+ * @property {string} [serverName] Host/Cluster Name for instance or AG
+ * @property {boolean} [isAutoProtectable] Indicates if workload item is
  * auto-protectable
- * @member {number} [subinquireditemcount] For instance or AG, indicates number
- * of DB's present
- * @member {number} [subWorkloadItemCount] For instance or AG, indicates number
- * of DB's to be protected
+ * @property {number} [subinquireditemcount] For instance or AG, indicates
+ * number of DB's present
+ * @property {number} [subWorkloadItemCount] For instance or AG, indicates
+ * number of DB's to be protected
  */
 export interface AzureVmWorkloadItem extends WorkloadItem {
   parentName?: string;
@@ -3086,11 +3117,11 @@ export interface AzureVmWorkloadItem extends WorkloadItem {
  * @constructor
  * Pre-backup validation for Azure VM Workload provider.
  *
- * @member {string} [status] Status of protectable item, i.e.
+ * @property {string} [status] Status of protectable item, i.e.
  * InProgress,Succeeded,Failed. Possible values include: 'Invalid', 'Success',
  * 'Failed'
- * @member {string} [code] Error code of protectable item
- * @member {string} [message] Message corresponding to the error code for the
+ * @property {string} [code] Error code of protectable item
+ * @property {string} [message] Message corresponding to the error code for the
  * protectable item
  */
 export interface PreBackupValidation {
@@ -3105,28 +3136,28 @@ export interface PreBackupValidation {
  * @constructor
  * Azure VM workload-specific protectable item.
  *
- * @member {string} [parentName] Name for instance or AG
- * @member {string} [parentUniqueName] Parent Unique Name is added to provide
+ * @property {string} [parentName] Name for instance or AG
+ * @property {string} [parentUniqueName] Parent Unique Name is added to provide
  * the service formatted URI Name of the Parent
  * Only Applicable for data bases where the parent would be either Instance or
  * a SQL AG.
- * @member {string} [serverName] Host/Cluster Name for instance or AG
- * @member {boolean} [isAutoProtectable] Indicates if protectable item is
+ * @property {string} [serverName] Host/Cluster Name for instance or AG
+ * @property {boolean} [isAutoProtectable] Indicates if protectable item is
  * auto-protectable
- * @member {boolean} [isAutoProtected] Indicates if protectable item is
+ * @property {boolean} [isAutoProtected] Indicates if protectable item is
  * auto-protected
- * @member {number} [subinquireditemcount] For instance or AG, indicates number
- * of DB's present
- * @member {number} [subprotectableitemcount] For instance or AG, indicates
+ * @property {number} [subinquireditemcount] For instance or AG, indicates
+ * number of DB's present
+ * @property {number} [subprotectableitemcount] For instance or AG, indicates
  * number of DB's to be protected
- * @member {object} [prebackupvalidation] Pre-backup validation for protectable
- * objects
- * @member {string} [prebackupvalidation.status] Status of protectable item,
+ * @property {object} [prebackupvalidation] Pre-backup validation for
+ * protectable objects
+ * @property {string} [prebackupvalidation.status] Status of protectable item,
  * i.e. InProgress,Succeeded,Failed. Possible values include: 'Invalid',
  * 'Success', 'Failed'
- * @member {string} [prebackupvalidation.code] Error code of protectable item
- * @member {string} [prebackupvalidation.message] Message corresponding to the
- * error code for the protectable item
+ * @property {string} [prebackupvalidation.code] Error code of protectable item
+ * @property {string} [prebackupvalidation.message] Message corresponding to
+ * the error code for the protectable item
  */
 export interface AzureVmWorkloadProtectableItem extends WorkloadProtectableItem {
   parentName?: string;
@@ -3226,10 +3257,10 @@ export interface AzureVmWorkloadSQLInstanceProtectableItem extends AzureVmWorklo
  * @constructor
  * SQLDataDirectory info
  *
- * @member {string} [type] Type of data directory mapping. Possible values
+ * @property {string} [type] Type of data directory mapping. Possible values
  * include: 'Invalid', 'Data', 'Log'
- * @member {string} [path] File path
- * @member {string} [logicalName] Logical name of the file
+ * @property {string} [path] File path
+ * @property {string} [logicalName] Logical name of the file
  */
 export interface SQLDataDirectory {
   type?: string;
@@ -3243,7 +3274,7 @@ export interface SQLDataDirectory {
  * @constructor
  * Azure VM workload-specific workload item representing SQL Instance.
  *
- * @member {array} [dataDirectoryPaths] Data Directory Paths for default
+ * @property {array} [dataDirectoryPaths] Data Directory Paths for default
  * directories
  */
 export interface AzureVmWorkloadSQLInstanceWorkloadItem extends AzureVmWorkloadItem {
@@ -3256,12 +3287,12 @@ export interface AzureVmWorkloadSQLInstanceWorkloadItem extends AzureVmWorkloadI
  * @constructor
  * AzureWorkload workload-specific backup request.
  *
- * @member {string} [backupType] Type of backup, viz. Full, Differential, Log
+ * @property {string} [backupType] Type of backup, viz. Full, Differential, Log
  * or CopyOnlyFull. Possible values include: 'Invalid', 'Full', 'Differential',
  * 'Log', 'CopyOnlyFull'
- * @member {boolean} [enableCompression] Bool for Compression setting
- * @member {date} [recoveryPointExpiryTimeInUTC] Backup copy will expire after
- * the time specified (UTC).
+ * @property {boolean} [enableCompression] Bool for Compression setting
+ * @property {date} [recoveryPointExpiryTimeInUTC] Backup copy will expire
+ * after the time specified (UTC).
  */
 export interface AzureWorkloadBackupRequest extends BackupRequest {
   backupType?: string;
@@ -3275,12 +3306,12 @@ export interface AzureWorkloadBackupRequest extends BackupRequest {
  * @constructor
  * Validation for inquired protectable items under a given container.
  *
- * @member {string} [status] Status for the Inquiry Validation.
- * @member {object} [errorDetail] Error Detail in case the status is
+ * @property {string} [status] Status for the Inquiry Validation.
+ * @property {object} [errorDetail] Error Detail in case the status is
  * non-success.
- * @member {string} [errorDetail.code] Error code.
- * @member {string} [errorDetail.message] Error Message related to the Code.
- * @member {array} [errorDetail.recommendations] List of recommendation
+ * @property {string} [errorDetail.code] Error code.
+ * @property {string} [errorDetail.message] Error Message related to the Code.
+ * @property {array} [errorDetail.recommendations] List of recommendation
  * strings.
  */
 export interface InquiryValidation {
@@ -3294,19 +3325,19 @@ export interface InquiryValidation {
  * @constructor
  * Details of an inquired protectable item.
  *
- * @member {string} [type] Type of the Workload such as SQL, Oracle etc.
- * @member {number} [itemCount] Contains the protectable item Count inside this
- * Container.
- * @member {object} [inquiryValidation] Inquiry validation such as permissions
- * and other backup validations.
- * @member {string} [inquiryValidation.status] Status for the Inquiry
+ * @property {string} [type] Type of the Workload such as SQL, Oracle etc.
+ * @property {number} [itemCount] Contains the protectable item Count inside
+ * this Container.
+ * @property {object} [inquiryValidation] Inquiry validation such as
+ * permissions and other backup validations.
+ * @property {string} [inquiryValidation.status] Status for the Inquiry
  * Validation.
- * @member {object} [inquiryValidation.errorDetail] Error Detail in case the
+ * @property {object} [inquiryValidation.errorDetail] Error Detail in case the
  * status is non-success.
- * @member {string} [inquiryValidation.errorDetail.code] Error code.
- * @member {string} [inquiryValidation.errorDetail.message] Error Message
+ * @property {string} [inquiryValidation.errorDetail.code] Error code.
+ * @property {string} [inquiryValidation.errorDetail.message] Error Message
  * related to the Code.
- * @member {array} [inquiryValidation.errorDetail.recommendations] List of
+ * @property {array} [inquiryValidation.errorDetail.recommendations] List of
  * recommendation strings.
  */
 export interface WorkloadInquiryDetails {
@@ -3321,14 +3352,14 @@ export interface WorkloadInquiryDetails {
  * @constructor
  * Details about inquired protectable items under a given container.
  *
- * @member {string} [status] Inquiry Status for this container such as
+ * @property {string} [status] Inquiry Status for this container such as
  * InProgress | Failed | Succeeded
- * @member {object} [errorDetail] Error Details if the Status is non-success.
- * @member {string} [errorDetail.code] Error code.
- * @member {string} [errorDetail.message] Error Message related to the Code.
- * @member {array} [errorDetail.recommendations] List of recommendation
+ * @property {object} [errorDetail] Error Details if the Status is non-success.
+ * @property {string} [errorDetail.code] Error code.
+ * @property {string} [errorDetail.message] Error Message related to the Code.
+ * @property {array} [errorDetail.recommendations] List of recommendation
  * strings.
- * @member {array} [inquiryDetails] Inquiry Details which will have workload
+ * @property {array} [inquiryDetails] Inquiry Details which will have workload
  * specific details.
  * For e.g. - For SQL and oracle this will contain different details.
  */
@@ -3344,13 +3375,14 @@ export interface InquiryInfo {
  * @constructor
  * This is used to represent the various nodes of the distributed container.
  *
- * @member {string} [nodeName] Name of the node under a distributed container.
- * @member {string} [status] Status of this Node.
+ * @property {string} [nodeName] Name of the node under a distributed
+ * container.
+ * @property {string} [status] Status of this Node.
  * Failed | Succeeded
- * @member {object} [errorDetail] Error Details if the Status is non-success.
- * @member {string} [errorDetail.code] Error code.
- * @member {string} [errorDetail.message] Error Message related to the Code.
- * @member {array} [errorDetail.recommendations] List of recommendation
+ * @property {object} [errorDetail] Error Details if the Status is non-success.
+ * @property {string} [errorDetail.code] Error code.
+ * @property {string} [errorDetail.message] Error Message related to the Code.
+ * @property {array} [errorDetail.recommendations] List of recommendation
  * strings.
  */
 export interface DistributedNodesInfo {
@@ -3365,23 +3397,23 @@ export interface DistributedNodesInfo {
  * @constructor
  * Extended information of the container.
  *
- * @member {string} [hostServerName] Host Os Name in case of Stand Alone and
+ * @property {string} [hostServerName] Host Os Name in case of Stand Alone and
  * Cluster Name in case of distributed container.
- * @member {object} [inquiryInfo] Inquiry Status for the container.
- * @member {string} [inquiryInfo.status] Inquiry Status for this container such
- * as
+ * @property {object} [inquiryInfo] Inquiry Status for the container.
+ * @property {string} [inquiryInfo.status] Inquiry Status for this container
+ * such as
  * InProgress | Failed | Succeeded
- * @member {object} [inquiryInfo.errorDetail] Error Details if the Status is
+ * @property {object} [inquiryInfo.errorDetail] Error Details if the Status is
  * non-success.
- * @member {string} [inquiryInfo.errorDetail.code] Error code.
- * @member {string} [inquiryInfo.errorDetail.message] Error Message related to
- * the Code.
- * @member {array} [inquiryInfo.errorDetail.recommendations] List of
+ * @property {string} [inquiryInfo.errorDetail.code] Error code.
+ * @property {string} [inquiryInfo.errorDetail.message] Error Message related
+ * to the Code.
+ * @property {array} [inquiryInfo.errorDetail.recommendations] List of
  * recommendation strings.
- * @member {array} [inquiryInfo.inquiryDetails] Inquiry Details which will have
- * workload specific details.
+ * @property {array} [inquiryInfo.inquiryDetails] Inquiry Details which will
+ * have workload specific details.
  * For e.g. - For SQL and oracle this will contain different details.
- * @member {array} [nodesList] List of the nodes in case of distributed
+ * @property {array} [nodesList] List of the nodes in case of distributed
  * container.
  */
 export interface AzureWorkloadContainerExtendedInfo {
@@ -3397,9 +3429,9 @@ export interface AzureWorkloadContainerExtendedInfo {
  * Workload specific recoverypoint, specifcally encaspulates full/diff
  * recoverypoint
  *
- * @member {date} [recoveryPointTimeInUTC] UTC time at which recoverypoint was
- * created
- * @member {string} [type] Type of restore point. Possible values include:
+ * @property {date} [recoveryPointTimeInUTC] UTC time at which recoverypoint
+ * was created
+ * @property {string} [type] Type of restore point. Possible values include:
  * 'Invalid', 'Full', 'Log', 'Differential'
  */
 export interface AzureWorkloadRecoveryPoint extends RecoveryPoint {
@@ -3413,8 +3445,8 @@ export interface AzureWorkloadRecoveryPoint extends RecoveryPoint {
  * @constructor
  * Provides details for log ranges
  *
- * @member {date} [startTime] Start time of the time range for log recovery.
- * @member {date} [endTime] End time of the time range for log recovery.
+ * @property {date} [startTime] Start time of the time range for log recovery.
+ * @property {date} [endTime] End time of the time range for log recovery.
  */
 export interface PointInTimeRange {
   startTime?: Date;
@@ -3428,9 +3460,9 @@ export interface PointInTimeRange {
  * SAPHana specific recoverypoint, specifcally encaspulates full/diff
  * recoverypoints
  *
- * @member {date} [recoveryPointTimeInUTC] UTC time at which recoverypoint was
- * created
- * @member {string} [type] Type of restore point. Possible values include:
+ * @property {date} [recoveryPointTimeInUTC] UTC time at which recoverypoint
+ * was created
+ * @property {string} [type] Type of restore point. Possible values include:
  * 'Invalid', 'Full', 'Log', 'Differential'
  */
 export interface AzureWorkloadSAPHanaRecoveryPoint extends RecoveryPoint {
@@ -3444,7 +3476,7 @@ export interface AzureWorkloadSAPHanaRecoveryPoint extends RecoveryPoint {
  * @constructor
  * Recovery point specific to PointInTime in SAPHana
  *
- * @member {array} [timeRanges] List of log ranges
+ * @property {array} [timeRanges] List of log ranges
  */
 export interface AzureWorkloadSAPHanaPointInTimeRecoveryPoint extends AzureWorkloadSAPHanaRecoveryPoint {
   timeRanges?: PointInTimeRange[];
@@ -3457,14 +3489,14 @@ export interface AzureWorkloadSAPHanaPointInTimeRecoveryPoint extends AzureWorkl
  * SQL specific recoverypoint, specifcally encaspulates full/diff recoverypoint
  * alongwith extended info
  *
- * @member {object} [extendedInfo] Extended Info that provides data directory
+ * @property {object} [extendedInfo] Extended Info that provides data directory
  * details. Will be populated in two cases:
  * When a specific recovery point is accessed using GetRecoveryPoint
  * Or when ListRecoveryPoints is called for Log RP only with ExtendedInfo query
  * filter
- * @member {date} [extendedInfo.dataDirectoryTimeInUTC] UTC time at which data
- * directory info was captured
- * @member {array} [extendedInfo.dataDirectoryPaths] List of data directory
+ * @property {date} [extendedInfo.dataDirectoryTimeInUTC] UTC time at which
+ * data directory info was captured
+ * @property {array} [extendedInfo.dataDirectoryPaths] List of data directory
  * paths during restore operation.
  */
 export interface AzureWorkloadSQLRecoveryPoint extends AzureWorkloadRecoveryPoint {
@@ -3477,7 +3509,7 @@ export interface AzureWorkloadSQLRecoveryPoint extends AzureWorkloadRecoveryPoin
  * @constructor
  * Recovery point specific to PointInTime
  *
- * @member {array} [timeRanges] List of log ranges
+ * @property {array} [timeRanges] List of log ranges
  */
 export interface AzureWorkloadSQLPointInTimeRecoveryPoint extends AzureWorkloadSQLRecoveryPoint {
   timeRanges?: PointInTimeRange[];
@@ -3489,9 +3521,9 @@ export interface AzureWorkloadSQLPointInTimeRecoveryPoint extends AzureWorkloadS
  * @constructor
  * Extended info class details
  *
- * @member {date} [dataDirectoryTimeInUTC] UTC time at which data directory
+ * @property {date} [dataDirectoryTimeInUTC] UTC time at which data directory
  * info was captured
- * @member {array} [dataDirectoryPaths] List of data directory paths during
+ * @property {array} [dataDirectoryPaths] List of data directory paths during
  * restore operation.
  */
 export interface AzureWorkloadSQLRecoveryPointExtendedInfo {
@@ -3505,18 +3537,18 @@ export interface AzureWorkloadSQLRecoveryPointExtendedInfo {
  * @constructor
  * Additional information on backup engine.
  *
- * @member {string} [databaseName] Database name of backup engine.
- * @member {number} [protectedItemsCount] Number of protected items in the
+ * @property {string} [databaseName] Database name of backup engine.
+ * @property {number} [protectedItemsCount] Number of protected items in the
  * backup engine.
- * @member {number} [protectedServersCount] Number of protected servers in the
+ * @property {number} [protectedServersCount] Number of protected servers in
+ * the backup engine.
+ * @property {number} [diskCount] Number of disks in the backup engine.
+ * @property {number} [usedDiskSpace] Diskspace used in the backup engine.
+ * @property {number} [availableDiskSpace] Diskspace currently available in the
  * backup engine.
- * @member {number} [diskCount] Number of disks in the backup engine.
- * @member {number} [usedDiskSpace] Diskspace used in the backup engine.
- * @member {number} [availableDiskSpace] Diskspace currently available in the
+ * @property {date} [refreshedAt] Last refresh time in the backup engine.
+ * @property {number} [azureProtectedInstances] Protected instances in the
  * backup engine.
- * @member {date} [refreshedAt] Last refresh time in the backup engine.
- * @member {number} [azureProtectedInstances] Protected instances in the backup
- * engine.
  */
 export interface BackupEngineExtendedInfo {
   databaseName?: string;
@@ -3536,46 +3568,47 @@ export interface BackupEngineExtendedInfo {
  * The base backup engine class. All workload specific backup engines derive
  * from this class.
  *
- * @member {object} [properties] BackupEngineBaseResource properties
- * @member {string} [properties.friendlyName] Friendly name of the backup
+ * @property {object} [properties] BackupEngineBaseResource properties
+ * @property {string} [properties.friendlyName] Friendly name of the backup
  * engine.
- * @member {string} [properties.backupManagementType] Type of backup management
- * for the backup engine. Possible values include: 'Invalid', 'AzureIaasVM',
- * 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage',
- * 'AzureWorkload', 'DefaultBackup'
- * @member {string} [properties.registrationStatus] Registration status of the
- * backup engine with the Recovery Services Vault.
- * @member {string} [properties.backupEngineState] Status of the backup engine
- * with the Recovery Services Vault. = {Active/Deleting/DeleteFailed}
- * @member {string} [properties.healthStatus] Backup status of the backup
+ * @property {string} [properties.backupManagementType] Type of backup
+ * management for the backup engine. Possible values include: 'Invalid',
+ * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql',
+ * 'AzureStorage', 'AzureWorkload', 'DefaultBackup'
+ * @property {string} [properties.registrationStatus] Registration status of
+ * the backup engine with the Recovery Services Vault.
+ * @property {string} [properties.backupEngineState] Status of the backup
+ * engine with the Recovery Services Vault. = {Active/Deleting/DeleteFailed}
+ * @property {string} [properties.healthStatus] Backup status of the backup
  * engine.
- * @member {boolean} [properties.canReRegister] Flag indicating if the backup
+ * @property {boolean} [properties.canReRegister] Flag indicating if the backup
  * engine be registered, once already registered.
- * @member {string} [properties.backupEngineId] ID of the backup engine.
- * @member {string} [properties.dpmVersion] Backup engine version
- * @member {string} [properties.azureBackupAgentVersion] Backup agent version
- * @member {boolean} [properties.isAzureBackupAgentUpgradeAvailable] To check
+ * @property {string} [properties.backupEngineId] ID of the backup engine.
+ * @property {string} [properties.dpmVersion] Backup engine version
+ * @property {string} [properties.azureBackupAgentVersion] Backup agent version
+ * @property {boolean} [properties.isAzureBackupAgentUpgradeAvailable] To check
  * if backup agent upgrade available
- * @member {boolean} [properties.isDpmUpgradeAvailable] To check if backup
+ * @property {boolean} [properties.isDpmUpgradeAvailable] To check if backup
  * engine upgrade available
- * @member {object} [properties.extendedInfo] Extended info of the backupengine
- * @member {string} [properties.extendedInfo.databaseName] Database name of
+ * @property {object} [properties.extendedInfo] Extended info of the
+ * backupengine
+ * @property {string} [properties.extendedInfo.databaseName] Database name of
  * backup engine.
- * @member {number} [properties.extendedInfo.protectedItemsCount] Number of
+ * @property {number} [properties.extendedInfo.protectedItemsCount] Number of
  * protected items in the backup engine.
- * @member {number} [properties.extendedInfo.protectedServersCount] Number of
+ * @property {number} [properties.extendedInfo.protectedServersCount] Number of
  * protected servers in the backup engine.
- * @member {number} [properties.extendedInfo.diskCount] Number of disks in the
- * backup engine.
- * @member {number} [properties.extendedInfo.usedDiskSpace] Diskspace used in
+ * @property {number} [properties.extendedInfo.diskCount] Number of disks in
  * the backup engine.
- * @member {number} [properties.extendedInfo.availableDiskSpace] Diskspace
+ * @property {number} [properties.extendedInfo.usedDiskSpace] Diskspace used in
+ * the backup engine.
+ * @property {number} [properties.extendedInfo.availableDiskSpace] Diskspace
  * currently available in the backup engine.
- * @member {date} [properties.extendedInfo.refreshedAt] Last refresh time in
+ * @property {date} [properties.extendedInfo.refreshedAt] Last refresh time in
  * the backup engine.
- * @member {number} [properties.extendedInfo.azureProtectedInstances] Protected
- * instances in the backup engine.
- * @member {string} [properties.backupEngineType] Polymorphic Discriminator
+ * @property {number} [properties.extendedInfo.azureProtectedInstances]
+ * Protected instances in the backup engine.
+ * @property {string} [properties.backupEngineType] Polymorphic Discriminator
  */
 export interface BackupEngineBaseResource extends Resource {
   properties?: BackupEngineBase;
@@ -3588,8 +3621,8 @@ export interface BackupEngineBaseResource extends Resource {
  * Base class for backup request. Workload-specific backup requests are derived
  * from this class.
  *
- * @member {object} [properties] BackupRequestResource properties
- * @member {string} [properties.objectType] Polymorphic Discriminator
+ * @property {object} [properties] BackupRequestResource properties
+ * @property {string} [properties.objectType] Polymorphic Discriminator
  */
 export interface BackupRequestResource extends Resource {
   properties?: BackupRequest;
@@ -3601,11 +3634,11 @@ export interface BackupRequestResource extends Resource {
  * @constructor
  * The resource storage details.
  *
- * @member {string} [storageModelType] Storage type. Possible values include:
+ * @property {string} [storageModelType] Storage type. Possible values include:
  * 'Invalid', 'GeoRedundant', 'LocallyRedundant'
- * @member {string} [storageType] Storage type. Possible values include:
+ * @property {string} [storageType] Storage type. Possible values include:
  * 'Invalid', 'GeoRedundant', 'LocallyRedundant'
- * @member {string} [storageTypeState] Locked or Unlocked. Once a machine is
+ * @property {string} [storageTypeState] Locked or Unlocked. Once a machine is
  * registered against a resource, the storageTypeState is always Locked.
  * Possible values include: 'Invalid', 'Locked', 'Unlocked'
  */
@@ -3621,12 +3654,12 @@ export interface BackupResourceConfig {
  * @constructor
  * The resource storage details.
  *
- * @member {object} [properties] BackupResourceConfigResource properties
- * @member {string} [properties.storageModelType] Storage type. Possible values
+ * @property {object} [properties] BackupResourceConfigResource properties
+ * @property {string} [properties.storageModelType] Storage type. Possible
+ * values include: 'Invalid', 'GeoRedundant', 'LocallyRedundant'
+ * @property {string} [properties.storageType] Storage type. Possible values
  * include: 'Invalid', 'GeoRedundant', 'LocallyRedundant'
- * @member {string} [properties.storageType] Storage type. Possible values
- * include: 'Invalid', 'GeoRedundant', 'LocallyRedundant'
- * @member {string} [properties.storageTypeState] Locked or Unlocked. Once a
+ * @property {string} [properties.storageTypeState] Locked or Unlocked. Once a
  * machine is registered against a resource, the storageTypeState is always
  * Locked. Possible values include: 'Invalid', 'Locked', 'Unlocked'
  */
@@ -3640,14 +3673,14 @@ export interface BackupResourceConfigResource extends Resource {
  * @constructor
  * Backup resource vault config details.
  *
- * @member {string} [storageModelType] Storage type. Possible values include:
+ * @property {string} [storageModelType] Storage type. Possible values include:
  * 'Invalid', 'GeoRedundant', 'LocallyRedundant'
- * @member {string} [storageType] Storage type. Possible values include:
+ * @property {string} [storageType] Storage type. Possible values include:
  * 'Invalid', 'GeoRedundant', 'LocallyRedundant'
- * @member {string} [storageTypeState] Locked or Unlocked. Once a machine is
+ * @property {string} [storageTypeState] Locked or Unlocked. Once a machine is
  * registered against a resource, the storageTypeState is always Locked.
  * Possible values include: 'Invalid', 'Locked', 'Unlocked'
- * @member {string} [enhancedSecurityState] Enabled or Disabled. Possible
+ * @property {string} [enhancedSecurityState] Enabled or Disabled. Possible
  * values include: 'Invalid', 'Enabled', 'Disabled'
  */
 export interface BackupResourceVaultConfig {
@@ -3663,15 +3696,15 @@ export interface BackupResourceVaultConfig {
  * @constructor
  * Backup resource vault config details.
  *
- * @member {object} [properties] BackupResourceVaultConfigResource properties
- * @member {string} [properties.storageModelType] Storage type. Possible values
+ * @property {object} [properties] BackupResourceVaultConfigResource properties
+ * @property {string} [properties.storageModelType] Storage type. Possible
+ * values include: 'Invalid', 'GeoRedundant', 'LocallyRedundant'
+ * @property {string} [properties.storageType] Storage type. Possible values
  * include: 'Invalid', 'GeoRedundant', 'LocallyRedundant'
- * @member {string} [properties.storageType] Storage type. Possible values
- * include: 'Invalid', 'GeoRedundant', 'LocallyRedundant'
- * @member {string} [properties.storageTypeState] Locked or Unlocked. Once a
+ * @property {string} [properties.storageTypeState] Locked or Unlocked. Once a
  * machine is registered against a resource, the storageTypeState is always
  * Locked. Possible values include: 'Invalid', 'Locked', 'Unlocked'
- * @member {string} [properties.enhancedSecurityState] Enabled or Disabled.
+ * @property {string} [properties.enhancedSecurityState] Enabled or Disabled.
  * Possible values include: 'Invalid', 'Enabled', 'Disabled'
  */
 export interface BackupResourceVaultConfigResource extends Resource {
@@ -3684,10 +3717,10 @@ export interface BackupResourceVaultConfigResource extends Resource {
  * @constructor
  * BEK is bitlocker encrpytion key.
  *
- * @member {string} [secretUrl] Secret is BEK.
- * @member {string} [secretVaultId] ID of the Key Vault where this Secret is
+ * @property {string} [secretUrl] Secret is BEK.
+ * @property {string} [secretVaultId] ID of the Key Vault where this Secret is
  * stored.
- * @member {string} [secretData] BEK data.
+ * @property {string} [secretData] BEK data.
  */
 export interface BEKDetails {
   secretUrl?: string;
@@ -3701,7 +3734,7 @@ export interface BEKDetails {
  * @constructor
  * Query parameters to fetch list of backup engines.
  *
- * @member {string} [expand] attribute to add extended info
+ * @property {string} [expand] attribute to add extended info
  */
 export interface BMSBackupEngineQueryObject {
   expand?: string;
@@ -3713,12 +3746,12 @@ export interface BMSBackupEngineQueryObject {
  * @constructor
  * Query parameters to fetch list of backup engines.
  *
- * @member {string} [backupManagementType] Backup management type for the
+ * @property {string} [backupManagementType] Backup management type for the
  * backup engine. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
  * 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
  * 'DefaultBackup'
- * @member {string} [friendlyName] Friendly name of the backup engine.
- * @member {string} [expand] Attribute to add extended info.
+ * @property {string} [friendlyName] Friendly name of the backup engine.
+ * @property {string} [expand] Attribute to add extended info.
  */
 export interface BMSBackupEnginesQueryObject {
   backupManagementType?: string;
@@ -3732,21 +3765,21 @@ export interface BMSBackupEnginesQueryObject {
  * @constructor
  * The query filters that can be used with the list containers API.
  *
- * @member {string} backupManagementType Backup management type for this
+ * @property {string} backupManagementType Backup management type for this
  * container. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM',
  * 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
  * 'DefaultBackup'
- * @member {string} [containerType] Type of container for filter. Possible
+ * @property {string} [containerType] Type of container for filter. Possible
  * values include: 'Invalid', 'Unknown', 'IaasVMContainer',
  * 'IaasVMServiceContainer', 'DPMContainer', 'AzureBackupServerContainer',
  * 'MABContainer', 'Cluster', 'AzureSqlContainer', 'Windows', 'VCenter',
  * 'VMAppContainer', 'SQLAGWorkLoadContainer', 'StorageContainer',
  * 'GenericContainer'
- * @member {string} [backupEngineName] Backup engine name
- * @member {string} [fabricName] Fabric name for filter
- * @member {string} [status] Status of registration of this container with the
- * Recovery Services Vault.
- * @member {string} [friendlyName] Friendly name of this container.
+ * @property {string} [backupEngineName] Backup engine name
+ * @property {string} [fabricName] Fabric name for filter
+ * @property {string} [status] Status of registration of this container with
+ * the Recovery Services Vault.
+ * @property {string} [friendlyName] Friendly name of this container.
  */
 export interface BMSContainerQueryObject {
   backupManagementType: string;
@@ -3763,11 +3796,11 @@ export interface BMSContainerQueryObject {
  * @constructor
  * The query filters that can be used with the inquire container API.
  *
- * @member {string} [backupManagementType] Backup management type for this
+ * @property {string} [backupManagementType] Backup management type for this
  * container. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM',
  * 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
  * 'DefaultBackup'
- * @member {string} [workloadType] Workload type for this container. Possible
+ * @property {string} [workloadType] Workload type for this container. Possible
  * values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb', 'SQLDB',
  * 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
  * 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase'
@@ -3783,17 +3816,17 @@ export interface BMSContainersInquiryQueryObject {
  * @constructor
  * Filters to list items that can be backed up.
  *
- * @member {string} [backupManagementType] Backup management type. Possible
+ * @property {string} [backupManagementType] Backup management type. Possible
  * values include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer',
  * 'AzureSql', 'AzureStorage', 'AzureWorkload', 'DefaultBackup'
- * @member {string} [workloadType] Workload type. Possible values include:
+ * @property {string} [workloadType] Workload type. Possible values include:
  * 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb', 'SQLDB', 'Exchange',
  * 'Sharepoint', 'VMwareVM', 'SystemState', 'Client', 'GenericDataSource',
  * 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase'
- * @member {string} [containerName] Full name of the container whose
+ * @property {string} [containerName] Full name of the container whose
  * Protectable Objects should be returned.
- * @member {string} [status] Backup status query parameter.
- * @member {string} [friendlyName] Friendly name.
+ * @property {string} [status] Backup status query parameter.
+ * @property {string} [friendlyName] Friendly name.
  */
 export interface BMSPOQueryObject {
   backupManagementType?: string;
@@ -3809,7 +3842,7 @@ export interface BMSPOQueryObject {
  * @constructor
  * The query filters that can be used with the refresh container API.
  *
- * @member {string} [backupManagementType] Backup management type for this
+ * @property {string} [backupManagementType] Backup management type for this
  * container. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM',
  * 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
  * 'DefaultBackup'
@@ -3824,12 +3857,12 @@ export interface BMSRefreshContainersQueryObject {
  * @constructor
  * Filters to list backup copies.
  *
- * @member {date} [startDate] Backup copies created after this time.
- * @member {date} [endDate] Backup copies created before this time.
- * @member {string} [restorePointQueryType] RestorePoint type. Possible values
- * include: 'Invalid', 'Full', 'Log', 'Differential', 'FullAndDifferential',
- * 'All'
- * @member {boolean} [extendedInfo] In Get Recovery Point, it tells whether
+ * @property {date} [startDate] Backup copies created after this time.
+ * @property {date} [endDate] Backup copies created before this time.
+ * @property {string} [restorePointQueryType] RestorePoint type. Possible
+ * values include: 'Invalid', 'Full', 'Log', 'Differential',
+ * 'FullAndDifferential', 'All'
+ * @property {boolean} [extendedInfo] In Get Recovery Point, it tells whether
  * extended information about recovery point is asked.
  */
 export interface BMSRPQueryObject {
@@ -3845,19 +3878,19 @@ export interface BMSRPQueryObject {
  * @constructor
  * Filters to list items that can be backed up.
  *
- * @member {string} [backupManagementType] Backup management type. Possible
+ * @property {string} [backupManagementType] Backup management type. Possible
  * values include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer',
  * 'AzureSql', 'AzureStorage', 'AzureWorkload', 'DefaultBackup'
- * @member {string} [workloadItemType] Workload Item type. Possible values
+ * @property {string} [workloadItemType] Workload Item type. Possible values
  * include: 'Invalid', 'SQLInstance', 'SQLDataBase', 'SAPHanaSystem',
  * 'SAPHanaDatabase'
- * @member {string} [workloadType] Workload type. Possible values include:
+ * @property {string} [workloadType] Workload type. Possible values include:
  * 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb', 'SQLDB', 'Exchange',
  * 'Sharepoint', 'VMwareVM', 'SystemState', 'Client', 'GenericDataSource',
  * 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase'
- * @member {string} [protectionStatus] Backup status query parameter. Possible
- * values include: 'Invalid', 'NotProtected', 'Protecting', 'Protected',
- * 'ProtectionFailed'
+ * @property {string} [protectionStatus] Backup status query parameter.
+ * Possible values include: 'Invalid', 'NotProtected', 'Protecting',
+ * 'Protected', 'ProtectionFailed'
  */
 export interface BMSWorkloadItemQueryObject {
   backupManagementType?: string;
@@ -3872,16 +3905,16 @@ export interface BMSWorkloadItemQueryObject {
  * @constructor
  * Client script details for file / folder restore.
  *
- * @member {string} [scriptContent] File content of the client script for file
- * / folder restore.
- * @member {string} [scriptExtension] File extension of the client script for
+ * @property {string} [scriptContent] File content of the client script for
+ * file / folder restore.
+ * @property {string} [scriptExtension] File extension of the client script for
  * file / folder restore - .ps1 , .sh , etc.
- * @member {string} [osType] OS type - Windows, Linux etc. for which this file
- * / folder restore client script works.
- * @member {string} [url] URL of Executable from where to source the content.
+ * @property {string} [osType] OS type - Windows, Linux etc. for which this
+ * file / folder restore client script works.
+ * @property {string} [url] URL of Executable from where to source the content.
  * If this is not null then ScriptContent should not be used
- * @member {string} [scriptNameSuffix] Mandator suffix that should be added to
- * the name of script that is given for download to user.
+ * @property {string} [scriptNameSuffix] Mandator suffix that should be added
+ * to the name of script that is given for download to user.
  * If its null or empty then , ignore it.
  */
 export interface ClientScriptForConnect {
@@ -3898,11 +3931,11 @@ export interface ClientScriptForConnect {
  * @constructor
  * Container identity information
  *
- * @member {string} [uniqueName] Unique name of the container
- * @member {string} [aadTenantId] Protection container identity - AAD Tenant
- * @member {string} [servicePrincipalClientId] Protection container identity -
- * AAD Service Principal
- * @member {string} [audience] Protection container identity - Audience
+ * @property {string} [uniqueName] Unique name of the container
+ * @property {string} [aadTenantId] Protection container identity - AAD Tenant
+ * @property {string} [servicePrincipalClientId] Protection container identity
+ * - AAD Service Principal
+ * @property {string} [audience] Protection container identity - Audience
  */
 export interface ContainerIdentityInfo {
   uniqueName?: string;
@@ -3927,17 +3960,18 @@ export interface DpmBackupEngine extends BackupEngineBase {
  * @constructor
  * DPM workload-specific protection container.
  *
- * @member {boolean} [canReRegister] Specifies whether the container is
+ * @property {boolean} [canReRegister] Specifies whether the container is
  * re-registrable.
- * @member {string} [containerId] ID of container.
- * @member {number} [protectedItemCount] Number of protected items in the
+ * @property {string} [containerId] ID of container.
+ * @property {number} [protectedItemCount] Number of protected items in the
  * BackupEngine
- * @member {string} [dpmAgentVersion] Backup engine Agent version
- * @member {array} [dpmServers] List of BackupEngines protecting the container
- * @member {boolean} [upgradeAvailable] To check if upgrade available
- * @member {string} [protectionStatus] Protection status of the container.
- * @member {object} [extendedInfo] Extended Info of the container.
- * @member {date} [extendedInfo.lastRefreshedAt] Last refresh time of the
+ * @property {string} [dpmAgentVersion] Backup engine Agent version
+ * @property {array} [dpmServers] List of BackupEngines protecting the
+ * container
+ * @property {boolean} [upgradeAvailable] To check if upgrade available
+ * @property {string} [protectionStatus] Protection status of the container.
+ * @property {object} [extendedInfo] Extended Info of the container.
+ * @property {date} [extendedInfo.lastRefreshedAt] Last refresh time of the
  * DPMContainer.
  */
 export interface DpmContainer extends ProtectionContainer {
@@ -3957,17 +3991,17 @@ export interface DpmContainer extends ProtectionContainer {
  * @constructor
  * Container extended information
  *
- * @member {string} [rawCertData] Public key of container cert
- * @member {object} [containerIdentityInfo] Container identity information
- * @member {string} [containerIdentityInfo.uniqueName] Unique name of the
+ * @property {string} [rawCertData] Public key of container cert
+ * @property {object} [containerIdentityInfo] Container identity information
+ * @property {string} [containerIdentityInfo.uniqueName] Unique name of the
  * container
- * @member {string} [containerIdentityInfo.aadTenantId] Protection container
+ * @property {string} [containerIdentityInfo.aadTenantId] Protection container
  * identity - AAD Tenant
- * @member {string} [containerIdentityInfo.servicePrincipalClientId] Protection
- * container identity - AAD Service Principal
- * @member {string} [containerIdentityInfo.audience] Protection container
+ * @property {string} [containerIdentityInfo.servicePrincipalClientId]
+ * Protection container identity - AAD Service Principal
+ * @property {string} [containerIdentityInfo.audience] Protection container
  * identity - Audience
- * @member {object} [serviceEndpoints] Azure Backup Service Endpoints for the
+ * @property {object} [serviceEndpoints] Azure Backup Service Endpoints for the
  * container
  */
 export interface GenericContainerExtendedInfo {
@@ -3982,24 +4016,24 @@ export interface GenericContainerExtendedInfo {
  * @constructor
  * Base class for generic container of backup items
  *
- * @member {string} [fabricName] Name of the container's fabric
- * @member {object} [extendedInformation] Extended information (not returned in
- * List container API calls)
- * @member {string} [extendedInformation.rawCertData] Public key of container
+ * @property {string} [fabricName] Name of the container's fabric
+ * @property {object} [extendedInformation] Extended information (not returned
+ * in List container API calls)
+ * @property {string} [extendedInformation.rawCertData] Public key of container
  * cert
- * @member {object} [extendedInformation.containerIdentityInfo] Container
+ * @property {object} [extendedInformation.containerIdentityInfo] Container
  * identity information
- * @member {string} [extendedInformation.containerIdentityInfo.uniqueName]
+ * @property {string} [extendedInformation.containerIdentityInfo.uniqueName]
  * Unique name of the container
- * @member {string} [extendedInformation.containerIdentityInfo.aadTenantId]
+ * @property {string} [extendedInformation.containerIdentityInfo.aadTenantId]
  * Protection container identity - AAD Tenant
- * @member {string}
+ * @property {string}
  * [extendedInformation.containerIdentityInfo.servicePrincipalClientId]
  * Protection container identity - AAD Service Principal
- * @member {string} [extendedInformation.containerIdentityInfo.audience]
+ * @property {string} [extendedInformation.containerIdentityInfo.audience]
  * Protection container identity - Audience
- * @member {object} [extendedInformation.serviceEndpoints] Azure Backup Service
- * Endpoints for the container
+ * @property {object} [extendedInformation.serviceEndpoints] Azure Backup
+ * Service Endpoints for the container
  */
 export interface GenericContainer extends ProtectionContainer {
   fabricName?: string;
@@ -4012,11 +4046,11 @@ export interface GenericContainer extends ProtectionContainer {
  * @constructor
  * Generic backup copy.
  *
- * @member {string} [friendlyName] Friendly name of the backup copy.
- * @member {string} [recoveryPointType] Type of the backup copy.
- * @member {date} [recoveryPointTime] Time at which this backup copy was
+ * @property {string} [friendlyName] Friendly name of the backup copy.
+ * @property {string} [recoveryPointType] Type of the backup copy.
+ * @property {date} [recoveryPointTime] Time at which this backup copy was
  * created.
- * @member {string} [recoveryPointAdditionalInfo] Additional information
+ * @property {string} [recoveryPointAdditionalInfo] Additional information
  * associated with this backup copy.
  */
 export interface GenericRecoveryPoint extends RecoveryPoint {
@@ -4032,8 +4066,8 @@ export interface GenericRecoveryPoint extends RecoveryPoint {
  * @constructor
  * Filters to list backup items.
  *
- * @member {string} [expand] Specifies if the additional information should be
- * provided for this item.
+ * @property {string} [expand] Specifies if the additional information should
+ * be provided for this item.
  */
 export interface GetProtectedItemQueryObject {
   expand?: string;
@@ -4045,8 +4079,8 @@ export interface GetProtectedItemQueryObject {
  * @constructor
  * IaaS VM workload-specific backup request.
  *
- * @member {date} [recoveryPointExpiryTimeInUTC] Backup copy will expire after
- * the time specified (UTC).
+ * @property {date} [recoveryPointExpiryTimeInUTC] Backup copy will expire
+ * after the time specified (UTC).
  */
 export interface IaasVMBackupRequest extends BackupRequest {
   recoveryPointExpiryTimeInUTC?: Date;
@@ -4058,7 +4092,7 @@ export interface IaasVMBackupRequest extends BackupRequest {
  * @constructor
  * Parameters to restore file/folders API.
  *
- * @member {string} objectType Polymorphic Discriminator
+ * @property {string} objectType Polymorphic Discriminator
  */
 export interface ILRRequest {
   objectType: string;
@@ -4070,12 +4104,12 @@ export interface ILRRequest {
  * @constructor
  * Restore files/folders from a backup copy of IaaS VM.
  *
- * @member {string} [recoveryPointId] ID of the IaaS VM backup copy from where
- * the files/folders have to be restored.
- * @member {string} [virtualMachineId] Fully qualified ARM ID of the virtual
+ * @property {string} [recoveryPointId] ID of the IaaS VM backup copy from
+ * where the files/folders have to be restored.
+ * @property {string} [virtualMachineId] Fully qualified ARM ID of the virtual
  * machine whose the files / folders have to be restored.
- * @member {string} [initiatorName] iSCSI initiator name.
- * @member {boolean} [renewExistingRegistration] Whether to renew existing
+ * @property {string} [initiatorName] iSCSI initiator name.
+ * @property {boolean} [renewExistingRegistration] Whether to renew existing
  * registration with the iSCSI server.
  */
 export interface IaasVMILRRegistrationRequest extends ILRRequest {
@@ -4091,9 +4125,9 @@ export interface IaasVMILRRegistrationRequest extends ILRRequest {
  * @constructor
  * KEK is encryption key for BEK.
  *
- * @member {string} [keyUrl] Key is KEK.
- * @member {string} [keyVaultId] Key Vault ID where this Key is stored.
- * @member {string} [keyBackupData] KEK data.
+ * @property {string} [keyUrl] Key is KEK.
+ * @property {string} [keyVaultId] Key Vault ID where this Key is stored.
+ * @property {string} [keyBackupData] KEK data.
  */
 export interface KEKDetails {
   keyUrl?: string;
@@ -4113,17 +4147,17 @@ export interface KEKDetails {
  * 3. EncryptionMechanism
  * BEK and KEK can potentiallty have different vault ids.
  *
- * @member {object} [kekDetails] KEK is encryption key for BEK.
- * @member {string} [kekDetails.keyUrl] Key is KEK.
- * @member {string} [kekDetails.keyVaultId] Key Vault ID where this Key is
+ * @property {object} [kekDetails] KEK is encryption key for BEK.
+ * @property {string} [kekDetails.keyUrl] Key is KEK.
+ * @property {string} [kekDetails.keyVaultId] Key Vault ID where this Key is
  * stored.
- * @member {string} [kekDetails.keyBackupData] KEK data.
- * @member {object} [bekDetails] BEK is bitlocker encrpytion key.
- * @member {string} [bekDetails.secretUrl] Secret is BEK.
- * @member {string} [bekDetails.secretVaultId] ID of the Key Vault where this
+ * @property {string} [kekDetails.keyBackupData] KEK data.
+ * @property {object} [bekDetails] BEK is bitlocker encrpytion key.
+ * @property {string} [bekDetails.secretUrl] Secret is BEK.
+ * @property {string} [bekDetails.secretVaultId] ID of the Key Vault where this
  * Secret is stored.
- * @member {string} [bekDetails.secretData] BEK data.
- * @member {string} [encryptionMechanism] Encryption mechanism: None/
+ * @property {string} [bekDetails.secretData] BEK data.
+ * @property {string} [encryptionMechanism] Encryption mechanism: None/
  * SinglePass/ DoublePass
  */
 export interface KeyAndSecretDetails {
@@ -4138,9 +4172,9 @@ export interface KeyAndSecretDetails {
  * @constructor
  * Recovery point tier information.
  *
- * @member {string} [type] Recovery point tier type. Possible values include:
+ * @property {string} [type] Recovery point tier type. Possible values include:
  * 'Invalid', 'InstantRP', 'HardenedRP'
- * @member {string} [status] Recovery point tier status. Possible values
+ * @property {string} [status] Recovery point tier status. Possible values
  * include: 'Invalid', 'Valid', 'Disabled', 'Deleted'
  */
 export interface RecoveryPointTierInformation {
@@ -4154,37 +4188,40 @@ export interface RecoveryPointTierInformation {
  * @constructor
  * IaaS VM workload specific backup copy.
  *
- * @member {string} [recoveryPointType] Type of the backup copy.
- * @member {date} [recoveryPointTime] Time at which this backup copy was
+ * @property {string} [recoveryPointType] Type of the backup copy.
+ * @property {date} [recoveryPointTime] Time at which this backup copy was
  * created.
- * @member {string} [recoveryPointAdditionalInfo] Additional information
+ * @property {string} [recoveryPointAdditionalInfo] Additional information
  * associated with this backup copy.
- * @member {string} [sourceVMStorageType] Storage type of the VM whose backup
+ * @property {string} [sourceVMStorageType] Storage type of the VM whose backup
  * copy is created.
- * @member {boolean} [isSourceVMEncrypted] Identifies whether the VM was
+ * @property {boolean} [isSourceVMEncrypted] Identifies whether the VM was
  * encrypted when the backup copy is created.
- * @member {object} [keyAndSecret] Required details for recovering an encrypted
- * VM. Applicable only when IsSourceVMEncrypted is true.
- * @member {object} [keyAndSecret.kekDetails] KEK is encryption key for BEK.
- * @member {string} [keyAndSecret.kekDetails.keyUrl] Key is KEK.
- * @member {string} [keyAndSecret.kekDetails.keyVaultId] Key Vault ID where
+ * @property {object} [keyAndSecret] Required details for recovering an
+ * encrypted VM. Applicable only when IsSourceVMEncrypted is true.
+ * @property {object} [keyAndSecret.kekDetails] KEK is encryption key for BEK.
+ * @property {string} [keyAndSecret.kekDetails.keyUrl] Key is KEK.
+ * @property {string} [keyAndSecret.kekDetails.keyVaultId] Key Vault ID where
  * this Key is stored.
- * @member {string} [keyAndSecret.kekDetails.keyBackupData] KEK data.
- * @member {object} [keyAndSecret.bekDetails] BEK is bitlocker encrpytion key.
- * @member {string} [keyAndSecret.bekDetails.secretUrl] Secret is BEK.
- * @member {string} [keyAndSecret.bekDetails.secretVaultId] ID of the Key Vault
- * where this Secret is stored.
- * @member {string} [keyAndSecret.bekDetails.secretData] BEK data.
- * @member {string} [keyAndSecret.encryptionMechanism] Encryption mechanism:
+ * @property {string} [keyAndSecret.kekDetails.keyBackupData] KEK data.
+ * @property {object} [keyAndSecret.bekDetails] BEK is bitlocker encrpytion
+ * key.
+ * @property {string} [keyAndSecret.bekDetails.secretUrl] Secret is BEK.
+ * @property {string} [keyAndSecret.bekDetails.secretVaultId] ID of the Key
+ * Vault where this Secret is stored.
+ * @property {string} [keyAndSecret.bekDetails.secretData] BEK data.
+ * @property {string} [keyAndSecret.encryptionMechanism] Encryption mechanism:
  * None/ SinglePass/ DoublePass
- * @member {boolean} [isInstantIlrSessionActive] Is the session to recover
+ * @property {boolean} [isInstantIlrSessionActive] Is the session to recover
  * items from this backup copy still active.
- * @member {array} [recoveryPointTierDetails] Recovery point tier information.
- * @member {boolean} [isManagedVirtualMachine] Whether VM is with Managed Disks
- * @member {string} [virtualMachineSize] Virtual Machine Size
- * @member {boolean} [originalStorageAccountOption] Original Storage Account
+ * @property {array} [recoveryPointTierDetails] Recovery point tier
+ * information.
+ * @property {boolean} [isManagedVirtualMachine] Whether VM is with Managed
+ * Disks
+ * @property {string} [virtualMachineSize] Virtual Machine Size
+ * @property {boolean} [originalStorageAccountOption] Original Storage Account
  * Option
- * @member {string} [osType] OS type
+ * @property {string} [osType] OS type
  */
 export interface IaasVMRecoveryPoint extends RecoveryPoint {
   recoveryPointType?: string;
@@ -4207,8 +4244,8 @@ export interface IaasVMRecoveryPoint extends RecoveryPoint {
  * @constructor
  * Parameters to restore file/folders API.
  *
- * @member {object} [properties] ILRRequestResource properties
- * @member {string} [properties.objectType] Polymorphic Discriminator
+ * @property {object} [properties] ILRRequestResource properties
+ * @property {string} [properties.objectType] Polymorphic Discriminator
  */
 export interface ILRRequestResource extends Resource {
   properties?: ILRRequest;
@@ -4220,7 +4257,7 @@ export interface ILRRequestResource extends Resource {
  * @constructor
  * Target details for file / folder restore.
  *
- * @member {array} [clientScripts] List of client scripts.
+ * @property {array} [clientScripts] List of client scripts.
  */
 export interface InstantItemRecoveryTarget {
   clientScripts?: ClientScriptForConnect[];
@@ -4232,17 +4269,19 @@ export interface InstantItemRecoveryTarget {
  * @constructor
  * Additional information of the container.
  *
- * @member {date} [lastRefreshedAt] Time stamp when this container was
+ * @property {date} [lastRefreshedAt] Time stamp when this container was
  * refreshed.
- * @member {string} [backupItemType] Type of backup items associated with this
- * container. Possible values include: 'Invalid', 'VM', 'FileFolder',
+ * @property {string} [backupItemType] Type of backup items associated with
+ * this container. Possible values include: 'Invalid', 'VM', 'FileFolder',
  * 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState',
  * 'Client', 'GenericDataSource', 'SQLDataBase', 'AzureFileShare',
  * 'SAPHanaDatabase'
- * @member {array} [backupItems] List of backup items associated with this
+ * @property {array} [backupItems] List of backup items associated with this
  * container.
- * @member {string} [policyName] Backup policy associated with this container.
- * @member {string} [lastBackupStatus] Latest backup status of this container.
+ * @property {string} [policyName] Backup policy associated with this
+ * container.
+ * @property {string} [lastBackupStatus] Latest backup status of this
+ * container.
  */
 export interface MabContainerExtendedInfo {
   lastRefreshedAt?: Date;
@@ -4258,10 +4297,10 @@ export interface MabContainerExtendedInfo {
  * @constructor
  * MAB workload-specific Health Details.
  *
- * @member {number} [code] Health Code
- * @member {string} [title] Health Title
- * @member {string} [message] Health Message
- * @member {array} [recommendations] Health Recommended Actions
+ * @property {number} [code] Health Code
+ * @property {string} [title] Health Title
+ * @property {string} [message] Health Message
+ * @property {array} [recommendations] Health Recommended Actions
  */
 export interface MABContainerHealthDetails {
   code?: number;
@@ -4276,29 +4315,29 @@ export interface MABContainerHealthDetails {
  * @constructor
  * Container with items backed up using MAB backup engine.
  *
- * @member {boolean} [canReRegister] Can the container be registered one more
+ * @property {boolean} [canReRegister] Can the container be registered one more
  * time.
- * @member {number} [containerId] ContainerID represents the container.
- * @member {number} [protectedItemCount] Number of items backed up in this
+ * @property {number} [containerId] ContainerID represents the container.
+ * @property {number} [protectedItemCount] Number of items backed up in this
  * container.
- * @member {string} [agentVersion] Agent version of this container.
- * @member {object} [extendedInfo] Additional information for this container
- * @member {date} [extendedInfo.lastRefreshedAt] Time stamp when this container
- * was refreshed.
- * @member {string} [extendedInfo.backupItemType] Type of backup items
+ * @property {string} [agentVersion] Agent version of this container.
+ * @property {object} [extendedInfo] Additional information for this container
+ * @property {date} [extendedInfo.lastRefreshedAt] Time stamp when this
+ * container was refreshed.
+ * @property {string} [extendedInfo.backupItemType] Type of backup items
  * associated with this container. Possible values include: 'Invalid', 'VM',
  * 'FileFolder', 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM',
  * 'SystemState', 'Client', 'GenericDataSource', 'SQLDataBase',
  * 'AzureFileShare', 'SAPHanaDatabase'
- * @member {array} [extendedInfo.backupItems] List of backup items associated
+ * @property {array} [extendedInfo.backupItems] List of backup items associated
  * with this container.
- * @member {string} [extendedInfo.policyName] Backup policy associated with
+ * @property {string} [extendedInfo.policyName] Backup policy associated with
  * this container.
- * @member {string} [extendedInfo.lastBackupStatus] Latest backup status of
+ * @property {string} [extendedInfo.lastBackupStatus] Latest backup status of
  * this container.
- * @member {array} [mabContainerHealthDetails] Health details on this mab
+ * @property {array} [mabContainerHealthDetails] Health details on this mab
  * container.
- * @member {string} [containerHealthState] Health state of mab container.
+ * @property {string} [containerHealthState] Health state of mab container.
  */
 export interface MabContainer extends ProtectionContainer {
   canReRegister?: boolean;
@@ -4316,8 +4355,9 @@ export interface MabContainer extends ProtectionContainer {
  * @constructor
  * Error information associated with operation status call.
  *
- * @member {string} [code] Error code of the operation failure.
- * @member {string} [message] Error message displayed if the operation failure.
+ * @property {string} [code] Error code of the operation failure.
+ * @property {string} [message] Error message displayed if the operation
+ * failure.
  */
 export interface OperationStatusError {
   code?: string;
@@ -4330,7 +4370,7 @@ export interface OperationStatusError {
  * @constructor
  * Base class for additional information of operation status.
  *
- * @member {string} objectType Polymorphic Discriminator
+ * @property {string} objectType Polymorphic Discriminator
  */
 export interface OperationStatusExtendedInfo {
   objectType: string;
@@ -4342,19 +4382,19 @@ export interface OperationStatusExtendedInfo {
  * @constructor
  * Operation status.
  *
- * @member {string} [id] ID of the operation.
- * @member {string} [name] Name of the operation.
- * @member {string} [status] Operation status. Possible values include:
+ * @property {string} [id] ID of the operation.
+ * @property {string} [name] Name of the operation.
+ * @property {string} [status] Operation status. Possible values include:
  * 'Invalid', 'InProgress', 'Succeeded', 'Failed', 'Canceled'
- * @member {date} [startTime] Operation start time. Format: ISO-8601.
- * @member {date} [endTime] Operation end time. Format: ISO-8601.
- * @member {object} [error] Error information related to this operation.
- * @member {string} [error.code] Error code of the operation failure.
- * @member {string} [error.message] Error message displayed if the operation
+ * @property {date} [startTime] Operation start time. Format: ISO-8601.
+ * @property {date} [endTime] Operation end time. Format: ISO-8601.
+ * @property {object} [error] Error information related to this operation.
+ * @property {string} [error.code] Error code of the operation failure.
+ * @property {string} [error.message] Error message displayed if the operation
  * failure.
- * @member {object} [properties] Additional information associated with this
+ * @property {object} [properties] Additional information associated with this
  * operation.
- * @member {string} [properties.objectType] Polymorphic Discriminator
+ * @property {string} [properties.objectType] Polymorphic Discriminator
  */
 export interface OperationStatus {
   id?: string;
@@ -4372,7 +4412,7 @@ export interface OperationStatus {
  * @constructor
  * Operation status job extended info.
  *
- * @member {string} [jobId] ID of the job created for this protected item.
+ * @property {string} [jobId] ID of the job created for this protected item.
  */
 export interface OperationStatusJobExtendedInfo extends OperationStatusExtendedInfo {
   jobId?: string;
@@ -4384,9 +4424,9 @@ export interface OperationStatusJobExtendedInfo extends OperationStatusExtendedI
  * @constructor
  * Operation status extended info for list of jobs.
  *
- * @member {array} [jobIds] IDs of the jobs created for the protected item.
- * @member {object} [failedJobsError] Stores all the failed jobs along with the
- * corresponding error codes.
+ * @property {array} [jobIds] IDs of the jobs created for the protected item.
+ * @property {object} [failedJobsError] Stores all the failed jobs along with
+ * the corresponding error codes.
  */
 export interface OperationStatusJobsExtendedInfo extends OperationStatusExtendedInfo {
   jobIds?: string[];
@@ -4399,8 +4439,9 @@ export interface OperationStatusJobsExtendedInfo extends OperationStatusExtended
  * @constructor
  * Operation status extended info for ILR provision action.
  *
- * @member {object} [recoveryTarget] Target details for file / folder restore.
- * @member {array} [recoveryTarget.clientScripts] List of client scripts.
+ * @property {object} [recoveryTarget] Target details for file / folder
+ * restore.
+ * @property {array} [recoveryTarget.clientScripts] List of client scripts.
  */
 export interface OperationStatusProvisionILRExtendedInfo extends OperationStatusExtendedInfo {
   recoveryTarget?: InstantItemRecoveryTarget;
@@ -4412,17 +4453,17 @@ export interface OperationStatusProvisionILRExtendedInfo extends OperationStatus
  * @constructor
  * Protectable Container Class.
  *
- * @member {object} [properties] ProtectableContainerResource properties
- * @member {string} [properties.friendlyName] Friendly name of the container.
- * @member {string} [properties.backupManagementType] Type of backup
+ * @property {object} [properties] ProtectableContainerResource properties
+ * @property {string} [properties.friendlyName] Friendly name of the container.
+ * @property {string} [properties.backupManagementType] Type of backup
  * managemenent for the container. Possible values include: 'Invalid',
  * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql',
  * 'AzureStorage', 'AzureWorkload', 'DefaultBackup'
- * @member {string} [properties.healthStatus] Status of health of the
+ * @property {string} [properties.healthStatus] Status of health of the
  * container.
- * @member {string} [properties.containerId] Fabric Id of the container such as
- * ARM Id.
- * @member {string} [properties.protectableContainerType] Polymorphic
+ * @property {string} [properties.containerId] Fabric Id of the container such
+ * as ARM Id.
+ * @property {string} [properties.protectableContainerType] Polymorphic
  * Discriminator
  */
 export interface ProtectableContainerResource extends Resource {
@@ -4436,17 +4477,17 @@ export interface ProtectableContainerResource extends Resource {
  * Base class for container with backup items. Containers with specific
  * workloads are derived from this class.
  *
- * @member {object} [properties] ProtectionContainerResource properties
- * @member {string} [properties.friendlyName] Friendly name of the container.
- * @member {string} [properties.backupManagementType] Type of backup
+ * @property {object} [properties] ProtectionContainerResource properties
+ * @property {string} [properties.friendlyName] Friendly name of the container.
+ * @property {string} [properties.backupManagementType] Type of backup
  * managemenent for the container. Possible values include: 'Invalid',
  * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql',
  * 'AzureStorage', 'AzureWorkload', 'DefaultBackup'
- * @member {string} [properties.registrationStatus] Status of registration of
+ * @property {string} [properties.registrationStatus] Status of registration of
  * the container with the Recovery Services Vault.
- * @member {string} [properties.healthStatus] Status of health of the
+ * @property {string} [properties.healthStatus] Status of health of the
  * container.
- * @member {string} [properties.containerType] Polymorphic Discriminator
+ * @property {string} [properties.containerType] Polymorphic Discriminator
  */
 export interface ProtectionContainerResource extends Resource {
   properties?: ProtectionContainer;
@@ -4459,8 +4500,8 @@ export interface ProtectionContainerResource extends Resource {
  * Base class for backup copies. Workload-specific backup copies are derived
  * from this class.
  *
- * @member {object} [properties] RecoveryPointResource properties
- * @member {string} [properties.objectType] Polymorphic Discriminator
+ * @property {object} [properties] RecoveryPointResource properties
+ * @property {string} [properties.objectType] Polymorphic Discriminator
  */
 export interface RecoveryPointResource extends Resource {
   properties?: RecoveryPoint;
@@ -4473,8 +4514,8 @@ export interface RecoveryPointResource extends Resource {
  * Base class for restore request. Workload-specific restore requests are
  * derived from this class.
  *
- * @member {object} [properties] RestoreRequestResource properties
- * @member {string} [properties.objectType] Polymorphic Discriminator
+ * @property {object} [properties] RestoreRequestResource properties
+ * @property {string} [properties.objectType] Polymorphic Discriminator
  */
 export interface RestoreRequestResource extends Resource {
   properties?: RestoreRequest;
@@ -4486,9 +4527,9 @@ export interface RestoreRequestResource extends Resource {
  * @constructor
  * The token information details.
  *
- * @member {string} [token] Token value.
- * @member {number} [expiryTimeInUtcTicks] Expiry time of token.
- * @member {string} [securityPIN] Security PIN
+ * @property {string} [token] Token value.
+ * @property {number} [expiryTimeInUtcTicks] Expiry time of token.
+ * @property {string} [securityPIN] Security PIN
  */
 export interface TokenInformation {
   token?: string;
@@ -4503,16 +4544,17 @@ export interface TokenInformation {
  * Base class for backup item. Workload-specific backup items are derived from
  * this class.
  *
- * @member {object} [properties] WorkloadItemResource properties
- * @member {string} [properties.backupManagementType] Type of backup
+ * @property {object} [properties] WorkloadItemResource properties
+ * @property {string} [properties.backupManagementType] Type of backup
  * managemenent to backup an item.
- * @member {string} [properties.workloadType] Type of workload for the backup
+ * @property {string} [properties.workloadType] Type of workload for the backup
  * management
- * @member {string} [properties.friendlyName] Friendly name of the backup item.
- * @member {string} [properties.protectionState] State of the back up item.
+ * @property {string} [properties.friendlyName] Friendly name of the backup
+ * item.
+ * @property {string} [properties.protectionState] State of the back up item.
  * Possible values include: 'Invalid', 'NotProtected', 'Protecting',
  * 'Protected', 'ProtectionFailed'
- * @member {string} [properties.workloadItemType] Polymorphic Discriminator
+ * @property {string} [properties.workloadItemType] Polymorphic Discriminator
  */
 export interface WorkloadItemResource extends Resource {
   properties?: WorkloadItem;
@@ -4525,16 +4567,18 @@ export interface WorkloadItemResource extends Resource {
  * Base class for backup item. Workload-specific backup items are derived from
  * this class.
  *
- * @member {object} [properties] WorkloadProtectableItemResource properties
- * @member {string} [properties.backupManagementType] Type of backup
+ * @property {object} [properties] WorkloadProtectableItemResource properties
+ * @property {string} [properties.backupManagementType] Type of backup
  * managemenent to backup an item.
- * @member {string} [properties.workloadType] Type of workload for the backup
+ * @property {string} [properties.workloadType] Type of workload for the backup
  * management
- * @member {string} [properties.friendlyName] Friendly name of the backup item.
- * @member {string} [properties.protectionState] State of the back up item.
+ * @property {string} [properties.friendlyName] Friendly name of the backup
+ * item.
+ * @property {string} [properties.protectionState] State of the back up item.
  * Possible values include: 'Invalid', 'NotProtected', 'Protecting',
  * 'Protected', 'ProtectionFailed'
- * @member {string} [properties.protectableItemType] Polymorphic Discriminator
+ * @property {string} [properties.protectableItemType] Polymorphic
+ * Discriminator
  */
 export interface WorkloadProtectableItemResource extends Resource {
   properties?: WorkloadProtectableItem;
@@ -4546,11 +4590,11 @@ export interface WorkloadProtectableItemResource extends Resource {
  * @constructor
  * Localized display information of an operation.
  *
- * @member {string} [provider] Name of the provider for display purposes
- * @member {string} [resource] ResourceType for which this Operation can be
+ * @property {string} [provider] Name of the provider for display purposes
+ * @property {string} [resource] ResourceType for which this Operation can be
  * performed.
- * @member {string} [operation] Operations Name itself.
- * @member {string} [description] Description of the operation having details
+ * @property {string} [operation] Operations Name itself.
+ * @property {string} [description] Description of the operation having details
  * of what operation is about.
  */
 export interface ClientDiscoveryDisplay {
@@ -4566,9 +4610,9 @@ export interface ClientDiscoveryDisplay {
  * @constructor
  * Class to represent shoebox log specification in json client discovery.
  *
- * @member {string} [name] Name for shoebox log specification.
- * @member {string} [displayName] Localized display name
- * @member {string} [blobDuration] blob duration of shoebox log specification
+ * @property {string} [name] Name for shoebox log specification.
+ * @property {string} [displayName] Localized display name
+ * @property {string} [blobDuration] blob duration of shoebox log specification
  */
 export interface ClientDiscoveryForLogSpecification {
   name?: string;
@@ -4582,7 +4626,7 @@ export interface ClientDiscoveryForLogSpecification {
  * @constructor
  * Class to represent shoebox service specification in json client discovery.
  *
- * @member {array} [logSpecifications] List of log specifications of this
+ * @property {array} [logSpecifications] List of log specifications of this
  * operation.
  */
 export interface ClientDiscoveryForServiceSpecification {
@@ -4595,8 +4639,8 @@ export interface ClientDiscoveryForServiceSpecification {
  * @constructor
  * Class to represent shoebox properties in json client discovery.
  *
- * @member {object} [serviceSpecification] Operation properties.
- * @member {array} [serviceSpecification.logSpecifications] List of log
+ * @property {object} [serviceSpecification] Operation properties.
+ * @property {array} [serviceSpecification.logSpecifications] List of log
  * specifications of this operation.
  */
 export interface ClientDiscoveryForProperties {
@@ -4609,22 +4653,22 @@ export interface ClientDiscoveryForProperties {
  * @constructor
  * Available operation details.
  *
- * @member {string} [name] Name of the Operation.
- * @member {object} [display] Contains the localized display information for
+ * @property {string} [name] Name of the Operation.
+ * @property {object} [display] Contains the localized display information for
  * this particular operation
- * @member {string} [display.provider] Name of the provider for display
+ * @property {string} [display.provider] Name of the provider for display
  * purposes
- * @member {string} [display.resource] ResourceType for which this Operation
+ * @property {string} [display.resource] ResourceType for which this Operation
  * can be performed.
- * @member {string} [display.operation] Operations Name itself.
- * @member {string} [display.description] Description of the operation having
+ * @property {string} [display.operation] Operations Name itself.
+ * @property {string} [display.description] Description of the operation having
  * details of what operation is about.
- * @member {string} [origin] The intended executor of the operation;governs the
- * display of the operation in the RBAC UX and the audit logs UX
- * @member {object} [properties] ShoeBox properties for the given operation.
- * @member {object} [properties.serviceSpecification] Operation properties.
- * @member {array} [properties.serviceSpecification.logSpecifications] List of
- * log specifications of this operation.
+ * @property {string} [origin] The intended executor of the operation;governs
+ * the display of the operation in the RBAC UX and the audit logs UX
+ * @property {object} [properties] ShoeBox properties for the given operation.
+ * @property {object} [properties.serviceSpecification] Operation properties.
+ * @property {array} [properties.serviceSpecification.logSpecifications] List
+ * of log specifications of this operation.
  */
 export interface ClientDiscoveryValueForSingleApi {
   name?: string;
@@ -4750,7 +4794,7 @@ export interface ProtectionContainerResourceList extends Array<ProtectionContain
  * @constructor
  * Operations List response which contains list of available APIs.
  *
- * @member {string} [nextLink] Link to the next chunk of Response.
+ * @property {string} [nextLink] Link to the next chunk of Response.
  */
 export interface ClientDiscoveryResponse extends Array<ClientDiscoveryValueForSingleApi> {
   nextLink?: string;

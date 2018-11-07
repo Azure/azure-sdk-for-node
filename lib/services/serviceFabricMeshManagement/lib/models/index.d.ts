@@ -22,11 +22,11 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * An operation available at the listed Azure resource provider.
  *
- * @member {string} [provider] Name of the operation provider.
- * @member {string} [resource] Name of the resource on which the operation is
+ * @property {string} [provider] Name of the operation provider.
+ * @property {string} [resource] Name of the resource on which the operation is
  * available.
- * @member {string} [operation] Name of the available operation.
- * @member {string} [description] Description of the available operation.
+ * @property {string} [operation] Name of the available operation.
+ * @property {string} [description] Description of the available operation.
  */
 export interface AvailableOperationDisplay {
   provider?: string;
@@ -41,8 +41,8 @@ export interface AvailableOperationDisplay {
  * @constructor
  * Error model details information
  *
- * @member {string} code
- * @member {string} message Error message.
+ * @property {string} code
+ * @property {string} message Error message.
  */
 export interface ErrorDetailsModel {
   code: string;
@@ -55,10 +55,10 @@ export interface ErrorDetailsModel {
  * @constructor
  * Error model information
  *
- * @member {string} code
- * @member {string} [message] Error message.
- * @member {string} [innerError]
- * @member {array} [details] List of error message details.
+ * @property {string} code
+ * @property {string} [message] Error message.
+ * @property {string} [innerError]
+ * @property {array} [details] List of error message details.
  */
 export interface ErrorErrorModel {
   code: string;
@@ -73,11 +73,11 @@ export interface ErrorErrorModel {
  * @constructor
  * The error details.
  *
- * @member {object} error Error model information
- * @member {string} [error.code]
- * @member {string} [error.message] Error message.
- * @member {string} [error.innerError]
- * @member {array} [error.details] List of error message details.
+ * @property {object} error Error model information
+ * @property {string} [error.code]
+ * @property {string} [error.message] Error message.
+ * @property {string} [error.innerError]
+ * @property {array} [error.details] List of error message details.
  */
 export interface ErrorModel {
   error: ErrorErrorModel;
@@ -89,16 +89,16 @@ export interface ErrorModel {
  * @constructor
  * List of operations available at the listed Azure resource provider.
  *
- * @member {string} [name] The name of the operation.
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Name of the operation provider.
- * @member {string} [display.resource] Name of the resource on which the
+ * @property {string} [name] The name of the operation.
+ * @property {object} [display] The object that represents the operation.
+ * @property {string} [display.provider] Name of the operation provider.
+ * @property {string} [display.resource] Name of the resource on which the
  * operation is available.
- * @member {string} [display.operation] Name of the available operation.
- * @member {string} [display.description] Description of the available
+ * @property {string} [display.operation] Name of the available operation.
+ * @property {string} [display.description] Description of the available
  * operation.
- * @member {string} [origin] Origin result
- * @member {string} [nextLink] The URL to use for getting the next set of
+ * @property {string} [origin] Origin result
+ * @property {string} [nextLink] The URL to use for getting the next set of
  * results.
  */
 export interface OperationResult {
@@ -114,7 +114,7 @@ export interface OperationResult {
  * @constructor
  * Describes common properties of a provisioned resource.
  *
- * @member {string} [provisioningState] State of the resource.
+ * @property {string} [provisioningState] State of the resource.
  */
 export interface ProvisionedResourceProperties {
   readonly provisioningState?: string;
@@ -126,10 +126,10 @@ export interface ProvisionedResourceProperties {
  * @constructor
  * The resource model definition for Azure Resource Manager resource.
  *
- * @member {string} [id] Fully qualified identifier for the resource. Ex -
+ * @property {string} [id] Fully qualified identifier for the resource. Ex -
  * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
- * @member {string} [name] The name of the resource
- * @member {string} [type] The type of the resource. Ex-
+ * @property {string} [name] The name of the resource
+ * @property {string} [type] The type of the resource. Ex-
  * Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
  */
 export interface Resource extends BaseResource {
@@ -158,10 +158,10 @@ export interface ProxyResource extends Resource {
  * resource is explicitly created or updated by including it in the parent
  * resource.
  *
- * @member {string} [id] Fully qualified identifier for the resource. Ex -
+ * @property {string} [id] Fully qualified identifier for the resource. Ex -
  * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
- * @member {string} [name] The name of the resource
- * @member {string} [type] The type of the resource. Ex-
+ * @property {string} [name] The name of the resource
+ * @property {string} [type] The type of the resource. Ex-
  * Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
  */
 export interface ManagedProxyResource extends BaseResource {
@@ -177,8 +177,8 @@ export interface ManagedProxyResource extends BaseResource {
  * The resource model definition for Azure Resource Manager tracked top-level
  * resource.
  *
- * @member {object} [tags] Resource tags.
- * @member {string} location The geo-location where the resource lives
+ * @property {object} [tags] Resource tags.
+ * @property {string} location The geo-location where the resource lives
  */
 export interface TrackedResource extends Resource {
   tags?: { [propertyName: string]: string };
@@ -191,7 +191,7 @@ export interface TrackedResource extends Resource {
  * @constructor
  * This type describes the properties of a secret resource, including its kind.
  *
- * @member {string} kind Polymorphic Discriminator
+ * @property {string} kind Polymorphic Discriminator
  */
 export interface SecretResourcePropertiesBase extends ProvisionedResourceProperties {
   kind: string;
@@ -203,14 +203,14 @@ export interface SecretResourcePropertiesBase extends ProvisionedResourcePropert
  * @constructor
  * Describes the properties of a secret resource.
  *
- * @member {string} [description] User readable description of the secret.
- * @member {string} [status] Status of the resource. Possible values include:
+ * @property {string} [description] User readable description of the secret.
+ * @property {string} [status] Status of the resource. Possible values include:
  * 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
- * @member {string} [statusDetails] Gives additional information about the
+ * @property {string} [statusDetails] Gives additional information about the
  * current status of the secret.
- * @member {string} [contentType] The type of the content stored in the secret
- * value. The value of this property is opaque to Service Fabric. Once set, the
- * value of this property cannot be changed.
+ * @property {string} [contentType] The type of the content stored in the
+ * secret value. The value of this property is opaque to Service Fabric. Once
+ * set, the value of this property cannot be changed.
  */
 export interface SecretResourceProperties extends SecretResourcePropertiesBase {
   description?: string;
@@ -239,15 +239,16 @@ export interface InlinedValueSecretResourceProperties extends SecretResourceProp
  * @constructor
  * This type describes a secret resource.
  *
- * @member {object} properties Describes the properties of a secret resource.
- * @member {string} [properties.description] User readable description of the
+ * @property {object} properties Describes the properties of a secret resource.
+ * @property {string} [properties.description] User readable description of the
  * secret.
- * @member {string} [properties.status] Status of the resource. Possible values
- * include: 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
- * @member {string} [properties.statusDetails] Gives additional information
+ * @property {string} [properties.status] Status of the resource. Possible
+ * values include: 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting',
+ * 'Failed'
+ * @property {string} [properties.statusDetails] Gives additional information
  * about the current status of the secret.
- * @member {string} [properties.contentType] The type of the content stored in
- * the secret value. The value of this property is opaque to Service Fabric.
+ * @property {string} [properties.contentType] The type of the content stored
+ * in the secret value. The value of this property is opaque to Service Fabric.
  * Once set, the value of this property cannot be changed.
  */
 export interface SecretResourceDescription extends TrackedResource {
@@ -260,7 +261,7 @@ export interface SecretResourceDescription extends TrackedResource {
  * @constructor
  * This type represents the unencrypted value of the secret.
  *
- * @member {string} [value] The actual value of the secret.
+ * @property {string} [value] The actual value of the secret.
  */
 export interface SecretValue {
   value?: string;
@@ -272,7 +273,7 @@ export interface SecretValue {
  * @constructor
  * This type describes properties of secret value resource.
  *
- * @member {string} [value] The actual value of the secret.
+ * @property {string} [value] The actual value of the secret.
  */
 export interface SecretValueProperties {
   value?: string;
@@ -285,8 +286,8 @@ export interface SecretValueProperties {
  * This type describes a value of a secret resource. The name of this resource
  * is the version identifier corresponding to this secret value.
  *
- * @member {string} [provisioningState] State of the resource.
- * @member {string} [value] The actual value of the secret.
+ * @property {string} [provisioningState] State of the resource.
+ * @property {string} [value] The actual value of the secret.
  */
 export interface SecretValueResourceDescription extends TrackedResource {
   readonly provisioningState?: string;
@@ -299,12 +300,12 @@ export interface SecretValueResourceDescription extends TrackedResource {
  * @constructor
  * This type describes a volume provided by an Azure Files file share.
  *
- * @member {string} accountName Name of the Azure storage account for the File
- * Share.
- * @member {string} [accountKey] Access key of the Azure storage account for
+ * @property {string} accountName Name of the Azure storage account for the
+ * File Share.
+ * @property {string} [accountKey] Access key of the Azure storage account for
  * the File Share.
- * @member {string} shareName Name of the Azure Files file share that provides
- * storage for the volume.
+ * @property {string} shareName Name of the Azure Files file share that
+ * provides storage for the volume.
  */
 export interface VolumeProviderParametersAzureFile {
   accountName: string;
@@ -318,18 +319,18 @@ export interface VolumeProviderParametersAzureFile {
  * @constructor
  * Describes properties of a volume resource.
  *
- * @member {string} [description] User readable description of the volume.
- * @member {string} [status] Status of the volume. Possible values include:
+ * @property {string} [description] User readable description of the volume.
+ * @property {string} [status] Status of the volume. Possible values include:
  * 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
- * @member {string} [statusDetails] Gives additional information about the
+ * @property {string} [statusDetails] Gives additional information about the
  * current status of the volume.
- * @member {object} [azureFileParameters] This type describes a volume provided
- * by an Azure Files file share.
- * @member {string} [azureFileParameters.accountName] Name of the Azure storage
- * account for the File Share.
- * @member {string} [azureFileParameters.accountKey] Access key of the Azure
+ * @property {object} [azureFileParameters] This type describes a volume
+ * provided by an Azure Files file share.
+ * @property {string} [azureFileParameters.accountName] Name of the Azure
  * storage account for the File Share.
- * @member {string} [azureFileParameters.shareName] Name of the Azure Files
+ * @property {string} [azureFileParameters.accountKey] Access key of the Azure
+ * storage account for the File Share.
+ * @property {string} [azureFileParameters.shareName] Name of the Azure Files
  * file share that provides storage for the volume.
  */
 export interface VolumeProperties {
@@ -345,11 +346,11 @@ export interface VolumeProperties {
  * @constructor
  * Describes a reference to a volume resource.
  *
- * @member {string} name Name of the volume being referenced.
- * @member {boolean} [readOnly] The flag indicating whether the volume is read
- * only. Default is 'false'.
- * @member {string} destinationPath The path within the container at which the
- * volume should be mounted. Only valid path characters are allowed.
+ * @property {string} name Name of the volume being referenced.
+ * @property {boolean} [readOnly] The flag indicating whether the volume is
+ * read only. Default is 'false'.
+ * @property {string} destinationPath The path within the container at which
+ * the volume should be mounted. Only valid path characters are allowed.
  */
 export interface VolumeReference {
   name: string;
@@ -363,8 +364,8 @@ export interface VolumeReference {
  * @constructor
  * Describes parameters for creating application-scoped volumes.
  *
- * @member {string} [description] User readable description of the volume.
- * @member {string} kind Polymorphic Discriminator
+ * @property {string} [description] User readable description of the volume.
+ * @property {string} kind Polymorphic Discriminator
  */
 export interface ApplicationScopedVolumeCreationParameters {
   description?: string;
@@ -377,11 +378,11 @@ export interface ApplicationScopedVolumeCreationParameters {
  * @constructor
  * Describes a volume whose lifetime is scoped to the application's lifetime.
  *
- * @member {object} creationParameters Describes parameters for creating
+ * @property {object} creationParameters Describes parameters for creating
  * application-scoped volumes.
- * @member {string} [creationParameters.description] User readable description
- * of the volume.
- * @member {string} [creationParameters.kind] Polymorphic Discriminator
+ * @property {string} [creationParameters.description] User readable
+ * description of the volume.
+ * @property {string} [creationParameters.kind] Polymorphic Discriminator
  */
 export interface ApplicationScopedVolume extends VolumeReference {
   creationParameters: ApplicationScopedVolumeCreationParameters;
@@ -394,7 +395,7 @@ export interface ApplicationScopedVolume extends VolumeReference {
  * Describes parameters for creating application-scoped volumes provided by
  * Service Fabric Volume Disks
  *
- * @member {string} sizeDisk Volume size. Possible values include: 'Small',
+ * @property {string} sizeDisk Volume size. Possible values include: 'Small',
  * 'Medium', 'Large'
  */
 export interface ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk extends ApplicationScopedVolumeCreationParameters {
@@ -407,19 +408,19 @@ export interface ApplicationScopedVolumeCreationParametersServiceFabricVolumeDis
  * @constructor
  * This type describes a volume resource.
  *
- * @member {string} [provisioningState] State of the resource.
- * @member {string} [description] User readable description of the volume.
- * @member {string} [status] Status of the volume. Possible values include:
+ * @property {string} [provisioningState] State of the resource.
+ * @property {string} [description] User readable description of the volume.
+ * @property {string} [status] Status of the volume. Possible values include:
  * 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
- * @member {string} [statusDetails] Gives additional information about the
+ * @property {string} [statusDetails] Gives additional information about the
  * current status of the volume.
- * @member {object} [azureFileParameters] This type describes a volume provided
- * by an Azure Files file share.
- * @member {string} [azureFileParameters.accountName] Name of the Azure storage
- * account for the File Share.
- * @member {string} [azureFileParameters.accountKey] Access key of the Azure
+ * @property {object} [azureFileParameters] This type describes a volume
+ * provided by an Azure Files file share.
+ * @property {string} [azureFileParameters.accountName] Name of the Azure
  * storage account for the File Share.
- * @member {string} [azureFileParameters.shareName] Name of the Azure Files
+ * @property {string} [azureFileParameters.accountKey] Access key of the Azure
+ * storage account for the File Share.
+ * @property {string} [azureFileParameters.shareName] Name of the Azure Files
  * file share that provides storage for the volume.
  */
 export interface VolumeResourceDescription extends TrackedResource {
@@ -437,7 +438,7 @@ export interface VolumeResourceDescription extends TrackedResource {
  * This type describes the properties of a network resource, including its
  * kind.
  *
- * @member {string} kind Polymorphic Discriminator
+ * @property {string} kind Polymorphic Discriminator
  */
 export interface NetworkResourcePropertiesBase extends ProvisionedResourceProperties {
   kind: string;
@@ -449,10 +450,10 @@ export interface NetworkResourcePropertiesBase extends ProvisionedResourceProper
  * @constructor
  * Describes properties of a network resource.
  *
- * @member {string} [description] User readable description of the network.
- * @member {string} [status] Status of the network. Possible values include:
+ * @property {string} [description] User readable description of the network.
+ * @property {string} [status] Status of the network. Possible values include:
  * 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
- * @member {string} [statusDetails] Gives additional information about the
+ * @property {string} [statusDetails] Gives additional information about the
  * current status of the network.
  */
 export interface NetworkResourceProperties extends NetworkResourcePropertiesBase {
@@ -468,7 +469,7 @@ export interface NetworkResourceProperties extends NetworkResourcePropertiesBase
  * Information about a Service Fabric container network local to a single
  * Service Fabric cluster.
  *
- * @member {string} [networkAddressPrefix] Address space for the local
+ * @property {string} [networkAddressPrefix] Address space for the local
  * container network.
  */
 export interface LocalNetworkResourceProperties extends NetworkResourceProperties {
@@ -481,7 +482,7 @@ export interface LocalNetworkResourceProperties extends NetworkResourcePropertie
  * @constructor
  * Describes a reference to a service endpoint.
  *
- * @member {string} [name] Name of the endpoint.
+ * @property {string} [name] Name of the endpoint.
  */
 export interface EndpointRef {
   name?: string;
@@ -493,9 +494,9 @@ export interface EndpointRef {
  * @constructor
  * Describes a network reference in a service.
  *
- * @member {string} [name] Name of the network
- * @member {array} [endpointRefs] A list of endpoints that are exposed on this
- * network.
+ * @property {string} [name] Name of the network
+ * @property {array} [endpointRefs] A list of endpoints that are exposed on
+ * this network.
  */
 export interface NetworkRef {
   name?: string;
@@ -508,12 +509,13 @@ export interface NetworkRef {
  * @constructor
  * This type describes a network resource.
  *
- * @member {object} properties Describes properties of a network resource.
- * @member {string} [properties.description] User readable description of the
+ * @property {object} properties Describes properties of a network resource.
+ * @property {string} [properties.description] User readable description of the
  * network.
- * @member {string} [properties.status] Status of the network. Possible values
- * include: 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
- * @member {string} [properties.statusDetails] Gives additional information
+ * @property {string} [properties.status] Status of the network. Possible
+ * values include: 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting',
+ * 'Failed'
+ * @property {string} [properties.statusDetails] Gives additional information
  * about the current status of the network.
  */
 export interface NetworkResourceDescription extends TrackedResource {
@@ -526,10 +528,10 @@ export interface NetworkResourceDescription extends TrackedResource {
  * @constructor
  * Describes destination endpoint for routing traffic.
  *
- * @member {string} applicationName Name of the service fabric Mesh
+ * @property {string} applicationName Name of the service fabric Mesh
  * application.
- * @member {string} serviceName service that contains the endpoint.
- * @member {string} endpointName name of the endpoint in the service.
+ * @property {string} serviceName service that contains the endpoint.
+ * @property {string} endpointName name of the endpoint in the service.
  */
 export interface GatewayDestination {
   applicationName: string;
@@ -543,16 +545,16 @@ export interface GatewayDestination {
  * @constructor
  * Describes the tcp configuration for external connectivity for this network.
  *
- * @member {string} name tcp gateway config name.
- * @member {number} port Specifies the port at which the service endpoint below
- * needs to be exposed.
- * @member {object} destination Describes destination endpoint for routing
+ * @property {string} name tcp gateway config name.
+ * @property {number} port Specifies the port at which the service endpoint
+ * below needs to be exposed.
+ * @property {object} destination Describes destination endpoint for routing
  * traffic.
- * @member {string} [destination.applicationName] Name of the service fabric
+ * @property {string} [destination.applicationName] Name of the service fabric
  * Mesh application.
- * @member {string} [destination.serviceName] service that contains the
+ * @property {string} [destination.serviceName] service that contains the
  * endpoint.
- * @member {string} [destination.endpointName] name of the endpoint in the
+ * @property {string} [destination.endpointName] name of the endpoint in the
  * service.
  */
 export interface TcpConfig {
@@ -567,8 +569,8 @@ export interface TcpConfig {
  * @constructor
  * Path to match for routing.
  *
- * @member {string} value Uri path to match for request.
- * @member {string} [rewrite] replacement string for matched part of the Uri.
+ * @property {string} value Uri path to match for request.
+ * @property {string} [rewrite] replacement string for matched part of the Uri.
  */
 export interface HttpRouteMatchPath {
   value: string;
@@ -581,10 +583,10 @@ export interface HttpRouteMatchPath {
  * @constructor
  * Describes header information for http route matching.
  *
- * @member {string} name Name of header to match in request.
- * @member {string} [value] Value of header to match in request.
- * @member {string} [type] how to match header value. Possible values include:
- * 'exact'
+ * @property {string} name Name of header to match in request.
+ * @property {string} [value] Value of header to match in request.
+ * @property {string} [type] how to match header value. Possible values
+ * include: 'exact'
  */
 export interface HttpRouteMatchHeader {
   name: string;
@@ -598,11 +600,11 @@ export interface HttpRouteMatchHeader {
  * @constructor
  * Describes a rule for http route matching.
  *
- * @member {object} path Path to match for routing.
- * @member {string} [path.value] Uri path to match for request.
- * @member {string} [path.rewrite] replacement string for matched part of the
+ * @property {object} path Path to match for routing.
+ * @property {string} [path.value] Uri path to match for request.
+ * @property {string} [path.rewrite] replacement string for matched part of the
  * Uri.
- * @member {array} [headers] headers and their values to match in request.
+ * @property {array} [headers] headers and their values to match in request.
  */
 export interface HttpRouteMatchRule {
   path: HttpRouteMatchPath;
@@ -615,21 +617,21 @@ export interface HttpRouteMatchRule {
  * @constructor
  * Describes the hostname properties for http routing.
  *
- * @member {string} name http route name.
- * @member {object} match Describes a rule for http route matching.
- * @member {object} [match.path] Path to match for routing.
- * @member {string} [match.path.value] Uri path to match for request.
- * @member {string} [match.path.rewrite] replacement string for matched part of
- * the Uri.
- * @member {array} [match.headers] headers and their values to match in
+ * @property {string} name http route name.
+ * @property {object} match Describes a rule for http route matching.
+ * @property {object} [match.path] Path to match for routing.
+ * @property {string} [match.path.value] Uri path to match for request.
+ * @property {string} [match.path.rewrite] replacement string for matched part
+ * of the Uri.
+ * @property {array} [match.headers] headers and their values to match in
  * request.
- * @member {object} destination Describes destination endpoint for routing
+ * @property {object} destination Describes destination endpoint for routing
  * traffic.
- * @member {string} [destination.applicationName] Name of the service fabric
+ * @property {string} [destination.applicationName] Name of the service fabric
  * Mesh application.
- * @member {string} [destination.serviceName] service that contains the
+ * @property {string} [destination.serviceName] service that contains the
  * endpoint.
- * @member {string} [destination.endpointName] name of the endpoint in the
+ * @property {string} [destination.endpointName] name of the endpoint in the
  * service.
  */
 export interface HttpRouteConfig {
@@ -644,8 +646,8 @@ export interface HttpRouteConfig {
  * @constructor
  * Describes the hostname properties for http routing.
  *
- * @member {string} name http hostname config name.
- * @member {array} routes Route information to use for routing. Routes are
+ * @property {string} name http hostname config name.
+ * @property {array} routes Route information to use for routing. Routes are
  * processed in the order they are specified. Specify routes that are more
  * specific before routes that can hamdle general cases.
  */
@@ -660,10 +662,10 @@ export interface HttpHostConfig {
  * @constructor
  * Describes the http configuration for external connectivity for this network.
  *
- * @member {string} name http gateway config name.
- * @member {number} port Specifies the port at which the service endpoint below
- * needs to be exposed.
- * @member {array} hosts description for routing.
+ * @property {string} name http gateway config name.
+ * @property {number} port Specifies the port at which the service endpoint
+ * below needs to be exposed.
+ * @property {array} hosts description for routing.
  */
 export interface HttpConfig {
   name: string;
@@ -677,24 +679,25 @@ export interface HttpConfig {
  * @constructor
  * Describes properties of a gateway resource.
  *
- * @member {string} [description] User readable description of the gateway.
- * @member {object} sourceNetwork Network the gateway should listen on for
+ * @property {string} [description] User readable description of the gateway.
+ * @property {object} sourceNetwork Network the gateway should listen on for
  * requests.
- * @member {string} [sourceNetwork.name] Name of the network
- * @member {array} [sourceNetwork.endpointRefs] A list of endpoints that are
+ * @property {string} [sourceNetwork.name] Name of the network
+ * @property {array} [sourceNetwork.endpointRefs] A list of endpoints that are
  * exposed on this network.
- * @member {object} destinationNetwork Network that the Application is using.
- * @member {string} [destinationNetwork.name] Name of the network
- * @member {array} [destinationNetwork.endpointRefs] A list of endpoints that
+ * @property {object} destinationNetwork Network that the Application is using.
+ * @property {string} [destinationNetwork.name] Name of the network
+ * @property {array} [destinationNetwork.endpointRefs] A list of endpoints that
  * are exposed on this network.
- * @member {array} [tcp] Configuration for tcp connectivity for this gateway.
- * @member {array} [http] Configuration for http connectivity for this gateway.
- * @member {string} [status] Status of the resource. Possible values include:
+ * @property {array} [tcp] Configuration for tcp connectivity for this gateway.
+ * @property {array} [http] Configuration for http connectivity for this
+ * gateway.
+ * @property {string} [status] Status of the resource. Possible values include:
  * 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
- * @member {string} [statusDetails] Gives additional information about the
+ * @property {string} [statusDetails] Gives additional information about the
  * current status of the gateway.
- * @member {string} [ipAddress] IP address of the gateway. This is populated in
- * the response and is ignored for incoming requests.
+ * @property {string} [ipAddress] IP address of the gateway. This is populated
+ * in the response and is ignored for incoming requests.
  */
 export interface GatewayProperties {
   description?: string;
@@ -713,25 +716,26 @@ export interface GatewayProperties {
  * @constructor
  * This type describes a gateway resource.
  *
- * @member {string} [provisioningState] State of the resource.
- * @member {string} [description] User readable description of the gateway.
- * @member {object} sourceNetwork Network the gateway should listen on for
+ * @property {string} [provisioningState] State of the resource.
+ * @property {string} [description] User readable description of the gateway.
+ * @property {object} sourceNetwork Network the gateway should listen on for
  * requests.
- * @member {string} [sourceNetwork.name] Name of the network
- * @member {array} [sourceNetwork.endpointRefs] A list of endpoints that are
+ * @property {string} [sourceNetwork.name] Name of the network
+ * @property {array} [sourceNetwork.endpointRefs] A list of endpoints that are
  * exposed on this network.
- * @member {object} destinationNetwork Network that the Application is using.
- * @member {string} [destinationNetwork.name] Name of the network
- * @member {array} [destinationNetwork.endpointRefs] A list of endpoints that
+ * @property {object} destinationNetwork Network that the Application is using.
+ * @property {string} [destinationNetwork.name] Name of the network
+ * @property {array} [destinationNetwork.endpointRefs] A list of endpoints that
  * are exposed on this network.
- * @member {array} [tcp] Configuration for tcp connectivity for this gateway.
- * @member {array} [http] Configuration for http connectivity for this gateway.
- * @member {string} [status] Status of the resource. Possible values include:
+ * @property {array} [tcp] Configuration for tcp connectivity for this gateway.
+ * @property {array} [http] Configuration for http connectivity for this
+ * gateway.
+ * @property {string} [status] Status of the resource. Possible values include:
  * 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
- * @member {string} [statusDetails] Gives additional information about the
+ * @property {string} [statusDetails] Gives additional information about the
  * current status of the gateway.
- * @member {string} [ipAddress] IP address of the gateway. This is populated in
- * the response and is ignored for incoming requests.
+ * @property {string} [ipAddress] IP address of the gateway. This is populated
+ * in the response and is ignored for incoming requests.
  */
 export interface GatewayResourceDescription extends TrackedResource {
   readonly provisioningState?: string;
@@ -751,10 +755,10 @@ export interface GatewayResourceDescription extends TrackedResource {
  * @constructor
  * Image registry credential.
  *
- * @member {string} server Docker image registry server, without protocol such
- * as `http` and `https`.
- * @member {string} username The username for the private registry.
- * @member {string} [password] The password for the private registry. The
+ * @property {string} server Docker image registry server, without protocol
+ * such as `http` and `https`.
+ * @property {string} username The username for the private registry.
+ * @property {string} [password] The password for the private registry. The
  * password is required for create or update operations, however it is not
  * returned in the get or list operations.
  */
@@ -770,8 +774,8 @@ export interface ImageRegistryCredential {
  * @constructor
  * Describes an environment variable for the container.
  *
- * @member {string} [name] The name of the environment variable.
- * @member {string} [value] The value of the environment variable.
+ * @property {string} [name] The name of the environment variable.
+ * @property {string} [value] The value of the environment variable.
  */
 export interface EnvironmentVariable {
   name?: string;
@@ -786,8 +790,8 @@ export interface EnvironmentVariable {
  * from environment variable "Fabric_SettingPath". The path for Windows
  * container is "C:\\secrets". The path for Linux container is "/var/secrets".
  *
- * @member {string} [name] The name of the setting.
- * @member {string} [value] The value of the setting.
+ * @property {string} [name] The name of the setting.
+ * @property {string} [value] The value of the setting.
  */
 export interface Setting {
   name?: string;
@@ -800,8 +804,8 @@ export interface Setting {
  * @constructor
  * Describes a container label.
  *
- * @member {string} name The name of the container label.
- * @member {string} value The value of the container label.
+ * @property {string} name The name of the container label.
+ * @property {string} value The value of the container label.
  */
 export interface ContainerLabel {
   name: string;
@@ -814,8 +818,8 @@ export interface ContainerLabel {
  * @constructor
  * Describes a container endpoint.
  *
- * @member {string} name The name of the endpoint.
- * @member {number} [port] Port used by the container.
+ * @property {string} name The name of the endpoint.
+ * @property {number} [port] Port used by the container.
  */
 export interface EndpointProperties {
   name: string;
@@ -832,8 +836,8 @@ export interface EndpointProperties {
  * limits before being restarted. Currently, the requested resources are
  * treated as limits.
  *
- * @member {number} memoryInGB The memory request in GB for this container.
- * @member {number} cpu Requested number of CPU cores. At present, only full
+ * @property {number} memoryInGB The memory request in GB for this container.
+ * @property {number} cpu Requested number of CPU cores. At present, only full
  * cores are supported.
  */
 export interface ResourceRequests {
@@ -849,9 +853,9 @@ export interface ResourceRequests {
  * the most amount of resources a container is allowed to use before being
  * restarted.
  *
- * @member {number} [memoryInGB] The memory limit in GB.
- * @member {number} [cpu] CPU limits in cores. At present, only full cores are
- * supported.
+ * @property {number} [memoryInGB] The memory limit in GB.
+ * @property {number} [cpu] CPU limits in cores. At present, only full cores
+ * are supported.
  */
 export interface ResourceLimits {
   memoryInGB?: number;
@@ -864,16 +868,16 @@ export interface ResourceLimits {
  * @constructor
  * This type describes the resource requirements for a container or a service.
  *
- * @member {object} requests Describes the requested resources for a given
+ * @property {object} requests Describes the requested resources for a given
  * container.
- * @member {number} [requests.memoryInGB] The memory request in GB for this
+ * @property {number} [requests.memoryInGB] The memory request in GB for this
  * container.
- * @member {number} [requests.cpu] Requested number of CPU cores. At present,
+ * @property {number} [requests.cpu] Requested number of CPU cores. At present,
  * only full cores are supported.
- * @member {object} [limits] Describes the maximum limits on the resources for
- * a given container.
- * @member {number} [limits.memoryInGB] The memory limit in GB.
- * @member {number} [limits.cpu] CPU limits in cores. At present, only full
+ * @property {object} [limits] Describes the maximum limits on the resources
+ * for a given container.
+ * @property {number} [limits.memoryInGB] The memory limit in GB.
+ * @property {number} [limits.cpu] CPU limits in cores. At present, only full
  * cores are supported.
  */
 export interface ResourceRequirements {
@@ -887,8 +891,8 @@ export interface ResourceRequirements {
  * @constructor
  * Reference to sinks in DiagnosticsDescription.
  *
- * @member {boolean} [enabled] Status of whether or not sinks are enabled.
- * @member {array} [sinkRefs] List of sinks to be used if enabled. References
+ * @property {boolean} [enabled] Status of whether or not sinks are enabled.
+ * @property {array} [sinkRefs] List of sinks to be used if enabled. References
  * the list of sinks in DiagnosticsDescription.
  */
 export interface DiagnosticsRef {
@@ -902,9 +906,9 @@ export interface DiagnosticsRef {
  * @constructor
  * Specifying this parameter adds support for reliable collections
  *
- * @member {string} name Name of ReliableCollection resource. Right now it's
+ * @property {string} name Name of ReliableCollection resource. Right now it's
  * not used and you can use any string.
- * @member {boolean} [doNotPersistState] False (the default) if
+ * @property {boolean} [doNotPersistState] False (the default) if
  * ReliableCollections state is persisted to disk as usual. True if you do not
  * want to persist state, in which case replication is still enabled and you
  * can use ReliableCollections as distributed cache.
@@ -920,11 +924,11 @@ export interface ReliableCollectionsRef {
  * @constructor
  * The container state.
  *
- * @member {string} [state] The state of this container
- * @member {date} [startTime] Date/time when the container state started.
- * @member {string} [exitCode] The container exit code.
- * @member {date} [finishTime] Date/time when the container state finished.
- * @member {string} [detailStatus] Human-readable status of this state.
+ * @property {string} [state] The state of this container
+ * @property {date} [startTime] Date/time when the container state started.
+ * @property {string} [exitCode] The container exit code.
+ * @property {date} [finishTime] Date/time when the container state finished.
+ * @property {string} [detailStatus] Human-readable status of this state.
  */
 export interface ContainerState {
   state?: string;
@@ -940,12 +944,12 @@ export interface ContainerState {
  * @constructor
  * A container event.
  *
- * @member {string} [name] The name of the container event.
- * @member {number} [count] The count of the event.
- * @member {string} [firstTimestamp] Date/time of the first event.
- * @member {string} [lastTimestamp] Date/time of the last event.
- * @member {string} [message] The event message
- * @member {string} [type] The event type.
+ * @property {string} [name] The name of the container event.
+ * @property {number} [count] The count of the event.
+ * @property {string} [firstTimestamp] Date/time of the first event.
+ * @property {string} [lastTimestamp] Date/time of the last event.
+ * @property {string} [message] The event message
+ * @property {string} [type] The event type.
  */
 export interface ContainerEvent {
   name?: string;
@@ -962,27 +966,27 @@ export interface ContainerEvent {
  * @constructor
  * Runtime information of a container instance.
  *
- * @member {number} [restartCount] The number of times the container has been
+ * @property {number} [restartCount] The number of times the container has been
  * restarted.
- * @member {object} [currentState] Current container instance state.
- * @member {string} [currentState.state] The state of this container
- * @member {date} [currentState.startTime] Date/time when the container state
+ * @property {object} [currentState] Current container instance state.
+ * @property {string} [currentState.state] The state of this container
+ * @property {date} [currentState.startTime] Date/time when the container state
  * started.
- * @member {string} [currentState.exitCode] The container exit code.
- * @member {date} [currentState.finishTime] Date/time when the container state
- * finished.
- * @member {string} [currentState.detailStatus] Human-readable status of this
+ * @property {string} [currentState.exitCode] The container exit code.
+ * @property {date} [currentState.finishTime] Date/time when the container
+ * state finished.
+ * @property {string} [currentState.detailStatus] Human-readable status of this
  * state.
- * @member {object} [previousState] Previous container instance state.
- * @member {string} [previousState.state] The state of this container
- * @member {date} [previousState.startTime] Date/time when the container state
- * started.
- * @member {string} [previousState.exitCode] The container exit code.
- * @member {date} [previousState.finishTime] Date/time when the container state
- * finished.
- * @member {string} [previousState.detailStatus] Human-readable status of this
- * state.
- * @member {array} [events] The events of this container instance.
+ * @property {object} [previousState] Previous container instance state.
+ * @property {string} [previousState.state] The state of this container
+ * @property {date} [previousState.startTime] Date/time when the container
+ * state started.
+ * @property {string} [previousState.exitCode] The container exit code.
+ * @property {date} [previousState.finishTime] Date/time when the container
+ * state finished.
+ * @property {string} [previousState.detailStatus] Human-readable status of
+ * this state.
+ * @property {array} [events] The events of this container instance.
  */
 export interface ContainerInstanceView {
   restartCount?: number;
@@ -997,80 +1001,83 @@ export interface ContainerInstanceView {
  * @constructor
  * Describes a container and its runtime properties.
  *
- * @member {string} name The name of the code package.
- * @member {string} image The Container image to use.
- * @member {object} [imageRegistryCredential] Image registry credential.
- * @member {string} [imageRegistryCredential.server] Docker image registry
+ * @property {string} name The name of the code package.
+ * @property {string} image The Container image to use.
+ * @property {object} [imageRegistryCredential] Image registry credential.
+ * @property {string} [imageRegistryCredential.server] Docker image registry
  * server, without protocol such as `http` and `https`.
- * @member {string} [imageRegistryCredential.username] The username for the
+ * @property {string} [imageRegistryCredential.username] The username for the
  * private registry.
- * @member {string} [imageRegistryCredential.password] The password for the
+ * @property {string} [imageRegistryCredential.password] The password for the
  * private registry. The password is required for create or update operations,
  * however it is not returned in the get or list operations.
- * @member {string} [entrypoint] Override for the default entry point in the
+ * @property {string} [entrypoint] Override for the default entry point in the
  * container.
- * @member {array} [commands] Command array to execute within the container in
- * exec form.
- * @member {array} [environmentVariables] The environment variables to set in
+ * @property {array} [commands] Command array to execute within the container
+ * in exec form.
+ * @property {array} [environmentVariables] The environment variables to set in
  * this container
- * @member {array} [settings] The settings to set in this container. The
+ * @property {array} [settings] The settings to set in this container. The
  * setting file path can be fetched from environment variable
  * "Fabric_SettingPath". The path for Windows container is "C:\\secrets". The
  * path for Linux container is "/var/secrets".
- * @member {array} [labels] The labels to set in this container.
- * @member {array} [endpoints] The endpoints exposed by this container.
- * @member {object} resources The resources required by this container.
- * @member {object} [resources.requests] Describes the requested resources for
- * a given container.
- * @member {number} [resources.requests.memoryInGB] The memory request in GB
+ * @property {array} [labels] The labels to set in this container.
+ * @property {array} [endpoints] The endpoints exposed by this container.
+ * @property {object} resources The resources required by this container.
+ * @property {object} [resources.requests] Describes the requested resources
+ * for a given container.
+ * @property {number} [resources.requests.memoryInGB] The memory request in GB
  * for this container.
- * @member {number} [resources.requests.cpu] Requested number of CPU cores. At
- * present, only full cores are supported.
- * @member {object} [resources.limits] Describes the maximum limits on the
+ * @property {number} [resources.requests.cpu] Requested number of CPU cores.
+ * At present, only full cores are supported.
+ * @property {object} [resources.limits] Describes the maximum limits on the
  * resources for a given container.
- * @member {number} [resources.limits.memoryInGB] The memory limit in GB.
- * @member {number} [resources.limits.cpu] CPU limits in cores. At present,
+ * @property {number} [resources.limits.memoryInGB] The memory limit in GB.
+ * @property {number} [resources.limits.cpu] CPU limits in cores. At present,
  * only full cores are supported.
- * @member {array} [volumeRefs] Volumes to be attached to the container. The
+ * @property {array} [volumeRefs] Volumes to be attached to the container. The
  * lifetime of these volumes is independent of the application's lifetime.
- * @member {array} [volumes] Volumes to be attached to the container. The
+ * @property {array} [volumes] Volumes to be attached to the container. The
  * lifetime of these volumes is scoped to the application's lifetime.
- * @member {object} [diagnostics] Reference to sinks in DiagnosticsDescription.
- * @member {boolean} [diagnostics.enabled] Status of whether or not sinks are
+ * @property {object} [diagnostics] Reference to sinks in
+ * DiagnosticsDescription.
+ * @property {boolean} [diagnostics.enabled] Status of whether or not sinks are
  * enabled.
- * @member {array} [diagnostics.sinkRefs] List of sinks to be used if enabled.
- * References the list of sinks in DiagnosticsDescription.
- * @member {array} [reliableCollectionsRefs] A list of ReliableCollection
+ * @property {array} [diagnostics.sinkRefs] List of sinks to be used if
+ * enabled. References the list of sinks in DiagnosticsDescription.
+ * @property {array} [reliableCollectionsRefs] A list of ReliableCollection
  * resources used by this particular code package. Please refer to
  * ReliablecollectionsRef for more details.
- * @member {object} [instanceView] Runtime information of a container instance.
- * @member {number} [instanceView.restartCount] The number of times the
+ * @property {object} [instanceView] Runtime information of a container
+ * instance.
+ * @property {number} [instanceView.restartCount] The number of times the
  * container has been restarted.
- * @member {object} [instanceView.currentState] Current container instance
+ * @property {object} [instanceView.currentState] Current container instance
  * state.
- * @member {string} [instanceView.currentState.state] The state of this
+ * @property {string} [instanceView.currentState.state] The state of this
  * container
- * @member {date} [instanceView.currentState.startTime] Date/time when the
+ * @property {date} [instanceView.currentState.startTime] Date/time when the
  * container state started.
- * @member {string} [instanceView.currentState.exitCode] The container exit
+ * @property {string} [instanceView.currentState.exitCode] The container exit
  * code.
- * @member {date} [instanceView.currentState.finishTime] Date/time when the
+ * @property {date} [instanceView.currentState.finishTime] Date/time when the
  * container state finished.
- * @member {string} [instanceView.currentState.detailStatus] Human-readable
+ * @property {string} [instanceView.currentState.detailStatus] Human-readable
  * status of this state.
- * @member {object} [instanceView.previousState] Previous container instance
+ * @property {object} [instanceView.previousState] Previous container instance
  * state.
- * @member {string} [instanceView.previousState.state] The state of this
+ * @property {string} [instanceView.previousState.state] The state of this
  * container
- * @member {date} [instanceView.previousState.startTime] Date/time when the
+ * @property {date} [instanceView.previousState.startTime] Date/time when the
  * container state started.
- * @member {string} [instanceView.previousState.exitCode] The container exit
+ * @property {string} [instanceView.previousState.exitCode] The container exit
  * code.
- * @member {date} [instanceView.previousState.finishTime] Date/time when the
+ * @property {date} [instanceView.previousState.finishTime] Date/time when the
  * container state finished.
- * @member {string} [instanceView.previousState.detailStatus] Human-readable
+ * @property {string} [instanceView.previousState.detailStatus] Human-readable
  * status of this state.
- * @member {array} [instanceView.events] The events of this container instance.
+ * @property {array} [instanceView.events] The events of this container
+ * instance.
  */
 export interface ContainerCodePackageProperties {
   name: string;
@@ -1096,7 +1103,7 @@ export interface ContainerCodePackageProperties {
  * @constructor
  * Describes the trigger for performing auto scaling operation.
  *
- * @member {string} kind Polymorphic Discriminator
+ * @property {string} kind Polymorphic Discriminator
  */
 export interface AutoScalingTrigger {
   kind: string;
@@ -1109,7 +1116,7 @@ export interface AutoScalingTrigger {
  * Describes the mechanism for performing auto scaling operation. Derived
  * classes will describe the actual mechanism.
  *
- * @member {string} kind Polymorphic Discriminator
+ * @property {string} kind Polymorphic Discriminator
  */
 export interface AutoScalingMechanism {
   kind: string;
@@ -1121,13 +1128,13 @@ export interface AutoScalingMechanism {
  * @constructor
  * Describes the auto scaling policy
  *
- * @member {string} name The name of the auto scaling policy.
- * @member {object} trigger Determines when auto scaling operation will be
+ * @property {string} name The name of the auto scaling policy.
+ * @property {object} trigger Determines when auto scaling operation will be
  * invoked.
- * @member {string} [trigger.kind] Polymorphic Discriminator
- * @member {object} mechanism The mechanism that is used to scale when auto
+ * @property {string} [trigger.kind] Polymorphic Discriminator
+ * @property {object} mechanism The mechanism that is used to scale when auto
  * scaling operation is invoked.
- * @member {string} [mechanism.kind] Polymorphic Discriminator
+ * @property {string} [mechanism.kind] Polymorphic Discriminator
  */
 export interface AutoScalingPolicy {
   name: string;
@@ -1141,32 +1148,33 @@ export interface AutoScalingPolicy {
  * @constructor
  * This type describes a service resource.
  *
- * @member {string} [provisioningState] State of the resource.
- * @member {string} osType The operation system required by the code in
+ * @property {string} [provisioningState] State of the resource.
+ * @property {string} osType The operation system required by the code in
  * service. Possible values include: 'Linux', 'Windows'
- * @member {array} codePackages Describes the set of code packages that forms
+ * @property {array} codePackages Describes the set of code packages that forms
  * the service. A code package describes the container and the properties for
  * running it. All the code packages are started together on the same host and
  * share the same context (network, process etc.).
- * @member {array} [networkRefs] The names of the private networks that this
+ * @property {array} [networkRefs] The names of the private networks that this
  * service needs to be part of.
- * @member {object} [diagnostics] Reference to sinks in DiagnosticsDescription.
- * @member {boolean} [diagnostics.enabled] Status of whether or not sinks are
+ * @property {object} [diagnostics] Reference to sinks in
+ * DiagnosticsDescription.
+ * @property {boolean} [diagnostics.enabled] Status of whether or not sinks are
  * enabled.
- * @member {array} [diagnostics.sinkRefs] List of sinks to be used if enabled.
- * References the list of sinks in DiagnosticsDescription.
- * @member {string} [description] User readable description of the service.
- * @member {number} [replicaCount] The number of replicas of the service to
+ * @property {array} [diagnostics.sinkRefs] List of sinks to be used if
+ * enabled. References the list of sinks in DiagnosticsDescription.
+ * @property {string} [description] User readable description of the service.
+ * @property {number} [replicaCount] The number of replicas of the service to
  * create. Defaults to 1 if not specified.
- * @member {array} [autoScalingPolicies] Auto scaling policies
- * @member {string} [status] Status of the service. Possible values include:
+ * @property {array} [autoScalingPolicies] Auto scaling policies
+ * @property {string} [status] Status of the service. Possible values include:
  * 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
- * @member {string} [statusDetails] Gives additional information about the
+ * @property {string} [statusDetails] Gives additional information about the
  * current status of the service.
- * @member {string} [healthState] Describes the health state of an application
- * resource. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
- * 'Unknown'
- * @member {string} [unhealthyEvaluation] When the service's health state is
+ * @property {string} [healthState] Describes the health state of an
+ * application resource. Possible values include: 'Invalid', 'Ok', 'Warning',
+ * 'Error', 'Unknown'
+ * @property {string} [unhealthyEvaluation] When the service's health state is
  * not 'Ok', this additional details from service fabric Health Manager for the
  * user to know why the service is marked unhealthy.
  */
@@ -1191,10 +1199,10 @@ export interface ServiceResourceDescription extends ManagedProxyResource {
  * @constructor
  * Properties of a DiagnosticsSink.
  *
- * @member {string} [name] Name of the sink. This value is referenced by
+ * @property {string} [name] Name of the sink. This value is referenced by
  * DiagnosticsReferenceDescription
- * @member {string} [description] A description of the sink.
- * @member {string} kind Polymorphic Discriminator
+ * @property {string} [description] A description of the sink.
+ * @property {string} kind Polymorphic Discriminator
  */
 export interface DiagnosticsSinkProperties {
   name?: string;
@@ -1208,9 +1216,9 @@ export interface DiagnosticsSinkProperties {
  * @constructor
  * Describes the diagnostics options available
  *
- * @member {array} [sinks] List of supported sinks that can be referenced.
- * @member {boolean} [enabled] Status of whether or not sinks are enabled.
- * @member {array} [defaultSinkRefs] The sinks to be used if diagnostics is
+ * @property {array} [sinks] List of supported sinks that can be referenced.
+ * @property {boolean} [enabled] Status of whether or not sinks are enabled.
+ * @property {array} [defaultSinkRefs] The sinks to be used if diagnostics is
  * enabled. Sink choices can be overridden at the service and code package
  * level.
  */
@@ -1226,31 +1234,32 @@ export interface DiagnosticsDescription {
  * @constructor
  * Describes properties of a application resource.
  *
- * @member {string} [description] User readable description of the application.
- * @member {array} [services] Describes the services in the application. This
+ * @property {string} [description] User readable description of the
+ * application.
+ * @property {array} [services] Describes the services in the application. This
  * property is used to create or modify services of the application. On get
  * only the name of the service is returned. The service description can be
  * obtained by querying for the service resource.
- * @member {object} [diagnostics] Describes the diagnostics definition and
+ * @property {object} [diagnostics] Describes the diagnostics definition and
  * usage for an application resource.
- * @member {array} [diagnostics.sinks] List of supported sinks that can be
+ * @property {array} [diagnostics.sinks] List of supported sinks that can be
  * referenced.
- * @member {boolean} [diagnostics.enabled] Status of whether or not sinks are
+ * @property {boolean} [diagnostics.enabled] Status of whether or not sinks are
  * enabled.
- * @member {array} [diagnostics.defaultSinkRefs] The sinks to be used if
+ * @property {array} [diagnostics.defaultSinkRefs] The sinks to be used if
  * diagnostics is enabled. Sink choices can be overridden at the service and
  * code package level.
- * @member {string} [debugParams] Internal - used by Visual Studio to setup the
- * debugging session on the local development environment.
- * @member {array} [serviceNames] Names of the services in the application.
- * @member {string} [status] Status of the application. Possible values
+ * @property {string} [debugParams] Internal - used by Visual Studio to setup
+ * the debugging session on the local development environment.
+ * @property {array} [serviceNames] Names of the services in the application.
+ * @property {string} [status] Status of the application. Possible values
  * include: 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
- * @member {string} [statusDetails] Gives additional information about the
+ * @property {string} [statusDetails] Gives additional information about the
  * current status of the application.
- * @member {string} [healthState] Describes the health state of an application
- * resource. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
- * 'Unknown'
- * @member {string} [unhealthyEvaluation] When the application's health state
+ * @property {string} [healthState] Describes the health state of an
+ * application resource. Possible values include: 'Invalid', 'Ok', 'Warning',
+ * 'Error', 'Unknown'
+ * @property {string} [unhealthyEvaluation] When the application's health state
  * is not 'Ok', this additional details from service fabric Health Manager for
  * the user to know why the application is marked unhealthy.
  */
@@ -1272,14 +1281,14 @@ export interface ApplicationProperties {
  * @constructor
  * Diagnostics settings for Geneva.
  *
- * @member {string} [accountName] Azure Internal monitoring pipeline account.
- * @member {string} [namespace] Azure Internal monitoring pipeline account
+ * @property {string} [accountName] Azure Internal monitoring pipeline account.
+ * @property {string} [namespace] Azure Internal monitoring pipeline account
  * namespace.
- * @member {string} [maConfigUrl] Azure Internal monitoring agent
+ * @property {string} [maConfigUrl] Azure Internal monitoring agent
  * configuration.
- * @member {object} [fluentdConfigUrl] Azure Internal monitoring agent fluentd
- * configuration.
- * @member {string} [autoKeyConfigUrl] Azure Internal monitoring pipeline
+ * @property {object} [fluentdConfigUrl] Azure Internal monitoring agent
+ * fluentd configuration.
+ * @property {string} [autoKeyConfigUrl] Azure Internal monitoring pipeline
  * autokey associated with the certificate.
  */
 export interface AzureInternalMonitoringPipelineSinkDescription extends DiagnosticsSinkProperties {
@@ -1296,32 +1305,33 @@ export interface AzureInternalMonitoringPipelineSinkDescription extends Diagnost
  * @constructor
  * This type describes an application resource.
  *
- * @member {string} [provisioningState] State of the resource.
- * @member {string} [description] User readable description of the application.
- * @member {array} [services] Describes the services in the application. This
+ * @property {string} [provisioningState] State of the resource.
+ * @property {string} [description] User readable description of the
+ * application.
+ * @property {array} [services] Describes the services in the application. This
  * property is used to create or modify services of the application. On get
  * only the name of the service is returned. The service description can be
  * obtained by querying for the service resource.
- * @member {object} [diagnostics] Describes the diagnostics definition and
+ * @property {object} [diagnostics] Describes the diagnostics definition and
  * usage for an application resource.
- * @member {array} [diagnostics.sinks] List of supported sinks that can be
+ * @property {array} [diagnostics.sinks] List of supported sinks that can be
  * referenced.
- * @member {boolean} [diagnostics.enabled] Status of whether or not sinks are
+ * @property {boolean} [diagnostics.enabled] Status of whether or not sinks are
  * enabled.
- * @member {array} [diagnostics.defaultSinkRefs] The sinks to be used if
+ * @property {array} [diagnostics.defaultSinkRefs] The sinks to be used if
  * diagnostics is enabled. Sink choices can be overridden at the service and
  * code package level.
- * @member {string} [debugParams] Internal - used by Visual Studio to setup the
- * debugging session on the local development environment.
- * @member {array} [serviceNames] Names of the services in the application.
- * @member {string} [status] Status of the application. Possible values
+ * @property {string} [debugParams] Internal - used by Visual Studio to setup
+ * the debugging session on the local development environment.
+ * @property {array} [serviceNames] Names of the services in the application.
+ * @property {string} [status] Status of the application. Possible values
  * include: 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
- * @member {string} [statusDetails] Gives additional information about the
+ * @property {string} [statusDetails] Gives additional information about the
  * current status of the application.
- * @member {string} [healthState] Describes the health state of an application
- * resource. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
- * 'Unknown'
- * @member {string} [unhealthyEvaluation] When the application's health state
+ * @property {string} [healthState] Describes the health state of an
+ * application resource. Possible values include: 'Invalid', 'Ok', 'Warning',
+ * 'Error', 'Unknown'
+ * @property {string} [unhealthyEvaluation] When the application's health state
  * is not 'Ok', this additional details from service fabric Health Manager for
  * the user to know why the application is marked unhealthy.
  */
@@ -1345,11 +1355,11 @@ export interface ApplicationResourceDescription extends TrackedResource {
  * Describes the horizontal auto scaling mechanism that adds or removes
  * replicas (containers or container groups).
  *
- * @member {number} minCount Minimum number of containers (scale down won't be
- * performed below this number).
- * @member {number} maxCount Maximum number of containers (scale up won't be
+ * @property {number} minCount Minimum number of containers (scale down won't
+ * be performed below this number).
+ * @property {number} maxCount Maximum number of containers (scale up won't be
  * performed above this number).
- * @member {number} scaleIncrement Each time auto scaling is performed, this
+ * @property {number} scaleIncrement Each time auto scaling is performed, this
  * number of containers will be added or removed.
  */
 export interface AddRemoveReplicaScalingMechanism extends AutoScalingMechanism {
@@ -1365,7 +1375,7 @@ export interface AddRemoveReplicaScalingMechanism extends AutoScalingMechanism {
  * Describes the metric that is used for triggering auto scaling operation.
  * Derived classes will describe resources or metrics.
  *
- * @member {string} kind Polymorphic Discriminator
+ * @property {string} kind Polymorphic Discriminator
  */
 export interface AutoScalingMetric {
   kind: string;
@@ -1377,8 +1387,8 @@ export interface AutoScalingMetric {
  * @constructor
  * Describes the resource that is used for triggering auto scaling.
  *
- * @member {string} name Name of the resource. Possible values include: 'cpu',
- * 'memoryInGB'
+ * @property {string} name Name of the resource. Possible values include:
+ * 'cpu', 'memoryInGB'
  */
 export interface AutoScalingResourceMetric extends AutoScalingMetric {
   name: string;
@@ -1390,18 +1400,18 @@ export interface AutoScalingResourceMetric extends AutoScalingMetric {
  * @constructor
  * Describes properties of a service resource.
  *
- * @member {string} [description] User readable description of the service.
- * @member {number} [replicaCount] The number of replicas of the service to
+ * @property {string} [description] User readable description of the service.
+ * @property {number} [replicaCount] The number of replicas of the service to
  * create. Defaults to 1 if not specified.
- * @member {array} [autoScalingPolicies] Auto scaling policies
- * @member {string} [status] Status of the service. Possible values include:
+ * @property {array} [autoScalingPolicies] Auto scaling policies
+ * @property {string} [status] Status of the service. Possible values include:
  * 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
- * @member {string} [statusDetails] Gives additional information about the
+ * @property {string} [statusDetails] Gives additional information about the
  * current status of the service.
- * @member {string} [healthState] Describes the health state of an application
- * resource. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
- * 'Unknown'
- * @member {string} [unhealthyEvaluation] When the service's health state is
+ * @property {string} [healthState] Describes the health state of an
+ * application resource. Possible values include: 'Invalid', 'Ok', 'Warning',
+ * 'Error', 'Unknown'
+ * @property {string} [unhealthyEvaluation] When the service's health state is
  * not 'Ok', this additional details from service fabric Health Manager for the
  * user to know why the service is marked unhealthy.
  */
@@ -1421,19 +1431,20 @@ export interface ServiceProperties {
  * @constructor
  * Describes the properties of a service replica.
  *
- * @member {string} osType The operation system required by the code in
+ * @property {string} osType The operation system required by the code in
  * service. Possible values include: 'Linux', 'Windows'
- * @member {array} codePackages Describes the set of code packages that forms
+ * @property {array} codePackages Describes the set of code packages that forms
  * the service. A code package describes the container and the properties for
  * running it. All the code packages are started together on the same host and
  * share the same context (network, process etc.).
- * @member {array} [networkRefs] The names of the private networks that this
+ * @property {array} [networkRefs] The names of the private networks that this
  * service needs to be part of.
- * @member {object} [diagnostics] Reference to sinks in DiagnosticsDescription.
- * @member {boolean} [diagnostics.enabled] Status of whether or not sinks are
+ * @property {object} [diagnostics] Reference to sinks in
+ * DiagnosticsDescription.
+ * @property {boolean} [diagnostics.enabled] Status of whether or not sinks are
  * enabled.
- * @member {array} [diagnostics.sinkRefs] List of sinks to be used if enabled.
- * References the list of sinks in DiagnosticsDescription.
+ * @property {array} [diagnostics.sinkRefs] List of sinks to be used if
+ * enabled. References the list of sinks in DiagnosticsDescription.
  */
 export interface ServiceReplicaProperties {
   osType: string;
@@ -1448,7 +1459,7 @@ export interface ServiceReplicaProperties {
  * @constructor
  * Describes a replica of a service resource.
  *
- * @member {string} replicaName Name of the replica.
+ * @property {string} replicaName Name of the replica.
  */
 export interface ServiceReplicaDescription extends ServiceReplicaProperties {
   replicaName: string;
@@ -1460,13 +1471,14 @@ export interface ServiceReplicaDescription extends ServiceReplicaProperties {
  * @constructor
  * Describes the average load trigger used for auto scaling.
  *
- * @member {object} metric Description of the metric that is used for scaling.
- * @member {string} [metric.kind] Polymorphic Discriminator
- * @member {number} lowerLoadThreshold Lower load threshold (if average load is
- * below this threshold, service will scale down).
- * @member {number} upperLoadThreshold Upper load threshold (if average load is
- * above this threshold, service will scale up).
- * @member {number} scaleIntervalInSeconds Scale interval that indicates how
+ * @property {object} metric Description of the metric that is used for
+ * scaling.
+ * @property {string} [metric.kind] Polymorphic Discriminator
+ * @property {number} lowerLoadThreshold Lower load threshold (if average load
+ * is below this threshold, service will scale down).
+ * @property {number} upperLoadThreshold Upper load threshold (if average load
+ * is above this threshold, service will scale up).
+ * @property {number} scaleIntervalInSeconds Scale interval that indicates how
  * often will this trigger be checked.
  */
 export interface AverageLoadScalingTrigger extends AutoScalingTrigger {
@@ -1482,7 +1494,7 @@ export interface AverageLoadScalingTrigger extends AutoScalingTrigger {
  * @constructor
  * Container logs.
  *
- * @member {string} [content] Container logs.
+ * @property {string} [content] Container logs.
  */
 export interface ContainerLogs {
   content?: string;
@@ -1495,7 +1507,7 @@ export interface ContainerLogs {
  * @constructor
  * Describes the result of the request to list Service Fabric operations.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<OperationResult> {
@@ -1508,7 +1520,7 @@ export interface OperationListResult extends Array<OperationResult> {
  * @constructor
  * A pageable list of secret resources.
  *
- * @member {string} [nextLink] URI to fetch the next page of the list.
+ * @property {string} [nextLink] URI to fetch the next page of the list.
  */
 export interface SecretResourceDescriptionList extends Array<SecretResourceDescription> {
   nextLink?: string;
@@ -1521,7 +1533,7 @@ export interface SecretResourceDescriptionList extends Array<SecretResourceDescr
  * A pageable list of values of a secret resource. The information does not
  * include only the name of the value and not the actual unecrypted value.
  *
- * @member {string} [nextLink] URI to fetch the next page of the list.
+ * @property {string} [nextLink] URI to fetch the next page of the list.
  */
 export interface SecretValueResourceDescriptionList extends Array<SecretValueResourceDescription> {
   nextLink?: string;
@@ -1533,7 +1545,7 @@ export interface SecretValueResourceDescriptionList extends Array<SecretValueRes
  * @constructor
  * A pageable list of volume resources.
  *
- * @member {string} [nextLink] URI to fetch the next page of the list.
+ * @property {string} [nextLink] URI to fetch the next page of the list.
  */
 export interface VolumeResourceDescriptionList extends Array<VolumeResourceDescription> {
   nextLink?: string;
@@ -1545,7 +1557,7 @@ export interface VolumeResourceDescriptionList extends Array<VolumeResourceDescr
  * @constructor
  * A pageable list of network resources.
  *
- * @member {string} [nextLink] URI to fetch the next page of the list.
+ * @property {string} [nextLink] URI to fetch the next page of the list.
  */
 export interface NetworkResourceDescriptionList extends Array<NetworkResourceDescription> {
   nextLink?: string;
@@ -1557,7 +1569,7 @@ export interface NetworkResourceDescriptionList extends Array<NetworkResourceDes
  * @constructor
  * A pageable list of gateway resources.
  *
- * @member {string} [nextLink] URI to fetch the next page of the list.
+ * @property {string} [nextLink] URI to fetch the next page of the list.
  */
 export interface GatewayResourceDescriptionList extends Array<GatewayResourceDescription> {
   nextLink?: string;
@@ -1569,7 +1581,7 @@ export interface GatewayResourceDescriptionList extends Array<GatewayResourceDes
  * @constructor
  * A pageable list of application resources.
  *
- * @member {string} [nextLink] URI to fetch the next page of the list.
+ * @property {string} [nextLink] URI to fetch the next page of the list.
  */
 export interface ApplicationResourceDescriptionList extends Array<ApplicationResourceDescription> {
   nextLink?: string;
@@ -1581,7 +1593,7 @@ export interface ApplicationResourceDescriptionList extends Array<ApplicationRes
  * @constructor
  * A pageable list of service resources.
  *
- * @member {string} [nextLink] URI to fetch the next page of the list.
+ * @property {string} [nextLink] URI to fetch the next page of the list.
  */
 export interface ServiceResourceDescriptionList extends Array<ServiceResourceDescription> {
   nextLink?: string;
@@ -1593,7 +1605,7 @@ export interface ServiceResourceDescriptionList extends Array<ServiceResourceDes
  * @constructor
  * A pageable list of service replicas.
  *
- * @member {string} [nextLink] URI to fetch the next page of the list.
+ * @property {string} [nextLink] URI to fetch the next page of the list.
  */
 export interface ServiceReplicaDescriptionList extends Array<ServiceReplicaDescription> {
   nextLink?: string;

@@ -17,7 +17,7 @@ import * as moment from "moment";
  * @constructor
  * The parameters for a single metrics query
  *
- * @member {string} metricId Possible values include: 'requests/count',
+ * @property {string} metricId Possible values include: 'requests/count',
  * 'requests/duration', 'requests/failed', 'users/count',
  * 'users/authenticated', 'pageViews/count', 'pageViews/duration',
  * 'client/processingDuration', 'client/receiveDuration',
@@ -36,13 +36,13 @@ import * as moment from "moment";
  * 'availabilityResults/availabilityPercentage',
  * 'availabilityResults/duration', 'billing/telemetryCount',
  * 'customEvents/count'
- * @member {string} [timespan]
- * @member {array} [aggregation]
- * @member {moment.duration} [interval]
- * @member {array} [segment]
- * @member {number} [top]
- * @member {string} [orderby]
- * @member {string} [filter]
+ * @property {string} [timespan]
+ * @property {array} [aggregation]
+ * @property {moment.duration} [interval]
+ * @property {array} [segment]
+ * @property {number} [top]
+ * @property {string} [orderby]
+ * @property {string} [filter]
  */
 export interface MetricsPostBodySchemaParameters {
   metricId: string;
@@ -61,11 +61,11 @@ export interface MetricsPostBodySchemaParameters {
  * @constructor
  * A metric request
  *
- * @member {string} id An identifier for this query.  Must be unique within the
- * post body of the request.  This identifier will be the 'id' property of the
- * response object representing this query.
- * @member {object} parameters The parameters for a single metrics query
- * @member {string} [parameters.metricId] Possible values include:
+ * @property {string} id An identifier for this query.  Must be unique within
+ * the post body of the request.  This identifier will be the 'id' property of
+ * the response object representing this query.
+ * @property {object} parameters The parameters for a single metrics query
+ * @property {string} [parameters.metricId] Possible values include:
  * 'requests/count', 'requests/duration', 'requests/failed', 'users/count',
  * 'users/authenticated', 'pageViews/count', 'pageViews/duration',
  * 'client/processingDuration', 'client/receiveDuration',
@@ -84,13 +84,13 @@ export interface MetricsPostBodySchemaParameters {
  * 'availabilityResults/availabilityPercentage',
  * 'availabilityResults/duration', 'billing/telemetryCount',
  * 'customEvents/count'
- * @member {string} [parameters.timespan]
- * @member {array} [parameters.aggregation]
- * @member {moment.duration} [parameters.interval]
- * @member {array} [parameters.segment]
- * @member {number} [parameters.top]
- * @member {string} [parameters.orderby]
- * @member {string} [parameters.filter]
+ * @property {string} [parameters.timespan]
+ * @property {array} [parameters.aggregation]
+ * @property {moment.duration} [parameters.interval]
+ * @property {array} [parameters.segment]
+ * @property {number} [parameters.top]
+ * @property {string} [parameters.orderby]
+ * @property {string} [parameters.filter]
  */
 export interface MetricsPostBodySchema {
   id: string;
@@ -103,11 +103,11 @@ export interface MetricsPostBodySchema {
  * @constructor
  * A metric segment
  *
- * @member {date} [start] Start time of the metric segment (only when an
+ * @property {date} [start] Start time of the metric segment (only when an
  * interval was specified).
- * @member {date} [end] Start time of the metric segment (only when an interval
- * was specified).
- * @member {array} [segments] Segmented metric data (if further segmented).
+ * @property {date} [end] Start time of the metric segment (only when an
+ * interval was specified).
+ * @property {array} [segments] Segmented metric data (if further segmented).
  */
 export interface MetricsSegmentInfo {
   start?: Date;
@@ -126,11 +126,11 @@ export interface MetricsSegmentInfo {
  * @constructor
  * A metric result data.
  *
- * @member {date} [start] Start time of the metric.
- * @member {date} [end] Start time of the metric.
- * @member {moment.duration} [interval] The interval used to segment the metric
- * data.
- * @member {array} [segments] Segmented metric data (if segmented).
+ * @property {date} [start] Start time of the metric.
+ * @property {date} [end] Start time of the metric.
+ * @property {moment.duration} [interval] The interval used to segment the
+ * metric data.
+ * @property {array} [segments] Segmented metric data (if segmented).
  */
 export interface MetricsResultInfo {
   start?: Date;
@@ -150,12 +150,12 @@ export interface MetricsResultInfo {
  * @constructor
  * A metric result.
  *
- * @member {object} [value]
- * @member {date} [value.start] Start time of the metric.
- * @member {date} [value.end] Start time of the metric.
- * @member {moment.duration} [value.interval] The interval used to segment the
- * metric data.
- * @member {array} [value.segments] Segmented metric data (if segmented).
+ * @property {object} [value]
+ * @property {date} [value.start] Start time of the metric.
+ * @property {date} [value.end] Start time of the metric.
+ * @property {moment.duration} [value.interval] The interval used to segment
+ * the metric data.
+ * @property {array} [value.segments] Segmented metric data (if segmented).
  */
 export interface MetricsResult {
   value?: MetricsResultInfo;
@@ -165,15 +165,16 @@ export interface MetricsResult {
  * @class
  * Initializes a new instance of the MetricsResultsItem class.
  * @constructor
- * @member {string} id The specified ID for this metric.
- * @member {number} status The HTTP status code of this metric query.
- * @member {object} body The results of this metric query.
- * @member {object} [body.value]
- * @member {date} [body.value.start] Start time of the metric.
- * @member {date} [body.value.end] Start time of the metric.
- * @member {moment.duration} [body.value.interval] The interval used to segment
- * the metric data.
- * @member {array} [body.value.segments] Segmented metric data (if segmented).
+ * @property {string} id The specified ID for this metric.
+ * @property {number} status The HTTP status code of this metric query.
+ * @property {object} body The results of this metric query.
+ * @property {object} [body.value]
+ * @property {date} [body.value.start] Start time of the metric.
+ * @property {date} [body.value.end] Start time of the metric.
+ * @property {moment.duration} [body.value.interval] The interval used to
+ * segment the metric data.
+ * @property {array} [body.value.segments] Segmented metric data (if
+ * segmented).
  */
 export interface MetricsResultsItem {
   id: string;
@@ -187,15 +188,15 @@ export interface MetricsResultsItem {
  * @constructor
  * @summary Error details.
  *
- * @member {string} code The error's code.
- * @member {string} message A human readable error message.
- * @member {string} [target] Indicates which property in the request is
+ * @property {string} code The error's code.
+ * @property {string} message A human readable error message.
+ * @property {string} [target] Indicates which property in the request is
  * responsible for the error.
- * @member {string} [value] Indicates which value in 'target' is responsible
+ * @property {string} [value] Indicates which value in 'target' is responsible
  * for the error.
- * @member {array} [resources] Indicates resources which were responsible for
+ * @property {array} [resources] Indicates resources which were responsible for
  * the error.
- * @member {object} [additionalProperties]
+ * @property {object} [additionalProperties]
  */
 export interface ErrorDetail {
   code: string;
@@ -212,11 +213,11 @@ export interface ErrorDetail {
  * @constructor
  * @summary The code and message for an error.
  *
- * @member {string} code A machine readable error code.
- * @member {string} message A human readable error message.
- * @member {array} [details] error details.
- * @member {object} [innererror] Inner error details if they exist.
- * @member {object} [additionalProperties]
+ * @property {string} code A machine readable error code.
+ * @property {string} message A human readable error message.
+ * @property {array} [details] error details.
+ * @property {object} [innererror] Inner error details if they exist.
+ * @property {object} [additionalProperties]
  */
 export interface ErrorInfo {
   code: string;
@@ -232,7 +233,7 @@ export interface ErrorInfo {
  * @constructor
  * Custom dimensions of the event
  *
- * @member {object} [additionalProperties]
+ * @property {object} [additionalProperties]
  */
 export interface EventsResultDataCustomDimensions {
   additionalProperties?: any;
@@ -244,7 +245,7 @@ export interface EventsResultDataCustomDimensions {
  * @constructor
  * Custom measurements of the event
  *
- * @member {object} [additionalProperties]
+ * @property {object} [additionalProperties]
  */
 export interface EventsResultDataCustomMeasurements {
   additionalProperties?: any;
@@ -256,10 +257,10 @@ export interface EventsResultDataCustomMeasurements {
  * @constructor
  * Operation info for an event result
  *
- * @member {string} [name] Name of the operation
- * @member {string} [id] ID of the operation
- * @member {string} [parentId] Parent ID of the operation
- * @member {string} [syntheticSource] Synthetic source of the operation
+ * @property {string} [name] Name of the operation
+ * @property {string} [id] ID of the operation
+ * @property {string} [parentId] Parent ID of the operation
+ * @property {string} [syntheticSource] Synthetic source of the operation
  */
 export interface EventsOperationInfo {
   name?: string;
@@ -274,7 +275,7 @@ export interface EventsOperationInfo {
  * @constructor
  * Session info for an event result
  *
- * @member {string} [id] ID of the session
+ * @property {string} [id] ID of the session
  */
 export interface EventsSessionInfo {
   id?: string;
@@ -286,9 +287,9 @@ export interface EventsSessionInfo {
  * @constructor
  * User info for an event result
  *
- * @member {string} [id] ID of the user
- * @member {string} [accountId] Account ID of the user
- * @member {string} [authenticatedId] Authenticated ID of the user
+ * @property {string} [id] ID of the user
+ * @property {string} [accountId] Account ID of the user
+ * @property {string} [authenticatedId] Authenticated ID of the user
  */
 export interface EventsUserInfo {
   id?: string;
@@ -302,8 +303,8 @@ export interface EventsUserInfo {
  * @constructor
  * Cloud info for an event result
  *
- * @member {string} [roleName] Role name of the cloud
- * @member {string} [roleInstance] Role instance of the cloud
+ * @property {string} [roleName] Role name of the cloud
+ * @property {string} [roleInstance] Role instance of the cloud
  */
 export interface EventsCloudInfo {
   roleName?: string;
@@ -316,10 +317,10 @@ export interface EventsCloudInfo {
  * @constructor
  * AI related application info for an event result
  *
- * @member {string} [iKey] iKey of the app
- * @member {string} [appName] Name of the application
- * @member {string} [appId] ID of the application
- * @member {string} [sdkVersion] SDK version of the application
+ * @property {string} [iKey] iKey of the app
+ * @property {string} [appName] Name of the application
+ * @property {string} [appId] ID of the application
+ * @property {string} [sdkVersion] SDK version of the application
  */
 export interface EventsAiInfo {
   iKey?: string;
@@ -334,7 +335,7 @@ export interface EventsAiInfo {
  * @constructor
  * Application info for an event result
  *
- * @member {string} [version] Version of the application
+ * @property {string} [version] Version of the application
  */
 export interface EventsApplicationInfo {
   version?: string;
@@ -346,14 +347,14 @@ export interface EventsApplicationInfo {
  * @constructor
  * Client info for an event result
  *
- * @member {string} [model] Model of the client
- * @member {string} [os] Operating system of the client
- * @member {string} [type] Type of the client
- * @member {string} [browser] Browser of the client
- * @member {string} [ip] IP address of the client
- * @member {string} [city] City of the client
- * @member {string} [stateOrProvince] State or province of the client
- * @member {string} [countryOrRegion] Country or region of the client
+ * @property {string} [model] Model of the client
+ * @property {string} [os] Operating system of the client
+ * @property {string} [type] Type of the client
+ * @property {string} [browser] Browser of the client
+ * @property {string} [ip] IP address of the client
+ * @property {string} [city] City of the client
+ * @property {string} [stateOrProvince] State or province of the client
+ * @property {string} [countryOrRegion] Country or region of the client
  */
 export interface EventsClientInfo {
   model?: string;
@@ -372,45 +373,45 @@ export interface EventsClientInfo {
  * @constructor
  * Events query result data.
  *
- * @member {string} [id] The unique ID for this event.
- * @member {number} [count] Count of the event
- * @member {date} [timestamp] Timestamp of the event
- * @member {object} [customDimensions] Custom dimensions of the event
- * @member {object} [customDimensions.additionalProperties]
- * @member {object} [customMeasurements] Custom measurements of the event
- * @member {object} [customMeasurements.additionalProperties]
- * @member {object} [operation] Operation info of the event
- * @member {string} [operation.name] Name of the operation
- * @member {string} [operation.id] ID of the operation
- * @member {string} [operation.parentId] Parent ID of the operation
- * @member {string} [operation.syntheticSource] Synthetic source of the
+ * @property {string} [id] The unique ID for this event.
+ * @property {number} [count] Count of the event
+ * @property {date} [timestamp] Timestamp of the event
+ * @property {object} [customDimensions] Custom dimensions of the event
+ * @property {object} [customDimensions.additionalProperties]
+ * @property {object} [customMeasurements] Custom measurements of the event
+ * @property {object} [customMeasurements.additionalProperties]
+ * @property {object} [operation] Operation info of the event
+ * @property {string} [operation.name] Name of the operation
+ * @property {string} [operation.id] ID of the operation
+ * @property {string} [operation.parentId] Parent ID of the operation
+ * @property {string} [operation.syntheticSource] Synthetic source of the
  * operation
- * @member {object} [session] Session info of the event
- * @member {string} [session.id] ID of the session
- * @member {object} [user] User info of the event
- * @member {string} [user.id] ID of the user
- * @member {string} [user.accountId] Account ID of the user
- * @member {string} [user.authenticatedId] Authenticated ID of the user
- * @member {object} [cloud] Cloud info of the event
- * @member {string} [cloud.roleName] Role name of the cloud
- * @member {string} [cloud.roleInstance] Role instance of the cloud
- * @member {object} [ai] AI info of the event
- * @member {string} [ai.iKey] iKey of the app
- * @member {string} [ai.appName] Name of the application
- * @member {string} [ai.appId] ID of the application
- * @member {string} [ai.sdkVersion] SDK version of the application
- * @member {object} [application] Application info of the event
- * @member {string} [application.version] Version of the application
- * @member {object} [client] Client info of the event
- * @member {string} [client.model] Model of the client
- * @member {string} [client.os] Operating system of the client
- * @member {string} [client.type] Type of the client
- * @member {string} [client.browser] Browser of the client
- * @member {string} [client.ip] IP address of the client
- * @member {string} [client.city] City of the client
- * @member {string} [client.stateOrProvince] State or province of the client
- * @member {string} [client.countryOrRegion] Country or region of the client
- * @member {string} type Polymorphic Discriminator
+ * @property {object} [session] Session info of the event
+ * @property {string} [session.id] ID of the session
+ * @property {object} [user] User info of the event
+ * @property {string} [user.id] ID of the user
+ * @property {string} [user.accountId] Account ID of the user
+ * @property {string} [user.authenticatedId] Authenticated ID of the user
+ * @property {object} [cloud] Cloud info of the event
+ * @property {string} [cloud.roleName] Role name of the cloud
+ * @property {string} [cloud.roleInstance] Role instance of the cloud
+ * @property {object} [ai] AI info of the event
+ * @property {string} [ai.iKey] iKey of the app
+ * @property {string} [ai.appName] Name of the application
+ * @property {string} [ai.appId] ID of the application
+ * @property {string} [ai.sdkVersion] SDK version of the application
+ * @property {object} [application] Application info of the event
+ * @property {string} [application.version] Version of the application
+ * @property {object} [client] Client info of the event
+ * @property {string} [client.model] Model of the client
+ * @property {string} [client.os] Operating system of the client
+ * @property {string} [client.type] Type of the client
+ * @property {string} [client.browser] Browser of the client
+ * @property {string} [client.ip] IP address of the client
+ * @property {string} [client.city] City of the client
+ * @property {string} [client.stateOrProvince] State or province of the client
+ * @property {string} [client.countryOrRegion] Country or region of the client
+ * @property {string} type Polymorphic Discriminator
  */
 export interface EventsResultData {
   id?: string;
@@ -434,10 +435,10 @@ export interface EventsResultData {
  * @constructor
  * An events query result.
  *
- * @member {string} [odatacontext] OData context metadata endpoint for this
+ * @property {string} [odatacontext] OData context metadata endpoint for this
  * response
- * @member {array} [aimessages] OData messages for this response.
- * @member {array} [value] Contents of the events query result.
+ * @property {array} [aimessages] OData messages for this response.
+ * @property {array} [value] Contents of the events query result.
  */
 export interface EventsResults {
   odatacontext?: string;
@@ -451,49 +452,50 @@ export interface EventsResults {
  * @constructor
  * An event query result.
  *
- * @member {array} [aimessages] OData messages for this response.
- * @member {object} [value]
- * @member {string} [value.id] The unique ID for this event.
- * @member {number} [value.count] Count of the event
- * @member {date} [value.timestamp] Timestamp of the event
- * @member {object} [value.customDimensions] Custom dimensions of the event
- * @member {object} [value.customDimensions.additionalProperties]
- * @member {object} [value.customMeasurements] Custom measurements of the event
- * @member {object} [value.customMeasurements.additionalProperties]
- * @member {object} [value.operation] Operation info of the event
- * @member {string} [value.operation.name] Name of the operation
- * @member {string} [value.operation.id] ID of the operation
- * @member {string} [value.operation.parentId] Parent ID of the operation
- * @member {string} [value.operation.syntheticSource] Synthetic source of the
+ * @property {array} [aimessages] OData messages for this response.
+ * @property {object} [value]
+ * @property {string} [value.id] The unique ID for this event.
+ * @property {number} [value.count] Count of the event
+ * @property {date} [value.timestamp] Timestamp of the event
+ * @property {object} [value.customDimensions] Custom dimensions of the event
+ * @property {object} [value.customDimensions.additionalProperties]
+ * @property {object} [value.customMeasurements] Custom measurements of the
+ * event
+ * @property {object} [value.customMeasurements.additionalProperties]
+ * @property {object} [value.operation] Operation info of the event
+ * @property {string} [value.operation.name] Name of the operation
+ * @property {string} [value.operation.id] ID of the operation
+ * @property {string} [value.operation.parentId] Parent ID of the operation
+ * @property {string} [value.operation.syntheticSource] Synthetic source of the
  * operation
- * @member {object} [value.session] Session info of the event
- * @member {string} [value.session.id] ID of the session
- * @member {object} [value.user] User info of the event
- * @member {string} [value.user.id] ID of the user
- * @member {string} [value.user.accountId] Account ID of the user
- * @member {string} [value.user.authenticatedId] Authenticated ID of the user
- * @member {object} [value.cloud] Cloud info of the event
- * @member {string} [value.cloud.roleName] Role name of the cloud
- * @member {string} [value.cloud.roleInstance] Role instance of the cloud
- * @member {object} [value.ai] AI info of the event
- * @member {string} [value.ai.iKey] iKey of the app
- * @member {string} [value.ai.appName] Name of the application
- * @member {string} [value.ai.appId] ID of the application
- * @member {string} [value.ai.sdkVersion] SDK version of the application
- * @member {object} [value.application] Application info of the event
- * @member {string} [value.application.version] Version of the application
- * @member {object} [value.client] Client info of the event
- * @member {string} [value.client.model] Model of the client
- * @member {string} [value.client.os] Operating system of the client
- * @member {string} [value.client.type] Type of the client
- * @member {string} [value.client.browser] Browser of the client
- * @member {string} [value.client.ip] IP address of the client
- * @member {string} [value.client.city] City of the client
- * @member {string} [value.client.stateOrProvince] State or province of the
+ * @property {object} [value.session] Session info of the event
+ * @property {string} [value.session.id] ID of the session
+ * @property {object} [value.user] User info of the event
+ * @property {string} [value.user.id] ID of the user
+ * @property {string} [value.user.accountId] Account ID of the user
+ * @property {string} [value.user.authenticatedId] Authenticated ID of the user
+ * @property {object} [value.cloud] Cloud info of the event
+ * @property {string} [value.cloud.roleName] Role name of the cloud
+ * @property {string} [value.cloud.roleInstance] Role instance of the cloud
+ * @property {object} [value.ai] AI info of the event
+ * @property {string} [value.ai.iKey] iKey of the app
+ * @property {string} [value.ai.appName] Name of the application
+ * @property {string} [value.ai.appId] ID of the application
+ * @property {string} [value.ai.sdkVersion] SDK version of the application
+ * @property {object} [value.application] Application info of the event
+ * @property {string} [value.application.version] Version of the application
+ * @property {object} [value.client] Client info of the event
+ * @property {string} [value.client.model] Model of the client
+ * @property {string} [value.client.os] Operating system of the client
+ * @property {string} [value.client.type] Type of the client
+ * @property {string} [value.client.browser] Browser of the client
+ * @property {string} [value.client.ip] IP address of the client
+ * @property {string} [value.client.city] City of the client
+ * @property {string} [value.client.stateOrProvince] State or province of the
  * client
- * @member {string} [value.client.countryOrRegion] Country or region of the
+ * @property {string} [value.client.countryOrRegion] Country or region of the
  * client
- * @member {string} [value.type] Polymorphic Discriminator
+ * @property {string} [value.type] Polymorphic Discriminator
  */
 export interface EventsResult {
   aimessages?: ErrorInfo[];
@@ -506,8 +508,8 @@ export interface EventsResult {
  * @constructor
  * The trace information
  *
- * @member {string} [message] The trace message
- * @member {number} [severityLevel] The trace severity level
+ * @property {string} [message] The trace message
+ * @property {number} [severityLevel] The trace severity level
  */
 export interface EventsTraceInfo {
   message?: string;
@@ -520,9 +522,9 @@ export interface EventsTraceInfo {
  * @constructor
  * A trace result
  *
- * @member {object} [trace]
- * @member {string} [trace.message] The trace message
- * @member {number} [trace.severityLevel] The trace severity level
+ * @property {object} [trace]
+ * @property {string} [trace.message] The trace message
+ * @property {number} [trace.severityLevel] The trace severity level
  */
 export interface EventsTraceResult extends EventsResultData {
   trace?: EventsTraceInfo;
@@ -534,7 +536,7 @@ export interface EventsTraceResult extends EventsResultData {
  * @constructor
  * The custom event information
  *
- * @member {string} [name] The name of the custom event
+ * @property {string} [name] The name of the custom event
  */
 export interface EventsCustomEventInfo {
   name?: string;
@@ -546,8 +548,8 @@ export interface EventsCustomEventInfo {
  * @constructor
  * A custom event result
  *
- * @member {object} [customEvent]
- * @member {string} [customEvent.name] The name of the custom event
+ * @property {object} [customEvent]
+ * @property {string} [customEvent.name] The name of the custom event
  */
 export interface EventsCustomEventResult extends EventsResultData {
   customEvent?: EventsCustomEventInfo;
@@ -559,10 +561,11 @@ export interface EventsCustomEventResult extends EventsResultData {
  * @constructor
  * The page view information
  *
- * @member {string} [name] The name of the page
- * @member {string} [url] The URL of the page
- * @member {string} [duration] The duration of the page view
- * @member {string} [performanceBucket] The performance bucket of the page view
+ * @property {string} [name] The name of the page
+ * @property {string} [url] The URL of the page
+ * @property {string} [duration] The duration of the page view
+ * @property {string} [performanceBucket] The performance bucket of the page
+ * view
  */
 export interface EventsPageViewInfo {
   name?: string;
@@ -577,12 +580,12 @@ export interface EventsPageViewInfo {
  * @constructor
  * A page view result
  *
- * @member {object} [pageView]
- * @member {string} [pageView.name] The name of the page
- * @member {string} [pageView.url] The URL of the page
- * @member {string} [pageView.duration] The duration of the page view
- * @member {string} [pageView.performanceBucket] The performance bucket of the
- * page view
+ * @property {object} [pageView]
+ * @property {string} [pageView.name] The name of the page
+ * @property {string} [pageView.url] The URL of the page
+ * @property {string} [pageView.duration] The duration of the page view
+ * @property {string} [pageView.performanceBucket] The performance bucket of
+ * the page view
  */
 export interface EventsPageViewResult extends EventsResultData {
   pageView?: EventsPageViewInfo;
@@ -594,16 +597,16 @@ export interface EventsPageViewResult extends EventsResultData {
  * @constructor
  * The browser timing information
  *
- * @member {string} [urlPath] The path of the URL
- * @member {string} [urlHost] The host of the URL
- * @member {string} [name] The name of the page
- * @member {string} [url] The url of the page
- * @member {number} [totalDuration] The total duration of the load
- * @member {string} [performanceBucket] The performance bucket of the load
- * @member {number} [networkDuration] The network duration of the load
- * @member {number} [sendDuration] The send duration of the load
- * @member {number} [receiveDuration] The receive duration of the load
- * @member {number} [processingDuration] The processing duration of the load
+ * @property {string} [urlPath] The path of the URL
+ * @property {string} [urlHost] The host of the URL
+ * @property {string} [name] The name of the page
+ * @property {string} [url] The url of the page
+ * @property {number} [totalDuration] The total duration of the load
+ * @property {string} [performanceBucket] The performance bucket of the load
+ * @property {number} [networkDuration] The network duration of the load
+ * @property {number} [sendDuration] The send duration of the load
+ * @property {number} [receiveDuration] The receive duration of the load
+ * @property {number} [processingDuration] The processing duration of the load
  */
 export interface EventsBrowserTimingInfo {
   urlPath?: string;
@@ -624,7 +627,7 @@ export interface EventsBrowserTimingInfo {
  * @constructor
  * Client performance information
  *
- * @member {string} [name] The name of the client performance
+ * @property {string} [name] The name of the client performance
  */
 export interface EventsClientPerformanceInfo {
   name?: string;
@@ -636,24 +639,26 @@ export interface EventsClientPerformanceInfo {
  * @constructor
  * A browser timing result
  *
- * @member {object} [browserTiming]
- * @member {string} [browserTiming.urlPath] The path of the URL
- * @member {string} [browserTiming.urlHost] The host of the URL
- * @member {string} [browserTiming.name] The name of the page
- * @member {string} [browserTiming.url] The url of the page
- * @member {number} [browserTiming.totalDuration] The total duration of the
+ * @property {object} [browserTiming]
+ * @property {string} [browserTiming.urlPath] The path of the URL
+ * @property {string} [browserTiming.urlHost] The host of the URL
+ * @property {string} [browserTiming.name] The name of the page
+ * @property {string} [browserTiming.url] The url of the page
+ * @property {number} [browserTiming.totalDuration] The total duration of the
  * load
- * @member {string} [browserTiming.performanceBucket] The performance bucket of
- * the load
- * @member {number} [browserTiming.networkDuration] The network duration of the
- * load
- * @member {number} [browserTiming.sendDuration] The send duration of the load
- * @member {number} [browserTiming.receiveDuration] The receive duration of the
- * load
- * @member {number} [browserTiming.processingDuration] The processing duration
+ * @property {string} [browserTiming.performanceBucket] The performance bucket
  * of the load
- * @member {object} [clientPerformance]
- * @member {string} [clientPerformance.name] The name of the client performance
+ * @property {number} [browserTiming.networkDuration] The network duration of
+ * the load
+ * @property {number} [browserTiming.sendDuration] The send duration of the
+ * load
+ * @property {number} [browserTiming.receiveDuration] The receive duration of
+ * the load
+ * @property {number} [browserTiming.processingDuration] The processing
+ * duration of the load
+ * @property {object} [clientPerformance]
+ * @property {string} [clientPerformance.name] The name of the client
+ * performance
  */
 export interface EventsBrowserTimingResult extends EventsResultData {
   browserTiming?: EventsBrowserTimingInfo;
@@ -666,14 +671,14 @@ export interface EventsBrowserTimingResult extends EventsResultData {
  * @constructor
  * The request info
  *
- * @member {string} [name] The name of the request
- * @member {string} [url] The URL of the request
- * @member {string} [success] Indicates if the request was successful
- * @member {number} [duration] The duration of the request
- * @member {string} [performanceBucket] The performance bucket of the request
- * @member {string} [resultCode] The result code of the request
- * @member {string} [source] The source of the request
- * @member {string} [id] The ID of the request
+ * @property {string} [name] The name of the request
+ * @property {string} [url] The URL of the request
+ * @property {string} [success] Indicates if the request was successful
+ * @property {number} [duration] The duration of the request
+ * @property {string} [performanceBucket] The performance bucket of the request
+ * @property {string} [resultCode] The result code of the request
+ * @property {string} [source] The source of the request
+ * @property {string} [id] The ID of the request
  */
 export interface EventsRequestInfo {
   name?: string;
@@ -692,16 +697,16 @@ export interface EventsRequestInfo {
  * @constructor
  * A request result
  *
- * @member {object} [request]
- * @member {string} [request.name] The name of the request
- * @member {string} [request.url] The URL of the request
- * @member {string} [request.success] Indicates if the request was successful
- * @member {number} [request.duration] The duration of the request
- * @member {string} [request.performanceBucket] The performance bucket of the
+ * @property {object} [request]
+ * @property {string} [request.name] The name of the request
+ * @property {string} [request.url] The URL of the request
+ * @property {string} [request.success] Indicates if the request was successful
+ * @property {number} [request.duration] The duration of the request
+ * @property {string} [request.performanceBucket] The performance bucket of the
  * request
- * @member {string} [request.resultCode] The result code of the request
- * @member {string} [request.source] The source of the request
- * @member {string} [request.id] The ID of the request
+ * @property {string} [request.resultCode] The result code of the request
+ * @property {string} [request.source] The source of the request
+ * @property {string} [request.id] The ID of the request
  */
 export interface EventsRequestResult extends EventsResultData {
   request?: EventsRequestInfo;
@@ -713,16 +718,16 @@ export interface EventsRequestResult extends EventsResultData {
  * @constructor
  * The dependency info
  *
- * @member {string} [target] The target of the dependency
- * @member {string} [data] The data of the dependency
- * @member {string} [success] Indicates if the dependency was successful
- * @member {number} [duration] The duration of the dependency
- * @member {string} [performanceBucket] The performance bucket of the
+ * @property {string} [target] The target of the dependency
+ * @property {string} [data] The data of the dependency
+ * @property {string} [success] Indicates if the dependency was successful
+ * @property {number} [duration] The duration of the dependency
+ * @property {string} [performanceBucket] The performance bucket of the
  * dependency
- * @member {string} [resultCode] The result code of the dependency
- * @member {string} [type] The type of the dependency
- * @member {string} [name] The name of the dependency
- * @member {string} [id] The ID of the dependency
+ * @property {string} [resultCode] The result code of the dependency
+ * @property {string} [type] The type of the dependency
+ * @property {string} [name] The name of the dependency
+ * @property {string} [id] The ID of the dependency
  */
 export interface EventsDependencyInfo {
   target?: string;
@@ -742,18 +747,18 @@ export interface EventsDependencyInfo {
  * @constructor
  * A dependency result
  *
- * @member {object} [dependency]
- * @member {string} [dependency.target] The target of the dependency
- * @member {string} [dependency.data] The data of the dependency
- * @member {string} [dependency.success] Indicates if the dependency was
+ * @property {object} [dependency]
+ * @property {string} [dependency.target] The target of the dependency
+ * @property {string} [dependency.data] The data of the dependency
+ * @property {string} [dependency.success] Indicates if the dependency was
  * successful
- * @member {number} [dependency.duration] The duration of the dependency
- * @member {string} [dependency.performanceBucket] The performance bucket of
+ * @property {number} [dependency.duration] The duration of the dependency
+ * @property {string} [dependency.performanceBucket] The performance bucket of
  * the dependency
- * @member {string} [dependency.resultCode] The result code of the dependency
- * @member {string} [dependency.type] The type of the dependency
- * @member {string} [dependency.name] The name of the dependency
- * @member {string} [dependency.id] The ID of the dependency
+ * @property {string} [dependency.resultCode] The result code of the dependency
+ * @property {string} [dependency.type] The type of the dependency
+ * @property {string} [dependency.name] The name of the dependency
+ * @property {string} [dependency.id] The ID of the dependency
  */
 export interface EventsDependencyResult extends EventsResultData {
   dependency?: EventsDependencyInfo;
@@ -765,10 +770,10 @@ export interface EventsDependencyResult extends EventsResultData {
  * @constructor
  * A parsed stack entry
  *
- * @member {string} [assembly] The assembly of the stack entry
- * @member {string} [method] The method of the stack entry
- * @member {number} [level] The level of the stack entry
- * @member {number} [line] The line of the stack entry
+ * @property {string} [assembly] The assembly of the stack entry
+ * @property {string} [method] The method of the stack entry
+ * @property {number} [level] The level of the stack entry
+ * @property {number} [line] The line of the stack entry
  */
 export interface EventsExceptionDetailsParsedStack {
   assembly?: string;
@@ -783,12 +788,13 @@ export interface EventsExceptionDetailsParsedStack {
  * @constructor
  * Exception details
  *
- * @member {string} [severityLevel] The severity level of the exception detail
- * @member {string} [outerId] The outer ID of the exception detail
- * @member {string} [message] The message of the exception detail
- * @member {string} [type] The type of the exception detail
- * @member {string} [id] The ID of the exception detail
- * @member {array} [parsedStack] The parsed stack
+ * @property {string} [severityLevel] The severity level of the exception
+ * detail
+ * @property {string} [outerId] The outer ID of the exception detail
+ * @property {string} [message] The message of the exception detail
+ * @property {string} [type] The type of the exception detail
+ * @property {string} [id] The ID of the exception detail
+ * @property {array} [parsedStack] The parsed stack
  */
 export interface EventsExceptionDetail {
   severityLevel?: string;
@@ -805,23 +811,24 @@ export interface EventsExceptionDetail {
  * @constructor
  * The exception info
  *
- * @member {number} [severityLevel] The severity level of the exception
- * @member {string} [problemId] The problem ID of the exception
- * @member {string} [handledAt] Indicates where the exception was handled at
- * @member {string} [assembly] The assembly which threw the exception
- * @member {string} [method] The method that threw the exception
- * @member {string} [message] The message of the exception
- * @member {string} [type] The type of the exception
- * @member {string} [outerType] The outer type of the exception
- * @member {string} [outerMethod] The outer method of the exception
- * @member {string} [outerAssembly] The outer assmebly of the exception
- * @member {string} [outerMessage] The outer message of the exception
- * @member {string} [innermostType] The inner most type of the exception
- * @member {string} [innermostMessage] The inner most message of the exception
- * @member {string} [innermostMethod] The inner most method of the exception
- * @member {string} [innermostAssembly] The inner most assembly of the
+ * @property {number} [severityLevel] The severity level of the exception
+ * @property {string} [problemId] The problem ID of the exception
+ * @property {string} [handledAt] Indicates where the exception was handled at
+ * @property {string} [assembly] The assembly which threw the exception
+ * @property {string} [method] The method that threw the exception
+ * @property {string} [message] The message of the exception
+ * @property {string} [type] The type of the exception
+ * @property {string} [outerType] The outer type of the exception
+ * @property {string} [outerMethod] The outer method of the exception
+ * @property {string} [outerAssembly] The outer assmebly of the exception
+ * @property {string} [outerMessage] The outer message of the exception
+ * @property {string} [innermostType] The inner most type of the exception
+ * @property {string} [innermostMessage] The inner most message of the
  * exception
- * @member {array} [details] The details of the exception
+ * @property {string} [innermostMethod] The inner most method of the exception
+ * @property {string} [innermostAssembly] The inner most assembly of the
+ * exception
+ * @property {array} [details] The details of the exception
  */
 export interface EventsExceptionInfo {
   severityLevel?: number;
@@ -848,30 +855,32 @@ export interface EventsExceptionInfo {
  * @constructor
  * An exception result
  *
- * @member {object} [exception]
- * @member {number} [exception.severityLevel] The severity level of the
+ * @property {object} [exception]
+ * @property {number} [exception.severityLevel] The severity level of the
  * exception
- * @member {string} [exception.problemId] The problem ID of the exception
- * @member {string} [exception.handledAt] Indicates where the exception was
+ * @property {string} [exception.problemId] The problem ID of the exception
+ * @property {string} [exception.handledAt] Indicates where the exception was
  * handled at
- * @member {string} [exception.assembly] The assembly which threw the exception
- * @member {string} [exception.method] The method that threw the exception
- * @member {string} [exception.message] The message of the exception
- * @member {string} [exception.type] The type of the exception
- * @member {string} [exception.outerType] The outer type of the exception
- * @member {string} [exception.outerMethod] The outer method of the exception
- * @member {string} [exception.outerAssembly] The outer assmebly of the
+ * @property {string} [exception.assembly] The assembly which threw the
  * exception
- * @member {string} [exception.outerMessage] The outer message of the exception
- * @member {string} [exception.innermostType] The inner most type of the
+ * @property {string} [exception.method] The method that threw the exception
+ * @property {string} [exception.message] The message of the exception
+ * @property {string} [exception.type] The type of the exception
+ * @property {string} [exception.outerType] The outer type of the exception
+ * @property {string} [exception.outerMethod] The outer method of the exception
+ * @property {string} [exception.outerAssembly] The outer assmebly of the
  * exception
- * @member {string} [exception.innermostMessage] The inner most message of the
+ * @property {string} [exception.outerMessage] The outer message of the
  * exception
- * @member {string} [exception.innermostMethod] The inner most method of the
+ * @property {string} [exception.innermostType] The inner most type of the
  * exception
- * @member {string} [exception.innermostAssembly] The inner most assembly of
+ * @property {string} [exception.innermostMessage] The inner most message of
  * the exception
- * @member {array} [exception.details] The details of the exception
+ * @property {string} [exception.innermostMethod] The inner most method of the
+ * exception
+ * @property {string} [exception.innermostAssembly] The inner most assembly of
+ * the exception
+ * @property {array} [exception.details] The details of the exception
  */
 export interface EventsExceptionResult extends EventsResultData {
   exception?: EventsExceptionInfo;
@@ -883,16 +892,16 @@ export interface EventsExceptionResult extends EventsResultData {
  * @constructor
  * The availability result info
  *
- * @member {string} [name] The name of the availability result
- * @member {string} [success] Indicates if the availability result was
+ * @property {string} [name] The name of the availability result
+ * @property {string} [success] Indicates if the availability result was
  * successful
- * @member {number} [duration] The duration of the availability result
- * @member {string} [performanceBucket] The performance bucket of the
+ * @property {number} [duration] The duration of the availability result
+ * @property {string} [performanceBucket] The performance bucket of the
  * availability result
- * @member {string} [message] The message of the availability result
- * @member {string} [location] The location of the availability result
- * @member {string} [id] The ID of the availability result
- * @member {string} [size] The size of the availability result
+ * @property {string} [message] The message of the availability result
+ * @property {string} [location] The location of the availability result
+ * @property {string} [id] The ID of the availability result
+ * @property {string} [size] The size of the availability result
  */
 export interface EventsAvailabilityResultInfo {
   name?: string;
@@ -911,21 +920,21 @@ export interface EventsAvailabilityResultInfo {
  * @constructor
  * An availability result result
  *
- * @member {object} [availabilityResult]
- * @member {string} [availabilityResult.name] The name of the availability
+ * @property {object} [availabilityResult]
+ * @property {string} [availabilityResult.name] The name of the availability
  * result
- * @member {string} [availabilityResult.success] Indicates if the availability
- * result was successful
- * @member {number} [availabilityResult.duration] The duration of the
+ * @property {string} [availabilityResult.success] Indicates if the
+ * availability result was successful
+ * @property {number} [availabilityResult.duration] The duration of the
  * availability result
- * @member {string} [availabilityResult.performanceBucket] The performance
+ * @property {string} [availabilityResult.performanceBucket] The performance
  * bucket of the availability result
- * @member {string} [availabilityResult.message] The message of the
+ * @property {string} [availabilityResult.message] The message of the
  * availability result
- * @member {string} [availabilityResult.location] The location of the
+ * @property {string} [availabilityResult.location] The location of the
  * availability result
- * @member {string} [availabilityResult.id] The ID of the availability result
- * @member {string} [availabilityResult.size] The size of the availability
+ * @property {string} [availabilityResult.id] The ID of the availability result
+ * @property {string} [availabilityResult.size] The size of the availability
  * result
  */
 export interface EventsAvailabilityResultResult extends EventsResultData {
@@ -938,12 +947,13 @@ export interface EventsAvailabilityResultResult extends EventsResultData {
  * @constructor
  * The performance counter info
  *
- * @member {number} [value] The value of the performance counter
- * @member {string} [name] The name of the performance counter
- * @member {string} [category] The category of the performance counter
- * @member {string} [counter] The counter of the performance counter
- * @member {string} [instanceName] The instance name of the performance counter
- * @member {string} [instance] The instance of the performance counter
+ * @property {number} [value] The value of the performance counter
+ * @property {string} [name] The name of the performance counter
+ * @property {string} [category] The category of the performance counter
+ * @property {string} [counter] The counter of the performance counter
+ * @property {string} [instanceName] The instance name of the performance
+ * counter
+ * @property {string} [instance] The instance of the performance counter
  */
 export interface EventsPerformanceCounterInfo {
   value?: number;
@@ -960,18 +970,18 @@ export interface EventsPerformanceCounterInfo {
  * @constructor
  * A performance counter result
  *
- * @member {object} [performanceCounter]
- * @member {number} [performanceCounter.value] The value of the performance
+ * @property {object} [performanceCounter]
+ * @property {number} [performanceCounter.value] The value of the performance
  * counter
- * @member {string} [performanceCounter.name] The name of the performance
+ * @property {string} [performanceCounter.name] The name of the performance
  * counter
- * @member {string} [performanceCounter.category] The category of the
+ * @property {string} [performanceCounter.category] The category of the
  * performance counter
- * @member {string} [performanceCounter.counter] The counter of the performance
- * counter
- * @member {string} [performanceCounter.instanceName] The instance name of the
+ * @property {string} [performanceCounter.counter] The counter of the
  * performance counter
- * @member {string} [performanceCounter.instance] The instance of the
+ * @property {string} [performanceCounter.instanceName] The instance name of
+ * the performance counter
+ * @property {string} [performanceCounter.instance] The instance of the
  * performance counter
  */
 export interface EventsPerformanceCounterResult extends EventsResultData {
@@ -984,13 +994,13 @@ export interface EventsPerformanceCounterResult extends EventsResultData {
  * @constructor
  * The custom metric info
  *
- * @member {string} [name] The name of the custom metric
- * @member {number} [value] The value of the custom metric
- * @member {number} [valueSum] The sum of the custom metric
- * @member {number} [valueCount] The count of the custom metric
- * @member {number} [valueMin] The minimum value of the custom metric
- * @member {number} [valueMax] The maximum value of the custom metric
- * @member {number} [valueStdDev] The standard deviation of the custom metric
+ * @property {string} [name] The name of the custom metric
+ * @property {number} [value] The value of the custom metric
+ * @property {number} [valueSum] The sum of the custom metric
+ * @property {number} [valueCount] The count of the custom metric
+ * @property {number} [valueMin] The minimum value of the custom metric
+ * @property {number} [valueMax] The maximum value of the custom metric
+ * @property {number} [valueStdDev] The standard deviation of the custom metric
  */
 export interface EventsCustomMetricInfo {
   name?: string;
@@ -1008,16 +1018,16 @@ export interface EventsCustomMetricInfo {
  * @constructor
  * A custom metric result
  *
- * @member {object} [customMetric]
- * @member {string} [customMetric.name] The name of the custom metric
- * @member {number} [customMetric.value] The value of the custom metric
- * @member {number} [customMetric.valueSum] The sum of the custom metric
- * @member {number} [customMetric.valueCount] The count of the custom metric
- * @member {number} [customMetric.valueMin] The minimum value of the custom
+ * @property {object} [customMetric]
+ * @property {string} [customMetric.name] The name of the custom metric
+ * @property {number} [customMetric.value] The value of the custom metric
+ * @property {number} [customMetric.valueSum] The sum of the custom metric
+ * @property {number} [customMetric.valueCount] The count of the custom metric
+ * @property {number} [customMetric.valueMin] The minimum value of the custom
  * metric
- * @member {number} [customMetric.valueMax] The maximum value of the custom
+ * @property {number} [customMetric.valueMax] The maximum value of the custom
  * metric
- * @member {number} [customMetric.valueStdDev] The standard deviation of the
+ * @property {number} [customMetric.valueStdDev] The standard deviation of the
  * custom metric
  */
 export interface EventsCustomMetricResult extends EventsResultData {
@@ -1031,11 +1041,11 @@ export interface EventsCustomMetricResult extends EventsResultData {
  * The Analytics query. Learn more about the [Analytics query
  * syntax](https://azure.microsoft.com/documentation/articles/app-insights-analytics-reference/)
  *
- * @member {string} query The query to execute.
- * @member {string} [timespan] Optional. The timespan over which to query data.
- * This is an ISO8601 time period value.  This timespan is applied in addition
- * to any that are specified in the query expression.
- * @member {array} [applications] A list of Application IDs for
+ * @property {string} query The query to execute.
+ * @property {string} [timespan] Optional. The timespan over which to query
+ * data. This is an ISO8601 time period value.  This timespan is applied in
+ * addition to any that are specified in the query expression.
+ * @property {array} [applications] A list of Application IDs for
  * cross-application queries.
  */
 export interface QueryBody {
@@ -1052,8 +1062,8 @@ export interface QueryBody {
  *
  * A column in a table.
  *
- * @member {string} [name] The name of this column.
- * @member {string} [type] The data type of this column.
+ * @property {string} [name] The name of this column.
+ * @property {string} [type] The data type of this column.
  */
 export interface Column {
   name?: string;
@@ -1068,9 +1078,9 @@ export interface Column {
  *
  * Contains the columns and rows for one table in a query response.
  *
- * @member {string} name The name of the table.
- * @member {array} columns The list of columns in this table.
- * @member {array} rows The resulting rows from this query.
+ * @property {string} name The name of the table.
+ * @property {array} columns The list of columns in this table.
+ * @property {array} rows The resulting rows from this query.
  */
 export interface Table {
   name: string;
@@ -1086,7 +1096,7 @@ export interface Table {
  *
  * Contains the tables, columns & rows resulting from a query.
  *
- * @member {array} tables The list of tables, columns and rows.
+ * @property {array} tables The list of tables, columns and rows.
  */
 export interface QueryResults {
   tables: Table[];
@@ -1100,12 +1110,12 @@ export interface QueryResults {
  *
  * Contains details when the response code indicates an error.
  *
- * @member {object} error The error details.
- * @member {string} [error.code] A machine readable error code.
- * @member {string} [error.message] A human readable error message.
- * @member {array} [error.details] error details.
- * @member {object} [error.innererror] Inner error details if they exist.
- * @member {object} [error.additionalProperties]
+ * @property {object} error The error details.
+ * @property {string} [error.code] A machine readable error code.
+ * @property {string} [error.message] A human readable error message.
+ * @property {array} [error.details] error details.
+ * @property {object} [error.innererror] Inner error details if they exist.
+ * @property {object} [error.additionalProperties]
  */
 export interface ErrorResponse {
   error: ErrorInfo;

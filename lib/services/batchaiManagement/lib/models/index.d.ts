@@ -22,8 +22,8 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * The Usage Names.
  *
- * @member {string} [value] The name of the resource.
- * @member {string} [localizedValue] The localized name of the resource.
+ * @property {string} [value] The name of the resource.
+ * @property {string} [localizedValue] The localized name of the resource.
  */
 export interface UsageName {
   readonly value?: string;
@@ -36,13 +36,13 @@ export interface UsageName {
  * @constructor
  * Describes Batch AI Resource Usage.
  *
- * @member {string} [unit] An enum describing the unit of usage measurement.
+ * @property {string} [unit] An enum describing the unit of usage measurement.
  * Possible values include: 'Count'
- * @member {number} [currentValue] The current usage of the resource.
- * @member {number} [limit] The maximum permitted usage of the resource.
- * @member {object} [name] The name of the type of usage.
- * @member {string} [name.value] The name of the resource.
- * @member {string} [name.localizedValue] The localized name of the resource.
+ * @property {number} [currentValue] The current usage of the resource.
+ * @property {number} [limit] The maximum permitted usage of the resource.
+ * @property {object} [name] The name of the type of usage.
+ * @property {string} [name.value] The name of the resource.
+ * @property {string} [name.localizedValue] The localized name of the resource.
  */
 export interface Usage {
   readonly unit?: string;
@@ -58,12 +58,12 @@ export interface Usage {
  * Settings for user account that gets created on each on the nodes of a
  * cluster.
  *
- * @member {string} adminUserName User name. Name of the administrator user
+ * @property {string} adminUserName User name. Name of the administrator user
  * account which can be used to SSH to nodes.
- * @member {string} [adminUserSshPublicKey] SSH public key. SSH public key of
+ * @property {string} [adminUserSshPublicKey] SSH public key. SSH public key of
  * the administrator user account.
- * @member {string} [adminUserPassword] Password. Password of the administrator
- * user account.
+ * @property {string} [adminUserPassword] Password. Password of the
+ * administrator user account.
  */
 export interface UserAccountSettings {
   adminUserName: string;
@@ -77,17 +77,17 @@ export interface UserAccountSettings {
  * @constructor
  * SSH configuration.
  *
- * @member {array} [publicIPsToAllow] Allowed public IPs. List of source IP
+ * @property {array} [publicIPsToAllow] Allowed public IPs. List of source IP
  * ranges to allow SSH connection from. The default value is '*' (all source
  * IPs are allowed). Maximum number of IP ranges that can be specified is 400.
- * @member {object} userAccountSettings User account settings. Settings for
+ * @property {object} userAccountSettings User account settings. Settings for
  * administrator user account to be created on a node. The account can be used
  * to establish SSH connection to the node.
- * @member {string} [userAccountSettings.adminUserName] Name of the
+ * @property {string} [userAccountSettings.adminUserName] Name of the
  * administrator user account which can be used to SSH to nodes.
- * @member {string} [userAccountSettings.adminUserSshPublicKey] SSH public key
- * of the administrator user account.
- * @member {string} [userAccountSettings.adminUserPassword] Password of the
+ * @property {string} [userAccountSettings.adminUserSshPublicKey] SSH public
+ * key of the administrator user account.
+ * @property {string} [userAccountSettings.adminUserPassword] Password of the
  * administrator user account.
  */
 export interface SshConfiguration {
@@ -101,16 +101,16 @@ export interface SshConfiguration {
  * @constructor
  * Data disks settings.
  *
- * @member {number} diskSizeInGB Disk size in GB. Disk size in GB for the blank
- * data disks.
- * @member {string} [cachingType] Caching type. Caching type for the disks.
+ * @property {number} diskSizeInGB Disk size in GB. Disk size in GB for the
+ * blank data disks.
+ * @property {string} [cachingType] Caching type. Caching type for the disks.
  * Available values are none (default), readonly, readwrite. Caching type can
  * be set only for VM sizes supporting premium storage. Possible values
  * include: 'none', 'readonly', 'readwrite'. Default value: 'none' .
- * @member {number} diskCount Number of data disks. Number of data disks
+ * @property {number} diskCount Number of data disks. Number of data disks
  * attached to the File Server. If multiple disks attached, they will be
  * configured in RAID level 0.
- * @member {string} storageAccountType Storage account type. Type of storage
+ * @property {string} storageAccountType Storage account type. Type of storage
  * account to be used on the disk. Possible values are: Standard_LRS or
  * Premium_LRS. Premium storage account type can only be used with VM sizes
  * supporting premium storage. Possible values include: 'Standard_LRS',
@@ -130,7 +130,7 @@ export interface DataDisks {
  * Represents a resource ID. For example, for a subnet, it is the resource URL
  * for the subnet.
  *
- * @member {string} id The ID of the resource
+ * @property {string} id The ID of the resource
  */
 export interface ResourceId extends BaseResource {
   id: string;
@@ -142,13 +142,13 @@ export interface ResourceId extends BaseResource {
  * @constructor
  * File Server mount Information.
  *
- * @member {string} [mountPoint] Mount Point. Path where the data disks are
+ * @property {string} [mountPoint] Mount Point. Path where the data disks are
  * mounted on the File Server.
- * @member {string} [fileServerPublicIP] Public IP. Public IP address of the
+ * @property {string} [fileServerPublicIP] Public IP. Public IP address of the
  * File Server which can be used to SSH to the node from outside of the subnet.
- * @member {string} [fileServerInternalIP] Internal IP. Internal IP address of
- * the File Server which can be used to access the File Server from within the
- * subnet.
+ * @property {string} [fileServerInternalIP] Internal IP. Internal IP address
+ * of the File Server which can be used to access the File Server from within
+ * the subnet.
  */
 export interface MountSettings {
   mountPoint?: string;
@@ -162,9 +162,9 @@ export interface MountSettings {
  * @constructor
  * A definition of an Azure proxy resource.
  *
- * @member {string} [id] The ID of the resource.
- * @member {string} [name] The name of the resource.
- * @member {string} [type] The type of the resource.
+ * @property {string} [id] The ID of the resource.
+ * @property {string} [name] The name of the resource.
+ * @property {string} [type] The type of the resource.
  */
 export interface ProxyResource extends BaseResource {
   readonly id?: string;
@@ -178,61 +178,63 @@ export interface ProxyResource extends BaseResource {
  * @constructor
  * File Server information.
  *
- * @member {string} [vmSize] VM size. VM size of the File Server.
- * @member {object} [sshConfiguration] SSH configuration. SSH configuration for
- * accessing the File Server node.
- * @member {array} [sshConfiguration.publicIPsToAllow] List of source IP ranges
- * to allow SSH connection from. The default value is '*' (all source IPs are
- * allowed). Maximum number of IP ranges that can be specified is 400.
- * @member {object} [sshConfiguration.userAccountSettings] Settings for
+ * @property {string} [vmSize] VM size. VM size of the File Server.
+ * @property {object} [sshConfiguration] SSH configuration. SSH configuration
+ * for accessing the File Server node.
+ * @property {array} [sshConfiguration.publicIPsToAllow] List of source IP
+ * ranges to allow SSH connection from. The default value is '*' (all source
+ * IPs are allowed). Maximum number of IP ranges that can be specified is 400.
+ * @property {object} [sshConfiguration.userAccountSettings] Settings for
  * administrator user account to be created on a node. The account can be used
  * to establish SSH connection to the node.
- * @member {string} [sshConfiguration.userAccountSettings.adminUserName] Name
+ * @property {string} [sshConfiguration.userAccountSettings.adminUserName] Name
  * of the administrator user account which can be used to SSH to nodes.
- * @member {string}
+ * @property {string}
  * [sshConfiguration.userAccountSettings.adminUserSshPublicKey] SSH public key
  * of the administrator user account.
- * @member {string} [sshConfiguration.userAccountSettings.adminUserPassword]
+ * @property {string} [sshConfiguration.userAccountSettings.adminUserPassword]
  * Password of the administrator user account.
- * @member {object} [dataDisks] Data disks configuration. Information about
+ * @property {object} [dataDisks] Data disks configuration. Information about
  * disks attached to File Server VM.
- * @member {number} [dataDisks.diskSizeInGB] Disk size in GB for the blank data
- * disks.
- * @member {string} [dataDisks.cachingType] Caching type for the disks.
+ * @property {number} [dataDisks.diskSizeInGB] Disk size in GB for the blank
+ * data disks.
+ * @property {string} [dataDisks.cachingType] Caching type for the disks.
  * Available values are none (default), readonly, readwrite. Caching type can
  * be set only for VM sizes supporting premium storage. Possible values
  * include: 'none', 'readonly', 'readwrite'
- * @member {number} [dataDisks.diskCount] Number of data disks attached to the
- * File Server. If multiple disks attached, they will be configured in RAID
+ * @property {number} [dataDisks.diskCount] Number of data disks attached to
+ * the File Server. If multiple disks attached, they will be configured in RAID
  * level 0.
- * @member {string} [dataDisks.storageAccountType] Type of storage account to
+ * @property {string} [dataDisks.storageAccountType] Type of storage account to
  * be used on the disk. Possible values are: Standard_LRS or Premium_LRS.
  * Premium storage account type can only be used with VM sizes supporting
  * premium storage. Possible values include: 'Standard_LRS', 'Premium_LRS'
- * @member {object} [subnet] Subnet. File Server virtual network subnet
+ * @property {object} [subnet] Subnet. File Server virtual network subnet
  * resource ID.
- * @member {string} [subnet.id] The ID of the resource
- * @member {object} [mountSettings] Mount settings. File Server mount settings.
- * @member {string} [mountSettings.mountPoint] Path where the data disks are
+ * @property {string} [subnet.id] The ID of the resource
+ * @property {object} [mountSettings] Mount settings. File Server mount
+ * settings.
+ * @property {string} [mountSettings.mountPoint] Path where the data disks are
  * mounted on the File Server.
- * @member {string} [mountSettings.fileServerPublicIP] Public IP address of the
- * File Server which can be used to SSH to the node from outside of the subnet.
- * @member {string} [mountSettings.fileServerInternalIP] Internal IP address of
- * the File Server which can be used to access the File Server from within the
+ * @property {string} [mountSettings.fileServerPublicIP] Public IP address of
+ * the File Server which can be used to SSH to the node from outside of the
  * subnet.
- * @member {date} [provisioningStateTransitionTime] Provisioning State
+ * @property {string} [mountSettings.fileServerInternalIP] Internal IP address
+ * of the File Server which can be used to access the File Server from within
+ * the subnet.
+ * @property {date} [provisioningStateTransitionTime] Provisioning State
  * Transition time. Time when the provisioning state was changed.
- * @member {date} [creationTime] Creation time. Time when the FileServer was
+ * @property {date} [creationTime] Creation time. Time when the FileServer was
  * created.
- * @member {string} [provisioningState] Provisioning state. Provisioning state
- * of the File Server. Possible values: creating - The File Server is getting
- * created; updating - The File Server creation has been accepted and it is
- * getting updated; deleting - The user has requested that the File Server be
- * deleted, and it is in the process of being deleted; failed - The File Server
- * creation has failed with the specified error code. Details about the error
- * code are specified in the message field; succeeded - The File Server
- * creation has succeeded. Possible values include: 'creating', 'updating',
- * 'deleting', 'succeeded', 'failed'
+ * @property {string} [provisioningState] Provisioning state. Provisioning
+ * state of the File Server. Possible values: creating - The File Server is
+ * getting created; updating - The File Server creation has been accepted and
+ * it is getting updated; deleting - The user has requested that the File
+ * Server be deleted, and it is in the process of being deleted; failed - The
+ * File Server creation has failed with the specified error code. Details about
+ * the error code are specified in the message field; succeeded - The File
+ * Server creation has succeeded. Possible values include: 'creating',
+ * 'updating', 'deleting', 'succeeded', 'failed'
  */
 export interface FileServer extends ProxyResource {
   vmSize?: string;
@@ -251,10 +253,10 @@ export interface FileServer extends ProxyResource {
  * @constructor
  * Key Vault Secret reference.
  *
- * @member {object} sourceVault Key Vault resource identifier. Fully qualified
- * resource indentifier of the Key Vault.
- * @member {string} [sourceVault.id] The ID of the resource
- * @member {string} secretUrl Secret URL. The URL referencing a secret in the
+ * @property {object} sourceVault Key Vault resource identifier. Fully
+ * qualified resource indentifier of the Key Vault.
+ * @property {string} [sourceVault.id] The ID of the resource
+ * @property {string} secretUrl Secret URL. The URL referencing a secret in the
  * Key Vault.
  */
 export interface KeyVaultSecretReference {
@@ -268,43 +270,43 @@ export interface KeyVaultSecretReference {
  * @constructor
  * File Server creation parameters.
  *
- * @member {string} vmSize VM size. The size of the virtual machine for the
+ * @property {string} vmSize VM size. The size of the virtual machine for the
  * File Server. For information about available VM sizes from the Virtual
  * Machines Marketplace, see Sizes for Virtual Machines (Linux).
- * @member {object} sshConfiguration SSH configuration. SSH configuration for
+ * @property {object} sshConfiguration SSH configuration. SSH configuration for
  * the File Server node.
- * @member {array} [sshConfiguration.publicIPsToAllow] List of source IP ranges
- * to allow SSH connection from. The default value is '*' (all source IPs are
- * allowed). Maximum number of IP ranges that can be specified is 400.
- * @member {object} [sshConfiguration.userAccountSettings] Settings for
+ * @property {array} [sshConfiguration.publicIPsToAllow] List of source IP
+ * ranges to allow SSH connection from. The default value is '*' (all source
+ * IPs are allowed). Maximum number of IP ranges that can be specified is 400.
+ * @property {object} [sshConfiguration.userAccountSettings] Settings for
  * administrator user account to be created on a node. The account can be used
  * to establish SSH connection to the node.
- * @member {string} [sshConfiguration.userAccountSettings.adminUserName] Name
+ * @property {string} [sshConfiguration.userAccountSettings.adminUserName] Name
  * of the administrator user account which can be used to SSH to nodes.
- * @member {string}
+ * @property {string}
  * [sshConfiguration.userAccountSettings.adminUserSshPublicKey] SSH public key
  * of the administrator user account.
- * @member {string} [sshConfiguration.userAccountSettings.adminUserPassword]
+ * @property {string} [sshConfiguration.userAccountSettings.adminUserPassword]
  * Password of the administrator user account.
- * @member {object} dataDisks Data disks. Settings for the data disks which
+ * @property {object} dataDisks Data disks. Settings for the data disks which
  * will be created for the File Server.
- * @member {number} [dataDisks.diskSizeInGB] Disk size in GB for the blank data
- * disks.
- * @member {string} [dataDisks.cachingType] Caching type for the disks.
+ * @property {number} [dataDisks.diskSizeInGB] Disk size in GB for the blank
+ * data disks.
+ * @property {string} [dataDisks.cachingType] Caching type for the disks.
  * Available values are none (default), readonly, readwrite. Caching type can
  * be set only for VM sizes supporting premium storage. Possible values
  * include: 'none', 'readonly', 'readwrite'
- * @member {number} [dataDisks.diskCount] Number of data disks attached to the
- * File Server. If multiple disks attached, they will be configured in RAID
+ * @property {number} [dataDisks.diskCount] Number of data disks attached to
+ * the File Server. If multiple disks attached, they will be configured in RAID
  * level 0.
- * @member {string} [dataDisks.storageAccountType] Type of storage account to
+ * @property {string} [dataDisks.storageAccountType] Type of storage account to
  * be used on the disk. Possible values are: Standard_LRS or Premium_LRS.
  * Premium storage account type can only be used with VM sizes supporting
  * premium storage. Possible values include: 'Standard_LRS', 'Premium_LRS'
- * @member {object} [subnet] Subnet identifier. Identifier of an existing
+ * @property {object} [subnet] Subnet identifier. Identifier of an existing
  * virtual network subnet to put the File Server in. If not provided, a new
  * virtual network and subnet will be created.
- * @member {string} [subnet.id] The ID of the resource
+ * @property {string} [subnet.id] The ID of the resource
  */
 export interface FileServerCreateParameters {
   vmSize: string;
@@ -319,9 +321,9 @@ export interface FileServerCreateParameters {
  * @constructor
  * Manual scale settings for the cluster.
  *
- * @member {number} targetNodeCount Target node count. The desired number of
+ * @property {number} targetNodeCount Target node count. The desired number of
  * compute nodes in the Cluster. Default is 0. Default value: 0 .
- * @member {string} [nodeDeallocationOption] Node deallocation options. An
+ * @property {string} [nodeDeallocationOption] Node deallocation options. An
  * action to be performed when the cluster size is decreasing. The default
  * value is requeue. Possible values include: 'requeue', 'terminate',
  * 'waitforjobcompletion'. Default value: 'requeue' .
@@ -339,13 +341,13 @@ export interface ManualScaleSettings {
  * cluster up and down (within minimumNodeCount and maximumNodeCount) based on
  * the number of queued and running jobs assigned to the cluster.
  *
- * @member {number} minimumNodeCount Minimum node count. The minimum number of
- * compute nodes the Batch AI service will try to allocate for the cluster.
+ * @property {number} minimumNodeCount Minimum node count. The minimum number
+ * of compute nodes the Batch AI service will try to allocate for the cluster.
  * Note, the actual number of nodes can be less than the specified value if the
  * subscription has not enough quota to fulfill the request.
- * @member {number} maximumNodeCount Maximum node count. The maximum number of
- * compute nodes the cluster can have.
- * @member {number} [initialNodeCount] Initial node count. The number of
+ * @property {number} maximumNodeCount Maximum node count. The maximum number
+ * of compute nodes the cluster can have.
+ * @property {number} [initialNodeCount] Initial node count. The number of
  * compute nodes to allocate on cluster creation. Note that this value is used
  * only during cluster creation. Default: 0. Default value: 0 .
  */
@@ -364,23 +366,23 @@ export interface AutoScaleSettings {
  * specified, the system automatically scales the cluster up and down (within
  * the supplied limits) based on the pending jobs on the cluster.
  *
- * @member {object} [manual] Manual scale settings. Manual scale settings for
+ * @property {object} [manual] Manual scale settings. Manual scale settings for
  * the cluster.
- * @member {number} [manual.targetNodeCount] The desired number of compute
+ * @property {number} [manual.targetNodeCount] The desired number of compute
  * nodes in the Cluster. Default is 0.
- * @member {string} [manual.nodeDeallocationOption] An action to be performed
+ * @property {string} [manual.nodeDeallocationOption] An action to be performed
  * when the cluster size is decreasing. The default value is requeue. Possible
  * values include: 'requeue', 'terminate', 'waitforjobcompletion'
- * @member {object} [autoScale] Auto-scale settings. Auto-scale settings for
+ * @property {object} [autoScale] Auto-scale settings. Auto-scale settings for
  * the cluster.
- * @member {number} [autoScale.minimumNodeCount] The minimum number of compute
- * nodes the Batch AI service will try to allocate for the cluster. Note, the
- * actual number of nodes can be less than the specified value if the
+ * @property {number} [autoScale.minimumNodeCount] The minimum number of
+ * compute nodes the Batch AI service will try to allocate for the cluster.
+ * Note, the actual number of nodes can be less than the specified value if the
  * subscription has not enough quota to fulfill the request.
- * @member {number} [autoScale.maximumNodeCount] The maximum number of compute
- * nodes the cluster can have.
- * @member {number} [autoScale.initialNodeCount] The number of compute nodes to
- * allocate on cluster creation. Note that this value is used only during
+ * @property {number} [autoScale.maximumNodeCount] The maximum number of
+ * compute nodes the cluster can have.
+ * @property {number} [autoScale.initialNodeCount] The number of compute nodes
+ * to allocate on cluster creation. Note that this value is used only during
  * cluster creation. Default: 0.
  */
 export interface ScaleSettings {
@@ -394,11 +396,11 @@ export interface ScaleSettings {
  * @constructor
  * The OS image reference.
  *
- * @member {string} publisher Publisher. Publisher of the image.
- * @member {string} offer Offer. Offer of the image.
- * @member {string} sku SKU. SKU of the image.
- * @member {string} [version] Version. Version of the image.
- * @member {string} [virtualMachineImageId] Custom VM image resource ID. The
+ * @property {string} publisher Publisher. Publisher of the image.
+ * @property {string} offer Offer. Offer of the image.
+ * @property {string} sku SKU. SKU of the image.
+ * @property {string} [version] Version. Version of the image.
+ * @property {string} [virtualMachineImageId] Custom VM image resource ID. The
  * ARM resource identifier of the virtual machine image for the compute nodes.
  * This is of the form
  * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}.
@@ -423,13 +425,13 @@ export interface ImageReference {
  * @constructor
  * VM configuration.
  *
- * @member {object} [imageReference] Image reference. OS image reference for
+ * @property {object} [imageReference] Image reference. OS image reference for
  * cluster nodes.
- * @member {string} [imageReference.publisher] Publisher of the image.
- * @member {string} [imageReference.offer] Offer of the image.
- * @member {string} [imageReference.sku] SKU of the image.
- * @member {string} [imageReference.version] Version of the image.
- * @member {string} [imageReference.virtualMachineImageId] The ARM resource
+ * @property {string} [imageReference.publisher] Publisher of the image.
+ * @property {string} [imageReference.offer] Offer of the image.
+ * @property {string} [imageReference.sku] SKU of the image.
+ * @property {string} [imageReference.version] Version of the image.
+ * @property {string} [imageReference.virtualMachineImageId] The ARM resource
  * identifier of the virtual machine image for the compute nodes. This is of
  * the form
  * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}.
@@ -450,8 +452,8 @@ export interface VirtualMachineConfiguration {
  * @constructor
  * An environment variable definition.
  *
- * @member {string} name Name. The name of the environment variable.
- * @member {string} value Value. The value of the environment variable.
+ * @property {string} name Name. The name of the environment variable.
+ * @property {string} value Value. The value of the environment variable.
  */
 export interface EnvironmentVariable {
   name: string;
@@ -464,18 +466,18 @@ export interface EnvironmentVariable {
  * @constructor
  * An environment variable with secret value definition.
  *
- * @member {string} name Name. The name of the environment variable to store
+ * @property {string} name Name. The name of the environment variable to store
  * the secret value.
- * @member {string} [value] Value. The value of the environment variable. This
- * value will never be reported back by Batch AI.
- * @member {object} [valueSecretReference] KeyVault secret reference. KeyVault
- * store and secret which contains the value for the environment variable. One
- * of value or valueSecretReference must be provided.
- * @member {object} [valueSecretReference.sourceVault] Fully qualified resource
- * indentifier of the Key Vault.
- * @member {string} [valueSecretReference.sourceVault.id] The ID of the
+ * @property {string} [value] Value. The value of the environment variable.
+ * This value will never be reported back by Batch AI.
+ * @property {object} [valueSecretReference] KeyVault secret reference.
+ * KeyVault store and secret which contains the value for the environment
+ * variable. One of value or valueSecretReference must be provided.
+ * @property {object} [valueSecretReference.sourceVault] Fully qualified
+ * resource indentifier of the Key Vault.
+ * @property {string} [valueSecretReference.sourceVault.id] The ID of the
  * resource
- * @member {string} [valueSecretReference.secretUrl] The URL referencing a
+ * @property {string} [valueSecretReference.secretUrl] The URL referencing a
  * secret in the Key Vault.
  */
 export interface EnvironmentVariableWithSecretValue {
@@ -491,18 +493,18 @@ export interface EnvironmentVariableWithSecretValue {
  * Specifies a setup task which can be used to customize the compute nodes of
  * the cluster.
  *
- * @member {string} commandLine Command line. The command line to be executed
+ * @property {string} commandLine Command line. The command line to be executed
  * on each cluster's node after it being allocated or rebooted. The command is
  * executed in a bash subshell as a root.
- * @member {array} [environmentVariables] Environment variables. A collection
+ * @property {array} [environmentVariables] Environment variables. A collection
  * of user defined environment variables to be set for setup task.
- * @member {array} [secrets] Secrets. A collection of user defined environment
- * variables with secret values to be set for the setup task. Server will never
- * report values of these variables back.
- * @member {string} stdOutErrPathPrefix Output path prefix. The prefix of a
+ * @property {array} [secrets] Secrets. A collection of user defined
+ * environment variables with secret values to be set for the setup task.
+ * Server will never report values of these variables back.
+ * @property {string} stdOutErrPathPrefix Output path prefix. The prefix of a
  * path where the Batch AI service will upload the stdout, stderr and execution
  * log of the setup task.
- * @member {string} [stdOutErrPathSuffix] Output path suffix. A path segment
+ * @property {string} [stdOutErrPathSuffix] Output path suffix. A path segment
  * appended by Batch AI to stdOutErrPathPrefix to form a path where stdout,
  * stderr and execution log of the setup task will be uploaded. Batch AI
  * creates the setup task output directories under an unique path to avoid
@@ -523,17 +525,17 @@ export interface SetupTask {
  * @constructor
  * Azure storage account credentials.
  *
- * @member {string} [accountKey] Account key. Storage account key. One of
+ * @property {string} [accountKey] Account key. Storage account key. One of
  * accountKey or accountKeySecretReference must be specified.
- * @member {object} [accountKeySecretReference] Account key secret reference.
+ * @property {object} [accountKeySecretReference] Account key secret reference.
  * Information about KeyVault secret storing the storage account key. One of
  * accountKey or accountKeySecretReference must be specified.
- * @member {object} [accountKeySecretReference.sourceVault] Fully qualified
+ * @property {object} [accountKeySecretReference.sourceVault] Fully qualified
  * resource indentifier of the Key Vault.
- * @member {string} [accountKeySecretReference.sourceVault.id] The ID of the
+ * @property {string} [accountKeySecretReference.sourceVault.id] The ID of the
  * resource
- * @member {string} [accountKeySecretReference.secretUrl] The URL referencing a
- * secret in the Key Vault.
+ * @property {string} [accountKeySecretReference.secretUrl] The URL referencing
+ * a secret in the Key Vault.
  */
 export interface AzureStorageCredentialsInfo {
   accountKey?: string;
@@ -546,30 +548,31 @@ export interface AzureStorageCredentialsInfo {
  * @constructor
  * Azure File Share mounting configuration.
  *
- * @member {string} accountName Account name. Name of the Azure storage
+ * @property {string} accountName Account name. Name of the Azure storage
  * account.
- * @member {string} azureFileUrl Azure File URL. URL to access the Azure File.
- * @member {object} credentials Credentials. Information about the Azure
+ * @property {string} azureFileUrl Azure File URL. URL to access the Azure
+ * File.
+ * @property {object} credentials Credentials. Information about the Azure
  * storage credentials.
- * @member {string} [credentials.accountKey] Storage account key. One of
+ * @property {string} [credentials.accountKey] Storage account key. One of
  * accountKey or accountKeySecretReference must be specified.
- * @member {object} [credentials.accountKeySecretReference] Information about
+ * @property {object} [credentials.accountKeySecretReference] Information about
  * KeyVault secret storing the storage account key. One of accountKey or
  * accountKeySecretReference must be specified.
- * @member {object} [credentials.accountKeySecretReference.sourceVault] Fully
+ * @property {object} [credentials.accountKeySecretReference.sourceVault] Fully
  * qualified resource indentifier of the Key Vault.
- * @member {string} [credentials.accountKeySecretReference.sourceVault.id] The
- * ID of the resource
- * @member {string} [credentials.accountKeySecretReference.secretUrl] The URL
+ * @property {string} [credentials.accountKeySecretReference.sourceVault.id]
+ * The ID of the resource
+ * @property {string} [credentials.accountKeySecretReference.secretUrl] The URL
  * referencing a secret in the Key Vault.
- * @member {string} relativeMountPath Relative mount path. The relative path on
- * the compute node where the Azure File share will be mounted. Note that all
- * cluster level file shares will be mounted under $AZ_BATCHAI_MOUNT_ROOT
+ * @property {string} relativeMountPath Relative mount path. The relative path
+ * on the compute node where the Azure File share will be mounted. Note that
+ * all cluster level file shares will be mounted under $AZ_BATCHAI_MOUNT_ROOT
  * location and all job level file shares will be mounted under
  * $AZ_BATCHAI_JOB_MOUNT_ROOT.
- * @member {string} [fileMode] File mode. File mode for files on the mounted
+ * @property {string} [fileMode] File mode. File mode for files on the mounted
  * file share. Default value: 0777. Default value: '0777' .
- * @member {string} [directoryMode] Directory mode. File mode for directories
+ * @property {string} [directoryMode] Directory mode. File mode for directories
  * on the mounted file share. Default value: 0777. Default value: '0777' .
  */
 export interface AzureFileShareReference {
@@ -587,29 +590,29 @@ export interface AzureFileShareReference {
  * @constructor
  * Azure Blob Storage Container mounting configuration.
  *
- * @member {string} accountName Account name. Name of the Azure storage
+ * @property {string} accountName Account name. Name of the Azure storage
  * account.
- * @member {string} containerName Container name. Name of the Azure Blob
+ * @property {string} containerName Container name. Name of the Azure Blob
  * Storage container to mount on the cluster.
- * @member {object} credentials Credentials. Information about the Azure
+ * @property {object} credentials Credentials. Information about the Azure
  * storage credentials.
- * @member {string} [credentials.accountKey] Storage account key. One of
+ * @property {string} [credentials.accountKey] Storage account key. One of
  * accountKey or accountKeySecretReference must be specified.
- * @member {object} [credentials.accountKeySecretReference] Information about
+ * @property {object} [credentials.accountKeySecretReference] Information about
  * KeyVault secret storing the storage account key. One of accountKey or
  * accountKeySecretReference must be specified.
- * @member {object} [credentials.accountKeySecretReference.sourceVault] Fully
+ * @property {object} [credentials.accountKeySecretReference.sourceVault] Fully
  * qualified resource indentifier of the Key Vault.
- * @member {string} [credentials.accountKeySecretReference.sourceVault.id] The
- * ID of the resource
- * @member {string} [credentials.accountKeySecretReference.secretUrl] The URL
+ * @property {string} [credentials.accountKeySecretReference.sourceVault.id]
+ * The ID of the resource
+ * @property {string} [credentials.accountKeySecretReference.secretUrl] The URL
  * referencing a secret in the Key Vault.
- * @member {string} relativeMountPath Relative mount path. The relative path on
- * the compute node where the Azure File container will be mounted. Note that
- * all cluster level containers will be mounted under $AZ_BATCHAI_MOUNT_ROOT
- * location and all job level containers will be mounted under
- * $AZ_BATCHAI_JOB_MOUNT_ROOT.
- * @member {string} [mountOptions] Mount options. Mount options for mounting
+ * @property {string} relativeMountPath Relative mount path. The relative path
+ * on the compute node where the Azure File container will be mounted. Note
+ * that all cluster level containers will be mounted under
+ * $AZ_BATCHAI_MOUNT_ROOT location and all job level containers will be mounted
+ * under $AZ_BATCHAI_JOB_MOUNT_ROOT.
+ * @property {string} [mountOptions] Mount options. Mount options for mounting
  * blobfuse file system.
  */
 export interface AzureBlobFileSystemReference {
@@ -626,19 +629,19 @@ export interface AzureBlobFileSystemReference {
  * @constructor
  * File Server mounting configuration.
  *
- * @member {object} fileServer File server. Resource ID of the existing File
+ * @property {object} fileServer File server. Resource ID of the existing File
  * Server to be mounted.
- * @member {string} [fileServer.id] The ID of the resource
- * @member {string} [sourceDirectory] Source directory. File Server directory
+ * @property {string} [fileServer.id] The ID of the resource
+ * @property {string} [sourceDirectory] Source directory. File Server directory
  * that needs to be mounted. If this property is not specified, the entire File
  * Server will be mounted.
- * @member {string} relativeMountPath Relative mount path. The relative path on
- * the compute node where the File Server will be mounted. Note that all
+ * @property {string} relativeMountPath Relative mount path. The relative path
+ * on the compute node where the File Server will be mounted. Note that all
  * cluster level file servers will be mounted under $AZ_BATCHAI_MOUNT_ROOT
  * location and all job level file servers will be mounted under
  * $AZ_BATCHAI_JOB_MOUNT_ROOT.
- * @member {string} [mountOptions] Mount options. Mount options to be passed to
- * mount command.
+ * @property {string} [mountOptions] Mount options. Mount options to be passed
+ * to mount command.
  */
 export interface FileServerReference {
   fileServer: ResourceId;
@@ -653,11 +656,11 @@ export interface FileServerReference {
  * @constructor
  * Unmananged file system mounting configuration.
  *
- * @member {string} mountCommand Mount command. Mount command line. Note, Batch
- * AI will append mount path to the command on its own.
- * @member {string} relativeMountPath Relative mount path. The relative path on
- * the compute node where the unmanaged file system will be mounted. Note that
- * all cluster level unmanaged file systems will be mounted under
+ * @property {string} mountCommand Mount command. Mount command line. Note,
+ * Batch AI will append mount path to the command on its own.
+ * @property {string} relativeMountPath Relative mount path. The relative path
+ * on the compute node where the unmanaged file system will be mounted. Note
+ * that all cluster level unmanaged file systems will be mounted under
  * $AZ_BATCHAI_MOUNT_ROOT location and all job level unmanaged file systems
  * will be mounted under $AZ_BATCHAI_JOB_MOUNT_ROOT.
  */
@@ -672,14 +675,16 @@ export interface UnmanagedFileSystemReference {
  * @constructor
  * Details of volumes to mount on the cluster.
  *
- * @member {array} [azureFileShares] Azure File Shares. A collection of Azure
+ * @property {array} [azureFileShares] Azure File Shares. A collection of Azure
  * File Shares that are to be mounted to the cluster nodes.
- * @member {array} [azureBlobFileSystems] Azure Blob file systems. A collection
- * of Azure Blob Containers that are to be mounted to the cluster nodes.
- * @member {array} [fileServers] File Servers. A collection of Batch AI File
+ * @property {array} [azureBlobFileSystems] Azure Blob file systems. A
+ * collection of Azure Blob Containers that are to be mounted to the cluster
+ * nodes.
+ * @property {array} [fileServers] File Servers. A collection of Batch AI File
  * Servers that are to be mounted to the cluster nodes.
- * @member {array} [unmanagedFileSystems] Unmanaged file systems. A collection
- * of unmanaged file systems that are to be mounted to the cluster nodes.
+ * @property {array} [unmanagedFileSystems] Unmanaged file systems. A
+ * collection of unmanaged file systems that are to be mounted to the cluster
+ * nodes.
  */
 export interface MountVolumes {
   azureFileShares?: AzureFileShareReference[];
@@ -694,20 +699,20 @@ export interface MountVolumes {
  * @constructor
  * Azure Application Insights information for performance counters reporting.
  *
- * @member {object} component Component ID. Azure Application Insights
+ * @property {object} component Component ID. Azure Application Insights
  * component resource ID.
- * @member {string} [component.id] The ID of the resource
- * @member {string} [instrumentationKey] Instrumentation Key. Value of the
+ * @property {string} [component.id] The ID of the resource
+ * @property {string} [instrumentationKey] Instrumentation Key. Value of the
  * Azure Application Insights instrumentation key.
- * @member {object} [instrumentationKeySecretReference] Instrumentation key
+ * @property {object} [instrumentationKeySecretReference] Instrumentation key
  * KeyVault Secret reference. KeyVault Store and Secret which contains Azure
  * Application Insights instrumentation key. One of instrumentationKey or
  * instrumentationKeySecretReference must be specified.
- * @member {object} [instrumentationKeySecretReference.sourceVault] Fully
+ * @property {object} [instrumentationKeySecretReference.sourceVault] Fully
  * qualified resource indentifier of the Key Vault.
- * @member {string} [instrumentationKeySecretReference.sourceVault.id] The ID
+ * @property {string} [instrumentationKeySecretReference.sourceVault.id] The ID
  * of the resource
- * @member {string} [instrumentationKeySecretReference.secretUrl] The URL
+ * @property {string} [instrumentationKeySecretReference.secretUrl] The URL
  * referencing a secret in the Key Vault.
  */
 export interface AppInsightsReference {
@@ -722,26 +727,27 @@ export interface AppInsightsReference {
  * @constructor
  * Performance counters reporting settings.
  *
- * @member {object} appInsightsReference Azure Application Insights reference.
- * Azure Application Insights information for performance counters reporting.
- * If provided, Batch AI will upload node performance counters to the
- * corresponding Azure Application Insights account.
- * @member {object} [appInsightsReference.component] Azure Application Insights
- * component resource ID.
- * @member {string} [appInsightsReference.component.id] The ID of the resource
- * @member {string} [appInsightsReference.instrumentationKey] Value of the
+ * @property {object} appInsightsReference Azure Application Insights
+ * reference. Azure Application Insights information for performance counters
+ * reporting. If provided, Batch AI will upload node performance counters to
+ * the corresponding Azure Application Insights account.
+ * @property {object} [appInsightsReference.component] Azure Application
+ * Insights component resource ID.
+ * @property {string} [appInsightsReference.component.id] The ID of the
+ * resource
+ * @property {string} [appInsightsReference.instrumentationKey] Value of the
  * Azure Application Insights instrumentation key.
- * @member {object} [appInsightsReference.instrumentationKeySecretReference]
+ * @property {object} [appInsightsReference.instrumentationKeySecretReference]
  * KeyVault Store and Secret which contains Azure Application Insights
  * instrumentation key. One of instrumentationKey or
  * instrumentationKeySecretReference must be specified.
- * @member {object}
+ * @property {object}
  * [appInsightsReference.instrumentationKeySecretReference.sourceVault] Fully
  * qualified resource indentifier of the Key Vault.
- * @member {string}
+ * @property {string}
  * [appInsightsReference.instrumentationKeySecretReference.sourceVault.id] The
  * ID of the resource
- * @member {string}
+ * @property {string}
  * [appInsightsReference.instrumentationKeySecretReference.secretUrl] The URL
  * referencing a secret in the Key Vault.
  */
@@ -755,67 +761,67 @@ export interface PerformanceCountersSettings {
  * @constructor
  * Node setup settings.
  *
- * @member {object} [setupTask] Setup task. Setup task to run on cluster nodes
- * when nodes got created or rebooted. The setup task code needs to be
+ * @property {object} [setupTask] Setup task. Setup task to run on cluster
+ * nodes when nodes got created or rebooted. The setup task code needs to be
  * idempotent. Generally the setup task is used to download static data that is
  * required for all jobs that run on the cluster VMs and/or to download/install
  * software.
- * @member {string} [setupTask.commandLine] The command line to be executed on
- * each cluster's node after it being allocated or rebooted. The command is
+ * @property {string} [setupTask.commandLine] The command line to be executed
+ * on each cluster's node after it being allocated or rebooted. The command is
  * executed in a bash subshell as a root.
- * @member {array} [setupTask.environmentVariables] A collection of user
+ * @property {array} [setupTask.environmentVariables] A collection of user
  * defined environment variables to be set for setup task.
- * @member {array} [setupTask.secrets] A collection of user defined environment
- * variables with secret values to be set for the setup task. Server will never
- * report values of these variables back.
- * @member {string} [setupTask.stdOutErrPathPrefix] The prefix of a path where
- * the Batch AI service will upload the stdout, stderr and execution log of the
- * setup task.
- * @member {string} [setupTask.stdOutErrPathSuffix] A path segment appended by
- * Batch AI to stdOutErrPathPrefix to form a path where stdout, stderr and
+ * @property {array} [setupTask.secrets] A collection of user defined
+ * environment variables with secret values to be set for the setup task.
+ * Server will never report values of these variables back.
+ * @property {string} [setupTask.stdOutErrPathPrefix] The prefix of a path
+ * where the Batch AI service will upload the stdout, stderr and execution log
+ * of the setup task.
+ * @property {string} [setupTask.stdOutErrPathSuffix] A path segment appended
+ * by Batch AI to stdOutErrPathPrefix to form a path where stdout, stderr and
  * execution log of the setup task will be uploaded. Batch AI creates the setup
  * task output directories under an unique path to avoid conflicts between
  * different clusters. The full path can be obtained by concatenation of
  * stdOutErrPathPrefix and stdOutErrPathSuffix.
- * @member {object} [mountVolumes] Mount volumes. Mount volumes to be available
- * to setup task and all jobs executing on the cluster. The volumes will be
- * mounted at location specified by $AZ_BATCHAI_MOUNT_ROOT environment
+ * @property {object} [mountVolumes] Mount volumes. Mount volumes to be
+ * available to setup task and all jobs executing on the cluster. The volumes
+ * will be mounted at location specified by $AZ_BATCHAI_MOUNT_ROOT environment
  * variable.
- * @member {array} [mountVolumes.azureFileShares] A collection of Azure File
+ * @property {array} [mountVolumes.azureFileShares] A collection of Azure File
  * Shares that are to be mounted to the cluster nodes.
- * @member {array} [mountVolumes.azureBlobFileSystems] A collection of Azure
+ * @property {array} [mountVolumes.azureBlobFileSystems] A collection of Azure
  * Blob Containers that are to be mounted to the cluster nodes.
- * @member {array} [mountVolumes.fileServers] A collection of Batch AI File
+ * @property {array} [mountVolumes.fileServers] A collection of Batch AI File
  * Servers that are to be mounted to the cluster nodes.
- * @member {array} [mountVolumes.unmanagedFileSystems] A collection of
+ * @property {array} [mountVolumes.unmanagedFileSystems] A collection of
  * unmanaged file systems that are to be mounted to the cluster nodes.
- * @member {object} [performanceCountersSettings] Performance counters
+ * @property {object} [performanceCountersSettings] Performance counters
  * settings. Settings for performance counters collecting and uploading.
- * @member {object} [performanceCountersSettings.appInsightsReference] Azure
+ * @property {object} [performanceCountersSettings.appInsightsReference] Azure
  * Application Insights information for performance counters reporting. If
  * provided, Batch AI will upload node performance counters to the
  * corresponding Azure Application Insights account.
- * @member {object}
+ * @property {object}
  * [performanceCountersSettings.appInsightsReference.component] Azure
  * Application Insights component resource ID.
- * @member {string}
+ * @property {string}
  * [performanceCountersSettings.appInsightsReference.component.id] The ID of
  * the resource
- * @member {string}
+ * @property {string}
  * [performanceCountersSettings.appInsightsReference.instrumentationKey] Value
  * of the Azure Application Insights instrumentation key.
- * @member {object}
+ * @property {object}
  * [performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference]
  * KeyVault Store and Secret which contains Azure Application Insights
  * instrumentation key. One of instrumentationKey or
  * instrumentationKeySecretReference must be specified.
- * @member {object}
+ * @property {object}
  * [performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault]
  * Fully qualified resource indentifier of the Key Vault.
- * @member {string}
+ * @property {string}
  * [performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault.id]
  * The ID of the resource
- * @member {string}
+ * @property {string}
  * [performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl]
  * The URL referencing a secret in the Key Vault.
  */
@@ -831,15 +837,15 @@ export interface NodeSetup {
  * @constructor
  * Counts of various compute node states on the cluster.
  *
- * @member {number} [idleNodeCount] Idle node count. Number of compute nodes in
- * idle state.
- * @member {number} [runningNodeCount] Running node count. Number of compute
+ * @property {number} [idleNodeCount] Idle node count. Number of compute nodes
+ * in idle state.
+ * @property {number} [runningNodeCount] Running node count. Number of compute
  * nodes which are running jobs.
- * @member {number} [preparingNodeCount] Preparing node count. Number of
+ * @property {number} [preparingNodeCount] Preparing node count. Number of
  * compute nodes which are being prepared.
- * @member {number} [unusableNodeCount] Unusable node count. Number of compute
- * nodes which are in unusable state.
- * @member {number} [leavingNodeCount] Leaving node count. Number of compute
+ * @property {number} [unusableNodeCount] Unusable node count. Number of
+ * compute nodes which are in unusable state.
+ * @property {number} [leavingNodeCount] Leaving node count. Number of compute
  * nodes which are leaving the cluster.
  */
 export interface NodeStateCounts {
@@ -856,50 +862,50 @@ export interface NodeStateCounts {
  * @constructor
  * Cluster creation operation.
  *
- * @member {string} vmSize VM size. The size of the virtual machines in the
+ * @property {string} vmSize VM size. The size of the virtual machines in the
  * cluster. All nodes in a cluster have the same VM size. For information about
  * available VM sizes for clusters using images from the Virtual Machines
  * Marketplace see Sizes for Virtual Machines (Linux). Batch AI service
  * supports all Azure VM sizes except STANDARD_A0 and those with premium
  * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
- * @member {string} [vmPriority] VM priority. VM priority. Allowed values are:
- * dedicated (default) and lowpriority. Possible values include: 'dedicated',
- * 'lowpriority'. Default value: 'dedicated' .
- * @member {object} [scaleSettings] Scale settings. Scale settings for the
+ * @property {string} [vmPriority] VM priority. VM priority. Allowed values
+ * are: dedicated (default) and lowpriority. Possible values include:
+ * 'dedicated', 'lowpriority'. Default value: 'dedicated' .
+ * @property {object} [scaleSettings] Scale settings. Scale settings for the
  * cluster. Batch AI service supports manual and auto scale clusters.
- * @member {object} [scaleSettings.manual] Manual scale settings for the
+ * @property {object} [scaleSettings.manual] Manual scale settings for the
  * cluster.
- * @member {number} [scaleSettings.manual.targetNodeCount] The desired number
+ * @property {number} [scaleSettings.manual.targetNodeCount] The desired number
  * of compute nodes in the Cluster. Default is 0.
- * @member {string} [scaleSettings.manual.nodeDeallocationOption] An action to
- * be performed when the cluster size is decreasing. The default value is
+ * @property {string} [scaleSettings.manual.nodeDeallocationOption] An action
+ * to be performed when the cluster size is decreasing. The default value is
  * requeue. Possible values include: 'requeue', 'terminate',
  * 'waitforjobcompletion'
- * @member {object} [scaleSettings.autoScale] Auto-scale settings for the
+ * @property {object} [scaleSettings.autoScale] Auto-scale settings for the
  * cluster.
- * @member {number} [scaleSettings.autoScale.minimumNodeCount] The minimum
+ * @property {number} [scaleSettings.autoScale.minimumNodeCount] The minimum
  * number of compute nodes the Batch AI service will try to allocate for the
  * cluster. Note, the actual number of nodes can be less than the specified
  * value if the subscription has not enough quota to fulfill the request.
- * @member {number} [scaleSettings.autoScale.maximumNodeCount] The maximum
+ * @property {number} [scaleSettings.autoScale.maximumNodeCount] The maximum
  * number of compute nodes the cluster can have.
- * @member {number} [scaleSettings.autoScale.initialNodeCount] The number of
+ * @property {number} [scaleSettings.autoScale.initialNodeCount] The number of
  * compute nodes to allocate on cluster creation. Note that this value is used
  * only during cluster creation. Default: 0.
- * @member {object} [virtualMachineConfiguration] VM configuration. OS image
+ * @property {object} [virtualMachineConfiguration] VM configuration. OS image
  * configuration for cluster nodes. All nodes in a cluster have the same OS
  * image.
- * @member {object} [virtualMachineConfiguration.imageReference] OS image
+ * @property {object} [virtualMachineConfiguration.imageReference] OS image
  * reference for cluster nodes.
- * @member {string} [virtualMachineConfiguration.imageReference.publisher]
+ * @property {string} [virtualMachineConfiguration.imageReference.publisher]
  * Publisher of the image.
- * @member {string} [virtualMachineConfiguration.imageReference.offer] Offer of
+ * @property {string} [virtualMachineConfiguration.imageReference.offer] Offer
+ * of the image.
+ * @property {string} [virtualMachineConfiguration.imageReference.sku] SKU of
  * the image.
- * @member {string} [virtualMachineConfiguration.imageReference.sku] SKU of the
- * image.
- * @member {string} [virtualMachineConfiguration.imageReference.version]
+ * @property {string} [virtualMachineConfiguration.imageReference.version]
  * Version of the image.
- * @member {string}
+ * @property {string}
  * [virtualMachineConfiguration.imageReference.virtualMachineImageId] The ARM
  * resource identifier of the virtual machine image for the compute nodes. This
  * is of the form
@@ -910,85 +916,85 @@ export interface NodeStateCounts {
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * Note, you need to provide publisher, offer and sku of the base OS image of
  * which the custom image has been derived from.
- * @member {object} [nodeSetup] Node setup. Setup to be performed on each
+ * @property {object} [nodeSetup] Node setup. Setup to be performed on each
  * compute node in the cluster.
- * @member {object} [nodeSetup.setupTask] Setup task to run on cluster nodes
+ * @property {object} [nodeSetup.setupTask] Setup task to run on cluster nodes
  * when nodes got created or rebooted. The setup task code needs to be
  * idempotent. Generally the setup task is used to download static data that is
  * required for all jobs that run on the cluster VMs and/or to download/install
  * software.
- * @member {string} [nodeSetup.setupTask.commandLine] The command line to be
+ * @property {string} [nodeSetup.setupTask.commandLine] The command line to be
  * executed on each cluster's node after it being allocated or rebooted. The
  * command is executed in a bash subshell as a root.
- * @member {array} [nodeSetup.setupTask.environmentVariables] A collection of
+ * @property {array} [nodeSetup.setupTask.environmentVariables] A collection of
  * user defined environment variables to be set for setup task.
- * @member {array} [nodeSetup.setupTask.secrets] A collection of user defined
+ * @property {array} [nodeSetup.setupTask.secrets] A collection of user defined
  * environment variables with secret values to be set for the setup task.
  * Server will never report values of these variables back.
- * @member {string} [nodeSetup.setupTask.stdOutErrPathPrefix] The prefix of a
+ * @property {string} [nodeSetup.setupTask.stdOutErrPathPrefix] The prefix of a
  * path where the Batch AI service will upload the stdout, stderr and execution
  * log of the setup task.
- * @member {string} [nodeSetup.setupTask.stdOutErrPathSuffix] A path segment
+ * @property {string} [nodeSetup.setupTask.stdOutErrPathSuffix] A path segment
  * appended by Batch AI to stdOutErrPathPrefix to form a path where stdout,
  * stderr and execution log of the setup task will be uploaded. Batch AI
  * creates the setup task output directories under an unique path to avoid
  * conflicts between different clusters. The full path can be obtained by
  * concatenation of stdOutErrPathPrefix and stdOutErrPathSuffix.
- * @member {object} [nodeSetup.mountVolumes] Mount volumes to be available to
+ * @property {object} [nodeSetup.mountVolumes] Mount volumes to be available to
  * setup task and all jobs executing on the cluster. The volumes will be
  * mounted at location specified by $AZ_BATCHAI_MOUNT_ROOT environment
  * variable.
- * @member {array} [nodeSetup.mountVolumes.azureFileShares] A collection of
+ * @property {array} [nodeSetup.mountVolumes.azureFileShares] A collection of
  * Azure File Shares that are to be mounted to the cluster nodes.
- * @member {array} [nodeSetup.mountVolumes.azureBlobFileSystems] A collection
+ * @property {array} [nodeSetup.mountVolumes.azureBlobFileSystems] A collection
  * of Azure Blob Containers that are to be mounted to the cluster nodes.
- * @member {array} [nodeSetup.mountVolumes.fileServers] A collection of Batch
+ * @property {array} [nodeSetup.mountVolumes.fileServers] A collection of Batch
  * AI File Servers that are to be mounted to the cluster nodes.
- * @member {array} [nodeSetup.mountVolumes.unmanagedFileSystems] A collection
+ * @property {array} [nodeSetup.mountVolumes.unmanagedFileSystems] A collection
  * of unmanaged file systems that are to be mounted to the cluster nodes.
- * @member {object} [nodeSetup.performanceCountersSettings] Settings for
+ * @property {object} [nodeSetup.performanceCountersSettings] Settings for
  * performance counters collecting and uploading.
- * @member {object}
+ * @property {object}
  * [nodeSetup.performanceCountersSettings.appInsightsReference] Azure
  * Application Insights information for performance counters reporting. If
  * provided, Batch AI will upload node performance counters to the
  * corresponding Azure Application Insights account.
- * @member {object}
+ * @property {object}
  * [nodeSetup.performanceCountersSettings.appInsightsReference.component] Azure
  * Application Insights component resource ID.
- * @member {string}
+ * @property {string}
  * [nodeSetup.performanceCountersSettings.appInsightsReference.component.id]
  * The ID of the resource
- * @member {string}
+ * @property {string}
  * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKey]
  * Value of the Azure Application Insights instrumentation key.
- * @member {object}
+ * @property {object}
  * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference]
  * KeyVault Store and Secret which contains Azure Application Insights
  * instrumentation key. One of instrumentationKey or
  * instrumentationKeySecretReference must be specified.
- * @member {object}
+ * @property {object}
  * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault]
  * Fully qualified resource indentifier of the Key Vault.
- * @member {string}
+ * @property {string}
  * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault.id]
  * The ID of the resource
- * @member {string}
+ * @property {string}
  * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl]
  * The URL referencing a secret in the Key Vault.
- * @member {object} userAccountSettings User account settings. Settings for an
- * administrator user account that will be created on each compute node in the
- * cluster.
- * @member {string} [userAccountSettings.adminUserName] Name of the
+ * @property {object} userAccountSettings User account settings. Settings for
+ * an administrator user account that will be created on each compute node in
+ * the cluster.
+ * @property {string} [userAccountSettings.adminUserName] Name of the
  * administrator user account which can be used to SSH to nodes.
- * @member {string} [userAccountSettings.adminUserSshPublicKey] SSH public key
- * of the administrator user account.
- * @member {string} [userAccountSettings.adminUserPassword] Password of the
+ * @property {string} [userAccountSettings.adminUserSshPublicKey] SSH public
+ * key of the administrator user account.
+ * @property {string} [userAccountSettings.adminUserPassword] Password of the
  * administrator user account.
- * @member {object} [subnet] Subnet. Existing virtual network subnet to put the
- * cluster nodes in. Note, if a File Server mount configured in node setup, the
- * File Server's subnet will be used automatically.
- * @member {string} [subnet.id] The ID of the resource
+ * @property {object} [subnet] Subnet. Existing virtual network subnet to put
+ * the cluster nodes in. Note, if a File Server mount configured in node setup,
+ * the File Server's subnet will be used automatically.
+ * @property {string} [subnet.id] The ID of the resource
  */
 export interface ClusterCreateParameters {
   vmSize: string;
@@ -1006,25 +1012,25 @@ export interface ClusterCreateParameters {
  * @constructor
  * Cluster update parameters.
  *
- * @member {object} [scaleSettings] Scale settings. Desired scale settings for
- * the cluster. Batch AI service supports manual and auto scale clusters.
- * @member {object} [scaleSettings.manual] Manual scale settings for the
+ * @property {object} [scaleSettings] Scale settings. Desired scale settings
+ * for the cluster. Batch AI service supports manual and auto scale clusters.
+ * @property {object} [scaleSettings.manual] Manual scale settings for the
  * cluster.
- * @member {number} [scaleSettings.manual.targetNodeCount] The desired number
+ * @property {number} [scaleSettings.manual.targetNodeCount] The desired number
  * of compute nodes in the Cluster. Default is 0.
- * @member {string} [scaleSettings.manual.nodeDeallocationOption] An action to
- * be performed when the cluster size is decreasing. The default value is
+ * @property {string} [scaleSettings.manual.nodeDeallocationOption] An action
+ * to be performed when the cluster size is decreasing. The default value is
  * requeue. Possible values include: 'requeue', 'terminate',
  * 'waitforjobcompletion'
- * @member {object} [scaleSettings.autoScale] Auto-scale settings for the
+ * @property {object} [scaleSettings.autoScale] Auto-scale settings for the
  * cluster.
- * @member {number} [scaleSettings.autoScale.minimumNodeCount] The minimum
+ * @property {number} [scaleSettings.autoScale.minimumNodeCount] The minimum
  * number of compute nodes the Batch AI service will try to allocate for the
  * cluster. Note, the actual number of nodes can be less than the specified
  * value if the subscription has not enough quota to fulfill the request.
- * @member {number} [scaleSettings.autoScale.maximumNodeCount] The maximum
+ * @property {number} [scaleSettings.autoScale.maximumNodeCount] The maximum
  * number of compute nodes the cluster can have.
- * @member {number} [scaleSettings.autoScale.initialNodeCount] The number of
+ * @property {number} [scaleSettings.autoScale.initialNodeCount] The number of
  * compute nodes to allocate on cluster creation. Note that this value is used
  * only during cluster creation. Default: 0.
  */
@@ -1038,8 +1044,8 @@ export interface ClusterUpdateParameters {
  * @constructor
  * Name-value pair.
  *
- * @member {string} [name] Name. The name in the name-value pair.
- * @member {string} [value] Value. The value in the name-value pair.
+ * @property {string} [name] Name. The name in the name-value pair.
+ * @property {string} [value] Value. The value in the name-value pair.
  */
 export interface NameValuePair {
   name?: string;
@@ -1052,11 +1058,11 @@ export interface NameValuePair {
  * @constructor
  * An error response from the Batch AI service.
  *
- * @member {string} [code] An identifier of the error. Codes are invariant and
- * are intended to be consumed programmatically.
- * @member {string} [message] A message describing the error, intended to be
+ * @property {string} [code] An identifier of the error. Codes are invariant
+ * and are intended to be consumed programmatically.
+ * @property {string} [message] A message describing the error, intended to be
  * suitable for display in a user interface.
- * @member {array} [details] A list of additional details about the error.
+ * @property {array} [details] A list of additional details about the error.
  */
 export interface BatchAIError {
   readonly code?: string;
@@ -1070,46 +1076,46 @@ export interface BatchAIError {
  * @constructor
  * Information about a Cluster.
  *
- * @member {string} [vmSize] VM size. The size of the virtual machines in the
+ * @property {string} [vmSize] VM size. The size of the virtual machines in the
  * cluster. All nodes in a cluster have the same VM size.
- * @member {string} [vmPriority] VM priority. VM priority of cluster nodes.
+ * @property {string} [vmPriority] VM priority. VM priority of cluster nodes.
  * Possible values include: 'dedicated', 'lowpriority'. Default value:
  * 'dedicated' .
- * @member {object} [scaleSettings] Scale settings. Scale settings of the
+ * @property {object} [scaleSettings] Scale settings. Scale settings of the
  * cluster.
- * @member {object} [scaleSettings.manual] Manual scale settings for the
+ * @property {object} [scaleSettings.manual] Manual scale settings for the
  * cluster.
- * @member {number} [scaleSettings.manual.targetNodeCount] The desired number
+ * @property {number} [scaleSettings.manual.targetNodeCount] The desired number
  * of compute nodes in the Cluster. Default is 0.
- * @member {string} [scaleSettings.manual.nodeDeallocationOption] An action to
- * be performed when the cluster size is decreasing. The default value is
+ * @property {string} [scaleSettings.manual.nodeDeallocationOption] An action
+ * to be performed when the cluster size is decreasing. The default value is
  * requeue. Possible values include: 'requeue', 'terminate',
  * 'waitforjobcompletion'
- * @member {object} [scaleSettings.autoScale] Auto-scale settings for the
+ * @property {object} [scaleSettings.autoScale] Auto-scale settings for the
  * cluster.
- * @member {number} [scaleSettings.autoScale.minimumNodeCount] The minimum
+ * @property {number} [scaleSettings.autoScale.minimumNodeCount] The minimum
  * number of compute nodes the Batch AI service will try to allocate for the
  * cluster. Note, the actual number of nodes can be less than the specified
  * value if the subscription has not enough quota to fulfill the request.
- * @member {number} [scaleSettings.autoScale.maximumNodeCount] The maximum
+ * @property {number} [scaleSettings.autoScale.maximumNodeCount] The maximum
  * number of compute nodes the cluster can have.
- * @member {number} [scaleSettings.autoScale.initialNodeCount] The number of
+ * @property {number} [scaleSettings.autoScale.initialNodeCount] The number of
  * compute nodes to allocate on cluster creation. Note that this value is used
  * only during cluster creation. Default: 0.
- * @member {object} [virtualMachineConfiguration] VM configuration. Virtual
+ * @property {object} [virtualMachineConfiguration] VM configuration. Virtual
  * machine configuration (OS image) of the compute nodes. All nodes in a
  * cluster have the same OS image configuration.
- * @member {object} [virtualMachineConfiguration.imageReference] OS image
+ * @property {object} [virtualMachineConfiguration.imageReference] OS image
  * reference for cluster nodes.
- * @member {string} [virtualMachineConfiguration.imageReference.publisher]
+ * @property {string} [virtualMachineConfiguration.imageReference.publisher]
  * Publisher of the image.
- * @member {string} [virtualMachineConfiguration.imageReference.offer] Offer of
+ * @property {string} [virtualMachineConfiguration.imageReference.offer] Offer
+ * of the image.
+ * @property {string} [virtualMachineConfiguration.imageReference.sku] SKU of
  * the image.
- * @member {string} [virtualMachineConfiguration.imageReference.sku] SKU of the
- * image.
- * @member {string} [virtualMachineConfiguration.imageReference.version]
+ * @property {string} [virtualMachineConfiguration.imageReference.version]
  * Version of the image.
- * @member {string}
+ * @property {string}
  * [virtualMachineConfiguration.imageReference.virtualMachineImageId] The ARM
  * resource identifier of the virtual machine image for the compute nodes. This
  * is of the form
@@ -1120,120 +1126,121 @@ export interface BatchAIError {
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * Note, you need to provide publisher, offer and sku of the base OS image of
  * which the custom image has been derived from.
- * @member {object} [nodeSetup] Node setup. Setup (mount file systems,
+ * @property {object} [nodeSetup] Node setup. Setup (mount file systems,
  * performance counters settings and custom setup task) to be performed on each
  * compute node in the cluster.
- * @member {object} [nodeSetup.setupTask] Setup task to run on cluster nodes
+ * @property {object} [nodeSetup.setupTask] Setup task to run on cluster nodes
  * when nodes got created or rebooted. The setup task code needs to be
  * idempotent. Generally the setup task is used to download static data that is
  * required for all jobs that run on the cluster VMs and/or to download/install
  * software.
- * @member {string} [nodeSetup.setupTask.commandLine] The command line to be
+ * @property {string} [nodeSetup.setupTask.commandLine] The command line to be
  * executed on each cluster's node after it being allocated or rebooted. The
  * command is executed in a bash subshell as a root.
- * @member {array} [nodeSetup.setupTask.environmentVariables] A collection of
+ * @property {array} [nodeSetup.setupTask.environmentVariables] A collection of
  * user defined environment variables to be set for setup task.
- * @member {array} [nodeSetup.setupTask.secrets] A collection of user defined
+ * @property {array} [nodeSetup.setupTask.secrets] A collection of user defined
  * environment variables with secret values to be set for the setup task.
  * Server will never report values of these variables back.
- * @member {string} [nodeSetup.setupTask.stdOutErrPathPrefix] The prefix of a
+ * @property {string} [nodeSetup.setupTask.stdOutErrPathPrefix] The prefix of a
  * path where the Batch AI service will upload the stdout, stderr and execution
  * log of the setup task.
- * @member {string} [nodeSetup.setupTask.stdOutErrPathSuffix] A path segment
+ * @property {string} [nodeSetup.setupTask.stdOutErrPathSuffix] A path segment
  * appended by Batch AI to stdOutErrPathPrefix to form a path where stdout,
  * stderr and execution log of the setup task will be uploaded. Batch AI
  * creates the setup task output directories under an unique path to avoid
  * conflicts between different clusters. The full path can be obtained by
  * concatenation of stdOutErrPathPrefix and stdOutErrPathSuffix.
- * @member {object} [nodeSetup.mountVolumes] Mount volumes to be available to
+ * @property {object} [nodeSetup.mountVolumes] Mount volumes to be available to
  * setup task and all jobs executing on the cluster. The volumes will be
  * mounted at location specified by $AZ_BATCHAI_MOUNT_ROOT environment
  * variable.
- * @member {array} [nodeSetup.mountVolumes.azureFileShares] A collection of
+ * @property {array} [nodeSetup.mountVolumes.azureFileShares] A collection of
  * Azure File Shares that are to be mounted to the cluster nodes.
- * @member {array} [nodeSetup.mountVolumes.azureBlobFileSystems] A collection
+ * @property {array} [nodeSetup.mountVolumes.azureBlobFileSystems] A collection
  * of Azure Blob Containers that are to be mounted to the cluster nodes.
- * @member {array} [nodeSetup.mountVolumes.fileServers] A collection of Batch
+ * @property {array} [nodeSetup.mountVolumes.fileServers] A collection of Batch
  * AI File Servers that are to be mounted to the cluster nodes.
- * @member {array} [nodeSetup.mountVolumes.unmanagedFileSystems] A collection
+ * @property {array} [nodeSetup.mountVolumes.unmanagedFileSystems] A collection
  * of unmanaged file systems that are to be mounted to the cluster nodes.
- * @member {object} [nodeSetup.performanceCountersSettings] Settings for
+ * @property {object} [nodeSetup.performanceCountersSettings] Settings for
  * performance counters collecting and uploading.
- * @member {object}
+ * @property {object}
  * [nodeSetup.performanceCountersSettings.appInsightsReference] Azure
  * Application Insights information for performance counters reporting. If
  * provided, Batch AI will upload node performance counters to the
  * corresponding Azure Application Insights account.
- * @member {object}
+ * @property {object}
  * [nodeSetup.performanceCountersSettings.appInsightsReference.component] Azure
  * Application Insights component resource ID.
- * @member {string}
+ * @property {string}
  * [nodeSetup.performanceCountersSettings.appInsightsReference.component.id]
  * The ID of the resource
- * @member {string}
+ * @property {string}
  * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKey]
  * Value of the Azure Application Insights instrumentation key.
- * @member {object}
+ * @property {object}
  * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference]
  * KeyVault Store and Secret which contains Azure Application Insights
  * instrumentation key. One of instrumentationKey or
  * instrumentationKeySecretReference must be specified.
- * @member {object}
+ * @property {object}
  * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault]
  * Fully qualified resource indentifier of the Key Vault.
- * @member {string}
+ * @property {string}
  * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault.id]
  * The ID of the resource
- * @member {string}
+ * @property {string}
  * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl]
  * The URL referencing a secret in the Key Vault.
- * @member {object} [userAccountSettings] User account settings. Administrator
- * user account settings which can be used to SSH to compute nodes.
- * @member {string} [userAccountSettings.adminUserName] Name of the
+ * @property {object} [userAccountSettings] User account settings.
+ * Administrator user account settings which can be used to SSH to compute
+ * nodes.
+ * @property {string} [userAccountSettings.adminUserName] Name of the
  * administrator user account which can be used to SSH to nodes.
- * @member {string} [userAccountSettings.adminUserSshPublicKey] SSH public key
- * of the administrator user account.
- * @member {string} [userAccountSettings.adminUserPassword] Password of the
+ * @property {string} [userAccountSettings.adminUserSshPublicKey] SSH public
+ * key of the administrator user account.
+ * @property {string} [userAccountSettings.adminUserPassword] Password of the
  * administrator user account.
- * @member {object} [subnet] Subnet. Virtual network subnet resource ID the
+ * @property {object} [subnet] Subnet. Virtual network subnet resource ID the
  * cluster nodes belong to.
- * @member {string} [subnet.id] The ID of the resource
- * @member {date} [creationTime] Creation time. The time when the cluster was
+ * @property {string} [subnet.id] The ID of the resource
+ * @property {date} [creationTime] Creation time. The time when the cluster was
  * created.
- * @member {string} [provisioningState] Provisioning state. Provisioning state
- * of the cluster. Possible value are: creating - Specifies that the cluster is
- * being created. succeeded - Specifies that the cluster has been created
- * successfully. failed - Specifies that the cluster creation has failed.
- * deleting - Specifies that the cluster is being deleted. Possible values
- * include: 'creating', 'succeeded', 'failed', 'deleting'
- * @member {date} [provisioningStateTransitionTime] Provisioning State
+ * @property {string} [provisioningState] Provisioning state. Provisioning
+ * state of the cluster. Possible value are: creating - Specifies that the
+ * cluster is being created. succeeded - Specifies that the cluster has been
+ * created successfully. failed - Specifies that the cluster creation has
+ * failed. deleting - Specifies that the cluster is being deleted. Possible
+ * values include: 'creating', 'succeeded', 'failed', 'deleting'
+ * @property {date} [provisioningStateTransitionTime] Provisioning State
  * Transition time. Time when the provisioning state was changed.
- * @member {string} [allocationState] Allocation state. Allocation state of the
- * cluster. Possible values are: steady - Indicates that the cluster is not
+ * @property {string} [allocationState] Allocation state. Allocation state of
+ * the cluster. Possible values are: steady - Indicates that the cluster is not
  * resizing. There are no changes to the number of compute nodes in the cluster
  * in progress. A cluster enters this state when it is created and when no
  * operations are being performed on the cluster to change the number of
  * compute nodes. resizing - Indicates that the cluster is resizing; that is,
  * compute nodes are being added to or removed from the cluster. Possible
  * values include: 'steady', 'resizing'
- * @member {date} [allocationStateTransitionTime] Allocation state transition
+ * @property {date} [allocationStateTransitionTime] Allocation state transition
  * time. The time at which the cluster entered its current allocation state.
- * @member {array} [errors] Errors. Collection of errors encountered by various
- * compute nodes during node setup.
- * @member {number} [currentNodeCount] Current node count. The number of
+ * @property {array} [errors] Errors. Collection of errors encountered by
+ * various compute nodes during node setup.
+ * @property {number} [currentNodeCount] Current node count. The number of
  * compute nodes currently assigned to the cluster.
- * @member {object} [nodeStateCounts] Node state counts. Counts of various node
- * states on the cluster.
- * @member {number} [nodeStateCounts.idleNodeCount] Number of compute nodes in
- * idle state.
- * @member {number} [nodeStateCounts.runningNodeCount] Number of compute nodes
- * which are running jobs.
- * @member {number} [nodeStateCounts.preparingNodeCount] Number of compute
+ * @property {object} [nodeStateCounts] Node state counts. Counts of various
+ * node states on the cluster.
+ * @property {number} [nodeStateCounts.idleNodeCount] Number of compute nodes
+ * in idle state.
+ * @property {number} [nodeStateCounts.runningNodeCount] Number of compute
+ * nodes which are running jobs.
+ * @property {number} [nodeStateCounts.preparingNodeCount] Number of compute
  * nodes which are being prepared.
- * @member {number} [nodeStateCounts.unusableNodeCount] Number of compute nodes
- * which are in unusable state.
- * @member {number} [nodeStateCounts.leavingNodeCount] Number of compute nodes
- * which are leaving the cluster.
+ * @property {number} [nodeStateCounts.unusableNodeCount] Number of compute
+ * nodes which are in unusable state.
+ * @property {number} [nodeStateCounts.leavingNodeCount] Number of compute
+ * nodes which are leaving the cluster.
  */
 export interface Cluster extends ProxyResource {
   vmSize?: string;
@@ -1259,18 +1266,18 @@ export interface Cluster extends ProxyResource {
  * @constructor
  * Credentials to access a container image in a private repository.
  *
- * @member {string} username User name. User name to login to the repository.
- * @member {string} [password] Password. User password to login to the docker
+ * @property {string} username User name. User name to login to the repository.
+ * @property {string} [password] Password. User password to login to the docker
  * repository. One of password or passwordSecretReference must be specified.
- * @member {object} [passwordSecretReference] Password secret reference.
+ * @property {object} [passwordSecretReference] Password secret reference.
  * KeyVault Secret storing the password. Users can store their secrets in Azure
  * KeyVault and pass it to the Batch AI service to integrate with KeyVault. One
  * of password or passwordSecretReference must be specified.
- * @member {object} [passwordSecretReference.sourceVault] Fully qualified
+ * @property {object} [passwordSecretReference.sourceVault] Fully qualified
  * resource indentifier of the Key Vault.
- * @member {string} [passwordSecretReference.sourceVault.id] The ID of the
+ * @property {string} [passwordSecretReference.sourceVault.id] The ID of the
  * resource
- * @member {string} [passwordSecretReference.secretUrl] The URL referencing a
+ * @property {string} [passwordSecretReference.secretUrl] The URL referencing a
  * secret in the Key Vault.
  */
 export interface PrivateRegistryCredentials {
@@ -1285,23 +1292,25 @@ export interface PrivateRegistryCredentials {
  * @constructor
  * Information about docker image for the job.
  *
- * @member {string} [serverUrl] Server URL. URL for image repository.
- * @member {string} image Image. The name of the image in the image repository.
- * @member {object} [credentials] Credentials. Credentials to access the
- * private docker repository.
- * @member {string} [credentials.username] User name to login to the
+ * @property {string} [serverUrl] Server URL. URL for image repository.
+ * @property {string} image Image. The name of the image in the image
  * repository.
- * @member {string} [credentials.password] User password to login to the docker
- * repository. One of password or passwordSecretReference must be specified.
- * @member {object} [credentials.passwordSecretReference] KeyVault Secret
+ * @property {object} [credentials] Credentials. Credentials to access the
+ * private docker repository.
+ * @property {string} [credentials.username] User name to login to the
+ * repository.
+ * @property {string} [credentials.password] User password to login to the
+ * docker repository. One of password or passwordSecretReference must be
+ * specified.
+ * @property {object} [credentials.passwordSecretReference] KeyVault Secret
  * storing the password. Users can store their secrets in Azure KeyVault and
  * pass it to the Batch AI service to integrate with KeyVault. One of password
  * or passwordSecretReference must be specified.
- * @member {object} [credentials.passwordSecretReference.sourceVault] Fully
+ * @property {object} [credentials.passwordSecretReference.sourceVault] Fully
  * qualified resource indentifier of the Key Vault.
- * @member {string} [credentials.passwordSecretReference.sourceVault.id] The ID
- * of the resource
- * @member {string} [credentials.passwordSecretReference.secretUrl] The URL
+ * @property {string} [credentials.passwordSecretReference.sourceVault.id] The
+ * ID of the resource
+ * @property {string} [credentials.passwordSecretReference.secretUrl] The URL
  * referencing a secret in the Key Vault.
  */
 export interface ImageSourceRegistry {
@@ -1316,33 +1325,33 @@ export interface ImageSourceRegistry {
  * @constructor
  * Docker container settings.
  *
- * @member {object} imageSourceRegistry Image source registry. Information
+ * @property {object} imageSourceRegistry Image source registry. Information
  * about docker image and docker registry to download the container from.
- * @member {string} [imageSourceRegistry.serverUrl] URL for image repository.
- * @member {string} [imageSourceRegistry.image] The name of the image in the
+ * @property {string} [imageSourceRegistry.serverUrl] URL for image repository.
+ * @property {string} [imageSourceRegistry.image] The name of the image in the
  * image repository.
- * @member {object} [imageSourceRegistry.credentials] Credentials to access the
- * private docker repository.
- * @member {string} [imageSourceRegistry.credentials.username] User name to
+ * @property {object} [imageSourceRegistry.credentials] Credentials to access
+ * the private docker repository.
+ * @property {string} [imageSourceRegistry.credentials.username] User name to
  * login to the repository.
- * @member {string} [imageSourceRegistry.credentials.password] User password to
- * login to the docker repository. One of password or passwordSecretReference
- * must be specified.
- * @member {object} [imageSourceRegistry.credentials.passwordSecretReference]
+ * @property {string} [imageSourceRegistry.credentials.password] User password
+ * to login to the docker repository. One of password or
+ * passwordSecretReference must be specified.
+ * @property {object} [imageSourceRegistry.credentials.passwordSecretReference]
  * KeyVault Secret storing the password. Users can store their secrets in Azure
  * KeyVault and pass it to the Batch AI service to integrate with KeyVault. One
  * of password or passwordSecretReference must be specified.
- * @member {object}
+ * @property {object}
  * [imageSourceRegistry.credentials.passwordSecretReference.sourceVault] Fully
  * qualified resource indentifier of the Key Vault.
- * @member {string}
+ * @property {string}
  * [imageSourceRegistry.credentials.passwordSecretReference.sourceVault.id] The
  * ID of the resource
- * @member {string}
+ * @property {string}
  * [imageSourceRegistry.credentials.passwordSecretReference.secretUrl] The URL
  * referencing a secret in the Key Vault.
- * @member {string} [shmSize] /dev/shm size. Size of /dev/shm. Please refer to
- * docker documentation for supported argument formats.
+ * @property {string} [shmSize] /dev/shm size. Size of /dev/shm. Please refer
+ * to docker documentation for supported argument formats.
  */
 export interface ContainerSettings {
   imageSourceRegistry: ImageSourceRegistry;
@@ -1355,23 +1364,23 @@ export interface ContainerSettings {
  * @constructor
  * CNTK (aka Microsoft Cognitive Toolkit) job settings.
  *
- * @member {string} [languageType] Language type. The language to use for
+ * @property {string} [languageType] Language type. The language to use for
  * launching CNTK (aka Microsoft Cognitive Toolkit) job. Valid values are
  * 'BrainScript' or 'Python'.
- * @member {string} [configFilePath] Config file path. Specifies the path of
+ * @property {string} [configFilePath] Config file path. Specifies the path of
  * the BrainScript config file. This property can be specified only if the
  * languageType is 'BrainScript'.
- * @member {string} [pythonScriptFilePath] Python script file path. Python
+ * @property {string} [pythonScriptFilePath] Python script file path. Python
  * script to execute. This property can be specified only if the languageType
  * is 'Python'.
- * @member {string} [pythonInterpreterPath] Python interpreter path. The path
+ * @property {string} [pythonInterpreterPath] Python interpreter path. The path
  * to the Python interpreter. This property can be specified only if the
  * languageType is 'Python'.
- * @member {string} [commandLineArgs] Command line arguments. Command line
+ * @property {string} [commandLineArgs] Command line arguments. Command line
  * arguments that need to be passed to the python script or cntk executable.
- * @member {number} [processCount] Process count. Number of processes to launch
- * for the job execution. The default value for this property is equal to
- * nodeCount property
+ * @property {number} [processCount] Process count. Number of processes to
+ * launch for the job execution. The default value for this property is equal
+ * to nodeCount property
  */
 export interface CNTKsettings {
   languageType?: string;
@@ -1388,16 +1397,16 @@ export interface CNTKsettings {
  * @constructor
  * pyTorch job settings.
  *
- * @member {string} pythonScriptFilePath Python script file path. The python
+ * @property {string} pythonScriptFilePath Python script file path. The python
  * script to execute.
- * @member {string} [pythonInterpreterPath] Python interpreter path. The path
+ * @property {string} [pythonInterpreterPath] Python interpreter path. The path
  * to the Python interpreter.
- * @member {string} [commandLineArgs] Command line arguments. Command line
+ * @property {string} [commandLineArgs] Command line arguments. Command line
  * arguments that need to be passed to the python script.
- * @member {number} [processCount] Process count. Number of processes to launch
- * for the job execution. The default value for this property is equal to
- * nodeCount property
- * @member {string} [communicationBackend] Communication backend. Type of the
+ * @property {number} [processCount] Process count. Number of processes to
+ * launch for the job execution. The default value for this property is equal
+ * to nodeCount property
+ * @property {string} [communicationBackend] Communication backend. Type of the
  * communication backend for distributed jobs. Valid values are 'TCP', 'Gloo'
  * or 'MPI'. Not required for non-distributed jobs.
  */
@@ -1415,24 +1424,25 @@ export interface PyTorchSettings {
  * @constructor
  * TensorFlow job settings.
  *
- * @member {string} pythonScriptFilePath Python script file path. The python
+ * @property {string} pythonScriptFilePath Python script file path. The python
  * script to execute.
- * @member {string} [pythonInterpreterPath] Python interpreter path. The path
+ * @property {string} [pythonInterpreterPath] Python interpreter path. The path
  * to the Python interpreter.
- * @member {string} [masterCommandLineArgs] Master command line arguments.
+ * @property {string} [masterCommandLineArgs] Master command line arguments.
  * Command line arguments that need to be passed to the python script for the
  * master task.
- * @member {string} [workerCommandLineArgs] Worker command line arguments.
+ * @property {string} [workerCommandLineArgs] Worker command line arguments.
  * Command line arguments that need to be passed to the python script for the
  * worker task. Optional for single process jobs.
- * @member {string} [parameterServerCommandLineArgs] Parameter server command
+ * @property {string} [parameterServerCommandLineArgs] Parameter server command
  * line arguments. Command line arguments that need to be passed to the python
  * script for the parameter server. Optional for single process jobs.
- * @member {number} [workerCount] Worker count. The number of worker tasks. If
- * specified, the value must be less than or equal to (nodeCount * numberOfGPUs
- * per VM). If not specified, the default value is equal to nodeCount. This
- * property can be specified only for distributed TensorFlow training.
- * @member {number} [parameterServerCount] Parameter server count. The number
+ * @property {number} [workerCount] Worker count. The number of worker tasks.
+ * If specified, the value must be less than or equal to (nodeCount *
+ * numberOfGPUs per VM). If not specified, the default value is equal to
+ * nodeCount. This property can be specified only for distributed TensorFlow
+ * training.
+ * @property {number} [parameterServerCount] Parameter server count. The number
  * of parameter server tasks. If specified, the value must be less than or
  * equal to nodeCount. If not specified, the default value is equal to 1 for
  * distributed TensorFlow training. This property can be specified only for
@@ -1454,20 +1464,20 @@ export interface TensorFlowSettings {
  * @constructor
  * Caffe job settings.
  *
- * @member {string} [configFilePath] Config file path. Path of the config file
- * for the job. This property cannot be specified if pythonScriptFilePath is
- * specified.
- * @member {string} [pythonScriptFilePath] Python script file path. Python
+ * @property {string} [configFilePath] Config file path. Path of the config
+ * file for the job. This property cannot be specified if pythonScriptFilePath
+ * is specified.
+ * @property {string} [pythonScriptFilePath] Python script file path. Python
  * script to execute. This property cannot be specified if configFilePath is
  * specified.
- * @member {string} [pythonInterpreterPath] Python interpreter path. The path
+ * @property {string} [pythonInterpreterPath] Python interpreter path. The path
  * to the Python interpreter. The property can be specified only if the
  * pythonScriptFilePath is specified.
- * @member {string} [commandLineArgs] Command line arguments. Command line
+ * @property {string} [commandLineArgs] Command line arguments. Command line
  * arguments that need to be passed to the Caffe job.
- * @member {number} [processCount] Process count. Number of processes to launch
- * for the job execution. The default value for this property is equal to
- * nodeCount property
+ * @property {number} [processCount] Process count. Number of processes to
+ * launch for the job execution. The default value for this property is equal
+ * to nodeCount property
  */
 export interface CaffeSettings {
   configFilePath?: string;
@@ -1483,11 +1493,11 @@ export interface CaffeSettings {
  * @constructor
  * Caffe2 job settings.
  *
- * @member {string} pythonScriptFilePath Python script file path. The python
+ * @property {string} pythonScriptFilePath Python script file path. The python
  * script to execute.
- * @member {string} [pythonInterpreterPath] Python interpreter path. The path
+ * @property {string} [pythonInterpreterPath] Python interpreter path. The path
  * to the Python interpreter.
- * @member {string} [commandLineArgs] Command line arguments. Command line
+ * @property {string} [commandLineArgs] Command line arguments. Command line
  * arguments that need to be passed to the python script.
  */
 export interface Caffe2Settings {
@@ -1502,15 +1512,15 @@ export interface Caffe2Settings {
  * @constructor
  * Chainer job settings.
  *
- * @member {string} pythonScriptFilePath Python script file path. The python
+ * @property {string} pythonScriptFilePath Python script file path. The python
  * script to execute.
- * @member {string} [pythonInterpreterPath] Python interpreter path. The path
+ * @property {string} [pythonInterpreterPath] Python interpreter path. The path
  * to the Python interpreter.
- * @member {string} [commandLineArgs] Command line arguments. Command line
+ * @property {string} [commandLineArgs] Command line arguments. Command line
  * arguments that need to be passed to the python script.
- * @member {number} [processCount] Process count. Number of processes to launch
- * for the job execution. The default value for this property is equal to
- * nodeCount property
+ * @property {number} [processCount] Process count. Number of processes to
+ * launch for the job execution. The default value for this property is equal
+ * to nodeCount property
  */
 export interface ChainerSettings {
   pythonScriptFilePath: string;
@@ -1525,8 +1535,8 @@ export interface ChainerSettings {
  * @constructor
  * Custom tool kit job settings.
  *
- * @member {string} [commandLine] Command line. The command line to execute on
- * the master node.
+ * @property {string} [commandLine] Command line. The command line to execute
+ * on the master node.
  */
 export interface CustomToolkitSettings {
   commandLine?: string;
@@ -1538,11 +1548,11 @@ export interface CustomToolkitSettings {
  * @constructor
  * Custom MPI job settings.
  *
- * @member {string} commandLine Command line. The command line to be executed
+ * @property {string} commandLine Command line. The command line to be executed
  * by mpi runtime on each compute node.
- * @member {number} [processCount] Process count. Number of processes to launch
- * for the job execution. The default value for this property is equal to
- * nodeCount property
+ * @property {number} [processCount] Process count. Number of processes to
+ * launch for the job execution. The default value for this property is equal
+ * to nodeCount property
  */
 export interface CustomMpiSettings {
   commandLine: string;
@@ -1555,15 +1565,15 @@ export interface CustomMpiSettings {
  * @constructor
  * Specifies the settings for Horovod job.
  *
- * @member {string} pythonScriptFilePath Python script file path. The python
+ * @property {string} pythonScriptFilePath Python script file path. The python
  * script to execute.
- * @member {string} [pythonInterpreterPath] Python interpreter path. The path
+ * @property {string} [pythonInterpreterPath] Python interpreter path. The path
  * to the Python interpreter.
- * @member {string} [commandLineArgs] Command line arguments. Command line
+ * @property {string} [commandLineArgs] Command line arguments. Command line
  * arguments that need to be passed to the python script.
- * @member {number} [processCount] Process count. Number of processes to launch
- * for the job execution. The default value for this property is equal to
- * nodeCount property
+ * @property {number} [processCount] Process count. Number of processes to
+ * launch for the job execution. The default value for this property is equal
+ * to nodeCount property
  */
 export interface HorovodSettings {
   pythonScriptFilePath: string;
@@ -1578,7 +1588,7 @@ export interface HorovodSettings {
  * @constructor
  * Job preparation settings.
  *
- * @member {string} commandLine Command line. The command line to execute. If
+ * @property {string} commandLine Command line. The command line to execute. If
  * containerSettings is specified on the job, this commandLine will be executed
  * in the same container as job. Otherwise it will be executed on the node.
  */
@@ -1592,10 +1602,10 @@ export interface JobPreparation {
  * @constructor
  * Input directory for the job.
  *
- * @member {string} id ID. The ID for the input directory. The job can use
+ * @property {string} id ID. The ID for the input directory. The job can use
  * AZ_BATCHAI_INPUT_<id> environment variable to find the directory path, where
  * <id> is the value of id attribute.
- * @member {string} path Path. The path to the input directory.
+ * @property {string} path Path. The path to the input directory.
  */
 export interface InputDirectory {
   id: string;
@@ -1608,17 +1618,17 @@ export interface InputDirectory {
  * @constructor
  * Output directory for the job.
  *
- * @member {string} id ID. The ID of the output directory. The job can use
+ * @property {string} id ID. The ID of the output directory. The job can use
  * AZ_BATCHAI_OUTPUT_<id> environment variale to find the directory path, where
  * <id> is the value of id attribute.
- * @member {string} pathPrefix Path prefix. The prefix path where the output
+ * @property {string} pathPrefix Path prefix. The prefix path where the output
  * directory will be created. Note, this is an absolute path to prefix. E.g.
  * $AZ_BATCHAI_MOUNT_ROOT/MyNFS/MyLogs. The full path to the output directory
  * by combining pathPrefix, jobOutputDirectoryPathSegment (reported by get job)
  * and pathSuffix.
- * @member {string} [pathSuffix] Path suffix. The suffix path where the output
- * directory will be created. E.g. models. You can find the full path to the
- * output directory by combining pathPrefix, jobOutputDirectoryPathSegment
+ * @property {string} [pathSuffix] Path suffix. The suffix path where the
+ * output directory will be created. E.g. models. You can find the full path to
+ * the output directory by combining pathPrefix, jobOutputDirectoryPathSegment
  * (reported by get job) and pathSuffix.
  */
 export interface OutputDirectory {
@@ -1633,7 +1643,7 @@ export interface OutputDirectory {
  * @constructor
  * Constraints associated with the Job.
  *
- * @member {moment.duration} [maxWallClockTime] Max wall clock time. Max time
+ * @property {moment.duration} [maxWallClockTime] Max wall clock time. Max time
  * the job can run. Default value: 1 week. Default value:
  * moment.duration('7.00:00:00') .
  */
@@ -1647,192 +1657,193 @@ export interface JobBasePropertiesConstraints {
  * @constructor
  * Job creation parameters.
  *
- * @member {string} [schedulingPriority] Scheduling priority. Scheduling
+ * @property {string} [schedulingPriority] Scheduling priority. Scheduling
  * priority associated with the job. Possible values: low, normal, high.
  * Possible values include: 'low', 'normal', 'high'. Default value: 'normal' .
- * @member {object} cluster Cluster. Resource ID of the cluster on which this
+ * @property {object} cluster Cluster. Resource ID of the cluster on which this
  * job will run.
- * @member {string} [cluster.id] The ID of the resource
- * @member {object} [mountVolumes] Mount volumes. Information on mount volumes
- * to be used by the job. These volumes will be mounted before the job
+ * @property {string} [cluster.id] The ID of the resource
+ * @property {object} [mountVolumes] Mount volumes. Information on mount
+ * volumes to be used by the job. These volumes will be mounted before the job
  * execution and will be unmouted after the job completion. The volumes will be
  * mounted at location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT environment
  * variable.
- * @member {array} [mountVolumes.azureFileShares] A collection of Azure File
+ * @property {array} [mountVolumes.azureFileShares] A collection of Azure File
  * Shares that are to be mounted to the cluster nodes.
- * @member {array} [mountVolumes.azureBlobFileSystems] A collection of Azure
+ * @property {array} [mountVolumes.azureBlobFileSystems] A collection of Azure
  * Blob Containers that are to be mounted to the cluster nodes.
- * @member {array} [mountVolumes.fileServers] A collection of Batch AI File
+ * @property {array} [mountVolumes.fileServers] A collection of Batch AI File
  * Servers that are to be mounted to the cluster nodes.
- * @member {array} [mountVolumes.unmanagedFileSystems] A collection of
+ * @property {array} [mountVolumes.unmanagedFileSystems] A collection of
  * unmanaged file systems that are to be mounted to the cluster nodes.
- * @member {number} nodeCount Node count. Number of compute nodes to run the
+ * @property {number} nodeCount Node count. Number of compute nodes to run the
  * job on. The job will be gang scheduled on that many compute nodes.
- * @member {object} [containerSettings] Container settings. Docker container
+ * @property {object} [containerSettings] Container settings. Docker container
  * settings for the job. If not provided, the job will run directly on the
  * node.
- * @member {object} [containerSettings.imageSourceRegistry] Information about
+ * @property {object} [containerSettings.imageSourceRegistry] Information about
  * docker image and docker registry to download the container from.
- * @member {string} [containerSettings.imageSourceRegistry.serverUrl] URL for
+ * @property {string} [containerSettings.imageSourceRegistry.serverUrl] URL for
  * image repository.
- * @member {string} [containerSettings.imageSourceRegistry.image] The name of
+ * @property {string} [containerSettings.imageSourceRegistry.image] The name of
  * the image in the image repository.
- * @member {object} [containerSettings.imageSourceRegistry.credentials]
+ * @property {object} [containerSettings.imageSourceRegistry.credentials]
  * Credentials to access the private docker repository.
- * @member {string}
+ * @property {string}
  * [containerSettings.imageSourceRegistry.credentials.username] User name to
  * login to the repository.
- * @member {string}
+ * @property {string}
  * [containerSettings.imageSourceRegistry.credentials.password] User password
  * to login to the docker repository. One of password or
  * passwordSecretReference must be specified.
- * @member {object}
+ * @property {object}
  * [containerSettings.imageSourceRegistry.credentials.passwordSecretReference]
  * KeyVault Secret storing the password. Users can store their secrets in Azure
  * KeyVault and pass it to the Batch AI service to integrate with KeyVault. One
  * of password or passwordSecretReference must be specified.
- * @member {object}
+ * @property {object}
  * [containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault]
  * Fully qualified resource indentifier of the Key Vault.
- * @member {string}
+ * @property {string}
  * [containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault.id]
  * The ID of the resource
- * @member {string}
+ * @property {string}
  * [containerSettings.imageSourceRegistry.credentials.passwordSecretReference.secretUrl]
  * The URL referencing a secret in the Key Vault.
- * @member {string} [containerSettings.shmSize] Size of /dev/shm. Please refer
- * to docker documentation for supported argument formats.
- * @member {object} [cntkSettings] CNTK settings. Settings for CNTK (aka
+ * @property {string} [containerSettings.shmSize] Size of /dev/shm. Please
+ * refer to docker documentation for supported argument formats.
+ * @property {object} [cntkSettings] CNTK settings. Settings for CNTK (aka
  * Microsoft Cognitive Toolkit) job.
- * @member {string} [cntkSettings.languageType] The language to use for
+ * @property {string} [cntkSettings.languageType] The language to use for
  * launching CNTK (aka Microsoft Cognitive Toolkit) job. Valid values are
  * 'BrainScript' or 'Python'.
- * @member {string} [cntkSettings.configFilePath] Specifies the path of the
+ * @property {string} [cntkSettings.configFilePath] Specifies the path of the
  * BrainScript config file. This property can be specified only if the
  * languageType is 'BrainScript'.
- * @member {string} [cntkSettings.pythonScriptFilePath] Python script to
+ * @property {string} [cntkSettings.pythonScriptFilePath] Python script to
  * execute. This property can be specified only if the languageType is
  * 'Python'.
- * @member {string} [cntkSettings.pythonInterpreterPath] The path to the Python
- * interpreter. This property can be specified only if the languageType is
- * 'Python'.
- * @member {string} [cntkSettings.commandLineArgs] Command line arguments that
- * need to be passed to the python script or cntk executable.
- * @member {number} [cntkSettings.processCount] Number of processes to launch
+ * @property {string} [cntkSettings.pythonInterpreterPath] The path to the
+ * Python interpreter. This property can be specified only if the languageType
+ * is 'Python'.
+ * @property {string} [cntkSettings.commandLineArgs] Command line arguments
+ * that need to be passed to the python script or cntk executable.
+ * @property {number} [cntkSettings.processCount] Number of processes to launch
  * for the job execution. The default value for this property is equal to
  * nodeCount property
- * @member {object} [pyTorchSettings] pyTorch settings. Settings for pyTorch
+ * @property {object} [pyTorchSettings] pyTorch settings. Settings for pyTorch
  * job.
- * @member {string} [pyTorchSettings.pythonScriptFilePath] The python script to
- * execute.
- * @member {string} [pyTorchSettings.pythonInterpreterPath] The path to the
+ * @property {string} [pyTorchSettings.pythonScriptFilePath] The python script
+ * to execute.
+ * @property {string} [pyTorchSettings.pythonInterpreterPath] The path to the
  * Python interpreter.
- * @member {string} [pyTorchSettings.commandLineArgs] Command line arguments
+ * @property {string} [pyTorchSettings.commandLineArgs] Command line arguments
  * that need to be passed to the python script.
- * @member {number} [pyTorchSettings.processCount] Number of processes to
+ * @property {number} [pyTorchSettings.processCount] Number of processes to
  * launch for the job execution. The default value for this property is equal
  * to nodeCount property
- * @member {string} [pyTorchSettings.communicationBackend] Type of the
+ * @property {string} [pyTorchSettings.communicationBackend] Type of the
  * communication backend for distributed jobs. Valid values are 'TCP', 'Gloo'
  * or 'MPI'. Not required for non-distributed jobs.
- * @member {object} [tensorFlowSettings] TensorFlow settings. Settings for
+ * @property {object} [tensorFlowSettings] TensorFlow settings. Settings for
  * Tensor Flow job.
- * @member {string} [tensorFlowSettings.pythonScriptFilePath] The python script
- * to execute.
- * @member {string} [tensorFlowSettings.pythonInterpreterPath] The path to the
- * Python interpreter.
- * @member {string} [tensorFlowSettings.masterCommandLineArgs] Command line
+ * @property {string} [tensorFlowSettings.pythonScriptFilePath] The python
+ * script to execute.
+ * @property {string} [tensorFlowSettings.pythonInterpreterPath] The path to
+ * the Python interpreter.
+ * @property {string} [tensorFlowSettings.masterCommandLineArgs] Command line
  * arguments that need to be passed to the python script for the master task.
- * @member {string} [tensorFlowSettings.workerCommandLineArgs] Command line
+ * @property {string} [tensorFlowSettings.workerCommandLineArgs] Command line
  * arguments that need to be passed to the python script for the worker task.
  * Optional for single process jobs.
- * @member {string} [tensorFlowSettings.parameterServerCommandLineArgs] Command
- * line arguments that need to be passed to the python script for the parameter
- * server. Optional for single process jobs.
- * @member {number} [tensorFlowSettings.workerCount] The number of worker
+ * @property {string} [tensorFlowSettings.parameterServerCommandLineArgs]
+ * Command line arguments that need to be passed to the python script for the
+ * parameter server. Optional for single process jobs.
+ * @property {number} [tensorFlowSettings.workerCount] The number of worker
  * tasks. If specified, the value must be less than or equal to (nodeCount *
  * numberOfGPUs per VM). If not specified, the default value is equal to
  * nodeCount. This property can be specified only for distributed TensorFlow
  * training.
- * @member {number} [tensorFlowSettings.parameterServerCount] The number of
+ * @property {number} [tensorFlowSettings.parameterServerCount] The number of
  * parameter server tasks. If specified, the value must be less than or equal
  * to nodeCount. If not specified, the default value is equal to 1 for
  * distributed TensorFlow training. This property can be specified only for
  * distributed TensorFlow training.
- * @member {object} [caffeSettings] Caffe settings. Settings for Caffe job.
- * @member {string} [caffeSettings.configFilePath] Path of the config file for
- * the job. This property cannot be specified if pythonScriptFilePath is
+ * @property {object} [caffeSettings] Caffe settings. Settings for Caffe job.
+ * @property {string} [caffeSettings.configFilePath] Path of the config file
+ * for the job. This property cannot be specified if pythonScriptFilePath is
  * specified.
- * @member {string} [caffeSettings.pythonScriptFilePath] Python script to
+ * @property {string} [caffeSettings.pythonScriptFilePath] Python script to
  * execute. This property cannot be specified if configFilePath is specified.
- * @member {string} [caffeSettings.pythonInterpreterPath] The path to the
+ * @property {string} [caffeSettings.pythonInterpreterPath] The path to the
  * Python interpreter. The property can be specified only if the
  * pythonScriptFilePath is specified.
- * @member {string} [caffeSettings.commandLineArgs] Command line arguments that
- * need to be passed to the Caffe job.
- * @member {number} [caffeSettings.processCount] Number of processes to launch
- * for the job execution. The default value for this property is equal to
- * nodeCount property
- * @member {object} [caffe2Settings] Caffe2 settings. Settings for Caffe2 job.
- * @member {string} [caffe2Settings.pythonScriptFilePath] The python script to
- * execute.
- * @member {string} [caffe2Settings.pythonInterpreterPath] The path to the
- * Python interpreter.
- * @member {string} [caffe2Settings.commandLineArgs] Command line arguments
- * that need to be passed to the python script.
- * @member {object} [chainerSettings] Chainer settings. Settings for Chainer
- * job.
- * @member {string} [chainerSettings.pythonScriptFilePath] The python script to
- * execute.
- * @member {string} [chainerSettings.pythonInterpreterPath] The path to the
- * Python interpreter.
- * @member {string} [chainerSettings.commandLineArgs] Command line arguments
- * that need to be passed to the python script.
- * @member {number} [chainerSettings.processCount] Number of processes to
+ * @property {string} [caffeSettings.commandLineArgs] Command line arguments
+ * that need to be passed to the Caffe job.
+ * @property {number} [caffeSettings.processCount] Number of processes to
  * launch for the job execution. The default value for this property is equal
  * to nodeCount property
- * @member {object} [customToolkitSettings] Custom tool kit job. Settings for
+ * @property {object} [caffe2Settings] Caffe2 settings. Settings for Caffe2
+ * job.
+ * @property {string} [caffe2Settings.pythonScriptFilePath] The python script
+ * to execute.
+ * @property {string} [caffe2Settings.pythonInterpreterPath] The path to the
+ * Python interpreter.
+ * @property {string} [caffe2Settings.commandLineArgs] Command line arguments
+ * that need to be passed to the python script.
+ * @property {object} [chainerSettings] Chainer settings. Settings for Chainer
+ * job.
+ * @property {string} [chainerSettings.pythonScriptFilePath] The python script
+ * to execute.
+ * @property {string} [chainerSettings.pythonInterpreterPath] The path to the
+ * Python interpreter.
+ * @property {string} [chainerSettings.commandLineArgs] Command line arguments
+ * that need to be passed to the python script.
+ * @property {number} [chainerSettings.processCount] Number of processes to
+ * launch for the job execution. The default value for this property is equal
+ * to nodeCount property
+ * @property {object} [customToolkitSettings] Custom tool kit job. Settings for
  * custom tool kit job.
- * @member {string} [customToolkitSettings.commandLine] The command line to
+ * @property {string} [customToolkitSettings.commandLine] The command line to
  * execute on the master node.
- * @member {object} [customMpiSettings] Custom MPI settings. Settings for
+ * @property {object} [customMpiSettings] Custom MPI settings. Settings for
  * custom MPI job.
- * @member {string} [customMpiSettings.commandLine] The command line to be
+ * @property {string} [customMpiSettings.commandLine] The command line to be
  * executed by mpi runtime on each compute node.
- * @member {number} [customMpiSettings.processCount] Number of processes to
+ * @property {number} [customMpiSettings.processCount] Number of processes to
  * launch for the job execution. The default value for this property is equal
  * to nodeCount property
- * @member {object} [horovodSettings] Horovod settings. Settings for Horovod
+ * @property {object} [horovodSettings] Horovod settings. Settings for Horovod
  * job.
- * @member {string} [horovodSettings.pythonScriptFilePath] The python script to
- * execute.
- * @member {string} [horovodSettings.pythonInterpreterPath] The path to the
+ * @property {string} [horovodSettings.pythonScriptFilePath] The python script
+ * to execute.
+ * @property {string} [horovodSettings.pythonInterpreterPath] The path to the
  * Python interpreter.
- * @member {string} [horovodSettings.commandLineArgs] Command line arguments
+ * @property {string} [horovodSettings.commandLineArgs] Command line arguments
  * that need to be passed to the python script.
- * @member {number} [horovodSettings.processCount] Number of processes to
+ * @property {number} [horovodSettings.processCount] Number of processes to
  * launch for the job execution. The default value for this property is equal
  * to nodeCount property
- * @member {object} [jobPreparation] Job preparation. A command line to be
+ * @property {object} [jobPreparation] Job preparation. A command line to be
  * executed on each node allocated for the job before tool kit is launched.
- * @member {string} [jobPreparation.commandLine] The command line to execute.
+ * @property {string} [jobPreparation.commandLine] The command line to execute.
  * If containerSettings is specified on the job, this commandLine will be
  * executed in the same container as job. Otherwise it will be executed on the
  * node.
- * @member {string} stdOutErrPathPrefix Standard output path prefix. The path
+ * @property {string} stdOutErrPathPrefix Standard output path prefix. The path
  * where the Batch AI service will store stdout, stderror and execution log of
  * the job.
- * @member {array} [inputDirectories] Input directories. A list of input
+ * @property {array} [inputDirectories] Input directories. A list of input
  * directories for the job.
- * @member {array} [outputDirectories] Output directories. A list of output
+ * @property {array} [outputDirectories] Output directories. A list of output
  * directories for the job.
- * @member {array} [environmentVariables] Environment variables. A list of user
- * defined environment variables which will be setup for the job.
- * @member {array} [secrets] Secrets. A list of user defined environment
+ * @property {array} [environmentVariables] Environment variables. A list of
+ * user defined environment variables which will be setup for the job.
+ * @property {array} [secrets] Secrets. A list of user defined environment
  * variables with secret values which will be setup for the job. Server will
  * never report values of these variables back.
- * @member {object} [constraints] Constraints associated with the Job.
- * @member {moment.duration} [constraints.maxWallClockTime] Max time the job
+ * @property {object} [constraints] Constraints associated with the Job.
+ * @property {moment.duration} [constraints.maxWallClockTime] Max time the job
  * can run. Default value: 1 week.
  */
 export interface JobCreateParameters {
@@ -1865,7 +1876,7 @@ export interface JobCreateParameters {
  * @constructor
  * Constraints associated with the Job.
  *
- * @member {moment.duration} [maxWallClockTime] Max wall clock time. Max time
+ * @property {moment.duration} [maxWallClockTime] Max wall clock time. Max time
  * the job can run. Default value: 1 week. Default value:
  * moment.duration('7.00:00:00') .
  */
@@ -1879,16 +1890,16 @@ export interface JobPropertiesConstraints {
  * @constructor
  * Information about the execution of a job.
  *
- * @member {date} [startTime] Start time. The time at which the job started
+ * @property {date} [startTime] Start time. The time at which the job started
  * running. 'Running' corresponds to the running state. If the job has been
  * restarted or retried, this is the most recent time at which the job started
  * running. This property is present only for job that are in the running or
  * completed state.
- * @member {date} [endTime] End time. The time at which the job completed. This
+ * @property {date} [endTime] End time. The time at which the job completed.
+ * This property is only returned if the job is in completed state.
+ * @property {number} [exitCode] Exit code. The exit code of the job. This
  * property is only returned if the job is in completed state.
- * @member {number} [exitCode] Exit code. The exit code of the job. This
- * property is only returned if the job is in completed state.
- * @member {array} [errors] Errors. A collection of errors encountered by the
+ * @property {array} [errors] Errors. A collection of errors encountered by the
  * service during job execution.
  */
 export interface JobPropertiesExecutionInfo {
@@ -1904,235 +1915,235 @@ export interface JobPropertiesExecutionInfo {
  * @constructor
  * Information about a Job.
  *
- * @member {string} [schedulingPriority] Scheduling priority. Scheduling
+ * @property {string} [schedulingPriority] Scheduling priority. Scheduling
  * priority associated with the job. Possible values include: 'low', 'normal',
  * 'high'. Default value: 'normal' .
- * @member {object} [cluster] Cluster. Resource ID of the cluster associated
+ * @property {object} [cluster] Cluster. Resource ID of the cluster associated
  * with the job.
- * @member {string} [cluster.id] The ID of the resource
- * @member {object} [mountVolumes] Mount volumes. Collection of mount volumes
+ * @property {string} [cluster.id] The ID of the resource
+ * @property {object} [mountVolumes] Mount volumes. Collection of mount volumes
  * available to the job during execution. These volumes are mounted before the
  * job execution and unmouted after the job completion. The volumes are mounted
  * at location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT environment variable.
- * @member {array} [mountVolumes.azureFileShares] A collection of Azure File
+ * @property {array} [mountVolumes.azureFileShares] A collection of Azure File
  * Shares that are to be mounted to the cluster nodes.
- * @member {array} [mountVolumes.azureBlobFileSystems] A collection of Azure
+ * @property {array} [mountVolumes.azureBlobFileSystems] A collection of Azure
  * Blob Containers that are to be mounted to the cluster nodes.
- * @member {array} [mountVolumes.fileServers] A collection of Batch AI File
+ * @property {array} [mountVolumes.fileServers] A collection of Batch AI File
  * Servers that are to be mounted to the cluster nodes.
- * @member {array} [mountVolumes.unmanagedFileSystems] A collection of
+ * @property {array} [mountVolumes.unmanagedFileSystems] A collection of
  * unmanaged file systems that are to be mounted to the cluster nodes.
- * @member {number} [nodeCount] Number of compute nodes to run the job on. The
- * job will be gang scheduled on that many compute nodes
- * @member {object} [containerSettings] If provided the job will run in the
+ * @property {number} [nodeCount] Number of compute nodes to run the job on.
+ * The job will be gang scheduled on that many compute nodes
+ * @property {object} [containerSettings] If provided the job will run in the
  * specified container. If the container was downloaded as part of cluster
  * setup then the same container image will be used. If not provided, the job
  * will run on the VM.
- * @member {object} [containerSettings.imageSourceRegistry] Information about
+ * @property {object} [containerSettings.imageSourceRegistry] Information about
  * docker image and docker registry to download the container from.
- * @member {string} [containerSettings.imageSourceRegistry.serverUrl] URL for
+ * @property {string} [containerSettings.imageSourceRegistry.serverUrl] URL for
  * image repository.
- * @member {string} [containerSettings.imageSourceRegistry.image] The name of
+ * @property {string} [containerSettings.imageSourceRegistry.image] The name of
  * the image in the image repository.
- * @member {object} [containerSettings.imageSourceRegistry.credentials]
+ * @property {object} [containerSettings.imageSourceRegistry.credentials]
  * Credentials to access the private docker repository.
- * @member {string}
+ * @property {string}
  * [containerSettings.imageSourceRegistry.credentials.username] User name to
  * login to the repository.
- * @member {string}
+ * @property {string}
  * [containerSettings.imageSourceRegistry.credentials.password] User password
  * to login to the docker repository. One of password or
  * passwordSecretReference must be specified.
- * @member {object}
+ * @property {object}
  * [containerSettings.imageSourceRegistry.credentials.passwordSecretReference]
  * KeyVault Secret storing the password. Users can store their secrets in Azure
  * KeyVault and pass it to the Batch AI service to integrate with KeyVault. One
  * of password or passwordSecretReference must be specified.
- * @member {object}
+ * @property {object}
  * [containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault]
  * Fully qualified resource indentifier of the Key Vault.
- * @member {string}
+ * @property {string}
  * [containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault.id]
  * The ID of the resource
- * @member {string}
+ * @property {string}
  * [containerSettings.imageSourceRegistry.credentials.passwordSecretReference.secretUrl]
  * The URL referencing a secret in the Key Vault.
- * @member {string} [containerSettings.shmSize] Size of /dev/shm. Please refer
- * to docker documentation for supported argument formats.
- * @member {string} [toolType] The toolkit type of this job. Possible values
+ * @property {string} [containerSettings.shmSize] Size of /dev/shm. Please
+ * refer to docker documentation for supported argument formats.
+ * @property {string} [toolType] The toolkit type of this job. Possible values
  * are: cntk, tensorflow, caffe, caffe2, chainer, pytorch, custom, custommpi,
  * horovod. Possible values include: 'cntk', 'tensorflow', 'caffe', 'caffe2',
  * 'chainer', 'horovod', 'custommpi', 'custom'
- * @member {object} [cntkSettings] Specifies the settings for CNTK (aka
+ * @property {object} [cntkSettings] Specifies the settings for CNTK (aka
  * Microsoft Cognitive Toolkit) job.
- * @member {string} [cntkSettings.languageType] The language to use for
+ * @property {string} [cntkSettings.languageType] The language to use for
  * launching CNTK (aka Microsoft Cognitive Toolkit) job. Valid values are
  * 'BrainScript' or 'Python'.
- * @member {string} [cntkSettings.configFilePath] Specifies the path of the
+ * @property {string} [cntkSettings.configFilePath] Specifies the path of the
  * BrainScript config file. This property can be specified only if the
  * languageType is 'BrainScript'.
- * @member {string} [cntkSettings.pythonScriptFilePath] Python script to
+ * @property {string} [cntkSettings.pythonScriptFilePath] Python script to
  * execute. This property can be specified only if the languageType is
  * 'Python'.
- * @member {string} [cntkSettings.pythonInterpreterPath] The path to the Python
- * interpreter. This property can be specified only if the languageType is
- * 'Python'.
- * @member {string} [cntkSettings.commandLineArgs] Command line arguments that
- * need to be passed to the python script or cntk executable.
- * @member {number} [cntkSettings.processCount] Number of processes to launch
+ * @property {string} [cntkSettings.pythonInterpreterPath] The path to the
+ * Python interpreter. This property can be specified only if the languageType
+ * is 'Python'.
+ * @property {string} [cntkSettings.commandLineArgs] Command line arguments
+ * that need to be passed to the python script or cntk executable.
+ * @property {number} [cntkSettings.processCount] Number of processes to launch
  * for the job execution. The default value for this property is equal to
  * nodeCount property
- * @member {object} [pyTorchSettings] Specifies the settings for pyTorch job.
- * @member {string} [pyTorchSettings.pythonScriptFilePath] The python script to
- * execute.
- * @member {string} [pyTorchSettings.pythonInterpreterPath] The path to the
+ * @property {object} [pyTorchSettings] Specifies the settings for pyTorch job.
+ * @property {string} [pyTorchSettings.pythonScriptFilePath] The python script
+ * to execute.
+ * @property {string} [pyTorchSettings.pythonInterpreterPath] The path to the
  * Python interpreter.
- * @member {string} [pyTorchSettings.commandLineArgs] Command line arguments
+ * @property {string} [pyTorchSettings.commandLineArgs] Command line arguments
  * that need to be passed to the python script.
- * @member {number} [pyTorchSettings.processCount] Number of processes to
+ * @property {number} [pyTorchSettings.processCount] Number of processes to
  * launch for the job execution. The default value for this property is equal
  * to nodeCount property
- * @member {string} [pyTorchSettings.communicationBackend] Type of the
+ * @property {string} [pyTorchSettings.communicationBackend] Type of the
  * communication backend for distributed jobs. Valid values are 'TCP', 'Gloo'
  * or 'MPI'. Not required for non-distributed jobs.
- * @member {object} [tensorFlowSettings] Specifies the settings for Tensor Flow
- * job.
- * @member {string} [tensorFlowSettings.pythonScriptFilePath] The python script
- * to execute.
- * @member {string} [tensorFlowSettings.pythonInterpreterPath] The path to the
- * Python interpreter.
- * @member {string} [tensorFlowSettings.masterCommandLineArgs] Command line
+ * @property {object} [tensorFlowSettings] Specifies the settings for Tensor
+ * Flow job.
+ * @property {string} [tensorFlowSettings.pythonScriptFilePath] The python
+ * script to execute.
+ * @property {string} [tensorFlowSettings.pythonInterpreterPath] The path to
+ * the Python interpreter.
+ * @property {string} [tensorFlowSettings.masterCommandLineArgs] Command line
  * arguments that need to be passed to the python script for the master task.
- * @member {string} [tensorFlowSettings.workerCommandLineArgs] Command line
+ * @property {string} [tensorFlowSettings.workerCommandLineArgs] Command line
  * arguments that need to be passed to the python script for the worker task.
  * Optional for single process jobs.
- * @member {string} [tensorFlowSettings.parameterServerCommandLineArgs] Command
- * line arguments that need to be passed to the python script for the parameter
- * server. Optional for single process jobs.
- * @member {number} [tensorFlowSettings.workerCount] The number of worker
+ * @property {string} [tensorFlowSettings.parameterServerCommandLineArgs]
+ * Command line arguments that need to be passed to the python script for the
+ * parameter server. Optional for single process jobs.
+ * @property {number} [tensorFlowSettings.workerCount] The number of worker
  * tasks. If specified, the value must be less than or equal to (nodeCount *
  * numberOfGPUs per VM). If not specified, the default value is equal to
  * nodeCount. This property can be specified only for distributed TensorFlow
  * training.
- * @member {number} [tensorFlowSettings.parameterServerCount] The number of
+ * @property {number} [tensorFlowSettings.parameterServerCount] The number of
  * parameter server tasks. If specified, the value must be less than or equal
  * to nodeCount. If not specified, the default value is equal to 1 for
  * distributed TensorFlow training. This property can be specified only for
  * distributed TensorFlow training.
- * @member {object} [caffeSettings] Specifies the settings for Caffe job.
- * @member {string} [caffeSettings.configFilePath] Path of the config file for
- * the job. This property cannot be specified if pythonScriptFilePath is
+ * @property {object} [caffeSettings] Specifies the settings for Caffe job.
+ * @property {string} [caffeSettings.configFilePath] Path of the config file
+ * for the job. This property cannot be specified if pythonScriptFilePath is
  * specified.
- * @member {string} [caffeSettings.pythonScriptFilePath] Python script to
+ * @property {string} [caffeSettings.pythonScriptFilePath] Python script to
  * execute. This property cannot be specified if configFilePath is specified.
- * @member {string} [caffeSettings.pythonInterpreterPath] The path to the
+ * @property {string} [caffeSettings.pythonInterpreterPath] The path to the
  * Python interpreter. The property can be specified only if the
  * pythonScriptFilePath is specified.
- * @member {string} [caffeSettings.commandLineArgs] Command line arguments that
- * need to be passed to the Caffe job.
- * @member {number} [caffeSettings.processCount] Number of processes to launch
- * for the job execution. The default value for this property is equal to
- * nodeCount property
- * @member {object} [caffe2Settings] Specifies the settings for Caffe2 job.
- * @member {string} [caffe2Settings.pythonScriptFilePath] The python script to
- * execute.
- * @member {string} [caffe2Settings.pythonInterpreterPath] The path to the
- * Python interpreter.
- * @member {string} [caffe2Settings.commandLineArgs] Command line arguments
- * that need to be passed to the python script.
- * @member {object} [chainerSettings] Specifies the settings for Chainer job.
- * @member {string} [chainerSettings.pythonScriptFilePath] The python script to
- * execute.
- * @member {string} [chainerSettings.pythonInterpreterPath] The path to the
- * Python interpreter.
- * @member {string} [chainerSettings.commandLineArgs] Command line arguments
- * that need to be passed to the python script.
- * @member {number} [chainerSettings.processCount] Number of processes to
+ * @property {string} [caffeSettings.commandLineArgs] Command line arguments
+ * that need to be passed to the Caffe job.
+ * @property {number} [caffeSettings.processCount] Number of processes to
  * launch for the job execution. The default value for this property is equal
  * to nodeCount property
- * @member {object} [customToolkitSettings] Specifies the settings for custom
+ * @property {object} [caffe2Settings] Specifies the settings for Caffe2 job.
+ * @property {string} [caffe2Settings.pythonScriptFilePath] The python script
+ * to execute.
+ * @property {string} [caffe2Settings.pythonInterpreterPath] The path to the
+ * Python interpreter.
+ * @property {string} [caffe2Settings.commandLineArgs] Command line arguments
+ * that need to be passed to the python script.
+ * @property {object} [chainerSettings] Specifies the settings for Chainer job.
+ * @property {string} [chainerSettings.pythonScriptFilePath] The python script
+ * to execute.
+ * @property {string} [chainerSettings.pythonInterpreterPath] The path to the
+ * Python interpreter.
+ * @property {string} [chainerSettings.commandLineArgs] Command line arguments
+ * that need to be passed to the python script.
+ * @property {number} [chainerSettings.processCount] Number of processes to
+ * launch for the job execution. The default value for this property is equal
+ * to nodeCount property
+ * @property {object} [customToolkitSettings] Specifies the settings for custom
  * tool kit job.
- * @member {string} [customToolkitSettings.commandLine] The command line to
+ * @property {string} [customToolkitSettings.commandLine] The command line to
  * execute on the master node.
- * @member {object} [customMpiSettings] Specifies the settings for custom MPI
+ * @property {object} [customMpiSettings] Specifies the settings for custom MPI
  * job.
- * @member {string} [customMpiSettings.commandLine] The command line to be
+ * @property {string} [customMpiSettings.commandLine] The command line to be
  * executed by mpi runtime on each compute node.
- * @member {number} [customMpiSettings.processCount] Number of processes to
+ * @property {number} [customMpiSettings.processCount] Number of processes to
  * launch for the job execution. The default value for this property is equal
  * to nodeCount property
- * @member {object} [horovodSettings] Specifies the settings for Horovod job.
- * @member {string} [horovodSettings.pythonScriptFilePath] The python script to
- * execute.
- * @member {string} [horovodSettings.pythonInterpreterPath] The path to the
+ * @property {object} [horovodSettings] Specifies the settings for Horovod job.
+ * @property {string} [horovodSettings.pythonScriptFilePath] The python script
+ * to execute.
+ * @property {string} [horovodSettings.pythonInterpreterPath] The path to the
  * Python interpreter.
- * @member {string} [horovodSettings.commandLineArgs] Command line arguments
+ * @property {string} [horovodSettings.commandLineArgs] Command line arguments
  * that need to be passed to the python script.
- * @member {number} [horovodSettings.processCount] Number of processes to
+ * @property {number} [horovodSettings.processCount] Number of processes to
  * launch for the job execution. The default value for this property is equal
  * to nodeCount property
- * @member {object} [jobPreparation] Specifies the actions to be performed
+ * @property {object} [jobPreparation] Specifies the actions to be performed
  * before tool kit is launched. The specified actions will run on all the nodes
  * that are part of the job
- * @member {string} [jobPreparation.commandLine] The command line to execute.
+ * @property {string} [jobPreparation.commandLine] The command line to execute.
  * If containerSettings is specified on the job, this commandLine will be
  * executed in the same container as job. Otherwise it will be executed on the
  * node.
- * @member {string} [jobOutputDirectoryPathSegment] Output directory path
+ * @property {string} [jobOutputDirectoryPathSegment] Output directory path
  * segment. A segment of job's output directories path created by Batch AI.
  * Batch AI creates job's output directories under an unique path to avoid
  * conflicts between jobs. This value contains a path segment generated by
  * Batch AI to make the path unique and can be used to find the output
  * directory on the node or mounted filesystem.
- * @member {string} [stdOutErrPathPrefix] Standard output directory path
+ * @property {string} [stdOutErrPathPrefix] Standard output directory path
  * prefix. The path where the Batch AI service stores stdout, stderror and
  * execution log of the job.
- * @member {array} [inputDirectories] Input directories. A list of input
+ * @property {array} [inputDirectories] Input directories. A list of input
  * directories for the job.
- * @member {array} [outputDirectories] Output directories. A list of output
+ * @property {array} [outputDirectories] Output directories. A list of output
  * directories for the job.
- * @member {array} [environmentVariables] Environment variables. A collection
+ * @property {array} [environmentVariables] Environment variables. A collection
  * of user defined environment variables to be setup for the job.
- * @member {array} [secrets] Secrets. A collection of user defined environment
- * variables with secret values to be setup for the job. Server will never
- * report values of these variables back.
- * @member {object} [constraints] Constraints associated with the Job.
- * @member {moment.duration} [constraints.maxWallClockTime] Max time the job
+ * @property {array} [secrets] Secrets. A collection of user defined
+ * environment variables with secret values to be setup for the job. Server
+ * will never report values of these variables back.
+ * @property {object} [constraints] Constraints associated with the Job.
+ * @property {moment.duration} [constraints.maxWallClockTime] Max time the job
  * can run. Default value: 1 week.
- * @member {date} [creationTime] Creation time. The creation time of the job.
- * @member {string} [provisioningState] Provisioning state. The provisioned
+ * @property {date} [creationTime] Creation time. The creation time of the job.
+ * @property {string} [provisioningState] Provisioning state. The provisioned
  * state of the Batch AI job. Possible values include: 'creating', 'succeeded',
  * 'failed', 'deleting'
- * @member {date} [provisioningStateTransitionTime] Provisioning state
+ * @property {date} [provisioningStateTransitionTime] Provisioning state
  * transition time. The time at which the job entered its current provisioning
  * state.
- * @member {string} [executionState] Execution state. The current state of the
- * job. Possible values are: queued - The job is queued and able to run. A job
- * enters this state when it is created, or when it is awaiting a retry after a
- * failed run. running - The job is running on a compute cluster. This includes
- * job-level preparation such as downloading resource files or set up container
- * specified on the job - it does not necessarily mean that the job command
- * line has started executing. terminating - The job is terminated by the user,
- * the terminate operation is in progress. succeeded - The job has completed
- * running succesfully and exited with exit code 0. failed - The job has
- * finished unsuccessfully (failed with a non-zero exit code) and has exhausted
- * its retry limit. A job is also marked as failed if an error occurred
- * launching the job. Possible values include: 'queued', 'running',
+ * @property {string} [executionState] Execution state. The current state of
+ * the job. Possible values are: queued - The job is queued and able to run. A
+ * job enters this state when it is created, or when it is awaiting a retry
+ * after a failed run. running - The job is running on a compute cluster. This
+ * includes job-level preparation such as downloading resource files or set up
+ * container specified on the job - it does not necessarily mean that the job
+ * command line has started executing. terminating - The job is terminated by
+ * the user, the terminate operation is in progress. succeeded - The job has
+ * completed running succesfully and exited with exit code 0. failed - The job
+ * has finished unsuccessfully (failed with a non-zero exit code) and has
+ * exhausted its retry limit. A job is also marked as failed if an error
+ * occurred launching the job. Possible values include: 'queued', 'running',
  * 'terminating', 'succeeded', 'failed'
- * @member {date} [executionStateTransitionTime] Execution state transition
+ * @property {date} [executionStateTransitionTime] Execution state transition
  * time. The time at which the job entered its current execution state.
- * @member {object} [executionInfo] Information about the execution of a job.
- * @member {date} [executionInfo.startTime] The time at which the job started
+ * @property {object} [executionInfo] Information about the execution of a job.
+ * @property {date} [executionInfo.startTime] The time at which the job started
  * running. 'Running' corresponds to the running state. If the job has been
  * restarted or retried, this is the most recent time at which the job started
  * running. This property is present only for job that are in the running or
  * completed state.
- * @member {date} [executionInfo.endTime] The time at which the job completed.
- * This property is only returned if the job is in completed state.
- * @member {number} [executionInfo.exitCode] The exit code of the job. This
+ * @property {date} [executionInfo.endTime] The time at which the job
+ * completed. This property is only returned if the job is in completed state.
+ * @property {number} [executionInfo.exitCode] The exit code of the job. This
  * property is only returned if the job is in completed state.
- * @member {array} [executionInfo.errors] A collection of errors encountered by
- * the service during job execution.
+ * @property {array} [executionInfo.errors] A collection of errors encountered
+ * by the service during job execution.
  */
 export interface Job extends ProxyResource {
   schedulingPriority?: string;
@@ -2172,10 +2183,10 @@ export interface Job extends ProxyResource {
  * @constructor
  * Login details to SSH to a compute node in cluster.
  *
- * @member {string} [nodeId] Node ID. ID of the compute node.
- * @member {string} [ipAddress] IP address. Public IP address of the compute
+ * @property {string} [nodeId] Node ID. ID of the compute node.
+ * @property {string} [ipAddress] IP address. Public IP address of the compute
  * node.
- * @member {number} [port] Port. SSH port number of the node.
+ * @property {number} [port] Port. SSH port number of the node.
  */
 export interface RemoteLoginInformation {
   readonly nodeId?: string;
@@ -2189,14 +2200,14 @@ export interface RemoteLoginInformation {
  * @constructor
  * Properties of the file or directory.
  *
- * @member {string} [name] Name. Name of the file.
- * @member {string} [fileType] File type. Type of the file. Possible values are
- * file and directory. Possible values include: 'file', 'directory'
- * @member {string} [downloadUrl] Download URL. URL to download the
+ * @property {string} [name] Name. Name of the file.
+ * @property {string} [fileType] File type. Type of the file. Possible values
+ * are file and directory. Possible values include: 'file', 'directory'
+ * @property {string} [downloadUrl] Download URL. URL to download the
  * corresponding file. The downloadUrl is not returned for directories.
- * @member {date} [lastModified] Last modified time. The time at which the file
- * was last modified.
- * @member {number} [contentLength] Content length. The file of the size.
+ * @property {date} [lastModified] Last modified time. The time at which the
+ * file was last modified.
+ * @property {number} [contentLength] Content length. The file of the size.
  */
 export interface File {
   readonly name?: string;
@@ -2212,11 +2223,11 @@ export interface File {
  * @constructor
  * A definition of an Azure resource.
  *
- * @member {string} [id] The ID of the resource
- * @member {string} [name] The name of the resource
- * @member {string} [type] The type of the resource
- * @member {string} [location] The location of the resource
- * @member {object} [tags] The tags of the resource
+ * @property {string} [id] The ID of the resource
+ * @property {string} [name] The name of the resource
+ * @property {string} [type] The type of the resource
+ * @property {string} [location] The location of the resource
+ * @property {object} [tags] The tags of the resource
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -2232,12 +2243,12 @@ export interface Resource extends BaseResource {
  * @constructor
  * The object that describes the operation.
  *
- * @member {string} [provider] Friendly name of the resource provider.
- * @member {string} [operation] The operation type. For example: read, write,
+ * @property {string} [provider] Friendly name of the resource provider.
+ * @property {string} [operation] The operation type. For example: read, write,
  * delete, or listKeys/action
- * @member {string} [resource] The resource type on which the operation is
+ * @property {string} [resource] The resource type on which the operation is
  * performed.
- * @member {string} [description] The friendly name of the operation.
+ * @property {string} [description] The friendly name of the operation.
  */
 export interface OperationDisplay {
   readonly provider?: string;
@@ -2254,16 +2265,16 @@ export interface OperationDisplay {
  *
  * Details of a REST API operation
  *
- * @member {string} [name] The operation name. This is of the format
+ * @property {string} [name] The operation name. This is of the format
  * {provider}/{resource}/{operation}
- * @member {object} [display] The object that describes the operation.
- * @member {string} [display.provider]
- * @member {string} [display.operation] For example: read, write, delete, or
+ * @property {object} [display] The object that describes the operation.
+ * @property {string} [display.provider]
+ * @property {string} [display.operation] For example: read, write, delete, or
  * listKeys/action
- * @member {string} [display.resource]
- * @member {string} [display.description]
- * @member {string} [origin] The intended executor of the operation.
- * @member {object} [properties] Properties of the operation.
+ * @property {string} [display.resource]
+ * @property {string} [display.description]
+ * @property {string} [origin] The intended executor of the operation.
+ * @property {object} [properties] Properties of the operation.
  */
 export interface Operation {
   readonly name?: string;
@@ -2278,12 +2289,12 @@ export interface Operation {
  * @constructor
  * Batch AI Workspace information.
  *
- * @member {date} [creationTime] Creation time. Time when the Workspace was
+ * @property {date} [creationTime] Creation time. Time when the Workspace was
  * created.
- * @member {string} [provisioningState] Provisioning state. The provisioned
+ * @property {string} [provisioningState] Provisioning state. The provisioned
  * state of the Workspace. Possible values include: 'creating', 'succeeded',
  * 'failed', 'deleting'
- * @member {date} [provisioningStateTransitionTime] Provisioning state
+ * @property {date} [provisioningStateTransitionTime] Provisioning state
  * transition time. The time at which the workspace entered its current
  * provisioning state.
  */
@@ -2299,9 +2310,9 @@ export interface Workspace extends Resource {
  * @constructor
  * Workspace creation parameters.
  *
- * @member {string} location Location. The region in which to create the
+ * @property {string} location Location. The region in which to create the
  * Workspace.
- * @member {object} [tags] Tags. The user specified tags associated with the
+ * @property {object} [tags] Tags. The user specified tags associated with the
  * Workspace.
  */
 export interface WorkspaceCreateParameters {
@@ -2315,7 +2326,7 @@ export interface WorkspaceCreateParameters {
  * @constructor
  * Workspace update parameters.
  *
- * @member {object} [tags] Tags. The user specified tags associated with the
+ * @property {object} [tags] Tags. The user specified tags associated with the
  * Workspace.
  */
 export interface WorkspaceUpdateParameters {
@@ -2328,12 +2339,12 @@ export interface WorkspaceUpdateParameters {
  * @constructor
  * Experiment information.
  *
- * @member {date} [creationTime] Creation time. Time when the Experiment was
+ * @property {date} [creationTime] Creation time. Time when the Experiment was
  * created.
- * @member {string} [provisioningState] Provisioning state. The provisioned
+ * @property {string} [provisioningState] Provisioning state. The provisioned
  * state of the experiment. Possible values include: 'creating', 'succeeded',
  * 'failed', 'deleting'
- * @member {date} [provisioningStateTransitionTime] Provisioning state
+ * @property {date} [provisioningStateTransitionTime] Provisioning state
  * transition time. The time at which the experiment entered its current
  * provisioning state.
  */
@@ -2349,7 +2360,7 @@ export interface Experiment extends ProxyResource {
  * @constructor
  * Additional parameters for list operation.
  *
- * @member {number} [maxResults] The maximum number of items to return in the
+ * @property {number} [maxResults] The maximum number of items to return in the
  * response. A maximum of 1000 files can be returned. Default value: 1000 .
  */
 export interface WorkspacesListOptions {
@@ -2362,7 +2373,7 @@ export interface WorkspacesListOptions {
  * @constructor
  * Additional parameters for listByResourceGroup operation.
  *
- * @member {number} [maxResults] The maximum number of items to return in the
+ * @property {number} [maxResults] The maximum number of items to return in the
  * response. A maximum of 1000 files can be returned. Default value: 1000 .
  */
 export interface WorkspacesListByResourceGroupOptions {
@@ -2375,7 +2386,7 @@ export interface WorkspacesListByResourceGroupOptions {
  * @constructor
  * Additional parameters for listByWorkspace operation.
  *
- * @member {number} [maxResults] The maximum number of items to return in the
+ * @property {number} [maxResults] The maximum number of items to return in the
  * response. A maximum of 1000 files can be returned. Default value: 1000 .
  */
 export interface ExperimentsListByWorkspaceOptions {
@@ -2388,7 +2399,7 @@ export interface ExperimentsListByWorkspaceOptions {
  * @constructor
  * Additional parameters for listByExperiment operation.
  *
- * @member {number} [maxResults] The maximum number of items to return in the
+ * @property {number} [maxResults] The maximum number of items to return in the
  * response. A maximum of 1000 files can be returned. Default value: 1000 .
  */
 export interface JobsListByExperimentOptions {
@@ -2401,13 +2412,14 @@ export interface JobsListByExperimentOptions {
  * @constructor
  * Additional parameters for listOutputFiles operation.
  *
- * @member {string} outputdirectoryid Id of the job output directory. This is
+ * @property {string} outputdirectoryid Id of the job output directory. This is
  * the OutputDirectory-->id parameter that is given by the user during Create
  * Job.
- * @member {string} [directory] The path to the directory. Default value: '.' .
- * @member {number} [linkexpiryinminutes] The number of minutes after which the
- * download link will expire. Default value: 60 .
- * @member {number} [maxResults] The maximum number of items to return in the
+ * @property {string} [directory] The path to the directory. Default value: '.'
+ * .
+ * @property {number} [linkexpiryinminutes] The number of minutes after which
+ * the download link will expire. Default value: 60 .
+ * @property {number} [maxResults] The maximum number of items to return in the
  * response. A maximum of 1000 files can be returned. Default value: 1000 .
  */
 export interface JobsListOutputFilesOptions {
@@ -2423,7 +2435,7 @@ export interface JobsListOutputFilesOptions {
  * @constructor
  * Additional parameters for listByWorkspace operation.
  *
- * @member {number} [maxResults] The maximum number of items to return in the
+ * @property {number} [maxResults] The maximum number of items to return in the
  * response. A maximum of 1000 files can be returned. Default value: 1000 .
  */
 export interface FileServersListByWorkspaceOptions {
@@ -2436,7 +2448,7 @@ export interface FileServersListByWorkspaceOptions {
  * @constructor
  * Additional parameters for listByWorkspace operation.
  *
- * @member {number} [maxResults] The maximum number of items to return in the
+ * @property {number} [maxResults] The maximum number of items to return in the
  * response. A maximum of 1000 files can be returned. Default value: 1000 .
  */
 export interface ClustersListByWorkspaceOptions {
@@ -2453,7 +2465,7 @@ export interface ClustersListByWorkspaceOptions {
  *
  * Contains the list of all operations supported by BatchAI resource provider
  *
- * @member {string} [nextLink]
+ * @property {string} [nextLink]
  */
 export interface OperationListResult extends Array<Operation> {
   readonly nextLink?: string;
@@ -2465,7 +2477,7 @@ export interface OperationListResult extends Array<Operation> {
  * @constructor
  * The List Usages operation response.
  *
- * @member {string} [nextLink] The URI to fetch the next page of compute
+ * @property {string} [nextLink] The URI to fetch the next page of compute
  * resource usage information. Call ListNext() with this to fetch the next page
  * of compute resource usage information.
  */
@@ -2479,7 +2491,7 @@ export interface ListUsagesResult extends Array<Usage> {
  * @constructor
  * Values returned by the List operation.
  *
- * @member {string} [nextLink] The continuation token.
+ * @property {string} [nextLink] The continuation token.
  */
 export interface WorkspaceListResult extends Array<Workspace> {
   readonly nextLink?: string;
@@ -2491,7 +2503,7 @@ export interface WorkspaceListResult extends Array<Workspace> {
  * @constructor
  * Values returned by the List operation.
  *
- * @member {string} [nextLink] The continuation token.
+ * @property {string} [nextLink] The continuation token.
  */
 export interface ExperimentListResult extends Array<Experiment> {
   readonly nextLink?: string;
@@ -2503,7 +2515,7 @@ export interface ExperimentListResult extends Array<Experiment> {
  * @constructor
  * Values returned by the List operation.
  *
- * @member {string} [nextLink] The continuation token.
+ * @property {string} [nextLink] The continuation token.
  */
 export interface JobListResult extends Array<Job> {
   readonly nextLink?: string;
@@ -2515,7 +2527,7 @@ export interface JobListResult extends Array<Job> {
  * @constructor
  * Values returned by the List operation.
  *
- * @member {string} [nextLink] The continuation token.
+ * @property {string} [nextLink] The continuation token.
  */
 export interface FileListResult extends Array<File> {
   readonly nextLink?: string;
@@ -2527,7 +2539,7 @@ export interface FileListResult extends Array<File> {
  * @constructor
  * Values returned by the List operation.
  *
- * @member {string} [nextLink] The continuation token.
+ * @property {string} [nextLink] The continuation token.
  */
 export interface RemoteLoginInformationListResult extends Array<RemoteLoginInformation> {
   readonly nextLink?: string;
@@ -2539,7 +2551,7 @@ export interface RemoteLoginInformationListResult extends Array<RemoteLoginInfor
  * @constructor
  * Values returned by the File Server List operation.
  *
- * @member {string} [nextLink] The continuation token.
+ * @property {string} [nextLink] The continuation token.
  */
 export interface FileServerListResult extends Array<FileServer> {
   readonly nextLink?: string;
@@ -2551,7 +2563,7 @@ export interface FileServerListResult extends Array<FileServer> {
  * @constructor
  * Values returned by the List Clusters operation.
  *
- * @member {string} [nextLink] The continuation token.
+ * @property {string} [nextLink] The continuation token.
  */
 export interface ClusterListResult extends Array<Cluster> {
   readonly nextLink?: string;

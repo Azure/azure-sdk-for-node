@@ -23,11 +23,11 @@ export { CloudError } from 'ms-rest-azure';
  * An annotation describing a change in the availabilityState to Available from
  * Unavailable with a reasonType of type Unplanned
  *
- * @member {date} [unavailableOccurredTime] Timestamp for when the
+ * @property {date} [unavailableOccurredTime] Timestamp for when the
  * availabilityState changed to Unavailable
- * @member {date} [resolvedTime] Timestamp when the availabilityState changes
+ * @property {date} [resolvedTime] Timestamp when the availabilityState changes
  * to Available.
- * @member {string} [unavailabilitySummary] Brief description of cause of the
+ * @property {string} [unavailabilitySummary] Brief description of cause of the
  * resource becoming unavailable.
  */
 export interface AvailabilityStatusPropertiesRecentlyResolvedState {
@@ -43,9 +43,9 @@ export interface AvailabilityStatusPropertiesRecentlyResolvedState {
  * Lists actions the user can take based on the current availabilityState of
  * the resource.
  *
- * @member {string} [action] Recommended action.
- * @member {string} [actionUrl] Link to the action
- * @member {string} [actionUrlText] Substring of action, it describes which
+ * @property {string} [action] Recommended action.
+ * @property {string} [actionUrl] Link to the action
+ * @property {string} [actionUrlText] Substring of action, it describes which
  * text should host the action url.
  */
 export interface RecommendedAction {
@@ -60,7 +60,7 @@ export interface RecommendedAction {
  * @constructor
  * Status of the service impacting event.
  *
- * @member {string} [value] Current status of the event
+ * @property {string} [value] Current status of the event
  */
 export interface ServiceImpactingEventStatus {
   value?: string;
@@ -72,10 +72,10 @@ export interface ServiceImpactingEventStatus {
  * @constructor
  * Properties of the service impacting event.
  *
- * @member {string} [title] Title of the incident.
- * @member {string} [service] Service impacted by the event.
- * @member {string} [region] Region impacted by the event.
- * @member {string} [incidentType] Type of Event.
+ * @property {string} [title] Title of the incident.
+ * @property {string} [service] Service impacted by the event.
+ * @property {string} [region] Region impacted by the event.
+ * @property {string} [incidentType] Type of Event.
  */
 export interface ServiceImpactingEventIncidentProperties {
   title?: string;
@@ -91,18 +91,19 @@ export interface ServiceImpactingEventIncidentProperties {
  * Lists the service impacting events that may be affecting the health of the
  * resource.
  *
- * @member {date} [eventStartTime] Timestamp for when the event started.
- * @member {date} [eventStatusLastModifiedTime] Timestamp for when event was
+ * @property {date} [eventStartTime] Timestamp for when the event started.
+ * @property {date} [eventStatusLastModifiedTime] Timestamp for when event was
  * submitted/detected.
- * @member {string} [correlationId] Correlation id for the event
- * @member {object} [status] Status of the service impacting event.
- * @member {string} [status.value] Current status of the event
- * @member {object} [incidentProperties] Properties of the service impacting
+ * @property {string} [correlationId] Correlation id for the event
+ * @property {object} [status] Status of the service impacting event.
+ * @property {string} [status.value] Current status of the event
+ * @property {object} [incidentProperties] Properties of the service impacting
  * event.
- * @member {string} [incidentProperties.title] Title of the incident.
- * @member {string} [incidentProperties.service] Service impacted by the event.
- * @member {string} [incidentProperties.region] Region impacted by the event.
- * @member {string} [incidentProperties.incidentType] Type of Event.
+ * @property {string} [incidentProperties.title] Title of the incident.
+ * @property {string} [incidentProperties.service] Service impacted by the
+ * event.
+ * @property {string} [incidentProperties.region] Region impacted by the event.
+ * @property {string} [incidentProperties.incidentType] Type of Event.
  */
 export interface ServiceImpactingEvent {
   eventStartTime?: Date;
@@ -118,50 +119,51 @@ export interface ServiceImpactingEvent {
  * @constructor
  * Properties of availability state.
  *
- * @member {string} [availabilityState] Availability status of the resource.
+ * @property {string} [availabilityState] Availability status of the resource.
  * When it is null, this availabilityStatus object represents an availability
  * impacting event. Possible values include: 'Available', 'Unavailable',
  * 'Unknown'
- * @member {string} [summary] Summary description of the availability status.
- * @member {string} [detailedStatus] Details of the availability status.
- * @member {string} [reasonType] When the resource's availabilityState is
+ * @property {string} [summary] Summary description of the availability status.
+ * @property {string} [detailedStatus] Details of the availability status.
+ * @property {string} [reasonType] When the resource's availabilityState is
  * Unavailable, it describes where the health impacting event was originated.
  * Examples are planned, unplanned, user initiated or an outage etc.
- * @member {date} [rootCauseAttributionTime] When the resource's
+ * @property {date} [rootCauseAttributionTime] When the resource's
  * availabilityState is Unavailable, it provides the Timestamp for when the
  * health impacting event was received.
- * @member {string} [healthEventType] In case of an availability impacting
+ * @property {string} [healthEventType] In case of an availability impacting
  * event, it describes when the health impacting event was originated. Examples
  * are Lifecycle, Downtime, Fault Analysis etc.
- * @member {string} [healthEventCause] In case of an availability impacting
+ * @property {string} [healthEventCause] In case of an availability impacting
  * event, it describes where the health impacting event was originated.
  * Examples are PlatformInitiated, UserInitiated etc.
- * @member {string} [healthEventCategory] In case of an availability impacting
- * event, it describes the category of a PlatformInitiated health impacting
- * event. Examples are Planned, Unplanned etc.
- * @member {string} [healthEventId] It is a unique Id that identifies the event
- * @member {date} [resolutionETA] When the resource's availabilityState is
+ * @property {string} [healthEventCategory] In case of an availability
+ * impacting event, it describes the category of a PlatformInitiated health
+ * impacting event. Examples are Planned, Unplanned etc.
+ * @property {string} [healthEventId] It is a unique Id that identifies the
+ * event
+ * @property {date} [resolutionETA] When the resource's availabilityState is
  * Unavailable and the reasonType is not User Initiated, it provides the date
  * and time for when the issue is expected to be resolved.
- * @member {date} [occuredTime] Timestamp for when last change in health status
- * occurred.
- * @member {string} [reasonChronicity] Chronicity of the availability
+ * @property {date} [occuredTime] Timestamp for when last change in health
+ * status occurred.
+ * @property {string} [reasonChronicity] Chronicity of the availability
  * transition. Possible values include: 'Transient', 'Persistent'
- * @member {date} [reportedTime] Timestamp for when the health was last
+ * @property {date} [reportedTime] Timestamp for when the health was last
  * checked.
- * @member {object} [recentlyResolvedState] An annotation describing a change
+ * @property {object} [recentlyResolvedState] An annotation describing a change
  * in the availabilityState to Available from Unavailable with a reasonType of
  * type Unplanned
- * @member {date} [recentlyResolvedState.unavailableOccurredTime] Timestamp for
- * when the availabilityState changed to Unavailable
- * @member {date} [recentlyResolvedState.resolvedTime] Timestamp when the
+ * @property {date} [recentlyResolvedState.unavailableOccurredTime] Timestamp
+ * for when the availabilityState changed to Unavailable
+ * @property {date} [recentlyResolvedState.resolvedTime] Timestamp when the
  * availabilityState changes to Available.
- * @member {string} [recentlyResolvedState.unavailabilitySummary] Brief
+ * @property {string} [recentlyResolvedState.unavailabilitySummary] Brief
  * description of cause of the resource becoming unavailable.
- * @member {array} [recommendedActions] Lists actions the user can take based
+ * @property {array} [recommendedActions] Lists actions the user can take based
  * on the current availabilityState of the resource.
- * @member {array} [serviceImpactingEvents] Lists the service impacting events
- * that may be affecting the health of the resource.
+ * @property {array} [serviceImpactingEvents] Lists the service impacting
+ * events that may be affecting the health of the resource.
  */
 export interface AvailabilityStatusProperties {
   availabilityState?: string;
@@ -188,60 +190,61 @@ export interface AvailabilityStatusProperties {
  * @constructor
  * availabilityStatus of a resource.
  *
- * @member {string} [id] Azure Resource Manager Identity for the
+ * @property {string} [id] Azure Resource Manager Identity for the
  * availabilityStatuses resource.
- * @member {string} [name] current.
- * @member {string} [type] Microsoft.ResourceHealth/AvailabilityStatuses.
- * @member {string} [location] Azure Resource Manager geo location of the
+ * @property {string} [name] current.
+ * @property {string} [type] Microsoft.ResourceHealth/AvailabilityStatuses.
+ * @property {string} [location] Azure Resource Manager geo location of the
  * resource.
- * @member {object} [properties] Properties of availability state.
- * @member {string} [properties.availabilityState] Availability status of the
+ * @property {object} [properties] Properties of availability state.
+ * @property {string} [properties.availabilityState] Availability status of the
  * resource. When it is null, this availabilityStatus object represents an
  * availability impacting event. Possible values include: 'Available',
  * 'Unavailable', 'Unknown'
- * @member {string} [properties.summary] Summary description of the
+ * @property {string} [properties.summary] Summary description of the
  * availability status.
- * @member {string} [properties.detailedStatus] Details of the availability
+ * @property {string} [properties.detailedStatus] Details of the availability
  * status.
- * @member {string} [properties.reasonType] When the resource's
+ * @property {string} [properties.reasonType] When the resource's
  * availabilityState is Unavailable, it describes where the health impacting
  * event was originated. Examples are planned, unplanned, user initiated or an
  * outage etc.
- * @member {date} [properties.rootCauseAttributionTime] When the resource's
+ * @property {date} [properties.rootCauseAttributionTime] When the resource's
  * availabilityState is Unavailable, it provides the Timestamp for when the
  * health impacting event was received.
- * @member {string} [properties.healthEventType] In case of an availability
+ * @property {string} [properties.healthEventType] In case of an availability
  * impacting event, it describes when the health impacting event was
  * originated. Examples are Lifecycle, Downtime, Fault Analysis etc.
- * @member {string} [properties.healthEventCause] In case of an availability
+ * @property {string} [properties.healthEventCause] In case of an availability
  * impacting event, it describes where the health impacting event was
  * originated. Examples are PlatformInitiated, UserInitiated etc.
- * @member {string} [properties.healthEventCategory] In case of an availability
- * impacting event, it describes the category of a PlatformInitiated health
- * impacting event. Examples are Planned, Unplanned etc.
- * @member {string} [properties.healthEventId] It is a unique Id that
+ * @property {string} [properties.healthEventCategory] In case of an
+ * availability impacting event, it describes the category of a
+ * PlatformInitiated health impacting event. Examples are Planned, Unplanned
+ * etc.
+ * @property {string} [properties.healthEventId] It is a unique Id that
  * identifies the event
- * @member {date} [properties.resolutionETA] When the resource's
+ * @property {date} [properties.resolutionETA] When the resource's
  * availabilityState is Unavailable and the reasonType is not User Initiated,
  * it provides the date and time for when the issue is expected to be resolved.
- * @member {date} [properties.occuredTime] Timestamp for when last change in
+ * @property {date} [properties.occuredTime] Timestamp for when last change in
  * health status occurred.
- * @member {string} [properties.reasonChronicity] Chronicity of the
+ * @property {string} [properties.reasonChronicity] Chronicity of the
  * availability transition. Possible values include: 'Transient', 'Persistent'
- * @member {date} [properties.reportedTime] Timestamp for when the health was
+ * @property {date} [properties.reportedTime] Timestamp for when the health was
  * last checked.
- * @member {object} [properties.recentlyResolvedState] An annotation describing
- * a change in the availabilityState to Available from Unavailable with a
- * reasonType of type Unplanned
- * @member {date} [properties.recentlyResolvedState.unavailableOccurredTime]
+ * @property {object} [properties.recentlyResolvedState] An annotation
+ * describing a change in the availabilityState to Available from Unavailable
+ * with a reasonType of type Unplanned
+ * @property {date} [properties.recentlyResolvedState.unavailableOccurredTime]
  * Timestamp for when the availabilityState changed to Unavailable
- * @member {date} [properties.recentlyResolvedState.resolvedTime] Timestamp
+ * @property {date} [properties.recentlyResolvedState.resolvedTime] Timestamp
  * when the availabilityState changes to Available.
- * @member {string} [properties.recentlyResolvedState.unavailabilitySummary]
+ * @property {string} [properties.recentlyResolvedState.unavailabilitySummary]
  * Brief description of cause of the resource becoming unavailable.
- * @member {array} [properties.recommendedActions] Lists actions the user can
+ * @property {array} [properties.recommendedActions] Lists actions the user can
  * take based on the current availabilityState of the resource.
- * @member {array} [properties.serviceImpactingEvents] Lists the service
+ * @property {array} [properties.serviceImpactingEvents] Lists the service
  * impacting events that may be affecting the health of the resource.
  */
 export interface AvailabilityStatus {
@@ -258,10 +261,10 @@ export interface AvailabilityStatus {
  * @constructor
  * Properties of the operation.
  *
- * @member {string} [provider] Provider name.
- * @member {string} [resource] Resource name.
- * @member {string} [operation] Operation name.
- * @member {string} [description] Description of the operation.
+ * @property {string} [provider] Provider name.
+ * @property {string} [resource] Resource name.
+ * @property {string} [operation] Operation name.
+ * @property {string} [description] Description of the operation.
  */
 export interface OperationDisplay {
   provider?: string;
@@ -276,12 +279,12 @@ export interface OperationDisplay {
  * @constructor
  * Operation available in the resourcehealth resource provider.
  *
- * @member {string} [name] Name of the operation.
- * @member {object} [display] Properties of the operation.
- * @member {string} [display.provider] Provider name.
- * @member {string} [display.resource] Resource name.
- * @member {string} [display.operation] Operation name.
- * @member {string} [display.description] Description of the operation.
+ * @property {string} [name] Name of the operation.
+ * @property {object} [display] Properties of the operation.
+ * @property {string} [display.provider] Provider name.
+ * @property {string} [display.resource] Resource name.
+ * @property {string} [display.operation] Operation name.
+ * @property {string} [display.description] Description of the operation.
  */
 export interface Operation {
   name?: string;
@@ -294,7 +297,7 @@ export interface Operation {
  * @constructor
  * Lists the operations response.
  *
- * @member {array} value List of operations available in the resourcehealth
+ * @property {array} value List of operations available in the resourcehealth
  * resource provider.
  */
 export interface OperationListResult {
@@ -307,9 +310,9 @@ export interface OperationListResult {
  * @constructor
  * Error details.
  *
- * @member {string} [code] The error code.
- * @member {string} [message] The error message.
- * @member {string} [details] The error details.
+ * @property {string} [code] The error code.
+ * @property {string} [message] The error message.
+ * @property {string} [details] The error details.
  */
 export interface ErrorResponse {
   readonly code?: string;
@@ -324,7 +327,7 @@ export interface ErrorResponse {
  * @constructor
  * The List availabilityStatus operation response.
  *
- * @member {string} [nextLink] The URI to fetch the next page of
+ * @property {string} [nextLink] The URI to fetch the next page of
  * availabilityStatuses. Call ListNext() with this URI to fetch the next page
  * of availabilityStatuses.
  */

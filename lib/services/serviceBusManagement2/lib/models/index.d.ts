@@ -22,9 +22,9 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * The Resource definition for other than namespace.
  *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
+ * @property {string} [id] Resource Id
+ * @property {string} [name] Resource name
+ * @property {string} [type] Resource type
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -38,8 +38,8 @@ export interface Resource extends BaseResource {
  * @constructor
  * The Resource definition.
  *
- * @member {string} location The Geo-location where the resource lives
- * @member {object} [tags] Resource tags
+ * @property {string} location The Geo-location where the resource lives
+ * @property {object} [tags] Resource tags
  */
 export interface TrackedResource extends Resource {
   location: string;
@@ -52,8 +52,8 @@ export interface TrackedResource extends Resource {
  * @constructor
  * The Resource definition.
  *
- * @member {string} [location] Resource location
- * @member {object} [tags] Resource tags
+ * @property {string} [location] Resource location
+ * @property {object} [tags] Resource tags
  */
 export interface ResourceNamespacePatch extends Resource {
   location?: string;
@@ -66,12 +66,12 @@ export interface ResourceNamespacePatch extends Resource {
  * @constructor
  * SKU of the namespace.
  *
- * @member {string} name Name of this SKU. Possible values include: 'Basic',
+ * @property {string} name Name of this SKU. Possible values include: 'Basic',
  * 'Standard', 'Premium'
- * @member {string} [tier] The billing tier of this particular SKU. Possible
+ * @property {string} [tier] The billing tier of this particular SKU. Possible
  * values include: 'Basic', 'Standard', 'Premium'
- * @member {number} [capacity] The specified messaging units for the tier. For
- * Premium tier, capacity are 1,2 and 4.
+ * @property {number} [capacity] The specified messaging units for the tier.
+ * For Premium tier, capacity are 1,2 and 4.
  */
 export interface SBSku {
   name: string;
@@ -85,19 +85,19 @@ export interface SBSku {
  * @constructor
  * Description of a namespace resource.
  *
- * @member {object} [sku] Porperties of Sku
- * @member {string} [sku.name] Name of this SKU. Possible values include:
+ * @property {object} [sku] Porperties of Sku
+ * @property {string} [sku.name] Name of this SKU. Possible values include:
  * 'Basic', 'Standard', 'Premium'
- * @member {string} [sku.tier] The billing tier of this particular SKU.
+ * @property {string} [sku.tier] The billing tier of this particular SKU.
  * Possible values include: 'Basic', 'Standard', 'Premium'
- * @member {number} [sku.capacity] The specified messaging units for the tier.
- * For Premium tier, capacity are 1,2 and 4.
- * @member {string} [provisioningState] Provisioning state of the namespace.
- * @member {date} [createdAt] The time the namespace was created.
- * @member {date} [updatedAt] The time the namespace was updated.
- * @member {string} [serviceBusEndpoint] Endpoint you can use to perform
+ * @property {number} [sku.capacity] The specified messaging units for the
+ * tier. For Premium tier, capacity are 1,2 and 4.
+ * @property {string} [provisioningState] Provisioning state of the namespace.
+ * @property {date} [createdAt] The time the namespace was created.
+ * @property {date} [updatedAt] The time the namespace was updated.
+ * @property {string} [serviceBusEndpoint] Endpoint you can use to perform
  * Service Bus operations.
- * @member {string} [metricId] Identifier for Azure Insights metrics
+ * @property {string} [metricId] Identifier for Azure Insights metrics
  */
 export interface SBNamespace extends TrackedResource {
   sku?: SBSku;
@@ -114,19 +114,19 @@ export interface SBNamespace extends TrackedResource {
  * @constructor
  * Description of a namespace resource.
  *
- * @member {object} [sku] Porperties of Sku
- * @member {string} [sku.name] Name of this SKU. Possible values include:
+ * @property {object} [sku] Porperties of Sku
+ * @property {string} [sku.name] Name of this SKU. Possible values include:
  * 'Basic', 'Standard', 'Premium'
- * @member {string} [sku.tier] The billing tier of this particular SKU.
+ * @property {string} [sku.tier] The billing tier of this particular SKU.
  * Possible values include: 'Basic', 'Standard', 'Premium'
- * @member {number} [sku.capacity] The specified messaging units for the tier.
- * For Premium tier, capacity are 1,2 and 4.
- * @member {string} [provisioningState] Provisioning state of the namespace.
- * @member {date} [createdAt] The time the namespace was created.
- * @member {date} [updatedAt] The time the namespace was updated.
- * @member {string} [serviceBusEndpoint] Endpoint you can use to perform
+ * @property {number} [sku.capacity] The specified messaging units for the
+ * tier. For Premium tier, capacity are 1,2 and 4.
+ * @property {string} [provisioningState] Provisioning state of the namespace.
+ * @property {date} [createdAt] The time the namespace was created.
+ * @property {date} [updatedAt] The time the namespace was updated.
+ * @property {string} [serviceBusEndpoint] Endpoint you can use to perform
  * Service Bus operations.
- * @member {string} [metricId] Identifier for Azure Insights metrics
+ * @property {string} [metricId] Identifier for Azure Insights metrics
  */
 export interface SBNamespaceUpdateParameters extends ResourceNamespacePatch {
   sku?: SBSku;
@@ -143,7 +143,7 @@ export interface SBNamespaceUpdateParameters extends ResourceNamespacePatch {
  * @constructor
  * Namespace Migrate Object
  *
- * @member {string} targetNamespaceType Type of namespaces. Possible values
+ * @property {string} targetNamespaceType Type of namespaces. Possible values
  * include: 'Messaging', 'NotificationHub', 'Mixed', 'EventHub', 'Relay'
  */
 export interface SBNamespaceMigrate {
@@ -156,7 +156,7 @@ export interface SBNamespaceMigrate {
  * @constructor
  * Description of a namespace authorization rule.
  *
- * @member {array} rights The rights associated with the rule.
+ * @property {array} rights The rights associated with the rule.
  */
 export interface SBAuthorizationRule extends Resource {
   rights: string[];
@@ -168,7 +168,7 @@ export interface SBAuthorizationRule extends Resource {
  * @constructor
  * AuthorizationRule properties.
  *
- * @member {array} rights The rights associated with the rule.
+ * @property {array} rights The rights associated with the rule.
  */
 export interface AuthorizationRuleProperties {
   rights: string[];
@@ -180,19 +180,19 @@ export interface AuthorizationRuleProperties {
  * @constructor
  * Namespace/ServiceBus Connection String
  *
- * @member {string} [primaryConnectionString] Primary connection string of the
- * created namespace authorization rule.
- * @member {string} [secondaryConnectionString] Secondary connection string of
+ * @property {string} [primaryConnectionString] Primary connection string of
  * the created namespace authorization rule.
- * @member {string} [aliasPrimaryConnectionString] Primary connection string of
- * the alias if GEO DR is enabled
- * @member {string} [aliasSecondaryConnectionString] Secondary  connection
+ * @property {string} [secondaryConnectionString] Secondary connection string
+ * of the created namespace authorization rule.
+ * @property {string} [aliasPrimaryConnectionString] Primary connection string
+ * of the alias if GEO DR is enabled
+ * @property {string} [aliasSecondaryConnectionString] Secondary  connection
  * string of the alias if GEO DR is enabled
- * @member {string} [primaryKey] A base64-encoded 256-bit primary key for
+ * @property {string} [primaryKey] A base64-encoded 256-bit primary key for
  * signing and validating the SAS token.
- * @member {string} [secondaryKey] A base64-encoded 256-bit primary key for
+ * @property {string} [secondaryKey] A base64-encoded 256-bit primary key for
  * signing and validating the SAS token.
- * @member {string} [keyName] A string that describes the authorization rule.
+ * @property {string} [keyName] A string that describes the authorization rule.
  */
 export interface AccessKeys {
   readonly primaryConnectionString?: string;
@@ -211,9 +211,9 @@ export interface AccessKeys {
  * Parameters supplied to the Regenerate Authorization Rule operation,
  * specifies which key neeeds to be reset.
  *
- * @member {string} keyType The access key to regenerate. Possible values
+ * @property {string} keyType The access key to regenerate. Possible values
  * include: 'PrimaryKey', 'SecondaryKey'
- * @member {string} [key] Optional, if the key value provided, is reset for
+ * @property {string} [key] Optional, if the key value provided, is reset for
  * KeyType value or autogenerate Key value set for keyType
  */
 export interface RegenerateAccessKeyParameters {
@@ -227,14 +227,14 @@ export interface RegenerateAccessKeyParameters {
  * @constructor
  * Message Count Details.
  *
- * @member {number} [activeMessageCount] Number of active messages in the
+ * @property {number} [activeMessageCount] Number of active messages in the
  * queue, topic, or subscription.
- * @member {number} [deadLetterMessageCount] Number of messages that are dead
+ * @property {number} [deadLetterMessageCount] Number of messages that are dead
  * lettered.
- * @member {number} [scheduledMessageCount] Number of scheduled messages.
- * @member {number} [transferMessageCount] Number of messages transferred to
+ * @property {number} [scheduledMessageCount] Number of scheduled messages.
+ * @property {number} [transferMessageCount] Number of messages transferred to
  * another queue, topic, or subscription.
- * @member {number} [transferDeadLetterMessageCount] Number of messages
+ * @property {number} [transferDeadLetterMessageCount] Number of messages
  * transferred into dead letters.
  */
 export interface MessageCountDetails {
@@ -251,63 +251,63 @@ export interface MessageCountDetails {
  * @constructor
  * Description of queue Resource.
  *
- * @member {object} [countDetails] Message Count Details.
- * @member {number} [countDetails.activeMessageCount] Number of active messages
- * in the queue, topic, or subscription.
- * @member {number} [countDetails.deadLetterMessageCount] Number of messages
+ * @property {object} [countDetails] Message Count Details.
+ * @property {number} [countDetails.activeMessageCount] Number of active
+ * messages in the queue, topic, or subscription.
+ * @property {number} [countDetails.deadLetterMessageCount] Number of messages
  * that are dead lettered.
- * @member {number} [countDetails.scheduledMessageCount] Number of scheduled
+ * @property {number} [countDetails.scheduledMessageCount] Number of scheduled
  * messages.
- * @member {number} [countDetails.transferMessageCount] Number of messages
+ * @property {number} [countDetails.transferMessageCount] Number of messages
  * transferred to another queue, topic, or subscription.
- * @member {number} [countDetails.transferDeadLetterMessageCount] Number of
+ * @property {number} [countDetails.transferDeadLetterMessageCount] Number of
  * messages transferred into dead letters.
- * @member {date} [createdAt] The exact time the message was created.
- * @member {date} [updatedAt] The exact time the message was updated.
- * @member {date} [accessedAt] Last time a message was sent, or the last time
+ * @property {date} [createdAt] The exact time the message was created.
+ * @property {date} [updatedAt] The exact time the message was updated.
+ * @property {date} [accessedAt] Last time a message was sent, or the last time
  * there was a receive request to this queue.
- * @member {number} [sizeInBytes] The size of the queue, in bytes.
- * @member {number} [messageCount] The number of messages in the queue.
- * @member {moment.duration} [lockDuration] ISO 8601 timespan duration of a
+ * @property {number} [sizeInBytes] The size of the queue, in bytes.
+ * @property {number} [messageCount] The number of messages in the queue.
+ * @property {moment.duration} [lockDuration] ISO 8601 timespan duration of a
  * peek-lock; that is, the amount of time that the message is locked for other
  * receivers. The maximum value for LockDuration is 5 minutes; the default
  * value is 1 minute.
- * @member {number} [maxSizeInMegabytes] The maximum size of the queue in
+ * @property {number} [maxSizeInMegabytes] The maximum size of the queue in
  * megabytes, which is the size of memory allocated for the queue. Default is
  * 1024.
- * @member {boolean} [requiresDuplicateDetection] A value indicating if this
+ * @property {boolean} [requiresDuplicateDetection] A value indicating if this
  * queue requires duplicate detection.
- * @member {boolean} [requiresSession] A value that indicates whether the queue
- * supports the concept of sessions.
- * @member {moment.duration} [defaultMessageTimeToLive] ISO 8601 default
+ * @property {boolean} [requiresSession] A value that indicates whether the
+ * queue supports the concept of sessions.
+ * @property {moment.duration} [defaultMessageTimeToLive] ISO 8601 default
  * message timespan to live value. This is the duration after which the message
  * expires, starting from when the message is sent to Service Bus. This is the
  * default value used when TimeToLive is not set on a message itself.
- * @member {boolean} [deadLetteringOnMessageExpiration] A value that indicates
- * whether this queue has dead letter support when a message expires.
- * @member {moment.duration} [duplicateDetectionHistoryTimeWindow] ISO 8601
+ * @property {boolean} [deadLetteringOnMessageExpiration] A value that
+ * indicates whether this queue has dead letter support when a message expires.
+ * @property {moment.duration} [duplicateDetectionHistoryTimeWindow] ISO 8601
  * timeSpan structure that defines the duration of the duplicate detection
  * history. The default value is 10 minutes.
- * @member {number} [maxDeliveryCount] The maximum delivery count. A message is
- * automatically deadlettered after this number of deliveries. default value is
- * 10.
- * @member {string} [status] Enumerates the possible values for the status of a
- * messaging entity. Possible values include: 'Active', 'Disabled',
+ * @property {number} [maxDeliveryCount] The maximum delivery count. A message
+ * is automatically deadlettered after this number of deliveries. default value
+ * is 10.
+ * @property {string} [status] Enumerates the possible values for the status of
+ * a messaging entity. Possible values include: 'Active', 'Disabled',
  * 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting',
  * 'Renaming', 'Unknown'
- * @member {boolean} [enableBatchedOperations] Value that indicates whether
+ * @property {boolean} [enableBatchedOperations] Value that indicates whether
  * server-side batched operations are enabled.
- * @member {moment.duration} [autoDeleteOnIdle] ISO 8061 timeSpan idle interval
- * after which the queue is automatically deleted. The minimum duration is 5
- * minutes.
- * @member {boolean} [enablePartitioning] A value that indicates whether the
+ * @property {moment.duration} [autoDeleteOnIdle] ISO 8061 timeSpan idle
+ * interval after which the queue is automatically deleted. The minimum
+ * duration is 5 minutes.
+ * @property {boolean} [enablePartitioning] A value that indicates whether the
  * queue is to be partitioned across multiple message brokers.
- * @member {boolean} [enableExpress] A value that indicates whether Express
+ * @property {boolean} [enableExpress] A value that indicates whether Express
  * Entities are enabled. An express queue holds a message in memory temporarily
  * before writing it to persistent storage.
- * @member {string} [forwardTo] Queue/Topic name to forward the messages
- * @member {string} [forwardDeadLetteredMessagesTo] Queue/Topic name to forward
- * the Dead Letter message
+ * @property {string} [forwardTo] Queue/Topic name to forward the messages
+ * @property {string} [forwardDeadLetteredMessagesTo] Queue/Topic name to
+ * forward the Dead Letter message
  */
 export interface SBQueue extends Resource {
   readonly countDetails?: MessageCountDetails;
@@ -339,49 +339,49 @@ export interface SBQueue extends Resource {
  * @constructor
  * Description of topic resource.
  *
- * @member {number} [sizeInBytes] Size of the topic, in bytes.
- * @member {date} [createdAt] Exact time the message was created.
- * @member {date} [updatedAt] The exact time the message was updated.
- * @member {date} [accessedAt] Last time the message was sent, or a request was
- * received, for this topic.
- * @member {number} [subscriptionCount] Number of subscriptions.
- * @member {object} [countDetails] Message count deatils
- * @member {number} [countDetails.activeMessageCount] Number of active messages
- * in the queue, topic, or subscription.
- * @member {number} [countDetails.deadLetterMessageCount] Number of messages
+ * @property {number} [sizeInBytes] Size of the topic, in bytes.
+ * @property {date} [createdAt] Exact time the message was created.
+ * @property {date} [updatedAt] The exact time the message was updated.
+ * @property {date} [accessedAt] Last time the message was sent, or a request
+ * was received, for this topic.
+ * @property {number} [subscriptionCount] Number of subscriptions.
+ * @property {object} [countDetails] Message count deatils
+ * @property {number} [countDetails.activeMessageCount] Number of active
+ * messages in the queue, topic, or subscription.
+ * @property {number} [countDetails.deadLetterMessageCount] Number of messages
  * that are dead lettered.
- * @member {number} [countDetails.scheduledMessageCount] Number of scheduled
+ * @property {number} [countDetails.scheduledMessageCount] Number of scheduled
  * messages.
- * @member {number} [countDetails.transferMessageCount] Number of messages
+ * @property {number} [countDetails.transferMessageCount] Number of messages
  * transferred to another queue, topic, or subscription.
- * @member {number} [countDetails.transferDeadLetterMessageCount] Number of
+ * @property {number} [countDetails.transferDeadLetterMessageCount] Number of
  * messages transferred into dead letters.
- * @member {moment.duration} [defaultMessageTimeToLive] ISO 8601 Default
+ * @property {moment.duration} [defaultMessageTimeToLive] ISO 8601 Default
  * message timespan to live value. This is the duration after which the message
  * expires, starting from when the message is sent to Service Bus. This is the
  * default value used when TimeToLive is not set on a message itself.
- * @member {number} [maxSizeInMegabytes] Maximum size of the topic in
+ * @property {number} [maxSizeInMegabytes] Maximum size of the topic in
  * megabytes, which is the size of the memory allocated for the topic. Default
  * is 1024.
- * @member {boolean} [requiresDuplicateDetection] Value indicating if this
+ * @property {boolean} [requiresDuplicateDetection] Value indicating if this
  * topic requires duplicate detection.
- * @member {moment.duration} [duplicateDetectionHistoryTimeWindow] ISO8601
+ * @property {moment.duration} [duplicateDetectionHistoryTimeWindow] ISO8601
  * timespan structure that defines the duration of the duplicate detection
  * history. The default value is 10 minutes.
- * @member {boolean} [enableBatchedOperations] Value that indicates whether
+ * @property {boolean} [enableBatchedOperations] Value that indicates whether
  * server-side batched operations are enabled.
- * @member {string} [status] Enumerates the possible values for the status of a
- * messaging entity. Possible values include: 'Active', 'Disabled',
+ * @property {string} [status] Enumerates the possible values for the status of
+ * a messaging entity. Possible values include: 'Active', 'Disabled',
  * 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting',
  * 'Renaming', 'Unknown'
- * @member {boolean} [supportOrdering] Value that indicates whether the topic
+ * @property {boolean} [supportOrdering] Value that indicates whether the topic
  * supports ordering.
- * @member {moment.duration} [autoDeleteOnIdle] ISO 8601 timespan idle interval
- * after which the topic is automatically deleted. The minimum duration is 5
- * minutes.
- * @member {boolean} [enablePartitioning] Value that indicates whether the
+ * @property {moment.duration} [autoDeleteOnIdle] ISO 8601 timespan idle
+ * interval after which the topic is automatically deleted. The minimum
+ * duration is 5 minutes.
+ * @property {boolean} [enablePartitioning] Value that indicates whether the
  * topic to be partitioned across multiple message brokers is enabled.
- * @member {boolean} [enableExpress] Value that indicates whether Express
+ * @property {boolean} [enableExpress] Value that indicates whether Express
  * Entities are enabled. An express topic holds a message in memory temporarily
  * before writing it to persistent storage.
  */
@@ -410,51 +410,51 @@ export interface SBTopic extends Resource {
  * @constructor
  * Description of subscription resource.
  *
- * @member {number} [messageCount] Number of messages.
- * @member {date} [createdAt] Exact time the message was created.
- * @member {date} [accessedAt] Last time there was a receive request to this
+ * @property {number} [messageCount] Number of messages.
+ * @property {date} [createdAt] Exact time the message was created.
+ * @property {date} [accessedAt] Last time there was a receive request to this
  * subscription.
- * @member {date} [updatedAt] The exact time the message was updated.
- * @member {object} [countDetails] Message count details
- * @member {number} [countDetails.activeMessageCount] Number of active messages
- * in the queue, topic, or subscription.
- * @member {number} [countDetails.deadLetterMessageCount] Number of messages
+ * @property {date} [updatedAt] The exact time the message was updated.
+ * @property {object} [countDetails] Message count details
+ * @property {number} [countDetails.activeMessageCount] Number of active
+ * messages in the queue, topic, or subscription.
+ * @property {number} [countDetails.deadLetterMessageCount] Number of messages
  * that are dead lettered.
- * @member {number} [countDetails.scheduledMessageCount] Number of scheduled
+ * @property {number} [countDetails.scheduledMessageCount] Number of scheduled
  * messages.
- * @member {number} [countDetails.transferMessageCount] Number of messages
+ * @property {number} [countDetails.transferMessageCount] Number of messages
  * transferred to another queue, topic, or subscription.
- * @member {number} [countDetails.transferDeadLetterMessageCount] Number of
+ * @property {number} [countDetails.transferDeadLetterMessageCount] Number of
  * messages transferred into dead letters.
- * @member {moment.duration} [lockDuration] ISO 8061 lock duration timespan for
- * the subscription. The default value is 1 minute.
- * @member {boolean} [requiresSession] Value indicating if a subscription
+ * @property {moment.duration} [lockDuration] ISO 8061 lock duration timespan
+ * for the subscription. The default value is 1 minute.
+ * @property {boolean} [requiresSession] Value indicating if a subscription
  * supports the concept of sessions.
- * @member {moment.duration} [defaultMessageTimeToLive] ISO 8061 Default
+ * @property {moment.duration} [defaultMessageTimeToLive] ISO 8061 Default
  * message timespan to live value. This is the duration after which the message
  * expires, starting from when the message is sent to Service Bus. This is the
  * default value used when TimeToLive is not set on a message itself.
- * @member {boolean} [deadLetteringOnFilterEvaluationExceptions] Value that
+ * @property {boolean} [deadLetteringOnFilterEvaluationExceptions] Value that
  * indicates whether a subscription has dead letter support on filter
  * evaluation exceptions.
- * @member {boolean} [deadLetteringOnMessageExpiration] Value that indicates
+ * @property {boolean} [deadLetteringOnMessageExpiration] Value that indicates
  * whether a subscription has dead letter support when a message expires.
- * @member {moment.duration} [duplicateDetectionHistoryTimeWindow] ISO 8601
+ * @property {moment.duration} [duplicateDetectionHistoryTimeWindow] ISO 8601
  * timeSpan structure that defines the duration of the duplicate detection
  * history. The default value is 10 minutes.
- * @member {number} [maxDeliveryCount] Number of maximum deliveries.
- * @member {string} [status] Enumerates the possible values for the status of a
- * messaging entity. Possible values include: 'Active', 'Disabled',
+ * @property {number} [maxDeliveryCount] Number of maximum deliveries.
+ * @property {string} [status] Enumerates the possible values for the status of
+ * a messaging entity. Possible values include: 'Active', 'Disabled',
  * 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting',
  * 'Renaming', 'Unknown'
- * @member {boolean} [enableBatchedOperations] Value that indicates whether
+ * @property {boolean} [enableBatchedOperations] Value that indicates whether
  * server-side batched operations are enabled.
- * @member {moment.duration} [autoDeleteOnIdle] ISO 8061 timeSpan idle interval
- * after which the topic is automatically deleted. The minimum duration is 5
- * minutes.
- * @member {string} [forwardTo] Queue/Topic name to forward the messages
- * @member {string} [forwardDeadLetteredMessagesTo] Queue/Topic name to forward
- * the Dead Letter message
+ * @property {moment.duration} [autoDeleteOnIdle] ISO 8061 timeSpan idle
+ * interval after which the topic is automatically deleted. The minimum
+ * duration is 5 minutes.
+ * @property {string} [forwardTo] Queue/Topic name to forward the messages
+ * @property {string} [forwardDeadLetteredMessagesTo] Queue/Topic name to
+ * forward the Dead Letter message
  */
 export interface SBSubscription extends Resource {
   readonly messageCount?: number;
@@ -482,7 +482,7 @@ export interface SBSubscription extends Resource {
  * @constructor
  * Description of a Check Name availability request properties.
  *
- * @member {string} name The Name to check the namespce name availability and
+ * @property {string} name The Name to check the namespce name availability and
  * The namespace name can contain only letters, numbers, and hyphens. The
  * namespace must start with a letter, and it must end with a letter or number.
  */
@@ -496,11 +496,11 @@ export interface CheckNameAvailability {
  * @constructor
  * Description of a Check Name availability request properties.
  *
- * @member {string} [message] The detailed info regarding the reason associated
- * with the namespace.
- * @member {boolean} [nameAvailable] Value indicating namespace is
+ * @property {string} [message] The detailed info regarding the reason
+ * associated with the namespace.
+ * @property {boolean} [nameAvailable] Value indicating namespace is
  * availability, true if the namespace is available; otherwise, false.
- * @member {string} [reason] The reason for unavailability of a namespace.
+ * @property {string} [reason] The reason for unavailability of a namespace.
  * Possible values include: 'None', 'InvalidName', 'SubscriptionIsDisabled',
  * 'NameInUse', 'NameInLockdown', 'TooManyNamespaceInCurrentSubscription'
  */
@@ -516,10 +516,10 @@ export interface CheckNameAvailabilityResult {
  * @constructor
  * The object that represents the operation.
  *
- * @member {string} [provider] Service provider: Microsoft.ServiceBus
- * @member {string} [resource] Resource on which the operation is performed:
+ * @property {string} [provider] Service provider: Microsoft.ServiceBus
+ * @property {string} [resource] Resource on which the operation is performed:
  * Invoice, etc.
- * @member {string} [operation] Operation type: Read, write, delete, etc.
+ * @property {string} [operation] Operation type: Read, write, delete, etc.
  */
 export interface OperationDisplay {
   readonly provider?: string;
@@ -533,12 +533,12 @@ export interface OperationDisplay {
  * @constructor
  * A ServiceBus REST API operation
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Service provider: Microsoft.ServiceBus
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] The object that represents the operation.
+ * @property {string} [display.provider] Service provider: Microsoft.ServiceBus
+ * @property {string} [display.resource] Resource on which the operation is
  * performed: Invoice, etc.
- * @member {string} [display.operation] Operation type: Read, write, delete,
+ * @property {string} [display.operation] Operation type: Read, write, delete,
  * etc.
  */
 export interface Operation {
@@ -553,8 +553,8 @@ export interface Operation {
  * Error reponse indicates ServiceBus service is not able to process the
  * incoming request. The reason is provided in the error message.
  *
- * @member {string} [code] Error code.
- * @member {string} [message] Error message indicating why the operation
+ * @property {string} [code] Error code.
+ * @property {string} [message] Error message indicating why the operation
  * failed.
  */
 export interface ErrorResponse {
@@ -569,11 +569,11 @@ export interface ErrorResponse {
  * Represents the filter actions which are allowed for the transformation of a
  * message that have been matched by a filter expression.
  *
- * @member {string} [sqlExpression] SQL expression. e.g. MyProperty='ABC'
- * @member {number} [compatibilityLevel] This property is reserved for future
+ * @property {string} [sqlExpression] SQL expression. e.g. MyProperty='ABC'
+ * @property {number} [compatibilityLevel] This property is reserved for future
  * use. An integer value showing the compatibility level, currently hard-coded
  * to 20.
- * @member {boolean} [requiresPreprocessing] Value that indicates whether the
+ * @property {boolean} [requiresPreprocessing] Value that indicates whether the
  * rule action requires preprocessing. Default value: true .
  */
 export interface Action {
@@ -589,11 +589,11 @@ export interface Action {
  * Represents a filter which is a composition of an expression and an action
  * that is executed in the pub/sub pipeline.
  *
- * @member {string} [sqlExpression] The SQL expression. e.g. MyProperty='ABC'
- * @member {number} [compatibilityLevel] This property is reserved for future
+ * @property {string} [sqlExpression] The SQL expression. e.g. MyProperty='ABC'
+ * @property {number} [compatibilityLevel] This property is reserved for future
  * use. An integer value showing the compatibility level, currently hard-coded
  * to 20. Default value: 20 .
- * @member {boolean} [requiresPreprocessing] Value that indicates whether the
+ * @property {boolean} [requiresPreprocessing] Value that indicates whether the
  * rule action requires preprocessing. Default value: true .
  */
 export interface SqlFilter {
@@ -608,16 +608,16 @@ export interface SqlFilter {
  * @constructor
  * Represents the correlation filter expression.
  *
- * @member {object} [properties] dictionary object for custom filters
- * @member {string} [correlationId] Identifier of the correlation.
- * @member {string} [messageId] Identifier of the message.
- * @member {string} [to] Address to send to.
- * @member {string} [replyTo] Address of the queue to reply to.
- * @member {string} [label] Application specific label.
- * @member {string} [sessionId] Session identifier.
- * @member {string} [replyToSessionId] Session identifier to reply to.
- * @member {string} [contentType] Content type of the message.
- * @member {boolean} [requiresPreprocessing] Value that indicates whether the
+ * @property {object} [properties] dictionary object for custom filters
+ * @property {string} [correlationId] Identifier of the correlation.
+ * @property {string} [messageId] Identifier of the message.
+ * @property {string} [to] Address to send to.
+ * @property {string} [replyTo] Address of the queue to reply to.
+ * @property {string} [label] Application specific label.
+ * @property {string} [sessionId] Session identifier.
+ * @property {string} [replyToSessionId] Session identifier to reply to.
+ * @property {string} [contentType] Content type of the message.
+ * @property {boolean} [requiresPreprocessing] Value that indicates whether the
  * rule action requires preprocessing. Default value: true .
  */
 export interface CorrelationFilter {
@@ -639,42 +639,42 @@ export interface CorrelationFilter {
  * @constructor
  * Description of Rule Resource.
  *
- * @member {object} [action] Represents the filter actions which are allowed
+ * @property {object} [action] Represents the filter actions which are allowed
  * for the transformation of a message that have been matched by a filter
  * expression.
- * @member {string} [action.sqlExpression] SQL expression. e.g.
+ * @property {string} [action.sqlExpression] SQL expression. e.g.
  * MyProperty='ABC'
- * @member {number} [action.compatibilityLevel] This property is reserved for
+ * @property {number} [action.compatibilityLevel] This property is reserved for
  * future use. An integer value showing the compatibility level, currently
  * hard-coded to 20.
- * @member {boolean} [action.requiresPreprocessing] Value that indicates
+ * @property {boolean} [action.requiresPreprocessing] Value that indicates
  * whether the rule action requires preprocessing.
- * @member {string} [filterType] Filter type that is evaluated against a
+ * @property {string} [filterType] Filter type that is evaluated against a
  * BrokeredMessage. Possible values include: 'SqlFilter', 'CorrelationFilter'
- * @member {object} [sqlFilter] Properties of sqlFilter
- * @member {string} [sqlFilter.sqlExpression] The SQL expression. e.g.
+ * @property {object} [sqlFilter] Properties of sqlFilter
+ * @property {string} [sqlFilter.sqlExpression] The SQL expression. e.g.
  * MyProperty='ABC'
- * @member {number} [sqlFilter.compatibilityLevel] This property is reserved
+ * @property {number} [sqlFilter.compatibilityLevel] This property is reserved
  * for future use. An integer value showing the compatibility level, currently
  * hard-coded to 20.
- * @member {boolean} [sqlFilter.requiresPreprocessing] Value that indicates
+ * @property {boolean} [sqlFilter.requiresPreprocessing] Value that indicates
  * whether the rule action requires preprocessing.
- * @member {object} [correlationFilter] Properties of correlationFilter
- * @member {object} [correlationFilter.properties] dictionary object for custom
- * filters
- * @member {string} [correlationFilter.correlationId] Identifier of the
+ * @property {object} [correlationFilter] Properties of correlationFilter
+ * @property {object} [correlationFilter.properties] dictionary object for
+ * custom filters
+ * @property {string} [correlationFilter.correlationId] Identifier of the
  * correlation.
- * @member {string} [correlationFilter.messageId] Identifier of the message.
- * @member {string} [correlationFilter.to] Address to send to.
- * @member {string} [correlationFilter.replyTo] Address of the queue to reply
+ * @property {string} [correlationFilter.messageId] Identifier of the message.
+ * @property {string} [correlationFilter.to] Address to send to.
+ * @property {string} [correlationFilter.replyTo] Address of the queue to reply
  * to.
- * @member {string} [correlationFilter.label] Application specific label.
- * @member {string} [correlationFilter.sessionId] Session identifier.
- * @member {string} [correlationFilter.replyToSessionId] Session identifier to
- * reply to.
- * @member {string} [correlationFilter.contentType] Content type of the
+ * @property {string} [correlationFilter.label] Application specific label.
+ * @property {string} [correlationFilter.sessionId] Session identifier.
+ * @property {string} [correlationFilter.replyToSessionId] Session identifier
+ * to reply to.
+ * @property {string} [correlationFilter.contentType] Content type of the
  * message.
- * @member {boolean} [correlationFilter.requiresPreprocessing] Value that
+ * @property {boolean} [correlationFilter.requiresPreprocessing] Value that
  * indicates whether the rule action requires preprocessing.
  */
 export interface Rule extends Resource {
@@ -699,8 +699,8 @@ export interface SqlRuleAction extends Action {
  * @class
  * Initializes a new instance of the PremiumMessagingRegionsProperties class.
  * @constructor
- * @member {string} [code] Region code
- * @member {string} [fullName] Full name of the region
+ * @property {string} [code] Region code
+ * @property {string} [fullName] Full name of the region
  */
 export interface PremiumMessagingRegionsProperties {
   readonly code?: string;
@@ -713,9 +713,9 @@ export interface PremiumMessagingRegionsProperties {
  * @constructor
  * Premium Messaging Region
  *
- * @member {object} [properties]
- * @member {string} [properties.code] Region code
- * @member {string} [properties.fullName] Full name of the region
+ * @property {object} [properties]
+ * @property {string} [properties.code] Region code
+ * @property {string} [properties.fullName] Full name of the region
  */
 export interface PremiumMessagingRegions extends ResourceNamespacePatch {
   properties?: PremiumMessagingRegionsProperties;
@@ -727,11 +727,11 @@ export interface PremiumMessagingRegions extends ResourceNamespacePatch {
  * @constructor
  * Capture storage details for capture description
  *
- * @member {string} [name] Name for capture destination
- * @member {string} [storageAccountResourceId] Resource id of the storage
+ * @property {string} [name] Name for capture destination
+ * @property {string} [storageAccountResourceId] Resource id of the storage
  * account to be used to create the blobs
- * @member {string} [blobContainer] Blob container Name
- * @member {string} [archiveNameFormat] Blob naming convention for archive,
+ * @property {string} [blobContainer] Blob container Name
+ * @property {string} [archiveNameFormat] Blob naming convention for archive,
  * e.g.
  * {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}.
  * Here all the parameters (Namespace,EventHub .. etc) are mandatory
@@ -750,25 +750,25 @@ export interface Destination {
  * @constructor
  * Properties to configure capture description for eventhub
  *
- * @member {boolean} [enabled] A value that indicates whether capture
+ * @property {boolean} [enabled] A value that indicates whether capture
  * description is enabled.
- * @member {string} [encoding] Enumerates the possible values for the encoding
- * format of capture description. Possible values include: 'Avro',
+ * @property {string} [encoding] Enumerates the possible values for the
+ * encoding format of capture description. Possible values include: 'Avro',
  * 'AvroDeflate'
- * @member {number} [intervalInSeconds] The time window allows you to set the
+ * @property {number} [intervalInSeconds] The time window allows you to set the
  * frequency with which the capture to Azure Blobs will happen, value should
  * between 60 to 900 seconds
- * @member {number} [sizeLimitInBytes] The size window defines the amount of
+ * @property {number} [sizeLimitInBytes] The size window defines the amount of
  * data built up in your Event Hub before an capture operation, value should be
  * between 10485760 and 524288000 bytes
- * @member {object} [destination] Properties of Destination where capture will
- * be stored. (Storage Account, Blob Names)
- * @member {string} [destination.name] Name for capture destination
- * @member {string} [destination.storageAccountResourceId] Resource id of the
+ * @property {object} [destination] Properties of Destination where capture
+ * will be stored. (Storage Account, Blob Names)
+ * @property {string} [destination.name] Name for capture destination
+ * @property {string} [destination.storageAccountResourceId] Resource id of the
  * storage account to be used to create the blobs
- * @member {string} [destination.blobContainer] Blob container Name
- * @member {string} [destination.archiveNameFormat] Blob naming convention for
- * archive, e.g.
+ * @property {string} [destination.blobContainer] Blob container Name
+ * @property {string} [destination.archiveNameFormat] Blob naming convention
+ * for archive, e.g.
  * {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}.
  * Here all the parameters (Namespace,EventHub .. etc) are mandatory
  * irrespective of order
@@ -787,38 +787,38 @@ export interface CaptureDescription {
  * @constructor
  * Single item in List or Get Event Hub operation
  *
- * @member {array} [partitionIds] Current number of shards on the Event Hub.
- * @member {date} [createdAt] Exact time the Event Hub was created.
- * @member {date} [updatedAt] The exact time the message was updated.
- * @member {number} [messageRetentionInDays] Number of days to retain the
+ * @property {array} [partitionIds] Current number of shards on the Event Hub.
+ * @property {date} [createdAt] Exact time the Event Hub was created.
+ * @property {date} [updatedAt] The exact time the message was updated.
+ * @property {number} [messageRetentionInDays] Number of days to retain the
  * events for this Event Hub, value should be 1 to 7 days
- * @member {number} [partitionCount] Number of partitions created for the Event
- * Hub, allowed values are from 1 to 32 partitions.
- * @member {string} [status] Enumerates the possible values for the status of
+ * @property {number} [partitionCount] Number of partitions created for the
+ * Event Hub, allowed values are from 1 to 32 partitions.
+ * @property {string} [status] Enumerates the possible values for the status of
  * the Event Hub. Possible values include: 'Active', 'Disabled', 'Restoring',
  * 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting', 'Renaming',
  * 'Unknown'
- * @member {object} [captureDescription] Properties of capture description
- * @member {boolean} [captureDescription.enabled] A value that indicates
+ * @property {object} [captureDescription] Properties of capture description
+ * @property {boolean} [captureDescription.enabled] A value that indicates
  * whether capture description is enabled.
- * @member {string} [captureDescription.encoding] Enumerates the possible
+ * @property {string} [captureDescription.encoding] Enumerates the possible
  * values for the encoding format of capture description. Possible values
  * include: 'Avro', 'AvroDeflate'
- * @member {number} [captureDescription.intervalInSeconds] The time window
+ * @property {number} [captureDescription.intervalInSeconds] The time window
  * allows you to set the frequency with which the capture to Azure Blobs will
  * happen, value should between 60 to 900 seconds
- * @member {number} [captureDescription.sizeLimitInBytes] The size window
+ * @property {number} [captureDescription.sizeLimitInBytes] The size window
  * defines the amount of data built up in your Event Hub before an capture
  * operation, value should be between 10485760 and 524288000 bytes
- * @member {object} [captureDescription.destination] Properties of Destination
- * where capture will be stored. (Storage Account, Blob Names)
- * @member {string} [captureDescription.destination.name] Name for capture
+ * @property {object} [captureDescription.destination] Properties of
+ * Destination where capture will be stored. (Storage Account, Blob Names)
+ * @property {string} [captureDescription.destination.name] Name for capture
  * destination
- * @member {string} [captureDescription.destination.storageAccountResourceId]
+ * @property {string} [captureDescription.destination.storageAccountResourceId]
  * Resource id of the storage account to be used to create the blobs
- * @member {string} [captureDescription.destination.blobContainer] Blob
+ * @property {string} [captureDescription.destination.blobContainer] Blob
  * container Name
- * @member {string} [captureDescription.destination.archiveNameFormat] Blob
+ * @property {string} [captureDescription.destination.archiveNameFormat] Blob
  * naming convention for archive, e.g.
  * {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}.
  * Here all the parameters (Namespace,EventHub .. etc) are mandatory
@@ -840,17 +840,17 @@ export interface Eventhub extends Resource {
  * @constructor
  * Single item in List or Get Alias(Disaster Recovery configuration) operation
  *
- * @member {string} [provisioningState] Provisioning state of the
+ * @property {string} [provisioningState] Provisioning state of the
  * Alias(Disaster Recovery configuration) - possible values 'Accepted' or
  * 'Succeeded' or 'Failed'. Possible values include: 'Accepted', 'Succeeded',
  * 'Failed'
- * @member {number} [pendingReplicationOperationsCount] Number of entities
+ * @property {number} [pendingReplicationOperationsCount] Number of entities
  * pending to be replicated.
- * @member {string} [partnerNamespace] ARM Id of the Primary/Secondary eventhub
- * namespace name, which is part of GEO DR pairning
- * @member {string} [alternateName] Primary/Secondary eventhub namespace name,
- * which is part of GEO DR pairning
- * @member {string} [role] role of namespace in GEO DR - possible values
+ * @property {string} [partnerNamespace] ARM Id of the Primary/Secondary
+ * eventhub namespace name, which is part of GEO DR pairning
+ * @property {string} [alternateName] Primary/Secondary eventhub namespace
+ * name, which is part of GEO DR pairning
+ * @property {string} [role] role of namespace in GEO DR - possible values
  * 'Primary' or 'PrimaryNotReplicating' or 'Secondary'. Possible values
  * include: 'Primary', 'PrimaryNotReplicating', 'Secondary'
  */
@@ -868,15 +868,15 @@ export interface ArmDisasterRecovery extends Resource {
  * @constructor
  * Single item in List or Get Migration Config operation
  *
- * @member {string} [provisioningState] Provisioning state of Migration
+ * @property {string} [provisioningState] Provisioning state of Migration
  * Configuration
- * @member {number} [pendingReplicationOperationsCount] Number of entities
+ * @property {number} [pendingReplicationOperationsCount] Number of entities
  * pending to be replicated.
- * @member {string} targetNamespace Existing premium Namespace ARM Id name
+ * @property {string} targetNamespace Existing premium Namespace ARM Id name
  * which has no entities, will be used for migration
- * @member {string} postMigrationName Name to access Standard Namespace after
+ * @property {string} postMigrationName Name to access Standard Namespace after
  * migration
- * @member {string} [migrationState] State in which Standard to Premium
+ * @property {string} [migrationState] State in which Standard to Premium
  * Migration is, possible values : Unknown, Reverting, Completing, Initiating,
  * Syncing, Active
  */
@@ -896,7 +896,7 @@ export interface MigrationConfigProperties extends Resource {
  * Result of the request to list ServiceBus operations. It contains a list of
  * operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {
@@ -909,7 +909,7 @@ export interface OperationListResult extends Array<Operation> {
  * @constructor
  * The response of the List Namespace operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of Namespaces.
  */
 export interface SBNamespaceListResult extends Array<SBNamespace> {
@@ -922,7 +922,7 @@ export interface SBNamespaceListResult extends Array<SBNamespace> {
  * @constructor
  * The response to the List Namespace operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of Authorization Rules.
  */
 export interface SBAuthorizationRuleListResult extends Array<SBAuthorizationRule> {
@@ -935,7 +935,7 @@ export interface SBAuthorizationRuleListResult extends Array<SBAuthorizationRule
  * @constructor
  * The result of the List Alias(Disaster Recovery configuration) operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of Alias(Disaster Recovery configuration)
  */
 export interface ArmDisasterRecoveryListResult extends Array<ArmDisasterRecovery> {
@@ -948,7 +948,7 @@ export interface ArmDisasterRecoveryListResult extends Array<ArmDisasterRecovery
  * @constructor
  * The result of the List migrationConfigurations operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of migrationConfigurations
  */
 export interface MigrationConfigListResult extends Array<MigrationConfigProperties> {
@@ -961,7 +961,7 @@ export interface MigrationConfigListResult extends Array<MigrationConfigProperti
  * @constructor
  * The response to the List Queues operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of queues.
  */
 export interface SBQueueListResult extends Array<SBQueue> {
@@ -974,7 +974,7 @@ export interface SBQueueListResult extends Array<SBQueue> {
  * @constructor
  * The response to the List Topics operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of topics.
  */
 export interface SBTopicListResult extends Array<SBTopic> {
@@ -987,7 +987,7 @@ export interface SBTopicListResult extends Array<SBTopic> {
  * @constructor
  * The response to the List Subscriptions operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of subscriptions.
  */
 export interface SBSubscriptionListResult extends Array<SBSubscription> {
@@ -1000,7 +1000,7 @@ export interface SBSubscriptionListResult extends Array<SBSubscription> {
  * @constructor
  * The response of the List rule operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of rules
  */
 export interface RuleListResult extends Array<Rule> {
@@ -1013,7 +1013,7 @@ export interface RuleListResult extends Array<Rule> {
  * @constructor
  * The response of the List PremiumMessagingRegions operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of PremiumMessagingRegions.
  */
 export interface PremiumMessagingRegionsListResult extends Array<PremiumMessagingRegions> {
@@ -1026,7 +1026,7 @@ export interface PremiumMessagingRegionsListResult extends Array<PremiumMessagin
  * @constructor
  * The result of the List EventHubs operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of EventHubs.
  */
 export interface EventHubListResult extends Array<Eventhub> {

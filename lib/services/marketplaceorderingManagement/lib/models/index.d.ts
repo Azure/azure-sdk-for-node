@@ -22,9 +22,9 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * ARM resource.
  *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
+ * @property {string} [id] Resource ID.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -38,19 +38,20 @@ export interface Resource extends BaseResource {
  * @constructor
  * Terms properties for provided Publisher/Offer/Plan tuple
  *
- * @member {string} [publisher] Publisher identifier string of image being
+ * @property {string} [publisher] Publisher identifier string of image being
  * deployed.
- * @member {string} [product] Offer identifier string of image being deployed.
- * @member {string} [plan] Plan identifier string of image being deployed.
- * @member {string} [licenseTextLink] Link to HTML with Microsoft and Publisher
- * terms.
- * @member {string} [privacyPolicyLink] Link to the privacy policy of the
+ * @property {string} [product] Offer identifier string of image being
+ * deployed.
+ * @property {string} [plan] Plan identifier string of image being deployed.
+ * @property {string} [licenseTextLink] Link to HTML with Microsoft and
+ * Publisher terms.
+ * @property {string} [privacyPolicyLink] Link to the privacy policy of the
  * publisher.
- * @member {string} [retrieveDatetime] Date and time in UTC of when the terms
+ * @property {string} [retrieveDatetime] Date and time in UTC of when the terms
  * were accepted. This is empty if Accepted is false.
- * @member {string} [signature] Terms signature.
- * @member {boolean} [accepted] If any version of the terms have been accepted,
- * otherwise false.
+ * @property {string} [signature] Terms signature.
+ * @property {boolean} [accepted] If any version of the terms have been
+ * accepted, otherwise false.
  */
 export interface AgreementTerms extends Resource {
   publisher?: string;
@@ -69,8 +70,8 @@ export interface AgreementTerms extends Resource {
  * @constructor
  * The details of the error.
  *
- * @member {string} [code] Error code.
- * @member {string} [message] Error message indicating why the operation
+ * @property {string} [code] Error code.
+ * @property {string} [message] Error message indicating why the operation
  * failed.
  */
 export interface ErrorResponseError {
@@ -85,10 +86,10 @@ export interface ErrorResponseError {
  * Error reponse indicates Microsoft.MarketplaceOrdering service is not able to
  * process the incoming request. The reason is provided in the error message.
  *
- * @member {object} [error] The details of the error.
- * @member {string} [error.code] Error code.
- * @member {string} [error.message] Error message indicating why the operation
- * failed.
+ * @property {object} [error] The details of the error.
+ * @property {string} [error.code] Error code.
+ * @property {string} [error.message] Error message indicating why the
+ * operation failed.
  */
 export interface ErrorResponse {
   error?: ErrorResponseError;
@@ -100,11 +101,12 @@ export interface ErrorResponse {
  * @constructor
  * The object that represents the operation.
  *
- * @member {string} [provider] Service provider: Microsoft.MarketplaceOrdering
- * @member {string} [resource] Resource on which the operation is performed:
+ * @property {string} [provider] Service provider:
+ * Microsoft.MarketplaceOrdering
+ * @property {string} [resource] Resource on which the operation is performed:
  * Agreement, virtualmachine, etc.
- * @member {string} [operation] Operation type: Get Agreement, Sign Agreement,
- * Cancel Agreement etc.
+ * @property {string} [operation] Operation type: Get Agreement, Sign
+ * Agreement, Cancel Agreement etc.
  */
 export interface OperationDisplay {
   provider?: string;
@@ -118,13 +120,13 @@ export interface OperationDisplay {
  * @constructor
  * Microsoft.MarketplaceOrdering REST API operation
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Service provider:
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] The object that represents the operation.
+ * @property {string} [display.provider] Service provider:
  * Microsoft.MarketplaceOrdering
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [display.resource] Resource on which the operation is
  * performed: Agreement, virtualmachine, etc.
- * @member {string} [display.operation] Operation type: Get Agreement, Sign
+ * @property {string} [display.operation] Operation type: Get Agreement, Sign
  * Agreement, Cancel Agreement etc.
  */
 export interface Operation {
@@ -140,7 +142,7 @@ export interface Operation {
  * Result of the request to list MarketplaceOrdering operations. It contains a
  * list of operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {

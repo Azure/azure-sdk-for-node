@@ -22,8 +22,8 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Identity for the resource.
  *
- * @member {string} type The identity type.
- * @member {array} identityIds The list of identities.
+ * @property {string} type The identity type.
+ * @property {array} identityIds The list of identities.
  */
 export interface Identity {
   type: string;
@@ -36,7 +36,7 @@ export interface Identity {
  * @constructor
  * The properties that define a step.
  *
- * @member {string} stepId The resource Id of the step to be run.
+ * @property {string} stepId The resource Id of the step to be run.
  */
 export interface PrePostStep {
   stepId: string;
@@ -48,15 +48,15 @@ export interface PrePostStep {
  * @constructor
  * The properties that define an Azure Deployment Manager step.
  *
- * @member {string} name The name of the step group.
- * @member {array} [dependsOnStepGroups] The list of step group names on which
- * this step group depends on.
- * @member {array} [preDeploymentSteps] The list of steps to be run before
+ * @property {string} name The name of the step group.
+ * @property {array} [dependsOnStepGroups] The list of step group names on
+ * which this step group depends on.
+ * @property {array} [preDeploymentSteps] The list of steps to be run before
  * deploying the target.
- * @member {string} deploymentTargetId The resource Id of service unit to be
+ * @property {string} deploymentTargetId The resource Id of service unit to be
  * deployed. The service unit should be from the service topology referenced in
  * targetServiceTopologyId
- * @member {array} [postDeploymentSteps] The list of steps to be run after
+ * @property {array} [postDeploymentSteps] The list of steps to be run after
  * deploying the target.
  */
 export interface Step {
@@ -71,10 +71,10 @@ export interface Step {
  * @class
  * Initializes a new instance of the Resource class.
  * @constructor
- * @member {string} [id] Fully qualified resource Id for the resource. Ex -
+ * @property {string} [id] Fully qualified resource Id for the resource. Ex -
  * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
- * @member {string} [name] The name of the resource
- * @member {string} [type] The type of the resource. Ex-
+ * @property {string} [name] The name of the resource
+ * @property {string} [type] The type of the resource. Ex-
  * Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
  */
 export interface Resource extends BaseResource {
@@ -89,8 +89,8 @@ export interface Resource extends BaseResource {
  * @constructor
  * The resource model definition for a ARM tracked top level resource
  *
- * @member {object} [tags] Resource tags.
- * @member {string} location The geo-location where the resource lives
+ * @property {object} [tags] Resource tags.
+ * @property {string} location The geo-location where the resource lives
  */
 export interface TrackedResource extends Resource {
   tags?: { [propertyName: string]: string };
@@ -103,16 +103,16 @@ export interface TrackedResource extends Resource {
  * @constructor
  * Defines the PUT rollout request body.
  *
- * @member {object} identity Identity for the resource.
- * @member {string} [identity.type] The identity type.
- * @member {array} [identity.identityIds] The list of identities.
- * @member {string} buildVersion The version of the build being deployed.
- * @member {string} [artifactSourceId] The reference to the artifact source
+ * @property {object} identity Identity for the resource.
+ * @property {string} [identity.type] The identity type.
+ * @property {array} [identity.identityIds] The list of identities.
+ * @property {string} buildVersion The version of the build being deployed.
+ * @property {string} [artifactSourceId] The reference to the artifact source
  * resource Id where the payload is located.
- * @member {string} targetServiceTopologyId The resource Id of the service
+ * @property {string} targetServiceTopologyId The resource Id of the service
  * topology from which service units are being referenced in step groups to be
  * deployed.
- * @member {array} stepGroups The list of step groups that define the
+ * @property {array} stepGroups The list of step groups that define the
  * orchestration.
  */
 export interface RolloutRequest extends TrackedResource {
@@ -130,17 +130,17 @@ export interface RolloutRequest extends TrackedResource {
  * The resource that defines the source location where the artifacts are
  * located.
  *
- * @member {string} sourceType The type of artifact source used.
- * @member {string} [artifactRoot] The path from the location that the
+ * @property {string} sourceType The type of artifact source used.
+ * @property {string} [artifactRoot] The path from the location that the
  * 'authentication' property [say, a SAS URI to the blob container] refers to,
  * to the location of the artifacts. This can be used to differentiate
  * different versions of the artifacts. Or, different types of artifacts like
  * binaries or templates. The location referenced by the authentication
  * property concatenated with this optional artifactRoot path forms the
  * artifact source location where the artifacts are expected to be found.
- * @member {object} authentication The authentication method to use to access
+ * @property {object} authentication The authentication method to use to access
  * the artifact source.
- * @member {string} [authentication.type] Polymorphic Discriminator
+ * @property {string} [authentication.type] Polymorphic Discriminator
  */
 export interface ArtifactSource extends TrackedResource {
   sourceType: string;
@@ -154,7 +154,7 @@ export interface ArtifactSource extends TrackedResource {
  * @constructor
  * Defines the authentication method and properties to access the artifacts.
  *
- * @member {string} type Polymorphic Discriminator
+ * @property {string} type Polymorphic Discriminator
  */
 export interface Authentication {
   type: string;
@@ -167,17 +167,17 @@ export interface Authentication {
  * The properties that define the source location where the artifacts are
  * located.
  *
- * @member {string} sourceType The type of artifact source used.
- * @member {string} [artifactRoot] The path from the location that the
+ * @property {string} sourceType The type of artifact source used.
+ * @property {string} [artifactRoot] The path from the location that the
  * 'authentication' property [say, a SAS URI to the blob container] refers to,
  * to the location of the artifacts. This can be used to differentiate
  * different versions of the artifacts. Or, different types of artifacts like
  * binaries or templates. The location referenced by the authentication
  * property concatenated with this optional artifactRoot path forms the
  * artifact source location where the artifacts are expected to be found.
- * @member {object} authentication The authentication method to use to access
+ * @property {object} authentication The authentication method to use to access
  * the artifact source.
- * @member {string} [authentication.type] Polymorphic Discriminator
+ * @property {string} [authentication.type] Polymorphic Discriminator
  */
 export interface ArtifactSourcePropertiesModel {
   sourceType: string;
@@ -192,9 +192,9 @@ export interface ArtifactSourcePropertiesModel {
  * Defines the properties to access the artifacts using an Azure Storage SAS
  * URI.
  *
- * @member {string} sasUri The SAS URI to the Azure Storage blob container. Any
- * offset from the root of the container to where the artifacts are located can
- * be defined in the artifactRoot.
+ * @property {string} sasUri The SAS URI to the Azure Storage blob container.
+ * Any offset from the root of the container to where the artifacts are located
+ * can be defined in the artifactRoot.
  */
 export interface SasAuthentication extends Authentication {
   sasUri: string;
@@ -206,10 +206,10 @@ export interface SasAuthentication extends Authentication {
  * @constructor
  * Detailed error information of any failure.
  *
- * @member {string} [code] Error code string.
- * @member {string} [message] Descriptive error information.
- * @member {string} [target] Error target
- * @member {array} [details] More detailed error information.
+ * @property {string} [code] Error code string.
+ * @property {string} [message] Descriptive error information.
+ * @property {string} [target] Error target
+ * @property {array} [details] More detailed error information.
  */
 export interface CloudErrorBody {
   readonly code?: string;
@@ -224,20 +224,20 @@ export interface CloudErrorBody {
  * @constructor
  * Detailed runtime information of the rollout.
  *
- * @member {number} [retryAttempt] The ordinal count of the number of retry
+ * @property {number} [retryAttempt] The ordinal count of the number of retry
  * attempts on a rollout. 0 if no retries of the rollout have been performed.
  * If the rollout is updated with a PUT, this count is reset to 0.
- * @member {boolean} [skipSucceededOnRetry] True, if all steps that succeeded
+ * @property {boolean} [skipSucceededOnRetry] True, if all steps that succeeded
  * on the previous run/attempt were chosen to be skipped in this retry attempt.
  * False, otherwise.
- * @member {date} [startTime] The start time of the rollout in UTC.
- * @member {date} [endTime] The start time of the rollout in UTC. This property
- * will not be set if the rollout has not completed yet.
- * @member {object} [error] The detailed error information for any failure.
- * @member {string} [error.code] Error code string.
- * @member {string} [error.message] Descriptive error information.
- * @member {string} [error.target] Error target
- * @member {array} [error.details] More detailed error information.
+ * @property {date} [startTime] The start time of the rollout in UTC.
+ * @property {date} [endTime] The start time of the rollout in UTC. This
+ * property will not be set if the rollout has not completed yet.
+ * @property {object} [error] The detailed error information for any failure.
+ * @property {string} [error.code] Error code string.
+ * @property {string} [error.message] Descriptive error information.
+ * @property {string} [error.target] Error target
+ * @property {array} [error.details] More detailed error information.
  */
 export interface RolloutOperationInfo {
   readonly retryAttempt?: number;
@@ -253,19 +253,19 @@ export interface RolloutOperationInfo {
  * @constructor
  * Detailed information of a specific step run.
  *
- * @member {string} [deploymentName] The name of the ARM deployment initiated
+ * @property {string} [deploymentName] The name of the ARM deployment initiated
  * as part of the step.
- * @member {string} [correlationId] Unique identifier to track the request for
- * ARM-based resources.
- * @member {date} [startTime] Start time of the action in UTC.
- * @member {date} [endTime] End time of the action in UTC.
- * @member {date} [lastUpdatedTime] Last time in UTC this operation was
+ * @property {string} [correlationId] Unique identifier to track the request
+ * for ARM-based resources.
+ * @property {date} [startTime] Start time of the action in UTC.
+ * @property {date} [endTime] End time of the action in UTC.
+ * @property {date} [lastUpdatedTime] Last time in UTC this operation was
  * updated.
- * @member {object} [error] The errors, if any, for the action.
- * @member {string} [error.code] Error code string.
- * @member {string} [error.message] Descriptive error information.
- * @member {string} [error.target] Error target
- * @member {array} [error.details] More detailed error information.
+ * @property {object} [error] The errors, if any, for the action.
+ * @property {string} [error.code] Error code string.
+ * @property {string} [error.message] Descriptive error information.
+ * @property {string} [error.target] Error target
+ * @property {array} [error.details] More detailed error information.
  */
 export interface StepOperationInfo {
   readonly deploymentName?: string;
@@ -282,19 +282,19 @@ export interface StepOperationInfo {
  * @constructor
  * Individial resource operation information.
  *
- * @member {string} [resourceName] Name of the resource as specified in the
+ * @property {string} [resourceName] Name of the resource as specified in the
  * artifacts. For ARM resources, this is the name of the resource specified in
  * the template.
- * @member {string} [operationId] Unique identifier of the operation. For ARM
+ * @property {string} [operationId] Unique identifier of the operation. For ARM
  * resources, this is the operationId obtained from ARM service.
- * @member {string} [resourceType] Type of the resource as specified in the
+ * @property {string} [resourceType] Type of the resource as specified in the
  * artifacts. For ARM resources, this is the type of the resource specified in
  * the template.
- * @member {string} [provisioningState] State of the resource deployment. For
+ * @property {string} [provisioningState] State of the resource deployment. For
  * ARM resources, this is the current provisioning state of the resource.
- * @member {string} [statusMessage] Descriptive information of the resource
+ * @property {string} [statusMessage] Descriptive information of the resource
  * operation.
- * @member {string} [statusCode] Http status code of the operation.
+ * @property {string} [statusCode] Http status code of the operation.
  */
 export interface ResourceOperation {
   resourceName?: string;
@@ -311,8 +311,8 @@ export interface ResourceOperation {
  * @constructor
  * Supplementary contextual messages during a rollout.
  *
- * @member {date} [timeStamp] Time in UTC this message was provided.
- * @member {string} [message] The actual message text.
+ * @property {date} [timeStamp] Time in UTC this message was provided.
+ * @property {string} [message] The actual message text.
  */
 export interface Message {
   readonly timeStamp?: Date;
@@ -325,29 +325,29 @@ export interface Message {
  * @constructor
  * Defines a specific step on a target service unit.
  *
- * @member {string} name Name of the step.
- * @member {string} [status] Current state of the step.
- * @member {string} [stepGroup] The step group the current step is part of.
- * @member {object} [operationInfo] Detailed information of specific action
+ * @property {string} name Name of the step.
+ * @property {string} [status] Current state of the step.
+ * @property {string} [stepGroup] The step group the current step is part of.
+ * @property {object} [operationInfo] Detailed information of specific action
  * execution.
- * @member {string} [operationInfo.deploymentName] The name of the ARM
+ * @property {string} [operationInfo.deploymentName] The name of the ARM
  * deployment initiated as part of the step.
- * @member {string} [operationInfo.correlationId] Unique identifier to track
+ * @property {string} [operationInfo.correlationId] Unique identifier to track
  * the request for ARM-based resources.
- * @member {date} [operationInfo.startTime] Start time of the action in UTC.
- * @member {date} [operationInfo.endTime] End time of the action in UTC.
- * @member {date} [operationInfo.lastUpdatedTime] Last time in UTC this
+ * @property {date} [operationInfo.startTime] Start time of the action in UTC.
+ * @property {date} [operationInfo.endTime] End time of the action in UTC.
+ * @property {date} [operationInfo.lastUpdatedTime] Last time in UTC this
  * operation was updated.
- * @member {object} [operationInfo.error] The errors, if any, for the action.
- * @member {string} [operationInfo.error.code] Error code string.
- * @member {string} [operationInfo.error.message] Descriptive error
+ * @property {object} [operationInfo.error] The errors, if any, for the action.
+ * @property {string} [operationInfo.error.code] Error code string.
+ * @property {string} [operationInfo.error.message] Descriptive error
  * information.
- * @member {string} [operationInfo.error.target] Error target
- * @member {array} [operationInfo.error.details] More detailed error
+ * @property {string} [operationInfo.error.target] Error target
+ * @property {array} [operationInfo.error.details] More detailed error
  * information.
- * @member {array} [resourceOperations] Set of resource operations that were
+ * @property {array} [resourceOperations] Set of resource operations that were
  * performed, if any, on an Azure resource.
- * @member {array} [messages] Supplementary informative messages during
+ * @property {array} [messages] Supplementary informative messages during
  * rollout.
  */
 export interface RolloutStep {
@@ -365,19 +365,19 @@ export interface RolloutStep {
  * @constructor
  * Defines the properties of a service unit.
  *
- * @member {string} targetResourceGroup The Azure Resource Group to which the
+ * @property {string} targetResourceGroup The Azure Resource Group to which the
  * resources in the service unit belong to or should be deployed to.
- * @member {string} deploymentMode Describes the type of ARM deployment to be
+ * @property {string} deploymentMode Describes the type of ARM deployment to be
  * performed on the resource. Possible values include: 'Incremental',
  * 'Complete'
- * @member {object} [artifacts] The artifacts for the service unit.
- * @member {string} [artifacts.templateUri] The full URI of the ARM template
+ * @property {object} [artifacts] The artifacts for the service unit.
+ * @property {string} [artifacts.templateUri] The full URI of the ARM template
  * file with the SAS token.
- * @member {string} [artifacts.parametersUri] The full URI of the ARM
+ * @property {string} [artifacts.parametersUri] The full URI of the ARM
  * parameters file with the SAS token.
- * @member {string} [artifacts.templateArtifactSourceRelativePath] The path to
- * the ARM template file relative to the artifact source.
- * @member {string} [artifacts.parametersArtifactSourceRelativePath] The path
+ * @property {string} [artifacts.templateArtifactSourceRelativePath] The path
+ * to the ARM template file relative to the artifact source.
+ * @property {string} [artifacts.parametersArtifactSourceRelativePath] The path
  * to the ARM parameters file relative to the artifact source.
  */
 export interface ServiceUnitProperties {
@@ -392,8 +392,8 @@ export interface ServiceUnitProperties {
  * @constructor
  * Defines a service unit.
  *
- * @member {string} [name] Name of the service unit.
- * @member {array} [steps] Detailed step information, if present.
+ * @property {string} [name] Name of the service unit.
+ * @property {array} [steps] Detailed step information, if present.
  */
 export interface ServiceUnit extends ServiceUnitProperties {
   name?: string;
@@ -406,9 +406,9 @@ export interface ServiceUnit extends ServiceUnitProperties {
  * @constructor
  * The properties of a service.
  *
- * @member {string} targetLocation The Azure location to which the resources in
- * the service belong to or should be deployed to.
- * @member {string} targetSubscriptionId The subscription to which the
+ * @property {string} targetLocation The Azure location to which the resources
+ * in the service belong to or should be deployed to.
+ * @property {string} targetSubscriptionId The subscription to which the
  * resources in the service belong to or should be deployed to.
  */
 export interface ServiceProperties {
@@ -422,9 +422,9 @@ export interface ServiceProperties {
  * @constructor
  * Defines a service.
  *
- * @member {string} [name] Name of the service.
- * @member {array} [serviceUnits] The detailed information about the units that
- * make up the service.
+ * @property {string} [name] Name of the service.
+ * @property {array} [serviceUnits] The detailed information about the units
+ * that make up the service.
  */
 export interface Service extends ServiceProperties {
   name?: string;
@@ -437,41 +437,41 @@ export interface Service extends ServiceProperties {
  * @constructor
  * Defines the rollout.
  *
- * @member {object} [identity] Identity for the resource.
- * @member {string} [identity.type] The identity type.
- * @member {array} [identity.identityIds] The list of identities.
- * @member {string} buildVersion The version of the build being deployed.
- * @member {string} [artifactSourceId] The reference to the artifact source
+ * @property {object} [identity] Identity for the resource.
+ * @property {string} [identity.type] The identity type.
+ * @property {array} [identity.identityIds] The list of identities.
+ * @property {string} buildVersion The version of the build being deployed.
+ * @property {string} [artifactSourceId] The reference to the artifact source
  * resource Id where the payload is located.
- * @member {string} targetServiceTopologyId The resource Id of the service
+ * @property {string} targetServiceTopologyId The resource Id of the service
  * topology from which service units are being referenced in step groups to be
  * deployed.
- * @member {array} stepGroups The list of step groups that define the
+ * @property {array} stepGroups The list of step groups that define the
  * orchestration.
- * @member {string} [status] The current status of the rollout.
- * @member {number} [totalRetryAttempts] The cardinal count of total number of
- * retries performed on the rollout at a given time.
- * @member {object} [operationInfo] Operational information of the rollout.
- * @member {number} [operationInfo.retryAttempt] The ordinal count of the
+ * @property {string} [status] The current status of the rollout.
+ * @property {number} [totalRetryAttempts] The cardinal count of total number
+ * of retries performed on the rollout at a given time.
+ * @property {object} [operationInfo] Operational information of the rollout.
+ * @property {number} [operationInfo.retryAttempt] The ordinal count of the
  * number of retry attempts on a rollout. 0 if no retries of the rollout have
  * been performed. If the rollout is updated with a PUT, this count is reset to
  * 0.
- * @member {boolean} [operationInfo.skipSucceededOnRetry] True, if all steps
+ * @property {boolean} [operationInfo.skipSucceededOnRetry] True, if all steps
  * that succeeded on the previous run/attempt were chosen to be skipped in this
  * retry attempt. False, otherwise.
- * @member {date} [operationInfo.startTime] The start time of the rollout in
+ * @property {date} [operationInfo.startTime] The start time of the rollout in
  * UTC.
- * @member {date} [operationInfo.endTime] The start time of the rollout in UTC.
- * This property will not be set if the rollout has not completed yet.
- * @member {object} [operationInfo.error] The detailed error information for
+ * @property {date} [operationInfo.endTime] The start time of the rollout in
+ * UTC. This property will not be set if the rollout has not completed yet.
+ * @property {object} [operationInfo.error] The detailed error information for
  * any failure.
- * @member {string} [operationInfo.error.code] Error code string.
- * @member {string} [operationInfo.error.message] Descriptive error
+ * @property {string} [operationInfo.error.code] Error code string.
+ * @property {string} [operationInfo.error.message] Descriptive error
  * information.
- * @member {string} [operationInfo.error.target] Error target
- * @member {array} [operationInfo.error.details] More detailed error
+ * @property {string} [operationInfo.error.target] Error target
+ * @property {array} [operationInfo.error.details] More detailed error
  * information.
- * @member {array} [services] The detailed information on the services being
+ * @property {array} [services] The detailed information on the services being
  * deployed.
  */
 export interface Rollout extends TrackedResource {
@@ -492,30 +492,30 @@ export interface Rollout extends TrackedResource {
  * @constructor
  * Defines the properties of a rollout.
  *
- * @member {string} [status] The current status of the rollout.
- * @member {number} [totalRetryAttempts] The cardinal count of total number of
- * retries performed on the rollout at a given time.
- * @member {object} [operationInfo] Operational information of the rollout.
- * @member {number} [operationInfo.retryAttempt] The ordinal count of the
+ * @property {string} [status] The current status of the rollout.
+ * @property {number} [totalRetryAttempts] The cardinal count of total number
+ * of retries performed on the rollout at a given time.
+ * @property {object} [operationInfo] Operational information of the rollout.
+ * @property {number} [operationInfo.retryAttempt] The ordinal count of the
  * number of retry attempts on a rollout. 0 if no retries of the rollout have
  * been performed. If the rollout is updated with a PUT, this count is reset to
  * 0.
- * @member {boolean} [operationInfo.skipSucceededOnRetry] True, if all steps
+ * @property {boolean} [operationInfo.skipSucceededOnRetry] True, if all steps
  * that succeeded on the previous run/attempt were chosen to be skipped in this
  * retry attempt. False, otherwise.
- * @member {date} [operationInfo.startTime] The start time of the rollout in
+ * @property {date} [operationInfo.startTime] The start time of the rollout in
  * UTC.
- * @member {date} [operationInfo.endTime] The start time of the rollout in UTC.
- * This property will not be set if the rollout has not completed yet.
- * @member {object} [operationInfo.error] The detailed error information for
+ * @property {date} [operationInfo.endTime] The start time of the rollout in
+ * UTC. This property will not be set if the rollout has not completed yet.
+ * @property {object} [operationInfo.error] The detailed error information for
  * any failure.
- * @member {string} [operationInfo.error.code] Error code string.
- * @member {string} [operationInfo.error.message] Descriptive error
+ * @property {string} [operationInfo.error.code] Error code string.
+ * @property {string} [operationInfo.error.message] Descriptive error
  * information.
- * @member {string} [operationInfo.error.target] Error target
- * @member {array} [operationInfo.error.details] More detailed error
+ * @property {string} [operationInfo.error.target] Error target
+ * @property {array} [operationInfo.error.details] More detailed error
  * information.
- * @member {array} [services] The detailed information on the services being
+ * @property {array} [services] The detailed information on the services being
  * deployed.
  */
 export interface RolloutPropertiesModel {
@@ -531,7 +531,7 @@ export interface RolloutPropertiesModel {
  * @constructor
  * The resource representation of a service topology.
  *
- * @member {string} [artifactSourceId] The resource Id of the artifact source
+ * @property {string} [artifactSourceId] The resource Id of the artifact source
  * that contains the artifacts that can be referenced in the service units.
  */
 export interface ServiceTopologyResource extends TrackedResource {
@@ -544,7 +544,7 @@ export interface ServiceTopologyResource extends TrackedResource {
  * @constructor
  * The properties of a service topology.
  *
- * @member {string} [artifactSourceId] The resource Id of the artifact source
+ * @property {string} [artifactSourceId] The resource Id of the artifact source
  * that contains the artifacts that can be referenced in the service units.
  */
 export interface ServiceTopologyProperties {
@@ -557,9 +557,9 @@ export interface ServiceTopologyProperties {
  * @constructor
  * The resource representation of a service in a service topology.
  *
- * @member {string} targetLocation The Azure location to which the resources in
- * the service belong to or should be deployed to.
- * @member {string} targetSubscriptionId The subscription to which the
+ * @property {string} targetLocation The Azure location to which the resources
+ * in the service belong to or should be deployed to.
+ * @property {string} targetSubscriptionId The subscription to which the
  * resources in the service belong to or should be deployed to.
  */
 export interface ServiceResource extends TrackedResource {
@@ -573,19 +573,19 @@ export interface ServiceResource extends TrackedResource {
  * @constructor
  * Represents the response of a service unit resource.
  *
- * @member {string} targetResourceGroup The Azure Resource Group to which the
+ * @property {string} targetResourceGroup The Azure Resource Group to which the
  * resources in the service unit belong to or should be deployed to.
- * @member {string} deploymentMode Describes the type of ARM deployment to be
+ * @property {string} deploymentMode Describes the type of ARM deployment to be
  * performed on the resource. Possible values include: 'Incremental',
  * 'Complete'
- * @member {object} [artifacts] The artifacts for the service unit.
- * @member {string} [artifacts.templateUri] The full URI of the ARM template
+ * @property {object} [artifacts] The artifacts for the service unit.
+ * @property {string} [artifacts.templateUri] The full URI of the ARM template
  * file with the SAS token.
- * @member {string} [artifacts.parametersUri] The full URI of the ARM
+ * @property {string} [artifacts.parametersUri] The full URI of the ARM
  * parameters file with the SAS token.
- * @member {string} [artifacts.templateArtifactSourceRelativePath] The path to
- * the ARM template file relative to the artifact source.
- * @member {string} [artifacts.parametersArtifactSourceRelativePath] The path
+ * @property {string} [artifacts.templateArtifactSourceRelativePath] The path
+ * to the ARM template file relative to the artifact source.
+ * @property {string} [artifacts.parametersArtifactSourceRelativePath] The path
  * to the ARM parameters file relative to the artifact source.
  */
 export interface ServiceUnitResource extends TrackedResource {
@@ -600,14 +600,14 @@ export interface ServiceUnitResource extends TrackedResource {
  * @constructor
  * Defines the artifacts of a service unit.
  *
- * @member {string} [templateUri] The full URI of the ARM template file with
+ * @property {string} [templateUri] The full URI of the ARM template file with
  * the SAS token.
- * @member {string} [parametersUri] The full URI of the ARM parameters file
+ * @property {string} [parametersUri] The full URI of the ARM parameters file
  * with the SAS token.
- * @member {string} [templateArtifactSourceRelativePath] The path to the ARM
+ * @property {string} [templateArtifactSourceRelativePath] The path to the ARM
  * template file relative to the artifact source.
- * @member {string} [parametersArtifactSourceRelativePath] The path to the ARM
- * parameters file relative to the artifact source.
+ * @property {string} [parametersArtifactSourceRelativePath] The path to the
+ * ARM parameters file relative to the artifact source.
  */
 export interface ServiceUnitArtifacts {
   templateUri?: string;
@@ -622,12 +622,12 @@ export interface ServiceUnitArtifacts {
  * @constructor
  * The detail about an operation.
  *
- * @member {string} [provider] The name of the provider that supports the
+ * @property {string} [provider] The name of the provider that supports the
  * operation.
- * @member {string} [resource] The resource type on which this operation can be
- * performed.
- * @member {string} [operation] The name of the operation.
- * @member {string} [description] The description of the operation.
+ * @property {string} [resource] The resource type on which this operation can
+ * be performed.
+ * @property {string} [operation] The name of the operation.
+ * @property {string} [description] The description of the operation.
  */
 export interface OperationDetail {
   provider?: string;
@@ -642,16 +642,16 @@ export interface OperationDetail {
  * @constructor
  * Represents an operation that can be performed on the service.
  *
- * @member {string} [name] The name of the operation.
- * @member {object} [display] The display name of the operation.
- * @member {string} [display.provider] The name of the provider that supports
+ * @property {string} [name] The name of the operation.
+ * @property {object} [display] The display name of the operation.
+ * @property {string} [display.provider] The name of the provider that supports
  * the operation.
- * @member {string} [display.resource] The resource type on which this
+ * @property {string} [display.resource] The resource type on which this
  * operation can be performed.
- * @member {string} [display.operation] The name of the operation.
- * @member {string} [display.description] The description of the operation.
- * @member {string} [origin] The origin of the operation.
- * @member {object} [properties] The properties of the operation.
+ * @property {string} [display.operation] The name of the operation.
+ * @property {string} [display.description] The description of the operation.
+ * @property {string} [origin] The origin of the operation.
+ * @property {object} [properties] The properties of the operation.
  */
 export interface Operation {
   name?: string;
@@ -666,7 +666,7 @@ export interface Operation {
  * @constructor
  * The properties of a step resource.
  *
- * @member {string} stepType Polymorphic Discriminator
+ * @property {string} stepType Polymorphic Discriminator
  */
 export interface StepProperties {
   stepType: string;
@@ -678,8 +678,8 @@ export interface StepProperties {
  * @constructor
  * The resource representation of a rollout step.
  *
- * @member {object} properties The properties that define the step.
- * @member {string} [properties.stepType] Polymorphic Discriminator
+ * @property {object} properties The properties that define the step.
+ * @property {string} [properties.stepType] Polymorphic Discriminator
  */
 export interface StepResource extends TrackedResource {
   properties: StepProperties;
@@ -691,7 +691,7 @@ export interface StepResource extends TrackedResource {
  * @constructor
  * The parameters for the wait step.
  *
- * @member {string} duration The duration in ISO 8601 format of how long the
+ * @property {string} duration The duration in ISO 8601 format of how long the
  * wait should be.
  */
 export interface WaitStepAttributes {
@@ -704,8 +704,8 @@ export interface WaitStepAttributes {
  * @constructor
  * Defines the properties of a Wait step.
  *
- * @member {object} [attributes] The Wait attributes
- * @member {string} [attributes.duration] The duration in ISO 8601 format of
+ * @property {object} [attributes] The Wait attributes
+ * @property {string} [attributes.duration] The duration in ISO 8601 format of
  * how long the wait should be.
  */
 export interface WaitStepProperties extends StepProperties {
@@ -730,7 +730,7 @@ export interface ProxyResource extends Resource {
  * The resource model definition for a Azure Resource Manager resource with an
  * etag.
  *
- * @member {string} [etag] Resource Etag.
+ * @property {string} [etag] Resource Etag.
  */
 export interface AzureEntityResource extends Resource {
   readonly etag?: string;

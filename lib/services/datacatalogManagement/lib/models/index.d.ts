@@ -22,8 +22,8 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * User principals.
  *
- * @member {string} [upn] UPN of the user.
- * @member {string} [objectId] Object Id for the user
+ * @property {string} [upn] UPN of the user.
+ * @property {string} [objectId] Object Id for the user
  */
 export interface Principals {
   upn?: string;
@@ -36,12 +36,12 @@ export interface Principals {
  * @constructor
  * The Resource model definition.
  *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
- * @member {string} [location] Resource location
- * @member {object} [tags] Resource tags
- * @member {string} [etag] Resource etag
+ * @property {string} [id] Resource Id
+ * @property {string} [name] Resource name
+ * @property {string} [type] Resource type
+ * @property {string} [location] Resource location
+ * @property {object} [tags] Resource tags
+ * @property {string} [etag] Resource etag
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -58,15 +58,15 @@ export interface Resource extends BaseResource {
  * @constructor
  * Azure Data Catalog.
  *
- * @member {string} [sku] Azure data catalog SKU. Possible values include:
+ * @property {string} [sku] Azure data catalog SKU. Possible values include:
  * 'Free', 'Standard'
- * @member {number} [units] Azure data catalog units.
- * @member {array} [admins] Azure data catalog admin list.
- * @member {array} [users] Azure data catalog user list.
- * @member {boolean} [successfullyProvisioned] Azure data catalog provision
+ * @property {number} [units] Azure data catalog units.
+ * @property {array} [admins] Azure data catalog admin list.
+ * @property {array} [users] Azure data catalog user list.
+ * @property {boolean} [successfullyProvisioned] Azure data catalog provision
  * status.
- * @member {boolean} [enableAutomaticUnitAdjustment] Automatic unit adjustment
- * enabled or not.
+ * @property {boolean} [enableAutomaticUnitAdjustment] Automatic unit
+ * adjustment enabled or not.
  */
 export interface ADCCatalog extends Resource {
   sku?: string;
@@ -83,7 +83,7 @@ export interface ADCCatalog extends Resource {
  * @constructor
  * The response from the List Azure Data Catalog operation.
  *
- * @member {array} [value] the list of Azure Data Catalogs.
+ * @property {array} [value] the list of Azure Data Catalogs.
  */
 export interface ADCCatalogsListResult {
   value?: ADCCatalog[];
@@ -95,11 +95,11 @@ export interface ADCCatalogsListResult {
  * @constructor
  * The operation supported by Azure Data Catalog Service.
  *
- * @member {string} [description] The description of the operation.
- * @member {string} [operation] The action that users can perform, based on
+ * @property {string} [description] The description of the operation.
+ * @property {string} [operation] The action that users can perform, based on
  * their permission level.
- * @member {string} [provider] Service provider: Azure Data Catalog Service.
- * @member {string} [resource] Resource on which the operation is performed.
+ * @property {string} [provider] Service provider: Azure Data Catalog Service.
+ * @property {string} [resource] Resource on which the operation is performed.
  */
 export interface OperationDisplayInfo {
   description?: string;
@@ -114,15 +114,15 @@ export interface OperationDisplayInfo {
  * @constructor
  * The operation supported by Azure Data Catalog Service.
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}.
- * @member {object} [display] The operation supported by Azure Data Catalog
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}.
+ * @property {object} [display] The operation supported by Azure Data Catalog
  * Service.
- * @member {string} [display.description] The description of the operation.
- * @member {string} [display.operation] The action that users can perform,
+ * @property {string} [display.description] The description of the operation.
+ * @property {string} [display.operation] The action that users can perform,
  * based on their permission level.
- * @member {string} [display.provider] Service provider: Azure Data Catalog
+ * @property {string} [display.provider] Service provider: Azure Data Catalog
  * Service.
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [display.resource] Resource on which the operation is
  * performed.
  */
 export interface OperationEntity {
@@ -136,7 +136,7 @@ export interface OperationEntity {
  * @constructor
  * The list of Azure data catalog service operation response.
  *
- * @member {array} [value] The list of operations.
+ * @property {array} [value] The list of operations.
  */
 export interface OperationEntityListResult {
   value?: OperationEntity[];

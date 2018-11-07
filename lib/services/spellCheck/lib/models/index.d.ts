@@ -15,9 +15,9 @@ import * as moment from "moment";
  * @class
  * Initializes a new instance of the SpellingTokenSuggestion class.
  * @constructor
- * @member {string} suggestion
- * @member {number} [score]
- * @member {string} [pingUrlSuffix]
+ * @property {string} suggestion
+ * @property {number} [score]
+ * @property {string} [pingUrlSuffix]
  */
 export interface SpellingTokenSuggestion {
   suggestion: string;
@@ -29,12 +29,12 @@ export interface SpellingTokenSuggestion {
  * @class
  * Initializes a new instance of the SpellingFlaggedToken class.
  * @constructor
- * @member {number} offset
- * @member {string} token
- * @member {string} type Possible values include: 'UnknownToken',
+ * @property {number} offset
+ * @property {string} token
+ * @property {string} type Possible values include: 'UnknownToken',
  * 'RepeatedToken'. Default value: 'UnknownToken' .
- * @member {array} [suggestions]
- * @member {string} [pingUrlSuffix]
+ * @property {array} [suggestions]
+ * @property {string} [pingUrlSuffix]
  */
 export interface SpellingFlaggedToken {
   offset: number;
@@ -48,7 +48,7 @@ export interface SpellingFlaggedToken {
  * @class
  * Initializes a new instance of the ResponseBase class.
  * @constructor
- * @member {string} _type Polymorphic Discriminator
+ * @property {string} _type Polymorphic Discriminator
  */
 export interface ResponseBase {
   _type: string;
@@ -60,7 +60,7 @@ export interface ResponseBase {
  * @constructor
  * Defines the identity of a resource.
  *
- * @member {string} [id] A String identifier.
+ * @property {string} [id] A String identifier.
  */
 export interface Identifiable extends ResponseBase {
   readonly id?: string;
@@ -89,7 +89,7 @@ export interface Answer extends Response {
  * @class
  * Initializes a new instance of the SpellCheck class.
  * @constructor
- * @member {array} flaggedTokens
+ * @property {array} flaggedTokens
  */
 export interface SpellCheck extends Answer {
   flaggedTokens: SpellingFlaggedToken[];
@@ -101,21 +101,21 @@ export interface SpellCheck extends Answer {
  * @constructor
  * Defines the error that occurred.
  *
- * @member {string} code The error code that identifies the category of error.
- * Possible values include: 'None', 'ServerError', 'InvalidRequest',
+ * @property {string} code The error code that identifies the category of
+ * error. Possible values include: 'None', 'ServerError', 'InvalidRequest',
  * 'RateLimitExceeded', 'InvalidAuthorization', 'InsufficientAuthorization'.
  * Default value: 'None' .
- * @member {string} [subCode] The error code that further helps to identify the
- * error. Possible values include: 'UnexpectedError', 'ResourceError',
+ * @property {string} [subCode] The error code that further helps to identify
+ * the error. Possible values include: 'UnexpectedError', 'ResourceError',
  * 'NotImplemented', 'ParameterMissing', 'ParameterInvalidValue',
  * 'HttpNotAllowed', 'Blocked', 'AuthorizationMissing',
  * 'AuthorizationRedundancy', 'AuthorizationDisabled', 'AuthorizationExpired'
- * @member {string} message A description of the error.
- * @member {string} [moreDetails] A description that provides additional
+ * @property {string} message A description of the error.
+ * @property {string} [moreDetails] A description that provides additional
  * information about the error.
- * @member {string} [parameter] The parameter in the request that caused the
+ * @property {string} [parameter] The parameter in the request that caused the
  * error.
- * @member {string} [value] The parameter's value in the request that was not
+ * @property {string} [value] The parameter's value in the request that was not
  * valid.
  */
 export interface ErrorModel {
@@ -133,7 +133,7 @@ export interface ErrorModel {
  * @constructor
  * The top-level response that represents a failed request.
  *
- * @member {array} errors A list of errors that describe the reasons why the
+ * @property {array} errors A list of errors that describe the reasons why the
  * request failed.
  */
 export interface ErrorResponse extends Response {

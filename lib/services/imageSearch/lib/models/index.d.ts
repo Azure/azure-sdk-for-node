@@ -17,7 +17,7 @@ import * as moment from "moment";
  * @constructor
  * Response base
  *
- * @member {string} _type Polymorphic Discriminator
+ * @property {string} _type Polymorphic Discriminator
  */
 export interface ResponseBase {
   _type: string;
@@ -29,7 +29,7 @@ export interface ResponseBase {
  * @constructor
  * Defines the identity of a resource.
  *
- * @member {string} [id] A String identifier.
+ * @property {string} [id] A String identifier.
  */
 export interface Identifiable extends ResponseBase {
   readonly id?: string;
@@ -42,8 +42,8 @@ export interface Identifiable extends ResponseBase {
  * Defines a response. All schemas that could be returned at the root of a
  * response should inherit from this
  *
- * @member {string} [readLink] The URL that returns this resource.
- * @member {string} [webSearchUrl] The URL To Bing's search result for this
+ * @property {string} [readLink] The URL that returns this resource.
+ * @property {string} [webSearchUrl] The URL To Bing's search result for this
  * item.
  */
 export interface Response extends Identifiable {
@@ -57,43 +57,43 @@ export interface Response extends Identifiable {
  * @constructor
  * Defines a thing.
  *
- * @member {string} [name] The name of the thing represented by this object.
- * @member {string} [url] The URL to get more information about the thing
+ * @property {string} [name] The name of the thing represented by this object.
+ * @property {string} [url] The URL to get more information about the thing
  * represented by this object.
- * @member {object} [image] An image of the item.
- * @member {object} [image.thumbnail] The URL to a thumbnail of the image
- * @member {string} [image.imageInsightsToken] The token that you use in a
+ * @property {object} [image] An image of the item.
+ * @property {object} [image.thumbnail] The URL to a thumbnail of the image
+ * @property {string} [image.imageInsightsToken] The token that you use in a
  * subsequent call to the Image Search API to get additional information about
  * the image. For information about using this token, see the insightsToken
  * query parameter.
- * @member {object} [image.insightsMetadata] A count of the number of websites
- * where you can shop or perform other actions related to the image. For
- * example, if the image is of an apple pie, this object includes a count of
- * the number of websites where you can buy an apple pie. To indicate the
+ * @property {object} [image.insightsMetadata] A count of the number of
+ * websites where you can shop or perform other actions related to the image.
+ * For example, if the image is of an apple pie, this object includes a count
+ * of the number of websites where you can buy an apple pie. To indicate the
  * number of offers in your UX, include badging such as a shopping cart icon
  * that contains the count. When the user clicks on the icon, use
  * imageInisghtsToken to get the list of websites.
- * @member {number} [image.insightsMetadata.shoppingSourcesCount] The number of
- * websites that offer goods of the products seen in the image.
- * @member {number} [image.insightsMetadata.recipeSourcesCount] The number of
+ * @property {number} [image.insightsMetadata.shoppingSourcesCount] The number
+ * of websites that offer goods of the products seen in the image.
+ * @property {number} [image.insightsMetadata.recipeSourcesCount] The number of
  * websites that offer recipes of the food seen in the image.
- * @member {object} [image.insightsMetadata.aggregateOffer] A summary of the
+ * @property {object} [image.insightsMetadata.aggregateOffer] A summary of the
  * online offers of products found in the image. For example, if the image is
  * of a dress, the offer might identify the lowest price and the number of
  * offers found. Only visually similar products insights include this field.
  * The offer includes the following fields: Name, AggregateRating, OfferCount,
  * and LowPrice.
- * @member {array} [image.insightsMetadata.aggregateOffer.offers] A list of
+ * @property {array} [image.insightsMetadata.aggregateOffer.offers] A list of
  * offers from merchants that have offerings related to the image.
- * @member {string} [image.imageId] Unique Id for the image
- * @member {string} [image.accentColor] A three-byte hexadecimal number that
+ * @property {string} [image.imageId] Unique Id for the image
+ * @property {string} [image.accentColor] A three-byte hexadecimal number that
  * represents the color that dominates the image. Use the color as the
  * temporary background in your client until the image is loaded.
- * @member {string} [image.visualWords] Visual representation of the image.
+ * @property {string} [image.visualWords] Visual representation of the image.
  * Used for getting more sizes
- * @member {string} [description] A short description of the item.
- * @member {string} [alternateName] An alias for the item
- * @member {string} [bingId] An ID that uniquely identifies this item.
+ * @property {string} [description] A short description of the item.
+ * @property {string} [alternateName] An alias for the item
+ * @property {string} [bingId] An ID that uniquely identifies this item.
  */
 export interface Thing extends Response {
   readonly name?: string;
@@ -120,8 +120,8 @@ export interface Organization extends Thing {
  * @constructor
  * Defines an item.
  *
- * @member {string} [text] Text representation of an item.
- * @member {string} _type Polymorphic Discriminator
+ * @property {string} [text] Text representation of an item.
+ * @property {string} _type Polymorphic Discriminator
  */
 export interface PropertiesItem {
   readonly text?: string;
@@ -134,10 +134,10 @@ export interface PropertiesItem {
  * @constructor
  * Defines a rating.
  *
- * @member {number} ratingValue The mean (average) rating. The possible values
- * are 1.0 through 5.0.
- * @member {number} [bestRating] The highest rated review. The possible values
- * are 1.0 through 5.0.
+ * @property {number} ratingValue The mean (average) rating. The possible
+ * values are 1.0 through 5.0.
+ * @property {number} [bestRating] The highest rated review. The possible
+ * values are 1.0 through 5.0.
  */
 export interface Rating extends PropertiesItem {
   ratingValue: number;
@@ -150,8 +150,8 @@ export interface Rating extends PropertiesItem {
  * @constructor
  * Defines the metrics that indicate how well an item was rated by others.
  *
- * @member {number} [reviewCount] The number of times the recipe has been rated
- * or reviewed.
+ * @property {number} [reviewCount] The number of times the recipe has been
+ * rated or reviewed.
  */
 export interface AggregateRating extends Rating {
   readonly reviewCount?: number;
@@ -163,9 +163,9 @@ export interface AggregateRating extends Rating {
  * @constructor
  * Defines a merchant's offer.
  *
- * @member {object} [seller] Seller for this offer
- * @member {number} [price] The item's price.
- * @member {string} [priceCurrency] The monetary currency. For example, USD.
+ * @property {object} [seller] Seller for this offer
+ * @property {number} [price] The item's price.
+ * @property {string} [priceCurrency] The monetary currency. For example, USD.
  * Possible values include: 'USD', 'CAD', 'GBP', 'EUR', 'COP', 'JPY', 'CNY',
  * 'AUD', 'INR', 'AED', 'AFN', 'ALL', 'AMD', 'ANG', 'AOA', 'ARS', 'AWG', 'AZN',
  * 'BAM', 'BBD', 'BDT', 'BGN', 'BHD', 'BIF', 'BMD', 'BND', 'BOB', 'BOV', 'BRL',
@@ -182,17 +182,17 @@ export interface AggregateRating extends Rating {
  * 'TMT', 'TND', 'TOP', 'TRY', 'TTD', 'TWD', 'TZS', 'UAH', 'UGX', 'UYU', 'UZS',
  * 'VEF', 'VND', 'VUV', 'WST', 'XAF', 'XCD', 'XOF', 'XPF', 'YER', 'ZAR', 'ZMW'.
  * Default value: 'USD' .
- * @member {string} [availability] The item's availability. The following are
+ * @property {string} [availability] The item's availability. The following are
  * the possible values: Discontinued, InStock, InStoreOnly,
  * LimitedAvailability, OnlineOnly, OutOfStock, PreOrder, SoldOut. Possible
  * values include: 'Discontinued', 'InStock', 'InStoreOnly',
  * 'LimitedAvailability', 'OnlineOnly', 'OutOfStock', 'PreOrder', 'SoldOut'
- * @member {object} [aggregateRating] An aggregated rating that indicates how
+ * @property {object} [aggregateRating] An aggregated rating that indicates how
  * well the product has been rated by others.
- * @member {number} [aggregateRating.reviewCount] The number of times the
+ * @property {number} [aggregateRating.reviewCount] The number of times the
  * recipe has been rated or reviewed.
- * @member {string} [lastUpdated] The last date that the offer was updated. The
- * date is in the form YYYY-MM-DD.
+ * @property {string} [lastUpdated] The last date that the offer was updated.
+ * The date is in the form YYYY-MM-DD.
  */
 export interface Offer extends Thing {
   readonly seller?: Organization;
@@ -209,8 +209,8 @@ export interface Offer extends Thing {
  * @constructor
  * Defines a list of offers from merchants that are related to the image.
  *
- * @member {array} [offers] A list of offers from merchants that have offerings
- * related to the image.
+ * @property {array} [offers] A list of offers from merchants that have
+ * offerings related to the image.
  */
 export interface AggregateOffer extends Offer {
   readonly offers?: Offer[];
@@ -223,17 +223,17 @@ export interface AggregateOffer extends Offer {
  * Defines a count of the number of websites where you can shop or perform
  * other actions related to the image.
  *
- * @member {number} [shoppingSourcesCount] The number of websites that offer
+ * @property {number} [shoppingSourcesCount] The number of websites that offer
  * goods of the products seen in the image.
- * @member {number} [recipeSourcesCount] The number of websites that offer
+ * @property {number} [recipeSourcesCount] The number of websites that offer
  * recipes of the food seen in the image.
- * @member {object} [aggregateOffer] A summary of the online offers of products
- * found in the image. For example, if the image is of a dress, the offer might
- * identify the lowest price and the number of offers found. Only visually
- * similar products insights include this field. The offer includes the
- * following fields: Name, AggregateRating, OfferCount, and LowPrice.
- * @member {array} [aggregateOffer.offers] A list of offers from merchants that
- * have offerings related to the image.
+ * @property {object} [aggregateOffer] A summary of the online offers of
+ * products found in the image. For example, if the image is of a dress, the
+ * offer might identify the lowest price and the number of offers found. Only
+ * visually similar products insights include this field. The offer includes
+ * the following fields: Name, AggregateRating, OfferCount, and LowPrice.
+ * @property {array} [aggregateOffer.offers] A list of offers from merchants
+ * that have offerings related to the image.
  */
 export interface ImagesImageMetadata {
   readonly shoppingSourcesCount?: number;
@@ -248,11 +248,11 @@ export interface ImagesImageMetadata {
  * The most generic kind of creative work, including books, movies,
  * photographs, software programs, etc.
  *
- * @member {string} [thumbnailUrl] The URL to a thumbnail of the item.
- * @member {array} [provider] The source of the creative work.
- * @member {string} [datePublished] The date on which the CreativeWork was
+ * @property {string} [thumbnailUrl] The URL to a thumbnail of the item.
+ * @property {array} [provider] The source of the creative work.
+ * @property {string} [datePublished] The date on which the CreativeWork was
  * published.
- * @member {string} [text] Text content of this creative work
+ * @property {string} [text] Text content of this creative work
  */
 export interface CreativeWork extends Thing {
   readonly thumbnailUrl?: string;
@@ -267,16 +267,19 @@ export interface CreativeWork extends Thing {
  * @constructor
  * Defines a media object.
  *
- * @member {string} [contentUrl] Original URL to retrieve the source (file) for
- * the media object (e.g the source URL for the image).
- * @member {string} [hostPageUrl] URL of the page that hosts the media object.
- * @member {string} [contentSize] Size of the media object content (use format
- * "value unit" e.g "1024 B").
- * @member {string} [encodingFormat] Encoding format (e.g mp3, mp4, jpeg, etc).
- * @member {string} [hostPageDisplayUrl] Display URL of the page that hosts the
- * media object.
- * @member {number} [width] The width of the source media object, in pixels.
- * @member {number} [height] The height of the source media object, in pixels.
+ * @property {string} [contentUrl] Original URL to retrieve the source (file)
+ * for the media object (e.g the source URL for the image).
+ * @property {string} [hostPageUrl] URL of the page that hosts the media
+ * object.
+ * @property {string} [contentSize] Size of the media object content (use
+ * format "value unit" e.g "1024 B").
+ * @property {string} [encodingFormat] Encoding format (e.g mp3, mp4, jpeg,
+ * etc).
+ * @property {string} [hostPageDisplayUrl] Display URL of the page that hosts
+ * the media object.
+ * @property {number} [width] The width of the source media object, in pixels.
+ * @property {number} [height] The height of the source media object, in
+ * pixels.
  */
 export interface MediaObject extends CreativeWork {
   readonly contentUrl?: string;
@@ -294,36 +297,36 @@ export interface MediaObject extends CreativeWork {
  * @constructor
  * Defines an image
  *
- * @member {object} [thumbnail] The URL to a thumbnail of the image
- * @member {string} [imageInsightsToken] The token that you use in a subsequent
- * call to the Image Search API to get additional information about the image.
- * For information about using this token, see the insightsToken query
- * parameter.
- * @member {object} [insightsMetadata] A count of the number of websites where
- * you can shop or perform other actions related to the image. For example, if
- * the image is of an apple pie, this object includes a count of the number of
- * websites where you can buy an apple pie. To indicate the number of offers in
- * your UX, include badging such as a shopping cart icon that contains the
- * count. When the user clicks on the icon, use imageInisghtsToken to get the
- * list of websites.
- * @member {number} [insightsMetadata.shoppingSourcesCount] The number of
+ * @property {object} [thumbnail] The URL to a thumbnail of the image
+ * @property {string} [imageInsightsToken] The token that you use in a
+ * subsequent call to the Image Search API to get additional information about
+ * the image. For information about using this token, see the insightsToken
+ * query parameter.
+ * @property {object} [insightsMetadata] A count of the number of websites
+ * where you can shop or perform other actions related to the image. For
+ * example, if the image is of an apple pie, this object includes a count of
+ * the number of websites where you can buy an apple pie. To indicate the
+ * number of offers in your UX, include badging such as a shopping cart icon
+ * that contains the count. When the user clicks on the icon, use
+ * imageInisghtsToken to get the list of websites.
+ * @property {number} [insightsMetadata.shoppingSourcesCount] The number of
  * websites that offer goods of the products seen in the image.
- * @member {number} [insightsMetadata.recipeSourcesCount] The number of
+ * @property {number} [insightsMetadata.recipeSourcesCount] The number of
  * websites that offer recipes of the food seen in the image.
- * @member {object} [insightsMetadata.aggregateOffer] A summary of the online
+ * @property {object} [insightsMetadata.aggregateOffer] A summary of the online
  * offers of products found in the image. For example, if the image is of a
  * dress, the offer might identify the lowest price and the number of offers
  * found. Only visually similar products insights include this field. The offer
  * includes the following fields: Name, AggregateRating, OfferCount, and
  * LowPrice.
- * @member {array} [insightsMetadata.aggregateOffer.offers] A list of offers
+ * @property {array} [insightsMetadata.aggregateOffer.offers] A list of offers
  * from merchants that have offerings related to the image.
- * @member {string} [imageId] Unique Id for the image
- * @member {string} [accentColor] A three-byte hexadecimal number that
+ * @property {string} [imageId] Unique Id for the image
+ * @property {string} [accentColor] A three-byte hexadecimal number that
  * represents the color that dominates the image. Use the color as the
  * temporary background in your client until the image is loaded.
- * @member {string} [visualWords] Visual representation of the image. Used for
- * getting more sizes
+ * @property {string} [visualWords] Visual representation of the image. Used
+ * for getting more sizes
  */
 export interface ImageObject extends MediaObject {
   readonly thumbnail?: ImageObject;
@@ -340,51 +343,51 @@ export interface ImageObject extends MediaObject {
  * @constructor
  * Defines a search query.
  *
- * @member {string} text The query string. Use this string as the query term in
- * a new search request.
- * @member {string} [displayText] The display version of the query term. This
+ * @property {string} text The query string. Use this string as the query term
+ * in a new search request.
+ * @property {string} [displayText] The display version of the query term. This
  * version of the query term may contain special characters that highlight the
  * search term found in the query string. The string contains the highlighting
  * characters only if the query enabled hit highlighting
- * @member {string} [webSearchUrl] The URL that takes the user to the Bing
+ * @property {string} [webSearchUrl] The URL that takes the user to the Bing
  * search results page for the query.Only related search results include this
  * field.
- * @member {string} [searchLink] The URL that you use to get the results of the
- * related search. Before using the URL, you must append query parameters as
- * appropriate and include the Ocp-Apim-Subscription-Key header. Use this URL
- * if you're displaying the results in your own user interface. Otherwise, use
- * the webSearchUrl URL.
- * @member {object} [thumbnail] The URL to a thumbnail of a related image.
- * @member {object} [thumbnail.thumbnail] The URL to a thumbnail of the image
- * @member {string} [thumbnail.imageInsightsToken] The token that you use in a
- * subsequent call to the Image Search API to get additional information about
- * the image. For information about using this token, see the insightsToken
- * query parameter.
- * @member {object} [thumbnail.insightsMetadata] A count of the number of
+ * @property {string} [searchLink] The URL that you use to get the results of
+ * the related search. Before using the URL, you must append query parameters
+ * as appropriate and include the Ocp-Apim-Subscription-Key header. Use this
+ * URL if you're displaying the results in your own user interface. Otherwise,
+ * use the webSearchUrl URL.
+ * @property {object} [thumbnail] The URL to a thumbnail of a related image.
+ * @property {object} [thumbnail.thumbnail] The URL to a thumbnail of the image
+ * @property {string} [thumbnail.imageInsightsToken] The token that you use in
+ * a subsequent call to the Image Search API to get additional information
+ * about the image. For information about using this token, see the
+ * insightsToken query parameter.
+ * @property {object} [thumbnail.insightsMetadata] A count of the number of
  * websites where you can shop or perform other actions related to the image.
  * For example, if the image is of an apple pie, this object includes a count
  * of the number of websites where you can buy an apple pie. To indicate the
  * number of offers in your UX, include badging such as a shopping cart icon
  * that contains the count. When the user clicks on the icon, use
  * imageInisghtsToken to get the list of websites.
- * @member {number} [thumbnail.insightsMetadata.shoppingSourcesCount] The
+ * @property {number} [thumbnail.insightsMetadata.shoppingSourcesCount] The
  * number of websites that offer goods of the products seen in the image.
- * @member {number} [thumbnail.insightsMetadata.recipeSourcesCount] The number
- * of websites that offer recipes of the food seen in the image.
- * @member {object} [thumbnail.insightsMetadata.aggregateOffer] A summary of
+ * @property {number} [thumbnail.insightsMetadata.recipeSourcesCount] The
+ * number of websites that offer recipes of the food seen in the image.
+ * @property {object} [thumbnail.insightsMetadata.aggregateOffer] A summary of
  * the online offers of products found in the image. For example, if the image
  * is of a dress, the offer might identify the lowest price and the number of
  * offers found. Only visually similar products insights include this field.
  * The offer includes the following fields: Name, AggregateRating, OfferCount,
  * and LowPrice.
- * @member {array} [thumbnail.insightsMetadata.aggregateOffer.offers] A list of
- * offers from merchants that have offerings related to the image.
- * @member {string} [thumbnail.imageId] Unique Id for the image
- * @member {string} [thumbnail.accentColor] A three-byte hexadecimal number
+ * @property {array} [thumbnail.insightsMetadata.aggregateOffer.offers] A list
+ * of offers from merchants that have offerings related to the image.
+ * @property {string} [thumbnail.imageId] Unique Id for the image
+ * @property {string} [thumbnail.accentColor] A three-byte hexadecimal number
  * that represents the color that dominates the image. Use the color as the
  * temporary background in your client until the image is loaded.
- * @member {string} [thumbnail.visualWords] Visual representation of the image.
- * Used for getting more sizes
+ * @property {string} [thumbnail.visualWords] Visual representation of the
+ * image. Used for getting more sizes
  */
 export interface Query {
   text: string;
@@ -400,8 +403,8 @@ export interface Query {
  * @constructor
  * Defines the pivot segment.
  *
- * @member {string} pivot The segment from the original query to pivot on.
- * @member {array} suggestions A list of suggested queries for the pivot.
+ * @property {string} pivot The segment from the original query to pivot on.
+ * @property {array} suggestions A list of suggested queries for the pivot.
  */
 export interface PivotSuggestions {
   pivot: string;
@@ -424,7 +427,7 @@ export interface Answer extends Response {
  * @constructor
  * Defines a search result answer.
  *
- * @member {number} [totalEstimatedMatches] The estimated number of webpages
+ * @property {number} [totalEstimatedMatches] The estimated number of webpages
  * that are relevant to the query. Use this number along with the count and
  * offset query parameters to page the results.
  */
@@ -438,20 +441,20 @@ export interface SearchResultsAnswer extends Answer {
  * @constructor
  * Defines an image answer
  *
- * @member {number} [nextOffset] Used as part of deduping. Tells client the
+ * @property {number} [nextOffset] Used as part of deduping. Tells client the
  * next offset that client should use in the next pagination request
- * @member {array} value A list of image objects that are relevant to the
+ * @property {array} value A list of image objects that are relevant to the
  * query. If there are no results, the List is empty.
- * @member {array} [queryExpansions] A list of expanded queries that narrows
+ * @property {array} [queryExpansions] A list of expanded queries that narrows
  * the original query. For example, if the query was Microsoft Surface, the
  * expanded queries might be: Microsoft Surface Pro 3, Microsoft Surface RT,
  * Microsoft Surface Phone, and Microsoft Surface Hub.
- * @member {array} [pivotSuggestions] A list of segments in the original query.
- * For example, if the query was Red Flowers, Bing might segment the query into
- * Red and Flowers. The Flowers pivot may contain query suggestions such as Red
- * Peonies and Red Daisies, and the Red pivot may contain query suggestions
- * such as Green Flowers and Yellow Flowers.
- * @member {array} [similarTerms] A list of terms that are similar in meaning
+ * @property {array} [pivotSuggestions] A list of segments in the original
+ * query. For example, if the query was Red Flowers, Bing might segment the
+ * query into Red and Flowers. The Flowers pivot may contain query suggestions
+ * such as Red Peonies and Red Daisies, and the Red pivot may contain query
+ * suggestions such as Green Flowers and Yellow Flowers.
+ * @property {array} [similarTerms] A list of terms that are similar in meaning
  * to the user's query term.
  */
 export interface Images extends SearchResultsAnswer {
@@ -468,21 +471,21 @@ export interface Images extends SearchResultsAnswer {
  * @constructor
  * Defines the error that occurred.
  *
- * @member {string} code The error code that identifies the category of error.
- * Possible values include: 'None', 'ServerError', 'InvalidRequest',
+ * @property {string} code The error code that identifies the category of
+ * error. Possible values include: 'None', 'ServerError', 'InvalidRequest',
  * 'RateLimitExceeded', 'InvalidAuthorization', 'InsufficientAuthorization'.
  * Default value: 'None' .
- * @member {string} [subCode] The error code that further helps to identify the
- * error. Possible values include: 'UnexpectedError', 'ResourceError',
+ * @property {string} [subCode] The error code that further helps to identify
+ * the error. Possible values include: 'UnexpectedError', 'ResourceError',
  * 'NotImplemented', 'ParameterMissing', 'ParameterInvalidValue',
  * 'HttpNotAllowed', 'Blocked', 'AuthorizationMissing',
  * 'AuthorizationRedundancy', 'AuthorizationDisabled', 'AuthorizationExpired'
- * @member {string} message A description of the error.
- * @member {string} [moreDetails] A description that provides additional
+ * @property {string} message A description of the error.
+ * @property {string} [moreDetails] A description that provides additional
  * information about the error.
- * @member {string} [parameter] The parameter in the request that caused the
+ * @property {string} [parameter] The parameter in the request that caused the
  * error.
- * @member {string} [value] The parameter's value in the request that was not
+ * @property {string} [value] The parameter's value in the request that was not
  * valid.
  */
 export interface ErrorModel {
@@ -500,7 +503,7 @@ export interface ErrorModel {
  * @constructor
  * The top-level response that represents a failed request.
  *
- * @member {array} errors A list of errors that describe the reasons why the
+ * @property {array} errors A list of errors that describe the reasons why the
  * request failed.
  */
 export interface ErrorResponse extends Response {
@@ -513,13 +516,13 @@ export interface ErrorResponse extends Response {
  * @constructor
  * Defines an image's caption.
  *
- * @member {string} caption A caption about the image.
- * @member {string} dataSourceUrl The URL to the website where the caption was
- * found. You must attribute the caption to the source. For example, by
+ * @property {string} caption A caption about the image.
+ * @property {string} dataSourceUrl The URL to the website where the caption
+ * was found. You must attribute the caption to the source. For example, by
  * displaying the domain name from the URL next to the caption and using the
  * URL to link to the source website.
- * @member {array} relatedSearches A list of entities found in the caption. Use
- * the contents of the Query object to find the entity in the caption and
+ * @property {array} relatedSearches A list of entities found in the caption.
+ * Use the contents of the Query object to find the entity in the caption and
  * create a link. The link takes the user to images of the entity.
  */
 export interface ImageInsightsImageCaption {
@@ -554,13 +557,13 @@ export interface CollectionPage extends WebPage {
  * @constructor
  * Defines a link to a webpage that contains a collection of related images.
  *
- * @member {string} [source] The publisher or social network where the images
+ * @property {string} [source] The publisher or social network where the images
  * were found. You must attribute the publisher as the source where the
  * collection was found.
- * @member {number} [imagesCount] The number of related images found in the
+ * @property {number} [imagesCount] The number of related images found in the
  * collection.
- * @member {number} [followersCount] The number of users on the social network
- * that follow the creator.
+ * @property {number} [followersCount] The number of users on the social
+ * network that follow the creator.
  */
 export interface ImageGallery extends CollectionPage {
   readonly source?: string;
@@ -574,7 +577,7 @@ export interface ImageGallery extends CollectionPage {
  * @constructor
  * Defines a list of webpages that contain related images.
  *
- * @member {array} [value] A list of webpages that contain related images.
+ * @property {array} [value] A list of webpages that contain related images.
  */
 export interface RelatedCollectionsModule {
   readonly value?: ImageGallery[];
@@ -586,7 +589,7 @@ export interface RelatedCollectionsModule {
  * @constructor
  * Defines a list of images.
  *
- * @member {array} [value] A list of images.
+ * @property {array} [value] A list of images.
  */
 export interface ImagesModule {
   readonly value?: ImageObject[];
@@ -598,7 +601,7 @@ export interface ImagesModule {
  * @constructor
  * Defines a list of related searches.
  *
- * @member {array} [value] A list of related searches.
+ * @property {array} [value] A list of related searches.
  */
 export interface RelatedSearchesModule {
   readonly value?: Query[];
@@ -610,13 +613,13 @@ export interface RelatedSearchesModule {
  * @constructor
  * Defines a cooking recipe.
  *
- * @member {string} [cookTime] The amount of time the food takes to cook. For
+ * @property {string} [cookTime] The amount of time the food takes to cook. For
  * example, PT25M. For information about the time format, see
  * http://en.wikipedia.org/wiki/ISO_8601#Durations.
- * @member {string} [prepTime] The amount of time required to prepare the
+ * @property {string} [prepTime] The amount of time required to prepare the
  * ingredients. For example, PT15M. For information about the time format, see
  * http://en.wikipedia.org/wiki/ISO_8601#Durations.
- * @member {string} [totalTime] The total amount of time it takes to prepare
+ * @property {string} [totalTime] The total amount of time it takes to prepare
  * and cook the recipe. For example, PT45M. For information about the time
  * format, see http://en.wikipedia.org/wiki/ISO_8601#Durations.
  */
@@ -632,7 +635,7 @@ export interface Recipe extends CreativeWork {
  * @constructor
  * Defines a list of recipes.
  *
- * @member {array} [value] A list of recipes.
+ * @property {array} [value] A list of recipes.
  */
 export interface RecipesModule {
   readonly value?: Recipe[];
@@ -666,10 +669,10 @@ export interface StructuredValue extends Intangible {
  * are fractional values of the original image's width and height in the range
  * 0.0 through 1.0.
  *
- * @member {number} left The left coordinate.
- * @member {number} top The top coordinate
- * @member {number} right The right coordinate
- * @member {number} bottom The bottom coordinate
+ * @property {number} left The left coordinate.
+ * @property {number} top The top coordinate
+ * @property {number} right The right coordinate
+ * @property {number} bottom The bottom coordinate
  */
 export interface NormalizedRectangle extends StructuredValue {
   left: number;
@@ -684,48 +687,48 @@ export interface NormalizedRectangle extends StructuredValue {
  * @constructor
  * Defines a recognized entity.
  *
- * @member {object} [entity] The entity that was recognized. The following are
- * the possible entity objects: Person
- * @member {string} [entity.name] The name of the thing represented by this
+ * @property {object} [entity] The entity that was recognized. The following
+ * are the possible entity objects: Person
+ * @property {string} [entity.name] The name of the thing represented by this
  * object.
- * @member {string} [entity.url] The URL to get more information about the
+ * @property {string} [entity.url] The URL to get more information about the
  * thing represented by this object.
- * @member {object} [entity.image] An image of the item.
- * @member {object} [entity.image.thumbnail] The URL to a thumbnail of the
+ * @property {object} [entity.image] An image of the item.
+ * @property {object} [entity.image.thumbnail] The URL to a thumbnail of the
  * image
- * @member {string} [entity.image.imageInsightsToken] The token that you use in
- * a subsequent call to the Image Search API to get additional information
+ * @property {string} [entity.image.imageInsightsToken] The token that you use
+ * in a subsequent call to the Image Search API to get additional information
  * about the image. For information about using this token, see the
  * insightsToken query parameter.
- * @member {object} [entity.image.insightsMetadata] A count of the number of
+ * @property {object} [entity.image.insightsMetadata] A count of the number of
  * websites where you can shop or perform other actions related to the image.
  * For example, if the image is of an apple pie, this object includes a count
  * of the number of websites where you can buy an apple pie. To indicate the
  * number of offers in your UX, include badging such as a shopping cart icon
  * that contains the count. When the user clicks on the icon, use
  * imageInisghtsToken to get the list of websites.
- * @member {number} [entity.image.insightsMetadata.shoppingSourcesCount] The
+ * @property {number} [entity.image.insightsMetadata.shoppingSourcesCount] The
  * number of websites that offer goods of the products seen in the image.
- * @member {number} [entity.image.insightsMetadata.recipeSourcesCount] The
+ * @property {number} [entity.image.insightsMetadata.recipeSourcesCount] The
  * number of websites that offer recipes of the food seen in the image.
- * @member {object} [entity.image.insightsMetadata.aggregateOffer] A summary of
- * the online offers of products found in the image. For example, if the image
- * is of a dress, the offer might identify the lowest price and the number of
- * offers found. Only visually similar products insights include this field.
- * The offer includes the following fields: Name, AggregateRating, OfferCount,
- * and LowPrice.
- * @member {array} [entity.image.insightsMetadata.aggregateOffer.offers] A list
- * of offers from merchants that have offerings related to the image.
- * @member {string} [entity.image.imageId] Unique Id for the image
- * @member {string} [entity.image.accentColor] A three-byte hexadecimal number
- * that represents the color that dominates the image. Use the color as the
- * temporary background in your client until the image is loaded.
- * @member {string} [entity.image.visualWords] Visual representation of the
+ * @property {object} [entity.image.insightsMetadata.aggregateOffer] A summary
+ * of the online offers of products found in the image. For example, if the
+ * image is of a dress, the offer might identify the lowest price and the
+ * number of offers found. Only visually similar products insights include this
+ * field. The offer includes the following fields: Name, AggregateRating,
+ * OfferCount, and LowPrice.
+ * @property {array} [entity.image.insightsMetadata.aggregateOffer.offers] A
+ * list of offers from merchants that have offerings related to the image.
+ * @property {string} [entity.image.imageId] Unique Id for the image
+ * @property {string} [entity.image.accentColor] A three-byte hexadecimal
+ * number that represents the color that dominates the image. Use the color as
+ * the temporary background in your client until the image is loaded.
+ * @property {string} [entity.image.visualWords] Visual representation of the
  * image. Used for getting more sizes
- * @member {string} [entity.description] A short description of the item.
- * @member {string} [entity.alternateName] An alias for the item
- * @member {string} [entity.bingId] An ID that uniquely identifies this item.
- * @member {number} [matchConfidence] The confidence that Bing has that the
+ * @property {string} [entity.description] A short description of the item.
+ * @property {string} [entity.alternateName] An alias for the item
+ * @property {string} [entity.bingId] An ID that uniquely identifies this item.
+ * @property {number} [matchConfidence] The confidence that Bing has that the
  * entity in the image matches this entity. The confidence ranges from 0.0
  * through 1.0 with 1.0 being very confident.
  */
@@ -741,18 +744,19 @@ export interface RecognizedEntity extends Response {
  * Defines a region of the image where an entity was found and a list of
  * entities that might match it.
  *
- * @member {object} [region] A region of the image that contains an entity. The
- * values of the rectangle are relative to the width and height of the original
- * image and are in the range 0.0 through 1.0. For example, if the image is
- * 300x200 and the region's top, left corner is at point (10, 20) and the
- * bottom, right corner is at point (290, 150), then the normalized rectangle
- * is: Left = 0.0333333333333333, Top = 0.1, Right = 0.9666666666666667, Bottom
- * = 0.75. For people, the region represents the person's face.
- * @member {number} [region.left] The left coordinate.
- * @member {number} [region.top] The top coordinate
- * @member {number} [region.right] The right coordinate
- * @member {number} [region.bottom] The bottom coordinate
- * @member {array} [matchingEntities] A list of entities that Bing believes
+ * @property {object} [region] A region of the image that contains an entity.
+ * The values of the rectangle are relative to the width and height of the
+ * original image and are in the range 0.0 through 1.0. For example, if the
+ * image is 300x200 and the region's top, left corner is at point (10, 20) and
+ * the bottom, right corner is at point (290, 150), then the normalized
+ * rectangle is: Left = 0.0333333333333333, Top = 0.1, Right =
+ * 0.9666666666666667, Bottom = 0.75. For people, the region represents the
+ * person's face.
+ * @property {number} [region.left] The left coordinate.
+ * @property {number} [region.top] The top coordinate
+ * @property {number} [region.right] The right coordinate
+ * @property {number} [region.bottom] The bottom coordinate
+ * @property {array} [matchingEntities] A list of entities that Bing believes
  * match the entity found in the region. The entities are in descending order
  * of confidence (see the matchConfidence field of RecognizedEntity).
  */
@@ -767,13 +771,13 @@ export interface RecognizedEntityRegion extends Response {
  * @constructor
  * Defines a group of previously recognized entities.
  *
- * @member {array} recognizedEntityRegions The regions of the image that
+ * @property {array} recognizedEntityRegions The regions of the image that
  * contain entities.
- * @member {string} name The name of the group where images of the entity were
- * also found. The following are possible groups. CelebRecognitionAnnotations:
- * Similar to CelebrityAnnotations but provides a higher probability of an
- * accurate match. CelebrityAnnotations: Contains celebrities such as actors,
- * politicians, athletes, and historical figures.
+ * @property {string} name The name of the group where images of the entity
+ * were also found. The following are possible groups.
+ * CelebRecognitionAnnotations: Similar to CelebrityAnnotations but provides a
+ * higher probability of an accurate match. CelebrityAnnotations: Contains
+ * celebrities such as actors, politicians, athletes, and historical figures.
  */
 export interface RecognizedEntityGroup {
   recognizedEntityRegions: RecognizedEntityRegion[];
@@ -786,7 +790,7 @@ export interface RecognizedEntityGroup {
  * @constructor
  * Defines a list of previously recognized entities.
  *
- * @member {array} [value] A list of recognized entities.
+ * @property {array} [value] A list of recognized entities.
  */
 export interface RecognizedEntitiesModule {
   readonly value?: RecognizedEntityGroup[];
@@ -798,7 +802,7 @@ export interface RecognizedEntitiesModule {
  * @constructor
  * Defines a characteristic of the content found in the image.
  *
- * @member {string} [name] The name of the characteristic. For example, cat,
+ * @property {string} [name] The name of the characteristic. For example, cat,
  * kitty, calico cat.
  */
 export interface InsightsTag {
@@ -811,7 +815,7 @@ export interface InsightsTag {
  * @constructor
  * Defines the characteristics of content found in an image.
  *
- * @member {array} value A list of tags that describe the characteristics of
+ * @property {array} value A list of tags that describe the characteristics of
  * the content found in the image. For example, if the image is of a musical
  * artist, the list might include Female, Dress, and Music to indicate the
  * person is female music artist that's wearing a dress.
@@ -832,117 +836,119 @@ export interface ImageTagsModule {
  * [modules](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested)
  * to only Caption, then this object includes only the imageCaption field.
  *
- * @member {string} [imageInsightsToken] A token that you use in a subsequent
+ * @property {string} [imageInsightsToken] A token that you use in a subsequent
  * call to the Image Search API to get more information about the image. For
  * information about using this token, see the insightsToken query parameter.
  * This token has the same usage as the token in the Image object.
- * @member {object} [bestRepresentativeQuery] The query term that best
+ * @property {object} [bestRepresentativeQuery] The query term that best
  * represents the image. Clicking the link in the Query object, takes the user
  * to a webpage with more pictures of the image.
- * @member {string} [bestRepresentativeQuery.text] The query string. Use this
+ * @property {string} [bestRepresentativeQuery.text] The query string. Use this
  * string as the query term in a new search request.
- * @member {string} [bestRepresentativeQuery.displayText] The display version
+ * @property {string} [bestRepresentativeQuery.displayText] The display version
  * of the query term. This version of the query term may contain special
  * characters that highlight the search term found in the query string. The
  * string contains the highlighting characters only if the query enabled hit
  * highlighting
- * @member {string} [bestRepresentativeQuery.webSearchUrl] The URL that takes
+ * @property {string} [bestRepresentativeQuery.webSearchUrl] The URL that takes
  * the user to the Bing search results page for the query.Only related search
  * results include this field.
- * @member {string} [bestRepresentativeQuery.searchLink] The URL that you use
+ * @property {string} [bestRepresentativeQuery.searchLink] The URL that you use
  * to get the results of the related search. Before using the URL, you must
  * append query parameters as appropriate and include the
  * Ocp-Apim-Subscription-Key header. Use this URL if you're displaying the
  * results in your own user interface. Otherwise, use the webSearchUrl URL.
- * @member {object} [bestRepresentativeQuery.thumbnail] The URL to a thumbnail
- * of a related image.
- * @member {object} [bestRepresentativeQuery.thumbnail.thumbnail] The URL to a
- * thumbnail of the image
- * @member {string} [bestRepresentativeQuery.thumbnail.imageInsightsToken] The
- * token that you use in a subsequent call to the Image Search API to get
+ * @property {object} [bestRepresentativeQuery.thumbnail] The URL to a
+ * thumbnail of a related image.
+ * @property {object} [bestRepresentativeQuery.thumbnail.thumbnail] The URL to
+ * a thumbnail of the image
+ * @property {string} [bestRepresentativeQuery.thumbnail.imageInsightsToken]
+ * The token that you use in a subsequent call to the Image Search API to get
  * additional information about the image. For information about using this
  * token, see the insightsToken query parameter.
- * @member {object} [bestRepresentativeQuery.thumbnail.insightsMetadata] A
+ * @property {object} [bestRepresentativeQuery.thumbnail.insightsMetadata] A
  * count of the number of websites where you can shop or perform other actions
  * related to the image. For example, if the image is of an apple pie, this
  * object includes a count of the number of websites where you can buy an apple
  * pie. To indicate the number of offers in your UX, include badging such as a
  * shopping cart icon that contains the count. When the user clicks on the
  * icon, use imageInisghtsToken to get the list of websites.
- * @member {number}
+ * @property {number}
  * [bestRepresentativeQuery.thumbnail.insightsMetadata.shoppingSourcesCount]
  * The number of websites that offer goods of the products seen in the image.
- * @member {number}
+ * @property {number}
  * [bestRepresentativeQuery.thumbnail.insightsMetadata.recipeSourcesCount] The
  * number of websites that offer recipes of the food seen in the image.
- * @member {object}
+ * @property {object}
  * [bestRepresentativeQuery.thumbnail.insightsMetadata.aggregateOffer] A
  * summary of the online offers of products found in the image. For example, if
  * the image is of a dress, the offer might identify the lowest price and the
  * number of offers found. Only visually similar products insights include this
  * field. The offer includes the following fields: Name, AggregateRating,
  * OfferCount, and LowPrice.
- * @member {array}
+ * @property {array}
  * [bestRepresentativeQuery.thumbnail.insightsMetadata.aggregateOffer.offers] A
  * list of offers from merchants that have offerings related to the image.
- * @member {string} [bestRepresentativeQuery.thumbnail.imageId] Unique Id for
+ * @property {string} [bestRepresentativeQuery.thumbnail.imageId] Unique Id for
  * the image
- * @member {string} [bestRepresentativeQuery.thumbnail.accentColor] A
+ * @property {string} [bestRepresentativeQuery.thumbnail.accentColor] A
  * three-byte hexadecimal number that represents the color that dominates the
  * image. Use the color as the temporary background in your client until the
  * image is loaded.
- * @member {string} [bestRepresentativeQuery.thumbnail.visualWords] Visual
+ * @property {string} [bestRepresentativeQuery.thumbnail.visualWords] Visual
  * representation of the image. Used for getting more sizes
- * @member {object} [imageCaption] The caption to use for the image.
- * @member {string} [imageCaption.caption] A caption about the image.
- * @member {string} [imageCaption.dataSourceUrl] The URL to the website where
+ * @property {object} [imageCaption] The caption to use for the image.
+ * @property {string} [imageCaption.caption] A caption about the image.
+ * @property {string} [imageCaption.dataSourceUrl] The URL to the website where
  * the caption was found. You must attribute the caption to the source. For
  * example, by displaying the domain name from the URL next to the caption and
  * using the URL to link to the source website.
- * @member {array} [imageCaption.relatedSearches] A list of entities found in
+ * @property {array} [imageCaption.relatedSearches] A list of entities found in
  * the caption. Use the contents of the Query object to find the entity in the
  * caption and create a link. The link takes the user to images of the entity.
- * @member {object} [relatedCollections] A list of links to webpages that
+ * @property {object} [relatedCollections] A list of links to webpages that
  * contain related images.
- * @member {array} [relatedCollections.value] A list of webpages that contain
+ * @property {array} [relatedCollections.value] A list of webpages that contain
  * related images.
- * @member {object} [pagesIncluding] A list of webpages that contain the image.
- * To access the webpage, use the URL in the image's hostPageUrl field.
- * @member {array} [pagesIncluding.value] A list of images.
- * @member {object} [shoppingSources] A list of merchants that offer items
+ * @property {object} [pagesIncluding] A list of webpages that contain the
+ * image. To access the webpage, use the URL in the image's hostPageUrl field.
+ * @property {array} [pagesIncluding.value] A list of images.
+ * @property {object} [shoppingSources] A list of merchants that offer items
  * related to the image. For example, if the image is of an apple pie, the list
  * contains merchants that are selling apple pies.
- * @member {array} [shoppingSources.offers] A list of offers from merchants
+ * @property {array} [shoppingSources.offers] A list of offers from merchants
  * that have offerings related to the image.
- * @member {object} [relatedSearches] A list of related queries made by others.
- * @member {array} [relatedSearches.value] A list of related searches.
- * @member {object} [recipes] A list of recipes related to the image. For
+ * @property {object} [relatedSearches] A list of related queries made by
+ * others.
+ * @property {array} [relatedSearches.value] A list of related searches.
+ * @property {object} [recipes] A list of recipes related to the image. For
  * example, if the image is of an apple pie, the list contains recipes for
  * making an apple pie.
- * @member {array} [recipes.value] A list of recipes.
- * @member {object} [visuallySimilarImages] A list of images that are visually
- * similar to the original image. For example, if the specified image is of a
- * sunset over a body of water, the list of similar images are of a sunset over
- * a body of water. If the specified image is of a person, similar images might
- * be of the same person or they might be of persons dressed similarly or in a
- * similar setting. The criteria for similarity continues to evolve.
- * @member {array} [visuallySimilarImages.value] A list of images.
- * @member {object} [visuallySimilarProducts] A list of images that contain
+ * @property {array} [recipes.value] A list of recipes.
+ * @property {object} [visuallySimilarImages] A list of images that are
+ * visually similar to the original image. For example, if the specified image
+ * is of a sunset over a body of water, the list of similar images are of a
+ * sunset over a body of water. If the specified image is of a person, similar
+ * images might be of the same person or they might be of persons dressed
+ * similarly or in a similar setting. The criteria for similarity continues to
+ * evolve.
+ * @property {array} [visuallySimilarImages.value] A list of images.
+ * @property {object} [visuallySimilarProducts] A list of images that contain
  * products that are visually similar to products found in the original image.
  * For example, if the specified image contains a dress, the list of similar
  * images contain a dress. The image provides summary information about offers
  * that Bing found online for the product.
- * @member {array} [visuallySimilarProducts.value] A list of images.
- * @member {object} [recognizedEntityGroups] A list of groups that contain
+ * @property {array} [visuallySimilarProducts.value] A list of images.
+ * @property {object} [recognizedEntityGroups] A list of groups that contain
  * images of entities that match the entity found in the specified image. For
  * example, the response might include images from the general celebrity group
  * if the entity was recognized in that group.
- * @member {array} [recognizedEntityGroups.value] A list of recognized
+ * @property {array} [recognizedEntityGroups.value] A list of recognized
  * entities.
- * @member {object} [imageTags] A list of characteristics of the content found
- * in the image. For example, if the image is of a person, the tags might
+ * @property {object} [imageTags] A list of characteristics of the content
+ * found in the image. For example, if the image is of a person, the tags might
  * indicate the person's gender and the type of clothes they're wearing.
- * @member {array} [imageTags.value] A list of tags that describe the
+ * @property {array} [imageTags.value] A list of tags that describe the
  * characteristics of the content found in the image. For example, if the image
  * is of a musical artist, the list might include Female, Dress, and Music to
  * indicate the person is female music artist that's wearing a dress.
@@ -968,87 +974,87 @@ export interface ImageInsights extends Response {
  * @constructor
  * Defines an image tile.
  *
- * @member {object} query A query that returns a Bing search results page with
- * more images of the subject. For example, if the category is Popular People
- * Searches, then the thumbnail is of a popular person. The query would return
- * a Bing search results page with more images of that person.
- * @member {string} [query.text] The query string. Use this string as the query
- * term in a new search request.
- * @member {string} [query.displayText] The display version of the query term.
- * This version of the query term may contain special characters that highlight
- * the search term found in the query string. The string contains the
+ * @property {object} query A query that returns a Bing search results page
+ * with more images of the subject. For example, if the category is Popular
+ * People Searches, then the thumbnail is of a popular person. The query would
+ * return a Bing search results page with more images of that person.
+ * @property {string} [query.text] The query string. Use this string as the
+ * query term in a new search request.
+ * @property {string} [query.displayText] The display version of the query
+ * term. This version of the query term may contain special characters that
+ * highlight the search term found in the query string. The string contains the
  * highlighting characters only if the query enabled hit highlighting
- * @member {string} [query.webSearchUrl] The URL that takes the user to the
+ * @property {string} [query.webSearchUrl] The URL that takes the user to the
  * Bing search results page for the query.Only related search results include
  * this field.
- * @member {string} [query.searchLink] The URL that you use to get the results
- * of the related search. Before using the URL, you must append query
+ * @property {string} [query.searchLink] The URL that you use to get the
+ * results of the related search. Before using the URL, you must append query
  * parameters as appropriate and include the Ocp-Apim-Subscription-Key header.
  * Use this URL if you're displaying the results in your own user interface.
  * Otherwise, use the webSearchUrl URL.
- * @member {object} [query.thumbnail] The URL to a thumbnail of a related
+ * @property {object} [query.thumbnail] The URL to a thumbnail of a related
  * image.
- * @member {object} [query.thumbnail.thumbnail] The URL to a thumbnail of the
+ * @property {object} [query.thumbnail.thumbnail] The URL to a thumbnail of the
  * image
- * @member {string} [query.thumbnail.imageInsightsToken] The token that you use
- * in a subsequent call to the Image Search API to get additional information
- * about the image. For information about using this token, see the
+ * @property {string} [query.thumbnail.imageInsightsToken] The token that you
+ * use in a subsequent call to the Image Search API to get additional
+ * information about the image. For information about using this token, see the
  * insightsToken query parameter.
- * @member {object} [query.thumbnail.insightsMetadata] A count of the number of
+ * @property {object} [query.thumbnail.insightsMetadata] A count of the number
+ * of websites where you can shop or perform other actions related to the
+ * image. For example, if the image is of an apple pie, this object includes a
+ * count of the number of websites where you can buy an apple pie. To indicate
+ * the number of offers in your UX, include badging such as a shopping cart
+ * icon that contains the count. When the user clicks on the icon, use
+ * imageInisghtsToken to get the list of websites.
+ * @property {number} [query.thumbnail.insightsMetadata.shoppingSourcesCount]
+ * The number of websites that offer goods of the products seen in the image.
+ * @property {number} [query.thumbnail.insightsMetadata.recipeSourcesCount] The
+ * number of websites that offer recipes of the food seen in the image.
+ * @property {object} [query.thumbnail.insightsMetadata.aggregateOffer] A
+ * summary of the online offers of products found in the image. For example, if
+ * the image is of a dress, the offer might identify the lowest price and the
+ * number of offers found. Only visually similar products insights include this
+ * field. The offer includes the following fields: Name, AggregateRating,
+ * OfferCount, and LowPrice.
+ * @property {array} [query.thumbnail.insightsMetadata.aggregateOffer.offers] A
+ * list of offers from merchants that have offerings related to the image.
+ * @property {string} [query.thumbnail.imageId] Unique Id for the image
+ * @property {string} [query.thumbnail.accentColor] A three-byte hexadecimal
+ * number that represents the color that dominates the image. Use the color as
+ * the temporary background in your client until the image is loaded.
+ * @property {string} [query.thumbnail.visualWords] Visual representation of
+ * the image. Used for getting more sizes
+ * @property {object} image The image's thumbnail.
+ * @property {object} [image.thumbnail] The URL to a thumbnail of the image
+ * @property {string} [image.imageInsightsToken] The token that you use in a
+ * subsequent call to the Image Search API to get additional information about
+ * the image. For information about using this token, see the insightsToken
+ * query parameter.
+ * @property {object} [image.insightsMetadata] A count of the number of
  * websites where you can shop or perform other actions related to the image.
  * For example, if the image is of an apple pie, this object includes a count
  * of the number of websites where you can buy an apple pie. To indicate the
  * number of offers in your UX, include badging such as a shopping cart icon
  * that contains the count. When the user clicks on the icon, use
  * imageInisghtsToken to get the list of websites.
- * @member {number} [query.thumbnail.insightsMetadata.shoppingSourcesCount] The
- * number of websites that offer goods of the products seen in the image.
- * @member {number} [query.thumbnail.insightsMetadata.recipeSourcesCount] The
- * number of websites that offer recipes of the food seen in the image.
- * @member {object} [query.thumbnail.insightsMetadata.aggregateOffer] A summary
- * of the online offers of products found in the image. For example, if the
- * image is of a dress, the offer might identify the lowest price and the
- * number of offers found. Only visually similar products insights include this
- * field. The offer includes the following fields: Name, AggregateRating,
- * OfferCount, and LowPrice.
- * @member {array} [query.thumbnail.insightsMetadata.aggregateOffer.offers] A
- * list of offers from merchants that have offerings related to the image.
- * @member {string} [query.thumbnail.imageId] Unique Id for the image
- * @member {string} [query.thumbnail.accentColor] A three-byte hexadecimal
- * number that represents the color that dominates the image. Use the color as
- * the temporary background in your client until the image is loaded.
- * @member {string} [query.thumbnail.visualWords] Visual representation of the
- * image. Used for getting more sizes
- * @member {object} image The image's thumbnail.
- * @member {object} [image.thumbnail] The URL to a thumbnail of the image
- * @member {string} [image.imageInsightsToken] The token that you use in a
- * subsequent call to the Image Search API to get additional information about
- * the image. For information about using this token, see the insightsToken
- * query parameter.
- * @member {object} [image.insightsMetadata] A count of the number of websites
- * where you can shop or perform other actions related to the image. For
- * example, if the image is of an apple pie, this object includes a count of
- * the number of websites where you can buy an apple pie. To indicate the
- * number of offers in your UX, include badging such as a shopping cart icon
- * that contains the count. When the user clicks on the icon, use
- * imageInisghtsToken to get the list of websites.
- * @member {number} [image.insightsMetadata.shoppingSourcesCount] The number of
- * websites that offer goods of the products seen in the image.
- * @member {number} [image.insightsMetadata.recipeSourcesCount] The number of
+ * @property {number} [image.insightsMetadata.shoppingSourcesCount] The number
+ * of websites that offer goods of the products seen in the image.
+ * @property {number} [image.insightsMetadata.recipeSourcesCount] The number of
  * websites that offer recipes of the food seen in the image.
- * @member {object} [image.insightsMetadata.aggregateOffer] A summary of the
+ * @property {object} [image.insightsMetadata.aggregateOffer] A summary of the
  * online offers of products found in the image. For example, if the image is
  * of a dress, the offer might identify the lowest price and the number of
  * offers found. Only visually similar products insights include this field.
  * The offer includes the following fields: Name, AggregateRating, OfferCount,
  * and LowPrice.
- * @member {array} [image.insightsMetadata.aggregateOffer.offers] A list of
+ * @property {array} [image.insightsMetadata.aggregateOffer.offers] A list of
  * offers from merchants that have offerings related to the image.
- * @member {string} [image.imageId] Unique Id for the image
- * @member {string} [image.accentColor] A three-byte hexadecimal number that
+ * @property {string} [image.imageId] Unique Id for the image
+ * @property {string} [image.accentColor] A three-byte hexadecimal number that
  * represents the color that dominates the image. Use the color as the
  * temporary background in your client until the image is loaded.
- * @member {string} [image.visualWords] Visual representation of the image.
+ * @property {string} [image.visualWords] Visual representation of the image.
  * Used for getting more sizes
  */
 export interface TrendingImagesTile {
@@ -1062,9 +1068,9 @@ export interface TrendingImagesTile {
  * @constructor
  * Defines the category of trending images.
  *
- * @member {string} title The name of the image category. For example, Popular
- * People Searches.
- * @member {array} tiles A list of images that are trending in the category.
+ * @property {string} title The name of the image category. For example,
+ * Popular People Searches.
+ * @property {array} tiles A list of images that are trending in the category.
  * Each tile contains an image and a URL that returns more images of the
  * subject. For example, if the category is Popular People Searches, the image
  * is of a popular person and the URL would return more images of that person.
@@ -1081,8 +1087,8 @@ export interface TrendingImagesCategory {
  * The top-level object that the response includes when a trending images
  * request succeeds.
  *
- * @member {array} categories A list that identifies categories of images and a
- * list of trending images in that category.
+ * @property {array} categories A list that identifies categories of images and
+ * a list of trending images in that category.
  */
 export interface TrendingImages extends Response {
   categories: TrendingImagesCategory[];
@@ -1094,8 +1100,8 @@ export interface TrendingImages extends Response {
  * @constructor
  * Defines a person.
  *
- * @member {string} [jobTitle] The person's job title.
- * @member {string} [twitterProfile] The URL of the person's twitter profile.
+ * @property {string} [jobTitle] The person's job title.
+ * @property {string} [twitterProfile] The URL of the person's twitter profile.
  */
 export interface Person extends Thing {
   readonly jobTitle?: string;

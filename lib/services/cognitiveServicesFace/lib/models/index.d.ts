@@ -17,8 +17,8 @@ import * as moment from "moment";
  * @constructor
  * Error body.
  *
- * @member {string} [code]
- * @member {string} [message]
+ * @property {string} [code]
+ * @property {string} [message]
  */
 export interface ErrorModel {
   code?: string;
@@ -31,9 +31,9 @@ export interface ErrorModel {
  * @constructor
  * Error information returned by the API
  *
- * @member {object} [error]
- * @member {string} [error.code]
- * @member {string} [error.message]
+ * @property {object} [error]
+ * @property {string} [error.code]
+ * @property {string} [error.message]
  */
 export interface APIError {
   error?: ErrorModel;
@@ -45,12 +45,12 @@ export interface APIError {
  * @constructor
  * A rectangle within which a face can be found
  *
- * @member {number} width The width of the rectangle, in pixels.
- * @member {number} height The height of the rectangle, in pixels.
- * @member {number} left The distance from the left edge if the image to the
+ * @property {number} width The width of the rectangle, in pixels.
+ * @property {number} height The height of the rectangle, in pixels.
+ * @property {number} left The distance from the left edge if the image to the
  * left edge of the rectangle, in pixels.
- * @member {number} top The distance from the top edge if the image to the top
- * edge of the rectangle, in pixels.
+ * @property {number} top The distance from the top edge if the image to the
+ * top edge of the rectangle, in pixels.
  */
 export interface FaceRectangle {
   width: number;
@@ -65,8 +65,8 @@ export interface FaceRectangle {
  * @constructor
  * Coordinates within an image
  *
- * @member {number} x The horizontal component, in pixels.
- * @member {number} y The vertical component, in pixels.
+ * @property {number} x The horizontal component, in pixels.
+ * @property {number} y The vertical component, in pixels.
  */
 export interface Coordinate {
   x: number;
@@ -80,88 +80,92 @@ export interface Coordinate {
  * A collection of 27-point face landmarks pointing to the important positions
  * of face components.
  *
- * @member {object} [pupilLeft]
- * @member {number} [pupilLeft.x] The horizontal component, in pixels.
- * @member {number} [pupilLeft.y] The vertical component, in pixels.
- * @member {object} [pupilRight]
- * @member {number} [pupilRight.x] The horizontal component, in pixels.
- * @member {number} [pupilRight.y] The vertical component, in pixels.
- * @member {object} [noseTip]
- * @member {number} [noseTip.x] The horizontal component, in pixels.
- * @member {number} [noseTip.y] The vertical component, in pixels.
- * @member {object} [mouthLeft]
- * @member {number} [mouthLeft.x] The horizontal component, in pixels.
- * @member {number} [mouthLeft.y] The vertical component, in pixels.
- * @member {object} [mouthRight]
- * @member {number} [mouthRight.x] The horizontal component, in pixels.
- * @member {number} [mouthRight.y] The vertical component, in pixels.
- * @member {object} [eyebrowLeftOuter]
- * @member {number} [eyebrowLeftOuter.x] The horizontal component, in pixels.
- * @member {number} [eyebrowLeftOuter.y] The vertical component, in pixels.
- * @member {object} [eyebrowLeftInner]
- * @member {number} [eyebrowLeftInner.x] The horizontal component, in pixels.
- * @member {number} [eyebrowLeftInner.y] The vertical component, in pixels.
- * @member {object} [eyeLeftOuter]
- * @member {number} [eyeLeftOuter.x] The horizontal component, in pixels.
- * @member {number} [eyeLeftOuter.y] The vertical component, in pixels.
- * @member {object} [eyeLeftTop]
- * @member {number} [eyeLeftTop.x] The horizontal component, in pixels.
- * @member {number} [eyeLeftTop.y] The vertical component, in pixels.
- * @member {object} [eyeLeftBottom]
- * @member {number} [eyeLeftBottom.x] The horizontal component, in pixels.
- * @member {number} [eyeLeftBottom.y] The vertical component, in pixels.
- * @member {object} [eyeLeftInner]
- * @member {number} [eyeLeftInner.x] The horizontal component, in pixels.
- * @member {number} [eyeLeftInner.y] The vertical component, in pixels.
- * @member {object} [eyebrowRightInner]
- * @member {number} [eyebrowRightInner.x] The horizontal component, in pixels.
- * @member {number} [eyebrowRightInner.y] The vertical component, in pixels.
- * @member {object} [eyebrowRightOuter]
- * @member {number} [eyebrowRightOuter.x] The horizontal component, in pixels.
- * @member {number} [eyebrowRightOuter.y] The vertical component, in pixels.
- * @member {object} [eyeRightInner]
- * @member {number} [eyeRightInner.x] The horizontal component, in pixels.
- * @member {number} [eyeRightInner.y] The vertical component, in pixels.
- * @member {object} [eyeRightTop]
- * @member {number} [eyeRightTop.x] The horizontal component, in pixels.
- * @member {number} [eyeRightTop.y] The vertical component, in pixels.
- * @member {object} [eyeRightBottom]
- * @member {number} [eyeRightBottom.x] The horizontal component, in pixels.
- * @member {number} [eyeRightBottom.y] The vertical component, in pixels.
- * @member {object} [eyeRightOuter]
- * @member {number} [eyeRightOuter.x] The horizontal component, in pixels.
- * @member {number} [eyeRightOuter.y] The vertical component, in pixels.
- * @member {object} [noseRootLeft]
- * @member {number} [noseRootLeft.x] The horizontal component, in pixels.
- * @member {number} [noseRootLeft.y] The vertical component, in pixels.
- * @member {object} [noseRootRight]
- * @member {number} [noseRootRight.x] The horizontal component, in pixels.
- * @member {number} [noseRootRight.y] The vertical component, in pixels.
- * @member {object} [noseLeftAlarTop]
- * @member {number} [noseLeftAlarTop.x] The horizontal component, in pixels.
- * @member {number} [noseLeftAlarTop.y] The vertical component, in pixels.
- * @member {object} [noseRightAlarTop]
- * @member {number} [noseRightAlarTop.x] The horizontal component, in pixels.
- * @member {number} [noseRightAlarTop.y] The vertical component, in pixels.
- * @member {object} [noseLeftAlarOutTip]
- * @member {number} [noseLeftAlarOutTip.x] The horizontal component, in pixels.
- * @member {number} [noseLeftAlarOutTip.y] The vertical component, in pixels.
- * @member {object} [noseRightAlarOutTip]
- * @member {number} [noseRightAlarOutTip.x] The horizontal component, in
+ * @property {object} [pupilLeft]
+ * @property {number} [pupilLeft.x] The horizontal component, in pixels.
+ * @property {number} [pupilLeft.y] The vertical component, in pixels.
+ * @property {object} [pupilRight]
+ * @property {number} [pupilRight.x] The horizontal component, in pixels.
+ * @property {number} [pupilRight.y] The vertical component, in pixels.
+ * @property {object} [noseTip]
+ * @property {number} [noseTip.x] The horizontal component, in pixels.
+ * @property {number} [noseTip.y] The vertical component, in pixels.
+ * @property {object} [mouthLeft]
+ * @property {number} [mouthLeft.x] The horizontal component, in pixels.
+ * @property {number} [mouthLeft.y] The vertical component, in pixels.
+ * @property {object} [mouthRight]
+ * @property {number} [mouthRight.x] The horizontal component, in pixels.
+ * @property {number} [mouthRight.y] The vertical component, in pixels.
+ * @property {object} [eyebrowLeftOuter]
+ * @property {number} [eyebrowLeftOuter.x] The horizontal component, in pixels.
+ * @property {number} [eyebrowLeftOuter.y] The vertical component, in pixels.
+ * @property {object} [eyebrowLeftInner]
+ * @property {number} [eyebrowLeftInner.x] The horizontal component, in pixels.
+ * @property {number} [eyebrowLeftInner.y] The vertical component, in pixels.
+ * @property {object} [eyeLeftOuter]
+ * @property {number} [eyeLeftOuter.x] The horizontal component, in pixels.
+ * @property {number} [eyeLeftOuter.y] The vertical component, in pixels.
+ * @property {object} [eyeLeftTop]
+ * @property {number} [eyeLeftTop.x] The horizontal component, in pixels.
+ * @property {number} [eyeLeftTop.y] The vertical component, in pixels.
+ * @property {object} [eyeLeftBottom]
+ * @property {number} [eyeLeftBottom.x] The horizontal component, in pixels.
+ * @property {number} [eyeLeftBottom.y] The vertical component, in pixels.
+ * @property {object} [eyeLeftInner]
+ * @property {number} [eyeLeftInner.x] The horizontal component, in pixels.
+ * @property {number} [eyeLeftInner.y] The vertical component, in pixels.
+ * @property {object} [eyebrowRightInner]
+ * @property {number} [eyebrowRightInner.x] The horizontal component, in
  * pixels.
- * @member {number} [noseRightAlarOutTip.y] The vertical component, in pixels.
- * @member {object} [upperLipTop]
- * @member {number} [upperLipTop.x] The horizontal component, in pixels.
- * @member {number} [upperLipTop.y] The vertical component, in pixels.
- * @member {object} [upperLipBottom]
- * @member {number} [upperLipBottom.x] The horizontal component, in pixels.
- * @member {number} [upperLipBottom.y] The vertical component, in pixels.
- * @member {object} [underLipTop]
- * @member {number} [underLipTop.x] The horizontal component, in pixels.
- * @member {number} [underLipTop.y] The vertical component, in pixels.
- * @member {object} [underLipBottom]
- * @member {number} [underLipBottom.x] The horizontal component, in pixels.
- * @member {number} [underLipBottom.y] The vertical component, in pixels.
+ * @property {number} [eyebrowRightInner.y] The vertical component, in pixels.
+ * @property {object} [eyebrowRightOuter]
+ * @property {number} [eyebrowRightOuter.x] The horizontal component, in
+ * pixels.
+ * @property {number} [eyebrowRightOuter.y] The vertical component, in pixels.
+ * @property {object} [eyeRightInner]
+ * @property {number} [eyeRightInner.x] The horizontal component, in pixels.
+ * @property {number} [eyeRightInner.y] The vertical component, in pixels.
+ * @property {object} [eyeRightTop]
+ * @property {number} [eyeRightTop.x] The horizontal component, in pixels.
+ * @property {number} [eyeRightTop.y] The vertical component, in pixels.
+ * @property {object} [eyeRightBottom]
+ * @property {number} [eyeRightBottom.x] The horizontal component, in pixels.
+ * @property {number} [eyeRightBottom.y] The vertical component, in pixels.
+ * @property {object} [eyeRightOuter]
+ * @property {number} [eyeRightOuter.x] The horizontal component, in pixels.
+ * @property {number} [eyeRightOuter.y] The vertical component, in pixels.
+ * @property {object} [noseRootLeft]
+ * @property {number} [noseRootLeft.x] The horizontal component, in pixels.
+ * @property {number} [noseRootLeft.y] The vertical component, in pixels.
+ * @property {object} [noseRootRight]
+ * @property {number} [noseRootRight.x] The horizontal component, in pixels.
+ * @property {number} [noseRootRight.y] The vertical component, in pixels.
+ * @property {object} [noseLeftAlarTop]
+ * @property {number} [noseLeftAlarTop.x] The horizontal component, in pixels.
+ * @property {number} [noseLeftAlarTop.y] The vertical component, in pixels.
+ * @property {object} [noseRightAlarTop]
+ * @property {number} [noseRightAlarTop.x] The horizontal component, in pixels.
+ * @property {number} [noseRightAlarTop.y] The vertical component, in pixels.
+ * @property {object} [noseLeftAlarOutTip]
+ * @property {number} [noseLeftAlarOutTip.x] The horizontal component, in
+ * pixels.
+ * @property {number} [noseLeftAlarOutTip.y] The vertical component, in pixels.
+ * @property {object} [noseRightAlarOutTip]
+ * @property {number} [noseRightAlarOutTip.x] The horizontal component, in
+ * pixels.
+ * @property {number} [noseRightAlarOutTip.y] The vertical component, in
+ * pixels.
+ * @property {object} [upperLipTop]
+ * @property {number} [upperLipTop.x] The horizontal component, in pixels.
+ * @property {number} [upperLipTop.y] The vertical component, in pixels.
+ * @property {object} [upperLipBottom]
+ * @property {number} [upperLipBottom.x] The horizontal component, in pixels.
+ * @property {number} [upperLipBottom.y] The vertical component, in pixels.
+ * @property {object} [underLipTop]
+ * @property {number} [underLipTop.x] The horizontal component, in pixels.
+ * @property {number} [underLipTop.y] The vertical component, in pixels.
+ * @property {object} [underLipBottom]
+ * @property {number} [underLipBottom.x] The horizontal component, in pixels.
+ * @property {number} [underLipBottom.y] The vertical component, in pixels.
  */
 export interface FaceLandmarks {
   pupilLeft?: Coordinate;
@@ -199,9 +203,9 @@ export interface FaceLandmarks {
  * @constructor
  * Properties describing facial hair attributes.
  *
- * @member {number} [moustache]
- * @member {number} [beard]
- * @member {number} [sideburns]
+ * @property {number} [moustache]
+ * @property {number} [beard]
+ * @property {number} [sideburns]
  */
 export interface FacialHair {
   moustache?: number;
@@ -215,9 +219,9 @@ export interface FacialHair {
  * @constructor
  * Properties indicating head pose of the face.
  *
- * @member {number} [roll]
- * @member {number} [yaw]
- * @member {number} [pitch]
+ * @property {number} [roll]
+ * @property {number} [yaw]
+ * @property {number} [pitch]
  */
 export interface HeadPose {
   roll?: number;
@@ -232,14 +236,14 @@ export interface HeadPose {
  * Properties describing facial emotion in form of confidence ranging from 0 to
  * 1.
  *
- * @member {number} [anger]
- * @member {number} [contempt]
- * @member {number} [disgust]
- * @member {number} [fear]
- * @member {number} [happiness]
- * @member {number} [neutral]
- * @member {number} [sadness]
- * @member {number} [surprise]
+ * @property {number} [anger]
+ * @property {number} [contempt]
+ * @property {number} [disgust]
+ * @property {number} [fear]
+ * @property {number} [happiness]
+ * @property {number} [neutral]
+ * @property {number} [sadness]
+ * @property {number} [surprise]
  */
 export interface Emotion {
   anger?: number;
@@ -258,9 +262,9 @@ export interface Emotion {
  * @constructor
  * Hair color and associated confidence
  *
- * @member {string} [color] Name of the hair color. Possible values include:
+ * @property {string} [color] Name of the hair color. Possible values include:
  * 'unknown', 'white', 'gray', 'blond', 'brown', 'red', 'black', 'other'
- * @member {number} [confidence] Confidence level of the color
+ * @property {number} [confidence] Confidence level of the color
  */
 export interface HairColor {
   color?: string;
@@ -273,11 +277,11 @@ export interface HairColor {
  * @constructor
  * Properties describing hair attributes.
  *
- * @member {number} [bald] A number describing confidence level of whether the
- * person is bald.
- * @member {boolean} [invisible] A boolean value describing whether the hair is
- * visible in the image.
- * @member {array} [hairColor] An array of candidate colors and confidence
+ * @property {number} [bald] A number describing confidence level of whether
+ * the person is bald.
+ * @property {boolean} [invisible] A boolean value describing whether the hair
+ * is visible in the image.
+ * @property {array} [hairColor] An array of candidate colors and confidence
  * level in the presence of each.
  */
 export interface Hair {
@@ -292,10 +296,10 @@ export interface Hair {
  * @constructor
  * Properties describing present makeups on a given face.
  *
- * @member {boolean} [eyeMakeup] A boolean value describing whether eye makeup
- * is present on a face.
- * @member {boolean} [lipMakeup] A boolean value describing whether lip makeup
- * is present on a face.
+ * @property {boolean} [eyeMakeup] A boolean value describing whether eye
+ * makeup is present on a face.
+ * @property {boolean} [lipMakeup] A boolean value describing whether lip
+ * makeup is present on a face.
  */
 export interface Makeup {
   eyeMakeup?: boolean;
@@ -308,11 +312,11 @@ export interface Makeup {
  * @constructor
  * Properties describing occlusions on a given face.
  *
- * @member {boolean} [foreheadOccluded] A boolean value indicating whether
+ * @property {boolean} [foreheadOccluded] A boolean value indicating whether
  * forehead is occluded.
- * @member {boolean} [eyeOccluded] A boolean value indicating whether eyes are
- * occluded.
- * @member {boolean} [mouthOccluded] A boolean value indicating whether the
+ * @property {boolean} [eyeOccluded] A boolean value indicating whether eyes
+ * are occluded.
+ * @property {boolean} [mouthOccluded] A boolean value indicating whether the
  * mouth is occluded.
  */
 export interface Occlusion {
@@ -327,9 +331,9 @@ export interface Occlusion {
  * @constructor
  * Accessory item and corresponding confidence level.
  *
- * @member {string} [type] Type of an accessory. Possible values include:
+ * @property {string} [type] Type of an accessory. Possible values include:
  * 'headWear', 'glasses', 'mask'
- * @member {number} [confidence] Confidence level of an accessory
+ * @property {number} [confidence] Confidence level of an accessory
  */
 export interface Accessory {
   type?: string;
@@ -342,9 +346,9 @@ export interface Accessory {
  * @constructor
  * Properties describing any presence of blur within the image.
  *
- * @member {string} [blurLevel] An enum value indicating level of blurriness.
+ * @property {string} [blurLevel] An enum value indicating level of blurriness.
  * Possible values include: 'Low', 'Medium', 'High'
- * @member {number} [value] A number indicating level of blurriness ranging
+ * @property {number} [value] A number indicating level of blurriness ranging
  * from 0 to 1.
  */
 export interface Blur {
@@ -358,11 +362,12 @@ export interface Blur {
  * @constructor
  * Properties describing exposure level of the image.
  *
- * @member {string} [exposureLevel] An enum value indicating level of exposure.
- * Possible values include: 'UnderExposure', 'GoodExposure', 'OverExposure'
- * @member {number} [value] A number indicating level of exposure level ranging
- * from 0 to 1. [0, 0.25) is under exposure. [0.25, 0.75) is good exposure.
- * [0.75, 1] is over exposure.
+ * @property {string} [exposureLevel] An enum value indicating level of
+ * exposure. Possible values include: 'UnderExposure', 'GoodExposure',
+ * 'OverExposure'
+ * @property {number} [value] A number indicating level of exposure level
+ * ranging from 0 to 1. [0, 0.25) is under exposure. [0.25, 0.75) is good
+ * exposure. [0.75, 1] is over exposure.
  */
 export interface Exposure {
   exposureLevel?: string;
@@ -375,9 +380,9 @@ export interface Exposure {
  * @constructor
  * Properties describing noise level of the image.
  *
- * @member {string} [noiseLevel] An enum value indicating level of noise.
+ * @property {string} [noiseLevel] An enum value indicating level of noise.
  * Possible values include: 'Low', 'Medium', 'High'
- * @member {number} [value] A number indicating level of noise level ranging
+ * @property {number} [value] A number indicating level of noise level ranging
  * from 0 to 1. [0, 0.25) is under exposure. [0.25, 0.75) is good exposure.
  * [0.75, 1] is over exposure. [0, 0.3) is low noise level. [0.3, 0.7) is
  * medium noise level. [0.7, 1] is high noise level.
@@ -393,71 +398,73 @@ export interface Noise {
  * @constructor
  * Face Attributes
  *
- * @member {number} [age] Age in years
- * @member {string} [gender] Possible gender of the face. Possible values
+ * @property {number} [age] Age in years
+ * @property {string} [gender] Possible gender of the face. Possible values
  * include: 'male', 'female', 'genderless'
- * @member {number} [smile] Smile intensity, a number between [0,1]
- * @member {object} [facialHair] Properties describing facial hair attributes.
- * @member {number} [facialHair.moustache]
- * @member {number} [facialHair.beard]
- * @member {number} [facialHair.sideburns]
- * @member {string} [glasses] Glasses type if any of the face. Possible values
- * include: 'noGlasses', 'readingGlasses', 'sunglasses', 'swimmingGoggles'
- * @member {object} [headPose] Properties indicating head pose of the face.
- * @member {number} [headPose.roll]
- * @member {number} [headPose.yaw]
- * @member {number} [headPose.pitch]
- * @member {object} [emotion] Properties describing facial emotion in form of
+ * @property {number} [smile] Smile intensity, a number between [0,1]
+ * @property {object} [facialHair] Properties describing facial hair
+ * attributes.
+ * @property {number} [facialHair.moustache]
+ * @property {number} [facialHair.beard]
+ * @property {number} [facialHair.sideburns]
+ * @property {string} [glasses] Glasses type if any of the face. Possible
+ * values include: 'noGlasses', 'readingGlasses', 'sunglasses',
+ * 'swimmingGoggles'
+ * @property {object} [headPose] Properties indicating head pose of the face.
+ * @property {number} [headPose.roll]
+ * @property {number} [headPose.yaw]
+ * @property {number} [headPose.pitch]
+ * @property {object} [emotion] Properties describing facial emotion in form of
  * confidence ranging from 0 to 1.
- * @member {number} [emotion.anger]
- * @member {number} [emotion.contempt]
- * @member {number} [emotion.disgust]
- * @member {number} [emotion.fear]
- * @member {number} [emotion.happiness]
- * @member {number} [emotion.neutral]
- * @member {number} [emotion.sadness]
- * @member {number} [emotion.surprise]
- * @member {object} [hair] Properties describing hair attributes.
- * @member {number} [hair.bald] A number describing confidence level of whether
- * the person is bald.
- * @member {boolean} [hair.invisible] A boolean value describing whether the
+ * @property {number} [emotion.anger]
+ * @property {number} [emotion.contempt]
+ * @property {number} [emotion.disgust]
+ * @property {number} [emotion.fear]
+ * @property {number} [emotion.happiness]
+ * @property {number} [emotion.neutral]
+ * @property {number} [emotion.sadness]
+ * @property {number} [emotion.surprise]
+ * @property {object} [hair] Properties describing hair attributes.
+ * @property {number} [hair.bald] A number describing confidence level of
+ * whether the person is bald.
+ * @property {boolean} [hair.invisible] A boolean value describing whether the
  * hair is visible in the image.
- * @member {array} [hair.hairColor] An array of candidate colors and confidence
- * level in the presence of each.
- * @member {object} [makeup] Properties describing present makeups on a given
+ * @property {array} [hair.hairColor] An array of candidate colors and
+ * confidence level in the presence of each.
+ * @property {object} [makeup] Properties describing present makeups on a given
  * face.
- * @member {boolean} [makeup.eyeMakeup] A boolean value describing whether eye
- * makeup is present on a face.
- * @member {boolean} [makeup.lipMakeup] A boolean value describing whether lip
- * makeup is present on a face.
- * @member {object} [occlusion] Properties describing occlusions on a given
+ * @property {boolean} [makeup.eyeMakeup] A boolean value describing whether
+ * eye makeup is present on a face.
+ * @property {boolean} [makeup.lipMakeup] A boolean value describing whether
+ * lip makeup is present on a face.
+ * @property {object} [occlusion] Properties describing occlusions on a given
  * face.
- * @member {boolean} [occlusion.foreheadOccluded] A boolean value indicating
+ * @property {boolean} [occlusion.foreheadOccluded] A boolean value indicating
  * whether forehead is occluded.
- * @member {boolean} [occlusion.eyeOccluded] A boolean value indicating whether
- * eyes are occluded.
- * @member {boolean} [occlusion.mouthOccluded] A boolean value indicating
+ * @property {boolean} [occlusion.eyeOccluded] A boolean value indicating
+ * whether eyes are occluded.
+ * @property {boolean} [occlusion.mouthOccluded] A boolean value indicating
  * whether the mouth is occluded.
- * @member {array} [accessories] Properties describing any accessories on a
+ * @property {array} [accessories] Properties describing any accessories on a
  * given face.
- * @member {object} [blur] Properties describing any presence of blur within
+ * @property {object} [blur] Properties describing any presence of blur within
  * the image.
- * @member {string} [blur.blurLevel] An enum value indicating level of
+ * @property {string} [blur.blurLevel] An enum value indicating level of
  * blurriness. Possible values include: 'Low', 'Medium', 'High'
- * @member {number} [blur.value] A number indicating level of blurriness
+ * @property {number} [blur.value] A number indicating level of blurriness
  * ranging from 0 to 1.
- * @member {object} [exposure] Properties describing exposure level of the
+ * @property {object} [exposure] Properties describing exposure level of the
  * image.
- * @member {string} [exposure.exposureLevel] An enum value indicating level of
- * exposure. Possible values include: 'UnderExposure', 'GoodExposure',
+ * @property {string} [exposure.exposureLevel] An enum value indicating level
+ * of exposure. Possible values include: 'UnderExposure', 'GoodExposure',
  * 'OverExposure'
- * @member {number} [exposure.value] A number indicating level of exposure
+ * @property {number} [exposure.value] A number indicating level of exposure
  * level ranging from 0 to 1. [0, 0.25) is under exposure. [0.25, 0.75) is good
  * exposure. [0.75, 1] is over exposure.
- * @member {object} [noise] Properties describing noise level of the image.
- * @member {string} [noise.noiseLevel] An enum value indicating level of noise.
- * Possible values include: 'Low', 'Medium', 'High'
- * @member {number} [noise.value] A number indicating level of noise level
+ * @property {object} [noise] Properties describing noise level of the image.
+ * @property {string} [noise.noiseLevel] An enum value indicating level of
+ * noise. Possible values include: 'Low', 'Medium', 'High'
+ * @property {number} [noise.value] A number indicating level of noise level
  * ranging from 0 to 1. [0, 0.25) is under exposure. [0.25, 0.75) is good
  * exposure. [0.75, 1] is over exposure. [0, 0.3) is low noise level. [0.3,
  * 0.7) is medium noise level. [0.7, 1] is high noise level.
@@ -485,224 +492,224 @@ export interface FaceAttributes {
  * @constructor
  * Detected Face object.
  *
- * @member {uuid} [faceId]
- * @member {object} faceRectangle
- * @member {number} [faceRectangle.width] The width of the rectangle, in
+ * @property {uuid} [faceId]
+ * @property {object} faceRectangle
+ * @property {number} [faceRectangle.width] The width of the rectangle, in
  * pixels.
- * @member {number} [faceRectangle.height] The height of the rectangle, in
+ * @property {number} [faceRectangle.height] The height of the rectangle, in
  * pixels.
- * @member {number} [faceRectangle.left] The distance from the left edge if the
- * image to the left edge of the rectangle, in pixels.
- * @member {number} [faceRectangle.top] The distance from the top edge if the
+ * @property {number} [faceRectangle.left] The distance from the left edge if
+ * the image to the left edge of the rectangle, in pixels.
+ * @property {number} [faceRectangle.top] The distance from the top edge if the
  * image to the top edge of the rectangle, in pixels.
- * @member {object} [faceLandmarks]
- * @member {object} [faceLandmarks.pupilLeft]
- * @member {number} [faceLandmarks.pupilLeft.x] The horizontal component, in
+ * @property {object} [faceLandmarks]
+ * @property {object} [faceLandmarks.pupilLeft]
+ * @property {number} [faceLandmarks.pupilLeft.x] The horizontal component, in
  * pixels.
- * @member {number} [faceLandmarks.pupilLeft.y] The vertical component, in
+ * @property {number} [faceLandmarks.pupilLeft.y] The vertical component, in
  * pixels.
- * @member {object} [faceLandmarks.pupilRight]
- * @member {number} [faceLandmarks.pupilRight.x] The horizontal component, in
+ * @property {object} [faceLandmarks.pupilRight]
+ * @property {number} [faceLandmarks.pupilRight.x] The horizontal component, in
  * pixels.
- * @member {number} [faceLandmarks.pupilRight.y] The vertical component, in
+ * @property {number} [faceLandmarks.pupilRight.y] The vertical component, in
  * pixels.
- * @member {object} [faceLandmarks.noseTip]
- * @member {number} [faceLandmarks.noseTip.x] The horizontal component, in
+ * @property {object} [faceLandmarks.noseTip]
+ * @property {number} [faceLandmarks.noseTip.x] The horizontal component, in
  * pixels.
- * @member {number} [faceLandmarks.noseTip.y] The vertical component, in
+ * @property {number} [faceLandmarks.noseTip.y] The vertical component, in
  * pixels.
- * @member {object} [faceLandmarks.mouthLeft]
- * @member {number} [faceLandmarks.mouthLeft.x] The horizontal component, in
+ * @property {object} [faceLandmarks.mouthLeft]
+ * @property {number} [faceLandmarks.mouthLeft.x] The horizontal component, in
  * pixels.
- * @member {number} [faceLandmarks.mouthLeft.y] The vertical component, in
+ * @property {number} [faceLandmarks.mouthLeft.y] The vertical component, in
  * pixels.
- * @member {object} [faceLandmarks.mouthRight]
- * @member {number} [faceLandmarks.mouthRight.x] The horizontal component, in
+ * @property {object} [faceLandmarks.mouthRight]
+ * @property {number} [faceLandmarks.mouthRight.x] The horizontal component, in
  * pixels.
- * @member {number} [faceLandmarks.mouthRight.y] The vertical component, in
+ * @property {number} [faceLandmarks.mouthRight.y] The vertical component, in
  * pixels.
- * @member {object} [faceLandmarks.eyebrowLeftOuter]
- * @member {number} [faceLandmarks.eyebrowLeftOuter.x] The horizontal
+ * @property {object} [faceLandmarks.eyebrowLeftOuter]
+ * @property {number} [faceLandmarks.eyebrowLeftOuter.x] The horizontal
  * component, in pixels.
- * @member {number} [faceLandmarks.eyebrowLeftOuter.y] The vertical component,
- * in pixels.
- * @member {object} [faceLandmarks.eyebrowLeftInner]
- * @member {number} [faceLandmarks.eyebrowLeftInner.x] The horizontal
+ * @property {number} [faceLandmarks.eyebrowLeftOuter.y] The vertical
  * component, in pixels.
- * @member {number} [faceLandmarks.eyebrowLeftInner.y] The vertical component,
- * in pixels.
- * @member {object} [faceLandmarks.eyeLeftOuter]
- * @member {number} [faceLandmarks.eyeLeftOuter.x] The horizontal component, in
- * pixels.
- * @member {number} [faceLandmarks.eyeLeftOuter.y] The vertical component, in
- * pixels.
- * @member {object} [faceLandmarks.eyeLeftTop]
- * @member {number} [faceLandmarks.eyeLeftTop.x] The horizontal component, in
- * pixels.
- * @member {number} [faceLandmarks.eyeLeftTop.y] The vertical component, in
- * pixels.
- * @member {object} [faceLandmarks.eyeLeftBottom]
- * @member {number} [faceLandmarks.eyeLeftBottom.x] The horizontal component,
- * in pixels.
- * @member {number} [faceLandmarks.eyeLeftBottom.y] The vertical component, in
- * pixels.
- * @member {object} [faceLandmarks.eyeLeftInner]
- * @member {number} [faceLandmarks.eyeLeftInner.x] The horizontal component, in
- * pixels.
- * @member {number} [faceLandmarks.eyeLeftInner.y] The vertical component, in
- * pixels.
- * @member {object} [faceLandmarks.eyebrowRightInner]
- * @member {number} [faceLandmarks.eyebrowRightInner.x] The horizontal
+ * @property {object} [faceLandmarks.eyebrowLeftInner]
+ * @property {number} [faceLandmarks.eyebrowLeftInner.x] The horizontal
  * component, in pixels.
- * @member {number} [faceLandmarks.eyebrowRightInner.y] The vertical component,
- * in pixels.
- * @member {object} [faceLandmarks.eyebrowRightOuter]
- * @member {number} [faceLandmarks.eyebrowRightOuter.x] The horizontal
+ * @property {number} [faceLandmarks.eyebrowLeftInner.y] The vertical
  * component, in pixels.
- * @member {number} [faceLandmarks.eyebrowRightOuter.y] The vertical component,
+ * @property {object} [faceLandmarks.eyeLeftOuter]
+ * @property {number} [faceLandmarks.eyeLeftOuter.x] The horizontal component,
  * in pixels.
- * @member {object} [faceLandmarks.eyeRightInner]
- * @member {number} [faceLandmarks.eyeRightInner.x] The horizontal component,
+ * @property {number} [faceLandmarks.eyeLeftOuter.y] The vertical component, in
+ * pixels.
+ * @property {object} [faceLandmarks.eyeLeftTop]
+ * @property {number} [faceLandmarks.eyeLeftTop.x] The horizontal component, in
+ * pixels.
+ * @property {number} [faceLandmarks.eyeLeftTop.y] The vertical component, in
+ * pixels.
+ * @property {object} [faceLandmarks.eyeLeftBottom]
+ * @property {number} [faceLandmarks.eyeLeftBottom.x] The horizontal component,
  * in pixels.
- * @member {number} [faceLandmarks.eyeRightInner.y] The vertical component, in
- * pixels.
- * @member {object} [faceLandmarks.eyeRightTop]
- * @member {number} [faceLandmarks.eyeRightTop.x] The horizontal component, in
- * pixels.
- * @member {number} [faceLandmarks.eyeRightTop.y] The vertical component, in
- * pixels.
- * @member {object} [faceLandmarks.eyeRightBottom]
- * @member {number} [faceLandmarks.eyeRightBottom.x] The horizontal component,
+ * @property {number} [faceLandmarks.eyeLeftBottom.y] The vertical component,
  * in pixels.
- * @member {number} [faceLandmarks.eyeRightBottom.y] The vertical component, in
- * pixels.
- * @member {object} [faceLandmarks.eyeRightOuter]
- * @member {number} [faceLandmarks.eyeRightOuter.x] The horizontal component,
+ * @property {object} [faceLandmarks.eyeLeftInner]
+ * @property {number} [faceLandmarks.eyeLeftInner.x] The horizontal component,
  * in pixels.
- * @member {number} [faceLandmarks.eyeRightOuter.y] The vertical component, in
+ * @property {number} [faceLandmarks.eyeLeftInner.y] The vertical component, in
  * pixels.
- * @member {object} [faceLandmarks.noseRootLeft]
- * @member {number} [faceLandmarks.noseRootLeft.x] The horizontal component, in
- * pixels.
- * @member {number} [faceLandmarks.noseRootLeft.y] The vertical component, in
- * pixels.
- * @member {object} [faceLandmarks.noseRootRight]
- * @member {number} [faceLandmarks.noseRootRight.x] The horizontal component,
- * in pixels.
- * @member {number} [faceLandmarks.noseRootRight.y] The vertical component, in
- * pixels.
- * @member {object} [faceLandmarks.noseLeftAlarTop]
- * @member {number} [faceLandmarks.noseLeftAlarTop.x] The horizontal component,
- * in pixels.
- * @member {number} [faceLandmarks.noseLeftAlarTop.y] The vertical component,
- * in pixels.
- * @member {object} [faceLandmarks.noseRightAlarTop]
- * @member {number} [faceLandmarks.noseRightAlarTop.x] The horizontal
+ * @property {object} [faceLandmarks.eyebrowRightInner]
+ * @property {number} [faceLandmarks.eyebrowRightInner.x] The horizontal
  * component, in pixels.
- * @member {number} [faceLandmarks.noseRightAlarTop.y] The vertical component,
+ * @property {number} [faceLandmarks.eyebrowRightInner.y] The vertical
+ * component, in pixels.
+ * @property {object} [faceLandmarks.eyebrowRightOuter]
+ * @property {number} [faceLandmarks.eyebrowRightOuter.x] The horizontal
+ * component, in pixels.
+ * @property {number} [faceLandmarks.eyebrowRightOuter.y] The vertical
+ * component, in pixels.
+ * @property {object} [faceLandmarks.eyeRightInner]
+ * @property {number} [faceLandmarks.eyeRightInner.x] The horizontal component,
  * in pixels.
- * @member {object} [faceLandmarks.noseLeftAlarOutTip]
- * @member {number} [faceLandmarks.noseLeftAlarOutTip.x] The horizontal
- * component, in pixels.
- * @member {number} [faceLandmarks.noseLeftAlarOutTip.y] The vertical
- * component, in pixels.
- * @member {object} [faceLandmarks.noseRightAlarOutTip]
- * @member {number} [faceLandmarks.noseRightAlarOutTip.x] The horizontal
- * component, in pixels.
- * @member {number} [faceLandmarks.noseRightAlarOutTip.y] The vertical
- * component, in pixels.
- * @member {object} [faceLandmarks.upperLipTop]
- * @member {number} [faceLandmarks.upperLipTop.x] The horizontal component, in
- * pixels.
- * @member {number} [faceLandmarks.upperLipTop.y] The vertical component, in
- * pixels.
- * @member {object} [faceLandmarks.upperLipBottom]
- * @member {number} [faceLandmarks.upperLipBottom.x] The horizontal component,
+ * @property {number} [faceLandmarks.eyeRightInner.y] The vertical component,
  * in pixels.
- * @member {number} [faceLandmarks.upperLipBottom.y] The vertical component, in
- * pixels.
- * @member {object} [faceLandmarks.underLipTop]
- * @member {number} [faceLandmarks.underLipTop.x] The horizontal component, in
- * pixels.
- * @member {number} [faceLandmarks.underLipTop.y] The vertical component, in
- * pixels.
- * @member {object} [faceLandmarks.underLipBottom]
- * @member {number} [faceLandmarks.underLipBottom.x] The horizontal component,
+ * @property {object} [faceLandmarks.eyeRightTop]
+ * @property {number} [faceLandmarks.eyeRightTop.x] The horizontal component,
  * in pixels.
- * @member {number} [faceLandmarks.underLipBottom.y] The vertical component, in
+ * @property {number} [faceLandmarks.eyeRightTop.y] The vertical component, in
  * pixels.
- * @member {object} [faceAttributes]
- * @member {number} [faceAttributes.age] Age in years
- * @member {string} [faceAttributes.gender] Possible gender of the face.
+ * @property {object} [faceLandmarks.eyeRightBottom]
+ * @property {number} [faceLandmarks.eyeRightBottom.x] The horizontal
+ * component, in pixels.
+ * @property {number} [faceLandmarks.eyeRightBottom.y] The vertical component,
+ * in pixels.
+ * @property {object} [faceLandmarks.eyeRightOuter]
+ * @property {number} [faceLandmarks.eyeRightOuter.x] The horizontal component,
+ * in pixels.
+ * @property {number} [faceLandmarks.eyeRightOuter.y] The vertical component,
+ * in pixels.
+ * @property {object} [faceLandmarks.noseRootLeft]
+ * @property {number} [faceLandmarks.noseRootLeft.x] The horizontal component,
+ * in pixels.
+ * @property {number} [faceLandmarks.noseRootLeft.y] The vertical component, in
+ * pixels.
+ * @property {object} [faceLandmarks.noseRootRight]
+ * @property {number} [faceLandmarks.noseRootRight.x] The horizontal component,
+ * in pixels.
+ * @property {number} [faceLandmarks.noseRootRight.y] The vertical component,
+ * in pixels.
+ * @property {object} [faceLandmarks.noseLeftAlarTop]
+ * @property {number} [faceLandmarks.noseLeftAlarTop.x] The horizontal
+ * component, in pixels.
+ * @property {number} [faceLandmarks.noseLeftAlarTop.y] The vertical component,
+ * in pixels.
+ * @property {object} [faceLandmarks.noseRightAlarTop]
+ * @property {number} [faceLandmarks.noseRightAlarTop.x] The horizontal
+ * component, in pixels.
+ * @property {number} [faceLandmarks.noseRightAlarTop.y] The vertical
+ * component, in pixels.
+ * @property {object} [faceLandmarks.noseLeftAlarOutTip]
+ * @property {number} [faceLandmarks.noseLeftAlarOutTip.x] The horizontal
+ * component, in pixels.
+ * @property {number} [faceLandmarks.noseLeftAlarOutTip.y] The vertical
+ * component, in pixels.
+ * @property {object} [faceLandmarks.noseRightAlarOutTip]
+ * @property {number} [faceLandmarks.noseRightAlarOutTip.x] The horizontal
+ * component, in pixels.
+ * @property {number} [faceLandmarks.noseRightAlarOutTip.y] The vertical
+ * component, in pixels.
+ * @property {object} [faceLandmarks.upperLipTop]
+ * @property {number} [faceLandmarks.upperLipTop.x] The horizontal component,
+ * in pixels.
+ * @property {number} [faceLandmarks.upperLipTop.y] The vertical component, in
+ * pixels.
+ * @property {object} [faceLandmarks.upperLipBottom]
+ * @property {number} [faceLandmarks.upperLipBottom.x] The horizontal
+ * component, in pixels.
+ * @property {number} [faceLandmarks.upperLipBottom.y] The vertical component,
+ * in pixels.
+ * @property {object} [faceLandmarks.underLipTop]
+ * @property {number} [faceLandmarks.underLipTop.x] The horizontal component,
+ * in pixels.
+ * @property {number} [faceLandmarks.underLipTop.y] The vertical component, in
+ * pixels.
+ * @property {object} [faceLandmarks.underLipBottom]
+ * @property {number} [faceLandmarks.underLipBottom.x] The horizontal
+ * component, in pixels.
+ * @property {number} [faceLandmarks.underLipBottom.y] The vertical component,
+ * in pixels.
+ * @property {object} [faceAttributes]
+ * @property {number} [faceAttributes.age] Age in years
+ * @property {string} [faceAttributes.gender] Possible gender of the face.
  * Possible values include: 'male', 'female', 'genderless'
- * @member {number} [faceAttributes.smile] Smile intensity, a number between
+ * @property {number} [faceAttributes.smile] Smile intensity, a number between
  * [0,1]
- * @member {object} [faceAttributes.facialHair] Properties describing facial
+ * @property {object} [faceAttributes.facialHair] Properties describing facial
  * hair attributes.
- * @member {number} [faceAttributes.facialHair.moustache]
- * @member {number} [faceAttributes.facialHair.beard]
- * @member {number} [faceAttributes.facialHair.sideburns]
- * @member {string} [faceAttributes.glasses] Glasses type if any of the face.
+ * @property {number} [faceAttributes.facialHair.moustache]
+ * @property {number} [faceAttributes.facialHair.beard]
+ * @property {number} [faceAttributes.facialHair.sideburns]
+ * @property {string} [faceAttributes.glasses] Glasses type if any of the face.
  * Possible values include: 'noGlasses', 'readingGlasses', 'sunglasses',
  * 'swimmingGoggles'
- * @member {object} [faceAttributes.headPose] Properties indicating head pose
+ * @property {object} [faceAttributes.headPose] Properties indicating head pose
  * of the face.
- * @member {number} [faceAttributes.headPose.roll]
- * @member {number} [faceAttributes.headPose.yaw]
- * @member {number} [faceAttributes.headPose.pitch]
- * @member {object} [faceAttributes.emotion] Properties describing facial
+ * @property {number} [faceAttributes.headPose.roll]
+ * @property {number} [faceAttributes.headPose.yaw]
+ * @property {number} [faceAttributes.headPose.pitch]
+ * @property {object} [faceAttributes.emotion] Properties describing facial
  * emotion in form of confidence ranging from 0 to 1.
- * @member {number} [faceAttributes.emotion.anger]
- * @member {number} [faceAttributes.emotion.contempt]
- * @member {number} [faceAttributes.emotion.disgust]
- * @member {number} [faceAttributes.emotion.fear]
- * @member {number} [faceAttributes.emotion.happiness]
- * @member {number} [faceAttributes.emotion.neutral]
- * @member {number} [faceAttributes.emotion.sadness]
- * @member {number} [faceAttributes.emotion.surprise]
- * @member {object} [faceAttributes.hair] Properties describing hair
+ * @property {number} [faceAttributes.emotion.anger]
+ * @property {number} [faceAttributes.emotion.contempt]
+ * @property {number} [faceAttributes.emotion.disgust]
+ * @property {number} [faceAttributes.emotion.fear]
+ * @property {number} [faceAttributes.emotion.happiness]
+ * @property {number} [faceAttributes.emotion.neutral]
+ * @property {number} [faceAttributes.emotion.sadness]
+ * @property {number} [faceAttributes.emotion.surprise]
+ * @property {object} [faceAttributes.hair] Properties describing hair
  * attributes.
- * @member {number} [faceAttributes.hair.bald] A number describing confidence
+ * @property {number} [faceAttributes.hair.bald] A number describing confidence
  * level of whether the person is bald.
- * @member {boolean} [faceAttributes.hair.invisible] A boolean value describing
- * whether the hair is visible in the image.
- * @member {array} [faceAttributes.hair.hairColor] An array of candidate colors
- * and confidence level in the presence of each.
- * @member {object} [faceAttributes.makeup] Properties describing present
+ * @property {boolean} [faceAttributes.hair.invisible] A boolean value
+ * describing whether the hair is visible in the image.
+ * @property {array} [faceAttributes.hair.hairColor] An array of candidate
+ * colors and confidence level in the presence of each.
+ * @property {object} [faceAttributes.makeup] Properties describing present
  * makeups on a given face.
- * @member {boolean} [faceAttributes.makeup.eyeMakeup] A boolean value
+ * @property {boolean} [faceAttributes.makeup.eyeMakeup] A boolean value
  * describing whether eye makeup is present on a face.
- * @member {boolean} [faceAttributes.makeup.lipMakeup] A boolean value
+ * @property {boolean} [faceAttributes.makeup.lipMakeup] A boolean value
  * describing whether lip makeup is present on a face.
- * @member {object} [faceAttributes.occlusion] Properties describing occlusions
- * on a given face.
- * @member {boolean} [faceAttributes.occlusion.foreheadOccluded] A boolean
+ * @property {object} [faceAttributes.occlusion] Properties describing
+ * occlusions on a given face.
+ * @property {boolean} [faceAttributes.occlusion.foreheadOccluded] A boolean
  * value indicating whether forehead is occluded.
- * @member {boolean} [faceAttributes.occlusion.eyeOccluded] A boolean value
+ * @property {boolean} [faceAttributes.occlusion.eyeOccluded] A boolean value
  * indicating whether eyes are occluded.
- * @member {boolean} [faceAttributes.occlusion.mouthOccluded] A boolean value
+ * @property {boolean} [faceAttributes.occlusion.mouthOccluded] A boolean value
  * indicating whether the mouth is occluded.
- * @member {array} [faceAttributes.accessories] Properties describing any
+ * @property {array} [faceAttributes.accessories] Properties describing any
  * accessories on a given face.
- * @member {object} [faceAttributes.blur] Properties describing any presence of
- * blur within the image.
- * @member {string} [faceAttributes.blur.blurLevel] An enum value indicating
+ * @property {object} [faceAttributes.blur] Properties describing any presence
+ * of blur within the image.
+ * @property {string} [faceAttributes.blur.blurLevel] An enum value indicating
  * level of blurriness. Possible values include: 'Low', 'Medium', 'High'
- * @member {number} [faceAttributes.blur.value] A number indicating level of
+ * @property {number} [faceAttributes.blur.value] A number indicating level of
  * blurriness ranging from 0 to 1.
- * @member {object} [faceAttributes.exposure] Properties describing exposure
+ * @property {object} [faceAttributes.exposure] Properties describing exposure
  * level of the image.
- * @member {string} [faceAttributes.exposure.exposureLevel] An enum value
+ * @property {string} [faceAttributes.exposure.exposureLevel] An enum value
  * indicating level of exposure. Possible values include: 'UnderExposure',
  * 'GoodExposure', 'OverExposure'
- * @member {number} [faceAttributes.exposure.value] A number indicating level
+ * @property {number} [faceAttributes.exposure.value] A number indicating level
  * of exposure level ranging from 0 to 1. [0, 0.25) is under exposure. [0.25,
  * 0.75) is good exposure. [0.75, 1] is over exposure.
- * @member {object} [faceAttributes.noise] Properties describing noise level of
- * the image.
- * @member {string} [faceAttributes.noise.noiseLevel] An enum value indicating
- * level of noise. Possible values include: 'Low', 'Medium', 'High'
- * @member {number} [faceAttributes.noise.value] A number indicating level of
+ * @property {object} [faceAttributes.noise] Properties describing noise level
+ * of the image.
+ * @property {string} [faceAttributes.noise.noiseLevel] An enum value
+ * indicating level of noise. Possible values include: 'Low', 'Medium', 'High'
+ * @property {number} [faceAttributes.noise.value] A number indicating level of
  * noise level ranging from 0 to 1. [0, 0.25) is under exposure. [0.25, 0.75)
  * is good exposure. [0.75, 1] is over exposure. [0, 0.3) is low noise level.
  * [0.3, 0.7) is medium noise level. [0.7, 1] is high noise level.
@@ -720,29 +727,29 @@ export interface DetectedFace {
  * @constructor
  * Request body for find similar operation.
  *
- * @member {uuid} faceId FaceId of the query face. User needs to call Face -
+ * @property {uuid} faceId FaceId of the query face. User needs to call Face -
  * Detect first to get a valid faceId. Note that this faceId is not persisted
  * and will expire 24 hours after the detection call
- * @member {string} [faceListId] An existing user-specified unique candidate
+ * @property {string} [faceListId] An existing user-specified unique candidate
  * face list, created in Face List - Create a Face List. Face list contains a
  * set of persistedFaceIds which are persisted and will never expire. Parameter
  * faceListId, largeFaceListId and faceIds should not be provided at the same
  * time。
- * @member {string} [largeFaceListId] An existing user-specified unique
+ * @property {string} [largeFaceListId] An existing user-specified unique
  * candidate large face list, created in LargeFaceList - Create. Large face
  * list contains a set of persistedFaceIds which are persisted and will never
  * expire. Parameter faceListId, largeFaceListId and faceIds should not be
  * provided at the same time.
- * @member {array} [faceIds] An array of candidate faceIds. All of them are
+ * @property {array} [faceIds] An array of candidate faceIds. All of them are
  * created by Face - Detect and the faceIds will expire 24 hours after the
  * detection call. The number of faceIds is limited to 1000. Parameter
  * faceListId, largeFaceListId and faceIds should not be provided at the same
  * time.
- * @member {number} [maxNumOfCandidatesReturned] The number of top similar
+ * @property {number} [maxNumOfCandidatesReturned] The number of top similar
  * faces returned. The valid range is [1, 1000]. Default value: 20 .
- * @member {string} [mode] Similar face searching mode. It can be "matchPerson"
- * or "matchFace". Possible values include: 'matchPerson', 'matchFace'. Default
- * value: 'matchPerson' .
+ * @property {string} [mode] Similar face searching mode. It can be
+ * "matchPerson" or "matchFace". Possible values include: 'matchPerson',
+ * 'matchFace'. Default value: 'matchPerson' .
  */
 export interface FindSimilarRequest {
   faceId: string;
@@ -759,14 +766,14 @@ export interface FindSimilarRequest {
  * @constructor
  * Response body for find similar face operation.
  *
- * @member {uuid} [faceId] FaceId of candidate face when find by faceIds.
+ * @property {uuid} [faceId] FaceId of candidate face when find by faceIds.
  * faceId is created by Face - Detect and will expire 24 hours after the
  * detection call
- * @member {uuid} [persistedFaceId] PersistedFaceId of candidate face when find
- * by faceListId. persistedFaceId in face list is persisted and will not
+ * @property {uuid} [persistedFaceId] PersistedFaceId of candidate face when
+ * find by faceListId. persistedFaceId in face list is persisted and will not
  * expire. As showed in below response
- * @member {number} confidence Similarity confidence of the candidate face. The
- * higher confidence, the more similar. Range between [0,1].
+ * @property {number} confidence Similarity confidence of the candidate face.
+ * The higher confidence, the more similar. Range between [0,1].
  */
 export interface SimilarFace {
   faceId?: string;
@@ -780,8 +787,8 @@ export interface SimilarFace {
  * @constructor
  * Request body for group request.
  *
- * @member {array} faceIds Array of candidate faceId created by Face - Detect.
- * The maximum is 1000 faces
+ * @property {array} faceIds Array of candidate faceId created by Face -
+ * Detect. The maximum is 1000 faces
  */
 export interface GroupRequest {
   faceIds: string[];
@@ -793,9 +800,9 @@ export interface GroupRequest {
  * @constructor
  * An array of face groups based on face similarity.
  *
- * @member {array} groups A partition of the original faces based on face
+ * @property {array} groups A partition of the original faces based on face
  * similarity. Groups are ranked by number of faces
- * @member {array} [messyGroup] Face ids array of faces that cannot find any
+ * @property {array} [messyGroup] Face ids array of faces that cannot find any
  * similar faces from original faces.
  */
 export interface GroupResult {
@@ -809,19 +816,20 @@ export interface GroupResult {
  * @constructor
  * Request body for identify face operation.
  *
- * @member {array} faceIds Array of query faces faceIds, created by the Face -
- * Detect. Each of the faces are identified independently. The valid number of
- * faceIds is between [1, 10].
- * @member {string} [personGroupId] PersonGroupId of the target person group,
+ * @property {array} faceIds Array of query faces faceIds, created by the Face
+ * - Detect. Each of the faces are identified independently. The valid number
+ * of faceIds is between [1, 10].
+ * @property {string} [personGroupId] PersonGroupId of the target person group,
  * created by PersonGroup - Create. Parameter personGroupId and
  * largePersonGroupId should not be provided at the same time.
- * @member {string} [largePersonGroupId] LargePersonGroupId of the target large
- * person group, created by LargePersonGroup - Create. Parameter personGroupId
- * and largePersonGroupId should not be provided at the same time.
- * @member {number} [maxNumOfCandidatesReturned] The range of
+ * @property {string} [largePersonGroupId] LargePersonGroupId of the target
+ * large person group, created by LargePersonGroup - Create. Parameter
+ * personGroupId and largePersonGroupId should not be provided at the same
+ * time.
+ * @property {number} [maxNumOfCandidatesReturned] The range of
  * maxNumOfCandidatesReturned is between 1 and 5 (default is 1). Default value:
  * 1 .
- * @member {number} [confidenceThreshold] Confidence threshold of
+ * @property {number} [confidenceThreshold] Confidence threshold of
  * identification, used to judge whether one face belong to one person. The
  * range of confidenceThreshold is [0, 1] (default specified by algorithm).
  */
@@ -839,9 +847,9 @@ export interface IdentifyRequest {
  * @constructor
  * All possible faces that may qualify.
  *
- * @member {uuid} personId Id of candidate
- * @member {number} confidence Confidence threshold of identification, used to
- * judge whether one face belong to one person. The range of
+ * @property {uuid} personId Id of candidate
+ * @property {number} confidence Confidence threshold of identification, used
+ * to judge whether one face belong to one person. The range of
  * confidenceThreshold is [0, 1] (default specified by algorithm).
  */
 export interface IdentifyCandidate {
@@ -855,8 +863,8 @@ export interface IdentifyCandidate {
  * @constructor
  * Response body for identify face operation.
  *
- * @member {uuid} faceId FaceId of the query face
- * @member {array} candidates Identified person candidates for that face
+ * @property {uuid} faceId FaceId of the query face
+ * @property {array} candidates Identified person candidates for that face
  * (ranked by confidence). Array size should be no larger than input
  * maxNumOfCandidatesReturned. If no person is identified, will return an empty
  * array.
@@ -872,16 +880,16 @@ export interface IdentifyResult {
  * @constructor
  * Request body for face to person verification.
  *
- * @member {uuid} faceId FaceId of the face, comes from Face - Detect
- * @member {string} [personGroupId] Using existing personGroupId and personId
+ * @property {uuid} faceId FaceId of the face, comes from Face - Detect
+ * @property {string} [personGroupId] Using existing personGroupId and personId
  * for fast loading a specified person. personGroupId is created in PersonGroup
  * - Create. Parameter personGroupId and largePersonGroupId should not be
  * provided at the same time.
- * @member {string} [largePersonGroupId] Using existing largePersonGroupId and
- * personId for fast loading a specified person. largePersonGroupId is created
- * in LargePersonGroup - Create. Parameter personGroupId and largePersonGroupId
- * should not be provided at the same time.
- * @member {uuid} personId Specify a certain person in a person group or a
+ * @property {string} [largePersonGroupId] Using existing largePersonGroupId
+ * and personId for fast loading a specified person. largePersonGroupId is
+ * created in LargePersonGroup - Create. Parameter personGroupId and
+ * largePersonGroupId should not be provided at the same time.
+ * @property {uuid} personId Specify a certain person in a person group or a
  * large person group. personId is created in PersonGroup Person - Create or
  * LargePersonGroup Person - Create.
  */
@@ -898,8 +906,8 @@ export interface VerifyFaceToPersonRequest {
  * @constructor
  * Request body for face to face verification.
  *
- * @member {uuid} faceId1 FaceId of the first face, comes from Face - Detect
- * @member {uuid} faceId2 FaceId of the second face, comes from Face - Detect
+ * @property {uuid} faceId1 FaceId of the first face, comes from Face - Detect
+ * @property {uuid} faceId2 FaceId of the second face, comes from Face - Detect
  */
 export interface VerifyFaceToFaceRequest {
   faceId1: string;
@@ -912,13 +920,13 @@ export interface VerifyFaceToFaceRequest {
  * @constructor
  * Result of the verify operation.
  *
- * @member {boolean} isIdentical True if the two faces belong to the same
+ * @property {boolean} isIdentical True if the two faces belong to the same
  * person or the face belongs to the person, otherwise false.
- * @member {number} confidence A number indicates the similarity confidence of
- * whether two faces belong to the same person, or whether the face belongs to
- * the person. By default, isIdentical is set to True if similarity confidence
- * is greater than or equal to 0.5. This is useful for advanced users to
- * override "isIdentical" and fine-tune the result on their own data.
+ * @property {number} confidence A number indicates the similarity confidence
+ * of whether two faces belong to the same person, or whether the face belongs
+ * to the person. By default, isIdentical is set to True if similarity
+ * confidence is greater than or equal to 0.5. This is useful for advanced
+ * users to override "isIdentical" and fine-tune the result on their own data.
  */
 export interface VerifyResult {
   isIdentical: boolean;
@@ -931,10 +939,10 @@ export interface VerifyResult {
  * @constructor
  * PersonFace object.
  *
- * @member {uuid} persistedFaceId The persistedFaceId of the target face, which
- * is persisted and will not expire. Different from faceId created by Face -
- * Detect and will expire in 24 hours after the detection call.
- * @member {string} [userData] User-provided data attached to the face. The
+ * @property {uuid} persistedFaceId The persistedFaceId of the target face,
+ * which is persisted and will not expire. Different from faceId created by
+ * Face - Detect and will expire in 24 hours after the detection call.
+ * @property {string} [userData] User-provided data attached to the face. The
  * size limit is 1KB.
  */
 export interface PersistedFace {
@@ -949,8 +957,8 @@ export interface PersistedFace {
  * A combination of user defined name and user specified data for the person,
  * largePersonGroup/personGroup, and largeFaceList/faceList.
  *
- * @member {string} [name] User defined name, maximum length is 128.
- * @member {string} [userData] User specified data. Length should not exceed
+ * @property {string} [name] User defined name, maximum length is 128.
+ * @property {string} [userData] User specified data. Length should not exceed
  * 16KB.
  */
 export interface NameAndUserDataContract {
@@ -964,8 +972,8 @@ export interface NameAndUserDataContract {
  * @constructor
  * Face list object.
  *
- * @member {string} faceListId FaceListId of the target face list.
- * @member {array} [persistedFaces] Persisted faces within the face list.
+ * @property {string} faceListId FaceListId of the target face list.
+ * @property {array} [persistedFaces] Persisted faces within the face list.
  */
 export interface FaceList extends NameAndUserDataContract {
   faceListId: string;
@@ -978,7 +986,7 @@ export interface FaceList extends NameAndUserDataContract {
  * @constructor
  * Person group object.
  *
- * @member {string} personGroupId PersonGroupId of the target person group.
+ * @property {string} personGroupId PersonGroupId of the target person group.
  */
 export interface PersonGroup extends NameAndUserDataContract {
   personGroupId: string;
@@ -990,8 +998,8 @@ export interface PersonGroup extends NameAndUserDataContract {
  * @constructor
  * Person object.
  *
- * @member {uuid} personId PersonId of the target face list.
- * @member {array} [persistedFaceIds] PersistedFaceIds of registered faces in
+ * @property {uuid} personId PersonId of the target face list.
+ * @property {array} [persistedFaceIds] PersistedFaceIds of registered faces in
  * the person. These persistedFaceIds are returned from Person - Add a Person
  * Face, and will not expire.
  */
@@ -1006,7 +1014,7 @@ export interface Person extends NameAndUserDataContract {
  * @constructor
  * Large face list object.
  *
- * @member {string} largeFaceListId LargeFaceListId of the target large face
+ * @property {string} largeFaceListId LargeFaceListId of the target large face
  * list.
  */
 export interface LargeFaceList extends NameAndUserDataContract {
@@ -1019,7 +1027,7 @@ export interface LargeFaceList extends NameAndUserDataContract {
  * @constructor
  * Large person group object.
  *
- * @member {string} largePersonGroupId LargePersonGroupId of the target large
+ * @property {string} largePersonGroupId LargePersonGroupId of the target large
  * person groups
  */
 export interface LargePersonGroup extends NameAndUserDataContract {
@@ -1032,7 +1040,7 @@ export interface LargePersonGroup extends NameAndUserDataContract {
  * @constructor
  * Request to update face data.
  *
- * @member {string} [userData] User-provided data attached to the face. The
+ * @property {string} [userData] User-provided data attached to the face. The
  * size limit is 1KB.
  */
 export interface UpdateFaceRequest {
@@ -1045,7 +1053,7 @@ export interface UpdateFaceRequest {
  * @constructor
  * Training status object.
  *
- * @member {string} status Training status: notstarted, running, succeeded,
+ * @property {string} status Training status: notstarted, running, succeeded,
  * failed. If the training process is waiting to perform, the status is
  * notstarted. If the training is ongoing, the status is running. Status
  * succeed means this person group or large person group is ready for Face -
@@ -1054,16 +1062,16 @@ export interface UpdateFaceRequest {
  * group or large person group, or no persisted face exist in the large face
  * list. Possible values include: 'nonstarted', 'running', 'succeeded',
  * 'failed'
- * @member {date} created A combined UTC date and time string that describes
+ * @property {date} created A combined UTC date and time string that describes
  * the created time of the person group, large person group or large face list.
- * @member {date} [lastAction] A combined UTC date and time string that
+ * @property {date} [lastAction] A combined UTC date and time string that
  * describes the last modify time of the person group, large person group or
  * large face list, could be null value when the group is not successfully
  * trained.
- * @member {date} [lastSuccessfulTraining] A combined UTC date and time string
- * that describes the last successful training time of the person group, large
- * person group or large face list.
- * @member {string} [message] Show failure message when training failed
+ * @property {date} [lastSuccessfulTraining] A combined UTC date and time
+ * string that describes the last successful training time of the person group,
+ * large person group or large face list.
+ * @property {string} [message] Show failure message when training failed
  * (omitted when training succeed).
  */
 export interface TrainingStatus {
@@ -1078,7 +1086,7 @@ export interface TrainingStatus {
  * @class
  * Initializes a new instance of the ImageUrl class.
  * @constructor
- * @member {string} url Publicly reachable URL of an image
+ * @property {string} url Publicly reachable URL of an image
  */
 export interface ImageUrl {
   url: string;

@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/microsoftResourceHealth.js",
   "types": "./lib/microsoftResourceHealth.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node/lib/services/resourceHealthManagement",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/resourceHealthManagement",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"

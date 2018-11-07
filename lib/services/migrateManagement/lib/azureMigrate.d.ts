@@ -36,9 +36,9 @@ export default class AzureMigrate extends AzureServiceClient {
    *
    * @param {string} [options.acceptLanguage] - Standard request header. Used by service to respond to client in appropriate language.
    *
-   * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   * @param {number} [options.longRunningOperationRetryTimeout] - The retry timeout in seconds for Long Running Operations. Default value is 30.
    *
-   * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
   constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
@@ -56,6 +56,8 @@ export default class AzureMigrate extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  location: operations.Location;
+  assessmentOptions: operations.AssessmentOptions;
   projects: operations.Projects;
   machines: operations.Machines;
   groups: operations.Groups;

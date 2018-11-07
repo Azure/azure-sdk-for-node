@@ -22,10 +22,10 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Hub billing info.
  *
- * @member {string} [skuName] The sku name.
- * @member {number} [minUnits] The minimum number of units will be billed. One
- * unit is 10,000 Profiles and 100,000 Interactions.
- * @member {number} [maxUnits] The maximum number of units can be used.  One
+ * @property {string} [skuName] The sku name.
+ * @property {number} [minUnits] The minimum number of units will be billed.
+ * One unit is 10,000 Profiles and 100,000 Interactions.
+ * @property {number} [maxUnits] The maximum number of units can be used.  One
  * unit is 10,000 Profiles and 100,000 Interactions.
  */
 export interface HubBillingInfoFormat {
@@ -40,11 +40,11 @@ export interface HubBillingInfoFormat {
  * @constructor
  * Common properties of Azure resource.
  *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
- * @member {string} [location] Resource location.
- * @member {object} [tags] Resource tags.
+ * @property {string} [id] Resource ID.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
+ * @property {string} [location] Resource location.
+ * @property {object} [tags] Resource tags.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -60,17 +60,17 @@ export interface Resource extends BaseResource {
  * @constructor
  * Hub resource.
  *
- * @member {string} [apiEndpoint] API endpoint URL of the hub.
- * @member {string} [webEndpoint] Web endpoint URL of the hub.
- * @member {string} [provisioningState] Provisioning state of the hub.
- * @member {number} [tenantFeatures] The bit flags for enabled hub features.
+ * @property {string} [apiEndpoint] API endpoint URL of the hub.
+ * @property {string} [webEndpoint] Web endpoint URL of the hub.
+ * @property {string} [provisioningState] Provisioning state of the hub.
+ * @property {number} [tenantFeatures] The bit flags for enabled hub features.
  * Bit 0 is set to 1 indicates graph is enabled, or disabled if set to 0. Bit 1
  * is set to 1 indicates the hub is disabled, or enabled if set to 0.
- * @member {object} [hubBillingInfo] Billing settings of the hub.
- * @member {string} [hubBillingInfo.skuName] The sku name.
- * @member {number} [hubBillingInfo.minUnits] The minimum number of units will
- * be billed. One unit is 10,000 Profiles and 100,000 Interactions.
- * @member {number} [hubBillingInfo.maxUnits] The maximum number of units can
+ * @property {object} [hubBillingInfo] Billing settings of the hub.
+ * @property {string} [hubBillingInfo.skuName] The sku name.
+ * @property {number} [hubBillingInfo.minUnits] The minimum number of units
+ * will be billed. One unit is 10,000 Profiles and 100,000 Interactions.
+ * @property {number} [hubBillingInfo.maxUnits] The maximum number of units can
  * be used.  One unit is 10,000 Profiles and 100,000 Interactions.
  */
 export interface Hub extends Resource {
@@ -87,16 +87,16 @@ export interface Hub extends Resource {
  * @constructor
  * The Metadata definition base.
  *
- * @member {object} [attributes] The attributes for the Type.
- * @member {object} [description] Localized descriptions for the property.
- * @member {object} [displayName] Localized display names for the property.
- * @member {object} [localizedAttributes] Any custom localized attributes for
+ * @property {object} [attributes] The attributes for the Type.
+ * @property {object} [description] Localized descriptions for the property.
+ * @property {object} [displayName] Localized display names for the property.
+ * @property {object} [localizedAttributes] Any custom localized attributes for
  * the Type.
- * @member {string} [smallImage] Small Image associated with the Property or
+ * @property {string} [smallImage] Small Image associated with the Property or
  * EntityType.
- * @member {string} [mediumImage] Medium Image associated with the Property or
- * EntityType.
- * @member {string} [largeImage] Large Image associated with the Property or
+ * @property {string} [mediumImage] Medium Image associated with the Property
+ * or EntityType.
+ * @property {string} [largeImage] Large Image associated with the Property or
  * EntityType.
  */
 export interface MetadataDefinitionBase {
@@ -115,8 +115,8 @@ export interface MetadataDefinitionBase {
  * @constructor
  * Valid enum values in case of an enum property.
  *
- * @member {number} [value] The integer value of the enum member.
- * @member {object} [localizedValueNames] Localized names of the enum member.
+ * @property {number} [value] The integer value of the enum member.
+ * @property {object} [localizedValueNames] Localized names of the enum member.
  */
 export interface ProfileEnumValidValuesFormat {
   value?: number;
@@ -130,14 +130,14 @@ export interface ProfileEnumValidValuesFormat {
  * The data source precedence is a way to know the precedence of each data
  * source.
  *
- * @member {string} [name] The data source name
- * @member {string} [dataSourceType] The data source type. Possible values
+ * @property {string} [name] The data source name
+ * @property {string} [dataSourceType] The data source type. Possible values
  * include: 'Connector', 'LinkInteraction', 'SystemDefault'
- * @member {string} [status] The data source status. Possible values include:
+ * @property {string} [status] The data source status. Possible values include:
  * 'None', 'Active', 'Deleted'
- * @member {number} [id] The data source ID.
- * @member {string} [dataSourceReferenceId] The data source reference id.
- * @member {number} [precedence] the precedence value.
+ * @property {number} [id] The data source ID.
+ * @property {string} [dataSourceReferenceId] The data source reference id.
+ * @property {number} [precedence] the precedence value.
  */
 export interface DataSourcePrecedence {
   readonly name?: string;
@@ -154,33 +154,34 @@ export interface DataSourcePrecedence {
  * @constructor
  * Property definition.
  *
- * @member {string} [arrayValueSeparator] Array value separator for properties
- * with isArray set.
- * @member {array} [enumValidValues] Describes valid values for an enum
+ * @property {string} [arrayValueSeparator] Array value separator for
+ * properties with isArray set.
+ * @property {array} [enumValidValues] Describes valid values for an enum
  * property.
- * @member {string} fieldName Name of the property.
- * @member {string} fieldType Type of the property.
- * @member {boolean} [isArray] Indicates if the property is actually an array
+ * @property {string} fieldName Name of the property.
+ * @property {string} fieldType Type of the property.
+ * @property {boolean} [isArray] Indicates if the property is actually an array
  * of the fieldType above on the data api.
- * @member {boolean} [isEnum] Indicates if the property is an enum.
- * @member {boolean} [isFlagEnum] Indicates if the property is an flag enum.
- * @member {boolean} [isImage] Whether the property is an Image.
- * @member {boolean} [isLocalizedString] Whether the property is a localized
+ * @property {boolean} [isEnum] Indicates if the property is an enum.
+ * @property {boolean} [isFlagEnum] Indicates if the property is an flag enum.
+ * @property {boolean} [isImage] Whether the property is an Image.
+ * @property {boolean} [isLocalizedString] Whether the property is a localized
  * string.
- * @member {boolean} [isName] Whether the property is a name or a part of name.
- * @member {boolean} [isRequired] Whether property value is required on
+ * @property {boolean} [isName] Whether the property is a name or a part of
+ * name.
+ * @property {boolean} [isRequired] Whether property value is required on
  * instances, IsRequired field only for Intercation. Profile Instance will not
  * check for required field.
- * @member {string} [propertyId] The ID associated with the property.
- * @member {string} [schemaItemPropLink] URL encoded schema.org item prop link
- * for the property.
- * @member {number} [maxLength] Max length of string. Used only if type is
+ * @property {string} [propertyId] The ID associated with the property.
+ * @property {string} [schemaItemPropLink] URL encoded schema.org item prop
+ * link for the property.
+ * @property {number} [maxLength] Max length of string. Used only if type is
  * string.
- * @member {boolean} [isAvailableInGraph] Whether property is available in
+ * @property {boolean} [isAvailableInGraph] Whether property is available in
  * graph or not.
- * @member {array} [dataSourcePrecedenceRules] This is specific to interactions
- * modeled as activities. Data sources are used to determine where data is
- * stored and also in precedence rules.
+ * @property {array} [dataSourcePrecedenceRules] This is specific to
+ * interactions modeled as activities. Data sources are used to determine where
+ * data is stored and also in precedence rules.
  */
 export interface PropertyDefinition {
   arrayValueSeparator?: string;
@@ -207,23 +208,23 @@ export interface PropertyDefinition {
  * @constructor
  * Describes an entity.
  *
- * @member {string} [apiEntitySetName] The api entity set name. This becomes
+ * @property {string} [apiEntitySetName] The api entity set name. This becomes
  * the odata entity set name for the entity Type being refered in this object.
- * @member {string} [entityType] Type of entity. Possible values include:
+ * @property {string} [entityType] Type of entity. Possible values include:
  * 'None', 'Profile', 'Interaction', 'Relationship'
- * @member {array} [fields] The properties of the Profile.
- * @member {number} [instancesCount] The instance count.
- * @member {date} [lastChangedUtc] The last changed time for the type
+ * @property {array} [fields] The properties of the Profile.
+ * @property {number} [instancesCount] The instance count.
+ * @property {date} [lastChangedUtc] The last changed time for the type
  * definition.
- * @member {string} [provisioningState] Provisioning state. Possible values
+ * @property {string} [provisioningState] Provisioning state. Possible values
  * include: 'Provisioning', 'Succeeded', 'Expiring', 'Deleting',
  * 'HumanIntervention', 'Failed'
- * @member {string} [schemaItemTypeLink] The schema org link. This helps ACI
+ * @property {string} [schemaItemTypeLink] The schema org link. This helps ACI
  * identify and suggest semantic models.
- * @member {string} [tenantId] The hub name.
- * @member {string} [timestampFieldName] The timestamp property name.
+ * @property {string} [tenantId] The hub name.
+ * @property {string} [timestampFieldName] The timestamp property name.
  * Represents the time when the interaction or profile update happened.
- * @member {string} [typeName] The name of the entity.
+ * @property {string} [typeName] The name of the entity.
  */
 export interface EntityTypeDefinition extends MetadataDefinitionBase {
   apiEntitySetName?: string;
@@ -244,10 +245,10 @@ export interface EntityTypeDefinition extends MetadataDefinitionBase {
  * @constructor
  * The authorization policy.
  *
- * @member {string} [policyName] Name of the policy.
- * @member {array} permissions The permissions associated with the policy.
- * @member {string} [primaryKey] Primary key assiciated with the policy.
- * @member {string} [secondaryKey] Secondary key assiciated with the policy.
+ * @property {string} [policyName] Name of the policy.
+ * @property {array} permissions The permissions associated with the policy.
+ * @property {string} [primaryKey] Primary key assiciated with the policy.
+ * @property {string} [secondaryKey] Secondary key assiciated with the policy.
  */
 export interface AuthorizationPolicy {
   readonly policyName?: string;
@@ -262,7 +263,7 @@ export interface AuthorizationPolicy {
  * @constructor
  * Salesforce discover setting.
  *
- * @member {string} salesforceConnectionStringSecretUrl The salesforce
+ * @property {string} salesforceConnectionStringSecretUrl The salesforce
  * connection string secret URL.
  */
 export interface SalesforceDiscoverSetting {
@@ -275,11 +276,11 @@ export interface SalesforceDiscoverSetting {
  * @constructor
  * Salesforce table.
  *
- * @member {string} [isProfile] Indicating whether this instance is profile.
- * @member {string} tableCategory The table category.
- * @member {string} tableName The name of the table.
- * @member {string} [tableRemarks] The table remarks.
- * @member {string} tableSchema The table schema.
+ * @property {string} [isProfile] Indicating whether this instance is profile.
+ * @property {string} tableCategory The table category.
+ * @property {string} tableName The name of the table.
+ * @property {string} [tableRemarks] The table remarks.
+ * @property {string} tableSchema The table schema.
  */
 export interface SalesforceTable {
   isProfile?: string;
@@ -295,10 +296,10 @@ export interface SalesforceTable {
  * @constructor
  * The Salesforce connector properties.
  *
- * @member {object} usersetting The user settings.
- * @member {string} [usersetting.salesforceConnectionStringSecretUrl] The
+ * @property {object} usersetting The user settings.
+ * @property {string} [usersetting.salesforceConnectionStringSecretUrl] The
  * salesforce connection string secret URL.
- * @member {array} salesforcetables The Salesforce tables.
+ * @property {array} salesforcetables The Salesforce tables.
  */
 export interface SalesforceConnectorProperties {
   usersetting: SalesforceDiscoverSetting;
@@ -311,7 +312,7 @@ export interface SalesforceConnectorProperties {
  * @constructor
  * The Azure Blob connector properties.
  *
- * @member {string} connectionKeyVaultUrl The connection KeyVault URL.
+ * @property {string} connectionKeyVaultUrl The connection KeyVault URL.
  */
 export interface AzureBlobConnectorProperties {
   connectionKeyVaultUrl: string;
@@ -323,9 +324,9 @@ export interface AzureBlobConnectorProperties {
  * @constructor
  * The CRM connector entities.
  *
- * @member {string} logicalName The logical name.
- * @member {string} [displayName] The display name.
- * @member {boolean} [isProfile] Indicating whether this is profile.
+ * @property {string} logicalName The logical name.
+ * @property {string} [displayName] The display name.
+ * @property {boolean} [isProfile] Indicating whether this is profile.
  */
 export interface CrmConnectorEntities {
   logicalName: string;
@@ -339,11 +340,11 @@ export interface CrmConnectorEntities {
  * @constructor
  * The CRM connector properties.
  *
- * @member {string} [connectionString] The connection string.
- * @member {string} organizationId The organization ID.
- * @member {string} organizationUrl The organization URL.
- * @member {array} entities The entities like account, contact, opportunity.
- * @member {string} [accessToken] The access token.
+ * @property {string} [connectionString] The connection string.
+ * @property {string} organizationId The organization ID.
+ * @property {string} organizationUrl The organization URL.
+ * @property {array} entities The entities like account, contact, opportunity.
+ * @property {string} [accessToken] The access token.
  */
 export interface CrmConnectorProperties {
   connectionString?: string;
@@ -359,10 +360,11 @@ export interface CrmConnectorProperties {
  * @constructor
  * The error mangement.
  *
- * @member {string} errorManagementType The type of error management to use for
- * the mapping. Possible values include: 'RejectAndContinue', 'StopImport',
+ * @property {string} errorManagementType The type of error management to use
+ * for the mapping. Possible values include: 'RejectAndContinue', 'StopImport',
  * 'RejectUntilLimit'
- * @member {number} [errorLimit] The error limit allowed while importing data.
+ * @property {number} [errorLimit] The error limit allowed while importing
+ * data.
  */
 export interface ConnectorMappingErrorManagement {
   errorManagementType: string;
@@ -375,14 +377,14 @@ export interface ConnectorMappingErrorManagement {
  * @constructor
  * Connector mapping property format.
  *
- * @member {string} [columnDelimiter] The character that signifies a break
+ * @property {string} [columnDelimiter] The character that signifies a break
  * between columns.
- * @member {string} [acceptLanguage] The oData language.
- * @member {string} [quoteCharacter] Quote character, used to indicate enquoted
- * fields.
- * @member {string} [quoteEscapeCharacter] Escape character for quotes, can be
- * the same as the quoteCharacter.
- * @member {string} [arraySeparator] Character separating array elements.
+ * @property {string} [acceptLanguage] The oData language.
+ * @property {string} [quoteCharacter] Quote character, used to indicate
+ * enquoted fields.
+ * @property {string} [quoteEscapeCharacter] Escape character for quotes, can
+ * be the same as the quoteCharacter.
+ * @property {string} [arraySeparator] Character separating array elements.
  */
 export interface ConnectorMappingFormat {
   columnDelimiter?: string;
@@ -398,9 +400,9 @@ export interface ConnectorMappingFormat {
  * @constructor
  * Connector mapping property availability.
  *
- * @member {string} [frequency] The frequency to update. Possible values
+ * @property {string} [frequency] The frequency to update. Possible values
  * include: 'Minute', 'Hour', 'Day', 'Week', 'Month'
- * @member {number} interval The interval of the given frequency to use.
+ * @property {number} interval The interval of the given frequency to use.
  */
 export interface ConnectorMappingAvailability {
   frequency?: string;
@@ -413,11 +415,11 @@ export interface ConnectorMappingAvailability {
  * @constructor
  * Connector mapping property structure.
  *
- * @member {string} propertyName The property name of the mapping entity.
- * @member {string} columnName The column name of the import file.
- * @member {string} [customFormatSpecifier] Custom format specifier for input
+ * @property {string} propertyName The property name of the mapping entity.
+ * @property {string} columnName The column name of the import file.
+ * @property {string} [customFormatSpecifier] Custom format specifier for input
  * parsing.
- * @member {boolean} [isEncrypted] Indicates if the column is encrypted.
+ * @property {boolean} [isEncrypted] Indicates if the column is encrypted.
  */
 export interface ConnectorMappingStructure {
   propertyName: string;
@@ -432,10 +434,10 @@ export interface ConnectorMappingStructure {
  * @constructor
  * The complete operation.
  *
- * @member {string} [completionOperationType] The type of completion operation.
- * Possible values include: 'DoNothing', 'DeleteFile', 'MoveFile'
- * @member {string} [destinationFolder] The destination folder where files will
- * be moved to once the import is done.
+ * @property {string} [completionOperationType] The type of completion
+ * operation. Possible values include: 'DoNothing', 'DeleteFile', 'MoveFile'
+ * @property {string} [destinationFolder] The destination folder where files
+ * will be moved to once the import is done.
  */
 export interface ConnectorMappingCompleteOperation {
   completionOperationType?: string;
@@ -448,37 +450,37 @@ export interface ConnectorMappingCompleteOperation {
  * @constructor
  * The connector mapping properties.
  *
- * @member {string} [folderPath] The folder path for the mapping.
- * @member {string} [fileFilter] The file filter for the mapping.
- * @member {boolean} [hasHeader] If the file contains a header or not.
- * @member {object} errorManagement The error management setting for the
+ * @property {string} [folderPath] The folder path for the mapping.
+ * @property {string} [fileFilter] The file filter for the mapping.
+ * @property {boolean} [hasHeader] If the file contains a header or not.
+ * @property {object} errorManagement The error management setting for the
  * mapping.
- * @member {string} [errorManagement.errorManagementType] The type of error
+ * @property {string} [errorManagement.errorManagementType] The type of error
  * management to use for the mapping. Possible values include:
  * 'RejectAndContinue', 'StopImport', 'RejectUntilLimit'
- * @member {number} [errorManagement.errorLimit] The error limit allowed while
- * importing data.
- * @member {object} format The format of mapping property.
- * @member {string} [format.columnDelimiter] The character that signifies a
+ * @property {number} [errorManagement.errorLimit] The error limit allowed
+ * while importing data.
+ * @property {object} format The format of mapping property.
+ * @property {string} [format.columnDelimiter] The character that signifies a
  * break between columns.
- * @member {string} [format.acceptLanguage] The oData language.
- * @member {string} [format.quoteCharacter] Quote character, used to indicate
+ * @property {string} [format.acceptLanguage] The oData language.
+ * @property {string} [format.quoteCharacter] Quote character, used to indicate
  * enquoted fields.
- * @member {string} [format.quoteEscapeCharacter] Escape character for quotes,
- * can be the same as the quoteCharacter.
- * @member {string} [format.arraySeparator] Character separating array
+ * @property {string} [format.quoteEscapeCharacter] Escape character for
+ * quotes, can be the same as the quoteCharacter.
+ * @property {string} [format.arraySeparator] Character separating array
  * elements.
- * @member {object} availability The availability of mapping property.
- * @member {string} [availability.frequency] The frequency to update. Possible
- * values include: 'Minute', 'Hour', 'Day', 'Week', 'Month'
- * @member {number} [availability.interval] The interval of the given frequency
- * to use.
- * @member {array} structure Ingestion mapping information at property level.
- * @member {object} completeOperation The operation after import is done.
- * @member {string} [completeOperation.completionOperationType] The type of
+ * @property {object} availability The availability of mapping property.
+ * @property {string} [availability.frequency] The frequency to update.
+ * Possible values include: 'Minute', 'Hour', 'Day', 'Week', 'Month'
+ * @property {number} [availability.interval] The interval of the given
+ * frequency to use.
+ * @property {array} structure Ingestion mapping information at property level.
+ * @property {object} completeOperation The operation after import is done.
+ * @property {string} [completeOperation.completionOperationType] The type of
  * completion operation. Possible values include: 'DoNothing', 'DeleteFile',
  * 'MoveFile'
- * @member {string} [completeOperation.destinationFolder] The destination
+ * @property {string} [completeOperation.destinationFolder] The destination
  * folder where files will be moved to once the import is done.
  */
 export interface ConnectorMappingProperties {
@@ -498,9 +500,10 @@ export interface ConnectorMappingProperties {
  * @constructor
  * Defines the KPI Threshold limits.
  *
- * @member {number} lowerLimit The lower threshold limit.
- * @member {number} upperLimit The upper threshold limit.
- * @member {boolean} increasingKpi Whether or not the KPI is an increasing KPI.
+ * @property {number} lowerLimit The lower threshold limit.
+ * @property {number} upperLimit The upper threshold limit.
+ * @property {boolean} increasingKpi Whether or not the KPI is an increasing
+ * KPI.
  */
 export interface KpiThresholds {
   lowerLimit: number;
@@ -514,9 +517,9 @@ export interface KpiThresholds {
  * @constructor
  * The KPI GroupBy field metadata.
  *
- * @member {object} [displayName] The display name.
- * @member {string} [fieldName] The name of the field.
- * @member {string} [fieldType] The type of the field.
+ * @property {object} [displayName] The display name.
+ * @property {string} [fieldName] The name of the field.
+ * @property {string} [fieldType] The type of the field.
  */
 export interface KpiGroupByMetadata {
   displayName?: { [propertyName: string]: string };
@@ -530,7 +533,7 @@ export interface KpiGroupByMetadata {
  * @constructor
  * The KPI participant profile metadata.
  *
- * @member {string} typeName Name of the type.
+ * @property {string} typeName Name of the type.
  */
 export interface KpiParticipantProfilesMetadata {
   typeName: string;
@@ -542,8 +545,8 @@ export interface KpiParticipantProfilesMetadata {
  * @constructor
  * The KPI alias.
  *
- * @member {string} aliasName KPI alias name.
- * @member {string} expression The expression.
+ * @property {string} aliasName KPI alias name.
+ * @property {string} expression The expression.
  */
 export interface KpiAlias {
   aliasName: string;
@@ -556,8 +559,8 @@ export interface KpiAlias {
  * @constructor
  * The KPI extract.
  *
- * @member {string} extractName KPI extract name.
- * @member {string} expression The expression.
+ * @property {string} extractName KPI extract name.
+ * @property {string} expression The expression.
  */
 export interface KpiExtract {
   extractName: string;
@@ -570,36 +573,36 @@ export interface KpiExtract {
  * @constructor
  * Defines the KPI Threshold limits.
  *
- * @member {string} entityType The mapping entity type. Possible values
+ * @property {string} entityType The mapping entity type. Possible values
  * include: 'None', 'Profile', 'Interaction', 'Relationship'
- * @member {string} entityTypeName The mapping entity name.
- * @member {string} [tenantId] The hub name.
- * @member {string} [kpiName] The KPI name.
- * @member {object} [displayName] Localized display name for the KPI.
- * @member {object} [description] Localized description for the KPI.
- * @member {string} calculationWindow The calculation window. Possible values
+ * @property {string} entityTypeName The mapping entity name.
+ * @property {string} [tenantId] The hub name.
+ * @property {string} [kpiName] The KPI name.
+ * @property {object} [displayName] Localized display name for the KPI.
+ * @property {object} [description] Localized description for the KPI.
+ * @property {string} calculationWindow The calculation window. Possible values
  * include: 'Lifetime', 'Hour', 'Day', 'Week', 'Month'
- * @member {string} [calculationWindowFieldName] Name of calculation window
+ * @property {string} [calculationWindowFieldName] Name of calculation window
  * field.
- * @member {string} functionProperty The computation function for the KPI.
+ * @property {string} functionProperty The computation function for the KPI.
  * Possible values include: 'Sum', 'Avg', 'Min', 'Max', 'Last', 'Count',
  * 'None', 'CountDistinct'
- * @member {string} expression The computation expression for the KPI.
- * @member {string} [unit] The unit of measurement for the KPI.
- * @member {string} [filter] The filter expression for the KPI.
- * @member {array} [groupBy] the group by properties for the KPI.
- * @member {array} [groupByMetadata] The KPI GroupByMetadata.
- * @member {array} [participantProfilesMetadata] The participant profiles.
- * @member {string} [provisioningState] Provisioning state. Possible values
+ * @property {string} expression The computation expression for the KPI.
+ * @property {string} [unit] The unit of measurement for the KPI.
+ * @property {string} [filter] The filter expression for the KPI.
+ * @property {array} [groupBy] the group by properties for the KPI.
+ * @property {array} [groupByMetadata] The KPI GroupByMetadata.
+ * @property {array} [participantProfilesMetadata] The participant profiles.
+ * @property {string} [provisioningState] Provisioning state. Possible values
  * include: 'Provisioning', 'Succeeded', 'Expiring', 'Deleting',
  * 'HumanIntervention', 'Failed'
- * @member {object} [thresHolds] The KPI thresholds.
- * @member {number} [thresHolds.lowerLimit] The lower threshold limit.
- * @member {number} [thresHolds.upperLimit] The upper threshold limit.
- * @member {boolean} [thresHolds.increasingKpi] Whether or not the KPI is an
+ * @property {object} [thresHolds] The KPI thresholds.
+ * @property {number} [thresHolds.lowerLimit] The lower threshold limit.
+ * @property {number} [thresHolds.upperLimit] The upper threshold limit.
+ * @property {boolean} [thresHolds.increasingKpi] Whether or not the KPI is an
  * increasing KPI.
- * @member {array} [aliases] The aliases.
- * @member {array} [extracts] The KPI extracts.
+ * @property {array} [aliases] The aliases.
+ * @property {array} [extracts] The KPI extracts.
  */
 export interface KpiDefinition {
   entityType: string;
@@ -629,9 +632,9 @@ export interface KpiDefinition {
  * @constructor
  * Common properties of proxy resource.
  *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
+ * @property {string} [id] Resource ID.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
  */
 export interface ProxyResource extends BaseResource {
   readonly id?: string;
@@ -645,9 +648,11 @@ export interface ProxyResource extends BaseResource {
  * @constructor
  * Metadata for a Link's property mapping.
  *
- * @member {string} sourcePropertyName Property name on the source Entity Type.
- * @member {string} targetPropertyName Property name on the target Entity Type.
- * @member {string} [linkType] Link type. Possible values include:
+ * @property {string} sourcePropertyName Property name on the source Entity
+ * Type.
+ * @property {string} targetPropertyName Property name on the target Entity
+ * Type.
+ * @property {string} [linkType] Link type. Possible values include:
  * 'UpdateAlways', 'CopyIfNull'
  */
 export interface TypePropertiesMapping {
@@ -662,9 +667,9 @@ export interface TypePropertiesMapping {
  * @constructor
  * The participant property reference.
  *
- * @member {string} sourcePropertyName The source property that maps to the
+ * @property {string} sourcePropertyName The source property that maps to the
  * target property.
- * @member {string} targetPropertyName The target property that maps to the
+ * @property {string} targetPropertyName The target property that maps to the
  * source property.
  */
 export interface ParticipantPropertyReference {
@@ -678,8 +683,8 @@ export interface ParticipantPropertyReference {
  * @constructor
  * Map a field of profile to its corresponding StrongId in Related Profile.
  *
- * @member {string} profileFieldName Specifies the fieldName in profile.
- * @member {string} relatedProfileKeyProperty Specifies the KeyProperty (from
+ * @property {string} profileFieldName Specifies the fieldName in profile.
+ * @property {string} relatedProfileKeyProperty Specifies the KeyProperty (from
  * StrongId) of the related profile.
  */
 export interface RelationshipTypeFieldMapping {
@@ -693,7 +698,7 @@ export interface RelationshipTypeFieldMapping {
  * @constructor
  * Maps fields in Profile to their corresponding StrongIds in Related Profile.
  *
- * @member {array} fieldMappings Maps a profile property with the StrongId of
+ * @property {array} fieldMappings Maps a profile property with the StrongId of
  * related profile. This is an array to support StrongIds that are composite
  * key as well.
  */
@@ -707,11 +712,11 @@ export interface RelationshipTypeMapping {
  * @constructor
  * The fields mapping for Relationships.
  *
- * @member {string} interactionFieldName The field name on the Interaction
+ * @property {string} interactionFieldName The field name on the Interaction
  * Type.
- * @member {string} [linkType] Link type. Possible values include:
+ * @property {string} [linkType] Link type. Possible values include:
  * 'UpdateAlways', 'CopyIfNull'
- * @member {string} relationshipFieldName The field name on the Relationship
+ * @property {string} relationshipFieldName The field name on the Relationship
  * metadata.
  */
 export interface RelationshipLinkFieldMapping {
@@ -726,9 +731,9 @@ export interface RelationshipLinkFieldMapping {
  * @constructor
  * The participant profile property reference.
  *
- * @member {string} interactionPropertyName The source interaction property
+ * @property {string} interactionPropertyName The source interaction property
  * that maps to the target profile property.
- * @member {string} profilePropertyName The target profile property that maps
+ * @property {string} profilePropertyName The target profile property that maps
  * to the source interaction property.
  */
 export interface ParticipantProfilePropertyReference {
@@ -742,12 +747,12 @@ export interface ParticipantProfilePropertyReference {
  * @constructor
  * Describes a profile type participating in an interaction.
  *
- * @member {string} profileTypeName Profile type name.
- * @member {array} participantPropertyReferences The property references.
- * @member {string} participantName Participant name.
- * @member {object} [displayName] Localized display name.
- * @member {object} [description] Localized descriptions.
- * @member {string} [role] The role that the participant is playing in the
+ * @property {string} profileTypeName Profile type name.
+ * @property {array} participantPropertyReferences The property references.
+ * @property {string} participantName Participant name.
+ * @property {object} [displayName] Localized display name.
+ * @property {object} [description] Localized descriptions.
+ * @property {string} [role] The role that the participant is playing in the
  * interaction.
  */
 export interface Participant {
@@ -765,10 +770,11 @@ export interface Participant {
  * @constructor
  * Property/Properties which represent a unique ID.
  *
- * @member {array} keyPropertyNames The properties which make up the unique ID.
- * @member {string} strongIdName The Name identifying the strong ID.
- * @member {object} [displayName] Localized display name.
- * @member {object} [description] Localized descriptions.
+ * @property {array} keyPropertyNames The properties which make up the unique
+ * ID.
+ * @property {string} strongIdName The Name identifying the strong ID.
+ * @property {object} [displayName] Localized display name.
+ * @property {object} [description] Localized descriptions.
  */
 export interface StrongId {
   keyPropertyNames: string[];
@@ -783,35 +789,35 @@ export interface StrongId {
  * @constructor
  * The profile resource format.
  *
- * @member {object} [attributes] The attributes for the Type.
- * @member {object} [description] Localized descriptions for the property.
- * @member {object} [displayName] Localized display names for the property.
- * @member {object} [localizedAttributes] Any custom localized attributes for
+ * @property {object} [attributes] The attributes for the Type.
+ * @property {object} [description] Localized descriptions for the property.
+ * @property {object} [displayName] Localized display names for the property.
+ * @property {object} [localizedAttributes] Any custom localized attributes for
  * the Type.
- * @member {string} [smallImage] Small Image associated with the Property or
+ * @property {string} [smallImage] Small Image associated with the Property or
  * EntityType.
- * @member {string} [mediumImage] Medium Image associated with the Property or
+ * @property {string} [mediumImage] Medium Image associated with the Property
+ * or EntityType.
+ * @property {string} [largeImage] Large Image associated with the Property or
  * EntityType.
- * @member {string} [largeImage] Large Image associated with the Property or
- * EntityType.
- * @member {string} [apiEntitySetName] The api entity set name. This becomes
+ * @property {string} [apiEntitySetName] The api entity set name. This becomes
  * the odata entity set name for the entity Type being refered in this object.
- * @member {string} [entityType] Type of entity. Possible values include:
+ * @property {string} [entityType] Type of entity. Possible values include:
  * 'None', 'Profile', 'Interaction', 'Relationship'
- * @member {array} [fields] The properties of the Profile.
- * @member {number} [instancesCount] The instance count.
- * @member {date} [lastChangedUtc] The last changed time for the type
+ * @property {array} [fields] The properties of the Profile.
+ * @property {number} [instancesCount] The instance count.
+ * @property {date} [lastChangedUtc] The last changed time for the type
  * definition.
- * @member {string} [provisioningState] Provisioning state. Possible values
+ * @property {string} [provisioningState] Provisioning state. Possible values
  * include: 'Provisioning', 'Succeeded', 'Expiring', 'Deleting',
  * 'HumanIntervention', 'Failed'
- * @member {string} [schemaItemTypeLink] The schema org link. This helps ACI
+ * @property {string} [schemaItemTypeLink] The schema org link. This helps ACI
  * identify and suggest semantic models.
- * @member {string} [tenantId] The hub name.
- * @member {string} [timestampFieldName] The timestamp property name.
+ * @property {string} [tenantId] The hub name.
+ * @property {string} [timestampFieldName] The timestamp property name.
  * Represents the time when the interaction or profile update happened.
- * @member {string} [typeName] The name of the entity.
- * @member {array} [strongIds] The strong IDs.
+ * @property {string} [typeName] The name of the entity.
+ * @property {array} [strongIds] The strong IDs.
  */
 export interface ProfileResourceFormat extends ProxyResource {
   attributes?: { [propertyName: string]: string[] };
@@ -840,53 +846,53 @@ export interface ProfileResourceFormat extends ProxyResource {
  * @constructor
  * The interaction resource format.
  *
- * @member {object} [attributes] The attributes for the Type.
- * @member {object} [description] Localized descriptions for the property.
- * @member {object} [displayName] Localized display names for the property.
- * @member {object} [localizedAttributes] Any custom localized attributes for
+ * @property {object} [attributes] The attributes for the Type.
+ * @property {object} [description] Localized descriptions for the property.
+ * @property {object} [displayName] Localized display names for the property.
+ * @property {object} [localizedAttributes] Any custom localized attributes for
  * the Type.
- * @member {string} [smallImage] Small Image associated with the Property or
+ * @property {string} [smallImage] Small Image associated with the Property or
  * EntityType.
- * @member {string} [mediumImage] Medium Image associated with the Property or
+ * @property {string} [mediumImage] Medium Image associated with the Property
+ * or EntityType.
+ * @property {string} [largeImage] Large Image associated with the Property or
  * EntityType.
- * @member {string} [largeImage] Large Image associated with the Property or
- * EntityType.
- * @member {string} [apiEntitySetName] The api entity set name. This becomes
+ * @property {string} [apiEntitySetName] The api entity set name. This becomes
  * the odata entity set name for the entity Type being refered in this object.
- * @member {string} [entityType] Type of entity. Possible values include:
+ * @property {string} [entityType] Type of entity. Possible values include:
  * 'None', 'Profile', 'Interaction', 'Relationship'
- * @member {array} [fields] The properties of the Profile.
- * @member {number} [instancesCount] The instance count.
- * @member {date} [lastChangedUtc] The last changed time for the type
+ * @property {array} [fields] The properties of the Profile.
+ * @property {number} [instancesCount] The instance count.
+ * @property {date} [lastChangedUtc] The last changed time for the type
  * definition.
- * @member {string} [provisioningState] Provisioning state. Possible values
+ * @property {string} [provisioningState] Provisioning state. Possible values
  * include: 'Provisioning', 'Succeeded', 'Expiring', 'Deleting',
  * 'HumanIntervention', 'Failed'
- * @member {string} [schemaItemTypeLink] The schema org link. This helps ACI
+ * @property {string} [schemaItemTypeLink] The schema org link. This helps ACI
  * identify and suggest semantic models.
- * @member {string} [tenantId] The hub name.
- * @member {string} [timestampFieldName] The timestamp property name.
+ * @property {string} [tenantId] The hub name.
+ * @property {string} [timestampFieldName] The timestamp property name.
  * Represents the time when the interaction or profile update happened.
- * @member {string} [typeName] The name of the entity.
- * @member {array} [idPropertyNames] The id property names. Properties which
+ * @property {string} [typeName] The name of the entity.
+ * @property {array} [idPropertyNames] The id property names. Properties which
  * uniquely identify an interaction instance.
- * @member {array} [participantProfiles] Profiles that participated in the
+ * @property {array} [participantProfiles] Profiles that participated in the
  * interaction.
- * @member {string} [primaryParticipantProfilePropertyName] The primary
+ * @property {string} [primaryParticipantProfilePropertyName] The primary
  * participant property name for an interaction ,This is used to logically
  * represent the agent of the interaction, Specify the participant name here
  * from ParticipantName.
- * @member {array} [dataSourcePrecedenceRules] This is specific to interactions
- * modeled as activities. Data sources are used to determine where data is
- * stored and also in precedence rules.
- * @member {string} [interactionResourceFormatName] The data source name
- * @member {string} [dataSourceType] The data source type. Possible values
+ * @property {array} [dataSourcePrecedenceRules] This is specific to
+ * interactions modeled as activities. Data sources are used to determine where
+ * data is stored and also in precedence rules.
+ * @property {string} [interactionResourceFormatName] The data source name
+ * @property {string} [dataSourceType] The data source type. Possible values
  * include: 'Connector', 'LinkInteraction', 'SystemDefault'
- * @member {string} [status] The data source status. Possible values include:
+ * @property {string} [status] The data source status. Possible values include:
  * 'None', 'Active', 'Deleted'
- * @member {number} [interactionResourceFormatId] The data source ID.
- * @member {string} [dataSourceReferenceId] The data source reference id.
- * @member {boolean} [isActivity] An interaction can be tagged as an activity
+ * @property {number} [interactionResourceFormatId] The data source ID.
+ * @property {string} [dataSourceReferenceId] The data source reference id.
+ * @property {boolean} [isActivity] An interaction can be tagged as an activity
  * only during create. This enables the interaction to be editable and can
  * enable merging of properties from multiple data sources based on precedence,
  * which is defined at a link level.
@@ -927,36 +933,36 @@ export interface InteractionResourceFormat extends ProxyResource {
  * @constructor
  * The KPI resource format.
  *
- * @member {string} entityType The mapping entity type. Possible values
+ * @property {string} entityType The mapping entity type. Possible values
  * include: 'None', 'Profile', 'Interaction', 'Relationship'
- * @member {string} entityTypeName The mapping entity name.
- * @member {string} [tenantId] The hub name.
- * @member {string} [kpiName] The KPI name.
- * @member {object} [displayName] Localized display name for the KPI.
- * @member {object} [description] Localized description for the KPI.
- * @member {string} calculationWindow The calculation window. Possible values
+ * @property {string} entityTypeName The mapping entity name.
+ * @property {string} [tenantId] The hub name.
+ * @property {string} [kpiName] The KPI name.
+ * @property {object} [displayName] Localized display name for the KPI.
+ * @property {object} [description] Localized description for the KPI.
+ * @property {string} calculationWindow The calculation window. Possible values
  * include: 'Lifetime', 'Hour', 'Day', 'Week', 'Month'
- * @member {string} [calculationWindowFieldName] Name of calculation window
+ * @property {string} [calculationWindowFieldName] Name of calculation window
  * field.
- * @member {string} functionProperty The computation function for the KPI.
+ * @property {string} functionProperty The computation function for the KPI.
  * Possible values include: 'Sum', 'Avg', 'Min', 'Max', 'Last', 'Count',
  * 'None', 'CountDistinct'
- * @member {string} expression The computation expression for the KPI.
- * @member {string} [unit] The unit of measurement for the KPI.
- * @member {string} [filter] The filter expression for the KPI.
- * @member {array} [groupBy] the group by properties for the KPI.
- * @member {array} [groupByMetadata] The KPI GroupByMetadata.
- * @member {array} [participantProfilesMetadata] The participant profiles.
- * @member {string} [provisioningState] Provisioning state. Possible values
+ * @property {string} expression The computation expression for the KPI.
+ * @property {string} [unit] The unit of measurement for the KPI.
+ * @property {string} [filter] The filter expression for the KPI.
+ * @property {array} [groupBy] the group by properties for the KPI.
+ * @property {array} [groupByMetadata] The KPI GroupByMetadata.
+ * @property {array} [participantProfilesMetadata] The participant profiles.
+ * @property {string} [provisioningState] Provisioning state. Possible values
  * include: 'Provisioning', 'Succeeded', 'Expiring', 'Deleting',
  * 'HumanIntervention', 'Failed'
- * @member {object} [thresHolds] The KPI thresholds.
- * @member {number} [thresHolds.lowerLimit] The lower threshold limit.
- * @member {number} [thresHolds.upperLimit] The upper threshold limit.
- * @member {boolean} [thresHolds.increasingKpi] Whether or not the KPI is an
+ * @property {object} [thresHolds] The KPI thresholds.
+ * @property {number} [thresHolds.lowerLimit] The lower threshold limit.
+ * @property {number} [thresHolds.upperLimit] The upper threshold limit.
+ * @property {boolean} [thresHolds.increasingKpi] Whether or not the KPI is an
  * increasing KPI.
- * @member {array} [aliases] The aliases.
- * @member {array} [extracts] The KPI extracts.
+ * @property {array} [aliases] The aliases.
+ * @property {array} [extracts] The KPI extracts.
  */
 export interface KpiResourceFormat extends ProxyResource {
   entityType: string;
@@ -996,19 +1002,19 @@ export interface EnrichingKpi extends KpiDefinition {
  * @constructor
  * The connector resource format.
  *
- * @member {number} [connectorId] ID of the connector.
- * @member {string} [connectorName] Name of the connector.
- * @member {string} connectorType Type of connector. Possible values include:
+ * @property {number} [connectorId] ID of the connector.
+ * @property {string} [connectorName] Name of the connector.
+ * @property {string} connectorType Type of connector. Possible values include:
  * 'None', 'CRM', 'AzureBlob', 'Salesforce', 'ExchangeOnline', 'Outbound'
- * @member {string} [displayName] Display name of the connector.
- * @member {string} [description] Description of the connector.
- * @member {object} connectorProperties The connector properties.
- * @member {date} [created] The created time.
- * @member {date} [lastModified] The last monified time.
- * @member {string} [state] State of connector. Possible values include:
+ * @property {string} [displayName] Display name of the connector.
+ * @property {string} [description] Description of the connector.
+ * @property {object} connectorProperties The connector properties.
+ * @property {date} [created] The created time.
+ * @property {date} [lastModified] The last monified time.
+ * @property {string} [state] State of connector. Possible values include:
  * 'Creating', 'Created', 'Ready', 'Expiring', 'Deleting', 'Failed'
- * @member {string} [tenantId] The hub name.
- * @member {boolean} [isInternal] If this is an internal connector.
+ * @property {string} [tenantId] The hub name.
+ * @property {boolean} [isInternal] If this is an internal connector.
  */
 export interface ConnectorResourceFormat extends ProxyResource {
   readonly connectorId?: number;
@@ -1030,66 +1036,69 @@ export interface ConnectorResourceFormat extends ProxyResource {
  * @constructor
  * The c onnector mapping resource format.
  *
- * @member {string} [connectorName] The connector name.
- * @member {string} [connectorType] Type of connector. Possible values include:
- * 'None', 'CRM', 'AzureBlob', 'Salesforce', 'ExchangeOnline', 'Outbound'
- * @member {date} [created] The created time.
- * @member {date} [lastModified] The last monified time.
- * @member {string} entityType Defines which entity type the file should map
+ * @property {string} [connectorName] The connector name.
+ * @property {string} [connectorType] Type of connector. Possible values
+ * include: 'None', 'CRM', 'AzureBlob', 'Salesforce', 'ExchangeOnline',
+ * 'Outbound'
+ * @property {date} [created] The created time.
+ * @property {date} [lastModified] The last monified time.
+ * @property {string} entityType Defines which entity type the file should map
  * to. Possible values include: 'None', 'Profile', 'Interaction',
  * 'Relationship'
- * @member {string} entityTypeName The mapping entity name.
- * @member {string} [connectorMappingName] The connector mapping name
- * @member {string} [displayName] Display name for the connector mapping.
- * @member {string} [description] The description of the connector mapping.
- * @member {string} [dataFormatId] The DataFormat ID.
- * @member {object} mappingProperties The properties of the mapping.
- * @member {string} [mappingProperties.folderPath] The folder path for the
+ * @property {string} entityTypeName The mapping entity name.
+ * @property {string} [connectorMappingName] The connector mapping name
+ * @property {string} [displayName] Display name for the connector mapping.
+ * @property {string} [description] The description of the connector mapping.
+ * @property {string} [dataFormatId] The DataFormat ID.
+ * @property {object} mappingProperties The properties of the mapping.
+ * @property {string} [mappingProperties.folderPath] The folder path for the
  * mapping.
- * @member {string} [mappingProperties.fileFilter] The file filter for the
+ * @property {string} [mappingProperties.fileFilter] The file filter for the
  * mapping.
- * @member {boolean} [mappingProperties.hasHeader] If the file contains a
+ * @property {boolean} [mappingProperties.hasHeader] If the file contains a
  * header or not.
- * @member {object} [mappingProperties.errorManagement] The error management
+ * @property {object} [mappingProperties.errorManagement] The error management
  * setting for the mapping.
- * @member {string} [mappingProperties.errorManagement.errorManagementType] The
- * type of error management to use for the mapping. Possible values include:
- * 'RejectAndContinue', 'StopImport', 'RejectUntilLimit'
- * @member {number} [mappingProperties.errorManagement.errorLimit] The error
+ * @property {string} [mappingProperties.errorManagement.errorManagementType]
+ * The type of error management to use for the mapping. Possible values
+ * include: 'RejectAndContinue', 'StopImport', 'RejectUntilLimit'
+ * @property {number} [mappingProperties.errorManagement.errorLimit] The error
  * limit allowed while importing data.
- * @member {object} [mappingProperties.format] The format of mapping property.
- * @member {string} [mappingProperties.format.columnDelimiter] The character
+ * @property {object} [mappingProperties.format] The format of mapping
+ * property.
+ * @property {string} [mappingProperties.format.columnDelimiter] The character
  * that signifies a break between columns.
- * @member {string} [mappingProperties.format.acceptLanguage] The oData
+ * @property {string} [mappingProperties.format.acceptLanguage] The oData
  * language.
- * @member {string} [mappingProperties.format.quoteCharacter] Quote character,
- * used to indicate enquoted fields.
- * @member {string} [mappingProperties.format.quoteEscapeCharacter] Escape
+ * @property {string} [mappingProperties.format.quoteCharacter] Quote
+ * character, used to indicate enquoted fields.
+ * @property {string} [mappingProperties.format.quoteEscapeCharacter] Escape
  * character for quotes, can be the same as the quoteCharacter.
- * @member {string} [mappingProperties.format.arraySeparator] Character
+ * @property {string} [mappingProperties.format.arraySeparator] Character
  * separating array elements.
- * @member {object} [mappingProperties.availability] The availability of
+ * @property {object} [mappingProperties.availability] The availability of
  * mapping property.
- * @member {string} [mappingProperties.availability.frequency] The frequency to
- * update. Possible values include: 'Minute', 'Hour', 'Day', 'Week', 'Month'
- * @member {number} [mappingProperties.availability.interval] The interval of
+ * @property {string} [mappingProperties.availability.frequency] The frequency
+ * to update. Possible values include: 'Minute', 'Hour', 'Day', 'Week', 'Month'
+ * @property {number} [mappingProperties.availability.interval] The interval of
  * the given frequency to use.
- * @member {array} [mappingProperties.structure] Ingestion mapping information
- * at property level.
- * @member {object} [mappingProperties.completeOperation] The operation after
+ * @property {array} [mappingProperties.structure] Ingestion mapping
+ * information at property level.
+ * @property {object} [mappingProperties.completeOperation] The operation after
  * import is done.
- * @member {string}
+ * @property {string}
  * [mappingProperties.completeOperation.completionOperationType] The type of
  * completion operation. Possible values include: 'DoNothing', 'DeleteFile',
  * 'MoveFile'
- * @member {string} [mappingProperties.completeOperation.destinationFolder] The
- * destination folder where files will be moved to once the import is done.
- * @member {date} [nextRunTime] The next run time based on customer's settings.
- * @member {string} [runId] The RunId.
- * @member {string} [state] State of connector mapping. Possible values
+ * @property {string} [mappingProperties.completeOperation.destinationFolder]
+ * The destination folder where files will be moved to once the import is done.
+ * @property {date} [nextRunTime] The next run time based on customer's
+ * settings.
+ * @property {string} [runId] The RunId.
+ * @property {string} [state] State of connector mapping. Possible values
  * include: 'Creating', 'Created', 'Failed', 'Ready', 'Running', 'Stopped',
  * 'Expiring'
- * @member {string} [tenantId] The hub name.
+ * @property {string} [tenantId] The hub name.
  */
 export interface ConnectorMappingResourceFormat extends ProxyResource {
   readonly connectorName?: string;
@@ -1115,10 +1124,10 @@ export interface ConnectorMappingResourceFormat extends ProxyResource {
  * @constructor
  * The authorization policy resource format.
  *
- * @member {string} [policyName] Name of the policy.
- * @member {array} permissions The permissions associated with the policy.
- * @member {string} [primaryKey] Primary key assiciated with the policy.
- * @member {string} [secondaryKey] Secondary key assiciated with the policy.
+ * @property {string} [policyName] Name of the policy.
+ * @property {array} permissions The permissions associated with the policy.
+ * @property {string} [primaryKey] Primary key assiciated with the policy.
+ * @property {string} [secondaryKey] Secondary key assiciated with the policy.
  */
 export interface AuthorizationPolicyResourceFormat extends ProxyResource {
   readonly policyName?: string;
@@ -1133,29 +1142,29 @@ export interface AuthorizationPolicyResourceFormat extends ProxyResource {
  * @constructor
  * The link resource format.
  *
- * @member {string} [tenantId] The hub name.
- * @member {string} [linkName] The link name.
- * @member {string} sourceEntityType Type of source entity. Possible values
+ * @property {string} [tenantId] The hub name.
+ * @property {string} [linkName] The link name.
+ * @property {string} sourceEntityType Type of source entity. Possible values
  * include: 'None', 'Profile', 'Interaction', 'Relationship'
- * @member {string} targetEntityType Type of target entity. Possible values
+ * @property {string} targetEntityType Type of target entity. Possible values
  * include: 'None', 'Profile', 'Interaction', 'Relationship'
- * @member {string} sourceEntityTypeName Name of the source Entity Type.
- * @member {string} targetEntityTypeName Name of the target Entity Type.
- * @member {object} [displayName] Localized display name for the Link.
- * @member {object} [description] Localized descriptions for the Link.
- * @member {array} [mappings] The set of properties mappings between the source
- * and target Types.
- * @member {array} participantPropertyReferences The properties that represent
- * the participating profile.
- * @member {string} [provisioningState] Provisioning state. Possible values
+ * @property {string} sourceEntityTypeName Name of the source Entity Type.
+ * @property {string} targetEntityTypeName Name of the target Entity Type.
+ * @property {object} [displayName] Localized display name for the Link.
+ * @property {object} [description] Localized descriptions for the Link.
+ * @property {array} [mappings] The set of properties mappings between the
+ * source and target Types.
+ * @property {array} participantPropertyReferences The properties that
+ * represent the participating profile.
+ * @property {string} [provisioningState] Provisioning state. Possible values
  * include: 'Provisioning', 'Succeeded', 'Expiring', 'Deleting',
  * 'HumanIntervention', 'Failed'
- * @member {boolean} [referenceOnly] Indicating whether the link is reference
+ * @property {boolean} [referenceOnly] Indicating whether the link is reference
  * only link. This flag is ingored if the Mappings are defined. If the mappings
  * are not defined and it is set to true, links processing will not create or
  * update profiles.
- * @member {string} [operationType] Determines whether this link is supposed to
- * create or delete instances if Link is NOT Reference Only. Possible values
+ * @property {string} [operationType] Determines whether this link is supposed
+ * to create or delete instances if Link is NOT Reference Only. Possible values
  * include: 'Upsert', 'Delete'
  */
 export interface LinkResourceFormat extends ProxyResource {
@@ -1180,22 +1189,24 @@ export interface LinkResourceFormat extends ProxyResource {
  * @constructor
  * The relationship resource format.
  *
- * @member {string} [cardinality] The Relationship Cardinality. Possible values
- * include: 'OneToOne', 'OneToMany', 'ManyToMany'
- * @member {object} [displayName] Localized display name for the Relationship.
- * @member {object} [description] Localized descriptions for the Relationship.
- * @member {date} [expiryDateTimeUtc] The expiry date time in UTC.
- * @member {array} [fields] The properties of the Relationship.
- * @member {array} [lookupMappings] Optional property to be used to map fields
- * in profile to their strong ids in related profile.
- * @member {string} profileType Profile type.
- * @member {string} [provisioningState] Provisioning state. Possible values
+ * @property {string} [cardinality] The Relationship Cardinality. Possible
+ * values include: 'OneToOne', 'OneToMany', 'ManyToMany'
+ * @property {object} [displayName] Localized display name for the
+ * Relationship.
+ * @property {object} [description] Localized descriptions for the
+ * Relationship.
+ * @property {date} [expiryDateTimeUtc] The expiry date time in UTC.
+ * @property {array} [fields] The properties of the Relationship.
+ * @property {array} [lookupMappings] Optional property to be used to map
+ * fields in profile to their strong ids in related profile.
+ * @property {string} profileType Profile type.
+ * @property {string} [provisioningState] Provisioning state. Possible values
  * include: 'Provisioning', 'Succeeded', 'Expiring', 'Deleting',
  * 'HumanIntervention', 'Failed'
- * @member {string} [relationshipName] The Relationship name.
- * @member {string} relatedProfileType Related profile being referenced.
- * @member {string} [relationshipGuidId] The relationship guid id.
- * @member {string} [tenantId] The hub name.
+ * @property {string} [relationshipName] The Relationship name.
+ * @property {string} relatedProfileType Related profile being referenced.
+ * @property {string} [relationshipGuidId] The relationship guid id.
+ * @property {string} [tenantId] The hub name.
  */
 export interface RelationshipResourceFormat extends ProxyResource {
   cardinality?: string;
@@ -1218,25 +1229,26 @@ export interface RelationshipResourceFormat extends ProxyResource {
  * @constructor
  * The relationship link resource format.
  *
- * @member {object} [displayName] Localized display name for the Relationship
+ * @property {object} [displayName] Localized display name for the Relationship
  * Link.
- * @member {object} [description] Localized descriptions for the Relationship
+ * @property {object} [description] Localized descriptions for the Relationship
  * Link.
- * @member {string} interactionType The InteractionType associated with the
+ * @property {string} interactionType The InteractionType associated with the
  * Relationship Link.
- * @member {string} [linkName] The name of the Relationship Link.
- * @member {array} [mappings] The mappings between Interaction and Relationship
- * fields.
- * @member {array} profilePropertyReferences The property references for the
+ * @property {string} [linkName] The name of the Relationship Link.
+ * @property {array} [mappings] The mappings between Interaction and
+ * Relationship fields.
+ * @property {array} profilePropertyReferences The property references for the
  * Profile of the Relationship.
- * @member {string} [provisioningState] Provisioning state. Possible values
+ * @property {string} [provisioningState] Provisioning state. Possible values
  * include: 'Provisioning', 'Succeeded', 'Expiring', 'Deleting',
  * 'HumanIntervention', 'Failed'
- * @member {array} relatedProfilePropertyReferences The property references for
- * the Related Profile of the Relationship.
- * @member {string} relationshipName The Relationship associated with the Link.
- * @member {string} [relationshipGuidId] The relationship guid id.
- * @member {string} [tenantId] The hub name.
+ * @property {array} relatedProfilePropertyReferences The property references
+ * for the Related Profile of the Relationship.
+ * @property {string} relationshipName The Relationship associated with the
+ * Link.
+ * @property {string} [relationshipGuidId] The relationship guid id.
+ * @property {string} [tenantId] The hub name.
  */
 export interface RelationshipLinkResourceFormat extends ProxyResource {
   displayName?: { [propertyName: string]: string };
@@ -1258,13 +1270,13 @@ export interface RelationshipLinkResourceFormat extends ProxyResource {
  * @constructor
  * The view resource format.
  *
- * @member {string} [viewName] Name of the view.
- * @member {string} [userId] the user ID.
- * @member {string} [tenantId] the hub name.
- * @member {object} [displayName] Localized display name for the view.
- * @member {string} definition View definition.
- * @member {date} [changed] Date time when view was last modified.
- * @member {date} [created] Date time when view was created.
+ * @property {string} [viewName] Name of the view.
+ * @property {string} [userId] the user ID.
+ * @property {string} [tenantId] the hub name.
+ * @property {object} [displayName] Localized display name for the view.
+ * @property {string} definition View definition.
+ * @property {date} [changed] Date time when view was last modified.
+ * @property {date} [created] Date time when view was created.
  */
 export interface ViewResourceFormat extends ProxyResource {
   readonly viewName?: string;
@@ -1282,15 +1294,15 @@ export interface ViewResourceFormat extends ProxyResource {
  * @constructor
  * The WidgetTypeResourceFormat
  *
- * @member {string} [widgetTypeName] Name of the widget type.
- * @member {string} definition Definition for widget type.
- * @member {string} [description] Description for widget type.
- * @member {object} [displayName] Localized display name for the widget type.
- * @member {string} [imageUrl] The image URL.
- * @member {string} [tenantId] The hub name.
- * @member {string} [widgetVersion] The widget version.
- * @member {date} [changed] Date time when widget type was last modified.
- * @member {date} [created] Date time when widget type was created.
+ * @property {string} [widgetTypeName] Name of the widget type.
+ * @property {string} definition Definition for widget type.
+ * @property {string} [description] Description for widget type.
+ * @property {object} [displayName] Localized display name for the widget type.
+ * @property {string} [imageUrl] The image URL.
+ * @property {string} [tenantId] The hub name.
+ * @property {string} [widgetVersion] The widget version.
+ * @property {date} [changed] Date time when widget type was last modified.
+ * @property {date} [created] Date time when widget type was created.
  */
 export interface WidgetTypeResourceFormat extends ProxyResource {
   readonly widgetTypeName?: string;
@@ -1310,9 +1322,9 @@ export interface WidgetTypeResourceFormat extends ProxyResource {
  * @constructor
  * The AssignmentPrincipal
  *
- * @member {string} principalId The principal id being assigned to.
- * @member {string} principalType The Type of the principal ID.
- * @member {object} [principalMetadata] Other metadata for the principal.
+ * @property {string} principalId The principal id being assigned to.
+ * @property {string} principalType The Type of the principal ID.
+ * @property {object} [principalMetadata] Other metadata for the principal.
  */
 export interface AssignmentPrincipal {
   principalId: string;
@@ -1326,9 +1338,9 @@ export interface AssignmentPrincipal {
  * @constructor
  * The resource set description.
  *
- * @member {array} [elements] The elements included in the set.
- * @member {array} [exceptions] The elements that are not included in the set,
- * in case elements contains '*' indicating 'all'.
+ * @property {array} [elements] The elements included in the set.
+ * @property {array} [exceptions] The elements that are not included in the
+ * set, in case elements contains '*' indicating 'all'.
  */
 export interface ResourceSetDescription {
   elements?: string[];
@@ -1341,73 +1353,74 @@ export interface ResourceSetDescription {
  * @constructor
  * The Role Assignment resource format.
  *
- * @member {string} [tenantId] The hub name.
- * @member {string} [assignmentName] The name of the metadata object.
- * @member {object} [displayName] Localized display names for the metadata.
- * @member {object} [description] Localized description for the metadata.
- * @member {string} [provisioningState] Provisioning state. Possible values
+ * @property {string} [tenantId] The hub name.
+ * @property {string} [assignmentName] The name of the metadata object.
+ * @property {object} [displayName] Localized display names for the metadata.
+ * @property {object} [description] Localized description for the metadata.
+ * @property {string} [provisioningState] Provisioning state. Possible values
  * include: 'Provisioning', 'Succeeded', 'Expiring', 'Deleting',
  * 'HumanIntervention', 'Failed'
- * @member {string} role Type of roles. Possible values include: 'Admin',
+ * @property {string} role Type of roles. Possible values include: 'Admin',
  * 'Reader', 'ManageAdmin', 'ManageReader', 'DataAdmin', 'DataReader'
- * @member {array} principals The principals being assigned to.
- * @member {object} [profiles] Profiles set for the assignment.
- * @member {array} [profiles.elements] The elements included in the set.
- * @member {array} [profiles.exceptions] The elements that are not included in
+ * @property {array} principals The principals being assigned to.
+ * @property {object} [profiles] Profiles set for the assignment.
+ * @property {array} [profiles.elements] The elements included in the set.
+ * @property {array} [profiles.exceptions] The elements that are not included
+ * in the set, in case elements contains '*' indicating 'all'.
+ * @property {object} [interactions] Interactions set for the assignment.
+ * @property {array} [interactions.elements] The elements included in the set.
+ * @property {array} [interactions.exceptions] The elements that are not
+ * included in the set, in case elements contains '*' indicating 'all'.
+ * @property {object} [links] Links set for the assignment.
+ * @property {array} [links.elements] The elements included in the set.
+ * @property {array} [links.exceptions] The elements that are not included in
  * the set, in case elements contains '*' indicating 'all'.
- * @member {object} [interactions] Interactions set for the assignment.
- * @member {array} [interactions.elements] The elements included in the set.
- * @member {array} [interactions.exceptions] The elements that are not included
+ * @property {object} [kpis] Kpis set for the assignment.
+ * @property {array} [kpis.elements] The elements included in the set.
+ * @property {array} [kpis.exceptions] The elements that are not included in
+ * the set, in case elements contains '*' indicating 'all'.
+ * @property {object} [sasPolicies] Sas Policies set for the assignment.
+ * @property {array} [sasPolicies.elements] The elements included in the set.
+ * @property {array} [sasPolicies.exceptions] The elements that are not
+ * included in the set, in case elements contains '*' indicating 'all'.
+ * @property {object} [connectors] Connectors set for the assignment.
+ * @property {array} [connectors.elements] The elements included in the set.
+ * @property {array} [connectors.exceptions] The elements that are not included
  * in the set, in case elements contains '*' indicating 'all'.
- * @member {object} [links] Links set for the assignment.
- * @member {array} [links.elements] The elements included in the set.
- * @member {array} [links.exceptions] The elements that are not included in the
- * set, in case elements contains '*' indicating 'all'.
- * @member {object} [kpis] Kpis set for the assignment.
- * @member {array} [kpis.elements] The elements included in the set.
- * @member {array} [kpis.exceptions] The elements that are not included in the
- * set, in case elements contains '*' indicating 'all'.
- * @member {object} [sasPolicies] Sas Policies set for the assignment.
- * @member {array} [sasPolicies.elements] The elements included in the set.
- * @member {array} [sasPolicies.exceptions] The elements that are not included
- * in the set, in case elements contains '*' indicating 'all'.
- * @member {object} [connectors] Connectors set for the assignment.
- * @member {array} [connectors.elements] The elements included in the set.
- * @member {array} [connectors.exceptions] The elements that are not included
- * in the set, in case elements contains '*' indicating 'all'.
- * @member {object} [views] Views set for the assignment.
- * @member {array} [views.elements] The elements included in the set.
- * @member {array} [views.exceptions] The elements that are not included in the
- * set, in case elements contains '*' indicating 'all'.
- * @member {object} [relationshipLinks] The Role assignments set for the
+ * @property {object} [views] Views set for the assignment.
+ * @property {array} [views.elements] The elements included in the set.
+ * @property {array} [views.exceptions] The elements that are not included in
+ * the set, in case elements contains '*' indicating 'all'.
+ * @property {object} [relationshipLinks] The Role assignments set for the
  * relationship links.
- * @member {array} [relationshipLinks.elements] The elements included in the
+ * @property {array} [relationshipLinks.elements] The elements included in the
  * set.
- * @member {array} [relationshipLinks.exceptions] The elements that are not
+ * @property {array} [relationshipLinks.exceptions] The elements that are not
  * included in the set, in case elements contains '*' indicating 'all'.
- * @member {object} [relationships] The Role assignments set for the
+ * @property {object} [relationships] The Role assignments set for the
  * relationships.
- * @member {array} [relationships.elements] The elements included in the set.
- * @member {array} [relationships.exceptions] The elements that are not
+ * @property {array} [relationships.elements] The elements included in the set.
+ * @property {array} [relationships.exceptions] The elements that are not
  * included in the set, in case elements contains '*' indicating 'all'.
- * @member {object} [widgetTypes] Widget types set for the assignment.
- * @member {array} [widgetTypes.elements] The elements included in the set.
- * @member {array} [widgetTypes.exceptions] The elements that are not included
- * in the set, in case elements contains '*' indicating 'all'.
- * @member {object} [roleAssignments] The Role assignments set for the
+ * @property {object} [widgetTypes] Widget types set for the assignment.
+ * @property {array} [widgetTypes.elements] The elements included in the set.
+ * @property {array} [widgetTypes.exceptions] The elements that are not
+ * included in the set, in case elements contains '*' indicating 'all'.
+ * @property {object} [roleAssignments] The Role assignments set for the
  * assignment.
- * @member {array} [roleAssignments.elements] The elements included in the set.
- * @member {array} [roleAssignments.exceptions] The elements that are not
- * included in the set, in case elements contains '*' indicating 'all'.
- * @member {object} [conflationPolicies] Widget types set for the assignment.
- * @member {array} [conflationPolicies.elements] The elements included in the
+ * @property {array} [roleAssignments.elements] The elements included in the
  * set.
- * @member {array} [conflationPolicies.exceptions] The elements that are not
+ * @property {array} [roleAssignments.exceptions] The elements that are not
  * included in the set, in case elements contains '*' indicating 'all'.
- * @member {object} [segments] The Role assignments set for the assignment.
- * @member {array} [segments.elements] The elements included in the set.
- * @member {array} [segments.exceptions] The elements that are not included in
- * the set, in case elements contains '*' indicating 'all'.
+ * @property {object} [conflationPolicies] Widget types set for the assignment.
+ * @property {array} [conflationPolicies.elements] The elements included in the
+ * set.
+ * @property {array} [conflationPolicies.exceptions] The elements that are not
+ * included in the set, in case elements contains '*' indicating 'all'.
+ * @property {object} [segments] The Role assignments set for the assignment.
+ * @property {array} [segments.elements] The elements included in the set.
+ * @property {array} [segments.exceptions] The elements that are not included
+ * in the set, in case elements contains '*' indicating 'all'.
  */
 export interface RoleAssignmentResourceFormat extends ProxyResource {
   readonly tenantId?: string;
@@ -1438,8 +1451,8 @@ export interface RoleAssignmentResourceFormat extends ProxyResource {
  * @constructor
  * The role resource format.
  *
- * @member {string} [roleName] The role name.
- * @member {string} [description] The description of the role.
+ * @property {string} [roleName] The role name.
+ * @property {string} [description] The description of the role.
  */
 export interface RoleResourceFormat extends ProxyResource {
   roleName?: string;
@@ -1452,9 +1465,10 @@ export interface RoleResourceFormat extends ProxyResource {
  * @constructor
  * Input type for getting image upload url.
  *
- * @member {string} [entityType] Type of entity. Can be Profile or Interaction.
- * @member {string} [entityTypeName] Name of the entity type.
- * @member {string} [relativePath] Relative path of the image.
+ * @property {string} [entityType] Type of entity. Can be Profile or
+ * Interaction.
+ * @property {string} [entityTypeName] Name of the entity type.
+ * @property {string} [relativePath] Relative path of the image.
  */
 export interface GetImageUploadUrlInput {
   entityType?: string;
@@ -1468,9 +1482,9 @@ export interface GetImageUploadUrlInput {
  * @constructor
  * The image definition.
  *
- * @member {boolean} [imageExists] Whether image exists already.
- * @member {string} [contentUrl] Content URL for the image blob.
- * @member {string} [relativePath] Relative path of the image.
+ * @property {boolean} [imageExists] Whether image exists already.
+ * @property {string} [contentUrl] Content URL for the image blob.
+ * @property {string} [relativePath] Relative path of the image.
  */
 export interface ImageDefinition {
   imageExists?: boolean;
@@ -1484,13 +1498,13 @@ export interface ImageDefinition {
  * @constructor
  * The definition of suggested relationship for the type.
  *
- * @member {string} [profileName] The relationship profile.
- * @member {array} [profilePropertyReferences] The property references for the
- * profile type.
- * @member {string} [relatedProfileName] The related profile.
- * @member {array} [relatedProfilePropertyReferences] The property references
+ * @property {string} [profileName] The relationship profile.
+ * @property {array} [profilePropertyReferences] The property references for
+ * the profile type.
+ * @property {string} [relatedProfileName] The related profile.
+ * @property {array} [relatedProfilePropertyReferences] The property references
  * for the related profile type.
- * @member {string} [existingRelationshipName] The name of existing
+ * @property {string} [existingRelationshipName] The name of existing
  * Relationship.
  */
 export interface RelationshipsLookup {
@@ -1507,8 +1521,8 @@ export interface RelationshipsLookup {
  * @constructor
  * The response of suggest relationship links operation.
  *
- * @member {string} [interactionName] The interaction name.
- * @member {array} [suggestedRelationships] Suggested relationships for the
+ * @property {string} [interactionName] The interaction name.
+ * @property {array} [suggestedRelationships] Suggested relationships for the
  * type.
  */
 export interface SuggestRelationshipLinksResponse {
@@ -1522,9 +1536,9 @@ export interface SuggestRelationshipLinksResponse {
  * @constructor
  * Definition of the link mapping of prediction.
  *
- * @member {string} score The score of the link mapping.
- * @member {string} grade The grade of the link mapping.
- * @member {string} reason The reason of the link mapping.
+ * @property {string} score The score of the link mapping.
+ * @property {string} grade The grade of the link mapping.
+ * @property {string} reason The reason of the link mapping.
  */
 export interface PredictionMappings {
   score: string;
@@ -1538,9 +1552,9 @@ export interface PredictionMappings {
  * @constructor
  * The definition of a prediction grade.
  *
- * @member {string} [gradeName] Name of the grade.
- * @member {number} [minScoreThreshold] Minimum score threshold.
- * @member {number} [maxScoreThreshold] Maximum score threshold.
+ * @property {string} [gradeName] Name of the grade.
+ * @property {number} [minScoreThreshold] Minimum score threshold.
+ * @property {number} [maxScoreThreshold] Maximum score threshold.
  */
 export interface PredictionGradesItem {
   gradeName?: string;
@@ -1554,9 +1568,9 @@ export interface PredictionGradesItem {
  * @constructor
  * System generated entities.
  *
- * @member {array} [generatedInteractionTypes] Generated interaction types.
- * @member {array} [generatedLinks] Generated links.
- * @member {object} [generatedKpis] Generated KPIs.
+ * @property {array} [generatedInteractionTypes] Generated interaction types.
+ * @property {array} [generatedLinks] Generated links.
+ * @property {object} [generatedKpis] Generated KPIs.
  */
 export interface PredictionSystemGeneratedEntities {
   generatedInteractionTypes?: string[];
@@ -1570,12 +1584,12 @@ export interface PredictionSystemGeneratedEntities {
  * @constructor
  * The definition of a prediction distribution.
  *
- * @member {number} [scoreThreshold] Score threshold.
- * @member {number} [positives] Number of positives.
- * @member {number} [negatives] Number of negatives.
- * @member {number} [positivesAboveThreshold] Number of positives above
+ * @property {number} [scoreThreshold] Score threshold.
+ * @property {number} [positives] Number of positives.
+ * @property {number} [negatives] Number of negatives.
+ * @property {number} [positivesAboveThreshold] Number of positives above
  * threshold.
- * @member {number} [negativesAboveThreshold] Number of negatives above
+ * @property {number} [negativesAboveThreshold] Number of negatives above
  * threshold.
  */
 export interface PredictionDistributionDefinitionDistributionsItem {
@@ -1592,9 +1606,9 @@ export interface PredictionDistributionDefinitionDistributionsItem {
  * @constructor
  * The definition of the prediction distribution.
  *
- * @member {number} [totalPositives] Total positive in the distribution.
- * @member {number} [totalNegatives] Total negatives in the distribution.
- * @member {array} [distributions] Distributions of the prediction.
+ * @property {number} [totalPositives] Total positive in the distribution.
+ * @property {number} [totalNegatives] Total negatives in the distribution.
+ * @property {array} [distributions] Distributions of the prediction.
  */
 export interface PredictionDistributionDefinition {
   totalPositives?: number;
@@ -1608,12 +1622,12 @@ export interface PredictionDistributionDefinition {
  * @constructor
  * The definition of a canonical profile property.
  *
- * @member {string} [profileName] Profile name.
- * @member {string} [profilePropertyName] Property name of profile.
- * @member {number} [rank] The rank.
- * @member {string} [type] Type of canonical property value. Possible values
+ * @property {string} [profileName] Profile name.
+ * @property {string} [profilePropertyName] Property name of profile.
+ * @property {number} [rank] The rank.
+ * @property {string} [type] Type of canonical property value. Possible values
  * include: 'Numeric', 'Categorical', 'DerivedCategorical', 'DerivedNumeric'
- * @member {string} [value] Value of the canonical property.
+ * @property {string} [value] Value of the canonical property.
  */
 export interface CanonicalProfileDefinitionPropertiesItem {
   profileName?: string;
@@ -1629,8 +1643,8 @@ export interface CanonicalProfileDefinitionPropertiesItem {
  * @constructor
  * Definition of canonical profile.
  *
- * @member {number} [canonicalProfileId] Canonical profile ID.
- * @member {array} [properties] Properties of the canonical profile.
+ * @property {number} [canonicalProfileId] Canonical profile ID.
+ * @property {array} [properties] Properties of the canonical profile.
  */
 export interface CanonicalProfileDefinition {
   canonicalProfileId?: number;
@@ -1643,18 +1657,18 @@ export interface CanonicalProfileDefinition {
  * @constructor
  * The training results of the prediction.
  *
- * @member {string} [tenantId] The hub name.
- * @member {string} [scoreName] Score name.
- * @member {object} [predictionDistribution] Prediction distribution.
- * @member {number} [predictionDistribution.totalPositives] Total positive in
+ * @property {string} [tenantId] The hub name.
+ * @property {string} [scoreName] Score name.
+ * @property {object} [predictionDistribution] Prediction distribution.
+ * @property {number} [predictionDistribution.totalPositives] Total positive in
  * the distribution.
- * @member {number} [predictionDistribution.totalNegatives] Total negatives in
- * the distribution.
- * @member {array} [predictionDistribution.distributions] Distributions of the
- * prediction.
- * @member {array} [canonicalProfiles] Canonical profiles.
- * @member {number} [primaryProfileInstanceCount] Instance count of the primary
- * profile.
+ * @property {number} [predictionDistribution.totalNegatives] Total negatives
+ * in the distribution.
+ * @property {array} [predictionDistribution.distributions] Distributions of
+ * the prediction.
+ * @property {array} [canonicalProfiles] Canonical profiles.
+ * @property {number} [primaryProfileInstanceCount] Instance count of the
+ * primary profile.
  */
 export interface PredictionTrainingResults {
   readonly tenantId?: string;
@@ -1670,24 +1684,24 @@ export interface PredictionTrainingResults {
  * @constructor
  * The prediction model status.
  *
- * @member {string} [tenantId] The hub name.
- * @member {string} [predictionName] The prediction name.
- * @member {string} [predictionGuidId] The prediction GUID ID.
- * @member {string} status Prediction model life cycle.  When prediction is in
- * PendingModelConfirmation status, it is allowed to update the status to
+ * @property {string} [tenantId] The hub name.
+ * @property {string} [predictionName] The prediction name.
+ * @property {string} [predictionGuidId] The prediction GUID ID.
+ * @property {string} status Prediction model life cycle.  When prediction is
+ * in PendingModelConfirmation status, it is allowed to update the status to
  * PendingFeaturing or Active through API. Possible values include: 'New',
  * 'Provisioning', 'ProvisioningFailed', 'PendingDiscovering', 'Discovering',
  * 'PendingFeaturing', 'Featuring', 'FeaturingFailed', 'PendingTraining',
  * 'Training', 'TrainingFailed', 'Evaluating', 'EvaluatingFailed',
  * 'PendingModelConfirmation', 'Active', 'Deleted', 'HumanIntervention',
  * 'Failed'
- * @member {string} [message] The model status message.
- * @member {number} [trainingSetCount] Count of the training set.
- * @member {number} [testSetCount] Count of the test set.
- * @member {number} [validationSetCount] Count of the validation set.
- * @member {number} [trainingAccuracy] The training accuracy.
- * @member {number} [signalsUsed] The singnas used.
- * @member {string} [modelVersion] Version of the model.
+ * @property {string} [message] The model status message.
+ * @property {number} [trainingSetCount] Count of the training set.
+ * @property {number} [testSetCount] Count of the test set.
+ * @property {number} [validationSetCount] Count of the validation set.
+ * @property {number} [trainingAccuracy] The training accuracy.
+ * @property {number} [signalsUsed] The singnas used.
+ * @property {string} [modelVersion] Version of the model.
  */
 export interface PredictionModelStatus {
   readonly tenantId?: string;
@@ -1709,34 +1723,34 @@ export interface PredictionModelStatus {
  * @constructor
  * The prediction resource format.
  *
- * @member {object} [description] Description of the prediction.
- * @member {object} [displayName] Display name of the prediction.
- * @member {array} [involvedInteractionTypes] Interaction types involved in the
+ * @property {object} [description] Description of the prediction.
+ * @property {object} [displayName] Display name of the prediction.
+ * @property {array} [involvedInteractionTypes] Interaction types involved in
+ * the prediction.
+ * @property {array} [involvedKpiTypes] KPI types involved in the prediction.
+ * @property {array} [involvedRelationships] Relationships involved in the
  * prediction.
- * @member {array} [involvedKpiTypes] KPI types involved in the prediction.
- * @member {array} [involvedRelationships] Relationships involved in the
- * prediction.
- * @member {string} negativeOutcomeExpression Negative outcome expression.
- * @member {string} positiveOutcomeExpression Positive outcome expression.
- * @member {string} primaryProfileType Primary profile type.
- * @member {string} [provisioningState] Provisioning state. Possible values
+ * @property {string} negativeOutcomeExpression Negative outcome expression.
+ * @property {string} positiveOutcomeExpression Positive outcome expression.
+ * @property {string} primaryProfileType Primary profile type.
+ * @property {string} [provisioningState] Provisioning state. Possible values
  * include: 'Provisioning', 'Succeeded', 'Expiring', 'Deleting',
  * 'HumanIntervention', 'Failed'
- * @member {string} [predictionName] Name of the prediction.
- * @member {string} scopeExpression Scope expression.
- * @member {string} [tenantId] The hub name.
- * @member {boolean} autoAnalyze Whether do auto analyze.
- * @member {object} mappings Definition of the link mapping of prediction.
- * @member {string} [mappings.score] The score of the link mapping.
- * @member {string} [mappings.grade] The grade of the link mapping.
- * @member {string} [mappings.reason] The reason of the link mapping.
- * @member {string} scoreLabel Score label.
- * @member {array} [grades] The prediction grades.
- * @member {object} [systemGeneratedEntities] System generated entities.
- * @member {array} [systemGeneratedEntities.generatedInteractionTypes]
+ * @property {string} [predictionName] Name of the prediction.
+ * @property {string} scopeExpression Scope expression.
+ * @property {string} [tenantId] The hub name.
+ * @property {boolean} autoAnalyze Whether do auto analyze.
+ * @property {object} mappings Definition of the link mapping of prediction.
+ * @property {string} [mappings.score] The score of the link mapping.
+ * @property {string} [mappings.grade] The grade of the link mapping.
+ * @property {string} [mappings.reason] The reason of the link mapping.
+ * @property {string} scoreLabel Score label.
+ * @property {array} [grades] The prediction grades.
+ * @property {object} [systemGeneratedEntities] System generated entities.
+ * @property {array} [systemGeneratedEntities.generatedInteractionTypes]
  * Generated interaction types.
- * @member {array} [systemGeneratedEntities.generatedLinks] Generated links.
- * @member {object} [systemGeneratedEntities.generatedKpis] Generated KPIs.
+ * @property {array} [systemGeneratedEntities.generatedLinks] Generated links.
+ * @property {object} [systemGeneratedEntities.generatedKpis] Generated KPIs.
  */
 export interface PredictionResourceFormat extends ProxyResource {
   description?: { [propertyName: string]: string };
@@ -1764,10 +1778,10 @@ export interface PredictionResourceFormat extends ProxyResource {
  * @constructor
  * The object that represents the operation.
  *
- * @member {string} [provider] Service provider: Microsoft.CustomerInsights
- * @member {string} [resource] Resource on which the operation is performed:
+ * @property {string} [provider] Service provider: Microsoft.CustomerInsights
+ * @property {string} [resource] Resource on which the operation is performed:
  * Invoice, etc.
- * @member {string} [operation] Operation type: Read, write, delete, etc.
+ * @property {string} [operation] Operation type: Read, write, delete, etc.
  */
 export interface OperationDisplay {
   readonly provider?: string;
@@ -1781,13 +1795,13 @@ export interface OperationDisplay {
  * @constructor
  * A Customer Insights REST API operation
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Service provider:
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] The object that represents the operation.
+ * @property {string} [display.provider] Service provider:
  * Microsoft.CustomerInsights
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [display.resource] Resource on which the operation is
  * performed: Invoice, etc.
- * @member {string} [display.operation] Operation type: Read, write, delete,
+ * @property {string} [display.operation] Operation type: Read, write, delete,
  * etc.
  */
 export interface Operation {
@@ -1803,7 +1817,7 @@ export interface Operation {
  * Result of the request to list Customer Insights operations. It contains a
  * list of operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {
@@ -1816,7 +1830,7 @@ export interface OperationListResult extends Array<Operation> {
  * @constructor
  * Response of list hub operation.
  *
- * @member {string} [nextLink] Link for next set of results.
+ * @property {string} [nextLink] Link for next set of results.
  */
 export interface HubListResult extends Array<Hub> {
   nextLink?: string;
@@ -1828,7 +1842,7 @@ export interface HubListResult extends Array<Hub> {
  * @constructor
  * The response of list profile operation.
  *
- * @member {string} [nextLink] Link to the next set of results.
+ * @property {string} [nextLink] Link to the next set of results.
  */
 export interface ProfileListResult extends Array<ProfileResourceFormat> {
   nextLink?: string;
@@ -1840,7 +1854,7 @@ export interface ProfileListResult extends Array<ProfileResourceFormat> {
  * @constructor
  * The response of list interaction operation.
  *
- * @member {string} [nextLink] Link to the next set of results.
+ * @property {string} [nextLink] Link to the next set of results.
  */
 export interface InteractionListResult extends Array<InteractionResourceFormat> {
   nextLink?: string;
@@ -1852,7 +1866,7 @@ export interface InteractionListResult extends Array<InteractionResourceFormat> 
  * @constructor
  * The response of list relationship operation.
  *
- * @member {string} [nextLink] Link to the next set of results.
+ * @property {string} [nextLink] Link to the next set of results.
  */
 export interface RelationshipListResult extends Array<RelationshipResourceFormat> {
   nextLink?: string;
@@ -1864,7 +1878,7 @@ export interface RelationshipListResult extends Array<RelationshipResourceFormat
  * @constructor
  * The response of list relationship link operation.
  *
- * @member {string} [nextLink] Link to the next set of results.
+ * @property {string} [nextLink] Link to the next set of results.
  */
 export interface RelationshipLinkListResult extends Array<RelationshipLinkResourceFormat> {
   nextLink?: string;
@@ -1876,7 +1890,7 @@ export interface RelationshipLinkListResult extends Array<RelationshipLinkResour
  * @constructor
  * The response of list authorization policy operation.
  *
- * @member {string} [nextLink] Link to the next set of results.
+ * @property {string} [nextLink] Link to the next set of results.
  */
 export interface AuthorizationPolicyListResult extends Array<AuthorizationPolicyResourceFormat> {
   nextLink?: string;
@@ -1888,7 +1902,7 @@ export interface AuthorizationPolicyListResult extends Array<AuthorizationPolicy
  * @constructor
  * The response of list connector operation.
  *
- * @member {string} [nextLink] Link to the next set of results.
+ * @property {string} [nextLink] Link to the next set of results.
  */
 export interface ConnectorListResult extends Array<ConnectorResourceFormat> {
   nextLink?: string;
@@ -1900,7 +1914,7 @@ export interface ConnectorListResult extends Array<ConnectorResourceFormat> {
  * @constructor
  * The response of list connector mapping operation.
  *
- * @member {string} [nextLink] Link to the next set of results.
+ * @property {string} [nextLink] Link to the next set of results.
  */
 export interface ConnectorMappingListResult extends Array<ConnectorMappingResourceFormat> {
   nextLink?: string;
@@ -1912,7 +1926,7 @@ export interface ConnectorMappingListResult extends Array<ConnectorMappingResour
  * @constructor
  * The response of list KPI operation.
  *
- * @member {string} [nextLink] Link to the next set of results.
+ * @property {string} [nextLink] Link to the next set of results.
  */
 export interface KpiListResult extends Array<KpiResourceFormat> {
   nextLink?: string;
@@ -1924,7 +1938,7 @@ export interface KpiListResult extends Array<KpiResourceFormat> {
  * @constructor
  * The response of list widget type operation.
  *
- * @member {string} [nextLink] Link to the next set of results.
+ * @property {string} [nextLink] Link to the next set of results.
  */
 export interface WidgetTypeListResult extends Array<WidgetTypeResourceFormat> {
   nextLink?: string;
@@ -1936,7 +1950,7 @@ export interface WidgetTypeListResult extends Array<WidgetTypeResourceFormat> {
  * @constructor
  * The response of list view operation.
  *
- * @member {string} [nextLink] Link to the next set of results.
+ * @property {string} [nextLink] Link to the next set of results.
  */
 export interface ViewListResult extends Array<ViewResourceFormat> {
   nextLink?: string;
@@ -1948,7 +1962,7 @@ export interface ViewListResult extends Array<ViewResourceFormat> {
  * @constructor
  * The response of list link operation.
  *
- * @member {string} [nextLink] Link to the next set of results.
+ * @property {string} [nextLink] Link to the next set of results.
  */
 export interface LinkListResult extends Array<LinkResourceFormat> {
   nextLink?: string;
@@ -1960,7 +1974,7 @@ export interface LinkListResult extends Array<LinkResourceFormat> {
  * @constructor
  * The response of list role assignment operation.
  *
- * @member {string} [nextLink] Link to the next set of results.
+ * @property {string} [nextLink] Link to the next set of results.
  */
 export interface RoleListResult extends Array<RoleResourceFormat> {
   nextLink?: string;
@@ -1972,7 +1986,7 @@ export interface RoleListResult extends Array<RoleResourceFormat> {
  * @constructor
  * The response of list role assignment operation.
  *
- * @member {string} [nextLink] Link to the next set of results.
+ * @property {string} [nextLink] Link to the next set of results.
  */
 export interface RoleAssignmentListResult extends Array<RoleAssignmentResourceFormat> {
   nextLink?: string;
@@ -1984,7 +1998,7 @@ export interface RoleAssignmentListResult extends Array<RoleAssignmentResourceFo
  * @constructor
  * The response of list predictions operation.
  *
- * @member {string} [nextLink] Link to the next set of results.
+ * @property {string} [nextLink] Link to the next set of results.
  */
 export interface PredictionListResult extends Array<PredictionResourceFormat> {
   nextLink?: string;

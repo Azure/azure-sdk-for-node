@@ -22,9 +22,9 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * The resource definition.
  *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
+ * @property {string} [id] Resource ID.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -38,8 +38,8 @@ export interface Resource extends BaseResource {
  * @constructor
  * Definition of resource.
  *
- * @member {string} location Resource location.
- * @member {object} [tags] Resource tags.
+ * @property {string} location Resource location.
+ * @property {object} [tags] Resource tags.
  */
 export interface TrackedResource extends Resource {
   location: string;
@@ -52,7 +52,7 @@ export interface TrackedResource extends Resource {
  * @constructor
  * Definition of resource.
  *
- * @member {object} [tags] Resource tags.
+ * @property {object} [tags] Resource tags.
  */
 export interface ResourceNamespacePatch extends Resource {
   tags?: { [propertyName: string]: string };
@@ -64,13 +64,13 @@ export interface ResourceNamespacePatch extends Resource {
  * @constructor
  * Description of hybrid connection resource.
  *
- * @member {date} [createdAt] The time the hybrid connection was created.
- * @member {date} [updatedAt] The time the namespace was updated.
- * @member {number} [listenerCount] The number of listeners for this hybrid
+ * @property {date} [createdAt] The time the hybrid connection was created.
+ * @property {date} [updatedAt] The time the namespace was updated.
+ * @property {number} [listenerCount] The number of listeners for this hybrid
  * connection. Note that min : 1 and max:25 are supported.
- * @member {boolean} [requiresClientAuthorization] Returns true if client
+ * @property {boolean} [requiresClientAuthorization] Returns true if client
  * authorization is needed for this hybrid connection; otherwise, false.
- * @member {string} [userMetadata] The usermetadata is a placeholder to store
+ * @property {string} [userMetadata] The usermetadata is a placeholder to store
  * user-defined string data for the hybrid connection endpoint. For example, it
  * can be used to store descriptive data, such as a list of teams and their
  * contact information. Also, user-defined configuration settings can be
@@ -90,19 +90,19 @@ export interface HybridConnection extends Resource {
  * @constructor
  * Description of the WCF relay resource.
  *
- * @member {boolean} [isDynamic] Returns true if the relay is dynamic;
+ * @property {boolean} [isDynamic] Returns true if the relay is dynamic;
  * otherwise, false.
- * @member {date} [createdAt] The time the WCF relay was created.
- * @member {date} [updatedAt] The time the namespace was updated.
- * @member {number} [listenerCount] The number of listeners for this relay.
+ * @property {date} [createdAt] The time the WCF relay was created.
+ * @property {date} [updatedAt] The time the namespace was updated.
+ * @property {number} [listenerCount] The number of listeners for this relay.
  * Note that min :1 and max:25 are supported.
- * @member {string} [relayType] WCF relay type. Possible values include:
+ * @property {string} [relayType] WCF relay type. Possible values include:
  * 'NetTcp', 'Http'
- * @member {boolean} [requiresClientAuthorization] Returns true if client
+ * @property {boolean} [requiresClientAuthorization] Returns true if client
  * authorization is needed for this relay; otherwise, false.
- * @member {boolean} [requiresTransportSecurity] Returns true if transport
+ * @property {boolean} [requiresTransportSecurity] Returns true if transport
  * security is needed for this relay; otherwise, false.
- * @member {string} [userMetadata] The usermetadata is a placeholder to store
+ * @property {string} [userMetadata] The usermetadata is a placeholder to store
  * user-defined string data for the WCF Relay endpoint. For example, it can be
  * used to store descriptive data, such as list of teams and their contact
  * information. Also, user-defined configuration settings can be stored.
@@ -124,7 +124,7 @@ export interface WcfRelay extends Resource {
  * @constructor
  * SKU of the namespace.
  *
- * @member {string} [tier] The tier of this SKU. Possible values include:
+ * @property {string} [tier] The tier of this SKU. Possible values include:
  * 'Standard'
  */
 export interface Sku {
@@ -137,16 +137,16 @@ export interface Sku {
  * @constructor
  * Description of a namespace resource.
  *
- * @member {object} [sku] SKU of the namespace.
- * @member {string} [sku.tier] The tier of this SKU. Possible values include:
+ * @property {object} [sku] SKU of the namespace.
+ * @property {string} [sku.tier] The tier of this SKU. Possible values include:
  * 'Standard'
- * @member {string} [provisioningState] Possible values include: 'Created',
+ * @property {string} [provisioningState] Possible values include: 'Created',
  * 'Succeeded', 'Deleted', 'Failed', 'Updating', 'Unknown'
- * @member {date} [createdAt] The time the namespace was created.
- * @member {date} [updatedAt] The time the namespace was updated.
- * @member {string} [serviceBusEndpoint] Endpoint you can use to perform
+ * @property {date} [createdAt] The time the namespace was created.
+ * @property {date} [updatedAt] The time the namespace was updated.
+ * @property {string} [serviceBusEndpoint] Endpoint you can use to perform
  * Service Bus operations.
- * @member {string} [metricId] Identifier for Azure Insights metrics.
+ * @property {string} [metricId] Identifier for Azure Insights metrics.
  */
 export interface RelayNamespace extends TrackedResource {
   sku?: Sku;
@@ -163,16 +163,16 @@ export interface RelayNamespace extends TrackedResource {
  * @constructor
  * Description of a namespace resource.
  *
- * @member {object} [sku] SKU of the namespace.
- * @member {string} [sku.tier] The tier of this SKU. Possible values include:
+ * @property {object} [sku] SKU of the namespace.
+ * @property {string} [sku.tier] The tier of this SKU. Possible values include:
  * 'Standard'
- * @member {string} [provisioningState] Possible values include: 'Created',
+ * @property {string} [provisioningState] Possible values include: 'Created',
  * 'Succeeded', 'Deleted', 'Failed', 'Updating', 'Unknown'
- * @member {date} [createdAt] The time the namespace was created.
- * @member {date} [updatedAt] The time the namespace was updated.
- * @member {string} [serviceBusEndpoint] Endpoint you can use to perform
+ * @property {date} [createdAt] The time the namespace was created.
+ * @property {date} [updatedAt] The time the namespace was updated.
+ * @property {string} [serviceBusEndpoint] Endpoint you can use to perform
  * Service Bus operations.
- * @member {string} [metricId] Identifier for Azure Insights metrics.
+ * @property {string} [metricId] Identifier for Azure Insights metrics.
  */
 export interface RelayUpdateParameters extends ResourceNamespacePatch {
   sku?: Sku;
@@ -189,10 +189,10 @@ export interface RelayUpdateParameters extends ResourceNamespacePatch {
  * @constructor
  * Description of a namespace authorization rule.
  *
- * @member {array} [rights] The rights associated with the rule.
+ * @property {array} rights The rights associated with the rule.
  */
 export interface AuthorizationRule extends Resource {
-  rights?: string[];
+  rights: string[];
 }
 
 /**
@@ -201,15 +201,15 @@ export interface AuthorizationRule extends Resource {
  * @constructor
  * Namespace/Relay Connection String
  *
- * @member {string} [primaryConnectionString] Primary connection string of the
- * created namespace authorization rule.
- * @member {string} [secondaryConnectionString] Secondary connection string of
+ * @property {string} [primaryConnectionString] Primary connection string of
  * the created namespace authorization rule.
- * @member {string} [primaryKey] A base64-encoded 256-bit primary key for
+ * @property {string} [secondaryConnectionString] Secondary connection string
+ * of the created namespace authorization rule.
+ * @property {string} [primaryKey] A base64-encoded 256-bit primary key for
  * signing and validating the SAS token.
- * @member {string} [secondaryKey] A base64-encoded 256-bit secondary key for
+ * @property {string} [secondaryKey] A base64-encoded 256-bit secondary key for
  * signing and validating the SAS token.
- * @member {string} [keyName] A string that describes the authorization rule.
+ * @property {string} [keyName] A string that describes the authorization rule.
  */
 export interface AccessKeys {
   primaryConnectionString?: string;
@@ -226,9 +226,9 @@ export interface AccessKeys {
  * Parameters supplied to the regenerate authorization rule operation,
  * specifies which key neeeds to be reset.
  *
- * @member {string} keyType The access key to regenerate. Possible values
+ * @property {string} keyType The access key to regenerate. Possible values
  * include: 'PrimaryKey', 'SecondaryKey'
- * @member {string} [key] Optional. If the key value is provided, this is set
+ * @property {string} [key] Optional. If the key value is provided, this is set
  * to key type, or autogenerated key value set for key type.
  */
 export interface RegenerateAccessKeyParameters {
@@ -242,7 +242,7 @@ export interface RegenerateAccessKeyParameters {
  * @constructor
  * Description of the check name availability request properties.
  *
- * @member {string} name The namespace name to check for availability. The
+ * @property {string} name The namespace name to check for availability. The
  * namespace name can contain only letters, numbers, and hyphens. The namespace
  * must start with a letter, and it must end with a letter or number.
  */
@@ -256,11 +256,11 @@ export interface CheckNameAvailability {
  * @constructor
  * Description of the check name availability request properties.
  *
- * @member {string} [message] The detailed info regarding the reason associated
- * with the namespace.
- * @member {boolean} [nameAvailable] Value indicating namespace is available.
+ * @property {string} [message] The detailed info regarding the reason
+ * associated with the namespace.
+ * @property {boolean} [nameAvailable] Value indicating namespace is available.
  * Returns true if the namespace is available; otherwise, false.
- * @member {string} [reason] The reason for unavailability of a namespace.
+ * @property {string} [reason] The reason for unavailability of a namespace.
  * Possible values include: 'None', 'InvalidName', 'SubscriptionIsDisabled',
  * 'NameInUse', 'NameInLockdown', 'TooManyNamespaceInCurrentSubscription'
  */
@@ -276,10 +276,10 @@ export interface CheckNameAvailabilityResult {
  * @constructor
  * The object that represents the operation.
  *
- * @member {string} [provider] Service provider: Relay.
- * @member {string} [resource] Resource on which the operation is performed:
+ * @property {string} [provider] Service provider: Relay.
+ * @property {string} [resource] Resource on which the operation is performed:
  * Invoice, etc.
- * @member {string} [operation] Operation type: Read, write, delete, etc.
+ * @property {string} [operation] Operation type: Read, write, delete, etc.
  */
 export interface OperationDisplay {
   readonly provider?: string;
@@ -293,12 +293,12 @@ export interface OperationDisplay {
  * @constructor
  * A Relay REST API operation.
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Service provider: Relay.
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] The object that represents the operation.
+ * @property {string} [display.provider] Service provider: Relay.
+ * @property {string} [display.resource] Resource on which the operation is
  * performed: Invoice, etc.
- * @member {string} [display.operation] Operation type: Read, write, delete,
+ * @property {string} [display.operation] Operation type: Read, write, delete,
  * etc.
  */
 export interface Operation {
@@ -313,8 +313,8 @@ export interface Operation {
  * Error reponse indicates Relay service is not able to process the incoming
  * request. The reason is provided in the error message.
  *
- * @member {string} [code] Error code.
- * @member {string} [message] Error message indicating why the operation
+ * @property {string} [code] Error code.
+ * @property {string} [message] Error message indicating why the operation
  * failed.
  */
 export interface ErrorResponse {
@@ -330,7 +330,7 @@ export interface ErrorResponse {
  * Result of the request to list Relay operations. It contains a list of
  * operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {
@@ -343,7 +343,7 @@ export interface OperationListResult extends Array<Operation> {
  * @constructor
  * The response from the list namespace operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * value contains incomplete list of namespaces.
  */
 export interface RelayNamespaceListResult extends Array<RelayNamespace> {
@@ -356,7 +356,7 @@ export interface RelayNamespaceListResult extends Array<RelayNamespace> {
  * @constructor
  * The response from the list namespace operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * value contains incomplete list of authorization rules.
  */
 export interface AuthorizationRuleListResult extends Array<AuthorizationRule> {
@@ -369,7 +369,7 @@ export interface AuthorizationRuleListResult extends Array<AuthorizationRule> {
  * @constructor
  * The response of the list hybrid connection operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * value contains incomplete list hybrid connection operation.
  */
 export interface HybridConnectionListResult extends Array<HybridConnection> {
@@ -382,7 +382,7 @@ export interface HybridConnectionListResult extends Array<HybridConnection> {
  * @constructor
  * The response of the list WCF relay operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * value contains incomplete list of WCF relays.
  */
 export interface WcfRelaysListResult extends Array<WcfRelay> {

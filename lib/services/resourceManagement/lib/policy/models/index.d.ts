@@ -22,9 +22,9 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * The policy sku. This property is optional, obsolete, and will be ignored.
  *
- * @member {string} name The name of the policy sku. Possible values are A0 and
- * A1.
- * @member {string} [tier] The policy sku tier. Possible values are Free and
+ * @property {string} name The name of the policy sku. Possible values are A0
+ * and A1.
+ * @property {string} [tier] The policy sku tier. Possible values are Free and
  * Standard.
  */
 export interface PolicySku {
@@ -38,9 +38,9 @@ export interface PolicySku {
  * @constructor
  * Identity for the resource.
  *
- * @member {string} [principalId] The principal ID of the resource identity.
- * @member {string} [tenantId] The tenant ID of the resource identity.
- * @member {string} [type] The identity type. Possible values include:
+ * @property {string} [principalId] The principal ID of the resource identity.
+ * @property {string} [tenantId] The tenant ID of the resource identity.
+ * @property {string} [type] The identity type. Possible values include:
  * 'SystemAssigned', 'None'
  */
 export interface Identity {
@@ -55,34 +55,35 @@ export interface Identity {
  * @constructor
  * The policy assignment.
  *
- * @member {string} [displayName] The display name of the policy assignment.
- * @member {string} [policyDefinitionId] The ID of the policy definition or
+ * @property {string} [displayName] The display name of the policy assignment.
+ * @property {string} [policyDefinitionId] The ID of the policy definition or
  * policy set definition being assigned.
- * @member {string} [scope] The scope for the policy assignment.
- * @member {array} [notScopes] The policy's excluded scopes.
- * @member {object} [parameters] Required if a parameter is used in policy
+ * @property {string} [scope] The scope for the policy assignment.
+ * @property {array} [notScopes] The policy's excluded scopes.
+ * @property {object} [parameters] Required if a parameter is used in policy
  * rule.
- * @member {string} [description] This message will be part of response in case
- * of policy violation.
- * @member {object} [metadata] The policy assignment metadata.
- * @member {string} [id] The ID of the policy assignment.
- * @member {string} [type] The type of the policy assignment.
- * @member {string} [name] The name of the policy assignment.
- * @member {object} [sku] The policy sku. This property is optional, obsolete,
- * and will be ignored.
- * @member {string} [sku.name] The name of the policy sku. Possible values are
- * A0 and A1.
- * @member {string} [sku.tier] The policy sku tier. Possible values are Free
+ * @property {string} [description] This message will be part of response in
+ * case of policy violation.
+ * @property {object} [metadata] The policy assignment metadata.
+ * @property {string} [id] The ID of the policy assignment.
+ * @property {string} [type] The type of the policy assignment.
+ * @property {string} [name] The name of the policy assignment.
+ * @property {object} [sku] The policy sku. This property is optional,
+ * obsolete, and will be ignored.
+ * @property {string} [sku.name] The name of the policy sku. Possible values
+ * are A0 and A1.
+ * @property {string} [sku.tier] The policy sku tier. Possible values are Free
  * and Standard.
- * @member {string} [location] The location of the policy assignment. Only
+ * @property {string} [location] The location of the policy assignment. Only
  * required when utilizing managed identity.
- * @member {object} [identity] The managed identity associated with the policy
- * assignment.
- * @member {string} [identity.principalId] The principal ID of the resource
+ * @property {object} [identity] The managed identity associated with the
+ * policy assignment.
+ * @property {string} [identity.principalId] The principal ID of the resource
  * identity.
- * @member {string} [identity.tenantId] The tenant ID of the resource identity.
- * @member {string} [identity.type] The identity type. Possible values include:
- * 'SystemAssigned', 'None'
+ * @property {string} [identity.tenantId] The tenant ID of the resource
+ * identity.
+ * @property {string} [identity.type] The identity type. Possible values
+ * include: 'SystemAssigned', 'None'
  */
 export interface PolicyAssignment extends BaseResource {
   displayName?: string;
@@ -107,9 +108,9 @@ export interface PolicyAssignment extends BaseResource {
  * Error reponse indicates Azure Resource Manager is not able to process the
  * incoming request. The reason is provided in the error message.
  *
- * @member {string} [httpStatus] Http status code.
- * @member {string} [errorCode] Error code.
- * @member {string} [errorMessage] Error message indicating why the operation
+ * @property {string} [httpStatus] Http status code.
+ * @property {string} [errorCode] Error code.
+ * @property {string} [errorMessage] Error message indicating why the operation
  * failed.
  */
 export interface ErrorResponse {
@@ -124,21 +125,21 @@ export interface ErrorResponse {
  * @constructor
  * The policy definition.
  *
- * @member {string} [policyType] The type of policy definition. Possible values
- * are NotSpecified, BuiltIn, and Custom. Possible values include:
+ * @property {string} [policyType] The type of policy definition. Possible
+ * values are NotSpecified, BuiltIn, and Custom. Possible values include:
  * 'NotSpecified', 'BuiltIn', 'Custom'
- * @member {string} [mode] The policy definition mode. Possible values are
+ * @property {string} [mode] The policy definition mode. Possible values are
  * NotSpecified, Indexed, and All. Possible values include: 'NotSpecified',
  * 'Indexed', 'All'
- * @member {string} [displayName] The display name of the policy definition.
- * @member {string} [description] The policy definition description.
- * @member {object} [policyRule] The policy rule.
- * @member {object} [metadata] The policy definition metadata.
- * @member {object} [parameters] Required if a parameter is used in policy
+ * @property {string} [displayName] The display name of the policy definition.
+ * @property {string} [description] The policy definition description.
+ * @property {object} [policyRule] The policy rule.
+ * @property {object} [metadata] The policy definition metadata.
+ * @property {object} [parameters] Required if a parameter is used in policy
  * rule.
- * @member {string} [id] The ID of the policy definition.
- * @member {string} [name] The name of the policy definition.
- * @member {string} [type] The type of the resource
+ * @property {string} [id] The ID of the policy definition.
+ * @property {string} [name] The name of the policy definition.
+ * @property {string} [type] The type of the resource
  * (Microsoft.Authorization/policyDefinitions).
  */
 export interface PolicyDefinition extends BaseResource {
@@ -160,9 +161,9 @@ export interface PolicyDefinition extends BaseResource {
  * @constructor
  * The policy definition reference.
  *
- * @member {string} [policyDefinitionId] The ID of the policy definition or
+ * @property {string} [policyDefinitionId] The ID of the policy definition or
  * policy set definition.
- * @member {object} [parameters] Required if a parameter is used in policy
+ * @property {object} [parameters] Required if a parameter is used in policy
  * rule.
  */
 export interface PolicyDefinitionReference {
@@ -176,19 +177,20 @@ export interface PolicyDefinitionReference {
  * @constructor
  * The policy set definition.
  *
- * @member {string} [policyType] The type of policy definition. Possible values
- * are NotSpecified, BuiltIn, and Custom. Possible values include:
+ * @property {string} [policyType] The type of policy definition. Possible
+ * values are NotSpecified, BuiltIn, and Custom. Possible values include:
  * 'NotSpecified', 'BuiltIn', 'Custom'
- * @member {string} [displayName] The display name of the policy set
+ * @property {string} [displayName] The display name of the policy set
  * definition.
- * @member {string} [description] The policy set definition description.
- * @member {object} [metadata] The policy set definition metadata.
- * @member {object} [parameters] The policy set definition parameters that can
- * be used in policy definition references.
- * @member {array} policyDefinitions An array of policy definition references.
- * @member {string} [id] The ID of the policy set definition.
- * @member {string} [name] The name of the policy set definition.
- * @member {string} [type] The type of the resource
+ * @property {string} [description] The policy set definition description.
+ * @property {object} [metadata] The policy set definition metadata.
+ * @property {object} [parameters] The policy set definition parameters that
+ * can be used in policy definition references.
+ * @property {array} policyDefinitions An array of policy definition
+ * references.
+ * @property {string} [id] The ID of the policy set definition.
+ * @property {string} [name] The name of the policy set definition.
+ * @property {string} [type] The type of the resource
  * (Microsoft.Authorization/policySetDefinitions).
  */
 export interface PolicySetDefinition extends BaseResource {
@@ -210,7 +212,7 @@ export interface PolicySetDefinition extends BaseResource {
  * @constructor
  * List of policy assignments.
  *
- * @member {string} [nextLink] The URL to use for getting the next set of
+ * @property {string} [nextLink] The URL to use for getting the next set of
  * results.
  */
 export interface PolicyAssignmentListResult extends Array<PolicyAssignment> {
@@ -223,7 +225,7 @@ export interface PolicyAssignmentListResult extends Array<PolicyAssignment> {
  * @constructor
  * List of policy definitions.
  *
- * @member {string} [nextLink] The URL to use for getting the next set of
+ * @property {string} [nextLink] The URL to use for getting the next set of
  * results.
  */
 export interface PolicyDefinitionListResult extends Array<PolicyDefinition> {
@@ -236,7 +238,7 @@ export interface PolicyDefinitionListResult extends Array<PolicyDefinition> {
  * @constructor
  * List of policy set definitions.
  *
- * @member {string} [nextLink] The URL to use for getting the next set of
+ * @property {string} [nextLink] The URL to use for getting the next set of
  * results.
  */
 export interface PolicySetDefinitionListResult extends Array<PolicySetDefinition> {

@@ -22,12 +22,12 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * The Resource model definition.
  *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
- * @member {string} [location] Resource location
- * @member {object} [tags] Resource tags
- * @member {string} [etag] Resource etag
+ * @property {string} [id] Resource Id
+ * @property {string} [name] Resource name
+ * @property {string} [type] Resource type
+ * @property {string} [location] Resource location
+ * @property {object} [tags] Resource tags
+ * @property {string} [etag] Resource etag
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -44,23 +44,23 @@ export interface Resource extends BaseResource {
  * @constructor
  * Secure LDAP Settings
  *
- * @member {string} [ldaps] A flag to determine whether or not Secure LDAP is
+ * @property {string} [ldaps] A flag to determine whether or not Secure LDAP is
  * enabled or disabled. Possible values include: 'Enabled', 'Disabled'
- * @member {string} [pfxCertificate] The certificate required to configure
+ * @property {string} [pfxCertificate] The certificate required to configure
  * Secure LDAP. The parameter passed here should be a base64encoded
  * representation of the certificate pfx file.
- * @member {string} [pfxCertificatePassword] The password to decrypt the
+ * @property {string} [pfxCertificatePassword] The password to decrypt the
  * provided Secure LDAP certificate pfx file.
- * @member {string} [publicCertificate] Public certificate used to configure
+ * @property {string} [publicCertificate] Public certificate used to configure
  * secure ldap.
- * @member {string} [certificateThumbprint] Thumbprint of configure ldaps
+ * @property {string} [certificateThumbprint] Thumbprint of configure ldaps
  * certificate.
- * @member {date} [certificateNotAfter] NotAfter DateTime of configure ldaps
+ * @property {date} [certificateNotAfter] NotAfter DateTime of configure ldaps
  * certificate.
- * @member {string} [externalAccess] A flag to determine whether or not Secure
- * LDAP access over the internet is enabled or disabled. Possible values
+ * @property {string} [externalAccess] A flag to determine whether or not
+ * Secure LDAP access over the internet is enabled or disabled. Possible values
  * include: 'Enabled', 'Disabled'
- * @member {string} [externalAccessIpAddress] External access ip address.
+ * @property {string} [externalAccessIpAddress] External access ip address.
  */
 export interface LdapsSettings {
   ldaps?: string;
@@ -79,9 +79,9 @@ export interface LdapsSettings {
  * @constructor
  * Health Monitor Description
  *
- * @member {string} [id] Health Monitor Id
- * @member {string} [name] Health Monitor Name
- * @member {string} [details] Health Monitor Details
+ * @property {string} [id] Health Monitor Id
+ * @property {string} [name] Health Monitor Name
+ * @property {string} [details] Health Monitor Details
  */
 export interface HealthMonitor {
   readonly id?: string;
@@ -95,13 +95,13 @@ export interface HealthMonitor {
  * @constructor
  * Health Alert Description
  *
- * @member {string} [id] Health Alert Id
- * @member {string} [name] Health Alert Name
- * @member {string} [issue] Health Alert Issue
- * @member {string} [severity] Health Alert Severity
- * @member {date} [raised] Health Alert Raised DateTime
- * @member {date} [lastDetected] Health Alert Last Detected DateTime
- * @member {string} [resolutionUri] Health Alert TSG Link
+ * @property {string} [id] Health Alert Id
+ * @property {string} [name] Health Alert Name
+ * @property {string} [issue] Health Alert Issue
+ * @property {string} [severity] Health Alert Severity
+ * @property {date} [raised] Health Alert Raised DateTime
+ * @property {date} [lastDetected] Health Alert Last Detected DateTime
+ * @property {string} [resolutionUri] Health Alert TSG Link
  */
 export interface HealthAlert {
   readonly id?: string;
@@ -119,11 +119,11 @@ export interface HealthAlert {
  * @constructor
  * Settings for notification
  *
- * @member {string} [notifyGlobalAdmins] Should global admins be notified.
+ * @property {string} [notifyGlobalAdmins] Should global admins be notified.
  * Possible values include: 'Enabled', 'Disabled'
- * @member {string} [notifyDcAdmins] Should domain controller admins be
+ * @property {string} [notifyDcAdmins] Should domain controller admins be
  * notified. Possible values include: 'Enabled', 'Disabled'
- * @member {array} [additionalRecipients] The list of additional recipients
+ * @property {array} [additionalRecipients] The list of additional recipients
  */
 export interface NotificationSettings {
   notifyGlobalAdmins?: string;
@@ -137,11 +137,11 @@ export interface NotificationSettings {
  * @constructor
  * Domain Security Settings
  *
- * @member {string} [ntlmV1] A flag to determine whether or not NtlmV1 is
+ * @property {string} [ntlmV1] A flag to determine whether or not NtlmV1 is
  * enabled or disabled. Possible values include: 'Enabled', 'Disabled'
- * @member {string} [tlsV1] A flag to determine whether or not TlsV1 is enabled
- * or disabled. Possible values include: 'Enabled', 'Disabled'
- * @member {string} [syncNtlmPasswords] A flag to determine whether or not
+ * @property {string} [tlsV1] A flag to determine whether or not TlsV1 is
+ * enabled or disabled. Possible values include: 'Enabled', 'Disabled'
+ * @property {string} [syncNtlmPasswords] A flag to determine whether or not
  * SyncNtlmPasswords is enabled or disabled. Possible values include:
  * 'Enabled', 'Disabled'
  */
@@ -157,61 +157,61 @@ export interface DomainSecuritySettings {
  * @constructor
  * Domain service.
  *
- * @member {string} [tenantId] Azure Active Directory tenant id
- * @member {string} [domainName] The name of the Azure domain that the user
+ * @property {string} [tenantId] Azure Active Directory tenant id
+ * @property {string} [domainName] The name of the Azure domain that the user
  * would like to deploy Domain Services to.
- * @member {string} [vnetSiteId] Virtual network site id
- * @member {string} [subnetId] The name of the virtual network that Domain
+ * @property {string} [vnetSiteId] Virtual network site id
+ * @property {string} [subnetId] The name of the virtual network that Domain
  * Services will be deployed on. The id of the subnet that Domain Services will
  * be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
- * @member {object} [ldapsSettings] Secure LDAP Settings
- * @member {string} [ldapsSettings.ldaps] A flag to determine whether or not
+ * @property {object} [ldapsSettings] Secure LDAP Settings
+ * @property {string} [ldapsSettings.ldaps] A flag to determine whether or not
  * Secure LDAP is enabled or disabled. Possible values include: 'Enabled',
  * 'Disabled'
- * @member {string} [ldapsSettings.pfxCertificate] The certificate required to
- * configure Secure LDAP. The parameter passed here should be a base64encoded
- * representation of the certificate pfx file.
- * @member {string} [ldapsSettings.pfxCertificatePassword] The password to
+ * @property {string} [ldapsSettings.pfxCertificate] The certificate required
+ * to configure Secure LDAP. The parameter passed here should be a
+ * base64encoded representation of the certificate pfx file.
+ * @property {string} [ldapsSettings.pfxCertificatePassword] The password to
  * decrypt the provided Secure LDAP certificate pfx file.
- * @member {string} [ldapsSettings.publicCertificate] Public certificate used
+ * @property {string} [ldapsSettings.publicCertificate] Public certificate used
  * to configure secure ldap.
- * @member {string} [ldapsSettings.certificateThumbprint] Thumbprint of
+ * @property {string} [ldapsSettings.certificateThumbprint] Thumbprint of
  * configure ldaps certificate.
- * @member {date} [ldapsSettings.certificateNotAfter] NotAfter DateTime of
+ * @property {date} [ldapsSettings.certificateNotAfter] NotAfter DateTime of
  * configure ldaps certificate.
- * @member {string} [ldapsSettings.externalAccess] A flag to determine whether
- * or not Secure LDAP access over the internet is enabled or disabled. Possible
- * values include: 'Enabled', 'Disabled'
- * @member {string} [ldapsSettings.externalAccessIpAddress] External access ip
- * address.
- * @member {date} [healthLastEvaluated] Last domain evaluation run DateTime
- * @member {array} [healthMonitors] List of Domain Health Monitors
- * @member {array} [healthAlerts] List of Domain Health Alerts
- * @member {object} [notificationSettings] Notification Settings
- * @member {string} [notificationSettings.notifyGlobalAdmins] Should global
+ * @property {string} [ldapsSettings.externalAccess] A flag to determine
+ * whether or not Secure LDAP access over the internet is enabled or disabled.
+ * Possible values include: 'Enabled', 'Disabled'
+ * @property {string} [ldapsSettings.externalAccessIpAddress] External access
+ * ip address.
+ * @property {date} [healthLastEvaluated] Last domain evaluation run DateTime
+ * @property {array} [healthMonitors] List of Domain Health Monitors
+ * @property {array} [healthAlerts] List of Domain Health Alerts
+ * @property {object} [notificationSettings] Notification Settings
+ * @property {string} [notificationSettings.notifyGlobalAdmins] Should global
  * admins be notified. Possible values include: 'Enabled', 'Disabled'
- * @member {string} [notificationSettings.notifyDcAdmins] Should domain
+ * @property {string} [notificationSettings.notifyDcAdmins] Should domain
  * controller admins be notified. Possible values include: 'Enabled',
  * 'Disabled'
- * @member {array} [notificationSettings.additionalRecipients] The list of
+ * @property {array} [notificationSettings.additionalRecipients] The list of
  * additional recipients
- * @member {object} [domainSecuritySettings] DomainSecurity Settings
- * @member {string} [domainSecuritySettings.ntlmV1] A flag to determine whether
- * or not NtlmV1 is enabled or disabled. Possible values include: 'Enabled',
- * 'Disabled'
- * @member {string} [domainSecuritySettings.tlsV1] A flag to determine whether
- * or not TlsV1 is enabled or disabled. Possible values include: 'Enabled',
- * 'Disabled'
- * @member {string} [domainSecuritySettings.syncNtlmPasswords] A flag to
+ * @property {object} [domainSecuritySettings] DomainSecurity Settings
+ * @property {string} [domainSecuritySettings.ntlmV1] A flag to determine
+ * whether or not NtlmV1 is enabled or disabled. Possible values include:
+ * 'Enabled', 'Disabled'
+ * @property {string} [domainSecuritySettings.tlsV1] A flag to determine
+ * whether or not TlsV1 is enabled or disabled. Possible values include:
+ * 'Enabled', 'Disabled'
+ * @property {string} [domainSecuritySettings.syncNtlmPasswords] A flag to
  * determine whether or not SyncNtlmPasswords is enabled or disabled. Possible
  * values include: 'Enabled', 'Disabled'
- * @member {string} [filteredSync] Enabled or Disabled flag to turn on
+ * @property {string} [filteredSync] Enabled or Disabled flag to turn on
  * Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
- * @member {array} [domainControllerIpAddress] List of Domain Controller IP
+ * @property {array} [domainControllerIpAddress] List of Domain Controller IP
  * Address
- * @member {string} [serviceStatus] Status of Domain Service instance
- * @member {string} [provisioningState] the current deployment or provisioning
- * state, which only appears in the response.
+ * @property {string} [serviceStatus] Status of Domain Service instance
+ * @property {string} [provisioningState] the current deployment or
+ * provisioning state, which only appears in the response.
  */
 export interface DomainService extends Resource {
   readonly tenantId?: string;
@@ -236,11 +236,11 @@ export interface DomainService extends Resource {
  * @constructor
  * The operation supported by Domain Services.
  *
- * @member {string} [description] The description of the operation.
- * @member {string} [operation] The action that users can perform, based on
+ * @property {string} [description] The description of the operation.
+ * @property {string} [operation] The action that users can perform, based on
  * their permission level.
- * @member {string} [provider] Service provider: Domain Services.
- * @member {string} [resource] Resource on which the operation is performed.
+ * @property {string} [provider] Service provider: Domain Services.
+ * @property {string} [resource] Resource on which the operation is performed.
  */
 export interface OperationDisplayInfo {
   description?: string;
@@ -255,15 +255,15 @@ export interface OperationDisplayInfo {
  * @constructor
  * The operation supported by Domain Services.
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}.
- * @member {object} [display] The operation supported by Domain Services.
- * @member {string} [display.description] The description of the operation.
- * @member {string} [display.operation] The action that users can perform,
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}.
+ * @property {object} [display] The operation supported by Domain Services.
+ * @property {string} [display.description] The description of the operation.
+ * @property {string} [display.operation] The action that users can perform,
  * based on their permission level.
- * @member {string} [display.provider] Service provider: Domain Services.
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [display.provider] Service provider: Domain Services.
+ * @property {string} [display.resource] Resource on which the operation is
  * performed.
- * @member {string} [origin] The origin of the operation.
+ * @property {string} [origin] The origin of the operation.
  */
 export interface OperationEntity {
   name?: string;
@@ -278,7 +278,7 @@ export interface OperationEntity {
  * @constructor
  * The list of domain service operation response.
  *
- * @member {string} [nextLink] The continuation token for the next page of
+ * @property {string} [nextLink] The continuation token for the next page of
  * results.
  */
 export interface OperationEntityListResult extends Array<OperationEntity> {
@@ -291,7 +291,7 @@ export interface OperationEntityListResult extends Array<OperationEntity> {
  * @constructor
  * The response from the List Domain Services operation.
  *
- * @member {string} [nextLink] The continuation token for the next page of
+ * @property {string} [nextLink] The continuation token for the next page of
  * results.
  */
 export interface DomainServiceListResult extends Array<DomainService> {

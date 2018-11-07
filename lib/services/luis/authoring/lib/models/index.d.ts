@@ -18,10 +18,10 @@ import * as moment from "moment";
  * Defines the entity type and position of the extracted entity within the
  * example.
  *
- * @member {string} entityName The entity type.
- * @member {number} startCharIndex The index within the utterance where the
+ * @property {string} entityName The entity type.
+ * @property {number} startCharIndex The index within the utterance where the
  * extracted entity starts.
- * @member {number} endCharIndex The index within the utterance where the
+ * @property {number} endCharIndex The index within the utterance where the
  * extracted entity ends.
  */
 export interface EntityLabelObject {
@@ -36,17 +36,18 @@ export interface EntityLabelObject {
  * @constructor
  * Properties for creating a new LUIS Application
  *
- * @member {string} culture The culture for the new application. It is the
+ * @property {string} culture The culture for the new application. It is the
  * language that your app understands and speaks. E.g.: "en-us". Note: the
  * culture cannot be changed after the app is created.
- * @member {string} [domain] The domain for the new application. Optional.
+ * @property {string} [domain] The domain for the new application. Optional.
  * E.g.: Comics.
- * @member {string} [description] Description of the new application. Optional.
- * @member {string} [initialVersionId] The initial version ID. Optional.
+ * @property {string} [description] Description of the new application.
+ * Optional.
+ * @property {string} [initialVersionId] The initial version ID. Optional.
  * Default value is: "0.1"
- * @member {string} [usageScenario] Defines the scenario for the new
+ * @property {string} [usageScenario] Defines the scenario for the new
  * application. Optional. E.g.: IoT.
- * @member {string} name The name for the new application.
+ * @property {string} name The name for the new application.
  */
 export interface ApplicationCreateObject {
   culture: string;
@@ -64,7 +65,7 @@ export interface ApplicationCreateObject {
  * A model object containing the name of the custom prebuilt entity and the
  * name of the domain to which this model belongs.
  *
- * @member {string} [domainName] The domain name.
+ * @property {string} [domainName] The domain name.
  */
 export interface PrebuiltDomainCreateBaseObject {
   domainName?: string;
@@ -77,8 +78,8 @@ export interface PrebuiltDomainCreateBaseObject {
  * A prebuilt domain create object containing the name and culture of the
  * domain.
  *
- * @member {string} [domainName] The domain name.
- * @member {string} [culture] The culture of the new domain.
+ * @property {string} [domainName] The domain name.
+ * @property {string} [culture] The culture of the new domain.
  */
 export interface PrebuiltDomainCreateObject {
   domainName?: string;
@@ -92,8 +93,8 @@ export interface PrebuiltDomainCreateObject {
  * A model object containing the name of the custom prebuilt intent or entity
  * and the name of the domain to which this model belongs.
  *
- * @member {string} [domainName] The domain name.
- * @member {string} [modelName] The intent name or entity name.
+ * @property {string} [domainName] The domain name.
+ * @property {string} [modelName] The intent name or entity name.
  */
 export interface PrebuiltDomainModelCreateObject {
   domainName?: string;
@@ -106,8 +107,8 @@ export interface PrebuiltDomainModelCreateObject {
  * @constructor
  * A Hierarchical Entity Extractor.
  *
- * @member {array} [children] Child entities.
- * @member {string} [name] Entity name.
+ * @property {array} [children] Child entities.
+ * @property {string} [name] Entity name.
  */
 export interface HierarchicalEntityModel {
   children?: string[];
@@ -120,8 +121,8 @@ export interface HierarchicalEntityModel {
  * @constructor
  * A composite entity.
  *
- * @member {array} [children] Child entities.
- * @member {string} [name] Entity name.
+ * @property {array} [children] Child entities.
+ * @property {string} [name] Entity name.
  */
 export interface CompositeEntityModel {
   children?: string[];
@@ -134,11 +135,11 @@ export interface CompositeEntityModel {
  * @constructor
  * Exported Model - Extracted Entity from utterance.
  *
- * @member {number} startPos The index within the utterance where the extracted
- * entity starts.
- * @member {number} endPos The index within the utterance where the extracted
+ * @property {number} startPos The index within the utterance where the
+ * extracted entity starts.
+ * @property {number} endPos The index within the utterance where the extracted
  * entity ends.
- * @member {string} entity The entity name.
+ * @property {string} entity The entity name.
  */
 export interface JSONEntity {
   startPos: number;
@@ -152,8 +153,8 @@ export interface JSONEntity {
  * @constructor
  * Object model for updating an application's settings.
  *
- * @member {boolean} [publicProperty] Setting your application as public allows
- * other people to use your application's endpoint using their own keys.
+ * @property {boolean} [publicProperty] Setting your application as public
+ * allows other people to use your application's endpoint using their own keys.
  */
 export interface ApplicationSettingUpdateObject {
   publicProperty?: boolean;
@@ -165,11 +166,11 @@ export interface ApplicationSettingUpdateObject {
  * @constructor
  * Object model for updating an application's publish settings.
  *
- * @member {boolean} [sentimentAnalysis] Setting sentiment analysis as true
+ * @property {boolean} [sentimentAnalysis] Setting sentiment analysis as true
  * returns the Sentiment of the input utterance along with the resopnse
- * @member {boolean} [speech] Setting speech as public enables speech priming
+ * @property {boolean} [speech] Setting speech as public enables speech priming
  * in your app
- * @member {boolean} [spellChecker] Setting spell checker as public enables
+ * @property {boolean} [spellChecker] Setting spell checker as public enables
  * spell checking the input utterance.
  */
 export interface PublishSettingUpdateObject {
@@ -184,9 +185,9 @@ export interface PublishSettingUpdateObject {
  * @constructor
  * A labeled example.
  *
- * @member {string} [text] The sample's utterance.
- * @member {array} [entityLabels] The idenfied entities within the utterance.
- * @member {string} [intentName] The idenfitied intent representing the
+ * @property {string} [text] The sample's utterance.
+ * @property {array} [entityLabels] The idenfied entities within the utterance.
+ * @property {string} [intentName] The idenfitied intent representing the
  * utterance.
  */
 export interface ExampleLabelObject {
@@ -201,10 +202,10 @@ export interface ExampleLabelObject {
  * @constructor
  * Object model for creating a phraselist model.
  *
- * @member {string} [phrases] List of comma-separated phrases that represent
+ * @property {string} [phrases] List of comma-separated phrases that represent
  * the Phraselist.
- * @member {string} [name] The Phraselist name.
- * @member {boolean} [isExchangeable] An exchangeable phrase list feature are
+ * @property {string} [name] The Phraselist name.
+ * @property {boolean} [isExchangeable] An exchangeable phrase list feature are
  * serves as single feature to the LUIS underlying training algorithm. It is
  * used as a lexicon lookup feature where its value is 1 if the lexicon
  * contains a given word or 0 if it doesn’t. Think of an exchangeable as a
@@ -228,8 +229,9 @@ export interface PhraselistCreateObject {
  * @constructor
  * Sublist of items for a Closed list.
  *
- * @member {string} [canonicalForm] The standard form that the list represents.
- * @member {array} [list] List of synonym words.
+ * @property {string} [canonicalForm] The standard form that the list
+ * represents.
+ * @property {array} [list] List of synonym words.
  */
 export interface SubClosedList {
   canonicalForm?: string;
@@ -242,7 +244,7 @@ export interface SubClosedList {
  * @constructor
  * Sublist of items for a Closed list.
  *
- * @member {number} [id] The sublist ID
+ * @property {number} [id] The sublist ID
  */
 export interface SubClosedListResponse extends SubClosedList {
   id?: number;
@@ -254,8 +256,8 @@ export interface SubClosedListResponse extends SubClosedList {
  * @constructor
  * Object model for updating the name or description of an application.
  *
- * @member {string} [name] The application's new name.
- * @member {string} [description] The application's new description.
+ * @property {string} [name] The application's new name.
+ * @property {string} [description] The application's new description.
  */
 export interface ApplicationUpdateObject {
   name?: string;
@@ -268,9 +270,9 @@ export interface ApplicationUpdateObject {
  * @constructor
  * Exported Model - A Pattern feature.
  *
- * @member {string} [pattern] The Regular Expression to match.
- * @member {boolean} [activated] Indicates if the Pattern feature is enabled.
- * @member {string} [name] Name of the feature.
+ * @property {string} [pattern] The Regular Expression to match.
+ * @property {boolean} [activated] Indicates if the Pattern feature is enabled.
+ * @property {string} [name] Name of the feature.
  */
 export interface JSONRegexFeature {
   pattern?: string;
@@ -284,9 +286,9 @@ export interface JSONRegexFeature {
  * @constructor
  * Object model for updating an existing Pattern feature.
  *
- * @member {string} [pattern] The Regular Expression to match.
- * @member {string} [name] Name of the feature.
- * @member {boolean} [isActive] Indicates if the Pattern feature is enabled.
+ * @property {string} [pattern] The Regular Expression to match.
+ * @property {string} [name] Name of the feature.
+ * @property {boolean} [isActive] Indicates if the Pattern feature is enabled.
  * Default value: true .
  */
 export interface PatternUpdateObject {
@@ -301,9 +303,9 @@ export interface PatternUpdateObject {
  * @constructor
  * Exported Model - A Closed List.
  *
- * @member {string} [name] Name of the closed list feature.
- * @member {array} [subLists] Sublists for the feature.
- * @member {array} [roles]
+ * @property {string} [name] Name of the closed list feature.
+ * @property {array} [subLists] Sublists for the feature.
+ * @property {array} [roles]
  */
 export interface ClosedList {
   name?: string;
@@ -317,8 +319,9 @@ export interface ClosedList {
  * @constructor
  * Sublist of items for a Closed list.
  *
- * @member {string} [canonicalForm] The standard form that the list represents.
- * @member {array} [list] List of synonym words.
+ * @property {string} [canonicalForm] The standard form that the list
+ * represents.
+ * @property {array} [list] List of synonym words.
  */
 export interface WordListObject {
   canonicalForm?: string;
@@ -331,7 +334,7 @@ export interface WordListObject {
  * @constructor
  * Object model for adding a batch of sublists to an existing closedlist.
  *
- * @member {array} [subLists] Sublists to add.
+ * @property {array} [subLists] Sublists to add.
  */
 export interface ClosedListModelPatchObject {
   subLists?: WordListObject[];
@@ -343,11 +346,11 @@ export interface ClosedListModelPatchObject {
  * @constructor
  * Exported Model - Phraselist Model Feature.
  *
- * @member {boolean} [activated] Indicates if the feature is enabled.
- * @member {string} [name] The Phraselist name.
- * @member {string} [words] List of comma-separated phrases that represent the
- * Phraselist.
- * @member {boolean} [mode] An exchangeable phrase list feature are serves as
+ * @property {boolean} [activated] Indicates if the feature is enabled.
+ * @property {string} [name] The Phraselist name.
+ * @property {string} [words] List of comma-separated phrases that represent
+ * the Phraselist.
+ * @property {boolean} [mode] An exchangeable phrase list feature are serves as
  * single feature to the LUIS underlying training algorithm. It is used as a
  * lexicon lookup feature where its value is 1 if the lexicon contains a given
  * word or 0 if it doesn’t. Think of an exchangeable as a synonyms list. A
@@ -372,7 +375,7 @@ export interface JSONModelFeature {
  * @constructor
  * Object model for creating a new entity extractor.
  *
- * @member {string} [name] Name of the new entity extractor.
+ * @property {string} [name] Name of the new entity extractor.
  */
 export interface ModelCreateObject {
   name?: string;
@@ -384,8 +387,8 @@ export interface ModelCreateObject {
  * @constructor
  * Object model for creating a Pattern feature.
  *
- * @member {string} [pattern] The Regular Expression to match.
- * @member {string} [name] Name of the feature.
+ * @property {string} [pattern] The Regular Expression to match.
+ * @property {string} [name] Name of the feature.
  */
 export interface PatternCreateObject {
   pattern?: string;
@@ -398,8 +401,9 @@ export interface PatternCreateObject {
  * @constructor
  * Object model for updating one of the closed list's sublists.
  *
- * @member {string} [canonicalForm] The standard form that the list represents.
- * @member {array} [list] List of synonym words.
+ * @property {string} [canonicalForm] The standard form that the list
+ * represents.
+ * @property {array} [list] List of synonym words.
  */
 export interface WordListBaseUpdateObject {
   canonicalForm?: string;
@@ -412,9 +416,9 @@ export interface WordListBaseUpdateObject {
  * @constructor
  * Exported Model - Utterance that was used to train the model.
  *
- * @member {string} [text] The utterance.
- * @member {string} [intent] The matched intent.
- * @member {array} [entities] The matched entities.
+ * @property {string} [text] The utterance.
+ * @property {string} [intent] The matched intent.
+ * @property {array} [entities] The matched entities.
  */
 export interface JSONUtterance {
   text?: string;
@@ -428,7 +432,7 @@ export interface JSONUtterance {
  * @constructor
  * Object model for updating an intent classifier.
  *
- * @member {string} [name] The entity's new name.
+ * @property {string} [name] The entity's new name.
  */
 export interface ModelUpdateObject {
   name?: string;
@@ -440,8 +444,8 @@ export interface ModelUpdateObject {
  * @constructor
  * Object model for updating a closed list.
  *
- * @member {array} [subLists] The new sublists for the feature.
- * @member {string} [name] The new name of the closed list feature.
+ * @property {array} [subLists] The new sublists for the feature.
+ * @property {string} [name] The new name of the closed list feature.
  */
 export interface ClosedListModelUpdateObject {
   subLists?: WordListObject[];
@@ -454,8 +458,8 @@ export interface ClosedListModelUpdateObject {
  * @constructor
  * Object model for creating a closed list.
  *
- * @member {array} [subLists] Sublists for the feature.
- * @member {string} [name] Name of the closed list feature.
+ * @property {array} [subLists] Sublists for the feature.
+ * @property {string} [name] Name of the closed list feature.
  */
 export interface ClosedListModelCreateObject {
   subLists?: WordListObject[];
@@ -468,21 +472,22 @@ export interface ClosedListModelCreateObject {
  * @constructor
  * Object model of an application version.
  *
- * @member {string} version The version ID. E.g.: "0.1"
- * @member {date} [createdDateTime] The version's creation timestamp.
- * @member {date} [lastModifiedDateTime] Timestamp of the last update.
- * @member {date} [lastTrainedDateTime] Timestamp of the last time the model
+ * @property {string} version The version ID. E.g.: "0.1"
+ * @property {date} [createdDateTime] The version's creation timestamp.
+ * @property {date} [lastModifiedDateTime] Timestamp of the last update.
+ * @property {date} [lastTrainedDateTime] Timestamp of the last time the model
  * was trained.
- * @member {date} [lastPublishedDateTime] Timestamp when was last published.
- * @member {string} [endpointUrl] The Runtime endpoint URL for this model
+ * @property {date} [lastPublishedDateTime] Timestamp when was last published.
+ * @property {string} [endpointUrl] The Runtime endpoint URL for this model
  * version.
- * @member {object} [assignedEndpointKey] The endpoint key.
- * @member {object} [externalApiKeys] External keys.
- * @member {number} [intentsCount] Number of intents in this model.
- * @member {number} [entitiesCount] Number of entities in this model.
- * @member {number} [endpointHitsCount] Number of calls made to this endpoint.
- * @member {string} trainingStatus The current training status. Possible values
- * include: 'NeedsTraining', 'InProgress', 'Trained'
+ * @property {object} [assignedEndpointKey] The endpoint key.
+ * @property {object} [externalApiKeys] External keys.
+ * @property {number} [intentsCount] Number of intents in this model.
+ * @property {number} [entitiesCount] Number of entities in this model.
+ * @property {number} [endpointHitsCount] Number of calls made to this
+ * endpoint.
+ * @property {string} trainingStatus The current training status. Possible
+ * values include: 'NeedsTraining', 'InProgress', 'Trained'
  */
 export interface VersionInfo {
   version: string;
@@ -505,7 +510,7 @@ export interface VersionInfo {
  * @constructor
  * Object model for cloning an application's version.
  *
- * @member {string} [version] The new version for the cloned model.
+ * @property {string} [version] The new version for the cloned model.
  */
 export interface TaskUpdateObject {
   version?: string;
@@ -517,12 +522,12 @@ export interface TaskUpdateObject {
  * @constructor
  * Object model for updating a Phraselist.
  *
- * @member {string} [phrases] List of comma-separated phrases that represent
+ * @property {string} [phrases] List of comma-separated phrases that represent
  * the Phraselist.
- * @member {string} [name] The Phraselist name.
- * @member {boolean} [isActive] Indicates if the Phraselist is enabled. Default
- * value: true .
- * @member {boolean} [isExchangeable] An exchangeable phrase list feature are
+ * @property {string} [name] The Phraselist name.
+ * @property {boolean} [isActive] Indicates if the Phraselist is enabled.
+ * Default value: true .
+ * @property {boolean} [isExchangeable] An exchangeable phrase list feature are
  * serves as single feature to the LUIS underlying training algorithm. It is
  * used as a lexicon lookup feature where its value is 1 if the lexicon
  * contains a given word or 0 if it doesn’t. Think of an exchangeable as a
@@ -545,8 +550,8 @@ export interface PhraselistUpdateObject {
  * @class
  * Initializes a new instance of the PrebuiltDomainObject class.
  * @constructor
- * @member {string} [domainName]
- * @member {string} [modelName]
+ * @property {string} [domainName]
+ * @property {string} [modelName]
  */
 export interface PrebuiltDomainObject {
   domainName?: string;
@@ -557,12 +562,12 @@ export interface PrebuiltDomainObject {
  * @class
  * Initializes a new instance of the HierarchicalModel class.
  * @constructor
- * @member {string} [name]
- * @member {array} [children]
- * @member {object} [inherits]
- * @member {string} [inherits.domainName]
- * @member {string} [inherits.modelName]
- * @member {array} [roles]
+ * @property {string} [name]
+ * @property {array} [children]
+ * @property {object} [inherits]
+ * @property {string} [inherits.domainName]
+ * @property {string} [inherits.modelName]
+ * @property {array} [roles]
  */
 export interface HierarchicalModel {
   name?: string;
@@ -577,16 +582,13 @@ export interface HierarchicalModel {
  * @constructor
  * Object model for publishing a specific application version.
  *
- * @member {string} [versionId] The version ID to publish.
- * @member {boolean} [isStaging] Indicates if the staging slot should be used,
- * instead of the Production one. Default value: false .
- * @member {string} [region] The target region that the application is
- * published to.
+ * @property {string} [versionId] The version ID to publish.
+ * @property {boolean} [isStaging] Indicates if the staging slot should be
+ * used, instead of the Production one. Default value: false .
  */
 export interface ApplicationPublishObject {
   versionId?: string;
   isStaging?: boolean;
-  region?: string;
 }
 
 /**
@@ -595,9 +597,9 @@ export interface ApplicationPublishObject {
  * @constructor
  * Pattern.Any Entity Extractor.
  *
- * @member {string} [name]
- * @member {array} [explicitList]
- * @member {array} [roles]
+ * @property {string} [name]
+ * @property {array} [explicitList]
+ * @property {array} [roles]
  */
 export interface PatternAny {
   name?: string;
@@ -611,9 +613,9 @@ export interface PatternAny {
  * @constructor
  * Regular Expression Entity Extractor.
  *
- * @member {string} [name]
- * @member {string} [regexPattern]
- * @member {array} [roles]
+ * @property {string} [name]
+ * @property {string} [regexPattern]
+ * @property {array} [roles]
  */
 export interface RegexEntity {
   name?: string;
@@ -627,8 +629,8 @@ export interface RegexEntity {
  * @constructor
  * Prebuilt Entity Extractor.
  *
- * @member {string} [name]
- * @member {array} [roles]
+ * @property {string} [name]
+ * @property {array} [roles]
  */
 export interface PrebuiltEntity {
   name?: string;
@@ -641,8 +643,8 @@ export interface PrebuiltEntity {
  * @constructor
  * Pattern
  *
- * @member {string} [pattern] The pattern text.
- * @member {string} [intent] The intent's name where the pattern belongs to.
+ * @property {string} [pattern] The pattern text.
+ * @property {string} [intent] The intent's name where the pattern belongs to.
  */
 export interface PatternRule {
   pattern?: string;
@@ -655,22 +657,22 @@ export interface PatternRule {
  * @constructor
  * Exported Model - An exported LUIS Application.
  *
- * @member {string} [name] The name of the application.
- * @member {string} [versionId] The version ID of the application that was
+ * @property {string} [name] The name of the application.
+ * @property {string} [versionId] The version ID of the application that was
  * exported.
- * @member {string} [desc] The description of the application.
- * @member {string} [culture] The culture of the application. E.g.: en-us.
- * @member {array} [intents] List of intents.
- * @member {array} [entities] List of entities.
- * @member {array} [closedLists] List of closed lists.
- * @member {array} [composites] List of composite entities.
- * @member {array} [patternAnyEntities] List of Pattern.Any entities.
- * @member {array} [regexEntities] List of regular expression entities.
- * @member {array} [prebuiltEntities] List of prebuilt entities.
- * @member {array} [regexFeatures] List of pattern features.
- * @member {array} [modelFeatures] List of model features.
- * @member {array} [patterns] List of patterns.
- * @member {array} [utterances] List of sample utterances.
+ * @property {string} [desc] The description of the application.
+ * @property {string} [culture] The culture of the application. E.g.: en-us.
+ * @property {array} [intents] List of intents.
+ * @property {array} [entities] List of entities.
+ * @property {array} [closedLists] List of closed lists.
+ * @property {array} [composites] List of composite entities.
+ * @property {array} [patternAnyEntities] List of Pattern.Any entities.
+ * @property {array} [regexEntities] List of regular expression entities.
+ * @property {array} [prebuiltEntities] List of prebuilt entities.
+ * @property {array} [regexFeatures] List of pattern features.
+ * @property {array} [modelFeatures] List of model features.
+ * @property {array} [patterns] List of patterns.
+ * @property {array} [utterances] List of sample utterances.
  */
 export interface LuisApp {
   name?: string;
@@ -702,10 +704,10 @@ export interface LuisApp {
  * Defines the entity type and position of the extracted entity within the
  * example.
  *
- * @member {string} entityName The entity type.
- * @member {number} startTokenIndex The index within the utterance where the
+ * @property {string} entityName The entity type.
+ * @property {number} startTokenIndex The index within the utterance where the
  * extracted entity starts.
- * @member {number} endTokenIndex The index within the utterance where the
+ * @property {number} endTokenIndex The index within the utterance where the
  * extracted entity ends.
  */
 export interface EntityLabel {
@@ -720,8 +722,9 @@ export interface EntityLabel {
  * @constructor
  * A suggested intent.
  *
- * @member {string} [name] The intent's name
- * @member {number} [score] The intent's score, based on the prediction model.
+ * @property {string} [name] The intent's name
+ * @property {number} [score] The intent's score, based on the prediction
+ * model.
  */
 export interface IntentPrediction {
   name?: string;
@@ -734,12 +737,12 @@ export interface IntentPrediction {
  * @constructor
  * A suggested entity.
  *
- * @member {string} entityName The entity's name
- * @member {number} startTokenIndex The index within the utterance where the
+ * @property {string} entityName The entity's name
+ * @property {number} startTokenIndex The index within the utterance where the
  * extracted entity starts.
- * @member {number} endTokenIndex The index within the utterance where the
+ * @property {number} endTokenIndex The index within the utterance where the
  * extracted entity ends.
- * @member {string} phrase The actual token(s) that comprise the entity.
+ * @property {string} phrase The actual token(s) that comprise the entity.
  */
 export interface EntityPrediction {
   entityName: string;
@@ -754,14 +757,14 @@ export interface EntityPrediction {
  * @constructor
  * A prediction and label pair of an example.
  *
- * @member {number} [id] ID of Labeled Utterance.
- * @member {string} [text] The utterance. E.g.: what's the weather like in
+ * @property {number} [id] ID of Labeled Utterance.
+ * @property {string} [text] The utterance. E.g.: what's the weather like in
  * seattle?
- * @member {array} [tokenizedText] The utterance tokenized.
- * @member {string} [intentLabel] The intent matching the example.
- * @member {array} [entityLabels] The entities matching the example.
- * @member {array} [intentPredictions] List of suggested intents.
- * @member {array} [entityPredictions] List of suggested entities.
+ * @property {array} [tokenizedText] The utterance tokenized.
+ * @property {string} [intentLabel] The intent matching the example.
+ * @property {array} [entityLabels] The entities matching the example.
+ * @property {array} [intentPredictions] List of suggested intents.
+ * @property {array} [entityPredictions] List of suggested entities.
  */
 export interface LabeledUtterance {
   id?: number;
@@ -779,11 +782,11 @@ export interface LabeledUtterance {
  * @constructor
  * Predicted/suggested intent.
  *
- * @member {string} [text] The utterance. E.g.: what's the weather like in
+ * @property {string} [text] The utterance. E.g.: what's the weather like in
  * seattle?
- * @member {array} [tokenizedText] The utterance tokenized.
- * @member {array} [intentPredictions] Predicted/suggested intents.
- * @member {array} [entityPredictions] Predicted/suggested entities.
+ * @property {array} [tokenizedText] The utterance tokenized.
+ * @property {array} [intentPredictions] Predicted/suggested intents.
+ * @property {array} [entityPredictions] Predicted/suggested entities.
  */
 export interface IntentsSuggestionExample {
   text?: string;
@@ -798,11 +801,11 @@ export interface IntentsSuggestionExample {
  * @constructor
  * Predicted/suggested entity.
  *
- * @member {string} [text] The utterance. E.g.: what's the weather like in
+ * @property {string} [text] The utterance. E.g.: what's the weather like in
  * seattle?
- * @member {array} [tokenizedText] The utterance tokenized.
- * @member {array} [intentPredictions] Predicted/suggested intents.
- * @member {array} [entityPredictions] Predicted/suggested entities.
+ * @property {array} [tokenizedText] The utterance tokenized.
+ * @property {array} [intentPredictions] Predicted/suggested intents.
+ * @property {array} [entityPredictions] Predicted/suggested entities.
  */
 export interface EntitiesSuggestionExample {
   text?: string;
@@ -818,8 +821,8 @@ export interface EntitiesSuggestionExample {
  * Response containing user's endpoint keys and the endpoint URLs of the
  * prebuilt Cortana applications.
  *
- * @member {array} [endpointKeys]
- * @member {object} [endpointUrls]
+ * @property {array} [endpointKeys]
+ * @property {object} [endpointUrls]
  */
 export interface PersonalAssistantsResponse {
   endpointKeys?: string[];
@@ -832,10 +835,10 @@ export interface PersonalAssistantsResponse {
  * @constructor
  * Base type used in entity types.
  *
- * @member {uuid} id The ID of the Entity Model.
- * @member {string} [name] Name of the Entity Model.
- * @member {number} [typeId] The type ID of the Entity Model.
- * @member {string} readableType Possible values include: 'Entity Extractor',
+ * @property {uuid} id The ID of the Entity Model.
+ * @property {string} [name] Name of the Entity Model.
+ * @property {number} [typeId] The type ID of the Entity Model.
+ * @property {string} readableType Possible values include: 'Entity Extractor',
  * 'Hierarchical Entity Extractor', 'Hierarchical Child Entity Extractor',
  * 'Composite Entity Extractor', 'Closed List Entity Extractor', 'Prebuilt
  * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor',
@@ -854,8 +857,8 @@ export interface ModelInfo {
  * @constructor
  * Entity extractor role
  *
- * @member {uuid} [id] The entity role ID.
- * @member {string} [name] The entity role name.
+ * @property {uuid} [id] The entity role ID.
+ * @property {string} [name] The entity role name.
  */
 export interface EntityRole {
   id?: string;
@@ -868,8 +871,8 @@ export interface EntityRole {
  * @constructor
  * The base child entity type.
  *
- * @member {uuid} id The ID (GUID) belonging to a child entity.
- * @member {string} [name] The name of a child entity.
+ * @property {uuid} id The ID (GUID) belonging to a child entity.
+ * @property {string} [name] The name of a child entity.
  */
 export interface ChildEntity {
   id: string;
@@ -882,8 +885,8 @@ export interface ChildEntity {
  * @constructor
  * Explicit list item
  *
- * @member {number} [id] The explicit list item ID.
- * @member {string} [explicitListItem] The explicit list item value.
+ * @property {number} [id] The explicit list item ID.
+ * @property {string} [explicitListItem] The explicit list item value.
  */
 export interface ExplicitListItem {
   id?: number;
@@ -896,21 +899,21 @@ export interface ExplicitListItem {
  * @constructor
  * An application model info.
  *
- * @member {uuid} id The ID of the Entity Model.
- * @member {string} [name] Name of the Entity Model.
- * @member {number} [typeId] The type ID of the Entity Model.
- * @member {string} readableType Possible values include: 'Entity Extractor',
+ * @property {uuid} id The ID of the Entity Model.
+ * @property {string} [name] Name of the Entity Model.
+ * @property {number} [typeId] The type ID of the Entity Model.
+ * @property {string} readableType Possible values include: 'Entity Extractor',
  * 'Hierarchical Entity Extractor', 'Hierarchical Child Entity Extractor',
  * 'Composite Entity Extractor', 'Closed List Entity Extractor', 'Prebuilt
  * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor',
  * 'Regex Entity Extractor'
- * @member {array} [roles]
- * @member {array} [children] List of child entities.
- * @member {array} [subLists] List of sub-lists.
- * @member {string} [customPrebuiltDomainName] The domain name.
- * @member {string} [customPrebuiltModelName] The intent name or entity name.
- * @member {string} [regexPattern] The Regex entity pattern.
- * @member {array} [explicitList]
+ * @property {array} [roles]
+ * @property {array} [children] List of child entities.
+ * @property {array} [subLists] List of sub-lists.
+ * @property {string} [customPrebuiltDomainName] The domain name.
+ * @property {string} [customPrebuiltModelName] The intent name or entity name.
+ * @property {string} [regexPattern] The Regex entity pattern.
+ * @property {array} [explicitList]
  */
 export interface ModelInfoResponse {
   id: string;
@@ -932,7 +935,7 @@ export interface ModelInfoResponse {
  * @constructor
  * An Entity Extractor model info.
  *
- * @member {array} [roles]
+ * @property {array} [roles]
  */
 export interface EntityModelInfo extends ModelInfo {
   roles?: EntityRole[];
@@ -944,16 +947,16 @@ export interface EntityModelInfo extends ModelInfo {
  * @constructor
  * Hierarchical Entity Extractor.
  *
- * @member {uuid} id The ID of the Entity Model.
- * @member {string} [name] Name of the Entity Model.
- * @member {number} [typeId] The type ID of the Entity Model.
- * @member {string} readableType Possible values include: 'Entity Extractor',
+ * @property {uuid} id The ID of the Entity Model.
+ * @property {string} [name] Name of the Entity Model.
+ * @property {number} [typeId] The type ID of the Entity Model.
+ * @property {string} readableType Possible values include: 'Entity Extractor',
  * 'Hierarchical Entity Extractor', 'Hierarchical Child Entity Extractor',
  * 'Composite Entity Extractor', 'Closed List Entity Extractor', 'Prebuilt
  * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor',
  * 'Regex Entity Extractor'
- * @member {array} [roles]
- * @member {array} [children] List of child entities.
+ * @property {array} [roles]
+ * @property {array} [children] List of child entities.
  */
 export interface HierarchicalEntityExtractor {
   id: string;
@@ -970,16 +973,16 @@ export interface HierarchicalEntityExtractor {
  * @constructor
  * A Composite Entity Extractor.
  *
- * @member {uuid} id The ID of the Entity Model.
- * @member {string} [name] Name of the Entity Model.
- * @member {number} [typeId] The type ID of the Entity Model.
- * @member {string} readableType Possible values include: 'Entity Extractor',
+ * @property {uuid} id The ID of the Entity Model.
+ * @property {string} [name] Name of the Entity Model.
+ * @property {number} [typeId] The type ID of the Entity Model.
+ * @property {string} readableType Possible values include: 'Entity Extractor',
  * 'Hierarchical Entity Extractor', 'Hierarchical Child Entity Extractor',
  * 'Composite Entity Extractor', 'Closed List Entity Extractor', 'Prebuilt
  * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor',
  * 'Regex Entity Extractor'
- * @member {array} [roles]
- * @member {array} [children] List of child entities.
+ * @property {array} [roles]
+ * @property {array} [children] List of child entities.
  */
 export interface CompositeEntityExtractor {
   id: string;
@@ -996,16 +999,16 @@ export interface CompositeEntityExtractor {
  * @constructor
  * Closed List Entity Extractor.
  *
- * @member {uuid} id The ID of the Entity Model.
- * @member {string} [name] Name of the Entity Model.
- * @member {number} [typeId] The type ID of the Entity Model.
- * @member {string} readableType Possible values include: 'Entity Extractor',
+ * @property {uuid} id The ID of the Entity Model.
+ * @property {string} [name] Name of the Entity Model.
+ * @property {number} [typeId] The type ID of the Entity Model.
+ * @property {string} readableType Possible values include: 'Entity Extractor',
  * 'Hierarchical Entity Extractor', 'Hierarchical Child Entity Extractor',
  * 'Composite Entity Extractor', 'Closed List Entity Extractor', 'Prebuilt
  * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor',
  * 'Regex Entity Extractor'
- * @member {array} [roles]
- * @member {array} [subLists] List of sub-lists.
+ * @property {array} [roles]
+ * @property {array} [subLists] List of sub-lists.
  */
 export interface ClosedListEntityExtractor {
   id: string;
@@ -1022,15 +1025,15 @@ export interface ClosedListEntityExtractor {
  * @constructor
  * Prebuilt Entity Extractor.
  *
- * @member {uuid} id The ID of the Entity Model.
- * @member {string} [name] Name of the Entity Model.
- * @member {number} [typeId] The type ID of the Entity Model.
- * @member {string} readableType Possible values include: 'Entity Extractor',
+ * @property {uuid} id The ID of the Entity Model.
+ * @property {string} [name] Name of the Entity Model.
+ * @property {number} [typeId] The type ID of the Entity Model.
+ * @property {string} readableType Possible values include: 'Entity Extractor',
  * 'Hierarchical Entity Extractor', 'Hierarchical Child Entity Extractor',
  * 'Composite Entity Extractor', 'Closed List Entity Extractor', 'Prebuilt
  * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor',
  * 'Regex Entity Extractor'
- * @member {array} [roles]
+ * @property {array} [roles]
  */
 export interface PrebuiltEntityExtractor {
   id: string;
@@ -1046,12 +1049,12 @@ export interface PrebuiltEntityExtractor {
  * @constructor
  * A Hierarchical Child Entity.
  *
- * @member {number} [typeId] The type ID of the Entity Model.
- * @member {string} [readableType] Possible values include: 'Entity Extractor',
- * 'Hierarchical Entity Extractor', 'Hierarchical Child Entity Extractor',
- * 'Composite Entity Extractor', 'Closed List Entity Extractor', 'Prebuilt
- * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor',
- * 'Regex Entity Extractor'
+ * @property {number} [typeId] The type ID of the Entity Model.
+ * @property {string} [readableType] Possible values include: 'Entity
+ * Extractor', 'Hierarchical Entity Extractor', 'Hierarchical Child Entity
+ * Extractor', 'Composite Entity Extractor', 'Closed List Entity Extractor',
+ * 'Prebuilt Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity
+ * Extractor', 'Regex Entity Extractor'
  */
 export interface HierarchicalChildEntity extends ChildEntity {
   typeId?: number;
@@ -1064,17 +1067,17 @@ export interface HierarchicalChildEntity extends ChildEntity {
  * @constructor
  * A Custom Prebuilt model.
  *
- * @member {uuid} id The ID of the Entity Model.
- * @member {string} [name] Name of the Entity Model.
- * @member {number} [typeId] The type ID of the Entity Model.
- * @member {string} readableType Possible values include: 'Entity Extractor',
+ * @property {uuid} id The ID of the Entity Model.
+ * @property {string} [name] Name of the Entity Model.
+ * @property {number} [typeId] The type ID of the Entity Model.
+ * @property {string} readableType Possible values include: 'Entity Extractor',
  * 'Hierarchical Entity Extractor', 'Hierarchical Child Entity Extractor',
  * 'Composite Entity Extractor', 'Closed List Entity Extractor', 'Prebuilt
  * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor',
  * 'Regex Entity Extractor'
- * @member {string} [customPrebuiltDomainName] The domain name.
- * @member {string} [customPrebuiltModelName] The intent name or entity name.
- * @member {array} [roles]
+ * @property {string} [customPrebuiltDomainName] The domain name.
+ * @property {string} [customPrebuiltModelName] The intent name or entity name.
+ * @property {array} [roles]
  */
 export interface CustomPrebuiltModel {
   id: string;
@@ -1092,8 +1095,8 @@ export interface CustomPrebuiltModel {
  * @constructor
  * Intent Classifier.
  *
- * @member {string} [customPrebuiltDomainName] The domain name.
- * @member {string} [customPrebuiltModelName] The intent name or entity name.
+ * @property {string} [customPrebuiltDomainName] The domain name.
+ * @property {string} [customPrebuiltModelName] The intent name or entity name.
  */
 export interface IntentClassifier extends ModelInfo {
   customPrebuiltDomainName?: string;
@@ -1106,17 +1109,17 @@ export interface IntentClassifier extends ModelInfo {
  * @constructor
  * Entity Extractor.
  *
- * @member {uuid} id The ID of the Entity Model.
- * @member {string} [name] Name of the Entity Model.
- * @member {number} [typeId] The type ID of the Entity Model.
- * @member {string} readableType Possible values include: 'Entity Extractor',
+ * @property {uuid} id The ID of the Entity Model.
+ * @property {string} [name] Name of the Entity Model.
+ * @property {number} [typeId] The type ID of the Entity Model.
+ * @property {string} readableType Possible values include: 'Entity Extractor',
  * 'Hierarchical Entity Extractor', 'Hierarchical Child Entity Extractor',
  * 'Composite Entity Extractor', 'Closed List Entity Extractor', 'Prebuilt
  * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor',
  * 'Regex Entity Extractor'
- * @member {array} [roles]
- * @member {string} [customPrebuiltDomainName] The domain name.
- * @member {string} [customPrebuiltModelName] The intent name or entity name.
+ * @property {array} [roles]
+ * @property {string} [customPrebuiltDomainName] The domain name.
+ * @property {string} [customPrebuiltModelName] The intent name or entity name.
  */
 export interface EntityExtractor {
   id: string;
@@ -1134,9 +1137,9 @@ export interface EntityExtractor {
  * @constructor
  * The base class Features-related response objects inherit from.
  *
- * @member {number} [id] A six-digit ID used for Features.
- * @member {string} [name] The name of the Feature.
- * @member {boolean} [isActive] Indicates if the feature is enabled.
+ * @property {number} [id] A six-digit ID used for Features.
+ * @property {string} [name] The name of the Feature.
+ * @property {boolean} [isActive] Indicates if the feature is enabled.
  */
 export interface FeatureInfoObject {
   id?: number;
@@ -1150,8 +1153,8 @@ export interface FeatureInfoObject {
  * @constructor
  * Phraselist Feature.
  *
- * @member {string} [phrases] A list of comma-separated values.
- * @member {boolean} [isExchangeable] An exchangeable phrase list feature are
+ * @property {string} [phrases] A list of comma-separated values.
+ * @property {boolean} [isExchangeable] An exchangeable phrase list feature are
  * serves as single feature to the LUIS underlying training algorithm. It is
  * used as a lexicon lookup feature where its value is 1 if the lexicon
  * contains a given word or 0 if it doesn’t. Think of an exchangeable as a
@@ -1174,7 +1177,7 @@ export interface PhraseListFeatureInfo extends FeatureInfoObject {
  * @constructor
  * Pattern feature.
  *
- * @member {string} [pattern] The Regular Expression to match.
+ * @property {string} [pattern] The Regular Expression to match.
  */
 export interface PatternFeatureInfo extends FeatureInfoObject {
   pattern?: string;
@@ -1186,8 +1189,8 @@ export interface PatternFeatureInfo extends FeatureInfoObject {
  * @constructor
  * Model Features, including Patterns and Phraselists.
  *
- * @member {array} [phraselistFeatures]
- * @member {array} [patternFeatures]
+ * @property {array} [phraselistFeatures]
+ * @property {array} [patternFeatures]
  */
 export interface FeaturesResponseObject {
   phraselistFeatures?: PhraseListFeatureInfo[];
@@ -1200,8 +1203,8 @@ export interface FeaturesResponseObject {
  * @constructor
  * Response when adding a labeled example.
  *
- * @member {string} [utteranceText] The sample's utterance.
- * @member {number} [exampleId] The newly created sample ID.
+ * @property {string} [utteranceText] The sample's utterance.
+ * @property {number} [exampleId] The newly created sample ID.
  */
 export interface LabelExampleResponse {
   utteranceText?: string;
@@ -1214,9 +1217,9 @@ export interface LabelExampleResponse {
  * @constructor
  * Response of an Operation status.
  *
- * @member {string} [code] Status Code. Possible values include: 'Failed',
+ * @property {string} [code] Status Code. Possible values include: 'Failed',
  * 'FAILED', 'Success'
- * @member {string} [message] Status details.
+ * @property {string} [message] Status details.
  */
 export interface OperationStatus {
   code?: string;
@@ -1229,14 +1232,14 @@ export interface OperationStatus {
  * @constructor
  * Response when adding a batch of labeled examples.
  *
- * @member {object} [value]
- * @member {string} [value.utteranceText] The sample's utterance.
- * @member {number} [value.exampleId] The newly created sample ID.
- * @member {boolean} [hasError]
- * @member {object} [error]
- * @member {string} [error.code] Status Code. Possible values include:
+ * @property {object} [value]
+ * @property {string} [value.utteranceText] The sample's utterance.
+ * @property {number} [value.exampleId] The newly created sample ID.
+ * @property {boolean} [hasError]
+ * @property {object} [error]
+ * @property {string} [error.code] Status Code. Possible values include:
  * 'Failed', 'FAILED', 'Success'
- * @member {string} [error.message] Status details.
+ * @property {string} [error.message] Status details.
  */
 export interface BatchLabelExample {
   value?: LabelExampleResponse;
@@ -1250,21 +1253,23 @@ export interface BatchLabelExample {
  * @constructor
  * Response containing the Application Info.
  *
- * @member {uuid} [id] The ID (GUID) of the application.
- * @member {string} [name] The name of the application.
- * @member {string} [description] The description of the application.
- * @member {string} [culture] The culture of the application. E.g.: en-us.
- * @member {string} [usageScenario] Defines the scenario for the new
+ * @property {uuid} [id] The ID (GUID) of the application.
+ * @property {string} [name] The name of the application.
+ * @property {string} [description] The description of the application.
+ * @property {string} [culture] The culture of the application. E.g.: en-us.
+ * @property {string} [usageScenario] Defines the scenario for the new
  * application. Optional. E.g.: IoT.
- * @member {string} [domain] The domain for the new application. Optional.
+ * @property {string} [domain] The domain for the new application. Optional.
  * E.g.: Comics.
- * @member {number} [versionsCount] Amount of model versions within the
+ * @property {number} [versionsCount] Amount of model versions within the
  * application.
- * @member {string} [createdDateTime] The version's creation timestamp.
- * @member {object} [endpoints] The Runtime endpoint URL for this model
+ * @property {string} [createdDateTime] The version's creation timestamp.
+ * @property {object} [endpoints] The Runtime endpoint URL for this model
  * version.
- * @member {number} [endpointHitsCount] Number of calls made to this endpoint.
- * @member {string} [activeVersion] The version ID currently marked as active.
+ * @property {number} [endpointHitsCount] Number of calls made to this
+ * endpoint.
+ * @property {string} [activeVersion] The version ID currently marked as
+ * active.
  */
 export interface ApplicationInfoResponse {
   id?: string;
@@ -1286,16 +1291,16 @@ export interface ApplicationInfoResponse {
  * @constructor
  * The base class "ProductionOrStagingEndpointInfo" inherits from.
  *
- * @member {string} [versionId] The version ID to publish.
- * @member {boolean} [isStaging] Indicates if the staging slot should be used,
- * instead of the Production one.
- * @member {string} [endpointUrl] The Runtime endpoint URL for this model
+ * @property {string} [versionId] The version ID to publish.
+ * @property {boolean} [isStaging] Indicates if the staging slot should be
+ * used, instead of the Production one.
+ * @property {string} [endpointUrl] The Runtime endpoint URL for this model
  * version.
- * @member {string} [region] The target region that the application is
+ * @property {string} [region] The target region that the application is
  * published to.
- * @member {string} [assignedEndpointKey] The endpoint key.
- * @member {string} [endpointRegion] The endpoint's region.
- * @member {string} [publishedDateTime] Timestamp when was last published.
+ * @property {string} [assignedEndpointKey] The endpoint key.
+ * @property {string} [endpointRegion] The endpoint's region.
+ * @property {string} [publishedDateTime] Timestamp when was last published.
  */
 export interface EndpointInfo {
   versionId?: string;
@@ -1321,8 +1326,8 @@ export interface ProductionOrStagingEndpointInfo extends EndpointInfo {
  * @constructor
  * Available culture for using in a new application.
  *
- * @member {string} [name] The language name.
- * @member {string} [code] The ISO value for the language.
+ * @property {string} [name] The language name.
+ * @property {string} [code] The ISO value for the language.
  */
 export interface AvailableCulture {
   name?: string;
@@ -1335,8 +1340,8 @@ export interface AvailableCulture {
  * @constructor
  * The application settings.
  *
- * @member {uuid} id The application ID.
- * @member {boolean} isPublic Setting your application as public allows other
+ * @property {uuid} id The application ID.
+ * @property {boolean} isPublic Setting your application as public allows other
  * people to use your application's endpoint using their own keys.
  */
 export interface ApplicationSettings {
@@ -1350,12 +1355,12 @@ export interface ApplicationSettings {
  * @constructor
  * The application publish settings.
  *
- * @member {uuid} id The application ID.
- * @member {boolean} isSentimentAnalysisEnabled Setting sentiment analysis as
+ * @property {uuid} id The application ID.
+ * @property {boolean} isSentimentAnalysisEnabled Setting sentiment analysis as
  * true returns the Sentiment of the input utterance along with the resopnse
- * @member {boolean} isSpeechEnabled Setting speech as public enables speech
+ * @property {boolean} isSpeechEnabled Setting speech as public enables speech
  * priming in your app
- * @member {boolean} isSpellCheckerEnabled Setting spell checker as public
+ * @property {boolean} isSpellCheckerEnabled Setting spell checker as public
  * enables spell checking the input utterance.
  */
 export interface PublishSettings {
@@ -1371,9 +1376,10 @@ export interface PublishSettings {
  * @constructor
  * Available Prebuilt entity model for using in an application.
  *
- * @member {string} [name] The entity name.
- * @member {string} [description] The entity description and usage information.
- * @member {string} [examples] Usage examples.
+ * @property {string} [name] The entity name.
+ * @property {string} [description] The entity description and usage
+ * information.
+ * @property {string} [examples] Usage examples.
  */
 export interface AvailablePrebuiltEntityModel {
   name?: string;
@@ -1387,8 +1393,8 @@ export interface AvailablePrebuiltEntityModel {
  * @constructor
  * Response model when requesting to train the model.
  *
- * @member {number} [statusId] The train request status ID.
- * @member {string} [status] Possible values include: 'Queued', 'InProgress',
+ * @property {number} [statusId] The train request status ID.
+ * @property {string} [status] Possible values include: 'Queued', 'InProgress',
  * 'UpToDate', 'Fail', 'Success'
  */
 export interface EnqueueTrainingResponse {
@@ -1402,13 +1408,13 @@ export interface EnqueueTrainingResponse {
  * @constructor
  * Model Training Details.
  *
- * @member {number} [statusId] The train request status ID.
- * @member {string} [status] Possible values include: 'Queued', 'InProgress',
+ * @property {number} [statusId] The train request status ID.
+ * @property {string} [status] Possible values include: 'Queued', 'InProgress',
  * 'UpToDate', 'Fail', 'Success'
- * @member {number} [exampleCount] The count of examples used to train the
+ * @property {number} [exampleCount] The count of examples used to train the
  * model.
- * @member {date} [trainingDateTime] When the model was trained.
- * @member {string} [failureReason] Reason for the training failure.
+ * @property {date} [trainingDateTime] When the model was trained.
+ * @property {string} [failureReason] Reason for the training failure.
  */
 export interface ModelTrainingDetails {
   statusId?: number;
@@ -1424,15 +1430,15 @@ export interface ModelTrainingDetails {
  * @constructor
  * Model Training Info.
  *
- * @member {uuid} [modelId] The ID (GUID) of the model.
- * @member {object} [details]
- * @member {number} [details.statusId] The train request status ID.
- * @member {string} [details.status] Possible values include: 'Queued',
+ * @property {uuid} [modelId] The ID (GUID) of the model.
+ * @property {object} [details]
+ * @property {number} [details.statusId] The train request status ID.
+ * @property {string} [details.status] Possible values include: 'Queued',
  * 'InProgress', 'UpToDate', 'Fail', 'Success'
- * @member {number} [details.exampleCount] The count of examples used to train
- * the model.
- * @member {date} [details.trainingDateTime] When the model was trained.
- * @member {string} [details.failureReason] Reason for the training failure.
+ * @property {number} [details.exampleCount] The count of examples used to
+ * train the model.
+ * @property {date} [details.trainingDateTime] When the model was trained.
+ * @property {string} [details.failureReason] Reason for the training failure.
  */
 export interface ModelTrainingInfo {
   modelId?: string;
@@ -1445,8 +1451,8 @@ export interface ModelTrainingInfo {
  * @constructor
  * List of user permissions.
  *
- * @member {string} [owner] The email address of owner of the application.
- * @member {array} [emails]
+ * @property {string} [owner] The email address of owner of the application.
+ * @property {array} [emails]
  */
 export interface UserAccessList {
   owner?: string;
@@ -1457,7 +1463,7 @@ export interface UserAccessList {
  * @class
  * Initializes a new instance of the UserCollaborator class.
  * @constructor
- * @member {string} [email] The email address of the user.
+ * @property {string} [email] The email address of the user.
  */
 export interface UserCollaborator {
   email?: string;
@@ -1467,7 +1473,7 @@ export interface UserCollaborator {
  * @class
  * Initializes a new instance of the CollaboratorsArray class.
  * @constructor
- * @member {array} [emails] The email address of the users.
+ * @property {array} [emails] The email address of the users.
  */
 export interface CollaboratorsArray {
   emails?: string[];
@@ -1479,7 +1485,7 @@ export interface CollaboratorsArray {
  * @constructor
  * Error response when invoking an operation on the API.
  *
- * @member {string} [errorType]
+ * @property {string} [errorType]
  */
 export interface ErrorResponse {
   errorType?: string;
@@ -1496,8 +1502,8 @@ export interface ErrorResponse {
  * @constructor
  * Operation error details when invoking an operation on the API.
  *
- * @member {string} [code]
- * @member {string} [message]
+ * @property {string} [code]
+ * @property {string} [message]
  */
 export interface OperationError {
   code?: string;
@@ -1508,9 +1514,9 @@ export interface OperationError {
  * @class
  * Initializes a new instance of the PrebuiltDomainItem class.
  * @constructor
- * @member {string} [name]
- * @member {string} [description]
- * @member {string} [examples]
+ * @property {string} [name]
+ * @property {string} [description]
+ * @property {string} [examples]
  */
 export interface PrebuiltDomainItem {
   name?: string;
@@ -1524,12 +1530,12 @@ export interface PrebuiltDomainItem {
  * @constructor
  * Prebuilt Domain.
  *
- * @member {string} [name]
- * @member {string} [culture]
- * @member {string} [description]
- * @member {string} [examples]
- * @member {array} [intents]
- * @member {array} [entities]
+ * @property {string} [name]
+ * @property {string} [culture]
+ * @property {string} [description]
+ * @property {string} [examples]
+ * @property {array} [intents]
+ * @property {array} [entities]
  */
 export interface PrebuiltDomain {
   name?: string;
@@ -1546,7 +1552,7 @@ export interface PrebuiltDomain {
  * @constructor
  * Object model for creating an entity role.
  *
- * @member {string} [name] The entity role name.
+ * @property {string} [name] The entity role name.
  */
 export interface EntityRoleCreateObject {
   name?: string;
@@ -1558,8 +1564,8 @@ export interface EntityRoleCreateObject {
  * @constructor
  * Model object for creating a regex entity model.
  *
- * @member {string} [regexPattern] The regex entity pattern.
- * @member {string} [name] The model name.
+ * @property {string} [regexPattern] The regex entity pattern.
+ * @property {string} [name] The model name.
  */
 export interface RegexModelCreateObject {
   regexPattern?: string;
@@ -1572,8 +1578,8 @@ export interface RegexModelCreateObject {
  * @constructor
  * Model object for creating a Pattern.Any entity model.
  *
- * @member {string} [name] The model name.
- * @member {array} [explicitList] The Pattern.Any explicit list.
+ * @property {string} [name] The model name.
+ * @property {array} [explicitList] The Pattern.Any explicit list.
  */
 export interface PatternAnyModelCreateObject {
   name?: string;
@@ -1586,7 +1592,7 @@ export interface PatternAnyModelCreateObject {
  * @constructor
  * Object model for creating an explicit list item.
  *
- * @member {string} [explicitListItem] The explicit list item.
+ * @property {string} [explicitListItem] The explicit list item.
  */
 export interface ExplicitListItemCreateObject {
   explicitListItem?: string;
@@ -1598,8 +1604,8 @@ export interface ExplicitListItemCreateObject {
  * @constructor
  * Model object for updating a regex entity model.
  *
- * @member {string} [regexPattern] The regex entity pattern.
- * @member {string} [name] The model name.
+ * @property {string} [regexPattern] The regex entity pattern.
+ * @property {string} [name] The model name.
  */
 export interface RegexModelUpdateObject {
   regexPattern?: string;
@@ -1612,8 +1618,8 @@ export interface RegexModelUpdateObject {
  * @constructor
  * Model object for updating a Pattern.Any entity model.
  *
- * @member {string} [name] The model name.
- * @member {array} [explicitList] The Pattern.Any explicit list.
+ * @property {string} [name] The model name.
+ * @property {array} [explicitList] The Pattern.Any explicit list.
  */
 export interface PatternAnyModelUpdateObject {
   name?: string;
@@ -1626,7 +1632,7 @@ export interface PatternAnyModelUpdateObject {
  * @constructor
  * Object model for updating an entity role.
  *
- * @member {string} [name] The entity role name.
+ * @property {string} [name] The entity role name.
  */
 export interface EntityRoleUpdateObject {
   name?: string;
@@ -1638,7 +1644,7 @@ export interface EntityRoleUpdateObject {
  * @constructor
  * Model object for updating an explicit list item.
  *
- * @member {string} [explicitListItem] The explicit list item.
+ * @property {string} [explicitListItem] The explicit list item.
  */
 export interface ExplicitListItemUpdateObject {
   explicitListItem?: string;
@@ -1650,8 +1656,8 @@ export interface ExplicitListItemUpdateObject {
  * @constructor
  * Object model for creating a pattern
  *
- * @member {string} [pattern] The pattern text.
- * @member {string} [intent] The intent's name which the pattern belongs to.
+ * @property {string} [pattern] The pattern text.
+ * @property {string} [intent] The intent's name which the pattern belongs to.
  */
 export interface PatternRuleCreateObject {
   pattern?: string;
@@ -1664,9 +1670,9 @@ export interface PatternRuleCreateObject {
  * @constructor
  * Object model for updating a pattern.
  *
- * @member {uuid} [id] The pattern ID.
- * @member {string} [pattern] The pattern text.
- * @member {string} [intent] The intent's name which the pattern belongs to.
+ * @property {uuid} [id] The pattern ID.
+ * @property {string} [pattern] The pattern text.
+ * @property {string} [intent] The intent's name which the pattern belongs to.
  */
 export interface PatternRuleUpdateObject {
   id?: string;
@@ -1680,16 +1686,16 @@ export interface PatternRuleUpdateObject {
  * @constructor
  * Regex Entity Extractor.
  *
- * @member {uuid} id The ID of the Entity Model.
- * @member {string} [name] Name of the Entity Model.
- * @member {number} [typeId] The type ID of the Entity Model.
- * @member {string} readableType Possible values include: 'Entity Extractor',
+ * @property {uuid} id The ID of the Entity Model.
+ * @property {string} [name] Name of the Entity Model.
+ * @property {number} [typeId] The type ID of the Entity Model.
+ * @property {string} readableType Possible values include: 'Entity Extractor',
  * 'Hierarchical Entity Extractor', 'Hierarchical Child Entity Extractor',
  * 'Composite Entity Extractor', 'Closed List Entity Extractor', 'Prebuilt
  * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor',
  * 'Regex Entity Extractor'
- * @member {array} [roles]
- * @member {string} [regexPattern] The Regex entity pattern.
+ * @property {array} [roles]
+ * @property {string} [regexPattern] The Regex entity pattern.
  */
 export interface RegexEntityExtractor {
   id: string;
@@ -1706,16 +1712,16 @@ export interface RegexEntityExtractor {
  * @constructor
  * Pattern.Any Entity Extractor.
  *
- * @member {uuid} id The ID of the Entity Model.
- * @member {string} [name] Name of the Entity Model.
- * @member {number} [typeId] The type ID of the Entity Model.
- * @member {string} readableType Possible values include: 'Entity Extractor',
+ * @property {uuid} id The ID of the Entity Model.
+ * @property {string} [name] Name of the Entity Model.
+ * @property {number} [typeId] The type ID of the Entity Model.
+ * @property {string} readableType Possible values include: 'Entity Extractor',
  * 'Hierarchical Entity Extractor', 'Hierarchical Child Entity Extractor',
  * 'Composite Entity Extractor', 'Closed List Entity Extractor', 'Prebuilt
  * Entity Extractor', 'Intent Classifier', 'Pattern.Any Entity Extractor',
  * 'Regex Entity Extractor'
- * @member {array} [roles]
- * @member {array} [explicitList]
+ * @property {array} [roles]
+ * @property {array} [explicitList]
  */
 export interface PatternAnyEntityExtractor {
   id: string;
@@ -1732,9 +1738,9 @@ export interface PatternAnyEntityExtractor {
  * @constructor
  * Pattern rule
  *
- * @member {uuid} [id] The pattern ID.
- * @member {string} [pattern] The pattern text.
- * @member {string} [intent] The intent's name where the pattern belongs to.
+ * @property {uuid} [id] The pattern ID.
+ * @property {string} [pattern] The pattern text.
+ * @property {string} [intent] The intent's name where the pattern belongs to.
  */
 export interface PatternRuleInfo {
   id?: string;
@@ -1748,8 +1754,8 @@ export interface PatternRuleInfo {
  * @constructor
  * An object containing the example's text.
  *
- * @member {number} [id] The ID of the Label.
- * @member {string} [text] The text of the label.
+ * @property {number} [id] The ID of the Label.
+ * @property {string} [text] The text of the label.
  */
 export interface LabelTextObject {
   id?: number;
@@ -1758,9 +1764,23 @@ export interface LabelTextObject {
 
 /**
  * @class
+ * Initializes a new instance of the AppVersionSettingObject class.
+ * @constructor
+ * Object model of an application version setting.
+ *
+ * @property {string} [name] The application version setting name.
+ * @property {string} [value] The application version setting value.
+ */
+export interface AppVersionSettingObject {
+  name?: string;
+  value?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the HierarchicalChildModelUpdateObject class.
  * @constructor
- * @member {string} [name]
+ * @property {string} [name]
  */
 export interface HierarchicalChildModelUpdateObject {
   name?: string;
@@ -1770,7 +1790,7 @@ export interface HierarchicalChildModelUpdateObject {
  * @class
  * Initializes a new instance of the HierarchicalChildModelCreateObject class.
  * @constructor
- * @member {string} [name]
+ * @property {string} [name]
  */
 export interface HierarchicalChildModelCreateObject {
   name?: string;
@@ -1780,7 +1800,7 @@ export interface HierarchicalChildModelCreateObject {
  * @class
  * Initializes a new instance of the CompositeChildModelCreateObject class.
  * @constructor
- * @member {string} [name]
+ * @property {string} [name]
  */
 export interface CompositeChildModelCreateObject {
   name?: string;

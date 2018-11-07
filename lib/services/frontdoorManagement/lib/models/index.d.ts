@@ -22,11 +22,11 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Common resource representation.
  *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
- * @member {string} [location] Resource location.
- * @member {object} [tags] Resource tags.
+ * @property {string} [id] Resource ID.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
+ * @property {string} [location] Resource location.
+ * @property {object} [tags] Resource tags.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -43,24 +43,25 @@ export interface Resource extends BaseResource {
  * Front Door represents a collection of backend endpoints to route traffic to
  * along with rules that specify how traffic is sent there.
  *
- * @member {string} [friendlyName] A friendly name for the frontDoor
- * @member {array} [routingRules] Routing rules associated with this Front
+ * @property {string} [friendlyName] A friendly name for the frontDoor
+ * @property {array} [routingRules] Routing rules associated with this Front
  * Door.
- * @member {array} [loadBalancingSettings] Load balancing settings associated
+ * @property {array} [loadBalancingSettings] Load balancing settings associated
  * with this Front Door instance.
- * @member {array} [healthProbeSettings] Health probe settings associated with
- * this Front Door instance.
- * @member {array} [backendPools] Backend pools available to routing rules.
- * @member {array} [frontendEndpoints] Frontend endpoints available to routing
- * rules.
- * @member {string} [enabledState] Operational status of the Front Door load
+ * @property {array} [healthProbeSettings] Health probe settings associated
+ * with this Front Door instance.
+ * @property {array} [backendPools] Backend pools available to routing rules.
+ * @property {array} [frontendEndpoints] Frontend endpoints available to
+ * routing rules.
+ * @property {string} [enabledState] Operational status of the Front Door load
  * balancer. Permitted values are 'Enabled' or 'Disabled'. Possible values
  * include: 'Enabled', 'Disabled'
- * @member {string} [resourceState] Resource status of the Front Door. Possible
- * values include: 'Creating', 'Enabling', 'Enabled', 'Disabling', 'Disabled',
- * 'Deleting'
- * @member {string} [provisioningState] Provisioning state of the Front Door.
- * @member {string} [cname] The host that each frontendEndpoint must CNAME to.
+ * @property {string} [resourceState] Resource status of the Front Door.
+ * Possible values include: 'Creating', 'Enabling', 'Enabled', 'Disabling',
+ * 'Disabled', 'Deleting'
+ * @property {string} [provisioningState] Provisioning state of the Front Door.
+ * @property {string} [cname] The host that each frontendEndpoint must CNAME
+ * to.
  */
 export interface FrontDoor extends Resource {
   friendlyName?: string;
@@ -81,7 +82,7 @@ export interface FrontDoor extends Resource {
  * @constructor
  * Reference to another subresource.
  *
- * @member {string} [id] Resource ID.
+ * @property {string} [id] Resource ID.
  */
 export interface SubResource extends BaseResource {
   id?: string;
@@ -94,33 +95,34 @@ export interface SubResource extends BaseResource {
  * A routing rule represents a specification for traffic to treat and where to
  * send it, along with health probe information.
  *
- * @member {array} [frontendEndpoints] Frontend endpoints associated with this
+ * @property {array} [frontendEndpoints] Frontend endpoints associated with
+ * this rule
+ * @property {array} [acceptedProtocols] Protocol schemes to match for this
  * rule
- * @member {array} [acceptedProtocols] Protocol schemes to match for this rule
- * @member {array} [patternsToMatch] The route patterns of the rule.
- * @member {string} [customForwardingPath] A custom path used to rewrite
+ * @property {array} [patternsToMatch] The route patterns of the rule.
+ * @property {string} [customForwardingPath] A custom path used to rewrite
  * resource paths matched by this rule. Leave empty to use incoming path.
- * @member {string} [forwardingProtocol] Protocol this rule will use when
+ * @property {string} [forwardingProtocol] Protocol this rule will use when
  * forwarding traffic to backends. Possible values include: 'HttpOnly',
  * 'HttpsOnly', 'MatchRequest'
- * @member {object} [cacheConfiguration] The caching configuration associated
+ * @property {object} [cacheConfiguration] The caching configuration associated
  * with this rule.
- * @member {string} [cacheConfiguration.queryParameterStripDirective] Treatment
- * of URL query terms when forming the cache key. Possible values include:
- * 'StripNone', 'StripAll'
- * @member {string} [cacheConfiguration.dynamicCompression] Whether to use
+ * @property {string} [cacheConfiguration.queryParameterStripDirective]
+ * Treatment of URL query terms when forming the cache key. Possible values
+ * include: 'StripNone', 'StripAll'
+ * @property {string} [cacheConfiguration.dynamicCompression] Whether to use
  * dynamic compression for cached content. Possible values include: 'Enabled',
  * 'Disabled'
- * @member {object} [backendPool] A reference to the BackendPool which this
+ * @property {object} [backendPool] A reference to the BackendPool which this
  * rule routes to.
- * @member {string} [backendPool.id] Resource ID.
- * @member {string} [enabledState] Whether to enable use of this rule.
+ * @property {string} [backendPool.id] Resource ID.
+ * @property {string} [enabledState] Whether to enable use of this rule.
  * Permitted values are 'Enabled' or 'Disabled'. Possible values include:
  * 'Enabled', 'Disabled'
- * @member {string} [resourceState] Resource status. Possible values include:
+ * @property {string} [resourceState] Resource status. Possible values include:
  * 'Creating', 'Enabling', 'Enabled', 'Disabling', 'Disabled', 'Deleting'
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
  */
 export interface RoutingRule extends SubResource {
   frontendEndpoints?: SubResource[];
@@ -142,16 +144,16 @@ export interface RoutingRule extends SubResource {
  * @constructor
  * Load balancing settings for a backend pool
  *
- * @member {number} [sampleSize] The number of samples to consider for load
+ * @property {number} [sampleSize] The number of samples to consider for load
  * balancing decisions
- * @member {number} [successfulSamplesRequired] The number of samples within
+ * @property {number} [successfulSamplesRequired] The number of samples within
  * the sample period that must succeed
- * @member {number} [additionalLatencyMilliseconds] The additional latency in
+ * @property {number} [additionalLatencyMilliseconds] The additional latency in
  * milliseconds for probes to fall into the lowest latency bucket
- * @member {string} [resourceState] Resource status. Possible values include:
+ * @property {string} [resourceState] Resource status. Possible values include:
  * 'Creating', 'Enabling', 'Enabled', 'Disabling', 'Disabled', 'Deleting'
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
  */
 export interface LoadBalancingSettingsModel extends SubResource {
   sampleSize?: number;
@@ -168,15 +170,15 @@ export interface LoadBalancingSettingsModel extends SubResource {
  * @constructor
  * Load balancing settings for a backend pool
  *
- * @member {string} [path] The path to use for the health probe. Default is /
- * @member {string} [protocol] Protocol scheme to use for this probe. Possible
- * values include: 'Http', 'Https'
- * @member {number} [intervalInSeconds] The number of seconds between health
+ * @property {string} [path] The path to use for the health probe. Default is /
+ * @property {string} [protocol] Protocol scheme to use for this probe.
+ * Possible values include: 'Http', 'Https'
+ * @property {number} [intervalInSeconds] The number of seconds between health
  * probes.
- * @member {string} [resourceState] Resource status. Possible values include:
+ * @property {string} [resourceState] Resource status. Possible values include:
  * 'Creating', 'Enabling', 'Enabled', 'Disabling', 'Disabled', 'Deleting'
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
  */
 export interface HealthProbeSettingsModel extends SubResource {
   path?: string;
@@ -193,17 +195,17 @@ export interface HealthProbeSettingsModel extends SubResource {
  * @constructor
  * A backend pool is a collection of backends that can be routed to.
  *
- * @member {array} [backends] The set of backends for this pool
- * @member {object} [loadBalancingSettings] Load balancing settings for a
+ * @property {array} [backends] The set of backends for this pool
+ * @property {object} [loadBalancingSettings] Load balancing settings for a
  * backend pool
- * @member {string} [loadBalancingSettings.id] Resource ID.
- * @member {object} [healthProbeSettings] L7 health probe settings for a
+ * @property {string} [loadBalancingSettings.id] Resource ID.
+ * @property {object} [healthProbeSettings] L7 health probe settings for a
  * backend pool
- * @member {string} [healthProbeSettings.id] Resource ID.
- * @member {string} [resourceState] Resource status. Possible values include:
+ * @property {string} [healthProbeSettings.id] Resource ID.
+ * @property {string} [resourceState] Resource status. Possible values include:
  * 'Creating', 'Enabling', 'Enabled', 'Disabling', 'Disabled', 'Deleting'
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
  */
 export interface BackendPool extends SubResource {
   backends?: Backend[];
@@ -220,7 +222,7 @@ export interface BackendPool extends SubResource {
  * @constructor
  * The Key Vault containing the SSL certificate
  *
- * @member {string} [id] Resource ID.
+ * @property {string} [id] Resource ID.
  */
 export interface KeyVaultCertificateSourceParametersVault {
   id?: string;
@@ -232,18 +234,18 @@ export interface KeyVaultCertificateSourceParametersVault {
  * @constructor
  * Https settings for a domain
  *
- * @member {string} [certificateSource] Defines the source of the SSL
+ * @property {string} [certificateSource] Defines the source of the SSL
  * certificate. Possible values include: 'AzureKeyVault', 'FrontDoor'
- * @member {string} [protocolType] Defines the TLS extension protocol that is
+ * @property {string} [protocolType] Defines the TLS extension protocol that is
  * used for secure delivery. Possible values include: 'ServerNameIndication'
- * @member {object} [vault] The Key Vault containing the SSL certificate
- * @member {string} [vault.id] Resource ID.
- * @member {string} [secretName] The name of the Key Vault secret representing
- * the full certificate PFX
- * @member {string} [secretVersion] The version of the Key Vault secret
+ * @property {object} [vault] The Key Vault containing the SSL certificate
+ * @property {string} [vault.id] Resource ID.
+ * @property {string} [secretName] The name of the Key Vault secret
  * representing the full certificate PFX
- * @member {string} [certificateType] Defines the type of the certificate used
- * for secure connections to a frontendEndpoint. Possible values include:
+ * @property {string} [secretVersion] The version of the Key Vault secret
+ * representing the full certificate PFX
+ * @property {string} [certificateType] Defines the type of the certificate
+ * used for secure connections to a frontendEndpoint. Possible values include:
  * 'Dedicated'
  */
 export interface CustomHttpsConfiguration {
@@ -261,22 +263,22 @@ export interface CustomHttpsConfiguration {
  * @constructor
  * A frontend endpoint used for routing.
  *
- * @member {string} [hostName] The host name of the frontendEndpoint. Must be a
- * domain name.
- * @member {string} [sessionAffinityEnabledState] Whether to allow session
+ * @property {string} [hostName] The host name of the frontendEndpoint. Must be
+ * a domain name.
+ * @property {string} [sessionAffinityEnabledState] Whether to allow session
  * affinity on this host. Valid options are 'Enabled' or 'Disabled'. Possible
  * values include: 'Enabled', 'Disabled'
- * @member {number} [sessionAffinityTtlSeconds] UNUSED. This field will be
+ * @property {number} [sessionAffinityTtlSeconds] UNUSED. This field will be
  * ignored. The TTL to use in seconds for session affinity, if applicable.
- * @member {object} [webApplicationFirewallPolicyLink] Defines the Web
+ * @property {object} [webApplicationFirewallPolicyLink] Defines the Web
  * Application Firewall policy for each host (if applicable)
- * @member {string} [webApplicationFirewallPolicyLink.id] Resource ID.
- * @member {string} [resourceState] Resource status. Possible values include:
+ * @property {string} [webApplicationFirewallPolicyLink.id] Resource ID.
+ * @property {string} [resourceState] Resource status. Possible values include:
  * 'Creating', 'Enabling', 'Enabled', 'Disabling', 'Disabled', 'Deleting'
- * @member {string} [customHttpsProvisioningState] Provisioning status of
+ * @property {string} [customHttpsProvisioningState] Provisioning status of
  * Custom Https of the frontendEndpoint. Possible values include: 'Enabling',
  * 'Enabled', 'Disabling', 'Disabled', 'Failed'
- * @member {string} [customHttpsProvisioningSubstate] Provisioning substate
+ * @property {string} [customHttpsProvisioningSubstate] Provisioning substate
  * shows the progress of custom HTTPS enabling/disabling process step by step.
  * Possible values include: 'SubmittingDomainControlValidationRequest',
  * 'PendingDomainControlValidationREquestApproval',
@@ -285,26 +287,26 @@ export interface CustomHttpsConfiguration {
  * 'DomainControlValidationRequestTimedOut', 'IssuingCertificate',
  * 'DeployingCertificate', 'CertificateDeployed', 'DeletingCertificate',
  * 'CertificateDeleted'
- * @member {object} [customHttpsConfiguration] The configuration specifying how
- * to enable HTTPS
- * @member {string} [customHttpsConfiguration.certificateSource] Defines the
+ * @property {object} [customHttpsConfiguration] The configuration specifying
+ * how to enable HTTPS
+ * @property {string} [customHttpsConfiguration.certificateSource] Defines the
  * source of the SSL certificate. Possible values include: 'AzureKeyVault',
  * 'FrontDoor'
- * @member {string} [customHttpsConfiguration.protocolType] Defines the TLS
+ * @property {string} [customHttpsConfiguration.protocolType] Defines the TLS
  * extension protocol that is used for secure delivery. Possible values
  * include: 'ServerNameIndication'
- * @member {object} [customHttpsConfiguration.vault] The Key Vault containing
+ * @property {object} [customHttpsConfiguration.vault] The Key Vault containing
  * the SSL certificate
- * @member {string} [customHttpsConfiguration.vault.id] Resource ID.
- * @member {string} [customHttpsConfiguration.secretName] The name of the Key
+ * @property {string} [customHttpsConfiguration.vault.id] Resource ID.
+ * @property {string} [customHttpsConfiguration.secretName] The name of the Key
  * Vault secret representing the full certificate PFX
- * @member {string} [customHttpsConfiguration.secretVersion] The version of the
- * Key Vault secret representing the full certificate PFX
- * @member {string} [customHttpsConfiguration.certificateType] Defines the type
- * of the certificate used for secure connections to a frontendEndpoint.
+ * @property {string} [customHttpsConfiguration.secretVersion] The version of
+ * the Key Vault secret representing the full certificate PFX
+ * @property {string} [customHttpsConfiguration.certificateType] Defines the
+ * type of the certificate used for secure connections to a frontendEndpoint.
  * Possible values include: 'Dedicated'
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
  */
 export interface FrontendEndpoint extends SubResource {
   hostName?: string;
@@ -325,17 +327,17 @@ export interface FrontendEndpoint extends SubResource {
  * @constructor
  * The properties needed to update a Front Door
  *
- * @member {string} [friendlyName] A friendly name for the frontDoor
- * @member {array} [routingRules] Routing rules associated with this Front
+ * @property {string} [friendlyName] A friendly name for the frontDoor
+ * @property {array} [routingRules] Routing rules associated with this Front
  * Door.
- * @member {array} [loadBalancingSettings] Load balancing settings associated
+ * @property {array} [loadBalancingSettings] Load balancing settings associated
  * with this Front Door instance.
- * @member {array} [healthProbeSettings] Health probe settings associated with
- * this Front Door instance.
- * @member {array} [backendPools] Backend pools available to routing rules.
- * @member {array} [frontendEndpoints] Frontend endpoints available to routing
- * rules.
- * @member {string} [enabledState] Operational status of the Front Door load
+ * @property {array} [healthProbeSettings] Health probe settings associated
+ * with this Front Door instance.
+ * @property {array} [backendPools] Backend pools available to routing rules.
+ * @property {array} [frontendEndpoints] Frontend endpoints available to
+ * routing rules.
+ * @property {string} [enabledState] Operational status of the Front Door load
  * balancer. Permitted values are 'Enabled' or 'Disabled'. Possible values
  * include: 'Enabled', 'Disabled'
  */
@@ -355,7 +357,7 @@ export interface FrontDoorUpdateParameters {
  * @constructor
  * Parameters required for content purge.
  *
- * @member {array} contentPaths The path to the content to be purged. Can
+ * @property {array} contentPaths The path to the content to be purged. Can
  * describe a file path or a wild card directory.
  */
 export interface PurgeParameters {
@@ -369,10 +371,11 @@ export interface PurgeParameters {
  * Caching settings for a caching-type route. To disable caching, do not
  * provide a cacheConfiguration object.
  *
- * @member {string} [queryParameterStripDirective] Treatment of URL query terms
- * when forming the cache key. Possible values include: 'StripNone', 'StripAll'
- * @member {string} [dynamicCompression] Whether to use dynamic compression for
- * cached content. Possible values include: 'Enabled', 'Disabled'
+ * @property {string} [queryParameterStripDirective] Treatment of URL query
+ * terms when forming the cache key. Possible values include: 'StripNone',
+ * 'StripAll'
+ * @property {string} [dynamicCompression] Whether to use dynamic compression
+ * for cached content. Possible values include: 'Enabled', 'Disabled'
  */
 export interface CacheConfiguration {
   queryParameterStripDirective?: string;
@@ -385,27 +388,28 @@ export interface CacheConfiguration {
  * @constructor
  * Routing rules to apply to an endpoint
  *
- * @member {array} [frontendEndpoints] Frontend endpoints associated with this
+ * @property {array} [frontendEndpoints] Frontend endpoints associated with
+ * this rule
+ * @property {array} [acceptedProtocols] Protocol schemes to match for this
  * rule
- * @member {array} [acceptedProtocols] Protocol schemes to match for this rule
- * @member {array} [patternsToMatch] The route patterns of the rule.
- * @member {string} [customForwardingPath] A custom path used to rewrite
+ * @property {array} [patternsToMatch] The route patterns of the rule.
+ * @property {string} [customForwardingPath] A custom path used to rewrite
  * resource paths matched by this rule. Leave empty to use incoming path.
- * @member {string} [forwardingProtocol] Protocol this rule will use when
+ * @property {string} [forwardingProtocol] Protocol this rule will use when
  * forwarding traffic to backends. Possible values include: 'HttpOnly',
  * 'HttpsOnly', 'MatchRequest'
- * @member {object} [cacheConfiguration] The caching configuration associated
+ * @property {object} [cacheConfiguration] The caching configuration associated
  * with this rule.
- * @member {string} [cacheConfiguration.queryParameterStripDirective] Treatment
- * of URL query terms when forming the cache key. Possible values include:
- * 'StripNone', 'StripAll'
- * @member {string} [cacheConfiguration.dynamicCompression] Whether to use
+ * @property {string} [cacheConfiguration.queryParameterStripDirective]
+ * Treatment of URL query terms when forming the cache key. Possible values
+ * include: 'StripNone', 'StripAll'
+ * @property {string} [cacheConfiguration.dynamicCompression] Whether to use
  * dynamic compression for cached content. Possible values include: 'Enabled',
  * 'Disabled'
- * @member {object} [backendPool] A reference to the BackendPool which this
+ * @property {object} [backendPool] A reference to the BackendPool which this
  * rule routes to.
- * @member {string} [backendPool.id] Resource ID.
- * @member {string} [enabledState] Whether to enable use of this rule.
+ * @property {string} [backendPool.id] Resource ID.
+ * @property {string} [enabledState] Whether to enable use of this rule.
  * Permitted values are 'Enabled' or 'Disabled'. Possible values include:
  * 'Enabled', 'Disabled'
  */
@@ -426,20 +430,20 @@ export interface RoutingRuleUpdateParameters {
  * @constructor
  * Backend address of a frontDoor load balancer.
  *
- * @member {string} [address] Location of the backend (IP address or FQDN)
- * @member {number} [httpPort] The HTTP TCP port number. Must be between 1 and
- * 65535.
- * @member {number} [httpsPort] The HTTPS TCP port number. Must be between 1
+ * @property {string} [address] Location of the backend (IP address or FQDN)
+ * @property {number} [httpPort] The HTTP TCP port number. Must be between 1
  * and 65535.
- * @member {string} [enabledState] Whether to enable use of this backend.
+ * @property {number} [httpsPort] The HTTPS TCP port number. Must be between 1
+ * and 65535.
+ * @property {string} [enabledState] Whether to enable use of this backend.
  * Permitted values are 'Enabled' or 'Disabled'. Possible values include:
  * 'Enabled', 'Disabled'
- * @member {number} [priority] Priority to use for load balancing. Higher
+ * @property {number} [priority] Priority to use for load balancing. Higher
  * priorities will not be used for load balancing if any lower priority backend
  * is healthy.
- * @member {number} [weight] Weight of this endpoint for load balancing
+ * @property {number} [weight] Weight of this endpoint for load balancing
  * purposes.
- * @member {string} [backendHostHeader] The value to use as the host header
+ * @property {string} [backendHostHeader] The value to use as the host header
  * sent to the backend. If blank or unspecified, this defaults to the incoming
  * host.
  */
@@ -459,11 +463,11 @@ export interface Backend {
  * @constructor
  * Round-Robin load balancing settings for a backend pool
  *
- * @member {number} [sampleSize] The number of samples to consider for load
+ * @property {number} [sampleSize] The number of samples to consider for load
  * balancing decisions
- * @member {number} [successfulSamplesRequired] The number of samples within
+ * @property {number} [successfulSamplesRequired] The number of samples within
  * the sample period that must succeed
- * @member {number} [additionalLatencyMilliseconds] The additional latency in
+ * @property {number} [additionalLatencyMilliseconds] The additional latency in
  * milliseconds for probes to fall into the lowest latency bucket
  */
 export interface LoadBalancingSettingsUpdateParameters {
@@ -478,10 +482,10 @@ export interface LoadBalancingSettingsUpdateParameters {
  * @constructor
  * L7 health probe settings for a backend pool
  *
- * @member {string} [path] The path to use for the health probe. Default is /
- * @member {string} [protocol] Protocol scheme to use for this probe. Possible
- * values include: 'Http', 'Https'
- * @member {number} [intervalInSeconds] The number of seconds between health
+ * @property {string} [path] The path to use for the health probe. Default is /
+ * @property {string} [protocol] Protocol scheme to use for this probe.
+ * Possible values include: 'Http', 'Https'
+ * @property {number} [intervalInSeconds] The number of seconds between health
  * probes.
  */
 export interface HealthProbeSettingsUpdateParameters {
@@ -496,13 +500,13 @@ export interface HealthProbeSettingsUpdateParameters {
  * @constructor
  * A collection of backends that can be routed to.
  *
- * @member {array} [backends] The set of backends for this pool
- * @member {object} [loadBalancingSettings] Load balancing settings for a
+ * @property {array} [backends] The set of backends for this pool
+ * @property {object} [loadBalancingSettings] Load balancing settings for a
  * backend pool
- * @member {string} [loadBalancingSettings.id] Resource ID.
- * @member {object} [healthProbeSettings] L7 health probe settings for a
+ * @property {string} [loadBalancingSettings.id] Resource ID.
+ * @property {object} [healthProbeSettings] L7 health probe settings for a
  * backend pool
- * @member {string} [healthProbeSettings.id] Resource ID.
+ * @property {string} [healthProbeSettings.id] Resource ID.
  */
 export interface BackendPoolUpdateParameters {
   backends?: Backend[];
@@ -516,7 +520,7 @@ export interface BackendPoolUpdateParameters {
  * @constructor
  * Defines the Web Application Firewall policy for each host (if applicable)
  *
- * @member {string} [id] Resource ID.
+ * @property {string} [id] Resource ID.
  */
 export interface FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink {
   id?: string;
@@ -528,16 +532,16 @@ export interface FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLin
  * @constructor
  * Frontend endpoint used in routing rule
  *
- * @member {string} [hostName] The host name of the frontendEndpoint. Must be a
- * domain name.
- * @member {string} [sessionAffinityEnabledState] Whether to allow session
+ * @property {string} [hostName] The host name of the frontendEndpoint. Must be
+ * a domain name.
+ * @property {string} [sessionAffinityEnabledState] Whether to allow session
  * affinity on this host. Valid options are 'Enabled' or 'Disabled'. Possible
  * values include: 'Enabled', 'Disabled'
- * @member {number} [sessionAffinityTtlSeconds] UNUSED. This field will be
+ * @property {number} [sessionAffinityTtlSeconds] UNUSED. This field will be
  * ignored. The TTL to use in seconds for session affinity, if applicable.
- * @member {object} [webApplicationFirewallPolicyLink] Defines the Web
+ * @property {object} [webApplicationFirewallPolicyLink] Defines the Web
  * Application Firewall policy for each host (if applicable)
- * @member {string} [webApplicationFirewallPolicyLink.id] Resource ID.
+ * @property {string} [webApplicationFirewallPolicyLink.id] Resource ID.
  */
 export interface FrontendEndpointUpdateParameters {
   hostName?: string;
@@ -552,7 +556,7 @@ export interface FrontendEndpointUpdateParameters {
  * @constructor
  * Input of the custom domain to be validated for DNS mapping.
  *
- * @member {string} hostName The host name of the custom domain. Must be a
+ * @property {string} hostName The host name of the custom domain. Must be a
  * domain name.
  */
 export interface ValidateCustomDomainInput {
@@ -565,11 +569,11 @@ export interface ValidateCustomDomainInput {
  * @constructor
  * Output of custom domain validation.
  *
- * @member {boolean} [customDomainValidated] Indicates whether the custom
+ * @property {boolean} [customDomainValidated] Indicates whether the custom
  * domain is valid or not.
- * @member {string} [reason] The reason why the custom domain is not valid.
- * @member {string} [message] Error message describing why the custom domain is
- * not valid.
+ * @property {string} [reason] The reason why the custom domain is not valid.
+ * @property {string} [message] Error message describing why the custom domain
+ * is not valid.
  */
 export interface ValidateCustomDomainOutput {
   readonly customDomainValidated?: boolean;
@@ -584,8 +588,8 @@ export interface ValidateCustomDomainOutput {
  * Error reponse indicates Front Door service is not able to process the
  * incoming request. The reason is provided in the error message.
  *
- * @member {string} [code] Error code.
- * @member {string} [message] Error message indicating why the operation
+ * @property {string} [code] Error code.
+ * @property {string} [message] Error message indicating why the operation
  * failed.
  */
 export interface ErrorResponse {
@@ -599,8 +603,8 @@ export interface ErrorResponse {
  * @constructor
  * Input of CheckNameAvailability API.
  *
- * @member {string} name The resource name to validate.
- * @member {string} type The type of the resource whose name is to be
+ * @property {string} name The resource name to validate.
+ * @property {string} type The type of the resource whose name is to be
  * validated. Possible values include: 'Microsoft.Network/frontDoors',
  * 'Microsoft.Network/frontDoors/frontendEndpoints'
  */
@@ -615,10 +619,10 @@ export interface CheckNameAvailabilityInput {
  * @constructor
  * Output of check name availability API.
  *
- * @member {string} [nameAvailability] Indicates whether the name is available.
- * Possible values include: 'Available', 'Unavailable'
- * @member {string} [reason] The reason why the name is not available.
- * @member {string} [message] The detailed error message describing why the
+ * @property {string} [nameAvailability] Indicates whether the name is
+ * available. Possible values include: 'Available', 'Unavailable'
+ * @property {string} [reason] The reason why the name is not available.
+ * @property {string} [message] The detailed error message describing why the
  * name is not available.
  */
 export interface CheckNameAvailabilityOutput {
@@ -631,9 +635,9 @@ export interface CheckNameAvailabilityOutput {
  * @class
  * Initializes a new instance of the ErrorDetails class.
  * @constructor
- * @member {string} [code]
- * @member {string} [target]
- * @member {string} [message]
+ * @property {string} [code]
+ * @property {string} [target]
+ * @property {string} [message]
  */
 export interface ErrorDetails {
   code?: string;
@@ -645,11 +649,11 @@ export interface ErrorDetails {
  * @class
  * Initializes a new instance of the ErrorModel class.
  * @constructor
- * @member {string} [code]
- * @member {string} [message]
- * @member {string} [target]
- * @member {array} [details]
- * @member {string} [innerError]
+ * @property {string} [code]
+ * @property {string} [message]
+ * @property {string} [target]
+ * @property {array} [details]
+ * @property {string} [innerError]
  */
 export interface ErrorModel {
   code?: string;
@@ -672,15 +676,15 @@ export interface ErrorModel {
  * includes the HTTP status code for the failed request and error information
  * regarding the failure.
  *
- * @member {string} [status] Status of the Azure async operation. Possible
+ * @property {string} [status] Status of the Azure async operation. Possible
  * values are: 'InProgress', 'Succeeded', and 'Failed'. Possible values
  * include: 'InProgress', 'Succeeded', 'Failed'
- * @member {object} [error]
- * @member {string} [error.code]
- * @member {string} [error.message]
- * @member {string} [error.target]
- * @member {array} [error.details]
- * @member {string} [error.innerError]
+ * @property {object} [error]
+ * @property {string} [error.code]
+ * @property {string} [error.message]
+ * @property {string} [error.target]
+ * @property {array} [error.details]
+ * @property {string} [error.innerError]
  */
 export interface AzureAsyncOperationResult {
   status?: string;
@@ -693,7 +697,7 @@ export interface AzureAsyncOperationResult {
  * @constructor
  * Tags object for patch operations.
  *
- * @member {object} [tags] Resource tags.
+ * @property {object} [tags] Resource tags.
  */
 export interface TagsObject {
   tags?: { [propertyName: string]: string };
@@ -705,10 +709,11 @@ export interface TagsObject {
  * @constructor
  * Defines contents of a web application firewall global configuration
  *
- * @member {string} [enabledState] describes if the policy is in enabled state
- * or disabled state. Possible values include: 'Disabled', 'Enabled'
- * @member {string} [mode] Describes if it is in detection mode  or prevention
- * mode at policy level. Possible values include: 'Prevention', 'Detection'
+ * @property {string} [enabledState] describes if the policy is in enabled
+ * state or disabled state. Possible values include: 'Disabled', 'Enabled'
+ * @property {string} [mode] Describes if it is in detection mode  or
+ * prevention mode at policy level. Possible values include: 'Prevention',
+ * 'Detection'
  */
 export interface PolicySettings {
   enabledState?: string;
@@ -721,18 +726,18 @@ export interface PolicySettings {
  * @constructor
  * Define match conditions
  *
- * @member {string} matchVariable Match Variable. Possible values include:
+ * @property {string} matchVariable Match Variable. Possible values include:
  * 'RemoteAddr', 'RequestMethod', 'QueryString', 'PostArgs', 'RequestUri',
  * 'RequestHeader', 'RequestBody'
- * @member {string} [selector] Name of selector in RequestHeader or RequestBody
- * to be matched
- * @member {string} operator Describes operator to be matched. Possible values
- * include: 'Any', 'IPMatch', 'GeoMatch', 'Equal', 'Contains', 'LessThan',
- * 'GreaterThan', 'LessThanOrEqual', 'GreaterThanOrEqual', 'BeginsWith',
- * 'EndsWith'
- * @member {boolean} [negateCondition] Describes if this is negate condition or
- * not
- * @member {array} matchValue Match value
+ * @property {string} [selector] Name of selector in RequestHeader or
+ * RequestBody to be matched
+ * @property {string} operator Describes operator to be matched. Possible
+ * values include: 'Any', 'IPMatch', 'GeoMatch', 'Equal', 'Contains',
+ * 'LessThan', 'GreaterThan', 'LessThanOrEqual', 'GreaterThanOrEqual',
+ * 'BeginsWith', 'EndsWith'
+ * @property {boolean} [negateCondition] Describes if this is negate condition
+ * or not
+ * @property {array} matchValue Match value
  */
 export interface MatchCondition1 {
   matchVariable: string;
@@ -748,21 +753,21 @@ export interface MatchCondition1 {
  * @constructor
  * Defines contents of a web application rule
  *
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @property {string} [name] Gets name of the resource that is unique within a
  * policy. This name can be used to access the resource.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
- * @member {number} priority Describes priority of the rule. Rules with a lower
- * value will be evaluated before rules with a higher value
- * @member {string} ruleType Describes type of rule. Possible values include:
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
+ * @property {number} priority Describes priority of the rule. Rules with a
+ * lower value will be evaluated before rules with a higher value
+ * @property {string} ruleType Describes type of rule. Possible values include:
  * 'MatchRule', 'RateLimitRule'
- * @member {number} [rateLimitDurationInMinutes] Defines rate limit duration.
+ * @property {number} [rateLimitDurationInMinutes] Defines rate limit duration.
  * Default - 1 minute
- * @member {number} [rateLimitThreshold] Defines rate limit thresold
- * @member {array} matchConditions List of match conditions
- * @member {string} action Type of Actions. Possible values include: 'Allow',
+ * @property {number} [rateLimitThreshold] Defines rate limit thresold
+ * @property {array} matchConditions List of match conditions
+ * @property {string} action Type of Actions. Possible values include: 'Allow',
  * 'Block', 'Log'
- * @member {array} [transforms] List of transforms
+ * @property {array} [transforms] List of transforms
  */
 export interface CustomRule {
   name?: string;
@@ -782,7 +787,7 @@ export interface CustomRule {
  * @constructor
  * Defines contents of custom rules
  *
- * @member {array} [rules] List of rules
+ * @property {array} [rules] List of rules
  */
 export interface CustomRules {
   rules?: CustomRule[];
@@ -794,9 +799,9 @@ export interface CustomRules {
  * @constructor
  * Base class for all types of ManagedRuleSet.
  *
- * @member {number} [priority] Describes priority of the rule
- * @member {number} [version] defines version of the ruleset
- * @member {string} ruleSetType Polymorphic Discriminator
+ * @property {number} [priority] Describes priority of the rule
+ * @property {number} [version] defines version of the ruleset
+ * @property {string} ruleSetType Polymorphic Discriminator
  */
 export interface ManagedRuleSet {
   priority?: number;
@@ -810,7 +815,7 @@ export interface ManagedRuleSet {
  * @constructor
  * Defines ManagedRuleSets - array of managedRuleSet
  *
- * @member {array} [ruleSets] List of rules
+ * @property {array} [ruleSets] List of rules
  */
 export interface ManagedRuleSets {
   ruleSets?: ManagedRuleSet[];
@@ -822,24 +827,24 @@ export interface ManagedRuleSets {
  * @constructor
  * Defines web application firewall policy.
  *
- * @member {object} [policySettings] Describes  policySettings for policy
- * @member {string} [policySettings.enabledState] describes if the policy is in
- * enabled state or disabled state. Possible values include: 'Disabled',
+ * @property {object} [policySettings] Describes  policySettings for policy
+ * @property {string} [policySettings.enabledState] describes if the policy is
+ * in enabled state or disabled state. Possible values include: 'Disabled',
  * 'Enabled'
- * @member {string} [policySettings.mode] Describes if it is in detection mode
- * or prevention mode at policy level. Possible values include: 'Prevention',
- * 'Detection'
- * @member {object} [customRules] Describes custom rules inside the policy
- * @member {array} [customRules.rules] List of rules
- * @member {object} [managedRules] Describes managed rules inside the policy
- * @member {array} [managedRules.ruleSets] List of rules
- * @member {string} [provisioningState] Provisioning state of the
+ * @property {string} [policySettings.mode] Describes if it is in detection
+ * mode  or prevention mode at policy level. Possible values include:
+ * 'Prevention', 'Detection'
+ * @property {object} [customRules] Describes custom rules inside the policy
+ * @property {array} [customRules.rules] List of rules
+ * @property {object} [managedRules] Describes managed rules inside the policy
+ * @property {array} [managedRules.ruleSets] List of rules
+ * @property {string} [provisioningState] Provisioning state of the
  * WebApplicationFirewallPolicy.
- * @member {string} [resourceState] Resource status of the policy. Possible
+ * @property {string} [resourceState] Resource status of the policy. Possible
  * values include: 'Creating', 'Enabling', 'Enabled', 'Disabling', 'Disabled',
  * 'Deleting'
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface WebApplicationFirewallPolicy1 extends Resource {
   policySettings?: PolicySettings;
@@ -856,9 +861,9 @@ export interface WebApplicationFirewallPolicy1 extends Resource {
  * @constructor
  * Defines contents of a web application rule
  *
- * @member {string} ruleGroupOverride Describes overrideruleGroup. Possible
+ * @property {string} ruleGroupOverride Describes overrideruleGroup. Possible
  * values include: 'SqlInjection', 'XSS'
- * @member {string} action Type of Actions. Possible values include: 'Allow',
+ * @property {string} action Type of Actions. Possible values include: 'Allow',
  * 'Block', 'Log'
  */
 export interface AzureManagedOverrideRuleGroup {
@@ -872,8 +877,8 @@ export interface AzureManagedOverrideRuleGroup {
  * @constructor
  * Describes azure managed provider.
  *
- * @member {array} [ruleGroupOverrides] List of azure managed provider override
- * configuration (optional)
+ * @property {array} [ruleGroupOverrides] List of azure managed provider
+ * override configuration (optional)
  */
 export interface AzureManagedRuleSet extends ManagedRuleSet {
   ruleGroupOverrides?: AzureManagedOverrideRuleGroup[];
@@ -887,8 +892,8 @@ export interface AzureManagedRuleSet extends ManagedRuleSet {
  * Result of the request to list Front Doors. It contains a list of Front Door
  * objects and a URL link to get the the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of Front Door objects if
- * there are any.
+ * @property {string} [nextLink] URL to get the next set of Front Door objects
+ * if there are any.
  */
 export interface FrontDoorListResult extends Array<FrontDoor> {
   nextLink?: string;
@@ -901,7 +906,7 @@ export interface FrontDoorListResult extends Array<FrontDoor> {
  * Result of the request to list Routing Rules. It contains a list of Routing
  * Rule objects and a URL link to get the the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of RoutingRule objects
+ * @property {string} [nextLink] URL to get the next set of RoutingRule objects
  * if there are any.
  */
 export interface RoutingRuleListResult extends Array<RoutingRule> {
@@ -916,7 +921,7 @@ export interface RoutingRuleListResult extends Array<RoutingRule> {
  * HealthProbeSettings objects and a URL link to get the the next set of
  * results.
  *
- * @member {string} [nextLink] URL to get the next set of HealthProbeSettings
+ * @property {string} [nextLink] URL to get the next set of HealthProbeSettings
  * objects if there are any.
  */
 export interface HealthProbeSettingsListResult extends Array<HealthProbeSettingsModel> {
@@ -931,8 +936,8 @@ export interface HealthProbeSettingsListResult extends Array<HealthProbeSettings
  * load balancing settings objects and a URL link to get the the next set of
  * results.
  *
- * @member {string} [nextLink] URL to get the next set of LoadBalancingSettings
- * objects if there are any.
+ * @property {string} [nextLink] URL to get the next set of
+ * LoadBalancingSettings objects if there are any.
  */
 export interface LoadBalancingSettingsListResult extends Array<LoadBalancingSettingsModel> {
   nextLink?: string;
@@ -945,7 +950,7 @@ export interface LoadBalancingSettingsListResult extends Array<LoadBalancingSett
  * Result of the request to list Backend Pools. It contains a list of Backend
  * Pools objects and a URL link to get the the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of BackendPool objects
+ * @property {string} [nextLink] URL to get the next set of BackendPool objects
  * if there are any.
  */
 export interface BackendPoolListResult extends Array<BackendPool> {
@@ -959,8 +964,8 @@ export interface BackendPoolListResult extends Array<BackendPool> {
  * Result of the request to list frontend endpoints. It contains a list of
  * Frontend endpoint objects and a URL link to get the the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of frontend endpoints if
- * there are any.
+ * @property {string} [nextLink] URL to get the next set of frontend endpoints
+ * if there are any.
  */
 export interface FrontendEndpointsListResult extends Array<FrontendEndpoint> {
   nextLink?: string;
@@ -974,7 +979,7 @@ export interface FrontendEndpointsListResult extends Array<FrontendEndpoint> {
  * list of WebApplicationFirewallPolicy objects and a URL link to get the the
  * next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of
+ * @property {string} [nextLink] URL to get the next set of
  * WebApplicationFirewallPolicy objects if there are any.
  */
 export interface WebApplicationFirewallPolicyListResult extends Array<WebApplicationFirewallPolicy1> {

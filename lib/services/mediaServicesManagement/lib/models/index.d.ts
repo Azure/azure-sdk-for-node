@@ -23,14 +23,14 @@ export { CloudError } from 'ms-rest-azure';
  * The presentation time range, this is asset related and not recommended for
  * Account Filter.
  *
- * @member {number} startTimestamp The absolute start time boundary.
- * @member {number} endTimestamp The absolute end time boundary.
- * @member {number} presentationWindowDuration The relative to end sliding
+ * @property {number} startTimestamp The absolute start time boundary.
+ * @property {number} endTimestamp The absolute end time boundary.
+ * @property {number} presentationWindowDuration The relative to end sliding
  * window.
- * @member {number} liveBackoffDuration The relative to end right edge.
- * @member {number} timescale The time scale of time stamps.
- * @member {boolean} forceEndTimestamp The indicator of forcing exsiting of end
- * time stamp.
+ * @property {number} liveBackoffDuration The relative to end right edge.
+ * @property {number} timescale The time scale of time stamps.
+ * @property {boolean} forceEndTimestamp The indicator of forcing exsiting of
+ * end time stamp.
  */
 export interface PresentationTimeRange {
   startTimestamp: number;
@@ -47,11 +47,11 @@ export interface PresentationTimeRange {
  * @constructor
  * The class to specify one track property condition.
  *
- * @member {string} property The track property type. Possible values include:
- * 'Unknown', 'Type', 'Name', 'Language', 'FourCC', 'Bitrate'
- * @member {string} value The track proprty value.
- * @member {string} operation The track property condition operation. Possible
- * values include: 'Equal', 'NotEqual'
+ * @property {string} property The track property type. Possible values
+ * include: 'Unknown', 'Type', 'Name', 'Language', 'FourCC', 'Bitrate'
+ * @property {string} value The track proprty value.
+ * @property {string} operation The track property condition operation.
+ * Possible values include: 'Equal', 'NotEqual'
  */
 export interface FilterTrackPropertyCondition {
   property: string;
@@ -65,7 +65,7 @@ export interface FilterTrackPropertyCondition {
  * @constructor
  * Filter First Quality
  *
- * @member {number} bitrate The first quality bitrate.
+ * @property {number} bitrate The first quality bitrate.
  */
 export interface FirstQuality {
   bitrate: number;
@@ -78,7 +78,7 @@ export interface FirstQuality {
  * Representing a list of FilterTrackPropertyConditions to select a track.  The
  * filters are combined using a logical AND operation.
  *
- * @member {array} trackSelections The track selections.
+ * @property {array} trackSelections The track selections.
  */
 export interface FilterTrackSelection {
   trackSelections: FilterTrackPropertyCondition[];
@@ -90,9 +90,9 @@ export interface FilterTrackSelection {
  * @constructor
  * The core properties of ARM resources.
  *
- * @member {string} [id] Fully qualified resource ID for the resource.
- * @member {string} [name] The name of the resource.
- * @member {string} [type] The type of the resource.
+ * @property {string} [id] Fully qualified resource ID for the resource.
+ * @property {string} [name] The name of the resource.
+ * @property {string} [type] The type of the resource.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -116,22 +116,22 @@ export interface ProxyResource extends Resource {
  * @constructor
  * An Account Filter.
  *
- * @member {object} [presentationTimeRange] The presentation time range.
- * @member {number} [presentationTimeRange.startTimestamp] The absolute start
+ * @property {object} [presentationTimeRange] The presentation time range.
+ * @property {number} [presentationTimeRange.startTimestamp] The absolute start
  * time boundary.
- * @member {number} [presentationTimeRange.endTimestamp] The absolute end time
- * boundary.
- * @member {number} [presentationTimeRange.presentationWindowDuration] The
+ * @property {number} [presentationTimeRange.endTimestamp] The absolute end
+ * time boundary.
+ * @property {number} [presentationTimeRange.presentationWindowDuration] The
  * relative to end sliding window.
- * @member {number} [presentationTimeRange.liveBackoffDuration] The relative to
- * end right edge.
- * @member {number} [presentationTimeRange.timescale] The time scale of time
+ * @property {number} [presentationTimeRange.liveBackoffDuration] The relative
+ * to end right edge.
+ * @property {number} [presentationTimeRange.timescale] The time scale of time
  * stamps.
- * @member {boolean} [presentationTimeRange.forceEndTimestamp] The indicator of
- * forcing exsiting of end time stamp.
- * @member {object} [firstQuality] The first quality.
- * @member {number} [firstQuality.bitrate] The first quality bitrate.
- * @member {array} [tracks] The tracks selection conditions.
+ * @property {boolean} [presentationTimeRange.forceEndTimestamp] The indicator
+ * of forcing exsiting of end time stamp.
+ * @property {object} [firstQuality] The first quality.
+ * @property {number} [firstQuality.bitrate] The first quality bitrate.
+ * @property {array} [tracks] The tracks selection conditions.
  */
 export interface AccountFilter extends ProxyResource {
   presentationTimeRange?: PresentationTimeRange;
@@ -145,11 +145,11 @@ export interface AccountFilter extends ProxyResource {
  * @constructor
  * Information about an error.
  *
- * @member {string} [code] A language-independent error name.
- * @member {string} [message] The error message.
- * @member {string} [target] The target of the error (for example, the name of
- * the property in error).
- * @member {array} [details] The error details.
+ * @property {string} [code] A language-independent error name.
+ * @property {string} [message] The error message.
+ * @property {string} [target] The target of the error (for example, the name
+ * of the property in error).
+ * @property {array} [details] The error details.
  */
 export interface ODataError {
   code?: string;
@@ -164,12 +164,12 @@ export interface ODataError {
  * @constructor
  * The API error.
  *
- * @member {object} [error] ApiError. The error properties.
- * @member {string} [error.code] A language-independent error name.
- * @member {string} [error.message] The error message.
- * @member {string} [error.target] The target of the error (for example, the
+ * @property {object} [error] ApiError. The error properties.
+ * @property {string} [error.code] A language-independent error name.
+ * @property {string} [error.message] The error message.
+ * @property {string} [error.target] The target of the error (for example, the
  * name of the property in error).
- * @member {array} [error.details] The error details.
+ * @property {array} [error.details] The error details.
  */
 export interface ApiError {
   error?: ODataError;
@@ -181,8 +181,8 @@ export interface ApiError {
  * @constructor
  * The resource model definition for a ARM tracked resource.
  *
- * @member {object} [tags] Resource tags.
- * @member {string} [location] The Azure Region of the resource.
+ * @property {object} [tags] Resource tags.
+ * @property {string} [location] The Azure Region of the resource.
  */
 export interface TrackedResource extends Resource {
   tags?: { [propertyName: string]: string };
@@ -195,7 +195,7 @@ export interface TrackedResource extends Resource {
  * @constructor
  * A resource provider.
  *
- * @member {string} providerName The provider name.
+ * @property {string} providerName The provider name.
  */
 export interface Provider {
   providerName: string;
@@ -207,10 +207,10 @@ export interface Provider {
  * @constructor
  * Operation details.
  *
- * @member {string} [provider] The service provider.
- * @member {string} [resource] Resource on which the operation is performed.
- * @member {string} [operation] The operation type.
- * @member {string} [description] The operation description.
+ * @property {string} [provider] The service provider.
+ * @property {string} [resource] Resource on which the operation is performed.
+ * @property {string} [operation] The operation type.
+ * @property {string} [description] The operation description.
  */
 export interface OperationDisplay {
   provider?: string;
@@ -225,9 +225,9 @@ export interface OperationDisplay {
  * @constructor
  * A metric dimension.
  *
- * @member {string} [name] The metric dimension name.
- * @member {string} [displayName] The display name for the dimension.
- * @member {boolean} [toBeExportedForShoebox] Whether to export metric to
+ * @property {string} [name] The metric dimension name.
+ * @property {string} [displayName] The display name for the dimension.
+ * @property {boolean} [toBeExportedForShoebox] Whether to export metric to
  * shoebox.
  */
 export interface MetricDimension {
@@ -242,14 +242,14 @@ export interface MetricDimension {
  * @constructor
  * A metric emitted by service.
  *
- * @member {string} [name] The metric name.
- * @member {string} [displayName] The metric display name.
- * @member {string} [displayDescription] The metric display description.
- * @member {string} [unit] The metric unit. Possible values include: 'Bytes',
+ * @property {string} [name] The metric name.
+ * @property {string} [displayName] The metric display name.
+ * @property {string} [displayDescription] The metric display description.
+ * @property {string} [unit] The metric unit. Possible values include: 'Bytes',
  * 'Count', 'Milliseconds'
- * @member {string} [aggregationType] The metric aggregation type. Possible
+ * @property {string} [aggregationType] The metric aggregation type. Possible
  * values include: 'Average', 'Count', 'Total'
- * @member {array} [dimensions] The metric dimensions.
+ * @property {array} [dimensions] The metric dimensions.
  */
 export interface Metric {
   readonly name?: string;
@@ -266,7 +266,7 @@ export interface Metric {
  * @constructor
  * The service metric specifications.
  *
- * @member {array} [metricSpecifications] List of metric specifications.
+ * @property {array} [metricSpecifications] List of metric specifications.
  */
 export interface ServiceSpecification {
   readonly metricSpecifications?: Metric[];
@@ -278,8 +278,8 @@ export interface ServiceSpecification {
  * @constructor
  * Metric properties.
  *
- * @member {object} [serviceSpecification] The service specifications.
- * @member {array} [serviceSpecification.metricSpecifications] List of metric
+ * @property {object} [serviceSpecification] The service specifications.
+ * @property {array} [serviceSpecification.metricSpecifications] List of metric
  * specifications.
  */
 export interface MetricProperties {
@@ -292,19 +292,19 @@ export interface MetricProperties {
  * @constructor
  * An operation.
  *
- * @member {string} name The operation name.
- * @member {object} [display] The operation display name.
- * @member {string} [display.provider] The service provider.
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} name The operation name.
+ * @property {object} [display] The operation display name.
+ * @property {string} [display.provider] The service provider.
+ * @property {string} [display.resource] Resource on which the operation is
  * performed.
- * @member {string} [display.operation] The operation type.
- * @member {string} [display.description] The operation description.
- * @member {string} [origin] Origin of the operation.
- * @member {object} [properties] Operation properties format.
- * @member {object} [properties.serviceSpecification] The service
+ * @property {string} [display.operation] The operation type.
+ * @property {string} [display.description] The operation description.
+ * @property {string} [origin] Origin of the operation.
+ * @property {object} [properties] Operation properties format.
+ * @property {object} [properties.serviceSpecification] The service
  * specifications.
- * @member {array} [properties.serviceSpecification.metricSpecifications] List
- * of metric specifications.
+ * @property {array} [properties.serviceSpecification.metricSpecifications]
+ * List of metric specifications.
  */
 export interface Operation {
   name: string;
@@ -317,7 +317,7 @@ export interface Operation {
  * @class
  * Initializes a new instance of the Location class.
  * @constructor
- * @member {string} name
+ * @property {string} name
  */
 export interface Location {
   name: string;
@@ -329,10 +329,11 @@ export interface Location {
  * @constructor
  * The response from the check name availability request.
  *
- * @member {boolean} nameAvailable Specifies if the name is available.
- * @member {string} [reason] Specifies the reason if the name is not available.
- * @member {string} [message] Specifies the detailed reason if the name is not
+ * @property {boolean} nameAvailable Specifies if the name is available.
+ * @property {string} [reason] Specifies the reason if the name is not
  * available.
+ * @property {string} [message] Specifies the detailed reason if the name is
+ * not available.
  */
 export interface EntityNameAvailabilityCheckOutput {
   nameAvailable: boolean;
@@ -346,12 +347,12 @@ export interface EntityNameAvailabilityCheckOutput {
  * @constructor
  * The storage account details.
  *
- * @member {string} [id] The ID of the storage account resource. Media Services
- * relies on tables and queues as well as blobs, so the primary storage account
- * must be a Standard Storage account (either Microsoft.ClassicStorage or
- * Microsoft.Storage). Blob only storage accounts can be added as secondary
- * storage accounts.
- * @member {string} type The type of the storage account. Possible values
+ * @property {string} [id] The ID of the storage account resource. Media
+ * Services relies on tables and queues as well as blobs, so the primary
+ * storage account must be a Standard Storage account (either
+ * Microsoft.ClassicStorage or Microsoft.Storage). Blob only storage accounts
+ * can be added as secondary storage accounts.
+ * @property {string} type The type of the storage account. Possible values
  * include: 'Primary', 'Secondary'
  */
 export interface StorageAccount {
@@ -365,7 +366,7 @@ export interface StorageAccount {
  * @constructor
  * The input to the sync storage keys request.
  *
- * @member {string} [id] The ID of the storage account resource.
+ * @property {string} [id] The ID of the storage account resource.
  */
 export interface SyncStorageKeysInput {
   id?: string;
@@ -377,8 +378,8 @@ export interface SyncStorageKeysInput {
  * @constructor
  * A Media Services account.
  *
- * @member {uuid} [mediaServiceId] The Media Services account ID.
- * @member {array} [storageAccounts] The storage accounts for this resource.
+ * @property {uuid} [mediaServiceId] The Media Services account ID.
+ * @property {array} [storageAccounts] The storage accounts for this resource.
  */
 export interface MediaService extends TrackedResource {
   readonly mediaServiceId?: string;
@@ -391,8 +392,8 @@ export interface MediaService extends TrackedResource {
  * @constructor
  * A Media Services account.
  *
- * @member {uuid} [mediaServiceId] The Media Services account ID.
- * @member {array} [storageAccounts] The storage accounts for this resource.
+ * @property {uuid} [mediaServiceId] The Media Services account ID.
+ * @property {array} [storageAccounts] The storage accounts for this resource.
  */
 export interface SubscriptionMediaService extends TrackedResource {
   readonly mediaServiceId?: string;
@@ -405,9 +406,9 @@ export interface SubscriptionMediaService extends TrackedResource {
  * @constructor
  * The input to the check name availability request.
  *
- * @member {string} [name] The account name.
- * @member {string} [type] The account type. For a Media Services account, this
- * should be 'MediaServices'.
+ * @property {string} [name] The account name.
+ * @property {string} [type] The account type. For a Media Services account,
+ * this should be 'MediaServices'.
  */
 export interface CheckNameAvailabilityInput {
   name?: string;
@@ -420,7 +421,7 @@ export interface CheckNameAvailabilityInput {
  * @constructor
  * The Asset Storage container SAS URLs.
  *
- * @member {array} [assetContainerSasUrls] The list of Asset container SAS
+ * @property {array} [assetContainerSasUrls] The list of Asset container SAS
  * URLs.
  */
 export interface AssetContainerSas {
@@ -433,10 +434,10 @@ export interface AssetContainerSas {
  * @constructor
  * The Asset File Storage encryption metadata.
  *
- * @member {string} [initializationVector] The Asset File initialization
+ * @property {string} [initializationVector] The Asset File initialization
  * vector.
- * @member {string} [assetFileName] The Asset File name.
- * @member {uuid} assetFileId The Asset File Id.
+ * @property {string} [assetFileName] The Asset File name.
+ * @property {uuid} assetFileId The Asset File Id.
  */
 export interface AssetFileEncryptionMetadata {
   initializationVector?: string;
@@ -450,8 +451,8 @@ export interface AssetFileEncryptionMetadata {
  * @constructor
  * Data needed to decrypt asset files encrypted with legacy storage encryption.
  *
- * @member {buffer} [key] The Asset File storage encryption key.
- * @member {array} [assetFileEncryptionMetadata] Asset File encryption
+ * @property {buffer} [key] The Asset File storage encryption key.
+ * @property {array} [assetFileEncryptionMetadata] Asset File encryption
  * metadata.
  */
 export interface StorageEncryptedAssetDecryptionData {
@@ -465,16 +466,16 @@ export interface StorageEncryptedAssetDecryptionData {
  * @constructor
  * Properties of the Streaming Locator.
  *
- * @member {string} [name] Streaming Locator name.
- * @member {string} [assetName] Asset Name.
- * @member {date} [created] The creation time of the Streaming Locator.
- * @member {date} [startTime] The start time of the Streaming Locator.
- * @member {date} [endTime] The end time of the Streaming Locator.
- * @member {uuid} [streamingLocatorId] StreamingLocatorId of the Streaming
+ * @property {string} [name] Streaming Locator name.
+ * @property {string} [assetName] Asset Name.
+ * @property {date} [created] The creation time of the Streaming Locator.
+ * @property {date} [startTime] The start time of the Streaming Locator.
+ * @property {date} [endTime] The end time of the Streaming Locator.
+ * @property {uuid} [streamingLocatorId] StreamingLocatorId of the Streaming
  * Locator.
- * @member {string} [streamingPolicyName] Name of the Streaming Policy used by
- * this Streaming Locator.
- * @member {string} [defaultContentKeyPolicyName] Name of the default
+ * @property {string} [streamingPolicyName] Name of the Streaming Policy used
+ * by this Streaming Locator.
+ * @property {string} [defaultContentKeyPolicyName] Name of the default
  * ContentKeyPolicy used by this Streaming Locator.
  */
 export interface AssetStreamingLocator {
@@ -494,7 +495,7 @@ export interface AssetStreamingLocator {
  * @constructor
  * The Streaming Locators associated with this Asset.
  *
- * @member {array} [streamingLocators] The list of Streaming Locators.
+ * @property {array} [streamingLocators] The list of Streaming Locators.
  */
 export interface ListStreamingLocatorsResponse {
   readonly streamingLocators?: AssetStreamingLocator[];
@@ -506,15 +507,15 @@ export interface ListStreamingLocatorsResponse {
  * @constructor
  * An Asset.
  *
- * @member {uuid} [assetId] The Asset ID.
- * @member {date} [created] The creation date of the Asset.
- * @member {date} [lastModified] The last modified date of the Asset.
- * @member {string} [alternateId] The alternate ID of the Asset.
- * @member {string} [description] The Asset description.
- * @member {string} [container] The name of the asset blob container.
- * @member {string} [storageAccountName] The name of the storage account.
- * @member {string} [storageEncryptionFormat] The Asset encryption format. One
- * of None or MediaStorageEncryption. Possible values include: 'None',
+ * @property {uuid} [assetId] The Asset ID.
+ * @property {date} [created] The creation date of the Asset.
+ * @property {date} [lastModified] The last modified date of the Asset.
+ * @property {string} [alternateId] The alternate ID of the Asset.
+ * @property {string} [description] The Asset description.
+ * @property {string} [container] The name of the asset blob container.
+ * @property {string} [storageAccountName] The name of the storage account.
+ * @property {string} [storageEncryptionFormat] The Asset encryption format.
+ * One of None or MediaStorageEncryption. Possible values include: 'None',
  * 'MediaStorageClientEncryption'
  */
 export interface Asset extends ProxyResource {
@@ -534,22 +535,22 @@ export interface Asset extends ProxyResource {
  * @constructor
  * An Asset Filter.
  *
- * @member {object} [presentationTimeRange] The presentation time range.
- * @member {number} [presentationTimeRange.startTimestamp] The absolute start
+ * @property {object} [presentationTimeRange] The presentation time range.
+ * @property {number} [presentationTimeRange.startTimestamp] The absolute start
  * time boundary.
- * @member {number} [presentationTimeRange.endTimestamp] The absolute end time
- * boundary.
- * @member {number} [presentationTimeRange.presentationWindowDuration] The
+ * @property {number} [presentationTimeRange.endTimestamp] The absolute end
+ * time boundary.
+ * @property {number} [presentationTimeRange.presentationWindowDuration] The
  * relative to end sliding window.
- * @member {number} [presentationTimeRange.liveBackoffDuration] The relative to
- * end right edge.
- * @member {number} [presentationTimeRange.timescale] The time scale of time
+ * @property {number} [presentationTimeRange.liveBackoffDuration] The relative
+ * to end right edge.
+ * @property {number} [presentationTimeRange.timescale] The time scale of time
  * stamps.
- * @member {boolean} [presentationTimeRange.forceEndTimestamp] The indicator of
- * forcing exsiting of end time stamp.
- * @member {object} [firstQuality] The first quality.
- * @member {number} [firstQuality.bitrate] The first quality bitrate.
- * @member {array} [tracks] The tracks selection conditions.
+ * @property {boolean} [presentationTimeRange.forceEndTimestamp] The indicator
+ * of forcing exsiting of end time stamp.
+ * @property {object} [firstQuality] The first quality.
+ * @property {number} [firstQuality.bitrate] The first quality bitrate.
+ * @property {array} [tracks] The tracks selection conditions.
  */
 export interface AssetFilter extends ProxyResource {
   presentationTimeRange?: PresentationTimeRange;
@@ -563,10 +564,10 @@ export interface AssetFilter extends ProxyResource {
  * @constructor
  * The parameters to the list SAS request.
  *
- * @member {string} [permissions] The permissions to set on the SAS URL.
+ * @property {string} [permissions] The permissions to set on the SAS URL.
  * Possible values include: 'Read', 'ReadWrite', 'ReadWriteDelete'
- * @member {date} [expiryTime] The SAS URL expiration time.  This must be less
- * than 24 hours from the current time.
+ * @property {date} [expiryTime] The SAS URL expiration time.  This must be
+ * less than 24 hours from the current time.
  */
 export interface ListContainerSasInput {
   permissions?: string;
@@ -580,10 +581,10 @@ export interface ListContainerSasInput {
  * Configures the Explicit Analog Television Output Restriction control bits.
  * For further details see the PlayReady Compliance Rules.
  *
- * @member {boolean} bestEffort Indicates whether this restriction is enforced
- * on a Best Effort basis.
- * @member {number} configurationData Configures the restriction control bits.
- * Must be between 0 and 3 inclusive.
+ * @property {boolean} bestEffort Indicates whether this restriction is
+ * enforced on a Best Effort basis.
+ * @property {number} configurationData Configures the restriction control
+ * bits. Must be between 0 and 3 inclusive.
  */
 export interface ContentKeyPolicyPlayReadyExplicitAnalogTelevisionRestriction {
   bestEffort: boolean;
@@ -597,7 +598,7 @@ export interface ContentKeyPolicyPlayReadyExplicitAnalogTelevisionRestriction {
  * Base class for content key ID location. A derived class must be used to
  * represent the location.
  *
- * @member {string} odatatype Polymorphic Discriminator
+ * @property {string} odatatype Polymorphic Discriminator
  */
 export interface ContentKeyPolicyPlayReadyContentKeyLocation {
   odatatype: string;
@@ -620,7 +621,7 @@ export interface ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader extends
  * Specifies that the content key ID is specified in the PlayReady
  * configuration.
  *
- * @member {uuid} keyId The content key ID.
+ * @property {uuid} keyId The content key ID.
  */
 export interface ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier extends ContentKeyPolicyPlayReadyContentKeyLocation {
   keyId: string;
@@ -632,39 +633,41 @@ export interface ContentKeyPolicyPlayReadyContentEncryptionKeyFromKeyIdentifier 
  * @constructor
  * Configures the Play Right in the PlayReady license.
  *
- * @member {moment.duration} [firstPlayExpiration] The amount of time that the
- * license is valid after the license is first used to play content.
- * @member {number} [scmsRestriction] Configures the Serial Copy Management
+ * @property {moment.duration} [firstPlayExpiration] The amount of time that
+ * the license is valid after the license is first used to play content.
+ * @property {number} [scmsRestriction] Configures the Serial Copy Management
  * System (SCMS) in the license. Must be between 0 and 3 inclusive.
- * @member {number} [agcAndColorStripeRestriction] Configures Automatic Gain
+ * @property {number} [agcAndColorStripeRestriction] Configures Automatic Gain
  * Control (AGC) and Color Stripe in the license. Must be between 0 and 3
  * inclusive.
- * @member {object} [explicitAnalogTelevisionOutputRestriction] Configures the
- * Explicit Analog Television Output Restriction in the license. Configuration
- * data must be between 0 and 3 inclusive.
- * @member {boolean} [explicitAnalogTelevisionOutputRestriction.bestEffort]
+ * @property {object} [explicitAnalogTelevisionOutputRestriction] Configures
+ * the Explicit Analog Television Output Restriction in the license.
+ * Configuration data must be between 0 and 3 inclusive.
+ * @property {boolean} [explicitAnalogTelevisionOutputRestriction.bestEffort]
  * Indicates whether this restriction is enforced on a Best Effort basis.
- * @member {number}
+ * @property {number}
  * [explicitAnalogTelevisionOutputRestriction.configurationData] Configures the
  * restriction control bits. Must be between 0 and 3 inclusive.
- * @member {boolean} digitalVideoOnlyContentRestriction Enables the Image
+ * @property {boolean} digitalVideoOnlyContentRestriction Enables the Image
  * Constraint For Analog Component Video Restriction in the license.
- * @member {boolean} imageConstraintForAnalogComponentVideoRestriction Enables
- * the Image Constraint For Analog Component Video Restriction in the license.
- * @member {boolean} imageConstraintForAnalogComputerMonitorRestriction Enables
- * the Image Constraint For Analog Component Video Restriction in the license.
- * @member {string} allowPassingVideoContentToUnknownOutput Configures Unknown
- * output handling settings of the license. Possible values include: 'Unknown',
- * 'NotAllowed', 'Allowed', 'AllowedWithVideoConstriction'
- * @member {number} [uncompressedDigitalVideoOpl] Specifies the output
+ * @property {boolean} imageConstraintForAnalogComponentVideoRestriction
+ * Enables the Image Constraint For Analog Component Video Restriction in the
+ * license.
+ * @property {boolean} imageConstraintForAnalogComputerMonitorRestriction
+ * Enables the Image Constraint For Analog Component Video Restriction in the
+ * license.
+ * @property {string} allowPassingVideoContentToUnknownOutput Configures
+ * Unknown output handling settings of the license. Possible values include:
+ * 'Unknown', 'NotAllowed', 'Allowed', 'AllowedWithVideoConstriction'
+ * @property {number} [uncompressedDigitalVideoOpl] Specifies the output
  * protection level for uncompressed digital video.
- * @member {number} [compressedDigitalVideoOpl] Specifies the output protection
- * level for compressed digital video.
- * @member {number} [analogVideoOpl] Specifies the output protection level for
- * compressed digital audio.
- * @member {number} [compressedDigitalAudioOpl] Specifies the output protection
- * level for compressed digital audio.
- * @member {number} [uncompressedDigitalAudioOpl] Specifies the output
+ * @property {number} [compressedDigitalVideoOpl] Specifies the output
+ * protection level for compressed digital video.
+ * @property {number} [analogVideoOpl] Specifies the output protection level
+ * for compressed digital audio.
+ * @property {number} [compressedDigitalAudioOpl] Specifies the output
+ * protection level for compressed digital audio.
+ * @property {number} [uncompressedDigitalAudioOpl] Specifies the output
  * protection level for uncompressed digital audio.
  */
 export interface ContentKeyPolicyPlayReadyPlayRight {
@@ -689,8 +692,8 @@ export interface ContentKeyPolicyPlayReadyPlayRight {
  * @constructor
  * Represents a token claim.
  *
- * @member {string} [claimType] Token claim type.
- * @member {string} [claimValue] Token claim value.
+ * @property {string} [claimType] Token claim type.
+ * @property {string} [claimValue] Token claim value.
  */
 export interface ContentKeyPolicyTokenClaim {
   claimType?: string;
@@ -703,58 +706,59 @@ export interface ContentKeyPolicyTokenClaim {
  * @constructor
  * The PlayReady license
  *
- * @member {boolean} allowTestDevices A flag indicating whether test devices
+ * @property {boolean} allowTestDevices A flag indicating whether test devices
  * can use the license.
- * @member {date} [beginDate] The begin date of license
- * @member {date} [expirationDate] The expiration date of license.
- * @member {moment.duration} [relativeBeginDate] The relative begin date of
+ * @property {date} [beginDate] The begin date of license
+ * @property {date} [expirationDate] The expiration date of license.
+ * @property {moment.duration} [relativeBeginDate] The relative begin date of
  * license.
- * @member {moment.duration} [relativeExpirationDate] The relative expiration
+ * @property {moment.duration} [relativeExpirationDate] The relative expiration
  * date of license.
- * @member {moment.duration} [gracePeriod] The grace period of license.
- * @member {object} [playRight] The license PlayRight
- * @member {moment.duration} [playRight.firstPlayExpiration] The amount of time
- * that the license is valid after the license is first used to play content.
- * @member {number} [playRight.scmsRestriction] Configures the Serial Copy
+ * @property {moment.duration} [gracePeriod] The grace period of license.
+ * @property {object} [playRight] The license PlayRight
+ * @property {moment.duration} [playRight.firstPlayExpiration] The amount of
+ * time that the license is valid after the license is first used to play
+ * content.
+ * @property {number} [playRight.scmsRestriction] Configures the Serial Copy
  * Management System (SCMS) in the license. Must be between 0 and 3 inclusive.
- * @member {number} [playRight.agcAndColorStripeRestriction] Configures
+ * @property {number} [playRight.agcAndColorStripeRestriction] Configures
  * Automatic Gain Control (AGC) and Color Stripe in the license. Must be
  * between 0 and 3 inclusive.
- * @member {object} [playRight.explicitAnalogTelevisionOutputRestriction]
+ * @property {object} [playRight.explicitAnalogTelevisionOutputRestriction]
  * Configures the Explicit Analog Television Output Restriction in the license.
  * Configuration data must be between 0 and 3 inclusive.
- * @member {boolean}
+ * @property {boolean}
  * [playRight.explicitAnalogTelevisionOutputRestriction.bestEffort] Indicates
  * whether this restriction is enforced on a Best Effort basis.
- * @member {number}
+ * @property {number}
  * [playRight.explicitAnalogTelevisionOutputRestriction.configurationData]
  * Configures the restriction control bits. Must be between 0 and 3 inclusive.
- * @member {boolean} [playRight.digitalVideoOnlyContentRestriction] Enables the
- * Image Constraint For Analog Component Video Restriction in the license.
- * @member {boolean}
+ * @property {boolean} [playRight.digitalVideoOnlyContentRestriction] Enables
+ * the Image Constraint For Analog Component Video Restriction in the license.
+ * @property {boolean}
  * [playRight.imageConstraintForAnalogComponentVideoRestriction] Enables the
  * Image Constraint For Analog Component Video Restriction in the license.
- * @member {boolean}
+ * @property {boolean}
  * [playRight.imageConstraintForAnalogComputerMonitorRestriction] Enables the
  * Image Constraint For Analog Component Video Restriction in the license.
- * @member {string} [playRight.allowPassingVideoContentToUnknownOutput]
+ * @property {string} [playRight.allowPassingVideoContentToUnknownOutput]
  * Configures Unknown output handling settings of the license. Possible values
  * include: 'Unknown', 'NotAllowed', 'Allowed', 'AllowedWithVideoConstriction'
- * @member {number} [playRight.uncompressedDigitalVideoOpl] Specifies the
+ * @property {number} [playRight.uncompressedDigitalVideoOpl] Specifies the
  * output protection level for uncompressed digital video.
- * @member {number} [playRight.compressedDigitalVideoOpl] Specifies the output
- * protection level for compressed digital video.
- * @member {number} [playRight.analogVideoOpl] Specifies the output protection
- * level for compressed digital audio.
- * @member {number} [playRight.compressedDigitalAudioOpl] Specifies the output
+ * @property {number} [playRight.compressedDigitalVideoOpl] Specifies the
+ * output protection level for compressed digital video.
+ * @property {number} [playRight.analogVideoOpl] Specifies the output
  * protection level for compressed digital audio.
- * @member {number} [playRight.uncompressedDigitalAudioOpl] Specifies the
+ * @property {number} [playRight.compressedDigitalAudioOpl] Specifies the
+ * output protection level for compressed digital audio.
+ * @property {number} [playRight.uncompressedDigitalAudioOpl] Specifies the
  * output protection level for uncompressed digital audio.
- * @member {string} licenseType The license type. Possible values include:
+ * @property {string} licenseType The license type. Possible values include:
  * 'Unknown', 'NonPersistent', 'Persistent'
- * @member {object} contentKeyLocation The content key location.
- * @member {string} [contentKeyLocation.odatatype] Polymorphic Discriminator
- * @member {string} contentType The PlayReady content type. Possible values
+ * @property {object} contentKeyLocation The content key location.
+ * @property {string} [contentKeyLocation.odatatype] Polymorphic Discriminator
+ * @property {string} contentType The PlayReady content type. Possible values
  * include: 'Unknown', 'Unspecified', 'UltraVioletDownload',
  * 'UltraVioletStreaming'
  */
@@ -778,7 +782,7 @@ export interface ContentKeyPolicyPlayReadyLicense {
  * Base class for Content Key Policy restrictions. A derived class must be used
  * to create a restriction.
  *
- * @member {string} odatatype Polymorphic Discriminator
+ * @property {string} odatatype Polymorphic Discriminator
  */
 export interface ContentKeyPolicyRestriction {
   odatatype: string;
@@ -813,7 +817,7 @@ export interface ContentKeyPolicyUnknownRestriction extends ContentKeyPolicyRest
  * Base class for Content Key Policy configuration. A derived class must be
  * used to create a configuration.
  *
- * @member {string} odatatype Polymorphic Discriminator
+ * @property {string} odatatype Polymorphic Discriminator
  */
 export interface ContentKeyPolicyConfiguration {
   odatatype: string;
@@ -826,7 +830,7 @@ export interface ContentKeyPolicyConfiguration {
  * Base class for Content Key Policy key for token validation. A derived class
  * must be used to create a token key.
  *
- * @member {string} odatatype Polymorphic Discriminator
+ * @property {string} odatatype Polymorphic Discriminator
  */
 export interface ContentKeyPolicyRestrictionTokenKey {
   odatatype: string;
@@ -838,7 +842,7 @@ export interface ContentKeyPolicyRestrictionTokenKey {
  * @constructor
  * Specifies a symmetric key for token validation.
  *
- * @member {buffer} keyValue The key value of the key
+ * @property {buffer} keyValue The key value of the key
  */
 export interface ContentKeyPolicySymmetricTokenKey extends ContentKeyPolicyRestrictionTokenKey {
   keyValue: Buffer;
@@ -850,8 +854,8 @@ export interface ContentKeyPolicySymmetricTokenKey extends ContentKeyPolicyRestr
  * @constructor
  * Specifies a RSA key for token validation
  *
- * @member {buffer} exponent The RSA Parameter exponent
- * @member {buffer} modulus The RSA Parameter modulus
+ * @property {buffer} exponent The RSA Parameter exponent
+ * @property {buffer} modulus The RSA Parameter modulus
  */
 export interface ContentKeyPolicyRsaTokenKey extends ContentKeyPolicyRestrictionTokenKey {
   exponent: Buffer;
@@ -864,7 +868,7 @@ export interface ContentKeyPolicyRsaTokenKey extends ContentKeyPolicyRestriction
  * @constructor
  * Specifies a certificate for token validation.
  *
- * @member {buffer} rawBody The raw data field of a certificate in PKCS 12
+ * @property {buffer} rawBody The raw data field of a certificate in PKCS 12
  * format (X509Certificate2 in .NET)
  */
 export interface ContentKeyPolicyX509CertificateTokenKey extends ContentKeyPolicyRestrictionTokenKey {
@@ -878,17 +882,17 @@ export interface ContentKeyPolicyX509CertificateTokenKey extends ContentKeyPolic
  * Represents a token restriction. Provided token must match these requirements
  * for successful license or key delivery.
  *
- * @member {string} issuer The token issuer.
- * @member {string} audience The audience for the token.
- * @member {object} primaryVerificationKey The primary verification key.
- * @member {string} [primaryVerificationKey.odatatype] Polymorphic
+ * @property {string} issuer The token issuer.
+ * @property {string} audience The audience for the token.
+ * @property {object} primaryVerificationKey The primary verification key.
+ * @property {string} [primaryVerificationKey.odatatype] Polymorphic
  * Discriminator
- * @member {array} [alternateVerificationKeys] A list of alternative
+ * @property {array} [alternateVerificationKeys] A list of alternative
  * verification keys.
- * @member {array} [requiredClaims] A list of required token claims.
- * @member {string} restrictionTokenType The type of token. Possible values
+ * @property {array} [requiredClaims] A list of required token claims.
+ * @property {string} restrictionTokenType The type of token. Possible values
  * include: 'Unknown', 'Swt', 'Jwt'
- * @member {string} [openIdConnectDiscoveryDocument] The OpenID connect
+ * @property {string} [openIdConnectDiscoveryDocument] The OpenID connect
  * discovery document.
  */
 export interface ContentKeyPolicyTokenRestriction extends ContentKeyPolicyRestriction {
@@ -928,7 +932,7 @@ export interface ContentKeyPolicyUnknownConfiguration extends ContentKeyPolicyCo
  * @constructor
  * Specifies a configuration for Widevine licenses.
  *
- * @member {string} widevineTemplate The Widevine template.
+ * @property {string} widevineTemplate The Widevine template.
  */
 export interface ContentKeyPolicyWidevineConfiguration extends ContentKeyPolicyConfiguration {
   widevineTemplate: string;
@@ -940,8 +944,8 @@ export interface ContentKeyPolicyWidevineConfiguration extends ContentKeyPolicyC
  * @constructor
  * Specifies a configuration for PlayReady licenses.
  *
- * @member {array} licenses The PlayReady licenses.
- * @member {string} [responseCustomData] The custom response data.
+ * @property {array} licenses The PlayReady licenses.
+ * @property {string} [responseCustomData] The custom response data.
  */
 export interface ContentKeyPolicyPlayReadyConfiguration extends ContentKeyPolicyConfiguration {
   licenses: ContentKeyPolicyPlayReadyLicense[];
@@ -954,17 +958,17 @@ export interface ContentKeyPolicyPlayReadyConfiguration extends ContentKeyPolicy
  * @constructor
  * Specifies a configuration for FairPlay licenses.
  *
- * @member {buffer} ask The key that must be used as FairPlay Application
+ * @property {buffer} ask The key that must be used as FairPlay Application
  * Secret key.
- * @member {string} fairPlayPfxPassword The password encrypting FairPlay
+ * @property {string} fairPlayPfxPassword The password encrypting FairPlay
  * certificate in PKCS 12 (pfx) format.
- * @member {string} fairPlayPfx The Base64 representation of FairPlay
+ * @property {string} fairPlayPfx The Base64 representation of FairPlay
  * certificate in PKCS 12 (pfx) format (including private key).
- * @member {string} rentalAndLeaseKeyType The rental and lease key type.
+ * @property {string} rentalAndLeaseKeyType The rental and lease key type.
  * Possible values include: 'Unknown', 'Undefined', 'PersistentUnlimited',
  * 'PersistentLimited'
- * @member {number} rentalDuration The rental duration. Must be greater than or
- * equal to 0.
+ * @property {number} rentalDuration The rental duration. Must be greater than
+ * or equal to 0.
  */
 export interface ContentKeyPolicyFairPlayConfiguration extends ContentKeyPolicyConfiguration {
   ask: Buffer;
@@ -980,13 +984,13 @@ export interface ContentKeyPolicyFairPlayConfiguration extends ContentKeyPolicyC
  * @constructor
  * Represents a policy option.
  *
- * @member {uuid} [policyOptionId] The legacy Policy Option ID.
- * @member {string} [name] The Policy Option description.
- * @member {object} configuration The key delivery configuration.
- * @member {string} [configuration.odatatype] Polymorphic Discriminator
- * @member {object} restriction The requirements that must be met to deliver
+ * @property {uuid} [policyOptionId] The legacy Policy Option ID.
+ * @property {string} [name] The Policy Option description.
+ * @property {object} configuration The key delivery configuration.
+ * @property {string} [configuration.odatatype] Polymorphic Discriminator
+ * @property {object} restriction The requirements that must be met to deliver
  * keys with this configuration
- * @member {string} [restriction.odatatype] Polymorphic Discriminator
+ * @property {string} [restriction.odatatype] Polymorphic Discriminator
  */
 export interface ContentKeyPolicyOption {
   readonly policyOptionId?: string;
@@ -1001,11 +1005,11 @@ export interface ContentKeyPolicyOption {
  * @constructor
  * The properties of the Content Key Policy.
  *
- * @member {uuid} [policyId] The legacy Policy ID.
- * @member {date} [created] The creation date of the Policy
- * @member {date} [lastModified] The last modified date of the Policy
- * @member {string} [description] A description for the Policy.
- * @member {array} options The Key Policy options.
+ * @property {uuid} [policyId] The legacy Policy ID.
+ * @property {date} [created] The creation date of the Policy
+ * @property {date} [lastModified] The last modified date of the Policy
+ * @property {string} [description] A description for the Policy.
+ * @property {array} options The Key Policy options.
  */
 export interface ContentKeyPolicyProperties {
   readonly policyId?: string;
@@ -1021,11 +1025,11 @@ export interface ContentKeyPolicyProperties {
  * @constructor
  * A Content Key Policy resource.
  *
- * @member {uuid} [policyId] The legacy Policy ID.
- * @member {date} [created] The creation date of the Policy
- * @member {date} [lastModified] The last modified date of the Policy
- * @member {string} [description] A description for the Policy.
- * @member {array} options The Key Policy options.
+ * @property {uuid} [policyId] The legacy Policy ID.
+ * @property {date} [created] The creation date of the Policy
+ * @property {date} [lastModified] The last modified date of the Policy
+ * @property {string} [description] A description for the Policy.
+ * @property {array} options The Key Policy options.
  */
 export interface ContentKeyPolicy extends ProxyResource {
   readonly policyId?: string;
@@ -1042,7 +1046,7 @@ export interface ContentKeyPolicy extends ProxyResource {
  * Base type for all Presets, which define the recipe or instructions on how
  * the input media files should be processed.
  *
- * @member {string} odatatype Polymorphic Discriminator
+ * @property {string} odatatype Polymorphic Discriminator
  */
 export interface Preset {
   odatatype: string;
@@ -1054,9 +1058,9 @@ export interface Preset {
  * @constructor
  * Describes the basic properties of all codecs.
  *
- * @member {string} [label] An optional label for the codec. The label can be
+ * @property {string} [label] An optional label for the codec. The label can be
  * used to control muxing behavior.
- * @member {string} odatatype Polymorphic Discriminator
+ * @property {string} odatatype Polymorphic Discriminator
  */
 export interface Codec {
   label?: string;
@@ -1069,10 +1073,10 @@ export interface Codec {
  * @constructor
  * Defines the common properties for all audio codecs.
  *
- * @member {number} [channels] The number of channels in the audio.
- * @member {number} [samplingRate] The sampling rate to use for encoding in
+ * @property {number} [channels] The number of channels in the audio.
+ * @property {number} [samplingRate] The sampling rate to use for encoding in
  * hertz.
- * @member {number} [bitrate] The bitrate, in bits per second, of the output
+ * @property {number} [bitrate] The bitrate, in bits per second, of the output
  * encoded audio.
  */
 export interface Audio extends Codec {
@@ -1087,7 +1091,7 @@ export interface Audio extends Codec {
  * @constructor
  * Describes Advanced Audio Codec (AAC) audio encoding settings.
  *
- * @member {string} [profile] The encoding profile to be used when encoding
+ * @property {string} [profile] The encoding profile to be used when encoding
  * audio with AAC. Possible values include: 'AacLc', 'HeAacV1', 'HeAacV2'
  */
 export interface AacAudio extends Audio {
@@ -1102,7 +1106,7 @@ export interface AacAudio extends Audio {
  * operations, including speech transcription. Currently, the preset supports
  * processing of content with a single audio track.
  *
- * @member {string} [audioLanguage] The language for the audio payload in the
+ * @property {string} [audioLanguage] The language for the audio payload in the
  * input using the BCP-47 format of 'language tag-region' (e.g: 'en-US'). The
  * list of supported languages are, 'en-US', 'en-GB', 'es-ES', 'es-MX',
  * 'fr-FR', 'it-IT', 'ja-JP', 'pt-BR', 'zh-CN', 'de-DE', 'ar-EG', 'ru-RU',
@@ -1123,33 +1127,33 @@ export interface AudioAnalyzerPreset extends Preset {
  * @constructor
  * Base type for all overlays - image, audio or video.
  *
- * @member {string} [inputLabel] The label of the job input which is to be used
- * as an overlay. The Input must specify exactly one file. You can specify an
- * image file in JPG or PNG formats, or an audio file (such as a WAV, MP3, WMA
- * or M4A file), or a video file. See https://aka.ms/mesformats for the
+ * @property {string} [inputLabel] The label of the job input which is to be
+ * used as an overlay. The Input must specify exactly one file. You can specify
+ * an image file in JPG or PNG formats, or an audio file (such as a WAV, MP3,
+ * WMA or M4A file), or a video file. See https://aka.ms/mesformats for the
  * complete list of supported audio and video file formats.
- * @member {moment.duration} [start] The start position, with reference to the
- * input video, at which the overlay starts. The value should be in ISO 8601
- * format. For example, PT05S to start the overlay at 5 seconds in to the input
- * video. If not specified the overlay starts from the beginning of the input
- * video.
- * @member {moment.duration} [end] The position in the input video at which the
- * overlay ends. The value should be in ISO 8601 duration format. For example,
- * PT30S to end the overlay at 30 seconds in to the input video. If not
- * specified the overlay will be applied until the end of the input video if
- * inputLoop is true. Else, if inputLoop is false, then overlay will last as
+ * @property {moment.duration} [start] The start position, with reference to
+ * the input video, at which the overlay starts. The value should be in ISO
+ * 8601 format. For example, PT05S to start the overlay at 5 seconds in to the
+ * input video. If not specified the overlay starts from the beginning of the
+ * input video.
+ * @property {moment.duration} [end] The position in the input video at which
+ * the overlay ends. The value should be in ISO 8601 duration format. For
+ * example, PT30S to end the overlay at 30 seconds in to the input video. If
+ * not specified the overlay will be applied until the end of the input video
+ * if inputLoop is true. Else, if inputLoop is false, then overlay will last as
  * long as the duration of the overlay media.
- * @member {moment.duration} [fadeInDuration] The duration over which the
+ * @property {moment.duration} [fadeInDuration] The duration over which the
  * overlay fades in onto the input video. The value should be in ISO 8601
  * duration format. If not specified the default behavior is to have no fade in
  * (same as PT0S).
- * @member {moment.duration} [fadeOutDuration] The duration over which the
+ * @property {moment.duration} [fadeOutDuration] The duration over which the
  * overlay fades out of the input video. The value should be in ISO 8601
  * duration format. If not specified the default behavior is to have no fade
  * out (same as PT0S).
- * @member {number} [audioGainLevel] The gain level of audio in the overlay.
+ * @property {number} [audioGainLevel] The gain level of audio in the overlay.
  * The value should be in the range [0, 1.0]. The default is 1.0.
- * @member {string} odatatype Polymorphic Discriminator
+ * @property {string} odatatype Polymorphic Discriminator
  */
 export interface Overlay {
   inputLabel?: string;
@@ -1188,13 +1192,13 @@ export interface CopyVideo extends Codec {
  * @constructor
  * Describes the basic properties for encoding the input video.
  *
- * @member {moment.duration} [keyFrameInterval] The distance between two key
+ * @property {moment.duration} [keyFrameInterval] The distance between two key
  * frames, thereby defining a group of pictures (GOP). The value should be a
  * non-zero integer in the range [1, 30] seconds, specified in ISO 8601 format.
  * The default is 2 seconds (PT2S).
- * @member {string} [stretchMode] The resizing mode - how the input video will
- * be resized to fit the desired output resolution(s). Default is AutoSize.
- * Possible values include: 'None', 'AutoSize', 'AutoFit'
+ * @property {string} [stretchMode] The resizing mode - how the input video
+ * will be resized to fit the desired output resolution(s). Default is
+ * AutoSize. Possible values include: 'None', 'AutoSize', 'AutoFit'
  */
 export interface Video extends Codec {
   keyFrameInterval?: moment.Duration;
@@ -1208,17 +1212,17 @@ export interface Video extends Codec {
  * Describes the basic properties for generating thumbnails from the input
  * video
  *
- * @member {string} [start] The position in the input video from where to start
- * generating thumbnails. The value can be in absolute timestamp (ISO 8601,
- * e.g: PT05S), or a frame count (For example, 10 for the 10th frame), or a
- * relative value (For example, 1%). Also supports a macro {Best}, which tells
- * the encoder to select the best thumbnail from the first few seconds of the
- * video.
- * @member {string} [step] The intervals at which thumbnails are generated. The
- * value can be in absolute timestamp (ISO 8601, e.g: PT05S for one image every
- * 5 seconds), or a frame count (For example, 30 for every 30 frames), or a
- * relative value (For example, 1%).
- * @member {string} [range] The position in the input video at which to stop
+ * @property {string} [start] The position in the input video from where to
+ * start generating thumbnails. The value can be in absolute timestamp (ISO
+ * 8601, e.g: PT05S), or a frame count (For example, 10 for the 10th frame), or
+ * a relative value (For example, 1%). Also supports a macro {Best}, which
+ * tells the encoder to select the best thumbnail from the first few seconds of
+ * the video.
+ * @property {string} [step] The intervals at which thumbnails are generated.
+ * The value can be in absolute timestamp (ISO 8601, e.g: PT05S for one image
+ * every 5 seconds), or a frame count (For example, 30 for every 30 frames), or
+ * a relative value (For example, 1%).
+ * @property {string} [range] The position in the input video at which to stop
  * generating thumbnails. The value can be in absolute timestamp (ISO 8601,
  * e.g: PT5M30S to stop at 5 minutes and 30 seconds), or a frame count (For
  * example, 300 to stop at the 300th frame), or a relative value (For example,
@@ -1236,7 +1240,7 @@ export interface Image extends Video {
  * @constructor
  * Base class for output.
  *
- * @member {string} [filenamePattern] The pattern of the file names for the
+ * @property {string} [filenamePattern] The pattern of the file names for the
  * generated output files. The following macros are supported in the file name:
  * {Basename} - The base name of the input video {Extension} - The appropriate
  * extension for this format. {Label} - The label assigned to the codec/layer.
@@ -1244,7 +1248,7 @@ export interface Image extends Video {
  * {Bitrate} - The audio/video bitrate. Not applicable to thumbnails. {Codec} -
  * The type of the audio/video codec. Any unsubstituted macros will be
  * collapsed and removed from the filename.
- * @member {string} odatatype Polymorphic Discriminator
+ * @property {string} odatatype Polymorphic Discriminator
  */
 export interface Format {
   filenamePattern?: string;
@@ -1297,9 +1301,9 @@ export interface CopyAudio extends Codec {
  * @constructor
  * Describes the de-interlacing settings.
  *
- * @member {string} [parity] The field parity for de-interlacing, defaults to
+ * @property {string} [parity] The field parity for de-interlacing, defaults to
  * Auto. Possible values include: 'Auto', 'TopFieldFirst', 'BottomFieldFirst'
- * @member {string} [mode] The deinterlacing mode. Defaults to
+ * @property {string} [mode] The deinterlacing mode. Defaults to
  * AutoPixelAdaptive. Possible values include: 'Off', 'AutoPixelAdaptive'
  */
 export interface Deinterlace {
@@ -1314,16 +1318,16 @@ export interface Deinterlace {
  * Describes the properties of a rectangular window applied to the input media
  * before processing it.
  *
- * @member {string} [left] The number of pixels from the left-margin. This can
- * be absolute pixel value (e.g 100), or relative to the size of the video (For
- * example, 50%).
- * @member {string} [top] The number of pixels from the top-margin. This can be
- * absolute pixel value (e.g 100), or relative to the size of the video (For
- * example, 50%).
- * @member {string} [width] The width of the rectangular region in pixels. This
+ * @property {string} [left] The number of pixels from the left-margin. This
  * can be absolute pixel value (e.g 100), or relative to the size of the video
  * (For example, 50%).
- * @member {string} [height] The height of the rectangular region in pixels.
+ * @property {string} [top] The number of pixels from the top-margin. This can
+ * be absolute pixel value (e.g 100), or relative to the size of the video (For
+ * example, 50%).
+ * @property {string} [width] The width of the rectangular region in pixels.
+ * This can be absolute pixel value (e.g 100), or relative to the size of the
+ * video (For example, 50%).
+ * @property {string} [height] The height of the rectangular region in pixels.
  * This can be absolute pixel value (e.g 100), or relative to the size of the
  * video (For example, 50%).
  */
@@ -1341,30 +1345,30 @@ export interface Rectangle {
  * Describes all the filtering operations, such as de-interlacing, rotation
  * etc. that are to be applied to the input media before encoding.
  *
- * @member {object} [deinterlace] The de-interlacing settings.
- * @member {string} [deinterlace.parity] The field parity for de-interlacing,
+ * @property {object} [deinterlace] The de-interlacing settings.
+ * @property {string} [deinterlace.parity] The field parity for de-interlacing,
  * defaults to Auto. Possible values include: 'Auto', 'TopFieldFirst',
  * 'BottomFieldFirst'
- * @member {string} [deinterlace.mode] The deinterlacing mode. Defaults to
+ * @property {string} [deinterlace.mode] The deinterlacing mode. Defaults to
  * AutoPixelAdaptive. Possible values include: 'Off', 'AutoPixelAdaptive'
- * @member {string} [rotation] The rotation, if any, to be applied to the input
- * video, before it is encoded. Default is Auto. Possible values include:
+ * @property {string} [rotation] The rotation, if any, to be applied to the
+ * input video, before it is encoded. Default is Auto. Possible values include:
  * 'Auto', 'None', 'Rotate0', 'Rotate90', 'Rotate180', 'Rotate270'
- * @member {object} [crop] The parameters for the rectangular window with which
- * to crop the input video.
- * @member {string} [crop.left] The number of pixels from the left-margin. This
- * can be absolute pixel value (e.g 100), or relative to the size of the video
- * (For example, 50%).
- * @member {string} [crop.top] The number of pixels from the top-margin. This
- * can be absolute pixel value (e.g 100), or relative to the size of the video
- * (For example, 50%).
- * @member {string} [crop.width] The width of the rectangular region in pixels.
+ * @property {object} [crop] The parameters for the rectangular window with
+ * which to crop the input video.
+ * @property {string} [crop.left] The number of pixels from the left-margin.
  * This can be absolute pixel value (e.g 100), or relative to the size of the
  * video (For example, 50%).
- * @member {string} [crop.height] The height of the rectangular region in
+ * @property {string} [crop.top] The number of pixels from the top-margin. This
+ * can be absolute pixel value (e.g 100), or relative to the size of the video
+ * (For example, 50%).
+ * @property {string} [crop.width] The width of the rectangular region in
  * pixels. This can be absolute pixel value (e.g 100), or relative to the size
  * of the video (For example, 50%).
- * @member {array} [overlays] The properties of overlays to be applied to the
+ * @property {string} [crop.height] The height of the rectangular region in
+ * pixels. This can be absolute pixel value (e.g 100), or relative to the size
+ * of the video (For example, 50%).
+ * @property {array} [overlays] The properties of overlays to be applied to the
  * input video. These could be audio, image or video overlays.
  */
 export interface Filters {
@@ -1382,16 +1386,17 @@ export interface Filters {
  * different resolutions, by specifying a layer for each desired resolution. A
  * layer represents the properties for the video or image at a resolution.
  *
- * @member {string} [width] The width of the output video for this layer. The
+ * @property {string} [width] The width of the output video for this layer. The
  * value can be absolute (in pixels) or relative (in percentage). For example
  * 50% means the output video has half as many pixels in width as the input.
- * @member {string} [height] The height of the output video for this layer. The
- * value can be absolute (in pixels) or relative (in percentage). For example
- * 50% means the output video has half as many pixels in height as the input.
- * @member {string} [label] The alphanumeric label for this layer, which can be
- * used in multiplexing different video and audio layers, or in naming the
+ * @property {string} [height] The height of the output video for this layer.
+ * The value can be absolute (in pixels) or relative (in percentage). For
+ * example 50% means the output video has half as many pixels in height as the
+ * input.
+ * @property {string} [label] The alphanumeric label for this layer, which can
+ * be used in multiplexing different video and audio layers, or in naming the
  * output file.
- * @member {string} odatatype Polymorphic Discriminator
+ * @property {string} odatatype Polymorphic Discriminator
  */
 export interface Layer {
   width?: string;
@@ -1407,25 +1412,25 @@ export interface Layer {
  * Describes the settings to be used when encoding the input video into a
  * desired output bitrate layer.
  *
- * @member {number} [bitrate] The average bitrate in bits per second at which
+ * @property {number} [bitrate] The average bitrate in bits per second at which
  * to encode the input video when generating this layer. This is a required
  * field.
- * @member {number} [maxBitrate] The maximum bitrate (in bits per second), at
+ * @property {number} [maxBitrate] The maximum bitrate (in bits per second), at
  * which the VBV buffer should be assumed to refill. If not specified, defaults
  * to the same value as bitrate.
- * @member {number} [bFrames] The number of B-frames to be used when encoding
+ * @property {number} [bFrames] The number of B-frames to be used when encoding
  * this layer.  If not specified, the encoder chooses an appropriate number
  * based on the video profile and level.
- * @member {string} [frameRate] The frame rate (in frames per second) at which
- * to encode this layer. The value can be in the form of M/N where M and N are
- * integers (For example, 30000/1001), or in the form of a number (For example,
- * 30, or 29.97). The encoder enforces constraints on allowed frame rates based
- * on the profile and level. If it is not specified, the encoder will use the
- * same frame rate as the input video.
- * @member {number} [slices] The number of slices to be used when encoding this
- * layer. If not specified, default is zero, which means that encoder will use
- * a single slice for each frame.
- * @member {boolean} [adaptiveBFrame] Whether or not adaptive B-frames are to
+ * @property {string} [frameRate] The frame rate (in frames per second) at
+ * which to encode this layer. The value can be in the form of M/N where M and
+ * N are integers (For example, 30000/1001), or in the form of a number (For
+ * example, 30, or 29.97). The encoder enforces constraints on allowed frame
+ * rates based on the profile and level. If it is not specified, the encoder
+ * will use the same frame rate as the input video.
+ * @property {number} [slices] The number of slices to be used when encoding
+ * this layer. If not specified, default is zero, which means that encoder will
+ * use a single slice for each frame.
+ * @property {boolean} [adaptiveBFrame] Whether or not adaptive B-frames are to
  * be used when encoding this layer. If not specified, the encoder will turn it
  * on whenever the video profile permits its use.
  */
@@ -1445,20 +1450,20 @@ export interface VideoLayer extends Layer {
  * Describes the settings to be used when encoding the input video into a
  * desired output bitrate layer with the H.264 video codec.
  *
- * @member {string} [profile] Which profile of the H.264 standard should be
+ * @property {string} [profile] Which profile of the H.264 standard should be
  * used when encoding this layer. Default is Auto. Possible values include:
  * 'Auto', 'Baseline', 'Main', 'High', 'High422', 'High444'
- * @member {string} [level] Which level of the H.264 standard should be used
+ * @property {string} [level] Which level of the H.264 standard should be used
  * when encoding this layer. The value can be Auto, or a number that matches
  * the H.264 profile. If not specified, the default is Auto, which lets the
  * encoder choose the Level that is appropriate for this layer.
- * @member {moment.duration} [bufferWindow] The VBV buffer window length. The
+ * @property {moment.duration} [bufferWindow] The VBV buffer window length. The
  * value should be in ISO 8601 format. The value should be in the range
  * [0.1-100] seconds. The default is 5 seconds (for example, PT5S).
- * @member {number} [referenceFrames] The number of reference frames to be used
- * when encoding this layer. If not specified, the encoder determines an
+ * @property {number} [referenceFrames] The number of reference frames to be
+ * used when encoding this layer. If not specified, the encoder determines an
  * appropriate number based on the encoder complexity setting.
- * @member {string} [entropyMode] The entropy mode to be used for this layer.
+ * @property {string} [entropyMode] The entropy mode to be used for this layer.
  * If not specified, the encoder chooses the mode that is appropriate for the
  * profile and level. Possible values include: 'Cabac', 'Cavlc'
  */
@@ -1476,14 +1481,14 @@ export interface H264Layer extends VideoLayer {
  * @constructor
  * Describes all the properties for encoding a video with the H.264 codec.
  *
- * @member {boolean} [sceneChangeDetection] Whether or not the encoder should
+ * @property {boolean} [sceneChangeDetection] Whether or not the encoder should
  * insert key frames at scene changes. If not specified, the default is false.
  * This flag should be set to true only when the encoder is being configured to
  * produce a single output video.
- * @member {string} [complexity] Tells the encoder how to choose its encoding
+ * @property {string} [complexity] Tells the encoder how to choose its encoding
  * settings. The default value is Balanced. Possible values include: 'Speed',
  * 'Balanced', 'Quality'
- * @member {array} [layers] The collection of output H.264 layers to be
+ * @property {array} [layers] The collection of output H.264 layers to be
  * produced by the encoder.
  */
 export interface H264Video extends Video {
@@ -1498,8 +1503,8 @@ export interface H264Video extends Video {
  * @constructor
  * Describes the settings to produce a JPEG image from the input video.
  *
- * @member {number} [quality] The compression quality of the JPEG output. Range
- * is from 0-100 and the default is 70.
+ * @property {number} [quality] The compression quality of the JPEG output.
+ * Range is from 0-100 and the default is 70.
  */
 export interface JpgLayer extends Layer {
   quality?: number;
@@ -1512,7 +1517,7 @@ export interface JpgLayer extends Layer {
  * Describes the properties for producing a series of JPEG images from the
  * input video.
  *
- * @member {array} [layers] A collection of output JPEG image layers to be
+ * @property {array} [layers] A collection of output JPEG image layers to be
  * produced by the encoder.
  */
 export interface JpgImage extends Image {
@@ -1525,7 +1530,7 @@ export interface JpgImage extends Image {
  * @constructor
  * Represents an output file produced.
  *
- * @member {array} [labels] The list of labels that describe how the encoder
+ * @property {array} [labels] The list of labels that describe how the encoder
  * should multiplex video and audio into an output file. For example, if the
  * encoder is producing two video layers with labels v1 and v2, and one audio
  * layer with label a1, then an array like '[v1, a1]' tells the encoder to
@@ -1546,7 +1551,7 @@ export interface OutputFile {
  * output files produced can be controlled by specifying the outputFiles
  * collection.
  *
- * @member {array} [outputFiles] The list of output files to produce.  Each
+ * @property {array} [outputFiles] The list of output files to produce.  Each
  * entry in the list is a set of audio and video layer labels to be muxed
  * together .
  */
@@ -1581,7 +1586,7 @@ export interface PngLayer extends Layer {
  * Describes the properties for producing a series of PNG images from the input
  * video.
  *
- * @member {array} [layers] A collection of output PNG image layers to be
+ * @property {array} [layers] A collection of output PNG image layers to be
  * produced by the encoder.
  */
 export interface PngImage extends Image {
@@ -1595,7 +1600,7 @@ export interface PngImage extends Image {
  * Describes a built-in preset for encoding the input video with the Standard
  * Encoder.
  *
- * @member {string} presetName The built-in preset to be used for encoding
+ * @property {string} presetName The built-in preset to be used for encoding
  * videos. Possible values include: 'H264SingleBitrateSD',
  * 'H264SingleBitrate720p', 'H264SingleBitrate1080p', 'AdaptiveStreaming',
  * 'AACGoodQualityAudio', 'H264MultipleBitrate1080p',
@@ -1612,36 +1617,38 @@ export interface BuiltInStandardEncoderPreset extends Preset {
  * Describes all the settings to be used when encoding the input video with the
  * Standard Encoder.
  *
- * @member {object} [filters] One or more filtering operations that are applied
- * to the input media before encoding.
- * @member {object} [filters.deinterlace] The de-interlacing settings.
- * @member {string} [filters.deinterlace.parity] The field parity for
+ * @property {object} [filters] One or more filtering operations that are
+ * applied to the input media before encoding.
+ * @property {object} [filters.deinterlace] The de-interlacing settings.
+ * @property {string} [filters.deinterlace.parity] The field parity for
  * de-interlacing, defaults to Auto. Possible values include: 'Auto',
  * 'TopFieldFirst', 'BottomFieldFirst'
- * @member {string} [filters.deinterlace.mode] The deinterlacing mode. Defaults
- * to AutoPixelAdaptive. Possible values include: 'Off', 'AutoPixelAdaptive'
- * @member {string} [filters.rotation] The rotation, if any, to be applied to
+ * @property {string} [filters.deinterlace.mode] The deinterlacing mode.
+ * Defaults to AutoPixelAdaptive. Possible values include: 'Off',
+ * 'AutoPixelAdaptive'
+ * @property {string} [filters.rotation] The rotation, if any, to be applied to
  * the input video, before it is encoded. Default is Auto. Possible values
  * include: 'Auto', 'None', 'Rotate0', 'Rotate90', 'Rotate180', 'Rotate270'
- * @member {object} [filters.crop] The parameters for the rectangular window
+ * @property {object} [filters.crop] The parameters for the rectangular window
  * with which to crop the input video.
- * @member {string} [filters.crop.left] The number of pixels from the
+ * @property {string} [filters.crop.left] The number of pixels from the
  * left-margin. This can be absolute pixel value (e.g 100), or relative to the
  * size of the video (For example, 50%).
- * @member {string} [filters.crop.top] The number of pixels from the
+ * @property {string} [filters.crop.top] The number of pixels from the
  * top-margin. This can be absolute pixel value (e.g 100), or relative to the
  * size of the video (For example, 50%).
- * @member {string} [filters.crop.width] The width of the rectangular region in
- * pixels. This can be absolute pixel value (e.g 100), or relative to the size
- * of the video (For example, 50%).
- * @member {string} [filters.crop.height] The height of the rectangular region
+ * @property {string} [filters.crop.width] The width of the rectangular region
  * in pixels. This can be absolute pixel value (e.g 100), or relative to the
  * size of the video (For example, 50%).
- * @member {array} [filters.overlays] The properties of overlays to be applied
- * to the input video. These could be audio, image or video overlays.
- * @member {array} [codecs] The list of codecs to be used when encoding the
+ * @property {string} [filters.crop.height] The height of the rectangular
+ * region in pixels. This can be absolute pixel value (e.g 100), or relative to
+ * the size of the video (For example, 50%).
+ * @property {array} [filters.overlays] The properties of overlays to be
+ * applied to the input video. These could be audio, image or video overlays.
+ * @property {array} [codecs] The list of codecs to be used when encoding the
  * input video.
- * @member {array} [formats] The list of outputs to be produced by the encoder.
+ * @property {array} [formats] The list of outputs to be produced by the
+ * encoder.
  */
 export interface StandardEncoderPreset extends Preset {
   filters?: Filters;
@@ -1656,7 +1663,7 @@ export interface StandardEncoderPreset extends Preset {
  * A video analyzer preset that extracts insights (rich metadata) from both
  * audio and video, and outputs a JSON format file.
  *
- * @member {string} [insightsToExtract] The type of insights to be extracted.
+ * @property {string} [insightsToExtract] The type of insights to be extracted.
  * If not set then based on the content the type will selected.  If the content
  * is audi only then only audio insights are extraced and if it is video only.
  * Possible values include: 'AudioInsightsOnly', 'VideoInsightsOnly',
@@ -1683,36 +1690,36 @@ export interface TransportStreamFormat extends MultiBitrateFormat {
  * @constructor
  * Describes the properties of a video overlay.
  *
- * @member {object} [position] The location in the input video where the
+ * @property {object} [position] The location in the input video where the
  * overlay is applied.
- * @member {string} [position.left] The number of pixels from the left-margin.
- * This can be absolute pixel value (e.g 100), or relative to the size of the
- * video (For example, 50%).
- * @member {string} [position.top] The number of pixels from the top-margin.
- * This can be absolute pixel value (e.g 100), or relative to the size of the
- * video (For example, 50%).
- * @member {string} [position.width] The width of the rectangular region in
- * pixels. This can be absolute pixel value (e.g 100), or relative to the size
- * of the video (For example, 50%).
- * @member {string} [position.height] The height of the rectangular region in
- * pixels. This can be absolute pixel value (e.g 100), or relative to the size
- * of the video (For example, 50%).
- * @member {number} [opacity] The opacity of the overlay. This is a value in
- * the range [0 - 1.0]. Default is 1.0 which mean the overlay is opaque.
- * @member {object} [cropRectangle] An optional rectangular window used to crop
- * the overlay image or video.
- * @member {string} [cropRectangle.left] The number of pixels from the
+ * @property {string} [position.left] The number of pixels from the
  * left-margin. This can be absolute pixel value (e.g 100), or relative to the
  * size of the video (For example, 50%).
- * @member {string} [cropRectangle.top] The number of pixels from the
+ * @property {string} [position.top] The number of pixels from the top-margin.
+ * This can be absolute pixel value (e.g 100), or relative to the size of the
+ * video (For example, 50%).
+ * @property {string} [position.width] The width of the rectangular region in
+ * pixels. This can be absolute pixel value (e.g 100), or relative to the size
+ * of the video (For example, 50%).
+ * @property {string} [position.height] The height of the rectangular region in
+ * pixels. This can be absolute pixel value (e.g 100), or relative to the size
+ * of the video (For example, 50%).
+ * @property {number} [opacity] The opacity of the overlay. This is a value in
+ * the range [0 - 1.0]. Default is 1.0 which mean the overlay is opaque.
+ * @property {object} [cropRectangle] An optional rectangular window used to
+ * crop the overlay image or video.
+ * @property {string} [cropRectangle.left] The number of pixels from the
+ * left-margin. This can be absolute pixel value (e.g 100), or relative to the
+ * size of the video (For example, 50%).
+ * @property {string} [cropRectangle.top] The number of pixels from the
  * top-margin. This can be absolute pixel value (e.g 100), or relative to the
  * size of the video (For example, 50%).
- * @member {string} [cropRectangle.width] The width of the rectangular region
+ * @property {string} [cropRectangle.width] The width of the rectangular region
  * in pixels. This can be absolute pixel value (e.g 100), or relative to the
  * size of the video (For example, 50%).
- * @member {string} [cropRectangle.height] The height of the rectangular region
- * in pixels. This can be absolute pixel value (e.g 100), or relative to the
- * size of the video (For example, 50%).
+ * @property {string} [cropRectangle.height] The height of the rectangular
+ * region in pixels. This can be absolute pixel value (e.g 100), or relative to
+ * the size of the video (For example, 50%).
  */
 export interface VideoOverlay extends Overlay {
   position?: Rectangle;
@@ -1727,20 +1734,20 @@ export interface VideoOverlay extends Overlay {
  * Describes the properties of a TransformOutput, which are the rules to be
  * applied while generating the desired output.
  *
- * @member {string} [onError] A Transform can define more than one outputs.
+ * @property {string} [onError] A Transform can define more than one outputs.
  * This property defines what the service should do when one output fails -
  * either continue to produce other outputs, or, stop the other outputs. The
  * overall Job state will not reflect failures of outputs that are specified
  * with 'ContinueJob'. The default is 'StopProcessingJob'. Possible values
  * include: 'StopProcessingJob', 'ContinueJob'
- * @member {string} [relativePriority] Sets the relative priority of the
+ * @property {string} [relativePriority] Sets the relative priority of the
  * TransformOutputs within a Transform. This sets the priority that the service
  * uses for processing TransformOutputs. The default priority is Normal.
  * Possible values include: 'Low', 'Normal', 'High'
- * @member {object} preset Preset that describes the operations that will be
+ * @property {object} preset Preset that describes the operations that will be
  * used to modify, transcode, or extract insights from the source file to
  * generate the output.
- * @member {string} [preset.odatatype] Polymorphic Discriminator
+ * @property {string} [preset.odatatype] Polymorphic Discriminator
  */
 export interface TransformOutput {
   onError?: string;
@@ -1757,13 +1764,13 @@ export interface TransformOutput {
  * After the Transform is created, it can be applied to input media by creating
  * Jobs.
  *
- * @member {date} [created] The UTC date and time when the Transform was
+ * @property {date} [created] The UTC date and time when the Transform was
  * created, in 'YYYY-MM-DDThh:mm:ssZ' format.
- * @member {string} [description] An optional verbose description of the
+ * @property {string} [description] An optional verbose description of the
  * Transform.
- * @member {date} [lastModified] The UTC date and time when the Transform was
+ * @property {date} [lastModified] The UTC date and time when the Transform was
  * last updated, in 'YYYY-MM-DDThh:mm:ssZ' format.
- * @member {array} outputs An array of one or more TransformOutputs that the
+ * @property {array} outputs An array of one or more TransformOutputs that the
  * Transform should generate.
  */
 export interface Transform extends ProxyResource {
@@ -1779,7 +1786,7 @@ export interface Transform extends ProxyResource {
  * @constructor
  * Base class for inputs to a Job.
  *
- * @member {string} odatatype Polymorphic Discriminator
+ * @property {string} odatatype Polymorphic Discriminator
  */
 export interface JobInput {
   odatatype: string;
@@ -1791,13 +1798,13 @@ export interface JobInput {
  * @constructor
  * Represents input files for a Job.
  *
- * @member {array} [files] List of files. Required for JobInputHttp.
- * @member {string} [label] A label that is assigned to a JobInputClip, that is
- * used to satisfy a reference used in the Transform. For example, a Transform
- * can be authored so as to take an image file with the label 'xyz' and apply
- * it as an overlay onto the input video before it is encoded. When submitting
- * a Job, exactly one of the JobInputs should be the image file, and it should
- * have the label 'xyz'.
+ * @property {array} [files] List of files. Required for JobInputHttp.
+ * @property {string} [label] A label that is assigned to a JobInputClip, that
+ * is used to satisfy a reference used in the Transform. For example, a
+ * Transform can be authored so as to take an image file with the label 'xyz'
+ * and apply it as an overlay onto the input video before it is encoded. When
+ * submitting a Job, exactly one of the JobInputs should be the image file, and
+ * it should have the label 'xyz'.
  */
 export interface JobInputClip extends JobInput {
   files?: string[];
@@ -1810,7 +1817,7 @@ export interface JobInputClip extends JobInput {
  * @constructor
  * Describes a list of of inputs to a Job.
  *
- * @member {array} [inputs] List of inputs to a Job.
+ * @property {array} [inputs] List of inputs to a Job.
  */
 export interface JobInputs extends JobInput {
   inputs?: JobInput[];
@@ -1822,7 +1829,7 @@ export interface JobInputs extends JobInput {
  * @constructor
  * Represents an Asset for input into a Job.
  *
- * @member {string} assetName The name of the input Asset.
+ * @property {string} assetName The name of the input Asset.
  */
 export interface JobInputAsset extends JobInputClip {
   assetName: string;
@@ -1834,7 +1841,7 @@ export interface JobInputAsset extends JobInputClip {
  * @constructor
  * Represents HTTPS job input.
  *
- * @member {string} [baseUri] Base URI for HTTPS job input. It will be
+ * @property {string} [baseUri] Base URI for HTTPS job input. It will be
  * concatenated with provided file names.   If no base uri is given, then the
  * provided file list is assumed to be fully qualified uris.
  */
@@ -1848,8 +1855,8 @@ export interface JobInputHttp extends JobInputClip {
  * @constructor
  * Details of JobOutput errors.
  *
- * @member {string} [code] Code describing the error detail.
- * @member {string} [message] A human-readable representation of the error.
+ * @property {string} [code] Code describing the error detail.
+ * @property {string} [message] A human-readable representation of the error.
  */
 export interface JobErrorDetail {
   readonly code?: string;
@@ -1862,19 +1869,19 @@ export interface JobErrorDetail {
  * @constructor
  * Details of JobOutput errors.
  *
- * @member {string} [code] Error code describing the error. Possible values
+ * @property {string} [code] Error code describing the error. Possible values
  * include: 'ServiceError', 'ServiceTransientError', 'DownloadNotAccessible',
  * 'DownloadTransientError', 'UploadNotAccessible', 'UploadTransientError',
  * 'ConfigurationUnsupported', 'ContentMalformed', 'ContentUnsupported'
- * @member {string} [message] A human-readable language-dependent
+ * @property {string} [message] A human-readable language-dependent
  * representation of the error.
- * @member {string} [category] Helps with categorization of errors. Possible
+ * @property {string} [category] Helps with categorization of errors. Possible
  * values include: 'Service', 'Download', 'Upload', 'Configuration', 'Content'
- * @member {string} [retry] Indicates that it may be possible to retry the Job.
- * If retry is unsuccessful, please contact Azure support via Azure Portal.
- * Possible values include: 'DoNotRetry', 'MayRetry'
- * @member {array} [details] An array of details about specific errors that led
- * to this reported error.
+ * @property {string} [retry] Indicates that it may be possible to retry the
+ * Job. If retry is unsuccessful, please contact Azure support via Azure
+ * Portal. Possible values include: 'DoNotRetry', 'MayRetry'
+ * @property {array} [details] An array of details about specific errors that
+ * led to this reported error.
  */
 export interface JobError {
   readonly code?: string;
@@ -1890,35 +1897,35 @@ export interface JobError {
  * @constructor
  * Describes all the properties of a JobOutput.
  *
- * @member {object} [error] If the JobOutput is in the Error state, it contains
- * the details of the error.
- * @member {string} [error.code] Error code describing the error. Possible
+ * @property {object} [error] If the JobOutput is in the Error state, it
+ * contains the details of the error.
+ * @property {string} [error.code] Error code describing the error. Possible
  * values include: 'ServiceError', 'ServiceTransientError',
  * 'DownloadNotAccessible', 'DownloadTransientError', 'UploadNotAccessible',
  * 'UploadTransientError', 'ConfigurationUnsupported', 'ContentMalformed',
  * 'ContentUnsupported'
- * @member {string} [error.message] A human-readable language-dependent
+ * @property {string} [error.message] A human-readable language-dependent
  * representation of the error.
- * @member {string} [error.category] Helps with categorization of errors.
+ * @property {string} [error.category] Helps with categorization of errors.
  * Possible values include: 'Service', 'Download', 'Upload', 'Configuration',
  * 'Content'
- * @member {string} [error.retry] Indicates that it may be possible to retry
+ * @property {string} [error.retry] Indicates that it may be possible to retry
  * the Job. If retry is unsuccessful, please contact Azure support via Azure
  * Portal. Possible values include: 'DoNotRetry', 'MayRetry'
- * @member {array} [error.details] An array of details about specific errors
+ * @property {array} [error.details] An array of details about specific errors
  * that led to this reported error.
- * @member {string} [state] Describes the state of the JobOutput. Possible
+ * @property {string} [state] Describes the state of the JobOutput. Possible
  * values include: 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing',
  * 'Queued', 'Scheduled'
- * @member {number} [progress] If the JobOutput is in a Processing state, this
- * contains the Job completion percentage. The value is an estimate and not
- * intended to be used to predict Job completion times. To determine if the
+ * @property {number} [progress] If the JobOutput is in a Processing state,
+ * this contains the Job completion percentage. The value is an estimate and
+ * not intended to be used to predict Job completion times. To determine if the
  * JobOutput is complete, use the State property.
- * @member {string} [label] A label that is assigned to a JobOutput in order to
- * help uniquely identify it. This is useful when your Transform has more than
- * one TransformOutput, whereby your Job has more than one JobOutput. In such
- * cases, when you submit the Job, you will add two or more JobOutputs, in the
- * same order as TransformOutputs in the Transform. Subsequently, when you
+ * @property {string} [label] A label that is assigned to a JobOutput in order
+ * to help uniquely identify it. This is useful when your Transform has more
+ * than one TransformOutput, whereby your Job has more than one JobOutput. In
+ * such cases, when you submit the Job, you will add two or more JobOutputs, in
+ * the same order as TransformOutputs in the Transform. Subsequently, when you
  * retrieve the Job, either through events or on a GET request, you can use the
  * label to easily identify the JobOutput. If a label is not provided, a
  * default value of '{presetName}_{outputIndex}' will be used, where the preset
@@ -1926,7 +1933,7 @@ export interface JobError {
  * output index is the relative index of the this JobOutput within the Job.
  * Note that this index is the same as the relative index of the corresponding
  * TransformOutput within its Transform.
- * @member {string} odatatype Polymorphic Discriminator
+ * @property {string} odatatype Polymorphic Discriminator
  */
 export interface JobOutput {
   readonly error?: JobError;
@@ -1942,7 +1949,7 @@ export interface JobOutput {
  * @constructor
  * Represents an Asset used as a JobOutput.
  *
- * @member {string} assetName The name of the output Asset.
+ * @property {string} assetName The name of the output Asset.
  */
 export interface JobOutputAsset extends JobOutput {
   assetName: string;
@@ -1955,22 +1962,23 @@ export interface JobOutputAsset extends JobOutput {
  * A Job resource type. The progress and state can be obtained by polling a Job
  * or subscribing to events using EventGrid.
  *
- * @member {date} [created] The UTC date and time when the Job was created, in
- * 'YYYY-MM-DDThh:mm:ssZ' format.
- * @member {string} [state] The current state of the job. Possible values
+ * @property {date} [created] The UTC date and time when the Job was created,
+ * in 'YYYY-MM-DDThh:mm:ssZ' format.
+ * @property {string} [state] The current state of the job. Possible values
  * include: 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing',
  * 'Queued', 'Scheduled'
- * @member {string} [description] Optional customer supplied description of the
- * Job.
- * @member {object} input The inputs for the Job.
- * @member {string} [input.odatatype] Polymorphic Discriminator
- * @member {date} [lastModified] The UTC date and time when the Job was last
+ * @property {string} [description] Optional customer supplied description of
+ * the Job.
+ * @property {object} input The inputs for the Job.
+ * @property {string} [input.odatatype] Polymorphic Discriminator
+ * @property {date} [lastModified] The UTC date and time when the Job was last
  * updated, in 'YYYY-MM-DDThh:mm:ssZ' format.
- * @member {array} outputs The outputs for the Job.
- * @member {string} [priority] Priority with which the job should be processed.
- * Higher priority jobs are processed before lower priority jobs. If not set,
- * the default is normal. Possible values include: 'Low', 'Normal', 'High'
- * @member {object} [correlationData] Customer provided correlation data that
+ * @property {array} outputs The outputs for the Job.
+ * @property {string} [priority] Priority with which the job should be
+ * processed. Higher priority jobs are processed before lower priority jobs. If
+ * not set, the default is normal. Possible values include: 'Low', 'Normal',
+ * 'High'
+ * @property {object} [correlationData] Customer provided correlation data that
  * will be returned in Job and JobOutput state events.
  */
 export interface Job extends ProxyResource {
@@ -1990,11 +1998,11 @@ export interface Job extends ProxyResource {
  * @constructor
  * Class to specify one track property condition
  *
- * @member {string} property Track property type. Possible values include:
+ * @property {string} property Track property type. Possible values include:
  * 'Unknown', 'FourCC'
- * @member {string} operation Track property condition operation. Possible
+ * @property {string} operation Track property condition operation. Possible
  * values include: 'Unknown', 'Equal'
- * @member {string} [value] Track property value
+ * @property {string} [value] Track property value
  */
 export interface TrackPropertyCondition {
   property: string;
@@ -2008,7 +2016,7 @@ export interface TrackPropertyCondition {
  * @constructor
  * Class to select a track
  *
- * @member {array} [trackSelections] TrackSelections is a track property
+ * @property {array} [trackSelections] TrackSelections is a track property
  * condition list which can specify track(s)
  */
 export interface TrackSelection {
@@ -2022,9 +2030,9 @@ export interface TrackSelection {
  * Class to specify properties of default content key for each encryption
  * scheme
  *
- * @member {string} [label] Label can be used to specify Content Key when
+ * @property {string} [label] Label can be used to specify Content Key when
  * creating a Streaming Locator
- * @member {string} [policyName] Policy used by Default Key
+ * @property {string} [policyName] Policy used by Default Key
  */
 export interface DefaultKey {
   label?: string;
@@ -2037,10 +2045,10 @@ export interface DefaultKey {
  * @constructor
  * Class to specify properties of content key
  *
- * @member {string} [label] Label can be used to specify Content Key when
+ * @property {string} [label] Label can be used to specify Content Key when
  * creating a Streaming Locator
- * @member {string} [policyName] Policy used by Content Key
- * @member {array} [tracks] Tracks which use this content key
+ * @property {string} [policyName] Policy used by Content Key
+ * @property {array} [tracks] Tracks which use this content key
  */
 export interface StreamingPolicyContentKey {
   label?: string;
@@ -2054,11 +2062,11 @@ export interface StreamingPolicyContentKey {
  * @constructor
  * Class to specify properties of all content keys in Streaming Policy
  *
- * @member {object} [defaultKey] Default content key for an encryption scheme
- * @member {string} [defaultKey.label] Label can be used to specify Content Key
- * when creating a Streaming Locator
- * @member {string} [defaultKey.policyName] Policy used by Default Key
- * @member {array} [keyToTrackMappings] Representing tracks needs separate
+ * @property {object} [defaultKey] Default content key for an encryption scheme
+ * @property {string} [defaultKey.label] Label can be used to specify Content
+ * Key when creating a Streaming Locator
+ * @property {string} [defaultKey.policyName] Policy used by Default Key
+ * @property {array} [keyToTrackMappings] Representing tracks needs separate
  * content key
  */
 export interface StreamingPolicyContentKeys {
@@ -2072,10 +2080,11 @@ export interface StreamingPolicyContentKeys {
  * @constructor
  * Class to specify configurations of PlayReady in Streaming Policy
  *
- * @member {string} [customLicenseAcquisitionUrlTemplate] The template for a
+ * @property {string} [customLicenseAcquisitionUrlTemplate] The template for a
  * customer service to deliver keys to end users.  Not needed when using Azure
  * Media Services for issuing keys.
- * @member {string} [playReadyCustomAttributes] Custom attributes for PlayReady
+ * @property {string} [playReadyCustomAttributes] Custom attributes for
+ * PlayReady
  */
 export interface StreamingPolicyPlayReadyConfiguration {
   customLicenseAcquisitionUrlTemplate?: string;
@@ -2088,7 +2097,7 @@ export interface StreamingPolicyPlayReadyConfiguration {
  * @constructor
  * Class to specify configurations of Widevine in Streaming Policy
  *
- * @member {string} [customLicenseAcquisitionUrlTemplate] The template for a
+ * @property {string} [customLicenseAcquisitionUrlTemplate] The template for a
  * customer service to deliver keys to end users.  Not needed when using Azure
  * Media Services for issuing keys.
  */
@@ -2102,10 +2111,11 @@ export interface StreamingPolicyWidevineConfiguration {
  * @constructor
  * Class to specify configurations of FairPlay in Streaming Policy
  *
- * @member {string} [customLicenseAcquisitionUrlTemplate] The template for a
+ * @property {string} [customLicenseAcquisitionUrlTemplate] The template for a
  * customer service to deliver keys to end users.  Not needed when using Azure
  * Media Services for issuing keys.
- * @member {boolean} allowPersistentLicense All license to be persistent or not
+ * @property {boolean} allowPersistentLicense All license to be persistent or
+ * not
  */
 export interface StreamingPolicyFairPlayConfiguration {
   customLicenseAcquisitionUrlTemplate?: string;
@@ -2119,22 +2129,22 @@ export interface StreamingPolicyFairPlayConfiguration {
  * Class to specify DRM configurations of CommonEncryptionCbcs scheme in
  * Streaming Policy
  *
- * @member {object} [fairPlay] FairPlay configurations
- * @member {string} [fairPlay.customLicenseAcquisitionUrlTemplate] The template
- * for a customer service to deliver keys to end users.  Not needed when using
- * Azure Media Services for issuing keys.
- * @member {boolean} [fairPlay.allowPersistentLicense] All license to be
- * persistent or not
- * @member {object} [playReady] PlayReady configurations
- * @member {string} [playReady.customLicenseAcquisitionUrlTemplate] The
+ * @property {object} [fairPlay] FairPlay configurations
+ * @property {string} [fairPlay.customLicenseAcquisitionUrlTemplate] The
  * template for a customer service to deliver keys to end users.  Not needed
  * when using Azure Media Services for issuing keys.
- * @member {string} [playReady.playReadyCustomAttributes] Custom attributes for
- * PlayReady
- * @member {object} [widevine] Widevine configurations
- * @member {string} [widevine.customLicenseAcquisitionUrlTemplate] The template
- * for a customer service to deliver keys to end users.  Not needed when using
- * Azure Media Services for issuing keys.
+ * @property {boolean} [fairPlay.allowPersistentLicense] All license to be
+ * persistent or not
+ * @property {object} [playReady] PlayReady configurations
+ * @property {string} [playReady.customLicenseAcquisitionUrlTemplate] The
+ * template for a customer service to deliver keys to end users.  Not needed
+ * when using Azure Media Services for issuing keys.
+ * @property {string} [playReady.playReadyCustomAttributes] Custom attributes
+ * for PlayReady
+ * @property {object} [widevine] Widevine configurations
+ * @property {string} [widevine.customLicenseAcquisitionUrlTemplate] The
+ * template for a customer service to deliver keys to end users.  Not needed
+ * when using Azure Media Services for issuing keys.
  */
 export interface CbcsDrmConfiguration {
   fairPlay?: StreamingPolicyFairPlayConfiguration;
@@ -2149,16 +2159,16 @@ export interface CbcsDrmConfiguration {
  * Class to specify DRM configurations of CommonEncryptionCenc scheme in
  * Streaming Policy
  *
- * @member {object} [playReady] PlayReady configurations
- * @member {string} [playReady.customLicenseAcquisitionUrlTemplate] The
+ * @property {object} [playReady] PlayReady configurations
+ * @property {string} [playReady.customLicenseAcquisitionUrlTemplate] The
  * template for a customer service to deliver keys to end users.  Not needed
  * when using Azure Media Services for issuing keys.
- * @member {string} [playReady.playReadyCustomAttributes] Custom attributes for
- * PlayReady
- * @member {object} [widevine] Widevine configurations
- * @member {string} [widevine.customLicenseAcquisitionUrlTemplate] The template
- * for a customer service to deliver keys to end users.  Not needed when using
- * Azure Media Services for issuing keys.
+ * @property {string} [playReady.playReadyCustomAttributes] Custom attributes
+ * for PlayReady
+ * @property {object} [widevine] Widevine configurations
+ * @property {string} [widevine.customLicenseAcquisitionUrlTemplate] The
+ * template for a customer service to deliver keys to end users.  Not needed
+ * when using Azure Media Services for issuing keys.
  */
 export interface CencDrmConfiguration {
   playReady?: StreamingPolicyPlayReadyConfiguration;
@@ -2171,10 +2181,10 @@ export interface CencDrmConfiguration {
  * @constructor
  * Class to specify which protocols are enabled
  *
- * @member {boolean} download Enable Download protocol or not
- * @member {boolean} dash Enable DASH protocol or not
- * @member {boolean} hls Enable HLS protocol or not
- * @member {boolean} smoothStreaming Enable SmoothStreaming protocol or not
+ * @property {boolean} download Enable Download protocol or not
+ * @property {boolean} dash Enable DASH protocol or not
+ * @property {boolean} hls Enable HLS protocol or not
+ * @property {boolean} smoothStreaming Enable SmoothStreaming protocol or not
  */
 export interface EnabledProtocols {
   download: boolean;
@@ -2189,13 +2199,13 @@ export interface EnabledProtocols {
  * @constructor
  * Class for NoEncryption scheme
  *
- * @member {object} [enabledProtocols] Representing supported protocols
- * @member {boolean} [enabledProtocols.download] Enable Download protocol or
+ * @property {object} [enabledProtocols] Representing supported protocols
+ * @property {boolean} [enabledProtocols.download] Enable Download protocol or
  * not
- * @member {boolean} [enabledProtocols.dash] Enable DASH protocol or not
- * @member {boolean} [enabledProtocols.hls] Enable HLS protocol or not
- * @member {boolean} [enabledProtocols.smoothStreaming] Enable SmoothStreaming
- * protocol or not
+ * @property {boolean} [enabledProtocols.dash] Enable DASH protocol or not
+ * @property {boolean} [enabledProtocols.hls] Enable HLS protocol or not
+ * @property {boolean} [enabledProtocols.smoothStreaming] Enable
+ * SmoothStreaming protocol or not
  */
 export interface NoEncryption {
   enabledProtocols?: EnabledProtocols;
@@ -2207,27 +2217,28 @@ export interface NoEncryption {
  * @constructor
  * Class for EnvelopeEncryption encryption scheme
  *
- * @member {object} [enabledProtocols] Representing supported protocols
- * @member {boolean} [enabledProtocols.download] Enable Download protocol or
+ * @property {object} [enabledProtocols] Representing supported protocols
+ * @property {boolean} [enabledProtocols.download] Enable Download protocol or
  * not
- * @member {boolean} [enabledProtocols.dash] Enable DASH protocol or not
- * @member {boolean} [enabledProtocols.hls] Enable HLS protocol or not
- * @member {boolean} [enabledProtocols.smoothStreaming] Enable SmoothStreaming
- * protocol or not
- * @member {array} [clearTracks] Representing which tracks should not be
+ * @property {boolean} [enabledProtocols.dash] Enable DASH protocol or not
+ * @property {boolean} [enabledProtocols.hls] Enable HLS protocol or not
+ * @property {boolean} [enabledProtocols.smoothStreaming] Enable
+ * SmoothStreaming protocol or not
+ * @property {array} [clearTracks] Representing which tracks should not be
  * encrypted
- * @member {object} [contentKeys] Representing default content key for each
+ * @property {object} [contentKeys] Representing default content key for each
  * encryption scheme and separate content keys for specific tracks
- * @member {object} [contentKeys.defaultKey] Default content key for an
+ * @property {object} [contentKeys.defaultKey] Default content key for an
  * encryption scheme
- * @member {string} [contentKeys.defaultKey.label] Label can be used to specify
- * Content Key when creating a Streaming Locator
- * @member {string} [contentKeys.defaultKey.policyName] Policy used by Default
- * Key
- * @member {array} [contentKeys.keyToTrackMappings] Representing tracks needs
+ * @property {string} [contentKeys.defaultKey.label] Label can be used to
+ * specify Content Key when creating a Streaming Locator
+ * @property {string} [contentKeys.defaultKey.policyName] Policy used by
+ * Default Key
+ * @property {array} [contentKeys.keyToTrackMappings] Representing tracks needs
  * separate content key
- * @member {string} [customKeyAcquisitionUrlTemplate] KeyAcquistionUrlTemplate
- * is used to point to user specified service to delivery content keys
+ * @property {string} [customKeyAcquisitionUrlTemplate]
+ * KeyAcquistionUrlTemplate is used to point to user specified service to
+ * delivery content keys
  */
 export interface EnvelopeEncryption {
   enabledProtocols?: EnabledProtocols;
@@ -2242,35 +2253,35 @@ export interface EnvelopeEncryption {
  * @constructor
  * Class for envelope encryption scheme
  *
- * @member {object} [enabledProtocols] Representing supported protocols
- * @member {boolean} [enabledProtocols.download] Enable Download protocol or
+ * @property {object} [enabledProtocols] Representing supported protocols
+ * @property {boolean} [enabledProtocols.download] Enable Download protocol or
  * not
- * @member {boolean} [enabledProtocols.dash] Enable DASH protocol or not
- * @member {boolean} [enabledProtocols.hls] Enable HLS protocol or not
- * @member {boolean} [enabledProtocols.smoothStreaming] Enable SmoothStreaming
- * protocol or not
- * @member {array} [clearTracks] Representing which tracks should not be
+ * @property {boolean} [enabledProtocols.dash] Enable DASH protocol or not
+ * @property {boolean} [enabledProtocols.hls] Enable HLS protocol or not
+ * @property {boolean} [enabledProtocols.smoothStreaming] Enable
+ * SmoothStreaming protocol or not
+ * @property {array} [clearTracks] Representing which tracks should not be
  * encrypted
- * @member {object} [contentKeys] Representing default content key for each
+ * @property {object} [contentKeys] Representing default content key for each
  * encryption scheme and separate content keys for specific tracks
- * @member {object} [contentKeys.defaultKey] Default content key for an
+ * @property {object} [contentKeys.defaultKey] Default content key for an
  * encryption scheme
- * @member {string} [contentKeys.defaultKey.label] Label can be used to specify
- * Content Key when creating a Streaming Locator
- * @member {string} [contentKeys.defaultKey.policyName] Policy used by Default
- * Key
- * @member {array} [contentKeys.keyToTrackMappings] Representing tracks needs
+ * @property {string} [contentKeys.defaultKey.label] Label can be used to
+ * specify Content Key when creating a Streaming Locator
+ * @property {string} [contentKeys.defaultKey.policyName] Policy used by
+ * Default Key
+ * @property {array} [contentKeys.keyToTrackMappings] Representing tracks needs
  * separate content key
- * @member {object} [drm] Configuration of DRMs for CommonEncryptionCenc
+ * @property {object} [drm] Configuration of DRMs for CommonEncryptionCenc
  * encryption scheme
- * @member {object} [drm.playReady] PlayReady configurations
- * @member {string} [drm.playReady.customLicenseAcquisitionUrlTemplate] The
+ * @property {object} [drm.playReady] PlayReady configurations
+ * @property {string} [drm.playReady.customLicenseAcquisitionUrlTemplate] The
  * template for a customer service to deliver keys to end users.  Not needed
  * when using Azure Media Services for issuing keys.
- * @member {string} [drm.playReady.playReadyCustomAttributes] Custom attributes
- * for PlayReady
- * @member {object} [drm.widevine] Widevine configurations
- * @member {string} [drm.widevine.customLicenseAcquisitionUrlTemplate] The
+ * @property {string} [drm.playReady.playReadyCustomAttributes] Custom
+ * attributes for PlayReady
+ * @property {object} [drm.widevine] Widevine configurations
+ * @property {string} [drm.widevine.customLicenseAcquisitionUrlTemplate] The
  * template for a customer service to deliver keys to end users.  Not needed
  * when using Azure Media Services for issuing keys.
  */
@@ -2287,40 +2298,40 @@ export interface CommonEncryptionCenc {
  * @constructor
  * Class for CommonEncryptionCbcs encryption scheme
  *
- * @member {object} [enabledProtocols] Representing supported protocols
- * @member {boolean} [enabledProtocols.download] Enable Download protocol or
+ * @property {object} [enabledProtocols] Representing supported protocols
+ * @property {boolean} [enabledProtocols.download] Enable Download protocol or
  * not
- * @member {boolean} [enabledProtocols.dash] Enable DASH protocol or not
- * @member {boolean} [enabledProtocols.hls] Enable HLS protocol or not
- * @member {boolean} [enabledProtocols.smoothStreaming] Enable SmoothStreaming
- * protocol or not
- * @member {array} [clearTracks] Representing which tracks should not be
+ * @property {boolean} [enabledProtocols.dash] Enable DASH protocol or not
+ * @property {boolean} [enabledProtocols.hls] Enable HLS protocol or not
+ * @property {boolean} [enabledProtocols.smoothStreaming] Enable
+ * SmoothStreaming protocol or not
+ * @property {array} [clearTracks] Representing which tracks should not be
  * encrypted
- * @member {object} [contentKeys] Representing default content key for each
+ * @property {object} [contentKeys] Representing default content key for each
  * encryption scheme and separate content keys for specific tracks
- * @member {object} [contentKeys.defaultKey] Default content key for an
+ * @property {object} [contentKeys.defaultKey] Default content key for an
  * encryption scheme
- * @member {string} [contentKeys.defaultKey.label] Label can be used to specify
- * Content Key when creating a Streaming Locator
- * @member {string} [contentKeys.defaultKey.policyName] Policy used by Default
- * Key
- * @member {array} [contentKeys.keyToTrackMappings] Representing tracks needs
+ * @property {string} [contentKeys.defaultKey.label] Label can be used to
+ * specify Content Key when creating a Streaming Locator
+ * @property {string} [contentKeys.defaultKey.policyName] Policy used by
+ * Default Key
+ * @property {array} [contentKeys.keyToTrackMappings] Representing tracks needs
  * separate content key
- * @member {object} [drm] Configuration of DRMs for current encryption scheme
- * @member {object} [drm.fairPlay] FairPlay configurations
- * @member {string} [drm.fairPlay.customLicenseAcquisitionUrlTemplate] The
+ * @property {object} [drm] Configuration of DRMs for current encryption scheme
+ * @property {object} [drm.fairPlay] FairPlay configurations
+ * @property {string} [drm.fairPlay.customLicenseAcquisitionUrlTemplate] The
  * template for a customer service to deliver keys to end users.  Not needed
  * when using Azure Media Services for issuing keys.
- * @member {boolean} [drm.fairPlay.allowPersistentLicense] All license to be
+ * @property {boolean} [drm.fairPlay.allowPersistentLicense] All license to be
  * persistent or not
- * @member {object} [drm.playReady] PlayReady configurations
- * @member {string} [drm.playReady.customLicenseAcquisitionUrlTemplate] The
+ * @property {object} [drm.playReady] PlayReady configurations
+ * @property {string} [drm.playReady.customLicenseAcquisitionUrlTemplate] The
  * template for a customer service to deliver keys to end users.  Not needed
  * when using Azure Media Services for issuing keys.
- * @member {string} [drm.playReady.playReadyCustomAttributes] Custom attributes
- * for PlayReady
- * @member {object} [drm.widevine] Widevine configurations
- * @member {string} [drm.widevine.customLicenseAcquisitionUrlTemplate] The
+ * @property {string} [drm.playReady.playReadyCustomAttributes] Custom
+ * attributes for PlayReady
+ * @property {object} [drm.widevine] Widevine configurations
+ * @property {string} [drm.widevine.customLicenseAcquisitionUrlTemplate] The
  * template for a customer service to deliver keys to end users.  Not needed
  * when using Azure Media Services for issuing keys.
  */
@@ -2337,135 +2348,139 @@ export interface CommonEncryptionCbcs {
  * @constructor
  * A Streaming Policy resource
  *
- * @member {date} [created] Creation time of Streaming Policy
- * @member {string} [defaultContentKeyPolicyName] Default ContentKey used by
+ * @property {date} [created] Creation time of Streaming Policy
+ * @property {string} [defaultContentKeyPolicyName] Default ContentKey used by
  * current Streaming Policy
- * @member {object} [envelopeEncryption] Configuration of EnvelopeEncryption
- * @member {object} [envelopeEncryption.enabledProtocols] Representing
+ * @property {object} [envelopeEncryption] Configuration of EnvelopeEncryption
+ * @property {object} [envelopeEncryption.enabledProtocols] Representing
  * supported protocols
- * @member {boolean} [envelopeEncryption.enabledProtocols.download] Enable
+ * @property {boolean} [envelopeEncryption.enabledProtocols.download] Enable
  * Download protocol or not
- * @member {boolean} [envelopeEncryption.enabledProtocols.dash] Enable DASH
+ * @property {boolean} [envelopeEncryption.enabledProtocols.dash] Enable DASH
  * protocol or not
- * @member {boolean} [envelopeEncryption.enabledProtocols.hls] Enable HLS
+ * @property {boolean} [envelopeEncryption.enabledProtocols.hls] Enable HLS
  * protocol or not
- * @member {boolean} [envelopeEncryption.enabledProtocols.smoothStreaming]
+ * @property {boolean} [envelopeEncryption.enabledProtocols.smoothStreaming]
  * Enable SmoothStreaming protocol or not
- * @member {array} [envelopeEncryption.clearTracks] Representing which tracks
+ * @property {array} [envelopeEncryption.clearTracks] Representing which tracks
  * should not be encrypted
- * @member {object} [envelopeEncryption.contentKeys] Representing default
+ * @property {object} [envelopeEncryption.contentKeys] Representing default
  * content key for each encryption scheme and separate content keys for
  * specific tracks
- * @member {object} [envelopeEncryption.contentKeys.defaultKey] Default content
- * key for an encryption scheme
- * @member {string} [envelopeEncryption.contentKeys.defaultKey.label] Label can
- * be used to specify Content Key when creating a Streaming Locator
- * @member {string} [envelopeEncryption.contentKeys.defaultKey.policyName]
+ * @property {object} [envelopeEncryption.contentKeys.defaultKey] Default
+ * content key for an encryption scheme
+ * @property {string} [envelopeEncryption.contentKeys.defaultKey.label] Label
+ * can be used to specify Content Key when creating a Streaming Locator
+ * @property {string} [envelopeEncryption.contentKeys.defaultKey.policyName]
  * Policy used by Default Key
- * @member {array} [envelopeEncryption.contentKeys.keyToTrackMappings]
+ * @property {array} [envelopeEncryption.contentKeys.keyToTrackMappings]
  * Representing tracks needs separate content key
- * @member {string} [envelopeEncryption.customKeyAcquisitionUrlTemplate]
+ * @property {string} [envelopeEncryption.customKeyAcquisitionUrlTemplate]
  * KeyAcquistionUrlTemplate is used to point to user specified service to
  * delivery content keys
- * @member {object} [commonEncryptionCenc] Configuration of
+ * @property {object} [commonEncryptionCenc] Configuration of
  * CommonEncryptionCenc
- * @member {object} [commonEncryptionCenc.enabledProtocols] Representing
+ * @property {object} [commonEncryptionCenc.enabledProtocols] Representing
  * supported protocols
- * @member {boolean} [commonEncryptionCenc.enabledProtocols.download] Enable
+ * @property {boolean} [commonEncryptionCenc.enabledProtocols.download] Enable
  * Download protocol or not
- * @member {boolean} [commonEncryptionCenc.enabledProtocols.dash] Enable DASH
+ * @property {boolean} [commonEncryptionCenc.enabledProtocols.dash] Enable DASH
  * protocol or not
- * @member {boolean} [commonEncryptionCenc.enabledProtocols.hls] Enable HLS
+ * @property {boolean} [commonEncryptionCenc.enabledProtocols.hls] Enable HLS
  * protocol or not
- * @member {boolean} [commonEncryptionCenc.enabledProtocols.smoothStreaming]
+ * @property {boolean} [commonEncryptionCenc.enabledProtocols.smoothStreaming]
  * Enable SmoothStreaming protocol or not
- * @member {array} [commonEncryptionCenc.clearTracks] Representing which tracks
- * should not be encrypted
- * @member {object} [commonEncryptionCenc.contentKeys] Representing default
+ * @property {array} [commonEncryptionCenc.clearTracks] Representing which
+ * tracks should not be encrypted
+ * @property {object} [commonEncryptionCenc.contentKeys] Representing default
  * content key for each encryption scheme and separate content keys for
  * specific tracks
- * @member {object} [commonEncryptionCenc.contentKeys.defaultKey] Default
+ * @property {object} [commonEncryptionCenc.contentKeys.defaultKey] Default
  * content key for an encryption scheme
- * @member {string} [commonEncryptionCenc.contentKeys.defaultKey.label] Label
+ * @property {string} [commonEncryptionCenc.contentKeys.defaultKey.label] Label
  * can be used to specify Content Key when creating a Streaming Locator
- * @member {string} [commonEncryptionCenc.contentKeys.defaultKey.policyName]
+ * @property {string} [commonEncryptionCenc.contentKeys.defaultKey.policyName]
  * Policy used by Default Key
- * @member {array} [commonEncryptionCenc.contentKeys.keyToTrackMappings]
+ * @property {array} [commonEncryptionCenc.contentKeys.keyToTrackMappings]
  * Representing tracks needs separate content key
- * @member {object} [commonEncryptionCenc.drm] Configuration of DRMs for
+ * @property {object} [commonEncryptionCenc.drm] Configuration of DRMs for
  * CommonEncryptionCenc encryption scheme
- * @member {object} [commonEncryptionCenc.drm.playReady] PlayReady
+ * @property {object} [commonEncryptionCenc.drm.playReady] PlayReady
  * configurations
- * @member {string}
+ * @property {string}
  * [commonEncryptionCenc.drm.playReady.customLicenseAcquisitionUrlTemplate] The
  * template for a customer service to deliver keys to end users.  Not needed
  * when using Azure Media Services for issuing keys.
- * @member {string}
+ * @property {string}
  * [commonEncryptionCenc.drm.playReady.playReadyCustomAttributes] Custom
  * attributes for PlayReady
- * @member {object} [commonEncryptionCenc.drm.widevine] Widevine configurations
- * @member {string}
+ * @property {object} [commonEncryptionCenc.drm.widevine] Widevine
+ * configurations
+ * @property {string}
  * [commonEncryptionCenc.drm.widevine.customLicenseAcquisitionUrlTemplate] The
  * template for a customer service to deliver keys to end users.  Not needed
  * when using Azure Media Services for issuing keys.
- * @member {object} [commonEncryptionCbcs] Configuration of
+ * @property {object} [commonEncryptionCbcs] Configuration of
  * CommonEncryptionCbcs
- * @member {object} [commonEncryptionCbcs.enabledProtocols] Representing
+ * @property {object} [commonEncryptionCbcs.enabledProtocols] Representing
  * supported protocols
- * @member {boolean} [commonEncryptionCbcs.enabledProtocols.download] Enable
+ * @property {boolean} [commonEncryptionCbcs.enabledProtocols.download] Enable
  * Download protocol or not
- * @member {boolean} [commonEncryptionCbcs.enabledProtocols.dash] Enable DASH
+ * @property {boolean} [commonEncryptionCbcs.enabledProtocols.dash] Enable DASH
  * protocol or not
- * @member {boolean} [commonEncryptionCbcs.enabledProtocols.hls] Enable HLS
+ * @property {boolean} [commonEncryptionCbcs.enabledProtocols.hls] Enable HLS
  * protocol or not
- * @member {boolean} [commonEncryptionCbcs.enabledProtocols.smoothStreaming]
+ * @property {boolean} [commonEncryptionCbcs.enabledProtocols.smoothStreaming]
  * Enable SmoothStreaming protocol or not
- * @member {array} [commonEncryptionCbcs.clearTracks] Representing which tracks
- * should not be encrypted
- * @member {object} [commonEncryptionCbcs.contentKeys] Representing default
+ * @property {array} [commonEncryptionCbcs.clearTracks] Representing which
+ * tracks should not be encrypted
+ * @property {object} [commonEncryptionCbcs.contentKeys] Representing default
  * content key for each encryption scheme and separate content keys for
  * specific tracks
- * @member {object} [commonEncryptionCbcs.contentKeys.defaultKey] Default
+ * @property {object} [commonEncryptionCbcs.contentKeys.defaultKey] Default
  * content key for an encryption scheme
- * @member {string} [commonEncryptionCbcs.contentKeys.defaultKey.label] Label
+ * @property {string} [commonEncryptionCbcs.contentKeys.defaultKey.label] Label
  * can be used to specify Content Key when creating a Streaming Locator
- * @member {string} [commonEncryptionCbcs.contentKeys.defaultKey.policyName]
+ * @property {string} [commonEncryptionCbcs.contentKeys.defaultKey.policyName]
  * Policy used by Default Key
- * @member {array} [commonEncryptionCbcs.contentKeys.keyToTrackMappings]
+ * @property {array} [commonEncryptionCbcs.contentKeys.keyToTrackMappings]
  * Representing tracks needs separate content key
- * @member {object} [commonEncryptionCbcs.drm] Configuration of DRMs for
+ * @property {object} [commonEncryptionCbcs.drm] Configuration of DRMs for
  * current encryption scheme
- * @member {object} [commonEncryptionCbcs.drm.fairPlay] FairPlay configurations
- * @member {string}
+ * @property {object} [commonEncryptionCbcs.drm.fairPlay] FairPlay
+ * configurations
+ * @property {string}
  * [commonEncryptionCbcs.drm.fairPlay.customLicenseAcquisitionUrlTemplate] The
  * template for a customer service to deliver keys to end users.  Not needed
  * when using Azure Media Services for issuing keys.
- * @member {boolean} [commonEncryptionCbcs.drm.fairPlay.allowPersistentLicense]
- * All license to be persistent or not
- * @member {object} [commonEncryptionCbcs.drm.playReady] PlayReady
+ * @property {boolean}
+ * [commonEncryptionCbcs.drm.fairPlay.allowPersistentLicense] All license to be
+ * persistent or not
+ * @property {object} [commonEncryptionCbcs.drm.playReady] PlayReady
  * configurations
- * @member {string}
+ * @property {string}
  * [commonEncryptionCbcs.drm.playReady.customLicenseAcquisitionUrlTemplate] The
  * template for a customer service to deliver keys to end users.  Not needed
  * when using Azure Media Services for issuing keys.
- * @member {string}
+ * @property {string}
  * [commonEncryptionCbcs.drm.playReady.playReadyCustomAttributes] Custom
  * attributes for PlayReady
- * @member {object} [commonEncryptionCbcs.drm.widevine] Widevine configurations
- * @member {string}
+ * @property {object} [commonEncryptionCbcs.drm.widevine] Widevine
+ * configurations
+ * @property {string}
  * [commonEncryptionCbcs.drm.widevine.customLicenseAcquisitionUrlTemplate] The
  * template for a customer service to deliver keys to end users.  Not needed
  * when using Azure Media Services for issuing keys.
- * @member {object} [noEncryption] Configurations of NoEncryption
- * @member {object} [noEncryption.enabledProtocols] Representing supported
+ * @property {object} [noEncryption] Configurations of NoEncryption
+ * @property {object} [noEncryption.enabledProtocols] Representing supported
  * protocols
- * @member {boolean} [noEncryption.enabledProtocols.download] Enable Download
+ * @property {boolean} [noEncryption.enabledProtocols.download] Enable Download
  * protocol or not
- * @member {boolean} [noEncryption.enabledProtocols.dash] Enable DASH protocol
+ * @property {boolean} [noEncryption.enabledProtocols.dash] Enable DASH
+ * protocol or not
+ * @property {boolean} [noEncryption.enabledProtocols.hls] Enable HLS protocol
  * or not
- * @member {boolean} [noEncryption.enabledProtocols.hls] Enable HLS protocol or
- * not
- * @member {boolean} [noEncryption.enabledProtocols.smoothStreaming] Enable
+ * @property {boolean} [noEncryption.enabledProtocols.smoothStreaming] Enable
  * SmoothStreaming protocol or not
  */
 export interface StreamingPolicy extends ProxyResource {
@@ -2483,15 +2498,15 @@ export interface StreamingPolicy extends ProxyResource {
  * @constructor
  * Class for content key in Streaming Locator
  *
- * @member {uuid} id ID of Content Key
- * @member {string} [type] Encryption type of Content Key. Possible values
+ * @property {uuid} id ID of Content Key
+ * @property {string} [type] Encryption type of Content Key. Possible values
  * include: 'CommonEncryptionCenc', 'CommonEncryptionCbcs',
  * 'EnvelopeEncryption'
- * @member {string} [labelReferenceInStreamingPolicy] Label of Content Key as
+ * @property {string} [labelReferenceInStreamingPolicy] Label of Content Key as
  * specified in the Streaming Policy
- * @member {string} [value] Value of  of Content Key
- * @member {string} [policyName] ContentKeyPolicy used by Content Key
- * @member {array} [tracks] Tracks which use this Content Key
+ * @property {string} [value] Value of  of Content Key
+ * @property {string} [policyName] ContentKeyPolicy used by Content Key
+ * @property {array} [tracks] Tracks which use this Content Key
  */
 export interface StreamingLocatorContentKey {
   id: string;
@@ -2508,12 +2523,12 @@ export interface StreamingLocatorContentKey {
  * @constructor
  * Class of paths for streaming
  *
- * @member {string} streamingProtocol Streaming protocol. Possible values
+ * @property {string} streamingProtocol Streaming protocol. Possible values
  * include: 'Hls', 'Dash', 'SmoothStreaming', 'Download'
- * @member {string} encryptionScheme Encryption scheme. Possible values
+ * @property {string} encryptionScheme Encryption scheme. Possible values
  * include: 'NoEncryption', 'EnvelopeEncryption', 'CommonEncryptionCenc',
  * 'CommonEncryptionCbcs'
- * @member {array} [paths] Streaming paths for each protocol and
+ * @property {array} [paths] Streaming paths for each protocol and
  * encryptionScheme pair
  */
 export interface StreamingPath {
@@ -2528,7 +2543,8 @@ export interface StreamingPath {
  * @constructor
  * Class of response for listContentKeys action
  *
- * @member {array} [contentKeys] ContentKeys used by current Streaming Locator
+ * @property {array} [contentKeys] ContentKeys used by current Streaming
+ * Locator
  */
 export interface ListContentKeysResponse {
   contentKeys?: StreamingLocatorContentKey[];
@@ -2540,9 +2556,9 @@ export interface ListContentKeysResponse {
  * @constructor
  * Class of response for listPaths action
  *
- * @member {array} [streamingPaths] Streaming Paths supported by current
+ * @property {array} [streamingPaths] Streaming Paths supported by current
  * Streaming Locator
- * @member {array} [downloadPaths] Download Paths supported by current
+ * @property {array} [downloadPaths] Download Paths supported by current
  * Streaming Locator
  */
 export interface ListPathsResponse {
@@ -2556,25 +2572,25 @@ export interface ListPathsResponse {
  * @constructor
  * A Streaming Locator resource
  *
- * @member {string} assetName Asset Name
- * @member {date} [created] The creation time of the Streaming Locator.
- * @member {date} [startTime] The start time of the Streaming Locator.
- * @member {date} [endTime] The end time of the Streaming Locator.
- * @member {uuid} [streamingLocatorId] The StreamingLocatorId of the Streaming
- * Locator.
- * @member {string} streamingPolicyName Name of the Streaming Policy used by
+ * @property {string} assetName Asset Name
+ * @property {date} [created] The creation time of the Streaming Locator.
+ * @property {date} [startTime] The start time of the Streaming Locator.
+ * @property {date} [endTime] The end time of the Streaming Locator.
+ * @property {uuid} [streamingLocatorId] The StreamingLocatorId of the
+ * Streaming Locator.
+ * @property {string} streamingPolicyName Name of the Streaming Policy used by
  * this Streaming Locator. Either specify the name of Streaming Policy you
  * created or use one of the predefined Streaming Policies. The predefined
  * Streaming Policies available are: 'Predefined_DownloadOnly',
  * 'Predefined_ClearStreamingOnly', 'Predefined_DownloadAndClearStreaming',
  * 'Predefined_ClearKey', 'Predefined_MultiDrmCencStreaming' and
  * 'Predefined_MultiDrmStreaming'
- * @member {string} [defaultContentKeyPolicyName] Name of the default
+ * @property {string} [defaultContentKeyPolicyName] Name of the default
  * ContentKeyPolicy used by this Streaming Locator.
- * @member {array} [contentKeys] The ContentKeys used by this Streaming
+ * @property {array} [contentKeys] The ContentKeys used by this Streaming
  * Locator.
- * @member {string} [alternativeMediaId] Alternative Media ID of this Streaming
- * Locator
+ * @property {string} [alternativeMediaId] Alternative Media ID of this
+ * Streaming Locator
  */
 export interface StreamingLocator extends ProxyResource {
   assetName: string;
@@ -2594,7 +2610,7 @@ export interface StreamingLocator extends ProxyResource {
  * @constructor
  * The HLS configuration.
  *
- * @member {number} [fragmentsPerTsSegment] The amount of fragments per HTTP
+ * @property {number} [fragmentsPerTsSegment] The amount of fragments per HTTP
  * Live Streaming (HLS) segment.
  */
 export interface Hls {
@@ -2607,23 +2623,23 @@ export interface Hls {
  * @constructor
  * The Live Output.
  *
- * @member {string} [description] The description of the Live Output.
- * @member {string} assetName The asset name.
- * @member {moment.duration} archiveWindowLength ISO 8601 timespan duration of
- * the archive window length. This is duration that customer want to retain the
- * recorded content.
- * @member {string} [manifestName] The manifest file name.  If not provided,
+ * @property {string} [description] The description of the Live Output.
+ * @property {string} assetName The asset name.
+ * @property {moment.duration} archiveWindowLength ISO 8601 timespan duration
+ * of the archive window length. This is duration that customer want to retain
+ * the recorded content.
+ * @property {string} [manifestName] The manifest file name.  If not provided,
  * the service will generate one automatically.
- * @member {object} [hls] The HLS configuration.
- * @member {number} [hls.fragmentsPerTsSegment] The amount of fragments per
+ * @property {object} [hls] The HLS configuration.
+ * @property {number} [hls.fragmentsPerTsSegment] The amount of fragments per
  * HTTP Live Streaming (HLS) segment.
- * @member {number} [outputSnapTime] The output snapshot time.
- * @member {date} [created] The exact time the Live Output was created.
- * @member {date} [lastModified] The exact time the Live Output was last
+ * @property {number} [outputSnapTime] The output snapshot time.
+ * @property {date} [created] The exact time the Live Output was created.
+ * @property {date} [lastModified] The exact time the Live Output was last
  * modified.
- * @member {string} [provisioningState] The provisioning state of the Live
+ * @property {string} [provisioningState] The provisioning state of the Live
  * Output.
- * @member {string} [resourceState] The resource state of the Live Output.
+ * @property {string} [resourceState] The resource state of the Live Output.
  * Possible values include: 'Creating', 'Running', 'Deleting'
  */
 export interface LiveOutput extends ProxyResource {
@@ -2645,8 +2661,8 @@ export interface LiveOutput extends ProxyResource {
  * @constructor
  * The Live Event endpoint.
  *
- * @member {string} [protocol] The endpoint protocol.
- * @member {string} [url] The endpoint URL.
+ * @property {string} [protocol] The endpoint protocol.
+ * @property {string} [url] The endpoint URL.
  */
 export interface LiveEventEndpoint {
   protocol?: string;
@@ -2659,9 +2675,9 @@ export interface LiveEventEndpoint {
  * @constructor
  * The IP address range in the CIDR scheme.
  *
- * @member {string} [name] The friendly name for the IP address range.
- * @member {string} [address] The IP address.
- * @member {number} [subnetPrefixLength] The subnet mask prefix length (see
+ * @property {string} [name] The friendly name for the IP address range.
+ * @property {string} [address] The IP address.
+ * @property {number} [subnetPrefixLength] The subnet mask prefix length (see
  * CIDR notation).
  */
 export interface IPRange {
@@ -2676,7 +2692,7 @@ export interface IPRange {
  * @constructor
  * The IP access control.
  *
- * @member {array} [allow] The IP allow list.
+ * @property {array} [allow] The IP allow list.
  */
 export interface IPAccessControl {
   allow?: IPRange[];
@@ -2688,8 +2704,8 @@ export interface IPAccessControl {
  * @constructor
  * The IP access control for Live Event Input.
  *
- * @member {object} [ip] The IP access control properties.
- * @member {array} [ip.allow] The IP allow list.
+ * @property {object} [ip] The IP access control properties.
+ * @property {array} [ip.allow] The IP allow list.
  */
 export interface LiveEventInputAccessControl {
   ip?: IPAccessControl;
@@ -2701,18 +2717,18 @@ export interface LiveEventInputAccessControl {
  * @constructor
  * The Live Event input.
  *
- * @member {string} streamingProtocol The streaming protocol for the Live
+ * @property {string} streamingProtocol The streaming protocol for the Live
  * Event.  This is specified at creation time and cannot be updated. Possible
  * values include: 'FragmentedMP4', 'RTMP'
- * @member {object} [accessControl] The access control for LiveEvent Input.
- * @member {object} [accessControl.ip] The IP access control properties.
- * @member {array} [accessControl.ip.allow] The IP allow list.
- * @member {string} [keyFrameIntervalDuration] ISO 8601 timespan duration of
+ * @property {object} [accessControl] The access control for LiveEvent Input.
+ * @property {object} [accessControl.ip] The IP access control properties.
+ * @property {array} [accessControl.ip.allow] The IP allow list.
+ * @property {string} [keyFrameIntervalDuration] ISO 8601 timespan duration of
  * the key frame interval duration.
- * @member {string} [accessToken] A unique identifier for a stream.  This can
+ * @property {string} [accessToken] A unique identifier for a stream.  This can
  * be specified at creation time but cannot be updated.  If omitted, the
  * service will generate a unique value.
- * @member {array} [endpoints] The input endpoints for the Live Event.
+ * @property {array} [endpoints] The input endpoints for the Live Event.
  */
 export interface LiveEventInput {
   streamingProtocol: string;
@@ -2728,8 +2744,8 @@ export interface LiveEventInput {
  * @constructor
  * The IP access control for Live Event preview.
  *
- * @member {object} [ip] The IP access control properties.
- * @member {array} [ip.allow] The IP allow list.
+ * @property {object} [ip] The IP access control properties.
+ * @property {array} [ip.allow] The IP allow list.
  */
 export interface LiveEventPreviewAccessControl {
   ip?: IPAccessControl;
@@ -2741,19 +2757,19 @@ export interface LiveEventPreviewAccessControl {
  * @constructor
  * The Live Event preview.
  *
- * @member {array} [endpoints] The endpoints for preview.
- * @member {object} [accessControl] The access control for LiveEvent preview.
- * @member {object} [accessControl.ip] The IP access control properties.
- * @member {array} [accessControl.ip.allow] The IP allow list.
- * @member {string} [previewLocator] The identifier of the preview locator in
+ * @property {array} [endpoints] The endpoints for preview.
+ * @property {object} [accessControl] The access control for LiveEvent preview.
+ * @property {object} [accessControl.ip] The IP access control properties.
+ * @property {array} [accessControl.ip.allow] The IP allow list.
+ * @property {string} [previewLocator] The identifier of the preview locator in
  * Guid format.  Specifying this at creation time allows the caller to know the
  * preview locator url before the event is created.  If omitted, the service
  * will generate a random identifier.  This value cannot be updated once the
  * live event is created.
- * @member {string} [streamingPolicyName] The name of streaming policy used for
- * the LiveEvent preview.  This value is specified at creation time and cannot
- * be updated.
- * @member {string} [alternativeMediaId] An Alternative Media Identifier
+ * @property {string} [streamingPolicyName] The name of streaming policy used
+ * for the LiveEvent preview.  This value is specified at creation time and
+ * cannot be updated.
+ * @property {string} [alternativeMediaId] An Alternative Media Identifier
  * associated with the StreamingLocator created for the preview.  This value is
  * specified at creation time and cannot be updated.  The identifier can be
  * used in the CustomLicenseAcquisitionUrlTemplate or the
@@ -2774,10 +2790,10 @@ export interface LiveEventPreview {
  * @constructor
  * The Live Event encoding.
  *
- * @member {string} [encodingType] The encoding type for Live Event.  This
+ * @property {string} [encodingType] The encoding type for Live Event.  This
  * value is specified at creation time and cannot be updated. Possible values
  * include: 'None', 'Basic'
- * @member {string} [presetName] The encoding preset name.  This value is
+ * @property {string} [presetName] The encoding preset name.  This value is
  * specified at creation time and cannot be updated.
  */
 export interface LiveEventEncoding {
@@ -2791,10 +2807,10 @@ export interface LiveEventEncoding {
  * @constructor
  * The client access policy.
  *
- * @member {string} [clientAccessPolicy] The content of clientaccesspolicy.xml
- * used by Silverlight.
- * @member {string} [crossDomainPolicy] The content of crossdomain.xml used by
- * Silverlight.
+ * @property {string} [clientAccessPolicy] The content of
+ * clientaccesspolicy.xml used by Silverlight.
+ * @property {string} [crossDomainPolicy] The content of crossdomain.xml used
+ * by Silverlight.
  */
 export interface CrossSiteAccessPolicies {
   clientAccessPolicy?: string;
@@ -2807,7 +2823,7 @@ export interface CrossSiteAccessPolicies {
  * @constructor
  * The LiveEvent action input parameter definition.
  *
- * @member {boolean} [removeOutputsOnStop] The flag indicates if remove
+ * @property {boolean} [removeOutputsOnStop] The flag indicates if remove
  * LiveOutputs on Stop.
  */
 export interface LiveEventActionInput {
@@ -2820,64 +2836,66 @@ export interface LiveEventActionInput {
  * @constructor
  * The Live Event.
  *
- * @member {string} [description] The Live Event description.
- * @member {object} input The Live Event input.
- * @member {string} [input.streamingProtocol] The streaming protocol for the
+ * @property {string} [description] The Live Event description.
+ * @property {object} input The Live Event input.
+ * @property {string} [input.streamingProtocol] The streaming protocol for the
  * Live Event.  This is specified at creation time and cannot be updated.
  * Possible values include: 'FragmentedMP4', 'RTMP'
- * @member {object} [input.accessControl] The access control for LiveEvent
+ * @property {object} [input.accessControl] The access control for LiveEvent
  * Input.
- * @member {object} [input.accessControl.ip] The IP access control properties.
- * @member {array} [input.accessControl.ip.allow] The IP allow list.
- * @member {string} [input.keyFrameIntervalDuration] ISO 8601 timespan duration
- * of the key frame interval duration.
- * @member {string} [input.accessToken] A unique identifier for a stream.  This
- * can be specified at creation time but cannot be updated.  If omitted, the
- * service will generate a unique value.
- * @member {array} [input.endpoints] The input endpoints for the Live Event.
- * @member {object} [preview] The Live Event preview.
- * @member {array} [preview.endpoints] The endpoints for preview.
- * @member {object} [preview.accessControl] The access control for LiveEvent
- * preview.
- * @member {object} [preview.accessControl.ip] The IP access control
+ * @property {object} [input.accessControl.ip] The IP access control
  * properties.
- * @member {array} [preview.accessControl.ip.allow] The IP allow list.
- * @member {string} [preview.previewLocator] The identifier of the preview
+ * @property {array} [input.accessControl.ip.allow] The IP allow list.
+ * @property {string} [input.keyFrameIntervalDuration] ISO 8601 timespan
+ * duration of the key frame interval duration.
+ * @property {string} [input.accessToken] A unique identifier for a stream.
+ * This can be specified at creation time but cannot be updated.  If omitted,
+ * the service will generate a unique value.
+ * @property {array} [input.endpoints] The input endpoints for the Live Event.
+ * @property {object} [preview] The Live Event preview.
+ * @property {array} [preview.endpoints] The endpoints for preview.
+ * @property {object} [preview.accessControl] The access control for LiveEvent
+ * preview.
+ * @property {object} [preview.accessControl.ip] The IP access control
+ * properties.
+ * @property {array} [preview.accessControl.ip.allow] The IP allow list.
+ * @property {string} [preview.previewLocator] The identifier of the preview
  * locator in Guid format.  Specifying this at creation time allows the caller
  * to know the preview locator url before the event is created.  If omitted,
  * the service will generate a random identifier.  This value cannot be updated
  * once the live event is created.
- * @member {string} [preview.streamingPolicyName] The name of streaming policy
- * used for the LiveEvent preview.  This value is specified at creation time
- * and cannot be updated.
- * @member {string} [preview.alternativeMediaId] An Alternative Media
+ * @property {string} [preview.streamingPolicyName] The name of streaming
+ * policy used for the LiveEvent preview.  This value is specified at creation
+ * time and cannot be updated.
+ * @property {string} [preview.alternativeMediaId] An Alternative Media
  * Identifier associated with the StreamingLocator created for the preview.
  * This value is specified at creation time and cannot be updated.  The
  * identifier can be used in the CustomLicenseAcquisitionUrlTemplate or the
  * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
  * StreamingPolicyName field.
- * @member {object} [encoding] The Live Event encoding.
- * @member {string} [encoding.encodingType] The encoding type for Live Event.
+ * @property {object} [encoding] The Live Event encoding.
+ * @property {string} [encoding.encodingType] The encoding type for Live Event.
  * This value is specified at creation time and cannot be updated. Possible
  * values include: 'None', 'Basic'
- * @member {string} [encoding.presetName] The encoding preset name.  This value
- * is specified at creation time and cannot be updated.
- * @member {string} [provisioningState] The provisioning state of the Live
+ * @property {string} [encoding.presetName] The encoding preset name.  This
+ * value is specified at creation time and cannot be updated.
+ * @property {string} [provisioningState] The provisioning state of the Live
  * Event.
- * @member {string} [resourceState] The resource state of the Live Event.
+ * @property {string} [resourceState] The resource state of the Live Event.
  * Possible values include: 'Stopped', 'Starting', 'Running', 'Stopping',
  * 'Deleting'
- * @member {object} [crossSiteAccessPolicies] The Live Event access policies.
- * @member {string} [crossSiteAccessPolicies.clientAccessPolicy] The content of
- * clientaccesspolicy.xml used by Silverlight.
- * @member {string} [crossSiteAccessPolicies.crossDomainPolicy] The content of
- * crossdomain.xml used by Silverlight.
- * @member {boolean} [vanityUrl] Specifies whether to use a vanity url with the
- * Live Event.  This value is specified at creation time and cannot be updated.
- * @member {array} [streamOptions] The options to use for the LiveEvent.  This
- * value is specified at creation time and cannot be updated.
- * @member {date} [created] The exact time the Live Event was created.
- * @member {date} [lastModified] The exact time the Live Event was last
+ * @property {object} [crossSiteAccessPolicies] The Live Event access policies.
+ * @property {string} [crossSiteAccessPolicies.clientAccessPolicy] The content
+ * of clientaccesspolicy.xml used by Silverlight.
+ * @property {string} [crossSiteAccessPolicies.crossDomainPolicy] The content
+ * of crossdomain.xml used by Silverlight.
+ * @property {boolean} [vanityUrl] Specifies whether to use a vanity url with
+ * the Live Event.  This value is specified at creation time and cannot be
+ * updated.
+ * @property {array} [streamOptions] The options to use for the LiveEvent.
+ * This value is specified at creation time and cannot be updated.
+ * @property {date} [created] The exact time the Live Event was created.
+ * @property {date} [lastModified] The exact time the Live Event was last
  * modified.
  */
 export interface LiveEvent extends TrackedResource {
@@ -2900,9 +2918,9 @@ export interface LiveEvent extends TrackedResource {
  * @constructor
  * Akamai Signature Header authentication key.
  *
- * @member {string} [identifier] identifier of the key
- * @member {string} [base64Key] authentication key
- * @member {date} [expiration] The expiration time of the authentication key.
+ * @property {string} [identifier] identifier of the key
+ * @property {string} [base64Key] authentication key
+ * @property {date} [expiration] The expiration time of the authentication key.
  */
 export interface AkamaiSignatureHeaderAuthenticationKey {
   identifier?: string;
@@ -2916,8 +2934,8 @@ export interface AkamaiSignatureHeaderAuthenticationKey {
  * @constructor
  * Akamai access control
  *
- * @member {array} [akamaiSignatureHeaderAuthenticationKeyList] authentication
- * key list
+ * @property {array} [akamaiSignatureHeaderAuthenticationKeyList]
+ * authentication key list
  */
 export interface AkamaiAccessControl {
   akamaiSignatureHeaderAuthenticationKeyList?: AkamaiSignatureHeaderAuthenticationKey[];
@@ -2929,11 +2947,11 @@ export interface AkamaiAccessControl {
  * @constructor
  * StreamingEndpoint access control definition.
  *
- * @member {object} [akamai] The access control of Akamai
- * @member {array} [akamai.akamaiSignatureHeaderAuthenticationKeyList]
+ * @property {object} [akamai] The access control of Akamai
+ * @property {array} [akamai.akamaiSignatureHeaderAuthenticationKeyList]
  * authentication key list
- * @member {object} [ip] The IP access control of the StreamingEndpoint.
- * @member {array} [ip.allow] The IP allow list.
+ * @property {object} [ip] The IP access control of the StreamingEndpoint.
+ * @property {array} [ip.allow] The IP allow list.
  */
 export interface StreamingEndpointAccessControl {
   akamai?: AkamaiAccessControl;
@@ -2946,7 +2964,8 @@ export interface StreamingEndpointAccessControl {
  * @constructor
  * scale units definition
  *
- * @member {number} [scaleUnit] The scale unit number of the StreamingEndpoint.
+ * @property {number} [scaleUnit] The scale unit number of the
+ * StreamingEndpoint.
  */
 export interface StreamingEntityScaleUnit {
   scaleUnit?: number;
@@ -2958,43 +2977,43 @@ export interface StreamingEntityScaleUnit {
  * @constructor
  * The StreamingEndpoint.
  *
- * @member {string} [description] The StreamingEndpoint description.
- * @member {number} scaleUnits The number of scale units.  Use the Scale
+ * @property {string} [description] The StreamingEndpoint description.
+ * @property {number} scaleUnits The number of scale units.  Use the Scale
  * operation to adjust this value.
- * @member {string} [availabilitySetName] The name of the AvailabilitySet used
- * with this StreamingEndpoint for high availability streaming.  This value can
- * only be set at creation time.
- * @member {object} [accessControl] The access control definition of the
+ * @property {string} [availabilitySetName] The name of the AvailabilitySet
+ * used with this StreamingEndpoint for high availability streaming.  This
+ * value can only be set at creation time.
+ * @property {object} [accessControl] The access control definition of the
  * StreamingEndpoint.
- * @member {object} [accessControl.akamai] The access control of Akamai
- * @member {array}
+ * @property {object} [accessControl.akamai] The access control of Akamai
+ * @property {array}
  * [accessControl.akamai.akamaiSignatureHeaderAuthenticationKeyList]
  * authentication key list
- * @member {object} [accessControl.ip] The IP access control of the
+ * @property {object} [accessControl.ip] The IP access control of the
  * StreamingEndpoint.
- * @member {array} [accessControl.ip.allow] The IP allow list.
- * @member {number} [maxCacheAge] Max cache age
- * @member {array} [customHostNames] The custom host names of the
+ * @property {array} [accessControl.ip.allow] The IP allow list.
+ * @property {number} [maxCacheAge] Max cache age
+ * @property {array} [customHostNames] The custom host names of the
  * StreamingEndpoint
- * @member {string} [hostName] The StreamingEndpoint host name.
- * @member {boolean} [cdnEnabled] The CDN enabled flag.
- * @member {string} [cdnProvider] The CDN provider name.
- * @member {string} [cdnProfile] The CDN profile name.
- * @member {string} [provisioningState] The provisioning state of the
+ * @property {string} [hostName] The StreamingEndpoint host name.
+ * @property {boolean} [cdnEnabled] The CDN enabled flag.
+ * @property {string} [cdnProvider] The CDN provider name.
+ * @property {string} [cdnProfile] The CDN profile name.
+ * @property {string} [provisioningState] The provisioning state of the
  * StreamingEndpoint.
- * @member {string} [resourceState] The resource state of the
+ * @property {string} [resourceState] The resource state of the
  * StreamingEndpoint. Possible values include: 'Stopped', 'Starting',
  * 'Running', 'Stopping', 'Deleting', 'Scaling'
- * @member {object} [crossSiteAccessPolicies] The StreamingEndpoint access
+ * @property {object} [crossSiteAccessPolicies] The StreamingEndpoint access
  * policies.
- * @member {string} [crossSiteAccessPolicies.clientAccessPolicy] The content of
- * clientaccesspolicy.xml used by Silverlight.
- * @member {string} [crossSiteAccessPolicies.crossDomainPolicy] The content of
- * crossdomain.xml used by Silverlight.
- * @member {date} [freeTrialEndTime] The free trial expiration time.
- * @member {date} [created] The exact time the StreamingEndpoint was created.
- * @member {date} [lastModified] The exact time the StreamingEndpoint was last
- * modified.
+ * @property {string} [crossSiteAccessPolicies.clientAccessPolicy] The content
+ * of clientaccesspolicy.xml used by Silverlight.
+ * @property {string} [crossSiteAccessPolicies.crossDomainPolicy] The content
+ * of crossdomain.xml used by Silverlight.
+ * @property {date} [freeTrialEndTime] The free trial expiration time.
+ * @property {date} [created] The exact time the StreamingEndpoint was created.
+ * @property {date} [lastModified] The exact time the StreamingEndpoint was
+ * last modified.
  */
 export interface StreamingEndpoint extends TrackedResource {
   description?: string;
@@ -3022,7 +3041,7 @@ export interface StreamingEndpoint extends TrackedResource {
  * @constructor
  * A collection of AccountFilter items.
  *
- * @member {string} [odatanextLink] A link to the next page of the collection
+ * @property {string} [odatanextLink] A link to the next page of the collection
  * (when the collection contains too many results to return in one response).
  */
 export interface AccountFilterCollection extends Array<AccountFilter> {
@@ -3035,7 +3054,7 @@ export interface AccountFilterCollection extends Array<AccountFilter> {
  * @constructor
  * A collection of Operation items.
  *
- * @member {string} [odatanextLink] A link to the next page of the collection
+ * @property {string} [odatanextLink] A link to the next page of the collection
  * (when the collection contains too many results to return in one response).
  */
 export interface OperationCollection extends Array<Operation> {
@@ -3048,7 +3067,7 @@ export interface OperationCollection extends Array<Operation> {
  * @constructor
  * A collection of MediaService items.
  *
- * @member {string} [odatanextLink] A link to the next page of the collection
+ * @property {string} [odatanextLink] A link to the next page of the collection
  * (when the collection contains too many results to return in one response).
  */
 export interface MediaServiceCollection extends Array<MediaService> {
@@ -3061,7 +3080,7 @@ export interface MediaServiceCollection extends Array<MediaService> {
  * @constructor
  * A collection of SubscriptionMediaService items.
  *
- * @member {string} [odatanextLink] A link to the next page of the collection
+ * @property {string} [odatanextLink] A link to the next page of the collection
  * (when the collection contains too many results to return in one response).
  */
 export interface SubscriptionMediaServiceCollection extends Array<SubscriptionMediaService> {
@@ -3074,7 +3093,7 @@ export interface SubscriptionMediaServiceCollection extends Array<SubscriptionMe
  * @constructor
  * A collection of Asset items.
  *
- * @member {string} [odatanextLink] A link to the next page of the collection
+ * @property {string} [odatanextLink] A link to the next page of the collection
  * (when the collection contains too many results to return in one response).
  */
 export interface AssetCollection extends Array<Asset> {
@@ -3087,7 +3106,7 @@ export interface AssetCollection extends Array<Asset> {
  * @constructor
  * A collection of AssetFilter items.
  *
- * @member {string} [odatanextLink] A link to the next page of the collection
+ * @property {string} [odatanextLink] A link to the next page of the collection
  * (when the collection contains too many results to return in one response).
  */
 export interface AssetFilterCollection extends Array<AssetFilter> {
@@ -3100,7 +3119,7 @@ export interface AssetFilterCollection extends Array<AssetFilter> {
  * @constructor
  * A collection of ContentKeyPolicy items.
  *
- * @member {string} [odatanextLink] A link to the next page of the collection
+ * @property {string} [odatanextLink] A link to the next page of the collection
  * (when the collection contains too many results to return in one response).
  */
 export interface ContentKeyPolicyCollection extends Array<ContentKeyPolicy> {
@@ -3113,7 +3132,7 @@ export interface ContentKeyPolicyCollection extends Array<ContentKeyPolicy> {
  * @constructor
  * A collection of Transform items.
  *
- * @member {string} [odatanextLink] A link to the next page of the collection
+ * @property {string} [odatanextLink] A link to the next page of the collection
  * (when the collection contains too many results to return in one response).
  */
 export interface TransformCollection extends Array<Transform> {
@@ -3126,7 +3145,7 @@ export interface TransformCollection extends Array<Transform> {
  * @constructor
  * A collection of Job items.
  *
- * @member {string} [odatanextLink] A link to the next page of the collection
+ * @property {string} [odatanextLink] A link to the next page of the collection
  * (when the collection contains too many results to return in one response).
  */
 export interface JobCollection extends Array<Job> {
@@ -3139,7 +3158,7 @@ export interface JobCollection extends Array<Job> {
  * @constructor
  * A collection of StreamingPolicy items.
  *
- * @member {string} [odatanextLink] A link to the next page of the collection
+ * @property {string} [odatanextLink] A link to the next page of the collection
  * (when the collection contains too many results to return in one response).
  */
 export interface StreamingPolicyCollection extends Array<StreamingPolicy> {
@@ -3152,7 +3171,7 @@ export interface StreamingPolicyCollection extends Array<StreamingPolicy> {
  * @constructor
  * A collection of StreamingLocator items.
  *
- * @member {string} [odatanextLink] A link to the next page of the collection
+ * @property {string} [odatanextLink] A link to the next page of the collection
  * (when the collection contains too many results to return in one response).
  */
 export interface StreamingLocatorCollection extends Array<StreamingLocator> {
@@ -3167,8 +3186,8 @@ export interface StreamingLocatorCollection extends Array<StreamingLocator> {
  *
  * The LiveEvent list result.
  *
- * @member {number} [odatacount] The number of result.
- * @member {string} [odatanextLink] Th link to the next set of results. Not
+ * @property {number} [odatacount] The number of result.
+ * @property {string} [odatanextLink] Th link to the next set of results. Not
  * empty if value contains incomplete list of Live Outputs.
  */
 export interface LiveEventListResult extends Array<LiveEvent> {
@@ -3183,8 +3202,8 @@ export interface LiveEventListResult extends Array<LiveEvent> {
  *
  * The LiveOutput list result.
  *
- * @member {number} [odatacount] The number of result.
- * @member {string} [odatanextLink] Th link to the next set of results. Not
+ * @property {number} [odatacount] The number of result.
+ * @property {string} [odatanextLink] Th link to the next set of results. Not
  * empty if value contains incomplete list of Live Outputs.
  */
 export interface LiveOutputListResult extends Array<LiveOutput> {
@@ -3199,8 +3218,8 @@ export interface LiveOutputListResult extends Array<LiveOutput> {
  *
  * The StreamingEndpoint list result.
  *
- * @member {number} [odatacount] The number of result.
- * @member {string} [odatanextLink] Th link to the next set of results. Not
+ * @property {number} [odatacount] The number of result.
+ * @property {string} [odatanextLink] Th link to the next set of results. Not
  * empty if value contains incomplete list of StreamingEndpoints.
  */
 export interface StreamingEndpointListResult extends Array<StreamingEndpoint> {

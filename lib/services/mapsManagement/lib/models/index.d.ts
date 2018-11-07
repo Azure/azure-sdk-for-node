@@ -20,10 +20,11 @@ export { CloudError } from 'ms-rest-azure';
  * @class
  * Initializes a new instance of the ErrorDetailsItem class.
  * @constructor
- * @member {string} [code] Error code.
- * @member {string} [message] If available, a human readable description of the
+ * @property {string} [code] Error code.
+ * @property {string} [message] If available, a human readable description of
+ * the error.
+ * @property {string} [target] If available, the component generating the
  * error.
- * @member {string} [target] If available, the component generating the error.
  */
 export interface ErrorDetailsItem {
   readonly code?: string;
@@ -37,11 +38,12 @@ export interface ErrorDetailsItem {
  * @constructor
  * This object is returned when an error occurs in the Maps API
  *
- * @member {string} [code] Error code.
- * @member {string} [message] If available, a human readable description of the
+ * @property {string} [code] Error code.
+ * @property {string} [message] If available, a human readable description of
+ * the error.
+ * @property {string} [target] If available, the component generating the
  * error.
- * @member {string} [target] If available, the component generating the error.
- * @member {array} [details] If available, a list of additional details about
+ * @property {array} [details] If available, a list of additional details about
  * the error.
  */
 export interface ErrorModel {
@@ -57,10 +59,11 @@ export interface ErrorModel {
  * @constructor
  * An Azure resource
  *
- * @member {string} [id] The fully qualified Maps Account resource identifier.
- * @member {string} [name] The name of the Maps Account, which is unique within
- * a Resource Group.
- * @member {string} [type] Azure resource type.
+ * @property {string} [id] The fully qualified Maps Account resource
+ * identifier.
+ * @property {string} [name] The name of the Maps Account, which is unique
+ * within a Resource Group.
+ * @property {string} [type] Azure resource type.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -74,8 +77,9 @@ export interface Resource extends BaseResource {
  * @constructor
  * The SKU of the Maps Account.
  *
- * @member {string} name The name of the SKU, in standard format (such as S0).
- * @member {string} [tier] Gets the sku tier. This is based on the SKU name.
+ * @property {string} name The name of the SKU, in standard format (such as
+ * S0).
+ * @property {string} [tier] Gets the sku tier. This is based on the SKU name.
  */
 export interface Sku {
   name: string;
@@ -88,16 +92,16 @@ export interface Sku {
  * @constructor
  * An Azure resource which represents access to a suite of Maps REST APIs.
  *
- * @member {string} [location] The location of the resource.
- * @member {object} [tags] Gets a list of key value pairs that describe the
+ * @property {string} [location] The location of the resource.
+ * @property {object} [tags] Gets a list of key value pairs that describe the
  * resource. These tags can be used in viewing and grouping this resource
  * (across resource groups). A maximum of 15 tags can be provided for a
  * resource. Each tag must have a key no greater than 128 characters and value
  * no greater than 256 characters.
- * @member {object} [sku] The SKU of this account.
- * @member {string} [sku.name] The name of the SKU, in standard format (such as
- * S0).
- * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
+ * @property {object} [sku] The SKU of this account.
+ * @property {string} [sku.name] The name of the SKU, in standard format (such
+ * as S0).
+ * @property {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name.
  */
 export interface MapsAccount extends Resource {
@@ -112,16 +116,16 @@ export interface MapsAccount extends Resource {
  * @constructor
  * Parameters used to create a new Maps Account.
  *
- * @member {string} location The location of the resource.
- * @member {object} [tags] Gets or sets a list of key value pairs that describe
- * the resource. These tags can be used in viewing and grouping this resource
- * (across resource groups). A maximum of 15 tags can be provided for a
- * resource. Each tag must have a key no greater than 128 characters and value
- * no greater than 256 characters.
- * @member {object} sku The SKU of this account.
- * @member {string} [sku.name] The name of the SKU, in standard format (such as
- * S0).
- * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
+ * @property {string} location The location of the resource.
+ * @property {object} [tags] Gets or sets a list of key value pairs that
+ * describe the resource. These tags can be used in viewing and grouping this
+ * resource (across resource groups). A maximum of 15 tags can be provided for
+ * a resource. Each tag must have a key no greater than 128 characters and
+ * value no greater than 256 characters.
+ * @property {object} sku The SKU of this account.
+ * @property {string} [sku.name] The name of the SKU, in standard format (such
+ * as S0).
+ * @property {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name.
  */
 export interface MapsAccountCreateParameters {
@@ -136,15 +140,15 @@ export interface MapsAccountCreateParameters {
  * @constructor
  * Parameters used to update an existing Maps Account.
  *
- * @member {object} [tags] Gets or sets a list of key value pairs that describe
- * the resource. These tags can be used in viewing and grouping this resource
- * (across resource groups). A maximum of 15 tags can be provided for a
- * resource. Each tag must have a key no greater than 128 characters and value
- * no greater than 256 characters.
- * @member {object} [sku] The SKU of this account.
- * @member {string} [sku.name] The name of the SKU, in standard format (such as
- * S0).
- * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
+ * @property {object} [tags] Gets or sets a list of key value pairs that
+ * describe the resource. These tags can be used in viewing and grouping this
+ * resource (across resource groups). A maximum of 15 tags can be provided for
+ * a resource. Each tag must have a key no greater than 128 characters and
+ * value no greater than 256 characters.
+ * @property {object} [sku] The SKU of this account.
+ * @property {string} [sku.name] The name of the SKU, in standard format (such
+ * as S0).
+ * @property {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name.
  */
 export interface MapsAccountUpdateParameters {
@@ -158,10 +162,10 @@ export interface MapsAccountUpdateParameters {
  * @constructor
  * The description of what resources to move between resource groups.
  *
- * @member {string} targetResourceGroup The name of the destination resource
+ * @property {string} targetResourceGroup The name of the destination resource
  * group.
- * @member {array} resourceIds A list of resource names to move from the source
- * resource group.
+ * @property {array} resourceIds A list of resource names to move from the
+ * source resource group.
  */
 export interface MapsAccountsMoveRequest {
   targetResourceGroup: string;
@@ -174,7 +178,7 @@ export interface MapsAccountsMoveRequest {
  * @constructor
  * Whether the operation refers to the primary or secondary key.
  *
- * @member {string} keyType Whether the operation refers to the primary or
+ * @property {string} keyType Whether the operation refers to the primary or
  * secondary key. Possible values include: 'primary', 'secondary'
  */
 export interface MapsKeySpecification {
@@ -188,11 +192,11 @@ export interface MapsKeySpecification {
  * The set of keys which can be used to access the Maps REST APIs. Two keys are
  * provided for key rotation without interruption.
  *
- * @member {string} [id] The full Azure resource identifier of the Maps
+ * @property {string} [id] The full Azure resource identifier of the Maps
  * Account.
- * @member {string} [primaryKey] The primary key for accessing the Maps REST
+ * @property {string} [primaryKey] The primary key for accessing the Maps REST
  * APIs.
- * @member {string} [secondaryKey] The secondary key for accessing the Maps
+ * @property {string} [secondaryKey] The secondary key for accessing the Maps
  * REST APIs.
  */
 export interface MapsAccountKeys {
@@ -207,11 +211,11 @@ export interface MapsAccountKeys {
  * @constructor
  * The human-readable description of the operation.
  *
- * @member {string} [provider] Service provider: Microsoft Maps.
- * @member {string} [resource] Resource on which the operation is performed.
- * @member {string} [operation] The action that users can perform, based on
+ * @property {string} [provider] Service provider: Microsoft Maps.
+ * @property {string} [resource] Resource on which the operation is performed.
+ * @property {string} [operation] The action that users can perform, based on
  * their permission level.
- * @member {string} [description] The description of the operation.
+ * @property {string} [description] The description of the operation.
  */
 export interface MapsOperationsValueItemDisplay {
   readonly provider?: string;
@@ -224,15 +228,16 @@ export interface MapsOperationsValueItemDisplay {
  * @class
  * Initializes a new instance of the MapsOperationsValueItem class.
  * @constructor
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}.
- * @member {object} [display] The human-readable description of the operation.
- * @member {string} [display.provider] Service provider: Microsoft Maps.
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}.
+ * @property {object} [display] The human-readable description of the
+ * operation.
+ * @property {string} [display.provider] Service provider: Microsoft Maps.
+ * @property {string} [display.resource] Resource on which the operation is
  * performed.
- * @member {string} [display.operation] The action that users can perform,
+ * @property {string} [display.operation] The action that users can perform,
  * based on their permission level.
- * @member {string} [display.description] The description of the operation.
- * @member {string} [origin] The origin of the operation.
+ * @property {string} [display.description] The description of the operation.
+ * @property {string} [origin] The origin of the operation.
  */
 export interface MapsOperationsValueItem {
   readonly name?: string;

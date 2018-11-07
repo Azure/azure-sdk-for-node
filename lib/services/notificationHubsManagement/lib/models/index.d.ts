@@ -18,32 +18,54 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
- * Initializes a new instance of the CheckNameAvailabilityRequestParameters class.
+ * Initializes a new instance of the OperationDisplay class.
  * @constructor
- * Parameters supplied to the Check Name Availability for Namespace and
- * NotificationHubs.
+ * The object that represents the operation.
  *
- * @member {string} name Resource name
- * @member {string} [type] Resource type
+ * @property {string} [provider] Service provider: Microsoft.NotificationHubs
+ * @property {string} [resource] Resource on which the operation is performed:
+ * Invoice, etc.
+ * @property {string} [operation] Operation type: Read, write, delete, etc.
  */
-export interface CheckNameAvailabilityRequestParameters {
-  name: string;
-  readonly type?: string;
+export interface OperationDisplay {
+  readonly provider?: string;
+  readonly resource?: string;
+  readonly operation?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the CheckNameAvailabilityResponse class.
+ * Initializes a new instance of the Operation class.
  * @constructor
- * @member {boolean} [nameAvailable] Checks if the namespace name is available
- * @member {string} [reason] States the reason due to which the namespace name
- * is not available
- * @member {string} [message] The messsage returned when checking for namespace
- * name availability
+ * A NotificationHubs REST API operation
+ *
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] The object that represents the operation.
+ * @property {string} [display.provider] Service provider:
+ * Microsoft.NotificationHubs
+ * @property {string} [display.resource] Resource on which the operation is
+ * performed: Invoice, etc.
+ * @property {string} [display.operation] Operation type: Read, write, delete,
+ * etc.
  */
-export interface CheckNameAvailabilityResponse {
-  nameAvailable?: boolean;
-  reason?: string;
+export interface Operation {
+  readonly name?: string;
+  display?: OperationDisplay;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorResponse class.
+ * @constructor
+ * Error reponse indicates NotificationHubs service is not able to process the
+ * incoming request. The reason is provided in the error message.
+ *
+ * @property {string} [code] Error code.
+ * @property {string} [message] Error message indicating why the operation
+ * failed.
+ */
+export interface ErrorResponse {
+  code?: string;
   message?: string;
 }
 
@@ -53,12 +75,12 @@ export interface CheckNameAvailabilityResponse {
  * @constructor
  * The Sku description for a namespace
  *
- * @member {string} name Name of the notification hub sku. Possible values
+ * @property {string} name Name of the notification hub sku. Possible values
  * include: 'Free', 'Basic', 'Standard'
- * @member {string} [tier] The tier of particular sku
- * @member {string} [size] The Sku size
- * @member {string} [family] The Sku Family
- * @member {number} [capacity] The capacity of the resource
+ * @property {string} [tier] The tier of particular sku
+ * @property {string} [size] The Sku size
+ * @property {string} [family] The Sku Family
+ * @property {number} [capacity] The capacity of the resource
  */
 export interface Sku {
   name: string;
@@ -75,26 +97,26 @@ export interface Sku {
  * Parameters supplied to the Check Name Availability for Namespace and
  * NotificationHubs.
  *
- * @member {string} [id] Resource Id
- * @member {string} name Resource name
- * @member {string} [type] Resource type
- * @member {string} location Resource location
- * @member {object} [tags] Resource tags
- * @member {object} [sku] The sku of the created namespace
- * @member {string} [sku.name] Name of the notification hub sku. Possible
+ * @property {string} [id] Resource Id
+ * @property {string} name Resource name
+ * @property {string} [type] Resource type
+ * @property {string} [location] Resource location
+ * @property {object} [tags] Resource tags
+ * @property {object} [sku] The sku of the created namespace
+ * @property {string} [sku.name] Name of the notification hub sku. Possible
  * values include: 'Free', 'Basic', 'Standard'
- * @member {string} [sku.tier] The tier of particular sku
- * @member {string} [sku.size] The Sku size
- * @member {string} [sku.family] The Sku Family
- * @member {number} [sku.capacity] The capacity of the resource
- * @member {boolean} [isAvailiable] True if the name is available and can be
+ * @property {string} [sku.tier] The tier of particular sku
+ * @property {string} [sku.size] The Sku size
+ * @property {string} [sku.family] The Sku Family
+ * @property {number} [sku.capacity] The capacity of the resource
+ * @property {boolean} [isAvailiable] True if the name is available and can be
  * used to create new Namespace/NotificationHub. Otherwise false.
  */
 export interface CheckAvailabilityParameters {
   readonly id?: string;
   name: string;
   readonly type?: string;
-  location: string;
+  location?: string;
   tags?: { [propertyName: string]: string };
   sku?: Sku;
   isAvailiable?: boolean;
@@ -104,24 +126,24 @@ export interface CheckAvailabilityParameters {
  * @class
  * Initializes a new instance of the Resource class.
  * @constructor
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
- * @member {string} location Resource location
- * @member {object} [tags] Resource tags
- * @member {object} [sku] The sku of the created namespace
- * @member {string} [sku.name] Name of the notification hub sku. Possible
+ * @property {string} [id] Resource Id
+ * @property {string} [name] Resource name
+ * @property {string} [type] Resource type
+ * @property {string} [location] Resource location
+ * @property {object} [tags] Resource tags
+ * @property {object} [sku] The sku of the created namespace
+ * @property {string} [sku.name] Name of the notification hub sku. Possible
  * values include: 'Free', 'Basic', 'Standard'
- * @member {string} [sku.tier] The tier of particular sku
- * @member {string} [sku.size] The Sku size
- * @member {string} [sku.family] The Sku Family
- * @member {number} [sku.capacity] The capacity of the resource
+ * @property {string} [sku.tier] The tier of particular sku
+ * @property {string} [sku.size] The Sku size
+ * @property {string} [sku.family] The Sku Family
+ * @property {number} [sku.capacity] The capacity of the resource
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
-  location: string;
+  location?: string;
   tags?: { [propertyName: string]: string };
   sku?: Sku;
 }
@@ -132,7 +154,7 @@ export interface Resource extends BaseResource {
  * @constructor
  * Description of a CheckAvailibility resource.
  *
- * @member {boolean} [isAvailiable] True if the name is available and can be
+ * @property {boolean} [isAvailiable] True if the name is available and can be
  * used to create new Namespace/NotificationHub. Otherwise false.
  */
 export interface CheckAvailabilityResult extends Resource {
@@ -145,40 +167,46 @@ export interface CheckAvailabilityResult extends Resource {
  * @constructor
  * Parameters supplied to the CreateOrUpdate Namespace operation.
  *
- * @member {string} [namespaceCreateOrUpdateParametersName] The name of the
+ * @property {string} [namespaceCreateOrUpdateParametersName] The name of the
  * namespace.
- * @member {string} [provisioningState] Provisioning state of the Namespace.
- * @member {string} [region] Specifies the targeted region in which the
+ * @property {string} [provisioningState] Provisioning state of the Namespace.
+ * @property {string} [region] Specifies the targeted region in which the
  * namespace should be created. It can be any of the following values:
  * Australia EastAustralia SoutheastCentral USEast USEast US 2West USNorth
  * Central USSouth Central USEast AsiaSoutheast AsiaBrazil SouthJapan EastJapan
  * WestNorth EuropeWest Europe
- * @member {string} [status] Status of the namespace. It can be any of these
+ * @property {string} [metricId] Identifier for Azure Insights metrics
+ * @property {string} [status] Status of the namespace. It can be any of these
  * values:1 = Created/Active2 = Creating3 = Suspended4 = Deleting
- * @member {date} [createdAt] The time the namespace was created.
- * @member {string} [serviceBusEndpoint] Endpoint you can use to perform
+ * @property {date} [createdAt] The time the namespace was created.
+ * @property {date} [updatedAt] The time the namespace was updated.
+ * @property {string} [serviceBusEndpoint] Endpoint you can use to perform
  * NotificationHub operations.
- * @member {string} [subscriptionId] The Id of the Azure subscription
+ * @property {string} [subscriptionId] The Id of the Azure subscription
  * associated with the namespace.
- * @member {string} [scaleUnit] ScaleUnit where the namespace gets created
- * @member {boolean} [enabled] Whether or not the namespace is currently
+ * @property {string} [scaleUnit] ScaleUnit where the namespace gets created
+ * @property {boolean} [enabled] Whether or not the namespace is currently
  * enabled.
- * @member {boolean} [critical] Whether or not the namespace is set as
+ * @property {boolean} [critical] Whether or not the namespace is set as
  * Critical.
- * @member {string} [namespaceType] The namespace type. Possible values
+ * @property {string} [dataCenter] Data center for the namespace
+ * @property {string} [namespaceType] The namespace type. Possible values
  * include: 'Messaging', 'NotificationHub'
  */
 export interface NamespaceCreateOrUpdateParameters extends Resource {
   namespaceCreateOrUpdateParametersName?: string;
   provisioningState?: string;
   region?: string;
+  readonly metricId?: string;
   status?: string;
   createdAt?: Date;
+  updatedAt?: Date;
   serviceBusEndpoint?: string;
   subscriptionId?: string;
   scaleUnit?: string;
   enabled?: boolean;
   critical?: boolean;
+  dataCenter?: string;
   namespaceType?: string;
 }
 
@@ -188,14 +216,14 @@ export interface NamespaceCreateOrUpdateParameters extends Resource {
  * @constructor
  * Parameters supplied to the Patch Namespace operation.
  *
- * @member {object} [tags] Resource tags
- * @member {object} [sku] The sku of the created namespace
- * @member {string} [sku.name] Name of the notification hub sku. Possible
+ * @property {object} [tags] Resource tags
+ * @property {object} [sku] The sku of the created namespace
+ * @property {string} [sku.name] Name of the notification hub sku. Possible
  * values include: 'Free', 'Basic', 'Standard'
- * @member {string} [sku.tier] The tier of particular sku
- * @member {string} [sku.size] The Sku size
- * @member {string} [sku.family] The Sku Family
- * @member {number} [sku.capacity] The capacity of the resource
+ * @property {string} [sku.tier] The tier of particular sku
+ * @property {string} [sku.size] The Sku size
+ * @property {string} [sku.family] The Sku Family
+ * @property {number} [sku.capacity] The capacity of the resource
  */
 export interface NamespacePatchParameters {
   tags?: { [propertyName: string]: string };
@@ -208,39 +236,45 @@ export interface NamespacePatchParameters {
  * @constructor
  * Description of a Namespace resource.
  *
- * @member {string} [namespaceResourceName] The name of the namespace.
- * @member {string} [provisioningState] Provisioning state of the Namespace.
- * @member {string} [region] Specifies the targeted region in which the
+ * @property {string} [namespaceResourceName] The name of the namespace.
+ * @property {string} [provisioningState] Provisioning state of the Namespace.
+ * @property {string} [region] Specifies the targeted region in which the
  * namespace should be created. It can be any of the following values:
  * Australia EastAustralia SoutheastCentral USEast USEast US 2West USNorth
  * Central USSouth Central USEast AsiaSoutheast AsiaBrazil SouthJapan EastJapan
  * WestNorth EuropeWest Europe
- * @member {string} [status] Status of the namespace. It can be any of these
+ * @property {string} [metricId] Identifier for Azure Insights metrics
+ * @property {string} [status] Status of the namespace. It can be any of these
  * values:1 = Created/Active2 = Creating3 = Suspended4 = Deleting
- * @member {date} [createdAt] The time the namespace was created.
- * @member {string} [serviceBusEndpoint] Endpoint you can use to perform
+ * @property {date} [createdAt] The time the namespace was created.
+ * @property {date} [updatedAt] The time the namespace was updated.
+ * @property {string} [serviceBusEndpoint] Endpoint you can use to perform
  * NotificationHub operations.
- * @member {string} [subscriptionId] The Id of the Azure subscription
+ * @property {string} [subscriptionId] The Id of the Azure subscription
  * associated with the namespace.
- * @member {string} [scaleUnit] ScaleUnit where the namespace gets created
- * @member {boolean} [enabled] Whether or not the namespace is currently
+ * @property {string} [scaleUnit] ScaleUnit where the namespace gets created
+ * @property {boolean} [enabled] Whether or not the namespace is currently
  * enabled.
- * @member {boolean} [critical] Whether or not the namespace is set as
+ * @property {boolean} [critical] Whether or not the namespace is set as
  * Critical.
- * @member {string} [namespaceType] The namespace type. Possible values
+ * @property {string} [dataCenter] Data center for the namespace
+ * @property {string} [namespaceType] The namespace type. Possible values
  * include: 'Messaging', 'NotificationHub'
  */
 export interface NamespaceResource extends Resource {
   namespaceResourceName?: string;
   provisioningState?: string;
   region?: string;
+  readonly metricId?: string;
   status?: string;
   createdAt?: Date;
+  updatedAt?: Date;
   serviceBusEndpoint?: string;
   subscriptionId?: string;
   scaleUnit?: string;
   enabled?: boolean;
   critical?: boolean;
+  dataCenter?: string;
   namespaceType?: string;
 }
 
@@ -250,10 +284,28 @@ export interface NamespaceResource extends Resource {
  * @constructor
  * SharedAccessAuthorizationRule properties.
  *
- * @member {array} [rights] The rights associated with the rule.
+ * @property {array} [rights] The rights associated with the rule.
+ * @property {string} [primaryKey] A base64-encoded 256-bit primary key for
+ * signing and validating the SAS token.
+ * @property {string} [secondaryKey] A base64-encoded 256-bit primary key for
+ * signing and validating the SAS token.
+ * @property {string} [keyName] A string that describes the authorization rule.
+ * @property {string} [claimType] A string that describes the claim type
+ * @property {string} [claimValue] A string that describes the claim value
+ * @property {string} [modifiedTime] The last modified time for this rule
+ * @property {string} [createdTime] The created time for this rule
+ * @property {number} [revision] The revision number for the rule
  */
 export interface SharedAccessAuthorizationRuleProperties {
   rights?: string[];
+  readonly primaryKey?: string;
+  readonly secondaryKey?: string;
+  readonly keyName?: string;
+  readonly claimType?: string;
+  readonly claimValue?: string;
+  readonly modifiedTime?: string;
+  readonly createdTime?: string;
+  readonly revision?: number;
 }
 
 /**
@@ -262,10 +314,25 @@ export interface SharedAccessAuthorizationRuleProperties {
  * @constructor
  * Parameters supplied to the CreateOrUpdate Namespace AuthorizationRules.
  *
- * @member {object} properties Properties of the Namespace AuthorizationRules.
- * @member {array} [properties.rights] The rights associated with the rule.
+ * @property {object} properties Properties of the Namespace
+ * AuthorizationRules.
+ * @property {array} [properties.rights] The rights associated with the rule.
+ * @property {string} [properties.primaryKey] A base64-encoded 256-bit primary
+ * key for signing and validating the SAS token.
+ * @property {string} [properties.secondaryKey] A base64-encoded 256-bit
+ * primary key for signing and validating the SAS token.
+ * @property {string} [properties.keyName] A string that describes the
+ * authorization rule.
+ * @property {string} [properties.claimType] A string that describes the claim
+ * type
+ * @property {string} [properties.claimValue] A string that describes the claim
+ * value
+ * @property {string} [properties.modifiedTime] The last modified time for this
+ * rule
+ * @property {string} [properties.createdTime] The created time for this rule
+ * @property {number} [properties.revision] The revision number for the rule
  */
-export interface SharedAccessAuthorizationRuleCreateOrUpdateParameters extends Resource {
+export interface SharedAccessAuthorizationRuleCreateOrUpdateParameters {
   properties: SharedAccessAuthorizationRuleProperties;
 }
 
@@ -275,10 +342,28 @@ export interface SharedAccessAuthorizationRuleCreateOrUpdateParameters extends R
  * @constructor
  * Description of a Namespace AuthorizationRules.
  *
- * @member {array} [rights] The rights associated with the rule.
+ * @property {array} [rights] The rights associated with the rule.
+ * @property {string} [primaryKey] A base64-encoded 256-bit primary key for
+ * signing and validating the SAS token.
+ * @property {string} [secondaryKey] A base64-encoded 256-bit primary key for
+ * signing and validating the SAS token.
+ * @property {string} [keyName] A string that describes the authorization rule.
+ * @property {string} [claimType] A string that describes the claim type
+ * @property {string} [claimValue] A string that describes the claim value
+ * @property {string} [modifiedTime] The last modified time for this rule
+ * @property {string} [createdTime] The created time for this rule
+ * @property {number} [revision] The revision number for the rule
  */
 export interface SharedAccessAuthorizationRuleResource extends Resource {
   rights?: string[];
+  readonly primaryKey?: string;
+  readonly secondaryKey?: string;
+  readonly keyName?: string;
+  readonly claimType?: string;
+  readonly claimValue?: string;
+  readonly modifiedTime?: string;
+  readonly createdTime?: string;
+  readonly revision?: number;
 }
 
 /**
@@ -287,14 +372,14 @@ export interface SharedAccessAuthorizationRuleResource extends Resource {
  * @constructor
  * Namespace/NotificationHub Connection String
  *
- * @member {string} [primaryConnectionString] PrimaryConnectionString of the
+ * @property {string} [primaryConnectionString] PrimaryConnectionString of the
  * AuthorizationRule.
- * @member {string} [secondaryConnectionString] SecondaryConnectionString of
+ * @property {string} [secondaryConnectionString] SecondaryConnectionString of
  * the created AuthorizationRule
- * @member {string} [primaryKey] PrimaryKey of the created AuthorizationRule.
- * @member {string} [secondaryKey] SecondaryKey of the created
+ * @property {string} [primaryKey] PrimaryKey of the created AuthorizationRule.
+ * @property {string} [secondaryKey] SecondaryKey of the created
  * AuthorizationRule
- * @member {string} [keyName] KeyName of the created AuthorizationRule
+ * @property {string} [keyName] KeyName of the created AuthorizationRule
  */
 export interface ResourceListKeys {
   primaryConnectionString?: string;
@@ -310,9 +395,9 @@ export interface ResourceListKeys {
  * @constructor
  * Namespace/NotificationHub Regenerate Keys
  *
- * @member {string} [policyKey] Name of the key that has to be regenerated for
- * the Namespace/Notification Hub Authorization Rule. The value can be Primary
- * Key/Secondary Key.
+ * @property {string} [policyKey] Name of the key that has to be regenerated
+ * for the Namespace/Notification Hub Authorization Rule. The value can be
+ * Primary Key/Secondary Key.
  */
 export interface PolicykeyResource {
   policyKey?: string;
@@ -324,16 +409,16 @@ export interface PolicykeyResource {
  * @constructor
  * Description of a NotificationHub ApnsCredential.
  *
- * @member {string} [apnsCertificate] The APNS certificate.
- * @member {string} [certificateKey] The certificate key.
- * @member {string} [endpoint] The endpoint of this credential.
- * @member {string} [thumbprint] The Apns certificate Thumbprint
- * @member {string} [keyId] A 10-character key identifier (kid) key, obtained
+ * @property {string} [apnsCertificate] The APNS certificate.
+ * @property {string} [certificateKey] The certificate key.
+ * @property {string} [endpoint] The endpoint of this credential.
+ * @property {string} [thumbprint] The Apns certificate Thumbprint
+ * @property {string} [keyId] A 10-character key identifier (kid) key, obtained
  * from your developer account
- * @member {string} [appName] The name of the application
- * @member {string} [appId] The issuer (iss) registered claim key, whose value
- * is your 10-character Team ID, obtained from your developer account
- * @member {string} [token] Provider Authentication Token, obtained through
+ * @property {string} [appName] The name of the application
+ * @property {string} [appId] The issuer (iss) registered claim key, whose
+ * value is your 10-character Team ID, obtained from your developer account
+ * @property {string} [token] Provider Authentication Token, obtained through
  * your developer account
  */
 export interface ApnsCredential {
@@ -353,9 +438,9 @@ export interface ApnsCredential {
  * @constructor
  * Description of a NotificationHub WnsCredential.
  *
- * @member {string} [packageSid] The package ID for this credential.
- * @member {string} [secretKey] The secret key.
- * @member {string} [windowsLiveEndpoint] The Windows Live endpoint.
+ * @property {string} [packageSid] The package ID for this credential.
+ * @property {string} [secretKey] The secret key.
+ * @property {string} [windowsLiveEndpoint] The Windows Live endpoint.
  */
 export interface WnsCredential {
   packageSid?: string;
@@ -369,8 +454,8 @@ export interface WnsCredential {
  * @constructor
  * Description of a NotificationHub GcmCredential.
  *
- * @member {string} [gcmEndpoint] The GCM endpoint.
- * @member {string} [googleApiKey] The Google API key.
+ * @property {string} [gcmEndpoint] The GCM endpoint.
+ * @property {string} [googleApiKey] The Google API key.
  */
 export interface GcmCredential {
   gcmEndpoint?: string;
@@ -383,9 +468,9 @@ export interface GcmCredential {
  * @constructor
  * Description of a NotificationHub MpnsCredential.
  *
- * @member {string} [mpnsCertificate] The MPNS certificate.
- * @member {string} [certificateKey] The certificate key for this credential.
- * @member {string} [thumbprint] The Mpns certificate Thumbprint
+ * @property {string} [mpnsCertificate] The MPNS certificate.
+ * @property {string} [certificateKey] The certificate key for this credential.
+ * @property {string} [thumbprint] The Mpns certificate Thumbprint
  */
 export interface MpnsCredential {
   mpnsCertificate?: string;
@@ -399,9 +484,9 @@ export interface MpnsCredential {
  * @constructor
  * Description of a NotificationHub AdmCredential.
  *
- * @member {string} [clientId] The client identifier.
- * @member {string} [clientSecret] The credential secret access key.
- * @member {string} [authTokenUrl] The URL of the authorization token.
+ * @property {string} [clientId] The client identifier.
+ * @property {string} [clientSecret] The credential secret access key.
+ * @property {string} [authTokenUrl] The URL of the authorization token.
  */
 export interface AdmCredential {
   clientId?: string;
@@ -415,9 +500,9 @@ export interface AdmCredential {
  * @constructor
  * Description of a NotificationHub BaiduCredential.
  *
- * @member {string} [baiduApiKey] Baidu Api Key.
- * @member {string} [baiduEndPoint] Baidu Endpoint.
- * @member {string} [baiduSecretKey] Baidu Secret Key
+ * @property {string} [baiduApiKey] Baidu Api Key.
+ * @property {string} [baiduEndPoint] Baidu Endpoint.
+ * @property {string} [baiduSecretKey] Baidu Secret Key
  */
 export interface BaiduCredential {
   baiduApiKey?: string;
@@ -431,58 +516,132 @@ export interface BaiduCredential {
  * @constructor
  * Parameters supplied to the CreateOrUpdate NotificationHub operation.
  *
- * @member {string} [notificationHubCreateOrUpdateParametersName] The
+ * @property {string} [notificationHubCreateOrUpdateParametersName] The
  * NotificationHub name.
- * @member {string} [registrationTtl] The RegistrationTtl of the created
+ * @property {string} [registrationTtl] The RegistrationTtl of the created
  * NotificationHub
- * @member {array} [authorizationRules] The AuthorizationRules of the created
+ * @property {array} [authorizationRules] The AuthorizationRules of the created
  * NotificationHub
- * @member {object} [apnsCredential] The ApnsCredential of the created
+ * @property {object} [apnsCredential] The ApnsCredential of the created
  * NotificationHub
- * @member {string} [apnsCredential.apnsCertificate] The APNS certificate.
- * @member {string} [apnsCredential.certificateKey] The certificate key.
- * @member {string} [apnsCredential.endpoint] The endpoint of this credential.
- * @member {string} [apnsCredential.thumbprint] The Apns certificate Thumbprint
- * @member {string} [apnsCredential.keyId] A 10-character key identifier (kid)
- * key, obtained from your developer account
- * @member {string} [apnsCredential.appName] The name of the application
- * @member {string} [apnsCredential.appId] The issuer (iss) registered claim
+ * @property {string} [apnsCredential.apnsCertificate] The APNS certificate.
+ * @property {string} [apnsCredential.certificateKey] The certificate key.
+ * @property {string} [apnsCredential.endpoint] The endpoint of this
+ * credential.
+ * @property {string} [apnsCredential.thumbprint] The Apns certificate
+ * Thumbprint
+ * @property {string} [apnsCredential.keyId] A 10-character key identifier
+ * (kid) key, obtained from your developer account
+ * @property {string} [apnsCredential.appName] The name of the application
+ * @property {string} [apnsCredential.appId] The issuer (iss) registered claim
  * key, whose value is your 10-character Team ID, obtained from your developer
  * account
- * @member {string} [apnsCredential.token] Provider Authentication Token,
+ * @property {string} [apnsCredential.token] Provider Authentication Token,
  * obtained through your developer account
- * @member {object} [wnsCredential] The WnsCredential of the created
+ * @property {object} [wnsCredential] The WnsCredential of the created
  * NotificationHub
- * @member {string} [wnsCredential.packageSid] The package ID for this
+ * @property {string} [wnsCredential.packageSid] The package ID for this
  * credential.
- * @member {string} [wnsCredential.secretKey] The secret key.
- * @member {string} [wnsCredential.windowsLiveEndpoint] The Windows Live
+ * @property {string} [wnsCredential.secretKey] The secret key.
+ * @property {string} [wnsCredential.windowsLiveEndpoint] The Windows Live
  * endpoint.
- * @member {object} [gcmCredential] The GcmCredential of the created
+ * @property {object} [gcmCredential] The GcmCredential of the created
  * NotificationHub
- * @member {string} [gcmCredential.gcmEndpoint] The GCM endpoint.
- * @member {string} [gcmCredential.googleApiKey] The Google API key.
- * @member {object} [mpnsCredential] The MpnsCredential of the created
+ * @property {string} [gcmCredential.gcmEndpoint] The GCM endpoint.
+ * @property {string} [gcmCredential.googleApiKey] The Google API key.
+ * @property {object} [mpnsCredential] The MpnsCredential of the created
  * NotificationHub
- * @member {string} [mpnsCredential.mpnsCertificate] The MPNS certificate.
- * @member {string} [mpnsCredential.certificateKey] The certificate key for
+ * @property {string} [mpnsCredential.mpnsCertificate] The MPNS certificate.
+ * @property {string} [mpnsCredential.certificateKey] The certificate key for
  * this credential.
- * @member {string} [mpnsCredential.thumbprint] The Mpns certificate Thumbprint
- * @member {object} [admCredential] The AdmCredential of the created
+ * @property {string} [mpnsCredential.thumbprint] The Mpns certificate
+ * Thumbprint
+ * @property {object} [admCredential] The AdmCredential of the created
  * NotificationHub
- * @member {string} [admCredential.clientId] The client identifier.
- * @member {string} [admCredential.clientSecret] The credential secret access
+ * @property {string} [admCredential.clientId] The client identifier.
+ * @property {string} [admCredential.clientSecret] The credential secret access
  * key.
- * @member {string} [admCredential.authTokenUrl] The URL of the authorization
+ * @property {string} [admCredential.authTokenUrl] The URL of the authorization
  * token.
- * @member {object} [baiduCredential] The BaiduCredential of the created
+ * @property {object} [baiduCredential] The BaiduCredential of the created
  * NotificationHub
- * @member {string} [baiduCredential.baiduApiKey] Baidu Api Key.
- * @member {string} [baiduCredential.baiduEndPoint] Baidu Endpoint.
- * @member {string} [baiduCredential.baiduSecretKey] Baidu Secret Key
+ * @property {string} [baiduCredential.baiduApiKey] Baidu Api Key.
+ * @property {string} [baiduCredential.baiduEndPoint] Baidu Endpoint.
+ * @property {string} [baiduCredential.baiduSecretKey] Baidu Secret Key
  */
 export interface NotificationHubCreateOrUpdateParameters extends Resource {
   notificationHubCreateOrUpdateParametersName?: string;
+  registrationTtl?: string;
+  authorizationRules?: SharedAccessAuthorizationRuleProperties[];
+  apnsCredential?: ApnsCredential;
+  wnsCredential?: WnsCredential;
+  gcmCredential?: GcmCredential;
+  mpnsCredential?: MpnsCredential;
+  admCredential?: AdmCredential;
+  baiduCredential?: BaiduCredential;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NotificationHubPatchParameters class.
+ * @constructor
+ * Parameters supplied to the patch NotificationHub operation.
+ *
+ * @property {string} [notificationHubPatchParametersName] The NotificationHub
+ * name.
+ * @property {string} [registrationTtl] The RegistrationTtl of the created
+ * NotificationHub
+ * @property {array} [authorizationRules] The AuthorizationRules of the created
+ * NotificationHub
+ * @property {object} [apnsCredential] The ApnsCredential of the created
+ * NotificationHub
+ * @property {string} [apnsCredential.apnsCertificate] The APNS certificate.
+ * @property {string} [apnsCredential.certificateKey] The certificate key.
+ * @property {string} [apnsCredential.endpoint] The endpoint of this
+ * credential.
+ * @property {string} [apnsCredential.thumbprint] The Apns certificate
+ * Thumbprint
+ * @property {string} [apnsCredential.keyId] A 10-character key identifier
+ * (kid) key, obtained from your developer account
+ * @property {string} [apnsCredential.appName] The name of the application
+ * @property {string} [apnsCredential.appId] The issuer (iss) registered claim
+ * key, whose value is your 10-character Team ID, obtained from your developer
+ * account
+ * @property {string} [apnsCredential.token] Provider Authentication Token,
+ * obtained through your developer account
+ * @property {object} [wnsCredential] The WnsCredential of the created
+ * NotificationHub
+ * @property {string} [wnsCredential.packageSid] The package ID for this
+ * credential.
+ * @property {string} [wnsCredential.secretKey] The secret key.
+ * @property {string} [wnsCredential.windowsLiveEndpoint] The Windows Live
+ * endpoint.
+ * @property {object} [gcmCredential] The GcmCredential of the created
+ * NotificationHub
+ * @property {string} [gcmCredential.gcmEndpoint] The GCM endpoint.
+ * @property {string} [gcmCredential.googleApiKey] The Google API key.
+ * @property {object} [mpnsCredential] The MpnsCredential of the created
+ * NotificationHub
+ * @property {string} [mpnsCredential.mpnsCertificate] The MPNS certificate.
+ * @property {string} [mpnsCredential.certificateKey] The certificate key for
+ * this credential.
+ * @property {string} [mpnsCredential.thumbprint] The Mpns certificate
+ * Thumbprint
+ * @property {object} [admCredential] The AdmCredential of the created
+ * NotificationHub
+ * @property {string} [admCredential.clientId] The client identifier.
+ * @property {string} [admCredential.clientSecret] The credential secret access
+ * key.
+ * @property {string} [admCredential.authTokenUrl] The URL of the authorization
+ * token.
+ * @property {object} [baiduCredential] The BaiduCredential of the created
+ * NotificationHub
+ * @property {string} [baiduCredential.baiduApiKey] Baidu Api Key.
+ * @property {string} [baiduCredential.baiduEndPoint] Baidu Endpoint.
+ * @property {string} [baiduCredential.baiduSecretKey] Baidu Secret Key
+ */
+export interface NotificationHubPatchParameters extends Resource {
+  notificationHubPatchParametersName?: string;
   registrationTtl?: string;
   authorizationRules?: SharedAccessAuthorizationRuleProperties[];
   apnsCredential?: ApnsCredential;
@@ -499,54 +658,57 @@ export interface NotificationHubCreateOrUpdateParameters extends Resource {
  * @constructor
  * Description of a NotificationHub Resource.
  *
- * @member {string} [notificationHubResourceName] The NotificationHub name.
- * @member {string} [registrationTtl] The RegistrationTtl of the created
+ * @property {string} [notificationHubResourceName] The NotificationHub name.
+ * @property {string} [registrationTtl] The RegistrationTtl of the created
  * NotificationHub
- * @member {array} [authorizationRules] The AuthorizationRules of the created
+ * @property {array} [authorizationRules] The AuthorizationRules of the created
  * NotificationHub
- * @member {object} [apnsCredential] The ApnsCredential of the created
+ * @property {object} [apnsCredential] The ApnsCredential of the created
  * NotificationHub
- * @member {string} [apnsCredential.apnsCertificate] The APNS certificate.
- * @member {string} [apnsCredential.certificateKey] The certificate key.
- * @member {string} [apnsCredential.endpoint] The endpoint of this credential.
- * @member {string} [apnsCredential.thumbprint] The Apns certificate Thumbprint
- * @member {string} [apnsCredential.keyId] A 10-character key identifier (kid)
- * key, obtained from your developer account
- * @member {string} [apnsCredential.appName] The name of the application
- * @member {string} [apnsCredential.appId] The issuer (iss) registered claim
+ * @property {string} [apnsCredential.apnsCertificate] The APNS certificate.
+ * @property {string} [apnsCredential.certificateKey] The certificate key.
+ * @property {string} [apnsCredential.endpoint] The endpoint of this
+ * credential.
+ * @property {string} [apnsCredential.thumbprint] The Apns certificate
+ * Thumbprint
+ * @property {string} [apnsCredential.keyId] A 10-character key identifier
+ * (kid) key, obtained from your developer account
+ * @property {string} [apnsCredential.appName] The name of the application
+ * @property {string} [apnsCredential.appId] The issuer (iss) registered claim
  * key, whose value is your 10-character Team ID, obtained from your developer
  * account
- * @member {string} [apnsCredential.token] Provider Authentication Token,
+ * @property {string} [apnsCredential.token] Provider Authentication Token,
  * obtained through your developer account
- * @member {object} [wnsCredential] The WnsCredential of the created
+ * @property {object} [wnsCredential] The WnsCredential of the created
  * NotificationHub
- * @member {string} [wnsCredential.packageSid] The package ID for this
+ * @property {string} [wnsCredential.packageSid] The package ID for this
  * credential.
- * @member {string} [wnsCredential.secretKey] The secret key.
- * @member {string} [wnsCredential.windowsLiveEndpoint] The Windows Live
+ * @property {string} [wnsCredential.secretKey] The secret key.
+ * @property {string} [wnsCredential.windowsLiveEndpoint] The Windows Live
  * endpoint.
- * @member {object} [gcmCredential] The GcmCredential of the created
+ * @property {object} [gcmCredential] The GcmCredential of the created
  * NotificationHub
- * @member {string} [gcmCredential.gcmEndpoint] The GCM endpoint.
- * @member {string} [gcmCredential.googleApiKey] The Google API key.
- * @member {object} [mpnsCredential] The MpnsCredential of the created
+ * @property {string} [gcmCredential.gcmEndpoint] The GCM endpoint.
+ * @property {string} [gcmCredential.googleApiKey] The Google API key.
+ * @property {object} [mpnsCredential] The MpnsCredential of the created
  * NotificationHub
- * @member {string} [mpnsCredential.mpnsCertificate] The MPNS certificate.
- * @member {string} [mpnsCredential.certificateKey] The certificate key for
+ * @property {string} [mpnsCredential.mpnsCertificate] The MPNS certificate.
+ * @property {string} [mpnsCredential.certificateKey] The certificate key for
  * this credential.
- * @member {string} [mpnsCredential.thumbprint] The Mpns certificate Thumbprint
- * @member {object} [admCredential] The AdmCredential of the created
+ * @property {string} [mpnsCredential.thumbprint] The Mpns certificate
+ * Thumbprint
+ * @property {object} [admCredential] The AdmCredential of the created
  * NotificationHub
- * @member {string} [admCredential.clientId] The client identifier.
- * @member {string} [admCredential.clientSecret] The credential secret access
+ * @property {string} [admCredential.clientId] The client identifier.
+ * @property {string} [admCredential.clientSecret] The credential secret access
  * key.
- * @member {string} [admCredential.authTokenUrl] The URL of the authorization
+ * @property {string} [admCredential.authTokenUrl] The URL of the authorization
  * token.
- * @member {object} [baiduCredential] The BaiduCredential of the created
+ * @property {object} [baiduCredential] The BaiduCredential of the created
  * NotificationHub
- * @member {string} [baiduCredential.baiduApiKey] Baidu Api Key.
- * @member {string} [baiduCredential.baiduEndPoint] Baidu Endpoint.
- * @member {string} [baiduCredential.baiduSecretKey] Baidu Secret Key
+ * @property {string} [baiduCredential.baiduApiKey] Baidu Api Key.
+ * @property {string} [baiduCredential.baiduEndPoint] Baidu Endpoint.
+ * @property {string} [baiduCredential.baiduSecretKey] Baidu Secret Key
  */
 export interface NotificationHubResource extends Resource {
   notificationHubResourceName?: string;
@@ -562,53 +724,72 @@ export interface NotificationHubResource extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the DebugSendResponse class.
+ * @constructor
+ * Description of a NotificationHub Resource.
+ *
+ * @property {number} [success] successful send
+ * @property {number} [failure] send failure
+ * @property {object} [results] actual failure description
+ */
+export interface DebugSendResponse extends Resource {
+  success?: number;
+  failure?: number;
+  results?: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PnsCredentialsResource class.
  * @constructor
  * Description of a NotificationHub PNS Credentials.
  *
- * @member {object} [apnsCredential] The ApnsCredential of the created
+ * @property {object} [apnsCredential] The ApnsCredential of the created
  * NotificationHub
- * @member {string} [apnsCredential.apnsCertificate] The APNS certificate.
- * @member {string} [apnsCredential.certificateKey] The certificate key.
- * @member {string} [apnsCredential.endpoint] The endpoint of this credential.
- * @member {string} [apnsCredential.thumbprint] The Apns certificate Thumbprint
- * @member {string} [apnsCredential.keyId] A 10-character key identifier (kid)
- * key, obtained from your developer account
- * @member {string} [apnsCredential.appName] The name of the application
- * @member {string} [apnsCredential.appId] The issuer (iss) registered claim
+ * @property {string} [apnsCredential.apnsCertificate] The APNS certificate.
+ * @property {string} [apnsCredential.certificateKey] The certificate key.
+ * @property {string} [apnsCredential.endpoint] The endpoint of this
+ * credential.
+ * @property {string} [apnsCredential.thumbprint] The Apns certificate
+ * Thumbprint
+ * @property {string} [apnsCredential.keyId] A 10-character key identifier
+ * (kid) key, obtained from your developer account
+ * @property {string} [apnsCredential.appName] The name of the application
+ * @property {string} [apnsCredential.appId] The issuer (iss) registered claim
  * key, whose value is your 10-character Team ID, obtained from your developer
  * account
- * @member {string} [apnsCredential.token] Provider Authentication Token,
+ * @property {string} [apnsCredential.token] Provider Authentication Token,
  * obtained through your developer account
- * @member {object} [wnsCredential] The WnsCredential of the created
+ * @property {object} [wnsCredential] The WnsCredential of the created
  * NotificationHub
- * @member {string} [wnsCredential.packageSid] The package ID for this
+ * @property {string} [wnsCredential.packageSid] The package ID for this
  * credential.
- * @member {string} [wnsCredential.secretKey] The secret key.
- * @member {string} [wnsCredential.windowsLiveEndpoint] The Windows Live
+ * @property {string} [wnsCredential.secretKey] The secret key.
+ * @property {string} [wnsCredential.windowsLiveEndpoint] The Windows Live
  * endpoint.
- * @member {object} [gcmCredential] The GcmCredential of the created
+ * @property {object} [gcmCredential] The GcmCredential of the created
  * NotificationHub
- * @member {string} [gcmCredential.gcmEndpoint] The GCM endpoint.
- * @member {string} [gcmCredential.googleApiKey] The Google API key.
- * @member {object} [mpnsCredential] The MpnsCredential of the created
+ * @property {string} [gcmCredential.gcmEndpoint] The GCM endpoint.
+ * @property {string} [gcmCredential.googleApiKey] The Google API key.
+ * @property {object} [mpnsCredential] The MpnsCredential of the created
  * NotificationHub
- * @member {string} [mpnsCredential.mpnsCertificate] The MPNS certificate.
- * @member {string} [mpnsCredential.certificateKey] The certificate key for
+ * @property {string} [mpnsCredential.mpnsCertificate] The MPNS certificate.
+ * @property {string} [mpnsCredential.certificateKey] The certificate key for
  * this credential.
- * @member {string} [mpnsCredential.thumbprint] The Mpns certificate Thumbprint
- * @member {object} [admCredential] The AdmCredential of the created
+ * @property {string} [mpnsCredential.thumbprint] The Mpns certificate
+ * Thumbprint
+ * @property {object} [admCredential] The AdmCredential of the created
  * NotificationHub
- * @member {string} [admCredential.clientId] The client identifier.
- * @member {string} [admCredential.clientSecret] The credential secret access
+ * @property {string} [admCredential.clientId] The client identifier.
+ * @property {string} [admCredential.clientSecret] The credential secret access
  * key.
- * @member {string} [admCredential.authTokenUrl] The URL of the authorization
+ * @property {string} [admCredential.authTokenUrl] The URL of the authorization
  * token.
- * @member {object} [baiduCredential] The BaiduCredential of the created
+ * @property {object} [baiduCredential] The BaiduCredential of the created
  * NotificationHub
- * @member {string} [baiduCredential.baiduApiKey] Baidu Api Key.
- * @member {string} [baiduCredential.baiduEndPoint] Baidu Endpoint.
- * @member {string} [baiduCredential.baiduSecretKey] Baidu Secret Key
+ * @property {string} [baiduCredential.baiduApiKey] Baidu Api Key.
+ * @property {string} [baiduCredential.baiduEndPoint] Baidu Endpoint.
+ * @property {string} [baiduCredential.baiduSecretKey] Baidu Secret Key
  */
 export interface PnsCredentialsResource extends Resource {
   apnsCredential?: ApnsCredential;
@@ -623,7 +804,7 @@ export interface PnsCredentialsResource extends Resource {
  * @class
  * Initializes a new instance of the SubResource class.
  * @constructor
- * @member {string} [id] Resource Id
+ * @property {string} [id] Resource Id
  */
 export interface SubResource extends BaseResource {
   id?: string;
@@ -632,11 +813,25 @@ export interface SubResource extends BaseResource {
 
 /**
  * @class
+ * Initializes a new instance of the OperationListResult class.
+ * @constructor
+ * Result of the request to list NotificationHubs operations. It contains a
+ * list of operations and a URL link to get the next set of results.
+ *
+ * @property {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface OperationListResult extends Array<Operation> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the NamespaceListResult class.
  * @constructor
  * The response of the List Namespace operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of Namespaces
  */
 export interface NamespaceListResult extends Array<NamespaceResource> {
@@ -649,7 +844,7 @@ export interface NamespaceListResult extends Array<NamespaceResource> {
  * @constructor
  * The response of the List Namespace operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of AuthorizationRules
  */
 export interface SharedAccessAuthorizationRuleListResult extends Array<SharedAccessAuthorizationRuleResource> {
@@ -662,7 +857,7 @@ export interface SharedAccessAuthorizationRuleListResult extends Array<SharedAcc
  * @constructor
  * The response of the List NotificationHub operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of NotificationHub
  */
 export interface NotificationHubListResult extends Array<NotificationHubResource> {

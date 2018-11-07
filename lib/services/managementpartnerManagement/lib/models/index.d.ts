@@ -22,21 +22,21 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * this is the management partner operations response
  *
- * @member {number} [etag] Type of the partner
- * @member {string} [id] Identifier of the partner
- * @member {string} [name] Name of the partner
- * @member {string} [partnerId] This is the partner id
- * @member {string} [partnerName] This is the partner name
- * @member {string} [tenantId] This is the tenant id.
- * @member {string} [objectId] This is the object id.
- * @member {string} [version] This is the version.
- * @member {date} [updatedTime] This is the DateTime when the partner was
+ * @property {number} [etag] Type of the partner
+ * @property {string} [id] Identifier of the partner
+ * @property {string} [name] Name of the partner
+ * @property {string} [partnerId] This is the partner id
+ * @property {string} [partnerName] This is the partner name
+ * @property {string} [tenantId] This is the tenant id.
+ * @property {string} [objectId] This is the object id.
+ * @property {string} [version] This is the version.
+ * @property {date} [updatedTime] This is the DateTime when the partner was
  * updated.
- * @member {date} [createdTime] This is the DateTime when the partner was
+ * @property {date} [createdTime] This is the DateTime when the partner was
  * created.
- * @member {string} [state] This is the partner state. Possible values include:
- * 'Active', 'Deleted'
- * @member {string} [type] Type of resource.
+ * @property {string} [state] This is the partner state. Possible values
+ * include: 'Active', 'Deleted'
+ * @property {string} [type] Type of resource.
  * "Microsoft.ManagementPartner/partners"
  */
 export interface PartnerResponse extends BaseResource {
@@ -60,9 +60,9 @@ export interface PartnerResponse extends BaseResource {
  * @constructor
  * this is the extended error info
  *
- * @member {string} [code] this is the error response code. Possible values
+ * @property {string} [code] this is the error response code. Possible values
  * include: 'NotFound', 'Conflict', 'BadRequest'
- * @member {string} [message] this is the extended error info message
+ * @property {string} [message] this is the extended error info message
  */
 export interface ExtendedErrorInfo {
   code?: string;
@@ -75,10 +75,10 @@ export interface ExtendedErrorInfo {
  * @constructor
  * this is the management partner operations error
  *
- * @member {object} [error] this is the ExtendedErrorInfo property
- * @member {string} [error.code] this is the error response code. Possible
+ * @property {object} [error] this is the ExtendedErrorInfo property
+ * @property {string} [error.code] this is the error response code. Possible
  * values include: 'NotFound', 'Conflict', 'BadRequest'
- * @member {string} [error.message] this is the extended error info message
+ * @property {string} [error.message] this is the extended error info message
  */
 export interface ErrorModel {
   error?: ExtendedErrorInfo;
@@ -90,10 +90,10 @@ export interface ErrorModel {
  * @constructor
  * this is the management partner operation
  *
- * @member {string} [provider] the is management partner provider
- * @member {string} [resource] the is management partner resource
- * @member {string} [operation] the is management partner operation
- * @member {string} [description] the is management partner operation
+ * @property {string} [provider] the is management partner provider
+ * @property {string} [resource] the is management partner resource
+ * @property {string} [operation] the is management partner operation
+ * @property {string} [description] the is management partner operation
  * description
  */
 export interface OperationDisplay {
@@ -109,14 +109,14 @@ export interface OperationDisplay {
  * @constructor
  * this is the management partner operations response
  *
- * @member {string} [name] this is the operation response name
- * @member {object} [display] this is the operation display
- * @member {string} [display.provider] the is management partner provider
- * @member {string} [display.resource] the is management partner resource
- * @member {string} [display.operation] the is management partner operation
- * @member {string} [display.description] the is management partner operation
+ * @property {string} [name] this is the operation response name
+ * @property {object} [display] this is the operation display
+ * @property {string} [display.provider] the is management partner provider
+ * @property {string} [display.resource] the is management partner resource
+ * @property {string} [display.operation] the is management partner operation
+ * @property {string} [display.description] the is management partner operation
  * description
- * @member {string} [origin] the is operation response origin information
+ * @property {string} [origin] the is operation response origin information
  */
 export interface OperationResponse {
   name?: string;
@@ -131,7 +131,7 @@ export interface OperationResponse {
  * @constructor
  * this is the management partner operations list
  *
- * @member {string} [nextLink] Url to get the next page of items.
+ * @property {string} [nextLink] Url to get the next page of items.
  */
 export interface OperationList extends Array<OperationResponse> {
   nextLink?: string;

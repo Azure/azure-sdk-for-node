@@ -22,7 +22,7 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Information about the SKU of the IoT Central application.
  *
- * @member {string} name The name of the SKU. Possible values include: 'F1',
+ * @property {string} name The name of the SKU. Possible values include: 'F1',
  * 'S1'
  */
 export interface AppSkuInfo {
@@ -35,11 +35,11 @@ export interface AppSkuInfo {
  * @constructor
  * The common properties of an ARM resource.
  *
- * @member {string} [id] The ARM resource identifier.
- * @member {string} [name] The ARM resource name.
- * @member {string} [type] The resource type.
- * @member {string} location The resource location.
- * @member {object} [tags] The resource tags.
+ * @property {string} [id] The ARM resource identifier.
+ * @property {string} [name] The ARM resource name.
+ * @property {string} [type] The resource type.
+ * @property {string} location The resource location.
+ * @property {object} [tags] The resource tags.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -55,15 +55,15 @@ export interface Resource extends BaseResource {
  * @constructor
  * The IoT Central application.
  *
- * @member {string} [applicationId] The ID of the application.
- * @member {string} [displayName] The display name of the application.
- * @member {string} [subdomain] The subdomain of the application.
- * @member {string} [template] The ID of the application template, which is a
+ * @property {string} [applicationId] The ID of the application.
+ * @property {string} [displayName] The display name of the application.
+ * @property {string} [subdomain] The subdomain of the application.
+ * @property {string} [template] The ID of the application template, which is a
  * blueprint that defines the characteristics and behaviors of an application.
  * Optional; if not specified, defaults to a blank blueprint and allows the
  * application to be defined from scratch.
- * @member {object} sku A valid instance SKU.
- * @member {string} [sku.name] The name of the SKU. Possible values include:
+ * @property {object} sku A valid instance SKU.
+ * @property {string} [sku.name] The name of the SKU. Possible values include:
  * 'F1', 'S1'
  */
 export interface App extends Resource {
@@ -80,11 +80,11 @@ export interface App extends Resource {
  * @constructor
  * The description of the IoT Central application.
  *
- * @member {object} [tags] Instance tags
- * @member {string} [applicationId] The ID of the application.
- * @member {string} [displayName] The display name of the application.
- * @member {string} [subdomain] The subdomain of the application.
- * @member {string} [template] The ID of the application template, which is a
+ * @property {object} [tags] Instance tags
+ * @property {string} [applicationId] The ID of the application.
+ * @property {string} [displayName] The display name of the application.
+ * @property {string} [subdomain] The subdomain of the application.
+ * @property {string} [template] The ID of the application template, which is a
  * blueprint that defines the characteristics and behaviors of an application.
  * Optional; if not specified, defaults to a blank blueprint and allows the
  * application to be defined from scratch.
@@ -103,10 +103,10 @@ export interface AppPatch {
  * @constructor
  * Details of error response.
  *
- * @member {string} [code] The error code.
- * @member {string} [message] The error message.
- * @member {string} [target] The target of the particular error.
- * @member {array} [details] A list of additional details about the error.
+ * @property {string} [code] The error code.
+ * @property {string} [message] The error message.
+ * @property {string} [target] The target of the particular error.
+ * @property {array} [details] A list of additional details about the error.
  */
 export interface ErrorResponseBody {
   readonly code?: string;
@@ -121,10 +121,10 @@ export interface ErrorResponseBody {
  * @constructor
  * Error details.
  *
- * @member {string} [code] The error code.
- * @member {string} [message] The error message.
- * @member {string} [target] The target of the particular error.
- * @member {array} [details] A list of additional details about the error.
+ * @property {string} [code] The error code.
+ * @property {string} [message] The error message.
+ * @property {string} [target] The target of the particular error.
+ * @property {array} [details] A list of additional details about the error.
  */
 export interface ErrorDetails {
   readonly code?: string;
@@ -139,10 +139,10 @@ export interface ErrorDetails {
  * @constructor
  * The object that represents the operation.
  *
- * @member {string} [provider] Service provider: Microsoft IoT Central
- * @member {string} [resource] Resource Type: IoT Central
- * @member {string} [operation] Name of the operation
- * @member {string} [description] Friendly description for the operation,
+ * @property {string} [provider] Service provider: Microsoft IoT Central
+ * @property {string} [resource] Resource Type: IoT Central
+ * @property {string} [operation] Name of the operation
+ * @property {string} [description] Friendly description for the operation,
  */
 export interface OperationDisplay {
   readonly provider?: string;
@@ -157,13 +157,14 @@ export interface OperationDisplay {
  * @constructor
  * IoT Central REST API operation
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{read | write
- * | action | delete}
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Service provider: Microsoft IoT Central
- * @member {string} [display.resource] Resource Type: IoT Central
- * @member {string} [display.operation] Name of the operation
- * @member {string} [display.description] Friendly description for the
+ * @property {string} [name] Operation name: {provider}/{resource}/{read |
+ * write | action | delete}
+ * @property {object} [display] The object that represents the operation.
+ * @property {string} [display.provider] Service provider: Microsoft IoT
+ * Central
+ * @property {string} [display.resource] Resource Type: IoT Central
+ * @property {string} [display.operation] Name of the operation
+ * @property {string} [display.description] Friendly description for the
  * operation,
  */
 export interface Operation {
@@ -177,9 +178,9 @@ export interface Operation {
  * @constructor
  * Input values.
  *
- * @member {string} name The name of the IoT Central application instance to
+ * @property {string} name The name of the IoT Central application instance to
  * check.
- * @member {string} [type] The type of the IoT Central resource to query.
+ * @property {string} [type] The type of the IoT Central resource to query.
  * Default value: 'IoTApps' .
  */
 export interface OperationInputs {
@@ -194,10 +195,10 @@ export interface OperationInputs {
  * The properties indicating whether a given IoT Central application name or
  * subdomain is available.
  *
- * @member {boolean} [nameAvailable] The value which indicates whether the
+ * @property {boolean} [nameAvailable] The value which indicates whether the
  * provided name is available.
- * @member {string} [reason] The reason for unavailability.
- * @member {string} [message] The detailed reason message.
+ * @property {string} [reason] The reason for unavailability.
+ * @property {string} [message] The detailed reason message.
  */
 export interface AppAvailabilityInfo {
   readonly nameAvailable?: boolean;
@@ -212,7 +213,7 @@ export interface AppAvailabilityInfo {
  * @constructor
  * A list of IoT Central Applications with a next link.
  *
- * @member {string} [nextLink] The link used to get the next page of IoT
+ * @property {string} [nextLink] The link used to get the next page of IoT
  * Central Applications.
  */
 export interface AppListResult extends Array<App> {
@@ -226,7 +227,7 @@ export interface AppListResult extends Array<App> {
  * A list of IoT Central operations. It contains a list of operations and a URL
  * link to get the next set of results.
  *
- * @member {string} [nextLink] The link used to get the next page of IoT
+ * @property {string} [nextLink] The link used to get the next page of IoT
  * Central description objects.
  */
 export interface OperationListResult extends Array<Operation> {

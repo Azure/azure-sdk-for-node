@@ -17,8 +17,8 @@ import * as moment from "moment";
  * @constructor
  * The key value pair object properties.
  *
- * @member {string} [key] The key parameter.
- * @member {string} [value] The value parameter.
+ * @property {string} [key] The key parameter.
+ * @property {string} [value] The value parameter.
  */
 export interface KeyValuePair {
   key?: string;
@@ -31,8 +31,8 @@ export interface KeyValuePair {
  * @constructor
  * Tag details.
  *
- * @member {string} [key] The key parameter.
- * @member {string} [value] The value parameter.
+ * @property {string} [key] The key parameter.
+ * @property {string} [value] The value parameter.
  */
 export interface Tag {
   key?: string;
@@ -45,10 +45,10 @@ export interface Tag {
  * @constructor
  * Video frame property details.
  *
- * @member {string} [timestamp] Timestamp of the frame.
- * @member {string} [frameImage] Frame image.
- * @member {array} [metadata] Array of KeyValue.
- * @member {array} [reviewerResultTags] Reviewer result tags.
+ * @property {string} [timestamp] Timestamp of the frame.
+ * @property {string} [frameImage] Frame image.
+ * @property {array} [metadata] Array of KeyValue.
+ * @property {array} [reviewerResultTags] Reviewer result tags.
  */
 export interface Frame {
   timestamp?: string;
@@ -63,8 +63,8 @@ export interface Frame {
  * @constructor
  * The response for a Get Frames request.
  *
- * @member {string} [reviewId] Id of the review.
- * @member {array} [videoFrames]
+ * @property {string} [reviewId] Id of the review.
+ * @property {array} [videoFrames]
  */
 export interface Frames {
   reviewId?: string;
@@ -79,7 +79,7 @@ export interface Frames {
  * href="https://aka.ms/textClassifyCategories">Click here</a> for more details
  * on category classification.
  *
- * @member {number} [score] The category1 score.
+ * @property {number} [score] The category1 score.
  */
 export interface ClassificationCategory1 {
   score?: number;
@@ -93,7 +93,7 @@ export interface ClassificationCategory1 {
  * href="https://aka.ms/textClassifyCategories">Click here</a> for more details
  * on category classification.
  *
- * @member {number} [score] The category2 score.
+ * @property {number} [score] The category2 score.
  */
 export interface ClassificationCategory2 {
   score?: number;
@@ -107,7 +107,7 @@ export interface ClassificationCategory2 {
  * href="https://aka.ms/textClassifyCategories">Click here</a> for more details
  * on category classification.
  *
- * @member {number} [score] The category3 score.
+ * @property {number} [score] The category3 score.
  */
 export interface ClassificationCategory3 {
   score?: number;
@@ -119,19 +119,19 @@ export interface ClassificationCategory3 {
  * @constructor
  * The classification details of the text.
  *
- * @member {object} [category1] The category1 score details of the text. <a
+ * @property {object} [category1] The category1 score details of the text. <a
  * href="https://aka.ms/textClassifyCategories">Click here</a> for more details
  * on category classification.
- * @member {number} [category1.score] The category1 score.
- * @member {object} [category2] The category2 score details of the text. <a
+ * @property {number} [category1.score] The category1 score.
+ * @property {object} [category2] The category2 score details of the text. <a
  * href="https://aka.ms/textClassifyCategories">Click here</a> for more details
  * on category classification.
- * @member {number} [category2.score] The category2 score.
- * @member {object} [category3] The category3 score details of the text. <a
+ * @property {number} [category2.score] The category2 score.
+ * @property {object} [category3] The category3 score details of the text. <a
  * href="https://aka.ms/textClassifyCategories">Click here</a> for more details
  * on category classification.
- * @member {number} [category3.score] The category3 score.
- * @member {boolean} [reviewRecommended] The review recommended flag.
+ * @property {number} [category3.score] The category3 score.
+ * @property {boolean} [reviewRecommended] The review recommended flag.
  */
 export interface Classification {
   category1?: ClassificationCategory1;
@@ -146,9 +146,9 @@ export interface Classification {
  * @constructor
  * Status properties.
  *
- * @member {number} [code] Status code.
- * @member {string} [description] Status description.
- * @member {string} [exception] Exception status.
+ * @property {number} [code] Status code.
+ * @property {string} [description] Status description.
+ * @property {string} [exception] Exception status.
  */
 export interface Status {
   code?: number;
@@ -162,11 +162,11 @@ export interface Status {
  * @constructor
  * Email Address details.
  *
- * @member {string} [detected] Detected Email Address from the input text
+ * @property {string} [detected] Detected Email Address from the input text
  * content.
- * @member {string} [subType] Subtype of the detected Email Address.
- * @member {string} [text] Email Address in the input text content.
- * @member {number} [index] Index(Location) of the Email address in the input
+ * @property {string} [subType] Subtype of the detected Email Address.
+ * @property {string} [text] Email Address in the input text content.
+ * @property {number} [index] Index(Location) of the Email address in the input
  * text content.
  */
 export interface Email {
@@ -182,8 +182,8 @@ export interface Email {
  * @constructor
  * Detected SSN details.
  *
- * @member {string} [text] Detected SSN in the input text content.
- * @member {number} [index] Index(Location) of the SSN in the input text
+ * @property {string} [text] Detected SSN in the input text content.
+ * @property {number} [index] Index(Location) of the SSN in the input text
  * content.
  */
 export interface SSN {
@@ -197,10 +197,10 @@ export interface SSN {
  * @constructor
  * IP Address details.
  *
- * @member {string} [subType] Subtype of the detected IP Address.
- * @member {string} [text] Detected IP Address.
- * @member {number} [index] Index(Location) of the IP Address in the input text
- * content.
+ * @property {string} [subType] Subtype of the detected IP Address.
+ * @property {string} [text] Detected IP Address.
+ * @property {number} [index] Index(Location) of the IP Address in the input
+ * text content.
  */
 export interface IPA {
   subType?: string;
@@ -214,9 +214,9 @@ export interface IPA {
  * @constructor
  * Phone Property details.
  *
- * @member {string} [countryCode] CountryCode of the detected Phone number.
- * @member {string} [text] Detected Phone number.
- * @member {number} [index] Index(Location) of the Phone number in the input
+ * @property {string} [countryCode] CountryCode of the detected Phone number.
+ * @property {string} [text] Detected Phone number.
+ * @property {number} [index] Index(Location) of the Phone number in the input
  * text content.
  */
 export interface Phone {
@@ -231,8 +231,8 @@ export interface Phone {
  * @constructor
  * Address details.
  *
- * @member {string} [text] Detected Address.
- * @member {number} [index] Index(Location) of the Address in the input text
+ * @property {string} [text] Detected Address.
+ * @property {number} [index] Index(Location) of the Address in the input text
  * content.
  */
 export interface Address {
@@ -246,11 +246,11 @@ export interface Address {
  * @constructor
  * Personal Identifier Information details.
  *
- * @member {array} [email]
- * @member {array} [sSN]
- * @member {array} [iPA]
- * @member {array} [phone]
- * @member {array} [address]
+ * @property {array} [email]
+ * @property {array} [sSN]
+ * @property {array} [iPA]
+ * @property {array} [phone]
+ * @property {array} [address]
  */
 export interface PII {
   email?: Email[];
@@ -266,12 +266,12 @@ export interface PII {
  * @constructor
  * Detected Terms details.
  *
- * @member {number} [index] Index(Location) of the detected profanity term in
+ * @property {number} [index] Index(Location) of the detected profanity term in
  * the input text content.
- * @member {number} [originalIndex] Original Index(Location) of the detected
+ * @property {number} [originalIndex] Original Index(Location) of the detected
  * profanity term in the input text content.
- * @member {number} [listId] Matched Terms list Id.
- * @member {string} [term] Detected profanity term.
+ * @property {number} [listId] Matched Terms list Id.
+ * @property {string} [term] Detected profanity term.
  */
 export interface DetectedTerms {
   index?: number;
@@ -286,38 +286,38 @@ export interface DetectedTerms {
  * @constructor
  * The response for a Screen text request.
  *
- * @member {string} [originalText] The original text.
- * @member {string} [normalizedText] The normalized text.
- * @member {string} [autoCorrectedText] The autocorrected text
- * @member {array} [misrepresentation] The misrepresentation text.
- * @member {object} [classification] The classification details of the text.
- * @member {object} [classification.category1] The category1 score details of
+ * @property {string} [originalText] The original text.
+ * @property {string} [normalizedText] The normalized text.
+ * @property {string} [autoCorrectedText] The autocorrected text
+ * @property {array} [misrepresentation] The misrepresentation text.
+ * @property {object} [classification] The classification details of the text.
+ * @property {object} [classification.category1] The category1 score details of
  * the text. <a href="https://aka.ms/textClassifyCategories">Click here</a> for
  * more details on category classification.
- * @member {number} [classification.category1.score] The category1 score.
- * @member {object} [classification.category2] The category2 score details of
+ * @property {number} [classification.category1.score] The category1 score.
+ * @property {object} [classification.category2] The category2 score details of
  * the text. <a href="https://aka.ms/textClassifyCategories">Click here</a> for
  * more details on category classification.
- * @member {number} [classification.category2.score] The category2 score.
- * @member {object} [classification.category3] The category3 score details of
+ * @property {number} [classification.category2.score] The category2 score.
+ * @property {object} [classification.category3] The category3 score details of
  * the text. <a href="https://aka.ms/textClassifyCategories">Click here</a> for
  * more details on category classification.
- * @member {number} [classification.category3.score] The category3 score.
- * @member {boolean} [classification.reviewRecommended] The review recommended
- * flag.
- * @member {object} [status] The evaluate status.
- * @member {number} [status.code] Status code.
- * @member {string} [status.description] Status description.
- * @member {string} [status.exception] Exception status.
- * @member {object} [pII] Personal Identifier Information details.
- * @member {array} [pII.email]
- * @member {array} [pII.sSN]
- * @member {array} [pII.iPA]
- * @member {array} [pII.phone]
- * @member {array} [pII.address]
- * @member {string} [language] Language of the input text content.
- * @member {array} [terms]
- * @member {string} [trackingId] Unique Content Moderator transaction Id.
+ * @property {number} [classification.category3.score] The category3 score.
+ * @property {boolean} [classification.reviewRecommended] The review
+ * recommended flag.
+ * @property {object} [status] The evaluate status.
+ * @property {number} [status.code] Status code.
+ * @property {string} [status.description] Status description.
+ * @property {string} [status.exception] Exception status.
+ * @property {object} [pII] Personal Identifier Information details.
+ * @property {array} [pII.email]
+ * @property {array} [pII.sSN]
+ * @property {array} [pII.iPA]
+ * @property {array} [pII.phone]
+ * @property {array} [pII.address]
+ * @property {string} [language] Language of the input text content.
+ * @property {array} [terms]
+ * @property {string} [trackingId] Unique Content Moderator transaction Id.
  */
 export interface Screen {
   originalText?: string;
@@ -338,10 +338,10 @@ export interface Screen {
  * @constructor
  * Coordinates to the found face.
  *
- * @member {number} [bottom] The bottom coordinate.
- * @member {number} [left] The left coordinate.
- * @member {number} [right] The right coordinate.
- * @member {number} [top] The top coordinate.
+ * @property {number} [bottom] The bottom coordinate.
+ * @property {number} [left] The left coordinate.
+ * @property {number} [right] The right coordinate.
+ * @property {number} [top] The top coordinate.
  */
 export interface Face {
   bottom?: number;
@@ -356,16 +356,16 @@ export interface Face {
  * @constructor
  * Request object the contains found faces.
  *
- * @member {object} [status] The evaluate status
- * @member {number} [status.code] Status code.
- * @member {string} [status.description] Status description.
- * @member {string} [status.exception] Exception status.
- * @member {string} [trackingId] The tracking id.
- * @member {string} [cacheId] The cache id.
- * @member {boolean} [result] True if result was found.
- * @member {number} [count] Number of faces found.
- * @member {array} [advancedInfo] The advanced info.
- * @member {array} [faces] The list of faces.
+ * @property {object} [status] The evaluate status
+ * @property {number} [status.code] Status code.
+ * @property {string} [status.description] Status description.
+ * @property {string} [status.exception] Exception status.
+ * @property {string} [trackingId] The tracking id.
+ * @property {string} [cacheId] The cache id.
+ * @property {boolean} [result] True if result was found.
+ * @property {number} [count] Number of faces found.
+ * @property {array} [advancedInfo] The advanced info.
+ * @property {array} [faces] The list of faces.
  */
 export interface FoundFaces {
   status?: Status;
@@ -383,8 +383,8 @@ export interface FoundFaces {
  * @constructor
  * OCR candidate text.
  *
- * @member {string} [text] The text found.
- * @member {number} [confidence] The confidence level.
+ * @property {string} [text] The text found.
+ * @property {number} [confidence] The confidence level.
  */
 export interface Candidate {
   text?: string;
@@ -397,16 +397,16 @@ export interface Candidate {
  * @constructor
  * Contains the text found in image for the language specified.
  *
- * @member {object} [status] The evaluate status
- * @member {number} [status.code] Status code.
- * @member {string} [status.description] Status description.
- * @member {string} [status.exception] Exception status.
- * @member {array} [metadata] Array of KeyValue.
- * @member {string} [trackingId] The tracking id.
- * @member {string} [cacheId] The cache id.
- * @member {string} [language] The ISO 639-3 code.
- * @member {string} [text] The found text.
- * @member {array} [candidates] The list of candidate text.
+ * @property {object} [status] The evaluate status
+ * @property {number} [status.code] Status code.
+ * @property {string} [status.description] Status description.
+ * @property {string} [status.exception] Exception status.
+ * @property {array} [metadata] Array of KeyValue.
+ * @property {string} [trackingId] The tracking id.
+ * @property {string} [cacheId] The cache id.
+ * @property {string} [language] The ISO 639-3 code.
+ * @property {string} [text] The found text.
+ * @property {array} [candidates] The list of candidate text.
  */
 export interface OCR {
   status?: Status;
@@ -424,20 +424,21 @@ export interface OCR {
  * @constructor
  * Evaluate response object.
  *
- * @member {string} [cacheID] The cache id.
- * @member {boolean} [result] Evaluate result.
- * @member {string} [trackingId] The tracking id.
- * @member {number} [adultClassificationScore] The adult classification score.
- * @member {boolean} [isImageAdultClassified] Indicates if an image is
+ * @property {string} [cacheID] The cache id.
+ * @property {boolean} [result] Evaluate result.
+ * @property {string} [trackingId] The tracking id.
+ * @property {number} [adultClassificationScore] The adult classification
+ * score.
+ * @property {boolean} [isImageAdultClassified] Indicates if an image is
  * classified as adult.
- * @member {number} [racyClassificationScore] The racy classication score.
- * @member {boolean} [isImageRacyClassified] Indicates if the image is
+ * @property {number} [racyClassificationScore] The racy classication score.
+ * @property {boolean} [isImageRacyClassified] Indicates if the image is
  * classified as racy.
- * @member {array} [advancedInfo] The advanced info.
- * @member {object} [status] The evaluate status
- * @member {number} [status.code] Status code.
- * @member {string} [status.description] Status description.
- * @member {string} [status.exception] Exception status.
+ * @property {array} [advancedInfo] The advanced info.
+ * @property {object} [status] The evaluate status
+ * @property {number} [status.code] Status code.
+ * @property {string} [status.description] Status description.
+ * @property {string} [status.exception] Exception status.
  */
 export interface Evaluate {
   cacheID?: string;
@@ -457,11 +458,11 @@ export interface Evaluate {
  * @constructor
  * The match details.
  *
- * @member {number} [score] Confidence score of the image match.
- * @member {number} [matchId] The match id.
- * @member {string} [source] The source.
- * @member {array} [tags] The tags for match details.
- * @member {string} [label] The label.
+ * @property {number} [score] Confidence score of the image match.
+ * @property {number} [matchId] The match id.
+ * @property {string} [source] The source.
+ * @property {array} [tags] The tags for match details.
+ * @property {string} [label] The label.
  */
 export interface Match {
   score?: number;
@@ -477,14 +478,14 @@ export interface Match {
  * @constructor
  * The response for a Match request.
  *
- * @member {string} [trackingId] The tracking id.
- * @member {string} [cacheID] The cache id.
- * @member {boolean} [isMatch] Indicates if there is a match.
- * @member {array} [matches] The match details.
- * @member {object} [status] The evaluate status
- * @member {number} [status.code] Status code.
- * @member {string} [status.description] Status description.
- * @member {string} [status.exception] Exception status.
+ * @property {string} [trackingId] The tracking id.
+ * @property {string} [cacheID] The cache id.
+ * @property {boolean} [isMatch] Indicates if there is a match.
+ * @property {array} [matches] The match details.
+ * @property {object} [status] The evaluate status
+ * @property {number} [status.code] Status code.
+ * @property {string} [status.description] Status description.
+ * @property {string} [status.exception] Exception status.
  */
 export interface MatchResponse {
   trackingId?: string;
@@ -500,12 +501,12 @@ export interface MatchResponse {
  * @constructor
  * Detect language result.
  *
- * @member {string} [detectedLanguage] The detected language.
- * @member {object} [status] The detect language status
- * @member {number} [status.code] Status code.
- * @member {string} [status.description] Status description.
- * @member {string} [status.exception] Exception status.
- * @member {string} [trackingId] The tracking id.
+ * @property {string} [detectedLanguage] The detected language.
+ * @property {object} [status] The detect language status
+ * @property {number} [status.code] Status code.
+ * @property {string} [status.description] Status description.
+ * @property {string} [status.exception] Exception status.
+ * @property {string} [trackingId] The tracking id.
  */
 export interface DetectedLanguage {
   detectedLanguage?: string;
@@ -519,10 +520,10 @@ export interface DetectedLanguage {
  * @constructor
  * Image List Properties.
  *
- * @member {number} [id] Image List Id.
- * @member {string} [name] Image List Name.
- * @member {string} [description] Description for image list.
- * @member {object} [metadata] Image List Metadata.
+ * @property {number} [id] Image List Id.
+ * @property {string} [name] Image List Name.
+ * @property {string} [description] Description for image list.
+ * @property {object} [metadata] Image List Metadata.
  */
 export interface ImageList {
   id?: number;
@@ -537,10 +538,10 @@ export interface ImageList {
  * @constructor
  * Term List  Properties.
  *
- * @member {number} [id] Term list Id.
- * @member {string} [name] Term list name.
- * @member {string} [description] Description for term list.
- * @member {object} [metadata] Term list metadata.
+ * @property {number} [id] Term list Id.
+ * @property {string} [name] Term list name.
+ * @property {string} [description] Description for term list.
+ * @property {object} [metadata] Term list metadata.
  */
 export interface TermList {
   id?: number;
@@ -555,14 +556,14 @@ export interface TermList {
  * @constructor
  * Refresh Index Response.
  *
- * @member {string} [contentSourceId] Content source Id.
- * @member {boolean} [isUpdateSuccess] Update success status.
- * @member {array} [advancedInfo] Advanced info list.
- * @member {object} [status] Refresh index status.
- * @member {number} [status.code] Status code.
- * @member {string} [status.description] Status description.
- * @member {string} [status.exception] Exception status.
- * @member {string} [trackingId] Tracking Id.
+ * @property {string} [contentSourceId] Content source Id.
+ * @property {boolean} [isUpdateSuccess] Update success status.
+ * @property {array} [advancedInfo] Advanced info list.
+ * @property {object} [status] Refresh index status.
+ * @property {number} [status.code] Status code.
+ * @property {string} [status.description] Status description.
+ * @property {string} [status.exception] Exception status.
+ * @property {string} [trackingId] Tracking Id.
  */
 export interface RefreshIndex {
   contentSourceId?: string;
@@ -576,8 +577,8 @@ export interface RefreshIndex {
  * @class
  * Initializes a new instance of the ImageAdditionalInfoItem class.
  * @constructor
- * @member {string} [key] Key parameter.
- * @member {string} [value] Value parameter.
+ * @property {string} [key] Key parameter.
+ * @property {string} [value] Value parameter.
  */
 export interface ImageAdditionalInfoItem {
   key?: string;
@@ -590,13 +591,13 @@ export interface ImageAdditionalInfoItem {
  * @constructor
  * Image Properties.
  *
- * @member {string} [contentId] Content Id.
- * @member {array} [additionalInfo] Advanced info list.
- * @member {object} [status] Status details.
- * @member {number} [status.code] Status code.
- * @member {string} [status.description] Status description.
- * @member {string} [status.exception] Exception status.
- * @member {string} [trackingId] Tracking Id.
+ * @property {string} [contentId] Content Id.
+ * @property {array} [additionalInfo] Advanced info list.
+ * @property {object} [status] Status details.
+ * @property {number} [status.code] Status code.
+ * @property {string} [status.description] Status description.
+ * @property {string} [status.exception] Exception status.
+ * @property {string} [trackingId] Tracking Id.
  */
 export interface Image {
   contentId?: string;
@@ -611,13 +612,13 @@ export interface Image {
  * @constructor
  * Image Id properties.
  *
- * @member {string} [contentSource] Source of the content.
- * @member {array} [contentIds] Id of the contents.
- * @member {object} [status] Get Image status.
- * @member {number} [status.code] Status code.
- * @member {string} [status.description] Status description.
- * @member {string} [status.exception] Exception status.
- * @member {string} [trackingId] Tracking Id.
+ * @property {string} [contentSource] Source of the content.
+ * @property {array} [contentIds] Id of the contents.
+ * @property {object} [status] Get Image status.
+ * @property {number} [status.code] Status code.
+ * @property {string} [status.description] Status description.
+ * @property {string} [status.exception] Exception status.
+ * @property {string} [trackingId] Tracking Id.
  */
 export interface ImageIds {
   contentSource?: string;
@@ -632,7 +633,7 @@ export interface ImageIds {
  * @constructor
  * Terms in list Id passed.
  *
- * @member {string} [term] Added term details.
+ * @property {string} [term] Added term details.
  */
 export interface TermsInList {
   term?: string;
@@ -644,13 +645,13 @@ export interface TermsInList {
  * @constructor
  * All term Id response properties.
  *
- * @member {string} [language] Language of the terms.
- * @member {array} [terms] List of terms.
- * @member {object} [status] Term Status.
- * @member {number} [status.code] Status code.
- * @member {string} [status.description] Status description.
- * @member {string} [status.exception] Exception status.
- * @member {string} [trackingId] Tracking Id.
+ * @property {string} [language] Language of the terms.
+ * @property {array} [terms] List of terms.
+ * @property {object} [status] Term Status.
+ * @property {number} [status.code] Status code.
+ * @property {string} [status.description] Status description.
+ * @property {string} [status.exception] Exception status.
+ * @property {string} [trackingId] Tracking Id.
  */
 export interface TermsData {
   language?: string;
@@ -665,10 +666,10 @@ export interface TermsData {
  * @constructor
  * Paging details.
  *
- * @member {number} [total] Total details.
- * @member {number} [limit] Limit details.
- * @member {number} [offset] Offset details.
- * @member {number} [returned] Returned text details.
+ * @property {number} [total] Total details.
+ * @property {number} [limit] Limit details.
+ * @property {number} [offset] Offset details.
+ * @property {number} [returned] Returned text details.
  */
 export interface TermsPaging {
   total?: number;
@@ -683,19 +684,19 @@ export interface TermsPaging {
  * @constructor
  * Terms properties.
  *
- * @member {object} [data] Term data details.
- * @member {string} [data.language] Language of the terms.
- * @member {array} [data.terms] List of terms.
- * @member {object} [data.status] Term Status.
- * @member {number} [data.status.code] Status code.
- * @member {string} [data.status.description] Status description.
- * @member {string} [data.status.exception] Exception status.
- * @member {string} [data.trackingId] Tracking Id.
- * @member {object} [paging] Paging details.
- * @member {number} [paging.total] Total details.
- * @member {number} [paging.limit] Limit details.
- * @member {number} [paging.offset] Offset details.
- * @member {number} [paging.returned] Returned text details.
+ * @property {object} [data] Term data details.
+ * @property {string} [data.language] Language of the terms.
+ * @property {array} [data.terms] List of terms.
+ * @property {object} [data.status] Term Status.
+ * @property {number} [data.status.code] Status code.
+ * @property {string} [data.status.description] Status description.
+ * @property {string} [data.status.exception] Exception status.
+ * @property {string} [data.trackingId] Tracking Id.
+ * @property {object} [paging] Paging details.
+ * @property {number} [paging.total] Total details.
+ * @property {number} [paging.limit] Limit details.
+ * @property {number} [paging.offset] Offset details.
+ * @property {number} [paging.returned] Returned text details.
  */
 export interface Terms {
   data?: TermsData;
@@ -708,17 +709,17 @@ export interface Terms {
  * @constructor
  * The Review object.
  *
- * @member {string} [reviewId] Id of the review.
- * @member {string} [subTeam] Name of the subteam.
- * @member {string} [status] The status string (<Pending, Complete>).
- * @member {array} [reviewerResultTags] Array of KeyValue with Reviewer set
+ * @property {string} [reviewId] Id of the review.
+ * @property {string} [subTeam] Name of the subteam.
+ * @property {string} [status] The status string (<Pending, Complete>).
+ * @property {array} [reviewerResultTags] Array of KeyValue with Reviewer set
  * Tags.
- * @member {string} [createdBy] The reviewer name.
- * @member {array} [metadata] Array of KeyValue.
- * @member {string} [type] The type of content.
- * @member {string} [content] The content value.
- * @member {string} [contentId] Id of the content.
- * @member {string} [callbackEndpoint] The callback endpoint.
+ * @property {string} [createdBy] The reviewer name.
+ * @property {array} [metadata] Array of KeyValue.
+ * @property {string} [type] The type of content.
+ * @property {string} [content] The content value.
+ * @property {string} [contentId] Id of the content.
+ * @property {string} [callbackEndpoint] The callback endpoint.
  */
 export interface Review {
   reviewId?: string;
@@ -739,8 +740,8 @@ export interface Review {
  * @constructor
  * Job Execution Report Values.
  *
- * @member {string} [ts] Time details.
- * @member {string} [msg] Message details.
+ * @property {string} [ts] Time details.
+ * @property {string} [msg] Message details.
  */
 export interface JobExecutionReportDetails {
   ts?: string;
@@ -753,16 +754,17 @@ export interface JobExecutionReportDetails {
  * @constructor
  * The Job object.
  *
- * @member {string} [id] The job id.
- * @member {string} [teamName] The team name associated with the job.
- * @member {string} [status] The status string (<Pending, Failed, Completed>).
- * @member {string} [workflowId] The Id of the workflow.
- * @member {string} [type] Type of the content.
- * @member {string} [callBackEndpoint] The callback endpoint.
- * @member {string} [reviewId] Review Id if one is created.
- * @member {array} [resultMetaData] Array of KeyValue pairs.
- * @member {array} [jobExecutionReport] Job execution report- Array of KeyValue
- * pairs object.
+ * @property {string} [id] The job id.
+ * @property {string} [teamName] The team name associated with the job.
+ * @property {string} [status] The status string (<Pending, Failed,
+ * Completed>).
+ * @property {string} [workflowId] The Id of the workflow.
+ * @property {string} [type] Type of the content.
+ * @property {string} [callBackEndpoint] The callback endpoint.
+ * @property {string} [reviewId] Review Id if one is created.
+ * @property {array} [resultMetaData] Array of KeyValue pairs.
+ * @property {array} [jobExecutionReport] Job execution report- Array of
+ * KeyValue pairs object.
  */
 export interface Job {
   id?: string;
@@ -782,7 +784,7 @@ export interface Job {
  * @constructor
  * The list of job ids.
  *
- * @member {array} [value] The job id.
+ * @property {array} [value] The job id.
  */
 export interface JobListResult {
   value?: string[];
@@ -792,7 +794,7 @@ export interface JobListResult {
  * @class
  * Initializes a new instance of the JobId class.
  * @constructor
- * @member {string} [jobId] Id of the created job.
+ * @property {string} [jobId] Id of the created job.
  */
 export interface JobId {
   jobId?: string;
@@ -804,8 +806,8 @@ export interface JobId {
  * @constructor
  * Error body.
  *
- * @member {string} [code]
- * @member {string} [message]
+ * @property {string} [code]
+ * @property {string} [message]
  */
 export interface ErrorModel {
   code?: string;
@@ -818,9 +820,9 @@ export interface ErrorModel {
  * @constructor
  * Error information returned by the API
  *
- * @member {object} [error]
- * @member {string} [error.code]
- * @member {string} [error.message]
+ * @property {object} [error]
+ * @property {string} [error.code]
+ * @property {string} [error.message]
  */
 export interface APIError {
   error?: ErrorModel;
@@ -830,9 +832,9 @@ export interface APIError {
  * @class
  * Initializes a new instance of the Body class.
  * @constructor
- * @member {string} [name] Name of the list.
- * @member {string} [description] Description of the list.
- * @member {object} [metadata] Metadata of the list.
+ * @property {string} [name] Name of the list.
+ * @property {string} [description] Description of the list.
+ * @property {object} [metadata] Metadata of the list.
  */
 export interface Body {
   name?: string;
@@ -844,8 +846,8 @@ export interface Body {
  * @class
  * Initializes a new instance of the CreateReviewBodyItemMetadataItem class.
  * @constructor
- * @member {string} key Your key parameter.
- * @member {string} value Your value parameter.
+ * @property {string} key Your key parameter.
+ * @property {string} value Your value parameter.
  */
 export interface CreateReviewBodyItemMetadataItem {
   key: string;
@@ -858,12 +860,12 @@ export interface CreateReviewBodyItemMetadataItem {
  * @constructor
  * Schema items of the body.
  *
- * @member {string} type Type of the content. Possible values include: 'Image',
- * 'Text'
- * @member {string} content Content to review.
- * @member {string} contentId Content Identifier.
- * @member {string} [callbackEndpoint] Optional CallbackEndpoint.
- * @member {array} [metadata] Optional metadata details.
+ * @property {string} type Type of the content. Possible values include:
+ * 'Image', 'Text'
+ * @property {string} content Content to review.
+ * @property {string} contentId Content Identifier.
+ * @property {string} [callbackEndpoint] Optional CallbackEndpoint.
+ * @property {array} [metadata] Optional metadata details.
  */
 export interface CreateReviewBodyItem {
   type: string;
@@ -877,7 +879,7 @@ export interface CreateReviewBodyItem {
  * @class
  * Initializes a new instance of the Content class.
  * @constructor
- * @member {string} contentValue Content to evaluate for a job.
+ * @property {string} contentValue Content to evaluate for a job.
  */
 export interface Content {
   contentValue: string;
@@ -887,8 +889,8 @@ export interface Content {
  * @class
  * Initializes a new instance of the TranscriptModerationBodyItemTermsItem class.
  * @constructor
- * @member {number} index Index of the word
- * @member {string} term Detected word.
+ * @property {number} index Index of the word
+ * @property {string} term Detected word.
  */
 export interface TranscriptModerationBodyItemTermsItem {
   index: number;
@@ -901,8 +903,8 @@ export interface TranscriptModerationBodyItemTermsItem {
  * @constructor
  * Schema items of the body.
  *
- * @member {string} timestamp Timestamp of the image.
- * @member {array} terms Optional metadata details.
+ * @property {string} timestamp Timestamp of the image.
+ * @property {array} terms Optional metadata details.
  */
 export interface TranscriptModerationBodyItem {
   timestamp: string;
@@ -913,8 +915,8 @@ export interface TranscriptModerationBodyItem {
  * @class
  * Initializes a new instance of the BodyModel class.
  * @constructor
- * @member {string} [dataRepresentation] Default value: 'URL' .
- * @member {string} [value]
+ * @property {string} [dataRepresentation] Default value: 'URL' .
+ * @property {string} [value]
  */
 export interface BodyModel {
   dataRepresentation?: string;
@@ -925,8 +927,8 @@ export interface BodyModel {
  * @class
  * Initializes a new instance of the CreateVideoReviewsBodyItemVideoFramesItemReviewerResultTagsItem class.
  * @constructor
- * @member {string} key Your key parameter.
- * @member {string} value Your value parameter.
+ * @property {string} key Your key parameter.
+ * @property {string} value Your value parameter.
  */
 export interface CreateVideoReviewsBodyItemVideoFramesItemReviewerResultTagsItem {
   key: string;
@@ -937,8 +939,8 @@ export interface CreateVideoReviewsBodyItemVideoFramesItemReviewerResultTagsItem
  * @class
  * Initializes a new instance of the CreateVideoReviewsBodyItemVideoFramesItemMetadataItem class.
  * @constructor
- * @member {string} key Your key parameter.
- * @member {string} value Your value parameter.
+ * @property {string} key Your key parameter.
+ * @property {string} value Your value parameter.
  */
 export interface CreateVideoReviewsBodyItemVideoFramesItemMetadataItem {
   key: string;
@@ -949,11 +951,11 @@ export interface CreateVideoReviewsBodyItemVideoFramesItemMetadataItem {
  * @class
  * Initializes a new instance of the CreateVideoReviewsBodyItemVideoFramesItem class.
  * @constructor
- * @member {string} id Id of the frame.
- * @member {number} timestamp Timestamp of the frame.
- * @member {string} frameImage Frame image Url.
- * @member {array} [reviewerResultTags]
- * @member {array} [metadata] Optional metadata details.
+ * @property {string} id Id of the frame.
+ * @property {number} timestamp Timestamp of the frame.
+ * @property {string} frameImage Frame image Url.
+ * @property {array} [reviewerResultTags]
+ * @property {array} [metadata] Optional metadata details.
  */
 export interface CreateVideoReviewsBodyItemVideoFramesItem {
   id: string;
@@ -967,8 +969,8 @@ export interface CreateVideoReviewsBodyItemVideoFramesItem {
  * @class
  * Initializes a new instance of the CreateVideoReviewsBodyItemMetadataItem class.
  * @constructor
- * @member {string} key Your key parameter.
- * @member {string} value Your value parameter.
+ * @property {string} key Your key parameter.
+ * @property {string} value Your value parameter.
  */
 export interface CreateVideoReviewsBodyItemMetadataItem {
   key: string;
@@ -981,14 +983,14 @@ export interface CreateVideoReviewsBodyItemMetadataItem {
  * @constructor
  * Schema items of the body.
  *
- * @member {array} [videoFrames] Optional metadata details.
- * @member {array} [metadata] Optional metadata details.
- * @member {string} content Video content url to review.
- * @member {string} contentId Content Identifier.
- * @member {string} status Status of the video(Complete,Unpublished,Pending).
+ * @property {array} [videoFrames] Optional metadata details.
+ * @property {array} [metadata] Optional metadata details.
+ * @property {string} content Video content url to review.
+ * @property {string} contentId Content Identifier.
+ * @property {string} status Status of the video(Complete,Unpublished,Pending).
  * Possible values include: 'Complete', 'Unpublished', 'Pending'
- * @member {number} [timescale] Timescale of the video.
- * @member {string} [callbackEndpoint] Optional CallbackEndpoint.
+ * @property {number} [timescale] Timescale of the video.
+ * @property {string} [callbackEndpoint] Optional CallbackEndpoint.
  */
 export interface CreateVideoReviewsBodyItem {
   videoFrames?: CreateVideoReviewsBodyItemVideoFramesItem[];
@@ -1004,8 +1006,8 @@ export interface CreateVideoReviewsBodyItem {
  * @class
  * Initializes a new instance of the VideoFrameBodyItemReviewerResultTagsItem class.
  * @constructor
- * @member {string} key Your key parameter.
- * @member {string} value Your value parameter.
+ * @property {string} key Your key parameter.
+ * @property {string} value Your value parameter.
  */
 export interface VideoFrameBodyItemReviewerResultTagsItem {
   key: string;
@@ -1016,8 +1018,8 @@ export interface VideoFrameBodyItemReviewerResultTagsItem {
  * @class
  * Initializes a new instance of the VideoFrameBodyItemMetadataItem class.
  * @constructor
- * @member {string} key Your key parameter.
- * @member {string} value Your value parameter.
+ * @property {string} key Your key parameter.
+ * @property {string} value Your value parameter.
  */
 export interface VideoFrameBodyItemMetadataItem {
   key: string;
@@ -1030,10 +1032,10 @@ export interface VideoFrameBodyItemMetadataItem {
  * @constructor
  * Schema items of the body.
  *
- * @member {string} timestamp Timestamp of the frame.
- * @member {string} frameImage Content to review.
- * @member {array} [reviewerResultTags]
- * @member {array} [metadata] Optional metadata details.
+ * @property {string} timestamp Timestamp of the frame.
+ * @property {string} frameImage Content to review.
+ * @property {array} [reviewerResultTags]
+ * @property {array} [metadata] Optional metadata details.
  */
 export interface VideoFrameBodyItem {
   timestamp: string;

@@ -22,7 +22,7 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Input of check name availability API.
  *
- * @member {string} name The Search service name to validate. Search service
+ * @property {string} name The Search service name to validate. Search service
  * names must only contain lowercase letters, digits or dashes, cannot use dash
  * as the first two or last one characters, cannot contain consecutive dashes,
  * and must be between 2 and 60 characters in length.
@@ -37,14 +37,14 @@ export interface CheckNameAvailabilityInput {
  * @constructor
  * Output of check name availability API.
  *
- * @member {boolean} [isNameAvailable] A value indicating whether the name is
+ * @property {boolean} [isNameAvailable] A value indicating whether the name is
  * available.
- * @member {string} [reason] The reason why the name is not available.
+ * @property {string} [reason] The reason why the name is not available.
  * 'Invalid' indicates the name provided does not match the naming requirements
  * (incorrect length, unsupported characters, etc.). 'AlreadyExists' indicates
  * that the name is already in use and is therefore unavailable. Possible
  * values include: 'Invalid', 'AlreadyExists'
- * @member {string} [message] A message that explains why the name is invalid
+ * @property {string} [message] A message that explains why the name is invalid
  * and provides resource naming requirements. Available only if 'Invalid' is
  * returned in the 'reason' property.
  */
@@ -61,9 +61,9 @@ export interface CheckNameAvailabilityOutput {
  * Response containing the primary and secondary admin API keys for a given
  * Azure Search service.
  *
- * @member {string} [primaryKey] The primary admin API key of the Search
+ * @property {string} [primaryKey] The primary admin API key of the Search
  * service.
- * @member {string} [secondaryKey] The secondary admin API key of the Search
+ * @property {string} [secondaryKey] The secondary admin API key of the Search
  * service.
  */
 export interface AdminKeyResult {
@@ -78,8 +78,8 @@ export interface AdminKeyResult {
  * Describes an API key for a given Azure Search service that has permissions
  * for query operations only.
  *
- * @member {string} [name] The name of the query API key; may be empty.
- * @member {string} [key] The value of the query API key.
+ * @property {string} [name] The name of the query API key; may be empty.
+ * @property {string} [key] The value of the query API key.
  */
 export interface QueryKey {
   readonly name?: string;
@@ -93,13 +93,13 @@ export interface QueryKey {
  * Defines the SKU of an Azure Search Service, which determines price tier and
  * capacity limits.
  *
- * @member {string} [name] The SKU of the Search service. Valid values include:
- * 'free': Shared service. 'basic': Dedicated service with up to 3 replicas.
- * 'standard': Dedicated service with up to 12 partitions and 12 replicas.
- * 'standard2': Similar to standard, but with more capacity per search unit.
- * 'standard3': Offers maximum capacity per search unit with up to 12
- * partitions and 12 replicas (or up to 3 partitions with more indexes if you
- * also set the hostingMode property to 'highDensity'). Possible values
+ * @property {string} [name] The SKU of the Search service. Valid values
+ * include: 'free': Shared service. 'basic': Dedicated service with up to 3
+ * replicas. 'standard': Dedicated service with up to 12 partitions and 12
+ * replicas. 'standard2': Similar to standard, but with more capacity per
+ * search unit. 'standard3': Offers maximum capacity per search unit with up to
+ * 12 partitions and 12 replicas (or up to 3 partitions with more indexes if
+ * you also set the hostingMode property to 'highDensity'). Possible values
  * include: 'free', 'basic', 'standard', 'standard2', 'standard3'
  */
 export interface Sku {
@@ -112,20 +112,20 @@ export interface Sku {
  * @constructor
  * Base type for all Azure resources.
  *
- * @member {string} [id] The ID of the resource. This can be used with the
+ * @property {string} [id] The ID of the resource. This can be used with the
  * Azure Resource Manager to link resources together.
- * @member {string} [name] The name of the resource.
- * @member {string} [type] The resource type.
- * @member {string} [location] The geographic location of the resource. This
+ * @property {string} [name] The name of the resource.
+ * @property {string} [type] The resource type.
+ * @property {string} [location] The geographic location of the resource. This
  * must be one of the supported and registered Azure Geo Regions (for example,
  * West US, East US, Southeast Asia, and so forth). This property is required
  * when creating a new resource.
- * @member {object} [tags] Tags to help categorize the resource in the Azure
+ * @property {object} [tags] Tags to help categorize the resource in the Azure
  * portal.
- * @member {object} [identity] The identity of the resource.
- * @member {string} [identity.principalId] The principal ID of resource
+ * @property {object} [identity] The identity of the resource.
+ * @property {string} [identity.principalId] The principal ID of resource
  * identity.
- * @member {string} [identity.tenantId] The tenant ID of resource.
+ * @property {string} [identity.tenantId] The tenant ID of resource.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -142,22 +142,22 @@ export interface Resource extends BaseResource {
  * @constructor
  * Describes an Azure Search service and its current state.
  *
- * @member {number} [replicaCount] The number of replicas in the Search
+ * @property {number} [replicaCount] The number of replicas in the Search
  * service. If specified, it must be a value between 1 and 12 inclusive for
  * standard SKUs or between 1 and 3 inclusive for basic SKU. Default value: 1 .
- * @member {number} [partitionCount] The number of partitions in the Search
+ * @property {number} [partitionCount] The number of partitions in the Search
  * service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1
  * are only valid for standard SKUs. For 'standard3' services with hostingMode
  * set to 'highDensity', the allowed values are between 1 and 3. Default value:
  * 1 .
- * @member {string} [hostingMode] Applicable only for the standard3 SKU. You
+ * @property {string} [hostingMode] Applicable only for the standard3 SKU. You
  * can set this property to enable up to 3 high density partitions that allow
  * up to 1000 indexes, which is much higher than the maximum indexes allowed
  * for any other SKU. For the standard3 SKU, the value is either 'default' or
  * 'highDensity'. For all other SKUs, this value must be 'default'. Possible
  * values include: 'default', 'highDensity'. Default value: 'default' .
- * @member {string} [status] The status of the Search service. Possible values
- * include: 'running': The Search service is running and no provisioning
+ * @property {string} [status] The status of the Search service. Possible
+ * values include: 'running': The Search service is running and no provisioning
  * operations are underway. 'provisioning': The Search service is being
  * provisioned or scaled up or down. 'deleting': The Search service is being
  * deleted. 'degraded': The Search service is degraded. This can occur when the
@@ -170,8 +170,8 @@ export interface Resource extends BaseResource {
  * issue. Dedicated services in these states are still chargeable based on the
  * number of search units provisioned. Possible values include: 'running',
  * 'provisioning', 'deleting', 'degraded', 'disabled', 'error'
- * @member {string} [statusDetails] The details of the Search service status.
- * @member {string} [provisioningState] The state of the last provisioning
+ * @property {string} [statusDetails] The details of the Search service status.
+ * @property {string} [provisioningState] The state of the last provisioning
  * operation performed on the Search service. Provisioning is an intermediate
  * state that occurs while service capacity is being established. After
  * capacity is set up, provisioningState changes to either 'succeeded' or
@@ -182,10 +182,10 @@ export interface Resource extends BaseResource {
  * the call to Create Search service. This is because the free service uses
  * capacity that is already set up. Possible values include: 'succeeded',
  * 'provisioning', 'failed'
- * @member {object} [sku] The SKU of the Search Service, which determines price
- * tier and capacity limits. This property is required when creating a new
- * Search Service.
- * @member {string} [sku.name] The SKU of the Search service. Valid values
+ * @property {object} [sku] The SKU of the Search Service, which determines
+ * price tier and capacity limits. This property is required when creating a
+ * new Search Service.
+ * @property {string} [sku.name] The SKU of the Search service. Valid values
  * include: 'free': Shared service. 'basic': Dedicated service with up to 3
  * replicas. 'standard': Dedicated service with up to 12 partitions and 12
  * replicas. 'standard2': Similar to standard, but with more capacity per
@@ -210,8 +210,8 @@ export interface SearchService extends Resource {
  * @constructor
  * Identity for the resource.
  *
- * @member {string} [principalId] The principal ID of resource identity.
- * @member {string} [tenantId] The tenant ID of resource.
+ * @property {string} [principalId] The principal ID of resource identity.
+ * @property {string} [tenantId] The tenant ID of resource.
  */
 export interface Identity {
   readonly principalId?: string;
@@ -224,12 +224,12 @@ export interface Identity {
  * @constructor
  * The object that describes the operation.
  *
- * @member {string} [provider] The friendly name of the resource provider.
- * @member {string} [operation] The operation type: read, write, delete,
+ * @property {string} [provider] The friendly name of the resource provider.
+ * @property {string} [operation] The operation type: read, write, delete,
  * listKeys/action, etc.
- * @member {string} [resource] The resource type on which the operation is
+ * @property {string} [resource] The resource type on which the operation is
  * performed.
- * @member {string} [description] The friendly name of the operation.
+ * @property {string} [description] The friendly name of the operation.
  */
 export interface OperationDisplay {
   readonly provider?: string;
@@ -244,16 +244,16 @@ export interface OperationDisplay {
  * @constructor
  * Describes a REST API operation.
  *
- * @member {string} [name] The name of the operation. This name is of the form
- * {provider}/{resource}/{operation}.
- * @member {object} [display] The object that describes the operation.
- * @member {string} [display.provider] The friendly name of the resource
+ * @property {string} [name] The name of the operation. This name is of the
+ * form {provider}/{resource}/{operation}.
+ * @property {object} [display] The object that describes the operation.
+ * @property {string} [display.provider] The friendly name of the resource
  * provider.
- * @member {string} [display.operation] The operation type: read, write,
+ * @property {string} [display.operation] The operation type: read, write,
  * delete, listKeys/action, etc.
- * @member {string} [display.resource] The resource type on which the operation
- * is performed.
- * @member {string} [display.description] The friendly name of the operation.
+ * @property {string} [display.resource] The resource type on which the
+ * operation is performed.
+ * @property {string} [display.description] The friendly name of the operation.
  */
 export interface Operation {
   readonly name?: string;
@@ -266,7 +266,7 @@ export interface Operation {
  * @constructor
  * Additional parameters for a set of operations.
  *
- * @member {uuid} [clientRequestId] A client-generated GUID value that
+ * @property {uuid} [clientRequestId] A client-generated GUID value that
  * identifies this request. If specified, this will be included in response
  * information as a way to track the request.
  */
@@ -282,7 +282,7 @@ export interface SearchManagementRequestOptions {
  * The result of the request to list REST API operations. It contains a list of
  * operations and a URL  to get the next set of results.
  *
- * @member {string} [nextLink] The URL to get the next set of operation list
+ * @property {string} [nextLink] The URL to get the next set of operation list
  * results, if any.
  */
 export interface OperationListResult extends Array<Operation> {

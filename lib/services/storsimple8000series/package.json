@@ -1,32 +1,25 @@
 {
   "name": "azure-arm-storsimple8000series",
   "author": "Microsoft Corporation",
-  "contributors": [
-    "Zavery, Amar <amzavery@microsoft.com"
-  ],
+  "description": "StorSimple8000SeriesManagementClient Library with typescript type definitions for node",
   "version": "1.0.0-preview",
-  "description": "Microsoft Advisor Management Client Library for node",
-  "tags": [
-    "azure",
-    "sdk"
-  ],
+  "dependencies": {
+    "ms-rest": "^2.3.3",
+    "ms-rest-azure": "^2.5.5"
+  },
   "keywords": [
     "node",
     "azure"
   ],
+  "license": "MIT",
   "main": "./lib/storSimple8000SeriesManagementClient.js",
   "types": "./lib/storSimple8000SeriesManagementClient.d.ts",
-  "license": "MIT",
-  "dependencies": {
-    "ms-rest-azure": "^2.3.3",
-    "ms-rest": "^2.2.2"
-  },
-  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/storsimple8000series",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+    "url": "https://github.com/azure/azure-sdk-for-node.git"
   },
   "bugs": {
-    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
+    "url": "https://github.com/azure/azure-sdk-for-node/issues"
   }
 }

@@ -22,11 +22,11 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * The cluster definition.
  *
- * @member {string} [blueprint] The link to the blueprint.
- * @member {string} [kind] The type of cluster.
- * @member {object} [componentVersion] The versions of different services in
+ * @property {string} [blueprint] The link to the blueprint.
+ * @property {string} [kind] The type of cluster.
+ * @property {object} [componentVersion] The versions of different services in
  * the cluster.
- * @member {object} [configurations] The cluster configurations.
+ * @property {object} [configurations] The cluster configurations.
  */
 export interface ClusterDefinition {
   blueprint?: string;
@@ -42,22 +42,23 @@ export interface ClusterDefinition {
  * The security profile which contains Ssh public key for the HDInsight
  * cluster.
  *
- * @member {string} [directoryType] The directory type. Possible values
+ * @property {string} [directoryType] The directory type. Possible values
  * include: 'ActiveDirectory'
- * @member {string} [domain] The organization's active directory domain.
- * @member {string} [organizationalUnitDN] The organizational unit within the
+ * @property {string} [domain] The organization's active directory domain.
+ * @property {string} [organizationalUnitDN] The organizational unit within the
  * Active Directory to place the cluster and service accounts.
- * @member {array} [ldapsUrls] The LDAPS protocol URLs to communicate with the
- * Active Directory.
- * @member {string} [domainUsername] The domain user account that will have
+ * @property {array} [ldapsUrls] The LDAPS protocol URLs to communicate with
+ * the Active Directory.
+ * @property {string} [domainUsername] The domain user account that will have
  * admin privileges on the cluster.
- * @member {string} [domainUserPassword] The domain admin password.
- * @member {array} [clusterUsersGroupDNs] Optional. The Distinguished Names for
- * cluster user groups
- * @member {string} [aaddsResourceId] The resource ID of the user's Azure
+ * @property {string} [domainUserPassword] The domain admin password.
+ * @property {array} [clusterUsersGroupDNs] Optional. The Distinguished Names
+ * for cluster user groups
+ * @property {string} [aaddsResourceId] The resource ID of the user's Azure
  * Active Directory Domain Service.
- * @member {string} [msiResourceId] User assigned identity that has permissions
- * to read and create cluster-related artifacts in the user's AADDS.
+ * @property {string} [msiResourceId] User assigned identity that has
+ * permissions to read and create cluster-related artifacts in the user's
+ * AADDS.
  */
 export interface SecurityProfile {
   directoryType?: string;
@@ -77,7 +78,7 @@ export interface SecurityProfile {
  * @constructor
  * The hardware profile.
  *
- * @member {string} [vmSize] The size of the VM
+ * @property {string} [vmSize] The size of the VM
  */
 export interface HardwareProfile {
   vmSize?: string;
@@ -89,8 +90,8 @@ export interface HardwareProfile {
  * @constructor
  * The virtual network properties.
  *
- * @member {string} [id] The ID of the virtual network.
- * @member {string} [subnet] The name of the subnet.
+ * @property {string} [id] The ID of the virtual network.
+ * @property {string} [subnet] The name of the subnet.
  */
 export interface VirtualNetworkProfile {
   id?: string;
@@ -103,11 +104,11 @@ export interface VirtualNetworkProfile {
  * @constructor
  * The data disks groups for the role.
  *
- * @member {number} [disksPerNode] The number of disks per node.
- * @member {string} [storageAccountType] ReadOnly. The storage account type. Do
- * not set this value.
- * @member {number} [diskSizeGB] ReadOnly. The DiskSize in GB. Do not set this
- * value.
+ * @property {number} [disksPerNode] The number of disks per node.
+ * @property {string} [storageAccountType] ReadOnly. The storage account type.
+ * Do not set this value.
+ * @property {number} [diskSizeGB] ReadOnly. The DiskSize in GB. Do not set
+ * this value.
  */
 export interface DataDisksGroups {
   disksPerNode?: number;
@@ -121,7 +122,7 @@ export interface DataDisksGroups {
  * @constructor
  * The SSH public key for the cluster nodes.
  *
- * @member {string} [certificateData] The certificate for SSH.
+ * @property {string} [certificateData] The certificate for SSH.
  */
 export interface SshPublicKey {
   certificateData?: string;
@@ -133,7 +134,7 @@ export interface SshPublicKey {
  * @constructor
  * The list of SSH public keys.
  *
- * @member {array} [publicKeys] The list of SSH public keys.
+ * @property {array} [publicKeys] The list of SSH public keys.
  */
 export interface SshProfile {
   publicKeys?: SshPublicKey[];
@@ -145,10 +146,10 @@ export interface SshProfile {
  * @constructor
  * The ssh username, password, and ssh public key.
  *
- * @member {string} [username] The username.
- * @member {string} [password] The password.
- * @member {object} [sshProfile] The SSH profile.
- * @member {array} [sshProfile.publicKeys] The list of SSH public keys.
+ * @property {string} [username] The username.
+ * @property {string} [password] The password.
+ * @property {object} [sshProfile] The SSH profile.
+ * @property {array} [sshProfile.publicKeys] The list of SSH public keys.
  */
 export interface LinuxOperatingSystemProfile {
   username?: string;
@@ -162,12 +163,12 @@ export interface LinuxOperatingSystemProfile {
  * @constructor
  * The Linux operation systems profile.
  *
- * @member {object} [linuxOperatingSystemProfile] The Linux OS profile.
- * @member {string} [linuxOperatingSystemProfile.username] The username.
- * @member {string} [linuxOperatingSystemProfile.password] The password.
- * @member {object} [linuxOperatingSystemProfile.sshProfile] The SSH profile.
- * @member {array} [linuxOperatingSystemProfile.sshProfile.publicKeys] The list
- * of SSH public keys.
+ * @property {object} [linuxOperatingSystemProfile] The Linux OS profile.
+ * @property {string} [linuxOperatingSystemProfile.username] The username.
+ * @property {string} [linuxOperatingSystemProfile.password] The password.
+ * @property {object} [linuxOperatingSystemProfile.sshProfile] The SSH profile.
+ * @property {array} [linuxOperatingSystemProfile.sshProfile.publicKeys] The
+ * list of SSH public keys.
  */
 export interface OsProfile {
   linuxOperatingSystemProfile?: LinuxOperatingSystemProfile;
@@ -179,9 +180,9 @@ export interface OsProfile {
  * @constructor
  * Describes a script action on role on the cluster.
  *
- * @member {string} name The name of the script action.
- * @member {string} uri The URI to the script.
- * @member {string} parameters The parameters for the script provided.
+ * @property {string} name The name of the script action.
+ * @property {string} uri The URI to the script.
+ * @property {string} parameters The parameters for the script provided.
  */
 export interface ScriptAction {
   name: string;
@@ -195,29 +196,29 @@ export interface ScriptAction {
  * @constructor
  * Describes a role on the cluster.
  *
- * @member {string} [name] The name of the role.
- * @member {number} [minInstanceCount] The minimum instance count of the
+ * @property {string} [name] The name of the role.
+ * @property {number} [minInstanceCount] The minimum instance count of the
  * cluster.
- * @member {number} [targetInstanceCount] The instance count of the cluster.
- * @member {object} [hardwareProfile] The hardware profile.
- * @member {string} [hardwareProfile.vmSize] The size of the VM
- * @member {object} [osProfile] The operating system profile.
- * @member {object} [osProfile.linuxOperatingSystemProfile] The Linux OS
+ * @property {number} [targetInstanceCount] The instance count of the cluster.
+ * @property {object} [hardwareProfile] The hardware profile.
+ * @property {string} [hardwareProfile.vmSize] The size of the VM
+ * @property {object} [osProfile] The operating system profile.
+ * @property {object} [osProfile.linuxOperatingSystemProfile] The Linux OS
  * profile.
- * @member {string} [osProfile.linuxOperatingSystemProfile.username] The
+ * @property {string} [osProfile.linuxOperatingSystemProfile.username] The
  * username.
- * @member {string} [osProfile.linuxOperatingSystemProfile.password] The
+ * @property {string} [osProfile.linuxOperatingSystemProfile.password] The
  * password.
- * @member {object} [osProfile.linuxOperatingSystemProfile.sshProfile] The SSH
- * profile.
- * @member {array}
+ * @property {object} [osProfile.linuxOperatingSystemProfile.sshProfile] The
+ * SSH profile.
+ * @property {array}
  * [osProfile.linuxOperatingSystemProfile.sshProfile.publicKeys] The list of
  * SSH public keys.
- * @member {object} [virtualNetworkProfile] The virtual network profile.
- * @member {string} [virtualNetworkProfile.id] The ID of the virtual network.
- * @member {string} [virtualNetworkProfile.subnet] The name of the subnet.
- * @member {array} [dataDisksGroups] The data disks groups for the role.
- * @member {array} [scriptActions] The list of script actions on the role.
+ * @property {object} [virtualNetworkProfile] The virtual network profile.
+ * @property {string} [virtualNetworkProfile.id] The ID of the virtual network.
+ * @property {string} [virtualNetworkProfile.subnet] The name of the subnet.
+ * @property {array} [dataDisksGroups] The data disks groups for the role.
+ * @property {array} [scriptActions] The list of script actions on the role.
  */
 export interface Role {
   name?: string;
@@ -236,7 +237,7 @@ export interface Role {
  * @constructor
  * Describes the compute profile.
  *
- * @member {array} [roles] The list of roles in the cluster.
+ * @property {array} [roles] The list of roles in the cluster.
  */
 export interface ComputeProfile {
   roles?: Role[];
@@ -248,14 +249,14 @@ export interface ComputeProfile {
  * @constructor
  * The storage Account.
  *
- * @member {string} [name] The name of the storage account.
- * @member {boolean} [isDefault] Whether or not the storage account is the
+ * @property {string} [name] The name of the storage account.
+ * @property {boolean} [isDefault] Whether or not the storage account is the
  * default storage account.
- * @member {string} [container] The container in the storage account, only to
+ * @property {string} [container] The container in the storage account, only to
  * be specified for WASB storage accounts.
- * @member {string} [fileSystem] The filesystem, only to be specified for Azure
- * Data Lake Storage type Gen 2.
- * @member {string} [key] The storage account access key.
+ * @property {string} [fileSystem] The filesystem, only to be specified for
+ * Azure Data Lake Storage type Gen 2.
+ * @property {string} [key] The storage account access key.
  */
 export interface StorageAccount {
   name?: string;
@@ -271,7 +272,7 @@ export interface StorageAccount {
  * @constructor
  * The storage profile.
  *
- * @member {array} [storageaccounts] The list of storage accounts in the
+ * @property {array} [storageaccounts] The list of storage accounts in the
  * cluster.
  */
 export interface StorageProfile {
@@ -284,42 +285,42 @@ export interface StorageProfile {
  * @constructor
  * The cluster create parameters.
  *
- * @member {string} [clusterVersion] The version of the cluster.
- * @member {string} [osType] The type of operating system. Possible values
+ * @property {string} [clusterVersion] The version of the cluster.
+ * @property {string} [osType] The type of operating system. Possible values
  * include: 'Windows', 'Linux'
- * @member {string} [tier] The cluster tier. Possible values include:
+ * @property {string} [tier] The cluster tier. Possible values include:
  * 'Standard', 'Premium'
- * @member {object} [clusterDefinition] The cluster definition.
- * @member {string} [clusterDefinition.blueprint] The link to the blueprint.
- * @member {string} [clusterDefinition.kind] The type of cluster.
- * @member {object} [clusterDefinition.componentVersion] The versions of
+ * @property {object} [clusterDefinition] The cluster definition.
+ * @property {string} [clusterDefinition.blueprint] The link to the blueprint.
+ * @property {string} [clusterDefinition.kind] The type of cluster.
+ * @property {object} [clusterDefinition.componentVersion] The versions of
  * different services in the cluster.
- * @member {object} [clusterDefinition.configurations] The cluster
+ * @property {object} [clusterDefinition.configurations] The cluster
  * configurations.
- * @member {object} [securityProfile] The security profile.
- * @member {string} [securityProfile.directoryType] The directory type.
+ * @property {object} [securityProfile] The security profile.
+ * @property {string} [securityProfile.directoryType] The directory type.
  * Possible values include: 'ActiveDirectory'
- * @member {string} [securityProfile.domain] The organization's active
+ * @property {string} [securityProfile.domain] The organization's active
  * directory domain.
- * @member {string} [securityProfile.organizationalUnitDN] The organizational
+ * @property {string} [securityProfile.organizationalUnitDN] The organizational
  * unit within the Active Directory to place the cluster and service accounts.
- * @member {array} [securityProfile.ldapsUrls] The LDAPS protocol URLs to
+ * @property {array} [securityProfile.ldapsUrls] The LDAPS protocol URLs to
  * communicate with the Active Directory.
- * @member {string} [securityProfile.domainUsername] The domain user account
+ * @property {string} [securityProfile.domainUsername] The domain user account
  * that will have admin privileges on the cluster.
- * @member {string} [securityProfile.domainUserPassword] The domain admin
+ * @property {string} [securityProfile.domainUserPassword] The domain admin
  * password.
- * @member {array} [securityProfile.clusterUsersGroupDNs] Optional. The
+ * @property {array} [securityProfile.clusterUsersGroupDNs] Optional. The
  * Distinguished Names for cluster user groups
- * @member {string} [securityProfile.aaddsResourceId] The resource ID of the
+ * @property {string} [securityProfile.aaddsResourceId] The resource ID of the
  * user's Azure Active Directory Domain Service.
- * @member {string} [securityProfile.msiResourceId] User assigned identity that
- * has permissions to read and create cluster-related artifacts in the user's
- * AADDS.
- * @member {object} [computeProfile] The compute profile.
- * @member {array} [computeProfile.roles] The list of roles in the cluster.
- * @member {object} [storageProfile] The storage profile.
- * @member {array} [storageProfile.storageaccounts] The list of storage
+ * @property {string} [securityProfile.msiResourceId] User assigned identity
+ * that has permissions to read and create cluster-related artifacts in the
+ * user's AADDS.
+ * @property {object} [computeProfile] The compute profile.
+ * @property {array} [computeProfile.roles] The list of roles in the cluster.
+ * @property {object} [storageProfile] The storage profile.
+ * @property {array} [storageProfile.storageaccounts] The list of storage
  * accounts in the cluster.
  */
 export interface ClusterCreateProperties {
@@ -336,8 +337,8 @@ export interface ClusterCreateProperties {
  * @class
  * Initializes a new instance of the ClusterIdentityUserAssignedIdentitiesValue class.
  * @constructor
- * @member {string} [principalId] The principal id of user assigned identity.
- * @member {string} [clientId] The client id of user assigned identity.
+ * @property {string} [principalId] The principal id of user assigned identity.
+ * @property {string} [clientId] The client id of user assigned identity.
  */
 export interface ClusterIdentityUserAssignedIdentitiesValue {
   readonly principalId?: string;
@@ -350,15 +351,15 @@ export interface ClusterIdentityUserAssignedIdentitiesValue {
  * @constructor
  * Identity for the cluster.
  *
- * @member {string} [principalId] The principal id of cluster identity. This
+ * @property {string} [principalId] The principal id of cluster identity. This
  * property will only be provided for a system assigned identity.
- * @member {string} [tenantId] The tenant id associated with the cluster. This
- * property will only be provided for a system assigned identity.
- * @member {string} [type] The type of identity used for the cluster. The type
- * 'SystemAssigned, UserAssigned' includes both an implicitly created identity
- * and a set of user assigned identities. Possible values include:
+ * @property {string} [tenantId] The tenant id associated with the cluster.
+ * This property will only be provided for a system assigned identity.
+ * @property {string} [type] The type of identity used for the cluster. The
+ * type 'SystemAssigned, UserAssigned' includes both an implicitly created
+ * identity and a set of user assigned identities. Possible values include:
  * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
- * @member {object} [userAssignedIdentities] The list of user identities
+ * @property {object} [userAssignedIdentities] The list of user identities
  * associated with the cluster. The user identity dictionary key references
  * will be ARM resource ids in the form:
  * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
@@ -376,60 +377,61 @@ export interface ClusterIdentity {
  * @constructor
  * The CreateCluster request parameters.
  *
- * @member {string} [location] The location of the cluster.
- * @member {object} [tags] The resource tags.
- * @member {object} [properties] The cluster create parameters.
- * @member {string} [properties.clusterVersion] The version of the cluster.
- * @member {string} [properties.osType] The type of operating system. Possible
- * values include: 'Windows', 'Linux'
- * @member {string} [properties.tier] The cluster tier. Possible values
+ * @property {string} [location] The location of the cluster.
+ * @property {object} [tags] The resource tags.
+ * @property {object} [properties] The cluster create parameters.
+ * @property {string} [properties.clusterVersion] The version of the cluster.
+ * @property {string} [properties.osType] The type of operating system.
+ * Possible values include: 'Windows', 'Linux'
+ * @property {string} [properties.tier] The cluster tier. Possible values
  * include: 'Standard', 'Premium'
- * @member {object} [properties.clusterDefinition] The cluster definition.
- * @member {string} [properties.clusterDefinition.blueprint] The link to the
+ * @property {object} [properties.clusterDefinition] The cluster definition.
+ * @property {string} [properties.clusterDefinition.blueprint] The link to the
  * blueprint.
- * @member {string} [properties.clusterDefinition.kind] The type of cluster.
- * @member {object} [properties.clusterDefinition.componentVersion] The
+ * @property {string} [properties.clusterDefinition.kind] The type of cluster.
+ * @property {object} [properties.clusterDefinition.componentVersion] The
  * versions of different services in the cluster.
- * @member {object} [properties.clusterDefinition.configurations] The cluster
+ * @property {object} [properties.clusterDefinition.configurations] The cluster
  * configurations.
- * @member {object} [properties.securityProfile] The security profile.
- * @member {string} [properties.securityProfile.directoryType] The directory
+ * @property {object} [properties.securityProfile] The security profile.
+ * @property {string} [properties.securityProfile.directoryType] The directory
  * type. Possible values include: 'ActiveDirectory'
- * @member {string} [properties.securityProfile.domain] The organization's
+ * @property {string} [properties.securityProfile.domain] The organization's
  * active directory domain.
- * @member {string} [properties.securityProfile.organizationalUnitDN] The
+ * @property {string} [properties.securityProfile.organizationalUnitDN] The
  * organizational unit within the Active Directory to place the cluster and
  * service accounts.
- * @member {array} [properties.securityProfile.ldapsUrls] The LDAPS protocol
+ * @property {array} [properties.securityProfile.ldapsUrls] The LDAPS protocol
  * URLs to communicate with the Active Directory.
- * @member {string} [properties.securityProfile.domainUsername] The domain user
- * account that will have admin privileges on the cluster.
- * @member {string} [properties.securityProfile.domainUserPassword] The domain
- * admin password.
- * @member {array} [properties.securityProfile.clusterUsersGroupDNs] Optional.
- * The Distinguished Names for cluster user groups
- * @member {string} [properties.securityProfile.aaddsResourceId] The resource
+ * @property {string} [properties.securityProfile.domainUsername] The domain
+ * user account that will have admin privileges on the cluster.
+ * @property {string} [properties.securityProfile.domainUserPassword] The
+ * domain admin password.
+ * @property {array} [properties.securityProfile.clusterUsersGroupDNs]
+ * Optional. The Distinguished Names for cluster user groups
+ * @property {string} [properties.securityProfile.aaddsResourceId] The resource
  * ID of the user's Azure Active Directory Domain Service.
- * @member {string} [properties.securityProfile.msiResourceId] User assigned
+ * @property {string} [properties.securityProfile.msiResourceId] User assigned
  * identity that has permissions to read and create cluster-related artifacts
  * in the user's AADDS.
- * @member {object} [properties.computeProfile] The compute profile.
- * @member {array} [properties.computeProfile.roles] The list of roles in the
+ * @property {object} [properties.computeProfile] The compute profile.
+ * @property {array} [properties.computeProfile.roles] The list of roles in the
  * cluster.
- * @member {object} [properties.storageProfile] The storage profile.
- * @member {array} [properties.storageProfile.storageaccounts] The list of
+ * @property {object} [properties.storageProfile] The storage profile.
+ * @property {array} [properties.storageProfile.storageaccounts] The list of
  * storage accounts in the cluster.
- * @member {object} [identity] The identity of the cluster, if configured.
- * @member {string} [identity.principalId] The principal id of cluster
+ * @property {object} [identity] The identity of the cluster, if configured.
+ * @property {string} [identity.principalId] The principal id of cluster
  * identity. This property will only be provided for a system assigned
  * identity.
- * @member {string} [identity.tenantId] The tenant id associated with the
+ * @property {string} [identity.tenantId] The tenant id associated with the
  * cluster. This property will only be provided for a system assigned identity.
- * @member {string} [identity.type] The type of identity used for the cluster.
- * The type 'SystemAssigned, UserAssigned' includes both an implicitly created
- * identity and a set of user assigned identities. Possible values include:
- * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
- * @member {object} [identity.userAssignedIdentities] The list of user
+ * @property {string} [identity.type] The type of identity used for the
+ * cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+ * created identity and a set of user assigned identities. Possible values
+ * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+ * 'None'
+ * @property {object} [identity.userAssignedIdentities] The list of user
  * identities associated with the cluster. The user identity dictionary key
  * references will be ARM resource ids in the form:
  * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
@@ -447,7 +449,7 @@ export interface ClusterCreateParametersExtended {
  * @constructor
  * The PatchCluster request parameters
  *
- * @member {object} [tags] The resource tags.
+ * @property {object} [tags] The resource tags.
  */
 export interface ClusterPatchParameters {
   tags?: { [propertyName: string]: string };
@@ -459,7 +461,7 @@ export interface ClusterPatchParameters {
  * @constructor
  * The quota properties for the cluster.
  *
- * @member {number} [coresUsed] The cores used by the cluster.
+ * @property {number} [coresUsed] The cores used by the cluster.
  */
 export interface QuotaInfo {
   coresUsed?: number;
@@ -471,8 +473,8 @@ export interface QuotaInfo {
  * @constructor
  * The error message associated with the cluster creation.
  *
- * @member {string} [code] The error code.
- * @member {string} [message] The error message.
+ * @property {string} [code] The error code.
+ * @property {string} [message] The error message.
  */
 export interface Errors {
   code?: string;
@@ -485,10 +487,10 @@ export interface Errors {
  * @constructor
  * The connectivity properties
  *
- * @member {string} [name] The name of the endpoint.
- * @member {string} [protocol] The protocol of the endpoint.
- * @member {string} [location] The location of the endpoint.
- * @member {number} [port] The port to connect to.
+ * @property {string} [name] The name of the endpoint.
+ * @property {string} [protocol] The protocol of the endpoint.
+ * @property {string} [location] The location of the endpoint.
+ * @property {number} [port] The port to connect to.
  */
 export interface ConnectivityEndpoint {
   name?: string;
@@ -503,49 +505,50 @@ export interface ConnectivityEndpoint {
  * @constructor
  * The properties of cluster.
  *
- * @member {string} [clusterVersion] The version of the cluster.
- * @member {string} [osType] The type of operating system. Possible values
+ * @property {string} [clusterVersion] The version of the cluster.
+ * @property {string} [osType] The type of operating system. Possible values
  * include: 'Windows', 'Linux'
- * @member {string} [tier] The cluster tier. Possible values include:
+ * @property {string} [tier] The cluster tier. Possible values include:
  * 'Standard', 'Premium'
- * @member {object} clusterDefinition The cluster definition.
- * @member {string} [clusterDefinition.blueprint] The link to the blueprint.
- * @member {string} [clusterDefinition.kind] The type of cluster.
- * @member {object} [clusterDefinition.componentVersion] The versions of
+ * @property {object} clusterDefinition The cluster definition.
+ * @property {string} [clusterDefinition.blueprint] The link to the blueprint.
+ * @property {string} [clusterDefinition.kind] The type of cluster.
+ * @property {object} [clusterDefinition.componentVersion] The versions of
  * different services in the cluster.
- * @member {object} [clusterDefinition.configurations] The cluster
+ * @property {object} [clusterDefinition.configurations] The cluster
  * configurations.
- * @member {object} [securityProfile] The security profile.
- * @member {string} [securityProfile.directoryType] The directory type.
+ * @property {object} [securityProfile] The security profile.
+ * @property {string} [securityProfile.directoryType] The directory type.
  * Possible values include: 'ActiveDirectory'
- * @member {string} [securityProfile.domain] The organization's active
+ * @property {string} [securityProfile.domain] The organization's active
  * directory domain.
- * @member {string} [securityProfile.organizationalUnitDN] The organizational
+ * @property {string} [securityProfile.organizationalUnitDN] The organizational
  * unit within the Active Directory to place the cluster and service accounts.
- * @member {array} [securityProfile.ldapsUrls] The LDAPS protocol URLs to
+ * @property {array} [securityProfile.ldapsUrls] The LDAPS protocol URLs to
  * communicate with the Active Directory.
- * @member {string} [securityProfile.domainUsername] The domain user account
+ * @property {string} [securityProfile.domainUsername] The domain user account
  * that will have admin privileges on the cluster.
- * @member {string} [securityProfile.domainUserPassword] The domain admin
+ * @property {string} [securityProfile.domainUserPassword] The domain admin
  * password.
- * @member {array} [securityProfile.clusterUsersGroupDNs] Optional. The
+ * @property {array} [securityProfile.clusterUsersGroupDNs] Optional. The
  * Distinguished Names for cluster user groups
- * @member {string} [securityProfile.aaddsResourceId] The resource ID of the
+ * @property {string} [securityProfile.aaddsResourceId] The resource ID of the
  * user's Azure Active Directory Domain Service.
- * @member {string} [securityProfile.msiResourceId] User assigned identity that
- * has permissions to read and create cluster-related artifacts in the user's
- * AADDS.
- * @member {object} [computeProfile] The compute profile.
- * @member {array} [computeProfile.roles] The list of roles in the cluster.
- * @member {string} [provisioningState] The provisioning state, which only
+ * @property {string} [securityProfile.msiResourceId] User assigned identity
+ * that has permissions to read and create cluster-related artifacts in the
+ * user's AADDS.
+ * @property {object} [computeProfile] The compute profile.
+ * @property {array} [computeProfile.roles] The list of roles in the cluster.
+ * @property {string} [provisioningState] The provisioning state, which only
  * appears in the response. Possible values include: 'InProgress', 'Failed',
  * 'Succeeded', 'Canceled', 'Deleting'
- * @member {string} [createdDate] The date on which the cluster was created.
- * @member {string} [clusterState] The state of the cluster.
- * @member {object} [quotaInfo] The quota information.
- * @member {number} [quotaInfo.coresUsed] The cores used by the cluster.
- * @member {array} [errors] The list of errors.
- * @member {array} [connectivityEndpoints] The list of connectivity endpoints.
+ * @property {string} [createdDate] The date on which the cluster was created.
+ * @property {string} [clusterState] The state of the cluster.
+ * @property {object} [quotaInfo] The quota information.
+ * @property {number} [quotaInfo.coresUsed] The cores used by the cluster.
+ * @property {array} [errors] The list of errors.
+ * @property {array} [connectivityEndpoints] The list of connectivity
+ * endpoints.
  */
 export interface ClusterGetProperties {
   clusterVersion?: string;
@@ -568,9 +571,9 @@ export interface ClusterGetProperties {
  * @constructor
  * The core properties of ARM resources
  *
- * @member {string} [id] Fully qualified resource Id for the resource.
- * @member {string} [name] The name of the resource
- * @member {string} [type] The type of the resource.
+ * @property {string} [id] Fully qualified resource Id for the resource.
+ * @property {string} [name] The name of the resource
+ * @property {string} [type] The type of the resource.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -584,8 +587,8 @@ export interface Resource extends BaseResource {
  * @constructor
  * The resource model definition for a ARM tracked top level resource
  *
- * @member {string} [location] The Azure Region where the resource lives
- * @member {object} [tags] Resource tags.
+ * @property {string} [location] The Azure Region where the resource lives
+ * @property {object} [tags] Resource tags.
  */
 export interface TrackedResource extends Resource {
   location?: string;
@@ -598,68 +601,69 @@ export interface TrackedResource extends Resource {
  * @constructor
  * The HDInsight cluster.
  *
- * @member {string} [etag] The ETag for the resource
- * @member {object} [properties] The properties of the cluster.
- * @member {string} [properties.clusterVersion] The version of the cluster.
- * @member {string} [properties.osType] The type of operating system. Possible
- * values include: 'Windows', 'Linux'
- * @member {string} [properties.tier] The cluster tier. Possible values
+ * @property {string} [etag] The ETag for the resource
+ * @property {object} [properties] The properties of the cluster.
+ * @property {string} [properties.clusterVersion] The version of the cluster.
+ * @property {string} [properties.osType] The type of operating system.
+ * Possible values include: 'Windows', 'Linux'
+ * @property {string} [properties.tier] The cluster tier. Possible values
  * include: 'Standard', 'Premium'
- * @member {object} [properties.clusterDefinition] The cluster definition.
- * @member {string} [properties.clusterDefinition.blueprint] The link to the
+ * @property {object} [properties.clusterDefinition] The cluster definition.
+ * @property {string} [properties.clusterDefinition.blueprint] The link to the
  * blueprint.
- * @member {string} [properties.clusterDefinition.kind] The type of cluster.
- * @member {object} [properties.clusterDefinition.componentVersion] The
+ * @property {string} [properties.clusterDefinition.kind] The type of cluster.
+ * @property {object} [properties.clusterDefinition.componentVersion] The
  * versions of different services in the cluster.
- * @member {object} [properties.clusterDefinition.configurations] The cluster
+ * @property {object} [properties.clusterDefinition.configurations] The cluster
  * configurations.
- * @member {object} [properties.securityProfile] The security profile.
- * @member {string} [properties.securityProfile.directoryType] The directory
+ * @property {object} [properties.securityProfile] The security profile.
+ * @property {string} [properties.securityProfile.directoryType] The directory
  * type. Possible values include: 'ActiveDirectory'
- * @member {string} [properties.securityProfile.domain] The organization's
+ * @property {string} [properties.securityProfile.domain] The organization's
  * active directory domain.
- * @member {string} [properties.securityProfile.organizationalUnitDN] The
+ * @property {string} [properties.securityProfile.organizationalUnitDN] The
  * organizational unit within the Active Directory to place the cluster and
  * service accounts.
- * @member {array} [properties.securityProfile.ldapsUrls] The LDAPS protocol
+ * @property {array} [properties.securityProfile.ldapsUrls] The LDAPS protocol
  * URLs to communicate with the Active Directory.
- * @member {string} [properties.securityProfile.domainUsername] The domain user
- * account that will have admin privileges on the cluster.
- * @member {string} [properties.securityProfile.domainUserPassword] The domain
- * admin password.
- * @member {array} [properties.securityProfile.clusterUsersGroupDNs] Optional.
- * The Distinguished Names for cluster user groups
- * @member {string} [properties.securityProfile.aaddsResourceId] The resource
+ * @property {string} [properties.securityProfile.domainUsername] The domain
+ * user account that will have admin privileges on the cluster.
+ * @property {string} [properties.securityProfile.domainUserPassword] The
+ * domain admin password.
+ * @property {array} [properties.securityProfile.clusterUsersGroupDNs]
+ * Optional. The Distinguished Names for cluster user groups
+ * @property {string} [properties.securityProfile.aaddsResourceId] The resource
  * ID of the user's Azure Active Directory Domain Service.
- * @member {string} [properties.securityProfile.msiResourceId] User assigned
+ * @property {string} [properties.securityProfile.msiResourceId] User assigned
  * identity that has permissions to read and create cluster-related artifacts
  * in the user's AADDS.
- * @member {object} [properties.computeProfile] The compute profile.
- * @member {array} [properties.computeProfile.roles] The list of roles in the
+ * @property {object} [properties.computeProfile] The compute profile.
+ * @property {array} [properties.computeProfile.roles] The list of roles in the
  * cluster.
- * @member {string} [properties.provisioningState] The provisioning state,
+ * @property {string} [properties.provisioningState] The provisioning state,
  * which only appears in the response. Possible values include: 'InProgress',
  * 'Failed', 'Succeeded', 'Canceled', 'Deleting'
- * @member {string} [properties.createdDate] The date on which the cluster was
- * created.
- * @member {string} [properties.clusterState] The state of the cluster.
- * @member {object} [properties.quotaInfo] The quota information.
- * @member {number} [properties.quotaInfo.coresUsed] The cores used by the
+ * @property {string} [properties.createdDate] The date on which the cluster
+ * was created.
+ * @property {string} [properties.clusterState] The state of the cluster.
+ * @property {object} [properties.quotaInfo] The quota information.
+ * @property {number} [properties.quotaInfo.coresUsed] The cores used by the
  * cluster.
- * @member {array} [properties.errors] The list of errors.
- * @member {array} [properties.connectivityEndpoints] The list of connectivity
- * endpoints.
- * @member {object} [identity] The identity of the cluster, if configured.
- * @member {string} [identity.principalId] The principal id of cluster
+ * @property {array} [properties.errors] The list of errors.
+ * @property {array} [properties.connectivityEndpoints] The list of
+ * connectivity endpoints.
+ * @property {object} [identity] The identity of the cluster, if configured.
+ * @property {string} [identity.principalId] The principal id of cluster
  * identity. This property will only be provided for a system assigned
  * identity.
- * @member {string} [identity.tenantId] The tenant id associated with the
+ * @property {string} [identity.tenantId] The tenant id associated with the
  * cluster. This property will only be provided for a system assigned identity.
- * @member {string} [identity.type] The type of identity used for the cluster.
- * The type 'SystemAssigned, UserAssigned' includes both an implicitly created
- * identity and a set of user assigned identities. Possible values include:
- * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
- * @member {object} [identity.userAssignedIdentities] The list of user
+ * @property {string} [identity.type] The type of identity used for the
+ * cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+ * created identity and a set of user assigned identities. Possible values
+ * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+ * 'None'
+ * @property {object} [identity.userAssignedIdentities] The list of user
  * identities associated with the cluster. The user identity dictionary key
  * references will be ARM resource ids in the form:
  * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
@@ -676,11 +680,11 @@ export interface Cluster extends TrackedResource {
  * @constructor
  * Describes a script action on a running cluster.
  *
- * @member {string} name The name of the script action.
- * @member {string} uri The URI to the script.
- * @member {string} [parameters] The parameters for the script
- * @member {array} roles The list of roles where script will be executed.
- * @member {string} [applicationName] The application name of the script
+ * @property {string} name The name of the script action.
+ * @property {string} uri The URI to the script.
+ * @property {string} [parameters] The parameters for the script
+ * @property {array} roles The list of roles where script will be executed.
+ * @property {string} [applicationName] The application name of the script
  * action, if any.
  */
 export interface RuntimeScriptAction {
@@ -697,8 +701,8 @@ export interface RuntimeScriptAction {
  * @constructor
  * The parameters for the script actions to execute on a running cluster.
  *
- * @member {array} [scriptActions] The list of run time script actions.
- * @member {boolean} persistOnSuccess Gets or sets if the scripts needs to be
+ * @property {array} [scriptActions] The list of run time script actions.
+ * @property {boolean} persistOnSuccess Gets or sets if the scripts needs to be
  * persisted.
  */
 export interface ExecuteScriptActionParameters {
@@ -712,8 +716,8 @@ export interface ExecuteScriptActionParameters {
  * @constructor
  * The ListPersistedScriptActions operation response.
  *
- * @member {array} [value] The list of Persisted Script Actions.
- * @member {string} [nextLink] The link (url) to the next page of results.
+ * @property {array} [value] The list of Persisted Script Actions.
+ * @property {string} [nextLink] The link (url) to the next page of results.
  */
 export interface ClusterListPersistedScriptActionsResult {
   value?: RuntimeScriptAction[];
@@ -726,8 +730,8 @@ export interface ClusterListPersistedScriptActionsResult {
  * @constructor
  * The execution summary of a script action.
  *
- * @member {string} [status] The status of script action execution.
- * @member {number} [instanceCount] The instance count for a given script
+ * @property {string} [status] The status of script action execution.
+ * @property {number} [instanceCount] The instance count for a given script
  * action execution status.
  */
 export interface ScriptActionExecutionSummary {
@@ -741,14 +745,17 @@ export interface ScriptActionExecutionSummary {
  * @constructor
  * The execution details of a script action.
  *
- * @member {number} [scriptExecutionId] The execution id of the script action.
- * @member {string} [startTime] The start time of script action execution.
- * @member {string} [endTime] The end time of script action execution.
- * @member {string} [status] The current execution status of the script action.
- * @member {string} [operation] The reason why the script action was executed.
- * @member {array} [executionSummary] The summary of script action execution
+ * @property {number} [scriptExecutionId] The execution id of the script
+ * action.
+ * @property {string} [startTime] The start time of script action execution.
+ * @property {string} [endTime] The end time of script action execution.
+ * @property {string} [status] The current execution status of the script
+ * action.
+ * @property {string} [operation] The reason why the script action was
+ * executed.
+ * @property {array} [executionSummary] The summary of script action execution
  * result.
- * @member {string} [debugInformation] The script action execution debug
+ * @property {string} [debugInformation] The script action execution debug
  * information.
  */
 export interface RuntimeScriptActionDetail extends RuntimeScriptAction {
@@ -767,9 +774,9 @@ export interface RuntimeScriptActionDetail extends RuntimeScriptAction {
  * @constructor
  * The list runtime script action detail response.
  *
- * @member {array} [value] The list of persisted script action details for the
- * cluster.
- * @member {string} [nextLink] The link (url) to the next page of results.
+ * @property {array} [value] The list of persisted script action details for
+ * the cluster.
+ * @property {string} [nextLink] The link (url) to the next page of results.
  */
 export interface ClusterListRuntimeScriptActionDetailResult {
   readonly value?: RuntimeScriptActionDetail[];
@@ -782,7 +789,7 @@ export interface ClusterListRuntimeScriptActionDetailResult {
  * @constructor
  * The Resize Cluster request parameters.
  *
- * @member {number} [targetInstanceCount] The target instance count for the
+ * @property {number} [targetInstanceCount] The target instance count for the
  * operation.
  */
 export interface ClusterResizeParameters {
@@ -795,11 +802,11 @@ export interface ClusterResizeParameters {
  * @constructor
  * The azure async operation response.
  *
- * @member {string} [status] The async operation state. Possible values
+ * @property {string} [status] The async operation state. Possible values
  * include: 'InProgress', 'Succeeded', 'Failed'
- * @member {object} [error] The operation error information.
- * @member {string} [error.code] The error code.
- * @member {string} [error.message] The error message.
+ * @property {object} [error] The operation error information.
+ * @property {string} [error.code] The error code.
+ * @property {string} [error.message] The error message.
  */
 export interface OperationResource {
   status?: string;
@@ -823,8 +830,8 @@ export interface ProxyResource extends Resource {
  * @constructor
  * Describes the format of Error response.
  *
- * @member {string} [code] Error code
- * @member {string} [message] Error message indicating why the operation
+ * @property {string} [code] Error code
+ * @property {string} [message] Error message indicating why the operation
  * failed.
  */
 export interface ErrorResponse {
@@ -838,10 +845,11 @@ export interface ErrorResponse {
  * @constructor
  * Gets the application HTTP endpoints.
  *
- * @member {array} [accessModes] The list of access modes for the application.
- * @member {string} [location] The location of the endpoint.
- * @member {number} [destinationPort] The destination port to connect to.
- * @member {number} [publicPort] The public port to connect to.
+ * @property {array} [accessModes] The list of access modes for the
+ * application.
+ * @property {string} [location] The location of the endpoint.
+ * @property {number} [destinationPort] The destination port to connect to.
+ * @property {number} [publicPort] The public port to connect to.
  */
 export interface ApplicationGetHttpsEndpoint {
   accessModes?: string[];
@@ -856,9 +864,9 @@ export interface ApplicationGetHttpsEndpoint {
  * @constructor
  * Gets the application SSH endpoint
  *
- * @member {string} [location] The location of the endpoint.
- * @member {number} [destinationPort] The destination port to connect to.
- * @member {number} [publicPort] The public port to connect to.
+ * @property {string} [location] The location of the endpoint.
+ * @property {number} [destinationPort] The destination port to connect to.
+ * @property {number} [publicPort] The public port to connect to.
  */
 export interface ApplicationGetEndpoint {
   location?: string;
@@ -872,20 +880,20 @@ export interface ApplicationGetEndpoint {
  * @constructor
  * The HDInsight cluster application GET response.
  *
- * @member {object} [computeProfile] The list of roles in the cluster.
- * @member {array} [computeProfile.roles] The list of roles in the cluster.
- * @member {array} [installScriptActions] The list of install script actions.
- * @member {array} [uninstallScriptActions] The list of uninstall script
+ * @property {object} [computeProfile] The list of roles in the cluster.
+ * @property {array} [computeProfile.roles] The list of roles in the cluster.
+ * @property {array} [installScriptActions] The list of install script actions.
+ * @property {array} [uninstallScriptActions] The list of uninstall script
  * actions.
- * @member {array} [httpsEndpoints] The list of application HTTPS endpoints.
- * @member {array} [sshEndpoints] The list of application SSH endpoints.
- * @member {string} [provisioningState] The provisioning state of the
+ * @property {array} [httpsEndpoints] The list of application HTTPS endpoints.
+ * @property {array} [sshEndpoints] The list of application SSH endpoints.
+ * @property {string} [provisioningState] The provisioning state of the
  * application.
- * @member {string} [applicationType] The application type.
- * @member {string} [applicationState] The application state.
- * @member {array} [errors] The list of errors.
- * @member {string} [createdDate] The application create date time.
- * @member {string} [marketplaceIdentifier] The marketplace identifier.
+ * @property {string} [applicationType] The application type.
+ * @property {string} [applicationState] The application state.
+ * @property {array} [errors] The list of errors.
+ * @property {string} [createdDate] The application create date time.
+ * @property {string} [marketplaceIdentifier] The marketplace identifier.
  */
 export interface ApplicationProperties {
   computeProfile?: ComputeProfile;
@@ -907,28 +915,29 @@ export interface ApplicationProperties {
  * @constructor
  * The HDInsight cluster application
  *
- * @member {string} [etag] The ETag for the application
- * @member {object} [tags] The tags for the application.
- * @member {object} [properties] The properties of the application.
- * @member {object} [properties.computeProfile] The list of roles in the
+ * @property {string} [etag] The ETag for the application
+ * @property {object} [tags] The tags for the application.
+ * @property {object} [properties] The properties of the application.
+ * @property {object} [properties.computeProfile] The list of roles in the
  * cluster.
- * @member {array} [properties.computeProfile.roles] The list of roles in the
+ * @property {array} [properties.computeProfile.roles] The list of roles in the
  * cluster.
- * @member {array} [properties.installScriptActions] The list of install script
- * actions.
- * @member {array} [properties.uninstallScriptActions] The list of uninstall
+ * @property {array} [properties.installScriptActions] The list of install
  * script actions.
- * @member {array} [properties.httpsEndpoints] The list of application HTTPS
+ * @property {array} [properties.uninstallScriptActions] The list of uninstall
+ * script actions.
+ * @property {array} [properties.httpsEndpoints] The list of application HTTPS
  * endpoints.
- * @member {array} [properties.sshEndpoints] The list of application SSH
+ * @property {array} [properties.sshEndpoints] The list of application SSH
  * endpoints.
- * @member {string} [properties.provisioningState] The provisioning state of
+ * @property {string} [properties.provisioningState] The provisioning state of
  * the application.
- * @member {string} [properties.applicationType] The application type.
- * @member {string} [properties.applicationState] The application state.
- * @member {array} [properties.errors] The list of errors.
- * @member {string} [properties.createdDate] The application create date time.
- * @member {string} [properties.marketplaceIdentifier] The marketplace
+ * @property {string} [properties.applicationType] The application type.
+ * @property {string} [properties.applicationState] The application state.
+ * @property {array} [properties.errors] The list of errors.
+ * @property {string} [properties.createdDate] The application create date
+ * time.
+ * @property {string} [properties.marketplaceIdentifier] The marketplace
  * identifier.
  */
 export interface Application extends ProxyResource {
@@ -943,8 +952,8 @@ export interface Application extends ProxyResource {
  * @constructor
  * The details about the localizable name of a type of usage.
  *
- * @member {string} [value] The name of the used resource.
- * @member {string} [localizedValue] The localized name of the used resource.
+ * @property {string} [value] The name of the used resource.
+ * @property {string} [localizedValue] The localized name of the used resource.
  */
 export interface LocalizedName {
   value?: string;
@@ -957,13 +966,13 @@ export interface LocalizedName {
  * @constructor
  * The details about the usage of a particular limited resource.
  *
- * @member {string} [unit] The type of measurement for usage.
- * @member {number} [currentValue] The current usage.
- * @member {number} [limit] The maximum allowed usage.
- * @member {object} [name] The details about the localizable name of the used
+ * @property {string} [unit] The type of measurement for usage.
+ * @property {number} [currentValue] The current usage.
+ * @property {number} [limit] The maximum allowed usage.
+ * @property {object} [name] The details about the localizable name of the used
  * resource.
- * @member {string} [name.value] The name of the used resource.
- * @member {string} [name.localizedValue] The localized name of the used
+ * @property {string} [name.value] The name of the used resource.
+ * @property {string} [name.localizedValue] The localized name of the used
  * resource.
  */
 export interface Usage {
@@ -979,7 +988,7 @@ export interface Usage {
  * @constructor
  * The response for the operation to get regional usages for a subscription.
  *
- * @member {array} [value] The list of usages.
+ * @property {array} [value] The list of usages.
  */
 export interface UsagesListResult {
   value?: Usage[];
@@ -991,9 +1000,9 @@ export interface UsagesListResult {
  * @constructor
  * Cluster monitoring extensions
  *
- * @member {string} [workspaceId] The workspace ID for the cluster monitoring
+ * @property {string} [workspaceId] The workspace ID for the cluster monitoring
  * extension.
- * @member {string} [primaryKey] The certificate for the cluster monitoring
+ * @property {string} [primaryKey] The certificate for the cluster monitoring
  * extensions.
  */
 export interface Extension {
@@ -1007,10 +1016,10 @@ export interface Extension {
  * @constructor
  * The Operations Management Suite (OMS) status response
  *
- * @member {boolean} [clusterMonitoringEnabled] The status of the Operations
+ * @property {boolean} [clusterMonitoringEnabled] The status of the Operations
  * Management Suite (OMS) on the HDInsight cluster.
- * @member {string} [workspaceId] The workspace ID of the Operations Management
- * Suite (OMS) on the HDInsight cluster.
+ * @property {string} [workspaceId] The workspace ID of the Operations
+ * Management Suite (OMS) on the HDInsight cluster.
  */
 export interface ClusterMonitoringResponse {
   clusterMonitoringEnabled?: boolean;
@@ -1023,9 +1032,9 @@ export interface ClusterMonitoringResponse {
  * @constructor
  * The Operations Management Suite (OMS) parameters.
  *
- * @member {string} [workspaceId] The Operations Management Suite (OMS)
+ * @property {string} [workspaceId] The Operations Management Suite (OMS)
  * workspace ID.
- * @member {string} [primaryKey] The Operations Management Suite (OMS)
+ * @property {string} [primaryKey] The Operations Management Suite (OMS)
  * workspace key.
  */
 export interface ClusterMonitoringRequest {
@@ -1039,11 +1048,11 @@ export interface ClusterMonitoringRequest {
  * @constructor
  * The persisted script action for cluster.
  *
- * @member {string} [name] The name of script action.
- * @member {string} [uri] The URI to the script.
- * @member {string} [parameters] The parameters for the script provided.
- * @member {array} [roles] The list of roles where script will be executed.
- * @member {string} [applicationName] The application name for the script
+ * @property {string} [name] The name of script action.
+ * @property {string} [uri] The URI to the script.
+ * @property {string} [parameters] The parameters for the script provided.
+ * @property {array} [roles] The list of roles where script will be executed.
+ * @property {string} [applicationName] The application name for the script
  * action.
  */
 export interface ScriptActionPersistedGetResponseSpec {
@@ -1060,10 +1069,10 @@ export interface ScriptActionPersistedGetResponseSpec {
  * @constructor
  * The object that represents the operation.
  *
- * @member {string} [provider] The service provider: Microsoft.HDInsight
- * @member {string} [resource] The resource on which the operation is
+ * @property {string} [provider] The service provider: Microsoft.HDInsight
+ * @property {string} [resource] The resource on which the operation is
  * performed: Cluster, Applications, etc.
- * @member {string} [operation] The operation type: read, write, delete, etc.
+ * @property {string} [operation] The operation type: read, write, delete, etc.
  */
 export interface OperationDisplay {
   provider?: string;
@@ -1077,14 +1086,14 @@ export interface OperationDisplay {
  * @constructor
  * The HDInsight REST API operation.
  *
- * @member {string} [name] The operation name:
+ * @property {string} [name] The operation name:
  * {provider}/{resource}/{operation}
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] The service provider:
+ * @property {object} [display] The object that represents the operation.
+ * @property {string} [display.provider] The service provider:
  * Microsoft.HDInsight
- * @member {string} [display.resource] The resource on which the operation is
+ * @property {string} [display.resource] The resource on which the operation is
  * performed: Cluster, Applications, etc.
- * @member {string} [display.operation] The operation type: read, write,
+ * @property {string} [display.operation] The operation type: read, write,
  * delete, etc.
  */
 export interface Operation {
@@ -1099,7 +1108,7 @@ export interface Operation {
  * @constructor
  * The List Cluster operation response.
  *
- * @member {string} [nextLink] The link (url) to the next page of results.
+ * @property {string} [nextLink] The link (url) to the next page of results.
  */
 export interface ClusterListResult extends Array<Cluster> {
   readonly nextLink?: string;
@@ -1112,7 +1121,7 @@ export interface ClusterListResult extends Array<Cluster> {
  * Result of the request to list cluster Applications. It contains a list of
  * operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] The URL to get the next set of operation list
+ * @property {string} [nextLink] The URL to get the next set of operation list
  * results if there are any.
  */
 export interface ApplicationListResult extends Array<Application> {
@@ -1125,7 +1134,7 @@ export interface ApplicationListResult extends Array<Application> {
  * @constructor
  * The persisted script action for the cluster.
  *
- * @member {string} [nextLink] The link (url) to the next page of results.
+ * @property {string} [nextLink] The link (url) to the next page of results.
  */
 export interface ScriptActionsList extends Array<RuntimeScriptActionDetail> {
   readonly nextLink?: string;
@@ -1137,7 +1146,7 @@ export interface ScriptActionsList extends Array<RuntimeScriptActionDetail> {
  * @constructor
  * The list script execution history response.
  *
- * @member {string} [nextLink] The link (url) to the next page of results.
+ * @property {string} [nextLink] The link (url) to the next page of results.
  */
 export interface ScriptActionExecutionHistoryList extends Array<RuntimeScriptActionDetail> {
   readonly nextLink?: string;
@@ -1150,7 +1159,7 @@ export interface ScriptActionExecutionHistoryList extends Array<RuntimeScriptAct
  * Result of the request to list HDInsight operations. It contains a list of
  * operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] The URL to get the next set of operation list
+ * @property {string} [nextLink] The URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {

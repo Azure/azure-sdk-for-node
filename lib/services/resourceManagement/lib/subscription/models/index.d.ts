@@ -22,13 +22,13 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Location information.
  *
- * @member {string} [id] The fully qualified ID of the location. For example,
+ * @property {string} [id] The fully qualified ID of the location. For example,
  * /subscriptions/00000000-0000-0000-0000-000000000000/locations/westus.
- * @member {string} [subscriptionId] The subscription ID.
- * @member {string} [name] The location name.
- * @member {string} [displayName] The display name of the location.
- * @member {string} [latitude] The latitude of the location.
- * @member {string} [longitude] The longitude of the location.
+ * @property {string} [subscriptionId] The subscription ID.
+ * @property {string} [name] The location name.
+ * @property {string} [displayName] The display name of the location.
+ * @property {string} [latitude] The latitude of the location.
+ * @property {string} [longitude] The longitude of the location.
  */
 export interface Location {
   readonly id?: string;
@@ -45,12 +45,12 @@ export interface Location {
  * @constructor
  * Subscription policies.
  *
- * @member {string} [locationPlacementId] The subscription location placement
+ * @property {string} [locationPlacementId] The subscription location placement
  * ID. The ID indicates which regions are visible for a subscription. For
  * example, a subscription with a location placement Id of Public_2014-09-01
  * has access to Azure public regions.
- * @member {string} [quotaId] The subscription quota ID.
- * @member {string} [spendingLimit] The subscription spending limit. Possible
+ * @property {string} [quotaId] The subscription quota ID.
+ * @property {string} [spendingLimit] The subscription spending limit. Possible
  * values include: 'On', 'Off', 'CurrentPeriodOff'
  */
 export interface SubscriptionPolicies {
@@ -65,22 +65,22 @@ export interface SubscriptionPolicies {
  * @constructor
  * Subscription information.
  *
- * @member {string} [id] The fully qualified ID for the subscription. For
+ * @property {string} [id] The fully qualified ID for the subscription. For
  * example, /subscriptions/00000000-0000-0000-0000-000000000000.
- * @member {string} [subscriptionId] The subscription ID.
- * @member {string} [displayName] The subscription display name.
- * @member {string} [state] The subscription state. Possible values are
+ * @property {string} [subscriptionId] The subscription ID.
+ * @property {string} [displayName] The subscription display name.
+ * @property {string} [state] The subscription state. Possible values are
  * Enabled, Warned, PastDue, Disabled, and Deleted. Possible values include:
  * 'Enabled', 'Warned', 'PastDue', 'Disabled', 'Deleted'
- * @member {object} [subscriptionPolicies] The subscription policies.
- * @member {string} [subscriptionPolicies.locationPlacementId] The subscription
- * location placement ID. The ID indicates which regions are visible for a
- * subscription. For example, a subscription with a location placement Id of
- * Public_2014-09-01 has access to Azure public regions.
- * @member {string} [subscriptionPolicies.quotaId] The subscription quota ID.
- * @member {string} [subscriptionPolicies.spendingLimit] The subscription
+ * @property {object} [subscriptionPolicies] The subscription policies.
+ * @property {string} [subscriptionPolicies.locationPlacementId] The
+ * subscription location placement ID. The ID indicates which regions are
+ * visible for a subscription. For example, a subscription with a location
+ * placement Id of Public_2014-09-01 has access to Azure public regions.
+ * @property {string} [subscriptionPolicies.quotaId] The subscription quota ID.
+ * @property {string} [subscriptionPolicies.spendingLimit] The subscription
  * spending limit. Possible values include: 'On', 'Off', 'CurrentPeriodOff'
- * @member {string} [authorizationSource] The authorization source of the
+ * @property {string} [authorizationSource] The authorization source of the
  * request. Valid values are one or more combinations of Legacy, RoleBased,
  * Bypassed, Direct and Management. For example, 'Legacy, RoleBased'.
  */
@@ -99,9 +99,9 @@ export interface Subscription {
  * @constructor
  * Tenant Id information.
  *
- * @member {string} [id] The fully qualified ID of the tenant. For example,
+ * @property {string} [id] The fully qualified ID of the tenant. For example,
  * /tenants/00000000-0000-0000-0000-000000000000.
- * @member {string} [tenantId] The tenant ID. For example,
+ * @property {string} [tenantId] The tenant ID. For example,
  * 00000000-0000-0000-0000-000000000000.
  */
 export interface TenantIdDescription {
@@ -115,11 +115,11 @@ export interface TenantIdDescription {
  * @constructor
  * The object that represents the operation.
  *
- * @member {string} [provider] Service provider: Microsoft.Resources
- * @member {string} [resource] Resource on which the operation is performed:
+ * @property {string} [provider] Service provider: Microsoft.Resources
+ * @property {string} [resource] Resource on which the operation is performed:
  * Profile, endpoint, etc.
- * @member {string} [operation] Operation type: Read, write, delete, etc.
- * @member {string} [description] Description of the operation.
+ * @property {string} [operation] Operation type: Read, write, delete, etc.
+ * @property {string} [description] Description of the operation.
  */
 export interface OperationDisplay {
   provider?: string;
@@ -134,14 +134,14 @@ export interface OperationDisplay {
  * @constructor
  * Microsoft.Resources operation
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Service provider: Microsoft.Resources
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] The object that represents the operation.
+ * @property {string} [display.provider] Service provider: Microsoft.Resources
+ * @property {string} [display.resource] Resource on which the operation is
  * performed: Profile, endpoint, etc.
- * @member {string} [display.operation] Operation type: Read, write, delete,
+ * @property {string} [display.operation] Operation type: Read, write, delete,
  * etc.
- * @member {string} [display.description] Description of the operation.
+ * @property {string} [display.description] Description of the operation.
  */
 export interface Operation {
   name?: string;
@@ -156,7 +156,7 @@ export interface Operation {
  * Result of the request to list Microsoft.Resources operations. It contains a
  * list of operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {
@@ -179,7 +179,7 @@ export interface LocationListResult extends Array<Location> {
  * @constructor
  * Subscription list operation response.
  *
- * @member {string} nextLink The URL to get the next set of results.
+ * @property {string} nextLink The URL to get the next set of results.
  */
 export interface SubscriptionListResult extends Array<Subscription> {
   nextLink: string;
@@ -191,7 +191,7 @@ export interface SubscriptionListResult extends Array<Subscription> {
  * @constructor
  * Tenant Ids information.
  *
- * @member {string} nextLink The URL to use for getting the next set of
+ * @property {string} nextLink The URL to use for getting the next set of
  * results.
  */
 export interface TenantListResult extends Array<TenantIdDescription> {

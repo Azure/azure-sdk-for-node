@@ -20,7 +20,7 @@ export { CloudError } from 'ms-rest-azure';
  * @class
  * Initializes a new instance of the SkuName class.
  * @constructor
- * @member {string} [name]
+ * @property {string} [name]
  */
 export interface SkuName {
   name?: string;
@@ -30,8 +30,8 @@ export interface SkuName {
  * @class
  * Initializes a new instance of the SkuProperty class.
  * @constructor
- * @member {string} [name] An invariant to describe the feature.
- * @member {string} [value] An invariant if the feature is measured by
+ * @property {string} [name] An invariant to describe the feature.
+ * @property {string} [value] An invariant if the feature is measured by
  * quantity.
  */
 export interface SkuProperty {
@@ -43,11 +43,11 @@ export interface SkuProperty {
  * @class
  * Initializes a new instance of the SkuRestriction class.
  * @constructor
- * @member {string} [type] The type of restrictions.
- * @member {array} [values] The value of restrictions. If the restriction type
- * is set to location. This would be different locations where the SKU is
+ * @property {string} [type] The type of restrictions.
+ * @property {array} [values] The value of restrictions. If the restriction
+ * type is set to location. This would be different locations where the SKU is
  * restricted.
- * @member {string} [reasonCode] The reason for restriction.
+ * @property {string} [reasonCode] The reason for restriction.
  */
 export interface SkuRestriction {
   type?: string;
@@ -59,12 +59,12 @@ export interface SkuRestriction {
  * @class
  * Initializes a new instance of the Catalog class.
  * @constructor
- * @member {string} [resourceType] The type of resource the SKU applies to.
- * @member {string} [name] The name of SKU
- * @member {array} [terms] Available reservation terms for this resource
- * @member {array} [locations]
- * @member {array} [skuProperties]
- * @member {array} [restrictions]
+ * @property {string} [resourceType] The type of resource the SKU applies to.
+ * @property {string} [name] The name of SKU
+ * @property {array} [terms] Available reservation terms for this resource
+ * @property {array} [locations]
+ * @property {array} [skuProperties]
+ * @property {array} [restrictions]
  */
 export interface Catalog {
   readonly resourceType?: string;
@@ -79,11 +79,11 @@ export interface Catalog {
  * @class
  * Initializes a new instance of the ExtendedStatusInfo class.
  * @constructor
- * @member {string} [statusCode] Possible values include: 'None', 'Pending',
+ * @property {string} [statusCode] Possible values include: 'None', 'Pending',
  * 'Active', 'PurchaseError', 'PaymentInstrumentError', 'Split', 'Merged',
  * 'Expired', 'Succeeded'
- * @member {string} [message] The message giving detailed information about the
- * status code.
+ * @property {string} [message] The message giving detailed information about
+ * the status code.
  */
 export interface ExtendedStatusInfo {
   statusCode?: string;
@@ -94,10 +94,10 @@ export interface ExtendedStatusInfo {
  * @class
  * Initializes a new instance of the ReservationSplitProperties class.
  * @constructor
- * @member {array} [splitDestinations] List of destination Resource Id that are
- * created due to split. Format of the resource Id is
+ * @property {array} [splitDestinations] List of destination Resource Id that
+ * are created due to split. Format of the resource Id is
  * /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
- * @member {string} [splitSource] Resource Id of the Reservation from which
+ * @property {string} [splitSource] Resource Id of the Reservation from which
  * this is split. Format of the resource Id is
  * /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
  */
@@ -110,10 +110,10 @@ export interface ReservationSplitProperties {
  * @class
  * Initializes a new instance of the ReservationMergeProperties class.
  * @constructor
- * @member {string} [mergeDestination] Reservation Resource Id Created due to
+ * @property {string} [mergeDestination] Reservation Resource Id Created due to
  * the merge. Format of the resource Id is
  * /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
- * @member {array} [mergeSources] Resource Ids of the Source Reservation's
+ * @property {array} [mergeSources] Resource Ids of the Source Reservation's
  * merged to form this Reservation. Format of the resource Id is
  * /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
  */
@@ -126,43 +126,43 @@ export interface ReservationMergeProperties {
  * @class
  * Initializes a new instance of the ReservationProperties class.
  * @constructor
- * @member {string} [reservedResourceType] Possible values include:
+ * @property {string} [reservedResourceType] Possible values include:
  * 'VirtualMachines', 'SqlDatabases', 'SuseLinux', 'CosmosDb', 'RedHat'
- * @member {string} [instanceFlexibility] Possible values include: 'On', 'Off',
- * 'NotSupported'
- * @member {string} [displayName] Friendly name for user to easily identify the
- * reservation
- * @member {array} [appliedScopes]
- * @member {string} [appliedScopeType] Possible values include: 'Single',
+ * @property {string} [instanceFlexibility] Possible values include: 'On',
+ * 'Off', 'NotSupported'
+ * @property {string} [displayName] Friendly name for user to easily identify
+ * the reservation
+ * @property {array} [appliedScopes]
+ * @property {string} [appliedScopeType] Possible values include: 'Single',
  * 'Shared'
- * @member {number} [quantity] Quantity of the SKUs that are part of the
+ * @property {number} [quantity] Quantity of the SKUs that are part of the
  * Reservation.
- * @member {string} [provisioningState] Current state of the reservation.
- * @member {date} [effectiveDateTime] DateTime of the Reservation starting when
- * this version is effective from.
- * @member {date} [lastUpdatedDateTime] DateTime of the last time the
+ * @property {string} [provisioningState] Current state of the reservation.
+ * @property {date} [effectiveDateTime] DateTime of the Reservation starting
+ * when this version is effective from.
+ * @property {date} [lastUpdatedDateTime] DateTime of the last time the
  * Reservation was updated.
- * @member {date} [expiryDate] This is the date when the Reservation will
+ * @property {date} [expiryDate] This is the date when the Reservation will
  * expire.
- * @member {string} [skuDescription] Description of the SKU in english.
- * @member {object} [extendedStatusInfo]
- * @member {string} [extendedStatusInfo.statusCode] Possible values include:
+ * @property {string} [skuDescription] Description of the SKU in english.
+ * @property {object} [extendedStatusInfo]
+ * @property {string} [extendedStatusInfo.statusCode] Possible values include:
  * 'None', 'Pending', 'Active', 'PurchaseError', 'PaymentInstrumentError',
  * 'Split', 'Merged', 'Expired', 'Succeeded'
- * @member {string} [extendedStatusInfo.message] The message giving detailed
+ * @property {string} [extendedStatusInfo.message] The message giving detailed
  * information about the status code.
- * @member {object} [splitProperties]
- * @member {array} [splitProperties.splitDestinations] List of destination
+ * @property {object} [splitProperties]
+ * @property {array} [splitProperties.splitDestinations] List of destination
  * Resource Id that are created due to split. Format of the resource Id is
  * /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
- * @member {string} [splitProperties.splitSource] Resource Id of the
+ * @property {string} [splitProperties.splitSource] Resource Id of the
  * Reservation from which this is split. Format of the resource Id is
  * /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
- * @member {object} [mergeProperties]
- * @member {string} [mergeProperties.mergeDestination] Reservation Resource Id
- * Created due to the merge. Format of the resource Id is
+ * @property {object} [mergeProperties]
+ * @property {string} [mergeProperties.mergeDestination] Reservation Resource
+ * Id Created due to the merge. Format of the resource Id is
  * /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
- * @member {array} [mergeProperties.mergeSources] Resource Ids of the Source
+ * @property {array} [mergeProperties.mergeSources] Resource Ids of the Source
  * Reservation's merged to form this Reservation. Format of the resource Id is
  * /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
  */
@@ -187,58 +187,59 @@ export interface ReservationProperties {
  * @class
  * Initializes a new instance of the ReservationResponse class.
  * @constructor
- * @member {string} [location] The Azure Region where the reserved resource
+ * @property {string} [location] The Azure Region where the reserved resource
  * lives.
- * @member {number} [etag]
- * @member {string} [id] Identifier of the reservation
- * @member {string} [name] Name of the reservation
- * @member {object} [sku]
- * @member {string} [sku.name]
- * @member {object} [properties]
- * @member {string} [properties.reservedResourceType] Possible values include:
- * 'VirtualMachines', 'SqlDatabases', 'SuseLinux', 'CosmosDb', 'RedHat'
- * @member {string} [properties.instanceFlexibility] Possible values include:
+ * @property {number} [etag]
+ * @property {string} [id] Identifier of the reservation
+ * @property {string} [name] Name of the reservation
+ * @property {object} [sku]
+ * @property {string} [sku.name]
+ * @property {object} [properties]
+ * @property {string} [properties.reservedResourceType] Possible values
+ * include: 'VirtualMachines', 'SqlDatabases', 'SuseLinux', 'CosmosDb',
+ * 'RedHat'
+ * @property {string} [properties.instanceFlexibility] Possible values include:
  * 'On', 'Off', 'NotSupported'
- * @member {string} [properties.displayName] Friendly name for user to easily
+ * @property {string} [properties.displayName] Friendly name for user to easily
  * identify the reservation
- * @member {array} [properties.appliedScopes]
- * @member {string} [properties.appliedScopeType] Possible values include:
+ * @property {array} [properties.appliedScopes]
+ * @property {string} [properties.appliedScopeType] Possible values include:
  * 'Single', 'Shared'
- * @member {number} [properties.quantity] Quantity of the SKUs that are part of
- * the Reservation.
- * @member {string} [properties.provisioningState] Current state of the
+ * @property {number} [properties.quantity] Quantity of the SKUs that are part
+ * of the Reservation.
+ * @property {string} [properties.provisioningState] Current state of the
  * reservation.
- * @member {date} [properties.effectiveDateTime] DateTime of the Reservation
+ * @property {date} [properties.effectiveDateTime] DateTime of the Reservation
  * starting when this version is effective from.
- * @member {date} [properties.lastUpdatedDateTime] DateTime of the last time
+ * @property {date} [properties.lastUpdatedDateTime] DateTime of the last time
  * the Reservation was updated.
- * @member {date} [properties.expiryDate] This is the date when the Reservation
- * will expire.
- * @member {string} [properties.skuDescription] Description of the SKU in
+ * @property {date} [properties.expiryDate] This is the date when the
+ * Reservation will expire.
+ * @property {string} [properties.skuDescription] Description of the SKU in
  * english.
- * @member {object} [properties.extendedStatusInfo]
- * @member {string} [properties.extendedStatusInfo.statusCode] Possible values
- * include: 'None', 'Pending', 'Active', 'PurchaseError',
+ * @property {object} [properties.extendedStatusInfo]
+ * @property {string} [properties.extendedStatusInfo.statusCode] Possible
+ * values include: 'None', 'Pending', 'Active', 'PurchaseError',
  * 'PaymentInstrumentError', 'Split', 'Merged', 'Expired', 'Succeeded'
- * @member {string} [properties.extendedStatusInfo.message] The message giving
- * detailed information about the status code.
- * @member {object} [properties.splitProperties]
- * @member {array} [properties.splitProperties.splitDestinations] List of
+ * @property {string} [properties.extendedStatusInfo.message] The message
+ * giving detailed information about the status code.
+ * @property {object} [properties.splitProperties]
+ * @property {array} [properties.splitProperties.splitDestinations] List of
  * destination Resource Id that are created due to split. Format of the
  * resource Id is
  * /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
- * @member {string} [properties.splitProperties.splitSource] Resource Id of the
- * Reservation from which this is split. Format of the resource Id is
+ * @property {string} [properties.splitProperties.splitSource] Resource Id of
+ * the Reservation from which this is split. Format of the resource Id is
  * /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
- * @member {object} [properties.mergeProperties]
- * @member {string} [properties.mergeProperties.mergeDestination] Reservation
+ * @property {object} [properties.mergeProperties]
+ * @property {string} [properties.mergeProperties.mergeDestination] Reservation
  * Resource Id Created due to the merge. Format of the resource Id is
  * /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
- * @member {array} [properties.mergeProperties.mergeSources] Resource Ids of
+ * @property {array} [properties.mergeProperties.mergeSources] Resource Ids of
  * the Source Reservation's merged to form this Reservation. Format of the
  * resource Id is
  * /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
- * @member {string} [type] Type of resource.
+ * @property {string} [type] Type of resource.
  * "Microsoft.Capacity/reservationOrders/reservations"
  */
 export interface ReservationResponse extends BaseResource {
@@ -255,23 +256,24 @@ export interface ReservationResponse extends BaseResource {
  * @class
  * Initializes a new instance of the ReservationOrderResponse class.
  * @constructor
- * @member {number} [etag]
- * @member {string} [id] Identifier of the reservation
- * @member {string} [name] Name of the reservation
- * @member {string} [displayName] Friendly name for user to easily identified
+ * @property {number} [etag]
+ * @property {string} [id] Identifier of the reservation
+ * @property {string} [name] Name of the reservation
+ * @property {string} [displayName] Friendly name for user to easily identified
  * the reservation.
- * @member {date} [requestDateTime] This is the DateTime when the reservation
+ * @property {date} [requestDateTime] This is the DateTime when the reservation
  * was initially requested for purchase.
- * @member {date} [createdDateTime] This is the DateTime when the reservation
+ * @property {date} [createdDateTime] This is the DateTime when the reservation
  * was created.
- * @member {date} [expiryDate] This is the date when the Reservation will
+ * @property {date} [expiryDate] This is the date when the Reservation will
  * expire.
- * @member {number} [originalQuantity] Total Quantity of the SKUs purchased in
- * the Reservation.
- * @member {string} [term] Possible values include: 'P1Y', 'P3Y'
- * @member {string} [provisioningState] Current state of the reservation.
- * @member {array} [reservations]
- * @member {string} [type] Type of resource. "Microsoft.Capacity/reservations"
+ * @property {number} [originalQuantity] Total Quantity of the SKUs purchased
+ * in the Reservation.
+ * @property {string} [term] Possible values include: 'P1Y', 'P3Y'
+ * @property {string} [provisioningState] Current state of the reservation.
+ * @property {array} [reservations]
+ * @property {string} [type] Type of resource.
+ * "Microsoft.Capacity/reservations"
  */
 export interface ReservationOrderResponse extends BaseResource {
   etag?: number;
@@ -292,7 +294,7 @@ export interface ReservationOrderResponse extends BaseResource {
  * @class
  * Initializes a new instance of the MergeRequest class.
  * @constructor
- * @member {array} [sources] Format of the resource id should be
+ * @property {array} [sources] Format of the resource id should be
  * /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
  */
 export interface MergeRequest {
@@ -303,12 +305,12 @@ export interface MergeRequest {
  * @class
  * Initializes a new instance of the Patch class.
  * @constructor
- * @member {string} [appliedScopeType] Possible values include: 'Single',
+ * @property {string} [appliedScopeType] Possible values include: 'Single',
  * 'Shared'
- * @member {array} [appliedScopes]
- * @member {string} [instanceFlexibility] Possible values include: 'On', 'Off',
- * 'NotSupported'
- * @member {string} [name] Name of the Reservation
+ * @property {array} [appliedScopes]
+ * @property {string} [instanceFlexibility] Possible values include: 'On',
+ * 'Off', 'NotSupported'
+ * @property {string} [name] Name of the Reservation
  */
 export interface Patch {
   appliedScopeType?: string;
@@ -321,10 +323,10 @@ export interface Patch {
  * @class
  * Initializes a new instance of the SplitRequest class.
  * @constructor
- * @member {array} [quantities] List of the quantities in the new reservations
- * to create.
- * @member {string} [reservationId] Resource id of the reservation to be split.
- * Format of the resource id should be
+ * @property {array} [quantities] List of the quantities in the new
+ * reservations to create.
+ * @property {string} [reservationId] Resource id of the reservation to be
+ * split. Format of the resource id should be
  * /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
  */
 export interface SplitRequest {
@@ -336,7 +338,7 @@ export interface SplitRequest {
  * @class
  * Initializes a new instance of the ExtendedErrorInfo class.
  * @constructor
- * @member {string} [code] Possible values include: 'NotSpecified',
+ * @property {string} [code] Possible values include: 'NotSpecified',
  * 'InternalServerError', 'ServerTimeout', 'AuthorizationFailed', 'BadRequest',
  * 'ClientCertificateThumbprintNotSet', 'InvalidRequestContent',
  * 'OperationFailed', 'HttpMethodNotSupported', 'InvalidRequestUri',
@@ -360,7 +362,7 @@ export interface SplitRequest {
  * 'BillingError', 'FulfillmentConfigurationError',
  * 'FulfillmentOutOfStockError', 'FulfillmentTransientError',
  * 'FulfillmentError', 'CalculatePriceFailed'
- * @member {string} [message]
+ * @property {string} [message]
  */
 export interface ExtendedErrorInfo {
   code?: string;
@@ -371,8 +373,8 @@ export interface ExtendedErrorInfo {
  * @class
  * Initializes a new instance of the ErrorModel class.
  * @constructor
- * @member {object} [error]
- * @member {string} [error.code] Possible values include: 'NotSpecified',
+ * @property {object} [error]
+ * @property {string} [error.code] Possible values include: 'NotSpecified',
  * 'InternalServerError', 'ServerTimeout', 'AuthorizationFailed', 'BadRequest',
  * 'ClientCertificateThumbprintNotSet', 'InvalidRequestContent',
  * 'OperationFailed', 'HttpMethodNotSupported', 'InvalidRequestUri',
@@ -396,7 +398,7 @@ export interface ExtendedErrorInfo {
  * 'BillingError', 'FulfillmentConfigurationError',
  * 'FulfillmentOutOfStockError', 'FulfillmentTransientError',
  * 'FulfillmentError', 'CalculatePriceFailed'
- * @member {string} [error.message]
+ * @property {string} [error.message]
  */
 export interface ErrorModel {
   error?: ExtendedErrorInfo;
@@ -406,8 +408,8 @@ export interface ErrorModel {
  * @class
  * Initializes a new instance of the AppliedReservationList class.
  * @constructor
- * @member {array} [value]
- * @member {string} [nextLink] Url to get the next page of reservations
+ * @property {array} [value]
+ * @property {string} [nextLink] Url to get the next page of reservations
  */
 export interface AppliedReservationList {
   value?: string[];
@@ -418,14 +420,14 @@ export interface AppliedReservationList {
  * @class
  * Initializes a new instance of the AppliedReservations class.
  * @constructor
- * @member {string} [id] Identifier of the applied reservations
- * @member {string} [name] Name of resource
- * @member {string} [type] Type of resource.
+ * @property {string} [id] Identifier of the applied reservations
+ * @property {string} [name] Name of resource
+ * @property {string} [type] Type of resource.
  * "Microsoft.Capacity/AppliedReservations"
- * @member {object} [reservationOrderIds]
- * @member {array} [reservationOrderIds.value]
- * @member {string} [reservationOrderIds.nextLink] Url to get the next page of
- * reservations
+ * @property {object} [reservationOrderIds]
+ * @property {array} [reservationOrderIds.value]
+ * @property {string} [reservationOrderIds.nextLink] Url to get the next page
+ * of reservations
  */
 export interface AppliedReservations {
   readonly id?: string;
@@ -438,10 +440,10 @@ export interface AppliedReservations {
  * @class
  * Initializes a new instance of the OperationDisplay class.
  * @constructor
- * @member {string} [provider]
- * @member {string} [resource]
- * @member {string} [operation]
- * @member {string} [description]
+ * @property {string} [provider]
+ * @property {string} [resource]
+ * @property {string} [operation]
+ * @property {string} [description]
  */
 export interface OperationDisplay {
   provider?: string;
@@ -454,13 +456,13 @@ export interface OperationDisplay {
  * @class
  * Initializes a new instance of the OperationResponse class.
  * @constructor
- * @member {string} [name]
- * @member {object} [display]
- * @member {string} [display.provider]
- * @member {string} [display.resource]
- * @member {string} [display.operation]
- * @member {string} [display.description]
- * @member {string} [origin]
+ * @property {string} [name]
+ * @property {object} [display]
+ * @property {string} [display.provider]
+ * @property {string} [display.resource]
+ * @property {string} [display.operation]
+ * @property {string} [display.description]
+ * @property {string} [origin]
  */
 export interface OperationResponse {
   name?: string;
@@ -473,7 +475,7 @@ export interface OperationResponse {
  * @class
  * Initializes a new instance of the ReservationOrderList class.
  * @constructor
- * @member {string} [nextLink] Url to get the next page of reservationOrders.
+ * @property {string} [nextLink] Url to get the next page of reservationOrders.
  */
 export interface ReservationOrderList extends Array<ReservationOrderResponse> {
   nextLink?: string;
@@ -483,7 +485,7 @@ export interface ReservationOrderList extends Array<ReservationOrderResponse> {
  * @class
  * Initializes a new instance of the ReservationList class.
  * @constructor
- * @member {string} [nextLink] Url to get the next page of reservations.
+ * @property {string} [nextLink] Url to get the next page of reservations.
  */
 export interface ReservationList extends Array<ReservationResponse> {
   nextLink?: string;
@@ -493,7 +495,7 @@ export interface ReservationList extends Array<ReservationResponse> {
  * @class
  * Initializes a new instance of the OperationList class.
  * @constructor
- * @member {string} [nextLink] Url to get the next page of items.
+ * @property {string} [nextLink] Url to get the next page of items.
  */
 export interface OperationList extends Array<OperationResponse> {
   nextLink?: string;

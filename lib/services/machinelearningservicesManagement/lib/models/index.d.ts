@@ -22,12 +22,12 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Display name of operation
  *
- * @member {string} [provider] The resource provider name:
+ * @property {string} [provider] The resource provider name:
  * Microsoft.MachineLearningExperimentation
- * @member {string} [resource] The resource on which the operation is
+ * @property {string} [resource] The resource on which the operation is
  * performed.
- * @member {string} [operation] The operation that users can perform.
- * @member {string} [description] The description for the operation.
+ * @property {string} [operation] The operation that users can perform.
+ * @property {string} [description] The description for the operation.
  */
 export interface OperationDisplay {
   provider?: string;
@@ -42,14 +42,14 @@ export interface OperationDisplay {
  * @constructor
  * Azure Machine Learning workspace REST API operation
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] Display name of operation
- * @member {string} [display.provider] The resource provider name:
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] Display name of operation
+ * @property {string} [display.provider] The resource provider name:
  * Microsoft.MachineLearningExperimentation
- * @member {string} [display.resource] The resource on which the operation is
+ * @property {string} [display.resource] The resource on which the operation is
  * performed.
- * @member {string} [display.operation] The operation that users can perform.
- * @member {string} [display.description] The description for the operation.
+ * @property {string} [display.operation] The operation that users can perform.
+ * @property {string} [display.description] The description for the operation.
  */
 export interface Operation {
   name?: string;
@@ -62,17 +62,17 @@ export interface Operation {
  * @constructor
  * Azure Resource Manager resource envelope.
  *
- * @member {string} [id] Specifies the resource ID.
- * @member {string} [name] Specifies the name of the resource.
- * @member {object} [identity] The identity of the resource.
- * @member {string} [identity.principalId] The principal ID of resource
+ * @property {string} [id] Specifies the resource ID.
+ * @property {string} [name] Specifies the name of the resource.
+ * @property {object} [identity] The identity of the resource.
+ * @property {string} [identity.principalId] The principal ID of resource
  * identity.
- * @member {string} [identity.tenantId] The tenant ID of resource.
- * @member {string} [identity.type] The identity type. Possible values include:
- * 'SystemAssigned'
- * @member {string} [location] Specifies the location of the resource.
- * @member {string} [type] Specifies the type of the resource.
- * @member {object} [tags] Contains resource tags defined as key/value pairs.
+ * @property {string} [identity.tenantId] The tenant ID of resource.
+ * @property {string} [identity.type] The identity type. Possible values
+ * include: 'SystemAssigned'
+ * @property {string} [location] Specifies the location of the resource.
+ * @property {string} [type] Specifies the type of the resource.
+ * @property {object} [tags] Contains resource tags defined as key/value pairs.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -89,30 +89,30 @@ export interface Resource extends BaseResource {
  * @constructor
  * An object that represents a machine learning workspace.
  *
- * @member {string} [workspaceId] The immutable id associated with this
+ * @property {string} [workspaceId] The immutable id associated with this
  * workspace.
- * @member {string} [description] The description of this workspace.
- * @member {string} [friendlyName] The friendly name for this workspace. This
+ * @property {string} [description] The description of this workspace.
+ * @property {string} [friendlyName] The friendly name for this workspace. This
  * name in mutable
- * @member {date} [creationTime] The creation time of the machine learning
+ * @property {date} [creationTime] The creation time of the machine learning
  * workspace in ISO8601 format.
- * @member {string} [batchaiWorkspace] ARM id of the Batch AI workspace
+ * @property {string} [batchaiWorkspace] ARM id of the Batch AI workspace
  * associated with this workspace. This cannot be changed once the workspace
  * has been created
- * @member {string} [keyVault] ARM id of the key vault associated with this
+ * @property {string} [keyVault] ARM id of the key vault associated with this
  * workspace. This cannot be changed once the workspace has been created
- * @member {string} [applicationInsights] ARM id of the application insights
+ * @property {string} [applicationInsights] ARM id of the application insights
  * associated with this workspace. This cannot be changed once the workspace
  * has been created
- * @member {string} [containerRegistry] ARM id of the container registry
+ * @property {string} [containerRegistry] ARM id of the container registry
  * associated with this workspace. This cannot be changed once the workspace
  * has been created
- * @member {string} [storageAccount] ARM id of the storage account associated
+ * @property {string} [storageAccount] ARM id of the storage account associated
  * with this workspace. This cannot be changed once the workspace has been
  * created
- * @member {string} [discoveryUrl] Url for the discovery service to identify
+ * @property {string} [discoveryUrl] Url for the discovery service to identify
  * regional endpoints for machine learning experimentation services
- * @member {string} [provisioningState] The current deployment state of
+ * @property {string} [provisioningState] The current deployment state of
  * workspace resource. The provisioningState is to indicate states for resource
  * provisioning. Possible values include: 'Unknown', 'Updating', 'Creating',
  * 'Deleting', 'Succeeded', 'Failed', 'Canceled'
@@ -137,10 +137,10 @@ export interface Workspace extends Resource {
  * @constructor
  * The parameters for updating a machine learning workspace.
  *
- * @member {object} [tags] The resource tags for the machine learning
+ * @property {object} [tags] The resource tags for the machine learning
  * workspace.
- * @member {string} [description] The description of this workspace.
- * @member {string} [friendlyName] The friendly name for this workspace.
+ * @property {string} [description] The description of this workspace.
+ * @property {string} [friendlyName] The friendly name for this workspace.
  */
 export interface WorkspaceUpdateParameters {
   tags?: { [propertyName: string]: string };
@@ -154,9 +154,9 @@ export interface WorkspaceUpdateParameters {
  * @constructor
  * Identity for the resource.
  *
- * @member {string} [principalId] The principal ID of resource identity.
- * @member {string} [tenantId] The tenant ID of resource.
- * @member {string} [type] The identity type. Possible values include:
+ * @property {string} [principalId] The principal ID of resource identity.
+ * @property {string} [tenantId] The tenant ID of resource.
+ * @property {string} [type] The identity type. Possible values include:
  * 'SystemAssigned'
  */
 export interface Identity {
@@ -169,8 +169,8 @@ export interface Identity {
  * @class
  * Initializes a new instance of the Password class.
  * @constructor
- * @member {string} [name]
- * @member {string} [value]
+ * @property {string} [name]
+ * @property {string} [value]
  */
 export interface Password {
   readonly name?: string;
@@ -181,9 +181,9 @@ export interface Password {
  * @class
  * Initializes a new instance of the RegistryListCredentialsResult class.
  * @constructor
- * @member {string} [location]
- * @member {string} [username]
- * @member {array} [passwords]
+ * @property {string} [location]
+ * @property {string} [username]
+ * @property {array} [passwords]
  */
 export interface RegistryListCredentialsResult {
   readonly location?: string;
@@ -195,13 +195,13 @@ export interface RegistryListCredentialsResult {
  * @class
  * Initializes a new instance of the ListWorkspaceKeysResult class.
  * @constructor
- * @member {string} [userStorageKey]
- * @member {string} [userStorageResourceId]
- * @member {string} [appInsightsInstrumentationKey]
- * @member {object} [containerRegistryCredentials]
- * @member {string} [containerRegistryCredentials.location]
- * @member {string} [containerRegistryCredentials.username]
- * @member {array} [containerRegistryCredentials.passwords]
+ * @property {string} [userStorageKey]
+ * @property {string} [userStorageResourceId]
+ * @property {string} [appInsightsInstrumentationKey]
+ * @property {object} [containerRegistryCredentials]
+ * @property {string} [containerRegistryCredentials.location]
+ * @property {string} [containerRegistryCredentials.username]
+ * @property {array} [containerRegistryCredentials.passwords]
  */
 export interface ListWorkspaceKeysResult {
   readonly userStorageKey?: string;
@@ -216,8 +216,8 @@ export interface ListWorkspaceKeysResult {
  * @constructor
  * Error detail information.
  *
- * @member {string} code Error code.
- * @member {string} message Error message.
+ * @property {string} code Error code.
+ * @property {string} message Error message.
  */
 export interface ErrorDetail {
   code: string;
@@ -230,9 +230,9 @@ export interface ErrorDetail {
  * @constructor
  * Error response information.
  *
- * @member {string} code Error code.
- * @member {string} message Error message.
- * @member {array} [details] An array of error detail objects.
+ * @property {string} code Error code.
+ * @property {string} message Error message.
+ * @property {array} [details] An array of error detail objects.
  */
 export interface ErrorResponse {
   code: string;
@@ -246,10 +246,10 @@ export interface ErrorResponse {
  * @constructor
  * Wrapper for error response to follow ARM guidelines.
  *
- * @member {object} [error] The error response.
- * @member {string} [error.code] Error code.
- * @member {string} [error.message] Error message.
- * @member {array} [error.details] An array of error detail objects.
+ * @property {object} [error] The error response.
+ * @property {string} [error.code] Error code.
+ * @property {string} [error.message] Error message.
+ * @property {array} [error.details] An array of error detail objects.
  */
 export interface MachineLearningServiceError {
   error?: ErrorResponse;
@@ -261,19 +261,19 @@ export interface MachineLearningServiceError {
  * @constructor
  * Machine Learning compute object.
  *
- * @member {string} [computeLocation] Location for the underlying compute
- * @member {string} [provisioningState] The provision state of the cluster.
+ * @property {string} [computeLocation] Location for the underlying compute
+ * @property {string} [provisioningState] The provision state of the cluster.
  * Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
  * Possible values include: 'Unknown', 'Updating', 'Creating', 'Deleting',
  * 'Succeeded', 'Failed', 'Canceled'
- * @member {string} [description] The description of the Machine Learning
+ * @property {string} [description] The description of the Machine Learning
  * compute.
- * @member {date} [createdOn] The date and time when the compute was created.
- * @member {date} [modifiedOn] The date and time when the compute was last
+ * @property {date} [createdOn] The date and time when the compute was created.
+ * @property {date} [modifiedOn] The date and time when the compute was last
  * modified.
- * @member {string} [resourceId] ARM resource id of the compute
- * @member {array} [provisioningErrors] Errors during provisioning
- * @member {string} computeType Polymorphic Discriminator
+ * @property {string} [resourceId] ARM resource id of the compute
+ * @property {array} [provisioningErrors] Errors during provisioning
+ * @property {string} computeType Polymorphic Discriminator
  */
 export interface Compute {
   computeLocation?: string;
@@ -292,22 +292,22 @@ export interface Compute {
  * @constructor
  * Machine Learning compute object wrapped into ARM resource envelope.
  *
- * @member {object} [properties] Compute properties
- * @member {string} [properties.computeLocation] Location for the underlying
+ * @property {object} [properties] Compute properties
+ * @property {string} [properties.computeLocation] Location for the underlying
  * compute
- * @member {string} [properties.provisioningState] The provision state of the
+ * @property {string} [properties.provisioningState] The provision state of the
  * cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and
  * Failed. Possible values include: 'Unknown', 'Updating', 'Creating',
  * 'Deleting', 'Succeeded', 'Failed', 'Canceled'
- * @member {string} [properties.description] The description of the Machine
+ * @property {string} [properties.description] The description of the Machine
  * Learning compute.
- * @member {date} [properties.createdOn] The date and time when the compute was
- * created.
- * @member {date} [properties.modifiedOn] The date and time when the compute
+ * @property {date} [properties.createdOn] The date and time when the compute
+ * was created.
+ * @property {date} [properties.modifiedOn] The date and time when the compute
  * was last modified.
- * @member {string} [properties.resourceId] ARM resource id of the compute
- * @member {array} [properties.provisioningErrors] Errors during provisioning
- * @member {string} [properties.computeType] Polymorphic Discriminator
+ * @property {string} [properties.resourceId] ARM resource id of the compute
+ * @property {array} [properties.provisioningErrors] Errors during provisioning
+ * @property {string} [properties.computeType] Polymorphic Discriminator
  */
 export interface ComputeResource extends Resource {
   properties?: Compute;
@@ -319,9 +319,9 @@ export interface ComputeResource extends Resource {
  * @constructor
  * A system service running on a compute.
  *
- * @member {string} [systemServiceType] The type of this system service.
- * @member {string} [publicIpAddress] Public IP address
- * @member {string} [version] The version for this type.
+ * @property {string} [systemServiceType] The type of this system service.
+ * @property {string} [publicIpAddress] Public IP address
+ * @property {string} [version] The version for this type.
  */
 export interface SystemService {
   readonly systemServiceType?: string;
@@ -335,11 +335,11 @@ export interface SystemService {
  * @constructor
  * The ssl configugation for scoring
  *
- * @member {string} [status] Enable or disable ssl for scoring. Possible values
- * include: 'Disabled', 'Enabled'
- * @member {string} [cert] Cert data
- * @member {string} [key] Key data
- * @member {string} [cname] CNAME of the cert
+ * @property {string} [status] Enable or disable ssl for scoring. Possible
+ * values include: 'Disabled', 'Enabled'
+ * @property {string} [cert] Cert data
+ * @property {string} [key] Key data
+ * @property {string} [cname] CNAME of the cert
  */
 export interface SslConfiguration {
   status?: string;
@@ -354,16 +354,16 @@ export interface SslConfiguration {
  * @constructor
  * AKS properties
  *
- * @member {string} [clusterFqdn] Cluster full qualified domain name
- * @member {array} [systemServices] System services
- * @member {number} [agentCount] Number of agents
- * @member {string} [agentVMSize] Agent virtual machine size
- * @member {object} [sslConfiguration] SSL configuration
- * @member {string} [sslConfiguration.status] Enable or disable ssl for
+ * @property {string} [clusterFqdn] Cluster full qualified domain name
+ * @property {array} [systemServices] System services
+ * @property {number} [agentCount] Number of agents
+ * @property {string} [agentVMSize] Agent virtual machine size
+ * @property {object} [sslConfiguration] SSL configuration
+ * @property {string} [sslConfiguration.status] Enable or disable ssl for
  * scoring. Possible values include: 'Disabled', 'Enabled'
- * @member {string} [sslConfiguration.cert] Cert data
- * @member {string} [sslConfiguration.key] Key data
- * @member {string} [sslConfiguration.cname] CNAME of the cert
+ * @property {string} [sslConfiguration.cert] Cert data
+ * @property {string} [sslConfiguration.key] Key data
+ * @property {string} [sslConfiguration.cname] CNAME of the cert
  */
 export interface AKSProperties {
   clusterFqdn?: string;
@@ -379,17 +379,18 @@ export interface AKSProperties {
  * @constructor
  * A Machine Learning compute based on AKS.
  *
- * @member {object} [properties] AKS properties
- * @member {string} [properties.clusterFqdn] Cluster full qualified domain name
- * @member {array} [properties.systemServices] System services
- * @member {number} [properties.agentCount] Number of agents
- * @member {string} [properties.agentVMSize] Agent virtual machine size
- * @member {object} [properties.sslConfiguration] SSL configuration
- * @member {string} [properties.sslConfiguration.status] Enable or disable ssl
- * for scoring. Possible values include: 'Disabled', 'Enabled'
- * @member {string} [properties.sslConfiguration.cert] Cert data
- * @member {string} [properties.sslConfiguration.key] Key data
- * @member {string} [properties.sslConfiguration.cname] CNAME of the cert
+ * @property {object} [properties] AKS properties
+ * @property {string} [properties.clusterFqdn] Cluster full qualified domain
+ * name
+ * @property {array} [properties.systemServices] System services
+ * @property {number} [properties.agentCount] Number of agents
+ * @property {string} [properties.agentVMSize] Agent virtual machine size
+ * @property {object} [properties.sslConfiguration] SSL configuration
+ * @property {string} [properties.sslConfiguration.status] Enable or disable
+ * ssl for scoring. Possible values include: 'Disabled', 'Enabled'
+ * @property {string} [properties.sslConfiguration.cert] Cert data
+ * @property {string} [properties.sslConfiguration.key] Key data
+ * @property {string} [properties.sslConfiguration.cname] CNAME of the cert
  */
 export interface AKS extends Compute {
   properties?: AKSProperties;
@@ -401,9 +402,9 @@ export interface AKS extends Compute {
  * @constructor
  * scale settings for BatchAI Compute
  *
- * @member {number} [maxNodeCount] Max number of nodes to use
- * @member {number} [minNodeCount] Min number of nodes to use
- * @member {boolean} [autoScaleEnabled] Enable or disable auto scale
+ * @property {number} [maxNodeCount] Max number of nodes to use
+ * @property {number} [minNodeCount] Min number of nodes to use
+ * @property {boolean} [autoScaleEnabled] Enable or disable auto scale
  */
 export interface ScaleSettings {
   maxNodeCount?: number;
@@ -417,12 +418,12 @@ export interface ScaleSettings {
  * @constructor
  * BatchAI properties
  *
- * @member {string} [vmSize] Virtual Machine Size
- * @member {string} [vmPriority] Virtual Machine priority
- * @member {object} [scaleSettings] Scale settings for BatchAI
- * @member {number} [scaleSettings.maxNodeCount] Max number of nodes to use
- * @member {number} [scaleSettings.minNodeCount] Min number of nodes to use
- * @member {boolean} [scaleSettings.autoScaleEnabled] Enable or disable auto
+ * @property {string} [vmSize] Virtual Machine Size
+ * @property {string} [vmPriority] Virtual Machine priority
+ * @property {object} [scaleSettings] Scale settings for BatchAI
+ * @property {number} [scaleSettings.maxNodeCount] Max number of nodes to use
+ * @property {number} [scaleSettings.minNodeCount] Min number of nodes to use
+ * @property {boolean} [scaleSettings.autoScaleEnabled] Enable or disable auto
  * scale
  */
 export interface BatchAIProperties {
@@ -437,15 +438,15 @@ export interface BatchAIProperties {
  * @constructor
  * A Machine Learning compute based on Azure BatchAI.
  *
- * @member {object} [properties] BatchAI properties
- * @member {string} [properties.vmSize] Virtual Machine Size
- * @member {string} [properties.vmPriority] Virtual Machine priority
- * @member {object} [properties.scaleSettings] Scale settings for BatchAI
- * @member {number} [properties.scaleSettings.maxNodeCount] Max number of nodes
- * to use
- * @member {number} [properties.scaleSettings.minNodeCount] Min number of nodes
- * to use
- * @member {boolean} [properties.scaleSettings.autoScaleEnabled] Enable or
+ * @property {object} [properties] BatchAI properties
+ * @property {string} [properties.vmSize] Virtual Machine Size
+ * @property {string} [properties.vmPriority] Virtual Machine priority
+ * @property {object} [properties.scaleSettings] Scale settings for BatchAI
+ * @property {number} [properties.scaleSettings.maxNodeCount] Max number of
+ * nodes to use
+ * @property {number} [properties.scaleSettings.minNodeCount] Min number of
+ * nodes to use
+ * @property {boolean} [properties.scaleSettings.autoScaleEnabled] Enable or
  * disable auto scale
  */
 export interface BatchAI extends Compute {
@@ -458,10 +459,10 @@ export interface BatchAI extends Compute {
  * @constructor
  * Admin credentials for virtual machine
  *
- * @member {string} [username] Username of admin account
- * @member {string} [password] Password of admin account
- * @member {string} [publicKeyData] Public key data
- * @member {string} [privateKeyData] Private key data
+ * @property {string} [username] Username of admin account
+ * @property {string} [password] Password of admin account
+ * @property {string} [publicKeyData] Public key data
+ * @property {string} [privateKeyData] Private key data
  */
 export interface VirtualMachineSshCredentials {
   username?: string;
@@ -474,15 +475,15 @@ export interface VirtualMachineSshCredentials {
  * @class
  * Initializes a new instance of the VirtualMachineProperties class.
  * @constructor
- * @member {string} [virtualMachineSize] Virtual Machine size
- * @member {number} [sshPort] Port open for ssh connections.
- * @member {string} [address] Public IP address of the virtual machine.
- * @member {object} [administratorAccount] Admin credentials for virtual
+ * @property {string} [virtualMachineSize] Virtual Machine size
+ * @property {number} [sshPort] Port open for ssh connections.
+ * @property {string} [address] Public IP address of the virtual machine.
+ * @property {object} [administratorAccount] Admin credentials for virtual
  * machine
- * @member {string} [administratorAccount.username] Username of admin account
- * @member {string} [administratorAccount.password] Password of admin account
- * @member {string} [administratorAccount.publicKeyData] Public key data
- * @member {string} [administratorAccount.privateKeyData] Private key data
+ * @property {string} [administratorAccount.username] Username of admin account
+ * @property {string} [administratorAccount.password] Password of admin account
+ * @property {string} [administratorAccount.publicKeyData] Public key data
+ * @property {string} [administratorAccount.privateKeyData] Private key data
  */
 export interface VirtualMachineProperties {
   virtualMachineSize?: string;
@@ -497,20 +498,20 @@ export interface VirtualMachineProperties {
  * @constructor
  * A Machine Learning compute based on Azure Virtual Machines.
  *
- * @member {object} [properties]
- * @member {string} [properties.virtualMachineSize] Virtual Machine size
- * @member {number} [properties.sshPort] Port open for ssh connections.
- * @member {string} [properties.address] Public IP address of the virtual
+ * @property {object} [properties]
+ * @property {string} [properties.virtualMachineSize] Virtual Machine size
+ * @property {number} [properties.sshPort] Port open for ssh connections.
+ * @property {string} [properties.address] Public IP address of the virtual
  * machine.
- * @member {object} [properties.administratorAccount] Admin credentials for
+ * @property {object} [properties.administratorAccount] Admin credentials for
  * virtual machine
- * @member {string} [properties.administratorAccount.username] Username of
+ * @property {string} [properties.administratorAccount.username] Username of
  * admin account
- * @member {string} [properties.administratorAccount.password] Password of
+ * @property {string} [properties.administratorAccount.password] Password of
  * admin account
- * @member {string} [properties.administratorAccount.publicKeyData] Public key
- * data
- * @member {string} [properties.administratorAccount.privateKeyData] Private
+ * @property {string} [properties.administratorAccount.publicKeyData] Public
+ * key data
+ * @property {string} [properties.administratorAccount.privateKeyData] Private
  * key data
  */
 export interface VirtualMachine extends Compute {
@@ -521,16 +522,16 @@ export interface VirtualMachine extends Compute {
  * @class
  * Initializes a new instance of the HDInsightProperties class.
  * @constructor
- * @member {number} [sshPort] Port open for ssh connections on the master node
- * of the cluster.
- * @member {string} [address] Public IP address of the master node of the
+ * @property {number} [sshPort] Port open for ssh connections on the master
+ * node of the cluster.
+ * @property {string} [address] Public IP address of the master node of the
  * cluster.
- * @member {object} [administratorAccount] Admin credentials for master node of
- * the cluster
- * @member {string} [administratorAccount.username] Username of admin account
- * @member {string} [administratorAccount.password] Password of admin account
- * @member {string} [administratorAccount.publicKeyData] Public key data
- * @member {string} [administratorAccount.privateKeyData] Private key data
+ * @property {object} [administratorAccount] Admin credentials for master node
+ * of the cluster
+ * @property {string} [administratorAccount.username] Username of admin account
+ * @property {string} [administratorAccount.password] Password of admin account
+ * @property {string} [administratorAccount.publicKeyData] Public key data
+ * @property {string} [administratorAccount.privateKeyData] Private key data
  */
 export interface HDInsightProperties {
   sshPort?: number;
@@ -544,20 +545,20 @@ export interface HDInsightProperties {
  * @constructor
  * A HDInsight compute.
  *
- * @member {object} [properties]
- * @member {number} [properties.sshPort] Port open for ssh connections on the
+ * @property {object} [properties]
+ * @property {number} [properties.sshPort] Port open for ssh connections on the
  * master node of the cluster.
- * @member {string} [properties.address] Public IP address of the master node
+ * @property {string} [properties.address] Public IP address of the master node
  * of the cluster.
- * @member {object} [properties.administratorAccount] Admin credentials for
+ * @property {object} [properties.administratorAccount] Admin credentials for
  * master node of the cluster
- * @member {string} [properties.administratorAccount.username] Username of
+ * @property {string} [properties.administratorAccount.username] Username of
  * admin account
- * @member {string} [properties.administratorAccount.password] Password of
+ * @property {string} [properties.administratorAccount.password] Password of
  * admin account
- * @member {string} [properties.administratorAccount.publicKeyData] Public key
- * data
- * @member {string} [properties.administratorAccount.privateKeyData] Private
+ * @property {string} [properties.administratorAccount.publicKeyData] Public
+ * key data
+ * @property {string} [properties.administratorAccount.privateKeyData] Private
  * key data
  */
 export interface HDInsight extends Compute {
@@ -580,8 +581,8 @@ export interface DataFactory extends Compute {
  * @constructor
  * Service principal credentials.
  *
- * @member {string} clientId Client Id
- * @member {string} clientSecret Client secret
+ * @property {string} clientId Client Id
+ * @property {string} clientSecret Client secret
  */
 export interface ServicePrincipalCredentials {
   clientId: string;
@@ -595,7 +596,7 @@ export interface ServicePrincipalCredentials {
  * Secrets related to a Machine Learning compute. Might differ for every type
  * of compute.
  *
- * @member {string} computeType Polymorphic Discriminator
+ * @property {string} computeType Polymorphic Discriminator
  */
 export interface ComputeSecrets {
   computeType: string;
@@ -607,11 +608,11 @@ export interface ComputeSecrets {
  * @constructor
  * Secrets related to a Machine Learning compute based on AKS.
  *
- * @member {string} [userKubeConfig] Content of kubeconfig file that can be
+ * @property {string} [userKubeConfig] Content of kubeconfig file that can be
  * used to connect to the Kubernetes cluster.
- * @member {string} [adminKubeConfig] Content of kubeconfig file that can be
+ * @property {string} [adminKubeConfig] Content of kubeconfig file that can be
  * used to connect to the Kubernetes cluster.
- * @member {string} [imagePullSecretName] Image registry pull secret.
+ * @property {string} [imagePullSecretName] Image registry pull secret.
  */
 export interface AksComputeSecrets extends ComputeSecrets {
   userKubeConfig?: string;
@@ -625,12 +626,12 @@ export interface AksComputeSecrets extends ComputeSecrets {
  * @constructor
  * Secrets related to a Machine Learning compute based on AKS.
  *
- * @member {object} [administratorAccount] Admin creadentials for virtual
+ * @property {object} [administratorAccount] Admin creadentials for virtual
  * machine.
- * @member {string} [administratorAccount.username] Username of admin account
- * @member {string} [administratorAccount.password] Password of admin account
- * @member {string} [administratorAccount.publicKeyData] Public key data
- * @member {string} [administratorAccount.privateKeyData] Private key data
+ * @property {string} [administratorAccount.username] Username of admin account
+ * @property {string} [administratorAccount.password] Password of admin account
+ * @property {string} [administratorAccount.publicKeyData] Public key data
+ * @property {string} [administratorAccount.privateKeyData] Private key data
  */
 export interface VirtualMachineSecrets extends ComputeSecrets {
   administratorAccount?: VirtualMachineSshCredentials;
@@ -653,7 +654,7 @@ export interface OperationListResult extends Array<Operation> {
  * @constructor
  * The result of a request to list machine learning workspaces.
  *
- * @member {string} [nextLink] The URI that can be used to request the next
+ * @property {string} [nextLink] The URI that can be used to request the next
  * list of machine learning workspaces.
  */
 export interface WorkspaceListResult extends Array<Workspace> {
@@ -667,7 +668,7 @@ export interface WorkspaceListResult extends Array<Workspace> {
  * Paginated list of Machine Learning compute objects wrapped in ARM resource
  * envelope.
  *
- * @member {string} [nextLink] A continuation link (absolute URI) to the next
+ * @property {string} [nextLink] A continuation link (absolute URI) to the next
  * page of results in the list.
  */
 export interface PaginatedComputeResourcesList extends Array<ComputeResource> {

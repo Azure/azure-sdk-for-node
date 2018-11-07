@@ -8,12 +8,12 @@
  * regenerated.
  */
 
-import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as models from "./models";
 import * as operations from "./operations";
 
-declare class StorageImportExportManagementClient extends AzureServiceClient {
+export default class StorageImportExportManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the StorageImportExportManagementClient class.
    * @constructor
@@ -34,9 +34,11 @@ declare class StorageImportExportManagementClient extends AzureServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   * @param {string} [options.acceptLanguage] - Specifies the preferred language for the response.
    *
-   * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   * @param {number} [options.longRunningOperationRetryTimeout] - The retry timeout in seconds for Long Running Operations. Default value is 30.
+   *
+   * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
   constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
@@ -54,173 +56,10 @@ declare class StorageImportExportManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  locations: operations.Locations;
   jobs: operations.Jobs;
-
-
-  /**
-   * Returns a list of locations to which you can ship the disks associated with
-   * an import or export job. A location is a Microsoft data center region.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<LocationsListResult>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  listLocationsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LocationsListResult>>;
-
-  /**
-   * Returns a list of locations to which you can ship the disks associated with
-   * an import or export job. A location is a Microsoft data center region.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {LocationsListResult} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {LocationsListResult} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link LocationsListResult} for more information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  listLocations(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LocationsListResult>;
-  listLocations(callback: ServiceCallback<models.LocationsListResult>): void;
-  listLocations(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LocationsListResult>): void;
-
-
-  /**
-   * Gets a location to which you can ship the disks associated with an import or
-   * export job. A location is an Azure region.
-   *
-   * @param {string} locationName The name of the location. For example, 'West
-   * US' or 'westus'.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<Location>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  getLocationWithHttpOperationResponse(locationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Location>>;
-
-  /**
-   * Gets a location to which you can ship the disks associated with an import or
-   * export job. A location is an Azure region.
-   *
-   * @param {string} locationName The name of the location. For example, 'West
-   * US' or 'westus'.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {Location} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {Location} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link Location} for more information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  getLocation(locationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Location>;
-  getLocation(locationName: string, callback: ServiceCallback<models.Location>): void;
-  getLocation(locationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Location>): void;
-
-
-  /**
-   * Returns the list of operations supported by the import/export resource
-   * provider.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<SupportedOperationsListResult>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  listSupportedOperationsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SupportedOperationsListResult>>;
-
-  /**
-   * Returns the list of operations supported by the import/export resource
-   * provider.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {SupportedOperationsListResult} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {SupportedOperationsListResult} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link SupportedOperationsListResult} for more
-   *                      information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  listSupportedOperations(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SupportedOperationsListResult>;
-  listSupportedOperations(callback: ServiceCallback<models.SupportedOperationsListResult>): void;
-  listSupportedOperations(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SupportedOperationsListResult>): void;
+  bitLockerKeys: operations.BitLockerKeys;
+  operations: operations.Operations;
 }
 
-export = StorageImportExportManagementClient;
+export { StorageImportExportManagementClient, models as StorageImportExportManagementModels };

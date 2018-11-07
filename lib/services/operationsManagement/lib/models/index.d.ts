@@ -22,11 +22,11 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Display metadata associated with the operation.
  *
- * @member {string} [provider] Service provider: Microsoft
+ * @property {string} [provider] Service provider: Microsoft
  * OperationsManagement.
- * @member {string} [resource] Resource on which the operation is performed
+ * @property {string} [resource] Resource on which the operation is performed
  * etc.
- * @member {string} [operation] Type of operation: get, read, delete, etc.
+ * @property {string} [operation] Type of operation: get, read, delete, etc.
  */
 export interface OperationDisplay {
   provider?: string;
@@ -40,13 +40,13 @@ export interface OperationDisplay {
  * @constructor
  * Supported operation of OperationsManagement resource provider.
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] Display metadata associated with the operation.
- * @member {string} [display.provider] Service provider: Microsoft
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] Display metadata associated with the operation.
+ * @property {string} [display.provider] Service provider: Microsoft
  * OperationsManagement.
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [display.resource] Resource on which the operation is
  * performed etc.
- * @member {string} [display.operation] Type of operation: get, read, delete,
+ * @property {string} [display.operation] Type of operation: get, read, delete,
  * etc.
  */
 export interface Operation {
@@ -60,16 +60,16 @@ export interface Operation {
  * @constructor
  * Solution properties supported by the OperationsManagement resource provider.
  *
- * @member {string} workspaceResourceId The azure resourceId for the workspace
- * where the solution will be deployed/enabled.
- * @member {string} [provisioningState] The provisioning state for the
+ * @property {string} workspaceResourceId The azure resourceId for the
+ * workspace where the solution will be deployed/enabled.
+ * @property {string} [provisioningState] The provisioning state for the
  * solution.
- * @member {array} [containedResources] The azure resources that will be
+ * @property {array} [containedResources] The azure resources that will be
  * contained within the solutions. They will be locked and gets deleted
  * automatically when the solution is deleted.
- * @member {array} [referencedResources] The resources that will be referenced
- * from this solution. Deleting any of those solution out of band will break
- * the solution.
+ * @property {array} [referencedResources] The resources that will be
+ * referenced from this solution. Deleting any of those solution out of band
+ * will break the solution.
  */
 export interface SolutionProperties extends BaseResource {
   workspaceResourceId: string;
@@ -85,7 +85,7 @@ export interface SolutionProperties extends BaseResource {
  * ManagementAssociation properties supported by the OperationsManagement
  * resource provider.
  *
- * @member {string} applicationId The applicationId of the appliance for this
+ * @property {string} applicationId The applicationId of the appliance for this
  * association.
  */
 export interface ManagementAssociationProperties extends BaseResource {
@@ -98,8 +98,8 @@ export interface ManagementAssociationProperties extends BaseResource {
  * @constructor
  * Parameter to pass to ARM template
  *
- * @member {string} [name] name of the parameter.
- * @member {string} [value] value for the parameter. In Jtoken
+ * @property {string} [name] name of the parameter.
+ * @property {string} [value] value for the parameter. In Jtoken
  */
 export interface ArmTemplateParameter {
   name?: string;
@@ -113,13 +113,13 @@ export interface ArmTemplateParameter {
  * ManagementConfiguration properties supported by the OperationsManagement
  * resource provider.
  *
- * @member {string} [applicationId] The applicationId of the appliance for this
- * Management.
- * @member {string} parentResourceType The type of the parent resource.
- * @member {array} parameters Parameters to run the ARM template
- * @member {string} [provisioningState] The provisioning state for the
+ * @property {string} [applicationId] The applicationId of the appliance for
+ * this Management.
+ * @property {string} parentResourceType The type of the parent resource.
+ * @property {array} parameters Parameters to run the ARM template
+ * @property {string} [provisioningState] The provisioning state for the
  * ManagementConfiguration.
- * @member {object} template The Json object containing the ARM template to
+ * @property {object} template The Json object containing the ARM template to
  * deploy
  */
 export interface ManagementConfigurationProperties extends BaseResource {
@@ -137,15 +137,15 @@ export interface ManagementConfigurationProperties extends BaseResource {
  * Plan for solution object supported by the OperationsManagement resource
  * provider.
  *
- * @member {string} [name] name of the solution to be created. For Microsoft
+ * @property {string} [name] name of the solution to be created. For Microsoft
  * published solution it should be in the format of
  * solutionType(workspaceName). SolutionType part is case sensitive. For third
  * party solution, it can be anything.
- * @member {string} [publisher] Publisher name. For gallery solution, it is
+ * @property {string} [publisher] Publisher name. For gallery solution, it is
  * Microsoft.
- * @member {string} [promotionCode] promotionCode, Not really used now, can you
- * left as empty
- * @member {string} [product] name of the solution to enabled/add. For
+ * @property {string} [promotionCode] promotionCode, Not really used now, can
+ * you left as empty
+ * @property {string} [product] name of the solution to enabled/add. For
  * Microsoft published gallery solution it should be in the format of
  * OMSGallery/<solutionType>. This is case sensitive
  */
@@ -162,34 +162,34 @@ export interface SolutionPlan {
  * @constructor
  * The container for solution.
  *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
- * @member {string} [location] Resource location
- * @member {object} [plan] Plan for solution object supported by the
+ * @property {string} [id] Resource ID.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
+ * @property {string} [location] Resource location
+ * @property {object} [plan] Plan for solution object supported by the
  * OperationsManagement resource provider.
- * @member {string} [plan.name] name of the solution to be created. For
+ * @property {string} [plan.name] name of the solution to be created. For
  * Microsoft published solution it should be in the format of
  * solutionType(workspaceName). SolutionType part is case sensitive. For third
  * party solution, it can be anything.
- * @member {string} [plan.publisher] Publisher name. For gallery solution, it
+ * @property {string} [plan.publisher] Publisher name. For gallery solution, it
  * is Microsoft.
- * @member {string} [plan.promotionCode] promotionCode, Not really used now,
+ * @property {string} [plan.promotionCode] promotionCode, Not really used now,
  * can you left as empty
- * @member {string} [plan.product] name of the solution to enabled/add. For
+ * @property {string} [plan.product] name of the solution to enabled/add. For
  * Microsoft published gallery solution it should be in the format of
  * OMSGallery/<solutionType>. This is case sensitive
- * @member {object} [properties] Properties for solution object supported by
+ * @property {object} [properties] Properties for solution object supported by
  * the OperationsManagement resource provider.
- * @member {string} [properties.workspaceResourceId] The azure resourceId for
+ * @property {string} [properties.workspaceResourceId] The azure resourceId for
  * the workspace where the solution will be deployed/enabled.
- * @member {string} [properties.provisioningState] The provisioning state for
+ * @property {string} [properties.provisioningState] The provisioning state for
  * the solution.
- * @member {array} [properties.containedResources] The azure resources that
+ * @property {array} [properties.containedResources] The azure resources that
  * will be contained within the solutions. They will be locked and gets deleted
  * automatically when the solution is deleted.
- * @member {array} [properties.referencedResources] The resources that will be
- * referenced from this solution. Deleting any of those solution out of band
+ * @property {array} [properties.referencedResources] The resources that will
+ * be referenced from this solution. Deleting any of those solution out of band
  * will break the solution.
  */
 export interface Solution extends BaseResource {
@@ -207,7 +207,8 @@ export interface Solution extends BaseResource {
  * @constructor
  * the list of solution response
  *
- * @member {array} [value] List of solution properites within the subscription.
+ * @property {array} [value] List of solution properites within the
+ * subscription.
  */
 export interface SolutionPropertiesList {
   value?: Solution[];
@@ -219,13 +220,13 @@ export interface SolutionPropertiesList {
  * @constructor
  * The container for solution.
  *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
- * @member {string} [location] Resource location
- * @member {object} [properties] Properties for ManagementAssociation object
+ * @property {string} [id] Resource ID.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
+ * @property {string} [location] Resource location
+ * @property {object} [properties] Properties for ManagementAssociation object
  * supported by the OperationsManagement resource provider.
- * @member {string} [properties.applicationId] The applicationId of the
+ * @property {string} [properties.applicationId] The applicationId of the
  * appliance for this association.
  */
 export interface ManagementAssociation extends BaseResource {
@@ -242,8 +243,8 @@ export interface ManagementAssociation extends BaseResource {
  * @constructor
  * the list of ManagementAssociation response
  *
- * @member {array} [value] List of Management Association properites within the
- * subscription.
+ * @property {array} [value] List of Management Association properites within
+ * the subscription.
  */
 export interface ManagementAssociationPropertiesList {
   value?: ManagementAssociation[];
@@ -255,20 +256,20 @@ export interface ManagementAssociationPropertiesList {
  * @constructor
  * The container for solution.
  *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
- * @member {string} [location] Resource location
- * @member {object} [properties] Properties for ManagementConfiguration object
- * supported by the OperationsManagement resource provider.
- * @member {string} [properties.applicationId] The applicationId of the
+ * @property {string} [id] Resource ID.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
+ * @property {string} [location] Resource location
+ * @property {object} [properties] Properties for ManagementConfiguration
+ * object supported by the OperationsManagement resource provider.
+ * @property {string} [properties.applicationId] The applicationId of the
  * appliance for this Management.
- * @member {string} [properties.parentResourceType] The type of the parent
+ * @property {string} [properties.parentResourceType] The type of the parent
  * resource.
- * @member {array} [properties.parameters] Parameters to run the ARM template
- * @member {string} [properties.provisioningState] The provisioning state for
+ * @property {array} [properties.parameters] Parameters to run the ARM template
+ * @property {string} [properties.provisioningState] The provisioning state for
  * the ManagementConfiguration.
- * @member {object} [properties.template] The Json object containing the ARM
+ * @property {object} [properties.template] The Json object containing the ARM
  * template to deploy
  */
 export interface ManagementConfiguration extends BaseResource {
@@ -285,7 +286,7 @@ export interface ManagementConfiguration extends BaseResource {
  * @constructor
  * the list of ManagementConfiguration response
  *
- * @member {array} [value] List of Management Configuration properites within
+ * @property {array} [value] List of Management Configuration properites within
  * the subscription.
  */
 export interface ManagementConfigurationPropertiesList {
@@ -298,8 +299,8 @@ export interface ManagementConfigurationPropertiesList {
  * @constructor
  * The error details for a failed request.
  *
- * @member {string} [code] The error type.
- * @member {string} [message] The error message.
+ * @property {string} [code] The error type.
+ * @property {string} [message] The error message.
  */
 export interface CodeMessageErrorError {
   code?: string;
@@ -312,9 +313,9 @@ export interface CodeMessageErrorError {
  * @constructor
  * The error body contract.
  *
- * @member {object} [error] The error details for a failed request.
- * @member {string} [error.code] The error type.
- * @member {string} [error.message] The error message.
+ * @property {object} [error] The error details for a failed request.
+ * @property {string} [error.code] The error type.
+ * @property {string} [error.message] The error message.
  */
 export interface CodeMessageError {
   error?: CodeMessageErrorError;

@@ -15,7 +15,7 @@ import * as moment from "moment";
  * @class
  * Initializes a new instance of the ResponseBase class.
  * @constructor
- * @member {string} _type Polymorphic Discriminator
+ * @property {string} _type Polymorphic Discriminator
  */
 export interface ResponseBase {
   _type: string;
@@ -27,7 +27,7 @@ export interface ResponseBase {
  * @constructor
  * Defines the identity of a resource.
  *
- * @member {string} [id] A String identifier.
+ * @property {string} [id] A String identifier.
  */
 export interface Identifiable extends ResponseBase {
   readonly id?: string;
@@ -40,7 +40,7 @@ export interface Identifiable extends ResponseBase {
  * Defines a response. All schemas that could be returned at the root of a
  * response should inherit from this
  *
- * @member {string} [webSearchUrl] The URL To Bing's search result for this
+ * @property {string} [webSearchUrl] The URL To Bing's search result for this
  * item.
  */
 export interface Response extends Identifiable {
@@ -51,14 +51,14 @@ export interface Response extends Identifiable {
  * @class
  * Initializes a new instance of the Thing class.
  * @constructor
- * @member {string} [name] The name of the thing represented by this object.
- * @member {string} [url] The URL to get more information about the thing
+ * @property {string} [name] The name of the thing represented by this object.
+ * @property {string} [url] The URL to get more information about the thing
  * represented by this object.
- * @member {object} [image]
- * @member {object} [image.thumbnail] The URL to a thumbnail of the image
- * @member {string} [description] A short description of the item.
- * @member {string} [alternateName]
- * @member {string} [bingId] An ID that uniquely identifies this item.
+ * @property {object} [image]
+ * @property {object} [image.thumbnail] The URL to a thumbnail of the image
+ * @property {string} [description] A short description of the item.
+ * @property {string} [alternateName]
+ * @property {string} [bingId] An ID that uniquely identifies this item.
  */
 export interface Thing extends Response {
   readonly name?: string;
@@ -73,9 +73,9 @@ export interface Thing extends Response {
  * @class
  * Initializes a new instance of the CreativeWork class.
  * @constructor
- * @member {string} [thumbnailUrl] The URL to a thumbnail of the item.
- * @member {array} [provider] The source of the creative work.
- * @member {string} [text]
+ * @property {string} [thumbnailUrl] The URL to a thumbnail of the item.
+ * @property {array} [provider] The source of the creative work.
+ * @property {string} [text]
  */
 export interface CreativeWork extends Thing {
   readonly thumbnailUrl?: string;
@@ -87,11 +87,13 @@ export interface CreativeWork extends Thing {
  * @class
  * Initializes a new instance of the MediaObject class.
  * @constructor
- * @member {string} [contentUrl] Original URL to retrieve the source (file) for
- * the media object (e.g the source URL for the image).
- * @member {string} [hostPageUrl] URL of the page that hosts the media object.
- * @member {number} [width] The width of the source media object, in pixels.
- * @member {number} [height] The height of the source media object, in pixels.
+ * @property {string} [contentUrl] Original URL to retrieve the source (file)
+ * for the media object (e.g the source URL for the image).
+ * @property {string} [hostPageUrl] URL of the page that hosts the media
+ * object.
+ * @property {number} [width] The width of the source media object, in pixels.
+ * @property {number} [height] The height of the source media object, in
+ * pixels.
  */
 export interface MediaObject extends CreativeWork {
   readonly contentUrl?: string;
@@ -106,7 +108,7 @@ export interface MediaObject extends CreativeWork {
  * @constructor
  * Defines an image
  *
- * @member {object} [thumbnail] The URL to a thumbnail of the image
+ * @property {object} [thumbnail] The URL to a thumbnail of the image
  */
 export interface ImageObject extends MediaObject {
   readonly thumbnail?: ImageObject;
@@ -118,16 +120,16 @@ export interface ImageObject extends MediaObject {
  * @constructor
  * Defines a video object that is relevant to the query.
  *
- * @member {string} [motionThumbnailUrl]
- * @member {string} [motionThumbnailId]
- * @member {string} [embedHtml]
- * @member {boolean} [allowHttpsEmbed]
- * @member {number} [viewCount]
- * @member {object} [thumbnail]
- * @member {object} [thumbnail.thumbnail] The URL to a thumbnail of the image
- * @member {string} [videoId]
- * @member {boolean} [allowMobileEmbed]
- * @member {boolean} [isSuperfresh]
+ * @property {string} [motionThumbnailUrl]
+ * @property {string} [motionThumbnailId]
+ * @property {string} [embedHtml]
+ * @property {boolean} [allowHttpsEmbed]
+ * @property {number} [viewCount]
+ * @property {object} [thumbnail]
+ * @property {object} [thumbnail.thumbnail] The URL to a thumbnail of the image
+ * @property {string} [videoId]
+ * @property {boolean} [allowMobileEmbed]
+ * @property {boolean} [isSuperfresh]
  */
 export interface VideoObject extends MediaObject {
   readonly motionThumbnailUrl?: string;
@@ -147,18 +149,18 @@ export interface VideoObject extends MediaObject {
  * @constructor
  * Defines a search query.
  *
- * @member {string} text The query string. Use this string as the query term in
- * a new search request.
- * @member {string} [displayText] The display version of the query term. This
+ * @property {string} text The query string. Use this string as the query term
+ * in a new search request.
+ * @property {string} [displayText] The display version of the query term. This
  * version of the query term may contain special characters that highlight the
  * search term found in the query string. The string contains the highlighting
  * characters only if the query enabled hit highlighting
- * @member {string} [webSearchUrl] The URL that takes the user to the Bing
+ * @property {string} [webSearchUrl] The URL that takes the user to the Bing
  * search results page for the query.Only related search results include this
  * field.
- * @member {string} [searchLink]
- * @member {object} [thumbnail]
- * @member {object} [thumbnail.thumbnail] The URL to a thumbnail of the image
+ * @property {string} [searchLink]
+ * @property {object} [thumbnail]
+ * @property {object} [thumbnail.thumbnail] The URL to a thumbnail of the image
  */
 export interface Query {
   text: string;
@@ -172,8 +174,8 @@ export interface Query {
  * @class
  * Initializes a new instance of the PivotSuggestions class.
  * @constructor
- * @member {string} pivot
- * @member {array} suggestions
+ * @property {string} pivot
+ * @property {array} suggestions
  */
 export interface PivotSuggestions {
   pivot: string;
@@ -184,7 +186,7 @@ export interface PivotSuggestions {
  * @class
  * Initializes a new instance of the Answer class.
  * @constructor
- * @member {array} [followUpQueries]
+ * @property {array} [followUpQueries]
  */
 export interface Answer extends Response {
   readonly followUpQueries?: Query[];
@@ -194,10 +196,10 @@ export interface Answer extends Response {
  * @class
  * Initializes a new instance of the SearchResultsAnswer class.
  * @constructor
- * @member {number} [totalEstimatedMatches] The estimated number of webpages
+ * @property {number} [totalEstimatedMatches] The estimated number of webpages
  * that are relevant to the query. Use this number along with the count and
  * offset query parameters to page the results.
- * @member {boolean} [isFamilyFriendly]
+ * @property {boolean} [isFamilyFriendly]
  */
 export interface SearchResultsAnswer extends Answer {
   readonly totalEstimatedMatches?: number;
@@ -210,13 +212,13 @@ export interface SearchResultsAnswer extends Answer {
  * @constructor
  * Defines a video answer.
  *
- * @member {array} value A list of video objects that are relevant to the
+ * @property {array} value A list of video objects that are relevant to the
  * query.
- * @member {number} [nextOffset]
- * @member {string} [scenario] Possible values include: 'List',
+ * @property {number} [nextOffset]
+ * @property {string} [scenario] Possible values include: 'List',
  * 'SingleDominantVideo'
- * @member {array} [queryExpansions]
- * @member {array} [pivotSuggestions]
+ * @property {array} [queryExpansions]
+ * @property {array} [pivotSuggestions]
  */
 export interface Videos extends SearchResultsAnswer {
   value: VideoObject[];
@@ -232,21 +234,23 @@ export interface Videos extends SearchResultsAnswer {
  * @constructor
  * Defines the query context that Bing used for the request.
  *
- * @member {string} originalQuery The query string as specified in the request.
- * @member {string} [alteredQuery] The query string used by Bing to perform the
- * query. Bing uses the altered query string if the original query string
+ * @property {string} originalQuery The query string as specified in the
+ * request.
+ * @property {string} [alteredQuery] The query string used by Bing to perform
+ * the query. Bing uses the altered query string if the original query string
  * contained spelling mistakes. For example, if the query string is "saling
  * downwind", the altered query string will be "sailing downwind". This field
  * is included only if the original query string contains a spelling mistake.
- * @member {string} [alterationOverrideQuery] The query string to use to force
- * Bing to use the original string. For example, if the query string is "saling
- * downwind", the override query string will be "+saling downwind". Remember to
- * encode the query string which results in "%2Bsaling+downwind". This field is
- * included only if the original query string contains a spelling mistake.
- * @member {boolean} [adultIntent] A Boolean value that indicates whether the
+ * @property {string} [alterationOverrideQuery] The query string to use to
+ * force Bing to use the original string. For example, if the query string is
+ * "saling downwind", the override query string will be "+saling downwind".
+ * Remember to encode the query string which results in "%2Bsaling+downwind".
+ * This field is included only if the original query string contains a spelling
+ * mistake.
+ * @property {boolean} [adultIntent] A Boolean value that indicates whether the
  * specified query has adult intent. The value is true if the query has adult
  * intent; otherwise, false.
- * @member {boolean} [askUserForLocation] A Boolean value that indicates
+ * @property {boolean} [askUserForLocation] A Boolean value that indicates
  * whether Bing requires the user's location to provide accurate results. If
  * you specified the user's location by using the X-MSEdge-ClientIP and
  * X-Search-Location headers, you can ignore this field. For location aware
@@ -255,7 +259,7 @@ export interface Videos extends SearchResultsAnswer {
  * location aware queries that include the location (for example, "Seattle
  * weather"), this field is set to false. This field is also set to false for
  * queries that are not location aware, such as "best sellers".
- * @member {boolean} [isTransactional]
+ * @property {boolean} [isTransactional]
  */
 export interface QueryContext {
   originalQuery: string;
@@ -272,21 +276,21 @@ export interface QueryContext {
  * @constructor
  * Defines the error that occurred.
  *
- * @member {string} code The error code that identifies the category of error.
- * Possible values include: 'None', 'ServerError', 'InvalidRequest',
+ * @property {string} code The error code that identifies the category of
+ * error. Possible values include: 'None', 'ServerError', 'InvalidRequest',
  * 'RateLimitExceeded', 'InvalidAuthorization', 'InsufficientAuthorization'.
  * Default value: 'None' .
- * @member {string} [subCode] The error code that further helps to identify the
- * error. Possible values include: 'UnexpectedError', 'ResourceError',
+ * @property {string} [subCode] The error code that further helps to identify
+ * the error. Possible values include: 'UnexpectedError', 'ResourceError',
  * 'NotImplemented', 'ParameterMissing', 'ParameterInvalidValue',
  * 'HttpNotAllowed', 'Blocked', 'AuthorizationMissing',
  * 'AuthorizationRedundancy', 'AuthorizationDisabled', 'AuthorizationExpired'
- * @member {string} message A description of the error.
- * @member {string} [moreDetails] A description that provides additional
+ * @property {string} message A description of the error.
+ * @property {string} [moreDetails] A description that provides additional
  * information about the error.
- * @member {string} [parameter] The parameter in the request that caused the
+ * @property {string} [parameter] The parameter in the request that caused the
  * error.
- * @member {string} [value] The parameter's value in the request that was not
+ * @property {string} [value] The parameter's value in the request that was not
  * valid.
  */
 export interface ErrorModel {
@@ -304,7 +308,7 @@ export interface ErrorModel {
  * @constructor
  * The top-level response that represents a failed request.
  *
- * @member {array} errors A list of errors that describe the reasons why the
+ * @property {array} errors A list of errors that describe the reasons why the
  * request failed.
  */
 export interface ErrorResponse extends Response {
@@ -315,22 +319,22 @@ export interface ErrorResponse extends Response {
  * @class
  * Initializes a new instance of the TrendingVideosTile class.
  * @constructor
- * @member {object} query
- * @member {string} [query.text] The query string. Use this string as the query
- * term in a new search request.
- * @member {string} [query.displayText] The display version of the query term.
- * This version of the query term may contain special characters that highlight
- * the search term found in the query string. The string contains the
+ * @property {object} query
+ * @property {string} [query.text] The query string. Use this string as the
+ * query term in a new search request.
+ * @property {string} [query.displayText] The display version of the query
+ * term. This version of the query term may contain special characters that
+ * highlight the search term found in the query string. The string contains the
  * highlighting characters only if the query enabled hit highlighting
- * @member {string} [query.webSearchUrl] The URL that takes the user to the
+ * @property {string} [query.webSearchUrl] The URL that takes the user to the
  * Bing search results page for the query.Only related search results include
  * this field.
- * @member {string} [query.searchLink]
- * @member {object} [query.thumbnail]
- * @member {object} [query.thumbnail.thumbnail] The URL to a thumbnail of the
+ * @property {string} [query.searchLink]
+ * @property {object} [query.thumbnail]
+ * @property {object} [query.thumbnail.thumbnail] The URL to a thumbnail of the
  * image
- * @member {object} image
- * @member {object} [image.thumbnail] The URL to a thumbnail of the image
+ * @property {object} image
+ * @property {object} [image.thumbnail] The URL to a thumbnail of the image
  */
 export interface TrendingVideosTile {
   query: Query;
@@ -341,8 +345,8 @@ export interface TrendingVideosTile {
  * @class
  * Initializes a new instance of the TrendingVideosSubcategory class.
  * @constructor
- * @member {string} title
- * @member {array} tiles
+ * @property {string} title
+ * @property {array} tiles
  */
 export interface TrendingVideosSubcategory {
   title: string;
@@ -353,8 +357,8 @@ export interface TrendingVideosSubcategory {
  * @class
  * Initializes a new instance of the TrendingVideosCategory class.
  * @constructor
- * @member {string} title
- * @member {array} subcategories
+ * @property {string} title
+ * @property {array} subcategories
  */
 export interface TrendingVideosCategory {
   title: string;
@@ -365,8 +369,8 @@ export interface TrendingVideosCategory {
  * @class
  * Initializes a new instance of the TrendingVideos class.
  * @constructor
- * @member {array} bannerTiles
- * @member {array} categories
+ * @property {array} bannerTiles
+ * @property {array} categories
  */
 export interface TrendingVideos extends Response {
   bannerTiles: TrendingVideosTile[];
@@ -377,7 +381,7 @@ export interface TrendingVideos extends Response {
  * @class
  * Initializes a new instance of the VideosModule class.
  * @constructor
- * @member {array} [value]
+ * @property {array} [value]
  */
 export interface VideosModule {
   readonly value?: VideoObject[];
@@ -387,20 +391,20 @@ export interface VideosModule {
  * @class
  * Initializes a new instance of the VideoDetails class.
  * @constructor
- * @member {object} [relatedVideos]
- * @member {array} [relatedVideos.value]
- * @member {object} [videoResult]
- * @member {string} [videoResult.motionThumbnailUrl]
- * @member {string} [videoResult.motionThumbnailId]
- * @member {string} [videoResult.embedHtml]
- * @member {boolean} [videoResult.allowHttpsEmbed]
- * @member {number} [videoResult.viewCount]
- * @member {object} [videoResult.thumbnail]
- * @member {object} [videoResult.thumbnail.thumbnail] The URL to a thumbnail of
- * the image
- * @member {string} [videoResult.videoId]
- * @member {boolean} [videoResult.allowMobileEmbed]
- * @member {boolean} [videoResult.isSuperfresh]
+ * @property {object} [relatedVideos]
+ * @property {array} [relatedVideos.value]
+ * @property {object} [videoResult]
+ * @property {string} [videoResult.motionThumbnailUrl]
+ * @property {string} [videoResult.motionThumbnailId]
+ * @property {string} [videoResult.embedHtml]
+ * @property {boolean} [videoResult.allowHttpsEmbed]
+ * @property {number} [videoResult.viewCount]
+ * @property {object} [videoResult.thumbnail]
+ * @property {object} [videoResult.thumbnail.thumbnail] The URL to a thumbnail
+ * of the image
+ * @property {string} [videoResult.videoId]
+ * @property {boolean} [videoResult.allowMobileEmbed]
+ * @property {boolean} [videoResult.isSuperfresh]
  */
 export interface VideoDetails extends Response {
   readonly relatedVideos?: VideosModule;

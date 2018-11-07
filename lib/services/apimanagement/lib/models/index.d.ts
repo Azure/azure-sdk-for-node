@@ -22,10 +22,10 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Error Field contract.
  *
- * @member {string} [code] Property level error code.
- * @member {string} [message] Human-readable representation of property-level
+ * @property {string} [code] Property level error code.
+ * @property {string} [message] Human-readable representation of property-level
  * error.
- * @member {string} [target] Property name.
+ * @property {string} [target] Property name.
  */
 export interface ErrorFieldContract {
   code?: string;
@@ -39,10 +39,10 @@ export interface ErrorFieldContract {
  * @constructor
  * Error Body contract.
  *
- * @member {string} [code] Service-defined error code. This code serves as a
+ * @property {string} [code] Service-defined error code. This code serves as a
  * sub-status for the HTTP error code specified in the response.
- * @member {string} [message] Human-readable representation of the error.
- * @member {array} [details] The list of invalid fields send in request, in
+ * @property {string} [message] Human-readable representation of the error.
+ * @property {array} [details] The list of invalid fields send in request, in
  * case of validation error.
  */
 export interface ErrorResponseBody {
@@ -57,10 +57,10 @@ export interface ErrorResponseBody {
  * @constructor
  * Error Response.
  *
- * @member {string} [code] Service-defined error code. This code serves as a
+ * @property {string} [code] Service-defined error code. This code serves as a
  * sub-status for the HTTP error code specified in the response.
- * @member {string} [message] Human-readable representation of the error.
- * @member {array} [details] The list of invalid fields send in request, in
+ * @property {string} [message] Human-readable representation of the error.
+ * @property {array} [details] The list of invalid fields send in request, in
  * case of validation error.
  */
 export interface ErrorResponse {
@@ -75,9 +75,9 @@ export interface ErrorResponse {
  * @constructor
  * The Resource definition.
  *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type for API Management resource.
+ * @property {string} [id] Resource ID.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type for API Management resource.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -91,9 +91,9 @@ export interface Resource extends BaseResource {
  * @constructor
  * Policy Contract details.
  *
- * @member {string} policyContent Json escaped Xml Encoded contents of the
+ * @property {string} policyContent Json escaped Xml Encoded contents of the
  * Policy.
- * @member {string} [contentFormat] Format of the policyContent. Possible
+ * @property {string} [contentFormat] Format of the policyContent. Possible
  * values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'. Default value:
  * 'xml' .
  */
@@ -108,8 +108,8 @@ export interface PolicyContract extends Resource {
  * @constructor
  * The response of the list policy operation.
  *
- * @member {array} [value] Policy Contract value.
- * @member {string} [nextLink] Next page link if any.
+ * @property {array} [value] Policy Contract value.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface PolicyCollection {
   value?: PolicyContract[];
@@ -122,10 +122,10 @@ export interface PolicyCollection {
  * @constructor
  * Policy snippet.
  *
- * @member {string} [name] Snippet name.
- * @member {string} [content] Snippet content.
- * @member {string} [toolTip] Snippet toolTip.
- * @member {number} [scope] Binary OR value of the Snippet scope.
+ * @property {string} [name] Snippet name.
+ * @property {string} [content] Snippet content.
+ * @property {string} [toolTip] Snippet toolTip.
+ * @property {number} [scope] Binary OR value of the Snippet scope.
  */
 export interface PolicySnippetContract {
   readonly name?: string;
@@ -140,7 +140,7 @@ export interface PolicySnippetContract {
  * @constructor
  * The response of the list policy snippets operation.
  *
- * @member {array} [value] Policy snippet value.
+ * @property {array} [value] Policy snippet value.
  */
 export interface PolicySnippetsCollection {
   value?: PolicySnippetContract[];
@@ -152,9 +152,9 @@ export interface PolicySnippetsCollection {
  * @constructor
  * Region profile.
  *
- * @member {string} [name] Region name.
- * @member {boolean} [isMasterRegion] whether Region is the master region.
- * @member {boolean} [isDeleted] whether Region is deleted.
+ * @property {string} [name] Region name.
+ * @property {boolean} [isMasterRegion] whether Region is the master region.
+ * @property {boolean} [isDeleted] whether Region is deleted.
  */
 export interface RegionContract {
   readonly name?: string;
@@ -168,7 +168,7 @@ export interface RegionContract {
  * @constructor
  * API Export result Blob Uri.
  *
- * @member {string} [link] Link to the Storage Blob containing the result of
+ * @property {string} [link] Link to the Storage Blob containing the result of
  * the export operation. The Blob Uri is only valid for 5 minutes.
  */
 export interface ApiExportResult {
@@ -182,15 +182,15 @@ export interface ApiExportResult {
  * An API Version Set contains the common configuration for a set of API
  * Versions relating
  *
- * @member {string} [id] Identifier for existing API Version Set. Omit this
+ * @property {string} [id] Identifier for existing API Version Set. Omit this
  * value to create a new Version Set.
- * @member {string} [description] Description of API Version Set.
- * @member {string} [versioningScheme] An value that determines where the API
+ * @property {string} [description] Description of API Version Set.
+ * @property {string} [versioningScheme] An value that determines where the API
  * Version identifer will be located in a HTTP request. Possible values
  * include: 'Segment', 'Query', 'Header'
- * @member {string} [versionQueryName] Name of query parameter that indicates
+ * @property {string} [versionQueryName] Name of query parameter that indicates
  * the API Version if versioningScheme is set to `query`.
- * @member {string} [versionHeaderName] Name of HTTP header parameter that
+ * @property {string} [versionHeaderName] Name of HTTP header parameter that
  * indicates the API Version if versioningScheme is set to `header`.
  */
 export interface ApiVersionSetContractDetails {
@@ -207,44 +207,44 @@ export interface ApiVersionSetContractDetails {
  * @constructor
  * API base contract details.
  *
- * @member {string} [description] Description of the API. May include HTML
+ * @property {string} [description] Description of the API. May include HTML
  * formatting tags.
- * @member {object} [authenticationSettings] Collection of authentication
+ * @property {object} [authenticationSettings] Collection of authentication
  * settings included into this API.
- * @member {object} [authenticationSettings.oAuth2] OAuth2 Authentication
+ * @property {object} [authenticationSettings.oAuth2] OAuth2 Authentication
  * settings
- * @member {string} [authenticationSettings.oAuth2.authorizationServerId] OAuth
- * authorization server identifier.
- * @member {string} [authenticationSettings.oAuth2.scope] operations scope.
- * @member {object} [authenticationSettings.openid] OpenID Connect
+ * @property {string} [authenticationSettings.oAuth2.authorizationServerId]
+ * OAuth authorization server identifier.
+ * @property {string} [authenticationSettings.oAuth2.scope] operations scope.
+ * @property {object} [authenticationSettings.openid] OpenID Connect
  * Authentication Settings
- * @member {string} [authenticationSettings.openid.openidProviderId] OAuth
+ * @property {string} [authenticationSettings.openid.openidProviderId] OAuth
  * authorization server identifier.
- * @member {array} [authenticationSettings.openid.bearerTokenSendingMethods]
+ * @property {array} [authenticationSettings.openid.bearerTokenSendingMethods]
  * How to send token to the server.
- * @member {boolean} [authenticationSettings.subscriptionKeyRequired] Specifies
- * whether subscription key is required during call to this API, true - API is
- * included into closed products only, false - API is included into open
- * products alone, null - there is a mix of products.
- * @member {object} [subscriptionKeyParameterNames] Protocols over which API is
- * made available.
- * @member {string} [subscriptionKeyParameterNames.header] Subscription key
+ * @property {boolean} [authenticationSettings.subscriptionKeyRequired]
+ * Specifies whether subscription key is required during call to this API, true
+ * - API is included into closed products only, false - API is included into
+ * open products alone, null - there is a mix of products.
+ * @property {object} [subscriptionKeyParameterNames] Protocols over which API
+ * is made available.
+ * @property {string} [subscriptionKeyParameterNames.header] Subscription key
  * header name.
- * @member {string} [subscriptionKeyParameterNames.query] Subscription key
+ * @property {string} [subscriptionKeyParameterNames.query] Subscription key
  * query string parameter name.
- * @member {string} [apiType] Type of API. Possible values include: 'http',
+ * @property {string} [apiType] Type of API. Possible values include: 'http',
  * 'soap'
- * @member {string} [apiRevision] Describes the Revision of the Api. If no
+ * @property {string} [apiRevision] Describes the Revision of the Api. If no
  * value is provided, default revision 1 is created
- * @member {string} [apiVersion] Indicates the Version identifier of the API if
- * the API is versioned
- * @member {boolean} [isCurrent] Indicates if API revision is current api
+ * @property {string} [apiVersion] Indicates the Version identifier of the API
+ * if the API is versioned
+ * @property {boolean} [isCurrent] Indicates if API revision is current api
  * revision.
- * @member {boolean} [isOnline] Indicates if API revision is accessible via the
- * gateway.
- * @member {string} [apiRevisionDescription] Description of the Api Revision.
- * @member {string} [apiVersionDescription] Description of the Api Version.
- * @member {string} [apiVersionSetId] A resource identifier for the related
+ * @property {boolean} [isOnline] Indicates if API revision is accessible via
+ * the gateway.
+ * @property {string} [apiRevisionDescription] Description of the Api Revision.
+ * @property {string} [apiVersionDescription] Description of the Api Version.
+ * @property {string} [apiVersionSetId] A resource identifier for the related
  * ApiVersionSet.
  */
 export interface ApiEntityBaseContract {
@@ -267,25 +267,26 @@ export interface ApiEntityBaseContract {
  * @constructor
  * Api Entity Properties
  *
- * @member {string} [displayName] API name.
- * @member {string} [serviceUrl] Absolute URL of the backend service
+ * @property {string} [displayName] API name.
+ * @property {string} [serviceUrl] Absolute URL of the backend service
  * implementing this API.
- * @member {string} path Relative URL uniquely identifying this API and all of
- * its resource paths within the API Management service instance. It is
+ * @property {string} path Relative URL uniquely identifying this API and all
+ * of its resource paths within the API Management service instance. It is
  * appended to the API endpoint base URL specified during the service instance
  * creation to form a public URL for this API.
- * @member {array} [protocols] Describes on which protocols the operations in
+ * @property {array} [protocols] Describes on which protocols the operations in
  * this API can be invoked.
- * @member {object} [apiVersionSet]
- * @member {string} [apiVersionSet.id] Identifier for existing API Version Set.
- * Omit this value to create a new Version Set.
- * @member {string} [apiVersionSet.description] Description of API Version Set.
- * @member {string} [apiVersionSet.versioningScheme] An value that determines
+ * @property {object} [apiVersionSet]
+ * @property {string} [apiVersionSet.id] Identifier for existing API Version
+ * Set. Omit this value to create a new Version Set.
+ * @property {string} [apiVersionSet.description] Description of API Version
+ * Set.
+ * @property {string} [apiVersionSet.versioningScheme] An value that determines
  * where the API Version identifer will be located in a HTTP request. Possible
  * values include: 'Segment', 'Query', 'Header'
- * @member {string} [apiVersionSet.versionQueryName] Name of query parameter
+ * @property {string} [apiVersionSet.versionQueryName] Name of query parameter
  * that indicates the API Version if versioningScheme is set to `query`.
- * @member {string} [apiVersionSet.versionHeaderName] Name of HTTP header
+ * @property {string} [apiVersionSet.versionHeaderName] Name of HTTP header
  * parameter that indicates the API Version if versioningScheme is set to
  * `header`.
  */
@@ -303,64 +304,65 @@ export interface ApiContractProperties extends ApiEntityBaseContract {
  * @constructor
  * API details.
  *
- * @member {string} [description] Description of the API. May include HTML
+ * @property {string} [description] Description of the API. May include HTML
  * formatting tags.
- * @member {object} [authenticationSettings] Collection of authentication
+ * @property {object} [authenticationSettings] Collection of authentication
  * settings included into this API.
- * @member {object} [authenticationSettings.oAuth2] OAuth2 Authentication
+ * @property {object} [authenticationSettings.oAuth2] OAuth2 Authentication
  * settings
- * @member {string} [authenticationSettings.oAuth2.authorizationServerId] OAuth
- * authorization server identifier.
- * @member {string} [authenticationSettings.oAuth2.scope] operations scope.
- * @member {object} [authenticationSettings.openid] OpenID Connect
+ * @property {string} [authenticationSettings.oAuth2.authorizationServerId]
+ * OAuth authorization server identifier.
+ * @property {string} [authenticationSettings.oAuth2.scope] operations scope.
+ * @property {object} [authenticationSettings.openid] OpenID Connect
  * Authentication Settings
- * @member {string} [authenticationSettings.openid.openidProviderId] OAuth
+ * @property {string} [authenticationSettings.openid.openidProviderId] OAuth
  * authorization server identifier.
- * @member {array} [authenticationSettings.openid.bearerTokenSendingMethods]
+ * @property {array} [authenticationSettings.openid.bearerTokenSendingMethods]
  * How to send token to the server.
- * @member {boolean} [authenticationSettings.subscriptionKeyRequired] Specifies
- * whether subscription key is required during call to this API, true - API is
- * included into closed products only, false - API is included into open
- * products alone, null - there is a mix of products.
- * @member {object} [subscriptionKeyParameterNames] Protocols over which API is
- * made available.
- * @member {string} [subscriptionKeyParameterNames.header] Subscription key
+ * @property {boolean} [authenticationSettings.subscriptionKeyRequired]
+ * Specifies whether subscription key is required during call to this API, true
+ * - API is included into closed products only, false - API is included into
+ * open products alone, null - there is a mix of products.
+ * @property {object} [subscriptionKeyParameterNames] Protocols over which API
+ * is made available.
+ * @property {string} [subscriptionKeyParameterNames.header] Subscription key
  * header name.
- * @member {string} [subscriptionKeyParameterNames.query] Subscription key
+ * @property {string} [subscriptionKeyParameterNames.query] Subscription key
  * query string parameter name.
- * @member {string} [apiType] Type of API. Possible values include: 'http',
+ * @property {string} [apiType] Type of API. Possible values include: 'http',
  * 'soap'
- * @member {string} [apiRevision] Describes the Revision of the Api. If no
+ * @property {string} [apiRevision] Describes the Revision of the Api. If no
  * value is provided, default revision 1 is created
- * @member {string} [apiVersion] Indicates the Version identifier of the API if
- * the API is versioned
- * @member {boolean} [isCurrent] Indicates if API revision is current api
+ * @property {string} [apiVersion] Indicates the Version identifier of the API
+ * if the API is versioned
+ * @property {boolean} [isCurrent] Indicates if API revision is current api
  * revision.
- * @member {boolean} [isOnline] Indicates if API revision is accessible via the
- * gateway.
- * @member {string} [apiRevisionDescription] Description of the Api Revision.
- * @member {string} [apiVersionDescription] Description of the Api Version.
- * @member {string} [apiVersionSetId] A resource identifier for the related
+ * @property {boolean} [isOnline] Indicates if API revision is accessible via
+ * the gateway.
+ * @property {string} [apiRevisionDescription] Description of the Api Revision.
+ * @property {string} [apiVersionDescription] Description of the Api Version.
+ * @property {string} [apiVersionSetId] A resource identifier for the related
  * ApiVersionSet.
- * @member {string} [displayName] API name.
- * @member {string} [serviceUrl] Absolute URL of the backend service
+ * @property {string} [displayName] API name.
+ * @property {string} [serviceUrl] Absolute URL of the backend service
  * implementing this API.
- * @member {string} path Relative URL uniquely identifying this API and all of
- * its resource paths within the API Management service instance. It is
+ * @property {string} path Relative URL uniquely identifying this API and all
+ * of its resource paths within the API Management service instance. It is
  * appended to the API endpoint base URL specified during the service instance
  * creation to form a public URL for this API.
- * @member {array} [protocols] Describes on which protocols the operations in
+ * @property {array} [protocols] Describes on which protocols the operations in
  * this API can be invoked.
- * @member {object} [apiVersionSet]
- * @member {string} [apiVersionSet.id] Identifier for existing API Version Set.
- * Omit this value to create a new Version Set.
- * @member {string} [apiVersionSet.description] Description of API Version Set.
- * @member {string} [apiVersionSet.versioningScheme] An value that determines
+ * @property {object} [apiVersionSet]
+ * @property {string} [apiVersionSet.id] Identifier for existing API Version
+ * Set. Omit this value to create a new Version Set.
+ * @property {string} [apiVersionSet.description] Description of API Version
+ * Set.
+ * @property {string} [apiVersionSet.versioningScheme] An value that determines
  * where the API Version identifer will be located in a HTTP request. Possible
  * values include: 'Segment', 'Query', 'Header'
- * @member {string} [apiVersionSet.versionQueryName] Name of query parameter
+ * @property {string} [apiVersionSet.versionQueryName] Name of query parameter
  * that indicates the API Version if versioningScheme is set to `query`.
- * @member {string} [apiVersionSet.versionHeaderName] Name of HTTP header
+ * @property {string} [apiVersionSet.versionHeaderName] Name of HTTP header
  * parameter that indicates the API Version if versioningScheme is set to
  * `header`.
  */
@@ -389,8 +391,8 @@ export interface ApiContract extends Resource {
  * @constructor
  * Criteria to limit import of WSDL to a subset of the document.
  *
- * @member {string} [wsdlServiceName] Name of service to import from WSDL
- * @member {string} [wsdlEndpointName] Name of endpoint(port) to import from
+ * @property {string} [wsdlServiceName] Name of service to import from WSDL
+ * @property {string} [wsdlEndpointName] Name of endpoint(port) to import from
  * WSDL
  */
 export interface ApiCreateOrUpdatePropertiesWsdlSelector {
@@ -404,77 +406,78 @@ export interface ApiCreateOrUpdatePropertiesWsdlSelector {
  * @constructor
  * API Create or Update Parameters.
  *
- * @member {string} [description] Description of the API. May include HTML
+ * @property {string} [description] Description of the API. May include HTML
  * formatting tags.
- * @member {object} [authenticationSettings] Collection of authentication
+ * @property {object} [authenticationSettings] Collection of authentication
  * settings included into this API.
- * @member {object} [authenticationSettings.oAuth2] OAuth2 Authentication
+ * @property {object} [authenticationSettings.oAuth2] OAuth2 Authentication
  * settings
- * @member {string} [authenticationSettings.oAuth2.authorizationServerId] OAuth
- * authorization server identifier.
- * @member {string} [authenticationSettings.oAuth2.scope] operations scope.
- * @member {object} [authenticationSettings.openid] OpenID Connect
+ * @property {string} [authenticationSettings.oAuth2.authorizationServerId]
+ * OAuth authorization server identifier.
+ * @property {string} [authenticationSettings.oAuth2.scope] operations scope.
+ * @property {object} [authenticationSettings.openid] OpenID Connect
  * Authentication Settings
- * @member {string} [authenticationSettings.openid.openidProviderId] OAuth
+ * @property {string} [authenticationSettings.openid.openidProviderId] OAuth
  * authorization server identifier.
- * @member {array} [authenticationSettings.openid.bearerTokenSendingMethods]
+ * @property {array} [authenticationSettings.openid.bearerTokenSendingMethods]
  * How to send token to the server.
- * @member {boolean} [authenticationSettings.subscriptionKeyRequired] Specifies
- * whether subscription key is required during call to this API, true - API is
- * included into closed products only, false - API is included into open
- * products alone, null - there is a mix of products.
- * @member {object} [subscriptionKeyParameterNames] Protocols over which API is
- * made available.
- * @member {string} [subscriptionKeyParameterNames.header] Subscription key
+ * @property {boolean} [authenticationSettings.subscriptionKeyRequired]
+ * Specifies whether subscription key is required during call to this API, true
+ * - API is included into closed products only, false - API is included into
+ * open products alone, null - there is a mix of products.
+ * @property {object} [subscriptionKeyParameterNames] Protocols over which API
+ * is made available.
+ * @property {string} [subscriptionKeyParameterNames.header] Subscription key
  * header name.
- * @member {string} [subscriptionKeyParameterNames.query] Subscription key
+ * @property {string} [subscriptionKeyParameterNames.query] Subscription key
  * query string parameter name.
- * @member {string} [apiType] Type of API. Possible values include: 'http',
+ * @property {string} [apiType] Type of API. Possible values include: 'http',
  * 'soap'
- * @member {string} [apiRevision] Describes the Revision of the Api. If no
+ * @property {string} [apiRevision] Describes the Revision of the Api. If no
  * value is provided, default revision 1 is created
- * @member {string} [apiVersion] Indicates the Version identifier of the API if
- * the API is versioned
- * @member {boolean} [isCurrent] Indicates if API revision is current api
+ * @property {string} [apiVersion] Indicates the Version identifier of the API
+ * if the API is versioned
+ * @property {boolean} [isCurrent] Indicates if API revision is current api
  * revision.
- * @member {boolean} [isOnline] Indicates if API revision is accessible via the
- * gateway.
- * @member {string} [apiRevisionDescription] Description of the Api Revision.
- * @member {string} [apiVersionDescription] Description of the Api Version.
- * @member {string} [apiVersionSetId] A resource identifier for the related
+ * @property {boolean} [isOnline] Indicates if API revision is accessible via
+ * the gateway.
+ * @property {string} [apiRevisionDescription] Description of the Api Revision.
+ * @property {string} [apiVersionDescription] Description of the Api Version.
+ * @property {string} [apiVersionSetId] A resource identifier for the related
  * ApiVersionSet.
- * @member {string} [displayName] API name.
- * @member {string} [serviceUrl] Absolute URL of the backend service
+ * @property {string} [displayName] API name.
+ * @property {string} [serviceUrl] Absolute URL of the backend service
  * implementing this API.
- * @member {string} path Relative URL uniquely identifying this API and all of
- * its resource paths within the API Management service instance. It is
+ * @property {string} path Relative URL uniquely identifying this API and all
+ * of its resource paths within the API Management service instance. It is
  * appended to the API endpoint base URL specified during the service instance
  * creation to form a public URL for this API.
- * @member {array} [protocols] Describes on which protocols the operations in
+ * @property {array} [protocols] Describes on which protocols the operations in
  * this API can be invoked.
- * @member {object} [apiVersionSet]
- * @member {string} [apiVersionSet.id] Identifier for existing API Version Set.
- * Omit this value to create a new Version Set.
- * @member {string} [apiVersionSet.description] Description of API Version Set.
- * @member {string} [apiVersionSet.versioningScheme] An value that determines
+ * @property {object} [apiVersionSet]
+ * @property {string} [apiVersionSet.id] Identifier for existing API Version
+ * Set. Omit this value to create a new Version Set.
+ * @property {string} [apiVersionSet.description] Description of API Version
+ * Set.
+ * @property {string} [apiVersionSet.versioningScheme] An value that determines
  * where the API Version identifer will be located in a HTTP request. Possible
  * values include: 'Segment', 'Query', 'Header'
- * @member {string} [apiVersionSet.versionQueryName] Name of query parameter
+ * @property {string} [apiVersionSet.versionQueryName] Name of query parameter
  * that indicates the API Version if versioningScheme is set to `query`.
- * @member {string} [apiVersionSet.versionHeaderName] Name of HTTP header
+ * @property {string} [apiVersionSet.versionHeaderName] Name of HTTP header
  * parameter that indicates the API Version if versioningScheme is set to
  * `header`.
- * @member {string} [contentValue] Content value when Importing an API.
- * @member {string} [contentFormat] Format of the Content in which the API is
+ * @property {string} [contentValue] Content value when Importing an API.
+ * @property {string} [contentFormat] Format of the Content in which the API is
  * getting imported. Possible values include: 'wadl-xml', 'wadl-link-json',
  * 'swagger-json', 'swagger-link-json', 'wsdl', 'wsdl-link'
- * @member {object} [wsdlSelector] Criteria to limit import of WSDL to a subset
- * of the document.
- * @member {string} [wsdlSelector.wsdlServiceName] Name of service to import
+ * @property {object} [wsdlSelector] Criteria to limit import of WSDL to a
+ * subset of the document.
+ * @property {string} [wsdlSelector.wsdlServiceName] Name of service to import
  * from WSDL
- * @member {string} [wsdlSelector.wsdlEndpointName] Name of endpoint(port) to
+ * @property {string} [wsdlSelector.wsdlEndpointName] Name of endpoint(port) to
  * import from WSDL
- * @member {string} [soapApiType] Type of Api to create.
+ * @property {string} [soapApiType] Type of Api to create.
  * * `http` creates a SOAP to REST API
  * * `soap` creates a SOAP pass-through API. Possible values include:
  * 'SoapToRest', 'SoapPassThrough'
@@ -508,53 +511,53 @@ export interface ApiCreateOrUpdateParameter {
  * @constructor
  * API update contract details.
  *
- * @member {string} [description] Description of the API. May include HTML
+ * @property {string} [description] Description of the API. May include HTML
  * formatting tags.
- * @member {object} [authenticationSettings] Collection of authentication
+ * @property {object} [authenticationSettings] Collection of authentication
  * settings included into this API.
- * @member {object} [authenticationSettings.oAuth2] OAuth2 Authentication
+ * @property {object} [authenticationSettings.oAuth2] OAuth2 Authentication
  * settings
- * @member {string} [authenticationSettings.oAuth2.authorizationServerId] OAuth
- * authorization server identifier.
- * @member {string} [authenticationSettings.oAuth2.scope] operations scope.
- * @member {object} [authenticationSettings.openid] OpenID Connect
+ * @property {string} [authenticationSettings.oAuth2.authorizationServerId]
+ * OAuth authorization server identifier.
+ * @property {string} [authenticationSettings.oAuth2.scope] operations scope.
+ * @property {object} [authenticationSettings.openid] OpenID Connect
  * Authentication Settings
- * @member {string} [authenticationSettings.openid.openidProviderId] OAuth
+ * @property {string} [authenticationSettings.openid.openidProviderId] OAuth
  * authorization server identifier.
- * @member {array} [authenticationSettings.openid.bearerTokenSendingMethods]
+ * @property {array} [authenticationSettings.openid.bearerTokenSendingMethods]
  * How to send token to the server.
- * @member {boolean} [authenticationSettings.subscriptionKeyRequired] Specifies
- * whether subscription key is required during call to this API, true - API is
- * included into closed products only, false - API is included into open
- * products alone, null - there is a mix of products.
- * @member {object} [subscriptionKeyParameterNames] Protocols over which API is
- * made available.
- * @member {string} [subscriptionKeyParameterNames.header] Subscription key
+ * @property {boolean} [authenticationSettings.subscriptionKeyRequired]
+ * Specifies whether subscription key is required during call to this API, true
+ * - API is included into closed products only, false - API is included into
+ * open products alone, null - there is a mix of products.
+ * @property {object} [subscriptionKeyParameterNames] Protocols over which API
+ * is made available.
+ * @property {string} [subscriptionKeyParameterNames.header] Subscription key
  * header name.
- * @member {string} [subscriptionKeyParameterNames.query] Subscription key
+ * @property {string} [subscriptionKeyParameterNames.query] Subscription key
  * query string parameter name.
- * @member {string} [apiType] Type of API. Possible values include: 'http',
+ * @property {string} [apiType] Type of API. Possible values include: 'http',
  * 'soap'
- * @member {string} [apiRevision] Describes the Revision of the Api. If no
+ * @property {string} [apiRevision] Describes the Revision of the Api. If no
  * value is provided, default revision 1 is created
- * @member {string} [apiVersion] Indicates the Version identifier of the API if
- * the API is versioned
- * @member {boolean} [isCurrent] Indicates if API revision is current api
+ * @property {string} [apiVersion] Indicates the Version identifier of the API
+ * if the API is versioned
+ * @property {boolean} [isCurrent] Indicates if API revision is current api
  * revision.
- * @member {boolean} [isOnline] Indicates if API revision is accessible via the
- * gateway.
- * @member {string} [apiRevisionDescription] Description of the Api Revision.
- * @member {string} [apiVersionDescription] Description of the Api Version.
- * @member {string} [apiVersionSetId] A resource identifier for the related
+ * @property {boolean} [isOnline] Indicates if API revision is accessible via
+ * the gateway.
+ * @property {string} [apiRevisionDescription] Description of the Api Revision.
+ * @property {string} [apiVersionDescription] Description of the Api Version.
+ * @property {string} [apiVersionSetId] A resource identifier for the related
  * ApiVersionSet.
- * @member {string} [displayName] API name.
- * @member {string} [serviceUrl] Absolute URL of the backend service
+ * @property {string} [displayName] API name.
+ * @property {string} [serviceUrl] Absolute URL of the backend service
  * implementing this API.
- * @member {string} [path] Relative URL uniquely identifying this API and all
+ * @property {string} [path] Relative URL uniquely identifying this API and all
  * of its resource paths within the API Management service instance. It is
  * appended to the API endpoint base URL specified during the service instance
  * creation to form a public URL for this API.
- * @member {array} [protocols] Describes on which protocols the operations in
+ * @property {array} [protocols] Describes on which protocols the operations in
  * this API can be invoked.
  */
 export interface ApiUpdateContract {
@@ -581,9 +584,9 @@ export interface ApiUpdateContract {
  * @constructor
  * API OAuth2 Authentication settings details.
  *
- * @member {string} [authorizationServerId] OAuth authorization server
+ * @property {string} [authorizationServerId] OAuth authorization server
  * identifier.
- * @member {string} [scope] operations scope.
+ * @property {string} [scope] operations scope.
  */
 export interface OAuth2AuthenticationSettingsContract {
   authorizationServerId?: string;
@@ -596,8 +599,9 @@ export interface OAuth2AuthenticationSettingsContract {
  * @constructor
  * API OAuth2 Authentication settings details.
  *
- * @member {string} [openidProviderId] OAuth authorization server identifier.
- * @member {array} [bearerTokenSendingMethods] How to send token to the server.
+ * @property {string} [openidProviderId] OAuth authorization server identifier.
+ * @property {array} [bearerTokenSendingMethods] How to send token to the
+ * server.
  */
 export interface OpenIdAuthenticationSettingsContract {
   openidProviderId?: string;
@@ -610,16 +614,16 @@ export interface OpenIdAuthenticationSettingsContract {
  * @constructor
  * API Authentication Settings.
  *
- * @member {object} [oAuth2] OAuth2 Authentication settings
- * @member {string} [oAuth2.authorizationServerId] OAuth authorization server
+ * @property {object} [oAuth2] OAuth2 Authentication settings
+ * @property {string} [oAuth2.authorizationServerId] OAuth authorization server
  * identifier.
- * @member {string} [oAuth2.scope] operations scope.
- * @member {object} [openid] OpenID Connect Authentication Settings
- * @member {string} [openid.openidProviderId] OAuth authorization server
+ * @property {string} [oAuth2.scope] operations scope.
+ * @property {object} [openid] OpenID Connect Authentication Settings
+ * @property {string} [openid.openidProviderId] OAuth authorization server
  * identifier.
- * @member {array} [openid.bearerTokenSendingMethods] How to send token to the
- * server.
- * @member {boolean} [subscriptionKeyRequired] Specifies whether subscription
+ * @property {array} [openid.bearerTokenSendingMethods] How to send token to
+ * the server.
+ * @property {boolean} [subscriptionKeyRequired] Specifies whether subscription
  * key is required during call to this API, true - API is included into closed
  * products only, false - API is included into open products alone, null -
  * there is a mix of products.
@@ -636,8 +640,8 @@ export interface AuthenticationSettingsContract {
  * @constructor
  * Subscription key parameter names details.
  *
- * @member {string} [header] Subscription key header name.
- * @member {string} [query] Subscription key query string parameter name.
+ * @property {string} [header] Subscription key header name.
+ * @property {string} [query] Subscription key query string parameter name.
  */
 export interface SubscriptionKeyParameterNamesContract {
   header?: string;
@@ -650,20 +654,20 @@ export interface SubscriptionKeyParameterNamesContract {
  * @constructor
  * Summary of revision metadata.
  *
- * @member {string} [apiId] Identifier of the API Revision.
- * @member {string} [apiRevision] Revision number of API.
- * @member {date} [createdDateTime] The time the API Revision was created. The
- * date conforms to the following format: yyyy-MM-ddTHH:mm:ssZ as specified by
- * the ISO 8601 standard.
- * @member {date} [updatedDateTime] The time the API Revision were updated. The
- * date conforms to the following format: yyyy-MM-ddTHH:mm:ssZ as specified by
- * the ISO 8601 standard.
- * @member {string} [description] Description of the API Revision.
- * @member {string} [privateUrl] Gateway URL for accessing the non-current API
- * Revision.
- * @member {boolean} [isOnline] Indicates if API revision is the current api
+ * @property {string} [apiId] Identifier of the API Revision.
+ * @property {string} [apiRevision] Revision number of API.
+ * @property {date} [createdDateTime] The time the API Revision was created.
+ * The date conforms to the following format: yyyy-MM-ddTHH:mm:ssZ as specified
+ * by the ISO 8601 standard.
+ * @property {date} [updatedDateTime] The time the API Revision were updated.
+ * The date conforms to the following format: yyyy-MM-ddTHH:mm:ssZ as specified
+ * by the ISO 8601 standard.
+ * @property {string} [description] Description of the API Revision.
+ * @property {string} [privateUrl] Gateway URL for accessing the non-current
+ * API Revision.
+ * @property {boolean} [isOnline] Indicates if API revision is the current api
  * revision.
- * @member {boolean} [isCurrent] Indicates if API revision is accessible via
+ * @property {boolean} [isCurrent] Indicates if API revision is accessible via
  * the gateway.
  */
 export interface ApiRevisionContract {
@@ -684,21 +688,22 @@ export interface ApiRevisionContract {
  * Object used to create an API Revision or Version based on an existing API
  * Revision
  *
- * @member {string} [sourceApiId] Resource identifier of API to be used to
+ * @property {string} [sourceApiId] Resource identifier of API to be used to
  * create the revision from.
- * @member {string} [apiVersionName] Version identifier for the new API
+ * @property {string} [apiVersionName] Version identifier for the new API
  * Version.
- * @member {string} [apiRevisionDescription] Description of new API Revision.
- * @member {object} [apiVersionSet] Version set details
- * @member {string} [apiVersionSet.id] Identifier for existing API Version Set.
- * Omit this value to create a new Version Set.
- * @member {string} [apiVersionSet.description] Description of API Version Set.
- * @member {string} [apiVersionSet.versioningScheme] An value that determines
+ * @property {string} [apiRevisionDescription] Description of new API Revision.
+ * @property {object} [apiVersionSet] Version set details
+ * @property {string} [apiVersionSet.id] Identifier for existing API Version
+ * Set. Omit this value to create a new Version Set.
+ * @property {string} [apiVersionSet.description] Description of API Version
+ * Set.
+ * @property {string} [apiVersionSet.versioningScheme] An value that determines
  * where the API Version identifer will be located in a HTTP request. Possible
  * values include: 'Segment', 'Query', 'Header'
- * @member {string} [apiVersionSet.versionQueryName] Name of query parameter
+ * @property {string} [apiVersionSet.versionQueryName] Name of query parameter
  * that indicates the API Version if versioningScheme is set to `query`.
- * @member {string} [apiVersionSet.versionHeaderName] Name of HTTP header
+ * @property {string} [apiVersionSet.versionHeaderName] Name of HTTP header
  * parameter that indicates the API Version if versioningScheme is set to
  * `header`.
  */
@@ -715,12 +720,12 @@ export interface ApiRevisionInfoContract {
  * @constructor
  * Api Release details.
  *
- * @member {string} [apiId] Identifier of the API the release belongs to.
- * @member {date} [createdDateTime] The time the API was released. The date
+ * @property {string} [apiId] Identifier of the API the release belongs to.
+ * @property {date} [createdDateTime] The time the API was released. The date
  * conforms to the following format: yyyy-MM-ddTHH:mm:ssZ as specified by the
  * ISO 8601 standard.
- * @member {date} [updatedDateTime] The time the API release was updated.
- * @member {string} [notes] Release Notes
+ * @property {date} [updatedDateTime] The time the API release was updated.
+ * @property {string} [notes] Release Notes
  */
 export interface ApiReleaseContract extends Resource {
   apiId?: string;
@@ -735,22 +740,23 @@ export interface ApiReleaseContract extends Resource {
  * @constructor
  * Api Operation details.
  *
- * @member {array} [templateParameters] Collection of URL template parameters.
- * @member {string} [description] Description of the operation. May include
+ * @property {array} [templateParameters] Collection of URL template
+ * parameters.
+ * @property {string} [description] Description of the operation. May include
  * HTML formatting tags.
- * @member {object} [request] An entity containing request details.
- * @member {string} [request.description] Operation request description.
- * @member {array} [request.queryParameters] Collection of operation request
+ * @property {object} [request] An entity containing request details.
+ * @property {string} [request.description] Operation request description.
+ * @property {array} [request.queryParameters] Collection of operation request
  * query parameters.
- * @member {array} [request.headers] Collection of operation request headers.
- * @member {array} [request.representations] Collection of operation request
+ * @property {array} [request.headers] Collection of operation request headers.
+ * @property {array} [request.representations] Collection of operation request
  * representations.
- * @member {array} [responses] Array of Operation responses.
- * @member {string} [policies] Operation Policies
- * @member {string} displayName Operation Name.
- * @member {string} method A Valid HTTP Operation Method. Typical Http Methods
- * like GET, PUT, POST but not limited by only them.
- * @member {string} urlTemplate Relative URL template identifying the target
+ * @property {array} [responses] Array of Operation responses.
+ * @property {string} [policies] Operation Policies
+ * @property {string} displayName Operation Name.
+ * @property {string} method A Valid HTTP Operation Method. Typical Http
+ * Methods like GET, PUT, POST but not limited by only them.
+ * @property {string} urlTemplate Relative URL template identifying the target
  * resource for this operation. May include parameters. Example:
  * /customers/{cid}/orders/{oid}/?date={date}
  */
@@ -771,12 +777,12 @@ export interface OperationContract extends Resource {
  * @constructor
  * Operation parameters details.
  *
- * @member {string} name Parameter name.
- * @member {string} [description] Parameter description.
- * @member {string} type Parameter type.
- * @member {string} [defaultValue] Default parameter value.
- * @member {boolean} [required] whether parameter is required or not.
- * @member {array} [values] Parameter values.
+ * @property {string} name Parameter name.
+ * @property {string} [description] Parameter description.
+ * @property {string} type Parameter type.
+ * @property {string} [defaultValue] Default parameter value.
+ * @property {boolean} [required] whether parameter is required or not.
+ * @property {array} [values] Parameter values.
  */
 export interface ParameterContract {
   name: string;
@@ -793,17 +799,17 @@ export interface ParameterContract {
  * @constructor
  * Operation request/response representation details.
  *
- * @member {string} contentType Specifies a registered or custom content type
+ * @property {string} contentType Specifies a registered or custom content type
  * for this representation, e.g. application/xml.
- * @member {string} [sample] An example of the representation.
- * @member {string} [schemaId] Schema identifier. Applicable only if
+ * @property {string} [sample] An example of the representation.
+ * @property {string} [schemaId] Schema identifier. Applicable only if
  * 'contentType' value is neither 'application/x-www-form-urlencoded' nor
  * 'multipart/form-data'.
- * @member {string} [typeName] Type name defined by the schema. Applicable only
- * if 'contentType' value is neither 'application/x-www-form-urlencoded' nor
- * 'multipart/form-data'.
- * @member {array} [formParameters] Collection of form parameters. Required if
- * 'contentType' value is either 'application/x-www-form-urlencoded' or
+ * @property {string} [typeName] Type name defined by the schema. Applicable
+ * only if 'contentType' value is neither 'application/x-www-form-urlencoded'
+ * nor 'multipart/form-data'.
+ * @property {array} [formParameters] Collection of form parameters. Required
+ * if 'contentType' value is either 'application/x-www-form-urlencoded' or
  * 'multipart/form-data'..
  */
 export interface RepresentationContract {
@@ -820,11 +826,11 @@ export interface RepresentationContract {
  * @constructor
  * Operation request details.
  *
- * @member {string} [description] Operation request description.
- * @member {array} [queryParameters] Collection of operation request query
+ * @property {string} [description] Operation request description.
+ * @property {array} [queryParameters] Collection of operation request query
  * parameters.
- * @member {array} [headers] Collection of operation request headers.
- * @member {array} [representations] Collection of operation request
+ * @property {array} [headers] Collection of operation request headers.
+ * @property {array} [representations] Collection of operation request
  * representations.
  */
 export interface RequestContract {
@@ -840,11 +846,11 @@ export interface RequestContract {
  * @constructor
  * Operation response details.
  *
- * @member {number} statusCode Operation response HTTP status code.
- * @member {string} [description] Operation response description.
- * @member {array} [representations] Collection of operation response
+ * @property {number} statusCode Operation response HTTP status code.
+ * @property {string} [description] Operation response description.
+ * @property {array} [representations] Collection of operation response
  * representations.
- * @member {array} [headers] Collection of operation response headers.
+ * @property {array} [headers] Collection of operation response headers.
  */
 export interface ResponseContract {
   statusCode: number;
@@ -859,18 +865,19 @@ export interface ResponseContract {
  * @constructor
  * Api Operation Entity Base Contract details.
  *
- * @member {array} [templateParameters] Collection of URL template parameters.
- * @member {string} [description] Description of the operation. May include
+ * @property {array} [templateParameters] Collection of URL template
+ * parameters.
+ * @property {string} [description] Description of the operation. May include
  * HTML formatting tags.
- * @member {object} [request] An entity containing request details.
- * @member {string} [request.description] Operation request description.
- * @member {array} [request.queryParameters] Collection of operation request
+ * @property {object} [request] An entity containing request details.
+ * @property {string} [request.description] Operation request description.
+ * @property {array} [request.queryParameters] Collection of operation request
  * query parameters.
- * @member {array} [request.headers] Collection of operation request headers.
- * @member {array} [request.representations] Collection of operation request
+ * @property {array} [request.headers] Collection of operation request headers.
+ * @property {array} [request.representations] Collection of operation request
  * representations.
- * @member {array} [responses] Array of Operation responses.
- * @member {string} [policies] Operation Policies
+ * @property {array} [responses] Array of Operation responses.
+ * @property {string} [policies] Operation Policies
  */
 export interface OperationEntityBaseContract {
   templateParameters?: ParameterContract[];
@@ -886,23 +893,24 @@ export interface OperationEntityBaseContract {
  * @constructor
  * Api Operation Update Contract details.
  *
- * @member {array} [templateParameters] Collection of URL template parameters.
- * @member {string} [description] Description of the operation. May include
+ * @property {array} [templateParameters] Collection of URL template
+ * parameters.
+ * @property {string} [description] Description of the operation. May include
  * HTML formatting tags.
- * @member {object} [request] An entity containing request details.
- * @member {string} [request.description] Operation request description.
- * @member {array} [request.queryParameters] Collection of operation request
+ * @property {object} [request] An entity containing request details.
+ * @property {string} [request.description] Operation request description.
+ * @property {array} [request.queryParameters] Collection of operation request
  * query parameters.
- * @member {array} [request.headers] Collection of operation request headers.
- * @member {array} [request.representations] Collection of operation request
+ * @property {array} [request.headers] Collection of operation request headers.
+ * @property {array} [request.representations] Collection of operation request
  * representations.
- * @member {array} [responses] Array of Operation responses.
- * @member {string} [policies] Operation Policies
- * @member {string} [displayName] Operation Name.
- * @member {string} [method] A Valid HTTP Operation Method. Typical Http
+ * @property {array} [responses] Array of Operation responses.
+ * @property {string} [policies] Operation Policies
+ * @property {string} [displayName] Operation Name.
+ * @property {string} [method] A Valid HTTP Operation Method. Typical Http
  * Methods like GET, PUT, POST but not limited by only them.
- * @member {string} [urlTemplate] Relative URL template identifying the target
- * resource for this operation. May include parameters. Example:
+ * @property {string} [urlTemplate] Relative URL template identifying the
+ * target resource for this operation. May include parameters. Example:
  * /customers/{cid}/orders/{oid}/?date={date}
  */
 export interface OperationUpdateContract {
@@ -922,10 +930,10 @@ export interface OperationUpdateContract {
  * @constructor
  * Schema Contract details.
  *
- * @member {string} contentType Must be a valid a media type used in a
+ * @property {string} contentType Must be a valid a media type used in a
  * Content-Type header as defined in the RFC 2616. Media type of the schema
  * document (e.g. application/json, application/xml).
- * @member {string} [value] Json escaped string defining the document
+ * @property {string} [value] Json escaped string defining the document
  * representing the Schema.
  */
 export interface SchemaContract extends Resource {
@@ -939,14 +947,14 @@ export interface SchemaContract extends Resource {
  * @constructor
  * Issue Contract details.
  *
- * @member {string} title The issue title.
- * @member {string} description Text describing the issue.
- * @member {date} [createdDate] Date and time when the issue was created.
- * @member {string} [state] Status of the issue. Possible values include:
+ * @property {string} title The issue title.
+ * @property {string} description Text describing the issue.
+ * @property {date} [createdDate] Date and time when the issue was created.
+ * @property {string} [state] Status of the issue. Possible values include:
  * 'proposed', 'open', 'removed', 'resolved', 'closed'
- * @member {string} userId A resource identifier for the user created the
+ * @property {string} userId A resource identifier for the user created the
  * issue.
- * @member {string} [apiId] A resource identifier for the API the issue was
+ * @property {string} [apiId] A resource identifier for the API the issue was
  * created for.
  */
 export interface IssueContract extends Resource {
@@ -964,9 +972,9 @@ export interface IssueContract extends Resource {
  * @constructor
  * Issue Comment Contract details.
  *
- * @member {string} text Comment text.
- * @member {date} [createdDate] Date and time when the comment was created.
- * @member {string} userId A resource identifier for the user who left the
+ * @property {string} text Comment text.
+ * @property {date} [createdDate] Date and time when the comment was created.
+ * @property {string} userId A resource identifier for the user who left the
  * comment.
  */
 export interface IssueCommentContract extends Resource {
@@ -981,11 +989,11 @@ export interface IssueCommentContract extends Resource {
  * @constructor
  * Issue Attachment Contract details.
  *
- * @member {string} title Filename by which the binary data will be saved.
- * @member {string} contentFormat Either 'link' if content is provided via an
+ * @property {string} title Filename by which the binary data will be saved.
+ * @property {string} contentFormat Either 'link' if content is provided via an
  * HTTP link or the MIME type of the Base64-encoded binary data provided in the
  * 'content' property.
- * @member {string} content An HTTP link or Base64-encoded binary data.
+ * @property {string} content An HTTP link or Base64-encoded binary data.
  */
 export interface IssueAttachmentContract extends Resource {
   title: string;
@@ -999,13 +1007,13 @@ export interface IssueAttachmentContract extends Resource {
  * @constructor
  * Logger details.
  *
- * @member {string} loggerType Logger type. Possible values include:
+ * @property {string} loggerType Logger type. Possible values include:
  * 'azureEventHub', 'applicationInsights'
- * @member {string} [description] Logger description.
- * @member {object} credentials The name and SendRule connection string of the
- * event hub for azureEventHub logger.
+ * @property {string} [description] Logger description.
+ * @property {object} credentials The name and SendRule connection string of
+ * the event hub for azureEventHub logger.
  * Instrumentation key for applicationInsights logger.
- * @member {boolean} [isBuffered] Whether records are buffered in the logger
+ * @property {boolean} [isBuffered] Whether records are buffered in the logger
  * before publishing. Default is assumed to be true.
  */
 export interface LoggerContract extends Resource {
@@ -1021,8 +1029,8 @@ export interface LoggerContract extends Resource {
  * @constructor
  * Diagnostic details.
  *
- * @member {boolean} enabled Indicates whether a diagnostic should receive data
- * or not.
+ * @property {boolean} enabled Indicates whether a diagnostic should receive
+ * data or not.
  */
 export interface DiagnosticContract extends Resource {
   enabled: boolean;
@@ -1034,29 +1042,29 @@ export interface DiagnosticContract extends Resource {
  * @constructor
  * Product Entity Base Parameters
  *
- * @member {string} [description] Product description. May include HTML
+ * @property {string} [description] Product description. May include HTML
  * formatting tags.
- * @member {string} [terms] Product terms of use. Developers trying to
+ * @property {string} [terms] Product terms of use. Developers trying to
  * subscribe to the product will be presented and required to accept these
  * terms before they can complete the subscription process.
- * @member {boolean} [subscriptionRequired] Whether a product subscription is
+ * @property {boolean} [subscriptionRequired] Whether a product subscription is
  * required for accessing APIs included in this product. If true, the product
  * is referred to as "protected" and a valid subscription key is required for a
  * request to an API included in the product to succeed. If false, the product
  * is referred to as "open" and requests to an API included in the product can
  * be made without a subscription key. If property is omitted when creating a
  * new product it's value is assumed to be true.
- * @member {boolean} [approvalRequired] whether subscription approval is
+ * @property {boolean} [approvalRequired] whether subscription approval is
  * required. If false, new subscriptions will be approved automatically
  * enabling developers to call the product’s APIs immediately after
  * subscribing. If true, administrators must manually approve the subscription
  * before the developer can any of the product’s APIs. Can be present only if
  * subscriptionRequired property is present and has a value of false.
- * @member {number} [subscriptionsLimit] Whether the number of subscriptions a
- * user can have to this product at the same time. Set to null or omit to allow
- * unlimited per user subscriptions. Can be present only if
+ * @property {number} [subscriptionsLimit] Whether the number of subscriptions
+ * a user can have to this product at the same time. Set to null or omit to
+ * allow unlimited per user subscriptions. Can be present only if
  * subscriptionRequired property is present and has a value of false.
- * @member {string} [state] whether product is published or not. Published
+ * @property {string} [state] whether product is published or not. Published
  * products are discoverable by users of developer portal. Non published
  * products are visible only to administrators. Default state of Product is
  * notPublished. Possible values include: 'notPublished', 'published'
@@ -1076,9 +1084,9 @@ export interface ProductEntityBaseParameters {
  * @constructor
  * Product profile.
  *
- * @member {string} [id] Identifier of the product in the form of
+ * @property {string} [id] Identifier of the product in the form of
  * /products/{productId}
- * @member {string} name Product name.
+ * @property {string} name Product name.
  */
 export interface ProductTagResourceContractProperties extends ProductEntityBaseParameters {
   id?: string;
@@ -1091,17 +1099,17 @@ export interface ProductTagResourceContractProperties extends ProductEntityBaseP
  * @constructor
  * Operation Entity contract Properties.
  *
- * @member {string} [id] Identifier of the operation in form
+ * @property {string} [id] Identifier of the operation in form
  * /operations/{operationId}.
- * @member {string} [name] Operation name.
- * @member {string} [apiName] Api Name.
- * @member {string} [apiRevision] Api Revision.
- * @member {string} [apiVersion] Api Version.
- * @member {string} [description] Operation Description.
- * @member {string} [method] A Valid HTTP Operation Method. Typical Http
+ * @property {string} [name] Operation name.
+ * @property {string} [apiName] Api Name.
+ * @property {string} [apiRevision] Api Revision.
+ * @property {string} [apiVersion] Api Version.
+ * @property {string} [description] Operation Description.
+ * @property {string} [method] A Valid HTTP Operation Method. Typical Http
  * Methods like GET, PUT, POST but not limited by only them.
- * @member {string} [urlTemplate] Relative URL template identifying the target
- * resource for this operation. May include parameters. Example:
+ * @property {string} [urlTemplate] Relative URL template identifying the
+ * target resource for this operation. May include parameters. Example:
  * /customers/{cid}/orders/{oid}/?date={date}
  */
 export interface OperationTagResourceContractProperties {
@@ -1121,15 +1129,15 @@ export interface OperationTagResourceContractProperties {
  * @constructor
  * API contract properties for the Tag Resources.
  *
- * @member {string} [id] API identifier in the form /apis/{apiId}.
- * @member {string} [name] API name.
- * @member {string} [serviceUrl] Absolute URL of the backend service
+ * @property {string} [id] API identifier in the form /apis/{apiId}.
+ * @property {string} [name] API name.
+ * @property {string} [serviceUrl] Absolute URL of the backend service
  * implementing this API.
- * @member {string} [path] Relative URL uniquely identifying this API and all
+ * @property {string} [path] Relative URL uniquely identifying this API and all
  * of its resource paths within the API Management service instance. It is
  * appended to the API endpoint base URL specified during the service instance
  * creation to form a public URL for this API.
- * @member {array} [protocols] Describes on which protocols the operations in
+ * @property {array} [protocols] Describes on which protocols the operations in
  * this API can be invoked.
  */
 export interface ApiTagResourceContractProperties extends ApiEntityBaseContract {
@@ -1146,8 +1154,8 @@ export interface ApiTagResourceContractProperties extends ApiEntityBaseContract 
  * @constructor
  * Contract defining the Tag property in the Tag Resource Contract
  *
- * @member {string} [id] Tag identifier
- * @member {string} [name] Tag Name
+ * @property {string} [id] Tag identifier
+ * @property {string} [name] Tag Name
  */
 export interface TagTagResourceContractProperties {
   id?: string;
@@ -1160,37 +1168,37 @@ export interface TagTagResourceContractProperties {
  * @constructor
  * TagResource contract properties.
  *
- * @member {object} tag Tag associated with the resource.
- * @member {string} [tag.id] Tag identifier
- * @member {string} [tag.name] Tag Name
- * @member {object} [api] Api associated with the tag.
- * @member {string} [api.id] API identifier in the form /apis/{apiId}.
- * @member {string} [api.name] API name.
- * @member {string} [api.serviceUrl] Absolute URL of the backend service
+ * @property {object} tag Tag associated with the resource.
+ * @property {string} [tag.id] Tag identifier
+ * @property {string} [tag.name] Tag Name
+ * @property {object} [api] Api associated with the tag.
+ * @property {string} [api.id] API identifier in the form /apis/{apiId}.
+ * @property {string} [api.name] API name.
+ * @property {string} [api.serviceUrl] Absolute URL of the backend service
  * implementing this API.
- * @member {string} [api.path] Relative URL uniquely identifying this API and
+ * @property {string} [api.path] Relative URL uniquely identifying this API and
  * all of its resource paths within the API Management service instance. It is
  * appended to the API endpoint base URL specified during the service instance
  * creation to form a public URL for this API.
- * @member {array} [api.protocols] Describes on which protocols the operations
- * in this API can be invoked.
- * @member {object} [operation] Operation associated with the tag.
- * @member {string} [operation.id] Identifier of the operation in form
+ * @property {array} [api.protocols] Describes on which protocols the
+ * operations in this API can be invoked.
+ * @property {object} [operation] Operation associated with the tag.
+ * @property {string} [operation.id] Identifier of the operation in form
  * /operations/{operationId}.
- * @member {string} [operation.name] Operation name.
- * @member {string} [operation.apiName] Api Name.
- * @member {string} [operation.apiRevision] Api Revision.
- * @member {string} [operation.apiVersion] Api Version.
- * @member {string} [operation.description] Operation Description.
- * @member {string} [operation.method] A Valid HTTP Operation Method. Typical
+ * @property {string} [operation.name] Operation name.
+ * @property {string} [operation.apiName] Api Name.
+ * @property {string} [operation.apiRevision] Api Revision.
+ * @property {string} [operation.apiVersion] Api Version.
+ * @property {string} [operation.description] Operation Description.
+ * @property {string} [operation.method] A Valid HTTP Operation Method. Typical
  * Http Methods like GET, PUT, POST but not limited by only them.
- * @member {string} [operation.urlTemplate] Relative URL template identifying
+ * @property {string} [operation.urlTemplate] Relative URL template identifying
  * the target resource for this operation. May include parameters. Example:
  * /customers/{cid}/orders/{oid}/?date={date}
- * @member {object} [product] Product associated with the tag.
- * @member {string} [product.id] Identifier of the product in the form of
+ * @property {object} [product] Product associated with the tag.
+ * @property {string} [product.id] Identifier of the product in the form of
  * /products/{productId}
- * @member {string} [product.name] Product name.
+ * @property {string} [product.name] Product name.
  */
 export interface TagResourceContract {
   tag: TagTagResourceContractProperties;
@@ -1205,33 +1213,33 @@ export interface TagResourceContract {
  * @constructor
  * Product details.
  *
- * @member {string} [description] Product description. May include HTML
+ * @property {string} [description] Product description. May include HTML
  * formatting tags.
- * @member {string} [terms] Product terms of use. Developers trying to
+ * @property {string} [terms] Product terms of use. Developers trying to
  * subscribe to the product will be presented and required to accept these
  * terms before they can complete the subscription process.
- * @member {boolean} [subscriptionRequired] Whether a product subscription is
+ * @property {boolean} [subscriptionRequired] Whether a product subscription is
  * required for accessing APIs included in this product. If true, the product
  * is referred to as "protected" and a valid subscription key is required for a
  * request to an API included in the product to succeed. If false, the product
  * is referred to as "open" and requests to an API included in the product can
  * be made without a subscription key. If property is omitted when creating a
  * new product it's value is assumed to be true.
- * @member {boolean} [approvalRequired] whether subscription approval is
+ * @property {boolean} [approvalRequired] whether subscription approval is
  * required. If false, new subscriptions will be approved automatically
  * enabling developers to call the product’s APIs immediately after
  * subscribing. If true, administrators must manually approve the subscription
  * before the developer can any of the product’s APIs. Can be present only if
  * subscriptionRequired property is present and has a value of false.
- * @member {number} [subscriptionsLimit] Whether the number of subscriptions a
- * user can have to this product at the same time. Set to null or omit to allow
- * unlimited per user subscriptions. Can be present only if
+ * @property {number} [subscriptionsLimit] Whether the number of subscriptions
+ * a user can have to this product at the same time. Set to null or omit to
+ * allow unlimited per user subscriptions. Can be present only if
  * subscriptionRequired property is present and has a value of false.
- * @member {string} [state] whether product is published or not. Published
+ * @property {string} [state] whether product is published or not. Published
  * products are discoverable by users of developer portal. Non published
  * products are visible only to administrators. Default state of Product is
  * notPublished. Possible values include: 'notPublished', 'published'
- * @member {string} displayName Product name.
+ * @property {string} displayName Product name.
  */
 export interface ProductContract extends Resource {
   description?: string;
@@ -1249,46 +1257,46 @@ export interface ProductContract extends Resource {
  * @constructor
  * External OAuth authorization server settings.
  *
- * @member {string} [description] Description of the authorization server. Can
- * contain HTML formatting tags.
- * @member {array} [authorizationMethods] HTTP verbs supported by the
+ * @property {string} [description] Description of the authorization server.
+ * Can contain HTML formatting tags.
+ * @property {array} [authorizationMethods] HTTP verbs supported by the
  * authorization endpoint. GET must be always present. POST is optional.
- * @member {array} [clientAuthenticationMethod] Method of authentication
+ * @property {array} [clientAuthenticationMethod] Method of authentication
  * supported by the token endpoint of this authorization server. Possible
  * values are Basic and/or Body. When Body is specified, client credentials and
  * other parameters are passed within the request body in the
  * application/x-www-form-urlencoded format.
- * @member {array} [tokenBodyParameters] Additional parameters required by the
- * token endpoint of this authorization server represented as an array of JSON
- * objects with name and value string properties, i.e. {"name" : "name value",
- * "value": "a value"}.
- * @member {string} [tokenEndpoint] OAuth token endpoint. Contains absolute URI
- * to entity being referenced.
- * @member {boolean} [supportState] If true, authorization server will include
- * state parameter from the authorization request to its response. Client may
- * use state parameter to raise protocol security.
- * @member {string} [defaultScope] Access token scope that is going to be
+ * @property {array} [tokenBodyParameters] Additional parameters required by
+ * the token endpoint of this authorization server represented as an array of
+ * JSON objects with name and value string properties, i.e. {"name" : "name
+ * value", "value": "a value"}.
+ * @property {string} [tokenEndpoint] OAuth token endpoint. Contains absolute
+ * URI to entity being referenced.
+ * @property {boolean} [supportState] If true, authorization server will
+ * include state parameter from the authorization request to its response.
+ * Client may use state parameter to raise protocol security.
+ * @property {string} [defaultScope] Access token scope that is going to be
  * requested by default. Can be overridden at the API level. Should be provided
  * in the form of a string containing space-delimited values.
- * @member {array} [bearerTokenSendingMethods] Specifies the mechanism by which
- * access token is passed to the API.
- * @member {string} [clientSecret] Client or app secret registered with this
+ * @property {array} [bearerTokenSendingMethods] Specifies the mechanism by
+ * which access token is passed to the API.
+ * @property {string} [clientSecret] Client or app secret registered with this
  * authorization server.
- * @member {string} [resourceOwnerUsername] Can be optionally specified when
+ * @property {string} [resourceOwnerUsername] Can be optionally specified when
  * resource owner password grant type is supported by this authorization
  * server. Default resource owner username.
- * @member {string} [resourceOwnerPassword] Can be optionally specified when
+ * @property {string} [resourceOwnerPassword] Can be optionally specified when
  * resource owner password grant type is supported by this authorization
  * server. Default resource owner password.
- * @member {string} displayName User-friendly authorization server name.
- * @member {string} clientRegistrationEndpoint Optional reference to a page
+ * @property {string} displayName User-friendly authorization server name.
+ * @property {string} clientRegistrationEndpoint Optional reference to a page
  * where client or app registration for this authorization server is performed.
  * Contains absolute URL to entity being referenced.
- * @member {string} authorizationEndpoint OAuth authorization endpoint. See
+ * @property {string} authorizationEndpoint OAuth authorization endpoint. See
  * http://tools.ietf.org/html/rfc6749#section-3.2.
- * @member {array} grantTypes Form of an authorization grant, which the client
- * uses to request the access token.
- * @member {string} clientId Client or app id registered with this
+ * @property {array} grantTypes Form of an authorization grant, which the
+ * client uses to request the access token.
+ * @property {string} clientId Client or app id registered with this
  * authorization server.
  */
 export interface AuthorizationServerContract extends Resource {
@@ -1316,46 +1324,46 @@ export interface AuthorizationServerContract extends Resource {
  * @constructor
  * External OAuth authorization server settings.
  *
- * @member {string} [description] Description of the authorization server. Can
- * contain HTML formatting tags.
- * @member {array} [authorizationMethods] HTTP verbs supported by the
+ * @property {string} [description] Description of the authorization server.
+ * Can contain HTML formatting tags.
+ * @property {array} [authorizationMethods] HTTP verbs supported by the
  * authorization endpoint. GET must be always present. POST is optional.
- * @member {array} [clientAuthenticationMethod] Method of authentication
+ * @property {array} [clientAuthenticationMethod] Method of authentication
  * supported by the token endpoint of this authorization server. Possible
  * values are Basic and/or Body. When Body is specified, client credentials and
  * other parameters are passed within the request body in the
  * application/x-www-form-urlencoded format.
- * @member {array} [tokenBodyParameters] Additional parameters required by the
- * token endpoint of this authorization server represented as an array of JSON
- * objects with name and value string properties, i.e. {"name" : "name value",
- * "value": "a value"}.
- * @member {string} [tokenEndpoint] OAuth token endpoint. Contains absolute URI
- * to entity being referenced.
- * @member {boolean} [supportState] If true, authorization server will include
- * state parameter from the authorization request to its response. Client may
- * use state parameter to raise protocol security.
- * @member {string} [defaultScope] Access token scope that is going to be
+ * @property {array} [tokenBodyParameters] Additional parameters required by
+ * the token endpoint of this authorization server represented as an array of
+ * JSON objects with name and value string properties, i.e. {"name" : "name
+ * value", "value": "a value"}.
+ * @property {string} [tokenEndpoint] OAuth token endpoint. Contains absolute
+ * URI to entity being referenced.
+ * @property {boolean} [supportState] If true, authorization server will
+ * include state parameter from the authorization request to its response.
+ * Client may use state parameter to raise protocol security.
+ * @property {string} [defaultScope] Access token scope that is going to be
  * requested by default. Can be overridden at the API level. Should be provided
  * in the form of a string containing space-delimited values.
- * @member {array} [bearerTokenSendingMethods] Specifies the mechanism by which
- * access token is passed to the API.
- * @member {string} [clientSecret] Client or app secret registered with this
+ * @property {array} [bearerTokenSendingMethods] Specifies the mechanism by
+ * which access token is passed to the API.
+ * @property {string} [clientSecret] Client or app secret registered with this
  * authorization server.
- * @member {string} [resourceOwnerUsername] Can be optionally specified when
+ * @property {string} [resourceOwnerUsername] Can be optionally specified when
  * resource owner password grant type is supported by this authorization
  * server. Default resource owner username.
- * @member {string} [resourceOwnerPassword] Can be optionally specified when
+ * @property {string} [resourceOwnerPassword] Can be optionally specified when
  * resource owner password grant type is supported by this authorization
  * server. Default resource owner password.
- * @member {string} [displayName] User-friendly authorization server name.
- * @member {string} [clientRegistrationEndpoint] Optional reference to a page
+ * @property {string} [displayName] User-friendly authorization server name.
+ * @property {string} [clientRegistrationEndpoint] Optional reference to a page
  * where client or app registration for this authorization server is performed.
  * Contains absolute URL to entity being referenced.
- * @member {string} [authorizationEndpoint] OAuth authorization endpoint. See
+ * @property {string} [authorizationEndpoint] OAuth authorization endpoint. See
  * http://tools.ietf.org/html/rfc6749#section-3.2.
- * @member {array} [grantTypes] Form of an authorization grant, which the
+ * @property {array} [grantTypes] Form of an authorization grant, which the
  * client uses to request the access token.
- * @member {string} [clientId] Client or app id registered with this
+ * @property {string} [clientId] Client or app id registered with this
  * authorization server.
  */
 export interface AuthorizationServerUpdateContract extends Resource {
@@ -1383,8 +1391,8 @@ export interface AuthorizationServerUpdateContract extends Resource {
  * @constructor
  * OAuth acquire token request body parameter (www-url-form-encoded).
  *
- * @member {string} name body parameter name.
- * @member {string} value body parameter value.
+ * @property {string} name body parameter name.
+ * @property {string} value body parameter value.
  */
 export interface TokenBodyParameterContract {
   name: string;
@@ -1397,35 +1405,35 @@ export interface TokenBodyParameterContract {
  * @constructor
  * External OAuth authorization server Update settings contract.
  *
- * @member {string} [description] Description of the authorization server. Can
- * contain HTML formatting tags.
- * @member {array} [authorizationMethods] HTTP verbs supported by the
+ * @property {string} [description] Description of the authorization server.
+ * Can contain HTML formatting tags.
+ * @property {array} [authorizationMethods] HTTP verbs supported by the
  * authorization endpoint. GET must be always present. POST is optional.
- * @member {array} [clientAuthenticationMethod] Method of authentication
+ * @property {array} [clientAuthenticationMethod] Method of authentication
  * supported by the token endpoint of this authorization server. Possible
  * values are Basic and/or Body. When Body is specified, client credentials and
  * other parameters are passed within the request body in the
  * application/x-www-form-urlencoded format.
- * @member {array} [tokenBodyParameters] Additional parameters required by the
- * token endpoint of this authorization server represented as an array of JSON
- * objects with name and value string properties, i.e. {"name" : "name value",
- * "value": "a value"}.
- * @member {string} [tokenEndpoint] OAuth token endpoint. Contains absolute URI
- * to entity being referenced.
- * @member {boolean} [supportState] If true, authorization server will include
- * state parameter from the authorization request to its response. Client may
- * use state parameter to raise protocol security.
- * @member {string} [defaultScope] Access token scope that is going to be
+ * @property {array} [tokenBodyParameters] Additional parameters required by
+ * the token endpoint of this authorization server represented as an array of
+ * JSON objects with name and value string properties, i.e. {"name" : "name
+ * value", "value": "a value"}.
+ * @property {string} [tokenEndpoint] OAuth token endpoint. Contains absolute
+ * URI to entity being referenced.
+ * @property {boolean} [supportState] If true, authorization server will
+ * include state parameter from the authorization request to its response.
+ * Client may use state parameter to raise protocol security.
+ * @property {string} [defaultScope] Access token scope that is going to be
  * requested by default. Can be overridden at the API level. Should be provided
  * in the form of a string containing space-delimited values.
- * @member {array} [bearerTokenSendingMethods] Specifies the mechanism by which
- * access token is passed to the API.
- * @member {string} [clientSecret] Client or app secret registered with this
+ * @property {array} [bearerTokenSendingMethods] Specifies the mechanism by
+ * which access token is passed to the API.
+ * @property {string} [clientSecret] Client or app secret registered with this
  * authorization server.
- * @member {string} [resourceOwnerUsername] Can be optionally specified when
+ * @property {string} [resourceOwnerUsername] Can be optionally specified when
  * resource owner password grant type is supported by this authorization
  * server. Default resource owner username.
- * @member {string} [resourceOwnerPassword] Can be optionally specified when
+ * @property {string} [resourceOwnerPassword] Can be optionally specified when
  * resource owner password grant type is supported by this authorization
  * server. Default resource owner password.
  */
@@ -1449,8 +1457,8 @@ export interface AuthorizationServerContractBaseProperties {
  * @constructor
  * Authorization header information.
  *
- * @member {string} scheme Authentication Scheme name.
- * @member {string} parameter Authentication Parameter value.
+ * @property {string} scheme Authentication Scheme name.
+ * @property {string} parameter Authentication Parameter value.
  */
 export interface BackendAuthorizationHeaderCredentials {
   scheme: string;
@@ -1463,9 +1471,9 @@ export interface BackendAuthorizationHeaderCredentials {
  * @constructor
  * Properties of server X509Names.
  *
- * @member {string} [name] Common Name of the Certificate.
- * @member {string} [issuerCertificateThumbprint] Thumbprint for the Issuer of
- * the Certificate.
+ * @property {string} [name] Common Name of the Certificate.
+ * @property {string} [issuerCertificateThumbprint] Thumbprint for the Issuer
+ * of the Certificate.
  */
 export interface X509CertificateName {
   name?: string;
@@ -1478,14 +1486,14 @@ export interface X509CertificateName {
  * @constructor
  * Properties of the Service Fabric Type Backend.
  *
- * @member {string} clientCertificatethumbprint The client certificate
+ * @property {string} clientCertificatethumbprint The client certificate
  * thumbprint for the management endpoint.
- * @member {number} [maxPartitionResolutionRetries] Maximum number of retries
+ * @property {number} [maxPartitionResolutionRetries] Maximum number of retries
  * while attempting resolve the parition.
- * @member {array} managementEndpoints The cluster management endpoint.
- * @member {array} [serverCertificateThumbprints] Thumbprints of certificates
+ * @property {array} managementEndpoints The cluster management endpoint.
+ * @property {array} [serverCertificateThumbprints] Thumbprints of certificates
  * cluster management service uses for tls communication
- * @member {array} [serverX509Names] Server X509 Certificate Names Collection
+ * @property {array} [serverX509Names] Server X509 Certificate Names Collection
  */
 export interface BackendServiceFabricClusterProperties {
   clientCertificatethumbprint: string;
@@ -1501,18 +1509,18 @@ export interface BackendServiceFabricClusterProperties {
  * @constructor
  * Properties specific to the Backend Type.
  *
- * @member {object} [serviceFabricCluster] Backend Service Fabric Cluster
+ * @property {object} [serviceFabricCluster] Backend Service Fabric Cluster
  * Properties
- * @member {string} [serviceFabricCluster.clientCertificatethumbprint] The
+ * @property {string} [serviceFabricCluster.clientCertificatethumbprint] The
  * client certificate thumbprint for the management endpoint.
- * @member {number} [serviceFabricCluster.maxPartitionResolutionRetries]
+ * @property {number} [serviceFabricCluster.maxPartitionResolutionRetries]
  * Maximum number of retries while attempting resolve the parition.
- * @member {array} [serviceFabricCluster.managementEndpoints] The cluster
+ * @property {array} [serviceFabricCluster.managementEndpoints] The cluster
  * management endpoint.
- * @member {array} [serviceFabricCluster.serverCertificateThumbprints]
+ * @property {array} [serviceFabricCluster.serverCertificateThumbprints]
  * Thumbprints of certificates cluster management service uses for tls
  * communication
- * @member {array} [serviceFabricCluster.serverX509Names] Server X509
+ * @property {array} [serviceFabricCluster.serverX509Names] Server X509
  * Certificate Names Collection
  */
 export interface BackendProperties {
@@ -1525,12 +1533,12 @@ export interface BackendProperties {
  * @constructor
  * Details of the Credentials used to connect to Backend.
  *
- * @member {array} [certificate] List of Client Certificate Thumbprint.
- * @member {object} [query] Query Parameter description.
- * @member {object} [header] Header Parameter description.
- * @member {object} [authorization] Authorization header authentication
- * @member {string} [authorization.scheme] Authentication Scheme name.
- * @member {string} [authorization.parameter] Authentication Parameter value.
+ * @property {array} [certificate] List of Client Certificate Thumbprint.
+ * @property {object} [query] Query Parameter description.
+ * @property {object} [header] Header Parameter description.
+ * @property {object} [authorization] Authorization header authentication
+ * @property {string} [authorization.scheme] Authentication Scheme name.
+ * @property {string} [authorization.parameter] Authentication Parameter value.
  */
 export interface BackendCredentialsContract {
   certificate?: string[];
@@ -1545,11 +1553,11 @@ export interface BackendCredentialsContract {
  * @constructor
  * Details of the Backend WebProxy Server to use in the Request to Backend.
  *
- * @member {string} url WebProxy Server AbsoluteUri property which includes the
- * entire URI stored in the Uri instance, including all fragments and query
+ * @property {string} url WebProxy Server AbsoluteUri property which includes
+ * the entire URI stored in the Uri instance, including all fragments and query
  * strings.
- * @member {string} [username] Username to connect to the WebProxy server
- * @member {string} [password] Password to connect to the WebProxy Server
+ * @property {string} [username] Username to connect to the WebProxy server
+ * @property {string} [password] Password to connect to the WebProxy Server
  */
 export interface BackendProxyContract {
   url: string;
@@ -1563,10 +1571,10 @@ export interface BackendProxyContract {
  * @constructor
  * Properties controlling TLS Certificate Validation.
  *
- * @member {boolean} [validateCertificateChain] Flag indicating whether SSL
+ * @property {boolean} [validateCertificateChain] Flag indicating whether SSL
  * certificate chain validation should be done when using self-signed
  * certificates for this backend host. Default value: true .
- * @member {boolean} [validateCertificateName] Flag indicating whether SSL
+ * @property {boolean} [validateCertificateName] Flag indicating whether SSL
  * certificate name validation should be done when using self-signed
  * certificates for this backend host. Default value: true .
  */
@@ -1581,50 +1589,52 @@ export interface BackendTlsProperties {
  * @constructor
  * Backend entity base Parameter set.
  *
- * @member {string} [title] Backend Title.
- * @member {string} [description] Backend Description.
- * @member {string} [resourceId] Management Uri of the Resource in External
+ * @property {string} [title] Backend Title.
+ * @property {string} [description] Backend Description.
+ * @property {string} [resourceId] Management Uri of the Resource in External
  * System. This url can be the Arm Resource Id of Logic Apps, Function Apps or
  * Api Apps.
- * @member {object} [properties] Backend Properties contract
- * @member {object} [properties.serviceFabricCluster] Backend Service Fabric
+ * @property {object} [properties] Backend Properties contract
+ * @property {object} [properties.serviceFabricCluster] Backend Service Fabric
  * Cluster Properties
- * @member {string}
+ * @property {string}
  * [properties.serviceFabricCluster.clientCertificatethumbprint] The client
  * certificate thumbprint for the management endpoint.
- * @member {number}
+ * @property {number}
  * [properties.serviceFabricCluster.maxPartitionResolutionRetries] Maximum
  * number of retries while attempting resolve the parition.
- * @member {array} [properties.serviceFabricCluster.managementEndpoints] The
+ * @property {array} [properties.serviceFabricCluster.managementEndpoints] The
  * cluster management endpoint.
- * @member {array}
+ * @property {array}
  * [properties.serviceFabricCluster.serverCertificateThumbprints] Thumbprints
  * of certificates cluster management service uses for tls communication
- * @member {array} [properties.serviceFabricCluster.serverX509Names] Server
+ * @property {array} [properties.serviceFabricCluster.serverX509Names] Server
  * X509 Certificate Names Collection
- * @member {object} [credentials] Backend Credentials Contract Properties
- * @member {array} [credentials.certificate] List of Client Certificate
+ * @property {object} [credentials] Backend Credentials Contract Properties
+ * @property {array} [credentials.certificate] List of Client Certificate
  * Thumbprint.
- * @member {object} [credentials.query] Query Parameter description.
- * @member {object} [credentials.header] Header Parameter description.
- * @member {object} [credentials.authorization] Authorization header
+ * @property {object} [credentials.query] Query Parameter description.
+ * @property {object} [credentials.header] Header Parameter description.
+ * @property {object} [credentials.authorization] Authorization header
  * authentication
- * @member {string} [credentials.authorization.scheme] Authentication Scheme
+ * @property {string} [credentials.authorization.scheme] Authentication Scheme
  * name.
- * @member {string} [credentials.authorization.parameter] Authentication
+ * @property {string} [credentials.authorization.parameter] Authentication
  * Parameter value.
- * @member {object} [proxy] Backend Proxy Contract Properties
- * @member {string} [proxy.url] WebProxy Server AbsoluteUri property which
+ * @property {object} [proxy] Backend Proxy Contract Properties
+ * @property {string} [proxy.url] WebProxy Server AbsoluteUri property which
  * includes the entire URI stored in the Uri instance, including all fragments
  * and query strings.
- * @member {string} [proxy.username] Username to connect to the WebProxy server
- * @member {string} [proxy.password] Password to connect to the WebProxy Server
- * @member {object} [tls] Backend TLS Properties
- * @member {boolean} [tls.validateCertificateChain] Flag indicating whether SSL
- * certificate chain validation should be done when using self-signed
+ * @property {string} [proxy.username] Username to connect to the WebProxy
+ * server
+ * @property {string} [proxy.password] Password to connect to the WebProxy
+ * Server
+ * @property {object} [tls] Backend TLS Properties
+ * @property {boolean} [tls.validateCertificateChain] Flag indicating whether
+ * SSL certificate chain validation should be done when using self-signed
  * certificates for this backend host.
- * @member {boolean} [tls.validateCertificateName] Flag indicating whether SSL
- * certificate name validation should be done when using self-signed
+ * @property {boolean} [tls.validateCertificateName] Flag indicating whether
+ * SSL certificate name validation should be done when using self-signed
  * certificates for this backend host.
  */
 export interface BackendBaseParameters {
@@ -1643,53 +1653,55 @@ export interface BackendBaseParameters {
  * @constructor
  * Backend details.
  *
- * @member {string} [title] Backend Title.
- * @member {string} [description] Backend Description.
- * @member {string} [resourceId] Management Uri of the Resource in External
+ * @property {string} [title] Backend Title.
+ * @property {string} [description] Backend Description.
+ * @property {string} [resourceId] Management Uri of the Resource in External
  * System. This url can be the Arm Resource Id of Logic Apps, Function Apps or
  * Api Apps.
- * @member {object} [properties] Backend Properties contract
- * @member {object} [properties.serviceFabricCluster] Backend Service Fabric
+ * @property {object} [properties] Backend Properties contract
+ * @property {object} [properties.serviceFabricCluster] Backend Service Fabric
  * Cluster Properties
- * @member {string}
+ * @property {string}
  * [properties.serviceFabricCluster.clientCertificatethumbprint] The client
  * certificate thumbprint for the management endpoint.
- * @member {number}
+ * @property {number}
  * [properties.serviceFabricCluster.maxPartitionResolutionRetries] Maximum
  * number of retries while attempting resolve the parition.
- * @member {array} [properties.serviceFabricCluster.managementEndpoints] The
+ * @property {array} [properties.serviceFabricCluster.managementEndpoints] The
  * cluster management endpoint.
- * @member {array}
+ * @property {array}
  * [properties.serviceFabricCluster.serverCertificateThumbprints] Thumbprints
  * of certificates cluster management service uses for tls communication
- * @member {array} [properties.serviceFabricCluster.serverX509Names] Server
+ * @property {array} [properties.serviceFabricCluster.serverX509Names] Server
  * X509 Certificate Names Collection
- * @member {object} [credentials] Backend Credentials Contract Properties
- * @member {array} [credentials.certificate] List of Client Certificate
+ * @property {object} [credentials] Backend Credentials Contract Properties
+ * @property {array} [credentials.certificate] List of Client Certificate
  * Thumbprint.
- * @member {object} [credentials.query] Query Parameter description.
- * @member {object} [credentials.header] Header Parameter description.
- * @member {object} [credentials.authorization] Authorization header
+ * @property {object} [credentials.query] Query Parameter description.
+ * @property {object} [credentials.header] Header Parameter description.
+ * @property {object} [credentials.authorization] Authorization header
  * authentication
- * @member {string} [credentials.authorization.scheme] Authentication Scheme
+ * @property {string} [credentials.authorization.scheme] Authentication Scheme
  * name.
- * @member {string} [credentials.authorization.parameter] Authentication
+ * @property {string} [credentials.authorization.parameter] Authentication
  * Parameter value.
- * @member {object} [proxy] Backend Proxy Contract Properties
- * @member {string} [proxy.url] WebProxy Server AbsoluteUri property which
+ * @property {object} [proxy] Backend Proxy Contract Properties
+ * @property {string} [proxy.url] WebProxy Server AbsoluteUri property which
  * includes the entire URI stored in the Uri instance, including all fragments
  * and query strings.
- * @member {string} [proxy.username] Username to connect to the WebProxy server
- * @member {string} [proxy.password] Password to connect to the WebProxy Server
- * @member {object} [tls] Backend TLS Properties
- * @member {boolean} [tls.validateCertificateChain] Flag indicating whether SSL
- * certificate chain validation should be done when using self-signed
+ * @property {string} [proxy.username] Username to connect to the WebProxy
+ * server
+ * @property {string} [proxy.password] Password to connect to the WebProxy
+ * Server
+ * @property {object} [tls] Backend TLS Properties
+ * @property {boolean} [tls.validateCertificateChain] Flag indicating whether
+ * SSL certificate chain validation should be done when using self-signed
  * certificates for this backend host.
- * @member {boolean} [tls.validateCertificateName] Flag indicating whether SSL
- * certificate name validation should be done when using self-signed
+ * @property {boolean} [tls.validateCertificateName] Flag indicating whether
+ * SSL certificate name validation should be done when using self-signed
  * certificates for this backend host.
- * @member {string} url Runtime Url of the Backend.
- * @member {string} protocol Backend communication protocol. Possible values
+ * @property {string} url Runtime Url of the Backend.
+ * @property {string} protocol Backend communication protocol. Possible values
  * include: 'http', 'soap'
  */
 export interface BackendContract extends Resource {
@@ -1710,54 +1722,56 @@ export interface BackendContract extends Resource {
  * @constructor
  * Backend update parameters.
  *
- * @member {string} [title] Backend Title.
- * @member {string} [description] Backend Description.
- * @member {string} [resourceId] Management Uri of the Resource in External
+ * @property {string} [title] Backend Title.
+ * @property {string} [description] Backend Description.
+ * @property {string} [resourceId] Management Uri of the Resource in External
  * System. This url can be the Arm Resource Id of Logic Apps, Function Apps or
  * Api Apps.
- * @member {object} [properties] Backend Properties contract
- * @member {object} [properties.serviceFabricCluster] Backend Service Fabric
+ * @property {object} [properties] Backend Properties contract
+ * @property {object} [properties.serviceFabricCluster] Backend Service Fabric
  * Cluster Properties
- * @member {string}
+ * @property {string}
  * [properties.serviceFabricCluster.clientCertificatethumbprint] The client
  * certificate thumbprint for the management endpoint.
- * @member {number}
+ * @property {number}
  * [properties.serviceFabricCluster.maxPartitionResolutionRetries] Maximum
  * number of retries while attempting resolve the parition.
- * @member {array} [properties.serviceFabricCluster.managementEndpoints] The
+ * @property {array} [properties.serviceFabricCluster.managementEndpoints] The
  * cluster management endpoint.
- * @member {array}
+ * @property {array}
  * [properties.serviceFabricCluster.serverCertificateThumbprints] Thumbprints
  * of certificates cluster management service uses for tls communication
- * @member {array} [properties.serviceFabricCluster.serverX509Names] Server
+ * @property {array} [properties.serviceFabricCluster.serverX509Names] Server
  * X509 Certificate Names Collection
- * @member {object} [credentials] Backend Credentials Contract Properties
- * @member {array} [credentials.certificate] List of Client Certificate
+ * @property {object} [credentials] Backend Credentials Contract Properties
+ * @property {array} [credentials.certificate] List of Client Certificate
  * Thumbprint.
- * @member {object} [credentials.query] Query Parameter description.
- * @member {object} [credentials.header] Header Parameter description.
- * @member {object} [credentials.authorization] Authorization header
+ * @property {object} [credentials.query] Query Parameter description.
+ * @property {object} [credentials.header] Header Parameter description.
+ * @property {object} [credentials.authorization] Authorization header
  * authentication
- * @member {string} [credentials.authorization.scheme] Authentication Scheme
+ * @property {string} [credentials.authorization.scheme] Authentication Scheme
  * name.
- * @member {string} [credentials.authorization.parameter] Authentication
+ * @property {string} [credentials.authorization.parameter] Authentication
  * Parameter value.
- * @member {object} [proxy] Backend Proxy Contract Properties
- * @member {string} [proxy.url] WebProxy Server AbsoluteUri property which
+ * @property {object} [proxy] Backend Proxy Contract Properties
+ * @property {string} [proxy.url] WebProxy Server AbsoluteUri property which
  * includes the entire URI stored in the Uri instance, including all fragments
  * and query strings.
- * @member {string} [proxy.username] Username to connect to the WebProxy server
- * @member {string} [proxy.password] Password to connect to the WebProxy Server
- * @member {object} [tls] Backend TLS Properties
- * @member {boolean} [tls.validateCertificateChain] Flag indicating whether SSL
- * certificate chain validation should be done when using self-signed
+ * @property {string} [proxy.username] Username to connect to the WebProxy
+ * server
+ * @property {string} [proxy.password] Password to connect to the WebProxy
+ * Server
+ * @property {object} [tls] Backend TLS Properties
+ * @property {boolean} [tls.validateCertificateChain] Flag indicating whether
+ * SSL certificate chain validation should be done when using self-signed
  * certificates for this backend host.
- * @member {boolean} [tls.validateCertificateName] Flag indicating whether SSL
- * certificate name validation should be done when using self-signed
+ * @property {boolean} [tls.validateCertificateName] Flag indicating whether
+ * SSL certificate name validation should be done when using self-signed
  * certificates for this backend host.
- * @member {string} [url] Runtime Url of the Backend.
- * @member {string} [protocol] Backend communication protocol. Possible values
- * include: 'http', 'soap'
+ * @property {string} [url] Runtime Url of the Backend.
+ * @property {string} [protocol] Backend communication protocol. Possible
+ * values include: 'http', 'soap'
  */
 export interface BackendUpdateParameters {
   title?: string;
@@ -1777,7 +1791,7 @@ export interface BackendUpdateParameters {
  * @constructor
  * Reconnect request parameters.
  *
- * @member {moment.duration} [after] Duration in ISO8601 format after which
+ * @property {moment.duration} [after] Duration in ISO8601 format after which
  * reconnect will be initiated. Minimum duration of the Reconect is PT2M.
  */
 export interface BackendReconnectContract extends Resource {
@@ -1790,9 +1804,9 @@ export interface BackendReconnectContract extends Resource {
  * @constructor
  * Certificate details.
  *
- * @member {string} subject Subject attribute of the certificate.
- * @member {string} thumbprint Thumbprint of the certificate.
- * @member {date} expirationDate Expiration date of the certificate. The date
+ * @property {string} subject Subject attribute of the certificate.
+ * @property {string} thumbprint Thumbprint of the certificate.
+ * @property {date} expirationDate Expiration date of the certificate. The date
  * conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the
  * ISO 8601 standard.
  */
@@ -1808,9 +1822,9 @@ export interface CertificateContract extends Resource {
  * @constructor
  * Certificate create or update details.
  *
- * @member {string} data Base 64 encoded certificate using the
+ * @property {string} data Base 64 encoded certificate using the
  * application/x-pkcs12 representation.
- * @member {string} password Password for the Certificate
+ * @property {string} password Password for the Certificate
  */
 export interface CertificateCreateOrUpdateParameters {
   data: string;
@@ -1823,11 +1837,11 @@ export interface CertificateCreateOrUpdateParameters {
  * @constructor
  * SSL certificate information.
  *
- * @member {date} expiry Expiration date of the certificate. The date conforms
- * to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601
- * standard.
- * @member {string} thumbprint Thumbprint of the certificate.
- * @member {string} subject Subject of the certificate.
+ * @property {date} expiry Expiration date of the certificate. The date
+ * conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the
+ * ISO 8601 standard.
+ * @property {string} thumbprint Thumbprint of the certificate.
+ * @property {string} subject Subject of the certificate.
  */
 export interface CertificateInformation {
   expiry: Date;
@@ -1842,18 +1856,18 @@ export interface CertificateInformation {
  * Certificate configuration which consist of non-trusted intermediates and
  * root certificates.
  *
- * @member {string} [encodedCertificate] Base64 Encoded certificate.
- * @member {string} [certificatePassword] Certificate Password.
- * @member {string} storeName The
+ * @property {string} [encodedCertificate] Base64 Encoded certificate.
+ * @property {string} [certificatePassword] Certificate Password.
+ * @property {string} storeName The
  * System.Security.Cryptography.x509certificates.Storename certificate store
  * location. Only Root and CertificateAuthority are valid locations. Possible
  * values include: 'CertificateAuthority', 'Root'
- * @member {object} [certificate] Certificate information.
- * @member {date} [certificate.expiry] Expiration date of the certificate. The
- * date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified
- * by the ISO 8601 standard.
- * @member {string} [certificate.thumbprint] Thumbprint of the certificate.
- * @member {string} [certificate.subject] Subject of the certificate.
+ * @property {object} [certificate] Certificate information.
+ * @property {date} [certificate.expiry] Expiration date of the certificate.
+ * The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as
+ * specified by the ISO 8601 standard.
+ * @property {string} [certificate.thumbprint] Thumbprint of the certificate.
+ * @property {string} [certificate.subject] Subject of the certificate.
  */
 export interface CertificateConfiguration {
   encodedCertificate?: string;
@@ -1868,31 +1882,32 @@ export interface CertificateConfiguration {
  * @constructor
  * Custom hostname configuration.
  *
- * @member {string} type Hostname type. Possible values include: 'Proxy',
+ * @property {string} type Hostname type. Possible values include: 'Proxy',
  * 'Portal', 'Management', 'Scm'
- * @member {string} hostName Hostname to configure on the Api Management
+ * @property {string} hostName Hostname to configure on the Api Management
  * service.
- * @member {string} [keyVaultId] Url to the KeyVault Secret containing the Ssl
- * Certificate. If absolute Url containing version is provided, auto-update of
- * ssl certificate will not work. This requires Api Management service to be
+ * @property {string} [keyVaultId] Url to the KeyVault Secret containing the
+ * Ssl Certificate. If absolute Url containing version is provided, auto-update
+ * of ssl certificate will not work. This requires Api Management service to be
  * configured with MSI. The secret should be of type *application/x-pkcs12*
- * @member {string} [encodedCertificate] Base64 Encoded certificate.
- * @member {string} [certificatePassword] Certificate Password.
- * @member {boolean} [defaultSslBinding] Specify true to setup the certificate
- * associated with this Hostname as the Default SSL Certificate. If a client
- * does not send the SNI header, then this will be the certificate that will be
- * challenged. The property is useful if a service has multiple custom hostname
- * enabled and it needs to decide on the default ssl certificate. The setting
- * only applied to Proxy Hostname Type. Default value: false .
- * @member {boolean} [negotiateClientCertificate] Specify true to always
+ * @property {string} [encodedCertificate] Base64 Encoded certificate.
+ * @property {string} [certificatePassword] Certificate Password.
+ * @property {boolean} [defaultSslBinding] Specify true to setup the
+ * certificate associated with this Hostname as the Default SSL Certificate. If
+ * a client does not send the SNI header, then this will be the certificate
+ * that will be challenged. The property is useful if a service has multiple
+ * custom hostname enabled and it needs to decide on the default ssl
+ * certificate. The setting only applied to Proxy Hostname Type. Default value:
+ * false .
+ * @property {boolean} [negotiateClientCertificate] Specify true to always
  * negotiate client certificate on the hostname. Default Value is false.
  * Default value: false .
- * @member {object} [certificate] Certificate information.
- * @member {date} [certificate.expiry] Expiration date of the certificate. The
- * date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified
- * by the ISO 8601 standard.
- * @member {string} [certificate.thumbprint] Thumbprint of the certificate.
- * @member {string} [certificate.subject] Subject of the certificate.
+ * @property {object} [certificate] Certificate information.
+ * @property {date} [certificate.expiry] Expiration date of the certificate.
+ * The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as
+ * specified by the ISO 8601 standard.
+ * @property {string} [certificate.thumbprint] Thumbprint of the certificate.
+ * @property {string} [certificate.subject] Subject of the certificate.
  */
 export interface HostnameConfiguration {
   type: string;
@@ -1912,10 +1927,10 @@ export interface HostnameConfiguration {
  * Configuration of a virtual network to which API Management service is
  * deployed.
  *
- * @member {string} [vnetid] The virtual network ID. This is typically a GUID.
- * Expect a null GUID by default.
- * @member {string} [subnetname] The name of the subnet.
- * @member {string} [subnetResourceId] The full resource ID of a subnet in a
+ * @property {string} [vnetid] The virtual network ID. This is typically a
+ * GUID. Expect a null GUID by default.
+ * @property {string} [subnetname] The name of the subnet.
+ * @property {string} [subnetResourceId] The full resource ID of a subnet in a
  * virtual network to deploy the API Management service in.
  */
 export interface VirtualNetworkConfiguration {
@@ -1930,10 +1945,10 @@ export interface VirtualNetworkConfiguration {
  * @constructor
  * API Management service resource SKU properties.
  *
- * @member {string} name Name of the Sku. Possible values include: 'Developer',
- * 'Standard', 'Premium', 'Basic'
- * @member {number} [capacity] Capacity of the SKU (number of deployed units of
- * the SKU). The default value is 1. Default value: 1 .
+ * @property {string} name Name of the Sku. Possible values include:
+ * 'Developer', 'Standard', 'Premium', 'Basic'
+ * @property {number} [capacity] Capacity of the SKU (number of deployed units
+ * of the SKU). The default value is 1. Default value: 1 .
  */
 export interface ApiManagementServiceSkuProperties {
   name: string;
@@ -1946,30 +1961,30 @@ export interface ApiManagementServiceSkuProperties {
  * @constructor
  * Description of an additional API Management resource location.
  *
- * @member {string} location The location name of the additional region among
+ * @property {string} location The location name of the additional region among
  * Azure Data center regions.
- * @member {object} sku SKU properties of the API Management service.
- * @member {string} [sku.name] Name of the Sku. Possible values include:
+ * @property {object} sku SKU properties of the API Management service.
+ * @property {string} [sku.name] Name of the Sku. Possible values include:
  * 'Developer', 'Standard', 'Premium', 'Basic'
- * @member {number} [sku.capacity] Capacity of the SKU (number of deployed
+ * @property {number} [sku.capacity] Capacity of the SKU (number of deployed
  * units of the SKU). The default value is 1.
- * @member {array} [publicIPAddresses] Public Static Load Balanced IP addresses
- * of the API Management service in the additional location. Available only for
- * Basic, Standard and Premium SKU.
- * @member {array} [privateIPAddresses] Private Static Load Balanced IP
+ * @property {array} [publicIPAddresses] Public Static Load Balanced IP
+ * addresses of the API Management service in the additional location.
+ * Available only for Basic, Standard and Premium SKU.
+ * @property {array} [privateIPAddresses] Private Static Load Balanced IP
  * addresses of the API Management service which is deployed in an Internal
  * Virtual Network in a particular additional location. Available only for
  * Basic, Standard and Premium SKU.
- * @member {object} [virtualNetworkConfiguration] Virtual network configuration
- * for the location.
- * @member {string} [virtualNetworkConfiguration.vnetid] The virtual network
+ * @property {object} [virtualNetworkConfiguration] Virtual network
+ * configuration for the location.
+ * @property {string} [virtualNetworkConfiguration.vnetid] The virtual network
  * ID. This is typically a GUID. Expect a null GUID by default.
- * @member {string} [virtualNetworkConfiguration.subnetname] The name of the
+ * @property {string} [virtualNetworkConfiguration.subnetname] The name of the
  * subnet.
- * @member {string} [virtualNetworkConfiguration.subnetResourceId] The full
+ * @property {string} [virtualNetworkConfiguration.subnetResourceId] The full
  * resource ID of a subnet in a virtual network to deploy the API Management
  * service in.
- * @member {string} [gatewayRegionalUrl] Gateway URL of the API Management
+ * @property {string} [gatewayRegionalUrl] Gateway URL of the API Management
  * service in the Region.
  */
 export interface AdditionalLocation {
@@ -1988,13 +2003,13 @@ export interface AdditionalLocation {
  * Parameters supplied to the Backup/Restore of an API Management service
  * operation.
  *
- * @member {string} storageAccount Azure Cloud Storage account (used to
+ * @property {string} storageAccount Azure Cloud Storage account (used to
  * place/retrieve the backup) name.
- * @member {string} accessKey Azure Cloud Storage account (used to
+ * @property {string} accessKey Azure Cloud Storage account (used to
  * place/retrieve the backup) access key.
- * @member {string} containerName Azure Cloud Storage blob container name used
- * to place/retrieve the backup.
- * @member {string} backupName The name of the backup file to create.
+ * @property {string} containerName Azure Cloud Storage blob container name
+ * used to place/retrieve the backup.
+ * @property {string} backupName The name of the backup file to create.
  */
 export interface ApiManagementServiceBackupRestoreParameters {
   storageAccount: string;
@@ -2009,47 +2024,47 @@ export interface ApiManagementServiceBackupRestoreParameters {
  * @constructor
  * Base Properties of an API Management service resource description.
  *
- * @member {string} [notificationSenderEmail] Email address from which the
+ * @property {string} [notificationSenderEmail] Email address from which the
  * notification will be sent.
- * @member {string} [provisioningState] The current provisioning state of the
+ * @property {string} [provisioningState] The current provisioning state of the
  * API Management service which can be one of the following:
  * Created/Activating/Succeeded/Updating/Failed/Stopped/Terminating/TerminationFailed/Deleted.
- * @member {string} [targetProvisioningState] The provisioning state of the API
- * Management service, which is targeted by the long running operation started
- * on the service.
- * @member {date} [createdAtUtc] Creation UTC date of the API Management
+ * @property {string} [targetProvisioningState] The provisioning state of the
+ * API Management service, which is targeted by the long running operation
+ * started on the service.
+ * @property {date} [createdAtUtc] Creation UTC date of the API Management
  * service.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as
  * specified by the ISO 8601 standard.
- * @member {string} [gatewayUrl] Gateway URL of the API Management service.
- * @member {string} [gatewayRegionalUrl] Gateway URL of the API Management
+ * @property {string} [gatewayUrl] Gateway URL of the API Management service.
+ * @property {string} [gatewayRegionalUrl] Gateway URL of the API Management
  * service in the Default Region.
- * @member {string} [portalUrl] Publisher portal endpoint Url of the API
+ * @property {string} [portalUrl] Publisher portal endpoint Url of the API
  * Management service.
- * @member {string} [managementApiUrl] Management API endpoint URL of the API
+ * @property {string} [managementApiUrl] Management API endpoint URL of the API
  * Management service.
- * @member {string} [scmUrl] SCM endpoint URL of the API Management service.
- * @member {array} [hostnameConfigurations] Custom hostname configuration of
+ * @property {string} [scmUrl] SCM endpoint URL of the API Management service.
+ * @property {array} [hostnameConfigurations] Custom hostname configuration of
  * the API Management service.
- * @member {array} [publicIPAddresses] Public Static Load Balanced IP addresses
- * of the API Management service in Primary region. Available only for Basic,
- * Standard and Premium SKU.
- * @member {array} [privateIPAddresses] Private Static Load Balanced IP
+ * @property {array} [publicIPAddresses] Public Static Load Balanced IP
+ * addresses of the API Management service in Primary region. Available only
+ * for Basic, Standard and Premium SKU.
+ * @property {array} [privateIPAddresses] Private Static Load Balanced IP
  * addresses of the API Management service in Primary region which is deployed
  * in an Internal Virtual Network. Available only for Basic, Standard and
  * Premium SKU.
- * @member {object} [virtualNetworkConfiguration] Virtual network configuration
- * of the API Management service.
- * @member {string} [virtualNetworkConfiguration.vnetid] The virtual network
+ * @property {object} [virtualNetworkConfiguration] Virtual network
+ * configuration of the API Management service.
+ * @property {string} [virtualNetworkConfiguration.vnetid] The virtual network
  * ID. This is typically a GUID. Expect a null GUID by default.
- * @member {string} [virtualNetworkConfiguration.subnetname] The name of the
+ * @property {string} [virtualNetworkConfiguration.subnetname] The name of the
  * subnet.
- * @member {string} [virtualNetworkConfiguration.subnetResourceId] The full
+ * @property {string} [virtualNetworkConfiguration.subnetResourceId] The full
  * resource ID of a subnet in a virtual network to deploy the API Management
  * service in.
- * @member {array} [additionalLocations] Additional datacenter locations of the
- * API Management service.
- * @member {object} [customProperties] Custom properties of the API Management
- * service. Setting
+ * @property {array} [additionalLocations] Additional datacenter locations of
+ * the API Management service.
+ * @property {object} [customProperties] Custom properties of the API
+ * Management service. Setting
  * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168`
  * will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1
  * and 1.2). Setting
@@ -2057,13 +2072,13 @@ export interface ApiManagementServiceBackupRestoreParameters {
  * be used to disable just TLS 1.1 and setting
  * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can
  * be used to disable TLS 1.0 on an API Management service.
- * @member {array} [certificates] List of Certificates that need to be
+ * @property {array} [certificates] List of Certificates that need to be
  * installed in the API Management service. Max supported certificates that can
  * be installed is 10.
- * @member {string} [virtualNetworkType] The type of VPN in which API Managemet
- * service needs to be configured in. None (Default Value) means the API
- * Management service is not part of any Virtual Network, External means the
- * API Management deployment is set up inside a Virtual Network having an
+ * @property {string} [virtualNetworkType] The type of VPN in which API
+ * Managemet service needs to be configured in. None (Default Value) means the
+ * API Management service is not part of any Virtual Network, External means
+ * the API Management deployment is set up inside a Virtual Network having an
  * Internet Facing Endpoint, and Internal means that API Management deployment
  * is setup inside a Virtual Network having an Intranet Facing Endpoint only.
  * Possible values include: 'None', 'External', 'Internal'. Default value:
@@ -2095,8 +2110,8 @@ export interface ApiManagementServiceBaseProperties {
  * @constructor
  * Identity properties of the Api Management service resource.
  *
- * @member {uuid} [principalId] The principal id of the identity.
- * @member {uuid} [tenantId] The client tenant id of the identity.
+ * @property {uuid} [principalId] The principal id of the identity.
+ * @property {uuid} [tenantId] The client tenant id of the identity.
  */
 export interface ApiManagementServiceIdentity {
   readonly principalId?: string;
@@ -2109,11 +2124,11 @@ export interface ApiManagementServiceIdentity {
  * @constructor
  * The Resource definition.
  *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type for API Management resource is set to
- * Microsoft.ApiManagement.
- * @member {object} [tags] Resource tags.
+ * @property {string} [id] Resource ID.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type for API Management resource is set
+ * to Microsoft.ApiManagement.
+ * @property {object} [tags] Resource tags.
  */
 export interface ApimResource extends BaseResource {
   readonly id?: string;
@@ -2128,47 +2143,47 @@ export interface ApimResource extends BaseResource {
  * @constructor
  * A single API Management service resource in List or Get response.
  *
- * @member {string} [notificationSenderEmail] Email address from which the
+ * @property {string} [notificationSenderEmail] Email address from which the
  * notification will be sent.
- * @member {string} [provisioningState] The current provisioning state of the
+ * @property {string} [provisioningState] The current provisioning state of the
  * API Management service which can be one of the following:
  * Created/Activating/Succeeded/Updating/Failed/Stopped/Terminating/TerminationFailed/Deleted.
- * @member {string} [targetProvisioningState] The provisioning state of the API
- * Management service, which is targeted by the long running operation started
- * on the service.
- * @member {date} [createdAtUtc] Creation UTC date of the API Management
+ * @property {string} [targetProvisioningState] The provisioning state of the
+ * API Management service, which is targeted by the long running operation
+ * started on the service.
+ * @property {date} [createdAtUtc] Creation UTC date of the API Management
  * service.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as
  * specified by the ISO 8601 standard.
- * @member {string} [gatewayUrl] Gateway URL of the API Management service.
- * @member {string} [gatewayRegionalUrl] Gateway URL of the API Management
+ * @property {string} [gatewayUrl] Gateway URL of the API Management service.
+ * @property {string} [gatewayRegionalUrl] Gateway URL of the API Management
  * service in the Default Region.
- * @member {string} [portalUrl] Publisher portal endpoint Url of the API
+ * @property {string} [portalUrl] Publisher portal endpoint Url of the API
  * Management service.
- * @member {string} [managementApiUrl] Management API endpoint URL of the API
+ * @property {string} [managementApiUrl] Management API endpoint URL of the API
  * Management service.
- * @member {string} [scmUrl] SCM endpoint URL of the API Management service.
- * @member {array} [hostnameConfigurations] Custom hostname configuration of
+ * @property {string} [scmUrl] SCM endpoint URL of the API Management service.
+ * @property {array} [hostnameConfigurations] Custom hostname configuration of
  * the API Management service.
- * @member {array} [publicIPAddresses] Public Static Load Balanced IP addresses
- * of the API Management service in Primary region. Available only for Basic,
- * Standard and Premium SKU.
- * @member {array} [privateIPAddresses] Private Static Load Balanced IP
+ * @property {array} [publicIPAddresses] Public Static Load Balanced IP
+ * addresses of the API Management service in Primary region. Available only
+ * for Basic, Standard and Premium SKU.
+ * @property {array} [privateIPAddresses] Private Static Load Balanced IP
  * addresses of the API Management service in Primary region which is deployed
  * in an Internal Virtual Network. Available only for Basic, Standard and
  * Premium SKU.
- * @member {object} [virtualNetworkConfiguration] Virtual network configuration
- * of the API Management service.
- * @member {string} [virtualNetworkConfiguration.vnetid] The virtual network
+ * @property {object} [virtualNetworkConfiguration] Virtual network
+ * configuration of the API Management service.
+ * @property {string} [virtualNetworkConfiguration.vnetid] The virtual network
  * ID. This is typically a GUID. Expect a null GUID by default.
- * @member {string} [virtualNetworkConfiguration.subnetname] The name of the
+ * @property {string} [virtualNetworkConfiguration.subnetname] The name of the
  * subnet.
- * @member {string} [virtualNetworkConfiguration.subnetResourceId] The full
+ * @property {string} [virtualNetworkConfiguration.subnetResourceId] The full
  * resource ID of a subnet in a virtual network to deploy the API Management
  * service in.
- * @member {array} [additionalLocations] Additional datacenter locations of the
- * API Management service.
- * @member {object} [customProperties] Custom properties of the API Management
- * service. Setting
+ * @property {array} [additionalLocations] Additional datacenter locations of
+ * the API Management service.
+ * @property {object} [customProperties] Custom properties of the API
+ * Management service. Setting
  * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168`
  * will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1
  * and 1.2). Setting
@@ -2176,30 +2191,30 @@ export interface ApimResource extends BaseResource {
  * be used to disable just TLS 1.1 and setting
  * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can
  * be used to disable TLS 1.0 on an API Management service.
- * @member {array} [certificates] List of Certificates that need to be
+ * @property {array} [certificates] List of Certificates that need to be
  * installed in the API Management service. Max supported certificates that can
  * be installed is 10.
- * @member {string} [virtualNetworkType] The type of VPN in which API Managemet
- * service needs to be configured in. None (Default Value) means the API
- * Management service is not part of any Virtual Network, External means the
- * API Management deployment is set up inside a Virtual Network having an
+ * @property {string} [virtualNetworkType] The type of VPN in which API
+ * Managemet service needs to be configured in. None (Default Value) means the
+ * API Management service is not part of any Virtual Network, External means
+ * the API Management deployment is set up inside a Virtual Network having an
  * Internet Facing Endpoint, and Internal means that API Management deployment
  * is setup inside a Virtual Network having an Intranet Facing Endpoint only.
  * Possible values include: 'None', 'External', 'Internal'. Default value:
  * 'None' .
- * @member {string} publisherEmail Publisher email.
- * @member {string} publisherName Publisher name.
- * @member {object} sku SKU properties of the API Management service.
- * @member {string} [sku.name] Name of the Sku. Possible values include:
+ * @property {string} publisherEmail Publisher email.
+ * @property {string} publisherName Publisher name.
+ * @property {object} sku SKU properties of the API Management service.
+ * @property {string} [sku.name] Name of the Sku. Possible values include:
  * 'Developer', 'Standard', 'Premium', 'Basic'
- * @member {number} [sku.capacity] Capacity of the SKU (number of deployed
+ * @property {number} [sku.capacity] Capacity of the SKU (number of deployed
  * units of the SKU). The default value is 1.
- * @member {object} [identity] Managed service identity of the Api Management
+ * @property {object} [identity] Managed service identity of the Api Management
  * service.
- * @member {uuid} [identity.principalId] The principal id of the identity.
- * @member {uuid} [identity.tenantId] The client tenant id of the identity.
- * @member {string} location Resource location.
- * @member {string} [etag] ETag of the resource.
+ * @property {uuid} [identity.principalId] The principal id of the identity.
+ * @property {uuid} [identity.tenantId] The client tenant id of the identity.
+ * @property {string} location Resource location.
+ * @property {string} [etag] ETag of the resource.
  */
 export interface ApiManagementServiceResource extends ApimResource {
   notificationSenderEmail?: string;
@@ -2233,47 +2248,47 @@ export interface ApiManagementServiceResource extends ApimResource {
  * @constructor
  * Parameter supplied to Update Api Management Service.
  *
- * @member {string} [notificationSenderEmail] Email address from which the
+ * @property {string} [notificationSenderEmail] Email address from which the
  * notification will be sent.
- * @member {string} [provisioningState] The current provisioning state of the
+ * @property {string} [provisioningState] The current provisioning state of the
  * API Management service which can be one of the following:
  * Created/Activating/Succeeded/Updating/Failed/Stopped/Terminating/TerminationFailed/Deleted.
- * @member {string} [targetProvisioningState] The provisioning state of the API
- * Management service, which is targeted by the long running operation started
- * on the service.
- * @member {date} [createdAtUtc] Creation UTC date of the API Management
+ * @property {string} [targetProvisioningState] The provisioning state of the
+ * API Management service, which is targeted by the long running operation
+ * started on the service.
+ * @property {date} [createdAtUtc] Creation UTC date of the API Management
  * service.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as
  * specified by the ISO 8601 standard.
- * @member {string} [gatewayUrl] Gateway URL of the API Management service.
- * @member {string} [gatewayRegionalUrl] Gateway URL of the API Management
+ * @property {string} [gatewayUrl] Gateway URL of the API Management service.
+ * @property {string} [gatewayRegionalUrl] Gateway URL of the API Management
  * service in the Default Region.
- * @member {string} [portalUrl] Publisher portal endpoint Url of the API
+ * @property {string} [portalUrl] Publisher portal endpoint Url of the API
  * Management service.
- * @member {string} [managementApiUrl] Management API endpoint URL of the API
+ * @property {string} [managementApiUrl] Management API endpoint URL of the API
  * Management service.
- * @member {string} [scmUrl] SCM endpoint URL of the API Management service.
- * @member {array} [hostnameConfigurations] Custom hostname configuration of
+ * @property {string} [scmUrl] SCM endpoint URL of the API Management service.
+ * @property {array} [hostnameConfigurations] Custom hostname configuration of
  * the API Management service.
- * @member {array} [publicIPAddresses] Public Static Load Balanced IP addresses
- * of the API Management service in Primary region. Available only for Basic,
- * Standard and Premium SKU.
- * @member {array} [privateIPAddresses] Private Static Load Balanced IP
+ * @property {array} [publicIPAddresses] Public Static Load Balanced IP
+ * addresses of the API Management service in Primary region. Available only
+ * for Basic, Standard and Premium SKU.
+ * @property {array} [privateIPAddresses] Private Static Load Balanced IP
  * addresses of the API Management service in Primary region which is deployed
  * in an Internal Virtual Network. Available only for Basic, Standard and
  * Premium SKU.
- * @member {object} [virtualNetworkConfiguration] Virtual network configuration
- * of the API Management service.
- * @member {string} [virtualNetworkConfiguration.vnetid] The virtual network
+ * @property {object} [virtualNetworkConfiguration] Virtual network
+ * configuration of the API Management service.
+ * @property {string} [virtualNetworkConfiguration.vnetid] The virtual network
  * ID. This is typically a GUID. Expect a null GUID by default.
- * @member {string} [virtualNetworkConfiguration.subnetname] The name of the
+ * @property {string} [virtualNetworkConfiguration.subnetname] The name of the
  * subnet.
- * @member {string} [virtualNetworkConfiguration.subnetResourceId] The full
+ * @property {string} [virtualNetworkConfiguration.subnetResourceId] The full
  * resource ID of a subnet in a virtual network to deploy the API Management
  * service in.
- * @member {array} [additionalLocations] Additional datacenter locations of the
- * API Management service.
- * @member {object} [customProperties] Custom properties of the API Management
- * service. Setting
+ * @property {array} [additionalLocations] Additional datacenter locations of
+ * the API Management service.
+ * @property {object} [customProperties] Custom properties of the API
+ * Management service. Setting
  * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168`
  * will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1
  * and 1.2). Setting
@@ -2281,29 +2296,29 @@ export interface ApiManagementServiceResource extends ApimResource {
  * be used to disable just TLS 1.1 and setting
  * `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can
  * be used to disable TLS 1.0 on an API Management service.
- * @member {array} [certificates] List of Certificates that need to be
+ * @property {array} [certificates] List of Certificates that need to be
  * installed in the API Management service. Max supported certificates that can
  * be installed is 10.
- * @member {string} [virtualNetworkType] The type of VPN in which API Managemet
- * service needs to be configured in. None (Default Value) means the API
- * Management service is not part of any Virtual Network, External means the
- * API Management deployment is set up inside a Virtual Network having an
+ * @property {string} [virtualNetworkType] The type of VPN in which API
+ * Managemet service needs to be configured in. None (Default Value) means the
+ * API Management service is not part of any Virtual Network, External means
+ * the API Management deployment is set up inside a Virtual Network having an
  * Internet Facing Endpoint, and Internal means that API Management deployment
  * is setup inside a Virtual Network having an Intranet Facing Endpoint only.
  * Possible values include: 'None', 'External', 'Internal'. Default value:
  * 'None' .
- * @member {string} [publisherEmail] Publisher email.
- * @member {string} [publisherName] Publisher name.
- * @member {object} [sku] SKU properties of the API Management service.
- * @member {string} [sku.name] Name of the Sku. Possible values include:
+ * @property {string} [publisherEmail] Publisher email.
+ * @property {string} [publisherName] Publisher name.
+ * @property {object} [sku] SKU properties of the API Management service.
+ * @property {string} [sku.name] Name of the Sku. Possible values include:
  * 'Developer', 'Standard', 'Premium', 'Basic'
- * @member {number} [sku.capacity] Capacity of the SKU (number of deployed
+ * @property {number} [sku.capacity] Capacity of the SKU (number of deployed
  * units of the SKU). The default value is 1.
- * @member {object} [identity] Managed service identity of the Api Management
+ * @property {object} [identity] Managed service identity of the Api Management
  * service.
- * @member {uuid} [identity.principalId] The principal id of the identity.
- * @member {uuid} [identity.tenantId] The client tenant id of the identity.
- * @member {string} [etag] ETag of the resource.
+ * @property {uuid} [identity.principalId] The principal id of the identity.
+ * @property {uuid} [identity.tenantId] The client tenant id of the identity.
+ * @property {string} [etag] ETag of the resource.
  */
 export interface ApiManagementServiceUpdateParameters extends ApimResource {
   notificationSenderEmail?: string;
@@ -2336,7 +2351,7 @@ export interface ApiManagementServiceUpdateParameters extends ApimResource {
  * @constructor
  * The response of the GetSsoToken operation.
  *
- * @member {string} [redirectUri] Redirect URL to the Publisher Portal
+ * @property {string} [redirectUri] Redirect URL to the Publisher Portal
  * containing the SSO token.
  */
 export interface ApiManagementServiceGetSsoTokenResult {
@@ -2349,7 +2364,7 @@ export interface ApiManagementServiceGetSsoTokenResult {
  * @constructor
  * Parameters supplied to the CheckNameAvailability operation.
  *
- * @member {string} name The name to check for availability.
+ * @property {string} name The name to check for availability.
  */
 export interface ApiManagementServiceCheckNameAvailabilityParameters {
   name: string;
@@ -2361,18 +2376,18 @@ export interface ApiManagementServiceCheckNameAvailabilityParameters {
  * @constructor
  * Response of the CheckNameAvailability operation.
  *
- * @member {boolean} [nameAvailable] True if the name is available and can be
+ * @property {boolean} [nameAvailable] True if the name is available and can be
  * used to create a new API Management service; otherwise false.
- * @member {string} [message] If reason == invalid, provide the user with the
+ * @property {string} [message] If reason == invalid, provide the user with the
  * reason why the given name is invalid, and provide the resource naming
  * requirements so that the user can select a valid name. If reason ==
  * AlreadyExists, explain that <resourceName> is already in use, and direct
  * them to select a different name.
- * @member {string} [reason] Invalid indicates the name provided does not match
- * the resource provider’s naming requirements (incorrect length, unsupported
- * characters, etc.)  AlreadyExists indicates that the name is already in use
- * and is therefore unavailable. Possible values include: 'Valid', 'Invalid',
- * 'AlreadyExists'
+ * @property {string} [reason] Invalid indicates the name provided does not
+ * match the resource provider’s naming requirements (incorrect length,
+ * unsupported characters, etc.)  AlreadyExists indicates that the name is
+ * already in use and is therefore unavailable. Possible values include:
+ * 'Valid', 'Invalid', 'AlreadyExists'
  */
 export interface ApiManagementServiceNameAvailabilityResult {
   readonly nameAvailable?: boolean;
@@ -2386,9 +2401,9 @@ export interface ApiManagementServiceNameAvailabilityResult {
  * @constructor
  * Parameter supplied to the Apply Network configuration operation.
  *
- * @member {string} [location] Location of the Api Management service to update
- * for a multi-region service. For a service deployed in a single region, this
- * parameter is not required.
+ * @property {string} [location] Location of the Api Management service to
+ * update for a multi-region service. For a service deployed in a single
+ * region, this parameter is not required.
  */
 export interface ApiManagementServiceApplyNetworkConfigurationParameters {
   location?: string;
@@ -2401,10 +2416,10 @@ export interface ApiManagementServiceApplyNetworkConfigurationParameters {
  * Parameters supplied to the Upload SSL certificate for an API Management
  * service operation.
  *
- * @member {string} type Hostname type. Possible values include: 'Proxy',
+ * @property {string} type Hostname type. Possible values include: 'Proxy',
  * 'Portal', 'Management', 'Scm'
- * @member {string} certificate Base64 Encoded certificate.
- * @member {string} certificatePassword Certificate password.
+ * @property {string} certificate Base64 Encoded certificate.
+ * @property {string} certificatePassword Certificate password.
  */
 export interface ApiManagementServiceUploadCertificateParameters {
   type: string;
@@ -2418,15 +2433,15 @@ export interface ApiManagementServiceUploadCertificateParameters {
  * @constructor
  * Custom hostname configuration.
  *
- * @member {string} type Hostname type. Possible values include: 'Proxy',
+ * @property {string} type Hostname type. Possible values include: 'Proxy',
  * 'Portal', 'Management', 'Scm'
- * @member {string} hostname Hostname to configure.
- * @member {object} certificate Certificate information.
- * @member {date} [certificate.expiry] Expiration date of the certificate. The
- * date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified
- * by the ISO 8601 standard.
- * @member {string} [certificate.thumbprint] Thumbprint of the certificate.
- * @member {string} [certificate.subject] Subject of the certificate.
+ * @property {string} hostname Hostname to configure.
+ * @property {object} certificate Certificate information.
+ * @property {date} [certificate.expiry] Expiration date of the certificate.
+ * The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as
+ * specified by the ISO 8601 standard.
+ * @property {string} [certificate.thumbprint] Thumbprint of the certificate.
+ * @property {string} [certificate.subject] Subject of the certificate.
  */
 export interface HostnameConfigurationOld {
   type: string;
@@ -2440,8 +2455,8 @@ export interface HostnameConfigurationOld {
  * @constructor
  * Parameters supplied to the UpdateHostname operation.
  *
- * @member {array} [update] Hostnames to create or update.
- * @member {array} [deleteProperty] Hostnames types to delete.
+ * @property {array} [update] Hostnames to create or update.
+ * @property {array} [deleteProperty] Hostnames types to delete.
  */
 export interface ApiManagementServiceUpdateHostnameParameters {
   update?: HostnameConfigurationOld[];
@@ -2454,12 +2469,12 @@ export interface ApiManagementServiceUpdateHostnameParameters {
  * @constructor
  * The object that describes the operation.
  *
- * @member {string} [provider] Friendly name of the resource provider
- * @member {string} [operation] Operation type: read, write, delete,
+ * @property {string} [provider] Friendly name of the resource provider
+ * @property {string} [operation] Operation type: read, write, delete,
  * listKeys/action, etc.
- * @member {string} [resource] Resource type on which the operation is
+ * @property {string} [resource] Resource type on which the operation is
  * performed.
- * @member {string} [description] Friendly name of the operation
+ * @property {string} [description] Friendly name of the operation
  */
 export interface OperationDisplay {
   provider?: string;
@@ -2474,16 +2489,16 @@ export interface OperationDisplay {
  * @constructor
  * REST API operation
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] The object that describes the operation.
- * @member {string} [display.provider] Friendly name of the resource provider
- * @member {string} [display.operation] Operation type: read, write, delete,
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] The object that describes the operation.
+ * @property {string} [display.provider] Friendly name of the resource provider
+ * @property {string} [display.operation] Operation type: read, write, delete,
  * listKeys/action, etc.
- * @member {string} [display.resource] Resource type on which the operation is
- * performed.
- * @member {string} [display.description] Friendly name of the operation
- * @member {string} [origin] The operation origin.
- * @member {object} [properties] The operation properties.
+ * @property {string} [display.resource] Resource type on which the operation
+ * is performed.
+ * @property {string} [display.description] Friendly name of the operation
+ * @property {string} [origin] The operation origin.
+ * @property {object} [properties] The operation properties.
  */
 export interface Operation {
   name?: string;
@@ -2498,9 +2513,9 @@ export interface Operation {
  * @constructor
  * Email Template Parameter contract.
  *
- * @member {string} [name] Template parameter name.
- * @member {string} [title] Template parameter title.
- * @member {string} [description] Template parameter description.
+ * @property {string} [name] Template parameter name.
+ * @property {string} [title] Template parameter title.
+ * @property {string} [description] Template parameter description.
  */
 export interface EmailTemplateParametersContractProperties {
   name?: string;
@@ -2514,13 +2529,14 @@ export interface EmailTemplateParametersContractProperties {
  * @constructor
  * Email Template details.
  *
- * @member {string} subject Subject of the Template.
- * @member {string} body Email Template Body. This should be a valid XDocument
- * @member {string} [title] Title of the Template.
- * @member {string} [description] Description of the Email Template.
- * @member {boolean} [isDefault] Whether the template is the default template
+ * @property {string} subject Subject of the Template.
+ * @property {string} body Email Template Body. This should be a valid
+ * XDocument
+ * @property {string} [title] Title of the Template.
+ * @property {string} [description] Description of the Email Template.
+ * @property {boolean} [isDefault] Whether the template is the default template
  * provided by Api Management or has been edited.
- * @member {array} [parameters] Email Template Parameter values.
+ * @property {array} [parameters] Email Template Parameter values.
  */
 export interface EmailTemplateContract extends Resource {
   subject: string;
@@ -2537,12 +2553,12 @@ export interface EmailTemplateContract extends Resource {
  * @constructor
  * Email Template update Parameters.
  *
- * @member {string} [subject] Subject of the Template.
- * @member {string} [title] Title of the Template.
- * @member {string} [description] Description of the Email Template.
- * @member {string} [body] Email Template Body. This should be a valid
+ * @property {string} [subject] Subject of the Template.
+ * @property {string} [title] Title of the Template.
+ * @property {string} [description] Description of the Email Template.
+ * @property {string} [body] Email Template Body. This should be a valid
  * XDocument
- * @member {array} [parameters] Email Template Parameter values.
+ * @property {array} [parameters] Email Template Parameter values.
  */
 export interface EmailTemplateUpdateParameters {
   subject?: string;
@@ -2558,14 +2574,14 @@ export interface EmailTemplateUpdateParameters {
  * @constructor
  * Group contract Properties.
  *
- * @member {string} displayName Group name.
- * @member {string} [description] Group description. Can contain HTML
+ * @property {string} displayName Group name.
+ * @property {string} [description] Group description. Can contain HTML
  * formatting tags.
- * @member {boolean} [builtIn] true if the group is one of the three system
+ * @property {boolean} [builtIn] true if the group is one of the three system
  * groups (Administrators, Developers, or Guests); otherwise false.
- * @member {string} [type] Group type. Possible values include: 'custom',
+ * @property {string} [type] Group type. Possible values include: 'custom',
  * 'system', 'external'
- * @member {string} [externalId] For external groups, this property contains
+ * @property {string} [externalId] For external groups, this property contains
  * the id of the group from the external identity provider, e.g. for Azure
  * Active Directory aad://<tenant>.onmicrosoft.com/groups/<group object id>;
  * otherwise the value is null.
@@ -2584,14 +2600,14 @@ export interface GroupContractProperties {
  * @constructor
  * Contract details.
  *
- * @member {string} displayName Group name.
- * @member {string} [description] Group description. Can contain HTML
+ * @property {string} displayName Group name.
+ * @property {string} [description] Group description. Can contain HTML
  * formatting tags.
- * @member {boolean} [builtIn] true if the group is one of the three system
+ * @property {boolean} [builtIn] true if the group is one of the three system
  * groups (Administrators, Developers, or Guests); otherwise false.
- * @member {string} [groupContractType] Group type. Possible values include:
+ * @property {string} [groupContractType] Group type. Possible values include:
  * 'custom', 'system', 'external'
- * @member {string} [externalId] For external groups, this property contains
+ * @property {string} [externalId] For external groups, this property contains
  * the id of the group from the external identity provider, e.g. for Azure
  * Active Directory aad://<tenant>.onmicrosoft.com/groups/<group object id>;
  * otherwise the value is null.
@@ -2610,11 +2626,11 @@ export interface GroupContract extends Resource {
  * @constructor
  * Parameters supplied to the Create Group operation.
  *
- * @member {string} displayName Group name.
- * @member {string} [description] Group description.
- * @member {string} [type] Group type. Possible values include: 'custom',
+ * @property {string} displayName Group name.
+ * @property {string} [description] Group description.
+ * @property {string} [type] Group type. Possible values include: 'custom',
  * 'system', 'external'
- * @member {string} [externalId] Identifier of the external groups, this
+ * @property {string} [externalId] Identifier of the external groups, this
  * property contains the id of the group from the external identity provider,
  * e.g. for Azure Active Directory aad://<tenant>.onmicrosoft.com/groups/<group
  * object id>; otherwise the value is null.
@@ -2632,11 +2648,11 @@ export interface GroupCreateParameters {
  * @constructor
  * Parameters supplied to the Update Group operation.
  *
- * @member {string} [displayName] Group name.
- * @member {string} [description] Group description.
- * @member {string} [type] Group type. Possible values include: 'custom',
+ * @property {string} [displayName] Group name.
+ * @property {string} [description] Group description.
+ * @property {string} [type] Group type. Possible values include: 'custom',
  * 'system', 'external'
- * @member {string} [externalId] Identifier of the external groups, this
+ * @property {string} [externalId] Identifier of the external groups, this
  * property contains the id of the group from the external identity provider,
  * e.g. for Azure Active Directory aad://<tenant>.onmicrosoft.com/groups/<group
  * object id>; otherwise the value is null.
@@ -2654,8 +2670,8 @@ export interface GroupUpdateParameters {
  * @constructor
  * User identity details.
  *
- * @member {string} [provider] Identity provider name.
- * @member {string} [id] Identifier value within provider.
+ * @property {string} [provider] Identity provider name.
+ * @property {string} [id] Identifier value within provider.
  */
 export interface UserIdentityContract {
   provider?: string;
@@ -2668,13 +2684,14 @@ export interface UserIdentityContract {
  * @constructor
  * User Entity Base Parameters set.
  *
- * @member {string} [state] Account state. Specifies whether the user is active
- * or not. Blocked users are unable to sign into the developer portal or call
- * any APIs of subscribed products. Default state is Active. Possible values
- * include: 'active', 'blocked', 'pending', 'deleted'. Default value: 'active'
- * .
- * @member {string} [note] Optional note about a user set by the administrator.
- * @member {array} [identities] Collection of user identities.
+ * @property {string} [state] Account state. Specifies whether the user is
+ * active or not. Blocked users are unable to sign into the developer portal or
+ * call any APIs of subscribed products. Default state is Active. Possible
+ * values include: 'active', 'blocked', 'pending', 'deleted'. Default value:
+ * 'active' .
+ * @property {string} [note] Optional note about a user set by the
+ * administrator.
+ * @property {array} [identities] Collection of user identities.
  */
 export interface UserEntityBaseParameters {
   state?: string;
@@ -2688,20 +2705,21 @@ export interface UserEntityBaseParameters {
  * @constructor
  * User details.
  *
- * @member {string} [state] Account state. Specifies whether the user is active
- * or not. Blocked users are unable to sign into the developer portal or call
- * any APIs of subscribed products. Default state is Active. Possible values
- * include: 'active', 'blocked', 'pending', 'deleted'. Default value: 'active'
- * .
- * @member {string} [note] Optional note about a user set by the administrator.
- * @member {array} [identities] Collection of user identities.
- * @member {string} [firstName] First name.
- * @member {string} [lastName] Last name.
- * @member {string} [email] Email address.
- * @member {date} [registrationDate] Date of user registration. The date
+ * @property {string} [state] Account state. Specifies whether the user is
+ * active or not. Blocked users are unable to sign into the developer portal or
+ * call any APIs of subscribed products. Default state is Active. Possible
+ * values include: 'active', 'blocked', 'pending', 'deleted'. Default value:
+ * 'active' .
+ * @property {string} [note] Optional note about a user set by the
+ * administrator.
+ * @property {array} [identities] Collection of user identities.
+ * @property {string} [firstName] First name.
+ * @property {string} [lastName] Last name.
+ * @property {string} [email] Email address.
+ * @property {date} [registrationDate] Date of user registration. The date
  * conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the
  * ISO 8601 standard.
- * @member {array} [groups] Collection of groups user is part of.
+ * @property {array} [groups] Collection of groups user is part of.
  */
 export interface UserContract extends Resource {
   state?: string;
@@ -2720,23 +2738,23 @@ export interface UserContract extends Resource {
  * @constructor
  * Identity Provider details.
  *
- * @member {string} [identityProviderContractType] Identity Provider Type
+ * @property {string} [identityProviderContractType] Identity Provider Type
  * identifier. Possible values include: 'facebook', 'google', 'microsoft',
  * 'twitter', 'aad', 'aadB2C'
- * @member {array} [allowedTenants] List of Allowed Tenants when configuring
+ * @property {array} [allowedTenants] List of Allowed Tenants when configuring
  * Azure Active Directory login.
- * @member {string} [signupPolicyName] Signup Policy Name. Only applies to AAD
- * B2C Identity Provider.
- * @member {string} [signinPolicyName] Signin Policy Name. Only applies to AAD
- * B2C Identity Provider.
- * @member {string} [profileEditingPolicyName] Profile Editing Policy Name.
+ * @property {string} [signupPolicyName] Signup Policy Name. Only applies to
+ * AAD B2C Identity Provider.
+ * @property {string} [signinPolicyName] Signin Policy Name. Only applies to
+ * AAD B2C Identity Provider.
+ * @property {string} [profileEditingPolicyName] Profile Editing Policy Name.
  * Only applies to AAD B2C Identity Provider.
- * @member {string} [passwordResetPolicyName] Password Reset Policy Name. Only
- * applies to AAD B2C Identity Provider.
- * @member {string} clientId Client Id of the Application in the external
+ * @property {string} [passwordResetPolicyName] Password Reset Policy Name.
+ * Only applies to AAD B2C Identity Provider.
+ * @property {string} clientId Client Id of the Application in the external
  * Identity Provider. It is App ID for Facebook login, Client ID for Google
  * login, App ID for Microsoft.
- * @member {string} clientSecret Client secret of the Application in external
+ * @property {string} clientSecret Client secret of the Application in external
  * Identity Provider, used to authenticate login request. For example, it is
  * App Secret for Facebook login, API Key for Google login, Public Key for
  * Microsoft.
@@ -2758,25 +2776,25 @@ export interface IdentityProviderContract extends Resource {
  * @constructor
  * Parameters supplied to update Identity Provider
  *
- * @member {string} [type] Identity Provider Type identifier. Possible values
+ * @property {string} [type] Identity Provider Type identifier. Possible values
  * include: 'facebook', 'google', 'microsoft', 'twitter', 'aad', 'aadB2C'
- * @member {array} [allowedTenants] List of Allowed Tenants when configuring
+ * @property {array} [allowedTenants] List of Allowed Tenants when configuring
  * Azure Active Directory login.
- * @member {string} [signupPolicyName] Signup Policy Name. Only applies to AAD
- * B2C Identity Provider.
- * @member {string} [signinPolicyName] Signin Policy Name. Only applies to AAD
- * B2C Identity Provider.
- * @member {string} [profileEditingPolicyName] Profile Editing Policy Name.
+ * @property {string} [signupPolicyName] Signup Policy Name. Only applies to
+ * AAD B2C Identity Provider.
+ * @property {string} [signinPolicyName] Signin Policy Name. Only applies to
+ * AAD B2C Identity Provider.
+ * @property {string} [profileEditingPolicyName] Profile Editing Policy Name.
  * Only applies to AAD B2C Identity Provider.
- * @member {string} [passwordResetPolicyName] Password Reset Policy Name. Only
- * applies to AAD B2C Identity Provider.
- * @member {string} [clientId] Client Id of the Application in the external
+ * @property {string} [passwordResetPolicyName] Password Reset Policy Name.
+ * Only applies to AAD B2C Identity Provider.
+ * @property {string} [clientId] Client Id of the Application in the external
  * Identity Provider. It is App ID for Facebook login, Client ID for Google
  * login, App ID for Microsoft.
- * @member {string} [clientSecret] Client secret of the Application in external
- * Identity Provider, used to authenticate login request. For example, it is
- * App Secret for Facebook login, API Key for Google login, Public Key for
- * Microsoft.
+ * @property {string} [clientSecret] Client secret of the Application in
+ * external Identity Provider, used to authenticate login request. For example,
+ * it is App Secret for Facebook login, API Key for Google login, Public Key
+ * for Microsoft.
  */
 export interface IdentityProviderUpdateParameters {
   type?: string;
@@ -2795,18 +2813,18 @@ export interface IdentityProviderUpdateParameters {
  * @constructor
  * Identity Provider Base Parameter Properties.
  *
- * @member {string} [type] Identity Provider Type identifier. Possible values
+ * @property {string} [type] Identity Provider Type identifier. Possible values
  * include: 'facebook', 'google', 'microsoft', 'twitter', 'aad', 'aadB2C'
- * @member {array} [allowedTenants] List of Allowed Tenants when configuring
+ * @property {array} [allowedTenants] List of Allowed Tenants when configuring
  * Azure Active Directory login.
- * @member {string} [signupPolicyName] Signup Policy Name. Only applies to AAD
- * B2C Identity Provider.
- * @member {string} [signinPolicyName] Signin Policy Name. Only applies to AAD
- * B2C Identity Provider.
- * @member {string} [profileEditingPolicyName] Profile Editing Policy Name.
+ * @property {string} [signupPolicyName] Signup Policy Name. Only applies to
+ * AAD B2C Identity Provider.
+ * @property {string} [signinPolicyName] Signin Policy Name. Only applies to
+ * AAD B2C Identity Provider.
+ * @property {string} [profileEditingPolicyName] Profile Editing Policy Name.
  * Only applies to AAD B2C Identity Provider.
- * @member {string} [passwordResetPolicyName] Password Reset Policy Name. Only
- * applies to AAD B2C Identity Provider.
+ * @property {string} [passwordResetPolicyName] Password Reset Policy Name.
+ * Only applies to AAD B2C Identity Provider.
  */
 export interface IdentityProviderBaseParameters {
   type?: string;
@@ -2823,11 +2841,11 @@ export interface IdentityProviderBaseParameters {
  * @constructor
  * Logger update contract.
  *
- * @member {string} [loggerType] Logger type. Possible values include:
+ * @property {string} [loggerType] Logger type. Possible values include:
  * 'azureEventHub', 'applicationInsights'
- * @member {string} [description] Logger description.
- * @member {object} [credentials] Logger credentials.
- * @member {boolean} [isBuffered] Whether records are buffered in the logger
+ * @property {string} [description] Logger description.
+ * @property {object} [credentials] Logger credentials.
+ * @property {boolean} [isBuffered] Whether records are buffered in the logger
  * before publishing. Default is assumed to be true.
  */
 export interface LoggerUpdateContract {
@@ -2843,8 +2861,8 @@ export interface LoggerUpdateContract {
  * @constructor
  * Notification Parameter contract.
  *
- * @member {array} [emails] List of Emails subscribed for the notification.
- * @member {array} [users] List of Users subscribed for the notification.
+ * @property {array} [emails] List of Emails subscribed for the notification.
+ * @property {array} [users] List of Users subscribed for the notification.
  */
 export interface RecipientsContractProperties {
   emails?: string[];
@@ -2857,12 +2875,12 @@ export interface RecipientsContractProperties {
  * @constructor
  * Notification details.
  *
- * @member {string} title Title of the Notification.
- * @member {string} [description] Description of the Notification.
- * @member {object} [recipients] Recipient Parameter values.
- * @member {array} [recipients.emails] List of Emails subscribed for the
+ * @property {string} title Title of the Notification.
+ * @property {string} [description] Description of the Notification.
+ * @property {object} [recipients] Recipient Parameter values.
+ * @property {array} [recipients.emails] List of Emails subscribed for the
  * notification.
- * @member {array} [recipients.users] List of Users subscribed for the
+ * @property {array} [recipients.users] List of Users subscribed for the
  * notification.
  */
 export interface NotificationContract extends Resource {
@@ -2877,7 +2895,8 @@ export interface NotificationContract extends Resource {
  * @constructor
  * Recipient User details.
  *
- * @member {string} [userId] API Management UserId subscribed to notification.
+ * @property {string} [userId] API Management UserId subscribed to
+ * notification.
  */
 export interface RecipientUserContract extends Resource {
   userId?: string;
@@ -2889,8 +2908,8 @@ export interface RecipientUserContract extends Resource {
  * @constructor
  * Paged Recipient User list representation.
  *
- * @member {array} [value] Page values.
- * @member {string} [nextLink] Next page link if any.
+ * @property {array} [value] Page values.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface RecipientUserCollection {
   value?: RecipientUserContract[];
@@ -2903,7 +2922,7 @@ export interface RecipientUserCollection {
  * @constructor
  * Recipient Email details.
  *
- * @member {string} [email] User Email subscribed to notification.
+ * @property {string} [email] User Email subscribed to notification.
  */
 export interface RecipientEmailContract extends Resource {
   email?: string;
@@ -2915,8 +2934,8 @@ export interface RecipientEmailContract extends Resource {
  * @constructor
  * Paged Recipient User list representation.
  *
- * @member {array} [value] Page values.
- * @member {string} [nextLink] Next page link if any.
+ * @property {array} [value] Page values.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface RecipientEmailCollection {
   value?: RecipientEmailContract[];
@@ -2929,19 +2948,20 @@ export interface RecipientEmailCollection {
  * @constructor
  * Details about connectivity to a resource.
  *
- * @member {string} name The hostname of the resource which the service depends
- * on. This can be the database, storage or any other azure resource on which
- * the service depends upon.
- * @member {string} status Resource Connectivity Status Type identifier.
+ * @property {string} name The hostname of the resource which the service
+ * depends on. This can be the database, storage or any other azure resource on
+ * which the service depends upon.
+ * @property {string} status Resource Connectivity Status Type identifier.
  * Possible values include: 'initializing', 'success', 'failure'
- * @member {string} [error] Error details of the connectivity to the resource.
- * @member {date} lastUpdated The date when the resource connectivity status
+ * @property {string} [error] Error details of the connectivity to the
+ * resource.
+ * @property {date} lastUpdated The date when the resource connectivity status
  * was last updated. This status should be updated every 15 minutes. If this
  * status has not been updated, then it means that the service has lost network
  * connectivity to the resource, from inside the Virtual Network.The date
  * conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the
  * ISO 8601 standard.
- * @member {date} lastStatusChange The date when the resource connectivity
+ * @property {date} lastStatusChange The date when the resource connectivity
  * status last Changed from success to failure or vice-versa. The date conforms
  * to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601
  * standard.
@@ -2960,8 +2980,8 @@ export interface ConnectivityStatusContract {
  * @constructor
  * Network Status details.
  *
- * @member {array} dnsServers Gets the list of DNS servers IPV4 addresses.
- * @member {array} connectivityStatus Gets the list of Connectivity Status to
+ * @property {array} dnsServers Gets the list of DNS servers IPV4 addresses.
+ * @property {array} connectivityStatus Gets the list of Connectivity Status to
  * the Resources on which the service depends upon.
  */
 export interface NetworkStatusContract {
@@ -2975,11 +2995,11 @@ export interface NetworkStatusContract {
  * @constructor
  * Network Status in the Location
  *
- * @member {string} [location] Location of service
- * @member {object} [networkStatus] Network status in Location
- * @member {array} [networkStatus.dnsServers] Gets the list of DNS servers IPV4
- * addresses.
- * @member {array} [networkStatus.connectivityStatus] Gets the list of
+ * @property {string} [location] Location of service
+ * @property {object} [networkStatus] Network status in Location
+ * @property {array} [networkStatus.dnsServers] Gets the list of DNS servers
+ * IPV4 addresses.
+ * @property {array} [networkStatus.connectivityStatus] Gets the list of
  * Connectivity Status to the Resources on which the service depends upon.
  */
 export interface NetworkStatusContractByLocation {
@@ -2993,14 +3013,14 @@ export interface NetworkStatusContractByLocation {
  * @constructor
  * OpenId Connect Provider details.
  *
- * @member {string} displayName User-friendly OpenID Connect Provider name.
- * @member {string} [description] User-friendly description of OpenID Connect
+ * @property {string} displayName User-friendly OpenID Connect Provider name.
+ * @property {string} [description] User-friendly description of OpenID Connect
  * Provider.
- * @member {string} metadataEndpoint Metadata endpoint URI.
- * @member {string} clientId Client ID of developer console which is the client
- * application.
- * @member {string} [clientSecret] Client Secret of developer console which is
- * the client application.
+ * @property {string} metadataEndpoint Metadata endpoint URI.
+ * @property {string} clientId Client ID of developer console which is the
+ * client application.
+ * @property {string} [clientSecret] Client Secret of developer console which
+ * is the client application.
  */
 export interface OpenidConnectProviderContract extends Resource {
   displayName: string;
@@ -3016,14 +3036,14 @@ export interface OpenidConnectProviderContract extends Resource {
  * @constructor
  * Parameters supplied to the Update OpenID Connect Provider operation.
  *
- * @member {string} [displayName] User-friendly OpenID Connect Provider name.
- * @member {string} [description] User-friendly description of OpenID Connect
+ * @property {string} [displayName] User-friendly OpenID Connect Provider name.
+ * @property {string} [description] User-friendly description of OpenID Connect
  * Provider.
- * @member {string} [metadataEndpoint] Metadata endpoint URI.
- * @member {string} [clientId] Client ID of developer console which is the
+ * @property {string} [metadataEndpoint] Metadata endpoint URI.
+ * @property {string} [clientId] Client ID of developer console which is the
  * client application.
- * @member {string} [clientSecret] Client Secret of developer console which is
- * the client application.
+ * @property {string} [clientSecret] Client Secret of developer console which
+ * is the client application.
  */
 export interface OpenidConnectProviderUpdateContract {
   displayName?: string;
@@ -3039,7 +3059,7 @@ export interface OpenidConnectProviderUpdateContract {
  * @constructor
  * Sign-In settings for the Developer Portal.
  *
- * @member {boolean} [enabled] Redirect Anonymous users to the Sign-In page.
+ * @property {boolean} [enabled] Redirect Anonymous users to the Sign-In page.
  */
 export interface PortalSigninSettings extends Resource {
   enabled?: boolean;
@@ -3051,10 +3071,10 @@ export interface PortalSigninSettings extends Resource {
  * @constructor
  * Terms of service contract properties.
  *
- * @member {string} [text] A terms of service text.
- * @member {boolean} [enabled] Display terms of service during a sign-up
+ * @property {string} [text] A terms of service text.
+ * @property {boolean} [enabled] Display terms of service during a sign-up
  * process.
- * @member {boolean} [consentRequired] Ask user for consent to the terms of
+ * @property {boolean} [consentRequired] Ask user for consent to the terms of
  * service.
  */
 export interface TermsOfServiceProperties {
@@ -3069,12 +3089,12 @@ export interface TermsOfServiceProperties {
  * @constructor
  * Sign-Up settings for a developer portal.
  *
- * @member {boolean} [enabled] Allow users to sign up on a developer portal.
- * @member {object} [termsOfService] Terms of service contract properties.
- * @member {string} [termsOfService.text] A terms of service text.
- * @member {boolean} [termsOfService.enabled] Display terms of service during a
- * sign-up process.
- * @member {boolean} [termsOfService.consentRequired] Ask user for consent to
+ * @property {boolean} [enabled] Allow users to sign up on a developer portal.
+ * @property {object} [termsOfService] Terms of service contract properties.
+ * @property {string} [termsOfService.text] A terms of service text.
+ * @property {boolean} [termsOfService.enabled] Display terms of service during
+ * a sign-up process.
+ * @property {boolean} [termsOfService.consentRequired] Ask user for consent to
  * the terms of service.
  */
 export interface PortalSignupSettings extends Resource {
@@ -3088,7 +3108,8 @@ export interface PortalSignupSettings extends Resource {
  * @constructor
  * Subscriptions delegation settings properties.
  *
- * @member {boolean} [enabled] Enable or disable delegation for subscriptions.
+ * @property {boolean} [enabled] Enable or disable delegation for
+ * subscriptions.
  */
 export interface SubscriptionsDelegationSettingsProperties {
   enabled?: boolean;
@@ -3100,7 +3121,7 @@ export interface SubscriptionsDelegationSettingsProperties {
  * @constructor
  * User registration delegation settings properties.
  *
- * @member {boolean} [enabled] Enable or disable delegation for user
+ * @property {boolean} [enabled] Enable or disable delegation for user
  * registration.
  */
 export interface RegistrationDelegationSettingsProperties {
@@ -3113,14 +3134,14 @@ export interface RegistrationDelegationSettingsProperties {
  * @constructor
  * Delegation settings for a developer portal.
  *
- * @member {string} [url] A delegation Url.
- * @member {string} [validationKey] A base64-encoded validation key to
+ * @property {string} [url] A delegation Url.
+ * @property {string} [validationKey] A base64-encoded validation key to
  * validate, that a request is coming from Azure API Management.
- * @member {object} [subscriptions] Subscriptions delegation settings.
- * @member {boolean} [subscriptions.enabled] Enable or disable delegation for
+ * @property {object} [subscriptions] Subscriptions delegation settings.
+ * @property {boolean} [subscriptions.enabled] Enable or disable delegation for
  * subscriptions.
- * @member {object} [userRegistration] User registration delegation settings.
- * @member {boolean} [userRegistration.enabled] Enable or disable delegation
+ * @property {object} [userRegistration] User registration delegation settings.
+ * @property {boolean} [userRegistration.enabled] Enable or disable delegation
  * for user registration.
  */
 export interface PortalDelegationSettings extends Resource {
@@ -3136,33 +3157,33 @@ export interface PortalDelegationSettings extends Resource {
  * @constructor
  * Product Update parameters.
  *
- * @member {string} [description] Product description. May include HTML
+ * @property {string} [description] Product description. May include HTML
  * formatting tags.
- * @member {string} [terms] Product terms of use. Developers trying to
+ * @property {string} [terms] Product terms of use. Developers trying to
  * subscribe to the product will be presented and required to accept these
  * terms before they can complete the subscription process.
- * @member {boolean} [subscriptionRequired] Whether a product subscription is
+ * @property {boolean} [subscriptionRequired] Whether a product subscription is
  * required for accessing APIs included in this product. If true, the product
  * is referred to as "protected" and a valid subscription key is required for a
  * request to an API included in the product to succeed. If false, the product
  * is referred to as "open" and requests to an API included in the product can
  * be made without a subscription key. If property is omitted when creating a
  * new product it's value is assumed to be true.
- * @member {boolean} [approvalRequired] whether subscription approval is
+ * @property {boolean} [approvalRequired] whether subscription approval is
  * required. If false, new subscriptions will be approved automatically
  * enabling developers to call the product’s APIs immediately after
  * subscribing. If true, administrators must manually approve the subscription
  * before the developer can any of the product’s APIs. Can be present only if
  * subscriptionRequired property is present and has a value of false.
- * @member {number} [subscriptionsLimit] Whether the number of subscriptions a
- * user can have to this product at the same time. Set to null or omit to allow
- * unlimited per user subscriptions. Can be present only if
+ * @property {number} [subscriptionsLimit] Whether the number of subscriptions
+ * a user can have to this product at the same time. Set to null or omit to
+ * allow unlimited per user subscriptions. Can be present only if
  * subscriptionRequired property is present and has a value of false.
- * @member {string} [state] whether product is published or not. Published
+ * @property {string} [state] whether product is published or not. Published
  * products are discoverable by users of developer portal. Non published
  * products are visible only to administrators. Default state of Product is
  * notPublished. Possible values include: 'notPublished', 'published'
- * @member {string} [displayName] Product name.
+ * @property {string} [displayName] Product name.
  */
 export interface ProductUpdateParameters {
   description?: string;
@@ -3180,15 +3201,15 @@ export interface ProductUpdateParameters {
  * @constructor
  * Subscription details.
  *
- * @member {string} userId The user resource identifier of the subscription
+ * @property {string} userId The user resource identifier of the subscription
  * owner. The value is a valid relative URL in the format of /users/{uid} where
  * {uid} is a user identifier.
- * @member {string} productId The product resource identifier of the subscribed
- * product. The value is a valid relative URL in the format of
+ * @property {string} productId The product resource identifier of the
+ * subscribed product. The value is a valid relative URL in the format of
  * /products/{productId} where {productId} is a product identifier.
- * @member {string} [displayName] The name of the subscription, or null if the
- * subscription has no name.
- * @member {string} state Subscription state. Possible states are * active –
+ * @property {string} [displayName] The name of the subscription, or null if
+ * the subscription has no name.
+ * @property {string} state Subscription state. Possible states are * active –
  * the subscription is active, * suspended – the subscription is blocked, and
  * the subscriber cannot call any APIs of the product, * submitted – the
  * subscription request has been made by the developer, but has not yet been
@@ -3197,30 +3218,30 @@ export interface ProductUpdateParameters {
  * the developer or administrator, * expired – the subscription reached its
  * expiration date and was deactivated. Possible values include: 'suspended',
  * 'active', 'expired', 'submitted', 'rejected', 'cancelled'
- * @member {date} [createdDate] Subscription creation date. The date conforms
+ * @property {date} [createdDate] Subscription creation date. The date conforms
  * to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601
  * standard.
- * @member {date} [startDate] Subscription activation date. The setting is for
- * audit purposes only and the subscription is not automatically activated. The
- * subscription lifecycle can be managed by using the `state` property. The
- * date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified
- * by the ISO 8601 standard.
- * @member {date} [expirationDate] Subscription expiration date. The setting is
- * for audit purposes only and the subscription is not automatically expired.
+ * @property {date} [startDate] Subscription activation date. The setting is
+ * for audit purposes only and the subscription is not automatically activated.
  * The subscription lifecycle can be managed by using the `state` property. The
  * date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified
  * by the ISO 8601 standard.
- * @member {date} [endDate] Date when subscription was cancelled or expired.
+ * @property {date} [expirationDate] Subscription expiration date. The setting
+ * is for audit purposes only and the subscription is not automatically
+ * expired. The subscription lifecycle can be managed by using the `state`
+ * property. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ`
+ * as specified by the ISO 8601 standard.
+ * @property {date} [endDate] Date when subscription was cancelled or expired.
  * The setting is for audit purposes only and the subscription is not
  * automatically cancelled. The subscription lifecycle can be managed by using
  * the `state` property. The date conforms to the following format:
  * `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
- * @member {date} [notificationDate] Upcoming subscription expiration
+ * @property {date} [notificationDate] Upcoming subscription expiration
  * notification date. The date conforms to the following format:
  * `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
- * @member {string} primaryKey Subscription primary key.
- * @member {string} secondaryKey Subscription secondary key.
- * @member {string} [stateComment] Optional subscription comment added by an
+ * @property {string} primaryKey Subscription primary key.
+ * @property {string} secondaryKey Subscription secondary key.
+ * @property {string} [stateComment] Optional subscription comment added by an
  * administrator.
  */
 export interface SubscriptionContract extends Resource {
@@ -3244,13 +3265,13 @@ export interface SubscriptionContract extends Resource {
  * @constructor
  * Property details.
  *
- * @member {array} [tags] Optional tags that when provided can be used to
+ * @property {array} [tags] Optional tags that when provided can be used to
  * filter the property list.
- * @member {boolean} [secret] Determines whether the value is a secret and
+ * @property {boolean} [secret] Determines whether the value is a secret and
  * should be encrypted or not. Default value is false.
- * @member {string} displayName Unique name of Property. It may contain only
+ * @property {string} displayName Unique name of Property. It may contain only
  * letters, digits, period, dash, and underscore characters.
- * @member {string} value Value of the property. Can contain policy
+ * @property {string} value Value of the property. Can contain policy
  * expressions. It may not be empty or consist only of whitespace.
  */
 export interface PropertyContract extends Resource {
@@ -3266,13 +3287,13 @@ export interface PropertyContract extends Resource {
  * @constructor
  * Property update Parameters.
  *
- * @member {array} [tags] Optional tags that when provided can be used to
+ * @property {array} [tags] Optional tags that when provided can be used to
  * filter the property list.
- * @member {boolean} [secret] Determines whether the value is a secret and
+ * @property {boolean} [secret] Determines whether the value is a secret and
  * should be encrypted or not. Default value is false.
- * @member {string} [displayName] Unique name of Property. It may contain only
- * letters, digits, period, dash, and underscore characters.
- * @member {string} [value] Value of the property. Can contain policy
+ * @property {string} [displayName] Unique name of Property. It may contain
+ * only letters, digits, period, dash, and underscore characters.
+ * @property {string} [value] Value of the property. Can contain policy
  * expressions. It may not be empty or consist only of whitespace.
  */
 export interface PropertyUpdateParameters {
@@ -3288,9 +3309,9 @@ export interface PropertyUpdateParameters {
  * @constructor
  * Property Entity Base Parameters set.
  *
- * @member {array} [tags] Optional tags that when provided can be used to
+ * @property {array} [tags] Optional tags that when provided can be used to
  * filter the property list.
- * @member {boolean} [secret] Determines whether the value is a secret and
+ * @property {boolean} [secret] Determines whether the value is a secret and
  * should be encrypted or not. Default value is false.
  */
 export interface PropertyEntityBaseParameters {
@@ -3304,8 +3325,8 @@ export interface PropertyEntityBaseParameters {
  * @constructor
  * Quota counter value details.
  *
- * @member {number} [callsCount] Number of times Counter was called.
- * @member {number} [kbTransferred] Data Transferred in KiloBytes.
+ * @property {number} [callsCount] Number of times Counter was called.
+ * @property {number} [kbTransferred] Data Transferred in KiloBytes.
  */
 export interface QuotaCounterValueContractProperties {
   callsCount?: number;
@@ -3318,18 +3339,19 @@ export interface QuotaCounterValueContractProperties {
  * @constructor
  * Quota counter details.
  *
- * @member {string} counterKey The Key value of the Counter. Must not be empty.
- * @member {string} periodKey Identifier of the Period for which the counter
+ * @property {string} counterKey The Key value of the Counter. Must not be
+ * empty.
+ * @property {string} periodKey Identifier of the Period for which the counter
  * was collected. Must not be empty.
- * @member {date} periodStartTime The date of the start of Counter Period. The
+ * @property {date} periodStartTime The date of the start of Counter Period.
+ * The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as
+ * specified by the ISO 8601 standard.
+ * @property {date} periodEndTime The date of the end of Counter Period. The
  * date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified
  * by the ISO 8601 standard.
- * @member {date} periodEndTime The date of the end of Counter Period. The date
- * conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the
- * ISO 8601 standard.
- * @member {object} [value] Quota Value Properties
- * @member {number} [value.callsCount] Number of times Counter was called.
- * @member {number} [value.kbTransferred] Data Transferred in KiloBytes.
+ * @property {object} [value] Quota Value Properties
+ * @property {number} [value.callsCount] Number of times Counter was called.
+ * @property {number} [value.kbTransferred] Data Transferred in KiloBytes.
  */
 export interface QuotaCounterContract {
   counterKey: string;
@@ -3345,9 +3367,9 @@ export interface QuotaCounterContract {
  * @constructor
  * Paged Quota Counter list representation.
  *
- * @member {array} [value] Quota counter values.
- * @member {number} [count] Total record count number across all pages.
- * @member {string} [nextLink] Next page link if any.
+ * @property {array} [value] Quota counter values.
+ * @property {number} [count] Total record count number across all pages.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface QuotaCounterCollection {
   value?: QuotaCounterContract[];
@@ -3361,8 +3383,8 @@ export interface QuotaCounterCollection {
  * @constructor
  * Quota counter value details.
  *
- * @member {number} [callsCount] Number of times Counter was called.
- * @member {number} [kbTransferred] Data Transferred in KiloBytes.
+ * @property {number} [callsCount] Number of times Counter was called.
+ * @property {number} [kbTransferred] Data Transferred in KiloBytes.
  */
 export interface QuotaCounterValueContract {
   callsCount?: number;
@@ -3375,51 +3397,52 @@ export interface QuotaCounterValueContract {
  * @constructor
  * Report data.
  *
- * @member {string} [name] Name depending on report endpoint specifies product,
- * API, operation or developer name.
- * @member {date} [timestamp] Start of aggregation period. The date conforms to
- * the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601
+ * @property {string} [name] Name depending on report endpoint specifies
+ * product, API, operation or developer name.
+ * @property {date} [timestamp] Start of aggregation period. The date conforms
+ * to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601
  * standard.
- * @member {string} [interval] Length of agregation period.  Interval must be
+ * @property {string} [interval] Length of agregation period.  Interval must be
  * multiple of 15 minutes and may not be zero. The value should be in ISO 8601
  * format (http://en.wikipedia.org/wiki/ISO_8601#Durations).
- * @member {string} [country] Country to which this record data is related.
- * @member {string} [region] Country region to which this record data is
+ * @property {string} [country] Country to which this record data is related.
+ * @property {string} [region] Country region to which this record data is
  * related.
- * @member {string} [zip] Zip code to which this record data is related.
- * @member {string} [userId] User identifier path. /users/{userId}
- * @member {string} [productId] Product identifier path. /products/{productId}
- * @member {string} [apiId] API identifier path. /apis/{apiId}
- * @member {string} [operationId] Operation identifier path.
+ * @property {string} [zip] Zip code to which this record data is related.
+ * @property {string} [userId] User identifier path. /users/{userId}
+ * @property {string} [productId] Product identifier path.
+ * /products/{productId}
+ * @property {string} [apiId] API identifier path. /apis/{apiId}
+ * @property {string} [operationId] Operation identifier path.
  * /apis/{apiId}/operations/{operationId}
- * @member {string} [apiRegion] API region identifier.
- * @member {string} [subscriptionId] Subscription identifier path.
+ * @property {string} [apiRegion] API region identifier.
+ * @property {string} [subscriptionId] Subscription identifier path.
  * /subscriptions/{subscriptionId}
- * @member {number} [callCountSuccess] Number of succesful calls. This includes
- * calls returning HttpStatusCode <= 301 and HttpStatusCode.NotModified and
- * HttpStatusCode.TemporaryRedirect
- * @member {number} [callCountBlocked] Number of calls blocked due to invalid
+ * @property {number} [callCountSuccess] Number of succesful calls. This
+ * includes calls returning HttpStatusCode <= 301 and
+ * HttpStatusCode.NotModified and HttpStatusCode.TemporaryRedirect
+ * @property {number} [callCountBlocked] Number of calls blocked due to invalid
  * credentials. This includes calls returning HttpStatusCode.Unauthorize and
  * HttpStatusCode.Forbidden and HttpStatusCode.TooManyRequests
- * @member {number} [callCountFailed] Number of calls failed due to proxy or
+ * @property {number} [callCountFailed] Number of calls failed due to proxy or
  * backend errors. This includes calls returning HttpStatusCode.BadRequest(400)
  * and any Code between HttpStatusCode.InternalServerError (500) and 600
- * @member {number} [callCountOther] Number of other calls.
- * @member {number} [callCountTotal] Total number of calls.
- * @member {number} [bandwidth] Bandwidth consumed.
- * @member {number} [cacheHitCount] Number of times when content was served
+ * @property {number} [callCountOther] Number of other calls.
+ * @property {number} [callCountTotal] Total number of calls.
+ * @property {number} [bandwidth] Bandwidth consumed.
+ * @property {number} [cacheHitCount] Number of times when content was served
  * from cache policy.
- * @member {number} [cacheMissCount] Number of times content was fetched from
+ * @property {number} [cacheMissCount] Number of times content was fetched from
  * backend.
- * @member {number} [apiTimeAvg] Average time it took to process request.
- * @member {number} [apiTimeMin] Minimum time it took to process request.
- * @member {number} [apiTimeMax] Maximum time it took to process request.
- * @member {number} [serviceTimeAvg] Average time it took to process request on
- * backend.
- * @member {number} [serviceTimeMin] Minimum time it took to process request on
- * backend.
- * @member {number} [serviceTimeMax] Maximum time it took to process request on
- * backend.
+ * @property {number} [apiTimeAvg] Average time it took to process request.
+ * @property {number} [apiTimeMin] Minimum time it took to process request.
+ * @property {number} [apiTimeMax] Maximum time it took to process request.
+ * @property {number} [serviceTimeAvg] Average time it took to process request
+ * on backend.
+ * @property {number} [serviceTimeMin] Minimum time it took to process request
+ * on backend.
+ * @property {number} [serviceTimeMax] Maximum time it took to process request
+ * on backend.
  */
 export interface ReportRecordContract {
   name?: string;
@@ -3456,37 +3479,38 @@ export interface ReportRecordContract {
  * @constructor
  * Request Report data.
  *
- * @member {string} [apiId] API identifier path. /apis/{apiId}
- * @member {string} [operationId] Operation identifier path.
+ * @property {string} [apiId] API identifier path. /apis/{apiId}
+ * @property {string} [operationId] Operation identifier path.
  * /apis/{apiId}/operations/{operationId}
- * @member {string} [productId] Product identifier path. /products/{productId}
- * @member {string} [userId] User identifier path. /users/{userId}
- * @member {string} [method] The HTTP method associated with this request..
- * @member {string} [url] The full URL associated with this request.
- * @member {string} [ipAddress] The client IP address associated with this
+ * @property {string} [productId] Product identifier path.
+ * /products/{productId}
+ * @property {string} [userId] User identifier path. /users/{userId}
+ * @property {string} [method] The HTTP method associated with this request..
+ * @property {string} [url] The full URL associated with this request.
+ * @property {string} [ipAddress] The client IP address associated with this
  * request.
- * @member {string} [backendResponseCode] The HTTP status code received by the
- * gateway as a result of forwarding this request to the backend.
- * @member {number} [responseCode] The HTTP status code returned by the
+ * @property {string} [backendResponseCode] The HTTP status code received by
+ * the gateway as a result of forwarding this request to the backend.
+ * @property {number} [responseCode] The HTTP status code returned by the
  * gateway.
- * @member {number} [responseSize] The size of the response returned by the
+ * @property {number} [responseSize] The size of the response returned by the
  * gateway.
- * @member {date} [timestamp] The date and time when this request was received
- * by the gateway in ISO 8601 format.
- * @member {string} [cache] Specifies if response cache was involved in
+ * @property {date} [timestamp] The date and time when this request was
+ * received by the gateway in ISO 8601 format.
+ * @property {string} [cache] Specifies if response cache was involved in
  * generating the response. If the value is none, the cache was not used. If
  * the value is hit, cached response was returned. If the value is miss, the
  * cache was used but lookup resulted in a miss and request was fullfilled by
  * the backend.
- * @member {number} [apiTime] The total time it took to process this request.
- * @member {number} [serviceTime] he time it took to forward this request to
+ * @property {number} [apiTime] The total time it took to process this request.
+ * @property {number} [serviceTime] he time it took to forward this request to
  * the backend and get the response back.
- * @member {string} [apiRegion] Azure region where the gateway that processed
+ * @property {string} [apiRegion] Azure region where the gateway that processed
  * this request is located.
- * @member {string} [subscriptionId] Subscription identifier path.
+ * @property {string} [subscriptionId] Subscription identifier path.
  * /subscriptions/{subscriptionId}
- * @member {string} [requestId] Request Identifier.
- * @member {number} [requestSize] The size of this request..
+ * @property {string} [requestId] Request Identifier.
+ * @property {number} [requestSize] The size of this request..
  */
 export interface RequestReportRecordContract {
   apiId?: string;
@@ -3515,16 +3539,16 @@ export interface RequestReportRecordContract {
  * @constructor
  * Subscription create details.
  *
- * @member {string} userId User (user id path) for whom subscription is being
+ * @property {string} userId User (user id path) for whom subscription is being
  * created in form /users/{uid}
- * @member {string} productId Product (product id path) for which subscription
- * is being created in form /products/{productid}
- * @member {string} displayName Subscription name.
- * @member {string} [primaryKey] Primary subscription key. If not specified
+ * @property {string} productId Product (product id path) for which
+ * subscription is being created in form /products/{productid}
+ * @property {string} displayName Subscription name.
+ * @property {string} [primaryKey] Primary subscription key. If not specified
  * during request key will be generated automatically.
- * @member {string} [secondaryKey] Secondary subscription key. If not specified
- * during request key will be generated automatically.
- * @member {string} [state] Initial subscription state. If no value is
+ * @property {string} [secondaryKey] Secondary subscription key. If not
+ * specified during request key will be generated automatically.
+ * @property {string} [state] Initial subscription state. If no value is
  * specified, subscription is created with Submitted state. Possible states are
  * * active – the subscription is active, * suspended – the subscription is
  * blocked, and the subscriber cannot call any APIs of the product, * submitted
@@ -3550,18 +3574,19 @@ export interface SubscriptionCreateParameters {
  * @constructor
  * Subscription update details.
  *
- * @member {string} [userId] User identifier path: /users/{uid}
- * @member {string} [productId] Product identifier path: /products/{productId}
- * @member {date} [expirationDate] Subscription expiration date. The setting is
- * for audit purposes only and the subscription is not automatically expired.
- * The subscription lifecycle can be managed by using the `state` property. The
- * date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified
- * by the ISO 8601 standard.
- * @member {string} [displayName] Subscription name.
- * @member {string} [primaryKey] Primary subscription key.
- * @member {string} [secondaryKey] Secondary subscription key.
- * @member {string} [state] Subscription state. Possible states are * active –
- * the subscription is active, * suspended – the subscription is blocked, and
+ * @property {string} [userId] User identifier path: /users/{uid}
+ * @property {string} [productId] Product identifier path:
+ * /products/{productId}
+ * @property {date} [expirationDate] Subscription expiration date. The setting
+ * is for audit purposes only and the subscription is not automatically
+ * expired. The subscription lifecycle can be managed by using the `state`
+ * property. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ`
+ * as specified by the ISO 8601 standard.
+ * @property {string} [displayName] Subscription name.
+ * @property {string} [primaryKey] Primary subscription key.
+ * @property {string} [secondaryKey] Secondary subscription key.
+ * @property {string} [state] Subscription state. Possible states are * active
+ * – the subscription is active, * suspended – the subscription is blocked, and
  * the subscriber cannot call any APIs of the product, * submitted – the
  * subscription request has been made by the developer, but has not yet been
  * approved or rejected, * rejected – the subscription request has been denied
@@ -3569,7 +3594,7 @@ export interface SubscriptionCreateParameters {
  * the developer or administrator, * expired – the subscription reached its
  * expiration date and was deactivated. Possible values include: 'suspended',
  * 'active', 'expired', 'submitted', 'rejected', 'cancelled'
- * @member {string} [stateComment] Comments describing subscription state
+ * @property {string} [stateComment] Comments describing subscription state
  * change by the administrator.
  */
 export interface SubscriptionUpdateParameters {
@@ -3589,7 +3614,7 @@ export interface SubscriptionUpdateParameters {
  * @constructor
  * Tag Contract details.
  *
- * @member {string} displayName Tag name.
+ * @property {string} displayName Tag name.
  */
 export interface TagContract extends Resource {
   displayName: string;
@@ -3601,7 +3626,7 @@ export interface TagContract extends Resource {
  * @constructor
  * Parameters supplied to Create/Update Tag operations.
  *
- * @member {string} displayName Tag name.
+ * @property {string} displayName Tag name.
  */
 export interface TagCreateUpdateParameters {
   displayName: string;
@@ -3613,12 +3638,12 @@ export interface TagCreateUpdateParameters {
  * @constructor
  * Contract details.
  *
- * @member {string} [description] Description of the Tag.
- * @member {string} [externalDocsUrl] Absolute URL of external resources
+ * @property {string} [description] Description of the Tag.
+ * @property {string} [externalDocsUrl] Absolute URL of external resources
  * describing the tag.
- * @member {string} [externalDocsDescription] Description of the external
+ * @property {string} [externalDocsDescription] Description of the external
  * resources describing the tag.
- * @member {string} [displayName] Tag name.
+ * @property {string} [displayName] Tag name.
  */
 export interface TagDescriptionContract extends Resource {
   description?: string;
@@ -3633,10 +3658,10 @@ export interface TagDescriptionContract extends Resource {
  * @constructor
  * Parameters supplied to the Create TagDescription operation.
  *
- * @member {string} [description] Description of the Tag.
- * @member {string} [externalDocsUrl] Absolute URL of external resources
+ * @property {string} [description] Description of the Tag.
+ * @property {string} [externalDocsUrl] Absolute URL of external resources
  * describing the tag.
- * @member {string} [externalDocsDescription] Description of the external
+ * @property {string} [externalDocsDescription] Description of the external
  * resources describing the tag.
  */
 export interface TagDescriptionCreateParameters {
@@ -3651,11 +3676,11 @@ export interface TagDescriptionCreateParameters {
  * @constructor
  * Tenant access information contract of the API Management service.
  *
- * @member {string} [id] Identifier.
- * @member {string} [primaryKey] Primary access key.
- * @member {string} [secondaryKey] Secondary access key.
- * @member {boolean} [enabled] Tenant access information of the API Management
- * service.
+ * @property {string} [id] Identifier.
+ * @property {string} [primaryKey] Primary access key.
+ * @property {string} [secondaryKey] Secondary access key.
+ * @property {boolean} [enabled] Tenant access information of the API
+ * Management service.
  */
 export interface AccessInformationContract {
   id?: string;
@@ -3670,8 +3695,8 @@ export interface AccessInformationContract {
  * @constructor
  * Tenant access information update parameters of the API Management service.
  *
- * @member {boolean} [enabled] Tenant access information of the API Management
- * service.
+ * @property {boolean} [enabled] Tenant access information of the API
+ * Management service.
  */
 export interface AccessInformationUpdateParameters {
   enabled?: boolean;
@@ -3683,9 +3708,9 @@ export interface AccessInformationUpdateParameters {
  * @constructor
  * Parameters supplied to the Deploy Configuration operation.
  *
- * @member {string} branch The name of the Git branch from which the
+ * @property {string} branch The name of the Git branch from which the
  * configuration is to be deployed to the configuration database.
- * @member {boolean} [force] The value enforcing deleting subscriptions to
+ * @property {boolean} [force] The value enforcing deleting subscriptions to
  * products that are deleted in this update.
  */
 export interface DeployConfigurationParameters {
@@ -3699,9 +3724,9 @@ export interface DeployConfigurationParameters {
  * @constructor
  * Log of the entity being created, updated or deleted.
  *
- * @member {string} [objectType] The type of entity contract.
- * @member {string} [action] Action like create/update/delete.
- * @member {string} [objectKey] Identifier of the entity being
+ * @property {string} [objectType] The type of entity contract.
+ * @property {string} [action] Action like create/update/delete.
+ * @property {string} [objectKey] Identifier of the entity being
  * created/updated/deleted.
  */
 export interface OperationResultLogItemContract {
@@ -3716,23 +3741,24 @@ export interface OperationResultLogItemContract {
  * @constructor
  * Operation Result.
  *
- * @member {string} [id] Operation result identifier.
- * @member {string} [status] Status of an async operation. Possible values
+ * @property {string} [id] Operation result identifier.
+ * @property {string} [status] Status of an async operation. Possible values
  * include: 'Started', 'InProgress', 'Succeeded', 'Failed'
- * @member {date} [started] Start time of an async operation. The date conforms
- * to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601
- * standard.
- * @member {date} [updated] Last update time of an async operation. The date
+ * @property {date} [started] Start time of an async operation. The date
  * conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the
  * ISO 8601 standard.
- * @member {string} [resultInfo] Optional result info.
- * @member {object} [error] Error Body Contract
- * @member {string} [error.code] Service-defined error code. This code serves
+ * @property {date} [updated] Last update time of an async operation. The date
+ * conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the
+ * ISO 8601 standard.
+ * @property {string} [resultInfo] Optional result info.
+ * @property {object} [error] Error Body Contract
+ * @property {string} [error.code] Service-defined error code. This code serves
  * as a sub-status for the HTTP error code specified in the response.
- * @member {string} [error.message] Human-readable representation of the error.
- * @member {array} [error.details] The list of invalid fields send in request,
- * in case of validation error.
- * @member {array} [actionLog] This property if only provided as part of the
+ * @property {string} [error.message] Human-readable representation of the
+ * error.
+ * @property {array} [error.details] The list of invalid fields send in
+ * request, in case of validation error.
+ * @property {array} [actionLog] This property if only provided as part of the
  * TenantConfiguration_Validate operation. It contains the log the entities
  * which will be updated/created/deleted as part of the
  * TenantConfiguration_Deploy operation.
@@ -3753,9 +3779,9 @@ export interface OperationResultContract {
  * @constructor
  * Parameters supplied to the Save Tenant Configuration operation.
  *
- * @member {string} branch The name of the Git branch in which to commit the
+ * @property {string} branch The name of the Git branch in which to commit the
  * current configuration snapshot.
- * @member {boolean} [force] The value if true, the current configuration
+ * @property {boolean} [force] The value if true, the current configuration
  * database is committed to the Git repository, even if the Git repository has
  * newer changes that would be overwritten.
  */
@@ -3770,18 +3796,18 @@ export interface SaveConfigurationParameter {
  * @constructor
  * Tenant Configuration Synchronization State.
  *
- * @member {string} [branch] The name of Git branch.
- * @member {string} [commitId] The latest commit Id.
- * @member {boolean} [isExport] value indicating if last sync was save (true)
+ * @property {string} [branch] The name of Git branch.
+ * @property {string} [commitId] The latest commit Id.
+ * @property {boolean} [isExport] value indicating if last sync was save (true)
  * or deploy (false) operation.
- * @member {boolean} [isSynced] value indicating if last synchronization was
+ * @property {boolean} [isSynced] value indicating if last synchronization was
  * later than the configuration change.
- * @member {boolean} [isGitEnabled] value indicating whether Git configuration
- * access is enabled.
- * @member {date} [syncDate] The date of the latest synchronization. The date
+ * @property {boolean} [isGitEnabled] value indicating whether Git
+ * configuration access is enabled.
+ * @property {date} [syncDate] The date of the latest synchronization. The date
  * conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the
  * ISO 8601 standard.
- * @member {date} [configurationChangeDate] The date of the latest
+ * @property {date} [configurationChangeDate] The date of the latest
  * configuration change. The date conforms to the following format:
  * `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
  */
@@ -3801,7 +3827,7 @@ export interface TenantConfigurationSyncStateContract {
  * @constructor
  * Generate SSO Url operations response details.
  *
- * @member {string} [value] Redirect Url containing the SSO URL value.
+ * @property {string} [value] Redirect Url containing the SSO URL value.
  */
 export interface GenerateSsoUrlResult {
   value?: string;
@@ -3813,20 +3839,21 @@ export interface GenerateSsoUrlResult {
  * @constructor
  * User create details.
  *
- * @member {string} [state] Account state. Specifies whether the user is active
- * or not. Blocked users are unable to sign into the developer portal or call
- * any APIs of subscribed products. Default state is Active. Possible values
- * include: 'active', 'blocked', 'pending', 'deleted'. Default value: 'active'
- * .
- * @member {string} [note] Optional note about a user set by the administrator.
- * @member {array} [identities] Collection of user identities.
- * @member {string} email Email address. Must not be empty and must be unique
+ * @property {string} [state] Account state. Specifies whether the user is
+ * active or not. Blocked users are unable to sign into the developer portal or
+ * call any APIs of subscribed products. Default state is Active. Possible
+ * values include: 'active', 'blocked', 'pending', 'deleted'. Default value:
+ * 'active' .
+ * @property {string} [note] Optional note about a user set by the
+ * administrator.
+ * @property {array} [identities] Collection of user identities.
+ * @property {string} email Email address. Must not be empty and must be unique
  * within the service instance.
- * @member {string} firstName First name.
- * @member {string} lastName Last name.
- * @member {string} [password] User Password. If no value is provided, a
+ * @property {string} firstName First name.
+ * @property {string} lastName Last name.
+ * @property {string} [password] User Password. If no value is provided, a
  * default password is generated.
- * @member {string} [confirmation] Determines the type of confirmation e-mail
+ * @property {string} [confirmation] Determines the type of confirmation e-mail
  * that will be sent to the newly created user. Possible values include:
  * 'signup', 'invite'
  */
@@ -3847,9 +3874,9 @@ export interface UserCreateParameters {
  * @constructor
  * Parameters supplied to the Get User Token operation.
  *
- * @member {string} keyType The Key to be used to generate token for user.
+ * @property {string} keyType The Key to be used to generate token for user.
  * Possible values include: 'primary', 'secondary'. Default value: 'primary' .
- * @member {date} expiry The Expiry time of the Token. Maximum token expiry
+ * @property {date} expiry The Expiry time of the Token. Maximum token expiry
  * time is set to 30 days. The date conforms to the following format:
  * `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
  */
@@ -3864,7 +3891,7 @@ export interface UserTokenParameters {
  * @constructor
  * Get User Token response details.
  *
- * @member {string} [value] Shared Access Authorization token for the User.
+ * @property {string} [value] Shared Access Authorization token for the User.
  */
 export interface UserTokenResult {
   value?: string;
@@ -3876,18 +3903,19 @@ export interface UserTokenResult {
  * @constructor
  * User update parameters.
  *
- * @member {string} [state] Account state. Specifies whether the user is active
- * or not. Blocked users are unable to sign into the developer portal or call
- * any APIs of subscribed products. Default state is Active. Possible values
- * include: 'active', 'blocked', 'pending', 'deleted'. Default value: 'active'
- * .
- * @member {string} [note] Optional note about a user set by the administrator.
- * @member {array} [identities] Collection of user identities.
- * @member {string} [email] Email address. Must not be empty and must be unique
- * within the service instance.
- * @member {string} [password] User Password.
- * @member {string} [firstName] First name.
- * @member {string} [lastName] Last name.
+ * @property {string} [state] Account state. Specifies whether the user is
+ * active or not. Blocked users are unable to sign into the developer portal or
+ * call any APIs of subscribed products. Default state is Active. Possible
+ * values include: 'active', 'blocked', 'pending', 'deleted'. Default value:
+ * 'active' .
+ * @property {string} [note] Optional note about a user set by the
+ * administrator.
+ * @property {array} [identities] Collection of user identities.
+ * @property {string} [email] Email address. Must not be empty and must be
+ * unique within the service instance.
+ * @property {string} [password] User Password.
+ * @property {string} [firstName] First name.
+ * @property {string} [lastName] Last name.
  */
 export interface UserUpdateParameters {
   state?: string;
@@ -3905,13 +3933,13 @@ export interface UserUpdateParameters {
  * @constructor
  * Api Version Set Contract details.
  *
- * @member {string} [description] Description of API Version Set.
- * @member {string} [versionQueryName] Name of query parameter that indicates
+ * @property {string} [description] Description of API Version Set.
+ * @property {string} [versionQueryName] Name of query parameter that indicates
  * the API Version if versioningScheme is set to `query`.
- * @member {string} [versionHeaderName] Name of HTTP header parameter that
+ * @property {string} [versionHeaderName] Name of HTTP header parameter that
  * indicates the API Version if versioningScheme is set to `header`.
- * @member {string} displayName Name of API Version Set
- * @member {string} versioningScheme An value that determines where the API
+ * @property {string} displayName Name of API Version Set
+ * @property {string} versioningScheme An value that determines where the API
  * Version identifer will be located in a HTTP request. Possible values
  * include: 'Segment', 'Query', 'Header'
  */
@@ -3929,10 +3957,10 @@ export interface ApiVersionSetContract extends Resource {
  * @constructor
  * Api Version set base parameters
  *
- * @member {string} [description] Description of API Version Set.
- * @member {string} [versionQueryName] Name of query parameter that indicates
+ * @property {string} [description] Description of API Version Set.
+ * @property {string} [versionQueryName] Name of query parameter that indicates
  * the API Version if versioningScheme is set to `query`.
- * @member {string} [versionHeaderName] Name of HTTP header parameter that
+ * @property {string} [versionHeaderName] Name of HTTP header parameter that
  * indicates the API Version if versioningScheme is set to `header`.
  */
 export interface ApiVersionSetEntityBase {
@@ -3947,13 +3975,13 @@ export interface ApiVersionSetEntityBase {
  * @constructor
  * Parameters to update or create an Api Version Set Contract.
  *
- * @member {string} [description] Description of API Version Set.
- * @member {string} [versionQueryName] Name of query parameter that indicates
+ * @property {string} [description] Description of API Version Set.
+ * @property {string} [versionQueryName] Name of query parameter that indicates
  * the API Version if versioningScheme is set to `query`.
- * @member {string} [versionHeaderName] Name of HTTP header parameter that
+ * @property {string} [versionHeaderName] Name of HTTP header parameter that
  * indicates the API Version if versioningScheme is set to `header`.
- * @member {string} [displayName] Name of API Version Set
- * @member {string} [versioningScheme] An value that determines where the API
+ * @property {string} [displayName] Name of API Version Set
+ * @property {string} [versioningScheme] An value that determines where the API
  * Version identifer will be located in a HTTP request. Possible values
  * include: 'Segment', 'Query', 'Header'
  */
@@ -3972,8 +4000,8 @@ export interface ApiVersionSetUpdateParameters {
  * @constructor
  * Lists Regions operation response details.
  *
- * @member {number} [count] Total record count number across all pages.
- * @member {string} [nextLink] Next page link if any.
+ * @property {number} [count] Total record count number across all pages.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface RegionListResult extends Array<RegionContract> {
   nextLink?: string;
@@ -3985,7 +4013,7 @@ export interface RegionListResult extends Array<RegionContract> {
  * @constructor
  * Paged Api list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface ApiCollection extends Array<ApiContract> {
   readonly nextLink?: string;
@@ -3997,8 +4025,8 @@ export interface ApiCollection extends Array<ApiContract> {
  * @constructor
  * Paged Tag list representation.
  *
- * @member {number} [count] Total record count number across all pages.
- * @member {string} [nextLink] Next page link if any.
+ * @property {number} [count] Total record count number across all pages.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface TagResourceCollection extends Array<TagResourceContract> {
   nextLink?: string;
@@ -4010,7 +4038,7 @@ export interface TagResourceCollection extends Array<TagResourceContract> {
  * @constructor
  * Paged Api Revision list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface ApiRevisionCollection extends Array<ApiRevisionContract> {
   readonly nextLink?: string;
@@ -4022,7 +4050,7 @@ export interface ApiRevisionCollection extends Array<ApiRevisionContract> {
  * @constructor
  * Paged Api Revision list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface ApiReleaseCollection extends Array<ApiReleaseContract> {
   readonly nextLink?: string;
@@ -4034,7 +4062,7 @@ export interface ApiReleaseCollection extends Array<ApiReleaseContract> {
  * @constructor
  * Paged Operation list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface OperationCollection extends Array<OperationContract> {
   readonly nextLink?: string;
@@ -4046,7 +4074,7 @@ export interface OperationCollection extends Array<OperationContract> {
  * @constructor
  * Paged Products list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface ProductCollection extends Array<ProductContract> {
   nextLink?: string;
@@ -4058,7 +4086,7 @@ export interface ProductCollection extends Array<ProductContract> {
  * @constructor
  * The response of the list schema operation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface SchemaCollection extends Array<SchemaContract> {
   readonly nextLink?: string;
@@ -4070,7 +4098,7 @@ export interface SchemaCollection extends Array<SchemaContract> {
  * @constructor
  * Paged Diagnostic list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface DiagnosticCollection extends Array<DiagnosticContract> {
   nextLink?: string;
@@ -4082,8 +4110,8 @@ export interface DiagnosticCollection extends Array<DiagnosticContract> {
  * @constructor
  * Paged Logger list representation.
  *
- * @member {number} [count] Total record count number across all pages.
- * @member {string} [nextLink] Next page link if any.
+ * @property {number} [count] Total record count number across all pages.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface LoggerCollection extends Array<LoggerContract> {
   nextLink?: string;
@@ -4095,7 +4123,7 @@ export interface LoggerCollection extends Array<LoggerContract> {
  * @constructor
  * Paged Issue list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface IssueCollection extends Array<IssueContract> {
   readonly nextLink?: string;
@@ -4107,7 +4135,7 @@ export interface IssueCollection extends Array<IssueContract> {
  * @constructor
  * Paged Issue Comment list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface IssueCommentCollection extends Array<IssueCommentContract> {
   readonly nextLink?: string;
@@ -4119,7 +4147,7 @@ export interface IssueCommentCollection extends Array<IssueCommentContract> {
  * @constructor
  * Paged Issue Attachment list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface IssueAttachmentCollection extends Array<IssueAttachmentContract> {
   readonly nextLink?: string;
@@ -4131,8 +4159,8 @@ export interface IssueAttachmentCollection extends Array<IssueAttachmentContract
  * @constructor
  * Paged OAuth2 Authorization Servers list representation.
  *
- * @member {number} [count] Total record count number across all pages.
- * @member {string} [nextLink] Next page link if any.
+ * @property {number} [count] Total record count number across all pages.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface AuthorizationServerCollection extends Array<AuthorizationServerContract> {
   nextLink?: string;
@@ -4144,7 +4172,7 @@ export interface AuthorizationServerCollection extends Array<AuthorizationServer
  * @constructor
  * Paged Backend list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface BackendCollection extends Array<BackendContract> {
   nextLink?: string;
@@ -4156,7 +4184,7 @@ export interface BackendCollection extends Array<BackendContract> {
  * @constructor
  * Paged Certificates list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface CertificateCollection extends Array<CertificateContract> {
   nextLink?: string;
@@ -4169,7 +4197,7 @@ export interface CertificateCollection extends Array<CertificateContract> {
  * Result of the request to list REST API operations. It contains a list of
  * operations and a URL nextLink to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {
@@ -4182,7 +4210,7 @@ export interface OperationListResult extends Array<Operation> {
  * @constructor
  * The response of the List API Management services operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of API Management services.
  */
 export interface ApiManagementServiceListResult extends Array<ApiManagementServiceResource> {
@@ -4195,7 +4223,7 @@ export interface ApiManagementServiceListResult extends Array<ApiManagementServi
  * @constructor
  * Paged email template list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface EmailTemplateCollection extends Array<EmailTemplateContract> {
   nextLink?: string;
@@ -4207,7 +4235,7 @@ export interface EmailTemplateCollection extends Array<EmailTemplateContract> {
  * @constructor
  * Paged Group list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface GroupCollection extends Array<GroupContract> {
   nextLink?: string;
@@ -4219,7 +4247,7 @@ export interface GroupCollection extends Array<GroupContract> {
  * @constructor
  * Paged Users list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface UserCollection extends Array<UserContract> {
   nextLink?: string;
@@ -4231,7 +4259,7 @@ export interface UserCollection extends Array<UserContract> {
  * @constructor
  * List of all the Identity Providers configured on the service instance.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface IdentityProviderList extends Array<IdentityProviderContract> {
   nextLink?: string;
@@ -4243,7 +4271,7 @@ export interface IdentityProviderList extends Array<IdentityProviderContract> {
  * @constructor
  * Paged Notification list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface NotificationCollection extends Array<NotificationContract> {
   nextLink?: string;
@@ -4255,7 +4283,7 @@ export interface NotificationCollection extends Array<NotificationContract> {
  * @constructor
  * Paged OpenIdProviders list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface OpenIdConnectProviderCollection extends Array<OpenidConnectProviderContract> {
   nextLink?: string;
@@ -4267,7 +4295,7 @@ export interface OpenIdConnectProviderCollection extends Array<OpenidConnectProv
  * @constructor
  * Paged Subscriptions list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface SubscriptionCollection extends Array<SubscriptionContract> {
   nextLink?: string;
@@ -4279,7 +4307,7 @@ export interface SubscriptionCollection extends Array<SubscriptionContract> {
  * @constructor
  * Paged Property list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface PropertyCollection extends Array<PropertyContract> {
   nextLink?: string;
@@ -4291,8 +4319,8 @@ export interface PropertyCollection extends Array<PropertyContract> {
  * @constructor
  * Paged Report records list representation.
  *
- * @member {number} [count] Total record count number across all pages.
- * @member {string} [nextLink] Next page link if any.
+ * @property {number} [count] Total record count number across all pages.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface ReportCollection extends Array<ReportRecordContract> {
   nextLink?: string;
@@ -4304,7 +4332,7 @@ export interface ReportCollection extends Array<ReportRecordContract> {
  * @constructor
  * Paged Report records list representation.
  *
- * @member {number} [count] Total record count number across all pages.
+ * @property {number} [count] Total record count number across all pages.
  */
 export interface RequestReportCollection extends Array<RequestReportRecordContract> {
 }
@@ -4315,7 +4343,7 @@ export interface RequestReportCollection extends Array<RequestReportRecordContra
  * @constructor
  * Paged Tag list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface TagCollection extends Array<TagContract> {
   nextLink?: string;
@@ -4327,7 +4355,7 @@ export interface TagCollection extends Array<TagContract> {
  * @constructor
  * Paged TagDescription list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface TagDescriptionCollection extends Array<TagDescriptionContract> {
   nextLink?: string;
@@ -4339,8 +4367,8 @@ export interface TagDescriptionCollection extends Array<TagDescriptionContract> 
  * @constructor
  * List of Users Identity list representation.
  *
- * @member {number} [count] Total record count number across all pages.
- * @member {string} [nextLink] Next page link if any.
+ * @property {number} [count] Total record count number across all pages.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface UserIdentityCollection extends Array<UserIdentityContract> {
   nextLink?: string;
@@ -4352,7 +4380,7 @@ export interface UserIdentityCollection extends Array<UserIdentityContract> {
  * @constructor
  * Paged Api Version Set list representation.
  *
- * @member {string} [nextLink] Next page link if any.
+ * @property {string} [nextLink] Next page link if any.
  */
 export interface ApiVersionSetCollection extends Array<ApiVersionSetContract> {
   nextLink?: string;

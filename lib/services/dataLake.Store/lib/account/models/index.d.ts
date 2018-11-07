@@ -18,77 +18,38 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
- * Initializes a new instance of the UpdateFirewallRuleParameters class.
+ * Initializes a new instance of the Resource class.
  * @constructor
- * Data Lake Analytics firewall rule update parameters
+ * The resource model definition.
  *
- * @member {string} [startIpAddress] the start IP address for the firewall
- * rule. This can be either ipv4 or ipv6. Start and End should be in the same
- * protocol.
- * @member {string} [endIpAddress] the end IP address for the firewall rule.
- * This can be either ipv4 or ipv6. Start and End should be in the same
- * protocol.
+ * @property {string} [id] The resource identifier.
+ * @property {string} [name] The resource name.
+ * @property {string} [type] The resource type.
+ * @property {string} [location] The resource location.
+ * @property {object} [tags] The resource tags.
  */
-export interface UpdateFirewallRuleParameters {
-  startIpAddress?: string;
-  endIpAddress?: string;
+export interface Resource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  readonly location?: string;
+  readonly tags?: { [propertyName: string]: string };
 }
 
 /**
  * @class
  * Initializes a new instance of the SubResource class.
  * @constructor
- * The Resource model definition for a nested resource.
+ * The resource model definition for a nested resource.
  *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
+ * @property {string} [id] The resource identifier.
+ * @property {string} [name] The resource name.
+ * @property {string} [type] The resource type.
  */
-export interface SubResource {
+export interface SubResource extends BaseResource {
   readonly id?: string;
-  name?: string;
+  readonly name?: string;
   readonly type?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the FirewallRule class.
- * @constructor
- * Data Lake Store firewall rule information
- *
- * @member {string} startIpAddress the start IP address for the firewall rule.
- * This can be either ipv4 or ipv6. Start and End should be in the same
- * protocol.
- * @member {string} endIpAddress the end IP address for the firewall rule. This
- * can be either ipv4 or ipv6. Start and End should be in the same protocol.
- */
-export interface FirewallRule extends SubResource {
-  startIpAddress: string;
-  endIpAddress: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the UpdateTrustedIdProviderParameters class.
- * @constructor
- * Data Lake Store Trusted Identity Provider update parameters
- *
- * @member {string} [idProvider] The URL of this trusted identity provider
- */
-export interface UpdateTrustedIdProviderParameters {
-  idProvider?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TrustedIdProvider class.
- * @constructor
- * Data Lake Store Trusted Identity Provider information
- *
- * @member {string} idProvider The URL of this trusted identity provider
- */
-export interface TrustedIdProvider extends SubResource {
-  idProvider: string;
 }
 
 /**
@@ -97,9 +58,9 @@ export interface TrustedIdProvider extends SubResource {
  * @constructor
  * The encryption identity properties.
  *
- * @member {uuid} [principalId] The principal identifier associated with the
+ * @property {uuid} [principalId] The principal identifier associated with the
  * encryption.
- * @member {uuid} [tenantId] The tenant identifier associated with the
+ * @property {uuid} [tenantId] The tenant identifier associated with the
  * encryption.
  */
 export interface EncryptionIdentity {
@@ -113,11 +74,11 @@ export interface EncryptionIdentity {
  * @constructor
  * Metadata information used by account encryption.
  *
- * @member {string} keyVaultResourceId The resource identifier for the user
+ * @property {string} keyVaultResourceId The resource identifier for the user
  * managed Key Vault being used to encrypt.
- * @member {string} encryptionKeyName The name of the user managed encryption
+ * @property {string} encryptionKeyName The name of the user managed encryption
  * key.
- * @member {string} encryptionKeyVersion The version of the user managed
+ * @property {string} encryptionKeyVersion The version of the user managed
  * encryption key.
  */
 export interface KeyVaultMetaInfo {
@@ -132,17 +93,17 @@ export interface KeyVaultMetaInfo {
  * @constructor
  * The encryption configuration for the account.
  *
- * @member {string} type The type of encryption configuration being used.
+ * @property {string} type The type of encryption configuration being used.
  * Currently the only supported types are 'UserManaged' and 'ServiceManaged'.
  * Possible values include: 'UserManaged', 'ServiceManaged'
- * @member {object} [keyVaultMetaInfo] The Key Vault information for connecting
- * to user managed encryption keys.
- * @member {string} [keyVaultMetaInfo.keyVaultResourceId] The resource
+ * @property {object} [keyVaultMetaInfo] The Key Vault information for
+ * connecting to user managed encryption keys.
+ * @property {string} [keyVaultMetaInfo.keyVaultResourceId] The resource
  * identifier for the user managed Key Vault being used to encrypt.
- * @member {string} [keyVaultMetaInfo.encryptionKeyName] The name of the user
+ * @property {string} [keyVaultMetaInfo.encryptionKeyName] The name of the user
  * managed encryption key.
- * @member {string} [keyVaultMetaInfo.encryptionKeyVersion] The version of the
- * user managed encryption key.
+ * @property {string} [keyVaultMetaInfo.encryptionKeyVersion] The version of
+ * the user managed encryption key.
  */
 export interface EncryptionConfig {
   type: string;
@@ -151,11 +112,388 @@ export interface EncryptionConfig {
 
 /**
  * @class
+ * Initializes a new instance of the FirewallRule class.
+ * @constructor
+ * Data Lake Store firewall rule information.
+ *
+ * @property {string} [startIpAddress] The start IP address for the firewall
+ * rule. This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
+ * @property {string} [endIpAddress] The end IP address for the firewall rule.
+ * This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
+ */
+export interface FirewallRule extends SubResource {
+  readonly startIpAddress?: string;
+  readonly endIpAddress?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualNetworkRule class.
+ * @constructor
+ * Data Lake Store virtual network rule information.
+ *
+ * @property {string} [subnetId] The resource identifier for the subnet.
+ */
+export interface VirtualNetworkRule extends SubResource {
+  readonly subnetId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrustedIdProvider class.
+ * @constructor
+ * Data Lake Store trusted identity provider information.
+ *
+ * @property {string} [idProvider] The URL of this trusted identity provider.
+ */
+export interface TrustedIdProvider extends SubResource {
+  readonly idProvider?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataLakeStoreAccount class.
+ * @constructor
+ * Data Lake Store account information.
+ *
+ * @property {object} [identity] The Key Vault encryption identity, if any.
+ * @property {uuid} [identity.principalId] The principal identifier associated
+ * with the encryption.
+ * @property {uuid} [identity.tenantId] The tenant identifier associated with
+ * the encryption.
+ * @property {uuid} [accountId] The unique identifier associated with this Data
+ * Lake Store account.
+ * @property {string} [provisioningState] The provisioning status of the Data
+ * Lake Store account. Possible values include: 'Failed', 'Creating',
+ * 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming', 'Deleting',
+ * 'Deleted', 'Undeleting', 'Canceled'
+ * @property {string} [state] The state of the Data Lake Store account.
+ * Possible values include: 'Active', 'Suspended'
+ * @property {date} [creationTime] The account creation time.
+ * @property {date} [lastModifiedTime] The account last modified time.
+ * @property {string} [endpoint] The full CName endpoint for this account.
+ * @property {string} [defaultGroup] The default owner group for all new
+ * folders and files created in the Data Lake Store account.
+ * @property {object} [encryptionConfig] The Key Vault encryption
+ * configuration.
+ * @property {string} [encryptionConfig.type] The type of encryption
+ * configuration being used. Currently the only supported types are
+ * 'UserManaged' and 'ServiceManaged'. Possible values include: 'UserManaged',
+ * 'ServiceManaged'
+ * @property {object} [encryptionConfig.keyVaultMetaInfo] The Key Vault
+ * information for connecting to user managed encryption keys.
+ * @property {string} [encryptionConfig.keyVaultMetaInfo.keyVaultResourceId]
+ * The resource identifier for the user managed Key Vault being used to
+ * encrypt.
+ * @property {string} [encryptionConfig.keyVaultMetaInfo.encryptionKeyName] The
+ * name of the user managed encryption key.
+ * @property {string} [encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion]
+ * The version of the user managed encryption key.
+ * @property {string} [encryptionState] The current state of encryption for
+ * this Data Lake Store account. Possible values include: 'Enabled', 'Disabled'
+ * @property {string} [encryptionProvisioningState] The current state of
+ * encryption provisioning for this Data Lake Store account. Possible values
+ * include: 'Creating', 'Succeeded'
+ * @property {array} [firewallRules] The list of firewall rules associated with
+ * this Data Lake Store account.
+ * @property {array} [virtualNetworkRules] The list of virtual network rules
+ * associated with this Data Lake Store account.
+ * @property {string} [firewallState] The current state of the IP address
+ * firewall for this Data Lake Store account. Possible values include:
+ * 'Enabled', 'Disabled'
+ * @property {string} [firewallAllowAzureIps] The current state of allowing or
+ * disallowing IPs originating within Azure through the firewall. If the
+ * firewall is disabled, this is not enforced. Possible values include:
+ * 'Enabled', 'Disabled'
+ * @property {array} [trustedIdProviders] The list of trusted identity
+ * providers associated with this Data Lake Store account.
+ * @property {string} [trustedIdProviderState] The current state of the trusted
+ * identity provider feature for this Data Lake Store account. Possible values
+ * include: 'Enabled', 'Disabled'
+ * @property {string} [newTier] The commitment tier to use for next month.
+ * Possible values include: 'Consumption', 'Commitment_1TB', 'Commitment_10TB',
+ * 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB', 'Commitment_5PB'
+ * @property {string} [currentTier] The commitment tier in use for the current
+ * month. Possible values include: 'Consumption', 'Commitment_1TB',
+ * 'Commitment_10TB', 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB',
+ * 'Commitment_5PB'
+ */
+export interface DataLakeStoreAccount extends Resource {
+  readonly identity?: EncryptionIdentity;
+  readonly accountId?: string;
+  readonly provisioningState?: string;
+  readonly state?: string;
+  readonly creationTime?: Date;
+  readonly lastModifiedTime?: Date;
+  readonly endpoint?: string;
+  readonly defaultGroup?: string;
+  readonly encryptionConfig?: EncryptionConfig;
+  readonly encryptionState?: string;
+  readonly encryptionProvisioningState?: string;
+  readonly firewallRules?: FirewallRule[];
+  readonly virtualNetworkRules?: VirtualNetworkRule[];
+  readonly firewallState?: string;
+  readonly firewallAllowAzureIps?: string;
+  readonly trustedIdProviders?: TrustedIdProvider[];
+  readonly trustedIdProviderState?: string;
+  readonly newTier?: string;
+  readonly currentTier?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataLakeStoreAccountBasic class.
+ * @constructor
+ * Basic Data Lake Store account information, returned on list calls.
+ *
+ * @property {uuid} [accountId] The unique identifier associated with this Data
+ * Lake Store account.
+ * @property {string} [provisioningState] The provisioning status of the Data
+ * Lake Store account. Possible values include: 'Failed', 'Creating',
+ * 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming', 'Deleting',
+ * 'Deleted', 'Undeleting', 'Canceled'
+ * @property {string} [state] The state of the Data Lake Store account.
+ * Possible values include: 'Active', 'Suspended'
+ * @property {date} [creationTime] The account creation time.
+ * @property {date} [lastModifiedTime] The account last modified time.
+ * @property {string} [endpoint] The full CName endpoint for this account.
+ */
+export interface DataLakeStoreAccountBasic extends Resource {
+  readonly accountId?: string;
+  readonly provisioningState?: string;
+  readonly state?: string;
+  readonly creationTime?: Date;
+  readonly lastModifiedTime?: Date;
+  readonly endpoint?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationDisplay class.
+ * @constructor
+ * The display information for a particular operation.
+ *
+ * @property {string} [provider] The resource provider of the operation.
+ * @property {string} [resource] The resource type of the operation.
+ * @property {string} [operation] A friendly name of the operation.
+ * @property {string} [description] A friendly description of the operation.
+ */
+export interface OperationDisplay {
+  readonly provider?: string;
+  readonly resource?: string;
+  readonly operation?: string;
+  readonly description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Operation class.
+ * @constructor
+ * An available operation for Data Lake Store.
+ *
+ * @property {string} [name] The name of the operation.
+ * @property {object} [display] The display information for the operation.
+ * @property {string} [display.provider] The resource provider of the
+ * operation.
+ * @property {string} [display.resource] The resource type of the operation.
+ * @property {string} [display.operation] A friendly name of the operation.
+ * @property {string} [display.description] A friendly description of the
+ * operation.
+ * @property {string} [origin] The intended executor of the operation. Possible
+ * values include: 'user', 'system', 'user,system'
+ */
+export interface Operation {
+  readonly name?: string;
+  display?: OperationDisplay;
+  readonly origin?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationListResult class.
+ * @constructor
+ * The list of available operations for Data Lake Store.
+ *
+ * @property {array} [value] The results of the list operation.
+ * @property {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface OperationListResult {
+  readonly value?: Operation[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CapabilityInformation class.
+ * @constructor
+ * Subscription-level properties and limits for Data Lake Store.
+ *
+ * @property {uuid} [subscriptionId] The subscription credentials that uniquely
+ * identifies the subscription.
+ * @property {string} [state] The subscription state. Possible values include:
+ * 'Registered', 'Suspended', 'Deleted', 'Unregistered', 'Warned'
+ * @property {number} [maxAccountCount] The maximum supported number of
+ * accounts under this subscription.
+ * @property {number} [accountCount] The current number of accounts under this
+ * subscription.
+ * @property {boolean} [migrationState] The Boolean value of true or false to
+ * indicate the maintenance state.
+ */
+export interface CapabilityInformation {
+  readonly subscriptionId?: string;
+  readonly state?: string;
+  readonly maxAccountCount?: number;
+  readonly accountCount?: number;
+  readonly migrationState?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NameAvailabilityInformation class.
+ * @constructor
+ * Data Lake Store account name availability result information.
+ *
+ * @property {boolean} [nameAvailable] The Boolean value of true or false to
+ * indicate whether the Data Lake Store account name is available or not.
+ * @property {string} [reason] The reason why the Data Lake Store account name
+ * is not available, if nameAvailable is false.
+ * @property {string} [message] The message describing why the Data Lake Store
+ * account name is not available, if nameAvailable is false.
+ */
+export interface NameAvailabilityInformation {
+  readonly nameAvailable?: boolean;
+  readonly reason?: string;
+  readonly message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateFirewallRuleWithAccountParameters class.
+ * @constructor
+ * The parameters used to create a new firewall rule while creating a new Data
+ * Lake Store account.
+ *
+ * @property {string} name The unique name of the firewall rule to create.
+ * @property {string} startIpAddress The start IP address for the firewall
+ * rule. This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
+ * @property {string} endIpAddress The end IP address for the firewall rule.
+ * This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
+ */
+export interface CreateFirewallRuleWithAccountParameters {
+  name: string;
+  startIpAddress: string;
+  endIpAddress: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateVirtualNetworkRuleWithAccountParameters class.
+ * @constructor
+ * The parameters used to create a new virtual network rule while creating a
+ * new Data Lake Store account.
+ *
+ * @property {string} name The unique name of the virtual network rule to
+ * create.
+ * @property {string} subnetId The resource identifier for the subnet.
+ */
+export interface CreateVirtualNetworkRuleWithAccountParameters {
+  name: string;
+  subnetId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateTrustedIdProviderWithAccountParameters class.
+ * @constructor
+ * The parameters used to create a new trusted identity provider while creating
+ * a new Data Lake Store account.
+ *
+ * @property {string} name The unique name of the trusted identity provider to
+ * create.
+ * @property {string} idProvider The URL of this trusted identity provider.
+ */
+export interface CreateTrustedIdProviderWithAccountParameters {
+  name: string;
+  idProvider: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateDataLakeStoreAccountParameters class.
+ * @constructor
+ * @property {string} location The resource location.
+ * @property {object} [tags] The resource tags.
+ * @property {object} [identity] The Key Vault encryption identity, if any.
+ * @property {uuid} [identity.principalId] The principal identifier associated
+ * with the encryption.
+ * @property {uuid} [identity.tenantId] The tenant identifier associated with
+ * the encryption.
+ * @property {string} [defaultGroup] The default owner group for all new
+ * folders and files created in the Data Lake Store account.
+ * @property {object} [encryptionConfig] The Key Vault encryption
+ * configuration.
+ * @property {string} [encryptionConfig.type] The type of encryption
+ * configuration being used. Currently the only supported types are
+ * 'UserManaged' and 'ServiceManaged'. Possible values include: 'UserManaged',
+ * 'ServiceManaged'
+ * @property {object} [encryptionConfig.keyVaultMetaInfo] The Key Vault
+ * information for connecting to user managed encryption keys.
+ * @property {string} [encryptionConfig.keyVaultMetaInfo.keyVaultResourceId]
+ * The resource identifier for the user managed Key Vault being used to
+ * encrypt.
+ * @property {string} [encryptionConfig.keyVaultMetaInfo.encryptionKeyName] The
+ * name of the user managed encryption key.
+ * @property {string} [encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion]
+ * The version of the user managed encryption key.
+ * @property {string} [encryptionState] The current state of encryption for
+ * this Data Lake Store account. Possible values include: 'Enabled', 'Disabled'
+ * @property {array} [firewallRules] The list of firewall rules associated with
+ * this Data Lake Store account.
+ * @property {array} [virtualNetworkRules] The list of virtual network rules
+ * associated with this Data Lake Store account.
+ * @property {string} [firewallState] The current state of the IP address
+ * firewall for this Data Lake Store account. Possible values include:
+ * 'Enabled', 'Disabled'
+ * @property {string} [firewallAllowAzureIps] The current state of allowing or
+ * disallowing IPs originating within Azure through the firewall. If the
+ * firewall is disabled, this is not enforced. Possible values include:
+ * 'Enabled', 'Disabled'
+ * @property {array} [trustedIdProviders] The list of trusted identity
+ * providers associated with this Data Lake Store account.
+ * @property {string} [trustedIdProviderState] The current state of the trusted
+ * identity provider feature for this Data Lake Store account. Possible values
+ * include: 'Enabled', 'Disabled'
+ * @property {string} [newTier] The commitment tier to use for next month.
+ * Possible values include: 'Consumption', 'Commitment_1TB', 'Commitment_10TB',
+ * 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB', 'Commitment_5PB'
+ */
+export interface CreateDataLakeStoreAccountParameters {
+  location: string;
+  tags?: { [propertyName: string]: string };
+  identity?: EncryptionIdentity;
+  defaultGroup?: string;
+  encryptionConfig?: EncryptionConfig;
+  encryptionState?: string;
+  firewallRules?: CreateFirewallRuleWithAccountParameters[];
+  virtualNetworkRules?: CreateVirtualNetworkRuleWithAccountParameters[];
+  firewallState?: string;
+  firewallAllowAzureIps?: string;
+  trustedIdProviders?: CreateTrustedIdProviderWithAccountParameters[];
+  trustedIdProviderState?: string;
+  newTier?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the UpdateKeyVaultMetaInfo class.
  * @constructor
  * The Key Vault update information used for user managed key rotation.
  *
- * @member {string} [encryptionKeyVersion] The version of the user managed
+ * @property {string} [encryptionKeyVersion] The version of the user managed
  * encryption key to update through a key rotation.
  */
 export interface UpdateKeyVaultMetaInfo {
@@ -168,10 +506,10 @@ export interface UpdateKeyVaultMetaInfo {
  * @constructor
  * The encryption configuration used to update a user managed Key Vault key.
  *
- * @member {object} [keyVaultMetaInfo] The updated Key Vault key to use in user
- * managed key rotation.
- * @member {string} [keyVaultMetaInfo.encryptionKeyVersion] The version of the
- * user managed encryption key to update through a key rotation.
+ * @property {object} [keyVaultMetaInfo] The updated Key Vault key to use in
+ * user managed key rotation.
+ * @property {string} [keyVaultMetaInfo.encryptionKeyVersion] The version of
+ * the user managed encryption key to update through a key rotation.
  */
 export interface UpdateEncryptionConfig {
   keyVaultMetaInfo?: UpdateKeyVaultMetaInfo;
@@ -179,223 +517,206 @@ export interface UpdateEncryptionConfig {
 
 /**
  * @class
- * Initializes a new instance of the DataLakeStoreAccountUpdateParameters class.
+ * Initializes a new instance of the UpdateFirewallRuleWithAccountParameters class.
  * @constructor
- * Data Lake Store account information to update
+ * The parameters used to update a firewall rule while updating a Data Lake
+ * Store account.
  *
- * @member {object} [tags] Resource tags
- * @member {string} [firewallState] The current state of the IP address
- * firewall for this Data Lake store account. Disabling the firewall does not
+ * @property {string} name The unique name of the firewall rule to update.
+ * @property {string} [startIpAddress] The start IP address for the firewall
+ * rule. This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
+ * @property {string} [endIpAddress] The end IP address for the firewall rule.
+ * This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
+ */
+export interface UpdateFirewallRuleWithAccountParameters {
+  name: string;
+  startIpAddress?: string;
+  endIpAddress?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateVirtualNetworkRuleWithAccountParameters class.
+ * @constructor
+ * The parameters used to update a virtual network rule while updating a Data
+ * Lake Store account.
+ *
+ * @property {string} name The unique name of the virtual network rule to
+ * update.
+ * @property {string} [subnetId] The resource identifier for the subnet.
+ */
+export interface UpdateVirtualNetworkRuleWithAccountParameters {
+  name: string;
+  subnetId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateTrustedIdProviderWithAccountParameters class.
+ * @constructor
+ * The parameters used to update a trusted identity provider while updating a
+ * Data Lake Store account.
+ *
+ * @property {string} name The unique name of the trusted identity provider to
+ * update.
+ * @property {string} [idProvider] The URL of this trusted identity provider.
+ */
+export interface UpdateTrustedIdProviderWithAccountParameters {
+  name: string;
+  idProvider?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateDataLakeStoreAccountParameters class.
+ * @constructor
+ * Data Lake Store account information to update.
+ *
+ * @property {object} [tags] Resource tags
+ * @property {string} [defaultGroup] The default owner group for all new
+ * folders and files created in the Data Lake Store account.
+ * @property {object} [encryptionConfig] Used for rotation of user managed Key
+ * Vault keys. Can only be used to rotate a user managed encryption Key Vault
+ * key.
+ * @property {object} [encryptionConfig.keyVaultMetaInfo] The updated Key Vault
+ * key to use in user managed key rotation.
+ * @property {string} [encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion]
+ * The version of the user managed encryption key to update through a key
+ * rotation.
+ * @property {array} [firewallRules] The list of firewall rules associated with
+ * this Data Lake Store account.
+ * @property {array} [virtualNetworkRules] The list of virtual network rules
+ * associated with this Data Lake Store account.
+ * @property {string} [firewallState] The current state of the IP address
+ * firewall for this Data Lake Store account. Disabling the firewall does not
  * remove existing rules, they will just be ignored until the firewall is
  * re-enabled. Possible values include: 'Enabled', 'Disabled'
- * @member {string} [trustedIdProviderState] The current state of the trusted
- * identity provider feature for this Data Lake store account. Disabling
+ * @property {string} [firewallAllowAzureIps] The current state of allowing or
+ * disallowing IPs originating within Azure through the firewall. If the
+ * firewall is disabled, this is not enforced. Possible values include:
+ * 'Enabled', 'Disabled'
+ * @property {array} [trustedIdProviders] The list of trusted identity
+ * providers associated with this Data Lake Store account.
+ * @property {string} [trustedIdProviderState] The current state of the trusted
+ * identity provider feature for this Data Lake Store account. Disabling
  * trusted identity provider functionality does not remove the providers, they
  * will just be ignored until this feature is re-enabled. Possible values
  * include: 'Enabled', 'Disabled'
- * @member {string} [defaultGroup] the default owner group for all new folders
- * and files created in the Data Lake Store account.
- * @member {string} [newTier] the commitment tier to use for next month.
+ * @property {string} [newTier] The commitment tier to use for next month.
  * Possible values include: 'Consumption', 'Commitment_1TB', 'Commitment_10TB',
  * 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB', 'Commitment_5PB'
- * @member {string} [firewallAllowAzureIps] The current state of allowing or
- * disallowing IPs originating within Azure through the firewall. If the
- * firewall is disabled, this is not enforced. Possible values include:
- * 'Enabled', 'Disabled'
- * @member {object} [encryptionConfig] Used for rotation of user managed Key
- * Vault keys. Can only be used to rotate a user managed encryption Key Vault
- * key.
- * @member {object} [encryptionConfig.keyVaultMetaInfo] The updated Key Vault
- * key to use in user managed key rotation.
- * @member {string} [encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion]
- * The version of the user managed encryption key to update through a key
- * rotation.
  */
-export interface DataLakeStoreAccountUpdateParameters {
+export interface UpdateDataLakeStoreAccountParameters {
   tags?: { [propertyName: string]: string };
-  firewallState?: string;
-  trustedIdProviderState?: string;
   defaultGroup?: string;
-  newTier?: string;
-  firewallAllowAzureIps?: string;
   encryptionConfig?: UpdateEncryptionConfig;
-}
-
-/**
- * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * The Resource model definition.
- *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
- * @member {string} location Resource location
- * @member {object} [tags] Resource tags
- */
-export interface Resource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  location: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the DataLakeStoreAccount class.
- * @constructor
- * Data Lake Store account information
- *
- * @member {object} [identity] The Key Vault encryption identity, if any.
- * @member {uuid} [identity.principalId] The principal identifier associated
- * with the encryption.
- * @member {uuid} [identity.tenantId] The tenant identifier associated with the
- * encryption.
- * @member {string} [provisioningState] the provisioning status of the Data
- * Lake Store account. Possible values include: 'Failed', 'Creating',
- * 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming', 'Deleting',
- * 'Deleted', 'Undeleting', 'Canceled'
- * @member {string} [state] the state of the Data Lake Store account. Possible
- * values include: 'Active', 'Suspended'
- * @member {date} [creationTime] the account creation time.
- * @member {date} [lastModifiedTime] the account last modified time.
- * @member {string} [endpoint] the full CName endpoint for this account.
- * @member {uuid} [accountId] The unique identifier associated with this Data
- * Lake Store account.
- * @member {string} [encryptionState] The current state of encryption for this
- * Data Lake store account. Possible values include: 'Enabled', 'Disabled'
- * @member {string} [encryptionProvisioningState] The current state of
- * encryption provisioning for this Data Lake store account. Possible values
- * include: 'Creating', 'Succeeded'
- * @member {object} [encryptionConfig] The Key Vault encryption configuration.
- * @member {string} [encryptionConfig.type] The type of encryption
- * configuration being used. Currently the only supported types are
- * 'UserManaged' and 'ServiceManaged'. Possible values include: 'UserManaged',
- * 'ServiceManaged'
- * @member {object} [encryptionConfig.keyVaultMetaInfo] The Key Vault
- * information for connecting to user managed encryption keys.
- * @member {string} [encryptionConfig.keyVaultMetaInfo.keyVaultResourceId] The
- * resource identifier for the user managed Key Vault being used to encrypt.
- * @member {string} [encryptionConfig.keyVaultMetaInfo.encryptionKeyName] The
- * name of the user managed encryption key.
- * @member {string} [encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion]
- * The version of the user managed encryption key.
- * @member {string} [firewallState] The current state of the IP address
- * firewall for this Data Lake store account. Possible values include:
- * 'Enabled', 'Disabled'
- * @member {array} [firewallRules] The list of firewall rules associated with
- * this Data Lake store account.
- * @member {string} [trustedIdProviderState] The current state of the trusted
- * identity provider feature for this Data Lake store account. Possible values
- * include: 'Enabled', 'Disabled'
- * @member {array} [trustedIdProviders] The list of trusted identity providers
- * associated with this Data Lake store account.
- * @member {string} [defaultGroup] the default owner group for all new folders
- * and files created in the Data Lake Store account.
- * @member {string} [newTier] the commitment tier to use for next month.
- * Possible values include: 'Consumption', 'Commitment_1TB', 'Commitment_10TB',
- * 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB', 'Commitment_5PB'
- * @member {string} [currentTier] the commitment tier in use for the current
- * month. Possible values include: 'Consumption', 'Commitment_1TB',
- * 'Commitment_10TB', 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB',
- * 'Commitment_5PB'
- * @member {string} [firewallAllowAzureIps] The current state of allowing or
- * disallowing IPs originating within Azure through the firewall. If the
- * firewall is disabled, this is not enforced. Possible values include:
- * 'Enabled', 'Disabled'
- */
-export interface DataLakeStoreAccount extends Resource {
-  identity?: EncryptionIdentity;
-  readonly provisioningState?: string;
-  readonly state?: string;
-  readonly creationTime?: Date;
-  readonly lastModifiedTime?: Date;
-  readonly endpoint?: string;
-  readonly accountId?: string;
-  encryptionState?: string;
-  readonly encryptionProvisioningState?: string;
-  encryptionConfig?: EncryptionConfig;
+  firewallRules?: UpdateFirewallRuleWithAccountParameters[];
+  virtualNetworkRules?: UpdateVirtualNetworkRuleWithAccountParameters[];
   firewallState?: string;
-  firewallRules?: FirewallRule[];
-  trustedIdProviderState?: string;
-  trustedIdProviders?: TrustedIdProvider[];
-  defaultGroup?: string;
-  newTier?: string;
-  readonly currentTier?: string;
   firewallAllowAzureIps?: string;
+  trustedIdProviders?: UpdateTrustedIdProviderWithAccountParameters[];
+  trustedIdProviderState?: string;
+  newTier?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the DataLakeStoreAccountBasic class.
+ * Initializes a new instance of the CreateOrUpdateFirewallRuleParameters class.
  * @constructor
- * Basic Data Lake Store account information, returned on list calls.
+ * The parameters used to create a new firewall rule.
  *
- * @member {string} [provisioningState] the provisioning status of the Data
- * Lake Store account. Possible values include: 'Failed', 'Creating',
- * 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming', 'Deleting',
- * 'Deleted', 'Undeleting', 'Canceled'
- * @member {string} [state] the state of the Data Lake Store account. Possible
- * values include: 'Active', 'Suspended'
- * @member {date} [creationTime] the account creation time.
- * @member {date} [lastModifiedTime] the account last modified time.
- * @member {string} [endpoint] the full CName endpoint for this account.
- * @member {uuid} [accountId] The unique identifier associated with this Data
- * Lake Store account.
+ * @property {string} startIpAddress The start IP address for the firewall
+ * rule. This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
+ * @property {string} endIpAddress The end IP address for the firewall rule.
+ * This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
  */
-export interface DataLakeStoreAccountBasic extends Resource {
-  readonly provisioningState?: string;
-  readonly state?: string;
-  readonly creationTime?: Date;
-  readonly lastModifiedTime?: Date;
-  readonly endpoint?: string;
-  readonly accountId?: string;
+export interface CreateOrUpdateFirewallRuleParameters {
+  startIpAddress: string;
+  endIpAddress: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the ErrorDetails class.
+ * Initializes a new instance of the UpdateFirewallRuleParameters class.
  * @constructor
- * Data Lake Store error details information
+ * The parameters used to update a firewall rule.
  *
- * @member {string} [code] the HTTP status code or error code associated with
- * this error
- * @member {string} [message] the error message localized based on
- * Accept-Language
- * @member {string} [target] the target of the particular error (for example,
- * the name of the property in error).
+ * @property {string} [startIpAddress] The start IP address for the firewall
+ * rule. This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
+ * @property {string} [endIpAddress] The end IP address for the firewall rule.
+ * This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
  */
-export interface ErrorDetails {
-  readonly code?: string;
-  readonly message?: string;
-  readonly target?: string;
-}
-
-
-/**
- * @class
- * Initializes a new instance of the DataLakeStoreFirewallRuleListResult class.
- * @constructor
- * Data Lake Store firewall rule list information.
- *
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface DataLakeStoreFirewallRuleListResult extends Array<FirewallRule> {
-  readonly nextLink?: string;
+export interface UpdateFirewallRuleParameters {
+  startIpAddress?: string;
+  endIpAddress?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the DataLakeStoreTrustedIdProviderListResult class.
+ * Initializes a new instance of the CreateOrUpdateVirtualNetworkRuleParameters class.
  * @constructor
- * Data Lake Store trusted identity provider list information.
+ * The parameters used to create a new virtual network rule.
  *
- * @member {string} [nextLink] the link (url) to the next page of results.
+ * @property {string} subnetId The resource identifier for the subnet.
  */
-export interface DataLakeStoreTrustedIdProviderListResult extends Array<TrustedIdProvider> {
-  readonly nextLink?: string;
+export interface CreateOrUpdateVirtualNetworkRuleParameters {
+  subnetId: string;
 }
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateVirtualNetworkRuleParameters class.
+ * @constructor
+ * The parameters used to update a virtual network rule.
+ *
+ * @property {string} [subnetId] The resource identifier for the subnet.
+ */
+export interface UpdateVirtualNetworkRuleParameters {
+  subnetId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateOrUpdateTrustedIdProviderParameters class.
+ * @constructor
+ * The parameters used to create a new trusted identity provider.
+ *
+ * @property {string} idProvider The URL of this trusted identity provider.
+ */
+export interface CreateOrUpdateTrustedIdProviderParameters {
+  idProvider: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateTrustedIdProviderParameters class.
+ * @constructor
+ * The parameters used to update a trusted identity provider.
+ *
+ * @property {string} [idProvider] The URL of this trusted identity provider.
+ */
+export interface UpdateTrustedIdProviderParameters {
+  idProvider?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckNameAvailabilityParameters class.
+ * @constructor
+ * Data Lake Store account name availability check parameters.
+ *
+ * @property {string} name The Data Lake Store name to check availability for.
+ */
+export interface CheckNameAvailabilityParameters {
+  name: string;
+}
+
 
 /**
  * @class
@@ -403,8 +724,44 @@ export interface DataLakeStoreTrustedIdProviderListResult extends Array<TrustedI
  * @constructor
  * Data Lake Store account list information response.
  *
- * @member {string} [nextLink] the link (url) to the next page of results.
+ * @property {string} [nextLink] The link (url) to the next page of results.
  */
 export interface DataLakeStoreAccountListResult extends Array<DataLakeStoreAccountBasic> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FirewallRuleListResult class.
+ * @constructor
+ * Data Lake Store firewall rule list information.
+ *
+ * @property {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface FirewallRuleListResult extends Array<FirewallRule> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualNetworkRuleListResult class.
+ * @constructor
+ * Data Lake Store virtual network rule list information.
+ *
+ * @property {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface VirtualNetworkRuleListResult extends Array<VirtualNetworkRule> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrustedIdProviderListResult class.
+ * @constructor
+ * Data Lake Store trusted identity provider list information.
+ *
+ * @property {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface TrustedIdProviderListResult extends Array<TrustedIdProvider> {
   readonly nextLink?: string;
 }

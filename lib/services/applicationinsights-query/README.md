@@ -3,22 +3,23 @@ uid: azure-applicationinsights-query
 summary: *content
 
 ---
-# Microsoft Azure SDK for Node.js - ApplicationInsightsDataClient
+**This SDK will be deprecated next year and will be replaced by a new TypeScript-based isomorphic SDK (found at https://github.com/Azure/azure-sdk-for-js) which works on Node.js and browsers.**
+## Microsoft Azure SDK for Node.js - ApplicationInsightsDataClient
 This project provides a Node.js package for accessing Azure. Right now it supports:
 - **Node.js version 6.x.x or higher**
 
-## Features
+### Features
 
 
-## How to Install
+### How to Install
 
 ```bash
 npm install azure-applicationinsights-query
 ```
 
-## How to use
+### How to use
 
-### Authentication, client creation and get metrics as an example.
+#### Authentication, client creation and get metrics as an example.
 
 ```javascript
 const msRest = require("ms-rest");
@@ -44,6 +45,6 @@ client.metrics.get(appId, metricId, timespan, interval, aggregation, segment, to
   console.dir(err, {depth: null, colors: true});
 });
 
-## Related projects
+### Related projects
 
 - [Microsoft Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)

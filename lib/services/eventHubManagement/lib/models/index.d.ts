@@ -22,9 +22,9 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * The Resource definition
  *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
+ * @property {string} [id] Resource Id
+ * @property {string} [name] Resource name
+ * @property {string} [type] Resource type
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -38,8 +38,8 @@ export interface Resource extends BaseResource {
  * @constructor
  * Definition of Resource
  *
- * @member {string} [location] Resource location
- * @member {object} [tags] Resource tags
+ * @property {string} [location] Resource location
+ * @property {object} [tags] Resource tags
  */
 export interface TrackedResource extends Resource {
   location?: string;
@@ -52,12 +52,12 @@ export interface TrackedResource extends Resource {
  * @constructor
  * SKU parameters supplied to the create namespace operation
  *
- * @member {string} name Name of this SKU. Possible values include: 'Basic',
+ * @property {string} name Name of this SKU. Possible values include: 'Basic',
  * 'Standard'
- * @member {string} [tier] The billing tier of this particular SKU. Possible
+ * @property {string} [tier] The billing tier of this particular SKU. Possible
  * values include: 'Basic', 'Standard'
- * @member {number} [capacity] The Event Hubs throughput units, vaule should be
- * 0 to 20 throughput units.
+ * @property {number} [capacity] The Event Hubs throughput units, vaule should
+ * be 0 to 20 throughput units.
  */
 export interface Sku {
   name: string;
@@ -71,25 +71,25 @@ export interface Sku {
  * @constructor
  * Single Namespace item in List or Get Operation
  *
- * @member {object} [sku] Properties of sku resource
- * @member {string} [sku.name] Name of this SKU. Possible values include:
+ * @property {object} [sku] Properties of sku resource
+ * @property {string} [sku.name] Name of this SKU. Possible values include:
  * 'Basic', 'Standard'
- * @member {string} [sku.tier] The billing tier of this particular SKU.
+ * @property {string} [sku.tier] The billing tier of this particular SKU.
  * Possible values include: 'Basic', 'Standard'
- * @member {number} [sku.capacity] The Event Hubs throughput units, vaule
+ * @property {number} [sku.capacity] The Event Hubs throughput units, vaule
  * should be 0 to 20 throughput units.
- * @member {string} [provisioningState] Provisioning state of the Namespace.
- * @member {date} [createdAt] The time the Namespace was created.
- * @member {date} [updatedAt] The time the Namespace was updated.
- * @member {string} [serviceBusEndpoint] Endpoint you can use to perform
+ * @property {string} [provisioningState] Provisioning state of the Namespace.
+ * @property {date} [createdAt] The time the Namespace was created.
+ * @property {date} [updatedAt] The time the Namespace was updated.
+ * @property {string} [serviceBusEndpoint] Endpoint you can use to perform
  * Service Bus operations.
- * @member {string} [metricId] Identifier for Azure Insights metrics.
- * @member {boolean} [isAutoInflateEnabled] Value that indicates whether
+ * @property {string} [metricId] Identifier for Azure Insights metrics.
+ * @property {boolean} [isAutoInflateEnabled] Value that indicates whether
  * AutoInflate is enabled for eventhub namespace.
- * @member {number} [maximumThroughputUnits] Upper limit of throughput units
+ * @property {number} [maximumThroughputUnits] Upper limit of throughput units
  * when AutoInflate is enabled, vaule should be within 0 to 20 throughput
  * units. ( '0' if AutoInflateEnabled = true)
- * @member {boolean} [kafkaEnabled] Value that indicates whether Kafka is
+ * @property {boolean} [kafkaEnabled] Value that indicates whether Kafka is
  * enabled for eventhub namespace.
  */
 export interface EHNamespace extends TrackedResource {
@@ -110,7 +110,7 @@ export interface EHNamespace extends TrackedResource {
  * @constructor
  * Single item in a List or Get AuthorizationRule operation
  *
- * @member {array} rights The rights associated with the rule.
+ * @property {array} rights The rights associated with the rule.
  */
 export interface AuthorizationRule extends Resource {
   rights: string[];
@@ -122,19 +122,19 @@ export interface AuthorizationRule extends Resource {
  * @constructor
  * Namespace/EventHub Connection String
  *
- * @member {string} [primaryConnectionString] Primary connection string of the
- * created namespace AuthorizationRule.
- * @member {string} [secondaryConnectionString] Secondary connection string of
+ * @property {string} [primaryConnectionString] Primary connection string of
  * the created namespace AuthorizationRule.
- * @member {string} [aliasPrimaryConnectionString] Primary connection string of
- * the alias if GEO DR is enabled
- * @member {string} [aliasSecondaryConnectionString] Secondary  connection
+ * @property {string} [secondaryConnectionString] Secondary connection string
+ * of the created namespace AuthorizationRule.
+ * @property {string} [aliasPrimaryConnectionString] Primary connection string
+ * of the alias if GEO DR is enabled
+ * @property {string} [aliasSecondaryConnectionString] Secondary  connection
  * string of the alias if GEO DR is enabled
- * @member {string} [primaryKey] A base64-encoded 256-bit primary key for
+ * @property {string} [primaryKey] A base64-encoded 256-bit primary key for
  * signing and validating the SAS token.
- * @member {string} [secondaryKey] A base64-encoded 256-bit primary key for
+ * @property {string} [secondaryKey] A base64-encoded 256-bit primary key for
  * signing and validating the SAS token.
- * @member {string} [keyName] A string that describes the AuthorizationRule.
+ * @property {string} [keyName] A string that describes the AuthorizationRule.
  */
 export interface AccessKeys {
   readonly primaryConnectionString?: string;
@@ -153,9 +153,9 @@ export interface AccessKeys {
  * Parameters supplied to the Regenerate Authorization Rule operation,
  * specifies which key neeeds to be reset.
  *
- * @member {string} keyType The access key to regenerate. Possible values
+ * @property {string} keyType The access key to regenerate. Possible values
  * include: 'PrimaryKey', 'SecondaryKey'
- * @member {string} [key] Optional, if the key value provided, is set for
+ * @property {string} [key] Optional, if the key value provided, is set for
  * KeyType or autogenerated Key value set for keyType
  */
 export interface RegenerateAccessKeyParameters {
@@ -169,11 +169,11 @@ export interface RegenerateAccessKeyParameters {
  * @constructor
  * Capture storage details for capture description
  *
- * @member {string} [name] Name for capture destination
- * @member {string} [storageAccountResourceId] Resource id of the storage
+ * @property {string} [name] Name for capture destination
+ * @property {string} [storageAccountResourceId] Resource id of the storage
  * account to be used to create the blobs
- * @member {string} [blobContainer] Blob container Name
- * @member {string} [archiveNameFormat] Blob naming convention for archive,
+ * @property {string} [blobContainer] Blob container Name
+ * @property {string} [archiveNameFormat] Blob naming convention for archive,
  * e.g.
  * {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}.
  * Here all the parameters (Namespace,EventHub .. etc) are mandatory
@@ -192,25 +192,26 @@ export interface Destination {
  * @constructor
  * Properties to configure capture description for eventhub
  *
- * @member {boolean} [enabled] A value that indicates whether capture
+ * @property {boolean} [enabled] A value that indicates whether capture
  * description is enabled.
- * @member {string} [encoding] Enumerates the possible values for the encoding
- * format of capture description. Note: 'AvroDeflate' will be deprecated in New
- * API Version. Possible values include: 'Avro', 'AvroDeflate'
- * @member {number} [intervalInSeconds] The time window allows you to set the
+ * @property {string} [encoding] Enumerates the possible values for the
+ * encoding format of capture description. Note: 'AvroDeflate' will be
+ * deprecated in New API Version. Possible values include: 'Avro',
+ * 'AvroDeflate'
+ * @property {number} [intervalInSeconds] The time window allows you to set the
  * frequency with which the capture to Azure Blobs will happen, value should
  * between 60 to 900 seconds
- * @member {number} [sizeLimitInBytes] The size window defines the amount of
+ * @property {number} [sizeLimitInBytes] The size window defines the amount of
  * data built up in your Event Hub before an capture operation, value should be
  * between 10485760 to 524288000 bytes
- * @member {object} [destination] Properties of Destination where capture will
- * be stored. (Storage Account, Blob Names)
- * @member {string} [destination.name] Name for capture destination
- * @member {string} [destination.storageAccountResourceId] Resource id of the
+ * @property {object} [destination] Properties of Destination where capture
+ * will be stored. (Storage Account, Blob Names)
+ * @property {string} [destination.name] Name for capture destination
+ * @property {string} [destination.storageAccountResourceId] Resource id of the
  * storage account to be used to create the blobs
- * @member {string} [destination.blobContainer] Blob container Name
- * @member {string} [destination.archiveNameFormat] Blob naming convention for
- * archive, e.g.
+ * @property {string} [destination.blobContainer] Blob container Name
+ * @property {string} [destination.archiveNameFormat] Blob naming convention
+ * for archive, e.g.
  * {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}.
  * Here all the parameters (Namespace,EventHub .. etc) are mandatory
  * irrespective of order
@@ -229,39 +230,39 @@ export interface CaptureDescription {
  * @constructor
  * Single item in List or Get Event Hub operation
  *
- * @member {array} [partitionIds] Current number of shards on the Event Hub.
- * @member {date} [createdAt] Exact time the Event Hub was created.
- * @member {date} [updatedAt] The exact time the message was updated.
- * @member {number} [messageRetentionInDays] Number of days to retain the
+ * @property {array} [partitionIds] Current number of shards on the Event Hub.
+ * @property {date} [createdAt] Exact time the Event Hub was created.
+ * @property {date} [updatedAt] The exact time the message was updated.
+ * @property {number} [messageRetentionInDays] Number of days to retain the
  * events for this Event Hub, value should be 1 to 7 days
- * @member {number} [partitionCount] Number of partitions created for the Event
- * Hub, allowed values are from 1 to 32 partitions.
- * @member {string} [status] Enumerates the possible values for the status of
+ * @property {number} [partitionCount] Number of partitions created for the
+ * Event Hub, allowed values are from 1 to 32 partitions.
+ * @property {string} [status] Enumerates the possible values for the status of
  * the Event Hub. Possible values include: 'Active', 'Disabled', 'Restoring',
  * 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting', 'Renaming',
  * 'Unknown'
- * @member {object} [captureDescription] Properties of capture description
- * @member {boolean} [captureDescription.enabled] A value that indicates
+ * @property {object} [captureDescription] Properties of capture description
+ * @property {boolean} [captureDescription.enabled] A value that indicates
  * whether capture description is enabled.
- * @member {string} [captureDescription.encoding] Enumerates the possible
+ * @property {string} [captureDescription.encoding] Enumerates the possible
  * values for the encoding format of capture description. Note: 'AvroDeflate'
  * will be deprecated in New API Version. Possible values include: 'Avro',
  * 'AvroDeflate'
- * @member {number} [captureDescription.intervalInSeconds] The time window
+ * @property {number} [captureDescription.intervalInSeconds] The time window
  * allows you to set the frequency with which the capture to Azure Blobs will
  * happen, value should between 60 to 900 seconds
- * @member {number} [captureDescription.sizeLimitInBytes] The size window
+ * @property {number} [captureDescription.sizeLimitInBytes] The size window
  * defines the amount of data built up in your Event Hub before an capture
  * operation, value should be between 10485760 to 524288000 bytes
- * @member {object} [captureDescription.destination] Properties of Destination
- * where capture will be stored. (Storage Account, Blob Names)
- * @member {string} [captureDescription.destination.name] Name for capture
+ * @property {object} [captureDescription.destination] Properties of
+ * Destination where capture will be stored. (Storage Account, Blob Names)
+ * @property {string} [captureDescription.destination.name] Name for capture
  * destination
- * @member {string} [captureDescription.destination.storageAccountResourceId]
+ * @property {string} [captureDescription.destination.storageAccountResourceId]
  * Resource id of the storage account to be used to create the blobs
- * @member {string} [captureDescription.destination.blobContainer] Blob
+ * @property {string} [captureDescription.destination.blobContainer] Blob
  * container Name
- * @member {string} [captureDescription.destination.archiveNameFormat] Blob
+ * @property {string} [captureDescription.destination.archiveNameFormat] Blob
  * naming convention for archive, e.g.
  * {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}.
  * Here all the parameters (Namespace,EventHub .. etc) are mandatory
@@ -283,9 +284,9 @@ export interface Eventhub extends Resource {
  * @constructor
  * Single item in List or Get Consumer group operation
  *
- * @member {date} [createdAt] Exact time the message was created.
- * @member {date} [updatedAt] The exact time the message was updated.
- * @member {string} [userMetadata] Usermetadata is a placeholder to store
+ * @property {date} [createdAt] Exact time the message was created.
+ * @property {date} [updatedAt] The exact time the message was updated.
+ * @property {string} [userMetadata] Usermetadata is a placeholder to store
  * user-defined string data with maximum length 1024. e.g. it can be used to
  * store descriptive data, such as list of teams and their contact information
  * also user-defined configuration settings can be stored.
@@ -302,7 +303,7 @@ export interface ConsumerGroup extends Resource {
  * @constructor
  * Parameter supplied to check Namespace name availability operation
  *
- * @member {string} name Name to check the namespace name availability
+ * @property {string} name Name to check the namespace name availability
  */
 export interface CheckNameAvailabilityParameter {
   name: string;
@@ -314,11 +315,11 @@ export interface CheckNameAvailabilityParameter {
  * @constructor
  * The Result of the CheckNameAvailability operation
  *
- * @member {string} [message] The detailed info regarding the reason associated
- * with the Namespace.
- * @member {boolean} [nameAvailable] Value indicating Namespace is
+ * @property {string} [message] The detailed info regarding the reason
+ * associated with the Namespace.
+ * @property {boolean} [nameAvailable] Value indicating Namespace is
  * availability, true if the Namespace is available; otherwise, false.
- * @member {string} [reason] The reason for unavailability of a Namespace.
+ * @property {string} [reason] The reason for unavailability of a Namespace.
  * Possible values include: 'None', 'InvalidName', 'SubscriptionIsDisabled',
  * 'NameInUse', 'NameInLockdown', 'TooManyNamespaceInCurrentSubscription'
  */
@@ -334,10 +335,10 @@ export interface CheckNameAvailabilityResult {
  * @constructor
  * The object that represents the operation.
  *
- * @member {string} [provider] Service provider: Microsoft.EventHub
- * @member {string} [resource] Resource on which the operation is performed:
+ * @property {string} [provider] Service provider: Microsoft.EventHub
+ * @property {string} [resource] Resource on which the operation is performed:
  * Invoice, etc.
- * @member {string} [operation] Operation type: Read, write, delete, etc.
+ * @property {string} [operation] Operation type: Read, write, delete, etc.
  */
 export interface OperationDisplay {
   readonly provider?: string;
@@ -351,12 +352,12 @@ export interface OperationDisplay {
  * @constructor
  * A Event Hub REST API operation
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Service provider: Microsoft.EventHub
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] The object that represents the operation.
+ * @property {string} [display.provider] Service provider: Microsoft.EventHub
+ * @property {string} [display.resource] Resource on which the operation is
  * performed: Invoice, etc.
- * @member {string} [display.operation] Operation type: Read, write, delete,
+ * @property {string} [display.operation] Operation type: Read, write, delete,
  * etc.
  */
 export interface Operation {
@@ -371,8 +372,8 @@ export interface Operation {
  * Error reponse indicates EventHub service is not able to process the incoming
  * request. The reason is provided in the error message.
  *
- * @member {string} [code] Error code.
- * @member {string} [message] Error message indicating why the operation
+ * @property {string} [code] Error code.
+ * @property {string} [message] Error message indicating why the operation
  * failed.
  */
 export interface ErrorResponse {
@@ -386,18 +387,18 @@ export interface ErrorResponse {
  * @constructor
  * Single item in List or Get Alias(Disaster Recovery configuration) operation
  *
- * @member {string} [provisioningState] Provisioning state of the
+ * @property {string} [provisioningState] Provisioning state of the
  * Alias(Disaster Recovery configuration) - possible values 'Accepted' or
  * 'Succeeded' or 'Failed'. Possible values include: 'Accepted', 'Succeeded',
  * 'Failed'
- * @member {string} [partnerNamespace] ARM Id of the Primary/Secondary eventhub
- * namespace name, which is part of GEO DR pairning
- * @member {string} [alternateName] Alternate name specified when alias and
+ * @property {string} [partnerNamespace] ARM Id of the Primary/Secondary
+ * eventhub namespace name, which is part of GEO DR pairning
+ * @property {string} [alternateName] Alternate name specified when alias and
  * namespace names are same.
- * @member {string} [role] role of namespace in GEO DR - possible values
+ * @property {string} [role] role of namespace in GEO DR - possible values
  * 'Primary' or 'PrimaryNotReplicating' or 'Secondary'. Possible values
  * include: 'Primary', 'PrimaryNotReplicating', 'Secondary'
- * @member {number} [pendingReplicationOperationsCount] Number of entities
+ * @property {number} [pendingReplicationOperationsCount] Number of entities
  * pending to be replicated.
  */
 export interface ArmDisasterRecovery extends Resource {
@@ -412,8 +413,8 @@ export interface ArmDisasterRecovery extends Resource {
  * @class
  * Initializes a new instance of the MessagingRegionsProperties class.
  * @constructor
- * @member {string} [code] Region code
- * @member {string} [fullName] Full name of the region
+ * @property {string} [code] Region code
+ * @property {string} [fullName] Full name of the region
  */
 export interface MessagingRegionsProperties {
   readonly code?: string;
@@ -426,9 +427,9 @@ export interface MessagingRegionsProperties {
  * @constructor
  * Messaging Region
  *
- * @member {object} [properties]
- * @member {string} [properties.code] Region code
- * @member {string} [properties.fullName] Full name of the region
+ * @property {object} [properties]
+ * @property {string} [properties.code] Region code
+ * @property {string} [properties.fullName] Full name of the region
  */
 export interface MessagingRegions extends TrackedResource {
   properties?: MessagingRegionsProperties;
@@ -440,10 +441,10 @@ export interface MessagingRegions extends TrackedResource {
  * @constructor
  * Messaging Plan for the namespace
  *
- * @member {number} [sku] Sku type
- * @member {number} [selectedEventHubUnit] Selected event hub unit
- * @member {date} [updatedAt] The exact time the messaging plan was updated.
- * @member {number} [revision] revision number
+ * @property {number} [sku] Sku type
+ * @property {number} [selectedEventHubUnit] Selected event hub unit
+ * @property {date} [updatedAt] The exact time the messaging plan was updated.
+ * @property {number} [revision] revision number
  */
 export interface MessagingPlan extends TrackedResource {
   readonly sku?: number;
@@ -460,7 +461,7 @@ export interface MessagingPlan extends TrackedResource {
  * Result of the request to list Event Hub operations. It contains a list of
  * operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {
@@ -473,7 +474,7 @@ export interface OperationListResult extends Array<Operation> {
  * @constructor
  * The response of the List Namespace operation
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of namespaces.
  */
 export interface EHNamespaceListResult extends Array<EHNamespace> {
@@ -486,7 +487,7 @@ export interface EHNamespaceListResult extends Array<EHNamespace> {
  * @constructor
  * The response from the List namespace operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains an incomplete list of Authorization Rules
  */
 export interface AuthorizationRuleListResult extends Array<AuthorizationRule> {
@@ -499,7 +500,7 @@ export interface AuthorizationRuleListResult extends Array<AuthorizationRule> {
  * @constructor
  * The result of the List Alias(Disaster Recovery configuration) operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of Alias(Disaster Recovery configuration)
  */
 export interface ArmDisasterRecoveryListResult extends Array<ArmDisasterRecovery> {
@@ -512,7 +513,7 @@ export interface ArmDisasterRecoveryListResult extends Array<ArmDisasterRecovery
  * @constructor
  * The result of the List EventHubs operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of EventHubs.
  */
 export interface EventHubListResult extends Array<Eventhub> {
@@ -525,7 +526,7 @@ export interface EventHubListResult extends Array<Eventhub> {
  * @constructor
  * The result to the List Consumer Group operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of Consumer Group
  */
 export interface ConsumerGroupListResult extends Array<ConsumerGroup> {
@@ -538,7 +539,7 @@ export interface ConsumerGroupListResult extends Array<ConsumerGroup> {
  * @constructor
  * The response of the List MessagingRegions operation.
  *
- * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * @property {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of MessagingRegions.
  */
 export interface MessagingRegionsListResult extends Array<MessagingRegions> {

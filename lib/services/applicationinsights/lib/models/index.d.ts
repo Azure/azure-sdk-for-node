@@ -23,8 +23,8 @@ export { CloudError } from 'ms-rest-azure';
  * Error reponse indicates Insights service is not able to process the incoming
  * request. The reason is provided in the error message.
  *
- * @member {string} [code] Error code.
- * @member {string} [message] Error message indicating why the operation
+ * @property {string} [code] Error code.
+ * @property {string} [message] Error message indicating why the operation
  * failed.
  */
 export interface ErrorResponse {
@@ -38,10 +38,10 @@ export interface ErrorResponse {
  * @constructor
  * The object that represents the operation.
  *
- * @member {string} [provider] Service provider: Microsoft.Cdn
- * @member {string} [resource] Resource on which the operation is performed:
+ * @property {string} [provider] Service provider: Microsoft.Cdn
+ * @property {string} [resource] Resource on which the operation is performed:
  * Profile, endpoint, etc.
- * @member {string} [operation] Operation type: Read, write, delete, etc.
+ * @property {string} [operation] Operation type: Read, write, delete, etc.
  */
 export interface OperationDisplay {
   provider?: string;
@@ -55,12 +55,12 @@ export interface OperationDisplay {
  * @constructor
  * CDN REST API operation
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Service provider: Microsoft.Cdn
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] The object that represents the operation.
+ * @property {string} [display.provider] Service provider: Microsoft.Cdn
+ * @property {string} [display.resource] Resource on which the operation is
  * performed: Profile, endpoint, etc.
- * @member {string} [display.operation] Operation type: Read, write, delete,
+ * @property {string} [display.operation] Operation type: Read, write, delete,
  * etc.
  */
 export interface Operation {
@@ -74,12 +74,13 @@ export interface Operation {
  * @constructor
  * Annotation associated with an application insights resource.
  *
- * @member {string} [annotationName] Name of annotation
- * @member {string} [category] Category of annotation, free form
- * @member {date} [eventTime] Time when event occurred
- * @member {string} [id] Unique Id for annotation
- * @member {string} [properties] Serialized JSON object for detailed properties
- * @member {string} [relatedAnnotation] Related parent annotation if any.
+ * @property {string} [annotationName] Name of annotation
+ * @property {string} [category] Category of annotation, free form
+ * @property {date} [eventTime] Time when event occurred
+ * @property {string} [id] Unique Id for annotation
+ * @property {string} [properties] Serialized JSON object for detailed
+ * properties
+ * @property {string} [relatedAnnotation] Related parent annotation if any.
  * Default value: 'null' .
  */
 export interface Annotation {
@@ -97,8 +98,8 @@ export interface Annotation {
  * @constructor
  * Inner error
  *
- * @member {string} [diagnosticcontext] Provides correlation for request
- * @member {date} [time] Request time
+ * @property {string} [diagnosticcontext] Provides correlation for request
+ * @property {date} [time] Request time
  */
 export interface InnerError {
   diagnosticcontext?: string;
@@ -111,12 +112,12 @@ export interface InnerError {
  * @constructor
  * Error associated with trying to create annotation with Id that already exist
  *
- * @member {string} [code] Error detail code and explanation
- * @member {string} [message] Error message
- * @member {object} [innererror]
- * @member {string} [innererror.diagnosticcontext] Provides correlation for
+ * @property {string} [code] Error detail code and explanation
+ * @property {string} [message] Error message
+ * @property {object} [innererror]
+ * @property {string} [innererror.diagnosticcontext] Provides correlation for
  * request
- * @member {date} [innererror.time] Request time
+ * @property {date} [innererror.time] Request time
  */
 export interface AnnotationError {
   code?: string;
@@ -130,11 +131,11 @@ export interface AnnotationError {
  * @constructor
  * An Application Insights component API Key createion request definition.
  *
- * @member {string} [name] The name of the API Key.
- * @member {array} [linkedReadProperties] The read access rights of this API
+ * @property {string} [name] The name of the API Key.
+ * @property {array} [linkedReadProperties] The read access rights of this API
  * Key.
- * @member {array} [linkedWriteProperties] The write access rights of this API
- * Key.
+ * @property {array} [linkedWriteProperties] The write access rights of this
+ * API Key.
  */
 export interface APIKeyRequest {
   name?: string;
@@ -148,16 +149,16 @@ export interface APIKeyRequest {
  * @constructor
  * Properties that define an API key of an Application Insights Component.
  *
- * @member {string} [id] The unique ID of the API key inside an Applciation
+ * @property {string} [id] The unique ID of the API key inside an Applciation
  * Insights component. It is auto generated when the API key is created.
- * @member {string} [apiKey] The API key value. It will be only return once
+ * @property {string} [apiKey] The API key value. It will be only return once
  * when the API Key was created.
- * @member {string} [createdDate] The create date of this API key.
- * @member {string} [name] The name of the API key.
- * @member {array} [linkedReadProperties] The read access rights of this API
+ * @property {string} [createdDate] The create date of this API key.
+ * @property {string} [name] The name of the API key.
+ * @property {array} [linkedReadProperties] The read access rights of this API
  * Key.
- * @member {array} [linkedWriteProperties] The write access rights of this API
- * Key.
+ * @property {array} [linkedWriteProperties] The write access rights of this
+ * API Key.
  */
 export interface ApplicationInsightsComponentAPIKey {
   readonly id?: string;
@@ -175,23 +176,23 @@ export interface ApplicationInsightsComponentAPIKey {
  * An Application Insights component Continuous Export configuration request
  * definition.
  *
- * @member {string} [recordTypes] The document types to be exported, as comma
+ * @property {string} [recordTypes] The document types to be exported, as comma
  * separated values. Allowed values include 'Requests', 'Event', 'Exceptions',
  * 'Metrics', 'PageViews', 'PageViewPerformance', 'Rdd', 'PerformanceCounters',
  * 'Availability', 'Messages'.
- * @member {string} [destinationType] The Continuous Export destination type.
+ * @property {string} [destinationType] The Continuous Export destination type.
  * This has to be 'Blob'.
- * @member {string} [destinationAddress] The SAS URL for the destination
+ * @property {string} [destinationAddress] The SAS URL for the destination
  * storage container. It must grant write permission.
- * @member {string} [isEnabled] Set to 'true' to create a Continuous Export
+ * @property {string} [isEnabled] Set to 'true' to create a Continuous Export
  * configuration as enabled, otherwise set it to 'false'.
- * @member {string} [notificationQueueEnabled] Deprecated
- * @member {string} [notificationQueueUri] Deprecated
- * @member {string} [destinationStorageSubscriptionId] The subscription ID of
+ * @property {string} [notificationQueueEnabled] Deprecated
+ * @property {string} [notificationQueueUri] Deprecated
+ * @property {string} [destinationStorageSubscriptionId] The subscription ID of
  * the destination storage container.
- * @member {string} [destinationStorageLocationId] The location ID of the
+ * @property {string} [destinationStorageLocationId] The location ID of the
  * destination storage container.
- * @member {string} [destinationAccountId] The name of destination storage
+ * @property {string} [destinationAccountId] The name of destination storage
  * account.
  */
 export interface ApplicationInsightsComponentExportRequest {
@@ -212,45 +213,46 @@ export interface ApplicationInsightsComponentExportRequest {
  * @constructor
  * Properties that define a Continuous Export configuration.
  *
- * @member {string} [exportId] The unique ID of the export configuration inside
- * an Applciation Insights component. It is auto generated when the Continuous
- * Export configuration is created.
- * @member {string} [instrumentationKey] The instrumentation key of the
+ * @property {string} [exportId] The unique ID of the export configuration
+ * inside an Applciation Insights component. It is auto generated when the
+ * Continuous Export configuration is created.
+ * @property {string} [instrumentationKey] The instrumentation key of the
  * Application Insights component.
- * @member {string} [recordTypes] This comma separated list of document types
+ * @property {string} [recordTypes] This comma separated list of document types
  * that will be exported. The possible values include 'Requests', 'Event',
  * 'Exceptions', 'Metrics', 'PageViews', 'PageViewPerformance', 'Rdd',
  * 'PerformanceCounters', 'Availability', 'Messages'.
- * @member {string} [applicationName] The name of the Application Insights
+ * @property {string} [applicationName] The name of the Application Insights
  * component.
- * @member {string} [subscriptionId] The subscription of the Application
+ * @property {string} [subscriptionId] The subscription of the Application
  * Insights component.
- * @member {string} [resourceGroup] The resource group of the Application
+ * @property {string} [resourceGroup] The resource group of the Application
  * Insights component.
- * @member {string} [destinationStorageSubscriptionId] The destination storage
- * account subscription ID.
- * @member {string} [destinationStorageLocationId] The destination account
+ * @property {string} [destinationStorageSubscriptionId] The destination
+ * storage account subscription ID.
+ * @property {string} [destinationStorageLocationId] The destination account
  * location ID.
- * @member {string} [destinationAccountId] The name of destination account.
- * @member {string} [destinationType] The destination type.
- * @member {string} [isUserEnabled] This will be 'true' if the Continuous
+ * @property {string} [destinationAccountId] The name of destination account.
+ * @property {string} [destinationType] The destination type.
+ * @property {string} [isUserEnabled] This will be 'true' if the Continuous
  * Export configuration is enabled, otherwise it will be 'false'.
- * @member {string} [lastUserUpdate] Last time the Continuous Export
+ * @property {string} [lastUserUpdate] Last time the Continuous Export
  * configuration was updated.
- * @member {string} [notificationQueueEnabled] Deprecated
- * @member {string} [exportStatus] This indicates current Continuous Export
+ * @property {string} [notificationQueueEnabled] Deprecated
+ * @property {string} [exportStatus] This indicates current Continuous Export
  * configuration status. The possible values are 'Preparing', 'Success',
  * 'Failure'.
- * @member {string} [lastSuccessTime] The last time data was successfully
+ * @property {string} [lastSuccessTime] The last time data was successfully
  * delivered to the destination storage container for this Continuous Export
  * configuration.
- * @member {string} [lastGapTime] The last time the Continuous Export
+ * @property {string} [lastGapTime] The last time the Continuous Export
  * configuration started failing.
- * @member {string} [permanentErrorReason] This is the reason the Continuous
+ * @property {string} [permanentErrorReason] This is the reason the Continuous
  * Export configuration started failing. It can be 'AzureStorageNotFound' or
  * 'AzureStorageAccessDenied'.
- * @member {string} [storageName] The name of the destination storage account.
- * @member {string} [containerName] The name of the destination storage
+ * @property {string} [storageName] The name of the destination storage
+ * account.
+ * @property {string} [containerName] The name of the destination storage
  * container.
  */
 export interface ApplicationInsightsComponentExportConfiguration {
@@ -281,15 +283,15 @@ export interface ApplicationInsightsComponentExportConfiguration {
  * @constructor
  * An Application Insights component daily data volumne cap
  *
- * @member {number} [cap] Daily data volume cap in GB.
- * @member {number} [resetTime] Daily data volume cap UTC reset hour.
- * @member {number} [warningThreshold] Reserved, not used for now.
- * @member {boolean} [stopSendNotificationWhenHitThreshold] Reserved, not used
- * for now.
- * @member {boolean} [stopSendNotificationWhenHitCap] Do not send a
+ * @property {number} [cap] Daily data volume cap in GB.
+ * @property {number} [resetTime] Daily data volume cap UTC reset hour.
+ * @property {number} [warningThreshold] Reserved, not used for now.
+ * @property {boolean} [stopSendNotificationWhenHitThreshold] Reserved, not
+ * used for now.
+ * @property {boolean} [stopSendNotificationWhenHitCap] Do not send a
  * notification email when the daily data volume cap is met.
- * @member {number} [maxHistoryCap] Maximum daily data volume cap that the user
- * can set for this component.
+ * @property {number} [maxHistoryCap] Maximum daily data volume cap that the
+ * user can set for this component.
  */
 export interface ApplicationInsightsComponentDataVolumeCap {
   cap?: number;
@@ -306,22 +308,22 @@ export interface ApplicationInsightsComponentDataVolumeCap {
  * @constructor
  * An Application Insights component billing features
  *
- * @member {object} [dataVolumeCap] An Application Insights component daily
+ * @property {object} [dataVolumeCap] An Application Insights component daily
  * data volumne cap
- * @member {number} [dataVolumeCap.cap] Daily data volume cap in GB.
- * @member {number} [dataVolumeCap.resetTime] Daily data volume cap UTC reset
+ * @property {number} [dataVolumeCap.cap] Daily data volume cap in GB.
+ * @property {number} [dataVolumeCap.resetTime] Daily data volume cap UTC reset
  * hour.
- * @member {number} [dataVolumeCap.warningThreshold] Reserved, not used for
+ * @property {number} [dataVolumeCap.warningThreshold] Reserved, not used for
  * now.
- * @member {boolean} [dataVolumeCap.stopSendNotificationWhenHitThreshold]
+ * @property {boolean} [dataVolumeCap.stopSendNotificationWhenHitThreshold]
  * Reserved, not used for now.
- * @member {boolean} [dataVolumeCap.stopSendNotificationWhenHitCap] Do not send
- * a notification email when the daily data volume cap is met.
- * @member {number} [dataVolumeCap.maxHistoryCap] Maximum daily data volume cap
- * that the user can set for this component.
- * @member {array} [currentBillingFeatures] Current enabled pricing plan. When
- * the component is in the Enterprise plan, this will list both 'Basic' and
- * 'Application Insights Enterprise'.
+ * @property {boolean} [dataVolumeCap.stopSendNotificationWhenHitCap] Do not
+ * send a notification email when the daily data volume cap is met.
+ * @property {number} [dataVolumeCap.maxHistoryCap] Maximum daily data volume
+ * cap that the user can set for this component.
+ * @property {array} [currentBillingFeatures] Current enabled pricing plan.
+ * When the component is in the Enterprise plan, this will list both 'Basic'
+ * and 'Application Insights Enterprise'.
  */
 export interface ApplicationInsightsComponentBillingFeatures {
   dataVolumeCap?: ApplicationInsightsComponentDataVolumeCap;
@@ -334,11 +336,11 @@ export interface ApplicationInsightsComponentBillingFeatures {
  * @constructor
  * An Application Insights component daily data volume cap status
  *
- * @member {string} [appId] The Application ID for the Application Insights
+ * @property {string} [appId] The Application ID for the Application Insights
  * component.
- * @member {boolean} [shouldBeThrottled] The daily data volume cap is met, and
- * data ingestion will be stopped.
- * @member {string} [expirationTime] Date and time when the daily data volume
+ * @property {boolean} [shouldBeThrottled] The daily data volume cap is met,
+ * and data ingestion will be stopped.
+ * @property {string} [expirationTime] Date and time when the daily data volume
  * cap will be reset, and data ingestion will resume.
  */
 export interface ApplicationInsightsComponentQuotaStatus {
@@ -353,26 +355,26 @@ export interface ApplicationInsightsComponentQuotaStatus {
  * @constructor
  * An Application Insights component feature capabilities
  *
- * @member {boolean} [supportExportData] Whether allow to use continuous export
- * feature.
- * @member {string} [burstThrottlePolicy] Reserved, not used now.
- * @member {string} [metadataClass] Reserved, not used now.
- * @member {boolean} [liveStreamMetrics] Reserved, not used now.
- * @member {boolean} [applicationMap] Reserved, not used now.
- * @member {boolean} [workItemIntegration] Whether allow to use work item
+ * @property {boolean} [supportExportData] Whether allow to use continuous
+ * export feature.
+ * @property {string} [burstThrottlePolicy] Reserved, not used now.
+ * @property {string} [metadataClass] Reserved, not used now.
+ * @property {boolean} [liveStreamMetrics] Reserved, not used now.
+ * @property {boolean} [applicationMap] Reserved, not used now.
+ * @property {boolean} [workItemIntegration] Whether allow to use work item
  * integration feature.
- * @member {boolean} [powerBIIntegration] Reserved, not used now.
- * @member {boolean} [openSchema] Reserved, not used now.
- * @member {boolean} [proactiveDetection] Reserved, not used now.
- * @member {boolean} [analyticsIntegration] Reserved, not used now.
- * @member {boolean} [multipleStepWebTest] Whether allow to use multiple steps
- * web test feature.
- * @member {string} [apiAccessLevel] Reserved, not used now.
- * @member {string} [trackingType] The applciation insights component used
+ * @property {boolean} [powerBIIntegration] Reserved, not used now.
+ * @property {boolean} [openSchema] Reserved, not used now.
+ * @property {boolean} [proactiveDetection] Reserved, not used now.
+ * @property {boolean} [analyticsIntegration] Reserved, not used now.
+ * @property {boolean} [multipleStepWebTest] Whether allow to use multiple
+ * steps web test feature.
+ * @property {string} [apiAccessLevel] Reserved, not used now.
+ * @property {string} [trackingType] The applciation insights component used
  * tracking type.
- * @member {number} [dailyCap] Daily data volume cap in GB.
- * @member {number} [dailyCapResetTime] Daily data volume cap UTC reset hour.
- * @member {number} [throttleRate] Reserved, not used now.
+ * @property {number} [dailyCap] Daily data volume cap in GB.
+ * @property {number} [dailyCapResetTime] Daily data volume cap UTC reset hour.
+ * @property {number} [throttleRate] Reserved, not used now.
  */
 export interface ApplicationInsightsComponentFeatureCapabilities {
   readonly supportExportData?: boolean;
@@ -399,12 +401,12 @@ export interface ApplicationInsightsComponentFeatureCapabilities {
  * @constructor
  * An Application Insights component feature capability
  *
- * @member {string} [name] The name of the capability.
- * @member {string} [description] The description of the capability.
- * @member {string} [value] The vaule of the capability.
- * @member {string} [unit] The unit of the capability.
- * @member {string} [meterId] The meter used for the capability.
- * @member {string} [meterRateFrequency] The meter rate of the meter.
+ * @property {string} [name] The name of the capability.
+ * @property {string} [description] The description of the capability.
+ * @property {string} [value] The vaule of the capability.
+ * @property {string} [unit] The unit of the capability.
+ * @property {string} [meterId] The meter used for the capability.
+ * @property {string} [meterRateFrequency] The meter rate of the meter.
  */
 export interface ApplicationInsightsComponentFeatureCapability {
   readonly name?: string;
@@ -421,17 +423,18 @@ export interface ApplicationInsightsComponentFeatureCapability {
  * @constructor
  * An Application Insights component daily data volume cap status
  *
- * @member {string} [featureName] The pricing feature name.
- * @member {string} [meterId] The meter id used for the feature.
- * @member {string} [meterRateFrequency] The meter meter rate for the feature's
- * meter.
- * @member {string} [resouceId] Reserved, not used now.
- * @member {boolean} [isHidden] Reserved, not used now.
- * @member {array} [capabilities] A list of Application Insigths component
+ * @property {string} [featureName] The pricing feature name.
+ * @property {string} [meterId] The meter id used for the feature.
+ * @property {string} [meterRateFrequency] The meter meter rate for the
+ * feature's meter.
+ * @property {string} [resouceId] Reserved, not used now.
+ * @property {boolean} [isHidden] Reserved, not used now.
+ * @property {array} [capabilities] A list of Application Insigths component
  * feature capability.
- * @member {string} [title] Desplay name of the feature.
- * @member {boolean} [isMainFeature] Whether can apply addon feature on to it.
- * @member {string} [supportedAddonFeatures] The add on features on main
+ * @property {string} [title] Desplay name of the feature.
+ * @property {boolean} [isMainFeature] Whether can apply addon feature on to
+ * it.
+ * @property {string} [supportedAddonFeatures] The add on features on main
  * feature.
  */
 export interface ApplicationInsightsComponentFeature {
@@ -452,7 +455,7 @@ export interface ApplicationInsightsComponentFeature {
  * @constructor
  * An Application Insights component available features.
  *
- * @member {array} [result] A list of Application Insigths component feature.
+ * @property {array} [result] A list of Application Insigths component feature.
  */
 export interface ApplicationInsightsComponentAvailableFeatures {
   readonly result?: ApplicationInsightsComponentFeature[];
@@ -465,18 +468,18 @@ export interface ApplicationInsightsComponentAvailableFeatures {
  * Static definitions of the ProactiveDetection configuration rule (same values
  * for all components).
  *
- * @member {string} [name] The rule name
- * @member {string} [displayName] The rule name as it is displayed in UI
- * @member {string} [description] The rule description
- * @member {string} [helpUrl] URL which displays aditional info about the
+ * @property {string} [name] The rule name
+ * @property {string} [displayName] The rule name as it is displayed in UI
+ * @property {string} [description] The rule description
+ * @property {string} [helpUrl] URL which displays aditional info about the
  * proactive detection rule
- * @member {boolean} [isHidden] A flag indicating whether the rule is hidden
+ * @property {boolean} [isHidden] A flag indicating whether the rule is hidden
  * (from the UI)
- * @member {boolean} [isEnabledByDefault] A flag indicating whether the rule is
- * enabled by default
- * @member {boolean} [isInPreview] A flag indicating whether the rule is in
+ * @property {boolean} [isEnabledByDefault] A flag indicating whether the rule
+ * is enabled by default
+ * @property {boolean} [isInPreview] A flag indicating whether the rule is in
  * preview
- * @member {boolean} [supportsEmailNotifications] A flag indicating whether
+ * @property {boolean} [supportsEmailNotifications] A flag indicating whether
  * email notifications are supported for detections for this rule
  */
 export interface ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitions {
@@ -496,29 +499,29 @@ export interface ApplicationInsightsComponentProactiveDetectionConfigurationRule
  * @constructor
  * Properties that define a ProactiveDetection configuration.
  *
- * @member {string} [name] The rule name
- * @member {boolean} [enabled] A flag that indicates whether this rule is
+ * @property {string} [name] The rule name
+ * @property {boolean} [enabled] A flag that indicates whether this rule is
  * enabled by the user
- * @member {boolean} [sendEmailsToSubscriptionOwners] A flag that indicated
+ * @property {boolean} [sendEmailsToSubscriptionOwners] A flag that indicated
  * whether notifications on this rule should be sent to subscription owners
- * @member {array} [customEmails] Custom email addresses for this rule
+ * @property {array} [customEmails] Custom email addresses for this rule
  * notifications
- * @member {string} [lastUpdatedTime] The last time this rule was updated
- * @member {object} [ruleDefinitions] Static definitions of the
+ * @property {string} [lastUpdatedTime] The last time this rule was updated
+ * @property {object} [ruleDefinitions] Static definitions of the
  * ProactiveDetection configuration rule (same values for all components).
- * @member {string} [ruleDefinitions.name] The rule name
- * @member {string} [ruleDefinitions.displayName] The rule name as it is
+ * @property {string} [ruleDefinitions.name] The rule name
+ * @property {string} [ruleDefinitions.displayName] The rule name as it is
  * displayed in UI
- * @member {string} [ruleDefinitions.description] The rule description
- * @member {string} [ruleDefinitions.helpUrl] URL which displays aditional info
- * about the proactive detection rule
- * @member {boolean} [ruleDefinitions.isHidden] A flag indicating whether the
+ * @property {string} [ruleDefinitions.description] The rule description
+ * @property {string} [ruleDefinitions.helpUrl] URL which displays aditional
+ * info about the proactive detection rule
+ * @property {boolean} [ruleDefinitions.isHidden] A flag indicating whether the
  * rule is hidden (from the UI)
- * @member {boolean} [ruleDefinitions.isEnabledByDefault] A flag indicating
+ * @property {boolean} [ruleDefinitions.isEnabledByDefault] A flag indicating
  * whether the rule is enabled by default
- * @member {boolean} [ruleDefinitions.isInPreview] A flag indicating whether
+ * @property {boolean} [ruleDefinitions.isInPreview] A flag indicating whether
  * the rule is in preview
- * @member {boolean} [ruleDefinitions.supportsEmailNotifications] A flag
+ * @property {boolean} [ruleDefinitions.supportsEmailNotifications] A flag
  * indicating whether email notifications are supported for detections for this
  * rule
  */
@@ -537,11 +540,11 @@ export interface ApplicationInsightsComponentProactiveDetectionConfiguration ext
  * @constructor
  * An azure resource object
  *
- * @member {string} [id] Azure resource Id
- * @member {string} [name] Azure resource name
- * @member {string} [type] Azure resource type
- * @member {string} location Resource location
- * @member {object} [tags] Resource tags
+ * @property {string} [id] Azure resource Id
+ * @property {string} [name] Azure resource name
+ * @property {string} [type] Azure resource type
+ * @property {string} location Resource location
+ * @property {object} [tags] Resource tags
  */
 export interface ComponentsResource extends BaseResource {
   readonly id?: string;
@@ -558,7 +561,7 @@ export interface ComponentsResource extends BaseResource {
  * A container holding only the Tags for a resource, allowing the user to
  * update the tags on a WebTest instance.
  *
- * @member {object} [tags] Resource tags
+ * @property {object} [tags] Resource tags
  */
 export interface TagsResource {
   tags?: { [propertyName: string]: string };
@@ -570,40 +573,41 @@ export interface TagsResource {
  * @constructor
  * An Application Insights component definition.
  *
- * @member {string} kind The kind of application that this component refers to,
- * used to customize UI. This value is a freeform string, values should
+ * @property {string} kind The kind of application that this component refers
+ * to, used to customize UI. This value is a freeform string, values should
  * typically be one of the following: web, ios, other, store, java, phone.
- * @member {string} [applicationId] The unique ID of your application. This
+ * @property {string} [applicationId] The unique ID of your application. This
  * field mirrors the 'Name' field and cannot be changed.
- * @member {string} [appId] Application Insights Unique ID for your
+ * @property {string} [appId] Application Insights Unique ID for your
  * Application.
- * @member {string} applicationType Type of application being monitored.
+ * @property {string} applicationType Type of application being monitored.
  * Possible values include: 'web', 'other'. Default value: 'web' .
- * @member {string} [flowType] Used by the Application Insights system to
+ * @property {string} [flowType] Used by the Application Insights system to
  * determine what kind of flow this component was created by. This is to be set
  * to 'Bluefield' when creating/updating a component via the REST API. Possible
  * values include: 'Bluefield'. Default value: 'Bluefield' .
- * @member {string} [requestSource] Describes what tool created this
+ * @property {string} [requestSource] Describes what tool created this
  * Application Insights component. Customers using this API should set this to
  * the default 'rest'. Possible values include: 'rest'. Default value: 'rest' .
- * @member {string} [instrumentationKey] Application Insights Instrumentation
+ * @property {string} [instrumentationKey] Application Insights Instrumentation
  * key. A read-only value that applications can use to identify the destination
  * for all telemetry sent to Azure Application Insights. This value will be
  * supplied upon construction of each new Application Insights component.
- * @member {date} [creationDate] Creation Date for the Application Insights
+ * @property {date} [creationDate] Creation Date for the Application Insights
  * component, in ISO 8601 format.
- * @member {string} [tenantId] Azure Tenant Id.
- * @member {string} [hockeyAppId] The unique application ID created when a new
- * application is added to HockeyApp, used for communications with HockeyApp.
- * @member {string} [hockeyAppToken] Token used to authenticate communications
- * with between Application Insights and HockeyApp.
- * @member {string} [provisioningState] Current state of this component:
+ * @property {string} [tenantId] Azure Tenant Id.
+ * @property {string} [hockeyAppId] The unique application ID created when a
+ * new application is added to HockeyApp, used for communications with
+ * HockeyApp.
+ * @property {string} [hockeyAppToken] Token used to authenticate
+ * communications with between Application Insights and HockeyApp.
+ * @property {string} [provisioningState] Current state of this component:
  * whether or not is has been provisioned within the resource group it is
  * defined. Users cannot change this value but are able to read from it. Values
  * will include Succeeded, Deploying, Canceled, and Failed.
- * @member {number} [samplingPercentage] Percentage of the data produced by the
- * application being monitored that is being sampled for Application Insights
- * telemetry.
+ * @property {number} [samplingPercentage] Percentage of the data produced by
+ * the application being monitored that is being sampled for Application
+ * Insights telemetry.
  */
 export interface ApplicationInsightsComponent extends ComponentsResource {
   kind: string;
@@ -627,18 +631,21 @@ export interface ApplicationInsightsComponent extends ComponentsResource {
  * @constructor
  * User-defined filters to return data which will be purged from the table.
  *
- * @member {string} [column] The column of the table over which the given query
- * should run
- * @member {string} [operator] A query operator to evaluate over the provided
+ * @property {string} [column] The column of the table over which the given
+ * query should run
+ * @property {string} [operator] A query operator to evaluate over the provided
  * column and value(s).
- * @member {object} [value] the value for the operator to function over. This
+ * @property {object} [value] the value for the operator to function over. This
  * can be a number (e.g., > 100), a string (timestamp >= '2017-09-01') or array
  * of values.
+ * @property {string} [key] When filtering over custom dimensions, this key
+ * will be used as the name of the custom dimension.
  */
 export interface ComponentPurgeBodyFilters {
   column?: string;
   operator?: string;
   value?: any;
+  key?: string;
 }
 
 /**
@@ -647,9 +654,9 @@ export interface ComponentPurgeBodyFilters {
  * @constructor
  * Describes the body of a purge request for an App Insights component
  *
- * @member {string} table Table from which to purge data.
- * @member {array} filters The set of columns and filters (queries) to run over
- * them to purge the resulting data.
+ * @property {string} table Table from which to purge data.
+ * @property {array} filters The set of columns and filters (queries) to run
+ * over them to purge the resulting data.
  */
 export interface ComponentPurgeBody {
   table: string;
@@ -662,7 +669,7 @@ export interface ComponentPurgeBody {
  * @constructor
  * Response containing operationId for a specific purge action.
  *
- * @member {string} operationId Id to use when querying for status for a
+ * @property {string} operationId Id to use when querying for status for a
  * particular purge operation.
  */
 export interface ComponentPurgeResponse {
@@ -675,8 +682,8 @@ export interface ComponentPurgeResponse {
  * @constructor
  * Response containing status for a specific purge operation.
  *
- * @member {string} status Status of the operation represented by the requested
- * Id. Possible values include: 'pending', 'completed'
+ * @property {string} status Status of the operation represented by the
+ * requested Id. Possible values include: 'pending', 'completed'
  */
 export interface ComponentPurgeStatusResponse {
   status: string;
@@ -688,13 +695,13 @@ export interface ComponentPurgeStatusResponse {
  * @constructor
  * Work item configuration associated with an application insights resource.
  *
- * @member {string} [connectorId] Connector identifier where work item is
+ * @property {string} [connectorId] Connector identifier where work item is
  * created
- * @member {string} [configDisplayName] Configuration friendly name
- * @member {boolean} [isDefault] Boolean value indicating whether configuration
- * is default
- * @member {string} [id] Unique Id for work item
- * @member {string} [configProperties] Serialized JSON object for detailed
+ * @property {string} [configDisplayName] Configuration friendly name
+ * @property {boolean} [isDefault] Boolean value indicating whether
+ * configuration is default
+ * @property {string} [id] Unique Id for work item
+ * @property {string} [configProperties] Serialized JSON object for detailed
  * properties
  */
 export interface WorkItemConfiguration {
@@ -711,11 +718,11 @@ export interface WorkItemConfiguration {
  * @constructor
  * Work item configuration creation payload
  *
- * @member {string} [connectorId] Unique connector id
- * @member {string} [connectorDataConfiguration] Serialized JSON object for
+ * @property {string} [connectorId] Unique connector id
+ * @property {string} [connectorDataConfiguration] Serialized JSON object for
  * detaile d properties
- * @member {boolean} [validateOnly] Boolean indicating validate only
- * @member {string} [workItemProperties] Custom work item properties
+ * @property {boolean} [validateOnly] Boolean indicating validate only
+ * @property {string} [workItemProperties] Custom work item properties
  */
 export interface WorkItemCreateConfiguration {
   connectorId?: string;
@@ -731,12 +738,12 @@ export interface WorkItemCreateConfiguration {
  * Error associated with trying to get work item configuration or
  * configurations
  *
- * @member {string} [code] Error detail code and explanation
- * @member {string} [message] Error message
- * @member {object} [innererror]
- * @member {string} [innererror.diagnosticcontext] Provides correlation for
+ * @property {string} [code] Error detail code and explanation
+ * @property {string} [message] Error message
+ * @property {object} [innererror]
+ * @property {string} [innererror.diagnosticcontext] Provides correlation for
  * request
- * @member {date} [innererror.time] Request time
+ * @property {date} [innererror.time] Request time
  */
 export interface WorkItemConfigurationError {
   code?: string;
@@ -751,30 +758,30 @@ export interface WorkItemConfigurationError {
  * Properties that define a favorite that is associated to an Application
  * Insights component.
  *
- * @member {string} [name] The user-defined name of the favorite.
- * @member {string} [config] Configuration of this particular favorite, which
+ * @property {string} [name] The user-defined name of the favorite.
+ * @property {string} [config] Configuration of this particular favorite, which
  * are driven by the Azure portal UX. Configuration data is a string containing
  * valid JSON
- * @member {string} [version] This instance's version of the data model. This
+ * @property {string} [version] This instance's version of the data model. This
  * can change as new features are added that can be marked favorite. Current
  * examples include MetricsExplorer (ME) and Search.
- * @member {string} [favoriteId] Internally assigned unique id of the favorite
- * definition.
- * @member {string} [favoriteType] Enum indicating if this favorite definition
- * is owned by a specific user or is shared between all users with access to
- * the Application Insights component. Possible values include: 'shared',
- * 'user'
- * @member {string} [sourceType] The source of the favorite definition.
- * @member {string} [timeModified] Date and time in UTC of the last
+ * @property {string} [favoriteId] Internally assigned unique id of the
+ * favorite definition.
+ * @property {string} [favoriteType] Enum indicating if this favorite
+ * definition is owned by a specific user or is shared between all users with
+ * access to the Application Insights component. Possible values include:
+ * 'shared', 'user'
+ * @property {string} [sourceType] The source of the favorite definition.
+ * @property {string} [timeModified] Date and time in UTC of the last
  * modification that was made to this favorite definition.
- * @member {array} [tags] A list of 0 or more tags that are associated with
+ * @property {array} [tags] A list of 0 or more tags that are associated with
  * this favorite definition
- * @member {string} [category] Favorite category, as defined by the user at
+ * @property {string} [category] Favorite category, as defined by the user at
  * creation time.
- * @member {boolean} [isGeneratedFromTemplate] Flag denoting wether or not this
- * favorite was generated from a template.
- * @member {string} [userId] Unique user id of the specific user that owns this
- * favorite.
+ * @property {boolean} [isGeneratedFromTemplate] Flag denoting wether or not
+ * this favorite was generated from a template.
+ * @property {string} [userId] Unique user id of the specific user that owns
+ * this favorite.
  */
 export interface ApplicationInsightsComponentFavorite {
   name?: string;
@@ -797,8 +804,8 @@ export interface ApplicationInsightsComponentFavorite {
  * Properties that define a web test location available to an Application
  * Insights Component.
  *
- * @member {string} [displayName] The display name of the web test location.
- * @member {string} [tag] Internally defined geographic location tag.
+ * @property {string} [displayName] The display name of the web test location.
+ * @property {string} [tag] Internally defined geographic location tag.
  */
 export interface ApplicationInsightsComponentWebTestLocation {
   readonly displayName?: string;
@@ -811,11 +818,11 @@ export interface ApplicationInsightsComponentWebTestLocation {
  * @constructor
  * An azure resource object
  *
- * @member {string} [id] Azure resource Id
- * @member {string} [name] Azure resource name
- * @member {string} [type] Azure resource type
- * @member {string} location Resource location
- * @member {object} [tags] Resource tags
+ * @property {string} [id] Azure resource Id
+ * @property {string} [name] Azure resource name
+ * @property {string} [type] Azure resource type
+ * @property {string} location Resource location
+ * @property {object} [tags] Resource tags
  */
 export interface WebtestsResource extends BaseResource {
   readonly id?: string;
@@ -832,7 +839,7 @@ export interface WebtestsResource extends BaseResource {
  * Geo-physical location to run a web test from. You must specify one or more
  * locations for the test to run from.
  *
- * @member {string} [location] Location ID for the webtest to run from.
+ * @property {string} [location] Location ID for the webtest to run from.
  */
 export interface WebTestGeolocation {
   location?: string;
@@ -844,8 +851,8 @@ export interface WebTestGeolocation {
  * @constructor
  * An XML configuration specification for a WebTest.
  *
- * @member {string} [webTest] The XML specification of a WebTest to run against
- * an application.
+ * @property {string} [webTest] The XML specification of a WebTest to run
+ * against an application.
  */
 export interface WebTestPropertiesConfiguration {
   webTest?: string;
@@ -857,30 +864,31 @@ export interface WebTestPropertiesConfiguration {
  * @constructor
  * An Application Insights web test definition.
  *
- * @member {string} [kind] The kind of web test that this web test watches.
+ * @property {string} [kind] The kind of web test that this web test watches.
  * Choices are ping and multistep. Possible values include: 'ping',
  * 'multistep'. Default value: 'ping' .
- * @member {string} syntheticMonitorId Unique ID of this WebTest. This is
+ * @property {string} syntheticMonitorId Unique ID of this WebTest. This is
  * typically the same value as the Name field.
- * @member {string} webTestName User defined name if this WebTest.
- * @member {string} [description] Purpose/user defined descriptive test for
+ * @property {string} webTestName User defined name if this WebTest.
+ * @property {string} [description] Purpose/user defined descriptive test for
  * this WebTest.
- * @member {boolean} [enabled] Is the test actively being monitored.
- * @member {number} [frequency] Interval in seconds between test runs for this
- * WebTest. Default value is 300. Default value: 300 .
- * @member {number} [timeout] Seconds until this WebTest will timeout and fail.
- * Default value is 30. Default value: 30 .
- * @member {string} webTestKind The kind of web test this is, valid choices are
- * ping and multistep. Possible values include: 'ping', 'multistep'. Default
- * value: 'ping' .
- * @member {boolean} [retryEnabled] Allow for retries should this WebTest fail.
- * @member {array} locations A list of where to physically run the tests from
+ * @property {boolean} [enabled] Is the test actively being monitored.
+ * @property {number} [frequency] Interval in seconds between test runs for
+ * this WebTest. Default value is 300. Default value: 300 .
+ * @property {number} [timeout] Seconds until this WebTest will timeout and
+ * fail. Default value is 30. Default value: 30 .
+ * @property {string} webTestKind The kind of web test this is, valid choices
+ * are ping and multistep. Possible values include: 'ping', 'multistep'.
+ * Default value: 'ping' .
+ * @property {boolean} [retryEnabled] Allow for retries should this WebTest
+ * fail.
+ * @property {array} locations A list of where to physically run the tests from
  * to give global coverage for accessibility of your application.
- * @member {object} [configuration] An XML configuration specification for a
+ * @property {object} [configuration] An XML configuration specification for a
  * WebTest.
- * @member {string} [configuration.webTest] The XML specification of a WebTest
- * to run against an application.
- * @member {string} [provisioningState] Current state of this component,
+ * @property {string} [configuration.webTest] The XML specification of a
+ * WebTest to run against an application.
+ * @property {string} [provisioningState] Current state of this component,
  * whether or not is has been provisioned within the resource group it is
  * defined. Users cannot change this value but are able to read from it. Values
  * will include Succeeded, Deploying, Canceled, and Failed.
@@ -907,8 +915,8 @@ export interface WebTest extends WebtestsResource {
  * A set of properties that can be defined in the context of a specific item
  * type. Each type may have its own properties.
  *
- * @member {string} [functionAlias] A function alias, used when the type of the
- * item is Function
+ * @property {string} [functionAlias] A function alias, used when the type of
+ * the item is Function
  */
 export interface ApplicationInsightsComponentAnalyticsItemProperties {
   functionAlias?: string;
@@ -921,23 +929,24 @@ export interface ApplicationInsightsComponentAnalyticsItemProperties {
  * Properties that define an Analytics item that is associated to an
  * Application Insights component.
  *
- * @member {string} [id] Internally assigned unique id of the item definition.
- * @member {string} [name] The user-defined name of the item.
- * @member {string} [content] The content of this item
- * @member {string} [version] This instance's version of the data model. This
+ * @property {string} [id] Internally assigned unique id of the item
+ * definition.
+ * @property {string} [name] The user-defined name of the item.
+ * @property {string} [content] The content of this item
+ * @property {string} [version] This instance's version of the data model. This
  * can change as new features are added.
- * @member {string} [scope] Enum indicating if this item definition is owned by
- * a specific user or is shared between all users with access to the
+ * @property {string} [scope] Enum indicating if this item definition is owned
+ * by a specific user or is shared between all users with access to the
  * Application Insights component. Possible values include: 'shared', 'user'
- * @member {string} [type] Enum indicating the type of the Analytics item.
+ * @property {string} [type] Enum indicating the type of the Analytics item.
  * Possible values include: 'query', 'function', 'folder', 'recent'
- * @member {string} [timeCreated] Date and time in UTC when this item was
+ * @property {string} [timeCreated] Date and time in UTC when this item was
  * created.
- * @member {string} [timeModified] Date and time in UTC of the last
+ * @property {string} [timeModified] Date and time in UTC of the last
  * modification that was made to this item.
- * @member {object} [properties]
- * @member {string} [properties.functionAlias] A function alias, used when the
- * type of the item is Function
+ * @property {object} [properties]
+ * @property {string} [properties.functionAlias] A function alias, used when
+ * the type of the item is Function
  */
 export interface ApplicationInsightsComponentAnalyticsItem {
   id?: string;
@@ -957,11 +966,11 @@ export interface ApplicationInsightsComponentAnalyticsItem {
  * @constructor
  * An azure resource object
  *
- * @member {string} [id] Azure resource Id
- * @member {string} [name] Azure resource name
- * @member {string} [type] Azure resource type
- * @member {string} [location] Resource location
- * @member {object} [tags] Resource tags
+ * @property {string} [id] Azure resource Id
+ * @property {string} [name] Azure resource name
+ * @property {string} [type] Azure resource type
+ * @property {string} [location] Resource location
+ * @property {object} [tags] Resource tags
  */
 export interface WorkbookResource extends BaseResource {
   readonly id?: string;
@@ -977,28 +986,28 @@ export interface WorkbookResource extends BaseResource {
  * @constructor
  * An Application Insights workbook definition.
  *
- * @member {string} [kind] The kind of workbook. Choices are user and shared.
+ * @property {string} [kind] The kind of workbook. Choices are user and shared.
  * Possible values include: 'user', 'shared'
- * @member {string} workbookName The user-defined name of the workbook.
- * @member {string} serializedData Configuration of this particular workbook.
+ * @property {string} workbookName The user-defined name of the workbook.
+ * @property {string} serializedData Configuration of this particular workbook.
  * Configuration data is a string containing valid JSON
- * @member {string} [version] This instance's version of the data model. This
+ * @property {string} [version] This instance's version of the data model. This
  * can change as new features are added that can be marked workbook.
- * @member {string} workbookId Internally assigned unique id of the workbook
+ * @property {string} workbookId Internally assigned unique id of the workbook
  * definition.
- * @member {string} sharedTypeKind Enum indicating if this workbook definition
- * is owned by a specific user or is shared between all users with access to
- * the Application Insights component. Possible values include: 'user',
- * 'shared'. Default value: 'shared' .
- * @member {string} [timeModified] Date and time in UTC of the last
+ * @property {string} sharedTypeKind Enum indicating if this workbook
+ * definition is owned by a specific user or is shared between all users with
+ * access to the Application Insights component. Possible values include:
+ * 'user', 'shared'. Default value: 'shared' .
+ * @property {string} [timeModified] Date and time in UTC of the last
  * modification that was made to this workbook definition.
- * @member {string} category Workbook category, as defined by the user at
+ * @property {string} category Workbook category, as defined by the user at
  * creation time.
- * @member {array} [workbookTags] A list of 0 or more tags that are associated
- * with this workbook definition
- * @member {string} userId Unique user id of the specific user that owns this
+ * @property {array} [workbookTags] A list of 0 or more tags that are
+ * associated with this workbook definition
+ * @property {string} userId Unique user id of the specific user that owns this
  * workbook.
- * @member {string} [sourceResourceId] Optional resourceId for a source
+ * @property {string} [sourceResourceId] Optional resourceId for a source
  * resource.
  */
 export interface Workbook extends WorkbookResource {
@@ -1021,9 +1030,9 @@ export interface Workbook extends WorkbookResource {
  * @constructor
  * Contains a sourceId and workbook resource id to link two resources.
  *
- * @member {string} [sourceId] The source Azure resource id
- * @member {string} [targetId] The workbook Azure resource id
- * @member {string} [category] The category of workbook
+ * @property {string} [sourceId] The source Azure resource id
+ * @property {string} [targetId] The workbook Azure resource id
+ * @property {string} [category] The category of workbook
  */
 export interface LinkProperties {
   sourceId?: string;
@@ -1037,10 +1046,10 @@ export interface LinkProperties {
  * @constructor
  * Error Field contract.
  *
- * @member {string} [code] Property level error code.
- * @member {string} [message] Human-readable representation of property-level
+ * @property {string} [code] Property level error code.
+ * @property {string} [message] Human-readable representation of property-level
  * error.
- * @member {string} [target] Property name.
+ * @property {string} [target] Property name.
  */
 export interface ErrorFieldContract {
   code?: string;
@@ -1054,10 +1063,10 @@ export interface ErrorFieldContract {
  * @constructor
  * Error message body that will indicate why the operation failed.
  *
- * @member {string} [code] Service-defined error code. This code serves as a
+ * @property {string} [code] Service-defined error code. This code serves as a
  * sub-status for the HTTP error code specified in the response.
- * @member {string} [message] Human-readable representation of the error.
- * @member {array} [details] The list of invalid fields send in request, in
+ * @property {string} [message] Human-readable representation of the error.
+ * @property {array} [details] The list of invalid fields send in request, in
  * case of validation error.
  */
 export interface WorkbookError {
@@ -1074,7 +1083,7 @@ export interface WorkbookError {
  * Result of the request to list CDN operations. It contains a list of
  * operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {
@@ -1107,7 +1116,7 @@ export interface ApplicationInsightsComponentAPIKeyListResult extends Array<Appl
  * @constructor
  * Describes the list of Application Insights Resources.
  *
- * @member {string} [nextLink] The URI to get the next set of Application
+ * @property {string} [nextLink] The URI to get the next set of Application
  * Insights component defintions if too many components where returned in the
  * result set.
  */
@@ -1142,7 +1151,7 @@ export interface ApplicationInsightsWebTestLocationsListResult extends Array<App
  * @constructor
  * A list of 0 or more Application Insights web test definitions.
  *
- * @member {string} [nextLink] The link to get the next part of the returned
+ * @property {string} [nextLink] The link to get the next part of the returned
  * list of web tests, should the return set be too large for a single request.
  * May be null.
  */
