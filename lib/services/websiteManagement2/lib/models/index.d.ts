@@ -466,6 +466,8 @@ export interface VnetRoute extends ProxyOnlyResource {
  * required; otherwise, <code>false</code>.
  * @member {string} [dnsServers] DNS servers to be used by this Virtual
  * Network. This should be a comma-separated list of IP addresses.
+ * @member {boolean} [isSwift] Flag that is used to denote if this is VNET
+ * injection
  */
 export interface VnetInfo extends ProxyOnlyResource {
   vnetResourceId?: string;
@@ -474,6 +476,7 @@ export interface VnetInfo extends ProxyOnlyResource {
   readonly routes?: VnetRoute[];
   readonly resyncRequired?: boolean;
   dnsServers?: string;
+  isSwift?: boolean;
 }
 
 /**
@@ -825,9 +828,14 @@ export interface ApiDefinitionInfo {
  * @member {array} [allowedOrigins] Gets or sets the list of origins that
  * should be allowed to make cross-origin
  * calls (for example: http://example.com:12345). Use "*" to allow all.
+ * @member {boolean} [supportCredentials] Gets or sets whether CORS requests
+ * with credentials are allowed. See
+ * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+ * for more details.
  */
 export interface CorsSettings {
   allowedOrigins?: string[];
+  supportCredentials?: boolean;
 }
 
 /**
@@ -1281,6 +1289,10 @@ export interface NameValuePair {
  * @member {array} [cors.allowedOrigins] Gets or sets the list of origins that
  * should be allowed to make cross-origin
  * calls (for example: http://example.com:12345). Use "*" to allow all.
+ * @member {boolean} [cors.supportCredentials] Gets or sets whether CORS
+ * requests with credentials are allowed. See
+ * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+ * for more details.
  * @member {object} [push] Push endpoint settings.
  * @member {boolean} [push.isPushEnabled] Gets or sets a flag indicating
  * whether the Push endpoint is enabled.
@@ -1305,7 +1317,11 @@ export interface NameValuePair {
  * @member {number} [managedServiceIdentityId] Managed Service Identity Id
  * @member {number} [xManagedServiceIdentityId] Explicit Managed Service
  * Identity Id
- * @member {array} [ipSecurityRestrictions] IP security restrictions.
+ * @member {array} [ipSecurityRestrictions] IP security restrictions for main.
+ * @member {array} [scmIpSecurityRestrictions] IP security restrictions for
+ * scm.
+ * @member {boolean} [scmIpSecurityRestrictionsUseMain] IP security
+ * restrictions for scm to use main.
  * @member {boolean} [http20Enabled] Http20Enabled: configures a web site to
  * allow clients to connect over http2.0. Default value: true .
  * @member {string} [minTlsVersion] MinTlsVersion: configures the minimum
@@ -1364,6 +1380,8 @@ export interface SiteConfig {
   managedServiceIdentityId?: number;
   xManagedServiceIdentityId?: number;
   ipSecurityRestrictions?: IpSecurityRestriction[];
+  scmIpSecurityRestrictions?: IpSecurityRestriction[];
+  scmIpSecurityRestrictionsUseMain?: boolean;
   http20Enabled?: boolean;
   minTlsVersion?: string;
   ftpsState?: string;
@@ -1539,6 +1557,10 @@ export interface HostNameSslState {
  * @member {array} [siteConfig.cors.allowedOrigins] Gets or sets the list of
  * origins that should be allowed to make cross-origin
  * calls (for example: http://example.com:12345). Use "*" to allow all.
+ * @member {boolean} [siteConfig.cors.supportCredentials] Gets or sets whether
+ * CORS requests with credentials are allowed. See
+ * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+ * for more details.
  * @member {object} [siteConfig.push] Push endpoint settings.
  * @member {boolean} [siteConfig.push.isPushEnabled] Gets or sets a flag
  * indicating whether the Push endpoint is enabled.
@@ -1565,8 +1587,12 @@ export interface HostNameSslState {
  * Identity Id
  * @member {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
  * Service Identity Id
- * @member {array} [siteConfig.ipSecurityRestrictions] IP security
- * restrictions.
+ * @member {array} [siteConfig.ipSecurityRestrictions] IP security restrictions
+ * for main.
+ * @member {array} [siteConfig.scmIpSecurityRestrictions] IP security
+ * restrictions for scm.
+ * @member {boolean} [siteConfig.scmIpSecurityRestrictionsUseMain] IP security
+ * restrictions for scm to use main.
  * @member {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
  * site to allow clients to connect over http2.0
  * @member {string} [siteConfig.minTlsVersion] MinTlsVersion: configures the
@@ -3632,12 +3658,15 @@ export interface StackMinorVersion {
  * version; otherwise, <code>false</code>.
  * @member {array} [minorVersions] Minor versions associated with the major
  * version.
+ * @member {boolean} [applicationInsights] <code>true</code> if this supports
+ * Application Insights; otherwise, <code>false</code>.
  */
 export interface StackMajorVersion {
   displayVersion?: string;
   runtimeVersion?: string;
   isDefault?: boolean;
   minorVersions?: StackMinorVersion[];
+  applicationInsights?: boolean;
 }
 
 /**
@@ -4540,11 +4569,14 @@ export interface CustomHostnameAnalysisResult extends ProxyOnlyResource {
  * @member {string} [snapshotTime] Point in time to restore the deleted app
  * from, formatted as a DateTime string.
  * If unspecified, default value is the time that the app was deleted.
+ * @member {boolean} [useDRSecondary] If true, the snapshot is retrieved from
+ * DRSecondary endpoint.
  */
 export interface DeletedAppRestoreRequest extends ProxyOnlyResource {
   deletedSiteId?: string;
   recoverConfiguration?: boolean;
   snapshotTime?: string;
+  useDRSecondary?: boolean;
 }
 
 /**
@@ -4886,6 +4918,8 @@ export interface RelayServiceConnectionEntity extends ProxyOnlyResource {
  * @member {string} [virtualNetworkConnection.dnsServers] DNS servers to be
  * used by this Virtual Network. This should be a comma-separated list of IP
  * addresses.
+ * @member {boolean} [virtualNetworkConnection.isSwift] Flag that is used to
+ * denote if this is VNET injection
  * @member {array} [hybridConnections] The Hybrid Connections summary view.
  * @member {array} [hybridConnectionsV2] The Hybrid Connection V2 (Service Bus)
  * view.
@@ -5334,6 +5368,10 @@ export interface RestoreRequest extends ProxyOnlyResource {
  * authenticate end users.
  * More information on OpenID Connect:
  * http://openid.net/specs/openid-connect-core-1_0.html
+ * @member {string} [clientSecretCertificateThumbprint] An alternative to the
+ * client secret, that is the thumbprint of a certifite used for signing
+ * purposes. This property acts as
+ * a replacement for the Client Secret. It is also optional.
  * @member {string} [issuer] The OpenID Connect Issuer URI that represents the
  * entity which issues access tokens for this application.
  * When using Azure Active Directory, this value is the URI of the directory
@@ -5417,6 +5455,7 @@ export interface SiteAuthSettings extends ProxyOnlyResource {
   tokenRefreshExtensionHours?: number;
   clientId?: string;
   clientSecret?: string;
+  clientSecretCertificateThumbprint?: string;
   issuer?: string;
   validateIssuer?: boolean;
   allowedAudiences?: string[];
@@ -5577,6 +5616,10 @@ export interface SiteCloneability {
  * @member {array} [cors.allowedOrigins] Gets or sets the list of origins that
  * should be allowed to make cross-origin
  * calls (for example: http://example.com:12345). Use "*" to allow all.
+ * @member {boolean} [cors.supportCredentials] Gets or sets whether CORS
+ * requests with credentials are allowed. See
+ * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+ * for more details.
  * @member {object} [push] Push endpoint settings.
  * @member {boolean} [push.isPushEnabled] Gets or sets a flag indicating
  * whether the Push endpoint is enabled.
@@ -5601,7 +5644,11 @@ export interface SiteCloneability {
  * @member {number} [managedServiceIdentityId] Managed Service Identity Id
  * @member {number} [xManagedServiceIdentityId] Explicit Managed Service
  * Identity Id
- * @member {array} [ipSecurityRestrictions] IP security restrictions.
+ * @member {array} [ipSecurityRestrictions] IP security restrictions for main.
+ * @member {array} [scmIpSecurityRestrictions] IP security restrictions for
+ * scm.
+ * @member {boolean} [scmIpSecurityRestrictionsUseMain] IP security
+ * restrictions for scm to use main.
  * @member {boolean} [http20Enabled] Http20Enabled: configures a web site to
  * allow clients to connect over http2.0. Default value: true .
  * @member {string} [minTlsVersion] MinTlsVersion: configures the minimum
@@ -5660,6 +5707,8 @@ export interface SiteConfigResource extends ProxyOnlyResource {
   managedServiceIdentityId?: number;
   xManagedServiceIdentityId?: number;
   ipSecurityRestrictions?: IpSecurityRestriction[];
+  scmIpSecurityRestrictions?: IpSecurityRestriction[];
+  scmIpSecurityRestrictionsUseMain?: boolean;
   http20Enabled?: boolean;
   minTlsVersion?: string;
   ftpsState?: string;
@@ -5953,6 +6002,10 @@ export interface SiteLogsConfig extends ProxyOnlyResource {
  * @member {array} [siteConfig.cors.allowedOrigins] Gets or sets the list of
  * origins that should be allowed to make cross-origin
  * calls (for example: http://example.com:12345). Use "*" to allow all.
+ * @member {boolean} [siteConfig.cors.supportCredentials] Gets or sets whether
+ * CORS requests with credentials are allowed. See
+ * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+ * for more details.
  * @member {object} [siteConfig.push] Push endpoint settings.
  * @member {boolean} [siteConfig.push.isPushEnabled] Gets or sets a flag
  * indicating whether the Push endpoint is enabled.
@@ -5979,8 +6032,12 @@ export interface SiteLogsConfig extends ProxyOnlyResource {
  * Identity Id
  * @member {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
  * Service Identity Id
- * @member {array} [siteConfig.ipSecurityRestrictions] IP security
- * restrictions.
+ * @member {array} [siteConfig.ipSecurityRestrictions] IP security restrictions
+ * for main.
+ * @member {array} [siteConfig.scmIpSecurityRestrictions] IP security
+ * restrictions for scm.
+ * @member {boolean} [siteConfig.scmIpSecurityRestrictionsUseMain] IP security
+ * restrictions for scm to use main.
  * @member {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
  * site to allow clients to connect over http2.0
  * @member {string} [siteConfig.minTlsVersion] MinTlsVersion: configures the
@@ -6247,6 +6304,8 @@ export interface SnapshotRecoverySource {
  * @member {boolean} [ignoreConflictingHostNames] If true, custom hostname
  * conflicts will be ignored when recovering to a target web app.
  * This setting is only necessary when RecoverConfiguration is enabled.
+ * @member {boolean} [useDRSecondary] If true, the snapshot is retrieved from
+ * DRSecondary endpoint.
  */
 export interface SnapshotRestoreRequest extends ProxyOnlyResource {
   snapshotTime?: string;
@@ -6254,6 +6313,7 @@ export interface SnapshotRestoreRequest extends ProxyOnlyResource {
   overwrite: boolean;
   recoverConfiguration?: boolean;
   ignoreConflictingHostNames?: boolean;
+  useDRSecondary?: boolean;
 }
 
 /**

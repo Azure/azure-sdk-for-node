@@ -9166,6 +9166,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -9207,7 +9212,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -9551,6 +9562,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -9592,7 +9608,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -10035,6 +10057,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -10076,7 +10103,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -10408,6 +10441,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -10449,7 +10487,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -11655,6 +11699,11 @@ export interface WebApps {
      * More information on OpenID Connect:
      * http://openid.net/specs/openid-connect-core-1_0.html
      *
+     * @param {string} [siteAuthSettings.clientSecretCertificateThumbprint] An
+     * alternative to the client secret, that is the thumbprint of a certifite used
+     * for signing purposes. This property acts as
+     * a replacement for the Client Secret. It is also optional.
+     *
      * @param {string} [siteAuthSettings.issuer] The OpenID Connect Issuer URI that
      * represents the entity which issues access tokens for this application.
      * When using Azure Active Directory, this value is the URI of the directory
@@ -11823,6 +11872,11 @@ export interface WebApps {
      * authenticate end users.
      * More information on OpenID Connect:
      * http://openid.net/specs/openid-connect-core-1_0.html
+     *
+     * @param {string} [siteAuthSettings.clientSecretCertificateThumbprint] An
+     * alternative to the client secret, that is the thumbprint of a certifite used
+     * for signing purposes. This property acts as
+     * a replacement for the Client Secret. It is also optional.
      *
      * @param {string} [siteAuthSettings.issuer] The OpenID Connect Issuer URI that
      * represents the entity which issues access tokens for this application.
@@ -13994,6 +14048,11 @@ export interface WebApps {
      * origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteConfig.cors.supportCredentials] Gets or sets whether
+     * CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
@@ -14033,7 +14092,14 @@ export interface WebApps {
      * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
      * Service Identity Id
      *
-     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
+     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions
+     * for main.
+     *
+     * @param {array} [siteConfig.scmIpSecurityRestrictions] IP security
+     * restrictions for scm.
+     *
+     * @param {boolean} [siteConfig.scmIpSecurityRestrictionsUseMain] IP security
+     * restrictions for scm to use main.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
      * site to allow clients to connect over http2.0
@@ -14241,6 +14307,11 @@ export interface WebApps {
      * origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteConfig.cors.supportCredentials] Gets or sets whether
+     * CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
@@ -14280,7 +14351,14 @@ export interface WebApps {
      * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
      * Service Identity Id
      *
-     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
+     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions
+     * for main.
+     *
+     * @param {array} [siteConfig.scmIpSecurityRestrictions] IP security
+     * restrictions for scm.
+     *
+     * @param {boolean} [siteConfig.scmIpSecurityRestrictionsUseMain] IP security
+     * restrictions for scm to use main.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
      * site to allow clients to connect over http2.0
@@ -14507,6 +14585,11 @@ export interface WebApps {
      * origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteConfig.cors.supportCredentials] Gets or sets whether
+     * CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
@@ -14546,7 +14629,14 @@ export interface WebApps {
      * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
      * Service Identity Id
      *
-     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
+     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions
+     * for main.
+     *
+     * @param {array} [siteConfig.scmIpSecurityRestrictions] IP security
+     * restrictions for scm.
+     *
+     * @param {boolean} [siteConfig.scmIpSecurityRestrictionsUseMain] IP security
+     * restrictions for scm to use main.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
      * site to allow clients to connect over http2.0
@@ -14754,6 +14844,11 @@ export interface WebApps {
      * origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteConfig.cors.supportCredentials] Gets or sets whether
+     * CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
@@ -14793,7 +14888,14 @@ export interface WebApps {
      * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
      * Service Identity Id
      *
-     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
+     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions
+     * for main.
+     *
+     * @param {array} [siteConfig.scmIpSecurityRestrictions] IP security
+     * restrictions for scm.
+     *
+     * @param {boolean} [siteConfig.scmIpSecurityRestrictionsUseMain] IP security
+     * restrictions for scm to use main.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
      * site to allow clients to connect over http2.0
@@ -19997,6 +20099,339 @@ export interface WebApps {
 
 
     /**
+     * @summary Gets a Swift Virtual Network connection.
+     *
+     * Gets a Swift Virtual Network connection.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSwiftVirtualNetworkConnection1WithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
+
+    /**
+     * @summary Gets a Swift Virtual Network connection.
+     *
+     * Gets a Swift Virtual Network connection.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SwiftVirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSwiftVirtualNetworkConnection1(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
+    getSwiftVirtualNetworkConnection1(resourceGroupName: string, name: string, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+    getSwiftVirtualNetworkConnection1(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateSwiftVirtualNetworkConnection1WithHttpOperationResponse(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SwiftVirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateSwiftVirtualNetworkConnection1(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
+    createOrUpdateSwiftVirtualNetworkConnection1(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+    createOrUpdateSwiftVirtualNetworkConnection1(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+
+
+    /**
+     * @summary Deletes a Swift Virtual Network connection from an app (or
+     * deployment slot).
+     *
+     * Deletes a Swift Virtual Network connection from an app (or deployment slot).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteSwiftVirtualNetwork1WithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes a Swift Virtual Network connection from an app (or
+     * deployment slot).
+     *
+     * Deletes a Swift Virtual Network connection from an app (or deployment slot).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteSwiftVirtualNetwork1(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteSwiftVirtualNetwork1(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
+    deleteSwiftVirtualNetwork1(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateSwiftVirtualNetworkConnection1WithHttpOperationResponse(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SwiftVirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateSwiftVirtualNetworkConnection1(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
+    updateSwiftVirtualNetworkConnection1(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+    updateSwiftVirtualNetworkConnection1(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+
+
+    /**
      * @summary Gets all network features used by the app (or deployment slot, if
      * specified).
      *
@@ -22657,6 +23092,9 @@ export interface WebApps {
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -22694,6 +23132,9 @@ export interface WebApps {
      * @param {string} [restoreRequest.snapshotTime] Point in time to restore the
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -22769,6 +23210,9 @@ export interface WebApps {
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -22824,6 +23268,9 @@ export interface WebApps {
      * @param {boolean} [restoreRequest.ignoreConflictingHostNames] If true, custom
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -23492,6 +23939,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -23533,7 +23985,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -23880,6 +24338,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -23921,7 +24384,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -24373,6 +24842,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -24414,7 +24888,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -24749,6 +25229,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -24790,7 +25275,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -26069,6 +26560,11 @@ export interface WebApps {
      * More information on OpenID Connect:
      * http://openid.net/specs/openid-connect-core-1_0.html
      *
+     * @param {string} [siteAuthSettings.clientSecretCertificateThumbprint] An
+     * alternative to the client secret, that is the thumbprint of a certifite used
+     * for signing purposes. This property acts as
+     * a replacement for the Client Secret. It is also optional.
+     *
      * @param {string} [siteAuthSettings.issuer] The OpenID Connect Issuer URI that
      * represents the entity which issues access tokens for this application.
      * When using Azure Active Directory, this value is the URI of the directory
@@ -26240,6 +26736,11 @@ export interface WebApps {
      * authenticate end users.
      * More information on OpenID Connect:
      * http://openid.net/specs/openid-connect-core-1_0.html
+     *
+     * @param {string} [siteAuthSettings.clientSecretCertificateThumbprint] An
+     * alternative to the client secret, that is the thumbprint of a certifite used
+     * for signing purposes. This property acts as
+     * a replacement for the Client Secret. It is also optional.
      *
      * @param {string} [siteAuthSettings.issuer] The OpenID Connect Issuer URI that
      * represents the entity which issues access tokens for this application.
@@ -28386,6 +28887,11 @@ export interface WebApps {
      * origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteConfig.cors.supportCredentials] Gets or sets whether
+     * CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
@@ -28425,7 +28931,14 @@ export interface WebApps {
      * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
      * Service Identity Id
      *
-     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
+     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions
+     * for main.
+     *
+     * @param {array} [siteConfig.scmIpSecurityRestrictions] IP security
+     * restrictions for scm.
+     *
+     * @param {boolean} [siteConfig.scmIpSecurityRestrictionsUseMain] IP security
+     * restrictions for scm to use main.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
      * site to allow clients to connect over http2.0
@@ -28636,6 +29149,11 @@ export interface WebApps {
      * origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteConfig.cors.supportCredentials] Gets or sets whether
+     * CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
@@ -28675,7 +29193,14 @@ export interface WebApps {
      * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
      * Service Identity Id
      *
-     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
+     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions
+     * for main.
+     *
+     * @param {array} [siteConfig.scmIpSecurityRestrictions] IP security
+     * restrictions for scm.
+     *
+     * @param {boolean} [siteConfig.scmIpSecurityRestrictionsUseMain] IP security
+     * restrictions for scm to use main.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
      * site to allow clients to connect over http2.0
@@ -28905,6 +29430,11 @@ export interface WebApps {
      * origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteConfig.cors.supportCredentials] Gets or sets whether
+     * CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
@@ -28944,7 +29474,14 @@ export interface WebApps {
      * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
      * Service Identity Id
      *
-     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
+     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions
+     * for main.
+     *
+     * @param {array} [siteConfig.scmIpSecurityRestrictions] IP security
+     * restrictions for scm.
+     *
+     * @param {boolean} [siteConfig.scmIpSecurityRestrictionsUseMain] IP security
+     * restrictions for scm to use main.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
      * site to allow clients to connect over http2.0
@@ -29155,6 +29692,11 @@ export interface WebApps {
      * origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteConfig.cors.supportCredentials] Gets or sets whether
+     * CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteConfig.push.isPushEnabled Gets or sets a flag
@@ -29194,7 +29736,14 @@ export interface WebApps {
      * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
      * Service Identity Id
      *
-     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
+     * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions
+     * for main.
+     *
+     * @param {array} [siteConfig.scmIpSecurityRestrictions] IP security
+     * restrictions for scm.
+     *
+     * @param {boolean} [siteConfig.scmIpSecurityRestrictionsUseMain] IP security
+     * restrictions for scm to use main.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
      * site to allow clients to connect over http2.0
@@ -34570,6 +35119,365 @@ export interface WebApps {
 
 
     /**
+     * @summary Gets a Swift Virtual Network connection.
+     *
+     * Gets a Swift Virtual Network connection.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will get a gateway for the production slot's Virtual
+     * Network.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSwiftVirtualNetworkConnectionSlot1WithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
+
+    /**
+     * @summary Gets a Swift Virtual Network connection.
+     *
+     * Gets a Swift Virtual Network connection.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will get a gateway for the production slot's Virtual
+     * Network.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SwiftVirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSwiftVirtualNetworkConnectionSlot1(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
+    getSwiftVirtualNetworkConnectionSlot1(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+    getSwiftVirtualNetworkConnectionSlot1(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will add or update connections for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateSwiftVirtualNetworkConnectionSlot1WithHttpOperationResponse(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will add or update connections for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SwiftVirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateSwiftVirtualNetworkConnectionSlot1(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
+    createOrUpdateSwiftVirtualNetworkConnectionSlot1(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+    createOrUpdateSwiftVirtualNetworkConnectionSlot1(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+
+
+    /**
+     * @summary Deletes a Swift Virtual Network connection from an app (or
+     * deployment slot).
+     *
+     * Deletes a Swift Virtual Network connection from an app (or deployment slot).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will delete the connection for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteSwiftVirtualNetworkSlot1WithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes a Swift Virtual Network connection from an app (or
+     * deployment slot).
+     *
+     * Deletes a Swift Virtual Network connection from an app (or deployment slot).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will delete the connection for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteSwiftVirtualNetworkSlot1(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteSwiftVirtualNetworkSlot1(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<void>): void;
+    deleteSwiftVirtualNetworkSlot1(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will add or update connections for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateSwiftVirtualNetworkConnectionSlot1WithHttpOperationResponse(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will add or update connections for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SwiftVirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateSwiftVirtualNetworkConnectionSlot1(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
+    updateSwiftVirtualNetworkConnectionSlot1(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+    updateSwiftVirtualNetworkConnectionSlot1(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+
+
+    /**
      * @summary Gets all network features used by the app (or deployment slot, if
      * specified).
      *
@@ -37426,6 +38334,9 @@ export interface WebApps {
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {string} slot Name of web app slot. If not specified then will
@@ -37466,6 +38377,9 @@ export interface WebApps {
      * @param {string} [restoreRequest.snapshotTime] Point in time to restore the
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -37544,6 +38458,9 @@ export interface WebApps {
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {string} slot Name of web app slot. If not specified then will
@@ -37602,6 +38519,9 @@ export interface WebApps {
      * @param {boolean} [restoreRequest.ignoreConflictingHostNames] If true, custom
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -38186,6 +39106,75 @@ export interface WebApps {
     listSnapshotsSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotCollection>;
     listSnapshotsSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.SnapshotCollection>): void;
     listSnapshotsSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotCollection>): void;
+
+
+    /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Website Name.
+     *
+     * @param {string} slot Website Slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SnapshotCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSnapshotsFromDRSecondarySlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotCollection>>;
+
+    /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Website Name.
+     *
+     * @param {string} slot Website Slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SnapshotCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SnapshotCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SnapshotCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSnapshotsFromDRSecondarySlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotCollection>;
+    listSnapshotsFromDRSecondarySlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.SnapshotCollection>): void;
+    listSnapshotsFromDRSecondarySlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotCollection>): void;
 
 
     /**
@@ -39727,6 +40716,9 @@ export interface WebApps {
      * @param {string} [connectionEnvelope.dnsServers] DNS servers to be used by
      * this Virtual Network. This should be a comma-separated list of IP addresses.
      *
+     * @param {boolean} [connectionEnvelope.isSwift] Flag that is used to denote if
+     * this is VNET injection
+     *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
@@ -39771,6 +40763,9 @@ export interface WebApps {
      *
      * @param {string} [connectionEnvelope.dnsServers] DNS servers to be used by
      * this Virtual Network. This should be a comma-separated list of IP addresses.
+     *
+     * @param {boolean} [connectionEnvelope.isSwift] Flag that is used to denote if
+     * this is VNET injection
      *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
      *
@@ -39914,6 +40909,9 @@ export interface WebApps {
      * @param {string} [connectionEnvelope.dnsServers] DNS servers to be used by
      * this Virtual Network. This should be a comma-separated list of IP addresses.
      *
+     * @param {boolean} [connectionEnvelope.isSwift] Flag that is used to denote if
+     * this is VNET injection
+     *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
      *
      * @param {string} slot Name of the deployment slot. If a slot is not
@@ -39958,6 +40956,9 @@ export interface WebApps {
      *
      * @param {string} [connectionEnvelope.dnsServers] DNS servers to be used by
      * this Virtual Network. This should be a comma-separated list of IP addresses.
+     *
+     * @param {boolean} [connectionEnvelope.isSwift] Flag that is used to denote if
+     * this is VNET injection
      *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
      *
@@ -40666,6 +41667,71 @@ export interface WebApps {
     listSnapshots(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotCollection>;
     listSnapshots(resourceGroupName: string, name: string, callback: ServiceCallback<models.SnapshotCollection>): void;
     listSnapshots(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotCollection>): void;
+
+
+    /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Website Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SnapshotCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSnapshotsFromDRSecondaryWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotCollection>>;
+
+    /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Website Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SnapshotCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SnapshotCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SnapshotCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSnapshotsFromDRSecondary(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotCollection>;
+    listSnapshotsFromDRSecondary(resourceGroupName: string, name: string, callback: ServiceCallback<models.SnapshotCollection>): void;
+    listSnapshotsFromDRSecondary(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotCollection>): void;
 
 
     /**
@@ -42085,6 +43151,9 @@ export interface WebApps {
      * @param {string} [connectionEnvelope.dnsServers] DNS servers to be used by
      * this Virtual Network. This should be a comma-separated list of IP addresses.
      *
+     * @param {boolean} [connectionEnvelope.isSwift] Flag that is used to denote if
+     * this is VNET injection
+     *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -42126,6 +43195,9 @@ export interface WebApps {
      *
      * @param {string} [connectionEnvelope.dnsServers] DNS servers to be used by
      * this Virtual Network. This should be a comma-separated list of IP addresses.
+     *
+     * @param {boolean} [connectionEnvelope.isSwift] Flag that is used to denote if
+     * this is VNET injection
      *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
      *
@@ -42260,6 +43332,9 @@ export interface WebApps {
      * @param {string} [connectionEnvelope.dnsServers] DNS servers to be used by
      * this Virtual Network. This should be a comma-separated list of IP addresses.
      *
+     * @param {boolean} [connectionEnvelope.isSwift] Flag that is used to denote if
+     * this is VNET injection
+     *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -42301,6 +43376,9 @@ export interface WebApps {
      *
      * @param {string} [connectionEnvelope.dnsServers] DNS servers to be used by
      * this Virtual Network. This should be a comma-separated list of IP addresses.
+     *
+     * @param {boolean} [connectionEnvelope.isSwift] Flag that is used to denote if
+     * this is VNET injection
      *
      * @param {string} [connectionEnvelope.kind] Kind of resource.
      *
@@ -42961,6 +44039,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -43002,7 +44085,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -43346,6 +44435,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -43387,7 +44481,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -44546,6 +45646,9 @@ export interface WebApps {
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -44583,6 +45686,9 @@ export interface WebApps {
      * @param {string} [restoreRequest.snapshotTime] Point in time to restore the
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -44658,6 +45764,9 @@ export interface WebApps {
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -44713,6 +45822,9 @@ export interface WebApps {
      * @param {boolean} [restoreRequest.ignoreConflictingHostNames] If true, custom
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -45038,6 +46150,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -45079,7 +46196,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -45426,6 +46549,11 @@ export interface WebApps {
      * the list of origins that should be allowed to make cross-origin
      * calls (for example: http://example.com:12345). Use "*" to allow all.
      *
+     * @param {boolean} [siteEnvelope.siteConfig.cors.supportCredentials] Gets or
+     * sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     *
      * @param {object} [siteEnvelope.siteConfig.push] Push endpoint settings.
      *
      * @param {boolean} siteEnvelope.siteConfig.push.isPushEnabled Gets or sets a
@@ -45467,7 +46595,13 @@ export interface WebApps {
      * Managed Service Identity Id
      *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
-     * restrictions.
+     * restrictions for main.
+     *
+     * @param {array} [siteEnvelope.siteConfig.scmIpSecurityRestrictions] IP
+     * security restrictions for scm.
+     *
+     * @param {boolean} [siteEnvelope.siteConfig.scmIpSecurityRestrictionsUseMain]
+     * IP security restrictions for scm to use main.
      *
      * @param {boolean} [siteEnvelope.siteConfig.http20Enabled] Http20Enabled:
      * configures a web site to allow clients to connect over http2.0
@@ -46478,6 +47612,9 @@ export interface WebApps {
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {string} slot Name of web app slot. If not specified then will
@@ -46518,6 +47655,9 @@ export interface WebApps {
      * @param {string} [restoreRequest.snapshotTime] Point in time to restore the
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -46596,6 +47736,9 @@ export interface WebApps {
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {string} slot Name of web app slot. If not specified then will
@@ -46654,6 +47797,9 @@ export interface WebApps {
      * @param {boolean} [restoreRequest.ignoreConflictingHostNames] If true, custom
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -50169,6 +51315,67 @@ export interface WebApps {
 
 
     /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SnapshotCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSnapshotsFromDRSecondarySlotNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotCollection>>;
+
+    /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SnapshotCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SnapshotCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SnapshotCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSnapshotsFromDRSecondarySlotNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotCollection>;
+    listSnapshotsFromDRSecondarySlotNext(nextPageLink: string, callback: ServiceCallback<models.SnapshotCollection>): void;
+    listSnapshotsFromDRSecondarySlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotCollection>): void;
+
+
+    /**
      * @summary List triggered web jobs for an app, or a deployment slot.
      *
      * List triggered web jobs for an app, or a deployment slot.
@@ -50544,6 +51751,67 @@ export interface WebApps {
     listSnapshotsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotCollection>;
     listSnapshotsNext(nextPageLink: string, callback: ServiceCallback<models.SnapshotCollection>): void;
     listSnapshotsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotCollection>): void;
+
+
+    /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SnapshotCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSnapshotsFromDRSecondaryNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotCollection>>;
+
+    /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SnapshotCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SnapshotCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SnapshotCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSnapshotsFromDRSecondaryNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotCollection>;
+    listSnapshotsFromDRSecondaryNext(nextPageLink: string, callback: ServiceCallback<models.SnapshotCollection>): void;
+    listSnapshotsFromDRSecondaryNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotCollection>): void;
 
 
     /**
