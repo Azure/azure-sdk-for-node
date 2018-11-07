@@ -51,7 +51,7 @@ export interface Kind {
  * Contact details for security issues
  *
  * @member {string} email The email of this security contact
- * @member {string} phone The phone number of this security contact
+ * @member {string} [phone] The phone number of this security contact
  * @member {string} alertNotifications Whether to send security alerts
  * notifications to the security contact. Possible values include: 'On', 'Off'
  * @member {string} alertsToAdmins Whether to send security alerts
@@ -59,7 +59,7 @@ export interface Kind {
  */
 export interface SecurityContact extends Resource {
   email: string;
-  phone: string;
+  phone?: string;
   alertNotifications: string;
   alertsToAdmins: string;
 }

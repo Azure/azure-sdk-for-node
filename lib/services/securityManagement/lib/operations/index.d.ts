@@ -621,7 +621,7 @@ export interface SecurityContacts {
      *
      * @param {string} securityContact.email The email of this security contact
      *
-     * @param {string} securityContact.phone The phone number of this security
+     * @param {string} [securityContact.phone] The phone number of this security
      * contact
      *
      * @param {string} securityContact.alertNotifications Whether to send security
@@ -654,7 +654,7 @@ export interface SecurityContacts {
      *
      * @param {string} securityContact.email The email of this security contact
      *
-     * @param {string} securityContact.phone The phone number of this security
+     * @param {string} [securityContact.phone] The phone number of this security
      * contact
      *
      * @param {string} securityContact.alertNotifications Whether to send security
@@ -760,7 +760,7 @@ export interface SecurityContacts {
      *
      * @param {string} securityContact.email The email of this security contact
      *
-     * @param {string} securityContact.phone The phone number of this security
+     * @param {string} [securityContact.phone] The phone number of this security
      * contact
      *
      * @param {string} securityContact.alertNotifications Whether to send security
@@ -793,7 +793,7 @@ export interface SecurityContacts {
      *
      * @param {string} securityContact.email The email of this security contact
      *
-     * @param {string} securityContact.phone The phone number of this security
+     * @param {string} [securityContact.phone] The phone number of this security
      * contact
      *
      * @param {string} securityContact.alertNotifications Whether to send security
