@@ -57158,9 +57158,6 @@ export interface AppServicePlans {
      *
      * @param {object} appServicePlan Details of the App Service plan.
      *
-     * @param {string} [appServicePlan.appServicePlanName] Name for the App Service
-     * plan.
-     *
      * @param {string} [appServicePlan.workerTierName] Target worker tier assigned
      * to the App Service plan.
      *
@@ -57267,9 +57264,6 @@ export interface AppServicePlans {
      * @param {string} name Name of the App Service plan.
      *
      * @param {object} appServicePlan Details of the App Service plan.
-     *
-     * @param {string} [appServicePlan.appServicePlanName] Name for the App Service
-     * plan.
      *
      * @param {string} [appServicePlan.workerTierName] Target worker tier assigned
      * to the App Service plan.
@@ -59373,9 +59367,6 @@ export interface AppServicePlans {
      *
      * @param {object} appServicePlan Details of the App Service plan.
      *
-     * @param {string} [appServicePlan.appServicePlanName] Name for the App Service
-     * plan.
-     *
      * @param {string} [appServicePlan.workerTierName] Target worker tier assigned
      * to the App Service plan.
      *
@@ -59482,9 +59473,6 @@ export interface AppServicePlans {
      * @param {string} name Name of the App Service plan.
      *
      * @param {object} appServicePlan Details of the App Service plan.
-     *
-     * @param {string} [appServicePlan.appServicePlanName] Name for the App Service
-     * plan.
      *
      * @param {string} [appServicePlan.workerTierName] Target worker tier assigned
      * to the App Service plan.

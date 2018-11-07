@@ -1790,7 +1790,6 @@ export interface SkuDescription {
  * @constructor
  * App Service plan.
  *
- * @member {string} [appServicePlanName] Name for the App Service plan.
  * @member {string} [workerTierName] Target worker tier assigned to the App
  * Service plan.
  * @member {string} [status] App Service plan status. Possible values include:
@@ -1862,7 +1861,6 @@ export interface SkuDescription {
  * manager enabled?
  */
 export interface AppServicePlan extends Resource {
-  appServicePlanName?: string;
   workerTierName?: string;
   readonly status?: string;
   readonly subscription?: string;
