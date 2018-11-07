@@ -23,6 +23,10 @@ export default class BillingManagementClient extends AzureServiceClient {
    *
    * @param {string} subscriptionId - Azure Subscription ID.
    *
+   * @param {string} billingAccountId - Azure Billing Account ID.
+   *
+   * @param {string} invoiceName - Invoice Name.
+   *
    * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
@@ -34,20 +38,24 @@ export default class BillingManagementClient extends AzureServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
+   * @param {string} [options.acceptLanguage] - The preferred language for the response.
    *
-   * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   * @param {number} [options.longRunningOperationRetryTimeout] - The retry timeout in seconds for Long Running Operations. Default value is 30.
    *
-   * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, billingAccountId: string, invoiceName: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   apiVersion: string;
 
   subscriptionId: string;
+
+  billingAccountId: string;
+
+  invoiceName: string;
 
   acceptLanguage: string;
 
@@ -59,6 +67,7 @@ export default class BillingManagementClient extends AzureServiceClient {
   enrollmentAccounts: operations.EnrollmentAccounts;
   billingPeriods: operations.BillingPeriods;
   invoices: operations.Invoices;
+  invoiceOperations: operations.InvoiceOperations;
   operations: operations.Operations;
 }
 
