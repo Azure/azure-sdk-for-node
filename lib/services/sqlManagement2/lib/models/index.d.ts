@@ -4285,6 +4285,68 @@ export interface ManagedInstanceEncryptionProtector extends ProxyResource {
   readonly thumbprint?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstanceVulnerabilityAssessment class.
+ * @constructor
+ * A managed instance vulnerability assessment.
+ *
+ * @member {string} storageContainerPath A blob storage container path to hold
+ * the scan results (e.g. https://myStorage.blob.core.windows.net/VaScans/).
+ * @member {string} [storageContainerSasKey] A shared access signature (SAS
+ * Key) that has write access to the blob container specified in
+ * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
+ * specified, StorageContainerSasKey is required.
+ * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the storage account for vulnerability assessment scan results. If
+ * 'StorageContainerSasKey' isn't specified, storageAccountAccessKey is
+ * required.
+ * @member {object} [recurringScans] The recurring scans settings
+ * @member {boolean} [recurringScans.isEnabled] Recurring scans state.
+ * @member {boolean} [recurringScans.emailSubscriptionAdmins] Specifies that
+ * the schedule scan notification will be is sent to the subscription
+ * administrators.
+ * @member {array} [recurringScans.emails] Specifies an array of e-mail
+ * addresses to which the scan notification is sent.
+ */
+export interface ManagedInstanceVulnerabilityAssessment extends ProxyResource {
+  storageContainerPath: string;
+  storageContainerSasKey?: string;
+  storageAccountAccessKey?: string;
+  recurringScans?: VulnerabilityAssessmentRecurringScansProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerVulnerabilityAssessment class.
+ * @constructor
+ * A server vulnerability assessment.
+ *
+ * @member {string} storageContainerPath A blob storage container path to hold
+ * the scan results (e.g. https://myStorage.blob.core.windows.net/VaScans/).
+ * @member {string} [storageContainerSasKey] A shared access signature (SAS
+ * Key) that has write access to the blob container specified in
+ * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
+ * specified, StorageContainerSasKey is required.
+ * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the storage account for vulnerability assessment scan results. If
+ * 'StorageContainerSasKey' isn't specified, storageAccountAccessKey is
+ * required.
+ * @member {object} [recurringScans] The recurring scans settings
+ * @member {boolean} [recurringScans.isEnabled] Recurring scans state.
+ * @member {boolean} [recurringScans.emailSubscriptionAdmins] Specifies that
+ * the schedule scan notification will be is sent to the subscription
+ * administrators.
+ * @member {array} [recurringScans.emails] Specifies an array of e-mail
+ * addresses to which the scan notification is sent.
+ */
+export interface ServerVulnerabilityAssessment extends ProxyResource {
+  storageContainerPath: string;
+  storageContainerSasKey?: string;
+  storageAccountAccessKey?: string;
+  recurringScans?: VulnerabilityAssessmentRecurringScansProperties;
+}
+
 
 /**
  * @class
@@ -4906,5 +4968,29 @@ export interface ManagedInstanceKeyListResult extends Array<ManagedInstanceKey> 
  * @member {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ManagedInstanceEncryptionProtectorListResult extends Array<ManagedInstanceEncryptionProtector> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstanceVulnerabilityAssessmentListResult class.
+ * @constructor
+ * A list of the ManagedInstance's vulnerability assessments.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ManagedInstanceVulnerabilityAssessmentListResult extends Array<ManagedInstanceVulnerabilityAssessment> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerVulnerabilityAssessmentListResult class.
+ * @constructor
+ * A list of the server's vulnerability assessments.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ServerVulnerabilityAssessmentListResult extends Array<ServerVulnerabilityAssessment> {
   readonly nextLink?: string;
 }
