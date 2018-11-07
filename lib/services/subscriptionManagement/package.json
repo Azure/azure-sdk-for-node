@@ -2,7 +2,7 @@
   "name": "azure-arm-subscription",
   "author": "Microsoft Corporation",
   "description": "SubscriptionClient Library with typescript type definitions for node",
-  "version": "0.10.2",
+  "version": "0.11.0",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
