@@ -22725,6 +22725,11 @@ export interface NetworkWatchers {
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId
      * Resource Id of the attached workspace
      *
+     * @param {number}
+     * [parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval]
+     * The interval in minutes which would decide how frequently TA service should
+     * do flow analytics
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -22794,6 +22799,11 @@ export interface NetworkWatchers {
      * @param {string}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId
      * Resource Id of the attached workspace
+     *
+     * @param {number}
+     * [parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval]
+     * The interval in minutes which would decide how frequently TA service should
+     * do flow analytics
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -23880,6 +23890,11 @@ export interface NetworkWatchers {
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId
      * Resource Id of the attached workspace
      *
+     * @param {number}
+     * [parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval]
+     * The interval in minutes which would decide how frequently TA service should
+     * do flow analytics
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -23949,6 +23964,11 @@ export interface NetworkWatchers {
      * @param {string}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId
      * Resource Id of the attached workspace
+     *
+     * @param {number}
+     * [parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval]
+     * The interval in minutes which would decide how frequently TA service should
+     * do flow analytics
      *
      * @param {object} [options] Optional Parameters.
      *

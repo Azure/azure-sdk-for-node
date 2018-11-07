@@ -7363,12 +7363,15 @@ export interface FlowLogStatusParameters {
  * @member {string} workspaceId The resource guid of the attached workspace
  * @member {string} workspaceRegion The location of the attached workspace
  * @member {string} workspaceResourceId Resource Id of the attached workspace
+ * @member {number} [trafficAnalyticsInterval] The interval in minutes which
+ * would decide how frequently TA service should do flow analytics
  */
 export interface TrafficAnalyticsConfigurationProperties {
   enabled: boolean;
   workspaceId: string;
   workspaceRegion: string;
   workspaceResourceId: string;
+  trafficAnalyticsInterval?: number;
 }
 
 /**
@@ -7387,6 +7390,10 @@ export interface TrafficAnalyticsConfigurationProperties {
  * @member {string}
  * [networkWatcherFlowAnalyticsConfiguration.workspaceResourceId] Resource Id
  * of the attached workspace
+ * @member {number}
+ * [networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval] The
+ * interval in minutes which would decide how frequently TA service should do
+ * flow analytics
  */
 export interface TrafficAnalyticsProperties {
   networkWatcherFlowAnalyticsConfiguration: TrafficAnalyticsConfigurationProperties;
@@ -7428,6 +7435,10 @@ export interface TrafficAnalyticsProperties {
  * @member {string}
  * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId]
  * Resource Id of the attached workspace
+ * @member {number}
+ * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval]
+ * The interval in minutes which would decide how frequently TA service should
+ * do flow analytics
  */
 export interface FlowLogInformation {
   targetResourceId: string;
