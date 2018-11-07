@@ -23,10 +23,6 @@ export default class BillingManagementClient extends AzureServiceClient {
    *
    * @param {string} subscriptionId - Azure Subscription ID.
    *
-   * @param {string} billingAccountId - Azure Billing Account ID.
-   *
-   * @param {string} invoiceName - Invoice Name.
-   *
    * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
@@ -45,17 +41,13 @@ export default class BillingManagementClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, billingAccountId: string, invoiceName: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   apiVersion: string;
 
   subscriptionId: string;
-
-  billingAccountId: string;
-
-  invoiceName: string;
 
   acceptLanguage: string;
 

@@ -705,6 +705,10 @@ export interface InvoiceOperations {
     /**
      * Get pricesheet data for invoice id (invoiceName).
      *
+     * @param {string} billingAccountId Azure Billing Account ID.
+     *
+     * @param {string} invoiceName The name of an invoice resource.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -716,10 +720,14 @@ export interface InvoiceOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    pricesheetWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    pricesheetWithHttpOperationResponse(billingAccountId: string, invoiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Get pricesheet data for invoice id (invoiceName).
+     *
+     * @param {string} billingAccountId Azure Billing Account ID.
+     *
+     * @param {string} invoiceName The name of an invoice resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -747,9 +755,9 @@ export interface InvoiceOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    pricesheet(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    pricesheet(callback: ServiceCallback<void>): void;
-    pricesheet(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    pricesheet(billingAccountId: string, invoiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    pricesheet(billingAccountId: string, invoiceName: string, callback: ServiceCallback<void>): void;
+    pricesheet(billingAccountId: string, invoiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
