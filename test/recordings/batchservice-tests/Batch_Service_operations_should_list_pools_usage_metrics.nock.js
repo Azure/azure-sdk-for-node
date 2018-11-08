@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .get('/poolusagemetrics?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"nodesdkinboundendpointpool\",\"startTime\":\"2017-07-20T20:00:00Z\",\"endTime\":\"2017-07-20T20:30:00Z\",\"vmSize\":\"standard_a1\",\"totalCoreHours\":0.1919630988611111,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"nodesdktestpool1\",\"startTime\":\"2017-07-20T20:00:00Z\",\"endTime\":\"2017-07-20T20:30:00Z\",\"vmSize\":\"small\",\"totalCoreHours\":0.52656037905555553,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/poolusagemetrics?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"nodesdkinboundendpointpool\",\"startTime\":\"2018-08-21T17:30:00Z\",\"endTime\":\"2018-08-21T18:00:00Z\",\"vmSize\":\"standard_a1\",\"totalCoreHours\":0.49999999997222216,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"nodesdktestpool1\",\"startTime\":\"2018-08-21T17:30:00Z\",\"endTime\":\"2018-08-21T18:00:00Z\",\"vmSize\":\"small\",\"totalCoreHours\":1.4999999999166673,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'aa257451-4672-4da0-83fa-7fc8ffe8c1c0',
+  'request-id': 'd24622e1-96c9-4b99-8f89-cb92bb63bb0b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:59:23 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .get('/poolusagemetrics?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"nodesdkinboundendpointpool\",\"startTime\":\"2017-07-20T20:00:00Z\",\"endTime\":\"2017-07-20T20:30:00Z\",\"vmSize\":\"standard_a1\",\"totalCoreHours\":0.1919630988611111,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"nodesdktestpool1\",\"startTime\":\"2017-07-20T20:00:00Z\",\"endTime\":\"2017-07-20T20:30:00Z\",\"vmSize\":\"small\",\"totalCoreHours\":0.52656037905555553,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/poolusagemetrics?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"nodesdkinboundendpointpool\",\"startTime\":\"2018-08-21T17:30:00Z\",\"endTime\":\"2018-08-21T18:00:00Z\",\"vmSize\":\"standard_a1\",\"totalCoreHours\":0.49999999997222216,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"nodesdktestpool1\",\"startTime\":\"2018-08-21T17:30:00Z\",\"endTime\":\"2018-08-21T18:00:00Z\",\"vmSize\":\"small\",\"totalCoreHours\":1.4999999999166673,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'aa257451-4672-4da0-83fa-7fc8ffe8c1c0',
+  'request-id': 'd24622e1-96c9-4b99-8f89-cb92bb63bb0b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:59:23 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:23 GMT',
   connection: 'close' });
  return result; }]];

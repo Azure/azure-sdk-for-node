@@ -1,0 +1,24 @@
+{
+  "name": "azure-applicationinsights-query",
+  "author": "Microsoft Corporation",
+  "description": "ApplicationInsightsDataClient Library with typescript type definitions for node",
+  "version": "1.1.0-preview",
+  "dependencies": {
+    "ms-rest": "^2.3.3"
+  },
+  "keywords": [
+    "node",
+    "azure"
+  ],
+  "license": "MIT",
+  "main": "./lib/applicationInsightsDataClient.js",
+  "types": "./lib/applicationInsightsDataClient.d.ts",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/applicationinsights-query",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azure/azure-sdk-for-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/azure/azure-sdk-for-node/issues"
+  }
+}

@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .get('/lifetimejobstats?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#jobstats/@Element\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/lifetimejobstats\",\"startTime\":\"2017-10-23T18:57:56.5958966Z\",\"lastUpdateTime\":\"2018-03-09T22:00:00Z\",\"userCPUTime\":\"PT5M38.91S\",\"kernelCPUTime\":\"PT0.531S\",\"wallClockTime\":\"PT5M38.91S\",\"readIOps\":\"130\",\"writeIOps\":\"88\",\"readIOGiB\":6.650388240814209E-05,\"writeIOGiB\":1.405179500579834E-05,\"numTaskRetries\":\"14\",\"numSucceededTasks\":\"0\",\"numFailedTasks\":\"0\",\"waitTime\":\"PT1H59M51.994S\"\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/lifetimejobstats?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#jobstats/@Element\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/lifetimejobstats\",\"startTime\":\"2017-10-23T18:57:56.5958966Z\",\"lastUpdateTime\":\"2018-08-21T19:30:00Z\",\"userCPUTime\":\"PT6M17.075S\",\"kernelCPUTime\":\"PT0.563S\",\"wallClockTime\":\"PT6M17.075S\",\"readIOps\":\"130\",\"writeIOps\":\"260\",\"readIOGiB\":6.650388240814209E-05,\"writeIOGiB\":1.6363337635993958E-05,\"numTaskRetries\":\"14\",\"numSucceededTasks\":\"12\",\"numFailedTasks\":\"10\",\"waitTime\":\"PT2H59.09S\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '8cddbed0-b531-49a8-b9ad-a2310384187e',
+  'request-id': '9e5d6186-c118-4673-b335-cf53e3e8deb4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:05:12 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .get('/lifetimejobstats?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#jobstats/@Element\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/lifetimejobstats\",\"startTime\":\"2017-10-23T18:57:56.5958966Z\",\"lastUpdateTime\":\"2018-03-09T22:00:00Z\",\"userCPUTime\":\"PT5M38.91S\",\"kernelCPUTime\":\"PT0.531S\",\"wallClockTime\":\"PT5M38.91S\",\"readIOps\":\"130\",\"writeIOps\":\"88\",\"readIOGiB\":6.650388240814209E-05,\"writeIOGiB\":1.405179500579834E-05,\"numTaskRetries\":\"14\",\"numSucceededTasks\":\"0\",\"numFailedTasks\":\"0\",\"waitTime\":\"PT1H59M51.994S\"\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/lifetimejobstats?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#jobstats/@Element\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/lifetimejobstats\",\"startTime\":\"2017-10-23T18:57:56.5958966Z\",\"lastUpdateTime\":\"2018-08-21T19:30:00Z\",\"userCPUTime\":\"PT6M17.075S\",\"kernelCPUTime\":\"PT0.563S\",\"wallClockTime\":\"PT6M17.075S\",\"readIOps\":\"130\",\"writeIOps\":\"260\",\"readIOGiB\":6.650388240814209E-05,\"writeIOGiB\":1.6363337635993958E-05,\"numTaskRetries\":\"14\",\"numSucceededTasks\":\"12\",\"numFailedTasks\":\"10\",\"waitTime\":\"PT2H59.09S\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '8cddbed0-b531-49a8-b9ad-a2310384187e',
+  'request-id': '9e5d6186-c118-4673-b335-cf53e3e8deb4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:05:12 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:03 GMT',
   connection: 'close' });
  return result; }]];

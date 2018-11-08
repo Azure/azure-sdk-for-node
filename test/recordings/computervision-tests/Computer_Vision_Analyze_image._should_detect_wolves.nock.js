@@ -9,7 +9,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://westus.api.cognitive.microsoft.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/vision/v1.0/analyze?visualFeatures=Categories%2CTags%2CDescription&language=en', '*')
+.post('/vision/v2.0/analyze?visualFeatures=Categories%2CTags%2CDescription&language=en', '*')
   .reply(200, "{\"categories\":[{\"name\":\"others_\",\"score\":0.015625},{\"name\":\"outdoor_\",\"score\":0.00390625}],\"tags\":[{\"name\":\"animal\",\"confidence\":0.99737191200256348},{\"name\":\"mammal\",\"confidence\":0.94876688718795776,\"hint\":\"animal\"},{\"name\":\"wolf\",\"confidence\":0.86433804035186768,\"hint\":\"animal\"}],\"description\":{\"tags\":[\"animal\",\"mammal\",\"wolf\",\"looking\",\"sitting\",\"bear\",\"standing\",\"black\",\"top\",\"cat\",\"dark\",\"white\",\"face\",\"close\",\"laying\",\"large\",\"brown\",\"water\",\"snow\"],\"captions\":[{\"text\":\"a close up of a wolf\",\"confidence\":0.77825483485410529}]},\"requestId\":\"31f79dee-fd70-4134-8214-0c51ab8179ae\",\"metadata\":{\"width\":960,\"height\":595,\"format\":\"Jpeg\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '644',

@@ -19,7 +19,7 @@ var should = require('should');
 var CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 
 var SuiteBase = require('../../framework/suite-base');
-var TextAnalyticsAPIClient = require('../../../lib/services/textAnalytics/lib/textAnalyticsAPIClient');
+var TextAnalyticsClient = require('../../../lib/services/cognitiveServicesTextAnalytics/lib/textAnalyticsClient');
 
 var requiredEnvironment = [
   { name: 'AZURE_TEXT_ANALYTICS_KEY', secure: true }
@@ -35,7 +35,7 @@ describe('Text Analytics', () => {
     suite = new SuiteBase(this, testPrefix, requiredEnvironment);
     suite.setupSuite(() => {
       credentials = new CognitiveServicesCredentials(process.env["AZURE_TEXT_ANALYTICS_KEY"]);
-      client = new TextAnalyticsAPIClient(credentials, "westus");
+      client = new TextAnalyticsClient(credentials, "westus");
       done();
     });
   });

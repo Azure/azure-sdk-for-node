@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .get('/applications/my_application_id?api-version=2018-03-01.6.1')
+  .get('/applications/my_application_id?api-version=2018-08-01.7.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#getapplicationsummaryresponse/@Element\",\"id\":\"my_application_id\",\"versions\":[\r\n    \"v1.0\"\r\n  ],\"displayName\":\"my_updated_name\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '7c0cabb8-74cc-4249-99c3-17a49455c8d8',
+  'request-id': 'f5d26ac0-5953-4ac0-97bc-a9893a43ec35',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:05:08 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .get('/applications/my_application_id?api-version=2018-03-01.6.1')
+  .get('/applications/my_application_id?api-version=2018-08-01.7.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#getapplicationsummaryresponse/@Element\",\"id\":\"my_application_id\",\"versions\":[\r\n    \"v1.0\"\r\n  ],\"displayName\":\"my_updated_name\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '7c0cabb8-74cc-4249-99c3-17a49455c8d8',
+  'request-id': 'f5d26ac0-5953-4ac0-97bc-a9893a43ec35',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:05:08 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:00 GMT',
   connection: 'close' });
  return result; }]];

@@ -16,16 +16,19 @@ npm install azure-cognitiveservices-computervision
 
 ```javascript
   const msRestAzure = require('ms-rest-azure');
-  const CognitiveServicesManagement = require("azure-arm-cognitiveservices");
+  const CognitiveServicesManagement = require('azure-arm-cognitiveservices');
+  const SubscriptionId = 'your-subscription-key';
+  const ResourceGroup = 'your-resource-group-name';
+  const ResourceName = 'resource-name';
   let client;
   let createAccount = msRestAzure.interactiveLogin().then((credentials) => {
-    client = new CognitiveServicesManagement(credentials, suite.subscriptionId);
-    return client.accounts.create('groupname', 'accountname', {
+    client = new CognitiveServicesManagement(credentials, SubscriptionId);
+    return client.accounts.create(ResourceGroup, ResourceName, {
       sku: {
-        name: "F0"
+        name: 'F0'
       },
-      kind: "ComputerVision",
-      location: "westus",
+      kind: 'ComputerVision',
+      location: 'westus',
       properties: {}
     });
   }).catch((err) => {
@@ -39,7 +42,7 @@ npm install azure-cognitiveservices-computervision
 ```javascript
   let serviceKey;
   createAccount.then((result) => {
-    return client.accounts.listKeys('groupname', 'accountname');
+    return client.accounts.listKeys(ResourceGroup, ResourceName);
   }).then((result) => {
     serviceKey = result.key1;
     console.log(result.key2);
@@ -62,12 +65,12 @@ npm install azure-cognitiveservices-computervision
 ### Computer Vision API
 
  ```javascript
- const ComputerVisionAPIClient = require('azure-cognitiveservices-computervision');
+ const ComputerVisionClient = require('azure-cognitiveservices-computervision');
 
- let client = new ComputerVisionAPIClient(credentials);
- let fileStream = fs.createReadStream('pathToSomeImage.jpg');
+ let client = new ComputerVisionClient(credentials, 'https://westus.api.cognitive.microsoft.com');
+ let fileStream = require('fs').createReadStream('pathToSomeImage.jpg');
  client.analyzeImageInStreamWithHttpOperationResponse(fileStream, {
-   visualFeatures: ["Categories", "Tags", "Description"]
+   visualFeatures: ['Categories', 'Tags', 'Description']
  }).then((response) => {
    console.log(response.body.tags);
    console.log(response.body.description.captions[0]);

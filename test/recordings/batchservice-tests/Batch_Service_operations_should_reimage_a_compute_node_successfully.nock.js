@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .post('/pools/nodesdktestpool1/nodes/tvm-3840119875_2-20180309t224543z/reimage?api-version=2018-03-01.6.1')
+  .post('/pools/nodesdktestpool1/nodes/tvm-14141481_2-20180821t200555z/reimage?api-version=2018-08-01.7.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'f4ade4ac-c018-4c5e-b82a-8c94cb880ada',
+  'request-id': '47dbf3c4-a3ed-4455-ab36-a2323620a271',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_2-20180309t224543z/reimage',
-  date: 'Fri, 09 Mar 2018 22:59:19 GMT',
+  dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_2-20180821t200555z/reimage',
+  date: 'Tue, 21 Aug 2018 20:23:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .post('/pools/nodesdktestpool1/nodes/tvm-3840119875_2-20180309t224543z/reimage?api-version=2018-03-01.6.1')
+  .post('/pools/nodesdktestpool1/nodes/tvm-14141481_2-20180821t200555z/reimage?api-version=2018-08-01.7.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'f4ade4ac-c018-4c5e-b82a-8c94cb880ada',
+  'request-id': '47dbf3c4-a3ed-4455-ab36-a2323620a271',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_2-20180309t224543z/reimage',
-  date: 'Fri, 09 Mar 2018 22:59:19 GMT',
+  dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_2-20180821t200555z/reimage',
+  date: 'Tue, 21 Aug 2018 20:23:12 GMT',
   connection: 'close' });
  return result; }]];

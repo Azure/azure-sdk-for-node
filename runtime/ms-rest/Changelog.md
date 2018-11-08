@@ -1,3 +1,6 @@
+### 2.3.7 (9/26/2018)
+- update min. version of request to 2.88.0. This will keep ms-rest and ms-rest-azure in sync with request dependency.
+
 ### 2.3.6 (6/25/2018)
 - Removed usage of destructuring syntax for compatibility with old node.js versions.
 

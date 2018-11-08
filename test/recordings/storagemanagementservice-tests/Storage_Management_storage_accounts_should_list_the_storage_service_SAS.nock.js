@@ -9,7 +9,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/ce4a7590-4722-4bcf-a2c6-e473e9f11778/resourceGroups/nodeTestGroup8499/providers/Microsoft.Storage/storageAccounts/testacc6023/ListServiceSas?api-version=2018-03-01-preview', '*')
+.post('/subscriptions/ce4a7590-4722-4bcf-a2c6-e473e9f11778/resourceGroups/nodeTestGroup8499/providers/Microsoft.Storage/storageAccounts/testacc6023/ListServiceSas?api-version=2018-07-01', '*')
   .reply(200, "{\"serviceSasToken\":\"sv=2015-04-05&sr=c&spr=https,http&st=2017-12-12T05%3A51%3A36Z&se=2017-12-12T06%3A51%3A36Z&sp=rdwlacup&sig=Jr3vIKUr3hDmT91uuUKl0KR6eI6Lp3yqY%2Btp9wcd848%3D\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '176',
@@ -28,7 +28,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/ce4a7590-4722-4bcf-a2c6-e473e9f11778/resourceGroups/nodeTestGroup8499/providers/Microsoft.Storage/storageAccounts/testacc6023/ListServiceSas?api-version=2018-03-01-preview', '*')
+.post('/subscriptions/ce4a7590-4722-4bcf-a2c6-e473e9f11778/resourceGroups/nodeTestGroup8499/providers/Microsoft.Storage/storageAccounts/testacc6023/ListServiceSas?api-version=2018-07-01', '*')
   .reply(200, "{\"serviceSasToken\":\"sv=2015-04-05&sr=c&spr=https,http&st=2017-12-12T05%3A51%3A36Z&se=2017-12-12T06%3A51%3A36Z&sp=rdwlacup&sig=Jr3vIKUr3hDmT91uuUKl0KR6eI6Lp3yqY%2Btp9wcd848%3D\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '176',

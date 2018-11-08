@@ -211,7 +211,7 @@ export interface Profiles {
      *
      * @param {string} [profile.sku.name] Name of the pricing tier. Possible values
      * include: 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
-     * 'Standard_Akamai', 'Standard_ChinaCdn'
+     * 'Standard_Akamai', 'Standard_ChinaCdn', 'Standard_Microsoft'
      *
      * @param {string} profile.location Resource location.
      *
@@ -247,7 +247,7 @@ export interface Profiles {
      *
      * @param {string} [profile.sku.name] Name of the pricing tier. Possible values
      * include: 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
-     * 'Standard_Akamai', 'Standard_ChinaCdn'
+     * 'Standard_Akamai', 'Standard_ChinaCdn', 'Standard_Microsoft'
      *
      * @param {string} profile.location Resource location.
      *
@@ -640,7 +640,7 @@ export interface Profiles {
      *
      * @param {string} [profile.sku.name] Name of the pricing tier. Possible values
      * include: 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
-     * 'Standard_Akamai', 'Standard_ChinaCdn'
+     * 'Standard_Akamai', 'Standard_ChinaCdn', 'Standard_Microsoft'
      *
      * @param {string} profile.location Resource location.
      *
@@ -676,7 +676,7 @@ export interface Profiles {
      *
      * @param {string} [profile.sku.name] Name of the pricing tier. Possible values
      * include: 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
-     * 'Standard_Akamai', 'Standard_ChinaCdn'
+     * 'Standard_Akamai', 'Standard_ChinaCdn', 'Standard_Microsoft'
      *
      * @param {string} profile.location Resource location.
      *

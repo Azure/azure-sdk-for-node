@@ -10,31 +10,31 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/nodes/tvm-3840119875_1-20180309t224543z/users?api-version=2018-03-01.6.1', '*')
+.post('/pools/nodesdktestpool1/nodes/tvm-14141481_1-20180821t200555z/users?api-version=2018-08-01.7.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  location: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_1-20180309t224543z/users/NodeSDKTestUser',
+  location: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_1-20180821t200555z/users/NodeSDKTestUser',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'f54be1f4-2f27-4ebc-9a0b-f452fc662e61',
+  'request-id': 'fbcb8ab0-34ee-4caf-94e4-8be65b9e3a7d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_1-20180309t224543z/users/NodeSDKTestUser',
-  date: 'Fri, 09 Mar 2018 22:59:13 GMT',
+  dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_1-20180821t200555z/users/NodeSDKTestUser',
+  date: 'Tue, 21 Aug 2018 20:23:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/nodes/tvm-3840119875_1-20180309t224543z/users?api-version=2018-03-01.6.1', '*')
+.post('/pools/nodesdktestpool1/nodes/tvm-14141481_1-20180821t200555z/users?api-version=2018-08-01.7.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  location: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_1-20180309t224543z/users/NodeSDKTestUser',
+  location: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_1-20180821t200555z/users/NodeSDKTestUser',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'f54be1f4-2f27-4ebc-9a0b-f452fc662e61',
+  'request-id': 'fbcb8ab0-34ee-4caf-94e4-8be65b9e3a7d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_1-20180309t224543z/users/NodeSDKTestUser',
-  date: 'Fri, 09 Mar 2018 22:59:13 GMT',
+  dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_1-20180821t200555z/users/NodeSDKTestUser',
+  date: 'Tue, 21 Aug 2018 20:23:10 GMT',
   connection: 'close' });
  return result; }]];

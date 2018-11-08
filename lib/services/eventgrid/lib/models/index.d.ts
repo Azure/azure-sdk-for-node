@@ -343,6 +343,114 @@ export interface ResourceDeleteCancelData {
 
 /**
  * @class
+ * Initializes a new instance of the ResourceActionSuccessData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.Resources.ResourceActionSuccess event. This is raised when a
+ * resource action operation succeeds.
+ *
+ * @member {string} [tenantId] The tenant ID of the resource.
+ * @member {string} [subscriptionId] The subscription ID of the resource.
+ * @member {string} [resourceGroup] The resource group of the resource.
+ * @member {string} [resourceProvider] The resource provider performing the
+ * operation.
+ * @member {string} [resourceUri] The URI of the resource in the operation.
+ * @member {string} [operationName] The operation that was performed.
+ * @member {string} [status] The status of the operation.
+ * @member {string} [authorization] The requested authorization for the
+ * operation.
+ * @member {string} [claims] The properties of the claims.
+ * @member {string} [correlationId] An operation ID used for troubleshooting.
+ * @member {string} [httpRequest] The details of the operation.
+ */
+export interface ResourceActionSuccessData {
+  tenantId?: string;
+  subscriptionId?: string;
+  resourceGroup?: string;
+  resourceProvider?: string;
+  resourceUri?: string;
+  operationName?: string;
+  status?: string;
+  authorization?: string;
+  claims?: string;
+  correlationId?: string;
+  httpRequest?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceActionFailureData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.Resources.ResourceActionFailure event. This is raised when a
+ * resource action operation fails.
+ *
+ * @member {string} [tenantId] The tenant ID of the resource.
+ * @member {string} [subscriptionId] The subscription ID of the resource.
+ * @member {string} [resourceGroup] The resource group of the resource.
+ * @member {string} [resourceProvider] The resource provider performing the
+ * operation.
+ * @member {string} [resourceUri] The URI of the resource in the operation.
+ * @member {string} [operationName] The operation that was performed.
+ * @member {string} [status] The status of the operation.
+ * @member {string} [authorization] The requested authorization for the
+ * operation.
+ * @member {string} [claims] The properties of the claims.
+ * @member {string} [correlationId] An operation ID used for troubleshooting.
+ * @member {string} [httpRequest] The details of the operation.
+ */
+export interface ResourceActionFailureData {
+  tenantId?: string;
+  subscriptionId?: string;
+  resourceGroup?: string;
+  resourceProvider?: string;
+  resourceUri?: string;
+  operationName?: string;
+  status?: string;
+  authorization?: string;
+  claims?: string;
+  correlationId?: string;
+  httpRequest?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceActionCancelData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for an
+ * Microsoft.Resources.ResourceActionCancel event. This is raised when a
+ * resource action operation is canceled.
+ *
+ * @member {string} [tenantId] The tenant ID of the resource.
+ * @member {string} [subscriptionId] The subscription ID of the resource.
+ * @member {string} [resourceGroup] The resource group of the resource.
+ * @member {string} [resourceProvider] The resource provider performing the
+ * operation.
+ * @member {string} [resourceUri] The URI of the resource in the operation.
+ * @member {string} [operationName] The operation that was performed.
+ * @member {string} [status] The status of the operation.
+ * @member {string} [authorization] The requested authorization for the
+ * operation.
+ * @member {string} [claims] The properties of the claims.
+ * @member {string} [correlationId] An operation ID used for troubleshooting.
+ * @member {string} [httpRequest] The details of the operation.
+ */
+export interface ResourceActionCancelData {
+  tenantId?: string;
+  subscriptionId?: string;
+  resourceGroup?: string;
+  resourceProvider?: string;
+  resourceUri?: string;
+  operationName?: string;
+  status?: string;
+  authorization?: string;
+  claims?: string;
+  correlationId?: string;
+  httpRequest?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the EventGridEvent class.
  * @constructor
  * Properties of an event published to an Event Grid topic.
@@ -431,15 +539,11 @@ export interface SubscriptionDeletedEventData {
  * @member {string} [deviceId] The unique identifier of the device. This
  * case-sensitive string can be up to 128 characters long, and supports ASCII
  * 7-bit alphanumeric characters plus the following special characters: - : . +
- * % _ # * ? ! ( ) , = @ ; $ '.
+ * % _ &#35; * ? ! ( ) , = @ ; $ '.
  * @member {string} [hubName] Name of the IoT Hub where the device was created
  * or deleted.
- * @member {string} [opType] The event type specified for this operation by the
- * IoT Hub.
- * @member {string} [operationTimestamp] The ISO8601 timestamp of the
- * operation.
  * @member {object} [twin] Information about the device twin, which is the
- * cloud represenation of application device metadata.
+ * cloud representation of application device metadata.
  * @member {string} [twin.authenticationType] Authentication type used for this
  * device: either SAS, SelfSigned, or CertificateAuthority.
  * @member {number} [twin.cloudToDeviceMessageCount] Count of cloud to device
@@ -487,8 +591,6 @@ export interface SubscriptionDeletedEventData {
 export interface DeviceLifeCycleEventProperties {
   deviceId?: string;
   hubName?: string;
-  opType?: string;
-  operationTimestamp?: string;
   twin?: DeviceTwinInfo;
 }
 
@@ -510,6 +612,58 @@ export interface IotHubDeviceCreatedEventData extends DeviceLifeCycleEventProper
  *
  */
 export interface IotHubDeviceDeletedEventData extends DeviceLifeCycleEventProperties {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeviceConnectionStateEventProperties class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a device connection
+ * state event (DeviceConnected, DeviceDisconnected).
+ *
+ * @member {string} [deviceId] The unique identifier of the device. This
+ * case-sensitive string can be up to 128 characters long, and supports ASCII
+ * 7-bit alphanumeric characters plus the following special characters: - : . +
+ * % _ &#35; * ? ! ( ) , = @ ; $ '.
+ * @member {string} [moduleId] The unique identifier of the module. This
+ * case-sensitive string can be up to 128 characters long, and supports ASCII
+ * 7-bit alphanumeric characters plus the following special characters: - : . +
+ * % _ &#35; * ? ! ( ) , = @ ; $ '.
+ * @member {string} [hubName] Name of the IoT Hub where the device was created
+ * or deleted.
+ * @member {object} [deviceConnectionStateEventInfo] Information about the
+ * device connection state event.
+ * @member {string} [deviceConnectionStateEventInfo.sequenceNumber] Sequence
+ * number is string representation of a hexadecimal number. string compare can
+ * be used to identify the larger number because both in ASCII and HEX numbers
+ * come after alphabets. If you are converting the string to hex, then the
+ * number is a 256 bit number.
+ */
+export interface DeviceConnectionStateEventProperties {
+  deviceId?: string;
+  moduleId?: string;
+  hubName?: string;
+  deviceConnectionStateEventInfo?: DeviceConnectionStateEventInfo;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IotHubDeviceConnectedEventData class.
+ * @constructor
+ * Event data for Microsoft.Devices.DeviceConnected event.
+ *
+ */
+export interface IotHubDeviceConnectedEventData extends DeviceConnectionStateEventProperties {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IotHubDeviceDisconnectedEventData class.
+ * @constructor
+ * Event data for Microsoft.Devices.DeviceDisconnected event.
+ *
+ */
+export interface IotHubDeviceDisconnectedEventData extends DeviceConnectionStateEventProperties {
 }
 
 /**
@@ -592,7 +746,7 @@ export interface DeviceTwinInfoX509Thumbprint {
  * @class
  * Initializes a new instance of the DeviceTwinInfo class.
  * @constructor
- * Information about the device twin, which is the cloud represenation of
+ * Information about the device twin, which is the cloud representation of
  * application device metadata.
  *
  * @member {string} [authenticationType] Authentication type used for this
@@ -649,6 +803,21 @@ export interface DeviceTwinInfo {
   statusUpdateTime?: string;
   version?: number;
   x509Thumbprint?: DeviceTwinInfoX509Thumbprint;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeviceConnectionStateEventInfo class.
+ * @constructor
+ * Information about the device connection state event.
+ *
+ * @member {string} [sequenceNumber] Sequence number is string representation
+ * of a hexadecimal number. string compare can be used to identify the larger
+ * number because both in ASCII and HEX numbers come after alphabets. If you
+ * are converting the string to hex, then the number is a 256 bit number.
+ */
+export interface DeviceConnectionStateEventInfo {
+  sequenceNumber?: string;
 }
 
 /**
@@ -882,9 +1051,497 @@ export interface ServiceBusDeadletterMessagesAvailableWithNoListenersEventData {
  * @member {string} [state] The new state of the Job. Possible values include:
  * 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing', 'Queued',
  * 'Scheduled'
+ * @member {object} [correlationData] Gets the Job correlation data.
  */
 export interface MediaJobStateChangeEventData {
   readonly previousState?: string;
   readonly state?: string;
+  correlationData?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaJobErrorDetail class.
+ * @constructor
+ * Details of JobOutput errors.
+ *
+ * @member {string} [code] Code describing the error detail.
+ * @member {string} [message] A human-readable representation of the error.
+ */
+export interface MediaJobErrorDetail {
+  readonly code?: string;
+  readonly message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaJobError class.
+ * @constructor
+ * Details of JobOutput errors.
+ *
+ * @member {string} [code] Error code describing the error. Possible values
+ * include: 'ServiceError', 'ServiceTransientError', 'DownloadNotAccessible',
+ * 'DownloadTransientError', 'UploadNotAccessible', 'UploadTransientError',
+ * 'ConfigurationUnsupported', 'ContentMalformed', 'ContentUnsupported'
+ * @member {string} [message] A human-readable language-dependent
+ * representation of the error.
+ * @member {string} [category] Helps with categorization of errors. Possible
+ * values include: 'Service', 'Download', 'Upload', 'Configuration', 'Content'
+ * @member {string} [retry] Indicates that it may be possible to retry the Job.
+ * If retry is unsuccessful, please contact Azure support via Azure Portal.
+ * Possible values include: 'DoNotRetry', 'MayRetry'
+ * @member {array} [details] An array of details about specific errors that led
+ * to this reported error.
+ */
+export interface MediaJobError {
+  readonly code?: string;
+  readonly message?: string;
+  readonly category?: string;
+  readonly retry?: string;
+  readonly details?: MediaJobErrorDetail[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaJobOutput class.
+ * @constructor
+ * The event data for a Job output.
+ *
+ * @member {object} [error] Gets the Job output error.
+ * @member {string} [error.code] Error code describing the error. Possible
+ * values include: 'ServiceError', 'ServiceTransientError',
+ * 'DownloadNotAccessible', 'DownloadTransientError', 'UploadNotAccessible',
+ * 'UploadTransientError', 'ConfigurationUnsupported', 'ContentMalformed',
+ * 'ContentUnsupported'
+ * @member {string} [error.message] A human-readable language-dependent
+ * representation of the error.
+ * @member {string} [error.category] Helps with categorization of errors.
+ * Possible values include: 'Service', 'Download', 'Upload', 'Configuration',
+ * 'Content'
+ * @member {string} [error.retry] Indicates that it may be possible to retry
+ * the Job. If retry is unsuccessful, please contact Azure support via Azure
+ * Portal. Possible values include: 'DoNotRetry', 'MayRetry'
+ * @member {array} [error.details] An array of details about specific errors
+ * that led to this reported error.
+ * @member {string} [label] Gets the Job output label.
+ * @member {number} progress Gets the Job output progress.
+ * @member {string} state Gets the Job output state. Possible values include:
+ * 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing', 'Queued',
+ * 'Scheduled'
+ * @member {string} odatatype Polymorphic Discriminator
+ */
+export interface MediaJobOutput {
+  error?: MediaJobError;
+  label?: string;
+  progress: number;
+  state: string;
+  odatatype: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaJobOutputAsset class.
+ * @constructor
+ * The event data for a Job output asset.
+ *
+ * @member {string} [assetName] Gets the Job output asset name.
+ */
+export interface MediaJobOutputAsset extends MediaJobOutput {
+  assetName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaJobOutputStateChangeEventData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.Media.JobOutputStateChange event.
+ *
+ * @member {string} [previousState] The previous state of the Job. Possible
+ * values include: 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing',
+ * 'Queued', 'Scheduled'
+ * @member {object} [output] Gets the output.
+ * @member {object} [output.error] Gets the Job output error.
+ * @member {string} [output.error.code] Error code describing the error.
+ * Possible values include: 'ServiceError', 'ServiceTransientError',
+ * 'DownloadNotAccessible', 'DownloadTransientError', 'UploadNotAccessible',
+ * 'UploadTransientError', 'ConfigurationUnsupported', 'ContentMalformed',
+ * 'ContentUnsupported'
+ * @member {string} [output.error.message] A human-readable language-dependent
+ * representation of the error.
+ * @member {string} [output.error.category] Helps with categorization of
+ * errors. Possible values include: 'Service', 'Download', 'Upload',
+ * 'Configuration', 'Content'
+ * @member {string} [output.error.retry] Indicates that it may be possible to
+ * retry the Job. If retry is unsuccessful, please contact Azure support via
+ * Azure Portal. Possible values include: 'DoNotRetry', 'MayRetry'
+ * @member {array} [output.error.details] An array of details about specific
+ * errors that led to this reported error.
+ * @member {string} [output.label] Gets the Job output label.
+ * @member {number} [output.progress] Gets the Job output progress.
+ * @member {string} [output.state] Gets the Job output state. Possible values
+ * include: 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing',
+ * 'Queued', 'Scheduled'
+ * @member {string} [output.odatatype] Polymorphic Discriminator
+ * @member {object} [jobCorrelationData] Gets the Job correlation data.
+ */
+export interface MediaJobOutputStateChangeEventData {
+  readonly previousState?: string;
+  output?: MediaJobOutput;
+  jobCorrelationData?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaJobScheduledEventData class.
+ * @constructor
+ * Job scheduled event data
+ *
+ */
+export interface MediaJobScheduledEventData extends MediaJobStateChangeEventData {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaJobProcessingEventData class.
+ * @constructor
+ * Job processing event data
+ *
+ */
+export interface MediaJobProcessingEventData extends MediaJobStateChangeEventData {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaJobCancelingEventData class.
+ * @constructor
+ * Job canceling event data
+ *
+ */
+export interface MediaJobCancelingEventData extends MediaJobStateChangeEventData {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaJobFinishedEventData class.
+ * @constructor
+ * Job finished event data
+ *
+ * @member {array} [outputs] Gets the Job outputs.
+ */
+export interface MediaJobFinishedEventData extends MediaJobStateChangeEventData {
+  outputs?: MediaJobOutput[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaJobCanceledEventData class.
+ * @constructor
+ * Job canceled event data
+ *
+ * @member {array} [outputs] Gets the Job outputs.
+ */
+export interface MediaJobCanceledEventData extends MediaJobStateChangeEventData {
+  outputs?: MediaJobOutput[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaJobErroredEventData class.
+ * @constructor
+ * Job error state event data
+ *
+ * @member {array} [outputs] Gets the Job outputs.
+ */
+export interface MediaJobErroredEventData extends MediaJobStateChangeEventData {
+  outputs?: MediaJobOutput[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaJobOutputCanceledEventData class.
+ * @constructor
+ * Job output canceled event data
+ *
+ */
+export interface MediaJobOutputCanceledEventData extends MediaJobOutputStateChangeEventData {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaJobOutputCancelingEventData class.
+ * @constructor
+ * Job output canceling event data
+ *
+ */
+export interface MediaJobOutputCancelingEventData extends MediaJobOutputStateChangeEventData {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaJobOutputErroredEventData class.
+ * @constructor
+ * Job output error event data
+ *
+ */
+export interface MediaJobOutputErroredEventData extends MediaJobOutputStateChangeEventData {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaJobOutputFinishedEventData class.
+ * @constructor
+ * Job output finished event data
+ *
+ */
+export interface MediaJobOutputFinishedEventData extends MediaJobOutputStateChangeEventData {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaJobOutputProcessingEventData class.
+ * @constructor
+ * Job output processing event data
+ *
+ */
+export interface MediaJobOutputProcessingEventData extends MediaJobOutputStateChangeEventData {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaJobOutputScheduledEventData class.
+ * @constructor
+ * Job output scheduled event data
+ *
+ */
+export interface MediaJobOutputScheduledEventData extends MediaJobOutputStateChangeEventData {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaLiveEventEncoderConnectedEventData class.
+ * @constructor
+ * Encoder connect event data.
+ *
+ * @member {string} [ingestUrl] Gets the ingest URL provided by the live event.
+ * @member {string} [streamId] Gets the stream Id.
+ * @member {string} [encoderIp] Gets the remote IP.
+ * @member {string} [encoderPort] Gets the remote port.
+ */
+export interface MediaLiveEventEncoderConnectedEventData {
+  readonly ingestUrl?: string;
+  readonly streamId?: string;
+  readonly encoderIp?: string;
+  readonly encoderPort?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaLiveEventConnectionRejectedEventData class.
+ * @constructor
+ * Encoder connection rejected event data.
+ *
+ * @member {string} [ingestUrl] Gets the ingest URL provided by the live event.
+ * @member {string} [streamId] Gets the stream Id.
+ * @member {string} [encoderIp] Gets the remote IP.
+ * @member {string} [encoderPort] Gets the remote port.
+ * @member {string} [resultCode] Gets the result code.
+ */
+export interface MediaLiveEventConnectionRejectedEventData {
+  readonly ingestUrl?: string;
+  readonly streamId?: string;
+  readonly encoderIp?: string;
+  readonly encoderPort?: string;
+  readonly resultCode?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaLiveEventEncoderDisconnectedEventData class.
+ * @constructor
+ * Encoder disconnected event data.
+ *
+ * @member {string} [ingestUrl] Gets the ingest URL provided by the live event.
+ * @member {string} [streamId] Gets the stream Id.
+ * @member {string} [encoderIp] Gets the remote IP.
+ * @member {string} [encoderPort] Gets the remote port.
+ * @member {string} [resultCode] Gets the result code.
+ */
+export interface MediaLiveEventEncoderDisconnectedEventData {
+  readonly ingestUrl?: string;
+  readonly streamId?: string;
+  readonly encoderIp?: string;
+  readonly encoderPort?: string;
+  readonly resultCode?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaLiveEventIncomingStreamReceivedEventData class.
+ * @constructor
+ * Encoder connect event data.
+ *
+ * @member {string} [ingestUrl] Gets the ingest URL provided by the live event.
+ * @member {string} [trackType] Gets the type of the track (Audio / Video).
+ * @member {string} [trackName] Gets the track name.
+ * @member {number} [bitrate] Gets the bitrate of the track.
+ * @member {string} [encoderIp] Gets the remote IP.
+ * @member {string} [encoderPort] Gets the remote port.
+ * @member {string} [timestamp] Gets the first timestamp of the data chunk
+ * received.
+ * @member {string} [duration] Gets the duration of the first data chunk.
+ * @member {string} [timescale] Gets the timescale in which timestamp is
+ * represented.
+ */
+export interface MediaLiveEventIncomingStreamReceivedEventData {
+  readonly ingestUrl?: string;
+  readonly trackType?: string;
+  readonly trackName?: string;
+  readonly bitrate?: number;
+  readonly encoderIp?: string;
+  readonly encoderPort?: string;
+  readonly timestamp?: string;
+  readonly duration?: string;
+  readonly timescale?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaLiveEventIncomingStreamsOutOfSyncEventData class.
+ * @constructor
+ * Incoming streams out of sync event data.
+ *
+ * @member {string} [minLastTimestamp] Gets the minimum last timestamp
+ * received.
+ * @member {string} [typeOfStreamWithMinLastTimestamp] Gets the type of stream
+ * with minimum last timestamp.
+ * @member {string} [maxLastTimestamp] Gets the maximum timestamp among all the
+ * tracks (audio or video).
+ * @member {string} [typeOfStreamWithMaxLastTimestamp] Gets the type of stream
+ * with maximum last timestamp.
+ * @member {string} [timescaleOfMinLastTimestamp] Gets the timescale in which
+ * "MinLastTimestamp" is represented.
+ * @member {string} [timescaleOfMaxLastTimestamp] Gets the timescale in which
+ * "MaxLastTimestamp" is represented.
+ */
+export interface MediaLiveEventIncomingStreamsOutOfSyncEventData {
+  readonly minLastTimestamp?: string;
+  readonly typeOfStreamWithMinLastTimestamp?: string;
+  readonly maxLastTimestamp?: string;
+  readonly typeOfStreamWithMaxLastTimestamp?: string;
+  readonly timescaleOfMinLastTimestamp?: string;
+  readonly timescaleOfMaxLastTimestamp?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaLiveEventIncomingVideoStreamsOutOfSyncEventData class.
+ * @constructor
+ * Incoming video stream out of synch event data.
+ *
+ * @member {string} [firstTimestamp] Gets the first timestamp received for one
+ * of the quality levels.
+ * @member {string} [firstDuration] Gets the duration of the data chunk with
+ * first timestamp.
+ * @member {string} [secondTimestamp] Gets the timestamp received for some
+ * other quality levels.
+ * @member {string} [secondDuration] Gets the duration of the data chunk with
+ * second timestamp.
+ * @member {string} [timescale] Gets the timescale in which both the timestamps
+ * and durations are represented.
+ */
+export interface MediaLiveEventIncomingVideoStreamsOutOfSyncEventData {
+  readonly firstTimestamp?: string;
+  readonly firstDuration?: string;
+  readonly secondTimestamp?: string;
+  readonly secondDuration?: string;
+  readonly timescale?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaLiveEventIncomingDataChunkDroppedEventData class.
+ * @constructor
+ * Ingest fragment dropped event event data.
+ *
+ * @member {string} [timestamp] Gets the timestamp of the data chunk dropped.
+ * @member {string} [trackType] Gets the type of the track (Audio / Video).
+ * @member {number} [bitrate] Gets the bitrate of the track.
+ * @member {string} [timescale] Gets the timescale of the Timestamp.
+ * @member {string} [resultCode] Gets the result code for fragment drop
+ * operation.
+ * @member {string} [trackName] Gets the name of the track for which fragment
+ * is dropped.
+ */
+export interface MediaLiveEventIncomingDataChunkDroppedEventData {
+  readonly timestamp?: string;
+  readonly trackType?: string;
+  readonly bitrate?: number;
+  readonly timescale?: string;
+  readonly resultCode?: string;
+  readonly trackName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaLiveEventIngestHeartbeatEventData class.
+ * @constructor
+ * Ingest fragment dropped event event data.
+ *
+ * @member {string} [trackType] Gets the type of the track (Audio / Video).
+ * @member {string} [trackName] Gets the track name.
+ * @member {number} [bitrate] Gets the bitrate of the track.
+ * @member {number} [incomingBitrate] Gets the incoming bitrate.
+ * @member {string} [lastTimestamp] Gets the last timestamp.
+ * @member {string} [timescale] Gets the timescale of the last timestamp.
+ * @member {number} [overlapCount] Gets the fragment Overlap count.
+ * @member {number} [discontinuityCount] Gets the fragment Discontinuity count.
+ * @member {number} [nonincreasingCount] Gets Non increasing count.
+ * @member {boolean} [unexpectedBitrate] Gets a value indicating whether
+ * unexpected bitrate is present or not.
+ * @member {string} [state] Gets the state of the live event.
+ * @member {boolean} [healthy] Gets a value indicating whether preview is
+ * healthy or not.
+ */
+export interface MediaLiveEventIngestHeartbeatEventData {
+  readonly trackType?: string;
+  readonly trackName?: string;
+  readonly bitrate?: number;
+  readonly incomingBitrate?: number;
+  readonly lastTimestamp?: string;
+  readonly timescale?: string;
+  readonly overlapCount?: number;
+  readonly discontinuityCount?: number;
+  readonly nonincreasingCount?: number;
+  readonly unexpectedBitrate?: boolean;
+  readonly state?: string;
+  readonly healthy?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MediaLiveEventTrackDiscontinuityDetectedEventData class.
+ * @constructor
+ * Ingest track discontinuity detected event data.
+ *
+ * @member {string} [trackType] Gets the type of the track (Audio / Video).
+ * @member {string} [trackName] Gets the track name.
+ * @member {number} [bitrate] Gets the bitrate.
+ * @member {string} [previousTimestamp] Gets the timestamp of the previous
+ * fragment.
+ * @member {string} [newTimestamp] Gets the timestamp of the current fragment.
+ * @member {string} [timescale] Gets the timescale in which both timestamps and
+ * discontinuity gap are represented.
+ * @member {string} [discontinuityGap] Gets the discontinuity gap between
+ * PreviousTimestamp and NewTimestamp.
+ */
+export interface MediaLiveEventTrackDiscontinuityDetectedEventData {
+  readonly trackType?: string;
+  readonly trackName?: string;
+  readonly bitrate?: number;
+  readonly previousTimestamp?: string;
+  readonly newTimestamp?: string;
+  readonly timescale?: string;
+  readonly discontinuityGap?: string;
 }
 

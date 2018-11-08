@@ -14,6 +14,123 @@ import * as models from '../models';
 
 /**
  * @class
+ * AuthorizationOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ManagementLockClient.
+ */
+export interface AuthorizationOperations {
+
+
+    /**
+     * Lists all of the available Microsoft.Authorization REST API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Lists all of the available Microsoft.Authorization REST API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    list(callback: ServiceCallback<models.OperationListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+
+
+    /**
+     * Lists all of the available Microsoft.Authorization REST API operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Lists all of the available Microsoft.Authorization REST API operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+}
+
+/**
+ * @class
  * ManagementLocks
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ManagementLockClient.
@@ -49,8 +166,6 @@ export interface ManagementLocks {
      * characters.
      *
      * @param {array} [parameters.owners] The owners of the lock.
-     *
-     * @param {string} [parameters.name] The name of the lock.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -93,8 +208,6 @@ export interface ManagementLocks {
      * characters.
      *
      * @param {array} [parameters.owners] The owners of the lock.
-     *
-     * @param {string} [parameters.name] The name of the lock.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -283,8 +396,6 @@ export interface ManagementLocks {
      *
      * @param {array} [parameters.owners] The owners of the lock.
      *
-     * @param {string} [parameters.name] The name of the lock.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -323,8 +434,6 @@ export interface ManagementLocks {
      * characters.
      *
      * @param {array} [parameters.owners] The owners of the lock.
-     *
-     * @param {string} [parameters.name] The name of the lock.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -516,8 +625,6 @@ export interface ManagementLocks {
      *
      * @param {array} [parameters.owners] The owners of the lock.
      *
-     * @param {string} [parameters.name] The name of the lock.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -571,8 +678,6 @@ export interface ManagementLocks {
      * characters.
      *
      * @param {array} [parameters.owners] The owners of the lock.
-     *
-     * @param {string} [parameters.name] The name of the lock.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -806,8 +911,6 @@ export interface ManagementLocks {
      *
      * @param {array} [parameters.owners] The owners of the lock.
      *
-     * @param {string} [parameters.name] The name of the lock.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -847,8 +950,6 @@ export interface ManagementLocks {
      * characters.
      *
      * @param {array} [parameters.owners] The owners of the lock.
-     *
-     * @param {string} [parameters.name] The name of the lock.
      *
      * @param {object} [options] Optional Parameters.
      *

@@ -9,32 +9,32 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .post('/pools/nodesdktestpool1/disableautoscale?api-version=2018-03-01.6.1')
+  .post('/pools/nodesdktestpool1/disableautoscale?api-version=2018-08-01.7.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 22:59:20 GMT',
-  etag: '0x8D5861164D233AE',
+  'last-modified': 'Tue, 21 Aug 2018 20:25:21 GMT',
+  etag: '0x8D607A437BD2FE0',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '63362ee3-278f-4cec-a36d-7e15d6aeca44',
+  'request-id': '1b43fef9-22e1-442c-9c36-87f83b210a02',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/disableautoscale',
-  date: 'Fri, 09 Mar 2018 22:59:20 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .post('/pools/nodesdktestpool1/disableautoscale?api-version=2018-03-01.6.1')
+  .post('/pools/nodesdktestpool1/disableautoscale?api-version=2018-08-01.7.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 22:59:20 GMT',
-  etag: '0x8D5861164D233AE',
+  'last-modified': 'Tue, 21 Aug 2018 20:25:21 GMT',
+  etag: '0x8D607A437BD2FE0',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '63362ee3-278f-4cec-a36d-7e15d6aeca44',
+  'request-id': '1b43fef9-22e1-442c-9c36-87f83b210a02',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/disableautoscale',
-  date: 'Fri, 09 Mar 2018 22:59:20 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:20 GMT',
   connection: 'close' });
  return result; }]];

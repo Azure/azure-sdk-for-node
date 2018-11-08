@@ -1,0 +1,25 @@
+{
+  "name": "azure-arm-maps",
+  "author": "Microsoft Corporation",
+  "description": "MapsManagementClient Library with typescript type definitions for node",
+  "version": "1.1.0",
+  "dependencies": {
+    "ms-rest": "^2.3.3",
+    "ms-rest-azure": "^2.5.5"
+  },
+  "keywords": [
+    "node",
+    "azure"
+  ],
+  "license": "MIT",
+  "main": "./lib/mapsManagementClient.js",
+  "types": "./lib/mapsManagementClient.d.ts",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/mapsManagement",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azure/azure-sdk-for-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/azure/azure-sdk-for-node/issues"
+  }
+}

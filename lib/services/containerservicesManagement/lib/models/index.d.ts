@@ -38,6 +38,238 @@ export interface Resource extends BaseResource {
 
 /**
  * @class
+ * Initializes a new instance of the PurchasePlan class.
+ * @constructor
+ * Used for establishing the purchase context of any 3rd Party artifact through
+ * MarketPlace.
+ *
+ * @member {string} [name] The plan ID.
+ * @member {string} [product] Specifies the product of the image from the
+ * marketplace. This is the same value as Offer under the imageReference
+ * element.
+ * @member {string} [promotionCode] The promotion code.
+ * @member {string} [publisher] The plan ID.
+ */
+export interface PurchasePlan {
+  name?: string;
+  product?: string;
+  promotionCode?: string;
+  publisher?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftRouterProfile class.
+ * @constructor
+ * Represents an OpenShift router
+ *
+ * @member {string} [name] Name of the router profile.
+ * @member {string} [publicSubdomain] DNS subdomain for openshift router.
+ * @member {string} [fqdn] Auto-allocated FQDN for the OpenShift router.
+ */
+export interface OpenShiftRouterProfile {
+  name?: string;
+  publicSubdomain?: string;
+  readonly fqdn?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkProfile class.
+ * @constructor
+ * Represents the OpenShift networking configuration
+ *
+ * @member {string} [vnetCidr] CIDR for the OpenShift Vnet. Default value:
+ * '10.0.0.0/8' .
+ * @member {string} [peerVnetId] CIDR of the Vnet to peer.
+ */
+export interface NetworkProfile {
+  vnetCidr?: string;
+  peerVnetId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftManagedClusterMasterPoolProfile class.
+ * @constructor
+ * OpenShiftManagedClusterMaterPoolProfile contains configuration for OpenShift
+ * master VMs.
+ *
+ * @member {string} [name] Unique name of the master pool profile in the
+ * context of the subscription and resource group.
+ * @member {number} count Number of masters (VMs) to host docker containers.
+ * The default value is 3. Default value: 3 .
+ * @member {string} vmSize Size of agent VMs. Possible values include:
+ * 'Standard_D2s_v3', 'Standard_D4s_v3'
+ * @member {string} [subnetCidr] Subnet CIDR for the peering.
+ * @member {string} [osType] OsType to be used to specify os type. Choose from
+ * Linux and Windows. Default to Linux. Possible values include: 'Linux',
+ * 'Windows'. Default value: 'Linux' .
+ */
+export interface OpenShiftManagedClusterMasterPoolProfile {
+  name?: string;
+  count: number;
+  vmSize: string;
+  subnetCidr?: string;
+  osType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftManagedClusterAgentPoolProfile class.
+ * @constructor
+ * Defines the configuration of the OpenShift cluster VMs.
+ *
+ * @member {string} name Unique name of the pool profile in the context of the
+ * subscription and resource group.
+ * @member {number} count Number of agents (VMs) to host docker containers.
+ * Allowed values must be in the range of 1 to 5 (inclusive). The default value
+ * is 2. . Default value: 2 .
+ * @member {string} vmSize Size of agent VMs. Possible values include:
+ * 'Standard_D2s_v3', 'Standard_D4s_v3'
+ * @member {string} [subnetCidr] Subnet CIDR for the peering. Default value:
+ * '10.0.0.0/24' .
+ * @member {string} [osType] OsType to be used to specify os type. Choose from
+ * Linux and Windows. Default to Linux. Possible values include: 'Linux',
+ * 'Windows'. Default value: 'Linux' .
+ * @member {string} [role] Define the role of the AgentPoolProfile. Possible
+ * values include: 'compute', 'infra'
+ */
+export interface OpenShiftManagedClusterAgentPoolProfile {
+  name: string;
+  count: number;
+  vmSize: string;
+  subnetCidr?: string;
+  osType?: string;
+  role?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftManagedClusterBaseIdentityProvider class.
+ * @constructor
+ * Structure for any Identity provider.
+ *
+ * @member {string} kind Polymorphic Discriminator
+ */
+export interface OpenShiftManagedClusterBaseIdentityProvider {
+  kind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftManagedClusterIdentityProvider class.
+ * @constructor
+ * Defines the configuration of the identity providers to be used in the
+ * OpenShift cluster.
+ *
+ * @member {string} [name] Name of the provider.
+ * @member {object} [provider] Configuration of the provider.
+ * @member {string} [provider.kind] Polymorphic Discriminator
+ */
+export interface OpenShiftManagedClusterIdentityProvider {
+  name?: string;
+  provider?: OpenShiftManagedClusterBaseIdentityProvider;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftManagedClusterAuthProfile class.
+ * @constructor
+ * Defines all possible authentication profiles for the OpenShift cluster.
+ *
+ * @member {array} [identityProviders] Type of authentication profile to use.
+ */
+export interface OpenShiftManagedClusterAuthProfile {
+  identityProviders?: OpenShiftManagedClusterIdentityProvider[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftManagedCluster class.
+ * @constructor
+ * OpenShift Managed cluster.
+ *
+ * @member {object} [plan] Define the resource plan as required by ARM for
+ * billing purposes
+ * @member {string} [plan.name] The plan ID.
+ * @member {string} [plan.product] Specifies the product of the image from the
+ * marketplace. This is the same value as Offer under the imageReference
+ * element.
+ * @member {string} [plan.promotionCode] The promotion code.
+ * @member {string} [plan.publisher] The plan ID.
+ * @member {string} [provisioningState] The current deployment or provisioning
+ * state, which only appears in the response.
+ * @member {string} openShiftVersion Version of OpenShift specified when
+ * creating the cluster.
+ * @member {string} [publicHostname] Optional user-specified FQDN for OpenShift
+ * API server.
+ * @member {string} [fqdn] User-specified FQDN for OpenShift API server
+ * loadbalancer internal hostname.
+ * @member {object} [networkProfile] Configuration for OpenShift networking.
+ * @member {string} [networkProfile.vnetCidr] CIDR for the OpenShift Vnet.
+ * @member {string} [networkProfile.peerVnetId] CIDR of the Vnet to peer.
+ * @member {array} [routerProfiles] Configuration for OpenShift router(s).
+ * @member {object} [masterPoolProfile] Configuration for OpenShift master VMs.
+ * @member {string} [masterPoolProfile.name] Unique name of the master pool
+ * profile in the context of the subscription and resource group.
+ * @member {number} [masterPoolProfile.count] Number of masters (VMs) to host
+ * docker containers. The default value is 3.
+ * @member {string} [masterPoolProfile.vmSize] Size of agent VMs. Possible
+ * values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
+ * @member {string} [masterPoolProfile.subnetCidr] Subnet CIDR for the peering.
+ * @member {string} [masterPoolProfile.osType] OsType to be used to specify os
+ * type. Choose from Linux and Windows. Default to Linux. Possible values
+ * include: 'Linux', 'Windows'
+ * @member {array} [agentPoolProfiles] Configuration of OpenShift cluster VMs.
+ * @member {object} [authProfile] Configures OpenShift authentication.
+ * @member {array} [authProfile.identityProviders] Type of authentication
+ * profile to use.
+ */
+export interface OpenShiftManagedCluster extends Resource {
+  plan?: PurchasePlan;
+  readonly provisioningState?: string;
+  openShiftVersion: string;
+  publicHostname?: string;
+  fqdn?: string;
+  networkProfile?: NetworkProfile;
+  routerProfiles?: OpenShiftRouterProfile[];
+  masterPoolProfile?: OpenShiftManagedClusterMasterPoolProfile;
+  agentPoolProfiles?: OpenShiftManagedClusterAgentPoolProfile[];
+  authProfile?: OpenShiftManagedClusterAuthProfile;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftManagedClusterAADIdentityProvider class.
+ * @constructor
+ * Defines the Identity provider for MS AAD.
+ *
+ * @member {string} [clientId] The clientId password associated with the
+ * provider.
+ * @member {string} [secret] The secret password associated with the provider.
+ * @member {string} [tenantId] The tenantId associated with the provider.
+ */
+export interface OpenShiftManagedClusterAADIdentityProvider extends OpenShiftManagedClusterBaseIdentityProvider {
+  clientId?: string;
+  secret?: string;
+  tenantId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TagsObject class.
+ * @constructor
+ * Tags object for patch operations.
+ *
+ * @member {object} [tags] Resource tags.
+ */
+export interface TagsObject {
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
  * Initializes a new instance of the ContainerServiceCustomProfile class.
  * @constructor
  * Properties to configure a custom container service cluster.
@@ -543,13 +775,29 @@ export interface OperationValue {
 
 /**
  * @class
+ * Initializes a new instance of the ManagedClusterServicePrincipalProfile class.
+ * @constructor
+ * Information about a service principal identity for the cluster to use for
+ * manipulating Azure APIs.
+ *
+ * @member {string} clientId The ID for the service principal.
+ * @member {string} [secret] The secret password associated with the service
+ * principal in plain text.
+ */
+export interface ManagedClusterServicePrincipalProfile {
+  clientId: string;
+  secret?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ManagedClusterAgentPoolProfile class.
  * @constructor
  * Profile for the container service agent pool.
  *
  * @member {string} name Unique name of the agent pool profile in the context
  * of the subscription and resource group.
- * @member {number} [count] Number of agents (VMs) to host docker containers.
+ * @member {number} count Number of agents (VMs) to host docker containers.
  * Allowed values must be in the range of 1 to 100 (inclusive). The default
  * value is 1. . Default value: 1 .
  * @member {string} vmSize Size of agent VMs. Possible values include:
@@ -605,35 +853,30 @@ export interface OperationValue {
  * @member {number} [osDiskSizeGB] OS Disk Size in GB to be used to specify the
  * disk size for every machine in this master/agent pool. If you specify 0, it
  * will apply the default osDisk size according to the vmSize specified.
- * @member {string} [dnsPrefix] DNS prefix to be used to create the FQDN for
- * the agent pool.
- * @member {string} [fqdn] FDQN for the agent pool.
- * @member {array} [ports] Ports number array used to expose on this agent
- * pool. The default opened ports are different based on your choice of
- * orchestrator.
- * @member {string} [storageProfile] Storage profile specifies what kind of
- * storage used. Choose from StorageAccount and ManagedDisks. Leave it empty,
- * we will choose for you based on the orchestrator choice. Possible values
- * include: 'StorageAccount', 'ManagedDisks'
  * @member {string} [vnetSubnetID] VNet SubnetID specifies the vnet's subnet
  * identifier.
  * @member {number} [maxPods] Maximum number of pods that can run on a node.
  * @member {string} [osType] OsType to be used to specify os type. Choose from
  * Linux and Windows. Default to Linux. Possible values include: 'Linux',
  * 'Windows'. Default value: 'Linux' .
+ * @member {number} [maxCount] Maximum number of nodes for auto-scaling
+ * @member {number} [minCount] Minimum number of nodes for auto-scaling
+ * @member {boolean} [enableAutoScaling] Whether to enable auto-scaler
+ * @member {string} [type] AgentPoolType represents types of agentpool.
+ * Possible values include: 'VirtualMachineScaleSets', 'AvailabilitySet'
  */
 export interface ManagedClusterAgentPoolProfile {
   name: string;
-  count?: number;
+  count: number;
   vmSize: string;
   osDiskSizeGB?: number;
-  dnsPrefix?: string;
-  readonly fqdn?: string;
-  ports?: number[];
-  storageProfile?: string;
   vnetSubnetID?: string;
   maxPods?: number;
   osType?: string;
+  maxCount?: number;
+  minCount?: number;
+  enableAutoScaling?: boolean;
+  type?: string;
 }
 
 /**
@@ -690,14 +933,14 @@ export interface ManagedClusterAddonProfile {
  *
  * @member {string} clientAppID The client AAD application ID.
  * @member {string} serverAppID The server AAD application ID.
- * @member {string} serverAppSecret The server AAD application secret.
+ * @member {string} [serverAppSecret] The server AAD application secret.
  * @member {string} [tenantID] The AAD tenant ID to use for authentication. If
  * not specified, will use the tenant of the deployment subscription.
  */
 export interface ManagedClusterAADProfile {
   clientAppID: string;
   serverAppID: string;
-  serverAppSecret: string;
+  serverAppSecret?: string;
   tenantID?: string;
 }
 
@@ -725,19 +968,10 @@ export interface ManagedClusterAADProfile {
  * used to authenticate with Linux-based VMs. Only expect one key specified.
  * @member {object} [servicePrincipalProfile] Information about a service
  * principal identity for the cluster to use for manipulating Azure APIs.
- * Either secret or keyVaultSecretRef must be specified.
  * @member {string} [servicePrincipalProfile.clientId] The ID for the service
  * principal.
  * @member {string} [servicePrincipalProfile.secret] The secret password
  * associated with the service principal in plain text.
- * @member {object} [servicePrincipalProfile.keyVaultSecretRef] Reference to a
- * secret stored in Azure Key Vault.
- * @member {string} [servicePrincipalProfile.keyVaultSecretRef.vaultID] Key
- * vault identifier.
- * @member {string} [servicePrincipalProfile.keyVaultSecretRef.secretName] The
- * secret name.
- * @member {string} [servicePrincipalProfile.keyVaultSecretRef.version] The
- * secret version.
  * @member {object} [addonProfiles] Profile of managed cluster add-on.
  * @member {string} [nodeResourceGroup] Name of the resource group containing
  * agent pool nodes.
@@ -776,7 +1010,7 @@ export interface ManagedCluster extends Resource {
   readonly fqdn?: string;
   agentPoolProfiles?: ManagedClusterAgentPoolProfile[];
   linuxProfile?: ContainerServiceLinuxProfile;
-  servicePrincipalProfile?: ContainerServiceServicePrincipalProfile;
+  servicePrincipalProfile?: ManagedClusterServicePrincipalProfile;
   addonProfiles?: { [propertyName: string]: ManagedClusterAddonProfile };
   readonly nodeResourceGroup?: string;
   enableRBAC?: boolean;
@@ -860,6 +1094,32 @@ export interface ManagedClusterUpgradeProfile {
   readonly type?: string;
   controlPlaneProfile: ManagedClusterPoolUpgradeProfile;
   agentPoolProfiles: ManagedClusterPoolUpgradeProfile[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CredentialResult class.
+ * @constructor
+ * The credential result response.
+ *
+ * @member {string} [name] The name of the credential.
+ * @member {buffer} [value] Base64-encoded Kubernetes configuration file.
+ */
+export interface CredentialResult {
+  readonly name?: string;
+  readonly value?: Buffer;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CredentialResults class.
+ * @constructor
+ * The list of credential result response.
+ *
+ * @member {array} [kubeconfigs]
+ */
+export interface CredentialResults {
+  readonly kubeconfigs?: CredentialResult[];
 }
 
 /**

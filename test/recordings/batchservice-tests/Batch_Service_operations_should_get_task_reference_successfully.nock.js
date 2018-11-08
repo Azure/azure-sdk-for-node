@@ -9,32 +9,32 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"HelloWorldNodeSDKTestTask\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask\",\"eTag\":\"0x8D5861167F3CDFF\",\"creationTime\":\"2018-03-09T22:59:23.7994577Z\",\"lastModified\":\"2018-03-09T22:59:25.9390463Z\",\"state\":\"active\",\"stateTransitionTime\":\"2018-03-09T22:59:25.9390463Z\",\"previousState\":\"completed\",\"previousStateTransitionTime\":\"2018-03-09T22:59:25.5874015Z\",\"commandLine\":\"ping 127.0.0.1 -n 20\",\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"HelloWorldNodeSDKTestTask\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask\",\"eTag\":\"0x8D607A43AB500D1\",\"creationTime\":\"2018-08-21T20:25:24.0548994Z\",\"lastModified\":\"2018-08-21T20:25:26.0475601Z\",\"state\":\"active\",\"stateTransitionTime\":\"2018-08-21T20:25:26.0475601Z\",\"previousState\":\"completed\",\"previousStateTransitionTime\":\"2018-08-21T20:25:25.7617271Z\",\"commandLine\":\"ping 127.0.0.1 -n 20\",\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 09 Mar 2018 22:59:25 GMT',
-  etag: '0x8D5861167F3CDFF',
+  'last-modified': 'Tue, 21 Aug 2018 20:25:26 GMT',
+  etag: '0x8D607A43AB500D1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '60df3af2-e9a3-4ff8-9da8-58a5ec2fbd59',
+  'request-id': 'e986c5f3-0389-4276-b6d0-487d6f5e0486',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:59:26 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"HelloWorldNodeSDKTestTask\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask\",\"eTag\":\"0x8D5861167F3CDFF\",\"creationTime\":\"2018-03-09T22:59:23.7994577Z\",\"lastModified\":\"2018-03-09T22:59:25.9390463Z\",\"state\":\"active\",\"stateTransitionTime\":\"2018-03-09T22:59:25.9390463Z\",\"previousState\":\"completed\",\"previousStateTransitionTime\":\"2018-03-09T22:59:25.5874015Z\",\"commandLine\":\"ping 127.0.0.1 -n 20\",\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"HelloWorldNodeSDKTestTask\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask\",\"eTag\":\"0x8D607A43AB500D1\",\"creationTime\":\"2018-08-21T20:25:24.0548994Z\",\"lastModified\":\"2018-08-21T20:25:26.0475601Z\",\"state\":\"active\",\"stateTransitionTime\":\"2018-08-21T20:25:26.0475601Z\",\"previousState\":\"completed\",\"previousStateTransitionTime\":\"2018-08-21T20:25:25.7617271Z\",\"commandLine\":\"ping 127.0.0.1 -n 20\",\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 09 Mar 2018 22:59:25 GMT',
-  etag: '0x8D5861167F3CDFF',
+  'last-modified': 'Tue, 21 Aug 2018 20:25:26 GMT',
+  etag: '0x8D607A43AB500D1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '60df3af2-e9a3-4ff8-9da8-58a5ec2fbd59',
+  'request-id': 'e986c5f3-0389-4276-b6d0-487d6f5e0486',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:59:26 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:25 GMT',
   connection: 'close' });
  return result; }]];

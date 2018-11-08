@@ -10,93 +10,93 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2018-03-01.6.1', '*')
+.post('/pools?api-version=2018-08-01.7.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 22:52:27 GMT',
-  etag: '0x8D586106E572144',
+  'last-modified': 'Tue, 21 Aug 2018 20:16:22 GMT',
+  etag: '0x8D607A2F6FFB2A6',
   location: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdkosdiskpool',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'c8a0dc56-e957-433e-8ad7-c7038bd3d676',
+  'request-id': '624a35c0-1e38-4695-99d2-4fd6e4ce6233',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdkosdiskpool',
-  date: 'Fri, 09 Mar 2018 22:52:27 GMT',
+  date: 'Tue, 21 Aug 2018 20:16:22 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2018-03-01.6.1', '*')
+.post('/pools?api-version=2018-08-01.7.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 22:52:27 GMT',
-  etag: '0x8D586106E572144',
+  'last-modified': 'Tue, 21 Aug 2018 20:16:22 GMT',
+  etag: '0x8D607A2F6FFB2A6',
   location: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdkosdiskpool',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'c8a0dc56-e957-433e-8ad7-c7038bd3d676',
+  'request-id': '624a35c0-1e38-4695-99d2-4fd6e4ce6233',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdkosdiskpool',
-  date: 'Fri, 09 Mar 2018 22:52:27 GMT',
+  date: 'Tue, 21 Aug 2018 20:16:22 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .get('/pools/nodesdkosdiskpool?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdkosdiskpool\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdkosdiskpool\",\"eTag\":\"0x8D586106E572144\",\"lastModified\":\"2018-03-09T22:52:27.1595844Z\",\"creationTime\":\"2018-03-09T22:52:27.1595844Z\",\"state\":\"active\",\"stateTransitionTime\":\"2018-03-09T22:52:27.1595844Z\",\"allocationState\":\"resizing\",\"allocationStateTransitionTime\":\"2018-03-09T22:52:27.1595844Z\",\"vmSize\":\"standard_a1\",\"resizeTimeout\":\"PT15M\",\"currentDedicatedNodes\":0,\"targetDedicatedNodes\":0,\"currentLowPriorityNodes\":0,\"targetLowPriorityNodes\":0,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n    \"nodeFillType\":\"Spread\"\r\n  },\"virtualMachineConfiguration\":{\r\n    \"imageReference\":{\r\n      \"publisher\":\"Canonical\",\"offer\":\"UbuntuServer\",\"sku\":\"16.04-LTS\",\"version\":\"latest\"\r\n    },\"osDisk\":{\r\n      \"caching\":\"ReadWrite\"\r\n    },\"nodeAgentSKUId\":\"batch.node.ubuntu 16.04\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/pools/nodesdkosdiskpool?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdkosdiskpool\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdkosdiskpool\",\"eTag\":\"0x8D607A2F6FFB2A6\",\"lastModified\":\"2018-08-21T20:16:22.9552806Z\",\"creationTime\":\"2018-08-21T20:16:22.9552806Z\",\"state\":\"active\",\"stateTransitionTime\":\"2018-08-21T20:16:22.9552806Z\",\"allocationState\":\"resizing\",\"allocationStateTransitionTime\":\"2018-08-21T20:16:22.9552806Z\",\"vmSize\":\"standard_a1\",\"resizeTimeout\":\"PT15M\",\"currentDedicatedNodes\":0,\"targetDedicatedNodes\":0,\"currentLowPriorityNodes\":0,\"targetLowPriorityNodes\":0,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n    \"nodeFillType\":\"Spread\"\r\n  },\"virtualMachineConfiguration\":{\r\n    \"imageReference\":{\r\n      \"publisher\":\"Canonical\",\"offer\":\"UbuntuServer\",\"sku\":\"16.04-LTS\",\"version\":\"latest\"\r\n    },\"osDisk\":{\r\n      \"caching\":\"ReadWrite\"\r\n    },\"nodeAgentSKUId\":\"batch.node.ubuntu 16.04\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 09 Mar 2018 22:52:27 GMT',
-  etag: '0x8D586106E572144',
+  'last-modified': 'Tue, 21 Aug 2018 20:16:22 GMT',
+  etag: '0x8D607A2F6FFB2A6',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b50aaa42-b6ec-4c03-b106-c717ca8acff0',
+  'request-id': '7a76d427-dd68-44bd-be62-ec4b950e7825',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:52:27 GMT',
+  date: 'Tue, 21 Aug 2018 20:16:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .get('/pools/nodesdkosdiskpool?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdkosdiskpool\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdkosdiskpool\",\"eTag\":\"0x8D586106E572144\",\"lastModified\":\"2018-03-09T22:52:27.1595844Z\",\"creationTime\":\"2018-03-09T22:52:27.1595844Z\",\"state\":\"active\",\"stateTransitionTime\":\"2018-03-09T22:52:27.1595844Z\",\"allocationState\":\"resizing\",\"allocationStateTransitionTime\":\"2018-03-09T22:52:27.1595844Z\",\"vmSize\":\"standard_a1\",\"resizeTimeout\":\"PT15M\",\"currentDedicatedNodes\":0,\"targetDedicatedNodes\":0,\"currentLowPriorityNodes\":0,\"targetLowPriorityNodes\":0,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n    \"nodeFillType\":\"Spread\"\r\n  },\"virtualMachineConfiguration\":{\r\n    \"imageReference\":{\r\n      \"publisher\":\"Canonical\",\"offer\":\"UbuntuServer\",\"sku\":\"16.04-LTS\",\"version\":\"latest\"\r\n    },\"osDisk\":{\r\n      \"caching\":\"ReadWrite\"\r\n    },\"nodeAgentSKUId\":\"batch.node.ubuntu 16.04\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/pools/nodesdkosdiskpool?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdkosdiskpool\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdkosdiskpool\",\"eTag\":\"0x8D607A2F6FFB2A6\",\"lastModified\":\"2018-08-21T20:16:22.9552806Z\",\"creationTime\":\"2018-08-21T20:16:22.9552806Z\",\"state\":\"active\",\"stateTransitionTime\":\"2018-08-21T20:16:22.9552806Z\",\"allocationState\":\"resizing\",\"allocationStateTransitionTime\":\"2018-08-21T20:16:22.9552806Z\",\"vmSize\":\"standard_a1\",\"resizeTimeout\":\"PT15M\",\"currentDedicatedNodes\":0,\"targetDedicatedNodes\":0,\"currentLowPriorityNodes\":0,\"targetLowPriorityNodes\":0,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n    \"nodeFillType\":\"Spread\"\r\n  },\"virtualMachineConfiguration\":{\r\n    \"imageReference\":{\r\n      \"publisher\":\"Canonical\",\"offer\":\"UbuntuServer\",\"sku\":\"16.04-LTS\",\"version\":\"latest\"\r\n    },\"osDisk\":{\r\n      \"caching\":\"ReadWrite\"\r\n    },\"nodeAgentSKUId\":\"batch.node.ubuntu 16.04\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 09 Mar 2018 22:52:27 GMT',
-  etag: '0x8D586106E572144',
+  'last-modified': 'Tue, 21 Aug 2018 20:16:22 GMT',
+  etag: '0x8D607A2F6FFB2A6',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b50aaa42-b6ec-4c03-b106-c717ca8acff0',
+  'request-id': '7a76d427-dd68-44bd-be62-ec4b950e7825',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:52:27 GMT',
+  date: 'Tue, 21 Aug 2018 20:16:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .delete('/pools/nodesdkosdiskpool?api-version=2018-03-01.6.1')
+  .delete('/pools/nodesdkosdiskpool?api-version=2018-08-01.7.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '9d918355-1405-44e0-b60e-243e966f2ed3',
+  'request-id': '3bc45c53-0418-412c-920f-c8c29d907bb5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:52:29 GMT',
+  date: 'Tue, 21 Aug 2018 20:16:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .delete('/pools/nodesdkosdiskpool?api-version=2018-03-01.6.1')
+  .delete('/pools/nodesdkosdiskpool?api-version=2018-08-01.7.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '9d918355-1405-44e0-b60e-243e966f2ed3',
+  'request-id': '3bc45c53-0418-412c-920f-c8c29d907bb5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:52:29 GMT',
+  date: 'Tue, 21 Aug 2018 20:16:25 GMT',
   connection: 'close' });
  return result; }]];

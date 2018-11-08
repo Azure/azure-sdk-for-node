@@ -1960,9 +1960,9 @@ export interface JobPropertiesExecutionInfo {
  * @member {string} [containerSettings.shmSize] Size of /dev/shm. Please refer
  * to docker documentation for supported argument formats.
  * @member {string} [toolType] The toolkit type of this job. Possible values
- * are: cntk, tensorflow, caffe, caffe2, chainer, pytorch, custom, mpi,
+ * are: cntk, tensorflow, caffe, caffe2, chainer, pytorch, custom, custommpi,
  * horovod. Possible values include: 'cntk', 'tensorflow', 'caffe', 'caffe2',
- * 'chainer', 'horovod', 'mpi', 'custom'
+ * 'chainer', 'horovod', 'custommpi', 'custom'
  * @member {object} [cntkSettings] Specifies the settings for CNTK (aka
  * Microsoft Cognitive Toolkit) job.
  * @member {string} [cntkSettings.languageType] The language to use for

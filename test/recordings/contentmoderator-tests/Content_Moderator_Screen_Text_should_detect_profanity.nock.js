@@ -9,7 +9,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://westus.api.cognitive.microsoft.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/contentmoderator/moderate/v1.0/ProcessText/Screen/?language=eng&autocorrect=false&PII=false&classify=false', '*')
+.post('/contentmoderator/moderate/v1.0/ProcessText/Screen/?autocorrect=false&PII=false&classify=false', '*')
   .reply(200, "{\"OriginalText\":\"\\\"Is this a crap email abcdef@abcd.com, phone:\\\\n        6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052\\\"\",\"NormalizedText\":\"\\\" Is this a crap email abcdef@ abcd. com, phone: \\\\ n 6657789887, IP: 255. 255. 255. 255, 1 Microsoft Way, Redmond, WA 98052\\\"\",\"Misrepresentation\":null,\"Language\":\"eng\",\"Terms\":[{\"Index\":11,\"OriginalIndex\":11,\"ListId\":0,\"Term\":\"crap\"}],\"Status\":{\"Code\":3000,\"Description\":\"OK\",\"Exception\":null},\"TrackingId\":\"f090117e-5a83-43fb-97a8-dbe58b9d4703\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '512',

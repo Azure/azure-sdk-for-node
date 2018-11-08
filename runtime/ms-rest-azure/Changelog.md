@@ -1,3 +1,7 @@
+### 2.5.9 (09/26/2018)
+- Add `request` as a dependency since `MSIVmTokenCredentials` and `MSIAppServiceTokenCredentials` use it directly.
+- Update `ms-rest` version dependency to 2.3.7
+
 ### 2.5.7 (06/12/2018)
 - Added `validateAuthority` to AzureEnvironment type definitions
 

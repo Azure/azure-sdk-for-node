@@ -174,7 +174,7 @@ export interface ServerConnectionPolicy extends ProxyResource {
  * @member {string} [disabledAlerts] Specifies the semicolon-separated list of
  * alerts that are disabled, or empty string to disable no alerts. Possible
  * values: Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly;
- * Usage_Anomaly.
+ * Data_Exfiltration; Unsafe_Action.
  * @member {string} [emailAddresses] Specifies the semicolon-separated list of
  * e-mail addresses to which the alert is sent.
  * @member {string} [emailAccountAdmins] Specifies that the alert is sent to
@@ -1342,6 +1342,10 @@ export interface Sku {
  * 'LicenseIncluded' and 'BasePrice'.
  * @member {number} [vCores] The number of VCores.
  * @member {number} [storageSizeInGB] The maximum storage size in GB.
+ * @member {string} [collation] Collation of the managed instance.
+ * @member {string} [dnsZone] The Dns Zone that the managed instance is in.
+ * @member {string} [dnsZonePartner] The resource id of another managed
+ * instance whose DNS zone this managed instance will share after creation.
  */
 export interface ManagedInstance extends TrackedResource {
   identity?: ResourceIdentity;
@@ -1354,6 +1358,9 @@ export interface ManagedInstance extends TrackedResource {
   licenseType?: string;
   vCores?: number;
   storageSizeInGB?: number;
+  readonly collation?: string;
+  readonly dnsZone?: string;
+  dnsZonePartner?: string;
 }
 
 /**
@@ -1388,6 +1395,10 @@ export interface ManagedInstance extends TrackedResource {
  * 'LicenseIncluded' and 'BasePrice'.
  * @member {number} [vCores] The number of VCores.
  * @member {number} [storageSizeInGB] The maximum storage size in GB.
+ * @member {string} [collation] Collation of the managed instance.
+ * @member {string} [dnsZone] The Dns Zone that the managed instance is in.
+ * @member {string} [dnsZonePartner] The resource id of another managed
+ * instance whose DNS zone this managed instance will share after creation.
  * @member {object} [tags] Resource tags.
  */
 export interface ManagedInstanceUpdate {
@@ -1400,6 +1411,9 @@ export interface ManagedInstanceUpdate {
   licenseType?: string;
   vCores?: number;
   storageSizeInGB?: number;
+  readonly collation?: string;
+  readonly dnsZone?: string;
+  dnsZonePartner?: string;
   tags?: { [propertyName: string]: string };
 }
 
@@ -1864,16 +1878,16 @@ export interface VirtualNetworkRule extends ProxyResource {
  * @member {string} [predicateExpression] Specifies condition of where clause
  * when creating an audit.
  * @member {string} state Specifies the state of the policy. If state is
- * Enabled, storageEndpoint and storageAccountAccessKey are required. Possible
- * values include: 'Enabled', 'Disabled'
+ * Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
+ * Possible values include: 'Enabled', 'Disabled'
  * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
  * https://MyAccount.blob.core.windows.net). If state is Enabled,
  * storageEndpoint is required.
  * @member {string} [storageAccountAccessKey] Specifies the identifier key of
- * the auditing storage account. If state is Enabled, storageAccountAccessKey
- * is required.
+ * the auditing storage account. If state is Enabled and storageEndpoint is
+ * specified, storageAccountAccessKey is required.
  * @member {number} [retentionDays] Specifies the number of days to keep in the
- * audit logs.
+ * audit logs in the storage account.
  * @member {array} [auditActionsAndGroups] Specifies the Actions-Groups and
  * Actions to audit.
  *
@@ -1932,11 +1946,11 @@ export interface VirtualNetworkRule extends ProxyResource {
  * REFERENCES
  *
  * The general form for defining an action to be audited is:
- * <action> ON <object> BY <principal>
+ * {action} ON {object} BY {principal}
  *
  * Note that <object> in the above format can refer to an object like a table,
  * view, or stored procedure, or an entire database or schema. For the latter
- * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+ * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
  * respectively.
  *
  * For example:
@@ -1950,6 +1964,25 @@ export interface VirtualNetworkRule extends ProxyResource {
  * subscription Id.
  * @member {boolean} [isStorageSecondaryKeyInUse] Specifies whether
  * storageAccountAccessKey value is the storage's secondary key.
+ * @member {boolean} [isAzureMonitorTargetEnabled] Specifies whether audit
+ * events are sent to Azure Monitor.
+ * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+ * and 'IsAzureMonitorTargetEnabled' as true.
+ *
+ * When using REST API to configure auditing, Diagnostic Settings with
+ * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+ * also created.
+ * Note that for server level audit you should use the 'master' database as
+ * {databaseName}.
+ *
+ * Diagnostic Settings URI format:
+ * PUT
+ * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
+ *
+ * For more information, see [Diagnostic Settings REST
+ * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+ * or [Diagnostic Settings
+ * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
  */
 export interface ExtendedDatabaseBlobAuditingPolicy extends ProxyResource {
   predicateExpression?: string;
@@ -1960,6 +1993,7 @@ export interface ExtendedDatabaseBlobAuditingPolicy extends ProxyResource {
   auditActionsAndGroups?: string[];
   storageAccountSubscriptionId?: string;
   isStorageSecondaryKeyInUse?: boolean;
+  isAzureMonitorTargetEnabled?: boolean;
 }
 
 /**
@@ -1971,16 +2005,16 @@ export interface ExtendedDatabaseBlobAuditingPolicy extends ProxyResource {
  * @member {string} [predicateExpression] Specifies condition of where clause
  * when creating an audit.
  * @member {string} state Specifies the state of the policy. If state is
- * Enabled, storageEndpoint and storageAccountAccessKey are required. Possible
- * values include: 'Enabled', 'Disabled'
+ * Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
+ * Possible values include: 'Enabled', 'Disabled'
  * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
  * https://MyAccount.blob.core.windows.net). If state is Enabled,
  * storageEndpoint is required.
  * @member {string} [storageAccountAccessKey] Specifies the identifier key of
- * the auditing storage account. If state is Enabled, storageAccountAccessKey
- * is required.
+ * the auditing storage account. If state is Enabled and storageEndpoint is
+ * specified, storageAccountAccessKey is required.
  * @member {number} [retentionDays] Specifies the number of days to keep in the
- * audit logs.
+ * audit logs in the storage account.
  * @member {array} [auditActionsAndGroups] Specifies the Actions-Groups and
  * Actions to audit.
  *
@@ -2039,11 +2073,11 @@ export interface ExtendedDatabaseBlobAuditingPolicy extends ProxyResource {
  * REFERENCES
  *
  * The general form for defining an action to be audited is:
- * <action> ON <object> BY <principal>
+ * {action} ON {object} BY {principal}
  *
  * Note that <object> in the above format can refer to an object like a table,
  * view, or stored procedure, or an entire database or schema. For the latter
- * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+ * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
  * respectively.
  *
  * For example:
@@ -2057,6 +2091,25 @@ export interface ExtendedDatabaseBlobAuditingPolicy extends ProxyResource {
  * subscription Id.
  * @member {boolean} [isStorageSecondaryKeyInUse] Specifies whether
  * storageAccountAccessKey value is the storage's secondary key.
+ * @member {boolean} [isAzureMonitorTargetEnabled] Specifies whether audit
+ * events are sent to Azure Monitor.
+ * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+ * and 'IsAzureMonitorTargetEnabled' as true.
+ *
+ * When using REST API to configure auditing, Diagnostic Settings with
+ * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+ * also created.
+ * Note that for server level audit you should use the 'master' database as
+ * {databaseName}.
+ *
+ * Diagnostic Settings URI format:
+ * PUT
+ * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
+ *
+ * For more information, see [Diagnostic Settings REST
+ * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+ * or [Diagnostic Settings
+ * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
  */
 export interface ExtendedServerBlobAuditingPolicy extends ProxyResource {
   predicateExpression?: string;
@@ -2067,6 +2120,7 @@ export interface ExtendedServerBlobAuditingPolicy extends ProxyResource {
   auditActionsAndGroups?: string[];
   storageAccountSubscriptionId?: string;
   isStorageSecondaryKeyInUse?: boolean;
+  isAzureMonitorTargetEnabled?: boolean;
 }
 
 /**
@@ -2076,16 +2130,16 @@ export interface ExtendedServerBlobAuditingPolicy extends ProxyResource {
  * A server blob auditing policy.
  *
  * @member {string} state Specifies the state of the policy. If state is
- * Enabled, storageEndpoint and storageAccountAccessKey are required. Possible
- * values include: 'Enabled', 'Disabled'
+ * Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
+ * Possible values include: 'Enabled', 'Disabled'
  * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
  * https://MyAccount.blob.core.windows.net). If state is Enabled,
  * storageEndpoint is required.
  * @member {string} [storageAccountAccessKey] Specifies the identifier key of
- * the auditing storage account. If state is Enabled, storageAccountAccessKey
- * is required.
+ * the auditing storage account. If state is Enabled and storageEndpoint is
+ * specified, storageAccountAccessKey is required.
  * @member {number} [retentionDays] Specifies the number of days to keep in the
- * audit logs.
+ * audit logs in the storage account.
  * @member {array} [auditActionsAndGroups] Specifies the Actions-Groups and
  * Actions to audit.
  *
@@ -2144,11 +2198,11 @@ export interface ExtendedServerBlobAuditingPolicy extends ProxyResource {
  * REFERENCES
  *
  * The general form for defining an action to be audited is:
- * <action> ON <object> BY <principal>
+ * {action} ON {object} BY {principal}
  *
  * Note that <object> in the above format can refer to an object like a table,
  * view, or stored procedure, or an entire database or schema. For the latter
- * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+ * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
  * respectively.
  *
  * For example:
@@ -2162,6 +2216,25 @@ export interface ExtendedServerBlobAuditingPolicy extends ProxyResource {
  * subscription Id.
  * @member {boolean} [isStorageSecondaryKeyInUse] Specifies whether
  * storageAccountAccessKey value is the storage's secondary key.
+ * @member {boolean} [isAzureMonitorTargetEnabled] Specifies whether audit
+ * events are sent to Azure Monitor.
+ * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+ * and 'IsAzureMonitorTargetEnabled' as true.
+ *
+ * When using REST API to configure auditing, Diagnostic Settings with
+ * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+ * also created.
+ * Note that for server level audit you should use the 'master' database as
+ * {databaseName}.
+ *
+ * Diagnostic Settings URI format:
+ * PUT
+ * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
+ *
+ * For more information, see [Diagnostic Settings REST
+ * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+ * or [Diagnostic Settings
+ * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
  */
 export interface ServerBlobAuditingPolicy extends ProxyResource {
   state: string;
@@ -2171,6 +2244,7 @@ export interface ServerBlobAuditingPolicy extends ProxyResource {
   auditActionsAndGroups?: string[];
   storageAccountSubscriptionId?: string;
   isStorageSecondaryKeyInUse?: boolean;
+  isAzureMonitorTargetEnabled?: boolean;
 }
 
 /**
@@ -2181,16 +2255,16 @@ export interface ServerBlobAuditingPolicy extends ProxyResource {
  *
  * @member {string} [kind] Resource kind.
  * @member {string} state Specifies the state of the policy. If state is
- * Enabled, storageEndpoint and storageAccountAccessKey are required. Possible
- * values include: 'Enabled', 'Disabled'
+ * Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
+ * Possible values include: 'Enabled', 'Disabled'
  * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
  * https://MyAccount.blob.core.windows.net). If state is Enabled,
  * storageEndpoint is required.
  * @member {string} [storageAccountAccessKey] Specifies the identifier key of
- * the auditing storage account. If state is Enabled, storageAccountAccessKey
- * is required.
+ * the auditing storage account. If state is Enabled and storageEndpoint is
+ * specified, storageAccountAccessKey is required.
  * @member {number} [retentionDays] Specifies the number of days to keep in the
- * audit logs.
+ * audit logs in the storage account.
  * @member {array} [auditActionsAndGroups] Specifies the Actions-Groups and
  * Actions to audit.
  *
@@ -2249,11 +2323,11 @@ export interface ServerBlobAuditingPolicy extends ProxyResource {
  * REFERENCES
  *
  * The general form for defining an action to be audited is:
- * <action> ON <object> BY <principal>
+ * {action} ON {object} BY {principal}
  *
  * Note that <object> in the above format can refer to an object like a table,
  * view, or stored procedure, or an entire database or schema. For the latter
- * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+ * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
  * respectively.
  *
  * For example:
@@ -2267,6 +2341,25 @@ export interface ServerBlobAuditingPolicy extends ProxyResource {
  * subscription Id.
  * @member {boolean} [isStorageSecondaryKeyInUse] Specifies whether
  * storageAccountAccessKey value is the storage's secondary key.
+ * @member {boolean} [isAzureMonitorTargetEnabled] Specifies whether audit
+ * events are sent to Azure Monitor.
+ * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+ * and 'IsAzureMonitorTargetEnabled' as true.
+ *
+ * When using REST API to configure auditing, Diagnostic Settings with
+ * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+ * also created.
+ * Note that for server level audit you should use the 'master' database as
+ * {databaseName}.
+ *
+ * Diagnostic Settings URI format:
+ * PUT
+ * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
+ *
+ * For more information, see [Diagnostic Settings REST
+ * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+ * or [Diagnostic Settings
+ * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
  */
 export interface DatabaseBlobAuditingPolicy extends ProxyResource {
   readonly kind?: string;
@@ -2277,6 +2370,7 @@ export interface DatabaseBlobAuditingPolicy extends ProxyResource {
   auditActionsAndGroups?: string[];
   storageAccountSubscriptionId?: string;
   isStorageSecondaryKeyInUse?: boolean;
+  isAzureMonitorTargetEnabled?: boolean;
 }
 
 /**
@@ -2329,11 +2423,18 @@ export interface VulnerabilityAssessmentRecurringScansProperties {
  * @constructor
  * A database vulnerability assessment.
  *
- * @member {string} storageContainerPath A blob storage container path to hold
- * the scan results (e.g. https://myStorage.blob.core.windows.net/VaScans/).
- * @member {string} storageContainerSasKey A shared access signature (SAS Key)
- * that has write access to the blob container specified in
- * 'storageContainerPath' parameter.
+ * @member {string} [storageContainerPath] A blob storage container path to
+ * hold the scan results (e.g.
+ * https://myStorage.blob.core.windows.net/VaScans/).  It is required if server
+ * level vulnerability assessment policy doesn't set
+ * @member {string} [storageContainerSasKey] A shared access signature (SAS
+ * Key) that has write access to the blob container specified in
+ * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
+ * specified, StorageContainerSasKey is required.
+ * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the storage account for vulnerability assessment scan results. If
+ * 'StorageContainerSasKey' isn't specified, storageAccountAccessKey is
+ * required.
  * @member {object} [recurringScans] The recurring scans settings
  * @member {boolean} [recurringScans.isEnabled] Recurring scans state.
  * @member {boolean} [recurringScans.emailSubscriptionAdmins] Specifies that
@@ -2343,8 +2444,9 @@ export interface VulnerabilityAssessmentRecurringScansProperties {
  * addresses to which the scan notification is sent.
  */
 export interface DatabaseVulnerabilityAssessment extends ProxyResource {
-  storageContainerPath: string;
-  storageContainerSasKey: string;
+  storageContainerPath?: string;
+  storageContainerSasKey?: string;
+  storageAccountAccessKey?: string;
   recurringScans?: VulnerabilityAssessmentRecurringScansProperties;
 }
 
@@ -2729,7 +2831,7 @@ export interface LongTermRetentionBackup extends ProxyResource {
  *
  * @member {string} [weeklyRetention] The weekly retention policy for an LTR
  * backup in an ISO 8601 format.
- * @member {string} [monthlyRetention] The montly retention policy for an LTR
+ * @member {string} [monthlyRetention] The monthly retention policy for an LTR
  * backup in an ISO 8601 format.
  * @member {string} [yearlyRetention] The yearly retention policy for an LTR
  * backup in an ISO 8601 format.
@@ -2864,20 +2966,6 @@ export interface ManagedDatabaseUpdate {
 
 /**
  * @class
- * Initializes a new instance of the SensitivityLabel class.
- * @constructor
- * A sensitivity label.
- *
- * @member {string} [labelName] The label name.
- * @member {string} [informationType] The information type.
- */
-export interface SensitivityLabel extends ProxyResource {
-  labelName?: string;
-  informationType?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the AutomaticTuningServerOptions class.
  * @constructor
  * Automatic tuning properties for individual advisors.
@@ -2952,7 +3040,7 @@ export interface ServerDnsAliasAcquisition {
  * enabled or disabled. Possible values include: 'New', 'Enabled', 'Disabled'
  * @member {array} [disabledAlerts] Specifies an array of alerts that are
  * disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability,
- * Access_Anomaly
+ * Access_Anomaly, Data_Exfiltration, Unsafe_Action
  * @member {array} [emailAddresses] Specifies an array of e-mail addresses to
  * which the alert is sent.
  * @member {boolean} [emailAccountAdmins] Specifies that the alert is sent to
@@ -4151,6 +4239,52 @@ export interface TdeCertificate extends ProxyResource {
   certPassword?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstanceKey class.
+ * @constructor
+ * A managed instance key.
+ *
+ * @member {string} [kind] Kind of encryption protector. This is metadata used
+ * for the Azure portal experience.
+ * @member {string} serverKeyType The key type like 'ServiceManaged',
+ * 'AzureKeyVault'. Possible values include: 'ServiceManaged', 'AzureKeyVault'
+ * @member {string} [uri] The URI of the key. If the ServerKeyType is
+ * AzureKeyVault, then the URI is required.
+ * @member {string} [thumbprint] Thumbprint of the key.
+ * @member {date} [creationDate] The key creation date.
+ */
+export interface ManagedInstanceKey extends ProxyResource {
+  readonly kind?: string;
+  serverKeyType: string;
+  uri?: string;
+  readonly thumbprint?: string;
+  readonly creationDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstanceEncryptionProtector class.
+ * @constructor
+ * The managed instance encryption protector.
+ *
+ * @member {string} [kind] Kind of encryption protector. This is metadata used
+ * for the Azure portal experience.
+ * @member {string} [serverKeyName] The name of the managed instance key.
+ * @member {string} serverKeyType The encryption protector type like
+ * 'ServiceManaged', 'AzureKeyVault'. Possible values include:
+ * 'ServiceManaged', 'AzureKeyVault'
+ * @member {string} [uri] The URI of the server key.
+ * @member {string} [thumbprint] Thumbprint of the server key.
+ */
+export interface ManagedInstanceEncryptionProtector extends ProxyResource {
+  readonly kind?: string;
+  serverKeyName?: string;
+  serverKeyType: string;
+  readonly uri?: string;
+  readonly thumbprint?: string;
+}
+
 
 /**
  * @class
@@ -4549,6 +4683,18 @@ export interface VirtualNetworkRuleListResult extends Array<VirtualNetworkRule> 
 
 /**
  * @class
+ * Initializes a new instance of the DatabaseVulnerabilityAssessmentListResult class.
+ * @constructor
+ * A list of the database's vulnerability assessments.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface DatabaseVulnerabilityAssessmentListResult extends Array<DatabaseVulnerabilityAssessment> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the JobAgentListResult class.
  * @constructor
  * A list of Azure SQL job agents.
@@ -4657,18 +4803,6 @@ export interface ManagedDatabaseListResult extends Array<ManagedDatabase> {
 
 /**
  * @class
- * Initializes a new instance of the SensitivityLabelListResult class.
- * @constructor
- * A list of sensitivity labels.
- *
- * @member {string} [nextLink] Link to retrieve next page of results.
- */
-export interface SensitivityLabelListResult extends Array<SensitivityLabel> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ServerDnsAliasListResult class.
  * @constructor
  * A list of server DNS aliases.
@@ -4748,5 +4882,29 @@ export interface InstanceFailoverGroupListResult extends Array<InstanceFailoverG
  * @member {string} [nextLink] Link to retrieve next page of results.
  */
 export interface BackupShortTermRetentionPolicyListResult extends Array<BackupShortTermRetentionPolicy> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstanceKeyListResult class.
+ * @constructor
+ * A list of managed instance keys.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ManagedInstanceKeyListResult extends Array<ManagedInstanceKey> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstanceEncryptionProtectorListResult class.
+ * @constructor
+ * A list of managed instance encryption protectors.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ManagedInstanceEncryptionProtectorListResult extends Array<ManagedInstanceEncryptionProtector> {
   readonly nextLink?: string;
 }

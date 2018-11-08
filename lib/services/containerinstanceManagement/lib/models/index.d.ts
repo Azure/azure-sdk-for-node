@@ -38,11 +38,13 @@ export interface ContainerPort {
  * The environment variable to set within the container instance.
  *
  * @member {string} name The name of the environment variable.
- * @member {string} value The value of the environment variable.
+ * @member {string} [value] The value of the environment variable.
+ * @member {string} [secureValue] The value of the secure environment variable.
  */
 export interface EnvironmentVariable {
   name: string;
-  value: string;
+  value?: string;
+  secureValue?: string;
 }
 
 /**
@@ -62,11 +64,11 @@ export interface EnvironmentVariable {
  * instance state.
  */
 export interface ContainerState {
-  readonly state?: string;
-  readonly startTime?: Date;
-  readonly exitCode?: number;
-  readonly finishTime?: Date;
-  readonly detailStatus?: string;
+  state?: string;
+  startTime?: Date;
+  exitCode?: number;
+  finishTime?: Date;
+  detailStatus?: string;
 }
 
 /**
@@ -83,12 +85,12 @@ export interface ContainerState {
  * @member {string} [type] The event type.
  */
 export interface Event {
-  readonly count?: number;
-  readonly firstTimestamp?: Date;
-  readonly lastTimestamp?: Date;
-  readonly name?: string;
-  readonly message?: string;
-  readonly type?: string;
+  count?: number;
+  firstTimestamp?: Date;
+  lastTimestamp?: Date;
+  name?: string;
+  message?: string;
+  type?: string;
 }
 
 /**
@@ -130,6 +132,21 @@ export interface ContainerPropertiesInstanceView {
 
 /**
  * @class
+ * Initializes a new instance of the GpuResource class.
+ * @constructor
+ * The GPU resource.
+ *
+ * @member {number} count The count of the GPU resource.
+ * @member {string} sku The SKU of the GPU resource. Possible values include:
+ * 'K80', 'P100', 'V100'
+ */
+export interface GpuResource {
+  count: number;
+  sku: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ResourceRequests class.
  * @constructor
  * The resource requests.
@@ -137,10 +154,15 @@ export interface ContainerPropertiesInstanceView {
  * @member {number} memoryInGB The memory request in GB of this container
  * instance.
  * @member {number} cpu The CPU request of this container instance.
+ * @member {object} [gpu] The GPU request of this container instance.
+ * @member {number} [gpu.count] The count of the GPU resource.
+ * @member {string} [gpu.sku] The SKU of the GPU resource. Possible values
+ * include: 'K80', 'P100', 'V100'
  */
 export interface ResourceRequests {
   memoryInGB: number;
   cpu: number;
+  gpu?: GpuResource;
 }
 
 /**
@@ -152,10 +174,15 @@ export interface ResourceRequests {
  * @member {number} [memoryInGB] The memory limit in GB of this container
  * instance.
  * @member {number} [cpu] The CPU limit of this container instance.
+ * @member {object} [gpu] The GPU limit of this container instance.
+ * @member {number} [gpu.count] The count of the GPU resource.
+ * @member {string} [gpu.sku] The SKU of the GPU resource. Possible values
+ * include: 'K80', 'P100', 'V100'
  */
 export interface ResourceLimits {
   memoryInGB?: number;
   cpu?: number;
+  gpu?: GpuResource;
 }
 
 /**
@@ -168,10 +195,18 @@ export interface ResourceLimits {
  * @member {number} [requests.memoryInGB] The memory request in GB of this
  * container instance.
  * @member {number} [requests.cpu] The CPU request of this container instance.
+ * @member {object} [requests.gpu] The GPU request of this container instance.
+ * @member {number} [requests.gpu.count] The count of the GPU resource.
+ * @member {string} [requests.gpu.sku] The SKU of the GPU resource. Possible
+ * values include: 'K80', 'P100', 'V100'
  * @member {object} [limits] The resource limits of this container instance.
  * @member {number} [limits.memoryInGB] The memory limit in GB of this
  * container instance.
  * @member {number} [limits.cpu] The CPU limit of this container instance.
+ * @member {object} [limits.gpu] The GPU limit of this container instance.
+ * @member {number} [limits.gpu.count] The count of the GPU resource.
+ * @member {string} [limits.gpu.sku] The SKU of the GPU resource. Possible
+ * values include: 'K80', 'P100', 'V100'
  */
 export interface ResourceRequirements {
   requests: ResourceRequests;
@@ -194,6 +229,64 @@ export interface VolumeMount {
   name: string;
   mountPath: string;
   readOnly?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerExec class.
+ * @constructor
+ * The container execution command, for liveness or readiness probe
+ *
+ * @member {array} [command] The commands to execute within the container.
+ */
+export interface ContainerExec {
+  command?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerHttpGet class.
+ * @constructor
+ * The container Http Get settings, for liveness or readiness probe
+ *
+ * @member {string} [path] The path to probe.
+ * @member {number} port The port number to probe.
+ * @member {string} [scheme] The scheme. Possible values include: 'http',
+ * 'https'
+ */
+export interface ContainerHttpGet {
+  path?: string;
+  port: number;
+  scheme?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerProbe class.
+ * @constructor
+ * The container probe, for liveness or readiness
+ *
+ * @member {object} [exec] The execution command to probe
+ * @member {array} [exec.command] The commands to execute within the container.
+ * @member {object} [httpGet] The Http Get settings to probe
+ * @member {string} [httpGet.path] The path to probe.
+ * @member {number} [httpGet.port] The port number to probe.
+ * @member {string} [httpGet.scheme] The scheme. Possible values include:
+ * 'http', 'https'
+ * @member {number} [initialDelaySeconds] The initial delay seconds.
+ * @member {number} [periodSeconds] The period seconds.
+ * @member {number} [failureThreshold] The failure threshold.
+ * @member {number} [successThreshold] The success threshold.
+ * @member {number} [timeoutSeconds] The timeout seconds.
+ */
+export interface ContainerProbe {
+  exec?: ContainerExec;
+  httpGet?: ContainerHttpGet;
+  initialDelaySeconds?: number;
+  periodSeconds?: number;
+  failureThreshold?: number;
+  successThreshold?: number;
+  timeoutSeconds?: number;
 }
 
 /**
@@ -247,14 +340,55 @@ export interface VolumeMount {
  * this container instance.
  * @member {number} [resources.requests.cpu] The CPU request of this container
  * instance.
+ * @member {object} [resources.requests.gpu] The GPU request of this container
+ * instance.
+ * @member {number} [resources.requests.gpu.count] The count of the GPU
+ * resource.
+ * @member {string} [resources.requests.gpu.sku] The SKU of the GPU resource.
+ * Possible values include: 'K80', 'P100', 'V100'
  * @member {object} [resources.limits] The resource limits of this container
  * instance.
  * @member {number} [resources.limits.memoryInGB] The memory limit in GB of
  * this container instance.
  * @member {number} [resources.limits.cpu] The CPU limit of this container
  * instance.
+ * @member {object} [resources.limits.gpu] The GPU limit of this container
+ * instance.
+ * @member {number} [resources.limits.gpu.count] The count of the GPU resource.
+ * @member {string} [resources.limits.gpu.sku] The SKU of the GPU resource.
+ * Possible values include: 'K80', 'P100', 'V100'
  * @member {array} [volumeMounts] The volume mounts available to the container
  * instance.
+ * @member {object} [livenessProbe] The liveness probe.
+ * @member {object} [livenessProbe.exec] The execution command to probe
+ * @member {array} [livenessProbe.exec.command] The commands to execute within
+ * the container.
+ * @member {object} [livenessProbe.httpGet] The Http Get settings to probe
+ * @member {string} [livenessProbe.httpGet.path] The path to probe.
+ * @member {number} [livenessProbe.httpGet.port] The port number to probe.
+ * @member {string} [livenessProbe.httpGet.scheme] The scheme. Possible values
+ * include: 'http', 'https'
+ * @member {number} [livenessProbe.initialDelaySeconds] The initial delay
+ * seconds.
+ * @member {number} [livenessProbe.periodSeconds] The period seconds.
+ * @member {number} [livenessProbe.failureThreshold] The failure threshold.
+ * @member {number} [livenessProbe.successThreshold] The success threshold.
+ * @member {number} [livenessProbe.timeoutSeconds] The timeout seconds.
+ * @member {object} [readinessProbe] The readiness probe.
+ * @member {object} [readinessProbe.exec] The execution command to probe
+ * @member {array} [readinessProbe.exec.command] The commands to execute within
+ * the container.
+ * @member {object} [readinessProbe.httpGet] The Http Get settings to probe
+ * @member {string} [readinessProbe.httpGet.path] The path to probe.
+ * @member {number} [readinessProbe.httpGet.port] The port number to probe.
+ * @member {string} [readinessProbe.httpGet.scheme] The scheme. Possible values
+ * include: 'http', 'https'
+ * @member {number} [readinessProbe.initialDelaySeconds] The initial delay
+ * seconds.
+ * @member {number} [readinessProbe.periodSeconds] The period seconds.
+ * @member {number} [readinessProbe.failureThreshold] The failure threshold.
+ * @member {number} [readinessProbe.successThreshold] The success threshold.
+ * @member {number} [readinessProbe.timeoutSeconds] The timeout seconds.
  */
 export interface Container {
   name: string;
@@ -265,6 +399,8 @@ export interface Container {
   readonly instanceView?: ContainerPropertiesInstanceView;
   resources: ResourceRequirements;
   volumeMounts?: VolumeMount[];
+  livenessProbe?: ContainerProbe;
+  readinessProbe?: ContainerProbe;
 }
 
 /**
@@ -345,6 +481,46 @@ export interface Volume {
 
 /**
  * @class
+ * Initializes a new instance of the ContainerGroupIdentityUserAssignedIdentitiesValue class.
+ * @constructor
+ * @member {string} [principalId] The principal id of user assigned identity.
+ * @member {string} [clientId] The client id of user assigned identity.
+ */
+export interface ContainerGroupIdentityUserAssignedIdentitiesValue {
+  readonly principalId?: string;
+  readonly clientId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerGroupIdentity class.
+ * @constructor
+ * Identity for the container group.
+ *
+ * @member {string} [principalId] The principal id of the container group
+ * identity. This property will only be provided for a system assigned
+ * identity.
+ * @member {string} [tenantId] The tenant id associated with the container
+ * group. This property will only be provided for a system assigned identity.
+ * @member {string} [type] The type of identity used for the container group.
+ * The type 'SystemAssigned, UserAssigned' includes both an implicitly created
+ * identity and a set of user assigned identities. The type 'None' will remove
+ * any identities from the container group. Possible values include:
+ * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+ * @member {object} [userAssignedIdentities] The list of user identities
+ * associated with the container group. The user identity dictionary key
+ * references will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+ */
+export interface ContainerGroupIdentity {
+  readonly principalId?: string;
+  readonly tenantId?: string;
+  type?: string;
+  userAssignedIdentities?: { [propertyName: string]: ContainerGroupIdentityUserAssignedIdentitiesValue };
+}
+
+/**
+ * @class
  * Initializes a new instance of the ImageRegistryCredential class.
  * @constructor
  * Image registry credential.
@@ -382,12 +558,15 @@ export interface Port {
  * IP address for the container group.
  *
  * @member {array} ports The list of ports exposed on the container group.
+ * @member {string} type Specifies if the IP is exposed to the public internet
+ * or private VNET. Possible values include: 'Public', 'Private'
  * @member {string} [ip] The IP exposed to the public internet.
  * @member {string} [dnsNameLabel] The Dns name label for the IP.
  * @member {string} [fqdn] The FQDN for the IP.
  */
 export interface IpAddress {
   ports: Port[];
+  type: string;
   ip?: string;
   dnsNameLabel?: string;
   readonly fqdn?: string;
@@ -406,6 +585,73 @@ export interface IpAddress {
 export interface ContainerGroupPropertiesInstanceView {
   readonly events?: Event[];
   readonly state?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LogAnalytics class.
+ * @constructor
+ * Container group log analytics information.
+ *
+ * @member {string} workspaceId The workspace id for log analytics
+ * @member {string} workspaceKey The workspace key for log analytics
+ * @member {string} [logType] The log type to be used. Possible values include:
+ * 'ContainerInsights', 'ContainerInstanceLogs'
+ * @member {object} [metadata] Metadata for log analytics.
+ */
+export interface LogAnalytics {
+  workspaceId: string;
+  workspaceKey: string;
+  logType?: string;
+  metadata?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerGroupDiagnostics class.
+ * @constructor
+ * Container group diagnostic information.
+ *
+ * @member {object} [logAnalytics] Container group log analytics information.
+ * @member {string} [logAnalytics.workspaceId] The workspace id for log
+ * analytics
+ * @member {string} [logAnalytics.workspaceKey] The workspace key for log
+ * analytics
+ * @member {string} [logAnalytics.logType] The log type to be used. Possible
+ * values include: 'ContainerInsights', 'ContainerInstanceLogs'
+ * @member {object} [logAnalytics.metadata] Metadata for log analytics.
+ */
+export interface ContainerGroupDiagnostics {
+  logAnalytics?: LogAnalytics;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerGroupNetworkProfile class.
+ * @constructor
+ * Container group network profile information.
+ *
+ * @member {string} id The identifier for a network profile.
+ */
+export interface ContainerGroupNetworkProfile {
+  id: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DnsConfiguration class.
+ * @constructor
+ * DNS configuration for the container group.
+ *
+ * @member {array} nameServers The DNS servers for the container group.
+ * @member {string} [searchDomains] The DNS search domains for hostname lookup
+ * in the container group.
+ * @member {string} [options] The DNS options for the container group.
+ */
+export interface DnsConfiguration {
+  nameServers: string[];
+  searchDomains?: string;
+  options?: string;
 }
 
 /**
@@ -434,6 +680,23 @@ export interface Resource extends BaseResource {
  * @constructor
  * A container group.
  *
+ * @member {object} [identity] The identity of the container group, if
+ * configured.
+ * @member {string} [identity.principalId] The principal id of the container
+ * group identity. This property will only be provided for a system assigned
+ * identity.
+ * @member {string} [identity.tenantId] The tenant id associated with the
+ * container group. This property will only be provided for a system assigned
+ * identity.
+ * @member {string} [identity.type] The type of identity used for the container
+ * group. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+ * created identity and a set of user assigned identities. The type 'None' will
+ * remove any identities from the container group. Possible values include:
+ * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+ * @member {object} [identity.userAssignedIdentities] The list of user
+ * identities associated with the container group. The user identity dictionary
+ * key references will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
  * @member {string} [provisioningState] The provisioning state of the container
  * group. This only appears in the response.
  * @member {array} containers The containers within the container group.
@@ -448,6 +711,9 @@ export interface Resource extends BaseResource {
  * @member {object} [ipAddress] The IP address type of the container group.
  * @member {array} [ipAddress.ports] The list of ports exposed on the container
  * group.
+ * @member {string} [ipAddress.type] Specifies if the IP is exposed to the
+ * public internet or private VNET. Possible values include: 'Public',
+ * 'Private'
  * @member {string} [ipAddress.ip] The IP exposed to the public internet.
  * @member {string} [ipAddress.dnsNameLabel] The Dns name label for the IP.
  * @member {string} [ipAddress.fqdn] The FQDN for the IP.
@@ -460,8 +726,32 @@ export interface Resource extends BaseResource {
  * @member {array} [instanceView.events] The events of this container group.
  * @member {string} [instanceView.state] The state of the container group. Only
  * valid in response.
+ * @member {object} [diagnostics] The diagnostic information for a container
+ * group.
+ * @member {object} [diagnostics.logAnalytics] Container group log analytics
+ * information.
+ * @member {string} [diagnostics.logAnalytics.workspaceId] The workspace id for
+ * log analytics
+ * @member {string} [diagnostics.logAnalytics.workspaceKey] The workspace key
+ * for log analytics
+ * @member {string} [diagnostics.logAnalytics.logType] The log type to be used.
+ * Possible values include: 'ContainerInsights', 'ContainerInstanceLogs'
+ * @member {object} [diagnostics.logAnalytics.metadata] Metadata for log
+ * analytics.
+ * @member {object} [networkProfile] The network profile information for a
+ * container group.
+ * @member {string} [networkProfile.id] The identifier for a network profile.
+ * @member {object} [dnsConfig] The DNS config information for a container
+ * group.
+ * @member {array} [dnsConfig.nameServers] The DNS servers for the container
+ * group.
+ * @member {string} [dnsConfig.searchDomains] The DNS search domains for
+ * hostname lookup in the container group.
+ * @member {string} [dnsConfig.options] The DNS options for the container
+ * group.
  */
 export interface ContainerGroup extends Resource {
+  identity?: ContainerGroupIdentity;
   readonly provisioningState?: string;
   containers: Container[];
   imageRegistryCredentials?: ImageRegistryCredential[];
@@ -470,6 +760,9 @@ export interface ContainerGroup extends Resource {
   osType: string;
   volumes?: Volume[];
   readonly instanceView?: ContainerGroupPropertiesInstanceView;
+  diagnostics?: ContainerGroupDiagnostics;
+  networkProfile?: ContainerGroupNetworkProfile;
+  dnsConfig?: DnsConfiguration;
 }
 
 /**
@@ -484,10 +777,10 @@ export interface ContainerGroup extends Resource {
  * @member {string} [description] The description of the operation.
  */
 export interface OperationDisplay {
-  readonly provider?: string;
-  readonly resource?: string;
-  readonly operation?: string;
-  readonly description?: string;
+  provider?: string;
+  resource?: string;
+  operation?: string;
+  description?: string;
 }
 
 /**
@@ -496,8 +789,8 @@ export interface OperationDisplay {
  * @constructor
  * An operation for Azure Container Instance service.
  *
- * @member {string} [name] The name of the operation.
- * @member {object} [display] The display information of the operation.
+ * @member {string} name The name of the operation.
+ * @member {object} display The display information of the operation.
  * @member {string} [display.provider] The name of the provider of the
  * operation.
  * @member {string} [display.resource] The name of the resource type of the
@@ -508,9 +801,9 @@ export interface OperationDisplay {
  * values include: 'User', 'System'
  */
 export interface Operation {
-  readonly name?: string;
-  display?: OperationDisplay;
-  readonly origin?: string;
+  name: string;
+  display: OperationDisplay;
+  origin?: string;
 }
 
 /**
@@ -583,7 +876,7 @@ export interface UsageListResult {
  * @member {string} [content] The content of the log.
  */
 export interface Logs {
-  readonly content?: string;
+  content?: string;
 }
 
 /**
@@ -592,24 +885,24 @@ export interface Logs {
  * @constructor
  * The size of the terminal.
  *
- * @member {number} [row] The row size of the terminal
- * @member {number} [column] The column size of the terminal
+ * @member {number} [rows] The row size of the terminal
+ * @member {number} [cols] The column size of the terminal
  */
 export interface ContainerExecRequestTerminalSize {
-  row?: number;
-  column?: number;
+  rows?: number;
+  cols?: number;
 }
 
 /**
  * @class
  * Initializes a new instance of the ContainerExecRequest class.
  * @constructor
- * The start container exec request.
+ * The container exec request.
  *
  * @member {string} [command] The command to be executed.
  * @member {object} [terminalSize] The size of the terminal.
- * @member {number} [terminalSize.row] The row size of the terminal
- * @member {number} [terminalSize.column] The column size of the terminal
+ * @member {number} [terminalSize.rows] The row size of the terminal
+ * @member {number} [terminalSize.cols] The column size of the terminal
  */
 export interface ContainerExecRequest {
   command?: string;
@@ -626,8 +919,8 @@ export interface ContainerExecRequest {
  * @member {string} [password] The password to start the exec command.
  */
 export interface ContainerExecResponse {
-  readonly webSocketUri?: string;
-  readonly password?: string;
+  webSocketUri?: string;
+  password?: string;
 }
 
 

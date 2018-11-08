@@ -32,11 +32,11 @@ export default class AzureReservationAPI extends AzureServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
+   * @param {string} [options.acceptLanguage] - The preferred language for the response.
    *
-   * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   * @param {number} [options.longRunningOperationRetryTimeout] - The retry timeout in seconds for Long Running Operations. Default value is 30.
    *
-   * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
   constructor(credentials: ServiceClientCredentials, baseUri?: string, options?: AzureServiceClientOptions);
@@ -63,7 +63,13 @@ export default class AzureReservationAPI extends AzureServiceClient {
    *
    * @param {string} subscriptionId Id of the subscription
    *
+   * @param {string} reservedResourceType The type of the resource for which the
+   * skus should be provided.
+   *
    * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.location] Filters the skus based on the location
+   * specified in this parameter. This can be an azure region or global
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -74,7 +80,7 @@ export default class AzureReservationAPI extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getCatalogWithHttpOperationResponse(subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Catalog[]>>;
+  getCatalogWithHttpOperationResponse(subscriptionId: string, reservedResourceType: string, options?: { location? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Catalog[]>>;
 
   /**
    * @summary Get the regions and skus that are available for RI purchase for the
@@ -82,7 +88,13 @@ export default class AzureReservationAPI extends AzureServiceClient {
    *
    * @param {string} subscriptionId Id of the subscription
    *
+   * @param {string} reservedResourceType The type of the resource for which the
+   * skus should be provided.
+   *
    * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.location] Filters the skus based on the location
+   * specified in this parameter. This can be an azure region or global
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -108,9 +120,9 @@ export default class AzureReservationAPI extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getCatalog(subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Catalog[]>;
-  getCatalog(subscriptionId: string, callback: ServiceCallback<models.Catalog[]>): void;
-  getCatalog(subscriptionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Catalog[]>): void;
+  getCatalog(subscriptionId: string, reservedResourceType: string, options?: { location? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Catalog[]>;
+  getCatalog(subscriptionId: string, reservedResourceType: string, callback: ServiceCallback<models.Catalog[]>): void;
+  getCatalog(subscriptionId: string, reservedResourceType: string, options: { location? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Catalog[]>): void;
 
 
   /**

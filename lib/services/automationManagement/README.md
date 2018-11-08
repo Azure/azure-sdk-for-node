@@ -33,7 +33,7 @@ msRestAzure.interactiveLogin().then((creds) => {
       console.log(result);
     });
 }).catch((err) => {
-  console.log('An error ocurred:');
+  console.log('An error occurred:');
   console.dir(err, {depth: null, colors: true});
 });
 

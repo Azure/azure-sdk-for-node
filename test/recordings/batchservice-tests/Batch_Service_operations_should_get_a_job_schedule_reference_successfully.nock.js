@@ -9,32 +9,32 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .get('/jobschedules/NodeSDKTestSchedule?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#jobschedules/@Element\",\"id\":\"NodeSDKTestSchedule\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/jobschedules/NodeSDKTestSchedule\",\"eTag\":\"0x8D5861508E222CC\",\"lastModified\":\"2018-03-09T23:25:24.4266188Z\",\"creationTime\":\"2018-03-09T23:25:24.4266188Z\",\"state\":\"active\",\"stateTransitionTime\":\"2018-03-09T23:25:24.4266188Z\",\"schedule\":{\r\n    \"doNotRunUntil\":\"2018-04-25T07:00:00Z\",\"startWindow\":\"PT6M\"\r\n  },\"jobSpecification\":{\r\n    \"priority\":0,\"usesTaskDependencies\":false,\"onAllTasksComplete\":\"noaction\",\"onTaskFailure\":\"noaction\",\"constraints\":{\r\n      \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":0\r\n    },\"poolInfo\":{\r\n      \"poolId\":\"nodesdktestpool1\"\r\n    }\r\n  },\"executionInfo\":{\r\n    \"nextRunTime\":\"2018-04-25T07:00:00Z\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobschedules/NodeSDKTestSchedule?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#jobschedules/@Element\",\"id\":\"NodeSDKTestSchedule\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/jobschedules/NodeSDKTestSchedule\",\"eTag\":\"0x8D607A503E9DDB3\",\"lastModified\":\"2018-08-21T20:31:03.6160435Z\",\"creationTime\":\"2018-08-21T20:31:03.6160435Z\",\"state\":\"active\",\"stateTransitionTime\":\"2018-08-21T20:31:03.6160435Z\",\"schedule\":{\r\n    \"doNotRunUntil\":\"2018-08-25T07:00:00Z\",\"startWindow\":\"PT6M\"\r\n  },\"jobSpecification\":{\r\n    \"priority\":0,\"usesTaskDependencies\":false,\"onAllTasksComplete\":\"noaction\",\"onTaskFailure\":\"noaction\",\"constraints\":{\r\n      \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":0\r\n    },\"poolInfo\":{\r\n      \"poolId\":\"nodesdktestpool1\"\r\n    }\r\n  },\"executionInfo\":{\r\n    \"nextRunTime\":\"2018-08-25T07:00:00Z\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 09 Mar 2018 23:25:24 GMT',
-  etag: '0x8D5861508E222CC',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:03 GMT',
+  etag: '0x8D607A503E9DDB3',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'aa3b1a59-4c9c-43b1-9caa-a47cba433958',
+  'request-id': 'eb116f71-2e08-43c7-bc1e-2a83e7985922',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:25:25 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .get('/jobschedules/NodeSDKTestSchedule?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#jobschedules/@Element\",\"id\":\"NodeSDKTestSchedule\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/jobschedules/NodeSDKTestSchedule\",\"eTag\":\"0x8D5861508E222CC\",\"lastModified\":\"2018-03-09T23:25:24.4266188Z\",\"creationTime\":\"2018-03-09T23:25:24.4266188Z\",\"state\":\"active\",\"stateTransitionTime\":\"2018-03-09T23:25:24.4266188Z\",\"schedule\":{\r\n    \"doNotRunUntil\":\"2018-04-25T07:00:00Z\",\"startWindow\":\"PT6M\"\r\n  },\"jobSpecification\":{\r\n    \"priority\":0,\"usesTaskDependencies\":false,\"onAllTasksComplete\":\"noaction\",\"onTaskFailure\":\"noaction\",\"constraints\":{\r\n      \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":0\r\n    },\"poolInfo\":{\r\n      \"poolId\":\"nodesdktestpool1\"\r\n    }\r\n  },\"executionInfo\":{\r\n    \"nextRunTime\":\"2018-04-25T07:00:00Z\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobschedules/NodeSDKTestSchedule?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#jobschedules/@Element\",\"id\":\"NodeSDKTestSchedule\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/jobschedules/NodeSDKTestSchedule\",\"eTag\":\"0x8D607A503E9DDB3\",\"lastModified\":\"2018-08-21T20:31:03.6160435Z\",\"creationTime\":\"2018-08-21T20:31:03.6160435Z\",\"state\":\"active\",\"stateTransitionTime\":\"2018-08-21T20:31:03.6160435Z\",\"schedule\":{\r\n    \"doNotRunUntil\":\"2018-08-25T07:00:00Z\",\"startWindow\":\"PT6M\"\r\n  },\"jobSpecification\":{\r\n    \"priority\":0,\"usesTaskDependencies\":false,\"onAllTasksComplete\":\"noaction\",\"onTaskFailure\":\"noaction\",\"constraints\":{\r\n      \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":0\r\n    },\"poolInfo\":{\r\n      \"poolId\":\"nodesdktestpool1\"\r\n    }\r\n  },\"executionInfo\":{\r\n    \"nextRunTime\":\"2018-08-25T07:00:00Z\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 09 Mar 2018 23:25:24 GMT',
-  etag: '0x8D5861508E222CC',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:03 GMT',
+  etag: '0x8D607A503E9DDB3',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'aa3b1a59-4c9c-43b1-9caa-a47cba433958',
+  'request-id': 'eb116f71-2e08-43c7-bc1e-2a83e7985922',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:25:25 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:03 GMT',
   connection: 'close' });
  return result; }]];

@@ -158,11 +158,11 @@ export interface Annotations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AnnotationsListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, resourceName: string, start: string, end: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Annotation[]>>;
+    listWithHttpOperationResponse(resourceGroupName: string, resourceName: string, start: string, end: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AnnotationsListResult>>;
 
     /**
      * Gets the list of annotations for a component for given time range
@@ -189,7 +189,7 @@ export interface Annotations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {AnnotationsListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -197,15 +197,16 @@ export interface Annotations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {AnnotationsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AnnotationsListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, resourceName: string, start: string, end: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Annotation[]>;
-    list(resourceGroupName: string, resourceName: string, start: string, end: string, callback: ServiceCallback<models.Annotation[]>): void;
-    list(resourceGroupName: string, resourceName: string, start: string, end: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Annotation[]>): void;
+    list(resourceGroupName: string, resourceName: string, start: string, end: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AnnotationsListResult>;
+    list(resourceGroupName: string, resourceName: string, start: string, end: string, callback: ServiceCallback<models.AnnotationsListResult>): void;
+    list(resourceGroupName: string, resourceName: string, start: string, end: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AnnotationsListResult>): void;
 
 
     /**
@@ -2630,11 +2631,11 @@ export interface WorkItemConfigurations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<WorkItemConfigurationsListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkItemConfiguration[]>>;
+    listWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkItemConfigurationsListResult>>;
 
     /**
      * Gets the list work item configurations that exist for the application
@@ -2656,7 +2657,7 @@ export interface WorkItemConfigurations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {WorkItemConfigurationsListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2664,15 +2665,17 @@ export interface WorkItemConfigurations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {WorkItemConfigurationsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkItemConfigurationsListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkItemConfiguration[]>;
-    list(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.WorkItemConfiguration[]>): void;
-    list(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkItemConfiguration[]>): void;
+    list(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkItemConfigurationsListResult>;
+    list(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.WorkItemConfigurationsListResult>): void;
+    list(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkItemConfigurationsListResult>): void;
 
 
     /**
@@ -2994,15 +2997,6 @@ export interface Favorites {
     list(resourceGroupName: string, resourceName: string, options?: { favoriteType? : string, sourceType? : string, canFetchContent? : boolean, tags? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentFavorite[]>;
     list(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.ApplicationInsightsComponentFavorite[]>): void;
     list(resourceGroupName: string, resourceName: string, options: { favoriteType? : string, sourceType? : string, canFetchContent? : boolean, tags? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentFavorite[]>): void;
-}
-
-/**
- * @class
- * Favorite
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ApplicationInsightsManagementClient.
- */
-export interface Favorite {
 
 
     /**
@@ -4179,11 +4173,11 @@ export interface WebTests {
 
 /**
  * @class
- * AnalyticsItem
+ * AnalyticsItems
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ApplicationInsightsManagementClient.
  */
-export interface AnalyticsItem {
+export interface AnalyticsItems {
 
 
     /**
@@ -4582,11 +4576,11 @@ export interface AnalyticsItem {
 
 /**
  * @class
- * WorkbooksOperations
+ * Workbooks
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ApplicationInsightsManagementClient.
  */
-export interface WorkbooksOperations {
+export interface Workbooks {
 
 
     /**
@@ -4610,11 +4604,11 @@ export interface WorkbooksOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Workbooks>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<WorkbooksListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbooks>>;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkbooksListResult>>;
 
     /**
      * Get all Workbooks defined within a specified resource group and category.
@@ -4642,7 +4636,7 @@ export interface WorkbooksOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Workbooks} - The deserialized result object.
+     *                      @resolve {WorkbooksListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4650,25 +4644,16 @@ export interface WorkbooksOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Workbooks} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Workbooks} for more information.
+     *                      {WorkbooksListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkbooksListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbooks>;
-    listByResourceGroup(resourceGroupName: string, category: string, callback: ServiceCallback<models.Workbooks>): void;
-    listByResourceGroup(resourceGroupName: string, category: string, options: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbooks>): void;
-}
-
-/**
- * @class
- * WorkbookOperations
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ApplicationInsightsManagementClient.
- */
-export interface WorkbookOperations {
+    listByResourceGroup(resourceGroupName: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkbooksListResult>;
+    listByResourceGroup(resourceGroupName: string, category: string, callback: ServiceCallback<models.WorkbooksListResult>): void;
+    listByResourceGroup(resourceGroupName: string, category: string, options: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkbooksListResult>): void;
 
 
     /**

@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .get('/pools?api-version=2018-03-01.6.1&$filter=startswith(id%2C%27nodesdktestpool1%27)&$select=id%2Cstate&$expand=stats')
+  .get('/pools?api-version=2018-08-01.7.0&$filter=startswith(id%2C%27nodesdktestpool1%27)&$select=id%2Cstate&$expand=stats')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#pools\",\"value\":[\r\n    {\r\n      \"id\":\"nodesdktestpool1\",\"state\":\"active\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '6f95f91d-bdd3-4027-9426-3104c144ed02',
+  'request-id': '7c3f99a8-ba01-4ed0-bf2a-cba025c00215',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:59:22 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .get('/pools?api-version=2018-03-01.6.1&$filter=startswith(id%2C%27nodesdktestpool1%27)&$select=id%2Cstate&$expand=stats')
+  .get('/pools?api-version=2018-08-01.7.0&$filter=startswith(id%2C%27nodesdktestpool1%27)&$select=id%2Cstate&$expand=stats')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#pools\",\"value\":[\r\n    {\r\n      \"id\":\"nodesdktestpool1\",\"state\":\"active\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '6f95f91d-bdd3-4027-9426-3104c144ed02',
+  'request-id': '7c3f99a8-ba01-4ed0-bf2a-cba025c00215',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:59:22 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:21 GMT',
   connection: 'close' });
  return result; }]];

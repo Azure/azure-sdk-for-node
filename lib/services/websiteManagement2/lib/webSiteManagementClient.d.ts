@@ -69,6 +69,7 @@ export default class WebSiteManagementClient extends AzureServiceClient {
   webApps: operations.WebApps;
   appServiceEnvironments: operations.AppServiceEnvironments;
   appServicePlans: operations.AppServicePlans;
+  resourceHealthMetadataOperations: operations.ResourceHealthMetadataOperations;
 
 
   /**
@@ -617,13 +618,17 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    *
    * @param {string} [options.sku] Name of SKU used to filter the regions.
    * Possible values include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium',
-   * 'Dynamic', 'Isolated', 'PremiumV2'
+   * 'Dynamic', 'Isolated', 'PremiumV2', 'ElasticPremium', 'ElasticIsolated'
    *
    * @param {boolean} [options.linuxWorkersEnabled] Specify <code>true</code> if
    * you want to filter to only regions that support Linux workers.
    *
    * @param {boolean} [options.xenonWorkersEnabled] Specify <code>true</code> if
    * you want to filter to only regions that support Xenon workers.
+   *
+   * @param {boolean} [options.linuxDynamicWorkersEnabled] Specify
+   * <code>true</code> if you want to filter to only regions that support Linux
+   * Consumption Workers.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -634,7 +639,7 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  listGeoRegionsWithHttpOperationResponse(options?: { sku? : string, linuxWorkersEnabled? : boolean, xenonWorkersEnabled? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GeoRegionCollection>>;
+  listGeoRegionsWithHttpOperationResponse(options?: { sku? : string, linuxWorkersEnabled? : boolean, xenonWorkersEnabled? : boolean, linuxDynamicWorkersEnabled? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GeoRegionCollection>>;
 
   /**
    * @summary Get a list of available geographical regions.
@@ -645,13 +650,17 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    *
    * @param {string} [options.sku] Name of SKU used to filter the regions.
    * Possible values include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium',
-   * 'Dynamic', 'Isolated', 'PremiumV2'
+   * 'Dynamic', 'Isolated', 'PremiumV2', 'ElasticPremium', 'ElasticIsolated'
    *
    * @param {boolean} [options.linuxWorkersEnabled] Specify <code>true</code> if
    * you want to filter to only regions that support Linux workers.
    *
    * @param {boolean} [options.xenonWorkersEnabled] Specify <code>true</code> if
    * you want to filter to only regions that support Xenon workers.
+   *
+   * @param {boolean} [options.linuxDynamicWorkersEnabled] Specify
+   * <code>true</code> if you want to filter to only regions that support Linux
+   * Consumption Workers.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -678,9 +687,9 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  listGeoRegions(options?: { sku? : string, linuxWorkersEnabled? : boolean, xenonWorkersEnabled? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.GeoRegionCollection>;
+  listGeoRegions(options?: { sku? : string, linuxWorkersEnabled? : boolean, xenonWorkersEnabled? : boolean, linuxDynamicWorkersEnabled? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.GeoRegionCollection>;
   listGeoRegions(callback: ServiceCallback<models.GeoRegionCollection>): void;
-  listGeoRegions(options: { sku? : string, linuxWorkersEnabled? : boolean, xenonWorkersEnabled? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GeoRegionCollection>): void;
+  listGeoRegions(options: { sku? : string, linuxWorkersEnabled? : boolean, xenonWorkersEnabled? : boolean, linuxDynamicWorkersEnabled? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GeoRegionCollection>): void;
 
 
   /**

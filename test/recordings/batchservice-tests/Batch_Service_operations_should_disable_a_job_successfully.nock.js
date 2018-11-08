@@ -10,33 +10,33 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/HelloWorldJobNodeSDKTest/disable?api-version=2018-03-01.6.1', '*')
+.post('/jobs/HelloWorldJobNodeSDKTest/disable?api-version=2018-08-01.7.0', '*')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 23:05:10 GMT',
-  etag: '0x8D58612352B67B2',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:01 GMT',
+  etag: '0x8D607A502BF5C97',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '72bbd7cc-44d4-4a8a-a2ef-a8a5bb068beb',
+  'request-id': '4b884dbd-a80c-4820-bc5a-9428e386579a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/disable',
-  date: 'Fri, 09 Mar 2018 23:05:10 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/HelloWorldJobNodeSDKTest/disable?api-version=2018-03-01.6.1', '*')
+.post('/jobs/HelloWorldJobNodeSDKTest/disable?api-version=2018-08-01.7.0', '*')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 23:05:10 GMT',
-  etag: '0x8D58612352B67B2',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:01 GMT',
+  etag: '0x8D607A502BF5C97',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '72bbd7cc-44d4-4a8a-a2ef-a8a5bb068beb',
+  'request-id': '4b884dbd-a80c-4820-bc5a-9428e386579a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/disable',
-  date: 'Fri, 09 Mar 2018 23:05:10 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:01 GMT',
   connection: 'close' });
  return result; }]];

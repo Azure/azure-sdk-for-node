@@ -9,32 +9,32 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .post('/jobschedules/NodeSDKTestSchedule/terminate?api-version=2018-03-01.6.1')
+  .post('/jobschedules/NodeSDKTestSchedule/terminate?api-version=2018-08-01.7.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 23:25:25 GMT',
-  etag: '0x8D5861509C27E2B',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:05 GMT',
+  etag: '0x8D607A504BD1C2C',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'e9625c9a-1530-4f4a-9a0a-41b10b2bc888',
+  'request-id': '5e2afde0-868f-4dad-b2f2-fe480fc9b331',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobschedules/NodeSDKTestSchedule/terminate',
-  date: 'Fri, 09 Mar 2018 23:25:25 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .post('/jobschedules/NodeSDKTestSchedule/terminate?api-version=2018-03-01.6.1')
+  .post('/jobschedules/NodeSDKTestSchedule/terminate?api-version=2018-08-01.7.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 23:25:25 GMT',
-  etag: '0x8D5861509C27E2B',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:05 GMT',
+  etag: '0x8D607A504BD1C2C',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'e9625c9a-1530-4f4a-9a0a-41b10b2bc888',
+  'request-id': '5e2afde0-868f-4dad-b2f2-fe480fc9b331',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobschedules/NodeSDKTestSchedule/terminate',
-  date: 'Fri, 09 Mar 2018 23:25:25 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:05 GMT',
   connection: 'close' });
  return result; }]];

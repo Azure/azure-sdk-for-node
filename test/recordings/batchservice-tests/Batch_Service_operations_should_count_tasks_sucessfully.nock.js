@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/taskcounts?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#taskcounts/@Element\",\"active\":0,\"running\":0,\"completed\":4,\"succeeded\":3,\"failed\":1,\"validationStatus\":\"Validated\"\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/HelloWorldJobNodeSDKTest/taskcounts?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#taskcounts/@Element\",\"active\":0,\"running\":0,\"completed\":4,\"succeeded\":3,\"failed\":1\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'd92f7332-5009-4852-9bfb-25f994df24a5',
+  'request-id': '0af66760-8534-4760-b64a-03a825aa9c5f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:01:23 GMT',
+  date: 'Tue, 21 Aug 2018 20:27:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/taskcounts?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#taskcounts/@Element\",\"active\":0,\"running\":0,\"completed\":4,\"succeeded\":3,\"failed\":1,\"validationStatus\":\"Validated\"\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/HelloWorldJobNodeSDKTest/taskcounts?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#taskcounts/@Element\",\"active\":0,\"running\":0,\"completed\":4,\"succeeded\":3,\"failed\":1\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'd92f7332-5009-4852-9bfb-25f994df24a5',
+  'request-id': '0af66760-8534-4760-b64a-03a825aa9c5f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:01:23 GMT',
+  date: 'Tue, 21 Aug 2018 20:27:23 GMT',
   connection: 'close' });
  return result; }]];

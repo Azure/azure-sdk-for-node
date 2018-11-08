@@ -10,35 +10,35 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2018-03-01.6.1', '*')
+.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2018-08-01.7.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 22:59:25 GMT',
-  etag: '0x8D5861167DA924E',
+  'last-modified': 'Tue, 21 Aug 2018 20:25:25 GMT',
+  etag: '0x8D607A43A9B7793',
   location: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '319cffea-0bf1-43f9-a55e-2e314f9886c4',
+  'request-id': '902900e1-9808-427b-9e7c-d14c7cd254c4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2',
-  date: 'Fri, 09 Mar 2018 22:59:25 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2018-03-01.6.1', '*')
+.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2018-08-01.7.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 22:59:25 GMT',
-  etag: '0x8D5861167DA924E',
+  'last-modified': 'Tue, 21 Aug 2018 20:25:25 GMT',
+  etag: '0x8D607A43A9B7793',
   location: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '319cffea-0bf1-43f9-a55e-2e314f9886c4',
+  'request-id': '902900e1-9808-427b-9e7c-d14c7cd254c4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2',
-  date: 'Fri, 09 Mar 2018 22:59:25 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:25 GMT',
   connection: 'close' });
  return result; }]];

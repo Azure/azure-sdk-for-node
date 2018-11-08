@@ -8,7 +8,7 @@
  * regenerated.
  */
 
-import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as models from "./models";
 import * as operations from "./operations";
@@ -59,129 +59,23 @@ export default class LogicManagementClient extends AzureServiceClient {
   workflows: operations.Workflows;
   workflowVersions: operations.WorkflowVersions;
   workflowTriggers: operations.WorkflowTriggers;
+  workflowVersionTriggers: operations.WorkflowVersionTriggers;
   workflowTriggerHistories: operations.WorkflowTriggerHistories;
   workflowRuns: operations.WorkflowRuns;
   workflowRunActions: operations.WorkflowRunActions;
   workflowRunActionRepetitions: operations.WorkflowRunActionRepetitions;
-  workflowRunActionScopedRepetitions: operations.WorkflowRunActionScopedRepetitions;
+  workflowRunActionScopeRepetitions: operations.WorkflowRunActionScopeRepetitions;
   workflowRunOperations: operations.WorkflowRunOperations;
   integrationAccounts: operations.IntegrationAccounts;
   integrationAccountAssemblies: operations.IntegrationAccountAssemblies;
   integrationAccountBatchConfigurations: operations.IntegrationAccountBatchConfigurations;
-  schemas: operations.Schemas;
-  maps: operations.Maps;
-  partners: operations.Partners;
-  agreements: operations.Agreements;
-  certificates: operations.Certificates;
-  sessions: operations.Sessions;
-
-
-  /**
-   * Lists all of the available Logic REST API operations.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  listOperationsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
-
-  /**
-   * Lists all of the available Logic REST API operations.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {OperationListResult} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link OperationListResult} for more information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  listOperations(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
-  listOperations(callback: ServiceCallback<models.OperationListResult>): void;
-  listOperations(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
-
-
-  /**
-   * Lists all of the available Logic REST API operations.
-   *
-   * @param {string} nextPageLink The NextLink from the previous successful call
-   * to List operation.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  listOperationsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
-
-  /**
-   * Lists all of the available Logic REST API operations.
-   *
-   * @param {string} nextPageLink The NextLink from the previous successful call
-   * to List operation.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {OperationListResult} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link OperationListResult} for more information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  listOperationsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
-  listOperationsNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
-  listOperationsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+  integrationAccountSchemas: operations.IntegrationAccountSchemas;
+  integrationAccountMaps: operations.IntegrationAccountMaps;
+  integrationAccountPartners: operations.IntegrationAccountPartners;
+  integrationAccountAgreements: operations.IntegrationAccountAgreements;
+  integrationAccountCertificates: operations.IntegrationAccountCertificates;
+  integrationAccountSessions: operations.IntegrationAccountSessions;
+  operations: operations.Operations;
 }
 
 export { LogicManagementClient, models as LogicManagementModels };

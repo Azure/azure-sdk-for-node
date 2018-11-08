@@ -445,6 +445,79 @@ export interface Accounts {
     get(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccountResource>;
     get(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.AccountResource>): void;
     get(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccountResource>): void;
+
+
+    /**
+     * @summary Accounts_Update
+     *
+     * Updates tags for Visual Studio Team Services account resource.
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {object} body The request data.
+     *
+     * @param {object} [body.tags] The custom tags of the resource.
+     *
+     * @param {string} resourceName Name of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AccountResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, body: models.AccountTagRequest, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccountResource>>;
+
+    /**
+     * @summary Accounts_Update
+     *
+     * Updates tags for Visual Studio Team Services account resource.
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {object} body The request data.
+     *
+     * @param {object} [body.tags] The custom tags of the resource.
+     *
+     * @param {string} resourceName Name of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AccountResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AccountResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccountResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, body: models.AccountTagRequest, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccountResource>;
+    update(resourceGroupName: string, body: models.AccountTagRequest, resourceName: string, callback: ServiceCallback<models.AccountResource>): void;
+    update(resourceGroupName: string, body: models.AccountTagRequest, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccountResource>): void;
 }
 
 /**

@@ -14,11 +14,903 @@ import * as models from '../models';
 
 /**
  * @class
+ * Operations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ResourceManagementClient.
+ */
+export interface Operations {
+
+
+    /**
+     * Lists all of the available Microsoft.Resources REST API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Lists all of the available Microsoft.Resources REST API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    list(callback: ServiceCallback<models.OperationListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+
+
+    /**
+     * Lists all of the available Microsoft.Resources REST API operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Lists all of the available Microsoft.Resources REST API operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+}
+
+/**
+ * @class
  * Deployments
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ResourceManagementClient.
  */
 export interface Deployments {
+
+
+    /**
+     * @summary Deletes a deployment from the deployment history.
+     *
+     * A template deployment that is currently running cannot be deleted. Deleting
+     * a template deployment removes the associated deployment operations. This is
+     * an asynchronous operation that returns a status of 202 until the template
+     * deployment is successfully deleted. The Location response header contains
+     * the URI that is used to obtain the status of the process. While the process
+     * is running, a call to the URI in the Location header returns a status of
+     * 202. When the process finishes, the URI in the Location header returns a
+     * status of 204 on success. If the asynchronous request failed, the URI in the
+     * Location header returns an error-level status code.
+     *
+     * @param {string} deploymentName The name of the deployment to delete.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteAtSubscriptionScopeWithHttpOperationResponse(deploymentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes a deployment from the deployment history.
+     *
+     * A template deployment that is currently running cannot be deleted. Deleting
+     * a template deployment removes the associated deployment operations. This is
+     * an asynchronous operation that returns a status of 202 until the template
+     * deployment is successfully deleted. The Location response header contains
+     * the URI that is used to obtain the status of the process. While the process
+     * is running, a call to the URI in the Location header returns a status of
+     * 202. When the process finishes, the URI in the Location header returns a
+     * status of 204 on success. If the asynchronous request failed, the URI in the
+     * Location header returns an error-level status code.
+     *
+     * @param {string} deploymentName The name of the deployment to delete.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteAtSubscriptionScope(deploymentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteAtSubscriptionScope(deploymentName: string, callback: ServiceCallback<void>): void;
+    deleteAtSubscriptionScope(deploymentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Checks whether the deployment exists.
+     *
+     * @param {string} deploymentName The name of the deployment to check.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Boolean>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    checkExistenceAtSubscriptionScopeWithHttpOperationResponse(deploymentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<boolean>>;
+
+    /**
+     * Checks whether the deployment exists.
+     *
+     * @param {string} deploymentName The name of the deployment to check.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Boolean} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Boolean} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    checkExistenceAtSubscriptionScope(deploymentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<boolean>;
+    checkExistenceAtSubscriptionScope(deploymentName: string, callback: ServiceCallback<boolean>): void;
+    checkExistenceAtSubscriptionScope(deploymentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<boolean>): void;
+
+
+    /**
+     * @summary Deploys resources at subscription scope.
+     *
+     * You can provide the template and parameters directly in the request or link
+     * to JSON files.
+     *
+     * @param {string} deploymentName The name of the deployment.
+     *
+     * @param {object} parameters Additional parameters supplied to the operation.
+     *
+     * @param {string} [parameters.location] The location to store the deployment
+     * data.
+     *
+     * @param {object} parameters.properties The deployment properties.
+     *
+     * @param {object} [parameters.properties.template] The template content. You
+     * use this element when you want to pass the template syntax directly in the
+     * request rather than link to an existing template. It can be a JObject or
+     * well-formed JSON string. Use either the templateLink property or the
+     * template property, but not both.
+     *
+     * @param {object} [parameters.properties.templateLink] The URI of the
+     * template. Use either the templateLink property or the template property, but
+     * not both.
+     *
+     * @param {string} parameters.properties.templateLink.uri The URI of the
+     * template to deploy.
+     *
+     * @param {string} [parameters.properties.templateLink.contentVersion] If
+     * included, must match the ContentVersion in the template.
+     *
+     * @param {object} [parameters.properties.parameters] Name and value pairs that
+     * define the deployment parameters for the template. You use this element when
+     * you want to provide the parameter values directly in the request rather than
+     * link to an existing parameter file. Use either the parametersLink property
+     * or the parameters property, but not both. It can be a JObject or a well
+     * formed JSON string.
+     *
+     * @param {object} [parameters.properties.parametersLink] The URI of parameters
+     * file. You use this element to link to an existing parameters file. Use
+     * either the parametersLink property or the parameters property, but not both.
+     *
+     * @param {string} parameters.properties.parametersLink.uri The URI of the
+     * parameters file.
+     *
+     * @param {string} [parameters.properties.parametersLink.contentVersion] If
+     * included, must match the ContentVersion in the template.
+     *
+     * @param {string} parameters.properties.mode The mode that is used to deploy
+     * resources. This value can be either Incremental or Complete. In Incremental
+     * mode, resources are deployed without deleting existing resources that are
+     * not included in the template. In Complete mode, resources are deployed and
+     * existing resources in the resource group that are not included in the
+     * template are deleted. Be careful when using Complete mode as you may
+     * unintentionally delete resources. Possible values include: 'Incremental',
+     * 'Complete'
+     *
+     * @param {object} [parameters.properties.debugSetting] The debug setting of
+     * the deployment.
+     *
+     * @param {string} [parameters.properties.debugSetting.detailLevel] Specifies
+     * the type of information to log for debugging. The permitted values are none,
+     * requestContent, responseContent, or both requestContent and responseContent
+     * separated by a comma. The default is none. When setting this value,
+     * carefully consider the type of information you are passing in during
+     * deployment. By logging information about the request or response, you could
+     * potentially expose sensitive data that is retrieved through the deployment
+     * operations.
+     *
+     * @param {object} [parameters.properties.onErrorDeployment] The deployment on
+     * error behavior.
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.type] The
+     * deployment on error behavior type. Possible values are LastSuccessful and
+     * SpecificDeployment. Possible values include: 'LastSuccessful',
+     * 'SpecificDeployment'
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.deploymentName] The
+     * deployment to be used on error case.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DeploymentExtended>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateAtSubscriptionScopeWithHttpOperationResponse(deploymentName: string, parameters: models.Deployment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeploymentExtended>>;
+
+    /**
+     * @summary Deploys resources at subscription scope.
+     *
+     * You can provide the template and parameters directly in the request or link
+     * to JSON files.
+     *
+     * @param {string} deploymentName The name of the deployment.
+     *
+     * @param {object} parameters Additional parameters supplied to the operation.
+     *
+     * @param {string} [parameters.location] The location to store the deployment
+     * data.
+     *
+     * @param {object} parameters.properties The deployment properties.
+     *
+     * @param {object} [parameters.properties.template] The template content. You
+     * use this element when you want to pass the template syntax directly in the
+     * request rather than link to an existing template. It can be a JObject or
+     * well-formed JSON string. Use either the templateLink property or the
+     * template property, but not both.
+     *
+     * @param {object} [parameters.properties.templateLink] The URI of the
+     * template. Use either the templateLink property or the template property, but
+     * not both.
+     *
+     * @param {string} parameters.properties.templateLink.uri The URI of the
+     * template to deploy.
+     *
+     * @param {string} [parameters.properties.templateLink.contentVersion] If
+     * included, must match the ContentVersion in the template.
+     *
+     * @param {object} [parameters.properties.parameters] Name and value pairs that
+     * define the deployment parameters for the template. You use this element when
+     * you want to provide the parameter values directly in the request rather than
+     * link to an existing parameter file. Use either the parametersLink property
+     * or the parameters property, but not both. It can be a JObject or a well
+     * formed JSON string.
+     *
+     * @param {object} [parameters.properties.parametersLink] The URI of parameters
+     * file. You use this element to link to an existing parameters file. Use
+     * either the parametersLink property or the parameters property, but not both.
+     *
+     * @param {string} parameters.properties.parametersLink.uri The URI of the
+     * parameters file.
+     *
+     * @param {string} [parameters.properties.parametersLink.contentVersion] If
+     * included, must match the ContentVersion in the template.
+     *
+     * @param {string} parameters.properties.mode The mode that is used to deploy
+     * resources. This value can be either Incremental or Complete. In Incremental
+     * mode, resources are deployed without deleting existing resources that are
+     * not included in the template. In Complete mode, resources are deployed and
+     * existing resources in the resource group that are not included in the
+     * template are deleted. Be careful when using Complete mode as you may
+     * unintentionally delete resources. Possible values include: 'Incremental',
+     * 'Complete'
+     *
+     * @param {object} [parameters.properties.debugSetting] The debug setting of
+     * the deployment.
+     *
+     * @param {string} [parameters.properties.debugSetting.detailLevel] Specifies
+     * the type of information to log for debugging. The permitted values are none,
+     * requestContent, responseContent, or both requestContent and responseContent
+     * separated by a comma. The default is none. When setting this value,
+     * carefully consider the type of information you are passing in during
+     * deployment. By logging information about the request or response, you could
+     * potentially expose sensitive data that is retrieved through the deployment
+     * operations.
+     *
+     * @param {object} [parameters.properties.onErrorDeployment] The deployment on
+     * error behavior.
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.type] The
+     * deployment on error behavior type. Possible values are LastSuccessful and
+     * SpecificDeployment. Possible values include: 'LastSuccessful',
+     * 'SpecificDeployment'
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.deploymentName] The
+     * deployment to be used on error case.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DeploymentExtended} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DeploymentExtended} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeploymentExtended} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateAtSubscriptionScope(deploymentName: string, parameters: models.Deployment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeploymentExtended>;
+    createOrUpdateAtSubscriptionScope(deploymentName: string, parameters: models.Deployment, callback: ServiceCallback<models.DeploymentExtended>): void;
+    createOrUpdateAtSubscriptionScope(deploymentName: string, parameters: models.Deployment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentExtended>): void;
+
+
+    /**
+     * Gets a deployment.
+     *
+     * @param {string} deploymentName The name of the deployment to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DeploymentExtended>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getAtSubscriptionScopeWithHttpOperationResponse(deploymentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeploymentExtended>>;
+
+    /**
+     * Gets a deployment.
+     *
+     * @param {string} deploymentName The name of the deployment to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DeploymentExtended} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DeploymentExtended} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeploymentExtended} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getAtSubscriptionScope(deploymentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeploymentExtended>;
+    getAtSubscriptionScope(deploymentName: string, callback: ServiceCallback<models.DeploymentExtended>): void;
+    getAtSubscriptionScope(deploymentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentExtended>): void;
+
+
+    /**
+     * @summary Cancels a currently running template deployment.
+     *
+     * You can cancel a deployment only if the provisioningState is Accepted or
+     * Running. After the deployment is canceled, the provisioningState is set to
+     * Canceled. Canceling a template deployment stops the currently running
+     * template deployment and leaves the resources partially deployed.
+     *
+     * @param {string} deploymentName The name of the deployment to cancel.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    cancelAtSubscriptionScopeWithHttpOperationResponse(deploymentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Cancels a currently running template deployment.
+     *
+     * You can cancel a deployment only if the provisioningState is Accepted or
+     * Running. After the deployment is canceled, the provisioningState is set to
+     * Canceled. Canceling a template deployment stops the currently running
+     * template deployment and leaves the resources partially deployed.
+     *
+     * @param {string} deploymentName The name of the deployment to cancel.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    cancelAtSubscriptionScope(deploymentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    cancelAtSubscriptionScope(deploymentName: string, callback: ServiceCallback<void>): void;
+    cancelAtSubscriptionScope(deploymentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Validates whether the specified template is syntactically correct and will
+     * be accepted by Azure Resource Manager..
+     *
+     * @param {string} deploymentName The name of the deployment.
+     *
+     * @param {object} parameters Parameters to validate.
+     *
+     * @param {string} [parameters.location] The location to store the deployment
+     * data.
+     *
+     * @param {object} parameters.properties The deployment properties.
+     *
+     * @param {object} [parameters.properties.template] The template content. You
+     * use this element when you want to pass the template syntax directly in the
+     * request rather than link to an existing template. It can be a JObject or
+     * well-formed JSON string. Use either the templateLink property or the
+     * template property, but not both.
+     *
+     * @param {object} [parameters.properties.templateLink] The URI of the
+     * template. Use either the templateLink property or the template property, but
+     * not both.
+     *
+     * @param {string} parameters.properties.templateLink.uri The URI of the
+     * template to deploy.
+     *
+     * @param {string} [parameters.properties.templateLink.contentVersion] If
+     * included, must match the ContentVersion in the template.
+     *
+     * @param {object} [parameters.properties.parameters] Name and value pairs that
+     * define the deployment parameters for the template. You use this element when
+     * you want to provide the parameter values directly in the request rather than
+     * link to an existing parameter file. Use either the parametersLink property
+     * or the parameters property, but not both. It can be a JObject or a well
+     * formed JSON string.
+     *
+     * @param {object} [parameters.properties.parametersLink] The URI of parameters
+     * file. You use this element to link to an existing parameters file. Use
+     * either the parametersLink property or the parameters property, but not both.
+     *
+     * @param {string} parameters.properties.parametersLink.uri The URI of the
+     * parameters file.
+     *
+     * @param {string} [parameters.properties.parametersLink.contentVersion] If
+     * included, must match the ContentVersion in the template.
+     *
+     * @param {string} parameters.properties.mode The mode that is used to deploy
+     * resources. This value can be either Incremental or Complete. In Incremental
+     * mode, resources are deployed without deleting existing resources that are
+     * not included in the template. In Complete mode, resources are deployed and
+     * existing resources in the resource group that are not included in the
+     * template are deleted. Be careful when using Complete mode as you may
+     * unintentionally delete resources. Possible values include: 'Incremental',
+     * 'Complete'
+     *
+     * @param {object} [parameters.properties.debugSetting] The debug setting of
+     * the deployment.
+     *
+     * @param {string} [parameters.properties.debugSetting.detailLevel] Specifies
+     * the type of information to log for debugging. The permitted values are none,
+     * requestContent, responseContent, or both requestContent and responseContent
+     * separated by a comma. The default is none. When setting this value,
+     * carefully consider the type of information you are passing in during
+     * deployment. By logging information about the request or response, you could
+     * potentially expose sensitive data that is retrieved through the deployment
+     * operations.
+     *
+     * @param {object} [parameters.properties.onErrorDeployment] The deployment on
+     * error behavior.
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.type] The
+     * deployment on error behavior type. Possible values are LastSuccessful and
+     * SpecificDeployment. Possible values include: 'LastSuccessful',
+     * 'SpecificDeployment'
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.deploymentName] The
+     * deployment to be used on error case.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DeploymentValidateResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    validateAtSubscriptionScopeWithHttpOperationResponse(deploymentName: string, parameters: models.Deployment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeploymentValidateResult>>;
+
+    /**
+     * Validates whether the specified template is syntactically correct and will
+     * be accepted by Azure Resource Manager..
+     *
+     * @param {string} deploymentName The name of the deployment.
+     *
+     * @param {object} parameters Parameters to validate.
+     *
+     * @param {string} [parameters.location] The location to store the deployment
+     * data.
+     *
+     * @param {object} parameters.properties The deployment properties.
+     *
+     * @param {object} [parameters.properties.template] The template content. You
+     * use this element when you want to pass the template syntax directly in the
+     * request rather than link to an existing template. It can be a JObject or
+     * well-formed JSON string. Use either the templateLink property or the
+     * template property, but not both.
+     *
+     * @param {object} [parameters.properties.templateLink] The URI of the
+     * template. Use either the templateLink property or the template property, but
+     * not both.
+     *
+     * @param {string} parameters.properties.templateLink.uri The URI of the
+     * template to deploy.
+     *
+     * @param {string} [parameters.properties.templateLink.contentVersion] If
+     * included, must match the ContentVersion in the template.
+     *
+     * @param {object} [parameters.properties.parameters] Name and value pairs that
+     * define the deployment parameters for the template. You use this element when
+     * you want to provide the parameter values directly in the request rather than
+     * link to an existing parameter file. Use either the parametersLink property
+     * or the parameters property, but not both. It can be a JObject or a well
+     * formed JSON string.
+     *
+     * @param {object} [parameters.properties.parametersLink] The URI of parameters
+     * file. You use this element to link to an existing parameters file. Use
+     * either the parametersLink property or the parameters property, but not both.
+     *
+     * @param {string} parameters.properties.parametersLink.uri The URI of the
+     * parameters file.
+     *
+     * @param {string} [parameters.properties.parametersLink.contentVersion] If
+     * included, must match the ContentVersion in the template.
+     *
+     * @param {string} parameters.properties.mode The mode that is used to deploy
+     * resources. This value can be either Incremental or Complete. In Incremental
+     * mode, resources are deployed without deleting existing resources that are
+     * not included in the template. In Complete mode, resources are deployed and
+     * existing resources in the resource group that are not included in the
+     * template are deleted. Be careful when using Complete mode as you may
+     * unintentionally delete resources. Possible values include: 'Incremental',
+     * 'Complete'
+     *
+     * @param {object} [parameters.properties.debugSetting] The debug setting of
+     * the deployment.
+     *
+     * @param {string} [parameters.properties.debugSetting.detailLevel] Specifies
+     * the type of information to log for debugging. The permitted values are none,
+     * requestContent, responseContent, or both requestContent and responseContent
+     * separated by a comma. The default is none. When setting this value,
+     * carefully consider the type of information you are passing in during
+     * deployment. By logging information about the request or response, you could
+     * potentially expose sensitive data that is retrieved through the deployment
+     * operations.
+     *
+     * @param {object} [parameters.properties.onErrorDeployment] The deployment on
+     * error behavior.
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.type] The
+     * deployment on error behavior type. Possible values are LastSuccessful and
+     * SpecificDeployment. Possible values include: 'LastSuccessful',
+     * 'SpecificDeployment'
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.deploymentName] The
+     * deployment to be used on error case.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DeploymentValidateResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DeploymentValidateResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeploymentValidateResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    validateAtSubscriptionScope(deploymentName: string, parameters: models.Deployment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeploymentValidateResult>;
+    validateAtSubscriptionScope(deploymentName: string, parameters: models.Deployment, callback: ServiceCallback<models.DeploymentValidateResult>): void;
+    validateAtSubscriptionScope(deploymentName: string, parameters: models.Deployment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentValidateResult>): void;
+
+
+    /**
+     * Exports the template used for specified deployment.
+     *
+     * @param {string} deploymentName The name of the deployment from which to get
+     * the template.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DeploymentExportResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    exportTemplateAtSubscriptionScopeWithHttpOperationResponse(deploymentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeploymentExportResult>>;
+
+    /**
+     * Exports the template used for specified deployment.
+     *
+     * @param {string} deploymentName The name of the deployment from which to get
+     * the template.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DeploymentExportResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DeploymentExportResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeploymentExportResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    exportTemplateAtSubscriptionScope(deploymentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeploymentExportResult>;
+    exportTemplateAtSubscriptionScope(deploymentName: string, callback: ServiceCallback<models.DeploymentExportResult>): void;
+    exportTemplateAtSubscriptionScope(deploymentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentExportResult>): void;
+
+
+    /**
+     * Get all the deployments for a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. For
+     * example, you can use $filter=provisioningState eq '{state}'.
+     *
+     * @param {number} [options.top] The number of results to get. If null is
+     * passed, returns all deployments.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DeploymentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAtSubscriptionScopeWithHttpOperationResponse(options?: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeploymentListResult>>;
+
+    /**
+     * Get all the deployments for a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. For
+     * example, you can use $filter=provisioningState eq '{state}'.
+     *
+     * @param {number} [options.top] The number of results to get. If null is
+     * passed, returns all deployments.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DeploymentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DeploymentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeploymentListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAtSubscriptionScope(options?: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeploymentListResult>;
+    listAtSubscriptionScope(callback: ServiceCallback<models.DeploymentListResult>): void;
+    listAtSubscriptionScope(options: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentListResult>): void;
 
 
     /**
@@ -177,6 +1069,9 @@ export interface Deployments {
      *
      * @param {object} parameters Additional parameters supplied to the operation.
      *
+     * @param {string} [parameters.location] The location to store the deployment
+     * data.
+     *
      * @param {object} parameters.properties The deployment properties.
      *
      * @param {object} [parameters.properties.template] The template content. You
@@ -232,6 +1127,17 @@ export interface Deployments {
      * deployment. By logging information about the request or response, you could
      * potentially expose sensitive data that is retrieved through the deployment
      * operations.
+     *
+     * @param {object} [parameters.properties.onErrorDeployment] The deployment on
+     * error behavior.
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.type] The
+     * deployment on error behavior type. Possible values are LastSuccessful and
+     * SpecificDeployment. Possible values include: 'LastSuccessful',
+     * 'SpecificDeployment'
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.deploymentName] The
+     * deployment to be used on error case.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -260,6 +1166,9 @@ export interface Deployments {
      *
      * @param {object} parameters Additional parameters supplied to the operation.
      *
+     * @param {string} [parameters.location] The location to store the deployment
+     * data.
+     *
      * @param {object} parameters.properties The deployment properties.
      *
      * @param {object} [parameters.properties.template] The template content. You
@@ -315,6 +1224,17 @@ export interface Deployments {
      * deployment. By logging information about the request or response, you could
      * potentially expose sensitive data that is retrieved through the deployment
      * operations.
+     *
+     * @param {object} [parameters.properties.onErrorDeployment] The deployment on
+     * error behavior.
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.type] The
+     * deployment on error behavior type. Possible values are LastSuccessful and
+     * SpecificDeployment. Possible values include: 'LastSuccessful',
+     * 'SpecificDeployment'
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.deploymentName] The
+     * deployment to be used on error case.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -490,6 +1410,9 @@ export interface Deployments {
      *
      * @param {object} parameters Parameters to validate.
      *
+     * @param {string} [parameters.location] The location to store the deployment
+     * data.
+     *
      * @param {object} parameters.properties The deployment properties.
      *
      * @param {object} [parameters.properties.template] The template content. You
@@ -545,6 +1468,17 @@ export interface Deployments {
      * deployment. By logging information about the request or response, you could
      * potentially expose sensitive data that is retrieved through the deployment
      * operations.
+     *
+     * @param {object} [parameters.properties.onErrorDeployment] The deployment on
+     * error behavior.
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.type] The
+     * deployment on error behavior type. Possible values are LastSuccessful and
+     * SpecificDeployment. Possible values include: 'LastSuccessful',
+     * 'SpecificDeployment'
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.deploymentName] The
+     * deployment to be used on error case.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -570,6 +1504,9 @@ export interface Deployments {
      *
      * @param {object} parameters Parameters to validate.
      *
+     * @param {string} [parameters.location] The location to store the deployment
+     * data.
+     *
      * @param {object} parameters.properties The deployment properties.
      *
      * @param {object} [parameters.properties.template] The template content. You
@@ -625,6 +1562,17 @@ export interface Deployments {
      * deployment. By logging information about the request or response, you could
      * potentially expose sensitive data that is retrieved through the deployment
      * operations.
+     *
+     * @param {object} [parameters.properties.onErrorDeployment] The deployment on
+     * error behavior.
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.type] The
+     * deployment on error behavior type. Possible values are LastSuccessful and
+     * SpecificDeployment. Possible values include: 'LastSuccessful',
+     * 'SpecificDeployment'
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.deploymentName] The
+     * deployment to be used on error case.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -796,6 +1744,285 @@ export interface Deployments {
      * @summary Deletes a deployment from the deployment history.
      *
      * A template deployment that is currently running cannot be deleted. Deleting
+     * a template deployment removes the associated deployment operations. This is
+     * an asynchronous operation that returns a status of 202 until the template
+     * deployment is successfully deleted. The Location response header contains
+     * the URI that is used to obtain the status of the process. While the process
+     * is running, a call to the URI in the Location header returns a status of
+     * 202. When the process finishes, the URI in the Location header returns a
+     * status of 204 on success. If the asynchronous request failed, the URI in the
+     * Location header returns an error-level status code.
+     *
+     * @param {string} deploymentName The name of the deployment to delete.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteAtSubscriptionScopeWithHttpOperationResponse(deploymentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes a deployment from the deployment history.
+     *
+     * A template deployment that is currently running cannot be deleted. Deleting
+     * a template deployment removes the associated deployment operations. This is
+     * an asynchronous operation that returns a status of 202 until the template
+     * deployment is successfully deleted. The Location response header contains
+     * the URI that is used to obtain the status of the process. While the process
+     * is running, a call to the URI in the Location header returns a status of
+     * 202. When the process finishes, the URI in the Location header returns a
+     * status of 204 on success. If the asynchronous request failed, the URI in the
+     * Location header returns an error-level status code.
+     *
+     * @param {string} deploymentName The name of the deployment to delete.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteAtSubscriptionScope(deploymentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteAtSubscriptionScope(deploymentName: string, callback: ServiceCallback<void>): void;
+    beginDeleteAtSubscriptionScope(deploymentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Deploys resources at subscription scope.
+     *
+     * You can provide the template and parameters directly in the request or link
+     * to JSON files.
+     *
+     * @param {string} deploymentName The name of the deployment.
+     *
+     * @param {object} parameters Additional parameters supplied to the operation.
+     *
+     * @param {string} [parameters.location] The location to store the deployment
+     * data.
+     *
+     * @param {object} parameters.properties The deployment properties.
+     *
+     * @param {object} [parameters.properties.template] The template content. You
+     * use this element when you want to pass the template syntax directly in the
+     * request rather than link to an existing template. It can be a JObject or
+     * well-formed JSON string. Use either the templateLink property or the
+     * template property, but not both.
+     *
+     * @param {object} [parameters.properties.templateLink] The URI of the
+     * template. Use either the templateLink property or the template property, but
+     * not both.
+     *
+     * @param {string} parameters.properties.templateLink.uri The URI of the
+     * template to deploy.
+     *
+     * @param {string} [parameters.properties.templateLink.contentVersion] If
+     * included, must match the ContentVersion in the template.
+     *
+     * @param {object} [parameters.properties.parameters] Name and value pairs that
+     * define the deployment parameters for the template. You use this element when
+     * you want to provide the parameter values directly in the request rather than
+     * link to an existing parameter file. Use either the parametersLink property
+     * or the parameters property, but not both. It can be a JObject or a well
+     * formed JSON string.
+     *
+     * @param {object} [parameters.properties.parametersLink] The URI of parameters
+     * file. You use this element to link to an existing parameters file. Use
+     * either the parametersLink property or the parameters property, but not both.
+     *
+     * @param {string} parameters.properties.parametersLink.uri The URI of the
+     * parameters file.
+     *
+     * @param {string} [parameters.properties.parametersLink.contentVersion] If
+     * included, must match the ContentVersion in the template.
+     *
+     * @param {string} parameters.properties.mode The mode that is used to deploy
+     * resources. This value can be either Incremental or Complete. In Incremental
+     * mode, resources are deployed without deleting existing resources that are
+     * not included in the template. In Complete mode, resources are deployed and
+     * existing resources in the resource group that are not included in the
+     * template are deleted. Be careful when using Complete mode as you may
+     * unintentionally delete resources. Possible values include: 'Incremental',
+     * 'Complete'
+     *
+     * @param {object} [parameters.properties.debugSetting] The debug setting of
+     * the deployment.
+     *
+     * @param {string} [parameters.properties.debugSetting.detailLevel] Specifies
+     * the type of information to log for debugging. The permitted values are none,
+     * requestContent, responseContent, or both requestContent and responseContent
+     * separated by a comma. The default is none. When setting this value,
+     * carefully consider the type of information you are passing in during
+     * deployment. By logging information about the request or response, you could
+     * potentially expose sensitive data that is retrieved through the deployment
+     * operations.
+     *
+     * @param {object} [parameters.properties.onErrorDeployment] The deployment on
+     * error behavior.
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.type] The
+     * deployment on error behavior type. Possible values are LastSuccessful and
+     * SpecificDeployment. Possible values include: 'LastSuccessful',
+     * 'SpecificDeployment'
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.deploymentName] The
+     * deployment to be used on error case.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DeploymentExtended>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateAtSubscriptionScopeWithHttpOperationResponse(deploymentName: string, parameters: models.Deployment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeploymentExtended>>;
+
+    /**
+     * @summary Deploys resources at subscription scope.
+     *
+     * You can provide the template and parameters directly in the request or link
+     * to JSON files.
+     *
+     * @param {string} deploymentName The name of the deployment.
+     *
+     * @param {object} parameters Additional parameters supplied to the operation.
+     *
+     * @param {string} [parameters.location] The location to store the deployment
+     * data.
+     *
+     * @param {object} parameters.properties The deployment properties.
+     *
+     * @param {object} [parameters.properties.template] The template content. You
+     * use this element when you want to pass the template syntax directly in the
+     * request rather than link to an existing template. It can be a JObject or
+     * well-formed JSON string. Use either the templateLink property or the
+     * template property, but not both.
+     *
+     * @param {object} [parameters.properties.templateLink] The URI of the
+     * template. Use either the templateLink property or the template property, but
+     * not both.
+     *
+     * @param {string} parameters.properties.templateLink.uri The URI of the
+     * template to deploy.
+     *
+     * @param {string} [parameters.properties.templateLink.contentVersion] If
+     * included, must match the ContentVersion in the template.
+     *
+     * @param {object} [parameters.properties.parameters] Name and value pairs that
+     * define the deployment parameters for the template. You use this element when
+     * you want to provide the parameter values directly in the request rather than
+     * link to an existing parameter file. Use either the parametersLink property
+     * or the parameters property, but not both. It can be a JObject or a well
+     * formed JSON string.
+     *
+     * @param {object} [parameters.properties.parametersLink] The URI of parameters
+     * file. You use this element to link to an existing parameters file. Use
+     * either the parametersLink property or the parameters property, but not both.
+     *
+     * @param {string} parameters.properties.parametersLink.uri The URI of the
+     * parameters file.
+     *
+     * @param {string} [parameters.properties.parametersLink.contentVersion] If
+     * included, must match the ContentVersion in the template.
+     *
+     * @param {string} parameters.properties.mode The mode that is used to deploy
+     * resources. This value can be either Incremental or Complete. In Incremental
+     * mode, resources are deployed without deleting existing resources that are
+     * not included in the template. In Complete mode, resources are deployed and
+     * existing resources in the resource group that are not included in the
+     * template are deleted. Be careful when using Complete mode as you may
+     * unintentionally delete resources. Possible values include: 'Incremental',
+     * 'Complete'
+     *
+     * @param {object} [parameters.properties.debugSetting] The debug setting of
+     * the deployment.
+     *
+     * @param {string} [parameters.properties.debugSetting.detailLevel] Specifies
+     * the type of information to log for debugging. The permitted values are none,
+     * requestContent, responseContent, or both requestContent and responseContent
+     * separated by a comma. The default is none. When setting this value,
+     * carefully consider the type of information you are passing in during
+     * deployment. By logging information about the request or response, you could
+     * potentially expose sensitive data that is retrieved through the deployment
+     * operations.
+     *
+     * @param {object} [parameters.properties.onErrorDeployment] The deployment on
+     * error behavior.
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.type] The
+     * deployment on error behavior type. Possible values are LastSuccessful and
+     * SpecificDeployment. Possible values include: 'LastSuccessful',
+     * 'SpecificDeployment'
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.deploymentName] The
+     * deployment to be used on error case.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DeploymentExtended} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DeploymentExtended} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeploymentExtended} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdateAtSubscriptionScope(deploymentName: string, parameters: models.Deployment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeploymentExtended>;
+    beginCreateOrUpdateAtSubscriptionScope(deploymentName: string, parameters: models.Deployment, callback: ServiceCallback<models.DeploymentExtended>): void;
+    beginCreateOrUpdateAtSubscriptionScope(deploymentName: string, parameters: models.Deployment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentExtended>): void;
+
+
+    /**
+     * @summary Deletes a deployment from the deployment history.
+     *
+     * A template deployment that is currently running cannot be deleted. Deleting
      * a template deployment removes the associated deployment operations. Deleting
      * a template deployment does not affect the state of the resource group. This
      * is an asynchronous operation that returns a status of 202 until the template
@@ -888,6 +2115,9 @@ export interface Deployments {
      *
      * @param {object} parameters Additional parameters supplied to the operation.
      *
+     * @param {string} [parameters.location] The location to store the deployment
+     * data.
+     *
      * @param {object} parameters.properties The deployment properties.
      *
      * @param {object} [parameters.properties.template] The template content. You
@@ -943,6 +2173,17 @@ export interface Deployments {
      * deployment. By logging information about the request or response, you could
      * potentially expose sensitive data that is retrieved through the deployment
      * operations.
+     *
+     * @param {object} [parameters.properties.onErrorDeployment] The deployment on
+     * error behavior.
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.type] The
+     * deployment on error behavior type. Possible values are LastSuccessful and
+     * SpecificDeployment. Possible values include: 'LastSuccessful',
+     * 'SpecificDeployment'
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.deploymentName] The
+     * deployment to be used on error case.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -971,6 +2212,9 @@ export interface Deployments {
      *
      * @param {object} parameters Additional parameters supplied to the operation.
      *
+     * @param {string} [parameters.location] The location to store the deployment
+     * data.
+     *
      * @param {object} parameters.properties The deployment properties.
      *
      * @param {object} [parameters.properties.template] The template content. You
@@ -1026,6 +2270,17 @@ export interface Deployments {
      * deployment. By logging information about the request or response, you could
      * potentially expose sensitive data that is retrieved through the deployment
      * operations.
+     *
+     * @param {object} [parameters.properties.onErrorDeployment] The deployment on
+     * error behavior.
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.type] The
+     * deployment on error behavior type. Possible values are LastSuccessful and
+     * SpecificDeployment. Possible values include: 'LastSuccessful',
+     * 'SpecificDeployment'
+     *
+     * @param {string} [parameters.properties.onErrorDeployment.deploymentName] The
+     * deployment to be used on error case.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1057,6 +2312,63 @@ export interface Deployments {
     beginCreateOrUpdate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeploymentExtended>;
     beginCreateOrUpdate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, callback: ServiceCallback<models.DeploymentExtended>): void;
     beginCreateOrUpdate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentExtended>): void;
+
+
+    /**
+     * Get all the deployments for a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DeploymentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAtSubscriptionScopeNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeploymentListResult>>;
+
+    /**
+     * Get all the deployments for a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DeploymentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DeploymentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeploymentListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAtSubscriptionScopeNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeploymentListResult>;
+    listAtSubscriptionScopeNext(nextPageLink: string, callback: ServiceCallback<models.DeploymentListResult>): void;
+    listAtSubscriptionScopeNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentListResult>): void;
 
 
     /**
@@ -1443,9 +2755,26 @@ export interface Resources {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the
+     * operation.<br><br>The properties you can use for eq (equals) or ne (not
+     * equals) are: location, resourceType, name, resourceGroup, identity,
+     * identity/principalId, plan, plan/publisher, plan/product, plan/name,
+     * plan/version, and plan/promotionCode.<br><br>For example, to filter by a
+     * resource type, use: $filter=resourceType eq
+     * 'Microsoft.Network/virtualNetworks'<br><br>You can use substringof(value,
+     * property) in the filter. The properties you can use for substring are: name
+     * and resourceGroup.<br><br>For example, to get all resources with 'demo'
+     * anywhere in the name, use: $filter=substringof('demo', name)<br><br>You can
+     * link more than one substringof together by adding and/or
+     * operators.<br><br>You can filter by tag names and values. For example, to
+     * filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+     * eq 'Value1'<br><br>You can use some properties together when filtering. The
+     * combinations you can use are: substringof and/or resourceType, plan and
+     * plan/publisher and plan/name, identity and identity/principalId.
      *
-     * @param {string} [options.expand] The $expand query parameter
+     * @param {string} [options.expand] The $expand query parameter. You can expand
+     * createdTime and changedTime. For example, to expand both properties, use
+     * $expand=changedTime,createdTime
      *
      * @param {number} [options.top] The number of results to return. If null is
      * passed, returns all resources.
@@ -1469,9 +2798,26 @@ export interface Resources {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the
+     * operation.<br><br>The properties you can use for eq (equals) or ne (not
+     * equals) are: location, resourceType, name, resourceGroup, identity,
+     * identity/principalId, plan, plan/publisher, plan/product, plan/name,
+     * plan/version, and plan/promotionCode.<br><br>For example, to filter by a
+     * resource type, use: $filter=resourceType eq
+     * 'Microsoft.Network/virtualNetworks'<br><br>You can use substringof(value,
+     * property) in the filter. The properties you can use for substring are: name
+     * and resourceGroup.<br><br>For example, to get all resources with 'demo'
+     * anywhere in the name, use: $filter=substringof('demo', name)<br><br>You can
+     * link more than one substringof together by adding and/or
+     * operators.<br><br>You can filter by tag names and values. For example, to
+     * filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+     * eq 'Value1'<br><br>You can use some properties together when filtering. The
+     * combinations you can use are: substringof and/or resourceType, plan and
+     * plan/publisher and plan/name, identity and identity/principalId.
      *
-     * @param {string} [options.expand] The $expand query parameter
+     * @param {string} [options.expand] The $expand query parameter. You can expand
+     * createdTime and changedTime. For example, to expand both properties, use
+     * $expand=changedTime,createdTime
      *
      * @param {number} [options.top] The number of results to return. If null is
      * passed, returns all resources.
@@ -1677,9 +3023,26 @@ export interface Resources {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the
+     * operation.<br><br>The properties you can use for eq (equals) or ne (not
+     * equals) are: location, resourceType, name, resourceGroup, identity,
+     * identity/principalId, plan, plan/publisher, plan/product, plan/name,
+     * plan/version, and plan/promotionCode.<br><br>For example, to filter by a
+     * resource type, use: $filter=resourceType eq
+     * 'Microsoft.Network/virtualNetworks'<br><br>You can use substringof(value,
+     * property) in the filter. The properties you can use for substring are: name
+     * and resourceGroup.<br><br>For example, to get all resources with 'demo'
+     * anywhere in the name, use: $filter=substringof('demo', name)<br><br>You can
+     * link more than one substringof together by adding and/or
+     * operators.<br><br>You can filter by tag names and values. For example, to
+     * filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+     * eq 'Value1'<br><br>You can use some properties together when filtering. The
+     * combinations you can use are: substringof and/or resourceType, plan and
+     * plan/publisher and plan/name, identity and identity/principalId.
      *
-     * @param {string} [options.expand] The $expand query parameter.
+     * @param {string} [options.expand] The $expand query parameter. You can expand
+     * createdTime and changedTime. For example, to expand both properties, use
+     * $expand=changedTime,createdTime
      *
      * @param {number} [options.top] The number of results to return. If null is
      * passed, returns all resource groups.
@@ -1700,9 +3063,26 @@ export interface Resources {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the
+     * operation.<br><br>The properties you can use for eq (equals) or ne (not
+     * equals) are: location, resourceType, name, resourceGroup, identity,
+     * identity/principalId, plan, plan/publisher, plan/product, plan/name,
+     * plan/version, and plan/promotionCode.<br><br>For example, to filter by a
+     * resource type, use: $filter=resourceType eq
+     * 'Microsoft.Network/virtualNetworks'<br><br>You can use substringof(value,
+     * property) in the filter. The properties you can use for substring are: name
+     * and resourceGroup.<br><br>For example, to get all resources with 'demo'
+     * anywhere in the name, use: $filter=substringof('demo', name)<br><br>You can
+     * link more than one substringof together by adding and/or
+     * operators.<br><br>You can filter by tag names and values. For example, to
+     * filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+     * eq 'Value1'<br><br>You can use some properties together when filtering. The
+     * combinations you can use are: substringof and/or resourceType, plan and
+     * plan/publisher and plan/name, identity and identity/principalId.
      *
-     * @param {string} [options.expand] The $expand query parameter.
+     * @param {string} [options.expand] The $expand query parameter. You can expand
+     * createdTime and changedTime. For example, to expand both properties, use
+     * $expand=changedTime,createdTime
      *
      * @param {number} [options.top] The number of results to return. If null is
      * passed, returns all resource groups.
@@ -1950,7 +3330,13 @@ export interface Resources {
      * @param {object} [parameters.identity] The identity of the resource.
      *
      * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -2024,7 +3410,13 @@ export interface Resources {
      * @param {object} [parameters.identity] The identity of the resource.
      *
      * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -2117,7 +3509,13 @@ export interface Resources {
      * @param {object} [parameters.identity] The identity of the resource.
      *
      * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -2191,7 +3589,13 @@ export interface Resources {
      * @param {object} [parameters.identity] The identity of the resource.
      *
      * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -2479,7 +3883,13 @@ export interface Resources {
      * @param {object} [parameters.identity] The identity of the resource.
      *
      * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -2545,7 +3955,13 @@ export interface Resources {
      * @param {object} [parameters.identity] The identity of the resource.
      *
      * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -2630,7 +4046,13 @@ export interface Resources {
      * @param {object} [parameters.identity] The identity of the resource.
      *
      * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -2696,7 +4118,13 @@ export interface Resources {
      * @param {object} [parameters.identity] The identity of the resource.
      *
      * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -3096,7 +4524,13 @@ export interface Resources {
      * @param {object} [parameters.identity] The identity of the resource.
      *
      * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -3170,7 +4604,13 @@ export interface Resources {
      * @param {object} [parameters.identity] The identity of the resource.
      *
      * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -3263,7 +4703,13 @@ export interface Resources {
      * @param {object} [parameters.identity] The identity of the resource.
      *
      * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -3337,7 +4783,13 @@ export interface Resources {
      * @param {object} [parameters.identity] The identity of the resource.
      *
      * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -3484,7 +4936,13 @@ export interface Resources {
      * @param {object} [parameters.identity] The identity of the resource.
      *
      * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -3550,7 +5008,13 @@ export interface Resources {
      * @param {object} [parameters.identity] The identity of the resource.
      *
      * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -3635,7 +5099,13 @@ export interface Resources {
      * @param {object} [parameters.identity] The identity of the resource.
      *
      * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -3701,7 +5171,13 @@ export interface Resources {
      * @param {object} [parameters.identity] The identity of the resource.
      *
      * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
+     * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -3922,12 +5398,11 @@ export interface ResourceGroups {
      * Creates or updates a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group to create
-     * or update.
+     * or update. Can include alphanumeric, underscore, parentheses, hyphen, period
+     * (except at end), and Unicode characters that match the allowed characters.
      *
      * @param {object} parameters Parameters supplied to the create or update a
      * resource group.
-     *
-     * @param {string} [parameters.name] The name of the resource group.
      *
      * @param {object} [parameters.properties]
      *
@@ -3957,12 +5432,11 @@ export interface ResourceGroups {
      * Creates or updates a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group to create
-     * or update.
+     * or update. Can include alphanumeric, underscore, parentheses, hyphen, period
+     * (except at end), and Unicode characters that match the allowed characters.
      *
      * @param {object} parameters Parameters supplied to the create or update a
      * resource group.
-     *
-     * @param {string} [parameters.name] The name of the resource group.
      *
      * @param {object} [parameters.properties]
      *
@@ -4298,7 +5772,10 @@ export interface ResourceGroups {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the
+     * operation.<br><br>You can filter by tag names and values. For example, to
+     * filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+     * eq 'Value1'
      *
      * @param {number} [options.top] The number of results to return. If null is
      * passed, returns all resource groups.
@@ -4319,7 +5796,10 @@ export interface ResourceGroups {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the
+     * operation.<br><br>You can filter by tag names and values. For example, to
+     * filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+     * eq 'Value1'
      *
      * @param {number} [options.top] The number of results to return. If null is
      * passed, returns all resource groups.
@@ -4848,6 +6328,127 @@ export interface DeploymentOperations {
     /**
      * Gets a deployments operation.
      *
+     * @param {string} deploymentName The name of the deployment.
+     *
+     * @param {string} operationId The ID of the operation to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DeploymentOperation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getAtSubscriptionScopeWithHttpOperationResponse(deploymentName: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeploymentOperation>>;
+
+    /**
+     * Gets a deployments operation.
+     *
+     * @param {string} deploymentName The name of the deployment.
+     *
+     * @param {string} operationId The ID of the operation to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DeploymentOperation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DeploymentOperation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeploymentOperation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getAtSubscriptionScope(deploymentName: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeploymentOperation>;
+    getAtSubscriptionScope(deploymentName: string, operationId: string, callback: ServiceCallback<models.DeploymentOperation>): void;
+    getAtSubscriptionScope(deploymentName: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentOperation>): void;
+
+
+    /**
+     * Gets all deployments operations for a deployment.
+     *
+     * @param {string} deploymentName The name of the deployment with the operation
+     * to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.top] The number of results to return.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DeploymentOperationsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAtSubscriptionScopeWithHttpOperationResponse(deploymentName: string, options?: { top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeploymentOperationsListResult>>;
+
+    /**
+     * Gets all deployments operations for a deployment.
+     *
+     * @param {string} deploymentName The name of the deployment with the operation
+     * to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.top] The number of results to return.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DeploymentOperationsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DeploymentOperationsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeploymentOperationsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAtSubscriptionScope(deploymentName: string, options?: { top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeploymentOperationsListResult>;
+    listAtSubscriptionScope(deploymentName: string, callback: ServiceCallback<models.DeploymentOperationsListResult>): void;
+    listAtSubscriptionScope(deploymentName: string, options: { top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentOperationsListResult>): void;
+
+
+    /**
+     * Gets a deployments operation.
+     *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
      *
@@ -4976,6 +6577,64 @@ export interface DeploymentOperations {
     list(resourceGroupName: string, deploymentName: string, options?: { top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeploymentOperationsListResult>;
     list(resourceGroupName: string, deploymentName: string, callback: ServiceCallback<models.DeploymentOperationsListResult>): void;
     list(resourceGroupName: string, deploymentName: string, options: { top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentOperationsListResult>): void;
+
+
+    /**
+     * Gets all deployments operations for a deployment.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DeploymentOperationsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAtSubscriptionScopeNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeploymentOperationsListResult>>;
+
+    /**
+     * Gets all deployments operations for a deployment.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DeploymentOperationsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DeploymentOperationsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeploymentOperationsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAtSubscriptionScopeNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeploymentOperationsListResult>;
+    listAtSubscriptionScopeNext(nextPageLink: string, callback: ServiceCallback<models.DeploymentOperationsListResult>): void;
+    listAtSubscriptionScopeNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentOperationsListResult>): void;
 
 
     /**

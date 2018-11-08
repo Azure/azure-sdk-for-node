@@ -9,32 +9,32 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1\",\"eTag\":\"0x8D5860F7EF25469\",\"lastModified\":\"2018-03-09T22:45:45.5235177Z\",\"creationTime\":\"2018-03-09T22:44:04.5924827Z\",\"state\":\"active\",\"stateTransitionTime\":\"2018-03-09T22:44:04.5924827Z\",\"allocationState\":\"steady\",\"allocationStateTransitionTime\":\"2018-03-09T22:45:46.2070909Z\",\"vmSize\":\"small\",\"resizeTimeout\":\"PT15M\",\"currentDedicatedNodes\":3,\"targetDedicatedNodes\":3,\"currentLowPriorityNodes\":0,\"targetLowPriorityNodes\":0,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"startTask\":{\r\n    \"commandLine\":\"cmd /c echo hello > hello.txt\",\"userIdentity\":{\r\n      \"autoUser\":{\r\n        \"elevationLevel\":\"nonadmin\"\r\n      }\r\n    },\"maxTaskRetryCount\":0,\"waitForSuccess\":false\r\n  },\"userAccounts\":[\r\n    {\r\n      \"name\":\"nonAdminUser\",\"elevationLevel\":\"nonadmin\"\r\n    }\r\n  ],\"metadata\":[\r\n    {\r\n      \"name\":\"foo2\",\"value\":\"bar2\"\r\n    }\r\n  ],\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n    \"nodeFillType\":\"Spread\"\r\n  },\"cloudServiceConfiguration\":{\r\n    \"osFamily\":\"4\",\"targetOSVersion\":\"*\",\"currentOSVersion\":\"*\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/pools/nodesdktestpool1?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1\",\"eTag\":\"0x8D607A20760C002\",\"lastModified\":\"2018-08-21T20:09:40.9381378Z\",\"creationTime\":\"2018-08-21T20:05:04.4042325Z\",\"state\":\"active\",\"stateTransitionTime\":\"2018-08-21T20:05:04.4042325Z\",\"allocationState\":\"steady\",\"allocationStateTransitionTime\":\"2018-08-21T20:05:58.6896528Z\",\"vmSize\":\"small\",\"resizeTimeout\":\"PT15M\",\"currentDedicatedNodes\":3,\"targetDedicatedNodes\":3,\"currentLowPriorityNodes\":0,\"targetLowPriorityNodes\":0,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"startTask\":{\r\n    \"commandLine\":\"cmd /c echo hello > hello.txt\",\"userIdentity\":{\r\n      \"autoUser\":{\r\n        \"elevationLevel\":\"nonadmin\"\r\n      }\r\n    },\"maxTaskRetryCount\":0,\"waitForSuccess\":false\r\n  },\"userAccounts\":[\r\n    {\r\n      \"name\":\"nonAdminUser\",\"elevationLevel\":\"nonadmin\"\r\n    }\r\n  ],\"metadata\":[\r\n    {\r\n      \"name\":\"foo2\",\"value\":\"bar2\"\r\n    }\r\n  ],\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n    \"nodeFillType\":\"Spread\"\r\n  },\"cloudServiceConfiguration\":{\r\n    \"osFamily\":\"4\",\"targetOSVersion\":\"*\",\"currentOSVersion\":\"*\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 09 Mar 2018 22:45:45 GMT',
-  etag: '0x8D5860F7EF25469',
+  'last-modified': 'Tue, 21 Aug 2018 20:09:40 GMT',
+  etag: '0x8D607A20760C002',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '18e52435-0659-41d8-b91e-c7696af2bd53',
+  'request-id': '6cb51182-165a-43a7-bc2e-6bfc7350748f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:52:25 GMT',
+  date: 'Tue, 21 Aug 2018 20:16:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1\",\"eTag\":\"0x8D5860F7EF25469\",\"lastModified\":\"2018-03-09T22:45:45.5235177Z\",\"creationTime\":\"2018-03-09T22:44:04.5924827Z\",\"state\":\"active\",\"stateTransitionTime\":\"2018-03-09T22:44:04.5924827Z\",\"allocationState\":\"steady\",\"allocationStateTransitionTime\":\"2018-03-09T22:45:46.2070909Z\",\"vmSize\":\"small\",\"resizeTimeout\":\"PT15M\",\"currentDedicatedNodes\":3,\"targetDedicatedNodes\":3,\"currentLowPriorityNodes\":0,\"targetLowPriorityNodes\":0,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"startTask\":{\r\n    \"commandLine\":\"cmd /c echo hello > hello.txt\",\"userIdentity\":{\r\n      \"autoUser\":{\r\n        \"elevationLevel\":\"nonadmin\"\r\n      }\r\n    },\"maxTaskRetryCount\":0,\"waitForSuccess\":false\r\n  },\"userAccounts\":[\r\n    {\r\n      \"name\":\"nonAdminUser\",\"elevationLevel\":\"nonadmin\"\r\n    }\r\n  ],\"metadata\":[\r\n    {\r\n      \"name\":\"foo2\",\"value\":\"bar2\"\r\n    }\r\n  ],\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n    \"nodeFillType\":\"Spread\"\r\n  },\"cloudServiceConfiguration\":{\r\n    \"osFamily\":\"4\",\"targetOSVersion\":\"*\",\"currentOSVersion\":\"*\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/pools/nodesdktestpool1?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1\",\"eTag\":\"0x8D607A20760C002\",\"lastModified\":\"2018-08-21T20:09:40.9381378Z\",\"creationTime\":\"2018-08-21T20:05:04.4042325Z\",\"state\":\"active\",\"stateTransitionTime\":\"2018-08-21T20:05:04.4042325Z\",\"allocationState\":\"steady\",\"allocationStateTransitionTime\":\"2018-08-21T20:05:58.6896528Z\",\"vmSize\":\"small\",\"resizeTimeout\":\"PT15M\",\"currentDedicatedNodes\":3,\"targetDedicatedNodes\":3,\"currentLowPriorityNodes\":0,\"targetLowPriorityNodes\":0,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"startTask\":{\r\n    \"commandLine\":\"cmd /c echo hello > hello.txt\",\"userIdentity\":{\r\n      \"autoUser\":{\r\n        \"elevationLevel\":\"nonadmin\"\r\n      }\r\n    },\"maxTaskRetryCount\":0,\"waitForSuccess\":false\r\n  },\"userAccounts\":[\r\n    {\r\n      \"name\":\"nonAdminUser\",\"elevationLevel\":\"nonadmin\"\r\n    }\r\n  ],\"metadata\":[\r\n    {\r\n      \"name\":\"foo2\",\"value\":\"bar2\"\r\n    }\r\n  ],\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n    \"nodeFillType\":\"Spread\"\r\n  },\"cloudServiceConfiguration\":{\r\n    \"osFamily\":\"4\",\"targetOSVersion\":\"*\",\"currentOSVersion\":\"*\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 09 Mar 2018 22:45:45 GMT',
-  etag: '0x8D5860F7EF25469',
+  'last-modified': 'Tue, 21 Aug 2018 20:09:40 GMT',
+  etag: '0x8D607A20760C002',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '18e52435-0659-41d8-b91e-c7696af2bd53',
+  'request-id': '6cb51182-165a-43a7-bc2e-6bfc7350748f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:52:25 GMT',
+  date: 'Tue, 21 Aug 2018 20:16:21 GMT',
   connection: 'close' });
  return result; }]];

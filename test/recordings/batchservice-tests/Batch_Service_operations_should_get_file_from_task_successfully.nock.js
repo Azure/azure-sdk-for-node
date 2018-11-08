@@ -9,36 +9,36 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stdout.txt?api-version=2018-03-01.6.1')
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stdout.txt?api-version=2018-08-01.7.0')
   .reply(200, "hello world\r\n", { 'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
-  'last-modified': 'Fri, 09 Mar 2018 22:59:27 GMT',
+  'last-modified': 'Tue, 21 Aug 2018 20:25:27 GMT',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '9026638f-9900-4c76-be8a-b0e4c15758b3',
+  'request-id': '93444d00-6dc1-44b9-bcf8-79b2f432315c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  'ocp-creation-time': 'Fri, 09 Mar 2018 22:59:27 GMT',
+  'ocp-creation-time': 'Tue, 21 Aug 2018 20:25:27 GMT',
   'ocp-batch-file-isdirectory': 'False',
   'ocp-batch-file-url': 'https%3A%2F%2Flchency4.westcentralus.batch.azure.com%2Fjobs%2FHelloWorldJobNodeSDKTest%2Ftasks%2FHelloWorldNodeSDKTestTask2%2Ffiles%2Fstdout.txt',
-  date: 'Fri, 09 Mar 2018 23:01:23 GMT',
+  date: 'Tue, 21 Aug 2018 20:27:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stdout.txt?api-version=2018-03-01.6.1')
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stdout.txt?api-version=2018-08-01.7.0')
   .reply(200, "hello world\r\n", { 'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
-  'last-modified': 'Fri, 09 Mar 2018 22:59:27 GMT',
+  'last-modified': 'Tue, 21 Aug 2018 20:25:27 GMT',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '9026638f-9900-4c76-be8a-b0e4c15758b3',
+  'request-id': '93444d00-6dc1-44b9-bcf8-79b2f432315c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  'ocp-creation-time': 'Fri, 09 Mar 2018 22:59:27 GMT',
+  'ocp-creation-time': 'Tue, 21 Aug 2018 20:25:27 GMT',
   'ocp-batch-file-isdirectory': 'False',
   'ocp-batch-file-url': 'https%3A%2F%2Flchency4.westcentralus.batch.azure.com%2Fjobs%2FHelloWorldJobNodeSDKTest%2Ftasks%2FHelloWorldNodeSDKTestTask2%2Ffiles%2Fstdout.txt',
-  date: 'Fri, 09 Mar 2018 23:01:23 GMT',
+  date: 'Tue, 21 Aug 2018 20:27:24 GMT',
   connection: 'close' });
  return result; }]];

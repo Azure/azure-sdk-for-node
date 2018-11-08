@@ -43,9 +43,11 @@ export interface Resource extends BaseResource {
  * Specifies the hardware settings for the HANA instance.
  *
  * @member {string} [hardwareType] Name of the hardware type (vendor and/or
- * thrie product name). Possible values include: 'Cisco_UCS'
+ * their product name). Possible values include: 'Cisco_UCS', 'HPE'
  * @member {string} [hanaInstanceSize] Specifies the HANA instance SKU.
- * Possible values include: 'S72m', 'S144m', 'S72', 'S144', 'S192', 'S192m'
+ * Possible values include: 'S72m', 'S144m', 'S72', 'S144', 'S192', 'S192m',
+ * 'S192xm', 'S384', 'S384m', 'S384xm', 'S384xxm', 'S576m', 'S576xm', 'S768',
+ * 'S768m', 'S768xm', 'S960m'
  */
 export interface HardwareProfile {
   readonly hardwareType?: string;
@@ -142,10 +144,12 @@ export interface NetworkProfile {
  * @member {object} [hardwareProfile] Specifies the hardware settings for the
  * HANA instance.
  * @member {string} [hardwareProfile.hardwareType] Name of the hardware type
- * (vendor and/or thrie product name). Possible values include: 'Cisco_UCS'
+ * (vendor and/or their product name). Possible values include: 'Cisco_UCS',
+ * 'HPE'
  * @member {string} [hardwareProfile.hanaInstanceSize] Specifies the HANA
  * instance SKU. Possible values include: 'S72m', 'S144m', 'S72', 'S144',
- * 'S192', 'S192m'
+ * 'S192', 'S192m', 'S192xm', 'S384', 'S384m', 'S384xm', 'S384xxm', 'S576m',
+ * 'S576xm', 'S768', 'S768m', 'S768xm', 'S960m'
  * @member {object} [storageProfile] Specifies the storage settings for the
  * HANA instance disks.
  * @member {string} [storageProfile.nfsIpAddress] IP Address to connect to
@@ -166,6 +170,8 @@ export interface NetworkProfile {
  * @member {string} [networkProfile.circuitId] Specifies the circuit id for
  * connecting to express route.
  * @member {string} [hanaInstanceId] Specifies the HANA instance unique ID.
+ * @member {string} [powerState] Resource power state. Possible values include:
+ * 'starting', 'started', 'stopping', 'stopped', 'restarting', 'unknown'
  */
 export interface HanaInstance extends Resource {
   hardwareProfile?: HardwareProfile;
@@ -173,6 +179,7 @@ export interface HanaInstance extends Resource {
   osProfile?: OSProfile;
   networkProfile?: NetworkProfile;
   readonly hanaInstanceId?: string;
+  readonly powerState?: string;
 }
 
 /**
@@ -183,7 +190,7 @@ export interface HanaInstance extends Resource {
  *
  * @member {string} [provider] The localized friendly form of the resource
  * provider name. This form is also expected to include the publisher/company
- * responsible. Use Title Casing. Begin with “Microsoft” for 1st party
+ * responsible. Use Title Casing. Begin with "Microsoft" for 1st party
  * services.
  * @member {string} [resource] The localized friendly form of the resource type
  * related to this action/operation. This form should match the public
@@ -220,7 +227,7 @@ export interface Display {
  * @member {object} [display] Displayed HANA operation information
  * @member {string} [display.provider] The localized friendly form of the
  * resource provider name. This form is also expected to include the
- * publisher/company responsible. Use Title Casing. Begin with “Microsoft” for
+ * publisher/company responsible. Use Title Casing. Begin with "Microsoft" for
  * 1st party services.
  * @member {string} [display.resource] The localized friendly form of the
  * resource type related to this action/operation. This form should match the

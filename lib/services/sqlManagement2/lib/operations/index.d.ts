@@ -1419,7 +1419,8 @@ export interface DatabaseThreatDetectionPolicies {
      * @param {string} [parameters.disabledAlerts] Specifies the
      * semicolon-separated list of alerts that are disabled, or empty string to
      * disable no alerts. Possible values: Sql_Injection;
-     * Sql_Injection_Vulnerability; Access_Anomaly; Usage_Anomaly.
+     * Sql_Injection_Vulnerability; Access_Anomaly; Data_Exfiltration;
+     * Unsafe_Action.
      *
      * @param {string} [parameters.emailAddresses] Specifies the
      * semicolon-separated list of e-mail addresses to which the alert is sent.
@@ -1480,7 +1481,8 @@ export interface DatabaseThreatDetectionPolicies {
      * @param {string} [parameters.disabledAlerts] Specifies the
      * semicolon-separated list of alerts that are disabled, or empty string to
      * disable no alerts. Possible values: Sql_Injection;
-     * Sql_Injection_Vulnerability; Access_Anomaly; Usage_Anomaly.
+     * Sql_Injection_Vulnerability; Access_Anomaly; Data_Exfiltration;
+     * Unsafe_Action.
      *
      * @param {string} [parameters.emailAddresses] Specifies the
      * semicolon-separated list of e-mail addresses to which the alert is sent.
@@ -10827,6 +10829,10 @@ export interface ManagedInstances {
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
      *
+     * @param {string} [parameters.dnsZonePartner] The resource id of another
+     * managed instance whose DNS zone this managed instance will share after
+     * creation.
+     *
      * @param {string} parameters.location Resource location.
      *
      * @param {object} [parameters.tags] Resource tags.
@@ -10899,6 +10905,10 @@ export interface ManagedInstances {
      * @param {number} [parameters.vCores] The number of VCores.
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
+     *
+     * @param {string} [parameters.dnsZonePartner] The resource id of another
+     * managed instance whose DNS zone this managed instance will share after
+     * creation.
      *
      * @param {string} parameters.location Resource location.
      *
@@ -11046,6 +11056,10 @@ export interface ManagedInstances {
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
      *
+     * @param {string} [parameters.dnsZonePartner] The resource id of another
+     * managed instance whose DNS zone this managed instance will share after
+     * creation.
+     *
      * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
@@ -11108,6 +11122,10 @@ export interface ManagedInstances {
      * @param {number} [parameters.vCores] The number of VCores.
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
+     *
+     * @param {string} [parameters.dnsZonePartner] The resource id of another
+     * managed instance whose DNS zone this managed instance will share after
+     * creation.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -11199,6 +11217,10 @@ export interface ManagedInstances {
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
      *
+     * @param {string} [parameters.dnsZonePartner] The resource id of another
+     * managed instance whose DNS zone this managed instance will share after
+     * creation.
+     *
      * @param {string} parameters.location Resource location.
      *
      * @param {object} [parameters.tags] Resource tags.
@@ -11271,6 +11293,10 @@ export interface ManagedInstances {
      * @param {number} [parameters.vCores] The number of VCores.
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
+     *
+     * @param {string} [parameters.dnsZonePartner] The resource id of another
+     * managed instance whose DNS zone this managed instance will share after
+     * creation.
      *
      * @param {string} parameters.location Resource location.
      *
@@ -11418,6 +11444,10 @@ export interface ManagedInstances {
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
      *
+     * @param {string} [parameters.dnsZonePartner] The resource id of another
+     * managed instance whose DNS zone this managed instance will share after
+     * creation.
+     *
      * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
@@ -11480,6 +11510,10 @@ export interface ManagedInstances {
      * @param {number} [parameters.vCores] The number of VCores.
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
+     *
+     * @param {string} [parameters.dnsZonePartner] The resource id of another
+     * managed instance whose DNS zone this managed instance will share after
+     * creation.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -16486,7 +16520,7 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      * where clause when creating an audit.
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -16494,11 +16528,11 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -16558,11 +16592,11 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -16578,6 +16612,27 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * {databaseName}.
+     *
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16609,7 +16664,7 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      * where clause when creating an audit.
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -16617,11 +16672,11 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -16681,11 +16736,11 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -16701,6 +16756,27 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * {databaseName}.
+     *
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16823,7 +16899,7 @@ export interface ExtendedServerBlobAuditingPolicies {
      * where clause when creating an audit.
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -16831,11 +16907,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -16895,11 +16971,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -16915,6 +16991,27 @@ export interface ExtendedServerBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * {databaseName}.
+     *
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16944,7 +17041,7 @@ export interface ExtendedServerBlobAuditingPolicies {
      * where clause when creating an audit.
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -16952,11 +17049,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -17016,11 +17113,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -17036,6 +17133,27 @@ export interface ExtendedServerBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * {databaseName}.
+     *
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17085,7 +17203,7 @@ export interface ExtendedServerBlobAuditingPolicies {
      * where clause when creating an audit.
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -17093,11 +17211,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -17157,11 +17275,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -17177,6 +17295,27 @@ export interface ExtendedServerBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * {databaseName}.
+     *
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17206,7 +17345,7 @@ export interface ExtendedServerBlobAuditingPolicies {
      * where clause when creating an audit.
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -17214,11 +17353,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -17278,11 +17417,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -17298,6 +17437,27 @@ export interface ExtendedServerBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * {databaseName}.
+     *
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17417,7 +17577,7 @@ export interface ServerBlobAuditingPolicies {
      * @param {object} parameters Properties of blob auditing policy
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -17425,11 +17585,11 @@ export interface ServerBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -17489,11 +17649,11 @@ export interface ServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -17509,6 +17669,27 @@ export interface ServerBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * {databaseName}.
+     *
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17535,7 +17716,7 @@ export interface ServerBlobAuditingPolicies {
      * @param {object} parameters Properties of blob auditing policy
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -17543,11 +17724,11 @@ export interface ServerBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -17607,11 +17788,11 @@ export interface ServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -17627,6 +17808,27 @@ export interface ServerBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * {databaseName}.
+     *
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17673,7 +17875,7 @@ export interface ServerBlobAuditingPolicies {
      * @param {object} parameters Properties of blob auditing policy
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -17681,11 +17883,11 @@ export interface ServerBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -17745,11 +17947,11 @@ export interface ServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -17765,6 +17967,27 @@ export interface ServerBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * {databaseName}.
+     *
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17791,7 +18014,7 @@ export interface ServerBlobAuditingPolicies {
      * @param {object} parameters Properties of blob auditing policy
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -17799,11 +18022,11 @@ export interface ServerBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -17863,11 +18086,11 @@ export interface ServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -17883,6 +18106,27 @@ export interface ServerBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * {databaseName}.
+     *
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18008,7 +18252,7 @@ export interface DatabaseBlobAuditingPolicies {
      * @param {object} parameters The database blob auditing policy.
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -18016,11 +18260,11 @@ export interface DatabaseBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -18080,11 +18324,11 @@ export interface DatabaseBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -18100,6 +18344,27 @@ export interface DatabaseBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * {databaseName}.
+     *
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18128,7 +18393,7 @@ export interface DatabaseBlobAuditingPolicies {
      * @param {object} parameters The database blob auditing policy.
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -18136,11 +18401,11 @@ export interface DatabaseBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -18200,11 +18465,11 @@ export interface DatabaseBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -18220,6 +18485,27 @@ export interface DatabaseBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * {databaseName}.
+     *
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18608,13 +18894,20 @@ export interface DatabaseVulnerabilityAssessments {
      *
      * @param {object} parameters The requested resource.
      *
-     * @param {string} parameters.storageContainerPath A blob storage container
+     * @param {string} [parameters.storageContainerPath] A blob storage container
      * path to hold the scan results (e.g.
-     * https://myStorage.blob.core.windows.net/VaScans/).
+     * https://myStorage.blob.core.windows.net/VaScans/).  It is required if server
+     * level vulnerability assessment policy doesn't set
      *
-     * @param {string} parameters.storageContainerSasKey A shared access signature
-     * (SAS Key) that has write access to the blob container specified in
-     * 'storageContainerPath' parameter.
+     * @param {string} [parameters.storageContainerSasKey] A shared access
+     * signature (SAS Key) that has write access to the blob container specified in
+     * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
+     * specified, StorageContainerSasKey is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the storage account for vulnerability assessment scan
+     * results. If 'StorageContainerSasKey' isn't specified,
+     * storageAccountAccessKey is required.
      *
      * @param {object} [parameters.recurringScans] The recurring scans settings
      *
@@ -18655,13 +18948,20 @@ export interface DatabaseVulnerabilityAssessments {
      *
      * @param {object} parameters The requested resource.
      *
-     * @param {string} parameters.storageContainerPath A blob storage container
+     * @param {string} [parameters.storageContainerPath] A blob storage container
      * path to hold the scan results (e.g.
-     * https://myStorage.blob.core.windows.net/VaScans/).
+     * https://myStorage.blob.core.windows.net/VaScans/).  It is required if server
+     * level vulnerability assessment policy doesn't set
      *
-     * @param {string} parameters.storageContainerSasKey A shared access signature
-     * (SAS Key) that has write access to the blob container specified in
-     * 'storageContainerPath' parameter.
+     * @param {string} [parameters.storageContainerSasKey] A shared access
+     * signature (SAS Key) that has write access to the blob container specified in
+     * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
+     * specified, StorageContainerSasKey is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the storage account for vulnerability assessment scan
+     * results. If 'StorageContainerSasKey' isn't specified,
+     * storageAccountAccessKey is required.
      *
      * @param {object} [parameters.recurringScans] The recurring scans settings
      *
@@ -18774,6 +19074,134 @@ export interface DatabaseVulnerabilityAssessments {
     deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists the vulnerability assessment policies associated with a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment policies are defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseVulnerabilityAssessmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentListResult>>;
+
+    /**
+     * Lists the vulnerability assessment policies associated with a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment policies are defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseVulnerabilityAssessmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseVulnerabilityAssessmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseVulnerabilityAssessmentListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentListResult>;
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentListResult>): void;
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentListResult>): void;
+
+
+    /**
+     * Lists the vulnerability assessment policies associated with a database.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseVulnerabilityAssessmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentListResult>>;
+
+    /**
+     * Lists the vulnerability assessment policies associated with a database.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseVulnerabilityAssessmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseVulnerabilityAssessmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseVulnerabilityAssessmentListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabaseNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentListResult>;
+    listByDatabaseNext(nextPageLink: string, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentListResult>): void;
+    listByDatabaseNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentListResult>): void;
 }
 
 /**
@@ -23735,7 +24163,7 @@ export interface BackupLongTermRetentionPolicies {
      * @param {string} [parameters.weeklyRetention] The weekly retention policy for
      * an LTR backup in an ISO 8601 format.
      *
-     * @param {string} [parameters.monthlyRetention] The montly retention policy
+     * @param {string} [parameters.monthlyRetention] The monthly retention policy
      * for an LTR backup in an ISO 8601 format.
      *
      * @param {string} [parameters.yearlyRetention] The yearly retention policy for
@@ -23773,7 +24201,7 @@ export interface BackupLongTermRetentionPolicies {
      * @param {string} [parameters.weeklyRetention] The weekly retention policy for
      * an LTR backup in an ISO 8601 format.
      *
-     * @param {string} [parameters.monthlyRetention] The montly retention policy
+     * @param {string} [parameters.monthlyRetention] The monthly retention policy
      * for an LTR backup in an ISO 8601 format.
      *
      * @param {string} [parameters.yearlyRetention] The yearly retention policy for
@@ -23899,7 +24327,7 @@ export interface BackupLongTermRetentionPolicies {
      * @param {string} [parameters.weeklyRetention] The weekly retention policy for
      * an LTR backup in an ISO 8601 format.
      *
-     * @param {string} [parameters.monthlyRetention] The montly retention policy
+     * @param {string} [parameters.monthlyRetention] The monthly retention policy
      * for an LTR backup in an ISO 8601 format.
      *
      * @param {string} [parameters.yearlyRetention] The yearly retention policy for
@@ -23937,7 +24365,7 @@ export interface BackupLongTermRetentionPolicies {
      * @param {string} [parameters.weeklyRetention] The weekly retention policy for
      * an LTR backup in an ISO 8601 format.
      *
-     * @param {string} [parameters.monthlyRetention] The montly retention policy
+     * @param {string} [parameters.monthlyRetention] The monthly retention policy
      * for an LTR backup in an ISO 8601 format.
      *
      * @param {string} [parameters.yearlyRetention] The yearly retention policy for
@@ -25003,401 +25431,6 @@ export interface ManagedDatabases {
 
 /**
  * @class
- * SensitivityLabels
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the SqlManagementClient.
- */
-export interface SensitivityLabels {
-
-
-    /**
-     * Gets the sensitivity labels of a given database
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] An OData filter expression that filters
-     * elements in the collection.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SensitivityLabelListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabelListResult>>;
-
-    /**
-     * Gets the sensitivity labels of a given database
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] An OData filter expression that filters
-     * elements in the collection.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SensitivityLabelListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SensitivityLabelListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SensitivityLabelListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
-    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
-    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
-
-
-    /**
-     * Gets the sensitivity label of a given column
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {string} schemaName The name of the schema.
-     *
-     * @param {string} tableName The name of the table.
-     *
-     * @param {string} columnName The name of the column.
-     *
-     * @param {string} sensitivityLabelSource The source of the sensitivity label.
-     * Possible values include: 'current', 'recommended'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SensitivityLabel>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, sensitivityLabelSource: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabel>>;
-
-    /**
-     * Gets the sensitivity label of a given column
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {string} schemaName The name of the schema.
-     *
-     * @param {string} tableName The name of the table.
-     *
-     * @param {string} columnName The name of the column.
-     *
-     * @param {string} sensitivityLabelSource The source of the sensitivity label.
-     * Possible values include: 'current', 'recommended'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SensitivityLabel} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SensitivityLabel} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SensitivityLabel} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, sensitivityLabelSource: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabel>;
-    get(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, sensitivityLabelSource: string, callback: ServiceCallback<models.SensitivityLabel>): void;
-    get(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, sensitivityLabelSource: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabel>): void;
-
-
-    /**
-     * Creates or updates the sensitivity label of a given column
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {string} schemaName The name of the schema.
-     *
-     * @param {string} tableName The name of the table.
-     *
-     * @param {string} columnName The name of the column.
-     *
-     * @param {object} parameters The column sensitivity label resource.
-     *
-     * @param {string} [parameters.labelName] The label name.
-     *
-     * @param {string} [parameters.informationType] The information type.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SensitivityLabel>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, parameters: models.SensitivityLabel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabel>>;
-
-    /**
-     * Creates or updates the sensitivity label of a given column
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {string} schemaName The name of the schema.
-     *
-     * @param {string} tableName The name of the table.
-     *
-     * @param {string} columnName The name of the column.
-     *
-     * @param {object} parameters The column sensitivity label resource.
-     *
-     * @param {string} [parameters.labelName] The label name.
-     *
-     * @param {string} [parameters.informationType] The information type.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SensitivityLabel} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SensitivityLabel} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SensitivityLabel} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, parameters: models.SensitivityLabel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabel>;
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, parameters: models.SensitivityLabel, callback: ServiceCallback<models.SensitivityLabel>): void;
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, parameters: models.SensitivityLabel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabel>): void;
-
-
-    /**
-     * Deletes the sensitivity label of a given column
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {string} schemaName The name of the schema.
-     *
-     * @param {string} tableName The name of the table.
-     *
-     * @param {string} columnName The name of the column.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes the sensitivity label of a given column
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {string} schemaName The name of the schema.
-     *
-     * @param {string} tableName The name of the table.
-     *
-     * @param {string} columnName The name of the column.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Gets the sensitivity labels of a given database
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SensitivityLabelListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByDatabaseNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabelListResult>>;
-
-    /**
-     * Gets the sensitivity labels of a given database
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SensitivityLabelListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SensitivityLabelListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SensitivityLabelListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByDatabaseNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
-    listByDatabaseNext(nextPageLink: string, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
-    listByDatabaseNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
-}
-
-/**
- * @class
  * ServerAutomaticTuningOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SqlManagementClient.
@@ -26267,7 +26300,8 @@ export interface ServerSecurityAlertPolicies {
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
-     * Sql_Injection_Vulnerability, Access_Anomaly
+     * Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration,
+     * Unsafe_Action
      *
      * @param {array} [parameters.emailAddresses] Specifies an array of e-mail
      * addresses to which the alert is sent.
@@ -26315,7 +26349,8 @@ export interface ServerSecurityAlertPolicies {
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
-     * Sql_Injection_Vulnerability, Access_Anomaly
+     * Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration,
+     * Unsafe_Action
      *
      * @param {array} [parameters.emailAddresses] Specifies an array of e-mail
      * addresses to which the alert is sent.
@@ -26383,7 +26418,8 @@ export interface ServerSecurityAlertPolicies {
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
-     * Sql_Injection_Vulnerability, Access_Anomaly
+     * Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration,
+     * Unsafe_Action
      *
      * @param {array} [parameters.emailAddresses] Specifies an array of e-mail
      * addresses to which the alert is sent.
@@ -26431,7 +26467,8 @@ export interface ServerSecurityAlertPolicies {
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
-     * Sql_Injection_Vulnerability, Access_Anomaly
+     * Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration,
+     * Unsafe_Action
      *
      * @param {array} [parameters.emailAddresses] Specifies an array of e-mail
      * addresses to which the alert is sent.
@@ -27354,6 +27391,74 @@ export interface DatabaseVulnerabilityAssessmentScans {
 
 
     /**
+     * Lists the vulnerability assessment scans of a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VulnerabilityAssessmentScanRecordListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VulnerabilityAssessmentScanRecordListResult>>;
+
+    /**
+     * Lists the vulnerability assessment scans of a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VulnerabilityAssessmentScanRecordListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VulnerabilityAssessmentScanRecordListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VulnerabilityAssessmentScanRecordListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VulnerabilityAssessmentScanRecordListResult>;
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
+
+
+    /**
      * Gets a vulnerability assessment scan record of a database.
      *
      * @param {string} resourceGroupName The name of the resource group that
@@ -27497,74 +27602,6 @@ export interface DatabaseVulnerabilityAssessmentScans {
     initiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     initiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, callback: ServiceCallback<void>): void;
     initiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Lists the vulnerability assessment scans of a database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VulnerabilityAssessmentScanRecordListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VulnerabilityAssessmentScanRecordListResult>>;
-
-    /**
-     * Lists the vulnerability assessment scans of a database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VulnerabilityAssessmentScanRecordListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VulnerabilityAssessmentScanRecordListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VulnerabilityAssessmentScanRecordListResult}
-     *                      for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VulnerabilityAssessmentScanRecordListResult>;
-    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
-    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
 
 
     /**
@@ -27769,6 +27806,1097 @@ export interface DatabaseVulnerabilityAssessmentScans {
     listByDatabaseNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VulnerabilityAssessmentScanRecordListResult>;
     listByDatabaseNext(nextPageLink: string, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
     listByDatabaseNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
+}
+
+/**
+ * @class
+ * ManagedDatabaseVulnerabilityAssessmentRuleBaselines
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ManagedDatabaseVulnerabilityAssessmentRuleBaselines {
+
+
+    /**
+     * Gets a database's vulnerability assessment rule baseline.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment rule baseline is defined.
+     *
+     * @param {string} ruleId The vulnerability assessment rule ID.
+     *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseVulnerabilityAssessmentRuleBaseline>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, ruleId: string, baselineName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentRuleBaseline>>;
+
+    /**
+     * Gets a database's vulnerability assessment rule baseline.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment rule baseline is defined.
+     *
+     * @param {string} ruleId The vulnerability assessment rule ID.
+     *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseVulnerabilityAssessmentRuleBaseline} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseVulnerabilityAssessmentRuleBaseline} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseVulnerabilityAssessmentRuleBaseline}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, managedInstanceName: string, databaseName: string, ruleId: string, baselineName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentRuleBaseline>;
+    get(resourceGroupName: string, managedInstanceName: string, databaseName: string, ruleId: string, baselineName: string, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
+    get(resourceGroupName: string, managedInstanceName: string, databaseName: string, ruleId: string, baselineName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
+
+
+    /**
+     * Creates or updates a database's vulnerability assessment rule baseline.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment rule baseline is defined.
+     *
+     * @param {string} ruleId The vulnerability assessment rule ID.
+     *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
+     *
+     * @param {object} parameters The requested rule baseline resource.
+     *
+     * @param {array} parameters.baselineResults The rule baseline result
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseVulnerabilityAssessmentRuleBaseline>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, ruleId: string, baselineName: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentRuleBaseline>>;
+
+    /**
+     * Creates or updates a database's vulnerability assessment rule baseline.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment rule baseline is defined.
+     *
+     * @param {string} ruleId The vulnerability assessment rule ID.
+     *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
+     *
+     * @param {object} parameters The requested rule baseline resource.
+     *
+     * @param {array} parameters.baselineResults The rule baseline result
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseVulnerabilityAssessmentRuleBaseline} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseVulnerabilityAssessmentRuleBaseline} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseVulnerabilityAssessmentRuleBaseline}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, ruleId: string, baselineName: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentRuleBaseline>;
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, ruleId: string, baselineName: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, ruleId: string, baselineName: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
+
+
+    /**
+     * Removes the database's vulnerability assessment rule baseline.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment rule baseline is defined.
+     *
+     * @param {string} ruleId The vulnerability assessment rule ID.
+     *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, ruleId: string, baselineName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Removes the database's vulnerability assessment rule baseline.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment rule baseline is defined.
+     *
+     * @param {string} ruleId The vulnerability assessment rule ID.
+     *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, managedInstanceName: string, databaseName: string, ruleId: string, baselineName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, managedInstanceName: string, databaseName: string, ruleId: string, baselineName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, managedInstanceName: string, databaseName: string, ruleId: string, baselineName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
+ * ManagedDatabaseVulnerabilityAssessmentScans
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ManagedDatabaseVulnerabilityAssessmentScans {
+
+
+    /**
+     * Lists the vulnerability assessment scans of a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VulnerabilityAssessmentScanRecordListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VulnerabilityAssessmentScanRecordListResult>>;
+
+    /**
+     * Lists the vulnerability assessment scans of a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VulnerabilityAssessmentScanRecordListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VulnerabilityAssessmentScanRecordListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VulnerabilityAssessmentScanRecordListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabase(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VulnerabilityAssessmentScanRecordListResult>;
+    listByDatabase(resourceGroupName: string, managedInstanceName: string, databaseName: string, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
+    listByDatabase(resourceGroupName: string, managedInstanceName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
+
+
+    /**
+     * Gets a vulnerability assessment scan record of a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} scanId The vulnerability assessment scan Id of the scan to
+     * retrieve.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VulnerabilityAssessmentScanRecord>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VulnerabilityAssessmentScanRecord>>;
+
+    /**
+     * Gets a vulnerability assessment scan record of a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} scanId The vulnerability assessment scan Id of the scan to
+     * retrieve.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VulnerabilityAssessmentScanRecord} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VulnerabilityAssessmentScanRecord} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VulnerabilityAssessmentScanRecord} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, managedInstanceName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VulnerabilityAssessmentScanRecord>;
+    get(resourceGroupName: string, managedInstanceName: string, databaseName: string, scanId: string, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecord>): void;
+    get(resourceGroupName: string, managedInstanceName: string, databaseName: string, scanId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecord>): void;
+
+
+    /**
+     * Executes a Vulnerability Assessment database scan.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} scanId The vulnerability assessment scan Id of the scan to
+     * retrieve.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    initiateScanWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Executes a Vulnerability Assessment database scan.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} scanId The vulnerability assessment scan Id of the scan to
+     * retrieve.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    initiateScan(resourceGroupName: string, managedInstanceName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    initiateScan(resourceGroupName: string, managedInstanceName: string, databaseName: string, scanId: string, callback: ServiceCallback<void>): void;
+    initiateScan(resourceGroupName: string, managedInstanceName: string, databaseName: string, scanId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Convert an existing scan result to a human readable format. If already
+     * exists nothing happens
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the scanned database.
+     *
+     * @param {string} scanId The vulnerability assessment scan Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseVulnerabilityAssessmentScansExport>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    exportMethodWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentScansExport>>;
+
+    /**
+     * Convert an existing scan result to a human readable format. If already
+     * exists nothing happens
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the scanned database.
+     *
+     * @param {string} scanId The vulnerability assessment scan Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseVulnerabilityAssessmentScansExport} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseVulnerabilityAssessmentScansExport} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseVulnerabilityAssessmentScansExport}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    exportMethod(resourceGroupName: string, managedInstanceName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentScansExport>;
+    exportMethod(resourceGroupName: string, managedInstanceName: string, databaseName: string, scanId: string, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentScansExport>): void;
+    exportMethod(resourceGroupName: string, managedInstanceName: string, databaseName: string, scanId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentScansExport>): void;
+
+
+    /**
+     * Executes a Vulnerability Assessment database scan.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} scanId The vulnerability assessment scan Id of the scan to
+     * retrieve.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginInitiateScanWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Executes a Vulnerability Assessment database scan.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} scanId The vulnerability assessment scan Id of the scan to
+     * retrieve.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginInitiateScan(resourceGroupName: string, managedInstanceName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginInitiateScan(resourceGroupName: string, managedInstanceName: string, databaseName: string, scanId: string, callback: ServiceCallback<void>): void;
+    beginInitiateScan(resourceGroupName: string, managedInstanceName: string, databaseName: string, scanId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists the vulnerability assessment scans of a database.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VulnerabilityAssessmentScanRecordListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VulnerabilityAssessmentScanRecordListResult>>;
+
+    /**
+     * Lists the vulnerability assessment scans of a database.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VulnerabilityAssessmentScanRecordListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VulnerabilityAssessmentScanRecordListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VulnerabilityAssessmentScanRecordListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabaseNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VulnerabilityAssessmentScanRecordListResult>;
+    listByDatabaseNext(nextPageLink: string, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
+    listByDatabaseNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
+}
+
+/**
+ * @class
+ * ManagedDatabaseVulnerabilityAssessments
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ManagedDatabaseVulnerabilityAssessments {
+
+
+    /**
+     * Gets the database's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseVulnerabilityAssessment>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessment>>;
+
+    /**
+     * Gets the database's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseVulnerabilityAssessment} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseVulnerabilityAssessment} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseVulnerabilityAssessment} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessment>;
+    get(resourceGroupName: string, managedInstanceName: string, databaseName: string, callback: ServiceCallback<models.DatabaseVulnerabilityAssessment>): void;
+    get(resourceGroupName: string, managedInstanceName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessment>): void;
+
+
+    /**
+     * Creates or updates the database's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} parameters The requested resource.
+     *
+     * @param {string} [parameters.storageContainerPath] A blob storage container
+     * path to hold the scan results (e.g.
+     * https://myStorage.blob.core.windows.net/VaScans/).  It is required if server
+     * level vulnerability assessment policy doesn't set
+     *
+     * @param {string} [parameters.storageContainerSasKey] A shared access
+     * signature (SAS Key) that has write access to the blob container specified in
+     * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
+     * specified, StorageContainerSasKey is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the storage account for vulnerability assessment scan
+     * results. If 'StorageContainerSasKey' isn't specified,
+     * storageAccountAccessKey is required.
+     *
+     * @param {object} [parameters.recurringScans] The recurring scans settings
+     *
+     * @param {boolean} [parameters.recurringScans.isEnabled] Recurring scans
+     * state.
+     *
+     * @param {boolean} [parameters.recurringScans.emailSubscriptionAdmins]
+     * Specifies that the schedule scan notification will be is sent to the
+     * subscription administrators.
+     *
+     * @param {array} [parameters.recurringScans.emails] Specifies an array of
+     * e-mail addresses to which the scan notification is sent.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseVulnerabilityAssessment>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.DatabaseVulnerabilityAssessment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessment>>;
+
+    /**
+     * Creates or updates the database's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} parameters The requested resource.
+     *
+     * @param {string} [parameters.storageContainerPath] A blob storage container
+     * path to hold the scan results (e.g.
+     * https://myStorage.blob.core.windows.net/VaScans/).  It is required if server
+     * level vulnerability assessment policy doesn't set
+     *
+     * @param {string} [parameters.storageContainerSasKey] A shared access
+     * signature (SAS Key) that has write access to the blob container specified in
+     * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
+     * specified, StorageContainerSasKey is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the storage account for vulnerability assessment scan
+     * results. If 'StorageContainerSasKey' isn't specified,
+     * storageAccountAccessKey is required.
+     *
+     * @param {object} [parameters.recurringScans] The recurring scans settings
+     *
+     * @param {boolean} [parameters.recurringScans.isEnabled] Recurring scans
+     * state.
+     *
+     * @param {boolean} [parameters.recurringScans.emailSubscriptionAdmins]
+     * Specifies that the schedule scan notification will be is sent to the
+     * subscription administrators.
+     *
+     * @param {array} [parameters.recurringScans.emails] Specifies an array of
+     * e-mail addresses to which the scan notification is sent.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseVulnerabilityAssessment} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseVulnerabilityAssessment} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseVulnerabilityAssessment} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.DatabaseVulnerabilityAssessment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessment>;
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.DatabaseVulnerabilityAssessment, callback: ServiceCallback<models.DatabaseVulnerabilityAssessment>): void;
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.DatabaseVulnerabilityAssessment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessment>): void;
+
+
+    /**
+     * Removes the database's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Removes the database's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, managedInstanceName: string, databaseName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, managedInstanceName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists the vulnerability assessments of a managed database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseVulnerabilityAssessmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentListResult>>;
+
+    /**
+     * Lists the vulnerability assessments of a managed database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseVulnerabilityAssessmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseVulnerabilityAssessmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseVulnerabilityAssessmentListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabase(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentListResult>;
+    listByDatabase(resourceGroupName: string, managedInstanceName: string, databaseName: string, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentListResult>): void;
+    listByDatabase(resourceGroupName: string, managedInstanceName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentListResult>): void;
+
+
+    /**
+     * Lists the vulnerability assessments of a managed database.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseVulnerabilityAssessmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentListResult>>;
+
+    /**
+     * Lists the vulnerability assessments of a managed database.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseVulnerabilityAssessmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseVulnerabilityAssessmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseVulnerabilityAssessmentListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabaseNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentListResult>;
+    listByDatabaseNext(nextPageLink: string, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentListResult>): void;
+    listByDatabaseNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentListResult>): void;
 }
 
 /**
@@ -29490,4 +30618,881 @@ export interface ManagedInstanceTdeCertificates {
     beginCreate(resourceGroupName: string, managedInstanceName: string, parameters: models.TdeCertificate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginCreate(resourceGroupName: string, managedInstanceName: string, parameters: models.TdeCertificate, callback: ServiceCallback<void>): void;
     beginCreate(resourceGroupName: string, managedInstanceName: string, parameters: models.TdeCertificate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
+ * ManagedInstanceKeys
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ManagedInstanceKeys {
+
+
+    /**
+     * Gets a list of managed instance keys.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] An OData filter expression that filters
+     * elements in the collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstanceKeyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByInstanceWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceKeyListResult>>;
+
+    /**
+     * Gets a list of managed instance keys.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] An OData filter expression that filters
+     * elements in the collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstanceKeyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstanceKeyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedInstanceKeyListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByInstance(resourceGroupName: string, managedInstanceName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceKeyListResult>;
+    listByInstance(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<models.ManagedInstanceKeyListResult>): void;
+    listByInstance(resourceGroupName: string, managedInstanceName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceKeyListResult>): void;
+
+
+    /**
+     * Gets a managed instance key.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} keyName The name of the managed instance key to be
+     * retrieved.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstanceKey>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, keyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceKey>>;
+
+    /**
+     * Gets a managed instance key.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} keyName The name of the managed instance key to be
+     * retrieved.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstanceKey} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstanceKey} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedInstanceKey} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, managedInstanceName: string, keyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceKey>;
+    get(resourceGroupName: string, managedInstanceName: string, keyName: string, callback: ServiceCallback<models.ManagedInstanceKey>): void;
+    get(resourceGroupName: string, managedInstanceName: string, keyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceKey>): void;
+
+
+    /**
+     * Creates or updates a managed instance key.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} keyName The name of the managed instance key to be operated
+     * on (updated or created).
+     *
+     * @param {object} parameters The requested managed instance key resource
+     * state.
+     *
+     * @param {string} parameters.serverKeyType The key type like 'ServiceManaged',
+     * 'AzureKeyVault'. Possible values include: 'ServiceManaged', 'AzureKeyVault'
+     *
+     * @param {string} [parameters.uri] The URI of the key. If the ServerKeyType is
+     * AzureKeyVault, then the URI is required.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstanceKey>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, keyName: string, parameters: models.ManagedInstanceKey, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceKey>>;
+
+    /**
+     * Creates or updates a managed instance key.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} keyName The name of the managed instance key to be operated
+     * on (updated or created).
+     *
+     * @param {object} parameters The requested managed instance key resource
+     * state.
+     *
+     * @param {string} parameters.serverKeyType The key type like 'ServiceManaged',
+     * 'AzureKeyVault'. Possible values include: 'ServiceManaged', 'AzureKeyVault'
+     *
+     * @param {string} [parameters.uri] The URI of the key. If the ServerKeyType is
+     * AzureKeyVault, then the URI is required.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstanceKey} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstanceKey} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedInstanceKey} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, keyName: string, parameters: models.ManagedInstanceKey, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceKey>;
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, keyName: string, parameters: models.ManagedInstanceKey, callback: ServiceCallback<models.ManagedInstanceKey>): void;
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, keyName: string, parameters: models.ManagedInstanceKey, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceKey>): void;
+
+
+    /**
+     * Deletes the managed instance key with the given name.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} keyName The name of the managed instance key to be deleted.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, keyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the managed instance key with the given name.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} keyName The name of the managed instance key to be deleted.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, managedInstanceName: string, keyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, managedInstanceName: string, keyName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, managedInstanceName: string, keyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates or updates a managed instance key.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} keyName The name of the managed instance key to be operated
+     * on (updated or created).
+     *
+     * @param {object} parameters The requested managed instance key resource
+     * state.
+     *
+     * @param {string} parameters.serverKeyType The key type like 'ServiceManaged',
+     * 'AzureKeyVault'. Possible values include: 'ServiceManaged', 'AzureKeyVault'
+     *
+     * @param {string} [parameters.uri] The URI of the key. If the ServerKeyType is
+     * AzureKeyVault, then the URI is required.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstanceKey>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, keyName: string, parameters: models.ManagedInstanceKey, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceKey>>;
+
+    /**
+     * Creates or updates a managed instance key.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} keyName The name of the managed instance key to be operated
+     * on (updated or created).
+     *
+     * @param {object} parameters The requested managed instance key resource
+     * state.
+     *
+     * @param {string} parameters.serverKeyType The key type like 'ServiceManaged',
+     * 'AzureKeyVault'. Possible values include: 'ServiceManaged', 'AzureKeyVault'
+     *
+     * @param {string} [parameters.uri] The URI of the key. If the ServerKeyType is
+     * AzureKeyVault, then the URI is required.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstanceKey} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstanceKey} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedInstanceKey} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, keyName: string, parameters: models.ManagedInstanceKey, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceKey>;
+    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, keyName: string, parameters: models.ManagedInstanceKey, callback: ServiceCallback<models.ManagedInstanceKey>): void;
+    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, keyName: string, parameters: models.ManagedInstanceKey, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceKey>): void;
+
+
+    /**
+     * Deletes the managed instance key with the given name.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} keyName The name of the managed instance key to be deleted.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, keyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the managed instance key with the given name.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} keyName The name of the managed instance key to be deleted.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, managedInstanceName: string, keyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, managedInstanceName: string, keyName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, managedInstanceName: string, keyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets a list of managed instance keys.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstanceKeyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByInstanceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceKeyListResult>>;
+
+    /**
+     * Gets a list of managed instance keys.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstanceKeyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstanceKeyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedInstanceKeyListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByInstanceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceKeyListResult>;
+    listByInstanceNext(nextPageLink: string, callback: ServiceCallback<models.ManagedInstanceKeyListResult>): void;
+    listByInstanceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceKeyListResult>): void;
+}
+
+/**
+ * @class
+ * ManagedInstanceEncryptionProtectors
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ManagedInstanceEncryptionProtectors {
+
+
+    /**
+     * Gets a list of managed instance encryption protectors
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstanceEncryptionProtectorListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByInstanceWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceEncryptionProtectorListResult>>;
+
+    /**
+     * Gets a list of managed instance encryption protectors
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstanceEncryptionProtectorListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstanceEncryptionProtectorListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ManagedInstanceEncryptionProtectorListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByInstance(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceEncryptionProtectorListResult>;
+    listByInstance(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<models.ManagedInstanceEncryptionProtectorListResult>): void;
+    listByInstance(resourceGroupName: string, managedInstanceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceEncryptionProtectorListResult>): void;
+
+
+    /**
+     * Gets a managed instance encryption protector.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstanceEncryptionProtector>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceEncryptionProtector>>;
+
+    /**
+     * Gets a managed instance encryption protector.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstanceEncryptionProtector} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstanceEncryptionProtector} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedInstanceEncryptionProtector} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceEncryptionProtector>;
+    get(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<models.ManagedInstanceEncryptionProtector>): void;
+    get(resourceGroupName: string, managedInstanceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceEncryptionProtector>): void;
+
+
+    /**
+     * Updates an existing encryption protector.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} parameters The requested encryption protector resource
+     * state.
+     *
+     * @param {string} [parameters.serverKeyName] The name of the managed instance
+     * key.
+     *
+     * @param {string} parameters.serverKeyType The encryption protector type like
+     * 'ServiceManaged', 'AzureKeyVault'. Possible values include:
+     * 'ServiceManaged', 'AzureKeyVault'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstanceEncryptionProtector>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceEncryptionProtector, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceEncryptionProtector>>;
+
+    /**
+     * Updates an existing encryption protector.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} parameters The requested encryption protector resource
+     * state.
+     *
+     * @param {string} [parameters.serverKeyName] The name of the managed instance
+     * key.
+     *
+     * @param {string} parameters.serverKeyType The encryption protector type like
+     * 'ServiceManaged', 'AzureKeyVault'. Possible values include:
+     * 'ServiceManaged', 'AzureKeyVault'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstanceEncryptionProtector} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstanceEncryptionProtector} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedInstanceEncryptionProtector} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceEncryptionProtector, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceEncryptionProtector>;
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceEncryptionProtector, callback: ServiceCallback<models.ManagedInstanceEncryptionProtector>): void;
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceEncryptionProtector, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceEncryptionProtector>): void;
+
+
+    /**
+     * Updates an existing encryption protector.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} parameters The requested encryption protector resource
+     * state.
+     *
+     * @param {string} [parameters.serverKeyName] The name of the managed instance
+     * key.
+     *
+     * @param {string} parameters.serverKeyType The encryption protector type like
+     * 'ServiceManaged', 'AzureKeyVault'. Possible values include:
+     * 'ServiceManaged', 'AzureKeyVault'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstanceEncryptionProtector>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceEncryptionProtector, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceEncryptionProtector>>;
+
+    /**
+     * Updates an existing encryption protector.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} parameters The requested encryption protector resource
+     * state.
+     *
+     * @param {string} [parameters.serverKeyName] The name of the managed instance
+     * key.
+     *
+     * @param {string} parameters.serverKeyType The encryption protector type like
+     * 'ServiceManaged', 'AzureKeyVault'. Possible values include:
+     * 'ServiceManaged', 'AzureKeyVault'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstanceEncryptionProtector} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstanceEncryptionProtector} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedInstanceEncryptionProtector} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceEncryptionProtector, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceEncryptionProtector>;
+    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceEncryptionProtector, callback: ServiceCallback<models.ManagedInstanceEncryptionProtector>): void;
+    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceEncryptionProtector, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceEncryptionProtector>): void;
+
+
+    /**
+     * Gets a list of managed instance encryption protectors
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstanceEncryptionProtectorListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByInstanceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceEncryptionProtectorListResult>>;
+
+    /**
+     * Gets a list of managed instance encryption protectors
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstanceEncryptionProtectorListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstanceEncryptionProtectorListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ManagedInstanceEncryptionProtectorListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByInstanceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceEncryptionProtectorListResult>;
+    listByInstanceNext(nextPageLink: string, callback: ServiceCallback<models.ManagedInstanceEncryptionProtectorListResult>): void;
+    listByInstanceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceEncryptionProtectorListResult>): void;
 }

@@ -36,6 +36,9 @@
     <Compile Include="test\azureServiceClientTests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
+    <Compile Include="test\cloudErrorTest.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
     <Compile Include="test\unit.js" />
     <Compile Include="lib\credentials\applicationTokenCredentials.js" />
     <Compile Include="lib\credentials\userTokenCredentials.js" />

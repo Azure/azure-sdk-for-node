@@ -9,32 +9,32 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .post('/jobschedules/NodeSDKTestSchedule/enable?api-version=2018-03-01.6.1')
+  .post('/jobschedules/NodeSDKTestSchedule/enable?api-version=2018-08-01.7.0')
   .reply(204, "", { 'content-length': '0',
-  'last-modified': 'Fri, 09 Mar 2018 23:25:25 GMT',
-  etag: '0x8D5861509AC98D3',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:04 GMT',
+  etag: '0x8D607A504A591BE',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '322ec699-aef2-499e-b00e-d2f0d4aa891f',
+  'request-id': 'b6ac06dc-fe6c-4acb-a072-23a7bc4ce1c3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobschedules/NodeSDKTestSchedule/enable',
-  date: 'Fri, 09 Mar 2018 23:25:25 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .post('/jobschedules/NodeSDKTestSchedule/enable?api-version=2018-03-01.6.1')
+  .post('/jobschedules/NodeSDKTestSchedule/enable?api-version=2018-08-01.7.0')
   .reply(204, "", { 'content-length': '0',
-  'last-modified': 'Fri, 09 Mar 2018 23:25:25 GMT',
-  etag: '0x8D5861509AC98D3',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:04 GMT',
+  etag: '0x8D607A504A591BE',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '322ec699-aef2-499e-b00e-d2f0d4aa891f',
+  'request-id': 'b6ac06dc-fe6c-4acb-a072-23a7bc4ce1c3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobschedules/NodeSDKTestSchedule/enable',
-  date: 'Fri, 09 Mar 2018 23:25:25 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:04 GMT',
   connection: 'close' });
  return result; }]];

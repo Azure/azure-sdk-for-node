@@ -31,16 +31,7 @@ export { CloudError } from 'ms-rest-azure';
  * @member {string} vmSize The size of virtual machines in the pool. All VMs in
  * a pool are the same size. For information about available sizes of virtual
  * machines in pools, see Choose a VM size for compute nodes in an Azure Batch
- * pool (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes). Batch
- * supports all Cloud Services VM sizes except ExtraSmall, STANDARD_A1_V2 and
- * STANDARD_A2_V2. For information about available VM sizes for pools using
- * images from the Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * pool (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {number} totalCoreHours The total core hours used in the pool during
  * this aggregation interval.
  * @member {number} dataIngressGiB The cross data center network ingress to the
@@ -917,10 +908,7 @@ export interface LinuxUserConfiguration {
  * @member {string} name The name of the user account.
  * @member {string} password The password for the user account.
  * @member {string} [elevationLevel] The elevation level of the user account.
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {object} [linuxUserConfiguration] The Linux-specific user
  * configuration for the user account. This property is ignored if specified on
  * a Windows pool. If not specified, the user is created with the default
@@ -1157,7 +1145,12 @@ export interface OutputFile {
  * @member {string} [containerSettings.registry.password]
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [outputFiles] A list of files that the Batch service will
  * upload from the compute node after running the command line. For
  * multi-instance tasks, the files will only be uploaded from the compute node
@@ -1325,7 +1318,12 @@ export interface JobManagerTask {
  * @member {string} [containerSettings.registry.password]
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory.  There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [environmentSettings] A list of environment variable
  * settings for the Job Preparation task.
  * @member {object} [constraints] Constraints that apply to the Job Preparation
@@ -1451,8 +1449,13 @@ export interface JobPreparationTask {
  * @member {string} [containerSettings.registry.userName]
  * @member {string} [containerSettings.registry.password]
  * @member {array} [resourceFiles] A list of files that the Batch service will
- * download to the compute node before running the command line. Files listed
- * under this element are located in the task's working directory.
+ * download to the compute node before running the command line.  There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers. Files listed under this element are located
+ * in the task's working directory.
  * @member {array} [environmentSettings] A list of environment variable
  * settings for the Job Release task.
  * @member {moment.duration} [maxWallClockTime] The maximum elapsed time that
@@ -1549,8 +1552,13 @@ export interface TaskSchedulingPolicy {
  * @member {string} [containerSettings.registry.userName]
  * @member {string} [containerSettings.registry.password]
  * @member {array} [resourceFiles] A list of files that the Batch service will
- * download to the compute node before running the command line. Files listed
- * under this element are located in the task's working directory.
+ * download to the compute node before running the command line.  There is a
+ * maximum size for the list of resource files. When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers. Files listed under this element are located
+ * in the task's working directory.
  * @member {array} [environmentSettings] A list of environment variable
  * settings for the start task.
  * @member {object} [userIdentity] The user identity under which the start task
@@ -1660,9 +1668,10 @@ export interface MetadataItem {
  * Services platform.
  *
  * @member {string} osFamily The Azure Guest OS family to be installed on the
- * virtual machines in the pool. Possible values are: 2 - OS Family 2,
- * equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3, equivalent to
- * Windows Server 2012. 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * virtual machines in the pool. Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
  * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
  * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
@@ -1689,8 +1698,8 @@ export interface CloudServiceConfiguration {
  * @summary Settings for the operating system disk of the virtual machine.
  *
  * @member {string} [caching] The type of caching to enable for the OS disk.
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  */
@@ -1722,7 +1731,7 @@ export interface WindowsConfiguration {
  * identify each data disk. If attaching multiple disks, each should have a
  * distinct lun.
  * @member {string} [caching] The type of caching to be enabled for the data
- * disks. The default value for caching is none. For information about the
+ * disks. The default value for caching is readwrite. For information about the
  * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
@@ -1784,8 +1793,8 @@ export interface ContainerConfiguration {
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {object} [osDisk] Settings for the operating system disk of the
  * Virtual Machine.
- * @member {string} [osDisk.caching] The default value for caching is none. For
- * information about the caching options see:
+ * @member {string} [osDisk.caching] The default value for caching is
+ * readwrite. For information about the caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string} nodeAgentSKUId The SKU of the Batch node agent to be
@@ -1991,18 +2000,9 @@ export interface NetworkConfiguration {
  * maximum length of 1024.
  * @member {string} vmSize The size of the virtual machines in the pool. All
  * virtual machines in a pool are the same size. For information about
- * available sizes of virtual machines for Cloud Services pools (pools created
- * with cloudServiceConfiguration), see Sizes for Cloud Services
- * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * available sizes of virtual machines in pools, see Choose a VM size for
+ * compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object} [cloudServiceConfiguration] The cloud service configuration
  * for the pool. This property must be specified if the pool needs to be
  * created with Azure PaaS VMs. This property and virtualMachineConfiguration
@@ -2011,11 +2011,12 @@ export interface NetworkConfiguration {
  * calling the REST API directly, the HTTP status code is 400 (Bad Request).
  * This property cannot be specified if the Batch account was created with its
  * poolAllocationMode property set to 'UserSubscription'.
- * @member {string} [cloudServiceConfiguration.osFamily] Possible values are: 2
- * - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3,
- * equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to Windows
- * Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016. For more
- * information, see Azure Guest OS Releases
+ * @member {string} [cloudServiceConfiguration.osFamily] Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string} [cloudServiceConfiguration.targetOSVersion] The default
  * value is * which specifies the latest operating system version for the
@@ -2051,7 +2052,8 @@ export interface NetworkConfiguration {
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {object} [virtualMachineConfiguration.osDisk]
  * @member {string} [virtualMachineConfiguration.osDisk.caching] The default
- * value for caching is none. For information about the caching options see:
+ * value for caching is readwrite. For information about the caching options
+ * see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string} [virtualMachineConfiguration.nodeAgentSKUId] The Batch node
@@ -2251,7 +2253,9 @@ export interface NetworkConfiguration {
  * Batch service will make available on each compute node in the pool. The list
  * of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array} [userAccounts] The list of user accounts to be created on
  * each node in the pool.
  * @member {array} [metadata] A list of name-value pairs associated with the
@@ -2306,18 +2310,9 @@ export interface PoolSpecification {
  * @member {string} [pool.displayName] The display name need not be unique and
  * can contain any Unicode characters up to a maximum length of 1024.
  * @member {string} [pool.vmSize] For information about available sizes of
- * virtual machines for Cloud Services pools (pools created with
- * cloudServiceConfiguration), see Sizes for Cloud Services
- * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * virtual machines in pools, see Choose a VM size for compute nodes in an
+ * Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object} [pool.cloudServiceConfiguration] This property must be
  * specified if the pool needs to be created with Azure PaaS VMs. This property
  * and virtualMachineConfiguration are mutually exclusive and one of the
@@ -2327,10 +2322,12 @@ export interface PoolSpecification {
  * account was created with its poolAllocationMode property set to
  * 'UserSubscription'.
  * @member {string} [pool.cloudServiceConfiguration.osFamily] Possible values
- * are: 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS
- * Family 3, equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to
- * Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016.
- * For more information, see Azure Guest OS Releases
+ * are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string} [pool.cloudServiceConfiguration.targetOSVersion] The
  * default value is * which specifies the latest operating system version for
@@ -2365,8 +2362,8 @@ export interface PoolSpecification {
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {object} [pool.virtualMachineConfiguration.osDisk]
  * @member {string} [pool.virtualMachineConfiguration.osDisk.caching] The
- * default value for caching is none. For information about the caching options
- * see:
+ * default value for caching is readwrite. For information about the caching
+ * options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string} [pool.virtualMachineConfiguration.nodeAgentSKUId] The Batch
@@ -2558,7 +2555,10 @@ export interface PoolSpecification {
  * @member {array} [pool.applicationPackageReferences]
  * @member {array} [pool.applicationLicenses] The list of application licenses
  * must be a subset of available Batch service application licenses. If a
- * license is requested which is not supported, pool creation will fail.
+ * license is requested which is not supported, pool creation will fail. The
+ * permitted licenses available on the pool are 'maya', 'vray', '3dsmax',
+ * 'arnold'. An additional charge applies for each application license added to
+ * the pool.
  * @member {array} [pool.userAccounts]
  * @member {array} [pool.metadata] The Batch service does not assign any
  * meaning to metadata; it is solely for the use of user code.
@@ -2610,18 +2610,9 @@ export interface AutoPoolSpecification {
  * need not be unique and can contain any Unicode characters up to a maximum
  * length of 1024.
  * @member {string} [autoPoolSpecification.pool.vmSize] For information about
- * available sizes of virtual machines for Cloud Services pools (pools created
- * with cloudServiceConfiguration), see Sizes for Cloud Services
- * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * available sizes of virtual machines in pools, see Choose a VM size for
+ * compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object} [autoPoolSpecification.pool.cloudServiceConfiguration] This
  * property must be specified if the pool needs to be created with Azure PaaS
  * VMs. This property and virtualMachineConfiguration are mutually exclusive
@@ -2632,10 +2623,12 @@ export interface AutoPoolSpecification {
  * property set to 'UserSubscription'.
  * @member {string}
  * [autoPoolSpecification.pool.cloudServiceConfiguration.osFamily] Possible
- * values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 -
- * OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4, equivalent
- * to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server
- * 2016. For more information, see Azure Guest OS Releases
+ * values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion] The
@@ -2679,8 +2672,8 @@ export interface AutoPoolSpecification {
  * [autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching] The
- * default value for caching is none. For information about the caching options
- * see:
+ * default value for caching is readwrite. For information about the caching
+ * options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -2893,7 +2886,9 @@ export interface AutoPoolSpecification {
  * @member {array} [autoPoolSpecification.pool.applicationLicenses] The list of
  * application licenses must be a subset of available Batch service application
  * licenses. If a license is requested which is not supported, pool creation
- * will fail.
+ * will fail. The permitted licenses available on the pool are 'maya', 'vray',
+ * '3dsmax', 'arnold'. An additional charge applies for each application
+ * license added to the pool.
  * @member {array} [autoPoolSpecification.pool.userAccounts]
  * @member {array} [autoPoolSpecification.pool.metadata] The Batch service does
  * not assign any meaning to metadata; it is solely for the use of user code.
@@ -2991,7 +2986,11 @@ export interface PoolInformation {
  * @member {string} [jobManagerTask.containerSettings.registry.userName]
  * @member {string} [jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobManagerTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory. There is a maximum size
+ * for the list of resource files.  When the max size is exceeded, the request
+ * will fail and the response error code will be RequestEntityTooLarge. If this
+ * occurs, the collection of ResourceFiles must be reduced in size. This can be
+ * achieved using .zip files, Application Packages, or Docker Containers.
  * @member {array} [jobManagerTask.outputFiles] For multi-instance tasks, the
  * files will only be uploaded from the compute node on which the primary task
  * is executed.
@@ -3105,7 +3104,12 @@ export interface PoolInformation {
  * @member {string} [jobPreparationTask.containerSettings.registry.userName]
  * @member {string} [jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobPreparationTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory.  There is a maximum
+ * size for the list of resource files.  When the max size is exceeded, the
+ * request will fail and the response error code will be RequestEntityTooLarge.
+ * If this occurs, the collection of ResourceFiles must be reduced in size.
+ * This can be achieved using .zip files, Application Packages, or Docker
+ * Containers.
  * @member {array} [jobPreparationTask.environmentSettings]
  * @member {object} [jobPreparationTask.constraints]
  * @member {moment.duration} [jobPreparationTask.constraints.maxWallClockTime]
@@ -3254,19 +3258,9 @@ export interface PoolInformation {
  * display name need not be unique and can contain any Unicode characters up to
  * a maximum length of 1024.
  * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] This
  * property must be specified if the pool needs to be created with Azure PaaS
@@ -3278,10 +3272,12 @@ export interface PoolInformation {
  * property set to 'UserSubscription'.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -3327,8 +3323,8 @@ export interface PoolInformation {
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -3552,7 +3548,9 @@ export interface PoolInformation {
  * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array} [poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
  * service does not assign any meaning to metadata; it is solely for the use of
@@ -3825,7 +3823,12 @@ export interface JobScheduleStatistics {
  * @member {string}
  * [jobSpecification.jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobManagerTask.outputFiles] For
  * multi-instance tasks, the files will only be uploaded from the compute node
  * on which the primary task is executed.
@@ -3952,6 +3955,11 @@ export interface JobScheduleStatistics {
  * [jobSpecification.jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobPreparationTask.resourceFiles] Files
  * listed under this element are located in the task's working directory.
+ * There is a maximum size for the list of resource files.  When the max size
+ * is exceeded, the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobPreparationTask.environmentSettings]
  * @member {object} [jobSpecification.jobPreparationTask.constraints]
  * @member {moment.duration}
@@ -4116,19 +4124,9 @@ export interface JobScheduleStatistics {
  * a maximum length of 1024.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
  * This property must be specified if the pool needs to be created with Azure
@@ -4140,10 +4138,12 @@ export interface JobScheduleStatistics {
  * poolAllocationMode property set to 'UserSubscription'.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -4189,8 +4189,8 @@ export interface JobScheduleStatistics {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -4424,7 +4424,9 @@ export interface JobScheduleStatistics {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array}
@@ -4617,7 +4619,12 @@ export interface CloudJobSchedule {
  * @member {string}
  * [jobSpecification.jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobManagerTask.outputFiles] For
  * multi-instance tasks, the files will only be uploaded from the compute node
  * on which the primary task is executed.
@@ -4744,6 +4751,11 @@ export interface CloudJobSchedule {
  * [jobSpecification.jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobPreparationTask.resourceFiles] Files
  * listed under this element are located in the task's working directory.
+ * There is a maximum size for the list of resource files.  When the max size
+ * is exceeded, the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobPreparationTask.environmentSettings]
  * @member {object} [jobSpecification.jobPreparationTask.constraints]
  * @member {moment.duration}
@@ -4908,19 +4920,9 @@ export interface CloudJobSchedule {
  * a maximum length of 1024.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
  * This property must be specified if the pool needs to be created with Azure
@@ -4932,10 +4934,12 @@ export interface CloudJobSchedule {
  * poolAllocationMode property set to 'UserSubscription'.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -4981,8 +4985,8 @@ export interface CloudJobSchedule {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -5216,7 +5220,9 @@ export interface CloudJobSchedule {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array}
@@ -5394,7 +5400,11 @@ export interface JobExecutionInformation {
  * @member {string} [jobManagerTask.containerSettings.registry.userName]
  * @member {string} [jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobManagerTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory. There is a maximum size
+ * for the list of resource files.  When the max size is exceeded, the request
+ * will fail and the response error code will be RequestEntityTooLarge. If this
+ * occurs, the collection of ResourceFiles must be reduced in size. This can be
+ * achieved using .zip files, Application Packages, or Docker Containers.
  * @member {array} [jobManagerTask.outputFiles] For multi-instance tasks, the
  * files will only be uploaded from the compute node on which the primary task
  * is executed.
@@ -5507,7 +5517,12 @@ export interface JobExecutionInformation {
  * @member {string} [jobPreparationTask.containerSettings.registry.userName]
  * @member {string} [jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobPreparationTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory.  There is a maximum
+ * size for the list of resource files.  When the max size is exceeded, the
+ * request will fail and the response error code will be RequestEntityTooLarge.
+ * If this occurs, the collection of ResourceFiles must be reduced in size.
+ * This can be achieved using .zip files, Application Packages, or Docker
+ * Containers.
  * @member {array} [jobPreparationTask.environmentSettings]
  * @member {object} [jobPreparationTask.constraints]
  * @member {moment.duration} [jobPreparationTask.constraints.maxWallClockTime]
@@ -5650,19 +5665,9 @@ export interface JobExecutionInformation {
  * display name need not be unique and can contain any Unicode characters up to
  * a maximum length of 1024.
  * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] This
  * property must be specified if the pool needs to be created with Azure PaaS
@@ -5674,10 +5679,12 @@ export interface JobExecutionInformation {
  * property set to 'UserSubscription'.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -5723,8 +5730,8 @@ export interface JobExecutionInformation {
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -5948,7 +5955,9 @@ export interface JobExecutionInformation {
  * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array} [poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
  * service does not assign any meaning to metadata; it is solely for the use of
@@ -6129,7 +6138,11 @@ export interface CloudJob {
  * @member {string} [jobManagerTask.containerSettings.registry.userName]
  * @member {string} [jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobManagerTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory. There is a maximum size
+ * for the list of resource files.  When the max size is exceeded, the request
+ * will fail and the response error code will be RequestEntityTooLarge. If this
+ * occurs, the collection of ResourceFiles must be reduced in size. This can be
+ * achieved using .zip files, Application Packages, or Docker Containers.
  * @member {array} [jobManagerTask.outputFiles] For multi-instance tasks, the
  * files will only be uploaded from the compute node on which the primary task
  * is executed.
@@ -6243,7 +6256,12 @@ export interface CloudJob {
  * @member {string} [jobPreparationTask.containerSettings.registry.userName]
  * @member {string} [jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobPreparationTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory.  There is a maximum
+ * size for the list of resource files.  When the max size is exceeded, the
+ * request will fail and the response error code will be RequestEntityTooLarge.
+ * If this occurs, the collection of ResourceFiles must be reduced in size.
+ * This can be achieved using .zip files, Application Packages, or Docker
+ * Containers.
  * @member {array} [jobPreparationTask.environmentSettings]
  * @member {object} [jobPreparationTask.constraints]
  * @member {moment.duration} [jobPreparationTask.constraints.maxWallClockTime]
@@ -6391,19 +6409,9 @@ export interface CloudJob {
  * display name need not be unique and can contain any Unicode characters up to
  * a maximum length of 1024.
  * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] This
  * property must be specified if the pool needs to be created with Azure PaaS
@@ -6415,10 +6423,12 @@ export interface CloudJob {
  * property set to 'UserSubscription'.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -6464,8 +6474,8 @@ export interface CloudJob {
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -6689,7 +6699,9 @@ export interface CloudJob {
  * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array} [poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
  * service does not assign any meaning to metadata; it is solely for the use of
@@ -7033,8 +7045,6 @@ export interface JobPreparationAndReleaseTaskExecutionInformation {
  * succeeds if its result (found in the executionInfo property) is 'success'.
  * @member {number} failed The number of tasks which failed. A task fails if
  * its result (found in the executionInfo property) is 'failure'.
- * @member {string} validationStatus Whether the task counts have been
- * validated. Possible values include: 'validated', 'unvalidated'
  */
 export interface TaskCounts {
   active: number;
@@ -7042,7 +7052,6 @@ export interface TaskCounts {
   completed: number;
   succeeded: number;
   failed: number;
-  validationStatus: string;
 }
 
 /**
@@ -7143,28 +7152,20 @@ export interface ResizeError {
  * entered its current allocation state.
  * @member {string} [vmSize] The size of virtual machines in the pool. All
  * virtual machines in a pool are the same size. For information about
- * available sizes of virtual machines for Cloud Services pools (pools created
- * with cloudServiceConfiguration), see Sizes for Cloud Services
- * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * available sizes of virtual machines in pools, see Choose a VM size for
+ * compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object} [cloudServiceConfiguration] The cloud service configuration
  * for the pool. This property and virtualMachineConfiguration are mutually
  * exclusive and one of the properties must be specified. This property cannot
  * be specified if the Batch account was created with its poolAllocationMode
  * property set to 'UserSubscription'.
- * @member {string} [cloudServiceConfiguration.osFamily] Possible values are: 2
- * - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3,
- * equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to Windows
- * Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016. For more
- * information, see Azure Guest OS Releases
+ * @member {string} [cloudServiceConfiguration.osFamily] Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string} [cloudServiceConfiguration.targetOSVersion] The default
  * value is * which specifies the latest operating system version for the
@@ -7196,7 +7197,8 @@ export interface ResizeError {
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {object} [virtualMachineConfiguration.osDisk]
  * @member {string} [virtualMachineConfiguration.osDisk.caching] The default
- * value for caching is none. For information about the caching options see:
+ * value for caching is readwrite. For information about the caching options
+ * see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string} [virtualMachineConfiguration.nodeAgentSKUId] The Batch node
@@ -7500,11 +7502,12 @@ export interface CloudPool {
  * exclusive and one of the properties must be specified. This property cannot
  * be specified if the Batch account was created with its poolAllocationMode
  * property set to 'UserSubscription'.
- * @member {string} [cloudServiceConfiguration.osFamily] Possible values are: 2
- * - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3,
- * equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to Windows
- * Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016. For more
- * information, see Azure Guest OS Releases
+ * @member {string} [cloudServiceConfiguration.osFamily] Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string} [cloudServiceConfiguration.targetOSVersion] The default
  * value is * which specifies the latest operating system version for the
@@ -7536,7 +7539,8 @@ export interface CloudPool {
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {object} [virtualMachineConfiguration.osDisk]
  * @member {string} [virtualMachineConfiguration.osDisk.caching] The default
- * value for caching is none. For information about the caching options see:
+ * value for caching is readwrite. For information about the caching options
+ * see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string} [virtualMachineConfiguration.nodeAgentSKUId] The Batch node
@@ -7893,6 +7897,28 @@ export interface ComputeNodeInformation {
 
 /**
  * @class
+ * Initializes a new instance of the NodeAgentInformation class.
+ * @constructor
+ * @summary Information about the node agent.
+ *
+ * The Batch node agent is a program that runs on each node in the pool and
+ * provides Batch capability on the compute node.
+ *
+ * @member {string} version The version of the Batch node agent running on the
+ * compute node. This version number can be checked against the node agent
+ * release notes located at
+ * https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md.
+ * @member {date} lastUpdateTime The time when the node agent was updated on
+ * the compute node. This is the most recent time that the node agent was
+ * updated to a new version.
+ */
+export interface NodeAgentInformation {
+  version: string;
+  lastUpdateTime: Date;
+}
+
+/**
+ * @class
  * Initializes a new instance of the MultiInstanceSettings class.
  * @constructor
  * @summary Settings which specify how to run a multi-instance task.
@@ -7913,7 +7939,11 @@ export interface ComputeNodeInformation {
  * whereas task resource files are downloaded only for the primary. Also note
  * that these resource files are not downloaded to the task working directory,
  * but instead are downloaded to the task root directory (one directory above
- * the working directory).
+ * the working directory).  There is a maximum size for the list of resource
+ * files.  When the max size is exceeded, the request will fail and the
+ * response error code will be RequestEntityTooLarge. If this occurs, the
+ * collection of ResourceFiles must be reduced in size. This can be achieved
+ * using .zip files, Application Packages, or Docker Containers.
  */
 export interface MultiInstanceSettings {
   numberOfInstances?: number;
@@ -8142,7 +8172,11 @@ export interface TaskDependencies {
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. For
  * multi-instance tasks, the resource files will only be downloaded to the
- * compute node on which the primary task is executed.
+ * compute node on which the primary task is executed. There is a maximum size
+ * for the list of resource files.  When the max size is exceeded, the request
+ * will fail and the response error code will be RequestEntityTooLarge. If this
+ * occurs, the collection of ResourceFiles must be reduced in size. This can be
+ * achieved using .zip files, Application Packages, or Docker Containers.
  * @member {array} [outputFiles] A list of files that the Batch service will
  * upload from the compute node after running the command line. For
  * multi-instance tasks, the files will only be uploaded from the compute node
@@ -8259,7 +8293,11 @@ export interface TaskDependencies {
  * whereas task resource files are downloaded only for the primary. Also note
  * that these resource files are not downloaded to the task working directory,
  * but instead are downloaded to the task root directory (one directory above
- * the working directory).
+ * the working directory).  There is a maximum size for the list of resource
+ * files.  When the max size is exceeded, the request will fail and the
+ * response error code will be RequestEntityTooLarge. If this occurs, the
+ * collection of ResourceFiles must be reduced in size. This can be achieved
+ * using .zip files, Application Packages, or Docker Containers.
  * @member {object} [stats] Resource usage statistics for the task.
  * @member {string} [stats.url]
  * @member {date} [stats.startTime]
@@ -8453,7 +8491,11 @@ export interface CloudTask {
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. For
  * multi-instance tasks, the resource files will only be downloaded to the
- * compute node on which the primary task is executed.
+ * compute node on which the primary task is executed. There is a maximum size
+ * for the list of resource files.  When the max size is exceeded, the request
+ * will fail and the response error code will be RequestEntityTooLarge. If this
+ * occurs, the collection of ResourceFiles must be reduced in size. This can be
+ * achieved using .zip files, Application Packages, or Docker Containers.
  * @member {array} [outputFiles] A list of files that the Batch service will
  * upload from the compute node after running the command line. For
  * multi-instance tasks, the files will only be uploaded from the compute node
@@ -8509,7 +8551,11 @@ export interface CloudTask {
  * whereas task resource files are downloaded only for the primary. Also note
  * that these resource files are not downloaded to the task working directory,
  * but instead are downloaded to the task root directory (one directory above
- * the working directory).
+ * the working directory).  There is a maximum size for the list of resource
+ * files.  When the max size is exceeded, the request will fail and the
+ * response error code will be RequestEntityTooLarge. If this occurs, the
+ * collection of ResourceFiles must be reduced in size. This can be achieved
+ * using .zip files, Application Packages, or Docker Containers.
  * @member {object} [dependsOn] The tasks that this task depends on. This task
  * will not be scheduled until all tasks that it depends on have completed
  * successfully. If any of those tasks fail and exhaust their retry counts,
@@ -8568,11 +8614,11 @@ export interface TaskAddParameter {
  * @constructor
  * @summary A collection of Azure Batch tasks to add.
  *
- * @member {array} value The collection of tasks to add. The total serialized
- * size of this collection must be less than 4MB. If it is greater than 4MB
- * (for example if each task has 100's of resource files or environment
- * variables), the request will fail with code 'RequestBodyTooLarge' and should
- * be retried again with fewer tasks.
+ * @member {array} value The collection of tasks to add. The maximum count of
+ * tasks is 100. The total serialized size of this collection must be less than
+ * 1MB. If it is greater than 1MB (for example if each task has 100's of
+ * resource files or environment variables), the request will fail with code
+ * 'RequestBodyTooLarge' and should be retried again with fewer tasks.
  */
 export interface TaskAddCollectionParameter {
   value: TaskAddParameter[];
@@ -9003,19 +9049,9 @@ export interface ComputeNodeEndpointConfiguration {
  * just a soft affinity. If the target node is busy or unavailable at the time
  * the task is scheduled, then the task will be scheduled elsewhere.
  * @member {string} [vmSize] The size of the virtual machine hosting the
- * compute node. For information about available sizes of virtual machines for
- * Cloud Services pools (pools created with cloudServiceConfiguration), see
- * Sizes for Cloud Services
- * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * compute node. For information about available sizes of virtual machines in
+ * pools, see Choose a VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {number} [totalTasksRun] The total number of job tasks completed on
  * the compute node. This includes Job Manager tasks and normal tasks, but not
  * Job Preparation, Job Release or Start tasks.
@@ -9151,6 +9187,13 @@ export interface ComputeNodeEndpointConfiguration {
  * @member {object} [endpointConfiguration] The endpoint configuration for the
  * compute node.
  * @member {array} [endpointConfiguration.inboundEndpoints]
+ * @member {object} [nodeAgentInfo] Information about the node agent version
+ * and the time the node upgraded to a new version.
+ * @member {string} [nodeAgentInfo.version] This version number can be checked
+ * against the node agent release notes located at
+ * https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md.
+ * @member {date} [nodeAgentInfo.lastUpdateTime] This is the most recent time
+ * that the node agent was updated to a new version.
  */
 export interface ComputeNode {
   id?: string;
@@ -9173,6 +9216,7 @@ export interface ComputeNode {
   errors?: ComputeNodeError[];
   isDedicated?: boolean;
   endpointConfiguration?: ComputeNodeEndpointConfiguration;
+  nodeAgentInfo?: NodeAgentInformation;
 }
 
 /**
@@ -9344,7 +9388,12 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * @member {string}
  * [jobSpecification.jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobManagerTask.outputFiles] For
  * multi-instance tasks, the files will only be uploaded from the compute node
  * on which the primary task is executed.
@@ -9471,6 +9520,11 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * [jobSpecification.jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobPreparationTask.resourceFiles] Files
  * listed under this element are located in the task's working directory.
+ * There is a maximum size for the list of resource files.  When the max size
+ * is exceeded, the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobPreparationTask.environmentSettings]
  * @member {object} [jobSpecification.jobPreparationTask.constraints]
  * @member {moment.duration}
@@ -9635,19 +9689,9 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * a maximum length of 1024.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
  * This property must be specified if the pool needs to be created with Azure
@@ -9659,10 +9703,12 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * poolAllocationMode property set to 'UserSubscription'.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -9708,8 +9754,8 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -9943,7 +9989,9 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array}
@@ -10083,7 +10131,12 @@ export interface JobSchedulePatchParameter {
  * @member {string}
  * [jobSpecification.jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobManagerTask.outputFiles] For
  * multi-instance tasks, the files will only be uploaded from the compute node
  * on which the primary task is executed.
@@ -10210,6 +10263,11 @@ export interface JobSchedulePatchParameter {
  * [jobSpecification.jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobPreparationTask.resourceFiles] Files
  * listed under this element are located in the task's working directory.
+ * There is a maximum size for the list of resource files.  When the max size
+ * is exceeded, the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobPreparationTask.environmentSettings]
  * @member {object} [jobSpecification.jobPreparationTask.constraints]
  * @member {moment.duration}
@@ -10374,19 +10432,9 @@ export interface JobSchedulePatchParameter {
  * a maximum length of 1024.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
  * This property must be specified if the pool needs to be created with Azure
@@ -10398,10 +10446,12 @@ export interface JobSchedulePatchParameter {
  * poolAllocationMode property set to 'UserSubscription'.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -10447,8 +10497,8 @@ export interface JobSchedulePatchParameter {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -10682,7 +10732,9 @@ export interface JobSchedulePatchParameter {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array}
@@ -10798,19 +10850,9 @@ export interface JobTerminateParameter {
  * display name need not be unique and can contain any Unicode characters up to
  * a maximum length of 1024.
  * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] This
  * property must be specified if the pool needs to be created with Azure PaaS
@@ -10822,10 +10864,12 @@ export interface JobTerminateParameter {
  * property set to 'UserSubscription'.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -10871,8 +10915,8 @@ export interface JobTerminateParameter {
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -11096,7 +11140,9 @@ export interface JobTerminateParameter {
  * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array} [poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
  * service does not assign any meaning to metadata; it is solely for the use of
@@ -11173,19 +11219,9 @@ export interface JobPatchParameter {
  * display name need not be unique and can contain any Unicode characters up to
  * a maximum length of 1024.
  * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] This
  * property must be specified if the pool needs to be created with Azure PaaS
@@ -11197,10 +11233,12 @@ export interface JobPatchParameter {
  * property set to 'UserSubscription'.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -11246,8 +11284,8 @@ export interface JobPatchParameter {
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -11471,7 +11509,9 @@ export interface JobPatchParameter {
  * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array} [poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
  * service does not assign any meaning to metadata; it is solely for the use of
@@ -12746,7 +12786,9 @@ export interface AccountListNodeAgentSkusOptions {
  * @constructor
  * Additional parameters for listPoolNodeCounts operation.
  *
- * @member {string} [filter] An OData $filter clause.
+ * @member {string} [filter] An OData $filter clause. For more information on
+ * constructing this filter, see
+ * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch.
  * @member {number} [maxResults] The maximum number of items to return in the
  * response. Default value: 10 .
  * @member {number} [timeout] The maximum time that the server can spend

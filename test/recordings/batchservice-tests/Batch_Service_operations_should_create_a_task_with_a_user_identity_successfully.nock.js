@@ -10,67 +10,67 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2018-03-01.6.1', '*')
+.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2018-08-01.7.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 23:01:07 GMT',
-  etag: '0x8D58611A462A001',
+  'last-modified': 'Tue, 21 Aug 2018 20:27:07 GMT',
+  etag: '0x8D607A477151458',
   location: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '51fb411b-565b-49b5-8d1d-171df124bda1',
+  'request-id': 'd58be13c-7af6-4948-acc7-4003b0349307',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity',
-  date: 'Fri, 09 Mar 2018 23:01:07 GMT',
+  date: 'Tue, 21 Aug 2018 20:27:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2018-03-01.6.1', '*')
+.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2018-08-01.7.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 23:01:07 GMT',
-  etag: '0x8D58611A462A001',
+  'last-modified': 'Tue, 21 Aug 2018 20:27:07 GMT',
+  etag: '0x8D607A477151458',
   location: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '51fb411b-565b-49b5-8d1d-171df124bda1',
+  'request-id': 'd58be13c-7af6-4948-acc7-4003b0349307',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity',
-  date: 'Fri, 09 Mar 2018 23:01:07 GMT',
+  date: 'Tue, 21 Aug 2018 20:27:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithUserIdentity\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity\",\"eTag\":\"0x8D58611A462A001\",\"creationTime\":\"2018-03-09T23:01:07.3286145Z\",\"lastModified\":\"2018-03-09T23:01:07.3286145Z\",\"state\":\"completed\",\"stateTransitionTime\":\"2018-03-09T23:01:14.663512Z\",\"previousState\":\"running\",\"previousStateTransitionTime\":\"2018-03-09T23:01:14.591505Z\",\"commandLine\":\"cmd /c net session >nul 2>&1\",\"userIdentity\":{\r\n    \"username\":\"nonAdminUser\"\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"startTime\":\"2018-03-09T23:01:14.591505Z\",\"endTime\":\"2018-03-09T23:01:14.663512Z\",\"exitCode\":2,\"failureInfo\":{\r\n      \"category\":\"UserError\",\"code\":\"FailureExitCode\",\"message\":\"The task exited with an exit code representing a failure\",\"details\":[\r\n        {\r\n          \"name\":\"Message\",\"value\":\"The task exited with an exit code representing a failure\"\r\n        }\r\n      ]\r\n    },\"result\":\"Failure\",\"retryCount\":3,\"lastRetryTime\":\"2018-03-09T23:01:13.1202283Z\",\"requeueCount\":0\r\n  },\"nodeInfo\":{\r\n    \"affinityId\":\"TVM:tvm-3840119875_3-20180309t224543z\",\"nodeUrl\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_3-20180309t224543z\",\"poolId\":\"nodesdktestpool1\",\"nodeId\":\"tvm-3840119875_3-20180309t224543z\",\"taskRootDirectory\":\"workitems\\\\helloworldjobnodesdktest\\\\job-1\\\\taskwithuseridentity\",\"taskRootDirectoryUrl\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_3-20180309t224543z/files/workitems/helloworldjobnodesdktest/job-1/taskwithuseridentity\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithUserIdentity\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity\",\"eTag\":\"0x8D607A477151458\",\"creationTime\":\"2018-08-21T20:27:07.3405016Z\",\"lastModified\":\"2018-08-21T20:27:07.3405016Z\",\"state\":\"completed\",\"stateTransitionTime\":\"2018-08-21T20:27:18.5296295Z\",\"previousState\":\"running\",\"previousStateTransitionTime\":\"2018-08-21T20:27:18.4686303Z\",\"commandLine\":\"cmd /c net session >nul 2>&1\",\"userIdentity\":{\r\n    \"username\":\"nonAdminUser\"\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"startTime\":\"2018-08-21T20:27:18.4686303Z\",\"endTime\":\"2018-08-21T20:27:18.5296295Z\",\"exitCode\":2,\"failureInfo\":{\r\n      \"category\":\"UserError\",\"code\":\"FailureExitCode\",\"message\":\"The task exited with an exit code representing a failure\",\"details\":[\r\n        {\r\n          \"name\":\"Message\",\"value\":\"The task exited with an exit code representing a failure\"\r\n        }\r\n      ]\r\n    },\"result\":\"Failure\",\"retryCount\":3,\"lastRetryTime\":\"2018-08-21T20:27:16.7229929Z\",\"requeueCount\":0\r\n  },\"nodeInfo\":{\r\n    \"affinityId\":\"TVM:tvm-14141481_3-20180821t200555z\",\"nodeUrl\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_3-20180821t200555z\",\"poolId\":\"nodesdktestpool1\",\"nodeId\":\"tvm-14141481_3-20180821t200555z\",\"taskRootDirectory\":\"workitems\\\\helloworldjobnodesdktest\\\\job-1\\\\taskwithuseridentity\",\"taskRootDirectoryUrl\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_3-20180821t200555z/files/workitems/helloworldjobnodesdktest/job-1/taskwithuseridentity\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 09 Mar 2018 23:01:07 GMT',
-  etag: '0x8D58611A462A001',
+  'last-modified': 'Tue, 21 Aug 2018 20:27:07 GMT',
+  etag: '0x8D607A477151458',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '97a39df5-567e-469b-a5ef-4344a3d19a43',
+  'request-id': '6b3ca097-cb5d-4045-bff7-12a3ef657f30',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:01:22 GMT',
+  date: 'Tue, 21 Aug 2018 20:27:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithUserIdentity\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity\",\"eTag\":\"0x8D58611A462A001\",\"creationTime\":\"2018-03-09T23:01:07.3286145Z\",\"lastModified\":\"2018-03-09T23:01:07.3286145Z\",\"state\":\"completed\",\"stateTransitionTime\":\"2018-03-09T23:01:14.663512Z\",\"previousState\":\"running\",\"previousStateTransitionTime\":\"2018-03-09T23:01:14.591505Z\",\"commandLine\":\"cmd /c net session >nul 2>&1\",\"userIdentity\":{\r\n    \"username\":\"nonAdminUser\"\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"startTime\":\"2018-03-09T23:01:14.591505Z\",\"endTime\":\"2018-03-09T23:01:14.663512Z\",\"exitCode\":2,\"failureInfo\":{\r\n      \"category\":\"UserError\",\"code\":\"FailureExitCode\",\"message\":\"The task exited with an exit code representing a failure\",\"details\":[\r\n        {\r\n          \"name\":\"Message\",\"value\":\"The task exited with an exit code representing a failure\"\r\n        }\r\n      ]\r\n    },\"result\":\"Failure\",\"retryCount\":3,\"lastRetryTime\":\"2018-03-09T23:01:13.1202283Z\",\"requeueCount\":0\r\n  },\"nodeInfo\":{\r\n    \"affinityId\":\"TVM:tvm-3840119875_3-20180309t224543z\",\"nodeUrl\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_3-20180309t224543z\",\"poolId\":\"nodesdktestpool1\",\"nodeId\":\"tvm-3840119875_3-20180309t224543z\",\"taskRootDirectory\":\"workitems\\\\helloworldjobnodesdktest\\\\job-1\\\\taskwithuseridentity\",\"taskRootDirectoryUrl\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_3-20180309t224543z/files/workitems/helloworldjobnodesdktest/job-1/taskwithuseridentity\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithUserIdentity\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithUserIdentity\",\"eTag\":\"0x8D607A477151458\",\"creationTime\":\"2018-08-21T20:27:07.3405016Z\",\"lastModified\":\"2018-08-21T20:27:07.3405016Z\",\"state\":\"completed\",\"stateTransitionTime\":\"2018-08-21T20:27:18.5296295Z\",\"previousState\":\"running\",\"previousStateTransitionTime\":\"2018-08-21T20:27:18.4686303Z\",\"commandLine\":\"cmd /c net session >nul 2>&1\",\"userIdentity\":{\r\n    \"username\":\"nonAdminUser\"\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"startTime\":\"2018-08-21T20:27:18.4686303Z\",\"endTime\":\"2018-08-21T20:27:18.5296295Z\",\"exitCode\":2,\"failureInfo\":{\r\n      \"category\":\"UserError\",\"code\":\"FailureExitCode\",\"message\":\"The task exited with an exit code representing a failure\",\"details\":[\r\n        {\r\n          \"name\":\"Message\",\"value\":\"The task exited with an exit code representing a failure\"\r\n        }\r\n      ]\r\n    },\"result\":\"Failure\",\"retryCount\":3,\"lastRetryTime\":\"2018-08-21T20:27:16.7229929Z\",\"requeueCount\":0\r\n  },\"nodeInfo\":{\r\n    \"affinityId\":\"TVM:tvm-14141481_3-20180821t200555z\",\"nodeUrl\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_3-20180821t200555z\",\"poolId\":\"nodesdktestpool1\",\"nodeId\":\"tvm-14141481_3-20180821t200555z\",\"taskRootDirectory\":\"workitems\\\\helloworldjobnodesdktest\\\\job-1\\\\taskwithuseridentity\",\"taskRootDirectoryUrl\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_3-20180821t200555z/files/workitems/helloworldjobnodesdktest/job-1/taskwithuseridentity\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 09 Mar 2018 23:01:07 GMT',
-  etag: '0x8D58611A462A001',
+  'last-modified': 'Tue, 21 Aug 2018 20:27:07 GMT',
+  etag: '0x8D607A477151458',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '97a39df5-567e-469b-a5ef-4344a3d19a43',
+  'request-id': '6b3ca097-cb5d-4045-bff7-12a3ef657f30',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:01:22 GMT',
+  date: 'Tue, 21 Aug 2018 20:27:21 GMT',
   connection: 'close' });
  return result; }]];

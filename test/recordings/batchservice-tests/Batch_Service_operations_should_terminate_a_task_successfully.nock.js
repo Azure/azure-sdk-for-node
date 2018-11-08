@@ -9,32 +9,32 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .post('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/terminate?api-version=2018-03-01.6.1')
+  .post('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/terminate?api-version=2018-08-01.7.0')
   .reply(204, "", { 'content-length': '0',
-  'last-modified': 'Fri, 09 Mar 2018 22:59:25 GMT',
-  etag: '0x8D5861167B943DE',
+  'last-modified': 'Tue, 21 Aug 2018 20:25:25 GMT',
+  etag: '0x8D607A43A83710D',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '1d457fec-4675-4dc6-aa30-011251b121b7',
+  'request-id': '4584a256-f4e5-4a80-b2ca-007e2a5e467f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/terminate',
-  date: 'Fri, 09 Mar 2018 22:59:25 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .post('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/terminate?api-version=2018-03-01.6.1')
+  .post('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/terminate?api-version=2018-08-01.7.0')
   .reply(204, "", { 'content-length': '0',
-  'last-modified': 'Fri, 09 Mar 2018 22:59:25 GMT',
-  etag: '0x8D5861167B943DE',
+  'last-modified': 'Tue, 21 Aug 2018 20:25:25 GMT',
+  etag: '0x8D607A43A83710D',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '1d457fec-4675-4dc6-aa30-011251b121b7',
+  'request-id': '4584a256-f4e5-4a80-b2ca-007e2a5e467f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/terminate',
-  date: 'Fri, 09 Mar 2018 22:59:25 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:25 GMT',
   connection: 'close' });
  return result; }]];

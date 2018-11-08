@@ -9,30 +9,30 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .post('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/reactivate?api-version=2018-03-01.6.1')
+  .post('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/reactivate?api-version=2018-08-01.7.0')
   .reply(204, "", { 'content-length': '0',
-  'last-modified': 'Fri, 09 Mar 2018 22:59:25 GMT',
-  etag: '0x8D5861167F3CDFF',
+  'last-modified': 'Tue, 21 Aug 2018 20:25:26 GMT',
+  etag: '0x8D607A43AB500D1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '1bb5c169-bd56-442e-ba77-7f4adb67984d',
+  'request-id': '94b3ebde-7b04-4ef5-8d7e-207831ebc2a4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:59:25 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:26 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .post('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/reactivate?api-version=2018-03-01.6.1')
+  .post('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/reactivate?api-version=2018-08-01.7.0')
   .reply(204, "", { 'content-length': '0',
-  'last-modified': 'Fri, 09 Mar 2018 22:59:25 GMT',
-  etag: '0x8D5861167F3CDFF',
+  'last-modified': 'Tue, 21 Aug 2018 20:25:26 GMT',
+  etag: '0x8D607A43AB500D1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '1bb5c169-bd56-442e-ba77-7f4adb67984d',
+  'request-id': '94b3ebde-7b04-4ef5-8d7e-207831ebc2a4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:59:25 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:26 GMT',
   connection: 'close' });
  return result; }]];

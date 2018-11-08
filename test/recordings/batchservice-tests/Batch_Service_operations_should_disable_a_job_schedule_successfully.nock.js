@@ -9,32 +9,32 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .post('/jobschedules/NodeSDKTestSchedule/disable?api-version=2018-03-01.6.1')
+  .post('/jobschedules/NodeSDKTestSchedule/disable?api-version=2018-08-01.7.0')
   .reply(204, "", { 'content-length': '0',
-  'last-modified': 'Fri, 09 Mar 2018 23:25:25 GMT',
-  etag: '0x8D586150995B13C',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:04 GMT',
+  etag: '0x8D607A5048EEBD1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '824d5457-1c7d-4cb6-9e64-f3b4c3d8886e',
+  'request-id': 'b290831d-fe21-4b17-bb5e-86cbbaa1d795',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobschedules/NodeSDKTestSchedule/disable',
-  date: 'Fri, 09 Mar 2018 23:25:25 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .post('/jobschedules/NodeSDKTestSchedule/disable?api-version=2018-03-01.6.1')
+  .post('/jobschedules/NodeSDKTestSchedule/disable?api-version=2018-08-01.7.0')
   .reply(204, "", { 'content-length': '0',
-  'last-modified': 'Fri, 09 Mar 2018 23:25:25 GMT',
-  etag: '0x8D586150995B13C',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:04 GMT',
+  etag: '0x8D607A5048EEBD1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '824d5457-1c7d-4cb6-9e64-f3b4c3d8886e',
+  'request-id': 'b290831d-fe21-4b17-bb5e-86cbbaa1d795',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobschedules/NodeSDKTestSchedule/disable',
-  date: 'Fri, 09 Mar 2018 23:25:25 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:04 GMT',
   connection: 'close' });
  return result; }]];

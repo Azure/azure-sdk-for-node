@@ -9,26 +9,26 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .delete('/jobschedules/NodeSDKTestSchedule?api-version=2018-03-01.6.1')
+  .delete('/jobschedules/NodeSDKTestSchedule?api-version=2018-08-01.7.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'd958e710-2f14-4a9e-85ab-e40342164481',
+  'request-id': '5a06a9d9-e0d5-4d09-a5a6-75545ebf34f9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:25:26 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .delete('/jobschedules/NodeSDKTestSchedule?api-version=2018-03-01.6.1')
+  .delete('/jobschedules/NodeSDKTestSchedule?api-version=2018-08-01.7.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'd958e710-2f14-4a9e-85ab-e40342164481',
+  'request-id': '5a06a9d9-e0d5-4d09-a5a6-75545ebf34f9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:25:26 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:06 GMT',
   connection: 'close' });
  return result; }]];

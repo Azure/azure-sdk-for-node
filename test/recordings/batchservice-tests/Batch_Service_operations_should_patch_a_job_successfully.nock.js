@@ -10,33 +10,33 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/jobs/HelloWorldJobNodeSDKTest?api-version=2018-03-01.6.1', '*')
+.put('/jobs/HelloWorldJobNodeSDKTest?api-version=2018-08-01.7.0', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 22:59:23 GMT',
-  etag: '0x8D586116694D752',
+  'last-modified': 'Tue, 21 Aug 2018 20:25:23 GMT',
+  etag: '0x8D607A4396C0D8C',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '3f9de728-0ba9-4c6c-941d-72f254990d5d',
+  'request-id': 'a8773a06-15e9-4f40-ab7e-28f0246705bd',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest',
-  date: 'Fri, 09 Mar 2018 22:59:23 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/jobs/HelloWorldJobNodeSDKTest?api-version=2018-03-01.6.1', '*')
+.put('/jobs/HelloWorldJobNodeSDKTest?api-version=2018-08-01.7.0', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 22:59:23 GMT',
-  etag: '0x8D586116694D752',
+  'last-modified': 'Tue, 21 Aug 2018 20:25:23 GMT',
+  etag: '0x8D607A4396C0D8C',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '3f9de728-0ba9-4c6c-941d-72f254990d5d',
+  'request-id': 'a8773a06-15e9-4f40-ab7e-28f0246705bd',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest',
-  date: 'Fri, 09 Mar 2018 22:59:23 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:23 GMT',
   connection: 'close' });
  return result; }]];

@@ -29,6 +29,8 @@ export interface Solutions {
      * @param {string} resourceGroupName The name of the resource group to get. The
      * name is case insensitive.
      *
+     * @param {string} solutionName User Solution Name.
+     *
      * @param {object} parameters The parameters required to create OMS Solution.
      *
      * @param {string} [parameters.location] Resource location
@@ -76,7 +78,7 @@ export interface Solutions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, parameters: models.Solution, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Solution>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, solutionName: string, parameters: models.Solution, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Solution>>;
 
     /**
      * @summary Create/Update Solution.
@@ -85,6 +87,8 @@ export interface Solutions {
      *
      * @param {string} resourceGroupName The name of the resource group to get. The
      * name is case insensitive.
+     *
+     * @param {string} solutionName User Solution Name.
      *
      * @param {object} parameters The parameters required to create OMS Solution.
      *
@@ -149,9 +153,9 @@ export interface Solutions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, parameters: models.Solution, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Solution>;
-    createOrUpdate(resourceGroupName: string, parameters: models.Solution, callback: ServiceCallback<models.Solution>): void;
-    createOrUpdate(resourceGroupName: string, parameters: models.Solution, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Solution>): void;
+    createOrUpdate(resourceGroupName: string, solutionName: string, parameters: models.Solution, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Solution>;
+    createOrUpdate(resourceGroupName: string, solutionName: string, parameters: models.Solution, callback: ServiceCallback<models.Solution>): void;
+    createOrUpdate(resourceGroupName: string, solutionName: string, parameters: models.Solution, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Solution>): void;
 
 
     /**
@@ -161,6 +165,8 @@ export interface Solutions {
      *
      * @param {string} resourceGroupName The name of the resource group to get. The
      * name is case insensitive.
+     *
+     * @param {string} solutionName User Solution Name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -173,7 +179,7 @@ export interface Solutions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, solutionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Deletes the solution
@@ -182,6 +188,8 @@ export interface Solutions {
      *
      * @param {string} resourceGroupName The name of the resource group to get. The
      * name is case insensitive.
+     *
+     * @param {string} solutionName User Solution Name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -209,9 +217,9 @@ export interface Solutions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, solutionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, solutionName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, solutionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -221,6 +229,8 @@ export interface Solutions {
      *
      * @param {string} resourceGroupName The name of the resource group to get. The
      * name is case insensitive.
+     *
+     * @param {string} solutionName User Solution Name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -233,7 +243,7 @@ export interface Solutions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Solution>>;
+    getWithHttpOperationResponse(resourceGroupName: string, solutionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Solution>>;
 
     /**
      * @summary Retrieve solution.
@@ -242,6 +252,8 @@ export interface Solutions {
      *
      * @param {string} resourceGroupName The name of the resource group to get. The
      * name is case insensitive.
+     *
+     * @param {string} solutionName User Solution Name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -270,9 +282,9 @@ export interface Solutions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Solution>;
-    get(resourceGroupName: string, callback: ServiceCallback<models.Solution>): void;
-    get(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Solution>): void;
+    get(resourceGroupName: string, solutionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Solution>;
+    get(resourceGroupName: string, solutionName: string, callback: ServiceCallback<models.Solution>): void;
+    get(resourceGroupName: string, solutionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Solution>): void;
 
 
     /**
@@ -395,6 +407,795 @@ export interface Solutions {
     listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SolutionPropertiesList>;
     listBySubscription(callback: ServiceCallback<models.SolutionPropertiesList>): void;
     listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SolutionPropertiesList>): void;
+
+
+    /**
+     * @summary Create/Update Solution.
+     *
+     * Creates or updates the Solution.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {string} solutionName User Solution Name.
+     *
+     * @param {object} parameters The parameters required to create OMS Solution.
+     *
+     * @param {string} [parameters.location] Resource location
+     *
+     * @param {object} [parameters.plan] Plan for solution object supported by the
+     * OperationsManagement resource provider.
+     *
+     * @param {string} [parameters.plan.name] name of the solution to be created.
+     * For Microsoft published solution it should be in the format of
+     * solutionType(workspaceName). SolutionType part is case sensitive. For third
+     * party solution, it can be anything.
+     *
+     * @param {string} [parameters.plan.publisher] Publisher name. For gallery
+     * solution, it is Microsoft.
+     *
+     * @param {string} [parameters.plan.promotionCode] promotionCode, Not really
+     * used now, can you left as empty
+     *
+     * @param {string} [parameters.plan.product] name of the solution to
+     * enabled/add. For Microsoft published gallery solution it should be in the
+     * format of OMSGallery/<solutionType>. This is case sensitive
+     *
+     * @param {object} [parameters.properties] Properties for solution object
+     * supported by the OperationsManagement resource provider.
+     *
+     * @param {string} parameters.properties.workspaceResourceId The azure
+     * resourceId for the workspace where the solution will be deployed/enabled.
+     *
+     * @param {array} [parameters.properties.containedResources] The azure
+     * resources that will be contained within the solutions. They will be locked
+     * and gets deleted automatically when the solution is deleted.
+     *
+     * @param {array} [parameters.properties.referencedResources] The resources
+     * that will be referenced from this solution. Deleting any of those solution
+     * out of band will break the solution.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Solution>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, solutionName: string, parameters: models.Solution, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Solution>>;
+
+    /**
+     * @summary Create/Update Solution.
+     *
+     * Creates or updates the Solution.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {string} solutionName User Solution Name.
+     *
+     * @param {object} parameters The parameters required to create OMS Solution.
+     *
+     * @param {string} [parameters.location] Resource location
+     *
+     * @param {object} [parameters.plan] Plan for solution object supported by the
+     * OperationsManagement resource provider.
+     *
+     * @param {string} [parameters.plan.name] name of the solution to be created.
+     * For Microsoft published solution it should be in the format of
+     * solutionType(workspaceName). SolutionType part is case sensitive. For third
+     * party solution, it can be anything.
+     *
+     * @param {string} [parameters.plan.publisher] Publisher name. For gallery
+     * solution, it is Microsoft.
+     *
+     * @param {string} [parameters.plan.promotionCode] promotionCode, Not really
+     * used now, can you left as empty
+     *
+     * @param {string} [parameters.plan.product] name of the solution to
+     * enabled/add. For Microsoft published gallery solution it should be in the
+     * format of OMSGallery/<solutionType>. This is case sensitive
+     *
+     * @param {object} [parameters.properties] Properties for solution object
+     * supported by the OperationsManagement resource provider.
+     *
+     * @param {string} parameters.properties.workspaceResourceId The azure
+     * resourceId for the workspace where the solution will be deployed/enabled.
+     *
+     * @param {array} [parameters.properties.containedResources] The azure
+     * resources that will be contained within the solutions. They will be locked
+     * and gets deleted automatically when the solution is deleted.
+     *
+     * @param {array} [parameters.properties.referencedResources] The resources
+     * that will be referenced from this solution. Deleting any of those solution
+     * out of band will break the solution.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Solution} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Solution} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Solution} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, solutionName: string, parameters: models.Solution, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Solution>;
+    beginCreateOrUpdate(resourceGroupName: string, solutionName: string, parameters: models.Solution, callback: ServiceCallback<models.Solution>): void;
+    beginCreateOrUpdate(resourceGroupName: string, solutionName: string, parameters: models.Solution, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Solution>): void;
+
+
+    /**
+     * @summary Deletes the solution
+     *
+     * Deletes the solution in the subscription.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {string} solutionName User Solution Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, solutionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes the solution
+     *
+     * Deletes the solution in the subscription.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {string} solutionName User Solution Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, solutionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, solutionName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, solutionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
+ * ManagementAssociations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the OperationsManagementClient.
+ */
+export interface ManagementAssociations {
+
+
+    /**
+     * @summary Retrieves the ManagementAssociatons list for the subscription
+     *
+     * Retrieves the ManagementAssociatons list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagementAssociationPropertiesList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementAssociationPropertiesList>>;
+
+    /**
+     * @summary Retrieves the ManagementAssociatons list for the subscription
+     *
+     * Retrieves the ManagementAssociatons list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagementAssociationPropertiesList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagementAssociationPropertiesList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagementAssociationPropertiesList} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementAssociationPropertiesList>;
+    listBySubscription(callback: ServiceCallback<models.ManagementAssociationPropertiesList>): void;
+    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementAssociationPropertiesList>): void;
+
+
+    /**
+     * @summary Create/Update ManagementAssociation.
+     *
+     * Creates or updates the ManagementAssociation.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {string} managementAssociationName User ManagementAssociation Name.
+     *
+     * @param {object} parameters The parameters required to create
+     * ManagementAssociation extension.
+     *
+     * @param {string} [parameters.location] Resource location
+     *
+     * @param {object} [parameters.properties] Properties for ManagementAssociation
+     * object supported by the OperationsManagement resource provider.
+     *
+     * @param {string} parameters.properties.applicationId The applicationId of the
+     * appliance for this association.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagementAssociation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, managementAssociationName: string, parameters: models.ManagementAssociation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementAssociation>>;
+
+    /**
+     * @summary Create/Update ManagementAssociation.
+     *
+     * Creates or updates the ManagementAssociation.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {string} managementAssociationName User ManagementAssociation Name.
+     *
+     * @param {object} parameters The parameters required to create
+     * ManagementAssociation extension.
+     *
+     * @param {string} [parameters.location] Resource location
+     *
+     * @param {object} [parameters.properties] Properties for ManagementAssociation
+     * object supported by the OperationsManagement resource provider.
+     *
+     * @param {string} parameters.properties.applicationId The applicationId of the
+     * appliance for this association.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagementAssociation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagementAssociation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagementAssociation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, managementAssociationName: string, parameters: models.ManagementAssociation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementAssociation>;
+    createOrUpdate(resourceGroupName: string, managementAssociationName: string, parameters: models.ManagementAssociation, callback: ServiceCallback<models.ManagementAssociation>): void;
+    createOrUpdate(resourceGroupName: string, managementAssociationName: string, parameters: models.ManagementAssociation, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementAssociation>): void;
+
+
+    /**
+     * @summary Deletes the ManagementAssociation
+     *
+     * Deletes the ManagementAssociation in the subscription.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {string} managementAssociationName User ManagementAssociation Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, managementAssociationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes the ManagementAssociation
+     *
+     * Deletes the ManagementAssociation in the subscription.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {string} managementAssociationName User ManagementAssociation Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, managementAssociationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, managementAssociationName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, managementAssociationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Retrieve ManagementAssociation.
+     *
+     * Retrieves the user ManagementAssociation.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {string} managementAssociationName User ManagementAssociation Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagementAssociation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, managementAssociationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementAssociation>>;
+
+    /**
+     * @summary Retrieve ManagementAssociation.
+     *
+     * Retrieves the user ManagementAssociation.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {string} managementAssociationName User ManagementAssociation Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagementAssociation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagementAssociation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagementAssociation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, managementAssociationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementAssociation>;
+    get(resourceGroupName: string, managementAssociationName: string, callback: ServiceCallback<models.ManagementAssociation>): void;
+    get(resourceGroupName: string, managementAssociationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementAssociation>): void;
+}
+
+/**
+ * @class
+ * ManagementConfigurations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the OperationsManagementClient.
+ */
+export interface ManagementConfigurations {
+
+
+    /**
+     * @summary Retrieves the ManagementConfigurations list for the subscription
+     *
+     * Retrieves the ManagementConfigurations list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagementConfigurationPropertiesList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementConfigurationPropertiesList>>;
+
+    /**
+     * @summary Retrieves the ManagementConfigurations list for the subscription
+     *
+     * Retrieves the ManagementConfigurations list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagementConfigurationPropertiesList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagementConfigurationPropertiesList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagementConfigurationPropertiesList} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementConfigurationPropertiesList>;
+    listBySubscription(callback: ServiceCallback<models.ManagementConfigurationPropertiesList>): void;
+    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementConfigurationPropertiesList>): void;
+
+
+    /**
+     * @summary Create/Update ManagementConfiguration.
+     *
+     * Creates or updates the ManagementConfiguration.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {string} managementConfigurationName User Management Configuration
+     * Name.
+     *
+     * @param {object} parameters The parameters required to create OMS Solution.
+     *
+     * @param {string} [parameters.location] Resource location
+     *
+     * @param {object} [parameters.properties] Properties for
+     * ManagementConfiguration object supported by the OperationsManagement
+     * resource provider.
+     *
+     * @param {string} [parameters.properties.applicationId] The applicationId of
+     * the appliance for this Management.
+     *
+     * @param {string} parameters.properties.parentResourceType The type of the
+     * parent resource.
+     *
+     * @param {array} parameters.properties.parameters Parameters to run the ARM
+     * template
+     *
+     * @param {object} parameters.properties.template The Json object containing
+     * the ARM template to deploy
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagementConfiguration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, managementConfigurationName: string, parameters: models.ManagementConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementConfiguration>>;
+
+    /**
+     * @summary Create/Update ManagementConfiguration.
+     *
+     * Creates or updates the ManagementConfiguration.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {string} managementConfigurationName User Management Configuration
+     * Name.
+     *
+     * @param {object} parameters The parameters required to create OMS Solution.
+     *
+     * @param {string} [parameters.location] Resource location
+     *
+     * @param {object} [parameters.properties] Properties for
+     * ManagementConfiguration object supported by the OperationsManagement
+     * resource provider.
+     *
+     * @param {string} [parameters.properties.applicationId] The applicationId of
+     * the appliance for this Management.
+     *
+     * @param {string} parameters.properties.parentResourceType The type of the
+     * parent resource.
+     *
+     * @param {array} parameters.properties.parameters Parameters to run the ARM
+     * template
+     *
+     * @param {object} parameters.properties.template The Json object containing
+     * the ARM template to deploy
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagementConfiguration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagementConfiguration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagementConfiguration} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, managementConfigurationName: string, parameters: models.ManagementConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementConfiguration>;
+    createOrUpdate(resourceGroupName: string, managementConfigurationName: string, parameters: models.ManagementConfiguration, callback: ServiceCallback<models.ManagementConfiguration>): void;
+    createOrUpdate(resourceGroupName: string, managementConfigurationName: string, parameters: models.ManagementConfiguration, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementConfiguration>): void;
+
+
+    /**
+     * @summary Deletes the ManagementConfiguration
+     *
+     * Deletes the ManagementConfiguration in the subscription.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {string} managementConfigurationName User Management Configuration
+     * Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, managementConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes the ManagementConfiguration
+     *
+     * Deletes the ManagementConfiguration in the subscription.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {string} managementConfigurationName User Management Configuration
+     * Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, managementConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, managementConfigurationName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, managementConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Retrieve ManagementConfiguration.
+     *
+     * Retrieves the user ManagementConfiguration.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {string} managementConfigurationName User Management Configuration
+     * Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagementConfiguration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, managementConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementConfiguration>>;
+
+    /**
+     * @summary Retrieve ManagementConfiguration.
+     *
+     * Retrieves the user ManagementConfiguration.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {string} managementConfigurationName User Management Configuration
+     * Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagementConfiguration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagementConfiguration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagementConfiguration} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, managementConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementConfiguration>;
+    get(resourceGroupName: string, managementConfigurationName: string, callback: ServiceCallback<models.ManagementConfiguration>): void;
+    get(resourceGroupName: string, managementConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementConfiguration>): void;
 }
 
 /**

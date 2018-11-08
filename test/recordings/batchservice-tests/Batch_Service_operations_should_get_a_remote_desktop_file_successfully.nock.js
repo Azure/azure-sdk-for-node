@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1/nodes/tvm-3840119875_1-20180309t224543z/rdp?api-version=2018-03-01.6.1')
-  .reply(200, "full address:s:52.161.155.190\r\nLoadBalanceInfo:s:Cookie: mstshash=TVM#TVM_IN_0", { 'transfer-encoding': 'chunked',
+  .get('/pools/nodesdktestpool1/nodes/tvm-14141481_1-20180821t200555z/rdp?api-version=2018-08-01.7.0')
+  .reply(200, "full address:s:13.78.131.204\r\nLoadBalanceInfo:s:Cookie: mstshash=TVM#TVM_IN_0", { 'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '105afa71-0c5d-4d4b-9309-1b802a469a27',
+  'request-id': '8151ec16-4fb1-47a3-b0ed-901d2939016c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:59:13 GMT',
+  date: 'Tue, 21 Aug 2018 20:23:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1/nodes/tvm-3840119875_1-20180309t224543z/rdp?api-version=2018-03-01.6.1')
-  .reply(200, "full address:s:52.161.155.190\r\nLoadBalanceInfo:s:Cookie: mstshash=TVM#TVM_IN_0", { 'transfer-encoding': 'chunked',
+  .get('/pools/nodesdktestpool1/nodes/tvm-14141481_1-20180821t200555z/rdp?api-version=2018-08-01.7.0')
+  .reply(200, "full address:s:13.78.131.204\r\nLoadBalanceInfo:s:Cookie: mstshash=TVM#TVM_IN_0", { 'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '105afa71-0c5d-4d4b-9309-1b802a469a27',
+  'request-id': '8151ec16-4fb1-47a3-b0ed-901d2939016c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:59:13 GMT',
+  date: 'Tue, 21 Aug 2018 20:23:10 GMT',
   connection: 'close' });
  return result; }]];

@@ -80,6 +80,58 @@ export interface SolutionProperties extends BaseResource {
 
 /**
  * @class
+ * Initializes a new instance of the ManagementAssociationProperties class.
+ * @constructor
+ * ManagementAssociation properties supported by the OperationsManagement
+ * resource provider.
+ *
+ * @member {string} applicationId The applicationId of the appliance for this
+ * association.
+ */
+export interface ManagementAssociationProperties extends BaseResource {
+  applicationId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ArmTemplateParameter class.
+ * @constructor
+ * Parameter to pass to ARM template
+ *
+ * @member {string} [name] name of the parameter.
+ * @member {string} [value] value for the parameter. In Jtoken
+ */
+export interface ArmTemplateParameter {
+  name?: string;
+  value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagementConfigurationProperties class.
+ * @constructor
+ * ManagementConfiguration properties supported by the OperationsManagement
+ * resource provider.
+ *
+ * @member {string} [applicationId] The applicationId of the appliance for this
+ * Management.
+ * @member {string} parentResourceType The type of the parent resource.
+ * @member {array} parameters Parameters to run the ARM template
+ * @member {string} [provisioningState] The provisioning state for the
+ * ManagementConfiguration.
+ * @member {object} template The Json object containing the ARM template to
+ * deploy
+ */
+export interface ManagementConfigurationProperties extends BaseResource {
+  applicationId?: string;
+  parentResourceType: string;
+  parameters: ArmTemplateParameter[];
+  readonly provisioningState?: string;
+  template: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SolutionPlan class.
  * @constructor
  * Plan for solution object supported by the OperationsManagement resource
@@ -159,6 +211,85 @@ export interface Solution extends BaseResource {
  */
 export interface SolutionPropertiesList {
   value?: Solution[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagementAssociation class.
+ * @constructor
+ * The container for solution.
+ *
+ * @member {string} [id] Resource ID.
+ * @member {string} [name] Resource name.
+ * @member {string} [type] Resource type.
+ * @member {string} [location] Resource location
+ * @member {object} [properties] Properties for ManagementAssociation object
+ * supported by the OperationsManagement resource provider.
+ * @member {string} [properties.applicationId] The applicationId of the
+ * appliance for this association.
+ */
+export interface ManagementAssociation extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  location?: string;
+  properties?: ManagementAssociationProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagementAssociationPropertiesList class.
+ * @constructor
+ * the list of ManagementAssociation response
+ *
+ * @member {array} [value] List of Management Association properites within the
+ * subscription.
+ */
+export interface ManagementAssociationPropertiesList {
+  value?: ManagementAssociation[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagementConfiguration class.
+ * @constructor
+ * The container for solution.
+ *
+ * @member {string} [id] Resource ID.
+ * @member {string} [name] Resource name.
+ * @member {string} [type] Resource type.
+ * @member {string} [location] Resource location
+ * @member {object} [properties] Properties for ManagementConfiguration object
+ * supported by the OperationsManagement resource provider.
+ * @member {string} [properties.applicationId] The applicationId of the
+ * appliance for this Management.
+ * @member {string} [properties.parentResourceType] The type of the parent
+ * resource.
+ * @member {array} [properties.parameters] Parameters to run the ARM template
+ * @member {string} [properties.provisioningState] The provisioning state for
+ * the ManagementConfiguration.
+ * @member {object} [properties.template] The Json object containing the ARM
+ * template to deploy
+ */
+export interface ManagementConfiguration extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  location?: string;
+  properties?: ManagementConfigurationProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagementConfigurationPropertiesList class.
+ * @constructor
+ * the list of ManagementConfiguration response
+ *
+ * @member {array} [value] List of Management Configuration properites within
+ * the subscription.
+ */
+export interface ManagementConfigurationPropertiesList {
+  value?: ManagementConfiguration[];
 }
 
 /**
