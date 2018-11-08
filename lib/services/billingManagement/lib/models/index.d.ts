@@ -66,8 +66,7 @@ export interface BillingPeriod extends Resource {
  * @class
  * Initializes a new instance of the DownloadUrl class.
  * @constructor
- * A secure URL that can be used to download a PDF invoice until the URL
- * expires.
+ * A secure URL that can be used to download a an entity until the URL expires.
  *
  * @member {date} [expiryTime] The time in UTC at which this download URL will
  * expire.
