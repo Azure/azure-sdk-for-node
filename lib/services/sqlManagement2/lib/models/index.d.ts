@@ -1358,7 +1358,7 @@ export interface ManagedInstance extends TrackedResource {
   licenseType?: string;
   vCores?: number;
   storageSizeInGB?: number;
-  readonly collation?: string;
+  collation?: string;
   readonly dnsZone?: string;
   dnsZonePartner?: string;
 }
@@ -1411,7 +1411,7 @@ export interface ManagedInstanceUpdate {
   licenseType?: string;
   vCores?: number;
   storageSizeInGB?: number;
-  readonly collation?: string;
+  collation?: string;
   readonly dnsZone?: string;
   dnsZonePartner?: string;
   tags?: { [propertyName: string]: string };
@@ -2843,6 +2843,19 @@ export interface BackupLongTermRetentionPolicy extends ProxyResource {
   monthlyRetention?: string;
   yearlyRetention?: string;
   weekOfYear?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedBackupShortTermRetentionPolicy class.
+ * @constructor
+ * A short term retention policy.
+ *
+ * @member {number} [retentionDays] The backup retention period in days. This
+ * is how many days Point-in-Time Restore will be supported.
+ */
+export interface ManagedBackupShortTermRetentionPolicy extends ProxyResource {
+  retentionDays?: number;
 }
 
 /**
@@ -4786,6 +4799,18 @@ export interface JobVersionListResult extends Array<JobVersion> {
  * @member {string} [nextLink] Link to retrieve next page of results.
  */
 export interface LongTermRetentionBackupListResult extends Array<LongTermRetentionBackup> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedBackupShortTermRetentionPolicyListResult class.
+ * @constructor
+ * A list of short term retention policies.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ManagedBackupShortTermRetentionPolicyListResult extends Array<ManagedBackupShortTermRetentionPolicy> {
   readonly nextLink?: string;
 }
 
