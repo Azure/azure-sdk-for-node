@@ -505,6 +505,64 @@ export interface Invoices {
 
 
     /**
+     * Get pricesheet data for invoice id (invoiceName).
+     *
+     * @param {string} billingAccountId Azure Billing Account ID.
+     *
+     * @param {string} invoiceName The name of an invoice resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    pricesheetWithHttpOperationResponse(billingAccountId: string, invoiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Get pricesheet data for invoice id (invoiceName).
+     *
+     * @param {string} billingAccountId Azure Billing Account ID.
+     *
+     * @param {string} invoiceName The name of an invoice resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    pricesheet(billingAccountId: string, invoiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    pricesheet(billingAccountId: string, invoiceName: string, callback: ServiceCallback<void>): void;
+    pricesheet(billingAccountId: string, invoiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Gets a named invoice resource. When getting a single invoice, the
      * downloadUrl property is expanded automatically.  This is only supported for
      * Azure Web-Direct subscriptions. Other subscription types which were not
@@ -691,73 +749,6 @@ export interface Invoices {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InvoicesListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.InvoicesListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InvoicesListResult>): void;
-}
-
-/**
- * @class
- * InvoiceOperations
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the BillingManagementClient.
- */
-export interface InvoiceOperations {
-
-
-    /**
-     * Get pricesheet data for invoice id (invoiceName).
-     *
-     * @param {string} billingAccountId Azure Billing Account ID.
-     *
-     * @param {string} invoiceName The name of an invoice resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    pricesheetWithHttpOperationResponse(billingAccountId: string, invoiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Get pricesheet data for invoice id (invoiceName).
-     *
-     * @param {string} billingAccountId Azure Billing Account ID.
-     *
-     * @param {string} invoiceName The name of an invoice resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    pricesheet(billingAccountId: string, invoiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    pricesheet(billingAccountId: string, invoiceName: string, callback: ServiceCallback<void>): void;
-    pricesheet(billingAccountId: string, invoiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
