@@ -4067,6 +4067,22 @@ export interface ApplicationGatewayFrontendPort extends SubResource {
 
 /**
  * @class
+ * Initializes a new instance of the ApplicationGatewayCustomError class.
+ * @constructor
+ * Customer error of an application gateway.
+ *
+ * @member {string} [statusCode] Status code of the application gateway
+ * customer error. Possible values include: 'HttpStatus403', 'HttpStatus502'
+ * @member {string} [customErrorPageUrl] Error page URL of the application
+ * gateway customer error.
+ */
+export interface ApplicationGatewayCustomError {
+  statusCode?: string;
+  customErrorPageUrl?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationGatewayHttpListener class.
  * @constructor
  * Http listener of an application gateway.
@@ -4087,6 +4103,8 @@ export interface ApplicationGatewayFrontendPort extends SubResource {
  * is https. Enables SNI for multi-hosting.
  * @member {string} [provisioningState] Provisioning state of the HTTP listener
  * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @member {array} [customErrorConfigurations] Custom error configurations of
+ * the HTTP listener.
  * @member {string} [name] Name of the HTTP listener that is unique within an
  * Application Gateway.
  * @member {string} [etag] A unique read-only string that changes whenever the
@@ -4101,6 +4119,7 @@ export interface ApplicationGatewayHttpListener extends SubResource {
   sslCertificate?: SubResource;
   requireServerNameIndication?: boolean;
   provisioningState?: string;
+  customErrorConfigurations?: ApplicationGatewayCustomError[];
   name?: string;
   etag?: string;
   type?: string;
@@ -4122,6 +4141,9 @@ export interface ApplicationGatewayHttpListener extends SubResource {
  * @member {object} [redirectConfiguration] Redirect configuration resource of
  * URL path map path rule.
  * @member {string} [redirectConfiguration.id] Resource ID.
+ * @member {object} [rewriteRuleSet] Rewrite rule set resource of URL path map
+ * path rule.
+ * @member {string} [rewriteRuleSet.id] Resource ID.
  * @member {string} [provisioningState] Path rule of URL path map resource.
  * Possible values are: 'Updating', 'Deleting', and 'Failed'.
  * @member {string} [name] Name of the path rule that is unique within an
@@ -4135,6 +4157,7 @@ export interface ApplicationGatewayPathRule extends SubResource {
   backendAddressPool?: SubResource;
   backendHttpSettings?: SubResource;
   redirectConfiguration?: SubResource;
+  rewriteRuleSet?: SubResource;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -4232,6 +4255,9 @@ export interface ApplicationGatewayProbe extends SubResource {
  * @member {object} [urlPathMap] URL path map resource of the application
  * gateway.
  * @member {string} [urlPathMap.id] Resource ID.
+ * @member {object} [rewriteRuleSet] Rewrite Rule Set resource in Basic rule of
+ * the application gateway.
+ * @member {string} [rewriteRuleSet.id] Resource ID.
  * @member {object} [redirectConfiguration] Redirect configuration resource of
  * the application gateway.
  * @member {string} [redirectConfiguration.id] Resource ID.
@@ -4250,11 +4276,99 @@ export interface ApplicationGatewayRequestRoutingRule extends SubResource {
   backendHttpSettings?: SubResource;
   httpListener?: SubResource;
   urlPathMap?: SubResource;
+  rewriteRuleSet?: SubResource;
   redirectConfiguration?: SubResource;
   provisioningState?: string;
   name?: string;
   etag?: string;
   type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayHeaderConfiguration class.
+ * @constructor
+ * Header configuration of the Actions set in Application Gateway.
+ *
+ * @member {string} [headerName] Header name of the header configuration
+ * @member {string} [headerValue] Header value of the header configuration
+ */
+export interface ApplicationGatewayHeaderConfiguration {
+  headerName?: string;
+  headerValue?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayRewriteRuleActionSet class.
+ * @constructor
+ * Set of actions in the Rewrite Rule in Application Gateway.
+ *
+ * @member {object} [requestHeaderConfigurations] Request Header Actions in the
+ * Action Set
+ * @member {string} [requestHeaderConfigurations.headerName] Header name of the
+ * header configuration
+ * @member {string} [requestHeaderConfigurations.headerValue] Header value of
+ * the header configuration
+ * @member {object} [responseHeaderConfigurations] Response Header Actions in
+ * the Action Set
+ * @member {string} [responseHeaderConfigurations.headerName] Header name of
+ * the header configuration
+ * @member {string} [responseHeaderConfigurations.headerValue] Header value of
+ * the header configuration
+ */
+export interface ApplicationGatewayRewriteRuleActionSet {
+  requestHeaderConfigurations?: ApplicationGatewayHeaderConfiguration;
+  responseHeaderConfigurations?: ApplicationGatewayHeaderConfiguration;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayRewriteRule class.
+ * @constructor
+ * Rewrite rule of an application gateway.
+ *
+ * @member {string} [name] Name of the rewrite rule that is unique within an
+ * Application Gateway.
+ * @member {object} [actionSet] Set of actions to be done as part of the
+ * rewrite Rule.
+ * @member {object} [actionSet.requestHeaderConfigurations] Request Header
+ * Actions in the Action Set
+ * @member {string} [actionSet.requestHeaderConfigurations.headerName] Header
+ * name of the header configuration
+ * @member {string} [actionSet.requestHeaderConfigurations.headerValue] Header
+ * value of the header configuration
+ * @member {object} [actionSet.responseHeaderConfigurations] Response Header
+ * Actions in the Action Set
+ * @member {string} [actionSet.responseHeaderConfigurations.headerName] Header
+ * name of the header configuration
+ * @member {string} [actionSet.responseHeaderConfigurations.headerValue] Header
+ * value of the header configuration
+ */
+export interface ApplicationGatewayRewriteRule {
+  name?: string;
+  actionSet?: ApplicationGatewayRewriteRuleActionSet;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayRewriteRuleSet class.
+ * @constructor
+ * Rewrite rule set of an application gateway.
+ *
+ * @member {array} [rewriteRules] Rewrite rules in the rewrite rule set.
+ * @member {string} [provisioningState] Provisioning state of the rewrite rule
+ * set resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [name] Name of the rewrite rule set that is unique within
+ * an Application Gateway.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ApplicationGatewayRewriteRuleSet extends SubResource {
+  rewriteRules?: ApplicationGatewayRewriteRule[];
+  provisioningState?: string;
+  name?: string;
+  etag?: string;
 }
 
 /**
@@ -4311,6 +4425,9 @@ export interface ApplicationGatewayRedirectConfiguration extends SubResource {
  * @member {object} [defaultBackendHttpSettings] Default backend http settings
  * resource of URL path map.
  * @member {string} [defaultBackendHttpSettings.id] Resource ID.
+ * @member {object} [defaultRewriteRuleSet] Default Rewrite rule set resource
+ * of URL path map.
+ * @member {string} [defaultRewriteRuleSet.id] Resource ID.
  * @member {object} [defaultRedirectConfiguration] Default redirect
  * configuration resource of URL path map.
  * @member {string} [defaultRedirectConfiguration.id] Resource ID.
@@ -4327,6 +4444,7 @@ export interface ApplicationGatewayRedirectConfiguration extends SubResource {
 export interface ApplicationGatewayUrlPathMap extends SubResource {
   defaultBackendAddressPool?: SubResource;
   defaultBackendHttpSettings?: SubResource;
+  defaultRewriteRuleSet?: SubResource;
   defaultRedirectConfiguration?: SubResource;
   pathRules?: ApplicationGatewayPathRule[];
   provisioningState?: string;
@@ -4353,6 +4471,25 @@ export interface ApplicationGatewayFirewallDisabledRuleGroup {
 
 /**
  * @class
+ * Initializes a new instance of the ApplicationGatewayFirewallExclusion class.
+ * @constructor
+ * Allow to exclude some variable satisfy the condition for the WAF check
+ *
+ * @member {string} matchVariable The variable to be excluded.
+ * @member {string} selectorMatchOperator When matchVariable is a collection,
+ * operate on the selector to specify which elements in the collection this
+ * exclusion applies to.
+ * @member {string} selector When matchVariable is a collection, operator used
+ * to specify which elements in the collection this exclusion applies to.
+ */
+export interface ApplicationGatewayFirewallExclusion {
+  matchVariable: string;
+  selectorMatchOperator: string;
+  selector: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationGatewayWebApplicationFirewallConfiguration class.
  * @constructor
  * Application gateway web application firewall configuration.
@@ -4368,6 +4505,11 @@ export interface ApplicationGatewayFirewallDisabledRuleGroup {
  * @member {boolean} [requestBodyCheck] Whether allow WAF to check request
  * Body.
  * @member {number} [maxRequestBodySize] Maxium request body size for WAF.
+ * @member {number} [maxRequestBodySizeInKb] Maxium request body size in Kb for
+ * WAF.
+ * @member {number} [fileUploadLimitInMb] Maxium file upload size in Mb for
+ * WAF.
+ * @member {array} [exclusions] The exclusion list.
  */
 export interface ApplicationGatewayWebApplicationFirewallConfiguration {
   enabled: boolean;
@@ -4377,6 +4519,9 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
   disabledRuleGroups?: ApplicationGatewayFirewallDisabledRuleGroup[];
   requestBodyCheck?: boolean;
   maxRequestBodySize?: number;
+  maxRequestBodySizeInKb?: number;
+  fileUploadLimitInMb?: number;
+  exclusions?: ApplicationGatewayFirewallExclusion[];
 }
 
 /**
@@ -4445,6 +4590,8 @@ export interface ApplicationGatewayAutoscaleConfiguration {
  * resource.
  * @member {array} [requestRoutingRules] Request routing rules of the
  * application gateway resource.
+ * @member {array} [rewriteRuleSets] Rewrite rules for the application gateway
+ * resource.
  * @member {array} [redirectConfigurations] Redirect configurations of the
  * application gateway resource.
  * @member {object} [webApplicationFirewallConfiguration] Web application
@@ -4464,6 +4611,13 @@ export interface ApplicationGatewayAutoscaleConfiguration {
  * Whether allow WAF to check request Body.
  * @member {number} [webApplicationFirewallConfiguration.maxRequestBodySize]
  * Maxium request body size for WAF.
+ * @member {number}
+ * [webApplicationFirewallConfiguration.maxRequestBodySizeInKb] Maxium request
+ * body size in Kb for WAF.
+ * @member {number} [webApplicationFirewallConfiguration.fileUploadLimitInMb]
+ * Maxium file upload size in Mb for WAF.
+ * @member {array} [webApplicationFirewallConfiguration.exclusions] The
+ * exclusion list.
  * @member {boolean} [enableHttp2] Whether HTTP2 is enabled on the application
  * gateway resource.
  * @member {boolean} [enableFips] Whether FIPS is enabled on the application
@@ -4475,6 +4629,8 @@ export interface ApplicationGatewayAutoscaleConfiguration {
  * gateway resource.
  * @member {string} [provisioningState] Provisioning state of the application
  * gateway resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @member {array} [customErrorConfigurations] Custom error configurations of
+ * the application gateway resource.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  * @member {array} [zones] A list of availability zones denoting where the
@@ -4496,6 +4652,7 @@ export interface ApplicationGateway extends Resource {
   httpListeners?: ApplicationGatewayHttpListener[];
   urlPathMaps?: ApplicationGatewayUrlPathMap[];
   requestRoutingRules?: ApplicationGatewayRequestRoutingRule[];
+  rewriteRuleSets?: ApplicationGatewayRewriteRuleSet[];
   redirectConfigurations?: ApplicationGatewayRedirectConfiguration[];
   webApplicationFirewallConfiguration?: ApplicationGatewayWebApplicationFirewallConfiguration;
   enableHttp2?: boolean;
@@ -4503,6 +4660,7 @@ export interface ApplicationGateway extends Resource {
   autoscaleConfiguration?: ApplicationGatewayAutoscaleConfiguration;
   resourceGuid?: string;
   provisioningState?: string;
+  customErrorConfigurations?: ApplicationGatewayCustomError[];
   etag?: string;
   zones?: string[];
 }
@@ -5339,8 +5497,9 @@ export interface Ipv6ExpressRouteCircuitPeeringConfig {
  * Contains SKU in an ExpressRouteCircuit.
  *
  * @member {string} [name] The name of the SKU.
- * @member {string} [tier] The tier of the SKU. Possible values are 'Standard'
- * and 'Premium'. Possible values include: 'Standard', 'Premium'
+ * @member {string} [tier] The tier of the SKU. Possible values are 'Standard',
+ * 'Premium' or 'Basic'. Possible values include: 'Standard', 'Premium',
+ * 'Basic'
  * @member {string} [family] The family of the SKU. Possible values are:
  * 'UnlimitedData' and 'MeteredData'. Possible values include: 'UnlimitedData',
  * 'MeteredData'
@@ -5376,7 +5535,8 @@ export interface ExpressRouteCircuitServiceProviderProperties {
  * @member {object} [sku] The SKU.
  * @member {string} [sku.name] The name of the SKU.
  * @member {string} [sku.tier] The tier of the SKU. Possible values are
- * 'Standard' and 'Premium'. Possible values include: 'Standard', 'Premium'
+ * 'Standard', 'Premium' or 'Basic'. Possible values include: 'Standard',
+ * 'Premium', 'Basic'
  * @member {string} [sku.family] The family of the SKU. Possible values are:
  * 'UnlimitedData' and 'MeteredData'. Possible values include: 'UnlimitedData',
  * 'MeteredData'
@@ -5399,6 +5559,13 @@ export interface ExpressRouteCircuitServiceProviderProperties {
  * location.
  * @member {number} [serviceProviderProperties.bandwidthInMbps] The
  * BandwidthInMbps.
+ * @member {object} [expressRoutePort] The reference to the ExpressRoutePort
+ * resource when the circuit is provisioned on an ExpressRoutePort resource.
+ * @member {string} [expressRoutePort.id] Resource ID.
+ * @member {number} [bandwidthInGbps] The bandwidth of the circuit when the
+ * circuit is provisioned on an ExpressRoutePort resource.
+ * @member {number} [stag] The identifier of the circuit traffic. Outer tag for
+ * QinQ encapsulation.
  * @member {string} [provisioningState] Gets the provisioning state of the
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -5418,6 +5585,9 @@ export interface ExpressRouteCircuit extends Resource {
   serviceKey?: string;
   serviceProviderNotes?: string;
   serviceProviderProperties?: ExpressRouteCircuitServiceProviderProperties;
+  expressRoutePort?: SubResource;
+  bandwidthInGbps?: number;
+  readonly stag?: number;
   provisioningState?: string;
   gatewayManagerEtag?: string;
   allowGlobalReach?: boolean;
@@ -5894,6 +6064,130 @@ export interface ExpressRouteGatewayList {
  */
 export interface ExpressRouteConnectionList {
   value?: ExpressRouteConnection[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRoutePortsLocationBandwidths class.
+ * @constructor
+ * @summary ExpressRoutePorts Location Bandwidths
+ *
+ * Real-time inventory of available ExpressRoute port bandwidths.
+ *
+ * @member {string} [offerName] Bandwidth descriptive name
+ * @member {number} [valueInGbps] Bandwidth value in Gbps
+ */
+export interface ExpressRoutePortsLocationBandwidths {
+  readonly offerName?: string;
+  readonly valueInGbps?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRoutePortsLocation class.
+ * @constructor
+ * @summary ExpressRoutePorts Peering Location
+ *
+ * Definition of the ExpressRoutePorts peering location resource.
+ *
+ * @member {string} [address] Address of peering location.
+ * @member {string} [contact] Contact details of peering locations.
+ * @member {array} [availableBandwidths] The inventory of available
+ * ExpressRoutePort bandwidths.
+ * @member {string} [provisioningState] The provisioning state of the
+ * ExpressRoutePortLocation resource. Possible values are: 'Succeeded',
+ * 'Updating', 'Deleting', and 'Failed'.
+ */
+export interface ExpressRoutePortsLocation extends Resource {
+  readonly address?: string;
+  readonly contact?: string;
+  availableBandwidths?: ExpressRoutePortsLocationBandwidths[];
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteLink class.
+ * @constructor
+ * @summary ExpressRouteLink
+ *
+ * ExpressRouteLink child resource definition.
+ *
+ * @member {string} [routerName] Name of Azure router associated with physical
+ * port.
+ * @member {string} [interfaceName] Name of Azure router interface.
+ * @member {string} [patchPanelId] Mapping between physical port to patch panel
+ * port.
+ * @member {string} [rackId] Mapping of physical patch panel to rack.
+ * @member {string} [connectorType] Physical fiber port type. Possible values
+ * include: 'LC', 'SC'
+ * @member {string} [adminState] Administrative state of the physical port.
+ * Possible values include: 'Enabled', 'Disabled'
+ * @member {string} [provisioningState] The provisioning state of the
+ * ExpressRouteLink resource. Possible values are: 'Succeeded', 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string} [name] Name of child port resource that is unique among
+ * child port resources of the parent.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ExpressRouteLink extends SubResource {
+  readonly routerName?: string;
+  readonly interfaceName?: string;
+  readonly patchPanelId?: string;
+  readonly rackId?: string;
+  readonly connectorType?: string;
+  adminState?: string;
+  readonly provisioningState?: string;
+  name?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRoutePort class.
+ * @constructor
+ * @summary ExpressRoute Port
+ *
+ * ExpressRoutePort resource definition.
+ *
+ * @member {string} [peeringLocation] The name of the peering location that the
+ * ExpressRoutePort is mapped to physically.
+ * @member {number} [bandwidthInGbps] Bandwidth of procured ports in Gbps
+ * @member {number} [provisionedBandwidthInGbps] Aggregate Gbps of associated
+ * circuit bandwidths.
+ * @member {string} [mtu] Maximum transmission unit of the physical port
+ * pair(s)
+ * @member {string} [encapsulation] Encapsulation method on physical ports.
+ * Possible values include: 'Dot1Q', 'QinQ'
+ * @member {string} [etherType] Ethertype of the physical port.
+ * @member {string} [allocationDate] Date of the physical port allocation to be
+ * used in Letter of Authorization.
+ * @member {array} [links] ExpressRouteLink Sub-Resources. The set of physical
+ * links of the ExpressRoutePort resource
+ * @member {array} [circuits] Reference the ExpressRoute circuit(s) that are
+ * provisioned on this ExpressRoutePort resource.
+ * @member {string} [provisioningState] The provisioning state of the
+ * ExpressRoutePort resource. Possible values are: 'Succeeded', 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string} [resourceGuid] The resource GUID property of the
+ * ExpressRoutePort resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ExpressRoutePort extends Resource {
+  peeringLocation?: string;
+  bandwidthInGbps?: number;
+  readonly provisionedBandwidthInGbps?: number;
+  readonly mtu?: string;
+  encapsulation?: string;
+  readonly etherType?: string;
+  readonly allocationDate?: string;
+  links?: ExpressRouteLink[];
+  readonly circuits?: SubResource[];
+  readonly provisioningState?: string;
+  resourceGuid?: string;
+  readonly etag?: string;
 }
 
 /**
@@ -7776,7 +8070,7 @@ export interface ConnectionMonitorQueryResult {
 
 /**
  * @class
- * Initializes a new instance of the TrafficQuery class.
+ * Initializes a new instance of the NetworkConfigurationDiagnosticProfile class.
  * @constructor
  * Parameters to compare with network configuration.
  *
@@ -7791,7 +8085,7 @@ export interface ConnectionMonitorQueryResult {
  * @member {string} destinationPort Traffice destination port. Accepted values
  * are '*', port (for example, 3389) and port range (for example, 80-100).
  */
-export interface TrafficQuery {
+export interface NetworkConfigurationDiagnosticProfile {
   direction: string;
   protocol: string;
   source: string;
@@ -7808,11 +8102,15 @@ export interface TrafficQuery {
  * @member {string} targetResourceId The ID of the target resource to perform
  * network configuration diagnostic. Valid options are VM, NetworkInterface,
  * VMSS/NetworkInterface and Application Gateway.
- * @member {array} queries List of traffic queries.
+ * @member {string} [verbosityLevel] Verbosity level. Accepted values are
+ * 'Normal', 'Minimum', 'Full'. Possible values include: 'Normal', 'Minimum',
+ * 'Full'
+ * @member {array} profiles List of network configuration diagnostic profiles.
  */
 export interface NetworkConfigurationDiagnosticParameters {
   targetResourceId: string;
-  queries: TrafficQuery[];
+  verbosityLevel?: string;
+  profiles: NetworkConfigurationDiagnosticProfile[];
 }
 
 /**
@@ -7864,6 +8162,8 @@ export interface NetworkSecurityRulesEvaluationResult {
  * Results of network security group evaluation.
  *
  * @member {string} [networkSecurityGroupId] Network security group ID.
+ * @member {string} [appliedTo] Resource ID of nic or subnet to which network
+ * security group is applied.
  * @member {object} [matchedRule]
  * @member {string} [matchedRule.ruleName] Name of the matched network security
  * rule.
@@ -7874,6 +8174,7 @@ export interface NetworkSecurityRulesEvaluationResult {
  */
 export interface EvaluatedNetworkSecurityGroup {
   networkSecurityGroupId?: string;
+  appliedTo?: string;
   matchedRule?: MatchedRule;
   readonly rulesEvaluationResult?: NetworkSecurityRulesEvaluationResult[];
 }
@@ -7902,17 +8203,17 @@ export interface NetworkSecurityGroupResult {
  * Network configuration diagnostic result corresponded to provided traffic
  * query.
  *
- * @member {object} [trafficQuery]
- * @member {string} [trafficQuery.direction] The direction of the traffic.
- * Accepted values are 'Inbound' and 'Outbound'. Possible values include:
- * 'Inbound', 'Outbound'
- * @member {string} [trafficQuery.protocol] Protocol to be verified on.
- * Accepted values are '*', TCP, UDP.
- * @member {string} [trafficQuery.source] Traffic source. Accepted values are
- * '*', IP Address/CIDR, Service Tag.
- * @member {string} [trafficQuery.destination] Traffic destination. Accepted
- * values are: '*', IP Address/CIDR, Service Tag.
- * @member {string} [trafficQuery.destinationPort] Traffice destination port.
+ * @member {object} [profile]
+ * @member {string} [profile.direction] The direction of the traffic. Accepted
+ * values are 'Inbound' and 'Outbound'. Possible values include: 'Inbound',
+ * 'Outbound'
+ * @member {string} [profile.protocol] Protocol to be verified on. Accepted
+ * values are '*', TCP, UDP.
+ * @member {string} [profile.source] Traffic source. Accepted values are '*',
+ * IP Address/CIDR, Service Tag.
+ * @member {string} [profile.destination] Traffic destination. Accepted values
+ * are: '*', IP Address/CIDR, Service Tag.
+ * @member {string} [profile.destinationPort] Traffice destination port.
  * Accepted values are '*', port (for example, 3389) and port range (for
  * example, 80-100).
  * @member {object} [networkSecurityGroupResult]
@@ -7923,7 +8224,7 @@ export interface NetworkSecurityGroupResult {
  * List of results network security groups diagnostic.
  */
 export interface NetworkConfigurationDiagnosticResult {
-  trafficQuery?: TrafficQuery;
+  profile?: NetworkConfigurationDiagnosticProfile;
   networkSecurityGroupResult?: NetworkSecurityGroupResult;
 }
 
@@ -10036,6 +10337,48 @@ export interface ExpressRouteCrossConnectionPeeringList extends Array<ExpressRou
 
 /**
  * @class
+ * Initializes a new instance of the ExpressRoutePortsLocationListResult class.
+ * @constructor
+ * @summary ExpressRoutePorts Location List Result
+ *
+ * Response for ListExpressRoutePortsLocations API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ExpressRoutePortsLocationListResult extends Array<ExpressRoutePortsLocation> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRoutePortListResult class.
+ * @constructor
+ * @summary ExpressRoute Port List Result
+ *
+ * Response for ListExpressRoutePorts API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ExpressRoutePortListResult extends Array<ExpressRoutePort> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteLinkListResult class.
+ * @constructor
+ * @summary ExpressRouteLink List Result
+ *
+ * Response for ListExpressRouteLinks API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ExpressRouteLinkListResult extends Array<ExpressRouteLink> {
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the InterfaceEndpointListResult class.
  * @constructor
  * Response for the ListInterfaceEndpoints API service call.
@@ -10103,6 +10446,18 @@ export interface InboundNatRuleListResult extends Array<InboundNatRule> {
  * @member {string} [nextLink] The URL to get the next set of results.
  */
 export interface LoadBalancerLoadBalancingRuleListResult extends Array<LoadBalancingRule> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LoadBalancerOutboundRuleListResult class.
+ * @constructor
+ * Response for ListOutboundRule API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface LoadBalancerOutboundRuleListResult extends Array<OutboundRule> {
   readonly nextLink?: string;
 }
 
