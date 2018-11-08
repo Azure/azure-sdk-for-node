@@ -720,7 +720,7 @@ export interface InvoicePricesheets {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    postWithHttpOperationResponse(billingAccountId: string, invoiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DownloadUrl>>;
+    downloadWithHttpOperationResponse(billingAccountId: string, invoiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DownloadUrl>>;
 
     /**
      * Get pricesheet data for invoice id (invoiceName).
@@ -756,9 +756,9 @@ export interface InvoicePricesheets {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    post(billingAccountId: string, invoiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DownloadUrl>;
-    post(billingAccountId: string, invoiceName: string, callback: ServiceCallback<models.DownloadUrl>): void;
-    post(billingAccountId: string, invoiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DownloadUrl>): void;
+    download(billingAccountId: string, invoiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DownloadUrl>;
+    download(billingAccountId: string, invoiceName: string, callback: ServiceCallback<models.DownloadUrl>): void;
+    download(billingAccountId: string, invoiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DownloadUrl>): void;
 
 
     /**
@@ -779,7 +779,7 @@ export interface InvoicePricesheets {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPostWithHttpOperationResponse(billingAccountId: string, invoiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DownloadUrl>>;
+    beginDownloadWithHttpOperationResponse(billingAccountId: string, invoiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DownloadUrl>>;
 
     /**
      * Get pricesheet data for invoice id (invoiceName).
@@ -815,9 +815,9 @@ export interface InvoicePricesheets {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPost(billingAccountId: string, invoiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DownloadUrl>;
-    beginPost(billingAccountId: string, invoiceName: string, callback: ServiceCallback<models.DownloadUrl>): void;
-    beginPost(billingAccountId: string, invoiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DownloadUrl>): void;
+    beginDownload(billingAccountId: string, invoiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DownloadUrl>;
+    beginDownload(billingAccountId: string, invoiceName: string, callback: ServiceCallback<models.DownloadUrl>): void;
+    beginDownload(billingAccountId: string, invoiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DownloadUrl>): void;
 }
 
 /**
