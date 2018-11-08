@@ -22708,6 +22708,14 @@ export interface NetworkWatchers {
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
      *
+     * @param {object} [parameters.format]
+     *
+     * @param {string} [parameters.format.type] The file type of flow log. Possible
+     * values include: 'JSON'
+     *
+     * @param {number} [parameters.format.version] The version (revision) of the
+     * flow log.
+     *
      * @param {object} [parameters.flowAnalyticsConfiguration]
      *
      * @param {object}
@@ -22728,6 +22736,11 @@ export interface NetworkWatchers {
      * @param {string}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId
      * Resource Id of the attached workspace
+     *
+     * @param {number}
+     * [parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval]
+     * The interval in minutes which would decide how frequently TA service should
+     * do flow analytics
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22770,6 +22783,14 @@ export interface NetworkWatchers {
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
      *
+     * @param {object} [parameters.format]
+     *
+     * @param {string} [parameters.format.type] The file type of flow log. Possible
+     * values include: 'JSON'
+     *
+     * @param {number} [parameters.format.version] The version (revision) of the
+     * flow log.
+     *
      * @param {object} [parameters.flowAnalyticsConfiguration]
      *
      * @param {object}
@@ -22790,6 +22811,11 @@ export interface NetworkWatchers {
      * @param {string}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId
      * Resource Id of the attached workspace
+     *
+     * @param {number}
+     * [parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval]
+     * The interval in minutes which would decide how frequently TA service should
+     * do flow analytics
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -23847,6 +23873,14 @@ export interface NetworkWatchers {
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
      *
+     * @param {object} [parameters.format]
+     *
+     * @param {string} [parameters.format.type] The file type of flow log. Possible
+     * values include: 'JSON'
+     *
+     * @param {number} [parameters.format.version] The version (revision) of the
+     * flow log.
+     *
      * @param {object} [parameters.flowAnalyticsConfiguration]
      *
      * @param {object}
@@ -23867,6 +23901,11 @@ export interface NetworkWatchers {
      * @param {string}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId
      * Resource Id of the attached workspace
+     *
+     * @param {number}
+     * [parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval]
+     * The interval in minutes which would decide how frequently TA service should
+     * do flow analytics
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -23909,6 +23948,14 @@ export interface NetworkWatchers {
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
      *
+     * @param {object} [parameters.format]
+     *
+     * @param {string} [parameters.format.type] The file type of flow log. Possible
+     * values include: 'JSON'
+     *
+     * @param {number} [parameters.format.version] The version (revision) of the
+     * flow log.
+     *
      * @param {object} [parameters.flowAnalyticsConfiguration]
      *
      * @param {object}
@@ -23929,6 +23976,11 @@ export interface NetworkWatchers {
      * @param {string}
      * parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId
      * Resource Id of the attached workspace
+     *
+     * @param {number}
+     * [parameters.flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval]
+     * The interval in minutes which would decide how frequently TA service should
+     * do flow analytics
      *
      * @param {object} [options] Optional Parameters.
      *

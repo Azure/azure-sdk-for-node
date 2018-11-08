@@ -7427,6 +7427,22 @@ export interface RetentionPolicyParameters {
 
 /**
  * @class
+ * Initializes a new instance of the FlowLogFormatParameters class.
+ * @constructor
+ * Parameters that define the flow log format.
+ *
+ * @member {string} [type] The file type of flow log. Possible values include:
+ * 'JSON'
+ * @member {number} [version] The version (revision) of the flow log. Default
+ * value: 0 .
+ */
+export interface FlowLogFormatParameters {
+  type?: string;
+  version?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the FlowLogStatusParameters class.
  * @constructor
  * Parameters that define a resource to query flow log and traffic analytics
@@ -7449,12 +7465,15 @@ export interface FlowLogStatusParameters {
  * @member {string} workspaceId The resource guid of the attached workspace
  * @member {string} workspaceRegion The location of the attached workspace
  * @member {string} workspaceResourceId Resource Id of the attached workspace
+ * @member {number} [trafficAnalyticsInterval] The interval in minutes which
+ * would decide how frequently TA service should do flow analytics
  */
 export interface TrafficAnalyticsConfigurationProperties {
   enabled: boolean;
   workspaceId: string;
   workspaceRegion: string;
   workspaceResourceId: string;
+  trafficAnalyticsInterval?: number;
 }
 
 /**
@@ -7473,6 +7492,10 @@ export interface TrafficAnalyticsConfigurationProperties {
  * @member {string}
  * [networkWatcherFlowAnalyticsConfiguration.workspaceResourceId] Resource Id
  * of the attached workspace
+ * @member {number}
+ * [networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval] The
+ * interval in minutes which would decide how frequently TA service should do
+ * flow analytics
  */
 export interface TrafficAnalyticsProperties {
   networkWatcherFlowAnalyticsConfiguration: TrafficAnalyticsConfigurationProperties;
@@ -7495,6 +7518,10 @@ export interface TrafficAnalyticsProperties {
  * records.
  * @member {boolean} [retentionPolicy.enabled] Flag to enable/disable
  * retention.
+ * @member {object} [format]
+ * @member {string} [format.type] The file type of flow log. Possible values
+ * include: 'JSON'
+ * @member {number} [format.version] The version (revision) of the flow log.
  * @member {object} [flowAnalyticsConfiguration]
  * @member {object}
  * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration]
@@ -7510,12 +7537,17 @@ export interface TrafficAnalyticsProperties {
  * @member {string}
  * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId]
  * Resource Id of the attached workspace
+ * @member {number}
+ * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.trafficAnalyticsInterval]
+ * The interval in minutes which would decide how frequently TA service should
+ * do flow analytics
  */
 export interface FlowLogInformation {
   targetResourceId: string;
   storageId: string;
   enabled: boolean;
   retentionPolicy?: RetentionPolicyParameters;
+  format?: FlowLogFormatParameters;
   flowAnalyticsConfiguration?: TrafficAnalyticsProperties;
 }
 
