@@ -135,8 +135,8 @@ export interface A2AVmManagedDiskInputDetails {
  * @constructor
  * Disk Encryption Key Information (BitLocker Encryption Key (BEK) on Windows).
  *
- * @member {string} [secretIdentifier] The secret url / identifier.
- * @member {string} [keyVaultResourceArmId] The KeyVault resource ARM id for
+ * @member {string} [secretIdentifier] The secret url / identifier.
+ * @member {string} [keyVaultResourceArmId] The KeyVault resource ARM id for
  * secret.
  */
 export interface DiskEncryptionKeyInfo {
@@ -150,8 +150,8 @@ export interface DiskEncryptionKeyInfo {
  * @constructor
  * Key Encryption Key (KEK) information.
  *
- * @member {string} [keyIdentifier] The key url / identifier.
- * @member {string} [keyVaultResourceArmId] The KeyVault resource ARM id for
+ * @member {string} [keyIdentifier] The key url / identifier.
+ * @member {string} [keyVaultResourceArmId] The KeyVault resource ARM id for
  * key.
  */
 export interface KeyEncryptionKeyInfo {
@@ -167,15 +167,15 @@ export interface KeyEncryptionKeyInfo {
  *
  * @member {object} [diskEncryptionKeyInfo] The recovery KeyVault reference for
  * secret.
- * @member {string} [diskEncryptionKeyInfo.secretIdentifier] The secret url /
+ * @member {string} [diskEncryptionKeyInfo.secretIdentifier] The secret url /
  * identifier.
- * @member {string} [diskEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
+ * @member {string} [diskEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
  * resource ARM id for secret.
  * @member {object} [keyEncryptionKeyInfo] The recovery KeyVault reference for
  * key.
- * @member {string} [keyEncryptionKeyInfo.keyIdentifier] The key url /
+ * @member {string} [keyEncryptionKeyInfo.keyIdentifier] The key url /
  * identifier.
- * @member {string} [keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
+ * @member {string} [keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
  * resource ARM id for key.
  */
 export interface DiskEncryptionInfo {
@@ -220,7 +220,7 @@ export interface EnableProtectionProviderSpecificInput {
  * @member {object} [diskEncryptionInfo.diskEncryptionKeyInfo] The recovery
  * KeyVault reference for secret.
  * @member {string} [diskEncryptionInfo.diskEncryptionKeyInfo.secretIdentifier]
- * The secret url / identifier.
+ * The secret url / identifier.
  * @member {string}
  * [diskEncryptionInfo.diskEncryptionKeyInfo.keyVaultResourceArmId] The
  * KeyVault resource ARM id for secret.
@@ -229,7 +229,7 @@ export interface EnableProtectionProviderSpecificInput {
  * @member {string} [diskEncryptionInfo.keyEncryptionKeyInfo.keyIdentifier] The
  * key url / identifier.
  * @member {string}
- * [diskEncryptionInfo.keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
+ * [diskEncryptionInfo.keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
  * resource ARM id for key.
  */
 export interface A2AEnableProtectionInput extends EnableProtectionProviderSpecificInput {
@@ -831,7 +831,7 @@ export interface SwitchProtectionProviderSpecificInput {
  * @member {object} [diskEncryptionInfo.diskEncryptionKeyInfo] The recovery
  * KeyVault reference for secret.
  * @member {string} [diskEncryptionInfo.diskEncryptionKeyInfo.secretIdentifier]
- * The secret url / identifier.
+ * The secret url / identifier.
  * @member {string}
  * [diskEncryptionInfo.diskEncryptionKeyInfo.keyVaultResourceArmId] The
  * KeyVault resource ARM id for secret.
@@ -840,7 +840,7 @@ export interface SwitchProtectionProviderSpecificInput {
  * @member {string} [diskEncryptionInfo.keyEncryptionKeyInfo.keyIdentifier] The
  * key url / identifier.
  * @member {string}
- * [diskEncryptionInfo.keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
+ * [diskEncryptionInfo.keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
  * resource ARM id for key.
  */
 export interface A2ASwitchProtectionInput extends SwitchProtectionProviderSpecificInput {
@@ -930,7 +930,7 @@ export interface UpdateReplicationProtectedItemProviderInput {
  * @member {object} [diskEncryptionInfo.diskEncryptionKeyInfo] The recovery
  * KeyVault reference for secret.
  * @member {string} [diskEncryptionInfo.diskEncryptionKeyInfo.secretIdentifier]
- * The secret url / identifier.
+ * The secret url / identifier.
  * @member {string}
  * [diskEncryptionInfo.diskEncryptionKeyInfo.keyVaultResourceArmId] The
  * KeyVault resource ARM id for secret.
@@ -939,7 +939,7 @@ export interface UpdateReplicationProtectedItemProviderInput {
  * @member {string} [diskEncryptionInfo.keyEncryptionKeyInfo.keyIdentifier] The
  * key url / identifier.
  * @member {string}
- * [diskEncryptionInfo.keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
+ * [diskEncryptionInfo.keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
  * resource ARM id for key.
  */
 export interface A2AUpdateReplicationProtectedItemInput extends UpdateReplicationProtectedItemProviderInput {
@@ -948,6 +948,128 @@ export interface A2AUpdateReplicationProtectedItemInput extends UpdateReplicatio
   managedDiskUpdateDetails?: A2AVmManagedDiskUpdateDetails[];
   recoveryBootDiagStorageAccountId?: string;
   diskEncryptionInfo?: DiskEncryptionInfo;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IdentityProviderInput class.
+ * @constructor
+ * Identity provider input.
+ *
+ * @member {string} tenantId The tenant Id for the service principal with which
+ * the on-premise management/data plane components would communicate with our
+ * Azure services.
+ * @member {string} applicationId The application/client Id for the service
+ * principal with which the on-premise management/data plane components would
+ * communicate with our Azure services.
+ * @member {string} objectId The object Id of the service principal with which
+ * the on-premise management/data plane components would communicate with our
+ * Azure services.
+ * @member {string} audience The intended Audience of the service principal
+ * with which the on-premise management/data plane components would communicate
+ * with our Azure services.
+ * @member {string} aadAuthority The base authority for Azure Active Directory
+ * authentication.
+ */
+export interface IdentityProviderInput {
+  tenantId: string;
+  applicationId: string;
+  objectId: string;
+  audience: string;
+  aadAuthority: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AddRecoveryServicesProviderInputProperties class.
+ * @constructor
+ * The properties of an add provider request.
+ *
+ * @member {string} machineName The name of the machine where the provider is
+ * getting added.
+ * @member {object} authenticationIdentityInput The identity provider input for
+ * DRA authentication.
+ * @member {string} [authenticationIdentityInput.tenantId] The tenant Id for
+ * the service principal with which the on-premise management/data plane
+ * components would communicate with our Azure services.
+ * @member {string} [authenticationIdentityInput.applicationId] The
+ * application/client Id for the service principal with which the on-premise
+ * management/data plane components would communicate with our Azure services.
+ * @member {string} [authenticationIdentityInput.objectId] The object Id of the
+ * service principal with which the on-premise management/data plane components
+ * would communicate with our Azure services.
+ * @member {string} [authenticationIdentityInput.audience] The intended
+ * Audience of the service principal with which the on-premise management/data
+ * plane components would communicate with our Azure services.
+ * @member {string} [authenticationIdentityInput.aadAuthority] The base
+ * authority for Azure Active Directory authentication.
+ * @member {object} resourceAccessIdentityInput The identity provider input for
+ * resource access.
+ * @member {string} [resourceAccessIdentityInput.tenantId] The tenant Id for
+ * the service principal with which the on-premise management/data plane
+ * components would communicate with our Azure services.
+ * @member {string} [resourceAccessIdentityInput.applicationId] The
+ * application/client Id for the service principal with which the on-premise
+ * management/data plane components would communicate with our Azure services.
+ * @member {string} [resourceAccessIdentityInput.objectId] The object Id of the
+ * service principal with which the on-premise management/data plane components
+ * would communicate with our Azure services.
+ * @member {string} [resourceAccessIdentityInput.audience] The intended
+ * Audience of the service principal with which the on-premise management/data
+ * plane components would communicate with our Azure services.
+ * @member {string} [resourceAccessIdentityInput.aadAuthority] The base
+ * authority for Azure Active Directory authentication.
+ */
+export interface AddRecoveryServicesProviderInputProperties {
+  machineName: string;
+  authenticationIdentityInput: IdentityProviderInput;
+  resourceAccessIdentityInput: IdentityProviderInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AddRecoveryServicesProviderInput class.
+ * @constructor
+ * Input required to add a provider.
+ *
+ * @member {object} properties The properties of an add provider request.
+ * @member {string} [properties.machineName] The name of the machine where the
+ * provider is getting added.
+ * @member {object} [properties.authenticationIdentityInput] The identity
+ * provider input for DRA authentication.
+ * @member {string} [properties.authenticationIdentityInput.tenantId] The
+ * tenant Id for the service principal with which the on-premise
+ * management/data plane components would communicate with our Azure services.
+ * @member {string} [properties.authenticationIdentityInput.applicationId] The
+ * application/client Id for the service principal with which the on-premise
+ * management/data plane components would communicate with our Azure services.
+ * @member {string} [properties.authenticationIdentityInput.objectId] The
+ * object Id of the service principal with which the on-premise management/data
+ * plane components would communicate with our Azure services.
+ * @member {string} [properties.authenticationIdentityInput.audience] The
+ * intended Audience of the service principal with which the on-premise
+ * management/data plane components would communicate with our Azure services.
+ * @member {string} [properties.authenticationIdentityInput.aadAuthority] The
+ * base authority for Azure Active Directory authentication.
+ * @member {object} [properties.resourceAccessIdentityInput] The identity
+ * provider input for resource access.
+ * @member {string} [properties.resourceAccessIdentityInput.tenantId] The
+ * tenant Id for the service principal with which the on-premise
+ * management/data plane components would communicate with our Azure services.
+ * @member {string} [properties.resourceAccessIdentityInput.applicationId] The
+ * application/client Id for the service principal with which the on-premise
+ * management/data plane components would communicate with our Azure services.
+ * @member {string} [properties.resourceAccessIdentityInput.objectId] The
+ * object Id of the service principal with which the on-premise management/data
+ * plane components would communicate with our Azure services.
+ * @member {string} [properties.resourceAccessIdentityInput.audience] The
+ * intended Audience of the service principal with which the on-premise
+ * management/data plane components would communicate with our Azure services.
+ * @member {string} [properties.resourceAccessIdentityInput.aadAuthority] The
+ * base authority for Azure Active Directory authentication.
+ */
+export interface AddRecoveryServicesProviderInput {
+  properties: AddRecoveryServicesProviderInputProperties;
 }
 
 /**
@@ -1953,6 +2075,51 @@ export interface Display {
   resource?: string;
   operation?: string;
   description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EnableMigrationProviderSpecificInput class.
+ * @constructor
+ * Enable migration provider specific input.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface EnableMigrationProviderSpecificInput {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EnableMigrationInputProperties class.
+ * @constructor
+ * Enable migration input properties.
+ *
+ * @member {string} policyId The policy Id.
+ * @member {object} providerSpecificDetails The provider specific details.
+ * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface EnableMigrationInputProperties {
+  policyId: string;
+  providerSpecificDetails: EnableMigrationProviderSpecificInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EnableMigrationInput class.
+ * @constructor
+ * Enable migration input.
+ *
+ * @member {object} properties Enable migration input properties.
+ * @member {string} [properties.policyId] The policy Id.
+ * @member {object} [properties.providerSpecificDetails] The provider specific
+ * details.
+ * @member {string} [properties.providerSpecificDetails.instanceType]
+ * Polymorphic Discriminator
+ */
+export interface EnableMigrationInput {
+  properties: EnableMigrationInputProperties;
 }
 
 /**
@@ -3219,13 +3386,10 @@ export interface HyperVVirtualMachineDetails extends ConfigurationSettings {
 
 /**
  * @class
- * Initializes a new instance of the IdentityInformation class.
+ * Initializes a new instance of the IdentityProviderDetails class.
  * @constructor
- * Identity details.
+ * Identity provider details.
  *
- * @member {string} [identityProviderType] The identity provider type. Value is
- * the ToString() of a IdentityProviderType value. Possible values include:
- * 'RecoveryServicesActiveDirectory'
  * @member {string} [tenantId] The tenant Id for the service principal with
  * which the on-premise management/data plane components would communicate with
  * our Azure services.
@@ -3240,17 +3404,13 @@ export interface HyperVVirtualMachineDetails extends ConfigurationSettings {
  * with our Azure services.
  * @member {string} [aadAuthority] The base authority for Azure Active
  * Directory authentication.
- * @member {string} [certificateThumbprint] The certificate thumbprint.
- * Applicable only if IdentityProviderType is RecoveryServicesActiveDirectory.
  */
-export interface IdentityInformation {
-  identityProviderType?: string;
+export interface IdentityProviderDetails {
   tenantId?: string;
   applicationId?: string;
   objectId?: string;
   audience?: string;
   aadAuthority?: string;
-  certificateThumbprint?: string;
 }
 
 /**
@@ -4400,6 +4560,200 @@ export interface MasterTargetServer {
 
 /**
  * @class
+ * Initializes a new instance of the MigrateProviderSpecificInput class.
+ * @constructor
+ * Migrate provider specific input.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface MigrateProviderSpecificInput {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MigrateInputProperties class.
+ * @constructor
+ * Migrate input properties.
+ *
+ * @member {object} providerSpecificDetails The provider specific details.
+ * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface MigrateInputProperties {
+  providerSpecificDetails: MigrateProviderSpecificInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MigrateInput class.
+ * @constructor
+ * Input for migrate.
+ *
+ * @member {object} properties Migrate input properties.
+ * @member {object} [properties.providerSpecificDetails] The provider specific
+ * details.
+ * @member {string} [properties.providerSpecificDetails.instanceType]
+ * Polymorphic Discriminator
+ */
+export interface MigrateInput {
+  properties: MigrateInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MigrationProviderSpecificSettings class.
+ * @constructor
+ * Migration provider specific settings.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface MigrationProviderSpecificSettings {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MigrationItemProperties class.
+ * @constructor
+ * Migration item properties.
+ *
+ * @member {string} [friendlyName] The name.
+ * @member {string} [policyId] The ARM Id of policy governing this item.
+ * @member {string} [policyFriendlyName] The name of policy governing this
+ * item.
+ * @member {string} [recoveryServicesProviderId] The recovery services provider
+ * ARM Id.
+ * @member {string} [migrationState] The migration status.
+ * @member {string} [migrationStateDescription] The migration state
+ * description.
+ * @member {date} [lastSuccessfulMigrateTime] The last successful migrate time.
+ * @member {date} [lastSuccessfulTestMigrateTime] The last successful test
+ * migrate time.
+ * @member {string} [testMigrateState] The test migrate state.
+ * @member {string} [testMigrateStateDescription] The test migrate state
+ * description.
+ * @member {string} [health] The consolidated health.
+ * @member {array} [healthErrors] The list of health errors.
+ * @member {array} [allowedOperations] The allowed operations on the migration
+ * item.
+ * @member {object} [currentScenario] The current scenario.
+ * @member {string} [currentScenario.scenarioName] Scenario name.
+ * @member {string} [currentScenario.jobId] ARM Id of the job being executed.
+ * @member {date} [currentScenario.startTime] Start time of the workflow.
+ * @member {object} [providerSpecificDetails] The migration provider custom
+ * settings.
+ * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface MigrationItemProperties {
+  friendlyName?: string;
+  policyId?: string;
+  policyFriendlyName?: string;
+  recoveryServicesProviderId?: string;
+  migrationState?: string;
+  migrationStateDescription?: string;
+  lastSuccessfulMigrateTime?: Date;
+  lastSuccessfulTestMigrateTime?: Date;
+  testMigrateState?: string;
+  testMigrateStateDescription?: string;
+  health?: string;
+  healthErrors?: HealthError[];
+  allowedOperations?: string[];
+  currentScenario?: CurrentScenarioDetails;
+  providerSpecificDetails?: MigrationProviderSpecificSettings;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MigrationItem class.
+ * @constructor
+ * Migration item.
+ *
+ * @member {object} [properties] The migration item properties.
+ * @member {string} [properties.friendlyName] The name.
+ * @member {string} [properties.policyId] The ARM Id of policy governing this
+ * item.
+ * @member {string} [properties.policyFriendlyName] The name of policy
+ * governing this item.
+ * @member {string} [properties.recoveryServicesProviderId] The recovery
+ * services provider ARM Id.
+ * @member {string} [properties.migrationState] The migration status.
+ * @member {string} [properties.migrationStateDescription] The migration state
+ * description.
+ * @member {date} [properties.lastSuccessfulMigrateTime] The last successful
+ * migrate time.
+ * @member {date} [properties.lastSuccessfulTestMigrateTime] The last
+ * successful test migrate time.
+ * @member {string} [properties.testMigrateState] The test migrate state.
+ * @member {string} [properties.testMigrateStateDescription] The test migrate
+ * state description.
+ * @member {string} [properties.health] The consolidated health.
+ * @member {array} [properties.healthErrors] The list of health errors.
+ * @member {array} [properties.allowedOperations] The allowed operations on the
+ * migration item.
+ * @member {object} [properties.currentScenario] The current scenario.
+ * @member {string} [properties.currentScenario.scenarioName] Scenario name.
+ * @member {string} [properties.currentScenario.jobId] ARM Id of the job being
+ * executed.
+ * @member {date} [properties.currentScenario.startTime] Start time of the
+ * workflow.
+ * @member {object} [properties.providerSpecificDetails] The migration provider
+ * custom settings.
+ * @member {string} [properties.providerSpecificDetails.instanceType]
+ * Polymorphic Discriminator
+ */
+export interface MigrationItem extends Resource {
+  properties?: MigrationItemProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MigrationItemsQueryParameter class.
+ * @constructor
+ * Query parameter to enumerate migration items.
+ *
+ * @member {string} [sourceFabricName] The source fabric name filter.
+ * @member {string} [instanceType] The replication provider type.
+ */
+export interface MigrationItemsQueryParameter {
+  sourceFabricName?: string;
+  instanceType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MigrationRecoveryPointProperties class.
+ * @constructor
+ * Migration item recovery point properties.
+ *
+ * @member {date} [recoveryPointTime] The recovery point time.
+ * @member {string} [recoveryPointType] The recovery point type. Possible
+ * values include: 'NotSpecified', 'ApplicationConsistent', 'CrashConsistent'
+ */
+export interface MigrationRecoveryPointProperties {
+  recoveryPointTime?: Date;
+  recoveryPointType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MigrationRecoveryPoint class.
+ * @constructor
+ * Recovery point for a migration item.
+ *
+ * @member {object} [properties] Recovery point properties.
+ * @member {date} [properties.recoveryPointTime] The recovery point time.
+ * @member {string} [properties.recoveryPointType] The recovery point type.
+ * Possible values include: 'NotSpecified', 'ApplicationConsistent',
+ * 'CrashConsistent'
+ */
+export interface MigrationRecoveryPoint extends Resource {
+  properties?: MigrationRecoveryPointProperties;
+}
+
+/**
+ * @class
  * Initializes a new instance of the MobilityServiceUpdate class.
  * @constructor
  * The Mobility Service update details.
@@ -5458,27 +5812,38 @@ export interface RecoveryPoint extends Resource {
  * @member {array} [healthErrorDetails] The recovery services provider health
  * error details.
  * @member {string} [draIdentifier] The DRA Id.
- * @member {object} [identityDetails] The identity details.
- * @member {string} [identityDetails.identityProviderType] The identity
- * provider type. Value is the ToString() of a IdentityProviderType value.
- * Possible values include: 'RecoveryServicesActiveDirectory'
- * @member {string} [identityDetails.tenantId] The tenant Id for the service
- * principal with which the on-premise management/data plane components would
- * communicate with our Azure services.
- * @member {string} [identityDetails.applicationId] The application/client Id
- * for the service principal with which the on-premise management/data plane
+ * @member {object} [authenticationIdentityDetails] The authentication identity
+ * details.
+ * @member {string} [authenticationIdentityDetails.tenantId] The tenant Id for
+ * the service principal with which the on-premise management/data plane
  * components would communicate with our Azure services.
- * @member {string} [identityDetails.objectId] The object Id of the service
- * principal with which the on-premise management/data plane components would
- * communicate with our Azure services.
- * @member {string} [identityDetails.audience] The intended Audience of the
- * service principal with which the on-premise management/data plane components
- * would communicate with our Azure services.
- * @member {string} [identityDetails.aadAuthority] The base authority for Azure
- * Active Directory authentication.
- * @member {string} [identityDetails.certificateThumbprint] The certificate
- * thumbprint. Applicable only if IdentityProviderType is
- * RecoveryServicesActiveDirectory.
+ * @member {string} [authenticationIdentityDetails.applicationId] The
+ * application/client Id for the service principal with which the on-premise
+ * management/data plane components would communicate with our Azure services.
+ * @member {string} [authenticationIdentityDetails.objectId] The object Id of
+ * the service principal with which the on-premise management/data plane
+ * components would communicate with our Azure services.
+ * @member {string} [authenticationIdentityDetails.audience] The intended
+ * Audience of the service principal with which the on-premise management/data
+ * plane components would communicate with our Azure services.
+ * @member {string} [authenticationIdentityDetails.aadAuthority] The base
+ * authority for Azure Active Directory authentication.
+ * @member {object} [resourceAccessIdentityDetails] The resource access
+ * identity details.
+ * @member {string} [resourceAccessIdentityDetails.tenantId] The tenant Id for
+ * the service principal with which the on-premise management/data plane
+ * components would communicate with our Azure services.
+ * @member {string} [resourceAccessIdentityDetails.applicationId] The
+ * application/client Id for the service principal with which the on-premise
+ * management/data plane components would communicate with our Azure services.
+ * @member {string} [resourceAccessIdentityDetails.objectId] The object Id of
+ * the service principal with which the on-premise management/data plane
+ * components would communicate with our Azure services.
+ * @member {string} [resourceAccessIdentityDetails.audience] The intended
+ * Audience of the service principal with which the on-premise management/data
+ * plane components would communicate with our Azure services.
+ * @member {string} [resourceAccessIdentityDetails.aadAuthority] The base
+ * authority for Azure Active Directory authentication.
  * @member {object} [providerVersionDetails] The provider version details.
  * @member {string} [providerVersionDetails.version] The agent version.
  * @member {date} [providerVersionDetails.expiryDate] Version expiry date.
@@ -5500,7 +5865,8 @@ export interface RecoveryServicesProviderProperties {
   allowedScenarios?: string[];
   healthErrorDetails?: HealthError[];
   draIdentifier?: string;
-  identityDetails?: IdentityInformation;
+  authenticationIdentityDetails?: IdentityProviderDetails;
+  resourceAccessIdentityDetails?: IdentityProviderDetails;
   providerVersionDetails?: VersionDetails;
 }
 
@@ -5530,27 +5896,40 @@ export interface RecoveryServicesProviderProperties {
  * @member {array} [properties.healthErrorDetails] The recovery services
  * provider health error details.
  * @member {string} [properties.draIdentifier] The DRA Id.
- * @member {object} [properties.identityDetails] The identity details.
- * @member {string} [properties.identityDetails.identityProviderType] The
- * identity provider type. Value is the ToString() of a IdentityProviderType
- * value. Possible values include: 'RecoveryServicesActiveDirectory'
- * @member {string} [properties.identityDetails.tenantId] The tenant Id for the
- * service principal with which the on-premise management/data plane components
- * would communicate with our Azure services.
- * @member {string} [properties.identityDetails.applicationId] The
- * application/client Id for the service principal with which the on-premise
+ * @member {object} [properties.authenticationIdentityDetails] The
+ * authentication identity details.
+ * @member {string} [properties.authenticationIdentityDetails.tenantId] The
+ * tenant Id for the service principal with which the on-premise
  * management/data plane components would communicate with our Azure services.
- * @member {string} [properties.identityDetails.objectId] The object Id of the
- * service principal with which the on-premise management/data plane components
- * would communicate with our Azure services.
- * @member {string} [properties.identityDetails.audience] The intended Audience
- * of the service principal with which the on-premise management/data plane
- * components would communicate with our Azure services.
- * @member {string} [properties.identityDetails.aadAuthority] The base
- * authority for Azure Active Directory authentication.
- * @member {string} [properties.identityDetails.certificateThumbprint] The
- * certificate thumbprint. Applicable only if IdentityProviderType is
- * RecoveryServicesActiveDirectory.
+ * @member {string} [properties.authenticationIdentityDetails.applicationId]
+ * The application/client Id for the service principal with which the
+ * on-premise management/data plane components would communicate with our Azure
+ * services.
+ * @member {string} [properties.authenticationIdentityDetails.objectId] The
+ * object Id of the service principal with which the on-premise management/data
+ * plane components would communicate with our Azure services.
+ * @member {string} [properties.authenticationIdentityDetails.audience] The
+ * intended Audience of the service principal with which the on-premise
+ * management/data plane components would communicate with our Azure services.
+ * @member {string} [properties.authenticationIdentityDetails.aadAuthority] The
+ * base authority for Azure Active Directory authentication.
+ * @member {object} [properties.resourceAccessIdentityDetails] The resource
+ * access identity details.
+ * @member {string} [properties.resourceAccessIdentityDetails.tenantId] The
+ * tenant Id for the service principal with which the on-premise
+ * management/data plane components would communicate with our Azure services.
+ * @member {string} [properties.resourceAccessIdentityDetails.applicationId]
+ * The application/client Id for the service principal with which the
+ * on-premise management/data plane components would communicate with our Azure
+ * services.
+ * @member {string} [properties.resourceAccessIdentityDetails.objectId] The
+ * object Id of the service principal with which the on-premise management/data
+ * plane components would communicate with our Azure services.
+ * @member {string} [properties.resourceAccessIdentityDetails.audience] The
+ * intended Audience of the service principal with which the on-premise
+ * management/data plane components would communicate with our Azure services.
+ * @member {string} [properties.resourceAccessIdentityDetails.aadAuthority] The
+ * base authority for Azure Active Directory authentication.
  * @member {object} [properties.providerVersionDetails] The provider version
  * details.
  * @member {string} [properties.providerVersionDetails.version] The agent
@@ -6203,6 +6582,73 @@ export interface TestFailoverJobDetails extends JobDetails {
 
 /**
  * @class
+ * Initializes a new instance of the TestMigrateCleanupInputProperties class.
+ * @constructor
+ * Test migrate cleanup input properties.
+ *
+ * @member {string} [comments] Test migrate cleanup comments.
+ */
+export interface TestMigrateCleanupInputProperties {
+  comments?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TestMigrateCleanupInput class.
+ * @constructor
+ * Input for test migrate cleanup.
+ *
+ * @member {object} properties Test migrate cleanup input properties.
+ * @member {string} [properties.comments] Test migrate cleanup comments.
+ */
+export interface TestMigrateCleanupInput {
+  properties: TestMigrateCleanupInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TestMigrateProviderSpecificInput class.
+ * @constructor
+ * Test migrate provider specific input.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface TestMigrateProviderSpecificInput {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TestMigrateInputProperties class.
+ * @constructor
+ * Test migrate input properties.
+ *
+ * @member {object} providerSpecificDetails The provider specific details.
+ * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface TestMigrateInputProperties {
+  providerSpecificDetails: TestMigrateProviderSpecificInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TestMigrateInput class.
+ * @constructor
+ * Input for test migrate.
+ *
+ * @member {object} properties Test migrate input properties.
+ * @member {object} [properties.providerSpecificDetails] The provider specific
+ * details.
+ * @member {string} [properties.providerSpecificDetails.instanceType]
+ * Polymorphic Discriminator
+ */
+export interface TestMigrateInput {
+  properties: TestMigrateInputProperties;
+}
+
+/**
+ * @class
  * Initializes a new instance of the UnplannedFailoverInputProperties class.
  * @constructor
  * Input definition for planned failover input properties.
@@ -6236,6 +6682,49 @@ export interface UnplannedFailoverInputProperties {
  */
 export interface UnplannedFailoverInput {
   properties?: UnplannedFailoverInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateMigrationItemProviderSpecificInput class.
+ * @constructor
+ * Update migration item provider specific input.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface UpdateMigrationItemProviderSpecificInput {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateMigrationItemInputProperties class.
+ * @constructor
+ * Update migration item input properties.
+ *
+ * @member {object} providerSpecificDetails The provider specific input to
+ * update migration item.
+ * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface UpdateMigrationItemInputProperties {
+  providerSpecificDetails: UpdateMigrationItemProviderSpecificInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateMigrationItemInput class.
+ * @constructor
+ * Update migration item input.
+ *
+ * @member {object} [properties] Update migration item input properties.
+ * @member {object} [properties.providerSpecificDetails] The provider specific
+ * input to update migration item.
+ * @member {string} [properties.providerSpecificDetails.instanceType]
+ * Polymorphic Discriminator
+ */
+export interface UpdateMigrationItemInput {
+  properties?: UpdateMigrationItemInputProperties;
 }
 
 /**
@@ -6797,19 +7286,259 @@ export interface VmNicUpdatesTaskDetails extends TaskTypeDetails {
 
 /**
  * @class
+ * Initializes a new instance of the VMwareCbtContainerCreationInput class.
+ * @constructor
+ * VMwareCbt container creation input.
+ *
+ */
+export interface VMwareCbtContainerCreationInput extends ReplicationProviderSpecificContainerCreationInput {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VMwareCbtContainerMappingInput class.
+ * @constructor
+ * VMwareCbt container mapping input.
+ *
+ * @member {string} keyVaultId The target key vault ARM Id.
+ * @member {string} keyVaultUri The target key vault URL.
+ * @member {string} storageAccountId The storage account ARM Id.
+ * @member {string} storageAccountSasSecretName The secret name of the storage
+ * account.
+ * @member {string} serviceBusConnectionStringSecretName The secret name of the
+ * service bus connection string.
+ * @member {string} targetLocation The target location.
+ */
+export interface VMwareCbtContainerMappingInput extends ReplicationProviderSpecificContainerMappingInput {
+  keyVaultId: string;
+  keyVaultUri: string;
+  storageAccountId: string;
+  storageAccountSasSecretName: string;
+  serviceBusConnectionStringSecretName: string;
+  targetLocation: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VMwareCbtDiskInput class.
+ * @constructor
+ * VMwareCbt disk input.
+ *
+ * @member {string} diskId The disk Id.
+ * @member {string} isOSDisk A value indicating whether the disk is the OS
+ * disk.
+ * @member {string} logStorageAccountId The log storage account ARM Id.
+ * @member {string} logStorageAccountSasSecretName The key vault secret name of
+ * the log storage account.
+ * @member {string} [diskType] The disk type. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ */
+export interface VMwareCbtDiskInput {
+  diskId: string;
+  isOSDisk: string;
+  logStorageAccountId: string;
+  logStorageAccountSasSecretName: string;
+  diskType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VMwareCbtEnableMigrationInput class.
+ * @constructor
+ * VMwareCbt specific enable migration input.
+ *
+ * @member {string} vmwareMachineId The ARM Id of the VM discovered in VMware.
+ * @member {array} disksToInclude The disks to include list.
+ * @member {string} [licenseType] License type. Possible values include:
+ * 'NotSpecified', 'NoLicenseType', 'WindowsServer'
+ * @member {string} dataMoverRunAsAccountId The data mover runas account Id.
+ * @member {string} snapshotRunAsAccountId The snapshot runas account Id.
+ * @member {string} [targetVmName] The target VM name.
+ * @member {string} [targetVmSize] The target VM size.
+ * @member {string} targetResourceGroupId The target resource group ARM Id.
+ * @member {string} targetNetworkId The target network ARM Id.
+ * @member {string} [targetSubnetName] The target subnet name.
+ * @member {string} [targetAvailabilitySetId] The target availability set ARM
+ * Id.
+ * @member {string} [targetBootDiagnosticsStorageAccountId] The target boot
+ * diagnostics storage account ARM Id.
+ */
+export interface VMwareCbtEnableMigrationInput extends EnableMigrationProviderSpecificInput {
+  vmwareMachineId: string;
+  disksToInclude: VMwareCbtDiskInput[];
+  licenseType?: string;
+  dataMoverRunAsAccountId: string;
+  snapshotRunAsAccountId: string;
+  targetVmName?: string;
+  targetVmSize?: string;
+  targetResourceGroupId: string;
+  targetNetworkId: string;
+  targetSubnetName?: string;
+  targetAvailabilitySetId?: string;
+  targetBootDiagnosticsStorageAccountId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VMwareCbtMigrateInput class.
+ * @constructor
+ * VMwareCbt specific migrate input.
+ *
+ * @member {string} performShutdown A value indicating whether VM is to be
+ * shutdown.
+ */
+export interface VMwareCbtMigrateInput extends MigrateProviderSpecificInput {
+  performShutdown: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VMwareCbtProtectedDiskDetails class.
+ * @constructor
+ * VMwareCbt protected disk details.
+ *
+ * @member {string} [diskId] The disk id.
+ * @member {string} [diskName] The disk name.
+ * @member {string} [diskPath] The disk path.
+ * @member {string} [isOSDisk] A value indicating whether the disk is the OS
+ * disk.
+ * @member {number} [capacityInBytes] The disk capacity in bytes.
+ * @member {string} [logStorageAccountId] The log storage account ARM Id.
+ * @member {string} [logStorageAccountSasSecretName] The key vault secret name
+ * of the log storage account.
+ * @member {string} [seedManagedDiskId] The ARM Id of the seed managed disk.
+ * @member {string} [targetManagedDiskId] The ARM Id of the target managed
+ * disk.
+ * @member {string} [diskType] The disk type.
+ */
+export interface VMwareCbtProtectedDiskDetails {
+  diskId?: string;
+  diskName?: string;
+  diskPath?: string;
+  isOSDisk?: string;
+  capacityInBytes?: number;
+  logStorageAccountId?: string;
+  logStorageAccountSasSecretName?: string;
+  seedManagedDiskId?: string;
+  targetManagedDiskId?: string;
+  diskType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VMwareCbtNicDetails class.
+ * @constructor
+ * VMwareCbt NIC details.
+ *
+ * @member {string} [nicId] The NIC Id.
+ * @member {string} [isPrimaryNic] A value indicating whether this is the
+ * primary NIC.
+ * @member {string} [sourceIPAddress] The source IP address.
+ * @member {string} [sourceIPAddressType] The source IP address type. Possible
+ * values include: 'Dynamic', 'Static'
+ * @member {string} [sourceNetworkId] Source network Id.
+ * @member {string} [targetIPAddress] The target IP address.
+ * @member {string} [targetIPAddressType] The target IP address type. Possible
+ * values include: 'Dynamic', 'Static'
+ * @member {string} [targetSubnetName] Target subnet name.
+ * @member {string} [isSelectedForMigration] A value indicating whether this
+ * NIC is selected for migration.
+ */
+export interface VMwareCbtNicDetails {
+  nicId?: string;
+  isPrimaryNic?: string;
+  sourceIPAddress?: string;
+  sourceIPAddressType?: string;
+  sourceNetworkId?: string;
+  targetIPAddress?: string;
+  targetIPAddressType?: string;
+  targetSubnetName?: string;
+  isSelectedForMigration?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VMwareCbtMigrationDetails class.
+ * @constructor
+ * VMwareCbt provider specific settings
+ *
+ * @member {string} [vmwareMachineId] The ARM Id of the VM discovered in
+ * VMware.
+ * @member {string} [osType] The type of the OS on the VM.
+ * @member {string} [licenseType] License Type of the VM to be used.
+ * @member {string} [dataMoverRunAsAccountId] The data mover runas account Id.
+ * @member {string} [snapshotRunAsAccountId] The snapshot runas account Id.
+ * @member {string} [targetVmName] Target VM name.
+ * @member {string} [targetVmSize] The target VM size.
+ * @member {string} [targetLocation] The target location.
+ * @member {string} [targetResourceGroupId] The target resource group Id.
+ * @member {string} [targetAvailabilitySetId] The target availability set Id.
+ * @member {string} [targetBootDiagnosticsStorageAccountId] The target boot
+ * diagnostics storage account ARM Id.
+ * @member {array} [protectedDisks] The list of protected disks.
+ * @member {string} [targetNetworkId] The target network Id.
+ * @member {array} [vmNics] The network details.
+ * @member {string} [migrationRecoveryPointId] The recovery point Id to which
+ * the VM was migrated.
+ * @member {date} [lastRecoveryPointReceived] The last recovery point received
+ * time.
+ */
+export interface VMwareCbtMigrationDetails extends MigrationProviderSpecificSettings {
+  vmwareMachineId?: string;
+  osType?: string;
+  licenseType?: string;
+  dataMoverRunAsAccountId?: string;
+  snapshotRunAsAccountId?: string;
+  targetVmName?: string;
+  targetVmSize?: string;
+  targetLocation?: string;
+  targetResourceGroupId?: string;
+  targetAvailabilitySetId?: string;
+  targetBootDiagnosticsStorageAccountId?: string;
+  protectedDisks?: VMwareCbtProtectedDiskDetails[];
+  targetNetworkId?: string;
+  vmNics?: VMwareCbtNicDetails[];
+  migrationRecoveryPointId?: string;
+  lastRecoveryPointReceived?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VMwareCbtNicInput class.
+ * @constructor
+ * VMwareCbt NIC input.
+ *
+ * @member {string} nicId The NIC Id.
+ * @member {string} isPrimaryNic A value indicating whether this is the primary
+ * NIC.
+ * @member {string} [targetSubnetName] Target subnet name.
+ * @member {string} [targetStaticIPAddress] The static IP address.
+ * @member {string} [isSelectedForMigration] A value indicating whether this
+ * NIC is selected for migration.
+ */
+export interface VMwareCbtNicInput {
+  nicId: string;
+  isPrimaryNic: string;
+  targetSubnetName?: string;
+  targetStaticIPAddress?: string;
+  isSelectedForMigration?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VMwareCbtPolicyCreationInput class.
  * @constructor
- * VMware Cbt Policy creation input.
+ * VMware Cbt policy creation input.
  *
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
+ * @member {number} [recoveryPointHistoryInMinutes] The duration in minutes
+ * until which the recovery points need to be stored.
  * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
  * snapshot frequency (in minutes).
  * @member {number} [appConsistentFrequencyInMinutes] The app consistent
  * snapshot frequency (in minutes).
  */
 export interface VMwareCbtPolicyCreationInput extends PolicyProviderSpecificInput {
-  recoveryPointHistory?: number;
+  recoveryPointHistoryInMinutes?: number;
   crashConsistentFrequencyInMinutes?: number;
   appConsistentFrequencyInMinutes?: number;
 }
@@ -6820,20 +7549,84 @@ export interface VMwareCbtPolicyCreationInput extends PolicyProviderSpecificInpu
  * @constructor
  * VMware Cbt specific policy details.
  *
- * @member {number} [recoveryPointThresholdInMinutes] The recovery point
- * threshold in minutes.
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
+ * @member {number} [recoveryPointHistoryInMinutes] The duration in minutes
+ * until which the recovery points need to be stored.
  * @member {number} [appConsistentFrequencyInMinutes] The app consistent
  * snapshot frequency in minutes.
  * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
  * snapshot frequency in minutes.
  */
 export interface VmwareCbtPolicyDetails extends PolicyProviderSpecificDetails {
-  recoveryPointThresholdInMinutes?: number;
-  recoveryPointHistory?: number;
+  recoveryPointHistoryInMinutes?: number;
   appConsistentFrequencyInMinutes?: number;
   crashConsistentFrequencyInMinutes?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VMwareCbtProtectionContainerMappingDetails class.
+ * @constructor
+ * VMwareCbt provider specific container mapping details.
+ *
+ * @member {string} [keyVaultId] The target key vault ARM Id.
+ * @member {string} [keyVaultUri] The target key vault URI.
+ * @member {string} [storageAccountId] The storage account ARM Id.
+ * @member {string} [storageAccountSasSecretName] The secret name of the
+ * storage account.
+ * @member {string} [serviceBusConnectionStringSecretName] The secret name of
+ * the service bus connection string.
+ * @member {string} [targetLocation] The target location.
+ */
+export interface VMwareCbtProtectionContainerMappingDetails extends ProtectionContainerMappingProviderSpecificDetails {
+  keyVaultId?: string;
+  keyVaultUri?: string;
+  storageAccountId?: string;
+  storageAccountSasSecretName?: string;
+  serviceBusConnectionStringSecretName?: string;
+  targetLocation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VMwareCbtTestMigrateInput class.
+ * @constructor
+ * VMwareCbt specific test migrate input.
+ *
+ * @member {string} recoveryPointId The recovery point Id.
+ * @member {string} networkId The test network Id.
+ */
+export interface VMwareCbtTestMigrateInput extends TestMigrateProviderSpecificInput {
+  recoveryPointId: string;
+  networkId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VMwareCbtUpdateMigrationItemInput class.
+ * @constructor
+ * VMwareCbt specific update migration item input.
+ *
+ * @member {string} [targetVmName] The target VM name.
+ * @member {string} [targetVmSize] The target VM size.
+ * @member {string} [targetResourceGroupId] The target resource group ARM Id.
+ * @member {string} [targetAvailabilitySetId] The target availability set ARM
+ * Id.
+ * @member {string} [targetBootDiagnosticsStorageAccountId] The target boot
+ * diagnostics storage account ARM Id.
+ * @member {string} [targetNetworkId] The target network ARM Id.
+ * @member {array} [vmNics] The list of NIC details.
+ * @member {string} [licenseType] The license type. Possible values include:
+ * 'NotSpecified', 'NoLicenseType', 'WindowsServer'
+ */
+export interface VMwareCbtUpdateMigrationItemInput extends UpdateMigrationItemProviderSpecificInput {
+  targetVmName?: string;
+  targetVmSize?: string;
+  targetResourceGroupId?: string;
+  targetAvailabilitySetId?: string;
+  targetBootDiagnosticsStorageAccountId?: string;
+  targetNetworkId?: string;
+  vmNics?: VMwareCbtNicInput[];
+  licenseType?: string;
 }
 
 /**
@@ -6924,34 +7717,30 @@ export interface VMwareDetails extends FabricSpecificDetails {
  * @class
  * Initializes a new instance of the VMwareV2FabricCreationInput class.
  * @constructor
- * Fabric provider specific settings.
+ * VMwareV2 fabric provider specific settings.
  *
- * @member {string} [keyVaultUrl] The Key Vault URL.
- * @member {string} [keyVaultResourceArmId] The Key Vault ARM Id.
+ * @member {string} vmwareSiteId The ARM Id of the VMware site.
+ * @member {string} [migrationSolutionId] The ARM Id of the migration solution.
  */
 export interface VMwareV2FabricCreationInput extends FabricSpecificCreationInput {
-  keyVaultUrl?: string;
-  keyVaultResourceArmId?: string;
+  vmwareSiteId: string;
+  migrationSolutionId?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the VMwareV2FabricSpecificDetails class.
  * @constructor
- * VMwareV2 fabric Specific Details.
+ * VMwareV2 fabric specific details.
  *
- * @member {string} [srsServiceEndpoint] The endpoint for making requests to
- * the SRS Service.
- * @member {string} [rcmServiceEndpoint] The endpoint for making requests to
- * the RCM Service.
- * @member {string} [keyVaultUrl] The Key Vault URL.
- * @member {string} [keyVaultResourceArmId] The Key Vault ARM Id.
+ * @member {string} [vmwareSiteId] The ARM Id of the VMware site.
+ * @member {string} [migrationSolutionId] The Migration solution ARM Id.
+ * @member {string} [srsServiceEndpoint] The SRS service endpoint.
  */
 export interface VMwareV2FabricSpecificDetails extends FabricSpecificDetails {
+  vmwareSiteId?: string;
+  migrationSolutionId?: string;
   srsServiceEndpoint?: string;
-  rcmServiceEndpoint?: string;
-  keyVaultUrl?: string;
-  keyVaultResourceArmId?: string;
 }
 
 /**
@@ -6970,7 +7759,7 @@ export interface VMwareV2FabricSpecificDetails extends FabricSpecificDetails {
  * @member {string} [ipAddress] The IP address.
  * @member {string} [poweredOn] The value indicating whether VM is powered on.
  * @member {string} [vCenterInfrastructureId] The VCenter infrastructure Id.
- * @member {string} [discoveryType] A value inidicating the discovery type of
+ * @member {string} [discoveryType] A value indicating the discovery type of
  * the machine. Value can be vCenter or physical.
  * @member {array} [diskDetails] The disk details.
  * @member {array} [validationErrors] The validation errors.
@@ -7086,6 +7875,30 @@ export interface NetworkMappingCollection extends Array<NetworkMapping> {
  * @member {string} [nextLink] The value of next link.
  */
 export interface ProtectionContainerCollection extends Array<ProtectionContainer> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MigrationItemCollection class.
+ * @constructor
+ * Migration item collection.
+ *
+ * @member {string} [nextLink] The value of next link.
+ */
+export interface MigrationItemCollection extends Array<MigrationItem> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MigrationRecoveryPointCollection class.
+ * @constructor
+ * Collection of migration recovery points.
+ *
+ * @member {string} [nextLink] The value of next link.
+ */
+export interface MigrationRecoveryPointCollection extends Array<MigrationRecoveryPoint> {
   nextLink?: string;
 }
 
