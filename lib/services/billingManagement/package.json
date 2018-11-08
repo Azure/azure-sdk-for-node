@@ -2,12 +2,15 @@
   "name": "azure-arm-billing",
   "author": "Microsoft Corporation",
   "description": "BillingManagementClient Library with typescript type definitions for node",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "dependencies": {
     "ms-rest": "^2.3.2",
     "ms-rest-azure": "^2.5.5"
   },
-  "keywords": [ "node", "azure" ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
   "license": "MIT",
   "main": "./lib/billingManagementClient.js",
   "types": "./lib/billingManagementClient.d.ts",

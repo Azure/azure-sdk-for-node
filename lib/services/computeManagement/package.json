@@ -14,7 +14,7 @@
     "Lee, Hyonho <Hyonho.Lee@microsoft.com>",
     "Desai, Priyank <priydes@microsoft.com>"
   ],
-  "version": "0.18.0",
+  "version": "0.19.0",
   "description": "Microsoft Azure Compute Management Client Library for node",
   "tags": [
     "azure",

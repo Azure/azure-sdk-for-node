@@ -4,7 +4,7 @@
   "contributors": [
     "Goldsmith, Benjamin <begoldsm@microsoft.com>"
   ],
-  "version": "3.0.0-preview",
+  "version": "3.1.0-preview",
   "description": "Microsoft Azure Data Lake Analytics Management Client Library for node",
   "tags": [
     "azure",
