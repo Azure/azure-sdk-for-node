@@ -22,9 +22,9 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Key Vault container for a certificate that is purchased through Azure.
  *
- * @member {string} [keyVaultId] Key Vault resource Id.
- * @member {string} [keyVaultSecretName] Key Vault secret name.
- * @member {string} [provisioningState] Status of the Key Vault secret.
+ * @property {string} [keyVaultId] Key Vault resource Id.
+ * @property {string} [keyVaultSecretName] Key Vault secret name.
+ * @property {string} [provisioningState] Status of the Key Vault secret.
  * Possible values include: 'Initialized', 'WaitingOnCertificateOrder',
  * 'Succeeded', 'CertificateOrderFailed', 'OperationNotPermittedOnKeyVault',
  * 'AzureServiceUnauthorizedToAccessKeyVault', 'KeyVaultDoesNotExist',
@@ -43,12 +43,12 @@ export interface AppServiceCertificate {
  * @constructor
  * Azure resource. This resource is tracked in Azure Resource Manager
  *
- * @member {string} [id] Resource Id.
- * @member {string} [name] Resource Name.
- * @member {string} [kind] Kind of resource.
- * @member {string} location Resource Location.
- * @member {string} [type] Resource type.
- * @member {object} [tags] Resource tags.
+ * @property {string} [id] Resource Id.
+ * @property {string} [name] Resource Name.
+ * @property {string} [kind] Kind of resource.
+ * @property {string} location Resource Location.
+ * @property {string} [type] Resource type.
+ * @property {object} [tags] Resource tags.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -66,9 +66,9 @@ export interface Resource extends BaseResource {
  * Key Vault container ARM resource for a certificate that is purchased through
  * Azure.
  *
- * @member {string} [keyVaultId] Key Vault resource Id.
- * @member {string} [keyVaultSecretName] Key Vault secret name.
- * @member {string} [provisioningState] Status of the Key Vault secret.
+ * @property {string} [keyVaultId] Key Vault resource Id.
+ * @property {string} [keyVaultSecretName] Key Vault secret name.
+ * @property {string} [provisioningState] Status of the Key Vault secret.
  * Possible values include: 'Initialized', 'WaitingOnCertificateOrder',
  * 'Succeeded', 'CertificateOrderFailed', 'OperationNotPermittedOnKeyVault',
  * 'AzureServiceUnauthorizedToAccessKeyVault', 'KeyVaultDoesNotExist',
@@ -87,15 +87,15 @@ export interface AppServiceCertificateResource extends Resource {
  * @constructor
  * SSL certificate details.
  *
- * @member {number} [version] Certificate Version.
- * @member {string} [serialNumber] Certificate Serial Number.
- * @member {string} [thumbprint] Certificate Thumbprint.
- * @member {string} [subject] Certificate Subject.
- * @member {date} [notBefore] Date Certificate is valid from.
- * @member {date} [notAfter] Date Certificate is valid to.
- * @member {string} [signatureAlgorithm] Certificate Signature algorithm.
- * @member {string} [issuer] Certificate Issuer.
- * @member {string} [rawData] Raw certificate data.
+ * @property {number} [version] Certificate Version.
+ * @property {string} [serialNumber] Certificate Serial Number.
+ * @property {string} [thumbprint] Certificate Thumbprint.
+ * @property {string} [subject] Certificate Subject.
+ * @property {date} [notBefore] Date Certificate is valid from.
+ * @property {date} [notAfter] Date Certificate is valid to.
+ * @property {string} [signatureAlgorithm] Certificate Signature algorithm.
+ * @property {string} [issuer] Certificate Issuer.
+ * @property {string} [rawData] Raw certificate data.
  */
 export interface CertificateDetails {
   readonly version?: number;
@@ -115,63 +115,67 @@ export interface CertificateDetails {
  * @constructor
  * SSL certificate purchase order.
  *
- * @member {object} [certificates] State of the Key Vault secret.
- * @member {string} [distinguishedName] Certificate distinguished name.
- * @member {string} [domainVerificationToken] Domain verification token.
- * @member {number} [validityInYears] Duration in years (must be between 1 and
- * 3). Default value: 1 .
- * @member {number} [keySize] Certificate key size. Default value: 2048 .
- * @member {string} productType Certificate product type. Possible values
+ * @property {object} [certificates] State of the Key Vault secret.
+ * @property {string} [distinguishedName] Certificate distinguished name.
+ * @property {string} [domainVerificationToken] Domain verification token.
+ * @property {number} [validityInYears] Duration in years (must be between 1
+ * and 3). Default value: 1 .
+ * @property {number} [keySize] Certificate key size. Default value: 2048 .
+ * @property {string} productType Certificate product type. Possible values
  * include: 'StandardDomainValidatedSsl', 'StandardDomainValidatedWildCardSsl'
- * @member {boolean} [autoRenew] <code>true</code> if the certificate should be
- * automatically renewed when it expires; otherwise, <code>false</code>.
+ * @property {boolean} [autoRenew] <code>true</code> if the certificate should
+ * be automatically renewed when it expires; otherwise, <code>false</code>.
  * Default value: true .
- * @member {string} [provisioningState] Status of certificate order. Possible
+ * @property {string} [provisioningState] Status of certificate order. Possible
  * values include: 'Succeeded', 'Failed', 'Canceled', 'InProgress', 'Deleting'
- * @member {string} [status] Current order status. Possible values include:
+ * @property {string} [status] Current order status. Possible values include:
  * 'Pendingissuance', 'Issued', 'Revoked', 'Canceled', 'Denied',
  * 'Pendingrevocation', 'PendingRekey', 'Unused', 'Expired', 'NotSubmitted'
- * @member {object} [signedCertificate] Signed certificate.
- * @member {number} [signedCertificate.version] Certificate Version.
- * @member {string} [signedCertificate.serialNumber] Certificate Serial Number.
- * @member {string} [signedCertificate.thumbprint] Certificate Thumbprint.
- * @member {string} [signedCertificate.subject] Certificate Subject.
- * @member {date} [signedCertificate.notBefore] Date Certificate is valid from.
- * @member {date} [signedCertificate.notAfter] Date Certificate is valid to.
- * @member {string} [signedCertificate.signatureAlgorithm] Certificate
+ * @property {object} [signedCertificate] Signed certificate.
+ * @property {number} [signedCertificate.version] Certificate Version.
+ * @property {string} [signedCertificate.serialNumber] Certificate Serial
+ * Number.
+ * @property {string} [signedCertificate.thumbprint] Certificate Thumbprint.
+ * @property {string} [signedCertificate.subject] Certificate Subject.
+ * @property {date} [signedCertificate.notBefore] Date Certificate is valid
+ * from.
+ * @property {date} [signedCertificate.notAfter] Date Certificate is valid to.
+ * @property {string} [signedCertificate.signatureAlgorithm] Certificate
  * Signature algorithm.
- * @member {string} [signedCertificate.issuer] Certificate Issuer.
- * @member {string} [signedCertificate.rawData] Raw certificate data.
- * @member {string} [csr] Last CSR that was created for this order.
- * @member {object} [intermediate] Intermediate certificate.
- * @member {number} [intermediate.version] Certificate Version.
- * @member {string} [intermediate.serialNumber] Certificate Serial Number.
- * @member {string} [intermediate.thumbprint] Certificate Thumbprint.
- * @member {string} [intermediate.subject] Certificate Subject.
- * @member {date} [intermediate.notBefore] Date Certificate is valid from.
- * @member {date} [intermediate.notAfter] Date Certificate is valid to.
- * @member {string} [intermediate.signatureAlgorithm] Certificate Signature
+ * @property {string} [signedCertificate.issuer] Certificate Issuer.
+ * @property {string} [signedCertificate.rawData] Raw certificate data.
+ * @property {string} [csr] Last CSR that was created for this order.
+ * @property {object} [intermediate] Intermediate certificate.
+ * @property {number} [intermediate.version] Certificate Version.
+ * @property {string} [intermediate.serialNumber] Certificate Serial Number.
+ * @property {string} [intermediate.thumbprint] Certificate Thumbprint.
+ * @property {string} [intermediate.subject] Certificate Subject.
+ * @property {date} [intermediate.notBefore] Date Certificate is valid from.
+ * @property {date} [intermediate.notAfter] Date Certificate is valid to.
+ * @property {string} [intermediate.signatureAlgorithm] Certificate Signature
  * algorithm.
- * @member {string} [intermediate.issuer] Certificate Issuer.
- * @member {string} [intermediate.rawData] Raw certificate data.
- * @member {object} [root] Root certificate.
- * @member {number} [root.version] Certificate Version.
- * @member {string} [root.serialNumber] Certificate Serial Number.
- * @member {string} [root.thumbprint] Certificate Thumbprint.
- * @member {string} [root.subject] Certificate Subject.
- * @member {date} [root.notBefore] Date Certificate is valid from.
- * @member {date} [root.notAfter] Date Certificate is valid to.
- * @member {string} [root.signatureAlgorithm] Certificate Signature algorithm.
- * @member {string} [root.issuer] Certificate Issuer.
- * @member {string} [root.rawData] Raw certificate data.
- * @member {string} [serialNumber] Current serial number of the certificate.
- * @member {date} [lastCertificateIssuanceTime] Certificate last issuance time.
- * @member {date} [expirationTime] Certificate expiration time.
- * @member {boolean} [isPrivateKeyExternal] <code>true</code> if private key is
- * external; otherwise, <code>false</code>.
- * @member {array} [appServiceCertificateNotRenewableReasons] Reasons why App
+ * @property {string} [intermediate.issuer] Certificate Issuer.
+ * @property {string} [intermediate.rawData] Raw certificate data.
+ * @property {object} [root] Root certificate.
+ * @property {number} [root.version] Certificate Version.
+ * @property {string} [root.serialNumber] Certificate Serial Number.
+ * @property {string} [root.thumbprint] Certificate Thumbprint.
+ * @property {string} [root.subject] Certificate Subject.
+ * @property {date} [root.notBefore] Date Certificate is valid from.
+ * @property {date} [root.notAfter] Date Certificate is valid to.
+ * @property {string} [root.signatureAlgorithm] Certificate Signature
+ * algorithm.
+ * @property {string} [root.issuer] Certificate Issuer.
+ * @property {string} [root.rawData] Raw certificate data.
+ * @property {string} [serialNumber] Current serial number of the certificate.
+ * @property {date} [lastCertificateIssuanceTime] Certificate last issuance
+ * time.
+ * @property {date} [expirationTime] Certificate expiration time.
+ * @property {boolean} [isPrivateKeyExternal] <code>true</code> if private key
+ * is external; otherwise, <code>false</code>.
+ * @property {array} [appServiceCertificateNotRenewableReasons] Reasons why App
  * Service Certificate is not renewable at the current moment.
- * @member {date} [nextAutoRenewalTimeStamp] Time stamp when the certificate
+ * @property {date} [nextAutoRenewalTimeStamp] Time stamp when the certificate
  * would be auto renewed next
  */
 export interface AppServiceCertificateOrder extends Resource {
@@ -203,10 +207,10 @@ export interface AppServiceCertificateOrder extends Resource {
  * Azure proxy only resource. This resource is not tracked by Azure Resource
  * Manager.
  *
- * @member {string} [id] Resource Id.
- * @member {string} [name] Resource Name.
- * @member {string} [kind] Kind of resource.
- * @member {string} [type] Resource type.
+ * @property {string} [id] Resource Id.
+ * @property {string} [name] Resource Name.
+ * @property {string} [kind] Kind of resource.
+ * @property {string} [type] Resource type.
  */
 export interface ProxyOnlyResource extends BaseResource {
   readonly id?: string;
@@ -221,63 +225,67 @@ export interface ProxyOnlyResource extends BaseResource {
  * @constructor
  * ARM resource for a certificate order that is purchased through Azure.
  *
- * @member {object} [certificates] State of the Key Vault secret.
- * @member {string} [distinguishedName] Certificate distinguished name.
- * @member {string} [domainVerificationToken] Domain verification token.
- * @member {number} [validityInYears] Duration in years (must be between 1 and
- * 3). Default value: 1 .
- * @member {number} [keySize] Certificate key size. Default value: 2048 .
- * @member {string} productType Certificate product type. Possible values
+ * @property {object} [certificates] State of the Key Vault secret.
+ * @property {string} [distinguishedName] Certificate distinguished name.
+ * @property {string} [domainVerificationToken] Domain verification token.
+ * @property {number} [validityInYears] Duration in years (must be between 1
+ * and 3). Default value: 1 .
+ * @property {number} [keySize] Certificate key size. Default value: 2048 .
+ * @property {string} productType Certificate product type. Possible values
  * include: 'StandardDomainValidatedSsl', 'StandardDomainValidatedWildCardSsl'
- * @member {boolean} [autoRenew] <code>true</code> if the certificate should be
- * automatically renewed when it expires; otherwise, <code>false</code>.
+ * @property {boolean} [autoRenew] <code>true</code> if the certificate should
+ * be automatically renewed when it expires; otherwise, <code>false</code>.
  * Default value: true .
- * @member {string} [provisioningState] Status of certificate order. Possible
+ * @property {string} [provisioningState] Status of certificate order. Possible
  * values include: 'Succeeded', 'Failed', 'Canceled', 'InProgress', 'Deleting'
- * @member {string} [status] Current order status. Possible values include:
+ * @property {string} [status] Current order status. Possible values include:
  * 'Pendingissuance', 'Issued', 'Revoked', 'Canceled', 'Denied',
  * 'Pendingrevocation', 'PendingRekey', 'Unused', 'Expired', 'NotSubmitted'
- * @member {object} [signedCertificate] Signed certificate.
- * @member {number} [signedCertificate.version] Certificate Version.
- * @member {string} [signedCertificate.serialNumber] Certificate Serial Number.
- * @member {string} [signedCertificate.thumbprint] Certificate Thumbprint.
- * @member {string} [signedCertificate.subject] Certificate Subject.
- * @member {date} [signedCertificate.notBefore] Date Certificate is valid from.
- * @member {date} [signedCertificate.notAfter] Date Certificate is valid to.
- * @member {string} [signedCertificate.signatureAlgorithm] Certificate
+ * @property {object} [signedCertificate] Signed certificate.
+ * @property {number} [signedCertificate.version] Certificate Version.
+ * @property {string} [signedCertificate.serialNumber] Certificate Serial
+ * Number.
+ * @property {string} [signedCertificate.thumbprint] Certificate Thumbprint.
+ * @property {string} [signedCertificate.subject] Certificate Subject.
+ * @property {date} [signedCertificate.notBefore] Date Certificate is valid
+ * from.
+ * @property {date} [signedCertificate.notAfter] Date Certificate is valid to.
+ * @property {string} [signedCertificate.signatureAlgorithm] Certificate
  * Signature algorithm.
- * @member {string} [signedCertificate.issuer] Certificate Issuer.
- * @member {string} [signedCertificate.rawData] Raw certificate data.
- * @member {string} [csr] Last CSR that was created for this order.
- * @member {object} [intermediate] Intermediate certificate.
- * @member {number} [intermediate.version] Certificate Version.
- * @member {string} [intermediate.serialNumber] Certificate Serial Number.
- * @member {string} [intermediate.thumbprint] Certificate Thumbprint.
- * @member {string} [intermediate.subject] Certificate Subject.
- * @member {date} [intermediate.notBefore] Date Certificate is valid from.
- * @member {date} [intermediate.notAfter] Date Certificate is valid to.
- * @member {string} [intermediate.signatureAlgorithm] Certificate Signature
+ * @property {string} [signedCertificate.issuer] Certificate Issuer.
+ * @property {string} [signedCertificate.rawData] Raw certificate data.
+ * @property {string} [csr] Last CSR that was created for this order.
+ * @property {object} [intermediate] Intermediate certificate.
+ * @property {number} [intermediate.version] Certificate Version.
+ * @property {string} [intermediate.serialNumber] Certificate Serial Number.
+ * @property {string} [intermediate.thumbprint] Certificate Thumbprint.
+ * @property {string} [intermediate.subject] Certificate Subject.
+ * @property {date} [intermediate.notBefore] Date Certificate is valid from.
+ * @property {date} [intermediate.notAfter] Date Certificate is valid to.
+ * @property {string} [intermediate.signatureAlgorithm] Certificate Signature
  * algorithm.
- * @member {string} [intermediate.issuer] Certificate Issuer.
- * @member {string} [intermediate.rawData] Raw certificate data.
- * @member {object} [root] Root certificate.
- * @member {number} [root.version] Certificate Version.
- * @member {string} [root.serialNumber] Certificate Serial Number.
- * @member {string} [root.thumbprint] Certificate Thumbprint.
- * @member {string} [root.subject] Certificate Subject.
- * @member {date} [root.notBefore] Date Certificate is valid from.
- * @member {date} [root.notAfter] Date Certificate is valid to.
- * @member {string} [root.signatureAlgorithm] Certificate Signature algorithm.
- * @member {string} [root.issuer] Certificate Issuer.
- * @member {string} [root.rawData] Raw certificate data.
- * @member {string} [serialNumber] Current serial number of the certificate.
- * @member {date} [lastCertificateIssuanceTime] Certificate last issuance time.
- * @member {date} [expirationTime] Certificate expiration time.
- * @member {boolean} [isPrivateKeyExternal] <code>true</code> if private key is
- * external; otherwise, <code>false</code>.
- * @member {array} [appServiceCertificateNotRenewableReasons] Reasons why App
+ * @property {string} [intermediate.issuer] Certificate Issuer.
+ * @property {string} [intermediate.rawData] Raw certificate data.
+ * @property {object} [root] Root certificate.
+ * @property {number} [root.version] Certificate Version.
+ * @property {string} [root.serialNumber] Certificate Serial Number.
+ * @property {string} [root.thumbprint] Certificate Thumbprint.
+ * @property {string} [root.subject] Certificate Subject.
+ * @property {date} [root.notBefore] Date Certificate is valid from.
+ * @property {date} [root.notAfter] Date Certificate is valid to.
+ * @property {string} [root.signatureAlgorithm] Certificate Signature
+ * algorithm.
+ * @property {string} [root.issuer] Certificate Issuer.
+ * @property {string} [root.rawData] Raw certificate data.
+ * @property {string} [serialNumber] Current serial number of the certificate.
+ * @property {date} [lastCertificateIssuanceTime] Certificate last issuance
+ * time.
+ * @property {date} [expirationTime] Certificate expiration time.
+ * @property {boolean} [isPrivateKeyExternal] <code>true</code> if private key
+ * is external; otherwise, <code>false</code>.
+ * @property {array} [appServiceCertificateNotRenewableReasons] Reasons why App
  * Service Certificate is not renewable at the current moment.
- * @member {date} [nextAutoRenewalTimeStamp] Time stamp when the certificate
+ * @property {date} [nextAutoRenewalTimeStamp] Time stamp when the certificate
  * would be auto renewed next
  */
 export interface AppServiceCertificateOrderPatchResource extends ProxyOnlyResource {
@@ -309,9 +317,9 @@ export interface AppServiceCertificateOrderPatchResource extends ProxyOnlyResour
  * Key Vault container ARM resource for a certificate that is purchased through
  * Azure.
  *
- * @member {string} [keyVaultId] Key Vault resource Id.
- * @member {string} [keyVaultSecretName] Key Vault secret name.
- * @member {string} [provisioningState] Status of the Key Vault secret.
+ * @property {string} [keyVaultId] Key Vault resource Id.
+ * @property {string} [keyVaultSecretName] Key Vault secret name.
+ * @property {string} [provisioningState] Status of the Key Vault secret.
  * Possible values include: 'Initialized', 'WaitingOnCertificateOrder',
  * 'Succeeded', 'CertificateOrderFailed', 'OperationNotPermittedOnKeyVault',
  * 'AzureServiceUnauthorizedToAccessKeyVault', 'KeyVaultDoesNotExist',
@@ -330,8 +338,8 @@ export interface AppServiceCertificatePatchResource extends ProxyOnlyResource {
  * @constructor
  * SSL certificate email.
  *
- * @member {string} [emailId] Email id.
- * @member {date} [timeStamp] Time stamp.
+ * @property {string} [emailId] Email id.
+ * @property {date} [timeStamp] Time stamp.
  */
 export interface CertificateEmail extends ProxyOnlyResource {
   emailId?: string;
@@ -344,13 +352,13 @@ export interface CertificateEmail extends ProxyOnlyResource {
  * @constructor
  * Certificate order action.
  *
- * @member {string} [actionType] Action type. Possible values include:
+ * @property {string} [actionType] Action type. Possible values include:
  * 'CertificateIssued', 'CertificateOrderCanceled', 'CertificateOrderCreated',
  * 'CertificateRevoked', 'DomainValidationComplete', 'FraudDetected',
  * 'OrgNameChange', 'OrgValidationComplete', 'SanDrop', 'FraudCleared',
  * 'CertificateExpired', 'CertificateExpirationWarning',
  * 'FraudDocumentationRequired', 'Unknown'
- * @member {date} [createdAt] Time at which the certificate action was
+ * @property {date} [createdAt] Time at which the certificate action was
  * performed.
  */
 export interface CertificateOrderAction extends ProxyOnlyResource {
@@ -364,12 +372,12 @@ export interface CertificateOrderAction extends ProxyOnlyResource {
  * @constructor
  * Class representing certificate reissue request.
  *
- * @member {number} [keySize] Certificate Key Size.
- * @member {number} [delayExistingRevokeInHours] Delay in hours to revoke
+ * @property {number} [keySize] Certificate Key Size.
+ * @property {number} [delayExistingRevokeInHours] Delay in hours to revoke
  * existing certificate after the new certificate is issued.
- * @member {string} [csr] Csr to be used for re-key operation.
- * @member {boolean} [isPrivateKeyExternal] Should we change the ASC type (from
- * managed private key to external private key and vice versa).
+ * @property {string} [csr] Csr to be used for re-key operation.
+ * @property {boolean} [isPrivateKeyExternal] Should we change the ASC type
+ * (from managed private key to external private key and vice versa).
  */
 export interface ReissueCertificateOrderRequest extends ProxyOnlyResource {
   keySize?: number;
@@ -384,10 +392,10 @@ export interface ReissueCertificateOrderRequest extends ProxyOnlyResource {
  * @constructor
  * Class representing certificate renew request.
  *
- * @member {number} [keySize] Certificate Key Size.
- * @member {string} [csr] Csr to be used for re-key operation.
- * @member {boolean} [isPrivateKeyExternal] Should we change the ASC type (from
- * managed private key to external private key and vice versa).
+ * @property {number} [keySize] Certificate Key Size.
+ * @property {string} [csr] Csr to be used for re-key operation.
+ * @property {boolean} [isPrivateKeyExternal] Should we change the ASC type
+ * (from managed private key to external private key and vice versa).
  */
 export interface RenewCertificateOrderRequest extends ProxyOnlyResource {
   keySize?: number;
@@ -401,7 +409,7 @@ export interface RenewCertificateOrderRequest extends ProxyOnlyResource {
  * @constructor
  * Site seal
  *
- * @member {string} html HTML snippet
+ * @property {string} html HTML snippet
  */
 export interface SiteSeal {
   html: string;
@@ -413,9 +421,9 @@ export interface SiteSeal {
  * @constructor
  * Site seal request.
  *
- * @member {boolean} [lightTheme] If <code>true</code> use the light color
+ * @property {boolean} [lightTheme] If <code>true</code> use the light color
  * theme for site seal; otherwise, use the default color theme.
- * @member {string} [locale] Locale of site seal.
+ * @property {string} [locale] Locale of site seal.
  */
 export interface SiteSealRequest {
   lightTheme?: boolean;
@@ -429,12 +437,12 @@ export interface SiteSealRequest {
  * Virtual Network route contract used to pass routing information for a
  * Virtual Network.
  *
- * @member {string} [startAddress] The starting address for this route. This
+ * @property {string} [startAddress] The starting address for this route. This
  * may also include a CIDR notation, in which case the end address must not be
  * specified.
- * @member {string} [endAddress] The ending address for this route. If the
+ * @property {string} [endAddress] The ending address for this route. If the
  * start address is specified in CIDR notation, this must be omitted.
- * @member {string} [routeType] The type of route this is:
+ * @property {string} [routeType] The type of route this is:
  * DEFAULT - By default, every app has routes to the local address ranges
  * specified by RFC1918
  * INHERITED - Routes inherited from the real Virtual Network routes
@@ -455,17 +463,19 @@ export interface VnetRoute extends ProxyOnlyResource {
  * @constructor
  * Virtual Network information contract.
  *
- * @member {string} [vnetResourceId] The Virtual Network's resource ID.
- * @member {string} [certThumbprint] The client certificate thumbprint.
- * @member {buffer} [certBlob] A certificate file (.cer) blob containing the
+ * @property {string} [vnetResourceId] The Virtual Network's resource ID.
+ * @property {string} [certThumbprint] The client certificate thumbprint.
+ * @property {buffer} [certBlob] A certificate file (.cer) blob containing the
  * public key of the private key used to authenticate a
  * Point-To-Site VPN connection.
- * @member {array} [routes] The routes that this Virtual Network connection
+ * @property {array} [routes] The routes that this Virtual Network connection
  * uses.
- * @member {boolean} [resyncRequired] <code>true</code> if a resync is
+ * @property {boolean} [resyncRequired] <code>true</code> if a resync is
  * required; otherwise, <code>false</code>.
- * @member {string} [dnsServers] DNS servers to be used by this Virtual
+ * @property {string} [dnsServers] DNS servers to be used by this Virtual
  * Network. This should be a comma-separated list of IP addresses.
+ * @property {boolean} [isSwift] Flag that is used to denote if this is VNET
+ * injection
  */
 export interface VnetInfo extends ProxyOnlyResource {
   vnetResourceId?: string;
@@ -474,6 +484,7 @@ export interface VnetInfo extends ProxyOnlyResource {
   readonly routes?: VnetRoute[];
   readonly resyncRequired?: boolean;
   dnsServers?: string;
+  isSwift?: boolean;
 }
 
 /**
@@ -483,8 +494,8 @@ export interface VnetInfo extends ProxyOnlyResource {
  * The Virtual Network gateway contract. This is used to give the Virtual
  * Network gateway access to the VPN package.
  *
- * @member {string} [vnetName] The Virtual Network name.
- * @member {string} vpnPackageUri The URI where the VPN package can be
+ * @property {string} [vnetName] The Virtual Network name.
+ * @property {string} vpnPackageUri The URI where the VPN package can be
  * downloaded.
  */
 export interface VnetGateway extends ProxyOnlyResource {
@@ -498,12 +509,13 @@ export interface VnetGateway extends ProxyOnlyResource {
  * @constructor
  * User crendentials used for publishing activity.
  *
- * @member {string} publishingUserName Username used for publishing.
- * @member {string} [publishingPassword] Password used for publishing.
- * @member {string} [publishingPasswordHash] Password hash used for publishing.
- * @member {string} [publishingPasswordHashSalt] Password hash salt used for
+ * @property {string} publishingUserName Username used for publishing.
+ * @property {string} [publishingPassword] Password used for publishing.
+ * @property {string} [publishingPasswordHash] Password hash used for
  * publishing.
- * @member {string} [scmUri] Url of SCM site.
+ * @property {string} [publishingPasswordHashSalt] Password hash salt used for
+ * publishing.
+ * @property {string} [scmUri] Url of SCM site.
  */
 export interface User extends ProxyOnlyResource {
   publishingUserName: string;
@@ -519,7 +531,7 @@ export interface User extends ProxyOnlyResource {
  * @constructor
  * A snapshot of an app.
  *
- * @member {string} [time] The time the snapshot was taken.
+ * @property {string} [time] The time the snapshot was taken.
  */
 export interface Snapshot extends ProxyOnlyResource {
   readonly time?: string;
@@ -531,8 +543,8 @@ export interface Snapshot extends ProxyOnlyResource {
  * @constructor
  * Metrics availability and retention.
  *
- * @member {string} [timeGrain] Time grain .
- * @member {string} [retention] Retention period for the current time grain.
+ * @property {string} [timeGrain] Time grain .
+ * @property {string} [retention] Retention period for the current time grain.
  */
 export interface ResourceMetricAvailability {
   readonly timeGrain?: string;
@@ -545,12 +557,12 @@ export interface ResourceMetricAvailability {
  * @constructor
  * Metadata for the metrics.
  *
- * @member {string} [unit] Unit of the metric.
- * @member {string} [primaryAggregationType] Primary aggregation type.
- * @member {array} [metricAvailabilities] List of time grains supported for the
- * metric together with retention period.
- * @member {string} [resourceUri] Resource URI.
- * @member {object} [properties] Resource metric definition properties.
+ * @property {string} [unit] Unit of the metric.
+ * @property {string} [primaryAggregationType] Primary aggregation type.
+ * @property {array} [metricAvailabilities] List of time grains supported for
+ * the metric together with retention period.
+ * @property {string} [resourceUri] Resource URI.
+ * @property {object} [properties] Resource metric definition properties.
  */
 export interface ResourceMetricDefinition extends ProxyOnlyResource {
   readonly unit?: string;
@@ -566,17 +578,18 @@ export interface ResourceMetricDefinition extends ProxyOnlyResource {
  * @constructor
  * Push settings for the App.
  *
- * @member {boolean} isPushEnabled Gets or sets a flag indicating whether the
+ * @property {boolean} isPushEnabled Gets or sets a flag indicating whether the
  * Push endpoint is enabled.
- * @member {string} [tagWhitelistJson] Gets or sets a JSON string containing a
- * list of tags that are whitelisted for use by the push registration endpoint.
- * @member {string} [tagsRequiringAuth] Gets or sets a JSON string containing a
- * list of tags that require user authentication to be used in the push
+ * @property {string} [tagWhitelistJson] Gets or sets a JSON string containing
+ * a list of tags that are whitelisted for use by the push registration
+ * endpoint.
+ * @property {string} [tagsRequiringAuth] Gets or sets a JSON string containing
+ * a list of tags that require user authentication to be used in the push
  * registration endpoint.
  * Tags can consist of alphanumeric characters and the following:
  * '_', '@', '#', '.', ':', '-'.
  * Validation should be performed at the PushRequestHandler.
- * @member {string} [dynamicTagsJson] Gets or sets a JSON string containing a
+ * @property {string} [dynamicTagsJson] Gets or sets a JSON string containing a
  * list of dynamic tags that will be evaluated from user claims in the push
  * registration endpoint.
  */
@@ -593,7 +606,7 @@ export interface PushSettings extends ProxyOnlyResource {
  * @constructor
  * A domain specific resource identifier.
  *
- * @member {string} [identifierId] String representation of the identity.
+ * @property {string} [identifierId] String representation of the identity.
  */
 export interface Identifier extends ProxyOnlyResource {
   identifierId?: string;
@@ -606,8 +619,8 @@ export interface Identifier extends ProxyOnlyResource {
  * Hybrid Connection key contract. This has the send key name and value for a
  * Hybrid Connection.
  *
- * @member {string} [sendKeyName] The name of the send key.
- * @member {string} [sendKeyValue] The value of the send key.
+ * @property {string} [sendKeyName] The name of the send key.
+ * @property {string} [sendKeyValue] The value of the send key.
  */
 export interface HybridConnectionKey extends ProxyOnlyResource {
   readonly sendKeyName?: string;
@@ -620,19 +633,19 @@ export interface HybridConnectionKey extends ProxyOnlyResource {
  * @constructor
  * Hybrid Connection contract. This is used to configure a Hybrid Connection.
  *
- * @member {string} [serviceBusNamespace] The name of the Service Bus
+ * @property {string} [serviceBusNamespace] The name of the Service Bus
  * namespace.
- * @member {string} [relayName] The name of the Service Bus relay.
- * @member {string} [relayArmUri] The ARM URI to the Service Bus relay.
- * @member {string} [hostname] The hostname of the endpoint.
- * @member {number} [port] The port of the endpoint.
- * @member {string} [sendKeyName] The name of the Service Bus key which has
+ * @property {string} [relayName] The name of the Service Bus relay.
+ * @property {string} [relayArmUri] The ARM URI to the Service Bus relay.
+ * @property {string} [hostname] The hostname of the endpoint.
+ * @property {number} [port] The port of the endpoint.
+ * @property {string} [sendKeyName] The name of the Service Bus key which has
  * Send permissions. This is used to authenticate to Service Bus.
- * @member {string} [sendKeyValue] The value of the Service Bus key. This is
+ * @property {string} [sendKeyValue] The value of the Service Bus key. This is
  * used to authenticate to Service Bus. In ARM this key will not be returned
  * normally, use the POST /listKeys API instead.
- * @member {string} [serviceBusSuffix] The suffix for the service bus endpoint.
- * By default this is .servicebus.windows.net
+ * @property {string} [serviceBusSuffix] The suffix for the service bus
+ * endpoint. By default this is .servicebus.windows.net
  */
 export interface HybridConnection extends ProxyOnlyResource {
   serviceBusNamespace?: string;
@@ -651,14 +664,14 @@ export interface HybridConnection extends ProxyOnlyResource {
  * @constructor
  * A deleted app.
  *
- * @member {number} [deletedSiteId] Numeric id for the deleted site
- * @member {string} [deletedTimestamp] Time in UTC when the app was deleted.
- * @member {string} [subscription] Subscription containing the deleted site
- * @member {string} [resourceGroup] ResourceGroup that contained the deleted
+ * @property {number} [deletedSiteId] Numeric id for the deleted site
+ * @property {string} [deletedTimestamp] Time in UTC when the app was deleted.
+ * @property {string} [subscription] Subscription containing the deleted site
+ * @property {string} [resourceGroup] ResourceGroup that contained the deleted
  * site
- * @member {string} [deletedSiteName] Name of the deleted site
- * @member {string} [slot] Slot of the deleted site
- * @member {string} [deletedSiteKind] Kind of site that was deleted
+ * @property {string} [deletedSiteName] Name of the deleted site
+ * @property {string} [slot] Slot of the deleted site
+ * @property {string} [deletedSiteKind] Kind of site that was deleted
  */
 export interface DeletedSite extends ProxyOnlyResource {
   readonly deletedSiteId?: number;
@@ -676,11 +689,11 @@ export interface DeletedSite extends ProxyOnlyResource {
  * @constructor
  * Managed service identity.
  *
- * @member {string} [type] Type of managed service identity. Possible values
+ * @property {string} [type] Type of managed service identity. Possible values
  * include: 'SystemAssigned', 'UserAssigned'
- * @member {string} [tenantId] Tenant of managed service identity.
- * @member {string} [principalId] Principal Id of managed service identity.
- * @member {array} [identityIds] Array of UserAssigned managed service
+ * @property {string} [tenantId] Tenant of managed service identity.
+ * @property {string} [principalId] Principal Id of managed service identity.
+ * @property {array} [identityIds] Array of UserAssigned managed service
  * identities.
  */
 export interface ManagedServiceIdentity {
@@ -696,12 +709,12 @@ export interface ManagedServiceIdentity {
  * @constructor
  * The status of the last successfull slot swap operation.
  *
- * @member {date} [timestampUtc] The time the last successful slot swap
+ * @property {date} [timestampUtc] The time the last successful slot swap
  * completed.
- * @member {string} [sourceSlotName] The source slot of the last swap
+ * @property {string} [sourceSlotName] The source slot of the last swap
  * operation.
- * @member {string} [destinationSlotName] The destination slot of the last swap
- * operation.
+ * @property {string} [destinationSlotName] The destination slot of the last
+ * swap operation.
  */
 export interface SlotSwapStatus {
   readonly timestampUtc?: Date;
@@ -715,35 +728,35 @@ export interface SlotSwapStatus {
  * @constructor
  * Information needed for cloning operation.
  *
- * @member {uuid} [correlationId] Correlation ID of cloning operation. This ID
- * ties multiple cloning operations
+ * @property {uuid} [correlationId] Correlation ID of cloning operation. This
+ * ID ties multiple cloning operations
  * together to use the same snapshot.
- * @member {boolean} [overwrite] <code>true</code> to overwrite destination
+ * @property {boolean} [overwrite] <code>true</code> to overwrite destination
  * app; otherwise, <code>false</code>.
- * @member {boolean} [cloneCustomHostNames] <code>true</code> to clone custom
+ * @property {boolean} [cloneCustomHostNames] <code>true</code> to clone custom
  * hostnames from source app; otherwise, <code>false</code>.
- * @member {boolean} [cloneSourceControl] <code>true</code> to clone source
+ * @property {boolean} [cloneSourceControl] <code>true</code> to clone source
  * control from source app; otherwise, <code>false</code>.
- * @member {string} sourceWebAppId ARM resource ID of the source app. App
+ * @property {string} sourceWebAppId ARM resource ID of the source app. App
  * resource ID is of the form
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
  * for production slots and
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
  * for other slots.
- * @member {string} [hostingEnvironment] App Service Environment.
- * @member {object} [appSettingsOverrides] Application setting overrides for
+ * @property {string} [hostingEnvironment] App Service Environment.
+ * @property {object} [appSettingsOverrides] Application setting overrides for
  * cloned app. If specified, these settings override the settings cloned
  * from source app. Otherwise, application settings from source app are
  * retained.
- * @member {boolean} [configureLoadBalancing] <code>true</code> to configure
+ * @property {boolean} [configureLoadBalancing] <code>true</code> to configure
  * load balancing for source and destination app.
- * @member {string} [trafficManagerProfileId] ARM resource ID of the Traffic
+ * @property {string} [trafficManagerProfileId] ARM resource ID of the Traffic
  * Manager profile to use, if it exists. Traffic Manager resource ID is of the
  * form
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
- * @member {string} [trafficManagerProfileName] Name of Traffic Manager profile
- * to create. This is only needed if Traffic Manager profile does not already
- * exist.
+ * @property {string} [trafficManagerProfileName] Name of Traffic Manager
+ * profile to create. This is only needed if Traffic Manager profile does not
+ * already exist.
  */
 export interface CloningInfo {
   correlationId?: string;
@@ -764,9 +777,9 @@ export interface CloningInfo {
  * @constructor
  * Specification for an App Service Environment to use for this resource.
  *
- * @member {string} [id] Resource ID of the App Service Environment.
- * @member {string} [name] Name of the App Service Environment.
- * @member {string} [type] Resource type of the App Service Environment.
+ * @property {string} [id] Resource ID of the App Service Environment.
+ * @property {string} [name] Name of the App Service Environment.
+ * @property {string} [type] Resource type of the App Service Environment.
  */
 export interface HostingEnvironmentProfile {
   id?: string;
@@ -780,19 +793,20 @@ export interface HostingEnvironmentProfile {
  * @constructor
  * IP security restriction on an app.
  *
- * @member {string} ipAddress IP address the security restriction is valid for.
+ * @property {string} ipAddress IP address the security restriction is valid
+ * for.
  * It can be in form of pure ipv4 address (required SubnetMask property) or
  * CIDR notation such as ipv4/mask (leading bit match). For CIDR,
  * SubnetMask property must not be specified.
- * @member {string} [subnetMask] Subnet mask for the range of IP addresses the
- * restriction is valid for.
- * @member {string} [action] Allow or Deny access for this IP range.
- * @member {string} [tag] Defines what this IP filter will be used for. This is
- * to support IP filtering on proxies. Possible values include: 'Default',
+ * @property {string} [subnetMask] Subnet mask for the range of IP addresses
+ * the restriction is valid for.
+ * @property {string} [action] Allow or Deny access for this IP range.
+ * @property {string} [tag] Defines what this IP filter will be used for. This
+ * is to support IP filtering on proxies. Possible values include: 'Default',
  * 'XffProxy'
- * @member {number} [priority] Priority of IP restriction rule.
- * @member {string} [name] IP restriction rule name.
- * @member {string} [description] IP restriction rule description.
+ * @property {number} [priority] Priority of IP restriction rule.
+ * @property {string} [name] IP restriction rule name.
+ * @property {string} [description] IP restriction rule description.
  */
 export interface IpSecurityRestriction {
   ipAddress: string;
@@ -810,7 +824,7 @@ export interface IpSecurityRestriction {
  * @constructor
  * Information about the formal API definition for the app.
  *
- * @member {string} [url] The URL of the API definition.
+ * @property {string} [url] The URL of the API definition.
  */
 export interface ApiDefinitionInfo {
   url?: string;
@@ -822,12 +836,17 @@ export interface ApiDefinitionInfo {
  * @constructor
  * Cross-Origin Resource Sharing (CORS) settings for the app.
  *
- * @member {array} [allowedOrigins] Gets or sets the list of origins that
+ * @property {array} [allowedOrigins] Gets or sets the list of origins that
  * should be allowed to make cross-origin
  * calls (for example: http://example.com:12345). Use "*" to allow all.
+ * @property {boolean} [supportCredentials] Gets or sets whether CORS requests
+ * with credentials are allowed. See
+ * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+ * for more details.
  */
 export interface CorsSettings {
   allowedOrigins?: string[];
+  supportCredentials?: boolean;
 }
 
 /**
@@ -837,8 +856,8 @@ export interface CorsSettings {
  * Custom action to be executed
  * when an auto heal rule is triggered.
  *
- * @member {string} [exe] Executable to be run.
- * @member {string} [parameters] Parameters for the executable.
+ * @property {string} [exe] Executable to be run.
+ * @property {string} [parameters] Parameters for the executable.
  */
 export interface AutoHealCustomAction {
   exe?: string;
@@ -851,12 +870,12 @@ export interface AutoHealCustomAction {
  * @constructor
  * Actions which to take by the auto-heal module when a rule is triggered.
  *
- * @member {string} [actionType] Predefined action to be taken. Possible values
- * include: 'Recycle', 'LogEvent', 'CustomAction'
- * @member {object} [customAction] Custom action to be taken.
- * @member {string} [customAction.exe] Executable to be run.
- * @member {string} [customAction.parameters] Parameters for the executable.
- * @member {string} [minProcessExecutionTime] Minimum time the process must
+ * @property {string} [actionType] Predefined action to be taken. Possible
+ * values include: 'Recycle', 'LogEvent', 'CustomAction'
+ * @property {object} [customAction] Custom action to be taken.
+ * @property {string} [customAction.exe] Executable to be run.
+ * @property {string} [customAction.parameters] Parameters for the executable.
+ * @property {string} [minProcessExecutionTime] Minimum time the process must
  * execute
  * before taking the action
  */
@@ -872,9 +891,9 @@ export interface AutoHealActions {
  * @constructor
  * Trigger based on request execution time.
  *
- * @member {string} [timeTaken] Time taken.
- * @member {number} [count] Request Count.
- * @member {string} [timeInterval] Time interval.
+ * @property {string} [timeTaken] Time taken.
+ * @property {number} [count] Request Count.
+ * @property {string} [timeInterval] Time interval.
  */
 export interface SlowRequestsBasedTrigger {
   timeTaken?: string;
@@ -888,11 +907,11 @@ export interface SlowRequestsBasedTrigger {
  * @constructor
  * Trigger based on status code.
  *
- * @member {number} [status] HTTP status code.
- * @member {number} [subStatus] Request Sub Status.
- * @member {number} [win32Status] Win32 error code.
- * @member {number} [count] Request Count.
- * @member {string} [timeInterval] Time interval.
+ * @property {number} [status] HTTP status code.
+ * @property {number} [subStatus] Request Sub Status.
+ * @property {number} [win32Status] Win32 error code.
+ * @property {number} [count] Request Count.
+ * @property {string} [timeInterval] Time interval.
  */
 export interface StatusCodesBasedTrigger {
   status?: number;
@@ -908,8 +927,8 @@ export interface StatusCodesBasedTrigger {
  * @constructor
  * Trigger based on total requests.
  *
- * @member {number} [count] Request Count.
- * @member {string} [timeInterval] Time interval.
+ * @property {number} [count] Request Count.
+ * @property {string} [timeInterval] Time interval.
  */
 export interface RequestsBasedTrigger {
   count?: number;
@@ -922,15 +941,15 @@ export interface RequestsBasedTrigger {
  * @constructor
  * Triggers for auto-heal.
  *
- * @member {object} [requests] A rule based on total requests.
- * @member {number} [requests.count] Request Count.
- * @member {string} [requests.timeInterval] Time interval.
- * @member {number} [privateBytesInKB] A rule based on private bytes.
- * @member {array} [statusCodes] A rule based on status codes.
- * @member {object} [slowRequests] A rule based on request execution time.
- * @member {string} [slowRequests.timeTaken] Time taken.
- * @member {number} [slowRequests.count] Request Count.
- * @member {string} [slowRequests.timeInterval] Time interval.
+ * @property {object} [requests] A rule based on total requests.
+ * @property {number} [requests.count] Request Count.
+ * @property {string} [requests.timeInterval] Time interval.
+ * @property {number} [privateBytesInKB] A rule based on private bytes.
+ * @property {array} [statusCodes] A rule based on status codes.
+ * @property {object} [slowRequests] A rule based on request execution time.
+ * @property {string} [slowRequests.timeTaken] Time taken.
+ * @property {number} [slowRequests.count] Request Count.
+ * @property {string} [slowRequests.timeInterval] Time interval.
  */
 export interface AutoHealTriggers {
   requests?: RequestsBasedTrigger;
@@ -945,27 +964,29 @@ export interface AutoHealTriggers {
  * @constructor
  * Rules that can be defined for auto-heal.
  *
- * @member {object} [triggers] Conditions that describe when to execute the
+ * @property {object} [triggers] Conditions that describe when to execute the
  * auto-heal actions.
- * @member {object} [triggers.requests] A rule based on total requests.
- * @member {number} [triggers.requests.count] Request Count.
- * @member {string} [triggers.requests.timeInterval] Time interval.
- * @member {number} [triggers.privateBytesInKB] A rule based on private bytes.
- * @member {array} [triggers.statusCodes] A rule based on status codes.
- * @member {object} [triggers.slowRequests] A rule based on request execution
+ * @property {object} [triggers.requests] A rule based on total requests.
+ * @property {number} [triggers.requests.count] Request Count.
+ * @property {string} [triggers.requests.timeInterval] Time interval.
+ * @property {number} [triggers.privateBytesInKB] A rule based on private
+ * bytes.
+ * @property {array} [triggers.statusCodes] A rule based on status codes.
+ * @property {object} [triggers.slowRequests] A rule based on request execution
  * time.
- * @member {string} [triggers.slowRequests.timeTaken] Time taken.
- * @member {number} [triggers.slowRequests.count] Request Count.
- * @member {string} [triggers.slowRequests.timeInterval] Time interval.
- * @member {object} [actions] Actions to be executed when a rule is triggered.
- * @member {string} [actions.actionType] Predefined action to be taken.
+ * @property {string} [triggers.slowRequests.timeTaken] Time taken.
+ * @property {number} [triggers.slowRequests.count] Request Count.
+ * @property {string} [triggers.slowRequests.timeInterval] Time interval.
+ * @property {object} [actions] Actions to be executed when a rule is
+ * triggered.
+ * @property {string} [actions.actionType] Predefined action to be taken.
  * Possible values include: 'Recycle', 'LogEvent', 'CustomAction'
- * @member {object} [actions.customAction] Custom action to be taken.
- * @member {string} [actions.customAction.exe] Executable to be run.
- * @member {string} [actions.customAction.parameters] Parameters for the
+ * @property {object} [actions.customAction] Custom action to be taken.
+ * @property {string} [actions.customAction.exe] Executable to be run.
+ * @property {string} [actions.customAction.parameters] Parameters for the
  * executable.
- * @member {string} [actions.minProcessExecutionTime] Minimum time the process
- * must execute
+ * @property {string} [actions.minProcessExecutionTime] Minimum time the
+ * process must execute
  * before taking the action
  */
 export interface AutoHealRules {
@@ -979,9 +1000,9 @@ export interface AutoHealRules {
  * @constructor
  * Metric limits set on an app.
  *
- * @member {number} [maxPercentageCpu] Maximum allowed CPU usage percentage.
- * @member {number} [maxMemoryInMb] Maximum allowed memory usage in MB.
- * @member {number} [maxDiskSizeInMb] Maximum allowed disk size usage in MB.
+ * @property {number} [maxPercentageCpu] Maximum allowed CPU usage percentage.
+ * @property {number} [maxMemoryInMb] Maximum allowed memory usage in MB.
+ * @property {number} [maxDiskSizeInMb] Maximum allowed disk size usage in MB.
  */
 export interface SiteLimits {
   maxPercentageCpu?: number;
@@ -996,29 +1017,30 @@ export interface SiteLimits {
  * Routing rules for ramp up testing. This rule allows to redirect static
  * traffic % to a slot or to gradually change routing % based on performance.
  *
- * @member {string} [actionHostName] Hostname of a slot to which the traffic
+ * @property {string} [actionHostName] Hostname of a slot to which the traffic
  * will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
- * @member {number} [reroutePercentage] Percentage of the traffic which will be
- * redirected to <code>ActionHostName</code>.
- * @member {number} [changeStep] In auto ramp up scenario this is the step to
+ * @property {number} [reroutePercentage] Percentage of the traffic which will
+ * be redirected to <code>ActionHostName</code>.
+ * @property {number} [changeStep] In auto ramp up scenario this is the step to
  * to add/remove from <code>ReroutePercentage</code> until it reaches
  * <code>MinReroutePercentage</code> or <code>MaxReroutePercentage</code>. Site
  * metrics are checked every N minutes specificed in
  * <code>ChangeIntervalInMinutes</code>.
  * Custom decision algorithm can be provided in TiPCallback site extension
  * which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
- * @member {number} [changeIntervalInMinutes] Specifies interval in mimuntes to
- * reevaluate ReroutePercentage.
- * @member {number} [minReroutePercentage] Specifies lower boundary above which
- * ReroutePercentage will stay.
- * @member {number} [maxReroutePercentage] Specifies upper boundary below which
- * ReroutePercentage will stay.
- * @member {string} [changeDecisionCallbackUrl] Custom decision algorithm can
+ * @property {number} [changeIntervalInMinutes] Specifies interval in mimuntes
+ * to reevaluate ReroutePercentage.
+ * @property {number} [minReroutePercentage] Specifies lower boundary above
+ * which ReroutePercentage will stay.
+ * @property {number} [maxReroutePercentage] Specifies upper boundary below
+ * which ReroutePercentage will stay.
+ * @property {string} [changeDecisionCallbackUrl] Custom decision algorithm can
  * be provided in TiPCallback site extension which URL can be specified. See
  * TiPCallback site extension for the scaffold and contracts.
  * https://www.siteextensions.net/packages/TiPCallback/
- * @member {string} [name] Name of the routing rule. The recommended name would
- * be to point to the slot which will receive the traffic in the experiment.
+ * @property {string} [name] Name of the routing rule. The recommended name
+ * would be to point to the slot which will receive the traffic in the
+ * experiment.
  */
 export interface RampUpRule {
   actionHostName?: string;
@@ -1037,7 +1059,7 @@ export interface RampUpRule {
  * @constructor
  * Routing rules in production experiments.
  *
- * @member {array} [rampUpRules] List of ramp-up rules.
+ * @property {array} [rampUpRules] List of ramp-up rules.
  */
 export interface Experiments {
   rampUpRules?: RampUpRule[];
@@ -1049,8 +1071,8 @@ export interface Experiments {
  * @constructor
  * Directory for virtual application.
  *
- * @member {string} [virtualPath] Path to virtual application.
- * @member {string} [physicalPath] Physical path.
+ * @property {string} [virtualPath] Path to virtual application.
+ * @property {string} [physicalPath] Physical path.
  */
 export interface VirtualDirectory {
   virtualPath?: string;
@@ -1063,11 +1085,11 @@ export interface VirtualDirectory {
  * @constructor
  * Virtual application in an app.
  *
- * @member {string} [virtualPath] Virtual path.
- * @member {string} [physicalPath] Physical path.
- * @member {boolean} [preloadEnabled] <code>true</code> if preloading is
+ * @property {string} [virtualPath] Virtual path.
+ * @property {string} [physicalPath] Physical path.
+ * @property {boolean} [preloadEnabled] <code>true</code> if preloading is
  * enabled; otherwise, <code>false</code>.
- * @member {array} [virtualDirectories] Virtual directories for virtual
+ * @property {array} [virtualDirectories] Virtual directories for virtual
  * application.
  */
 export interface VirtualApplication {
@@ -1086,12 +1108,12 @@ export interface VirtualApplication {
  * For example, it is used to configure php-cgi.exe process to handle all HTTP
  * requests with *.php extension.
  *
- * @member {string} [extension] Requests with this extension will be handled
+ * @property {string} [extension] Requests with this extension will be handled
  * using the specified FastCGI application.
- * @member {string} [scriptProcessor] The absolute path to the FastCGI
+ * @property {string} [scriptProcessor] The absolute path to the FastCGI
  * application.
- * @member {string} [argumentsProperty] Command-line arguments to be passed to
- * the script processor.
+ * @property {string} [argumentsProperty] Command-line arguments to be passed
+ * to the script processor.
  */
 export interface HandlerMapping {
   extension?: string;
@@ -1105,10 +1127,10 @@ export interface HandlerMapping {
  * @constructor
  * MachineKey of an app.
  *
- * @member {string} [validation] MachineKey validation.
- * @member {string} [validationKey] Validation key.
- * @member {string} [decryption] Algorithm used for decryption.
- * @member {string} [decryptionKey] Decryption key.
+ * @property {string} [validation] MachineKey validation.
+ * @property {string} [validationKey] Validation key.
+ * @property {string} [decryption] Algorithm used for decryption.
+ * @property {string} [decryptionKey] Decryption key.
  */
 export interface SiteMachineKey {
   validation?: string;
@@ -1123,10 +1145,10 @@ export interface SiteMachineKey {
  * @constructor
  * Database connection string information.
  *
- * @member {string} [name] Name of connection string.
- * @member {string} [connectionString] Connection string value.
- * @member {string} [type] Type of database. Possible values include: 'MySql',
- * 'SQLServer', 'SQLAzure', 'Custom', 'NotificationHub', 'ServiceBus',
+ * @property {string} [name] Name of connection string.
+ * @property {string} [connectionString] Connection string value.
+ * @property {string} [type] Type of database. Possible values include:
+ * 'MySql', 'SQLServer', 'SQLAzure', 'Custom', 'NotificationHub', 'ServiceBus',
  * 'EventHub', 'ApiHub', 'DocDb', 'RedisCache', 'PostgreSQL'
  */
 export interface ConnStringInfo {
@@ -1141,15 +1163,15 @@ export interface ConnStringInfo {
  * @constructor
  * Azure Files or Blob Storage access information value for dictionary storage.
  *
- * @member {string} [type] Type of storage. Possible values include:
+ * @property {string} [type] Type of storage. Possible values include:
  * 'AzureFiles', 'AzureBlob'
- * @member {string} [accountName] Name of the storage account.
- * @member {string} [shareName] Name of the file share (container name, for
+ * @property {string} [accountName] Name of the storage account.
+ * @property {string} [shareName] Name of the file share (container name, for
  * Blob storage).
- * @member {string} [accessKey] Access key for the storage account.
- * @member {string} [mountPath] Path to mount the storage within the site's
+ * @property {string} [accessKey] Access key for the storage account.
+ * @property {string} [mountPath] Path to mount the storage within the site's
  * runtime environment.
- * @member {string} [state] State of the storage account. Possible values
+ * @property {string} [state] State of the storage account. Possible values
  * include: 'Ok', 'InvalidCredentials', 'InvalidShare'
  */
 export interface AzureStorageInfoValue {
@@ -1167,8 +1189,8 @@ export interface AzureStorageInfoValue {
  * @constructor
  * Name value pair.
  *
- * @member {string} [name] Pair name.
- * @member {string} [value] Pair value.
+ * @property {string} [name] Pair name.
+ * @property {string} [value] Pair value.
  */
 export interface NameValuePair {
   name?: string;
@@ -1181,139 +1203,151 @@ export interface NameValuePair {
  * @constructor
  * Configuration of an App Service app.
  *
- * @member {number} [numberOfWorkers] Number of workers.
- * @member {array} [defaultDocuments] Default documents.
- * @member {string} [netFrameworkVersion] .NET Framework version. Default
+ * @property {number} [numberOfWorkers] Number of workers.
+ * @property {array} [defaultDocuments] Default documents.
+ * @property {string} [netFrameworkVersion] .NET Framework version. Default
  * value: 'v4.6' .
- * @member {string} [phpVersion] Version of PHP.
- * @member {string} [pythonVersion] Version of Python.
- * @member {string} [nodeVersion] Version of Node.js.
- * @member {string} [linuxFxVersion] Linux App Framework and version
- * @member {string} [windowsFxVersion] Xenon App Framework and version
- * @member {boolean} [requestTracingEnabled] <code>true</code> if request
+ * @property {string} [phpVersion] Version of PHP.
+ * @property {string} [pythonVersion] Version of Python.
+ * @property {string} [nodeVersion] Version of Node.js.
+ * @property {string} [linuxFxVersion] Linux App Framework and version
+ * @property {string} [windowsFxVersion] Xenon App Framework and version
+ * @property {boolean} [requestTracingEnabled] <code>true</code> if request
  * tracing is enabled; otherwise, <code>false</code>.
- * @member {date} [requestTracingExpirationTime] Request tracing expiration
+ * @property {date} [requestTracingExpirationTime] Request tracing expiration
  * time.
- * @member {boolean} [remoteDebuggingEnabled] <code>true</code> if remote
+ * @property {boolean} [remoteDebuggingEnabled] <code>true</code> if remote
  * debugging is enabled; otherwise, <code>false</code>.
- * @member {string} [remoteDebuggingVersion] Remote debugging version.
- * @member {boolean} [httpLoggingEnabled] <code>true</code> if HTTP logging is
- * enabled; otherwise, <code>false</code>.
- * @member {number} [logsDirectorySizeLimit] HTTP logs directory size limit.
- * @member {boolean} [detailedErrorLoggingEnabled] <code>true</code> if
+ * @property {string} [remoteDebuggingVersion] Remote debugging version.
+ * @property {boolean} [httpLoggingEnabled] <code>true</code> if HTTP logging
+ * is enabled; otherwise, <code>false</code>.
+ * @property {number} [logsDirectorySizeLimit] HTTP logs directory size limit.
+ * @property {boolean} [detailedErrorLoggingEnabled] <code>true</code> if
  * detailed error logging is enabled; otherwise, <code>false</code>.
- * @member {string} [publishingUsername] Publishing user name.
- * @member {array} [appSettings] Application settings.
- * @member {object} [azureStorageAccounts] User-provided Azure storage
+ * @property {string} [publishingUsername] Publishing user name.
+ * @property {array} [appSettings] Application settings.
+ * @property {object} [azureStorageAccounts] User-provided Azure storage
  * accounts.
- * @member {array} [connectionStrings] Connection strings.
- * @member {object} [machineKey] Site MachineKey.
- * @member {string} [machineKey.validation] MachineKey validation.
- * @member {string} [machineKey.validationKey] Validation key.
- * @member {string} [machineKey.decryption] Algorithm used for decryption.
- * @member {string} [machineKey.decryptionKey] Decryption key.
- * @member {array} [handlerMappings] Handler mappings.
- * @member {string} [documentRoot] Document root.
- * @member {string} [scmType] SCM type. Possible values include: 'None',
+ * @property {array} [connectionStrings] Connection strings.
+ * @property {object} [machineKey] Site MachineKey.
+ * @property {string} [machineKey.validation] MachineKey validation.
+ * @property {string} [machineKey.validationKey] Validation key.
+ * @property {string} [machineKey.decryption] Algorithm used for decryption.
+ * @property {string} [machineKey.decryptionKey] Decryption key.
+ * @property {array} [handlerMappings] Handler mappings.
+ * @property {string} [documentRoot] Document root.
+ * @property {string} [scmType] SCM type. Possible values include: 'None',
  * 'Dropbox', 'Tfs', 'LocalGit', 'GitHub', 'CodePlexGit', 'CodePlexHg',
  * 'BitbucketGit', 'BitbucketHg', 'ExternalGit', 'ExternalHg', 'OneDrive',
  * 'VSO'
- * @member {boolean} [use32BitWorkerProcess] <code>true</code> to use 32-bit
+ * @property {boolean} [use32BitWorkerProcess] <code>true</code> to use 32-bit
  * worker process; otherwise, <code>false</code>.
- * @member {boolean} [webSocketsEnabled] <code>true</code> if WebSocket is
+ * @property {boolean} [webSocketsEnabled] <code>true</code> if WebSocket is
  * enabled; otherwise, <code>false</code>.
- * @member {boolean} [alwaysOn] <code>true</code> if Always On is enabled;
+ * @property {boolean} [alwaysOn] <code>true</code> if Always On is enabled;
  * otherwise, <code>false</code>.
- * @member {string} [javaVersion] Java version.
- * @member {string} [javaContainer] Java container.
- * @member {string} [javaContainerVersion] Java container version.
- * @member {string} [appCommandLine] App command line to launch.
- * @member {string} [managedPipelineMode] Managed pipeline mode. Possible
+ * @property {string} [javaVersion] Java version.
+ * @property {string} [javaContainer] Java container.
+ * @property {string} [javaContainerVersion] Java container version.
+ * @property {string} [appCommandLine] App command line to launch.
+ * @property {string} [managedPipelineMode] Managed pipeline mode. Possible
  * values include: 'Integrated', 'Classic'
- * @member {array} [virtualApplications] Virtual applications.
- * @member {string} [loadBalancing] Site load balancing. Possible values
+ * @property {array} [virtualApplications] Virtual applications.
+ * @property {string} [loadBalancing] Site load balancing. Possible values
  * include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
  * 'WeightedTotalTraffic', 'RequestHash'
- * @member {object} [experiments] This is work around for polymophic types.
- * @member {array} [experiments.rampUpRules] List of ramp-up rules.
- * @member {object} [limits] Site limits.
- * @member {number} [limits.maxPercentageCpu] Maximum allowed CPU usage
+ * @property {object} [experiments] This is work around for polymophic types.
+ * @property {array} [experiments.rampUpRules] List of ramp-up rules.
+ * @property {object} [limits] Site limits.
+ * @property {number} [limits.maxPercentageCpu] Maximum allowed CPU usage
  * percentage.
- * @member {number} [limits.maxMemoryInMb] Maximum allowed memory usage in MB.
- * @member {number} [limits.maxDiskSizeInMb] Maximum allowed disk size usage in
+ * @property {number} [limits.maxMemoryInMb] Maximum allowed memory usage in
  * MB.
- * @member {boolean} [autoHealEnabled] <code>true</code> if Auto Heal is
+ * @property {number} [limits.maxDiskSizeInMb] Maximum allowed disk size usage
+ * in MB.
+ * @property {boolean} [autoHealEnabled] <code>true</code> if Auto Heal is
  * enabled; otherwise, <code>false</code>.
- * @member {object} [autoHealRules] Auto Heal rules.
- * @member {object} [autoHealRules.triggers] Conditions that describe when to
+ * @property {object} [autoHealRules] Auto Heal rules.
+ * @property {object} [autoHealRules.triggers] Conditions that describe when to
  * execute the auto-heal actions.
- * @member {object} [autoHealRules.triggers.requests] A rule based on total
+ * @property {object} [autoHealRules.triggers.requests] A rule based on total
  * requests.
- * @member {number} [autoHealRules.triggers.requests.count] Request Count.
- * @member {string} [autoHealRules.triggers.requests.timeInterval] Time
+ * @property {number} [autoHealRules.triggers.requests.count] Request Count.
+ * @property {string} [autoHealRules.triggers.requests.timeInterval] Time
  * interval.
- * @member {number} [autoHealRules.triggers.privateBytesInKB] A rule based on
+ * @property {number} [autoHealRules.triggers.privateBytesInKB] A rule based on
  * private bytes.
- * @member {array} [autoHealRules.triggers.statusCodes] A rule based on status
- * codes.
- * @member {object} [autoHealRules.triggers.slowRequests] A rule based on
+ * @property {array} [autoHealRules.triggers.statusCodes] A rule based on
+ * status codes.
+ * @property {object} [autoHealRules.triggers.slowRequests] A rule based on
  * request execution time.
- * @member {string} [autoHealRules.triggers.slowRequests.timeTaken] Time taken.
- * @member {number} [autoHealRules.triggers.slowRequests.count] Request Count.
- * @member {string} [autoHealRules.triggers.slowRequests.timeInterval] Time
- * interval.
- * @member {object} [autoHealRules.actions] Actions to be executed when a rule
- * is triggered.
- * @member {string} [autoHealRules.actions.actionType] Predefined action to be
- * taken. Possible values include: 'Recycle', 'LogEvent', 'CustomAction'
- * @member {object} [autoHealRules.actions.customAction] Custom action to be
+ * @property {string} [autoHealRules.triggers.slowRequests.timeTaken] Time
  * taken.
- * @member {string} [autoHealRules.actions.customAction.exe] Executable to be
+ * @property {number} [autoHealRules.triggers.slowRequests.count] Request
+ * Count.
+ * @property {string} [autoHealRules.triggers.slowRequests.timeInterval] Time
+ * interval.
+ * @property {object} [autoHealRules.actions] Actions to be executed when a
+ * rule is triggered.
+ * @property {string} [autoHealRules.actions.actionType] Predefined action to
+ * be taken. Possible values include: 'Recycle', 'LogEvent', 'CustomAction'
+ * @property {object} [autoHealRules.actions.customAction] Custom action to be
+ * taken.
+ * @property {string} [autoHealRules.actions.customAction.exe] Executable to be
  * run.
- * @member {string} [autoHealRules.actions.customAction.parameters] Parameters
- * for the executable.
- * @member {string} [autoHealRules.actions.minProcessExecutionTime] Minimum
+ * @property {string} [autoHealRules.actions.customAction.parameters]
+ * Parameters for the executable.
+ * @property {string} [autoHealRules.actions.minProcessExecutionTime] Minimum
  * time the process must execute
  * before taking the action
- * @member {string} [tracingOptions] Tracing options.
- * @member {string} [vnetName] Virtual Network name.
- * @member {object} [cors] Cross-Origin Resource Sharing (CORS) settings.
- * @member {array} [cors.allowedOrigins] Gets or sets the list of origins that
- * should be allowed to make cross-origin
+ * @property {string} [tracingOptions] Tracing options.
+ * @property {string} [vnetName] Virtual Network name.
+ * @property {object} [cors] Cross-Origin Resource Sharing (CORS) settings.
+ * @property {array} [cors.allowedOrigins] Gets or sets the list of origins
+ * that should be allowed to make cross-origin
  * calls (for example: http://example.com:12345). Use "*" to allow all.
- * @member {object} [push] Push endpoint settings.
- * @member {boolean} [push.isPushEnabled] Gets or sets a flag indicating
+ * @property {boolean} [cors.supportCredentials] Gets or sets whether CORS
+ * requests with credentials are allowed. See
+ * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+ * for more details.
+ * @property {object} [push] Push endpoint settings.
+ * @property {boolean} [push.isPushEnabled] Gets or sets a flag indicating
  * whether the Push endpoint is enabled.
- * @member {string} [push.tagWhitelistJson] Gets or sets a JSON string
+ * @property {string} [push.tagWhitelistJson] Gets or sets a JSON string
  * containing a list of tags that are whitelisted for use by the push
  * registration endpoint.
- * @member {string} [push.tagsRequiringAuth] Gets or sets a JSON string
+ * @property {string} [push.tagsRequiringAuth] Gets or sets a JSON string
  * containing a list of tags that require user authentication to be used in the
  * push registration endpoint.
  * Tags can consist of alphanumeric characters and the following:
  * '_', '@', '#', '.', ':', '-'.
  * Validation should be performed at the PushRequestHandler.
- * @member {string} [push.dynamicTagsJson] Gets or sets a JSON string
+ * @property {string} [push.dynamicTagsJson] Gets or sets a JSON string
  * containing a list of dynamic tags that will be evaluated from user claims in
  * the push registration endpoint.
- * @member {object} [apiDefinition] Information about the formal API definition
- * for the app.
- * @member {string} [apiDefinition.url] The URL of the API definition.
- * @member {string} [autoSwapSlotName] Auto-swap slot name.
- * @member {boolean} [localMySqlEnabled] <code>true</code> to enable local
+ * @property {object} [apiDefinition] Information about the formal API
+ * definition for the app.
+ * @property {string} [apiDefinition.url] The URL of the API definition.
+ * @property {string} [autoSwapSlotName] Auto-swap slot name.
+ * @property {boolean} [localMySqlEnabled] <code>true</code> to enable local
  * MySQL; otherwise, <code>false</code>. Default value: false .
- * @member {number} [managedServiceIdentityId] Managed Service Identity Id
- * @member {number} [xManagedServiceIdentityId] Explicit Managed Service
+ * @property {number} [managedServiceIdentityId] Managed Service Identity Id
+ * @property {number} [xManagedServiceIdentityId] Explicit Managed Service
  * Identity Id
- * @member {array} [ipSecurityRestrictions] IP security restrictions.
- * @member {boolean} [http20Enabled] Http20Enabled: configures a web site to
+ * @property {array} [ipSecurityRestrictions] IP security restrictions for
+ * main.
+ * @property {array} [scmIpSecurityRestrictions] IP security restrictions for
+ * scm.
+ * @property {boolean} [scmIpSecurityRestrictionsUseMain] IP security
+ * restrictions for scm to use main.
+ * @property {boolean} [http20Enabled] Http20Enabled: configures a web site to
  * allow clients to connect over http2.0. Default value: true .
- * @member {string} [minTlsVersion] MinTlsVersion: configures the minimum
+ * @property {string} [minTlsVersion] MinTlsVersion: configures the minimum
  * version of TLS required for SSL requests. Possible values include: '1.0',
  * '1.1', '1.2'
- * @member {string} [ftpsState] State of FTP / FTPS service. Possible values
+ * @property {string} [ftpsState] State of FTP / FTPS service. Possible values
  * include: 'AllAllowed', 'FtpsOnly', 'Disabled'
- * @member {number} [reservedInstanceCount] Number of reserved instances.
+ * @property {number} [reservedInstanceCount] Number of reserved instances.
  * This setting only applies to the Consumption Plan
  */
 export interface SiteConfig {
@@ -1364,6 +1398,8 @@ export interface SiteConfig {
   managedServiceIdentityId?: number;
   xManagedServiceIdentityId?: number;
   ipSecurityRestrictions?: IpSecurityRestriction[];
+  scmIpSecurityRestrictions?: IpSecurityRestriction[];
+  scmIpSecurityRestrictionsUseMain?: boolean;
   http20Enabled?: boolean;
   minTlsVersion?: string;
   ftpsState?: string;
@@ -1376,16 +1412,16 @@ export interface SiteConfig {
  * @constructor
  * SSL-enabled hostname.
  *
- * @member {string} [name] Hostname.
- * @member {string} [sslState] SSL type. Possible values include: 'Disabled',
+ * @property {string} [name] Hostname.
+ * @property {string} [sslState] SSL type. Possible values include: 'Disabled',
  * 'SniEnabled', 'IpBasedEnabled'
- * @member {string} [virtualIP] Virtual IP address assigned to the hostname if
- * IP based SSL is enabled.
- * @member {string} [thumbprint] SSL certificate thumbprint.
- * @member {boolean} [toUpdate] Set to <code>true</code> to update existing
+ * @property {string} [virtualIP] Virtual IP address assigned to the hostname
+ * if IP based SSL is enabled.
+ * @property {string} [thumbprint] SSL certificate thumbprint.
+ * @property {boolean} [toUpdate] Set to <code>true</code> to update existing
  * hostname.
- * @member {string} [hostType] Indicates whether the hostname is a standard or
- * repository hostname. Possible values include: 'Standard', 'Repository'
+ * @property {string} [hostType] Indicates whether the hostname is a standard
+ * or repository hostname. Possible values include: 'Standard', 'Repository'
  */
 export interface HostNameSslState {
   name?: string;
@@ -1402,275 +1438,289 @@ export interface HostNameSslState {
  * @constructor
  * A web app, a mobile app backend, or an API app.
  *
- * @member {string} [state] Current state of the app.
- * @member {array} [hostNames] Hostnames associated with the app.
- * @member {string} [repositorySiteName] Name of the repository site.
- * @member {string} [usageState] State indicating whether the app has exceeded
- * its quota usage. Read-only. Possible values include: 'Normal', 'Exceeded'
- * @member {boolean} [enabled] <code>true</code> if the app is enabled;
+ * @property {string} [state] Current state of the app.
+ * @property {array} [hostNames] Hostnames associated with the app.
+ * @property {string} [repositorySiteName] Name of the repository site.
+ * @property {string} [usageState] State indicating whether the app has
+ * exceeded its quota usage. Read-only. Possible values include: 'Normal',
+ * 'Exceeded'
+ * @property {boolean} [enabled] <code>true</code> if the app is enabled;
  * otherwise, <code>false</code>. Setting this value to false disables the app
  * (takes the app offline).
- * @member {array} [enabledHostNames] Enabled hostnames for the app.Hostnames
+ * @property {array} [enabledHostNames] Enabled hostnames for the app.Hostnames
  * need to be assigned (see HostNames) AND enabled. Otherwise,
  * the app is not served on those hostnames.
- * @member {string} [availabilityState] Management information availability
+ * @property {string} [availabilityState] Management information availability
  * state for the app. Possible values include: 'Normal', 'Limited',
  * 'DisasterRecoveryMode'
- * @member {array} [hostNameSslStates] Hostname SSL states are used to manage
+ * @property {array} [hostNameSslStates] Hostname SSL states are used to manage
  * the SSL bindings for app's hostnames.
- * @member {string} [serverFarmId] Resource ID of the associated App Service
+ * @property {string} [serverFarmId] Resource ID of the associated App Service
  * plan, formatted as:
  * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
- * @member {boolean} [reserved] <code>true</code> if reserved; otherwise,
+ * @property {boolean} [reserved] <code>true</code> if reserved; otherwise,
  * <code>false</code>. Default value: false .
- * @member {boolean} [isXenon] Obsolete: Hyper-V sandbox. Default value: false
- * .
- * @member {boolean} [hyperV] Hyper-V sandbox. Default value: false .
- * @member {date} [lastModifiedTimeUtc] Last time the app was modified, in UTC.
- * Read-only.
- * @member {object} [siteConfig] Configuration of the app.
- * @member {number} [siteConfig.numberOfWorkers] Number of workers.
- * @member {array} [siteConfig.defaultDocuments] Default documents.
- * @member {string} [siteConfig.netFrameworkVersion] .NET Framework version.
- * @member {string} [siteConfig.phpVersion] Version of PHP.
- * @member {string} [siteConfig.pythonVersion] Version of Python.
- * @member {string} [siteConfig.nodeVersion] Version of Node.js.
- * @member {string} [siteConfig.linuxFxVersion] Linux App Framework and version
- * @member {string} [siteConfig.windowsFxVersion] Xenon App Framework and
+ * @property {boolean} [isXenon] Obsolete: Hyper-V sandbox. Default value:
+ * false .
+ * @property {boolean} [hyperV] Hyper-V sandbox. Default value: false .
+ * @property {date} [lastModifiedTimeUtc] Last time the app was modified, in
+ * UTC. Read-only.
+ * @property {object} [siteConfig] Configuration of the app.
+ * @property {number} [siteConfig.numberOfWorkers] Number of workers.
+ * @property {array} [siteConfig.defaultDocuments] Default documents.
+ * @property {string} [siteConfig.netFrameworkVersion] .NET Framework version.
+ * @property {string} [siteConfig.phpVersion] Version of PHP.
+ * @property {string} [siteConfig.pythonVersion] Version of Python.
+ * @property {string} [siteConfig.nodeVersion] Version of Node.js.
+ * @property {string} [siteConfig.linuxFxVersion] Linux App Framework and
  * version
- * @member {boolean} [siteConfig.requestTracingEnabled] <code>true</code> if
+ * @property {string} [siteConfig.windowsFxVersion] Xenon App Framework and
+ * version
+ * @property {boolean} [siteConfig.requestTracingEnabled] <code>true</code> if
  * request tracing is enabled; otherwise, <code>false</code>.
- * @member {date} [siteConfig.requestTracingExpirationTime] Request tracing
+ * @property {date} [siteConfig.requestTracingExpirationTime] Request tracing
  * expiration time.
- * @member {boolean} [siteConfig.remoteDebuggingEnabled] <code>true</code> if
+ * @property {boolean} [siteConfig.remoteDebuggingEnabled] <code>true</code> if
  * remote debugging is enabled; otherwise, <code>false</code>.
- * @member {string} [siteConfig.remoteDebuggingVersion] Remote debugging
+ * @property {string} [siteConfig.remoteDebuggingVersion] Remote debugging
  * version.
- * @member {boolean} [siteConfig.httpLoggingEnabled] <code>true</code> if HTTP
- * logging is enabled; otherwise, <code>false</code>.
- * @member {number} [siteConfig.logsDirectorySizeLimit] HTTP logs directory
+ * @property {boolean} [siteConfig.httpLoggingEnabled] <code>true</code> if
+ * HTTP logging is enabled; otherwise, <code>false</code>.
+ * @property {number} [siteConfig.logsDirectorySizeLimit] HTTP logs directory
  * size limit.
- * @member {boolean} [siteConfig.detailedErrorLoggingEnabled] <code>true</code>
- * if detailed error logging is enabled; otherwise, <code>false</code>.
- * @member {string} [siteConfig.publishingUsername] Publishing user name.
- * @member {array} [siteConfig.appSettings] Application settings.
- * @member {object} [siteConfig.azureStorageAccounts] User-provided Azure
+ * @property {boolean} [siteConfig.detailedErrorLoggingEnabled]
+ * <code>true</code> if detailed error logging is enabled; otherwise,
+ * <code>false</code>.
+ * @property {string} [siteConfig.publishingUsername] Publishing user name.
+ * @property {array} [siteConfig.appSettings] Application settings.
+ * @property {object} [siteConfig.azureStorageAccounts] User-provided Azure
  * storage accounts.
- * @member {array} [siteConfig.connectionStrings] Connection strings.
- * @member {object} [siteConfig.machineKey] Site MachineKey.
- * @member {string} [siteConfig.machineKey.validation] MachineKey validation.
- * @member {string} [siteConfig.machineKey.validationKey] Validation key.
- * @member {string} [siteConfig.machineKey.decryption] Algorithm used for
+ * @property {array} [siteConfig.connectionStrings] Connection strings.
+ * @property {object} [siteConfig.machineKey] Site MachineKey.
+ * @property {string} [siteConfig.machineKey.validation] MachineKey validation.
+ * @property {string} [siteConfig.machineKey.validationKey] Validation key.
+ * @property {string} [siteConfig.machineKey.decryption] Algorithm used for
  * decryption.
- * @member {string} [siteConfig.machineKey.decryptionKey] Decryption key.
- * @member {array} [siteConfig.handlerMappings] Handler mappings.
- * @member {string} [siteConfig.documentRoot] Document root.
- * @member {string} [siteConfig.scmType] SCM type. Possible values include:
+ * @property {string} [siteConfig.machineKey.decryptionKey] Decryption key.
+ * @property {array} [siteConfig.handlerMappings] Handler mappings.
+ * @property {string} [siteConfig.documentRoot] Document root.
+ * @property {string} [siteConfig.scmType] SCM type. Possible values include:
  * 'None', 'Dropbox', 'Tfs', 'LocalGit', 'GitHub', 'CodePlexGit', 'CodePlexHg',
  * 'BitbucketGit', 'BitbucketHg', 'ExternalGit', 'ExternalHg', 'OneDrive',
  * 'VSO'
- * @member {boolean} [siteConfig.use32BitWorkerProcess] <code>true</code> to
+ * @property {boolean} [siteConfig.use32BitWorkerProcess] <code>true</code> to
  * use 32-bit worker process; otherwise, <code>false</code>.
- * @member {boolean} [siteConfig.webSocketsEnabled] <code>true</code> if
+ * @property {boolean} [siteConfig.webSocketsEnabled] <code>true</code> if
  * WebSocket is enabled; otherwise, <code>false</code>.
- * @member {boolean} [siteConfig.alwaysOn] <code>true</code> if Always On is
+ * @property {boolean} [siteConfig.alwaysOn] <code>true</code> if Always On is
  * enabled; otherwise, <code>false</code>.
- * @member {string} [siteConfig.javaVersion] Java version.
- * @member {string} [siteConfig.javaContainer] Java container.
- * @member {string} [siteConfig.javaContainerVersion] Java container version.
- * @member {string} [siteConfig.appCommandLine] App command line to launch.
- * @member {string} [siteConfig.managedPipelineMode] Managed pipeline mode.
+ * @property {string} [siteConfig.javaVersion] Java version.
+ * @property {string} [siteConfig.javaContainer] Java container.
+ * @property {string} [siteConfig.javaContainerVersion] Java container version.
+ * @property {string} [siteConfig.appCommandLine] App command line to launch.
+ * @property {string} [siteConfig.managedPipelineMode] Managed pipeline mode.
  * Possible values include: 'Integrated', 'Classic'
- * @member {array} [siteConfig.virtualApplications] Virtual applications.
- * @member {string} [siteConfig.loadBalancing] Site load balancing. Possible
+ * @property {array} [siteConfig.virtualApplications] Virtual applications.
+ * @property {string} [siteConfig.loadBalancing] Site load balancing. Possible
  * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
  * 'WeightedTotalTraffic', 'RequestHash'
- * @member {object} [siteConfig.experiments] This is work around for polymophic
- * types.
- * @member {array} [siteConfig.experiments.rampUpRules] List of ramp-up rules.
- * @member {object} [siteConfig.limits] Site limits.
- * @member {number} [siteConfig.limits.maxPercentageCpu] Maximum allowed CPU
+ * @property {object} [siteConfig.experiments] This is work around for
+ * polymophic types.
+ * @property {array} [siteConfig.experiments.rampUpRules] List of ramp-up
+ * rules.
+ * @property {object} [siteConfig.limits] Site limits.
+ * @property {number} [siteConfig.limits.maxPercentageCpu] Maximum allowed CPU
  * usage percentage.
- * @member {number} [siteConfig.limits.maxMemoryInMb] Maximum allowed memory
+ * @property {number} [siteConfig.limits.maxMemoryInMb] Maximum allowed memory
  * usage in MB.
- * @member {number} [siteConfig.limits.maxDiskSizeInMb] Maximum allowed disk
+ * @property {number} [siteConfig.limits.maxDiskSizeInMb] Maximum allowed disk
  * size usage in MB.
- * @member {boolean} [siteConfig.autoHealEnabled] <code>true</code> if Auto
+ * @property {boolean} [siteConfig.autoHealEnabled] <code>true</code> if Auto
  * Heal is enabled; otherwise, <code>false</code>.
- * @member {object} [siteConfig.autoHealRules] Auto Heal rules.
- * @member {object} [siteConfig.autoHealRules.triggers] Conditions that
+ * @property {object} [siteConfig.autoHealRules] Auto Heal rules.
+ * @property {object} [siteConfig.autoHealRules.triggers] Conditions that
  * describe when to execute the auto-heal actions.
- * @member {object} [siteConfig.autoHealRules.triggers.requests] A rule based
+ * @property {object} [siteConfig.autoHealRules.triggers.requests] A rule based
  * on total requests.
- * @member {number} [siteConfig.autoHealRules.triggers.requests.count] Request
- * Count.
- * @member {string} [siteConfig.autoHealRules.triggers.requests.timeInterval]
- * Time interval.
- * @member {number} [siteConfig.autoHealRules.triggers.privateBytesInKB] A rule
- * based on private bytes.
- * @member {array} [siteConfig.autoHealRules.triggers.statusCodes] A rule based
- * on status codes.
- * @member {object} [siteConfig.autoHealRules.triggers.slowRequests] A rule
- * based on request execution time.
- * @member {string} [siteConfig.autoHealRules.triggers.slowRequests.timeTaken]
- * Time taken.
- * @member {number} [siteConfig.autoHealRules.triggers.slowRequests.count]
+ * @property {number} [siteConfig.autoHealRules.triggers.requests.count]
  * Request Count.
- * @member {string}
+ * @property {string} [siteConfig.autoHealRules.triggers.requests.timeInterval]
+ * Time interval.
+ * @property {number} [siteConfig.autoHealRules.triggers.privateBytesInKB] A
+ * rule based on private bytes.
+ * @property {array} [siteConfig.autoHealRules.triggers.statusCodes] A rule
+ * based on status codes.
+ * @property {object} [siteConfig.autoHealRules.triggers.slowRequests] A rule
+ * based on request execution time.
+ * @property {string}
+ * [siteConfig.autoHealRules.triggers.slowRequests.timeTaken] Time taken.
+ * @property {number} [siteConfig.autoHealRules.triggers.slowRequests.count]
+ * Request Count.
+ * @property {string}
  * [siteConfig.autoHealRules.triggers.slowRequests.timeInterval] Time interval.
- * @member {object} [siteConfig.autoHealRules.actions] Actions to be executed
+ * @property {object} [siteConfig.autoHealRules.actions] Actions to be executed
  * when a rule is triggered.
- * @member {string} [siteConfig.autoHealRules.actions.actionType] Predefined
+ * @property {string} [siteConfig.autoHealRules.actions.actionType] Predefined
  * action to be taken. Possible values include: 'Recycle', 'LogEvent',
  * 'CustomAction'
- * @member {object} [siteConfig.autoHealRules.actions.customAction] Custom
+ * @property {object} [siteConfig.autoHealRules.actions.customAction] Custom
  * action to be taken.
- * @member {string} [siteConfig.autoHealRules.actions.customAction.exe]
+ * @property {string} [siteConfig.autoHealRules.actions.customAction.exe]
  * Executable to be run.
- * @member {string} [siteConfig.autoHealRules.actions.customAction.parameters]
- * Parameters for the executable.
- * @member {string} [siteConfig.autoHealRules.actions.minProcessExecutionTime]
- * Minimum time the process must execute
+ * @property {string}
+ * [siteConfig.autoHealRules.actions.customAction.parameters] Parameters for
+ * the executable.
+ * @property {string}
+ * [siteConfig.autoHealRules.actions.minProcessExecutionTime] Minimum time the
+ * process must execute
  * before taking the action
- * @member {string} [siteConfig.tracingOptions] Tracing options.
- * @member {string} [siteConfig.vnetName] Virtual Network name.
- * @member {object} [siteConfig.cors] Cross-Origin Resource Sharing (CORS)
+ * @property {string} [siteConfig.tracingOptions] Tracing options.
+ * @property {string} [siteConfig.vnetName] Virtual Network name.
+ * @property {object} [siteConfig.cors] Cross-Origin Resource Sharing (CORS)
  * settings.
- * @member {array} [siteConfig.cors.allowedOrigins] Gets or sets the list of
+ * @property {array} [siteConfig.cors.allowedOrigins] Gets or sets the list of
  * origins that should be allowed to make cross-origin
  * calls (for example: http://example.com:12345). Use "*" to allow all.
- * @member {object} [siteConfig.push] Push endpoint settings.
- * @member {boolean} [siteConfig.push.isPushEnabled] Gets or sets a flag
+ * @property {boolean} [siteConfig.cors.supportCredentials] Gets or sets
+ * whether CORS requests with credentials are allowed. See
+ * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+ * for more details.
+ * @property {object} [siteConfig.push] Push endpoint settings.
+ * @property {boolean} [siteConfig.push.isPushEnabled] Gets or sets a flag
  * indicating whether the Push endpoint is enabled.
- * @member {string} [siteConfig.push.tagWhitelistJson] Gets or sets a JSON
+ * @property {string} [siteConfig.push.tagWhitelistJson] Gets or sets a JSON
  * string containing a list of tags that are whitelisted for use by the push
  * registration endpoint.
- * @member {string} [siteConfig.push.tagsRequiringAuth] Gets or sets a JSON
+ * @property {string} [siteConfig.push.tagsRequiringAuth] Gets or sets a JSON
  * string containing a list of tags that require user authentication to be used
  * in the push registration endpoint.
  * Tags can consist of alphanumeric characters and the following:
  * '_', '@', '#', '.', ':', '-'.
  * Validation should be performed at the PushRequestHandler.
- * @member {string} [siteConfig.push.dynamicTagsJson] Gets or sets a JSON
+ * @property {string} [siteConfig.push.dynamicTagsJson] Gets or sets a JSON
  * string containing a list of dynamic tags that will be evaluated from user
  * claims in the push registration endpoint.
- * @member {object} [siteConfig.apiDefinition] Information about the formal API
- * definition for the app.
- * @member {string} [siteConfig.apiDefinition.url] The URL of the API
+ * @property {object} [siteConfig.apiDefinition] Information about the formal
+ * API definition for the app.
+ * @property {string} [siteConfig.apiDefinition.url] The URL of the API
  * definition.
- * @member {string} [siteConfig.autoSwapSlotName] Auto-swap slot name.
- * @member {boolean} [siteConfig.localMySqlEnabled] <code>true</code> to enable
- * local MySQL; otherwise, <code>false</code>.
- * @member {number} [siteConfig.managedServiceIdentityId] Managed Service
+ * @property {string} [siteConfig.autoSwapSlotName] Auto-swap slot name.
+ * @property {boolean} [siteConfig.localMySqlEnabled] <code>true</code> to
+ * enable local MySQL; otherwise, <code>false</code>.
+ * @property {number} [siteConfig.managedServiceIdentityId] Managed Service
  * Identity Id
- * @member {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
+ * @property {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
  * Service Identity Id
- * @member {array} [siteConfig.ipSecurityRestrictions] IP security
- * restrictions.
- * @member {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
- * site to allow clients to connect over http2.0
- * @member {string} [siteConfig.minTlsVersion] MinTlsVersion: configures the
+ * @property {array} [siteConfig.ipSecurityRestrictions] IP security
+ * restrictions for main.
+ * @property {array} [siteConfig.scmIpSecurityRestrictions] IP security
+ * restrictions for scm.
+ * @property {boolean} [siteConfig.scmIpSecurityRestrictionsUseMain] IP
+ * security restrictions for scm to use main.
+ * @property {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a
+ * web site to allow clients to connect over http2.0
+ * @property {string} [siteConfig.minTlsVersion] MinTlsVersion: configures the
  * minimum version of TLS required for SSL requests. Possible values include:
  * '1.0', '1.1', '1.2'
- * @member {string} [siteConfig.ftpsState] State of FTP / FTPS service.
+ * @property {string} [siteConfig.ftpsState] State of FTP / FTPS service.
  * Possible values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
- * @member {number} [siteConfig.reservedInstanceCount] Number of reserved
+ * @property {number} [siteConfig.reservedInstanceCount] Number of reserved
  * instances.
  * This setting only applies to the Consumption Plan
- * @member {array} [trafficManagerHostNames] Azure Traffic Manager hostnames
+ * @property {array} [trafficManagerHostNames] Azure Traffic Manager hostnames
  * associated with the app. Read-only.
- * @member {boolean} [scmSiteAlsoStopped] <code>true</code> to stop SCM (KUDU)
- * site when the app is stopped; otherwise, <code>false</code>. The default is
- * <code>false</code>. Default value: false .
- * @member {string} [targetSwapSlot] Specifies which deployment slot this app
+ * @property {boolean} [scmSiteAlsoStopped] <code>true</code> to stop SCM
+ * (KUDU) site when the app is stopped; otherwise, <code>false</code>. The
+ * default is <code>false</code>. Default value: false .
+ * @property {string} [targetSwapSlot] Specifies which deployment slot this app
  * will swap into. Read-only.
- * @member {object} [hostingEnvironmentProfile] App Service Environment to use
- * for the app.
- * @member {string} [hostingEnvironmentProfile.id] Resource ID of the App
+ * @property {object} [hostingEnvironmentProfile] App Service Environment to
+ * use for the app.
+ * @property {string} [hostingEnvironmentProfile.id] Resource ID of the App
  * Service Environment.
- * @member {string} [hostingEnvironmentProfile.name] Name of the App Service
+ * @property {string} [hostingEnvironmentProfile.name] Name of the App Service
  * Environment.
- * @member {string} [hostingEnvironmentProfile.type] Resource type of the App
+ * @property {string} [hostingEnvironmentProfile.type] Resource type of the App
  * Service Environment.
- * @member {boolean} [clientAffinityEnabled] <code>true</code> to enable client
- * affinity; <code>false</code> to stop sending session affinity cookies, which
- * route client requests in the same session to the same instance. Default is
- * <code>true</code>.
- * @member {boolean} [clientCertEnabled] <code>true</code> to enable client
+ * @property {boolean} [clientAffinityEnabled] <code>true</code> to enable
+ * client affinity; <code>false</code> to stop sending session affinity
+ * cookies, which route client requests in the same session to the same
+ * instance. Default is <code>true</code>.
+ * @property {boolean} [clientCertEnabled] <code>true</code> to enable client
  * certificate authentication (TLS mutual authentication); otherwise,
  * <code>false</code>. Default is <code>false</code>.
- * @member {boolean} [hostNamesDisabled] <code>true</code> to disable the
+ * @property {boolean} [hostNamesDisabled] <code>true</code> to disable the
  * public hostnames of the app; otherwise, <code>false</code>.
  * If <code>true</code>, the app is only accessible via API management process.
- * @member {string} [outboundIpAddresses] List of IP addresses that the app
+ * @property {string} [outboundIpAddresses] List of IP addresses that the app
  * uses for outbound connections (e.g. database access). Includes VIPs from
  * tenants that site can be hosted with current settings. Read-only.
- * @member {string} [possibleOutboundIpAddresses] List of IP addresses that the
- * app uses for outbound connections (e.g. database access). Includes VIPs from
- * all tenants. Read-only.
- * @member {number} [containerSize] Size of the function container.
- * @member {number} [dailyMemoryTimeQuota] Maximum allowed daily memory-time
+ * @property {string} [possibleOutboundIpAddresses] List of IP addresses that
+ * the app uses for outbound connections (e.g. database access). Includes VIPs
+ * from all tenants. Read-only.
+ * @property {number} [containerSize] Size of the function container.
+ * @property {number} [dailyMemoryTimeQuota] Maximum allowed daily memory-time
  * quota (applicable on dynamic apps only).
- * @member {date} [suspendedTill] App suspended till in case memory-time quota
- * is exceeded.
- * @member {number} [maxNumberOfWorkers] Maximum number of workers.
+ * @property {date} [suspendedTill] App suspended till in case memory-time
+ * quota is exceeded.
+ * @property {number} [maxNumberOfWorkers] Maximum number of workers.
  * This only applies to Functions container.
- * @member {object} [cloningInfo] If specified during app creation, the app is
- * cloned from a source app.
- * @member {uuid} [cloningInfo.correlationId] Correlation ID of cloning
+ * @property {object} [cloningInfo] If specified during app creation, the app
+ * is cloned from a source app.
+ * @property {uuid} [cloningInfo.correlationId] Correlation ID of cloning
  * operation. This ID ties multiple cloning operations
  * together to use the same snapshot.
- * @member {boolean} [cloningInfo.overwrite] <code>true</code> to overwrite
+ * @property {boolean} [cloningInfo.overwrite] <code>true</code> to overwrite
  * destination app; otherwise, <code>false</code>.
- * @member {boolean} [cloningInfo.cloneCustomHostNames] <code>true</code> to
+ * @property {boolean} [cloningInfo.cloneCustomHostNames] <code>true</code> to
  * clone custom hostnames from source app; otherwise, <code>false</code>.
- * @member {boolean} [cloningInfo.cloneSourceControl] <code>true</code> to
+ * @property {boolean} [cloningInfo.cloneSourceControl] <code>true</code> to
  * clone source control from source app; otherwise, <code>false</code>.
- * @member {string} [cloningInfo.sourceWebAppId] ARM resource ID of the source
- * app. App resource ID is of the form
+ * @property {string} [cloningInfo.sourceWebAppId] ARM resource ID of the
+ * source app. App resource ID is of the form
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
  * for production slots and
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
  * for other slots.
- * @member {string} [cloningInfo.hostingEnvironment] App Service Environment.
- * @member {object} [cloningInfo.appSettingsOverrides] Application setting
+ * @property {string} [cloningInfo.hostingEnvironment] App Service Environment.
+ * @property {object} [cloningInfo.appSettingsOverrides] Application setting
  * overrides for cloned app. If specified, these settings override the settings
  * cloned
  * from source app. Otherwise, application settings from source app are
  * retained.
- * @member {boolean} [cloningInfo.configureLoadBalancing] <code>true</code> to
- * configure load balancing for source and destination app.
- * @member {string} [cloningInfo.trafficManagerProfileId] ARM resource ID of
+ * @property {boolean} [cloningInfo.configureLoadBalancing] <code>true</code>
+ * to configure load balancing for source and destination app.
+ * @property {string} [cloningInfo.trafficManagerProfileId] ARM resource ID of
  * the Traffic Manager profile to use, if it exists. Traffic Manager resource
  * ID is of the form
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
- * @member {string} [cloningInfo.trafficManagerProfileName] Name of Traffic
+ * @property {string} [cloningInfo.trafficManagerProfileName] Name of Traffic
  * Manager profile to create. This is only needed if Traffic Manager profile
  * does not already exist.
- * @member {string} [resourceGroup] Name of the resource group the app belongs
- * to. Read-only.
- * @member {boolean} [isDefaultContainer] <code>true</code> if the app is a
+ * @property {string} [resourceGroup] Name of the resource group the app
+ * belongs to. Read-only.
+ * @property {boolean} [isDefaultContainer] <code>true</code> if the app is a
  * default container; otherwise, <code>false</code>.
- * @member {string} [defaultHostName] Default hostname of the app. Read-only.
- * @member {object} [slotSwapStatus] Status of the last deployment slot swap
+ * @property {string} [defaultHostName] Default hostname of the app. Read-only.
+ * @property {object} [slotSwapStatus] Status of the last deployment slot swap
  * operation.
- * @member {date} [slotSwapStatus.timestampUtc] The time the last successful
+ * @property {date} [slotSwapStatus.timestampUtc] The time the last successful
  * slot swap completed.
- * @member {string} [slotSwapStatus.sourceSlotName] The source slot of the last
- * swap operation.
- * @member {string} [slotSwapStatus.destinationSlotName] The destination slot
+ * @property {string} [slotSwapStatus.sourceSlotName] The source slot of the
+ * last swap operation.
+ * @property {string} [slotSwapStatus.destinationSlotName] The destination slot
  * of the last swap operation.
- * @member {boolean} [httpsOnly] HttpsOnly: configures a web site to accept
+ * @property {boolean} [httpsOnly] HttpsOnly: configures a web site to accept
  * only https requests. Issues redirect for
  * http requests
- * @member {object} [identity]
- * @member {string} [identity.type] Type of managed service identity. Possible
- * values include: 'SystemAssigned', 'UserAssigned'
- * @member {string} [identity.tenantId] Tenant of managed service identity.
- * @member {string} [identity.principalId] Principal Id of managed service
+ * @property {object} [identity]
+ * @property {string} [identity.type] Type of managed service identity.
+ * Possible values include: 'SystemAssigned', 'UserAssigned'
+ * @property {string} [identity.tenantId] Tenant of managed service identity.
+ * @property {string} [identity.principalId] Principal Id of managed service
  * identity.
- * @member {array} [identity.identityIds] Array of UserAssigned managed service
- * identities.
+ * @property {array} [identity.identityIds] Array of UserAssigned managed
+ * service identities.
  */
 export interface Site extends Resource {
   readonly state?: string;
@@ -1715,9 +1765,9 @@ export interface Site extends Resource {
  * @constructor
  * Describes the capabilities/features allowed for a specific SKU.
  *
- * @member {string} [name] Name of the SKU capability.
- * @member {string} [value] Value of the SKU capability.
- * @member {string} [reason] Reason of the SKU capability.
+ * @property {string} [name] Name of the SKU capability.
+ * @property {string} [value] Value of the SKU capability.
+ * @property {string} [reason] Reason of the SKU capability.
  */
 export interface Capability {
   name?: string;
@@ -1731,13 +1781,13 @@ export interface Capability {
  * @constructor
  * Description of the App Service plan scale options.
  *
- * @member {number} [minimum] Minimum number of workers for this App Service
+ * @property {number} [minimum] Minimum number of workers for this App Service
  * plan SKU.
- * @member {number} [maximum] Maximum number of workers for this App Service
+ * @property {number} [maximum] Maximum number of workers for this App Service
  * plan SKU.
- * @member {number} [default] Default number of workers for this App Service
+ * @property {number} [default] Default number of workers for this App Service
  * plan SKU.
- * @member {string} [scaleType] Available scale configurations for an App
+ * @property {string} [scaleType] Available scale configurations for an App
  * Service plan.
  */
 export interface SkuCapacity {
@@ -1753,24 +1803,24 @@ export interface SkuCapacity {
  * @constructor
  * Description of a SKU for a scalable resource.
  *
- * @member {string} [name] Name of the resource SKU.
- * @member {string} [tier] Service tier of the resource SKU.
- * @member {string} [size] Size specifier of the resource SKU.
- * @member {string} [family] Family code of the resource SKU.
- * @member {number} [capacity] Current number of instances assigned to the
+ * @property {string} [name] Name of the resource SKU.
+ * @property {string} [tier] Service tier of the resource SKU.
+ * @property {string} [size] Size specifier of the resource SKU.
+ * @property {string} [family] Family code of the resource SKU.
+ * @property {number} [capacity] Current number of instances assigned to the
  * resource.
- * @member {object} [skuCapacity] Min, max, and default scale values of the
+ * @property {object} [skuCapacity] Min, max, and default scale values of the
  * SKU.
- * @member {number} [skuCapacity.minimum] Minimum number of workers for this
+ * @property {number} [skuCapacity.minimum] Minimum number of workers for this
  * App Service plan SKU.
- * @member {number} [skuCapacity.maximum] Maximum number of workers for this
+ * @property {number} [skuCapacity.maximum] Maximum number of workers for this
  * App Service plan SKU.
- * @member {number} [skuCapacity.default] Default number of workers for this
+ * @property {number} [skuCapacity.default] Default number of workers for this
  * App Service plan SKU.
- * @member {string} [skuCapacity.scaleType] Available scale configurations for
- * an App Service plan.
- * @member {array} [locations] Locations of the SKU.
- * @member {array} [capabilities] Capabilities of the SKU, e.g., is traffic
+ * @property {string} [skuCapacity.scaleType] Available scale configurations
+ * for an App Service plan.
+ * @property {array} [locations] Locations of the SKU.
+ * @property {array} [capabilities] Capabilities of the SKU, e.g., is traffic
  * manager enabled?
  */
 export interface SkuDescription {
@@ -1790,69 +1840,70 @@ export interface SkuDescription {
  * @constructor
  * App Service plan.
  *
- * @member {string} [workerTierName] Target worker tier assigned to the App
+ * @property {string} [workerTierName] Target worker tier assigned to the App
  * Service plan.
- * @member {string} [status] App Service plan status. Possible values include:
- * 'Ready', 'Pending', 'Creating'
- * @member {string} [subscription] App Service plan subscription.
- * @member {string} [adminSiteName] App Service plan administration site.
- * @member {object} [hostingEnvironmentProfile] Specification for the App
+ * @property {string} [status] App Service plan status. Possible values
+ * include: 'Ready', 'Pending', 'Creating'
+ * @property {string} [subscription] App Service plan subscription.
+ * @property {string} [adminSiteName] App Service plan administration site.
+ * @property {object} [hostingEnvironmentProfile] Specification for the App
  * Service Environment to use for the App Service plan.
- * @member {string} [hostingEnvironmentProfile.id] Resource ID of the App
+ * @property {string} [hostingEnvironmentProfile.id] Resource ID of the App
  * Service Environment.
- * @member {string} [hostingEnvironmentProfile.name] Name of the App Service
+ * @property {string} [hostingEnvironmentProfile.name] Name of the App Service
  * Environment.
- * @member {string} [hostingEnvironmentProfile.type] Resource type of the App
+ * @property {string} [hostingEnvironmentProfile.type] Resource type of the App
  * Service Environment.
- * @member {number} [maximumNumberOfWorkers] Maximum number of instances that
+ * @property {number} [maximumNumberOfWorkers] Maximum number of instances that
  * can be assigned to this App Service plan.
- * @member {string} [geoRegion] Geographical location for the App Service plan.
- * @member {boolean} [perSiteScaling] If <code>true</code>, apps assigned to
+ * @property {string} [geoRegion] Geographical location for the App Service
+ * plan.
+ * @property {boolean} [perSiteScaling] If <code>true</code>, apps assigned to
  * this App Service plan can be scaled independently.
  * If <code>false</code>, apps assigned to this App Service plan will scale to
  * all instances of the plan. Default value: false .
- * @member {number} [maximumElasticWorkerCount] Maximum number of total workers
- * allowed for this ElasticScaleEnabled App Service Plan
- * @member {number} [numberOfSites] Number of apps assigned to this App Service
- * plan.
- * @member {boolean} [isSpot] If <code>true</code>, this App Service Plan owns
- * spot instances.
- * @member {date} [spotExpirationTime] The time when the server farm expires.
+ * @property {number} [maximumElasticWorkerCount] Maximum number of total
+ * workers allowed for this ElasticScaleEnabled App Service Plan
+ * @property {number} [numberOfSites] Number of apps assigned to this App
+ * Service plan.
+ * @property {boolean} [isSpot] If <code>true</code>, this App Service Plan
+ * owns spot instances.
+ * @property {date} [spotExpirationTime] The time when the server farm expires.
  * Valid only if it is a spot server farm.
- * @member {date} [freeOfferExpirationTime] The time when the server farm free
- * offer expires.
- * @member {string} [resourceGroup] Resource group of the App Service plan.
- * @member {boolean} [reserved] If Linux app service plan <code>true</code>,
+ * @property {date} [freeOfferExpirationTime] The time when the server farm
+ * free offer expires.
+ * @property {string} [resourceGroup] Resource group of the App Service plan.
+ * @property {boolean} [reserved] If Linux app service plan <code>true</code>,
  * <code>false</code> otherwise. Default value: false .
- * @member {boolean} [isXenon] Obsolete: If Hyper-V container app service plan
+ * @property {boolean} [isXenon] Obsolete: If Hyper-V container app service
+ * plan <code>true</code>, <code>false</code> otherwise. Default value: false .
+ * @property {boolean} [hyperV] If Hyper-V container app service plan
  * <code>true</code>, <code>false</code> otherwise. Default value: false .
- * @member {boolean} [hyperV] If Hyper-V container app service plan
- * <code>true</code>, <code>false</code> otherwise. Default value: false .
- * @member {number} [targetWorkerCount] Scaling worker count.
- * @member {number} [targetWorkerSizeId] Scaling worker size ID.
- * @member {string} [provisioningState] Provisioning state of the App Service
+ * @property {number} [targetWorkerCount] Scaling worker count.
+ * @property {number} [targetWorkerSizeId] Scaling worker size ID.
+ * @property {string} [provisioningState] Provisioning state of the App Service
  * Environment. Possible values include: 'Succeeded', 'Failed', 'Canceled',
  * 'InProgress', 'Deleting'
- * @member {object} [sku]
- * @member {string} [sku.name] Name of the resource SKU.
- * @member {string} [sku.tier] Service tier of the resource SKU.
- * @member {string} [sku.size] Size specifier of the resource SKU.
- * @member {string} [sku.family] Family code of the resource SKU.
- * @member {number} [sku.capacity] Current number of instances assigned to the
- * resource.
- * @member {object} [sku.skuCapacity] Min, max, and default scale values of the
- * SKU.
- * @member {number} [sku.skuCapacity.minimum] Minimum number of workers for
+ * @property {object} [sku]
+ * @property {string} [sku.name] Name of the resource SKU.
+ * @property {string} [sku.tier] Service tier of the resource SKU.
+ * @property {string} [sku.size] Size specifier of the resource SKU.
+ * @property {string} [sku.family] Family code of the resource SKU.
+ * @property {number} [sku.capacity] Current number of instances assigned to
+ * the resource.
+ * @property {object} [sku.skuCapacity] Min, max, and default scale values of
+ * the SKU.
+ * @property {number} [sku.skuCapacity.minimum] Minimum number of workers for
  * this App Service plan SKU.
- * @member {number} [sku.skuCapacity.maximum] Maximum number of workers for
+ * @property {number} [sku.skuCapacity.maximum] Maximum number of workers for
  * this App Service plan SKU.
- * @member {number} [sku.skuCapacity.default] Default number of workers for
+ * @property {number} [sku.skuCapacity.default] Default number of workers for
  * this App Service plan SKU.
- * @member {string} [sku.skuCapacity.scaleType] Available scale configurations
- * for an App Service plan.
- * @member {array} [sku.locations] Locations of the SKU.
- * @member {array} [sku.capabilities] Capabilities of the SKU, e.g., is traffic
- * manager enabled?
+ * @property {string} [sku.skuCapacity.scaleType] Available scale
+ * configurations for an App Service plan.
+ * @property {array} [sku.locations] Locations of the SKU.
+ * @property {array} [sku.capabilities] Capabilities of the SKU, e.g., is
+ * traffic manager enabled?
  */
 export interface AppServicePlan extends Resource {
   workerTierName?: string;
@@ -1884,11 +1935,11 @@ export interface AppServicePlan extends Resource {
  * @constructor
  * Detailed errors.
  *
- * @member {string} [code] Standardized string to programmatically identify the
- * error.
- * @member {string} [message] Detailed error description and debugging
+ * @property {string} [code] Standardized string to programmatically identify
+ * the error.
+ * @property {string} [message] Detailed error description and debugging
  * information.
- * @member {string} [target] Detailed error description and debugging
+ * @property {string} [target] Detailed error description and debugging
  * information.
  */
 export interface DefaultErrorResponseErrorDetailsItem {
@@ -1903,14 +1954,14 @@ export interface DefaultErrorResponseErrorDetailsItem {
  * @constructor
  * Error model.
  *
- * @member {string} [code] Standardized string to programmatically identify the
- * error.
- * @member {string} [message] Detailed error description and debugging
+ * @property {string} [code] Standardized string to programmatically identify
+ * the error.
+ * @property {string} [message] Detailed error description and debugging
  * information.
- * @member {string} [target] Detailed error description and debugging
+ * @property {string} [target] Detailed error description and debugging
  * information.
- * @member {array} [details]
- * @member {string} [innererror] More information to debug error.
+ * @property {array} [details]
+ * @property {string} [innererror] More information to debug error.
  */
 export interface DefaultErrorResponseError {
   readonly code?: string;
@@ -1926,15 +1977,15 @@ export interface DefaultErrorResponseError {
  * @constructor
  * App Service error response.
  *
- * @member {object} [error] Error model.
- * @member {string} [error.code] Standardized string to programmatically
+ * @property {object} [error] Error model.
+ * @property {string} [error.code] Standardized string to programmatically
  * identify the error.
- * @member {string} [error.message] Detailed error description and debugging
+ * @property {string} [error.message] Detailed error description and debugging
  * information.
- * @member {string} [error.target] Detailed error description and debugging
+ * @property {string} [error.target] Detailed error description and debugging
  * information.
- * @member {array} [error.details]
- * @member {string} [error.innererror] More information to debug error.
+ * @property {array} [error.details]
+ * @property {string} [error.innererror] More information to debug error.
  */
 export interface DefaultErrorResponse {
   readonly error?: DefaultErrorResponseError;
@@ -1946,7 +1997,7 @@ export interface DefaultErrorResponse {
  * @constructor
  * Identifies an object.
  *
- * @member {string} [name] Name of the object.
+ * @property {string} [name] Name of the object.
  */
 export interface NameIdentifier {
   name?: string;
@@ -1958,9 +2009,9 @@ export interface NameIdentifier {
  * @constructor
  * Log Definition of a single resource metric.
  *
- * @member {string} [name]
- * @member {string} [displayName]
- * @member {string} [blobDuration]
+ * @property {string} [name]
+ * @property {string} [displayName]
+ * @property {string} [blobDuration]
  */
 export interface LogSpecification {
   name?: string;
@@ -1974,8 +2025,8 @@ export interface LogSpecification {
  * @constructor
  * Retention policy of a resource metric.
  *
- * @member {string} [timeGrain]
- * @member {string} [blobDuration]
+ * @property {string} [timeGrain]
+ * @property {string} [blobDuration]
  */
 export interface MetricAvailability {
   timeGrain?: string;
@@ -1990,10 +2041,10 @@ export interface MetricAvailability {
  * a web app,
  * where instance name is dimension of the metric HTTP request
  *
- * @member {string} [name]
- * @member {string} [displayName]
- * @member {string} [internalName]
- * @member {boolean} [toBeExportedForShoebox]
+ * @property {string} [name]
+ * @property {string} [displayName]
+ * @property {string} [internalName]
+ * @property {boolean} [toBeExportedForShoebox]
  */
 export interface Dimension {
   name?: string;
@@ -2008,21 +2059,21 @@ export interface Dimension {
  * @constructor
  * Definition of a single resource metric.
  *
- * @member {string} [name]
- * @member {string} [displayName]
- * @member {string} [displayDescription]
- * @member {string} [unit]
- * @member {string} [aggregationType]
- * @member {boolean} [supportsInstanceLevelAggregation]
- * @member {boolean} [enableRegionalMdmAccount]
- * @member {string} [sourceMdmAccount]
- * @member {string} [sourceMdmNamespace]
- * @member {string} [metricFilterPattern]
- * @member {boolean} [fillGapWithZero]
- * @member {boolean} [isInternal]
- * @member {array} [dimensions]
- * @member {string} [category]
- * @member {array} [availabilities]
+ * @property {string} [name]
+ * @property {string} [displayName]
+ * @property {string} [displayDescription]
+ * @property {string} [unit]
+ * @property {string} [aggregationType]
+ * @property {boolean} [supportsInstanceLevelAggregation]
+ * @property {boolean} [enableRegionalMdmAccount]
+ * @property {string} [sourceMdmAccount]
+ * @property {string} [sourceMdmNamespace]
+ * @property {string} [metricFilterPattern]
+ * @property {boolean} [fillGapWithZero]
+ * @property {boolean} [isInternal]
+ * @property {array} [dimensions]
+ * @property {string} [category]
+ * @property {array} [availabilities]
  */
 export interface MetricSpecification {
   name?: string;
@@ -2048,8 +2099,8 @@ export interface MetricSpecification {
  * @constructor
  * Resource metrics service provided by Microsoft.Insights resource provider.
  *
- * @member {array} [metricSpecifications]
- * @member {array} [logSpecifications]
+ * @property {array} [metricSpecifications]
+ * @property {array} [logSpecifications]
  */
 export interface ServiceSpecification {
   metricSpecifications?: MetricSpecification[];
@@ -2062,9 +2113,9 @@ export interface ServiceSpecification {
  * @constructor
  * Properties available for a Microsoft.Web resource provider operation.
  *
- * @member {object} [serviceSpecification]
- * @member {array} [serviceSpecification.metricSpecifications]
- * @member {array} [serviceSpecification.logSpecifications]
+ * @property {object} [serviceSpecification]
+ * @property {array} [serviceSpecification.metricSpecifications]
+ * @property {array} [serviceSpecification.logSpecifications]
  */
 export interface CsmOperationDescriptionProperties {
   serviceSpecification?: ServiceSpecification;
@@ -2076,10 +2127,10 @@ export interface CsmOperationDescriptionProperties {
  * @constructor
  * Meta data about operation used for display in portal.
  *
- * @member {string} [provider]
- * @member {string} [resource]
- * @member {string} [operation]
- * @member {string} [description]
+ * @property {string} [provider]
+ * @property {string} [resource]
+ * @property {string} [operation]
+ * @property {string} [description]
  */
 export interface CsmOperationDisplay {
   provider?: string;
@@ -2094,17 +2145,17 @@ export interface CsmOperationDisplay {
  * @constructor
  * Description of an operation available for Microsoft.Web resource provider.
  *
- * @member {string} [name]
- * @member {object} [display]
- * @member {string} [display.provider]
- * @member {string} [display.resource]
- * @member {string} [display.operation]
- * @member {string} [display.description]
- * @member {string} [origin]
- * @member {object} [properties]
- * @member {object} [properties.serviceSpecification]
- * @member {array} [properties.serviceSpecification.metricSpecifications]
- * @member {array} [properties.serviceSpecification.logSpecifications]
+ * @property {string} [name]
+ * @property {object} [display]
+ * @property {string} [display.provider]
+ * @property {string} [display.resource]
+ * @property {string} [display.operation]
+ * @property {string} [display.description]
+ * @property {string} [origin]
+ * @property {object} [properties]
+ * @property {object} [properties.serviceSpecification]
+ * @property {array} [properties.serviceSpecification.metricSpecifications]
+ * @property {array} [properties.serviceSpecification.logSpecifications]
  */
 export interface CsmOperationDescription {
   name?: string;
@@ -2119,12 +2170,12 @@ export interface CsmOperationDescription {
  * @constructor
  * Address information for domain registration.
  *
- * @member {string} address1 First line of an Address.
- * @member {string} [address2] The second line of the Address. Optional.
- * @member {string} city The city for the address.
- * @member {string} country The country for the address.
- * @member {string} postalCode The postal code for the address.
- * @member {string} state The state or province for the address.
+ * @property {string} address1 First line of an Address.
+ * @property {string} [address2] The second line of the Address. Optional.
+ * @property {string} city The city for the address.
+ * @property {string} country The country for the address.
+ * @property {string} postalCode The postal code for the address.
+ * @property {string} state The state or province for the address.
  */
 export interface Address {
   address1: string;
@@ -2144,24 +2195,24 @@ export interface Address {
  * the Whois
  * directories as per ICANN requirements.
  *
- * @member {object} [addressMailing] Mailing address.
- * @member {string} [addressMailing.address1] First line of an Address.
- * @member {string} [addressMailing.address2] The second line of the Address.
+ * @property {object} [addressMailing] Mailing address.
+ * @property {string} [addressMailing.address1] First line of an Address.
+ * @property {string} [addressMailing.address2] The second line of the Address.
  * Optional.
- * @member {string} [addressMailing.city] The city for the address.
- * @member {string} [addressMailing.country] The country for the address.
- * @member {string} [addressMailing.postalCode] The postal code for the
+ * @property {string} [addressMailing.city] The city for the address.
+ * @property {string} [addressMailing.country] The country for the address.
+ * @property {string} [addressMailing.postalCode] The postal code for the
  * address.
- * @member {string} [addressMailing.state] The state or province for the
+ * @property {string} [addressMailing.state] The state or province for the
  * address.
- * @member {string} email Email address.
- * @member {string} [fax] Fax number.
- * @member {string} [jobTitle] Job title.
- * @member {string} nameFirst First name.
- * @member {string} nameLast Last name.
- * @member {string} [nameMiddle] Middle name.
- * @member {string} [organization] Organization contact belongs to.
- * @member {string} phone Phone number.
+ * @property {string} email Email address.
+ * @property {string} [fax] Fax number.
+ * @property {string} [jobTitle] Job title.
+ * @property {string} nameFirst First name.
+ * @property {string} nameLast Last name.
+ * @property {string} [nameMiddle] Middle name.
+ * @property {string} [organization] Organization contact belongs to.
+ * @property {string} phone Phone number.
  */
 export interface Contact {
   addressMailing?: Address;
@@ -2181,18 +2232,19 @@ export interface Contact {
  * @constructor
  * Details of a hostname derived from a domain.
  *
- * @member {string} [name] Name of the hostname.
- * @member {array} [siteNames] List of apps the hostname is assigned to. This
+ * @property {string} [name] Name of the hostname.
+ * @property {array} [siteNames] List of apps the hostname is assigned to. This
  * list will have more than one app only if the hostname is pointing to a
  * Traffic Manager.
- * @member {string} [azureResourceName] Name of the Azure resource the hostname
- * is assigned to. If it is assigned to a Traffic Manager then it will be the
- * Traffic Manager name otherwise it will be the app name.
- * @member {string} [azureResourceType] Type of the Azure resource the hostname
- * is assigned to. Possible values include: 'Website', 'TrafficManager'
- * @member {string} [customHostNameDnsRecordType] Type of the DNS record.
+ * @property {string} [azureResourceName] Name of the Azure resource the
+ * hostname is assigned to. If it is assigned to a Traffic Manager then it will
+ * be the Traffic Manager name otherwise it will be the app name.
+ * @property {string} [azureResourceType] Type of the Azure resource the
+ * hostname is assigned to. Possible values include: 'Website',
+ * 'TrafficManager'
+ * @property {string} [customHostNameDnsRecordType] Type of the DNS record.
  * Possible values include: 'CName', 'A'
- * @member {string} [hostNameType] Type of the hostname. Possible values
+ * @property {string} [hostNameType] Type of the hostname. Possible values
  * include: 'Verified', 'Managed'
  */
 export interface HostName {
@@ -2211,11 +2263,11 @@ export interface HostName {
  * Domain purchase consent object, representing acceptance of applicable legal
  * agreements.
  *
- * @member {array} [agreementKeys] List of applicable legal agreement keys.
+ * @property {array} [agreementKeys] List of applicable legal agreement keys.
  * This list can be retrieved using ListLegalAgreements API under
  * <code>TopLevelDomain</code> resource.
- * @member {string} [agreedBy] Client IP address.
- * @member {date} [agreedAt] Timestamp when the agreements were accepted.
+ * @property {string} [agreedBy] Client IP address.
+ * @property {date} [agreedAt] Timestamp when the agreements were accepted.
  */
 export interface DomainPurchaseConsent {
   agreementKeys?: string[];
@@ -2229,134 +2281,136 @@ export interface DomainPurchaseConsent {
  * @constructor
  * Information about a domain.
  *
- * @member {object} contactAdmin Administrative contact.
- * @member {object} [contactAdmin.addressMailing] Mailing address.
- * @member {string} [contactAdmin.addressMailing.address1] First line of an
+ * @property {object} contactAdmin Administrative contact.
+ * @property {object} [contactAdmin.addressMailing] Mailing address.
+ * @property {string} [contactAdmin.addressMailing.address1] First line of an
  * Address.
- * @member {string} [contactAdmin.addressMailing.address2] The second line of
+ * @property {string} [contactAdmin.addressMailing.address2] The second line of
  * the Address. Optional.
- * @member {string} [contactAdmin.addressMailing.city] The city for the
+ * @property {string} [contactAdmin.addressMailing.city] The city for the
  * address.
- * @member {string} [contactAdmin.addressMailing.country] The country for the
+ * @property {string} [contactAdmin.addressMailing.country] The country for the
  * address.
- * @member {string} [contactAdmin.addressMailing.postalCode] The postal code
+ * @property {string} [contactAdmin.addressMailing.postalCode] The postal code
  * for the address.
- * @member {string} [contactAdmin.addressMailing.state] The state or province
+ * @property {string} [contactAdmin.addressMailing.state] The state or province
  * for the address.
- * @member {string} [contactAdmin.email] Email address.
- * @member {string} [contactAdmin.fax] Fax number.
- * @member {string} [contactAdmin.jobTitle] Job title.
- * @member {string} [contactAdmin.nameFirst] First name.
- * @member {string} [contactAdmin.nameLast] Last name.
- * @member {string} [contactAdmin.nameMiddle] Middle name.
- * @member {string} [contactAdmin.organization] Organization contact belongs
+ * @property {string} [contactAdmin.email] Email address.
+ * @property {string} [contactAdmin.fax] Fax number.
+ * @property {string} [contactAdmin.jobTitle] Job title.
+ * @property {string} [contactAdmin.nameFirst] First name.
+ * @property {string} [contactAdmin.nameLast] Last name.
+ * @property {string} [contactAdmin.nameMiddle] Middle name.
+ * @property {string} [contactAdmin.organization] Organization contact belongs
  * to.
- * @member {string} [contactAdmin.phone] Phone number.
- * @member {object} contactBilling Billing contact.
- * @member {object} [contactBilling.addressMailing] Mailing address.
- * @member {string} [contactBilling.addressMailing.address1] First line of an
+ * @property {string} [contactAdmin.phone] Phone number.
+ * @property {object} contactBilling Billing contact.
+ * @property {object} [contactBilling.addressMailing] Mailing address.
+ * @property {string} [contactBilling.addressMailing.address1] First line of an
  * Address.
- * @member {string} [contactBilling.addressMailing.address2] The second line of
- * the Address. Optional.
- * @member {string} [contactBilling.addressMailing.city] The city for the
- * address.
- * @member {string} [contactBilling.addressMailing.country] The country for the
- * address.
- * @member {string} [contactBilling.addressMailing.postalCode] The postal code
- * for the address.
- * @member {string} [contactBilling.addressMailing.state] The state or province
- * for the address.
- * @member {string} [contactBilling.email] Email address.
- * @member {string} [contactBilling.fax] Fax number.
- * @member {string} [contactBilling.jobTitle] Job title.
- * @member {string} [contactBilling.nameFirst] First name.
- * @member {string} [contactBilling.nameLast] Last name.
- * @member {string} [contactBilling.nameMiddle] Middle name.
- * @member {string} [contactBilling.organization] Organization contact belongs
- * to.
- * @member {string} [contactBilling.phone] Phone number.
- * @member {object} contactRegistrant Registrant contact.
- * @member {object} [contactRegistrant.addressMailing] Mailing address.
- * @member {string} [contactRegistrant.addressMailing.address1] First line of
- * an Address.
- * @member {string} [contactRegistrant.addressMailing.address2] The second line
+ * @property {string} [contactBilling.addressMailing.address2] The second line
  * of the Address. Optional.
- * @member {string} [contactRegistrant.addressMailing.city] The city for the
+ * @property {string} [contactBilling.addressMailing.city] The city for the
  * address.
- * @member {string} [contactRegistrant.addressMailing.country] The country for
+ * @property {string} [contactBilling.addressMailing.country] The country for
  * the address.
- * @member {string} [contactRegistrant.addressMailing.postalCode] The postal
+ * @property {string} [contactBilling.addressMailing.postalCode] The postal
  * code for the address.
- * @member {string} [contactRegistrant.addressMailing.state] The state or
+ * @property {string} [contactBilling.addressMailing.state] The state or
  * province for the address.
- * @member {string} [contactRegistrant.email] Email address.
- * @member {string} [contactRegistrant.fax] Fax number.
- * @member {string} [contactRegistrant.jobTitle] Job title.
- * @member {string} [contactRegistrant.nameFirst] First name.
- * @member {string} [contactRegistrant.nameLast] Last name.
- * @member {string} [contactRegistrant.nameMiddle] Middle name.
- * @member {string} [contactRegistrant.organization] Organization contact
+ * @property {string} [contactBilling.email] Email address.
+ * @property {string} [contactBilling.fax] Fax number.
+ * @property {string} [contactBilling.jobTitle] Job title.
+ * @property {string} [contactBilling.nameFirst] First name.
+ * @property {string} [contactBilling.nameLast] Last name.
+ * @property {string} [contactBilling.nameMiddle] Middle name.
+ * @property {string} [contactBilling.organization] Organization contact
  * belongs to.
- * @member {string} [contactRegistrant.phone] Phone number.
- * @member {object} contactTech Technical contact.
- * @member {object} [contactTech.addressMailing] Mailing address.
- * @member {string} [contactTech.addressMailing.address1] First line of an
- * Address.
- * @member {string} [contactTech.addressMailing.address2] The second line of
- * the Address. Optional.
- * @member {string} [contactTech.addressMailing.city] The city for the address.
- * @member {string} [contactTech.addressMailing.country] The country for the
+ * @property {string} [contactBilling.phone] Phone number.
+ * @property {object} contactRegistrant Registrant contact.
+ * @property {object} [contactRegistrant.addressMailing] Mailing address.
+ * @property {string} [contactRegistrant.addressMailing.address1] First line of
+ * an Address.
+ * @property {string} [contactRegistrant.addressMailing.address2] The second
+ * line of the Address. Optional.
+ * @property {string} [contactRegistrant.addressMailing.city] The city for the
  * address.
- * @member {string} [contactTech.addressMailing.postalCode] The postal code for
- * the address.
- * @member {string} [contactTech.addressMailing.state] The state or province
+ * @property {string} [contactRegistrant.addressMailing.country] The country
  * for the address.
- * @member {string} [contactTech.email] Email address.
- * @member {string} [contactTech.fax] Fax number.
- * @member {string} [contactTech.jobTitle] Job title.
- * @member {string} [contactTech.nameFirst] First name.
- * @member {string} [contactTech.nameLast] Last name.
- * @member {string} [contactTech.nameMiddle] Middle name.
- * @member {string} [contactTech.organization] Organization contact belongs to.
- * @member {string} [contactTech.phone] Phone number.
- * @member {string} [registrationStatus] Domain registration status. Possible
+ * @property {string} [contactRegistrant.addressMailing.postalCode] The postal
+ * code for the address.
+ * @property {string} [contactRegistrant.addressMailing.state] The state or
+ * province for the address.
+ * @property {string} [contactRegistrant.email] Email address.
+ * @property {string} [contactRegistrant.fax] Fax number.
+ * @property {string} [contactRegistrant.jobTitle] Job title.
+ * @property {string} [contactRegistrant.nameFirst] First name.
+ * @property {string} [contactRegistrant.nameLast] Last name.
+ * @property {string} [contactRegistrant.nameMiddle] Middle name.
+ * @property {string} [contactRegistrant.organization] Organization contact
+ * belongs to.
+ * @property {string} [contactRegistrant.phone] Phone number.
+ * @property {object} contactTech Technical contact.
+ * @property {object} [contactTech.addressMailing] Mailing address.
+ * @property {string} [contactTech.addressMailing.address1] First line of an
+ * Address.
+ * @property {string} [contactTech.addressMailing.address2] The second line of
+ * the Address. Optional.
+ * @property {string} [contactTech.addressMailing.city] The city for the
+ * address.
+ * @property {string} [contactTech.addressMailing.country] The country for the
+ * address.
+ * @property {string} [contactTech.addressMailing.postalCode] The postal code
+ * for the address.
+ * @property {string} [contactTech.addressMailing.state] The state or province
+ * for the address.
+ * @property {string} [contactTech.email] Email address.
+ * @property {string} [contactTech.fax] Fax number.
+ * @property {string} [contactTech.jobTitle] Job title.
+ * @property {string} [contactTech.nameFirst] First name.
+ * @property {string} [contactTech.nameLast] Last name.
+ * @property {string} [contactTech.nameMiddle] Middle name.
+ * @property {string} [contactTech.organization] Organization contact belongs
+ * to.
+ * @property {string} [contactTech.phone] Phone number.
+ * @property {string} [registrationStatus] Domain registration status. Possible
  * values include: 'Active', 'Awaiting', 'Cancelled', 'Confiscated',
  * 'Disabled', 'Excluded', 'Expired', 'Failed', 'Held', 'Locked', 'Parked',
  * 'Pending', 'Reserved', 'Reverted', 'Suspended', 'Transferred', 'Unknown',
  * 'Unlocked', 'Unparked', 'Updated', 'JsonConverterFailed'
- * @member {string} [provisioningState] Domain provisioning state. Possible
+ * @property {string} [provisioningState] Domain provisioning state. Possible
  * values include: 'Succeeded', 'Failed', 'Canceled', 'InProgress', 'Deleting'
- * @member {array} [nameServers] Name servers.
- * @member {boolean} [privacy] <code>true</code> if domain privacy is enabled
+ * @property {array} [nameServers] Name servers.
+ * @property {boolean} [privacy] <code>true</code> if domain privacy is enabled
  * for this domain; otherwise, <code>false</code>.
- * @member {date} [createdTime] Domain creation timestamp.
- * @member {date} [expirationTime] Domain expiration timestamp.
- * @member {date} [lastRenewedTime] Timestamp when the domain was renewed last
- * time.
- * @member {boolean} [autoRenew] <code>true</code> if the domain should be
+ * @property {date} [createdTime] Domain creation timestamp.
+ * @property {date} [expirationTime] Domain expiration timestamp.
+ * @property {date} [lastRenewedTime] Timestamp when the domain was renewed
+ * last time.
+ * @property {boolean} [autoRenew] <code>true</code> if the domain should be
  * automatically renewed; otherwise, <code>false</code>. Default value: true .
- * @member {boolean} [readyForDnsRecordManagement] <code>true</code> if Azure
+ * @property {boolean} [readyForDnsRecordManagement] <code>true</code> if Azure
  * can assign this domain to App Service apps; otherwise, <code>false</code>.
  * This value will be <code>true</code> if domain registration status is active
  * and
  * it is hosted on name servers Azure has programmatic access to.
- * @member {array} [managedHostNames] All hostnames derived from the domain and
- * assigned to Azure resources.
- * @member {object} consent Legal agreement consent.
- * @member {array} [consent.agreementKeys] List of applicable legal agreement
+ * @property {array} [managedHostNames] All hostnames derived from the domain
+ * and assigned to Azure resources.
+ * @property {object} consent Legal agreement consent.
+ * @property {array} [consent.agreementKeys] List of applicable legal agreement
  * keys. This list can be retrieved using ListLegalAgreements API under
  * <code>TopLevelDomain</code> resource.
- * @member {string} [consent.agreedBy] Client IP address.
- * @member {date} [consent.agreedAt] Timestamp when the agreements were
+ * @property {string} [consent.agreedBy] Client IP address.
+ * @property {date} [consent.agreedAt] Timestamp when the agreements were
  * accepted.
- * @member {array} [domainNotRenewableReasons] Reasons why domain is not
+ * @property {array} [domainNotRenewableReasons] Reasons why domain is not
  * renewable.
- * @member {string} [dnsType] Current DNS type. Possible values include:
+ * @property {string} [dnsType] Current DNS type. Possible values include:
  * 'AzureDns', 'DefaultDomainRegistrarDns'
- * @member {string} [dnsZoneId] Azure DNS Zone to use
- * @member {string} [targetDnsType] Target DNS type (would be used for
+ * @property {string} [dnsZoneId] Azure DNS Zone to use
+ * @property {string} [targetDnsType] Target DNS type (would be used for
  * migration). Possible values include: 'AzureDns', 'DefaultDomainRegistrarDns'
- * @member {string} [authCode]
+ * @property {string} [authCode]
  */
 export interface Domain extends Resource {
   contactAdmin: Contact;
@@ -2387,10 +2441,10 @@ export interface Domain extends Resource {
  * @constructor
  * Domain availablility check result.
  *
- * @member {string} [name] Name of the domain.
- * @member {boolean} [available] <code>true</code> if domain can be purchased
+ * @property {string} [name] Name of the domain.
+ * @property {boolean} [available] <code>true</code> if domain can be purchased
  * using CreateDomain API; otherwise, <code>false</code>.
- * @member {string} [domainType] Valid values are Regular domain: Azure will
+ * @property {string} [domainType] Valid values are Regular domain: Azure will
  * charge the full price of domain registration, SoftDeleted: Purchasing this
  * domain will simply restore it and this operation will not cost anything.
  * Possible values include: 'Regular', 'SoftDeleted'
@@ -2407,9 +2461,9 @@ export interface DomainAvailablilityCheckResult {
  * @constructor
  * Single sign-on request information for domain management.
  *
- * @member {string} [url] URL where the single sign-on request is to be made.
- * @member {string} [postParameterKey] Post parameter key.
- * @member {string} [postParameterValue] Post parameter value. Client should
+ * @property {string} [url] URL where the single sign-on request is to be made.
+ * @property {string} [postParameterKey] Post parameter key.
+ * @property {string} [postParameterValue] Post parameter value. Client should
  * use 'application/x-www-form-urlencoded' encoding for this value.
  */
 export interface DomainControlCenterSsoRequest {
@@ -2424,7 +2478,7 @@ export interface DomainControlCenterSsoRequest {
  * @constructor
  * Domain ownership Identifier.
  *
- * @member {string} [ownershipId] Ownership Id.
+ * @property {string} [ownershipId] Ownership Id.
  */
 export interface DomainOwnershipIdentifier extends ProxyOnlyResource {
   ownershipId?: string;
@@ -2436,134 +2490,136 @@ export interface DomainOwnershipIdentifier extends ProxyOnlyResource {
  * @constructor
  * ARM resource for a domain.
  *
- * @member {object} contactAdmin Administrative contact.
- * @member {object} [contactAdmin.addressMailing] Mailing address.
- * @member {string} [contactAdmin.addressMailing.address1] First line of an
+ * @property {object} contactAdmin Administrative contact.
+ * @property {object} [contactAdmin.addressMailing] Mailing address.
+ * @property {string} [contactAdmin.addressMailing.address1] First line of an
  * Address.
- * @member {string} [contactAdmin.addressMailing.address2] The second line of
+ * @property {string} [contactAdmin.addressMailing.address2] The second line of
  * the Address. Optional.
- * @member {string} [contactAdmin.addressMailing.city] The city for the
+ * @property {string} [contactAdmin.addressMailing.city] The city for the
  * address.
- * @member {string} [contactAdmin.addressMailing.country] The country for the
+ * @property {string} [contactAdmin.addressMailing.country] The country for the
  * address.
- * @member {string} [contactAdmin.addressMailing.postalCode] The postal code
+ * @property {string} [contactAdmin.addressMailing.postalCode] The postal code
  * for the address.
- * @member {string} [contactAdmin.addressMailing.state] The state or province
+ * @property {string} [contactAdmin.addressMailing.state] The state or province
  * for the address.
- * @member {string} [contactAdmin.email] Email address.
- * @member {string} [contactAdmin.fax] Fax number.
- * @member {string} [contactAdmin.jobTitle] Job title.
- * @member {string} [contactAdmin.nameFirst] First name.
- * @member {string} [contactAdmin.nameLast] Last name.
- * @member {string} [contactAdmin.nameMiddle] Middle name.
- * @member {string} [contactAdmin.organization] Organization contact belongs
+ * @property {string} [contactAdmin.email] Email address.
+ * @property {string} [contactAdmin.fax] Fax number.
+ * @property {string} [contactAdmin.jobTitle] Job title.
+ * @property {string} [contactAdmin.nameFirst] First name.
+ * @property {string} [contactAdmin.nameLast] Last name.
+ * @property {string} [contactAdmin.nameMiddle] Middle name.
+ * @property {string} [contactAdmin.organization] Organization contact belongs
  * to.
- * @member {string} [contactAdmin.phone] Phone number.
- * @member {object} contactBilling Billing contact.
- * @member {object} [contactBilling.addressMailing] Mailing address.
- * @member {string} [contactBilling.addressMailing.address1] First line of an
+ * @property {string} [contactAdmin.phone] Phone number.
+ * @property {object} contactBilling Billing contact.
+ * @property {object} [contactBilling.addressMailing] Mailing address.
+ * @property {string} [contactBilling.addressMailing.address1] First line of an
  * Address.
- * @member {string} [contactBilling.addressMailing.address2] The second line of
- * the Address. Optional.
- * @member {string} [contactBilling.addressMailing.city] The city for the
- * address.
- * @member {string} [contactBilling.addressMailing.country] The country for the
- * address.
- * @member {string} [contactBilling.addressMailing.postalCode] The postal code
- * for the address.
- * @member {string} [contactBilling.addressMailing.state] The state or province
- * for the address.
- * @member {string} [contactBilling.email] Email address.
- * @member {string} [contactBilling.fax] Fax number.
- * @member {string} [contactBilling.jobTitle] Job title.
- * @member {string} [contactBilling.nameFirst] First name.
- * @member {string} [contactBilling.nameLast] Last name.
- * @member {string} [contactBilling.nameMiddle] Middle name.
- * @member {string} [contactBilling.organization] Organization contact belongs
- * to.
- * @member {string} [contactBilling.phone] Phone number.
- * @member {object} contactRegistrant Registrant contact.
- * @member {object} [contactRegistrant.addressMailing] Mailing address.
- * @member {string} [contactRegistrant.addressMailing.address1] First line of
- * an Address.
- * @member {string} [contactRegistrant.addressMailing.address2] The second line
+ * @property {string} [contactBilling.addressMailing.address2] The second line
  * of the Address. Optional.
- * @member {string} [contactRegistrant.addressMailing.city] The city for the
+ * @property {string} [contactBilling.addressMailing.city] The city for the
  * address.
- * @member {string} [contactRegistrant.addressMailing.country] The country for
+ * @property {string} [contactBilling.addressMailing.country] The country for
  * the address.
- * @member {string} [contactRegistrant.addressMailing.postalCode] The postal
+ * @property {string} [contactBilling.addressMailing.postalCode] The postal
  * code for the address.
- * @member {string} [contactRegistrant.addressMailing.state] The state or
+ * @property {string} [contactBilling.addressMailing.state] The state or
  * province for the address.
- * @member {string} [contactRegistrant.email] Email address.
- * @member {string} [contactRegistrant.fax] Fax number.
- * @member {string} [contactRegistrant.jobTitle] Job title.
- * @member {string} [contactRegistrant.nameFirst] First name.
- * @member {string} [contactRegistrant.nameLast] Last name.
- * @member {string} [contactRegistrant.nameMiddle] Middle name.
- * @member {string} [contactRegistrant.organization] Organization contact
+ * @property {string} [contactBilling.email] Email address.
+ * @property {string} [contactBilling.fax] Fax number.
+ * @property {string} [contactBilling.jobTitle] Job title.
+ * @property {string} [contactBilling.nameFirst] First name.
+ * @property {string} [contactBilling.nameLast] Last name.
+ * @property {string} [contactBilling.nameMiddle] Middle name.
+ * @property {string} [contactBilling.organization] Organization contact
  * belongs to.
- * @member {string} [contactRegistrant.phone] Phone number.
- * @member {object} contactTech Technical contact.
- * @member {object} [contactTech.addressMailing] Mailing address.
- * @member {string} [contactTech.addressMailing.address1] First line of an
- * Address.
- * @member {string} [contactTech.addressMailing.address2] The second line of
- * the Address. Optional.
- * @member {string} [contactTech.addressMailing.city] The city for the address.
- * @member {string} [contactTech.addressMailing.country] The country for the
+ * @property {string} [contactBilling.phone] Phone number.
+ * @property {object} contactRegistrant Registrant contact.
+ * @property {object} [contactRegistrant.addressMailing] Mailing address.
+ * @property {string} [contactRegistrant.addressMailing.address1] First line of
+ * an Address.
+ * @property {string} [contactRegistrant.addressMailing.address2] The second
+ * line of the Address. Optional.
+ * @property {string} [contactRegistrant.addressMailing.city] The city for the
  * address.
- * @member {string} [contactTech.addressMailing.postalCode] The postal code for
- * the address.
- * @member {string} [contactTech.addressMailing.state] The state or province
+ * @property {string} [contactRegistrant.addressMailing.country] The country
  * for the address.
- * @member {string} [contactTech.email] Email address.
- * @member {string} [contactTech.fax] Fax number.
- * @member {string} [contactTech.jobTitle] Job title.
- * @member {string} [contactTech.nameFirst] First name.
- * @member {string} [contactTech.nameLast] Last name.
- * @member {string} [contactTech.nameMiddle] Middle name.
- * @member {string} [contactTech.organization] Organization contact belongs to.
- * @member {string} [contactTech.phone] Phone number.
- * @member {string} [registrationStatus] Domain registration status. Possible
+ * @property {string} [contactRegistrant.addressMailing.postalCode] The postal
+ * code for the address.
+ * @property {string} [contactRegistrant.addressMailing.state] The state or
+ * province for the address.
+ * @property {string} [contactRegistrant.email] Email address.
+ * @property {string} [contactRegistrant.fax] Fax number.
+ * @property {string} [contactRegistrant.jobTitle] Job title.
+ * @property {string} [contactRegistrant.nameFirst] First name.
+ * @property {string} [contactRegistrant.nameLast] Last name.
+ * @property {string} [contactRegistrant.nameMiddle] Middle name.
+ * @property {string} [contactRegistrant.organization] Organization contact
+ * belongs to.
+ * @property {string} [contactRegistrant.phone] Phone number.
+ * @property {object} contactTech Technical contact.
+ * @property {object} [contactTech.addressMailing] Mailing address.
+ * @property {string} [contactTech.addressMailing.address1] First line of an
+ * Address.
+ * @property {string} [contactTech.addressMailing.address2] The second line of
+ * the Address. Optional.
+ * @property {string} [contactTech.addressMailing.city] The city for the
+ * address.
+ * @property {string} [contactTech.addressMailing.country] The country for the
+ * address.
+ * @property {string} [contactTech.addressMailing.postalCode] The postal code
+ * for the address.
+ * @property {string} [contactTech.addressMailing.state] The state or province
+ * for the address.
+ * @property {string} [contactTech.email] Email address.
+ * @property {string} [contactTech.fax] Fax number.
+ * @property {string} [contactTech.jobTitle] Job title.
+ * @property {string} [contactTech.nameFirst] First name.
+ * @property {string} [contactTech.nameLast] Last name.
+ * @property {string} [contactTech.nameMiddle] Middle name.
+ * @property {string} [contactTech.organization] Organization contact belongs
+ * to.
+ * @property {string} [contactTech.phone] Phone number.
+ * @property {string} [registrationStatus] Domain registration status. Possible
  * values include: 'Active', 'Awaiting', 'Cancelled', 'Confiscated',
  * 'Disabled', 'Excluded', 'Expired', 'Failed', 'Held', 'Locked', 'Parked',
  * 'Pending', 'Reserved', 'Reverted', 'Suspended', 'Transferred', 'Unknown',
  * 'Unlocked', 'Unparked', 'Updated', 'JsonConverterFailed'
- * @member {string} [provisioningState] Domain provisioning state. Possible
+ * @property {string} [provisioningState] Domain provisioning state. Possible
  * values include: 'Succeeded', 'Failed', 'Canceled', 'InProgress', 'Deleting'
- * @member {array} [nameServers] Name servers.
- * @member {boolean} [privacy] <code>true</code> if domain privacy is enabled
+ * @property {array} [nameServers] Name servers.
+ * @property {boolean} [privacy] <code>true</code> if domain privacy is enabled
  * for this domain; otherwise, <code>false</code>.
- * @member {date} [createdTime] Domain creation timestamp.
- * @member {date} [expirationTime] Domain expiration timestamp.
- * @member {date} [lastRenewedTime] Timestamp when the domain was renewed last
- * time.
- * @member {boolean} [autoRenew] <code>true</code> if the domain should be
+ * @property {date} [createdTime] Domain creation timestamp.
+ * @property {date} [expirationTime] Domain expiration timestamp.
+ * @property {date} [lastRenewedTime] Timestamp when the domain was renewed
+ * last time.
+ * @property {boolean} [autoRenew] <code>true</code> if the domain should be
  * automatically renewed; otherwise, <code>false</code>. Default value: true .
- * @member {boolean} [readyForDnsRecordManagement] <code>true</code> if Azure
+ * @property {boolean} [readyForDnsRecordManagement] <code>true</code> if Azure
  * can assign this domain to App Service apps; otherwise, <code>false</code>.
  * This value will be <code>true</code> if domain registration status is active
  * and
  * it is hosted on name servers Azure has programmatic access to.
- * @member {array} [managedHostNames] All hostnames derived from the domain and
- * assigned to Azure resources.
- * @member {object} consent Legal agreement consent.
- * @member {array} [consent.agreementKeys] List of applicable legal agreement
+ * @property {array} [managedHostNames] All hostnames derived from the domain
+ * and assigned to Azure resources.
+ * @property {object} consent Legal agreement consent.
+ * @property {array} [consent.agreementKeys] List of applicable legal agreement
  * keys. This list can be retrieved using ListLegalAgreements API under
  * <code>TopLevelDomain</code> resource.
- * @member {string} [consent.agreedBy] Client IP address.
- * @member {date} [consent.agreedAt] Timestamp when the agreements were
+ * @property {string} [consent.agreedBy] Client IP address.
+ * @property {date} [consent.agreedAt] Timestamp when the agreements were
  * accepted.
- * @member {array} [domainNotRenewableReasons] Reasons why domain is not
+ * @property {array} [domainNotRenewableReasons] Reasons why domain is not
  * renewable.
- * @member {string} [dnsType] Current DNS type. Possible values include:
+ * @property {string} [dnsType] Current DNS type. Possible values include:
  * 'AzureDns', 'DefaultDomainRegistrarDns'
- * @member {string} [dnsZoneId] Azure DNS Zone to use
- * @member {string} [targetDnsType] Target DNS type (would be used for
+ * @property {string} [dnsZoneId] Azure DNS Zone to use
+ * @property {string} [targetDnsType] Target DNS type (would be used for
  * migration). Possible values include: 'AzureDns', 'DefaultDomainRegistrarDns'
- * @member {string} [authCode]
+ * @property {string} [authCode]
  */
 export interface DomainPatchResource extends ProxyOnlyResource {
   contactAdmin: Contact;
@@ -2594,9 +2650,9 @@ export interface DomainPatchResource extends ProxyOnlyResource {
  * @constructor
  * Domain recommendation search parameters.
  *
- * @member {string} [keywords] Keywords to be used for generating domain
+ * @property {string} [keywords] Keywords to be used for generating domain
  * recommendations.
- * @member {number} [maxDomainRecommendations] Maximum number of
+ * @property {number} [maxDomainRecommendations] Maximum number of
  * recommendations.
  */
 export interface DomainRecommendationSearchParameters {
@@ -2610,10 +2666,11 @@ export interface DomainRecommendationSearchParameters {
  * @constructor
  * Legal agreement for a top level domain.
  *
- * @member {string} agreementKey Unique identifier for the agreement.
- * @member {string} title Agreement title.
- * @member {string} content Agreement details.
- * @member {string} [url] URL where a copy of the agreement details is hosted.
+ * @property {string} agreementKey Unique identifier for the agreement.
+ * @property {string} title Agreement title.
+ * @property {string} content Agreement details.
+ * @property {string} [url] URL where a copy of the agreement details is
+ * hosted.
  */
 export interface TldLegalAgreement {
   agreementKey: string;
@@ -2628,8 +2685,8 @@ export interface TldLegalAgreement {
  * @constructor
  * A top level domain object.
  *
- * @member {boolean} [privacy] If <code>true</code>, then the top level domain
- * supports domain privacy; otherwise, <code>false</code>.
+ * @property {boolean} [privacy] If <code>true</code>, then the top level
+ * domain supports domain privacy; otherwise, <code>false</code>.
  */
 export interface TopLevelDomain extends ProxyOnlyResource {
   privacy?: boolean;
@@ -2641,10 +2698,10 @@ export interface TopLevelDomain extends ProxyOnlyResource {
  * @constructor
  * Options for retrieving the list of top level domain legal agreements.
  *
- * @member {boolean} [includePrivacy] If <code>true</code>, then the list of
+ * @property {boolean} [includePrivacy] If <code>true</code>, then the list of
  * agreements will include agreements for domain privacy as well; otherwise,
  * <code>false</code>.
- * @member {boolean} [forTransfer] If <code>true</code>, then the list of
+ * @property {boolean} [forTransfer] If <code>true</code>, then the list of
  * agreements will include agreements for domain transfer as well; otherwise,
  * <code>false</code>.
  */
@@ -2659,37 +2716,37 @@ export interface TopLevelDomainAgreementOption {
  * @constructor
  * SSL certificate for an app.
  *
- * @member {string} [friendlyName] Friendly name of the certificate.
- * @member {string} [subjectName] Subject name of the certificate.
- * @member {array} [hostNames] Host names the certificate applies to.
- * @member {buffer} [pfxBlob] Pfx blob.
- * @member {string} [siteName] App name.
- * @member {string} [selfLink] Self link.
- * @member {string} [issuer] Certificate issuer.
- * @member {date} [issueDate] Certificate issue Date.
- * @member {date} [expirationDate] Certificate expriration date.
- * @member {string} password Certificate password.
- * @member {string} [thumbprint] Certificate thumbprint.
- * @member {boolean} [valid] Is the certificate valid?.
- * @member {buffer} [cerBlob] Raw bytes of .cer file
- * @member {string} [publicKeyHash] Public key hash.
- * @member {object} [hostingEnvironmentProfile] Specification for the App
+ * @property {string} [friendlyName] Friendly name of the certificate.
+ * @property {string} [subjectName] Subject name of the certificate.
+ * @property {array} [hostNames] Host names the certificate applies to.
+ * @property {buffer} [pfxBlob] Pfx blob.
+ * @property {string} [siteName] App name.
+ * @property {string} [selfLink] Self link.
+ * @property {string} [issuer] Certificate issuer.
+ * @property {date} [issueDate] Certificate issue Date.
+ * @property {date} [expirationDate] Certificate expriration date.
+ * @property {string} password Certificate password.
+ * @property {string} [thumbprint] Certificate thumbprint.
+ * @property {boolean} [valid] Is the certificate valid?.
+ * @property {buffer} [cerBlob] Raw bytes of .cer file
+ * @property {string} [publicKeyHash] Public key hash.
+ * @property {object} [hostingEnvironmentProfile] Specification for the App
  * Service Environment to use for the certificate.
- * @member {string} [hostingEnvironmentProfile.id] Resource ID of the App
+ * @property {string} [hostingEnvironmentProfile.id] Resource ID of the App
  * Service Environment.
- * @member {string} [hostingEnvironmentProfile.name] Name of the App Service
+ * @property {string} [hostingEnvironmentProfile.name] Name of the App Service
  * Environment.
- * @member {string} [hostingEnvironmentProfile.type] Resource type of the App
+ * @property {string} [hostingEnvironmentProfile.type] Resource type of the App
  * Service Environment.
- * @member {string} [keyVaultId] Key Vault Csm resource Id.
- * @member {string} [keyVaultSecretName] Key Vault secret name.
- * @member {string} [keyVaultSecretStatus] Status of the Key Vault secret.
+ * @property {string} [keyVaultId] Key Vault Csm resource Id.
+ * @property {string} [keyVaultSecretName] Key Vault secret name.
+ * @property {string} [keyVaultSecretStatus] Status of the Key Vault secret.
  * Possible values include: 'Initialized', 'WaitingOnCertificateOrder',
  * 'Succeeded', 'CertificateOrderFailed', 'OperationNotPermittedOnKeyVault',
  * 'AzureServiceUnauthorizedToAccessKeyVault', 'KeyVaultDoesNotExist',
  * 'KeyVaultSecretDoesNotExist', 'UnknownError', 'ExternalPrivateKey',
  * 'Unknown'
- * @member {string} [serverFarmId] Resource ID of the associated App Service
+ * @property {string} [serverFarmId] Resource ID of the associated App Service
  * plan, formatted as:
  * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
  */
@@ -2721,37 +2778,37 @@ export interface Certificate extends Resource {
  * @constructor
  * ARM resource for a certificate.
  *
- * @member {string} [friendlyName] Friendly name of the certificate.
- * @member {string} [subjectName] Subject name of the certificate.
- * @member {array} [hostNames] Host names the certificate applies to.
- * @member {buffer} [pfxBlob] Pfx blob.
- * @member {string} [siteName] App name.
- * @member {string} [selfLink] Self link.
- * @member {string} [issuer] Certificate issuer.
- * @member {date} [issueDate] Certificate issue Date.
- * @member {date} [expirationDate] Certificate expriration date.
- * @member {string} password Certificate password.
- * @member {string} [thumbprint] Certificate thumbprint.
- * @member {boolean} [valid] Is the certificate valid?.
- * @member {buffer} [cerBlob] Raw bytes of .cer file
- * @member {string} [publicKeyHash] Public key hash.
- * @member {object} [hostingEnvironmentProfile] Specification for the App
+ * @property {string} [friendlyName] Friendly name of the certificate.
+ * @property {string} [subjectName] Subject name of the certificate.
+ * @property {array} [hostNames] Host names the certificate applies to.
+ * @property {buffer} [pfxBlob] Pfx blob.
+ * @property {string} [siteName] App name.
+ * @property {string} [selfLink] Self link.
+ * @property {string} [issuer] Certificate issuer.
+ * @property {date} [issueDate] Certificate issue Date.
+ * @property {date} [expirationDate] Certificate expriration date.
+ * @property {string} password Certificate password.
+ * @property {string} [thumbprint] Certificate thumbprint.
+ * @property {boolean} [valid] Is the certificate valid?.
+ * @property {buffer} [cerBlob] Raw bytes of .cer file
+ * @property {string} [publicKeyHash] Public key hash.
+ * @property {object} [hostingEnvironmentProfile] Specification for the App
  * Service Environment to use for the certificate.
- * @member {string} [hostingEnvironmentProfile.id] Resource ID of the App
+ * @property {string} [hostingEnvironmentProfile.id] Resource ID of the App
  * Service Environment.
- * @member {string} [hostingEnvironmentProfile.name] Name of the App Service
+ * @property {string} [hostingEnvironmentProfile.name] Name of the App Service
  * Environment.
- * @member {string} [hostingEnvironmentProfile.type] Resource type of the App
+ * @property {string} [hostingEnvironmentProfile.type] Resource type of the App
  * Service Environment.
- * @member {string} [keyVaultId] Key Vault Csm resource Id.
- * @member {string} [keyVaultSecretName] Key Vault secret name.
- * @member {string} [keyVaultSecretStatus] Status of the Key Vault secret.
+ * @property {string} [keyVaultId] Key Vault Csm resource Id.
+ * @property {string} [keyVaultSecretName] Key Vault secret name.
+ * @property {string} [keyVaultSecretStatus] Status of the Key Vault secret.
  * Possible values include: 'Initialized', 'WaitingOnCertificateOrder',
  * 'Succeeded', 'CertificateOrderFailed', 'OperationNotPermittedOnKeyVault',
  * 'AzureServiceUnauthorizedToAccessKeyVault', 'KeyVaultDoesNotExist',
  * 'KeyVaultSecretDoesNotExist', 'UnknownError', 'ExternalPrivateKey',
  * 'Unknown'
- * @member {string} [serverFarmId] Resource ID of the associated App Service
+ * @property {string} [serverFarmId] Resource ID of the associated App Service
  * plan, formatted as:
  * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
  */
@@ -2783,10 +2840,10 @@ export interface CertificatePatchResource extends ProxyOnlyResource {
  * @constructor
  * Specification for using a Virtual Network.
  *
- * @member {string} [id] Resource id of the Virtual Network.
- * @member {string} [name] Name of the Virtual Network (read-only).
- * @member {string} [type] Resource type of the Virtual Network (read-only).
- * @member {string} [subnet] Subnet within the Virtual Network.
+ * @property {string} [id] Resource id of the Virtual Network.
+ * @property {string} [name] Name of the Virtual Network (read-only).
+ * @property {string} [type] Resource type of the Virtual Network (read-only).
+ * @property {string} [subnet] Subnet within the Virtual Network.
  */
 export interface VirtualNetworkProfile {
   id?: string;
@@ -2801,13 +2858,13 @@ export interface VirtualNetworkProfile {
  * @constructor
  * Worker pool of an App Service Environment.
  *
- * @member {number} [workerSizeId] Worker size ID for referencing this worker
+ * @property {number} [workerSizeId] Worker size ID for referencing this worker
  * pool.
- * @member {string} [computeMode] Shared or dedicated app hosting. Possible
+ * @property {string} [computeMode] Shared or dedicated app hosting. Possible
  * values include: 'Shared', 'Dedicated', 'Dynamic'
- * @member {string} [workerSize] VM size of the worker pool instances.
- * @member {number} [workerCount] Number of instances in the worker pool.
- * @member {array} [instanceNames] Names of all instances in the worker pool
+ * @property {string} [workerSize] VM size of the worker pool instances.
+ * @property {number} [workerCount] Number of instances in the worker pool.
+ * @property {array} [instanceNames] Names of all instances in the worker pool
  * (read only).
  */
 export interface WorkerPool {
@@ -2824,10 +2881,10 @@ export interface WorkerPool {
  * @constructor
  * Virtual IP mapping.
  *
- * @member {string} [virtualIP] Virtual IP address.
- * @member {number} [internalHttpPort] Internal HTTP port.
- * @member {number} [internalHttpsPort] Internal HTTPS port.
- * @member {boolean} [inUse] Is virtual IP mapping in use.
+ * @property {string} [virtualIP] Virtual IP address.
+ * @property {number} [internalHttpPort] Internal HTTP port.
+ * @property {number} [internalHttpsPort] Internal HTTPS port.
+ * @property {boolean} [inUse] Is virtual IP mapping in use.
  */
 export interface VirtualIPMapping {
   virtualIP?: string;
@@ -2842,27 +2899,27 @@ export interface VirtualIPMapping {
  * @constructor
  * Stamp capacity information.
  *
- * @member {string} [name] Name of the stamp.
- * @member {number} [availableCapacity] Available capacity (# of machines,
+ * @property {string} [name] Name of the stamp.
+ * @property {number} [availableCapacity] Available capacity (# of machines,
  * bytes of storage etc...).
- * @member {number} [totalCapacity] Total capacity (# of machines, bytes of
+ * @property {number} [totalCapacity] Total capacity (# of machines, bytes of
  * storage etc...).
- * @member {string} [unit] Name of the unit.
- * @member {string} [computeMode] Shared/dedicated workers. Possible values
+ * @property {string} [unit] Name of the unit.
+ * @property {string} [computeMode] Shared/dedicated workers. Possible values
  * include: 'Shared', 'Dedicated', 'Dynamic'
- * @member {string} [workerSize] Size of the machines. Possible values include:
- * 'Small', 'Medium', 'Large', 'D1', 'D2', 'D3', 'Default'
- * @member {number} [workerSizeId] Size ID of machines:
+ * @property {string} [workerSize] Size of the machines. Possible values
+ * include: 'Small', 'Medium', 'Large', 'D1', 'D2', 'D3', 'Default'
+ * @property {number} [workerSizeId] Size ID of machines:
  * 0 - Small
  * 1 - Medium
  * 2 - Large
- * @member {boolean} [excludeFromCapacityAllocation] If <code>true</code>, it
+ * @property {boolean} [excludeFromCapacityAllocation] If <code>true</code>, it
  * includes basic apps.
  * Basic apps are not used for capacity allocation.
- * @member {boolean} [isApplicableForAllComputeModes] <code>true</code> if
+ * @property {boolean} [isApplicableForAllComputeModes] <code>true</code> if
  * capacity is applicable for all apps; otherwise, <code>false</code>.
- * @member {string} [siteMode] Shared or Dedicated.
- * @member {boolean} [isLinux] Is this a linux stamp capacity
+ * @property {string} [siteMode] Shared or Dedicated.
+ * @property {boolean} [isLinux] Is this a linux stamp capacity
  */
 export interface StampCapacity {
   name?: string;
@@ -2884,11 +2941,12 @@ export interface StampCapacity {
  * @constructor
  * Network access control entry.
  *
- * @member {string} [action] Action object. Possible values include: 'Permit',
- * 'Deny'
- * @member {string} [description] Description of network access control entry.
- * @member {number} [order] Order of precedence.
- * @member {string} [remoteSubnet] Remote subnet.
+ * @property {string} [action] Action object. Possible values include:
+ * 'Permit', 'Deny'
+ * @property {string} [description] Description of network access control
+ * entry.
+ * @property {number} [order] Order of precedence.
+ * @property {string} [remoteSubnet] Remote subnet.
  */
 export interface NetworkAccessControlEntry {
   action?: string;
@@ -2903,88 +2961,89 @@ export interface NetworkAccessControlEntry {
  * @constructor
  * Description of an App Service Environment.
  *
- * @member {string} name Name of the App Service Environment.
- * @member {string} location Location of the App Service Environment, e.g.
+ * @property {string} name Name of the App Service Environment.
+ * @property {string} location Location of the App Service Environment, e.g.
  * "West US".
- * @member {string} [provisioningState] Provisioning state of the App Service
+ * @property {string} [provisioningState] Provisioning state of the App Service
  * Environment. Possible values include: 'Succeeded', 'Failed', 'Canceled',
  * 'InProgress', 'Deleting'
- * @member {string} [status] Current status of the App Service Environment.
+ * @property {string} [status] Current status of the App Service Environment.
  * Possible values include: 'Preparing', 'Ready', 'Scaling', 'Deleting'
- * @member {string} [vnetName] Name of the Virtual Network for the App Service
- * Environment.
- * @member {string} [vnetResourceGroupName] Resource group of the Virtual
+ * @property {string} [vnetName] Name of the Virtual Network for the App
+ * Service Environment.
+ * @property {string} [vnetResourceGroupName] Resource group of the Virtual
  * Network.
- * @member {string} [vnetSubnetName] Subnet of the Virtual Network.
- * @member {object} virtualNetwork Description of the Virtual Network.
- * @member {string} [virtualNetwork.id] Resource id of the Virtual Network.
- * @member {string} [virtualNetwork.name] Name of the Virtual Network
+ * @property {string} [vnetSubnetName] Subnet of the Virtual Network.
+ * @property {object} virtualNetwork Description of the Virtual Network.
+ * @property {string} [virtualNetwork.id] Resource id of the Virtual Network.
+ * @property {string} [virtualNetwork.name] Name of the Virtual Network
  * (read-only).
- * @member {string} [virtualNetwork.type] Resource type of the Virtual Network
- * (read-only).
- * @member {string} [virtualNetwork.subnet] Subnet within the Virtual Network.
- * @member {string} [internalLoadBalancingMode] Specifies which endpoints to
+ * @property {string} [virtualNetwork.type] Resource type of the Virtual
+ * Network (read-only).
+ * @property {string} [virtualNetwork.subnet] Subnet within the Virtual
+ * Network.
+ * @property {string} [internalLoadBalancingMode] Specifies which endpoints to
  * serve internally in the Virtual Network for the App Service Environment.
  * Possible values include: 'None', 'Web', 'Publishing'
- * @member {string} [multiSize] Front-end VM size, e.g. "Medium", "Large".
- * @member {number} [multiRoleCount] Number of front-end instances.
- * @member {array} workerPools Description of worker pools with worker size
+ * @property {string} [multiSize] Front-end VM size, e.g. "Medium", "Large".
+ * @property {number} [multiRoleCount] Number of front-end instances.
+ * @property {array} workerPools Description of worker pools with worker size
  * IDs, VM sizes, and number of workers in each pool.
- * @member {number} [ipsslAddressCount] Number of IP SSL addresses reserved for
- * the App Service Environment.
- * @member {string} [databaseEdition] Edition of the metadata database for the
- * App Service Environment, e.g. "Standard".
- * @member {string} [databaseServiceObjective] Service objective of the
+ * @property {number} [ipsslAddressCount] Number of IP SSL addresses reserved
+ * for the App Service Environment.
+ * @property {string} [databaseEdition] Edition of the metadata database for
+ * the App Service Environment, e.g. "Standard".
+ * @property {string} [databaseServiceObjective] Service objective of the
  * metadata database for the App Service Environment, e.g. "S0".
- * @member {number} [upgradeDomains] Number of upgrade domains of the App
+ * @property {number} [upgradeDomains] Number of upgrade domains of the App
  * Service Environment.
- * @member {string} [subscriptionId] Subscription of the App Service
+ * @property {string} [subscriptionId] Subscription of the App Service
  * Environment.
- * @member {string} [dnsSuffix] DNS suffix of the App Service Environment.
- * @member {string} [lastAction] Last deployment action on the App Service
+ * @property {string} [dnsSuffix] DNS suffix of the App Service Environment.
+ * @property {string} [lastAction] Last deployment action on the App Service
  * Environment.
- * @member {string} [lastActionResult] Result of the last deployment action on
- * the App Service Environment.
- * @member {string} [allowedMultiSizes] List of comma separated strings
+ * @property {string} [lastActionResult] Result of the last deployment action
+ * on the App Service Environment.
+ * @property {string} [allowedMultiSizes] List of comma separated strings
  * describing which VM sizes are allowed for front-ends.
- * @member {string} [allowedWorkerSizes] List of comma separated strings
+ * @property {string} [allowedWorkerSizes] List of comma separated strings
  * describing which VM sizes are allowed for workers.
- * @member {number} [maximumNumberOfMachines] Maximum number of VMs in the App
+ * @property {number} [maximumNumberOfMachines] Maximum number of VMs in the
+ * App Service Environment.
+ * @property {array} [vipMappings] Description of IP SSL mapping for the App
  * Service Environment.
- * @member {array} [vipMappings] Description of IP SSL mapping for the App
- * Service Environment.
- * @member {array} [environmentCapacities] Current total, used, and available
+ * @property {array} [environmentCapacities] Current total, used, and available
  * worker capacities.
- * @member {array} [networkAccessControlList] Access control list for
+ * @property {array} [networkAccessControlList] Access control list for
  * controlling traffic to the App Service Environment.
- * @member {boolean} [environmentIsHealthy] True/false indicating whether the
+ * @property {boolean} [environmentIsHealthy] True/false indicating whether the
  * App Service Environment is healthy.
- * @member {string} [environmentStatus] Detailed message about with results of
- * the last check of the App Service Environment.
- * @member {string} [resourceGroup] Resource group of the App Service
+ * @property {string} [environmentStatus] Detailed message about with results
+ * of the last check of the App Service Environment.
+ * @property {string} [resourceGroup] Resource group of the App Service
  * Environment.
- * @member {number} [frontEndScaleFactor] Scale factor for front-ends.
- * @member {number} [defaultFrontEndScaleFactor] Default Scale Factor for
+ * @property {number} [frontEndScaleFactor] Scale factor for front-ends.
+ * @property {number} [defaultFrontEndScaleFactor] Default Scale Factor for
  * FrontEnds.
- * @member {string} [apiManagementAccountId] API Management Account associated
- * with the App Service Environment.
- * @member {boolean} [suspended] <code>true</code> if the App Service
+ * @property {string} [apiManagementAccountId] API Management Account
+ * associated with the App Service Environment.
+ * @property {boolean} [suspended] <code>true</code> if the App Service
  * Environment is suspended; otherwise, <code>false</code>. The environment can
  * be suspended, e.g. when the management endpoint is no longer available
  * (most likely because NSG blocked the incoming traffic).
- * @member {boolean} [dynamicCacheEnabled] True/false indicating whether the
+ * @property {boolean} [dynamicCacheEnabled] True/false indicating whether the
  * App Service Environment is suspended. The environment can be suspended e.g.
  * when the management endpoint is no longer available
  * (most likely because NSG blocked the incoming traffic).
- * @member {array} [clusterSettings] Custom settings for changing the behavior
- * of the App Service Environment.
- * @member {array} [userWhitelistedIpRanges] User added ip ranges to whitelist
- * on ASE db
- * @member {boolean} [hasLinuxWorkers] Flag that displays whether an ASE has
+ * @property {array} [clusterSettings] Custom settings for changing the
+ * behavior of the App Service Environment.
+ * @property {array} [userWhitelistedIpRanges] User added ip ranges to
+ * whitelist on ASE db
+ * @property {boolean} [hasLinuxWorkers] Flag that displays whether an ASE has
  * linux workers or not
- * @member {string} [sslCertKeyVaultId] Key Vault ID for ILB App Service
+ * @property {string} [sslCertKeyVaultId] Key Vault ID for ILB App Service
  * Environment default SSL certificate
- * @member {string} [sslCertKeyVaultSecretName] Key Vault Secret Name for ILB
+ * @property {string} [sslCertKeyVaultSecretName] Key Vault Secret Name for ILB
  * App Service Environment default SSL certificate
  */
 export interface AppServiceEnvironment {
@@ -3035,8 +3094,8 @@ export interface AppServiceEnvironment {
  * @constructor
  * Localizable string object containing the name and a localized value.
  *
- * @member {string} [value] Non-localized name.
- * @member {string} [localizedValue] Localized name.
+ * @property {string} [value] Non-localized name.
+ * @property {string} [localizedValue] Localized name.
  */
 export interface LocalizableString {
   value?: string;
@@ -3049,13 +3108,13 @@ export interface LocalizableString {
  * @constructor
  * Usage of the quota resource.
  *
- * @member {string} [unit] Units of measurement for the quota resourse.
- * @member {date} [nextResetTime] Next reset time for the resource counter.
- * @member {number} [currentValue] The current value of the resource counter.
- * @member {number} [limit] The resource limit.
- * @member {object} [name] Quota name.
- * @member {string} [name.value] Non-localized name.
- * @member {string} [name.localizedValue] Localized name.
+ * @property {string} [unit] Units of measurement for the quota resourse.
+ * @property {date} [nextResetTime] Next reset time for the resource counter.
+ * @property {number} [currentValue] The current value of the resource counter.
+ * @property {number} [limit] The resource limit.
+ * @property {object} [name] Quota name.
+ * @property {string} [name.value] Non-localized name.
+ * @property {string} [name.localizedValue] Localized name.
  */
 export interface CsmUsageQuota {
   unit?: string;
@@ -3071,12 +3130,12 @@ export interface CsmUsageQuota {
  * @constructor
  * Body of the error response returned from the API.
  *
- * @member {string} [extendedCode] Type of error.
- * @member {string} [messageTemplate] Message template.
- * @member {array} [parameters] Parameters for the template.
- * @member {array} [innerErrors] Inner errors.
- * @member {string} [code] Basic error code.
- * @member {string} [message] Any details of the error.
+ * @property {string} [extendedCode] Type of error.
+ * @property {string} [messageTemplate] Message template.
+ * @property {array} [parameters] Parameters for the template.
+ * @property {array} [innerErrors] Inner errors.
+ * @property {string} [code] Basic error code.
+ * @property {string} [message] Any details of the error.
  */
 export interface ErrorEntity {
   extendedCode?: string;
@@ -3093,15 +3152,15 @@ export interface ErrorEntity {
  * @constructor
  * An operation on a resource.
  *
- * @member {string} [id] Operation ID.
- * @member {string} [name] Operation name.
- * @member {string} [status] The current status of the operation. Possible
+ * @property {string} [id] Operation ID.
+ * @property {string} [name] Operation name.
+ * @property {string} [status] The current status of the operation. Possible
  * values include: 'InProgress', 'Failed', 'Succeeded', 'TimedOut', 'Created'
- * @member {array} [errors] Any errors associate with the operation.
- * @member {date} [createdTime] Time when operation has started.
- * @member {date} [modifiedTime] Time when operation has been updated.
- * @member {date} [expirationTime] Time when operation will expire.
- * @member {uuid} [geoMasterOperationId] Applicable only for stamp operation
+ * @property {array} [errors] Any errors associate with the operation.
+ * @property {date} [createdTime] Time when operation has started.
+ * @property {date} [modifiedTime] Time when operation has been updated.
+ * @property {date} [expirationTime] Time when operation will expire.
+ * @property {uuid} [geoMasterOperationId] Applicable only for stamp operation
  * ids.
  */
 export interface Operation {
@@ -3121,8 +3180,8 @@ export interface Operation {
  * @constructor
  * Name of a metric for any resource .
  *
- * @member {string} [value] metric name value.
- * @member {string} [localizedValue] Localized metric name value.
+ * @property {string} [value] metric name value.
+ * @property {string} [localizedValue] Localized metric name value.
  */
 export interface ResourceMetricName {
   readonly value?: string;
@@ -3135,8 +3194,8 @@ export interface ResourceMetricName {
  * @constructor
  * Resource metric property.
  *
- * @member {string} [key] Key for resource metric property.
- * @member {string} [value] Value of pair.
+ * @property {string} [key] Key for resource metric property.
+ * @property {string} [value] Value of pair.
  */
 export interface ResourceMetricProperty {
   key?: string;
@@ -3149,13 +3208,13 @@ export interface ResourceMetricProperty {
  * @constructor
  * Value of resource metric.
  *
- * @member {string} [timestamp] Value timestamp.
- * @member {number} [average] Value average.
- * @member {number} [minimum] Value minimum.
- * @member {number} [maximum] Value maximum.
- * @member {number} [total] Value total.
- * @member {number} [count] Value count.
- * @member {array} [properties] Resource metric properties collection.
+ * @property {string} [timestamp] Value timestamp.
+ * @property {number} [average] Value average.
+ * @property {number} [minimum] Value minimum.
+ * @property {number} [maximum] Value maximum.
+ * @property {number} [total] Value total.
+ * @property {number} [count] Value count.
+ * @property {array} [properties] Resource metric properties collection.
  */
 export interface ResourceMetricValue {
   readonly timestamp?: string;
@@ -3173,17 +3232,17 @@ export interface ResourceMetricValue {
  * @constructor
  * Object representing a metric for any resource .
  *
- * @member {object} [name] Name of metric.
- * @member {string} [name.value] metric name value.
- * @member {string} [name.localizedValue] Localized metric name value.
- * @member {string} [unit] Metric unit.
- * @member {string} [timeGrain] Metric granularity. E.g PT1H, PT5M, P1D
- * @member {date} [startTime] Metric start time.
- * @member {date} [endTime] Metric end time.
- * @member {string} [resourceId] Metric resource Id.
- * @member {string} [id] Resource Id.
- * @member {array} [metricValues] Metric values.
- * @member {array} [properties] Resource metric properties collection.
+ * @property {object} [name] Name of metric.
+ * @property {string} [name.value] metric name value.
+ * @property {string} [name.localizedValue] Localized metric name value.
+ * @property {string} [unit] Metric unit.
+ * @property {string} [timeGrain] Metric granularity. E.g PT1H, PT5M, P1D
+ * @property {date} [startTime] Metric start time.
+ * @property {date} [endTime] Metric end time.
+ * @property {string} [resourceId] Metric resource Id.
+ * @property {string} [id] Resource Id.
+ * @property {array} [metricValues] Metric values.
+ * @property {array} [properties] Resource metric properties collection.
  */
 export interface ResourceMetric {
   readonly name?: ResourceMetricName;
@@ -3203,14 +3262,14 @@ export interface ResourceMetric {
  * @constructor
  * Class Representing Solution for problems detected.
  *
- * @member {number} [id] Solution Id.
- * @member {string} [displayName] Display Name of the solution
- * @member {number} [order] Order of the solution.
- * @member {string} [description] Description of the solution
- * @member {string} [type] Type of Solution. Possible values include:
+ * @property {number} [id] Solution Id.
+ * @property {string} [displayName] Display Name of the solution
+ * @property {number} [order] Order of the solution.
+ * @property {string} [description] Description of the solution
+ * @property {string} [type] Type of Solution. Possible values include:
  * 'QuickSolution', 'DeepInvestigation', 'BestPractices'
- * @member {array} [data] Solution Data.
- * @member {array} [metadata] Solution Metadata.
+ * @property {array} [data] Solution Data.
+ * @property {array} [metadata] Solution Metadata.
  */
 export interface Solution {
   id?: number;
@@ -3228,17 +3287,17 @@ export interface Solution {
  * @constructor
  * Class representing Abnormal Time Period detected.
  *
- * @member {date} [startTime] Start time of the corelated event
- * @member {date} [endTime] End time of the corelated event
- * @member {string} [message] Message describing the event
- * @member {string} [source] Represents the name of the Detector
- * @member {number} [priority] Represents the rank of the Detector
- * @member {array} [metaData] Downtime metadata
- * @member {string} [type] Represents the type of the Detector. Possible values
- * include: 'ServiceIncident', 'AppDeployment', 'AppCrash',
+ * @property {date} [startTime] Start time of the corelated event
+ * @property {date} [endTime] End time of the corelated event
+ * @property {string} [message] Message describing the event
+ * @property {string} [source] Represents the name of the Detector
+ * @property {number} [priority] Represents the rank of the Detector
+ * @property {array} [metaData] Downtime metadata
+ * @property {string} [type] Represents the type of the Detector. Possible
+ * values include: 'ServiceIncident', 'AppDeployment', 'AppCrash',
  * 'RuntimeIssueDetected', 'AseDeployment', 'UserIssue', 'PlatformIssue',
  * 'Other'
- * @member {array} [solutions] List of proposed solutions
+ * @property {array} [solutions] List of proposed solutions
  */
 export interface DetectorAbnormalTimePeriod {
   startTime?: Date;
@@ -3257,10 +3316,10 @@ export interface DetectorAbnormalTimePeriod {
  * @constructor
  * Class representing Abnormal Time Period identified in diagnosis
  *
- * @member {date} [startTime] Start time of the downtime
- * @member {date} [endTime] End time of the downtime
- * @member {array} [events] List of Possible Cause of downtime
- * @member {array} [solutions] List of proposed solutions
+ * @property {date} [startTime] Start time of the downtime
+ * @property {date} [endTime] End time of the downtime
+ * @property {array} [events] List of Possible Cause of downtime
+ * @property {array} [solutions] List of proposed solutions
  */
 export interface AbnormalTimePeriod {
   startTime?: Date;
@@ -3275,11 +3334,11 @@ export interface AbnormalTimePeriod {
  * @constructor
  * Class representing detector definition
  *
- * @member {string} [displayName] Display name of the detector
- * @member {string} [description] Description of the detector
- * @member {number} [rank] Detector Rank
- * @member {boolean} [isEnabled] Flag representing whether detector is enabled
- * or not.
+ * @property {string} [displayName] Display name of the detector
+ * @property {string} [description] Description of the detector
+ * @property {number} [rank] Detector Rank
+ * @property {boolean} [isEnabled] Flag representing whether detector is
+ * enabled or not.
  */
 export interface DetectorDefinition extends ProxyOnlyResource {
   readonly displayName?: string;
@@ -3294,21 +3353,21 @@ export interface DetectorDefinition extends ProxyOnlyResource {
  * @constructor
  * Class representing Diagnostic Metric
  *
- * @member {date} [timestamp] Time at which metric is measured
- * @member {string} [roleInstance] Role Instance. Null if this counter is not
+ * @property {date} [timestamp] Time at which metric is measured
+ * @property {string} [roleInstance] Role Instance. Null if this counter is not
  * per instance
  * This is returned and should be whichever instance name we desire to be
  * returned
  * i.e. CPU and Memory return RDWORKERNAME (LargeDed..._IN_0)
  * where RDWORKERNAME is Machine name below and RoleInstance name in
  * parenthesis
- * @member {number} [total] Total value of the metric. If multiple measurements
- * are made this will have sum of all.
- * @member {number} [maximum] Maximum of the metric sampled during the time
+ * @property {number} [total] Total value of the metric. If multiple
+ * measurements are made this will have sum of all.
+ * @property {number} [maximum] Maximum of the metric sampled during the time
  * period
- * @member {number} [minimum] Minimum of the metric sampled during the time
+ * @property {number} [minimum] Minimum of the metric sampled during the time
  * period
- * @member {boolean} [isAggregated] Whether the values are aggregates across
+ * @property {boolean} [isAggregated] Whether the values are aggregates across
  * all workers or not
  */
 export interface DiagnosticMetricSample {
@@ -3326,14 +3385,14 @@ export interface DiagnosticMetricSample {
  * @constructor
  * Class representing Diagnostic Metric information
  *
- * @member {string} [name] Name of the metric
- * @member {string} [unit] Metric's unit
- * @member {date} [startTime] Start time of the period
- * @member {date} [endTime] End time of the period
- * @member {string} [timeGrain] Presented time grain. Supported grains at the
+ * @property {string} [name] Name of the metric
+ * @property {string} [unit] Metric's unit
+ * @property {date} [startTime] Start time of the period
+ * @property {date} [endTime] End time of the period
+ * @property {string} [timeGrain] Presented time grain. Supported grains at the
  * moment are PT1M, PT1H, P1D
- * @member {array} [values] Collection of metric values for the selected period
- * based on the
+ * @property {array} [values] Collection of metric values for the selected
+ * period based on the
  * {Microsoft.Web.Hosting.Administration.DiagnosticMetricSet.TimeGrain}
  */
 export interface DiagnosticMetricSet {
@@ -3351,8 +3410,8 @@ export interface DiagnosticMetricSet {
  * @constructor
  * Class representing data source used by the detectors
  *
- * @member {array} [instructions] Instrunctions if any for the data source
- * @member {array} [dataSourceUri] Datasource Uri Links
+ * @property {array} [instructions] Instrunctions if any for the data source
+ * @property {array} [dataSourceUri] Datasource Uri Links
  */
 export interface DataSource {
   instructions?: string[];
@@ -3363,10 +3422,10 @@ export interface DataSource {
  * @class
  * Initializes a new instance of the ResponseMetaData class.
  * @constructor
- * @member {object} [dataSource] Source of the Data
- * @member {array} [dataSource.instructions] Instrunctions if any for the data
- * source
- * @member {array} [dataSource.dataSourceUri] Datasource Uri Links
+ * @property {object} [dataSource] Source of the Data
+ * @property {array} [dataSource.instructions] Instrunctions if any for the
+ * data source
+ * @property {array} [dataSource.dataSourceUri] Datasource Uri Links
  */
 export interface ResponseMetaData {
   dataSource?: DataSource;
@@ -3378,22 +3437,22 @@ export interface ResponseMetaData {
  * @constructor
  * Class Representing Detector Evidence used for analysis
  *
- * @member {string} [source] Name of the Detector
- * @member {object} [detectorDefinition] Detector Definition
- * @member {string} [detectorDefinition.displayName] Display name of the
+ * @property {string} [source] Name of the Detector
+ * @property {object} [detectorDefinition] Detector Definition
+ * @property {string} [detectorDefinition.displayName] Display name of the
  * detector
- * @member {string} [detectorDefinition.description] Description of the
+ * @property {string} [detectorDefinition.description] Description of the
  * detector
- * @member {number} [detectorDefinition.rank] Detector Rank
- * @member {boolean} [detectorDefinition.isEnabled] Flag representing whether
+ * @property {number} [detectorDefinition.rank] Detector Rank
+ * @property {boolean} [detectorDefinition.isEnabled] Flag representing whether
  * detector is enabled or not.
- * @member {array} [metrics] Source Metrics
- * @member {array} [data] Additional Source Data
- * @member {object} [detectorMetaData] Detector Meta Data
- * @member {object} [detectorMetaData.dataSource] Source of the Data
- * @member {array} [detectorMetaData.dataSource.instructions] Instrunctions if
- * any for the data source
- * @member {array} [detectorMetaData.dataSource.dataSourceUri] Datasource Uri
+ * @property {array} [metrics] Source Metrics
+ * @property {array} [data] Additional Source Data
+ * @property {object} [detectorMetaData] Detector Meta Data
+ * @property {object} [detectorMetaData.dataSource] Source of the Data
+ * @property {array} [detectorMetaData.dataSource.instructions] Instrunctions
+ * if any for the data source
+ * @property {array} [detectorMetaData.dataSource.dataSourceUri] Datasource Uri
  * Links
  */
 export interface AnalysisData {
@@ -3410,7 +3469,7 @@ export interface AnalysisData {
  * @constructor
  * Definition of Analysis
  *
- * @member {string} [description] Description of the Analysis
+ * @property {string} [description] Description of the Analysis
  */
 export interface AnalysisDefinition extends ProxyOnlyResource {
   readonly description?: string;
@@ -3422,9 +3481,10 @@ export interface AnalysisDefinition extends ProxyOnlyResource {
  * @constructor
  * Column definition
  *
- * @member {string} [columnName] Name of the column
- * @member {string} [dataType] Data type which looks like 'String' or 'Int32'.
- * @member {string} [columnType] Column Type
+ * @property {string} [columnName] Name of the column
+ * @property {string} [dataType] Data type which looks like 'String' or
+ * 'Int32'.
+ * @property {string} [columnType] Column Type
  */
 export interface DataTableResponseColumn {
   columnName?: string;
@@ -3438,9 +3498,9 @@ export interface DataTableResponseColumn {
  * @constructor
  * Data Table which defines columns and raw row values
  *
- * @member {string} [tableName] Name of the table
- * @member {array} [columns] List of columns with data types
- * @member {array} [rows] Raw row values
+ * @property {string} [tableName] Name of the table
+ * @property {array} [columns] List of columns with data types
+ * @property {array} [rows] Raw row values
  */
 export interface DataTableResponseObject {
   tableName?: string;
@@ -3454,11 +3514,11 @@ export interface DataTableResponseObject {
  * @constructor
  * Definition of Detector
  *
- * @member {string} [description] Short description of the detector and its
+ * @property {string} [description] Short description of the detector and its
  * purpose
- * @member {string} [category] Support Category
- * @member {string} [subCategory] Support Sub Category
- * @member {string} [supportTopicId] Support Topic Id
+ * @property {string} [category] Support Category
+ * @property {string} [subCategory] Support Sub Category
+ * @property {string} [supportTopicId] Support Topic Id
  */
 export interface DetectorInfo {
   readonly description?: string;
@@ -3473,11 +3533,11 @@ export interface DetectorInfo {
  * @constructor
  * Instructions for rendering the data
  *
- * @member {string} [type] Rendering Type. Possible values include: 'NoGraph',
- * 'Table', 'TimeSeries', 'TimeSeriesPerInstance'
- * @member {string} [title] Title of data
- * @member {string} [description] Description of the data that will help it be
- * interpreted
+ * @property {string} [type] Rendering Type. Possible values include:
+ * 'NoGraph', 'Table', 'TimeSeries', 'TimeSeriesPerInstance'
+ * @property {string} [title] Title of data
+ * @property {string} [description] Description of the data that will help it
+ * be interpreted
  */
 export interface Rendering {
   type?: string;
@@ -3491,16 +3551,16 @@ export interface Rendering {
  * @constructor
  * Set of data with rendering instructions
  *
- * @member {object} [table] Data in table form
- * @member {string} [table.tableName] Name of the table
- * @member {array} [table.columns] List of columns with data types
- * @member {array} [table.rows] Raw row values
- * @member {object} [renderingProperties] Properties that describe how the
+ * @property {object} [table] Data in table form
+ * @property {string} [table.tableName] Name of the table
+ * @property {array} [table.columns] List of columns with data types
+ * @property {array} [table.rows] Raw row values
+ * @property {object} [renderingProperties] Properties that describe how the
  * table should be rendered
- * @member {string} [renderingProperties.type] Rendering Type. Possible values
- * include: 'NoGraph', 'Table', 'TimeSeries', 'TimeSeriesPerInstance'
- * @member {string} [renderingProperties.title] Title of data
- * @member {string} [renderingProperties.description] Description of the data
+ * @property {string} [renderingProperties.type] Rendering Type. Possible
+ * values include: 'NoGraph', 'Table', 'TimeSeries', 'TimeSeriesPerInstance'
+ * @property {string} [renderingProperties.title] Title of data
+ * @property {string} [renderingProperties.description] Description of the data
  * that will help it be interpreted
  */
 export interface DiagnosticData {
@@ -3514,13 +3574,13 @@ export interface DiagnosticData {
  * @constructor
  * Class representing Response from Detector
  *
- * @member {object} [metadata] metadata for the detector
- * @member {string} [metadata.description] Short description of the detector
+ * @property {object} [metadata] metadata for the detector
+ * @property {string} [metadata.description] Short description of the detector
  * and its purpose
- * @member {string} [metadata.category] Support Category
- * @member {string} [metadata.subCategory] Support Sub Category
- * @member {string} [metadata.supportTopicId] Support Topic Id
- * @member {array} [dataset] Data Set
+ * @property {string} [metadata.category] Support Category
+ * @property {string} [metadata.subCategory] Support Sub Category
+ * @property {string} [metadata.supportTopicId] Support Topic Id
+ * @property {array} [dataset] Data Set
  */
 export interface DetectorResponse extends ProxyOnlyResource {
   metadata?: DetectorInfo;
@@ -3533,12 +3593,12 @@ export interface DetectorResponse extends ProxyOnlyResource {
  * @constructor
  * Class representing a diagnostic analysis done on an application
  *
- * @member {date} [startTime] Start time of the period
- * @member {date} [endTime] End time of the period
- * @member {array} [abnormalTimePeriods] List of time periods.
- * @member {array} [payload] Data by each detector
- * @member {array} [nonCorrelatedDetectors] Data by each detector for detectors
- * that did not corelate
+ * @property {date} [startTime] Start time of the period
+ * @property {date} [endTime] End time of the period
+ * @property {array} [abnormalTimePeriods] List of time periods.
+ * @property {array} [payload] Data by each detector
+ * @property {array} [nonCorrelatedDetectors] Data by each detector for
+ * detectors that did not corelate
  */
 export interface DiagnosticAnalysis extends ProxyOnlyResource {
   startTime?: Date;
@@ -3554,7 +3614,7 @@ export interface DiagnosticAnalysis extends ProxyOnlyResource {
  * @constructor
  * Class representing detector definition
  *
- * @member {string} [description] Description of the diagnostic category
+ * @property {string} [description] Description of the diagnostic category
  */
 export interface DiagnosticCategory extends ProxyOnlyResource {
   readonly description?: string;
@@ -3566,26 +3626,26 @@ export interface DiagnosticCategory extends ProxyOnlyResource {
  * @constructor
  * Class representing Reponse from Diagnostic Detectors
  *
- * @member {date} [startTime] Start time of the period
- * @member {date} [endTime] End time of the period
- * @member {boolean} [issueDetected] Flag representing Issue was detected.
- * @member {object} [detectorDefinition] Detector's definition
- * @member {string} [detectorDefinition.displayName] Display name of the
+ * @property {date} [startTime] Start time of the period
+ * @property {date} [endTime] End time of the period
+ * @property {boolean} [issueDetected] Flag representing Issue was detected.
+ * @property {object} [detectorDefinition] Detector's definition
+ * @property {string} [detectorDefinition.displayName] Display name of the
  * detector
- * @member {string} [detectorDefinition.description] Description of the
+ * @property {string} [detectorDefinition.description] Description of the
  * detector
- * @member {number} [detectorDefinition.rank] Detector Rank
- * @member {boolean} [detectorDefinition.isEnabled] Flag representing whether
+ * @property {number} [detectorDefinition.rank] Detector Rank
+ * @property {boolean} [detectorDefinition.isEnabled] Flag representing whether
  * detector is enabled or not.
- * @member {array} [metrics] Metrics provided by the detector
- * @member {array} [abnormalTimePeriods] List of Correlated events found by the
- * detector
- * @member {array} [data] Additional Data that detector wants to send.
- * @member {object} [responseMetaData] Meta Data
- * @member {object} [responseMetaData.dataSource] Source of the Data
- * @member {array} [responseMetaData.dataSource.instructions] Instrunctions if
- * any for the data source
- * @member {array} [responseMetaData.dataSource.dataSourceUri] Datasource Uri
+ * @property {array} [metrics] Metrics provided by the detector
+ * @property {array} [abnormalTimePeriods] List of Correlated events found by
+ * the detector
+ * @property {array} [data] Additional Data that detector wants to send.
+ * @property {object} [responseMetaData] Meta Data
+ * @property {object} [responseMetaData.dataSource] Source of the Data
+ * @property {array} [responseMetaData.dataSource.instructions] Instrunctions
+ * if any for the data source
+ * @property {array} [responseMetaData.dataSource.dataSourceUri] Datasource Uri
  * Links
  */
 export interface DiagnosticDetectorResponse extends ProxyOnlyResource {
@@ -3605,12 +3665,12 @@ export interface DiagnosticDetectorResponse extends ProxyOnlyResource {
  * @constructor
  * Application stack minor version.
  *
- * @member {string} [displayVersion] Application stack minor version (display
+ * @property {string} [displayVersion] Application stack minor version (display
  * only).
- * @member {string} [runtimeVersion] Application stack minor version (runtime
+ * @property {string} [runtimeVersion] Application stack minor version (runtime
  * only).
- * @member {boolean} [isDefault] <code>true</code> if this is the default minor
- * version; otherwise, <code>false</code>.
+ * @property {boolean} [isDefault] <code>true</code> if this is the default
+ * minor version; otherwise, <code>false</code>.
  */
 export interface StackMinorVersion {
   displayVersion?: string;
@@ -3624,20 +3684,23 @@ export interface StackMinorVersion {
  * @constructor
  * Application stack major version.
  *
- * @member {string} [displayVersion] Application stack major version (display
+ * @property {string} [displayVersion] Application stack major version (display
  * only).
- * @member {string} [runtimeVersion] Application stack major version (runtime
+ * @property {string} [runtimeVersion] Application stack major version (runtime
  * only).
- * @member {boolean} [isDefault] <code>true</code> if this is the default major
- * version; otherwise, <code>false</code>.
- * @member {array} [minorVersions] Minor versions associated with the major
+ * @property {boolean} [isDefault] <code>true</code> if this is the default
+ * major version; otherwise, <code>false</code>.
+ * @property {array} [minorVersions] Minor versions associated with the major
  * version.
+ * @property {boolean} [applicationInsights] <code>true</code> if this supports
+ * Application Insights; otherwise, <code>false</code>.
  */
 export interface StackMajorVersion {
   displayVersion?: string;
   runtimeVersion?: string;
   isDefault?: boolean;
   minorVersions?: StackMinorVersion[];
+  applicationInsights?: boolean;
 }
 
 /**
@@ -3646,12 +3709,12 @@ export interface StackMajorVersion {
  * @constructor
  * Application stack.
  *
- * @member {string} [name] Application stack name.
- * @member {string} [display] Application stack display name.
- * @member {string} [dependency] Application stack dependency.
- * @member {array} [majorVersions] List of major versions available.
- * @member {array} [frameworks] List of frameworks associated with application
- * stack.
+ * @property {string} [name] Application stack name.
+ * @property {string} [display] Application stack display name.
+ * @property {string} [dependency] Application stack dependency.
+ * @property {array} [majorVersions] List of major versions available.
+ * @property {array} [frameworks] List of frameworks associated with
+ * application stack.
  */
 export interface ApplicationStack {
   name?: string;
@@ -3667,48 +3730,48 @@ export interface ApplicationStack {
  * @constructor
  * Represents a recommendation result generated by the recommendation engine.
  *
- * @member {date} [creationTime] Timestamp when this instance was created.
- * @member {uuid} [recommendationId] A GUID value that each recommendation
+ * @property {date} [creationTime] Timestamp when this instance was created.
+ * @property {uuid} [recommendationId] A GUID value that each recommendation
  * object is associated with.
- * @member {string} [resourceId] Full ARM resource ID string that this
+ * @property {string} [resourceId] Full ARM resource ID string that this
  * recommendation object is associated with.
- * @member {string} [resourceScope] Name of a resource type this recommendation
- * applies, e.g. Subscription, ServerFarm, Site. Possible values include:
- * 'ServerFarm', 'Subscription', 'WebSite'
- * @member {string} [ruleName] Unique name of the rule.
- * @member {string} [displayName] UI friendly name of the rule (may not be
+ * @property {string} [resourceScope] Name of a resource type this
+ * recommendation applies, e.g. Subscription, ServerFarm, Site. Possible values
+ * include: 'ServerFarm', 'Subscription', 'WebSite'
+ * @property {string} [ruleName] Unique name of the rule.
+ * @property {string} [displayName] UI friendly name of the rule (may not be
  * unique).
- * @member {string} [message] Recommendation text.
- * @member {string} [level] Level indicating how critical this recommendation
+ * @property {string} [message] Recommendation text.
+ * @property {string} [level] Level indicating how critical this recommendation
  * can impact. Possible values include: 'Critical', 'Warning', 'Information',
  * 'NonUrgentSuggestion'
- * @member {string} [channels] List of channels that this recommendation can
+ * @property {string} [channels] List of channels that this recommendation can
  * apply. Possible values include: 'Notification', 'Api', 'Email', 'Webhook',
  * 'All'
- * @member {array} [categoryTags] The list of category tags that this
+ * @property {array} [categoryTags] The list of category tags that this
  * recommendation belongs to.
- * @member {string} [actionName] Name of action recommended by this object.
- * @member {number} [enabled] True if this recommendation is still valid (i.e.
- * "actionable"). False if it is invalid.
- * @member {array} [states] The list of states of this recommendation. If it's
- * null then it shoud be considered "Active".
- * @member {date} [startTime] The beginning time in UTC of a range that the
+ * @property {string} [actionName] Name of action recommended by this object.
+ * @property {number} [enabled] True if this recommendation is still valid
+ * (i.e. "actionable"). False if it is invalid.
+ * @property {array} [states] The list of states of this recommendation. If
+ * it's null then it shoud be considered "Active".
+ * @property {date} [startTime] The beginning time in UTC of a range that the
  * recommendation refers to.
- * @member {date} [endTime] The end time in UTC of a range that the
+ * @property {date} [endTime] The end time in UTC of a range that the
  * recommendation refers to.
- * @member {date} [nextNotificationTime] When to notify this recommendation
+ * @property {date} [nextNotificationTime] When to notify this recommendation
  * next in UTC. Null means that this will never be notified anymore.
- * @member {date} [notificationExpirationTime] Date and time in UTC when this
+ * @property {date} [notificationExpirationTime] Date and time in UTC when this
  * notification expires.
- * @member {date} [notifiedTime] Last timestamp in UTC this instance was
+ * @property {date} [notifiedTime] Last timestamp in UTC this instance was
  * actually notified. Null means that this recommendation hasn't been notified
  * yet.
- * @member {number} [score] A metric value measured by the rule.
- * @member {boolean} [isDynamic] True if this is associated with a dynamically
- * added rule
- * @member {string} [extensionName] Extension name of the portal if exists.
- * @member {string} [bladeName] Deep link to a blade on the portal.
- * @member {string} [forwardLink] Forward link to an external document
+ * @property {number} [score] A metric value measured by the rule.
+ * @property {boolean} [isDynamic] True if this is associated with a
+ * dynamically added rule
+ * @property {string} [extensionName] Extension name of the portal if exists.
+ * @property {string} [bladeName] Deep link to a blade on the portal.
+ * @property {string} [forwardLink] Forward link to an external document
  * associated with the rule.
  */
 export interface Recommendation extends ProxyOnlyResource {
@@ -3743,30 +3806,30 @@ export interface Recommendation extends ProxyOnlyResource {
  * @constructor
  * Represents a recommendation rule that the recommendation engine can perform.
  *
- * @member {string} [recommendationName] Unique name of the rule.
- * @member {string} [displayName] UI friendly name of the rule.
- * @member {string} [message] Localized name of the rule (Good for UI).
- * @member {uuid} [recommendationId] Recommendation ID of an associated
+ * @property {string} [recommendationName] Unique name of the rule.
+ * @property {string} [displayName] UI friendly name of the rule.
+ * @property {string} [message] Localized name of the rule (Good for UI).
+ * @property {uuid} [recommendationId] Recommendation ID of an associated
  * recommendation object tied to the rule, if exists.
  * If such an object doesn't exist, it is set to null.
- * @member {string} [description] Localized detailed description of the rule.
- * @member {string} [actionName] Name of action that is recommended by this
+ * @property {string} [description] Localized detailed description of the rule.
+ * @property {string} [actionName] Name of action that is recommended by this
  * rule in string.
- * @member {string} [level] Level of impact indicating how critical this rule
+ * @property {string} [level] Level of impact indicating how critical this rule
  * is. Possible values include: 'Critical', 'Warning', 'Information',
  * 'NonUrgentSuggestion'
- * @member {string} [channels] List of available channels that this rule
+ * @property {string} [channels] List of available channels that this rule
  * applies. Possible values include: 'Notification', 'Api', 'Email', 'Webhook',
  * 'All'
- * @member {array} [categoryTags] The list of category tags that this
+ * @property {array} [categoryTags] The list of category tags that this
  * recommendation rule belongs to.
- * @member {boolean} [isDynamic] True if this is associated with a dynamically
- * added rule
- * @member {string} [extensionName] Extension name of the portal if exists.
+ * @property {boolean} [isDynamic] True if this is associated with a
+ * dynamically added rule
+ * @property {string} [extensionName] Extension name of the portal if exists.
  * Applicable to dynamic rule only.
- * @member {string} [bladeName] Deep link to a blade on the portal. Applicable
- * to dynamic rule only.
- * @member {string} [forwardLink] Forward link to an external document
+ * @property {string} [bladeName] Deep link to a blade on the portal.
+ * Applicable to dynamic rule only.
+ * @property {string} [forwardLink] Forward link to an external document
  * associated with the rule. Applicable to dynamic rule only.
  */
 export interface RecommendationRule extends ProxyOnlyResource {
@@ -3792,12 +3855,13 @@ export interface RecommendationRule extends ProxyOnlyResource {
  * App Service billing entity that contains information about meter which the
  * Azure billing system utilizes to charge users for services.
  *
- * @member {string} [meterId] Meter GUID onboarded in Commerce
- * @member {string} [billingLocation] Azure Location of billable resource
- * @member {string} [shortName] Short Name from App Service Azure pricing Page
- * @member {string} [friendlyName] Friendly name of the meter
- * @member {string} [resourceType] App Service ResourceType meter used for
- * @member {string} [osType] App Service OS type meter used for
+ * @property {string} [meterId] Meter GUID onboarded in Commerce
+ * @property {string} [billingLocation] Azure Location of billable resource
+ * @property {string} [shortName] Short Name from App Service Azure pricing
+ * Page
+ * @property {string} [friendlyName] Friendly name of the meter
+ * @property {string} [resourceType] App Service ResourceType meter used for
+ * @property {string} [osType] App Service OS type meter used for
  */
 export interface BillingMeter extends ProxyOnlyResource {
   meterId?: string;
@@ -3815,8 +3879,8 @@ export interface BillingMeter extends ProxyOnlyResource {
  * Object with a list of the resources that need to be moved and the resource
  * group they should be moved to.
  *
- * @member {string} [targetResourceGroup]
- * @member {array} [resources]
+ * @property {string} [targetResourceGroup]
+ * @property {array} [resources]
  */
 export interface CsmMoveResourceEnvelope {
   targetResourceGroup?: string;
@@ -3829,8 +3893,8 @@ export interface CsmMoveResourceEnvelope {
  * @constructor
  * Geographical region.
  *
- * @member {string} [description] Region description.
- * @member {string} [displayName] Display name for region.
+ * @property {string} [description] Region description.
+ * @property {string} [displayName] Display name for region.
  */
 export interface GeoRegion extends ProxyOnlyResource {
   readonly description?: string;
@@ -3843,8 +3907,8 @@ export interface GeoRegion extends ProxyOnlyResource {
  * @constructor
  * Information needed to create resources on an App Service Environment.
  *
- * @member {string} [name] Name of the App Service Environment.
- * @member {string} [location] Location of the App Service Environment.
+ * @property {string} [name] Name of the App Service Environment.
+ * @property {string} [location] Location of the App Service Environment.
  */
 export interface HostingEnvironmentDeploymentInfo {
   name?: string;
@@ -3858,10 +3922,10 @@ export interface HostingEnvironmentDeploymentInfo {
  * List of available locations (regions or App Service Environments) for
  * deployment of App Service resources.
  *
- * @member {array} [locations] Available regions.
- * @member {array} [hostingEnvironments] Available App Service Environments
+ * @property {array} [locations] Available regions.
+ * @property {array} [hostingEnvironments] Available App Service Environments
  * with full descriptions of the environments.
- * @member {array} [hostingEnvironmentDeploymentInfos] Available App Service
+ * @property {array} [hostingEnvironmentDeploymentInfos] Available App Service
  * Environments with basic information.
  */
 export interface DeploymentLocations {
@@ -3876,21 +3940,21 @@ export interface DeploymentLocations {
  * @constructor
  * A Global SKU Description.
  *
- * @member {string} [name] Name of the resource SKU.
- * @member {string} [tier] Service Tier of the resource SKU.
- * @member {string} [size] Size specifier of the resource SKU.
- * @member {string} [family] Family code of the resource SKU.
- * @member {object} [capacity] Min, max, and default scale values of the SKU.
- * @member {number} [capacity.minimum] Minimum number of workers for this App
+ * @property {string} [name] Name of the resource SKU.
+ * @property {string} [tier] Service Tier of the resource SKU.
+ * @property {string} [size] Size specifier of the resource SKU.
+ * @property {string} [family] Family code of the resource SKU.
+ * @property {object} [capacity] Min, max, and default scale values of the SKU.
+ * @property {number} [capacity.minimum] Minimum number of workers for this App
  * Service plan SKU.
- * @member {number} [capacity.maximum] Maximum number of workers for this App
+ * @property {number} [capacity.maximum] Maximum number of workers for this App
  * Service plan SKU.
- * @member {number} [capacity.default] Default number of workers for this App
+ * @property {number} [capacity.default] Default number of workers for this App
  * Service plan SKU.
- * @member {string} [capacity.scaleType] Available scale configurations for an
- * App Service plan.
- * @member {array} [locations] Locations of the SKU.
- * @member {array} [capabilities] Capabilities of the SKU, e.g., is traffic
+ * @property {string} [capacity.scaleType] Available scale configurations for
+ * an App Service plan.
+ * @property {array} [locations] Locations of the SKU.
+ * @property {array} [capabilities] Capabilities of the SKU, e.g., is traffic
  * manager enabled?
  */
 export interface GlobalCsmSkuDescription {
@@ -3909,19 +3973,19 @@ export interface GlobalCsmSkuDescription {
  * @constructor
  * Premier add-on offer.
  *
- * @member {string} [sku] Premier add on SKU.
- * @member {string} [product] Premier add on offer Product.
- * @member {string} [vendor] Premier add on offer Vendor.
- * @member {boolean} [promoCodeRequired] <code>true</code> if promotion code is
- * required; otherwise, <code>false</code>.
- * @member {number} [quota] Premier add on offer Quota.
- * @member {string} [webHostingPlanRestrictions] App Service plans this offer
+ * @property {string} [sku] Premier add on SKU.
+ * @property {string} [product] Premier add on offer Product.
+ * @property {string} [vendor] Premier add on offer Vendor.
+ * @property {boolean} [promoCodeRequired] <code>true</code> if promotion code
+ * is required; otherwise, <code>false</code>.
+ * @property {number} [quota] Premier add on offer Quota.
+ * @property {string} [webHostingPlanRestrictions] App Service plans this offer
  * is restricted to. Possible values include: 'None', 'Free', 'Shared',
  * 'Basic', 'Standard', 'Premium'
- * @member {string} [privacyPolicyUrl] Privacy policy URL.
- * @member {string} [legalTermsUrl] Legal terms URL.
- * @member {string} [marketplacePublisher] Marketplace publisher.
- * @member {string} [marketplaceOffer] Marketplace offer.
+ * @property {string} [privacyPolicyUrl] Privacy policy URL.
+ * @property {string} [legalTermsUrl] Legal terms URL.
+ * @property {string} [marketplacePublisher] Marketplace publisher.
+ * @property {string} [marketplaceOffer] Marketplace offer.
  */
 export interface PremierAddOnOffer extends ProxyOnlyResource {
   sku?: string;
@@ -3942,14 +4006,14 @@ export interface PremierAddOnOffer extends ProxyOnlyResource {
  * @constructor
  * Information regarding availbility of a resource name.
  *
- * @member {boolean} [nameAvailable] <code>true</code> indicates name is valid
- * and available. <code>false</code> indicates the name is invalid,
+ * @property {boolean} [nameAvailable] <code>true</code> indicates name is
+ * valid and available. <code>false</code> indicates the name is invalid,
  * unavailable, or both.
- * @member {string} [reason] <code>Invalid</code> indicates the name provided
+ * @property {string} [reason] <code>Invalid</code> indicates the name provided
  * does not match Azure App Service naming requirements.
  * <code>AlreadyExists</code> indicates that the name is already in use and is
  * therefore unavailable. Possible values include: 'Invalid', 'AlreadyExists'
- * @member {string} [message] If reason == invalid, provide the user with the
+ * @property {string} [message] If reason == invalid, provide the user with the
  * reason why the given name is invalid, and provide the resource naming
  * requirements so that the user can select a valid name. If reason ==
  * AlreadyExists, explain that resource name is already in use, and direct them
@@ -3967,12 +4031,12 @@ export interface ResourceNameAvailability {
  * @constructor
  * Resource name availability request content.
  *
- * @member {string} name Resource name to verify.
- * @member {string} type Resource type used for verification. Possible values
+ * @property {string} name Resource name to verify.
+ * @property {string} type Resource type used for verification. Possible values
  * include: 'Site', 'Slot', 'HostingEnvironment', 'PublishingUser',
  * 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots',
  * 'Microsoft.Web/hostingEnvironments', 'Microsoft.Web/publishingUsers'
- * @member {boolean} [isFqdn] Is fully qualified domain name.
+ * @property {boolean} [isFqdn] Is fully qualified domain name.
  */
 export interface ResourceNameAvailabilityRequest {
   name: string;
@@ -3986,8 +4050,8 @@ export interface ResourceNameAvailabilityRequest {
  * @constructor
  * Collection of SKU information.
  *
- * @member {string} [resourceType] Resource type that this SKU applies to.
- * @member {array} [skus] List of SKUs the subscription is able to use.
+ * @property {string} [resourceType] Resource type that this SKU applies to.
+ * @property {array} [skus] List of SKUs the subscription is able to use.
  */
 export interface SkuInfos {
   resourceType?: string;
@@ -4000,10 +4064,10 @@ export interface SkuInfos {
  * @constructor
  * The source control OAuth token.
  *
- * @member {string} [token] OAuth access token.
- * @member {string} [tokenSecret] OAuth access token secret.
- * @member {string} [refreshToken] OAuth refresh token.
- * @member {date} [expirationTime] OAuth token expiration.
+ * @property {string} [token] OAuth access token.
+ * @property {string} [tokenSecret] OAuth access token secret.
+ * @property {string} [refreshToken] OAuth refresh token.
+ * @property {date} [expirationTime] OAuth token expiration.
  */
 export interface SourceControl extends ProxyOnlyResource {
   token?: string;
@@ -4018,23 +4082,24 @@ export interface SourceControl extends ProxyOnlyResource {
  * @constructor
  * Resource validation request content.
  *
- * @member {string} name Resource name to verify.
- * @member {string} type Resource type used for verification. Possible values
+ * @property {string} name Resource name to verify.
+ * @property {string} type Resource type used for verification. Possible values
  * include: 'ServerFarm', 'Site'
- * @member {string} location Expected location of the resource.
- * @member {string} [serverFarmId] ARM resource ID of an App Service plan that
- * would host the app.
- * @member {string} [skuName] Name of the target SKU for the App Service plan.
- * @member {boolean} [needLinuxWorkers] <code>true</code> if App Service plan
+ * @property {string} location Expected location of the resource.
+ * @property {string} [serverFarmId] ARM resource ID of an App Service plan
+ * that would host the app.
+ * @property {string} [skuName] Name of the target SKU for the App Service
+ * plan.
+ * @property {boolean} [needLinuxWorkers] <code>true</code> if App Service plan
  * is for Linux workers; otherwise, <code>false</code>.
- * @member {boolean} [isSpot] <code>true</code> if App Service plan is for Spot
- * instances; otherwise, <code>false</code>.
- * @member {number} [capacity] Target capacity of the App Service plan (number
- * of VM's).
- * @member {string} [hostingEnvironment] Name of App Service Environment where
- * app or App Service plan should be created.
- * @member {boolean} [isXenon] <code>true</code> if App Service plan is running
- * as a windows container
+ * @property {boolean} [isSpot] <code>true</code> if App Service plan is for
+ * Spot instances; otherwise, <code>false</code>.
+ * @property {number} [capacity] Target capacity of the App Service plan
+ * (number of VM's).
+ * @property {string} [hostingEnvironment] Name of App Service Environment
+ * where app or App Service plan should be created.
+ * @property {boolean} [isXenon] <code>true</code> if App Service plan is
+ * running as a windows container
  */
 export interface ValidateRequest {
   name: string;
@@ -4055,8 +4120,8 @@ export interface ValidateRequest {
  * @constructor
  * Error details for when validation fails.
  *
- * @member {string} [code] Validation error code.
- * @member {string} [message] Validation error message.
+ * @property {string} [code] Validation error code.
+ * @property {string} [message] Validation error message.
  */
 export interface ValidateResponseError {
   code?: string;
@@ -4069,10 +4134,10 @@ export interface ValidateResponseError {
  * @constructor
  * Describes the result of resource validation.
  *
- * @member {string} [status] Result of validation.
- * @member {object} [error] Error details for the case when validation fails.
- * @member {string} [error.code] Validation error code.
- * @member {string} [error.message] Validation error message.
+ * @property {string} [status] Result of validation.
+ * @property {object} [error] Error details for the case when validation fails.
+ * @property {string} [error.code] Validation error code.
+ * @property {string} [error.message] Validation error message.
  */
 export interface ValidateResponse {
   status?: string;
@@ -4085,10 +4150,10 @@ export interface ValidateResponse {
  * @constructor
  * The required set of inputs to validate a VNET
  *
- * @member {string} [vnetResourceGroup] The Resource Group of the VNET to be
+ * @property {string} [vnetResourceGroup] The Resource Group of the VNET to be
  * validated
- * @member {string} [vnetName] The name of the VNET to be validated
- * @member {string} [vnetSubnetName] The subnet name to be validated
+ * @property {string} [vnetName] The name of the VNET to be validated
+ * @property {string} [vnetSubnetName] The subnet name to be validated
  */
 export interface VnetParameters extends ProxyOnlyResource {
   vnetResourceGroup?: string;
@@ -4102,9 +4167,9 @@ export interface VnetParameters extends ProxyOnlyResource {
  * @constructor
  * A class that describes a test that failed during NSG and UDR validation.
  *
- * @member {string} [testName] The name of the test that failed.
- * @member {string} [details] The details of what caused the failure, e.g. the
- * blocking rule name, etc.
+ * @property {string} [testName] The name of the test that failed.
+ * @property {string} [details] The details of what caused the failure, e.g.
+ * the blocking rule name, etc.
  */
 export interface VnetValidationTestFailure extends ProxyOnlyResource {
   testName?: string;
@@ -4117,9 +4182,10 @@ export interface VnetValidationTestFailure extends ProxyOnlyResource {
  * @constructor
  * A class that describes the reason for a validation failure.
  *
- * @member {boolean} [failed] A flag describing whether or not validation
+ * @property {boolean} [failed] A flag describing whether or not validation
  * failed.
- * @member {array} [failedTests] A list of tests that failed in the validation.
+ * @property {array} [failedTests] A list of tests that failed in the
+ * validation.
  */
 export interface VnetValidationFailureDetails extends ProxyOnlyResource {
   failed?: boolean;
@@ -4132,7 +4198,7 @@ export interface VnetValidationFailureDetails extends ProxyOnlyResource {
  * @constructor
  * Application logs to file system configuration.
  *
- * @member {string} [level] Log level. Possible values include: 'Off',
+ * @property {string} [level] Log level. Possible values include: 'Off',
  * 'Verbose', 'Information', 'Warning', 'Error'. Default value: 'Off' .
  */
 export interface FileSystemApplicationLogsConfig {
@@ -4145,9 +4211,9 @@ export interface FileSystemApplicationLogsConfig {
  * @constructor
  * Application logs to Azure table storage configuration.
  *
- * @member {string} [level] Log level. Possible values include: 'Off',
+ * @property {string} [level] Log level. Possible values include: 'Off',
  * 'Verbose', 'Information', 'Warning', 'Error'
- * @member {string} sasUrl SAS URL to an Azure table with add/query/delete
+ * @property {string} sasUrl SAS URL to an Azure table with add/query/delete
  * permissions.
  */
 export interface AzureTableStorageApplicationLogsConfig {
@@ -4161,11 +4227,11 @@ export interface AzureTableStorageApplicationLogsConfig {
  * @constructor
  * Application logs azure blob storage configuration.
  *
- * @member {string} [level] Log level. Possible values include: 'Off',
+ * @property {string} [level] Log level. Possible values include: 'Off',
  * 'Verbose', 'Information', 'Warning', 'Error'
- * @member {string} [sasUrl] SAS url to a azure blob container with
+ * @property {string} [sasUrl] SAS url to a azure blob container with
  * read/write/list/delete permissions.
- * @member {number} [retentionInDays] Retention in days.
+ * @property {number} [retentionInDays] Retention in days.
  * Remove blobs older than X days.
  * 0 or lower means no retention.
  */
@@ -4181,22 +4247,23 @@ export interface AzureBlobStorageApplicationLogsConfig {
  * @constructor
  * Application logs configuration.
  *
- * @member {object} [fileSystem] Application logs to file system configuration.
- * @member {string} [fileSystem.level] Log level. Possible values include:
+ * @property {object} [fileSystem] Application logs to file system
+ * configuration.
+ * @property {string} [fileSystem.level] Log level. Possible values include:
  * 'Off', 'Verbose', 'Information', 'Warning', 'Error'
- * @member {object} [azureTableStorage] Application logs to azure table storage
- * configuration.
- * @member {string} [azureTableStorage.level] Log level. Possible values
+ * @property {object} [azureTableStorage] Application logs to azure table
+ * storage configuration.
+ * @property {string} [azureTableStorage.level] Log level. Possible values
  * include: 'Off', 'Verbose', 'Information', 'Warning', 'Error'
- * @member {string} [azureTableStorage.sasUrl] SAS URL to an Azure table with
+ * @property {string} [azureTableStorage.sasUrl] SAS URL to an Azure table with
  * add/query/delete permissions.
- * @member {object} [azureBlobStorage] Application logs to blob storage
+ * @property {object} [azureBlobStorage] Application logs to blob storage
  * configuration.
- * @member {string} [azureBlobStorage.level] Log level. Possible values
+ * @property {string} [azureBlobStorage.level] Log level. Possible values
  * include: 'Off', 'Verbose', 'Information', 'Warning', 'Error'
- * @member {string} [azureBlobStorage.sasUrl] SAS url to a azure blob container
- * with read/write/list/delete permissions.
- * @member {number} [azureBlobStorage.retentionInDays] Retention in days.
+ * @property {string} [azureBlobStorage.sasUrl] SAS url to a azure blob
+ * container with read/write/list/delete permissions.
+ * @property {number} [azureBlobStorage.retentionInDays] Retention in days.
  * Remove blobs older than X days.
  * 0 or lower means no retention.
  */
@@ -4212,13 +4279,13 @@ export interface ApplicationLogsConfig {
  * @constructor
  * Http logs to azure blob storage configuration.
  *
- * @member {string} [sasUrl] SAS url to a azure blob container with
+ * @property {string} [sasUrl] SAS url to a azure blob container with
  * read/write/list/delete permissions.
- * @member {number} [retentionInDays] Retention in days.
+ * @property {number} [retentionInDays] Retention in days.
  * Remove blobs older than X days.
  * 0 or lower means no retention.
- * @member {boolean} [enabled] True if configuration is enabled, false if it is
- * disabled and null if configuration is not set.
+ * @property {boolean} [enabled] True if configuration is enabled, false if it
+ * is disabled and null if configuration is not set.
  */
 export interface AzureBlobStorageHttpLogsConfig {
   sasUrl?: string;
@@ -4232,7 +4299,7 @@ export interface AzureBlobStorageHttpLogsConfig {
  * @constructor
  * AzureStorageInfo dictionary resource.
  *
- * @member {object} [properties] Azure storage accounts.
+ * @property {object} [properties] Azure storage accounts.
  */
 export interface AzureStoragePropertyDictionaryResource extends ProxyOnlyResource {
   properties?: { [propertyName: string]: AzureStorageInfoValue };
@@ -4244,13 +4311,13 @@ export interface AzureStoragePropertyDictionaryResource extends ProxyOnlyResourc
  * @constructor
  * Database backup settings.
  *
- * @member {string} databaseType Database type (e.g. SqlAzure / MySql).
+ * @property {string} databaseType Database type (e.g. SqlAzure / MySql).
  * Possible values include: 'SqlAzure', 'MySql', 'LocalMySql', 'PostgreSql'
- * @member {string} [name]
- * @member {string} [connectionStringName] Contains a connection string name
+ * @property {string} [name]
+ * @property {string} [connectionStringName] Contains a connection string name
  * that is linked to the SiteConfig.ConnectionStrings.
  * This is used during restore with overwrite connection strings options.
- * @member {string} [connectionString] Contains a connection string to a
+ * @property {string} [connectionString] Contains a connection string to a
  * database which is being backed up or restored. If the restore should happen
  * to a new database, the database name inside is the new one.
  */
@@ -4267,29 +4334,29 @@ export interface DatabaseBackupSetting {
  * @constructor
  * Backup description.
  *
- * @member {number} [backupId] Id of the backup.
- * @member {string} [storageAccountUrl] SAS URL for the storage account
+ * @property {number} [backupId] Id of the backup.
+ * @property {string} [storageAccountUrl] SAS URL for the storage account
  * container which contains this backup.
- * @member {string} [blobName] Name of the blob which contains data for this
+ * @property {string} [blobName] Name of the blob which contains data for this
  * backup.
- * @member {string} [backupItemName] Name of this backup.
- * @member {string} [status] Backup status. Possible values include:
+ * @property {string} [backupItemName] Name of this backup.
+ * @property {string} [status] Backup status. Possible values include:
  * 'InProgress', 'Failed', 'Succeeded', 'TimedOut', 'Created', 'Skipped',
  * 'PartiallySucceeded', 'DeleteInProgress', 'DeleteFailed', 'Deleted'
- * @member {number} [sizeInBytes] Size of the backup in bytes.
- * @member {date} [created] Timestamp of the backup creation.
- * @member {string} [log] Details regarding this backup. Might contain an error
- * message.
- * @member {array} [databases] List of databases included in the backup.
- * @member {boolean} [scheduled] True if this backup has been created due to a
- * schedule being triggered.
- * @member {date} [lastRestoreTimeStamp] Timestamp of a last restore operation
- * which used this backup.
- * @member {date} [finishedTimeStamp] Timestamp when this backup finished.
- * @member {string} [correlationId] Unique correlation identifier. Please use
+ * @property {number} [sizeInBytes] Size of the backup in bytes.
+ * @property {date} [created] Timestamp of the backup creation.
+ * @property {string} [log] Details regarding this backup. Might contain an
+ * error message.
+ * @property {array} [databases] List of databases included in the backup.
+ * @property {boolean} [scheduled] True if this backup has been created due to
+ * a schedule being triggered.
+ * @property {date} [lastRestoreTimeStamp] Timestamp of a last restore
+ * operation which used this backup.
+ * @property {date} [finishedTimeStamp] Timestamp when this backup finished.
+ * @property {string} [correlationId] Unique correlation identifier. Please use
  * this along with the timestamp while communicating with Azure support.
- * @member {number} [websiteSizeInBytes] Size of the original web app which has
- * been backed up.
+ * @property {number} [websiteSizeInBytes] Size of the original web app which
+ * has been backed up.
  */
 export interface BackupItem extends ProxyOnlyResource {
   readonly backupId?: number;
@@ -4315,20 +4382,20 @@ export interface BackupItem extends ProxyOnlyResource {
  * Description of a backup schedule. Describes how often should be the backup
  * performed and what should be the retention policy.
  *
- * @member {number} frequencyInterval How often the backup should be executed
+ * @property {number} frequencyInterval How often the backup should be executed
  * (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be
  * set to Day). Default value: 7 .
- * @member {string} frequencyUnit The unit of time for how often the backup
+ * @property {string} frequencyUnit The unit of time for how often the backup
  * should be executed (e.g. for weekly backup, this should be set to Day and
  * FrequencyInterval should be set to 7). Possible values include: 'Day',
  * 'Hour'. Default value: 'Day' .
- * @member {boolean} keepAtLeastOneBackup True if the retention policy should
+ * @property {boolean} keepAtLeastOneBackup True if the retention policy should
  * always keep at least one backup in the storage account, regardless how old
  * it is; false otherwise. Default value: true .
- * @member {number} retentionPeriodInDays After how many days backups should be
- * deleted. Default value: 30 .
- * @member {date} [startTime] When the schedule should start working.
- * @member {date} [lastExecutionTime] Last time when this schedule was
+ * @property {number} retentionPeriodInDays After how many days backups should
+ * be deleted. Default value: 30 .
+ * @property {date} [startTime] When the schedule should start working.
+ * @property {date} [lastExecutionTime] Last time when this schedule was
  * triggered.
  */
 export interface BackupSchedule {
@@ -4346,29 +4413,29 @@ export interface BackupSchedule {
  * @constructor
  * Description of a backup which will be performed.
  *
- * @member {string} [backupName] Name of the backup.
- * @member {boolean} [enabled] True if the backup schedule is enabled (must be
- * included in that case), false if the backup schedule should be disabled.
- * @member {string} storageAccountUrl SAS URL to the container.
- * @member {object} [backupSchedule] Schedule for the backup if it is executed
- * periodically.
- * @member {number} [backupSchedule.frequencyInterval] How often the backup
+ * @property {string} [backupName] Name of the backup.
+ * @property {boolean} [enabled] True if the backup schedule is enabled (must
+ * be included in that case), false if the backup schedule should be disabled.
+ * @property {string} storageAccountUrl SAS URL to the container.
+ * @property {object} [backupSchedule] Schedule for the backup if it is
+ * executed periodically.
+ * @property {number} [backupSchedule.frequencyInterval] How often the backup
  * should be executed (e.g. for weekly backup, this should be set to 7 and
  * FrequencyUnit should be set to Day)
- * @member {string} [backupSchedule.frequencyUnit] The unit of time for how
+ * @property {string} [backupSchedule.frequencyUnit] The unit of time for how
  * often the backup should be executed (e.g. for weekly backup, this should be
  * set to Day and FrequencyInterval should be set to 7). Possible values
  * include: 'Day', 'Hour'
- * @member {boolean} [backupSchedule.keepAtLeastOneBackup] True if the
+ * @property {boolean} [backupSchedule.keepAtLeastOneBackup] True if the
  * retention policy should always keep at least one backup in the storage
  * account, regardless how old it is; false otherwise.
- * @member {number} [backupSchedule.retentionPeriodInDays] After how many days
- * backups should be deleted.
- * @member {date} [backupSchedule.startTime] When the schedule should start
+ * @property {number} [backupSchedule.retentionPeriodInDays] After how many
+ * days backups should be deleted.
+ * @property {date} [backupSchedule.startTime] When the schedule should start
  * working.
- * @member {date} [backupSchedule.lastExecutionTime] Last time when this
+ * @property {date} [backupSchedule.lastExecutionTime] Last time when this
  * schedule was triggered.
- * @member {array} [databases] Databases included in the backup.
+ * @property {array} [databases] Databases included in the backup.
  */
 export interface BackupRequest extends ProxyOnlyResource {
   backupName?: string;
@@ -4384,8 +4451,8 @@ export interface BackupRequest extends ProxyOnlyResource {
  * @constructor
  * Database connection string value to type pair.
  *
- * @member {string} value Value of pair.
- * @member {string} type Type of database. Possible values include: 'MySql',
+ * @property {string} value Value of pair.
+ * @property {string} type Type of database. Possible values include: 'MySql',
  * 'SQLServer', 'SQLAzure', 'Custom', 'NotificationHub', 'ServiceBus',
  * 'EventHub', 'ApiHub', 'DocDb', 'RedisCache', 'PostgreSQL'
  */
@@ -4400,7 +4467,7 @@ export interface ConnStringValueTypePair {
  * @constructor
  * String dictionary resource.
  *
- * @member {object} [properties] Connection strings.
+ * @property {object} [properties] Connection strings.
  */
 export interface ConnectionStringDictionary extends ProxyOnlyResource {
   properties?: { [propertyName: string]: ConnStringValueTypePair };
@@ -4412,18 +4479,18 @@ export interface ConnectionStringDictionary extends ProxyOnlyResource {
  * @constructor
  * Continuous Web Job Information.
  *
- * @member {string} [status] Job status. Possible values include:
+ * @property {string} [status] Job status. Possible values include:
  * 'Initializing', 'Starting', 'Running', 'PendingRestart', 'Stopped'
- * @member {string} [detailedStatus] Detailed status.
- * @member {string} [logUrl] Log URL.
- * @member {string} [runCommand] Run command.
- * @member {string} [url] Job URL.
- * @member {string} [extraInfoUrl] Extra Info URL.
- * @member {string} [webJobType] Job type. Possible values include:
+ * @property {string} [detailedStatus] Detailed status.
+ * @property {string} [logUrl] Log URL.
+ * @property {string} [runCommand] Run command.
+ * @property {string} [url] Job URL.
+ * @property {string} [extraInfoUrl] Extra Info URL.
+ * @property {string} [webJobType] Job type. Possible values include:
  * 'Continuous', 'Triggered'
- * @member {string} [error] Error information.
- * @member {boolean} [usingSdk] Using SDK?
- * @member {object} [settings] Job settings.
+ * @property {string} [error] Error information.
+ * @property {boolean} [usingSdk] Using SDK?
+ * @property {object} [settings] Job settings.
  */
 export interface ContinuousWebJob extends ProxyOnlyResource {
   status?: string;
@@ -4444,11 +4511,11 @@ export interface ContinuousWebJob extends ProxyOnlyResource {
  * @constructor
  * Publishing options for requested profile.
  *
- * @member {string} [format] Name of the format. Valid values are:
+ * @property {string} [format] Name of the format. Valid values are:
  * FileZilla3
  * WebDeploy -- default
  * Ftp. Possible values include: 'FileZilla3', 'WebDeploy', 'Ftp'
- * @member {boolean} [includeDisasterRecoveryEndpoints] Include the
+ * @property {boolean} [includeDisasterRecoveryEndpoints] Include the
  * DisasterRecover endpoint if true
  */
 export interface CsmPublishingProfileOptions {
@@ -4462,10 +4529,10 @@ export interface CsmPublishingProfileOptions {
  * @constructor
  * Deployment slot parameters.
  *
- * @member {string} targetSlot Destination deployment slot during swap
+ * @property {string} targetSlot Destination deployment slot during swap
  * operation.
- * @member {boolean} preserveVnet <code>true</code> to preserve Virtual Network
- * to the slot during swap; otherwise, <code>false</code>.
+ * @property {boolean} preserveVnet <code>true</code> to preserve Virtual
+ * Network to the slot during swap; otherwise, <code>false</code>.
  */
 export interface CsmSlotEntity {
   targetSlot: string;
@@ -4478,38 +4545,38 @@ export interface CsmSlotEntity {
  * @constructor
  * Custom domain analysis.
  *
- * @member {boolean} [isHostnameAlreadyVerified] <code>true</code> if hostname
- * is already verified; otherwise, <code>false</code>.
- * @member {string} [customDomainVerificationTest] DNS verification test
+ * @property {boolean} [isHostnameAlreadyVerified] <code>true</code> if
+ * hostname is already verified; otherwise, <code>false</code>.
+ * @property {string} [customDomainVerificationTest] DNS verification test
  * result. Possible values include: 'Passed', 'Failed', 'Skipped'
- * @member {object} [customDomainVerificationFailureInfo] Raw failure
+ * @property {object} [customDomainVerificationFailureInfo] Raw failure
  * information if DNS verification fails.
- * @member {string} [customDomainVerificationFailureInfo.extendedCode] Type of
- * error.
- * @member {string} [customDomainVerificationFailureInfo.messageTemplate]
+ * @property {string} [customDomainVerificationFailureInfo.extendedCode] Type
+ * of error.
+ * @property {string} [customDomainVerificationFailureInfo.messageTemplate]
  * Message template.
- * @member {array} [customDomainVerificationFailureInfo.parameters] Parameters
- * for the template.
- * @member {array} [customDomainVerificationFailureInfo.innerErrors] Inner
+ * @property {array} [customDomainVerificationFailureInfo.parameters]
+ * Parameters for the template.
+ * @property {array} [customDomainVerificationFailureInfo.innerErrors] Inner
  * errors.
- * @member {string} [customDomainVerificationFailureInfo.code] Basic error
+ * @property {string} [customDomainVerificationFailureInfo.code] Basic error
  * code.
- * @member {string} [customDomainVerificationFailureInfo.message] Any details
+ * @property {string} [customDomainVerificationFailureInfo.message] Any details
  * of the error.
- * @member {boolean} [hasConflictOnScaleUnit] <code>true</code> if there is a
+ * @property {boolean} [hasConflictOnScaleUnit] <code>true</code> if there is a
  * conflict on a scale unit; otherwise, <code>false</code>.
- * @member {boolean} [hasConflictAcrossSubscription] <code>true</code> if htere
- * is a conflict across subscriptions; otherwise, <code>false</code>.
- * @member {string} [conflictingAppResourceId] Name of the conflicting app on
+ * @property {boolean} [hasConflictAcrossSubscription] <code>true</code> if
+ * htere is a conflict across subscriptions; otherwise, <code>false</code>.
+ * @property {string} [conflictingAppResourceId] Name of the conflicting app on
  * scale unit if it's within the same subscription.
- * @member {array} [cNameRecords] CName records controller can see for this
+ * @property {array} [cNameRecords] CName records controller can see for this
  * hostname.
- * @member {array} [txtRecords] TXT records controller can see for this
+ * @property {array} [txtRecords] TXT records controller can see for this
  * hostname.
- * @member {array} [aRecords] A records controller can see for this hostname.
- * @member {array} [alternateCNameRecords] Alternate CName records controller
+ * @property {array} [aRecords] A records controller can see for this hostname.
+ * @property {array} [alternateCNameRecords] Alternate CName records controller
  * can see for this hostname.
- * @member {array} [alternateTxtRecords] Alternate TXT records controller can
+ * @property {array} [alternateTxtRecords] Alternate TXT records controller can
  * see for this hostname.
  */
 export interface CustomHostnameAnalysisResult extends ProxyOnlyResource {
@@ -4532,19 +4599,22 @@ export interface CustomHostnameAnalysisResult extends ProxyOnlyResource {
  * @constructor
  * Details about restoring a deleted app.
  *
- * @member {string} [deletedSiteId] ARM resource ID of the deleted app.
+ * @property {string} [deletedSiteId] ARM resource ID of the deleted app.
  * Example:
  * /subscriptions/{subId}/providers/Microsoft.Web/deletedSites/{deletedSiteId}
- * @member {boolean} [recoverConfiguration] If true, deleted site
+ * @property {boolean} [recoverConfiguration] If true, deleted site
  * configuration, in addition to content, will be restored.
- * @member {string} [snapshotTime] Point in time to restore the deleted app
+ * @property {string} [snapshotTime] Point in time to restore the deleted app
  * from, formatted as a DateTime string.
  * If unspecified, default value is the time that the app was deleted.
+ * @property {boolean} [useDRSecondary] If true, the snapshot is retrieved from
+ * DRSecondary endpoint.
  */
 export interface DeletedAppRestoreRequest extends ProxyOnlyResource {
   deletedSiteId?: string;
   recoverConfiguration?: boolean;
   snapshotTime?: string;
+  useDRSecondary?: boolean;
 }
 
 /**
@@ -4553,16 +4623,16 @@ export interface DeletedAppRestoreRequest extends ProxyOnlyResource {
  * @constructor
  * User crendentials used for publishing activity.
  *
- * @member {number} [status] Deployment status.
- * @member {string} [message] Details about deployment status.
- * @member {string} [author] Who authored the deployment.
- * @member {string} [deployer] Who performed the deployment.
- * @member {string} [authorEmail] Author email.
- * @member {date} [startTime] Start time.
- * @member {date} [endTime] End time.
- * @member {boolean} [active] True if deployment is currently active, false if
- * completed and null if not started.
- * @member {string} [details] Details on deployment.
+ * @property {number} [status] Deployment status.
+ * @property {string} [message] Details about deployment status.
+ * @property {string} [author] Who authored the deployment.
+ * @property {string} [deployer] Who performed the deployment.
+ * @property {string} [authorEmail] Author email.
+ * @property {date} [startTime] Start time.
+ * @property {date} [endTime] End time.
+ * @property {boolean} [active] True if deployment is currently active, false
+ * if completed and null if not started.
+ * @property {string} [details] Details on deployment.
  */
 export interface Deployment extends ProxyOnlyResource {
   status?: number;
@@ -4582,8 +4652,8 @@ export interface Deployment extends ProxyOnlyResource {
  * @constructor
  * Enabled configuration.
  *
- * @member {boolean} [enabled] True if configuration is enabled, false if it is
- * disabled and null if configuration is not set.
+ * @property {boolean} [enabled] True if configuration is enabled, false if it
+ * is disabled and null if configuration is not set.
  */
 export interface EnabledConfig {
   enabled?: boolean;
@@ -4595,15 +4665,15 @@ export interface EnabledConfig {
  * @constructor
  * Http logs to file system configuration.
  *
- * @member {number} [retentionInMb] Maximum size in megabytes that http log
+ * @property {number} [retentionInMb] Maximum size in megabytes that http log
  * files can use.
  * When reached old log files will be removed to make space for new ones.
  * Value can range between 25 and 100.
- * @member {number} [retentionInDays] Retention in days.
+ * @property {number} [retentionInDays] Retention in days.
  * Remove files older than X days.
  * 0 or lower means no retention.
- * @member {boolean} [enabled] True if configuration is enabled, false if it is
- * disabled and null if configuration is not set.
+ * @property {boolean} [enabled] True if configuration is enabled, false if it
+ * is disabled and null if configuration is not set.
  */
 export interface FileSystemHttpLogsConfig {
   retentionInMb?: number;
@@ -4617,15 +4687,15 @@ export interface FileSystemHttpLogsConfig {
  * @constructor
  * Web Job Information.
  *
- * @member {string} [functionAppId] Function App ID.
- * @member {string} [scriptRootPathHref] Script root path URI.
- * @member {string} [scriptHref] Script URI.
- * @member {string} [configHref] Config URI.
- * @member {string} [secretsFileHref] Secrets file URI.
- * @member {string} [href] Function URI.
- * @member {object} [config] Config information.
- * @member {object} [files] File list.
- * @member {string} [testData] Test data used when testing via the Azure
+ * @property {string} [functionAppId] Function App ID.
+ * @property {string} [scriptRootPathHref] Script root path URI.
+ * @property {string} [scriptHref] Script URI.
+ * @property {string} [configHref] Config URI.
+ * @property {string} [secretsFileHref] Secrets file URI.
+ * @property {string} [href] Function URI.
+ * @property {object} [config] Config information.
+ * @property {object} [files] File list.
+ * @property {string} [testData] Test data used when testing via the Azure
  * Portal.
  */
 export interface FunctionEnvelope extends ProxyOnlyResource {
@@ -4646,8 +4716,8 @@ export interface FunctionEnvelope extends ProxyOnlyResource {
  * @constructor
  * Function secrets.
  *
- * @member {string} [key] Secret key.
- * @member {string} [triggerUrl] Trigger URL.
+ * @property {string} [key] Secret key.
+ * @property {string} [triggerUrl] Trigger URL.
  */
 export interface FunctionSecrets extends ProxyOnlyResource {
   key?: string;
@@ -4660,20 +4730,20 @@ export interface FunctionSecrets extends ProxyOnlyResource {
  * @constructor
  * A hostname binding object.
  *
- * @member {string} [siteName] App Service app name.
- * @member {string} [domainId] Fully qualified ARM domain resource URI.
- * @member {string} [azureResourceName] Azure resource name.
- * @member {string} [azureResourceType] Azure resource type. Possible values
+ * @property {string} [siteName] App Service app name.
+ * @property {string} [domainId] Fully qualified ARM domain resource URI.
+ * @property {string} [azureResourceName] Azure resource name.
+ * @property {string} [azureResourceType] Azure resource type. Possible values
  * include: 'Website', 'TrafficManager'
- * @member {string} [customHostNameDnsRecordType] Custom DNS record type.
+ * @property {string} [customHostNameDnsRecordType] Custom DNS record type.
  * Possible values include: 'CName', 'A'
- * @member {string} [hostNameType] Hostname type. Possible values include:
+ * @property {string} [hostNameType] Hostname type. Possible values include:
  * 'Verified', 'Managed'
- * @member {string} [sslState] SSL type. Possible values include: 'Disabled',
+ * @property {string} [sslState] SSL type. Possible values include: 'Disabled',
  * 'SniEnabled', 'IpBasedEnabled'
- * @member {string} [thumbprint] SSL certificate thumbprint
- * @member {string} [virtualIP] Virtual IP address assigned to the hostname if
- * IP based SSL is enabled.
+ * @property {string} [thumbprint] SSL certificate thumbprint
+ * @property {string} [virtualIP] Virtual IP address assigned to the hostname
+ * if IP based SSL is enabled.
  */
 export interface HostNameBinding extends ProxyOnlyResource {
   siteName?: string;
@@ -4693,24 +4763,24 @@ export interface HostNameBinding extends ProxyOnlyResource {
  * @constructor
  * Http logs configuration.
  *
- * @member {object} [fileSystem] Http logs to file system configuration.
- * @member {number} [fileSystem.retentionInMb] Maximum size in megabytes that
+ * @property {object} [fileSystem] Http logs to file system configuration.
+ * @property {number} [fileSystem.retentionInMb] Maximum size in megabytes that
  * http log files can use.
  * When reached old log files will be removed to make space for new ones.
  * Value can range between 25 and 100.
- * @member {number} [fileSystem.retentionInDays] Retention in days.
+ * @property {number} [fileSystem.retentionInDays] Retention in days.
  * Remove files older than X days.
  * 0 or lower means no retention.
- * @member {boolean} [fileSystem.enabled] True if configuration is enabled,
+ * @property {boolean} [fileSystem.enabled] True if configuration is enabled,
  * false if it is disabled and null if configuration is not set.
- * @member {object} [azureBlobStorage] Http logs to azure blob storage
+ * @property {object} [azureBlobStorage] Http logs to azure blob storage
  * configuration.
- * @member {string} [azureBlobStorage.sasUrl] SAS url to a azure blob container
- * with read/write/list/delete permissions.
- * @member {number} [azureBlobStorage.retentionInDays] Retention in days.
+ * @property {string} [azureBlobStorage.sasUrl] SAS url to a azure blob
+ * container with read/write/list/delete permissions.
+ * @property {number} [azureBlobStorage.retentionInDays] Retention in days.
  * Remove blobs older than X days.
  * 0 or lower means no retention.
- * @member {boolean} [azureBlobStorage.enabled] True if configuration is
+ * @property {boolean} [azureBlobStorage.enabled] True if configuration is
  * enabled, false if it is disabled and null if configuration is not set.
  */
 export interface HttpLogsConfig {
@@ -4724,21 +4794,21 @@ export interface HttpLogsConfig {
  * @constructor
  * MSDeploy ARM PUT information
  *
- * @member {string} [packageUri] Package URI
- * @member {string} [connectionString] SQL Connection String
- * @member {string} [dbType] Database Type
- * @member {string} [setParametersXmlFileUri] URI of MSDeploy Parameters file.
- * Must not be set if SetParameters is used.
- * @member {object} [setParameters] MSDeploy Parameters. Must not be set if
+ * @property {string} [packageUri] Package URI
+ * @property {string} [connectionString] SQL Connection String
+ * @property {string} [dbType] Database Type
+ * @property {string} [setParametersXmlFileUri] URI of MSDeploy Parameters
+ * file. Must not be set if SetParameters is used.
+ * @property {object} [setParameters] MSDeploy Parameters. Must not be set if
  * SetParametersXmlFileUri is used.
- * @member {boolean} [skipAppData] Controls whether the MSDeploy operation
+ * @property {boolean} [skipAppData] Controls whether the MSDeploy operation
  * skips the App_Data directory.
  * If set to <code>true</code>, the existing App_Data directory on the
  * destination
  * will not be deleted, and any App_Data directory in the source will be
  * ignored.
  * Setting is <code>false</code> by default.
- * @member {boolean} [appOffline] Sets the AppOffline rule while the MSDeploy
+ * @property {boolean} [appOffline] Sets the AppOffline rule while the MSDeploy
  * operation executes.
  * Setting is <code>false</code> by default.
  */
@@ -4758,10 +4828,10 @@ export interface MSDeploy extends ProxyOnlyResource {
  * @constructor
  * MSDeploy log entry
  *
- * @member {date} [time] Timestamp of log entry
- * @member {string} [type] Log entry type. Possible values include: 'Message',
- * 'Warning', 'Error'
- * @member {string} [message] Log entry message
+ * @property {date} [time] Timestamp of log entry
+ * @property {string} [type] Log entry type. Possible values include:
+ * 'Message', 'Warning', 'Error'
+ * @property {string} [message] Log entry message
  */
 export interface MSDeployLogEntry {
   readonly time?: Date;
@@ -4775,7 +4845,7 @@ export interface MSDeployLogEntry {
  * @constructor
  * MSDeploy log
  *
- * @member {array} [entries] List of log entry messages
+ * @property {array} [entries] List of log entry messages
  */
 export interface MSDeployLog extends ProxyOnlyResource {
   readonly entries?: MSDeployLogEntry[];
@@ -4787,12 +4857,13 @@ export interface MSDeployLog extends ProxyOnlyResource {
  * @constructor
  * MSDeploy ARM response
  *
- * @member {string} [deployer] Username of deployer
- * @member {string} [provisioningState] Provisioning state. Possible values
+ * @property {string} [deployer] Username of deployer
+ * @property {string} [provisioningState] Provisioning state. Possible values
  * include: 'accepted', 'running', 'succeeded', 'failed', 'canceled'
- * @member {date} [startTime] Start time of deploy operation
- * @member {date} [endTime] End time of deploy operation
- * @member {boolean} [complete] Whether the deployment operation has completed
+ * @property {date} [startTime] Start time of deploy operation
+ * @property {date} [endTime] End time of deploy operation
+ * @property {boolean} [complete] Whether the deployment operation has
+ * completed
  */
 export interface MSDeployStatus extends ProxyOnlyResource {
   readonly deployer?: string;
@@ -4808,9 +4879,9 @@ export interface MSDeployStatus extends ProxyOnlyResource {
  * @constructor
  * MySQL migration request.
  *
- * @member {string} connectionString Connection string to the remote MySQL
+ * @property {string} connectionString Connection string to the remote MySQL
  * database.
- * @member {string} migrationType The type of migration operation to be done.
+ * @property {string} migrationType The type of migration operation to be done.
  * Possible values include: 'LocalToRemote', 'RemoteToLocal'
  */
 export interface MigrateMySqlRequest extends ProxyOnlyResource {
@@ -4824,11 +4895,11 @@ export interface MigrateMySqlRequest extends ProxyOnlyResource {
  * @constructor
  * MySQL migration status.
  *
- * @member {string} [migrationOperationStatus] Status of the migration task.
+ * @property {string} [migrationOperationStatus] Status of the migration task.
  * Possible values include: 'InProgress', 'Failed', 'Succeeded', 'TimedOut',
  * 'Created'
- * @member {string} [operationId] Operation ID for the migration task.
- * @member {boolean} [localMySqlEnabled] True if the web app has in app MySql
+ * @property {string} [operationId] Operation ID for the migration task.
+ * @property {boolean} [localMySqlEnabled] True if the web app has in app MySql
  * enabled
  */
 export interface MigrateMySqlStatus extends ProxyOnlyResource {
@@ -4843,13 +4914,13 @@ export interface MigrateMySqlStatus extends ProxyOnlyResource {
  * @constructor
  * Hybrid Connection for an App Service app.
  *
- * @member {string} [entityName]
- * @member {string} [entityConnectionString]
- * @member {string} [resourceType]
- * @member {string} [resourceConnectionString]
- * @member {string} [hostname]
- * @member {number} [port]
- * @member {string} [biztalkUri]
+ * @property {string} [entityName]
+ * @property {string} [entityConnectionString]
+ * @property {string} [resourceType]
+ * @property {string} [resourceConnectionString]
+ * @property {string} [hostname]
+ * @property {number} [port]
+ * @property {string} [biztalkUri]
  */
 export interface RelayServiceConnectionEntity extends ProxyOnlyResource {
   entityName?: string;
@@ -4868,27 +4939,29 @@ export interface RelayServiceConnectionEntity extends ProxyOnlyResource {
  * Full view of network features for an app (presently VNET integration and
  * Hybrid Connections).
  *
- * @member {string} [virtualNetworkName] The Virtual Network name.
- * @member {object} [virtualNetworkConnection] The Virtual Network summary
+ * @property {string} [virtualNetworkName] The Virtual Network name.
+ * @property {object} [virtualNetworkConnection] The Virtual Network summary
  * view.
- * @member {string} [virtualNetworkConnection.vnetResourceId] The Virtual
+ * @property {string} [virtualNetworkConnection.vnetResourceId] The Virtual
  * Network's resource ID.
- * @member {string} [virtualNetworkConnection.certThumbprint] The client
+ * @property {string} [virtualNetworkConnection.certThumbprint] The client
  * certificate thumbprint.
- * @member {buffer} [virtualNetworkConnection.certBlob] A certificate file
+ * @property {buffer} [virtualNetworkConnection.certBlob] A certificate file
  * (.cer) blob containing the public key of the private key used to
  * authenticate a
  * Point-To-Site VPN connection.
- * @member {array} [virtualNetworkConnection.routes] The routes that this
+ * @property {array} [virtualNetworkConnection.routes] The routes that this
  * Virtual Network connection uses.
- * @member {boolean} [virtualNetworkConnection.resyncRequired]
+ * @property {boolean} [virtualNetworkConnection.resyncRequired]
  * <code>true</code> if a resync is required; otherwise, <code>false</code>.
- * @member {string} [virtualNetworkConnection.dnsServers] DNS servers to be
+ * @property {string} [virtualNetworkConnection.dnsServers] DNS servers to be
  * used by this Virtual Network. This should be a comma-separated list of IP
  * addresses.
- * @member {array} [hybridConnections] The Hybrid Connections summary view.
- * @member {array} [hybridConnectionsV2] The Hybrid Connection V2 (Service Bus)
- * view.
+ * @property {boolean} [virtualNetworkConnection.isSwift] Flag that is used to
+ * denote if this is VNET injection
+ * @property {array} [hybridConnections] The Hybrid Connections summary view.
+ * @property {array} [hybridConnectionsV2] The Hybrid Connection V2 (Service
+ * Bus) view.
  */
 export interface NetworkFeatures extends ProxyOnlyResource {
   readonly virtualNetworkName?: string;
@@ -4903,10 +4976,11 @@ export interface NetworkFeatures extends ProxyOnlyResource {
  * @constructor
  * Network trace
  *
- * @member {string} [path] Local file path for the captured network trace file.
- * @member {string} [status] Current status of the network trace operation,
+ * @property {string} [path] Local file path for the captured network trace
+ * file.
+ * @property {string} [status] Current status of the network trace operation,
  * same as Operation.Status (InProgress/Succeeded/Failed).
- * @member {string} [message] Detailed message of a network trace operation,
+ * @property {string} [message] Detailed message of a network trace operation,
  * e.g. error message in case of failure.
  */
 export interface NetworkTrace {
@@ -4921,10 +4995,10 @@ export interface NetworkTrace {
  * @constructor
  * Performance monitor sample in a set.
  *
- * @member {date} [time] Point in time for which counter was measured.
- * @member {string} [instanceName] Name of the server on which the measurement
- * is made.
- * @member {number} [value] Value of counter at a certain time.
+ * @property {date} [time] Point in time for which counter was measured.
+ * @property {string} [instanceName] Name of the server on which the
+ * measurement is made.
+ * @property {number} [value] Value of counter at a certain time.
  */
 export interface PerfMonSample {
   time?: Date;
@@ -4938,11 +5012,11 @@ export interface PerfMonSample {
  * @constructor
  * Metric information.
  *
- * @member {string} [name] Unique key name of the counter.
- * @member {date} [startTime] Start time of the period.
- * @member {date} [endTime] End time of the period.
- * @member {string} [timeGrain] Presented time grain.
- * @member {array} [values] Collection of workers that are active during this
+ * @property {string} [name] Unique key name of the counter.
+ * @property {date} [startTime] Start time of the period.
+ * @property {date} [endTime] End time of the period.
+ * @property {string} [timeGrain] Presented time grain.
+ * @property {array} [values] Collection of workers that are active during this
  * time.
  */
 export interface PerfMonSet {
@@ -4959,14 +5033,14 @@ export interface PerfMonSet {
  * @constructor
  * Performance monitor API response.
  *
- * @member {string} [code] The response code.
- * @member {string} [message] The message.
- * @member {object} [data] The performance monitor counters.
- * @member {string} [data.name] Unique key name of the counter.
- * @member {date} [data.startTime] Start time of the period.
- * @member {date} [data.endTime] End time of the period.
- * @member {string} [data.timeGrain] Presented time grain.
- * @member {array} [data.values] Collection of workers that are active during
+ * @property {string} [code] The response code.
+ * @property {string} [message] The message.
+ * @property {object} [data] The performance monitor counters.
+ * @property {string} [data.name] Unique key name of the counter.
+ * @property {date} [data.startTime] Start time of the period.
+ * @property {date} [data.endTime] End time of the period.
+ * @property {string} [data.timeGrain] Presented time grain.
+ * @property {array} [data.values] Collection of workers that are active during
  * this time.
  */
 export interface PerfMonResponse {
@@ -4981,12 +5055,12 @@ export interface PerfMonResponse {
  * @constructor
  * Premier add-on.
  *
- * @member {string} [sku] Premier add on SKU.
- * @member {string} [product] Premier add on Product.
- * @member {string} [vendor] Premier add on Vendor.
- * @member {string} [marketplacePublisher] Premier add on Marketplace
+ * @property {string} [sku] Premier add on SKU.
+ * @property {string} [product] Premier add on Product.
+ * @property {string} [vendor] Premier add on Vendor.
+ * @property {string} [marketplacePublisher] Premier add on Marketplace
  * publisher.
- * @member {string} [marketplaceOffer] Premier add on Marketplace offer.
+ * @property {string} [marketplaceOffer] Premier add on Marketplace offer.
  */
 export interface PremierAddOn extends Resource {
   sku?: string;
@@ -5002,12 +5076,12 @@ export interface PremierAddOn extends Resource {
  * @constructor
  * ARM resource for a PremierAddOn.
  *
- * @member {string} [sku] Premier add on SKU.
- * @member {string} [product] Premier add on Product.
- * @member {string} [vendor] Premier add on Vendor.
- * @member {string} [marketplacePublisher] Premier add on Marketplace
+ * @property {string} [sku] Premier add on SKU.
+ * @property {string} [product] Premier add on Product.
+ * @property {string} [vendor] Premier add on Vendor.
+ * @property {string} [marketplacePublisher] Premier add on Marketplace
  * publisher.
- * @member {string} [marketplaceOffer] Premier add on Marketplace offer.
+ * @property {string} [marketplaceOffer] Premier add on Marketplace offer.
  */
 export interface PremierAddOnPatchResource extends ProxyOnlyResource {
   sku?: string;
@@ -5024,8 +5098,8 @@ export interface PremierAddOnPatchResource extends ProxyOnlyResource {
  * Description of a Virtual Network subnet that is useable for private site
  * access.
  *
- * @member {string} [name] The name of the subnet.
- * @member {number} [key] The key (ID) of the subnet.
+ * @property {string} [name] The name of the subnet.
+ * @property {number} [key] The key (ID) of the subnet.
  */
 export interface PrivateAccessSubnet {
   name?: string;
@@ -5038,10 +5112,10 @@ export interface PrivateAccessSubnet {
  * @constructor
  * Description of a Virtual Network that is useable for private site access.
  *
- * @member {string} [name] The name of the Virtual Network.
- * @member {number} [key] The key (ID) of the Virtual Network.
- * @member {string} [resourceId] The ARM uri of the Virtual Network
- * @member {array} [subnets] A List of subnets that access is allowed to on
+ * @property {string} [name] The name of the Virtual Network.
+ * @property {number} [key] The key (ID) of the Virtual Network.
+ * @property {string} [resourceId] The ARM uri of the Virtual Network
+ * @property {array} [subnets] A List of subnets that access is allowed to on
  * this Virtual Network. An empty array (but not null) is interpreted to mean
  * that all subnets are allowed within this Virtual Network.
  */
@@ -5058,9 +5132,9 @@ export interface PrivateAccessVirtualNetwork {
  * @constructor
  * Description of the parameters of Private Access for a Web Site.
  *
- * @member {boolean} [enabled] Whether private access is enabled or not.
- * @member {array} [virtualNetworks] The Virtual Networks (and subnets) allowed
- * to access the site privately.
+ * @property {boolean} [enabled] Whether private access is enabled or not.
+ * @property {array} [virtualNetworks] The Virtual Networks (and subnets)
+ * allowed to access the site privately.
  */
 export interface PrivateAccess extends ProxyOnlyResource {
   enabled?: boolean;
@@ -5073,19 +5147,19 @@ export interface PrivateAccess extends ProxyOnlyResource {
  * @constructor
  * Process Thread Information.
  *
- * @member {number} [identifier] Site extension ID.
- * @member {string} [href] HRef URI.
- * @member {string} [process] Process URI.
- * @member {string} [startAddress] Start address.
- * @member {number} [currentPriority] Current thread priority.
- * @member {string} [priorityLevel] Thread priority level.
- * @member {number} [basePriority] Base priority.
- * @member {date} [startTime] Start time.
- * @member {string} [totalProcessorTime] Total processor time.
- * @member {string} [userProcessorTime] User processor time.
- * @member {string} [priviledgedProcessorTime] Priviledged processor time.
- * @member {string} [state] Thread state.
- * @member {string} [waitReason] Wait reason.
+ * @property {number} [identifier] Site extension ID.
+ * @property {string} [href] HRef URI.
+ * @property {string} [process] Process URI.
+ * @property {string} [startAddress] Start address.
+ * @property {number} [currentPriority] Current thread priority.
+ * @property {string} [priorityLevel] Thread priority level.
+ * @property {number} [basePriority] Base priority.
+ * @property {date} [startTime] Start time.
+ * @property {string} [totalProcessorTime] Total processor time.
+ * @property {string} [userProcessorTime] User processor time.
+ * @property {string} [priviledgedProcessorTime] Priviledged processor time.
+ * @property {string} [state] Thread state.
+ * @property {string} [waitReason] Wait reason.
  */
 export interface ProcessThreadInfo extends ProxyOnlyResource {
   readonly identifier?: number;
@@ -5109,18 +5183,18 @@ export interface ProcessThreadInfo extends ProxyOnlyResource {
  * @constructor
  * Process Module Information.
  *
- * @member {string} [baseAddress] Base address. Used as module identifier in
+ * @property {string} [baseAddress] Base address. Used as module identifier in
  * ARM resource URI.
- * @member {string} [fileName] File name.
- * @member {string} [href] HRef URI.
- * @member {string} [filePath] File path.
- * @member {number} [moduleMemorySize] Module memory size.
- * @member {string} [fileVersion] File version.
- * @member {string} [fileDescription] File description.
- * @member {string} [product] Product name.
- * @member {string} [productVersion] Product version.
- * @member {boolean} [isDebug] Is debug?
- * @member {string} [language] Module language (locale).
+ * @property {string} [fileName] File name.
+ * @property {string} [href] HRef URI.
+ * @property {string} [filePath] File path.
+ * @property {number} [moduleMemorySize] Module memory size.
+ * @property {string} [fileVersion] File version.
+ * @property {string} [fileDescription] File description.
+ * @property {string} [product] Product name.
+ * @property {string} [productVersion] Product version.
+ * @property {boolean} [isDebug] Is debug?
+ * @property {string} [language] Module language (locale).
  */
 export interface ProcessModuleInfo extends ProxyOnlyResource {
   baseAddress?: string;
@@ -5142,42 +5216,43 @@ export interface ProcessModuleInfo extends ProxyOnlyResource {
  * @constructor
  * Process Information.
  *
- * @member {number} [identifier] ARM Identifier for deployment.
- * @member {string} [deploymentName] Deployment name.
- * @member {string} [href] HRef URI.
- * @member {string} [minidump] Minidump URI.
- * @member {boolean} [isProfileRunning] Is profile running?
- * @member {boolean} [isIisProfileRunning] Is the IIS Profile running?
- * @member {number} [iisProfileTimeoutInSeconds] IIS Profile timeout (seconds).
- * @member {string} [parent] Parent process.
- * @member {array} [children] Child process list.
- * @member {array} [threads] Thread list.
- * @member {array} [openFileHandles] List of open files.
- * @member {array} [modules] List of modules.
- * @member {string} [fileName] File name of this process.
- * @member {string} [commandLine] Command line.
- * @member {string} [userName] User name.
- * @member {number} [handleCount] Handle count.
- * @member {number} [moduleCount] Module count.
- * @member {number} [threadCount] Thread count.
- * @member {date} [startTime] Start time.
- * @member {string} [totalCpuTime] Total CPU time.
- * @member {string} [userCpuTime] User CPU time.
- * @member {string} [privilegedCpuTime] Privileged CPU time.
- * @member {number} [workingSet] Working set.
- * @member {number} [peakWorkingSet] Peak working set.
- * @member {number} [privateMemory] Private memory size.
- * @member {number} [virtualMemory] Virtual memory size.
- * @member {number} [peakVirtualMemory] Peak virtual memory usage.
- * @member {number} [pagedSystemMemory] Paged system memory.
- * @member {number} [nonPagedSystemMemory] Non-paged system memory.
- * @member {number} [pagedMemory] Paged memory.
- * @member {number} [peakPagedMemory] Peak paged memory.
- * @member {date} [timeStamp] Time stamp.
- * @member {object} [environmentVariables] List of environment variables.
- * @member {boolean} [isScmSite] Is this the SCM site?
- * @member {boolean} [isWebjob] Is this a Web Job?
- * @member {string} [description] Description of process.
+ * @property {number} [identifier] ARM Identifier for deployment.
+ * @property {string} [deploymentName] Deployment name.
+ * @property {string} [href] HRef URI.
+ * @property {string} [minidump] Minidump URI.
+ * @property {boolean} [isProfileRunning] Is profile running?
+ * @property {boolean} [isIisProfileRunning] Is the IIS Profile running?
+ * @property {number} [iisProfileTimeoutInSeconds] IIS Profile timeout
+ * (seconds).
+ * @property {string} [parent] Parent process.
+ * @property {array} [children] Child process list.
+ * @property {array} [threads] Thread list.
+ * @property {array} [openFileHandles] List of open files.
+ * @property {array} [modules] List of modules.
+ * @property {string} [fileName] File name of this process.
+ * @property {string} [commandLine] Command line.
+ * @property {string} [userName] User name.
+ * @property {number} [handleCount] Handle count.
+ * @property {number} [moduleCount] Module count.
+ * @property {number} [threadCount] Thread count.
+ * @property {date} [startTime] Start time.
+ * @property {string} [totalCpuTime] Total CPU time.
+ * @property {string} [userCpuTime] User CPU time.
+ * @property {string} [privilegedCpuTime] Privileged CPU time.
+ * @property {number} [workingSet] Working set.
+ * @property {number} [peakWorkingSet] Peak working set.
+ * @property {number} [privateMemory] Private memory size.
+ * @property {number} [virtualMemory] Virtual memory size.
+ * @property {number} [peakVirtualMemory] Peak virtual memory usage.
+ * @property {number} [pagedSystemMemory] Paged system memory.
+ * @property {number} [nonPagedSystemMemory] Non-paged system memory.
+ * @property {number} [pagedMemory] Paged memory.
+ * @property {number} [peakPagedMemory] Peak paged memory.
+ * @property {date} [timeStamp] Time stamp.
+ * @property {object} [environmentVariables] List of environment variables.
+ * @property {boolean} [isScmSite] Is this the SCM site?
+ * @property {boolean} [isWebjob] Is this a Web Job?
+ * @property {string} [description] Description of process.
  */
 export interface ProcessInfo extends ProxyOnlyResource {
   readonly identifier?: number;
@@ -5224,10 +5299,10 @@ export interface ProcessInfo extends ProxyOnlyResource {
  * @constructor
  * Public certificate object
  *
- * @member {buffer} [blob] Public Certificate byte array
- * @member {string} [publicCertificateLocation] Public Certificate Location.
+ * @property {buffer} [blob] Public Certificate byte array
+ * @property {string} [publicCertificateLocation] Public Certificate Location.
  * Possible values include: 'CurrentUserMy', 'LocalMachineMy', 'Unknown'
- * @member {string} [thumbprint] Certificate Thumbprint
+ * @property {string} [thumbprint] Certificate Thumbprint
  */
 export interface PublicCertificate extends ProxyOnlyResource {
   blob?: Buffer;
@@ -5241,31 +5316,31 @@ export interface PublicCertificate extends ProxyOnlyResource {
  * @constructor
  * Description of a restore request.
  *
- * @member {string} storageAccountUrl SAS URL to the container.
- * @member {string} [blobName] Name of a blob which contains the backup.
- * @member {boolean} overwrite <code>true</code> if the restore operation can
+ * @property {string} storageAccountUrl SAS URL to the container.
+ * @property {string} [blobName] Name of a blob which contains the backup.
+ * @property {boolean} overwrite <code>true</code> if the restore operation can
  * overwrite target app; otherwise, <code>false</code>. <code>true</code> is
  * needed if trying to restore over an existing app.
- * @member {string} [siteName] Name of an app.
- * @member {array} [databases] Collection of databases which should be
+ * @property {string} [siteName] Name of an app.
+ * @property {array} [databases] Collection of databases which should be
  * restored. This list has to match the list of databases included in the
  * backup.
- * @member {boolean} [ignoreConflictingHostNames] Changes a logic when
+ * @property {boolean} [ignoreConflictingHostNames] Changes a logic when
  * restoring an app with custom domains. <code>true</code> to remove custom
  * domains automatically. If <code>false</code>, custom domains are added to
  * the app's object when it is being restored, but that might fail due to
  * conflicts during the operation. Default value: false .
- * @member {boolean} [ignoreDatabases] Ignore the databases and only restore
+ * @property {boolean} [ignoreDatabases] Ignore the databases and only restore
  * the site content. Default value: false .
- * @member {string} [appServicePlan] Specify app service plan that will own
+ * @property {string} [appServicePlan] Specify app service plan that will own
  * restored site.
- * @member {string} [operationType] Operation type. Possible values include:
+ * @property {string} [operationType] Operation type. Possible values include:
  * 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'. Default value:
  * 'Default' .
- * @member {boolean} [adjustConnectionStrings] <code>true</code> if
+ * @property {boolean} [adjustConnectionStrings] <code>true</code> if
  * SiteConfig.ConnectionStrings should be set in new app; otherwise,
  * <code>false</code>.
- * @member {string} [hostingEnvironment] App Service Environment name, if
+ * @property {string} [hostingEnvironment] App Service Environment name, if
  * needed (only when restoring an app to an App Service Environment).
  */
 export interface RestoreRequest extends ProxyOnlyResource {
@@ -5289,43 +5364,43 @@ export interface RestoreRequest extends ProxyOnlyResource {
  * Configuration settings for the Azure App Service Authentication /
  * Authorization feature.
  *
- * @member {boolean} [enabled] <code>true</code> if the Authentication /
+ * @property {boolean} [enabled] <code>true</code> if the Authentication /
  * Authorization feature is enabled for the current app; otherwise,
  * <code>false</code>.
- * @member {string} [runtimeVersion] The RuntimeVersion of the Authentication /
- * Authorization feature in use for the current app.
+ * @property {string} [runtimeVersion] The RuntimeVersion of the Authentication
+ * / Authorization feature in use for the current app.
  * The setting in this value can control the behavior of certain features in
  * the Authentication / Authorization module.
- * @member {string} [unauthenticatedClientAction] The action to take when an
+ * @property {string} [unauthenticatedClientAction] The action to take when an
  * unauthenticated client attempts to access the app. Possible values include:
  * 'RedirectToLoginPage', 'AllowAnonymous'
- * @member {boolean} [tokenStoreEnabled] <code>true</code> to durably store
+ * @property {boolean} [tokenStoreEnabled] <code>true</code> to durably store
  * platform-specific security tokens that are obtained during login flows;
  * otherwise, <code>false</code>.
  * The default is <code>false</code>.
- * @member {array} [allowedExternalRedirectUrls] External URLs that can be
+ * @property {array} [allowedExternalRedirectUrls] External URLs that can be
  * redirected to as part of logging in or logging out of the app. Note that the
  * query string part of the URL is ignored.
  * This is an advanced setting typically only needed by Windows Store
  * application backends.
  * Note that URLs within the current domain are always implicitly allowed.
- * @member {string} [defaultProvider] The default authentication provider to
+ * @property {string} [defaultProvider] The default authentication provider to
  * use when multiple providers are configured.
  * This setting is only needed if multiple providers are configured and the
  * unauthenticated client
  * action is set to "RedirectToLoginPage". Possible values include:
  * 'AzureActiveDirectory', 'Facebook', 'Google', 'MicrosoftAccount', 'Twitter'
- * @member {number} [tokenRefreshExtensionHours] The number of hours after
+ * @property {number} [tokenRefreshExtensionHours] The number of hours after
  * session token expiration that a session token can be used to
  * call the token refresh API. The default is 72 hours.
- * @member {string} [clientId] The Client ID of this relying party application,
- * known as the client_id.
+ * @property {string} [clientId] The Client ID of this relying party
+ * application, known as the client_id.
  * This setting is required for enabling OpenID Connection authentication with
  * Azure Active Directory or
  * other 3rd party OpenID Connect providers.
  * More information on OpenID Connect:
  * http://openid.net/specs/openid-connect-core-1_0.html
- * @member {string} [clientSecret] The Client Secret of this relying party
+ * @property {string} [clientSecret] The Client Secret of this relying party
  * application (in Azure Active Directory, this is also referred to as the
  * Key).
  * This setting is optional. If no client secret is configured, the OpenID
@@ -5334,74 +5409,78 @@ export interface RestoreRequest extends ProxyOnlyResource {
  * authenticate end users.
  * More information on OpenID Connect:
  * http://openid.net/specs/openid-connect-core-1_0.html
- * @member {string} [issuer] The OpenID Connect Issuer URI that represents the
- * entity which issues access tokens for this application.
+ * @property {string} [clientSecretCertificateThumbprint] An alternative to the
+ * client secret, that is the thumbprint of a certifite used for signing
+ * purposes. This property acts as
+ * a replacement for the Client Secret. It is also optional.
+ * @property {string} [issuer] The OpenID Connect Issuer URI that represents
+ * the entity which issues access tokens for this application.
  * When using Azure Active Directory, this value is the URI of the directory
  * tenant, e.g. https://sts.windows.net/{tenant-guid}/.
  * This URI is a case-sensitive identifier for the token issuer.
  * More information on OpenID Connect Discovery:
  * http://openid.net/specs/openid-connect-discovery-1_0.html
- * @member {boolean} [validateIssuer] Gets a value indicating whether the
+ * @property {boolean} [validateIssuer] Gets a value indicating whether the
  * issuer should be a valid HTTPS url and be validated as such.
- * @member {array} [allowedAudiences] Allowed audience values to consider when
- * validating JWTs issued by
+ * @property {array} [allowedAudiences] Allowed audience values to consider
+ * when validating JWTs issued by
  * Azure Active Directory. Note that the <code>ClientID</code> value is always
  * considered an
  * allowed audience, regardless of this setting.
- * @member {array} [additionalLoginParams] Login parameters to send to the
+ * @property {array} [additionalLoginParams] Login parameters to send to the
  * OpenID Connect authorization endpoint when
  * a user logs in. Each parameter must be in the form "key=value".
- * @member {string} [googleClientId] The OpenID Connect Client ID for the
+ * @property {string} [googleClientId] The OpenID Connect Client ID for the
  * Google web application.
  * This setting is required for enabling Google Sign-In.
  * Google Sign-In documentation:
  * https://developers.google.com/identity/sign-in/web/
- * @member {string} [googleClientSecret] The client secret associated with the
- * Google web application.
+ * @property {string} [googleClientSecret] The client secret associated with
+ * the Google web application.
  * This setting is required for enabling Google Sign-In.
  * Google Sign-In documentation:
  * https://developers.google.com/identity/sign-in/web/
- * @member {array} [googleOAuthScopes] The OAuth 2.0 scopes that will be
+ * @property {array} [googleOAuthScopes] The OAuth 2.0 scopes that will be
  * requested as part of Google Sign-In authentication.
  * This setting is optional. If not specified, "openid", "profile", and "email"
  * are used as default scopes.
  * Google Sign-In documentation:
  * https://developers.google.com/identity/sign-in/web/
- * @member {string} [facebookAppId] The App ID of the Facebook app used for
+ * @property {string} [facebookAppId] The App ID of the Facebook app used for
  * login.
  * This setting is required for enabling Facebook Login.
  * Facebook Login documentation:
  * https://developers.facebook.com/docs/facebook-login
- * @member {string} [facebookAppSecret] The App Secret of the Facebook app used
- * for Facebook Login.
+ * @property {string} [facebookAppSecret] The App Secret of the Facebook app
+ * used for Facebook Login.
  * This setting is required for enabling Facebook Login.
  * Facebook Login documentation:
  * https://developers.facebook.com/docs/facebook-login
- * @member {array} [facebookOAuthScopes] The OAuth 2.0 scopes that will be
+ * @property {array} [facebookOAuthScopes] The OAuth 2.0 scopes that will be
  * requested as part of Facebook Login authentication.
  * This setting is optional.
  * Facebook Login documentation:
  * https://developers.facebook.com/docs/facebook-login
- * @member {string} [twitterConsumerKey] The OAuth 1.0a consumer key of the
+ * @property {string} [twitterConsumerKey] The OAuth 1.0a consumer key of the
  * Twitter application used for sign-in.
  * This setting is required for enabling Twitter Sign-In.
  * Twitter Sign-In documentation: https://dev.twitter.com/web/sign-in
- * @member {string} [twitterConsumerSecret] The OAuth 1.0a consumer secret of
+ * @property {string} [twitterConsumerSecret] The OAuth 1.0a consumer secret of
  * the Twitter application used for sign-in.
  * This setting is required for enabling Twitter Sign-In.
  * Twitter Sign-In documentation: https://dev.twitter.com/web/sign-in
- * @member {string} [microsoftAccountClientId] The OAuth 2.0 client ID that was
- * created for the app used for authentication.
+ * @property {string} [microsoftAccountClientId] The OAuth 2.0 client ID that
+ * was created for the app used for authentication.
  * This setting is required for enabling Microsoft Account authentication.
  * Microsoft Account OAuth documentation:
  * https://dev.onedrive.com/auth/msa_oauth.htm
- * @member {string} [microsoftAccountClientSecret] The OAuth 2.0 client secret
- * that was created for the app used for authentication.
+ * @property {string} [microsoftAccountClientSecret] The OAuth 2.0 client
+ * secret that was created for the app used for authentication.
  * This setting is required for enabling Microsoft Account authentication.
  * Microsoft Account OAuth documentation:
  * https://dev.onedrive.com/auth/msa_oauth.htm
- * @member {array} [microsoftAccountOAuthScopes] The OAuth 2.0 scopes that will
- * be requested as part of Microsoft Account authentication.
+ * @property {array} [microsoftAccountOAuthScopes] The OAuth 2.0 scopes that
+ * will be requested as part of Microsoft Account authentication.
  * This setting is optional. If not specified, "wl.basic" is used as the
  * default scope.
  * Microsoft Account Scopes and permissions documentation:
@@ -5417,6 +5496,7 @@ export interface SiteAuthSettings extends ProxyOnlyResource {
   tokenRefreshExtensionHours?: number;
   clientId?: string;
   clientSecret?: string;
+  clientSecretCertificateThumbprint?: string;
   issuer?: string;
   validateIssuer?: boolean;
   allowedAudiences?: string[];
@@ -5440,8 +5520,8 @@ export interface SiteAuthSettings extends ProxyOnlyResource {
  * @constructor
  * An app cloneability criterion.
  *
- * @member {string} [name] Name of criterion.
- * @member {string} [description] Description of criterion.
+ * @property {string} [name] Name of criterion.
+ * @property {string} [description] Description of criterion.
  */
 export interface SiteCloneabilityCriterion {
   name?: string;
@@ -5454,14 +5534,14 @@ export interface SiteCloneabilityCriterion {
  * @constructor
  * Represents whether or not an app is cloneable.
  *
- * @member {string} [result] Name of app. Possible values include: 'Cloneable',
- * 'PartiallyCloneable', 'NotCloneable'
- * @member {array} [blockingFeatures] List of features enabled on app that
+ * @property {string} [result] Name of app. Possible values include:
+ * 'Cloneable', 'PartiallyCloneable', 'NotCloneable'
+ * @property {array} [blockingFeatures] List of features enabled on app that
  * prevent cloning.
- * @member {array} [unsupportedFeatures] List of features enabled on app that
+ * @property {array} [unsupportedFeatures] List of features enabled on app that
  * are non-blocking but cannot be cloned. The app can still be cloned
  * but the features in this list will not be set up on cloned app.
- * @member {array} [blockingCharacteristics] List of blocking application
+ * @property {array} [blockingCharacteristics] List of blocking application
  * characteristics.
  */
 export interface SiteCloneability {
@@ -5477,139 +5557,151 @@ export interface SiteCloneability {
  * @constructor
  * Web app configuration ARM resource.
  *
- * @member {number} [numberOfWorkers] Number of workers.
- * @member {array} [defaultDocuments] Default documents.
- * @member {string} [netFrameworkVersion] .NET Framework version. Default
+ * @property {number} [numberOfWorkers] Number of workers.
+ * @property {array} [defaultDocuments] Default documents.
+ * @property {string} [netFrameworkVersion] .NET Framework version. Default
  * value: 'v4.6' .
- * @member {string} [phpVersion] Version of PHP.
- * @member {string} [pythonVersion] Version of Python.
- * @member {string} [nodeVersion] Version of Node.js.
- * @member {string} [linuxFxVersion] Linux App Framework and version
- * @member {string} [windowsFxVersion] Xenon App Framework and version
- * @member {boolean} [requestTracingEnabled] <code>true</code> if request
+ * @property {string} [phpVersion] Version of PHP.
+ * @property {string} [pythonVersion] Version of Python.
+ * @property {string} [nodeVersion] Version of Node.js.
+ * @property {string} [linuxFxVersion] Linux App Framework and version
+ * @property {string} [windowsFxVersion] Xenon App Framework and version
+ * @property {boolean} [requestTracingEnabled] <code>true</code> if request
  * tracing is enabled; otherwise, <code>false</code>.
- * @member {date} [requestTracingExpirationTime] Request tracing expiration
+ * @property {date} [requestTracingExpirationTime] Request tracing expiration
  * time.
- * @member {boolean} [remoteDebuggingEnabled] <code>true</code> if remote
+ * @property {boolean} [remoteDebuggingEnabled] <code>true</code> if remote
  * debugging is enabled; otherwise, <code>false</code>.
- * @member {string} [remoteDebuggingVersion] Remote debugging version.
- * @member {boolean} [httpLoggingEnabled] <code>true</code> if HTTP logging is
- * enabled; otherwise, <code>false</code>.
- * @member {number} [logsDirectorySizeLimit] HTTP logs directory size limit.
- * @member {boolean} [detailedErrorLoggingEnabled] <code>true</code> if
+ * @property {string} [remoteDebuggingVersion] Remote debugging version.
+ * @property {boolean} [httpLoggingEnabled] <code>true</code> if HTTP logging
+ * is enabled; otherwise, <code>false</code>.
+ * @property {number} [logsDirectorySizeLimit] HTTP logs directory size limit.
+ * @property {boolean} [detailedErrorLoggingEnabled] <code>true</code> if
  * detailed error logging is enabled; otherwise, <code>false</code>.
- * @member {string} [publishingUsername] Publishing user name.
- * @member {array} [appSettings] Application settings.
- * @member {object} [azureStorageAccounts] User-provided Azure storage
+ * @property {string} [publishingUsername] Publishing user name.
+ * @property {array} [appSettings] Application settings.
+ * @property {object} [azureStorageAccounts] User-provided Azure storage
  * accounts.
- * @member {array} [connectionStrings] Connection strings.
- * @member {object} [machineKey] Site MachineKey.
- * @member {string} [machineKey.validation] MachineKey validation.
- * @member {string} [machineKey.validationKey] Validation key.
- * @member {string} [machineKey.decryption] Algorithm used for decryption.
- * @member {string} [machineKey.decryptionKey] Decryption key.
- * @member {array} [handlerMappings] Handler mappings.
- * @member {string} [documentRoot] Document root.
- * @member {string} [scmType] SCM type. Possible values include: 'None',
+ * @property {array} [connectionStrings] Connection strings.
+ * @property {object} [machineKey] Site MachineKey.
+ * @property {string} [machineKey.validation] MachineKey validation.
+ * @property {string} [machineKey.validationKey] Validation key.
+ * @property {string} [machineKey.decryption] Algorithm used for decryption.
+ * @property {string} [machineKey.decryptionKey] Decryption key.
+ * @property {array} [handlerMappings] Handler mappings.
+ * @property {string} [documentRoot] Document root.
+ * @property {string} [scmType] SCM type. Possible values include: 'None',
  * 'Dropbox', 'Tfs', 'LocalGit', 'GitHub', 'CodePlexGit', 'CodePlexHg',
  * 'BitbucketGit', 'BitbucketHg', 'ExternalGit', 'ExternalHg', 'OneDrive',
  * 'VSO'
- * @member {boolean} [use32BitWorkerProcess] <code>true</code> to use 32-bit
+ * @property {boolean} [use32BitWorkerProcess] <code>true</code> to use 32-bit
  * worker process; otherwise, <code>false</code>.
- * @member {boolean} [webSocketsEnabled] <code>true</code> if WebSocket is
+ * @property {boolean} [webSocketsEnabled] <code>true</code> if WebSocket is
  * enabled; otherwise, <code>false</code>.
- * @member {boolean} [alwaysOn] <code>true</code> if Always On is enabled;
+ * @property {boolean} [alwaysOn] <code>true</code> if Always On is enabled;
  * otherwise, <code>false</code>.
- * @member {string} [javaVersion] Java version.
- * @member {string} [javaContainer] Java container.
- * @member {string} [javaContainerVersion] Java container version.
- * @member {string} [appCommandLine] App command line to launch.
- * @member {string} [managedPipelineMode] Managed pipeline mode. Possible
+ * @property {string} [javaVersion] Java version.
+ * @property {string} [javaContainer] Java container.
+ * @property {string} [javaContainerVersion] Java container version.
+ * @property {string} [appCommandLine] App command line to launch.
+ * @property {string} [managedPipelineMode] Managed pipeline mode. Possible
  * values include: 'Integrated', 'Classic'
- * @member {array} [virtualApplications] Virtual applications.
- * @member {string} [loadBalancing] Site load balancing. Possible values
+ * @property {array} [virtualApplications] Virtual applications.
+ * @property {string} [loadBalancing] Site load balancing. Possible values
  * include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
  * 'WeightedTotalTraffic', 'RequestHash'
- * @member {object} [experiments] This is work around for polymophic types.
- * @member {array} [experiments.rampUpRules] List of ramp-up rules.
- * @member {object} [limits] Site limits.
- * @member {number} [limits.maxPercentageCpu] Maximum allowed CPU usage
+ * @property {object} [experiments] This is work around for polymophic types.
+ * @property {array} [experiments.rampUpRules] List of ramp-up rules.
+ * @property {object} [limits] Site limits.
+ * @property {number} [limits.maxPercentageCpu] Maximum allowed CPU usage
  * percentage.
- * @member {number} [limits.maxMemoryInMb] Maximum allowed memory usage in MB.
- * @member {number} [limits.maxDiskSizeInMb] Maximum allowed disk size usage in
+ * @property {number} [limits.maxMemoryInMb] Maximum allowed memory usage in
  * MB.
- * @member {boolean} [autoHealEnabled] <code>true</code> if Auto Heal is
+ * @property {number} [limits.maxDiskSizeInMb] Maximum allowed disk size usage
+ * in MB.
+ * @property {boolean} [autoHealEnabled] <code>true</code> if Auto Heal is
  * enabled; otherwise, <code>false</code>.
- * @member {object} [autoHealRules] Auto Heal rules.
- * @member {object} [autoHealRules.triggers] Conditions that describe when to
+ * @property {object} [autoHealRules] Auto Heal rules.
+ * @property {object} [autoHealRules.triggers] Conditions that describe when to
  * execute the auto-heal actions.
- * @member {object} [autoHealRules.triggers.requests] A rule based on total
+ * @property {object} [autoHealRules.triggers.requests] A rule based on total
  * requests.
- * @member {number} [autoHealRules.triggers.requests.count] Request Count.
- * @member {string} [autoHealRules.triggers.requests.timeInterval] Time
+ * @property {number} [autoHealRules.triggers.requests.count] Request Count.
+ * @property {string} [autoHealRules.triggers.requests.timeInterval] Time
  * interval.
- * @member {number} [autoHealRules.triggers.privateBytesInKB] A rule based on
+ * @property {number} [autoHealRules.triggers.privateBytesInKB] A rule based on
  * private bytes.
- * @member {array} [autoHealRules.triggers.statusCodes] A rule based on status
- * codes.
- * @member {object} [autoHealRules.triggers.slowRequests] A rule based on
+ * @property {array} [autoHealRules.triggers.statusCodes] A rule based on
+ * status codes.
+ * @property {object} [autoHealRules.triggers.slowRequests] A rule based on
  * request execution time.
- * @member {string} [autoHealRules.triggers.slowRequests.timeTaken] Time taken.
- * @member {number} [autoHealRules.triggers.slowRequests.count] Request Count.
- * @member {string} [autoHealRules.triggers.slowRequests.timeInterval] Time
- * interval.
- * @member {object} [autoHealRules.actions] Actions to be executed when a rule
- * is triggered.
- * @member {string} [autoHealRules.actions.actionType] Predefined action to be
- * taken. Possible values include: 'Recycle', 'LogEvent', 'CustomAction'
- * @member {object} [autoHealRules.actions.customAction] Custom action to be
+ * @property {string} [autoHealRules.triggers.slowRequests.timeTaken] Time
  * taken.
- * @member {string} [autoHealRules.actions.customAction.exe] Executable to be
+ * @property {number} [autoHealRules.triggers.slowRequests.count] Request
+ * Count.
+ * @property {string} [autoHealRules.triggers.slowRequests.timeInterval] Time
+ * interval.
+ * @property {object} [autoHealRules.actions] Actions to be executed when a
+ * rule is triggered.
+ * @property {string} [autoHealRules.actions.actionType] Predefined action to
+ * be taken. Possible values include: 'Recycle', 'LogEvent', 'CustomAction'
+ * @property {object} [autoHealRules.actions.customAction] Custom action to be
+ * taken.
+ * @property {string} [autoHealRules.actions.customAction.exe] Executable to be
  * run.
- * @member {string} [autoHealRules.actions.customAction.parameters] Parameters
- * for the executable.
- * @member {string} [autoHealRules.actions.minProcessExecutionTime] Minimum
+ * @property {string} [autoHealRules.actions.customAction.parameters]
+ * Parameters for the executable.
+ * @property {string} [autoHealRules.actions.minProcessExecutionTime] Minimum
  * time the process must execute
  * before taking the action
- * @member {string} [tracingOptions] Tracing options.
- * @member {string} [vnetName] Virtual Network name.
- * @member {object} [cors] Cross-Origin Resource Sharing (CORS) settings.
- * @member {array} [cors.allowedOrigins] Gets or sets the list of origins that
- * should be allowed to make cross-origin
+ * @property {string} [tracingOptions] Tracing options.
+ * @property {string} [vnetName] Virtual Network name.
+ * @property {object} [cors] Cross-Origin Resource Sharing (CORS) settings.
+ * @property {array} [cors.allowedOrigins] Gets or sets the list of origins
+ * that should be allowed to make cross-origin
  * calls (for example: http://example.com:12345). Use "*" to allow all.
- * @member {object} [push] Push endpoint settings.
- * @member {boolean} [push.isPushEnabled] Gets or sets a flag indicating
+ * @property {boolean} [cors.supportCredentials] Gets or sets whether CORS
+ * requests with credentials are allowed. See
+ * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+ * for more details.
+ * @property {object} [push] Push endpoint settings.
+ * @property {boolean} [push.isPushEnabled] Gets or sets a flag indicating
  * whether the Push endpoint is enabled.
- * @member {string} [push.tagWhitelistJson] Gets or sets a JSON string
+ * @property {string} [push.tagWhitelistJson] Gets or sets a JSON string
  * containing a list of tags that are whitelisted for use by the push
  * registration endpoint.
- * @member {string} [push.tagsRequiringAuth] Gets or sets a JSON string
+ * @property {string} [push.tagsRequiringAuth] Gets or sets a JSON string
  * containing a list of tags that require user authentication to be used in the
  * push registration endpoint.
  * Tags can consist of alphanumeric characters and the following:
  * '_', '@', '#', '.', ':', '-'.
  * Validation should be performed at the PushRequestHandler.
- * @member {string} [push.dynamicTagsJson] Gets or sets a JSON string
+ * @property {string} [push.dynamicTagsJson] Gets or sets a JSON string
  * containing a list of dynamic tags that will be evaluated from user claims in
  * the push registration endpoint.
- * @member {object} [apiDefinition] Information about the formal API definition
- * for the app.
- * @member {string} [apiDefinition.url] The URL of the API definition.
- * @member {string} [autoSwapSlotName] Auto-swap slot name.
- * @member {boolean} [localMySqlEnabled] <code>true</code> to enable local
+ * @property {object} [apiDefinition] Information about the formal API
+ * definition for the app.
+ * @property {string} [apiDefinition.url] The URL of the API definition.
+ * @property {string} [autoSwapSlotName] Auto-swap slot name.
+ * @property {boolean} [localMySqlEnabled] <code>true</code> to enable local
  * MySQL; otherwise, <code>false</code>. Default value: false .
- * @member {number} [managedServiceIdentityId] Managed Service Identity Id
- * @member {number} [xManagedServiceIdentityId] Explicit Managed Service
+ * @property {number} [managedServiceIdentityId] Managed Service Identity Id
+ * @property {number} [xManagedServiceIdentityId] Explicit Managed Service
  * Identity Id
- * @member {array} [ipSecurityRestrictions] IP security restrictions.
- * @member {boolean} [http20Enabled] Http20Enabled: configures a web site to
+ * @property {array} [ipSecurityRestrictions] IP security restrictions for
+ * main.
+ * @property {array} [scmIpSecurityRestrictions] IP security restrictions for
+ * scm.
+ * @property {boolean} [scmIpSecurityRestrictionsUseMain] IP security
+ * restrictions for scm to use main.
+ * @property {boolean} [http20Enabled] Http20Enabled: configures a web site to
  * allow clients to connect over http2.0. Default value: true .
- * @member {string} [minTlsVersion] MinTlsVersion: configures the minimum
+ * @property {string} [minTlsVersion] MinTlsVersion: configures the minimum
  * version of TLS required for SSL requests. Possible values include: '1.0',
  * '1.1', '1.2'
- * @member {string} [ftpsState] State of FTP / FTPS service. Possible values
+ * @property {string} [ftpsState] State of FTP / FTPS service. Possible values
  * include: 'AllAllowed', 'FtpsOnly', 'Disabled'
- * @member {number} [reservedInstanceCount] Number of reserved instances.
+ * @property {number} [reservedInstanceCount] Number of reserved instances.
  * This setting only applies to the Consumption Plan
  */
 export interface SiteConfigResource extends ProxyOnlyResource {
@@ -5660,6 +5752,8 @@ export interface SiteConfigResource extends ProxyOnlyResource {
   managedServiceIdentityId?: number;
   xManagedServiceIdentityId?: number;
   ipSecurityRestrictions?: IpSecurityRestriction[];
+  scmIpSecurityRestrictions?: IpSecurityRestriction[];
+  scmIpSecurityRestrictionsUseMain?: boolean;
   http20Enabled?: boolean;
   minTlsVersion?: string;
   ftpsState?: string;
@@ -5672,8 +5766,8 @@ export interface SiteConfigResource extends ProxyOnlyResource {
  * @constructor
  * A snapshot of a web app configuration.
  *
- * @member {date} [time] The time the snapshot was taken.
- * @member {number} [snapshotId] The id of the snapshot
+ * @property {date} [time] The time the snapshot was taken.
+ * @property {number} [snapshotId] The id of the snapshot
  */
 export interface SiteConfigurationSnapshotInfo extends ProxyOnlyResource {
   readonly time?: Date;
@@ -5686,29 +5780,29 @@ export interface SiteConfigurationSnapshotInfo extends ProxyOnlyResource {
  * @constructor
  * Site Extension Information.
  *
- * @member {string} [extensionId] Site extension ID.
- * @member {string} [title]
- * @member {string} [extensionType] Site extension type. Possible values
+ * @property {string} [extensionId] Site extension ID.
+ * @property {string} [title]
+ * @property {string} [extensionType] Site extension type. Possible values
  * include: 'Gallery', 'WebRoot'
- * @member {string} [summary] Summary description.
- * @member {string} [description] Detailed description.
- * @member {string} [version] Version information.
- * @member {string} [extensionUrl] Extension URL.
- * @member {string} [projectUrl] Project URL.
- * @member {string} [iconUrl] Icon URL.
- * @member {string} [licenseUrl] License URL.
- * @member {string} [feedUrl] Feed URL.
- * @member {array} [authors] List of authors.
- * @member {string} [installerCommandLineParams] Installer command line
+ * @property {string} [summary] Summary description.
+ * @property {string} [description] Detailed description.
+ * @property {string} [version] Version information.
+ * @property {string} [extensionUrl] Extension URL.
+ * @property {string} [projectUrl] Project URL.
+ * @property {string} [iconUrl] Icon URL.
+ * @property {string} [licenseUrl] License URL.
+ * @property {string} [feedUrl] Feed URL.
+ * @property {array} [authors] List of authors.
+ * @property {string} [installerCommandLineParams] Installer command line
  * parameters.
- * @member {date} [publishedDateTime] Published timestamp.
- * @member {number} [downloadCount] Count of downloads.
- * @member {boolean} [localIsLatestVersion] <code>true</code> if the local
+ * @property {date} [publishedDateTime] Published timestamp.
+ * @property {number} [downloadCount] Count of downloads.
+ * @property {boolean} [localIsLatestVersion] <code>true</code> if the local
  * version is the latest version; <code>false</code> otherwise.
- * @member {string} [localPath] Local path.
- * @member {date} [installedDateTime] Installed timestamp.
- * @member {string} [provisioningState] Provisioning state.
- * @member {string} [comment] Site Extension comment.
+ * @property {string} [localPath] Local path.
+ * @property {date} [installedDateTime] Installed timestamp.
+ * @property {string} [provisioningState] Provisioning state.
+ * @property {string} [comment] Site Extension comment.
  */
 export interface SiteExtensionInfo extends ProxyOnlyResource {
   extensionId?: string;
@@ -5739,7 +5833,7 @@ export interface SiteExtensionInfo extends ProxyOnlyResource {
  * @constructor
  * Instance of an app.
  *
- * @member {string} [siteInstanceName] Name of instance.
+ * @property {string} [siteInstanceName] Name of instance.
  */
 export interface SiteInstance extends ProxyOnlyResource {
   readonly siteInstanceName?: string;
@@ -5751,56 +5845,57 @@ export interface SiteInstance extends ProxyOnlyResource {
  * @constructor
  * Configuration of App Service site logs.
  *
- * @member {object} [applicationLogs] Application logs configuration.
- * @member {object} [applicationLogs.fileSystem] Application logs to file
+ * @property {object} [applicationLogs] Application logs configuration.
+ * @property {object} [applicationLogs.fileSystem] Application logs to file
  * system configuration.
- * @member {string} [applicationLogs.fileSystem.level] Log level. Possible
+ * @property {string} [applicationLogs.fileSystem.level] Log level. Possible
  * values include: 'Off', 'Verbose', 'Information', 'Warning', 'Error'
- * @member {object} [applicationLogs.azureTableStorage] Application logs to
+ * @property {object} [applicationLogs.azureTableStorage] Application logs to
  * azure table storage configuration.
- * @member {string} [applicationLogs.azureTableStorage.level] Log level.
+ * @property {string} [applicationLogs.azureTableStorage.level] Log level.
  * Possible values include: 'Off', 'Verbose', 'Information', 'Warning', 'Error'
- * @member {string} [applicationLogs.azureTableStorage.sasUrl] SAS URL to an
+ * @property {string} [applicationLogs.azureTableStorage.sasUrl] SAS URL to an
  * Azure table with add/query/delete permissions.
- * @member {object} [applicationLogs.azureBlobStorage] Application logs to blob
- * storage configuration.
- * @member {string} [applicationLogs.azureBlobStorage.level] Log level.
+ * @property {object} [applicationLogs.azureBlobStorage] Application logs to
+ * blob storage configuration.
+ * @property {string} [applicationLogs.azureBlobStorage.level] Log level.
  * Possible values include: 'Off', 'Verbose', 'Information', 'Warning', 'Error'
- * @member {string} [applicationLogs.azureBlobStorage.sasUrl] SAS url to a
+ * @property {string} [applicationLogs.azureBlobStorage.sasUrl] SAS url to a
  * azure blob container with read/write/list/delete permissions.
- * @member {number} [applicationLogs.azureBlobStorage.retentionInDays]
+ * @property {number} [applicationLogs.azureBlobStorage.retentionInDays]
  * Retention in days.
  * Remove blobs older than X days.
  * 0 or lower means no retention.
- * @member {object} [httpLogs] HTTP logs configuration.
- * @member {object} [httpLogs.fileSystem] Http logs to file system
+ * @property {object} [httpLogs] HTTP logs configuration.
+ * @property {object} [httpLogs.fileSystem] Http logs to file system
  * configuration.
- * @member {number} [httpLogs.fileSystem.retentionInMb] Maximum size in
+ * @property {number} [httpLogs.fileSystem.retentionInMb] Maximum size in
  * megabytes that http log files can use.
  * When reached old log files will be removed to make space for new ones.
  * Value can range between 25 and 100.
- * @member {number} [httpLogs.fileSystem.retentionInDays] Retention in days.
+ * @property {number} [httpLogs.fileSystem.retentionInDays] Retention in days.
  * Remove files older than X days.
  * 0 or lower means no retention.
- * @member {boolean} [httpLogs.fileSystem.enabled] True if configuration is
+ * @property {boolean} [httpLogs.fileSystem.enabled] True if configuration is
  * enabled, false if it is disabled and null if configuration is not set.
- * @member {object} [httpLogs.azureBlobStorage] Http logs to azure blob storage
- * configuration.
- * @member {string} [httpLogs.azureBlobStorage.sasUrl] SAS url to a azure blob
- * container with read/write/list/delete permissions.
- * @member {number} [httpLogs.azureBlobStorage.retentionInDays] Retention in
+ * @property {object} [httpLogs.azureBlobStorage] Http logs to azure blob
+ * storage configuration.
+ * @property {string} [httpLogs.azureBlobStorage.sasUrl] SAS url to a azure
+ * blob container with read/write/list/delete permissions.
+ * @property {number} [httpLogs.azureBlobStorage.retentionInDays] Retention in
  * days.
  * Remove blobs older than X days.
  * 0 or lower means no retention.
- * @member {boolean} [httpLogs.azureBlobStorage.enabled] True if configuration
- * is enabled, false if it is disabled and null if configuration is not set.
- * @member {object} [failedRequestsTracing] Failed requests tracing
+ * @property {boolean} [httpLogs.azureBlobStorage.enabled] True if
+ * configuration is enabled, false if it is disabled and null if configuration
+ * is not set.
+ * @property {object} [failedRequestsTracing] Failed requests tracing
  * configuration.
- * @member {boolean} [failedRequestsTracing.enabled] True if configuration is
+ * @property {boolean} [failedRequestsTracing.enabled] True if configuration is
  * enabled, false if it is disabled and null if configuration is not set.
- * @member {object} [detailedErrorMessages] Detailed error messages
+ * @property {object} [detailedErrorMessages] Detailed error messages
  * configuration.
- * @member {boolean} [detailedErrorMessages.enabled] True if configuration is
+ * @property {boolean} [detailedErrorMessages.enabled] True if configuration is
  * enabled, false if it is disabled and null if configuration is not set.
  */
 export interface SiteLogsConfig extends ProxyOnlyResource {
@@ -5816,265 +5911,279 @@ export interface SiteLogsConfig extends ProxyOnlyResource {
  * @constructor
  * ARM resource for a site.
  *
- * @member {string} [state] Current state of the app.
- * @member {array} [hostNames] Hostnames associated with the app.
- * @member {string} [repositorySiteName] Name of the repository site.
- * @member {string} [usageState] State indicating whether the app has exceeded
- * its quota usage. Read-only. Possible values include: 'Normal', 'Exceeded'
- * @member {boolean} [enabled] <code>true</code> if the app is enabled;
+ * @property {string} [state] Current state of the app.
+ * @property {array} [hostNames] Hostnames associated with the app.
+ * @property {string} [repositorySiteName] Name of the repository site.
+ * @property {string} [usageState] State indicating whether the app has
+ * exceeded its quota usage. Read-only. Possible values include: 'Normal',
+ * 'Exceeded'
+ * @property {boolean} [enabled] <code>true</code> if the app is enabled;
  * otherwise, <code>false</code>. Setting this value to false disables the app
  * (takes the app offline).
- * @member {array} [enabledHostNames] Enabled hostnames for the app.Hostnames
+ * @property {array} [enabledHostNames] Enabled hostnames for the app.Hostnames
  * need to be assigned (see HostNames) AND enabled. Otherwise,
  * the app is not served on those hostnames.
- * @member {string} [availabilityState] Management information availability
+ * @property {string} [availabilityState] Management information availability
  * state for the app. Possible values include: 'Normal', 'Limited',
  * 'DisasterRecoveryMode'
- * @member {array} [hostNameSslStates] Hostname SSL states are used to manage
+ * @property {array} [hostNameSslStates] Hostname SSL states are used to manage
  * the SSL bindings for app's hostnames.
- * @member {string} [serverFarmId] Resource ID of the associated App Service
+ * @property {string} [serverFarmId] Resource ID of the associated App Service
  * plan, formatted as:
  * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
- * @member {boolean} [reserved] <code>true</code> if reserved; otherwise,
+ * @property {boolean} [reserved] <code>true</code> if reserved; otherwise,
  * <code>false</code>. Default value: false .
- * @member {boolean} [isXenon] Obsolete: Hyper-V sandbox. Default value: false
- * .
- * @member {boolean} [hyperV] Hyper-V sandbox. Default value: false .
- * @member {date} [lastModifiedTimeUtc] Last time the app was modified, in UTC.
- * Read-only.
- * @member {object} [siteConfig] Configuration of the app.
- * @member {number} [siteConfig.numberOfWorkers] Number of workers.
- * @member {array} [siteConfig.defaultDocuments] Default documents.
- * @member {string} [siteConfig.netFrameworkVersion] .NET Framework version.
- * @member {string} [siteConfig.phpVersion] Version of PHP.
- * @member {string} [siteConfig.pythonVersion] Version of Python.
- * @member {string} [siteConfig.nodeVersion] Version of Node.js.
- * @member {string} [siteConfig.linuxFxVersion] Linux App Framework and version
- * @member {string} [siteConfig.windowsFxVersion] Xenon App Framework and
+ * @property {boolean} [isXenon] Obsolete: Hyper-V sandbox. Default value:
+ * false .
+ * @property {boolean} [hyperV] Hyper-V sandbox. Default value: false .
+ * @property {date} [lastModifiedTimeUtc] Last time the app was modified, in
+ * UTC. Read-only.
+ * @property {object} [siteConfig] Configuration of the app.
+ * @property {number} [siteConfig.numberOfWorkers] Number of workers.
+ * @property {array} [siteConfig.defaultDocuments] Default documents.
+ * @property {string} [siteConfig.netFrameworkVersion] .NET Framework version.
+ * @property {string} [siteConfig.phpVersion] Version of PHP.
+ * @property {string} [siteConfig.pythonVersion] Version of Python.
+ * @property {string} [siteConfig.nodeVersion] Version of Node.js.
+ * @property {string} [siteConfig.linuxFxVersion] Linux App Framework and
  * version
- * @member {boolean} [siteConfig.requestTracingEnabled] <code>true</code> if
+ * @property {string} [siteConfig.windowsFxVersion] Xenon App Framework and
+ * version
+ * @property {boolean} [siteConfig.requestTracingEnabled] <code>true</code> if
  * request tracing is enabled; otherwise, <code>false</code>.
- * @member {date} [siteConfig.requestTracingExpirationTime] Request tracing
+ * @property {date} [siteConfig.requestTracingExpirationTime] Request tracing
  * expiration time.
- * @member {boolean} [siteConfig.remoteDebuggingEnabled] <code>true</code> if
+ * @property {boolean} [siteConfig.remoteDebuggingEnabled] <code>true</code> if
  * remote debugging is enabled; otherwise, <code>false</code>.
- * @member {string} [siteConfig.remoteDebuggingVersion] Remote debugging
+ * @property {string} [siteConfig.remoteDebuggingVersion] Remote debugging
  * version.
- * @member {boolean} [siteConfig.httpLoggingEnabled] <code>true</code> if HTTP
- * logging is enabled; otherwise, <code>false</code>.
- * @member {number} [siteConfig.logsDirectorySizeLimit] HTTP logs directory
+ * @property {boolean} [siteConfig.httpLoggingEnabled] <code>true</code> if
+ * HTTP logging is enabled; otherwise, <code>false</code>.
+ * @property {number} [siteConfig.logsDirectorySizeLimit] HTTP logs directory
  * size limit.
- * @member {boolean} [siteConfig.detailedErrorLoggingEnabled] <code>true</code>
- * if detailed error logging is enabled; otherwise, <code>false</code>.
- * @member {string} [siteConfig.publishingUsername] Publishing user name.
- * @member {array} [siteConfig.appSettings] Application settings.
- * @member {object} [siteConfig.azureStorageAccounts] User-provided Azure
+ * @property {boolean} [siteConfig.detailedErrorLoggingEnabled]
+ * <code>true</code> if detailed error logging is enabled; otherwise,
+ * <code>false</code>.
+ * @property {string} [siteConfig.publishingUsername] Publishing user name.
+ * @property {array} [siteConfig.appSettings] Application settings.
+ * @property {object} [siteConfig.azureStorageAccounts] User-provided Azure
  * storage accounts.
- * @member {array} [siteConfig.connectionStrings] Connection strings.
- * @member {object} [siteConfig.machineKey] Site MachineKey.
- * @member {string} [siteConfig.machineKey.validation] MachineKey validation.
- * @member {string} [siteConfig.machineKey.validationKey] Validation key.
- * @member {string} [siteConfig.machineKey.decryption] Algorithm used for
+ * @property {array} [siteConfig.connectionStrings] Connection strings.
+ * @property {object} [siteConfig.machineKey] Site MachineKey.
+ * @property {string} [siteConfig.machineKey.validation] MachineKey validation.
+ * @property {string} [siteConfig.machineKey.validationKey] Validation key.
+ * @property {string} [siteConfig.machineKey.decryption] Algorithm used for
  * decryption.
- * @member {string} [siteConfig.machineKey.decryptionKey] Decryption key.
- * @member {array} [siteConfig.handlerMappings] Handler mappings.
- * @member {string} [siteConfig.documentRoot] Document root.
- * @member {string} [siteConfig.scmType] SCM type. Possible values include:
+ * @property {string} [siteConfig.machineKey.decryptionKey] Decryption key.
+ * @property {array} [siteConfig.handlerMappings] Handler mappings.
+ * @property {string} [siteConfig.documentRoot] Document root.
+ * @property {string} [siteConfig.scmType] SCM type. Possible values include:
  * 'None', 'Dropbox', 'Tfs', 'LocalGit', 'GitHub', 'CodePlexGit', 'CodePlexHg',
  * 'BitbucketGit', 'BitbucketHg', 'ExternalGit', 'ExternalHg', 'OneDrive',
  * 'VSO'
- * @member {boolean} [siteConfig.use32BitWorkerProcess] <code>true</code> to
+ * @property {boolean} [siteConfig.use32BitWorkerProcess] <code>true</code> to
  * use 32-bit worker process; otherwise, <code>false</code>.
- * @member {boolean} [siteConfig.webSocketsEnabled] <code>true</code> if
+ * @property {boolean} [siteConfig.webSocketsEnabled] <code>true</code> if
  * WebSocket is enabled; otherwise, <code>false</code>.
- * @member {boolean} [siteConfig.alwaysOn] <code>true</code> if Always On is
+ * @property {boolean} [siteConfig.alwaysOn] <code>true</code> if Always On is
  * enabled; otherwise, <code>false</code>.
- * @member {string} [siteConfig.javaVersion] Java version.
- * @member {string} [siteConfig.javaContainer] Java container.
- * @member {string} [siteConfig.javaContainerVersion] Java container version.
- * @member {string} [siteConfig.appCommandLine] App command line to launch.
- * @member {string} [siteConfig.managedPipelineMode] Managed pipeline mode.
+ * @property {string} [siteConfig.javaVersion] Java version.
+ * @property {string} [siteConfig.javaContainer] Java container.
+ * @property {string} [siteConfig.javaContainerVersion] Java container version.
+ * @property {string} [siteConfig.appCommandLine] App command line to launch.
+ * @property {string} [siteConfig.managedPipelineMode] Managed pipeline mode.
  * Possible values include: 'Integrated', 'Classic'
- * @member {array} [siteConfig.virtualApplications] Virtual applications.
- * @member {string} [siteConfig.loadBalancing] Site load balancing. Possible
+ * @property {array} [siteConfig.virtualApplications] Virtual applications.
+ * @property {string} [siteConfig.loadBalancing] Site load balancing. Possible
  * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
  * 'WeightedTotalTraffic', 'RequestHash'
- * @member {object} [siteConfig.experiments] This is work around for polymophic
- * types.
- * @member {array} [siteConfig.experiments.rampUpRules] List of ramp-up rules.
- * @member {object} [siteConfig.limits] Site limits.
- * @member {number} [siteConfig.limits.maxPercentageCpu] Maximum allowed CPU
+ * @property {object} [siteConfig.experiments] This is work around for
+ * polymophic types.
+ * @property {array} [siteConfig.experiments.rampUpRules] List of ramp-up
+ * rules.
+ * @property {object} [siteConfig.limits] Site limits.
+ * @property {number} [siteConfig.limits.maxPercentageCpu] Maximum allowed CPU
  * usage percentage.
- * @member {number} [siteConfig.limits.maxMemoryInMb] Maximum allowed memory
+ * @property {number} [siteConfig.limits.maxMemoryInMb] Maximum allowed memory
  * usage in MB.
- * @member {number} [siteConfig.limits.maxDiskSizeInMb] Maximum allowed disk
+ * @property {number} [siteConfig.limits.maxDiskSizeInMb] Maximum allowed disk
  * size usage in MB.
- * @member {boolean} [siteConfig.autoHealEnabled] <code>true</code> if Auto
+ * @property {boolean} [siteConfig.autoHealEnabled] <code>true</code> if Auto
  * Heal is enabled; otherwise, <code>false</code>.
- * @member {object} [siteConfig.autoHealRules] Auto Heal rules.
- * @member {object} [siteConfig.autoHealRules.triggers] Conditions that
+ * @property {object} [siteConfig.autoHealRules] Auto Heal rules.
+ * @property {object} [siteConfig.autoHealRules.triggers] Conditions that
  * describe when to execute the auto-heal actions.
- * @member {object} [siteConfig.autoHealRules.triggers.requests] A rule based
+ * @property {object} [siteConfig.autoHealRules.triggers.requests] A rule based
  * on total requests.
- * @member {number} [siteConfig.autoHealRules.triggers.requests.count] Request
- * Count.
- * @member {string} [siteConfig.autoHealRules.triggers.requests.timeInterval]
- * Time interval.
- * @member {number} [siteConfig.autoHealRules.triggers.privateBytesInKB] A rule
- * based on private bytes.
- * @member {array} [siteConfig.autoHealRules.triggers.statusCodes] A rule based
- * on status codes.
- * @member {object} [siteConfig.autoHealRules.triggers.slowRequests] A rule
- * based on request execution time.
- * @member {string} [siteConfig.autoHealRules.triggers.slowRequests.timeTaken]
- * Time taken.
- * @member {number} [siteConfig.autoHealRules.triggers.slowRequests.count]
+ * @property {number} [siteConfig.autoHealRules.triggers.requests.count]
  * Request Count.
- * @member {string}
+ * @property {string} [siteConfig.autoHealRules.triggers.requests.timeInterval]
+ * Time interval.
+ * @property {number} [siteConfig.autoHealRules.triggers.privateBytesInKB] A
+ * rule based on private bytes.
+ * @property {array} [siteConfig.autoHealRules.triggers.statusCodes] A rule
+ * based on status codes.
+ * @property {object} [siteConfig.autoHealRules.triggers.slowRequests] A rule
+ * based on request execution time.
+ * @property {string}
+ * [siteConfig.autoHealRules.triggers.slowRequests.timeTaken] Time taken.
+ * @property {number} [siteConfig.autoHealRules.triggers.slowRequests.count]
+ * Request Count.
+ * @property {string}
  * [siteConfig.autoHealRules.triggers.slowRequests.timeInterval] Time interval.
- * @member {object} [siteConfig.autoHealRules.actions] Actions to be executed
+ * @property {object} [siteConfig.autoHealRules.actions] Actions to be executed
  * when a rule is triggered.
- * @member {string} [siteConfig.autoHealRules.actions.actionType] Predefined
+ * @property {string} [siteConfig.autoHealRules.actions.actionType] Predefined
  * action to be taken. Possible values include: 'Recycle', 'LogEvent',
  * 'CustomAction'
- * @member {object} [siteConfig.autoHealRules.actions.customAction] Custom
+ * @property {object} [siteConfig.autoHealRules.actions.customAction] Custom
  * action to be taken.
- * @member {string} [siteConfig.autoHealRules.actions.customAction.exe]
+ * @property {string} [siteConfig.autoHealRules.actions.customAction.exe]
  * Executable to be run.
- * @member {string} [siteConfig.autoHealRules.actions.customAction.parameters]
- * Parameters for the executable.
- * @member {string} [siteConfig.autoHealRules.actions.minProcessExecutionTime]
- * Minimum time the process must execute
+ * @property {string}
+ * [siteConfig.autoHealRules.actions.customAction.parameters] Parameters for
+ * the executable.
+ * @property {string}
+ * [siteConfig.autoHealRules.actions.minProcessExecutionTime] Minimum time the
+ * process must execute
  * before taking the action
- * @member {string} [siteConfig.tracingOptions] Tracing options.
- * @member {string} [siteConfig.vnetName] Virtual Network name.
- * @member {object} [siteConfig.cors] Cross-Origin Resource Sharing (CORS)
+ * @property {string} [siteConfig.tracingOptions] Tracing options.
+ * @property {string} [siteConfig.vnetName] Virtual Network name.
+ * @property {object} [siteConfig.cors] Cross-Origin Resource Sharing (CORS)
  * settings.
- * @member {array} [siteConfig.cors.allowedOrigins] Gets or sets the list of
+ * @property {array} [siteConfig.cors.allowedOrigins] Gets or sets the list of
  * origins that should be allowed to make cross-origin
  * calls (for example: http://example.com:12345). Use "*" to allow all.
- * @member {object} [siteConfig.push] Push endpoint settings.
- * @member {boolean} [siteConfig.push.isPushEnabled] Gets or sets a flag
+ * @property {boolean} [siteConfig.cors.supportCredentials] Gets or sets
+ * whether CORS requests with credentials are allowed. See
+ * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+ * for more details.
+ * @property {object} [siteConfig.push] Push endpoint settings.
+ * @property {boolean} [siteConfig.push.isPushEnabled] Gets or sets a flag
  * indicating whether the Push endpoint is enabled.
- * @member {string} [siteConfig.push.tagWhitelistJson] Gets or sets a JSON
+ * @property {string} [siteConfig.push.tagWhitelistJson] Gets or sets a JSON
  * string containing a list of tags that are whitelisted for use by the push
  * registration endpoint.
- * @member {string} [siteConfig.push.tagsRequiringAuth] Gets or sets a JSON
+ * @property {string} [siteConfig.push.tagsRequiringAuth] Gets or sets a JSON
  * string containing a list of tags that require user authentication to be used
  * in the push registration endpoint.
  * Tags can consist of alphanumeric characters and the following:
  * '_', '@', '#', '.', ':', '-'.
  * Validation should be performed at the PushRequestHandler.
- * @member {string} [siteConfig.push.dynamicTagsJson] Gets or sets a JSON
+ * @property {string} [siteConfig.push.dynamicTagsJson] Gets or sets a JSON
  * string containing a list of dynamic tags that will be evaluated from user
  * claims in the push registration endpoint.
- * @member {object} [siteConfig.apiDefinition] Information about the formal API
- * definition for the app.
- * @member {string} [siteConfig.apiDefinition.url] The URL of the API
+ * @property {object} [siteConfig.apiDefinition] Information about the formal
+ * API definition for the app.
+ * @property {string} [siteConfig.apiDefinition.url] The URL of the API
  * definition.
- * @member {string} [siteConfig.autoSwapSlotName] Auto-swap slot name.
- * @member {boolean} [siteConfig.localMySqlEnabled] <code>true</code> to enable
- * local MySQL; otherwise, <code>false</code>.
- * @member {number} [siteConfig.managedServiceIdentityId] Managed Service
+ * @property {string} [siteConfig.autoSwapSlotName] Auto-swap slot name.
+ * @property {boolean} [siteConfig.localMySqlEnabled] <code>true</code> to
+ * enable local MySQL; otherwise, <code>false</code>.
+ * @property {number} [siteConfig.managedServiceIdentityId] Managed Service
  * Identity Id
- * @member {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
+ * @property {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
  * Service Identity Id
- * @member {array} [siteConfig.ipSecurityRestrictions] IP security
- * restrictions.
- * @member {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
- * site to allow clients to connect over http2.0
- * @member {string} [siteConfig.minTlsVersion] MinTlsVersion: configures the
+ * @property {array} [siteConfig.ipSecurityRestrictions] IP security
+ * restrictions for main.
+ * @property {array} [siteConfig.scmIpSecurityRestrictions] IP security
+ * restrictions for scm.
+ * @property {boolean} [siteConfig.scmIpSecurityRestrictionsUseMain] IP
+ * security restrictions for scm to use main.
+ * @property {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a
+ * web site to allow clients to connect over http2.0
+ * @property {string} [siteConfig.minTlsVersion] MinTlsVersion: configures the
  * minimum version of TLS required for SSL requests. Possible values include:
  * '1.0', '1.1', '1.2'
- * @member {string} [siteConfig.ftpsState] State of FTP / FTPS service.
+ * @property {string} [siteConfig.ftpsState] State of FTP / FTPS service.
  * Possible values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
- * @member {number} [siteConfig.reservedInstanceCount] Number of reserved
+ * @property {number} [siteConfig.reservedInstanceCount] Number of reserved
  * instances.
  * This setting only applies to the Consumption Plan
- * @member {array} [trafficManagerHostNames] Azure Traffic Manager hostnames
+ * @property {array} [trafficManagerHostNames] Azure Traffic Manager hostnames
  * associated with the app. Read-only.
- * @member {boolean} [scmSiteAlsoStopped] <code>true</code> to stop SCM (KUDU)
- * site when the app is stopped; otherwise, <code>false</code>. The default is
- * <code>false</code>. Default value: false .
- * @member {string} [targetSwapSlot] Specifies which deployment slot this app
+ * @property {boolean} [scmSiteAlsoStopped] <code>true</code> to stop SCM
+ * (KUDU) site when the app is stopped; otherwise, <code>false</code>. The
+ * default is <code>false</code>. Default value: false .
+ * @property {string} [targetSwapSlot] Specifies which deployment slot this app
  * will swap into. Read-only.
- * @member {object} [hostingEnvironmentProfile] App Service Environment to use
- * for the app.
- * @member {string} [hostingEnvironmentProfile.id] Resource ID of the App
+ * @property {object} [hostingEnvironmentProfile] App Service Environment to
+ * use for the app.
+ * @property {string} [hostingEnvironmentProfile.id] Resource ID of the App
  * Service Environment.
- * @member {string} [hostingEnvironmentProfile.name] Name of the App Service
+ * @property {string} [hostingEnvironmentProfile.name] Name of the App Service
  * Environment.
- * @member {string} [hostingEnvironmentProfile.type] Resource type of the App
+ * @property {string} [hostingEnvironmentProfile.type] Resource type of the App
  * Service Environment.
- * @member {boolean} [clientAffinityEnabled] <code>true</code> to enable client
- * affinity; <code>false</code> to stop sending session affinity cookies, which
- * route client requests in the same session to the same instance. Default is
- * <code>true</code>.
- * @member {boolean} [clientCertEnabled] <code>true</code> to enable client
+ * @property {boolean} [clientAffinityEnabled] <code>true</code> to enable
+ * client affinity; <code>false</code> to stop sending session affinity
+ * cookies, which route client requests in the same session to the same
+ * instance. Default is <code>true</code>.
+ * @property {boolean} [clientCertEnabled] <code>true</code> to enable client
  * certificate authentication (TLS mutual authentication); otherwise,
  * <code>false</code>. Default is <code>false</code>.
- * @member {boolean} [hostNamesDisabled] <code>true</code> to disable the
+ * @property {boolean} [hostNamesDisabled] <code>true</code> to disable the
  * public hostnames of the app; otherwise, <code>false</code>.
  * If <code>true</code>, the app is only accessible via API management process.
- * @member {string} [outboundIpAddresses] List of IP addresses that the app
+ * @property {string} [outboundIpAddresses] List of IP addresses that the app
  * uses for outbound connections (e.g. database access). Includes VIPs from
  * tenants that site can be hosted with current settings. Read-only.
- * @member {string} [possibleOutboundIpAddresses] List of IP addresses that the
- * app uses for outbound connections (e.g. database access). Includes VIPs from
- * all tenants. Read-only.
- * @member {number} [containerSize] Size of the function container.
- * @member {number} [dailyMemoryTimeQuota] Maximum allowed daily memory-time
+ * @property {string} [possibleOutboundIpAddresses] List of IP addresses that
+ * the app uses for outbound connections (e.g. database access). Includes VIPs
+ * from all tenants. Read-only.
+ * @property {number} [containerSize] Size of the function container.
+ * @property {number} [dailyMemoryTimeQuota] Maximum allowed daily memory-time
  * quota (applicable on dynamic apps only).
- * @member {date} [suspendedTill] App suspended till in case memory-time quota
- * is exceeded.
- * @member {number} [maxNumberOfWorkers] Maximum number of workers.
+ * @property {date} [suspendedTill] App suspended till in case memory-time
+ * quota is exceeded.
+ * @property {number} [maxNumberOfWorkers] Maximum number of workers.
  * This only applies to Functions container.
- * @member {object} [cloningInfo] If specified during app creation, the app is
- * cloned from a source app.
- * @member {uuid} [cloningInfo.correlationId] Correlation ID of cloning
+ * @property {object} [cloningInfo] If specified during app creation, the app
+ * is cloned from a source app.
+ * @property {uuid} [cloningInfo.correlationId] Correlation ID of cloning
  * operation. This ID ties multiple cloning operations
  * together to use the same snapshot.
- * @member {boolean} [cloningInfo.overwrite] <code>true</code> to overwrite
+ * @property {boolean} [cloningInfo.overwrite] <code>true</code> to overwrite
  * destination app; otherwise, <code>false</code>.
- * @member {boolean} [cloningInfo.cloneCustomHostNames] <code>true</code> to
+ * @property {boolean} [cloningInfo.cloneCustomHostNames] <code>true</code> to
  * clone custom hostnames from source app; otherwise, <code>false</code>.
- * @member {boolean} [cloningInfo.cloneSourceControl] <code>true</code> to
+ * @property {boolean} [cloningInfo.cloneSourceControl] <code>true</code> to
  * clone source control from source app; otherwise, <code>false</code>.
- * @member {string} [cloningInfo.sourceWebAppId] ARM resource ID of the source
- * app. App resource ID is of the form
+ * @property {string} [cloningInfo.sourceWebAppId] ARM resource ID of the
+ * source app. App resource ID is of the form
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
  * for production slots and
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
  * for other slots.
- * @member {string} [cloningInfo.hostingEnvironment] App Service Environment.
- * @member {object} [cloningInfo.appSettingsOverrides] Application setting
+ * @property {string} [cloningInfo.hostingEnvironment] App Service Environment.
+ * @property {object} [cloningInfo.appSettingsOverrides] Application setting
  * overrides for cloned app. If specified, these settings override the settings
  * cloned
  * from source app. Otherwise, application settings from source app are
  * retained.
- * @member {boolean} [cloningInfo.configureLoadBalancing] <code>true</code> to
- * configure load balancing for source and destination app.
- * @member {string} [cloningInfo.trafficManagerProfileId] ARM resource ID of
+ * @property {boolean} [cloningInfo.configureLoadBalancing] <code>true</code>
+ * to configure load balancing for source and destination app.
+ * @property {string} [cloningInfo.trafficManagerProfileId] ARM resource ID of
  * the Traffic Manager profile to use, if it exists. Traffic Manager resource
  * ID is of the form
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
- * @member {string} [cloningInfo.trafficManagerProfileName] Name of Traffic
+ * @property {string} [cloningInfo.trafficManagerProfileName] Name of Traffic
  * Manager profile to create. This is only needed if Traffic Manager profile
  * does not already exist.
- * @member {string} [resourceGroup] Name of the resource group the app belongs
- * to. Read-only.
- * @member {boolean} [isDefaultContainer] <code>true</code> if the app is a
+ * @property {string} [resourceGroup] Name of the resource group the app
+ * belongs to. Read-only.
+ * @property {boolean} [isDefaultContainer] <code>true</code> if the app is a
  * default container; otherwise, <code>false</code>.
- * @member {string} [defaultHostName] Default hostname of the app. Read-only.
- * @member {object} [slotSwapStatus] Status of the last deployment slot swap
+ * @property {string} [defaultHostName] Default hostname of the app. Read-only.
+ * @property {object} [slotSwapStatus] Status of the last deployment slot swap
  * operation.
- * @member {date} [slotSwapStatus.timestampUtc] The time the last successful
+ * @property {date} [slotSwapStatus.timestampUtc] The time the last successful
  * slot swap completed.
- * @member {string} [slotSwapStatus.sourceSlotName] The source slot of the last
- * swap operation.
- * @member {string} [slotSwapStatus.destinationSlotName] The destination slot
+ * @property {string} [slotSwapStatus.sourceSlotName] The source slot of the
+ * last swap operation.
+ * @property {string} [slotSwapStatus.destinationSlotName] The destination slot
  * of the last swap operation.
- * @member {boolean} [httpsOnly] HttpsOnly: configures a web site to accept
+ * @property {boolean} [httpsOnly] HttpsOnly: configures a web site to accept
  * only https requests. Issues redirect for
  * http requests
  */
@@ -6120,10 +6229,11 @@ export interface SitePatchResource extends ProxyOnlyResource {
  * @constructor
  * Used for getting PHP error logging flag.
  *
- * @member {string} [localLogErrors] Local log_errors setting.
- * @member {string} [masterLogErrors] Master log_errors setting.
- * @member {string} [localLogErrorsMaxLength] Local log_errors_max_len setting.
- * @member {string} [masterLogErrorsMaxLength] Master log_errors_max_len
+ * @property {string} [localLogErrors] Local log_errors setting.
+ * @property {string} [masterLogErrors] Master log_errors setting.
+ * @property {string} [localLogErrorsMaxLength] Local log_errors_max_len
+ * setting.
+ * @property {string} [masterLogErrorsMaxLength] Master log_errors_max_len
  * setting.
  */
 export interface SitePhpErrorLogFlag extends ProxyOnlyResource {
@@ -6139,14 +6249,14 @@ export interface SitePhpErrorLogFlag extends ProxyOnlyResource {
  * @constructor
  * Source control configuration for an app.
  *
- * @member {string} [repoUrl] Repository or source control URL.
- * @member {string} [branch] Name of branch to use for deployment.
- * @member {boolean} [isManualIntegration] <code>true</code> to limit to manual
- * integration; <code>false</code> to enable continuous integration (which
- * configures webhooks into online repos like GitHub).
- * @member {boolean} [deploymentRollbackEnabled] <code>true</code> to enable
+ * @property {string} [repoUrl] Repository or source control URL.
+ * @property {string} [branch] Name of branch to use for deployment.
+ * @property {boolean} [isManualIntegration] <code>true</code> to limit to
+ * manual integration; <code>false</code> to enable continuous integration
+ * (which configures webhooks into online repos like GitHub).
+ * @property {boolean} [deploymentRollbackEnabled] <code>true</code> to enable
  * deployment rollback; otherwise, <code>false</code>.
- * @member {boolean} [isMercurial] <code>true</code> for a Mercurial
+ * @property {boolean} [isMercurial] <code>true</code> for a Mercurial
  * repository; <code>false</code> for a Git repository.
  */
 export interface SiteSourceControl extends ProxyOnlyResource {
@@ -6163,9 +6273,9 @@ export interface SiteSourceControl extends ProxyOnlyResource {
  * @constructor
  * Slot Config names azure resource.
  *
- * @member {array} [connectionStringNames] List of connection string names.
- * @member {array} [appSettingNames] List of application settings names.
- * @member {array} [azureStorageConfigNames] List of external Azure storage
+ * @property {array} [connectionStringNames] List of connection string names.
+ * @property {array} [appSettingNames] List of application settings names.
+ * @property {array} [azureStorageConfigNames] List of external Azure storage
  * account identifiers.
  */
 export interface SlotConfigNamesResource extends ProxyOnlyResource {
@@ -6180,18 +6290,18 @@ export interface SlotConfigNamesResource extends ProxyOnlyResource {
  * @constructor
  * A setting difference between two deployment slots of an app.
  *
- * @member {string} [level] Level of the difference: Information, Warning or
+ * @property {string} [level] Level of the difference: Information, Warning or
  * Error.
- * @member {string} [settingType] The type of the setting: General, AppSetting
- * or ConnectionString.
- * @member {string} [diffRule] Rule that describes how to process the setting
+ * @property {string} [settingType] The type of the setting: General,
+ * AppSetting or ConnectionString.
+ * @property {string} [diffRule] Rule that describes how to process the setting
  * difference during a slot swap.
- * @member {string} [settingName] Name of the setting.
- * @member {string} [valueInCurrentSlot] Value of the setting in the current
+ * @property {string} [settingName] Name of the setting.
+ * @property {string} [valueInCurrentSlot] Value of the setting in the current
  * slot.
- * @member {string} [valueInTargetSlot] Value of the setting in the target
+ * @property {string} [valueInTargetSlot] Value of the setting in the target
  * slot.
- * @member {string} [description] Description of the setting difference.
+ * @property {string} [description] Description of the setting difference.
  */
 export interface SlotDifference extends ProxyOnlyResource {
   readonly level?: string;
@@ -6209,9 +6319,9 @@ export interface SlotDifference extends ProxyOnlyResource {
  * @constructor
  * Specifies the web app that snapshot contents will be retrieved from.
  *
- * @member {string} [location] Geographical location of the source web app,
+ * @property {string} [location] Geographical location of the source web app,
  * e.g. SouthEastAsia, SouthCentralUS
- * @member {string} [id] ARM resource ID of the source app.
+ * @property {string} [id] ARM resource ID of the source app.
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
  * for production slots and
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
@@ -6228,25 +6338,27 @@ export interface SnapshotRecoverySource {
  * @constructor
  * Details about app recovery operation.
  *
- * @member {string} [snapshotTime] Point in time in which the app restore
+ * @property {string} [snapshotTime] Point in time in which the app restore
  * should be done, formatted as a DateTime string.
- * @member {object} [recoverySource] Optional. Specifies the web app that
+ * @property {object} [recoverySource] Optional. Specifies the web app that
  * snapshot contents will be retrieved from.
  * If empty, the targeted web app will be used as the source.
- * @member {string} [recoverySource.location] Geographical location of the
+ * @property {string} [recoverySource.location] Geographical location of the
  * source web app, e.g. SouthEastAsia, SouthCentralUS
- * @member {string} [recoverySource.id] ARM resource ID of the source app.
+ * @property {string} [recoverySource.id] ARM resource ID of the source app.
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
  * for production slots and
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
  * for other slots.
- * @member {boolean} overwrite If <code>true</code> the restore operation can
+ * @property {boolean} overwrite If <code>true</code> the restore operation can
  * overwrite source app; otherwise, <code>false</code>.
- * @member {boolean} [recoverConfiguration] If true, site configuration, in
+ * @property {boolean} [recoverConfiguration] If true, site configuration, in
  * addition to content, will be reverted.
- * @member {boolean} [ignoreConflictingHostNames] If true, custom hostname
+ * @property {boolean} [ignoreConflictingHostNames] If true, custom hostname
  * conflicts will be ignored when recovering to a target web app.
  * This setting is only necessary when RecoverConfiguration is enabled.
+ * @property {boolean} [useDRSecondary] If true, the snapshot is retrieved from
+ * DRSecondary endpoint.
  */
 export interface SnapshotRestoreRequest extends ProxyOnlyResource {
   snapshotTime?: string;
@@ -6254,6 +6366,7 @@ export interface SnapshotRestoreRequest extends ProxyOnlyResource {
   overwrite: boolean;
   recoverConfiguration?: boolean;
   ignoreConflictingHostNames?: boolean;
+  useDRSecondary?: boolean;
 }
 
 /**
@@ -6262,12 +6375,12 @@ export interface SnapshotRestoreRequest extends ProxyOnlyResource {
  * @constructor
  * Options for app content migration.
  *
- * @member {string} azurefilesConnectionString AzureFiles connection string.
- * @member {string} azurefilesShare AzureFiles share.
- * @member {boolean} [switchSiteAfterMigration] <code>true</code>if the app
+ * @property {string} azurefilesConnectionString AzureFiles connection string.
+ * @property {string} azurefilesShare AzureFiles share.
+ * @property {boolean} [switchSiteAfterMigration] <code>true</code>if the app
  * should be switched over; otherwise, <code>false</code>. Default value: false
  * .
- * @member {boolean} [blockWriteAccessToSite] <code>true</code> if the app
+ * @property {boolean} [blockWriteAccessToSite] <code>true</code> if the app
  * should be read only during copy operation; otherwise, <code>false</code>.
  * Default value: false .
  */
@@ -6284,8 +6397,9 @@ export interface StorageMigrationOptions extends ProxyOnlyResource {
  * @constructor
  * Response for a migration of app content request.
  *
- * @member {string} [operationId] When server starts the migration process, it
- * will return an operation ID identifying that particular migration operation.
+ * @property {string} [operationId] When server starts the migration process,
+ * it will return an operation ID identifying that particular migration
+ * operation.
  */
 export interface StorageMigrationResponse extends ProxyOnlyResource {
   readonly operationId?: string;
@@ -6297,7 +6411,7 @@ export interface StorageMigrationResponse extends ProxyOnlyResource {
  * @constructor
  * String dictionary resource.
  *
- * @member {object} [properties] Settings.
+ * @property {object} [properties] Settings.
  */
 export interface StringDictionary extends ProxyOnlyResource {
   properties?: { [propertyName: string]: string };
@@ -6310,10 +6424,10 @@ export interface StringDictionary extends ProxyOnlyResource {
  * Swift Virtual Network Contract. This is used to enable the new Swift way of
  * doing virtual network integration.
  *
- * @member {string} [subnetResourceId] The Virtual Network subnet's resource
+ * @property {string} [subnetResourceId] The Virtual Network subnet's resource
  * ID. This is the subnet that this Web App will join. This subnet must have a
  * delegation to Microsoft.Web/serverFarms defined first.
- * @member {boolean} [swiftSupported] A flag that specifies if the scale unit
+ * @property {boolean} [swiftSupported] A flag that specifies if the scale unit
  * this Web App is on supports Swift integration.
  */
 export interface SwiftVirtualNetwork extends ProxyOnlyResource {
@@ -6327,18 +6441,18 @@ export interface SwiftVirtualNetwork extends ProxyOnlyResource {
  * @constructor
  * Triggered Web Job Run Information.
  *
- * @member {string} [webJobId] Job ID.
- * @member {string} [webJobName] Job name.
- * @member {string} [status] Job status. Possible values include: 'Success',
+ * @property {string} [webJobId] Job ID.
+ * @property {string} [webJobName] Job name.
+ * @property {string} [status] Job status. Possible values include: 'Success',
  * 'Failed', 'Error'
- * @member {date} [startTime] Start time.
- * @member {date} [endTime] End time.
- * @member {string} [duration] Job duration.
- * @member {string} [outputUrl] Output URL.
- * @member {string} [errorUrl] Error URL.
- * @member {string} [url] Job URL.
- * @member {string} [jobName] Job name.
- * @member {string} [trigger] Job trigger.
+ * @property {date} [startTime] Start time.
+ * @property {date} [endTime] End time.
+ * @property {string} [duration] Job duration.
+ * @property {string} [outputUrl] Output URL.
+ * @property {string} [errorUrl] Error URL.
+ * @property {string} [url] Job URL.
+ * @property {string} [jobName] Job name.
+ * @property {string} [trigger] Job trigger.
  */
 export interface TriggeredJobRun extends ProxyOnlyResource {
   webJobId?: string;
@@ -6361,7 +6475,7 @@ export interface TriggeredJobRun extends ProxyOnlyResource {
  * Triggered Web Job History. List of Triggered Web Job Run Information
  * elements.
  *
- * @member {array} [runs] List of triggered web job runs.
+ * @property {array} [runs] List of triggered web job runs.
  */
 export interface TriggeredJobHistory extends ProxyOnlyResource {
   runs?: TriggeredJobRun[];
@@ -6373,29 +6487,29 @@ export interface TriggeredJobHistory extends ProxyOnlyResource {
  * @constructor
  * Triggered Web Job Information.
  *
- * @member {object} [latestRun] Latest job run information.
- * @member {string} [latestRun.webJobId] Job ID.
- * @member {string} [latestRun.webJobName] Job name.
- * @member {string} [latestRun.status] Job status. Possible values include:
+ * @property {object} [latestRun] Latest job run information.
+ * @property {string} [latestRun.webJobId] Job ID.
+ * @property {string} [latestRun.webJobName] Job name.
+ * @property {string} [latestRun.status] Job status. Possible values include:
  * 'Success', 'Failed', 'Error'
- * @member {date} [latestRun.startTime] Start time.
- * @member {date} [latestRun.endTime] End time.
- * @member {string} [latestRun.duration] Job duration.
- * @member {string} [latestRun.outputUrl] Output URL.
- * @member {string} [latestRun.errorUrl] Error URL.
- * @member {string} [latestRun.url] Job URL.
- * @member {string} [latestRun.jobName] Job name.
- * @member {string} [latestRun.trigger] Job trigger.
- * @member {string} [historyUrl] History URL.
- * @member {string} [schedulerLogsUrl] Scheduler Logs URL.
- * @member {string} [runCommand] Run command.
- * @member {string} [url] Job URL.
- * @member {string} [extraInfoUrl] Extra Info URL.
- * @member {string} [webJobType] Job type. Possible values include:
+ * @property {date} [latestRun.startTime] Start time.
+ * @property {date} [latestRun.endTime] End time.
+ * @property {string} [latestRun.duration] Job duration.
+ * @property {string} [latestRun.outputUrl] Output URL.
+ * @property {string} [latestRun.errorUrl] Error URL.
+ * @property {string} [latestRun.url] Job URL.
+ * @property {string} [latestRun.jobName] Job name.
+ * @property {string} [latestRun.trigger] Job trigger.
+ * @property {string} [historyUrl] History URL.
+ * @property {string} [schedulerLogsUrl] Scheduler Logs URL.
+ * @property {string} [runCommand] Run command.
+ * @property {string} [url] Job URL.
+ * @property {string} [extraInfoUrl] Extra Info URL.
+ * @property {string} [webJobType] Job type. Possible values include:
  * 'Continuous', 'Triggered'
- * @member {string} [error] Error information.
- * @member {boolean} [usingSdk] Using SDK?
- * @member {object} [settings] Job settings.
+ * @property {string} [error] Error information.
+ * @property {boolean} [usingSdk] Using SDK?
+ * @property {object} [settings] Job settings.
  */
 export interface TriggeredWebJob extends ProxyOnlyResource {
   latestRun?: TriggeredJobRun;
@@ -6416,14 +6530,14 @@ export interface TriggeredWebJob extends ProxyOnlyResource {
  * @constructor
  * Web Job Information.
  *
- * @member {string} [runCommand] Run command.
- * @member {string} [url] Job URL.
- * @member {string} [extraInfoUrl] Extra Info URL.
- * @member {string} [webJobType] Job type. Possible values include:
+ * @property {string} [runCommand] Run command.
+ * @property {string} [url] Job URL.
+ * @property {string} [extraInfoUrl] Extra Info URL.
+ * @property {string} [webJobType] Job type. Possible values include:
  * 'Continuous', 'Triggered'
- * @member {string} [error] Error information.
- * @member {boolean} [usingSdk] Using SDK?
- * @member {object} [settings] Job settings.
+ * @property {string} [error] Error information.
+ * @property {boolean} [usingSdk] Using SDK?
+ * @property {object} [settings] Job settings.
  */
 export interface WebJob extends ProxyOnlyResource {
   runCommand?: string;
@@ -6441,12 +6555,12 @@ export interface WebJob extends ProxyOnlyResource {
  * @constructor
  * Describes main public IP address and any extra virtual IPs.
  *
- * @member {string} [serviceIpAddress] Main public virtual IP.
- * @member {string} [internalIpAddress] Virtual Network internal IP address of
- * the App Service Environment if it is in internal load-balancing mode.
- * @member {array} [outboundIpAddresses] IP addresses appearing on outbound
+ * @property {string} [serviceIpAddress] Main public virtual IP.
+ * @property {string} [internalIpAddress] Virtual Network internal IP address
+ * of the App Service Environment if it is in internal load-balancing mode.
+ * @property {array} [outboundIpAddresses] IP addresses appearing on outbound
  * connections.
- * @member {array} [vipMappings] Additional virtual IPs.
+ * @property {array} [vipMappings] Additional virtual IPs.
  */
 export interface AddressResponse {
   serviceIpAddress?: string;
@@ -6461,89 +6575,90 @@ export interface AddressResponse {
  * @constructor
  * App Service Environment ARM resource.
  *
- * @member {string} appServiceEnvironmentResourceName Name of the App Service
+ * @property {string} appServiceEnvironmentResourceName Name of the App Service
  * Environment.
- * @member {string} appServiceEnvironmentResourceLocation Location of the App
+ * @property {string} appServiceEnvironmentResourceLocation Location of the App
  * Service Environment, e.g. "West US".
- * @member {string} [provisioningState] Provisioning state of the App Service
+ * @property {string} [provisioningState] Provisioning state of the App Service
  * Environment. Possible values include: 'Succeeded', 'Failed', 'Canceled',
  * 'InProgress', 'Deleting'
- * @member {string} [status] Current status of the App Service Environment.
+ * @property {string} [status] Current status of the App Service Environment.
  * Possible values include: 'Preparing', 'Ready', 'Scaling', 'Deleting'
- * @member {string} [vnetName] Name of the Virtual Network for the App Service
- * Environment.
- * @member {string} [vnetResourceGroupName] Resource group of the Virtual
+ * @property {string} [vnetName] Name of the Virtual Network for the App
+ * Service Environment.
+ * @property {string} [vnetResourceGroupName] Resource group of the Virtual
  * Network.
- * @member {string} [vnetSubnetName] Subnet of the Virtual Network.
- * @member {object} virtualNetwork Description of the Virtual Network.
- * @member {string} [virtualNetwork.id] Resource id of the Virtual Network.
- * @member {string} [virtualNetwork.name] Name of the Virtual Network
+ * @property {string} [vnetSubnetName] Subnet of the Virtual Network.
+ * @property {object} virtualNetwork Description of the Virtual Network.
+ * @property {string} [virtualNetwork.id] Resource id of the Virtual Network.
+ * @property {string} [virtualNetwork.name] Name of the Virtual Network
  * (read-only).
- * @member {string} [virtualNetwork.type] Resource type of the Virtual Network
- * (read-only).
- * @member {string} [virtualNetwork.subnet] Subnet within the Virtual Network.
- * @member {string} [internalLoadBalancingMode] Specifies which endpoints to
+ * @property {string} [virtualNetwork.type] Resource type of the Virtual
+ * Network (read-only).
+ * @property {string} [virtualNetwork.subnet] Subnet within the Virtual
+ * Network.
+ * @property {string} [internalLoadBalancingMode] Specifies which endpoints to
  * serve internally in the Virtual Network for the App Service Environment.
  * Possible values include: 'None', 'Web', 'Publishing'
- * @member {string} [multiSize] Front-end VM size, e.g. "Medium", "Large".
- * @member {number} [multiRoleCount] Number of front-end instances.
- * @member {array} workerPools Description of worker pools with worker size
+ * @property {string} [multiSize] Front-end VM size, e.g. "Medium", "Large".
+ * @property {number} [multiRoleCount] Number of front-end instances.
+ * @property {array} workerPools Description of worker pools with worker size
  * IDs, VM sizes, and number of workers in each pool.
- * @member {number} [ipsslAddressCount] Number of IP SSL addresses reserved for
- * the App Service Environment.
- * @member {string} [databaseEdition] Edition of the metadata database for the
- * App Service Environment, e.g. "Standard".
- * @member {string} [databaseServiceObjective] Service objective of the
+ * @property {number} [ipsslAddressCount] Number of IP SSL addresses reserved
+ * for the App Service Environment.
+ * @property {string} [databaseEdition] Edition of the metadata database for
+ * the App Service Environment, e.g. "Standard".
+ * @property {string} [databaseServiceObjective] Service objective of the
  * metadata database for the App Service Environment, e.g. "S0".
- * @member {number} [upgradeDomains] Number of upgrade domains of the App
+ * @property {number} [upgradeDomains] Number of upgrade domains of the App
  * Service Environment.
- * @member {string} [subscriptionId] Subscription of the App Service
+ * @property {string} [subscriptionId] Subscription of the App Service
  * Environment.
- * @member {string} [dnsSuffix] DNS suffix of the App Service Environment.
- * @member {string} [lastAction] Last deployment action on the App Service
+ * @property {string} [dnsSuffix] DNS suffix of the App Service Environment.
+ * @property {string} [lastAction] Last deployment action on the App Service
  * Environment.
- * @member {string} [lastActionResult] Result of the last deployment action on
- * the App Service Environment.
- * @member {string} [allowedMultiSizes] List of comma separated strings
+ * @property {string} [lastActionResult] Result of the last deployment action
+ * on the App Service Environment.
+ * @property {string} [allowedMultiSizes] List of comma separated strings
  * describing which VM sizes are allowed for front-ends.
- * @member {string} [allowedWorkerSizes] List of comma separated strings
+ * @property {string} [allowedWorkerSizes] List of comma separated strings
  * describing which VM sizes are allowed for workers.
- * @member {number} [maximumNumberOfMachines] Maximum number of VMs in the App
+ * @property {number} [maximumNumberOfMachines] Maximum number of VMs in the
+ * App Service Environment.
+ * @property {array} [vipMappings] Description of IP SSL mapping for the App
  * Service Environment.
- * @member {array} [vipMappings] Description of IP SSL mapping for the App
- * Service Environment.
- * @member {array} [environmentCapacities] Current total, used, and available
+ * @property {array} [environmentCapacities] Current total, used, and available
  * worker capacities.
- * @member {array} [networkAccessControlList] Access control list for
+ * @property {array} [networkAccessControlList] Access control list for
  * controlling traffic to the App Service Environment.
- * @member {boolean} [environmentIsHealthy] True/false indicating whether the
+ * @property {boolean} [environmentIsHealthy] True/false indicating whether the
  * App Service Environment is healthy.
- * @member {string} [environmentStatus] Detailed message about with results of
- * the last check of the App Service Environment.
- * @member {string} [resourceGroup] Resource group of the App Service
+ * @property {string} [environmentStatus] Detailed message about with results
+ * of the last check of the App Service Environment.
+ * @property {string} [resourceGroup] Resource group of the App Service
  * Environment.
- * @member {number} [frontEndScaleFactor] Scale factor for front-ends.
- * @member {number} [defaultFrontEndScaleFactor] Default Scale Factor for
+ * @property {number} [frontEndScaleFactor] Scale factor for front-ends.
+ * @property {number} [defaultFrontEndScaleFactor] Default Scale Factor for
  * FrontEnds.
- * @member {string} [apiManagementAccountId] API Management Account associated
- * with the App Service Environment.
- * @member {boolean} [suspended] <code>true</code> if the App Service
+ * @property {string} [apiManagementAccountId] API Management Account
+ * associated with the App Service Environment.
+ * @property {boolean} [suspended] <code>true</code> if the App Service
  * Environment is suspended; otherwise, <code>false</code>. The environment can
  * be suspended, e.g. when the management endpoint is no longer available
  * (most likely because NSG blocked the incoming traffic).
- * @member {boolean} [dynamicCacheEnabled] True/false indicating whether the
+ * @property {boolean} [dynamicCacheEnabled] True/false indicating whether the
  * App Service Environment is suspended. The environment can be suspended e.g.
  * when the management endpoint is no longer available
  * (most likely because NSG blocked the incoming traffic).
- * @member {array} [clusterSettings] Custom settings for changing the behavior
- * of the App Service Environment.
- * @member {array} [userWhitelistedIpRanges] User added ip ranges to whitelist
- * on ASE db
- * @member {boolean} [hasLinuxWorkers] Flag that displays whether an ASE has
+ * @property {array} [clusterSettings] Custom settings for changing the
+ * behavior of the App Service Environment.
+ * @property {array} [userWhitelistedIpRanges] User added ip ranges to
+ * whitelist on ASE db
+ * @property {boolean} [hasLinuxWorkers] Flag that displays whether an ASE has
  * linux workers or not
- * @member {string} [sslCertKeyVaultId] Key Vault ID for ILB App Service
+ * @property {string} [sslCertKeyVaultId] Key Vault ID for ILB App Service
  * Environment default SSL certificate
- * @member {string} [sslCertKeyVaultSecretName] Key Vault Secret Name for ILB
+ * @property {string} [sslCertKeyVaultSecretName] Key Vault Secret Name for ILB
  * App Service Environment default SSL certificate
  */
 export interface AppServiceEnvironmentResource extends Resource {
@@ -6594,89 +6709,90 @@ export interface AppServiceEnvironmentResource extends Resource {
  * @constructor
  * ARM resource for a app service enviroment.
  *
- * @member {string} appServiceEnvironmentPatchResourceName Name of the App
+ * @property {string} appServiceEnvironmentPatchResourceName Name of the App
  * Service Environment.
- * @member {string} location Location of the App Service Environment, e.g.
+ * @property {string} location Location of the App Service Environment, e.g.
  * "West US".
- * @member {string} [provisioningState] Provisioning state of the App Service
+ * @property {string} [provisioningState] Provisioning state of the App Service
  * Environment. Possible values include: 'Succeeded', 'Failed', 'Canceled',
  * 'InProgress', 'Deleting'
- * @member {string} [status] Current status of the App Service Environment.
+ * @property {string} [status] Current status of the App Service Environment.
  * Possible values include: 'Preparing', 'Ready', 'Scaling', 'Deleting'
- * @member {string} [vnetName] Name of the Virtual Network for the App Service
- * Environment.
- * @member {string} [vnetResourceGroupName] Resource group of the Virtual
+ * @property {string} [vnetName] Name of the Virtual Network for the App
+ * Service Environment.
+ * @property {string} [vnetResourceGroupName] Resource group of the Virtual
  * Network.
- * @member {string} [vnetSubnetName] Subnet of the Virtual Network.
- * @member {object} virtualNetwork Description of the Virtual Network.
- * @member {string} [virtualNetwork.id] Resource id of the Virtual Network.
- * @member {string} [virtualNetwork.name] Name of the Virtual Network
+ * @property {string} [vnetSubnetName] Subnet of the Virtual Network.
+ * @property {object} virtualNetwork Description of the Virtual Network.
+ * @property {string} [virtualNetwork.id] Resource id of the Virtual Network.
+ * @property {string} [virtualNetwork.name] Name of the Virtual Network
  * (read-only).
- * @member {string} [virtualNetwork.type] Resource type of the Virtual Network
- * (read-only).
- * @member {string} [virtualNetwork.subnet] Subnet within the Virtual Network.
- * @member {string} [internalLoadBalancingMode] Specifies which endpoints to
+ * @property {string} [virtualNetwork.type] Resource type of the Virtual
+ * Network (read-only).
+ * @property {string} [virtualNetwork.subnet] Subnet within the Virtual
+ * Network.
+ * @property {string} [internalLoadBalancingMode] Specifies which endpoints to
  * serve internally in the Virtual Network for the App Service Environment.
  * Possible values include: 'None', 'Web', 'Publishing'
- * @member {string} [multiSize] Front-end VM size, e.g. "Medium", "Large".
- * @member {number} [multiRoleCount] Number of front-end instances.
- * @member {array} workerPools Description of worker pools with worker size
+ * @property {string} [multiSize] Front-end VM size, e.g. "Medium", "Large".
+ * @property {number} [multiRoleCount] Number of front-end instances.
+ * @property {array} workerPools Description of worker pools with worker size
  * IDs, VM sizes, and number of workers in each pool.
- * @member {number} [ipsslAddressCount] Number of IP SSL addresses reserved for
- * the App Service Environment.
- * @member {string} [databaseEdition] Edition of the metadata database for the
- * App Service Environment, e.g. "Standard".
- * @member {string} [databaseServiceObjective] Service objective of the
+ * @property {number} [ipsslAddressCount] Number of IP SSL addresses reserved
+ * for the App Service Environment.
+ * @property {string} [databaseEdition] Edition of the metadata database for
+ * the App Service Environment, e.g. "Standard".
+ * @property {string} [databaseServiceObjective] Service objective of the
  * metadata database for the App Service Environment, e.g. "S0".
- * @member {number} [upgradeDomains] Number of upgrade domains of the App
+ * @property {number} [upgradeDomains] Number of upgrade domains of the App
  * Service Environment.
- * @member {string} [subscriptionId] Subscription of the App Service
+ * @property {string} [subscriptionId] Subscription of the App Service
  * Environment.
- * @member {string} [dnsSuffix] DNS suffix of the App Service Environment.
- * @member {string} [lastAction] Last deployment action on the App Service
+ * @property {string} [dnsSuffix] DNS suffix of the App Service Environment.
+ * @property {string} [lastAction] Last deployment action on the App Service
  * Environment.
- * @member {string} [lastActionResult] Result of the last deployment action on
- * the App Service Environment.
- * @member {string} [allowedMultiSizes] List of comma separated strings
+ * @property {string} [lastActionResult] Result of the last deployment action
+ * on the App Service Environment.
+ * @property {string} [allowedMultiSizes] List of comma separated strings
  * describing which VM sizes are allowed for front-ends.
- * @member {string} [allowedWorkerSizes] List of comma separated strings
+ * @property {string} [allowedWorkerSizes] List of comma separated strings
  * describing which VM sizes are allowed for workers.
- * @member {number} [maximumNumberOfMachines] Maximum number of VMs in the App
+ * @property {number} [maximumNumberOfMachines] Maximum number of VMs in the
+ * App Service Environment.
+ * @property {array} [vipMappings] Description of IP SSL mapping for the App
  * Service Environment.
- * @member {array} [vipMappings] Description of IP SSL mapping for the App
- * Service Environment.
- * @member {array} [environmentCapacities] Current total, used, and available
+ * @property {array} [environmentCapacities] Current total, used, and available
  * worker capacities.
- * @member {array} [networkAccessControlList] Access control list for
+ * @property {array} [networkAccessControlList] Access control list for
  * controlling traffic to the App Service Environment.
- * @member {boolean} [environmentIsHealthy] True/false indicating whether the
+ * @property {boolean} [environmentIsHealthy] True/false indicating whether the
  * App Service Environment is healthy.
- * @member {string} [environmentStatus] Detailed message about with results of
- * the last check of the App Service Environment.
- * @member {string} [resourceGroup] Resource group of the App Service
+ * @property {string} [environmentStatus] Detailed message about with results
+ * of the last check of the App Service Environment.
+ * @property {string} [resourceGroup] Resource group of the App Service
  * Environment.
- * @member {number} [frontEndScaleFactor] Scale factor for front-ends.
- * @member {number} [defaultFrontEndScaleFactor] Default Scale Factor for
+ * @property {number} [frontEndScaleFactor] Scale factor for front-ends.
+ * @property {number} [defaultFrontEndScaleFactor] Default Scale Factor for
  * FrontEnds.
- * @member {string} [apiManagementAccountId] API Management Account associated
- * with the App Service Environment.
- * @member {boolean} [suspended] <code>true</code> if the App Service
+ * @property {string} [apiManagementAccountId] API Management Account
+ * associated with the App Service Environment.
+ * @property {boolean} [suspended] <code>true</code> if the App Service
  * Environment is suspended; otherwise, <code>false</code>. The environment can
  * be suspended, e.g. when the management endpoint is no longer available
  * (most likely because NSG blocked the incoming traffic).
- * @member {boolean} [dynamicCacheEnabled] True/false indicating whether the
+ * @property {boolean} [dynamicCacheEnabled] True/false indicating whether the
  * App Service Environment is suspended. The environment can be suspended e.g.
  * when the management endpoint is no longer available
  * (most likely because NSG blocked the incoming traffic).
- * @member {array} [clusterSettings] Custom settings for changing the behavior
- * of the App Service Environment.
- * @member {array} [userWhitelistedIpRanges] User added ip ranges to whitelist
- * on ASE db
- * @member {boolean} [hasLinuxWorkers] Flag that displays whether an ASE has
+ * @property {array} [clusterSettings] Custom settings for changing the
+ * behavior of the App Service Environment.
+ * @property {array} [userWhitelistedIpRanges] User added ip ranges to
+ * whitelist on ASE db
+ * @property {boolean} [hasLinuxWorkers] Flag that displays whether an ASE has
  * linux workers or not
- * @member {string} [sslCertKeyVaultId] Key Vault ID for ILB App Service
+ * @property {string} [sslCertKeyVaultId] Key Vault ID for ILB App Service
  * Environment default SSL certificate
- * @member {string} [sslCertKeyVaultSecretName] Key Vault Secret Name for ILB
+ * @property {string} [sslCertKeyVaultSecretName] Key Vault Secret Name for ILB
  * App Service Environment default SSL certificate
  */
 export interface AppServiceEnvironmentPatchResource extends ProxyOnlyResource {
@@ -6727,8 +6843,8 @@ export interface AppServiceEnvironmentPatchResource extends ProxyOnlyResource {
  * @constructor
  * Diagnostics for an App Service Environment.
  *
- * @member {string} [name] Name/identifier of the diagnostics.
- * @member {string} [diagnosicsOutput] Diagnostics output.
+ * @property {string} [name] Name/identifier of the diagnostics.
+ * @property {string} [diagnosicsOutput] Diagnostics output.
  */
 export interface HostingEnvironmentDiagnostics {
   name?: string;
@@ -6741,8 +6857,8 @@ export interface HostingEnvironmentDiagnostics {
  * @constructor
  * Metric availability and retention.
  *
- * @member {string} [timeGrain] Time grain.
- * @member {string} [retention] Retention period for the current time grain.
+ * @property {string} [timeGrain] Time grain.
+ * @property {string} [retention] Retention period for the current time grain.
  */
 export interface MetricAvailabilily {
   timeGrain?: string;
@@ -6755,11 +6871,11 @@ export interface MetricAvailabilily {
  * @constructor
  * Metadata for a metric.
  *
- * @member {string} [unit] Unit of the metric.
- * @member {string} [primaryAggregationType] Primary aggregation type.
- * @member {array} [metricAvailabilities] List of time grains supported for the
- * metric together with retention period.
- * @member {string} [displayName] Friendly name shown in the UI.
+ * @property {string} [unit] Unit of the metric.
+ * @property {string} [primaryAggregationType] Primary aggregation type.
+ * @property {array} [metricAvailabilities] List of time grains supported for
+ * the metric together with retention period.
+ * @property {string} [displayName] Friendly name shown in the UI.
  */
 export interface MetricDefinition extends ProxyOnlyResource {
   readonly unit?: string;
@@ -6774,36 +6890,36 @@ export interface MetricDefinition extends ProxyOnlyResource {
  * @constructor
  * SKU discovery information.
  *
- * @member {string} [resourceType] Resource type that this SKU applies to.
- * @member {object} [sku] Name and tier of the SKU.
- * @member {string} [sku.name] Name of the resource SKU.
- * @member {string} [sku.tier] Service tier of the resource SKU.
- * @member {string} [sku.size] Size specifier of the resource SKU.
- * @member {string} [sku.family] Family code of the resource SKU.
- * @member {number} [sku.capacity] Current number of instances assigned to the
- * resource.
- * @member {object} [sku.skuCapacity] Min, max, and default scale values of the
- * SKU.
- * @member {number} [sku.skuCapacity.minimum] Minimum number of workers for
+ * @property {string} [resourceType] Resource type that this SKU applies to.
+ * @property {object} [sku] Name and tier of the SKU.
+ * @property {string} [sku.name] Name of the resource SKU.
+ * @property {string} [sku.tier] Service tier of the resource SKU.
+ * @property {string} [sku.size] Size specifier of the resource SKU.
+ * @property {string} [sku.family] Family code of the resource SKU.
+ * @property {number} [sku.capacity] Current number of instances assigned to
+ * the resource.
+ * @property {object} [sku.skuCapacity] Min, max, and default scale values of
+ * the SKU.
+ * @property {number} [sku.skuCapacity.minimum] Minimum number of workers for
  * this App Service plan SKU.
- * @member {number} [sku.skuCapacity.maximum] Maximum number of workers for
+ * @property {number} [sku.skuCapacity.maximum] Maximum number of workers for
  * this App Service plan SKU.
- * @member {number} [sku.skuCapacity.default] Default number of workers for
+ * @property {number} [sku.skuCapacity.default] Default number of workers for
  * this App Service plan SKU.
- * @member {string} [sku.skuCapacity.scaleType] Available scale configurations
- * for an App Service plan.
- * @member {array} [sku.locations] Locations of the SKU.
- * @member {array} [sku.capabilities] Capabilities of the SKU, e.g., is traffic
- * manager enabled?
- * @member {object} [capacity] Min, max, and default scale values of the SKU.
- * @member {number} [capacity.minimum] Minimum number of workers for this App
+ * @property {string} [sku.skuCapacity.scaleType] Available scale
+ * configurations for an App Service plan.
+ * @property {array} [sku.locations] Locations of the SKU.
+ * @property {array} [sku.capabilities] Capabilities of the SKU, e.g., is
+ * traffic manager enabled?
+ * @property {object} [capacity] Min, max, and default scale values of the SKU.
+ * @property {number} [capacity.minimum] Minimum number of workers for this App
  * Service plan SKU.
- * @member {number} [capacity.maximum] Maximum number of workers for this App
+ * @property {number} [capacity.maximum] Maximum number of workers for this App
  * Service plan SKU.
- * @member {number} [capacity.default] Default number of workers for this App
+ * @property {number} [capacity.default] Default number of workers for this App
  * Service plan SKU.
- * @member {string} [capacity.scaleType] Available scale configurations for an
- * App Service plan.
+ * @property {string} [capacity.scaleType] Available scale configurations for
+ * an App Service plan.
  */
 export interface SkuInfo {
   resourceType?: string;
@@ -6817,15 +6933,15 @@ export interface SkuInfo {
  * @constructor
  * Usage of the quota resource.
  *
- * @member {string} [displayName] Friendly name shown in the UI.
- * @member {string} [resourceName] Name of the quota resource.
- * @member {string} [unit] Units of measurement for the quota resource.
- * @member {number} [currentValue] The current value of the resource counter.
- * @member {number} [limit] The resource limit.
- * @member {date} [nextResetTime] Next reset time for the resource counter.
- * @member {string} [computeMode] Compute mode used for this usage. Possible
+ * @property {string} [displayName] Friendly name shown in the UI.
+ * @property {string} [resourceName] Name of the quota resource.
+ * @property {string} [unit] Units of measurement for the quota resource.
+ * @property {number} [currentValue] The current value of the resource counter.
+ * @property {number} [limit] The resource limit.
+ * @property {date} [nextResetTime] Next reset time for the resource counter.
+ * @property {string} [computeMode] Compute mode used for this usage. Possible
  * values include: 'Shared', 'Dedicated', 'Dynamic'
- * @member {string} [siteMode] Site mode used for this usage.
+ * @property {string} [siteMode] Site mode used for this usage.
  */
 export interface Usage extends ProxyOnlyResource {
   readonly displayName?: string;
@@ -6844,34 +6960,34 @@ export interface Usage extends ProxyOnlyResource {
  * @constructor
  * Worker pool of an App Service Environment ARM resource.
  *
- * @member {number} [workerSizeId] Worker size ID for referencing this worker
+ * @property {number} [workerSizeId] Worker size ID for referencing this worker
  * pool.
- * @member {string} [computeMode] Shared or dedicated app hosting. Possible
+ * @property {string} [computeMode] Shared or dedicated app hosting. Possible
  * values include: 'Shared', 'Dedicated', 'Dynamic'
- * @member {string} [workerSize] VM size of the worker pool instances.
- * @member {number} [workerCount] Number of instances in the worker pool.
- * @member {array} [instanceNames] Names of all instances in the worker pool
+ * @property {string} [workerSize] VM size of the worker pool instances.
+ * @property {number} [workerCount] Number of instances in the worker pool.
+ * @property {array} [instanceNames] Names of all instances in the worker pool
  * (read only).
- * @member {object} [sku]
- * @member {string} [sku.name] Name of the resource SKU.
- * @member {string} [sku.tier] Service tier of the resource SKU.
- * @member {string} [sku.size] Size specifier of the resource SKU.
- * @member {string} [sku.family] Family code of the resource SKU.
- * @member {number} [sku.capacity] Current number of instances assigned to the
- * resource.
- * @member {object} [sku.skuCapacity] Min, max, and default scale values of the
- * SKU.
- * @member {number} [sku.skuCapacity.minimum] Minimum number of workers for
+ * @property {object} [sku]
+ * @property {string} [sku.name] Name of the resource SKU.
+ * @property {string} [sku.tier] Service tier of the resource SKU.
+ * @property {string} [sku.size] Size specifier of the resource SKU.
+ * @property {string} [sku.family] Family code of the resource SKU.
+ * @property {number} [sku.capacity] Current number of instances assigned to
+ * the resource.
+ * @property {object} [sku.skuCapacity] Min, max, and default scale values of
+ * the SKU.
+ * @property {number} [sku.skuCapacity.minimum] Minimum number of workers for
  * this App Service plan SKU.
- * @member {number} [sku.skuCapacity.maximum] Maximum number of workers for
+ * @property {number} [sku.skuCapacity.maximum] Maximum number of workers for
  * this App Service plan SKU.
- * @member {number} [sku.skuCapacity.default] Default number of workers for
+ * @property {number} [sku.skuCapacity.default] Default number of workers for
  * this App Service plan SKU.
- * @member {string} [sku.skuCapacity.scaleType] Available scale configurations
- * for an App Service plan.
- * @member {array} [sku.locations] Locations of the SKU.
- * @member {array} [sku.capabilities] Capabilities of the SKU, e.g., is traffic
- * manager enabled?
+ * @property {string} [sku.skuCapacity.scaleType] Available scale
+ * configurations for an App Service plan.
+ * @property {array} [sku.locations] Locations of the SKU.
+ * @property {array} [sku.capabilities] Capabilities of the SKU, e.g., is
+ * traffic manager enabled?
  */
 export interface WorkerPoolResource extends ProxyOnlyResource {
   workerSizeId?: number;
@@ -6888,47 +7004,48 @@ export interface WorkerPoolResource extends ProxyOnlyResource {
  * @constructor
  * ARM resource for a app service plan.
  *
- * @member {string} [workerTierName] Target worker tier assigned to the App
+ * @property {string} [workerTierName] Target worker tier assigned to the App
  * Service plan.
- * @member {string} [status] App Service plan status. Possible values include:
- * 'Ready', 'Pending', 'Creating'
- * @member {string} [subscription] App Service plan subscription.
- * @member {string} [adminSiteName] App Service plan administration site.
- * @member {object} [hostingEnvironmentProfile] Specification for the App
+ * @property {string} [status] App Service plan status. Possible values
+ * include: 'Ready', 'Pending', 'Creating'
+ * @property {string} [subscription] App Service plan subscription.
+ * @property {string} [adminSiteName] App Service plan administration site.
+ * @property {object} [hostingEnvironmentProfile] Specification for the App
  * Service Environment to use for the App Service plan.
- * @member {string} [hostingEnvironmentProfile.id] Resource ID of the App
+ * @property {string} [hostingEnvironmentProfile.id] Resource ID of the App
  * Service Environment.
- * @member {string} [hostingEnvironmentProfile.name] Name of the App Service
+ * @property {string} [hostingEnvironmentProfile.name] Name of the App Service
  * Environment.
- * @member {string} [hostingEnvironmentProfile.type] Resource type of the App
+ * @property {string} [hostingEnvironmentProfile.type] Resource type of the App
  * Service Environment.
- * @member {number} [maximumNumberOfWorkers] Maximum number of instances that
+ * @property {number} [maximumNumberOfWorkers] Maximum number of instances that
  * can be assigned to this App Service plan.
- * @member {string} [geoRegion] Geographical location for the App Service plan.
- * @member {boolean} [perSiteScaling] If <code>true</code>, apps assigned to
+ * @property {string} [geoRegion] Geographical location for the App Service
+ * plan.
+ * @property {boolean} [perSiteScaling] If <code>true</code>, apps assigned to
  * this App Service plan can be scaled independently.
  * If <code>false</code>, apps assigned to this App Service plan will scale to
  * all instances of the plan. Default value: false .
- * @member {number} [maximumElasticWorkerCount] Maximum number of total workers
- * allowed for this ElasticScaleEnabled App Service Plan
- * @member {number} [numberOfSites] Number of apps assigned to this App Service
- * plan.
- * @member {boolean} [isSpot] If <code>true</code>, this App Service Plan owns
- * spot instances.
- * @member {date} [spotExpirationTime] The time when the server farm expires.
+ * @property {number} [maximumElasticWorkerCount] Maximum number of total
+ * workers allowed for this ElasticScaleEnabled App Service Plan
+ * @property {number} [numberOfSites] Number of apps assigned to this App
+ * Service plan.
+ * @property {boolean} [isSpot] If <code>true</code>, this App Service Plan
+ * owns spot instances.
+ * @property {date} [spotExpirationTime] The time when the server farm expires.
  * Valid only if it is a spot server farm.
- * @member {date} [freeOfferExpirationTime] The time when the server farm free
- * offer expires.
- * @member {string} [resourceGroup] Resource group of the App Service plan.
- * @member {boolean} [reserved] If Linux app service plan <code>true</code>,
+ * @property {date} [freeOfferExpirationTime] The time when the server farm
+ * free offer expires.
+ * @property {string} [resourceGroup] Resource group of the App Service plan.
+ * @property {boolean} [reserved] If Linux app service plan <code>true</code>,
  * <code>false</code> otherwise. Default value: false .
- * @member {boolean} [isXenon] Obsolete: If Hyper-V container app service plan
+ * @property {boolean} [isXenon] Obsolete: If Hyper-V container app service
+ * plan <code>true</code>, <code>false</code> otherwise. Default value: false .
+ * @property {boolean} [hyperV] If Hyper-V container app service plan
  * <code>true</code>, <code>false</code> otherwise. Default value: false .
- * @member {boolean} [hyperV] If Hyper-V container app service plan
- * <code>true</code>, <code>false</code> otherwise. Default value: false .
- * @member {number} [targetWorkerCount] Scaling worker count.
- * @member {number} [targetWorkerSizeId] Scaling worker size ID.
- * @member {string} [provisioningState] Provisioning state of the App Service
+ * @property {number} [targetWorkerCount] Scaling worker count.
+ * @property {number} [targetWorkerSizeId] Scaling worker size ID.
+ * @property {string} [provisioningState] Provisioning state of the App Service
  * Environment. Possible values include: 'Succeeded', 'Failed', 'Canceled',
  * 'InProgress', 'Deleting'
  */
@@ -6962,8 +7079,9 @@ export interface AppServicePlanPatchResource extends ProxyOnlyResource {
  * Hybrid Connection limits contract. This is used to return the plan limits of
  * Hybrid Connections.
  *
- * @member {number} [current] The current number of Hybrid Connections.
- * @member {number} [maximum] The maximum number of Hybrid Connections allowed.
+ * @property {number} [current] The current number of Hybrid Connections.
+ * @property {number} [maximum] The maximum number of Hybrid Connections
+ * allowed.
  */
 export interface HybridConnectionLimits extends ProxyOnlyResource {
   readonly current?: number;
@@ -6976,9 +7094,9 @@ export interface HybridConnectionLimits extends ProxyOnlyResource {
  * @constructor
  * Used for getting ResourceHealthCheck settings.
  *
- * @member {string} [category] The category that the resource matches in the
+ * @property {string} [category] The category that the resource matches in the
  * RHC Policy File
- * @member {boolean} [signalAvailability] Is there a health signal for the
+ * @property {boolean} [signalAvailability] Is there a health signal for the
  * resource
  */
 export interface ResourceHealthMetadata extends ProxyOnlyResource {
@@ -6993,7 +7111,7 @@ export interface ResourceHealthMetadata extends ProxyOnlyResource {
  * @constructor
  * Collection of certitificate orders.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface AppServiceCertificateOrderCollection extends Array<AppServiceCertificateOrder> {
   readonly nextLink?: string;
@@ -7005,7 +7123,7 @@ export interface AppServiceCertificateOrderCollection extends Array<AppServiceCe
  * @constructor
  * Collection of certitificateorder certificates.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface AppServiceCertificateCollection extends Array<AppServiceCertificateResource> {
   readonly nextLink?: string;
@@ -7017,7 +7135,7 @@ export interface AppServiceCertificateCollection extends Array<AppServiceCertifi
  * @constructor
  * Collection of Azure resource manager operation metadata.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface CsmOperationCollection extends Array<CsmOperationDescription> {
   readonly nextLink?: string;
@@ -7029,7 +7147,7 @@ export interface CsmOperationCollection extends Array<CsmOperationDescription> {
  * @constructor
  * Collection of domains.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface DomainCollection extends Array<Domain> {
   readonly nextLink?: string;
@@ -7041,7 +7159,7 @@ export interface DomainCollection extends Array<Domain> {
  * @constructor
  * Collection of domain name identifiers.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface NameIdentifierCollection extends Array<NameIdentifier> {
   readonly nextLink?: string;
@@ -7053,7 +7171,7 @@ export interface NameIdentifierCollection extends Array<NameIdentifier> {
  * @constructor
  * Collection of domain ownership identifiers.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface DomainOwnershipIdentifierCollection extends Array<DomainOwnershipIdentifier> {
   readonly nextLink?: string;
@@ -7065,7 +7183,7 @@ export interface DomainOwnershipIdentifierCollection extends Array<DomainOwnersh
  * @constructor
  * Collection of Top-level domains.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface TopLevelDomainCollection extends Array<TopLevelDomain> {
   readonly nextLink?: string;
@@ -7077,7 +7195,7 @@ export interface TopLevelDomainCollection extends Array<TopLevelDomain> {
  * @constructor
  * Collection of top-level domain legal agreements.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface TldLegalAgreementCollection extends Array<TldLegalAgreement> {
   readonly nextLink?: string;
@@ -7089,7 +7207,7 @@ export interface TldLegalAgreementCollection extends Array<TldLegalAgreement> {
  * @constructor
  * Collection of certificates.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface CertificateCollection extends Array<Certificate> {
   readonly nextLink?: string;
@@ -7101,7 +7219,7 @@ export interface CertificateCollection extends Array<Certificate> {
  * @constructor
  * Collection of deleted apps.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface DeletedWebAppCollection extends Array<DeletedSite> {
   readonly nextLink?: string;
@@ -7113,7 +7231,7 @@ export interface DeletedWebAppCollection extends Array<DeletedSite> {
  * @constructor
  * Collection of detector responses
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface DetectorResponseCollection extends Array<DetectorResponse> {
   readonly nextLink?: string;
@@ -7125,7 +7243,7 @@ export interface DetectorResponseCollection extends Array<DetectorResponse> {
  * @constructor
  * Collection of Diagnostic Categories
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface DiagnosticCategoryCollection extends Array<DiagnosticCategory> {
   readonly nextLink?: string;
@@ -7137,7 +7255,7 @@ export interface DiagnosticCategoryCollection extends Array<DiagnosticCategory> 
  * @constructor
  * Collection of Diagnostic Analyses
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface DiagnosticAnalysisCollection extends Array<AnalysisDefinition> {
   readonly nextLink?: string;
@@ -7149,7 +7267,7 @@ export interface DiagnosticAnalysisCollection extends Array<AnalysisDefinition> 
  * @constructor
  * Collection of Diagnostic Detectors
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface DiagnosticDetectorCollection extends Array<DetectorDefinition> {
   readonly nextLink?: string;
@@ -7161,7 +7279,7 @@ export interface DiagnosticDetectorCollection extends Array<DetectorDefinition> 
  * @constructor
  * Collection of Application Stacks
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface ApplicationStackCollection extends Array<ApplicationStack> {
   readonly nextLink?: string;
@@ -7173,7 +7291,7 @@ export interface ApplicationStackCollection extends Array<ApplicationStack> {
  * @constructor
  * Collection of recommendations.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface RecommendationCollection extends Array<Recommendation> {
   readonly nextLink?: string;
@@ -7185,7 +7303,7 @@ export interface RecommendationCollection extends Array<Recommendation> {
  * @constructor
  * Collection of source controls.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface SourceControlCollection extends Array<SourceControl> {
   readonly nextLink?: string;
@@ -7197,7 +7315,7 @@ export interface SourceControlCollection extends Array<SourceControl> {
  * @constructor
  * Collection of Billing Meters
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface BillingMeterCollection extends Array<BillingMeter> {
   readonly nextLink?: string;
@@ -7209,7 +7327,7 @@ export interface BillingMeterCollection extends Array<BillingMeter> {
  * @constructor
  * Collection of geographical regions.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface GeoRegionCollection extends Array<GeoRegion> {
   readonly nextLink?: string;
@@ -7221,7 +7339,7 @@ export interface GeoRegionCollection extends Array<GeoRegion> {
  * @constructor
  * Collection of identifiers.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface IdentifierCollection extends Array<Identifier> {
   readonly nextLink?: string;
@@ -7233,7 +7351,7 @@ export interface IdentifierCollection extends Array<Identifier> {
  * @constructor
  * Collection of premier add-on offers.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface PremierAddOnOfferCollection extends Array<PremierAddOnOffer> {
   readonly nextLink?: string;
@@ -7245,7 +7363,7 @@ export interface PremierAddOnOfferCollection extends Array<PremierAddOnOffer> {
  * @constructor
  * Collection of App Service apps.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface WebAppCollection extends Array<Site> {
   readonly nextLink?: string;
@@ -7257,7 +7375,7 @@ export interface WebAppCollection extends Array<Site> {
  * @constructor
  * Collection of backup items.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface BackupItemCollection extends Array<BackupItem> {
   readonly nextLink?: string;
@@ -7269,7 +7387,7 @@ export interface BackupItemCollection extends Array<BackupItem> {
  * @constructor
  * Collection of site configurations.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface SiteConfigResourceCollection extends Array<SiteConfigResource> {
   readonly nextLink?: string;
@@ -7282,7 +7400,7 @@ export interface SiteConfigResourceCollection extends Array<SiteConfigResource> 
  * Collection of metadata for the app configuration snapshots that can be
  * restored.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface SiteConfigurationSnapshotInfoCollection extends Array<SiteConfigurationSnapshotInfo> {
   readonly nextLink?: string;
@@ -7294,7 +7412,7 @@ export interface SiteConfigurationSnapshotInfoCollection extends Array<SiteConfi
  * @constructor
  * Collection of Kudu continuous web job information elements.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface ContinuousWebJobCollection extends Array<ContinuousWebJob> {
   readonly nextLink?: string;
@@ -7306,7 +7424,7 @@ export interface ContinuousWebJobCollection extends Array<ContinuousWebJob> {
  * @constructor
  * Collection of app deployments.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface DeploymentCollection extends Array<Deployment> {
   readonly nextLink?: string;
@@ -7318,7 +7436,7 @@ export interface DeploymentCollection extends Array<Deployment> {
  * @constructor
  * Collection of Kudu function information elements.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface FunctionEnvelopeCollection extends Array<FunctionEnvelope> {
   readonly nextLink?: string;
@@ -7330,7 +7448,7 @@ export interface FunctionEnvelopeCollection extends Array<FunctionEnvelope> {
  * @constructor
  * Collection of hostname bindings.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface HostNameBindingCollection extends Array<HostNameBinding> {
   readonly nextLink?: string;
@@ -7342,7 +7460,7 @@ export interface HostNameBindingCollection extends Array<HostNameBinding> {
  * @constructor
  * Collection of app instances.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface WebAppInstanceCollection extends Array<SiteInstance> {
   readonly nextLink?: string;
@@ -7354,7 +7472,7 @@ export interface WebAppInstanceCollection extends Array<SiteInstance> {
  * @constructor
  * Collection of Kudu process information elements.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface ProcessInfoCollection extends Array<ProcessInfo> {
   readonly nextLink?: string;
@@ -7366,7 +7484,7 @@ export interface ProcessInfoCollection extends Array<ProcessInfo> {
  * @constructor
  * Collection of Kudu thread information elements.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface ProcessModuleInfoCollection extends Array<ProcessModuleInfo> {
   readonly nextLink?: string;
@@ -7378,7 +7496,7 @@ export interface ProcessModuleInfoCollection extends Array<ProcessModuleInfo> {
  * @constructor
  * Collection of Kudu thread information elements.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface ProcessThreadInfoCollection extends Array<ProcessThreadInfo> {
   readonly nextLink?: string;
@@ -7390,7 +7508,7 @@ export interface ProcessThreadInfoCollection extends Array<ProcessThreadInfo> {
  * @constructor
  * Collection of metric definitions.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface ResourceMetricDefinitionCollection extends Array<ResourceMetricDefinition> {
   readonly nextLink?: string;
@@ -7402,7 +7520,7 @@ export interface ResourceMetricDefinitionCollection extends Array<ResourceMetric
  * @constructor
  * Collection of metric responses.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface ResourceMetricCollection extends Array<ResourceMetric> {
   readonly nextLink?: string;
@@ -7414,7 +7532,7 @@ export interface ResourceMetricCollection extends Array<ResourceMetric> {
  * @constructor
  * Collection of performance monitor counters.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface PerfMonCounterCollection extends Array<PerfMonResponse> {
   readonly nextLink?: string;
@@ -7426,7 +7544,7 @@ export interface PerfMonCounterCollection extends Array<PerfMonResponse> {
  * @constructor
  * Collection of public certificates
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface PublicCertificateCollection extends Array<PublicCertificate> {
   readonly nextLink?: string;
@@ -7438,7 +7556,7 @@ export interface PublicCertificateCollection extends Array<PublicCertificate> {
  * @constructor
  * Collection of Kudu site extension information elements.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface SiteExtensionInfoCollection extends Array<SiteExtensionInfo> {
   readonly nextLink?: string;
@@ -7450,7 +7568,7 @@ export interface SiteExtensionInfoCollection extends Array<SiteExtensionInfo> {
  * @constructor
  * Collection of slot differences.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface SlotDifferenceCollection extends Array<SlotDifference> {
   readonly nextLink?: string;
@@ -7463,7 +7581,7 @@ export interface SlotDifferenceCollection extends Array<SlotDifference> {
  * Collection of snapshots which can be used to revert an app to a previous
  * time.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface SnapshotCollection extends Array<Snapshot> {
   readonly nextLink?: string;
@@ -7475,7 +7593,7 @@ export interface SnapshotCollection extends Array<Snapshot> {
  * @constructor
  * Collection of Kudu continuous web job information elements.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface TriggeredWebJobCollection extends Array<TriggeredWebJob> {
   readonly nextLink?: string;
@@ -7487,7 +7605,7 @@ export interface TriggeredWebJobCollection extends Array<TriggeredWebJob> {
  * @constructor
  * Collection of Kudu continuous web job information elements.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface TriggeredJobHistoryCollection extends Array<TriggeredJobHistory> {
   readonly nextLink?: string;
@@ -7499,7 +7617,7 @@ export interface TriggeredJobHistoryCollection extends Array<TriggeredJobHistory
  * @constructor
  * Collection of CSM usage quotas.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface CsmUsageQuotaCollection extends Array<CsmUsageQuota> {
   readonly nextLink?: string;
@@ -7511,7 +7629,7 @@ export interface CsmUsageQuotaCollection extends Array<CsmUsageQuota> {
  * @constructor
  * Collection of Kudu web job information elements.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface WebJobCollection extends Array<WebJob> {
   readonly nextLink?: string;
@@ -7523,7 +7641,7 @@ export interface WebJobCollection extends Array<WebJob> {
  * @constructor
  * Collection of App Service Environments.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface AppServiceEnvironmentCollection extends Array<AppServiceEnvironmentResource> {
   readonly nextLink?: string;
@@ -7535,7 +7653,7 @@ export interface AppServiceEnvironmentCollection extends Array<AppServiceEnviron
  * @constructor
  * Collection of stamp capacities.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface StampCapacityCollection extends Array<StampCapacity> {
   readonly nextLink?: string;
@@ -7547,7 +7665,7 @@ export interface StampCapacityCollection extends Array<StampCapacity> {
  * @constructor
  * Collection of worker pools.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface WorkerPoolCollection extends Array<WorkerPoolResource> {
   readonly nextLink?: string;
@@ -7559,7 +7677,7 @@ export interface WorkerPoolCollection extends Array<WorkerPoolResource> {
  * @constructor
  * Collection of SKU information.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface SkuInfoCollection extends Array<SkuInfo> {
   readonly nextLink?: string;
@@ -7571,7 +7689,7 @@ export interface SkuInfoCollection extends Array<SkuInfo> {
  * @constructor
  * Collection of usages.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface UsageCollection extends Array<Usage> {
   readonly nextLink?: string;
@@ -7583,7 +7701,7 @@ export interface UsageCollection extends Array<Usage> {
  * @constructor
  * Collection of App Service plans.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface AppServicePlanCollection extends Array<AppServicePlan> {
   readonly nextLink?: string;
@@ -7595,7 +7713,7 @@ export interface AppServicePlanCollection extends Array<AppServicePlan> {
  * @constructor
  * Collection of resources.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface ResourceCollection extends Array<string> {
   readonly nextLink?: string;
@@ -7607,7 +7725,7 @@ export interface ResourceCollection extends Array<string> {
  * @constructor
  * Collection of hostname bindings.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface HybridConnectionCollection extends Array<HybridConnection> {
   readonly nextLink?: string;
@@ -7619,7 +7737,7 @@ export interface HybridConnectionCollection extends Array<HybridConnection> {
  * @constructor
  * Collection of resource health metadata.
  *
- * @member {string} [nextLink] Link to next page of resources.
+ * @property {string} [nextLink] Link to next page of resources.
  */
 export interface ResourceHealthMetadataCollection extends Array<ResourceHealthMetadata> {
   readonly nextLink?: string;
