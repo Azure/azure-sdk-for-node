@@ -695,11 +695,11 @@ export interface Invoices {
 
 /**
  * @class
- * InvoicePricesheets
+ * InvoicePricesheet
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the BillingManagementClient.
  */
-export interface InvoicePricesheets {
+export interface InvoicePricesheet {
 
 
     /**
