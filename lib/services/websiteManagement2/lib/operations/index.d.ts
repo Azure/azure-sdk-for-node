@@ -13470,6 +13470,339 @@ export interface WebApps {
 
 
     /**
+     * @summary Gets a Swift Virtual Network connection.
+     *
+     * Gets a Swift Virtual Network connection.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSwiftVirtualNetworkConnectionWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
+
+    /**
+     * @summary Gets a Swift Virtual Network connection.
+     *
+     * Gets a Swift Virtual Network connection.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SwiftVirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
+    getSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+    getSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateSwiftVirtualNetworkConnectionWithHttpOperationResponse(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SwiftVirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
+    createOrUpdateSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+    createOrUpdateSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+
+
+    /**
+     * @summary Deletes a Swift Virtual Network connection from an app (or
+     * deployment slot).
+     *
+     * Deletes a Swift Virtual Network connection from an app (or deployment slot).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteSwiftVirtualNetworkWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes a Swift Virtual Network connection from an app (or
+     * deployment slot).
+     *
+     * Deletes a Swift Virtual Network connection from an app (or deployment slot).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteSwiftVirtualNetwork(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteSwiftVirtualNetwork(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
+    deleteSwiftVirtualNetwork(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateSwiftVirtualNetworkConnectionWithHttpOperationResponse(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SwiftVirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
+    updateSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+    updateSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+
+
+    /**
      * @summary Gets the configuration of an app, such as platform version and
      * bitness, default documents, virtual applications, Always On, etc.
      *
@@ -19763,339 +20096,6 @@ export interface WebApps {
     getMigrateMySqlStatus(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrateMySqlStatus>;
     getMigrateMySqlStatus(resourceGroupName: string, name: string, callback: ServiceCallback<models.MigrateMySqlStatus>): void;
     getMigrateMySqlStatus(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrateMySqlStatus>): void;
-
-
-    /**
-     * @summary Gets a Swift Virtual Network connection.
-     *
-     * Gets a Swift Virtual Network connection.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getSwiftVirtualNetworkConnectionWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
-
-    /**
-     * @summary Gets a Swift Virtual Network connection.
-     *
-     * Gets a Swift Virtual Network connection.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SwiftVirtualNetwork} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
-    getSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
-    getSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
-
-
-    /**
-     * @summary Integrates this Web App with a Virtual Network. This requires that
-     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
-     * that the target Subnet has already been delegated, and is not
-     * in use by another App Service Plan other than the one this App is in.
-     *
-     * Integrates this Web App with a Virtual Network. This requires that 1)
-     * "swiftSupported" is true when doing a GET against this resource, and 2) that
-     * the target Subnet has already been delegated, and is not
-     * in use by another App Service Plan other than the one this App is in.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {object} connectionEnvelope Properties of the Virtual Network
-     * connection. See example.
-     *
-     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
-     * subnet's resource ID. This is the subnet that this Web App will join. This
-     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
-     *
-     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
-     * if the scale unit this Web App is on supports Swift integration.
-     *
-     * @param {string} [connectionEnvelope.kind] Kind of resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateSwiftVirtualNetworkConnectionWithHttpOperationResponse(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
-
-    /**
-     * @summary Integrates this Web App with a Virtual Network. This requires that
-     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
-     * that the target Subnet has already been delegated, and is not
-     * in use by another App Service Plan other than the one this App is in.
-     *
-     * Integrates this Web App with a Virtual Network. This requires that 1)
-     * "swiftSupported" is true when doing a GET against this resource, and 2) that
-     * the target Subnet has already been delegated, and is not
-     * in use by another App Service Plan other than the one this App is in.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {object} connectionEnvelope Properties of the Virtual Network
-     * connection. See example.
-     *
-     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
-     * subnet's resource ID. This is the subnet that this Web App will join. This
-     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
-     *
-     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
-     * if the scale unit this Web App is on supports Swift integration.
-     *
-     * @param {string} [connectionEnvelope.kind] Kind of resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SwiftVirtualNetwork} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdateSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
-    createOrUpdateSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
-    createOrUpdateSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
-
-
-    /**
-     * @summary Deletes a Swift Virtual Network connection from an app (or
-     * deployment slot).
-     *
-     * Deletes a Swift Virtual Network connection from an app (or deployment slot).
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteSwiftVirtualNetworkWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * @summary Deletes a Swift Virtual Network connection from an app (or
-     * deployment slot).
-     *
-     * Deletes a Swift Virtual Network connection from an app (or deployment slot).
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteSwiftVirtualNetwork(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteSwiftVirtualNetwork(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteSwiftVirtualNetwork(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * @summary Integrates this Web App with a Virtual Network. This requires that
-     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
-     * that the target Subnet has already been delegated, and is not
-     * in use by another App Service Plan other than the one this App is in.
-     *
-     * Integrates this Web App with a Virtual Network. This requires that 1)
-     * "swiftSupported" is true when doing a GET against this resource, and 2) that
-     * the target Subnet has already been delegated, and is not
-     * in use by another App Service Plan other than the one this App is in.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {object} connectionEnvelope Properties of the Virtual Network
-     * connection. See example.
-     *
-     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
-     * subnet's resource ID. This is the subnet that this Web App will join. This
-     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
-     *
-     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
-     * if the scale unit this Web App is on supports Swift integration.
-     *
-     * @param {string} [connectionEnvelope.kind] Kind of resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateSwiftVirtualNetworkConnectionWithHttpOperationResponse(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
-
-    /**
-     * @summary Integrates this Web App with a Virtual Network. This requires that
-     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
-     * that the target Subnet has already been delegated, and is not
-     * in use by another App Service Plan other than the one this App is in.
-     *
-     * Integrates this Web App with a Virtual Network. This requires that 1)
-     * "swiftSupported" is true when doing a GET against this resource, and 2) that
-     * the target Subnet has already been delegated, and is not
-     * in use by another App Service Plan other than the one this App is in.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {object} connectionEnvelope Properties of the Virtual Network
-     * connection. See example.
-     *
-     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
-     * subnet's resource ID. This is the subnet that this Web App will join. This
-     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
-     *
-     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
-     * if the scale unit this Web App is on supports Swift integration.
-     *
-     * @param {string} [connectionEnvelope.kind] Kind of resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SwiftVirtualNetwork} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    updateSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
-    updateSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
-    updateSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
 
 
     /**
@@ -27944,6 +27944,365 @@ export interface WebApps {
 
 
     /**
+     * @summary Gets a Swift Virtual Network connection.
+     *
+     * Gets a Swift Virtual Network connection.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will get a gateway for the production slot's Virtual
+     * Network.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSwiftVirtualNetworkConnectionSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
+
+    /**
+     * @summary Gets a Swift Virtual Network connection.
+     *
+     * Gets a Swift Virtual Network connection.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will get a gateway for the production slot's Virtual
+     * Network.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SwiftVirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
+    getSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+    getSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will add or update connections for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateSwiftVirtualNetworkConnectionSlotWithHttpOperationResponse(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will add or update connections for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SwiftVirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
+    createOrUpdateSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+    createOrUpdateSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+
+
+    /**
+     * @summary Deletes a Swift Virtual Network connection from an app (or
+     * deployment slot).
+     *
+     * Deletes a Swift Virtual Network connection from an app (or deployment slot).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will delete the connection for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteSwiftVirtualNetworkSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes a Swift Virtual Network connection from an app (or
+     * deployment slot).
+     *
+     * Deletes a Swift Virtual Network connection from an app (or deployment slot).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will delete the connection for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteSwiftVirtualNetworkSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteSwiftVirtualNetworkSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<void>): void;
+    deleteSwiftVirtualNetworkSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will add or update connections for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateSwiftVirtualNetworkConnectionSlotWithHttpOperationResponse(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will add or update connections for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SwiftVirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
+    updateSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+    updateSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+
+
+    /**
      * @summary Gets the configuration of an app, such as platform version and
      * bitness, default documents, virtual applications, Always On, etc.
      *
@@ -34424,365 +34783,6 @@ export interface WebApps {
     getMigrateMySqlStatusSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrateMySqlStatus>;
     getMigrateMySqlStatusSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.MigrateMySqlStatus>): void;
     getMigrateMySqlStatusSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrateMySqlStatus>): void;
-
-
-    /**
-     * @summary Gets a Swift Virtual Network connection.
-     *
-     * Gets a Swift Virtual Network connection.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {string} slot Name of the deployment slot. If a slot is not
-     * specified, the API will get a gateway for the production slot's Virtual
-     * Network.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getSwiftVirtualNetworkConnectionSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
-
-    /**
-     * @summary Gets a Swift Virtual Network connection.
-     *
-     * Gets a Swift Virtual Network connection.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {string} slot Name of the deployment slot. If a slot is not
-     * specified, the API will get a gateway for the production slot's Virtual
-     * Network.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SwiftVirtualNetwork} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
-    getSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
-    getSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
-
-
-    /**
-     * @summary Integrates this Web App with a Virtual Network. This requires that
-     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
-     * that the target Subnet has already been delegated, and is not
-     * in use by another App Service Plan other than the one this App is in.
-     *
-     * Integrates this Web App with a Virtual Network. This requires that 1)
-     * "swiftSupported" is true when doing a GET against this resource, and 2) that
-     * the target Subnet has already been delegated, and is not
-     * in use by another App Service Plan other than the one this App is in.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {object} connectionEnvelope Properties of the Virtual Network
-     * connection. See example.
-     *
-     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
-     * subnet's resource ID. This is the subnet that this Web App will join. This
-     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
-     *
-     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
-     * if the scale unit this Web App is on supports Swift integration.
-     *
-     * @param {string} [connectionEnvelope.kind] Kind of resource.
-     *
-     * @param {string} slot Name of the deployment slot. If a slot is not
-     * specified, the API will add or update connections for the production slot.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateSwiftVirtualNetworkConnectionSlotWithHttpOperationResponse(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
-
-    /**
-     * @summary Integrates this Web App with a Virtual Network. This requires that
-     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
-     * that the target Subnet has already been delegated, and is not
-     * in use by another App Service Plan other than the one this App is in.
-     *
-     * Integrates this Web App with a Virtual Network. This requires that 1)
-     * "swiftSupported" is true when doing a GET against this resource, and 2) that
-     * the target Subnet has already been delegated, and is not
-     * in use by another App Service Plan other than the one this App is in.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {object} connectionEnvelope Properties of the Virtual Network
-     * connection. See example.
-     *
-     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
-     * subnet's resource ID. This is the subnet that this Web App will join. This
-     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
-     *
-     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
-     * if the scale unit this Web App is on supports Swift integration.
-     *
-     * @param {string} [connectionEnvelope.kind] Kind of resource.
-     *
-     * @param {string} slot Name of the deployment slot. If a slot is not
-     * specified, the API will add or update connections for the production slot.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SwiftVirtualNetwork} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdateSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
-    createOrUpdateSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
-    createOrUpdateSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
-
-
-    /**
-     * @summary Deletes a Swift Virtual Network connection from an app (or
-     * deployment slot).
-     *
-     * Deletes a Swift Virtual Network connection from an app (or deployment slot).
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {string} slot Name of the deployment slot. If a slot is not
-     * specified, the API will delete the connection for the production slot.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteSwiftVirtualNetworkSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * @summary Deletes a Swift Virtual Network connection from an app (or
-     * deployment slot).
-     *
-     * Deletes a Swift Virtual Network connection from an app (or deployment slot).
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {string} slot Name of the deployment slot. If a slot is not
-     * specified, the API will delete the connection for the production slot.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteSwiftVirtualNetworkSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteSwiftVirtualNetworkSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<void>): void;
-    deleteSwiftVirtualNetworkSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * @summary Integrates this Web App with a Virtual Network. This requires that
-     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
-     * that the target Subnet has already been delegated, and is not
-     * in use by another App Service Plan other than the one this App is in.
-     *
-     * Integrates this Web App with a Virtual Network. This requires that 1)
-     * "swiftSupported" is true when doing a GET against this resource, and 2) that
-     * the target Subnet has already been delegated, and is not
-     * in use by another App Service Plan other than the one this App is in.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {object} connectionEnvelope Properties of the Virtual Network
-     * connection. See example.
-     *
-     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
-     * subnet's resource ID. This is the subnet that this Web App will join. This
-     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
-     *
-     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
-     * if the scale unit this Web App is on supports Swift integration.
-     *
-     * @param {string} [connectionEnvelope.kind] Kind of resource.
-     *
-     * @param {string} slot Name of the deployment slot. If a slot is not
-     * specified, the API will add or update connections for the production slot.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateSwiftVirtualNetworkConnectionSlotWithHttpOperationResponse(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
-
-    /**
-     * @summary Integrates this Web App with a Virtual Network. This requires that
-     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
-     * that the target Subnet has already been delegated, and is not
-     * in use by another App Service Plan other than the one this App is in.
-     *
-     * Integrates this Web App with a Virtual Network. This requires that 1)
-     * "swiftSupported" is true when doing a GET against this resource, and 2) that
-     * the target Subnet has already been delegated, and is not
-     * in use by another App Service Plan other than the one this App is in.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {object} connectionEnvelope Properties of the Virtual Network
-     * connection. See example.
-     *
-     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
-     * subnet's resource ID. This is the subnet that this Web App will join. This
-     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
-     *
-     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
-     * if the scale unit this Web App is on supports Swift integration.
-     *
-     * @param {string} [connectionEnvelope.kind] Kind of resource.
-     *
-     * @param {string} slot Name of the deployment slot. If a slot is not
-     * specified, the API will add or update connections for the production slot.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SwiftVirtualNetwork} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    updateSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
-    updateSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
-    updateSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
 
 
     /**
