@@ -14,29 +14,41 @@ import * as models from '../models';
 
 /**
  * @class
- * LinkedServices
+ * StorageInsights
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the OperationalInsightsManagementClient.
  */
-export interface LinkedServices {
+export interface StorageInsights {
 
 
     /**
-     * Create or update a linked service.
+     * Create or update a storage insight.
      *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
+     * @param {string} resourceGroupName The Resource Group name.
      *
-     * @param {string} workspaceName Name of the Log Analytics Workspace that will
-     * contain the linkedServices resource
+     * @param {string} workspaceName The Log Analytics Workspace name.
      *
-     * @param {string} linkedServiceName Name of the linkedServices resource
+     * @param {string} storageInsightName Name of the storageInsightsConfigs
+     * resource
      *
      * @param {object} parameters The parameters required to create or update a
-     * linked service.
+     * storage insight.
      *
-     * @param {string} parameters.resourceId The resource id of the resource that
-     * will be linked to the workspace.
+     * @param {array} [parameters.containers] The names of the blob containers that
+     * the workspace should read
+     *
+     * @param {array} [parameters.tables] The names of the Azure tables that the
+     * workspace should read
+     *
+     * @param {object} parameters.storageAccount The storage account connection
+     * details
+     *
+     * @param {string} parameters.storageAccount.id The Azure Resource Manager ID
+     * of the storage account resource.
+     *
+     * @param {string} parameters.storageAccount.key The storage account key.
+     *
+     * @param {string} [parameters.eTag] The ETag of the storage insight.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -45,28 +57,40 @@ export interface LinkedServices {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<LinkedService>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<StorageInsight>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, linkedServiceName: string, parameters: models.LinkedService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LinkedService>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, storageInsightName: string, parameters: models.StorageInsight, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageInsight>>;
 
     /**
-     * Create or update a linked service.
+     * Create or update a storage insight.
      *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
+     * @param {string} resourceGroupName The Resource Group name.
      *
-     * @param {string} workspaceName Name of the Log Analytics Workspace that will
-     * contain the linkedServices resource
+     * @param {string} workspaceName The Log Analytics Workspace name.
      *
-     * @param {string} linkedServiceName Name of the linkedServices resource
+     * @param {string} storageInsightName Name of the storageInsightsConfigs
+     * resource
      *
      * @param {object} parameters The parameters required to create or update a
-     * linked service.
+     * storage insight.
      *
-     * @param {string} parameters.resourceId The resource id of the resource that
-     * will be linked to the workspace.
+     * @param {array} [parameters.containers] The names of the blob containers that
+     * the workspace should read
+     *
+     * @param {array} [parameters.tables] The names of the Azure tables that the
+     * workspace should read
+     *
+     * @param {object} parameters.storageAccount The storage account connection
+     * details
+     *
+     * @param {string} parameters.storageAccount.id The Azure Resource Manager ID
+     * of the storage account resource.
+     *
+     * @param {string} parameters.storageAccount.key The storage account key.
+     *
+     * @param {string} [parameters.eTag] The ETag of the storage insight.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -80,7 +104,7 @@ export interface LinkedServices {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {LinkedService} - The deserialized result object.
+     *                      @resolve {StorageInsight} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -88,28 +112,92 @@ export interface LinkedServices {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {LinkedService} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LinkedService} for more information.
+     *                      {StorageInsight} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link StorageInsight} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, workspaceName: string, linkedServiceName: string, parameters: models.LinkedService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LinkedService>;
-    createOrUpdate(resourceGroupName: string, workspaceName: string, linkedServiceName: string, parameters: models.LinkedService, callback: ServiceCallback<models.LinkedService>): void;
-    createOrUpdate(resourceGroupName: string, workspaceName: string, linkedServiceName: string, parameters: models.LinkedService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LinkedService>): void;
+    createOrUpdate(resourceGroupName: string, workspaceName: string, storageInsightName: string, parameters: models.StorageInsight, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageInsight>;
+    createOrUpdate(resourceGroupName: string, workspaceName: string, storageInsightName: string, parameters: models.StorageInsight, callback: ServiceCallback<models.StorageInsight>): void;
+    createOrUpdate(resourceGroupName: string, workspaceName: string, storageInsightName: string, parameters: models.StorageInsight, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageInsight>): void;
 
 
     /**
-     * Deletes a linked service instance.
+     * Gets a storage insight instance.
      *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
+     * @param {string} resourceGroupName The Resource Group name.
      *
-     * @param {string} workspaceName Name of the Log Analytics Workspace that
-     * contains the linkedServices resource
+     * @param {string} workspaceName The Log Analytics Workspace name.
      *
-     * @param {string} linkedServiceName Name of the linked service.
+     * @param {string} storageInsightName Name of the storageInsightsConfigs
+     * resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<StorageInsight>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, storageInsightName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageInsight>>;
+
+    /**
+     * Gets a storage insight instance.
+     *
+     * @param {string} resourceGroupName The Resource Group name.
+     *
+     * @param {string} workspaceName The Log Analytics Workspace name.
+     *
+     * @param {string} storageInsightName Name of the storageInsightsConfigs
+     * resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {StorageInsight} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {StorageInsight} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link StorageInsight} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, workspaceName: string, storageInsightName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageInsight>;
+    get(resourceGroupName: string, workspaceName: string, storageInsightName: string, callback: ServiceCallback<models.StorageInsight>): void;
+    get(resourceGroupName: string, workspaceName: string, storageInsightName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageInsight>): void;
+
+
+    /**
+     * Deletes a storageInsightsConfigs resource
+     *
+     * @param {string} resourceGroupName The Resource Group name.
+     *
+     * @param {string} workspaceName The Log Analytics Workspace name.
+     *
+     * @param {string} storageInsightName Name of the storageInsightsConfigs
+     * resource
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -122,18 +210,17 @@ export interface LinkedServices {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, linkedServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, storageInsightName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes a linked service instance.
+     * Deletes a storageInsightsConfigs resource
      *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
+     * @param {string} resourceGroupName The Resource Group name.
      *
-     * @param {string} workspaceName Name of the Log Analytics Workspace that
-     * contains the linkedServices resource
+     * @param {string} workspaceName The Log Analytics Workspace name.
      *
-     * @param {string} linkedServiceName Name of the linked service.
+     * @param {string} storageInsightName Name of the storageInsightsConfigs
+     * resource
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -161,21 +248,17 @@ export interface LinkedServices {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, workspaceName: string, linkedServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, workspaceName: string, linkedServiceName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, workspaceName: string, linkedServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, workspaceName: string, storageInsightName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, workspaceName: string, storageInsightName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, workspaceName: string, storageInsightName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * Gets a linked service instance.
+     * Lists the storage insight instances within a workspace
      *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
+     * @param {string} resourceGroupName The Resource Group name.
      *
-     * @param {string} workspaceName Name of the Log Analytics Workspace that
-     * contains the linkedServices resource
-     *
-     * @param {string} linkedServiceName Name of the linked service.
+     * @param {string} workspaceName The Log Analytics Workspace name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -184,22 +267,18 @@ export interface LinkedServices {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<LinkedService>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<StorageInsightListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, linkedServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LinkedService>>;
+    listByWorkspaceWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageInsightListResult>>;
 
     /**
-     * Gets a linked service instance.
+     * Lists the storage insight instances within a workspace
      *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
+     * @param {string} resourceGroupName The Resource Group name.
      *
-     * @param {string} workspaceName Name of the Log Analytics Workspace that
-     * contains the linkedServices resource
-     *
-     * @param {string} linkedServiceName Name of the linked service.
+     * @param {string} workspaceName The Log Analytics Workspace name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -213,7 +292,7 @@ export interface LinkedServices {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {LinkedService} - The deserialized result object.
+     *                      @resolve {StorageInsightListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -221,397 +300,21 @@ export interface LinkedServices {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {LinkedService} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LinkedService} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, workspaceName: string, linkedServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LinkedService>;
-    get(resourceGroupName: string, workspaceName: string, linkedServiceName: string, callback: ServiceCallback<models.LinkedService>): void;
-    get(resourceGroupName: string, workspaceName: string, linkedServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LinkedService>): void;
-
-
-    /**
-     * Gets the linked services instances in a workspace.
-     *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
-     *
-     * @param {string} workspaceName Name of the Log Analytics Workspace that
-     * contains the linked services.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<LinkedServiceListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByWorkspaceWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LinkedServiceListResult>>;
-
-    /**
-     * Gets the linked services instances in a workspace.
-     *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
-     *
-     * @param {string} workspaceName Name of the Log Analytics Workspace that
-     * contains the linked services.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {LinkedServiceListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {LinkedServiceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LinkedServiceListResult} for more
+     *                      {StorageInsightListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link StorageInsightListResult} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByWorkspace(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LinkedServiceListResult>;
-    listByWorkspace(resourceGroupName: string, workspaceName: string, callback: ServiceCallback<models.LinkedServiceListResult>): void;
-    listByWorkspace(resourceGroupName: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LinkedServiceListResult>): void;
-}
-
-/**
- * @class
- * DataSources
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the OperationalInsightsManagementClient.
- */
-export interface DataSources {
+    listByWorkspace(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageInsightListResult>;
+    listByWorkspace(resourceGroupName: string, workspaceName: string, callback: ServiceCallback<models.StorageInsightListResult>): void;
+    listByWorkspace(resourceGroupName: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageInsightListResult>): void;
 
 
     /**
-     * Create or update a data source.
-     *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
-     *
-     * @param {string} workspaceName Name of the Log Analytics Workspace that will
-     * contain the datasource
-     *
-     * @param {string} dataSourceName The name of the datasource resource.
-     *
-     * @param {object} parameters The parameters required to create or update a
-     * datasource.
-     *
-     * @param {object} parameters.properties The data source properties in raw json
-     * format, each kind of data source have it's own schema.
-     *
-     * @param {string} [parameters.eTag] The ETag of the data source.
-     *
-     * @param {string} parameters.kind Possible values include: 'AzureActivityLog',
-     * 'ChangeTrackingPath', 'ChangeTrackingDefaultPath',
-     * 'ChangeTrackingDefaultRegistry', 'ChangeTrackingCustomRegistry',
-     * 'CustomLog', 'CustomLogCollection', 'GenericDataSource', 'IISLogs',
-     * 'LinuxPerformanceObject', 'LinuxPerformanceCollection', 'LinuxSyslog',
-     * 'LinuxSyslogCollection', 'WindowsEvent', 'WindowsPerformanceCounter'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DataSource>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, dataSourceName: string, parameters: models.DataSource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataSource>>;
-
-    /**
-     * Create or update a data source.
-     *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
-     *
-     * @param {string} workspaceName Name of the Log Analytics Workspace that will
-     * contain the datasource
-     *
-     * @param {string} dataSourceName The name of the datasource resource.
-     *
-     * @param {object} parameters The parameters required to create or update a
-     * datasource.
-     *
-     * @param {object} parameters.properties The data source properties in raw json
-     * format, each kind of data source have it's own schema.
-     *
-     * @param {string} [parameters.eTag] The ETag of the data source.
-     *
-     * @param {string} parameters.kind Possible values include: 'AzureActivityLog',
-     * 'ChangeTrackingPath', 'ChangeTrackingDefaultPath',
-     * 'ChangeTrackingDefaultRegistry', 'ChangeTrackingCustomRegistry',
-     * 'CustomLog', 'CustomLogCollection', 'GenericDataSource', 'IISLogs',
-     * 'LinuxPerformanceObject', 'LinuxPerformanceCollection', 'LinuxSyslog',
-     * 'LinuxSyslogCollection', 'WindowsEvent', 'WindowsPerformanceCounter'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DataSource} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DataSource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DataSource} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, workspaceName: string, dataSourceName: string, parameters: models.DataSource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataSource>;
-    createOrUpdate(resourceGroupName: string, workspaceName: string, dataSourceName: string, parameters: models.DataSource, callback: ServiceCallback<models.DataSource>): void;
-    createOrUpdate(resourceGroupName: string, workspaceName: string, dataSourceName: string, parameters: models.DataSource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataSource>): void;
-
-
-    /**
-     * Deletes a data source instance.
-     *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
-     *
-     * @param {string} workspaceName Name of the Log Analytics Workspace that
-     * contains the datasource.
-     *
-     * @param {string} dataSourceName Name of the datasource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, dataSourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes a data source instance.
-     *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
-     *
-     * @param {string} workspaceName Name of the Log Analytics Workspace that
-     * contains the datasource.
-     *
-     * @param {string} dataSourceName Name of the datasource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, workspaceName: string, dataSourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, workspaceName: string, dataSourceName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, workspaceName: string, dataSourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Gets a datasource instance.
-     *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
-     *
-     * @param {string} workspaceName Name of the Log Analytics Workspace that
-     * contains the datasource.
-     *
-     * @param {string} dataSourceName Name of the datasource
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DataSource>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, dataSourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataSource>>;
-
-    /**
-     * Gets a datasource instance.
-     *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
-     *
-     * @param {string} workspaceName Name of the Log Analytics Workspace that
-     * contains the datasource.
-     *
-     * @param {string} dataSourceName Name of the datasource
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DataSource} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DataSource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DataSource} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, workspaceName: string, dataSourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataSource>;
-    get(resourceGroupName: string, workspaceName: string, dataSourceName: string, callback: ServiceCallback<models.DataSource>): void;
-    get(resourceGroupName: string, workspaceName: string, dataSourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataSource>): void;
-
-
-    /**
-     * Gets the first page of data source instances in a workspace with the link to
-     * the next page.
-     *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
-     *
-     * @param {string} workspaceName The workspace that contains the data sources.
-     *
-     * @param {string} filter The filter to apply on the operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.skiptoken] Starting point of the collection of data
-     * source instances.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DataSourceListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByWorkspaceWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, filter: string, options?: { skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataSourceListResult>>;
-
-    /**
-     * Gets the first page of data source instances in a workspace with the link to
-     * the next page.
-     *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
-     *
-     * @param {string} workspaceName The workspace that contains the data sources.
-     *
-     * @param {string} filter The filter to apply on the operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.skiptoken] Starting point of the collection of data
-     * source instances.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DataSourceListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DataSourceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DataSourceListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByWorkspace(resourceGroupName: string, workspaceName: string, filter: string, options?: { skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DataSourceListResult>;
-    listByWorkspace(resourceGroupName: string, workspaceName: string, filter: string, callback: ServiceCallback<models.DataSourceListResult>): void;
-    listByWorkspace(resourceGroupName: string, workspaceName: string, filter: string, options: { skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataSourceListResult>): void;
-
-
-    /**
-     * Gets the first page of data source instances in a workspace with the link to
-     * the next page.
+     * Lists the storage insight instances within a workspace
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -623,15 +326,14 @@ export interface DataSources {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<DataSourceListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<StorageInsightListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByWorkspaceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataSourceListResult>>;
+    listByWorkspaceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageInsightListResult>>;
 
     /**
-     * Gets the first page of data source instances in a workspace with the link to
-     * the next page.
+     * Lists the storage insight instances within a workspace
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -648,7 +350,7 @@ export interface DataSources {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {DataSourceListResult} - The deserialized result object.
+     *                      @resolve {StorageInsightListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -656,16 +358,17 @@ export interface DataSources {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {DataSourceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DataSourceListResult} for more information.
+     *                      {StorageInsightListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link StorageInsightListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByWorkspaceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataSourceListResult>;
-    listByWorkspaceNext(nextPageLink: string, callback: ServiceCallback<models.DataSourceListResult>): void;
-    listByWorkspaceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataSourceListResult>): void;
+    listByWorkspaceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageInsightListResult>;
+    listByWorkspaceNext(nextPageLink: string, callback: ServiceCallback<models.StorageInsightListResult>): void;
+    listByWorkspaceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageInsightListResult>): void;
 }
 
 /**
@@ -678,145 +381,9 @@ export interface Workspaces {
 
 
     /**
-     * Disables an intelligence pack for a given workspace.
-     *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
-     *
-     * @param {string} workspaceName Name of the Log Analytics Workspace.
-     *
-     * @param {string} intelligencePackName The name of the intelligence pack to be
-     * disabled.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    disableIntelligencePackWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, intelligencePackName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Disables an intelligence pack for a given workspace.
-     *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
-     *
-     * @param {string} workspaceName Name of the Log Analytics Workspace.
-     *
-     * @param {string} intelligencePackName The name of the intelligence pack to be
-     * disabled.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    disableIntelligencePack(resourceGroupName: string, workspaceName: string, intelligencePackName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    disableIntelligencePack(resourceGroupName: string, workspaceName: string, intelligencePackName: string, callback: ServiceCallback<void>): void;
-    disableIntelligencePack(resourceGroupName: string, workspaceName: string, intelligencePackName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Enables an intelligence pack for a given workspace.
-     *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
-     *
-     * @param {string} workspaceName Name of the Log Analytics Workspace.
-     *
-     * @param {string} intelligencePackName The name of the intelligence pack to be
-     * enabled.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    enableIntelligencePackWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, intelligencePackName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Enables an intelligence pack for a given workspace.
-     *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
-     *
-     * @param {string} workspaceName Name of the Log Analytics Workspace.
-     *
-     * @param {string} intelligencePackName The name of the intelligence pack to be
-     * enabled.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    enableIntelligencePack(resourceGroupName: string, workspaceName: string, intelligencePackName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    enableIntelligencePack(resourceGroupName: string, workspaceName: string, intelligencePackName: string, callback: ServiceCallback<void>): void;
-    enableIntelligencePack(resourceGroupName: string, workspaceName: string, intelligencePackName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Lists all the intelligence packs possible and whether they are enabled or
-     * disabled for a given workspace.
-     *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
-     *
-     * @param {string} workspaceName Name of the Log Analytics Workspace.
+     * Get a list of workspaces which the current user has administrator privileges
+     * and are not associated with an Azure Subscription. The subscriptionId
+     * parameter in the Url is ignored.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -829,16 +396,12 @@ export interface Workspaces {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listIntelligencePacksWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntelligencePack[]>>;
+    listLinkTargetsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LinkTarget[]>>;
 
     /**
-     * Lists all the intelligence packs possible and whether they are enabled or
-     * disabled for a given workspace.
-     *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
-     *
-     * @param {string} workspaceName Name of the Log Analytics Workspace.
+     * Get a list of workspaces which the current user has administrator privileges
+     * and are not associated with an Azure Subscription. The subscriptionId
+     * parameter in the Url is ignored.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -866,18 +429,386 @@ export interface Workspaces {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listIntelligencePacks(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntelligencePack[]>;
-    listIntelligencePacks(resourceGroupName: string, workspaceName: string, callback: ServiceCallback<models.IntelligencePack[]>): void;
-    listIntelligencePacks(resourceGroupName: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntelligencePack[]>): void;
+    listLinkTargets(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LinkTarget[]>;
+    listLinkTargets(callback: ServiceCallback<models.LinkTarget[]>): void;
+    listLinkTargets(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LinkTarget[]>): void;
 
 
     /**
-     * Gets the shared keys for a workspace.
+     * Gets the schema for a given workspace.
      *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
+     * @param {string} resourceGroupName The Resource Group name.
      *
-     * @param {string} workspaceName Name of the Log Analytics Workspace.
+     * @param {string} workspaceName The Log Analytics Workspace name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SearchGetSchemaResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSchemaWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SearchGetSchemaResponse>>;
+
+    /**
+     * Gets the schema for a given workspace.
+     *
+     * @param {string} resourceGroupName The Resource Group name.
+     *
+     * @param {string} workspaceName The Log Analytics Workspace name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SearchGetSchemaResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SearchGetSchemaResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SearchGetSchemaResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSchema(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SearchGetSchemaResponse>;
+    getSchema(resourceGroupName: string, workspaceName: string, callback: ServiceCallback<models.SearchGetSchemaResponse>): void;
+    getSchema(resourceGroupName: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SearchGetSchemaResponse>): void;
+
+
+    /**
+     * Submit a search for a given workspace. The response will contain an id to
+     * track the search. User can use the id to poll the search status and get the
+     * full search result later if the search takes long time to finish.
+     *
+     * @param {string} resourceGroupName The Resource Group name.
+     *
+     * @param {string} workspaceName The Log Analytics Workspace name.
+     *
+     * @param {object} parameters The parameters required to execute a search
+     * query.
+     *
+     * @param {number} [parameters.top] The number to get from the top.
+     *
+     * @param {object} [parameters.highlight] The highlight that looks for all
+     * occurences of a string.
+     *
+     * @param {string} [parameters.highlight.pre] The string that is put before a
+     * matched result.
+     *
+     * @param {string} [parameters.highlight.post] The string that is put after a
+     * matched result.
+     *
+     * @param {string} parameters.query The query to search.
+     *
+     * @param {date} [parameters.start] The start date filter, so the only query
+     * results returned are after this date.
+     *
+     * @param {date} [parameters.end] The end date filter, so the only query
+     * results returned are before this date.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SearchResultsResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSearchResultsWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, parameters: models.SearchParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SearchResultsResponse>>;
+
+    /**
+     * Submit a search for a given workspace. The response will contain an id to
+     * track the search. User can use the id to poll the search status and get the
+     * full search result later if the search takes long time to finish.
+     *
+     * @param {string} resourceGroupName The Resource Group name.
+     *
+     * @param {string} workspaceName The Log Analytics Workspace name.
+     *
+     * @param {object} parameters The parameters required to execute a search
+     * query.
+     *
+     * @param {number} [parameters.top] The number to get from the top.
+     *
+     * @param {object} [parameters.highlight] The highlight that looks for all
+     * occurences of a string.
+     *
+     * @param {string} [parameters.highlight.pre] The string that is put before a
+     * matched result.
+     *
+     * @param {string} [parameters.highlight.post] The string that is put after a
+     * matched result.
+     *
+     * @param {string} parameters.query The query to search.
+     *
+     * @param {date} [parameters.start] The start date filter, so the only query
+     * results returned are after this date.
+     *
+     * @param {date} [parameters.end] The end date filter, so the only query
+     * results returned are before this date.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SearchResultsResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SearchResultsResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SearchResultsResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSearchResults(resourceGroupName: string, workspaceName: string, parameters: models.SearchParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SearchResultsResponse>;
+    getSearchResults(resourceGroupName: string, workspaceName: string, parameters: models.SearchParameters, callback: ServiceCallback<models.SearchResultsResponse>): void;
+    getSearchResults(resourceGroupName: string, workspaceName: string, parameters: models.SearchParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SearchResultsResponse>): void;
+
+
+    /**
+     * Gets updated search results for a given search query.
+     *
+     * @param {string} resourceGroupName The Resource Group name.
+     *
+     * @param {string} workspaceName The Log Analytics Workspace name.
+     *
+     * @param {string} id The id of the search that will have results updated. You
+     * can get the id from the response of the GetResults call.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SearchResultsResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateSearchResultsWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, id: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SearchResultsResponse>>;
+
+    /**
+     * Gets updated search results for a given search query.
+     *
+     * @param {string} resourceGroupName The Resource Group name.
+     *
+     * @param {string} workspaceName The Log Analytics Workspace name.
+     *
+     * @param {string} id The id of the search that will have results updated. You
+     * can get the id from the response of the GetResults call.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SearchResultsResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SearchResultsResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SearchResultsResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateSearchResults(resourceGroupName: string, workspaceName: string, id: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SearchResultsResponse>;
+    updateSearchResults(resourceGroupName: string, workspaceName: string, id: string, callback: ServiceCallback<models.SearchResultsResponse>): void;
+    updateSearchResults(resourceGroupName: string, workspaceName: string, id: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SearchResultsResponse>): void;
+
+
+    /**
+     * Purges data in an Log Analytics workspace by a set of user-defined filters.
+     *
+     * @param {string} resourceGroupName The Resource Group name.
+     *
+     * @param {string} workspaceName The Log Analytics Workspace name.
+     *
+     * @param {object} body Describes the body of a request to purge data in a
+     * single table of an Log Analytics Workspace
+     *
+     * @param {string} body.table Table from which to purge data.
+     *
+     * @param {array} body.filters The set of columns and filters (queries) to run
+     * over them to purge the resulting data.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkspacePurgeResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    purgeWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, body: models.WorkspacePurgeBody, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkspacePurgeResponse>>;
+
+    /**
+     * Purges data in an Log Analytics workspace by a set of user-defined filters.
+     *
+     * @param {string} resourceGroupName The Resource Group name.
+     *
+     * @param {string} workspaceName The Log Analytics Workspace name.
+     *
+     * @param {object} body Describes the body of a request to purge data in a
+     * single table of an Log Analytics Workspace
+     *
+     * @param {string} body.table Table from which to purge data.
+     *
+     * @param {array} body.filters The set of columns and filters (queries) to run
+     * over them to purge the resulting data.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkspacePurgeResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkspacePurgeResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkspacePurgeResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    purge(resourceGroupName: string, workspaceName: string, body: models.WorkspacePurgeBody, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkspacePurgeResponse>;
+    purge(resourceGroupName: string, workspaceName: string, body: models.WorkspacePurgeBody, callback: ServiceCallback<models.WorkspacePurgeResponse>): void;
+    purge(resourceGroupName: string, workspaceName: string, body: models.WorkspacePurgeBody, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkspacePurgeResponse>): void;
+
+
+    /**
+     * Gets status of an ongoing purge operation.
+     *
+     * @param {string} resourceGroupName The Resource Group name.
+     *
+     * @param {string} workspaceName The Log Analytics Workspace name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkspacePurgeStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getPurgeStatusWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkspacePurgeStatusResponse>>;
+
+    /**
+     * Gets status of an ongoing purge operation.
+     *
+     * @param {string} resourceGroupName The Resource Group name.
+     *
+     * @param {string} workspaceName The Log Analytics Workspace name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkspacePurgeStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkspacePurgeStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkspacePurgeStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getPurgeStatus(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkspacePurgeStatusResponse>;
+    getPurgeStatus(resourceGroupName: string, workspaceName: string, callback: ServiceCallback<models.WorkspacePurgeStatusResponse>): void;
+    getPurgeStatus(resourceGroupName: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkspacePurgeStatusResponse>): void;
+
+
+    /**
+     * Gets the shared keys for a Log Analytics Workspace. These keys are used to
+     * connect Microsoft Operational Insights agents to the workspace.
+     *
+     * @param {string} resourceGroupName The Resource Group name.
+     *
+     * @param {string} workspaceName The Log Analytics Workspace name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -890,15 +821,15 @@ export interface Workspaces {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getSharedKeysWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedKeys>>;
+    listKeysWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedKeys>>;
 
     /**
-     * Gets the shared keys for a workspace.
+     * Gets the shared keys for a Log Analytics Workspace. These keys are used to
+     * connect Microsoft Operational Insights agents to the workspace.
      *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
+     * @param {string} resourceGroupName The Resource Group name.
      *
-     * @param {string} workspaceName Name of the Log Analytics Workspace.
+     * @param {string} workspaceName The Log Analytics Workspace name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -927,18 +858,18 @@ export interface Workspaces {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getSharedKeys(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedKeys>;
-    getSharedKeys(resourceGroupName: string, workspaceName: string, callback: ServiceCallback<models.SharedKeys>): void;
-    getSharedKeys(resourceGroupName: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedKeys>): void;
+    listKeys(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedKeys>;
+    listKeys(resourceGroupName: string, workspaceName: string, callback: ServiceCallback<models.SharedKeys>): void;
+    listKeys(resourceGroupName: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedKeys>): void;
 
 
     /**
-     * Gets a list of usage metrics for a workspace.
+     * Regenerates the shared keys for a Log Analytics Workspace. These keys are
+     * used to connect Microsoft Operational Insights agents to the workspace.
      *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
+     * @param {string} resourceGroupName The Resource Group name.
      *
-     * @param {string} workspaceName The name of the workspace.
+     * @param {string} workspaceName The Log Analytics Workspace name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -947,19 +878,19 @@ export interface Workspaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<WorkspaceListUsagesResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SharedKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listUsagesWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkspaceListUsagesResult>>;
+    regenerateSharedKeysWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedKeys>>;
 
     /**
-     * Gets a list of usage metrics for a workspace.
+     * Regenerates the shared keys for a Log Analytics Workspace. These keys are
+     * used to connect Microsoft Operational Insights agents to the workspace.
      *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
+     * @param {string} resourceGroupName The Resource Group name.
      *
-     * @param {string} workspaceName The name of the workspace.
+     * @param {string} workspaceName The Log Analytics Workspace name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -973,7 +904,7 @@ export interface Workspaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {WorkspaceListUsagesResult} - The deserialized result object.
+     *                      @resolve {SharedKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -981,26 +912,48 @@ export interface Workspaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {WorkspaceListUsagesResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WorkspaceListUsagesResult} for more
-     *                      information.
+     *                      {SharedKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SharedKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listUsages(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkspaceListUsagesResult>;
-    listUsages(resourceGroupName: string, workspaceName: string, callback: ServiceCallback<models.WorkspaceListUsagesResult>): void;
-    listUsages(resourceGroupName: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkspaceListUsagesResult>): void;
+    regenerateSharedKeys(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedKeys>;
+    regenerateSharedKeys(resourceGroupName: string, workspaceName: string, callback: ServiceCallback<models.SharedKeys>): void;
+    regenerateSharedKeys(resourceGroupName: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedKeys>): void;
 
 
     /**
-     * Gets a list of management groups connected to a workspace.
+     * Submit a search for a given workspace. The response will contain an id to
+     * track the search. User can use the id to poll the search status and get the
+     * full search result later if the search takes long time to finish.
      *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
+     * @param {string} resourceGroupName The Resource Group name.
      *
-     * @param {string} workspaceName The name of the workspace.
+     * @param {string} workspaceName The Log Analytics Workspace name.
+     *
+     * @param {object} parameters The parameters required to execute a search
+     * query.
+     *
+     * @param {number} [parameters.top] The number to get from the top.
+     *
+     * @param {object} [parameters.highlight] The highlight that looks for all
+     * occurences of a string.
+     *
+     * @param {string} [parameters.highlight.pre] The string that is put before a
+     * matched result.
+     *
+     * @param {string} [parameters.highlight.post] The string that is put after a
+     * matched result.
+     *
+     * @param {string} parameters.query The query to search.
+     *
+     * @param {date} [parameters.start] The start date filter, so the only query
+     * results returned are after this date.
+     *
+     * @param {date} [parameters.end] The end date filter, so the only query
+     * results returned are before this date.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1009,19 +962,42 @@ export interface Workspaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<WorkspaceListManagementGroupsResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SearchResultsResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listManagementGroupsWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkspaceListManagementGroupsResult>>;
+    beginGetSearchResultsWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, parameters: models.SearchParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SearchResultsResponse>>;
 
     /**
-     * Gets a list of management groups connected to a workspace.
+     * Submit a search for a given workspace. The response will contain an id to
+     * track the search. User can use the id to poll the search status and get the
+     * full search result later if the search takes long time to finish.
      *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
+     * @param {string} resourceGroupName The Resource Group name.
      *
-     * @param {string} workspaceName The name of the workspace.
+     * @param {string} workspaceName The Log Analytics Workspace name.
+     *
+     * @param {object} parameters The parameters required to execute a search
+     * query.
+     *
+     * @param {number} [parameters.top] The number to get from the top.
+     *
+     * @param {object} [parameters.highlight] The highlight that looks for all
+     * occurences of a string.
+     *
+     * @param {string} [parameters.highlight.pre] The string that is put before a
+     * matched result.
+     *
+     * @param {string} [parameters.highlight.post] The string that is put after a
+     * matched result.
+     *
+     * @param {string} parameters.query The query to search.
+     *
+     * @param {date} [parameters.start] The start date filter, so the only query
+     * results returned are after this date.
+     *
+     * @param {date} [parameters.end] The end date filter, so the only query
+     * results returned are before this date.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1035,7 +1011,7 @@ export interface Workspaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {WorkspaceListManagementGroupsResult} - The deserialized result object.
+     *                      @resolve {SearchResultsResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1043,258 +1019,35 @@ export interface Workspaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {WorkspaceListManagementGroupsResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WorkspaceListManagementGroupsResult} for
-     *                      more information.
+     *                      {SearchResultsResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SearchResultsResponse} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listManagementGroups(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkspaceListManagementGroupsResult>;
-    listManagementGroups(resourceGroupName: string, workspaceName: string, callback: ServiceCallback<models.WorkspaceListManagementGroupsResult>): void;
-    listManagementGroups(resourceGroupName: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkspaceListManagementGroupsResult>): void;
+    beginGetSearchResults(resourceGroupName: string, workspaceName: string, parameters: models.SearchParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SearchResultsResponse>;
+    beginGetSearchResults(resourceGroupName: string, workspaceName: string, parameters: models.SearchParameters, callback: ServiceCallback<models.SearchResultsResponse>): void;
+    beginGetSearchResults(resourceGroupName: string, workspaceName: string, parameters: models.SearchParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SearchResultsResponse>): void;
+}
+
+/**
+ * @class
+ * SavedSearches
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the OperationalInsightsManagementClient.
+ */
+export interface SavedSearches {
 
 
     /**
-     * Gets workspaces in a resource group.
+     * Deletes the specified saved search in a given workspace.
      *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
+     * @param {string} resourceGroupName The Resource Group name.
      *
-     * @param {object} [options] Optional Parameters.
+     * @param {string} workspaceName The Log Analytics Workspace name.
      *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<WorkspaceListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkspaceListResult>>;
-
-    /**
-     * Gets workspaces in a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group to get. The
-     * name is case insensitive.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {WorkspaceListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {WorkspaceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WorkspaceListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkspaceListResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.WorkspaceListResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkspaceListResult>): void;
-
-
-    /**
-     * Gets the workspaces in a subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<WorkspaceListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkspaceListResult>>;
-
-    /**
-     * Gets the workspaces in a subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {WorkspaceListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {WorkspaceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WorkspaceListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkspaceListResult>;
-    list(callback: ServiceCallback<models.WorkspaceListResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkspaceListResult>): void;
-
-
-    /**
-     * Create or update a workspace.
-     *
-     * @param {string} resourceGroupName The resource group name of the workspace.
-     *
-     * @param {string} workspaceName The name of the workspace.
-     *
-     * @param {object} parameters The parameters required to create or update a
-     * workspace.
-     *
-     * @param {string} [parameters.provisioningState] The provisioning state of the
-     * workspace. Possible values include: 'Creating', 'Succeeded', 'Failed',
-     * 'Canceled', 'Deleting', 'ProvisioningAccount'
-     *
-     * @param {string} [parameters.source] The source of the workspace.  Source
-     * defines where the workspace was created. 'Azure' implies it was created in
-     * Azure.  'External' implies it was created via the Operational Insights
-     * Portal. This value is set on the service side and read-only on the client
-     * side.
-     *
-     * @param {string} [parameters.customerId] The ID associated with the
-     * workspace.  Setting this value at creation time allows the workspace being
-     * created to be linked to an existing workspace.
-     *
-     * @param {string} [parameters.portalUrl] The URL of the Operational Insights
-     * portal for this workspace.  This value is set on the service side and
-     * read-only on the client side.
-     *
-     * @param {object} [parameters.sku] The SKU of the workspace.
-     *
-     * @param {string} parameters.sku.name The name of the SKU. Possible values
-     * include: 'Free', 'Standard', 'Premium', 'Unlimited', 'PerNode', 'PerGB2018',
-     * 'Standalone'
-     *
-     * @param {number} [parameters.retentionInDays] The workspace data retention in
-     * days. -1 means Unlimited retention for the Unlimited Sku. 730 days is the
-     * maximum allowed for all other Skus.
-     *
-     * @param {string} [parameters.eTag] The ETag of the workspace.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Workspace>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, parameters: models.Workspace, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workspace>>;
-
-    /**
-     * Create or update a workspace.
-     *
-     * @param {string} resourceGroupName The resource group name of the workspace.
-     *
-     * @param {string} workspaceName The name of the workspace.
-     *
-     * @param {object} parameters The parameters required to create or update a
-     * workspace.
-     *
-     * @param {string} [parameters.provisioningState] The provisioning state of the
-     * workspace. Possible values include: 'Creating', 'Succeeded', 'Failed',
-     * 'Canceled', 'Deleting', 'ProvisioningAccount'
-     *
-     * @param {string} [parameters.source] The source of the workspace.  Source
-     * defines where the workspace was created. 'Azure' implies it was created in
-     * Azure.  'External' implies it was created via the Operational Insights
-     * Portal. This value is set on the service side and read-only on the client
-     * side.
-     *
-     * @param {string} [parameters.customerId] The ID associated with the
-     * workspace.  Setting this value at creation time allows the workspace being
-     * created to be linked to an existing workspace.
-     *
-     * @param {string} [parameters.portalUrl] The URL of the Operational Insights
-     * portal for this workspace.  This value is set on the service side and
-     * read-only on the client side.
-     *
-     * @param {object} [parameters.sku] The SKU of the workspace.
-     *
-     * @param {string} parameters.sku.name The name of the SKU. Possible values
-     * include: 'Free', 'Standard', 'Premium', 'Unlimited', 'PerNode', 'PerGB2018',
-     * 'Standalone'
-     *
-     * @param {number} [parameters.retentionInDays] The workspace data retention in
-     * days. -1 means Unlimited retention for the Unlimited Sku. 730 days is the
-     * maximum allowed for all other Skus.
-     *
-     * @param {string} [parameters.eTag] The ETag of the workspace.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Workspace} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Workspace} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Workspace} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, workspaceName: string, parameters: models.Workspace, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Workspace>;
-    createOrUpdate(resourceGroupName: string, workspaceName: string, parameters: models.Workspace, callback: ServiceCallback<models.Workspace>): void;
-    createOrUpdate(resourceGroupName: string, workspaceName: string, parameters: models.Workspace, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workspace>): void;
-
-
-    /**
-     * Deletes a workspace instance.
-     *
-     * @param {string} resourceGroupName The resource group name of the workspace.
-     *
-     * @param {string} workspaceName Name of the Log Analytics Workspace.
+     * @param {string} savedSearchId The id of the saved search.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1307,14 +1060,16 @@ export interface Workspaces {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, savedSearchId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes a workspace instance.
+     * Deletes the specified saved search in a given workspace.
      *
-     * @param {string} resourceGroupName The resource group name of the workspace.
+     * @param {string} resourceGroupName The Resource Group name.
      *
-     * @param {string} workspaceName Name of the Log Analytics Workspace.
+     * @param {string} workspaceName The Log Analytics Workspace name.
+     *
+     * @param {string} savedSearchId The id of the saved search.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1342,17 +1097,38 @@ export interface Workspaces {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, workspaceName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, workspaceName: string, savedSearchId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, workspaceName: string, savedSearchId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, workspaceName: string, savedSearchId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * Gets a workspace instance.
+     * Creates or updates a saved search for a given workspace.
      *
-     * @param {string} resourceGroupName The resource group name of the workspace.
+     * @param {string} resourceGroupName The Resource Group name.
      *
-     * @param {string} workspaceName Name of the Log Analytics Workspace.
+     * @param {string} workspaceName The Log Analytics Workspace name.
+     *
+     * @param {string} savedSearchId The id of the saved search.
+     *
+     * @param {object} parameters The parameters required to save a search.
+     *
+     * @param {string} [parameters.eTag] The ETag of the saved search.
+     *
+     * @param {string} parameters.category The category of the saved search. This
+     * helps the user to find a saved search faster.
+     *
+     * @param {string} parameters.displayName Saved search display name.
+     *
+     * @param {string} parameters.query The query expression for the saved search.
+     * Please see
+     * https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-search-reference
+     * for reference.
+     *
+     * @param {number} [parameters.version] The version number of the query
+     * lanuage. The current version is 2 and is the default.
+     *
+     * @param {array} [parameters.tags] The tags attached to the saved search.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1361,18 +1137,39 @@ export interface Workspaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Workspace>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SavedSearch>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workspace>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, savedSearchId: string, parameters: models.SavedSearch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SavedSearch>>;
 
     /**
-     * Gets a workspace instance.
+     * Creates or updates a saved search for a given workspace.
      *
-     * @param {string} resourceGroupName The resource group name of the workspace.
+     * @param {string} resourceGroupName The Resource Group name.
      *
-     * @param {string} workspaceName Name of the Log Analytics Workspace.
+     * @param {string} workspaceName The Log Analytics Workspace name.
+     *
+     * @param {string} savedSearchId The id of the saved search.
+     *
+     * @param {object} parameters The parameters required to save a search.
+     *
+     * @param {string} [parameters.eTag] The ETag of the saved search.
+     *
+     * @param {string} parameters.category The category of the saved search. This
+     * helps the user to find a saved search faster.
+     *
+     * @param {string} parameters.displayName Saved search display name.
+     *
+     * @param {string} parameters.query The query expression for the saved search.
+     * Please see
+     * https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-search-reference
+     * for reference.
+     *
+     * @param {number} [parameters.version] The version number of the query
+     * lanuage. The current version is 2 and is the default.
+     *
+     * @param {array} [parameters.tags] The tags attached to the saved search.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1386,7 +1183,7 @@ export interface Workspaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Workspace} - The deserialized result object.
+     *                      @resolve {SavedSearch} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1394,56 +1191,26 @@ export interface Workspaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Workspace} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Workspace} for more information.
+     *                      {SavedSearch} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SavedSearch} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Workspace>;
-    get(resourceGroupName: string, workspaceName: string, callback: ServiceCallback<models.Workspace>): void;
-    get(resourceGroupName: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workspace>): void;
+    createOrUpdate(resourceGroupName: string, workspaceName: string, savedSearchId: string, parameters: models.SavedSearch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SavedSearch>;
+    createOrUpdate(resourceGroupName: string, workspaceName: string, savedSearchId: string, parameters: models.SavedSearch, callback: ServiceCallback<models.SavedSearch>): void;
+    createOrUpdate(resourceGroupName: string, workspaceName: string, savedSearchId: string, parameters: models.SavedSearch, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SavedSearch>): void;
 
 
     /**
-     * Updates a workspace.
+     * Gets the specified saved search for a given workspace.
      *
-     * @param {string} resourceGroupName The resource group name of the workspace.
+     * @param {string} resourceGroupName The Resource Group name.
      *
-     * @param {string} workspaceName The name of the workspace.
+     * @param {string} workspaceName The Log Analytics Workspace name.
      *
-     * @param {object} parameters The parameters required to patch a workspace.
-     *
-     * @param {string} [parameters.provisioningState] The provisioning state of the
-     * workspace. Possible values include: 'Creating', 'Succeeded', 'Failed',
-     * 'Canceled', 'Deleting', 'ProvisioningAccount'
-     *
-     * @param {string} [parameters.source] The source of the workspace.  Source
-     * defines where the workspace was created. 'Azure' implies it was created in
-     * Azure.  'External' implies it was created via the Operational Insights
-     * Portal. This value is set on the service side and read-only on the client
-     * side.
-     *
-     * @param {string} [parameters.customerId] The ID associated with the
-     * workspace.  Setting this value at creation time allows the workspace being
-     * created to be linked to an existing workspace.
-     *
-     * @param {string} [parameters.portalUrl] The URL of the Operational Insights
-     * portal for this workspace.  This value is set on the service side and
-     * read-only on the client side.
-     *
-     * @param {object} [parameters.sku] The SKU of the workspace.
-     *
-     * @param {string} parameters.sku.name The name of the SKU. Possible values
-     * include: 'Free', 'Standard', 'Premium', 'Unlimited', 'PerNode', 'PerGB2018',
-     * 'Standalone'
-     *
-     * @param {number} [parameters.retentionInDays] The workspace data retention in
-     * days. -1 means Unlimited retention for the Unlimited Sku. 730 days is the
-     * maximum allowed for all other Skus.
-     *
-     * @param {string} [parameters.eTag] The ETag of the workspace.
+     * @param {string} savedSearchId The id of the saved search.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1452,50 +1219,20 @@ export interface Workspaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Workspace>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SavedSearch>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, parameters: models.Workspace, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workspace>>;
+    getWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, savedSearchId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SavedSearch>>;
 
     /**
-     * Updates a workspace.
+     * Gets the specified saved search for a given workspace.
      *
-     * @param {string} resourceGroupName The resource group name of the workspace.
+     * @param {string} resourceGroupName The Resource Group name.
      *
-     * @param {string} workspaceName The name of the workspace.
+     * @param {string} workspaceName The Log Analytics Workspace name.
      *
-     * @param {object} parameters The parameters required to patch a workspace.
-     *
-     * @param {string} [parameters.provisioningState] The provisioning state of the
-     * workspace. Possible values include: 'Creating', 'Succeeded', 'Failed',
-     * 'Canceled', 'Deleting', 'ProvisioningAccount'
-     *
-     * @param {string} [parameters.source] The source of the workspace.  Source
-     * defines where the workspace was created. 'Azure' implies it was created in
-     * Azure.  'External' implies it was created via the Operational Insights
-     * Portal. This value is set on the service side and read-only on the client
-     * side.
-     *
-     * @param {string} [parameters.customerId] The ID associated with the
-     * workspace.  Setting this value at creation time allows the workspace being
-     * created to be linked to an existing workspace.
-     *
-     * @param {string} [parameters.portalUrl] The URL of the Operational Insights
-     * portal for this workspace.  This value is set on the service side and
-     * read-only on the client side.
-     *
-     * @param {object} [parameters.sku] The SKU of the workspace.
-     *
-     * @param {string} parameters.sku.name The name of the SKU. Possible values
-     * include: 'Free', 'Standard', 'Premium', 'Unlimited', 'PerNode', 'PerGB2018',
-     * 'Standalone'
-     *
-     * @param {number} [parameters.retentionInDays] The workspace data retention in
-     * days. -1 means Unlimited retention for the Unlimited Sku. 730 days is the
-     * maximum allowed for all other Skus.
-     *
-     * @param {string} [parameters.eTag] The ETag of the workspace.
+     * @param {string} savedSearchId The id of the saved search.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1509,7 +1246,7 @@ export interface Workspaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Workspace} - The deserialized result object.
+     *                      @resolve {SavedSearch} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1517,57 +1254,24 @@ export interface Workspaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Workspace} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Workspace} for more information.
+     *                      {SavedSearch} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SavedSearch} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, workspaceName: string, parameters: models.Workspace, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Workspace>;
-    update(resourceGroupName: string, workspaceName: string, parameters: models.Workspace, callback: ServiceCallback<models.Workspace>): void;
-    update(resourceGroupName: string, workspaceName: string, parameters: models.Workspace, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workspace>): void;
+    get(resourceGroupName: string, workspaceName: string, savedSearchId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SavedSearch>;
+    get(resourceGroupName: string, workspaceName: string, savedSearchId: string, callback: ServiceCallback<models.SavedSearch>): void;
+    get(resourceGroupName: string, workspaceName: string, savedSearchId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SavedSearch>): void;
 
 
     /**
-     * Create or update a workspace.
+     * Gets the saved searches for a given Log Analytics Workspace
      *
-     * @param {string} resourceGroupName The resource group name of the workspace.
+     * @param {string} resourceGroupName The Resource Group name.
      *
-     * @param {string} workspaceName The name of the workspace.
-     *
-     * @param {object} parameters The parameters required to create or update a
-     * workspace.
-     *
-     * @param {string} [parameters.provisioningState] The provisioning state of the
-     * workspace. Possible values include: 'Creating', 'Succeeded', 'Failed',
-     * 'Canceled', 'Deleting', 'ProvisioningAccount'
-     *
-     * @param {string} [parameters.source] The source of the workspace.  Source
-     * defines where the workspace was created. 'Azure' implies it was created in
-     * Azure.  'External' implies it was created via the Operational Insights
-     * Portal. This value is set on the service side and read-only on the client
-     * side.
-     *
-     * @param {string} [parameters.customerId] The ID associated with the
-     * workspace.  Setting this value at creation time allows the workspace being
-     * created to be linked to an existing workspace.
-     *
-     * @param {string} [parameters.portalUrl] The URL of the Operational Insights
-     * portal for this workspace.  This value is set on the service side and
-     * read-only on the client side.
-     *
-     * @param {object} [parameters.sku] The SKU of the workspace.
-     *
-     * @param {string} parameters.sku.name The name of the SKU. Possible values
-     * include: 'Free', 'Standard', 'Premium', 'Unlimited', 'PerNode', 'PerGB2018',
-     * 'Standalone'
-     *
-     * @param {number} [parameters.retentionInDays] The workspace data retention in
-     * days. -1 means Unlimited retention for the Unlimited Sku. 730 days is the
-     * maximum allowed for all other Skus.
-     *
-     * @param {string} [parameters.eTag] The ETag of the workspace.
+     * @param {string} workspaceName The Log Analytics Workspace name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1576,51 +1280,18 @@ export interface Workspaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Workspace>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SavedSearchesListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, parameters: models.Workspace, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workspace>>;
+    listByWorkspaceWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SavedSearchesListResult>>;
 
     /**
-     * Create or update a workspace.
+     * Gets the saved searches for a given Log Analytics Workspace
      *
-     * @param {string} resourceGroupName The resource group name of the workspace.
+     * @param {string} resourceGroupName The Resource Group name.
      *
-     * @param {string} workspaceName The name of the workspace.
-     *
-     * @param {object} parameters The parameters required to create or update a
-     * workspace.
-     *
-     * @param {string} [parameters.provisioningState] The provisioning state of the
-     * workspace. Possible values include: 'Creating', 'Succeeded', 'Failed',
-     * 'Canceled', 'Deleting', 'ProvisioningAccount'
-     *
-     * @param {string} [parameters.source] The source of the workspace.  Source
-     * defines where the workspace was created. 'Azure' implies it was created in
-     * Azure.  'External' implies it was created via the Operational Insights
-     * Portal. This value is set on the service side and read-only on the client
-     * side.
-     *
-     * @param {string} [parameters.customerId] The ID associated with the
-     * workspace.  Setting this value at creation time allows the workspace being
-     * created to be linked to an existing workspace.
-     *
-     * @param {string} [parameters.portalUrl] The URL of the Operational Insights
-     * portal for this workspace.  This value is set on the service side and
-     * read-only on the client side.
-     *
-     * @param {object} [parameters.sku] The SKU of the workspace.
-     *
-     * @param {string} parameters.sku.name The name of the SKU. Possible values
-     * include: 'Free', 'Standard', 'Premium', 'Unlimited', 'PerNode', 'PerGB2018',
-     * 'Standalone'
-     *
-     * @param {number} [parameters.retentionInDays] The workspace data retention in
-     * days. -1 means Unlimited retention for the Unlimited Sku. 730 days is the
-     * maximum allowed for all other Skus.
-     *
-     * @param {string} [parameters.eTag] The ETag of the workspace.
+     * @param {string} workspaceName The Log Analytics Workspace name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1634,7 +1305,7 @@ export interface Workspaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Workspace} - The deserialized result object.
+     *                      @resolve {SavedSearchesListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1642,16 +1313,80 @@ export interface Workspaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Workspace} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Workspace} for more information.
+     *                      {SavedSearchesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SavedSearchesListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, workspaceName: string, parameters: models.Workspace, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Workspace>;
-    beginCreateOrUpdate(resourceGroupName: string, workspaceName: string, parameters: models.Workspace, callback: ServiceCallback<models.Workspace>): void;
-    beginCreateOrUpdate(resourceGroupName: string, workspaceName: string, parameters: models.Workspace, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workspace>): void;
+    listByWorkspace(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SavedSearchesListResult>;
+    listByWorkspace(resourceGroupName: string, workspaceName: string, callback: ServiceCallback<models.SavedSearchesListResult>): void;
+    listByWorkspace(resourceGroupName: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SavedSearchesListResult>): void;
+
+
+    /**
+     * Gets the results from a saved search for a given workspace.
+     *
+     * @param {string} resourceGroupName The Resource Group name.
+     *
+     * @param {string} workspaceName The Log Analytics Workspace name.
+     *
+     * @param {string} savedSearchId The id of the saved search.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SearchResultsResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getResultsWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, savedSearchId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SearchResultsResponse>>;
+
+    /**
+     * Gets the results from a saved search for a given workspace.
+     *
+     * @param {string} resourceGroupName The Resource Group name.
+     *
+     * @param {string} workspaceName The Log Analytics Workspace name.
+     *
+     * @param {string} savedSearchId The id of the saved search.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SearchResultsResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SearchResultsResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SearchResultsResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getResults(resourceGroupName: string, workspaceName: string, savedSearchId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SearchResultsResponse>;
+    getResults(resourceGroupName: string, workspaceName: string, savedSearchId: string, callback: ServiceCallback<models.SearchResultsResponse>): void;
+    getResults(resourceGroupName: string, workspaceName: string, savedSearchId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SearchResultsResponse>): void;
 }
 
 /**
@@ -1712,61 +1447,4 @@ export interface Operations {
     list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
     list(callback: ServiceCallback<models.OperationListResult>): void;
     list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
-
-
-    /**
-     * Lists all of the available OperationalInsights Rest API operations.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
-
-    /**
-     * Lists all of the available OperationalInsights Rest API operations.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
 }

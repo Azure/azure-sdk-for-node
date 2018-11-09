@@ -3,22 +3,23 @@ uid: azure-arm-operationalinsights
 summary: *content
 
 ---
-# Microsoft Azure SDK for Node.js - OperationalInsightsManagementClient
+**This SDK will be deprecated next year and will be replaced by a new TypeScript-based isomorphic SDK (found at https://github.com/Azure/azure-sdk-for-js) which works on Node.js and browsers.**
+## Microsoft Azure SDK for Node.js - OperationalInsightsManagementClient
 This project provides a Node.js package for accessing Azure. Right now it supports:
 - **Node.js version 6.x.x or higher**
 
-## Features
+### Features
 
 
-## How to Install
+### How to Install
 
 ```bash
 npm install azure-arm-operationalinsights
 ```
 
-## How to use
+### How to use
 
-### Authentication, client creation and get linkedServices as an example.
+#### Authentication, client creation and get storageInsights as an example.
 
 ```javascript
 const msRestAzure = require("ms-rest-azure");
@@ -28,8 +29,8 @@ msRestAzure.interactiveLogin().then((creds) => {
     const client = new OperationalInsightsManagementClient(creds, subscriptionId);
     const resourceGroupName = "testresourceGroupName";
     const workspaceName = "testworkspaceName";
-    const linkedServiceName = "testlinkedServiceName";
-    return client.linkedServices.get(resourceGroupName, workspaceName, linkedServiceName).then((result) => {
+    const storageInsightName = "teststorageInsightName";
+    return client.storageInsights.get(resourceGroupName, workspaceName, storageInsightName).then((result) => {
       console.log("The result is:");
       console.log(result);
     });
@@ -38,6 +39,6 @@ msRestAzure.interactiveLogin().then((creds) => {
   console.dir(err, {depth: null, colors: true});
 });
 
-## Related projects
+### Related projects
 
 - [Microsoft Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)

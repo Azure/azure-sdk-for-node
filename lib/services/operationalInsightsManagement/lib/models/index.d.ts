@@ -22,11 +22,10 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Display metadata associated with the operation.
  *
- * @member {string} [provider] Service provider: Microsoft
- * OperationsManagement.
- * @member {string} [resource] Resource on which the operation is performed
+ * @property {string} [provider] Service provider: OperationalInsights.
+ * @property {string} [resource] Resource on which the operation is performed
  * etc.
- * @member {string} [operation] Type of operation: get, read, delete, etc.
+ * @property {string} [operation] Type of operation: get, read, delete, etc.
  */
 export interface OperationDisplay {
   provider?: string;
@@ -40,13 +39,12 @@ export interface OperationDisplay {
  * @constructor
  * Supported operation of OperationalInsights resource provider.
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] Display metadata associated with the operation.
- * @member {string} [display.provider] Service provider: Microsoft
- * OperationsManagement.
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] Display metadata associated with the operation.
+ * @property {string} [display.provider] Service provider: OperationalInsights.
+ * @property {string} [display.resource] Resource on which the operation is
  * performed etc.
- * @member {string} [display.operation] Type of operation: get, read, delete,
+ * @property {string} [display.operation] Type of operation: get, read, delete,
  * etc.
  */
 export interface Operation {
@@ -56,206 +54,436 @@ export interface Operation {
 
 /**
  * @class
- * Initializes a new instance of the LinkedService class.
+ * Initializes a new instance of the OperationListResult class.
  * @constructor
- * The top level Linked service resource container.
+ * Result of the request to list OperationalInsights operations.
  *
- * @member {string} resourceId The resource id of the resource that will be
- * linked to the workspace.
+ * @property {array} [value] List of operations supported by the
+ * OperationalInsights resource provider.
  */
-export interface LinkedService extends BaseResource {
-  resourceId: string;
+export interface OperationListResult {
+  value?: Operation[];
 }
 
 /**
  * @class
- * Initializes a new instance of the DataSource class.
+ * Initializes a new instance of the LinkTarget class.
  * @constructor
- * Datasources under OMS Workspace.
+ * Metadata for a workspace that isn't linked to an Azure subscription.
  *
- * @member {object} properties The data source properties in raw json format,
- * each kind of data source have it's own schema.
- * @member {string} [eTag] The ETag of the data source.
- * @member {string} kind Possible values include: 'AzureActivityLog',
- * 'ChangeTrackingPath', 'ChangeTrackingDefaultPath',
- * 'ChangeTrackingDefaultRegistry', 'ChangeTrackingCustomRegistry',
- * 'CustomLog', 'CustomLogCollection', 'GenericDataSource', 'IISLogs',
- * 'LinuxPerformanceObject', 'LinuxPerformanceCollection', 'LinuxSyslog',
- * 'LinuxSyslogCollection', 'WindowsEvent', 'WindowsPerformanceCounter'
- */
-export interface DataSource extends BaseResource {
-  properties: any;
-  eTag?: string;
-  kind: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataSourceFilter class.
- * @constructor
- * DataSource filter. Right now, only filter by kind is supported.
- *
- * @member {string} [kind] Possible values include: 'AzureActivityLog',
- * 'ChangeTrackingPath', 'ChangeTrackingDefaultPath',
- * 'ChangeTrackingDefaultRegistry', 'ChangeTrackingCustomRegistry',
- * 'CustomLog', 'CustomLogCollection', 'GenericDataSource', 'IISLogs',
- * 'LinuxPerformanceObject', 'LinuxPerformanceCollection', 'LinuxSyslog',
- * 'LinuxSyslogCollection', 'WindowsEvent', 'WindowsPerformanceCounter'
- */
-export interface DataSourceFilter {
-  kind?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the IntelligencePack class.
- * @constructor
- * Intelligence Pack containing a string name and boolean indicating if it's
- * enabled.
- *
- * @member {string} [name] The name of the intelligence pack.
- * @member {boolean} [enabled] The enabled boolean for the intelligence pack.
- * @member {string} [displayName] The display name of the intelligence pack.
- */
-export interface IntelligencePack {
-  name?: string;
-  enabled?: boolean;
-  displayName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SharedKeys class.
- * @constructor
- * The shared keys for a workspace.
- *
- * @member {string} [primarySharedKey] The primary shared key of a workspace.
- * @member {string} [secondarySharedKey] The secondary shared key of a
+ * @property {string} [customerId] The GUID that uniquely identifies the
  * workspace.
+ * @property {string} [displayName] The display name of the workspace.
+ * @property {string} [workspaceName] The DNS valid workspace name.
+ * @property {string} [location] The location of the workspace.
  */
-export interface SharedKeys {
-  primarySharedKey?: string;
-  secondarySharedKey?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the MetricName class.
- * @constructor
- * The name of a metric.
- *
- * @member {string} [value] The system name of the metric.
- * @member {string} [localizedValue] The localized name of the metric.
- */
-export interface MetricName {
-  value?: string;
-  localizedValue?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the UsageMetric class.
- * @constructor
- * A metric describing the usage of a resource.
- *
- * @member {object} [name] The name of the metric.
- * @member {string} [name.value] The system name of the metric.
- * @member {string} [name.localizedValue] The localized name of the metric.
- * @member {string} [unit] The units used for the metric.
- * @member {number} [currentValue] The current value of the metric.
- * @member {number} [limit] The quota limit for the metric.
- * @member {date} [nextResetTime] The time that the metric's value will reset.
- * @member {string} [quotaPeriod] The quota period that determines the length
- * of time between value resets.
- */
-export interface UsageMetric {
-  name?: MetricName;
-  unit?: string;
-  currentValue?: number;
-  limit?: number;
-  nextResetTime?: Date;
-  quotaPeriod?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ManagementGroup class.
- * @constructor
- * A management group that is connected to a workspace
- *
- * @member {number} [serverCount] The number of servers connected to the
- * management group.
- * @member {boolean} [isGateway] Gets or sets a value indicating whether the
- * management group is a gateway.
- * @member {string} [name] The name of the management group.
- * @member {string} [id] The unique ID of the management group.
- * @member {date} [created] The datetime that the management group was created.
- * @member {date} [dataReceived] The last datetime that the management group
- * received data.
- * @member {string} [version] The version of System Center that is managing the
- * management group.
- * @member {string} [sku] The SKU of System Center that is managing the
- * management group.
- */
-export interface ManagementGroup {
-  serverCount?: number;
-  isGateway?: boolean;
-  name?: string;
-  id?: string;
-  created?: Date;
-  dataReceived?: Date;
-  version?: string;
-  sku?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Sku class.
- * @constructor
- * The SKU (tier) of a workspace.
- *
- * @member {string} name The name of the SKU. Possible values include: 'Free',
- * 'Standard', 'Premium', 'Unlimited', 'PerNode', 'PerGB2018', 'Standalone'
- */
-export interface Sku {
-  name: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Workspace class.
- * @constructor
- * The top level Workspace resource container.
- *
- * @member {string} [provisioningState] The provisioning state of the
- * workspace. Possible values include: 'Creating', 'Succeeded', 'Failed',
- * 'Canceled', 'Deleting', 'ProvisioningAccount'
- * @member {string} [source] The source of the workspace.  Source defines where
- * the workspace was created. 'Azure' implies it was created in Azure.
- * 'External' implies it was created via the Operational Insights Portal. This
- * value is set on the service side and read-only on the client side.
- * @member {string} [customerId] The ID associated with the workspace.  Setting
- * this value at creation time allows the workspace being created to be linked
- * to an existing workspace.
- * @member {string} [portalUrl] The URL of the Operational Insights portal for
- * this workspace.  This value is set on the service side and read-only on the
- * client side.
- * @member {object} [sku] The SKU of the workspace.
- * @member {string} [sku.name] The name of the SKU. Possible values include:
- * 'Free', 'Standard', 'Premium', 'Unlimited', 'PerNode', 'PerGB2018',
- * 'Standalone'
- * @member {number} [retentionInDays] The workspace data retention in days. -1
- * means Unlimited retention for the Unlimited Sku. 730 days is the maximum
- * allowed for all other Skus.
- * @member {string} [eTag] The ETag of the workspace.
- */
-export interface Workspace extends BaseResource {
-  provisioningState?: string;
-  source?: string;
+export interface LinkTarget {
   customerId?: string;
-  portalUrl?: string;
-  sku?: Sku;
-  retentionInDays?: number;
+  displayName?: string;
+  workspaceName?: string;
+  location?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Tag class.
+ * @constructor
+ * A tag of a saved search.
+ *
+ * @property {string} name The tag name.
+ * @property {string} value The tag value.
+ */
+export interface Tag {
+  name: string;
+  value: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CoreSummary class.
+ * @constructor
+ * The core summary of a search.
+ *
+ * @property {string} [status] The status of a core summary.
+ * @property {number} numberOfDocuments The number of documents of a core
+ * summary.
+ */
+export interface CoreSummary {
+  status?: string;
+  numberOfDocuments: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SearchSort class.
+ * @constructor
+ * The sort parameters for search.
+ *
+ * @property {string} [name] The name of the field the search query is sorted
+ * on.
+ * @property {string} [order] The sort order of the search. Possible values
+ * include: 'asc', 'desc'
+ */
+export interface SearchSort {
+  name?: string;
+  order?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SearchMetadataSchema class.
+ * @constructor
+ * Schema metadata for search.
+ *
+ * @property {string} [name] The name of the metadata schema.
+ * @property {number} [version] The version of the metadata schema.
+ */
+export interface SearchMetadataSchema {
+  name?: string;
+  version?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SearchMetadata class.
+ * @constructor
+ * Metadata for search results.
+ *
+ * @property {string} [searchId] The request id of the search.
+ * @property {string} [resultType] The search result type.
+ * @property {number} [total] The total number of search results.
+ * @property {number} [top] The number of top search results.
+ * @property {string} [id] The id of the search results request.
+ * @property {array} [coreSummaries] The core summaries.
+ * @property {string} [status] The status of the search results.
+ * @property {date} [startTime] The start time for the search.
+ * @property {date} [lastUpdated] The time of last update.
+ * @property {string} [eTag] The ETag of the search results.
+ * @property {array} [sort] How the results are sorted.
+ * @property {number} [requestTime] The request time.
+ * @property {string} [aggregatedValueField] The aggregated value field.
+ * @property {string} [aggregatedGroupingFields] The aggregated grouping
+ * fields.
+ * @property {number} [sum] The sum of all aggregates returned in the result
+ * set.
+ * @property {number} [max] The max of all aggregates returned in the result
+ * set.
+ * @property {object} [schema] The schema.
+ * @property {string} [schema.name] The name of the metadata schema.
+ * @property {number} [schema.version] The version of the metadata schema.
+ */
+export interface SearchMetadata {
+  searchId?: string;
+  resultType?: string;
+  total?: number;
+  top?: number;
+  id?: string;
+  coreSummaries?: CoreSummary[];
+  status?: string;
+  startTime?: Date;
+  lastUpdated?: Date;
+  eTag?: string;
+  sort?: SearchSort[];
+  requestTime?: number;
+  aggregatedValueField?: string;
+  aggregatedGroupingFields?: string;
+  sum?: number;
+  max?: number;
+  schema?: SearchMetadataSchema;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SavedSearch class.
+ * @constructor
+ * Value object for saved search results.
+ *
+ * @property {string} [id] The id of the saved search.
+ * @property {string} [name] The name of the saved search.
+ * @property {string} [type] The type of the saved search.
+ * @property {string} [eTag] The ETag of the saved search.
+ * @property {string} category The category of the saved search. This helps the
+ * user to find a saved search faster.
+ * @property {string} displayName Saved search display name.
+ * @property {string} query The query expression for the saved search. Please
+ * see
+ * https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-search-reference
+ * for reference.
+ * @property {number} [version] The version number of the query lanuage. The
+ * current version is 2 and is the default.
+ * @property {array} [tags] The tags attached to the saved search.
+ */
+export interface SavedSearch extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  eTag?: string;
+  category: string;
+  displayName: string;
+  query: string;
+  version?: number;
+  tags?: Tag[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SavedSearchesListResult class.
+ * @constructor
+ * The saved search list operation response.
+ *
+ * @property {object} [metadata] The metadata from search results.
+ * @property {string} [metadata.searchId] The request id of the search.
+ * @property {string} [metadata.resultType] The search result type.
+ * @property {number} [metadata.total] The total number of search results.
+ * @property {number} [metadata.top] The number of top search results.
+ * @property {string} [metadata.id] The id of the search results request.
+ * @property {array} [metadata.coreSummaries] The core summaries.
+ * @property {string} [metadata.status] The status of the search results.
+ * @property {date} [metadata.startTime] The start time for the search.
+ * @property {date} [metadata.lastUpdated] The time of last update.
+ * @property {string} [metadata.eTag] The ETag of the search results.
+ * @property {array} [metadata.sort] How the results are sorted.
+ * @property {number} [metadata.requestTime] The request time.
+ * @property {string} [metadata.aggregatedValueField] The aggregated value
+ * field.
+ * @property {string} [metadata.aggregatedGroupingFields] The aggregated
+ * grouping fields.
+ * @property {number} [metadata.sum] The sum of all aggregates returned in the
+ * result set.
+ * @property {number} [metadata.max] The max of all aggregates returned in the
+ * result set.
+ * @property {object} [metadata.schema] The schema.
+ * @property {string} [metadata.schema.name] The name of the metadata schema.
+ * @property {number} [metadata.schema.version] The version of the metadata
+ * schema.
+ * @property {array} [value] The array of result values.
+ */
+export interface SavedSearchesListResult {
+  metadata?: SearchMetadata;
+  value?: SavedSearch[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SearchError class.
+ * @constructor
+ * Details for a search error.
+ *
+ * @property {string} [type] The error type.
+ * @property {string} [message] The error message.
+ */
+export interface SearchError {
+  type?: string;
+  message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SearchResultsResponse class.
+ * @constructor
+ * The get search result operation response.
+ *
+ * @property {string} [id] The id of the search, which includes the full url.
+ * @property {object} [metadata] The metadata from search results.
+ * @property {string} [metadata.searchId] The request id of the search.
+ * @property {string} [metadata.resultType] The search result type.
+ * @property {number} [metadata.total] The total number of search results.
+ * @property {number} [metadata.top] The number of top search results.
+ * @property {string} [metadata.id] The id of the search results request.
+ * @property {array} [metadata.coreSummaries] The core summaries.
+ * @property {string} [metadata.status] The status of the search results.
+ * @property {date} [metadata.startTime] The start time for the search.
+ * @property {date} [metadata.lastUpdated] The time of last update.
+ * @property {string} [metadata.eTag] The ETag of the search results.
+ * @property {array} [metadata.sort] How the results are sorted.
+ * @property {number} [metadata.requestTime] The request time.
+ * @property {string} [metadata.aggregatedValueField] The aggregated value
+ * field.
+ * @property {string} [metadata.aggregatedGroupingFields] The aggregated
+ * grouping fields.
+ * @property {number} [metadata.sum] The sum of all aggregates returned in the
+ * result set.
+ * @property {number} [metadata.max] The max of all aggregates returned in the
+ * result set.
+ * @property {object} [metadata.schema] The schema.
+ * @property {string} [metadata.schema.name] The name of the metadata schema.
+ * @property {number} [metadata.schema.version] The version of the metadata
+ * schema.
+ * @property {array} [value] The array of result values.
+ * @property {object} [error] The error.
+ * @property {string} [error.type] The error type.
+ * @property {string} [error.message] The error message.
+ */
+export interface SearchResultsResponse {
+  readonly id?: string;
+  metadata?: SearchMetadata;
+  value?: any[];
+  error?: SearchError;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SearchSchemaValue class.
+ * @constructor
+ * Value object for schema results.
+ *
+ * @property {string} [name] The name of the schema.
+ * @property {string} [displayName] The display name of the schema.
+ * @property {string} [type] The type.
+ * @property {boolean} indexed The boolean that indicates the field is
+ * searchable as free text.
+ * @property {boolean} stored The boolean that indicates whether or not the
+ * field is stored.
+ * @property {boolean} facet The boolean that indicates whether or not the
+ * field is a facet.
+ * @property {array} [ownerType] The array of workflows containing the field.
+ */
+export interface SearchSchemaValue {
+  name?: string;
+  displayName?: string;
+  type?: string;
+  indexed: boolean;
+  stored: boolean;
+  facet: boolean;
+  ownerType?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SearchGetSchemaResponse class.
+ * @constructor
+ * The get schema operation response.
+ *
+ * @property {object} [metadata] The metadata from search results.
+ * @property {string} [metadata.searchId] The request id of the search.
+ * @property {string} [metadata.resultType] The search result type.
+ * @property {number} [metadata.total] The total number of search results.
+ * @property {number} [metadata.top] The number of top search results.
+ * @property {string} [metadata.id] The id of the search results request.
+ * @property {array} [metadata.coreSummaries] The core summaries.
+ * @property {string} [metadata.status] The status of the search results.
+ * @property {date} [metadata.startTime] The start time for the search.
+ * @property {date} [metadata.lastUpdated] The time of last update.
+ * @property {string} [metadata.eTag] The ETag of the search results.
+ * @property {array} [metadata.sort] How the results are sorted.
+ * @property {number} [metadata.requestTime] The request time.
+ * @property {string} [metadata.aggregatedValueField] The aggregated value
+ * field.
+ * @property {string} [metadata.aggregatedGroupingFields] The aggregated
+ * grouping fields.
+ * @property {number} [metadata.sum] The sum of all aggregates returned in the
+ * result set.
+ * @property {number} [metadata.max] The max of all aggregates returned in the
+ * result set.
+ * @property {object} [metadata.schema] The schema.
+ * @property {string} [metadata.schema.name] The name of the metadata schema.
+ * @property {number} [metadata.schema.version] The version of the metadata
+ * schema.
+ * @property {array} [value] The array of result values.
+ */
+export interface SearchGetSchemaResponse {
+  metadata?: SearchMetadata;
+  value?: SearchSchemaValue[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SearchHighlight class.
+ * @constructor
+ * Highlight details.
+ *
+ * @property {string} [pre] The string that is put before a matched result.
+ * @property {string} [post] The string that is put after a matched result.
+ */
+export interface SearchHighlight {
+  pre?: string;
+  post?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SearchParameters class.
+ * @constructor
+ * Parameters specifying the search query and range.
+ *
+ * @property {number} [top] The number to get from the top.
+ * @property {object} [highlight] The highlight that looks for all occurences
+ * of a string.
+ * @property {string} [highlight.pre] The string that is put before a matched
+ * result.
+ * @property {string} [highlight.post] The string that is put after a matched
+ * result.
+ * @property {string} query The query to search.
+ * @property {date} [start] The start date filter, so the only query results
+ * returned are after this date.
+ * @property {date} [end] The end date filter, so the only query results
+ * returned are before this date.
+ */
+export interface SearchParameters {
+  top?: number;
+  highlight?: SearchHighlight;
+  query: string;
+  start?: Date;
+  end?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageAccount class.
+ * @constructor
+ * Describes a storage account connection.
+ *
+ * @property {string} id The Azure Resource Manager ID of the storage account
+ * resource.
+ * @property {string} key The storage account key.
+ */
+export interface StorageAccount {
+  id: string;
+  key: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageInsightStatus class.
+ * @constructor
+ * The status of the storage insight.
+ *
+ * @property {string} state The state of the storage insight connection to the
+ * workspace. Possible values include: 'OK', 'ERROR'
+ * @property {string} [description] Description of the state of the storage
+ * insight.
+ */
+export interface StorageInsightStatus {
+  state: string;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageInsight class.
+ * @constructor
+ * The top level storage insight resource container.
+ *
+ * @property {array} [containers] The names of the blob containers that the
+ * workspace should read
+ * @property {array} [tables] The names of the Azure tables that the workspace
+ * should read
+ * @property {object} storageAccount The storage account connection details
+ * @property {string} [storageAccount.id] The Azure Resource Manager ID of the
+ * storage account resource.
+ * @property {string} [storageAccount.key] The storage account key.
+ * @property {object} [status] The status of the storage insight
+ * @property {string} [status.state] The state of the storage insight
+ * connection to the workspace. Possible values include: 'OK', 'ERROR'
+ * @property {string} [status.description] Description of the state of the
+ * storage insight.
+ * @property {string} [eTag] The ETag of the storage insight.
+ */
+export interface StorageInsight extends BaseResource {
+  containers?: string[];
+  tables?: string[];
+  storageAccount: StorageAccount;
+  readonly status?: StorageInsightStatus;
   eTag?: string;
 }
 
@@ -265,17 +493,17 @@ export interface Workspace extends BaseResource {
  * @constructor
  * The resource definition.
  *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
- * @member {string} [location] Resource location
- * @member {object} [tags] Resource tags
+ * @property {string} [id] Resource Id
+ * @property {string} [name] Resource name
+ * @property {string} [type] Resource type
+ * @property {string} location Resource location
+ * @property {object} [tags] Resource tags
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
-  location?: string;
+  location: string;
   tags?: { [propertyName: string]: string };
 }
 
@@ -285,10 +513,10 @@ export interface Resource extends BaseResource {
  * @constructor
  * Common properties of proxy resource.
  *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
- * @member {object} [tags] Resource tags
+ * @property {string} [id] Resource ID.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
+ * @property {object} [tags] Resource tags
  */
 export interface ProxyResource {
   readonly id?: string;
@@ -297,68 +525,95 @@ export interface ProxyResource {
   tags?: { [propertyName: string]: string };
 }
 
-
 /**
  * @class
- * Initializes a new instance of the LinkedServiceListResult class.
+ * Initializes a new instance of the WorkspacePurgeBodyFilters class.
  * @constructor
- * The list linked service operation response.
+ * User-defined filters to return data which will be purged from the table.
  *
+ * @property {string} [column] The column of the table over which the given
+ * query should run
+ * @property {string} [operator] A query operator to evaluate over the provided
+ * column and value(s).
+ * @property {object} [value] the value for the operator to function over. This
+ * can be a number (e.g., > 100), a string (timestamp >= '2017-09-01') or array
+ * of values.
+ * @property {string} [key] When filtering over custom dimensions, this key
+ * will be used as the name of the custom dimension.
  */
-export interface LinkedServiceListResult extends Array<LinkedService> {
+export interface WorkspacePurgeBodyFilters {
+  column?: string;
+  operator?: string;
+  value?: any;
+  key?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the DataSourceListResult class.
+ * Initializes a new instance of the WorkspacePurgeBody class.
  * @constructor
- * The list data source by workspace operation response.
+ * Describes the body of a purge request for an App Insights Workspace
  *
- * @member {string} [nextLink] The link (url) to the next page of datasources.
+ * @property {string} table Table from which to purge data.
+ * @property {array} filters The set of columns and filters (queries) to run
+ * over them to purge the resulting data.
  */
-export interface DataSourceListResult extends Array<DataSource> {
-  nextLink?: string;
+export interface WorkspacePurgeBody {
+  table: string;
+  filters: WorkspacePurgeBodyFilters[];
 }
 
 /**
  * @class
- * Initializes a new instance of the WorkspaceListUsagesResult class.
+ * Initializes a new instance of the WorkspacePurgeResponse class.
  * @constructor
- * The list workspace usages operation response.
+ * Response containing operationId for a specific purge action.
  *
+ * @property {string} operationId Id to use when querying for status for a
+ * particular purge operation.
  */
-export interface WorkspaceListUsagesResult extends Array<UsageMetric> {
+export interface WorkspacePurgeResponse {
+  operationId: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the WorkspaceListManagementGroupsResult class.
+ * Initializes a new instance of the WorkspacePurgeStatusResponse class.
  * @constructor
- * The list workspace managmement groups operation response.
+ * Response containing status for a specific purge operation.
  *
+ * @property {string} status Status of the operation represented by the
+ * requested Id. Possible values include: 'pending', 'completed'
  */
-export interface WorkspaceListManagementGroupsResult extends Array<ManagementGroup> {
+export interface WorkspacePurgeStatusResponse {
+  status: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the WorkspaceListResult class.
+ * Initializes a new instance of the SharedKeys class.
  * @constructor
- * The list workspaces operation response.
+ * The shared keys for a workspace.
  *
+ * @property {string} [primarySharedKey] The primary shared key of a workspace.
+ * @property {string} [secondarySharedKey] The secondary shared key of a
+ * workspace.
  */
-export interface WorkspaceListResult extends Array<Workspace> {
+export interface SharedKeys {
+  primarySharedKey?: string;
+  secondarySharedKey?: string;
 }
+
 
 /**
  * @class
- * Initializes a new instance of the OperationListResult class.
+ * Initializes a new instance of the StorageInsightListResult class.
  * @constructor
- * Result of the request to list solution operations.
+ * The list storage insights operation response.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
- * results if there are any.
+ * @property {string} [odataNextLink] The link (url) to the next page of
+ * results.
  */
-export interface OperationListResult extends Array<Operation> {
-  readonly nextLink?: string;
+export interface StorageInsightListResult extends Array<StorageInsight> {
+  odataNextLink?: string;
 }

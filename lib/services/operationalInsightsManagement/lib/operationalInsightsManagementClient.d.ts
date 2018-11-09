@@ -21,7 +21,9 @@ export default class OperationalInsightsManagementClient extends AzureServiceCli
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+   * @param {string} subscriptionId - The Subscription ID.
+   *
+   * @param {string} purgeId - In a purge status request, this is the Id of the operation the status of which is returned.
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -41,13 +43,15 @@ export default class OperationalInsightsManagementClient extends AzureServiceCli
    * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, purgeId: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   subscriptionId: string;
 
   apiVersion: string;
+
+  purgeId: string;
 
   acceptLanguage: string;
 
@@ -56,9 +60,9 @@ export default class OperationalInsightsManagementClient extends AzureServiceCli
   generateClientRequestId: boolean;
 
   // Operation groups
-  linkedServices: operations.LinkedServices;
-  dataSources: operations.DataSources;
+  storageInsights: operations.StorageInsights;
   workspaces: operations.Workspaces;
+  savedSearches: operations.SavedSearches;
   operations: operations.Operations;
 }
 
