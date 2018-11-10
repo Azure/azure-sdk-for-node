@@ -18031,6 +18031,40 @@ export interface NetworkInterfaceTapConfigurations {
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
      *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The type of the DDoS protection plan associated with the public IP. Possible
+     * values include: 'Basic', 'Standard'
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.domainNameLabel]
+     * Gets or sets the Domain name label.The concatenation of the domain name
+     * label and the regionalized DNS zone make up the fully qualified domain name
+     * associated with the public IP address. If a domain name label is specified,
+     * an A DNS record is created for the public IP in the Microsoft Azure DNS
+     * system.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.fqdn]
+     * Gets the FQDN, Fully qualified domain name of the A DNS record associated
+     * with the public IP. This is the concatenation of the domainNameLabel and the
+     * regionalized DNS zone.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.reverseFqdn]
+     * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
+     * that resolves to this public IP address. If the reverseFqdn is specified,
+     * then a PTR DNS record is created pointing from the IP address in the
+     * in-addr.arpa domain to the reverse FQDN.
+     *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
      * The list of tags associated with the public IP address.
@@ -18410,6 +18444,40 @@ export interface NetworkInterfaceTapConfigurations {
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
+     * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
+     * that resolves to this public IP address. If the reverseFqdn is specified,
+     * then a PTR DNS record is created pointing from the IP address in the
+     * in-addr.arpa domain to the reverse FQDN.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The type of the DDoS protection plan associated with the public IP. Possible
+     * values include: 'Basic', 'Standard'
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.domainNameLabel]
+     * Gets or sets the Domain name label.The concatenation of the domain name
+     * label and the regionalized DNS zone make up the fully qualified domain name
+     * associated with the public IP address. If a domain name label is specified,
+     * an A DNS record is created for the public IP in the Microsoft Azure DNS
+     * system.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.fqdn]
+     * Gets the FQDN, Fully qualified domain name of the A DNS record associated
+     * with the public IP. This is the concatenation of the domainNameLabel and the
+     * regionalized DNS zone.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.reverseFqdn]
      * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
      * that resolves to this public IP address. If the reverseFqdn is specified,
      * then a PTR DNS record is created pointing from the IP address in the
@@ -18941,6 +19009,40 @@ export interface NetworkInterfaceTapConfigurations {
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
      *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The type of the DDoS protection plan associated with the public IP. Possible
+     * values include: 'Basic', 'Standard'
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.domainNameLabel]
+     * Gets or sets the Domain name label.The concatenation of the domain name
+     * label and the regionalized DNS zone make up the fully qualified domain name
+     * associated with the public IP address. If a domain name label is specified,
+     * an A DNS record is created for the public IP in the Microsoft Azure DNS
+     * system.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.fqdn]
+     * Gets the FQDN, Fully qualified domain name of the A DNS record associated
+     * with the public IP. This is the concatenation of the domainNameLabel and the
+     * regionalized DNS zone.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.reverseFqdn]
+     * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
+     * that resolves to this public IP address. If the reverseFqdn is specified,
+     * then a PTR DNS record is created pointing from the IP address in the
+     * in-addr.arpa domain to the reverse FQDN.
+     *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
      * The list of tags associated with the public IP address.
@@ -19320,6 +19422,40 @@ export interface NetworkInterfaceTapConfigurations {
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
+     * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
+     * that resolves to this public IP address. If the reverseFqdn is specified,
+     * then a PTR DNS record is created pointing from the IP address in the
+     * in-addr.arpa domain to the reverse FQDN.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The type of the DDoS protection plan associated with the public IP. Possible
+     * values include: 'Basic', 'Standard'
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.domainNameLabel]
+     * Gets or sets the Domain name label.The concatenation of the domain name
+     * label and the regionalized DNS zone make up the fully qualified domain name
+     * associated with the public IP address. If a domain name label is specified,
+     * an A DNS record is created for the public IP in the Microsoft Azure DNS
+     * system.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.fqdn]
+     * Gets the FQDN, Fully qualified domain name of the A DNS record associated
+     * with the public IP. This is the concatenation of the domainNameLabel and the
+     * regionalized DNS zone.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.reverseFqdn]
      * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
      * that resolves to this public IP address. If the reverseFqdn is specified,
      * then a PTR DNS record is created pointing from the IP address in the
@@ -26427,6 +26563,33 @@ export interface PublicIPAddresses {
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
      *
+     * @param {object} [parameters.ddosSettings] The DDoS protection custom policy
+     * associated with the public IP address.
+     *
+     * @param {string} [parameters.ddosSettings.ddosCustomPolicy] The DDoS custom
+     * policy associated with the public IP.
+     *
+     * @param {string} [parameters.ddosSettings.protectionCoverage] The type of the
+     * DDoS protection plan associated with the public IP. Possible values include:
+     * 'Basic', 'Standard'
+     *
+     * @param {string} [parameters.ddosSettings.domainNameLabel] Gets or sets the
+     * Domain name label.The concatenation of the domain name label and the
+     * regionalized DNS zone make up the fully qualified domain name associated
+     * with the public IP address. If a domain name label is specified, an A DNS
+     * record is created for the public IP in the Microsoft Azure DNS system.
+     *
+     * @param {string} [parameters.ddosSettings.fqdn] Gets the FQDN, Fully
+     * qualified domain name of the A DNS record associated with the public IP.
+     * This is the concatenation of the domainNameLabel and the regionalized DNS
+     * zone.
+     *
+     * @param {string} [parameters.ddosSettings.reverseFqdn] Gets or Sets the
+     * Reverse FQDN. A user-visible, fully qualified domain name that resolves to
+     * this public IP address. If the reverseFqdn is specified, then a PTR DNS
+     * record is created pointing from the IP address in the in-addr.arpa domain to
+     * the reverse FQDN.
+     *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP address.
      *
@@ -26510,6 +26673,33 @@ export interface PublicIPAddresses {
      * concatenation of the domainNameLabel and the regionalized DNS zone.
      *
      * @param {string} [parameters.dnsSettings.reverseFqdn] Gets or Sets the
+     * Reverse FQDN. A user-visible, fully qualified domain name that resolves to
+     * this public IP address. If the reverseFqdn is specified, then a PTR DNS
+     * record is created pointing from the IP address in the in-addr.arpa domain to
+     * the reverse FQDN.
+     *
+     * @param {object} [parameters.ddosSettings] The DDoS protection custom policy
+     * associated with the public IP address.
+     *
+     * @param {string} [parameters.ddosSettings.ddosCustomPolicy] The DDoS custom
+     * policy associated with the public IP.
+     *
+     * @param {string} [parameters.ddosSettings.protectionCoverage] The type of the
+     * DDoS protection plan associated with the public IP. Possible values include:
+     * 'Basic', 'Standard'
+     *
+     * @param {string} [parameters.ddosSettings.domainNameLabel] Gets or sets the
+     * Domain name label.The concatenation of the domain name label and the
+     * regionalized DNS zone make up the fully qualified domain name associated
+     * with the public IP address. If a domain name label is specified, an A DNS
+     * record is created for the public IP in the Microsoft Azure DNS system.
+     *
+     * @param {string} [parameters.ddosSettings.fqdn] Gets the FQDN, Fully
+     * qualified domain name of the A DNS record associated with the public IP.
+     * This is the concatenation of the domainNameLabel and the regionalized DNS
+     * zone.
+     *
+     * @param {string} [parameters.ddosSettings.reverseFqdn] Gets or Sets the
      * Reverse FQDN. A user-visible, fully qualified domain name that resolves to
      * this public IP address. If the reverseFqdn is specified, then a PTR DNS
      * record is created pointing from the IP address in the in-addr.arpa domain to
@@ -27078,6 +27268,33 @@ export interface PublicIPAddresses {
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
      *
+     * @param {object} [parameters.ddosSettings] The DDoS protection custom policy
+     * associated with the public IP address.
+     *
+     * @param {string} [parameters.ddosSettings.ddosCustomPolicy] The DDoS custom
+     * policy associated with the public IP.
+     *
+     * @param {string} [parameters.ddosSettings.protectionCoverage] The type of the
+     * DDoS protection plan associated with the public IP. Possible values include:
+     * 'Basic', 'Standard'
+     *
+     * @param {string} [parameters.ddosSettings.domainNameLabel] Gets or sets the
+     * Domain name label.The concatenation of the domain name label and the
+     * regionalized DNS zone make up the fully qualified domain name associated
+     * with the public IP address. If a domain name label is specified, an A DNS
+     * record is created for the public IP in the Microsoft Azure DNS system.
+     *
+     * @param {string} [parameters.ddosSettings.fqdn] Gets the FQDN, Fully
+     * qualified domain name of the A DNS record associated with the public IP.
+     * This is the concatenation of the domainNameLabel and the regionalized DNS
+     * zone.
+     *
+     * @param {string} [parameters.ddosSettings.reverseFqdn] Gets or Sets the
+     * Reverse FQDN. A user-visible, fully qualified domain name that resolves to
+     * this public IP address. If the reverseFqdn is specified, then a PTR DNS
+     * record is created pointing from the IP address in the in-addr.arpa domain to
+     * the reverse FQDN.
+     *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP address.
      *
@@ -27161,6 +27378,33 @@ export interface PublicIPAddresses {
      * concatenation of the domainNameLabel and the regionalized DNS zone.
      *
      * @param {string} [parameters.dnsSettings.reverseFqdn] Gets or Sets the
+     * Reverse FQDN. A user-visible, fully qualified domain name that resolves to
+     * this public IP address. If the reverseFqdn is specified, then a PTR DNS
+     * record is created pointing from the IP address in the in-addr.arpa domain to
+     * the reverse FQDN.
+     *
+     * @param {object} [parameters.ddosSettings] The DDoS protection custom policy
+     * associated with the public IP address.
+     *
+     * @param {string} [parameters.ddosSettings.ddosCustomPolicy] The DDoS custom
+     * policy associated with the public IP.
+     *
+     * @param {string} [parameters.ddosSettings.protectionCoverage] The type of the
+     * DDoS protection plan associated with the public IP. Possible values include:
+     * 'Basic', 'Standard'
+     *
+     * @param {string} [parameters.ddosSettings.domainNameLabel] Gets or sets the
+     * Domain name label.The concatenation of the domain name label and the
+     * regionalized DNS zone make up the fully qualified domain name associated
+     * with the public IP address. If a domain name label is specified, an A DNS
+     * record is created for the public IP in the Microsoft Azure DNS system.
+     *
+     * @param {string} [parameters.ddosSettings.fqdn] Gets the FQDN, Fully
+     * qualified domain name of the A DNS record associated with the public IP.
+     * This is the concatenation of the domainNameLabel and the regionalized DNS
+     * zone.
+     *
+     * @param {string} [parameters.ddosSettings.reverseFqdn] Gets or Sets the
      * Reverse FQDN. A user-visible, fully qualified domain name that resolves to
      * this public IP address. If the reverseFqdn is specified, then a PTR DNS
      * record is created pointing from the IP address in the in-addr.arpa domain to
@@ -35526,6 +35770,40 @@ export interface VirtualNetworkTaps {
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
      *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The type of the DDoS protection plan associated with the public IP. Possible
+     * values include: 'Basic', 'Standard'
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.domainNameLabel]
+     * Gets or sets the Domain name label.The concatenation of the domain name
+     * label and the regionalized DNS zone make up the fully qualified domain name
+     * associated with the public IP address. If a domain name label is specified,
+     * an A DNS record is created for the public IP in the Microsoft Azure DNS
+     * system.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.fqdn]
+     * Gets the FQDN, Fully qualified domain name of the A DNS record associated
+     * with the public IP. This is the concatenation of the domainNameLabel and the
+     * regionalized DNS zone.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.reverseFqdn]
+     * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
+     * that resolves to this public IP address. If the reverseFqdn is specified,
+     * then a PTR DNS record is created pointing from the IP address in the
+     * in-addr.arpa domain to the reverse FQDN.
+     *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
      * The list of tags associated with the public IP address.
@@ -35881,6 +36159,40 @@ export interface VirtualNetworkTaps {
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
+     * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
+     * that resolves to this public IP address. If the reverseFqdn is specified,
+     * then a PTR DNS record is created pointing from the IP address in the
+     * in-addr.arpa domain to the reverse FQDN.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The type of the DDoS protection plan associated with the public IP. Possible
+     * values include: 'Basic', 'Standard'
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.domainNameLabel]
+     * Gets or sets the Domain name label.The concatenation of the domain name
+     * label and the regionalized DNS zone make up the fully qualified domain name
+     * associated with the public IP address. If a domain name label is specified,
+     * an A DNS record is created for the public IP in the Microsoft Azure DNS
+     * system.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.fqdn]
+     * Gets the FQDN, Fully qualified domain name of the A DNS record associated
+     * with the public IP. This is the concatenation of the domainNameLabel and the
+     * regionalized DNS zone.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.reverseFqdn]
      * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
      * that resolves to this public IP address. If the reverseFqdn is specified,
      * then a PTR DNS record is created pointing from the IP address in the
@@ -36500,6 +36812,40 @@ export interface VirtualNetworkTaps {
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
      *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The type of the DDoS protection plan associated with the public IP. Possible
+     * values include: 'Basic', 'Standard'
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.domainNameLabel]
+     * Gets or sets the Domain name label.The concatenation of the domain name
+     * label and the regionalized DNS zone make up the fully qualified domain name
+     * associated with the public IP address. If a domain name label is specified,
+     * an A DNS record is created for the public IP in the Microsoft Azure DNS
+     * system.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.fqdn]
+     * Gets the FQDN, Fully qualified domain name of the A DNS record associated
+     * with the public IP. This is the concatenation of the domainNameLabel and the
+     * regionalized DNS zone.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.reverseFqdn]
+     * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
+     * that resolves to this public IP address. If the reverseFqdn is specified,
+     * then a PTR DNS record is created pointing from the IP address in the
+     * in-addr.arpa domain to the reverse FQDN.
+     *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
      * The list of tags associated with the public IP address.
@@ -36855,6 +37201,40 @@ export interface VirtualNetworkTaps {
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
+     * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
+     * that resolves to this public IP address. If the reverseFqdn is specified,
+     * then a PTR DNS record is created pointing from the IP address in the
+     * in-addr.arpa domain to the reverse FQDN.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The type of the DDoS protection plan associated with the public IP. Possible
+     * values include: 'Basic', 'Standard'
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.domainNameLabel]
+     * Gets or sets the Domain name label.The concatenation of the domain name
+     * label and the regionalized DNS zone make up the fully qualified domain name
+     * associated with the public IP address. If a domain name label is specified,
+     * an A DNS record is created for the public IP in the Microsoft Azure DNS
+     * system.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.fqdn]
+     * Gets the FQDN, Fully qualified domain name of the A DNS record associated
+     * with the public IP. This is the concatenation of the domainNameLabel and the
+     * regionalized DNS zone.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.reverseFqdn]
      * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
      * that resolves to this public IP address. If the reverseFqdn is specified,
      * then a PTR DNS record is created pointing from the IP address in the
