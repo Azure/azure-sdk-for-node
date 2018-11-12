@@ -132,6 +132,21 @@ export interface ContainerPropertiesInstanceView {
 
 /**
  * @class
+ * Initializes a new instance of the GpuResource class.
+ * @constructor
+ * The GPU resource.
+ *
+ * @member {number} count The count of the GPU resource.
+ * @member {string} sku The SKU of the GPU resource. Possible values include:
+ * 'K80', 'P100', 'V100'
+ */
+export interface GpuResource {
+  count: number;
+  sku: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ResourceRequests class.
  * @constructor
  * The resource requests.
@@ -139,10 +154,15 @@ export interface ContainerPropertiesInstanceView {
  * @member {number} memoryInGB The memory request in GB of this container
  * instance.
  * @member {number} cpu The CPU request of this container instance.
+ * @member {object} [gpu] The GPU request of this container instance.
+ * @member {number} [gpu.count] The count of the GPU resource.
+ * @member {string} [gpu.sku] The SKU of the GPU resource. Possible values
+ * include: 'K80', 'P100', 'V100'
  */
 export interface ResourceRequests {
   memoryInGB: number;
   cpu: number;
+  gpu?: GpuResource;
 }
 
 /**
@@ -154,10 +174,15 @@ export interface ResourceRequests {
  * @member {number} [memoryInGB] The memory limit in GB of this container
  * instance.
  * @member {number} [cpu] The CPU limit of this container instance.
+ * @member {object} [gpu] The GPU limit of this container instance.
+ * @member {number} [gpu.count] The count of the GPU resource.
+ * @member {string} [gpu.sku] The SKU of the GPU resource. Possible values
+ * include: 'K80', 'P100', 'V100'
  */
 export interface ResourceLimits {
   memoryInGB?: number;
   cpu?: number;
+  gpu?: GpuResource;
 }
 
 /**
@@ -170,10 +195,18 @@ export interface ResourceLimits {
  * @member {number} [requests.memoryInGB] The memory request in GB of this
  * container instance.
  * @member {number} [requests.cpu] The CPU request of this container instance.
+ * @member {object} [requests.gpu] The GPU request of this container instance.
+ * @member {number} [requests.gpu.count] The count of the GPU resource.
+ * @member {string} [requests.gpu.sku] The SKU of the GPU resource. Possible
+ * values include: 'K80', 'P100', 'V100'
  * @member {object} [limits] The resource limits of this container instance.
  * @member {number} [limits.memoryInGB] The memory limit in GB of this
  * container instance.
  * @member {number} [limits.cpu] The CPU limit of this container instance.
+ * @member {object} [limits.gpu] The GPU limit of this container instance.
+ * @member {number} [limits.gpu.count] The count of the GPU resource.
+ * @member {string} [limits.gpu.sku] The SKU of the GPU resource. Possible
+ * values include: 'K80', 'P100', 'V100'
  */
 export interface ResourceRequirements {
   requests: ResourceRequests;
@@ -307,12 +340,23 @@ export interface ContainerProbe {
  * this container instance.
  * @member {number} [resources.requests.cpu] The CPU request of this container
  * instance.
+ * @member {object} [resources.requests.gpu] The GPU request of this container
+ * instance.
+ * @member {number} [resources.requests.gpu.count] The count of the GPU
+ * resource.
+ * @member {string} [resources.requests.gpu.sku] The SKU of the GPU resource.
+ * Possible values include: 'K80', 'P100', 'V100'
  * @member {object} [resources.limits] The resource limits of this container
  * instance.
  * @member {number} [resources.limits.memoryInGB] The memory limit in GB of
  * this container instance.
  * @member {number} [resources.limits.cpu] The CPU limit of this container
  * instance.
+ * @member {object} [resources.limits.gpu] The GPU limit of this container
+ * instance.
+ * @member {number} [resources.limits.gpu.count] The count of the GPU resource.
+ * @member {string} [resources.limits.gpu.sku] The SKU of the GPU resource.
+ * Possible values include: 'K80', 'P100', 'V100'
  * @member {array} [volumeMounts] The volume mounts available to the container
  * instance.
  * @member {object} [livenessProbe] The liveness probe.
@@ -595,6 +639,23 @@ export interface ContainerGroupNetworkProfile {
 
 /**
  * @class
+ * Initializes a new instance of the DnsConfiguration class.
+ * @constructor
+ * DNS configuration for the container group.
+ *
+ * @member {array} nameServers The DNS servers for the container group.
+ * @member {string} [searchDomains] The DNS search domains for hostname lookup
+ * in the container group.
+ * @member {string} [options] The DNS options for the container group.
+ */
+export interface DnsConfiguration {
+  nameServers: string[];
+  searchDomains?: string;
+  options?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Resource class.
  * @constructor
  * The Resource model definition.
@@ -680,6 +741,14 @@ export interface Resource extends BaseResource {
  * @member {object} [networkProfile] The network profile information for a
  * container group.
  * @member {string} [networkProfile.id] The identifier for a network profile.
+ * @member {object} [dnsConfig] The DNS config information for a container
+ * group.
+ * @member {array} [dnsConfig.nameServers] The DNS servers for the container
+ * group.
+ * @member {string} [dnsConfig.searchDomains] The DNS search domains for
+ * hostname lookup in the container group.
+ * @member {string} [dnsConfig.options] The DNS options for the container
+ * group.
  */
 export interface ContainerGroup extends Resource {
   identity?: ContainerGroupIdentity;
@@ -693,6 +762,7 @@ export interface ContainerGroup extends Resource {
   readonly instanceView?: ContainerGroupPropertiesInstanceView;
   diagnostics?: ContainerGroupDiagnostics;
   networkProfile?: ContainerGroupNetworkProfile;
+  dnsConfig?: DnsConfiguration;
 }
 
 /**

@@ -4,7 +4,7 @@
   "contributors": [
     "Makwana, Digvijay <dimakwan@microsoft.com>"
   ],
-  "version": "1.0.3-preview",
+  "version": "1.1.0-preview",
   "description": "Microsoft Azure Customer Insights Management Client Library for Node",
   "tags": [
     "azure",

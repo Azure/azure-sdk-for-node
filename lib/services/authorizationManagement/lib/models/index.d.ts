@@ -22,11 +22,11 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Classic Administrators
  *
- * @member {string} [id] The ID of the administrator.
- * @member {string} [name] The name of the administrator.
- * @member {string} [type] The type of the administrator.
- * @member {string} [emailAddress] The email address of the administrator.
- * @member {string} [role] The role of the administrator.
+ * @property {string} [id] The ID of the administrator.
+ * @property {string} [name] The name of the administrator.
+ * @property {string} [type] The type of the administrator.
+ * @property {string} [emailAddress] The email address of the administrator.
+ * @property {string} [role] The role of the administrator.
  */
 export interface ClassicAdministrator {
   id?: string;
@@ -42,12 +42,12 @@ export interface ClassicAdministrator {
  * @constructor
  * Operation
  *
- * @member {string} [name] The operation name.
- * @member {string} [displayName] The operation display name.
- * @member {string} [description] The operation description.
- * @member {string} [origin] The operation origin.
- * @member {object} [properties] The operation properties.
- * @member {boolean} [isDataAction] The dataAction flag to specify the
+ * @property {string} [name] The operation name.
+ * @property {string} [displayName] The operation display name.
+ * @property {string} [description] The operation description.
+ * @property {string} [origin] The operation origin.
+ * @property {object} [properties] The operation properties.
+ * @property {boolean} [isDataAction] The dataAction flag to specify the
  * operation type.
  */
 export interface ProviderOperation {
@@ -65,9 +65,9 @@ export interface ProviderOperation {
  * @constructor
  * Resource Type
  *
- * @member {string} [name] The resource type name.
- * @member {string} [displayName] The resource type display name.
- * @member {array} [operations] The resource type operations.
+ * @property {string} [name] The resource type name.
+ * @property {string} [displayName] The resource type display name.
+ * @property {array} [operations] The resource type operations.
  */
 export interface ResourceType {
   name?: string;
@@ -81,12 +81,12 @@ export interface ResourceType {
  * @constructor
  * Provider Operations metadata
  *
- * @member {string} [id] The provider id.
- * @member {string} [name] The provider name.
- * @member {string} [type] The provider type.
- * @member {string} [displayName] The provider display name.
- * @member {array} [resourceTypes] The provider resource types
- * @member {array} [operations] The provider operations.
+ * @property {string} [id] The provider id.
+ * @property {string} [name] The provider name.
+ * @property {string} [type] The provider type.
+ * @property {string} [displayName] The provider display name.
+ * @property {array} [resourceTypes] The provider resource types
+ * @property {array} [operations] The provider operations.
  */
 export interface ProviderOperationsMetadata {
   id?: string;
@@ -99,71 +99,13 @@ export interface ProviderOperationsMetadata {
 
 /**
  * @class
- * Initializes a new instance of the Permission class.
- * @constructor
- * Role definition permissions.
- *
- * @member {array} [actions] Allowed actions.
- * @member {array} [notActions] Denied actions.
- * @member {array} [dataActions] Allowed Data actions.
- * @member {array} [notDataActions] Denied Data actions.
- */
-export interface Permission {
-  actions?: string[];
-  notActions?: string[];
-  dataActions?: string[];
-  notDataActions?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the RoleDefinitionFilter class.
- * @constructor
- * Role Definitions filter
- *
- * @member {string} [roleName] Returns role definition with the specific name.
- * @member {string} [type] Returns role definition with the specific type.
- */
-export interface RoleDefinitionFilter {
-  roleName?: string;
-  type?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RoleDefinition class.
- * @constructor
- * Role definition.
- *
- * @member {string} [id] The role definition ID.
- * @member {string} [name] The role definition name.
- * @member {string} [type] The role definition type.
- * @member {string} [roleName] The role name.
- * @member {string} [description] The role definition description.
- * @member {string} [roleType] The role type.
- * @member {array} [permissions] Role definition permissions.
- * @member {array} [assignableScopes] Role definition assignable scopes.
- */
-export interface RoleDefinition {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  roleName?: string;
-  description?: string;
-  roleType?: string;
-  permissions?: Permission[];
-  assignableScopes?: string[];
-}
-
-/**
- * @class
  * Initializes a new instance of the RoleAssignmentFilter class.
  * @constructor
  * Role Assignments filter
  *
- * @member {string} [principalId] Returns role assignment of the specific
+ * @property {string} [principalId] Returns role assignment of the specific
  * principal.
- * @member {boolean} [canDelegate] The Delegation flag for the roleassignment
+ * @property {boolean} [canDelegate] The Delegation flag for the roleassignment
  */
 export interface RoleAssignmentFilter {
   principalId?: string;
@@ -176,13 +118,13 @@ export interface RoleAssignmentFilter {
  * @constructor
  * Role Assignments
  *
- * @member {string} [id] The role assignment ID.
- * @member {string} [name] The role assignment name.
- * @member {string} [type] The role assignment type.
- * @member {string} [scope] The role assignment scope.
- * @member {string} [roleDefinitionId] The role definition ID.
- * @member {string} [principalId] The principal ID.
- * @member {boolean} [canDelegate] The Delegation flag for the roleassignment
+ * @property {string} [id] The role assignment ID.
+ * @property {string} [name] The role assignment name.
+ * @property {string} [type] The role assignment type.
+ * @property {string} [scope] The role assignment scope.
+ * @property {string} [roleDefinitionId] The role definition ID.
+ * @property {string} [principalId] The principal ID.
+ * @property {boolean} [canDelegate] The Delegation flag for the roleassignment
  */
 export interface RoleAssignment {
   readonly id?: string;
@@ -200,18 +142,82 @@ export interface RoleAssignment {
  * @constructor
  * Role assignment create parameters.
  *
- * @member {string} roleDefinitionId The role definition ID used in the role
+ * @property {string} roleDefinitionId The role definition ID used in the role
  * assignment.
- * @member {string} principalId The principal ID assigned to the role. This
+ * @property {string} principalId The principal ID assigned to the role. This
  * maps to the ID inside the Active Directory. It can point to a user, service
  * principal, or security group.
- * @member {boolean} [canDelegate] The delgation flag used for creating a role
- * assignment
+ * @property {string} [principalType] The principal type of the assigned
+ * principal ID. Possible values include: 'User', 'Group', 'ServicePrincipal',
+ * 'Unknown', 'DirectoryRoleTemplate', 'ForeignGroup', 'Application', 'MSI',
+ * 'DirectoryObjectOrGroup', 'Everyone'
+ * @property {boolean} [canDelegate] The delgation flag used for creating a
+ * role assignment
  */
 export interface RoleAssignmentCreateParameters {
   roleDefinitionId: string;
   principalId: string;
+  principalType?: string;
   canDelegate?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RoleDefinitionFilter class.
+ * @constructor
+ * Role Definitions filter
+ *
+ * @property {string} [roleName] Returns role definition with the specific
+ * name.
+ * @property {string} [type] Returns role definition with the specific type.
+ */
+export interface RoleDefinitionFilter {
+  roleName?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Permission class.
+ * @constructor
+ * Role definition permissions.
+ *
+ * @property {array} [actions] Allowed actions.
+ * @property {array} [notActions] Denied actions.
+ * @property {array} [dataActions] Allowed Data actions.
+ * @property {array} [notDataActions] Denied Data actions.
+ */
+export interface Permission {
+  actions?: string[];
+  notActions?: string[];
+  dataActions?: string[];
+  notDataActions?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RoleDefinition class.
+ * @constructor
+ * Role definition.
+ *
+ * @property {string} [id] The role definition ID.
+ * @property {string} [name] The role definition name.
+ * @property {string} [type] The role definition type.
+ * @property {string} [roleName] The role name.
+ * @property {string} [description] The role definition description.
+ * @property {string} [roleType] The role type.
+ * @property {array} [permissions] Role definition permissions.
+ * @property {array} [assignableScopes] Role definition assignable scopes.
+ */
+export interface RoleDefinition {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  roleName?: string;
+  description?: string;
+  roleType?: string;
+  permissions?: Permission[];
+  assignableScopes?: string[];
 }
 
 /**
@@ -220,11 +226,11 @@ export interface RoleAssignmentCreateParameters {
  * @constructor
  * Deny Assignments filter
  *
- * @member {string} [denyAssignmentName] Return deny assignment with specified
- * name.
- * @member {string} [principalId] Return all deny assignments where the
+ * @property {string} [denyAssignmentName] Return deny assignment with
+ * specified name.
+ * @property {string} [principalId] Return all deny assignments where the
  * specified principal is listed in the principals list of deny assignments.
- * @member {string} [gdprExportPrincipalId] Return all deny assignments where
+ * @property {string} [gdprExportPrincipalId] Return all deny assignments where
  * the specified principal is listed either in the principals list or exclude
  * principals list of deny assignments.
  */
@@ -240,14 +246,14 @@ export interface DenyAssignmentFilter {
  * @constructor
  * Deny assignment permissions.
  *
- * @member {array} [actions] Actions to which the deny assignment does not
+ * @property {array} [actions] Actions to which the deny assignment does not
  * grant access.
- * @member {array} [notActions] Actions to exclude from that the deny
+ * @property {array} [notActions] Actions to exclude from that the deny
  * assignment does not grant access.
- * @member {array} [dataActions] Data actions to which the deny assignment does
- * not grant access.
- * @member {array} [notDataActions] Data actions to exclude from that the deny
- * assignment does not grant access.
+ * @property {array} [dataActions] Data actions to which the deny assignment
+ * does not grant access.
+ * @property {array} [notDataActions] Data actions to exclude from that the
+ * deny assignment does not grant access.
  */
 export interface DenyAssignmentPermission {
   actions?: string[];
@@ -262,11 +268,11 @@ export interface DenyAssignmentPermission {
  * @constructor
  * Deny assignment principal.
  *
- * @member {string} [id] Object ID of the Azure AD principal (user, group, or
+ * @property {string} [id] Object ID of the Azure AD principal (user, group, or
  * service principal) to which the deny assignment applies. An empty guid
  * '00000000-0000-0000-0000-000000000000' as principal id and principal type as
  * 'Everyone' represents all users, groups and service principals.
- * @member {string} [type] Type of object represented by principal id (user,
+ * @property {string} [type] Type of object represented by principal id (user,
  * group, or service principal). An empty guid
  * '00000000-0000-0000-0000-000000000000' as principal id and principal type as
  * 'Everyone' represents all users, groups and service principals.
@@ -282,23 +288,23 @@ export interface Principal {
  * @constructor
  * Deny Assignment
  *
- * @member {string} [id] The deny assignment ID.
- * @member {string} [name] The deny assignment name.
- * @member {string} [type] The deny assignment type.
- * @member {string} [denyAssignmentName] The display name of the deny
+ * @property {string} [id] The deny assignment ID.
+ * @property {string} [name] The deny assignment name.
+ * @property {string} [type] The deny assignment type.
+ * @property {string} [denyAssignmentName] The display name of the deny
  * assignment.
- * @member {string} [description] The description of the deny assignment.
- * @member {array} [permissions] An array of permissions that are denied by the
- * deny assignment.
- * @member {string} [scope] The deny assignment scope.
- * @member {boolean} [doNotApplyToChildScopes] Determines if the deny
+ * @property {string} [description] The description of the deny assignment.
+ * @property {array} [permissions] An array of permissions that are denied by
+ * the deny assignment.
+ * @property {string} [scope] The deny assignment scope.
+ * @property {boolean} [doNotApplyToChildScopes] Determines if the deny
  * assignment applies to child scopes. Default value is false.
- * @member {array} [principals] Array of principals to which the deny
+ * @property {array} [principals] Array of principals to which the deny
  * assignment applies.
- * @member {array} [excludePrincipals] Array of principals to which the deny
+ * @property {array} [excludePrincipals] Array of principals to which the deny
  * assignment does not apply.
- * @member {boolean} [isSystemProtected] Specifies whether this deny assignment
- * was created by Azure and cannot be edited or deleted.
+ * @property {boolean} [isSystemProtected] Specifies whether this deny
+ * assignment was created by Azure and cannot be edited or deleted.
  */
 export interface DenyAssignment {
   readonly id?: string;
@@ -321,7 +327,7 @@ export interface DenyAssignment {
  * @constructor
  * ClassicAdministrator list result information.
  *
- * @member {string} [nextLink] The URL to use for getting the next set of
+ * @property {string} [nextLink] The URL to use for getting the next set of
  * results.
  */
 export interface ClassicAdministratorListResult extends Array<ClassicAdministrator> {
@@ -334,23 +340,10 @@ export interface ClassicAdministratorListResult extends Array<ClassicAdministrat
  * @constructor
  * Provider operations metadata list
  *
- * @member {string} [nextLink] The URL to use for getting the next set of
+ * @property {string} [nextLink] The URL to use for getting the next set of
  * results.
  */
 export interface ProviderOperationsMetadataListResult extends Array<ProviderOperationsMetadata> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the PermissionGetResult class.
- * @constructor
- * Permissions information.
- *
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface PermissionGetResult extends Array<Permission> {
   nextLink?: string;
 }
 
@@ -360,10 +353,23 @@ export interface PermissionGetResult extends Array<Permission> {
  * @constructor
  * Role assignment list operation result.
  *
- * @member {string} [nextLink] The URL to use for getting the next set of
+ * @property {string} [nextLink] The URL to use for getting the next set of
  * results.
  */
 export interface RoleAssignmentListResult extends Array<RoleAssignment> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PermissionGetResult class.
+ * @constructor
+ * Permissions information.
+ *
+ * @property {string} [nextLink] The URL to use for getting the next set of
+ * results.
+ */
+export interface PermissionGetResult extends Array<Permission> {
   nextLink?: string;
 }
 
@@ -373,7 +379,7 @@ export interface RoleAssignmentListResult extends Array<RoleAssignment> {
  * @constructor
  * Role definition list operation result.
  *
- * @member {string} [nextLink] The URL to use for getting the next set of
+ * @property {string} [nextLink] The URL to use for getting the next set of
  * results.
  */
 export interface RoleDefinitionListResult extends Array<RoleDefinition> {
@@ -386,7 +392,7 @@ export interface RoleDefinitionListResult extends Array<RoleDefinition> {
  * @constructor
  * Deny assignment list operation result.
  *
- * @member {string} [nextLink] The URL to use for getting the next set of
+ * @property {string} [nextLink] The URL to use for getting the next set of
  * results.
  */
 export interface DenyAssignmentListResult extends Array<DenyAssignment> {
