@@ -4728,7 +4728,7 @@ export interface AvailableDelegation {
  * resource is updated.
  */
 export interface AzureFirewallIPConfiguration extends SubResource {
-  privateIPAddress?: string;
+  readonly privateIPAddress?: string;
   subnet?: SubResource;
   publicIPAddress?: SubResource;
   provisioningState?: string;
