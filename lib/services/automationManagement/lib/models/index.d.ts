@@ -1592,7 +1592,7 @@ export interface TagSettingsProperties {
  * Azure query for the update configuration.
  *
  * @member {array} [scope] List of Subscription or Resource Group ARM Ids.
- * @member {array} [location] List of locations to scope the query to.
+ * @member {array} [locations] List of locations to scope the query to.
  * @member {object} [tagSettings] Tag settings for the VM.
  * @member {object} [tagSettings.tags] Dictionary of tags with its list of
  * values.
@@ -1601,7 +1601,7 @@ export interface TagSettingsProperties {
  */
 export interface AzureQueryProperties {
   scope?: string[];
-  location?: string[];
+  locations?: string[];
   tagSettings?: TagSettingsProperties;
 }
 
@@ -1668,6 +1668,40 @@ export interface UpdateConfiguration {
   azureVirtualMachines?: string[];
   nonAzureComputerNames?: string[];
   targets?: TargetProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TaskProperties class.
+ * @constructor
+ * Task properties of the software update configuration.
+ *
+ * @member {object} [parameters] Gets or sets the parameters of the task.
+ * @member {string} [source] Gets or sets the name of the runbook.
+ */
+export interface TaskProperties {
+  parameters?: { [propertyName: string]: string };
+  source?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SoftwareUpdateConfigurationTasks class.
+ * @constructor
+ * Task properties of the software update configuration.
+ *
+ * @member {object} [preTask] Pre task properties.
+ * @member {object} [preTask.parameters] Gets or sets the parameters of the
+ * task.
+ * @member {string} [preTask.source] Gets or sets the name of the runbook.
+ * @member {object} [postTask] Post task properties.
+ * @member {object} [postTask.parameters] Gets or sets the parameters of the
+ * task.
+ * @member {string} [postTask.source] Gets or sets the name of the runbook.
+ */
+export interface SoftwareUpdateConfigurationTasks {
+  preTask?: TaskProperties;
+  postTask?: TaskProperties;
 }
 
 /**
@@ -1755,18 +1789,30 @@ export interface UpdateConfiguration {
  * @member {string} [scheduleInfo.description] Gets or sets the description.
  * @member {string} [provisioningState] Provisioning state for the software
  * update configuration, which only appears in the response.
- * @member {object} [error] detailes of provisioning error
+ * @member {object} [error] Details of provisioning error
  * @member {string} [error.code] Error code
  * @member {string} [error.message] Error message indicating why the operation
  * failed.
- * @member {date} [creationTime] Creation time of theresource, which only
+ * @member {date} [creationTime] Creation time of the resource, which only
  * appears in the response.
- * @member {string} [createdBy] createdBy property, which only appears in the
+ * @member {string} [createdBy] CreatedBy property, which only appears in the
  * response.
  * @member {date} [lastModifiedTime] Last time resource was modified, which
  * only appears in the response.
- * @member {string} [lastModifiedBy] lastModifiedBy property, which only
+ * @member {string} [lastModifiedBy] LastModifiedBy property, which only
  * appears in the response.
+ * @member {object} [tasks] Tasks information for the Software update
+ * configuration.
+ * @member {object} [tasks.preTask] Pre task properties.
+ * @member {object} [tasks.preTask.parameters] Gets or sets the parameters of
+ * the task.
+ * @member {string} [tasks.preTask.source] Gets or sets the name of the
+ * runbook.
+ * @member {object} [tasks.postTask] Post task properties.
+ * @member {object} [tasks.postTask.parameters] Gets or sets the parameters of
+ * the task.
+ * @member {string} [tasks.postTask.source] Gets or sets the name of the
+ * runbook.
  */
 export interface SoftwareUpdateConfiguration extends BaseResource {
   readonly name?: string;
@@ -1780,6 +1826,7 @@ export interface SoftwareUpdateConfiguration extends BaseResource {
   readonly createdBy?: string;
   readonly lastModifiedTime?: Date;
   readonly lastModifiedBy?: string;
+  tasks?: SoftwareUpdateConfigurationTasks;
 }
 
 /**
@@ -1868,6 +1915,42 @@ export interface UpdateConfigurationNavigation {
 
 /**
  * @class
+ * Initializes a new instance of the SoftareUpdateConfigurationRunTaskProperties class.
+ * @constructor
+ * Task properties of the software update configuration.
+ *
+ * @member {string} [status] The status of the task.
+ * @member {string} [source] The name of the source of the task.
+ * @member {string} [jobId] The job id of the task.
+ */
+export interface SoftareUpdateConfigurationRunTaskProperties {
+  status?: string;
+  source?: string;
+  jobId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SoftareUpdateConfigurationRunTasks class.
+ * @constructor
+ * Software update configuration run tasks model.
+ *
+ * @member {object} [preTask] Pre task properties.
+ * @member {string} [preTask.status] The status of the task.
+ * @member {string} [preTask.source] The name of the source of the task.
+ * @member {string} [preTask.jobId] The job id of the task.
+ * @member {object} [postTask] Post task properties.
+ * @member {string} [postTask.status] The status of the task.
+ * @member {string} [postTask.source] The name of the source of the task.
+ * @member {string} [postTask.jobId] The job id of the task.
+ */
+export interface SoftareUpdateConfigurationRunTasks {
+  preTask?: SoftareUpdateConfigurationRunTaskProperties;
+  postTask?: SoftareUpdateConfigurationRunTaskProperties;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SoftwareUpdateConfigurationRun class.
  * @constructor
  * Software update configuration Run properties.
@@ -1879,11 +1962,11 @@ export interface UpdateConfigurationNavigation {
  * @member {string} [softwareUpdateConfiguration.name] Name of the software
  * update configuration triggered the software update configuration run
  * @member {string} [status] Status of the software update configuration run.
- * @member {string} [configuredDuration] configured duration for the software
+ * @member {string} [configuredDuration] Configured duration for the software
  * update configuration run.
  * @member {string} [osType] Operating system target of the software update
  * configuration triggered this run
- * @member {date} [startTime] Etart time of the software update configuration
+ * @member {date} [startTime] Start time of the software update configuration
  * run.
  * @member {date} [endTime] End time of the software update configuration run.
  * @member {number} [computerCount] Number of computers in the software update
@@ -1891,12 +1974,22 @@ export interface UpdateConfigurationNavigation {
  * @member {number} [failedCount] Number of computers with failed status.
  * @member {date} [creationTime] Creation time of theresource, which only
  * appears in the response.
- * @member {string} [createdBy] createdBy property, which only appears in the
+ * @member {string} [createdBy] CreatedBy property, which only appears in the
  * response.
  * @member {date} [lastModifiedTime] Last time resource was modified, which
  * only appears in the response.
- * @member {string} [lastModifiedBy] lastModifiedBy property, which only
+ * @member {string} [lastModifiedBy] LastModifiedBy property, which only
  * appears in the response.
+ * @member {object} [tasks] Software update configuration tasks triggered in
+ * this run
+ * @member {object} [tasks.preTask] Pre task properties.
+ * @member {string} [tasks.preTask.status] The status of the task.
+ * @member {string} [tasks.preTask.source] The name of the source of the task.
+ * @member {string} [tasks.preTask.jobId] The job id of the task.
+ * @member {object} [tasks.postTask] Post task properties.
+ * @member {string} [tasks.postTask.status] The status of the task.
+ * @member {string} [tasks.postTask.source] The name of the source of the task.
+ * @member {string} [tasks.postTask.jobId] The job id of the task.
  */
 export interface SoftwareUpdateConfigurationRun {
   readonly name?: string;
@@ -1913,6 +2006,7 @@ export interface SoftwareUpdateConfigurationRun {
   readonly createdBy?: string;
   readonly lastModifiedTime?: Date;
   readonly lastModifiedBy?: string;
+  tasks?: SoftareUpdateConfigurationRunTasks;
 }
 
 /**
@@ -1985,6 +2079,10 @@ export interface JobNavigation {
  * only appears in the response.
  * @member {string} [lastModifiedBy] lastModifiedBy property, which only
  * appears in the response.
+ * @member {object} [error] detailes of provisioning error
+ * @member {string} [error.code] Error code
+ * @member {string} [error.message] Error message indicating why the operation
+ * failed.
  */
 export interface SoftwareUpdateConfigurationMachineRun {
   readonly name?: string;
@@ -2004,6 +2102,7 @@ export interface SoftwareUpdateConfigurationMachineRun {
   readonly createdBy?: string;
   readonly lastModifiedTime?: Date;
   readonly lastModifiedBy?: string;
+  error?: ErrorResponse;
 }
 
 /**

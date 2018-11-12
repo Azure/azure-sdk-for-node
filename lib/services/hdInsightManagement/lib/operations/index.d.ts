@@ -1408,9 +1408,6 @@ export interface Applications {
      *
      * @param {array} [parameters.properties.errors] The list of errors.
      *
-     * @param {string} [parameters.properties.additionalProperties] The additional
-     * properties for application.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1463,9 +1460,6 @@ export interface Applications {
      * type.
      *
      * @param {array} [parameters.properties.errors] The list of errors.
-     *
-     * @param {string} [parameters.properties.additionalProperties] The additional
-     * properties for application.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1601,9 +1595,6 @@ export interface Applications {
      *
      * @param {array} [parameters.properties.errors] The list of errors.
      *
-     * @param {string} [parameters.properties.additionalProperties] The additional
-     * properties for application.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1656,9 +1647,6 @@ export interface Applications {
      * type.
      *
      * @param {array} [parameters.properties.errors] The list of errors.
-     *
-     * @param {string} [parameters.properties.additionalProperties] The additional
-     * properties for application.
      *
      * @param {object} [options] Optional Parameters.
      *

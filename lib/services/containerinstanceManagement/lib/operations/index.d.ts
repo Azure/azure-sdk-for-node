@@ -308,6 +308,18 @@ export interface ContainerGroups {
      * @param {string} containerGroup.networkProfile.id The identifier for a
      * network profile.
      *
+     * @param {object} [containerGroup.dnsConfig] The DNS config information for a
+     * container group.
+     *
+     * @param {array} containerGroup.dnsConfig.nameServers The DNS servers for the
+     * container group.
+     *
+     * @param {string} [containerGroup.dnsConfig.searchDomains] The DNS search
+     * domains for hostname lookup in the container group.
+     *
+     * @param {string} [containerGroup.dnsConfig.options] The DNS options for the
+     * container group.
+     *
      * @param {string} [containerGroup.location] The resource location.
      *
      * @param {object} [containerGroup.tags] The resource tags.
@@ -412,6 +424,18 @@ export interface ContainerGroups {
      *
      * @param {string} containerGroup.networkProfile.id The identifier for a
      * network profile.
+     *
+     * @param {object} [containerGroup.dnsConfig] The DNS config information for a
+     * container group.
+     *
+     * @param {array} containerGroup.dnsConfig.nameServers The DNS servers for the
+     * container group.
+     *
+     * @param {string} [containerGroup.dnsConfig.searchDomains] The DNS search
+     * domains for hostname lookup in the container group.
+     *
+     * @param {string} [containerGroup.dnsConfig.options] The DNS options for the
+     * container group.
      *
      * @param {string} [containerGroup.location] The resource location.
      *
@@ -809,6 +833,18 @@ export interface ContainerGroups {
      * @param {string} containerGroup.networkProfile.id The identifier for a
      * network profile.
      *
+     * @param {object} [containerGroup.dnsConfig] The DNS config information for a
+     * container group.
+     *
+     * @param {array} containerGroup.dnsConfig.nameServers The DNS servers for the
+     * container group.
+     *
+     * @param {string} [containerGroup.dnsConfig.searchDomains] The DNS search
+     * domains for hostname lookup in the container group.
+     *
+     * @param {string} [containerGroup.dnsConfig.options] The DNS options for the
+     * container group.
+     *
      * @param {string} [containerGroup.location] The resource location.
      *
      * @param {object} [containerGroup.tags] The resource tags.
@@ -913,6 +949,18 @@ export interface ContainerGroups {
      *
      * @param {string} containerGroup.networkProfile.id The identifier for a
      * network profile.
+     *
+     * @param {object} [containerGroup.dnsConfig] The DNS config information for a
+     * container group.
+     *
+     * @param {array} containerGroup.dnsConfig.nameServers The DNS servers for the
+     * container group.
+     *
+     * @param {string} [containerGroup.dnsConfig.searchDomains] The DNS search
+     * domains for hostname lookup in the container group.
+     *
+     * @param {string} [containerGroup.dnsConfig.options] The DNS options for the
+     * container group.
      *
      * @param {string} [containerGroup.location] The resource location.
      *

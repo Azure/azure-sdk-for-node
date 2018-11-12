@@ -4,7 +4,7 @@
   "contributors": [
     "Bangari, Anudeep <anudeeb@microsoft.com>"
   ],
-  "version": "2.0.1-preview",
+  "version": "2.1.0-preview",
   "description": "Microsoft Azure RecoveryServices Management Client Library for node",
   "tags": [
     "azure",

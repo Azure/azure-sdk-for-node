@@ -6863,12 +6863,25 @@ export interface SoftwareUpdateConfigurations {
      * @param {string} [parameters.scheduleInfo.description] Gets or sets the
      * description.
      *
-     * @param {object} [parameters.error] detailes of provisioning error
+     * @param {object} [parameters.error] Details of provisioning error
      *
      * @param {string} [parameters.error.code] Error code
      *
      * @param {string} [parameters.error.message] Error message indicating why the
      * operation failed.
+     *
+     * @param {object} [parameters.tasks] Tasks information for the Software update
+     * configuration.
+     *
+     * @param {object} [parameters.tasks.preTask] Pre task properties.
+     *
+     * @param {object} [parameters.tasks.postTask] Post task properties.
+     *
+     * @param {object} [parameters.tasks.postTask.parameters] Gets or sets the
+     * parameters of the task.
+     *
+     * @param {string} [parameters.tasks.postTask.source] Gets or sets the name of
+     * the runbook.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -7012,12 +7025,25 @@ export interface SoftwareUpdateConfigurations {
      * @param {string} [parameters.scheduleInfo.description] Gets or sets the
      * description.
      *
-     * @param {object} [parameters.error] detailes of provisioning error
+     * @param {object} [parameters.error] Details of provisioning error
      *
      * @param {string} [parameters.error.code] Error code
      *
      * @param {string} [parameters.error.message] Error message indicating why the
      * operation failed.
+     *
+     * @param {object} [parameters.tasks] Tasks information for the Software update
+     * configuration.
+     *
+     * @param {object} [parameters.tasks.preTask] Pre task properties.
+     *
+     * @param {object} [parameters.tasks.postTask] Post task properties.
+     *
+     * @param {object} [parameters.tasks.postTask.parameters] Gets or sets the
+     * parameters of the task.
+     *
+     * @param {string} [parameters.tasks.postTask.source] Gets or sets the name of
+     * the runbook.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -7364,7 +7390,7 @@ export interface SoftwareUpdateConfigurationRuns {
      * can use the following filters: 'properties/osType', 'properties/status',
      * 'properties/startTime', and 'properties/softwareUpdateConfiguration/name'
      *
-     * @param {string} [options.skip] number of entries you skip before returning
+     * @param {string} [options.skip] Number of entries you skip before returning
      * results
      *
      * @param {string} [options.top] Maximum number of entries returned in the
@@ -7397,7 +7423,7 @@ export interface SoftwareUpdateConfigurationRuns {
      * can use the following filters: 'properties/osType', 'properties/status',
      * 'properties/startTime', and 'properties/softwareUpdateConfiguration/name'
      *
-     * @param {string} [options.skip] number of entries you skip before returning
+     * @param {string} [options.skip] Number of entries you skip before returning
      * results
      *
      * @param {string} [options.top] Maximum number of entries returned in the

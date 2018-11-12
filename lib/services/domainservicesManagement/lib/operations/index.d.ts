@@ -275,64 +275,72 @@ export interface DomainServices {
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
      *
-     * @param {string} domainServiceName The name of the domain service in the
-     * specified subscription and resource group.
+     * @param {string} domainServiceName The name of the domain service.
      *
-     * @param {object} properties Properties supplied to the Create or Update a
+     * @param {object} domainService Properties supplied to the Create or Update a
      * Domain Service operation.
      *
-     * @param {string} [properties.domainName] The name of the Azure domain that
+     * @param {string} [domainService.domainName] The name of the Azure domain that
      * the user would like to deploy Domain Services to.
      *
-     * @param {string} [properties.subnetId] The name of the virtual network that
-     * Domain Services will be deployed on. The id of the subnet that Domain
+     * @param {string} [domainService.subnetId] The name of the virtual network
+     * that Domain Services will be deployed on. The id of the subnet that Domain
      * Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
      *
-     * @param {object} [properties.ldapsSettings] Secure LDAP Settings
+     * @param {object} [domainService.ldapsSettings] Secure LDAP Settings
      *
-     * @param {string} [properties.ldapsSettings.ldaps] A flag to determine whether
-     * or not Secure LDAP is enabled or disabled. Possible values include:
+     * @param {string} [domainService.ldapsSettings.ldaps] A flag to determine
+     * whether or not Secure LDAP is enabled or disabled. Possible values include:
      * 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.ldapsSettings.pfxCertificate] The certificate
+     * @param {string} [domainService.ldapsSettings.pfxCertificate] The certificate
      * required to configure Secure LDAP. The parameter passed here should be a
      * base64encoded representation of the certificate pfx file.
      *
-     * @param {string} [properties.ldapsSettings.pfxCertificatePassword] The
+     * @param {string} [domainService.ldapsSettings.pfxCertificatePassword] The
      * password to decrypt the provided Secure LDAP certificate pfx file.
      *
-     * @param {string} [properties.ldapsSettings.externalAccess] A flag to
+     * @param {string} [domainService.ldapsSettings.externalAccess] A flag to
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {object} [properties.notificationSettings] Notification Settings
+     * @param {object} [domainService.notificationSettings] Notification Settings
      *
-     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
-     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [domainService.notificationSettings.notifyGlobalAdmins]
+     * Should global admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
      *
-     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * @param {string} [domainService.notificationSettings.notifyDcAdmins] Should
      * domain controller admins be notified. Possible values include: 'Enabled',
      * 'Disabled'
      *
-     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * @param {array} [domainService.notificationSettings.additionalRecipients] The
      * list of additional recipients
      *
-     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     * @param {object} [domainService.domainSecuritySettings] DomainSecurity
+     * Settings
      *
-     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * @param {string} [domainService.domainSecuritySettings.ntlmV1] A flag to
      * determine whether or not NtlmV1 is enabled or disabled. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * @param {string} [domainService.domainSecuritySettings.tlsV1] A flag to
      * determine whether or not TlsV1 is enabled or disabled. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
-     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * @param {string} [domainService.domainSecuritySettings.syncNtlmPasswords] A
+     * flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
      * Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
-     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [domainService.filteredSync] Enabled or Disabled flag to
+     * turn on Group-based filtered sync. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {string} [domainService.location] Resource location
+     *
+     * @param {object} [domainService.tags] Resource tags
+     *
+     * @param {string} [domainService.etag] Resource etag
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -345,7 +353,7 @@ export interface DomainServices {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, domainServiceName: string, properties: models.DomainServiceProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DomainService>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, domainServiceName: string, domainService: models.DomainService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DomainService>>;
 
     /**
      * @summary Create or Update Domain Service (PUT Resource)
@@ -358,64 +366,72 @@ export interface DomainServices {
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
      *
-     * @param {string} domainServiceName The name of the domain service in the
-     * specified subscription and resource group.
+     * @param {string} domainServiceName The name of the domain service.
      *
-     * @param {object} properties Properties supplied to the Create or Update a
+     * @param {object} domainService Properties supplied to the Create or Update a
      * Domain Service operation.
      *
-     * @param {string} [properties.domainName] The name of the Azure domain that
+     * @param {string} [domainService.domainName] The name of the Azure domain that
      * the user would like to deploy Domain Services to.
      *
-     * @param {string} [properties.subnetId] The name of the virtual network that
-     * Domain Services will be deployed on. The id of the subnet that Domain
+     * @param {string} [domainService.subnetId] The name of the virtual network
+     * that Domain Services will be deployed on. The id of the subnet that Domain
      * Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
      *
-     * @param {object} [properties.ldapsSettings] Secure LDAP Settings
+     * @param {object} [domainService.ldapsSettings] Secure LDAP Settings
      *
-     * @param {string} [properties.ldapsSettings.ldaps] A flag to determine whether
-     * or not Secure LDAP is enabled or disabled. Possible values include:
+     * @param {string} [domainService.ldapsSettings.ldaps] A flag to determine
+     * whether or not Secure LDAP is enabled or disabled. Possible values include:
      * 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.ldapsSettings.pfxCertificate] The certificate
+     * @param {string} [domainService.ldapsSettings.pfxCertificate] The certificate
      * required to configure Secure LDAP. The parameter passed here should be a
      * base64encoded representation of the certificate pfx file.
      *
-     * @param {string} [properties.ldapsSettings.pfxCertificatePassword] The
+     * @param {string} [domainService.ldapsSettings.pfxCertificatePassword] The
      * password to decrypt the provided Secure LDAP certificate pfx file.
      *
-     * @param {string} [properties.ldapsSettings.externalAccess] A flag to
+     * @param {string} [domainService.ldapsSettings.externalAccess] A flag to
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {object} [properties.notificationSettings] Notification Settings
+     * @param {object} [domainService.notificationSettings] Notification Settings
      *
-     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
-     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [domainService.notificationSettings.notifyGlobalAdmins]
+     * Should global admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
      *
-     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * @param {string} [domainService.notificationSettings.notifyDcAdmins] Should
      * domain controller admins be notified. Possible values include: 'Enabled',
      * 'Disabled'
      *
-     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * @param {array} [domainService.notificationSettings.additionalRecipients] The
      * list of additional recipients
      *
-     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     * @param {object} [domainService.domainSecuritySettings] DomainSecurity
+     * Settings
      *
-     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * @param {string} [domainService.domainSecuritySettings.ntlmV1] A flag to
      * determine whether or not NtlmV1 is enabled or disabled. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * @param {string} [domainService.domainSecuritySettings.tlsV1] A flag to
      * determine whether or not TlsV1 is enabled or disabled. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
-     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * @param {string} [domainService.domainSecuritySettings.syncNtlmPasswords] A
+     * flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
      * Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
-     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [domainService.filteredSync] Enabled or Disabled flag to
+     * turn on Group-based filtered sync. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {string} [domainService.location] Resource location
+     *
+     * @param {object} [domainService.tags] Resource tags
+     *
+     * @param {string} [domainService.etag] Resource etag
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -444,9 +460,9 @@ export interface DomainServices {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, domainServiceName: string, properties: models.DomainServiceProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DomainService>;
-    createOrUpdate(resourceGroupName: string, domainServiceName: string, properties: models.DomainServiceProperties, callback: ServiceCallback<models.DomainService>): void;
-    createOrUpdate(resourceGroupName: string, domainServiceName: string, properties: models.DomainServiceProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DomainService>): void;
+    createOrUpdate(resourceGroupName: string, domainServiceName: string, domainService: models.DomainService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DomainService>;
+    createOrUpdate(resourceGroupName: string, domainServiceName: string, domainService: models.DomainService, callback: ServiceCallback<models.DomainService>): void;
+    createOrUpdate(resourceGroupName: string, domainServiceName: string, domainService: models.DomainService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DomainService>): void;
 
 
     /**
@@ -458,8 +474,7 @@ export interface DomainServices {
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
      *
-     * @param {string} domainServiceName The name of the domain service in the
-     * specified subscription and resource group.
+     * @param {string} domainServiceName The name of the domain service.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -483,8 +498,7 @@ export interface DomainServices {
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
      *
-     * @param {string} domainServiceName The name of the domain service in the
-     * specified subscription and resource group.
+     * @param {string} domainServiceName The name of the domain service.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -526,8 +540,7 @@ export interface DomainServices {
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
      *
-     * @param {string} domainServiceName The name of the domain service in the
-     * specified subscription and resource group.
+     * @param {string} domainServiceName The name of the domain service.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -550,8 +563,7 @@ export interface DomainServices {
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
      *
-     * @param {string} domainServiceName The name of the domain service in the
-     * specified subscription and resource group.
+     * @param {string} domainServiceName The name of the domain service.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -595,57 +607,72 @@ export interface DomainServices {
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
      *
-     * @param {string} domainServiceName The name of the domain service in the
-     * specified subscription and resource group.
+     * @param {string} domainServiceName The name of the domain service.
      *
-     * @param {object} properties Properties supplied to the Update a Domain
+     * @param {object} domainService Properties supplied to the Update a Domain
      * Service operation.
      *
-     * @param {object} [properties.ldapsSettings] Secure LDAP Settings
+     * @param {string} [domainService.domainName] The name of the Azure domain that
+     * the user would like to deploy Domain Services to.
      *
-     * @param {string} [properties.ldapsSettings.ldaps] A flag to determine whether
-     * or not Secure LDAP is enabled or disabled. Possible values include:
+     * @param {string} [domainService.subnetId] The name of the virtual network
+     * that Domain Services will be deployed on. The id of the subnet that Domain
+     * Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
+     *
+     * @param {object} [domainService.ldapsSettings] Secure LDAP Settings
+     *
+     * @param {string} [domainService.ldapsSettings.ldaps] A flag to determine
+     * whether or not Secure LDAP is enabled or disabled. Possible values include:
      * 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.ldapsSettings.pfxCertificate] The certificate
+     * @param {string} [domainService.ldapsSettings.pfxCertificate] The certificate
      * required to configure Secure LDAP. The parameter passed here should be a
      * base64encoded representation of the certificate pfx file.
      *
-     * @param {string} [properties.ldapsSettings.pfxCertificatePassword] The
+     * @param {string} [domainService.ldapsSettings.pfxCertificatePassword] The
      * password to decrypt the provided Secure LDAP certificate pfx file.
      *
-     * @param {string} [properties.ldapsSettings.externalAccess] A flag to
+     * @param {string} [domainService.ldapsSettings.externalAccess] A flag to
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {object} [properties.notificationSettings] Notification Settings
+     * @param {object} [domainService.notificationSettings] Notification Settings
      *
-     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
-     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [domainService.notificationSettings.notifyGlobalAdmins]
+     * Should global admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
      *
-     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * @param {string} [domainService.notificationSettings.notifyDcAdmins] Should
      * domain controller admins be notified. Possible values include: 'Enabled',
      * 'Disabled'
      *
-     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * @param {array} [domainService.notificationSettings.additionalRecipients] The
      * list of additional recipients
      *
-     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     * @param {object} [domainService.domainSecuritySettings] DomainSecurity
+     * Settings
      *
-     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * @param {string} [domainService.domainSecuritySettings.ntlmV1] A flag to
      * determine whether or not NtlmV1 is enabled or disabled. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * @param {string} [domainService.domainSecuritySettings.tlsV1] A flag to
      * determine whether or not TlsV1 is enabled or disabled. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
-     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * @param {string} [domainService.domainSecuritySettings.syncNtlmPasswords] A
+     * flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
      * Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
-     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [domainService.filteredSync] Enabled or Disabled flag to
+     * turn on Group-based filtered sync. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {string} [domainService.location] Resource location
+     *
+     * @param {object} [domainService.tags] Resource tags
+     *
+     * @param {string} [domainService.etag] Resource etag
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -658,7 +685,7 @@ export interface DomainServices {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, domainServiceName: string, properties: models.DomainServicePatchProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DomainService>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, domainServiceName: string, domainService: models.DomainService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DomainService>>;
 
     /**
      * @summary Update Domain Service (PATCH Resource)
@@ -670,57 +697,72 @@ export interface DomainServices {
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
      *
-     * @param {string} domainServiceName The name of the domain service in the
-     * specified subscription and resource group.
+     * @param {string} domainServiceName The name of the domain service.
      *
-     * @param {object} properties Properties supplied to the Update a Domain
+     * @param {object} domainService Properties supplied to the Update a Domain
      * Service operation.
      *
-     * @param {object} [properties.ldapsSettings] Secure LDAP Settings
+     * @param {string} [domainService.domainName] The name of the Azure domain that
+     * the user would like to deploy Domain Services to.
      *
-     * @param {string} [properties.ldapsSettings.ldaps] A flag to determine whether
-     * or not Secure LDAP is enabled or disabled. Possible values include:
+     * @param {string} [domainService.subnetId] The name of the virtual network
+     * that Domain Services will be deployed on. The id of the subnet that Domain
+     * Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
+     *
+     * @param {object} [domainService.ldapsSettings] Secure LDAP Settings
+     *
+     * @param {string} [domainService.ldapsSettings.ldaps] A flag to determine
+     * whether or not Secure LDAP is enabled or disabled. Possible values include:
      * 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.ldapsSettings.pfxCertificate] The certificate
+     * @param {string} [domainService.ldapsSettings.pfxCertificate] The certificate
      * required to configure Secure LDAP. The parameter passed here should be a
      * base64encoded representation of the certificate pfx file.
      *
-     * @param {string} [properties.ldapsSettings.pfxCertificatePassword] The
+     * @param {string} [domainService.ldapsSettings.pfxCertificatePassword] The
      * password to decrypt the provided Secure LDAP certificate pfx file.
      *
-     * @param {string} [properties.ldapsSettings.externalAccess] A flag to
+     * @param {string} [domainService.ldapsSettings.externalAccess] A flag to
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {object} [properties.notificationSettings] Notification Settings
+     * @param {object} [domainService.notificationSettings] Notification Settings
      *
-     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
-     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [domainService.notificationSettings.notifyGlobalAdmins]
+     * Should global admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
      *
-     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * @param {string} [domainService.notificationSettings.notifyDcAdmins] Should
      * domain controller admins be notified. Possible values include: 'Enabled',
      * 'Disabled'
      *
-     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * @param {array} [domainService.notificationSettings.additionalRecipients] The
      * list of additional recipients
      *
-     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     * @param {object} [domainService.domainSecuritySettings] DomainSecurity
+     * Settings
      *
-     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * @param {string} [domainService.domainSecuritySettings.ntlmV1] A flag to
      * determine whether or not NtlmV1 is enabled or disabled. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * @param {string} [domainService.domainSecuritySettings.tlsV1] A flag to
      * determine whether or not TlsV1 is enabled or disabled. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
-     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * @param {string} [domainService.domainSecuritySettings.syncNtlmPasswords] A
+     * flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
      * Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
-     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [domainService.filteredSync] Enabled or Disabled flag to
+     * turn on Group-based filtered sync. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {string} [domainService.location] Resource location
+     *
+     * @param {object} [domainService.tags] Resource tags
+     *
+     * @param {string} [domainService.etag] Resource etag
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -749,9 +791,9 @@ export interface DomainServices {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, domainServiceName: string, properties: models.DomainServicePatchProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DomainService>;
-    update(resourceGroupName: string, domainServiceName: string, properties: models.DomainServicePatchProperties, callback: ServiceCallback<models.DomainService>): void;
-    update(resourceGroupName: string, domainServiceName: string, properties: models.DomainServicePatchProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DomainService>): void;
+    update(resourceGroupName: string, domainServiceName: string, domainService: models.DomainService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DomainService>;
+    update(resourceGroupName: string, domainServiceName: string, domainService: models.DomainService, callback: ServiceCallback<models.DomainService>): void;
+    update(resourceGroupName: string, domainServiceName: string, domainService: models.DomainService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DomainService>): void;
 
 
     /**
@@ -765,64 +807,72 @@ export interface DomainServices {
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
      *
-     * @param {string} domainServiceName The name of the domain service in the
-     * specified subscription and resource group.
+     * @param {string} domainServiceName The name of the domain service.
      *
-     * @param {object} properties Properties supplied to the Create or Update a
+     * @param {object} domainService Properties supplied to the Create or Update a
      * Domain Service operation.
      *
-     * @param {string} [properties.domainName] The name of the Azure domain that
+     * @param {string} [domainService.domainName] The name of the Azure domain that
      * the user would like to deploy Domain Services to.
      *
-     * @param {string} [properties.subnetId] The name of the virtual network that
-     * Domain Services will be deployed on. The id of the subnet that Domain
+     * @param {string} [domainService.subnetId] The name of the virtual network
+     * that Domain Services will be deployed on. The id of the subnet that Domain
      * Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
      *
-     * @param {object} [properties.ldapsSettings] Secure LDAP Settings
+     * @param {object} [domainService.ldapsSettings] Secure LDAP Settings
      *
-     * @param {string} [properties.ldapsSettings.ldaps] A flag to determine whether
-     * or not Secure LDAP is enabled or disabled. Possible values include:
+     * @param {string} [domainService.ldapsSettings.ldaps] A flag to determine
+     * whether or not Secure LDAP is enabled or disabled. Possible values include:
      * 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.ldapsSettings.pfxCertificate] The certificate
+     * @param {string} [domainService.ldapsSettings.pfxCertificate] The certificate
      * required to configure Secure LDAP. The parameter passed here should be a
      * base64encoded representation of the certificate pfx file.
      *
-     * @param {string} [properties.ldapsSettings.pfxCertificatePassword] The
+     * @param {string} [domainService.ldapsSettings.pfxCertificatePassword] The
      * password to decrypt the provided Secure LDAP certificate pfx file.
      *
-     * @param {string} [properties.ldapsSettings.externalAccess] A flag to
+     * @param {string} [domainService.ldapsSettings.externalAccess] A flag to
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {object} [properties.notificationSettings] Notification Settings
+     * @param {object} [domainService.notificationSettings] Notification Settings
      *
-     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
-     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [domainService.notificationSettings.notifyGlobalAdmins]
+     * Should global admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
      *
-     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * @param {string} [domainService.notificationSettings.notifyDcAdmins] Should
      * domain controller admins be notified. Possible values include: 'Enabled',
      * 'Disabled'
      *
-     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * @param {array} [domainService.notificationSettings.additionalRecipients] The
      * list of additional recipients
      *
-     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     * @param {object} [domainService.domainSecuritySettings] DomainSecurity
+     * Settings
      *
-     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * @param {string} [domainService.domainSecuritySettings.ntlmV1] A flag to
      * determine whether or not NtlmV1 is enabled or disabled. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * @param {string} [domainService.domainSecuritySettings.tlsV1] A flag to
      * determine whether or not TlsV1 is enabled or disabled. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
-     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * @param {string} [domainService.domainSecuritySettings.syncNtlmPasswords] A
+     * flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
      * Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
-     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [domainService.filteredSync] Enabled or Disabled flag to
+     * turn on Group-based filtered sync. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {string} [domainService.location] Resource location
+     *
+     * @param {object} [domainService.tags] Resource tags
+     *
+     * @param {string} [domainService.etag] Resource etag
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -835,7 +885,7 @@ export interface DomainServices {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, domainServiceName: string, properties: models.DomainServiceProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DomainService>>;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, domainServiceName: string, domainService: models.DomainService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DomainService>>;
 
     /**
      * @summary Create or Update Domain Service (PUT Resource)
@@ -848,64 +898,72 @@ export interface DomainServices {
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
      *
-     * @param {string} domainServiceName The name of the domain service in the
-     * specified subscription and resource group.
+     * @param {string} domainServiceName The name of the domain service.
      *
-     * @param {object} properties Properties supplied to the Create or Update a
+     * @param {object} domainService Properties supplied to the Create or Update a
      * Domain Service operation.
      *
-     * @param {string} [properties.domainName] The name of the Azure domain that
+     * @param {string} [domainService.domainName] The name of the Azure domain that
      * the user would like to deploy Domain Services to.
      *
-     * @param {string} [properties.subnetId] The name of the virtual network that
-     * Domain Services will be deployed on. The id of the subnet that Domain
+     * @param {string} [domainService.subnetId] The name of the virtual network
+     * that Domain Services will be deployed on. The id of the subnet that Domain
      * Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
      *
-     * @param {object} [properties.ldapsSettings] Secure LDAP Settings
+     * @param {object} [domainService.ldapsSettings] Secure LDAP Settings
      *
-     * @param {string} [properties.ldapsSettings.ldaps] A flag to determine whether
-     * or not Secure LDAP is enabled or disabled. Possible values include:
+     * @param {string} [domainService.ldapsSettings.ldaps] A flag to determine
+     * whether or not Secure LDAP is enabled or disabled. Possible values include:
      * 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.ldapsSettings.pfxCertificate] The certificate
+     * @param {string} [domainService.ldapsSettings.pfxCertificate] The certificate
      * required to configure Secure LDAP. The parameter passed here should be a
      * base64encoded representation of the certificate pfx file.
      *
-     * @param {string} [properties.ldapsSettings.pfxCertificatePassword] The
+     * @param {string} [domainService.ldapsSettings.pfxCertificatePassword] The
      * password to decrypt the provided Secure LDAP certificate pfx file.
      *
-     * @param {string} [properties.ldapsSettings.externalAccess] A flag to
+     * @param {string} [domainService.ldapsSettings.externalAccess] A flag to
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {object} [properties.notificationSettings] Notification Settings
+     * @param {object} [domainService.notificationSettings] Notification Settings
      *
-     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
-     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [domainService.notificationSettings.notifyGlobalAdmins]
+     * Should global admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
      *
-     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * @param {string} [domainService.notificationSettings.notifyDcAdmins] Should
      * domain controller admins be notified. Possible values include: 'Enabled',
      * 'Disabled'
      *
-     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * @param {array} [domainService.notificationSettings.additionalRecipients] The
      * list of additional recipients
      *
-     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     * @param {object} [domainService.domainSecuritySettings] DomainSecurity
+     * Settings
      *
-     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * @param {string} [domainService.domainSecuritySettings.ntlmV1] A flag to
      * determine whether or not NtlmV1 is enabled or disabled. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * @param {string} [domainService.domainSecuritySettings.tlsV1] A flag to
      * determine whether or not TlsV1 is enabled or disabled. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
-     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * @param {string} [domainService.domainSecuritySettings.syncNtlmPasswords] A
+     * flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
      * Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
-     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [domainService.filteredSync] Enabled or Disabled flag to
+     * turn on Group-based filtered sync. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {string} [domainService.location] Resource location
+     *
+     * @param {object} [domainService.tags] Resource tags
+     *
+     * @param {string} [domainService.etag] Resource etag
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -934,9 +992,9 @@ export interface DomainServices {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, domainServiceName: string, properties: models.DomainServiceProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DomainService>;
-    beginCreateOrUpdate(resourceGroupName: string, domainServiceName: string, properties: models.DomainServiceProperties, callback: ServiceCallback<models.DomainService>): void;
-    beginCreateOrUpdate(resourceGroupName: string, domainServiceName: string, properties: models.DomainServiceProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DomainService>): void;
+    beginCreateOrUpdate(resourceGroupName: string, domainServiceName: string, domainService: models.DomainService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DomainService>;
+    beginCreateOrUpdate(resourceGroupName: string, domainServiceName: string, domainService: models.DomainService, callback: ServiceCallback<models.DomainService>): void;
+    beginCreateOrUpdate(resourceGroupName: string, domainServiceName: string, domainService: models.DomainService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DomainService>): void;
 
 
     /**
@@ -947,8 +1005,7 @@ export interface DomainServices {
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
      *
-     * @param {string} domainServiceName The name of the domain service in the
-     * specified subscription and resource group.
+     * @param {string} domainServiceName The name of the domain service.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -971,8 +1028,7 @@ export interface DomainServices {
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
      *
-     * @param {string} domainServiceName The name of the domain service in the
-     * specified subscription and resource group.
+     * @param {string} domainServiceName The name of the domain service.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1016,57 +1072,72 @@ export interface DomainServices {
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
      *
-     * @param {string} domainServiceName The name of the domain service in the
-     * specified subscription and resource group.
+     * @param {string} domainServiceName The name of the domain service.
      *
-     * @param {object} properties Properties supplied to the Update a Domain
+     * @param {object} domainService Properties supplied to the Update a Domain
      * Service operation.
      *
-     * @param {object} [properties.ldapsSettings] Secure LDAP Settings
+     * @param {string} [domainService.domainName] The name of the Azure domain that
+     * the user would like to deploy Domain Services to.
      *
-     * @param {string} [properties.ldapsSettings.ldaps] A flag to determine whether
-     * or not Secure LDAP is enabled or disabled. Possible values include:
+     * @param {string} [domainService.subnetId] The name of the virtual network
+     * that Domain Services will be deployed on. The id of the subnet that Domain
+     * Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
+     *
+     * @param {object} [domainService.ldapsSettings] Secure LDAP Settings
+     *
+     * @param {string} [domainService.ldapsSettings.ldaps] A flag to determine
+     * whether or not Secure LDAP is enabled or disabled. Possible values include:
      * 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.ldapsSettings.pfxCertificate] The certificate
+     * @param {string} [domainService.ldapsSettings.pfxCertificate] The certificate
      * required to configure Secure LDAP. The parameter passed here should be a
      * base64encoded representation of the certificate pfx file.
      *
-     * @param {string} [properties.ldapsSettings.pfxCertificatePassword] The
+     * @param {string} [domainService.ldapsSettings.pfxCertificatePassword] The
      * password to decrypt the provided Secure LDAP certificate pfx file.
      *
-     * @param {string} [properties.ldapsSettings.externalAccess] A flag to
+     * @param {string} [domainService.ldapsSettings.externalAccess] A flag to
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {object} [properties.notificationSettings] Notification Settings
+     * @param {object} [domainService.notificationSettings] Notification Settings
      *
-     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
-     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [domainService.notificationSettings.notifyGlobalAdmins]
+     * Should global admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
      *
-     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * @param {string} [domainService.notificationSettings.notifyDcAdmins] Should
      * domain controller admins be notified. Possible values include: 'Enabled',
      * 'Disabled'
      *
-     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * @param {array} [domainService.notificationSettings.additionalRecipients] The
      * list of additional recipients
      *
-     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     * @param {object} [domainService.domainSecuritySettings] DomainSecurity
+     * Settings
      *
-     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * @param {string} [domainService.domainSecuritySettings.ntlmV1] A flag to
      * determine whether or not NtlmV1 is enabled or disabled. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * @param {string} [domainService.domainSecuritySettings.tlsV1] A flag to
      * determine whether or not TlsV1 is enabled or disabled. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
-     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * @param {string} [domainService.domainSecuritySettings.syncNtlmPasswords] A
+     * flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
      * Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
-     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [domainService.filteredSync] Enabled or Disabled flag to
+     * turn on Group-based filtered sync. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {string} [domainService.location] Resource location
+     *
+     * @param {object} [domainService.tags] Resource tags
+     *
+     * @param {string} [domainService.etag] Resource etag
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1079,7 +1150,7 @@ export interface DomainServices {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, domainServiceName: string, properties: models.DomainServicePatchProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DomainService>>;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, domainServiceName: string, domainService: models.DomainService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DomainService>>;
 
     /**
      * @summary Update Domain Service (PATCH Resource)
@@ -1091,57 +1162,72 @@ export interface DomainServices {
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
      *
-     * @param {string} domainServiceName The name of the domain service in the
-     * specified subscription and resource group.
+     * @param {string} domainServiceName The name of the domain service.
      *
-     * @param {object} properties Properties supplied to the Update a Domain
+     * @param {object} domainService Properties supplied to the Update a Domain
      * Service operation.
      *
-     * @param {object} [properties.ldapsSettings] Secure LDAP Settings
+     * @param {string} [domainService.domainName] The name of the Azure domain that
+     * the user would like to deploy Domain Services to.
      *
-     * @param {string} [properties.ldapsSettings.ldaps] A flag to determine whether
-     * or not Secure LDAP is enabled or disabled. Possible values include:
+     * @param {string} [domainService.subnetId] The name of the virtual network
+     * that Domain Services will be deployed on. The id of the subnet that Domain
+     * Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
+     *
+     * @param {object} [domainService.ldapsSettings] Secure LDAP Settings
+     *
+     * @param {string} [domainService.ldapsSettings.ldaps] A flag to determine
+     * whether or not Secure LDAP is enabled or disabled. Possible values include:
      * 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.ldapsSettings.pfxCertificate] The certificate
+     * @param {string} [domainService.ldapsSettings.pfxCertificate] The certificate
      * required to configure Secure LDAP. The parameter passed here should be a
      * base64encoded representation of the certificate pfx file.
      *
-     * @param {string} [properties.ldapsSettings.pfxCertificatePassword] The
+     * @param {string} [domainService.ldapsSettings.pfxCertificatePassword] The
      * password to decrypt the provided Secure LDAP certificate pfx file.
      *
-     * @param {string} [properties.ldapsSettings.externalAccess] A flag to
+     * @param {string} [domainService.ldapsSettings.externalAccess] A flag to
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {object} [properties.notificationSettings] Notification Settings
+     * @param {object} [domainService.notificationSettings] Notification Settings
      *
-     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
-     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [domainService.notificationSettings.notifyGlobalAdmins]
+     * Should global admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
      *
-     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * @param {string} [domainService.notificationSettings.notifyDcAdmins] Should
      * domain controller admins be notified. Possible values include: 'Enabled',
      * 'Disabled'
      *
-     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * @param {array} [domainService.notificationSettings.additionalRecipients] The
      * list of additional recipients
      *
-     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     * @param {object} [domainService.domainSecuritySettings] DomainSecurity
+     * Settings
      *
-     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * @param {string} [domainService.domainSecuritySettings.ntlmV1] A flag to
      * determine whether or not NtlmV1 is enabled or disabled. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * @param {string} [domainService.domainSecuritySettings.tlsV1] A flag to
      * determine whether or not TlsV1 is enabled or disabled. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
-     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * @param {string} [domainService.domainSecuritySettings.syncNtlmPasswords] A
+     * flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
      * Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
-     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
+     * @param {string} [domainService.filteredSync] Enabled or Disabled flag to
+     * turn on Group-based filtered sync. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {string} [domainService.location] Resource location
+     *
+     * @param {object} [domainService.tags] Resource tags
+     *
+     * @param {string} [domainService.etag] Resource etag
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1170,9 +1256,9 @@ export interface DomainServices {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceGroupName: string, domainServiceName: string, properties: models.DomainServicePatchProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DomainService>;
-    beginUpdate(resourceGroupName: string, domainServiceName: string, properties: models.DomainServicePatchProperties, callback: ServiceCallback<models.DomainService>): void;
-    beginUpdate(resourceGroupName: string, domainServiceName: string, properties: models.DomainServicePatchProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DomainService>): void;
+    beginUpdate(resourceGroupName: string, domainServiceName: string, domainService: models.DomainService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DomainService>;
+    beginUpdate(resourceGroupName: string, domainServiceName: string, domainService: models.DomainService, callback: ServiceCallback<models.DomainService>): void;
+    beginUpdate(resourceGroupName: string, domainServiceName: string, domainService: models.DomainService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DomainService>): void;
 
 
     /**

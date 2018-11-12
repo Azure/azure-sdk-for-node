@@ -1892,12 +1892,23 @@ export interface SalesforceMarketingCloudLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [pwd] The Azure key vault secret reference of password in
+ * connection string.
+ * @member {object} [pwd.store] The Azure Key Vault linked service reference.
+ * @member {string} [pwd.store.referenceName] Reference LinkedService name.
+ * @member {object} [pwd.store.parameters] Arguments for LinkedService.
+ * @member {object} [pwd.secretName] The name of the secret in Azure Key Vault.
+ * Type: string (or Expression with resultType string).
+ * @member {object} [pwd.secretVersion] The version of the secret in Azure Key
+ * Vault. The default value is the latest version of the secret. Type: string
+ * (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface NetezzaLinkedService extends LinkedService {
   connectionString?: any;
+  pwd?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -1909,12 +1920,23 @@ export interface NetezzaLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [pwd] The Azure key vault secret reference of password in
+ * connection string.
+ * @member {object} [pwd.store] The Azure Key Vault linked service reference.
+ * @member {string} [pwd.store.referenceName] Reference LinkedService name.
+ * @member {object} [pwd.store.parameters] Arguments for LinkedService.
+ * @member {object} [pwd.secretName] The name of the secret in Azure Key Vault.
+ * Type: string (or Expression with resultType string).
+ * @member {object} [pwd.secretVersion] The version of the secret in Azure Key
+ * Vault. The default value is the latest version of the secret. Type: string
+ * (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface VerticaLinkedService extends LinkedService {
   connectionString?: any;
+  pwd?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -2373,12 +2395,23 @@ export interface MarketoLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [pwd] The Azure key vault secret reference of password in
+ * connection string.
+ * @member {object} [pwd.store] The Azure Key Vault linked service reference.
+ * @member {string} [pwd.store.referenceName] Reference LinkedService name.
+ * @member {object} [pwd.store.parameters] Arguments for LinkedService.
+ * @member {object} [pwd.secretName] The name of the secret in Azure Key Vault.
+ * Type: string (or Expression with resultType string).
+ * @member {object} [pwd.secretVersion] The version of the secret in Azure Key
+ * Vault. The default value is the latest version of the secret. Type: string
+ * (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface MariaDBLinkedService extends LinkedService {
   connectionString?: any;
+  pwd?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -2660,12 +2693,23 @@ export interface HBaseLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [pwd] The Azure key vault secret reference of password in
+ * connection string.
+ * @member {object} [pwd.store] The Azure Key Vault linked service reference.
+ * @member {string} [pwd.store.referenceName] Reference LinkedService name.
+ * @member {object} [pwd.store.parameters] Arguments for LinkedService.
+ * @member {object} [pwd.secretName] The name of the secret in Azure Key Vault.
+ * Type: string (or Expression with resultType string).
+ * @member {object} [pwd.secretVersion] The version of the secret in Azure Key
+ * Vault. The default value is the latest version of the secret. Type: string
+ * (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface GreenplumLinkedService extends LinkedService {
   connectionString?: any;
+  pwd?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -2728,60 +2772,6 @@ export interface GoogleBigQueryLinkedService extends LinkedService {
 
 /**
  * @class
- * Initializes a new instance of the GoogleAdWordsLinkedService class.
- * @constructor
- * Google Awords service linked service.
- *
- * @member {object} clientCustomerID The Client customer ID of the AdWords
- * account that you want to fetch report data for.
- * @member {object} developerToken The developer token associated with the
- * manager account that you use to grant access to the AdWords API.
- * @member {string} [developerToken.type] Polymorphic Discriminator
- * @member {string} authenticationType The OAuth 2.0 authentication mechanism
- * used for authentication. ServiceAuthentication can only be used on
- * self-hosted IR. Possible values include: 'ServiceAuthentication',
- * 'UserAuthentication'
- * @member {object} [refreshToken] The refresh token obtained from Google for
- * authorizing access to AdWords for UserAuthentication.
- * @member {string} [refreshToken.type] Polymorphic Discriminator
- * @member {object} [clientId] The client id of the google application used to
- * acquire the refresh token.
- * @member {string} [clientId.type] Polymorphic Discriminator
- * @member {object} [clientSecret] The client secret of the google application
- * used to acquire the refresh token.
- * @member {string} [clientSecret.type] Polymorphic Discriminator
- * @member {object} [email] The service account email ID that is used for
- * ServiceAuthentication and can only be used on self-hosted IR.
- * @member {object} [keyFilePath] The full path to the .p12 key file that is
- * used to authenticate the service account email address and can only be used
- * on self-hosted IR.
- * @member {object} [trustedCertPath] The full path of the .pem file containing
- * trusted CA certificates for verifying the server when connecting over SSL.
- * This property can only be set when using SSL on self-hosted IR. The default
- * value is the cacerts.pem file installed with the IR.
- * @member {object} [useSystemTrustStore] Specifies whether to use a CA
- * certificate from the system trust store or from a specified PEM file. The
- * default value is false.
- * @member {object} [encryptedCredential] The encrypted credential used for
- * authentication. Credentials are encrypted using the integration runtime
- * credential manager. Type: string (or Expression with resultType string).
- */
-export interface GoogleAdWordsLinkedService extends LinkedService {
-  clientCustomerID: any;
-  developerToken: SecretBase;
-  authenticationType: string;
-  refreshToken?: SecretBase;
-  clientId?: SecretBase;
-  clientSecret?: SecretBase;
-  email?: any;
-  keyFilePath?: any;
-  trustedCertPath?: any;
-  useSystemTrustStore?: any;
-  encryptedCredential?: any;
-}
-
-/**
- * @class
  * Initializes a new instance of the EloquaLinkedService class.
  * @constructor
  * Eloqua server linked service.
@@ -2821,12 +2811,23 @@ export interface EloquaLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [pwd] The Azure key vault secret reference of password in
+ * connection string.
+ * @member {object} [pwd.store] The Azure Key Vault linked service reference.
+ * @member {string} [pwd.store.referenceName] Reference LinkedService name.
+ * @member {object} [pwd.store.parameters] Arguments for LinkedService.
+ * @member {object} [pwd.secretName] The name of the secret in Azure Key Vault.
+ * Type: string (or Expression with resultType string).
+ * @member {object} [pwd.secretVersion] The version of the secret in Azure Key
+ * Vault. The default value is the latest version of the secret. Type: string
+ * (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface DrillLinkedService extends LinkedService {
   connectionString?: any;
+  pwd?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -2838,12 +2839,25 @@ export interface DrillLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [credString] The Azure key vault secret reference of
+ * credString in connection string.
+ * @member {object} [credString.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [credString.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [credString.store.parameters] Arguments for LinkedService.
+ * @member {object} [credString.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [credString.secretVersion] The version of the secret in
+ * Azure Key Vault. The default value is the latest version of the secret.
+ * Type: string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface CouchbaseLinkedService extends LinkedService {
   connectionString?: any;
+  credString?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -2889,12 +2903,25 @@ export interface ConcurLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzurePostgreSqlLinkedService extends LinkedService {
   connectionString?: any;
+  password?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -3087,49 +3114,6 @@ export interface FtpServerLinkedService extends LinkedService {
   encryptedCredential?: any;
   enableSsl?: any;
   enableServerCertificateValidation?: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the RestServiceLinkedService class.
- * @constructor
- * Rest Service linked service.
- *
- * @member {object} url The base URL of the REST service.
- * @member {object} [enableServerCertificateValidation] Whether to validate
- * server side SSL certificate when connecting to the endpoint.The default
- * value is true. Type: boolean (or Expression with resultType boolean).
- * @member {string} authenticationType Type of authentication used to connect
- * to the REST service. Possible values include: 'Anonymous', 'Basic',
- * 'AadServicePrincial', 'ManagedServiceIdentity'
- * @member {object} [userName] The user name used in Basic authentication type.
- * @member {object} [password] The password used in Basic authentication type.
- * @member {string} [password.type] Polymorphic Discriminator
- * @member {object} [servicePrincipalId] The application’s client ID used in
- * AadServicePrincipal authentication type.
- * @member {object} [servicePrincipalKey] The application’s key used in
- * AadServicePrincipal authentication type.
- * @member {string} [servicePrincipalKey.type] Polymorphic Discriminator
- * @member {object} [tenant] The tenant information (domain name or tenant ID)
- * used in AadServicePrincipal authentication type under which your application
- * resides.
- * @member {object} [aadResourceId] The resource you are requesting
- * authorization to use.
- * @member {object} [encryptedCredential] The encrypted credential used for
- * authentication. Credentials are encrypted using the integration runtime
- * credential manager. Type: string (or Expression with resultType string).
- */
-export interface RestServiceLinkedService extends LinkedService {
-  url: any;
-  enableServerCertificateValidation?: any;
-  authenticationType: string;
-  userName?: any;
-  password?: SecretBase;
-  servicePrincipalId?: any;
-  servicePrincipalKey?: SecretBase;
-  tenant?: any;
-  aadResourceId?: any;
-  encryptedCredential?: any;
 }
 
 /**
@@ -3544,56 +3528,21 @@ export interface WebLinkedService extends LinkedService {
  *
  * @member {object} url The URL of the OData service endpoint. Type: string (or
  * Expression with resultType string).
- * @member {string} authenticationType Type of authentication used to connect
- * to the OData service. Possible values include: 'Anonymous', 'Basic',
- * 'Windows', 'AadServicePrincipal', 'ManagedServiceIdentity'
+ * @member {string} [authenticationType] Type of authentication used to connect
+ * to the OData service. Possible values include: 'Basic', 'Anonymous'
  * @member {object} [userName] User name of the OData service. Type: string (or
  * Expression with resultType string).
  * @member {object} [password] Password of the OData service.
  * @member {string} [password.type] Polymorphic Discriminator
- * @member {object} [tenant] Specify the tenant information (domain name or
- * tenant ID) under which your application resides. Type: string (or Expression
- * with resultType string).
- * @member {object} [servicePrincipalId] Specify the application id of your
- * application registered in Azure Active Directory. Type: string (or
- * Expression with resultType string).
- * @member {object} [aadResourceId] Specify the resource you are requesting
- * authorization to use Directory. Type: string (or Expression with resultType
- * string).
- * @member {string} [aadServicePrincipalCredentialType] Specify the credential
- * type (key or cert) is used for service principal. Possible values include:
- * 'ServicePrincipalKey', 'ServicePrincipalCert'
- * @member {object} [servicePrincipalKey] Specify the secret of your
- * application registered in Azure Active Directory. Type: string (or
- * Expression with resultType string).
- * @member {string} [servicePrincipalKey.type] Polymorphic Discriminator
- * @member {object} [servicePrincipalEmbeddedCert] Specify the base64 encoded
- * certificate of your application registered in Azure Active Directory. Type:
- * string (or Expression with resultType string).
- * @member {string} [servicePrincipalEmbeddedCert.type] Polymorphic
- * Discriminator
- * @member {object} [servicePrincipalEmbeddedCertPassword] Specify the password
- * of your certificate if your certificate has a password and you are using
- * AadServicePrincipal authentication. Type: string (or Expression with
- * resultType string).
- * @member {string} [servicePrincipalEmbeddedCertPassword.type] Polymorphic
- * Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface ODataLinkedService extends LinkedService {
   url: any;
-  authenticationType: string;
+  authenticationType?: string;
   userName?: any;
   password?: SecretBase;
-  tenant?: any;
-  servicePrincipalId?: any;
-  aadResourceId?: any;
-  aadServicePrincipalCredentialType?: string;
-  servicePrincipalKey?: SecretBase;
-  servicePrincipalEmbeddedCert?: SecretBase;
-  servicePrincipalEmbeddedCertPassword?: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -3789,12 +3738,25 @@ export interface SybaseLinkedService extends LinkedService {
  *
  * @member {object} connectionString The connection string.
  * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface PostgreSqlLinkedService extends LinkedService {
   connectionString: SecretBase;
+  password?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -3806,12 +3768,25 @@ export interface PostgreSqlLinkedService extends LinkedService {
  *
  * @member {object} connectionString The connection string.
  * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface MySqlLinkedService extends LinkedService {
   connectionString: SecretBase;
+  password?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -3823,48 +3798,25 @@ export interface MySqlLinkedService extends LinkedService {
  *
  * @member {object} connectionString The connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureMySqlLinkedService extends LinkedService {
   connectionString: any;
-  encryptedCredential?: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the OracleServiceCloudLinkedService class.
- * @constructor
- * Oracle Service Cloud linked service.
- *
- * @member {object} host The URL of the Oracle Service Cloud instance.
- * @member {object} username The user name that you use to access Oracle
- * Service Cloud server.
- * @member {object} password The password corresponding to the user name that
- * you provided in the username key.
- * @member {string} [password.type] Polymorphic Discriminator
- * @member {object} [useEncryptedEndpoints] Specifies whether the data source
- * endpoints are encrypted using HTTPS. The default value is true. Type:
- * boolean (or Expression with resultType boolean).
- * @member {object} [useHostVerification] Specifies whether to require the host
- * name in the server's certificate to match the host name of the server when
- * connecting over SSL. The default value is true. Type: boolean (or Expression
- * with resultType boolean).
- * @member {object} [usePeerVerification] Specifies whether to verify the
- * identity of the server when connecting over SSL. The default value is true.
- * Type: boolean (or Expression with resultType boolean).
- * @member {object} [encryptedCredential] The encrypted credential used for
- * authentication. Credentials are encrypted using the integration runtime
- * credential manager. Type: string (or Expression with resultType string).
- */
-export interface OracleServiceCloudLinkedService extends LinkedService {
-  host: any;
-  username: any;
-  password: SecretBase;
-  useEncryptedEndpoints?: any;
-  useHostVerification?: any;
-  usePeerVerification?: any;
+  password?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -3876,12 +3828,25 @@ export interface OracleServiceCloudLinkedService extends LinkedService {
  *
  * @member {object} connectionString The connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface OracleLinkedService extends LinkedService {
   connectionString: any;
+  password?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -3946,41 +3911,6 @@ export interface HDInsightLinkedService extends LinkedService {
 
 /**
  * @class
- * Initializes a new instance of the DynamicsAXLinkedService class.
- * @constructor
- * Dynamics AX linked service.
- *
- * @member {object} url The URL of Dynamics AX OData API. Type: string (or
- * Expression with resultType string).
- * @member {object} [tenant] Specify the tenant information (domain name or
- * tenant ID) under which your application resides. Type: string (or Expression
- * with resultType string).
- * @member {object} [servicePrincipalId] Specify the application id of your
- * application registered in Azure Active Directory. Type: string (or
- * Expression with resultType string).
- * @member {object} [aadResourceId] Specify the resource you are requesting
- * authorization to use Directory. Type: string (or Expression with resultType
- * string).
- * @member {object} [servicePrincipalKey] Specify the secret of your
- * application registered in Azure Active Directory. Type: string (or
- * Expression with resultType string).
- * @member {string} [servicePrincipalKey.type] Polymorphic Discriminator
- * @member {object} [encryptedCredential] The encrypted credential used for
- * authentication. Credentials are encrypted using the integration runtime
- * credential manager. Either encryptedCredential or username/password must be
- * provided. Type: string (or Expression with resultType string).
- */
-export interface DynamicsAXLinkedService extends LinkedService {
-  url: any;
-  tenant?: any;
-  servicePrincipalId?: any;
-  aadResourceId?: any;
-  servicePrincipalKey?: SecretBase;
-  encryptedCredential?: any;
-}
-
-/**
- * @class
  * Initializes a new instance of the DynamicsLinkedService class.
  * @constructor
  * Dynamics linked service.
@@ -4032,12 +3962,25 @@ export interface DynamicsLinkedService extends LinkedService {
  *
  * @member {object} connectionString The connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [accountKey] The Azure key vault secret reference of
+ * accountKey in connection string.
+ * @member {object} [accountKey.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [accountKey.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [accountKey.store.parameters] Arguments for LinkedService.
+ * @member {object} [accountKey.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [accountKey.secretVersion] The version of the secret in
+ * Azure Key Vault. The default value is the latest version of the secret.
+ * Type: string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface CosmosDbLinkedService extends LinkedService {
   connectionString: any;
+  accountKey?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -4095,6 +4038,18 @@ export interface AzureBatchLinkedService extends LinkedService {
  *
  * @member {object} connectionString The connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [servicePrincipalId] The ID of the service principal used
  * to authenticate against Azure SQL Database. Type: string (or Expression with
  * resultType string).
@@ -4109,6 +4064,7 @@ export interface AzureBatchLinkedService extends LinkedService {
  */
 export interface AzureSqlDatabaseLinkedService extends LinkedService {
   connectionString: any;
+  password?: AzureKeyVaultSecretReference;
   servicePrincipalId?: any;
   servicePrincipalKey?: SecretBase;
   tenant?: any;
@@ -4147,6 +4103,18 @@ export interface SqlServerLinkedService extends LinkedService {
  * @member {object} connectionString The connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference. Type: string, SecureString or
  * AzureKeyVaultSecretReference.
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [servicePrincipalId] The ID of the service principal used
  * to authenticate against Azure SQL Data Warehouse. Type: string (or
  * Expression with resultType string).
@@ -4161,6 +4129,7 @@ export interface SqlServerLinkedService extends LinkedService {
  */
 export interface AzureSqlDWLinkedService extends LinkedService {
   connectionString: any;
+  password?: AzureKeyVaultSecretReference;
   servicePrincipalId?: any;
   servicePrincipalKey?: SecretBase;
   tenant?: any;
@@ -4176,16 +4145,42 @@ export interface AzureSqlDWLinkedService extends LinkedService {
  * @member {object} [connectionString] The connection string. It is mutually
  * exclusive with sasUri property. Type: string, SecureString or
  * AzureKeyVaultSecretReference.
+ * @member {object} [accountKey] The Azure key vault secret reference of
+ * accountKey in connection string.
+ * @member {object} [accountKey.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [accountKey.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [accountKey.store.parameters] Arguments for LinkedService.
+ * @member {object} [accountKey.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [accountKey.secretVersion] The version of the secret in
+ * Azure Key Vault. The default value is the latest version of the secret.
+ * Type: string (or Expression with resultType string).
  * @member {object} [sasUri] SAS URI of the Azure Storage resource. It is
- * mutually exclusive with connectionString property.
- * @member {string} [sasUri.type] Polymorphic Discriminator
+ * mutually exclusive with connectionString property. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [sasToken] The Azure key vault secret reference of sasToken
+ * in sas uri.
+ * @member {object} [sasToken.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [sasToken.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [sasToken.store.parameters] Arguments for LinkedService.
+ * @member {object} [sasToken.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [sasToken.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {string} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureTableStorageLinkedService extends LinkedService {
   connectionString?: any;
-  sasUri?: SecretBase;
+  accountKey?: AzureKeyVaultSecretReference;
+  sasUri?: any;
+  sasToken?: AzureKeyVaultSecretReference;
   encryptedCredential?: string;
 }
 
@@ -4198,9 +4193,33 @@ export interface AzureTableStorageLinkedService extends LinkedService {
  * @member {object} [connectionString] The connection string. It is mutually
  * exclusive with sasUri, serviceEndpoint property. Type: string, SecureString
  * or AzureKeyVaultSecretReference.
+ * @member {object} [accountKey] The Azure key vault secret reference of
+ * accountKey in connection string.
+ * @member {object} [accountKey.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [accountKey.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [accountKey.store.parameters] Arguments for LinkedService.
+ * @member {object} [accountKey.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [accountKey.secretVersion] The version of the secret in
+ * Azure Key Vault. The default value is the latest version of the secret.
+ * Type: string (or Expression with resultType string).
  * @member {object} [sasUri] SAS URI of the Azure Blob Storage resource. It is
- * mutually exclusive with connectionString, serviceEndpoint property.
- * @member {string} [sasUri.type] Polymorphic Discriminator
+ * mutually exclusive with connectionString, serviceEndpoint property. Type:
+ * string, SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [sasToken] The Azure key vault secret reference of sasToken
+ * in sas uri.
+ * @member {object} [sasToken.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [sasToken.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [sasToken.store.parameters] Arguments for LinkedService.
+ * @member {object} [sasToken.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [sasToken.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {string} [serviceEndpoint] Blob service endpoint of the Azure Blob
  * Storage resource. It is mutually exclusive with connectionString, sasUri
  * property.
@@ -4218,7 +4237,9 @@ export interface AzureTableStorageLinkedService extends LinkedService {
  */
 export interface AzureBlobStorageLinkedService extends LinkedService {
   connectionString?: any;
-  sasUri?: SecretBase;
+  accountKey?: AzureKeyVaultSecretReference;
+  sasUri?: any;
+  sasToken?: AzureKeyVaultSecretReference;
   serviceEndpoint?: string;
   servicePrincipalId?: any;
   servicePrincipalKey?: SecretBase;
@@ -4235,16 +4256,42 @@ export interface AzureBlobStorageLinkedService extends LinkedService {
  * @member {object} [connectionString] The connection string. It is mutually
  * exclusive with sasUri property. Type: string, SecureString or
  * AzureKeyVaultSecretReference.
+ * @member {object} [accountKey] The Azure key vault secret reference of
+ * accountKey in connection string.
+ * @member {object} [accountKey.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [accountKey.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [accountKey.store.parameters] Arguments for LinkedService.
+ * @member {object} [accountKey.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [accountKey.secretVersion] The version of the secret in
+ * Azure Key Vault. The default value is the latest version of the secret.
+ * Type: string (or Expression with resultType string).
  * @member {object} [sasUri] SAS URI of the Azure Storage resource. It is
- * mutually exclusive with connectionString property.
- * @member {string} [sasUri.type] Polymorphic Discriminator
+ * mutually exclusive with connectionString property. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [sasToken] The Azure key vault secret reference of sasToken
+ * in sas uri.
+ * @member {object} [sasToken.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [sasToken.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [sasToken.store.parameters] Arguments for LinkedService.
+ * @member {object} [sasToken.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [sasToken.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {string} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureStorageLinkedService extends LinkedService {
   connectionString?: any;
-  sasUri?: SecretBase;
+  accountKey?: AzureKeyVaultSecretReference;
+  sasUri?: any;
+  sasToken?: AzureKeyVaultSecretReference;
   encryptedCredential?: string;
 }
 
@@ -4490,16 +4537,6 @@ export interface GoogleBigQueryObjectDataset extends Dataset {
 
 /**
  * @class
- * Initializes a new instance of the GoogleAdWordsObjectDataset class.
- * @constructor
- * Google AdWords service dataset.
- *
- */
-export interface GoogleAdWordsObjectDataset extends Dataset {
-}
-
-/**
- * @class
  * Initializes a new instance of the EloquaObjectDataset class.
  * @constructor
  * Eloqua server dataset.
@@ -4556,33 +4593,6 @@ export interface AzurePostgreSqlTableDataset extends Dataset {
  *
  */
 export interface AmazonMWSObjectDataset extends Dataset {
-}
-
-/**
- * @class
- * Initializes a new instance of the RestServiceDataset class.
- * @constructor
- * A Rest service dataset.
- *
- * @member {object} [relativeUrl] The relative URL to the resource that the
- * RESTful API provides. Type: string (or Expression with resultType string).
- * @member {object} [requestMethod] The HTTP method used to call the RESTful
- * API. The default is GET. Type: string (or Expression with resultType
- * string).
- * @member {object} [requestBody] The HTTP request body to the RESTful API if
- * requestMethod is POST. Type: string (or Expression with resultType string).
- * @member {object} [additionalHeaders] The additional HTTP headers in the
- * request to the RESTful API. Type: string (or Expression with resultType
- * string).
- * @member {object} [paginationRules] The pagination rules to compose next page
- * requests.
- */
-export interface RestServiceDataset extends Dataset {
-  relativeUrl?: any;
-  requestMethod?: any;
-  requestBody?: any;
-  additionalHeaders?: any;
-  paginationRules?: any;
 }
 
 /**
@@ -4931,16 +4941,6 @@ export interface AzureMySqlTableDataset extends Dataset {
 
 /**
  * @class
- * Initializes a new instance of the OracleServiceCloudObjectDataset class.
- * @constructor
- * Oracle Service Cloud dataset.
- *
- */
-export interface OracleServiceCloudObjectDataset extends Dataset {
-}
-
-/**
- * @class
  * Initializes a new instance of the OracleTableDataset class.
  * @constructor
  * The on-premises Oracle database dataset.
@@ -4988,9 +4988,6 @@ export interface MongoDbCollectionDataset extends Dataset {
  * string (or Expression with resultType string).
  * @member {object} [fileName] The name of the on-premises file system. Type:
  * string (or Expression with resultType string).
- * @member {object} [wildcardPath] The whole path include file name of the
- * on-premises file system with wildcard supported. Type: string (or Expression
- * with resultType string).
  * @member {object} [format] The format of the files.
  * @member {object} [format.serializer] Serializer. Type: string (or Expression
  * with resultType string).
@@ -5007,7 +5004,6 @@ export interface MongoDbCollectionDataset extends Dataset {
 export interface FileShareDataset extends Dataset {
   folderPath?: any;
   fileName?: any;
-  wildcardPath?: any;
   format?: DatasetStorageFormat;
   fileFilter?: any;
   compression?: DatasetCompression;
@@ -5019,8 +5015,8 @@ export interface FileShareDataset extends Dataset {
  * @constructor
  * Azure Data Lake Store dataset.
  *
- * @member {object} [folderPath] Path to the folder in the Azure Data Lake
- * Store. Type: string (or Expression with resultType string).
+ * @member {object} folderPath Path to the folder in the Azure Data Lake Store.
+ * Type: string (or Expression with resultType string).
  * @member {object} [fileName] The name of the file in the Azure Data Lake
  * Store. Type: string (or Expression with resultType string).
  * @member {object} [format] The format of the Data Lake Store.
@@ -5029,32 +5025,15 @@ export interface FileShareDataset extends Dataset {
  * @member {object} [format.deserializer] Deserializer. Type: string (or
  * Expression with resultType string).
  * @member {string} [format.type] Polymorphic Discriminator
- * @member {object} [wildcardPath] The whole path include file name in the
- * Azure Data Lake Store with wildcard supported. Type: string (or Expression
- * with resultType string).
  * @member {object} [compression] The data compression method used for the
  * item(s) in the Azure Data Lake Store.
  * @member {string} [compression.type] Polymorphic Discriminator
  */
 export interface AzureDataLakeStoreDataset extends Dataset {
-  folderPath?: any;
+  folderPath: any;
   fileName?: any;
   format?: DatasetStorageFormat;
-  wildcardPath?: any;
   compression?: DatasetCompression;
-}
-
-/**
- * @class
- * Initializes a new instance of the DynamicsAXResourceDataset class.
- * @constructor
- * The path of the Dynamics AX OData entity.
- *
- * @member {string} path The path of the Dynamics AX OData entity. Type: string
- * (or Expression with resultType string).
- */
-export interface DynamicsAXResourceDataset extends Dataset {
-  path: string;
 }
 
 /**
@@ -5162,9 +5141,6 @@ export interface AzureTableDataset extends Dataset {
  * Expression with resultType string).
  * @member {object} [fileName] The name of the Azure Blob. Type: string (or
  * Expression with resultType string).
- * @member {object} [wildcardPath] The whole path include file name of the
- * Azure Blob storage with wildcard supported. Type: string (or Expression with
- * resultType string).
  * @member {object} [format] The format of the Azure Blob storage.
  * @member {object} [format.serializer] Serializer. Type: string (or Expression
  * with resultType string).
@@ -5179,7 +5155,6 @@ export interface AzureBlobDataset extends Dataset {
   folderPath?: any;
   tableRootLocation?: any;
   fileName?: any;
-  wildcardPath?: any;
   format?: DatasetStorageFormat;
   compression?: DatasetCompression;
 }
@@ -5196,8 +5171,6 @@ export interface AzureBlobDataset extends Dataset {
  * Expression with resultType string).
  * @member {object} [prefix] The prefix filter for the S3 object name. Type:
  * string (or Expression with resultType string).
- * @member {object} [wildcardPath] The path of the S3 object with wildcard
- * supported. Type: string (or Expression with resultType string).
  * @member {object} [version] The version for the S3 object. Type: string (or
  * Expression with resultType string).
  * @member {object} [format] The format of files.
@@ -5214,7 +5187,6 @@ export interface AmazonS3Dataset extends Dataset {
   bucketName: any;
   key?: any;
   prefix?: any;
-  wildcardPath?: any;
   version?: any;
   format?: DatasetStorageFormat;
   compression?: DatasetCompression;
@@ -5929,19 +5901,6 @@ export interface GoogleBigQuerySource extends CopySource {
 
 /**
  * @class
- * Initializes a new instance of the GoogleAdWordsSource class.
- * @constructor
- * A copy activity Google AdWords service source.
- *
- * @member {object} [query] A query to retrieve data from source. Type: string
- * (or Expression with resultType string).
- */
-export interface GoogleAdWordsSource extends CopySource {
-  query?: any;
-}
-
-/**
- * @class
  * Initializes a new instance of the EloquaSource class.
  * @constructor
  * A copy activity Eloqua server source.
@@ -6020,27 +5979,6 @@ export interface AmazonMWSSource extends CopySource {
 
 /**
  * @class
- * Initializes a new instance of the RestServiceSource class.
- * @constructor
- * A copy activity Rest service source.
- *
- * @member {object} [httpRequestTimeout] The timeout (TimeSpan) to get an HTTP
- * response.  It is the timeout to get a response, not the timeout to read
- * response data.  Default value: 00:01:40. Type: string (or Expression with
- * resultType string), pattern:
- * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
- * @member {object} [requestInterval] The time to await before sending next
- * page request.  Default value: 00:00:01. Type: string (or Expression with
- * resultType string), pattern:
- * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
- */
-export interface RestServiceSource extends CopySource {
-  httpRequestTimeout?: any;
-  requestInterval?: any;
-}
-
-/**
- * @class
  * Initializes a new instance of the HttpSource class.
  * @constructor
  * A copy activity source for an HTTP file.
@@ -6112,19 +6050,6 @@ export interface CassandraSource extends CopySource {
  *
  */
 export interface WebSource extends CopySource {
-}
-
-/**
- * @class
- * Initializes a new instance of the OracleServiceCloudSource class.
- * @constructor
- * A copy activity Oracle Service Cloud source.
- *
- * @member {object} [query] A query to retrieve data from source. Type: string
- * (or Expression with resultType string).
- */
-export interface OracleServiceCloudSource extends CopySource {
-  query?: any;
 }
 
 /**
@@ -6245,13 +6170,13 @@ export interface SqlDWSource extends CopySource {
  * @constructor
  * SQL stored procedure parameter.
  *
- * @member {object} [value] Stored procedure parameter value. Type: string (or
+ * @member {object} value Stored procedure parameter value. Type: string (or
  * Expression with resultType string).
  * @member {string} [type] Stored procedure parameter type. Possible values
  * include: 'String', 'Int', 'Decimal', 'Guid', 'Boolean', 'Date'
  */
 export interface StoredProcedureParameter {
-  value?: any;
+  value: any;
   type?: string;
 }
 
@@ -6328,19 +6253,6 @@ export interface SalesforceSource extends CopySource {
  * resultType string).
  */
 export interface RelationalSource extends CopySource {
-  query?: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the DynamicsAXSource class.
- * @constructor
- * A copy activity Dynamics AX source.
- *
- * @member {object} [query] A query to retrieve data from source. Type: string
- * (or Expression with resultType string).
- */
-export interface DynamicsAXSource extends CopySource {
   query?: any;
 }
 
@@ -6436,6 +6348,24 @@ export interface LookupActivity extends ExecutionActivity {
   source: CopySource;
   dataset: DatasetReference;
   firstRowOnly?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeleteActivity class.
+ * @constructor
+ * Delete activity.
+ *
+ * @member {object} [recursive] If true, files under the folder path will be
+ * deleted recursively. Default is true. Type: boolean (or Expression with
+ * resultType boolean).
+ * @member {object} dataset Delete activity dataset reference.
+ * @member {string} [dataset.referenceName] Reference dataset name.
+ * @member {object} [dataset.parameters] Arguments for dataset.
+ */
+export interface DeleteActivity extends ExecutionActivity {
+  recursive?: any;
+  dataset: DatasetReference;
 }
 
 /**
