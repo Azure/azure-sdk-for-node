@@ -621,7 +621,7 @@ export interface SecurityContacts {
      *
      * @param {string} securityContact.email The email of this security contact
      *
-     * @param {string} securityContact.phone The phone number of this security
+     * @param {string} [securityContact.phone] The phone number of this security
      * contact
      *
      * @param {string} securityContact.alertNotifications Whether to send security
@@ -654,7 +654,7 @@ export interface SecurityContacts {
      *
      * @param {string} securityContact.email The email of this security contact
      *
-     * @param {string} securityContact.phone The phone number of this security
+     * @param {string} [securityContact.phone] The phone number of this security
      * contact
      *
      * @param {string} securityContact.alertNotifications Whether to send security
@@ -760,7 +760,7 @@ export interface SecurityContacts {
      *
      * @param {string} securityContact.email The email of this security contact
      *
-     * @param {string} securityContact.phone The phone number of this security
+     * @param {string} [securityContact.phone] The phone number of this security
      * contact
      *
      * @param {string} securityContact.alertNotifications Whether to send security
@@ -793,7 +793,7 @@ export interface SecurityContacts {
      *
      * @param {string} securityContact.email The email of this security contact
      *
-     * @param {string} securityContact.phone The phone number of this security
+     * @param {string} [securityContact.phone] The phone number of this security
      * contact
      *
      * @param {string} securityContact.alertNotifications Whether to send security
@@ -5633,4 +5633,303 @@ export interface Topology {
     listByHomeRegionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TopologyList>;
     listByHomeRegionNext(nextPageLink: string, callback: ServiceCallback<models.TopologyList>): void;
     listByHomeRegionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TopologyList>): void;
+}
+
+/**
+ * @class
+ * AllowedConnections
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityCenter.
+ */
+export interface AllowedConnections {
+
+
+    /**
+     * Gets the list of all possible traffic between resources for the subscription
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AllowedConnectionsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AllowedConnectionsList>>;
+
+    /**
+     * Gets the list of all possible traffic between resources for the subscription
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AllowedConnectionsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AllowedConnectionsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AllowedConnectionsList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AllowedConnectionsList>;
+    list(callback: ServiceCallback<models.AllowedConnectionsList>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AllowedConnectionsList>): void;
+
+
+    /**
+     * Gets the list of all possible traffic between resources for the subscription
+     * and location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AllowedConnectionsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByHomeRegionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AllowedConnectionsList>>;
+
+    /**
+     * Gets the list of all possible traffic between resources for the subscription
+     * and location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AllowedConnectionsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AllowedConnectionsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AllowedConnectionsList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByHomeRegion(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AllowedConnectionsList>;
+    listByHomeRegion(callback: ServiceCallback<models.AllowedConnectionsList>): void;
+    listByHomeRegion(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AllowedConnectionsList>): void;
+
+
+    /**
+     * Gets the list of all possible traffic between resources for the subscription
+     * and location, based on connection type.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} connectionType The type of allowed connections (Internal,
+     * External). Possible values include: 'Internal', 'External'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AllowedConnectionsResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, connectionType: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AllowedConnectionsResource>>;
+
+    /**
+     * Gets the list of all possible traffic between resources for the subscription
+     * and location, based on connection type.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} connectionType The type of allowed connections (Internal,
+     * External). Possible values include: 'Internal', 'External'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AllowedConnectionsResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AllowedConnectionsResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AllowedConnectionsResource} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, connectionType: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AllowedConnectionsResource>;
+    get(resourceGroupName: string, connectionType: string, callback: ServiceCallback<models.AllowedConnectionsResource>): void;
+    get(resourceGroupName: string, connectionType: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AllowedConnectionsResource>): void;
+
+
+    /**
+     * Gets the list of all possible traffic between resources for the subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AllowedConnectionsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AllowedConnectionsList>>;
+
+    /**
+     * Gets the list of all possible traffic between resources for the subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AllowedConnectionsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AllowedConnectionsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AllowedConnectionsList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AllowedConnectionsList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.AllowedConnectionsList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AllowedConnectionsList>): void;
+
+
+    /**
+     * Gets the list of all possible traffic between resources for the subscription
+     * and location.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AllowedConnectionsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByHomeRegionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AllowedConnectionsList>>;
+
+    /**
+     * Gets the list of all possible traffic between resources for the subscription
+     * and location.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AllowedConnectionsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AllowedConnectionsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AllowedConnectionsList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByHomeRegionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AllowedConnectionsList>;
+    listByHomeRegionNext(nextPageLink: string, callback: ServiceCallback<models.AllowedConnectionsList>): void;
+    listByHomeRegionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AllowedConnectionsList>): void;
 }
