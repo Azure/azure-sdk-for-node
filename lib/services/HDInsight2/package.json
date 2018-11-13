@@ -7,7 +7,7 @@
     "Hicks, Matthew <mahi@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com>"
   ],
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Microsoft Azure HDInsight Service Library for node",
   "tags": [
     "azure",

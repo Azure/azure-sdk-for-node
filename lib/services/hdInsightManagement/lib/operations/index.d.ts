@@ -102,6 +102,20 @@ export interface Clusters {
      * @param {array} [parameters.properties.storageProfile.storageaccounts] The
      * list of storage accounts in the cluster.
      *
+     * @param {object} [parameters.identity] The identity of the cluster, if
+     * configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+     * created identity and a set of user assigned identities. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the cluster. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -195,6 +209,20 @@ export interface Clusters {
      *
      * @param {array} [parameters.properties.storageProfile.storageaccounts] The
      * list of storage accounts in the cluster.
+     *
+     * @param {object} [parameters.identity] The identity of the cluster, if
+     * configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+     * created identity and a set of user assigned identities. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the cluster. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -741,6 +769,20 @@ export interface Clusters {
      * @param {array} [parameters.properties.storageProfile.storageaccounts] The
      * list of storage accounts in the cluster.
      *
+     * @param {object} [parameters.identity] The identity of the cluster, if
+     * configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+     * created identity and a set of user assigned identities. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the cluster. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -834,6 +876,20 @@ export interface Clusters {
      *
      * @param {array} [parameters.properties.storageProfile.storageaccounts] The
      * list of storage accounts in the cluster.
+     *
+     * @param {object} [parameters.identity] The identity of the cluster, if
+     * configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+     * created identity and a set of user assigned identities. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the cluster. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1352,9 +1408,6 @@ export interface Applications {
      *
      * @param {array} [parameters.properties.errors] The list of errors.
      *
-     * @param {string} [parameters.properties.additionalProperties] The additional
-     * properties for application.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1407,9 +1460,6 @@ export interface Applications {
      * type.
      *
      * @param {array} [parameters.properties.errors] The list of errors.
-     *
-     * @param {string} [parameters.properties.additionalProperties] The additional
-     * properties for application.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1545,9 +1595,6 @@ export interface Applications {
      *
      * @param {array} [parameters.properties.errors] The list of errors.
      *
-     * @param {string} [parameters.properties.additionalProperties] The additional
-     * properties for application.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1600,9 +1647,6 @@ export interface Applications {
      * type.
      *
      * @param {array} [parameters.properties.errors] The list of errors.
-     *
-     * @param {string} [parameters.properties.additionalProperties] The additional
-     * properties for application.
      *
      * @param {object} [options] Optional Parameters.
      *

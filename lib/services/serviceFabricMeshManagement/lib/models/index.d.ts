@@ -18,6 +18,110 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the AvailableOperationDisplay class.
+ * @constructor
+ * An operation available at the listed Azure resource provider.
+ *
+ * @member {string} [provider] Name of the operation provider.
+ * @member {string} [resource] Name of the resource on which the operation is
+ * available.
+ * @member {string} [operation] Name of the available operation.
+ * @member {string} [description] Description of the available operation.
+ */
+export interface AvailableOperationDisplay {
+  provider?: string;
+  resource?: string;
+  operation?: string;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorDetailsModel class.
+ * @constructor
+ * Error model details information
+ *
+ * @member {string} code
+ * @member {string} message Error message.
+ */
+export interface ErrorDetailsModel {
+  code: string;
+  message: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorErrorModel class.
+ * @constructor
+ * Error model information
+ *
+ * @member {string} code
+ * @member {string} [message] Error message.
+ * @member {string} [innerError]
+ * @member {array} [details] List of error message details.
+ */
+export interface ErrorErrorModel {
+  code: string;
+  message?: string;
+  innerError?: string;
+  details?: ErrorDetailsModel[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorModel class.
+ * @constructor
+ * The error details.
+ *
+ * @member {object} error Error model information
+ * @member {string} [error.code]
+ * @member {string} [error.message] Error message.
+ * @member {string} [error.innerError]
+ * @member {array} [error.details] List of error message details.
+ */
+export interface ErrorModel {
+  error: ErrorErrorModel;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationResult class.
+ * @constructor
+ * List of operations available at the listed Azure resource provider.
+ *
+ * @member {string} [name] The name of the operation.
+ * @member {object} [display] The object that represents the operation.
+ * @member {string} [display.provider] Name of the operation provider.
+ * @member {string} [display.resource] Name of the resource on which the
+ * operation is available.
+ * @member {string} [display.operation] Name of the available operation.
+ * @member {string} [display.description] Description of the available
+ * operation.
+ * @member {string} [origin] Origin result
+ * @member {string} [nextLink] The URL to use for getting the next set of
+ * results.
+ */
+export interface OperationResult {
+  name?: string;
+  display?: AvailableOperationDisplay;
+  origin?: string;
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProvisionedResourceProperties class.
+ * @constructor
+ * Describes common properties of a provisioned resource.
+ *
+ * @member {string} [provisioningState] State of the resource.
+ */
+export interface ProvisionedResourceProperties {
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Resource class.
  * @constructor
  * The resource model definition for Azure Resource Manager resource.
@@ -27,13 +131,11 @@ export { CloudError } from 'ms-rest-azure';
  * @member {string} [name] The name of the resource
  * @member {string} [type] The type of the resource. Ex-
  * Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
- * @member {string} [location] The geo-location where the resource lives
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
-  location?: string;
 }
 
 /**
@@ -76,112 +178,119 @@ export interface ManagedProxyResource extends BaseResource {
  * resource.
  *
  * @member {object} [tags] Resource tags.
+ * @member {string} location The geo-location where the resource lives
  */
 export interface TrackedResource extends Resource {
   tags?: { [propertyName: string]: string };
+  location: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the ProvisionedResourceProperties class.
+ * Initializes a new instance of the SecretResourcePropertiesBase class.
  * @constructor
- * Describes common properties of a provisioned resource.
+ * This type describes the properties of a secret resource, including its kind.
+ *
+ * @member {string} kind Polymorphic Discriminator
+ */
+export interface SecretResourcePropertiesBase extends ProvisionedResourceProperties {
+  kind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SecretResourceProperties class.
+ * @constructor
+ * Describes the properties of a secret resource.
+ *
+ * @member {string} [description] User readable description of the secret.
+ * @member {string} [status] Status of the resource. Possible values include:
+ * 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
+ * @member {string} [statusDetails] Gives additional information about the
+ * current status of the secret.
+ * @member {string} [contentType] The type of the content stored in the secret
+ * value. The value of this property is opaque to Service Fabric. Once set, the
+ * value of this property cannot be changed.
+ */
+export interface SecretResourceProperties extends SecretResourcePropertiesBase {
+  description?: string;
+  readonly status?: string;
+  readonly statusDetails?: string;
+  contentType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InlinedValueSecretResourceProperties class.
+ * @constructor
+ * Describes the properties of a secret resource whose value is provided
+ * explicitly as plaintext. The secret resource may have multiple values, each
+ * being uniquely versioned. The secret value of each version is stored
+ * encrypted, and delivered as plaintext into the context of applications
+ * referencing it.
+ *
+ */
+export interface InlinedValueSecretResourceProperties extends SecretResourceProperties {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SecretResourceDescription class.
+ * @constructor
+ * This type describes a secret resource.
+ *
+ * @member {object} properties Describes the properties of a secret resource.
+ * @member {string} [properties.description] User readable description of the
+ * secret.
+ * @member {string} [properties.status] Status of the resource. Possible values
+ * include: 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
+ * @member {string} [properties.statusDetails] Gives additional information
+ * about the current status of the secret.
+ * @member {string} [properties.contentType] The type of the content stored in
+ * the secret value. The value of this property is opaque to Service Fabric.
+ * Once set, the value of this property cannot be changed.
+ */
+export interface SecretResourceDescription extends TrackedResource {
+  properties: SecretResourceProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SecretValue class.
+ * @constructor
+ * This type represents the unencrypted value of the secret.
+ *
+ * @member {string} [value] The actual value of the secret.
+ */
+export interface SecretValue {
+  value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SecretValueProperties class.
+ * @constructor
+ * This type describes properties of secret value resource.
+ *
+ * @member {string} [value] The actual value of the secret.
+ */
+export interface SecretValueProperties {
+  value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SecretValueResourceDescription class.
+ * @constructor
+ * This type describes a value of a secret resource. The name of this resource
+ * is the version identifier corresponding to this secret value.
  *
  * @member {string} [provisioningState] State of the resource.
+ * @member {string} [value] The actual value of the secret.
  */
-export interface ProvisionedResourceProperties {
+export interface SecretValueResourceDescription extends TrackedResource {
   readonly provisioningState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Layer4IngressConfig class.
- * @constructor
- * Describes the layer4 configuration for public connectivity for this network.
- *
- * @member {string} [name] Layer4 ingress config name.
- * @member {number} [publicPort] Specifies the public port at which the service
- * endpoint below needs to be exposed.
- * @member {string} [applicationName] The application name which contains the
- * service to be exposed.
- * @member {string} [serviceName] The service whose endpoint needs to be
- * exposed at the public port.
- * @member {string} [endpointName] The service endpoint that needs to be
- * exposed.
- */
-export interface Layer4IngressConfig {
-  name?: string;
-  publicPort?: number;
-  applicationName?: string;
-  serviceName?: string;
-  endpointName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the IngressConfig class.
- * @constructor
- * Describes public connectivity configuration for the network.
- *
- * @member {string} [qosLevel] The QoS tier for ingress. Possible values
- * include: 'Bronze'
- * @member {array} [layer4] Configuration for layer4 public connectivity for
- * this network.
- * @member {string} [publicIPAddress] The public IP address for reaching this
- * network.
- */
-export interface IngressConfig {
-  qosLevel?: string;
-  layer4?: Layer4IngressConfig[];
-  readonly publicIPAddress?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the NetworkResourceDescription class.
- * @constructor
- * This type describes a network resource.
- *
- * @member {string} [provisioningState] State of the resource.
- * @member {string} [description] User readable description of the network.
- * @member {string} addressPrefix the address prefix for this network.
- * @member {object} [ingressConfig] Configuration for public connectivity for
- * this network.
- * @member {string} [ingressConfig.qosLevel] The QoS tier for ingress. Possible
- * values include: 'Bronze'
- * @member {array} [ingressConfig.layer4] Configuration for layer4 public
- * connectivity for this network.
- * @member {string} [ingressConfig.publicIPAddress] The public IP address for
- * reaching this network.
- */
-export interface NetworkResourceDescription extends TrackedResource {
-  readonly provisioningState?: string;
-  description?: string;
-  addressPrefix: string;
-  ingressConfig?: IngressConfig;
-}
-
-/**
- * @class
- * Initializes a new instance of the NetworkProperties class.
- * @constructor
- * Describes a network.
- *
- * @member {string} [description] User readable description of the network.
- * @member {string} addressPrefix the address prefix for this network.
- * @member {object} [ingressConfig] Configuration for public connectivity for
- * this network.
- * @member {string} [ingressConfig.qosLevel] The QoS tier for ingress. Possible
- * values include: 'Bronze'
- * @member {array} [ingressConfig.layer4] Configuration for layer4 public
- * connectivity for this network.
- * @member {string} [ingressConfig.publicIPAddress] The public IP address for
- * reaching this network.
- */
-export interface NetworkProperties {
-  description?: string;
-  addressPrefix: string;
-  ingressConfig?: IngressConfig;
+  value?: string;
 }
 
 /**
@@ -205,12 +314,105 @@ export interface VolumeProviderParametersAzureFile {
 
 /**
  * @class
+ * Initializes a new instance of the VolumeProperties class.
+ * @constructor
+ * Describes properties of a volume resource.
+ *
+ * @member {string} [description] User readable description of the volume.
+ * @member {string} [status] Status of the volume. Possible values include:
+ * 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
+ * @member {string} [statusDetails] Gives additional information about the
+ * current status of the volume.
+ * @member {object} [azureFileParameters] This type describes a volume provided
+ * by an Azure Files file share.
+ * @member {string} [azureFileParameters.accountName] Name of the Azure storage
+ * account for the File Share.
+ * @member {string} [azureFileParameters.accountKey] Access key of the Azure
+ * storage account for the File Share.
+ * @member {string} [azureFileParameters.shareName] Name of the Azure Files
+ * file share that provides storage for the volume.
+ */
+export interface VolumeProperties {
+  description?: string;
+  readonly status?: string;
+  readonly statusDetails?: string;
+  azureFileParameters?: VolumeProviderParametersAzureFile;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VolumeReference class.
+ * @constructor
+ * Describes a reference to a volume resource.
+ *
+ * @member {string} name Name of the volume being referenced.
+ * @member {boolean} [readOnly] The flag indicating whether the volume is read
+ * only. Default is 'false'.
+ * @member {string} destinationPath The path within the container at which the
+ * volume should be mounted. Only valid path characters are allowed.
+ */
+export interface VolumeReference {
+  name: string;
+  readOnly?: boolean;
+  destinationPath: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationScopedVolumeCreationParameters class.
+ * @constructor
+ * Describes parameters for creating application-scoped volumes.
+ *
+ * @member {string} [description] User readable description of the volume.
+ * @member {string} kind Polymorphic Discriminator
+ */
+export interface ApplicationScopedVolumeCreationParameters {
+  description?: string;
+  kind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationScopedVolume class.
+ * @constructor
+ * Describes a volume whose lifetime is scoped to the application's lifetime.
+ *
+ * @member {object} creationParameters Describes parameters for creating
+ * application-scoped volumes.
+ * @member {string} [creationParameters.description] User readable description
+ * of the volume.
+ * @member {string} [creationParameters.kind] Polymorphic Discriminator
+ */
+export interface ApplicationScopedVolume extends VolumeReference {
+  creationParameters: ApplicationScopedVolumeCreationParameters;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk class.
+ * @constructor
+ * Describes parameters for creating application-scoped volumes provided by
+ * Service Fabric Volume Disks
+ *
+ * @member {string} sizeDisk Volume size. Possible values include: 'Small',
+ * 'Medium', 'Large'
+ */
+export interface ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk extends ApplicationScopedVolumeCreationParameters {
+  sizeDisk: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VolumeResourceDescription class.
  * @constructor
  * This type describes a volume resource.
  *
  * @member {string} [provisioningState] State of the resource.
  * @member {string} [description] User readable description of the volume.
+ * @member {string} [status] Status of the volume. Possible values include:
+ * 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
+ * @member {string} [statusDetails] Gives additional information about the
+ * current status of the volume.
  * @member {object} [azureFileParameters] This type describes a volume provided
  * by an Azure Files file share.
  * @member {string} [azureFileParameters.accountName] Name of the Azure storage
@@ -223,192 +425,493 @@ export interface VolumeProviderParametersAzureFile {
 export interface VolumeResourceDescription extends TrackedResource {
   readonly provisioningState?: string;
   description?: string;
-  azureFileParameters?: VolumeProviderParametersAzureFile;
-}
-
-/**
- * @class
- * Initializes a new instance of the VolumeProperties class.
- * @constructor
- * This type describes properties of a volume resource.
- *
- * @member {string} [description] User readable description of the volume.
- * @member {object} [azureFileParameters] This type describes a volume provided
- * by an Azure Files file share.
- * @member {string} [azureFileParameters.accountName] Name of the Azure storage
- * account for the File Share.
- * @member {string} [azureFileParameters.accountKey] Access key of the Azure
- * storage account for the File Share.
- * @member {string} [azureFileParameters.shareName] Name of the Azure Files
- * file share that provides storage for the volume.
- */
-export interface VolumeProperties {
-  description?: string;
-  azureFileParameters?: VolumeProviderParametersAzureFile;
-}
-
-/**
- * @class
- * Initializes a new instance of the ServiceResourceDescription class.
- * @constructor
- * This type describes a service resource.
- *
- * @member {string} osType The Operating system type required by the code in
- * service.
- * . Possible values include: 'Linux', 'Windows'
- * @member {array} codePackages Describes the set of code packages that forms
- * the service. A code package describes the container and the properties for
- * running it. All the code packages are started together on the same host and
- * share the same context (network, process etc.).
- * @member {array} [networkRefs] The names of the private networks that this
- * service needs to be part of.
- * @member {object} [diagnostics] Reference to sinks in DiagnosticsDescription.
- * @member {boolean} [diagnostics.enabled] Status of whether or not sinks are
- * enabled.
- * @member {array} [diagnostics.sinkRefs] List of sinks to be used if enabled.
- * References the list of sinks in DiagnosticsDescription.
- * @member {string} [description] User readable description of the service.
- * @member {number} [replicaCount] The number of replicas of the service to
- * create. Defaults to 1 if not specified.
- * @member {string} [healthState] The health state of a resource such as
- * Application, Service, or Network. Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
- * @member {string} [status] Represents the status of the service. Possible
- * values include: 'Unknown', 'Active', 'Upgrading', 'Deleting', 'Creating',
- * 'Failed'
- */
-export interface ServiceResourceDescription extends ManagedProxyResource {
-  osType: string;
-  codePackages: ContainerCodePackageProperties[];
-  networkRefs?: NetworkRef[];
-  diagnostics?: DiagnosticsRef;
-  description?: string;
-  replicaCount?: number;
-  healthState?: string;
   readonly status?: string;
+  readonly statusDetails?: string;
+  azureFileParameters?: VolumeProviderParametersAzureFile;
 }
 
 /**
  * @class
- * Initializes a new instance of the DiagnosticsSinkProperties class.
+ * Initializes a new instance of the NetworkResourcePropertiesBase class.
  * @constructor
- * Properties of a DiagnosticsSink.
+ * This type describes the properties of a network resource, including its
+ * kind.
  *
- * @member {string} [name] Name of the sink. This value is referenced by
- * DiagnosticsReferenceDescription
- * @member {string} [description] A description of the sink.
  * @member {string} kind Polymorphic Discriminator
  */
-export interface DiagnosticsSinkProperties {
-  name?: string;
-  description?: string;
+export interface NetworkResourcePropertiesBase extends ProvisionedResourceProperties {
   kind: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the DiagnosticsDescription class.
+ * Initializes a new instance of the NetworkResourceProperties class.
  * @constructor
- * Describes the diagnostics options available
+ * Describes properties of a network resource.
  *
- * @member {array} [sinks] List of supported sinks that can be referenced.
- * @member {boolean} [enabled] Status of whether or not sinks are enabled.
- * @member {array} [defaultSinkRefs] The sinks to be used if diagnostics is
- * enabled. Sink choices can be overridden at the service and code package
- * level.
+ * @member {string} [description] User readable description of the network.
+ * @member {string} [status] Status of the network. Possible values include:
+ * 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
+ * @member {string} [statusDetails] Gives additional information about the
+ * current status of the network.
  */
-export interface DiagnosticsDescription {
-  sinks?: DiagnosticsSinkProperties[];
-  enabled?: boolean;
-  defaultSinkRefs?: string[];
+export interface NetworkResourceProperties extends NetworkResourcePropertiesBase {
+  description?: string;
+  readonly status?: string;
+  readonly statusDetails?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the ApplicationResourceDescription class.
+ * Initializes a new instance of the LocalNetworkResourceProperties class.
  * @constructor
- * This type describes an application resource.
+ * Information about a Service Fabric container network local to a single
+ * Service Fabric cluster.
+ *
+ * @member {string} [networkAddressPrefix] Address space for the local
+ * container network.
+ */
+export interface LocalNetworkResourceProperties extends NetworkResourceProperties {
+  networkAddressPrefix?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EndpointRef class.
+ * @constructor
+ * Describes a reference to a service endpoint.
+ *
+ * @member {string} [name] Name of the endpoint.
+ */
+export interface EndpointRef {
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkRef class.
+ * @constructor
+ * Describes a network reference in a service.
+ *
+ * @member {string} [name] Name of the network
+ * @member {array} [endpointRefs] A list of endpoints that are exposed on this
+ * network.
+ */
+export interface NetworkRef {
+  name?: string;
+  endpointRefs?: EndpointRef[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkResourceDescription class.
+ * @constructor
+ * This type describes a network resource.
+ *
+ * @member {object} properties Describes properties of a network resource.
+ * @member {string} [properties.description] User readable description of the
+ * network.
+ * @member {string} [properties.status] Status of the network. Possible values
+ * include: 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
+ * @member {string} [properties.statusDetails] Gives additional information
+ * about the current status of the network.
+ */
+export interface NetworkResourceDescription extends TrackedResource {
+  properties: NetworkResourceProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GatewayDestination class.
+ * @constructor
+ * Describes destination endpoint for routing traffic.
+ *
+ * @member {string} applicationName Name of the service fabric Mesh
+ * application.
+ * @member {string} serviceName service that contains the endpoint.
+ * @member {string} endpointName name of the endpoint in the service.
+ */
+export interface GatewayDestination {
+  applicationName: string;
+  serviceName: string;
+  endpointName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TcpConfig class.
+ * @constructor
+ * Describes the tcp configuration for external connectivity for this network.
+ *
+ * @member {string} name tcp gateway config name.
+ * @member {number} port Specifies the port at which the service endpoint below
+ * needs to be exposed.
+ * @member {object} destination Describes destination endpoint for routing
+ * traffic.
+ * @member {string} [destination.applicationName] Name of the service fabric
+ * Mesh application.
+ * @member {string} [destination.serviceName] service that contains the
+ * endpoint.
+ * @member {string} [destination.endpointName] name of the endpoint in the
+ * service.
+ */
+export interface TcpConfig {
+  name: string;
+  port: number;
+  destination: GatewayDestination;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HttpRouteMatchPath class.
+ * @constructor
+ * Path to match for routing.
+ *
+ * @member {string} value Uri path to match for request.
+ * @member {string} [rewrite] replacement string for matched part of the Uri.
+ */
+export interface HttpRouteMatchPath {
+  value: string;
+  rewrite?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HttpRouteMatchHeader class.
+ * @constructor
+ * Describes header information for http route matching.
+ *
+ * @member {string} name Name of header to match in request.
+ * @member {string} [value] Value of header to match in request.
+ * @member {string} [type] how to match header value. Possible values include:
+ * 'exact'
+ */
+export interface HttpRouteMatchHeader {
+  name: string;
+  value?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HttpRouteMatchRule class.
+ * @constructor
+ * Describes a rule for http route matching.
+ *
+ * @member {object} path Path to match for routing.
+ * @member {string} [path.value] Uri path to match for request.
+ * @member {string} [path.rewrite] replacement string for matched part of the
+ * Uri.
+ * @member {array} [headers] headers and their values to match in request.
+ */
+export interface HttpRouteMatchRule {
+  path: HttpRouteMatchPath;
+  headers?: HttpRouteMatchHeader[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HttpRouteConfig class.
+ * @constructor
+ * Describes the hostname properties for http routing.
+ *
+ * @member {string} name http route name.
+ * @member {object} match Describes a rule for http route matching.
+ * @member {object} [match.path] Path to match for routing.
+ * @member {string} [match.path.value] Uri path to match for request.
+ * @member {string} [match.path.rewrite] replacement string for matched part of
+ * the Uri.
+ * @member {array} [match.headers] headers and their values to match in
+ * request.
+ * @member {object} destination Describes destination endpoint for routing
+ * traffic.
+ * @member {string} [destination.applicationName] Name of the service fabric
+ * Mesh application.
+ * @member {string} [destination.serviceName] service that contains the
+ * endpoint.
+ * @member {string} [destination.endpointName] name of the endpoint in the
+ * service.
+ */
+export interface HttpRouteConfig {
+  name: string;
+  match: HttpRouteMatchRule;
+  destination: GatewayDestination;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HttpHostConfig class.
+ * @constructor
+ * Describes the hostname properties for http routing.
+ *
+ * @member {string} name http hostname config name.
+ * @member {array} routes Route information to use for routing. Routes are
+ * processed in the order they are specified. Specify routes that are more
+ * specific before routes that can hamdle general cases.
+ */
+export interface HttpHostConfig {
+  name: string;
+  routes: HttpRouteConfig[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HttpConfig class.
+ * @constructor
+ * Describes the http configuration for external connectivity for this network.
+ *
+ * @member {string} name http gateway config name.
+ * @member {number} port Specifies the port at which the service endpoint below
+ * needs to be exposed.
+ * @member {array} hosts description for routing.
+ */
+export interface HttpConfig {
+  name: string;
+  port: number;
+  hosts: HttpHostConfig[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GatewayProperties class.
+ * @constructor
+ * Describes properties of a gateway resource.
+ *
+ * @member {string} [description] User readable description of the gateway.
+ * @member {object} sourceNetwork Network the gateway should listen on for
+ * requests.
+ * @member {string} [sourceNetwork.name] Name of the network
+ * @member {array} [sourceNetwork.endpointRefs] A list of endpoints that are
+ * exposed on this network.
+ * @member {object} destinationNetwork Network that the Application is using.
+ * @member {string} [destinationNetwork.name] Name of the network
+ * @member {array} [destinationNetwork.endpointRefs] A list of endpoints that
+ * are exposed on this network.
+ * @member {array} [tcp] Configuration for tcp connectivity for this gateway.
+ * @member {array} [http] Configuration for http connectivity for this gateway.
+ * @member {string} [status] Status of the resource. Possible values include:
+ * 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
+ * @member {string} [statusDetails] Gives additional information about the
+ * current status of the gateway.
+ * @member {string} [ipAddress] IP address of the gateway. This is populated in
+ * the response and is ignored for incoming requests.
+ */
+export interface GatewayProperties {
+  description?: string;
+  sourceNetwork: NetworkRef;
+  destinationNetwork: NetworkRef;
+  tcp?: TcpConfig[];
+  http?: HttpConfig[];
+  readonly status?: string;
+  readonly statusDetails?: string;
+  readonly ipAddress?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GatewayResourceDescription class.
+ * @constructor
+ * This type describes a gateway resource.
  *
  * @member {string} [provisioningState] State of the resource.
- * @member {string} [description] User readable description of the application.
- * @member {string} [debugParams] Internal use.
- * @member {array} [services] describes the services in the application.
- * @member {string} [healthState] Describes the health state of an application
- * resource. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
- * 'Unknown'
- * @member {string} [unhealthyEvaluation] When the application's health state
- * is not 'Ok', this additional details from service fabric Health Manager for
- * the user to know why the application is marked unhealthy.
- * @member {string} [status] Status of the application resource. Possible
- * values include: 'Invalid', 'Ready', 'Upgrading', 'Creating', 'Deleting',
- * 'Failed'
+ * @member {string} [description] User readable description of the gateway.
+ * @member {object} sourceNetwork Network the gateway should listen on for
+ * requests.
+ * @member {string} [sourceNetwork.name] Name of the network
+ * @member {array} [sourceNetwork.endpointRefs] A list of endpoints that are
+ * exposed on this network.
+ * @member {object} destinationNetwork Network that the Application is using.
+ * @member {string} [destinationNetwork.name] Name of the network
+ * @member {array} [destinationNetwork.endpointRefs] A list of endpoints that
+ * are exposed on this network.
+ * @member {array} [tcp] Configuration for tcp connectivity for this gateway.
+ * @member {array} [http] Configuration for http connectivity for this gateway.
+ * @member {string} [status] Status of the resource. Possible values include:
+ * 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
  * @member {string} [statusDetails] Gives additional information about the
- * current status of the application deployment.
- * @member {array} [serviceNames] Names of the services in the application.
- * @member {object} [diagnostics] Describes the diagnostics definition and
- * usage for an application resource.
- * @member {array} [diagnostics.sinks] List of supported sinks that can be
- * referenced.
- * @member {boolean} [diagnostics.enabled] Status of whether or not sinks are
- * enabled.
- * @member {array} [diagnostics.defaultSinkRefs] The sinks to be used if
- * diagnostics is enabled. Sink choices can be overridden at the service and
- * code package level.
+ * current status of the gateway.
+ * @member {string} [ipAddress] IP address of the gateway. This is populated in
+ * the response and is ignored for incoming requests.
  */
-export interface ApplicationResourceDescription extends TrackedResource {
+export interface GatewayResourceDescription extends TrackedResource {
   readonly provisioningState?: string;
   description?: string;
-  debugParams?: string;
-  services?: ServiceResourceDescription[];
-  readonly healthState?: string;
-  readonly unhealthyEvaluation?: string;
+  sourceNetwork: NetworkRef;
+  destinationNetwork: NetworkRef;
+  tcp?: TcpConfig[];
+  http?: HttpConfig[];
   readonly status?: string;
   readonly statusDetails?: string;
-  readonly serviceNames?: string[];
-  diagnostics?: DiagnosticsDescription;
+  readonly ipAddress?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the ApplicationProperties class.
+ * Initializes a new instance of the ImageRegistryCredential class.
  * @constructor
- * This type describes properties of an application resource.
+ * Image registry credential.
  *
- * @member {string} [description] User readable description of the application.
- * @member {string} [debugParams] Internal use.
- * @member {array} [services] describes the services in the application.
- * @member {string} [healthState] Describes the health state of an application
- * resource. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
- * 'Unknown'
- * @member {string} [unhealthyEvaluation] When the application's health state
- * is not 'Ok', this additional details from service fabric Health Manager for
- * the user to know why the application is marked unhealthy.
- * @member {string} [status] Status of the application resource. Possible
- * values include: 'Invalid', 'Ready', 'Upgrading', 'Creating', 'Deleting',
- * 'Failed'
- * @member {string} [statusDetails] Gives additional information about the
- * current status of the application deployment.
- * @member {array} [serviceNames] Names of the services in the application.
- * @member {object} [diagnostics] Describes the diagnostics definition and
- * usage for an application resource.
- * @member {array} [diagnostics.sinks] List of supported sinks that can be
- * referenced.
- * @member {boolean} [diagnostics.enabled] Status of whether or not sinks are
- * enabled.
- * @member {array} [diagnostics.defaultSinkRefs] The sinks to be used if
- * diagnostics is enabled. Sink choices can be overridden at the service and
- * code package level.
+ * @member {string} server Docker image registry server, without protocol such
+ * as `http` and `https`.
+ * @member {string} username The username for the private registry.
+ * @member {string} [password] The password for the private registry. The
+ * password is required for create or update operations, however it is not
+ * returned in the get or list operations.
  */
-export interface ApplicationProperties {
-  description?: string;
-  debugParams?: string;
-  services?: ServiceResourceDescription[];
-  readonly healthState?: string;
-  readonly unhealthyEvaluation?: string;
-  readonly status?: string;
-  readonly statusDetails?: string;
-  readonly serviceNames?: string[];
-  diagnostics?: DiagnosticsDescription;
+export interface ImageRegistryCredential {
+  server: string;
+  username: string;
+  password?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EnvironmentVariable class.
+ * @constructor
+ * Describes an environment variable for the container.
+ *
+ * @member {string} [name] The name of the environment variable.
+ * @member {string} [value] The value of the environment variable.
+ */
+export interface EnvironmentVariable {
+  name?: string;
+  value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Setting class.
+ * @constructor
+ * Describes a setting for the container. The setting file path can be fetched
+ * from environment variable "Fabric_SettingPath". The path for Windows
+ * container is "C:\\secrets". The path for Linux container is "/var/secrets".
+ *
+ * @member {string} [name] The name of the setting.
+ * @member {string} [value] The value of the setting.
+ */
+export interface Setting {
+  name?: string;
+  value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerLabel class.
+ * @constructor
+ * Describes a container label.
+ *
+ * @member {string} name The name of the container label.
+ * @member {string} value The value of the container label.
+ */
+export interface ContainerLabel {
+  name: string;
+  value: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EndpointProperties class.
+ * @constructor
+ * Describes a container endpoint.
+ *
+ * @member {string} name The name of the endpoint.
+ * @member {number} [port] Port used by the container.
+ */
+export interface EndpointProperties {
+  name: string;
+  port?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceRequests class.
+ * @constructor
+ * This type describes the requested resources for a given container. It
+ * describes the least amount of resources required for the container. A
+ * container can consume more than requested resources up to the specified
+ * limits before being restarted. Currently, the requested resources are
+ * treated as limits.
+ *
+ * @member {number} memoryInGB The memory request in GB for this container.
+ * @member {number} cpu Requested number of CPU cores. At present, only full
+ * cores are supported.
+ */
+export interface ResourceRequests {
+  memoryInGB: number;
+  cpu: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceLimits class.
+ * @constructor
+ * This type describes the resource limits for a given container. It describes
+ * the most amount of resources a container is allowed to use before being
+ * restarted.
+ *
+ * @member {number} [memoryInGB] The memory limit in GB.
+ * @member {number} [cpu] CPU limits in cores. At present, only full cores are
+ * supported.
+ */
+export interface ResourceLimits {
+  memoryInGB?: number;
+  cpu?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceRequirements class.
+ * @constructor
+ * This type describes the resource requirements for a container or a service.
+ *
+ * @member {object} requests Describes the requested resources for a given
+ * container.
+ * @member {number} [requests.memoryInGB] The memory request in GB for this
+ * container.
+ * @member {number} [requests.cpu] Requested number of CPU cores. At present,
+ * only full cores are supported.
+ * @member {object} [limits] Describes the maximum limits on the resources for
+ * a given container.
+ * @member {number} [limits.memoryInGB] The memory limit in GB.
+ * @member {number} [limits.cpu] CPU limits in cores. At present, only full
+ * cores are supported.
+ */
+export interface ResourceRequirements {
+  requests: ResourceRequests;
+  limits?: ResourceLimits;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiagnosticsRef class.
+ * @constructor
+ * Reference to sinks in DiagnosticsDescription.
+ *
+ * @member {boolean} [enabled] Status of whether or not sinks are enabled.
+ * @member {array} [sinkRefs] List of sinks to be used if enabled. References
+ * the list of sinks in DiagnosticsDescription.
+ */
+export interface DiagnosticsRef {
+  enabled?: boolean;
+  sinkRefs?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReliableCollectionsRef class.
+ * @constructor
+ * Specifying this parameter adds support for reliable collections
+ *
+ * @member {string} name Name of ReliableCollection resource. Right now it's
+ * not used and you can use any string.
+ * @member {boolean} [doNotPersistState] False (the default) if
+ * ReliableCollections state is persisted to disk as usual. True if you do not
+ * want to persist state, in which case replication is still enabled and you
+ * can use ReliableCollections as distributed cache.
+ */
+export interface ReliableCollectionsRef {
+  name: string;
+  doNotPersistState?: boolean;
 }
 
 /**
@@ -490,242 +993,6 @@ export interface ContainerInstanceView {
 
 /**
  * @class
- * Initializes a new instance of the ContainerLabel class.
- * @constructor
- * Describes a container label.
- *
- * @member {string} name The name of the container label.
- * @member {string} value The value of the container label.
- */
-export interface ContainerLabel {
-  name: string;
-  value: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ContainerLogs class.
- * @constructor
- * The logs of the container.
- *
- * @member {string} [content] content of the log.
- */
-export interface ContainerLogs {
-  content?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ImageRegistryCredential class.
- * @constructor
- * Image registry credential.
- *
- * @member {string} server Docker image registry server, without protocol such
- * as `http` and `https`.
- * @member {string} username The username for the private registry.
- * @member {string} [password] The password for the private registry.
- */
-export interface ImageRegistryCredential {
-  server: string;
-  username: string;
-  password?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceLimits class.
- * @constructor
- * This type describes the resource limits for a given container. It describes
- * the most amount of resources a container is allowed to use before being
- * restarted.
- *
- * @member {number} [memoryInGB] The memory limit in GB.
- * @member {number} [cpu] CPU limits in cores. At present, only full cores are
- * supported.
- */
-export interface ResourceLimits {
-  memoryInGB?: number;
-  cpu?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceRequests class.
- * @constructor
- * This type describes the requested resources for a given container. It
- * describes the least amount of resources required for the container. A
- * container can consume more than requested resources up to the specified
- * limits before being restarted. Currently, the requested resources are
- * treated as limits.
- *
- *
- * @member {number} memoryInGB The memory request in GB for this container.
- * @member {number} cpu Requested number of CPU cores. At present, only full
- * cores are supported.
- */
-export interface ResourceRequests {
-  memoryInGB: number;
-  cpu: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceRequirements class.
- * @constructor
- * This type describes the resource requirements for a container or a service.
- *
- * @member {object} requests Describes the requested resources for a given
- * container.
- * @member {number} [requests.memoryInGB] The memory request in GB for this
- * container.
- * @member {number} [requests.cpu] Requested number of CPU cores. At present,
- * only full cores are supported.
- * @member {object} [limits] Describes the maximum limits on the resources for
- * a given container.
- * @member {number} [limits.memoryInGB] The memory limit in GB.
- * @member {number} [limits.cpu] CPU limits in cores. At present, only full
- * cores are supported.
- */
-export interface ResourceRequirements {
-  requests: ResourceRequests;
-  limits?: ResourceLimits;
-}
-
-/**
- * @class
- * Initializes a new instance of the AvailableOperationDisplay class.
- * @constructor
- * An operation available at the listed Azure resource provider.
- *
- * @member {string} [provider] Name of the operation provider.
- * @member {string} [resource] Name of the resource on which the operation is
- * available.
- * @member {string} [operation] Name of the available operation.
- * @member {string} [description] Description of the available operation.
- */
-export interface AvailableOperationDisplay {
-  provider?: string;
-  resource?: string;
-  operation?: string;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationResult class.
- * @constructor
- * List of operations available at the listed Azure resource provider.
- *
- * @member {string} [name] The name of the operation.
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Name of the operation provider.
- * @member {string} [display.resource] Name of the resource on which the
- * operation is available.
- * @member {string} [display.operation] Name of the available operation.
- * @member {string} [display.description] Description of the available
- * operation.
- * @member {string} [origin] Origin result
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface OperationResult {
-  name?: string;
-  display?: AvailableOperationDisplay;
-  origin?: string;
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ErrorModel class.
- * @constructor
- * The error details.
- *
- * @member {string} [code] The error code.
- * @member {string} [message] The error message.
- */
-export interface ErrorModel {
-  code?: string;
-  message?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the EnvironmentVariable class.
- * @constructor
- * Describes an environment variable for the container.
- *
- * @member {string} [name] The name of the environment variable.
- * @member {string} [value] The value of the environment variable.
- */
-export interface EnvironmentVariable {
-  name?: string;
-  value?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Setting class.
- * @constructor
- * Describes a setting for the container.
- *
- * @member {string} [name] The name of the setting.
- * @member {string} [value] The value of the setting.
- */
-export interface Setting {
-  name?: string;
-  value?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the EndpointProperties class.
- * @constructor
- * Describes a container endpoint.
- *
- * @member {string} name The name of the endpoint.
- * @member {number} [port] Port used by the container.
- */
-export interface EndpointProperties {
-  name: string;
-  port?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the ContainerVolume class.
- * @constructor
- * Describes how a volume is attached to a container.
- *
- * @member {string} name Name of the volume.
- * @member {boolean} [readOnly] The flag indicating whether the volume is read
- * only. Default is 'false'.
- * @member {string} destinationPath The path within the container at which the
- * volume should be mounted. Only valid path characters are allowed.
- */
-export interface ContainerVolume {
-  name: string;
-  readOnly?: boolean;
-  destinationPath: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DiagnosticsRef class.
- * @constructor
- * Reference to sinks in DiagnosticsDescription.
- *
- * @member {boolean} [enabled] Status of whether or not sinks are enabled.
- * @member {array} [sinkRefs] List of sinks to be used if enabled. References
- * the list of sinks in DiagnosticsDescription.
- */
-export interface DiagnosticsRef {
-  enabled?: boolean;
-  sinkRefs?: string[];
-}
-
-/**
- * @class
  * Initializes a new instance of the ContainerCodePackageProperties class.
  * @constructor
  * Describes a container and its runtime properties.
@@ -738,7 +1005,8 @@ export interface DiagnosticsRef {
  * @member {string} [imageRegistryCredential.username] The username for the
  * private registry.
  * @member {string} [imageRegistryCredential.password] The password for the
- * private registry.
+ * private registry. The password is required for create or update operations,
+ * however it is not returned in the get or list operations.
  * @member {string} [entrypoint] Override for the default entry point in the
  * container.
  * @member {array} [commands] Command array to execute within the container in
@@ -751,8 +1019,7 @@ export interface DiagnosticsRef {
  * path for Linux container is "/var/secrets".
  * @member {array} [labels] The labels to set in this container.
  * @member {array} [endpoints] The endpoints exposed by this container.
- * @member {object} resources This type describes the resource requirements for
- * a container or a service.
+ * @member {object} resources The resources required by this container.
  * @member {object} [resources.requests] Describes the requested resources for
  * a given container.
  * @member {number} [resources.requests.memoryInGB] The memory request in GB
@@ -764,7 +1031,18 @@ export interface DiagnosticsRef {
  * @member {number} [resources.limits.memoryInGB] The memory limit in GB.
  * @member {number} [resources.limits.cpu] CPU limits in cores. At present,
  * only full cores are supported.
- * @member {array} [volumeRefs] The volumes to be attached to the container.
+ * @member {array} [volumeRefs] Volumes to be attached to the container. The
+ * lifetime of these volumes is independent of the application's lifetime.
+ * @member {array} [volumes] Volumes to be attached to the container. The
+ * lifetime of these volumes is scoped to the application's lifetime.
+ * @member {object} [diagnostics] Reference to sinks in DiagnosticsDescription.
+ * @member {boolean} [diagnostics.enabled] Status of whether or not sinks are
+ * enabled.
+ * @member {array} [diagnostics.sinkRefs] List of sinks to be used if enabled.
+ * References the list of sinks in DiagnosticsDescription.
+ * @member {array} [reliableCollectionsRefs] A list of ReliableCollection
+ * resources used by this particular code package. Please refer to
+ * ReliablecollectionsRef for more details.
  * @member {object} [instanceView] Runtime information of a container instance.
  * @member {number} [instanceView.restartCount] The number of times the
  * container has been restarted.
@@ -793,11 +1071,6 @@ export interface DiagnosticsRef {
  * @member {string} [instanceView.previousState.detailStatus] Human-readable
  * status of this state.
  * @member {array} [instanceView.events] The events of this container instance.
- * @member {object} [diagnostics] Reference to sinks in DiagnosticsDescription.
- * @member {boolean} [diagnostics.enabled] Status of whether or not sinks are
- * enabled.
- * @member {array} [diagnostics.sinkRefs] List of sinks to be used if enabled.
- * References the list of sinks in DiagnosticsDescription.
  */
 export interface ContainerCodePackageProperties {
   name: string;
@@ -810,20 +1083,67 @@ export interface ContainerCodePackageProperties {
   labels?: ContainerLabel[];
   endpoints?: EndpointProperties[];
   resources: ResourceRequirements;
-  volumeRefs?: ContainerVolume[];
-  readonly instanceView?: ContainerInstanceView;
+  volumeRefs?: VolumeReference[];
+  volumes?: ApplicationScopedVolume[];
   diagnostics?: DiagnosticsRef;
+  reliableCollectionsRefs?: ReliableCollectionsRef[];
+  readonly instanceView?: ContainerInstanceView;
 }
 
 /**
  * @class
- * Initializes a new instance of the ServiceReplicaProperties class.
+ * Initializes a new instance of the AutoScalingTrigger class.
  * @constructor
- * Describes the properties of a service replica.
+ * Describes the trigger for performing auto scaling operation.
  *
- * @member {string} osType The Operating system type required by the code in
- * service.
- * . Possible values include: 'Linux', 'Windows'
+ * @member {string} kind Polymorphic Discriminator
+ */
+export interface AutoScalingTrigger {
+  kind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AutoScalingMechanism class.
+ * @constructor
+ * Describes the mechanism for performing auto scaling operation. Derived
+ * classes will describe the actual mechanism.
+ *
+ * @member {string} kind Polymorphic Discriminator
+ */
+export interface AutoScalingMechanism {
+  kind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AutoScalingPolicy class.
+ * @constructor
+ * Describes the auto scaling policy
+ *
+ * @member {string} name The name of the auto scaling policy.
+ * @member {object} trigger Determines when auto scaling operation will be
+ * invoked.
+ * @member {string} [trigger.kind] Polymorphic Discriminator
+ * @member {object} mechanism The mechanism that is used to scale when auto
+ * scaling operation is invoked.
+ * @member {string} [mechanism.kind] Polymorphic Discriminator
+ */
+export interface AutoScalingPolicy {
+  name: string;
+  trigger: AutoScalingTrigger;
+  mechanism: AutoScalingMechanism;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceResourceDescription class.
+ * @constructor
+ * This type describes a service resource.
+ *
+ * @member {string} [provisioningState] State of the resource.
+ * @member {string} osType The operation system required by the code in
+ * service. Possible values include: 'Linux', 'Windows'
  * @member {array} codePackages Describes the set of code packages that forms
  * the service. A code package describes the container and the properties for
  * running it. All the code packages are started together on the same host and
@@ -835,36 +1155,115 @@ export interface ContainerCodePackageProperties {
  * enabled.
  * @member {array} [diagnostics.sinkRefs] List of sinks to be used if enabled.
  * References the list of sinks in DiagnosticsDescription.
+ * @member {string} [description] User readable description of the service.
+ * @member {number} [replicaCount] The number of replicas of the service to
+ * create. Defaults to 1 if not specified.
+ * @member {array} [autoScalingPolicies] Auto scaling policies
+ * @member {string} [status] Status of the service. Possible values include:
+ * 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
+ * @member {string} [statusDetails] Gives additional information about the
+ * current status of the service.
+ * @member {string} [healthState] Describes the health state of an application
+ * resource. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+ * 'Unknown'
+ * @member {string} [unhealthyEvaluation] When the service's health state is
+ * not 'Ok', this additional details from service fabric Health Manager for the
+ * user to know why the service is marked unhealthy.
  */
-export interface ServiceReplicaProperties {
+export interface ServiceResourceDescription extends ManagedProxyResource {
+  readonly provisioningState?: string;
   osType: string;
   codePackages: ContainerCodePackageProperties[];
   networkRefs?: NetworkRef[];
   diagnostics?: DiagnosticsRef;
+  description?: string;
+  replicaCount?: number;
+  autoScalingPolicies?: AutoScalingPolicy[];
+  readonly status?: string;
+  readonly statusDetails?: string;
+  readonly healthState?: string;
+  readonly unhealthyEvaluation?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the ServiceReplicaDescription class.
+ * Initializes a new instance of the DiagnosticsSinkProperties class.
  * @constructor
- * This type describes a replica of a service resource.
+ * Properties of a DiagnosticsSink.
  *
- * @member {string} [replicaName] Name of the replica.
+ * @member {string} [name] Name of the sink. This value is referenced by
+ * DiagnosticsReferenceDescription
+ * @member {string} [description] A description of the sink.
+ * @member {string} kind Polymorphic Discriminator
  */
-export interface ServiceReplicaDescription extends ServiceReplicaProperties {
-  replicaName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the NetworkRef class.
- * @constructor
- * Describes a network reference in a service.
- *
- * @member {string} [name] Name of the network.
- */
-export interface NetworkRef {
+export interface DiagnosticsSinkProperties {
   name?: string;
+  description?: string;
+  kind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiagnosticsDescription class.
+ * @constructor
+ * Describes the diagnostics options available
+ *
+ * @member {array} [sinks] List of supported sinks that can be referenced.
+ * @member {boolean} [enabled] Status of whether or not sinks are enabled.
+ * @member {array} [defaultSinkRefs] The sinks to be used if diagnostics is
+ * enabled. Sink choices can be overridden at the service and code package
+ * level.
+ */
+export interface DiagnosticsDescription {
+  sinks?: DiagnosticsSinkProperties[];
+  enabled?: boolean;
+  defaultSinkRefs?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationProperties class.
+ * @constructor
+ * Describes properties of a application resource.
+ *
+ * @member {string} [description] User readable description of the application.
+ * @member {array} [services] Describes the services in the application. This
+ * property is used to create or modify services of the application. On get
+ * only the name of the service is returned. The service description can be
+ * obtained by querying for the service resource.
+ * @member {object} [diagnostics] Describes the diagnostics definition and
+ * usage for an application resource.
+ * @member {array} [diagnostics.sinks] List of supported sinks that can be
+ * referenced.
+ * @member {boolean} [diagnostics.enabled] Status of whether or not sinks are
+ * enabled.
+ * @member {array} [diagnostics.defaultSinkRefs] The sinks to be used if
+ * diagnostics is enabled. Sink choices can be overridden at the service and
+ * code package level.
+ * @member {string} [debugParams] Internal - used by Visual Studio to setup the
+ * debugging session on the local development environment.
+ * @member {array} [serviceNames] Names of the services in the application.
+ * @member {string} [status] Status of the application. Possible values
+ * include: 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
+ * @member {string} [statusDetails] Gives additional information about the
+ * current status of the application.
+ * @member {string} [healthState] Describes the health state of an application
+ * resource. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+ * 'Unknown'
+ * @member {string} [unhealthyEvaluation] When the application's health state
+ * is not 'Ok', this additional details from service fabric Health Manager for
+ * the user to know why the application is marked unhealthy.
+ */
+export interface ApplicationProperties {
+  description?: string;
+  services?: ServiceResourceDescription[];
+  diagnostics?: DiagnosticsDescription;
+  debugParams?: string;
+  readonly serviceNames?: string[];
+  readonly status?: string;
+  readonly statusDetails?: string;
+  readonly healthState?: string;
+  readonly unhealthyEvaluation?: string;
 }
 
 /**
@@ -891,44 +1290,204 @@ export interface AzureInternalMonitoringPipelineSinkDescription extends Diagnost
   autoKeyConfigUrl?: string;
 }
 
-
 /**
  * @class
- * Initializes a new instance of the ApplicationResourceDescriptionList class.
+ * Initializes a new instance of the ApplicationResourceDescription class.
  * @constructor
- * A pageable list of application resources.
+ * This type describes an application resource.
  *
- * @member {string} [nextLink] URI to fetch the next page of the list.
+ * @member {string} [provisioningState] State of the resource.
+ * @member {string} [description] User readable description of the application.
+ * @member {array} [services] Describes the services in the application. This
+ * property is used to create or modify services of the application. On get
+ * only the name of the service is returned. The service description can be
+ * obtained by querying for the service resource.
+ * @member {object} [diagnostics] Describes the diagnostics definition and
+ * usage for an application resource.
+ * @member {array} [diagnostics.sinks] List of supported sinks that can be
+ * referenced.
+ * @member {boolean} [diagnostics.enabled] Status of whether or not sinks are
+ * enabled.
+ * @member {array} [diagnostics.defaultSinkRefs] The sinks to be used if
+ * diagnostics is enabled. Sink choices can be overridden at the service and
+ * code package level.
+ * @member {string} [debugParams] Internal - used by Visual Studio to setup the
+ * debugging session on the local development environment.
+ * @member {array} [serviceNames] Names of the services in the application.
+ * @member {string} [status] Status of the application. Possible values
+ * include: 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
+ * @member {string} [statusDetails] Gives additional information about the
+ * current status of the application.
+ * @member {string} [healthState] Describes the health state of an application
+ * resource. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+ * 'Unknown'
+ * @member {string} [unhealthyEvaluation] When the application's health state
+ * is not 'Ok', this additional details from service fabric Health Manager for
+ * the user to know why the application is marked unhealthy.
  */
-export interface ApplicationResourceDescriptionList extends Array<ApplicationResourceDescription> {
-  nextLink?: string;
+export interface ApplicationResourceDescription extends TrackedResource {
+  readonly provisioningState?: string;
+  description?: string;
+  services?: ServiceResourceDescription[];
+  diagnostics?: DiagnosticsDescription;
+  debugParams?: string;
+  readonly serviceNames?: string[];
+  readonly status?: string;
+  readonly statusDetails?: string;
+  readonly healthState?: string;
+  readonly unhealthyEvaluation?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the ServiceList class.
+ * Initializes a new instance of the AddRemoveReplicaScalingMechanism class.
  * @constructor
- * A pageable list of all services in an application.
+ * Describes the horizontal auto scaling mechanism that adds or removes
+ * replicas (containers or container groups).
  *
- *
- * @member {string} [nextLink] URI to fetch the next page of the list.
+ * @member {number} minCount Minimum number of containers (scale down won't be
+ * performed below this number).
+ * @member {number} maxCount Maximum number of containers (scale up won't be
+ * performed above this number).
+ * @member {number} scaleIncrement Each time auto scaling is performed, this
+ * number of containers will be added or removed.
  */
-export interface ServiceList extends Array<ServiceResourceDescription> {
-  nextLink?: string;
+export interface AddRemoveReplicaScalingMechanism extends AutoScalingMechanism {
+  minCount: number;
+  maxCount: number;
+  scaleIncrement: number;
 }
 
 /**
  * @class
- * Initializes a new instance of the ServiceReplicaList class.
+ * Initializes a new instance of the AutoScalingMetric class.
  * @constructor
- * A pageable list of replicas of a service resource.
+ * Describes the metric that is used for triggering auto scaling operation.
+ * Derived classes will describe resources or metrics.
  *
- *
- * @member {string} [nextLink] URI to fetch the next page of the list.
+ * @member {string} kind Polymorphic Discriminator
  */
-export interface ServiceReplicaList extends Array<ServiceReplicaDescription> {
-  nextLink?: string;
+export interface AutoScalingMetric {
+  kind: string;
 }
+
+/**
+ * @class
+ * Initializes a new instance of the AutoScalingResourceMetric class.
+ * @constructor
+ * Describes the resource that is used for triggering auto scaling.
+ *
+ * @member {string} name Name of the resource. Possible values include: 'cpu',
+ * 'memoryInGB'
+ */
+export interface AutoScalingResourceMetric extends AutoScalingMetric {
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceProperties class.
+ * @constructor
+ * Describes properties of a service resource.
+ *
+ * @member {string} [description] User readable description of the service.
+ * @member {number} [replicaCount] The number of replicas of the service to
+ * create. Defaults to 1 if not specified.
+ * @member {array} [autoScalingPolicies] Auto scaling policies
+ * @member {string} [status] Status of the service. Possible values include:
+ * 'Unknown', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
+ * @member {string} [statusDetails] Gives additional information about the
+ * current status of the service.
+ * @member {string} [healthState] Describes the health state of an application
+ * resource. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+ * 'Unknown'
+ * @member {string} [unhealthyEvaluation] When the service's health state is
+ * not 'Ok', this additional details from service fabric Health Manager for the
+ * user to know why the service is marked unhealthy.
+ */
+export interface ServiceProperties {
+  description?: string;
+  replicaCount?: number;
+  autoScalingPolicies?: AutoScalingPolicy[];
+  readonly status?: string;
+  readonly statusDetails?: string;
+  readonly healthState?: string;
+  readonly unhealthyEvaluation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceReplicaProperties class.
+ * @constructor
+ * Describes the properties of a service replica.
+ *
+ * @member {string} osType The operation system required by the code in
+ * service. Possible values include: 'Linux', 'Windows'
+ * @member {array} codePackages Describes the set of code packages that forms
+ * the service. A code package describes the container and the properties for
+ * running it. All the code packages are started together on the same host and
+ * share the same context (network, process etc.).
+ * @member {array} [networkRefs] The names of the private networks that this
+ * service needs to be part of.
+ * @member {object} [diagnostics] Reference to sinks in DiagnosticsDescription.
+ * @member {boolean} [diagnostics.enabled] Status of whether or not sinks are
+ * enabled.
+ * @member {array} [diagnostics.sinkRefs] List of sinks to be used if enabled.
+ * References the list of sinks in DiagnosticsDescription.
+ */
+export interface ServiceReplicaProperties {
+  osType: string;
+  codePackages: ContainerCodePackageProperties[];
+  networkRefs?: NetworkRef[];
+  diagnostics?: DiagnosticsRef;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceReplicaDescription class.
+ * @constructor
+ * Describes a replica of a service resource.
+ *
+ * @member {string} replicaName Name of the replica.
+ */
+export interface ServiceReplicaDescription extends ServiceReplicaProperties {
+  replicaName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AverageLoadScalingTrigger class.
+ * @constructor
+ * Describes the average load trigger used for auto scaling.
+ *
+ * @member {object} metric Description of the metric that is used for scaling.
+ * @member {string} [metric.kind] Polymorphic Discriminator
+ * @member {number} lowerLoadThreshold Lower load threshold (if average load is
+ * below this threshold, service will scale down).
+ * @member {number} upperLoadThreshold Upper load threshold (if average load is
+ * above this threshold, service will scale up).
+ * @member {number} scaleIntervalInSeconds Scale interval that indicates how
+ * often will this trigger be checked.
+ */
+export interface AverageLoadScalingTrigger extends AutoScalingTrigger {
+  metric: AutoScalingMetric;
+  lowerLoadThreshold: number;
+  upperLoadThreshold: number;
+  scaleIntervalInSeconds: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerLogs class.
+ * @constructor
+ * Container logs.
+ *
+ * @member {string} [content] Container logs.
+ */
+export interface ContainerLogs {
+  content?: string;
+}
+
 
 /**
  * @class
@@ -945,13 +1504,26 @@ export interface OperationListResult extends Array<OperationResult> {
 
 /**
  * @class
- * Initializes a new instance of the NetworkResourceDescriptionList class.
+ * Initializes a new instance of the SecretResourceDescriptionList class.
  * @constructor
- * A pageable list of network resources.
+ * A pageable list of secret resources.
  *
  * @member {string} [nextLink] URI to fetch the next page of the list.
  */
-export interface NetworkResourceDescriptionList extends Array<NetworkResourceDescription> {
+export interface SecretResourceDescriptionList extends Array<SecretResourceDescription> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SecretValueResourceDescriptionList class.
+ * @constructor
+ * A pageable list of values of a secret resource. The information does not
+ * include only the name of the value and not the actual unecrypted value.
+ *
+ * @member {string} [nextLink] URI to fetch the next page of the list.
+ */
+export interface SecretValueResourceDescriptionList extends Array<SecretValueResourceDescription> {
   nextLink?: string;
 }
 
@@ -964,5 +1536,65 @@ export interface NetworkResourceDescriptionList extends Array<NetworkResourceDes
  * @member {string} [nextLink] URI to fetch the next page of the list.
  */
 export interface VolumeResourceDescriptionList extends Array<VolumeResourceDescription> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkResourceDescriptionList class.
+ * @constructor
+ * A pageable list of network resources.
+ *
+ * @member {string} [nextLink] URI to fetch the next page of the list.
+ */
+export interface NetworkResourceDescriptionList extends Array<NetworkResourceDescription> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GatewayResourceDescriptionList class.
+ * @constructor
+ * A pageable list of gateway resources.
+ *
+ * @member {string} [nextLink] URI to fetch the next page of the list.
+ */
+export interface GatewayResourceDescriptionList extends Array<GatewayResourceDescription> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationResourceDescriptionList class.
+ * @constructor
+ * A pageable list of application resources.
+ *
+ * @member {string} [nextLink] URI to fetch the next page of the list.
+ */
+export interface ApplicationResourceDescriptionList extends Array<ApplicationResourceDescription> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceResourceDescriptionList class.
+ * @constructor
+ * A pageable list of service resources.
+ *
+ * @member {string} [nextLink] URI to fetch the next page of the list.
+ */
+export interface ServiceResourceDescriptionList extends Array<ServiceResourceDescription> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceReplicaDescriptionList class.
+ * @constructor
+ * A pageable list of service replicas.
+ *
+ * @member {string} [nextLink] URI to fetch the next page of the list.
+ */
+export interface ServiceReplicaDescriptionList extends Array<ServiceReplicaDescription> {
   nextLink?: string;
 }

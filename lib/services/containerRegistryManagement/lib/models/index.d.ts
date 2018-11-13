@@ -18,11 +18,32 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the ImportSourceCredentials class.
+ * @constructor
+ * @member {string} [username] The username to authenticate with the source
+ * registry.
+ * @member {string} password The password used to authenticate with the source
+ * registry.
+ */
+export interface ImportSourceCredentials {
+  username?: string;
+  password: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ImportSource class.
  * @constructor
  * @member {string} [resourceId] The resource identifier of the source Azure
  * Container Registry.
- * @member {string} [registryUri] The address of the source registry.
+ * @member {string} [registryUri] The address of the source registry (e.g.
+ * 'mcr.microsoft.com').
+ * @member {object} [credentials] Credentials used when importing from a
+ * registry uri.
+ * @member {string} [credentials.username] The username to authenticate with
+ * the source registry.
+ * @member {string} [credentials.password] The password used to authenticate
+ * with the source registry.
  * @member {string} sourceImage Repository name of the source image.
  * Specify an image by repository ('hello-world'). This will use the 'latest'
  * tag.
@@ -33,6 +54,7 @@ export { CloudError } from 'ms-rest-azure';
 export interface ImportSource {
   resourceId?: string;
   registryUri?: string;
+  credentials?: ImportSourceCredentials;
   sourceImage: string;
 }
 
@@ -43,7 +65,14 @@ export interface ImportSource {
  * @member {object} source The source of the image.
  * @member {string} [source.resourceId] The resource identifier of the source
  * Azure Container Registry.
- * @member {string} [source.registryUri] The address of the source registry.
+ * @member {string} [source.registryUri] The address of the source registry
+ * (e.g. 'mcr.microsoft.com').
+ * @member {object} [source.credentials] Credentials used when importing from a
+ * registry uri.
+ * @member {string} [source.credentials.username] The username to authenticate
+ * with the source registry.
+ * @member {string} [source.credentials.password] The password used to
+ * authenticate with the source registry.
  * @member {string} [source.sourceImage] Repository name of the source image.
  * Specify an image by repository ('hello-world'). This will use the 'latest'
  * tag.
@@ -1200,11 +1229,14 @@ export interface BaseImageDependency {
  * a step.
  * @member {string} [contextPath] The URL(absolute or relative) of the source
  * context for the task step.
+ * @member {string} [contextAccessToken] The token (git PAT or SAS token of
+ * storage account blob) associated with the context for a step.
  * @member {string} type Polymorphic Discriminator
  */
 export interface TaskStepProperties {
   readonly baseImageDependencies?: BaseImageDependency[];
   contextPath?: string;
+  contextAccessToken?: string;
   type: string;
 }
 
@@ -1375,6 +1407,8 @@ export interface TriggerProperties {
  * for a step.
  * @member {string} [step.contextPath] The URL(absolute or relative) of the
  * source context for the task step.
+ * @member {string} [step.contextAccessToken] The token (git PAT or SAS token
+ * of storage account blob) associated with the context for a step.
  * @member {string} [step.type] Polymorphic Discriminator
  * @member {object} [trigger] The properties that describe all triggers for the
  * task.
@@ -1427,10 +1461,13 @@ export interface PlatformUpdateParameters {
  *
  * @member {string} [contextPath] The URL(absolute or relative) of the source
  * context for the task step.
+ * @member {string} [contextAccessToken] The token (git PAT or SAS token of
+ * storage account blob) associated with the context for a step.
  * @member {string} type Polymorphic Discriminator
  */
 export interface TaskStepUpdateParameters {
   contextPath?: string;
+  contextAccessToken?: string;
   type: string;
 }
 
@@ -1594,6 +1631,8 @@ export interface TriggerUpdateParameters {
  * @member {object} [step] The properties for updating a task step.
  * @member {string} [step.contextPath] The URL(absolute or relative) of the
  * source context for the task step.
+ * @member {string} [step.contextAccessToken] The token (git PAT or SAS token
+ * of storage account blob) associated with the context for a step.
  * @member {string} [step.type] Polymorphic Discriminator
  * @member {object} [trigger] The properties for updating trigger properties.
  * @member {array} [trigger.sourceTriggers] The collection of triggers based on

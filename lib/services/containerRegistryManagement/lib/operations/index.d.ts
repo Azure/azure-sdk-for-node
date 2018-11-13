@@ -39,7 +39,16 @@ export interface Registries {
      * the source Azure Container Registry.
      *
      * @param {string} [parameters.source.registryUri] The address of the source
-     * registry.
+     * registry (e.g. 'mcr.microsoft.com').
+     *
+     * @param {object} [parameters.source.credentials] Credentials used when
+     * importing from a registry uri.
+     *
+     * @param {string} [parameters.source.credentials.username] The username to
+     * authenticate with the source registry.
+     *
+     * @param {string} parameters.source.credentials.password The password used to
+     * authenticate with the source registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -92,7 +101,16 @@ export interface Registries {
      * the source Azure Container Registry.
      *
      * @param {string} [parameters.source.registryUri] The address of the source
-     * registry.
+     * registry (e.g. 'mcr.microsoft.com').
+     *
+     * @param {object} [parameters.source.credentials] Credentials used when
+     * importing from a registry uri.
+     *
+     * @param {string} [parameters.source.credentials.username] The username to
+     * authenticate with the source registry.
+     *
+     * @param {string} parameters.source.credentials.password The password used to
+     * authenticate with the source registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -1176,7 +1194,16 @@ export interface Registries {
      * the source Azure Container Registry.
      *
      * @param {string} [parameters.source.registryUri] The address of the source
-     * registry.
+     * registry (e.g. 'mcr.microsoft.com').
+     *
+     * @param {object} [parameters.source.credentials] Credentials used when
+     * importing from a registry uri.
+     *
+     * @param {string} [parameters.source.credentials.username] The username to
+     * authenticate with the source registry.
+     *
+     * @param {string} parameters.source.credentials.password The password used to
+     * authenticate with the source registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -1229,7 +1256,16 @@ export interface Registries {
      * the source Azure Container Registry.
      *
      * @param {string} [parameters.source.registryUri] The address of the source
-     * registry.
+     * registry (e.g. 'mcr.microsoft.com').
+     *
+     * @param {object} [parameters.source.credentials] Credentials used when
+     * importing from a registry uri.
+     *
+     * @param {string} [parameters.source.credentials.username] The username to
+     * authenticate with the source registry.
+     *
+     * @param {string} parameters.source.credentials.password The password used to
+     * authenticate with the source registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -4357,6 +4393,10 @@ export interface Tasks {
      * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
      *
+     * @param {string} [taskCreateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
+     *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskCreateParameters.trigger] The properties that describe
@@ -4436,6 +4476,10 @@ export interface Tasks {
      *
      * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
+     *
+     * @param {string} [taskCreateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
      *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
@@ -4601,6 +4645,10 @@ export interface Tasks {
      * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
      *
+     * @param {string} [taskUpdateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
+     *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskUpdateParameters.trigger] The properties for updating
@@ -4678,6 +4726,10 @@ export interface Tasks {
      *
      * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
+     *
+     * @param {string} [taskUpdateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
      *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
@@ -4840,6 +4892,10 @@ export interface Tasks {
      * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
      *
+     * @param {string} [taskCreateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
+     *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskCreateParameters.trigger] The properties that describe
@@ -4919,6 +4975,10 @@ export interface Tasks {
      *
      * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
+     *
+     * @param {string} [taskCreateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
      *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
@@ -5084,6 +5144,10 @@ export interface Tasks {
      * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
      *
+     * @param {string} [taskUpdateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
+     *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskUpdateParameters.trigger] The properties for updating
@@ -5161,6 +5225,10 @@ export interface Tasks {
      *
      * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
+     *
+     * @param {string} [taskUpdateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
      *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *

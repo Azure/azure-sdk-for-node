@@ -216,6 +216,16 @@ export interface ApiVersionSetContractDetails {
  * @member {string} [authenticationSettings.oAuth2.authorizationServerId] OAuth
  * authorization server identifier.
  * @member {string} [authenticationSettings.oAuth2.scope] operations scope.
+ * @member {object} [authenticationSettings.openid] OpenID Connect
+ * Authentication Settings
+ * @member {string} [authenticationSettings.openid.openidProviderId] OAuth
+ * authorization server identifier.
+ * @member {array} [authenticationSettings.openid.bearerTokenSendingMethods]
+ * How to send token to the server.
+ * @member {boolean} [authenticationSettings.subscriptionKeyRequired] Specifies
+ * whether subscription key is required during call to this API, true - API is
+ * included into closed products only, false - API is included into open
+ * products alone, null - there is a mix of products.
  * @member {object} [subscriptionKeyParameterNames] Protocols over which API is
  * made available.
  * @member {string} [subscriptionKeyParameterNames.header] Subscription key
@@ -302,6 +312,16 @@ export interface ApiContractProperties extends ApiEntityBaseContract {
  * @member {string} [authenticationSettings.oAuth2.authorizationServerId] OAuth
  * authorization server identifier.
  * @member {string} [authenticationSettings.oAuth2.scope] operations scope.
+ * @member {object} [authenticationSettings.openid] OpenID Connect
+ * Authentication Settings
+ * @member {string} [authenticationSettings.openid.openidProviderId] OAuth
+ * authorization server identifier.
+ * @member {array} [authenticationSettings.openid.bearerTokenSendingMethods]
+ * How to send token to the server.
+ * @member {boolean} [authenticationSettings.subscriptionKeyRequired] Specifies
+ * whether subscription key is required during call to this API, true - API is
+ * included into closed products only, false - API is included into open
+ * products alone, null - there is a mix of products.
  * @member {object} [subscriptionKeyParameterNames] Protocols over which API is
  * made available.
  * @member {string} [subscriptionKeyParameterNames.header] Subscription key
@@ -393,6 +413,16 @@ export interface ApiCreateOrUpdatePropertiesWsdlSelector {
  * @member {string} [authenticationSettings.oAuth2.authorizationServerId] OAuth
  * authorization server identifier.
  * @member {string} [authenticationSettings.oAuth2.scope] operations scope.
+ * @member {object} [authenticationSettings.openid] OpenID Connect
+ * Authentication Settings
+ * @member {string} [authenticationSettings.openid.openidProviderId] OAuth
+ * authorization server identifier.
+ * @member {array} [authenticationSettings.openid.bearerTokenSendingMethods]
+ * How to send token to the server.
+ * @member {boolean} [authenticationSettings.subscriptionKeyRequired] Specifies
+ * whether subscription key is required during call to this API, true - API is
+ * included into closed products only, false - API is included into open
+ * products alone, null - there is a mix of products.
  * @member {object} [subscriptionKeyParameterNames] Protocols over which API is
  * made available.
  * @member {string} [subscriptionKeyParameterNames.header] Subscription key
@@ -487,6 +517,16 @@ export interface ApiCreateOrUpdateParameter {
  * @member {string} [authenticationSettings.oAuth2.authorizationServerId] OAuth
  * authorization server identifier.
  * @member {string} [authenticationSettings.oAuth2.scope] operations scope.
+ * @member {object} [authenticationSettings.openid] OpenID Connect
+ * Authentication Settings
+ * @member {string} [authenticationSettings.openid.openidProviderId] OAuth
+ * authorization server identifier.
+ * @member {array} [authenticationSettings.openid.bearerTokenSendingMethods]
+ * How to send token to the server.
+ * @member {boolean} [authenticationSettings.subscriptionKeyRequired] Specifies
+ * whether subscription key is required during call to this API, true - API is
+ * included into closed products only, false - API is included into open
+ * products alone, null - there is a mix of products.
  * @member {object} [subscriptionKeyParameterNames] Protocols over which API is
  * made available.
  * @member {string} [subscriptionKeyParameterNames.header] Subscription key
@@ -552,6 +592,20 @@ export interface OAuth2AuthenticationSettingsContract {
 
 /**
  * @class
+ * Initializes a new instance of the OpenIdAuthenticationSettingsContract class.
+ * @constructor
+ * API OAuth2 Authentication settings details.
+ *
+ * @member {string} [openidProviderId] OAuth authorization server identifier.
+ * @member {array} [bearerTokenSendingMethods] How to send token to the server.
+ */
+export interface OpenIdAuthenticationSettingsContract {
+  openidProviderId?: string;
+  bearerTokenSendingMethods?: string[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the AuthenticationSettingsContract class.
  * @constructor
  * API Authentication Settings.
@@ -560,9 +614,20 @@ export interface OAuth2AuthenticationSettingsContract {
  * @member {string} [oAuth2.authorizationServerId] OAuth authorization server
  * identifier.
  * @member {string} [oAuth2.scope] operations scope.
+ * @member {object} [openid] OpenID Connect Authentication Settings
+ * @member {string} [openid.openidProviderId] OAuth authorization server
+ * identifier.
+ * @member {array} [openid.bearerTokenSendingMethods] How to send token to the
+ * server.
+ * @member {boolean} [subscriptionKeyRequired] Specifies whether subscription
+ * key is required during call to this API, true - API is included into closed
+ * products only, false - API is included into open products alone, null -
+ * there is a mix of products.
  */
 export interface AuthenticationSettingsContract {
   oAuth2?: OAuth2AuthenticationSettingsContract;
+  openid?: OpenIdAuthenticationSettingsContract;
+  subscriptionKeyRequired?: boolean;
 }
 
 /**
@@ -2614,7 +2679,7 @@ export interface UserIdentityContract {
 export interface UserEntityBaseParameters {
   state?: string;
   note?: string;
-  readonly identities?: UserIdentityContract[];
+  identities?: UserIdentityContract[];
 }
 
 /**
@@ -2641,7 +2706,7 @@ export interface UserEntityBaseParameters {
 export interface UserContract extends Resource {
   state?: string;
   note?: string;
-  readonly identities?: UserIdentityContract[];
+  identities?: UserIdentityContract[];
   firstName?: string;
   lastName?: string;
   email?: string;
@@ -3768,7 +3833,7 @@ export interface GenerateSsoUrlResult {
 export interface UserCreateParameters {
   state?: string;
   note?: string;
-  readonly identities?: UserIdentityContract[];
+  identities?: UserIdentityContract[];
   email: string;
   firstName: string;
   lastName: string;
@@ -3827,7 +3892,7 @@ export interface UserTokenResult {
 export interface UserUpdateParameters {
   state?: string;
   note?: string;
-  readonly identities?: UserIdentityContract[];
+  identities?: UserIdentityContract[];
   email?: string;
   password?: string;
   firstName?: string;

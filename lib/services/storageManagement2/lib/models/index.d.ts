@@ -1448,6 +1448,94 @@ export interface ListContainerItems {
 
 /**
  * @class
+ * Initializes a new instance of the CorsRule class.
+ * @constructor
+ * Specifies a CORS rule for the Blob service.
+ *
+ * @member {array} allowedOrigins Required if CorsRule element is present. A
+ * list of origin domains that will be allowed via CORS, or "*" to allow all
+ * domains
+ * @member {array} allowedMethods Required if CorsRule element is present. A
+ * list of HTTP methods that are allowed to be executed by the origin.
+ * @member {number} maxAgeInSeconds Required if CorsRule element is present.
+ * The number of seconds that the client/browser should cache a preflight
+ * response.
+ * @member {array} exposedHeaders Required if CorsRule element is present. A
+ * list of response headers to expose to CORS clients.
+ * @member {array} allowedHeaders Required if CorsRule element is present. A
+ * list of headers allowed to be part of the cross-origin request.
+ */
+export interface CorsRule {
+  allowedOrigins: string[];
+  allowedMethods: string[];
+  maxAgeInSeconds: number;
+  exposedHeaders: string[];
+  allowedHeaders: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CorsRules class.
+ * @constructor
+ * Sets the CORS rules. You can include up to five CorsRule elements in the
+ * request.
+ *
+ * @member {array} [corsRules] The List of CORS rules. You can include up to
+ * five CorsRule elements in the request.
+ */
+export interface CorsRules {
+  corsRules?: CorsRule[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeleteRetentionPolicy class.
+ * @constructor
+ * The blob service properties for soft delete.
+ *
+ * @member {boolean} [enabled] Indicates whether DeleteRetentionPolicy is
+ * enabled for the Blob service.
+ * @member {number} [days] Indicates the number of days that the deleted blob
+ * should be retained. The minimum specified value can be 1 and the maximum
+ * value can be 365.
+ */
+export interface DeleteRetentionPolicy {
+  enabled?: boolean;
+  days?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BlobServiceProperties class.
+ * @constructor
+ * The properties of a storage account’s Blob service.
+ *
+ * @member {object} [cors] Specifies CORS rules for the Blob service. You can
+ * include up to five CorsRule elements in the request. If no CorsRule elements
+ * are included in the request body, all CORS rules will be deleted, and CORS
+ * will be disabled for the Blob service.
+ * @member {array} [cors.corsRules] The List of CORS rules. You can include up
+ * to five CorsRule elements in the request.
+ * @member {string} [defaultServiceVersion] DefaultServiceVersion indicates the
+ * default version to use for requests to the Blob service if an incoming
+ * request’s version is not specified. Possible values include version
+ * 2008-10-27 and all more recent versions.
+ * @member {object} [deleteRetentionPolicy] The blob service properties for
+ * soft delete.
+ * @member {boolean} [deleteRetentionPolicy.enabled] Indicates whether
+ * DeleteRetentionPolicy is enabled for the Blob service.
+ * @member {number} [deleteRetentionPolicy.days] Indicates the number of days
+ * that the deleted blob should be retained. The minimum specified value can be
+ * 1 and the maximum value can be 365.
+ */
+export interface BlobServiceProperties extends Resource {
+  cors?: CorsRules;
+  defaultServiceVersion?: string;
+  deleteRetentionPolicy?: DeleteRetentionPolicy;
+}
+
+/**
+ * @class
  * Initializes a new instance of the StorageAccountManagementPolicies class.
  * @constructor
  * The Get Storage Account ManagementPolicies operation response.

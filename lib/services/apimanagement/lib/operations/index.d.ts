@@ -812,6 +812,21 @@ export interface Api {
      * @param {string} [parameters.authenticationSettings.oAuth2.scope] operations
      * scope.
      *
+     * @param {object} [parameters.authenticationSettings.openid] OpenID Connect
+     * Authentication Settings
+     *
+     * @param {string} [parameters.authenticationSettings.openid.openidProviderId]
+     * OAuth authorization server identifier.
+     *
+     * @param {array}
+     * [parameters.authenticationSettings.openid.bearerTokenSendingMethods] How to
+     * send token to the server.
+     *
+     * @param {boolean} [parameters.authenticationSettings.subscriptionKeyRequired]
+     * Specifies whether subscription key is required during call to this API, true
+     * - API is included into closed products only, false - API is included into
+     * open products alone, null - there is a mix of products.
+     *
      * @param {object} [parameters.subscriptionKeyParameterNames] Protocols over
      * which API is made available.
      *
@@ -938,6 +953,21 @@ export interface Api {
      *
      * @param {string} [parameters.authenticationSettings.oAuth2.scope] operations
      * scope.
+     *
+     * @param {object} [parameters.authenticationSettings.openid] OpenID Connect
+     * Authentication Settings
+     *
+     * @param {string} [parameters.authenticationSettings.openid.openidProviderId]
+     * OAuth authorization server identifier.
+     *
+     * @param {array}
+     * [parameters.authenticationSettings.openid.bearerTokenSendingMethods] How to
+     * send token to the server.
+     *
+     * @param {boolean} [parameters.authenticationSettings.subscriptionKeyRequired]
+     * Specifies whether subscription key is required during call to this API, true
+     * - API is included into closed products only, false - API is included into
+     * open products alone, null - there is a mix of products.
      *
      * @param {object} [parameters.subscriptionKeyParameterNames] Protocols over
      * which API is made available.
@@ -1084,6 +1114,21 @@ export interface Api {
      * @param {string} [parameters.authenticationSettings.oAuth2.scope] operations
      * scope.
      *
+     * @param {object} [parameters.authenticationSettings.openid] OpenID Connect
+     * Authentication Settings
+     *
+     * @param {string} [parameters.authenticationSettings.openid.openidProviderId]
+     * OAuth authorization server identifier.
+     *
+     * @param {array}
+     * [parameters.authenticationSettings.openid.bearerTokenSendingMethods] How to
+     * send token to the server.
+     *
+     * @param {boolean} [parameters.authenticationSettings.subscriptionKeyRequired]
+     * Specifies whether subscription key is required during call to this API, true
+     * - API is included into closed products only, false - API is included into
+     * open products alone, null - there is a mix of products.
+     *
      * @param {object} [parameters.subscriptionKeyParameterNames] Protocols over
      * which API is made available.
      *
@@ -1169,6 +1214,21 @@ export interface Api {
      *
      * @param {string} [parameters.authenticationSettings.oAuth2.scope] operations
      * scope.
+     *
+     * @param {object} [parameters.authenticationSettings.openid] OpenID Connect
+     * Authentication Settings
+     *
+     * @param {string} [parameters.authenticationSettings.openid.openidProviderId]
+     * OAuth authorization server identifier.
+     *
+     * @param {array}
+     * [parameters.authenticationSettings.openid.bearerTokenSendingMethods] How to
+     * send token to the server.
+     *
+     * @param {boolean} [parameters.authenticationSettings.subscriptionKeyRequired]
+     * Specifies whether subscription key is required during call to this API, true
+     * - API is included into closed products only, false - API is included into
+     * open products alone, null - there is a mix of products.
      *
      * @param {object} [parameters.subscriptionKeyParameterNames] Protocols over
      * which API is made available.
@@ -25693,6 +25753,8 @@ export interface User {
      * @param {string} [parameters.note] Optional note about a user set by the
      * administrator.
      *
+     * @param {array} [parameters.identities] Collection of user identities.
+     *
      * @param {string} parameters.email Email address. Must not be empty and must
      * be unique within the service instance.
      *
@@ -25742,6 +25804,8 @@ export interface User {
      *
      * @param {string} [parameters.note] Optional note about a user set by the
      * administrator.
+     *
+     * @param {array} [parameters.identities] Collection of user identities.
      *
      * @param {string} parameters.email Email address. Must not be empty and must
      * be unique within the service instance.
@@ -25812,6 +25876,8 @@ export interface User {
      * @param {string} [parameters.note] Optional note about a user set by the
      * administrator.
      *
+     * @param {array} [parameters.identities] Collection of user identities.
+     *
      * @param {string} [parameters.email] Email address. Must not be empty and must
      * be unique within the service instance.
      *
@@ -25857,6 +25923,8 @@ export interface User {
      *
      * @param {string} [parameters.note] Optional note about a user set by the
      * administrator.
+     *
+     * @param {array} [parameters.identities] Collection of user identities.
      *
      * @param {string} [parameters.email] Email address. Must not be empty and must
      * be unique within the service instance.
