@@ -280,6 +280,32 @@ export interface StorageProfile {
 
 /**
  * @class
+ * Initializes a new instance of the DiskEncryptionProperties class.
+ * @constructor
+ * The disk encryption properties
+ *
+ * @member {string} [vaultUri] Base key vault URI where the customers key is
+ * located eg. https://myvault.vault.azure.net
+ * @member {string} [keyName] Key name that is used for enabling disk
+ * encryption.
+ * @member {string} [keyVersion] Specific key version that is used for enabling
+ * disk encryption.
+ * @member {string} [encryptionAlgorithm] Algorithm identifier for encryption,
+ * default RSA-OAEP. Possible values include: 'RSA-OAEP', 'RSA-OAEP-256',
+ * 'RSA1_5'
+ * @member {string} [msiResourceId] Resource ID of Managed Identity that is
+ * used to access the key vault.
+ */
+export interface DiskEncryptionProperties {
+  vaultUri?: string;
+  keyName?: string;
+  keyVersion?: string;
+  encryptionAlgorithm?: string;
+  msiResourceId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ClusterCreateProperties class.
  * @constructor
  * The cluster create parameters.
@@ -321,6 +347,18 @@ export interface StorageProfile {
  * @member {object} [storageProfile] The storage profile.
  * @member {array} [storageProfile.storageaccounts] The list of storage
  * accounts in the cluster.
+ * @member {object} [diskEncryptionProperties] The disk encryption properties.
+ * @member {string} [diskEncryptionProperties.vaultUri] Base key vault URI
+ * where the customers key is located eg. https://myvault.vault.azure.net
+ * @member {string} [diskEncryptionProperties.keyName] Key name that is used
+ * for enabling disk encryption.
+ * @member {string} [diskEncryptionProperties.keyVersion] Specific key version
+ * that is used for enabling disk encryption.
+ * @member {string} [diskEncryptionProperties.encryptionAlgorithm] Algorithm
+ * identifier for encryption, default RSA-OAEP. Possible values include:
+ * 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
+ * @member {string} [diskEncryptionProperties.msiResourceId] Resource ID of
+ * Managed Identity that is used to access the key vault.
  */
 export interface ClusterCreateProperties {
   clusterVersion?: string;
@@ -330,6 +368,7 @@ export interface ClusterCreateProperties {
   securityProfile?: SecurityProfile;
   computeProfile?: ComputeProfile;
   storageProfile?: StorageProfile;
+  diskEncryptionProperties?: DiskEncryptionProperties;
 }
 
 /**
@@ -419,6 +458,20 @@ export interface ClusterIdentity {
  * @member {object} [properties.storageProfile] The storage profile.
  * @member {array} [properties.storageProfile.storageaccounts] The list of
  * storage accounts in the cluster.
+ * @member {object} [properties.diskEncryptionProperties] The disk encryption
+ * properties.
+ * @member {string} [properties.diskEncryptionProperties.vaultUri] Base key
+ * vault URI where the customers key is located eg.
+ * https://myvault.vault.azure.net
+ * @member {string} [properties.diskEncryptionProperties.keyName] Key name that
+ * is used for enabling disk encryption.
+ * @member {string} [properties.diskEncryptionProperties.keyVersion] Specific
+ * key version that is used for enabling disk encryption.
+ * @member {string} [properties.diskEncryptionProperties.encryptionAlgorithm]
+ * Algorithm identifier for encryption, default RSA-OAEP. Possible values
+ * include: 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
+ * @member {string} [properties.diskEncryptionProperties.msiResourceId]
+ * Resource ID of Managed Identity that is used to access the key vault.
  * @member {object} [identity] The identity of the cluster, if configured.
  * @member {string} [identity.principalId] The principal id of cluster
  * identity. This property will only be provided for a system assigned
@@ -546,6 +599,18 @@ export interface ConnectivityEndpoint {
  * @member {number} [quotaInfo.coresUsed] The cores used by the cluster.
  * @member {array} [errors] The list of errors.
  * @member {array} [connectivityEndpoints] The list of connectivity endpoints.
+ * @member {object} [diskEncryptionProperties] The disk encryption properties.
+ * @member {string} [diskEncryptionProperties.vaultUri] Base key vault URI
+ * where the customers key is located eg. https://myvault.vault.azure.net
+ * @member {string} [diskEncryptionProperties.keyName] Key name that is used
+ * for enabling disk encryption.
+ * @member {string} [diskEncryptionProperties.keyVersion] Specific key version
+ * that is used for enabling disk encryption.
+ * @member {string} [diskEncryptionProperties.encryptionAlgorithm] Algorithm
+ * identifier for encryption, default RSA-OAEP. Possible values include:
+ * 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
+ * @member {string} [diskEncryptionProperties.msiResourceId] Resource ID of
+ * Managed Identity that is used to access the key vault.
  */
 export interface ClusterGetProperties {
   clusterVersion?: string;
@@ -560,6 +625,7 @@ export interface ClusterGetProperties {
   quotaInfo?: QuotaInfo;
   errors?: Errors[];
   connectivityEndpoints?: ConnectivityEndpoint[];
+  diskEncryptionProperties?: DiskEncryptionProperties;
 }
 
 /**
@@ -649,6 +715,20 @@ export interface TrackedResource extends Resource {
  * @member {array} [properties.errors] The list of errors.
  * @member {array} [properties.connectivityEndpoints] The list of connectivity
  * endpoints.
+ * @member {object} [properties.diskEncryptionProperties] The disk encryption
+ * properties.
+ * @member {string} [properties.diskEncryptionProperties.vaultUri] Base key
+ * vault URI where the customers key is located eg.
+ * https://myvault.vault.azure.net
+ * @member {string} [properties.diskEncryptionProperties.keyName] Key name that
+ * is used for enabling disk encryption.
+ * @member {string} [properties.diskEncryptionProperties.keyVersion] Specific
+ * key version that is used for enabling disk encryption.
+ * @member {string} [properties.diskEncryptionProperties.encryptionAlgorithm]
+ * Algorithm identifier for encryption, default RSA-OAEP. Possible values
+ * include: 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
+ * @member {string} [properties.diskEncryptionProperties.msiResourceId]
+ * Resource ID of Managed Identity that is used to access the key vault.
  * @member {object} [identity] The identity of the cluster, if configured.
  * @member {string} [identity.principalId] The principal id of cluster
  * identity. This property will only be provided for a system assigned
@@ -787,6 +867,25 @@ export interface ClusterListRuntimeScriptActionDetailResult {
  */
 export interface ClusterResizeParameters {
   targetInstanceCount?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClusterDiskEncryptionParameters class.
+ * @constructor
+ * The Disk Encryption Cluster request parameters.
+ *
+ * @member {string} [vaultUri] Base key vault URI where the customers key is
+ * located eg. https://myvault.vault.azure.net
+ * @member {string} [keyName] Key name that is used for enabling disk
+ * encryption.
+ * @member {string} [keyVersion] Specific key version that is used for enabling
+ * disk encryption.
+ */
+export interface ClusterDiskEncryptionParameters {
+  vaultUri?: string;
+  keyName?: string;
+  keyVersion?: string;
 }
 
 /**
