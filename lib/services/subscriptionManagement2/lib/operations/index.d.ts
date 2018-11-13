@@ -151,10 +151,10 @@ export interface SubscriptionFactory {
     /**
      * Creates an Azure subscription
      *
-     * @param {string} billingAccountId The id of the commerce root billing
+     * @param {string} billingAccountName The name of the commerce root billing
      * account.
      *
-     * @param {string} invoiceSectionId The id of the invoice section.
+     * @param {string} invoiceSectionName The name of the invoice section.
      *
      * @param {object} body The subscription creation parameters.
      *
@@ -182,15 +182,15 @@ export interface SubscriptionFactory {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createSubscriptionWithHttpOperationResponse(billingAccountId: string, invoiceSectionId: string, body: models.SubscriptionCreationParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SubscriptionCreationResult>>;
+    createSubscriptionWithHttpOperationResponse(billingAccountName: string, invoiceSectionName: string, body: models.SubscriptionCreationParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SubscriptionCreationResult>>;
 
     /**
      * Creates an Azure subscription
      *
-     * @param {string} billingAccountId The id of the commerce root billing
+     * @param {string} billingAccountName The name of the commerce root billing
      * account.
      *
-     * @param {string} invoiceSectionId The id of the invoice section.
+     * @param {string} invoiceSectionName The name of the invoice section.
      *
      * @param {object} body The subscription creation parameters.
      *
@@ -235,18 +235,18 @@ export interface SubscriptionFactory {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createSubscription(billingAccountId: string, invoiceSectionId: string, body: models.SubscriptionCreationParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SubscriptionCreationResult>;
-    createSubscription(billingAccountId: string, invoiceSectionId: string, body: models.SubscriptionCreationParameters, callback: ServiceCallback<models.SubscriptionCreationResult>): void;
-    createSubscription(billingAccountId: string, invoiceSectionId: string, body: models.SubscriptionCreationParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SubscriptionCreationResult>): void;
+    createSubscription(billingAccountName: string, invoiceSectionName: string, body: models.SubscriptionCreationParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SubscriptionCreationResult>;
+    createSubscription(billingAccountName: string, invoiceSectionName: string, body: models.SubscriptionCreationParameters, callback: ServiceCallback<models.SubscriptionCreationResult>): void;
+    createSubscription(billingAccountName: string, invoiceSectionName: string, body: models.SubscriptionCreationParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SubscriptionCreationResult>): void;
 
 
     /**
      * Creates an Azure subscription
      *
-     * @param {string} billingAccountId The id of the commerce root billing
+     * @param {string} billingAccountName The name of the commerce root billing
      * account.
      *
-     * @param {string} invoiceSectionId The id of the invoice section.
+     * @param {string} invoiceSectionName The name of the invoice section.
      *
      * @param {object} body The subscription creation parameters.
      *
@@ -274,15 +274,15 @@ export interface SubscriptionFactory {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateSubscriptionWithHttpOperationResponse(billingAccountId: string, invoiceSectionId: string, body: models.SubscriptionCreationParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SubscriptionCreationResult>>;
+    beginCreateSubscriptionWithHttpOperationResponse(billingAccountName: string, invoiceSectionName: string, body: models.SubscriptionCreationParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SubscriptionCreationResult>>;
 
     /**
      * Creates an Azure subscription
      *
-     * @param {string} billingAccountId The id of the commerce root billing
+     * @param {string} billingAccountName The name of the commerce root billing
      * account.
      *
-     * @param {string} invoiceSectionId The id of the invoice section.
+     * @param {string} invoiceSectionName The name of the invoice section.
      *
      * @param {object} body The subscription creation parameters.
      *
@@ -327,9 +327,9 @@ export interface SubscriptionFactory {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateSubscription(billingAccountId: string, invoiceSectionId: string, body: models.SubscriptionCreationParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SubscriptionCreationResult>;
-    beginCreateSubscription(billingAccountId: string, invoiceSectionId: string, body: models.SubscriptionCreationParameters, callback: ServiceCallback<models.SubscriptionCreationResult>): void;
-    beginCreateSubscription(billingAccountId: string, invoiceSectionId: string, body: models.SubscriptionCreationParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SubscriptionCreationResult>): void;
+    beginCreateSubscription(billingAccountName: string, invoiceSectionName: string, body: models.SubscriptionCreationParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SubscriptionCreationResult>;
+    beginCreateSubscription(billingAccountName: string, invoiceSectionName: string, body: models.SubscriptionCreationParameters, callback: ServiceCallback<models.SubscriptionCreationResult>): void;
+    beginCreateSubscription(billingAccountName: string, invoiceSectionName: string, body: models.SubscriptionCreationParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SubscriptionCreationResult>): void;
 }
 
 /**
