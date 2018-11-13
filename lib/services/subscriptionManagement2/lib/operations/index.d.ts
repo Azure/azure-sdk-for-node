@@ -74,15 +74,18 @@ export interface Operations {
 
 /**
  * @class
- * SubscriptionOperations
+ * SubscriptionOperationOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SubscriptionClient.
  */
-export interface SubscriptionOperations {
+export interface SubscriptionOperationOperations {
 
 
     /**
-     * Lists all of the available pending Microsoft.Subscription API operations.
+     * Get the status of the pending Microsoft.Subscription API operations.
+     *
+     * @param {string} operationId The operation ID, which can be found from the
+     * Location field in the generate recommendation response header.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -91,14 +94,17 @@ export interface SubscriptionOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SubscriptionOperationListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SubscriptionCreationResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SubscriptionOperationListResult>>;
+    getWithHttpOperationResponse(operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SubscriptionCreationResult>>;
 
     /**
-     * Lists all of the available pending Microsoft.Subscription API operations.
+     * Get the status of the pending Microsoft.Subscription API operations.
+     *
+     * @param {string} operationId The operation ID, which can be found from the
+     * Location field in the generate recommendation response header.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -112,7 +118,7 @@ export interface SubscriptionOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SubscriptionOperationListResult} - The deserialized result object.
+     *                      @resolve {SubscriptionCreationResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -120,17 +126,17 @@ export interface SubscriptionOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SubscriptionOperationListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SubscriptionOperationListResult} for more
+     *                      {SubscriptionCreationResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SubscriptionCreationResult} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SubscriptionOperationListResult>;
-    list(callback: ServiceCallback<models.SubscriptionOperationListResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SubscriptionOperationListResult>): void;
+    get(operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SubscriptionCreationResult>;
+    get(operationId: string, callback: ServiceCallback<models.SubscriptionCreationResult>): void;
+    get(operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SubscriptionCreationResult>): void;
 }
 
 /**
@@ -145,22 +151,22 @@ export interface SubscriptionFactory {
     /**
      * Creates an Azure subscription
      *
-     * @param {string} enrollmentAccountName The name of the enrollment account to
-     * which the subscription will be billed.
+     * @param {string} billingAccountId The id of the commerce root billing
+     * account.
+     *
+     * @param {string} invoiceSectionId The id of the invoice section.
      *
      * @param {object} body The subscription creation parameters.
      *
      * @param {string} [body.displayName] The display name of the subscription.
      *
-     * @param {array} [body.owners] The list of principals that should be granted
-     * Owner access on the subscription. Principals should be of type User, Service
-     * Principal or Security Group.
+     * @param {string} [body.billingProfileId] The ARM id of the billing profile.
      *
-     * @param {string} [body.offerType] The offer type of the subscription. For
-     * example, MS-AZR-0017P (EnterpriseAgreement) and MS-AZR-0148P
-     * (EnterpriseAgreement devTest) are available. Only valid when creating a
-     * subscription in a enrollment account scope. Possible values include:
-     * 'MS-AZR-0017P', 'MS-AZR-0148P'
+     * @param {string} [body.skuId] The commerce id of the sku.
+     *
+     * @param {object} [body.owner] rbac owner of the subscription
+     *
+     * @param {string} body.owner.objectId Object id of the Principal
      *
      * @param {object} [body.additionalParameters] Additional, untyped parameters
      * to support custom subscription creation scenarios.
@@ -176,27 +182,27 @@ export interface SubscriptionFactory {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createSubscriptionInEnrollmentAccountWithHttpOperationResponse(enrollmentAccountName: string, body: models.SubscriptionCreationParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SubscriptionCreationResult>>;
+    createSubscriptionWithHttpOperationResponse(billingAccountId: string, invoiceSectionId: string, body: models.SubscriptionCreationParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SubscriptionCreationResult>>;
 
     /**
      * Creates an Azure subscription
      *
-     * @param {string} enrollmentAccountName The name of the enrollment account to
-     * which the subscription will be billed.
+     * @param {string} billingAccountId The id of the commerce root billing
+     * account.
+     *
+     * @param {string} invoiceSectionId The id of the invoice section.
      *
      * @param {object} body The subscription creation parameters.
      *
      * @param {string} [body.displayName] The display name of the subscription.
      *
-     * @param {array} [body.owners] The list of principals that should be granted
-     * Owner access on the subscription. Principals should be of type User, Service
-     * Principal or Security Group.
+     * @param {string} [body.billingProfileId] The ARM id of the billing profile.
      *
-     * @param {string} [body.offerType] The offer type of the subscription. For
-     * example, MS-AZR-0017P (EnterpriseAgreement) and MS-AZR-0148P
-     * (EnterpriseAgreement devTest) are available. Only valid when creating a
-     * subscription in a enrollment account scope. Possible values include:
-     * 'MS-AZR-0017P', 'MS-AZR-0148P'
+     * @param {string} [body.skuId] The commerce id of the sku.
+     *
+     * @param {object} [body.owner] rbac owner of the subscription
+     *
+     * @param {string} body.owner.objectId Object id of the Principal
      *
      * @param {object} [body.additionalParameters] Additional, untyped parameters
      * to support custom subscription creation scenarios.
@@ -229,30 +235,30 @@ export interface SubscriptionFactory {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createSubscriptionInEnrollmentAccount(enrollmentAccountName: string, body: models.SubscriptionCreationParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SubscriptionCreationResult>;
-    createSubscriptionInEnrollmentAccount(enrollmentAccountName: string, body: models.SubscriptionCreationParameters, callback: ServiceCallback<models.SubscriptionCreationResult>): void;
-    createSubscriptionInEnrollmentAccount(enrollmentAccountName: string, body: models.SubscriptionCreationParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SubscriptionCreationResult>): void;
+    createSubscription(billingAccountId: string, invoiceSectionId: string, body: models.SubscriptionCreationParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SubscriptionCreationResult>;
+    createSubscription(billingAccountId: string, invoiceSectionId: string, body: models.SubscriptionCreationParameters, callback: ServiceCallback<models.SubscriptionCreationResult>): void;
+    createSubscription(billingAccountId: string, invoiceSectionId: string, body: models.SubscriptionCreationParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SubscriptionCreationResult>): void;
 
 
     /**
      * Creates an Azure subscription
      *
-     * @param {string} enrollmentAccountName The name of the enrollment account to
-     * which the subscription will be billed.
+     * @param {string} billingAccountId The id of the commerce root billing
+     * account.
+     *
+     * @param {string} invoiceSectionId The id of the invoice section.
      *
      * @param {object} body The subscription creation parameters.
      *
      * @param {string} [body.displayName] The display name of the subscription.
      *
-     * @param {array} [body.owners] The list of principals that should be granted
-     * Owner access on the subscription. Principals should be of type User, Service
-     * Principal or Security Group.
+     * @param {string} [body.billingProfileId] The ARM id of the billing profile.
      *
-     * @param {string} [body.offerType] The offer type of the subscription. For
-     * example, MS-AZR-0017P (EnterpriseAgreement) and MS-AZR-0148P
-     * (EnterpriseAgreement devTest) are available. Only valid when creating a
-     * subscription in a enrollment account scope. Possible values include:
-     * 'MS-AZR-0017P', 'MS-AZR-0148P'
+     * @param {string} [body.skuId] The commerce id of the sku.
+     *
+     * @param {object} [body.owner] rbac owner of the subscription
+     *
+     * @param {string} body.owner.objectId Object id of the Principal
      *
      * @param {object} [body.additionalParameters] Additional, untyped parameters
      * to support custom subscription creation scenarios.
@@ -268,27 +274,27 @@ export interface SubscriptionFactory {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateSubscriptionInEnrollmentAccountWithHttpOperationResponse(enrollmentAccountName: string, body: models.SubscriptionCreationParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SubscriptionCreationResult>>;
+    beginCreateSubscriptionWithHttpOperationResponse(billingAccountId: string, invoiceSectionId: string, body: models.SubscriptionCreationParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SubscriptionCreationResult>>;
 
     /**
      * Creates an Azure subscription
      *
-     * @param {string} enrollmentAccountName The name of the enrollment account to
-     * which the subscription will be billed.
+     * @param {string} billingAccountId The id of the commerce root billing
+     * account.
+     *
+     * @param {string} invoiceSectionId The id of the invoice section.
      *
      * @param {object} body The subscription creation parameters.
      *
      * @param {string} [body.displayName] The display name of the subscription.
      *
-     * @param {array} [body.owners] The list of principals that should be granted
-     * Owner access on the subscription. Principals should be of type User, Service
-     * Principal or Security Group.
+     * @param {string} [body.billingProfileId] The ARM id of the billing profile.
      *
-     * @param {string} [body.offerType] The offer type of the subscription. For
-     * example, MS-AZR-0017P (EnterpriseAgreement) and MS-AZR-0148P
-     * (EnterpriseAgreement devTest) are available. Only valid when creating a
-     * subscription in a enrollment account scope. Possible values include:
-     * 'MS-AZR-0017P', 'MS-AZR-0148P'
+     * @param {string} [body.skuId] The commerce id of the sku.
+     *
+     * @param {object} [body.owner] rbac owner of the subscription
+     *
+     * @param {string} body.owner.objectId Object id of the Principal
      *
      * @param {object} [body.additionalParameters] Additional, untyped parameters
      * to support custom subscription creation scenarios.
@@ -321,9 +327,9 @@ export interface SubscriptionFactory {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateSubscriptionInEnrollmentAccount(enrollmentAccountName: string, body: models.SubscriptionCreationParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SubscriptionCreationResult>;
-    beginCreateSubscriptionInEnrollmentAccount(enrollmentAccountName: string, body: models.SubscriptionCreationParameters, callback: ServiceCallback<models.SubscriptionCreationResult>): void;
-    beginCreateSubscriptionInEnrollmentAccount(enrollmentAccountName: string, body: models.SubscriptionCreationParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SubscriptionCreationResult>): void;
+    beginCreateSubscription(billingAccountId: string, invoiceSectionId: string, body: models.SubscriptionCreationParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SubscriptionCreationResult>;
+    beginCreateSubscription(billingAccountId: string, invoiceSectionId: string, body: models.SubscriptionCreationParameters, callback: ServiceCallback<models.SubscriptionCreationResult>): void;
+    beginCreateSubscription(billingAccountId: string, invoiceSectionId: string, body: models.SubscriptionCreationParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SubscriptionCreationResult>): void;
 }
 
 /**
