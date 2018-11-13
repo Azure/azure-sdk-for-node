@@ -22657,6 +22657,9 @@ export interface WebApps {
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -22694,6 +22697,9 @@ export interface WebApps {
      * @param {string} [restoreRequest.snapshotTime] Point in time to restore the
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -22769,6 +22775,9 @@ export interface WebApps {
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -22824,6 +22833,9 @@ export interface WebApps {
      * @param {boolean} [restoreRequest.ignoreConflictingHostNames] If true, custom
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -37426,6 +37438,9 @@ export interface WebApps {
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {string} slot Name of web app slot. If not specified then will
@@ -37466,6 +37481,9 @@ export interface WebApps {
      * @param {string} [restoreRequest.snapshotTime] Point in time to restore the
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -37544,6 +37562,9 @@ export interface WebApps {
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {string} slot Name of web app slot. If not specified then will
@@ -37602,6 +37623,9 @@ export interface WebApps {
      * @param {boolean} [restoreRequest.ignoreConflictingHostNames] If true, custom
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -38186,6 +38210,75 @@ export interface WebApps {
     listSnapshotsSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotCollection>;
     listSnapshotsSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.SnapshotCollection>): void;
     listSnapshotsSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotCollection>): void;
+
+
+    /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Website Name.
+     *
+     * @param {string} slot Website Slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SnapshotCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSnapshotsFromDRSecondarySlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotCollection>>;
+
+    /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Website Name.
+     *
+     * @param {string} slot Website Slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SnapshotCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SnapshotCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SnapshotCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSnapshotsFromDRSecondarySlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotCollection>;
+    listSnapshotsFromDRSecondarySlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.SnapshotCollection>): void;
+    listSnapshotsFromDRSecondarySlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotCollection>): void;
 
 
     /**
@@ -40666,6 +40759,71 @@ export interface WebApps {
     listSnapshots(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotCollection>;
     listSnapshots(resourceGroupName: string, name: string, callback: ServiceCallback<models.SnapshotCollection>): void;
     listSnapshots(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotCollection>): void;
+
+
+    /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Website Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SnapshotCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSnapshotsFromDRSecondaryWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotCollection>>;
+
+    /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Website Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SnapshotCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SnapshotCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SnapshotCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSnapshotsFromDRSecondary(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotCollection>;
+    listSnapshotsFromDRSecondary(resourceGroupName: string, name: string, callback: ServiceCallback<models.SnapshotCollection>): void;
+    listSnapshotsFromDRSecondary(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotCollection>): void;
 
 
     /**
@@ -44546,6 +44704,9 @@ export interface WebApps {
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -44583,6 +44744,9 @@ export interface WebApps {
      * @param {string} [restoreRequest.snapshotTime] Point in time to restore the
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -44658,6 +44822,9 @@ export interface WebApps {
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -44713,6 +44880,9 @@ export interface WebApps {
      * @param {boolean} [restoreRequest.ignoreConflictingHostNames] If true, custom
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -46478,6 +46648,9 @@ export interface WebApps {
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {string} slot Name of web app slot. If not specified then will
@@ -46518,6 +46691,9 @@ export interface WebApps {
      * @param {string} [restoreRequest.snapshotTime] Point in time to restore the
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -46596,6 +46772,9 @@ export interface WebApps {
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {string} slot Name of web app slot. If not specified then will
@@ -46654,6 +46833,9 @@ export interface WebApps {
      * @param {boolean} [restoreRequest.ignoreConflictingHostNames] If true, custom
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -50169,6 +50351,67 @@ export interface WebApps {
 
 
     /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SnapshotCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSnapshotsFromDRSecondarySlotNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotCollection>>;
+
+    /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SnapshotCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SnapshotCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SnapshotCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSnapshotsFromDRSecondarySlotNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotCollection>;
+    listSnapshotsFromDRSecondarySlotNext(nextPageLink: string, callback: ServiceCallback<models.SnapshotCollection>): void;
+    listSnapshotsFromDRSecondarySlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotCollection>): void;
+
+
+    /**
      * @summary List triggered web jobs for an app, or a deployment slot.
      *
      * List triggered web jobs for an app, or a deployment slot.
@@ -50544,6 +50787,67 @@ export interface WebApps {
     listSnapshotsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotCollection>;
     listSnapshotsNext(nextPageLink: string, callback: ServiceCallback<models.SnapshotCollection>): void;
     listSnapshotsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotCollection>): void;
+
+
+    /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SnapshotCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSnapshotsFromDRSecondaryNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotCollection>>;
+
+    /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SnapshotCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SnapshotCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SnapshotCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSnapshotsFromDRSecondaryNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotCollection>;
+    listSnapshotsFromDRSecondaryNext(nextPageLink: string, callback: ServiceCallback<models.SnapshotCollection>): void;
+    listSnapshotsFromDRSecondaryNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotCollection>): void;
 
 
     /**
