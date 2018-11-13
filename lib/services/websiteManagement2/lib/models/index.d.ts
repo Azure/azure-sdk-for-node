@@ -672,6 +672,7 @@ export interface HybridConnection extends ProxyOnlyResource {
  * @property {string} [deletedSiteName] Name of the deleted site
  * @property {string} [slot] Slot of the deleted site
  * @property {string} [deletedSiteKind] Kind of site that was deleted
+ * @property {string} [geoRegionName] Geo Region of the deleted site
  */
 export interface DeletedSite extends ProxyOnlyResource {
   readonly deletedSiteId?: number;
@@ -681,6 +682,7 @@ export interface DeletedSite extends ProxyOnlyResource {
   readonly deletedSiteName?: string;
   readonly slot?: string;
   readonly deletedSiteKind?: string;
+  readonly geoRegionName?: string;
 }
 
 /**
