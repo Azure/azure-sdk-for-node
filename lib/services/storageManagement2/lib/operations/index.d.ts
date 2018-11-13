@@ -564,6 +564,11 @@ export interface StorageAccounts {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.expand] May be used to expand the properties within
+     * account's properties. By default, data is not included when fecthing
+     * properties. Currently we only support geoReplicationStats. Possible values
+     * include: 'geoReplicationStats'
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -573,7 +578,7 @@ export interface StorageAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPropertiesWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageAccount>>;
+    getPropertiesWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageAccount>>;
 
     /**
      * Returns the properties for the specified storage account including but not
@@ -588,6 +593,11 @@ export interface StorageAccounts {
      * characters in length and use numbers and lower-case letters only.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the properties within
+     * account's properties. By default, data is not included when fecthing
+     * properties. Currently we only support geoReplicationStats. Possible values
+     * include: 'geoReplicationStats'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -614,9 +624,9 @@ export interface StorageAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getProperties(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageAccount>;
+    getProperties(resourceGroupName: string, accountName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageAccount>;
     getProperties(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.StorageAccount>): void;
-    getProperties(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageAccount>): void;
+    getProperties(resourceGroupName: string, accountName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageAccount>): void;
 
 
     /**

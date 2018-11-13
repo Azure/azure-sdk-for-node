@@ -617,6 +617,32 @@ export interface Endpoints {
 
 /**
  * @class
+ * Initializes a new instance of the GeoReplicationStats class.
+ * @constructor
+ * Statistics related to replication for storage account's Blob, Table, Queue
+ * and File services. It is only available when geo-redundant replication is
+ * enabled for the storage account.
+ *
+ * @member {string} [status] The status of the secondary location. Possible
+ * values are: - Live: Indicates that the secondary location is active and
+ * operational. - Bootstrap: Indicates initial synchronization from the primary
+ * location to the secondary location is in progress.This typically occurs when
+ * replication is first enabled. - Unavailable: Indicates that the secondary
+ * location is temporarily unavailable. Possible values include: 'Live',
+ * 'Bootstrap', 'Unavailable'
+ * @member {date} [lastSyncTime] All primary writes preceding this UTC
+ * date/time value are guaranteed to be available for read operations. Primary
+ * writes following this point in time may or may not be available for reads.
+ * Element may be default value if value of LastSyncTime is not available, this
+ * can happen if secondary is offline or we are in bootstrap.
+ */
+export interface GeoReplicationStats {
+  readonly status?: string;
+  readonly lastSyncTime?: Date;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Resource class.
  * @constructor
  * @member {string} [id] Fully qualified resource Id for the resource. Ex -
@@ -793,6 +819,20 @@ export interface TrackedResource extends Resource {
  * 'Allow', 'Deny'
  * @member {boolean} [isHnsEnabled] Account HierarchicalNamespace enabled if
  * sets to true.
+ * @member {object} [geoReplicationStats] Geo Replication Stats
+ * @member {string} [geoReplicationStats.status] The status of the secondary
+ * location. Possible values are: - Live: Indicates that the secondary location
+ * is active and operational. - Bootstrap: Indicates initial synchronization
+ * from the primary location to the secondary location is in progress.This
+ * typically occurs when replication is first enabled. - Unavailable: Indicates
+ * that the secondary location is temporarily unavailable. Possible values
+ * include: 'Live', 'Bootstrap', 'Unavailable'
+ * @member {date} [geoReplicationStats.lastSyncTime] All primary writes
+ * preceding this UTC date/time value are guaranteed to be available for read
+ * operations. Primary writes following this point in time may or may not be
+ * available for reads. Element may be default value if value of LastSyncTime
+ * is not available, this can happen if secondary is offline or we are in
+ * bootstrap.
  */
 export interface StorageAccount extends TrackedResource {
   readonly sku?: Sku;
@@ -814,6 +854,7 @@ export interface StorageAccount extends TrackedResource {
   enableHttpsTrafficOnly?: boolean;
   readonly networkRuleSet?: NetworkRuleSet;
   isHnsEnabled?: boolean;
+  readonly geoReplicationStats?: GeoReplicationStats;
 }
 
 /**
