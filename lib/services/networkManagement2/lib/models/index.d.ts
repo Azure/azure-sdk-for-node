@@ -6597,7 +6597,7 @@ export interface EffectiveRouteListResult {
  */
 export interface ContainerNetworkInterfaceConfiguration extends SubResource {
   ipConfigurations?: IPConfigurationProfile[];
-  containerNetworkInterfaces?: ContainerNetworkInterface[];
+  containerNetworkInterfaces?: SubResource[];
   readonly provisioningState?: string;
   name?: string;
   readonly type?: string;
