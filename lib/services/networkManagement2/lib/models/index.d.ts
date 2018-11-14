@@ -1111,7 +1111,7 @@ export interface NetworkInterfaceDnsSettings {
  * resource is updated.
  */
 export interface NetworkInterface extends Resource {
-  virtualMachine?: SubResource;
+  readonly virtualMachine?: SubResource;
   networkSecurityGroup?: NetworkSecurityGroup;
   readonly interfaceEndpoint?: InterfaceEndpoint;
   ipConfigurations?: NetworkInterfaceIPConfiguration[];
@@ -4830,7 +4830,7 @@ export interface AvailableDelegation {
  * resource is updated.
  */
 export interface AzureFirewallIPConfiguration extends SubResource {
-  privateIPAddress?: string;
+  readonly privateIPAddress?: string;
   subnet?: SubResource;
   publicIPAddress?: SubResource;
   provisioningState?: string;
