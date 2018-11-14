@@ -11,7 +11,7 @@
     "Tavares, Chris <ctavares@microsoft.com>",
     "Desai, Priyank <priydes@microsoft.com>"
   ],
-  "version": "0.13.1",
+  "version": "0.14.0",
   "description": "Microsoft Azure Virtual Network Management Client Library for node",
   "tags": [
     "azure",

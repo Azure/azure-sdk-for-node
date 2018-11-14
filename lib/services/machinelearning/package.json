@@ -5,7 +5,7 @@
     "Krishnan, Balaji <balajik@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com>"
   ],
-  "version": "1.1.0-preview",
+  "version": "1.2.0-preview",
   "description": "Microsoft Azure MachineLearning Management Client Library for node",
   "tags": [
     "azure",

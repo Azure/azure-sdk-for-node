@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.10.2",
+  "version": "0.11.0",
   "description": "Microsoft Azure Store Management Client Library for node",
   "tags": [
     "azure",
