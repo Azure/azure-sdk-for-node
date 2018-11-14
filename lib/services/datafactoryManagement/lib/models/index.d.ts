@@ -4301,8 +4301,11 @@ export interface AzureStorageLinkedService extends LinkedService {
  * @constructor
  * Responsys dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface ResponsysObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4311,8 +4314,11 @@ export interface ResponsysObjectDataset extends Dataset {
  * @constructor
  * Salesforce Marketing Cloud dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface SalesforceMarketingCloudObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4321,8 +4327,11 @@ export interface SalesforceMarketingCloudObjectDataset extends Dataset {
  * @constructor
  * Vertica dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface VerticaTableDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4331,8 +4340,11 @@ export interface VerticaTableDataset extends Dataset {
  * @constructor
  * Netezza dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface NetezzaTableDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4341,8 +4353,11 @@ export interface NetezzaTableDataset extends Dataset {
  * @constructor
  * Zoho server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface ZohoObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4351,8 +4366,11 @@ export interface ZohoObjectDataset extends Dataset {
  * @constructor
  * Xero Serivce dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface XeroObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4361,8 +4379,11 @@ export interface XeroObjectDataset extends Dataset {
  * @constructor
  * Square Serivce dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface SquareObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4371,8 +4392,11 @@ export interface SquareObjectDataset extends Dataset {
  * @constructor
  * Spark Server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface SparkObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4381,8 +4405,11 @@ export interface SparkObjectDataset extends Dataset {
  * @constructor
  * Shopify Serivce dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface ShopifyObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4391,8 +4418,11 @@ export interface ShopifyObjectDataset extends Dataset {
  * @constructor
  * ServiceNow server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface ServiceNowObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4401,8 +4431,11 @@ export interface ServiceNowObjectDataset extends Dataset {
  * @constructor
  * QuickBooks server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface QuickBooksObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4411,8 +4444,11 @@ export interface QuickBooksObjectDataset extends Dataset {
  * @constructor
  * Presto server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface PrestoObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4421,8 +4457,11 @@ export interface PrestoObjectDataset extends Dataset {
  * @constructor
  * Phoenix server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface PhoenixObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4431,8 +4470,11 @@ export interface PhoenixObjectDataset extends Dataset {
  * @constructor
  * Paypal Serivce dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface PaypalObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4441,8 +4483,11 @@ export interface PaypalObjectDataset extends Dataset {
  * @constructor
  * Marketo server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface MarketoObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4451,8 +4496,11 @@ export interface MarketoObjectDataset extends Dataset {
  * @constructor
  * MariaDB server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface MariaDBTableDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4461,8 +4509,11 @@ export interface MariaDBTableDataset extends Dataset {
  * @constructor
  * Magento server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface MagentoObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4471,8 +4522,11 @@ export interface MagentoObjectDataset extends Dataset {
  * @constructor
  * Jira Serivce dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface JiraObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4481,8 +4535,11 @@ export interface JiraObjectDataset extends Dataset {
  * @constructor
  * Impala server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface ImpalaObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4491,8 +4548,11 @@ export interface ImpalaObjectDataset extends Dataset {
  * @constructor
  * Hubspot Serivce dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface HubspotObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4501,8 +4561,11 @@ export interface HubspotObjectDataset extends Dataset {
  * @constructor
  * Hive Server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface HiveObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4511,8 +4574,11 @@ export interface HiveObjectDataset extends Dataset {
  * @constructor
  * HBase server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface HBaseObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4521,8 +4587,11 @@ export interface HBaseObjectDataset extends Dataset {
  * @constructor
  * Greenplum Database dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface GreenplumTableDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4531,8 +4600,11 @@ export interface GreenplumTableDataset extends Dataset {
  * @constructor
  * Google BigQuery service dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface GoogleBigQueryObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4541,8 +4613,11 @@ export interface GoogleBigQueryObjectDataset extends Dataset {
  * @constructor
  * Eloqua server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface EloquaObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4551,8 +4626,11 @@ export interface EloquaObjectDataset extends Dataset {
  * @constructor
  * Drill server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface DrillTableDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4561,8 +4639,11 @@ export interface DrillTableDataset extends Dataset {
  * @constructor
  * Couchbase server dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface CouchbaseTableDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4571,8 +4652,11 @@ export interface CouchbaseTableDataset extends Dataset {
  * @constructor
  * Concur Serivce dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface ConcurObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4581,8 +4665,11 @@ export interface ConcurObjectDataset extends Dataset {
  * @constructor
  * Azure PostgreSQL dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface AzurePostgreSqlTableDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -4591,8 +4678,11 @@ export interface AzurePostgreSqlTableDataset extends Dataset {
  * @constructor
  * Amazon Marketplace Web Service dataset.
  *
+ * @member {object} [tableName] The table name. Type: string (or Expression
+ * with resultType string).
  */
 export interface AmazonMWSObjectDataset extends Dataset {
+  tableName?: any;
 }
 
 /**
@@ -6170,13 +6260,13 @@ export interface SqlDWSource extends CopySource {
  * @constructor
  * SQL stored procedure parameter.
  *
- * @member {object} value Stored procedure parameter value. Type: string (or
+ * @member {object} [value] Stored procedure parameter value. Type: string (or
  * Expression with resultType string).
  * @member {string} [type] Stored procedure parameter type. Possible values
  * include: 'String', 'Int', 'Decimal', 'Guid', 'Boolean', 'Date'
  */
 export interface StoredProcedureParameter {
-  value: any;
+  value?: any;
   type?: string;
 }
 
