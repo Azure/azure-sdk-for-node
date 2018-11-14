@@ -10829,6 +10829,8 @@ export interface ManagedInstances {
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
      *
+     * @param {string} [parameters.collation] Collation of the managed instance.
+     *
      * @param {string} [parameters.dnsZonePartner] The resource id of another
      * managed instance whose DNS zone this managed instance will share after
      * creation.
@@ -10905,6 +10907,8 @@ export interface ManagedInstances {
      * @param {number} [parameters.vCores] The number of VCores.
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
+     *
+     * @param {string} [parameters.collation] Collation of the managed instance.
      *
      * @param {string} [parameters.dnsZonePartner] The resource id of another
      * managed instance whose DNS zone this managed instance will share after
@@ -11056,6 +11060,8 @@ export interface ManagedInstances {
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
      *
+     * @param {string} [parameters.collation] Collation of the managed instance.
+     *
      * @param {string} [parameters.dnsZonePartner] The resource id of another
      * managed instance whose DNS zone this managed instance will share after
      * creation.
@@ -11122,6 +11128,8 @@ export interface ManagedInstances {
      * @param {number} [parameters.vCores] The number of VCores.
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
+     *
+     * @param {string} [parameters.collation] Collation of the managed instance.
      *
      * @param {string} [parameters.dnsZonePartner] The resource id of another
      * managed instance whose DNS zone this managed instance will share after
@@ -11217,6 +11225,8 @@ export interface ManagedInstances {
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
      *
+     * @param {string} [parameters.collation] Collation of the managed instance.
+     *
      * @param {string} [parameters.dnsZonePartner] The resource id of another
      * managed instance whose DNS zone this managed instance will share after
      * creation.
@@ -11293,6 +11303,8 @@ export interface ManagedInstances {
      * @param {number} [parameters.vCores] The number of VCores.
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
+     *
+     * @param {string} [parameters.collation] Collation of the managed instance.
      *
      * @param {string} [parameters.dnsZonePartner] The resource id of another
      * managed instance whose DNS zone this managed instance will share after
@@ -11444,6 +11456,8 @@ export interface ManagedInstances {
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
      *
+     * @param {string} [parameters.collation] Collation of the managed instance.
+     *
      * @param {string} [parameters.dnsZonePartner] The resource id of another
      * managed instance whose DNS zone this managed instance will share after
      * creation.
@@ -11510,6 +11524,8 @@ export interface ManagedInstances {
      * @param {number} [parameters.vCores] The number of VCores.
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
+     *
+     * @param {string} [parameters.collation] Collation of the managed instance.
      *
      * @param {string} [parameters.dnsZonePartner] The resource id of another
      * managed instance whose DNS zone this managed instance will share after
@@ -16592,11 +16608,11 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -16622,10 +16638,11 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -16735,11 +16752,11 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -16765,10 +16782,11 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -16969,11 +16987,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -16999,10 +17017,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -17110,11 +17129,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -17140,10 +17159,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -17271,11 +17291,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -17301,10 +17321,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -17412,11 +17433,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -17442,10 +17463,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -17643,11 +17665,11 @@ export interface ServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -17673,10 +17695,11 @@ export interface ServerBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -17781,11 +17804,11 @@ export interface ServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -17811,10 +17834,11 @@ export interface ServerBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -17939,11 +17963,11 @@ export interface ServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -17969,10 +17993,11 @@ export interface ServerBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -18077,11 +18102,11 @@ export interface ServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -18107,10 +18132,11 @@ export interface ServerBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -18314,11 +18340,11 @@ export interface DatabaseBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -18344,10 +18370,11 @@ export interface DatabaseBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -18454,11 +18481,11 @@ export interface DatabaseBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -18484,10 +18511,11 @@ export interface DatabaseBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -24397,6 +24425,523 @@ export interface BackupLongTermRetentionPolicies {
 
 /**
  * @class
+ * ManagedBackupShortTermRetentionPolicies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ManagedBackupShortTermRetentionPolicies {
+
+
+    /**
+     * Gets a managed database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedBackupShortTermRetentionPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedBackupShortTermRetentionPolicy>>;
+
+    /**
+     * Gets a managed database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedBackupShortTermRetentionPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedBackupShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedBackupShortTermRetentionPolicy} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedBackupShortTermRetentionPolicy>;
+    get(resourceGroupName: string, managedInstanceName: string, databaseName: string, callback: ServiceCallback<models.ManagedBackupShortTermRetentionPolicy>): void;
+    get(resourceGroupName: string, managedInstanceName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedBackupShortTermRetentionPolicy>): void;
+
+
+    /**
+     * Updates a managed database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The short term retention policy info.
+     *
+     * @param {number} [parameters.retentionDays] The backup retention period in
+     * days. This is how many days Point-in-Time Restore will be supported.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedBackupShortTermRetentionPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedBackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedBackupShortTermRetentionPolicy>>;
+
+    /**
+     * Updates a managed database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The short term retention policy info.
+     *
+     * @param {number} [parameters.retentionDays] The backup retention period in
+     * days. This is how many days Point-in-Time Restore will be supported.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedBackupShortTermRetentionPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedBackupShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedBackupShortTermRetentionPolicy} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedBackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedBackupShortTermRetentionPolicy>;
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedBackupShortTermRetentionPolicy, callback: ServiceCallback<models.ManagedBackupShortTermRetentionPolicy>): void;
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedBackupShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedBackupShortTermRetentionPolicy>): void;
+
+
+    /**
+     * Updates a managed database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The short term retention policy info.
+     *
+     * @param {number} [parameters.retentionDays] The backup retention period in
+     * days. This is how many days Point-in-Time Restore will be supported.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedBackupShortTermRetentionPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedBackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedBackupShortTermRetentionPolicy>>;
+
+    /**
+     * Updates a managed database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The short term retention policy info.
+     *
+     * @param {number} [parameters.retentionDays] The backup retention period in
+     * days. This is how many days Point-in-Time Restore will be supported.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedBackupShortTermRetentionPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedBackupShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedBackupShortTermRetentionPolicy} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedBackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedBackupShortTermRetentionPolicy>;
+    update(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedBackupShortTermRetentionPolicy, callback: ServiceCallback<models.ManagedBackupShortTermRetentionPolicy>): void;
+    update(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedBackupShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedBackupShortTermRetentionPolicy>): void;
+
+
+    /**
+     * Gets a managed database's short term retention policy list.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedBackupShortTermRetentionPolicyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedBackupShortTermRetentionPolicyListResult>>;
+
+    /**
+     * Gets a managed database's short term retention policy list.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedBackupShortTermRetentionPolicyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedBackupShortTermRetentionPolicyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ManagedBackupShortTermRetentionPolicyListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabase(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedBackupShortTermRetentionPolicyListResult>;
+    listByDatabase(resourceGroupName: string, managedInstanceName: string, databaseName: string, callback: ServiceCallback<models.ManagedBackupShortTermRetentionPolicyListResult>): void;
+    listByDatabase(resourceGroupName: string, managedInstanceName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedBackupShortTermRetentionPolicyListResult>): void;
+
+
+    /**
+     * Updates a managed database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The short term retention policy info.
+     *
+     * @param {number} [parameters.retentionDays] The backup retention period in
+     * days. This is how many days Point-in-Time Restore will be supported.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedBackupShortTermRetentionPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedBackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedBackupShortTermRetentionPolicy>>;
+
+    /**
+     * Updates a managed database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The short term retention policy info.
+     *
+     * @param {number} [parameters.retentionDays] The backup retention period in
+     * days. This is how many days Point-in-Time Restore will be supported.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedBackupShortTermRetentionPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedBackupShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedBackupShortTermRetentionPolicy} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedBackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedBackupShortTermRetentionPolicy>;
+    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedBackupShortTermRetentionPolicy, callback: ServiceCallback<models.ManagedBackupShortTermRetentionPolicy>): void;
+    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedBackupShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedBackupShortTermRetentionPolicy>): void;
+
+
+    /**
+     * Updates a managed database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The short term retention policy info.
+     *
+     * @param {number} [parameters.retentionDays] The backup retention period in
+     * days. This is how many days Point-in-Time Restore will be supported.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedBackupShortTermRetentionPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedBackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedBackupShortTermRetentionPolicy>>;
+
+    /**
+     * Updates a managed database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The short term retention policy info.
+     *
+     * @param {number} [parameters.retentionDays] The backup retention period in
+     * days. This is how many days Point-in-Time Restore will be supported.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedBackupShortTermRetentionPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedBackupShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedBackupShortTermRetentionPolicy} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedBackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedBackupShortTermRetentionPolicy>;
+    beginUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedBackupShortTermRetentionPolicy, callback: ServiceCallback<models.ManagedBackupShortTermRetentionPolicy>): void;
+    beginUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedBackupShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedBackupShortTermRetentionPolicy>): void;
+
+
+    /**
+     * Gets a managed database's short term retention policy list.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedBackupShortTermRetentionPolicyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedBackupShortTermRetentionPolicyListResult>>;
+
+    /**
+     * Gets a managed database's short term retention policy list.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedBackupShortTermRetentionPolicyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedBackupShortTermRetentionPolicyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ManagedBackupShortTermRetentionPolicyListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabaseNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedBackupShortTermRetentionPolicyListResult>;
+    listByDatabaseNext(nextPageLink: string, callback: ServiceCallback<models.ManagedBackupShortTermRetentionPolicyListResult>): void;
+    listByDatabaseNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedBackupShortTermRetentionPolicyListResult>): void;
+}
+
+/**
+ * @class
  * ManagedDatabases
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SqlManagementClient.
@@ -27379,6 +27924,74 @@ export interface DatabaseVulnerabilityAssessmentScans {
 
 
     /**
+     * Lists the vulnerability assessment scans of a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VulnerabilityAssessmentScanRecordListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VulnerabilityAssessmentScanRecordListResult>>;
+
+    /**
+     * Lists the vulnerability assessment scans of a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VulnerabilityAssessmentScanRecordListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VulnerabilityAssessmentScanRecordListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VulnerabilityAssessmentScanRecordListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VulnerabilityAssessmentScanRecordListResult>;
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
+
+
+    /**
      * Gets a vulnerability assessment scan record of a database.
      *
      * @param {string} resourceGroupName The name of the resource group that
@@ -27522,74 +28135,6 @@ export interface DatabaseVulnerabilityAssessmentScans {
     initiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     initiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, callback: ServiceCallback<void>): void;
     initiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Lists the vulnerability assessment scans of a database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VulnerabilityAssessmentScanRecordListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VulnerabilityAssessmentScanRecordListResult>>;
-
-    /**
-     * Lists the vulnerability assessment scans of a database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VulnerabilityAssessmentScanRecordListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VulnerabilityAssessmentScanRecordListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VulnerabilityAssessmentScanRecordListResult}
-     *                      for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VulnerabilityAssessmentScanRecordListResult>;
-    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
-    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
 
 
     /**

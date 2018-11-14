@@ -17,18 +17,20 @@ import * as moment from "moment";
  * @constructor
  * Defines the query context that Bing used for the request.
  *
- * @member {string} originalQuery The query string as specified in the request.
- * @member {string} [alteredQuery] The query string used by Bing to perform the
- * query. Bing uses the altered query string if the original query string
+ * @property {string} originalQuery The query string as specified in the
+ * request.
+ * @property {string} [alteredQuery] The query string used by Bing to perform
+ * the query. Bing uses the altered query string if the original query string
  * contained spelling mistakes. For example, if the query string is "saling
  * downwind", the altered query string will be "sailing downwind". This field
  * is included only if the original query string contains a spelling mistake.
- * @member {string} [alterationOverrideQuery] The query string to use to force
- * Bing to use the original string. For example, if the query string is "saling
- * downwind", the override query string will be "+saling downwind". Remember to
- * encode the query string which results in "%2Bsaling+downwind". This field is
- * included only if the original query string contains a spelling mistake.
- * @member {boolean} [adultIntent] A Boolean value that indicates whether the
+ * @property {string} [alterationOverrideQuery] The query string to use to
+ * force Bing to use the original string. For example, if the query string is
+ * "saling downwind", the override query string will be "+saling downwind".
+ * Remember to encode the query string which results in "%2Bsaling+downwind".
+ * This field is included only if the original query string contains a spelling
+ * mistake.
+ * @property {boolean} [adultIntent] A Boolean value that indicates whether the
  * specified query has adult intent. The value is true if the query has adult
  * intent; otherwise, false.
  */
@@ -45,8 +47,8 @@ export interface QueryContext {
  * @constructor
  * Defines a webpage's metadata.
  *
- * @member {string} [name] The metadata.
- * @member {string} [content] The name of the metadata.
+ * @property {string} [name] The metadata.
+ * @property {string} [content] The name of the metadata.
  */
 export interface WebMetaTag {
   readonly name?: string;
@@ -57,7 +59,7 @@ export interface WebMetaTag {
  * @class
  * Initializes a new instance of the ResponseBase class.
  * @constructor
- * @member {string} _type Polymorphic Discriminator
+ * @property {string} _type Polymorphic Discriminator
  */
 export interface ResponseBase {
   _type: string;
@@ -69,7 +71,7 @@ export interface ResponseBase {
  * @constructor
  * Defines the identity of a resource.
  *
- * @member {string} [id] A String identifier.
+ * @property {string} [id] A String identifier.
  */
 export interface Identifiable extends ResponseBase {
   readonly id?: string;
@@ -82,7 +84,7 @@ export interface Identifiable extends ResponseBase {
  * Defines a response. All schemas that could be returned at the root of a
  * response should inherit from this
  *
- * @member {string} [webSearchUrl] The URL To Bing's search result for this
+ * @property {string} [webSearchUrl] The URL To Bing's search result for this
  * item.
  */
 export interface Response extends Identifiable {
@@ -93,11 +95,11 @@ export interface Response extends Identifiable {
  * @class
  * Initializes a new instance of the Thing class.
  * @constructor
- * @member {string} [name] The name of the thing represented by this object.
- * @member {string} [url] The URL to get more information about the thing
+ * @property {string} [name] The name of the thing represented by this object.
+ * @property {string} [url] The URL to get more information about the thing
  * represented by this object.
- * @member {string} [description] A short description of the item.
- * @member {string} [bingId] An ID that uniquely identifies this item.
+ * @property {string} [description] A short description of the item.
+ * @property {string} [bingId] An ID that uniquely identifies this item.
  */
 export interface Thing extends Response {
   readonly name?: string;
@@ -110,9 +112,9 @@ export interface Thing extends Response {
  * @class
  * Initializes a new instance of the CreativeWork class.
  * @constructor
- * @member {string} [thumbnailUrl] The URL to a thumbnail of the item.
- * @member {array} [provider] The source of the creative work.
- * @member {string} [text]
+ * @property {string} [thumbnailUrl] The URL to a thumbnail of the item.
+ * @property {array} [provider] The source of the creative work.
+ * @property {string} [text]
  */
 export interface CreativeWork extends Thing {
   readonly thumbnailUrl?: string;
@@ -126,17 +128,17 @@ export interface CreativeWork extends Thing {
  * @constructor
  * Defines a webpage that is relevant to the query.
  *
- * @member {string} [displayUrl] The display URL of the webpage. The URL is
+ * @property {string} [displayUrl] The display URL of the webpage. The URL is
  * meant for display purposes only and is not well formed.
- * @member {string} [snippet] A snippet of text from the webpage that describes
- * its contents.
- * @member {array} [deepLinks] A list of links to related content that Bing
+ * @property {string} [snippet] A snippet of text from the webpage that
+ * describes its contents.
+ * @property {array} [deepLinks] A list of links to related content that Bing
  * found in the website that contains this webpage. The Webpage object in this
  * context includes only the name, url, urlPingSuffix, and snippet fields.
- * @member {string} [dateLastCrawled] The last time that Bing crawled the
+ * @property {string} [dateLastCrawled] The last time that Bing crawled the
  * webpage. The date is in the form, YYYY-MM-DDTHH:MM:SS. For example,
  * 2015-04-13T05:23:39.
- * @member {array} [searchTags] A list of search tags that the webpage owner
+ * @property {array} [searchTags] A list of search tags that the webpage owner
  * specified on the webpage. The API returns only indexed search tags. The name
  * field of the MetaTag object contains the indexed search tag. Search tags
  * begin with search.* (for example, search.assetId). The content field
@@ -154,7 +156,7 @@ export interface WebPage extends CreativeWork {
  * @class
  * Initializes a new instance of the Answer class.
  * @constructor
- * @member {array} [followUpQueries]
+ * @property {array} [followUpQueries]
  */
 export interface Answer extends Response {
   readonly followUpQueries?: Query[];
@@ -164,28 +166,28 @@ export interface Answer extends Response {
  * @class
  * Initializes a new instance of the SearchResultsAnswer class.
  * @constructor
- * @member {object} [queryContext]
- * @member {string} [queryContext.originalQuery] The query string as specified
- * in the request.
- * @member {string} [queryContext.alteredQuery] The query string used by Bing
+ * @property {object} [queryContext]
+ * @property {string} [queryContext.originalQuery] The query string as
+ * specified in the request.
+ * @property {string} [queryContext.alteredQuery] The query string used by Bing
  * to perform the query. Bing uses the altered query string if the original
  * query string contained spelling mistakes. For example, if the query string
  * is "saling downwind", the altered query string will be "sailing downwind".
  * This field is included only if the original query string contains a spelling
  * mistake.
- * @member {string} [queryContext.alterationOverrideQuery] The query string to
- * use to force Bing to use the original string. For example, if the query
+ * @property {string} [queryContext.alterationOverrideQuery] The query string
+ * to use to force Bing to use the original string. For example, if the query
  * string is "saling downwind", the override query string will be "+saling
  * downwind". Remember to encode the query string which results in
  * "%2Bsaling+downwind". This field is included only if the original query
  * string contains a spelling mistake.
- * @member {boolean} [queryContext.adultIntent] A Boolean value that indicates
- * whether the specified query has adult intent. The value is true if the query
- * has adult intent; otherwise, false.
- * @member {number} [totalEstimatedMatches] The estimated number of webpages
+ * @property {boolean} [queryContext.adultIntent] A Boolean value that
+ * indicates whether the specified query has adult intent. The value is true if
+ * the query has adult intent; otherwise, false.
+ * @property {number} [totalEstimatedMatches] The estimated number of webpages
  * that are relevant to the query. Use this number along with the count and
  * offset query parameters to page the results.
- * @member {boolean} [isFamilyFriendly]
+ * @property {boolean} [isFamilyFriendly]
  */
 export interface SearchResultsAnswer extends Answer {
   readonly queryContext?: QueryContext;
@@ -199,8 +201,8 @@ export interface SearchResultsAnswer extends Answer {
  * @constructor
  * Defines a list of relevant webpage links.
  *
- * @member {array} value A list of webpages that are relevant to the query.
- * @member {boolean} [someResultsRemoved] A Boolean value that indicates
+ * @property {array} value A list of webpages that are relevant to the query.
+ * @property {boolean} [someResultsRemoved] A Boolean value that indicates
  * whether the response excluded some results from the answer. If Bing excluded
  * some results, the value is true.
  */
@@ -216,32 +218,32 @@ export interface WebWebAnswer extends SearchResultsAnswer {
  * Defines the top-level object that the response includes when the request
  * succeeds.
  *
- * @member {object} [queryContext] An object that contains the query string
+ * @property {object} [queryContext] An object that contains the query string
  * that Bing used for the request. This object contains the query string as
  * entered by the user. It may also contain an altered query string that Bing
  * used for the query if the query string contained a spelling mistake.
- * @member {string} [queryContext.originalQuery] The query string as specified
- * in the request.
- * @member {string} [queryContext.alteredQuery] The query string used by Bing
+ * @property {string} [queryContext.originalQuery] The query string as
+ * specified in the request.
+ * @property {string} [queryContext.alteredQuery] The query string used by Bing
  * to perform the query. Bing uses the altered query string if the original
  * query string contained spelling mistakes. For example, if the query string
  * is "saling downwind", the altered query string will be "sailing downwind".
  * This field is included only if the original query string contains a spelling
  * mistake.
- * @member {string} [queryContext.alterationOverrideQuery] The query string to
- * use to force Bing to use the original string. For example, if the query
+ * @property {string} [queryContext.alterationOverrideQuery] The query string
+ * to use to force Bing to use the original string. For example, if the query
  * string is "saling downwind", the override query string will be "+saling
  * downwind". Remember to encode the query string which results in
  * "%2Bsaling+downwind". This field is included only if the original query
  * string contains a spelling mistake.
- * @member {boolean} [queryContext.adultIntent] A Boolean value that indicates
- * whether the specified query has adult intent. The value is true if the query
- * has adult intent; otherwise, false.
- * @member {object} [webPages] A list of webpages that are relevant to the
+ * @property {boolean} [queryContext.adultIntent] A Boolean value that
+ * indicates whether the specified query has adult intent. The value is true if
+ * the query has adult intent; otherwise, false.
+ * @property {object} [webPages] A list of webpages that are relevant to the
  * search query.
- * @member {array} [webPages.value] A list of webpages that are relevant to the
- * query.
- * @member {boolean} [webPages.someResultsRemoved] A Boolean value that
+ * @property {array} [webPages.value] A list of webpages that are relevant to
+ * the query.
+ * @property {boolean} [webPages.someResultsRemoved] A Boolean value that
  * indicates whether the response excluded some results from the answer. If
  * Bing excluded some results, the value is true.
  */
@@ -256,21 +258,21 @@ export interface SearchResponse extends Response {
  * @constructor
  * Defines the error that occurred.
  *
- * @member {string} code The error code that identifies the category of error.
- * Possible values include: 'None', 'ServerError', 'InvalidRequest',
+ * @property {string} code The error code that identifies the category of
+ * error. Possible values include: 'None', 'ServerError', 'InvalidRequest',
  * 'RateLimitExceeded', 'InvalidAuthorization', 'InsufficientAuthorization'.
  * Default value: 'None' .
- * @member {string} [subCode] The error code that further helps to identify the
- * error. Possible values include: 'UnexpectedError', 'ResourceError',
+ * @property {string} [subCode] The error code that further helps to identify
+ * the error. Possible values include: 'UnexpectedError', 'ResourceError',
  * 'NotImplemented', 'ParameterMissing', 'ParameterInvalidValue',
  * 'HttpNotAllowed', 'Blocked', 'AuthorizationMissing',
  * 'AuthorizationRedundancy', 'AuthorizationDisabled', 'AuthorizationExpired'
- * @member {string} message A description of the error.
- * @member {string} [moreDetails] A description that provides additional
+ * @property {string} message A description of the error.
+ * @property {string} [moreDetails] A description that provides additional
  * information about the error.
- * @member {string} [parameter] The parameter in the request that caused the
+ * @property {string} [parameter] The parameter in the request that caused the
  * error.
- * @member {string} [value] The parameter's value in the request that was not
+ * @property {string} [value] The parameter's value in the request that was not
  * valid.
  */
 export interface ErrorModel {
@@ -288,7 +290,7 @@ export interface ErrorModel {
  * @constructor
  * The top-level response that represents a failed request.
  *
- * @member {array} errors A list of errors that describe the reasons why the
+ * @property {array} errors A list of errors that describe the reasons why the
  * request failed.
  */
 export interface ErrorResponse extends Response {
@@ -301,16 +303,16 @@ export interface ErrorResponse extends Response {
  * @constructor
  * Defines a search query.
  *
- * @member {string} text The query string. Use this string as the query term in
- * a new search request.
- * @member {string} [displayText] The display version of the query term. This
+ * @property {string} text The query string. Use this string as the query term
+ * in a new search request.
+ * @property {string} [displayText] The display version of the query term. This
  * version of the query term may contain special characters that highlight the
  * search term found in the query string. The string contains the highlighting
  * characters only if the query enabled hit highlighting
- * @member {string} [webSearchUrl] The URL that takes the user to the Bing
+ * @property {string} [webSearchUrl] The URL that takes the user to the Bing
  * search results page for the query.Only related search results include this
  * field.
- * @member {string} [searchLink]
+ * @property {string} [searchLink]
  */
 export interface Query {
   text: string;

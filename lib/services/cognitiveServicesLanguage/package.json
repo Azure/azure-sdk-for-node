@@ -4,7 +4,7 @@
   "contributors": [
     "Xu, Willie <wilx@microsoft.com>"
   ],
-  "version": "1.0.0-preview",
+  "version": "1.1.0-preview",
   "description": "Microsoft Azure Cognitive Services Language API Client Library for Node.js",
   "tags": [
     "azure",
