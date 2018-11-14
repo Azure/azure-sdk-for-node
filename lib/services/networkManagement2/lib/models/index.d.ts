@@ -4328,6 +4328,8 @@ export interface ApplicationGatewayRewriteRuleActionSet {
  * @constructor
  * Rewrite rule of an application gateway.
  *
+ * @member {string} [name] Name of the rewrite rule that is unique within an
+ * Application Gateway.
  * @member {object} [actionSet] Set of actions to be done as part of the
  * rewrite Rule.
  * @member {object} [actionSet.requestHeaderConfigurations] Request Header
@@ -4342,15 +4344,10 @@ export interface ApplicationGatewayRewriteRuleActionSet {
  * name of the header configuration
  * @member {string} [actionSet.responseHeaderConfigurations.headerValue] Header
  * value of the header configuration
- * @member {string} [provisioningState] Provisioning state of the rewrite rule.
- * Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [name] Name of the rewrite rule that is unique within an
- * Application Gateway.
  */
 export interface ApplicationGatewayRewriteRule {
-  actionSet?: ApplicationGatewayRewriteRuleActionSet;
-  provisioningState?: string;
   name?: string;
+  actionSet?: ApplicationGatewayRewriteRuleActionSet;
 }
 
 /**
