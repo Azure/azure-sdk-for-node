@@ -3901,6 +3901,16 @@ export interface UserUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the CurrentUserIdentity class.
+ * @constructor
+ * @member {string} [id] API Management service user id.
+ */
+export interface CurrentUserIdentity {
+  id?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApiVersionSetContract class.
  * @constructor
  * Api Version Set Contract details.
