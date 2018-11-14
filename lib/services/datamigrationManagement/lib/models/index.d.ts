@@ -381,12 +381,15 @@ export interface GetTdeCertificatesSqlTaskInput {
  * submitted. Possible values include: 'Unknown', 'Queued', 'Running',
  * 'Canceled', 'Succeeded', 'Failed', 'FailedInputValidation', 'Faulted'
  * @member {array} [commands] Array of command properties.
+ * @member {object} [clientData] Key value pairs of client data to attach meta
+ * data information to task
  * @member {string} taskType Polymorphic Discriminator
  */
 export interface ProjectTaskProperties {
   readonly errors?: ODataError[];
   readonly state?: string;
   readonly commands?: CommandProperties[];
+  clientData?: { [propertyName: string]: string };
   taskType: string;
 }
 
@@ -3765,6 +3768,8 @@ export interface ConnectToMongoDbTaskProperties extends ProjectTaskProperties {
  * if submitted. Possible values include: 'Unknown', 'Queued', 'Running',
  * 'Canceled', 'Succeeded', 'Failed', 'FailedInputValidation', 'Faulted'
  * @member {array} [properties.commands] Array of command properties.
+ * @member {object} [properties.clientData] Key value pairs of client data to
+ * attach meta data information to task
  * @member {string} [properties.taskType] Polymorphic Discriminator
  */
 export interface ProjectTask extends Resource {

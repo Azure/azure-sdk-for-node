@@ -1946,6 +1946,9 @@ export interface Tasks {
      *
      * @param {object} [parameters.properties] Custom task properties
      *
+     * @param {object} [parameters.properties.clientData] Key value pairs of client
+     * data to attach meta data information to task
+     *
      * @param {string} parameters.properties.taskType Polymorphic Discriminator
      *
      * @param {string} groupName Name of the resource group
@@ -1983,6 +1986,9 @@ export interface Tasks {
      * ignored if submitted.
      *
      * @param {object} [parameters.properties] Custom task properties
+     *
+     * @param {object} [parameters.properties.clientData] Key value pairs of client
+     * data to attach meta data information to task
      *
      * @param {string} parameters.properties.taskType Polymorphic Discriminator
      *
@@ -2200,6 +2206,9 @@ export interface Tasks {
      *
      * @param {object} [parameters.properties] Custom task properties
      *
+     * @param {object} [parameters.properties.clientData] Key value pairs of client
+     * data to attach meta data information to task
+     *
      * @param {string} parameters.properties.taskType Polymorphic Discriminator
      *
      * @param {string} groupName Name of the resource group
@@ -2237,6 +2246,9 @@ export interface Tasks {
      * ignored if submitted.
      *
      * @param {object} [parameters.properties] Custom task properties
+     *
+     * @param {object} [parameters.properties.clientData] Key value pairs of client
+     * data to attach meta data information to task
      *
      * @param {string} parameters.properties.taskType Polymorphic Discriminator
      *
