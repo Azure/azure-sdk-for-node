@@ -25753,6 +25753,8 @@ export interface User {
      * @param {string} [parameters.note] Optional note about a user set by the
      * administrator.
      *
+     * @param {array} [parameters.identities] Collection of user identities.
+     *
      * @param {string} parameters.email Email address. Must not be empty and must
      * be unique within the service instance.
      *
@@ -25802,6 +25804,8 @@ export interface User {
      *
      * @param {string} [parameters.note] Optional note about a user set by the
      * administrator.
+     *
+     * @param {array} [parameters.identities] Collection of user identities.
      *
      * @param {string} parameters.email Email address. Must not be empty and must
      * be unique within the service instance.
@@ -25872,6 +25876,8 @@ export interface User {
      * @param {string} [parameters.note] Optional note about a user set by the
      * administrator.
      *
+     * @param {array} [parameters.identities] Collection of user identities.
+     *
      * @param {string} [parameters.email] Email address. Must not be empty and must
      * be unique within the service instance.
      *
@@ -25917,6 +25923,8 @@ export interface User {
      *
      * @param {string} [parameters.note] Optional note about a user set by the
      * administrator.
+     *
+     * @param {array} [parameters.identities] Collection of user identities.
      *
      * @param {string} [parameters.email] Email address. Must not be empty and must
      * be unique within the service instance.
