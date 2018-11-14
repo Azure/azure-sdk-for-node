@@ -1358,7 +1358,7 @@ export interface ManagedInstance extends TrackedResource {
   licenseType?: string;
   vCores?: number;
   storageSizeInGB?: number;
-  readonly collation?: string;
+  collation?: string;
   readonly dnsZone?: string;
   dnsZonePartner?: string;
 }
@@ -1411,7 +1411,7 @@ export interface ManagedInstanceUpdate {
   licenseType?: string;
   vCores?: number;
   storageSizeInGB?: number;
-  readonly collation?: string;
+  collation?: string;
   readonly dnsZone?: string;
   dnsZonePartner?: string;
   tags?: { [propertyName: string]: string };
@@ -1946,11 +1946,11 @@ export interface VirtualNetworkRule extends ProxyResource {
  * REFERENCES
  *
  * The general form for defining an action to be audited is:
- * <action> ON <object> BY <principal>
+ * {action} ON {object} BY {principal}
  *
  * Note that <object> in the above format can refer to an object like a table,
  * view, or stored procedure, or an entire database or schema. For the latter
- * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+ * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
  * respectively.
  *
  * For example:
@@ -1973,10 +1973,11 @@ export interface VirtualNetworkRule extends ProxyResource {
  * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
  * also created.
  * Note that for server level audit you should use the 'master' database as
- * <databaseName>.
+ * {databaseName}.
+ *
  * Diagnostic Settings URI format:
  * PUT
- * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+ * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
  *
  * For more information, see [Diagnostic Settings REST
  * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -2072,11 +2073,11 @@ export interface ExtendedDatabaseBlobAuditingPolicy extends ProxyResource {
  * REFERENCES
  *
  * The general form for defining an action to be audited is:
- * <action> ON <object> BY <principal>
+ * {action} ON {object} BY {principal}
  *
  * Note that <object> in the above format can refer to an object like a table,
  * view, or stored procedure, or an entire database or schema. For the latter
- * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+ * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
  * respectively.
  *
  * For example:
@@ -2099,10 +2100,11 @@ export interface ExtendedDatabaseBlobAuditingPolicy extends ProxyResource {
  * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
  * also created.
  * Note that for server level audit you should use the 'master' database as
- * <databaseName>.
+ * {databaseName}.
+ *
  * Diagnostic Settings URI format:
  * PUT
- * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+ * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
  *
  * For more information, see [Diagnostic Settings REST
  * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -2196,11 +2198,11 @@ export interface ExtendedServerBlobAuditingPolicy extends ProxyResource {
  * REFERENCES
  *
  * The general form for defining an action to be audited is:
- * <action> ON <object> BY <principal>
+ * {action} ON {object} BY {principal}
  *
  * Note that <object> in the above format can refer to an object like a table,
  * view, or stored procedure, or an entire database or schema. For the latter
- * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+ * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
  * respectively.
  *
  * For example:
@@ -2223,10 +2225,11 @@ export interface ExtendedServerBlobAuditingPolicy extends ProxyResource {
  * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
  * also created.
  * Note that for server level audit you should use the 'master' database as
- * <databaseName>.
+ * {databaseName}.
+ *
  * Diagnostic Settings URI format:
  * PUT
- * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+ * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
  *
  * For more information, see [Diagnostic Settings REST
  * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -2320,11 +2323,11 @@ export interface ServerBlobAuditingPolicy extends ProxyResource {
  * REFERENCES
  *
  * The general form for defining an action to be audited is:
- * <action> ON <object> BY <principal>
+ * {action} ON {object} BY {principal}
  *
  * Note that <object> in the above format can refer to an object like a table,
  * view, or stored procedure, or an entire database or schema. For the latter
- * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+ * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
  * respectively.
  *
  * For example:
@@ -2347,10 +2350,11 @@ export interface ServerBlobAuditingPolicy extends ProxyResource {
  * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
  * also created.
  * Note that for server level audit you should use the 'master' database as
- * <databaseName>.
+ * {databaseName}.
+ *
  * Diagnostic Settings URI format:
  * PUT
- * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+ * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
  *
  * For more information, see [Diagnostic Settings REST
  * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -2839,6 +2843,19 @@ export interface BackupLongTermRetentionPolicy extends ProxyResource {
   monthlyRetention?: string;
   yearlyRetention?: string;
   weekOfYear?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedBackupShortTermRetentionPolicy class.
+ * @constructor
+ * A short term retention policy.
+ *
+ * @member {number} [retentionDays] The backup retention period in days. This
+ * is how many days Point-in-Time Restore will be supported.
+ */
+export interface ManagedBackupShortTermRetentionPolicy extends ProxyResource {
+  retentionDays?: number;
 }
 
 /**
@@ -4782,6 +4799,18 @@ export interface JobVersionListResult extends Array<JobVersion> {
  * @member {string} [nextLink] Link to retrieve next page of results.
  */
 export interface LongTermRetentionBackupListResult extends Array<LongTermRetentionBackup> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedBackupShortTermRetentionPolicyListResult class.
+ * @constructor
+ * A list of short term retention policies.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ManagedBackupShortTermRetentionPolicyListResult extends Array<ManagedBackupShortTermRetentionPolicy> {
   readonly nextLink?: string;
 }
 

@@ -2679,7 +2679,7 @@ export interface UserIdentityContract {
 export interface UserEntityBaseParameters {
   state?: string;
   note?: string;
-  readonly identities?: UserIdentityContract[];
+  identities?: UserIdentityContract[];
 }
 
 /**
@@ -2706,7 +2706,7 @@ export interface UserEntityBaseParameters {
 export interface UserContract extends Resource {
   state?: string;
   note?: string;
-  readonly identities?: UserIdentityContract[];
+  identities?: UserIdentityContract[];
   firstName?: string;
   lastName?: string;
   email?: string;
@@ -3833,7 +3833,7 @@ export interface GenerateSsoUrlResult {
 export interface UserCreateParameters {
   state?: string;
   note?: string;
-  readonly identities?: UserIdentityContract[];
+  identities?: UserIdentityContract[];
   email: string;
   firstName: string;
   lastName: string;
@@ -3892,7 +3892,7 @@ export interface UserTokenResult {
 export interface UserUpdateParameters {
   state?: string;
   note?: string;
-  readonly identities?: UserIdentityContract[];
+  identities?: UserIdentityContract[];
   email?: string;
   password?: string;
   firstName?: string;
