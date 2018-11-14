@@ -52,6 +52,10 @@ export interface SubscriptionCreationParameters {
    */
   skuId?: string;
   /**
+   * optional customer cost center
+   */
+  costCenter?: string;
+  /**
    * rbac owner of the subscription
    */
   owner?: AdPrincipal;

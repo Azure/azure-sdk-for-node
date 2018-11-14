@@ -164,6 +164,8 @@ export interface SubscriptionFactory {
      *
      * @param {string} [body.skuId] The commerce id of the sku.
      *
+     * @param {string} [body.costCenter] optional customer cost center
+     *
      * @param {object} [body.owner] rbac owner of the subscription
      *
      * @param {string} body.owner.objectId Object id of the Principal
@@ -199,6 +201,8 @@ export interface SubscriptionFactory {
      * @param {string} [body.billingProfileId] The ARM id of the billing profile.
      *
      * @param {string} [body.skuId] The commerce id of the sku.
+     *
+     * @param {string} [body.costCenter] optional customer cost center
      *
      * @param {object} [body.owner] rbac owner of the subscription
      *
@@ -256,6 +260,8 @@ export interface SubscriptionFactory {
      *
      * @param {string} [body.skuId] The commerce id of the sku.
      *
+     * @param {string} [body.costCenter] optional customer cost center
+     *
      * @param {object} [body.owner] rbac owner of the subscription
      *
      * @param {string} body.owner.objectId Object id of the Principal
@@ -291,6 +297,8 @@ export interface SubscriptionFactory {
      * @param {string} [body.billingProfileId] The ARM id of the billing profile.
      *
      * @param {string} [body.skuId] The commerce id of the sku.
+     *
+     * @param {string} [body.costCenter] optional customer cost center
      *
      * @param {object} [body.owner] rbac owner of the subscription
      *
