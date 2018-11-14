@@ -129,6 +129,8 @@ export interface StructuredValue extends Intangible {
  * @class
  * Initializes a new instance of the Point2D class.
  * @constructor
+ * Defines a 2D point with X and Y coordinates.
+ *
  * @member {number} x The x-coordinate of the point.
  * @member {number} y The y-coordinate of the point.
  */
@@ -170,6 +172,8 @@ export interface NormalizedQuadrilateral extends StructuredValue {
  * @class
  * Initializes a new instance of the ImageTagRegion class.
  * @constructor
+ * Defines an image region relevant to the ImageTag.
+ *
  * @member {object} queryRectangle A rectangle that outlines the area of
  * interest for this tag.
  * @member {object} [queryRectangle.topLeft] The top left corner coordinate.
@@ -243,6 +247,8 @@ export interface CreativeWork extends Thing {
  * @class
  * Initializes a new instance of the Action class.
  * @constructor
+ * Defines an action.
+ *
  * @member {array} [result] The result produced in the action.
  * @member {string} [displayName] A display name for the action.
  * @member {boolean} [isTopAction] A Boolean representing whether this result
@@ -262,6 +268,8 @@ export interface Action extends CreativeWork {
  * @class
  * Initializes a new instance of the ImageAction class.
  * @constructor
+ * Defines an image action.
+ *
  * @member {string} [actionType] A string representing the type of action.
  */
 export interface ImageAction extends Action {
@@ -272,6 +280,8 @@ export interface ImageAction extends Action {
  * @class
  * Initializes a new instance of the ImageTag class.
  * @constructor
+ * A visual search tag.
+ *
  * @member {string} [displayName] Display name for this tag. For the default
  * tag, the display name is empty.
  * @member {object} [boundingBox] The bounding box for this tag. For the
@@ -486,7 +496,7 @@ export interface ImagesImageMetadata {
  * @member {string} [hostPageUrl] URL of the page that hosts the media object.
  * @member {string} [contentSize] Size of the media object content. Use format
  * "value unit" (e.g., "1024 B").
- * @member {string} [encodingFormat] Encoding format (e.g., mp3, mp4, jpeg,
+ * @member {string} [encodingFormat] Encoding format (e.g., png, gif, jpeg,
  * etc).
  * @member {string} [hostPageDisplayUrl] Display URL of the page that hosts the
  * media object.
@@ -552,6 +562,8 @@ export interface ImageObject extends MediaObject {
  * @class
  * Initializes a new instance of the ImageKnowledge class.
  * @constructor
+ * Defines a visual search API response.
+ *
  * @member {array} [tags] A list of visual search tags.
  * @member {object} [image] Image object containing metadata about the
  * requested image.
@@ -654,48 +666,10 @@ export interface Person extends Thing {
  * @class
  * Initializes a new instance of the ImageEntityAction class.
  * @constructor
- * @member {object} [data] Information about the entity.
- * @member {string} [data.name] The name of the thing represented by this
- * object.
- * @member {string} [data.url] The URL to get more information about the thing
- * represented by this object.
- * @member {object} [data.image] An image of the item.
- * @member {object} [data.image.thumbnail] The URL to a thumbnail of the image.
- * @member {string} [data.image.imageInsightsToken] The token that you use in a
- * subsequent call to Visual Search API to get additional information about the
- * image. For information about using this token, see the imageInsightsToken
- * field inside the knowledgeRequest request parameter.
- * @member {object} [data.image.insightsMetadata] A count of the number of
- * websites where you can shop or perform other actions related to the image.
- * For example, if the image is of an apple pie, this object includes a count
- * of the number of websites where you can buy an apple pie. To indicate the
- * number of offers in your UX, include badging such as a shopping cart icon
- * that contains the count. When the user clicks on the icon, use
- * imageInisghtsToken in a subsequent Visual Search API call to get the list of
- * shopping websites.
- * @member {number} [data.image.insightsMetadata.shoppingSourcesCount] The
- * number of websites that sell the products seen in the image.
- * @member {number} [data.image.insightsMetadata.recipeSourcesCount] The number
- * of websites that offer recipes of the food seen in the image.
- * @member {object} [data.image.insightsMetadata.aggregateOffer] A summary of
- * the online offers of products found in the image. For example, if the image
- * is of a dress, the offer might identify the lowest price and the number of
- * offers found. Only visually similar products insights include this field.
- * The offer includes the following fields: Name, AggregateRating, OfferCount,
- * and LowPrice.
- * @member {array} [data.image.insightsMetadata.aggregateOffer.offers] A list
- * of offers from merchants that have offerings related to the image.
- * @member {string} [data.image.imageId] Unique Id for the image.
- * @member {string} [data.image.accentColor] A three-byte hexadecimal number
- * that represents the color that dominates the image. Use the color as the
- * temporary background in your client until the image is loaded.
- * @member {string} [data.image.visualWords] For interal use only.
- * @member {string} [data.description] A short description of the item.
- * @member {string} [data.alternateName] An alias for the item.
- * @member {string} [data.bingId] An ID that uniquely identifies this item.
+ * Defines an entity action.
+ *
  */
 export interface ImageEntityAction extends ImageAction {
-  readonly data?: Thing;
 }
 
 /**
@@ -714,6 +688,8 @@ export interface ImagesModule {
  * @class
  * Initializes a new instance of the ImageModuleAction class.
  * @constructor
+ * Defines an image list action.
+ *
  * @member {object} [data] A list of images.
  * @member {array} [data.value] A list of images.
  */
@@ -759,6 +735,8 @@ export interface RecipesModule {
  * @class
  * Initializes a new instance of the ImageRecipesAction class.
  * @constructor
+ * Defines an recipe action.
+ *
  * @member {object} [data] A list of recipes related to the image.
  * @member {array} [data.value] A list of recipes.
  */
@@ -838,6 +816,8 @@ export interface RelatedSearchesModule {
  * @class
  * Initializes a new instance of the ImageRelatedSearchesAction class.
  * @constructor
+ * Defines an related search action.
+ *
  * @member {object} [data] A list of queries related to the image.
  * @member {array} [data.value] A list of related searches.
  */
@@ -849,6 +829,8 @@ export interface ImageRelatedSearchesAction extends ImageAction {
  * @class
  * Initializes a new instance of the ImageShoppingSourcesAction class.
  * @constructor
+ * Defines a shopping sources action.
+ *
  * @member {object} [data] A list of merchants that offer items related to the
  * image.
  * @member {array} [data.offers] A list of offers from merchants that have

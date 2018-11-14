@@ -51,7 +51,7 @@ export interface Kind {
  * Contact details for security issues
  *
  * @member {string} email The email of this security contact
- * @member {string} phone The phone number of this security contact
+ * @member {string} [phone] The phone number of this security contact
  * @member {string} alertNotifications Whether to send security alerts
  * notifications to the security contact. Possible values include: 'On', 'Off'
  * @member {string} alertsToAdmins Whether to send security alerts
@@ -59,7 +59,7 @@ export interface Kind {
  */
 export interface SecurityContact extends Resource {
   email: string;
-  phone: string;
+  phone?: string;
   alertNotifications: string;
   alertsToAdmins: string;
 }
@@ -911,6 +911,65 @@ export interface AadConnectivityState1 {
   connectivityState?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the ConnectedResource class.
+ * @constructor
+ * Describes properties of a connected resource
+ *
+ * @member {string} [connectedResourceId] The Azure resource id of the
+ * connected resource
+ * @member {string} [tcpPorts] The allowed tcp ports
+ * @member {string} [udpPorts] The allowed udp ports
+ */
+export interface ConnectedResource {
+  readonly connectedResourceId?: string;
+  readonly tcpPorts?: string;
+  readonly udpPorts?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectableResource class.
+ * @constructor
+ * Describes the allowed inbound and outbound traffic of an Azure resource
+ *
+ * @member {string} [id] The Azure resource id
+ * @member {array} [inboundConnectedResources] The list of Azure resources that
+ * the resource has inbound allowed connection from
+ * @member {array} [outboundConnectedResources] The list of Azure resources
+ * that the resource has outbound allowed connection to
+ */
+export interface ConnectableResource {
+  readonly id?: string;
+  readonly inboundConnectedResources?: ConnectedResource[];
+  readonly outboundConnectedResources?: ConnectedResource[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AllowedConnectionsResource class.
+ * @constructor
+ * The resource whose properties describes the allowed traffic between Azure
+ * resources
+ *
+ * @member {string} [id] Resource Id
+ * @member {string} [name] Resource name
+ * @member {string} [type] Resource type
+ * @member {string} [location] Location where the resource is stored
+ * @member {date} [calculatedDateTime] The UTC time on which the allowed
+ * connections resource was calculated
+ * @member {array} [connectableResources] List of connectable resources
+ */
+export interface AllowedConnectionsResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  readonly location?: string;
+  readonly calculatedDateTime?: Date;
+  readonly connectableResources?: ConnectableResource[];
+}
+
 
 /**
  * @class
@@ -1081,5 +1140,17 @@ export interface ExternalSecuritySolutionList extends Array<ExternalSecuritySolu
  * @member {string} [nextLink] The URI to fetch the next page.
  */
 export interface TopologyList extends Array<TopologyResource> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AllowedConnectionsList class.
+ * @constructor
+ * List of all possible traffic between Azure resources
+ *
+ * @member {string} [nextLink] The URI to fetch the next page.
+ */
+export interface AllowedConnectionsList extends Array<AllowedConnectionsResource> {
   readonly nextLink?: string;
 }

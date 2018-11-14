@@ -848,12 +848,6 @@ export interface ApplicationGetHttpsEndpoint {
   location?: string;
   destinationPort?: number;
   publicPort?: number;
-  /**
-   * @property Describes unknown properties. The value of an unknown property
-   * MUST be of type "string". Due to valid TS constraints we have modeled this
-   * as a union of `string | any`.
-   */
-  [property: string]: string | any;
 }
 
 /**
@@ -892,8 +886,6 @@ export interface ApplicationGetEndpoint {
  * @member {array} [errors] The list of errors.
  * @member {string} [createdDate] The application create date time.
  * @member {string} [marketplaceIdentifier] The marketplace identifier.
- * @member {string} [additionalProperties] The additional properties for
- * application.
  */
 export interface ApplicationProperties {
   computeProfile?: ComputeProfile;
@@ -907,7 +899,6 @@ export interface ApplicationProperties {
   errors?: Errors[];
   readonly createdDate?: string;
   readonly marketplaceIdentifier?: string;
-  additionalProperties?: string;
 }
 
 /**
@@ -939,8 +930,6 @@ export interface ApplicationProperties {
  * @member {string} [properties.createdDate] The application create date time.
  * @member {string} [properties.marketplaceIdentifier] The marketplace
  * identifier.
- * @member {string} [properties.additionalProperties] The additional properties
- * for application.
  */
 export interface Application extends ProxyResource {
   etag?: string;

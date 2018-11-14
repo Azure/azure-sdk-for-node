@@ -4,7 +4,7 @@
   "contributors": [
     "Garrett Serack <garretts@microsoft.com>"
   ],
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Microsoft Server Management Client Library for node",
   "tags": [
     "azure",
