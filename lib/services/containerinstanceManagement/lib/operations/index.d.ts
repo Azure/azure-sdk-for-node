@@ -746,6 +746,68 @@ export interface ContainerGroups {
 
 
     /**
+     * @summary Starts all containers in a container group.
+     *
+     * Starts all containers in a container group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerGroupName The name of the container group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    startWithHttpOperationResponse(resourceGroupName: string, containerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Starts all containers in a container group.
+     *
+     * Starts all containers in a container group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerGroupName The name of the container group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    start(resourceGroupName: string, containerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    start(resourceGroupName: string, containerGroupName: string, callback: ServiceCallback<void>): void;
+    start(resourceGroupName: string, containerGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * @summary Create or update container groups.
      *
      * Create or update container groups with specified configurations.
@@ -1060,6 +1122,68 @@ export interface ContainerGroups {
     beginRestart(resourceGroupName: string, containerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginRestart(resourceGroupName: string, containerGroupName: string, callback: ServiceCallback<void>): void;
     beginRestart(resourceGroupName: string, containerGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Starts all containers in a container group.
+     *
+     * Starts all containers in a container group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerGroupName The name of the container group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginStartWithHttpOperationResponse(resourceGroupName: string, containerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Starts all containers in a container group.
+     *
+     * Starts all containers in a container group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerGroupName The name of the container group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginStart(resourceGroupName: string, containerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginStart(resourceGroupName: string, containerGroupName: string, callback: ServiceCallback<void>): void;
+    beginStart(resourceGroupName: string, containerGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
