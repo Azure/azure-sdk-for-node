@@ -4368,7 +4368,7 @@ export interface ApplicationGatewayRewriteRuleSet extends SubResource {
   rewriteRules?: ApplicationGatewayRewriteRule[];
   readonly provisioningState?: string;
   name?: string;
-  etag?: string;
+  readonly etag?: string;
 }
 
 /**
