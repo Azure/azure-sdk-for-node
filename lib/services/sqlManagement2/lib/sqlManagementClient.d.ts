@@ -107,6 +107,7 @@ export default class SqlManagementClient extends AzureServiceClient {
   backupLongTermRetentionPolicies: operations.BackupLongTermRetentionPolicies;
   managedBackupShortTermRetentionPolicies: operations.ManagedBackupShortTermRetentionPolicies;
   managedDatabases: operations.ManagedDatabases;
+  sensitivityLabels: operations.SensitivityLabels;
   serverAutomaticTuningOperations: operations.ServerAutomaticTuningOperations;
   serverDnsAliases: operations.ServerDnsAliases;
   serverSecurityAlertPolicies: operations.ServerSecurityAlertPolicies;
@@ -124,6 +125,8 @@ export default class SqlManagementClient extends AzureServiceClient {
   managedInstanceTdeCertificates: operations.ManagedInstanceTdeCertificates;
   managedInstanceKeys: operations.ManagedInstanceKeys;
   managedInstanceEncryptionProtectors: operations.ManagedInstanceEncryptionProtectors;
+  managedInstanceVulnerabilityAssessments: operations.ManagedInstanceVulnerabilityAssessments;
+  serverVulnerabilityAssessments: operations.ServerVulnerabilityAssessments;
 }
 
 export { SqlManagementClient, models as SqlManagementModels };

@@ -25964,6 +25964,665 @@ export interface ManagedDatabases {
 
 /**
  * @class
+ * SensitivityLabels
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface SensitivityLabels {
+
+
+    /**
+     * Gets the sensitivity labels of a given database
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] An OData filter expression that filters
+     * elements in the collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SensitivityLabelListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listCurrentByDatabaseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabelListResult>>;
+
+    /**
+     * Gets the sensitivity labels of a given database
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] An OData filter expression that filters
+     * elements in the collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SensitivityLabelListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SensitivityLabelListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SensitivityLabelListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listCurrentByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
+    listCurrentByDatabase(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+    listCurrentByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+
+
+    /**
+     * Gets the sensitivity labels of a given database
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] An OData filter expression that filters
+     * elements in the collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SensitivityLabelListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listRecommendedByDatabaseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabelListResult>>;
+
+    /**
+     * Gets the sensitivity labels of a given database
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] An OData filter expression that filters
+     * elements in the collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SensitivityLabelListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SensitivityLabelListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SensitivityLabelListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listRecommendedByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
+    listRecommendedByDatabase(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+    listRecommendedByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+
+
+    /**
+     * Gets the sensitivity labels of a given database
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] An OData filter expression that filters
+     * elements in the collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SensitivityLabelListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabelListResult>>;
+
+    /**
+     * Gets the sensitivity labels of a given database
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] An OData filter expression that filters
+     * elements in the collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SensitivityLabelListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SensitivityLabelListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SensitivityLabelListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+
+
+    /**
+     * Gets the sensitivity label of a given column
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {string} columnName The name of the column.
+     *
+     * @param {string} sensitivityLabelSource The source of the sensitivity label.
+     * Possible values include: 'current', 'recommended'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SensitivityLabel>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, sensitivityLabelSource: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabel>>;
+
+    /**
+     * Gets the sensitivity label of a given column
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {string} columnName The name of the column.
+     *
+     * @param {string} sensitivityLabelSource The source of the sensitivity label.
+     * Possible values include: 'current', 'recommended'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SensitivityLabel} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SensitivityLabel} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SensitivityLabel} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, sensitivityLabelSource: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabel>;
+    get(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, sensitivityLabelSource: string, callback: ServiceCallback<models.SensitivityLabel>): void;
+    get(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, sensitivityLabelSource: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabel>): void;
+
+
+    /**
+     * Creates or updates the sensitivity label of a given column
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {string} columnName The name of the column.
+     *
+     * @param {object} parameters The column sensitivity label resource.
+     *
+     * @param {string} [parameters.labelName] The label name.
+     *
+     * @param {string} [parameters.informationType] The information type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SensitivityLabel>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, parameters: models.SensitivityLabel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabel>>;
+
+    /**
+     * Creates or updates the sensitivity label of a given column
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {string} columnName The name of the column.
+     *
+     * @param {object} parameters The column sensitivity label resource.
+     *
+     * @param {string} [parameters.labelName] The label name.
+     *
+     * @param {string} [parameters.informationType] The information type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SensitivityLabel} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SensitivityLabel} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SensitivityLabel} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, parameters: models.SensitivityLabel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabel>;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, parameters: models.SensitivityLabel, callback: ServiceCallback<models.SensitivityLabel>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, parameters: models.SensitivityLabel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabel>): void;
+
+
+    /**
+     * Deletes the sensitivity label of a given column
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {string} columnName The name of the column.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the sensitivity label of a given column
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {string} columnName The name of the column.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the sensitivity labels of a given database
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SensitivityLabelListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listCurrentByDatabaseNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabelListResult>>;
+
+    /**
+     * Gets the sensitivity labels of a given database
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SensitivityLabelListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SensitivityLabelListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SensitivityLabelListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listCurrentByDatabaseNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
+    listCurrentByDatabaseNext(nextPageLink: string, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+    listCurrentByDatabaseNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+
+
+    /**
+     * Gets the sensitivity labels of a given database
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SensitivityLabelListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listRecommendedByDatabaseNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabelListResult>>;
+
+    /**
+     * Gets the sensitivity labels of a given database
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SensitivityLabelListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SensitivityLabelListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SensitivityLabelListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listRecommendedByDatabaseNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
+    listRecommendedByDatabaseNext(nextPageLink: string, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+    listRecommendedByDatabaseNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+
+
+    /**
+     * Gets the sensitivity labels of a given database
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SensitivityLabelListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabelListResult>>;
+
+    /**
+     * Gets the sensitivity labels of a given database
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SensitivityLabelListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SensitivityLabelListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SensitivityLabelListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabaseNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
+    listByDatabaseNext(nextPageLink: string, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+    listByDatabaseNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+}
+
+/**
+ * @class
  * ServerAutomaticTuningOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SqlManagementClient.
@@ -32028,4 +32687,774 @@ export interface ManagedInstanceEncryptionProtectors {
     listByInstanceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceEncryptionProtectorListResult>;
     listByInstanceNext(nextPageLink: string, callback: ServiceCallback<models.ManagedInstanceEncryptionProtectorListResult>): void;
     listByInstanceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceEncryptionProtectorListResult>): void;
+}
+
+/**
+ * @class
+ * ManagedInstanceVulnerabilityAssessments
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ManagedInstanceVulnerabilityAssessments {
+
+
+    /**
+     * Gets the managed instance's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance for
+     * which the vulnerability assessment is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstanceVulnerabilityAssessment>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceVulnerabilityAssessment>>;
+
+    /**
+     * Gets the managed instance's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance for
+     * which the vulnerability assessment is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstanceVulnerabilityAssessment} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstanceVulnerabilityAssessment} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedInstanceVulnerabilityAssessment} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceVulnerabilityAssessment>;
+    get(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<models.ManagedInstanceVulnerabilityAssessment>): void;
+    get(resourceGroupName: string, managedInstanceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceVulnerabilityAssessment>): void;
+
+
+    /**
+     * Creates or updates the managed instance's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance for
+     * which the vulnerability assessment is defined.
+     *
+     * @param {object} parameters The requested resource.
+     *
+     * @param {string} parameters.storageContainerPath A blob storage container
+     * path to hold the scan results (e.g.
+     * https://myStorage.blob.core.windows.net/VaScans/).
+     *
+     * @param {string} [parameters.storageContainerSasKey] A shared access
+     * signature (SAS Key) that has write access to the blob container specified in
+     * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
+     * specified, StorageContainerSasKey is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the storage account for vulnerability assessment scan
+     * results. If 'StorageContainerSasKey' isn't specified,
+     * storageAccountAccessKey is required.
+     *
+     * @param {object} [parameters.recurringScans] The recurring scans settings
+     *
+     * @param {boolean} [parameters.recurringScans.isEnabled] Recurring scans
+     * state.
+     *
+     * @param {boolean} [parameters.recurringScans.emailSubscriptionAdmins]
+     * Specifies that the schedule scan notification will be is sent to the
+     * subscription administrators.
+     *
+     * @param {array} [parameters.recurringScans.emails] Specifies an array of
+     * e-mail addresses to which the scan notification is sent.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstanceVulnerabilityAssessment>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceVulnerabilityAssessment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceVulnerabilityAssessment>>;
+
+    /**
+     * Creates or updates the managed instance's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance for
+     * which the vulnerability assessment is defined.
+     *
+     * @param {object} parameters The requested resource.
+     *
+     * @param {string} parameters.storageContainerPath A blob storage container
+     * path to hold the scan results (e.g.
+     * https://myStorage.blob.core.windows.net/VaScans/).
+     *
+     * @param {string} [parameters.storageContainerSasKey] A shared access
+     * signature (SAS Key) that has write access to the blob container specified in
+     * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
+     * specified, StorageContainerSasKey is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the storage account for vulnerability assessment scan
+     * results. If 'StorageContainerSasKey' isn't specified,
+     * storageAccountAccessKey is required.
+     *
+     * @param {object} [parameters.recurringScans] The recurring scans settings
+     *
+     * @param {boolean} [parameters.recurringScans.isEnabled] Recurring scans
+     * state.
+     *
+     * @param {boolean} [parameters.recurringScans.emailSubscriptionAdmins]
+     * Specifies that the schedule scan notification will be is sent to the
+     * subscription administrators.
+     *
+     * @param {array} [parameters.recurringScans.emails] Specifies an array of
+     * e-mail addresses to which the scan notification is sent.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstanceVulnerabilityAssessment} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstanceVulnerabilityAssessment} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedInstanceVulnerabilityAssessment} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceVulnerabilityAssessment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceVulnerabilityAssessment>;
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceVulnerabilityAssessment, callback: ServiceCallback<models.ManagedInstanceVulnerabilityAssessment>): void;
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceVulnerabilityAssessment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceVulnerabilityAssessment>): void;
+
+
+    /**
+     * Removes the managed instance's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance for
+     * which the vulnerability assessment is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Removes the managed instance's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance for
+     * which the vulnerability assessment is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, managedInstanceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the managed instance's vulnerability assessment policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance for
+     * which the vulnerability assessments is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstanceVulnerabilityAssessmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByInstanceWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceVulnerabilityAssessmentListResult>>;
+
+    /**
+     * Gets the managed instance's vulnerability assessment policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance for
+     * which the vulnerability assessments is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstanceVulnerabilityAssessmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstanceVulnerabilityAssessmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ManagedInstanceVulnerabilityAssessmentListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByInstance(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceVulnerabilityAssessmentListResult>;
+    listByInstance(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<models.ManagedInstanceVulnerabilityAssessmentListResult>): void;
+    listByInstance(resourceGroupName: string, managedInstanceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceVulnerabilityAssessmentListResult>): void;
+
+
+    /**
+     * Gets the managed instance's vulnerability assessment policies.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstanceVulnerabilityAssessmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByInstanceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceVulnerabilityAssessmentListResult>>;
+
+    /**
+     * Gets the managed instance's vulnerability assessment policies.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstanceVulnerabilityAssessmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstanceVulnerabilityAssessmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ManagedInstanceVulnerabilityAssessmentListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByInstanceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceVulnerabilityAssessmentListResult>;
+    listByInstanceNext(nextPageLink: string, callback: ServiceCallback<models.ManagedInstanceVulnerabilityAssessmentListResult>): void;
+    listByInstanceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceVulnerabilityAssessmentListResult>): void;
+}
+
+/**
+ * @class
+ * ServerVulnerabilityAssessments
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ServerVulnerabilityAssessments {
+
+
+    /**
+     * Gets the server's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServerVulnerabilityAssessment>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerVulnerabilityAssessment>>;
+
+    /**
+     * Gets the server's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServerVulnerabilityAssessment} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServerVulnerabilityAssessment} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServerVulnerabilityAssessment} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerVulnerabilityAssessment>;
+    get(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.ServerVulnerabilityAssessment>): void;
+    get(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerVulnerabilityAssessment>): void;
+
+
+    /**
+     * Creates or updates the server's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} parameters The requested resource.
+     *
+     * @param {string} parameters.storageContainerPath A blob storage container
+     * path to hold the scan results (e.g.
+     * https://myStorage.blob.core.windows.net/VaScans/).
+     *
+     * @param {string} [parameters.storageContainerSasKey] A shared access
+     * signature (SAS Key) that has write access to the blob container specified in
+     * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
+     * specified, StorageContainerSasKey is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the storage account for vulnerability assessment scan
+     * results. If 'StorageContainerSasKey' isn't specified,
+     * storageAccountAccessKey is required.
+     *
+     * @param {object} [parameters.recurringScans] The recurring scans settings
+     *
+     * @param {boolean} [parameters.recurringScans.isEnabled] Recurring scans
+     * state.
+     *
+     * @param {boolean} [parameters.recurringScans.emailSubscriptionAdmins]
+     * Specifies that the schedule scan notification will be is sent to the
+     * subscription administrators.
+     *
+     * @param {array} [parameters.recurringScans.emails] Specifies an array of
+     * e-mail addresses to which the scan notification is sent.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServerVulnerabilityAssessment>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ServerVulnerabilityAssessment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerVulnerabilityAssessment>>;
+
+    /**
+     * Creates or updates the server's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} parameters The requested resource.
+     *
+     * @param {string} parameters.storageContainerPath A blob storage container
+     * path to hold the scan results (e.g.
+     * https://myStorage.blob.core.windows.net/VaScans/).
+     *
+     * @param {string} [parameters.storageContainerSasKey] A shared access
+     * signature (SAS Key) that has write access to the blob container specified in
+     * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
+     * specified, StorageContainerSasKey is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the storage account for vulnerability assessment scan
+     * results. If 'StorageContainerSasKey' isn't specified,
+     * storageAccountAccessKey is required.
+     *
+     * @param {object} [parameters.recurringScans] The recurring scans settings
+     *
+     * @param {boolean} [parameters.recurringScans.isEnabled] Recurring scans
+     * state.
+     *
+     * @param {boolean} [parameters.recurringScans.emailSubscriptionAdmins]
+     * Specifies that the schedule scan notification will be is sent to the
+     * subscription administrators.
+     *
+     * @param {array} [parameters.recurringScans.emails] Specifies an array of
+     * e-mail addresses to which the scan notification is sent.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServerVulnerabilityAssessment} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServerVulnerabilityAssessment} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServerVulnerabilityAssessment} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerVulnerabilityAssessment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerVulnerabilityAssessment>;
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerVulnerabilityAssessment, callback: ServiceCallback<models.ServerVulnerabilityAssessment>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerVulnerabilityAssessment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerVulnerabilityAssessment>): void;
+
+
+    /**
+     * Removes the server's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Removes the server's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serverName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists the vulnerability assessment policies associated with a server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServerVulnerabilityAssessmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServerWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerVulnerabilityAssessmentListResult>>;
+
+    /**
+     * Lists the vulnerability assessment policies associated with a server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServerVulnerabilityAssessmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServerVulnerabilityAssessmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServerVulnerabilityAssessmentListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServer(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerVulnerabilityAssessmentListResult>;
+    listByServer(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.ServerVulnerabilityAssessmentListResult>): void;
+    listByServer(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerVulnerabilityAssessmentListResult>): void;
+
+
+    /**
+     * Lists the vulnerability assessment policies associated with a server.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServerVulnerabilityAssessmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServerNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerVulnerabilityAssessmentListResult>>;
+
+    /**
+     * Lists the vulnerability assessment policies associated with a server.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServerVulnerabilityAssessmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServerVulnerabilityAssessmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServerVulnerabilityAssessmentListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServerNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerVulnerabilityAssessmentListResult>;
+    listByServerNext(nextPageLink: string, callback: ServiceCallback<models.ServerVulnerabilityAssessmentListResult>): void;
+    listByServerNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerVulnerabilityAssessmentListResult>): void;
 }
