@@ -62,7 +62,7 @@ export interface BillingPeriod extends Resource {
 }
 
 /**
- * A secure URL that can be used to download a an entity until the URL expires.
+ * A secure URL that can be used to download a PDF invoice until the URL expires.
  */
 export interface DownloadUrl {
   /**
