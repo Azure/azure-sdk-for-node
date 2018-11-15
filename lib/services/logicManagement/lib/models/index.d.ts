@@ -8571,47 +8571,6 @@ export interface RequestHistory extends Resource {
   properties?: RequestHistoryProperties;
 }
 
-/**
- * @class
- * Initializes a new instance of the ApiErrorBody class.
- * @constructor
- * An error response from the Logic App service.
- *
- * @member {string} [code] An identifier for the error. Codes are invariant and
- * are intended to be consumed programmatically.
- * @member {string} [message] A message describing the error, intended to be
- * suitable for display in a user interface.
- * @member {string} [target] The target of the particular error. For example,
- * the name of the property in error.
- * @member {array} [details] A list of additional details about the error.
- */
-export interface ApiErrorBody {
-  code?: string;
-  message?: string;
-  target?: string;
-  details?: ApiErrorBody[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ApiError class.
- * @constructor
- * An error response from the Logic App service.
- *
- * @member {object} [error]
- * @member {string} [error.code] An identifier for the error. Codes are
- * invariant and are intended to be consumed programmatically.
- * @member {string} [error.message] A message describing the error, intended to
- * be suitable for display in a user interface.
- * @member {string} [error.target] The target of the particular error. For
- * example, the name of the property in error.
- * @member {array} [error.details] A list of additional details about the
- * error.
- */
-export interface ApiError {
-  error?: ApiErrorBody;
-}
-
 
 /**
  * @class
