@@ -127,7 +127,8 @@ export interface FileSystem {
      * file to which to append using concurrent append.
      *
      * @param {object} streamContents The file contents to include when appending
-     * to the file.
+     * to the file.  The maximum content size is 4MB.  For content larger than 4MB
+     * you must append the content in 4MB chunks.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -173,7 +174,8 @@ export interface FileSystem {
      * file to which to append using concurrent append.
      *
      * @param {object} streamContents The file contents to include when appending
-     * to the file.
+     * to the file.  The maximum content size is 4MB.  For content larger than 4MB
+     * you must append the content in 4MB chunks.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -848,7 +850,8 @@ export interface FileSystem {
      * file to which to append.
      *
      * @param {object} streamContents The file contents to include when appending
-     * to the file.
+     * to the file.  The maximum content size is 4MB.  For content larger than 4MB
+     * you must append the content in 4MB chunks.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -899,7 +902,8 @@ export interface FileSystem {
      * file to which to append.
      *
      * @param {object} streamContents The file contents to include when appending
-     * to the file.
+     * to the file.  The maximum content size is 4MB.  For content larger than 4MB
+     * you must append the content in 4MB chunks.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -968,7 +972,8 @@ export interface FileSystem {
      *
      * @param {object} [options.streamContents] The file contents to include when
      * creating the file. This parameter is optional, resulting in an empty file if
-     * not specified.
+     * not specified.  The maximum content size is 4MB.  For content larger than
+     * 4MB you must append the content in 4MB chunks.
      *
      * @param {boolean} [options.overwrite] The indication of if the file should be
      * overwritten.
@@ -1016,7 +1021,8 @@ export interface FileSystem {
      *
      * @param {object} [options.streamContents] The file contents to include when
      * creating the file. This parameter is optional, resulting in an empty file if
-     * not specified.
+     * not specified.  The maximum content size is 4MB.  For content larger than
+     * 4MB you must append the content in 4MB chunks.
      *
      * @param {boolean} [options.overwrite] The indication of if the file should be
      * overwritten.
