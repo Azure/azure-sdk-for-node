@@ -21,7 +21,7 @@ var SuiteBase = require('../../framework/suite-base');
 var dump = util.inspect;
 
 var DataLakeAnalyticsAccountManagementClient = require('../../../lib/services/dataLake.Analytics/lib/account/dataLakeAnalyticsAccountManagementClient');
-var DataLakeStoreAccountManagementClient = require('../../../lib/services/dataLake.Store/lib/account/dataLakeStoreAccountManagementClient');
+var DataLakeStoreAccountManagementClient = require('../../../lib/services/datalake.Store/lib/account/dataLakeStoreAccountManagementClient');
 var DataLakeAnalyticsJobManagementClient = require('../../../lib/services/dataLake.Analytics/lib/job/dataLakeAnalyticsJobManagementClient');
 var DataLakeAnalyticsCatalogManagementClient = require('../../../lib/services/dataLake.Analytics/lib/catalog/dataLakeAnalyticsCatalogManagementClient');
 var ResourceManagementClient = require('../../../lib/services/resourceManagement/lib/resource/resourceManagementClient');
