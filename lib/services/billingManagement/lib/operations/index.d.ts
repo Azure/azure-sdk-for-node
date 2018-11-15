@@ -695,6 +695,133 @@ export interface Invoices {
 
 /**
  * @class
+ * InvoicePricesheet
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BillingManagementClient.
+ */
+export interface InvoicePricesheet {
+
+
+    /**
+     * Get pricesheet data for invoice id (invoiceName).
+     *
+     * @param {string} billingAccountId Azure Billing Account ID.
+     *
+     * @param {string} invoiceName The name of an invoice resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DownloadUrl>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    downloadWithHttpOperationResponse(billingAccountId: string, invoiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DownloadUrl>>;
+
+    /**
+     * Get pricesheet data for invoice id (invoiceName).
+     *
+     * @param {string} billingAccountId Azure Billing Account ID.
+     *
+     * @param {string} invoiceName The name of an invoice resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DownloadUrl} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DownloadUrl} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DownloadUrl} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    download(billingAccountId: string, invoiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DownloadUrl>;
+    download(billingAccountId: string, invoiceName: string, callback: ServiceCallback<models.DownloadUrl>): void;
+    download(billingAccountId: string, invoiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DownloadUrl>): void;
+
+
+    /**
+     * Get pricesheet data for invoice id (invoiceName).
+     *
+     * @param {string} billingAccountId Azure Billing Account ID.
+     *
+     * @param {string} invoiceName The name of an invoice resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DownloadUrl>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDownloadWithHttpOperationResponse(billingAccountId: string, invoiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DownloadUrl>>;
+
+    /**
+     * Get pricesheet data for invoice id (invoiceName).
+     *
+     * @param {string} billingAccountId Azure Billing Account ID.
+     *
+     * @param {string} invoiceName The name of an invoice resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DownloadUrl} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DownloadUrl} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DownloadUrl} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDownload(billingAccountId: string, invoiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DownloadUrl>;
+    beginDownload(billingAccountId: string, invoiceName: string, callback: ServiceCallback<models.DownloadUrl>): void;
+    beginDownload(billingAccountId: string, invoiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DownloadUrl>): void;
+}
+
+/**
+ * @class
  * Operations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the BillingManagementClient.
