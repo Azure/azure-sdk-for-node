@@ -8454,6 +8454,123 @@ export interface BatchConfiguration extends Resource {
   properties: BatchConfigurationProperties;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the Request class.
+ * @constructor
+ * A request.
+ *
+ * @member {object} [headers] A list of all the headers attached to the
+ * request.
+ * @member {string} [uri] The destination for the request.
+ * @member {string} [method] The HTTP method used for the request.
+ */
+export interface Request {
+  headers?: any;
+  uri?: string;
+  method?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Response class.
+ * @constructor
+ * A response.
+ *
+ * @member {object} [headers] A list of all the headers attached to the
+ * response.
+ * @member {number} [statusCode] The status code of the response.
+ * @member {object} [bodyLink] Details on the location of the body content.
+ * @member {string} [bodyLink.uri] The content link URI.
+ * @member {string} [bodyLink.contentVersion] The content version.
+ * @member {number} [bodyLink.contentSize] The content size.
+ * @member {object} [bodyLink.contentHash] The content hash.
+ * @member {string} [bodyLink.contentHash.algorithm] The algorithm of the
+ * content hash.
+ * @member {string} [bodyLink.contentHash.value] The value of the content hash.
+ * @member {object} [bodyLink.metadata] The metadata.
+ */
+export interface Response {
+  headers?: any;
+  statusCode?: number;
+  bodyLink?: ContentLink;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RequestHistoryProperties class.
+ * @constructor
+ * The request history.
+ *
+ * @member {date} [startTime] The time the request started.
+ * @member {date} [endTime] The time the request ended.
+ * @member {object} [request] The request.
+ * @member {object} [request.headers] A list of all the headers attached to the
+ * request.
+ * @member {string} [request.uri] The destination for the request.
+ * @member {string} [request.method] The HTTP method used for the request.
+ * @member {object} [response] The response.
+ * @member {object} [response.headers] A list of all the headers attached to
+ * the response.
+ * @member {number} [response.statusCode] The status code of the response.
+ * @member {object} [response.bodyLink] Details on the location of the body
+ * content.
+ * @member {string} [response.bodyLink.uri] The content link URI.
+ * @member {string} [response.bodyLink.contentVersion] The content version.
+ * @member {number} [response.bodyLink.contentSize] The content size.
+ * @member {object} [response.bodyLink.contentHash] The content hash.
+ * @member {string} [response.bodyLink.contentHash.algorithm] The algorithm of
+ * the content hash.
+ * @member {string} [response.bodyLink.contentHash.value] The value of the
+ * content hash.
+ * @member {object} [response.bodyLink.metadata] The metadata.
+ */
+export interface RequestHistoryProperties {
+  startTime?: Date;
+  endTime?: Date;
+  request?: Request;
+  response?: Response;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RequestHistory class.
+ * @constructor
+ * The request history.
+ *
+ * @member {object} [properties] The request history properties.
+ * @member {date} [properties.startTime] The time the request started.
+ * @member {date} [properties.endTime] The time the request ended.
+ * @member {object} [properties.request] The request.
+ * @member {object} [properties.request.headers] A list of all the headers
+ * attached to the request.
+ * @member {string} [properties.request.uri] The destination for the request.
+ * @member {string} [properties.request.method] The HTTP method used for the
+ * request.
+ * @member {object} [properties.response] The response.
+ * @member {object} [properties.response.headers] A list of all the headers
+ * attached to the response.
+ * @member {number} [properties.response.statusCode] The status code of the
+ * response.
+ * @member {object} [properties.response.bodyLink] Details on the location of
+ * the body content.
+ * @member {string} [properties.response.bodyLink.uri] The content link URI.
+ * @member {string} [properties.response.bodyLink.contentVersion] The content
+ * version.
+ * @member {number} [properties.response.bodyLink.contentSize] The content
+ * size.
+ * @member {object} [properties.response.bodyLink.contentHash] The content
+ * hash.
+ * @member {string} [properties.response.bodyLink.contentHash.algorithm] The
+ * algorithm of the content hash.
+ * @member {string} [properties.response.bodyLink.contentHash.value] The value
+ * of the content hash.
+ * @member {object} [properties.response.bodyLink.metadata] The metadata.
+ */
+export interface RequestHistory extends Resource {
+  properties?: RequestHistoryProperties;
+}
+
 
 /**
  * @class
@@ -8544,6 +8661,18 @@ export interface ExpressionTraces extends Array<ExpressionRoot> {
  *
  */
 export interface WorkflowRunActionRepetitionDefinitionCollection extends Array<WorkflowRunActionRepetitionDefinition> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RequestHistoryListResult class.
+ * @constructor
+ * The list of workflow request histories.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface RequestHistoryListResult extends Array<RequestHistory> {
+  nextLink?: string;
 }
 
 /**
