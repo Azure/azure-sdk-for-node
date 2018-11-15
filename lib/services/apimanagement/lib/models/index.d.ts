@@ -1883,7 +1883,7 @@ export interface ResourceSku {
  * @member {number} [maximum] The maximum capacity that can be set.
  * @member {number} [default] The default capacity.
  * @member {string} [scaleType] The scale type applicable to the sku. Possible
- * values include: 'Automatic', 'Manual', 'None'
+ * values include: 'automatic', 'manual', 'none'
  */
 export interface ResourceSkuCapacity {
   readonly minimum?: number;
@@ -1907,7 +1907,7 @@ export interface ResourceSkuCapacity {
  * @member {number} [capacity.maximum] The maximum capacity that can be set.
  * @member {number} [capacity.default] The default capacity.
  * @member {string} [capacity.scaleType] The scale type applicable to the sku.
- * Possible values include: 'Automatic', 'Manual', 'None'
+ * Possible values include: 'automatic', 'manual', 'none'
  */
 export interface ResourceSkuResult {
   readonly resourceType?: string;
