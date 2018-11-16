@@ -59,7 +59,7 @@ export interface SubResource extends BaseResource {
  * @member {string} [type] Gets the resource type.
  */
 export interface ResourceReference {
-  readonly id?: string;
+  id?: string;
   readonly name?: string;
   readonly type?: string;
 }

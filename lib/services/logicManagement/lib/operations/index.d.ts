@@ -231,6 +231,8 @@ export interface Workflows {
      *
      * @param {object} [workflow.integrationAccount] The integration account.
      *
+     * @param {string} [workflow.integrationAccount.id] The resource id.
+     *
      * @param {object} [workflow.definition] The definition.
      *
      * @param {object} [workflow.parameters] The parameters.
@@ -272,6 +274,8 @@ export interface Workflows {
      * @param {object} [workflow.sku.plan] The reference to plan.
      *
      * @param {object} [workflow.integrationAccount] The integration account.
+     *
+     * @param {string} [workflow.integrationAccount.id] The resource id.
      *
      * @param {object} [workflow.definition] The definition.
      *
@@ -334,6 +338,8 @@ export interface Workflows {
      *
      * @param {object} [workflow.integrationAccount] The integration account.
      *
+     * @param {string} [workflow.integrationAccount.id] The resource id.
+     *
      * @param {object} [workflow.definition] The definition.
      *
      * @param {object} [workflow.parameters] The parameters.
@@ -375,6 +381,8 @@ export interface Workflows {
      * @param {object} [workflow.sku.plan] The reference to plan.
      *
      * @param {object} [workflow.integrationAccount] The integration account.
+     *
+     * @param {string} [workflow.integrationAccount.id] The resource id.
      *
      * @param {object} [workflow.definition] The definition.
      *
@@ -809,6 +817,8 @@ export interface Workflows {
      *
      * @param {object} [moveParameter.integrationAccount] The integration account.
      *
+     * @param {string} [moveParameter.integrationAccount.id] The resource id.
+     *
      * @param {object} [moveParameter.definition] The definition.
      *
      * @param {object} [moveParameter.parameters] The parameters.
@@ -850,6 +860,8 @@ export interface Workflows {
      * @param {object} [moveParameter.sku.plan] The reference to plan.
      *
      * @param {object} [moveParameter.integrationAccount] The integration account.
+     *
+     * @param {string} [moveParameter.integrationAccount.id] The resource id.
      *
      * @param {object} [moveParameter.definition] The definition.
      *
@@ -979,6 +991,8 @@ export interface Workflows {
      *
      * @param {object} [validate.integrationAccount] The integration account.
      *
+     * @param {string} [validate.integrationAccount.id] The resource id.
+     *
      * @param {object} [validate.definition] The definition.
      *
      * @param {object} [validate.parameters] The parameters.
@@ -1020,6 +1034,8 @@ export interface Workflows {
      * @param {object} [validate.sku.plan] The reference to plan.
      *
      * @param {object} [validate.integrationAccount] The integration account.
+     *
+     * @param {string} [validate.integrationAccount.id] The resource id.
      *
      * @param {object} [validate.definition] The definition.
      *
@@ -1083,6 +1099,8 @@ export interface Workflows {
      *
      * @param {object} [workflow.integrationAccount] The integration account.
      *
+     * @param {string} [workflow.integrationAccount.id] The resource id.
+     *
      * @param {object} [workflow.definition] The definition.
      *
      * @param {object} [workflow.parameters] The parameters.
@@ -1126,6 +1144,8 @@ export interface Workflows {
      * @param {object} [workflow.sku.plan] The reference to plan.
      *
      * @param {object} [workflow.integrationAccount] The integration account.
+     *
+     * @param {string} [workflow.integrationAccount.id] The resource id.
      *
      * @param {object} [workflow.definition] The definition.
      *
@@ -4279,6 +4299,8 @@ export interface IntegrationAccounts {
      *
      * @param {object} listKeyVaultKeysParameter.keyVault The key vault reference.
      *
+     * @param {string} [listKeyVaultKeysParameter.keyVault.id] The resource id.
+     *
      * @param {string} [listKeyVaultKeysParameter.skipToken] The skip token.
      *
      * @param {object} [options] Optional Parameters.
@@ -4304,6 +4326,8 @@ export interface IntegrationAccounts {
      * @param {object} listKeyVaultKeysParameter The key vault parameters.
      *
      * @param {object} listKeyVaultKeysParameter.keyVault The key vault reference.
+     *
+     * @param {string} [listKeyVaultKeysParameter.keyVault.id] The resource id.
      *
      * @param {string} [listKeyVaultKeysParameter.skipToken] The skip token.
      *
