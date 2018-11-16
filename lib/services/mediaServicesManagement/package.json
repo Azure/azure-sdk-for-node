@@ -1,7 +1,7 @@
 {
   "name": "azure-arm-mediaservices",
   "author": "Microsoft Corporation",
-  "description": "AzureMediaServices Library with typescript type definitions for node",
+  "description": "MediaServicesManagementClient Library with typescript type definitions for node",
   "version": "4.1.0",
   "dependencies": {
     "ms-rest": "^2.3.3",
@@ -12,8 +12,8 @@
     "azure"
   ],
   "license": "MIT",
-  "main": "./lib/azureMediaServices.js",
-  "types": "./lib/azureMediaServices.d.ts",
+  "main": "./lib/mediaServicesManagementClient.js",
+  "types": "./lib/mediaServicesManagementClient.d.ts",
   "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/mediaServicesManagement",
   "repository": {
     "type": "git",
