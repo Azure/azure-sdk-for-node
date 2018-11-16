@@ -11,6 +11,16 @@
 import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
 import * as models from "./models";
 
+/**
+ * AutoSuggestAPIClientOptions for AutoSuggestAPIClient.
+ */
+declare interface AutoSuggestAPIClientOptions extends ServiceClientOptions {
+  /**
+   * @property {string} [endpoint] - Supported Cognitive Services endpoints (protocol and hostname, for example: "https://westus.api.cognitive.microsoft.com", "https://api.cognitive.microsoft.com").
+   */
+  endpoint?: string;
+}
+
 export default class AutoSuggestAPIClient extends ServiceClient {
   /**
    * @class
@@ -18,8 +28,6 @@ export default class AutoSuggestAPIClient extends ServiceClient {
    * @constructor
    *
    * @param {credentials} credentials - Subscription credentials which uniquely identify client subscription.
-   *
-   * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
    *
@@ -30,17 +38,21 @@ export default class AutoSuggestAPIClient extends ServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
+   * @param {string} [options.endpoint] - Supported Cognitive Services endpoints (protocol and hostname, for example: "https://westus.api.cognitive.microsoft.com", "https://api.cognitive.microsoft.com").
+   *
    */
-  constructor(credentials: ServiceClientCredentials, baseUri?: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, options?: AutoSuggestAPIClientOptions);
 
   credentials: ServiceClientCredentials;
+
+  endpoint: string;
 
 
   /**
    * @summary The AutoSuggest API lets you send a search query to Bing and get
-   * back a list of suggestions. This section provides technical details about
-   * the query parameters and headers that you use to request suggestions and the
-   * JSON response objects that contain them.
+   * back a list of query suggestions. This section provides technical details
+   * about the query parameters and headers that you use to request suggestions
+   * and the JSON response objects that contain them.
    *
    * @param {string} query The user's search term.
    *
@@ -227,9 +239,9 @@ export default class AutoSuggestAPIClient extends ServiceClient {
 
   /**
    * @summary The AutoSuggest API lets you send a search query to Bing and get
-   * back a list of suggestions. This section provides technical details about
-   * the query parameters and headers that you use to request suggestions and the
-   * JSON response objects that contain them.
+   * back a list of query suggestions. This section provides technical details
+   * about the query parameters and headers that you use to request suggestions
+   * and the JSON response objects that contain them.
    *
    * @param {string} query The user's search term.
    *
