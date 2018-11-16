@@ -14,6 +14,180 @@ import * as models from '../models';
 
 /**
  * @class
+ * EnrollmentAccounts
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BillingManagementClient.
+ */
+export interface EnrollmentAccounts {
+
+
+    /**
+     * Lists the enrollment accounts the caller has access to.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EnrollmentAccountListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EnrollmentAccountListResult>>;
+
+    /**
+     * Lists the enrollment accounts the caller has access to.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EnrollmentAccountListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EnrollmentAccountListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EnrollmentAccountListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EnrollmentAccountListResult>;
+    list(callback: ServiceCallback<models.EnrollmentAccountListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EnrollmentAccountListResult>): void;
+
+
+    /**
+     * Gets a enrollment account by name.
+     *
+     * @param {string} name Enrollment Account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EnrollmentAccount>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EnrollmentAccount>>;
+
+    /**
+     * Gets a enrollment account by name.
+     *
+     * @param {string} name Enrollment Account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EnrollmentAccount} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EnrollmentAccount} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EnrollmentAccount} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EnrollmentAccount>;
+    get(name: string, callback: ServiceCallback<models.EnrollmentAccount>): void;
+    get(name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EnrollmentAccount>): void;
+
+
+    /**
+     * Lists the enrollment accounts the caller has access to.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EnrollmentAccountListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EnrollmentAccountListResult>>;
+
+    /**
+     * Lists the enrollment accounts the caller has access to.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EnrollmentAccountListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EnrollmentAccountListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EnrollmentAccountListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EnrollmentAccountListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.EnrollmentAccountListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EnrollmentAccountListResult>): void;
+}
+
+/**
+ * @class
  * BillingPeriods
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the BillingManagementClient.
@@ -23,7 +197,9 @@ export interface BillingPeriods {
 
     /**
      * Lists the available billing periods for a subscription in reverse
-     * chronological order.
+     * chronological order. This is only supported for Azure Web-Direct
+     * subscriptions. Other subscription types which were not purchased directly
+     * through the Azure web portal are not supported through this preview API.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -52,7 +228,9 @@ export interface BillingPeriods {
 
     /**
      * Lists the available billing periods for a subscription in reverse
-     * chronological order.
+     * chronological order. This is only supported for Azure Web-Direct
+     * subscriptions. Other subscription types which were not purchased directly
+     * through the Azure web portal are not supported through this preview API.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -100,7 +278,9 @@ export interface BillingPeriods {
 
 
     /**
-     * Gets a named billing period.
+     * Gets a named billing period.  This is only supported for Azure Web-Direct
+     * subscriptions. Other subscription types which were not purchased directly
+     * through the Azure web portal are not supported through this preview API.
      *
      * @param {string} billingPeriodName The name of a BillingPeriod resource.
      *
@@ -118,7 +298,9 @@ export interface BillingPeriods {
     getWithHttpOperationResponse(billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingPeriod>>;
 
     /**
-     * Gets a named billing period.
+     * Gets a named billing period.  This is only supported for Azure Web-Direct
+     * subscriptions. Other subscription types which were not purchased directly
+     * through the Azure web portal are not supported through this preview API.
      *
      * @param {string} billingPeriodName The name of a BillingPeriod resource.
      *
@@ -156,7 +338,9 @@ export interface BillingPeriods {
 
     /**
      * Lists the available billing periods for a subscription in reverse
-     * chronological order.
+     * chronological order. This is only supported for Azure Web-Direct
+     * subscriptions. Other subscription types which were not purchased directly
+     * through the Azure web portal are not supported through this preview API.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -176,7 +360,9 @@ export interface BillingPeriods {
 
     /**
      * Lists the available billing periods for a subscription in reverse
-     * chronological order.
+     * chronological order. This is only supported for Azure Web-Direct
+     * subscriptions. Other subscription types which were not purchased directly
+     * through the Azure web portal are not supported through this preview API.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -227,7 +413,9 @@ export interface Invoices {
      * Lists the available invoices for a subscription in reverse chronological
      * order beginning with the most recent invoice. In preview, invoices are
      * available via this API only for invoice periods which end December 1, 2016
-     * or later.
+     * or later.  This is only supported for Azure Web-Direct subscriptions. Other
+     * subscription types which were not purchased directly through the Azure web
+     * portal are not supported through this preview API.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -263,7 +451,9 @@ export interface Invoices {
      * Lists the available invoices for a subscription in reverse chronological
      * order beginning with the most recent invoice. In preview, invoices are
      * available via this API only for invoice periods which end December 1, 2016
-     * or later.
+     * or later.  This is only supported for Azure Web-Direct subscriptions. Other
+     * subscription types which were not purchased directly through the Azure web
+     * portal are not supported through this preview API.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -316,7 +506,10 @@ export interface Invoices {
 
     /**
      * Gets a named invoice resource. When getting a single invoice, the
-     * downloadUrl property is expanded automatically.
+     * downloadUrl property is expanded automatically.  This is only supported for
+     * Azure Web-Direct subscriptions. Other subscription types which were not
+     * purchased directly through the Azure web portal are not supported through
+     * this preview API.
      *
      * @param {string} invoiceName The name of an invoice resource.
      *
@@ -335,7 +528,10 @@ export interface Invoices {
 
     /**
      * Gets a named invoice resource. When getting a single invoice, the
-     * downloadUrl property is expanded automatically.
+     * downloadUrl property is expanded automatically.  This is only supported for
+     * Azure Web-Direct subscriptions. Other subscription types which were not
+     * purchased directly through the Azure web portal are not supported through
+     * this preview API.
      *
      * @param {string} invoiceName The name of an invoice resource.
      *
@@ -373,7 +569,10 @@ export interface Invoices {
 
     /**
      * Gets the most recent invoice. When getting a single invoice, the downloadUrl
-     * property is expanded automatically.
+     * property is expanded automatically.  This is only supported for Azure
+     * Web-Direct subscriptions. Other subscription types which were not purchased
+     * directly through the Azure web portal are not supported through this preview
+     * API.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -390,7 +589,10 @@ export interface Invoices {
 
     /**
      * Gets the most recent invoice. When getting a single invoice, the downloadUrl
-     * property is expanded automatically.
+     * property is expanded automatically.  This is only supported for Azure
+     * Web-Direct subscriptions. Other subscription types which were not purchased
+     * directly through the Azure web portal are not supported through this preview
+     * API.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -428,7 +630,9 @@ export interface Invoices {
      * Lists the available invoices for a subscription in reverse chronological
      * order beginning with the most recent invoice. In preview, invoices are
      * available via this API only for invoice periods which end December 1, 2016
-     * or later.
+     * or later.  This is only supported for Azure Web-Direct subscriptions. Other
+     * subscription types which were not purchased directly through the Azure web
+     * portal are not supported through this preview API.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -450,7 +654,9 @@ export interface Invoices {
      * Lists the available invoices for a subscription in reverse chronological
      * order beginning with the most recent invoice. In preview, invoices are
      * available via this API only for invoice periods which end December 1, 2016
-     * or later.
+     * or later.  This is only supported for Azure Web-Direct subscriptions. Other
+     * subscription types which were not purchased directly through the Azure web
+     * portal are not supported through this preview API.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
