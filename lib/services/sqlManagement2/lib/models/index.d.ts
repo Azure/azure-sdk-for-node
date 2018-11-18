@@ -3007,11 +3007,15 @@ export interface ManagedDatabaseUpdate {
  * A sensitivity label.
  *
  * @property {string} [labelName] The label name.
+ * @property {string} [labelId] The label ID.
  * @property {string} [informationType] The information type.
+ * @property {string} [informationTypeId] The information type ID.
  */
 export interface SensitivityLabel extends ProxyResource {
   labelName?: string;
+  labelId?: string;
   informationType?: string;
+  informationTypeId?: string;
 }
 
 /**

@@ -26299,7 +26299,11 @@ export interface SensitivityLabels {
      *
      * @param {string} [parameters.labelName] The label name.
      *
+     * @param {string} [parameters.labelId] The label ID.
+     *
      * @param {string} [parameters.informationType] The information type.
+     *
+     * @param {string} [parameters.informationTypeId] The information type ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -26335,7 +26339,11 @@ export interface SensitivityLabels {
      *
      * @param {string} [parameters.labelName] The label name.
      *
+     * @param {string} [parameters.labelId] The label ID.
+     *
      * @param {string} [parameters.informationType] The information type.
+     *
+     * @param {string} [parameters.informationTypeId] The information type ID.
      *
      * @param {object} [options] Optional Parameters.
      *
