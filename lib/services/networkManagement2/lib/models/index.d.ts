@@ -4304,22 +4304,14 @@ export interface ApplicationGatewayHeaderConfiguration {
  * @constructor
  * Set of actions in the Rewrite Rule in Application Gateway.
  *
- * @member {object} [requestHeaderConfigurations] Request Header Actions in the
+ * @member {array} [requestHeaderConfigurations] Request Header Actions in the
  * Action Set
- * @member {string} [requestHeaderConfigurations.headerName] Header name of the
- * header configuration
- * @member {string} [requestHeaderConfigurations.headerValue] Header value of
- * the header configuration
- * @member {object} [responseHeaderConfigurations] Response Header Actions in
+ * @member {array} [responseHeaderConfigurations] Response Header Actions in
  * the Action Set
- * @member {string} [responseHeaderConfigurations.headerName] Header name of
- * the header configuration
- * @member {string} [responseHeaderConfigurations.headerValue] Header value of
- * the header configuration
  */
 export interface ApplicationGatewayRewriteRuleActionSet {
-  requestHeaderConfigurations?: ApplicationGatewayHeaderConfiguration;
-  responseHeaderConfigurations?: ApplicationGatewayHeaderConfiguration;
+  requestHeaderConfigurations?: ApplicationGatewayHeaderConfiguration[];
+  responseHeaderConfigurations?: ApplicationGatewayHeaderConfiguration[];
 }
 
 /**
@@ -4332,18 +4324,10 @@ export interface ApplicationGatewayRewriteRuleActionSet {
  * Application Gateway.
  * @member {object} [actionSet] Set of actions to be done as part of the
  * rewrite Rule.
- * @member {object} [actionSet.requestHeaderConfigurations] Request Header
+ * @member {array} [actionSet.requestHeaderConfigurations] Request Header
  * Actions in the Action Set
- * @member {string} [actionSet.requestHeaderConfigurations.headerName] Header
- * name of the header configuration
- * @member {string} [actionSet.requestHeaderConfigurations.headerValue] Header
- * value of the header configuration
- * @member {object} [actionSet.responseHeaderConfigurations] Response Header
+ * @member {array} [actionSet.responseHeaderConfigurations] Response Header
  * Actions in the Action Set
- * @member {string} [actionSet.responseHeaderConfigurations.headerName] Header
- * name of the header configuration
- * @member {string} [actionSet.responseHeaderConfigurations.headerValue] Header
- * value of the header configuration
  */
 export interface ApplicationGatewayRewriteRule {
   name?: string;
