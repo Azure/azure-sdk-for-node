@@ -34,8 +34,8 @@ var requiredEnvironment = [{
 ];
 
 // the necessary clients
-var DataLakeStoreAccountManagementClient = require('../../../lib/services/dataLake.Store/lib/account/dataLakeStoreAccountManagementClient');
-var DataLakeStoreFileSystemManagementClient = require('../../../lib/services/dataLake.Store/lib/filesystem/dataLakeStoreFileSystemManagementClient');
+var DataLakeStoreAccountManagementClient = require('../../../lib/services/datalake.Store/lib/account/dataLakeStoreAccountManagementClient');
+var DataLakeStoreFileSystemManagementClient = require('../../../lib/services/datalake.Store/lib/filesystem/dataLakeStoreFileSystemManagementClient');
 var ResourceManagementClient = require('../../../lib/services/resourceManagement/lib/resource/resourceManagementClient');
 var adlsClient;
 var adlsFileSystemClient;
