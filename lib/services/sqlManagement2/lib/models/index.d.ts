@@ -3002,24 +3002,6 @@ export interface ManagedDatabaseUpdate {
 
 /**
  * @class
- * Initializes a new instance of the SensitivityLabel class.
- * @constructor
- * A sensitivity label.
- *
- * @property {string} [labelName] The label name.
- * @property {string} [labelId] The label ID.
- * @property {string} [informationType] The information type.
- * @property {string} [informationTypeId] The information type ID.
- */
-export interface SensitivityLabel extends ProxyResource {
-  labelName?: string;
-  labelId?: string;
-  informationType?: string;
-  informationTypeId?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the AutomaticTuningServerOptions class.
  * @constructor
  * Automatic tuning properties for individual advisors.
@@ -4949,18 +4931,6 @@ export interface ManagedBackupShortTermRetentionPolicyListResult extends Array<M
  * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ManagedDatabaseListResult extends Array<ManagedDatabase> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SensitivityLabelListResult class.
- * @constructor
- * A list of sensitivity labels.
- *
- * @property {string} [nextLink] Link to retrieve next page of results.
- */
-export interface SensitivityLabelListResult extends Array<SensitivityLabel> {
   readonly nextLink?: string;
 }
 
