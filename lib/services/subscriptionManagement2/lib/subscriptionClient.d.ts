@@ -51,7 +51,7 @@ export default class SubscriptionClient extends AzureServiceClient {
 
   // Operation groups
   operations: operations.Operations;
-  subscriptionOperations: operations.SubscriptionOperations;
+  subscriptionOperationOperations: operations.SubscriptionOperationOperations;
   subscriptionFactory: operations.SubscriptionFactory;
   subscriptions: operations.Subscriptions;
   tenants: operations.Tenants;
