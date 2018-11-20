@@ -122,7 +122,7 @@ describe('Automatic RP Registration', function () {
       location: testLocation
     };
 
-    adlsClient.account.create(testResourceGroup, accountName, accountToCreate, function (err, result) {
+    adlsClient.accounts.create(testResourceGroup, accountName, accountToCreate, function (err, result) {
       should.not.exist(err);
       should.exist(result);
       result.name.should.be.equal(accountName);
