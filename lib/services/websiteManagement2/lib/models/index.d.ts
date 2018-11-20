@@ -659,6 +659,7 @@ export interface HybridConnection extends ProxyOnlyResource {
  * @member {string} [deletedSiteName] Name of the deleted site
  * @member {string} [slot] Slot of the deleted site
  * @member {string} [deletedSiteKind] Kind of site that was deleted
+ * @member {string} [geoRegionName] Geo Region of the deleted site
  */
 export interface DeletedSite extends ProxyOnlyResource {
   readonly deletedSiteId?: number;
@@ -668,6 +669,7 @@ export interface DeletedSite extends ProxyOnlyResource {
   readonly deletedSiteName?: string;
   readonly slot?: string;
   readonly deletedSiteKind?: string;
+  readonly geoRegionName?: string;
 }
 
 /**
@@ -4540,11 +4542,14 @@ export interface CustomHostnameAnalysisResult extends ProxyOnlyResource {
  * @member {string} [snapshotTime] Point in time to restore the deleted app
  * from, formatted as a DateTime string.
  * If unspecified, default value is the time that the app was deleted.
+ * @member {boolean} [useDRSecondary] If true, the snapshot is retrieved from
+ * DRSecondary endpoint.
  */
 export interface DeletedAppRestoreRequest extends ProxyOnlyResource {
   deletedSiteId?: string;
   recoverConfiguration?: boolean;
   snapshotTime?: string;
+  useDRSecondary?: boolean;
 }
 
 /**
@@ -6247,6 +6252,8 @@ export interface SnapshotRecoverySource {
  * @member {boolean} [ignoreConflictingHostNames] If true, custom hostname
  * conflicts will be ignored when recovering to a target web app.
  * This setting is only necessary when RecoverConfiguration is enabled.
+ * @member {boolean} [useDRSecondary] If true, the snapshot is retrieved from
+ * DRSecondary endpoint.
  */
 export interface SnapshotRestoreRequest extends ProxyOnlyResource {
   snapshotTime?: string;
@@ -6254,6 +6261,7 @@ export interface SnapshotRestoreRequest extends ProxyOnlyResource {
   overwrite: boolean;
   recoverConfiguration?: boolean;
   ignoreConflictingHostNames?: boolean;
+  useDRSecondary?: boolean;
 }
 
 /**

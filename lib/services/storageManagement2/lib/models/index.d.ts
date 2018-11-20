@@ -793,6 +793,8 @@ export interface TrackedResource extends Resource {
  * 'Allow', 'Deny'
  * @member {boolean} [isHnsEnabled] Account HierarchicalNamespace enabled if
  * sets to true.
+ * @member {boolean} [failoverInProgress] If the failover is in progress, the
+ * value will be true, otherwise, it will be null.
  */
 export interface StorageAccount extends TrackedResource {
   readonly sku?: Sku;
@@ -814,6 +816,7 @@ export interface StorageAccount extends TrackedResource {
   enableHttpsTrafficOnly?: boolean;
   readonly networkRuleSet?: NetworkRuleSet;
   isHnsEnabled?: boolean;
+  readonly failoverInProgress?: boolean;
 }
 
 /**
