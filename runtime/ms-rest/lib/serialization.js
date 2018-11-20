@@ -492,7 +492,7 @@ function deserializeDictionaryType(mapper, responseBody, objectName) {
  * @param {string[]} propertyPath The path to the property.
  * @returns {any} The value of the property or undefined if it wasn't found.
  */
-function getPropertyValue(value, propertyPath) {
+exports.getPropertyValue = function (value, propertyPath) {
   let propertyValue;
 
   if (value != undefined && propertyPath != undefined) {
@@ -522,7 +522,7 @@ function getPropertyValue(value, propertyPath) {
   }
 
   return propertyValue;
-}
+};
 
 function deserializeCompositeType(mapper, responseBody, objectName) {
   /*jshint validthis: true */
@@ -561,10 +561,7 @@ function deserializeCompositeType(mapper, responseBody, objectName) {
         serializedpropertyNamesInMapper[modelProps[key].serializedName] = paths;
 
         //deserialize the property if it is present in the provided responseBody instance
-        let propertyInstance = getPropertyValue(responseBody, paths);
-        if (propertyInstance === undefined) {
-          continue;
-        }
+        let propertyInstance = exports.getPropertyValue(responseBody, paths);
 
         let propertyMapper = modelProps[key];
         //update discriminator property if missing
