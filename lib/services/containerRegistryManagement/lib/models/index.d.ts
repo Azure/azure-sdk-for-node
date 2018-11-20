@@ -1087,8 +1087,6 @@ export interface ProxyResource extends BaseResource {
  * repository.
  * @member {string} [sourceTrigger.providerType] The source control provider
  * type.
- * @member {boolean} [isArchiveEnabled] The value that indicates whether
- * archiving is enabled or not. Default value: false .
  * @member {object} [platform] The platform properties against which the run
  * will happen.
  * @member {string} [platform.os] The operating system type required for the
@@ -1104,6 +1102,8 @@ export interface ProxyResource extends BaseResource {
  * @member {string} [provisioningState] The provisioning state of a run.
  * Possible values include: 'Creating', 'Updating', 'Deleting', 'Succeeded',
  * 'Failed', 'Canceled'
+ * @member {boolean} [isArchiveEnabled] The value that indicates whether
+ * archiving is enabled or not. Default value: false .
  */
 export interface Run extends ProxyResource {
   runId?: string;
@@ -1117,10 +1117,10 @@ export interface Run extends ProxyResource {
   task?: string;
   imageUpdateTrigger?: ImageUpdateTrigger;
   sourceTrigger?: SourceTriggerDescriptor;
-  isArchiveEnabled?: boolean;
   platform?: PlatformProperties;
   agentConfiguration?: AgentProperties;
   provisioningState?: string;
+  isArchiveEnabled?: boolean;
 }
 
 /**
@@ -1381,7 +1381,7 @@ export interface TriggerProperties {
  * Initializes a new instance of the Task class.
  * @constructor
  * The task that has the ARM resource and task properties.
- * The  task will have all information to schedule a run against it.
+ * The task will have all information to schedule a run against it.
  *
  * @member {string} [provisioningState] The provisioning state of the task.
  * Possible values include: 'Creating', 'Updating', 'Deleting', 'Succeeded',
