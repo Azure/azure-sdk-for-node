@@ -422,7 +422,7 @@ export interface Profiles {
 
     /**
      * Generates a dynamic SSO URI used to sign in to the CDN supplemental portal.
-     * Supplemnetal portal is used to configure advanced feature capabilities that
+     * Supplemental portal is used to configure advanced feature capabilities that
      * are not yet available in the Azure portal, such as core reports in a
      * standard profile; rules engine, advanced HTTP reports, and real-time stats
      * and alerts in a premium profile. The SSO URI changes approximately every 10
@@ -449,7 +449,7 @@ export interface Profiles {
 
     /**
      * Generates a dynamic SSO URI used to sign in to the CDN supplemental portal.
-     * Supplemnetal portal is used to configure advanced feature capabilities that
+     * Supplemental portal is used to configure advanced feature capabilities that
      * are not yet available in the Azure portal, such as core reports in a
      * standard profile; rules engine, advanced HTTP reports, and real-time stats
      * and alerts in a premium profile. The SSO URI changes approximately every 10
@@ -1186,7 +1186,7 @@ export interface Endpoints {
      * hostname by default.
      *
      * @param {string} [endpoint.originPath] A directory path on the origin that
-     * CDN can use to retreive content from, e.g. contoso.cloudapp.net/originpath.
+     * CDN can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
      *
      * @param {array} [endpoint.contentTypesToCompress] List of content types on
      * which compression applies. The value should be a valid MIME type.
@@ -1223,7 +1223,7 @@ export interface Endpoints {
      * most optimal routes for the CDN. This is relative to the origin path.
      *
      * @param {array} [endpoint.geoFilters] List of rules defining the user's geo
-     * access within a CDN endpoint. Each geo filter defines an acess rule to a
+     * access within a CDN endpoint. Each geo filter defines an access rule to a
      * specified path or content, e.g. block APAC for path /pictures/
      *
      * @param {object} [endpoint.deliveryPolicy] A policy that specifies the
@@ -1276,7 +1276,7 @@ export interface Endpoints {
      * hostname by default.
      *
      * @param {string} [endpoint.originPath] A directory path on the origin that
-     * CDN can use to retreive content from, e.g. contoso.cloudapp.net/originpath.
+     * CDN can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
      *
      * @param {array} [endpoint.contentTypesToCompress] List of content types on
      * which compression applies. The value should be a valid MIME type.
@@ -1313,7 +1313,7 @@ export interface Endpoints {
      * most optimal routes for the CDN. This is relative to the origin path.
      *
      * @param {array} [endpoint.geoFilters] List of rules defining the user's geo
-     * access within a CDN endpoint. Each geo filter defines an acess rule to a
+     * access within a CDN endpoint. Each geo filter defines an access rule to a
      * specified path or content, e.g. block APAC for path /pictures/
      *
      * @param {object} [endpoint.deliveryPolicy] A policy that specifies the
@@ -1390,7 +1390,7 @@ export interface Endpoints {
      * origin hostname by default.
      *
      * @param {string} [endpointUpdateProperties.originPath] A directory path on
-     * the origin that CDN can use to retreive content from, e.g.
+     * the origin that CDN can use to retrieve content from, e.g.
      * contoso.cloudapp.net/originpath.
      *
      * @param {array} [endpointUpdateProperties.contentTypesToCompress] List of
@@ -1432,7 +1432,7 @@ export interface Endpoints {
      *
      * @param {array} [endpointUpdateProperties.geoFilters] List of rules defining
      * the user's geo access within a CDN endpoint. Each geo filter defines an
-     * acess rule to a specified path or content, e.g. block APAC for path
+     * access rule to a specified path or content, e.g. block APAC for path
      * /pictures/
      *
      * @param {object} [endpointUpdateProperties.deliveryPolicy] A policy that
@@ -1484,7 +1484,7 @@ export interface Endpoints {
      * origin hostname by default.
      *
      * @param {string} [endpointUpdateProperties.originPath] A directory path on
-     * the origin that CDN can use to retreive content from, e.g.
+     * the origin that CDN can use to retrieve content from, e.g.
      * contoso.cloudapp.net/originpath.
      *
      * @param {array} [endpointUpdateProperties.contentTypesToCompress] List of
@@ -1526,7 +1526,7 @@ export interface Endpoints {
      *
      * @param {array} [endpointUpdateProperties.geoFilters] List of rules defining
      * the user's geo access within a CDN endpoint. Each geo filter defines an
-     * acess rule to a specified path or content, e.g. block APAC for path
+     * access rule to a specified path or content, e.g. block APAC for path
      * /pictures/
      *
      * @param {object} [endpointUpdateProperties.deliveryPolicy] A policy that
@@ -2098,7 +2098,7 @@ export interface Endpoints {
      * hostname by default.
      *
      * @param {string} [endpoint.originPath] A directory path on the origin that
-     * CDN can use to retreive content from, e.g. contoso.cloudapp.net/originpath.
+     * CDN can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
      *
      * @param {array} [endpoint.contentTypesToCompress] List of content types on
      * which compression applies. The value should be a valid MIME type.
@@ -2135,7 +2135,7 @@ export interface Endpoints {
      * most optimal routes for the CDN. This is relative to the origin path.
      *
      * @param {array} [endpoint.geoFilters] List of rules defining the user's geo
-     * access within a CDN endpoint. Each geo filter defines an acess rule to a
+     * access within a CDN endpoint. Each geo filter defines an access rule to a
      * specified path or content, e.g. block APAC for path /pictures/
      *
      * @param {object} [endpoint.deliveryPolicy] A policy that specifies the
@@ -2188,7 +2188,7 @@ export interface Endpoints {
      * hostname by default.
      *
      * @param {string} [endpoint.originPath] A directory path on the origin that
-     * CDN can use to retreive content from, e.g. contoso.cloudapp.net/originpath.
+     * CDN can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
      *
      * @param {array} [endpoint.contentTypesToCompress] List of content types on
      * which compression applies. The value should be a valid MIME type.
@@ -2225,7 +2225,7 @@ export interface Endpoints {
      * most optimal routes for the CDN. This is relative to the origin path.
      *
      * @param {array} [endpoint.geoFilters] List of rules defining the user's geo
-     * access within a CDN endpoint. Each geo filter defines an acess rule to a
+     * access within a CDN endpoint. Each geo filter defines an access rule to a
      * specified path or content, e.g. block APAC for path /pictures/
      *
      * @param {object} [endpoint.deliveryPolicy] A policy that specifies the
@@ -2302,7 +2302,7 @@ export interface Endpoints {
      * origin hostname by default.
      *
      * @param {string} [endpointUpdateProperties.originPath] A directory path on
-     * the origin that CDN can use to retreive content from, e.g.
+     * the origin that CDN can use to retrieve content from, e.g.
      * contoso.cloudapp.net/originpath.
      *
      * @param {array} [endpointUpdateProperties.contentTypesToCompress] List of
@@ -2344,7 +2344,7 @@ export interface Endpoints {
      *
      * @param {array} [endpointUpdateProperties.geoFilters] List of rules defining
      * the user's geo access within a CDN endpoint. Each geo filter defines an
-     * acess rule to a specified path or content, e.g. block APAC for path
+     * access rule to a specified path or content, e.g. block APAC for path
      * /pictures/
      *
      * @param {object} [endpointUpdateProperties.deliveryPolicy] A policy that
@@ -2396,7 +2396,7 @@ export interface Endpoints {
      * origin hostname by default.
      *
      * @param {string} [endpointUpdateProperties.originPath] A directory path on
-     * the origin that CDN can use to retreive content from, e.g.
+     * the origin that CDN can use to retrieve content from, e.g.
      * contoso.cloudapp.net/originpath.
      *
      * @param {array} [endpointUpdateProperties.contentTypesToCompress] List of
@@ -2438,7 +2438,7 @@ export interface Endpoints {
      *
      * @param {array} [endpointUpdateProperties.geoFilters] List of rules defining
      * the user's geo access within a CDN endpoint. Each geo filter defines an
-     * acess rule to a specified path or content, e.g. block APAC for path
+     * access rule to a specified path or content, e.g. block APAC for path
      * /pictures/
      *
      * @param {object} [endpointUpdateProperties.deliveryPolicy] A policy that
@@ -3439,7 +3439,7 @@ export interface CustomDomains {
 
 
     /**
-     * Gets an exisitng custom domain within an endpoint.
+     * Gets an existing custom domain within an endpoint.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -3467,7 +3467,7 @@ export interface CustomDomains {
     getWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
 
     /**
-     * Gets an exisitng custom domain within an endpoint.
+     * Gets an existing custom domain within an endpoint.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
