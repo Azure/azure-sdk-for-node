@@ -1,5 +1,5 @@
 ### 2.3.8 (11/20/2018)
-- Property deserialization now allows for case-insensitive property name lookup.
+- Deserialization now allows for case-insensitive property name lookup.
 
 ### 2.3.7 (9/26/2018)
 - update min. version of request to 2.88.0. This will keep ms-rest and ms-rest-azure in sync with request dependency.
