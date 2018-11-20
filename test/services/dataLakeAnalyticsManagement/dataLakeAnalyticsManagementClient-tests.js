@@ -150,9 +150,9 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
           should.not.exist(err);
           resourceClient.resourceGroups.createOrUpdate(secondResourceGroup, {location: testLocation}, function (err) {
             should.not.exist(err);
-            adlsClient.accounts.create(testResourceGroup, storeAccountName, adlsAccount, function(err) {
+            adlsClient.account.create(testResourceGroup, storeAccountName, adlsAccount, function(err) {
               should.not.exist(err);
-              adlsClient.accounts.create(testResourceGroup, additionalStoreAccountName, secondAdlsAccount, function(err) {
+              adlsClient.account.create(testResourceGroup, additionalStoreAccountName, secondAdlsAccount, function(err) {
                 should.not.exist(err);
                 storageClient.storageAccounts.create(testResourceGroup, azureBlobAccountName, storageAccount, function (err) {
                   should.not.exist(err);
