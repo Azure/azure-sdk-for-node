@@ -939,22 +939,65 @@ export interface SchemaContract extends Resource {
  * @constructor
  * Issue Contract details.
  *
- * @member {string} title The issue title.
- * @member {string} description Text describing the issue.
  * @member {date} [createdDate] Date and time when the issue was created.
  * @member {string} [state] Status of the issue. Possible values include:
  * 'proposed', 'open', 'removed', 'resolved', 'closed'
+ * @member {string} [apiId] A resource identifier for the API the issue was
+ * created for.
+ * @member {string} title The issue title.
+ * @member {string} description Text describing the issue.
  * @member {string} userId A resource identifier for the user created the
  * issue.
+ */
+export interface IssueContract extends Resource {
+  createdDate?: Date;
+  state?: string;
+  apiId?: string;
+  title: string;
+  description: string;
+  userId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueUpdateContract class.
+ * @constructor
+ * Issue update Parameters.
+ *
+ * @member {date} [createdDate] Date and time when the issue was created.
+ * @member {string} [state] Status of the issue. Possible values include:
+ * 'proposed', 'open', 'removed', 'resolved', 'closed'
+ * @member {string} [apiId] A resource identifier for the API the issue was
+ * created for.
+ * @member {string} [title] The issue title.
+ * @member {string} [description] Text describing the issue.
+ * @member {string} [userId] A resource identifier for the user created the
+ * issue.
+ */
+export interface IssueUpdateContract {
+  createdDate?: Date;
+  state?: string;
+  apiId?: string;
+  title?: string;
+  description?: string;
+  userId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueContractBaseProperties class.
+ * @constructor
+ * Issue contract Base Properties.
+ *
+ * @member {date} [createdDate] Date and time when the issue was created.
+ * @member {string} [state] Status of the issue. Possible values include:
+ * 'proposed', 'open', 'removed', 'resolved', 'closed'
  * @member {string} [apiId] A resource identifier for the API the issue was
  * created for.
  */
-export interface IssueContract extends Resource {
-  title: string;
-  description: string;
+export interface IssueContractBaseProperties {
   createdDate?: Date;
   state?: string;
-  userId: string;
   apiId?: string;
 }
 
@@ -2679,7 +2722,7 @@ export interface UserIdentityContract {
 export interface UserEntityBaseParameters {
   state?: string;
   note?: string;
-  readonly identities?: UserIdentityContract[];
+  identities?: UserIdentityContract[];
 }
 
 /**
@@ -2706,7 +2749,7 @@ export interface UserEntityBaseParameters {
 export interface UserContract extends Resource {
   state?: string;
   note?: string;
-  readonly identities?: UserIdentityContract[];
+  identities?: UserIdentityContract[];
   firstName?: string;
   lastName?: string;
   email?: string;
@@ -3833,7 +3876,7 @@ export interface GenerateSsoUrlResult {
 export interface UserCreateParameters {
   state?: string;
   note?: string;
-  readonly identities?: UserIdentityContract[];
+  identities?: UserIdentityContract[];
   email: string;
   firstName: string;
   lastName: string;
@@ -3892,11 +3935,21 @@ export interface UserTokenResult {
 export interface UserUpdateParameters {
   state?: string;
   note?: string;
-  readonly identities?: UserIdentityContract[];
+  identities?: UserIdentityContract[];
   email?: string;
   password?: string;
   firstName?: string;
   lastName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CurrentUserIdentity class.
+ * @constructor
+ * @member {string} [id] API Management service user id.
+ */
+export interface CurrentUserIdentity {
+  id?: string;
 }
 
 /**
