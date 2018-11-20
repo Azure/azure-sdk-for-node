@@ -58,6 +58,7 @@ export default class StorageManagementClient extends AzureServiceClient {
   skus: operations.Skus;
   storageAccounts: operations.StorageAccounts;
   usages: operations.Usages;
+  blobServices: operations.BlobServices;
   blobContainers: operations.BlobContainers;
   managementPolicies: operations.ManagementPolicies;
 }
