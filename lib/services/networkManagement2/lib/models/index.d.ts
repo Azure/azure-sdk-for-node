@@ -3959,7 +3959,8 @@ export interface ApplicationGatewayAuthenticationCertificate extends SubResource
  * Trusted Root certificates of an application gateway.
  *
  * @member {string} [data] Certificate public data.
- * @member {string} [keyvaultSecretId] KeyVault Secret Id for certificate.
+ * @member {string} [keyVaultSecretId] Secret Id of (base-64 encoded
+ * unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
  * @member {string} [provisioningState] Provisioning state of the trusted root
  * certificate resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -3971,7 +3972,7 @@ export interface ApplicationGatewayAuthenticationCertificate extends SubResource
  */
 export interface ApplicationGatewayTrustedRootCertificate extends SubResource {
   data?: string;
-  keyvaultSecretId?: string;
+  keyVaultSecretId?: string;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -3990,6 +3991,8 @@ export interface ApplicationGatewayTrustedRootCertificate extends SubResource {
  * Only applicable in PUT request.
  * @member {string} [publicCertData] Base-64 encoded Public cert data
  * corresponding to pfx specified in data. Only applicable in GET request.
+ * @member {string} [keyVaultSecretId] Secret Id of (base-64 encoded
+ * unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
  * @member {string} [provisioningState] Provisioning state of the SSL
  * certificate resource Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -4003,6 +4006,7 @@ export interface ApplicationGatewaySslCertificate extends SubResource {
   data?: string;
   password?: string;
   publicCertData?: string;
+  keyVaultSecretId?: string;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -4523,6 +4527,46 @@ export interface ApplicationGatewayAutoscaleConfiguration {
 
 /**
  * @class
+ * Initializes a new instance of the ManagedServiceIdentityUserAssignedIdentitiesValue class.
+ * @constructor
+ * @member {string} [principalId] The principal id of user assigned identity.
+ * @member {string} [clientId] The client id of user assigned identity.
+ */
+export interface ManagedServiceIdentityUserAssignedIdentitiesValue {
+  readonly principalId?: string;
+  readonly clientId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedServiceIdentity class.
+ * @constructor
+ * Identity for the resource.
+ *
+ * @member {string} [principalId] The principal id of the system assigned
+ * identity. This property will only be provided for a system assigned
+ * identity.
+ * @member {string} [tenantId] The tenant id of the system assigned identity.
+ * This property will only be provided for a system assigned identity.
+ * @member {string} [type] The type of identity used for the resource. The type
+ * 'SystemAssigned, UserAssigned' includes both an implicitly created identity
+ * and a set of user assigned identities. The type 'None' will remove any
+ * identities from the virtual machine. Possible values include:
+ * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+ * @member {object} [userAssignedIdentities] The list of user identities
+ * associated with resource. The user identity dictionary key references will
+ * be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+ */
+export interface ManagedServiceIdentity {
+  readonly principalId?: string;
+  readonly tenantId?: string;
+  type?: string;
+  userAssignedIdentities?: { [propertyName: string]: ManagedServiceIdentityUserAssignedIdentitiesValue };
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationGateway class.
  * @constructor
  * Application gateway resource
@@ -4619,6 +4663,23 @@ export interface ApplicationGatewayAutoscaleConfiguration {
  * resource is updated.
  * @member {array} [zones] A list of availability zones denoting where the
  * resource needs to come from.
+ * @member {object} [identity] The identity of the application gateway, if
+ * configured.
+ * @member {string} [identity.principalId] The principal id of the system
+ * assigned identity. This property will only be provided for a system assigned
+ * identity.
+ * @member {string} [identity.tenantId] The tenant id of the system assigned
+ * identity. This property will only be provided for a system assigned
+ * identity.
+ * @member {string} [identity.type] The type of identity used for the resource.
+ * The type 'SystemAssigned, UserAssigned' includes both an implicitly created
+ * identity and a set of user assigned identities. The type 'None' will remove
+ * any identities from the virtual machine. Possible values include:
+ * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+ * @member {object} [identity.userAssignedIdentities] The list of user
+ * identities associated with resource. The user identity dictionary key
+ * references will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
  */
 export interface ApplicationGateway extends Resource {
   sku?: ApplicationGatewaySku;
@@ -4647,6 +4708,7 @@ export interface ApplicationGateway extends Resource {
   customErrorConfigurations?: ApplicationGatewayCustomError[];
   etag?: string;
   zones?: string[];
+  identity?: ManagedServiceIdentity;
 }
 
 /**
