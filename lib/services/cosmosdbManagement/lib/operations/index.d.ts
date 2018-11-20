@@ -2183,7 +2183,7 @@ export interface Database {
 
 
     /**
-     * Retrieves metric defintions for the given database.
+     * Retrieves metric definitions for the given database.
      *
      * @param {string} resourceGroupName Name of an Azure resource group.
      *
@@ -2205,7 +2205,7 @@ export interface Database {
     listMetricDefinitionsWithHttpOperationResponse(resourceGroupName: string, accountName: string, databaseRid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricDefinitionsListResult>>;
 
     /**
-     * Retrieves metric defintions for the given database.
+     * Retrieves metric definitions for the given database.
      *
      * @param {string} resourceGroupName Name of an Azure resource group.
      *
@@ -2410,7 +2410,7 @@ export interface Collection {
 
 
     /**
-     * Retrieves metric defintions for the given collection.
+     * Retrieves metric definitions for the given collection.
      *
      * @param {string} resourceGroupName Name of an Azure resource group.
      *
@@ -2434,7 +2434,7 @@ export interface Collection {
     listMetricDefinitionsWithHttpOperationResponse(resourceGroupName: string, accountName: string, databaseRid: string, collectionRid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricDefinitionsListResult>>;
 
     /**
-     * Retrieves metric defintions for the given collection.
+     * Retrieves metric definitions for the given collection.
      *
      * @param {string} resourceGroupName Name of an Azure resource group.
      *
