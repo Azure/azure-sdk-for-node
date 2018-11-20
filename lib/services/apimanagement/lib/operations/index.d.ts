@@ -7940,7 +7940,7 @@ export interface Backend {
      *
      * @param {number}
      * [parameters.properties.serviceFabricCluster.maxPartitionResolutionRetries]
-     * Maximum number of retries while attempting resolve the parition.
+     * Maximum number of retries while attempting resolve the partition.
      *
      * @param {array}
      * parameters.properties.serviceFabricCluster.managementEndpoints The cluster
@@ -8048,7 +8048,7 @@ export interface Backend {
      *
      * @param {number}
      * [parameters.properties.serviceFabricCluster.maxPartitionResolutionRetries]
-     * Maximum number of retries while attempting resolve the parition.
+     * Maximum number of retries while attempting resolve the partition.
      *
      * @param {array}
      * parameters.properties.serviceFabricCluster.managementEndpoints The cluster
@@ -8175,7 +8175,7 @@ export interface Backend {
      *
      * @param {number}
      * [parameters.properties.serviceFabricCluster.maxPartitionResolutionRetries]
-     * Maximum number of retries while attempting resolve the parition.
+     * Maximum number of retries while attempting resolve the partition.
      *
      * @param {array}
      * parameters.properties.serviceFabricCluster.managementEndpoints The cluster
@@ -8284,7 +8284,7 @@ export interface Backend {
      *
      * @param {number}
      * [parameters.properties.serviceFabricCluster.maxPartitionResolutionRetries]
-     * Maximum number of retries while attempting resolve the parition.
+     * Maximum number of retries while attempting resolve the partition.
      *
      * @param {array}
      * parameters.properties.serviceFabricCluster.managementEndpoints The cluster

@@ -1524,7 +1524,7 @@ export interface X509CertificateName {
  * @member {string} clientCertificatethumbprint The client certificate
  * thumbprint for the management endpoint.
  * @member {number} [maxPartitionResolutionRetries] Maximum number of retries
- * while attempting resolve the parition.
+ * while attempting resolve the partition.
  * @member {array} managementEndpoints The cluster management endpoint.
  * @member {array} [serverCertificateThumbprints] Thumbprints of certificates
  * cluster management service uses for tls communication
@@ -1549,7 +1549,7 @@ export interface BackendServiceFabricClusterProperties {
  * @member {string} [serviceFabricCluster.clientCertificatethumbprint] The
  * client certificate thumbprint for the management endpoint.
  * @member {number} [serviceFabricCluster.maxPartitionResolutionRetries]
- * Maximum number of retries while attempting resolve the parition.
+ * Maximum number of retries while attempting resolve the partition.
  * @member {array} [serviceFabricCluster.managementEndpoints] The cluster
  * management endpoint.
  * @member {array} [serviceFabricCluster.serverCertificateThumbprints]
@@ -1637,7 +1637,7 @@ export interface BackendTlsProperties {
  * certificate thumbprint for the management endpoint.
  * @member {number}
  * [properties.serviceFabricCluster.maxPartitionResolutionRetries] Maximum
- * number of retries while attempting resolve the parition.
+ * number of retries while attempting resolve the partition.
  * @member {array} [properties.serviceFabricCluster.managementEndpoints] The
  * cluster management endpoint.
  * @member {array}
@@ -1699,7 +1699,7 @@ export interface BackendBaseParameters {
  * certificate thumbprint for the management endpoint.
  * @member {number}
  * [properties.serviceFabricCluster.maxPartitionResolutionRetries] Maximum
- * number of retries while attempting resolve the parition.
+ * number of retries while attempting resolve the partition.
  * @member {array} [properties.serviceFabricCluster.managementEndpoints] The
  * cluster management endpoint.
  * @member {array}
@@ -1766,7 +1766,7 @@ export interface BackendContract extends Resource {
  * certificate thumbprint for the management endpoint.
  * @member {number}
  * [properties.serviceFabricCluster.maxPartitionResolutionRetries] Maximum
- * number of retries while attempting resolve the parition.
+ * number of retries while attempting resolve the partition.
  * @member {array} [properties.serviceFabricCluster.managementEndpoints] The
  * cluster management endpoint.
  * @member {array}
