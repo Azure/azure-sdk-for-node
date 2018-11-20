@@ -290,6 +290,21 @@ export interface ApplicationGateways {
      * @param {array} [parameters.zones] A list of availability zones denoting
      * where the resource needs to come from.
      *
+     * @param {object} [parameters.identity] The identity of the application
+     * gateway, if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * resource. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the virtual machine. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with resource. The user identity dictionary key
+     * references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {string} [parameters.id] Resource ID.
      *
      * @param {string} [parameters.location] Resource location.
@@ -460,6 +475,21 @@ export interface ApplicationGateways {
      *
      * @param {array} [parameters.zones] A list of availability zones denoting
      * where the resource needs to come from.
+     *
+     * @param {object} [parameters.identity] The identity of the application
+     * gateway, if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * resource. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the virtual machine. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with resource. The user identity dictionary key
+     * references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -1284,6 +1314,21 @@ export interface ApplicationGateways {
      * @param {array} [parameters.zones] A list of availability zones denoting
      * where the resource needs to come from.
      *
+     * @param {object} [parameters.identity] The identity of the application
+     * gateway, if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * resource. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the virtual machine. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with resource. The user identity dictionary key
+     * references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {string} [parameters.id] Resource ID.
      *
      * @param {string} [parameters.location] Resource location.
@@ -1454,6 +1499,21 @@ export interface ApplicationGateways {
      *
      * @param {array} [parameters.zones] A list of availability zones denoting
      * where the resource needs to come from.
+     *
+     * @param {object} [parameters.identity] The identity of the application
+     * gateway, if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * resource. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the virtual machine. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with resource. The user identity dictionary key
+     * references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.id] Resource ID.
      *
