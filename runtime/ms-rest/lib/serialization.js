@@ -484,6 +484,46 @@ function deserializeDictionaryType(mapper, responseBody, objectName) {
   return responseBody;
 }
 
+/**
+ * Get the value of the property with the provided path. This function will first do a
+ * case-sensitive check for the property, and if that returns undefined then it will do a
+ * case-insensitive check.
+ * @param {object} value The value to get the property value from.
+ * @param {string[]} propertyPath The path to the property.
+ * @returns {any} The value of the property or undefined if it wasn't found.
+ */
+exports.getPropertyValue = function (value, propertyPath) {
+  let propertyValue;
+
+  if (value != undefined && propertyPath != undefined) {
+    for (const propertyName of propertyPath) {
+      if (!propertyName) {
+        propertyValue = value;
+      } else {
+        propertyValue = value[propertyName];
+
+        if (propertyValue === undefined) {
+          const lowerCasePropertyName = propertyName.toLowerCase();
+          for (const existingPropertyName of Object.keys(value)) {
+            if (lowerCasePropertyName === existingPropertyName.toLowerCase()) {
+              propertyValue = value[existingPropertyName];
+              break;
+            }
+          }
+        }
+
+        if (propertyValue == undefined) {
+          break;
+        } else {
+          value = propertyValue;
+        }
+      }
+    }
+  }
+
+  return propertyValue;
+};
+
 function deserializeCompositeType(mapper, responseBody, objectName) {
   /*jshint validthis: true */
   //check for polymorphic discriminator
@@ -517,21 +557,11 @@ function deserializeCompositeType(mapper, responseBody, objectName) {
 
     for (let key in modelProps) {
       if (modelProps.hasOwnProperty(key)) {
-        let jpath = ['responseBody'];
-        let paths = splitSerializeName(modelProps[key].serializedName);
-        paths.forEach((item) => {
-          jpath.push(`["${item}"]`);
-        });
+        const paths = splitSerializeName(modelProps[key].serializedName);
         serializedpropertyNamesInMapper[modelProps[key].serializedName] = paths;
 
         //deserialize the property if it is present in the provided responseBody instance
-        let propertyInstance;
-        try {
-          /*jslint evil: true */
-          propertyInstance = eval(jpath.join(''));
-        } catch (err) {
-          continue;
-        }
+        let propertyInstance = exports.getPropertyValue(responseBody, paths);
 
         let propertyMapper = modelProps[key];
         //update discriminator property if missing
