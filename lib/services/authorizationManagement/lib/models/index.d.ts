@@ -162,6 +162,12 @@ export interface RoleAssignment {
    */
   principalId?: string;
   /**
+   * The principal type of the assigned principal ID. Possible values include: 'User', 'Group',
+   * 'ServicePrincipal', 'Unknown', 'DirectoryRoleTemplate', 'ForeignGroup', 'Application', 'MSI',
+   * 'DirectoryObjectOrGroup', 'Everyone'
+   */
+  principalType?: string;
+  /**
    * The Delegation flag for the roleassignment
    */
   canDelegate?: boolean;
