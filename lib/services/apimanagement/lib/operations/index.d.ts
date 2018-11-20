@@ -5582,21 +5582,21 @@ export interface ApiIssue {
      *
      * @param {object} parameters Create parameters.
      *
-     * @param {string} parameters.title The issue title.
-     *
-     * @param {string} parameters.description Text describing the issue.
-     *
      * @param {date} [parameters.createdDate] Date and time when the issue was
      * created.
      *
      * @param {string} [parameters.state] Status of the issue. Possible values
      * include: 'proposed', 'open', 'removed', 'resolved', 'closed'
      *
-     * @param {string} parameters.userId A resource identifier for the user created
-     * the issue.
-     *
      * @param {string} [parameters.apiId] A resource identifier for the API the
      * issue was created for.
+     *
+     * @param {string} parameters.title The issue title.
+     *
+     * @param {string} parameters.description Text describing the issue.
+     *
+     * @param {string} parameters.userId A resource identifier for the user created
+     * the issue.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5630,21 +5630,21 @@ export interface ApiIssue {
      *
      * @param {object} parameters Create parameters.
      *
-     * @param {string} parameters.title The issue title.
-     *
-     * @param {string} parameters.description Text describing the issue.
-     *
      * @param {date} [parameters.createdDate] Date and time when the issue was
      * created.
      *
      * @param {string} [parameters.state] Status of the issue. Possible values
      * include: 'proposed', 'open', 'removed', 'resolved', 'closed'
      *
-     * @param {string} parameters.userId A resource identifier for the user created
-     * the issue.
-     *
      * @param {string} [parameters.apiId] A resource identifier for the API the
      * issue was created for.
+     *
+     * @param {string} parameters.title The issue title.
+     *
+     * @param {string} parameters.description Text describing the issue.
+     *
+     * @param {string} parameters.userId A resource identifier for the user created
+     * the issue.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5680,6 +5680,120 @@ export interface ApiIssue {
     createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, parameters: models.IssueContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IssueContract>;
     createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, parameters: models.IssueContract, callback: ServiceCallback<models.IssueContract>): void;
     createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, parameters: models.IssueContract, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssueContract>): void;
+
+
+    /**
+     * Updates an existing issue for an API.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {object} parameters Update parameters.
+     *
+     * @param {date} [parameters.createdDate] Date and time when the issue was
+     * created.
+     *
+     * @param {string} [parameters.state] Status of the issue. Possible values
+     * include: 'proposed', 'open', 'removed', 'resolved', 'closed'
+     *
+     * @param {string} [parameters.apiId] A resource identifier for the API the
+     * issue was created for.
+     *
+     * @param {string} [parameters.title] The issue title.
+     *
+     * @param {string} [parameters.description] Text describing the issue.
+     *
+     * @param {string} [parameters.userId] A resource identifier for the user
+     * created the issue.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the Issue Entity. ETag should
+     * match the current entity state from the header response of the GET request
+     * or it should be * for unconditional update.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, parameters: models.IssueUpdateContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Updates an existing issue for an API.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {object} parameters Update parameters.
+     *
+     * @param {date} [parameters.createdDate] Date and time when the issue was
+     * created.
+     *
+     * @param {string} [parameters.state] Status of the issue. Possible values
+     * include: 'proposed', 'open', 'removed', 'resolved', 'closed'
+     *
+     * @param {string} [parameters.apiId] A resource identifier for the API the
+     * issue was created for.
+     *
+     * @param {string} [parameters.title] The issue title.
+     *
+     * @param {string} [parameters.description] Text describing the issue.
+     *
+     * @param {string} [parameters.userId] A resource identifier for the user
+     * created the issue.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the Issue Entity. ETag should
+     * match the current entity state from the header response of the GET request
+     * or it should be * for unconditional update.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, parameters: models.IssueUpdateContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    update(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, parameters: models.IssueUpdateContract, callback: ServiceCallback<void>): void;
+    update(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, parameters: models.IssueUpdateContract, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -25497,6 +25611,65 @@ export interface TenantConfiguration {
  * instance of the ApiManagementClient.
  */
 export interface User {
+
+
+    /**
+     * Returns calling user identity information.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CurrentUserIdentity>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getIdentityWithHttpOperationResponse(resourceGroupName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CurrentUserIdentity>>;
+
+    /**
+     * Returns calling user identity information.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CurrentUserIdentity} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CurrentUserIdentity} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CurrentUserIdentity} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getIdentity(resourceGroupName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CurrentUserIdentity>;
+    getIdentity(resourceGroupName: string, serviceName: string, callback: ServiceCallback<models.CurrentUserIdentity>): void;
+    getIdentity(resourceGroupName: string, serviceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CurrentUserIdentity>): void;
 
 
     /**
