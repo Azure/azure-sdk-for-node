@@ -110,7 +110,7 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
           should.not.exist(err);
           resourceClient.resourceGroups.createOrUpdate(secondResourceGroup, { location: testLocation }, function (err) {
             should.not.exist(err);
-            adlsClient.accountcreate(testResourceGroup, filesystemAccountName, adlsAccount, function (err) {
+            adlsClient.account.create(testResourceGroup, filesystemAccountName, adlsAccount, function (err) {
               should.not.exist(err);
               done();
             });
@@ -156,7 +156,7 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
         location: testLocation
       };
       
-      adlsClient.accountcreate(testResourceGroup, accountName, accountToCreate, function (err, result) {
+      adlsClient.account.create(testResourceGroup, accountName, accountToCreate, function (err, result) {
         should.not.exist(err);
         should.exist(result);
         result.name.should.be.equal(accountName);
@@ -175,7 +175,7 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
         location: testLocation
       };
       
-      adlsClient.accountcreate(secondResourceGroup, accountName, accountToCreate, function (err, result, request, response) {
+      adlsClient.account.create(secondResourceGroup, accountName, accountToCreate, function (err, result, request, response) {
         should.exist(err);
         should.not.exist(result);
         err.statusCode.should.equalOneOf([409,400]);
@@ -184,7 +184,7 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
     });
     
     it('get command should work', function (done) {
-      adlsClient.accountget(testResourceGroup, filesystemAccountName, function (err, result, request, response) {
+      adlsClient.account.get(testResourceGroup, filesystemAccountName, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
@@ -194,13 +194,13 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
     });
     
     it('list commands should work', function (done) {
-      adlsClient.accountlist(function (err, result, request, response) {
+      adlsClient.account.list(function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
         result.length.should.be.above(0);
         // list within resource group as well.
-        adlsClient.accountlistByResourceGroup(testResourceGroup, function (err, result, request, response) {
+        adlsClient.account.listByResourceGroup(testResourceGroup, function (err, result, request, response) {
           should.not.exist(err);
           should.exist(result);
           response.statusCode.should.equal(200);
@@ -220,7 +220,7 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
         }
       };
       
-      adlsClient.accountupdate(testResourceGroup, filesystemAccountName, accountToUpdate, function (err, result, request, response) {
+      adlsClient.account.update(testResourceGroup, filesystemAccountName, accountToUpdate, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
@@ -231,11 +231,11 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
     });
     
     it('Delete command should work', function (done) {
-      adlsClient.accountdeleteMethod(testResourceGroup, accountName, function (err, result, request, response) {
+      adlsClient.account.deleteMethod(testResourceGroup, accountName, function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equalOneOf([200, 204]);
-        adlsClient.accountget(testResourceGroup, accountName, function (err, result, request, response) {
+        adlsClient.account.get(testResourceGroup, accountName, function (err, result, request, response) {
           should.exist(err);
           should.not.exist(result);
           err.statusCode.should.equal(404);
