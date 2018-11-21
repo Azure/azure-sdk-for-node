@@ -6633,7 +6633,7 @@ export interface AppServiceEnvironmentResource extends Resource {
 }
 
 /**
- * ARM resource for a app service enviroment.
+ * ARM resource for a app service environment.
 */
 export interface AppServiceEnvironmentPatchResource extends ProxyOnlyResource {
   /**
