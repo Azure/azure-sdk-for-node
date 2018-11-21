@@ -199,7 +199,7 @@ export interface SentimentBatchResult {
 
 /**
  * @class
- * Initializes a new instance of the MatchRecord class.
+ * Initializes a new instance of the MatchRecordV2dot1 class.
  * @constructor
  * @member {string} [text] Entity text as appears in the request.
  * @member {number} [offset] Start position (in Unicode characters) for the
@@ -207,7 +207,7 @@ export interface SentimentBatchResult {
  * @member {number} [length] Length (in Unicode characters) for the entity
  * match text.
  */
-export interface MatchRecord {
+export interface MatchRecordV2dot1 {
   text?: string;
   offset?: number;
   length?: number;
@@ -215,7 +215,7 @@ export interface MatchRecord {
 
 /**
  * @class
- * Initializes a new instance of the EntityRecord class.
+ * Initializes a new instance of the EntityRecordV2dot1 class.
  * @constructor
  * @member {string} [name] Entity formal name.
  * @member {array} [matches] List of instances this entity appears in the text.
@@ -227,36 +227,41 @@ export interface MatchRecord {
  * @member {string} [bingId] Bing unique identifier of the recognized entity.
  * Use in conjunction with the Bing Entity Search API to fetch additional
  * relevant information.
+ * @member {string} [type] Entity type from Named Entity Recognition model
+ * @member {string} [subType] Entity sub type from Named Entity Recognition
+ * model
  */
-export interface EntityRecord {
+export interface EntityRecordV2dot1 {
   name?: string;
-  readonly matches?: MatchRecord[];
+  matches?: MatchRecordV2dot1[];
   wikipediaLanguage?: string;
   wikipediaId?: string;
   readonly wikipediaUrl?: string;
   bingId?: string;
+  type?: string;
+  subType?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the EntitiesBatchResultItem class.
+ * Initializes a new instance of the EntitiesBatchResultItemV2dot1 class.
  * @constructor
  * @member {string} [id] Unique document identifier.
  * @member {array} [entities] Recognized entities in the document.
  */
-export interface EntitiesBatchResultItem {
+export interface EntitiesBatchResultItemV2dot1 {
   readonly id?: string;
-  readonly entities?: EntityRecord[];
+  readonly entities?: EntityRecordV2dot1[];
 }
 
 /**
  * @class
- * Initializes a new instance of the EntitiesBatchResult class.
+ * Initializes a new instance of the EntitiesBatchResultV2dot1 class.
  * @constructor
  * @member {array} [documents]
  * @member {array} [errors]
  */
-export interface EntitiesBatchResult {
-  readonly documents?: EntitiesBatchResultItem[];
+export interface EntitiesBatchResultV2dot1 {
+  readonly documents?: EntitiesBatchResultItemV2dot1[];
   readonly errors?: ErrorRecord[];
 }
