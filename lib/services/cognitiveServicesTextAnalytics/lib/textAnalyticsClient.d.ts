@@ -254,9 +254,21 @@ export default class TextAnalyticsClient extends ServiceClient {
   /**
    * @summary The API returns a list of recognized entities in a given document.
    *
-   * To get even more information on each recognized entity we recommend using
-   * the Bing Entity Search API by querying for the recognized entities names.
-   * See the <a
+   * The API returns a list of recognized entities in a given document. To get
+   * even more information on each recognized entity we recommend using the Bing
+   * Entity Search API by querying for the recognized entities names. See the <a
+   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
+   * languages in Text Analytics API</a> for the list of enabled languages.The
+   * API returns a list of known entities and general named entities ("Person",
+   * "Location", "Organization" etc) in a given document. Known entities are
+   * returned with Wikipedia Id and Wikipedia link, and also Bing Id which can be
+   * used in Bing Entity Search API. General named entities are returned with
+   * entity types. If a general named entity is also a known entity, then all
+   * information regarding it (Wikipedia Id, Bing Id, entity type etc) will be
+   * returned. See the <a
+   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking#supported-types-for-named-entity-recognition">Supported
+   * Entity Types in Text Analytics API</a> for the list of supported Entity
+   * Types. See the <a
    * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
    * languages in Text Analytics API</a> for the list of enabled languages.
    *
@@ -271,18 +283,30 @@ export default class TextAnalyticsClient extends ServiceClient {
    *
    * @returns {Promise} A promise is returned
    *
-   * @resolve {HttpOperationResponse<EntitiesBatchResult>} - The deserialized result object.
+   * @resolve {HttpOperationResponse<EntitiesBatchResultV2dot1>} - The deserialized result object.
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  entitiesWithHttpOperationResponse(input: models.MultiLanguageBatchInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntitiesBatchResult>>;
+  entitiesWithHttpOperationResponse(input: models.MultiLanguageBatchInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntitiesBatchResultV2dot1>>;
 
   /**
    * @summary The API returns a list of recognized entities in a given document.
    *
-   * To get even more information on each recognized entity we recommend using
-   * the Bing Entity Search API by querying for the recognized entities names.
-   * See the <a
+   * The API returns a list of recognized entities in a given document. To get
+   * even more information on each recognized entity we recommend using the Bing
+   * Entity Search API by querying for the recognized entities names. See the <a
+   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
+   * languages in Text Analytics API</a> for the list of enabled languages.The
+   * API returns a list of known entities and general named entities ("Person",
+   * "Location", "Organization" etc) in a given document. Known entities are
+   * returned with Wikipedia Id and Wikipedia link, and also Bing Id which can be
+   * used in Bing Entity Search API. General named entities are returned with
+   * entity types. If a general named entity is also a known entity, then all
+   * information regarding it (Wikipedia Id, Bing Id, entity type etc) will be
+   * returned. See the <a
+   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking#supported-types-for-named-entity-recognition">Supported
+   * Entity Types in Text Analytics API</a> for the list of supported Entity
+   * Types. See the <a
    * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
    * languages in Text Analytics API</a> for the list of enabled languages.
    *
@@ -302,7 +326,7 @@ export default class TextAnalyticsClient extends ServiceClient {
    *
    * {Promise} A promise is returned.
    *
-   *                      @resolve {EntitiesBatchResult} - The deserialized result object.
+   *                      @resolve {EntitiesBatchResultV2dot1} - The deserialized result object.
    *
    *                      @reject {Error|ServiceError} - The error object.
    *
@@ -310,16 +334,17 @@ export default class TextAnalyticsClient extends ServiceClient {
    *
    *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
    *
-   *                      {EntitiesBatchResult} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link EntitiesBatchResult} for more information.
+   *                      {EntitiesBatchResultV2dot1} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link EntitiesBatchResultV2dot1} for more
+   *                      information.
    *
    *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  entities(input: models.MultiLanguageBatchInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntitiesBatchResult>;
-  entities(input: models.MultiLanguageBatchInput, callback: ServiceCallback<models.EntitiesBatchResult>): void;
-  entities(input: models.MultiLanguageBatchInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntitiesBatchResult>): void;
+  entities(input: models.MultiLanguageBatchInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntitiesBatchResultV2dot1>;
+  entities(input: models.MultiLanguageBatchInput, callback: ServiceCallback<models.EntitiesBatchResultV2dot1>): void;
+  entities(input: models.MultiLanguageBatchInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntitiesBatchResultV2dot1>): void;
 }
 
 export { TextAnalyticsClient, models as TextAnalyticsModels };
