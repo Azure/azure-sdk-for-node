@@ -4342,11 +4342,9 @@ export interface ReplicationMigrationItems {
 
 
     /**
-     * @summary Purges migration.
+     * @summary Delete the migration item.
      *
-     * The operation to purge an ASR migration item. This operation will force
-     * delete the migration item. Use the remove operation on migration item to
-     * perform a clean disable migration for the item.
+     * The operation to delete an ASR migration item.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -4355,6 +4353,8 @@ export interface ReplicationMigrationItems {
      * @param {string} migrationItemName Migration item name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.deleteOption] The delete option.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4365,14 +4365,12 @@ export interface ReplicationMigrationItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { deleteOption? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * @summary Purges migration.
+     * @summary Delete the migration item.
      *
-     * The operation to purge an ASR migration item. This operation will force
-     * delete the migration item. Use the remove operation on migration item to
-     * perform a clean disable migration for the item.
+     * The operation to delete an ASR migration item.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -4381,6 +4379,8 @@ export interface ReplicationMigrationItems {
      * @param {string} migrationItemName Migration item name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.deleteOption] The delete option.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4406,9 +4406,9 @@ export interface ReplicationMigrationItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { deleteOption? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(fabricName: string, protectionContainerName: string, migrationItemName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(fabricName: string, protectionContainerName: string, migrationItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(fabricName: string, protectionContainerName: string, migrationItemName: string, options: { deleteOption? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -4499,73 +4499,6 @@ export interface ReplicationMigrationItems {
 
 
     /**
-     * @summary Complete migration.
-     *
-     * The operation to initiate complete migration of the item.
-     *
-     * @param {string} fabricName Fabric name.
-     *
-     * @param {string} protectionContainerName Protection container name.
-     *
-     * @param {string} migrationItemName Migration item name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<MigrationItem>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    completeWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationItem>>;
-
-    /**
-     * @summary Complete migration.
-     *
-     * The operation to initiate complete migration of the item.
-     *
-     * @param {string} fabricName Fabric name.
-     *
-     * @param {string} protectionContainerName Protection container name.
-     *
-     * @param {string} migrationItemName Migration item name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {MigrationItem} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {MigrationItem} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link MigrationItem} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    complete(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationItem>;
-    complete(fabricName: string, protectionContainerName: string, migrationItemName: string, callback: ServiceCallback<models.MigrationItem>): void;
-    complete(fabricName: string, protectionContainerName: string, migrationItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationItem>): void;
-
-
-    /**
      * @summary Migrate item.
      *
      * The operation to initiate migration of the item.
@@ -4650,72 +4583,6 @@ export interface ReplicationMigrationItems {
     migrate(fabricName: string, protectionContainerName: string, migrationItemName: string, migrateInput: models.MigrateInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationItem>;
     migrate(fabricName: string, protectionContainerName: string, migrationItemName: string, migrateInput: models.MigrateInput, callback: ServiceCallback<models.MigrationItem>): void;
     migrate(fabricName: string, protectionContainerName: string, migrationItemName: string, migrateInput: models.MigrateInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationItem>): void;
-
-
-    /**
-     * @summary Disables migration.
-     *
-     * The operation to disable an ASR migration item.
-     *
-     * @param {string} fabricName Fabric name.
-     *
-     * @param {string} protectionContainerName Protection container name.
-     *
-     * @param {string} migrationItemName Migration item name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    removeWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * @summary Disables migration.
-     *
-     * The operation to disable an ASR migration item.
-     *
-     * @param {string} fabricName Fabric name.
-     *
-     * @param {string} protectionContainerName Protection container name.
-     *
-     * @param {string} migrationItemName Migration item name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    remove(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    remove(fabricName: string, protectionContainerName: string, migrationItemName: string, callback: ServiceCallback<void>): void;
-    remove(fabricName: string, protectionContainerName: string, migrationItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -5042,11 +4909,9 @@ export interface ReplicationMigrationItems {
 
 
     /**
-     * @summary Purges migration.
+     * @summary Delete the migration item.
      *
-     * The operation to purge an ASR migration item. This operation will force
-     * delete the migration item. Use the remove operation on migration item to
-     * perform a clean disable migration for the item.
+     * The operation to delete an ASR migration item.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -5055,6 +4920,8 @@ export interface ReplicationMigrationItems {
      * @param {string} migrationItemName Migration item name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.deleteOption] The delete option.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5065,14 +4932,12 @@ export interface ReplicationMigrationItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { deleteOption? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * @summary Purges migration.
+     * @summary Delete the migration item.
      *
-     * The operation to purge an ASR migration item. This operation will force
-     * delete the migration item. Use the remove operation on migration item to
-     * perform a clean disable migration for the item.
+     * The operation to delete an ASR migration item.
      *
      * @param {string} fabricName Fabric name.
      *
@@ -5081,6 +4946,8 @@ export interface ReplicationMigrationItems {
      * @param {string} migrationItemName Migration item name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.deleteOption] The delete option.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5106,9 +4973,9 @@ export interface ReplicationMigrationItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { deleteOption? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginDeleteMethod(fabricName: string, protectionContainerName: string, migrationItemName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(fabricName: string, protectionContainerName: string, migrationItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(fabricName: string, protectionContainerName: string, migrationItemName: string, options: { deleteOption? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -5199,73 +5066,6 @@ export interface ReplicationMigrationItems {
 
 
     /**
-     * @summary Complete migration.
-     *
-     * The operation to initiate complete migration of the item.
-     *
-     * @param {string} fabricName Fabric name.
-     *
-     * @param {string} protectionContainerName Protection container name.
-     *
-     * @param {string} migrationItemName Migration item name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<MigrationItem>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCompleteWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationItem>>;
-
-    /**
-     * @summary Complete migration.
-     *
-     * The operation to initiate complete migration of the item.
-     *
-     * @param {string} fabricName Fabric name.
-     *
-     * @param {string} protectionContainerName Protection container name.
-     *
-     * @param {string} migrationItemName Migration item name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {MigrationItem} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {MigrationItem} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link MigrationItem} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginComplete(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationItem>;
-    beginComplete(fabricName: string, protectionContainerName: string, migrationItemName: string, callback: ServiceCallback<models.MigrationItem>): void;
-    beginComplete(fabricName: string, protectionContainerName: string, migrationItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationItem>): void;
-
-
-    /**
      * @summary Migrate item.
      *
      * The operation to initiate migration of the item.
@@ -5350,72 +5150,6 @@ export interface ReplicationMigrationItems {
     beginMigrate(fabricName: string, protectionContainerName: string, migrationItemName: string, migrateInput: models.MigrateInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationItem>;
     beginMigrate(fabricName: string, protectionContainerName: string, migrationItemName: string, migrateInput: models.MigrateInput, callback: ServiceCallback<models.MigrationItem>): void;
     beginMigrate(fabricName: string, protectionContainerName: string, migrationItemName: string, migrateInput: models.MigrateInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationItem>): void;
-
-
-    /**
-     * @summary Disables migration.
-     *
-     * The operation to disable an ASR migration item.
-     *
-     * @param {string} fabricName Fabric name.
-     *
-     * @param {string} protectionContainerName Protection container name.
-     *
-     * @param {string} migrationItemName Migration item name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginRemoveWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * @summary Disables migration.
-     *
-     * The operation to disable an ASR migration item.
-     *
-     * @param {string} fabricName Fabric name.
-     *
-     * @param {string} protectionContainerName Protection container name.
-     *
-     * @param {string} migrationItemName Migration item name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginRemove(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginRemove(fabricName: string, protectionContainerName: string, migrationItemName: string, callback: ServiceCallback<void>): void;
-    beginRemove(fabricName: string, protectionContainerName: string, migrationItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**

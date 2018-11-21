@@ -1884,6 +1884,22 @@ export interface CreateRecoveryPlanInput {
 
 /**
  * @class
+ * Initializes a new instance of the CurrentJobDetails class.
+ * @constructor
+ * Current job details of the migraton item.
+ *
+ * @member {string} [jobName] The job name.
+ * @member {string} [jobId] The ARM Id of the job being executed.
+ * @member {date} [startTime] The start time of the job.
+ */
+export interface CurrentJobDetails {
+  jobName?: string;
+  jobId?: string;
+  startTime?: Date;
+}
+
+/**
+ * @class
  * Initializes a new instance of the CurrentScenarioDetails class.
  * @constructor
  * Current scenario details of the protected entity.
@@ -4618,49 +4634,50 @@ export interface MigrationProviderSpecificSettings {
  * @constructor
  * Migration item properties.
  *
- * @member {string} [friendlyName] The name.
+ * @member {string} [machineName] The on-premise virtual machine name.
  * @member {string} [policyId] The ARM Id of policy governing this item.
  * @member {string} [policyFriendlyName] The name of policy governing this
  * item.
  * @member {string} [recoveryServicesProviderId] The recovery services provider
  * ARM Id.
- * @member {string} [migrationState] The migration status.
+ * @member {string} [migrationState] The migration status. Possible values
+ * include: 'None', 'EnableMigrationInProgress', 'EnableMigrationFailed',
+ * 'DisableMigrationInProgress', 'DisableMigrationFailed',
+ * 'InitialSeedingInProgress', 'InitialSeedingFailed', 'Replicating',
+ * 'MigrationInProgress', 'MigrationSucceeded', 'MigrationFailed'
  * @member {string} [migrationStateDescription] The migration state
  * description.
- * @member {date} [lastSuccessfulMigrateTime] The last successful migrate time.
- * @member {date} [lastSuccessfulTestMigrateTime] The last successful test
- * migrate time.
- * @member {string} [testMigrateState] The test migrate state.
+ * @member {string} [testMigrateState] The test migrate state. Possible values
+ * include: 'None', 'TestMigrationInProgress', 'TestMigrationSucceeded',
+ * 'TestMigrationFailed', 'TestMigrationCleanupInProgress'
  * @member {string} [testMigrateStateDescription] The test migrate state
  * description.
  * @member {string} [health] The consolidated health.
  * @member {array} [healthErrors] The list of health errors.
  * @member {array} [allowedOperations] The allowed operations on the migration
- * item.
- * @member {object} [currentScenario] The current scenario.
- * @member {string} [currentScenario.scenarioName] Scenario name.
- * @member {string} [currentScenario.jobId] ARM Id of the job being executed.
- * @member {date} [currentScenario.startTime] Start time of the workflow.
+ * item, based on the current migration state of the item.
+ * @member {object} [currentJob] The current job details.
+ * @member {string} [currentJob.jobName] The job name.
+ * @member {string} [currentJob.jobId] The ARM Id of the job being executed.
+ * @member {date} [currentJob.startTime] The start time of the job.
  * @member {object} [providerSpecificDetails] The migration provider custom
  * settings.
  * @member {string} [providerSpecificDetails.instanceType] Polymorphic
  * Discriminator
  */
 export interface MigrationItemProperties {
-  friendlyName?: string;
-  policyId?: string;
-  policyFriendlyName?: string;
-  recoveryServicesProviderId?: string;
-  migrationState?: string;
-  migrationStateDescription?: string;
-  lastSuccessfulMigrateTime?: Date;
-  lastSuccessfulTestMigrateTime?: Date;
-  testMigrateState?: string;
-  testMigrateStateDescription?: string;
-  health?: string;
-  healthErrors?: HealthError[];
-  allowedOperations?: string[];
-  currentScenario?: CurrentScenarioDetails;
+  readonly machineName?: string;
+  readonly policyId?: string;
+  readonly policyFriendlyName?: string;
+  readonly recoveryServicesProviderId?: string;
+  readonly migrationState?: string;
+  readonly migrationStateDescription?: string;
+  readonly testMigrateState?: string;
+  readonly testMigrateStateDescription?: string;
+  readonly health?: string;
+  readonly healthErrors?: HealthError[];
+  readonly allowedOperations?: string[];
+  readonly currentJob?: CurrentJobDetails;
   providerSpecificDetails?: MigrationProviderSpecificSettings;
 }
 
@@ -4671,33 +4688,37 @@ export interface MigrationItemProperties {
  * Migration item.
  *
  * @member {object} [properties] The migration item properties.
- * @member {string} [properties.friendlyName] The name.
+ * @member {string} [properties.machineName] The on-premise virtual machine
+ * name.
  * @member {string} [properties.policyId] The ARM Id of policy governing this
  * item.
  * @member {string} [properties.policyFriendlyName] The name of policy
  * governing this item.
  * @member {string} [properties.recoveryServicesProviderId] The recovery
  * services provider ARM Id.
- * @member {string} [properties.migrationState] The migration status.
+ * @member {string} [properties.migrationState] The migration status. Possible
+ * values include: 'None', 'EnableMigrationInProgress',
+ * 'EnableMigrationFailed', 'DisableMigrationInProgress',
+ * 'DisableMigrationFailed', 'InitialSeedingInProgress',
+ * 'InitialSeedingFailed', 'Replicating', 'MigrationInProgress',
+ * 'MigrationSucceeded', 'MigrationFailed'
  * @member {string} [properties.migrationStateDescription] The migration state
  * description.
- * @member {date} [properties.lastSuccessfulMigrateTime] The last successful
- * migrate time.
- * @member {date} [properties.lastSuccessfulTestMigrateTime] The last
- * successful test migrate time.
  * @member {string} [properties.testMigrateState] The test migrate state.
+ * Possible values include: 'None', 'TestMigrationInProgress',
+ * 'TestMigrationSucceeded', 'TestMigrationFailed',
+ * 'TestMigrationCleanupInProgress'
  * @member {string} [properties.testMigrateStateDescription] The test migrate
  * state description.
  * @member {string} [properties.health] The consolidated health.
  * @member {array} [properties.healthErrors] The list of health errors.
  * @member {array} [properties.allowedOperations] The allowed operations on the
- * migration item.
- * @member {object} [properties.currentScenario] The current scenario.
- * @member {string} [properties.currentScenario.scenarioName] Scenario name.
- * @member {string} [properties.currentScenario.jobId] ARM Id of the job being
+ * migration item, based on the current migration state of the item.
+ * @member {object} [properties.currentJob] The current job details.
+ * @member {string} [properties.currentJob.jobName] The job name.
+ * @member {string} [properties.currentJob.jobId] The ARM Id of the job being
  * executed.
- * @member {date} [properties.currentScenario.startTime] Start time of the
- * workflow.
+ * @member {date} [properties.currentJob.startTime] The start time of the job.
  * @member {object} [properties.providerSpecificDetails] The migration provider
  * custom settings.
  * @member {string} [properties.providerSpecificDetails.instanceType]
@@ -4732,8 +4753,8 @@ export interface MigrationItemsQueryParameter {
  * values include: 'NotSpecified', 'ApplicationConsistent', 'CrashConsistent'
  */
 export interface MigrationRecoveryPointProperties {
-  recoveryPointTime?: Date;
-  recoveryPointType?: string;
+  readonly recoveryPointTime?: Date;
+  readonly recoveryPointType?: string;
 }
 
 /**
@@ -7409,18 +7430,19 @@ export interface VMwareCbtMigrateInput extends MigrateProviderSpecificInput {
  * @member {string} [seedManagedDiskId] The ARM Id of the seed managed disk.
  * @member {string} [targetManagedDiskId] The ARM Id of the target managed
  * disk.
- * @member {string} [diskType] The disk type.
+ * @member {string} [diskType] The disk type. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
  */
 export interface VMwareCbtProtectedDiskDetails {
-  diskId?: string;
-  diskName?: string;
-  diskPath?: string;
-  isOSDisk?: string;
-  capacityInBytes?: number;
-  logStorageAccountId?: string;
-  logStorageAccountSasSecretName?: string;
-  seedManagedDiskId?: string;
-  targetManagedDiskId?: string;
+  readonly diskId?: string;
+  readonly diskName?: string;
+  readonly diskPath?: string;
+  readonly isOSDisk?: string;
+  readonly capacityInBytes?: number;
+  readonly logStorageAccountId?: string;
+  readonly logStorageAccountSasSecretName?: string;
+  readonly seedManagedDiskId?: string;
+  readonly targetManagedDiskId?: string;
   diskType?: string;
 }
 
@@ -7445,11 +7467,11 @@ export interface VMwareCbtProtectedDiskDetails {
  * NIC is selected for migration.
  */
 export interface VMwareCbtNicDetails {
-  nicId?: string;
+  readonly nicId?: string;
   isPrimaryNic?: string;
-  sourceIPAddress?: string;
-  sourceIPAddressType?: string;
-  sourceNetworkId?: string;
+  readonly sourceIPAddress?: string;
+  readonly sourceIPAddressType?: string;
+  readonly sourceNetworkId?: string;
   targetIPAddress?: string;
   targetIPAddressType?: string;
   targetSubnetName?: string;
@@ -7484,22 +7506,22 @@ export interface VMwareCbtNicDetails {
  * time.
  */
 export interface VMwareCbtMigrationDetails extends MigrationProviderSpecificSettings {
-  vmwareMachineId?: string;
-  osType?: string;
+  readonly vmwareMachineId?: string;
+  readonly osType?: string;
   licenseType?: string;
-  dataMoverRunAsAccountId?: string;
-  snapshotRunAsAccountId?: string;
+  readonly dataMoverRunAsAccountId?: string;
+  readonly snapshotRunAsAccountId?: string;
   targetVmName?: string;
   targetVmSize?: string;
-  targetLocation?: string;
+  readonly targetLocation?: string;
   targetResourceGroupId?: string;
   targetAvailabilitySetId?: string;
   targetBootDiagnosticsStorageAccountId?: string;
   protectedDisks?: VMwareCbtProtectedDiskDetails[];
   targetNetworkId?: string;
   vmNics?: VMwareCbtNicDetails[];
-  migrationRecoveryPointId?: string;
-  lastRecoveryPointReceived?: Date;
+  readonly migrationRecoveryPointId?: string;
+  readonly lastRecoveryPointReceived?: Date;
 }
 
 /**
@@ -7578,12 +7600,12 @@ export interface VmwareCbtPolicyDetails extends PolicyProviderSpecificDetails {
  * @member {string} [targetLocation] The target location.
  */
 export interface VMwareCbtProtectionContainerMappingDetails extends ProtectionContainerMappingProviderSpecificDetails {
-  keyVaultId?: string;
-  keyVaultUri?: string;
-  storageAccountId?: string;
-  storageAccountSasSecretName?: string;
-  serviceBusConnectionStringSecretName?: string;
-  targetLocation?: string;
+  readonly keyVaultId?: string;
+  readonly keyVaultUri?: string;
+  readonly storageAccountId?: string;
+  readonly storageAccountSasSecretName?: string;
+  readonly serviceBusConnectionStringSecretName?: string;
+  readonly targetLocation?: string;
 }
 
 /**
@@ -7720,11 +7742,11 @@ export interface VMwareDetails extends FabricSpecificDetails {
  * VMwareV2 fabric provider specific settings.
  *
  * @member {string} vmwareSiteId The ARM Id of the VMware site.
- * @member {string} [migrationSolutionId] The ARM Id of the migration solution.
+ * @member {string} migrationSolutionId The ARM Id of the migration solution.
  */
 export interface VMwareV2FabricCreationInput extends FabricSpecificCreationInput {
   vmwareSiteId: string;
-  migrationSolutionId?: string;
+  migrationSolutionId: string;
 }
 
 /**
@@ -7735,12 +7757,12 @@ export interface VMwareV2FabricCreationInput extends FabricSpecificCreationInput
  *
  * @member {string} [vmwareSiteId] The ARM Id of the VMware site.
  * @member {string} [migrationSolutionId] The Migration solution ARM Id.
- * @member {string} [srsServiceEndpoint] The SRS service endpoint.
+ * @member {string} [serviceEndpoint] The service endpoint.
  */
 export interface VMwareV2FabricSpecificDetails extends FabricSpecificDetails {
-  vmwareSiteId?: string;
-  migrationSolutionId?: string;
-  srsServiceEndpoint?: string;
+  readonly vmwareSiteId?: string;
+  readonly migrationSolutionId?: string;
+  readonly serviceEndpoint?: string;
 }
 
 /**
