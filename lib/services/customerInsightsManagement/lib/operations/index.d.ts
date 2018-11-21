@@ -779,7 +779,7 @@ export interface Profiles {
      * Property or EntityType.
      *
      * @param {string} [parameters.apiEntitySetName] The api entity set name. This
-     * becomes the odata entity set name for the entity Type being refered in this
+     * becomes the odata entity set name for the entity Type being referred in this
      * object.
      *
      * @param {string} [parameters.entityType] Type of entity. Possible values
@@ -845,7 +845,7 @@ export interface Profiles {
      * Property or EntityType.
      *
      * @param {string} [parameters.apiEntitySetName] The api entity set name. This
-     * becomes the odata entity set name for the entity Type being refered in this
+     * becomes the odata entity set name for the entity Type being referred in this
      * object.
      *
      * @param {string} [parameters.entityType] Type of entity. Possible values
@@ -1198,7 +1198,7 @@ export interface Profiles {
      * Property or EntityType.
      *
      * @param {string} [parameters.apiEntitySetName] The api entity set name. This
-     * becomes the odata entity set name for the entity Type being refered in this
+     * becomes the odata entity set name for the entity Type being referred in this
      * object.
      *
      * @param {string} [parameters.entityType] Type of entity. Possible values
@@ -1264,7 +1264,7 @@ export interface Profiles {
      * Property or EntityType.
      *
      * @param {string} [parameters.apiEntitySetName] The api entity set name. This
-     * becomes the odata entity set name for the entity Type being refered in this
+     * becomes the odata entity set name for the entity Type being referred in this
      * object.
      *
      * @param {string} [parameters.entityType] Type of entity. Possible values
@@ -1483,7 +1483,7 @@ export interface Interactions {
      * Property or EntityType.
      *
      * @param {string} [parameters.apiEntitySetName] The api entity set name. This
-     * becomes the odata entity set name for the entity Type being refered in this
+     * becomes the odata entity set name for the entity Type being referred in this
      * object.
      *
      * @param {string} [parameters.entityType] Type of entity. Possible values
@@ -1563,7 +1563,7 @@ export interface Interactions {
      * Property or EntityType.
      *
      * @param {string} [parameters.apiEntitySetName] The api entity set name. This
-     * becomes the odata entity set name for the entity Type being refered in this
+     * becomes the odata entity set name for the entity Type being referred in this
      * object.
      *
      * @param {string} [parameters.entityType] Type of entity. Possible values
@@ -1862,7 +1862,7 @@ export interface Interactions {
      * Property or EntityType.
      *
      * @param {string} [parameters.apiEntitySetName] The api entity set name. This
-     * becomes the odata entity set name for the entity Type being refered in this
+     * becomes the odata entity set name for the entity Type being referred in this
      * object.
      *
      * @param {string} [parameters.entityType] Type of entity. Possible values
@@ -1942,7 +1942,7 @@ export interface Interactions {
      * Property or EntityType.
      *
      * @param {string} [parameters.apiEntitySetName] The api entity set name. This
-     * becomes the odata entity set name for the entity Type being refered in this
+     * becomes the odata entity set name for the entity Type being referred in this
      * object.
      *
      * @param {string} [parameters.entityType] Type of entity. Possible values
@@ -3172,10 +3172,10 @@ export interface AuthorizationPolicies {
      * @param {array} parameters.permissions The permissions associated with the
      * policy.
      *
-     * @param {string} [parameters.primaryKey] Primary key assiciated with the
+     * @param {string} [parameters.primaryKey] Primary key associated with the
      * policy.
      *
-     * @param {string} [parameters.secondaryKey] Secondary key assiciated with the
+     * @param {string} [parameters.secondaryKey] Secondary key associated with the
      * policy.
      *
      * @param {object} [options] Optional Parameters.
@@ -3206,10 +3206,10 @@ export interface AuthorizationPolicies {
      * @param {array} parameters.permissions The permissions associated with the
      * policy.
      *
-     * @param {string} [parameters.primaryKey] Primary key assiciated with the
+     * @param {string} [parameters.primaryKey] Primary key associated with the
      * policy.
      *
-     * @param {string} [parameters.secondaryKey] Secondary key assiciated with the
+     * @param {string} [parameters.secondaryKey] Secondary key associated with the
      * policy.
      *
      * @param {object} [options] Optional Parameters.
@@ -5446,7 +5446,7 @@ export interface Views {
      *
      * @param {string} hubName The name of the hub.
      *
-     * @param {string} userId The user ID. Use * to retreive hub level views.
+     * @param {string} userId The user ID. Use * to retrieve hub level views.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5468,7 +5468,7 @@ export interface Views {
      *
      * @param {string} hubName The name of the hub.
      *
-     * @param {string} userId The user ID. Use * to retreive hub level views.
+     * @param {string} userId The user ID. Use * to retrieve hub level views.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5503,7 +5503,7 @@ export interface Views {
 
 
     /**
-     * Creates a view or updates an exisiting view in the hub.
+     * Creates a view or updates an existing view in the hub.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -5535,7 +5535,7 @@ export interface Views {
     createOrUpdateWithHttpOperationResponse(resourceGroupName: string, hubName: string, viewName: string, parameters: models.ViewResourceFormat, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ViewResourceFormat>>;
 
     /**
-     * Creates a view or updates an exisiting view in the hub.
+     * Creates a view or updates an existing view in the hub.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -5594,7 +5594,7 @@ export interface Views {
      *
      * @param {string} viewName The name of the view.
      *
-     * @param {string} userId The user ID. Use * to retreive hub level view.
+     * @param {string} userId The user ID. Use * to retrieve hub level view.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5618,7 +5618,7 @@ export interface Views {
      *
      * @param {string} viewName The name of the view.
      *
-     * @param {string} userId The user ID. Use * to retreive hub level view.
+     * @param {string} userId The user ID. Use * to retrieve hub level view.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5661,7 +5661,7 @@ export interface Views {
      *
      * @param {string} viewName The name of the view.
      *
-     * @param {string} userId The user ID. Use * to retreive hub level view.
+     * @param {string} userId The user ID. Use * to retrieve hub level view.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5685,7 +5685,7 @@ export interface Views {
      *
      * @param {string} viewName The name of the view.
      *
-     * @param {string} userId The user ID. Use * to retreive hub level view.
+     * @param {string} userId The user ID. Use * to retrieve hub level view.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5821,7 +5821,7 @@ export interface Links {
      * represent the participating profile.
      *
      * @param {boolean} [parameters.referenceOnly] Indicating whether the link is
-     * reference only link. This flag is ingored if the Mappings are defined. If
+     * reference only link. This flag is ignored if the Mappings are defined. If
      * the mappings are not defined and it is set to true, links processing will
      * not create or update profiles.
      *
@@ -5879,7 +5879,7 @@ export interface Links {
      * represent the participating profile.
      *
      * @param {boolean} [parameters.referenceOnly] Indicating whether the link is
-     * reference only link. This flag is ingored if the Mappings are defined. If
+     * reference only link. This flag is ignored if the Mappings are defined. If
      * the mappings are not defined and it is set to true, links processing will
      * not create or update profiles.
      *
@@ -6140,7 +6140,7 @@ export interface Links {
      * represent the participating profile.
      *
      * @param {boolean} [parameters.referenceOnly] Indicating whether the link is
-     * reference only link. This flag is ingored if the Mappings are defined. If
+     * reference only link. This flag is ignored if the Mappings are defined. If
      * the mappings are not defined and it is set to true, links processing will
      * not create or update profiles.
      *
@@ -6198,7 +6198,7 @@ export interface Links {
      * represent the participating profile.
      *
      * @param {boolean} [parameters.referenceOnly] Indicating whether the link is
-     * reference only link. This flag is ingored if the Mappings are defined. If
+     * reference only link. This flag is ignored if the Mappings are defined. If
      * the mappings are not defined and it is set to true, links processing will
      * not create or update profiles.
      *
