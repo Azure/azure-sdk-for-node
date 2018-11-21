@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/iotHubClient.js",
   "types": "./lib/iotHubClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/iothub",
+  "homepage": "https://github.com/azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
