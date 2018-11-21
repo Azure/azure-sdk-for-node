@@ -261,6 +261,35 @@ export interface StorageAccountProperties {
 
 /**
  * @class
+ * Initializes a new instance of the VirtualNetworkRule class.
+ * @constructor
+ * The virtual network rule for a container registry.
+ *
+ * @member {string} [id] Resource ID of a subnet, for example:
+ * /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
+ */
+export interface VirtualNetworkRule {
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkRuleSet class.
+ * @constructor
+ * The network rule set for a container registry.
+ *
+ * @member {string} [defaultAction] The default action of allow or deny when no
+ * other rules match. Possible values include: 'Allow', 'Deny'. Default value:
+ * '0' .
+ * @member {array} [virtualNetworkRules] The virtual network rules
+ */
+export interface NetworkRuleSet {
+  defaultAction?: string;
+  virtualNetworkRules?: VirtualNetworkRule[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the Resource class.
  * @constructor
  * An Azure resource.
@@ -311,6 +340,12 @@ export interface Resource extends BaseResource {
  * @member {object} [storageAccount] The properties of the storage account for
  * the container registry. Only applicable to Classic SKU.
  * @member {string} [storageAccount.id] The resource ID of the storage account.
+ * @member {object} [networkRuleSet] The network rule set for a container
+ * registry.
+ * @member {string} [networkRuleSet.defaultAction] The default action of allow
+ * or deny when no other rules match. Possible values include: 'Allow', 'Deny'
+ * @member {array} [networkRuleSet.virtualNetworkRules] The virtual network
+ * rules
  */
 export interface Registry extends Resource {
   sku: Sku;
@@ -320,6 +355,7 @@ export interface Registry extends Resource {
   readonly status?: Status;
   adminUserEnabled?: boolean;
   storageAccount?: StorageAccountProperties;
+  networkRuleSet?: NetworkRuleSet;
 }
 
 /**
@@ -342,12 +378,19 @@ export interface Registry extends Resource {
  * storage account must be in the same physical location as the container
  * registry.
  * @member {string} [storageAccount.id] The resource ID of the storage account.
+ * @member {object} [networkRuleSet] The network rule set for a container
+ * registry.
+ * @member {string} [networkRuleSet.defaultAction] The default action of allow
+ * or deny when no other rules match. Possible values include: 'Allow', 'Deny'
+ * @member {array} [networkRuleSet.virtualNetworkRules] The virtual network
+ * rules
  */
 export interface RegistryUpdateParameters {
   tags?: { [propertyName: string]: string };
   sku?: Sku;
   adminUserEnabled?: boolean;
   storageAccount?: StorageAccountProperties;
+  networkRuleSet?: NetworkRuleSet;
 }
 
 /**
