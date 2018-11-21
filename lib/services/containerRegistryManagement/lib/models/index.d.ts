@@ -280,7 +280,7 @@ export interface VirtualNetworkRule {
  *
  * @member {string} [defaultAction] The default action of allow or deny when no
  * other rules match. Possible values include: 'Allow', 'Deny'. Default value:
- * '0' .
+ * 'Allow' .
  * @member {array} [virtualNetworkRules] The virtual network rules
  */
 export interface NetworkRuleSet {
