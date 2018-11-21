@@ -1964,7 +1964,7 @@ export interface PredictionModelStatus {
    */
   readonly trainingAccuracy?: number;
   /**
-   * The singnals used.
+   * The signals used.
    */
   readonly signalsUsed?: number;
   /**
