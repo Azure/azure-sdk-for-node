@@ -4913,7 +4913,7 @@ export interface ExpressRouteCircuitPeerings {
      *
      * @param {array}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities]
-     * The communities of bgp peering. Spepcified for microsoft peering
+     * The communities of bgp peering. Specified for microsoft peering
      *
      * @param {string}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
@@ -5068,7 +5068,7 @@ export interface ExpressRouteCircuitPeerings {
      *
      * @param {array}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities]
-     * The communities of bgp peering. Spepcified for microsoft peering
+     * The communities of bgp peering. Specified for microsoft peering
      *
      * @param {string}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
@@ -5365,7 +5365,7 @@ export interface ExpressRouteCircuitPeerings {
      *
      * @param {array}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities]
-     * The communities of bgp peering. Spepcified for microsoft peering
+     * The communities of bgp peering. Specified for microsoft peering
      *
      * @param {string}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
@@ -5520,7 +5520,7 @@ export interface ExpressRouteCircuitPeerings {
      *
      * @param {array}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities]
-     * The communities of bgp peering. Spepcified for microsoft peering
+     * The communities of bgp peering. Specified for microsoft peering
      *
      * @param {string}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
@@ -5831,7 +5831,7 @@ export interface ExpressRouteCircuitConnections {
      * connection.
      *
      * @param {object} expressRouteCircuitConnectionParameters Parameters supplied
-     * to the create or update express route circuit circuit connection operation.
+     * to the create or update express route circuit connection operation.
      *
      * @param {object}
      * [expressRouteCircuitConnectionParameters.expressRouteCircuitPeering]
@@ -5886,7 +5886,7 @@ export interface ExpressRouteCircuitConnections {
      * connection.
      *
      * @param {object} expressRouteCircuitConnectionParameters Parameters supplied
-     * to the create or update express route circuit circuit connection operation.
+     * to the create or update express route circuit connection operation.
      *
      * @param {object}
      * [expressRouteCircuitConnectionParameters.expressRouteCircuitPeering]
@@ -6031,7 +6031,7 @@ export interface ExpressRouteCircuitConnections {
      * connection.
      *
      * @param {object} expressRouteCircuitConnectionParameters Parameters supplied
-     * to the create or update express route circuit circuit connection operation.
+     * to the create or update express route circuit connection operation.
      *
      * @param {object}
      * [expressRouteCircuitConnectionParameters.expressRouteCircuitPeering]
@@ -6086,7 +6086,7 @@ export interface ExpressRouteCircuitConnections {
      * connection.
      *
      * @param {object} expressRouteCircuitConnectionParameters Parameters supplied
-     * to the create or update express route circuit circuit connection operation.
+     * to the create or update express route circuit connection operation.
      *
      * @param {object}
      * [expressRouteCircuitConnectionParameters.expressRouteCircuitPeering]
@@ -9137,7 +9137,7 @@ export interface ExpressRouteCrossConnectionPeerings {
      *
      * @param {array}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities]
-     * The communities of bgp peering. Spepcified for microsoft peering
+     * The communities of bgp peering. Specified for microsoft peering
      *
      * @param {string}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
@@ -9260,7 +9260,7 @@ export interface ExpressRouteCrossConnectionPeerings {
      *
      * @param {array}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities]
-     * The communities of bgp peering. Spepcified for microsoft peering
+     * The communities of bgp peering. Specified for microsoft peering
      *
      * @param {string}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
@@ -9467,7 +9467,7 @@ export interface ExpressRouteCrossConnectionPeerings {
      *
      * @param {array}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities]
-     * The communities of bgp peering. Spepcified for microsoft peering
+     * The communities of bgp peering. Specified for microsoft peering
      *
      * @param {string}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
@@ -9590,7 +9590,7 @@ export interface ExpressRouteCrossConnectionPeerings {
      *
      * @param {array}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities]
-     * The communities of bgp peering. Spepcified for microsoft peering
+     * The communities of bgp peering. Specified for microsoft peering
      *
      * @param {string}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]

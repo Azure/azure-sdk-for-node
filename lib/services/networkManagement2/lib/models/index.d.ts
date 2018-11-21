@@ -22,7 +22,7 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Reference to another subresource.
  *
- * @member {string} [id] Resource ID.
+ * @property {string} [id] Resource ID.
  */
 export interface SubResource extends BaseResource {
   id?: string;
@@ -34,677 +34,677 @@ export interface SubResource extends BaseResource {
  * @constructor
  * Tap configuration in a Network Interface
  *
- * @member {object} [virtualNetworkTap] The reference of the Virtual Network
+ * @property {object} [virtualNetworkTap] The reference of the Virtual Network
  * Tap resource.
- * @member {array} [virtualNetworkTap.networkInterfaceTapConfigurations]
+ * @property {array} [virtualNetworkTap.networkInterfaceTapConfigurations]
  * Specifies the list of resource IDs for the network interface IP
  * configuration that needs to be tapped.
- * @member {string} [virtualNetworkTap.resourceGuid] The resourceGuid property
- * of the virtual network tap.
- * @member {string} [virtualNetworkTap.provisioningState] The provisioning
+ * @property {string} [virtualNetworkTap.resourceGuid] The resourceGuid
+ * property of the virtual network tap.
+ * @property {string} [virtualNetworkTap.provisioningState] The provisioning
  * state of the virtual network tap. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration] The reference
  * to the private IP Address of the collector nic that will receive the tap
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.virtualNetworkTaps]
  * The reference to Virtual Network Taps.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.applicationGatewayBackendAddressPools]
  * The reference of ApplicationGatewayBackendAddressPool resource.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.loadBalancerBackendAddressPools]
  * The reference of LoadBalancerBackendAddressPool resource.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.loadBalancerInboundNatRules]
  * A list of references of LoadBalancerInboundNatRules.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAddress]
  * Private IP address of the IP configuration.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
  * Defines how a private IP address is assigned. Possible values are: 'Static'
  * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
  * Available from Api-Version 2016-03-30 onwards, it represents whether the
  * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
  * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
  * 'IPv6'
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet] Subnet
  * bound to the IP configuration.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.addressPrefix]
  * The address prefix for the subnet.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.addressPrefixes]
  * List of  address prefixes for the subnet.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup]
  * The reference of the NetworkSecurityGroup resource.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.securityRules]
  * A collection of security rules of the network security group.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
  * The default security rules of network security group.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.networkInterfaces]
  * A collection of references to network interfaces.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.subnets]
  * A collection of references to subnets.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.resourceGuid]
  * The resource GUID property of the network security group resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.provisioningState]
  * The provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.routeTable]
  * The reference of the RouteTable resource.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.routeTable.routes]
  * Collection of routes contained within a route table.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.routeTable.subnets]
  * A collection of references to subnets.
- * @member {boolean}
+ * @property {boolean}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.routeTable.disableBgpRoutePropagation]
  * Gets or sets whether to disable the routes learned by BGP on that route
  * table. True means disable.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.routeTable.provisioningState]
  * The provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.serviceEndpoints]
  * An array of service endpoints.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.serviceEndpointPolicies]
  * An array of service endpoint policies.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.interfaceEndpoints]
  * An array of references to interface endpoints
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.ipConfigurationProfiles]
  * Array of IP configuration profiles which reference this subnet.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.resourceNavigationLinks]
  * Gets an array of references to the external resources using subnet.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.serviceAssociationLinks]
  * Gets an array of references to services injecting into this subnet.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.delegations]
  * Gets an array of references to the delegations on the subnet.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.purpose]
  * A read-only string identifying the intention of use for this subnet based on
  * delegations and other user-defined properties.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.name]
  * The name of the resource that is unique within a resource group. This name
  * can be used to access the resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.etag] A
  * unique read-only string that changes whenever the resource is updated.
- * @member {boolean}
+ * @property {boolean}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.primary] Gets
  * whether this is a primary customer address on the network interface.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress]
  * Public IP address bound to the IP configuration.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.sku]
  * The public IP address SKU.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.sku.name]
  * Name of a public IP address SKU. Possible values include: 'Basic',
  * 'Standard'
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.publicIPAllocationMethod]
  * The public IP allocation method. Possible values are: 'Static' and
  * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.publicIPAddressVersion]
  * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
  * Possible values include: 'IPv4', 'IPv6'
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration]
  * The IP configuration associated with the public IP address.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.privateIPAddress]
  * The private IP address of the IP configuration.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.privateIPAllocationMethod]
  * The private IP allocation method. Possible values are 'Static' and
  * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet]
  * The reference of the subnet resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefix]
  * The address prefix for the subnet.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefixes]
  * List of  address prefixes for the subnet.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup]
  * The reference of the NetworkSecurityGroup resource.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.securityRules]
  * A collection of security rules of the network security group.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
  * The default security rules of network security group.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
  * A collection of references to network interfaces.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.subnets]
  * A collection of references to subnets.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.resourceGuid]
  * The resource GUID property of the network security group resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
  * The provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable]
  * The reference of the RouteTable resource.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.routes]
  * Collection of routes contained within a route table.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.subnets]
  * A collection of references to subnets.
- * @member {boolean}
+ * @property {boolean}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.disableBgpRoutePropagation]
  * Gets or sets whether to disable the routes learned by BGP on that route
  * table. True means disable.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState]
  * The provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints]
  * An array of service endpoints.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
  * An array of service endpoint policies.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.interfaceEndpoints]
  * An array of references to interface endpoints
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurationProfiles]
  * Array of IP configuration profiles which reference this subnet.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.resourceNavigationLinks]
  * Gets an array of references to the external resources using subnet.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceAssociationLinks]
  * Gets an array of references to services injecting into this subnet.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.delegations]
  * Gets an array of references to the delegations on the subnet.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.purpose]
  * A read-only string identifying the intention of use for this subnet based on
  * delegations and other user-defined properties.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.name]
  * The name of the resource that is unique within a resource group. This name
  * can be used to access the resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.publicIPAddress]
  * The reference of the public IP resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.provisioningState]
  * Gets the provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.name]
  * The name of the resource that is unique within a resource group. This name
  * can be used to access the resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.dnsSettings]
  * The FQDN of the DNS record associated with the public IP address.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.dnsSettings.domainNameLabel]
  * Gets or sets the Domain name label.The concatenation of the domain name
  * label and the regionalized DNS zone make up the fully qualified domain name
  * associated with the public IP address. If a domain name label is specified,
  * an A DNS record is created for the public IP in the Microsoft Azure DNS
  * system.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.dnsSettings.fqdn]
  * Gets the FQDN, Fully qualified domain name of the A DNS record associated
  * with the public IP. This is the concatenation of the domainNameLabel and the
  * regionalized DNS zone.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
  * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
  * that resolves to this public IP address. If the reverseFqdn is specified,
  * then a PTR DNS record is created pointing from the IP address in the
  * in-addr.arpa domain to the reverse FQDN.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipTags]
  * The list of tags associated with the public IP address.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipAddress]
  * The IP address associated with the public IP address resource.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.publicIPPrefix]
  * The Public IP Prefix this Public IP Address should be allocated from.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.publicIPPrefix.id]
  * Resource ID.
- * @member {number}
+ * @property {number}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.idleTimeoutInMinutes]
  * The idle timeout of the public IP address.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.resourceGuid]
  * The resource GUID property of the public IP resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.provisioningState]
  * The provisioning state of the PublicIP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.zones]
  * A list of availability zones denoting the IP allocated for the resource
  * needs to come from.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.applicationSecurityGroups]
  * Application security groups in which the IP configuration is included.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.provisioningState]
  * The provisioning state of the network interface IP configuration. Possible
  * values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.name] The name
  * of the resource that is unique within a resource group. This name can be
  * used to access the resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.etag] A unique
  * read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration] The
  * reference to the private IP address on the internal Load Balancer that will
  * receive the tap
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.inboundNatRules]
  * Read only. Inbound rules URIs that use this frontend IP.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.inboundNatPools]
  * Read only. Inbound pools URIs that use this frontend IP.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.outboundRules]
  * Read only. Outbound rules URIs that use this frontend IP.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.loadBalancingRules]
  * Gets load balancing rules URIs that use this frontend IP.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.privateIPAddress]
  * The private IP address of the IP configuration.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.privateIPAllocationMethod]
  * The Private IP allocation method. Possible values are: 'Static' and
  * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet]
  * The reference of the subnet resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefix]
  * The address prefix for the subnet.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefixes]
  * List of  address prefixes for the subnet.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup]
  * The reference of the NetworkSecurityGroup resource.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.securityRules]
  * A collection of security rules of the network security group.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
  * The default security rules of network security group.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.networkInterfaces]
  * A collection of references to network interfaces.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.subnets]
  * A collection of references to subnets.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.resourceGuid]
  * The resource GUID property of the network security group resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.provisioningState]
  * The provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable]
  * The reference of the RouteTable resource.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.routes]
  * Collection of routes contained within a route table.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.subnets]
  * A collection of references to subnets.
- * @member {boolean}
+ * @property {boolean}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.disableBgpRoutePropagation]
  * Gets or sets whether to disable the routes learned by BGP on that route
  * table. True means disable.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.provisioningState]
  * The provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
  * An array of service endpoints.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
  * An array of service endpoint policies.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.interfaceEndpoints]
  * An array of references to interface endpoints
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.ipConfigurationProfiles]
  * Array of IP configuration profiles which reference this subnet.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
  * Gets an array of references to the external resources using subnet.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
  * Gets an array of references to services injecting into this subnet.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
  * Gets an array of references to the delegations on the subnet.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.purpose]
  * A read-only string identifying the intention of use for this subnet based on
  * delegations and other user-defined properties.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.name]
  * The name of the resource that is unique within a resource group. This name
  * can be used to access the resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress]
  * The reference of the Public IP resource.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku]
  * The public IP address SKU.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku.name]
  * Name of a public IP address SKU. Possible values include: 'Basic',
  * 'Standard'
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAllocationMethod]
  * The public IP allocation method. Possible values are: 'Static' and
  * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAddressVersion]
  * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
  * Possible values include: 'IPv4', 'IPv6'
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration]
  * The IP configuration associated with the public IP address.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.privateIPAddress]
  * The private IP address of the IP configuration.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.privateIPAllocationMethod]
  * The private IP allocation method. Possible values are 'Static' and
  * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet]
  * The reference of the subnet resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefix]
  * The address prefix for the subnet.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefixes]
  * List of  address prefixes for the subnet.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup]
  * The reference of the NetworkSecurityGroup resource.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.securityRules]
  * A collection of security rules of the network security group.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
  * The default security rules of network security group.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
  * A collection of references to network interfaces.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.subnets]
  * A collection of references to subnets.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.resourceGuid]
  * The resource GUID property of the network security group resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
  * The provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable]
  * The reference of the RouteTable resource.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.routes]
  * Collection of routes contained within a route table.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.subnets]
  * A collection of references to subnets.
- * @member {boolean}
+ * @property {boolean}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.disableBgpRoutePropagation]
  * Gets or sets whether to disable the routes learned by BGP on that route
  * table. True means disable.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState]
  * The provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints]
  * An array of service endpoints.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
  * An array of service endpoint policies.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.interfaceEndpoints]
  * An array of references to interface endpoints
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurationProfiles]
  * Array of IP configuration profiles which reference this subnet.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.resourceNavigationLinks]
  * Gets an array of references to the external resources using subnet.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceAssociationLinks]
  * Gets an array of references to services injecting into this subnet.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.delegations]
  * Gets an array of references to the delegations on the subnet.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.purpose]
  * A read-only string identifying the intention of use for this subnet based on
  * delegations and other user-defined properties.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.name]
  * The name of the resource that is unique within a resource group. This name
  * can be used to access the resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.publicIPAddress]
  * The reference of the public IP resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.provisioningState]
  * Gets the provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.name]
  * The name of the resource that is unique within a resource group. This name
  * can be used to access the resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings]
  * The FQDN of the DNS record associated with the public IP address.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.domainNameLabel]
  * Gets or sets the Domain name label.The concatenation of the domain name
  * label and the regionalized DNS zone make up the fully qualified domain name
  * associated with the public IP address. If a domain name label is specified,
  * an A DNS record is created for the public IP in the Microsoft Azure DNS
  * system.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.fqdn]
  * Gets the FQDN, Fully qualified domain name of the A DNS record associated
  * with the public IP. This is the concatenation of the domainNameLabel and the
  * regionalized DNS zone.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
  * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
  * that resolves to this public IP address. If the reverseFqdn is specified,
  * then a PTR DNS record is created pointing from the IP address in the
  * in-addr.arpa domain to the reverse FQDN.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
  * The list of tags associated with the public IP address.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipAddress]
  * The IP address associated with the public IP address resource.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPPrefix]
  * The Public IP Prefix this Public IP Address should be allocated from.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPPrefix.id]
  * Resource ID.
- * @member {number}
+ * @property {number}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.idleTimeoutInMinutes]
  * The idle timeout of the public IP address.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.resourceGuid]
  * The resource GUID property of the public IP resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.provisioningState]
  * The provisioning state of the PublicIP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.zones]
  * A list of availability zones denoting the IP allocated for the resource
  * needs to come from.
- * @member {object}
+ * @property {object}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix]
  * The reference of the Public IP Prefix resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix.id]
  * Resource ID.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.provisioningState]
  * Gets the provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.name] The
  * name of the resource that is unique within a resource group. This name can
  * be used to access the resource.
- * @member {string}
+ * @property {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.etag] A
  * unique read-only string that changes whenever the resource is updated.
- * @member {array}
+ * @property {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.zones] A
  * list of availability zones denoting the IP allocated for the resource needs
  * to come from.
- * @member {number} [virtualNetworkTap.destinationPort] The VXLAN destination
+ * @property {number} [virtualNetworkTap.destinationPort] The VXLAN destination
  * port that will receive the tapped traffic.
- * @member {string} [virtualNetworkTap.etag] Gets a unique read-only string
+ * @property {string} [virtualNetworkTap.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
- * @member {string} [provisioningState] The provisioning state of the network
+ * @property {string} [provisioningState] The provisioning state of the network
  * interface tap configuration. Possible values are: 'Updating', 'Deleting',
  * and 'Failed'.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {string} [type] Sub Resource type.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {string} [type] Sub Resource type.
  */
 export interface NetworkInterfaceTapConfiguration extends SubResource {
   virtualNetworkTap?: VirtualNetworkTap;
@@ -720,11 +720,11 @@ export interface NetworkInterfaceTapConfiguration extends SubResource {
  * @constructor
  * Common resource representation.
  *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
- * @member {string} [location] Resource location.
- * @member {object} [tags] Resource tags.
+ * @property {string} [id] Resource ID.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
+ * @property {string} [location] Resource location.
+ * @property {object} [tags] Resource tags.
  */
 export interface Resource extends BaseResource {
   id?: string;
@@ -740,15 +740,15 @@ export interface Resource extends BaseResource {
  * @constructor
  * An application security group in a resource group.
  *
- * @member {string} [resourceGuid] The resource GUID property of the
+ * @property {string} [resourceGuid] The resource GUID property of the
  * application security group resource. It uniquely identifies a resource, even
  * if the user changes its name or migrate the resource across subscriptions or
  * resource groups.
- * @member {string} [provisioningState] The provisioning state of the
+ * @property {string} [provisioningState] The provisioning state of the
  * application security group resource. Possible values are: 'Succeeded',
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface ApplicationSecurityGroup extends Resource {
   readonly resourceGuid?: string;
@@ -762,48 +762,48 @@ export interface ApplicationSecurityGroup extends Resource {
  * @constructor
  * Network security rule.
  *
- * @member {string} [description] A description for this rule. Restricted to
+ * @property {string} [description] A description for this rule. Restricted to
  * 140 chars.
- * @member {string} protocol Network protocol this rule applies to. Possible
+ * @property {string} protocol Network protocol this rule applies to. Possible
  * values are 'Tcp', 'Udp', and '*'. Possible values include: 'Tcp', 'Udp', '*'
- * @member {string} [sourcePortRange] The source port or range. Integer or
+ * @property {string} [sourcePortRange] The source port or range. Integer or
  * range between 0 and 65535. Asterix '*' can also be used to match all ports.
- * @member {string} [destinationPortRange] The destination port or range.
+ * @property {string} [destinationPortRange] The destination port or range.
  * Integer or range between 0 and 65535. Asterix '*' can also be used to match
  * all ports.
- * @member {string} [sourceAddressPrefix] The CIDR or source IP range. Asterix
- * '*' can also be used to match all source IPs. Default tags such as
+ * @property {string} [sourceAddressPrefix] The CIDR or source IP range.
+ * Asterix '*' can also be used to match all source IPs. Default tags such as
  * 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If
  * this is an ingress rule, specifies where network traffic originates from.
- * @member {array} [sourceAddressPrefixes] The CIDR or source IP ranges.
- * @member {array} [sourceApplicationSecurityGroups] The application security
+ * @property {array} [sourceAddressPrefixes] The CIDR or source IP ranges.
+ * @property {array} [sourceApplicationSecurityGroups] The application security
  * group specified as source.
- * @member {string} [destinationAddressPrefix] The destination address prefix.
- * CIDR or destination IP range. Asterix '*' can also be used to match all
- * source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and
- * 'Internet' can also be used.
- * @member {array} [destinationAddressPrefixes] The destination address
+ * @property {string} [destinationAddressPrefix] The destination address
+ * prefix. CIDR or destination IP range. Asterix '*' can also be used to match
+ * all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer'
+ * and 'Internet' can also be used.
+ * @property {array} [destinationAddressPrefixes] The destination address
  * prefixes. CIDR or destination IP ranges.
- * @member {array} [destinationApplicationSecurityGroups] The application
+ * @property {array} [destinationApplicationSecurityGroups] The application
  * security group specified as destination.
- * @member {array} [sourcePortRanges] The source port ranges.
- * @member {array} [destinationPortRanges] The destination port ranges.
- * @member {string} access The network traffic is allowed or denied. Possible
+ * @property {array} [sourcePortRanges] The source port ranges.
+ * @property {array} [destinationPortRanges] The destination port ranges.
+ * @property {string} access The network traffic is allowed or denied. Possible
  * values are: 'Allow' and 'Deny'. Possible values include: 'Allow', 'Deny'
- * @member {number} [priority] The priority of the rule. The value can be
+ * @property {number} [priority] The priority of the rule. The value can be
  * between 100 and 4096. The priority number must be unique for each rule in
  * the collection. The lower the priority number, the higher the priority of
  * the rule.
- * @member {string} direction The direction of the rule. The direction
+ * @property {string} direction The direction of the rule. The direction
  * specifies if rule will be evaluated on incoming or outcoming traffic.
  * Possible values are: 'Inbound' and 'Outbound'. Possible values include:
  * 'Inbound', 'Outbound'
- * @member {string} [provisioningState] The provisioning state of the public IP
- * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [provisioningState] The provisioning state of the public
+ * IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface SecurityRule extends SubResource {
   description?: string;
@@ -832,8 +832,8 @@ export interface SecurityRule extends SubResource {
  * @constructor
  * Identifies the service being brought into the virtual network.
  *
- * @member {string} [id] A unique identifier of the service being referenced by
- * the interface endpoint.
+ * @property {string} [id] A unique identifier of the service being referenced
+ * by the interface endpoint.
  */
 export interface EndpointService {
   id?: string;
@@ -845,80 +845,81 @@ export interface EndpointService {
  * @constructor
  * Interface endpoint resource.
  *
- * @member {string} [fqdn] A first-party service's FQDN that is mapped to the
+ * @property {string} [fqdn] A first-party service's FQDN that is mapped to the
  * private IP allocated via this interface endpoint.
- * @member {object} [endpointService] A reference to the service being brought
- * into the virtual network.
- * @member {string} [endpointService.id] A unique identifier of the service
+ * @property {object} [endpointService] A reference to the service being
+ * brought into the virtual network.
+ * @property {string} [endpointService.id] A unique identifier of the service
  * being referenced by the interface endpoint.
- * @member {object} [subnet] The ID of the subnet from which the private IP
+ * @property {object} [subnet] The ID of the subnet from which the private IP
  * will be allocated.
- * @member {string} [subnet.addressPrefix] The address prefix for the subnet.
- * @member {array} [subnet.addressPrefixes] List of  address prefixes for the
+ * @property {string} [subnet.addressPrefix] The address prefix for the subnet.
+ * @property {array} [subnet.addressPrefixes] List of  address prefixes for the
  * subnet.
- * @member {object} [subnet.networkSecurityGroup] The reference of the
+ * @property {object} [subnet.networkSecurityGroup] The reference of the
  * NetworkSecurityGroup resource.
- * @member {array} [subnet.networkSecurityGroup.securityRules] A collection of
- * security rules of the network security group.
- * @member {array} [subnet.networkSecurityGroup.defaultSecurityRules] The
+ * @property {array} [subnet.networkSecurityGroup.securityRules] A collection
+ * of security rules of the network security group.
+ * @property {array} [subnet.networkSecurityGroup.defaultSecurityRules] The
  * default security rules of network security group.
- * @member {array} [subnet.networkSecurityGroup.networkInterfaces] A collection
- * of references to network interfaces.
- * @member {array} [subnet.networkSecurityGroup.subnets] A collection of
+ * @property {array} [subnet.networkSecurityGroup.networkInterfaces] A
+ * collection of references to network interfaces.
+ * @property {array} [subnet.networkSecurityGroup.subnets] A collection of
  * references to subnets.
- * @member {string} [subnet.networkSecurityGroup.resourceGuid] The resource
+ * @property {string} [subnet.networkSecurityGroup.resourceGuid] The resource
  * GUID property of the network security group resource.
- * @member {string} [subnet.networkSecurityGroup.provisioningState] The
+ * @property {string} [subnet.networkSecurityGroup.provisioningState] The
  * provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [subnet.networkSecurityGroup.etag] A unique read-only
+ * @property {string} [subnet.networkSecurityGroup.etag] A unique read-only
  * string that changes whenever the resource is updated.
- * @member {object} [subnet.routeTable] The reference of the RouteTable
+ * @property {object} [subnet.routeTable] The reference of the RouteTable
  * resource.
- * @member {array} [subnet.routeTable.routes] Collection of routes contained
+ * @property {array} [subnet.routeTable.routes] Collection of routes contained
  * within a route table.
- * @member {array} [subnet.routeTable.subnets] A collection of references to
+ * @property {array} [subnet.routeTable.subnets] A collection of references to
  * subnets.
- * @member {boolean} [subnet.routeTable.disableBgpRoutePropagation] Gets or
+ * @property {boolean} [subnet.routeTable.disableBgpRoutePropagation] Gets or
  * sets whether to disable the routes learned by BGP on that route table. True
  * means disable.
- * @member {string} [subnet.routeTable.provisioningState] The provisioning
+ * @property {string} [subnet.routeTable.provisioningState] The provisioning
  * state of the resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
+ * @property {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
- * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
- * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * @property {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @property {array} [subnet.serviceEndpointPolicies] An array of service
  * endpoint policies.
- * @member {array} [subnet.interfaceEndpoints] An array of references to
+ * @property {array} [subnet.interfaceEndpoints] An array of references to
  * interface endpoints
- * @member {array} [subnet.ipConfigurations] Gets an array of references to the
- * network interface IP configurations using subnet.
- * @member {array} [subnet.ipConfigurationProfiles] Array of IP configuration
+ * @property {array} [subnet.ipConfigurations] Gets an array of references to
+ * the network interface IP configurations using subnet.
+ * @property {array} [subnet.ipConfigurationProfiles] Array of IP configuration
  * profiles which reference this subnet.
- * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
- * to the external resources using subnet.
- * @member {array} [subnet.serviceAssociationLinks] Gets an array of references
- * to services injecting into this subnet.
- * @member {array} [subnet.delegations] Gets an array of references to the
+ * @property {array} [subnet.resourceNavigationLinks] Gets an array of
+ * references to the external resources using subnet.
+ * @property {array} [subnet.serviceAssociationLinks] Gets an array of
+ * references to services injecting into this subnet.
+ * @property {array} [subnet.delegations] Gets an array of references to the
  * delegations on the subnet.
- * @member {string} [subnet.purpose] A read-only string identifying the
+ * @property {string} [subnet.purpose] A read-only string identifying the
  * intention of use for this subnet based on delegations and other user-defined
  * properties.
- * @member {string} [subnet.provisioningState] The provisioning state of the
+ * @property {string} [subnet.provisioningState] The provisioning state of the
  * resource.
- * @member {string} [subnet.name] The name of the resource that is unique
+ * @property {string} [subnet.name] The name of the resource that is unique
  * within a resource group. This name can be used to access the resource.
- * @member {string} [subnet.etag] A unique read-only string that changes
+ * @property {string} [subnet.etag] A unique read-only string that changes
  * whenever the resource is updated.
- * @member {array} [networkInterfaces] Gets an array of references to the
+ * @property {array} [networkInterfaces] Gets an array of references to the
  * network interfaces created for this interface endpoint.
- * @member {string} [owner] A read-only property that identifies who created
+ * @property {string} [owner] A read-only property that identifies who created
  * this interface endpoint.
- * @member {string} [provisioningState] The provisioning state of the interface
- * endpoint. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [provisioningState] The provisioning state of the
+ * interface endpoint. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface InterfaceEndpoint extends Resource {
   fqdn?: string;
@@ -936,20 +937,20 @@ export interface InterfaceEndpoint extends Resource {
  * @constructor
  * DNS settings of a network interface.
  *
- * @member {array} [dnsServers] List of DNS servers IP addresses. Use
+ * @property {array} [dnsServers] List of DNS servers IP addresses. Use
  * 'AzureProvidedDNS' to switch to azure provided DNS resolution.
  * 'AzureProvidedDNS' value cannot be combined with other IPs, it must be the
  * only value in dnsServers collection.
- * @member {array} [appliedDnsServers] If the VM that uses this NIC is part of
- * an Availability Set, then this list will have the union of all DNS servers
- * from all NICs that are part of the Availability Set. This property is what
- * is configured on each of those VMs.
- * @member {string} [internalDnsNameLabel] Relative DNS name for this NIC used
- * for internal communications between VMs in the same virtual network.
- * @member {string} [internalFqdn] Fully qualified DNS name supporting internal
- * communications between VMs in the same virtual network.
- * @member {string} [internalDomainNameSuffix] Even if internalDnsNameLabel is
- * not specified, a DNS entry is created for the primary NIC of the VM. This
+ * @property {array} [appliedDnsServers] If the VM that uses this NIC is part
+ * of an Availability Set, then this list will have the union of all DNS
+ * servers from all NICs that are part of the Availability Set. This property
+ * is what is configured on each of those VMs.
+ * @property {string} [internalDnsNameLabel] Relative DNS name for this NIC
+ * used for internal communications between VMs in the same virtual network.
+ * @property {string} [internalFqdn] Fully qualified DNS name supporting
+ * internal communications between VMs in the same virtual network.
+ * @property {string} [internalDomainNameSuffix] Even if internalDnsNameLabel
+ * is not specified, a DNS entry is created for the primary NIC of the VM. This
  * DNS name can be constructed by concatenating the VM name with the value of
  * internalDomainNameSuffix.
  */
@@ -967,148 +968,148 @@ export interface NetworkInterfaceDnsSettings {
  * @constructor
  * A network interface in a resource group.
  *
- * @member {object} [virtualMachine] The reference of a virtual machine.
- * @member {string} [virtualMachine.id] Resource ID.
- * @member {object} [networkSecurityGroup] The reference of the
+ * @property {object} [virtualMachine] The reference of a virtual machine.
+ * @property {string} [virtualMachine.id] Resource ID.
+ * @property {object} [networkSecurityGroup] The reference of the
  * NetworkSecurityGroup resource.
- * @member {array} [networkSecurityGroup.securityRules] A collection of
+ * @property {array} [networkSecurityGroup.securityRules] A collection of
  * security rules of the network security group.
- * @member {array} [networkSecurityGroup.defaultSecurityRules] The default
+ * @property {array} [networkSecurityGroup.defaultSecurityRules] The default
  * security rules of network security group.
- * @member {array} [networkSecurityGroup.networkInterfaces] A collection of
+ * @property {array} [networkSecurityGroup.networkInterfaces] A collection of
  * references to network interfaces.
- * @member {array} [networkSecurityGroup.subnets] A collection of references to
- * subnets.
- * @member {string} [networkSecurityGroup.resourceGuid] The resource GUID
+ * @property {array} [networkSecurityGroup.subnets] A collection of references
+ * to subnets.
+ * @property {string} [networkSecurityGroup.resourceGuid] The resource GUID
  * property of the network security group resource.
- * @member {string} [networkSecurityGroup.provisioningState] The provisioning
+ * @property {string} [networkSecurityGroup.provisioningState] The provisioning
  * state of the public IP resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [networkSecurityGroup.etag] A unique read-only string that
- * changes whenever the resource is updated.
- * @member {object} [interfaceEndpoint] A reference to the interface endpoint
+ * @property {string} [networkSecurityGroup.etag] A unique read-only string
+ * that changes whenever the resource is updated.
+ * @property {object} [interfaceEndpoint] A reference to the interface endpoint
  * to which the network interface is linked.
- * @member {string} [interfaceEndpoint.fqdn] A first-party service's FQDN that
- * is mapped to the private IP allocated via this interface endpoint.
- * @member {object} [interfaceEndpoint.endpointService] A reference to the
+ * @property {string} [interfaceEndpoint.fqdn] A first-party service's FQDN
+ * that is mapped to the private IP allocated via this interface endpoint.
+ * @property {object} [interfaceEndpoint.endpointService] A reference to the
  * service being brought into the virtual network.
- * @member {string} [interfaceEndpoint.endpointService.id] A unique identifier
- * of the service being referenced by the interface endpoint.
- * @member {object} [interfaceEndpoint.subnet] The ID of the subnet from which
- * the private IP will be allocated.
- * @member {string} [interfaceEndpoint.subnet.addressPrefix] The address prefix
- * for the subnet.
- * @member {array} [interfaceEndpoint.subnet.addressPrefixes] List of  address
- * prefixes for the subnet.
- * @member {object} [interfaceEndpoint.subnet.networkSecurityGroup] The
+ * @property {string} [interfaceEndpoint.endpointService.id] A unique
+ * identifier of the service being referenced by the interface endpoint.
+ * @property {object} [interfaceEndpoint.subnet] The ID of the subnet from
+ * which the private IP will be allocated.
+ * @property {string} [interfaceEndpoint.subnet.addressPrefix] The address
+ * prefix for the subnet.
+ * @property {array} [interfaceEndpoint.subnet.addressPrefixes] List of
+ * address prefixes for the subnet.
+ * @property {object} [interfaceEndpoint.subnet.networkSecurityGroup] The
  * reference of the NetworkSecurityGroup resource.
- * @member {array}
+ * @property {array}
  * [interfaceEndpoint.subnet.networkSecurityGroup.securityRules] A collection
  * of security rules of the network security group.
- * @member {array}
+ * @property {array}
  * [interfaceEndpoint.subnet.networkSecurityGroup.defaultSecurityRules] The
  * default security rules of network security group.
- * @member {array}
+ * @property {array}
  * [interfaceEndpoint.subnet.networkSecurityGroup.networkInterfaces] A
  * collection of references to network interfaces.
- * @member {array} [interfaceEndpoint.subnet.networkSecurityGroup.subnets] A
+ * @property {array} [interfaceEndpoint.subnet.networkSecurityGroup.subnets] A
  * collection of references to subnets.
- * @member {string}
+ * @property {string}
  * [interfaceEndpoint.subnet.networkSecurityGroup.resourceGuid] The resource
  * GUID property of the network security group resource.
- * @member {string}
+ * @property {string}
  * [interfaceEndpoint.subnet.networkSecurityGroup.provisioningState] The
  * provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [interfaceEndpoint.subnet.networkSecurityGroup.etag] A
+ * @property {string} [interfaceEndpoint.subnet.networkSecurityGroup.etag] A
  * unique read-only string that changes whenever the resource is updated.
- * @member {object} [interfaceEndpoint.subnet.routeTable] The reference of the
- * RouteTable resource.
- * @member {array} [interfaceEndpoint.subnet.routeTable.routes] Collection of
+ * @property {object} [interfaceEndpoint.subnet.routeTable] The reference of
+ * the RouteTable resource.
+ * @property {array} [interfaceEndpoint.subnet.routeTable.routes] Collection of
  * routes contained within a route table.
- * @member {array} [interfaceEndpoint.subnet.routeTable.subnets] A collection
+ * @property {array} [interfaceEndpoint.subnet.routeTable.subnets] A collection
  * of references to subnets.
- * @member {boolean}
+ * @property {boolean}
  * [interfaceEndpoint.subnet.routeTable.disableBgpRoutePropagation] Gets or
  * sets whether to disable the routes learned by BGP on that route table. True
  * means disable.
- * @member {string} [interfaceEndpoint.subnet.routeTable.provisioningState] The
- * provisioning state of the resource. Possible values are: 'Updating',
+ * @property {string} [interfaceEndpoint.subnet.routeTable.provisioningState]
+ * The provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [interfaceEndpoint.subnet.routeTable.etag] Gets a unique
+ * @property {string} [interfaceEndpoint.subnet.routeTable.etag] Gets a unique
  * read-only string that changes whenever the resource is updated.
- * @member {array} [interfaceEndpoint.subnet.serviceEndpoints] An array of
+ * @property {array} [interfaceEndpoint.subnet.serviceEndpoints] An array of
  * service endpoints.
- * @member {array} [interfaceEndpoint.subnet.serviceEndpointPolicies] An array
- * of service endpoint policies.
- * @member {array} [interfaceEndpoint.subnet.interfaceEndpoints] An array of
+ * @property {array} [interfaceEndpoint.subnet.serviceEndpointPolicies] An
+ * array of service endpoint policies.
+ * @property {array} [interfaceEndpoint.subnet.interfaceEndpoints] An array of
  * references to interface endpoints
- * @member {array} [interfaceEndpoint.subnet.ipConfigurations] Gets an array of
- * references to the network interface IP configurations using subnet.
- * @member {array} [interfaceEndpoint.subnet.ipConfigurationProfiles] Array of
- * IP configuration profiles which reference this subnet.
- * @member {array} [interfaceEndpoint.subnet.resourceNavigationLinks] Gets an
+ * @property {array} [interfaceEndpoint.subnet.ipConfigurations] Gets an array
+ * of references to the network interface IP configurations using subnet.
+ * @property {array} [interfaceEndpoint.subnet.ipConfigurationProfiles] Array
+ * of IP configuration profiles which reference this subnet.
+ * @property {array} [interfaceEndpoint.subnet.resourceNavigationLinks] Gets an
  * array of references to the external resources using subnet.
- * @member {array} [interfaceEndpoint.subnet.serviceAssociationLinks] Gets an
+ * @property {array} [interfaceEndpoint.subnet.serviceAssociationLinks] Gets an
  * array of references to services injecting into this subnet.
- * @member {array} [interfaceEndpoint.subnet.delegations] Gets an array of
+ * @property {array} [interfaceEndpoint.subnet.delegations] Gets an array of
  * references to the delegations on the subnet.
- * @member {string} [interfaceEndpoint.subnet.purpose] A read-only string
+ * @property {string} [interfaceEndpoint.subnet.purpose] A read-only string
  * identifying the intention of use for this subnet based on delegations and
  * other user-defined properties.
- * @member {string} [interfaceEndpoint.subnet.provisioningState] The
+ * @property {string} [interfaceEndpoint.subnet.provisioningState] The
  * provisioning state of the resource.
- * @member {string} [interfaceEndpoint.subnet.name] The name of the resource
+ * @property {string} [interfaceEndpoint.subnet.name] The name of the resource
  * that is unique within a resource group. This name can be used to access the
  * resource.
- * @member {string} [interfaceEndpoint.subnet.etag] A unique read-only string
+ * @property {string} [interfaceEndpoint.subnet.etag] A unique read-only string
  * that changes whenever the resource is updated.
- * @member {array} [interfaceEndpoint.networkInterfaces] Gets an array of
+ * @property {array} [interfaceEndpoint.networkInterfaces] Gets an array of
  * references to the network interfaces created for this interface endpoint.
- * @member {string} [interfaceEndpoint.owner] A read-only property that
+ * @property {string} [interfaceEndpoint.owner] A read-only property that
  * identifies who created this interface endpoint.
- * @member {string} [interfaceEndpoint.provisioningState] The provisioning
+ * @property {string} [interfaceEndpoint.provisioningState] The provisioning
  * state of the interface endpoint. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [interfaceEndpoint.etag] Gets a unique read-only string
+ * @property {string} [interfaceEndpoint.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
- * @member {array} [ipConfigurations] A list of IPConfigurations of the network
- * interface.
- * @member {array} [tapConfigurations] A list of TapConfigurations of the
+ * @property {array} [ipConfigurations] A list of IPConfigurations of the
  * network interface.
- * @member {object} [dnsSettings] The DNS settings in network interface.
- * @member {array} [dnsSettings.dnsServers] List of DNS servers IP addresses.
+ * @property {array} [tapConfigurations] A list of TapConfigurations of the
+ * network interface.
+ * @property {object} [dnsSettings] The DNS settings in network interface.
+ * @property {array} [dnsSettings.dnsServers] List of DNS servers IP addresses.
  * Use 'AzureProvidedDNS' to switch to azure provided DNS resolution.
  * 'AzureProvidedDNS' value cannot be combined with other IPs, it must be the
  * only value in dnsServers collection.
- * @member {array} [dnsSettings.appliedDnsServers] If the VM that uses this NIC
- * is part of an Availability Set, then this list will have the union of all
- * DNS servers from all NICs that are part of the Availability Set. This
+ * @property {array} [dnsSettings.appliedDnsServers] If the VM that uses this
+ * NIC is part of an Availability Set, then this list will have the union of
+ * all DNS servers from all NICs that are part of the Availability Set. This
  * property is what is configured on each of those VMs.
- * @member {string} [dnsSettings.internalDnsNameLabel] Relative DNS name for
+ * @property {string} [dnsSettings.internalDnsNameLabel] Relative DNS name for
  * this NIC used for internal communications between VMs in the same virtual
  * network.
- * @member {string} [dnsSettings.internalFqdn] Fully qualified DNS name
+ * @property {string} [dnsSettings.internalFqdn] Fully qualified DNS name
  * supporting internal communications between VMs in the same virtual network.
- * @member {string} [dnsSettings.internalDomainNameSuffix] Even if
+ * @property {string} [dnsSettings.internalDomainNameSuffix] Even if
  * internalDnsNameLabel is not specified, a DNS entry is created for the
  * primary NIC of the VM. This DNS name can be constructed by concatenating the
  * VM name with the value of internalDomainNameSuffix.
- * @member {string} [macAddress] The MAC address of the network interface.
- * @member {boolean} [primary] Gets whether this is a primary network interface
- * on a virtual machine.
- * @member {boolean} [enableAcceleratedNetworking] If the network interface is
- * accelerated networking enabled.
- * @member {boolean} [enableIPForwarding] Indicates whether IP forwarding is
+ * @property {string} [macAddress] The MAC address of the network interface.
+ * @property {boolean} [primary] Gets whether this is a primary network
+ * interface on a virtual machine.
+ * @property {boolean} [enableAcceleratedNetworking] If the network interface
+ * is accelerated networking enabled.
+ * @property {boolean} [enableIPForwarding] Indicates whether IP forwarding is
  * enabled on this network interface.
- * @member {array} [hostedWorkloads] A list of references to linked BareMetal
+ * @property {array} [hostedWorkloads] A list of references to linked BareMetal
  * resources
- * @member {string} [resourceGuid] The resource GUID property of the network
+ * @property {string} [resourceGuid] The resource GUID property of the network
  * interface resource.
- * @member {string} [provisioningState] The provisioning state of the public IP
- * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [provisioningState] The provisioning state of the public
+ * IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface NetworkInterface extends Resource {
   readonly virtualMachine?: SubResource;
@@ -1133,19 +1134,19 @@ export interface NetworkInterface extends Resource {
  * @constructor
  * NetworkSecurityGroup resource.
  *
- * @member {array} [securityRules] A collection of security rules of the
+ * @property {array} [securityRules] A collection of security rules of the
  * network security group.
- * @member {array} [defaultSecurityRules] The default security rules of network
- * security group.
- * @member {array} [networkInterfaces] A collection of references to network
+ * @property {array} [defaultSecurityRules] The default security rules of
+ * network security group.
+ * @property {array} [networkInterfaces] A collection of references to network
  * interfaces.
- * @member {array} [subnets] A collection of references to subnets.
- * @member {string} [resourceGuid] The resource GUID property of the network
+ * @property {array} [subnets] A collection of references to subnets.
+ * @property {string} [resourceGuid] The resource GUID property of the network
  * security group resource.
- * @member {string} [provisioningState] The provisioning state of the public IP
- * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [provisioningState] The provisioning state of the public
+ * IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface NetworkSecurityGroup extends Resource {
   securityRules?: SecurityRule[];
@@ -1163,21 +1164,21 @@ export interface NetworkSecurityGroup extends Resource {
  * @constructor
  * Route resource
  *
- * @member {string} [addressPrefix] The destination CIDR to which the route
+ * @property {string} [addressPrefix] The destination CIDR to which the route
  * applies.
- * @member {string} nextHopType The type of Azure hop the packet should be sent
- * to. Possible values are: 'VirtualNetworkGateway', 'VnetLocal', 'Internet',
- * 'VirtualAppliance', and 'None'. Possible values include:
+ * @property {string} nextHopType The type of Azure hop the packet should be
+ * sent to. Possible values are: 'VirtualNetworkGateway', 'VnetLocal',
+ * 'Internet', 'VirtualAppliance', and 'None'. Possible values include:
  * 'VirtualNetworkGateway', 'VnetLocal', 'Internet', 'VirtualAppliance', 'None'
- * @member {string} [nextHopIpAddress] The IP address packets should be
+ * @property {string} [nextHopIpAddress] The IP address packets should be
  * forwarded to. Next hop values are only allowed in routes where the next hop
  * type is VirtualAppliance.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface Route extends SubResource {
   addressPrefix?: string;
@@ -1194,15 +1195,15 @@ export interface Route extends SubResource {
  * @constructor
  * Route table resource.
  *
- * @member {array} [routes] Collection of routes contained within a route
+ * @property {array} [routes] Collection of routes contained within a route
  * table.
- * @member {array} [subnets] A collection of references to subnets.
- * @member {boolean} [disableBgpRoutePropagation] Gets or sets whether to
+ * @property {array} [subnets] A collection of references to subnets.
+ * @property {boolean} [disableBgpRoutePropagation] Gets or sets whether to
  * disable the routes learned by BGP on that route table. True means disable.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface RouteTable extends Resource {
   routes?: Route[];
@@ -1218,9 +1219,10 @@ export interface RouteTable extends Resource {
  * @constructor
  * The service endpoint properties.
  *
- * @member {string} [service] The type of the endpoint service.
- * @member {array} [locations] A list of locations.
- * @member {string} [provisioningState] The provisioning state of the resource.
+ * @property {string} [service] The type of the endpoint service.
+ * @property {array} [locations] A list of locations.
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource.
  */
 export interface ServiceEndpointPropertiesFormat {
   service?: string;
@@ -1234,17 +1236,17 @@ export interface ServiceEndpointPropertiesFormat {
  * @constructor
  * Service Endpoint policy definitions.
  *
- * @member {string} [description] A description for this rule. Restricted to
+ * @property {string} [description] A description for this rule. Restricted to
  * 140 chars.
- * @member {string} [service] service endpoint name.
- * @member {array} [serviceResources] A list of service resources.
- * @member {string} [provisioningState] The provisioning state of the service
+ * @property {string} [service] service endpoint name.
+ * @property {array} [serviceResources] A list of service resources.
+ * @property {string} [provisioningState] The provisioning state of the service
  * end point policy definition. Possible values are: 'Updating', 'Deleting',
  * and 'Failed'.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface ServiceEndpointPolicyDefinition extends SubResource {
   description?: string;
@@ -1261,15 +1263,15 @@ export interface ServiceEndpointPolicyDefinition extends SubResource {
  * @constructor
  * Service End point policy resource.
  *
- * @member {array} [serviceEndpointPolicyDefinitions] A collection of service
+ * @property {array} [serviceEndpointPolicyDefinitions] A collection of service
  * endpoint policy definitions of the service endpoint policy.
- * @member {array} [subnets] A collection of references to subnets.
- * @member {string} [resourceGuid] The resource GUID property of the service
+ * @property {array} [subnets] A collection of references to subnets.
+ * @property {string} [resourceGuid] The resource GUID property of the service
  * endpoint policy resource.
- * @member {string} [provisioningState] The provisioning state of the service
+ * @property {string} [provisioningState] The provisioning state of the service
  * endpoint policy. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface ServiceEndpointPolicy extends Resource {
   serviceEndpointPolicyDefinitions?: ServiceEndpointPolicyDefinition[];
@@ -1285,7 +1287,7 @@ export interface ServiceEndpointPolicy extends Resource {
  * @constructor
  * SKU of a public IP address
  *
- * @member {string} [name] Name of a public IP address SKU. Possible values
+ * @property {string} [name] Name of a public IP address SKU. Possible values
  * include: 'Basic', 'Standard'
  */
 export interface PublicIPAddressSku {
@@ -1298,15 +1300,15 @@ export interface PublicIPAddressSku {
  * @constructor
  * Contains FQDN of the DNS record associated with the public IP address
  *
- * @member {string} [domainNameLabel] Gets or sets the Domain name label.The
+ * @property {string} [domainNameLabel] Gets or sets the Domain name label.The
  * concatenation of the domain name label and the regionalized DNS zone make up
  * the fully qualified domain name associated with the public IP address. If a
  * domain name label is specified, an A DNS record is created for the public IP
  * in the Microsoft Azure DNS system.
- * @member {string} [fqdn] Gets the FQDN, Fully qualified domain name of the A
- * DNS record associated with the public IP. This is the concatenation of the
+ * @property {string} [fqdn] Gets the FQDN, Fully qualified domain name of the
+ * A DNS record associated with the public IP. This is the concatenation of the
  * domainNameLabel and the regionalized DNS zone.
- * @member {string} [reverseFqdn] Gets or Sets the Reverse FQDN. A
+ * @property {string} [reverseFqdn] Gets or Sets the Reverse FQDN. A
  * user-visible, fully qualified domain name that resolves to this public IP
  * address. If the reverseFqdn is specified, then a PTR DNS record is created
  * pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
@@ -1323,9 +1325,9 @@ export interface PublicIPAddressDnsSettings {
  * @constructor
  * Contains the IpTag associated with the object
  *
- * @member {string} [ipTagType] Gets or sets the ipTag type: Example
+ * @property {string} [ipTagType] Gets or sets the ipTag type: Example
  * FirstPartyUsage.
- * @member {string} [tag] Gets or sets value of the IpTag associated with the
+ * @property {string} [tag] Gets or sets value of the IpTag associated with the
  * public IP. Example SQL, Storage etc
  */
 export interface IpTag {
@@ -1339,129 +1341,132 @@ export interface IpTag {
  * @constructor
  * Public IP address resource.
  *
- * @member {object} [sku] The public IP address SKU.
- * @member {string} [sku.name] Name of a public IP address SKU. Possible values
- * include: 'Basic', 'Standard'
- * @member {string} [publicIPAllocationMethod] The public IP allocation method.
- * Possible values are: 'Static' and 'Dynamic'. Possible values include:
- * 'Static', 'Dynamic'
- * @member {string} [publicIPAddressVersion] The public IP address version.
+ * @property {object} [sku] The public IP address SKU.
+ * @property {string} [sku.name] Name of a public IP address SKU. Possible
+ * values include: 'Basic', 'Standard'
+ * @property {string} [publicIPAllocationMethod] The public IP allocation
+ * method. Possible values are: 'Static' and 'Dynamic'. Possible values
+ * include: 'Static', 'Dynamic'
+ * @property {string} [publicIPAddressVersion] The public IP address version.
  * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
  * 'IPv6'
- * @member {object} [ipConfiguration] The IP configuration associated with the
- * public IP address.
- * @member {string} [ipConfiguration.privateIPAddress] The private IP address
+ * @property {object} [ipConfiguration] The IP configuration associated with
+ * the public IP address.
+ * @property {string} [ipConfiguration.privateIPAddress] The private IP address
  * of the IP configuration.
- * @member {string} [ipConfiguration.privateIPAllocationMethod] The private IP
- * allocation method. Possible values are 'Static' and 'Dynamic'. Possible
+ * @property {string} [ipConfiguration.privateIPAllocationMethod] The private
+ * IP allocation method. Possible values are 'Static' and 'Dynamic'. Possible
  * values include: 'Static', 'Dynamic'
- * @member {object} [ipConfiguration.subnet] The reference of the subnet
+ * @property {object} [ipConfiguration.subnet] The reference of the subnet
  * resource.
- * @member {string} [ipConfiguration.subnet.addressPrefix] The address prefix
+ * @property {string} [ipConfiguration.subnet.addressPrefix] The address prefix
  * for the subnet.
- * @member {array} [ipConfiguration.subnet.addressPrefixes] List of  address
+ * @property {array} [ipConfiguration.subnet.addressPrefixes] List of  address
  * prefixes for the subnet.
- * @member {object} [ipConfiguration.subnet.networkSecurityGroup] The reference
- * of the NetworkSecurityGroup resource.
- * @member {array} [ipConfiguration.subnet.networkSecurityGroup.securityRules]
- * A collection of security rules of the network security group.
- * @member {array}
+ * @property {object} [ipConfiguration.subnet.networkSecurityGroup] The
+ * reference of the NetworkSecurityGroup resource.
+ * @property {array}
+ * [ipConfiguration.subnet.networkSecurityGroup.securityRules] A collection of
+ * security rules of the network security group.
+ * @property {array}
  * [ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules] The
  * default security rules of network security group.
- * @member {array}
+ * @property {array}
  * [ipConfiguration.subnet.networkSecurityGroup.networkInterfaces] A collection
  * of references to network interfaces.
- * @member {array} [ipConfiguration.subnet.networkSecurityGroup.subnets] A
+ * @property {array} [ipConfiguration.subnet.networkSecurityGroup.subnets] A
  * collection of references to subnets.
- * @member {string} [ipConfiguration.subnet.networkSecurityGroup.resourceGuid]
- * The resource GUID property of the network security group resource.
- * @member {string}
+ * @property {string}
+ * [ipConfiguration.subnet.networkSecurityGroup.resourceGuid] The resource GUID
+ * property of the network security group resource.
+ * @property {string}
  * [ipConfiguration.subnet.networkSecurityGroup.provisioningState] The
  * provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [ipConfiguration.subnet.networkSecurityGroup.etag] A unique
- * read-only string that changes whenever the resource is updated.
- * @member {object} [ipConfiguration.subnet.routeTable] The reference of the
+ * @property {string} [ipConfiguration.subnet.networkSecurityGroup.etag] A
+ * unique read-only string that changes whenever the resource is updated.
+ * @property {object} [ipConfiguration.subnet.routeTable] The reference of the
  * RouteTable resource.
- * @member {array} [ipConfiguration.subnet.routeTable.routes] Collection of
+ * @property {array} [ipConfiguration.subnet.routeTable.routes] Collection of
  * routes contained within a route table.
- * @member {array} [ipConfiguration.subnet.routeTable.subnets] A collection of
- * references to subnets.
- * @member {boolean}
+ * @property {array} [ipConfiguration.subnet.routeTable.subnets] A collection
+ * of references to subnets.
+ * @property {boolean}
  * [ipConfiguration.subnet.routeTable.disableBgpRoutePropagation] Gets or sets
  * whether to disable the routes learned by BGP on that route table. True means
  * disable.
- * @member {string} [ipConfiguration.subnet.routeTable.provisioningState] The
+ * @property {string} [ipConfiguration.subnet.routeTable.provisioningState] The
  * provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [ipConfiguration.subnet.routeTable.etag] Gets a unique
+ * @property {string} [ipConfiguration.subnet.routeTable.etag] Gets a unique
  * read-only string that changes whenever the resource is updated.
- * @member {array} [ipConfiguration.subnet.serviceEndpoints] An array of
+ * @property {array} [ipConfiguration.subnet.serviceEndpoints] An array of
  * service endpoints.
- * @member {array} [ipConfiguration.subnet.serviceEndpointPolicies] An array of
- * service endpoint policies.
- * @member {array} [ipConfiguration.subnet.interfaceEndpoints] An array of
+ * @property {array} [ipConfiguration.subnet.serviceEndpointPolicies] An array
+ * of service endpoint policies.
+ * @property {array} [ipConfiguration.subnet.interfaceEndpoints] An array of
  * references to interface endpoints
- * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
+ * @property {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
  * references to the network interface IP configurations using subnet.
- * @member {array} [ipConfiguration.subnet.ipConfigurationProfiles] Array of IP
- * configuration profiles which reference this subnet.
- * @member {array} [ipConfiguration.subnet.resourceNavigationLinks] Gets an
+ * @property {array} [ipConfiguration.subnet.ipConfigurationProfiles] Array of
+ * IP configuration profiles which reference this subnet.
+ * @property {array} [ipConfiguration.subnet.resourceNavigationLinks] Gets an
  * array of references to the external resources using subnet.
- * @member {array} [ipConfiguration.subnet.serviceAssociationLinks] Gets an
+ * @property {array} [ipConfiguration.subnet.serviceAssociationLinks] Gets an
  * array of references to services injecting into this subnet.
- * @member {array} [ipConfiguration.subnet.delegations] Gets an array of
+ * @property {array} [ipConfiguration.subnet.delegations] Gets an array of
  * references to the delegations on the subnet.
- * @member {string} [ipConfiguration.subnet.purpose] A read-only string
+ * @property {string} [ipConfiguration.subnet.purpose] A read-only string
  * identifying the intention of use for this subnet based on delegations and
  * other user-defined properties.
- * @member {string} [ipConfiguration.subnet.provisioningState] The provisioning
- * state of the resource.
- * @member {string} [ipConfiguration.subnet.name] The name of the resource that
- * is unique within a resource group. This name can be used to access the
+ * @property {string} [ipConfiguration.subnet.provisioningState] The
+ * provisioning state of the resource.
+ * @property {string} [ipConfiguration.subnet.name] The name of the resource
+ * that is unique within a resource group. This name can be used to access the
  * resource.
- * @member {string} [ipConfiguration.subnet.etag] A unique read-only string
+ * @property {string} [ipConfiguration.subnet.etag] A unique read-only string
  * that changes whenever the resource is updated.
- * @member {object} [ipConfiguration.publicIPAddress] The reference of the
+ * @property {object} [ipConfiguration.publicIPAddress] The reference of the
  * public IP resource.
- * @member {string} [ipConfiguration.provisioningState] Gets the provisioning
+ * @property {string} [ipConfiguration.provisioningState] Gets the provisioning
  * state of the public IP resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [ipConfiguration.name] The name of the resource that is
+ * @property {string} [ipConfiguration.name] The name of the resource that is
  * unique within a resource group. This name can be used to access the
  * resource.
- * @member {string} [ipConfiguration.etag] A unique read-only string that
+ * @property {string} [ipConfiguration.etag] A unique read-only string that
  * changes whenever the resource is updated.
- * @member {object} [dnsSettings] The FQDN of the DNS record associated with
+ * @property {object} [dnsSettings] The FQDN of the DNS record associated with
  * the public IP address.
- * @member {string} [dnsSettings.domainNameLabel] Gets or sets the Domain name
- * label.The concatenation of the domain name label and the regionalized DNS
- * zone make up the fully qualified domain name associated with the public IP
- * address. If a domain name label is specified, an A DNS record is created for
- * the public IP in the Microsoft Azure DNS system.
- * @member {string} [dnsSettings.fqdn] Gets the FQDN, Fully qualified domain
+ * @property {string} [dnsSettings.domainNameLabel] Gets or sets the Domain
+ * name label.The concatenation of the domain name label and the regionalized
+ * DNS zone make up the fully qualified domain name associated with the public
+ * IP address. If a domain name label is specified, an A DNS record is created
+ * for the public IP in the Microsoft Azure DNS system.
+ * @property {string} [dnsSettings.fqdn] Gets the FQDN, Fully qualified domain
  * name of the A DNS record associated with the public IP. This is the
  * concatenation of the domainNameLabel and the regionalized DNS zone.
- * @member {string} [dnsSettings.reverseFqdn] Gets or Sets the Reverse FQDN. A
- * user-visible, fully qualified domain name that resolves to this public IP
+ * @property {string} [dnsSettings.reverseFqdn] Gets or Sets the Reverse FQDN.
+ * A user-visible, fully qualified domain name that resolves to this public IP
  * address. If the reverseFqdn is specified, then a PTR DNS record is created
  * pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
- * @member {array} [ipTags] The list of tags associated with the public IP
+ * @property {array} [ipTags] The list of tags associated with the public IP
  * address.
- * @member {string} [ipAddress] The IP address associated with the public IP
+ * @property {string} [ipAddress] The IP address associated with the public IP
  * address resource.
- * @member {object} [publicIPPrefix] The Public IP Prefix this Public IP
+ * @property {object} [publicIPPrefix] The Public IP Prefix this Public IP
  * Address should be allocated from.
- * @member {string} [publicIPPrefix.id] Resource ID.
- * @member {number} [idleTimeoutInMinutes] The idle timeout of the public IP
+ * @property {string} [publicIPPrefix.id] Resource ID.
+ * @property {number} [idleTimeoutInMinutes] The idle timeout of the public IP
  * address.
- * @member {string} [resourceGuid] The resource GUID property of the public IP
- * resource.
- * @member {string} [provisioningState] The provisioning state of the PublicIP
- * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {array} [zones] A list of availability zones denoting the IP
+ * @property {string} [resourceGuid] The resource GUID property of the public
+ * IP resource.
+ * @property {string} [provisioningState] The provisioning state of the
+ * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {array} [zones] A list of availability zones denoting the IP
  * allocated for the resource needs to come from.
  */
 export interface PublicIPAddress extends Resource {
@@ -1486,123 +1491,124 @@ export interface PublicIPAddress extends Resource {
  * @constructor
  * IP configuration
  *
- * @member {string} [privateIPAddress] The private IP address of the IP
+ * @property {string} [privateIPAddress] The private IP address of the IP
  * configuration.
- * @member {string} [privateIPAllocationMethod] The private IP allocation
+ * @property {string} [privateIPAllocationMethod] The private IP allocation
  * method. Possible values are 'Static' and 'Dynamic'. Possible values include:
  * 'Static', 'Dynamic'
- * @member {object} [subnet] The reference of the subnet resource.
- * @member {string} [subnet.addressPrefix] The address prefix for the subnet.
- * @member {array} [subnet.addressPrefixes] List of  address prefixes for the
+ * @property {object} [subnet] The reference of the subnet resource.
+ * @property {string} [subnet.addressPrefix] The address prefix for the subnet.
+ * @property {array} [subnet.addressPrefixes] List of  address prefixes for the
  * subnet.
- * @member {object} [subnet.networkSecurityGroup] The reference of the
+ * @property {object} [subnet.networkSecurityGroup] The reference of the
  * NetworkSecurityGroup resource.
- * @member {array} [subnet.networkSecurityGroup.securityRules] A collection of
- * security rules of the network security group.
- * @member {array} [subnet.networkSecurityGroup.defaultSecurityRules] The
+ * @property {array} [subnet.networkSecurityGroup.securityRules] A collection
+ * of security rules of the network security group.
+ * @property {array} [subnet.networkSecurityGroup.defaultSecurityRules] The
  * default security rules of network security group.
- * @member {array} [subnet.networkSecurityGroup.networkInterfaces] A collection
- * of references to network interfaces.
- * @member {array} [subnet.networkSecurityGroup.subnets] A collection of
+ * @property {array} [subnet.networkSecurityGroup.networkInterfaces] A
+ * collection of references to network interfaces.
+ * @property {array} [subnet.networkSecurityGroup.subnets] A collection of
  * references to subnets.
- * @member {string} [subnet.networkSecurityGroup.resourceGuid] The resource
+ * @property {string} [subnet.networkSecurityGroup.resourceGuid] The resource
  * GUID property of the network security group resource.
- * @member {string} [subnet.networkSecurityGroup.provisioningState] The
+ * @property {string} [subnet.networkSecurityGroup.provisioningState] The
  * provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [subnet.networkSecurityGroup.etag] A unique read-only
+ * @property {string} [subnet.networkSecurityGroup.etag] A unique read-only
  * string that changes whenever the resource is updated.
- * @member {object} [subnet.routeTable] The reference of the RouteTable
+ * @property {object} [subnet.routeTable] The reference of the RouteTable
  * resource.
- * @member {array} [subnet.routeTable.routes] Collection of routes contained
+ * @property {array} [subnet.routeTable.routes] Collection of routes contained
  * within a route table.
- * @member {array} [subnet.routeTable.subnets] A collection of references to
+ * @property {array} [subnet.routeTable.subnets] A collection of references to
  * subnets.
- * @member {boolean} [subnet.routeTable.disableBgpRoutePropagation] Gets or
+ * @property {boolean} [subnet.routeTable.disableBgpRoutePropagation] Gets or
  * sets whether to disable the routes learned by BGP on that route table. True
  * means disable.
- * @member {string} [subnet.routeTable.provisioningState] The provisioning
+ * @property {string} [subnet.routeTable.provisioningState] The provisioning
  * state of the resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
+ * @property {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
- * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
- * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * @property {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @property {array} [subnet.serviceEndpointPolicies] An array of service
  * endpoint policies.
- * @member {array} [subnet.interfaceEndpoints] An array of references to
+ * @property {array} [subnet.interfaceEndpoints] An array of references to
  * interface endpoints
- * @member {array} [subnet.ipConfigurations] Gets an array of references to the
- * network interface IP configurations using subnet.
- * @member {array} [subnet.ipConfigurationProfiles] Array of IP configuration
+ * @property {array} [subnet.ipConfigurations] Gets an array of references to
+ * the network interface IP configurations using subnet.
+ * @property {array} [subnet.ipConfigurationProfiles] Array of IP configuration
  * profiles which reference this subnet.
- * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
- * to the external resources using subnet.
- * @member {array} [subnet.serviceAssociationLinks] Gets an array of references
- * to services injecting into this subnet.
- * @member {array} [subnet.delegations] Gets an array of references to the
+ * @property {array} [subnet.resourceNavigationLinks] Gets an array of
+ * references to the external resources using subnet.
+ * @property {array} [subnet.serviceAssociationLinks] Gets an array of
+ * references to services injecting into this subnet.
+ * @property {array} [subnet.delegations] Gets an array of references to the
  * delegations on the subnet.
- * @member {string} [subnet.purpose] A read-only string identifying the
+ * @property {string} [subnet.purpose] A read-only string identifying the
  * intention of use for this subnet based on delegations and other user-defined
  * properties.
- * @member {string} [subnet.provisioningState] The provisioning state of the
+ * @property {string} [subnet.provisioningState] The provisioning state of the
  * resource.
- * @member {string} [subnet.name] The name of the resource that is unique
+ * @property {string} [subnet.name] The name of the resource that is unique
  * within a resource group. This name can be used to access the resource.
- * @member {string} [subnet.etag] A unique read-only string that changes
+ * @property {string} [subnet.etag] A unique read-only string that changes
  * whenever the resource is updated.
- * @member {object} [publicIPAddress] The reference of the public IP resource.
- * @member {object} [publicIPAddress.sku] The public IP address SKU.
- * @member {string} [publicIPAddress.sku.name] Name of a public IP address SKU.
- * Possible values include: 'Basic', 'Standard'
- * @member {string} [publicIPAddress.publicIPAllocationMethod] The public IP
+ * @property {object} [publicIPAddress] The reference of the public IP
+ * resource.
+ * @property {object} [publicIPAddress.sku] The public IP address SKU.
+ * @property {string} [publicIPAddress.sku.name] Name of a public IP address
+ * SKU. Possible values include: 'Basic', 'Standard'
+ * @property {string} [publicIPAddress.publicIPAllocationMethod] The public IP
  * allocation method. Possible values are: 'Static' and 'Dynamic'. Possible
  * values include: 'Static', 'Dynamic'
- * @member {string} [publicIPAddress.publicIPAddressVersion] The public IP
+ * @property {string} [publicIPAddress.publicIPAddressVersion] The public IP
  * address version. Possible values are: 'IPv4' and 'IPv6'. Possible values
  * include: 'IPv4', 'IPv6'
- * @member {object} [publicIPAddress.ipConfiguration] The IP configuration
+ * @property {object} [publicIPAddress.ipConfiguration] The IP configuration
  * associated with the public IP address.
- * @member {object} [publicIPAddress.dnsSettings] The FQDN of the DNS record
+ * @property {object} [publicIPAddress.dnsSettings] The FQDN of the DNS record
  * associated with the public IP address.
- * @member {string} [publicIPAddress.dnsSettings.domainNameLabel] Gets or sets
- * the Domain name label.The concatenation of the domain name label and the
- * regionalized DNS zone make up the fully qualified domain name associated
+ * @property {string} [publicIPAddress.dnsSettings.domainNameLabel] Gets or
+ * sets the Domain name label.The concatenation of the domain name label and
+ * the regionalized DNS zone make up the fully qualified domain name associated
  * with the public IP address. If a domain name label is specified, an A DNS
  * record is created for the public IP in the Microsoft Azure DNS system.
- * @member {string} [publicIPAddress.dnsSettings.fqdn] Gets the FQDN, Fully
+ * @property {string} [publicIPAddress.dnsSettings.fqdn] Gets the FQDN, Fully
  * qualified domain name of the A DNS record associated with the public IP.
  * This is the concatenation of the domainNameLabel and the regionalized DNS
  * zone.
- * @member {string} [publicIPAddress.dnsSettings.reverseFqdn] Gets or Sets the
- * Reverse FQDN. A user-visible, fully qualified domain name that resolves to
- * this public IP address. If the reverseFqdn is specified, then a PTR DNS
+ * @property {string} [publicIPAddress.dnsSettings.reverseFqdn] Gets or Sets
+ * the Reverse FQDN. A user-visible, fully qualified domain name that resolves
+ * to this public IP address. If the reverseFqdn is specified, then a PTR DNS
  * record is created pointing from the IP address in the in-addr.arpa domain to
  * the reverse FQDN.
- * @member {array} [publicIPAddress.ipTags] The list of tags associated with
+ * @property {array} [publicIPAddress.ipTags] The list of tags associated with
  * the public IP address.
- * @member {string} [publicIPAddress.ipAddress] The IP address associated with
- * the public IP address resource.
- * @member {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
- * Public IP Address should be allocated from.
- * @member {string} [publicIPAddress.publicIPPrefix.id] Resource ID.
- * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
- * the public IP address.
- * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
+ * @property {string} [publicIPAddress.ipAddress] The IP address associated
+ * with the public IP address resource.
+ * @property {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix
+ * this Public IP Address should be allocated from.
+ * @property {string} [publicIPAddress.publicIPPrefix.id] Resource ID.
+ * @property {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout
+ * of the public IP address.
+ * @property {string} [publicIPAddress.resourceGuid] The resource GUID property
  * of the public IP resource.
- * @member {string} [publicIPAddress.provisioningState] The provisioning state
- * of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and
- * 'Failed'.
- * @member {string} [publicIPAddress.etag] A unique read-only string that
+ * @property {string} [publicIPAddress.provisioningState] The provisioning
+ * state of the PublicIP resource. Possible values are: 'Updating', 'Deleting',
+ * and 'Failed'.
+ * @property {string} [publicIPAddress.etag] A unique read-only string that
  * changes whenever the resource is updated.
- * @member {array} [publicIPAddress.zones] A list of availability zones
+ * @property {array} [publicIPAddress.zones] A list of availability zones
  * denoting the IP allocated for the resource needs to come from.
- * @member {string} [provisioningState] Gets the provisioning state of the
+ * @property {string} [provisioningState] Gets the provisioning state of the
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface IPConfiguration extends SubResource {
   privateIPAddress?: string;
@@ -1620,72 +1626,73 @@ export interface IPConfiguration extends SubResource {
  * @constructor
  * IP configuration profile child resource.
  *
- * @member {object} [subnet] The reference of the subnet resource to create a
+ * @property {object} [subnet] The reference of the subnet resource to create a
  * contatainer network interface ip configruation.
- * @member {string} [subnet.addressPrefix] The address prefix for the subnet.
- * @member {array} [subnet.addressPrefixes] List of  address prefixes for the
+ * @property {string} [subnet.addressPrefix] The address prefix for the subnet.
+ * @property {array} [subnet.addressPrefixes] List of  address prefixes for the
  * subnet.
- * @member {object} [subnet.networkSecurityGroup] The reference of the
+ * @property {object} [subnet.networkSecurityGroup] The reference of the
  * NetworkSecurityGroup resource.
- * @member {array} [subnet.networkSecurityGroup.securityRules] A collection of
- * security rules of the network security group.
- * @member {array} [subnet.networkSecurityGroup.defaultSecurityRules] The
+ * @property {array} [subnet.networkSecurityGroup.securityRules] A collection
+ * of security rules of the network security group.
+ * @property {array} [subnet.networkSecurityGroup.defaultSecurityRules] The
  * default security rules of network security group.
- * @member {array} [subnet.networkSecurityGroup.networkInterfaces] A collection
- * of references to network interfaces.
- * @member {array} [subnet.networkSecurityGroup.subnets] A collection of
+ * @property {array} [subnet.networkSecurityGroup.networkInterfaces] A
+ * collection of references to network interfaces.
+ * @property {array} [subnet.networkSecurityGroup.subnets] A collection of
  * references to subnets.
- * @member {string} [subnet.networkSecurityGroup.resourceGuid] The resource
+ * @property {string} [subnet.networkSecurityGroup.resourceGuid] The resource
  * GUID property of the network security group resource.
- * @member {string} [subnet.networkSecurityGroup.provisioningState] The
+ * @property {string} [subnet.networkSecurityGroup.provisioningState] The
  * provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [subnet.networkSecurityGroup.etag] A unique read-only
+ * @property {string} [subnet.networkSecurityGroup.etag] A unique read-only
  * string that changes whenever the resource is updated.
- * @member {object} [subnet.routeTable] The reference of the RouteTable
+ * @property {object} [subnet.routeTable] The reference of the RouteTable
  * resource.
- * @member {array} [subnet.routeTable.routes] Collection of routes contained
+ * @property {array} [subnet.routeTable.routes] Collection of routes contained
  * within a route table.
- * @member {array} [subnet.routeTable.subnets] A collection of references to
+ * @property {array} [subnet.routeTable.subnets] A collection of references to
  * subnets.
- * @member {boolean} [subnet.routeTable.disableBgpRoutePropagation] Gets or
+ * @property {boolean} [subnet.routeTable.disableBgpRoutePropagation] Gets or
  * sets whether to disable the routes learned by BGP on that route table. True
  * means disable.
- * @member {string} [subnet.routeTable.provisioningState] The provisioning
+ * @property {string} [subnet.routeTable.provisioningState] The provisioning
  * state of the resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
+ * @property {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
- * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
- * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * @property {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @property {array} [subnet.serviceEndpointPolicies] An array of service
  * endpoint policies.
- * @member {array} [subnet.interfaceEndpoints] An array of references to
+ * @property {array} [subnet.interfaceEndpoints] An array of references to
  * interface endpoints
- * @member {array} [subnet.ipConfigurations] Gets an array of references to the
- * network interface IP configurations using subnet.
- * @member {array} [subnet.ipConfigurationProfiles] Array of IP configuration
+ * @property {array} [subnet.ipConfigurations] Gets an array of references to
+ * the network interface IP configurations using subnet.
+ * @property {array} [subnet.ipConfigurationProfiles] Array of IP configuration
  * profiles which reference this subnet.
- * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
- * to the external resources using subnet.
- * @member {array} [subnet.serviceAssociationLinks] Gets an array of references
- * to services injecting into this subnet.
- * @member {array} [subnet.delegations] Gets an array of references to the
+ * @property {array} [subnet.resourceNavigationLinks] Gets an array of
+ * references to the external resources using subnet.
+ * @property {array} [subnet.serviceAssociationLinks] Gets an array of
+ * references to services injecting into this subnet.
+ * @property {array} [subnet.delegations] Gets an array of references to the
  * delegations on the subnet.
- * @member {string} [subnet.purpose] A read-only string identifying the
+ * @property {string} [subnet.purpose] A read-only string identifying the
  * intention of use for this subnet based on delegations and other user-defined
  * properties.
- * @member {string} [subnet.provisioningState] The provisioning state of the
+ * @property {string} [subnet.provisioningState] The provisioning state of the
  * resource.
- * @member {string} [subnet.name] The name of the resource that is unique
+ * @property {string} [subnet.name] The name of the resource that is unique
  * within a resource group. This name can be used to access the resource.
- * @member {string} [subnet.etag] A unique read-only string that changes
+ * @property {string} [subnet.etag] A unique read-only string that changes
  * whenever the resource is updated.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * @member {string} [name] The name of the resource. This name can be used to
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource.
+ * @property {string} [name] The name of the resource. This name can be used to
  * access the resource.
- * @member {string} [type] Sub Resource type.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [type] Sub Resource type.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface IPConfigurationProfile extends SubResource {
   subnet?: Subnet;
@@ -1701,14 +1708,15 @@ export interface IPConfigurationProfile extends SubResource {
  * @constructor
  * ResourceNavigationLink resource.
  *
- * @member {string} [linkedResourceType] Resource type of the linked resource.
- * @member {string} [link] Link to the external resource
- * @member {string} [provisioningState] Provisioning state of the
+ * @property {string} [linkedResourceType] Resource type of the linked
+ * resource.
+ * @property {string} [link] Link to the external resource
+ * @property {string} [provisioningState] Provisioning state of the
  * ResourceNavigationLink resource.
- * @member {string} [name] Name of the resource that is unique within a
+ * @property {string} [name] Name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface ResourceNavigationLink extends SubResource {
   linkedResourceType?: string;
@@ -1724,14 +1732,15 @@ export interface ResourceNavigationLink extends SubResource {
  * @constructor
  * ServiceAssociationLink resource.
  *
- * @member {string} [linkedResourceType] Resource type of the linked resource.
- * @member {string} [link] Link to the external resource.
- * @member {string} [provisioningState] Provisioning state of the
+ * @property {string} [linkedResourceType] Resource type of the linked
+ * resource.
+ * @property {string} [link] Link to the external resource.
+ * @property {string} [provisioningState] Provisioning state of the
  * ServiceAssociationLink resource.
- * @member {string} [name] Name of the resource that is unique within a
+ * @property {string} [name] Name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface ServiceAssociationLink extends SubResource {
   linkedResourceType?: string;
@@ -1747,15 +1756,16 @@ export interface ServiceAssociationLink extends SubResource {
  * @constructor
  * Details the service to which the subnet is delegated.
  *
- * @member {string} [serviceName] The name of the service to whom the subnet
+ * @property {string} [serviceName] The name of the service to whom the subnet
  * should be delegated (e.g. Microsoft.Sql/servers)
- * @member {array} [actions] Describes the actions permitted to the service
+ * @property {array} [actions] Describes the actions permitted to the service
  * upon delegation
- * @member {string} [provisioningState] The provisioning state of the resource.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource.
+ * @property {string} [name] The name of the resource that is unique within a
  * subnet. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface Delegation extends SubResource {
   serviceName?: string;
@@ -1771,58 +1781,61 @@ export interface Delegation extends SubResource {
  * @constructor
  * Subnet in a virtual network resource.
  *
- * @member {string} [addressPrefix] The address prefix for the subnet.
- * @member {array} [addressPrefixes] List of  address prefixes for the subnet.
- * @member {object} [networkSecurityGroup] The reference of the
+ * @property {string} [addressPrefix] The address prefix for the subnet.
+ * @property {array} [addressPrefixes] List of  address prefixes for the
+ * subnet.
+ * @property {object} [networkSecurityGroup] The reference of the
  * NetworkSecurityGroup resource.
- * @member {array} [networkSecurityGroup.securityRules] A collection of
+ * @property {array} [networkSecurityGroup.securityRules] A collection of
  * security rules of the network security group.
- * @member {array} [networkSecurityGroup.defaultSecurityRules] The default
+ * @property {array} [networkSecurityGroup.defaultSecurityRules] The default
  * security rules of network security group.
- * @member {array} [networkSecurityGroup.networkInterfaces] A collection of
+ * @property {array} [networkSecurityGroup.networkInterfaces] A collection of
  * references to network interfaces.
- * @member {array} [networkSecurityGroup.subnets] A collection of references to
- * subnets.
- * @member {string} [networkSecurityGroup.resourceGuid] The resource GUID
+ * @property {array} [networkSecurityGroup.subnets] A collection of references
+ * to subnets.
+ * @property {string} [networkSecurityGroup.resourceGuid] The resource GUID
  * property of the network security group resource.
- * @member {string} [networkSecurityGroup.provisioningState] The provisioning
+ * @property {string} [networkSecurityGroup.provisioningState] The provisioning
  * state of the public IP resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [networkSecurityGroup.etag] A unique read-only string that
- * changes whenever the resource is updated.
- * @member {object} [routeTable] The reference of the RouteTable resource.
- * @member {array} [routeTable.routes] Collection of routes contained within a
- * route table.
- * @member {array} [routeTable.subnets] A collection of references to subnets.
- * @member {boolean} [routeTable.disableBgpRoutePropagation] Gets or sets
+ * @property {string} [networkSecurityGroup.etag] A unique read-only string
+ * that changes whenever the resource is updated.
+ * @property {object} [routeTable] The reference of the RouteTable resource.
+ * @property {array} [routeTable.routes] Collection of routes contained within
+ * a route table.
+ * @property {array} [routeTable.subnets] A collection of references to
+ * subnets.
+ * @property {boolean} [routeTable.disableBgpRoutePropagation] Gets or sets
  * whether to disable the routes learned by BGP on that route table. True means
  * disable.
- * @member {string} [routeTable.provisioningState] The provisioning state of
+ * @property {string} [routeTable.provisioningState] The provisioning state of
  * the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [routeTable.etag] Gets a unique read-only string that
+ * @property {string} [routeTable.etag] Gets a unique read-only string that
  * changes whenever the resource is updated.
- * @member {array} [serviceEndpoints] An array of service endpoints.
- * @member {array} [serviceEndpointPolicies] An array of service endpoint
+ * @property {array} [serviceEndpoints] An array of service endpoints.
+ * @property {array} [serviceEndpointPolicies] An array of service endpoint
  * policies.
- * @member {array} [interfaceEndpoints] An array of references to interface
+ * @property {array} [interfaceEndpoints] An array of references to interface
  * endpoints
- * @member {array} [ipConfigurations] Gets an array of references to the
+ * @property {array} [ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
- * @member {array} [ipConfigurationProfiles] Array of IP configuration profiles
- * which reference this subnet.
- * @member {array} [resourceNavigationLinks] Gets an array of references to the
- * external resources using subnet.
- * @member {array} [serviceAssociationLinks] Gets an array of references to
+ * @property {array} [ipConfigurationProfiles] Array of IP configuration
+ * profiles which reference this subnet.
+ * @property {array} [resourceNavigationLinks] Gets an array of references to
+ * the external resources using subnet.
+ * @property {array} [serviceAssociationLinks] Gets an array of references to
  * services injecting into this subnet.
- * @member {array} [delegations] Gets an array of references to the delegations
- * on the subnet.
- * @member {string} [purpose] A read-only string identifying the intention of
+ * @property {array} [delegations] Gets an array of references to the
+ * delegations on the subnet.
+ * @property {string} [purpose] A read-only string identifying the intention of
  * use for this subnet based on delegations and other user-defined properties.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource.
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface Subnet extends SubResource {
   addressPrefix?: string;
@@ -1849,229 +1862,234 @@ export interface Subnet extends SubResource {
  * @constructor
  * Frontend IP address of the load balancer.
  *
- * @member {array} [inboundNatRules] Read only. Inbound rules URIs that use
+ * @property {array} [inboundNatRules] Read only. Inbound rules URIs that use
  * this frontend IP.
- * @member {array} [inboundNatPools] Read only. Inbound pools URIs that use
+ * @property {array} [inboundNatPools] Read only. Inbound pools URIs that use
  * this frontend IP.
- * @member {array} [outboundRules] Read only. Outbound rules URIs that use this
- * frontend IP.
- * @member {array} [loadBalancingRules] Gets load balancing rules URIs that use
+ * @property {array} [outboundRules] Read only. Outbound rules URIs that use
  * this frontend IP.
- * @member {string} [privateIPAddress] The private IP address of the IP
+ * @property {array} [loadBalancingRules] Gets load balancing rules URIs that
+ * use this frontend IP.
+ * @property {string} [privateIPAddress] The private IP address of the IP
  * configuration.
- * @member {string} [privateIPAllocationMethod] The Private IP allocation
+ * @property {string} [privateIPAllocationMethod] The Private IP allocation
  * method. Possible values are: 'Static' and 'Dynamic'. Possible values
  * include: 'Static', 'Dynamic'
- * @member {object} [subnet] The reference of the subnet resource.
- * @member {string} [subnet.addressPrefix] The address prefix for the subnet.
- * @member {array} [subnet.addressPrefixes] List of  address prefixes for the
+ * @property {object} [subnet] The reference of the subnet resource.
+ * @property {string} [subnet.addressPrefix] The address prefix for the subnet.
+ * @property {array} [subnet.addressPrefixes] List of  address prefixes for the
  * subnet.
- * @member {object} [subnet.networkSecurityGroup] The reference of the
+ * @property {object} [subnet.networkSecurityGroup] The reference of the
  * NetworkSecurityGroup resource.
- * @member {array} [subnet.networkSecurityGroup.securityRules] A collection of
- * security rules of the network security group.
- * @member {array} [subnet.networkSecurityGroup.defaultSecurityRules] The
+ * @property {array} [subnet.networkSecurityGroup.securityRules] A collection
+ * of security rules of the network security group.
+ * @property {array} [subnet.networkSecurityGroup.defaultSecurityRules] The
  * default security rules of network security group.
- * @member {array} [subnet.networkSecurityGroup.networkInterfaces] A collection
- * of references to network interfaces.
- * @member {array} [subnet.networkSecurityGroup.subnets] A collection of
+ * @property {array} [subnet.networkSecurityGroup.networkInterfaces] A
+ * collection of references to network interfaces.
+ * @property {array} [subnet.networkSecurityGroup.subnets] A collection of
  * references to subnets.
- * @member {string} [subnet.networkSecurityGroup.resourceGuid] The resource
+ * @property {string} [subnet.networkSecurityGroup.resourceGuid] The resource
  * GUID property of the network security group resource.
- * @member {string} [subnet.networkSecurityGroup.provisioningState] The
+ * @property {string} [subnet.networkSecurityGroup.provisioningState] The
  * provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [subnet.networkSecurityGroup.etag] A unique read-only
+ * @property {string} [subnet.networkSecurityGroup.etag] A unique read-only
  * string that changes whenever the resource is updated.
- * @member {object} [subnet.routeTable] The reference of the RouteTable
+ * @property {object} [subnet.routeTable] The reference of the RouteTable
  * resource.
- * @member {array} [subnet.routeTable.routes] Collection of routes contained
+ * @property {array} [subnet.routeTable.routes] Collection of routes contained
  * within a route table.
- * @member {array} [subnet.routeTable.subnets] A collection of references to
+ * @property {array} [subnet.routeTable.subnets] A collection of references to
  * subnets.
- * @member {boolean} [subnet.routeTable.disableBgpRoutePropagation] Gets or
+ * @property {boolean} [subnet.routeTable.disableBgpRoutePropagation] Gets or
  * sets whether to disable the routes learned by BGP on that route table. True
  * means disable.
- * @member {string} [subnet.routeTable.provisioningState] The provisioning
+ * @property {string} [subnet.routeTable.provisioningState] The provisioning
  * state of the resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
+ * @property {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
- * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
- * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * @property {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @property {array} [subnet.serviceEndpointPolicies] An array of service
  * endpoint policies.
- * @member {array} [subnet.interfaceEndpoints] An array of references to
+ * @property {array} [subnet.interfaceEndpoints] An array of references to
  * interface endpoints
- * @member {array} [subnet.ipConfigurations] Gets an array of references to the
- * network interface IP configurations using subnet.
- * @member {array} [subnet.ipConfigurationProfiles] Array of IP configuration
+ * @property {array} [subnet.ipConfigurations] Gets an array of references to
+ * the network interface IP configurations using subnet.
+ * @property {array} [subnet.ipConfigurationProfiles] Array of IP configuration
  * profiles which reference this subnet.
- * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
- * to the external resources using subnet.
- * @member {array} [subnet.serviceAssociationLinks] Gets an array of references
- * to services injecting into this subnet.
- * @member {array} [subnet.delegations] Gets an array of references to the
+ * @property {array} [subnet.resourceNavigationLinks] Gets an array of
+ * references to the external resources using subnet.
+ * @property {array} [subnet.serviceAssociationLinks] Gets an array of
+ * references to services injecting into this subnet.
+ * @property {array} [subnet.delegations] Gets an array of references to the
  * delegations on the subnet.
- * @member {string} [subnet.purpose] A read-only string identifying the
+ * @property {string} [subnet.purpose] A read-only string identifying the
  * intention of use for this subnet based on delegations and other user-defined
  * properties.
- * @member {string} [subnet.provisioningState] The provisioning state of the
+ * @property {string} [subnet.provisioningState] The provisioning state of the
  * resource.
- * @member {string} [subnet.name] The name of the resource that is unique
+ * @property {string} [subnet.name] The name of the resource that is unique
  * within a resource group. This name can be used to access the resource.
- * @member {string} [subnet.etag] A unique read-only string that changes
+ * @property {string} [subnet.etag] A unique read-only string that changes
  * whenever the resource is updated.
- * @member {object} [publicIPAddress] The reference of the Public IP resource.
- * @member {object} [publicIPAddress.sku] The public IP address SKU.
- * @member {string} [publicIPAddress.sku.name] Name of a public IP address SKU.
- * Possible values include: 'Basic', 'Standard'
- * @member {string} [publicIPAddress.publicIPAllocationMethod] The public IP
+ * @property {object} [publicIPAddress] The reference of the Public IP
+ * resource.
+ * @property {object} [publicIPAddress.sku] The public IP address SKU.
+ * @property {string} [publicIPAddress.sku.name] Name of a public IP address
+ * SKU. Possible values include: 'Basic', 'Standard'
+ * @property {string} [publicIPAddress.publicIPAllocationMethod] The public IP
  * allocation method. Possible values are: 'Static' and 'Dynamic'. Possible
  * values include: 'Static', 'Dynamic'
- * @member {string} [publicIPAddress.publicIPAddressVersion] The public IP
+ * @property {string} [publicIPAddress.publicIPAddressVersion] The public IP
  * address version. Possible values are: 'IPv4' and 'IPv6'. Possible values
  * include: 'IPv4', 'IPv6'
- * @member {object} [publicIPAddress.ipConfiguration] The IP configuration
+ * @property {object} [publicIPAddress.ipConfiguration] The IP configuration
  * associated with the public IP address.
- * @member {string} [publicIPAddress.ipConfiguration.privateIPAddress] The
+ * @property {string} [publicIPAddress.ipConfiguration.privateIPAddress] The
  * private IP address of the IP configuration.
- * @member {string} [publicIPAddress.ipConfiguration.privateIPAllocationMethod]
- * The private IP allocation method. Possible values are 'Static' and
- * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
- * @member {object} [publicIPAddress.ipConfiguration.subnet] The reference of
+ * @property {string}
+ * [publicIPAddress.ipConfiguration.privateIPAllocationMethod] The private IP
+ * allocation method. Possible values are 'Static' and 'Dynamic'. Possible
+ * values include: 'Static', 'Dynamic'
+ * @property {object} [publicIPAddress.ipConfiguration.subnet] The reference of
  * the subnet resource.
- * @member {string} [publicIPAddress.ipConfiguration.subnet.addressPrefix] The
- * address prefix for the subnet.
- * @member {array} [publicIPAddress.ipConfiguration.subnet.addressPrefixes]
+ * @property {string} [publicIPAddress.ipConfiguration.subnet.addressPrefix]
+ * The address prefix for the subnet.
+ * @property {array} [publicIPAddress.ipConfiguration.subnet.addressPrefixes]
  * List of  address prefixes for the subnet.
- * @member {object}
+ * @property {object}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup] The reference
  * of the NetworkSecurityGroup resource.
- * @member {array}
+ * @property {array}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.securityRules]
  * A collection of security rules of the network security group.
- * @member {array}
+ * @property {array}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
  * The default security rules of network security group.
- * @member {array}
+ * @property {array}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
  * A collection of references to network interfaces.
- * @member {array}
+ * @property {array}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.subnets] A
  * collection of references to subnets.
- * @member {string}
+ * @property {string}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.resourceGuid]
  * The resource GUID property of the network security group resource.
- * @member {string}
+ * @property {string}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
  * The provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.etag] A unique
  * read-only string that changes whenever the resource is updated.
- * @member {object} [publicIPAddress.ipConfiguration.subnet.routeTable] The
+ * @property {object} [publicIPAddress.ipConfiguration.subnet.routeTable] The
  * reference of the RouteTable resource.
- * @member {array} [publicIPAddress.ipConfiguration.subnet.routeTable.routes]
+ * @property {array} [publicIPAddress.ipConfiguration.subnet.routeTable.routes]
  * Collection of routes contained within a route table.
- * @member {array} [publicIPAddress.ipConfiguration.subnet.routeTable.subnets]
- * A collection of references to subnets.
- * @member {boolean}
+ * @property {array}
+ * [publicIPAddress.ipConfiguration.subnet.routeTable.subnets] A collection of
+ * references to subnets.
+ * @property {boolean}
  * [publicIPAddress.ipConfiguration.subnet.routeTable.disableBgpRoutePropagation]
  * Gets or sets whether to disable the routes learned by BGP on that route
  * table. True means disable.
- * @member {string}
+ * @property {string}
  * [publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState] The
  * provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [publicIPAddress.ipConfiguration.subnet.routeTable.etag]
+ * @property {string} [publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
- * @member {array} [publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
- * array of service endpoints.
- * @member {array}
+ * @property {array} [publicIPAddress.ipConfiguration.subnet.serviceEndpoints]
+ * An array of service endpoints.
+ * @property {array}
  * [publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies] An array of
  * service endpoint policies.
- * @member {array} [publicIPAddress.ipConfiguration.subnet.interfaceEndpoints]
- * An array of references to interface endpoints
- * @member {array} [publicIPAddress.ipConfiguration.subnet.ipConfigurations]
+ * @property {array}
+ * [publicIPAddress.ipConfiguration.subnet.interfaceEndpoints] An array of
+ * references to interface endpoints
+ * @property {array} [publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
- * @member {array}
+ * @property {array}
  * [publicIPAddress.ipConfiguration.subnet.ipConfigurationProfiles] Array of IP
  * configuration profiles which reference this subnet.
- * @member {array}
+ * @property {array}
  * [publicIPAddress.ipConfiguration.subnet.resourceNavigationLinks] Gets an
  * array of references to the external resources using subnet.
- * @member {array}
+ * @property {array}
  * [publicIPAddress.ipConfiguration.subnet.serviceAssociationLinks] Gets an
  * array of references to services injecting into this subnet.
- * @member {array} [publicIPAddress.ipConfiguration.subnet.delegations] Gets an
- * array of references to the delegations on the subnet.
- * @member {string} [publicIPAddress.ipConfiguration.subnet.purpose] A
+ * @property {array} [publicIPAddress.ipConfiguration.subnet.delegations] Gets
+ * an array of references to the delegations on the subnet.
+ * @property {string} [publicIPAddress.ipConfiguration.subnet.purpose] A
  * read-only string identifying the intention of use for this subnet based on
  * delegations and other user-defined properties.
- * @member {string} [publicIPAddress.ipConfiguration.subnet.provisioningState]
- * The provisioning state of the resource.
- * @member {string} [publicIPAddress.ipConfiguration.subnet.name] The name of
+ * @property {string}
+ * [publicIPAddress.ipConfiguration.subnet.provisioningState] The provisioning
+ * state of the resource.
+ * @property {string} [publicIPAddress.ipConfiguration.subnet.name] The name of
  * the resource that is unique within a resource group. This name can be used
  * to access the resource.
- * @member {string} [publicIPAddress.ipConfiguration.subnet.etag] A unique
+ * @property {string} [publicIPAddress.ipConfiguration.subnet.etag] A unique
  * read-only string that changes whenever the resource is updated.
- * @member {object} [publicIPAddress.ipConfiguration.publicIPAddress] The
+ * @property {object} [publicIPAddress.ipConfiguration.publicIPAddress] The
  * reference of the public IP resource.
- * @member {string} [publicIPAddress.ipConfiguration.provisioningState] Gets
+ * @property {string} [publicIPAddress.ipConfiguration.provisioningState] Gets
  * the provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [publicIPAddress.ipConfiguration.name] The name of the
+ * @property {string} [publicIPAddress.ipConfiguration.name] The name of the
  * resource that is unique within a resource group. This name can be used to
  * access the resource.
- * @member {string} [publicIPAddress.ipConfiguration.etag] A unique read-only
+ * @property {string} [publicIPAddress.ipConfiguration.etag] A unique read-only
  * string that changes whenever the resource is updated.
- * @member {object} [publicIPAddress.dnsSettings] The FQDN of the DNS record
+ * @property {object} [publicIPAddress.dnsSettings] The FQDN of the DNS record
  * associated with the public IP address.
- * @member {string} [publicIPAddress.dnsSettings.domainNameLabel] Gets or sets
- * the Domain name label.The concatenation of the domain name label and the
- * regionalized DNS zone make up the fully qualified domain name associated
+ * @property {string} [publicIPAddress.dnsSettings.domainNameLabel] Gets or
+ * sets the Domain name label.The concatenation of the domain name label and
+ * the regionalized DNS zone make up the fully qualified domain name associated
  * with the public IP address. If a domain name label is specified, an A DNS
  * record is created for the public IP in the Microsoft Azure DNS system.
- * @member {string} [publicIPAddress.dnsSettings.fqdn] Gets the FQDN, Fully
+ * @property {string} [publicIPAddress.dnsSettings.fqdn] Gets the FQDN, Fully
  * qualified domain name of the A DNS record associated with the public IP.
  * This is the concatenation of the domainNameLabel and the regionalized DNS
  * zone.
- * @member {string} [publicIPAddress.dnsSettings.reverseFqdn] Gets or Sets the
- * Reverse FQDN. A user-visible, fully qualified domain name that resolves to
- * this public IP address. If the reverseFqdn is specified, then a PTR DNS
+ * @property {string} [publicIPAddress.dnsSettings.reverseFqdn] Gets or Sets
+ * the Reverse FQDN. A user-visible, fully qualified domain name that resolves
+ * to this public IP address. If the reverseFqdn is specified, then a PTR DNS
  * record is created pointing from the IP address in the in-addr.arpa domain to
  * the reverse FQDN.
- * @member {array} [publicIPAddress.ipTags] The list of tags associated with
+ * @property {array} [publicIPAddress.ipTags] The list of tags associated with
  * the public IP address.
- * @member {string} [publicIPAddress.ipAddress] The IP address associated with
- * the public IP address resource.
- * @member {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
- * Public IP Address should be allocated from.
- * @member {string} [publicIPAddress.publicIPPrefix.id] Resource ID.
- * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
- * the public IP address.
- * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
+ * @property {string} [publicIPAddress.ipAddress] The IP address associated
+ * with the public IP address resource.
+ * @property {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix
+ * this Public IP Address should be allocated from.
+ * @property {string} [publicIPAddress.publicIPPrefix.id] Resource ID.
+ * @property {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout
+ * of the public IP address.
+ * @property {string} [publicIPAddress.resourceGuid] The resource GUID property
  * of the public IP resource.
- * @member {string} [publicIPAddress.provisioningState] The provisioning state
- * of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and
- * 'Failed'.
- * @member {string} [publicIPAddress.etag] A unique read-only string that
+ * @property {string} [publicIPAddress.provisioningState] The provisioning
+ * state of the PublicIP resource. Possible values are: 'Updating', 'Deleting',
+ * and 'Failed'.
+ * @property {string} [publicIPAddress.etag] A unique read-only string that
  * changes whenever the resource is updated.
- * @member {array} [publicIPAddress.zones] A list of availability zones
+ * @property {array} [publicIPAddress.zones] A list of availability zones
  * denoting the IP allocated for the resource needs to come from.
- * @member {object} [publicIPPrefix] The reference of the Public IP Prefix
+ * @property {object} [publicIPPrefix] The reference of the Public IP Prefix
  * resource.
- * @member {string} [publicIPPrefix.id] Resource ID.
- * @member {string} [provisioningState] Gets the provisioning state of the
+ * @property {string} [publicIPPrefix.id] Resource ID.
+ * @property {string} [provisioningState] Gets the provisioning state of the
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {array} [zones] A list of availability zones denoting the IP
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {array} [zones] A list of availability zones denoting the IP
  * allocated for the resource needs to come from.
  */
 export interface FrontendIPConfiguration extends SubResource {
@@ -2096,649 +2114,651 @@ export interface FrontendIPConfiguration extends SubResource {
  * @constructor
  * Virtual Network Tap resource
  *
- * @member {array} [networkInterfaceTapConfigurations] Specifies the list of
+ * @property {array} [networkInterfaceTapConfigurations] Specifies the list of
  * resource IDs for the network interface IP configuration that needs to be
  * tapped.
- * @member {string} [resourceGuid] The resourceGuid property of the virtual
+ * @property {string} [resourceGuid] The resourceGuid property of the virtual
  * network tap.
- * @member {string} [provisioningState] The provisioning state of the virtual
+ * @property {string} [provisioningState] The provisioning state of the virtual
  * network tap. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {object} [destinationNetworkInterfaceIPConfiguration] The reference
- * to the private IP Address of the collector nic that will receive the tap
- * @member {array}
+ * @property {object} [destinationNetworkInterfaceIPConfiguration] The
+ * reference to the private IP Address of the collector nic that will receive
+ * the tap
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.virtualNetworkTaps] The
  * reference to Virtual Network Taps.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.applicationGatewayBackendAddressPools]
  * The reference of ApplicationGatewayBackendAddressPool resource.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.loadBalancerBackendAddressPools]
  * The reference of LoadBalancerBackendAddressPool resource.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.loadBalancerInboundNatRules] A
  * list of references of LoadBalancerInboundNatRules.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.privateIPAddress] Private IP
  * address of the IP configuration.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
  * Defines how a private IP address is assigned. Possible values are: 'Static'
  * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
  * Available from Api-Version 2016-03-30 onwards, it represents whether the
  * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
  * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
  * 'IPv6'
- * @member {object} [destinationNetworkInterfaceIPConfiguration.subnet] Subnet
- * bound to the IP configuration.
- * @member {string}
+ * @property {object} [destinationNetworkInterfaceIPConfiguration.subnet]
+ * Subnet bound to the IP configuration.
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.subnet.addressPrefix] The
  * address prefix for the subnet.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.subnet.addressPrefixes] List of
  * address prefixes for the subnet.
- * @member {object}
+ * @property {object}
  * [destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup] The
  * reference of the NetworkSecurityGroup resource.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.securityRules]
  * A collection of security rules of the network security group.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
  * The default security rules of network security group.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.networkInterfaces]
  * A collection of references to network interfaces.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.subnets]
  * A collection of references to subnets.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.resourceGuid]
  * The resource GUID property of the network security group resource.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.provisioningState]
  * The provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [destinationNetworkInterfaceIPConfiguration.subnet.routeTable] The reference
  * of the RouteTable resource.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.subnet.routeTable.routes]
  * Collection of routes contained within a route table.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.subnet.routeTable.subnets] A
  * collection of references to subnets.
- * @member {boolean}
+ * @property {boolean}
  * [destinationNetworkInterfaceIPConfiguration.subnet.routeTable.disableBgpRoutePropagation]
  * Gets or sets whether to disable the routes learned by BGP on that route
  * table. True means disable.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.subnet.routeTable.provisioningState]
  * The provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.subnet.routeTable.etag] Gets a
  * unique read-only string that changes whenever the resource is updated.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.subnet.serviceEndpoints] An
  * array of service endpoints.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.subnet.serviceEndpointPolicies]
  * An array of service endpoint policies.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.subnet.interfaceEndpoints] An
  * array of references to interface endpoints
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.subnet.ipConfigurations] Gets an
  * array of references to the network interface IP configurations using subnet.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.subnet.ipConfigurationProfiles]
  * Array of IP configuration profiles which reference this subnet.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.subnet.resourceNavigationLinks]
  * Gets an array of references to the external resources using subnet.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.subnet.serviceAssociationLinks]
  * Gets an array of references to services injecting into this subnet.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.subnet.delegations] Gets an
  * array of references to the delegations on the subnet.
- * @member {string} [destinationNetworkInterfaceIPConfiguration.subnet.purpose]
- * A read-only string identifying the intention of use for this subnet based on
- * delegations and other user-defined properties.
- * @member {string}
+ * @property {string}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.purpose] A read-only
+ * string identifying the intention of use for this subnet based on delegations
+ * and other user-defined properties.
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.subnet.provisioningState] The
  * provisioning state of the resource.
- * @member {string} [destinationNetworkInterfaceIPConfiguration.subnet.name]
+ * @property {string} [destinationNetworkInterfaceIPConfiguration.subnet.name]
  * The name of the resource that is unique within a resource group. This name
  * can be used to access the resource.
- * @member {string} [destinationNetworkInterfaceIPConfiguration.subnet.etag] A
- * unique read-only string that changes whenever the resource is updated.
- * @member {boolean} [destinationNetworkInterfaceIPConfiguration.primary] Gets
- * whether this is a primary customer address on the network interface.
- * @member {object}
+ * @property {string} [destinationNetworkInterfaceIPConfiguration.subnet.etag]
+ * A unique read-only string that changes whenever the resource is updated.
+ * @property {boolean} [destinationNetworkInterfaceIPConfiguration.primary]
+ * Gets whether this is a primary customer address on the network interface.
+ * @property {object}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress] Public IP
  * address bound to the IP configuration.
- * @member {object}
+ * @property {object}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.sku] The public
  * IP address SKU.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.sku.name] Name
  * of a public IP address SKU. Possible values include: 'Basic', 'Standard'
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.publicIPAllocationMethod]
  * The public IP allocation method. Possible values are: 'Static' and
  * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.publicIPAddressVersion]
  * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
  * Possible values include: 'IPv4', 'IPv6'
- * @member {object}
+ * @property {object}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration]
  * The IP configuration associated with the public IP address.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.privateIPAddress]
  * The private IP address of the IP configuration.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.privateIPAllocationMethod]
  * The private IP allocation method. Possible values are 'Static' and
  * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
- * @member {object}
+ * @property {object}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet]
  * The reference of the subnet resource.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefix]
  * The address prefix for the subnet.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefixes]
  * List of  address prefixes for the subnet.
- * @member {object}
+ * @property {object}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup]
  * The reference of the NetworkSecurityGroup resource.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.securityRules]
  * A collection of security rules of the network security group.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
  * The default security rules of network security group.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
  * A collection of references to network interfaces.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.subnets]
  * A collection of references to subnets.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.resourceGuid]
  * The resource GUID property of the network security group resource.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
  * The provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable]
  * The reference of the RouteTable resource.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.routes]
  * Collection of routes contained within a route table.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.subnets]
  * A collection of references to subnets.
- * @member {boolean}
+ * @property {boolean}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.disableBgpRoutePropagation]
  * Gets or sets whether to disable the routes learned by BGP on that route
  * table. True means disable.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState]
  * The provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints]
  * An array of service endpoints.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
  * An array of service endpoint policies.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.interfaceEndpoints]
  * An array of references to interface endpoints
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurationProfiles]
  * Array of IP configuration profiles which reference this subnet.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.resourceNavigationLinks]
  * Gets an array of references to the external resources using subnet.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceAssociationLinks]
  * Gets an array of references to services injecting into this subnet.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.delegations]
  * Gets an array of references to the delegations on the subnet.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.purpose]
  * A read-only string identifying the intention of use for this subnet based on
  * delegations and other user-defined properties.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.name]
  * The name of the resource that is unique within a resource group. This name
  * can be used to access the resource.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.publicIPAddress]
  * The reference of the public IP resource.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.provisioningState]
  * Gets the provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.name]
  * The name of the resource that is unique within a resource group. This name
  * can be used to access the resource.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.dnsSettings] The
  * FQDN of the DNS record associated with the public IP address.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.dnsSettings.domainNameLabel]
  * Gets or sets the Domain name label.The concatenation of the domain name
  * label and the regionalized DNS zone make up the fully qualified domain name
  * associated with the public IP address. If a domain name label is specified,
  * an A DNS record is created for the public IP in the Microsoft Azure DNS
  * system.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.dnsSettings.fqdn]
  * Gets the FQDN, Fully qualified domain name of the A DNS record associated
  * with the public IP. This is the concatenation of the domainNameLabel and the
  * regionalized DNS zone.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
  * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
  * that resolves to this public IP address. If the reverseFqdn is specified,
  * then a PTR DNS record is created pointing from the IP address in the
  * in-addr.arpa domain to the reverse FQDN.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipTags] The list
  * of tags associated with the public IP address.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipAddress] The
  * IP address associated with the public IP address resource.
- * @member {object}
+ * @property {object}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.publicIPPrefix]
  * The Public IP Prefix this Public IP Address should be allocated from.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.publicIPPrefix.id]
  * Resource ID.
- * @member {number}
+ * @property {number}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.idleTimeoutInMinutes]
  * The idle timeout of the public IP address.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.resourceGuid]
  * The resource GUID property of the public IP resource.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.provisioningState]
  * The provisioning state of the PublicIP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.etag] A unique
  * read-only string that changes whenever the resource is updated.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.zones] A list of
  * availability zones denoting the IP allocated for the resource needs to come
  * from.
- * @member {array}
+ * @property {array}
  * [destinationNetworkInterfaceIPConfiguration.applicationSecurityGroups]
  * Application security groups in which the IP configuration is included.
- * @member {string}
+ * @property {string}
  * [destinationNetworkInterfaceIPConfiguration.provisioningState] The
  * provisioning state of the network interface IP configuration. Possible
  * values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [destinationNetworkInterfaceIPConfiguration.name] The name
- * of the resource that is unique within a resource group. This name can be
- * used to access the resource.
- * @member {string} [destinationNetworkInterfaceIPConfiguration.etag] A unique
- * read-only string that changes whenever the resource is updated.
- * @member {object} [destinationLoadBalancerFrontEndIPConfiguration] The
+ * @property {string} [destinationNetworkInterfaceIPConfiguration.name] The
+ * name of the resource that is unique within a resource group. This name can
+ * be used to access the resource.
+ * @property {string} [destinationNetworkInterfaceIPConfiguration.etag] A
+ * unique read-only string that changes whenever the resource is updated.
+ * @property {object} [destinationLoadBalancerFrontEndIPConfiguration] The
  * reference to the private IP address on the internal Load Balancer that will
  * receive the tap
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.inboundNatRules] Read only.
  * Inbound rules URIs that use this frontend IP.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.inboundNatPools] Read only.
  * Inbound pools URIs that use this frontend IP.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.outboundRules] Read only.
  * Outbound rules URIs that use this frontend IP.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.loadBalancingRules] Gets
  * load balancing rules URIs that use this frontend IP.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.privateIPAddress] The
  * private IP address of the IP configuration.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.privateIPAllocationMethod]
  * The Private IP allocation method. Possible values are: 'Static' and
  * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
- * @member {object} [destinationLoadBalancerFrontEndIPConfiguration.subnet] The
- * reference of the subnet resource.
- * @member {string}
+ * @property {object} [destinationLoadBalancerFrontEndIPConfiguration.subnet]
+ * The reference of the subnet resource.
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefix] The
  * address prefix for the subnet.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefixes] List
  * of  address prefixes for the subnet.
- * @member {object}
+ * @property {object}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup]
  * The reference of the NetworkSecurityGroup resource.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.securityRules]
  * A collection of security rules of the network security group.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
  * The default security rules of network security group.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.networkInterfaces]
  * A collection of references to network interfaces.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.subnets]
  * A collection of references to subnets.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.resourceGuid]
  * The resource GUID property of the network security group resource.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.provisioningState]
  * The provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable] The
  * reference of the RouteTable resource.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.routes]
  * Collection of routes contained within a route table.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.subnets] A
  * collection of references to subnets.
- * @member {boolean}
+ * @property {boolean}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.disableBgpRoutePropagation]
  * Gets or sets whether to disable the routes learned by BGP on that route
  * table. True means disable.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.provisioningState]
  * The provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.etag] Gets
  * a unique read-only string that changes whenever the resource is updated.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints] An
  * array of service endpoints.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
  * An array of service endpoint policies.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.interfaceEndpoints]
  * An array of references to interface endpoints
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.ipConfigurationProfiles]
  * Array of IP configuration profiles which reference this subnet.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
  * Gets an array of references to the external resources using subnet.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
  * Gets an array of references to services injecting into this subnet.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations] Gets an
  * array of references to the delegations on the subnet.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.purpose] A read-only
  * string identifying the intention of use for this subnet based on delegations
  * and other user-defined properties.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.name] The name of the
  * resource that is unique within a resource group. This name can be used to
  * access the resource.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.etag] A unique
  * read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress] The
  * reference of the Public IP resource.
- * @member {object}
+ * @property {object}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku] The
  * public IP address SKU.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku.name]
  * Name of a public IP address SKU. Possible values include: 'Basic',
  * 'Standard'
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAllocationMethod]
  * The public IP allocation method. Possible values are: 'Static' and
  * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAddressVersion]
  * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
  * Possible values include: 'IPv4', 'IPv6'
- * @member {object}
+ * @property {object}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration]
  * The IP configuration associated with the public IP address.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.privateIPAddress]
  * The private IP address of the IP configuration.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.privateIPAllocationMethod]
  * The private IP allocation method. Possible values are 'Static' and
  * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
- * @member {object}
+ * @property {object}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet]
  * The reference of the subnet resource.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefix]
  * The address prefix for the subnet.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefixes]
  * List of  address prefixes for the subnet.
- * @member {object}
+ * @property {object}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup]
  * The reference of the NetworkSecurityGroup resource.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.securityRules]
  * A collection of security rules of the network security group.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
  * The default security rules of network security group.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
  * A collection of references to network interfaces.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.subnets]
  * A collection of references to subnets.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.resourceGuid]
  * The resource GUID property of the network security group resource.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
  * The provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable]
  * The reference of the RouteTable resource.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.routes]
  * Collection of routes contained within a route table.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.subnets]
  * A collection of references to subnets.
- * @member {boolean}
+ * @property {boolean}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.disableBgpRoutePropagation]
  * Gets or sets whether to disable the routes learned by BGP on that route
  * table. True means disable.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState]
  * The provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints]
  * An array of service endpoints.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
  * An array of service endpoint policies.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.interfaceEndpoints]
  * An array of references to interface endpoints
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurationProfiles]
  * Array of IP configuration profiles which reference this subnet.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.resourceNavigationLinks]
  * Gets an array of references to the external resources using subnet.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceAssociationLinks]
  * Gets an array of references to services injecting into this subnet.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.delegations]
  * Gets an array of references to the delegations on the subnet.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.purpose]
  * A read-only string identifying the intention of use for this subnet based on
  * delegations and other user-defined properties.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.name]
  * The name of the resource that is unique within a resource group. This name
  * can be used to access the resource.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.publicIPAddress]
  * The reference of the public IP resource.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.provisioningState]
  * Gets the provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.name]
  * The name of the resource that is unique within a resource group. This name
  * can be used to access the resource.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings]
  * The FQDN of the DNS record associated with the public IP address.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.domainNameLabel]
  * Gets or sets the Domain name label.The concatenation of the domain name
  * label and the regionalized DNS zone make up the fully qualified domain name
  * associated with the public IP address. If a domain name label is specified,
  * an A DNS record is created for the public IP in the Microsoft Azure DNS
  * system.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.fqdn]
  * Gets the FQDN, Fully qualified domain name of the A DNS record associated
  * with the public IP. This is the concatenation of the domainNameLabel and the
  * regionalized DNS zone.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
  * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
  * that resolves to this public IP address. If the reverseFqdn is specified,
  * then a PTR DNS record is created pointing from the IP address in the
  * in-addr.arpa domain to the reverse FQDN.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags] The
  * list of tags associated with the public IP address.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipAddress]
  * The IP address associated with the public IP address resource.
- * @member {object}
+ * @property {object}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPPrefix]
  * The Public IP Prefix this Public IP Address should be allocated from.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPPrefix.id]
  * Resource ID.
- * @member {number}
+ * @property {number}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.idleTimeoutInMinutes]
  * The idle timeout of the public IP address.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.resourceGuid]
  * The resource GUID property of the public IP resource.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.provisioningState]
  * The provisioning state of the PublicIP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.etag] A
  * unique read-only string that changes whenever the resource is updated.
- * @member {array}
+ * @property {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.zones] A
  * list of availability zones denoting the IP allocated for the resource needs
  * to come from.
- * @member {object}
+ * @property {object}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix] The
  * reference of the Public IP Prefix resource.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix.id] Resource
  * ID.
- * @member {string}
+ * @property {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.provisioningState] Gets the
  * provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [destinationLoadBalancerFrontEndIPConfiguration.name] The
+ * @property {string} [destinationLoadBalancerFrontEndIPConfiguration.name] The
  * name of the resource that is unique within a resource group. This name can
  * be used to access the resource.
- * @member {string} [destinationLoadBalancerFrontEndIPConfiguration.etag] A
+ * @property {string} [destinationLoadBalancerFrontEndIPConfiguration.etag] A
  * unique read-only string that changes whenever the resource is updated.
- * @member {array} [destinationLoadBalancerFrontEndIPConfiguration.zones] A
+ * @property {array} [destinationLoadBalancerFrontEndIPConfiguration.zones] A
  * list of availability zones denoting the IP allocated for the resource needs
  * to come from.
- * @member {number} [destinationPort] The VXLAN destination port that will
+ * @property {number} [destinationPort] The VXLAN destination port that will
  * receive the tapped traffic.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface VirtualNetworkTap extends Resource {
   readonly networkInterfaceTapConfigurations?: NetworkInterfaceTapConfiguration[];
@@ -2756,19 +2776,19 @@ export interface VirtualNetworkTap extends Resource {
  * @constructor
  * Pool of backend IP addresses.
  *
- * @member {array} [backendIPConfigurations] Gets collection of references to
+ * @property {array} [backendIPConfigurations] Gets collection of references to
  * IP addresses defined in network interfaces.
- * @member {array} [loadBalancingRules] Gets load balancing rules that use this
- * backend address pool.
- * @member {object} [outboundRule] Gets outbound rules that use this backend
+ * @property {array} [loadBalancingRules] Gets load balancing rules that use
+ * this backend address pool.
+ * @property {object} [outboundRule] Gets outbound rules that use this backend
  * address pool.
- * @member {string} [outboundRule.id] Resource ID.
- * @member {string} [provisioningState] Get provisioning state of the public IP
- * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @property {string} [outboundRule.id] Resource ID.
+ * @property {string} [provisioningState] Get provisioning state of the public
+ * IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @property {string} [name] Gets name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface BackendAddressPool extends SubResource {
   readonly backendIPConfigurations?: NetworkInterfaceIPConfiguration[];
@@ -2785,307 +2805,310 @@ export interface BackendAddressPool extends SubResource {
  * @constructor
  * Inbound NAT rule of the load balancer.
  *
- * @member {object} [frontendIPConfiguration] A reference to frontend IP
+ * @property {object} [frontendIPConfiguration] A reference to frontend IP
  * addresses.
- * @member {string} [frontendIPConfiguration.id] Resource ID.
- * @member {object} [backendIPConfiguration] A reference to a private IP
+ * @property {string} [frontendIPConfiguration.id] Resource ID.
+ * @property {object} [backendIPConfiguration] A reference to a private IP
  * address defined on a network interface of a VM. Traffic sent to the frontend
  * port of each of the frontend IP configurations is forwarded to the backend
  * IP.
- * @member {array} [backendIPConfiguration.virtualNetworkTaps] The reference to
- * Virtual Network Taps.
- * @member {array}
+ * @property {array} [backendIPConfiguration.virtualNetworkTaps] The reference
+ * to Virtual Network Taps.
+ * @property {array}
  * [backendIPConfiguration.applicationGatewayBackendAddressPools] The reference
  * of ApplicationGatewayBackendAddressPool resource.
- * @member {array} [backendIPConfiguration.loadBalancerBackendAddressPools] The
- * reference of LoadBalancerBackendAddressPool resource.
- * @member {array} [backendIPConfiguration.loadBalancerInboundNatRules] A list
- * of references of LoadBalancerInboundNatRules.
- * @member {string} [backendIPConfiguration.privateIPAddress] Private IP
+ * @property {array} [backendIPConfiguration.loadBalancerBackendAddressPools]
+ * The reference of LoadBalancerBackendAddressPool resource.
+ * @property {array} [backendIPConfiguration.loadBalancerInboundNatRules] A
+ * list of references of LoadBalancerInboundNatRules.
+ * @property {string} [backendIPConfiguration.privateIPAddress] Private IP
  * address of the IP configuration.
- * @member {string} [backendIPConfiguration.privateIPAllocationMethod] Defines
- * how a private IP address is assigned. Possible values are: 'Static' and
- * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
- * @member {string} [backendIPConfiguration.privateIPAddressVersion] Available
- * from Api-Version 2016-03-30 onwards, it represents whether the specific
- * ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible values
- * are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4', 'IPv6'
- * @member {object} [backendIPConfiguration.subnet] Subnet bound to the IP
+ * @property {string} [backendIPConfiguration.privateIPAllocationMethod]
+ * Defines how a private IP address is assigned. Possible values are: 'Static'
+ * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+ * @property {string} [backendIPConfiguration.privateIPAddressVersion]
+ * Available from Api-Version 2016-03-30 onwards, it represents whether the
+ * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
+ * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
+ * 'IPv6'
+ * @property {object} [backendIPConfiguration.subnet] Subnet bound to the IP
  * configuration.
- * @member {string} [backendIPConfiguration.subnet.addressPrefix] The address
+ * @property {string} [backendIPConfiguration.subnet.addressPrefix] The address
  * prefix for the subnet.
- * @member {array} [backendIPConfiguration.subnet.addressPrefixes] List of
+ * @property {array} [backendIPConfiguration.subnet.addressPrefixes] List of
  * address prefixes for the subnet.
- * @member {object} [backendIPConfiguration.subnet.networkSecurityGroup] The
+ * @property {object} [backendIPConfiguration.subnet.networkSecurityGroup] The
  * reference of the NetworkSecurityGroup resource.
- * @member {array}
+ * @property {array}
  * [backendIPConfiguration.subnet.networkSecurityGroup.securityRules] A
  * collection of security rules of the network security group.
- * @member {array}
+ * @property {array}
  * [backendIPConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
  * The default security rules of network security group.
- * @member {array}
+ * @property {array}
  * [backendIPConfiguration.subnet.networkSecurityGroup.networkInterfaces] A
  * collection of references to network interfaces.
- * @member {array} [backendIPConfiguration.subnet.networkSecurityGroup.subnets]
- * A collection of references to subnets.
- * @member {string}
+ * @property {array}
+ * [backendIPConfiguration.subnet.networkSecurityGroup.subnets] A collection of
+ * references to subnets.
+ * @property {string}
  * [backendIPConfiguration.subnet.networkSecurityGroup.resourceGuid] The
  * resource GUID property of the network security group resource.
- * @member {string}
+ * @property {string}
  * [backendIPConfiguration.subnet.networkSecurityGroup.provisioningState] The
  * provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [backendIPConfiguration.subnet.networkSecurityGroup.etag] A
- * unique read-only string that changes whenever the resource is updated.
- * @member {object} [backendIPConfiguration.subnet.routeTable] The reference of
- * the RouteTable resource.
- * @member {array} [backendIPConfiguration.subnet.routeTable.routes] Collection
- * of routes contained within a route table.
- * @member {array} [backendIPConfiguration.subnet.routeTable.subnets] A
+ * @property {string} [backendIPConfiguration.subnet.networkSecurityGroup.etag]
+ * A unique read-only string that changes whenever the resource is updated.
+ * @property {object} [backendIPConfiguration.subnet.routeTable] The reference
+ * of the RouteTable resource.
+ * @property {array} [backendIPConfiguration.subnet.routeTable.routes]
+ * Collection of routes contained within a route table.
+ * @property {array} [backendIPConfiguration.subnet.routeTable.subnets] A
  * collection of references to subnets.
- * @member {boolean}
+ * @property {boolean}
  * [backendIPConfiguration.subnet.routeTable.disableBgpRoutePropagation] Gets
  * or sets whether to disable the routes learned by BGP on that route table.
  * True means disable.
- * @member {string}
+ * @property {string}
  * [backendIPConfiguration.subnet.routeTable.provisioningState] The
  * provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [backendIPConfiguration.subnet.routeTable.etag] Gets a
+ * @property {string} [backendIPConfiguration.subnet.routeTable.etag] Gets a
  * unique read-only string that changes whenever the resource is updated.
- * @member {array} [backendIPConfiguration.subnet.serviceEndpoints] An array of
- * service endpoints.
- * @member {array} [backendIPConfiguration.subnet.serviceEndpointPolicies] An
+ * @property {array} [backendIPConfiguration.subnet.serviceEndpoints] An array
+ * of service endpoints.
+ * @property {array} [backendIPConfiguration.subnet.serviceEndpointPolicies] An
  * array of service endpoint policies.
- * @member {array} [backendIPConfiguration.subnet.interfaceEndpoints] An array
- * of references to interface endpoints
- * @member {array} [backendIPConfiguration.subnet.ipConfigurations] Gets an
+ * @property {array} [backendIPConfiguration.subnet.interfaceEndpoints] An
+ * array of references to interface endpoints
+ * @property {array} [backendIPConfiguration.subnet.ipConfigurations] Gets an
  * array of references to the network interface IP configurations using subnet.
- * @member {array} [backendIPConfiguration.subnet.ipConfigurationProfiles]
+ * @property {array} [backendIPConfiguration.subnet.ipConfigurationProfiles]
  * Array of IP configuration profiles which reference this subnet.
- * @member {array} [backendIPConfiguration.subnet.resourceNavigationLinks] Gets
- * an array of references to the external resources using subnet.
- * @member {array} [backendIPConfiguration.subnet.serviceAssociationLinks] Gets
- * an array of references to services injecting into this subnet.
- * @member {array} [backendIPConfiguration.subnet.delegations] Gets an array of
- * references to the delegations on the subnet.
- * @member {string} [backendIPConfiguration.subnet.purpose] A read-only string
- * identifying the intention of use for this subnet based on delegations and
- * other user-defined properties.
- * @member {string} [backendIPConfiguration.subnet.provisioningState] The
+ * @property {array} [backendIPConfiguration.subnet.resourceNavigationLinks]
+ * Gets an array of references to the external resources using subnet.
+ * @property {array} [backendIPConfiguration.subnet.serviceAssociationLinks]
+ * Gets an array of references to services injecting into this subnet.
+ * @property {array} [backendIPConfiguration.subnet.delegations] Gets an array
+ * of references to the delegations on the subnet.
+ * @property {string} [backendIPConfiguration.subnet.purpose] A read-only
+ * string identifying the intention of use for this subnet based on delegations
+ * and other user-defined properties.
+ * @property {string} [backendIPConfiguration.subnet.provisioningState] The
  * provisioning state of the resource.
- * @member {string} [backendIPConfiguration.subnet.name] The name of the
+ * @property {string} [backendIPConfiguration.subnet.name] The name of the
  * resource that is unique within a resource group. This name can be used to
  * access the resource.
- * @member {string} [backendIPConfiguration.subnet.etag] A unique read-only
+ * @property {string} [backendIPConfiguration.subnet.etag] A unique read-only
  * string that changes whenever the resource is updated.
- * @member {boolean} [backendIPConfiguration.primary] Gets whether this is a
+ * @property {boolean} [backendIPConfiguration.primary] Gets whether this is a
  * primary customer address on the network interface.
- * @member {object} [backendIPConfiguration.publicIPAddress] Public IP address
- * bound to the IP configuration.
- * @member {object} [backendIPConfiguration.publicIPAddress.sku] The public IP
- * address SKU.
- * @member {string} [backendIPConfiguration.publicIPAddress.sku.name] Name of a
- * public IP address SKU. Possible values include: 'Basic', 'Standard'
- * @member {string}
+ * @property {object} [backendIPConfiguration.publicIPAddress] Public IP
+ * address bound to the IP configuration.
+ * @property {object} [backendIPConfiguration.publicIPAddress.sku] The public
+ * IP address SKU.
+ * @property {string} [backendIPConfiguration.publicIPAddress.sku.name] Name of
+ * a public IP address SKU. Possible values include: 'Basic', 'Standard'
+ * @property {string}
  * [backendIPConfiguration.publicIPAddress.publicIPAllocationMethod] The public
  * IP allocation method. Possible values are: 'Static' and 'Dynamic'. Possible
  * values include: 'Static', 'Dynamic'
- * @member {string}
+ * @property {string}
  * [backendIPConfiguration.publicIPAddress.publicIPAddressVersion] The public
  * IP address version. Possible values are: 'IPv4' and 'IPv6'. Possible values
  * include: 'IPv4', 'IPv6'
- * @member {object} [backendIPConfiguration.publicIPAddress.ipConfiguration]
+ * @property {object} [backendIPConfiguration.publicIPAddress.ipConfiguration]
  * The IP configuration associated with the public IP address.
- * @member {string}
+ * @property {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.privateIPAddress]
  * The private IP address of the IP configuration.
- * @member {string}
+ * @property {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.privateIPAllocationMethod]
  * The private IP allocation method. Possible values are 'Static' and
  * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
- * @member {object}
+ * @property {object}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet] The
  * reference of the subnet resource.
- * @member {string}
+ * @property {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefix]
  * The address prefix for the subnet.
- * @member {array}
+ * @property {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefixes]
  * List of  address prefixes for the subnet.
- * @member {object}
+ * @property {object}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup]
  * The reference of the NetworkSecurityGroup resource.
- * @member {array}
+ * @property {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.securityRules]
  * A collection of security rules of the network security group.
- * @member {array}
+ * @property {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
  * The default security rules of network security group.
- * @member {array}
+ * @property {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
  * A collection of references to network interfaces.
- * @member {array}
+ * @property {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.subnets]
  * A collection of references to subnets.
- * @member {string}
+ * @property {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.resourceGuid]
  * The resource GUID property of the network security group resource.
- * @member {string}
+ * @property {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
  * The provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable]
  * The reference of the RouteTable resource.
- * @member {array}
+ * @property {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.routes]
  * Collection of routes contained within a route table.
- * @member {array}
+ * @property {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.subnets]
  * A collection of references to subnets.
- * @member {boolean}
+ * @property {boolean}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.disableBgpRoutePropagation]
  * Gets or sets whether to disable the routes learned by BGP on that route
  * table. True means disable.
- * @member {string}
+ * @property {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState]
  * The provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
- * @member {array}
+ * @property {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints]
  * An array of service endpoints.
- * @member {array}
+ * @property {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
  * An array of service endpoint policies.
- * @member {array}
+ * @property {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.interfaceEndpoints]
  * An array of references to interface endpoints
- * @member {array}
+ * @property {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
- * @member {array}
+ * @property {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurationProfiles]
  * Array of IP configuration profiles which reference this subnet.
- * @member {array}
+ * @property {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.resourceNavigationLinks]
  * Gets an array of references to the external resources using subnet.
- * @member {array}
+ * @property {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceAssociationLinks]
  * Gets an array of references to services injecting into this subnet.
- * @member {array}
+ * @property {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.delegations]
  * Gets an array of references to the delegations on the subnet.
- * @member {string}
+ * @property {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.purpose] A
  * read-only string identifying the intention of use for this subnet based on
  * delegations and other user-defined properties.
- * @member {string}
+ * @property {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
- * @member {string}
+ * @property {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.name] The
  * name of the resource that is unique within a resource group. This name can
  * be used to access the resource.
- * @member {string}
+ * @property {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.etag] A
  * unique read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.publicIPAddress] The
  * reference of the public IP resource.
- * @member {string}
+ * @property {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.provisioningState]
  * Gets the provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.name] The name of
  * the resource that is unique within a resource group. This name can be used
  * to access the resource.
- * @member {string}
+ * @property {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.etag] A unique
  * read-only string that changes whenever the resource is updated.
- * @member {object} [backendIPConfiguration.publicIPAddress.dnsSettings] The
+ * @property {object} [backendIPConfiguration.publicIPAddress.dnsSettings] The
  * FQDN of the DNS record associated with the public IP address.
- * @member {string}
+ * @property {string}
  * [backendIPConfiguration.publicIPAddress.dnsSettings.domainNameLabel] Gets or
  * sets the Domain name label.The concatenation of the domain name label and
  * the regionalized DNS zone make up the fully qualified domain name associated
  * with the public IP address. If a domain name label is specified, an A DNS
  * record is created for the public IP in the Microsoft Azure DNS system.
- * @member {string} [backendIPConfiguration.publicIPAddress.dnsSettings.fqdn]
+ * @property {string} [backendIPConfiguration.publicIPAddress.dnsSettings.fqdn]
  * Gets the FQDN, Fully qualified domain name of the A DNS record associated
  * with the public IP. This is the concatenation of the domainNameLabel and the
  * regionalized DNS zone.
- * @member {string}
+ * @property {string}
  * [backendIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn] Gets or
  * Sets the Reverse FQDN. A user-visible, fully qualified domain name that
  * resolves to this public IP address. If the reverseFqdn is specified, then a
  * PTR DNS record is created pointing from the IP address in the in-addr.arpa
  * domain to the reverse FQDN.
- * @member {array} [backendIPConfiguration.publicIPAddress.ipTags] The list of
- * tags associated with the public IP address.
- * @member {string} [backendIPConfiguration.publicIPAddress.ipAddress] The IP
+ * @property {array} [backendIPConfiguration.publicIPAddress.ipTags] The list
+ * of tags associated with the public IP address.
+ * @property {string} [backendIPConfiguration.publicIPAddress.ipAddress] The IP
  * address associated with the public IP address resource.
- * @member {object} [backendIPConfiguration.publicIPAddress.publicIPPrefix] The
- * Public IP Prefix this Public IP Address should be allocated from.
- * @member {string} [backendIPConfiguration.publicIPAddress.publicIPPrefix.id]
- * Resource ID.
- * @member {number}
+ * @property {object} [backendIPConfiguration.publicIPAddress.publicIPPrefix]
+ * The Public IP Prefix this Public IP Address should be allocated from.
+ * @property {string}
+ * [backendIPConfiguration.publicIPAddress.publicIPPrefix.id] Resource ID.
+ * @property {number}
  * [backendIPConfiguration.publicIPAddress.idleTimeoutInMinutes] The idle
  * timeout of the public IP address.
- * @member {string} [backendIPConfiguration.publicIPAddress.resourceGuid] The
+ * @property {string} [backendIPConfiguration.publicIPAddress.resourceGuid] The
  * resource GUID property of the public IP resource.
- * @member {string} [backendIPConfiguration.publicIPAddress.provisioningState]
- * The provisioning state of the PublicIP resource. Possible values are:
- * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [backendIPConfiguration.publicIPAddress.etag] A unique
+ * @property {string}
+ * [backendIPConfiguration.publicIPAddress.provisioningState] The provisioning
+ * state of the PublicIP resource. Possible values are: 'Updating', 'Deleting',
+ * and 'Failed'.
+ * @property {string} [backendIPConfiguration.publicIPAddress.etag] A unique
  * read-only string that changes whenever the resource is updated.
- * @member {array} [backendIPConfiguration.publicIPAddress.zones] A list of
+ * @property {array} [backendIPConfiguration.publicIPAddress.zones] A list of
  * availability zones denoting the IP allocated for the resource needs to come
  * from.
- * @member {array} [backendIPConfiguration.applicationSecurityGroups]
+ * @property {array} [backendIPConfiguration.applicationSecurityGroups]
  * Application security groups in which the IP configuration is included.
- * @member {string} [backendIPConfiguration.provisioningState] The provisioning
- * state of the network interface IP configuration. Possible values are:
- * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [backendIPConfiguration.name] The name of the resource that
- * is unique within a resource group. This name can be used to access the
+ * @property {string} [backendIPConfiguration.provisioningState] The
+ * provisioning state of the network interface IP configuration. Possible
+ * values are: 'Updating', 'Deleting', and 'Failed'.
+ * @property {string} [backendIPConfiguration.name] The name of the resource
+ * that is unique within a resource group. This name can be used to access the
  * resource.
- * @member {string} [backendIPConfiguration.etag] A unique read-only string
+ * @property {string} [backendIPConfiguration.etag] A unique read-only string
  * that changes whenever the resource is updated.
- * @member {string} [protocol] Possible values include: 'Udp', 'Tcp', 'All'
- * @member {number} [frontendPort] The port for the external endpoint. Port
+ * @property {string} [protocol] Possible values include: 'Udp', 'Tcp', 'All'
+ * @property {number} [frontendPort] The port for the external endpoint. Port
  * numbers for each rule must be unique within the Load Balancer. Acceptable
  * values range from 1 to 65534.
- * @member {number} [backendPort] The port used for the internal endpoint.
+ * @property {number} [backendPort] The port used for the internal endpoint.
  * Acceptable values range from 1 to 65535.
- * @member {number} [idleTimeoutInMinutes] The timeout for the TCP idle
+ * @property {number} [idleTimeoutInMinutes] The timeout for the TCP idle
  * connection. The value can be set between 4 and 30 minutes. The default value
  * is 4 minutes. This element is only used when the protocol is set to TCP.
- * @member {boolean} [enableFloatingIP] Configures a virtual machine's endpoint
- * for the floating IP capability required to configure a SQL AlwaysOn
+ * @property {boolean} [enableFloatingIP] Configures a virtual machine's
+ * endpoint for the floating IP capability required to configure a SQL AlwaysOn
  * Availability Group. This setting is required when using the SQL AlwaysOn
  * Availability Groups in SQL server. This setting can't be changed after you
  * create the endpoint.
- * @member {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
+ * @property {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
  * flow idle timeout or unexpected connection termination. This element is only
  * used when the protocol is set to TCP.
- * @member {string} [provisioningState] Gets the provisioning state of the
+ * @property {string} [provisioningState] Gets the provisioning state of the
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @property {string} [name] Gets name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface InboundNatRule extends SubResource {
   frontendIPConfiguration?: SubResource;
@@ -3107,233 +3130,238 @@ export interface InboundNatRule extends SubResource {
  * @constructor
  * IPConfiguration in a network interface.
  *
- * @member {array} [virtualNetworkTaps] The reference to Virtual Network Taps.
- * @member {array} [applicationGatewayBackendAddressPools] The reference of
+ * @property {array} [virtualNetworkTaps] The reference to Virtual Network
+ * Taps.
+ * @property {array} [applicationGatewayBackendAddressPools] The reference of
  * ApplicationGatewayBackendAddressPool resource.
- * @member {array} [loadBalancerBackendAddressPools] The reference of
+ * @property {array} [loadBalancerBackendAddressPools] The reference of
  * LoadBalancerBackendAddressPool resource.
- * @member {array} [loadBalancerInboundNatRules] A list of references of
+ * @property {array} [loadBalancerInboundNatRules] A list of references of
  * LoadBalancerInboundNatRules.
- * @member {string} [privateIPAddress] Private IP address of the IP
+ * @property {string} [privateIPAddress] Private IP address of the IP
  * configuration.
- * @member {string} [privateIPAllocationMethod] Defines how a private IP
+ * @property {string} [privateIPAllocationMethod] Defines how a private IP
  * address is assigned. Possible values are: 'Static' and 'Dynamic'. Possible
  * values include: 'Static', 'Dynamic'
- * @member {string} [privateIPAddressVersion] Available from Api-Version
+ * @property {string} [privateIPAddressVersion] Available from Api-Version
  * 2016-03-30 onwards, it represents whether the specific ipconfiguration is
  * IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and
  * 'IPv6'. Possible values include: 'IPv4', 'IPv6'
- * @member {object} [subnet] Subnet bound to the IP configuration.
- * @member {string} [subnet.addressPrefix] The address prefix for the subnet.
- * @member {array} [subnet.addressPrefixes] List of  address prefixes for the
+ * @property {object} [subnet] Subnet bound to the IP configuration.
+ * @property {string} [subnet.addressPrefix] The address prefix for the subnet.
+ * @property {array} [subnet.addressPrefixes] List of  address prefixes for the
  * subnet.
- * @member {object} [subnet.networkSecurityGroup] The reference of the
+ * @property {object} [subnet.networkSecurityGroup] The reference of the
  * NetworkSecurityGroup resource.
- * @member {array} [subnet.networkSecurityGroup.securityRules] A collection of
- * security rules of the network security group.
- * @member {array} [subnet.networkSecurityGroup.defaultSecurityRules] The
+ * @property {array} [subnet.networkSecurityGroup.securityRules] A collection
+ * of security rules of the network security group.
+ * @property {array} [subnet.networkSecurityGroup.defaultSecurityRules] The
  * default security rules of network security group.
- * @member {array} [subnet.networkSecurityGroup.networkInterfaces] A collection
- * of references to network interfaces.
- * @member {array} [subnet.networkSecurityGroup.subnets] A collection of
+ * @property {array} [subnet.networkSecurityGroup.networkInterfaces] A
+ * collection of references to network interfaces.
+ * @property {array} [subnet.networkSecurityGroup.subnets] A collection of
  * references to subnets.
- * @member {string} [subnet.networkSecurityGroup.resourceGuid] The resource
+ * @property {string} [subnet.networkSecurityGroup.resourceGuid] The resource
  * GUID property of the network security group resource.
- * @member {string} [subnet.networkSecurityGroup.provisioningState] The
+ * @property {string} [subnet.networkSecurityGroup.provisioningState] The
  * provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [subnet.networkSecurityGroup.etag] A unique read-only
+ * @property {string} [subnet.networkSecurityGroup.etag] A unique read-only
  * string that changes whenever the resource is updated.
- * @member {object} [subnet.routeTable] The reference of the RouteTable
+ * @property {object} [subnet.routeTable] The reference of the RouteTable
  * resource.
- * @member {array} [subnet.routeTable.routes] Collection of routes contained
+ * @property {array} [subnet.routeTable.routes] Collection of routes contained
  * within a route table.
- * @member {array} [subnet.routeTable.subnets] A collection of references to
+ * @property {array} [subnet.routeTable.subnets] A collection of references to
  * subnets.
- * @member {boolean} [subnet.routeTable.disableBgpRoutePropagation] Gets or
+ * @property {boolean} [subnet.routeTable.disableBgpRoutePropagation] Gets or
  * sets whether to disable the routes learned by BGP on that route table. True
  * means disable.
- * @member {string} [subnet.routeTable.provisioningState] The provisioning
+ * @property {string} [subnet.routeTable.provisioningState] The provisioning
  * state of the resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
+ * @property {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
- * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
- * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * @property {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @property {array} [subnet.serviceEndpointPolicies] An array of service
  * endpoint policies.
- * @member {array} [subnet.interfaceEndpoints] An array of references to
+ * @property {array} [subnet.interfaceEndpoints] An array of references to
  * interface endpoints
- * @member {array} [subnet.ipConfigurations] Gets an array of references to the
- * network interface IP configurations using subnet.
- * @member {array} [subnet.ipConfigurationProfiles] Array of IP configuration
+ * @property {array} [subnet.ipConfigurations] Gets an array of references to
+ * the network interface IP configurations using subnet.
+ * @property {array} [subnet.ipConfigurationProfiles] Array of IP configuration
  * profiles which reference this subnet.
- * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
- * to the external resources using subnet.
- * @member {array} [subnet.serviceAssociationLinks] Gets an array of references
- * to services injecting into this subnet.
- * @member {array} [subnet.delegations] Gets an array of references to the
+ * @property {array} [subnet.resourceNavigationLinks] Gets an array of
+ * references to the external resources using subnet.
+ * @property {array} [subnet.serviceAssociationLinks] Gets an array of
+ * references to services injecting into this subnet.
+ * @property {array} [subnet.delegations] Gets an array of references to the
  * delegations on the subnet.
- * @member {string} [subnet.purpose] A read-only string identifying the
+ * @property {string} [subnet.purpose] A read-only string identifying the
  * intention of use for this subnet based on delegations and other user-defined
  * properties.
- * @member {string} [subnet.provisioningState] The provisioning state of the
+ * @property {string} [subnet.provisioningState] The provisioning state of the
  * resource.
- * @member {string} [subnet.name] The name of the resource that is unique
+ * @property {string} [subnet.name] The name of the resource that is unique
  * within a resource group. This name can be used to access the resource.
- * @member {string} [subnet.etag] A unique read-only string that changes
+ * @property {string} [subnet.etag] A unique read-only string that changes
  * whenever the resource is updated.
- * @member {boolean} [primary] Gets whether this is a primary customer address
- * on the network interface.
- * @member {object} [publicIPAddress] Public IP address bound to the IP
+ * @property {boolean} [primary] Gets whether this is a primary customer
+ * address on the network interface.
+ * @property {object} [publicIPAddress] Public IP address bound to the IP
  * configuration.
- * @member {object} [publicIPAddress.sku] The public IP address SKU.
- * @member {string} [publicIPAddress.sku.name] Name of a public IP address SKU.
- * Possible values include: 'Basic', 'Standard'
- * @member {string} [publicIPAddress.publicIPAllocationMethod] The public IP
+ * @property {object} [publicIPAddress.sku] The public IP address SKU.
+ * @property {string} [publicIPAddress.sku.name] Name of a public IP address
+ * SKU. Possible values include: 'Basic', 'Standard'
+ * @property {string} [publicIPAddress.publicIPAllocationMethod] The public IP
  * allocation method. Possible values are: 'Static' and 'Dynamic'. Possible
  * values include: 'Static', 'Dynamic'
- * @member {string} [publicIPAddress.publicIPAddressVersion] The public IP
+ * @property {string} [publicIPAddress.publicIPAddressVersion] The public IP
  * address version. Possible values are: 'IPv4' and 'IPv6'. Possible values
  * include: 'IPv4', 'IPv6'
- * @member {object} [publicIPAddress.ipConfiguration] The IP configuration
+ * @property {object} [publicIPAddress.ipConfiguration] The IP configuration
  * associated with the public IP address.
- * @member {string} [publicIPAddress.ipConfiguration.privateIPAddress] The
+ * @property {string} [publicIPAddress.ipConfiguration.privateIPAddress] The
  * private IP address of the IP configuration.
- * @member {string} [publicIPAddress.ipConfiguration.privateIPAllocationMethod]
- * The private IP allocation method. Possible values are 'Static' and
- * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
- * @member {object} [publicIPAddress.ipConfiguration.subnet] The reference of
+ * @property {string}
+ * [publicIPAddress.ipConfiguration.privateIPAllocationMethod] The private IP
+ * allocation method. Possible values are 'Static' and 'Dynamic'. Possible
+ * values include: 'Static', 'Dynamic'
+ * @property {object} [publicIPAddress.ipConfiguration.subnet] The reference of
  * the subnet resource.
- * @member {string} [publicIPAddress.ipConfiguration.subnet.addressPrefix] The
- * address prefix for the subnet.
- * @member {array} [publicIPAddress.ipConfiguration.subnet.addressPrefixes]
+ * @property {string} [publicIPAddress.ipConfiguration.subnet.addressPrefix]
+ * The address prefix for the subnet.
+ * @property {array} [publicIPAddress.ipConfiguration.subnet.addressPrefixes]
  * List of  address prefixes for the subnet.
- * @member {object}
+ * @property {object}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup] The reference
  * of the NetworkSecurityGroup resource.
- * @member {array}
+ * @property {array}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.securityRules]
  * A collection of security rules of the network security group.
- * @member {array}
+ * @property {array}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
  * The default security rules of network security group.
- * @member {array}
+ * @property {array}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
  * A collection of references to network interfaces.
- * @member {array}
+ * @property {array}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.subnets] A
  * collection of references to subnets.
- * @member {string}
+ * @property {string}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.resourceGuid]
  * The resource GUID property of the network security group resource.
- * @member {string}
+ * @property {string}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
  * The provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.etag] A unique
  * read-only string that changes whenever the resource is updated.
- * @member {object} [publicIPAddress.ipConfiguration.subnet.routeTable] The
+ * @property {object} [publicIPAddress.ipConfiguration.subnet.routeTable] The
  * reference of the RouteTable resource.
- * @member {array} [publicIPAddress.ipConfiguration.subnet.routeTable.routes]
+ * @property {array} [publicIPAddress.ipConfiguration.subnet.routeTable.routes]
  * Collection of routes contained within a route table.
- * @member {array} [publicIPAddress.ipConfiguration.subnet.routeTable.subnets]
- * A collection of references to subnets.
- * @member {boolean}
+ * @property {array}
+ * [publicIPAddress.ipConfiguration.subnet.routeTable.subnets] A collection of
+ * references to subnets.
+ * @property {boolean}
  * [publicIPAddress.ipConfiguration.subnet.routeTable.disableBgpRoutePropagation]
  * Gets or sets whether to disable the routes learned by BGP on that route
  * table. True means disable.
- * @member {string}
+ * @property {string}
  * [publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState] The
  * provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [publicIPAddress.ipConfiguration.subnet.routeTable.etag]
+ * @property {string} [publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
- * @member {array} [publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
- * array of service endpoints.
- * @member {array}
+ * @property {array} [publicIPAddress.ipConfiguration.subnet.serviceEndpoints]
+ * An array of service endpoints.
+ * @property {array}
  * [publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies] An array of
  * service endpoint policies.
- * @member {array} [publicIPAddress.ipConfiguration.subnet.interfaceEndpoints]
- * An array of references to interface endpoints
- * @member {array} [publicIPAddress.ipConfiguration.subnet.ipConfigurations]
+ * @property {array}
+ * [publicIPAddress.ipConfiguration.subnet.interfaceEndpoints] An array of
+ * references to interface endpoints
+ * @property {array} [publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
- * @member {array}
+ * @property {array}
  * [publicIPAddress.ipConfiguration.subnet.ipConfigurationProfiles] Array of IP
  * configuration profiles which reference this subnet.
- * @member {array}
+ * @property {array}
  * [publicIPAddress.ipConfiguration.subnet.resourceNavigationLinks] Gets an
  * array of references to the external resources using subnet.
- * @member {array}
+ * @property {array}
  * [publicIPAddress.ipConfiguration.subnet.serviceAssociationLinks] Gets an
  * array of references to services injecting into this subnet.
- * @member {array} [publicIPAddress.ipConfiguration.subnet.delegations] Gets an
- * array of references to the delegations on the subnet.
- * @member {string} [publicIPAddress.ipConfiguration.subnet.purpose] A
+ * @property {array} [publicIPAddress.ipConfiguration.subnet.delegations] Gets
+ * an array of references to the delegations on the subnet.
+ * @property {string} [publicIPAddress.ipConfiguration.subnet.purpose] A
  * read-only string identifying the intention of use for this subnet based on
  * delegations and other user-defined properties.
- * @member {string} [publicIPAddress.ipConfiguration.subnet.provisioningState]
- * The provisioning state of the resource.
- * @member {string} [publicIPAddress.ipConfiguration.subnet.name] The name of
+ * @property {string}
+ * [publicIPAddress.ipConfiguration.subnet.provisioningState] The provisioning
+ * state of the resource.
+ * @property {string} [publicIPAddress.ipConfiguration.subnet.name] The name of
  * the resource that is unique within a resource group. This name can be used
  * to access the resource.
- * @member {string} [publicIPAddress.ipConfiguration.subnet.etag] A unique
+ * @property {string} [publicIPAddress.ipConfiguration.subnet.etag] A unique
  * read-only string that changes whenever the resource is updated.
- * @member {object} [publicIPAddress.ipConfiguration.publicIPAddress] The
+ * @property {object} [publicIPAddress.ipConfiguration.publicIPAddress] The
  * reference of the public IP resource.
- * @member {string} [publicIPAddress.ipConfiguration.provisioningState] Gets
+ * @property {string} [publicIPAddress.ipConfiguration.provisioningState] Gets
  * the provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [publicIPAddress.ipConfiguration.name] The name of the
+ * @property {string} [publicIPAddress.ipConfiguration.name] The name of the
  * resource that is unique within a resource group. This name can be used to
  * access the resource.
- * @member {string} [publicIPAddress.ipConfiguration.etag] A unique read-only
+ * @property {string} [publicIPAddress.ipConfiguration.etag] A unique read-only
  * string that changes whenever the resource is updated.
- * @member {object} [publicIPAddress.dnsSettings] The FQDN of the DNS record
+ * @property {object} [publicIPAddress.dnsSettings] The FQDN of the DNS record
  * associated with the public IP address.
- * @member {string} [publicIPAddress.dnsSettings.domainNameLabel] Gets or sets
- * the Domain name label.The concatenation of the domain name label and the
- * regionalized DNS zone make up the fully qualified domain name associated
+ * @property {string} [publicIPAddress.dnsSettings.domainNameLabel] Gets or
+ * sets the Domain name label.The concatenation of the domain name label and
+ * the regionalized DNS zone make up the fully qualified domain name associated
  * with the public IP address. If a domain name label is specified, an A DNS
  * record is created for the public IP in the Microsoft Azure DNS system.
- * @member {string} [publicIPAddress.dnsSettings.fqdn] Gets the FQDN, Fully
+ * @property {string} [publicIPAddress.dnsSettings.fqdn] Gets the FQDN, Fully
  * qualified domain name of the A DNS record associated with the public IP.
  * This is the concatenation of the domainNameLabel and the regionalized DNS
  * zone.
- * @member {string} [publicIPAddress.dnsSettings.reverseFqdn] Gets or Sets the
- * Reverse FQDN. A user-visible, fully qualified domain name that resolves to
- * this public IP address. If the reverseFqdn is specified, then a PTR DNS
+ * @property {string} [publicIPAddress.dnsSettings.reverseFqdn] Gets or Sets
+ * the Reverse FQDN. A user-visible, fully qualified domain name that resolves
+ * to this public IP address. If the reverseFqdn is specified, then a PTR DNS
  * record is created pointing from the IP address in the in-addr.arpa domain to
  * the reverse FQDN.
- * @member {array} [publicIPAddress.ipTags] The list of tags associated with
+ * @property {array} [publicIPAddress.ipTags] The list of tags associated with
  * the public IP address.
- * @member {string} [publicIPAddress.ipAddress] The IP address associated with
- * the public IP address resource.
- * @member {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
- * Public IP Address should be allocated from.
- * @member {string} [publicIPAddress.publicIPPrefix.id] Resource ID.
- * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
- * the public IP address.
- * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
+ * @property {string} [publicIPAddress.ipAddress] The IP address associated
+ * with the public IP address resource.
+ * @property {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix
+ * this Public IP Address should be allocated from.
+ * @property {string} [publicIPAddress.publicIPPrefix.id] Resource ID.
+ * @property {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout
+ * of the public IP address.
+ * @property {string} [publicIPAddress.resourceGuid] The resource GUID property
  * of the public IP resource.
- * @member {string} [publicIPAddress.provisioningState] The provisioning state
- * of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and
- * 'Failed'.
- * @member {string} [publicIPAddress.etag] A unique read-only string that
+ * @property {string} [publicIPAddress.provisioningState] The provisioning
+ * state of the PublicIP resource. Possible values are: 'Updating', 'Deleting',
+ * and 'Failed'.
+ * @property {string} [publicIPAddress.etag] A unique read-only string that
  * changes whenever the resource is updated.
- * @member {array} [publicIPAddress.zones] A list of availability zones
+ * @property {array} [publicIPAddress.zones] A list of availability zones
  * denoting the IP allocated for the resource needs to come from.
- * @member {array} [applicationSecurityGroups] Application security groups in
+ * @property {array} [applicationSecurityGroups] Application security groups in
  * which the IP configuration is included.
- * @member {string} [provisioningState] The provisioning state of the network
+ * @property {string} [provisioningState] The provisioning state of the network
  * interface IP configuration. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface NetworkInterfaceIPConfiguration extends SubResource {
   virtualNetworkTaps?: VirtualNetworkTap[];
@@ -3358,8 +3386,8 @@ export interface NetworkInterfaceIPConfiguration extends SubResource {
  * @constructor
  * Backend address of an application gateway.
  *
- * @member {string} [fqdn] Fully qualified domain name (FQDN).
- * @member {string} [ipAddress] IP address
+ * @property {string} [fqdn] Fully qualified domain name (FQDN).
+ * @property {string} [ipAddress] IP address
  */
 export interface ApplicationGatewayBackendAddress {
   fqdn?: string;
@@ -3372,17 +3400,17 @@ export interface ApplicationGatewayBackendAddress {
  * @constructor
  * Backend Address Pool of an application gateway.
  *
- * @member {array} [backendIPConfigurations] Collection of references to IPs
+ * @property {array} [backendIPConfigurations] Collection of references to IPs
  * defined in network interfaces.
- * @member {array} [backendAddresses] Backend addresses
- * @member {string} [provisioningState] Provisioning state of the backend
+ * @property {array} [backendAddresses] Backend addresses
+ * @property {string} [provisioningState] Provisioning state of the backend
  * address pool resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] Name of the backend address pool that is unique
+ * @property {string} [name] Name of the backend address pool that is unique
  * within an Application Gateway.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {string} [type] Type of the resource.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {string} [type] Type of the resource.
  */
 export interface ApplicationGatewayBackendAddressPool extends SubResource {
   backendIPConfigurations?: NetworkInterfaceIPConfiguration[];
@@ -3401,9 +3429,9 @@ export interface ApplicationGatewayBackendAddressPool extends SubResource {
  * for a specified time after the backend server got removed from the
  * configuration.
  *
- * @member {boolean} enabled Whether connection draining is enabled or not.
- * @member {number} drainTimeoutInSec The number of seconds connection draining
- * is active. Acceptable values are from 1 second to 3600 seconds.
+ * @property {boolean} enabled Whether connection draining is enabled or not.
+ * @property {number} drainTimeoutInSec The number of seconds connection
+ * draining is active. Acceptable values are from 1 second to 3600 seconds.
  */
 export interface ApplicationGatewayConnectionDraining {
   enabled: boolean;
@@ -3416,46 +3444,46 @@ export interface ApplicationGatewayConnectionDraining {
  * @constructor
  * Backend address pool settings of an application gateway.
  *
- * @member {number} [port] The destination port on the backend.
- * @member {string} [protocol] The protocol used to communicate with the
+ * @property {number} [port] The destination port on the backend.
+ * @property {string} [protocol] The protocol used to communicate with the
  * backend. Possible values are 'Http' and 'Https'. Possible values include:
  * 'Http', 'Https'
- * @member {string} [cookieBasedAffinity] Cookie based affinity. Possible
+ * @property {string} [cookieBasedAffinity] Cookie based affinity. Possible
  * values include: 'Enabled', 'Disabled'
- * @member {number} [requestTimeout] Request timeout in seconds. Application
+ * @property {number} [requestTimeout] Request timeout in seconds. Application
  * Gateway will fail the request if response is not received within
  * RequestTimeout. Acceptable values are from 1 second to 86400 seconds.
- * @member {object} [probe] Probe resource of an application gateway.
- * @member {string} [probe.id] Resource ID.
- * @member {array} [authenticationCertificates] Array of references to
+ * @property {object} [probe] Probe resource of an application gateway.
+ * @property {string} [probe.id] Resource ID.
+ * @property {array} [authenticationCertificates] Array of references to
  * application gateway authentication certificates.
- * @member {array} [trustedRootCertificates] Array of references to application
- * gateway trusted root certificates.
- * @member {object} [connectionDraining] Connection draining of the backend
+ * @property {array} [trustedRootCertificates] Array of references to
+ * application gateway trusted root certificates.
+ * @property {object} [connectionDraining] Connection draining of the backend
  * http settings resource.
- * @member {boolean} [connectionDraining.enabled] Whether connection draining
+ * @property {boolean} [connectionDraining.enabled] Whether connection draining
  * is enabled or not.
- * @member {number} [connectionDraining.drainTimeoutInSec] The number of
+ * @property {number} [connectionDraining.drainTimeoutInSec] The number of
  * seconds connection draining is active. Acceptable values are from 1 second
  * to 3600 seconds.
- * @member {string} [hostName] Host header to be sent to the backend servers.
- * @member {boolean} [pickHostNameFromBackendAddress] Whether to pick host
+ * @property {string} [hostName] Host header to be sent to the backend servers.
+ * @property {boolean} [pickHostNameFromBackendAddress] Whether to pick host
  * header should be picked from the host name of the backend server. Default
  * value is false.
- * @member {string} [affinityCookieName] Cookie name to use for the affinity
+ * @property {string} [affinityCookieName] Cookie name to use for the affinity
  * cookie.
- * @member {boolean} [probeEnabled] Whether the probe is enabled. Default value
- * is false.
- * @member {string} [path] Path which should be used as a prefix for all HTTP
+ * @property {boolean} [probeEnabled] Whether the probe is enabled. Default
+ * value is false.
+ * @property {string} [path] Path which should be used as a prefix for all HTTP
  * requests. Null means no path will be prefixed. Default value is null.
- * @member {string} [provisioningState] Provisioning state of the backend http
- * settings resource. Possible values are: 'Updating', 'Deleting', and
+ * @property {string} [provisioningState] Provisioning state of the backend
+ * http settings resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] Name of the backend http settings that is unique
+ * @property {string} [name] Name of the backend http settings that is unique
  * within an Application Gateway.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {string} [type] Type of the resource.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {string} [type] Type of the resource.
  */
 export interface ApplicationGatewayBackendHttpSettings extends SubResource {
   port?: number;
@@ -3483,270 +3511,273 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * @constructor
  * Application gateway backendhealth http settings.
  *
- * @member {string} [address] IP address or FQDN of backend server.
- * @member {object} [ipConfiguration] Reference of IP configuration of backend
- * server.
- * @member {array} [ipConfiguration.virtualNetworkTaps] The reference to
+ * @property {string} [address] IP address or FQDN of backend server.
+ * @property {object} [ipConfiguration] Reference of IP configuration of
+ * backend server.
+ * @property {array} [ipConfiguration.virtualNetworkTaps] The reference to
  * Virtual Network Taps.
- * @member {array} [ipConfiguration.applicationGatewayBackendAddressPools] The
- * reference of ApplicationGatewayBackendAddressPool resource.
- * @member {array} [ipConfiguration.loadBalancerBackendAddressPools] The
+ * @property {array} [ipConfiguration.applicationGatewayBackendAddressPools]
+ * The reference of ApplicationGatewayBackendAddressPool resource.
+ * @property {array} [ipConfiguration.loadBalancerBackendAddressPools] The
  * reference of LoadBalancerBackendAddressPool resource.
- * @member {array} [ipConfiguration.loadBalancerInboundNatRules] A list of
+ * @property {array} [ipConfiguration.loadBalancerInboundNatRules] A list of
  * references of LoadBalancerInboundNatRules.
- * @member {string} [ipConfiguration.privateIPAddress] Private IP address of
+ * @property {string} [ipConfiguration.privateIPAddress] Private IP address of
  * the IP configuration.
- * @member {string} [ipConfiguration.privateIPAllocationMethod] Defines how a
+ * @property {string} [ipConfiguration.privateIPAllocationMethod] Defines how a
  * private IP address is assigned. Possible values are: 'Static' and 'Dynamic'.
  * Possible values include: 'Static', 'Dynamic'
- * @member {string} [ipConfiguration.privateIPAddressVersion] Available from
+ * @property {string} [ipConfiguration.privateIPAddressVersion] Available from
  * Api-Version 2016-03-30 onwards, it represents whether the specific
  * ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible values
  * are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4', 'IPv6'
- * @member {object} [ipConfiguration.subnet] Subnet bound to the IP
+ * @property {object} [ipConfiguration.subnet] Subnet bound to the IP
  * configuration.
- * @member {string} [ipConfiguration.subnet.addressPrefix] The address prefix
+ * @property {string} [ipConfiguration.subnet.addressPrefix] The address prefix
  * for the subnet.
- * @member {array} [ipConfiguration.subnet.addressPrefixes] List of  address
+ * @property {array} [ipConfiguration.subnet.addressPrefixes] List of  address
  * prefixes for the subnet.
- * @member {object} [ipConfiguration.subnet.networkSecurityGroup] The reference
- * of the NetworkSecurityGroup resource.
- * @member {array} [ipConfiguration.subnet.networkSecurityGroup.securityRules]
- * A collection of security rules of the network security group.
- * @member {array}
+ * @property {object} [ipConfiguration.subnet.networkSecurityGroup] The
+ * reference of the NetworkSecurityGroup resource.
+ * @property {array}
+ * [ipConfiguration.subnet.networkSecurityGroup.securityRules] A collection of
+ * security rules of the network security group.
+ * @property {array}
  * [ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules] The
  * default security rules of network security group.
- * @member {array}
+ * @property {array}
  * [ipConfiguration.subnet.networkSecurityGroup.networkInterfaces] A collection
  * of references to network interfaces.
- * @member {array} [ipConfiguration.subnet.networkSecurityGroup.subnets] A
+ * @property {array} [ipConfiguration.subnet.networkSecurityGroup.subnets] A
  * collection of references to subnets.
- * @member {string} [ipConfiguration.subnet.networkSecurityGroup.resourceGuid]
- * The resource GUID property of the network security group resource.
- * @member {string}
+ * @property {string}
+ * [ipConfiguration.subnet.networkSecurityGroup.resourceGuid] The resource GUID
+ * property of the network security group resource.
+ * @property {string}
  * [ipConfiguration.subnet.networkSecurityGroup.provisioningState] The
  * provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [ipConfiguration.subnet.networkSecurityGroup.etag] A unique
- * read-only string that changes whenever the resource is updated.
- * @member {object} [ipConfiguration.subnet.routeTable] The reference of the
+ * @property {string} [ipConfiguration.subnet.networkSecurityGroup.etag] A
+ * unique read-only string that changes whenever the resource is updated.
+ * @property {object} [ipConfiguration.subnet.routeTable] The reference of the
  * RouteTable resource.
- * @member {array} [ipConfiguration.subnet.routeTable.routes] Collection of
+ * @property {array} [ipConfiguration.subnet.routeTable.routes] Collection of
  * routes contained within a route table.
- * @member {array} [ipConfiguration.subnet.routeTable.subnets] A collection of
- * references to subnets.
- * @member {boolean}
+ * @property {array} [ipConfiguration.subnet.routeTable.subnets] A collection
+ * of references to subnets.
+ * @property {boolean}
  * [ipConfiguration.subnet.routeTable.disableBgpRoutePropagation] Gets or sets
  * whether to disable the routes learned by BGP on that route table. True means
  * disable.
- * @member {string} [ipConfiguration.subnet.routeTable.provisioningState] The
+ * @property {string} [ipConfiguration.subnet.routeTable.provisioningState] The
  * provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [ipConfiguration.subnet.routeTable.etag] Gets a unique
+ * @property {string} [ipConfiguration.subnet.routeTable.etag] Gets a unique
  * read-only string that changes whenever the resource is updated.
- * @member {array} [ipConfiguration.subnet.serviceEndpoints] An array of
+ * @property {array} [ipConfiguration.subnet.serviceEndpoints] An array of
  * service endpoints.
- * @member {array} [ipConfiguration.subnet.serviceEndpointPolicies] An array of
- * service endpoint policies.
- * @member {array} [ipConfiguration.subnet.interfaceEndpoints] An array of
+ * @property {array} [ipConfiguration.subnet.serviceEndpointPolicies] An array
+ * of service endpoint policies.
+ * @property {array} [ipConfiguration.subnet.interfaceEndpoints] An array of
  * references to interface endpoints
- * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
+ * @property {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
  * references to the network interface IP configurations using subnet.
- * @member {array} [ipConfiguration.subnet.ipConfigurationProfiles] Array of IP
- * configuration profiles which reference this subnet.
- * @member {array} [ipConfiguration.subnet.resourceNavigationLinks] Gets an
+ * @property {array} [ipConfiguration.subnet.ipConfigurationProfiles] Array of
+ * IP configuration profiles which reference this subnet.
+ * @property {array} [ipConfiguration.subnet.resourceNavigationLinks] Gets an
  * array of references to the external resources using subnet.
- * @member {array} [ipConfiguration.subnet.serviceAssociationLinks] Gets an
+ * @property {array} [ipConfiguration.subnet.serviceAssociationLinks] Gets an
  * array of references to services injecting into this subnet.
- * @member {array} [ipConfiguration.subnet.delegations] Gets an array of
+ * @property {array} [ipConfiguration.subnet.delegations] Gets an array of
  * references to the delegations on the subnet.
- * @member {string} [ipConfiguration.subnet.purpose] A read-only string
+ * @property {string} [ipConfiguration.subnet.purpose] A read-only string
  * identifying the intention of use for this subnet based on delegations and
  * other user-defined properties.
- * @member {string} [ipConfiguration.subnet.provisioningState] The provisioning
- * state of the resource.
- * @member {string} [ipConfiguration.subnet.name] The name of the resource that
- * is unique within a resource group. This name can be used to access the
+ * @property {string} [ipConfiguration.subnet.provisioningState] The
+ * provisioning state of the resource.
+ * @property {string} [ipConfiguration.subnet.name] The name of the resource
+ * that is unique within a resource group. This name can be used to access the
  * resource.
- * @member {string} [ipConfiguration.subnet.etag] A unique read-only string
+ * @property {string} [ipConfiguration.subnet.etag] A unique read-only string
  * that changes whenever the resource is updated.
- * @member {boolean} [ipConfiguration.primary] Gets whether this is a primary
+ * @property {boolean} [ipConfiguration.primary] Gets whether this is a primary
  * customer address on the network interface.
- * @member {object} [ipConfiguration.publicIPAddress] Public IP address bound
+ * @property {object} [ipConfiguration.publicIPAddress] Public IP address bound
  * to the IP configuration.
- * @member {object} [ipConfiguration.publicIPAddress.sku] The public IP address
- * SKU.
- * @member {string} [ipConfiguration.publicIPAddress.sku.name] Name of a public
- * IP address SKU. Possible values include: 'Basic', 'Standard'
- * @member {string} [ipConfiguration.publicIPAddress.publicIPAllocationMethod]
- * The public IP allocation method. Possible values are: 'Static' and
- * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
- * @member {string} [ipConfiguration.publicIPAddress.publicIPAddressVersion]
+ * @property {object} [ipConfiguration.publicIPAddress.sku] The public IP
+ * address SKU.
+ * @property {string} [ipConfiguration.publicIPAddress.sku.name] Name of a
+ * public IP address SKU. Possible values include: 'Basic', 'Standard'
+ * @property {string}
+ * [ipConfiguration.publicIPAddress.publicIPAllocationMethod] The public IP
+ * allocation method. Possible values are: 'Static' and 'Dynamic'. Possible
+ * values include: 'Static', 'Dynamic'
+ * @property {string} [ipConfiguration.publicIPAddress.publicIPAddressVersion]
  * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
  * Possible values include: 'IPv4', 'IPv6'
- * @member {object} [ipConfiguration.publicIPAddress.ipConfiguration] The IP
+ * @property {object} [ipConfiguration.publicIPAddress.ipConfiguration] The IP
  * configuration associated with the public IP address.
- * @member {string}
+ * @property {string}
  * [ipConfiguration.publicIPAddress.ipConfiguration.privateIPAddress] The
  * private IP address of the IP configuration.
- * @member {string}
+ * @property {string}
  * [ipConfiguration.publicIPAddress.ipConfiguration.privateIPAllocationMethod]
  * The private IP allocation method. Possible values are 'Static' and
  * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
- * @member {object} [ipConfiguration.publicIPAddress.ipConfiguration.subnet]
+ * @property {object} [ipConfiguration.publicIPAddress.ipConfiguration.subnet]
  * The reference of the subnet resource.
- * @member {string}
+ * @property {string}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefix] The
  * address prefix for the subnet.
- * @member {array}
+ * @property {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefixes]
  * List of  address prefixes for the subnet.
- * @member {object}
+ * @property {object}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup]
  * The reference of the NetworkSecurityGroup resource.
- * @member {array}
+ * @property {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.securityRules]
  * A collection of security rules of the network security group.
- * @member {array}
+ * @property {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
  * The default security rules of network security group.
- * @member {array}
+ * @property {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
  * A collection of references to network interfaces.
- * @member {array}
+ * @property {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.subnets]
  * A collection of references to subnets.
- * @member {string}
+ * @property {string}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.resourceGuid]
  * The resource GUID property of the network security group resource.
- * @member {string}
+ * @property {string}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
  * The provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.etag]
  * A unique read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable] The
  * reference of the RouteTable resource.
- * @member {array}
+ * @property {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.routes]
  * Collection of routes contained within a route table.
- * @member {array}
+ * @property {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.subnets]
  * A collection of references to subnets.
- * @member {boolean}
+ * @property {boolean}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.disableBgpRoutePropagation]
  * Gets or sets whether to disable the routes learned by BGP on that route
  * table. True means disable.
- * @member {string}
+ * @property {string}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState]
  * The provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string}
+ * @property {string}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
- * @member {array}
+ * @property {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
  * array of service endpoints.
- * @member {array}
+ * @property {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
  * An array of service endpoint policies.
- * @member {array}
+ * @property {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.interfaceEndpoints]
  * An array of references to interface endpoints
- * @member {array}
+ * @property {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
- * @member {array}
+ * @property {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurationProfiles]
  * Array of IP configuration profiles which reference this subnet.
- * @member {array}
+ * @property {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.resourceNavigationLinks]
  * Gets an array of references to the external resources using subnet.
- * @member {array}
+ * @property {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.serviceAssociationLinks]
  * Gets an array of references to services injecting into this subnet.
- * @member {array}
+ * @property {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.delegations] Gets an
  * array of references to the delegations on the subnet.
- * @member {string}
+ * @property {string}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.purpose] A read-only
  * string identifying the intention of use for this subnet based on delegations
  * and other user-defined properties.
- * @member {string}
+ * @property {string}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
- * @member {string}
+ * @property {string}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.name] The name of
  * the resource that is unique within a resource group. This name can be used
  * to access the resource.
- * @member {string}
+ * @property {string}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.etag] A unique
  * read-only string that changes whenever the resource is updated.
- * @member {object}
+ * @property {object}
  * [ipConfiguration.publicIPAddress.ipConfiguration.publicIPAddress] The
  * reference of the public IP resource.
- * @member {string}
+ * @property {string}
  * [ipConfiguration.publicIPAddress.ipConfiguration.provisioningState] Gets the
  * provisioning state of the public IP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [ipConfiguration.publicIPAddress.ipConfiguration.name] The
- * name of the resource that is unique within a resource group. This name can
- * be used to access the resource.
- * @member {string} [ipConfiguration.publicIPAddress.ipConfiguration.etag] A
+ * @property {string} [ipConfiguration.publicIPAddress.ipConfiguration.name]
+ * The name of the resource that is unique within a resource group. This name
+ * can be used to access the resource.
+ * @property {string} [ipConfiguration.publicIPAddress.ipConfiguration.etag] A
  * unique read-only string that changes whenever the resource is updated.
- * @member {object} [ipConfiguration.publicIPAddress.dnsSettings] The FQDN of
+ * @property {object} [ipConfiguration.publicIPAddress.dnsSettings] The FQDN of
  * the DNS record associated with the public IP address.
- * @member {string}
+ * @property {string}
  * [ipConfiguration.publicIPAddress.dnsSettings.domainNameLabel] Gets or sets
  * the Domain name label.The concatenation of the domain name label and the
  * regionalized DNS zone make up the fully qualified domain name associated
  * with the public IP address. If a domain name label is specified, an A DNS
  * record is created for the public IP in the Microsoft Azure DNS system.
- * @member {string} [ipConfiguration.publicIPAddress.dnsSettings.fqdn] Gets the
- * FQDN, Fully qualified domain name of the A DNS record associated with the
- * public IP. This is the concatenation of the domainNameLabel and the
+ * @property {string} [ipConfiguration.publicIPAddress.dnsSettings.fqdn] Gets
+ * the FQDN, Fully qualified domain name of the A DNS record associated with
+ * the public IP. This is the concatenation of the domainNameLabel and the
  * regionalized DNS zone.
- * @member {string} [ipConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
+ * @property {string} [ipConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
  * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
  * that resolves to this public IP address. If the reverseFqdn is specified,
  * then a PTR DNS record is created pointing from the IP address in the
  * in-addr.arpa domain to the reverse FQDN.
- * @member {array} [ipConfiguration.publicIPAddress.ipTags] The list of tags
+ * @property {array} [ipConfiguration.publicIPAddress.ipTags] The list of tags
  * associated with the public IP address.
- * @member {string} [ipConfiguration.publicIPAddress.ipAddress] The IP address
- * associated with the public IP address resource.
- * @member {object} [ipConfiguration.publicIPAddress.publicIPPrefix] The Public
- * IP Prefix this Public IP Address should be allocated from.
- * @member {string} [ipConfiguration.publicIPAddress.publicIPPrefix.id]
+ * @property {string} [ipConfiguration.publicIPAddress.ipAddress] The IP
+ * address associated with the public IP address resource.
+ * @property {object} [ipConfiguration.publicIPAddress.publicIPPrefix] The
+ * Public IP Prefix this Public IP Address should be allocated from.
+ * @property {string} [ipConfiguration.publicIPAddress.publicIPPrefix.id]
  * Resource ID.
- * @member {number} [ipConfiguration.publicIPAddress.idleTimeoutInMinutes] The
- * idle timeout of the public IP address.
- * @member {string} [ipConfiguration.publicIPAddress.resourceGuid] The resource
- * GUID property of the public IP resource.
- * @member {string} [ipConfiguration.publicIPAddress.provisioningState] The
+ * @property {number} [ipConfiguration.publicIPAddress.idleTimeoutInMinutes]
+ * The idle timeout of the public IP address.
+ * @property {string} [ipConfiguration.publicIPAddress.resourceGuid] The
+ * resource GUID property of the public IP resource.
+ * @property {string} [ipConfiguration.publicIPAddress.provisioningState] The
  * provisioning state of the PublicIP resource. Possible values are:
  * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [ipConfiguration.publicIPAddress.etag] A unique read-only
+ * @property {string} [ipConfiguration.publicIPAddress.etag] A unique read-only
  * string that changes whenever the resource is updated.
- * @member {array} [ipConfiguration.publicIPAddress.zones] A list of
+ * @property {array} [ipConfiguration.publicIPAddress.zones] A list of
  * availability zones denoting the IP allocated for the resource needs to come
  * from.
- * @member {array} [ipConfiguration.applicationSecurityGroups] Application
+ * @property {array} [ipConfiguration.applicationSecurityGroups] Application
  * security groups in which the IP configuration is included.
- * @member {string} [ipConfiguration.provisioningState] The provisioning state
- * of the network interface IP configuration. Possible values are: 'Updating',
- * 'Deleting', and 'Failed'.
- * @member {string} [ipConfiguration.name] The name of the resource that is
+ * @property {string} [ipConfiguration.provisioningState] The provisioning
+ * state of the network interface IP configuration. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @property {string} [ipConfiguration.name] The name of the resource that is
  * unique within a resource group. This name can be used to access the
  * resource.
- * @member {string} [ipConfiguration.etag] A unique read-only string that
+ * @property {string} [ipConfiguration.etag] A unique read-only string that
  * changes whenever the resource is updated.
- * @member {string} [health] Health of backend server. Possible values include:
- * 'Unknown', 'Up', 'Down', 'Partial', 'Draining'
+ * @property {string} [health] Health of backend server. Possible values
+ * include: 'Unknown', 'Up', 'Down', 'Partial', 'Draining'
  */
 export interface ApplicationGatewayBackendHealthServer {
   address?: string;
@@ -3760,54 +3791,55 @@ export interface ApplicationGatewayBackendHealthServer {
  * @constructor
  * Application gateway BackendHealthHttp settings.
  *
- * @member {object} [backendHttpSettings] Reference of an
+ * @property {object} [backendHttpSettings] Reference of an
  * ApplicationGatewayBackendHttpSettings resource.
- * @member {number} [backendHttpSettings.port] The destination port on the
+ * @property {number} [backendHttpSettings.port] The destination port on the
  * backend.
- * @member {string} [backendHttpSettings.protocol] The protocol used to
+ * @property {string} [backendHttpSettings.protocol] The protocol used to
  * communicate with the backend. Possible values are 'Http' and 'Https'.
  * Possible values include: 'Http', 'Https'
- * @member {string} [backendHttpSettings.cookieBasedAffinity] Cookie based
+ * @property {string} [backendHttpSettings.cookieBasedAffinity] Cookie based
  * affinity. Possible values include: 'Enabled', 'Disabled'
- * @member {number} [backendHttpSettings.requestTimeout] Request timeout in
+ * @property {number} [backendHttpSettings.requestTimeout] Request timeout in
  * seconds. Application Gateway will fail the request if response is not
  * received within RequestTimeout. Acceptable values are from 1 second to 86400
  * seconds.
- * @member {object} [backendHttpSettings.probe] Probe resource of an
+ * @property {object} [backendHttpSettings.probe] Probe resource of an
  * application gateway.
- * @member {string} [backendHttpSettings.probe.id] Resource ID.
- * @member {array} [backendHttpSettings.authenticationCertificates] Array of
+ * @property {string} [backendHttpSettings.probe.id] Resource ID.
+ * @property {array} [backendHttpSettings.authenticationCertificates] Array of
  * references to application gateway authentication certificates.
- * @member {array} [backendHttpSettings.trustedRootCertificates] Array of
+ * @property {array} [backendHttpSettings.trustedRootCertificates] Array of
  * references to application gateway trusted root certificates.
- * @member {object} [backendHttpSettings.connectionDraining] Connection
+ * @property {object} [backendHttpSettings.connectionDraining] Connection
  * draining of the backend http settings resource.
- * @member {boolean} [backendHttpSettings.connectionDraining.enabled] Whether
+ * @property {boolean} [backendHttpSettings.connectionDraining.enabled] Whether
  * connection draining is enabled or not.
- * @member {number} [backendHttpSettings.connectionDraining.drainTimeoutInSec]
- * The number of seconds connection draining is active. Acceptable values are
- * from 1 second to 3600 seconds.
- * @member {string} [backendHttpSettings.hostName] Host header to be sent to
+ * @property {number}
+ * [backendHttpSettings.connectionDraining.drainTimeoutInSec] The number of
+ * seconds connection draining is active. Acceptable values are from 1 second
+ * to 3600 seconds.
+ * @property {string} [backendHttpSettings.hostName] Host header to be sent to
  * the backend servers.
- * @member {boolean} [backendHttpSettings.pickHostNameFromBackendAddress]
+ * @property {boolean} [backendHttpSettings.pickHostNameFromBackendAddress]
  * Whether to pick host header should be picked from the host name of the
  * backend server. Default value is false.
- * @member {string} [backendHttpSettings.affinityCookieName] Cookie name to use
- * for the affinity cookie.
- * @member {boolean} [backendHttpSettings.probeEnabled] Whether the probe is
+ * @property {string} [backendHttpSettings.affinityCookieName] Cookie name to
+ * use for the affinity cookie.
+ * @property {boolean} [backendHttpSettings.probeEnabled] Whether the probe is
  * enabled. Default value is false.
- * @member {string} [backendHttpSettings.path] Path which should be used as a
+ * @property {string} [backendHttpSettings.path] Path which should be used as a
  * prefix for all HTTP requests. Null means no path will be prefixed. Default
  * value is null.
- * @member {string} [backendHttpSettings.provisioningState] Provisioning state
- * of the backend http settings resource. Possible values are: 'Updating',
- * 'Deleting', and 'Failed'.
- * @member {string} [backendHttpSettings.name] Name of the backend http
+ * @property {string} [backendHttpSettings.provisioningState] Provisioning
+ * state of the backend http settings resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @property {string} [backendHttpSettings.name] Name of the backend http
  * settings that is unique within an Application Gateway.
- * @member {string} [backendHttpSettings.etag] A unique read-only string that
+ * @property {string} [backendHttpSettings.etag] A unique read-only string that
  * changes whenever the resource is updated.
- * @member {string} [backendHttpSettings.type] Type of the resource.
- * @member {array} [servers] List of ApplicationGatewayBackendHealthServer
+ * @property {string} [backendHttpSettings.type] Type of the resource.
+ * @property {array} [servers] List of ApplicationGatewayBackendHealthServer
  * resources.
  */
 export interface ApplicationGatewayBackendHealthHttpSettings {
@@ -3821,20 +3853,20 @@ export interface ApplicationGatewayBackendHealthHttpSettings {
  * @constructor
  * Application gateway BackendHealth pool.
  *
- * @member {object} [backendAddressPool] Reference of an
+ * @property {object} [backendAddressPool] Reference of an
  * ApplicationGatewayBackendAddressPool resource.
- * @member {array} [backendAddressPool.backendIPConfigurations] Collection of
+ * @property {array} [backendAddressPool.backendIPConfigurations] Collection of
  * references to IPs defined in network interfaces.
- * @member {array} [backendAddressPool.backendAddresses] Backend addresses
- * @member {string} [backendAddressPool.provisioningState] Provisioning state
+ * @property {array} [backendAddressPool.backendAddresses] Backend addresses
+ * @property {string} [backendAddressPool.provisioningState] Provisioning state
  * of the backend address pool resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [backendAddressPool.name] Name of the backend address pool
- * that is unique within an Application Gateway.
- * @member {string} [backendAddressPool.etag] A unique read-only string that
+ * @property {string} [backendAddressPool.name] Name of the backend address
+ * pool that is unique within an Application Gateway.
+ * @property {string} [backendAddressPool.etag] A unique read-only string that
  * changes whenever the resource is updated.
- * @member {string} [backendAddressPool.type] Type of the resource.
- * @member {array} [backendHttpSettingsCollection] List of
+ * @property {string} [backendAddressPool.type] Type of the resource.
+ * @property {array} [backendHttpSettingsCollection] List of
  * ApplicationGatewayBackendHealthHttpSettings resources.
  */
 export interface ApplicationGatewayBackendHealthPool {
@@ -3848,7 +3880,7 @@ export interface ApplicationGatewayBackendHealthPool {
  * @constructor
  * List of ApplicationGatewayBackendHealthPool resources.
  *
- * @member {array} [backendAddressPools]
+ * @property {array} [backendAddressPools]
  */
 export interface ApplicationGatewayBackendHealth {
   backendAddressPools?: ApplicationGatewayBackendHealthPool[];
@@ -3860,12 +3892,12 @@ export interface ApplicationGatewayBackendHealth {
  * @constructor
  * SKU of an application gateway
  *
- * @member {string} [name] Name of an application gateway SKU. Possible values
- * include: 'Standard_Small', 'Standard_Medium', 'Standard_Large',
+ * @property {string} [name] Name of an application gateway SKU. Possible
+ * values include: 'Standard_Small', 'Standard_Medium', 'Standard_Large',
  * 'WAF_Medium', 'WAF_Large', 'Standard_v2', 'WAF_v2'
- * @member {string} [tier] Tier of an application gateway. Possible values
+ * @property {string} [tier] Tier of an application gateway. Possible values
  * include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2'
- * @member {number} [capacity] Capacity (instance count) of an application
+ * @property {number} [capacity] Capacity (instance count) of an application
  * gateway.
  */
 export interface ApplicationGatewaySku {
@@ -3880,17 +3912,17 @@ export interface ApplicationGatewaySku {
  * @constructor
  * Application Gateway Ssl policy.
  *
- * @member {array} [disabledSslProtocols] Ssl protocols to be disabled on
+ * @property {array} [disabledSslProtocols] Ssl protocols to be disabled on
  * application gateway.
- * @member {string} [policyType] Type of Ssl Policy. Possible values include:
+ * @property {string} [policyType] Type of Ssl Policy. Possible values include:
  * 'Predefined', 'Custom'
- * @member {string} [policyName] Name of Ssl predefined policy. Possible values
- * include: 'AppGwSslPolicy20150501', 'AppGwSslPolicy20170401',
+ * @property {string} [policyName] Name of Ssl predefined policy. Possible
+ * values include: 'AppGwSslPolicy20150501', 'AppGwSslPolicy20170401',
  * 'AppGwSslPolicy20170401S'
- * @member {array} [cipherSuites] Ssl cipher suites to be enabled in the
+ * @property {array} [cipherSuites] Ssl cipher suites to be enabled in the
  * specified order to application gateway.
- * @member {string} [minProtocolVersion] Minimum version of Ssl protocol to be
- * supported on application gateway. Possible values include: 'TLSv1_0',
+ * @property {string} [minProtocolVersion] Minimum version of Ssl protocol to
+ * be supported on application gateway. Possible values include: 'TLSv1_0',
  * 'TLSv1_1', 'TLSv1_2'
  */
 export interface ApplicationGatewaySslPolicy {
@@ -3908,17 +3940,17 @@ export interface ApplicationGatewaySslPolicy {
  * IP configuration of an application gateway. Currently 1 public and 1 private
  * IP configuration is allowed.
  *
- * @member {object} [subnet] Reference of the subnet resource. A subnet from
+ * @property {object} [subnet] Reference of the subnet resource. A subnet from
  * where application gateway gets its private address.
- * @member {string} [subnet.id] Resource ID.
- * @member {string} [provisioningState] Provisioning state of the application
+ * @property {string} [subnet.id] Resource ID.
+ * @property {string} [provisioningState] Provisioning state of the application
  * gateway subnet resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] Name of the IP configuration that is unique within
+ * @property {string} [name] Name of the IP configuration that is unique within
  * an Application Gateway.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {string} [type] Type of the resource.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {string} [type] Type of the resource.
  */
 export interface ApplicationGatewayIPConfiguration extends SubResource {
   subnet?: SubResource;
@@ -3934,15 +3966,15 @@ export interface ApplicationGatewayIPConfiguration extends SubResource {
  * @constructor
  * Authentication certificates of an application gateway.
  *
- * @member {string} [data] Certificate public data.
- * @member {string} [provisioningState] Provisioning state of the
+ * @property {string} [data] Certificate public data.
+ * @property {string} [provisioningState] Provisioning state of the
  * authentication certificate resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [name] Name of the authentication certificate that is
+ * @property {string} [name] Name of the authentication certificate that is
  * unique within an Application Gateway.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {string} [type] Type of the resource.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {string} [type] Type of the resource.
  */
 export interface ApplicationGatewayAuthenticationCertificate extends SubResource {
   data?: string;
@@ -3958,16 +3990,16 @@ export interface ApplicationGatewayAuthenticationCertificate extends SubResource
  * @constructor
  * Trusted Root certificates of an application gateway.
  *
- * @member {string} [data] Certificate public data.
- * @member {string} [keyvaultSecretId] KeyVault Secret Id for certificate.
- * @member {string} [provisioningState] Provisioning state of the trusted root
- * certificate resource. Possible values are: 'Updating', 'Deleting', and
+ * @property {string} [data] Certificate public data.
+ * @property {string} [keyvaultSecretId] KeyVault Secret Id for certificate.
+ * @property {string} [provisioningState] Provisioning state of the trusted
+ * root certificate resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] Name of the trusted root certificate that is unique
- * within an Application Gateway.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {string} [type] Type of the resource.
+ * @property {string} [name] Name of the trusted root certificate that is
+ * unique within an Application Gateway.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {string} [type] Type of the resource.
  */
 export interface ApplicationGatewayTrustedRootCertificate extends SubResource {
   data?: string;
@@ -3984,20 +4016,20 @@ export interface ApplicationGatewayTrustedRootCertificate extends SubResource {
  * @constructor
  * SSL certificates of an application gateway.
  *
- * @member {string} [data] Base-64 encoded pfx certificate. Only applicable in
- * PUT Request.
- * @member {string} [password] Password for the pfx file specified in data.
+ * @property {string} [data] Base-64 encoded pfx certificate. Only applicable
+ * in PUT Request.
+ * @property {string} [password] Password for the pfx file specified in data.
  * Only applicable in PUT request.
- * @member {string} [publicCertData] Base-64 encoded Public cert data
+ * @property {string} [publicCertData] Base-64 encoded Public cert data
  * corresponding to pfx specified in data. Only applicable in GET request.
- * @member {string} [provisioningState] Provisioning state of the SSL
+ * @property {string} [provisioningState] Provisioning state of the SSL
  * certificate resource Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] Name of the SSL certificate that is unique within an
- * Application Gateway.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {string} [type] Type of the resource.
+ * @property {string} [name] Name of the SSL certificate that is unique within
+ * an Application Gateway.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {string} [type] Type of the resource.
  */
 export interface ApplicationGatewaySslCertificate extends SubResource {
   data?: string;
@@ -4015,21 +4047,21 @@ export interface ApplicationGatewaySslCertificate extends SubResource {
  * @constructor
  * Frontend IP configuration of an application gateway.
  *
- * @member {string} [privateIPAddress] PrivateIPAddress of the network
+ * @property {string} [privateIPAddress] PrivateIPAddress of the network
  * interface IP Configuration.
- * @member {string} [privateIPAllocationMethod] PrivateIP allocation method.
+ * @property {string} [privateIPAllocationMethod] PrivateIP allocation method.
  * Possible values include: 'Static', 'Dynamic'
- * @member {object} [subnet] Reference of the subnet resource.
- * @member {string} [subnet.id] Resource ID.
- * @member {object} [publicIPAddress] Reference of the PublicIP resource.
- * @member {string} [publicIPAddress.id] Resource ID.
- * @member {string} [provisioningState] Provisioning state of the public IP
+ * @property {object} [subnet] Reference of the subnet resource.
+ * @property {string} [subnet.id] Resource ID.
+ * @property {object} [publicIPAddress] Reference of the PublicIP resource.
+ * @property {string} [publicIPAddress.id] Resource ID.
+ * @property {string} [provisioningState] Provisioning state of the public IP
  * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [name] Name of the frontend IP configuration that is unique
- * within an Application Gateway.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {string} [type] Type of the resource.
+ * @property {string} [name] Name of the frontend IP configuration that is
+ * unique within an Application Gateway.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {string} [type] Type of the resource.
  */
 export interface ApplicationGatewayFrontendIPConfiguration extends SubResource {
   privateIPAddress?: string;
@@ -4048,14 +4080,14 @@ export interface ApplicationGatewayFrontendIPConfiguration extends SubResource {
  * @constructor
  * Frontend port of an application gateway.
  *
- * @member {number} [port] Frontend port
- * @member {string} [provisioningState] Provisioning state of the frontend port
- * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [name] Name of the frontend port that is unique within an
+ * @property {number} [port] Frontend port
+ * @property {string} [provisioningState] Provisioning state of the frontend
+ * port resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @property {string} [name] Name of the frontend port that is unique within an
  * Application Gateway
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {string} [type] Type of the resource.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {string} [type] Type of the resource.
  */
 export interface ApplicationGatewayFrontendPort extends SubResource {
   port?: number;
@@ -4071,9 +4103,9 @@ export interface ApplicationGatewayFrontendPort extends SubResource {
  * @constructor
  * Customer error of an application gateway.
  *
- * @member {string} [statusCode] Status code of the application gateway
+ * @property {string} [statusCode] Status code of the application gateway
  * customer error. Possible values include: 'HttpStatus403', 'HttpStatus502'
- * @member {string} [customErrorPageUrl] Error page URL of the application
+ * @property {string} [customErrorPageUrl] Error page URL of the application
  * gateway customer error.
  */
 export interface ApplicationGatewayCustomError {
@@ -4087,29 +4119,30 @@ export interface ApplicationGatewayCustomError {
  * @constructor
  * Http listener of an application gateway.
  *
- * @member {object} [frontendIPConfiguration] Frontend IP configuration
+ * @property {object} [frontendIPConfiguration] Frontend IP configuration
  * resource of an application gateway.
- * @member {string} [frontendIPConfiguration.id] Resource ID.
- * @member {object} [frontendPort] Frontend port resource of an application
+ * @property {string} [frontendIPConfiguration.id] Resource ID.
+ * @property {object} [frontendPort] Frontend port resource of an application
  * gateway.
- * @member {string} [frontendPort.id] Resource ID.
- * @member {string} [protocol] Protocol of the HTTP listener. Possible values
+ * @property {string} [frontendPort.id] Resource ID.
+ * @property {string} [protocol] Protocol of the HTTP listener. Possible values
  * are 'Http' and 'Https'. Possible values include: 'Http', 'Https'
- * @member {string} [hostName] Host name of HTTP listener.
- * @member {object} [sslCertificate] SSL certificate resource of an application
- * gateway.
- * @member {string} [sslCertificate.id] Resource ID.
- * @member {boolean} [requireServerNameIndication] Applicable only if protocol
- * is https. Enables SNI for multi-hosting.
- * @member {string} [provisioningState] Provisioning state of the HTTP listener
- * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {array} [customErrorConfigurations] Custom error configurations of
+ * @property {string} [hostName] Host name of HTTP listener.
+ * @property {object} [sslCertificate] SSL certificate resource of an
+ * application gateway.
+ * @property {string} [sslCertificate.id] Resource ID.
+ * @property {boolean} [requireServerNameIndication] Applicable only if
+ * protocol is https. Enables SNI for multi-hosting.
+ * @property {string} [provisioningState] Provisioning state of the HTTP
+ * listener resource. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
+ * @property {array} [customErrorConfigurations] Custom error configurations of
  * the HTTP listener.
- * @member {string} [name] Name of the HTTP listener that is unique within an
+ * @property {string} [name] Name of the HTTP listener that is unique within an
  * Application Gateway.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {string} [type] Type of the resource.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {string} [type] Type of the resource.
  */
 export interface ApplicationGatewayHttpListener extends SubResource {
   frontendIPConfiguration?: SubResource;
@@ -4131,23 +4164,23 @@ export interface ApplicationGatewayHttpListener extends SubResource {
  * @constructor
  * Path rule of URL path map of an application gateway.
  *
- * @member {array} [paths] Path rules of URL path map.
- * @member {object} [backendAddressPool] Backend address pool resource of URL
+ * @property {array} [paths] Path rules of URL path map.
+ * @property {object} [backendAddressPool] Backend address pool resource of URL
  * path map path rule.
- * @member {string} [backendAddressPool.id] Resource ID.
- * @member {object} [backendHttpSettings] Backend http settings resource of URL
- * path map path rule.
- * @member {string} [backendHttpSettings.id] Resource ID.
- * @member {object} [redirectConfiguration] Redirect configuration resource of
+ * @property {string} [backendAddressPool.id] Resource ID.
+ * @property {object} [backendHttpSettings] Backend http settings resource of
  * URL path map path rule.
- * @member {string} [redirectConfiguration.id] Resource ID.
- * @member {string} [provisioningState] Path rule of URL path map resource.
+ * @property {string} [backendHttpSettings.id] Resource ID.
+ * @property {object} [redirectConfiguration] Redirect configuration resource
+ * of URL path map path rule.
+ * @property {string} [redirectConfiguration.id] Resource ID.
+ * @property {string} [provisioningState] Path rule of URL path map resource.
  * Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [name] Name of the path rule that is unique within an
+ * @property {string} [name] Name of the path rule that is unique within an
  * Application Gateway.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {string} [type] Type of the resource.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {string} [type] Type of the resource.
  */
 export interface ApplicationGatewayPathRule extends SubResource {
   paths?: string[];
@@ -4166,9 +4199,9 @@ export interface ApplicationGatewayPathRule extends SubResource {
  * @constructor
  * Application gateway probe health response match
  *
- * @member {string} [body] Body that must be contained in the health response.
- * Default value is empty.
- * @member {array} [statusCodes] Allowed ranges of healthy status codes.
+ * @property {string} [body] Body that must be contained in the health
+ * response. Default value is empty.
+ * @property {array} [statusCodes] Allowed ranges of healthy status codes.
  * Default range of healthy status codes is 200-399.
  */
 export interface ApplicationGatewayProbeHealthResponseMatch {
@@ -4182,38 +4215,39 @@ export interface ApplicationGatewayProbeHealthResponseMatch {
  * @constructor
  * Probe of the application gateway.
  *
- * @member {string} [protocol] The protocol used for the probe. Possible values
- * are 'Http' and 'Https'. Possible values include: 'Http', 'Https'
- * @member {string} [host] Host name to send the probe to.
- * @member {string} [path] Relative path of probe. Valid path starts from '/'.
- * Probe is sent to <Protocol>://<host>:<port><path>
- * @member {number} [interval] The probing interval in seconds. This is the
+ * @property {string} [protocol] The protocol used for the probe. Possible
+ * values are 'Http' and 'Https'. Possible values include: 'Http', 'Https'
+ * @property {string} [host] Host name to send the probe to.
+ * @property {string} [path] Relative path of probe. Valid path starts from
+ * '/'. Probe is sent to <Protocol>://<host>:<port><path>
+ * @property {number} [interval] The probing interval in seconds. This is the
  * time interval between two consecutive probes. Acceptable values are from 1
  * second to 86400 seconds.
- * @member {number} [timeout] the probe timeout in seconds. Probe marked as
+ * @property {number} [timeout] the probe timeout in seconds. Probe marked as
  * failed if valid response is not received with this timeout period.
  * Acceptable values are from 1 second to 86400 seconds.
- * @member {number} [unhealthyThreshold] The probe retry count. Backend server
- * is marked down after consecutive probe failure count reaches
+ * @property {number} [unhealthyThreshold] The probe retry count. Backend
+ * server is marked down after consecutive probe failure count reaches
  * UnhealthyThreshold. Acceptable values are from 1 second to 20.
- * @member {boolean} [pickHostNameFromBackendHttpSettings] Whether the host
+ * @property {boolean} [pickHostNameFromBackendHttpSettings] Whether the host
  * header should be picked from the backend http settings. Default value is
  * false.
- * @member {number} [minServers] Minimum number of servers that are always
+ * @property {number} [minServers] Minimum number of servers that are always
  * marked healthy. Default value is 0.
- * @member {object} [match] Criterion for classifying a healthy probe response.
- * @member {string} [match.body] Body that must be contained in the health
+ * @property {object} [match] Criterion for classifying a healthy probe
+ * response.
+ * @property {string} [match.body] Body that must be contained in the health
  * response. Default value is empty.
- * @member {array} [match.statusCodes] Allowed ranges of healthy status codes.
- * Default range of healthy status codes is 200-399.
- * @member {string} [provisioningState] Provisioning state of the backend http
- * settings resource. Possible values are: 'Updating', 'Deleting', and
+ * @property {array} [match.statusCodes] Allowed ranges of healthy status
+ * codes. Default range of healthy status codes is 200-399.
+ * @property {string} [provisioningState] Provisioning state of the backend
+ * http settings resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] Name of the probe that is unique within an
+ * @property {string} [name] Name of the probe that is unique within an
  * Application Gateway.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {string} [type] Type of the resource.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {string} [type] Type of the resource.
  */
 export interface ApplicationGatewayProbe extends SubResource {
   protocol?: string;
@@ -4237,31 +4271,31 @@ export interface ApplicationGatewayProbe extends SubResource {
  * @constructor
  * Request routing rule of an application gateway.
  *
- * @member {string} [ruleType] Rule type. Possible values include: 'Basic',
+ * @property {string} [ruleType] Rule type. Possible values include: 'Basic',
  * 'PathBasedRouting'
- * @member {object} [backendAddressPool] Backend address pool resource of the
+ * @property {object} [backendAddressPool] Backend address pool resource of the
  * application gateway.
- * @member {string} [backendAddressPool.id] Resource ID.
- * @member {object} [backendHttpSettings] Backend http settings resource of the
- * application gateway.
- * @member {string} [backendHttpSettings.id] Resource ID.
- * @member {object} [httpListener] Http listener resource of the application
- * gateway.
- * @member {string} [httpListener.id] Resource ID.
- * @member {object} [urlPathMap] URL path map resource of the application
- * gateway.
- * @member {string} [urlPathMap.id] Resource ID.
- * @member {object} [redirectConfiguration] Redirect configuration resource of
+ * @property {string} [backendAddressPool.id] Resource ID.
+ * @property {object} [backendHttpSettings] Backend http settings resource of
  * the application gateway.
- * @member {string} [redirectConfiguration.id] Resource ID.
- * @member {string} [provisioningState] Provisioning state of the request
+ * @property {string} [backendHttpSettings.id] Resource ID.
+ * @property {object} [httpListener] Http listener resource of the application
+ * gateway.
+ * @property {string} [httpListener.id] Resource ID.
+ * @property {object} [urlPathMap] URL path map resource of the application
+ * gateway.
+ * @property {string} [urlPathMap.id] Resource ID.
+ * @property {object} [redirectConfiguration] Redirect configuration resource
+ * of the application gateway.
+ * @property {string} [redirectConfiguration.id] Resource ID.
+ * @property {string} [provisioningState] Provisioning state of the request
  * routing rule resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] Name of the request routing rule that is unique
+ * @property {string} [name] Name of the request routing rule that is unique
  * within an Application Gateway.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {string} [type] Type of the resource.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {string} [type] Type of the resource.
  */
 export interface ApplicationGatewayRequestRoutingRule extends SubResource {
   ruleType?: string;
@@ -4282,26 +4316,26 @@ export interface ApplicationGatewayRequestRoutingRule extends SubResource {
  * @constructor
  * Redirect configuration of an application gateway.
  *
- * @member {string} [redirectType] Supported http redirection types -
+ * @property {string} [redirectType] Supported http redirection types -
  * Permanent, Temporary, Found, SeeOther. Possible values include: 'Permanent',
  * 'Found', 'SeeOther', 'Temporary'
- * @member {object} [targetListener] Reference to a listener to redirect the
+ * @property {object} [targetListener] Reference to a listener to redirect the
  * request to.
- * @member {string} [targetListener.id] Resource ID.
- * @member {string} [targetUrl] Url to redirect the request to.
- * @member {boolean} [includePath] Include path in the redirected url.
- * @member {boolean} [includeQueryString] Include query string in the
+ * @property {string} [targetListener.id] Resource ID.
+ * @property {string} [targetUrl] Url to redirect the request to.
+ * @property {boolean} [includePath] Include path in the redirected url.
+ * @property {boolean} [includeQueryString] Include query string in the
  * redirected url.
- * @member {array} [requestRoutingRules] Request routing specifying redirect
+ * @property {array} [requestRoutingRules] Request routing specifying redirect
  * configuration.
- * @member {array} [urlPathMaps] Url path maps specifying default redirect
+ * @property {array} [urlPathMaps] Url path maps specifying default redirect
  * configuration.
- * @member {array} [pathRules] Path rules specifying redirect configuration.
- * @member {string} [name] Name of the redirect configuration that is unique
+ * @property {array} [pathRules] Path rules specifying redirect configuration.
+ * @property {string} [name] Name of the redirect configuration that is unique
  * within an Application Gateway.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {string} [type] Type of the resource.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {string} [type] Type of the resource.
  */
 export interface ApplicationGatewayRedirectConfiguration extends SubResource {
   redirectType?: string;
@@ -4324,24 +4358,24 @@ export interface ApplicationGatewayRedirectConfiguration extends SubResource {
  * UrlPathMaps give a url path to the backend mapping information for
  * PathBasedRouting.
  *
- * @member {object} [defaultBackendAddressPool] Default backend address pool
+ * @property {object} [defaultBackendAddressPool] Default backend address pool
  * resource of URL path map.
- * @member {string} [defaultBackendAddressPool.id] Resource ID.
- * @member {object} [defaultBackendHttpSettings] Default backend http settings
- * resource of URL path map.
- * @member {string} [defaultBackendHttpSettings.id] Resource ID.
- * @member {object} [defaultRedirectConfiguration] Default redirect
+ * @property {string} [defaultBackendAddressPool.id] Resource ID.
+ * @property {object} [defaultBackendHttpSettings] Default backend http
+ * settings resource of URL path map.
+ * @property {string} [defaultBackendHttpSettings.id] Resource ID.
+ * @property {object} [defaultRedirectConfiguration] Default redirect
  * configuration resource of URL path map.
- * @member {string} [defaultRedirectConfiguration.id] Resource ID.
- * @member {array} [pathRules] Path rule of URL path map resource.
- * @member {string} [provisioningState] Provisioning state of the backend http
- * settings resource. Possible values are: 'Updating', 'Deleting', and
+ * @property {string} [defaultRedirectConfiguration.id] Resource ID.
+ * @property {array} [pathRules] Path rule of URL path map resource.
+ * @property {string} [provisioningState] Provisioning state of the backend
+ * http settings resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] Name of the URL path map that is unique within an
+ * @property {string} [name] Name of the URL path map that is unique within an
  * Application Gateway.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {string} [type] Type of the resource.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {string} [type] Type of the resource.
  */
 export interface ApplicationGatewayUrlPathMap extends SubResource {
   defaultBackendAddressPool?: SubResource;
@@ -4360,9 +4394,9 @@ export interface ApplicationGatewayUrlPathMap extends SubResource {
  * @constructor
  * Allows to disable rules within a rule group or an entire rule group.
  *
- * @member {string} ruleGroupName The name of the rule group that will be
+ * @property {string} ruleGroupName The name of the rule group that will be
  * disabled.
- * @member {array} [rules] The list of rules that will be disabled. If null,
+ * @property {array} [rules] The list of rules that will be disabled. If null,
  * all rules of the rule group will be disabled.
  */
 export interface ApplicationGatewayFirewallDisabledRuleGroup {
@@ -4376,12 +4410,12 @@ export interface ApplicationGatewayFirewallDisabledRuleGroup {
  * @constructor
  * Allow to exclude some variable satisfy the condition for the WAF check
  *
- * @member {string} matchVariable The variable to be excluded.
- * @member {string} selectorMatchOperator When matchVariable is a collection,
+ * @property {string} matchVariable The variable to be excluded.
+ * @property {string} selectorMatchOperator When matchVariable is a collection,
  * operate on the selector to specify which elements in the collection this
  * exclusion applies to.
- * @member {string} selector When matchVariable is a collection, operator used
- * to specify which elements in the collection this exclusion applies to.
+ * @property {string} selector When matchVariable is a collection, operator
+ * used to specify which elements in the collection this exclusion applies to.
  */
 export interface ApplicationGatewayFirewallExclusion {
   matchVariable: string;
@@ -4395,22 +4429,22 @@ export interface ApplicationGatewayFirewallExclusion {
  * @constructor
  * Application gateway web application firewall configuration.
  *
- * @member {boolean} enabled Whether the web application firewall is enabled or
- * not.
- * @member {string} firewallMode Web application firewall mode. Possible values
- * include: 'Detection', 'Prevention'
- * @member {string} ruleSetType The type of the web application firewall rule
+ * @property {boolean} enabled Whether the web application firewall is enabled
+ * or not.
+ * @property {string} firewallMode Web application firewall mode. Possible
+ * values include: 'Detection', 'Prevention'
+ * @property {string} ruleSetType The type of the web application firewall rule
  * set. Possible values are: 'OWASP'.
- * @member {string} ruleSetVersion The version of the rule set type.
- * @member {array} [disabledRuleGroups] The disabled rule groups.
- * @member {boolean} [requestBodyCheck] Whether allow WAF to check request
+ * @property {string} ruleSetVersion The version of the rule set type.
+ * @property {array} [disabledRuleGroups] The disabled rule groups.
+ * @property {boolean} [requestBodyCheck] Whether allow WAF to check request
  * Body.
- * @member {number} [maxRequestBodySize] Maxium request body size for WAF.
- * @member {number} [maxRequestBodySizeInKb] Maxium request body size in Kb for
+ * @property {number} [maxRequestBodySize] Maxium request body size for WAF.
+ * @property {number} [maxRequestBodySizeInKb] Maxium request body size in Kb
+ * for WAF.
+ * @property {number} [fileUploadLimitInMb] Maxium file upload size in Mb for
  * WAF.
- * @member {number} [fileUploadLimitInMb] Maxium file upload size in Mb for
- * WAF.
- * @member {array} [exclusions] The exclusion list.
+ * @property {array} [exclusions] The exclusion list.
  */
 export interface ApplicationGatewayWebApplicationFirewallConfiguration {
   enabled: boolean;
@@ -4431,7 +4465,7 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
  * @constructor
  * Application Gateway autoscale configuration.
  *
- * @member {number} minCapacity Lower bound on number of Application Gateway
+ * @property {number} minCapacity Lower bound on number of Application Gateway
  * instances
  */
 export interface ApplicationGatewayAutoscaleConfiguration {
@@ -4444,95 +4478,96 @@ export interface ApplicationGatewayAutoscaleConfiguration {
  * @constructor
  * Application gateway resource
  *
- * @member {object} [sku] SKU of the application gateway resource.
- * @member {string} [sku.name] Name of an application gateway SKU. Possible
+ * @property {object} [sku] SKU of the application gateway resource.
+ * @property {string} [sku.name] Name of an application gateway SKU. Possible
  * values include: 'Standard_Small', 'Standard_Medium', 'Standard_Large',
  * 'WAF_Medium', 'WAF_Large', 'Standard_v2', 'WAF_v2'
- * @member {string} [sku.tier] Tier of an application gateway. Possible values
- * include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2'
- * @member {number} [sku.capacity] Capacity (instance count) of an application
- * gateway.
- * @member {object} [sslPolicy] SSL policy of the application gateway resource.
- * @member {array} [sslPolicy.disabledSslProtocols] Ssl protocols to be
+ * @property {string} [sku.tier] Tier of an application gateway. Possible
+ * values include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2'
+ * @property {number} [sku.capacity] Capacity (instance count) of an
+ * application gateway.
+ * @property {object} [sslPolicy] SSL policy of the application gateway
+ * resource.
+ * @property {array} [sslPolicy.disabledSslProtocols] Ssl protocols to be
  * disabled on application gateway.
- * @member {string} [sslPolicy.policyType] Type of Ssl Policy. Possible values
- * include: 'Predefined', 'Custom'
- * @member {string} [sslPolicy.policyName] Name of Ssl predefined policy.
+ * @property {string} [sslPolicy.policyType] Type of Ssl Policy. Possible
+ * values include: 'Predefined', 'Custom'
+ * @property {string} [sslPolicy.policyName] Name of Ssl predefined policy.
  * Possible values include: 'AppGwSslPolicy20150501', 'AppGwSslPolicy20170401',
  * 'AppGwSslPolicy20170401S'
- * @member {array} [sslPolicy.cipherSuites] Ssl cipher suites to be enabled in
- * the specified order to application gateway.
- * @member {string} [sslPolicy.minProtocolVersion] Minimum version of Ssl
+ * @property {array} [sslPolicy.cipherSuites] Ssl cipher suites to be enabled
+ * in the specified order to application gateway.
+ * @property {string} [sslPolicy.minProtocolVersion] Minimum version of Ssl
  * protocol to be supported on application gateway. Possible values include:
  * 'TLSv1_0', 'TLSv1_1', 'TLSv1_2'
- * @member {string} [operationalState] Operational state of the application
+ * @property {string} [operationalState] Operational state of the application
  * gateway resource. Possible values include: 'Stopped', 'Starting', 'Running',
  * 'Stopping'
- * @member {array} [gatewayIPConfigurations] Subnets of application the gateway
- * resource.
- * @member {array} [authenticationCertificates] Authentication certificates of
- * the application gateway resource.
- * @member {array} [trustedRootCertificates] Trusted Root certificates of the
- * application gateway resource.
- * @member {array} [sslCertificates] SSL certificates of the application
+ * @property {array} [gatewayIPConfigurations] Subnets of application the
  * gateway resource.
- * @member {array} [frontendIPConfigurations] Frontend IP addresses of the
+ * @property {array} [authenticationCertificates] Authentication certificates
+ * of the application gateway resource.
+ * @property {array} [trustedRootCertificates] Trusted Root certificates of the
  * application gateway resource.
- * @member {array} [frontendPorts] Frontend ports of the application gateway
+ * @property {array} [sslCertificates] SSL certificates of the application
+ * gateway resource.
+ * @property {array} [frontendIPConfigurations] Frontend IP addresses of the
+ * application gateway resource.
+ * @property {array} [frontendPorts] Frontend ports of the application gateway
  * resource.
- * @member {array} [probes] Probes of the application gateway resource.
- * @member {array} [backendAddressPools] Backend address pool of the
+ * @property {array} [probes] Probes of the application gateway resource.
+ * @property {array} [backendAddressPools] Backend address pool of the
  * application gateway resource.
- * @member {array} [backendHttpSettingsCollection] Backend http settings of the
- * application gateway resource.
- * @member {array} [httpListeners] Http listeners of the application gateway
+ * @property {array} [backendHttpSettingsCollection] Backend http settings of
+ * the application gateway resource.
+ * @property {array} [httpListeners] Http listeners of the application gateway
  * resource.
- * @member {array} [urlPathMaps] URL path map of the application gateway
+ * @property {array} [urlPathMaps] URL path map of the application gateway
  * resource.
- * @member {array} [requestRoutingRules] Request routing rules of the
+ * @property {array} [requestRoutingRules] Request routing rules of the
  * application gateway resource.
- * @member {array} [redirectConfigurations] Redirect configurations of the
+ * @property {array} [redirectConfigurations] Redirect configurations of the
  * application gateway resource.
- * @member {object} [webApplicationFirewallConfiguration] Web application
+ * @property {object} [webApplicationFirewallConfiguration] Web application
  * firewall configuration.
- * @member {boolean} [webApplicationFirewallConfiguration.enabled] Whether the
- * web application firewall is enabled or not.
- * @member {string} [webApplicationFirewallConfiguration.firewallMode] Web
+ * @property {boolean} [webApplicationFirewallConfiguration.enabled] Whether
+ * the web application firewall is enabled or not.
+ * @property {string} [webApplicationFirewallConfiguration.firewallMode] Web
  * application firewall mode. Possible values include: 'Detection',
  * 'Prevention'
- * @member {string} [webApplicationFirewallConfiguration.ruleSetType] The type
- * of the web application firewall rule set. Possible values are: 'OWASP'.
- * @member {string} [webApplicationFirewallConfiguration.ruleSetVersion] The
+ * @property {string} [webApplicationFirewallConfiguration.ruleSetType] The
+ * type of the web application firewall rule set. Possible values are: 'OWASP'.
+ * @property {string} [webApplicationFirewallConfiguration.ruleSetVersion] The
  * version of the rule set type.
- * @member {array} [webApplicationFirewallConfiguration.disabledRuleGroups] The
- * disabled rule groups.
- * @member {boolean} [webApplicationFirewallConfiguration.requestBodyCheck]
+ * @property {array} [webApplicationFirewallConfiguration.disabledRuleGroups]
+ * The disabled rule groups.
+ * @property {boolean} [webApplicationFirewallConfiguration.requestBodyCheck]
  * Whether allow WAF to check request Body.
- * @member {number} [webApplicationFirewallConfiguration.maxRequestBodySize]
+ * @property {number} [webApplicationFirewallConfiguration.maxRequestBodySize]
  * Maxium request body size for WAF.
- * @member {number}
+ * @property {number}
  * [webApplicationFirewallConfiguration.maxRequestBodySizeInKb] Maxium request
  * body size in Kb for WAF.
- * @member {number} [webApplicationFirewallConfiguration.fileUploadLimitInMb]
+ * @property {number} [webApplicationFirewallConfiguration.fileUploadLimitInMb]
  * Maxium file upload size in Mb for WAF.
- * @member {array} [webApplicationFirewallConfiguration.exclusions] The
+ * @property {array} [webApplicationFirewallConfiguration.exclusions] The
  * exclusion list.
- * @member {boolean} [enableHttp2] Whether HTTP2 is enabled on the application
+ * @property {boolean} [enableHttp2] Whether HTTP2 is enabled on the
+ * application gateway resource.
+ * @property {boolean} [enableFips] Whether FIPS is enabled on the application
  * gateway resource.
- * @member {boolean} [enableFips] Whether FIPS is enabled on the application
+ * @property {object} [autoscaleConfiguration] Autoscale Configuration.
+ * @property {number} [autoscaleConfiguration.minCapacity] Lower bound on
+ * number of Application Gateway instances
+ * @property {string} [resourceGuid] Resource GUID property of the application
  * gateway resource.
- * @member {object} [autoscaleConfiguration] Autoscale Configuration.
- * @member {number} [autoscaleConfiguration.minCapacity] Lower bound on number
- * of Application Gateway instances
- * @member {string} [resourceGuid] Resource GUID property of the application
- * gateway resource.
- * @member {string} [provisioningState] Provisioning state of the application
+ * @property {string} [provisioningState] Provisioning state of the application
  * gateway resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {array} [customErrorConfigurations] Custom error configurations of
+ * @property {array} [customErrorConfigurations] Custom error configurations of
  * the application gateway resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {array} [zones] A list of availability zones denoting where the
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {array} [zones] A list of availability zones denoting where the
  * resource needs to come from.
  */
 export interface ApplicationGateway extends Resource {
@@ -4569,8 +4604,9 @@ export interface ApplicationGateway extends Resource {
  * @constructor
  * A web application firewall rule.
  *
- * @member {number} ruleId The identifier of the web application firewall rule.
- * @member {string} [description] The description of the web application
+ * @property {number} ruleId The identifier of the web application firewall
+ * rule.
+ * @property {string} [description] The description of the web application
  * firewall rule.
  */
 export interface ApplicationGatewayFirewallRule {
@@ -4584,11 +4620,12 @@ export interface ApplicationGatewayFirewallRule {
  * @constructor
  * A web application firewall rule group.
  *
- * @member {string} ruleGroupName The name of the web application firewall rule
- * group.
- * @member {string} [description] The description of the web application
+ * @property {string} ruleGroupName The name of the web application firewall
+ * rule group.
+ * @property {string} [description] The description of the web application
  * firewall rule group.
- * @member {array} rules The rules of the web application firewall rule group.
+ * @property {array} rules The rules of the web application firewall rule
+ * group.
  */
 export interface ApplicationGatewayFirewallRuleGroup {
   ruleGroupName: string;
@@ -4602,13 +4639,13 @@ export interface ApplicationGatewayFirewallRuleGroup {
  * @constructor
  * A web application firewall rule set.
  *
- * @member {string} [provisioningState] The provisioning state of the web
+ * @property {string} [provisioningState] The provisioning state of the web
  * application firewall rule set.
- * @member {string} ruleSetType The type of the web application firewall rule
+ * @property {string} ruleSetType The type of the web application firewall rule
  * set.
- * @member {string} ruleSetVersion The version of the web application firewall
- * rule set type.
- * @member {array} ruleGroups The rule groups of the web application firewall
+ * @property {string} ruleSetVersion The version of the web application
+ * firewall rule set type.
+ * @property {array} ruleGroups The rule groups of the web application firewall
  * rule set.
  */
 export interface ApplicationGatewayFirewallRuleSet extends Resource {
@@ -4624,7 +4661,7 @@ export interface ApplicationGatewayFirewallRuleSet extends Resource {
  * @constructor
  * Response for ApplicationGatewayAvailableWafRuleSets API service call.
  *
- * @member {array} [value] The list of application gateway rule sets.
+ * @property {array} [value] The list of application gateway rule sets.
  */
 export interface ApplicationGatewayAvailableWafRuleSetsResult {
   value?: ApplicationGatewayFirewallRuleSet[];
@@ -4636,14 +4673,15 @@ export interface ApplicationGatewayAvailableWafRuleSetsResult {
  * @constructor
  * Response for ApplicationGatewayAvailableSslOptions API service call.
  *
- * @member {array} [predefinedPolicies] List of available Ssl predefined
+ * @property {array} [predefinedPolicies] List of available Ssl predefined
  * policy.
- * @member {string} [defaultPolicy] Name of the Ssl predefined policy applied
+ * @property {string} [defaultPolicy] Name of the Ssl predefined policy applied
  * by default to application gateway. Possible values include:
  * 'AppGwSslPolicy20150501', 'AppGwSslPolicy20170401',
  * 'AppGwSslPolicy20170401S'
- * @member {array} [availableCipherSuites] List of available Ssl cipher suites.
- * @member {array} [availableProtocols] List of available Ssl protocols.
+ * @property {array} [availableCipherSuites] List of available Ssl cipher
+ * suites.
+ * @property {array} [availableProtocols] List of available Ssl protocols.
  */
 export interface ApplicationGatewayAvailableSslOptions extends Resource {
   predefinedPolicies?: SubResource[];
@@ -4658,11 +4696,11 @@ export interface ApplicationGatewayAvailableSslOptions extends Resource {
  * @constructor
  * An Ssl predefined policy
  *
- * @member {string} [name] Name of the Ssl predefined policy.
- * @member {array} [cipherSuites] Ssl cipher suites to be enabled in the
+ * @property {string} [name] Name of the Ssl predefined policy.
+ * @property {array} [cipherSuites] Ssl cipher suites to be enabled in the
  * specified order for application gateway.
- * @member {string} [minProtocolVersion] Minimum version of Ssl protocol to be
- * supported on application gateway. Possible values include: 'TLSv1_0',
+ * @property {string} [minProtocolVersion] Minimum version of Ssl protocol to
+ * be supported on application gateway. Possible values include: 'TLSv1_0',
  * 'TLSv1_1', 'TLSv1_2'
  */
 export interface ApplicationGatewaySslPredefinedPolicy extends SubResource {
@@ -4677,7 +4715,7 @@ export interface ApplicationGatewaySslPredefinedPolicy extends SubResource {
  * @constructor
  * Tags object for patch operations.
  *
- * @member {object} [tags] Resource tags.
+ * @property {object} [tags] Resource tags.
  */
 export interface TagsObject {
   tags?: { [propertyName: string]: string };
@@ -4690,12 +4728,12 @@ export interface TagsObject {
  * The serviceName of an AvailableDelegation indicates a possible delegation
  * for a subnet.
  *
- * @member {string} [name] The name of the AvailableDelegation resource.
- * @member {string} [id] A unique identifier of the AvailableDelegation
+ * @property {string} [name] The name of the AvailableDelegation resource.
+ * @property {string} [id] A unique identifier of the AvailableDelegation
  * resource.
- * @member {string} [type] Resource type.
- * @member {string} [serviceName] The name of the service and resource
- * @member {array} [actions] Describes the actions permitted to the service
+ * @property {string} [type] Resource type.
+ * @property {string} [serviceName] The name of the service and resource
+ * @property {array} [actions] Describes the actions permitted to the service
  * upon delegation
  */
 export interface AvailableDelegation {
@@ -4712,20 +4750,21 @@ export interface AvailableDelegation {
  * @constructor
  * IP configuration of an Azure Firewall.
  *
- * @member {string} [privateIPAddress] The Firewall Internal Load Balancer IP
+ * @property {string} [privateIPAddress] The Firewall Internal Load Balancer IP
  * to be used as the next hop in User Defined Routes.
- * @member {object} [subnet] Reference of the subnet resource. This resource
+ * @property {object} [subnet] Reference of the subnet resource. This resource
  * must be named 'AzureFirewallSubnet'.
- * @member {string} [subnet.id] Resource ID.
- * @member {object} [publicIPAddress] Reference of the PublicIP resource. This
- * field is a mandatory input if subnet is not null.
- * @member {string} [publicIPAddress.id] Resource ID.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {string} [name] Name of the resource that is unique within a
+ * @property {string} [subnet.id] Resource ID.
+ * @property {object} [publicIPAddress] Reference of the PublicIP resource.
+ * This field is a mandatory input if subnet is not null.
+ * @property {string} [publicIPAddress.id] Resource ID.
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+ * 'Failed'
+ * @property {string} [name] Name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface AzureFirewallIPConfiguration extends SubResource {
   privateIPAddress?: string;
@@ -4742,7 +4781,7 @@ export interface AzureFirewallIPConfiguration extends SubResource {
  * @constructor
  * Properties of the AzureFirewallRCAction.
  *
- * @member {string} [type] The type of action. Possible values include:
+ * @property {string} [type] The type of action. Possible values include:
  * 'Allow', 'Deny'
  */
 export interface AzureFirewallRCAction {
@@ -4755,10 +4794,10 @@ export interface AzureFirewallRCAction {
  * @constructor
  * Properties of the application rule protocol.
  *
- * @member {string} [protocolType] Protocol type. Possible values include:
+ * @property {string} [protocolType] Protocol type. Possible values include:
  * 'Http', 'Https'
- * @member {number} [port] Port number for the protocol, cannot be greater than
- * 64000. This field is optional.
+ * @property {number} [port] Port number for the protocol, cannot be greater
+ * than 64000. This field is optional.
  */
 export interface AzureFirewallApplicationRuleProtocol {
   protocolType?: string;
@@ -4771,12 +4810,13 @@ export interface AzureFirewallApplicationRuleProtocol {
  * @constructor
  * Properties of an application rule.
  *
- * @member {string} [name] Name of the application rule.
- * @member {string} [description] Description of the rule.
- * @member {array} [sourceAddresses] List of source IP addresses for this rule.
- * @member {array} [protocols] Array of ApplicationRuleProtocols.
- * @member {array} [targetFqdns] List of FQDNs for this rule.
- * @member {array} [fqdnTags] List of FQDN Tags for this rule.
+ * @property {string} [name] Name of the application rule.
+ * @property {string} [description] Description of the rule.
+ * @property {array} [sourceAddresses] List of source IP addresses for this
+ * rule.
+ * @property {array} [protocols] Array of ApplicationRuleProtocols.
+ * @property {array} [targetFqdns] List of FQDNs for this rule.
+ * @property {array} [fqdnTags] List of FQDN Tags for this rule.
  */
 export interface AzureFirewallApplicationRule {
   name?: string;
@@ -4793,19 +4833,20 @@ export interface AzureFirewallApplicationRule {
  * @constructor
  * Application rule collection resource
  *
- * @member {number} [priority] Priority of the application rule collection
+ * @property {number} [priority] Priority of the application rule collection
  * resource.
- * @member {object} [action] The action type of a rule collection
- * @member {string} [action.type] The type of action. Possible values include:
- * 'Allow', 'Deny'
- * @member {array} [rules] Collection of rules used by a application rule
+ * @property {object} [action] The action type of a rule collection
+ * @property {string} [action.type] The type of action. Possible values
+ * include: 'Allow', 'Deny'
+ * @property {array} [rules] Collection of rules used by a application rule
  * collection.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+ * 'Failed'
+ * @property {string} [name] Gets name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface AzureFirewallApplicationRuleCollection extends SubResource {
   priority?: number;
@@ -4822,8 +4863,8 @@ export interface AzureFirewallApplicationRuleCollection extends SubResource {
  * @constructor
  * AzureFirewall NAT Rule Collection Action.
  *
- * @member {string} [type] The type of action. Possible values include: 'Snat',
- * 'Dnat'
+ * @property {string} [type] The type of action. Possible values include:
+ * 'Snat', 'Dnat'
  */
 export interface AzureFirewallNatRCAction {
   type?: string;
@@ -4835,17 +4876,18 @@ export interface AzureFirewallNatRCAction {
  * @constructor
  * Properties of a NAT rule.
  *
- * @member {string} [name] Name of the NAT rule.
- * @member {string} [description] Description of the rule.
- * @member {array} [sourceAddresses] List of source IP addresses for this rule.
- * @member {array} [destinationAddresses] List of destination IP addresses for
- * this rule.
- * @member {array} [destinationPorts] List of destination ports.
- * @member {array} [protocols] Array of AzureFirewallNetworkRuleProtocols
- * applicable to this NAT rule.
- * @member {string} [translatedAddress] The translated address for this NAT
+ * @property {string} [name] Name of the NAT rule.
+ * @property {string} [description] Description of the rule.
+ * @property {array} [sourceAddresses] List of source IP addresses for this
  * rule.
- * @member {string} [translatedPort] The translated port for this NAT rule.
+ * @property {array} [destinationAddresses] List of destination IP addresses
+ * for this rule.
+ * @property {array} [destinationPorts] List of destination ports.
+ * @property {array} [protocols] Array of AzureFirewallNetworkRuleProtocols
+ * applicable to this NAT rule.
+ * @property {string} [translatedAddress] The translated address for this NAT
+ * rule.
+ * @property {string} [translatedPort] The translated port for this NAT rule.
  */
 export interface AzureFirewallNatRule {
   name?: string;
@@ -4864,17 +4906,18 @@ export interface AzureFirewallNatRule {
  * @constructor
  * NAT rule collection resource
  *
- * @member {number} [priority] Priority of the NAT rule collection resource.
- * @member {object} [action] The action type of a NAT rule collection
- * @member {string} [action.type] The type of action. Possible values include:
- * 'Snat', 'Dnat'
- * @member {array} [rules] Collection of rules used by a NAT rule collection.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @property {number} [priority] Priority of the NAT rule collection resource.
+ * @property {object} [action] The action type of a NAT rule collection
+ * @property {string} [action.type] The type of action. Possible values
+ * include: 'Snat', 'Dnat'
+ * @property {array} [rules] Collection of rules used by a NAT rule collection.
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+ * 'Failed'
+ * @property {string} [name] Gets name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface AzureFirewallNatRuleCollection extends SubResource {
   priority?: number;
@@ -4891,12 +4934,13 @@ export interface AzureFirewallNatRuleCollection extends SubResource {
  * @constructor
  * Properties of the network rule.
  *
- * @member {string} [name] Name of the network rule.
- * @member {string} [description] Description of the rule.
- * @member {array} [protocols] Array of AzureFirewallNetworkRuleProtocols.
- * @member {array} [sourceAddresses] List of source IP addresses for this rule.
- * @member {array} [destinationAddresses] List of destination IP addresses.
- * @member {array} [destinationPorts] List of destination ports.
+ * @property {string} [name] Name of the network rule.
+ * @property {string} [description] Description of the rule.
+ * @property {array} [protocols] Array of AzureFirewallNetworkRuleProtocols.
+ * @property {array} [sourceAddresses] List of source IP addresses for this
+ * rule.
+ * @property {array} [destinationAddresses] List of destination IP addresses.
+ * @property {array} [destinationPorts] List of destination ports.
  */
 export interface AzureFirewallNetworkRule {
   name?: string;
@@ -4913,19 +4957,20 @@ export interface AzureFirewallNetworkRule {
  * @constructor
  * Network rule collection resource
  *
- * @member {number} [priority] Priority of the network rule collection
+ * @property {number} [priority] Priority of the network rule collection
  * resource.
- * @member {object} [action] The action type of a rule collection
- * @member {string} [action.type] The type of action. Possible values include:
- * 'Allow', 'Deny'
- * @member {array} [rules] Collection of rules used by a network rule
+ * @property {object} [action] The action type of a rule collection
+ * @property {string} [action.type] The type of action. Possible values
+ * include: 'Allow', 'Deny'
+ * @property {array} [rules] Collection of rules used by a network rule
  * collection.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+ * 'Failed'
+ * @property {string} [name] Gets name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface AzureFirewallNetworkRuleCollection extends SubResource {
   priority?: number;
@@ -4942,18 +4987,19 @@ export interface AzureFirewallNetworkRuleCollection extends SubResource {
  * @constructor
  * Azure Firewall resource
  *
- * @member {array} [applicationRuleCollections] Collection of application rule
+ * @property {array} [applicationRuleCollections] Collection of application
+ * rule collections used by Azure Firewall.
+ * @property {array} [natRuleCollections] Collection of NAT rule collections
+ * used by Azure Firewall.
+ * @property {array} [networkRuleCollections] Collection of network rule
  * collections used by Azure Firewall.
- * @member {array} [natRuleCollections] Collection of NAT rule collections used
- * by Azure Firewall.
- * @member {array} [networkRuleCollections] Collection of network rule
- * collections used by Azure Firewall.
- * @member {array} [ipConfigurations] IP configuration of the Azure Firewall
+ * @property {array} [ipConfigurations] IP configuration of the Azure Firewall
  * resource.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+ * 'Failed'
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface AzureFirewall extends Resource {
   applicationRuleCollections?: AzureFirewallApplicationRuleCollection[];
@@ -4970,10 +5016,11 @@ export interface AzureFirewall extends Resource {
  * @constructor
  * Azure Firewall FQDN Tag Resource
  *
- * @member {string} [provisioningState] The provisioning state of the resource.
- * @member {string} [fqdnTagName] The name of this FQDN Tag.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource.
+ * @property {string} [fqdnTagName] The name of this FQDN Tag.
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface AzureFirewallFqdnTag extends Resource {
   readonly provisioningState?: string;
@@ -4987,7 +5034,7 @@ export interface AzureFirewallFqdnTag extends Resource {
  * @constructor
  * Response for the CheckDnsNameAvailability API service call.
  *
- * @member {boolean} [available] Domain availability (True/False).
+ * @property {boolean} [available] Domain availability (True/False).
  */
 export interface DnsNameAvailabilityResult {
   available?: boolean;
@@ -4999,22 +5046,22 @@ export interface DnsNameAvailabilityResult {
  * @constructor
  * A DDoS protection plan in a resource group.
  *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
- * @member {string} [location] Resource location.
- * @member {object} [tags] Resource tags.
- * @member {string} [resourceGuid] The resource GUID property of the DDoS
+ * @property {string} [id] Resource ID.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
+ * @property {string} [location] Resource location.
+ * @property {object} [tags] Resource tags.
+ * @property {string} [resourceGuid] The resource GUID property of the DDoS
  * protection plan resource. It uniquely identifies the resource, even if the
  * user changes its name or migrate the resource across subscriptions or
  * resource groups.
- * @member {string} [provisioningState] The provisioning state of the DDoS
+ * @property {string} [provisioningState] The provisioning state of the DDoS
  * protection plan resource. Possible values are: 'Succeeded', 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {array} [virtualNetworks] The list of virtual networks associated
+ * @property {array} [virtualNetworks] The list of virtual networks associated
  * with the DDoS protection plan resource. This list is read-only.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface DdosProtectionPlan extends BaseResource {
   readonly id?: string;
@@ -5034,8 +5081,8 @@ export interface DdosProtectionPlan extends BaseResource {
  * @constructor
  * Endpoint service.
  *
- * @member {string} [name] Name of the endpoint service.
- * @member {string} [type] Type of the endpoint service.
+ * @property {string} [name] Name of the endpoint service.
+ * @property {string} [type] Type of the endpoint service.
  */
 export interface EndpointServiceResult extends SubResource {
   readonly name?: string;
@@ -5048,17 +5095,17 @@ export interface EndpointServiceResult extends SubResource {
  * @constructor
  * Authorization in an ExpressRouteCircuit resource.
  *
- * @member {string} [authorizationKey] The authorization key.
- * @member {string} [authorizationUseStatus] AuthorizationUseStatus. Possible
+ * @property {string} [authorizationKey] The authorization key.
+ * @property {string} [authorizationUseStatus] AuthorizationUseStatus. Possible
  * values are: 'Available' and 'InUse'. Possible values include: 'Available',
  * 'InUse'
- * @member {string} [provisioningState] Gets the provisioning state of the
+ * @property {string} [provisioningState] Gets the provisioning state of the
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @property {string} [name] Gets name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface ExpressRouteCircuitAuthorization extends SubResource {
   authorizationKey?: string;
@@ -5074,17 +5121,18 @@ export interface ExpressRouteCircuitAuthorization extends SubResource {
  * @constructor
  * Specifies the peering configuration.
  *
- * @member {array} [advertisedPublicPrefixes] The reference of
+ * @property {array} [advertisedPublicPrefixes] The reference of
  * AdvertisedPublicPrefixes.
- * @member {array} [advertisedCommunities] The communities of bgp peering.
- * Spepcified for microsoft peering
- * @member {string} [advertisedPublicPrefixesState] AdvertisedPublicPrefixState
- * of the Peering resource. Possible values are 'NotConfigured', 'Configuring',
- * 'Configured', and 'ValidationNeeded'. Possible values include:
- * 'NotConfigured', 'Configuring', 'Configured', 'ValidationNeeded'
- * @member {number} [legacyMode] The legacy mode of the peering.
- * @member {number} [customerASN] The CustomerASN of the peering.
- * @member {string} [routingRegistryName] The RoutingRegistryName of the
+ * @property {array} [advertisedCommunities] The communities of bgp peering.
+ * Specified for microsoft peering
+ * @property {string} [advertisedPublicPrefixesState]
+ * AdvertisedPublicPrefixState of the Peering resource. Possible values are
+ * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
+ * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
+ * 'ValidationNeeded'
+ * @property {number} [legacyMode] The legacy mode of the peering.
+ * @property {number} [customerASN] The CustomerASN of the peering.
+ * @property {string} [routingRegistryName] The RoutingRegistryName of the
  * configuration.
  */
 export interface ExpressRouteCircuitPeeringConfig {
@@ -5102,17 +5150,18 @@ export interface ExpressRouteCircuitPeeringConfig {
  * @constructor
  * Route Filter Rule Resource
  *
- * @member {string} access The access type of the rule. Valid values are:
+ * @property {string} access The access type of the rule. Valid values are:
  * 'Allow', 'Deny'. Possible values include: 'Allow', 'Deny'
- * @member {array} communities The collection for bgp community values to
+ * @property {array} communities The collection for bgp community values to
  * filter on. e.g. ['12076:5010','12076:5020']
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values are: 'Updating', 'Deleting', 'Succeeded' and 'Failed'.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values are: 'Updating', 'Deleting', 'Succeeded' and
+ * 'Failed'.
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [location] Resource location.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [location] Resource location.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface RouteFilterRule extends SubResource {
   access: string;
@@ -5129,10 +5178,10 @@ export interface RouteFilterRule extends SubResource {
  * @constructor
  * Contains stats associated with the peering.
  *
- * @member {number} [primarybytesIn] Gets BytesIn of the peering.
- * @member {number} [primarybytesOut] Gets BytesOut of the peering.
- * @member {number} [secondarybytesIn] Gets BytesIn of the peering.
- * @member {number} [secondarybytesOut] Gets BytesOut of the peering.
+ * @property {number} [primarybytesIn] Gets BytesIn of the peering.
+ * @property {number} [primarybytesOut] Gets BytesOut of the peering.
+ * @property {number} [secondarybytesIn] Gets BytesIn of the peering.
+ * @property {number} [secondarybytesOut] Gets BytesOut of the peering.
  */
 export interface ExpressRouteCircuitStats {
   primarybytesIn?: number;
@@ -5147,7 +5196,7 @@ export interface ExpressRouteCircuitStats {
  * @constructor
  * The ID of the ExpressRouteConnection.
  *
- * @member {string} [id] The ID of the ExpressRouteConnection.
+ * @property {string} [id] The ID of the ExpressRouteConnection.
  */
 export interface ExpressRouteConnectionId {
   readonly id?: string;
@@ -5159,25 +5208,25 @@ export interface ExpressRouteConnectionId {
  * @constructor
  * Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
  *
- * @member {object} [expressRouteCircuitPeering] Reference to Express Route
+ * @property {object} [expressRouteCircuitPeering] Reference to Express Route
  * Circuit Private Peering Resource of the circuit initiating connection.
- * @member {string} [expressRouteCircuitPeering.id] Resource ID.
- * @member {object} [peerExpressRouteCircuitPeering] Reference to Express Route
- * Circuit Private Peering Resource of the peered circuit.
- * @member {string} [peerExpressRouteCircuitPeering.id] Resource ID.
- * @member {string} [addressPrefix] /29 IP address space to carve out Customer
- * addresses for tunnels.
- * @member {string} [authorizationKey] The authorization key.
- * @member {string} [circuitConnectionStatus] Express Route Circuit Connection
- * State. Possible values are: 'Connected' and 'Disconnected'. Possible values
- * include: 'Connected', 'Connecting', 'Disconnected'
- * @member {string} [provisioningState] Provisioning state of the circuit
- * connection resource. Possible values are: 'Succeded', 'Updating',
+ * @property {string} [expressRouteCircuitPeering.id] Resource ID.
+ * @property {object} [peerExpressRouteCircuitPeering] Reference to Express
+ * Route Circuit Private Peering Resource of the peered circuit.
+ * @property {string} [peerExpressRouteCircuitPeering.id] Resource ID.
+ * @property {string} [addressPrefix] /29 IP address space to carve out
+ * Customer addresses for tunnels.
+ * @property {string} [authorizationKey] The authorization key.
+ * @property {string} [circuitConnectionStatus] Express Route Circuit
+ * Connection State. Possible values are: 'Connected' and 'Disconnected'.
+ * Possible values include: 'Connected', 'Connecting', 'Disconnected'
+ * @property {string} [provisioningState] Provisioning state of the circuit
+ * connection resource. Possible values are: 'Succeeded', 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @property {string} [name] Gets name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface ExpressRouteCircuitConnection extends SubResource {
   expressRouteCircuitPeering?: SubResource;
@@ -5196,105 +5245,106 @@ export interface ExpressRouteCircuitConnection extends SubResource {
  * @constructor
  * Peering in an ExpressRouteCircuit resource.
  *
- * @member {string} [peeringType] The peering type. Possible values include:
+ * @property {string} [peeringType] The peering type. Possible values include:
  * 'AzurePublicPeering', 'AzurePrivatePeering', 'MicrosoftPeering'
- * @member {string} [state] The peering state. Possible values include:
+ * @property {string} [state] The peering state. Possible values include:
  * 'Disabled', 'Enabled'
- * @member {number} [azureASN] The Azure ASN.
- * @member {number} [peerASN] The peer ASN.
- * @member {string} [primaryPeerAddressPrefix] The primary address prefix.
- * @member {string} [secondaryPeerAddressPrefix] The secondary address prefix.
- * @member {string} [primaryAzurePort] The primary port.
- * @member {string} [secondaryAzurePort] The secondary port.
- * @member {string} [sharedKey] The shared key.
- * @member {number} [vlanId] The VLAN ID.
- * @member {object} [microsoftPeeringConfig] The Microsoft peering
+ * @property {number} [azureASN] The Azure ASN.
+ * @property {number} [peerASN] The peer ASN.
+ * @property {string} [primaryPeerAddressPrefix] The primary address prefix.
+ * @property {string} [secondaryPeerAddressPrefix] The secondary address
+ * prefix.
+ * @property {string} [primaryAzurePort] The primary port.
+ * @property {string} [secondaryAzurePort] The secondary port.
+ * @property {string} [sharedKey] The shared key.
+ * @property {number} [vlanId] The VLAN ID.
+ * @property {object} [microsoftPeeringConfig] The Microsoft peering
  * configuration.
- * @member {array} [microsoftPeeringConfig.advertisedPublicPrefixes] The
+ * @property {array} [microsoftPeeringConfig.advertisedPublicPrefixes] The
  * reference of AdvertisedPublicPrefixes.
- * @member {array} [microsoftPeeringConfig.advertisedCommunities] The
- * communities of bgp peering. Spepcified for microsoft peering
- * @member {string} [microsoftPeeringConfig.advertisedPublicPrefixesState]
+ * @property {array} [microsoftPeeringConfig.advertisedCommunities] The
+ * communities of bgp peering. Specified for microsoft peering
+ * @property {string} [microsoftPeeringConfig.advertisedPublicPrefixesState]
  * AdvertisedPublicPrefixState of the Peering resource. Possible values are
  * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
  * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
  * 'ValidationNeeded'
- * @member {number} [microsoftPeeringConfig.legacyMode] The legacy mode of the
- * peering.
- * @member {number} [microsoftPeeringConfig.customerASN] The CustomerASN of the
- * peering.
- * @member {string} [microsoftPeeringConfig.routingRegistryName] The
+ * @property {number} [microsoftPeeringConfig.legacyMode] The legacy mode of
+ * the peering.
+ * @property {number} [microsoftPeeringConfig.customerASN] The CustomerASN of
+ * the peering.
+ * @property {string} [microsoftPeeringConfig.routingRegistryName] The
  * RoutingRegistryName of the configuration.
- * @member {object} [stats] Gets peering stats.
- * @member {number} [stats.primarybytesIn] Gets BytesIn of the peering.
- * @member {number} [stats.primarybytesOut] Gets BytesOut of the peering.
- * @member {number} [stats.secondarybytesIn] Gets BytesIn of the peering.
- * @member {number} [stats.secondarybytesOut] Gets BytesOut of the peering.
- * @member {string} [provisioningState] Gets the provisioning state of the
+ * @property {object} [stats] Gets peering stats.
+ * @property {number} [stats.primarybytesIn] Gets BytesIn of the peering.
+ * @property {number} [stats.primarybytesOut] Gets BytesOut of the peering.
+ * @property {number} [stats.secondarybytesIn] Gets BytesIn of the peering.
+ * @property {number} [stats.secondarybytesOut] Gets BytesOut of the peering.
+ * @property {string} [provisioningState] Gets the provisioning state of the
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [gatewayManagerEtag] The GatewayManager Etag.
- * @member {string} [lastModifiedBy] Gets whether the provider or the customer
- * last modified the peering.
- * @member {object} [routeFilter] The reference of the RouteFilter resource.
- * @member {array} [routeFilter.rules] Collection of RouteFilterRules contained
- * within a route filter.
- * @member {array} [routeFilter.peerings] A collection of references to express
- * route circuit peerings.
- * @member {string} [routeFilter.provisioningState] The provisioning state of
+ * @property {string} [gatewayManagerEtag] The GatewayManager Etag.
+ * @property {string} [lastModifiedBy] Gets whether the provider or the
+ * customer last modified the peering.
+ * @property {object} [routeFilter] The reference of the RouteFilter resource.
+ * @property {array} [routeFilter.rules] Collection of RouteFilterRules
+ * contained within a route filter.
+ * @property {array} [routeFilter.peerings] A collection of references to
+ * express route circuit peerings.
+ * @property {string} [routeFilter.provisioningState] The provisioning state of
  * the resource. Possible values are: 'Updating', 'Deleting', 'Succeeded' and
  * 'Failed'.
- * @member {string} [routeFilter.etag] Gets a unique read-only string that
+ * @property {string} [routeFilter.etag] Gets a unique read-only string that
  * changes whenever the resource is updated.
- * @member {object} [ipv6PeeringConfig] The IPv6 peering configuration.
- * @member {string} [ipv6PeeringConfig.primaryPeerAddressPrefix] The primary
+ * @property {object} [ipv6PeeringConfig] The IPv6 peering configuration.
+ * @property {string} [ipv6PeeringConfig.primaryPeerAddressPrefix] The primary
  * address prefix.
- * @member {string} [ipv6PeeringConfig.secondaryPeerAddressPrefix] The
+ * @property {string} [ipv6PeeringConfig.secondaryPeerAddressPrefix] The
  * secondary address prefix.
- * @member {object} [ipv6PeeringConfig.microsoftPeeringConfig] The Microsoft
+ * @property {object} [ipv6PeeringConfig.microsoftPeeringConfig] The Microsoft
  * peering configuration.
- * @member {array}
+ * @property {array}
  * [ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixes] The
  * reference of AdvertisedPublicPrefixes.
- * @member {array}
+ * @property {array}
  * [ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities] The
- * communities of bgp peering. Spepcified for microsoft peering
- * @member {string}
+ * communities of bgp peering. Specified for microsoft peering
+ * @property {string}
  * [ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
  * AdvertisedPublicPrefixState of the Peering resource. Possible values are
  * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
  * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
  * 'ValidationNeeded'
- * @member {number} [ipv6PeeringConfig.microsoftPeeringConfig.legacyMode] The
+ * @property {number} [ipv6PeeringConfig.microsoftPeeringConfig.legacyMode] The
  * legacy mode of the peering.
- * @member {number} [ipv6PeeringConfig.microsoftPeeringConfig.customerASN] The
- * CustomerASN of the peering.
- * @member {string}
+ * @property {number} [ipv6PeeringConfig.microsoftPeeringConfig.customerASN]
+ * The CustomerASN of the peering.
+ * @property {string}
  * [ipv6PeeringConfig.microsoftPeeringConfig.routingRegistryName] The
  * RoutingRegistryName of the configuration.
- * @member {object} [ipv6PeeringConfig.routeFilter] The reference of the
+ * @property {object} [ipv6PeeringConfig.routeFilter] The reference of the
  * RouteFilter resource.
- * @member {array} [ipv6PeeringConfig.routeFilter.rules] Collection of
+ * @property {array} [ipv6PeeringConfig.routeFilter.rules] Collection of
  * RouteFilterRules contained within a route filter.
- * @member {array} [ipv6PeeringConfig.routeFilter.peerings] A collection of
+ * @property {array} [ipv6PeeringConfig.routeFilter.peerings] A collection of
  * references to express route circuit peerings.
- * @member {string} [ipv6PeeringConfig.routeFilter.provisioningState] The
+ * @property {string} [ipv6PeeringConfig.routeFilter.provisioningState] The
  * provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', 'Succeeded' and 'Failed'.
- * @member {string} [ipv6PeeringConfig.routeFilter.etag] Gets a unique
+ * @property {string} [ipv6PeeringConfig.routeFilter.etag] Gets a unique
  * read-only string that changes whenever the resource is updated.
- * @member {string} [ipv6PeeringConfig.state] The state of peering. Possible
+ * @property {string} [ipv6PeeringConfig.state] The state of peering. Possible
  * values are: 'Disabled' and 'Enabled'. Possible values include: 'Disabled',
  * 'Enabled'
- * @member {object} [expressRouteConnection] The ExpressRoute connection.
- * @member {string} [expressRouteConnection.id] The ID of the
+ * @property {object} [expressRouteConnection] The ExpressRoute connection.
+ * @property {string} [expressRouteConnection.id] The ID of the
  * ExpressRouteConnection.
- * @member {array} [connections] The list of circuit connections associated
+ * @property {array} [connections] The list of circuit connections associated
  * with Azure Private Peering for this circuit.
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @property {string} [name] Gets name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface ExpressRouteCircuitPeering extends SubResource {
   peeringType?: string;
@@ -5326,14 +5376,15 @@ export interface ExpressRouteCircuitPeering extends SubResource {
  * @constructor
  * Route Filter Resource.
  *
- * @member {array} [rules] Collection of RouteFilterRules contained within a
+ * @property {array} [rules] Collection of RouteFilterRules contained within a
  * route filter.
- * @member {array} [peerings] A collection of references to express route
+ * @property {array} [peerings] A collection of references to express route
  * circuit peerings.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values are: 'Updating', 'Deleting', 'Succeeded' and 'Failed'.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values are: 'Updating', 'Deleting', 'Succeeded' and
+ * 'Failed'.
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface RouteFilter extends Resource {
   rules?: RouteFilterRule[];
@@ -5348,36 +5399,37 @@ export interface RouteFilter extends Resource {
  * @constructor
  * Contains IPv6 peering config.
  *
- * @member {string} [primaryPeerAddressPrefix] The primary address prefix.
- * @member {string} [secondaryPeerAddressPrefix] The secondary address prefix.
- * @member {object} [microsoftPeeringConfig] The Microsoft peering
+ * @property {string} [primaryPeerAddressPrefix] The primary address prefix.
+ * @property {string} [secondaryPeerAddressPrefix] The secondary address
+ * prefix.
+ * @property {object} [microsoftPeeringConfig] The Microsoft peering
  * configuration.
- * @member {array} [microsoftPeeringConfig.advertisedPublicPrefixes] The
+ * @property {array} [microsoftPeeringConfig.advertisedPublicPrefixes] The
  * reference of AdvertisedPublicPrefixes.
- * @member {array} [microsoftPeeringConfig.advertisedCommunities] The
- * communities of bgp peering. Spepcified for microsoft peering
- * @member {string} [microsoftPeeringConfig.advertisedPublicPrefixesState]
+ * @property {array} [microsoftPeeringConfig.advertisedCommunities] The
+ * communities of bgp peering. Specified for microsoft peering
+ * @property {string} [microsoftPeeringConfig.advertisedPublicPrefixesState]
  * AdvertisedPublicPrefixState of the Peering resource. Possible values are
  * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
  * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
  * 'ValidationNeeded'
- * @member {number} [microsoftPeeringConfig.legacyMode] The legacy mode of the
- * peering.
- * @member {number} [microsoftPeeringConfig.customerASN] The CustomerASN of the
- * peering.
- * @member {string} [microsoftPeeringConfig.routingRegistryName] The
+ * @property {number} [microsoftPeeringConfig.legacyMode] The legacy mode of
+ * the peering.
+ * @property {number} [microsoftPeeringConfig.customerASN] The CustomerASN of
+ * the peering.
+ * @property {string} [microsoftPeeringConfig.routingRegistryName] The
  * RoutingRegistryName of the configuration.
- * @member {object} [routeFilter] The reference of the RouteFilter resource.
- * @member {array} [routeFilter.rules] Collection of RouteFilterRules contained
- * within a route filter.
- * @member {array} [routeFilter.peerings] A collection of references to express
- * route circuit peerings.
- * @member {string} [routeFilter.provisioningState] The provisioning state of
+ * @property {object} [routeFilter] The reference of the RouteFilter resource.
+ * @property {array} [routeFilter.rules] Collection of RouteFilterRules
+ * contained within a route filter.
+ * @property {array} [routeFilter.peerings] A collection of references to
+ * express route circuit peerings.
+ * @property {string} [routeFilter.provisioningState] The provisioning state of
  * the resource. Possible values are: 'Updating', 'Deleting', 'Succeeded' and
  * 'Failed'.
- * @member {string} [routeFilter.etag] Gets a unique read-only string that
+ * @property {string} [routeFilter.etag] Gets a unique read-only string that
  * changes whenever the resource is updated.
- * @member {string} [state] The state of peering. Possible values are:
+ * @property {string} [state] The state of peering. Possible values are:
  * 'Disabled' and 'Enabled'. Possible values include: 'Disabled', 'Enabled'
  */
 export interface Ipv6ExpressRouteCircuitPeeringConfig {
@@ -5394,11 +5446,11 @@ export interface Ipv6ExpressRouteCircuitPeeringConfig {
  * @constructor
  * Contains SKU in an ExpressRouteCircuit.
  *
- * @member {string} [name] The name of the SKU.
- * @member {string} [tier] The tier of the SKU. Possible values are 'Standard',
- * 'Premium' or 'Basic'. Possible values include: 'Standard', 'Premium',
- * 'Basic'
- * @member {string} [family] The family of the SKU. Possible values are:
+ * @property {string} [name] The name of the SKU.
+ * @property {string} [tier] The tier of the SKU. Possible values are
+ * 'Standard', 'Premium' or 'Basic'. Possible values include: 'Standard',
+ * 'Premium', 'Basic'
+ * @property {string} [family] The family of the SKU. Possible values are:
  * 'UnlimitedData' and 'MeteredData'. Possible values include: 'UnlimitedData',
  * 'MeteredData'
  */
@@ -5414,9 +5466,9 @@ export interface ExpressRouteCircuitSku {
  * @constructor
  * Contains ServiceProviderProperties in an ExpressRouteCircuit.
  *
- * @member {string} [serviceProviderName] The serviceProviderName.
- * @member {string} [peeringLocation] The peering location.
- * @member {number} [bandwidthInMbps] The BandwidthInMbps.
+ * @property {string} [serviceProviderName] The serviceProviderName.
+ * @property {string} [peeringLocation] The peering location.
+ * @property {number} [bandwidthInMbps] The BandwidthInMbps.
  */
 export interface ExpressRouteCircuitServiceProviderProperties {
   serviceProviderName?: string;
@@ -5430,48 +5482,49 @@ export interface ExpressRouteCircuitServiceProviderProperties {
  * @constructor
  * ExpressRouteCircuit resource
  *
- * @member {object} [sku] The SKU.
- * @member {string} [sku.name] The name of the SKU.
- * @member {string} [sku.tier] The tier of the SKU. Possible values are
+ * @property {object} [sku] The SKU.
+ * @property {string} [sku.name] The name of the SKU.
+ * @property {string} [sku.tier] The tier of the SKU. Possible values are
  * 'Standard', 'Premium' or 'Basic'. Possible values include: 'Standard',
  * 'Premium', 'Basic'
- * @member {string} [sku.family] The family of the SKU. Possible values are:
+ * @property {string} [sku.family] The family of the SKU. Possible values are:
  * 'UnlimitedData' and 'MeteredData'. Possible values include: 'UnlimitedData',
  * 'MeteredData'
- * @member {boolean} [allowClassicOperations] Allow classic operations
- * @member {string} [circuitProvisioningState] The CircuitProvisioningState
+ * @property {boolean} [allowClassicOperations] Allow classic operations
+ * @property {string} [circuitProvisioningState] The CircuitProvisioningState
  * state of the resource.
- * @member {string} [serviceProviderProvisioningState] The
+ * @property {string} [serviceProviderProvisioningState] The
  * ServiceProviderProvisioningState state of the resource. Possible values are
  * 'NotProvisioned', 'Provisioning', 'Provisioned', and 'Deprovisioning'.
  * Possible values include: 'NotProvisioned', 'Provisioning', 'Provisioned',
  * 'Deprovisioning'
- * @member {array} [authorizations] The list of authorizations.
- * @member {array} [peerings] The list of peerings.
- * @member {string} [serviceKey] The ServiceKey.
- * @member {string} [serviceProviderNotes] The ServiceProviderNotes.
- * @member {object} [serviceProviderProperties] The ServiceProviderProperties.
- * @member {string} [serviceProviderProperties.serviceProviderName] The
+ * @property {array} [authorizations] The list of authorizations.
+ * @property {array} [peerings] The list of peerings.
+ * @property {string} [serviceKey] The ServiceKey.
+ * @property {string} [serviceProviderNotes] The ServiceProviderNotes.
+ * @property {object} [serviceProviderProperties] The
+ * ServiceProviderProperties.
+ * @property {string} [serviceProviderProperties.serviceProviderName] The
  * serviceProviderName.
- * @member {string} [serviceProviderProperties.peeringLocation] The peering
+ * @property {string} [serviceProviderProperties.peeringLocation] The peering
  * location.
- * @member {number} [serviceProviderProperties.bandwidthInMbps] The
+ * @property {number} [serviceProviderProperties.bandwidthInMbps] The
  * BandwidthInMbps.
- * @member {object} [expressRoutePort] The reference to the ExpressRoutePort
+ * @property {object} [expressRoutePort] The reference to the ExpressRoutePort
  * resource when the circuit is provisioned on an ExpressRoutePort resource.
- * @member {string} [expressRoutePort.id] Resource ID.
- * @member {number} [bandwidthInGbps] The bandwidth of the circuit when the
+ * @property {string} [expressRoutePort.id] Resource ID.
+ * @property {number} [bandwidthInGbps] The bandwidth of the circuit when the
  * circuit is provisioned on an ExpressRoutePort resource.
- * @member {number} [stag] The identifier of the circuit traffic. Outer tag for
- * QinQ encapsulation.
- * @member {string} [provisioningState] Gets the provisioning state of the
+ * @property {number} [stag] The identifier of the circuit traffic. Outer tag
+ * for QinQ encapsulation.
+ * @property {string} [provisioningState] Gets the provisioning state of the
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [gatewayManagerEtag] The GatewayManager Etag.
- * @member {boolean} [allowGlobalReach] Flag to enable Global Reach on the
+ * @property {string} [gatewayManagerEtag] The GatewayManager Etag.
+ * @property {boolean} [allowGlobalReach] Flag to enable Global Reach on the
  * circuit.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface ExpressRouteCircuit extends Resource {
   sku?: ExpressRouteCircuitSku;
@@ -5498,10 +5551,10 @@ export interface ExpressRouteCircuit extends Resource {
  * @constructor
  * The ARP table associated with the ExpressRouteCircuit.
  *
- * @member {number} [age] Entry age in minutes
- * @member {string} [interfaceProperty] Interface address
- * @member {string} [ipAddress] The IP address.
- * @member {string} [macAddress] The MAC address.
+ * @property {number} [age] Entry age in minutes
+ * @property {string} [interfaceProperty] Interface address
+ * @property {string} [ipAddress] The IP address.
+ * @property {string} [macAddress] The MAC address.
  */
 export interface ExpressRouteCircuitArpTable {
   age?: number;
@@ -5516,8 +5569,8 @@ export interface ExpressRouteCircuitArpTable {
  * @constructor
  * Response for ListArpTable associated with the Express Route Circuits API.
  *
- * @member {array} [value] Gets list of the ARP table.
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {array} [value] Gets list of the ARP table.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface ExpressRouteCircuitsArpTableListResult {
   value?: ExpressRouteCircuitArpTable[];
@@ -5530,12 +5583,13 @@ export interface ExpressRouteCircuitsArpTableListResult {
  * @constructor
  * The routes table associated with the ExpressRouteCircuit
  *
- * @member {string} [network] IP address of a network entity
- * @member {string} [nextHop] NextHop address
- * @member {string} [locPrf] Local preference value as set with the set
+ * @property {string} [network] IP address of a network entity
+ * @property {string} [nextHop] NextHop address
+ * @property {string} [locPrf] Local preference value as set with the set
  * local-preference route-map configuration command
- * @member {number} [weight] Route Weight.
- * @member {string} [path] Autonomous system paths to the destination network.
+ * @property {number} [weight] Route Weight.
+ * @property {string} [path] Autonomous system paths to the destination
+ * network.
  */
 export interface ExpressRouteCircuitRoutesTable {
   network?: string;
@@ -5551,8 +5605,8 @@ export interface ExpressRouteCircuitRoutesTable {
  * @constructor
  * Response for ListRoutesTable associated with the Express Route Circuits API.
  *
- * @member {array} [value] The list of routes table.
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {array} [value] The list of routes table.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface ExpressRouteCircuitsRoutesTableListResult {
   value?: ExpressRouteCircuitRoutesTable[];
@@ -5565,13 +5619,13 @@ export interface ExpressRouteCircuitsRoutesTableListResult {
  * @constructor
  * The routes table associated with the ExpressRouteCircuit.
  *
- * @member {string} [neighbor] IP address of the neighbor.
- * @member {number} [v] BGP version number spoken to the neighbor.
- * @member {number} [as] Autonomous system number.
- * @member {string} [upDown] The length of time that the BGP session has been
+ * @property {string} [neighbor] IP address of the neighbor.
+ * @property {number} [v] BGP version number spoken to the neighbor.
+ * @property {number} [as] Autonomous system number.
+ * @property {string} [upDown] The length of time that the BGP session has been
  * in the Established state, or the current status if not in the Established
  * state.
- * @member {string} [statePfxRcd] Current state of the BGP session, and the
+ * @property {string} [statePfxRcd] Current state of the BGP session, and the
  * number of prefixes that have been received from a neighbor or peer group.
  */
 export interface ExpressRouteCircuitRoutesTableSummary {
@@ -5588,8 +5642,8 @@ export interface ExpressRouteCircuitRoutesTableSummary {
  * @constructor
  * Response for ListRoutesTable associated with the Express Route Circuits API.
  *
- * @member {array} [value] A list of the routes table.
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {array} [value] A list of the routes table.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface ExpressRouteCircuitsRoutesTableSummaryListResult {
   value?: ExpressRouteCircuitRoutesTableSummary[];
@@ -5602,8 +5656,8 @@ export interface ExpressRouteCircuitsRoutesTableSummaryListResult {
  * @constructor
  * Contains bandwidths offered in ExpressRouteServiceProvider resources.
  *
- * @member {string} [offerName] The OfferName.
- * @member {number} [valueInMbps] The ValueInMbps.
+ * @property {string} [offerName] The OfferName.
+ * @property {number} [valueInMbps] The ValueInMbps.
  */
 export interface ExpressRouteServiceProviderBandwidthsOffered {
   offerName?: string;
@@ -5616,9 +5670,9 @@ export interface ExpressRouteServiceProviderBandwidthsOffered {
  * @constructor
  * A ExpressRouteResourceProvider object.
  *
- * @member {array} [peeringLocations] Get a list of peering locations.
- * @member {array} [bandwidthsOffered] Gets bandwidths offered.
- * @member {string} [provisioningState] Gets the provisioning state of the
+ * @property {array} [peeringLocations] Get a list of peering locations.
+ * @property {array} [bandwidthsOffered] Gets bandwidths offered.
+ * @property {string} [provisioningState] Gets the provisioning state of the
  * resource.
  */
 export interface ExpressRouteServiceProvider extends Resource {
@@ -5633,14 +5687,14 @@ export interface ExpressRouteServiceProvider extends Resource {
  * @constructor
  * The routes table associated with the ExpressRouteCircuit.
  *
- * @member {string} [neighbor] IP address of Neighbor router
- * @member {number} [asn] Autonomous system number.
- * @member {string} [upDown] The length of time that the BGP session has been
+ * @property {string} [neighbor] IP address of Neighbor router
+ * @property {number} [asn] Autonomous system number.
+ * @property {string} [upDown] The length of time that the BGP session has been
  * in the Established state, or the current status if not in the Established
  * state.
- * @member {string} [stateOrPrefixesReceived] Current state of the BGP session,
- * and the number of prefixes that have been received from a neighbor or peer
- * group.
+ * @property {string} [stateOrPrefixesReceived] Current state of the BGP
+ * session, and the number of prefixes that have been received from a neighbor
+ * or peer group.
  */
 export interface ExpressRouteCrossConnectionRoutesTableSummary {
   neighbor?: string;
@@ -5656,8 +5710,8 @@ export interface ExpressRouteCrossConnectionRoutesTableSummary {
  * Response for ListRoutesTable associated with the Express Route Cross
  * Connections.
  *
- * @member {array} [value] A list of the routes table.
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {array} [value] A list of the routes table.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface ExpressRouteCrossConnectionsRoutesTableSummaryListResult {
   value?: ExpressRouteCrossConnectionRoutesTableSummary[];
@@ -5668,7 +5722,7 @@ export interface ExpressRouteCrossConnectionsRoutesTableSummaryListResult {
  * @class
  * Initializes a new instance of the ExpressRouteCircuitReference class.
  * @constructor
- * @member {string} [id] Corresponding Express Route Circuit Id.
+ * @property {string} [id] Corresponding Express Route Circuit Id.
  */
 export interface ExpressRouteCircuitReference {
   id?: string;
@@ -5680,85 +5734,86 @@ export interface ExpressRouteCircuitReference {
  * @constructor
  * Peering in an ExpressRoute Cross Connection resource.
  *
- * @member {string} [peeringType] The peering type. Possible values include:
+ * @property {string} [peeringType] The peering type. Possible values include:
  * 'AzurePublicPeering', 'AzurePrivatePeering', 'MicrosoftPeering'
- * @member {string} [state] The peering state. Possible values include:
+ * @property {string} [state] The peering state. Possible values include:
  * 'Disabled', 'Enabled'
- * @member {number} [azureASN] The Azure ASN.
- * @member {number} [peerASN] The peer ASN.
- * @member {string} [primaryPeerAddressPrefix] The primary address prefix.
- * @member {string} [secondaryPeerAddressPrefix] The secondary address prefix.
- * @member {string} [primaryAzurePort] The primary port.
- * @member {string} [secondaryAzurePort] The secondary port.
- * @member {string} [sharedKey] The shared key.
- * @member {number} [vlanId] The VLAN ID.
- * @member {object} [microsoftPeeringConfig] The Microsoft peering
+ * @property {number} [azureASN] The Azure ASN.
+ * @property {number} [peerASN] The peer ASN.
+ * @property {string} [primaryPeerAddressPrefix] The primary address prefix.
+ * @property {string} [secondaryPeerAddressPrefix] The secondary address
+ * prefix.
+ * @property {string} [primaryAzurePort] The primary port.
+ * @property {string} [secondaryAzurePort] The secondary port.
+ * @property {string} [sharedKey] The shared key.
+ * @property {number} [vlanId] The VLAN ID.
+ * @property {object} [microsoftPeeringConfig] The Microsoft peering
  * configuration.
- * @member {array} [microsoftPeeringConfig.advertisedPublicPrefixes] The
+ * @property {array} [microsoftPeeringConfig.advertisedPublicPrefixes] The
  * reference of AdvertisedPublicPrefixes.
- * @member {array} [microsoftPeeringConfig.advertisedCommunities] The
- * communities of bgp peering. Spepcified for microsoft peering
- * @member {string} [microsoftPeeringConfig.advertisedPublicPrefixesState]
+ * @property {array} [microsoftPeeringConfig.advertisedCommunities] The
+ * communities of bgp peering. Specified for microsoft peering
+ * @property {string} [microsoftPeeringConfig.advertisedPublicPrefixesState]
  * AdvertisedPublicPrefixState of the Peering resource. Possible values are
  * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
  * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
  * 'ValidationNeeded'
- * @member {number} [microsoftPeeringConfig.legacyMode] The legacy mode of the
- * peering.
- * @member {number} [microsoftPeeringConfig.customerASN] The CustomerASN of the
- * peering.
- * @member {string} [microsoftPeeringConfig.routingRegistryName] The
+ * @property {number} [microsoftPeeringConfig.legacyMode] The legacy mode of
+ * the peering.
+ * @property {number} [microsoftPeeringConfig.customerASN] The CustomerASN of
+ * the peering.
+ * @property {string} [microsoftPeeringConfig.routingRegistryName] The
  * RoutingRegistryName of the configuration.
- * @member {string} [provisioningState] Gets the provisioning state of the
+ * @property {string} [provisioningState] Gets the provisioning state of the
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [gatewayManagerEtag] The GatewayManager Etag.
- * @member {string} [lastModifiedBy] Gets whether the provider or the customer
- * last modified the peering.
- * @member {object} [ipv6PeeringConfig] The IPv6 peering configuration.
- * @member {string} [ipv6PeeringConfig.primaryPeerAddressPrefix] The primary
+ * @property {string} [gatewayManagerEtag] The GatewayManager Etag.
+ * @property {string} [lastModifiedBy] Gets whether the provider or the
+ * customer last modified the peering.
+ * @property {object} [ipv6PeeringConfig] The IPv6 peering configuration.
+ * @property {string} [ipv6PeeringConfig.primaryPeerAddressPrefix] The primary
  * address prefix.
- * @member {string} [ipv6PeeringConfig.secondaryPeerAddressPrefix] The
+ * @property {string} [ipv6PeeringConfig.secondaryPeerAddressPrefix] The
  * secondary address prefix.
- * @member {object} [ipv6PeeringConfig.microsoftPeeringConfig] The Microsoft
+ * @property {object} [ipv6PeeringConfig.microsoftPeeringConfig] The Microsoft
  * peering configuration.
- * @member {array}
+ * @property {array}
  * [ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixes] The
  * reference of AdvertisedPublicPrefixes.
- * @member {array}
+ * @property {array}
  * [ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities] The
- * communities of bgp peering. Spepcified for microsoft peering
- * @member {string}
+ * communities of bgp peering. Specified for microsoft peering
+ * @property {string}
  * [ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
  * AdvertisedPublicPrefixState of the Peering resource. Possible values are
  * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
  * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
  * 'ValidationNeeded'
- * @member {number} [ipv6PeeringConfig.microsoftPeeringConfig.legacyMode] The
+ * @property {number} [ipv6PeeringConfig.microsoftPeeringConfig.legacyMode] The
  * legacy mode of the peering.
- * @member {number} [ipv6PeeringConfig.microsoftPeeringConfig.customerASN] The
- * CustomerASN of the peering.
- * @member {string}
+ * @property {number} [ipv6PeeringConfig.microsoftPeeringConfig.customerASN]
+ * The CustomerASN of the peering.
+ * @property {string}
  * [ipv6PeeringConfig.microsoftPeeringConfig.routingRegistryName] The
  * RoutingRegistryName of the configuration.
- * @member {object} [ipv6PeeringConfig.routeFilter] The reference of the
+ * @property {object} [ipv6PeeringConfig.routeFilter] The reference of the
  * RouteFilter resource.
- * @member {array} [ipv6PeeringConfig.routeFilter.rules] Collection of
+ * @property {array} [ipv6PeeringConfig.routeFilter.rules] Collection of
  * RouteFilterRules contained within a route filter.
- * @member {array} [ipv6PeeringConfig.routeFilter.peerings] A collection of
+ * @property {array} [ipv6PeeringConfig.routeFilter.peerings] A collection of
  * references to express route circuit peerings.
- * @member {string} [ipv6PeeringConfig.routeFilter.provisioningState] The
+ * @property {string} [ipv6PeeringConfig.routeFilter.provisioningState] The
  * provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', 'Succeeded' and 'Failed'.
- * @member {string} [ipv6PeeringConfig.routeFilter.etag] Gets a unique
+ * @property {string} [ipv6PeeringConfig.routeFilter.etag] Gets a unique
  * read-only string that changes whenever the resource is updated.
- * @member {string} [ipv6PeeringConfig.state] The state of peering. Possible
+ * @property {string} [ipv6PeeringConfig.state] The state of peering. Possible
  * values are: 'Disabled' and 'Enabled'. Possible values include: 'Disabled',
  * 'Enabled'
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @property {string} [name] Gets name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface ExpressRouteCrossConnectionPeering extends SubResource {
   peeringType?: string;
@@ -5786,27 +5841,27 @@ export interface ExpressRouteCrossConnectionPeering extends SubResource {
  * @constructor
  * ExpressRouteCrossConnection resource
  *
- * @member {string} [primaryAzurePort] The name of the primary  port.
- * @member {string} [secondaryAzurePort] The name of the secondary  port.
- * @member {number} [sTag] The identifier of the circuit traffic.
- * @member {string} [peeringLocation] The peering location of the ExpressRoute
- * circuit.
- * @member {number} [bandwidthInMbps] The circuit bandwidth In Mbps.
- * @member {object} [expressRouteCircuit] The ExpressRouteCircuit
- * @member {string} [expressRouteCircuit.id] Corresponding Express Route
+ * @property {string} [primaryAzurePort] The name of the primary  port.
+ * @property {string} [secondaryAzurePort] The name of the secondary  port.
+ * @property {number} [sTag] The identifier of the circuit traffic.
+ * @property {string} [peeringLocation] The peering location of the
+ * ExpressRoute circuit.
+ * @property {number} [bandwidthInMbps] The circuit bandwidth In Mbps.
+ * @property {object} [expressRouteCircuit] The ExpressRouteCircuit
+ * @property {string} [expressRouteCircuit.id] Corresponding Express Route
  * Circuit Id.
- * @member {string} [serviceProviderProvisioningState] The provisioning state
+ * @property {string} [serviceProviderProvisioningState] The provisioning state
  * of the circuit in the connectivity provider system. Possible values are
  * 'NotProvisioned', 'Provisioning', 'Provisioned'. Possible values include:
  * 'NotProvisioned', 'Provisioning', 'Provisioned', 'Deprovisioning'
- * @member {string} [serviceProviderNotes] Additional read only notes set by
+ * @property {string} [serviceProviderNotes] Additional read only notes set by
  * the connectivity provider.
- * @member {string} [provisioningState] Gets the provisioning state of the
+ * @property {string} [provisioningState] Gets the provisioning state of the
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {array} [peerings] The list of peerings.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {array} [peerings] The list of peerings.
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface ExpressRouteCrossConnection extends Resource {
   readonly primaryAzurePort?: string;
@@ -5828,7 +5883,7 @@ export interface ExpressRouteCrossConnection extends Resource {
  * @constructor
  * Virtual Hub identifier.
  *
- * @member {string} [id] The resource URI for the Virtual Hub where the
+ * @property {string} [id] The resource URI for the Virtual Hub where the
  * ExpressRoute gateway is or will be deployed. The Virtual Hub resource and
  * the ExpressRoute gateway resource reside in the same subscription.
  */
@@ -5842,7 +5897,7 @@ export interface VirtualHubId {
  * @constructor
  * ExpressRoute circuit peering identifier.
  *
- * @member {string} [id] The ID of the ExpressRoute circuit peering.
+ * @property {string} [id] The ID of the ExpressRoute circuit peering.
  */
 export interface ExpressRouteCircuitPeeringId {
   id?: string;
@@ -5854,9 +5909,9 @@ export interface ExpressRouteCircuitPeeringId {
  * @constructor
  * Minimum and maximum number of scale units to deploy.
  *
- * @member {number} [min] Minimum number of scale units deployed for
+ * @property {number} [min] Minimum number of scale units deployed for
  * ExpressRoute gateway.
- * @member {number} [max] Maximum number of scale units deployed for
+ * @property {number} [max] Maximum number of scale units deployed for
  * ExpressRoute gateway.
  */
 export interface ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds {
@@ -5870,11 +5925,11 @@ export interface ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds {
  * @constructor
  * Configuration for auto scaling.
  *
- * @member {object} [bounds] Minimum and maximum number of scale units to
+ * @property {object} [bounds] Minimum and maximum number of scale units to
  * deploy.
- * @member {number} [bounds.min] Minimum number of scale units deployed for
+ * @property {number} [bounds.min] Minimum number of scale units deployed for
  * ExpressRoute gateway.
- * @member {number} [bounds.max] Maximum number of scale units deployed for
+ * @property {number} [bounds.max] Maximum number of scale units deployed for
  * ExpressRoute gateway.
  */
 export interface ExpressRouteGatewayPropertiesAutoScaleConfiguration {
@@ -5887,17 +5942,18 @@ export interface ExpressRouteGatewayPropertiesAutoScaleConfiguration {
  * @constructor
  * ExpressRouteConnection resource.
  *
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {object} expressRouteCircuitPeering The ExpressRoute circuit
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+ * 'Failed'
+ * @property {object} expressRouteCircuitPeering The ExpressRoute circuit
  * peering.
- * @member {string} [expressRouteCircuitPeering.id] The ID of the ExpressRoute
- * circuit peering.
- * @member {string} [authorizationKey] Authorization key to establish the
+ * @property {string} [expressRouteCircuitPeering.id] The ID of the
+ * ExpressRoute circuit peering.
+ * @property {string} [authorizationKey] Authorization key to establish the
  * connection.
- * @member {number} [routingWeight] The routing weight associated to the
+ * @property {number} [routingWeight] The routing weight associated to the
  * connection.
- * @member {string} name The name of the resource.
+ * @property {string} name The name of the resource.
  */
 export interface ExpressRouteConnection extends SubResource {
   readonly provisioningState?: string;
@@ -5913,24 +5969,26 @@ export interface ExpressRouteConnection extends SubResource {
  * @constructor
  * ExpressRoute gateway resource.
  *
- * @member {object} [autoScaleConfiguration] Configuration for auto scaling.
- * @member {object} [autoScaleConfiguration.bounds] Minimum and maximum number
- * of scale units to deploy.
- * @member {number} [autoScaleConfiguration.bounds.min] Minimum number of scale
- * units deployed for ExpressRoute gateway.
- * @member {number} [autoScaleConfiguration.bounds.max] Maximum number of scale
- * units deployed for ExpressRoute gateway.
- * @member {array} [expressRouteConnections] List of ExpressRoute connections
+ * @property {object} [autoScaleConfiguration] Configuration for auto scaling.
+ * @property {object} [autoScaleConfiguration.bounds] Minimum and maximum
+ * number of scale units to deploy.
+ * @property {number} [autoScaleConfiguration.bounds.min] Minimum number of
+ * scale units deployed for ExpressRoute gateway.
+ * @property {number} [autoScaleConfiguration.bounds.max] Maximum number of
+ * scale units deployed for ExpressRoute gateway.
+ * @property {array} [expressRouteConnections] List of ExpressRoute connections
  * to the ExpressRoute gateway.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {object} virtualHub The Virtual Hub where the ExpressRoute gateway
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+ * 'Failed'
+ * @property {object} virtualHub The Virtual Hub where the ExpressRoute gateway
  * is or will be deployed.
- * @member {string} [virtualHub.id] The resource URI for the Virtual Hub where
- * the ExpressRoute gateway is or will be deployed. The Virtual Hub resource
- * and the ExpressRoute gateway resource reside in the same subscription.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [virtualHub.id] The resource URI for the Virtual Hub
+ * where the ExpressRoute gateway is or will be deployed. The Virtual Hub
+ * resource and the ExpressRoute gateway resource reside in the same
+ * subscription.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface ExpressRouteGateway extends Resource {
   autoScaleConfiguration?: ExpressRouteGatewayPropertiesAutoScaleConfiguration;
@@ -5946,7 +6004,7 @@ export interface ExpressRouteGateway extends Resource {
  * @constructor
  * List of ExpressRoute gateways.
  *
- * @member {array} [value] List of ExpressRoute gateways.
+ * @property {array} [value] List of ExpressRoute gateways.
  */
 export interface ExpressRouteGatewayList {
   value?: ExpressRouteGateway[];
@@ -5958,7 +6016,7 @@ export interface ExpressRouteGatewayList {
  * @constructor
  * ExpressRouteConnection list
  *
- * @member {array} [value] The list of ExpressRoute connections
+ * @property {array} [value] The list of ExpressRoute connections
  */
 export interface ExpressRouteConnectionList {
   value?: ExpressRouteConnection[];
@@ -5972,8 +6030,8 @@ export interface ExpressRouteConnectionList {
  *
  * Real-time inventory of available ExpressRoute port bandwidths.
  *
- * @member {string} [offerName] Bandwidth descriptive name
- * @member {number} [valueInGbps] Bandwidth value in Gbps
+ * @property {string} [offerName] Bandwidth descriptive name
+ * @property {number} [valueInGbps] Bandwidth value in Gbps
  */
 export interface ExpressRoutePortsLocationBandwidths {
   readonly offerName?: string;
@@ -5988,11 +6046,11 @@ export interface ExpressRoutePortsLocationBandwidths {
  *
  * Definition of the ExpressRoutePorts peering location resource.
  *
- * @member {string} [address] Address of peering location.
- * @member {string} [contact] Contact details of peering locations.
- * @member {array} [availableBandwidths] The inventory of available
+ * @property {string} [address] Address of peering location.
+ * @property {string} [contact] Contact details of peering locations.
+ * @property {array} [availableBandwidths] The inventory of available
  * ExpressRoutePort bandwidths.
- * @member {string} [provisioningState] The provisioning state of the
+ * @property {string} [provisioningState] The provisioning state of the
  * ExpressRoutePortLocation resource. Possible values are: 'Succeeded',
  * 'Updating', 'Deleting', and 'Failed'.
  */
@@ -6011,23 +6069,23 @@ export interface ExpressRoutePortsLocation extends Resource {
  *
  * ExpressRouteLink child resource definition.
  *
- * @member {string} [routerName] Name of Azure router associated with physical
- * port.
- * @member {string} [interfaceName] Name of Azure router interface.
- * @member {string} [patchPanelId] Mapping between physical port to patch panel
- * port.
- * @member {string} [rackId] Mapping of physical patch panel to rack.
- * @member {string} [connectorType] Physical fiber port type. Possible values
+ * @property {string} [routerName] Name of Azure router associated with
+ * physical port.
+ * @property {string} [interfaceName] Name of Azure router interface.
+ * @property {string} [patchPanelId] Mapping between physical port to patch
+ * panel port.
+ * @property {string} [rackId] Mapping of physical patch panel to rack.
+ * @property {string} [connectorType] Physical fiber port type. Possible values
  * include: 'LC', 'SC'
- * @member {string} [adminState] Administrative state of the physical port.
+ * @property {string} [adminState] Administrative state of the physical port.
  * Possible values include: 'Enabled', 'Disabled'
- * @member {string} [provisioningState] The provisioning state of the
+ * @property {string} [provisioningState] The provisioning state of the
  * ExpressRouteLink resource. Possible values are: 'Succeeded', 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [name] Name of child port resource that is unique among
+ * @property {string} [name] Name of child port resource that is unique among
  * child port resources of the parent.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface ExpressRouteLink extends SubResource {
   readonly routerName?: string;
@@ -6049,29 +6107,29 @@ export interface ExpressRouteLink extends SubResource {
  *
  * ExpressRoutePort resource definition.
  *
- * @member {string} [peeringLocation] The name of the peering location that the
- * ExpressRoutePort is mapped to physically.
- * @member {number} [bandwidthInGbps] Bandwidth of procured ports in Gbps
- * @member {number} [provisionedBandwidthInGbps] Aggregate Gbps of associated
+ * @property {string} [peeringLocation] The name of the peering location that
+ * the ExpressRoutePort is mapped to physically.
+ * @property {number} [bandwidthInGbps] Bandwidth of procured ports in Gbps
+ * @property {number} [provisionedBandwidthInGbps] Aggregate Gbps of associated
  * circuit bandwidths.
- * @member {string} [mtu] Maximum transmission unit of the physical port
+ * @property {string} [mtu] Maximum transmission unit of the physical port
  * pair(s)
- * @member {string} [encapsulation] Encapsulation method on physical ports.
+ * @property {string} [encapsulation] Encapsulation method on physical ports.
  * Possible values include: 'Dot1Q', 'QinQ'
- * @member {string} [etherType] Ethertype of the physical port.
- * @member {string} [allocationDate] Date of the physical port allocation to be
- * used in Letter of Authorization.
- * @member {array} [links] ExpressRouteLink Sub-Resources. The set of physical
- * links of the ExpressRoutePort resource
- * @member {array} [circuits] Reference the ExpressRoute circuit(s) that are
+ * @property {string} [etherType] Ethertype of the physical port.
+ * @property {string} [allocationDate] Date of the physical port allocation to
+ * be used in Letter of Authorization.
+ * @property {array} [links] ExpressRouteLink Sub-Resources. The set of
+ * physical links of the ExpressRoutePort resource
+ * @property {array} [circuits] Reference the ExpressRoute circuit(s) that are
  * provisioned on this ExpressRoutePort resource.
- * @member {string} [provisioningState] The provisioning state of the
+ * @property {string} [provisioningState] The provisioning state of the
  * ExpressRoutePort resource. Possible values are: 'Succeeded', 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [resourceGuid] The resource GUID property of the
+ * @property {string} [resourceGuid] The resource GUID property of the
  * ExpressRoutePort resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface ExpressRoutePort extends Resource {
   peeringLocation?: string;
@@ -6094,7 +6152,7 @@ export interface ExpressRoutePort extends Resource {
  * @constructor
  * SKU of a load balancer
  *
- * @member {string} [name] Name of a load balancer SKU. Possible values
+ * @property {string} [name] Name of a load balancer SKU. Possible values
  * include: 'Basic', 'Standard'
  */
 export interface LoadBalancerSku {
@@ -6107,46 +6165,46 @@ export interface LoadBalancerSku {
  * @constructor
  * A load balancing rule for a load balancer.
  *
- * @member {object} [frontendIPConfiguration] A reference to frontend IP
+ * @property {object} [frontendIPConfiguration] A reference to frontend IP
  * addresses.
- * @member {string} [frontendIPConfiguration.id] Resource ID.
- * @member {object} [backendAddressPool] A reference to a pool of DIPs. Inbound
- * traffic is randomly load balanced across IPs in the backend IPs.
- * @member {string} [backendAddressPool.id] Resource ID.
- * @member {object} [probe] The reference of the load balancer probe used by
+ * @property {string} [frontendIPConfiguration.id] Resource ID.
+ * @property {object} [backendAddressPool] A reference to a pool of DIPs.
+ * Inbound traffic is randomly load balanced across IPs in the backend IPs.
+ * @property {string} [backendAddressPool.id] Resource ID.
+ * @property {object} [probe] The reference of the load balancer probe used by
  * the load balancing rule.
- * @member {string} [probe.id] Resource ID.
- * @member {string} protocol Possible values include: 'Udp', 'Tcp', 'All'
- * @member {string} [loadDistribution] The load distribution policy for this
+ * @property {string} [probe.id] Resource ID.
+ * @property {string} protocol Possible values include: 'Udp', 'Tcp', 'All'
+ * @property {string} [loadDistribution] The load distribution policy for this
  * rule. Possible values are 'Default', 'SourceIP', and 'SourceIPProtocol'.
  * Possible values include: 'Default', 'SourceIP', 'SourceIPProtocol'
- * @member {number} frontendPort The port for the external endpoint. Port
+ * @property {number} frontendPort The port for the external endpoint. Port
  * numbers for each rule must be unique within the Load Balancer. Acceptable
  * values are between 0 and 65534. Note that value 0 enables "Any Port"
- * @member {number} [backendPort] The port used for internal connections on the
- * endpoint. Acceptable values are between 0 and 65535. Note that value 0
+ * @property {number} [backendPort] The port used for internal connections on
+ * the endpoint. Acceptable values are between 0 and 65535. Note that value 0
  * enables "Any Port"
- * @member {number} [idleTimeoutInMinutes] The timeout for the TCP idle
+ * @property {number} [idleTimeoutInMinutes] The timeout for the TCP idle
  * connection. The value can be set between 4 and 30 minutes. The default value
  * is 4 minutes. This element is only used when the protocol is set to TCP.
- * @member {boolean} [enableFloatingIP] Configures a virtual machine's endpoint
- * for the floating IP capability required to configure a SQL AlwaysOn
+ * @property {boolean} [enableFloatingIP] Configures a virtual machine's
+ * endpoint for the floating IP capability required to configure a SQL AlwaysOn
  * Availability Group. This setting is required when using the SQL AlwaysOn
  * Availability Groups in SQL server. This setting can't be changed after you
  * create the endpoint.
- * @member {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
+ * @property {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
  * flow idle timeout or unexpected connection termination. This element is only
  * used when the protocol is set to TCP.
- * @member {boolean} [disableOutboundSnat] Configures SNAT for the VMs in the
+ * @property {boolean} [disableOutboundSnat] Configures SNAT for the VMs in the
  * backend pool to use the publicIP address specified in the frontend of the
  * load balancing rule.
- * @member {string} [provisioningState] Gets the provisioning state of the
+ * @property {string} [provisioningState] Gets the provisioning state of the
  * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface LoadBalancingRule extends SubResource {
   frontendIPConfiguration?: SubResource;
@@ -6171,34 +6229,34 @@ export interface LoadBalancingRule extends SubResource {
  * @constructor
  * A load balancer probe.
  *
- * @member {array} [loadBalancingRules] The load balancer rules that use this
+ * @property {array} [loadBalancingRules] The load balancer rules that use this
  * probe.
- * @member {string} protocol The protocol of the end point. Possible values
+ * @property {string} protocol The protocol of the end point. Possible values
  * are: 'Http', 'Tcp', or 'Https'. If 'Tcp' is specified, a received ACK is
  * required for the probe to be successful. If 'Http' or 'Https' is specified,
  * a 200 OK response from the specifies URI is required for the probe to be
  * successful. Possible values include: 'Http', 'Tcp', 'Https'
- * @member {number} port The port for communicating the probe. Possible values
- * range from 1 to 65535, inclusive.
- * @member {number} [intervalInSeconds] The interval, in seconds, for how
+ * @property {number} port The port for communicating the probe. Possible
+ * values range from 1 to 65535, inclusive.
+ * @property {number} [intervalInSeconds] The interval, in seconds, for how
  * frequently to probe the endpoint for health status. Typically, the interval
  * is slightly less than half the allocated timeout period (in seconds) which
  * allows two full probes before taking the instance out of rotation. The
  * default value is 15, the minimum value is 5.
- * @member {number} [numberOfProbes] The number of probes where if no response,
- * will result in stopping further traffic from being delivered to the
- * endpoint. This values allows endpoints to be taken out of rotation faster or
- * slower than the typical times used in Azure.
- * @member {string} [requestPath] The URI used for requesting health status
+ * @property {number} [numberOfProbes] The number of probes where if no
+ * response, will result in stopping further traffic from being delivered to
+ * the endpoint. This values allows endpoints to be taken out of rotation
+ * faster or slower than the typical times used in Azure.
+ * @property {string} [requestPath] The URI used for requesting health status
  * from the VM. Path is required if a protocol is set to http. Otherwise, it is
  * not allowed. There is no default value.
- * @member {string} [provisioningState] Gets the provisioning state of the
+ * @property {string} [provisioningState] Gets the provisioning state of the
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @property {string} [name] Gets name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface Probe extends SubResource {
   readonly loadBalancingRules?: SubResource[];
@@ -6218,37 +6276,37 @@ export interface Probe extends SubResource {
  * @constructor
  * Inbound NAT pool of the load balancer.
  *
- * @member {object} [frontendIPConfiguration] A reference to frontend IP
+ * @property {object} [frontendIPConfiguration] A reference to frontend IP
  * addresses.
- * @member {string} [frontendIPConfiguration.id] Resource ID.
- * @member {string} protocol Possible values include: 'Udp', 'Tcp', 'All'
- * @member {number} frontendPortRangeStart The first port number in the range
+ * @property {string} [frontendIPConfiguration.id] Resource ID.
+ * @property {string} protocol Possible values include: 'Udp', 'Tcp', 'All'
+ * @property {number} frontendPortRangeStart The first port number in the range
  * of external ports that will be used to provide Inbound Nat to NICs
  * associated with a load balancer. Acceptable values range between 1 and
  * 65534.
- * @member {number} frontendPortRangeEnd The last port number in the range of
+ * @property {number} frontendPortRangeEnd The last port number in the range of
  * external ports that will be used to provide Inbound Nat to NICs associated
  * with a load balancer. Acceptable values range between 1 and 65535.
- * @member {number} backendPort The port used for internal connections on the
+ * @property {number} backendPort The port used for internal connections on the
  * endpoint. Acceptable values are between 1 and 65535.
- * @member {number} [idleTimeoutInMinutes] The timeout for the TCP idle
+ * @property {number} [idleTimeoutInMinutes] The timeout for the TCP idle
  * connection. The value can be set between 4 and 30 minutes. The default value
  * is 4 minutes. This element is only used when the protocol is set to TCP.
- * @member {boolean} [enableFloatingIP] Configures a virtual machine's endpoint
- * for the floating IP capability required to configure a SQL AlwaysOn
+ * @property {boolean} [enableFloatingIP] Configures a virtual machine's
+ * endpoint for the floating IP capability required to configure a SQL AlwaysOn
  * Availability Group. This setting is required when using the SQL AlwaysOn
  * Availability Groups in SQL server. This setting can't be changed after you
  * create the endpoint.
- * @member {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
+ * @property {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
  * flow idle timeout or unexpected connection termination. This element is only
  * used when the protocol is set to TCP.
- * @member {string} [provisioningState] Gets the provisioning state of the
+ * @property {string} [provisioningState] Gets the provisioning state of the
  * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface InboundNatPool extends SubResource {
   frontendIPConfiguration?: SubResource;
@@ -6270,27 +6328,27 @@ export interface InboundNatPool extends SubResource {
  * @constructor
  * Outbound pool of the load balancer.
  *
- * @member {number} [allocatedOutboundPorts] The number of outbound ports to be
- * used for NAT.
- * @member {array} frontendIPConfigurations The Frontend IP addresses of the
+ * @property {number} [allocatedOutboundPorts] The number of outbound ports to
+ * be used for NAT.
+ * @property {array} frontendIPConfigurations The Frontend IP addresses of the
  * load balancer.
- * @member {object} backendAddressPool A reference to a pool of DIPs. Outbound
- * traffic is randomly load balanced across IPs in the backend IPs.
- * @member {string} [backendAddressPool.id] Resource ID.
- * @member {string} [provisioningState] Gets the provisioning state of the
+ * @property {object} backendAddressPool A reference to a pool of DIPs.
+ * Outbound traffic is randomly load balanced across IPs in the backend IPs.
+ * @property {string} [backendAddressPool.id] Resource ID.
+ * @property {string} [provisioningState] Gets the provisioning state of the
  * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} protocol Protocol - TCP, UDP or All. Possible values
+ * @property {string} protocol Protocol - TCP, UDP or All. Possible values
  * include: 'Tcp', 'Udp', 'All'
- * @member {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
+ * @property {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
  * flow idle timeout or unexpected connection termination. This element is only
  * used when the protocol is set to TCP.
- * @member {number} [idleTimeoutInMinutes] The timeout for the TCP idle
+ * @property {number} [idleTimeoutInMinutes] The timeout for the TCP idle
  * connection
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface OutboundRule extends SubResource {
   allocatedOutboundPorts?: number;
@@ -6310,39 +6368,40 @@ export interface OutboundRule extends SubResource {
  * @constructor
  * LoadBalancer resource
  *
- * @member {object} [sku] The load balancer SKU.
- * @member {string} [sku.name] Name of a load balancer SKU. Possible values
+ * @property {object} [sku] The load balancer SKU.
+ * @property {string} [sku.name] Name of a load balancer SKU. Possible values
  * include: 'Basic', 'Standard'
- * @member {array} [frontendIPConfigurations] Object representing the frontend
- * IPs to be used for the load balancer
- * @member {array} [backendAddressPools] Collection of backend address pools
+ * @property {array} [frontendIPConfigurations] Object representing the
+ * frontend IPs to be used for the load balancer
+ * @property {array} [backendAddressPools] Collection of backend address pools
  * used by a load balancer
- * @member {array} [loadBalancingRules] Object collection representing the load
- * balancing rules Gets the provisioning
- * @member {array} [probes] Collection of probe objects used in the load
+ * @property {array} [loadBalancingRules] Object collection representing the
+ * load balancing rules Gets the provisioning
+ * @property {array} [probes] Collection of probe objects used in the load
  * balancer
- * @member {array} [inboundNatRules] Collection of inbound NAT Rules used by a
- * load balancer. Defining inbound NAT rules on your load balancer is mutually
- * exclusive with defining an inbound NAT pool. Inbound NAT pools are
+ * @property {array} [inboundNatRules] Collection of inbound NAT Rules used by
+ * a load balancer. Defining inbound NAT rules on your load balancer is
+ * mutually exclusive with defining an inbound NAT pool. Inbound NAT pools are
  * referenced from virtual machine scale sets. NICs that are associated with
  * individual virtual machines cannot reference an Inbound NAT pool. They have
  * to reference individual inbound NAT rules.
- * @member {array} [inboundNatPools] Defines an external port range for inbound
- * NAT to a single backend port on NICs associated with a load balancer.
- * Inbound NAT rules are created automatically for each NIC associated with the
- * Load Balancer using an external port from this range. Defining an Inbound
- * NAT pool on your Load Balancer is mutually exclusive with defining inbound
- * Nat rules. Inbound NAT pools are referenced from virtual machine scale sets.
- * NICs that are associated with individual virtual machines cannot reference
- * an inbound NAT pool. They have to reference individual inbound NAT rules.
- * @member {array} [outboundRules] The outbound rules.
- * @member {string} [resourceGuid] The resource GUID property of the load
+ * @property {array} [inboundNatPools] Defines an external port range for
+ * inbound NAT to a single backend port on NICs associated with a load
+ * balancer. Inbound NAT rules are created automatically for each NIC
+ * associated with the Load Balancer using an external port from this range.
+ * Defining an Inbound NAT pool on your Load Balancer is mutually exclusive
+ * with defining inbound Nat rules. Inbound NAT pools are referenced from
+ * virtual machine scale sets. NICs that are associated with individual virtual
+ * machines cannot reference an inbound NAT pool. They have to reference
+ * individual inbound NAT rules.
+ * @property {array} [outboundRules] The outbound rules.
+ * @property {string} [resourceGuid] The resource GUID property of the load
  * balancer resource.
- * @member {string} [provisioningState] Gets the provisioning state of the
+ * @property {string} [provisioningState] Gets the provisioning state of the
  * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface LoadBalancer extends Resource {
   sku?: LoadBalancerSku;
@@ -6362,9 +6421,9 @@ export interface LoadBalancer extends Resource {
  * @class
  * Initializes a new instance of the ErrorDetails class.
  * @constructor
- * @member {string} [code]
- * @member {string} [target]
- * @member {string} [message]
+ * @property {string} [code]
+ * @property {string} [target]
+ * @property {string} [message]
  */
 export interface ErrorDetails {
   code?: string;
@@ -6376,11 +6435,11 @@ export interface ErrorDetails {
  * @class
  * Initializes a new instance of the ErrorModel class.
  * @constructor
- * @member {string} [code]
- * @member {string} [message]
- * @member {string} [target]
- * @member {array} [details]
- * @member {string} [innerError]
+ * @property {string} [code]
+ * @property {string} [message]
+ * @property {string} [target]
+ * @property {array} [details]
+ * @property {string} [innerError]
  */
 export interface ErrorModel {
   code?: string;
@@ -6403,15 +6462,15 @@ export interface ErrorModel {
  * includes the HTTP status code for the failed request and error information
  * regarding the failure.
  *
- * @member {string} [status] Status of the Azure async operation. Possible
+ * @property {string} [status] Status of the Azure async operation. Possible
  * values are: 'InProgress', 'Succeeded', and 'Failed'. Possible values
  * include: 'InProgress', 'Succeeded', 'Failed'
- * @member {object} [error]
- * @member {string} [error.code]
- * @member {string} [error.message]
- * @member {string} [error.target]
- * @member {array} [error.details]
- * @member {string} [error.innerError]
+ * @property {object} [error]
+ * @property {string} [error.code]
+ * @property {string} [error.message]
+ * @property {string} [error.target]
+ * @property {array} [error.details]
+ * @property {string} [error.innerError]
  */
 export interface AzureAsyncOperationResult {
   status?: string;
@@ -6424,11 +6483,11 @@ export interface AzureAsyncOperationResult {
  * @constructor
  * The effective network security group association.
  *
- * @member {object} [subnet] The ID of the subnet if assigned.
- * @member {string} [subnet.id] Resource ID.
- * @member {object} [networkInterface] The ID of the network interface if
+ * @property {object} [subnet] The ID of the subnet if assigned.
+ * @property {string} [subnet.id] Resource ID.
+ * @property {object} [networkInterface] The ID of the network interface if
  * assigned.
- * @member {string} [networkInterface.id] Resource ID.
+ * @property {string} [networkInterface.id] Resource ID.
  */
 export interface EffectiveNetworkSecurityGroupAssociation {
   subnet?: SubResource;
@@ -6441,38 +6500,39 @@ export interface EffectiveNetworkSecurityGroupAssociation {
  * @constructor
  * Effective network security rules.
  *
- * @member {string} [name] The name of the security rule specified by the user
- * (if created by the user).
- * @member {string} [protocol] The network protocol this rule applies to.
+ * @property {string} [name] The name of the security rule specified by the
+ * user (if created by the user).
+ * @property {string} [protocol] The network protocol this rule applies to.
  * Possible values are: 'Tcp', 'Udp', and 'All'. Possible values include:
  * 'Tcp', 'Udp', 'All'
- * @member {string} [sourcePortRange] The source port or range.
- * @member {string} [destinationPortRange] The destination port or range.
- * @member {array} [sourcePortRanges] The source port ranges. Expected values
+ * @property {string} [sourcePortRange] The source port or range.
+ * @property {string} [destinationPortRange] The destination port or range.
+ * @property {array} [sourcePortRanges] The source port ranges. Expected values
  * include a single integer between 0 and 65535, a range using '-' as seperator
  * (e.g. 100-400), or an asterix (*)
- * @member {array} [destinationPortRanges] The destination port ranges.
+ * @property {array} [destinationPortRanges] The destination port ranges.
  * Expected values include a single integer between 0 and 65535, a range using
  * '-' as seperator (e.g. 100-400), or an asterix (*)
- * @member {string} [sourceAddressPrefix] The source address prefix.
- * @member {string} [destinationAddressPrefix] The destination address prefix.
- * @member {array} [sourceAddressPrefixes] The source address prefixes.
+ * @property {string} [sourceAddressPrefix] The source address prefix.
+ * @property {string} [destinationAddressPrefix] The destination address
+ * prefix.
+ * @property {array} [sourceAddressPrefixes] The source address prefixes.
  * Expected values include CIDR IP ranges, Default Tags (VirtualNetwork,
  * AureLoadBalancer, Internet), System Tags, and the asterix (*).
- * @member {array} [destinationAddressPrefixes] The destination address
+ * @property {array} [destinationAddressPrefixes] The destination address
  * prefixes. Expected values include CIDR IP ranges, Default Tags
  * (VirtualNetwork, AureLoadBalancer, Internet), System Tags, and the asterix
  * (*).
- * @member {array} [expandedSourceAddressPrefix] The expanded source address
+ * @property {array} [expandedSourceAddressPrefix] The expanded source address
  * prefix.
- * @member {array} [expandedDestinationAddressPrefix] Expanded destination
+ * @property {array} [expandedDestinationAddressPrefix] Expanded destination
  * address prefix.
- * @member {string} [access] Whether network traffic is allowed or denied.
+ * @property {string} [access] Whether network traffic is allowed or denied.
  * Possible values are: 'Allow' and 'Deny'. Possible values include: 'Allow',
  * 'Deny'
- * @member {number} [priority] The priority of the rule.
- * @member {string} [direction] The direction of the rule. Possible values are:
- * 'Inbound and Outbound'. Possible values include: 'Inbound', 'Outbound'
+ * @property {number} [priority] The priority of the rule.
+ * @property {string} [direction] The direction of the rule. Possible values
+ * are: 'Inbound and Outbound'. Possible values include: 'Inbound', 'Outbound'
  */
 export interface EffectiveNetworkSecurityRule {
   name?: string;
@@ -6498,18 +6558,18 @@ export interface EffectiveNetworkSecurityRule {
  * @constructor
  * Effective network security group.
  *
- * @member {object} [networkSecurityGroup] The ID of network security group
+ * @property {object} [networkSecurityGroup] The ID of network security group
  * that is applied.
- * @member {string} [networkSecurityGroup.id] Resource ID.
- * @member {object} [association] Associated resources.
- * @member {object} [association.subnet] The ID of the subnet if assigned.
- * @member {string} [association.subnet.id] Resource ID.
- * @member {object} [association.networkInterface] The ID of the network
+ * @property {string} [networkSecurityGroup.id] Resource ID.
+ * @property {object} [association] Associated resources.
+ * @property {object} [association.subnet] The ID of the subnet if assigned.
+ * @property {string} [association.subnet.id] Resource ID.
+ * @property {object} [association.networkInterface] The ID of the network
  * interface if assigned.
- * @member {string} [association.networkInterface.id] Resource ID.
- * @member {array} [effectiveSecurityRules] A collection of effective security
- * rules.
- * @member {object} [tagMap] Mapping of tags to list of IP Addresses included
+ * @property {string} [association.networkInterface.id] Resource ID.
+ * @property {array} [effectiveSecurityRules] A collection of effective
+ * security rules.
+ * @property {object} [tagMap] Mapping of tags to list of IP Addresses included
  * within the tag.
  */
 export interface EffectiveNetworkSecurityGroup {
@@ -6525,8 +6585,8 @@ export interface EffectiveNetworkSecurityGroup {
  * @constructor
  * Response for list effective network security groups API service call.
  *
- * @member {array} [value] A list of effective network security groups.
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {array} [value] A list of effective network security groups.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface EffectiveNetworkSecurityGroupListResult {
   value?: EffectiveNetworkSecurityGroup[];
@@ -6539,18 +6599,18 @@ export interface EffectiveNetworkSecurityGroupListResult {
  * @constructor
  * Effective Route
  *
- * @member {string} [name] The name of the user defined route. This is
+ * @property {string} [name] The name of the user defined route. This is
  * optional.
- * @member {string} [source] Who created the route. Possible values are:
+ * @property {string} [source] Who created the route. Possible values are:
  * 'Unknown', 'User', 'VirtualNetworkGateway', and 'Default'. Possible values
  * include: 'Unknown', 'User', 'VirtualNetworkGateway', 'Default'
- * @member {string} [state] The value of effective route. Possible values are:
- * 'Active' and 'Invalid'. Possible values include: 'Active', 'Invalid'
- * @member {array} [addressPrefix] The address prefixes of the effective routes
- * in CIDR notation.
- * @member {array} [nextHopIpAddress] The IP address of the next hop of the
+ * @property {string} [state] The value of effective route. Possible values
+ * are: 'Active' and 'Invalid'. Possible values include: 'Active', 'Invalid'
+ * @property {array} [addressPrefix] The address prefixes of the effective
+ * routes in CIDR notation.
+ * @property {array} [nextHopIpAddress] The IP address of the next hop of the
  * effective route.
- * @member {string} [nextHopType] The type of Azure hop the packet should be
+ * @property {string} [nextHopType] The type of Azure hop the packet should be
  * sent to. Possible values are: 'VirtualNetworkGateway', 'VnetLocal',
  * 'Internet', 'VirtualAppliance', and 'None'. Possible values include:
  * 'VirtualNetworkGateway', 'VnetLocal', 'Internet', 'VirtualAppliance', 'None'
@@ -6570,8 +6630,8 @@ export interface EffectiveRoute {
  * @constructor
  * Response for list effective route API service call.
  *
- * @member {array} [value] A list of effective routes.
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {array} [value] A list of effective routes.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface EffectiveRouteListResult {
   value?: EffectiveRoute[];
@@ -6584,16 +6644,17 @@ export interface EffectiveRouteListResult {
  * @constructor
  * Container network interface configruation child resource.
  *
- * @member {array} [ipConfigurations] A list of ip configurations of the
+ * @property {array} [ipConfigurations] A list of ip configurations of the
  * container network interface configuration.
- * @member {array} [containerNetworkInterfaces] A list of container network
+ * @property {array} [containerNetworkInterfaces] A list of container network
  * interfaces created from this container network interface configuration.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * @member {string} [name] The name of the resource. This name can be used to
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource.
+ * @property {string} [name] The name of the resource. This name can be used to
  * access the resource.
- * @member {string} [type] Sub Resource type.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [type] Sub Resource type.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface ContainerNetworkInterfaceConfiguration extends SubResource {
   ipConfigurations?: IPConfigurationProfile[];
@@ -6620,12 +6681,13 @@ export interface Container extends SubResource {
  * @constructor
  * The ip configuration for a container network interface.
  *
- * @member {string} [provisioningState] The provisioning state of the resource.
- * @member {string} [name] The name of the resource. This name can be used to
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource.
+ * @property {string} [name] The name of the resource. This name can be used to
  * access the resource.
- * @member {string} [type] Sub Resource type.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [type] Sub Resource type.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface ContainerNetworkInterfaceIpConfiguration {
   readonly provisioningState?: string;
@@ -6640,33 +6702,36 @@ export interface ContainerNetworkInterfaceIpConfiguration {
  * @constructor
  * Container network interface child resource.
  *
- * @member {object} [containerNetworkInterfaceConfiguration] Container network
- * interface configuration from which this container network interface is
- * created.
- * @member {array} [containerNetworkInterfaceConfiguration.ipConfigurations] A
- * list of ip configurations of the container network interface configuration.
- * @member {array}
+ * @property {object} [containerNetworkInterfaceConfiguration] Container
+ * network interface configuration from which this container network interface
+ * is created.
+ * @property {array} [containerNetworkInterfaceConfiguration.ipConfigurations]
+ * A list of ip configurations of the container network interface
+ * configuration.
+ * @property {array}
  * [containerNetworkInterfaceConfiguration.containerNetworkInterfaces] A list
  * of container network interfaces created from this container network
  * interface configuration.
- * @member {string} [containerNetworkInterfaceConfiguration.provisioningState]
- * The provisioning state of the resource.
- * @member {string} [containerNetworkInterfaceConfiguration.name] The name of
+ * @property {string}
+ * [containerNetworkInterfaceConfiguration.provisioningState] The provisioning
+ * state of the resource.
+ * @property {string} [containerNetworkInterfaceConfiguration.name] The name of
  * the resource. This name can be used to access the resource.
- * @member {string} [containerNetworkInterfaceConfiguration.type] Sub Resource
- * type.
- * @member {string} [containerNetworkInterfaceConfiguration.etag] A unique
+ * @property {string} [containerNetworkInterfaceConfiguration.type] Sub
+ * Resource type.
+ * @property {string} [containerNetworkInterfaceConfiguration.etag] A unique
  * read-only string that changes whenever the resource is updated.
- * @member {object} [container] Reference to the conatinaer to which this
+ * @property {object} [container] Reference to the conatinaer to which this
  * container network interface is attached.
- * @member {array} [ipConfigurations] Reference to the ip configuration on this
- * container nic.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * @member {string} [name] The name of the resource. This name can be used to
+ * @property {array} [ipConfigurations] Reference to the ip configuration on
+ * this container nic.
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource.
+ * @property {string} [name] The name of the resource. This name can be used to
  * access the resource.
- * @member {string} [type] Sub Resource type.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [type] Sub Resource type.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface ContainerNetworkInterface extends SubResource {
   containerNetworkInterfaceConfiguration?: ContainerNetworkInterfaceConfiguration;
@@ -6684,15 +6749,16 @@ export interface ContainerNetworkInterface extends SubResource {
  * @constructor
  * Network profile resource.
  *
- * @member {array} [containerNetworkInterfaces] List of child container network
- * interfaces.
- * @member {array} [containerNetworkInterfaceConfigurations] List of chid
+ * @property {array} [containerNetworkInterfaces] List of child container
+ * network interfaces.
+ * @property {array} [containerNetworkInterfaceConfigurations] List of chid
  * container network interface configurations.
- * @member {string} [resourceGuid] The resource GUID property of the network
+ * @property {string} [resourceGuid] The resource GUID property of the network
  * interface resource.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface NetworkProfile extends Resource {
   containerNetworkInterfaces?: ContainerNetworkInterface[];
@@ -6708,10 +6774,10 @@ export interface NetworkProfile extends Resource {
  * @constructor
  * The error object.
  *
- * @member {object} [error] Error.
- * @member {string} [error.code]
- * @member {string} [error.target]
- * @member {string} [error.message]
+ * @property {object} [error] Error.
+ * @property {string} [error.code]
+ * @property {string} [error.target]
+ * @property {string} [error.message]
  */
 export interface ErrorResponse {
   error?: ErrorDetails;
@@ -6723,10 +6789,11 @@ export interface ErrorResponse {
  * @constructor
  * Network watcher in a resource group.
  *
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+ * 'Failed'
  */
 export interface NetworkWatcher extends Resource {
   etag?: string;
@@ -6739,13 +6806,13 @@ export interface NetworkWatcher extends Resource {
  * @constructor
  * Parameters that define the representation of topology.
  *
- * @member {string} [targetResourceGroupName] The name of the target resource
+ * @property {string} [targetResourceGroupName] The name of the target resource
  * group to perform topology on.
- * @member {object} [targetVirtualNetwork] The reference of the Virtual Network
- * resource.
- * @member {string} [targetVirtualNetwork.id] Resource ID.
- * @member {object} [targetSubnet] The reference of the Subnet resource.
- * @member {string} [targetSubnet.id] Resource ID.
+ * @property {object} [targetVirtualNetwork] The reference of the Virtual
+ * Network resource.
+ * @property {string} [targetVirtualNetwork.id] Resource ID.
+ * @property {object} [targetSubnet] The reference of the Subnet resource.
+ * @property {string} [targetSubnet.id] Resource ID.
  */
 export interface TopologyParameters {
   targetResourceGroupName?: string;
@@ -6759,11 +6826,11 @@ export interface TopologyParameters {
  * @constructor
  * Resources that have an association with the parent resource.
  *
- * @member {string} [name] The name of the resource that is associated with the
- * parent resource.
- * @member {string} [resourceId] The ID of the resource that is associated with
+ * @property {string} [name] The name of the resource that is associated with
  * the parent resource.
- * @member {string} [associationType] The association type of the child
+ * @property {string} [resourceId] The ID of the resource that is associated
+ * with the parent resource.
+ * @property {string} [associationType] The association type of the child
  * resource to the parent resource. Possible values include: 'Associated',
  * 'Contains'
  */
@@ -6779,11 +6846,11 @@ export interface TopologyAssociation {
  * @constructor
  * The network resource topology information for the given resource group.
  *
- * @member {string} [name] Name of the resource.
- * @member {string} [id] ID of the resource.
- * @member {string} [location] Resource location.
- * @member {array} [associations] Holds the associations the resource has with
- * other resources in the resource group.
+ * @property {string} [name] Name of the resource.
+ * @property {string} [id] ID of the resource.
+ * @property {string} [location] Resource location.
+ * @property {array} [associations] Holds the associations the resource has
+ * with other resources in the resource group.
  */
 export interface TopologyResource {
   name?: string;
@@ -6798,12 +6865,12 @@ export interface TopologyResource {
  * @constructor
  * Topology of the specified resource group.
  *
- * @member {string} [id] GUID representing the operation id.
- * @member {date} [createdDateTime] The datetime when the topology was
+ * @property {string} [id] GUID representing the operation id.
+ * @property {date} [createdDateTime] The datetime when the topology was
  * initially created for the resource group.
- * @member {date} [lastModified] The datetime when the topology was last
+ * @property {date} [lastModified] The datetime when the topology was last
  * modified.
- * @member {array} [resources]
+ * @property {array} [resources]
  */
 export interface Topology {
   readonly id?: string;
@@ -6818,25 +6885,25 @@ export interface Topology {
  * @constructor
  * Parameters that define the IP flow to be verified.
  *
- * @member {string} targetResourceId The ID of the target resource to perform
+ * @property {string} targetResourceId The ID of the target resource to perform
  * next-hop on.
- * @member {string} direction The direction of the packet represented as a
+ * @property {string} direction The direction of the packet represented as a
  * 5-tuple. Possible values include: 'Inbound', 'Outbound'
- * @member {string} protocol Protocol to be verified on. Possible values
+ * @property {string} protocol Protocol to be verified on. Possible values
  * include: 'TCP', 'UDP'
- * @member {string} localPort The local port. Acceptable values are a single
+ * @property {string} localPort The local port. Acceptable values are a single
  * integer in the range (0-65535). Support for * for the source port, which
  * depends on the direction.
- * @member {string} remotePort The remote port. Acceptable values are a single
- * integer in the range (0-65535). Support for * for the source port, which
- * depends on the direction.
- * @member {string} localIPAddress The local IP address. Acceptable values are
- * valid IPv4 addresses.
- * @member {string} remoteIPAddress The remote IP address. Acceptable values
+ * @property {string} remotePort The remote port. Acceptable values are a
+ * single integer in the range (0-65535). Support for * for the source port,
+ * which depends on the direction.
+ * @property {string} localIPAddress The local IP address. Acceptable values
  * are valid IPv4 addresses.
- * @member {string} [targetNicResourceId] The NIC ID. (If VM has multiple NICs
- * and IP forwarding is enabled on any of them, then this parameter must be
- * specified. Otherwise optional).
+ * @property {string} remoteIPAddress The remote IP address. Acceptable values
+ * are valid IPv4 addresses.
+ * @property {string} [targetNicResourceId] The NIC ID. (If VM has multiple
+ * NICs and IP forwarding is enabled on any of them, then this parameter must
+ * be specified. Otherwise optional).
  */
 export interface VerificationIPFlowParameters {
   targetResourceId: string;
@@ -6855,9 +6922,9 @@ export interface VerificationIPFlowParameters {
  * @constructor
  * Results of IP flow verification on the target resource.
  *
- * @member {string} [access] Indicates whether the traffic is allowed or
+ * @property {string} [access] Indicates whether the traffic is allowed or
  * denied. Possible values include: 'Allow', 'Deny'
- * @member {string} [ruleName] Name of the rule. If input is not matched
+ * @property {string} [ruleName] Name of the rule. If input is not matched
  * against any security rule, it is not displayed.
  */
 export interface VerificationIPFlowResult {
@@ -6871,13 +6938,13 @@ export interface VerificationIPFlowResult {
  * @constructor
  * Parameters that define the source and destination endpoint.
  *
- * @member {string} targetResourceId The resource identifier of the target
+ * @property {string} targetResourceId The resource identifier of the target
  * resource against which the action is to be performed.
- * @member {string} sourceIPAddress The source IP address.
- * @member {string} destinationIPAddress The destination IP address.
- * @member {string} [targetNicResourceId] The NIC ID. (If VM has multiple NICs
- * and IP forwarding is enabled on any of the nics, then this parameter must be
- * specified. Otherwise optional).
+ * @property {string} sourceIPAddress The source IP address.
+ * @property {string} destinationIPAddress The destination IP address.
+ * @property {string} [targetNicResourceId] The NIC ID. (If VM has multiple
+ * NICs and IP forwarding is enabled on any of the nics, then this parameter
+ * must be specified. Otherwise optional).
  */
 export interface NextHopParameters {
   targetResourceId: string;
@@ -6892,14 +6959,14 @@ export interface NextHopParameters {
  * @constructor
  * The information about next hop from the specified VM.
  *
- * @member {string} [nextHopType] Next hop type. Possible values include:
+ * @property {string} [nextHopType] Next hop type. Possible values include:
  * 'Internet', 'VirtualAppliance', 'VirtualNetworkGateway', 'VnetLocal',
  * 'HyperNetGateway', 'None'
- * @member {string} [nextHopIpAddress] Next hop IP Address
- * @member {string} [routeTableId] The resource identifier for the route table
- * associated with the route being returned. If the route being returned does
- * not correspond to any user created routes then this field will be the string
- * 'System Route'.
+ * @property {string} [nextHopIpAddress] Next hop IP Address
+ * @property {string} [routeTableId] The resource identifier for the route
+ * table associated with the route being returned. If the route being returned
+ * does not correspond to any user created routes then this field will be the
+ * string 'System Route'.
  */
 export interface NextHopResult {
   nextHopType?: string;
@@ -6913,7 +6980,7 @@ export interface NextHopResult {
  * @constructor
  * Parameters that define the VM to check security groups for.
  *
- * @member {string} targetResourceId ID of the target VM.
+ * @property {string} targetResourceId ID of the target VM.
  */
 export interface SecurityGroupViewParameters {
   targetResourceId: string;
@@ -6925,8 +6992,8 @@ export interface SecurityGroupViewParameters {
  * @constructor
  * Network interface and its custom security rules.
  *
- * @member {string} [id] Network interface ID.
- * @member {array} [securityRules] Collection of custom security rules.
+ * @property {string} [id] Network interface ID.
+ * @property {array} [securityRules] Collection of custom security rules.
  */
 export interface NetworkInterfaceAssociation {
   readonly id?: string;
@@ -6939,8 +7006,8 @@ export interface NetworkInterfaceAssociation {
  * @constructor
  * Network interface and its custom security rules.
  *
- * @member {string} [id] Subnet ID.
- * @member {array} [securityRules] Collection of custom security rules.
+ * @property {string} [id] Subnet ID.
+ * @property {array} [securityRules] Collection of custom security rules.
  */
 export interface SubnetAssociation {
   readonly id?: string;
@@ -6953,17 +7020,17 @@ export interface SubnetAssociation {
  * @constructor
  * All security rules associated with the network interface.
  *
- * @member {object} [networkInterfaceAssociation]
- * @member {string} [networkInterfaceAssociation.id] Network interface ID.
- * @member {array} [networkInterfaceAssociation.securityRules] Collection of
+ * @property {object} [networkInterfaceAssociation]
+ * @property {string} [networkInterfaceAssociation.id] Network interface ID.
+ * @property {array} [networkInterfaceAssociation.securityRules] Collection of
  * custom security rules.
- * @member {object} [subnetAssociation]
- * @member {string} [subnetAssociation.id] Subnet ID.
- * @member {array} [subnetAssociation.securityRules] Collection of custom
+ * @property {object} [subnetAssociation]
+ * @property {string} [subnetAssociation.id] Subnet ID.
+ * @property {array} [subnetAssociation.securityRules] Collection of custom
  * security rules.
- * @member {array} [defaultSecurityRules] Collection of default security rules
- * of the network security group.
- * @member {array} [effectiveSecurityRules] Collection of effective security
+ * @property {array} [defaultSecurityRules] Collection of default security
+ * rules of the network security group.
+ * @property {array} [effectiveSecurityRules] Collection of effective security
  * rules.
  */
 export interface SecurityRuleAssociations {
@@ -6979,22 +7046,23 @@ export interface SecurityRuleAssociations {
  * @constructor
  * Network interface and all its associated security rules.
  *
- * @member {string} [id] ID of the network interface.
- * @member {object} [securityRuleAssociations]
- * @member {object} [securityRuleAssociations.networkInterfaceAssociation]
- * @member {string} [securityRuleAssociations.networkInterfaceAssociation.id]
+ * @property {string} [id] ID of the network interface.
+ * @property {object} [securityRuleAssociations]
+ * @property {object} [securityRuleAssociations.networkInterfaceAssociation]
+ * @property {string} [securityRuleAssociations.networkInterfaceAssociation.id]
  * Network interface ID.
- * @member {array}
+ * @property {array}
  * [securityRuleAssociations.networkInterfaceAssociation.securityRules]
  * Collection of custom security rules.
- * @member {object} [securityRuleAssociations.subnetAssociation]
- * @member {string} [securityRuleAssociations.subnetAssociation.id] Subnet ID.
- * @member {array} [securityRuleAssociations.subnetAssociation.securityRules]
+ * @property {object} [securityRuleAssociations.subnetAssociation]
+ * @property {string} [securityRuleAssociations.subnetAssociation.id] Subnet
+ * ID.
+ * @property {array} [securityRuleAssociations.subnetAssociation.securityRules]
  * Collection of custom security rules.
- * @member {array} [securityRuleAssociations.defaultSecurityRules] Collection
+ * @property {array} [securityRuleAssociations.defaultSecurityRules] Collection
  * of default security rules of the network security group.
- * @member {array} [securityRuleAssociations.effectiveSecurityRules] Collection
- * of effective security rules.
+ * @property {array} [securityRuleAssociations.effectiveSecurityRules]
+ * Collection of effective security rules.
  */
 export interface SecurityGroupNetworkInterface {
   id?: string;
@@ -7007,7 +7075,7 @@ export interface SecurityGroupNetworkInterface {
  * @constructor
  * The information about security rules applied to the specified VM.
  *
- * @member {array} [networkInterfaces] List of network interfaces on the
+ * @property {array} [networkInterfaces] List of network interfaces on the
  * specified VM.
  */
 export interface SecurityGroupViewResult {
@@ -7020,12 +7088,12 @@ export interface SecurityGroupViewResult {
  * @constructor
  * Describes the storage location for a packet capture session.
  *
- * @member {string} [storageId] The ID of the storage account to save the
+ * @property {string} [storageId] The ID of the storage account to save the
  * packet capture session. Required if no local file path is provided.
- * @member {string} [storagePath] The URI of the storage path to save the
+ * @property {string} [storagePath] The URI of the storage path to save the
  * packet capture. Must be a well-formed URI describing the location to save
  * the packet capture.
- * @member {string} [filePath] A valid local path on the targeting VM. Must
+ * @property {string} [filePath] A valid local path on the targeting VM. Must
  * include the name of the capture file (*.cap). For linux virtual machine it
  * must start with /var/captures. Required if no storage ID is provided,
  * otherwise optional.
@@ -7043,26 +7111,26 @@ export interface PacketCaptureStorageLocation {
  * Filter that is applied to packet capture request. Multiple filters can be
  * applied.
  *
- * @member {string} [protocol] Protocol to be filtered on. Possible values
+ * @property {string} [protocol] Protocol to be filtered on. Possible values
  * include: 'TCP', 'UDP', 'Any'. Default value: 'Any' .
- * @member {string} [localIPAddress] Local IP Address to be filtered on.
+ * @property {string} [localIPAddress] Local IP Address to be filtered on.
  * Notation: "127.0.0.1" for single address entry. "127.0.0.1-127.0.0.255" for
  * range. "127.0.0.1;127.0.0.5"? for multiple entries. Multiple ranges not
  * currently supported. Mixing ranges with multiple entries not currently
  * supported. Default = null.
- * @member {string} [remoteIPAddress] Local IP Address to be filtered on.
+ * @property {string} [remoteIPAddress] Local IP Address to be filtered on.
  * Notation: "127.0.0.1" for single address entry. "127.0.0.1-127.0.0.255" for
  * range. "127.0.0.1;127.0.0.5;" for multiple entries. Multiple ranges not
  * currently supported. Mixing ranges with multiple entries not currently
  * supported. Default = null.
- * @member {string} [localPort] Local port to be filtered on. Notation: "80"
+ * @property {string} [localPort] Local port to be filtered on. Notation: "80"
  * for single port entry."80-85" for range. "80;443;" for multiple entries.
  * Multiple ranges not currently supported. Mixing ranges with multiple entries
  * not currently supported. Default = null.
- * @member {string} [remotePort] Remote port to be filtered on. Notation: "80"
- * for single port entry."80-85" for range. "80;443;" for multiple entries.
- * Multiple ranges not currently supported. Mixing ranges with multiple entries
- * not currently supported. Default = null.
+ * @property {string} [remotePort] Remote port to be filtered on. Notation:
+ * "80" for single port entry."80-85" for range. "80;443;" for multiple
+ * entries. Multiple ranges not currently supported. Mixing ranges with
+ * multiple entries not currently supported. Default = null.
  */
 export interface PacketCaptureFilter {
   protocol?: string;
@@ -7078,26 +7146,26 @@ export interface PacketCaptureFilter {
  * @constructor
  * Parameters that define the create packet capture operation.
  *
- * @member {string} target The ID of the targeted resource, only VM is
+ * @property {string} target The ID of the targeted resource, only VM is
  * currently supported.
- * @member {number} [bytesToCapturePerPacket] Number of bytes captured per
+ * @property {number} [bytesToCapturePerPacket] Number of bytes captured per
  * packet, the remaining bytes are truncated. Default value: 0 .
- * @member {number} [totalBytesPerSession] Maximum size of the capture output.
- * Default value: 1073741824 .
- * @member {number} [timeLimitInSeconds] Maximum duration of the capture
+ * @property {number} [totalBytesPerSession] Maximum size of the capture
+ * output. Default value: 1073741824 .
+ * @property {number} [timeLimitInSeconds] Maximum duration of the capture
  * session in seconds. Default value: 18000 .
- * @member {object} storageLocation
- * @member {string} [storageLocation.storageId] The ID of the storage account
+ * @property {object} storageLocation
+ * @property {string} [storageLocation.storageId] The ID of the storage account
  * to save the packet capture session. Required if no local file path is
  * provided.
- * @member {string} [storageLocation.storagePath] The URI of the storage path
+ * @property {string} [storageLocation.storagePath] The URI of the storage path
  * to save the packet capture. Must be a well-formed URI describing the
  * location to save the packet capture.
- * @member {string} [storageLocation.filePath] A valid local path on the
+ * @property {string} [storageLocation.filePath] A valid local path on the
  * targeting VM. Must include the name of the capture file (*.cap). For linux
  * virtual machine it must start with /var/captures. Required if no storage ID
  * is provided, otherwise optional.
- * @member {array} [filters]
+ * @property {array} [filters]
  */
 export interface PacketCaptureParameters {
   target: string;
@@ -7114,26 +7182,26 @@ export interface PacketCaptureParameters {
  * @constructor
  * Parameters that define the create packet capture operation.
  *
- * @member {string} target The ID of the targeted resource, only VM is
+ * @property {string} target The ID of the targeted resource, only VM is
  * currently supported.
- * @member {number} [bytesToCapturePerPacket] Number of bytes captured per
+ * @property {number} [bytesToCapturePerPacket] Number of bytes captured per
  * packet, the remaining bytes are truncated. Default value: 0 .
- * @member {number} [totalBytesPerSession] Maximum size of the capture output.
- * Default value: 1073741824 .
- * @member {number} [timeLimitInSeconds] Maximum duration of the capture
+ * @property {number} [totalBytesPerSession] Maximum size of the capture
+ * output. Default value: 1073741824 .
+ * @property {number} [timeLimitInSeconds] Maximum duration of the capture
  * session in seconds. Default value: 18000 .
- * @member {object} storageLocation
- * @member {string} [storageLocation.storageId] The ID of the storage account
+ * @property {object} storageLocation
+ * @property {string} [storageLocation.storageId] The ID of the storage account
  * to save the packet capture session. Required if no local file path is
  * provided.
- * @member {string} [storageLocation.storagePath] The URI of the storage path
+ * @property {string} [storageLocation.storagePath] The URI of the storage path
  * to save the packet capture. Must be a well-formed URI describing the
  * location to save the packet capture.
- * @member {string} [storageLocation.filePath] A valid local path on the
+ * @property {string} [storageLocation.filePath] A valid local path on the
  * targeting VM. Must include the name of the capture file (*.cap). For linux
  * virtual machine it must start with /var/captures. Required if no storage ID
  * is provided, otherwise optional.
- * @member {array} [filters]
+ * @property {array} [filters]
  */
 export interface PacketCapture {
   target: string;
@@ -7150,31 +7218,31 @@ export interface PacketCapture {
  * @constructor
  * Information about packet capture session.
  *
- * @member {string} [name] Name of the packet capture session.
- * @member {string} [id] ID of the packet capture operation.
- * @member {string} [etag] Default value: 'A unique read-only string that
+ * @property {string} [name] Name of the packet capture session.
+ * @property {string} [id] ID of the packet capture operation.
+ * @property {string} [etag] Default value: 'A unique read-only string that
  * changes whenever the resource is updated.' .
- * @member {string} target The ID of the targeted resource, only VM is
+ * @property {string} target The ID of the targeted resource, only VM is
  * currently supported.
- * @member {number} [bytesToCapturePerPacket] Number of bytes captured per
+ * @property {number} [bytesToCapturePerPacket] Number of bytes captured per
  * packet, the remaining bytes are truncated. Default value: 0 .
- * @member {number} [totalBytesPerSession] Maximum size of the capture output.
- * Default value: 1073741824 .
- * @member {number} [timeLimitInSeconds] Maximum duration of the capture
+ * @property {number} [totalBytesPerSession] Maximum size of the capture
+ * output. Default value: 1073741824 .
+ * @property {number} [timeLimitInSeconds] Maximum duration of the capture
  * session in seconds. Default value: 18000 .
- * @member {object} storageLocation
- * @member {string} [storageLocation.storageId] The ID of the storage account
+ * @property {object} storageLocation
+ * @property {string} [storageLocation.storageId] The ID of the storage account
  * to save the packet capture session. Required if no local file path is
  * provided.
- * @member {string} [storageLocation.storagePath] The URI of the storage path
+ * @property {string} [storageLocation.storagePath] The URI of the storage path
  * to save the packet capture. Must be a well-formed URI describing the
  * location to save the packet capture.
- * @member {string} [storageLocation.filePath] A valid local path on the
+ * @property {string} [storageLocation.filePath] A valid local path on the
  * targeting VM. Must include the name of the capture file (*.cap). For linux
  * virtual machine it must start with /var/captures. Required if no storage ID
  * is provided, otherwise optional.
- * @member {array} [filters]
- * @member {string} [provisioningState] The provisioning state of the packet
+ * @property {array} [filters]
+ * @property {string} [provisioningState] The provisioning state of the packet
  * capture session. Possible values include: 'Succeeded', 'Updating',
  * 'Deleting', 'Failed'
  */
@@ -7197,16 +7265,16 @@ export interface PacketCaptureResult {
  * @constructor
  * Status of packet capture session.
  *
- * @member {string} [name] The name of the packet capture resource.
- * @member {string} [id] The ID of the packet capture resource.
- * @member {date} [captureStartTime] The start time of the packet capture
+ * @property {string} [name] The name of the packet capture resource.
+ * @property {string} [id] The ID of the packet capture resource.
+ * @property {date} [captureStartTime] The start time of the packet capture
  * session.
- * @member {string} [packetCaptureStatus] The status of the packet capture
+ * @property {string} [packetCaptureStatus] The status of the packet capture
  * session. Possible values include: 'NotStarted', 'Running', 'Stopped',
  * 'Error', 'Unknown'
- * @member {string} [stopReason] The reason the current packet capture session
- * was stopped.
- * @member {array} [packetCaptureError] List of errors of packet capture
+ * @property {string} [stopReason] The reason the current packet capture
+ * session was stopped.
+ * @property {array} [packetCaptureError] List of errors of packet capture
  * session.
  */
 export interface PacketCaptureQueryStatusResult {
@@ -7224,10 +7292,10 @@ export interface PacketCaptureQueryStatusResult {
  * @constructor
  * Parameters that define the resource to troubleshoot.
  *
- * @member {string} targetResourceId The target resource to troubleshoot.
- * @member {string} storageId The ID for the storage account to save the
+ * @property {string} targetResourceId The target resource to troubleshoot.
+ * @property {string} storageId The ID for the storage account to save the
  * troubleshoot result.
- * @member {string} storagePath The path to the blob to save the troubleshoot
+ * @property {string} storagePath The path to the blob to save the troubleshoot
  * result in.
  */
 export interface TroubleshootingParameters {
@@ -7242,7 +7310,7 @@ export interface TroubleshootingParameters {
  * @constructor
  * Parameters that define the resource to query the troubleshooting result.
  *
- * @member {string} targetResourceId The target resource ID to query the
+ * @property {string} targetResourceId The target resource ID to query the
  * troubleshooting result.
  */
 export interface QueryTroubleshootingParameters {
@@ -7255,11 +7323,11 @@ export interface QueryTroubleshootingParameters {
  * @constructor
  * Recommended actions based on discovered issues.
  *
- * @member {string} [actionId] ID of the recommended action.
- * @member {string} [actionText] Description of recommended actions.
- * @member {string} [actionUri] The uri linking to a documentation for the
+ * @property {string} [actionId] ID of the recommended action.
+ * @property {string} [actionText] Description of recommended actions.
+ * @property {string} [actionUri] The uri linking to a documentation for the
  * recommended troubleshooting actions.
- * @member {string} [actionUriText] The information from the URI for the
+ * @property {string} [actionUriText] The information from the URI for the
  * recommended troubleshooting actions.
  */
 export interface TroubleshootingRecommendedActions {
@@ -7275,11 +7343,11 @@ export interface TroubleshootingRecommendedActions {
  * @constructor
  * Information gained from troubleshooting of specified resource.
  *
- * @member {string} [id] The id of the get troubleshoot operation.
- * @member {string} [reasonType] Reason type of failure.
- * @member {string} [summary] A summary of troubleshooting.
- * @member {string} [detail] Details on troubleshooting results.
- * @member {array} [recommendedActions] List of recommended actions.
+ * @property {string} [id] The id of the get troubleshoot operation.
+ * @property {string} [reasonType] Reason type of failure.
+ * @property {string} [summary] A summary of troubleshooting.
+ * @property {string} [detail] Details on troubleshooting results.
+ * @property {array} [recommendedActions] List of recommended actions.
  */
 export interface TroubleshootingDetails {
   id?: string;
@@ -7295,10 +7363,10 @@ export interface TroubleshootingDetails {
  * @constructor
  * Troubleshooting information gained from specified resource.
  *
- * @member {date} [startTime] The start time of the troubleshooting.
- * @member {date} [endTime] The end time of the troubleshooting.
- * @member {string} [code] The result code of the troubleshooting.
- * @member {array} [results] Information from troubleshooting.
+ * @property {date} [startTime] The start time of the troubleshooting.
+ * @property {date} [endTime] The end time of the troubleshooting.
+ * @property {string} [code] The result code of the troubleshooting.
+ * @property {array} [results] Information from troubleshooting.
  */
 export interface TroubleshootingResult {
   startTime?: Date;
@@ -7313,10 +7381,10 @@ export interface TroubleshootingResult {
  * @constructor
  * Parameters that define the retention policy for flow log.
  *
- * @member {number} [days] Number of days to retain flow log records. Default
+ * @property {number} [days] Number of days to retain flow log records. Default
  * value: 0 .
- * @member {boolean} [enabled] Flag to enable/disable retention. Default value:
- * false .
+ * @property {boolean} [enabled] Flag to enable/disable retention. Default
+ * value: false .
  */
 export interface RetentionPolicyParameters {
   days?: number;
@@ -7330,8 +7398,8 @@ export interface RetentionPolicyParameters {
  * Parameters that define a resource to query flow log and traffic analytics
  * (optional) status.
  *
- * @member {string} targetResourceId The target resource where getting the flow
- * log and traffic analytics (optional) status.
+ * @property {string} targetResourceId The target resource where getting the
+ * flow log and traffic analytics (optional) status.
  */
 export interface FlowLogStatusParameters {
   targetResourceId: string;
@@ -7343,10 +7411,10 @@ export interface FlowLogStatusParameters {
  * @constructor
  * Parameters that define the configuration of traffic analytics.
  *
- * @member {boolean} enabled Flag to enable/disable traffic analytics.
- * @member {string} workspaceId The resource guid of the attached workspace
- * @member {string} workspaceRegion The location of the attached workspace
- * @member {string} workspaceResourceId Resource Id of the attached workspace
+ * @property {boolean} enabled Flag to enable/disable traffic analytics.
+ * @property {string} workspaceId The resource guid of the attached workspace
+ * @property {string} workspaceRegion The location of the attached workspace
+ * @property {string} workspaceResourceId Resource Id of the attached workspace
  */
 export interface TrafficAnalyticsConfigurationProperties {
   enabled: boolean;
@@ -7361,14 +7429,15 @@ export interface TrafficAnalyticsConfigurationProperties {
  * @constructor
  * Parameters that define the configuration of traffic analytics.
  *
- * @member {object} networkWatcherFlowAnalyticsConfiguration
- * @member {boolean} [networkWatcherFlowAnalyticsConfiguration.enabled] Flag to
- * enable/disable traffic analytics.
- * @member {string} [networkWatcherFlowAnalyticsConfiguration.workspaceId] The
- * resource guid of the attached workspace
- * @member {string} [networkWatcherFlowAnalyticsConfiguration.workspaceRegion]
- * The location of the attached workspace
- * @member {string}
+ * @property {object} networkWatcherFlowAnalyticsConfiguration
+ * @property {boolean} [networkWatcherFlowAnalyticsConfiguration.enabled] Flag
+ * to enable/disable traffic analytics.
+ * @property {string} [networkWatcherFlowAnalyticsConfiguration.workspaceId]
+ * The resource guid of the attached workspace
+ * @property {string}
+ * [networkWatcherFlowAnalyticsConfiguration.workspaceRegion] The location of
+ * the attached workspace
+ * @property {string}
  * [networkWatcherFlowAnalyticsConfiguration.workspaceResourceId] Resource Id
  * of the attached workspace
  */
@@ -7383,29 +7452,29 @@ export interface TrafficAnalyticsProperties {
  * Information on the configuration of flow log and traffic analytics
  * (optional) .
  *
- * @member {string} targetResourceId The ID of the resource to configure for
+ * @property {string} targetResourceId The ID of the resource to configure for
  * flow log and traffic analytics (optional) .
- * @member {string} storageId ID of the storage account which is used to store
- * the flow log.
- * @member {boolean} enabled Flag to enable/disable flow logging.
- * @member {object} [retentionPolicy]
- * @member {number} [retentionPolicy.days] Number of days to retain flow log
+ * @property {string} storageId ID of the storage account which is used to
+ * store the flow log.
+ * @property {boolean} enabled Flag to enable/disable flow logging.
+ * @property {object} [retentionPolicy]
+ * @property {number} [retentionPolicy.days] Number of days to retain flow log
  * records.
- * @member {boolean} [retentionPolicy.enabled] Flag to enable/disable
+ * @property {boolean} [retentionPolicy.enabled] Flag to enable/disable
  * retention.
- * @member {object} [flowAnalyticsConfiguration]
- * @member {object}
+ * @property {object} [flowAnalyticsConfiguration]
+ * @property {object}
  * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration]
- * @member {boolean}
+ * @property {boolean}
  * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.enabled]
  * Flag to enable/disable traffic analytics.
- * @member {string}
+ * @property {string}
  * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceId]
  * The resource guid of the attached workspace
- * @member {string}
+ * @property {string}
  * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceRegion]
  * The location of the attached workspace
- * @member {string}
+ * @property {string}
  * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId]
  * Resource Id of the attached workspace
  */
@@ -7423,10 +7492,10 @@ export interface FlowLogInformation {
  * @constructor
  * Parameters that define the source of the connection.
  *
- * @member {string} resourceId The ID of the resource from which a connectivity
- * check will be initiated.
- * @member {number} [port] The source port from which a connectivity check will
- * be performed.
+ * @property {string} resourceId The ID of the resource from which a
+ * connectivity check will be initiated.
+ * @property {number} [port] The source port from which a connectivity check
+ * will be performed.
  */
 export interface ConnectivitySource {
   resourceId: string;
@@ -7439,11 +7508,12 @@ export interface ConnectivitySource {
  * @constructor
  * Parameters that define destination of connection.
  *
- * @member {string} [resourceId] The ID of the resource to which a connection
+ * @property {string} [resourceId] The ID of the resource to which a connection
  * attempt will be made.
- * @member {string} [address] The IP address or URI the resource to which a
+ * @property {string} [address] The IP address or URI the resource to which a
  * connection attempt will be made.
- * @member {number} [port] Port on which check connectivity will be performed.
+ * @property {number} [port] Port on which check connectivity will be
+ * performed.
  */
 export interface ConnectivityDestination {
   resourceId?: string;
@@ -7457,8 +7527,8 @@ export interface ConnectivityDestination {
  * @constructor
  * Describes the HTTP header.
  *
- * @member {string} [name] The name in HTTP header.
- * @member {string} [value] The value in HTTP header.
+ * @property {string} [name] The name in HTTP header.
+ * @property {string} [value] The value in HTTP header.
  */
 export interface HTTPHeader {
   name?: string;
@@ -7471,9 +7541,9 @@ export interface HTTPHeader {
  * @constructor
  * HTTP configuration of the connectivity check.
  *
- * @member {string} [method] HTTP method. Possible values include: 'Get'
- * @member {array} [headers] List of HTTP headers.
- * @member {array} [validStatusCodes] Valid status codes.
+ * @property {string} [method] HTTP method. Possible values include: 'Get'
+ * @property {array} [headers] List of HTTP headers.
+ * @property {array} [validStatusCodes] Valid status codes.
  */
 export interface HTTPConfiguration {
   method?: string;
@@ -7487,11 +7557,11 @@ export interface HTTPConfiguration {
  * @constructor
  * Configuration of the protocol.
  *
- * @member {object} [hTTPConfiguration]
- * @member {string} [hTTPConfiguration.method] HTTP method. Possible values
+ * @property {object} [hTTPConfiguration]
+ * @property {string} [hTTPConfiguration.method] HTTP method. Possible values
  * include: 'Get'
- * @member {array} [hTTPConfiguration.headers] List of HTTP headers.
- * @member {array} [hTTPConfiguration.validStatusCodes] Valid status codes.
+ * @property {array} [hTTPConfiguration.headers] List of HTTP headers.
+ * @property {array} [hTTPConfiguration.validStatusCodes] Valid status codes.
  */
 export interface ProtocolConfiguration {
   hTTPConfiguration?: HTTPConfiguration;
@@ -7503,27 +7573,27 @@ export interface ProtocolConfiguration {
  * @constructor
  * Parameters that determine how the connectivity check will be performed.
  *
- * @member {object} source
- * @member {string} [source.resourceId] The ID of the resource from which a
+ * @property {object} source
+ * @property {string} [source.resourceId] The ID of the resource from which a
  * connectivity check will be initiated.
- * @member {number} [source.port] The source port from which a connectivity
+ * @property {number} [source.port] The source port from which a connectivity
  * check will be performed.
- * @member {object} destination
- * @member {string} [destination.resourceId] The ID of the resource to which a
- * connection attempt will be made.
- * @member {string} [destination.address] The IP address or URI the resource to
- * which a connection attempt will be made.
- * @member {number} [destination.port] Port on which check connectivity will be
- * performed.
- * @member {string} [protocol] Network protocol. Possible values include:
+ * @property {object} destination
+ * @property {string} [destination.resourceId] The ID of the resource to which
+ * a connection attempt will be made.
+ * @property {string} [destination.address] The IP address or URI the resource
+ * to which a connection attempt will be made.
+ * @property {number} [destination.port] Port on which check connectivity will
+ * be performed.
+ * @property {string} [protocol] Network protocol. Possible values include:
  * 'Tcp', 'Http', 'Https', 'Icmp'
- * @member {object} [protocolConfiguration]
- * @member {object} [protocolConfiguration.hTTPConfiguration]
- * @member {string} [protocolConfiguration.hTTPConfiguration.method] HTTP
+ * @property {object} [protocolConfiguration]
+ * @property {object} [protocolConfiguration.hTTPConfiguration]
+ * @property {string} [protocolConfiguration.hTTPConfiguration.method] HTTP
  * method. Possible values include: 'Get'
- * @member {array} [protocolConfiguration.hTTPConfiguration.headers] List of
+ * @property {array} [protocolConfiguration.hTTPConfiguration.headers] List of
  * HTTP headers.
- * @member {array} [protocolConfiguration.hTTPConfiguration.validStatusCodes]
+ * @property {array} [protocolConfiguration.hTTPConfiguration.validStatusCodes]
  * Valid status codes.
  */
 export interface ConnectivityParameters {
@@ -7540,14 +7610,14 @@ export interface ConnectivityParameters {
  * Information about an issue encountered in the process of checking for
  * connectivity.
  *
- * @member {string} [origin] The origin of the issue. Possible values include:
- * 'Local', 'Inbound', 'Outbound'
- * @member {string} [severity] The severity of the issue. Possible values
+ * @property {string} [origin] The origin of the issue. Possible values
+ * include: 'Local', 'Inbound', 'Outbound'
+ * @property {string} [severity] The severity of the issue. Possible values
  * include: 'Error', 'Warning'
- * @member {string} [type] The type of issue. Possible values include:
+ * @property {string} [type] The type of issue. Possible values include:
  * 'Unknown', 'AgentStopped', 'GuestFirewall', 'DnsResolution', 'SocketBind',
  * 'NetworkSecurityRule', 'UserDefinedRoute', 'PortThrottled', 'Platform'
- * @member {array} [context] Provides additional context on the issue.
+ * @property {array} [context] Provides additional context on the issue.
  */
 export interface ConnectivityIssue {
   readonly origin?: string;
@@ -7562,13 +7632,13 @@ export interface ConnectivityIssue {
  * @constructor
  * Information about a hop between the source and the destination.
  *
- * @member {string} [type] The type of the hop.
- * @member {string} [id] The ID of the hop.
- * @member {string} [address] The IP address of the hop.
- * @member {string} [resourceId] The ID of the resource corresponding to this
+ * @property {string} [type] The type of the hop.
+ * @property {string} [id] The ID of the hop.
+ * @property {string} [address] The IP address of the hop.
+ * @property {string} [resourceId] The ID of the resource corresponding to this
  * hop.
- * @member {array} [nextHopIds] List of next hop identifiers.
- * @member {array} [issues] List of issues.
+ * @property {array} [nextHopIds] List of next hop identifiers.
+ * @property {array} [issues] List of issues.
  */
 export interface ConnectivityHop {
   readonly type?: string;
@@ -7585,14 +7655,15 @@ export interface ConnectivityHop {
  * @constructor
  * Information on the connectivity status.
  *
- * @member {array} [hops] List of hops between the source and the destination.
- * @member {string} [connectionStatus] The connection status. Possible values
+ * @property {array} [hops] List of hops between the source and the
+ * destination.
+ * @property {string} [connectionStatus] The connection status. Possible values
  * include: 'Unknown', 'Connected', 'Disconnected', 'Degraded'
- * @member {number} [avgLatencyInMs] Average latency in milliseconds.
- * @member {number} [minLatencyInMs] Minimum latency in milliseconds.
- * @member {number} [maxLatencyInMs] Maximum latency in milliseconds.
- * @member {number} [probesSent] Total number of probes sent.
- * @member {number} [probesFailed] Number of failed probes.
+ * @property {number} [avgLatencyInMs] Average latency in milliseconds.
+ * @property {number} [minLatencyInMs] Minimum latency in milliseconds.
+ * @property {number} [maxLatencyInMs] Maximum latency in milliseconds.
+ * @property {number} [probesSent] Total number of probes sent.
+ * @property {number} [probesFailed] Number of failed probes.
  */
 export interface ConnectivityInformation {
   readonly hops?: ConnectivityHop[];
@@ -7610,9 +7681,9 @@ export interface ConnectivityInformation {
  * @constructor
  * Parameters that define a geographic location.
  *
- * @member {string} country The name of the country.
- * @member {string} [state] The name of the state.
- * @member {string} [city] The name of the city or town.
+ * @property {string} country The name of the country.
+ * @property {string} [state] The name of the state.
+ * @property {string} [city] The name of the city or town.
  */
 export interface AzureReachabilityReportLocation {
   country: string;
@@ -7626,15 +7697,15 @@ export interface AzureReachabilityReportLocation {
  * @constructor
  * Geographic and time constraints for Azure reachability report.
  *
- * @member {object} providerLocation
- * @member {string} [providerLocation.country] The name of the country.
- * @member {string} [providerLocation.state] The name of the state.
- * @member {string} [providerLocation.city] The name of the city or town.
- * @member {array} [providers] List of Internet service providers.
- * @member {array} [azureLocations] Optional Azure regions to scope the query
+ * @property {object} providerLocation
+ * @property {string} [providerLocation.country] The name of the country.
+ * @property {string} [providerLocation.state] The name of the state.
+ * @property {string} [providerLocation.city] The name of the city or town.
+ * @property {array} [providers] List of Internet service providers.
+ * @property {array} [azureLocations] Optional Azure regions to scope the query
  * to.
- * @member {date} startTime The start time for the Azure reachability report.
- * @member {date} endTime The end time for the Azure reachability report.
+ * @property {date} startTime The start time for the Azure reachability report.
+ * @property {date} endTime The end time for the Azure reachability report.
  */
 export interface AzureReachabilityReportParameters {
   providerLocation: AzureReachabilityReportLocation;
@@ -7650,8 +7721,8 @@ export interface AzureReachabilityReportParameters {
  * @constructor
  * Details on latency for a time series.
  *
- * @member {date} [timeStamp] The time stamp.
- * @member {number} [score] The relative latency score between 1 and 100,
+ * @property {date} [timeStamp] The time stamp.
+ * @property {number} [score] The relative latency score between 1 and 100,
  * higher values indicating a faster connection.
  */
 export interface AzureReachabilityReportLatencyInfo {
@@ -7665,9 +7736,9 @@ export interface AzureReachabilityReportLatencyInfo {
  * @constructor
  * Azure reachability report details for a given provider location.
  *
- * @member {string} [provider] The Internet service provider.
- * @member {string} [azureLocation] The Azure region.
- * @member {array} [latencies] List of latency details for each of the time
+ * @property {string} [provider] The Internet service provider.
+ * @property {string} [azureLocation] The Azure region.
+ * @property {array} [latencies] List of latency details for each of the time
  * series.
  */
 export interface AzureReachabilityReportItem {
@@ -7682,13 +7753,14 @@ export interface AzureReachabilityReportItem {
  * @constructor
  * Azure reachability report details.
  *
- * @member {string} aggregationLevel The aggregation level of Azure
+ * @property {string} aggregationLevel The aggregation level of Azure
  * reachability report. Can be Country, State or City.
- * @member {object} providerLocation
- * @member {string} [providerLocation.country] The name of the country.
- * @member {string} [providerLocation.state] The name of the state.
- * @member {string} [providerLocation.city] The name of the city or town.
- * @member {array} reachabilityReport List of Azure reachability report items.
+ * @property {object} providerLocation
+ * @property {string} [providerLocation.country] The name of the country.
+ * @property {string} [providerLocation.state] The name of the state.
+ * @property {string} [providerLocation.city] The name of the city or town.
+ * @property {array} reachabilityReport List of Azure reachability report
+ * items.
  */
 export interface AzureReachabilityReport {
   aggregationLevel: string;
@@ -7702,10 +7774,10 @@ export interface AzureReachabilityReport {
  * @constructor
  * Constraints that determine the list of available Internet service providers.
  *
- * @member {array} [azureLocations] A list of Azure regions.
- * @member {string} [country] The country for available providers list.
- * @member {string} [state] The state for available providers list.
- * @member {string} [city] The city or town for available providers list.
+ * @property {array} [azureLocations] A list of Azure regions.
+ * @property {string} [country] The country for available providers list.
+ * @property {string} [state] The state for available providers list.
+ * @property {string} [city] The city or town for available providers list.
  */
 export interface AvailableProvidersListParameters {
   azureLocations?: string[];
@@ -7720,8 +7792,8 @@ export interface AvailableProvidersListParameters {
  * @constructor
  * City or town details.
  *
- * @member {string} [cityName] The city or town name.
- * @member {array} [providers] A list of Internet service providers.
+ * @property {string} [cityName] The city or town name.
+ * @property {array} [providers] A list of Internet service providers.
  */
 export interface AvailableProvidersListCity {
   cityName?: string;
@@ -7734,9 +7806,9 @@ export interface AvailableProvidersListCity {
  * @constructor
  * State details.
  *
- * @member {string} [stateName] The state name.
- * @member {array} [providers] A list of Internet service providers.
- * @member {array} [cities] List of available cities or towns in the state.
+ * @property {string} [stateName] The state name.
+ * @property {array} [providers] A list of Internet service providers.
+ * @property {array} [cities] List of available cities or towns in the state.
  */
 export interface AvailableProvidersListState {
   stateName?: string;
@@ -7750,9 +7822,9 @@ export interface AvailableProvidersListState {
  * @constructor
  * Country details.
  *
- * @member {string} [countryName] The country name.
- * @member {array} [providers] A list of Internet service providers.
- * @member {array} [states] List of available states in the country.
+ * @property {string} [countryName] The country name.
+ * @property {array} [providers] A list of Internet service providers.
+ * @property {array} [states] List of available states in the country.
  */
 export interface AvailableProvidersListCountry {
   countryName?: string;
@@ -7766,7 +7838,7 @@ export interface AvailableProvidersListCountry {
  * @constructor
  * List of available countries with details.
  *
- * @member {array} countries List of available countries.
+ * @property {array} countries List of available countries.
  */
 export interface AvailableProvidersList {
   countries: AvailableProvidersListCountry[];
@@ -7778,9 +7850,9 @@ export interface AvailableProvidersList {
  * @constructor
  * Describes the source of connection monitor.
  *
- * @member {string} resourceId The ID of the resource used as the source by
+ * @property {string} resourceId The ID of the resource used as the source by
  * connection monitor.
- * @member {number} [port] The source port used by connection monitor.
+ * @property {number} [port] The source port used by connection monitor.
  */
 export interface ConnectionMonitorSource {
   resourceId: string;
@@ -7793,11 +7865,11 @@ export interface ConnectionMonitorSource {
  * @constructor
  * Describes the destination of connection monitor.
  *
- * @member {string} [resourceId] The ID of the resource used as the destination
- * by connection monitor.
- * @member {string} [address] Address of the connection monitor destination (IP
- * or domain name).
- * @member {number} [port] The destination port used by connection monitor.
+ * @property {string} [resourceId] The ID of the resource used as the
+ * destination by connection monitor.
+ * @property {string} [address] Address of the connection monitor destination
+ * (IP or domain name).
+ * @property {number} [port] The destination port used by connection monitor.
  */
 export interface ConnectionMonitorDestination {
   resourceId?: string;
@@ -7811,20 +7883,20 @@ export interface ConnectionMonitorDestination {
  * @constructor
  * Parameters that define the operation to create a connection monitor.
  *
- * @member {object} source
- * @member {string} [source.resourceId] The ID of the resource used as the
+ * @property {object} source
+ * @property {string} [source.resourceId] The ID of the resource used as the
  * source by connection monitor.
- * @member {number} [source.port] The source port used by connection monitor.
- * @member {object} destination
- * @member {string} [destination.resourceId] The ID of the resource used as the
- * destination by connection monitor.
- * @member {string} [destination.address] Address of the connection monitor
+ * @property {number} [source.port] The source port used by connection monitor.
+ * @property {object} destination
+ * @property {string} [destination.resourceId] The ID of the resource used as
+ * the destination by connection monitor.
+ * @property {string} [destination.address] Address of the connection monitor
  * destination (IP or domain name).
- * @member {number} [destination.port] The destination port used by connection
- * monitor.
- * @member {boolean} [autoStart] Determines if the connection monitor will
+ * @property {number} [destination.port] The destination port used by
+ * connection monitor.
+ * @property {boolean} [autoStart] Determines if the connection monitor will
  * start automatically once created. Default value: true .
- * @member {number} [monitoringIntervalInSeconds] Monitoring interval in
+ * @property {number} [monitoringIntervalInSeconds] Monitoring interval in
  * seconds. Default value: 60 .
  */
 export interface ConnectionMonitorParameters {
@@ -7840,22 +7912,22 @@ export interface ConnectionMonitorParameters {
  * @constructor
  * Parameters that define the operation to create a connection monitor.
  *
- * @member {string} [location] Connection monitor location.
- * @member {object} [tags] Connection monitor tags.
- * @member {object} source
- * @member {string} [source.resourceId] The ID of the resource used as the
+ * @property {string} [location] Connection monitor location.
+ * @property {object} [tags] Connection monitor tags.
+ * @property {object} source
+ * @property {string} [source.resourceId] The ID of the resource used as the
  * source by connection monitor.
- * @member {number} [source.port] The source port used by connection monitor.
- * @member {object} destination
- * @member {string} [destination.resourceId] The ID of the resource used as the
- * destination by connection monitor.
- * @member {string} [destination.address] Address of the connection monitor
+ * @property {number} [source.port] The source port used by connection monitor.
+ * @property {object} destination
+ * @property {string} [destination.resourceId] The ID of the resource used as
+ * the destination by connection monitor.
+ * @property {string} [destination.address] Address of the connection monitor
  * destination (IP or domain name).
- * @member {number} [destination.port] The destination port used by connection
- * monitor.
- * @member {boolean} [autoStart] Determines if the connection monitor will
+ * @property {number} [destination.port] The destination port used by
+ * connection monitor.
+ * @property {boolean} [autoStart] Determines if the connection monitor will
  * start automatically once created. Default value: true .
- * @member {number} [monitoringIntervalInSeconds] Monitoring interval in
+ * @property {number} [monitoringIntervalInSeconds] Monitoring interval in
  * seconds. Default value: 60 .
  */
 export interface ConnectionMonitor {
@@ -7873,35 +7945,35 @@ export interface ConnectionMonitor {
  * @constructor
  * Information about the connection monitor.
  *
- * @member {string} [name] Name of the connection monitor.
- * @member {string} [id] ID of the connection monitor.
- * @member {string} [etag] Default value: 'A unique read-only string that
+ * @property {string} [name] Name of the connection monitor.
+ * @property {string} [id] ID of the connection monitor.
+ * @property {string} [etag] Default value: 'A unique read-only string that
  * changes whenever the resource is updated.' .
- * @member {string} [type] Connection monitor type.
- * @member {string} [location] Connection monitor location.
- * @member {object} [tags] Connection monitor tags.
- * @member {object} source
- * @member {string} [source.resourceId] The ID of the resource used as the
+ * @property {string} [type] Connection monitor type.
+ * @property {string} [location] Connection monitor location.
+ * @property {object} [tags] Connection monitor tags.
+ * @property {object} source
+ * @property {string} [source.resourceId] The ID of the resource used as the
  * source by connection monitor.
- * @member {number} [source.port] The source port used by connection monitor.
- * @member {object} destination
- * @member {string} [destination.resourceId] The ID of the resource used as the
- * destination by connection monitor.
- * @member {string} [destination.address] Address of the connection monitor
+ * @property {number} [source.port] The source port used by connection monitor.
+ * @property {object} destination
+ * @property {string} [destination.resourceId] The ID of the resource used as
+ * the destination by connection monitor.
+ * @property {string} [destination.address] Address of the connection monitor
  * destination (IP or domain name).
- * @member {number} [destination.port] The destination port used by connection
- * monitor.
- * @member {boolean} [autoStart] Determines if the connection monitor will
+ * @property {number} [destination.port] The destination port used by
+ * connection monitor.
+ * @property {boolean} [autoStart] Determines if the connection monitor will
  * start automatically once created. Default value: true .
- * @member {number} [monitoringIntervalInSeconds] Monitoring interval in
+ * @property {number} [monitoringIntervalInSeconds] Monitoring interval in
  * seconds. Default value: 60 .
- * @member {string} [provisioningState] The provisioning state of the
+ * @property {string} [provisioningState] The provisioning state of the
  * connection monitor. Possible values include: 'Succeeded', 'Updating',
  * 'Deleting', 'Failed'
- * @member {date} [startTime] The date and time when the connection monitor was
- * started.
- * @member {string} [monitoringStatus] The monitoring status of the connection
- * monitor.
+ * @property {date} [startTime] The date and time when the connection monitor
+ * was started.
+ * @property {string} [monitoringStatus] The monitoring status of the
+ * connection monitor.
  */
 export interface ConnectionMonitorResult extends BaseResource {
   readonly name?: string;
@@ -7925,18 +7997,19 @@ export interface ConnectionMonitorResult extends BaseResource {
  * @constructor
  * Connection state snapshot.
  *
- * @member {string} [connectionState] The connection state. Possible values
+ * @property {string} [connectionState] The connection state. Possible values
  * include: 'Reachable', 'Unreachable', 'Unknown'
- * @member {date} [startTime] The start time of the connection snapshot.
- * @member {date} [endTime] The end time of the connection snapshot.
- * @member {string} [evaluationState] Connectivity analysis evaluation state.
+ * @property {date} [startTime] The start time of the connection snapshot.
+ * @property {date} [endTime] The end time of the connection snapshot.
+ * @property {string} [evaluationState] Connectivity analysis evaluation state.
  * Possible values include: 'NotStarted', 'InProgress', 'Completed'
- * @member {number} [avgLatencyInMs] Average latency in ms.
- * @member {number} [minLatencyInMs] Minimum latency in ms.
- * @member {number} [maxLatencyInMs] Maximum latency in ms.
- * @member {number} [probesSent] The number of sent probes.
- * @member {number} [probesFailed] The number of failed probes.
- * @member {array} [hops] List of hops between the source and the destination.
+ * @property {number} [avgLatencyInMs] Average latency in ms.
+ * @property {number} [minLatencyInMs] Minimum latency in ms.
+ * @property {number} [maxLatencyInMs] Maximum latency in ms.
+ * @property {number} [probesSent] The number of sent probes.
+ * @property {number} [probesFailed] The number of failed probes.
+ * @property {array} [hops] List of hops between the source and the
+ * destination.
  */
 export interface ConnectionStateSnapshot {
   connectionState?: string;
@@ -7957,9 +8030,9 @@ export interface ConnectionStateSnapshot {
  * @constructor
  * List of connection states snaphots.
  *
- * @member {string} [sourceStatus] Status of connection monitor source.
+ * @property {string} [sourceStatus] Status of connection monitor source.
  * Possible values include: 'Uknown', 'Active', 'Inactive'
- * @member {array} [states] Information about connection states.
+ * @property {array} [states] Information about connection states.
  */
 export interface ConnectionMonitorQueryResult {
   sourceStatus?: string;
@@ -7972,16 +8045,17 @@ export interface ConnectionMonitorQueryResult {
  * @constructor
  * Parameters to compare with network configuration.
  *
- * @member {string} direction The direction of the traffic. Accepted values are
- * 'Inbound' and 'Outbound'. Possible values include: 'Inbound', 'Outbound'
- * @member {string} protocol Protocol to be verified on. Accepted values are
+ * @property {string} direction The direction of the traffic. Accepted values
+ * are 'Inbound' and 'Outbound'. Possible values include: 'Inbound', 'Outbound'
+ * @property {string} protocol Protocol to be verified on. Accepted values are
  * '*', TCP, UDP.
- * @member {string} source Traffic source. Accepted values are '*', IP
+ * @property {string} source Traffic source. Accepted values are '*', IP
  * Address/CIDR, Service Tag.
- * @member {string} destination Traffic destination. Accepted values are: '*',
- * IP Address/CIDR, Service Tag.
- * @member {string} destinationPort Traffice destination port. Accepted values
- * are '*', port (for example, 3389) and port range (for example, 80-100).
+ * @property {string} destination Traffic destination. Accepted values are:
+ * '*', IP Address/CIDR, Service Tag.
+ * @property {string} destinationPort Traffice destination port. Accepted
+ * values are '*', port (for example, 3389) and port range (for example,
+ * 80-100).
  */
 export interface NetworkConfigurationDiagnosticProfile {
   direction: string;
@@ -7997,13 +8071,14 @@ export interface NetworkConfigurationDiagnosticProfile {
  * @constructor
  * Parameters to get network configuration diagnostic.
  *
- * @member {string} targetResourceId The ID of the target resource to perform
+ * @property {string} targetResourceId The ID of the target resource to perform
  * network configuration diagnostic. Valid options are VM, NetworkInterface,
  * VMSS/NetworkInterface and Application Gateway.
- * @member {string} [verbosityLevel] Verbosity level. Accepted values are
+ * @property {string} [verbosityLevel] Verbosity level. Accepted values are
  * 'Normal', 'Minimum', 'Full'. Possible values include: 'Normal', 'Minimum',
  * 'Full'
- * @member {array} profiles List of network configuration diagnostic profiles.
+ * @property {array} profiles List of network configuration diagnostic
+ * profiles.
  */
 export interface NetworkConfigurationDiagnosticParameters {
   targetResourceId: string;
@@ -8017,9 +8092,9 @@ export interface NetworkConfigurationDiagnosticParameters {
  * @constructor
  * Matched rule.
  *
- * @member {string} [ruleName] Name of the matched network security rule.
- * @member {string} [action] The network traffic is allowed or denied. Possible
- * values are 'Allow' and 'Deny'.
+ * @property {string} [ruleName] Name of the matched network security rule.
+ * @property {string} [action] The network traffic is allowed or denied.
+ * Possible values are 'Allow' and 'Deny'.
  */
 export interface MatchedRule {
   ruleName?: string;
@@ -8032,16 +8107,16 @@ export interface MatchedRule {
  * @constructor
  * Network security rules evaluation result.
  *
- * @member {string} [name] Name of the network security rule.
- * @member {boolean} [protocolMatched] Value indicating whether protocol is
+ * @property {string} [name] Name of the network security rule.
+ * @property {boolean} [protocolMatched] Value indicating whether protocol is
  * matched.
- * @member {boolean} [sourceMatched] Value indicating whether source is
+ * @property {boolean} [sourceMatched] Value indicating whether source is
  * matched.
- * @member {boolean} [sourcePortMatched] Value indicating whether source port
+ * @property {boolean} [sourcePortMatched] Value indicating whether source port
  * is matched.
- * @member {boolean} [destinationMatched] Value indicating whether destination
- * is matched.
- * @member {boolean} [destinationPortMatched] Value indicating whether
+ * @property {boolean} [destinationMatched] Value indicating whether
+ * destination is matched.
+ * @property {boolean} [destinationPortMatched] Value indicating whether
  * destination port is matched.
  */
 export interface NetworkSecurityRulesEvaluationResult {
@@ -8059,15 +8134,15 @@ export interface NetworkSecurityRulesEvaluationResult {
  * @constructor
  * Results of network security group evaluation.
  *
- * @member {string} [networkSecurityGroupId] Network security group ID.
- * @member {string} [appliedTo] Resource ID of nic or subnet to which network
+ * @property {string} [networkSecurityGroupId] Network security group ID.
+ * @property {string} [appliedTo] Resource ID of nic or subnet to which network
  * security group is applied.
- * @member {object} [matchedRule]
- * @member {string} [matchedRule.ruleName] Name of the matched network security
- * rule.
- * @member {string} [matchedRule.action] The network traffic is allowed or
+ * @property {object} [matchedRule]
+ * @property {string} [matchedRule.ruleName] Name of the matched network
+ * security rule.
+ * @property {string} [matchedRule.action] The network traffic is allowed or
  * denied. Possible values are 'Allow' and 'Deny'.
- * @member {array} [rulesEvaluationResult] List of network security rules
+ * @property {array} [rulesEvaluationResult] List of network security rules
  * evaluation results.
  */
 export interface EvaluatedNetworkSecurityGroup {
@@ -8083,10 +8158,10 @@ export interface EvaluatedNetworkSecurityGroup {
  * @constructor
  * Network configuration diagnostic result corresponded provided traffic query.
  *
- * @member {string} [securityRuleAccessResult] The network traffic is allowed
+ * @property {string} [securityRuleAccessResult] The network traffic is allowed
  * or denied. Possible values are 'Allow' and 'Deny'. Possible values include:
  * 'Allow', 'Deny'
- * @member {array} [evaluatedNetworkSecurityGroups] List of results network
+ * @property {array} [evaluatedNetworkSecurityGroups] List of results network
  * security groups diagnostic.
  */
 export interface NetworkSecurityGroupResult {
@@ -8101,25 +8176,26 @@ export interface NetworkSecurityGroupResult {
  * Network configuration diagnostic result corresponded to provided traffic
  * query.
  *
- * @member {object} [profile]
- * @member {string} [profile.direction] The direction of the traffic. Accepted
- * values are 'Inbound' and 'Outbound'. Possible values include: 'Inbound',
- * 'Outbound'
- * @member {string} [profile.protocol] Protocol to be verified on. Accepted
+ * @property {object} [profile]
+ * @property {string} [profile.direction] The direction of the traffic.
+ * Accepted values are 'Inbound' and 'Outbound'. Possible values include:
+ * 'Inbound', 'Outbound'
+ * @property {string} [profile.protocol] Protocol to be verified on. Accepted
  * values are '*', TCP, UDP.
- * @member {string} [profile.source] Traffic source. Accepted values are '*',
+ * @property {string} [profile.source] Traffic source. Accepted values are '*',
  * IP Address/CIDR, Service Tag.
- * @member {string} [profile.destination] Traffic destination. Accepted values
- * are: '*', IP Address/CIDR, Service Tag.
- * @member {string} [profile.destinationPort] Traffice destination port.
+ * @property {string} [profile.destination] Traffic destination. Accepted
+ * values are: '*', IP Address/CIDR, Service Tag.
+ * @property {string} [profile.destinationPort] Traffice destination port.
  * Accepted values are '*', port (for example, 3389) and port range (for
  * example, 80-100).
- * @member {object} [networkSecurityGroupResult]
- * @member {string} [networkSecurityGroupResult.securityRuleAccessResult] The
+ * @property {object} [networkSecurityGroupResult]
+ * @property {string} [networkSecurityGroupResult.securityRuleAccessResult] The
  * network traffic is allowed or denied. Possible values are 'Allow' and
  * 'Deny'. Possible values include: 'Allow', 'Deny'
- * @member {array} [networkSecurityGroupResult.evaluatedNetworkSecurityGroups]
- * List of results network security groups diagnostic.
+ * @property {array}
+ * [networkSecurityGroupResult.evaluatedNetworkSecurityGroups] List of results
+ * network security groups diagnostic.
  */
 export interface NetworkConfigurationDiagnosticResult {
   profile?: NetworkConfigurationDiagnosticProfile;
@@ -8132,7 +8208,8 @@ export interface NetworkConfigurationDiagnosticResult {
  * @constructor
  * Results of network configuration diagnostic on the target resource.
  *
- * @member {array} [results] List of network configuration diagnostic results.
+ * @property {array} [results] List of network configuration diagnostic
+ * results.
  */
 export interface NetworkConfigurationDiagnosticResponse {
   readonly results?: NetworkConfigurationDiagnosticResult[];
@@ -8144,10 +8221,11 @@ export interface NetworkConfigurationDiagnosticResponse {
  * @constructor
  * Display metadata associated with the operation.
  *
- * @member {string} [provider] Service provider: Microsoft Network.
- * @member {string} [resource] Resource on which the operation is performed.
- * @member {string} [operation] Type of the operation: get, read, delete, etc.
- * @member {string} [description] Description of the operation.
+ * @property {string} [provider] Service provider: Microsoft Network.
+ * @property {string} [resource] Resource on which the operation is performed.
+ * @property {string} [operation] Type of the operation: get, read, delete,
+ * etc.
+ * @property {string} [description] Description of the operation.
  */
 export interface OperationDisplay {
   provider?: string;
@@ -8162,9 +8240,9 @@ export interface OperationDisplay {
  * @constructor
  * Availability of the metric.
  *
- * @member {string} [timeGrain] The time grain of the availability.
- * @member {string} [retention] The retention of the availability.
- * @member {string} [blobDuration] Duration of the availability blob.
+ * @property {string} [timeGrain] The time grain of the availability.
+ * @property {string} [retention] The retention of the availability.
+ * @property {string} [blobDuration] Duration of the availability blob.
  */
 export interface Availability {
   timeGrain?: string;
@@ -8178,9 +8256,9 @@ export interface Availability {
  * @constructor
  * Dimension of the metric.
  *
- * @member {string} [name] The name of the dimension.
- * @member {string} [displayName] The display name of the dimension.
- * @member {string} [internalName] The internal name of the dimension.
+ * @property {string} [name] The name of the dimension.
+ * @property {string} [displayName] The display name of the dimension.
+ * @property {string} [internalName] The internal name of the dimension.
  */
 export interface Dimension {
   name?: string;
@@ -8194,22 +8272,24 @@ export interface Dimension {
  * @constructor
  * Description of metrics specification.
  *
- * @member {string} [name] The name of the metric.
- * @member {string} [displayName] The display name of the metric.
- * @member {string} [displayDescription] The description of the metric.
- * @member {string} [unit] Units the metric to be displayed in.
- * @member {string} [aggregationType] The aggregation type.
- * @member {array} [availabilities] List of availability.
- * @member {boolean} [enableRegionalMdmAccount] Whether regional MDM account
+ * @property {string} [name] The name of the metric.
+ * @property {string} [displayName] The display name of the metric.
+ * @property {string} [displayDescription] The description of the metric.
+ * @property {string} [unit] Units the metric to be displayed in.
+ * @property {string} [aggregationType] The aggregation type.
+ * @property {array} [availabilities] List of availability.
+ * @property {boolean} [enableRegionalMdmAccount] Whether regional MDM account
  * enabled.
- * @member {boolean} [fillGapWithZero] Whether gaps would be filled with zeros.
- * @member {string} [metricFilterPattern] Pattern for the filter of the metric.
- * @member {array} [dimensions] List of dimensions.
- * @member {boolean} [isInternal] Whether the metric is internal.
- * @member {string} [sourceMdmAccount] The source MDM account.
- * @member {string} [sourceMdmNamespace] The source MDM namespace.
- * @member {string} [resourceIdDimensionNameOverride] The resource Id dimension
- * name override.
+ * @property {boolean} [fillGapWithZero] Whether gaps would be filled with
+ * zeros.
+ * @property {string} [metricFilterPattern] Pattern for the filter of the
+ * metric.
+ * @property {array} [dimensions] List of dimensions.
+ * @property {boolean} [isInternal] Whether the metric is internal.
+ * @property {string} [sourceMdmAccount] The source MDM account.
+ * @property {string} [sourceMdmNamespace] The source MDM namespace.
+ * @property {string} [resourceIdDimensionNameOverride] The resource Id
+ * dimension name override.
  */
 export interface MetricSpecification {
   name?: string;
@@ -8234,9 +8314,9 @@ export interface MetricSpecification {
  * @constructor
  * Description of logging specification.
  *
- * @member {string} [name] The name of the specification.
- * @member {string} [displayName] The display name of the specification.
- * @member {string} [blobDuration] Duration of the blob.
+ * @property {string} [name] The name of the specification.
+ * @property {string} [displayName] The display name of the specification.
+ * @property {string} [blobDuration] Duration of the blob.
  */
 export interface LogSpecification {
   name?: string;
@@ -8250,8 +8330,8 @@ export interface LogSpecification {
  * @constructor
  * Specification of the service.
  *
- * @member {array} [metricSpecifications] Operation service specification.
- * @member {array} [logSpecifications] Operation log specification.
+ * @property {array} [metricSpecifications] Operation service specification.
+ * @property {array} [logSpecifications] Operation log specification.
  */
 export interface OperationPropertiesFormatServiceSpecification {
   metricSpecifications?: MetricSpecification[];
@@ -8264,19 +8344,19 @@ export interface OperationPropertiesFormatServiceSpecification {
  * @constructor
  * Network REST API operation definition.
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] Display metadata associated with the operation.
- * @member {string} [display.provider] Service provider: Microsoft Network.
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] Display metadata associated with the operation.
+ * @property {string} [display.provider] Service provider: Microsoft Network.
+ * @property {string} [display.resource] Resource on which the operation is
  * performed.
- * @member {string} [display.operation] Type of the operation: get, read,
+ * @property {string} [display.operation] Type of the operation: get, read,
  * delete, etc.
- * @member {string} [display.description] Description of the operation.
- * @member {string} [origin] Origin of the operation.
- * @member {object} [serviceSpecification] Specification of the service.
- * @member {array} [serviceSpecification.metricSpecifications] Operation
+ * @property {string} [display.description] Description of the operation.
+ * @property {string} [origin] Origin of the operation.
+ * @property {object} [serviceSpecification] Specification of the service.
+ * @property {array} [serviceSpecification.metricSpecifications] Operation
  * service specification.
- * @member {array} [serviceSpecification.logSpecifications] Operation log
+ * @property {array} [serviceSpecification.logSpecifications] Operation log
  * specification.
  */
 export interface Operation {
@@ -8292,7 +8372,7 @@ export interface Operation {
  * @constructor
  * SKU of a public IP prefix
  *
- * @member {string} [name] Name of a public IP prefix SKU. Possible values
+ * @property {string} [name] Name of a public IP prefix SKU. Possible values
  * include: 'Standard'
  */
 export interface PublicIPPrefixSku {
@@ -8303,7 +8383,7 @@ export interface PublicIPPrefixSku {
  * @class
  * Initializes a new instance of the ReferencedPublicIpAddress class.
  * @constructor
- * @member {string} [id] The PublicIPAddress Reference
+ * @property {string} [id] The PublicIPAddress Reference
  */
 export interface ReferencedPublicIpAddress {
   id?: string;
@@ -8315,25 +8395,26 @@ export interface ReferencedPublicIpAddress {
  * @constructor
  * Public IP prefix resource.
  *
- * @member {object} [sku] The public IP prefix SKU.
- * @member {string} [sku.name] Name of a public IP prefix SKU. Possible values
- * include: 'Standard'
- * @member {string} [publicIPAddressVersion] The public IP address version.
+ * @property {object} [sku] The public IP prefix SKU.
+ * @property {string} [sku.name] Name of a public IP prefix SKU. Possible
+ * values include: 'Standard'
+ * @property {string} [publicIPAddressVersion] The public IP address version.
  * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
  * 'IPv6'
- * @member {array} [ipTags] The list of tags associated with the public IP
+ * @property {array} [ipTags] The list of tags associated with the public IP
  * prefix.
- * @member {number} [prefixLength] The Length of the Public IP Prefix.
- * @member {string} [ipPrefix] The allocated Prefix
- * @member {array} [publicIPAddresses] The list of all referenced
+ * @property {number} [prefixLength] The Length of the Public IP Prefix.
+ * @property {string} [ipPrefix] The allocated Prefix
+ * @property {array} [publicIPAddresses] The list of all referenced
  * PublicIPAddresses
- * @member {string} [resourceGuid] The resource GUID property of the public IP
- * prefix resource.
- * @member {string} [provisioningState] The provisioning state of the Public IP
- * prefix resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {array} [zones] A list of availability zones denoting the IP
+ * @property {string} [resourceGuid] The resource GUID property of the public
+ * IP prefix resource.
+ * @property {string} [provisioningState] The provisioning state of the Public
+ * IP prefix resource. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {array} [zones] A list of availability zones denoting the IP
  * allocated for the resource needs to come from.
  */
 export interface PublicIPPrefix extends Resource {
@@ -8355,16 +8436,17 @@ export interface PublicIPPrefix extends Resource {
  * @constructor
  * Route Filter Rule Resource
  *
- * @member {string} access The access type of the rule. Valid values are:
+ * @property {string} access The access type of the rule. Valid values are:
  * 'Allow', 'Deny'. Possible values include: 'Allow', 'Deny'
- * @member {array} communities The collection for bgp community values to
+ * @property {array} communities The collection for bgp community values to
  * filter on. e.g. ['12076:5010','12076:5020']
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values are: 'Updating', 'Deleting', 'Succeeded' and 'Failed'.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values are: 'Updating', 'Deleting', 'Succeeded' and
+ * 'Failed'.
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface PatchRouteFilterRule extends SubResource {
   access: string;
@@ -8380,18 +8462,19 @@ export interface PatchRouteFilterRule extends SubResource {
  * @constructor
  * Route Filter Resource.
  *
- * @member {array} [rules] Collection of RouteFilterRules contained within a
+ * @property {array} [rules] Collection of RouteFilterRules contained within a
  * route filter.
- * @member {array} [peerings] A collection of references to express route
+ * @property {array} [peerings] A collection of references to express route
  * circuit peerings.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values are: 'Updating', 'Deleting', 'Succeeded' and 'Failed'.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values are: 'Updating', 'Deleting', 'Succeeded' and
+ * 'Failed'.
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {string} [type] Resource type.
- * @member {object} [tags] Resource tags.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
+ * @property {string} [type] Resource type.
+ * @property {object} [tags] Resource tags.
  */
 export interface PatchRouteFilter extends SubResource {
   rules?: RouteFilterRule[];
@@ -8409,17 +8492,18 @@ export interface PatchRouteFilter extends SubResource {
  * @constructor
  * Contains bgp community information offered in Service Community resources.
  *
- * @member {string} [serviceSupportedRegion] The region which the service
+ * @property {string} [serviceSupportedRegion] The region which the service
  * support. e.g. For O365, region is Global.
- * @member {string} [communityName] The name of the bgp community. e.g. Skype.
- * @member {string} [communityValue] The value of the bgp community. For more
+ * @property {string} [communityName] The name of the bgp community. e.g.
+ * Skype.
+ * @property {string} [communityValue] The value of the bgp community. For more
  * information:
  * https://docs.microsoft.com/en-us/azure/expressroute/expressroute-routing.
- * @member {array} [communityPrefixes] The prefixes that the bgp community
+ * @property {array} [communityPrefixes] The prefixes that the bgp community
  * contains.
- * @member {boolean} [isAuthorizedToUse] Customer is authorized to use bgp
+ * @property {boolean} [isAuthorizedToUse] Customer is authorized to use bgp
  * community or not.
- * @member {string} [serviceGroup] The service group of the bgp community
+ * @property {string} [serviceGroup] The service group of the bgp community
  * contains.
  */
 export interface BGPCommunity {
@@ -8437,8 +8521,8 @@ export interface BGPCommunity {
  * @constructor
  * Service Community Properties.
  *
- * @member {string} [serviceName] The name of the bgp community. e.g. Skype.
- * @member {array} [bgpCommunities] Get a list of bgp communities.
+ * @property {string} [serviceName] The name of the bgp community. e.g. Skype.
+ * @property {array} [bgpCommunities] Get a list of bgp communities.
  */
 export interface BgpServiceCommunity extends Resource {
   serviceName?: string;
@@ -8451,9 +8535,9 @@ export interface BgpServiceCommunity extends Resource {
  * @constructor
  * The usage names.
  *
- * @member {string} [value] A string describing the resource name.
- * @member {string} [localizedValue] A localized string describing the resource
- * name.
+ * @property {string} [value] A string describing the resource name.
+ * @property {string} [localizedValue] A localized string describing the
+ * resource name.
  */
 export interface UsageName {
   value?: string;
@@ -8466,12 +8550,12 @@ export interface UsageName {
  * @constructor
  * Describes network resource usage.
  *
- * @member {string} [id] Resource identifier.
- * @member {number} currentValue The current value of the usage.
- * @member {number} limit The limit of usage.
- * @member {object} name The name of the type of usage.
- * @member {string} [name.value] A string describing the resource name.
- * @member {string} [name.localizedValue] A localized string describing the
+ * @property {string} [id] Resource identifier.
+ * @property {number} currentValue The current value of the usage.
+ * @property {number} limit The limit of usage.
+ * @property {object} name The name of the type of usage.
+ * @property {string} [name.value] A string describing the resource name.
+ * @property {string} [name.localizedValue] A localized string describing the
  * resource name.
  */
 export interface Usage {
@@ -8488,8 +8572,8 @@ export interface Usage {
  * AddressSpace contains an array of IP address ranges that can be used by
  * subnets of the virtual network.
  *
- * @member {array} [addressPrefixes] A list of address blocks reserved for this
- * virtual network in CIDR notation.
+ * @property {array} [addressPrefixes] A list of address blocks reserved for
+ * this virtual network in CIDR notation.
  */
 export interface AddressSpace {
   addressPrefixes?: string[];
@@ -8501,35 +8585,36 @@ export interface AddressSpace {
  * @constructor
  * Peerings in a virtual network resource.
  *
- * @member {boolean} [allowVirtualNetworkAccess] Whether the VMs in the linked
- * virtual network space would be able to access all the VMs in local Virtual
- * network space.
- * @member {boolean} [allowForwardedTraffic] Whether the forwarded traffic from
- * the VMs in the remote virtual network will be allowed/disallowed.
- * @member {boolean} [allowGatewayTransit] If gateway links can be used in
+ * @property {boolean} [allowVirtualNetworkAccess] Whether the VMs in the
+ * linked virtual network space would be able to access all the VMs in local
+ * Virtual network space.
+ * @property {boolean} [allowForwardedTraffic] Whether the forwarded traffic
+ * from the VMs in the remote virtual network will be allowed/disallowed.
+ * @property {boolean} [allowGatewayTransit] If gateway links can be used in
  * remote virtual networking to link to this virtual network.
- * @member {boolean} [useRemoteGateways] If remote gateways can be used on this
- * virtual network. If the flag is set to true, and allowGatewayTransit on
+ * @property {boolean} [useRemoteGateways] If remote gateways can be used on
+ * this virtual network. If the flag is set to true, and allowGatewayTransit on
  * remote peering is also true, virtual network will use gateways of remote
  * virtual network for transit. Only one peering can have this flag set to
  * true. This flag cannot be set if virtual network already has a gateway.
- * @member {object} [remoteVirtualNetwork] The reference of the remote virtual
- * network. The remote virtual network can be in the same or different region
- * (preview). See here to register for the preview and learn more
+ * @property {object} [remoteVirtualNetwork] The reference of the remote
+ * virtual network. The remote virtual network can be in the same or different
+ * region (preview). See here to register for the preview and learn more
  * (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
- * @member {string} [remoteVirtualNetwork.id] Resource ID.
- * @member {object} [remoteAddressSpace] The reference of the remote virtual
+ * @property {string} [remoteVirtualNetwork.id] Resource ID.
+ * @property {object} [remoteAddressSpace] The reference of the remote virtual
  * network address space.
- * @member {array} [remoteAddressSpace.addressPrefixes] A list of address
+ * @property {array} [remoteAddressSpace.addressPrefixes] A list of address
  * blocks reserved for this virtual network in CIDR notation.
- * @member {string} [peeringState] The status of the virtual network peering.
+ * @property {string} [peeringState] The status of the virtual network peering.
  * Possible values are 'Initiated', 'Connected', and 'Disconnected'. Possible
  * values include: 'Initiated', 'Connected', 'Disconnected'
- * @member {string} [provisioningState] The provisioning state of the resource.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource.
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface VirtualNetworkPeering extends SubResource {
   allowVirtualNetworkAccess?: boolean;
@@ -8552,7 +8637,7 @@ export interface VirtualNetworkPeering extends SubResource {
  * the virtual network. Standard DHCP option for a subnet overrides VNET DHCP
  * options.
  *
- * @member {array} [dnsServers] The list of DNS servers IP addresses.
+ * @property {array} [dnsServers] The list of DNS servers IP addresses.
  */
 export interface DhcpOptions {
   dnsServers?: string[];
@@ -8564,31 +8649,32 @@ export interface DhcpOptions {
  * @constructor
  * Virtual Network resource.
  *
- * @member {object} [addressSpace] The AddressSpace that contains an array of
+ * @property {object} [addressSpace] The AddressSpace that contains an array of
  * IP address ranges that can be used by subnets.
- * @member {array} [addressSpace.addressPrefixes] A list of address blocks
+ * @property {array} [addressSpace.addressPrefixes] A list of address blocks
  * reserved for this virtual network in CIDR notation.
- * @member {object} [dhcpOptions] The dhcpOptions that contains an array of DNS
- * servers available to VMs deployed in the virtual network.
- * @member {array} [dhcpOptions.dnsServers] The list of DNS servers IP
+ * @property {object} [dhcpOptions] The dhcpOptions that contains an array of
+ * DNS servers available to VMs deployed in the virtual network.
+ * @property {array} [dhcpOptions.dnsServers] The list of DNS servers IP
  * addresses.
- * @member {array} [subnets] A list of subnets in a Virtual Network.
- * @member {array} [virtualNetworkPeerings] A list of peerings in a Virtual
+ * @property {array} [subnets] A list of subnets in a Virtual Network.
+ * @property {array} [virtualNetworkPeerings] A list of peerings in a Virtual
  * Network.
- * @member {string} [resourceGuid] The resourceGuid property of the Virtual
+ * @property {string} [resourceGuid] The resourceGuid property of the Virtual
  * Network resource.
- * @member {string} [provisioningState] The provisioning state of the PublicIP
- * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {boolean} [enableDdosProtection] Indicates if DDoS protection is
+ * @property {string} [provisioningState] The provisioning state of the
+ * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
+ * @property {boolean} [enableDdosProtection] Indicates if DDoS protection is
  * enabled for all the protected resources in the virtual network. It requires
  * a DDoS protection plan associated with the resource. Default value: false .
- * @member {boolean} [enableVmProtection] Indicates if VM protection is enabled
- * for all the subnets in the virtual network. Default value: false .
- * @member {object} [ddosProtectionPlan] The DDoS protection plan associated
+ * @property {boolean} [enableVmProtection] Indicates if VM protection is
+ * enabled for all the subnets in the virtual network. Default value: false .
+ * @property {object} [ddosProtectionPlan] The DDoS protection plan associated
  * with the virtual network.
- * @member {string} [ddosProtectionPlan.id] Resource ID.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [ddosProtectionPlan.id] Resource ID.
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface VirtualNetwork extends Resource {
   addressSpace?: AddressSpace;
@@ -8609,8 +8695,8 @@ export interface VirtualNetwork extends Resource {
  * @constructor
  * Response for CheckIPAddressAvailability API service call
  *
- * @member {boolean} [available] Private IP address availability.
- * @member {array} [availableIPAddresses] Contains other available private IP
+ * @property {boolean} [available] Private IP address availability.
+ * @property {array} [availableIPAddresses] Contains other available private IP
  * addresses if the asked for address is taken.
  */
 export interface IPAddressAvailabilityResult {
@@ -8624,8 +8710,8 @@ export interface IPAddressAvailabilityResult {
  * @constructor
  * Usage strings container.
  *
- * @member {string} [localizedValue] Localized subnet size and usage string.
- * @member {string} [value] Subnet size and usage string.
+ * @property {string} [localizedValue] Localized subnet size and usage string.
+ * @property {string} [value] Subnet size and usage string.
  */
 export interface VirtualNetworkUsageName {
   readonly localizedValue?: string;
@@ -8638,16 +8724,16 @@ export interface VirtualNetworkUsageName {
  * @constructor
  * Usage details for subnet.
  *
- * @member {number} [currentValue] Indicates number of IPs used from the
+ * @property {number} [currentValue] Indicates number of IPs used from the
  * Subnet.
- * @member {string} [id] Subnet identifier.
- * @member {number} [limit] Indicates the size of the subnet.
- * @member {object} [name] The name containing common and localized value for
+ * @property {string} [id] Subnet identifier.
+ * @property {number} [limit] Indicates the size of the subnet.
+ * @property {object} [name] The name containing common and localized value for
  * usage.
- * @member {string} [name.localizedValue] Localized subnet size and usage
+ * @property {string} [name.localizedValue] Localized subnet size and usage
  * string.
- * @member {string} [name.value] Subnet size and usage string.
- * @member {string} [unit] Usage units. Returns 'Count'
+ * @property {string} [name.value] Subnet size and usage string.
+ * @property {string} [unit] Usage units. Returns 'Count'
  */
 export interface VirtualNetworkUsage {
   readonly currentValue?: number;
@@ -8663,19 +8749,20 @@ export interface VirtualNetworkUsage {
  * @constructor
  * IP configuration for virtual network gateway
  *
- * @member {string} [privateIPAllocationMethod] The private IP allocation
+ * @property {string} [privateIPAllocationMethod] The private IP allocation
  * method. Possible values are: 'Static' and 'Dynamic'. Possible values
  * include: 'Static', 'Dynamic'
- * @member {object} [subnet] The reference of the subnet resource.
- * @member {string} [subnet.id] Resource ID.
- * @member {object} [publicIPAddress] The reference of the public IP resource.
- * @member {string} [publicIPAddress.id] Resource ID.
- * @member {string} [provisioningState] The provisioning state of the public IP
- * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {object} [subnet] The reference of the subnet resource.
+ * @property {string} [subnet.id] Resource ID.
+ * @property {object} [publicIPAddress] The reference of the public IP
+ * resource.
+ * @property {string} [publicIPAddress.id] Resource ID.
+ * @property {string} [provisioningState] The provisioning state of the public
+ * IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface VirtualNetworkGatewayIPConfiguration extends SubResource {
   privateIPAllocationMethod?: string;
@@ -8692,15 +8779,15 @@ export interface VirtualNetworkGatewayIPConfiguration extends SubResource {
  * @constructor
  * VirtualNetworkGatewaySku details
  *
- * @member {string} [name] Gateway SKU name. Possible values include: 'Basic',
- * 'HighPerformance', 'Standard', 'UltraPerformance', 'VpnGw1', 'VpnGw2',
- * 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ', 'VpnGw3AZ', 'ErGw1AZ', 'ErGw2AZ',
- * 'ErGw3AZ'
- * @member {string} [tier] Gateway SKU tier. Possible values include: 'Basic',
- * 'HighPerformance', 'Standard', 'UltraPerformance', 'VpnGw1', 'VpnGw2',
- * 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ', 'VpnGw3AZ', 'ErGw1AZ', 'ErGw2AZ',
- * 'ErGw3AZ'
- * @member {number} [capacity] The capacity.
+ * @property {string} [name] Gateway SKU name. Possible values include:
+ * 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance', 'VpnGw1',
+ * 'VpnGw2', 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ', 'VpnGw3AZ', 'ErGw1AZ',
+ * 'ErGw2AZ', 'ErGw3AZ'
+ * @property {string} [tier] Gateway SKU tier. Possible values include:
+ * 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance', 'VpnGw1',
+ * 'VpnGw2', 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ', 'VpnGw3AZ', 'ErGw1AZ',
+ * 'ErGw2AZ', 'ErGw3AZ'
+ * @property {number} [capacity] The capacity.
  */
 export interface VirtualNetworkGatewaySku {
   name?: string;
@@ -8714,14 +8801,14 @@ export interface VirtualNetworkGatewaySku {
  * @constructor
  * VPN client root certificate of virtual network gateway
  *
- * @member {string} publicCertData The certificate public data.
- * @member {string} [provisioningState] The provisioning state of the VPN
+ * @property {string} publicCertData The certificate public data.
+ * @property {string} [provisioningState] The provisioning state of the VPN
  * client root certificate resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface VpnClientRootCertificate extends SubResource {
   publicCertData: string;
@@ -8736,14 +8823,15 @@ export interface VpnClientRootCertificate extends SubResource {
  * @constructor
  * VPN client revoked certificate of virtual network gateway.
  *
- * @member {string} [thumbprint] The revoked VPN client certificate thumbprint.
- * @member {string} [provisioningState] The provisioning state of the VPN
+ * @property {string} [thumbprint] The revoked VPN client certificate
+ * thumbprint.
+ * @property {string} [provisioningState] The provisioning state of the VPN
  * client revoked certificate resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface VpnClientRevokedCertificate extends SubResource {
   thumbprint?: string;
@@ -8758,28 +8846,28 @@ export interface VpnClientRevokedCertificate extends SubResource {
  * @constructor
  * An IPSec Policy configuration for a virtual network gateway connection
  *
- * @member {number} saLifeTimeSeconds The IPSec Security Association (also
+ * @property {number} saLifeTimeSeconds The IPSec Security Association (also
  * called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN
  * tunnel.
- * @member {number} saDataSizeKilobytes The IPSec Security Association (also
+ * @property {number} saDataSizeKilobytes The IPSec Security Association (also
  * called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN
  * tunnel.
- * @member {string} ipsecEncryption The IPSec encryption algorithm (IKE phase
+ * @property {string} ipsecEncryption The IPSec encryption algorithm (IKE phase
  * 1). Possible values include: 'None', 'DES', 'DES3', 'AES128', 'AES192',
  * 'AES256', 'GCMAES128', 'GCMAES192', 'GCMAES256'
- * @member {string} ipsecIntegrity The IPSec integrity algorithm (IKE phase 1).
- * Possible values include: 'MD5', 'SHA1', 'SHA256', 'GCMAES128', 'GCMAES192',
- * 'GCMAES256'
- * @member {string} ikeEncryption The IKE encryption algorithm (IKE phase 2).
+ * @property {string} ipsecIntegrity The IPSec integrity algorithm (IKE phase
+ * 1). Possible values include: 'MD5', 'SHA1', 'SHA256', 'GCMAES128',
+ * 'GCMAES192', 'GCMAES256'
+ * @property {string} ikeEncryption The IKE encryption algorithm (IKE phase 2).
  * Possible values include: 'DES', 'DES3', 'AES128', 'AES192', 'AES256',
  * 'GCMAES256', 'GCMAES128'
- * @member {string} ikeIntegrity The IKE integrity algorithm (IKE phase 2).
+ * @property {string} ikeIntegrity The IKE integrity algorithm (IKE phase 2).
  * Possible values include: 'MD5', 'SHA1', 'SHA256', 'SHA384', 'GCMAES256',
  * 'GCMAES128'
- * @member {string} dhGroup The DH Groups used in IKE Phase 1 for initial SA.
+ * @property {string} dhGroup The DH Groups used in IKE Phase 1 for initial SA.
  * Possible values include: 'None', 'DHGroup1', 'DHGroup2', 'DHGroup14',
  * 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
- * @member {string} pfsGroup The Pfs Groups used in IKE Phase 2 for new child
+ * @property {string} pfsGroup The Pfs Groups used in IKE Phase 2 for new child
  * SA. Possible values include: 'None', 'PFS1', 'PFS2', 'PFS2048', 'ECP256',
  * 'ECP384', 'PFS24', 'PFS14', 'PFSMM'
  */
@@ -8800,21 +8888,21 @@ export interface IpsecPolicy {
  * @constructor
  * VpnClientConfiguration for P2S client.
  *
- * @member {object} [vpnClientAddressPool] The reference of the address space
+ * @property {object} [vpnClientAddressPool] The reference of the address space
  * resource which represents Address space for P2S VpnClient.
- * @member {array} [vpnClientAddressPool.addressPrefixes] A list of address
+ * @property {array} [vpnClientAddressPool.addressPrefixes] A list of address
  * blocks reserved for this virtual network in CIDR notation.
- * @member {array} [vpnClientRootCertificates] VpnClientRootCertificate for
+ * @property {array} [vpnClientRootCertificates] VpnClientRootCertificate for
  * virtual network gateway.
- * @member {array} [vpnClientRevokedCertificates] VpnClientRevokedCertificate
+ * @property {array} [vpnClientRevokedCertificates] VpnClientRevokedCertificate
  * for Virtual network gateway.
- * @member {array} [vpnClientProtocols] VpnClientProtocols for Virtual network
- * gateway.
- * @member {array} [vpnClientIpsecPolicies] VpnClientIpsecPolicies for virtual
- * network gateway P2S client.
- * @member {string} [radiusServerAddress] The radius server address property of
- * the VirtualNetworkGateway resource for vpn client connection.
- * @member {string} [radiusServerSecret] The radius secret property of the
+ * @property {array} [vpnClientProtocols] VpnClientProtocols for Virtual
+ * network gateway.
+ * @property {array} [vpnClientIpsecPolicies] VpnClientIpsecPolicies for
+ * virtual network gateway P2S client.
+ * @property {string} [radiusServerAddress] The radius server address property
+ * of the VirtualNetworkGateway resource for vpn client connection.
+ * @property {string} [radiusServerSecret] The radius secret property of the
  * VirtualNetworkGateway resource for vpn client connection.
  */
 export interface VpnClientConfiguration {
@@ -8833,10 +8921,10 @@ export interface VpnClientConfiguration {
  * @constructor
  * BGP settings details
  *
- * @member {number} [asn] The BGP speaker's ASN.
- * @member {string} [bgpPeeringAddress] The BGP peering address and BGP
+ * @property {number} [asn] The BGP speaker's ASN.
+ * @property {string} [bgpPeeringAddress] The BGP peering address and BGP
  * identifier of this BGP speaker.
- * @member {number} [peerWeight] The weight added to routes learned from this
+ * @property {number} [peerWeight] The weight added to routes learned from this
  * BGP speaker.
  */
 export interface BgpSettings {
@@ -8851,16 +8939,17 @@ export interface BgpSettings {
  * @constructor
  * BGP peer status details
  *
- * @member {string} [localAddress] The virtual network gateway's local address
- * @member {string} [neighbor] The remote BGP peer
- * @member {number} [asn] The autonomous system number of the remote BGP peer
- * @member {string} [state] The BGP peer state. Possible values include:
+ * @property {string} [localAddress] The virtual network gateway's local
+ * address
+ * @property {string} [neighbor] The remote BGP peer
+ * @property {number} [asn] The autonomous system number of the remote BGP peer
+ * @property {string} [state] The BGP peer state. Possible values include:
  * 'Unknown', 'Stopped', 'Idle', 'Connecting', 'Connected'
- * @member {string} [connectedDuration] For how long the peering has been up
- * @member {number} [routesReceived] The number of routes learned from this
+ * @property {string} [connectedDuration] For how long the peering has been up
+ * @property {number} [routesReceived] The number of routes learned from this
  * peer
- * @member {number} [messagesSent] The number of BGP messages sent
- * @member {number} [messagesReceived] The number of BGP messages received
+ * @property {number} [messagesSent] The number of BGP messages sent
+ * @property {number} [messagesReceived] The number of BGP messages received
  */
 export interface BgpPeerStatus {
   readonly localAddress?: string;
@@ -8879,13 +8968,13 @@ export interface BgpPeerStatus {
  * @constructor
  * Gateway routing details
  *
- * @member {string} [localAddress] The gateway's local address
- * @member {string} [network] The route's network prefix
- * @member {string} [nextHop] The route's next hop
- * @member {string} [sourcePeer] The peer this route was learned from
- * @member {string} [origin] The source this route was learned from
- * @member {string} [asPath] The route's AS path sequence
- * @member {number} [weight] The route's weight
+ * @property {string} [localAddress] The gateway's local address
+ * @property {string} [network] The route's network prefix
+ * @property {string} [nextHop] The route's next hop
+ * @property {string} [sourcePeer] The peer this route was learned from
+ * @property {string} [origin] The source this route was learned from
+ * @property {string} [asPath] The route's AS path sequence
+ * @property {number} [weight] The route's weight
  */
 export interface GatewayRoute {
   readonly localAddress?: string;
@@ -8903,70 +8992,70 @@ export interface GatewayRoute {
  * @constructor
  * A common class for general resource information
  *
- * @member {array} [ipConfigurations] IP configurations for virtual network
+ * @property {array} [ipConfigurations] IP configurations for virtual network
  * gateway.
- * @member {string} [gatewayType] The type of this virtual network gateway.
+ * @property {string} [gatewayType] The type of this virtual network gateway.
  * Possible values are: 'Vpn' and 'ExpressRoute'. Possible values include:
  * 'Vpn', 'ExpressRoute'
- * @member {string} [vpnType] The type of this virtual network gateway.
+ * @property {string} [vpnType] The type of this virtual network gateway.
  * Possible values are: 'PolicyBased' and 'RouteBased'. Possible values
  * include: 'PolicyBased', 'RouteBased'
- * @member {boolean} [enableBgp] Whether BGP is enabled for this virtual
+ * @property {boolean} [enableBgp] Whether BGP is enabled for this virtual
  * network gateway or not.
- * @member {boolean} [activeActive] ActiveActive flag
- * @member {object} [gatewayDefaultSite] The reference of the
+ * @property {boolean} [activeActive] ActiveActive flag
+ * @property {object} [gatewayDefaultSite] The reference of the
  * LocalNetworkGateway resource which represents local network site having
  * default routes. Assign Null value in case of removing existing default site
  * setting.
- * @member {string} [gatewayDefaultSite.id] Resource ID.
- * @member {object} [sku] The reference of the VirtualNetworkGatewaySku
+ * @property {string} [gatewayDefaultSite.id] Resource ID.
+ * @property {object} [sku] The reference of the VirtualNetworkGatewaySku
  * resource which represents the SKU selected for Virtual network gateway.
- * @member {string} [sku.name] Gateway SKU name. Possible values include:
+ * @property {string} [sku.name] Gateway SKU name. Possible values include:
  * 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance', 'VpnGw1',
  * 'VpnGw2', 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ', 'VpnGw3AZ', 'ErGw1AZ',
  * 'ErGw2AZ', 'ErGw3AZ'
- * @member {string} [sku.tier] Gateway SKU tier. Possible values include:
+ * @property {string} [sku.tier] Gateway SKU tier. Possible values include:
  * 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance', 'VpnGw1',
  * 'VpnGw2', 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ', 'VpnGw3AZ', 'ErGw1AZ',
  * 'ErGw2AZ', 'ErGw3AZ'
- * @member {number} [sku.capacity] The capacity.
- * @member {object} [vpnClientConfiguration] The reference of the
+ * @property {number} [sku.capacity] The capacity.
+ * @property {object} [vpnClientConfiguration] The reference of the
  * VpnClientConfiguration resource which represents the P2S VpnClient
  * configurations.
- * @member {object} [vpnClientConfiguration.vpnClientAddressPool] The reference
- * of the address space resource which represents Address space for P2S
- * VpnClient.
- * @member {array}
+ * @property {object} [vpnClientConfiguration.vpnClientAddressPool] The
+ * reference of the address space resource which represents Address space for
+ * P2S VpnClient.
+ * @property {array}
  * [vpnClientConfiguration.vpnClientAddressPool.addressPrefixes] A list of
  * address blocks reserved for this virtual network in CIDR notation.
- * @member {array} [vpnClientConfiguration.vpnClientRootCertificates]
+ * @property {array} [vpnClientConfiguration.vpnClientRootCertificates]
  * VpnClientRootCertificate for virtual network gateway.
- * @member {array} [vpnClientConfiguration.vpnClientRevokedCertificates]
+ * @property {array} [vpnClientConfiguration.vpnClientRevokedCertificates]
  * VpnClientRevokedCertificate for Virtual network gateway.
- * @member {array} [vpnClientConfiguration.vpnClientProtocols]
+ * @property {array} [vpnClientConfiguration.vpnClientProtocols]
  * VpnClientProtocols for Virtual network gateway.
- * @member {array} [vpnClientConfiguration.vpnClientIpsecPolicies]
+ * @property {array} [vpnClientConfiguration.vpnClientIpsecPolicies]
  * VpnClientIpsecPolicies for virtual network gateway P2S client.
- * @member {string} [vpnClientConfiguration.radiusServerAddress] The radius
+ * @property {string} [vpnClientConfiguration.radiusServerAddress] The radius
  * server address property of the VirtualNetworkGateway resource for vpn client
  * connection.
- * @member {string} [vpnClientConfiguration.radiusServerSecret] The radius
+ * @property {string} [vpnClientConfiguration.radiusServerSecret] The radius
  * secret property of the VirtualNetworkGateway resource for vpn client
  * connection.
- * @member {object} [bgpSettings] Virtual network gateway's BGP speaker
+ * @property {object} [bgpSettings] Virtual network gateway's BGP speaker
  * settings.
- * @member {number} [bgpSettings.asn] The BGP speaker's ASN.
- * @member {string} [bgpSettings.bgpPeeringAddress] The BGP peering address and
- * BGP identifier of this BGP speaker.
- * @member {number} [bgpSettings.peerWeight] The weight added to routes learned
- * from this BGP speaker.
- * @member {string} [resourceGuid] The resource GUID property of the
+ * @property {number} [bgpSettings.asn] The BGP speaker's ASN.
+ * @property {string} [bgpSettings.bgpPeeringAddress] The BGP peering address
+ * and BGP identifier of this BGP speaker.
+ * @property {number} [bgpSettings.peerWeight] The weight added to routes
+ * learned from this BGP speaker.
+ * @property {string} [resourceGuid] The resource GUID property of the
  * VirtualNetworkGateway resource.
- * @member {string} [provisioningState] The provisioning state of the
+ * @property {string} [provisioningState] The provisioning state of the
  * VirtualNetworkGateway resource. Possible values are: 'Updating', 'Deleting',
  * and 'Failed'.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface VirtualNetworkGateway extends Resource {
   ipConfigurations?: VirtualNetworkGatewayIPConfiguration[];
@@ -8989,19 +9078,19 @@ export interface VirtualNetworkGateway extends Resource {
  * @constructor
  * Vpn Client Parameters for package generation
  *
- * @member {string} [processorArchitecture] VPN client Processor Architecture.
- * Possible values are: 'AMD64' and 'X86'. Possible values include: 'Amd64',
- * 'X86'
- * @member {string} [authenticationMethod] VPN client Authentication Method.
+ * @property {string} [processorArchitecture] VPN client Processor
+ * Architecture. Possible values are: 'AMD64' and 'X86'. Possible values
+ * include: 'Amd64', 'X86'
+ * @property {string} [authenticationMethod] VPN client Authentication Method.
  * Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values include:
  * 'EAPTLS', 'EAPMSCHAPv2'
- * @member {string} [radiusServerAuthCertificate] The public certificate data
+ * @property {string} [radiusServerAuthCertificate] The public certificate data
  * for the radius server authentication certificate as a Base-64 encoded
  * string. Required only if external radius authentication has been configured
  * with EAPTLS authentication.
- * @member {array} [clientRootCertificates] A list of client root certificates
- * public certificate data encoded as Base-64 strings. Optional parameter for
- * external radius based authentication with EAPTLS.
+ * @property {array} [clientRootCertificates] A list of client root
+ * certificates public certificate data encoded as Base-64 strings. Optional
+ * parameter for external radius based authentication with EAPTLS.
  */
 export interface VpnClientParameters {
   processorArchitecture?: string;
@@ -9016,7 +9105,7 @@ export interface VpnClientParameters {
  * @constructor
  * Response for list BGP peer status API service call
  *
- * @member {array} [value] List of BGP peers
+ * @property {array} [value] List of BGP peers
  */
 export interface BgpPeerStatusListResult {
   value?: BgpPeerStatus[];
@@ -9028,7 +9117,7 @@ export interface BgpPeerStatusListResult {
  * @constructor
  * List of virtual network gateway routes
  *
- * @member {array} [value] List of gateway routes
+ * @property {array} [value] List of gateway routes
  */
 export interface GatewayRouteListResult {
   value?: GatewayRoute[];
@@ -9040,15 +9129,15 @@ export interface GatewayRouteListResult {
  * @constructor
  * VirtualNetworkGatewayConnection properties
  *
- * @member {string} [tunnel] Tunnel name.
- * @member {string} [connectionStatus] Virtual network Gateway connection
+ * @property {string} [tunnel] Tunnel name.
+ * @property {string} [connectionStatus] Virtual network Gateway connection
  * status. Possible values include: 'Unknown', 'Connecting', 'Connected',
  * 'NotConnected'
- * @member {number} [ingressBytesTransferred] The Ingress Bytes Transferred in
+ * @property {number} [ingressBytesTransferred] The Ingress Bytes Transferred
+ * in this connection
+ * @property {number} [egressBytesTransferred] The Egress Bytes Transferred in
  * this connection
- * @member {number} [egressBytesTransferred] The Egress Bytes Transferred in
- * this connection
- * @member {string} [lastConnectionEstablishedUtcTime] The time at which
+ * @property {string} [lastConnectionEstablishedUtcTime] The time at which
  * connection was established in Utc format.
  */
 export interface TunnelConnectionHealth {
@@ -9065,24 +9154,25 @@ export interface TunnelConnectionHealth {
  * @constructor
  * A common class for general resource information
  *
- * @member {object} [localNetworkAddressSpace] Local network site address
+ * @property {object} [localNetworkAddressSpace] Local network site address
  * space.
- * @member {array} [localNetworkAddressSpace.addressPrefixes] A list of address
- * blocks reserved for this virtual network in CIDR notation.
- * @member {string} [gatewayIpAddress] IP address of local network gateway.
- * @member {object} [bgpSettings] Local network gateway's BGP speaker settings.
- * @member {number} [bgpSettings.asn] The BGP speaker's ASN.
- * @member {string} [bgpSettings.bgpPeeringAddress] The BGP peering address and
- * BGP identifier of this BGP speaker.
- * @member {number} [bgpSettings.peerWeight] The weight added to routes learned
- * from this BGP speaker.
- * @member {string} [resourceGuid] The resource GUID property of the
+ * @property {array} [localNetworkAddressSpace.addressPrefixes] A list of
+ * address blocks reserved for this virtual network in CIDR notation.
+ * @property {string} [gatewayIpAddress] IP address of local network gateway.
+ * @property {object} [bgpSettings] Local network gateway's BGP speaker
+ * settings.
+ * @property {number} [bgpSettings.asn] The BGP speaker's ASN.
+ * @property {string} [bgpSettings.bgpPeeringAddress] The BGP peering address
+ * and BGP identifier of this BGP speaker.
+ * @property {number} [bgpSettings.peerWeight] The weight added to routes
+ * learned from this BGP speaker.
+ * @property {string} [resourceGuid] The resource GUID property of the
  * LocalNetworkGateway resource.
- * @member {string} [provisioningState] The provisioning state of the
+ * @property {string} [provisioningState] The provisioning state of the
  * LocalNetworkGateway resource. Possible values are: 'Updating', 'Deleting',
  * and 'Failed'.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface LocalNetworkGateway extends Resource {
   localNetworkAddressSpace?: AddressSpace;
@@ -9099,214 +9189,216 @@ export interface LocalNetworkGateway extends Resource {
  * @constructor
  * A common class for general resource information
  *
- * @member {string} [authorizationKey] The authorizationKey.
- * @member {object} virtualNetworkGateway1 The reference to virtual network
+ * @property {string} [authorizationKey] The authorizationKey.
+ * @property {object} virtualNetworkGateway1 The reference to virtual network
  * gateway resource.
- * @member {array} [virtualNetworkGateway1.ipConfigurations] IP configurations
- * for virtual network gateway.
- * @member {string} [virtualNetworkGateway1.gatewayType] The type of this
+ * @property {array} [virtualNetworkGateway1.ipConfigurations] IP
+ * configurations for virtual network gateway.
+ * @property {string} [virtualNetworkGateway1.gatewayType] The type of this
  * virtual network gateway. Possible values are: 'Vpn' and 'ExpressRoute'.
  * Possible values include: 'Vpn', 'ExpressRoute'
- * @member {string} [virtualNetworkGateway1.vpnType] The type of this virtual
+ * @property {string} [virtualNetworkGateway1.vpnType] The type of this virtual
  * network gateway. Possible values are: 'PolicyBased' and 'RouteBased'.
  * Possible values include: 'PolicyBased', 'RouteBased'
- * @member {boolean} [virtualNetworkGateway1.enableBgp] Whether BGP is enabled
- * for this virtual network gateway or not.
- * @member {boolean} [virtualNetworkGateway1.activeActive] ActiveActive flag
- * @member {object} [virtualNetworkGateway1.gatewayDefaultSite] The reference
+ * @property {boolean} [virtualNetworkGateway1.enableBgp] Whether BGP is
+ * enabled for this virtual network gateway or not.
+ * @property {boolean} [virtualNetworkGateway1.activeActive] ActiveActive flag
+ * @property {object} [virtualNetworkGateway1.gatewayDefaultSite] The reference
  * of the LocalNetworkGateway resource which represents local network site
  * having default routes. Assign Null value in case of removing existing
  * default site setting.
- * @member {string} [virtualNetworkGateway1.gatewayDefaultSite.id] Resource ID.
- * @member {object} [virtualNetworkGateway1.sku] The reference of the
+ * @property {string} [virtualNetworkGateway1.gatewayDefaultSite.id] Resource
+ * ID.
+ * @property {object} [virtualNetworkGateway1.sku] The reference of the
  * VirtualNetworkGatewaySku resource which represents the SKU selected for
  * Virtual network gateway.
- * @member {string} [virtualNetworkGateway1.sku.name] Gateway SKU name.
+ * @property {string} [virtualNetworkGateway1.sku.name] Gateway SKU name.
  * Possible values include: 'Basic', 'HighPerformance', 'Standard',
  * 'UltraPerformance', 'VpnGw1', 'VpnGw2', 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ',
  * 'VpnGw3AZ', 'ErGw1AZ', 'ErGw2AZ', 'ErGw3AZ'
- * @member {string} [virtualNetworkGateway1.sku.tier] Gateway SKU tier.
+ * @property {string} [virtualNetworkGateway1.sku.tier] Gateway SKU tier.
  * Possible values include: 'Basic', 'HighPerformance', 'Standard',
  * 'UltraPerformance', 'VpnGw1', 'VpnGw2', 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ',
  * 'VpnGw3AZ', 'ErGw1AZ', 'ErGw2AZ', 'ErGw3AZ'
- * @member {number} [virtualNetworkGateway1.sku.capacity] The capacity.
- * @member {object} [virtualNetworkGateway1.vpnClientConfiguration] The
+ * @property {number} [virtualNetworkGateway1.sku.capacity] The capacity.
+ * @property {object} [virtualNetworkGateway1.vpnClientConfiguration] The
  * reference of the VpnClientConfiguration resource which represents the P2S
  * VpnClient configurations.
- * @member {object}
+ * @property {object}
  * [virtualNetworkGateway1.vpnClientConfiguration.vpnClientAddressPool] The
  * reference of the address space resource which represents Address space for
  * P2S VpnClient.
- * @member {array}
+ * @property {array}
  * [virtualNetworkGateway1.vpnClientConfiguration.vpnClientAddressPool.addressPrefixes]
  * A list of address blocks reserved for this virtual network in CIDR notation.
- * @member {array}
+ * @property {array}
  * [virtualNetworkGateway1.vpnClientConfiguration.vpnClientRootCertificates]
  * VpnClientRootCertificate for virtual network gateway.
- * @member {array}
+ * @property {array}
  * [virtualNetworkGateway1.vpnClientConfiguration.vpnClientRevokedCertificates]
  * VpnClientRevokedCertificate for Virtual network gateway.
- * @member {array}
+ * @property {array}
  * [virtualNetworkGateway1.vpnClientConfiguration.vpnClientProtocols]
  * VpnClientProtocols for Virtual network gateway.
- * @member {array}
+ * @property {array}
  * [virtualNetworkGateway1.vpnClientConfiguration.vpnClientIpsecPolicies]
  * VpnClientIpsecPolicies for virtual network gateway P2S client.
- * @member {string}
+ * @property {string}
  * [virtualNetworkGateway1.vpnClientConfiguration.radiusServerAddress] The
  * radius server address property of the VirtualNetworkGateway resource for vpn
  * client connection.
- * @member {string}
+ * @property {string}
  * [virtualNetworkGateway1.vpnClientConfiguration.radiusServerSecret] The
  * radius secret property of the VirtualNetworkGateway resource for vpn client
  * connection.
- * @member {object} [virtualNetworkGateway1.bgpSettings] Virtual network
+ * @property {object} [virtualNetworkGateway1.bgpSettings] Virtual network
  * gateway's BGP speaker settings.
- * @member {number} [virtualNetworkGateway1.bgpSettings.asn] The BGP speaker's
- * ASN.
- * @member {string} [virtualNetworkGateway1.bgpSettings.bgpPeeringAddress] The
- * BGP peering address and BGP identifier of this BGP speaker.
- * @member {number} [virtualNetworkGateway1.bgpSettings.peerWeight] The weight
- * added to routes learned from this BGP speaker.
- * @member {string} [virtualNetworkGateway1.resourceGuid] The resource GUID
+ * @property {number} [virtualNetworkGateway1.bgpSettings.asn] The BGP
+ * speaker's ASN.
+ * @property {string} [virtualNetworkGateway1.bgpSettings.bgpPeeringAddress]
+ * The BGP peering address and BGP identifier of this BGP speaker.
+ * @property {number} [virtualNetworkGateway1.bgpSettings.peerWeight] The
+ * weight added to routes learned from this BGP speaker.
+ * @property {string} [virtualNetworkGateway1.resourceGuid] The resource GUID
  * property of the VirtualNetworkGateway resource.
- * @member {string} [virtualNetworkGateway1.provisioningState] The provisioning
- * state of the VirtualNetworkGateway resource. Possible values are:
- * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [virtualNetworkGateway1.etag] Gets a unique read-only
+ * @property {string} [virtualNetworkGateway1.provisioningState] The
+ * provisioning state of the VirtualNetworkGateway resource. Possible values
+ * are: 'Updating', 'Deleting', and 'Failed'.
+ * @property {string} [virtualNetworkGateway1.etag] Gets a unique read-only
  * string that changes whenever the resource is updated.
- * @member {object} [virtualNetworkGateway2] The reference to virtual network
+ * @property {object} [virtualNetworkGateway2] The reference to virtual network
  * gateway resource.
- * @member {array} [virtualNetworkGateway2.ipConfigurations] IP configurations
- * for virtual network gateway.
- * @member {string} [virtualNetworkGateway2.gatewayType] The type of this
+ * @property {array} [virtualNetworkGateway2.ipConfigurations] IP
+ * configurations for virtual network gateway.
+ * @property {string} [virtualNetworkGateway2.gatewayType] The type of this
  * virtual network gateway. Possible values are: 'Vpn' and 'ExpressRoute'.
  * Possible values include: 'Vpn', 'ExpressRoute'
- * @member {string} [virtualNetworkGateway2.vpnType] The type of this virtual
+ * @property {string} [virtualNetworkGateway2.vpnType] The type of this virtual
  * network gateway. Possible values are: 'PolicyBased' and 'RouteBased'.
  * Possible values include: 'PolicyBased', 'RouteBased'
- * @member {boolean} [virtualNetworkGateway2.enableBgp] Whether BGP is enabled
- * for this virtual network gateway or not.
- * @member {boolean} [virtualNetworkGateway2.activeActive] ActiveActive flag
- * @member {object} [virtualNetworkGateway2.gatewayDefaultSite] The reference
+ * @property {boolean} [virtualNetworkGateway2.enableBgp] Whether BGP is
+ * enabled for this virtual network gateway or not.
+ * @property {boolean} [virtualNetworkGateway2.activeActive] ActiveActive flag
+ * @property {object} [virtualNetworkGateway2.gatewayDefaultSite] The reference
  * of the LocalNetworkGateway resource which represents local network site
  * having default routes. Assign Null value in case of removing existing
  * default site setting.
- * @member {string} [virtualNetworkGateway2.gatewayDefaultSite.id] Resource ID.
- * @member {object} [virtualNetworkGateway2.sku] The reference of the
+ * @property {string} [virtualNetworkGateway2.gatewayDefaultSite.id] Resource
+ * ID.
+ * @property {object} [virtualNetworkGateway2.sku] The reference of the
  * VirtualNetworkGatewaySku resource which represents the SKU selected for
  * Virtual network gateway.
- * @member {string} [virtualNetworkGateway2.sku.name] Gateway SKU name.
+ * @property {string} [virtualNetworkGateway2.sku.name] Gateway SKU name.
  * Possible values include: 'Basic', 'HighPerformance', 'Standard',
  * 'UltraPerformance', 'VpnGw1', 'VpnGw2', 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ',
  * 'VpnGw3AZ', 'ErGw1AZ', 'ErGw2AZ', 'ErGw3AZ'
- * @member {string} [virtualNetworkGateway2.sku.tier] Gateway SKU tier.
+ * @property {string} [virtualNetworkGateway2.sku.tier] Gateway SKU tier.
  * Possible values include: 'Basic', 'HighPerformance', 'Standard',
  * 'UltraPerformance', 'VpnGw1', 'VpnGw2', 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ',
  * 'VpnGw3AZ', 'ErGw1AZ', 'ErGw2AZ', 'ErGw3AZ'
- * @member {number} [virtualNetworkGateway2.sku.capacity] The capacity.
- * @member {object} [virtualNetworkGateway2.vpnClientConfiguration] The
+ * @property {number} [virtualNetworkGateway2.sku.capacity] The capacity.
+ * @property {object} [virtualNetworkGateway2.vpnClientConfiguration] The
  * reference of the VpnClientConfiguration resource which represents the P2S
  * VpnClient configurations.
- * @member {object}
+ * @property {object}
  * [virtualNetworkGateway2.vpnClientConfiguration.vpnClientAddressPool] The
  * reference of the address space resource which represents Address space for
  * P2S VpnClient.
- * @member {array}
+ * @property {array}
  * [virtualNetworkGateway2.vpnClientConfiguration.vpnClientAddressPool.addressPrefixes]
  * A list of address blocks reserved for this virtual network in CIDR notation.
- * @member {array}
+ * @property {array}
  * [virtualNetworkGateway2.vpnClientConfiguration.vpnClientRootCertificates]
  * VpnClientRootCertificate for virtual network gateway.
- * @member {array}
+ * @property {array}
  * [virtualNetworkGateway2.vpnClientConfiguration.vpnClientRevokedCertificates]
  * VpnClientRevokedCertificate for Virtual network gateway.
- * @member {array}
+ * @property {array}
  * [virtualNetworkGateway2.vpnClientConfiguration.vpnClientProtocols]
  * VpnClientProtocols for Virtual network gateway.
- * @member {array}
+ * @property {array}
  * [virtualNetworkGateway2.vpnClientConfiguration.vpnClientIpsecPolicies]
  * VpnClientIpsecPolicies for virtual network gateway P2S client.
- * @member {string}
+ * @property {string}
  * [virtualNetworkGateway2.vpnClientConfiguration.radiusServerAddress] The
  * radius server address property of the VirtualNetworkGateway resource for vpn
  * client connection.
- * @member {string}
+ * @property {string}
  * [virtualNetworkGateway2.vpnClientConfiguration.radiusServerSecret] The
  * radius secret property of the VirtualNetworkGateway resource for vpn client
  * connection.
- * @member {object} [virtualNetworkGateway2.bgpSettings] Virtual network
+ * @property {object} [virtualNetworkGateway2.bgpSettings] Virtual network
  * gateway's BGP speaker settings.
- * @member {number} [virtualNetworkGateway2.bgpSettings.asn] The BGP speaker's
- * ASN.
- * @member {string} [virtualNetworkGateway2.bgpSettings.bgpPeeringAddress] The
- * BGP peering address and BGP identifier of this BGP speaker.
- * @member {number} [virtualNetworkGateway2.bgpSettings.peerWeight] The weight
- * added to routes learned from this BGP speaker.
- * @member {string} [virtualNetworkGateway2.resourceGuid] The resource GUID
+ * @property {number} [virtualNetworkGateway2.bgpSettings.asn] The BGP
+ * speaker's ASN.
+ * @property {string} [virtualNetworkGateway2.bgpSettings.bgpPeeringAddress]
+ * The BGP peering address and BGP identifier of this BGP speaker.
+ * @property {number} [virtualNetworkGateway2.bgpSettings.peerWeight] The
+ * weight added to routes learned from this BGP speaker.
+ * @property {string} [virtualNetworkGateway2.resourceGuid] The resource GUID
  * property of the VirtualNetworkGateway resource.
- * @member {string} [virtualNetworkGateway2.provisioningState] The provisioning
- * state of the VirtualNetworkGateway resource. Possible values are:
- * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [virtualNetworkGateway2.etag] Gets a unique read-only
+ * @property {string} [virtualNetworkGateway2.provisioningState] The
+ * provisioning state of the VirtualNetworkGateway resource. Possible values
+ * are: 'Updating', 'Deleting', and 'Failed'.
+ * @property {string} [virtualNetworkGateway2.etag] Gets a unique read-only
  * string that changes whenever the resource is updated.
- * @member {object} [localNetworkGateway2] The reference to local network
+ * @property {object} [localNetworkGateway2] The reference to local network
  * gateway resource.
- * @member {object} [localNetworkGateway2.localNetworkAddressSpace] Local
+ * @property {object} [localNetworkGateway2.localNetworkAddressSpace] Local
  * network site address space.
- * @member {array}
+ * @property {array}
  * [localNetworkGateway2.localNetworkAddressSpace.addressPrefixes] A list of
  * address blocks reserved for this virtual network in CIDR notation.
- * @member {string} [localNetworkGateway2.gatewayIpAddress] IP address of local
- * network gateway.
- * @member {object} [localNetworkGateway2.bgpSettings] Local network gateway's
- * BGP speaker settings.
- * @member {number} [localNetworkGateway2.bgpSettings.asn] The BGP speaker's
+ * @property {string} [localNetworkGateway2.gatewayIpAddress] IP address of
+ * local network gateway.
+ * @property {object} [localNetworkGateway2.bgpSettings] Local network
+ * gateway's BGP speaker settings.
+ * @property {number} [localNetworkGateway2.bgpSettings.asn] The BGP speaker's
  * ASN.
- * @member {string} [localNetworkGateway2.bgpSettings.bgpPeeringAddress] The
+ * @property {string} [localNetworkGateway2.bgpSettings.bgpPeeringAddress] The
  * BGP peering address and BGP identifier of this BGP speaker.
- * @member {number} [localNetworkGateway2.bgpSettings.peerWeight] The weight
+ * @property {number} [localNetworkGateway2.bgpSettings.peerWeight] The weight
  * added to routes learned from this BGP speaker.
- * @member {string} [localNetworkGateway2.resourceGuid] The resource GUID
+ * @property {string} [localNetworkGateway2.resourceGuid] The resource GUID
  * property of the LocalNetworkGateway resource.
- * @member {string} [localNetworkGateway2.provisioningState] The provisioning
+ * @property {string} [localNetworkGateway2.provisioningState] The provisioning
  * state of the LocalNetworkGateway resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [localNetworkGateway2.etag] A unique read-only string that
- * changes whenever the resource is updated.
- * @member {string} connectionType Gateway connection type. Possible values
+ * @property {string} [localNetworkGateway2.etag] A unique read-only string
+ * that changes whenever the resource is updated.
+ * @property {string} connectionType Gateway connection type. Possible values
  * are: 'Ipsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible values
  * include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
- * @member {string} [connectionProtocol] Connection protocol used for this
+ * @property {string} [connectionProtocol] Connection protocol used for this
  * connection. Possible values include: 'IKEv2', 'IKEv1'
- * @member {number} [routingWeight] The routing weight.
- * @member {string} [sharedKey] The IPSec shared key.
- * @member {string} [connectionStatus] Virtual network Gateway connection
+ * @property {number} [routingWeight] The routing weight.
+ * @property {string} [sharedKey] The IPSec shared key.
+ * @property {string} [connectionStatus] Virtual network Gateway connection
  * status. Possible values are 'Unknown', 'Connecting', 'Connected' and
  * 'NotConnected'. Possible values include: 'Unknown', 'Connecting',
  * 'Connected', 'NotConnected'
- * @member {array} [tunnelConnectionStatus] Collection of all tunnels'
+ * @property {array} [tunnelConnectionStatus] Collection of all tunnels'
  * connection health status.
- * @member {number} [egressBytesTransferred] The egress bytes transferred in
+ * @property {number} [egressBytesTransferred] The egress bytes transferred in
  * this connection.
- * @member {number} [ingressBytesTransferred] The ingress bytes transferred in
- * this connection.
- * @member {object} [peer] The reference to peerings resource.
- * @member {string} [peer.id] Resource ID.
- * @member {boolean} [enableBgp] EnableBgp flag
- * @member {boolean} [usePolicyBasedTrafficSelectors] Enable policy-based
+ * @property {number} [ingressBytesTransferred] The ingress bytes transferred
+ * in this connection.
+ * @property {object} [peer] The reference to peerings resource.
+ * @property {string} [peer.id] Resource ID.
+ * @property {boolean} [enableBgp] EnableBgp flag
+ * @property {boolean} [usePolicyBasedTrafficSelectors] Enable policy-based
  * traffic selectors.
- * @member {array} [ipsecPolicies] The IPSec Policies to be considered by this
- * connection.
- * @member {string} [resourceGuid] The resource GUID property of the
+ * @property {array} [ipsecPolicies] The IPSec Policies to be considered by
+ * this connection.
+ * @property {string} [resourceGuid] The resource GUID property of the
  * VirtualNetworkGatewayConnection resource.
- * @member {string} [provisioningState] The provisioning state of the
+ * @property {string} [provisioningState] The provisioning state of the
  * VirtualNetworkGatewayConnection resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {boolean} [expressRouteGatewayBypass] Bypass ExpressRoute Gateway
+ * @property {boolean} [expressRouteGatewayBypass] Bypass ExpressRoute Gateway
  * for data forwarding
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface VirtualNetworkGatewayConnection extends Resource {
   authorizationKey?: string;
@@ -9337,7 +9429,7 @@ export interface VirtualNetworkGatewayConnection extends Resource {
  * @constructor
  * The virtual network connection reset shared key
  *
- * @member {number} keyLength The virtual network connection reset shared key
+ * @property {number} keyLength The virtual network connection reset shared key
  * length, should between 1 and 128.
  */
 export interface ConnectionResetSharedKey {
@@ -9350,7 +9442,7 @@ export interface ConnectionResetSharedKey {
  * @constructor
  * Response for GetConnectionSharedKey API service call
  *
- * @member {string} value The virtual network connection shared key value.
+ * @property {string} value The virtual network connection shared key value.
  */
 export interface ConnectionSharedKey extends SubResource {
   value: string;
@@ -9362,26 +9454,26 @@ export interface ConnectionSharedKey extends SubResource {
  * @constructor
  * An IPSec parameters for a virtual network gateway P2S connection.
  *
- * @member {number} saLifeTimeSeconds The IPSec Security Association (also
+ * @property {number} saLifeTimeSeconds The IPSec Security Association (also
  * called Quick Mode or Phase 2 SA) lifetime in seconds for P2S client.
- * @member {number} saDataSizeKilobytes The IPSec Security Association (also
+ * @property {number} saDataSizeKilobytes The IPSec Security Association (also
  * called Quick Mode or Phase 2 SA) payload size in KB for P2S client..
- * @member {string} ipsecEncryption The IPSec encryption algorithm (IKE phase
+ * @property {string} ipsecEncryption The IPSec encryption algorithm (IKE phase
  * 1). Possible values include: 'None', 'DES', 'DES3', 'AES128', 'AES192',
  * 'AES256', 'GCMAES128', 'GCMAES192', 'GCMAES256'
- * @member {string} ipsecIntegrity The IPSec integrity algorithm (IKE phase 1).
- * Possible values include: 'MD5', 'SHA1', 'SHA256', 'GCMAES128', 'GCMAES192',
- * 'GCMAES256'
- * @member {string} ikeEncryption The IKE encryption algorithm (IKE phase 2).
+ * @property {string} ipsecIntegrity The IPSec integrity algorithm (IKE phase
+ * 1). Possible values include: 'MD5', 'SHA1', 'SHA256', 'GCMAES128',
+ * 'GCMAES192', 'GCMAES256'
+ * @property {string} ikeEncryption The IKE encryption algorithm (IKE phase 2).
  * Possible values include: 'DES', 'DES3', 'AES128', 'AES192', 'AES256',
  * 'GCMAES256', 'GCMAES128'
- * @member {string} ikeIntegrity The IKE integrity algorithm (IKE phase 2).
+ * @property {string} ikeIntegrity The IKE integrity algorithm (IKE phase 2).
  * Possible values include: 'MD5', 'SHA1', 'SHA256', 'SHA384', 'GCMAES256',
  * 'GCMAES128'
- * @member {string} dhGroup The DH Groups used in IKE Phase 1 for initial SA.
+ * @property {string} dhGroup The DH Groups used in IKE Phase 1 for initial SA.
  * Possible values include: 'None', 'DHGroup1', 'DHGroup2', 'DHGroup14',
  * 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
- * @member {string} pfsGroup The Pfs Groups used in IKE Phase 2 for new child
+ * @property {string} pfsGroup The Pfs Groups used in IKE Phase 2 for new child
  * SA. Possible values include: 'None', 'PFS1', 'PFS2', 'PFS2048', 'ECP256',
  * 'ECP384', 'PFS24', 'PFS14', 'PFSMM'
  */
@@ -9402,7 +9494,7 @@ export interface VpnClientIPsecParameters {
  * @constructor
  * A reference to VirtualNetworkGateway or LocalNetworkGateway resource.
  *
- * @member {string} id The ID of VirtualNetworkGateway or LocalNetworkGateway
+ * @property {string} id The ID of VirtualNetworkGateway or LocalNetworkGateway
  * resource.
  */
 export interface VirtualNetworkConnectionGatewayReference {
@@ -9415,52 +9507,52 @@ export interface VirtualNetworkConnectionGatewayReference {
  * @constructor
  * A common class for general resource information
  *
- * @member {string} [authorizationKey] The authorizationKey.
- * @member {object} virtualNetworkGateway1 The reference to virtual network
+ * @property {string} [authorizationKey] The authorizationKey.
+ * @property {object} virtualNetworkGateway1 The reference to virtual network
  * gateway resource.
- * @member {string} [virtualNetworkGateway1.id] The ID of VirtualNetworkGateway
- * or LocalNetworkGateway resource.
- * @member {object} [virtualNetworkGateway2] The reference to virtual network
+ * @property {string} [virtualNetworkGateway1.id] The ID of
+ * VirtualNetworkGateway or LocalNetworkGateway resource.
+ * @property {object} [virtualNetworkGateway2] The reference to virtual network
  * gateway resource.
- * @member {string} [virtualNetworkGateway2.id] The ID of VirtualNetworkGateway
- * or LocalNetworkGateway resource.
- * @member {object} [localNetworkGateway2] The reference to local network
+ * @property {string} [virtualNetworkGateway2.id] The ID of
+ * VirtualNetworkGateway or LocalNetworkGateway resource.
+ * @property {object} [localNetworkGateway2] The reference to local network
  * gateway resource.
- * @member {string} [localNetworkGateway2.id] The ID of VirtualNetworkGateway
+ * @property {string} [localNetworkGateway2.id] The ID of VirtualNetworkGateway
  * or LocalNetworkGateway resource.
- * @member {string} connectionType Gateway connection type. Possible values
+ * @property {string} connectionType Gateway connection type. Possible values
  * are: 'Ipsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible values
  * include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
- * @member {string} [connectionProtocol] Connection protocol used for this
+ * @property {string} [connectionProtocol] Connection protocol used for this
  * connection. Possible values include: 'IKEv2', 'IKEv1'
- * @member {number} [routingWeight] The routing weight.
- * @member {string} [sharedKey] The IPSec shared key.
- * @member {string} [connectionStatus] Virtual network Gateway connection
+ * @property {number} [routingWeight] The routing weight.
+ * @property {string} [sharedKey] The IPSec shared key.
+ * @property {string} [connectionStatus] Virtual network Gateway connection
  * status. Possible values are 'Unknown', 'Connecting', 'Connected' and
  * 'NotConnected'. Possible values include: 'Unknown', 'Connecting',
  * 'Connected', 'NotConnected'
- * @member {array} [tunnelConnectionStatus] Collection of all tunnels'
+ * @property {array} [tunnelConnectionStatus] Collection of all tunnels'
  * connection health status.
- * @member {number} [egressBytesTransferred] The egress bytes transferred in
+ * @property {number} [egressBytesTransferred] The egress bytes transferred in
  * this connection.
- * @member {number} [ingressBytesTransferred] The ingress bytes transferred in
- * this connection.
- * @member {object} [peer] The reference to peerings resource.
- * @member {string} [peer.id] Resource ID.
- * @member {boolean} [enableBgp] EnableBgp flag
- * @member {boolean} [usePolicyBasedTrafficSelectors] Enable policy-based
+ * @property {number} [ingressBytesTransferred] The ingress bytes transferred
+ * in this connection.
+ * @property {object} [peer] The reference to peerings resource.
+ * @property {string} [peer.id] Resource ID.
+ * @property {boolean} [enableBgp] EnableBgp flag
+ * @property {boolean} [usePolicyBasedTrafficSelectors] Enable policy-based
  * traffic selectors.
- * @member {array} [ipsecPolicies] The IPSec Policies to be considered by this
- * connection.
- * @member {string} [resourceGuid] The resource GUID property of the
+ * @property {array} [ipsecPolicies] The IPSec Policies to be considered by
+ * this connection.
+ * @property {string} [resourceGuid] The resource GUID property of the
  * VirtualNetworkGatewayConnection resource.
- * @member {string} [provisioningState] The provisioning state of the
+ * @property {string} [provisioningState] The provisioning state of the
  * VirtualNetworkGatewayConnection resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {boolean} [expressRouteGatewayBypass] Bypass ExpressRoute Gateway
+ * @property {boolean} [expressRouteGatewayBypass] Bypass ExpressRoute Gateway
  * for data forwarding
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface VirtualNetworkGatewayConnectionListEntity extends Resource {
   authorizationKey?: string;
@@ -9491,9 +9583,10 @@ export interface VirtualNetworkGatewayConnectionListEntity extends Resource {
  * @constructor
  * Vpn device configuration script generation parameters
  *
- * @member {string} [vendor] The vendor for the vpn device.
- * @member {string} [deviceFamily] The device family for the vpn device.
- * @member {string} [firmwareVersion] The firmware version for the vpn device.
+ * @property {string} [vendor] The vendor for the vpn device.
+ * @property {string} [deviceFamily] The device family for the vpn device.
+ * @property {string} [firmwareVersion] The firmware version for the vpn
+ * device.
  */
 export interface VpnDeviceScriptParameters {
   vendor?: string;
@@ -9507,14 +9600,14 @@ export interface VpnDeviceScriptParameters {
  * @constructor
  * VPN client root certificate of P2SVpnServerConfiguration.
  *
- * @member {string} publicCertData The certificate public data.
- * @member {string} [provisioningState] The provisioning state of the
+ * @property {string} publicCertData The certificate public data.
+ * @property {string} [provisioningState] The provisioning state of the
  * P2SVpnServerConfiguration VPN client root certificate resource. Possible
  * values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface P2SVpnServerConfigVpnClientRootCertificate extends SubResource {
   publicCertData: string;
@@ -9529,14 +9622,15 @@ export interface P2SVpnServerConfigVpnClientRootCertificate extends SubResource 
  * @constructor
  * VPN client revoked certificate of P2SVpnServerConfiguration.
  *
- * @member {string} [thumbprint] The revoked VPN client certificate thumbprint.
- * @member {string} [provisioningState] The provisioning state of the VPN
+ * @property {string} [thumbprint] The revoked VPN client certificate
+ * thumbprint.
+ * @property {string} [provisioningState] The provisioning state of the VPN
  * client revoked certificate resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface P2SVpnServerConfigVpnClientRevokedCertificate extends SubResource {
   thumbprint?: string;
@@ -9551,14 +9645,14 @@ export interface P2SVpnServerConfigVpnClientRevokedCertificate extends SubResour
  * @constructor
  * Radius Server root certificate of P2SVpnServerConfiguration.
  *
- * @member {string} publicCertData The certificate public data.
- * @member {string} [provisioningState] The provisioning state of the
+ * @property {string} publicCertData The certificate public data.
+ * @property {string} [provisioningState] The provisioning state of the
  * P2SVpnServerConfiguration Radius Server root certificate resource. Possible
  * values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface P2SVpnServerConfigRadiusServerRootCertificate extends SubResource {
   publicCertData: string;
@@ -9573,14 +9667,15 @@ export interface P2SVpnServerConfigRadiusServerRootCertificate extends SubResour
  * @constructor
  * Radius client root certificate of P2SVpnServerConfiguration.
  *
- * @member {string} [thumbprint] The Radius client root certificate thumbprint.
- * @member {string} [provisioningState] The provisioning state of the Radius
+ * @property {string} [thumbprint] The Radius client root certificate
+ * thumbprint.
+ * @property {string} [provisioningState] The provisioning state of the Radius
  * client root certificate resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
+ * @property {string} [etag] A unique read-only string that changes whenever
+ * the resource is updated.
  */
 export interface P2SVpnServerConfigRadiusClientRootCertificate extends SubResource {
   thumbprint?: string;
@@ -9595,36 +9690,37 @@ export interface P2SVpnServerConfigRadiusClientRootCertificate extends SubResour
  * @constructor
  * P2SVpnServerConfiguration Resource.
  *
- * @member {string} [p2SVpnServerConfigurationPropertiesName] The name of the
+ * @property {string} [p2SVpnServerConfigurationPropertiesName] The name of the
  * P2SVpnServerConfiguration that is unique within a VirtualWan in a resource
  * group. This name can be used to access the resource along with Paren
  * VirtualWan resource name.
- * @member {array} [vpnProtocols] vpnProtocols for the
+ * @property {array} [vpnProtocols] vpnProtocols for the
  * P2SVpnServerConfiguration.
- * @member {array} [p2SVpnServerConfigVpnClientRootCertificates] VPN client
+ * @property {array} [p2SVpnServerConfigVpnClientRootCertificates] VPN client
  * root certificate of P2SVpnServerConfiguration.
- * @member {array} [p2SVpnServerConfigVpnClientRevokedCertificates] VPN client
- * revoked certificate of P2SVpnServerConfiguration.
- * @member {array} [p2SVpnServerConfigRadiusServerRootCertificates] Radius
+ * @property {array} [p2SVpnServerConfigVpnClientRevokedCertificates] VPN
+ * client revoked certificate of P2SVpnServerConfiguration.
+ * @property {array} [p2SVpnServerConfigRadiusServerRootCertificates] Radius
  * Server root certificate of P2SVpnServerConfiguration.
- * @member {array} [p2SVpnServerConfigRadiusClientRootCertificates] Radius
+ * @property {array} [p2SVpnServerConfigRadiusClientRootCertificates] Radius
  * client root certificate of P2SVpnServerConfiguration.
- * @member {array} [vpnClientIpsecPolicies] VpnClientIpsecPolicies for
+ * @property {array} [vpnClientIpsecPolicies] VpnClientIpsecPolicies for
  * P2SVpnServerConfiguration.
- * @member {string} [radiusServerAddress] The radius server address property of
- * the P2SVpnServerConfiguration resource for point to site client connection.
- * @member {string} [radiusServerSecret] The radius secret property of the
+ * @property {string} [radiusServerAddress] The radius server address property
+ * of the P2SVpnServerConfiguration resource for point to site client
+ * connection.
+ * @property {string} [radiusServerSecret] The radius secret property of the
  * P2SVpnServerConfiguration resource for for point to site client connection.
- * @member {string} [provisioningState] The provisioning state of the
+ * @property {string} [provisioningState] The provisioning state of the
  * P2SVpnServerConfiguration resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {array} [p2SVpnGateways]
- * @member {string} [p2SVpnServerConfigurationPropertiesEtag] A unique
+ * @property {array} [p2SVpnGateways]
+ * @property {string} [p2SVpnServerConfigurationPropertiesEtag] A unique
  * read-only string that changes whenever the resource is updated.
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface P2SVpnServerConfiguration extends SubResource {
   p2SVpnServerConfigurationPropertiesName?: string;
@@ -9649,24 +9745,25 @@ export interface P2SVpnServerConfiguration extends SubResource {
  * @constructor
  * VirtualWAN Resource.
  *
- * @member {boolean} [disableVpnEncryption] Vpn encryption to be disabled or
+ * @property {boolean} [disableVpnEncryption] Vpn encryption to be disabled or
  * not.
- * @member {array} [virtualHubs] List of VirtualHubs in the VirtualWAN.
- * @member {array} [vpnSites]
- * @member {string} [securityProviderName] The Security Provider name.
- * @member {boolean} [allowBranchToBranchTraffic] True if branch to branch
+ * @property {array} [virtualHubs] List of VirtualHubs in the VirtualWAN.
+ * @property {array} [vpnSites]
+ * @property {string} [securityProviderName] The Security Provider name.
+ * @property {boolean} [allowBranchToBranchTraffic] True if branch to branch
  * traffic is allowed.
- * @member {boolean} [allowVnetToVnetTraffic] True if Vnet to Vnet traffic is
+ * @property {boolean} [allowVnetToVnetTraffic] True if Vnet to Vnet traffic is
  * allowed.
- * @member {string} [office365LocalBreakoutCategory] The office local breakout
- * category. Possible values include: 'Optimize', 'OptimizeAndAllow', 'All',
- * 'None'
- * @member {array} [p2SVpnServerConfigurations] list of all
+ * @property {string} [office365LocalBreakoutCategory] The office local
+ * breakout category. Possible values include: 'Optimize', 'OptimizeAndAllow',
+ * 'All', 'None'
+ * @property {array} [p2SVpnServerConfigurations] list of all
  * P2SVpnServerConfigurations associated with the virtual wan.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+ * 'Failed'
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface VirtualWAN extends Resource {
   disableVpnEncryption?: boolean;
@@ -9687,9 +9784,9 @@ export interface VirtualWAN extends Resource {
  * @constructor
  * List of properties of the device.
  *
- * @member {string} [deviceVendor] Name of the device Vendor.
- * @member {string} [deviceModel] Model of the device.
- * @member {number} [linkSpeedInMbps] Link speed.
+ * @property {string} [deviceVendor] Name of the device Vendor.
+ * @property {string} [deviceModel] Model of the device.
+ * @property {number} [linkSpeedInMbps] Link speed.
  */
 export interface DeviceProperties {
   deviceVendor?: string;
@@ -9703,30 +9800,32 @@ export interface DeviceProperties {
  * @constructor
  * VpnSite Resource.
  *
- * @member {object} [virtualWan] The VirtualWAN to which the vpnSite belongs
- * @member {string} [virtualWan.id] Resource ID.
- * @member {object} [deviceProperties] The device properties
- * @member {string} [deviceProperties.deviceVendor] Name of the device Vendor.
- * @member {string} [deviceProperties.deviceModel] Model of the device.
- * @member {number} [deviceProperties.linkSpeedInMbps] Link speed.
- * @member {string} [ipAddress] The ip-address for the vpn-site.
- * @member {string} [siteKey] The key for vpn-site that can be used for
+ * @property {object} [virtualWan] The VirtualWAN to which the vpnSite belongs
+ * @property {string} [virtualWan.id] Resource ID.
+ * @property {object} [deviceProperties] The device properties
+ * @property {string} [deviceProperties.deviceVendor] Name of the device
+ * Vendor.
+ * @property {string} [deviceProperties.deviceModel] Model of the device.
+ * @property {number} [deviceProperties.linkSpeedInMbps] Link speed.
+ * @property {string} [ipAddress] The ip-address for the vpn-site.
+ * @property {string} [siteKey] The key for vpn-site that can be used for
  * connections.
- * @member {object} [addressSpace] The AddressSpace that contains an array of
+ * @property {object} [addressSpace] The AddressSpace that contains an array of
  * IP address ranges.
- * @member {array} [addressSpace.addressPrefixes] A list of address blocks
+ * @property {array} [addressSpace.addressPrefixes] A list of address blocks
  * reserved for this virtual network in CIDR notation.
- * @member {object} [bgpProperties] The set of bgp properties.
- * @member {number} [bgpProperties.asn] The BGP speaker's ASN.
- * @member {string} [bgpProperties.bgpPeeringAddress] The BGP peering address
+ * @property {object} [bgpProperties] The set of bgp properties.
+ * @property {number} [bgpProperties.asn] The BGP speaker's ASN.
+ * @property {string} [bgpProperties.bgpPeeringAddress] The BGP peering address
  * and BGP identifier of this BGP speaker.
- * @member {number} [bgpProperties.peerWeight] The weight added to routes
+ * @property {number} [bgpProperties.peerWeight] The weight added to routes
  * learned from this BGP speaker.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {boolean} [isSecuritySite] IsSecuritySite flag
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+ * 'Failed'
+ * @property {boolean} [isSecuritySite] IsSecuritySite flag
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface VpnSite extends Resource {
   virtualWan?: SubResource;
@@ -9746,9 +9845,9 @@ export interface VpnSite extends Resource {
  * @constructor
  * List of Vpn-Sites
  *
- * @member {array} [vpnSites] List of resource-ids of the vpn-sites for which
+ * @property {array} [vpnSites] List of resource-ids of the vpn-sites for which
  * config is to be downloaded.
- * @member {string} [outputBlobSasUrl] The sas-url to download the
+ * @property {string} [outputBlobSasUrl] The sas-url to download the
  * configurations for vpn-sites
  */
 export interface GetVpnSitesConfigurationRequest {
@@ -9762,20 +9861,21 @@ export interface GetVpnSitesConfigurationRequest {
  * @constructor
  * HubVirtualNetworkConnection Resource.
  *
- * @member {object} [remoteVirtualNetwork] Reference to the remote virtual
+ * @property {object} [remoteVirtualNetwork] Reference to the remote virtual
  * network.
- * @member {string} [remoteVirtualNetwork.id] Resource ID.
- * @member {boolean} [allowHubToRemoteVnetTransit] VirtualHub to RemoteVnet
+ * @property {string} [remoteVirtualNetwork.id] Resource ID.
+ * @property {boolean} [allowHubToRemoteVnetTransit] VirtualHub to RemoteVnet
  * transit to enabled or not.
- * @member {boolean} [allowRemoteVnetToUseHubVnetGateways] Allow RemoteVnet to
- * use Virtual Hub's gateways.
- * @member {boolean} [enableInternetSecurity] Enable internet security
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {boolean} [allowRemoteVnetToUseHubVnetGateways] Allow RemoteVnet
+ * to use Virtual Hub's gateways.
+ * @property {boolean} [enableInternetSecurity] Enable internet security
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+ * 'Failed'
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface HubVirtualNetworkConnection extends SubResource {
   remoteVirtualNetwork?: SubResource;
@@ -9793,8 +9893,8 @@ export interface HubVirtualNetworkConnection extends SubResource {
  * @constructor
  * VirtualHub route
  *
- * @member {array} [addressPrefixes] list of all addressPrefixes.
- * @member {string} [nextHopIpAddress] NextHop ip address.
+ * @property {array} [addressPrefixes] list of all addressPrefixes.
+ * @property {string} [nextHopIpAddress] NextHop ip address.
  */
 export interface VirtualHubRoute {
   addressPrefixes?: string[];
@@ -9807,7 +9907,7 @@ export interface VirtualHubRoute {
  * @constructor
  * VirtualHub route table
  *
- * @member {array} [routes] list of all routes.
+ * @property {array} [routes] list of all routes.
  */
 export interface VirtualHubRouteTable {
   routes?: VirtualHubRoute[];
@@ -9819,26 +9919,29 @@ export interface VirtualHubRouteTable {
  * @constructor
  * VirtualHub Resource.
  *
- * @member {object} [virtualWan] The VirtualWAN to which the VirtualHub belongs
- * @member {string} [virtualWan.id] Resource ID.
- * @member {object} [vpnGateway] The VpnGateway associated with this VirtualHub
- * @member {string} [vpnGateway.id] Resource ID.
- * @member {object} [p2SVpnGateway] The P2SVpnGateway associated with this
+ * @property {object} [virtualWan] The VirtualWAN to which the VirtualHub
+ * belongs
+ * @property {string} [virtualWan.id] Resource ID.
+ * @property {object} [vpnGateway] The VpnGateway associated with this
  * VirtualHub
- * @member {string} [p2SVpnGateway.id] Resource ID.
- * @member {object} [expressRouteGateway] The expressRouteGateway associated
+ * @property {string} [vpnGateway.id] Resource ID.
+ * @property {object} [p2SVpnGateway] The P2SVpnGateway associated with this
+ * VirtualHub
+ * @property {string} [p2SVpnGateway.id] Resource ID.
+ * @property {object} [expressRouteGateway] The expressRouteGateway associated
  * with this VirtualHub
- * @member {string} [expressRouteGateway.id] Resource ID.
- * @member {array} [virtualNetworkConnections] list of all vnet connections
+ * @property {string} [expressRouteGateway.id] Resource ID.
+ * @property {array} [virtualNetworkConnections] list of all vnet connections
  * with this VirtualHub.
- * @member {string} [addressPrefix] Address-prefix for this VirtualHub.
- * @member {object} [routeTable] The routeTable associated with this virtual
+ * @property {string} [addressPrefix] Address-prefix for this VirtualHub.
+ * @property {object} [routeTable] The routeTable associated with this virtual
  * hub.
- * @member {array} [routeTable.routes] list of all routes.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {array} [routeTable.routes] list of all routes.
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+ * 'Failed'
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface VirtualHub extends Resource {
   virtualWan?: SubResource;
@@ -9858,28 +9961,29 @@ export interface VirtualHub extends Resource {
  * @constructor
  * VpnConnection Resource.
  *
- * @member {object} [remoteVpnSite] Id of the connected vpn site.
- * @member {string} [remoteVpnSite.id] Resource ID.
- * @member {number} [routingWeight] routing weight for vpn connection.
- * @member {string} [connectionStatus] The connection status. Possible values
+ * @property {object} [remoteVpnSite] Id of the connected vpn site.
+ * @property {string} [remoteVpnSite.id] Resource ID.
+ * @property {number} [routingWeight] routing weight for vpn connection.
+ * @property {string} [connectionStatus] The connection status. Possible values
  * include: 'Unknown', 'Connecting', 'Connected', 'NotConnected'
- * @member {string} [vpnConnectionProtocolType] Connection protocol used for
+ * @property {string} [vpnConnectionProtocolType] Connection protocol used for
  * this connection. Possible values include: 'IKEv2', 'IKEv1'
- * @member {number} [ingressBytesTransferred] Ingress bytes transferred.
- * @member {number} [egressBytesTransferred] Egress bytes transferred.
- * @member {number} [connectionBandwidth] Expected bandwidth in MBPS.
- * @member {string} [sharedKey] SharedKey for the vpn connection.
- * @member {boolean} [enableBgp] EnableBgp flag
- * @member {array} [ipsecPolicies] The IPSec Policies to be considered by this
- * connection.
- * @member {boolean} [enableRateLimiting] EnableBgp flag
- * @member {boolean} [enableInternetSecurity] Enable internet security
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {string} [name] The name of the resource that is unique within a
+ * @property {number} [ingressBytesTransferred] Ingress bytes transferred.
+ * @property {number} [egressBytesTransferred] Egress bytes transferred.
+ * @property {number} [connectionBandwidth] Expected bandwidth in MBPS.
+ * @property {string} [sharedKey] SharedKey for the vpn connection.
+ * @property {boolean} [enableBgp] EnableBgp flag
+ * @property {array} [ipsecPolicies] The IPSec Policies to be considered by
+ * this connection.
+ * @property {boolean} [enableRateLimiting] EnableBgp flag
+ * @property {boolean} [enableInternetSecurity] Enable internet security
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+ * 'Failed'
+ * @property {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface VpnConnection extends SubResource {
   remoteVpnSite?: SubResource;
@@ -9905,20 +10009,23 @@ export interface VpnConnection extends SubResource {
  * @constructor
  * VpnGateway Resource.
  *
- * @member {object} [virtualHub] The VirtualHub to which the gateway belongs
- * @member {string} [virtualHub.id] Resource ID.
- * @member {array} [connections] list of all vpn connections to the gateway.
- * @member {object} [bgpSettings] Local network gateway's BGP speaker settings.
- * @member {number} [bgpSettings.asn] The BGP speaker's ASN.
- * @member {string} [bgpSettings.bgpPeeringAddress] The BGP peering address and
- * BGP identifier of this BGP speaker.
- * @member {number} [bgpSettings.peerWeight] The weight added to routes learned
- * from this BGP speaker.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {number} [vpnGatewayScaleUnit] The scale unit for this vpn gateway.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {object} [virtualHub] The VirtualHub to which the gateway belongs
+ * @property {string} [virtualHub.id] Resource ID.
+ * @property {array} [connections] list of all vpn connections to the gateway.
+ * @property {object} [bgpSettings] Local network gateway's BGP speaker
+ * settings.
+ * @property {number} [bgpSettings.asn] The BGP speaker's ASN.
+ * @property {string} [bgpSettings.bgpPeeringAddress] The BGP peering address
+ * and BGP identifier of this BGP speaker.
+ * @property {number} [bgpSettings.peerWeight] The weight added to routes
+ * learned from this BGP speaker.
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+ * 'Failed'
+ * @property {number} [vpnGatewayScaleUnit] The scale unit for this vpn
+ * gateway.
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface VpnGateway extends Resource {
   virtualHub?: SubResource;
@@ -9935,8 +10042,8 @@ export interface VpnGateway extends Resource {
  * @constructor
  * VpnSite Resource.
  *
- * @member {string} [vpnSite] The resource-uri of the vpn-site for which config
- * is to be fetched.
+ * @property {string} [vpnSite] The resource-uri of the vpn-site for which
+ * config is to be fetched.
  */
 export interface VpnSiteId {
   readonly vpnSite?: string;
@@ -9948,9 +10055,9 @@ export interface VpnSiteId {
  * @constructor
  * Collection of SecurityProviders.
  *
- * @member {string} [name] Name of the security provider.
- * @member {string} [url] Url of the security provider.
- * @member {string} [type] Name of the security provider. Possible values
+ * @property {string} [name] Name of the security provider.
+ * @property {string} [url] Url of the security provider.
+ * @property {string} [type] Name of the security provider. Possible values
  * include: 'External', 'Native'
  */
 export interface VirtualWanSecurityProvider {
@@ -9965,7 +10072,7 @@ export interface VirtualWanSecurityProvider {
  * @constructor
  * Collection of SecurityProviders.
  *
- * @member {array} [supportedProviders]
+ * @property {array} [supportedProviders]
  */
 export interface VirtualWanSecurityProviders {
   supportedProviders?: VirtualWanSecurityProvider[];
@@ -9977,14 +10084,14 @@ export interface VirtualWanSecurityProviders {
  * @constructor
  * VpnClientConnectionHealth properties
  *
- * @member {number} [totalIngressBytesTransferred] Total of the Ingress Bytes
+ * @property {number} [totalIngressBytesTransferred] Total of the Ingress Bytes
  * Transferred in this P2S Vpn connection
- * @member {number} [totalEgressBytesTransferred] Total of the Egress Bytes
+ * @property {number} [totalEgressBytesTransferred] Total of the Egress Bytes
  * Transferred in this connection
- * @member {number} [vpnClientConnectionsCount] The total of p2s vpn clients
+ * @property {number} [vpnClientConnectionsCount] The total of p2s vpn clients
  * connected at this time to this P2SVpnGateway.
- * @member {array} [allocatedIpAddresses] List of allocated ip addresses to the
- * connected p2s vpn clients.
+ * @property {array} [allocatedIpAddresses] List of allocated ip addresses to
+ * the connected p2s vpn clients.
  */
 export interface VpnClientConnectionHealth {
   readonly totalIngressBytesTransferred?: number;
@@ -9999,31 +10106,32 @@ export interface VpnClientConnectionHealth {
  * @constructor
  * P2SVpnGateway Resource.
  *
- * @member {object} [virtualHub] The VirtualHub to which the gateway belongs
- * @member {string} [virtualHub.id] Resource ID.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {number} [vpnGatewayScaleUnit] The scale unit for this p2s vpn
+ * @property {object} [virtualHub] The VirtualHub to which the gateway belongs
+ * @property {string} [virtualHub.id] Resource ID.
+ * @property {string} [provisioningState] The provisioning state of the
+ * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+ * 'Failed'
+ * @property {number} [vpnGatewayScaleUnit] The scale unit for this p2s vpn
  * gateway.
- * @member {object} [p2SVpnServerConfiguration] The P2SVpnServerConfiguration
+ * @property {object} [p2SVpnServerConfiguration] The P2SVpnServerConfiguration
  * to which the p2sVpnGateway is attached to.
- * @member {string} [p2SVpnServerConfiguration.id] Resource ID.
- * @member {object} [vpnClientAddressPool] The reference of the address space
+ * @property {string} [p2SVpnServerConfiguration.id] Resource ID.
+ * @property {object} [vpnClientAddressPool] The reference of the address space
  * resource which represents Address space for P2S VpnClient.
- * @member {array} [vpnClientAddressPool.addressPrefixes] A list of address
+ * @property {array} [vpnClientAddressPool.addressPrefixes] A list of address
  * blocks reserved for this virtual network in CIDR notation.
- * @member {object} [vpnClientConnectionHealth] All P2S vpnclients' connection
- * health status.
- * @member {number} [vpnClientConnectionHealth.totalIngressBytesTransferred]
+ * @property {object} [vpnClientConnectionHealth] All P2S vpnclients'
+ * connection health status.
+ * @property {number} [vpnClientConnectionHealth.totalIngressBytesTransferred]
  * Total of the Ingress Bytes Transferred in this P2S Vpn connection
- * @member {number} [vpnClientConnectionHealth.totalEgressBytesTransferred]
+ * @property {number} [vpnClientConnectionHealth.totalEgressBytesTransferred]
  * Total of the Egress Bytes Transferred in this connection
- * @member {number} [vpnClientConnectionHealth.vpnClientConnectionsCount] The
+ * @property {number} [vpnClientConnectionHealth.vpnClientConnectionsCount] The
  * total of p2s vpn clients connected at this time to this P2SVpnGateway.
- * @member {array} [vpnClientConnectionHealth.allocatedIpAddresses] List of
+ * @property {array} [vpnClientConnectionHealth.allocatedIpAddresses] List of
  * allocated ip addresses to the connected p2s vpn clients.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
+ * @property {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated.
  */
 export interface P2SVpnGateway extends Resource {
   virtualHub?: SubResource;
@@ -10041,7 +10149,7 @@ export interface P2SVpnGateway extends Resource {
  * @constructor
  * Vpn Client Parameters for package generation
  *
- * @member {string} [authenticationMethod] VPN client Authentication Method.
+ * @property {string} [authenticationMethod] VPN client Authentication Method.
  * Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values include:
  * 'EAPTLS', 'EAPMSCHAPv2'
  */
@@ -10055,7 +10163,7 @@ export interface P2SVpnProfileParameters {
  * @constructor
  * Vpn Profile Response for package generation
  *
- * @member {string} [profileUrl] URL to the VPN profile
+ * @property {string} [profileUrl] URL to the VPN profile
  */
 export interface VpnProfileResponse {
   profileUrl?: string;
@@ -10068,7 +10176,7 @@ export interface VpnProfileResponse {
  * @constructor
  * Response for ListApplicationGateways API service call.
  *
- * @member {string} [nextLink] URL to get the next set of results.
+ * @property {string} [nextLink] URL to get the next set of results.
  */
 export interface ApplicationGatewayListResult extends Array<ApplicationGateway> {
   nextLink?: string;
@@ -10080,7 +10188,7 @@ export interface ApplicationGatewayListResult extends Array<ApplicationGateway> 
  * @constructor
  * Response for ApplicationGatewayAvailableSslOptions API service call.
  *
- * @member {string} [nextLink] URL to get the next set of results.
+ * @property {string} [nextLink] URL to get the next set of results.
  */
 export interface ApplicationGatewayAvailableSslPredefinedPolicies extends Array<ApplicationGatewaySslPredefinedPolicy> {
   nextLink?: string;
@@ -10092,7 +10200,7 @@ export interface ApplicationGatewayAvailableSslPredefinedPolicies extends Array<
  * @constructor
  * A list of application security groups.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface ApplicationSecurityGroupListResult extends Array<ApplicationSecurityGroup> {
   readonly nextLink?: string;
@@ -10104,7 +10212,7 @@ export interface ApplicationSecurityGroupListResult extends Array<ApplicationSec
  * @constructor
  * An array of available delegations.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface AvailableDelegationsResult extends Array<AvailableDelegation> {
   readonly nextLink?: string;
@@ -10116,7 +10224,7 @@ export interface AvailableDelegationsResult extends Array<AvailableDelegation> {
  * @constructor
  * Response for ListAzureFirewalls API service call.
  *
- * @member {string} [nextLink] URL to get the next set of results.
+ * @property {string} [nextLink] URL to get the next set of results.
  */
 export interface AzureFirewallListResult extends Array<AzureFirewall> {
   nextLink?: string;
@@ -10128,7 +10236,7 @@ export interface AzureFirewallListResult extends Array<AzureFirewall> {
  * @constructor
  * Response for ListAzureFirewallFqdnTags API service call.
  *
- * @member {string} [nextLink] URL to get the next set of results.
+ * @property {string} [nextLink] URL to get the next set of results.
  */
 export interface AzureFirewallFqdnTagListResult extends Array<AzureFirewallFqdnTag> {
   nextLink?: string;
@@ -10140,7 +10248,7 @@ export interface AzureFirewallFqdnTagListResult extends Array<AzureFirewallFqdnT
  * @constructor
  * A list of DDoS protection plans.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface DdosProtectionPlanListResult extends Array<DdosProtectionPlan> {
   readonly nextLink?: string;
@@ -10152,7 +10260,7 @@ export interface DdosProtectionPlanListResult extends Array<DdosProtectionPlan> 
  * @constructor
  * Response for the ListAvailableEndpointServices API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface EndpointServicesListResult extends Array<EndpointServiceResult> {
   nextLink?: string;
@@ -10165,7 +10273,7 @@ export interface EndpointServicesListResult extends Array<EndpointServiceResult>
  * Response for ListAuthorizations API service call retrieves all
  * authorizations that belongs to an ExpressRouteCircuit.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface AuthorizationListResult extends Array<ExpressRouteCircuitAuthorization> {
   nextLink?: string;
@@ -10178,7 +10286,7 @@ export interface AuthorizationListResult extends Array<ExpressRouteCircuitAuthor
  * Response for ListPeering API service call retrieves all peerings that belong
  * to an ExpressRouteCircuit.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface ExpressRouteCircuitPeeringListResult extends Array<ExpressRouteCircuitPeering> {
   nextLink?: string;
@@ -10190,7 +10298,7 @@ export interface ExpressRouteCircuitPeeringListResult extends Array<ExpressRoute
  * @constructor
  * Response for ListExpressRouteCircuit API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface ExpressRouteCircuitListResult extends Array<ExpressRouteCircuit> {
   nextLink?: string;
@@ -10202,7 +10310,7 @@ export interface ExpressRouteCircuitListResult extends Array<ExpressRouteCircuit
  * @constructor
  * Response for the ListExpressRouteServiceProvider API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface ExpressRouteServiceProviderListResult extends Array<ExpressRouteServiceProvider> {
   nextLink?: string;
@@ -10214,7 +10322,7 @@ export interface ExpressRouteServiceProviderListResult extends Array<ExpressRout
  * @constructor
  * Response for ListExpressRouteCrossConnection API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface ExpressRouteCrossConnectionListResult extends Array<ExpressRouteCrossConnection> {
   readonly nextLink?: string;
@@ -10227,7 +10335,7 @@ export interface ExpressRouteCrossConnectionListResult extends Array<ExpressRout
  * Response for ListPeering API service call retrieves all peerings that belong
  * to an ExpressRouteCrossConnection.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface ExpressRouteCrossConnectionPeeringList extends Array<ExpressRouteCrossConnectionPeering> {
   readonly nextLink?: string;
@@ -10241,7 +10349,7 @@ export interface ExpressRouteCrossConnectionPeeringList extends Array<ExpressRou
  *
  * Response for ListExpressRoutePortsLocations API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface ExpressRoutePortsLocationListResult extends Array<ExpressRoutePortsLocation> {
   nextLink?: string;
@@ -10255,7 +10363,7 @@ export interface ExpressRoutePortsLocationListResult extends Array<ExpressRouteP
  *
  * Response for ListExpressRoutePorts API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface ExpressRoutePortListResult extends Array<ExpressRoutePort> {
   nextLink?: string;
@@ -10269,7 +10377,7 @@ export interface ExpressRoutePortListResult extends Array<ExpressRoutePort> {
  *
  * Response for ListExpressRouteLinks API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface ExpressRouteLinkListResult extends Array<ExpressRouteLink> {
   nextLink?: string;
@@ -10281,7 +10389,7 @@ export interface ExpressRouteLinkListResult extends Array<ExpressRouteLink> {
  * @constructor
  * Response for the ListInterfaceEndpoints API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface InterfaceEndpointListResult extends Array<InterfaceEndpoint> {
   readonly nextLink?: string;
@@ -10293,7 +10401,7 @@ export interface InterfaceEndpointListResult extends Array<InterfaceEndpoint> {
  * @constructor
  * Response for ListLoadBalancers API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface LoadBalancerListResult extends Array<LoadBalancer> {
   readonly nextLink?: string;
@@ -10305,7 +10413,7 @@ export interface LoadBalancerListResult extends Array<LoadBalancer> {
  * @constructor
  * Response for ListBackendAddressPool API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface LoadBalancerBackendAddressPoolListResult extends Array<BackendAddressPool> {
   readonly nextLink?: string;
@@ -10317,7 +10425,7 @@ export interface LoadBalancerBackendAddressPoolListResult extends Array<BackendA
  * @constructor
  * Response for ListFrontendIPConfiguration API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface LoadBalancerFrontendIPConfigurationListResult extends Array<FrontendIPConfiguration> {
   readonly nextLink?: string;
@@ -10329,7 +10437,7 @@ export interface LoadBalancerFrontendIPConfigurationListResult extends Array<Fro
  * @constructor
  * Response for ListInboundNatRule API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface InboundNatRuleListResult extends Array<InboundNatRule> {
   readonly nextLink?: string;
@@ -10341,7 +10449,7 @@ export interface InboundNatRuleListResult extends Array<InboundNatRule> {
  * @constructor
  * Response for ListLoadBalancingRule API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface LoadBalancerLoadBalancingRuleListResult extends Array<LoadBalancingRule> {
   readonly nextLink?: string;
@@ -10353,7 +10461,7 @@ export interface LoadBalancerLoadBalancingRuleListResult extends Array<LoadBalan
  * @constructor
  * Response for ListOutboundRule API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface LoadBalancerOutboundRuleListResult extends Array<OutboundRule> {
   readonly nextLink?: string;
@@ -10365,7 +10473,7 @@ export interface LoadBalancerOutboundRuleListResult extends Array<OutboundRule> 
  * @constructor
  * Response for the ListNetworkInterface API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface NetworkInterfaceListResult extends Array<NetworkInterface> {
   readonly nextLink?: string;
@@ -10377,7 +10485,7 @@ export interface NetworkInterfaceListResult extends Array<NetworkInterface> {
  * @constructor
  * Response for ListProbe API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface LoadBalancerProbeListResult extends Array<Probe> {
   readonly nextLink?: string;
@@ -10389,7 +10497,7 @@ export interface LoadBalancerProbeListResult extends Array<Probe> {
  * @constructor
  * Response for list ip configurations API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface NetworkInterfaceIPConfigurationListResult extends Array<NetworkInterfaceIPConfiguration> {
   readonly nextLink?: string;
@@ -10401,7 +10509,7 @@ export interface NetworkInterfaceIPConfigurationListResult extends Array<Network
  * @constructor
  * Response for list ip configurations API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface NetworkInterfaceLoadBalancerListResult extends Array<LoadBalancer> {
   readonly nextLink?: string;
@@ -10413,7 +10521,7 @@ export interface NetworkInterfaceLoadBalancerListResult extends Array<LoadBalanc
  * @constructor
  * Response for list tap configurations API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface NetworkInterfaceTapConfigurationListResult extends Array<NetworkInterfaceTapConfiguration> {
   readonly nextLink?: string;
@@ -10425,7 +10533,7 @@ export interface NetworkInterfaceTapConfigurationListResult extends Array<Networ
  * @constructor
  * Response for ListNetworkProfiles API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface NetworkProfileListResult extends Array<NetworkProfile> {
   nextLink?: string;
@@ -10437,7 +10545,7 @@ export interface NetworkProfileListResult extends Array<NetworkProfile> {
  * @constructor
  * Response for ListNetworkSecurityGroups API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface NetworkSecurityGroupListResult extends Array<NetworkSecurityGroup> {
   nextLink?: string;
@@ -10450,7 +10558,7 @@ export interface NetworkSecurityGroupListResult extends Array<NetworkSecurityGro
  * Response for ListSecurityRule API service call. Retrieves all security rules
  * that belongs to a network security group.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface SecurityRuleListResult extends Array<SecurityRule> {
   nextLink?: string;
@@ -10493,7 +10601,7 @@ export interface ConnectionMonitorListResult extends Array<ConnectionMonitorResu
  * Result of the request to list Network operations. It contains a list of
  * operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {
@@ -10506,7 +10614,7 @@ export interface OperationListResult extends Array<Operation> {
  * @constructor
  * Response for ListPublicIpAddresses API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface PublicIPAddressListResult extends Array<PublicIPAddress> {
   nextLink?: string;
@@ -10518,7 +10626,7 @@ export interface PublicIPAddressListResult extends Array<PublicIPAddress> {
  * @constructor
  * Response for ListPublicIpPrefixes API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface PublicIPPrefixListResult extends Array<PublicIPPrefix> {
   nextLink?: string;
@@ -10530,7 +10638,7 @@ export interface PublicIPPrefixListResult extends Array<PublicIPPrefix> {
  * @constructor
  * Response for the ListRouteFilters API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface RouteFilterListResult extends Array<RouteFilter> {
   nextLink?: string;
@@ -10542,7 +10650,7 @@ export interface RouteFilterListResult extends Array<RouteFilter> {
  * @constructor
  * Response for the ListRouteFilterRules API service call
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface RouteFilterRuleListResult extends Array<RouteFilterRule> {
   nextLink?: string;
@@ -10554,7 +10662,7 @@ export interface RouteFilterRuleListResult extends Array<RouteFilterRule> {
  * @constructor
  * Response for the ListRouteTable API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface RouteTableListResult extends Array<RouteTable> {
   nextLink?: string;
@@ -10566,7 +10674,7 @@ export interface RouteTableListResult extends Array<RouteTable> {
  * @constructor
  * Response for the ListRoute API service call
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface RouteListResult extends Array<Route> {
   nextLink?: string;
@@ -10578,7 +10686,7 @@ export interface RouteListResult extends Array<Route> {
  * @constructor
  * Response for the ListServiceCommunity API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface BgpServiceCommunityListResult extends Array<BgpServiceCommunity> {
   nextLink?: string;
@@ -10590,7 +10698,7 @@ export interface BgpServiceCommunityListResult extends Array<BgpServiceCommunity
  * @constructor
  * Response for ListServiceEndpointPolicies API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface ServiceEndpointPolicyListResult extends Array<ServiceEndpointPolicy> {
   readonly nextLink?: string;
@@ -10604,7 +10712,7 @@ export interface ServiceEndpointPolicyListResult extends Array<ServiceEndpointPo
  * all service endpoint policy definition that belongs to a service endpoint
  * policy.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface ServiceEndpointPolicyDefinitionListResult extends Array<ServiceEndpointPolicyDefinition> {
   nextLink?: string;
@@ -10616,7 +10724,7 @@ export interface ServiceEndpointPolicyDefinitionListResult extends Array<Service
  * @constructor
  * The list usages operation response.
  *
- * @member {string} [nextLink] URL to get the next set of results.
+ * @property {string} [nextLink] URL to get the next set of results.
  */
 export interface UsagesListResult extends Array<Usage> {
   nextLink?: string;
@@ -10628,7 +10736,7 @@ export interface UsagesListResult extends Array<Usage> {
  * @constructor
  * Response for the ListVirtualNetworks API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface VirtualNetworkListResult extends Array<VirtualNetwork> {
   nextLink?: string;
@@ -10640,7 +10748,7 @@ export interface VirtualNetworkListResult extends Array<VirtualNetwork> {
  * @constructor
  * Response for the virtual networks GetUsage API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface VirtualNetworkListUsageResult extends Array<VirtualNetworkUsage> {
   nextLink?: string;
@@ -10653,7 +10761,7 @@ export interface VirtualNetworkListUsageResult extends Array<VirtualNetworkUsage
  * Response for ListSubnets API service callRetrieves all subnet that belongs
  * to a virtual network
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface SubnetListResult extends Array<Subnet> {
   nextLink?: string;
@@ -10666,7 +10774,7 @@ export interface SubnetListResult extends Array<Subnet> {
  * Response for ListSubnets API service call. Retrieves all subnets that belong
  * to a virtual network.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface VirtualNetworkPeeringListResult extends Array<VirtualNetworkPeering> {
   nextLink?: string;
@@ -10678,7 +10786,7 @@ export interface VirtualNetworkPeeringListResult extends Array<VirtualNetworkPee
  * @constructor
  * Response for ListVirtualNetworkTap API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface VirtualNetworkTapListResult extends Array<VirtualNetworkTap> {
   nextLink?: string;
@@ -10690,7 +10798,7 @@ export interface VirtualNetworkTapListResult extends Array<VirtualNetworkTap> {
  * @constructor
  * Response for the ListVirtualNetworkGateways API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface VirtualNetworkGatewayListResult extends Array<VirtualNetworkGateway> {
   readonly nextLink?: string;
@@ -10702,7 +10810,7 @@ export interface VirtualNetworkGatewayListResult extends Array<VirtualNetworkGat
  * @constructor
  * Response for the VirtualNetworkGatewayListConnections API service call
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface VirtualNetworkGatewayListConnectionsResult extends Array<VirtualNetworkGatewayConnectionListEntity> {
   readonly nextLink?: string;
@@ -10714,7 +10822,7 @@ export interface VirtualNetworkGatewayListConnectionsResult extends Array<Virtua
  * @constructor
  * Response for the ListVirtualNetworkGatewayConnections API service call
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface VirtualNetworkGatewayConnectionListResult extends Array<VirtualNetworkGatewayConnection> {
   readonly nextLink?: string;
@@ -10726,7 +10834,7 @@ export interface VirtualNetworkGatewayConnectionListResult extends Array<Virtual
  * @constructor
  * Response for ListLocalNetworkGateways API service call.
  *
- * @member {string} [nextLink] The URL to get the next set of results.
+ * @property {string} [nextLink] The URL to get the next set of results.
  */
 export interface LocalNetworkGatewayListResult extends Array<LocalNetworkGateway> {
   readonly nextLink?: string;
@@ -10739,7 +10847,7 @@ export interface LocalNetworkGatewayListResult extends Array<LocalNetworkGateway
  * Result of the request to list VirtualWANs. It contains a list of VirtualWANs
  * and a URL nextLink to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface ListVirtualWANsResult extends Array<VirtualWAN> {
@@ -10753,7 +10861,7 @@ export interface ListVirtualWANsResult extends Array<VirtualWAN> {
  * Result of the request to list VpnSites. It contains a list of VpnSites and a
  * URL nextLink to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface ListVpnSitesResult extends Array<VpnSite> {
@@ -10767,7 +10875,7 @@ export interface ListVpnSitesResult extends Array<VpnSite> {
  * Result of the request to list VirtualHubs. It contains a list of VirtualHubs
  * and a URL nextLink to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface ListVirtualHubsResult extends Array<VirtualHub> {
@@ -10781,7 +10889,7 @@ export interface ListVirtualHubsResult extends Array<VirtualHub> {
  * List of HubVirtualNetworkConnections and a URL nextLink to get the next set
  * of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface ListHubVirtualNetworkConnectionsResult extends Array<HubVirtualNetworkConnection> {
@@ -10795,7 +10903,7 @@ export interface ListHubVirtualNetworkConnectionsResult extends Array<HubVirtual
  * Result of the request to list VpnGateways. It contains a list of VpnGateways
  * and a URL nextLink to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface ListVpnGatewaysResult extends Array<VpnGateway> {
@@ -10810,7 +10918,7 @@ export interface ListVpnGatewaysResult extends Array<VpnGateway> {
  * gateway. It contains a list of Vpn Connections and a URL nextLink to get the
  * next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface ListVpnConnectionsResult extends Array<VpnConnection> {
@@ -10825,7 +10933,7 @@ export interface ListVpnConnectionsResult extends Array<VpnConnection> {
  * VirtualWan. It contains a list of P2SVpnServerConfigurations and a URL
  * nextLink to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface ListP2SVpnServerConfigurationsResult extends Array<P2SVpnServerConfiguration> {
@@ -10839,7 +10947,7 @@ export interface ListP2SVpnServerConfigurationsResult extends Array<P2SVpnServer
  * Result of the request to list P2SVpnGateways. It contains a list of
  * P2SVpnGateways and a URL nextLink to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface ListP2SVpnGatewaysResult extends Array<P2SVpnGateway> {
