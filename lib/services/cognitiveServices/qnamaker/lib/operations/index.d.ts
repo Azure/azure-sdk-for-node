@@ -14,11 +14,11 @@ import * as models from '../models';
 
 /**
  * @class
- * Endpoint
+ * EndpointKeys
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the QnAMakerClient.
  */
-export interface Endpoint {
+export interface EndpointKeys {
 
 
     /**

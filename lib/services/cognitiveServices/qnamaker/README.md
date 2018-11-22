@@ -19,7 +19,7 @@ npm install azure-cognitiveservices-qnamaker
 
 ### How to use
 
-#### Authentication, client creation and getKeys endpoint as an example.
+#### Authentication, client creation and getKeys endpointKeys as an example.
 
 ```javascript
 const msRest = require("ms-rest");
@@ -28,7 +28,7 @@ const token = "<access_token>";
 const creds = new msRest.TokenCredentials(token);
 const subscriptionId = "<Subscription_Id>";
 const client = new QnAMakerClient(creds, subscriptionId);
-client.endpoint.getKeys().then((result) => {
+client.endpointKeys.getKeys().then((result) => {
   console.log("The result is:");
   console.log(result);
 }).catch((err) => {
