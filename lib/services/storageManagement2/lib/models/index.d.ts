@@ -38,7 +38,7 @@ export interface OperationDisplay {
 }
 
 /**
- * Dimension of blobs, possiblly be blob type or access tier.
+ * Dimension of blobs, possibly be blob type or access tier.
  */
 export interface Dimension {
   /**
@@ -126,7 +126,7 @@ export interface Operation {
 }
 
 /**
- * The parameters used to check the availabity of the storage account name.
+ * The parameters used to check the availability of the storage account name.
  */
 export interface StorageAccountCheckNameAvailabilityParameters {
   /**
@@ -136,13 +136,13 @@ export interface StorageAccountCheckNameAvailabilityParameters {
 }
 
 /**
- * The capability information in the specified sku, including file encryption, network acls, change
+ * The capability information in the specified SKU, including file encryption, network ACLs, change
  * notification, etc.
  */
 export interface SKUCapability {
   /**
-   * The name of capability, The capability information in the specified sku, including file
-   * encryption, network acls, change notification, etc.
+   * The name of capability, The capability information in the specified SKU, including file
+   * encryption, network ACLs, change notification, etc.
    */
   readonly name?: string;
   /**
@@ -178,13 +178,13 @@ export interface Restriction {
  */
 export interface Sku {
   /**
-   * Gets or sets the sku name. Required for account creation; optional for update. Note that in
-   * older versions, sku name was called accountType. Possible values include: 'Standard_LRS',
+   * Gets or sets the SKU name. Required for account creation; optional for update. Note that in
+   * older versions, SKU name was called accountType. Possible values include: 'Standard_LRS',
    * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS', 'Premium_ZRS'
    */
   name: string;
   /**
-   * Gets the sku tier. This is based on the SKU name. Possible values include: 'Standard',
+   * Gets the SKU tier. This is based on the SKU name. Possible values include: 'Standard',
    * 'Premium'
    */
   readonly tier?: string;
@@ -203,7 +203,7 @@ export interface Sku {
    */
   readonly locations?: string[];
   /**
-   * The capability information in the specified sku, including file encryption, network acls,
+   * The capability information in the specified SKU, including file encryption, network ACLs,
    * change notification, etc.
    */
   readonly capabilities?: SKUCapability[];
@@ -404,7 +404,7 @@ export interface Identity {
  */
 export interface StorageAccountCreateParameters {
   /**
-   * Required. Gets or sets the sku name.
+   * Required. Gets or sets the SKU name.
    */
   sku: Sku;
   /**
@@ -687,7 +687,7 @@ export interface StorageAccountListKeysResult {
 */
 export interface StorageAccountRegenerateKeyParameters {
   /**
-   * The name of storage keys that want to be regenerated, possible vaules are key1, key2.
+   * The name of storage keys that want to be regenerated, possible values are key1, key2.
   */
   keyName: string;
 }
@@ -698,7 +698,7 @@ export interface StorageAccountRegenerateKeyParameters {
 export interface StorageAccountUpdateParameters {
   /**
    * Gets or sets the SKU name. Note that the SKU name cannot be updated to Standard_ZRS,
-   * Premium_LRS or Premium_ZRS, nor can accounts of those sku names be updated to any other value.
+   * Premium_LRS or Premium_ZRS, nor can accounts of those SKU names be updated to any other value.
   */
   sku?: Sku;
   /**
@@ -840,7 +840,7 @@ export interface ListAccountSasResponse {
 }
 
 /**
- * The parameters to list service SAS credentials of a speicific resource.
+ * The parameters to list service SAS credentials of a specific resource.
 */
 export interface ServiceSasParameters {
   /**
@@ -927,7 +927,7 @@ export interface ServiceSasParameters {
 */
 export interface ListServiceSasResponse {
   /**
-   * List service SAS credentials of speicific resource.
+   * List service SAS credentials of specific resource.
   */
   readonly serviceSasToken?: string;
 }

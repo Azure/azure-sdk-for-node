@@ -216,10 +216,10 @@ export interface StorageAccounts {
      * @param {object} parameters The parameters to provide for the created
      * account.
      *
-     * @param {object} parameters.sku Required. Gets or sets the sku name.
+     * @param {object} parameters.sku Required. Gets or sets the SKU name.
      *
-     * @param {string} parameters.sku.name Gets or sets the sku name. Required for
-     * account creation; optional for update. Note that in older versions, sku name
+     * @param {string} parameters.sku.name Gets or sets the SKU name. Required for
+     * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
      * 'Premium_ZRS'
@@ -350,10 +350,10 @@ export interface StorageAccounts {
      * @param {object} parameters The parameters to provide for the created
      * account.
      *
-     * @param {object} parameters.sku Required. Gets or sets the sku name.
+     * @param {object} parameters.sku Required. Gets or sets the SKU name.
      *
-     * @param {string} parameters.sku.name Gets or sets the sku name. Required for
-     * account creation; optional for update. Note that in older versions, sku name
+     * @param {string} parameters.sku.name Gets or sets the SKU name. Required for
+     * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
      * 'Premium_ZRS'
@@ -565,7 +565,7 @@ export interface StorageAccounts {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.expand] May be used to expand the properties within
-     * account's properties. By default, data is not included when fecthing
+     * account's properties. By default, data is not included when fetching
      * properties. Currently we only support geoReplicationStats. Possible values
      * include: 'geoReplicationStats'
      *
@@ -595,7 +595,7 @@ export interface StorageAccounts {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.expand] May be used to expand the properties within
-     * account's properties. By default, data is not included when fecthing
+     * account's properties. By default, data is not included when fetching
      * properties. Currently we only support geoReplicationStats. Possible values
      * include: 'geoReplicationStats'
      *
@@ -652,10 +652,10 @@ export interface StorageAccounts {
      *
      * @param {object} [parameters.sku] Gets or sets the SKU name. Note that the
      * SKU name cannot be updated to Standard_ZRS, Premium_LRS or Premium_ZRS, nor
-     * can accounts of those sku names be updated to any other value.
+     * can accounts of those SKU names be updated to any other value.
      *
-     * @param {string} parameters.sku.name Gets or sets the sku name. Required for
-     * account creation; optional for update. Note that in older versions, sku name
+     * @param {string} parameters.sku.name Gets or sets the SKU name. Required for
+     * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
      * 'Premium_ZRS'
@@ -783,10 +783,10 @@ export interface StorageAccounts {
      *
      * @param {object} [parameters.sku] Gets or sets the SKU name. Note that the
      * SKU name cannot be updated to Standard_ZRS, Premium_LRS or Premium_ZRS, nor
-     * can accounts of those sku names be updated to any other value.
+     * can accounts of those SKU names be updated to any other value.
      *
-     * @param {string} parameters.sku.name Gets or sets the sku name. Required for
-     * account creation; optional for update. Note that in older versions, sku name
+     * @param {string} parameters.sku.name Gets or sets the SKU name. Required for
+     * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
      * 'Premium_ZRS'
@@ -1103,7 +1103,7 @@ export interface StorageAccounts {
      * characters in length and use numbers and lower-case letters only.
      *
      * @param {string} keyName The name of storage keys that want to be
-     * regenerated, possible vaules are key1, key2.
+     * regenerated, possible values are key1, key2.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1129,7 +1129,7 @@ export interface StorageAccounts {
      * characters in length and use numbers and lower-case letters only.
      *
      * @param {string} keyName The name of storage keys that want to be
-     * regenerated, possible vaules are key1, key2.
+     * regenerated, possible values are key1, key2.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1563,10 +1563,10 @@ export interface StorageAccounts {
      * @param {object} parameters The parameters to provide for the created
      * account.
      *
-     * @param {object} parameters.sku Required. Gets or sets the sku name.
+     * @param {object} parameters.sku Required. Gets or sets the SKU name.
      *
-     * @param {string} parameters.sku.name Gets or sets the sku name. Required for
-     * account creation; optional for update. Note that in older versions, sku name
+     * @param {string} parameters.sku.name Gets or sets the SKU name. Required for
+     * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
      * 'Premium_ZRS'
@@ -1697,10 +1697,10 @@ export interface StorageAccounts {
      * @param {object} parameters The parameters to provide for the created
      * account.
      *
-     * @param {object} parameters.sku Required. Gets or sets the sku name.
+     * @param {object} parameters.sku Required. Gets or sets the SKU name.
      *
-     * @param {string} parameters.sku.name Gets or sets the sku name. Required for
-     * account creation; optional for update. Note that in older versions, sku name
+     * @param {string} parameters.sku.name Gets or sets the SKU name. Required for
+     * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
      * 'Premium_ZRS'
