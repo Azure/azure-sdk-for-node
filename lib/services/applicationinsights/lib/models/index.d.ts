@@ -279,7 +279,7 @@ export interface ApplicationInsightsComponentExportConfiguration {
  * @class
  * Initializes a new instance of the ApplicationInsightsComponentDataVolumeCap class.
  * @constructor
- * An Application Insights component daily data volumne cap
+ * An Application Insights component daily data volume cap
  *
  * @member {number} [cap] Daily data volume cap in GB.
  * @member {number} [resetTime] Daily data volume cap UTC reset hour.
@@ -307,7 +307,7 @@ export interface ApplicationInsightsComponentDataVolumeCap {
  * An Application Insights component billing features
  *
  * @member {object} [dataVolumeCap] An Application Insights component daily
- * data volumne cap
+ * data volume cap
  * @member {number} [dataVolumeCap.cap] Daily data volume cap in GB.
  * @member {number} [dataVolumeCap.resetTime] Daily data volume cap UTC reset
  * hour.
@@ -368,7 +368,7 @@ export interface ApplicationInsightsComponentQuotaStatus {
  * @member {boolean} [multipleStepWebTest] Whether allow to use multiple steps
  * web test feature.
  * @member {string} [apiAccessLevel] Reserved, not used now.
- * @member {string} [trackingType] The applciation insights component used
+ * @member {string} [trackingType] The application insights component used
  * tracking type.
  * @member {number} [dailyCap] Daily data volume cap in GB.
  * @member {number} [dailyCapResetTime] Daily data volume cap UTC reset hour.
@@ -401,7 +401,7 @@ export interface ApplicationInsightsComponentFeatureCapabilities {
  *
  * @member {string} [name] The name of the capability.
  * @member {string} [description] The description of the capability.
- * @member {string} [value] The vaule of the capability.
+ * @member {string} [value] The value of the capability.
  * @member {string} [unit] The unit of the capability.
  * @member {string} [meterId] The meter used for the capability.
  * @member {string} [meterRateFrequency] The meter rate of the meter.
@@ -423,13 +423,13 @@ export interface ApplicationInsightsComponentFeatureCapability {
  *
  * @member {string} [featureName] The pricing feature name.
  * @member {string} [meterId] The meter id used for the feature.
- * @member {string} [meterRateFrequency] The meter meter rate for the feature's
+ * @member {string} [meterRateFrequency] The meter rate for the feature's
  * meter.
  * @member {string} [resouceId] Reserved, not used now.
  * @member {boolean} [isHidden] Reserved, not used now.
- * @member {array} [capabilities] A list of Application Insigths component
+ * @member {array} [capabilities] A list of Application Insights component
  * feature capability.
- * @member {string} [title] Desplay name of the feature.
+ * @member {string} [title] Display name of the feature.
  * @member {boolean} [isMainFeature] Whether can apply addon feature on to it.
  * @member {string} [supportedAddonFeatures] The add on features on main
  * feature.
@@ -452,7 +452,7 @@ export interface ApplicationInsightsComponentFeature {
  * @constructor
  * An Application Insights component available features.
  *
- * @member {array} [result] A list of Application Insigths component feature.
+ * @member {array} [result] A list of Application Insights component feature.
  */
 export interface ApplicationInsightsComponentAvailableFeatures {
   readonly result?: ApplicationInsightsComponentFeature[];
@@ -634,11 +634,14 @@ export interface ApplicationInsightsComponent extends ComponentsResource {
  * @member {object} [value] the value for the operator to function over. This
  * can be a number (e.g., > 100), a string (timestamp >= '2017-09-01') or array
  * of values.
+ * @member {string} [key] When filtering over custom dimensions, this key will
+ * be used as the name of the custom dimension.
  */
 export interface ComponentPurgeBodyFilters {
   column?: string;
   operator?: string;
   value?: any;
+  key?: string;
 }
 
 /**

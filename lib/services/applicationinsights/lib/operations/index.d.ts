@@ -1276,7 +1276,7 @@ export interface ComponentCurrentBillingFeatures {
      * specified to update billing features for an Application Insights component.
      *
      * @param {object} [billingFeaturesProperties.dataVolumeCap] An Application
-     * Insights component daily data volumne cap
+     * Insights component daily data volume cap
      *
      * @param {number} [billingFeaturesProperties.dataVolumeCap.cap] Daily data
      * volume cap in GB.
@@ -1321,7 +1321,7 @@ export interface ComponentCurrentBillingFeatures {
      * specified to update billing features for an Application Insights component.
      *
      * @param {object} [billingFeaturesProperties.dataVolumeCap] An Application
-     * Insights component daily data volumne cap
+     * Insights component daily data volume cap
      *
      * @param {number} [billingFeaturesProperties.dataVolumeCap.cap] Daily data
      * volume cap in GB.
@@ -1457,7 +1457,7 @@ export interface ComponentFeatureCapabilities {
 
 
     /**
-     * Returns feature capabilites of the application insights component.
+     * Returns feature capabilities of the application insights component.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1478,7 +1478,7 @@ export interface ComponentFeatureCapabilities {
     getWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentFeatureCapabilities>>;
 
     /**
-     * Returns feature capabilites of the application insights component.
+     * Returns feature capabilities of the application insights component.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
