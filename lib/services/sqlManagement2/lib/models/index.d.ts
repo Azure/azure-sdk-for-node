@@ -22,9 +22,9 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * ARM resource.
  *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
+ * @property {string} [id] Resource ID.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -48,11 +48,11 @@ export interface ProxyResource extends Resource {
  * @constructor
  * A recoverable database
  *
- * @member {string} [edition] The edition of the database
- * @member {string} [serviceLevelObjective] The service level objective name of
- * the database
- * @member {string} [elasticPoolName] The elastic pool name of the database
- * @member {date} [lastAvailableBackupDate] The last available backup date of
+ * @property {string} [edition] The edition of the database
+ * @property {string} [serviceLevelObjective] The service level objective name
+ * of the database
+ * @property {string} [elasticPoolName] The elastic pool name of the database
+ * @property {date} [lastAvailableBackupDate] The last available backup date of
  * the database (ISO8601 format)
  */
 export interface RecoverableDatabase extends ProxyResource {
@@ -68,18 +68,18 @@ export interface RecoverableDatabase extends ProxyResource {
  * @constructor
  * A restorable dropped database
  *
- * @member {string} [location] The geo-location where the resource lives
- * @member {string} [databaseName] The name of the database
- * @member {string} [edition] The edition of the database
- * @member {string} [maxSizeBytes] The max size in bytes of the database
- * @member {string} [serviceLevelObjective] The service level objective name of
- * the database
- * @member {string} [elasticPoolName] The elastic pool name of the database
- * @member {date} [creationDate] The creation date of the database (ISO8601
+ * @property {string} [location] The geo-location where the resource lives
+ * @property {string} [databaseName] The name of the database
+ * @property {string} [edition] The edition of the database
+ * @property {string} [maxSizeBytes] The max size in bytes of the database
+ * @property {string} [serviceLevelObjective] The service level objective name
+ * of the database
+ * @property {string} [elasticPoolName] The elastic pool name of the database
+ * @property {date} [creationDate] The creation date of the database (ISO8601
  * format)
- * @member {date} [deletionDate] The deletion date of the database (ISO8601
+ * @property {date} [deletionDate] The deletion date of the database (ISO8601
  * format)
- * @member {date} [earliestRestoreDate] The earliest restore date of the
+ * @property {date} [earliestRestoreDate] The earliest restore date of the
  * database (ISO8601 format)
  */
 export interface RestorableDroppedDatabase extends ProxyResource {
@@ -100,8 +100,8 @@ export interface RestorableDroppedDatabase extends ProxyResource {
  * @constructor
  * ARM tracked top level resource.
  *
- * @member {string} location Resource location.
- * @member {object} [tags] Resource tags.
+ * @property {string} location Resource location.
+ * @property {object} [tags] Resource tags.
  */
 export interface TrackedResource extends Resource {
   location: string;
@@ -114,7 +114,7 @@ export interface TrackedResource extends Resource {
  * @constructor
  * A request to check whether the specified name for a resource is available.
  *
- * @member {string} name The name whose availability is to be checked.
+ * @property {string} name The name whose availability is to be checked.
  */
 export interface CheckNameAvailabilityRequest {
   name: string;
@@ -127,12 +127,12 @@ export interface CheckNameAvailabilityRequest {
  * A response indicating whether the specified name for a resource is
  * available.
  *
- * @member {boolean} [available] True if the name is available, otherwise
+ * @property {boolean} [available] True if the name is available, otherwise
  * false.
- * @member {string} [message] A message explaining why the name is unavailable.
- * Will be null if the name is available.
- * @member {string} [name] The name whose availability was checked.
- * @member {string} [reason] The reason code explaining why the name is
+ * @property {string} [message] A message explaining why the name is
+ * unavailable. Will be null if the name is available.
+ * @property {string} [name] The name whose availability was checked.
+ * @property {string} [reason] The reason code explaining why the name is
  * unavailable. Will be null if the name is available. Possible values include:
  * 'Invalid', 'AlreadyExists'
  */
@@ -149,10 +149,10 @@ export interface CheckNameAvailabilityResponse {
  * @constructor
  * A server secure connection policy.
  *
- * @member {string} [kind] Metadata used for the Azure portal experience.
- * @member {string} [location] Resource location.
- * @member {string} connectionType The server connection type. Possible values
- * include: 'Default', 'Proxy', 'Redirect'
+ * @property {string} [kind] Metadata used for the Azure portal experience.
+ * @property {string} [location] Resource location.
+ * @property {string} connectionType The server connection type. Possible
+ * values include: 'Default', 'Proxy', 'Redirect'
  */
 export interface ServerConnectionPolicy extends ProxyResource {
   readonly kind?: string;
@@ -166,29 +166,29 @@ export interface ServerConnectionPolicy extends ProxyResource {
  * @constructor
  * Contains information about a database Threat Detection policy.
  *
- * @member {string} [location] The geo-location where the resource lives
- * @member {string} [kind] Resource kind.
- * @member {string} state Specifies the state of the policy. If state is
+ * @property {string} [location] The geo-location where the resource lives
+ * @property {string} [kind] Resource kind.
+ * @property {string} state Specifies the state of the policy. If state is
  * Enabled, storageEndpoint and storageAccountAccessKey are required. Possible
  * values include: 'New', 'Enabled', 'Disabled'
- * @member {string} [disabledAlerts] Specifies the semicolon-separated list of
- * alerts that are disabled, or empty string to disable no alerts. Possible
+ * @property {string} [disabledAlerts] Specifies the semicolon-separated list
+ * of alerts that are disabled, or empty string to disable no alerts. Possible
  * values: Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly;
  * Data_Exfiltration; Unsafe_Action.
- * @member {string} [emailAddresses] Specifies the semicolon-separated list of
- * e-mail addresses to which the alert is sent.
- * @member {string} [emailAccountAdmins] Specifies that the alert is sent to
+ * @property {string} [emailAddresses] Specifies the semicolon-separated list
+ * of e-mail addresses to which the alert is sent.
+ * @property {string} [emailAccountAdmins] Specifies that the alert is sent to
  * the account administrators. Possible values include: 'Enabled', 'Disabled'
- * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
- * https://MyAccount.blob.core.windows.net). This blob storage will hold all
- * Threat Detection audit logs. If state is Enabled, storageEndpoint is
+ * @property {string} [storageEndpoint] Specifies the blob storage endpoint
+ * (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold
+ * all Threat Detection audit logs. If state is Enabled, storageEndpoint is
  * required.
- * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * @property {string} [storageAccountAccessKey] Specifies the identifier key of
  * the Threat Detection audit storage account. If state is Enabled,
  * storageAccountAccessKey is required.
- * @member {number} [retentionDays] Specifies the number of days to keep in the
- * Threat Detection audit logs.
- * @member {string} [useServerDefault] Specifies whether to use the default
+ * @property {number} [retentionDays] Specifies the number of days to keep in
+ * the Threat Detection audit logs.
+ * @property {string} [useServerDefault] Specifies whether to use the default
  * server policy. Possible values include: 'Enabled', 'Disabled'
  */
 export interface DatabaseSecurityAlertPolicy extends ProxyResource {
@@ -210,19 +210,19 @@ export interface DatabaseSecurityAlertPolicy extends ProxyResource {
  * @constructor
  * Represents a database data masking policy.
  *
- * @member {string} dataMaskingState The state of the data masking policy.
+ * @property {string} dataMaskingState The state of the data masking policy.
  * Possible values include: 'Disabled', 'Enabled'
- * @member {string} [exemptPrincipals] The list of the exempt principals.
+ * @property {string} [exemptPrincipals] The list of the exempt principals.
  * Specifies the semicolon-separated list of database users for which the data
  * masking policy does not apply. The specified users receive data results
  * without masking for all of the database queries.
- * @member {string} [applicationPrincipals] The list of the application
+ * @property {string} [applicationPrincipals] The list of the application
  * principals. This is a legacy parameter and is no longer used.
- * @member {string} [maskingLevel] The masking level. This is a legacy
+ * @property {string} [maskingLevel] The masking level. This is a legacy
  * parameter and is no longer used.
- * @member {string} [location] The location of the data masking policy.
- * @member {string} [kind] The kind of data masking policy. Metadata, used for
- * Azure portal.
+ * @property {string} [location] The location of the data masking policy.
+ * @property {string} [kind] The kind of data masking policy. Metadata, used
+ * for Azure portal.
  */
 export interface DataMaskingPolicy extends ProxyResource {
   dataMaskingState: string;
@@ -239,41 +239,41 @@ export interface DataMaskingPolicy extends ProxyResource {
  * @constructor
  * Represents a database data masking rule.
  *
- * @member {string} [dataMaskingRuleId] The rule Id.
- * @member {string} [aliasName] The alias name. This is a legacy parameter and
- * is no longer used.
- * @member {string} [ruleState] The rule state. Used to delete a rule. To
+ * @property {string} [dataMaskingRuleId] The rule Id.
+ * @property {string} [aliasName] The alias name. This is a legacy parameter
+ * and is no longer used.
+ * @property {string} [ruleState] The rule state. Used to delete a rule. To
  * delete an existing rule, specify the schemaName, tableName, columnName,
  * maskingFunction, and specify ruleState as disabled. However, if the rule
  * doesn't already exist, the rule will be created with ruleState set to
  * enabled, regardless of the provided value of ruleState. Possible values
  * include: 'Disabled', 'Enabled'
- * @member {string} schemaName The schema name on which the data masking rule
+ * @property {string} schemaName The schema name on which the data masking rule
  * is applied.
- * @member {string} tableName The table name on which the data masking rule is
- * applied.
- * @member {string} columnName The column name on which the data masking rule
+ * @property {string} tableName The table name on which the data masking rule
  * is applied.
- * @member {string} maskingFunction The masking function that is used for the
+ * @property {string} columnName The column name on which the data masking rule
+ * is applied.
+ * @property {string} maskingFunction The masking function that is used for the
  * data masking rule. Possible values include: 'Default', 'CCN', 'Email',
  * 'Number', 'SSN', 'Text'
- * @member {string} [numberFrom] The numberFrom property of the masking rule.
+ * @property {string} [numberFrom] The numberFrom property of the masking rule.
  * Required if maskingFunction is set to Number, otherwise this parameter will
  * be ignored.
- * @member {string} [numberTo] The numberTo property of the data masking rule.
- * Required if maskingFunction is set to Number, otherwise this parameter will
- * be ignored.
- * @member {string} [prefixSize] If maskingFunction is set to Text, the number
- * of characters to show unmasked in the beginning of the string. Otherwise,
+ * @property {string} [numberTo] The numberTo property of the data masking
+ * rule. Required if maskingFunction is set to Number, otherwise this parameter
+ * will be ignored.
+ * @property {string} [prefixSize] If maskingFunction is set to Text, the
+ * number of characters to show unmasked in the beginning of the string.
+ * Otherwise, this parameter will be ignored.
+ * @property {string} [suffixSize] If maskingFunction is set to Text, the
+ * number of characters to show unmasked at the end of the string. Otherwise,
  * this parameter will be ignored.
- * @member {string} [suffixSize] If maskingFunction is set to Text, the number
- * of characters to show unmasked at the end of the string. Otherwise, this
- * parameter will be ignored.
- * @member {string} [replacementString] If maskingFunction is set to Text, the
- * character to use for masking the unexposed part of the string. Otherwise,
- * this parameter will be ignored.
- * @member {string} [location] The location of the data masking rule.
- * @member {string} [kind] The kind of Data Masking Rule. Metadata, used for
+ * @property {string} [replacementString] If maskingFunction is set to Text,
+ * the character to use for masking the unexposed part of the string.
+ * Otherwise, this parameter will be ignored.
+ * @property {string} [location] The location of the data masking rule.
+ * @property {string} [kind] The kind of Data Masking Rule. Metadata, used for
  * Azure portal.
  */
 export interface DataMaskingRule extends ProxyResource {
@@ -299,15 +299,15 @@ export interface DataMaskingRule extends ProxyResource {
  * @constructor
  * Represents a server firewall rule.
  *
- * @member {string} [kind] Kind of server that contains this firewall rule.
- * @member {string} [location] Location of the server that contains this
+ * @property {string} [kind] Kind of server that contains this firewall rule.
+ * @property {string} [location] Location of the server that contains this
  * firewall rule.
- * @member {string} startIpAddress The start IP address of the firewall rule.
+ * @property {string} startIpAddress The start IP address of the firewall rule.
  * Must be IPv4 format. Use value '0.0.0.0' to represent all Azure-internal IP
  * addresses.
- * @member {string} endIpAddress The end IP address of the firewall rule. Must
- * be IPv4 format. Must be greater than or equal to startIpAddress. Use value
- * '0.0.0.0' to represent all Azure-internal IP addresses.
+ * @property {string} endIpAddress The end IP address of the firewall rule.
+ * Must be IPv4 format. Must be greater than or equal to startIpAddress. Use
+ * value '0.0.0.0' to represent all Azure-internal IP addresses.
  */
 export interface FirewallRule extends ProxyResource {
   readonly kind?: string;
@@ -322,12 +322,12 @@ export interface FirewallRule extends ProxyResource {
  * @constructor
  * A database geo backup policy.
  *
- * @member {string} state The state of the geo backup policy. Possible values
+ * @property {string} state The state of the geo backup policy. Possible values
  * include: 'Disabled', 'Enabled'
- * @member {string} [storageType] The storage type of the geo backup policy.
- * @member {string} [kind] Kind of geo backup policy.  This is metadata used
+ * @property {string} [storageType] The storage type of the geo backup policy.
+ * @property {string} [kind] Kind of geo backup policy.  This is metadata used
  * for the Azure portal experience.
- * @member {string} [location] Backup policy location.
+ * @property {string} [location] Backup policy location.
  */
 export interface GeoBackupPolicy extends ProxyResource {
   state: string;
@@ -342,17 +342,17 @@ export interface GeoBackupPolicy extends ProxyResource {
  * @constructor
  * Import database parameters.
  *
- * @member {string} [name] The name of the extension.
- * @member {string} [type] The type of the extension.
- * @member {string} storageKeyType The type of the storage key to use. Possible
- * values include: 'StorageAccessKey', 'SharedAccessKey'
- * @member {string} storageKey The storage key to use.  If storage key type is
- * SharedAccessKey, it must be preceded with a "?."
- * @member {string} storageUri The storage uri to use.
- * @member {string} administratorLogin The name of the SQL administrator.
- * @member {string} administratorLoginPassword The password of the SQL
+ * @property {string} [name] The name of the extension.
+ * @property {string} [type] The type of the extension.
+ * @property {string} storageKeyType The type of the storage key to use.
+ * Possible values include: 'StorageAccessKey', 'SharedAccessKey'
+ * @property {string} storageKey The storage key to use.  If storage key type
+ * is SharedAccessKey, it must be preceded with a "?."
+ * @property {string} storageUri The storage uri to use.
+ * @property {string} administratorLogin The name of the SQL administrator.
+ * @property {string} administratorLoginPassword The password of the SQL
  * administrator.
- * @member {string} [authenticationType] The authentication type. Possible
+ * @property {string} [authenticationType] The authentication type. Possible
  * values include: 'SQL', 'ADPassword'. Default value: 'SQL' .
  */
 export interface ImportExtensionRequest {
@@ -372,15 +372,17 @@ export interface ImportExtensionRequest {
  * @constructor
  * Response for Import/Export Get operation.
  *
- * @member {string} [requestType] The request type of the operation.
- * @member {uuid} [requestId] The request type of the operation.
- * @member {string} [serverName] The name of the server.
- * @member {string} [databaseName] The name of the database.
- * @member {string} [status] The status message returned from the server.
- * @member {string} [lastModifiedTime] The operation status last modified time.
- * @member {string} [queuedTime] The operation queued time.
- * @member {string} [blobUri] The blob uri.
- * @member {string} [errorMessage] The error message returned from the server.
+ * @property {string} [requestType] The request type of the operation.
+ * @property {uuid} [requestId] The request type of the operation.
+ * @property {string} [serverName] The name of the server.
+ * @property {string} [databaseName] The name of the database.
+ * @property {string} [status] The status message returned from the server.
+ * @property {string} [lastModifiedTime] The operation status last modified
+ * time.
+ * @property {string} [queuedTime] The operation queued time.
+ * @property {string} [blobUri] The blob uri.
+ * @property {string} [errorMessage] The error message returned from the
+ * server.
  */
 export interface ImportExportResponse extends ProxyResource {
   readonly requestType?: string;
@@ -400,15 +402,15 @@ export interface ImportExportResponse extends ProxyResource {
  * @constructor
  * Export database parameters.
  *
- * @member {string} storageKeyType The type of the storage key to use. Possible
- * values include: 'StorageAccessKey', 'SharedAccessKey'
- * @member {string} storageKey The storage key to use.  If storage key type is
- * SharedAccessKey, it must be preceded with a "?."
- * @member {string} storageUri The storage uri to use.
- * @member {string} administratorLogin The name of the SQL administrator.
- * @member {string} administratorLoginPassword The password of the SQL
+ * @property {string} storageKeyType The type of the storage key to use.
+ * Possible values include: 'StorageAccessKey', 'SharedAccessKey'
+ * @property {string} storageKey The storage key to use.  If storage key type
+ * is SharedAccessKey, it must be preceded with a "?."
+ * @property {string} storageUri The storage uri to use.
+ * @property {string} administratorLogin The name of the SQL administrator.
+ * @property {string} administratorLoginPassword The password of the SQL
  * administrator.
- * @member {string} [authenticationType] The authentication type. Possible
+ * @property {string} [authenticationType] The authentication type. Possible
  * values include: 'SQL', 'ADPassword'. Default value: 'SQL' .
  */
 export interface ExportRequest {
@@ -426,11 +428,11 @@ export interface ExportRequest {
  * @constructor
  * Import database parameters.
  *
- * @member {string} databaseName The name of the database to import.
- * @member {string} edition The edition for the database being created.
+ * @property {string} databaseName The name of the database to import.
+ * @property {string} edition The edition for the database being created.
  * Possible values include: 'Web', 'Business', 'Basic', 'Standard', 'Premium',
  * 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System', 'System2'
- * @member {string} serviceObjectiveName The name of the service objective to
+ * @property {string} serviceObjectiveName The name of the service objective to
  * assign to the database. Possible values include: 'System', 'System0',
  * 'System1', 'System2', 'System3', 'System4', 'System2L', 'System3L',
  * 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6', 'S7', 'S9',
@@ -440,7 +442,7 @@ export interface ExportRequest {
  * 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c', 'DW7500c', 'DW10000c',
  * 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300', 'DS400', 'DS500',
  * 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000', 'ElasticPool'
- * @member {string} maxSizeBytes The maximum size for the newly imported
+ * @property {string} maxSizeBytes The maximum size for the newly imported
  * database.
  */
 export interface ImportRequest extends ExportRequest {
@@ -456,12 +458,12 @@ export interface ImportRequest extends ExportRequest {
  * @constructor
  * Represents database metrics.
  *
- * @member {number} [count] The number of values for the metric.
- * @member {number} [average] The average value of the metric.
- * @member {number} [maximum] The max value of the metric.
- * @member {number} [minimum] The min value of the metric.
- * @member {date} [timestamp] The metric timestamp (ISO-8601 format).
- * @member {number} [total] The total value of the metric.
+ * @property {number} [count] The number of values for the metric.
+ * @property {number} [average] The average value of the metric.
+ * @property {number} [maximum] The max value of the metric.
+ * @property {number} [minimum] The min value of the metric.
+ * @property {date} [timestamp] The metric timestamp (ISO-8601 format).
+ * @property {number} [total] The total value of the metric.
  */
 export interface MetricValue {
   readonly count?: number;
@@ -478,8 +480,9 @@ export interface MetricValue {
  * @constructor
  * A database metric name.
  *
- * @member {string} [value] The name of the database metric.
- * @member {string} [localizedValue] The friendly name of the database metric.
+ * @property {string} [value] The name of the database metric.
+ * @property {string} [localizedValue] The friendly name of the database
+ * metric.
  */
 export interface MetricName {
   readonly value?: string;
@@ -492,17 +495,18 @@ export interface MetricName {
  * @constructor
  * Database metrics.
  *
- * @member {date} [startTime] The start time for the metric (ISO-8601 format).
- * @member {date} [endTime] The end time for the metric (ISO-8601 format).
- * @member {string} [timeGrain] The time step to be used to summarize the
+ * @property {date} [startTime] The start time for the metric (ISO-8601
+ * format).
+ * @property {date} [endTime] The end time for the metric (ISO-8601 format).
+ * @property {string} [timeGrain] The time step to be used to summarize the
  * metric values.
- * @member {string} [unit] The unit of the metric. Possible values include:
+ * @property {string} [unit] The unit of the metric. Possible values include:
  * 'count', 'bytes', 'seconds', 'percent', 'countPerSecond', 'bytesPerSecond'
- * @member {object} [name] The name information for the metric.
- * @member {string} [name.value] The name of the database metric.
- * @member {string} [name.localizedValue] The friendly name of the database
+ * @property {object} [name] The name information for the metric.
+ * @property {string} [name.value] The name of the database metric.
+ * @property {string} [name.localizedValue] The friendly name of the database
  * metric.
- * @member {array} [metricValues] The metric values for the specified time
+ * @property {array} [metricValues] The metric values for the specified time
  * window and timestep.
  */
 export interface Metric {
@@ -520,9 +524,9 @@ export interface Metric {
  * @constructor
  * A metric availability value.
  *
- * @member {string} [retention] The length of retention for the database
+ * @property {string} [retention] The length of retention for the database
  * metric.
- * @member {string} [timeGrain] The granularity of the database metric.
+ * @property {string} [timeGrain] The granularity of the database metric.
  */
 export interface MetricAvailability {
   readonly retention?: string;
@@ -535,17 +539,17 @@ export interface MetricAvailability {
  * @constructor
  * A database metric definition.
  *
- * @member {object} [name] The name information for the metric.
- * @member {string} [name.value] The name of the database metric.
- * @member {string} [name.localizedValue] The friendly name of the database
+ * @property {object} [name] The name information for the metric.
+ * @property {string} [name.value] The name of the database metric.
+ * @property {string} [name.localizedValue] The friendly name of the database
  * metric.
- * @member {string} [primaryAggregationType] The primary aggregation type
+ * @property {string} [primaryAggregationType] The primary aggregation type
  * defining how metric values are displayed. Possible values include: 'None',
  * 'Average', 'Count', 'Minimum', 'Maximum', 'Total'
- * @member {string} [resourceUri] The resource uri of the database.
- * @member {string} [unit] The unit of the metric. Possible values include:
+ * @property {string} [resourceUri] The resource uri of the database.
+ * @property {string} [unit] The unit of the metric. Possible values include:
  * 'Count', 'Bytes', 'Seconds', 'Percent', 'CountPerSecond', 'BytesPerSecond'
- * @member {array} [metricAvailabilities] The list of database metric
+ * @property {array} [metricAvailabilities] The list of database metric
  * availabities for the metric.
  */
 export interface MetricDefinition {
@@ -562,11 +566,11 @@ export interface MetricDefinition {
  * @constructor
  * Represents recommended elastic pool metric.
  *
- * @member {date} [dateTime] The time of metric (ISO8601 format).
- * @member {number} [dtu] Gets or sets the DTUs (Database Transaction Units).
+ * @property {date} [dateTime] The time of metric (ISO8601 format).
+ * @property {number} [dtu] Gets or sets the DTUs (Database Transaction Units).
  * See
  * https://azure.microsoft.com/documentation/articles/sql-database-what-is-a-dtu/
- * @member {number} [sizeGB] Gets or sets size in gigabytes.
+ * @property {number} [sizeGB] Gets or sets size in gigabytes.
  */
 export interface RecommendedElasticPoolMetric {
   dateTime?: Date;
@@ -580,23 +584,23 @@ export interface RecommendedElasticPoolMetric {
  * @constructor
  * Represents a recommented elastic pool.
  *
- * @member {string} [databaseEdition] The edition of the recommended elastic
+ * @property {string} [databaseEdition] The edition of the recommended elastic
  * pool. The ElasticPoolEdition enumeration contains all the valid editions.
  * Possible values include: 'Basic', 'Standard', 'Premium'
- * @member {number} [dtu] The DTU for the recommended elastic pool.
- * @member {number} [databaseDtuMin] The minimum DTU for the database.
- * @member {number} [databaseDtuMax] The maximum DTU for the database.
- * @member {number} [storageMB] Gets storage size in megabytes.
- * @member {date} [observationPeriodStart] The observation period start
+ * @property {number} [dtu] The DTU for the recommended elastic pool.
+ * @property {number} [databaseDtuMin] The minimum DTU for the database.
+ * @property {number} [databaseDtuMax] The maximum DTU for the database.
+ * @property {number} [storageMB] Gets storage size in megabytes.
+ * @property {date} [observationPeriodStart] The observation period start
  * (ISO8601 format).
- * @member {date} [observationPeriodEnd] The observation period start (ISO8601
- * format).
- * @member {number} [maxObservedDtu] Gets maximum observed DTU.
- * @member {number} [maxObservedStorageMB] Gets maximum observed storage in
+ * @property {date} [observationPeriodEnd] The observation period start
+ * (ISO8601 format).
+ * @property {number} [maxObservedDtu] Gets maximum observed DTU.
+ * @property {number} [maxObservedStorageMB] Gets maximum observed storage in
  * megabytes.
- * @member {array} [databases] The list of databases in this pool. Expanded
+ * @property {array} [databases] The list of databases in this pool. Expanded
  * property
- * @member {array} [metrics] The list of databases housed in the server.
+ * @property {array} [metrics] The list of databases housed in the server.
  * Expanded property
  */
 export interface RecommendedElasticPool extends ProxyResource {
@@ -619,26 +623,27 @@ export interface RecommendedElasticPool extends ProxyResource {
  * @constructor
  * Represents a database replication link.
  *
- * @member {string} [location] Location of the server that contains this
+ * @property {string} [location] Location of the server that contains this
  * firewall rule.
- * @member {boolean} [isTerminationAllowed] Legacy value indicating whether
+ * @property {boolean} [isTerminationAllowed] Legacy value indicating whether
  * termination is allowed.  Currently always returns true.
- * @member {string} [replicationMode] Replication mode of this replication
+ * @property {string} [replicationMode] Replication mode of this replication
  * link.
- * @member {string} [partnerServer] The name of the server hosting the partner
+ * @property {string} [partnerServer] The name of the server hosting the
+ * partner database.
+ * @property {string} [partnerDatabase] The name of the partner database.
+ * @property {string} [partnerLocation] The Azure Region of the partner
  * database.
- * @member {string} [partnerDatabase] The name of the partner database.
- * @member {string} [partnerLocation] The Azure Region of the partner database.
- * @member {string} [role] The role of the database in the replication link.
+ * @property {string} [role] The role of the database in the replication link.
  * Possible values include: 'Primary', 'Secondary', 'NonReadableSecondary',
  * 'Source', 'Copy'
- * @member {string} [partnerRole] The role of the partner database in the
+ * @property {string} [partnerRole] The role of the partner database in the
  * replication link. Possible values include: 'Primary', 'Secondary',
  * 'NonReadableSecondary', 'Source', 'Copy'
- * @member {date} [startTime] The start time for the replication link.
- * @member {number} [percentComplete] The percentage of seeding complete for
+ * @property {date} [startTime] The start time for the replication link.
+ * @property {number} [percentComplete] The percentage of seeding complete for
  * the replication link.
- * @member {string} [replicationState] The replication state for the
+ * @property {string} [replicationState] The replication state for the
  * replication link. Possible values include: 'PENDING', 'SEEDING', 'CATCH_UP',
  * 'SUSPENDED'
  */
@@ -662,9 +667,10 @@ export interface ReplicationLink extends ProxyResource {
  * @constructor
  * An server Active Directory Administrator.
  *
- * @member {string} login The server administrator login value.
- * @member {uuid} sid The server administrator Sid (Secure ID).
- * @member {uuid} tenantId The server Active Directory Administrator tenant id.
+ * @property {string} login The server administrator login value.
+ * @property {uuid} sid The server administrator Sid (Secure ID).
+ * @property {uuid} tenantId The server Active Directory Administrator tenant
+ * id.
  */
 export interface ServerAzureADAdministrator extends ProxyResource {
   login: string;
@@ -678,11 +684,11 @@ export interface ServerAzureADAdministrator extends ProxyResource {
  * @constructor
  * Server communication link.
  *
- * @member {string} [state] The state.
- * @member {string} partnerServer The name of the partner server.
- * @member {string} [location] Communication link location.
- * @member {string} [kind] Communication link kind.  This property is used for
- * Azure Portal metadata.
+ * @property {string} [state] The state.
+ * @property {string} partnerServer The name of the partner server.
+ * @property {string} [location] Communication link location.
+ * @property {string} [kind] Communication link kind.  This property is used
+ * for Azure Portal metadata.
  */
 export interface ServerCommunicationLink extends ProxyResource {
   readonly state?: string;
@@ -697,14 +703,15 @@ export interface ServerCommunicationLink extends ProxyResource {
  * @constructor
  * Represents a database service objective.
  *
- * @member {string} [serviceObjectiveName] The name for the service objective.
- * @member {boolean} [isDefault] Gets whether the service level objective is
- * the default service objective.
- * @member {boolean} [isSystem] Gets whether the service level objective is a
- * system service objective.
- * @member {string} [description] The description for the service level
+ * @property {string} [serviceObjectiveName] The name for the service
  * objective.
- * @member {boolean} [enabled] Gets whether the service level objective is
+ * @property {boolean} [isDefault] Gets whether the service level objective is
+ * the default service objective.
+ * @property {boolean} [isSystem] Gets whether the service level objective is a
+ * system service objective.
+ * @property {string} [description] The description for the service level
+ * objective.
+ * @property {boolean} [enabled] Gets whether the service level objective is
  * enabled.
  */
 export interface ServiceObjective extends ProxyResource {
@@ -721,34 +728,37 @@ export interface ServiceObjective extends ProxyResource {
  * @constructor
  * Represents the activity on an elastic pool.
  *
- * @member {string} [location] The geo-location where the resource lives
- * @member {date} [endTime] The time the operation finished (ISO8601 format).
- * @member {number} [errorCode] The error code if available.
- * @member {string} [errorMessage] The error message if available.
- * @member {number} [errorSeverity] The error severity if available.
- * @member {string} [operation] The operation name.
- * @member {uuid} [operationId] The unique operation ID.
- * @member {number} [percentComplete] The percentage complete if available.
- * @member {number} [requestedDatabaseDtuMax] The requested max DTU per
+ * @property {string} [location] The geo-location where the resource lives
+ * @property {date} [endTime] The time the operation finished (ISO8601 format).
+ * @property {number} [errorCode] The error code if available.
+ * @property {string} [errorMessage] The error message if available.
+ * @property {number} [errorSeverity] The error severity if available.
+ * @property {string} [operation] The operation name.
+ * @property {uuid} [operationId] The unique operation ID.
+ * @property {number} [percentComplete] The percentage complete if available.
+ * @property {number} [requestedDatabaseDtuMax] The requested max DTU per
  * database if available.
- * @member {number} [requestedDatabaseDtuMin] The requested min DTU per
+ * @property {number} [requestedDatabaseDtuMin] The requested min DTU per
  * database if available.
- * @member {number} [requestedDtu] The requested DTU for the pool if available.
- * @member {string} [requestedElasticPoolName] The requested name for the
+ * @property {number} [requestedDtu] The requested DTU for the pool if
+ * available.
+ * @property {string} [requestedElasticPoolName] The requested name for the
  * elastic pool if available.
- * @member {number} [requestedStorageLimitInGB] The requested storage limit for
- * the pool in GB if available.
- * @member {string} [elasticPoolName] The name of the elastic pool.
- * @member {string} [serverName] The name of the server the elastic pool is in.
- * @member {date} [startTime] The time the operation started (ISO8601 format).
- * @member {string} [state] The current state of the operation.
- * @member {number} [requestedStorageLimitInMB] The requested storage limit in
- * MB.
- * @member {number} [requestedDatabaseDtuGuarantee] The requested per database
- * DTU guarantee.
- * @member {number} [requestedDatabaseDtuCap] The requested per database DTU
+ * @property {number} [requestedStorageLimitInGB] The requested storage limit
+ * for the pool in GB if available.
+ * @property {string} [elasticPoolName] The name of the elastic pool.
+ * @property {string} [serverName] The name of the server the elastic pool is
+ * in.
+ * @property {date} [startTime] The time the operation started (ISO8601
+ * format).
+ * @property {string} [state] The current state of the operation.
+ * @property {number} [requestedStorageLimitInMB] The requested storage limit
+ * in MB.
+ * @property {number} [requestedDatabaseDtuGuarantee] The requested per
+ * database DTU guarantee.
+ * @property {number} [requestedDatabaseDtuCap] The requested per database DTU
  * cap.
- * @member {number} [requestedDtuGuarantee] The requested DTU guarantee.
+ * @property {number} [requestedDtuGuarantee] The requested DTU guarantee.
  */
 export interface ElasticPoolActivity extends ProxyResource {
   location?: string;
@@ -780,26 +790,28 @@ export interface ElasticPoolActivity extends ProxyResource {
  * @constructor
  * Represents the activity on an elastic pool.
  *
- * @member {string} [location] The geo-location where the resource lives
- * @member {string} [databaseName] The database name.
- * @member {date} [endTime] The time the operation finished (ISO8601 format).
- * @member {number} [errorCode] The error code if available.
- * @member {string} [errorMessage] The error message if available.
- * @member {number} [errorSeverity] The error severity if available.
- * @member {string} [operation] The operation name.
- * @member {uuid} [operationId] The unique operation ID.
- * @member {number} [percentComplete] The percentage complete if available.
- * @member {string} [requestedElasticPoolName] The name for the elastic pool
+ * @property {string} [location] The geo-location where the resource lives
+ * @property {string} [databaseName] The database name.
+ * @property {date} [endTime] The time the operation finished (ISO8601 format).
+ * @property {number} [errorCode] The error code if available.
+ * @property {string} [errorMessage] The error message if available.
+ * @property {number} [errorSeverity] The error severity if available.
+ * @property {string} [operation] The operation name.
+ * @property {uuid} [operationId] The unique operation ID.
+ * @property {number} [percentComplete] The percentage complete if available.
+ * @property {string} [requestedElasticPoolName] The name for the elastic pool
  * the database is moving into if available.
- * @member {string} [currentElasticPoolName] The name of the current elastic
+ * @property {string} [currentElasticPoolName] The name of the current elastic
  * pool the database is in if available.
- * @member {string} [currentServiceObjective] The name of the current service
+ * @property {string} [currentServiceObjective] The name of the current service
  * objective if available.
- * @member {string} [requestedServiceObjective] The name of the requested
+ * @property {string} [requestedServiceObjective] The name of the requested
  * service objective if available.
- * @member {string} [serverName] The name of the server the elastic pool is in.
- * @member {date} [startTime] The time the operation started (ISO8601 format).
- * @member {string} [state] The current state of the operation.
+ * @property {string} [serverName] The name of the server the elastic pool is
+ * in.
+ * @property {date} [startTime] The time the operation started (ISO8601
+ * format).
+ * @property {string} [state] The current state of the operation.
  */
 export interface ElasticPoolDatabaseActivity extends ProxyResource {
   location?: string;
@@ -826,11 +838,11 @@ export interface ElasticPoolDatabaseActivity extends ProxyResource {
  * @constructor
  * The impact of an operation, both in absolute and relative terms.
  *
- * @member {string} [name] The name of the impact dimension.
- * @member {string} [unit] The unit in which estimated impact to dimension is
+ * @property {string} [name] The name of the impact dimension.
+ * @property {string} [unit] The unit in which estimated impact to dimension is
  * measured.
- * @member {number} [changeValueAbsolute] The absolute impact to dimension.
- * @member {number} [changeValueRelative] The relative impact to dimension
+ * @property {number} [changeValueAbsolute] The absolute impact to dimension.
+ * @property {number} [changeValueRelative] The relative impact to dimension
  * (null if not applicable)
  */
 export interface OperationImpact {
@@ -846,28 +858,29 @@ export interface OperationImpact {
  * @constructor
  * Represents a database recommended index.
  *
- * @member {string} [action] The proposed index action. You can create a
+ * @property {string} [action] The proposed index action. You can create a
  * missing index, drop an unused index, or rebuild an existing index to improve
  * its performance. Possible values include: 'Create', 'Drop', 'Rebuild'
- * @member {string} [state] The current recommendation state. Possible values
+ * @property {string} [state] The current recommendation state. Possible values
  * include: 'Active', 'Pending', 'Executing', 'Verifying', 'Pending Revert',
  * 'Reverting', 'Reverted', 'Ignored', 'Expired', 'Blocked', 'Success'
- * @member {date} [created] The UTC datetime showing when this resource was
+ * @property {date} [created] The UTC datetime showing when this resource was
  * created (ISO8601 format).
- * @member {date} [lastModified] The UTC datetime of when was this resource
+ * @property {date} [lastModified] The UTC datetime of when was this resource
  * last changed (ISO8601 format).
- * @member {string} [indexType] The type of index (CLUSTERED, NONCLUSTERED,
+ * @property {string} [indexType] The type of index (CLUSTERED, NONCLUSTERED,
  * COLUMNSTORE, CLUSTERED COLUMNSTORE). Possible values include: 'CLUSTERED',
  * 'NONCLUSTERED', 'COLUMNSTORE', 'CLUSTERED COLUMNSTORE'
- * @member {string} [schema] The schema where table to build index over resides
- * @member {string} [table] The table on which to build index.
- * @member {array} [columns] Columns over which to build index
- * @member {array} [includedColumns] The list of column names to be included in
- * the index
- * @member {string} [indexScript] The full build index script
- * @member {array} [estimatedImpact] The estimated impact of doing recommended
- * index action.
- * @member {array} [reportedImpact] The values reported after index action is
+ * @property {string} [schema] The schema where table to build index over
+ * resides
+ * @property {string} [table] The table on which to build index.
+ * @property {array} [columns] Columns over which to build index
+ * @property {array} [includedColumns] The list of column names to be included
+ * in the index
+ * @property {string} [indexScript] The full build index script
+ * @property {array} [estimatedImpact] The estimated impact of doing
+ * recommended index action.
+ * @property {array} [reportedImpact] The values reported after index action is
  * complete.
  */
 export interface RecommendedIndex extends ProxyResource {
@@ -891,8 +904,8 @@ export interface RecommendedIndex extends ProxyResource {
  * @constructor
  * Represents a database transparent data encryption configuration.
  *
- * @member {string} [location] Resource location.
- * @member {string} [status] The status of the database transparent data
+ * @property {string} [location] Resource location.
+ * @property {string} [status] The status of the database transparent data
  * encryption. Possible values include: 'Enabled', 'Disabled'
  */
 export interface TransparentDataEncryption extends ProxyResource {
@@ -906,7 +919,7 @@ export interface TransparentDataEncryption extends ProxyResource {
  * @constructor
  * A Slo Usage Metric.
  *
- * @member {string} [serviceLevelObjective] The serviceLevelObjective for SLO
+ * @property {string} [serviceLevelObjective] The serviceLevelObjective for SLO
  * usage metric. Possible values include: 'System', 'System0', 'System1',
  * 'System2', 'System3', 'System4', 'System2L', 'System3L', 'System4L', 'Free',
  * 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6', 'S7', 'S9', 'S12', 'P1', 'P2',
@@ -916,9 +929,9 @@ export interface TransparentDataEncryption extends ProxyResource {
  * 'DW6000', 'DW5000c', 'DW6000c', 'DW7500c', 'DW10000c', 'DW15000c',
  * 'DW30000c', 'DS100', 'DS200', 'DS300', 'DS400', 'DS500', 'DS600', 'DS1000',
  * 'DS1200', 'DS1500', 'DS2000', 'ElasticPool'
- * @member {uuid} [serviceLevelObjectiveId] The serviceLevelObjectiveId for SLO
- * usage metric.
- * @member {number} [inRangeTimeRatio] Gets or sets inRangeTimeRatio for SLO
+ * @property {uuid} [serviceLevelObjectiveId] The serviceLevelObjectiveId for
+ * SLO usage metric.
+ * @property {number} [inRangeTimeRatio] Gets or sets inRangeTimeRatio for SLO
  * usage metric.
  */
 export interface SloUsageMetric {
@@ -933,45 +946,45 @@ export interface SloUsageMetric {
  * @constructor
  * Represents a Service Tier Advisor.
  *
- * @member {date} [observationPeriodStart] The observation period start
+ * @property {date} [observationPeriodStart] The observation period start
  * (ISO8601 format).
- * @member {date} [observationPeriodEnd] The observation period start (ISO8601
- * format).
- * @member {number} [activeTimeRatio] The activeTimeRatio for service tier
+ * @property {date} [observationPeriodEnd] The observation period start
+ * (ISO8601 format).
+ * @property {number} [activeTimeRatio] The activeTimeRatio for service tier
  * advisor.
- * @member {number} [minDtu] Gets or sets minDtu for service tier advisor.
- * @member {number} [avgDtu] Gets or sets avgDtu for service tier advisor.
- * @member {number} [maxDtu] Gets or sets maxDtu for service tier advisor.
- * @member {number} [maxSizeInGB] Gets or sets maxSizeInGB for service tier
+ * @property {number} [minDtu] Gets or sets minDtu for service tier advisor.
+ * @property {number} [avgDtu] Gets or sets avgDtu for service tier advisor.
+ * @property {number} [maxDtu] Gets or sets maxDtu for service tier advisor.
+ * @property {number} [maxSizeInGB] Gets or sets maxSizeInGB for service tier
  * advisor.
- * @member {array} [serviceLevelObjectiveUsageMetrics] Gets or sets
+ * @property {array} [serviceLevelObjectiveUsageMetrics] Gets or sets
  * serviceLevelObjectiveUsageMetrics for the service tier advisor.
- * @member {string} [currentServiceLevelObjective] Gets or sets
+ * @property {string} [currentServiceLevelObjective] Gets or sets
  * currentServiceLevelObjective for service tier advisor.
- * @member {uuid} [currentServiceLevelObjectiveId] Gets or sets
+ * @property {uuid} [currentServiceLevelObjectiveId] Gets or sets
  * currentServiceLevelObjectiveId for service tier advisor.
- * @member {string} [usageBasedRecommendationServiceLevelObjective] Gets or
+ * @property {string} [usageBasedRecommendationServiceLevelObjective] Gets or
  * sets usageBasedRecommendationServiceLevelObjective for service tier advisor.
- * @member {uuid} [usageBasedRecommendationServiceLevelObjectiveId] Gets or
+ * @property {uuid} [usageBasedRecommendationServiceLevelObjectiveId] Gets or
  * sets usageBasedRecommendationServiceLevelObjectiveId for service tier
  * advisor.
- * @member {string} [databaseSizeBasedRecommendationServiceLevelObjective] Gets
- * or sets databaseSizeBasedRecommendationServiceLevelObjective for service
- * tier advisor.
- * @member {uuid} [databaseSizeBasedRecommendationServiceLevelObjectiveId] Gets
- * or sets databaseSizeBasedRecommendationServiceLevelObjectiveId for service
- * tier advisor.
- * @member {string} [disasterPlanBasedRecommendationServiceLevelObjective] Gets
- * or sets disasterPlanBasedRecommendationServiceLevelObjective for service
- * tier advisor.
- * @member {uuid} [disasterPlanBasedRecommendationServiceLevelObjectiveId] Gets
- * or sets disasterPlanBasedRecommendationServiceLevelObjectiveId for service
- * tier advisor.
- * @member {string} [overallRecommendationServiceLevelObjective] Gets or sets
+ * @property {string} [databaseSizeBasedRecommendationServiceLevelObjective]
+ * Gets or sets databaseSizeBasedRecommendationServiceLevelObjective for
+ * service tier advisor.
+ * @property {uuid} [databaseSizeBasedRecommendationServiceLevelObjectiveId]
+ * Gets or sets databaseSizeBasedRecommendationServiceLevelObjectiveId for
+ * service tier advisor.
+ * @property {string} [disasterPlanBasedRecommendationServiceLevelObjective]
+ * Gets or sets disasterPlanBasedRecommendationServiceLevelObjective for
+ * service tier advisor.
+ * @property {uuid} [disasterPlanBasedRecommendationServiceLevelObjectiveId]
+ * Gets or sets disasterPlanBasedRecommendationServiceLevelObjectiveId for
+ * service tier advisor.
+ * @property {string} [overallRecommendationServiceLevelObjective] Gets or sets
  * overallRecommendationServiceLevelObjective for service tier advisor.
- * @member {uuid} [overallRecommendationServiceLevelObjectiveId] Gets or sets
+ * @property {uuid} [overallRecommendationServiceLevelObjectiveId] Gets or sets
  * overallRecommendationServiceLevelObjectiveId for service tier advisor.
- * @member {number} [confidence] Gets or sets confidence for service tier
+ * @property {number} [confidence] Gets or sets confidence for service tier
  * advisor.
  */
 export interface ServiceTierAdvisor extends ProxyResource {
@@ -1002,10 +1015,10 @@ export interface ServiceTierAdvisor extends ProxyResource {
  * @constructor
  * Represents a database transparent data encryption Scan.
  *
- * @member {string} [location] Resource location.
- * @member {string} [status] The status of the database. Possible values
+ * @property {string} [location] Resource location.
+ * @property {string} [status] The status of the database. Possible values
  * include: 'Encrypting', 'Decrypting'
- * @member {number} [percentComplete] The percent complete of the transparent
+ * @property {number} [percentComplete] The percent complete of the transparent
  * data encryption scan for a database.
  */
 export interface TransparentDataEncryptionActivity extends ProxyResource {
@@ -1020,13 +1033,13 @@ export interface TransparentDataEncryptionActivity extends ProxyResource {
  * @constructor
  * Represents server metrics.
  *
- * @member {string} [name] Name of the server usage metric.
- * @member {string} [resourceName] The name of the resource.
- * @member {string} [displayName] The metric display name.
- * @member {number} [currentValue] The current value of the metric.
- * @member {number} [limit] The current limit of the metric.
- * @member {string} [unit] The units of the metric.
- * @member {date} [nextResetTime] The next reset time for the metric (ISO8601
+ * @property {string} [name] Name of the server usage metric.
+ * @property {string} [resourceName] The name of the resource.
+ * @property {string} [displayName] The metric display name.
+ * @property {number} [currentValue] The current value of the metric.
+ * @property {number} [limit] The current limit of the metric.
+ * @property {string} [unit] The units of the metric.
+ * @property {date} [nextResetTime] The next reset time for the metric (ISO8601
  * format).
  */
 export interface ServerUsage {
@@ -1045,13 +1058,13 @@ export interface ServerUsage {
  * @constructor
  * The database usages.
  *
- * @member {string} [name] The name of the usage metric.
- * @member {string} [resourceName] The name of the resource.
- * @member {string} [displayName] The usage metric display name.
- * @member {number} [currentValue] The current value of the usage metric.
- * @member {number} [limit] The current limit of the usage metric.
- * @member {string} [unit] The units of the usage metric.
- * @member {date} [nextResetTime] The next reset time for the usage metric
+ * @property {string} [name] The name of the usage metric.
+ * @property {string} [resourceName] The name of the resource.
+ * @property {string} [displayName] The usage metric display name.
+ * @property {number} [currentValue] The current value of the usage metric.
+ * @property {number} [limit] The current limit of the usage metric.
+ * @property {string} [unit] The units of the usage metric.
+ * @property {date} [nextResetTime] The next reset time for the usage metric
  * (ISO8601 format).
  */
 export interface DatabaseUsage {
@@ -1070,14 +1083,14 @@ export interface DatabaseUsage {
  * @constructor
  * Automatic tuning properties for individual advisors.
  *
- * @member {string} [desiredState] Automatic tuning option desired state.
+ * @property {string} [desiredState] Automatic tuning option desired state.
  * Possible values include: 'Off', 'On', 'Default'
- * @member {string} [actualState] Automatic tuning option actual state.
+ * @property {string} [actualState] Automatic tuning option actual state.
  * Possible values include: 'Off', 'On'
- * @member {number} [reasonCode] Reason code if desired and actual state are
+ * @property {number} [reasonCode] Reason code if desired and actual state are
  * different.
- * @member {string} [reasonDesc] Reason description if desired and actual state
- * are different. Possible values include: 'Default', 'Disabled',
+ * @property {string} [reasonDesc] Reason description if desired and actual
+ * state are different. Possible values include: 'Default', 'Disabled',
  * 'AutoConfigured', 'InheritedFromServer', 'QueryStoreOff',
  * 'QueryStoreReadOnly', 'NotSupported'
  */
@@ -1094,11 +1107,11 @@ export interface AutomaticTuningOptions {
  * @constructor
  * Database-level Automatic Tuning.
  *
- * @member {string} [desiredState] Automatic tuning desired state. Possible
+ * @property {string} [desiredState] Automatic tuning desired state. Possible
  * values include: 'Inherit', 'Custom', 'Auto', 'Unspecified'
- * @member {string} [actualState] Automatic tuning actual state. Possible
+ * @property {string} [actualState] Automatic tuning actual state. Possible
  * values include: 'Inherit', 'Custom', 'Auto', 'Unspecified'
- * @member {object} [options] Automatic tuning options definition.
+ * @property {object} [options] Automatic tuning options definition.
  */
 export interface DatabaseAutomaticTuning extends ProxyResource {
   desiredState?: string;
@@ -1112,16 +1125,16 @@ export interface DatabaseAutomaticTuning extends ProxyResource {
  * @constructor
  * The server encryption protector.
  *
- * @member {string} [kind] Kind of encryption protector. This is metadata used
- * for the Azure portal experience.
- * @member {string} [location] Resource location.
- * @member {string} [subregion] Subregion of the encryption protector.
- * @member {string} [serverKeyName] The name of the server key.
- * @member {string} serverKeyType The encryption protector type like
+ * @property {string} [kind] Kind of encryption protector. This is metadata
+ * used for the Azure portal experience.
+ * @property {string} [location] Resource location.
+ * @property {string} [subregion] Subregion of the encryption protector.
+ * @property {string} [serverKeyName] The name of the server key.
+ * @property {string} serverKeyType The encryption protector type like
  * 'ServiceManaged', 'AzureKeyVault'. Possible values include:
  * 'ServiceManaged', 'AzureKeyVault'
- * @member {string} [uri] The URI of the server key.
- * @member {string} [thumbprint] Thumbprint of the server key.
+ * @property {string} [uri] The URI of the server key.
+ * @property {string} [thumbprint] Thumbprint of the server key.
  */
 export interface EncryptionProtector extends ProxyResource {
   kind?: string;
@@ -1139,11 +1152,11 @@ export interface EncryptionProtector extends ProxyResource {
  * @constructor
  * Read-write endpoint of the failover group instance.
  *
- * @member {string} failoverPolicy Failover policy of the read-write endpoint
+ * @property {string} failoverPolicy Failover policy of the read-write endpoint
  * for the failover group. If failoverPolicy is Automatic then
  * failoverWithDataLossGracePeriodMinutes is required. Possible values include:
  * 'Manual', 'Automatic'
- * @member {number} [failoverWithDataLossGracePeriodMinutes] Grace period
+ * @property {number} [failoverWithDataLossGracePeriodMinutes] Grace period
  * before failover with data loss is attempted for the read-write endpoint. If
  * failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is
  * required.
@@ -1159,8 +1172,9 @@ export interface FailoverGroupReadWriteEndpoint {
  * @constructor
  * Read-only endpoint of the failover group instance.
  *
- * @member {string} [failoverPolicy] Failover policy of the read-only endpoint
- * for the failover group. Possible values include: 'Disabled', 'Enabled'
+ * @property {string} [failoverPolicy] Failover policy of the read-only
+ * endpoint for the failover group. Possible values include: 'Disabled',
+ * 'Enabled'
  */
 export interface FailoverGroupReadOnlyEndpoint {
   failoverPolicy?: string;
@@ -1172,9 +1186,9 @@ export interface FailoverGroupReadOnlyEndpoint {
  * @constructor
  * Partner server information for the failover group.
  *
- * @member {string} id Resource identifier of the partner server.
- * @member {string} [location] Geo location of the partner server.
- * @member {string} [replicationRole] Replication role of the partner server.
+ * @property {string} id Resource identifier of the partner server.
+ * @property {string} [location] Geo location of the partner server.
+ * @property {string} [replicationRole] Replication role of the partner server.
  * Possible values include: 'Primary', 'Secondary'
  */
 export interface PartnerInfo {
@@ -1189,30 +1203,31 @@ export interface PartnerInfo {
  * @constructor
  * A failover group.
  *
- * @member {string} [location] Resource location.
- * @member {object} [tags] Resource tags.
- * @member {object} readWriteEndpoint Read-write endpoint of the failover group
- * instance.
- * @member {string} [readWriteEndpoint.failoverPolicy] Failover policy of the
+ * @property {string} [location] Resource location.
+ * @property {object} [tags] Resource tags.
+ * @property {object} readWriteEndpoint Read-write endpoint of the failover
+ * group instance.
+ * @property {string} [readWriteEndpoint.failoverPolicy] Failover policy of the
  * read-write endpoint for the failover group. If failoverPolicy is Automatic
  * then failoverWithDataLossGracePeriodMinutes is required. Possible values
  * include: 'Manual', 'Automatic'
- * @member {number} [readWriteEndpoint.failoverWithDataLossGracePeriodMinutes]
- * Grace period before failover with data loss is attempted for the read-write
- * endpoint. If failoverPolicy is Automatic then
- * failoverWithDataLossGracePeriodMinutes is required.
- * @member {object} [readOnlyEndpoint] Read-only endpoint of the failover group
- * instance.
- * @member {string} [readOnlyEndpoint.failoverPolicy] Failover policy of the
+ * @property {number}
+ * [readWriteEndpoint.failoverWithDataLossGracePeriodMinutes] Grace period
+ * before failover with data loss is attempted for the read-write endpoint. If
+ * failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is
+ * required.
+ * @property {object} [readOnlyEndpoint] Read-only endpoint of the failover
+ * group instance.
+ * @property {string} [readOnlyEndpoint.failoverPolicy] Failover policy of the
  * read-only endpoint for the failover group. Possible values include:
  * 'Disabled', 'Enabled'
- * @member {string} [replicationRole] Local replication role of the failover
+ * @property {string} [replicationRole] Local replication role of the failover
  * group instance. Possible values include: 'Primary', 'Secondary'
- * @member {string} [replicationState] Replication state of the failover group
- * instance.
- * @member {array} partnerServers List of partner server information for the
+ * @property {string} [replicationState] Replication state of the failover
+ * group instance.
+ * @property {array} partnerServers List of partner server information for the
  * failover group.
- * @member {array} [databases] List of databases in the failover group.
+ * @property {array} [databases] List of databases in the failover group.
  */
 export interface FailoverGroup extends ProxyResource {
   readonly location?: string;
@@ -1231,23 +1246,24 @@ export interface FailoverGroup extends ProxyResource {
  * @constructor
  * A failover group update request.
  *
- * @member {object} [readWriteEndpoint] Read-write endpoint of the failover
+ * @property {object} [readWriteEndpoint] Read-write endpoint of the failover
  * group instance.
- * @member {string} [readWriteEndpoint.failoverPolicy] Failover policy of the
+ * @property {string} [readWriteEndpoint.failoverPolicy] Failover policy of the
  * read-write endpoint for the failover group. If failoverPolicy is Automatic
  * then failoverWithDataLossGracePeriodMinutes is required. Possible values
  * include: 'Manual', 'Automatic'
- * @member {number} [readWriteEndpoint.failoverWithDataLossGracePeriodMinutes]
- * Grace period before failover with data loss is attempted for the read-write
- * endpoint. If failoverPolicy is Automatic then
- * failoverWithDataLossGracePeriodMinutes is required.
- * @member {object} [readOnlyEndpoint] Read-only endpoint of the failover group
- * instance.
- * @member {string} [readOnlyEndpoint.failoverPolicy] Failover policy of the
+ * @property {number}
+ * [readWriteEndpoint.failoverWithDataLossGracePeriodMinutes] Grace period
+ * before failover with data loss is attempted for the read-write endpoint. If
+ * failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is
+ * required.
+ * @property {object} [readOnlyEndpoint] Read-only endpoint of the failover
+ * group instance.
+ * @property {string} [readOnlyEndpoint.failoverPolicy] Failover policy of the
  * read-only endpoint for the failover group. Possible values include:
  * 'Disabled', 'Enabled'
- * @member {array} [databases] List of databases in the failover group.
- * @member {object} [tags] Resource tags.
+ * @property {array} [databases] List of databases in the failover group.
+ * @property {object} [tags] Resource tags.
  */
 export interface FailoverGroupUpdate {
   readWriteEndpoint?: FailoverGroupReadWriteEndpoint;
@@ -1262,11 +1278,11 @@ export interface FailoverGroupUpdate {
  * @constructor
  * Azure Active Directory identity configuration for a resource.
  *
- * @member {uuid} [principalId] The Azure Active Directory principal id.
- * @member {string} [type] The identity type. Set this to 'SystemAssigned' in
+ * @property {uuid} [principalId] The Azure Active Directory principal id.
+ * @property {string} [type] The identity type. Set this to 'SystemAssigned' in
  * order to automatically create and assign an Azure Active Directory principal
  * for the resource. Possible values include: 'SystemAssigned'
- * @member {uuid} [tenantId] The Azure Active Directory tenant id.
+ * @property {uuid} [tenantId] The Azure Active Directory tenant id.
  */
 export interface ResourceIdentity {
   readonly principalId?: string;
@@ -1280,16 +1296,16 @@ export interface ResourceIdentity {
  * @constructor
  * The resource model definition representing SKU
  *
- * @member {string} name The name of the SKU. Ex - P3. It is typically a
+ * @property {string} name The name of the SKU. Ex - P3. It is typically a
  * letter+number code
- * @member {string} [tier] This field is required to be implemented by the
+ * @property {string} [tier] This field is required to be implemented by the
  * Resource Provider if the service has more than one tier, but is not required
  * on a PUT.
- * @member {string} [size] The SKU size. When the name field is the combination
- * of tier and some other value, this would be the standalone code.
- * @member {string} [family] If the service has different generations of
+ * @property {string} [size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
+ * @property {string} [family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [capacity] If the SKU supports scale out/in then the
+ * @property {number} [capacity] If the SKU supports scale out/in then the
  * capacity integer should be included. If scale out/in is not possible for the
  * resource this may be omitted.
  */
@@ -1307,44 +1323,44 @@ export interface Sku {
  * @constructor
  * An Azure SQL managed instance.
  *
- * @member {object} [identity] The Azure Active Directory identity of the
+ * @property {object} [identity] The Azure Active Directory identity of the
  * managed instance.
- * @member {uuid} [identity.principalId] The Azure Active Directory principal
+ * @property {uuid} [identity.principalId] The Azure Active Directory principal
  * id.
- * @member {string} [identity.type] The identity type. Set this to
+ * @property {string} [identity.type] The identity type. Set this to
  * 'SystemAssigned' in order to automatically create and assign an Azure Active
  * Directory principal for the resource. Possible values include:
  * 'SystemAssigned'
- * @member {uuid} [identity.tenantId] The Azure Active Directory tenant id.
- * @member {object} [sku] Managed instance sku
- * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
- * letter+number code
- * @member {string} [sku.tier] This field is required to be implemented by the
- * Resource Provider if the service has more than one tier, but is not required
- * on a PUT.
- * @member {string} [sku.size] The SKU size. When the name field is the
+ * @property {uuid} [identity.tenantId] The Azure Active Directory tenant id.
+ * @property {object} [sku] Managed instance sku
+ * @property {string} [sku.name] The name of the SKU. Ex - P3. It is typically
+ * a letter+number code
+ * @property {string} [sku.tier] This field is required to be implemented by
+ * the Resource Provider if the service has more than one tier, but is not
+ * required on a PUT.
+ * @property {string} [sku.size] The SKU size. When the name field is the
  * combination of tier and some other value, this would be the standalone code.
- * @member {string} [sku.family] If the service has different generations of
+ * @property {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * @property {number} [sku.capacity] If the SKU supports scale out/in then the
  * capacity integer should be included. If scale out/in is not possible for the
  * resource this may be omitted.
- * @member {string} [fullyQualifiedDomainName] The fully qualified domain name
- * of the managed instance.
- * @member {string} [administratorLogin] Administrator username for the managed
- * instance. Can only be specified when the managed instance is being created
- * (and is required for creation).
- * @member {string} [administratorLoginPassword] The administrator login
+ * @property {string} [fullyQualifiedDomainName] The fully qualified domain
+ * name of the managed instance.
+ * @property {string} [administratorLogin] Administrator username for the
+ * managed instance. Can only be specified when the managed instance is being
+ * created (and is required for creation).
+ * @property {string} [administratorLoginPassword] The administrator login
  * password (required for managed instance creation).
- * @member {string} [subnetId] Subnet resource ID for the managed instance.
- * @member {string} [state] The state of the managed instance.
- * @member {string} [licenseType] The license type. Possible values are
+ * @property {string} [subnetId] Subnet resource ID for the managed instance.
+ * @property {string} [state] The state of the managed instance.
+ * @property {string} [licenseType] The license type. Possible values are
  * 'LicenseIncluded' and 'BasePrice'.
- * @member {number} [vCores] The number of VCores.
- * @member {number} [storageSizeInGB] The maximum storage size in GB.
- * @member {string} [collation] Collation of the managed instance.
- * @member {string} [dnsZone] The Dns Zone that the managed instance is in.
- * @member {string} [dnsZonePartner] The resource id of another managed
+ * @property {number} [vCores] The number of VCores.
+ * @property {number} [storageSizeInGB] The maximum storage size in GB.
+ * @property {string} [collation] Collation of the managed instance.
+ * @property {string} [dnsZone] The Dns Zone that the managed instance is in.
+ * @property {string} [dnsZonePartner] The resource id of another managed
  * instance whose DNS zone this managed instance will share after creation.
  */
 export interface ManagedInstance extends TrackedResource {
@@ -1369,37 +1385,37 @@ export interface ManagedInstance extends TrackedResource {
  * @constructor
  * An update request for an Azure SQL Database managed instance.
  *
- * @member {object} [sku] Managed instance sku
- * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
- * letter+number code
- * @member {string} [sku.tier] This field is required to be implemented by the
- * Resource Provider if the service has more than one tier, but is not required
- * on a PUT.
- * @member {string} [sku.size] The SKU size. When the name field is the
+ * @property {object} [sku] Managed instance sku
+ * @property {string} [sku.name] The name of the SKU. Ex - P3. It is typically
+ * a letter+number code
+ * @property {string} [sku.tier] This field is required to be implemented by
+ * the Resource Provider if the service has more than one tier, but is not
+ * required on a PUT.
+ * @property {string} [sku.size] The SKU size. When the name field is the
  * combination of tier and some other value, this would be the standalone code.
- * @member {string} [sku.family] If the service has different generations of
+ * @property {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * @property {number} [sku.capacity] If the SKU supports scale out/in then the
  * capacity integer should be included. If scale out/in is not possible for the
  * resource this may be omitted.
- * @member {string} [fullyQualifiedDomainName] The fully qualified domain name
- * of the managed instance.
- * @member {string} [administratorLogin] Administrator username for the managed
- * instance. Can only be specified when the managed instance is being created
- * (and is required for creation).
- * @member {string} [administratorLoginPassword] The administrator login
+ * @property {string} [fullyQualifiedDomainName] The fully qualified domain
+ * name of the managed instance.
+ * @property {string} [administratorLogin] Administrator username for the
+ * managed instance. Can only be specified when the managed instance is being
+ * created (and is required for creation).
+ * @property {string} [administratorLoginPassword] The administrator login
  * password (required for managed instance creation).
- * @member {string} [subnetId] Subnet resource ID for the managed instance.
- * @member {string} [state] The state of the managed instance.
- * @member {string} [licenseType] The license type. Possible values are
+ * @property {string} [subnetId] Subnet resource ID for the managed instance.
+ * @property {string} [state] The state of the managed instance.
+ * @property {string} [licenseType] The license type. Possible values are
  * 'LicenseIncluded' and 'BasePrice'.
- * @member {number} [vCores] The number of VCores.
- * @member {number} [storageSizeInGB] The maximum storage size in GB.
- * @member {string} [collation] Collation of the managed instance.
- * @member {string} [dnsZone] The Dns Zone that the managed instance is in.
- * @member {string} [dnsZonePartner] The resource id of another managed
+ * @property {number} [vCores] The number of VCores.
+ * @property {number} [storageSizeInGB] The maximum storage size in GB.
+ * @property {string} [collation] Collation of the managed instance.
+ * @property {string} [dnsZone] The Dns Zone that the managed instance is in.
+ * @property {string} [dnsZonePartner] The resource id of another managed
  * instance whose DNS zone this managed instance will share after creation.
- * @member {object} [tags] Resource tags.
+ * @property {object} [tags] Resource tags.
  */
 export interface ManagedInstanceUpdate {
   sku?: Sku;
@@ -1423,12 +1439,13 @@ export interface ManagedInstanceUpdate {
  * @constructor
  * Display metadata associated with the operation.
  *
- * @member {string} [provider] The localized friendly form of the resource
+ * @property {string} [provider] The localized friendly form of the resource
  * provider name.
- * @member {string} [resource] The localized friendly form of the resource type
- * related to this action/operation.
- * @member {string} [operation] The localized friendly name for the operation.
- * @member {string} [description] The localized friendly description for the
+ * @property {string} [resource] The localized friendly form of the resource
+ * type related to this action/operation.
+ * @property {string} [operation] The localized friendly name for the
+ * operation.
+ * @property {string} [description] The localized friendly description for the
  * operation.
  */
 export interface OperationDisplay {
@@ -1444,21 +1461,21 @@ export interface OperationDisplay {
  * @constructor
  * SQL REST API operation definition.
  *
- * @member {string} [name] The name of the operation being performed on this
+ * @property {string} [name] The name of the operation being performed on this
  * particular object.
- * @member {object} [display] The localized display information for this
+ * @property {object} [display] The localized display information for this
  * particular operation / action.
- * @member {string} [display.provider] The localized friendly form of the
+ * @property {string} [display.provider] The localized friendly form of the
  * resource provider name.
- * @member {string} [display.resource] The localized friendly form of the
+ * @property {string} [display.resource] The localized friendly form of the
  * resource type related to this action/operation.
- * @member {string} [display.operation] The localized friendly name for the
+ * @property {string} [display.operation] The localized friendly name for the
  * operation.
- * @member {string} [display.description] The localized friendly description
+ * @property {string} [display.description] The localized friendly description
  * for the operation.
- * @member {string} [origin] The intended executor of the operation. Possible
+ * @property {string} [origin] The intended executor of the operation. Possible
  * values include: 'user', 'system'
- * @member {object} [properties] Additional descriptions for the operation.
+ * @property {object} [properties] Additional descriptions for the operation.
  */
 export interface Operation {
   readonly name?: string;
@@ -1473,15 +1490,15 @@ export interface Operation {
  * @constructor
  * A server key.
  *
- * @member {string} [kind] Kind of encryption protector. This is metadata used
- * for the Azure portal experience.
- * @member {string} [location] Resource location.
- * @member {string} [subregion] Subregion of the server key.
- * @member {string} serverKeyType The server key type like 'ServiceManaged',
+ * @property {string} [kind] Kind of encryption protector. This is metadata
+ * used for the Azure portal experience.
+ * @property {string} [location] Resource location.
+ * @property {string} [subregion] Subregion of the server key.
+ * @property {string} serverKeyType The server key type like 'ServiceManaged',
  * 'AzureKeyVault'. Possible values include: 'ServiceManaged', 'AzureKeyVault'
- * @member {string} [uri] The URI of the server key.
- * @member {string} [thumbprint] Thumbprint of the server key.
- * @member {date} [creationDate] The server key creation date.
+ * @property {string} [uri] The URI of the server key.
+ * @property {string} [thumbprint] Thumbprint of the server key.
+ * @property {date} [creationDate] The server key creation date.
  */
 export interface ServerKey extends ProxyResource {
   kind?: string;
@@ -1499,25 +1516,25 @@ export interface ServerKey extends ProxyResource {
  * @constructor
  * An Azure SQL Database server.
  *
- * @member {object} [identity] The Azure Active Directory identity of the
+ * @property {object} [identity] The Azure Active Directory identity of the
  * server.
- * @member {uuid} [identity.principalId] The Azure Active Directory principal
+ * @property {uuid} [identity.principalId] The Azure Active Directory principal
  * id.
- * @member {string} [identity.type] The identity type. Set this to
+ * @property {string} [identity.type] The identity type. Set this to
  * 'SystemAssigned' in order to automatically create and assign an Azure Active
  * Directory principal for the resource. Possible values include:
  * 'SystemAssigned'
- * @member {uuid} [identity.tenantId] The Azure Active Directory tenant id.
- * @member {string} [kind] Kind of sql server. This is metadata used for the
+ * @property {uuid} [identity.tenantId] The Azure Active Directory tenant id.
+ * @property {string} [kind] Kind of sql server. This is metadata used for the
  * Azure portal experience.
- * @member {string} [administratorLogin] Administrator username for the server.
- * Once created it cannot be changed.
- * @member {string} [administratorLoginPassword] The administrator login
+ * @property {string} [administratorLogin] Administrator username for the
+ * server. Once created it cannot be changed.
+ * @property {string} [administratorLoginPassword] The administrator login
  * password (required for server creation).
- * @member {string} [version] The version of the server.
- * @member {string} [state] The state of the server.
- * @member {string} [fullyQualifiedDomainName] The fully qualified domain name
- * of the server.
+ * @property {string} [version] The version of the server.
+ * @property {string} [state] The state of the server.
+ * @property {string} [fullyQualifiedDomainName] The fully qualified domain
+ * name of the server.
  */
 export interface Server extends TrackedResource {
   identity?: ResourceIdentity;
@@ -1535,15 +1552,15 @@ export interface Server extends TrackedResource {
  * @constructor
  * An update request for an Azure SQL Database server.
  *
- * @member {string} [administratorLogin] Administrator username for the server.
- * Once created it cannot be changed.
- * @member {string} [administratorLoginPassword] The administrator login
+ * @property {string} [administratorLogin] Administrator username for the
+ * server. Once created it cannot be changed.
+ * @property {string} [administratorLoginPassword] The administrator login
  * password (required for server creation).
- * @member {string} [version] The version of the server.
- * @member {string} [state] The state of the server.
- * @member {string} [fullyQualifiedDomainName] The fully qualified domain name
- * of the server.
- * @member {object} [tags] Resource tags.
+ * @property {string} [version] The version of the server.
+ * @property {string} [state] The state of the server.
+ * @property {string} [fullyQualifiedDomainName] The fully qualified domain
+ * name of the server.
+ * @property {object} [tags] Resource tags.
  */
 export interface ServerUpdate {
   administratorLogin?: string;
@@ -1560,15 +1577,15 @@ export interface ServerUpdate {
  * @constructor
  * An Azure SQL Database sync agent.
  *
- * @member {string} [syncAgentName] Name of the sync agent.
- * @member {string} [syncDatabaseId] ARM resource id of the sync database in
+ * @property {string} [syncAgentName] Name of the sync agent.
+ * @property {string} [syncDatabaseId] ARM resource id of the sync database in
  * the sync agent.
- * @member {date} [lastAliveTime] Last alive time of the sync agent.
- * @member {string} [state] State of the sync agent. Possible values include:
+ * @property {date} [lastAliveTime] Last alive time of the sync agent.
+ * @property {string} [state] State of the sync agent. Possible values include:
  * 'Online', 'Offline', 'NeverConnected'
- * @member {boolean} [isUpToDate] If the sync agent version is up to date.
- * @member {date} [expiryTime] Expiration time of the sync agent version.
- * @member {string} [version] Version of the sync agent.
+ * @property {boolean} [isUpToDate] If the sync agent version is up to date.
+ * @property {date} [expiryTime] Expiration time of the sync agent version.
+ * @property {string} [version] Version of the sync agent.
  */
 export interface SyncAgent extends ProxyResource {
   readonly syncAgentName?: string;
@@ -1586,7 +1603,7 @@ export interface SyncAgent extends ProxyResource {
  * @constructor
  * Properties of an Azure SQL Database sync agent key.
  *
- * @member {string} [syncAgentKey] Key of sync agent.
+ * @property {string} [syncAgentKey] Key of sync agent.
  */
 export interface SyncAgentKeyProperties {
   readonly syncAgentKey?: string;
@@ -1598,15 +1615,16 @@ export interface SyncAgentKeyProperties {
  * @constructor
  * An Azure SQL Database sync agent linked database.
  *
- * @member {string} [databaseType] Type of the sync agent linked database.
+ * @property {string} [databaseType] Type of the sync agent linked database.
  * Possible values include: 'AzureSqlDatabase', 'SqlServerDatabase'
- * @member {string} [databaseId] Id of the sync agent linked database.
- * @member {string} [description] Description of the sync agent linked
+ * @property {string} [databaseId] Id of the sync agent linked database.
+ * @property {string} [description] Description of the sync agent linked
  * database.
- * @member {string} [serverName] Server name of the sync agent linked database.
- * @member {string} [databaseName] Database name of the sync agent linked
+ * @property {string} [serverName] Server name of the sync agent linked
  * database.
- * @member {string} [userName] User name of the sync agent linked database.
+ * @property {string} [databaseName] Database name of the sync agent linked
+ * database.
+ * @property {string} [userName] User name of the sync agent linked database.
  */
 export interface SyncAgentLinkedDatabase extends ProxyResource {
   readonly databaseType?: string;
@@ -1623,7 +1641,7 @@ export interface SyncAgentLinkedDatabase extends ProxyResource {
  * @constructor
  * Properties of the sync database id.
  *
- * @member {string} [id] ARM resource id of sync database.
+ * @property {string} [id] ARM resource id of sync database.
  */
 export interface SyncDatabaseIdProperties {
   readonly id?: string;
@@ -1635,13 +1653,13 @@ export interface SyncDatabaseIdProperties {
  * @constructor
  * Properties of the column in the table of database full schema.
  *
- * @member {string} [dataSize] Data size of the column.
- * @member {string} [dataType] Data type of the column.
- * @member {string} [errorId] Error id of the column.
- * @member {boolean} [hasError] If there is error in the table.
- * @member {boolean} [isPrimaryKey] If it is the primary key of the table.
- * @member {string} [name] Name of the column.
- * @member {string} [quotedName] Quoted name of the column.
+ * @property {string} [dataSize] Data size of the column.
+ * @property {string} [dataType] Data type of the column.
+ * @property {string} [errorId] Error id of the column.
+ * @property {boolean} [hasError] If there is error in the table.
+ * @property {boolean} [isPrimaryKey] If it is the primary key of the table.
+ * @property {string} [name] Name of the column.
+ * @property {string} [quotedName] Quoted name of the column.
  */
 export interface SyncFullSchemaTableColumn {
   readonly dataSize?: string;
@@ -1659,12 +1677,12 @@ export interface SyncFullSchemaTableColumn {
  * @constructor
  * Properties of the table in the database full schema.
  *
- * @member {array} [columns] List of columns in the table of database full
+ * @property {array} [columns] List of columns in the table of database full
  * schema.
- * @member {string} [errorId] Error id of the table.
- * @member {boolean} [hasError] If there is error in the table.
- * @member {string} [name] Name of the table.
- * @member {string} [quotedName] Quoted name of the table.
+ * @property {string} [errorId] Error id of the table.
+ * @property {boolean} [hasError] If there is error in the table.
+ * @property {string} [name] Name of the table.
+ * @property {string} [quotedName] Quoted name of the table.
  */
 export interface SyncFullSchemaTable {
   readonly columns?: SyncFullSchemaTableColumn[];
@@ -1680,8 +1698,8 @@ export interface SyncFullSchemaTable {
  * @constructor
  * Properties of the database full schema.
  *
- * @member {array} [tables] List of tables in the database full schema.
- * @member {date} [lastUpdateTime] Last update time of the database schema.
+ * @property {array} [tables] List of tables in the database full schema.
+ * @property {date} [lastUpdateTime] Last update time of the database schema.
  */
 export interface SyncFullSchemaProperties {
   readonly tables?: SyncFullSchemaTable[];
@@ -1694,13 +1712,13 @@ export interface SyncFullSchemaProperties {
  * @constructor
  * Properties of an Azure SQL Database sync group log.
  *
- * @member {date} [timestamp] Timestamp of the sync group log.
- * @member {string} [type] Type of the sync group log. Possible values include:
- * 'All', 'Error', 'Warning', 'Success'
- * @member {string} [source] Source of the sync group log.
- * @member {string} [details] Details of the sync group log.
- * @member {uuid} [tracingId] TracingId of the sync group log.
- * @member {string} [operationStatus] OperationStatus of the sync group log.
+ * @property {date} [timestamp] Timestamp of the sync group log.
+ * @property {string} [type] Type of the sync group log. Possible values
+ * include: 'All', 'Error', 'Warning', 'Success'
+ * @property {string} [source] Source of the sync group log.
+ * @property {string} [details] Details of the sync group log.
+ * @property {uuid} [tracingId] TracingId of the sync group log.
+ * @property {string} [operationStatus] OperationStatus of the sync group log.
  */
 export interface SyncGroupLogProperties {
   readonly timestamp?: Date;
@@ -1717,9 +1735,9 @@ export interface SyncGroupLogProperties {
  * @constructor
  * Properties of column in sync group table.
  *
- * @member {string} [quotedName] Quoted name of sync group table column.
- * @member {string} [dataSize] Data size of the column.
- * @member {string} [dataType] Data type of the column.
+ * @property {string} [quotedName] Quoted name of sync group table column.
+ * @property {string} [dataSize] Data size of the column.
+ * @property {string} [dataType] Data type of the column.
  */
 export interface SyncGroupSchemaTableColumn {
   quotedName?: string;
@@ -1733,8 +1751,8 @@ export interface SyncGroupSchemaTableColumn {
  * @constructor
  * Properties of table in sync group schema.
  *
- * @member {array} [columns] List of columns in sync group schema.
- * @member {string} [quotedName] Quoted name of sync group schema table.
+ * @property {array} [columns] List of columns in sync group schema.
+ * @property {string} [quotedName] Quoted name of sync group schema table.
  */
 export interface SyncGroupSchemaTable {
   columns?: SyncGroupSchemaTableColumn[];
@@ -1747,9 +1765,9 @@ export interface SyncGroupSchemaTable {
  * @constructor
  * Properties of sync group schema.
  *
- * @member {array} [tables] List of tables in sync group schema.
- * @member {string} [masterSyncMemberName] Name of master sync member where the
- * schema is from.
+ * @property {array} [tables] List of tables in sync group schema.
+ * @property {string} [masterSyncMemberName] Name of master sync member where
+ * the schema is from.
  */
 export interface SyncGroupSchema {
   tables?: SyncGroupSchemaTable[];
@@ -1762,21 +1780,21 @@ export interface SyncGroupSchema {
  * @constructor
  * An Azure SQL Database sync group.
  *
- * @member {number} [interval] Sync interval of the sync group.
- * @member {date} [lastSyncTime] Last sync time of the sync group.
- * @member {string} [conflictResolutionPolicy] Conflict resolution policy of
+ * @property {number} [interval] Sync interval of the sync group.
+ * @property {date} [lastSyncTime] Last sync time of the sync group.
+ * @property {string} [conflictResolutionPolicy] Conflict resolution policy of
  * the sync group. Possible values include: 'HubWin', 'MemberWin'
- * @member {string} [syncDatabaseId] ARM resource id of the sync database in
+ * @property {string} [syncDatabaseId] ARM resource id of the sync database in
  * the sync group.
- * @member {string} [hubDatabaseUserName] User name for the sync group hub
+ * @property {string} [hubDatabaseUserName] User name for the sync group hub
  * database credential.
- * @member {string} [hubDatabasePassword] Password for the sync group hub
+ * @property {string} [hubDatabasePassword] Password for the sync group hub
  * database credential.
- * @member {string} [syncState] Sync state of the sync group. Possible values
+ * @property {string} [syncState] Sync state of the sync group. Possible values
  * include: 'NotReady', 'Error', 'Warning', 'Progressing', 'Good'
- * @member {object} [schema] Sync schema of the sync group.
- * @member {array} [schema.tables] List of tables in sync group schema.
- * @member {string} [schema.masterSyncMemberName] Name of master sync member
+ * @property {object} [schema] Sync schema of the sync group.
+ * @property {array} [schema.tables] List of tables in sync group schema.
+ * @property {string} [schema.masterSyncMemberName] Name of master sync member
  * where the schema is from.
  */
 export interface SyncGroup extends ProxyResource {
@@ -1796,24 +1814,25 @@ export interface SyncGroup extends ProxyResource {
  * @constructor
  * An Azure SQL Database sync member.
  *
- * @member {string} [databaseType] Database type of the sync member. Possible
+ * @property {string} [databaseType] Database type of the sync member. Possible
  * values include: 'AzureSqlDatabase', 'SqlServerDatabase'
- * @member {string} [syncAgentId] ARM resource id of the sync agent in the sync
- * member.
- * @member {uuid} [sqlServerDatabaseId] SQL Server database id of the sync
- * member.
- * @member {string} [serverName] Server name of the member database in the sync
- * member
- * @member {string} [databaseName] Database name of the member database in the
+ * @property {string} [syncAgentId] ARM resource id of the sync agent in the
  * sync member.
- * @member {string} [userName] User name of the member database in the sync
+ * @property {uuid} [sqlServerDatabaseId] SQL Server database id of the sync
  * member.
- * @member {string} [password] Password of the member database in the sync
+ * @property {string} [serverName] Server name of the member database in the
+ * sync member
+ * @property {string} [databaseName] Database name of the member database in
+ * the sync member.
+ * @property {string} [userName] User name of the member database in the sync
  * member.
- * @member {string} [syncDirection] Sync direction of the sync member. Possible
- * values include: 'Bidirectional', 'OneWayMemberToHub', 'OneWayHubToMember'
- * @member {string} [syncState] Sync state of the sync member. Possible values
- * include: 'SyncInProgress', 'SyncSucceeded', 'SyncFailed',
+ * @property {string} [password] Password of the member database in the sync
+ * member.
+ * @property {string} [syncDirection] Sync direction of the sync member.
+ * Possible values include: 'Bidirectional', 'OneWayMemberToHub',
+ * 'OneWayHubToMember'
+ * @property {string} [syncState] Sync state of the sync member. Possible
+ * values include: 'SyncInProgress', 'SyncSucceeded', 'SyncFailed',
  * 'DisabledTombstoneCleanup', 'DisabledBackupRestore',
  * 'SyncSucceededWithWarnings', 'SyncCancelling', 'SyncCancelled',
  * 'UnProvisioned', 'Provisioning', 'Provisioned', 'ProvisionFailed',
@@ -1838,10 +1857,10 @@ export interface SyncMember extends ProxyResource {
  * @constructor
  * Usage Metric of a Subscription in a Location.
  *
- * @member {string} [displayName] User-readable name of the metric.
- * @member {number} [currentValue] Current value of the metric.
- * @member {number} [limit] Boundary value of the metric.
- * @member {string} [unit] Unit of the metric.
+ * @property {string} [displayName] User-readable name of the metric.
+ * @property {number} [currentValue] Current value of the metric.
+ * @property {number} [limit] Boundary value of the metric.
+ * @property {string} [unit] Unit of the metric.
  */
 export interface SubscriptionUsage extends ProxyResource {
   readonly displayName?: string;
@@ -1856,11 +1875,11 @@ export interface SubscriptionUsage extends ProxyResource {
  * @constructor
  * A virtual network rule.
  *
- * @member {string} virtualNetworkSubnetId The ARM resource id of the virtual
+ * @property {string} virtualNetworkSubnetId The ARM resource id of the virtual
  * network subnet.
- * @member {boolean} [ignoreMissingVnetServiceEndpoint] Create firewall rule
+ * @property {boolean} [ignoreMissingVnetServiceEndpoint] Create firewall rule
  * before the virtual network has vnet service endpoint enabled.
- * @member {string} [state] Virtual Network Rule State. Possible values
+ * @property {string} [state] Virtual Network Rule State. Possible values
  * include: 'Initializing', 'InProgress', 'Ready', 'Deleting', 'Unknown'
  */
 export interface VirtualNetworkRule extends ProxyResource {
@@ -1875,20 +1894,20 @@ export interface VirtualNetworkRule extends ProxyResource {
  * @constructor
  * An extended database blob auditing policy.
  *
- * @member {string} [predicateExpression] Specifies condition of where clause
+ * @property {string} [predicateExpression] Specifies condition of where clause
  * when creating an audit.
- * @member {string} state Specifies the state of the policy. If state is
+ * @property {string} state Specifies the state of the policy. If state is
  * Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
  * Possible values include: 'Enabled', 'Disabled'
- * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
- * https://MyAccount.blob.core.windows.net). If state is Enabled,
+ * @property {string} [storageEndpoint] Specifies the blob storage endpoint
+ * (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled,
  * storageEndpoint is required.
- * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * @property {string} [storageAccountAccessKey] Specifies the identifier key of
  * the auditing storage account. If state is Enabled and storageEndpoint is
  * specified, storageAccountAccessKey is required.
- * @member {number} [retentionDays] Specifies the number of days to keep in the
- * audit logs in the storage account.
- * @member {array} [auditActionsAndGroups] Specifies the Actions-Groups and
+ * @property {number} [retentionDays] Specifies the number of days to keep in
+ * the audit logs in the storage account.
+ * @property {array} [auditActionsAndGroups] Specifies the Actions-Groups and
  * Actions to audit.
  *
  * The recommended set of action groups to use is the following combination -
@@ -1960,11 +1979,11 @@ export interface VirtualNetworkRule extends ProxyResource {
  *
  * For more information, see [Database-Level Audit
  * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
- * @member {uuid} [storageAccountSubscriptionId] Specifies the blob storage
+ * @property {uuid} [storageAccountSubscriptionId] Specifies the blob storage
  * subscription Id.
- * @member {boolean} [isStorageSecondaryKeyInUse] Specifies whether
+ * @property {boolean} [isStorageSecondaryKeyInUse] Specifies whether
  * storageAccountAccessKey value is the storage's secondary key.
- * @member {boolean} [isAzureMonitorTargetEnabled] Specifies whether audit
+ * @property {boolean} [isAzureMonitorTargetEnabled] Specifies whether audit
  * events are sent to Azure Monitor.
  * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
  * and 'IsAzureMonitorTargetEnabled' as true.
@@ -2002,20 +2021,20 @@ export interface ExtendedDatabaseBlobAuditingPolicy extends ProxyResource {
  * @constructor
  * An extended server blob auditing policy.
  *
- * @member {string} [predicateExpression] Specifies condition of where clause
+ * @property {string} [predicateExpression] Specifies condition of where clause
  * when creating an audit.
- * @member {string} state Specifies the state of the policy. If state is
+ * @property {string} state Specifies the state of the policy. If state is
  * Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
  * Possible values include: 'Enabled', 'Disabled'
- * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
- * https://MyAccount.blob.core.windows.net). If state is Enabled,
+ * @property {string} [storageEndpoint] Specifies the blob storage endpoint
+ * (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled,
  * storageEndpoint is required.
- * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * @property {string} [storageAccountAccessKey] Specifies the identifier key of
  * the auditing storage account. If state is Enabled and storageEndpoint is
  * specified, storageAccountAccessKey is required.
- * @member {number} [retentionDays] Specifies the number of days to keep in the
- * audit logs in the storage account.
- * @member {array} [auditActionsAndGroups] Specifies the Actions-Groups and
+ * @property {number} [retentionDays] Specifies the number of days to keep in
+ * the audit logs in the storage account.
+ * @property {array} [auditActionsAndGroups] Specifies the Actions-Groups and
  * Actions to audit.
  *
  * The recommended set of action groups to use is the following combination -
@@ -2087,11 +2106,11 @@ export interface ExtendedDatabaseBlobAuditingPolicy extends ProxyResource {
  *
  * For more information, see [Database-Level Audit
  * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
- * @member {uuid} [storageAccountSubscriptionId] Specifies the blob storage
+ * @property {uuid} [storageAccountSubscriptionId] Specifies the blob storage
  * subscription Id.
- * @member {boolean} [isStorageSecondaryKeyInUse] Specifies whether
+ * @property {boolean} [isStorageSecondaryKeyInUse] Specifies whether
  * storageAccountAccessKey value is the storage's secondary key.
- * @member {boolean} [isAzureMonitorTargetEnabled] Specifies whether audit
+ * @property {boolean} [isAzureMonitorTargetEnabled] Specifies whether audit
  * events are sent to Azure Monitor.
  * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
  * and 'IsAzureMonitorTargetEnabled' as true.
@@ -2129,18 +2148,18 @@ export interface ExtendedServerBlobAuditingPolicy extends ProxyResource {
  * @constructor
  * A server blob auditing policy.
  *
- * @member {string} state Specifies the state of the policy. If state is
+ * @property {string} state Specifies the state of the policy. If state is
  * Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
  * Possible values include: 'Enabled', 'Disabled'
- * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
- * https://MyAccount.blob.core.windows.net). If state is Enabled,
+ * @property {string} [storageEndpoint] Specifies the blob storage endpoint
+ * (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled,
  * storageEndpoint is required.
- * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * @property {string} [storageAccountAccessKey] Specifies the identifier key of
  * the auditing storage account. If state is Enabled and storageEndpoint is
  * specified, storageAccountAccessKey is required.
- * @member {number} [retentionDays] Specifies the number of days to keep in the
- * audit logs in the storage account.
- * @member {array} [auditActionsAndGroups] Specifies the Actions-Groups and
+ * @property {number} [retentionDays] Specifies the number of days to keep in
+ * the audit logs in the storage account.
+ * @property {array} [auditActionsAndGroups] Specifies the Actions-Groups and
  * Actions to audit.
  *
  * The recommended set of action groups to use is the following combination -
@@ -2212,11 +2231,11 @@ export interface ExtendedServerBlobAuditingPolicy extends ProxyResource {
  *
  * For more information, see [Database-Level Audit
  * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
- * @member {uuid} [storageAccountSubscriptionId] Specifies the blob storage
+ * @property {uuid} [storageAccountSubscriptionId] Specifies the blob storage
  * subscription Id.
- * @member {boolean} [isStorageSecondaryKeyInUse] Specifies whether
+ * @property {boolean} [isStorageSecondaryKeyInUse] Specifies whether
  * storageAccountAccessKey value is the storage's secondary key.
- * @member {boolean} [isAzureMonitorTargetEnabled] Specifies whether audit
+ * @property {boolean} [isAzureMonitorTargetEnabled] Specifies whether audit
  * events are sent to Azure Monitor.
  * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
  * and 'IsAzureMonitorTargetEnabled' as true.
@@ -2253,19 +2272,19 @@ export interface ServerBlobAuditingPolicy extends ProxyResource {
  * @constructor
  * A database blob auditing policy.
  *
- * @member {string} [kind] Resource kind.
- * @member {string} state Specifies the state of the policy. If state is
+ * @property {string} [kind] Resource kind.
+ * @property {string} state Specifies the state of the policy. If state is
  * Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
  * Possible values include: 'Enabled', 'Disabled'
- * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
- * https://MyAccount.blob.core.windows.net). If state is Enabled,
+ * @property {string} [storageEndpoint] Specifies the blob storage endpoint
+ * (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled,
  * storageEndpoint is required.
- * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * @property {string} [storageAccountAccessKey] Specifies the identifier key of
  * the auditing storage account. If state is Enabled and storageEndpoint is
  * specified, storageAccountAccessKey is required.
- * @member {number} [retentionDays] Specifies the number of days to keep in the
- * audit logs in the storage account.
- * @member {array} [auditActionsAndGroups] Specifies the Actions-Groups and
+ * @property {number} [retentionDays] Specifies the number of days to keep in
+ * the audit logs in the storage account.
+ * @property {array} [auditActionsAndGroups] Specifies the Actions-Groups and
  * Actions to audit.
  *
  * The recommended set of action groups to use is the following combination -
@@ -2337,11 +2356,11 @@ export interface ServerBlobAuditingPolicy extends ProxyResource {
  *
  * For more information, see [Database-Level Audit
  * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
- * @member {uuid} [storageAccountSubscriptionId] Specifies the blob storage
+ * @property {uuid} [storageAccountSubscriptionId] Specifies the blob storage
  * subscription Id.
- * @member {boolean} [isStorageSecondaryKeyInUse] Specifies whether
+ * @property {boolean} [isStorageSecondaryKeyInUse] Specifies whether
  * storageAccountAccessKey value is the storage's secondary key.
- * @member {boolean} [isAzureMonitorTargetEnabled] Specifies whether audit
+ * @property {boolean} [isAzureMonitorTargetEnabled] Specifies whether audit
  * events are sent to Azure Monitor.
  * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
  * and 'IsAzureMonitorTargetEnabled' as true.
@@ -2380,7 +2399,7 @@ export interface DatabaseBlobAuditingPolicy extends ProxyResource {
  * Properties for an Azure SQL Database Vulnerability Assessment rule
  * baseline's result.
  *
- * @member {array} result The rule baseline result
+ * @property {array} result The rule baseline result
  */
 export interface DatabaseVulnerabilityAssessmentRuleBaselineItem {
   result: string[];
@@ -2392,7 +2411,7 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselineItem {
  * @constructor
  * A database vulnerability assessment rule baseline.
  *
- * @member {array} baselineResults The rule baseline result
+ * @property {array} baselineResults The rule baseline result
  */
 export interface DatabaseVulnerabilityAssessmentRuleBaseline extends ProxyResource {
   baselineResults: DatabaseVulnerabilityAssessmentRuleBaselineItem[];
@@ -2404,12 +2423,12 @@ export interface DatabaseVulnerabilityAssessmentRuleBaseline extends ProxyResour
  * @constructor
  * Properties of a Vulnerability Assessment recurring scans.
  *
- * @member {boolean} [isEnabled] Recurring scans state.
- * @member {boolean} [emailSubscriptionAdmins] Specifies that the schedule scan
- * notification will be is sent to the subscription administrators. Default
- * value: true .
- * @member {array} [emails] Specifies an array of e-mail addresses to which the
- * scan notification is sent.
+ * @property {boolean} [isEnabled] Recurring scans state.
+ * @property {boolean} [emailSubscriptionAdmins] Specifies that the schedule
+ * scan notification will be is sent to the subscription administrators.
+ * Default value: true .
+ * @property {array} [emails] Specifies an array of e-mail addresses to which
+ * the scan notification is sent.
  */
 export interface VulnerabilityAssessmentRecurringScansProperties {
   isEnabled?: boolean;
@@ -2423,24 +2442,24 @@ export interface VulnerabilityAssessmentRecurringScansProperties {
  * @constructor
  * A database vulnerability assessment.
  *
- * @member {string} [storageContainerPath] A blob storage container path to
+ * @property {string} [storageContainerPath] A blob storage container path to
  * hold the scan results (e.g.
  * https://myStorage.blob.core.windows.net/VaScans/).  It is required if server
  * level vulnerability assessment policy doesn't set
- * @member {string} [storageContainerSasKey] A shared access signature (SAS
+ * @property {string} [storageContainerSasKey] A shared access signature (SAS
  * Key) that has write access to the blob container specified in
  * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
  * specified, StorageContainerSasKey is required.
- * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * @property {string} [storageAccountAccessKey] Specifies the identifier key of
  * the storage account for vulnerability assessment scan results. If
  * 'StorageContainerSasKey' isn't specified, storageAccountAccessKey is
  * required.
- * @member {object} [recurringScans] The recurring scans settings
- * @member {boolean} [recurringScans.isEnabled] Recurring scans state.
- * @member {boolean} [recurringScans.emailSubscriptionAdmins] Specifies that
+ * @property {object} [recurringScans] The recurring scans settings
+ * @property {boolean} [recurringScans.isEnabled] Recurring scans state.
+ * @property {boolean} [recurringScans.emailSubscriptionAdmins] Specifies that
  * the schedule scan notification will be is sent to the subscription
  * administrators.
- * @member {array} [recurringScans.emails] Specifies an array of e-mail
+ * @property {array} [recurringScans.emails] Specifies an array of e-mail
  * addresses to which the scan notification is sent.
  */
 export interface DatabaseVulnerabilityAssessment extends ProxyResource {
@@ -2456,22 +2475,22 @@ export interface DatabaseVulnerabilityAssessment extends ProxyResource {
  * @constructor
  * An Azure SQL job agent.
  *
- * @member {object} [sku] The name and tier of the SKU.
- * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
- * letter+number code
- * @member {string} [sku.tier] This field is required to be implemented by the
- * Resource Provider if the service has more than one tier, but is not required
- * on a PUT.
- * @member {string} [sku.size] The SKU size. When the name field is the
+ * @property {object} [sku] The name and tier of the SKU.
+ * @property {string} [sku.name] The name of the SKU. Ex - P3. It is typically
+ * a letter+number code
+ * @property {string} [sku.tier] This field is required to be implemented by
+ * the Resource Provider if the service has more than one tier, but is not
+ * required on a PUT.
+ * @property {string} [sku.size] The SKU size. When the name field is the
  * combination of tier and some other value, this would be the standalone code.
- * @member {string} [sku.family] If the service has different generations of
+ * @property {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * @property {number} [sku.capacity] If the SKU supports scale out/in then the
  * capacity integer should be included. If scale out/in is not possible for the
  * resource this may be omitted.
- * @member {string} databaseId Resource ID of the database to store job
+ * @property {string} databaseId Resource ID of the database to store job
  * metadata in.
- * @member {string} [state] The state of the job agent. Possible values
+ * @property {string} [state] The state of the job agent. Possible values
  * include: 'Creating', 'Ready', 'Updating', 'Deleting', 'Disabled'
  */
 export interface JobAgent extends TrackedResource {
@@ -2486,7 +2505,7 @@ export interface JobAgent extends TrackedResource {
  * @constructor
  * An update to an Azure SQL job agent.
  *
- * @member {object} [tags] Resource tags.
+ * @property {object} [tags] Resource tags.
  */
 export interface JobAgentUpdate {
   tags?: { [propertyName: string]: string };
@@ -2499,8 +2518,8 @@ export interface JobAgentUpdate {
  * A stored credential that can be used by a job to connect to target
  * databases.
  *
- * @member {string} username The credential user name.
- * @member {string} password The credential password.
+ * @property {string} username The credential user name.
+ * @property {string} password The credential password.
  */
 export interface JobCredential extends ProxyResource {
   username: string;
@@ -2513,10 +2532,10 @@ export interface JobCredential extends ProxyResource {
  * @constructor
  * The target that a job execution is executed on.
  *
- * @member {string} [type] The type of the target. Possible values include:
+ * @property {string} [type] The type of the target. Possible values include:
  * 'TargetGroup', 'SqlDatabase', 'SqlElasticPool', 'SqlShardMap', 'SqlServer'
- * @member {string} [serverName] The server name.
- * @member {string} [databaseName] The database name.
+ * @property {string} [serverName] The server name.
+ * @property {string} [databaseName] The database name.
  */
 export interface JobExecutionTarget {
   readonly type?: string;
@@ -2530,30 +2549,32 @@ export interface JobExecutionTarget {
  * @constructor
  * An execution of a job
  *
- * @member {number} [jobVersion] The job version number.
- * @member {string} [stepName] The job step name.
- * @member {number} [stepId] The job step id.
- * @member {uuid} [jobExecutionId] The unique identifier of the job execution.
- * @member {string} [lifecycle] The detailed state of the job execution.
+ * @property {number} [jobVersion] The job version number.
+ * @property {string} [stepName] The job step name.
+ * @property {number} [stepId] The job step id.
+ * @property {uuid} [jobExecutionId] The unique identifier of the job
+ * execution.
+ * @property {string} [lifecycle] The detailed state of the job execution.
  * Possible values include: 'Created', 'InProgress',
  * 'WaitingForChildJobExecutions', 'WaitingForRetry', 'Succeeded',
  * 'SucceededWithSkipped', 'Failed', 'TimedOut', 'Canceled', 'Skipped'
- * @member {string} [provisioningState] The ARM provisioning state of the job
+ * @property {string} [provisioningState] The ARM provisioning state of the job
  * execution. Possible values include: 'Created', 'InProgress', 'Succeeded',
  * 'Failed', 'Canceled'
- * @member {date} [createTime] The time that the job execution was created.
- * @member {date} [startTime] The time that the job execution started.
- * @member {date} [endTime] The time that the job execution completed.
- * @member {number} [currentAttempts] Number of times the job execution has
+ * @property {date} [createTime] The time that the job execution was created.
+ * @property {date} [startTime] The time that the job execution started.
+ * @property {date} [endTime] The time that the job execution completed.
+ * @property {number} [currentAttempts] Number of times the job execution has
  * been attempted.
- * @member {date} [currentAttemptStartTime] Start time of the current attempt.
- * @member {string} [lastMessage] The last status or error message.
- * @member {object} [target] The target that this execution is executed on.
- * @member {string} [target.type] The type of the target. Possible values
+ * @property {date} [currentAttemptStartTime] Start time of the current
+ * attempt.
+ * @property {string} [lastMessage] The last status or error message.
+ * @property {object} [target] The target that this execution is executed on.
+ * @property {string} [target.type] The type of the target. Possible values
  * include: 'TargetGroup', 'SqlDatabase', 'SqlElasticPool', 'SqlShardMap',
  * 'SqlServer'
- * @member {string} [target.serverName] The server name.
- * @member {string} [target.databaseName] The database name.
+ * @property {string} [target.serverName] The server name.
+ * @property {string} [target.databaseName] The database name.
  */
 export interface JobExecution extends ProxyResource {
   readonly jobVersion?: number;
@@ -2577,14 +2598,14 @@ export interface JobExecution extends ProxyResource {
  * @constructor
  * Scheduling properties of a job.
  *
- * @member {date} [startTime] Schedule start time. Default value: new
+ * @property {date} [startTime] Schedule start time. Default value: new
  * Date('0001-01-01T00:00:00Z') .
- * @member {date} [endTime] Schedule end time. Default value: new
+ * @property {date} [endTime] Schedule end time. Default value: new
  * Date('9999-12-31T11:59:59Z') .
- * @member {string} [type] Schedule interval type. Possible values include:
+ * @property {string} [type] Schedule interval type. Possible values include:
  * 'Once', 'Recurring'. Default value: 'Once' .
- * @member {boolean} [enabled] Whether or not the schedule is enabled.
- * @member {string} [interval] Value of the schedule's recurring interval, if
+ * @property {boolean} [enabled] Whether or not the schedule is enabled.
+ * @property {string} [interval] Value of the schedule's recurring interval, if
  * the scheduletype is recurring. ISO8601 duration format.
  */
 export interface JobSchedule {
@@ -2601,16 +2622,17 @@ export interface JobSchedule {
  * @constructor
  * A job.
  *
- * @member {string} [description] User-defined description of the job. Default
- * value: '' .
- * @member {number} [version] The job version number.
- * @member {object} [schedule] Schedule properties of the job.
- * @member {date} [schedule.startTime] Schedule start time.
- * @member {date} [schedule.endTime] Schedule end time.
- * @member {string} [schedule.type] Schedule interval type. Possible values
+ * @property {string} [description] User-defined description of the job.
+ * Default value: '' .
+ * @property {number} [version] The job version number.
+ * @property {object} [schedule] Schedule properties of the job.
+ * @property {date} [schedule.startTime] Schedule start time.
+ * @property {date} [schedule.endTime] Schedule end time.
+ * @property {string} [schedule.type] Schedule interval type. Possible values
  * include: 'Once', 'Recurring'
- * @member {boolean} [schedule.enabled] Whether or not the schedule is enabled.
- * @member {string} [schedule.interval] Value of the schedule's recurring
+ * @property {boolean} [schedule.enabled] Whether or not the schedule is
+ * enabled.
+ * @property {string} [schedule.interval] Value of the schedule's recurring
  * interval, if the scheduletype is recurring. ISO8601 duration format.
  */
 export interface Job extends ProxyResource {
@@ -2625,11 +2647,11 @@ export interface Job extends ProxyResource {
  * @constructor
  * The action to be executed by a job step.
  *
- * @member {string} [type] Type of action being executed by the job step.
+ * @property {string} [type] Type of action being executed by the job step.
  * Possible values include: 'TSql'. Default value: 'TSql' .
- * @member {string} [source] The source of the action to execute. Possible
+ * @property {string} [source] The source of the action to execute. Possible
  * values include: 'Inline'. Default value: 'Inline' .
- * @member {string} value The action value, for example the text of the T-SQL
+ * @property {string} value The action value, for example the text of the T-SQL
  * script to execute.
  */
 export interface JobStepAction {
@@ -2644,16 +2666,17 @@ export interface JobStepAction {
  * @constructor
  * The output configuration of a job step.
  *
- * @member {string} [type] The output destination type. Possible values
+ * @property {string} [type] The output destination type. Possible values
  * include: 'SqlDatabase'. Default value: 'SqlDatabase' .
- * @member {uuid} [subscriptionId] The output destination subscription id.
- * @member {string} [resourceGroupName] The output destination resource group.
- * @member {string} serverName The output destination server name.
- * @member {string} databaseName The output destination database.
- * @member {string} [schemaName] The output destination schema. Default value:
- * 'dbo' .
- * @member {string} tableName The output destination table.
- * @member {string} credential The resource ID of the credential to use to
+ * @property {uuid} [subscriptionId] The output destination subscription id.
+ * @property {string} [resourceGroupName] The output destination resource
+ * group.
+ * @property {string} serverName The output destination server name.
+ * @property {string} databaseName The output destination database.
+ * @property {string} [schemaName] The output destination schema. Default
+ * value: 'dbo' .
+ * @property {string} tableName The output destination table.
+ * @property {string} credential The resource ID of the credential to use to
  * connect to the output destination.
  */
 export interface JobStepOutput {
@@ -2673,16 +2696,16 @@ export interface JobStepOutput {
  * @constructor
  * The execution options of a job step.
  *
- * @member {number} [timeoutSeconds] Execution timeout for the job step.
+ * @property {number} [timeoutSeconds] Execution timeout for the job step.
  * Default value: 43200 .
- * @member {number} [retryAttempts] Maximum number of times the job step will
+ * @property {number} [retryAttempts] Maximum number of times the job step will
  * be reattempted if the first attempt fails. Default value: 10 .
- * @member {number} [initialRetryIntervalSeconds] Initial delay between retries
- * for job step execution. Default value: 1 .
- * @member {number} [maximumRetryIntervalSeconds] The maximum amount of time to
- * wait between retries for job step execution. Default value: 120 .
- * @member {number} [retryIntervalBackoffMultiplier] The backoff multiplier for
- * the time between retries. Default value: 2 .
+ * @property {number} [initialRetryIntervalSeconds] Initial delay between
+ * retries for job step execution. Default value: 1 .
+ * @property {number} [maximumRetryIntervalSeconds] The maximum amount of time
+ * to wait between retries for job step execution. Default value: 120 .
+ * @property {number} [retryIntervalBackoffMultiplier] The backoff multiplier
+ * for the time between retries. Default value: 2 .
  */
 export interface JobStepExecutionOptions {
   timeoutSeconds?: number;
@@ -2698,43 +2721,43 @@ export interface JobStepExecutionOptions {
  * @constructor
  * A job step.
  *
- * @member {number} [stepId] The job step's index within the job. If not
+ * @property {number} [stepId] The job step's index within the job. If not
  * specified when creating the job step, it will be created as the last step.
  * If not specified when updating the job step, the step id is not modified.
- * @member {string} targetGroup The resource ID of the target group that the
+ * @property {string} targetGroup The resource ID of the target group that the
  * job step will be executed on.
- * @member {string} credential The resource ID of the job credential that will
- * be used to connect to the targets.
- * @member {object} action The action payload of the job step.
- * @member {string} [action.type] Type of action being executed by the job
+ * @property {string} credential The resource ID of the job credential that
+ * will be used to connect to the targets.
+ * @property {object} action The action payload of the job step.
+ * @property {string} [action.type] Type of action being executed by the job
  * step. Possible values include: 'TSql'
- * @member {string} [action.source] The source of the action to execute.
+ * @property {string} [action.source] The source of the action to execute.
  * Possible values include: 'Inline'
- * @member {string} [action.value] The action value, for example the text of
+ * @property {string} [action.value] The action value, for example the text of
  * the T-SQL script to execute.
- * @member {object} [output] Output destination properties of the job step.
- * @member {string} [output.type] The output destination type. Possible values
- * include: 'SqlDatabase'
- * @member {uuid} [output.subscriptionId] The output destination subscription
+ * @property {object} [output] Output destination properties of the job step.
+ * @property {string} [output.type] The output destination type. Possible
+ * values include: 'SqlDatabase'
+ * @property {uuid} [output.subscriptionId] The output destination subscription
  * id.
- * @member {string} [output.resourceGroupName] The output destination resource
- * group.
- * @member {string} [output.serverName] The output destination server name.
- * @member {string} [output.databaseName] The output destination database.
- * @member {string} [output.schemaName] The output destination schema.
- * @member {string} [output.tableName] The output destination table.
- * @member {string} [output.credential] The resource ID of the credential to
+ * @property {string} [output.resourceGroupName] The output destination
+ * resource group.
+ * @property {string} [output.serverName] The output destination server name.
+ * @property {string} [output.databaseName] The output destination database.
+ * @property {string} [output.schemaName] The output destination schema.
+ * @property {string} [output.tableName] The output destination table.
+ * @property {string} [output.credential] The resource ID of the credential to
  * use to connect to the output destination.
- * @member {object} [executionOptions] Execution options for the job step.
- * @member {number} [executionOptions.timeoutSeconds] Execution timeout for the
- * job step.
- * @member {number} [executionOptions.retryAttempts] Maximum number of times
+ * @property {object} [executionOptions] Execution options for the job step.
+ * @property {number} [executionOptions.timeoutSeconds] Execution timeout for
+ * the job step.
+ * @property {number} [executionOptions.retryAttempts] Maximum number of times
  * the job step will be reattempted if the first attempt fails.
- * @member {number} [executionOptions.initialRetryIntervalSeconds] Initial
+ * @property {number} [executionOptions.initialRetryIntervalSeconds] Initial
  * delay between retries for job step execution.
- * @member {number} [executionOptions.maximumRetryIntervalSeconds] The maximum
- * amount of time to wait between retries for job step execution.
- * @member {number} [executionOptions.retryIntervalBackoffMultiplier] The
+ * @property {number} [executionOptions.maximumRetryIntervalSeconds] The
+ * maximum amount of time to wait between retries for job step execution.
+ * @property {number} [executionOptions.retryIntervalBackoffMultiplier] The
  * backoff multiplier for the time between retries.
  */
 export interface JobStep extends ProxyResource {
@@ -2753,18 +2776,18 @@ export interface JobStep extends ProxyResource {
  * A job target, for example a specific database or a container of databases
  * that is evaluated during job execution.
  *
- * @member {string} [membershipType] Whether the target is included or excluded
- * from the group. Possible values include: 'Include', 'Exclude'. Default
- * value: 'Include' .
- * @member {string} type The target type. Possible values include:
+ * @property {string} [membershipType] Whether the target is included or
+ * excluded from the group. Possible values include: 'Include', 'Exclude'.
+ * Default value: 'Include' .
+ * @property {string} type The target type. Possible values include:
  * 'TargetGroup', 'SqlDatabase', 'SqlElasticPool', 'SqlShardMap', 'SqlServer'
- * @member {string} [serverName] The target server name.
- * @member {string} [databaseName] The target database name.
- * @member {string} [elasticPoolName] The target elastic pool name.
- * @member {string} [shardMapName] The target shard map.
- * @member {string} [refreshCredential] The resource ID of the credential that
- * is used during job execution to connect to the target and determine the list
- * of databases inside the target.
+ * @property {string} [serverName] The target server name.
+ * @property {string} [databaseName] The target database name.
+ * @property {string} [elasticPoolName] The target elastic pool name.
+ * @property {string} [shardMapName] The target shard map.
+ * @property {string} [refreshCredential] The resource ID of the credential
+ * that is used during job execution to connect to the target and determine the
+ * list of databases inside the target.
  */
 export interface JobTarget {
   membershipType?: string;
@@ -2782,7 +2805,7 @@ export interface JobTarget {
  * @constructor
  * A group of job targets.
  *
- * @member {array} members Members of the target group.
+ * @property {array} members Members of the target group.
  */
 export interface JobTargetGroup extends ProxyResource {
   members: JobTarget[];
@@ -2804,14 +2827,14 @@ export interface JobVersion extends ProxyResource {
  * @constructor
  * A long term retention backup.
  *
- * @member {string} [serverName] The server name that the backup database
+ * @property {string} [serverName] The server name that the backup database
  * belong to.
- * @member {date} [serverCreateTime] The create time of the server.
- * @member {string} [databaseName] The name of the database the backup belong
+ * @property {date} [serverCreateTime] The create time of the server.
+ * @property {string} [databaseName] The name of the database the backup belong
  * to
- * @member {date} [databaseDeletionTime] The delete time of the database
- * @member {date} [backupTime] The time the backup was taken
- * @member {date} [backupExpirationTime] The time the long term retention
+ * @property {date} [databaseDeletionTime] The delete time of the database
+ * @property {date} [backupTime] The time the backup was taken
+ * @property {date} [backupExpirationTime] The time the long term retention
  * backup will expire.
  */
 export interface LongTermRetentionBackup extends ProxyResource {
@@ -2829,14 +2852,14 @@ export interface LongTermRetentionBackup extends ProxyResource {
  * @constructor
  * A long term retention policy.
  *
- * @member {string} [weeklyRetention] The weekly retention policy for an LTR
+ * @property {string} [weeklyRetention] The weekly retention policy for an LTR
  * backup in an ISO 8601 format.
- * @member {string} [monthlyRetention] The monthly retention policy for an LTR
+ * @property {string} [monthlyRetention] The monthly retention policy for an
+ * LTR backup in an ISO 8601 format.
+ * @property {string} [yearlyRetention] The yearly retention policy for an LTR
  * backup in an ISO 8601 format.
- * @member {string} [yearlyRetention] The yearly retention policy for an LTR
- * backup in an ISO 8601 format.
- * @member {number} [weekOfYear] The week of year to take the yearly backup in
- * an ISO 8601 format.
+ * @property {number} [weekOfYear] The week of year to take the yearly backup
+ * in an ISO 8601 format.
  */
 export interface BackupLongTermRetentionPolicy extends ProxyResource {
   weeklyRetention?: string;
@@ -2851,7 +2874,7 @@ export interface BackupLongTermRetentionPolicy extends ProxyResource {
  * @constructor
  * A short term retention policy.
  *
- * @member {number} [retentionDays] The backup retention period in days. This
+ * @property {number} [retentionDays] The backup retention period in days. This
  * is how many days Point-in-Time Restore will be supported.
  */
 export interface ManagedBackupShortTermRetentionPolicy extends ProxyResource {
@@ -2865,7 +2888,7 @@ export interface ManagedBackupShortTermRetentionPolicy extends ProxyResource {
  * Contains the information necessary to perform a complete database restore
  * operation.
  *
- * @member {string} lastBackupName The last backup name to apply
+ * @property {string} lastBackupName The last backup name to apply
  */
 export interface CompleteDatabaseRestoreDefinition {
   lastBackupName: string;
@@ -2877,35 +2900,35 @@ export interface CompleteDatabaseRestoreDefinition {
  * @constructor
  * A managed database resource.
  *
- * @member {string} [collation] Collation of the managed database.
- * @member {string} [status] Status for the database. Possible values include:
- * 'Online', 'Offline', 'Shutdown', 'Creating', 'Inaccessible'
- * @member {date} [creationDate] Creation date of the database.
- * @member {date} [earliestRestorePoint] Earliest restore point in time for
+ * @property {string} [collation] Collation of the managed database.
+ * @property {string} [status] Status for the database. Possible values
+ * include: 'Online', 'Offline', 'Shutdown', 'Creating', 'Inaccessible'
+ * @property {date} [creationDate] Creation date of the database.
+ * @property {date} [earliestRestorePoint] Earliest restore point in time for
  * point in time restore.
- * @member {date} [restorePointInTime] Conditional. If createMode is
+ * @property {date} [restorePointInTime] Conditional. If createMode is
  * PointInTimeRestore, this value is required. Specifies the point in time
  * (ISO8601 format) of the source database that will be restored to create the
  * new database.
- * @member {string} [defaultSecondaryLocation] Geo paired region.
- * @member {string} [catalogCollation] Collation of the metadata catalog.
+ * @property {string} [defaultSecondaryLocation] Geo paired region.
+ * @property {string} [catalogCollation] Collation of the metadata catalog.
  * Possible values include: 'DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'
- * @member {string} [createMode] Managed database create mode.
+ * @property {string} [createMode] Managed database create mode.
  * PointInTimeRestore: Create a database by restoring a point in time backup of
  * an existing database. SourceDatabaseName, SourceManagedInstanceName and
  * PointInTime must be specified. RestoreExternalBackup: Create a database by
  * restoring from external backup files. Collation, StorageContainerUri and
  * StorageContainerSasToken must be specified. Possible values include:
  * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
- * @member {string} [storageContainerUri] Conditional. If createMode is
+ * @property {string} [storageContainerUri] Conditional. If createMode is
  * RestoreExternalBackup, this value is required. Specifies the uri of the
  * storage container where backups for this restore are stored.
- * @member {string} [sourceDatabaseId] The resource identifier of the source
+ * @property {string} [sourceDatabaseId] The resource identifier of the source
  * database associated with create operation of this database.
- * @member {string} [storageContainerSasToken] Conditional. If createMode is
+ * @property {string} [storageContainerSasToken] Conditional. If createMode is
  * RestoreExternalBackup, this value is required. Specifies the storage
  * container sas token.
- * @member {string} [failoverGroupId] Instance Failover Group resource
+ * @property {string} [failoverGroupId] Instance Failover Group resource
  * identifier that this managed database belongs to.
  */
 export interface ManagedDatabase extends TrackedResource {
@@ -2929,37 +2952,37 @@ export interface ManagedDatabase extends TrackedResource {
  * @constructor
  * An managed database update.
  *
- * @member {string} [collation] Collation of the managed database.
- * @member {string} [status] Status for the database. Possible values include:
- * 'Online', 'Offline', 'Shutdown', 'Creating', 'Inaccessible'
- * @member {date} [creationDate] Creation date of the database.
- * @member {date} [earliestRestorePoint] Earliest restore point in time for
+ * @property {string} [collation] Collation of the managed database.
+ * @property {string} [status] Status for the database. Possible values
+ * include: 'Online', 'Offline', 'Shutdown', 'Creating', 'Inaccessible'
+ * @property {date} [creationDate] Creation date of the database.
+ * @property {date} [earliestRestorePoint] Earliest restore point in time for
  * point in time restore.
- * @member {date} [restorePointInTime] Conditional. If createMode is
+ * @property {date} [restorePointInTime] Conditional. If createMode is
  * PointInTimeRestore, this value is required. Specifies the point in time
  * (ISO8601 format) of the source database that will be restored to create the
  * new database.
- * @member {string} [defaultSecondaryLocation] Geo paired region.
- * @member {string} [catalogCollation] Collation of the metadata catalog.
+ * @property {string} [defaultSecondaryLocation] Geo paired region.
+ * @property {string} [catalogCollation] Collation of the metadata catalog.
  * Possible values include: 'DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'
- * @member {string} [createMode] Managed database create mode.
+ * @property {string} [createMode] Managed database create mode.
  * PointInTimeRestore: Create a database by restoring a point in time backup of
  * an existing database. SourceDatabaseName, SourceManagedInstanceName and
  * PointInTime must be specified. RestoreExternalBackup: Create a database by
  * restoring from external backup files. Collation, StorageContainerUri and
  * StorageContainerSasToken must be specified. Possible values include:
  * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
- * @member {string} [storageContainerUri] Conditional. If createMode is
+ * @property {string} [storageContainerUri] Conditional. If createMode is
  * RestoreExternalBackup, this value is required. Specifies the uri of the
  * storage container where backups for this restore are stored.
- * @member {string} [sourceDatabaseId] The resource identifier of the source
+ * @property {string} [sourceDatabaseId] The resource identifier of the source
  * database associated with create operation of this database.
- * @member {string} [storageContainerSasToken] Conditional. If createMode is
+ * @property {string} [storageContainerSasToken] Conditional. If createMode is
  * RestoreExternalBackup, this value is required. Specifies the storage
  * container sas token.
- * @member {string} [failoverGroupId] Instance Failover Group resource
+ * @property {string} [failoverGroupId] Instance Failover Group resource
  * identifier that this managed database belongs to.
- * @member {object} [tags] Resource tags.
+ * @property {object} [tags] Resource tags.
  */
 export interface ManagedDatabaseUpdate {
   collation?: string;
@@ -2983,14 +3006,14 @@ export interface ManagedDatabaseUpdate {
  * @constructor
  * Automatic tuning properties for individual advisors.
  *
- * @member {string} [desiredState] Automatic tuning option desired state.
+ * @property {string} [desiredState] Automatic tuning option desired state.
  * Possible values include: 'Off', 'On', 'Default'
- * @member {string} [actualState] Automatic tuning option actual state.
+ * @property {string} [actualState] Automatic tuning option actual state.
  * Possible values include: 'Off', 'On'
- * @member {number} [reasonCode] Reason code if desired and actual state are
+ * @property {number} [reasonCode] Reason code if desired and actual state are
  * different.
- * @member {string} [reasonDesc] Reason description if desired and actual state
- * are different. Possible values include: 'Default', 'Disabled',
+ * @property {string} [reasonDesc] Reason description if desired and actual
+ * state are different. Possible values include: 'Default', 'Disabled',
  * 'AutoConfigured'
  */
 export interface AutomaticTuningServerOptions {
@@ -3006,11 +3029,11 @@ export interface AutomaticTuningServerOptions {
  * @constructor
  * Server-level Automatic Tuning.
  *
- * @member {string} [desiredState] Automatic tuning desired state. Possible
+ * @property {string} [desiredState] Automatic tuning desired state. Possible
  * values include: 'Custom', 'Auto', 'Unspecified'
- * @member {string} [actualState] Automatic tuning actual state. Possible
+ * @property {string} [actualState] Automatic tuning actual state. Possible
  * values include: 'Custom', 'Auto', 'Unspecified'
- * @member {object} [options] Automatic tuning options definition.
+ * @property {object} [options] Automatic tuning options definition.
  */
 export interface ServerAutomaticTuning extends ProxyResource {
   desiredState?: string;
@@ -3024,7 +3047,7 @@ export interface ServerAutomaticTuning extends ProxyResource {
  * @constructor
  * A server DNS alias.
  *
- * @member {string} [azureDnsRecord] The fully qualified DNS record for alias
+ * @property {string} [azureDnsRecord] The fully qualified DNS record for alias
  */
 export interface ServerDnsAlias extends ProxyResource {
   readonly azureDnsRecord?: string;
@@ -3036,8 +3059,8 @@ export interface ServerDnsAlias extends ProxyResource {
  * @constructor
  * A server DNS alias acquisition request.
  *
- * @member {string} [oldServerDnsAliasId] The id of the server alias that will
- * be acquired to point to this server instead.
+ * @property {string} [oldServerDnsAliasId] The id of the server alias that
+ * will be acquired to point to this server instead.
  */
 export interface ServerDnsAliasAcquisition {
   oldServerDnsAliasId?: string;
@@ -3049,22 +3072,22 @@ export interface ServerDnsAliasAcquisition {
  * @constructor
  * A server security alert policy.
  *
- * @member {string} state Specifies the state of the policy, whether it is
+ * @property {string} state Specifies the state of the policy, whether it is
  * enabled or disabled. Possible values include: 'New', 'Enabled', 'Disabled'
- * @member {array} [disabledAlerts] Specifies an array of alerts that are
+ * @property {array} [disabledAlerts] Specifies an array of alerts that are
  * disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability,
  * Access_Anomaly, Data_Exfiltration, Unsafe_Action
- * @member {array} [emailAddresses] Specifies an array of e-mail addresses to
+ * @property {array} [emailAddresses] Specifies an array of e-mail addresses to
  * which the alert is sent.
- * @member {boolean} [emailAccountAdmins] Specifies that the alert is sent to
+ * @property {boolean} [emailAccountAdmins] Specifies that the alert is sent to
  * the account administrators.
- * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
- * https://MyAccount.blob.core.windows.net). This blob storage will hold all
- * Threat Detection audit logs.
- * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * @property {string} [storageEndpoint] Specifies the blob storage endpoint
+ * (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold
+ * all Threat Detection audit logs.
+ * @property {string} [storageAccountAccessKey] Specifies the identifier key of
  * the Threat Detection audit storage account.
- * @member {number} [retentionDays] Specifies the number of days to keep in the
- * Threat Detection audit logs.
+ * @property {number} [retentionDays] Specifies the number of days to keep in
+ * the Threat Detection audit logs.
  */
 export interface ServerSecurityAlertPolicy extends ProxyResource {
   state: string;
@@ -3082,13 +3105,13 @@ export interface ServerSecurityAlertPolicy extends ProxyResource {
  * @constructor
  * Database restore points.
  *
- * @member {string} [location] Resource location.
- * @member {string} [restorePointType] The type of restore point. Possible
+ * @property {string} [location] Resource location.
+ * @property {string} [restorePointType] The type of restore point. Possible
  * values include: 'CONTINUOUS', 'DISCRETE'
- * @member {date} [earliestRestoreDate] The earliest time to which this
+ * @property {date} [earliestRestoreDate] The earliest time to which this
  * database can be restored
- * @member {date} [restorePointCreationDate] The time the backup was taken
- * @member {string} [restorePointLabel] The label of restore point for backup
+ * @property {date} [restorePointCreationDate] The time the backup was taken
+ * @property {string} [restorePointLabel] The label of restore point for backup
  * request by user
  */
 export interface RestorePoint extends ProxyResource {
@@ -3106,7 +3129,7 @@ export interface RestorePoint extends ProxyResource {
  * Contains the information necessary to perform a create database restore
  * point operation.
  *
- * @member {string} restorePointLabel The restore point label to apply
+ * @property {string} restorePointLabel The restore point label to apply
  */
 export interface CreateDatabaseRestorePointDefinition {
   restorePointLabel: string;
@@ -3118,25 +3141,25 @@ export interface CreateDatabaseRestorePointDefinition {
  * @constructor
  * A database operation.
  *
- * @member {string} [databaseName] The name of the database the operation is
+ * @property {string} [databaseName] The name of the database the operation is
  * being performed on.
- * @member {string} [operation] The name of operation.
- * @member {string} [operationFriendlyName] The friendly name of operation.
- * @member {number} [percentComplete] The percentage of the operation
+ * @property {string} [operation] The name of operation.
+ * @property {string} [operationFriendlyName] The friendly name of operation.
+ * @property {number} [percentComplete] The percentage of the operation
  * completed.
- * @member {string} [serverName] The name of the server.
- * @member {date} [startTime] The operation start time.
- * @member {string} [state] The operation state. Possible values include:
+ * @property {string} [serverName] The name of the server.
+ * @property {date} [startTime] The operation start time.
+ * @property {string} [state] The operation state. Possible values include:
  * 'Pending', 'InProgress', 'Succeeded', 'Failed', 'CancelInProgress',
  * 'Cancelled'
- * @member {number} [errorCode] The operation error code.
- * @member {string} [errorDescription] The operation error description.
- * @member {number} [errorSeverity] The operation error severity.
- * @member {boolean} [isUserError] Whether or not the error is a user error.
- * @member {date} [estimatedCompletionTime] The estimated completion time of
+ * @property {number} [errorCode] The operation error code.
+ * @property {string} [errorDescription] The operation error description.
+ * @property {number} [errorSeverity] The operation error severity.
+ * @property {boolean} [isUserError] Whether or not the error is a user error.
+ * @property {date} [estimatedCompletionTime] The estimated completion time of
  * the operation.
- * @member {string} [description] The operation description.
- * @member {boolean} [isCancellable] Whether the operation can be cancelled.
+ * @property {string} [description] The operation description.
+ * @property {boolean} [isCancellable] Whether the operation can be cancelled.
  */
 export interface DatabaseOperation extends ProxyResource {
   readonly databaseName?: string;
@@ -3161,23 +3184,23 @@ export interface DatabaseOperation extends ProxyResource {
  * @constructor
  * A elastic pool operation.
  *
- * @member {string} [elasticPoolName] The name of the elastic pool the
+ * @property {string} [elasticPoolName] The name of the elastic pool the
  * operation is being performed on.
- * @member {string} [operation] The name of operation.
- * @member {string} [operationFriendlyName] The friendly name of operation.
- * @member {number} [percentComplete] The percentage of the operation
+ * @property {string} [operation] The name of operation.
+ * @property {string} [operationFriendlyName] The friendly name of operation.
+ * @property {number} [percentComplete] The percentage of the operation
  * completed.
- * @member {string} [serverName] The name of the server.
- * @member {date} [startTime] The operation start time.
- * @member {string} [state] The operation state.
- * @member {number} [errorCode] The operation error code.
- * @member {string} [errorDescription] The operation error description.
- * @member {number} [errorSeverity] The operation error severity.
- * @member {boolean} [isUserError] Whether or not the error is a user error.
- * @member {date} [estimatedCompletionTime] The estimated completion time of
+ * @property {string} [serverName] The name of the server.
+ * @property {date} [startTime] The operation start time.
+ * @property {string} [state] The operation state.
+ * @property {number} [errorCode] The operation error code.
+ * @property {string} [errorDescription] The operation error description.
+ * @property {number} [errorSeverity] The operation error severity.
+ * @property {boolean} [isUserError] Whether or not the error is a user error.
+ * @property {date} [estimatedCompletionTime] The estimated completion time of
  * the operation.
- * @member {string} [description] The operation description.
- * @member {boolean} [isCancellable] Whether the operation can be cancelled.
+ * @property {string} [description] The operation description.
+ * @property {boolean} [isCancellable] Whether the operation can be cancelled.
  */
 export interface ElasticPoolOperation extends ProxyResource {
   readonly elasticPoolName?: string;
@@ -3202,8 +3225,9 @@ export interface ElasticPoolOperation extends ProxyResource {
  * @constructor
  * The maximum size capability.
  *
- * @member {number} [limit] The maximum size limit (see 'unit' for the units).
- * @member {string} [unit] The units that the limit is expressed in. Possible
+ * @property {number} [limit] The maximum size limit (see 'unit' for the
+ * units).
+ * @property {string} [unit] The units that the limit is expressed in. Possible
  * values include: 'Megabytes', 'Gigabytes', 'Terabytes', 'Petabytes'
  */
 export interface MaxSizeCapability {
@@ -3217,8 +3241,8 @@ export interface MaxSizeCapability {
  * @constructor
  * The log size capability.
  *
- * @member {number} [limit] The log size limit (see 'unit' for the units).
- * @member {string} [unit] The units that the limit is expressed in. Possible
+ * @property {number} [limit] The log size limit (see 'unit' for the units).
+ * @property {string} [unit] The units that the limit is expressed in. Possible
  * values include: 'Megabytes', 'Gigabytes', 'Terabytes', 'Petabytes',
  * 'Percent'
  */
@@ -3233,31 +3257,33 @@ export interface LogSizeCapability {
  * @constructor
  * The maximum size range capability.
  *
- * @member {object} [minValue] Minimum value.
- * @member {number} [minValue.limit] The maximum size limit (see 'unit' for the
- * units).
- * @member {string} [minValue.unit] The units that the limit is expressed in.
- * Possible values include: 'Megabytes', 'Gigabytes', 'Terabytes', 'Petabytes'
- * @member {object} [maxValue] Maximum value.
- * @member {number} [maxValue.limit] The maximum size limit (see 'unit' for the
- * units).
- * @member {string} [maxValue.unit] The units that the limit is expressed in.
- * Possible values include: 'Megabytes', 'Gigabytes', 'Terabytes', 'Petabytes'
- * @member {object} [scaleSize] Scale/step size for discrete values between the
- * minimum value and the maximum value.
- * @member {number} [scaleSize.limit] The maximum size limit (see 'unit' for
+ * @property {object} [minValue] Minimum value.
+ * @property {number} [minValue.limit] The maximum size limit (see 'unit' for
  * the units).
- * @member {string} [scaleSize.unit] The units that the limit is expressed in.
+ * @property {string} [minValue.unit] The units that the limit is expressed in.
  * Possible values include: 'Megabytes', 'Gigabytes', 'Terabytes', 'Petabytes'
- * @member {object} [logSize] Size of transaction log.
- * @member {number} [logSize.limit] The log size limit (see 'unit' for the
+ * @property {object} [maxValue] Maximum value.
+ * @property {number} [maxValue.limit] The maximum size limit (see 'unit' for
+ * the units).
+ * @property {string} [maxValue.unit] The units that the limit is expressed in.
+ * Possible values include: 'Megabytes', 'Gigabytes', 'Terabytes', 'Petabytes'
+ * @property {object} [scaleSize] Scale/step size for discrete values between
+ * the minimum value and the maximum value.
+ * @property {number} [scaleSize.limit] The maximum size limit (see 'unit' for
+ * the units).
+ * @property {string} [scaleSize.unit] The units that the limit is expressed
+ * in. Possible values include: 'Megabytes', 'Gigabytes', 'Terabytes',
+ * 'Petabytes'
+ * @property {object} [logSize] Size of transaction log.
+ * @property {number} [logSize.limit] The log size limit (see 'unit' for the
  * units).
- * @member {string} [logSize.unit] The units that the limit is expressed in.
+ * @property {string} [logSize.unit] The units that the limit is expressed in.
  * Possible values include: 'Megabytes', 'Gigabytes', 'Terabytes', 'Petabytes',
  * 'Percent'
- * @member {string} [status] The status of the capability. Possible values
+ * @property {string} [status] The status of the capability. Possible values
  * include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {string} [reason] The reason for the capability not being available.
+ * @property {string} [reason] The reason for the capability not being
+ * available.
  */
 export interface MaxSizeRangeCapability {
   readonly minValue?: MaxSizeCapability;
@@ -3274,8 +3300,8 @@ export interface MaxSizeRangeCapability {
  * @constructor
  * The performance level capability.
  *
- * @member {number} [value] Performance level value.
- * @member {string} [unit] Unit type used to measure performance level.
+ * @property {number} [value] Performance level value.
+ * @property {string} [unit] Unit type used to measure performance level.
  * Possible values include: 'DTU', 'VCores'
  */
 export interface PerformanceLevelCapability {
@@ -3289,10 +3315,11 @@ export interface PerformanceLevelCapability {
  * @constructor
  * The license type capability
  *
- * @member {string} [name] License type identifier.
- * @member {string} [status] The status of the capability. Possible values
+ * @property {string} [name] License type identifier.
+ * @property {string} [status] The status of the capability. Possible values
  * include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {string} [reason] The reason for the capability not being available.
+ * @property {string} [reason] The reason for the capability not being
+ * available.
  */
 export interface LicenseTypeCapability {
   readonly name?: string;
@@ -3306,37 +3333,38 @@ export interface LicenseTypeCapability {
  * @constructor
  * The service objectives capability.
  *
- * @member {uuid} [id] The unique ID of the service objective.
- * @member {string} [name] The service objective name.
- * @member {array} [supportedMaxSizes] The list of supported maximum database
+ * @property {uuid} [id] The unique ID of the service objective.
+ * @property {string} [name] The service objective name.
+ * @property {array} [supportedMaxSizes] The list of supported maximum database
  * sizes.
- * @member {object} [performanceLevel] The performance level.
- * @member {number} [performanceLevel.value] Performance level value.
- * @member {string} [performanceLevel.unit] Unit type used to measure
+ * @property {object} [performanceLevel] The performance level.
+ * @property {number} [performanceLevel.value] Performance level value.
+ * @property {string} [performanceLevel.unit] Unit type used to measure
  * performance level. Possible values include: 'DTU', 'VCores'
- * @member {object} [sku] The sku.
- * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
- * letter+number code
- * @member {string} [sku.tier] This field is required to be implemented by the
- * Resource Provider if the service has more than one tier, but is not required
- * on a PUT.
- * @member {string} [sku.size] The SKU size. When the name field is the
+ * @property {object} [sku] The sku.
+ * @property {string} [sku.name] The name of the SKU. Ex - P3. It is typically
+ * a letter+number code
+ * @property {string} [sku.tier] This field is required to be implemented by
+ * the Resource Provider if the service has more than one tier, but is not
+ * required on a PUT.
+ * @property {string} [sku.size] The SKU size. When the name field is the
  * combination of tier and some other value, this would be the standalone code.
- * @member {string} [sku.family] If the service has different generations of
+ * @property {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * @property {number} [sku.capacity] If the SKU supports scale out/in then the
  * capacity integer should be included. If scale out/in is not possible for the
  * resource this may be omitted.
- * @member {array} [supportedLicenseTypes] List of supported license types.
- * @member {object} [includedMaxSize] The included (free) max size.
- * @member {number} [includedMaxSize.limit] The maximum size limit (see 'unit'
- * for the units).
- * @member {string} [includedMaxSize.unit] The units that the limit is
+ * @property {array} [supportedLicenseTypes] List of supported license types.
+ * @property {object} [includedMaxSize] The included (free) max size.
+ * @property {number} [includedMaxSize.limit] The maximum size limit (see
+ * 'unit' for the units).
+ * @property {string} [includedMaxSize.unit] The units that the limit is
  * expressed in. Possible values include: 'Megabytes', 'Gigabytes',
  * 'Terabytes', 'Petabytes'
- * @member {string} [status] The status of the capability. Possible values
+ * @property {string} [status] The status of the capability. Possible values
  * include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {string} [reason] The reason for the capability not being available.
+ * @property {string} [reason] The reason for the capability not being
+ * available.
  */
 export interface ServiceObjectiveCapability {
   readonly id?: string;
@@ -3356,14 +3384,15 @@ export interface ServiceObjectiveCapability {
  * @constructor
  * The edition capability.
  *
- * @member {string} [name] The database edition name.
- * @member {array} [supportedServiceLevelObjectives] The list of supported
+ * @property {string} [name] The database edition name.
+ * @property {array} [supportedServiceLevelObjectives] The list of supported
  * service objectives for the edition.
- * @member {boolean} [zoneRedundant] Whether or not zone redundancy is
+ * @property {boolean} [zoneRedundant] Whether or not zone redundancy is
  * supported for the edition.
- * @member {string} [status] The status of the capability. Possible values
+ * @property {string} [status] The status of the capability. Possible values
  * include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {string} [reason] The reason for the capability not being available.
+ * @property {string} [reason] The reason for the capability not being
+ * available.
  */
 export interface EditionCapability {
   readonly name?: string;
@@ -3379,12 +3408,13 @@ export interface EditionCapability {
  * @constructor
  * The minimum per-database performance level capability.
  *
- * @member {number} [limit] The minimum performance level per database.
- * @member {string} [unit] Unit type used to measure performance level.
+ * @property {number} [limit] The minimum performance level per database.
+ * @property {string} [unit] Unit type used to measure performance level.
  * Possible values include: 'DTU', 'VCores'
- * @member {string} [status] The status of the capability. Possible values
+ * @property {string} [status] The status of the capability. Possible values
  * include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {string} [reason] The reason for the capability not being available.
+ * @property {string} [reason] The reason for the capability not being
+ * available.
  */
 export interface ElasticPoolPerDatabaseMinPerformanceLevelCapability {
   readonly limit?: number;
@@ -3399,14 +3429,15 @@ export interface ElasticPoolPerDatabaseMinPerformanceLevelCapability {
  * @constructor
  * The max per-database performance level capability.
  *
- * @member {number} [limit] The maximum performance level per database.
- * @member {string} [unit] Unit type used to measure performance level.
+ * @property {number} [limit] The maximum performance level per database.
+ * @property {string} [unit] Unit type used to measure performance level.
  * Possible values include: 'DTU', 'VCores'
- * @member {array} [supportedPerDatabaseMinPerformanceLevels] The list of
+ * @property {array} [supportedPerDatabaseMinPerformanceLevels] The list of
  * supported min database performance levels.
- * @member {string} [status] The status of the capability. Possible values
+ * @property {string} [status] The status of the capability. Possible values
  * include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {string} [reason] The reason for the capability not being available.
+ * @property {string} [reason] The reason for the capability not being
+ * available.
  */
 export interface ElasticPoolPerDatabaseMaxPerformanceLevelCapability {
   readonly limit?: number;
@@ -3422,41 +3453,42 @@ export interface ElasticPoolPerDatabaseMaxPerformanceLevelCapability {
  * @constructor
  * The Elastic Pool performance level capability.
  *
- * @member {object} [performanceLevel] The performance level for the pool.
- * @member {number} [performanceLevel.value] Performance level value.
- * @member {string} [performanceLevel.unit] Unit type used to measure
+ * @property {object} [performanceLevel] The performance level for the pool.
+ * @property {number} [performanceLevel.value] Performance level value.
+ * @property {string} [performanceLevel.unit] Unit type used to measure
  * performance level. Possible values include: 'DTU', 'VCores'
- * @member {object} [sku] The sku.
- * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
- * letter+number code
- * @member {string} [sku.tier] This field is required to be implemented by the
- * Resource Provider if the service has more than one tier, but is not required
- * on a PUT.
- * @member {string} [sku.size] The SKU size. When the name field is the
+ * @property {object} [sku] The sku.
+ * @property {string} [sku.name] The name of the SKU. Ex - P3. It is typically
+ * a letter+number code
+ * @property {string} [sku.tier] This field is required to be implemented by
+ * the Resource Provider if the service has more than one tier, but is not
+ * required on a PUT.
+ * @property {string} [sku.size] The SKU size. When the name field is the
  * combination of tier and some other value, this would be the standalone code.
- * @member {string} [sku.family] If the service has different generations of
+ * @property {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * @property {number} [sku.capacity] If the SKU supports scale out/in then the
  * capacity integer should be included. If scale out/in is not possible for the
  * resource this may be omitted.
- * @member {array} [supportedLicenseTypes] List of supported license types.
- * @member {number} [maxDatabaseCount] The maximum number of databases
+ * @property {array} [supportedLicenseTypes] List of supported license types.
+ * @property {number} [maxDatabaseCount] The maximum number of databases
  * supported.
- * @member {object} [includedMaxSize] The included (free) max size for this
+ * @property {object} [includedMaxSize] The included (free) max size for this
  * performance level.
- * @member {number} [includedMaxSize.limit] The maximum size limit (see 'unit'
- * for the units).
- * @member {string} [includedMaxSize.unit] The units that the limit is
+ * @property {number} [includedMaxSize.limit] The maximum size limit (see
+ * 'unit' for the units).
+ * @property {string} [includedMaxSize.unit] The units that the limit is
  * expressed in. Possible values include: 'Megabytes', 'Gigabytes',
  * 'Terabytes', 'Petabytes'
- * @member {array} [supportedMaxSizes] The list of supported max sizes.
- * @member {array} [supportedPerDatabaseMaxSizes] The list of supported per
+ * @property {array} [supportedMaxSizes] The list of supported max sizes.
+ * @property {array} [supportedPerDatabaseMaxSizes] The list of supported per
  * database max sizes.
- * @member {array} [supportedPerDatabaseMaxPerformanceLevels] The list of
+ * @property {array} [supportedPerDatabaseMaxPerformanceLevels] The list of
  * supported per database max performance levels.
- * @member {string} [status] The status of the capability. Possible values
+ * @property {string} [status] The status of the capability. Possible values
  * include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {string} [reason] The reason for the capability not being available.
+ * @property {string} [reason] The reason for the capability not being
+ * available.
  */
 export interface ElasticPoolPerformanceLevelCapability {
   readonly performanceLevel?: PerformanceLevelCapability;
@@ -3477,14 +3509,15 @@ export interface ElasticPoolPerformanceLevelCapability {
  * @constructor
  * The elastic pool edition capability.
  *
- * @member {string} [name] The elastic pool edition name.
- * @member {array} [supportedElasticPoolPerformanceLevels] The list of
+ * @property {string} [name] The elastic pool edition name.
+ * @property {array} [supportedElasticPoolPerformanceLevels] The list of
  * supported elastic pool DTU levels for the edition.
- * @member {boolean} [zoneRedundant] Whether or not zone redundancy is
+ * @property {boolean} [zoneRedundant] Whether or not zone redundancy is
  * supported for the edition.
- * @member {string} [status] The status of the capability. Possible values
+ * @property {string} [status] The status of the capability. Possible values
  * include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {string} [reason] The reason for the capability not being available.
+ * @property {string} [reason] The reason for the capability not being
+ * available.
  */
 export interface ElasticPoolEditionCapability {
   readonly name?: string;
@@ -3500,13 +3533,15 @@ export interface ElasticPoolEditionCapability {
  * @constructor
  * The server capability
  *
- * @member {string} [name] The server version name.
- * @member {array} [supportedEditions] The list of supported database editions.
- * @member {array} [supportedElasticPoolEditions] The list of supported elastic
- * pool editions.
- * @member {string} [status] The status of the capability. Possible values
+ * @property {string} [name] The server version name.
+ * @property {array} [supportedEditions] The list of supported database
+ * editions.
+ * @property {array} [supportedElasticPoolEditions] The list of supported
+ * elastic pool editions.
+ * @property {string} [status] The status of the capability. Possible values
  * include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {string} [reason] The reason for the capability not being available.
+ * @property {string} [reason] The reason for the capability not being
+ * available.
  */
 export interface ServerVersionCapability {
   readonly name?: string;
@@ -3522,11 +3557,12 @@ export interface ServerVersionCapability {
  * @constructor
  * The managed instance virtual cores capability.
  *
- * @member {string} [name] The virtual cores identifier.
- * @member {number} [value] The virtual cores value.
- * @member {string} [status] The status of the capability. Possible values
+ * @property {string} [name] The virtual cores identifier.
+ * @property {number} [value] The virtual cores value.
+ * @property {string} [status] The status of the capability. Possible values
  * include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {string} [reason] The reason for the capability not being available.
+ * @property {string} [reason] The reason for the capability not being
+ * available.
  */
 export interface ManagedInstanceVcoresCapability {
   readonly name?: string;
@@ -3541,21 +3577,22 @@ export interface ManagedInstanceVcoresCapability {
  * @constructor
  * The managed server family capability.
  *
- * @member {string} [name] Family name.
- * @member {string} [sku] SKU name.
- * @member {array} [supportedLicenseTypes] List of supported license types.
- * @member {array} [supportedVcoresValues] List of supported virtual cores
+ * @property {string} [name] Family name.
+ * @property {string} [sku] SKU name.
+ * @property {array} [supportedLicenseTypes] List of supported license types.
+ * @property {array} [supportedVcoresValues] List of supported virtual cores
  * values.
- * @member {object} [includedMaxSize] Included size.
- * @member {number} [includedMaxSize.limit] The maximum size limit (see 'unit'
- * for the units).
- * @member {string} [includedMaxSize.unit] The units that the limit is
+ * @property {object} [includedMaxSize] Included size.
+ * @property {number} [includedMaxSize.limit] The maximum size limit (see
+ * 'unit' for the units).
+ * @property {string} [includedMaxSize.unit] The units that the limit is
  * expressed in. Possible values include: 'Megabytes', 'Gigabytes',
  * 'Terabytes', 'Petabytes'
- * @member {array} [supportedStorageSizes] Storage size ranges.
- * @member {string} [status] The status of the capability. Possible values
+ * @property {array} [supportedStorageSizes] Storage size ranges.
+ * @property {string} [status] The status of the capability. Possible values
  * include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {string} [reason] The reason for the capability not being available.
+ * @property {string} [reason] The reason for the capability not being
+ * available.
  */
 export interface ManagedInstanceFamilyCapability {
   readonly name?: string;
@@ -3574,11 +3611,12 @@ export interface ManagedInstanceFamilyCapability {
  * @constructor
  * The managed server capability
  *
- * @member {string} [name] The managed server version name.
- * @member {array} [supportedFamilies] The supported families.
- * @member {string} [status] The status of the capability. Possible values
+ * @property {string} [name] The managed server version name.
+ * @property {array} [supportedFamilies] The supported families.
+ * @property {string} [status] The status of the capability. Possible values
  * include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {string} [reason] The reason for the capability not being available.
+ * @property {string} [reason] The reason for the capability not being
+ * available.
  */
 export interface ManagedInstanceEditionCapability {
   readonly name?: string;
@@ -3593,12 +3631,13 @@ export interface ManagedInstanceEditionCapability {
  * @constructor
  * The managed instance capability
  *
- * @member {string} [name] The server version name.
- * @member {array} [supportedEditions] The list of supported managed instance
+ * @property {string} [name] The server version name.
+ * @property {array} [supportedEditions] The list of supported managed instance
  * editions.
- * @member {string} [status] The status of the capability. Possible values
+ * @property {string} [status] The status of the capability. Possible values
  * include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {string} [reason] The reason for the capability not being available.
+ * @property {string} [reason] The reason for the capability not being
+ * available.
  */
 export interface ManagedInstanceVersionCapability {
   readonly name?: string;
@@ -3613,14 +3652,15 @@ export interface ManagedInstanceVersionCapability {
  * @constructor
  * The location capability.
  *
- * @member {string} [name] The location name.
- * @member {array} [supportedServerVersions] The list of supported server
+ * @property {string} [name] The location name.
+ * @property {array} [supportedServerVersions] The list of supported server
  * versions.
- * @member {array} [supportedManagedInstanceVersions] The list of supported
+ * @property {array} [supportedManagedInstanceVersions] The list of supported
  * managed instance versions.
- * @member {string} [status] The status of the capability. Possible values
+ * @property {string} [status] The status of the capability. Possible values
  * include: 'Visible', 'Available', 'Default', 'Disabled'
- * @member {string} [reason] The reason for the capability not being available.
+ * @property {string} [reason] The reason for the capability not being
+ * available.
  */
 export interface LocationCapabilities {
   readonly name?: string;
@@ -3636,23 +3676,23 @@ export interface LocationCapabilities {
  * @constructor
  * A database resource.
  *
- * @member {object} [sku] The name and tier of the SKU.
- * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
- * letter+number code
- * @member {string} [sku.tier] This field is required to be implemented by the
- * Resource Provider if the service has more than one tier, but is not required
- * on a PUT.
- * @member {string} [sku.size] The SKU size. When the name field is the
+ * @property {object} [sku] The name and tier of the SKU.
+ * @property {string} [sku.name] The name of the SKU. Ex - P3. It is typically
+ * a letter+number code
+ * @property {string} [sku.tier] This field is required to be implemented by
+ * the Resource Provider if the service has more than one tier, but is not
+ * required on a PUT.
+ * @property {string} [sku.size] The SKU size. When the name field is the
  * combination of tier and some other value, this would be the standalone code.
- * @member {string} [sku.family] If the service has different generations of
+ * @property {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * @property {number} [sku.capacity] If the SKU supports scale out/in then the
  * capacity integer should be included. If scale out/in is not possible for the
  * resource this may be omitted.
- * @member {string} [kind] Kind of database. This is metadata used for the
+ * @property {string} [kind] Kind of database. This is metadata used for the
  * Azure portal experience.
- * @member {string} [managedBy] Resource that manages the database.
- * @member {string} [createMode] Specifies the mode of database creation.
+ * @property {string} [managedBy] Resource that manages the database.
+ * @property {string} [createMode] Specifies the mode of database creation.
  *
  * Default: regular database creation.
  *
@@ -3687,74 +3727,75 @@ export interface LocationCapabilities {
  * 'Secondary', 'PointInTimeRestore', 'Restore', 'Recovery',
  * 'RestoreExternalBackup', 'RestoreExternalBackupSecondary',
  * 'RestoreLongTermRetentionBackup', 'OnlineSecondary'
- * @member {string} [collation] The collation of the database.
- * @member {number} [maxSizeBytes] The max size of the database expressed in
+ * @property {string} [collation] The collation of the database.
+ * @property {number} [maxSizeBytes] The max size of the database expressed in
  * bytes.
- * @member {string} [sampleName] The name of the sample schema to apply when
+ * @property {string} [sampleName] The name of the sample schema to apply when
  * creating this database. Possible values include: 'AdventureWorksLT',
  * 'WideWorldImportersStd', 'WideWorldImportersFull'
- * @member {string} [elasticPoolId] The resource identifier of the elastic pool
- * containing this database.
- * @member {string} [sourceDatabaseId] The resource identifier of the source
+ * @property {string} [elasticPoolId] The resource identifier of the elastic
+ * pool containing this database.
+ * @property {string} [sourceDatabaseId] The resource identifier of the source
  * database associated with create operation of this database.
- * @member {string} [status] The status of the database. Possible values
+ * @property {string} [status] The status of the database. Possible values
  * include: 'Online', 'Restoring', 'RecoveryPending', 'Recovering', 'Suspect',
  * 'Offline', 'Standby', 'Shutdown', 'EmergencyMode', 'AutoClosed', 'Copying',
  * 'Creating', 'Inaccessible', 'OfflineSecondary', 'Pausing', 'Paused',
  * 'Resuming', 'Scaling'
- * @member {uuid} [databaseId] The ID of the database.
- * @member {date} [creationDate] The creation date of the database (ISO8601
+ * @property {uuid} [databaseId] The ID of the database.
+ * @property {date} [creationDate] The creation date of the database (ISO8601
  * format).
- * @member {string} [currentServiceObjectiveName] The current service level
+ * @property {string} [currentServiceObjectiveName] The current service level
  * objective name of the database.
- * @member {string} [requestedServiceObjectiveName] The requested service level
- * objective name of the database.
- * @member {string} [defaultSecondaryLocation] The default secondary region for
- * this database.
- * @member {string} [failoverGroupId] Failover Group resource identifier that
+ * @property {string} [requestedServiceObjectiveName] The requested service
+ * level objective name of the database.
+ * @property {string} [defaultSecondaryLocation] The default secondary region
+ * for this database.
+ * @property {string} [failoverGroupId] Failover Group resource identifier that
  * this database belongs to.
- * @member {date} [restorePointInTime] Specifies the point in time (ISO8601
+ * @property {date} [restorePointInTime] Specifies the point in time (ISO8601
  * format) of the source database that will be restored to create the new
  * database.
- * @member {date} [sourceDatabaseDeletionDate] Specifies the time that the
+ * @property {date} [sourceDatabaseDeletionDate] Specifies the time that the
  * database was deleted.
- * @member {string} [recoveryServicesRecoveryPointId] The resource identifier
+ * @property {string} [recoveryServicesRecoveryPointId] The resource identifier
  * of the recovery point associated with create operation of this database.
- * @member {string} [longTermRetentionBackupResourceId] The resource identifier
- * of the long term retention backup associated with create operation of this
- * database.
- * @member {string} [recoverableDatabaseId] The resource identifier of the
+ * @property {string} [longTermRetentionBackupResourceId] The resource
+ * identifier of the long term retention backup associated with create
+ * operation of this database.
+ * @property {string} [recoverableDatabaseId] The resource identifier of the
  * recoverable database associated with create operation of this database.
- * @member {string} [restorableDroppedDatabaseId] The resource identifier of
+ * @property {string} [restorableDroppedDatabaseId] The resource identifier of
  * the restorable dropped database associated with create operation of this
  * database.
- * @member {string} [catalogCollation] Collation of the metadata catalog.
+ * @property {string} [catalogCollation] Collation of the metadata catalog.
  * Possible values include: 'DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'
- * @member {boolean} [zoneRedundant] Whether or not this database is zone
+ * @property {boolean} [zoneRedundant] Whether or not this database is zone
  * redundant, which means the replicas of this database will be spread across
  * multiple availability zones.
- * @member {string} [licenseType] The license type to apply for this database.
- * Possible values include: 'LicenseIncluded', 'BasePrice'
- * @member {number} [maxLogSizeBytes] The max log size for this database.
- * @member {date} [earliestRestoreDate] This records the earliest start date
+ * @property {string} [licenseType] The license type to apply for this
+ * database. Possible values include: 'LicenseIncluded', 'BasePrice'
+ * @property {number} [maxLogSizeBytes] The max log size for this database.
+ * @property {date} [earliestRestoreDate] This records the earliest start date
  * and time that restore is available for this database (ISO8601 format).
- * @member {string} [readScale] The state of read-only routing. If enabled,
+ * @property {string} [readScale] The state of read-only routing. If enabled,
  * connections that have application intent set to readonly in their connection
  * string may be routed to a readonly secondary replica in the same region.
  * Possible values include: 'Enabled', 'Disabled'
- * @member {object} [currentSku] The name and tier of the SKU.
- * @member {string} [currentSku.name] The name of the SKU. Ex - P3. It is
+ * @property {object} [currentSku] The name and tier of the SKU.
+ * @property {string} [currentSku.name] The name of the SKU. Ex - P3. It is
  * typically a letter+number code
- * @member {string} [currentSku.tier] This field is required to be implemented
- * by the Resource Provider if the service has more than one tier, but is not
- * required on a PUT.
- * @member {string} [currentSku.size] The SKU size. When the name field is the
- * combination of tier and some other value, this would be the standalone code.
- * @member {string} [currentSku.family] If the service has different
+ * @property {string} [currentSku.tier] This field is required to be
+ * implemented by the Resource Provider if the service has more than one tier,
+ * but is not required on a PUT.
+ * @property {string} [currentSku.size] The SKU size. When the name field is
+ * the combination of tier and some other value, this would be the standalone
+ * code.
+ * @property {string} [currentSku.family] If the service has different
  * generations of hardware, for the same SKU, then that can be captured here.
- * @member {number} [currentSku.capacity] If the SKU supports scale out/in then
- * the capacity integer should be included. If scale out/in is not possible for
- * the resource this may be omitted.
+ * @property {number} [currentSku.capacity] If the SKU supports scale out/in
+ * then the capacity integer should be included. If scale out/in is not
+ * possible for the resource this may be omitted.
  */
 export interface Database extends TrackedResource {
   sku?: Sku;
@@ -3794,20 +3835,20 @@ export interface Database extends TrackedResource {
  * @constructor
  * A database resource.
  *
- * @member {object} [sku] The name and tier of the SKU.
- * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
- * letter+number code
- * @member {string} [sku.tier] This field is required to be implemented by the
- * Resource Provider if the service has more than one tier, but is not required
- * on a PUT.
- * @member {string} [sku.size] The SKU size. When the name field is the
+ * @property {object} [sku] The name and tier of the SKU.
+ * @property {string} [sku.name] The name of the SKU. Ex - P3. It is typically
+ * a letter+number code
+ * @property {string} [sku.tier] This field is required to be implemented by
+ * the Resource Provider if the service has more than one tier, but is not
+ * required on a PUT.
+ * @property {string} [sku.size] The SKU size. When the name field is the
  * combination of tier and some other value, this would be the standalone code.
- * @member {string} [sku.family] If the service has different generations of
+ * @property {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * @property {number} [sku.capacity] If the SKU supports scale out/in then the
  * capacity integer should be included. If scale out/in is not possible for the
  * resource this may be omitted.
- * @member {string} [createMode] Specifies the mode of database creation.
+ * @property {string} [createMode] Specifies the mode of database creation.
  *
  * Default: regular database creation.
  *
@@ -3842,75 +3883,76 @@ export interface Database extends TrackedResource {
  * 'Secondary', 'PointInTimeRestore', 'Restore', 'Recovery',
  * 'RestoreExternalBackup', 'RestoreExternalBackupSecondary',
  * 'RestoreLongTermRetentionBackup', 'OnlineSecondary'
- * @member {string} [collation] The collation of the database.
- * @member {number} [maxSizeBytes] The max size of the database expressed in
+ * @property {string} [collation] The collation of the database.
+ * @property {number} [maxSizeBytes] The max size of the database expressed in
  * bytes.
- * @member {string} [sampleName] The name of the sample schema to apply when
+ * @property {string} [sampleName] The name of the sample schema to apply when
  * creating this database. Possible values include: 'AdventureWorksLT',
  * 'WideWorldImportersStd', 'WideWorldImportersFull'
- * @member {string} [elasticPoolId] The resource identifier of the elastic pool
- * containing this database.
- * @member {string} [sourceDatabaseId] The resource identifier of the source
+ * @property {string} [elasticPoolId] The resource identifier of the elastic
+ * pool containing this database.
+ * @property {string} [sourceDatabaseId] The resource identifier of the source
  * database associated with create operation of this database.
- * @member {string} [status] The status of the database. Possible values
+ * @property {string} [status] The status of the database. Possible values
  * include: 'Online', 'Restoring', 'RecoveryPending', 'Recovering', 'Suspect',
  * 'Offline', 'Standby', 'Shutdown', 'EmergencyMode', 'AutoClosed', 'Copying',
  * 'Creating', 'Inaccessible', 'OfflineSecondary', 'Pausing', 'Paused',
  * 'Resuming', 'Scaling'
- * @member {uuid} [databaseId] The ID of the database.
- * @member {date} [creationDate] The creation date of the database (ISO8601
+ * @property {uuid} [databaseId] The ID of the database.
+ * @property {date} [creationDate] The creation date of the database (ISO8601
  * format).
- * @member {string} [currentServiceObjectiveName] The current service level
+ * @property {string} [currentServiceObjectiveName] The current service level
  * objective name of the database.
- * @member {string} [requestedServiceObjectiveName] The requested service level
- * objective name of the database.
- * @member {string} [defaultSecondaryLocation] The default secondary region for
- * this database.
- * @member {string} [failoverGroupId] Failover Group resource identifier that
+ * @property {string} [requestedServiceObjectiveName] The requested service
+ * level objective name of the database.
+ * @property {string} [defaultSecondaryLocation] The default secondary region
+ * for this database.
+ * @property {string} [failoverGroupId] Failover Group resource identifier that
  * this database belongs to.
- * @member {date} [restorePointInTime] Specifies the point in time (ISO8601
+ * @property {date} [restorePointInTime] Specifies the point in time (ISO8601
  * format) of the source database that will be restored to create the new
  * database.
- * @member {date} [sourceDatabaseDeletionDate] Specifies the time that the
+ * @property {date} [sourceDatabaseDeletionDate] Specifies the time that the
  * database was deleted.
- * @member {string} [recoveryServicesRecoveryPointId] The resource identifier
+ * @property {string} [recoveryServicesRecoveryPointId] The resource identifier
  * of the recovery point associated with create operation of this database.
- * @member {string} [longTermRetentionBackupResourceId] The resource identifier
- * of the long term retention backup associated with create operation of this
- * database.
- * @member {string} [recoverableDatabaseId] The resource identifier of the
+ * @property {string} [longTermRetentionBackupResourceId] The resource
+ * identifier of the long term retention backup associated with create
+ * operation of this database.
+ * @property {string} [recoverableDatabaseId] The resource identifier of the
  * recoverable database associated with create operation of this database.
- * @member {string} [restorableDroppedDatabaseId] The resource identifier of
+ * @property {string} [restorableDroppedDatabaseId] The resource identifier of
  * the restorable dropped database associated with create operation of this
  * database.
- * @member {string} [catalogCollation] Collation of the metadata catalog.
+ * @property {string} [catalogCollation] Collation of the metadata catalog.
  * Possible values include: 'DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'
- * @member {boolean} [zoneRedundant] Whether or not this database is zone
+ * @property {boolean} [zoneRedundant] Whether or not this database is zone
  * redundant, which means the replicas of this database will be spread across
  * multiple availability zones.
- * @member {string} [licenseType] The license type to apply for this database.
- * Possible values include: 'LicenseIncluded', 'BasePrice'
- * @member {number} [maxLogSizeBytes] The max log size for this database.
- * @member {date} [earliestRestoreDate] This records the earliest start date
+ * @property {string} [licenseType] The license type to apply for this
+ * database. Possible values include: 'LicenseIncluded', 'BasePrice'
+ * @property {number} [maxLogSizeBytes] The max log size for this database.
+ * @property {date} [earliestRestoreDate] This records the earliest start date
  * and time that restore is available for this database (ISO8601 format).
- * @member {string} [readScale] The state of read-only routing. If enabled,
+ * @property {string} [readScale] The state of read-only routing. If enabled,
  * connections that have application intent set to readonly in their connection
  * string may be routed to a readonly secondary replica in the same region.
  * Possible values include: 'Enabled', 'Disabled'
- * @member {object} [currentSku] The name and tier of the SKU.
- * @member {string} [currentSku.name] The name of the SKU. Ex - P3. It is
+ * @property {object} [currentSku] The name and tier of the SKU.
+ * @property {string} [currentSku.name] The name of the SKU. Ex - P3. It is
  * typically a letter+number code
- * @member {string} [currentSku.tier] This field is required to be implemented
- * by the Resource Provider if the service has more than one tier, but is not
- * required on a PUT.
- * @member {string} [currentSku.size] The SKU size. When the name field is the
- * combination of tier and some other value, this would be the standalone code.
- * @member {string} [currentSku.family] If the service has different
+ * @property {string} [currentSku.tier] This field is required to be
+ * implemented by the Resource Provider if the service has more than one tier,
+ * but is not required on a PUT.
+ * @property {string} [currentSku.size] The SKU size. When the name field is
+ * the combination of tier and some other value, this would be the standalone
+ * code.
+ * @property {string} [currentSku.family] If the service has different
  * generations of hardware, for the same SKU, then that can be captured here.
- * @member {number} [currentSku.capacity] If the SKU supports scale out/in then
- * the capacity integer should be included. If scale out/in is not possible for
- * the resource this may be omitted.
- * @member {object} [tags] Resource tags.
+ * @property {number} [currentSku.capacity] If the SKU supports scale out/in
+ * then the capacity integer should be included. If scale out/in is not
+ * possible for the resource this may be omitted.
+ * @property {object} [tags] Resource tags.
  */
 export interface DatabaseUpdate {
   sku?: Sku;
@@ -3949,7 +3991,7 @@ export interface DatabaseUpdate {
  * @constructor
  * Contains the information necessary to perform a resource move (rename).
  *
- * @member {string} id The target ID for the resource
+ * @property {string} id The target ID for the resource
  */
 export interface ResourceMoveDefinition {
   id: string;
@@ -3961,9 +4003,9 @@ export interface ResourceMoveDefinition {
  * @constructor
  * Per database settings of an elastic pool.
  *
- * @member {number} [minCapacity] The minimum capacity all databases are
+ * @property {number} [minCapacity] The minimum capacity all databases are
  * guaranteed.
- * @member {number} [maxCapacity] The maximum capacity any one database can
+ * @property {number} [maxCapacity] The maximum capacity any one database can
  * consume.
  */
 export interface ElasticPoolPerDatabaseSettings {
@@ -3977,37 +4019,37 @@ export interface ElasticPoolPerDatabaseSettings {
  * @constructor
  * An elastic pool.
  *
- * @member {object} [sku]
- * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
- * letter+number code
- * @member {string} [sku.tier] This field is required to be implemented by the
- * Resource Provider if the service has more than one tier, but is not required
- * on a PUT.
- * @member {string} [sku.size] The SKU size. When the name field is the
+ * @property {object} [sku]
+ * @property {string} [sku.name] The name of the SKU. Ex - P3. It is typically
+ * a letter+number code
+ * @property {string} [sku.tier] This field is required to be implemented by
+ * the Resource Provider if the service has more than one tier, but is not
+ * required on a PUT.
+ * @property {string} [sku.size] The SKU size. When the name field is the
  * combination of tier and some other value, this would be the standalone code.
- * @member {string} [sku.family] If the service has different generations of
+ * @property {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * @property {number} [sku.capacity] If the SKU supports scale out/in then the
  * capacity integer should be included. If scale out/in is not possible for the
  * resource this may be omitted.
- * @member {string} [kind] Kind of elastic pool. This is metadata used for the
- * Azure portal experience.
- * @member {string} [state] The state of the elastic pool. Possible values
+ * @property {string} [kind] Kind of elastic pool. This is metadata used for
+ * the Azure portal experience.
+ * @property {string} [state] The state of the elastic pool. Possible values
  * include: 'Creating', 'Ready', 'Disabled'
- * @member {date} [creationDate] The creation date of the elastic pool (ISO8601
- * format).
- * @member {number} [maxSizeBytes] The storage limit for the database elastic
+ * @property {date} [creationDate] The creation date of the elastic pool
+ * (ISO8601 format).
+ * @property {number} [maxSizeBytes] The storage limit for the database elastic
  * pool in bytes.
- * @member {object} [perDatabaseSettings] The per database settings for the
+ * @property {object} [perDatabaseSettings] The per database settings for the
  * elastic pool.
- * @member {number} [perDatabaseSettings.minCapacity] The minimum capacity all
- * databases are guaranteed.
- * @member {number} [perDatabaseSettings.maxCapacity] The maximum capacity any
- * one database can consume.
- * @member {boolean} [zoneRedundant] Whether or not this elastic pool is zone
+ * @property {number} [perDatabaseSettings.minCapacity] The minimum capacity
+ * all databases are guaranteed.
+ * @property {number} [perDatabaseSettings.maxCapacity] The maximum capacity
+ * any one database can consume.
+ * @property {boolean} [zoneRedundant] Whether or not this elastic pool is zone
  * redundant, which means the replicas of this elastic pool will be spread
  * across multiple availability zones.
- * @member {string} [licenseType] The license type to apply for this elastic
+ * @property {string} [licenseType] The license type to apply for this elastic
  * pool. Possible values include: 'LicenseIncluded', 'BasePrice'
  */
 export interface ElasticPool extends TrackedResource {
@@ -4027,33 +4069,33 @@ export interface ElasticPool extends TrackedResource {
  * @constructor
  * An elastic pool update.
  *
- * @member {object} [sku]
- * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
- * letter+number code
- * @member {string} [sku.tier] This field is required to be implemented by the
- * Resource Provider if the service has more than one tier, but is not required
- * on a PUT.
- * @member {string} [sku.size] The SKU size. When the name field is the
+ * @property {object} [sku]
+ * @property {string} [sku.name] The name of the SKU. Ex - P3. It is typically
+ * a letter+number code
+ * @property {string} [sku.tier] This field is required to be implemented by
+ * the Resource Provider if the service has more than one tier, but is not
+ * required on a PUT.
+ * @property {string} [sku.size] The SKU size. When the name field is the
  * combination of tier and some other value, this would be the standalone code.
- * @member {string} [sku.family] If the service has different generations of
+ * @property {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * @property {number} [sku.capacity] If the SKU supports scale out/in then the
  * capacity integer should be included. If scale out/in is not possible for the
  * resource this may be omitted.
- * @member {number} [maxSizeBytes] The storage limit for the database elastic
+ * @property {number} [maxSizeBytes] The storage limit for the database elastic
  * pool in bytes.
- * @member {object} [perDatabaseSettings] The per database settings for the
+ * @property {object} [perDatabaseSettings] The per database settings for the
  * elastic pool.
- * @member {number} [perDatabaseSettings.minCapacity] The minimum capacity all
- * databases are guaranteed.
- * @member {number} [perDatabaseSettings.maxCapacity] The maximum capacity any
- * one database can consume.
- * @member {boolean} [zoneRedundant] Whether or not this elastic pool is zone
+ * @property {number} [perDatabaseSettings.minCapacity] The minimum capacity
+ * all databases are guaranteed.
+ * @property {number} [perDatabaseSettings.maxCapacity] The maximum capacity
+ * any one database can consume.
+ * @property {boolean} [zoneRedundant] Whether or not this elastic pool is zone
  * redundant, which means the replicas of this elastic pool will be spread
  * across multiple availability zones.
- * @member {string} [licenseType] The license type to apply for this elastic
+ * @property {string} [licenseType] The license type to apply for this elastic
  * pool. Possible values include: 'LicenseIncluded', 'BasePrice'
- * @member {object} [tags] Resource tags.
+ * @property {object} [tags] Resource tags.
  */
 export interface ElasticPoolUpdate {
   sku?: Sku;
@@ -4070,8 +4112,8 @@ export interface ElasticPoolUpdate {
  * @constructor
  * Properties of a vulnerability assessment scan error.
  *
- * @member {string} [code] The error code.
- * @member {string} [message] The error message.
+ * @property {string} [code] The error code.
+ * @property {string} [message] The error message.
  */
 export interface VulnerabilityAssessmentScanError {
   readonly code?: string;
@@ -4084,17 +4126,17 @@ export interface VulnerabilityAssessmentScanError {
  * @constructor
  * A vulnerability assessment scan record.
  *
- * @member {string} [scanId] The scan ID.
- * @member {string} [triggerType] The scan trigger type. Possible values
+ * @property {string} [scanId] The scan ID.
+ * @property {string} [triggerType] The scan trigger type. Possible values
  * include: 'OnDemand', 'Recurring'
- * @member {string} [state] The scan status. Possible values include: 'Passed',
- * 'Failed', 'FailedToRun', 'InProgress'
- * @member {date} [startTime] The scan start time (UTC).
- * @member {date} [endTime] The scan end time (UTC).
- * @member {array} [errors] The scan errors.
- * @member {string} [storageContainerPath] The scan results storage container
+ * @property {string} [state] The scan status. Possible values include:
+ * 'Passed', 'Failed', 'FailedToRun', 'InProgress'
+ * @property {date} [startTime] The scan start time (UTC).
+ * @property {date} [endTime] The scan end time (UTC).
+ * @property {array} [errors] The scan errors.
+ * @property {string} [storageContainerPath] The scan results storage container
  * path.
- * @member {number} [numberOfFailedSecurityChecks] The number of failed
+ * @property {number} [numberOfFailedSecurityChecks] The number of failed
  * security checks.
  */
 export interface VulnerabilityAssessmentScanRecord extends ProxyResource {
@@ -4114,7 +4156,7 @@ export interface VulnerabilityAssessmentScanRecord extends ProxyResource {
  * @constructor
  * A database Vulnerability Assessment scan export resource.
  *
- * @member {string} [exportedReportLocation] Location of the exported report
+ * @property {string} [exportedReportLocation] Location of the exported report
  * (e.g.
  * https://myStorage.blob.core.windows.net/VaScans/scans/serverName/databaseName/scan_scanId.xlsx).
  */
@@ -4128,11 +4170,11 @@ export interface DatabaseVulnerabilityAssessmentScansExport extends ProxyResourc
  * @constructor
  * Read-write endpoint of the failover group instance.
  *
- * @member {string} failoverPolicy Failover policy of the read-write endpoint
+ * @property {string} failoverPolicy Failover policy of the read-write endpoint
  * for the failover group. If failoverPolicy is Automatic then
  * failoverWithDataLossGracePeriodMinutes is required. Possible values include:
  * 'Manual', 'Automatic'
- * @member {number} [failoverWithDataLossGracePeriodMinutes] Grace period
+ * @property {number} [failoverWithDataLossGracePeriodMinutes] Grace period
  * before failover with data loss is attempted for the read-write endpoint. If
  * failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is
  * required.
@@ -4148,8 +4190,9 @@ export interface InstanceFailoverGroupReadWriteEndpoint {
  * @constructor
  * Read-only endpoint of the failover group instance.
  *
- * @member {string} [failoverPolicy] Failover policy of the read-only endpoint
- * for the failover group. Possible values include: 'Disabled', 'Enabled'
+ * @property {string} [failoverPolicy] Failover policy of the read-only
+ * endpoint for the failover group. Possible values include: 'Disabled',
+ * 'Enabled'
  */
 export interface InstanceFailoverGroupReadOnlyEndpoint {
   failoverPolicy?: string;
@@ -4161,8 +4204,8 @@ export interface InstanceFailoverGroupReadOnlyEndpoint {
  * @constructor
  * Partner region information for the failover group.
  *
- * @member {string} [location] Geo location of the partner managed instances.
- * @member {string} [replicationRole] Replication role of the partner managed
+ * @property {string} [location] Geo location of the partner managed instances.
+ * @property {string} [replicationRole] Replication role of the partner managed
  * instances. Possible values include: 'Primary', 'Secondary'
  */
 export interface PartnerRegionInfo {
@@ -4176,9 +4219,9 @@ export interface PartnerRegionInfo {
  * @constructor
  * Pairs of Managed Instances in the failover group.
  *
- * @member {string} [primaryManagedInstanceId] Id of Primary Managed Instance
+ * @property {string} [primaryManagedInstanceId] Id of Primary Managed Instance
  * in pair.
- * @member {string} [partnerManagedInstanceId] Id of Partner Managed Instance
+ * @property {string} [partnerManagedInstanceId] Id of Partner Managed Instance
  * in pair.
  */
 export interface ManagedInstancePairInfo {
@@ -4192,28 +4235,29 @@ export interface ManagedInstancePairInfo {
  * @constructor
  * An instance failover group.
  *
- * @member {object} readWriteEndpoint Read-write endpoint of the failover group
- * instance.
- * @member {string} [readWriteEndpoint.failoverPolicy] Failover policy of the
+ * @property {object} readWriteEndpoint Read-write endpoint of the failover
+ * group instance.
+ * @property {string} [readWriteEndpoint.failoverPolicy] Failover policy of the
  * read-write endpoint for the failover group. If failoverPolicy is Automatic
  * then failoverWithDataLossGracePeriodMinutes is required. Possible values
  * include: 'Manual', 'Automatic'
- * @member {number} [readWriteEndpoint.failoverWithDataLossGracePeriodMinutes]
- * Grace period before failover with data loss is attempted for the read-write
- * endpoint. If failoverPolicy is Automatic then
- * failoverWithDataLossGracePeriodMinutes is required.
- * @member {object} [readOnlyEndpoint] Read-only endpoint of the failover group
- * instance.
- * @member {string} [readOnlyEndpoint.failoverPolicy] Failover policy of the
+ * @property {number}
+ * [readWriteEndpoint.failoverWithDataLossGracePeriodMinutes] Grace period
+ * before failover with data loss is attempted for the read-write endpoint. If
+ * failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is
+ * required.
+ * @property {object} [readOnlyEndpoint] Read-only endpoint of the failover
+ * group instance.
+ * @property {string} [readOnlyEndpoint.failoverPolicy] Failover policy of the
  * read-only endpoint for the failover group. Possible values include:
  * 'Disabled', 'Enabled'
- * @member {string} [replicationRole] Local replication role of the failover
+ * @property {string} [replicationRole] Local replication role of the failover
  * group instance. Possible values include: 'Primary', 'Secondary'
- * @member {string} [replicationState] Replication state of the failover group
- * instance.
- * @member {array} partnerRegions Partner region information for the failover
+ * @property {string} [replicationState] Replication state of the failover
+ * group instance.
+ * @property {array} partnerRegions Partner region information for the failover
  * group.
- * @member {array} managedInstancePairs List of managed instance pairs in the
+ * @property {array} managedInstancePairs List of managed instance pairs in the
  * failover group.
  */
 export interface InstanceFailoverGroup extends ProxyResource {
@@ -4231,7 +4275,7 @@ export interface InstanceFailoverGroup extends ProxyResource {
  * @constructor
  * A short term retention policy.
  *
- * @member {number} [retentionDays] The backup retention period in days. This
+ * @property {number} [retentionDays] The backup retention period in days. This
  * is how many days Point-in-Time Restore will be supported.
  */
 export interface BackupShortTermRetentionPolicy extends ProxyResource {
@@ -4244,8 +4288,8 @@ export interface BackupShortTermRetentionPolicy extends ProxyResource {
  * @constructor
  * A TDE certificate that can be uploaded into a server.
  *
- * @member {string} privateBlob The base64 encoded certificate private blob.
- * @member {string} [certPassword] The certificate password.
+ * @property {string} privateBlob The base64 encoded certificate private blob.
+ * @property {string} [certPassword] The certificate password.
  */
 export interface TdeCertificate extends ProxyResource {
   privateBlob: string;
@@ -4258,14 +4302,14 @@ export interface TdeCertificate extends ProxyResource {
  * @constructor
  * A managed instance key.
  *
- * @member {string} [kind] Kind of encryption protector. This is metadata used
- * for the Azure portal experience.
- * @member {string} serverKeyType The key type like 'ServiceManaged',
+ * @property {string} [kind] Kind of encryption protector. This is metadata
+ * used for the Azure portal experience.
+ * @property {string} serverKeyType The key type like 'ServiceManaged',
  * 'AzureKeyVault'. Possible values include: 'ServiceManaged', 'AzureKeyVault'
- * @member {string} [uri] The URI of the key. If the ServerKeyType is
+ * @property {string} [uri] The URI of the key. If the ServerKeyType is
  * AzureKeyVault, then the URI is required.
- * @member {string} [thumbprint] Thumbprint of the key.
- * @member {date} [creationDate] The key creation date.
+ * @property {string} [thumbprint] Thumbprint of the key.
+ * @property {date} [creationDate] The key creation date.
  */
 export interface ManagedInstanceKey extends ProxyResource {
   readonly kind?: string;
@@ -4281,14 +4325,14 @@ export interface ManagedInstanceKey extends ProxyResource {
  * @constructor
  * The managed instance encryption protector.
  *
- * @member {string} [kind] Kind of encryption protector. This is metadata used
- * for the Azure portal experience.
- * @member {string} [serverKeyName] The name of the managed instance key.
- * @member {string} serverKeyType The encryption protector type like
+ * @property {string} [kind] Kind of encryption protector. This is metadata
+ * used for the Azure portal experience.
+ * @property {string} [serverKeyName] The name of the managed instance key.
+ * @property {string} serverKeyType The encryption protector type like
  * 'ServiceManaged', 'AzureKeyVault'. Possible values include:
  * 'ServiceManaged', 'AzureKeyVault'
- * @member {string} [uri] The URI of the server key.
- * @member {string} [thumbprint] Thumbprint of the server key.
+ * @property {string} [uri] The URI of the server key.
+ * @property {string} [thumbprint] Thumbprint of the server key.
  */
 export interface ManagedInstanceEncryptionProtector extends ProxyResource {
   readonly kind?: string;
@@ -4296,6 +4340,70 @@ export interface ManagedInstanceEncryptionProtector extends ProxyResource {
   serverKeyType: string;
   readonly uri?: string;
   readonly thumbprint?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstanceVulnerabilityAssessment class.
+ * @constructor
+ * A managed instance vulnerability assessment.
+ *
+ * @property {string} storageContainerPath A blob storage container path to
+ * hold the scan results (e.g.
+ * https://myStorage.blob.core.windows.net/VaScans/).
+ * @property {string} [storageContainerSasKey] A shared access signature (SAS
+ * Key) that has write access to the blob container specified in
+ * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
+ * specified, StorageContainerSasKey is required.
+ * @property {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the storage account for vulnerability assessment scan results. If
+ * 'StorageContainerSasKey' isn't specified, storageAccountAccessKey is
+ * required.
+ * @property {object} [recurringScans] The recurring scans settings
+ * @property {boolean} [recurringScans.isEnabled] Recurring scans state.
+ * @property {boolean} [recurringScans.emailSubscriptionAdmins] Specifies that
+ * the schedule scan notification will be is sent to the subscription
+ * administrators.
+ * @property {array} [recurringScans.emails] Specifies an array of e-mail
+ * addresses to which the scan notification is sent.
+ */
+export interface ManagedInstanceVulnerabilityAssessment extends ProxyResource {
+  storageContainerPath: string;
+  storageContainerSasKey?: string;
+  storageAccountAccessKey?: string;
+  recurringScans?: VulnerabilityAssessmentRecurringScansProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerVulnerabilityAssessment class.
+ * @constructor
+ * A server vulnerability assessment.
+ *
+ * @property {string} storageContainerPath A blob storage container path to
+ * hold the scan results (e.g.
+ * https://myStorage.blob.core.windows.net/VaScans/).
+ * @property {string} [storageContainerSasKey] A shared access signature (SAS
+ * Key) that has write access to the blob container specified in
+ * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
+ * specified, StorageContainerSasKey is required.
+ * @property {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the storage account for vulnerability assessment scan results. If
+ * 'StorageContainerSasKey' isn't specified, storageAccountAccessKey is
+ * required.
+ * @property {object} [recurringScans] The recurring scans settings
+ * @property {boolean} [recurringScans.isEnabled] Recurring scans state.
+ * @property {boolean} [recurringScans.emailSubscriptionAdmins] Specifies that
+ * the schedule scan notification will be is sent to the subscription
+ * administrators.
+ * @property {array} [recurringScans.emails] Specifies an array of e-mail
+ * addresses to which the scan notification is sent.
+ */
+export interface ServerVulnerabilityAssessment extends ProxyResource {
+  storageContainerPath: string;
+  storageContainerSasKey?: string;
+  storageAccountAccessKey?: string;
+  recurringScans?: VulnerabilityAssessmentRecurringScansProperties;
 }
 
 
@@ -4325,7 +4433,7 @@ export interface RestorableDroppedDatabaseListResult extends Array<RestorableDro
  * @constructor
  * A list of servers.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ServerListResult extends Array<Server> {
   readonly nextLink?: string;
@@ -4387,7 +4495,7 @@ export interface MetricDefinitionListResult extends Array<MetricDefinition> {
  * @constructor
  * A list of databases.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface DatabaseListResult extends Array<Database> {
   readonly nextLink?: string;
@@ -4399,7 +4507,7 @@ export interface DatabaseListResult extends Array<Database> {
  * @constructor
  * The result of an elastic pool list request.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ElasticPoolListResult extends Array<ElasticPool> {
   readonly nextLink?: string;
@@ -4532,7 +4640,7 @@ export interface DatabaseUsageListResult extends Array<DatabaseUsage> {
  * @constructor
  * A list of server encryption protectors.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface EncryptionProtectorListResult extends Array<EncryptionProtector> {
   readonly nextLink?: string;
@@ -4544,7 +4652,7 @@ export interface EncryptionProtectorListResult extends Array<EncryptionProtector
  * @constructor
  * A list of failover groups.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface FailoverGroupListResult extends Array<FailoverGroup> {
   readonly nextLink?: string;
@@ -4556,7 +4664,7 @@ export interface FailoverGroupListResult extends Array<FailoverGroup> {
  * @constructor
  * A list of managed instances.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ManagedInstanceListResult extends Array<ManagedInstance> {
   readonly nextLink?: string;
@@ -4568,7 +4676,7 @@ export interface ManagedInstanceListResult extends Array<ManagedInstance> {
  * @constructor
  * Result of the request to list SQL operations.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface OperationListResult extends Array<Operation> {
   readonly nextLink?: string;
@@ -4580,7 +4688,7 @@ export interface OperationListResult extends Array<Operation> {
  * @constructor
  * A list of server keys.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ServerKeyListResult extends Array<ServerKey> {
   readonly nextLink?: string;
@@ -4592,7 +4700,7 @@ export interface ServerKeyListResult extends Array<ServerKey> {
  * @constructor
  * A list of sync agents.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface SyncAgentListResult extends Array<SyncAgent> {
   readonly nextLink?: string;
@@ -4604,7 +4712,7 @@ export interface SyncAgentListResult extends Array<SyncAgent> {
  * @constructor
  * A list of sync agent linked databases.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface SyncAgentLinkedDatabaseListResult extends Array<SyncAgentLinkedDatabase> {
   readonly nextLink?: string;
@@ -4616,7 +4724,7 @@ export interface SyncAgentLinkedDatabaseListResult extends Array<SyncAgentLinked
  * @constructor
  * A list of sync database ID properties.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface SyncDatabaseIdListResult extends Array<SyncDatabaseIdProperties> {
   readonly nextLink?: string;
@@ -4628,7 +4736,7 @@ export interface SyncDatabaseIdListResult extends Array<SyncDatabaseIdProperties
  * @constructor
  * A list of sync schema properties.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface SyncFullSchemaPropertiesListResult extends Array<SyncFullSchemaProperties> {
   readonly nextLink?: string;
@@ -4640,7 +4748,7 @@ export interface SyncFullSchemaPropertiesListResult extends Array<SyncFullSchema
  * @constructor
  * A list of sync group log properties.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface SyncGroupLogListResult extends Array<SyncGroupLogProperties> {
   readonly nextLink?: string;
@@ -4652,7 +4760,7 @@ export interface SyncGroupLogListResult extends Array<SyncGroupLogProperties> {
  * @constructor
  * A list of sync groups.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface SyncGroupListResult extends Array<SyncGroup> {
   readonly nextLink?: string;
@@ -4664,7 +4772,7 @@ export interface SyncGroupListResult extends Array<SyncGroup> {
  * @constructor
  * A list of Azure SQL Database sync members.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface SyncMemberListResult extends Array<SyncMember> {
   readonly nextLink?: string;
@@ -4676,7 +4784,7 @@ export interface SyncMemberListResult extends Array<SyncMember> {
  * @constructor
  * A list of subscription usage metrics in a location.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface SubscriptionUsageListResult extends Array<SubscriptionUsage> {
   readonly nextLink?: string;
@@ -4688,7 +4796,7 @@ export interface SubscriptionUsageListResult extends Array<SubscriptionUsage> {
  * @constructor
  * A list of virtual network rules.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface VirtualNetworkRuleListResult extends Array<VirtualNetworkRule> {
   readonly nextLink?: string;
@@ -4700,7 +4808,7 @@ export interface VirtualNetworkRuleListResult extends Array<VirtualNetworkRule> 
  * @constructor
  * A list of the database's vulnerability assessments.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface DatabaseVulnerabilityAssessmentListResult extends Array<DatabaseVulnerabilityAssessment> {
   readonly nextLink?: string;
@@ -4712,7 +4820,7 @@ export interface DatabaseVulnerabilityAssessmentListResult extends Array<Databas
  * @constructor
  * A list of Azure SQL job agents.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface JobAgentListResult extends Array<JobAgent> {
   readonly nextLink?: string;
@@ -4724,7 +4832,7 @@ export interface JobAgentListResult extends Array<JobAgent> {
  * @constructor
  * A list of job credentials.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface JobCredentialListResult extends Array<JobCredential> {
   readonly nextLink?: string;
@@ -4736,7 +4844,7 @@ export interface JobCredentialListResult extends Array<JobCredential> {
  * @constructor
  * A list of job executions.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface JobExecutionListResult extends Array<JobExecution> {
   readonly nextLink?: string;
@@ -4748,7 +4856,7 @@ export interface JobExecutionListResult extends Array<JobExecution> {
  * @constructor
  * A list of jobs.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface JobListResult extends Array<Job> {
   readonly nextLink?: string;
@@ -4760,7 +4868,7 @@ export interface JobListResult extends Array<Job> {
  * @constructor
  * A list of job steps.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface JobStepListResult extends Array<JobStep> {
   readonly nextLink?: string;
@@ -4772,7 +4880,7 @@ export interface JobStepListResult extends Array<JobStep> {
  * @constructor
  * A list of target groups.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface JobTargetGroupListResult extends Array<JobTargetGroup> {
   readonly nextLink?: string;
@@ -4784,7 +4892,7 @@ export interface JobTargetGroupListResult extends Array<JobTargetGroup> {
  * @constructor
  * A list of job versions.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface JobVersionListResult extends Array<JobVersion> {
   readonly nextLink?: string;
@@ -4796,7 +4904,7 @@ export interface JobVersionListResult extends Array<JobVersion> {
  * @constructor
  * A list of long term retention bacukps.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface LongTermRetentionBackupListResult extends Array<LongTermRetentionBackup> {
   readonly nextLink?: string;
@@ -4808,7 +4916,7 @@ export interface LongTermRetentionBackupListResult extends Array<LongTermRetenti
  * @constructor
  * A list of short term retention policies.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ManagedBackupShortTermRetentionPolicyListResult extends Array<ManagedBackupShortTermRetentionPolicy> {
   readonly nextLink?: string;
@@ -4820,7 +4928,7 @@ export interface ManagedBackupShortTermRetentionPolicyListResult extends Array<M
  * @constructor
  * A list of managed databases.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ManagedDatabaseListResult extends Array<ManagedDatabase> {
   readonly nextLink?: string;
@@ -4832,7 +4940,7 @@ export interface ManagedDatabaseListResult extends Array<ManagedDatabase> {
  * @constructor
  * A list of server DNS aliases.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ServerDnsAliasListResult extends Array<ServerDnsAlias> {
   readonly nextLink?: string;
@@ -4844,7 +4952,7 @@ export interface ServerDnsAliasListResult extends Array<ServerDnsAlias> {
  * @constructor
  * A list of long term retention bacukps.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface RestorePointListResult extends Array<RestorePoint> {
   readonly nextLink?: string;
@@ -4856,7 +4964,7 @@ export interface RestorePointListResult extends Array<RestorePoint> {
  * @constructor
  * The response to a list database operations request
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface DatabaseOperationListResult extends Array<DatabaseOperation> {
   readonly nextLink?: string;
@@ -4868,7 +4976,7 @@ export interface DatabaseOperationListResult extends Array<DatabaseOperation> {
  * @constructor
  * The response to a list elastic pool operations request
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ElasticPoolOperationListResult extends Array<ElasticPoolOperation> {
   readonly nextLink?: string;
@@ -4880,7 +4988,7 @@ export interface ElasticPoolOperationListResult extends Array<ElasticPoolOperati
  * @constructor
  * A list of vulnerability assessment scan records.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface VulnerabilityAssessmentScanRecordListResult extends Array<VulnerabilityAssessmentScanRecord> {
   readonly nextLink?: string;
@@ -4892,7 +5000,7 @@ export interface VulnerabilityAssessmentScanRecordListResult extends Array<Vulne
  * @constructor
  * A list of instance failover groups.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface InstanceFailoverGroupListResult extends Array<InstanceFailoverGroup> {
   readonly nextLink?: string;
@@ -4904,7 +5012,7 @@ export interface InstanceFailoverGroupListResult extends Array<InstanceFailoverG
  * @constructor
  * A list of short term retention policies.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface BackupShortTermRetentionPolicyListResult extends Array<BackupShortTermRetentionPolicy> {
   readonly nextLink?: string;
@@ -4916,7 +5024,7 @@ export interface BackupShortTermRetentionPolicyListResult extends Array<BackupSh
  * @constructor
  * A list of managed instance keys.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ManagedInstanceKeyListResult extends Array<ManagedInstanceKey> {
   readonly nextLink?: string;
@@ -4928,8 +5036,32 @@ export interface ManagedInstanceKeyListResult extends Array<ManagedInstanceKey> 
  * @constructor
  * A list of managed instance encryption protectors.
  *
- * @member {string} [nextLink] Link to retrieve next page of results.
+ * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ManagedInstanceEncryptionProtectorListResult extends Array<ManagedInstanceEncryptionProtector> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstanceVulnerabilityAssessmentListResult class.
+ * @constructor
+ * A list of the ManagedInstance's vulnerability assessments.
+ *
+ * @property {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ManagedInstanceVulnerabilityAssessmentListResult extends Array<ManagedInstanceVulnerabilityAssessment> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerVulnerabilityAssessmentListResult class.
+ * @constructor
+ * A list of the server's vulnerability assessments.
+ *
+ * @property {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ServerVulnerabilityAssessmentListResult extends Array<ServerVulnerabilityAssessment> {
   readonly nextLink?: string;
 }

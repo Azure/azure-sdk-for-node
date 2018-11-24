@@ -124,6 +124,8 @@ export default class SqlManagementClient extends AzureServiceClient {
   managedInstanceTdeCertificates: operations.ManagedInstanceTdeCertificates;
   managedInstanceKeys: operations.ManagedInstanceKeys;
   managedInstanceEncryptionProtectors: operations.ManagedInstanceEncryptionProtectors;
+  managedInstanceVulnerabilityAssessments: operations.ManagedInstanceVulnerabilityAssessments;
+  serverVulnerabilityAssessments: operations.ServerVulnerabilityAssessments;
 }
 
 export { SqlManagementClient, models as SqlManagementModels };
