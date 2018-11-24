@@ -1573,8 +1573,8 @@ export interface Jobs {
      *
      * @param {object} [parameters.mountVolumes] Mount volumes. Information on
      * mount volumes to be used by the job. These volumes will be mounted before
-     * the job execution and will be unmouted after the job completion. The volumes
-     * will be mounted at location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT
+     * the job execution and will be unmounted after the job completion. The
+     * volumes will be mounted at location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT
      * environment variable.
      *
      * @param {array} [parameters.mountVolumes.azureFileShares] Azure File Shares.
@@ -1632,7 +1632,7 @@ export interface Jobs {
      *
      * @param {object}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault
-     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault resource identifier. Fully qualified resource identifier of the
      * Key Vault.
      *
      * @param {string}
@@ -1891,8 +1891,8 @@ export interface Jobs {
      *
      * @param {object} [parameters.mountVolumes] Mount volumes. Information on
      * mount volumes to be used by the job. These volumes will be mounted before
-     * the job execution and will be unmouted after the job completion. The volumes
-     * will be mounted at location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT
+     * the job execution and will be unmounted after the job completion. The
+     * volumes will be mounted at location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT
      * environment variable.
      *
      * @param {array} [parameters.mountVolumes.azureFileShares] Azure File Shares.
@@ -1950,7 +1950,7 @@ export interface Jobs {
      *
      * @param {object}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault
-     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault resource identifier. Fully qualified resource identifier of the
      * Key Vault.
      *
      * @param {string}
@@ -2682,8 +2682,8 @@ export interface Jobs {
      *
      * @param {object} [parameters.mountVolumes] Mount volumes. Information on
      * mount volumes to be used by the job. These volumes will be mounted before
-     * the job execution and will be unmouted after the job completion. The volumes
-     * will be mounted at location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT
+     * the job execution and will be unmounted after the job completion. The
+     * volumes will be mounted at location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT
      * environment variable.
      *
      * @param {array} [parameters.mountVolumes.azureFileShares] Azure File Shares.
@@ -2741,7 +2741,7 @@ export interface Jobs {
      *
      * @param {object}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault
-     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault resource identifier. Fully qualified resource identifier of the
      * Key Vault.
      *
      * @param {string}
@@ -3000,8 +3000,8 @@ export interface Jobs {
      *
      * @param {object} [parameters.mountVolumes] Mount volumes. Information on
      * mount volumes to be used by the job. These volumes will be mounted before
-     * the job execution and will be unmouted after the job completion. The volumes
-     * will be mounted at location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT
+     * the job execution and will be unmounted after the job completion. The
+     * volumes will be mounted at location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT
      * environment variable.
      *
      * @param {array} [parameters.mountVolumes.azureFileShares] Azure File Shares.
@@ -3059,7 +3059,7 @@ export interface Jobs {
      *
      * @param {object}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault
-     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault resource identifier. Fully qualified resource identifier of the
      * Key Vault.
      *
      * @param {string}
@@ -4578,7 +4578,7 @@ export interface Clusters {
      *
      * @param {object}
      * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault
-     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault resource identifier. Fully qualified resource identifier of the
      * Key Vault.
      *
      * @param {string}
@@ -4785,7 +4785,7 @@ export interface Clusters {
      *
      * @param {object}
      * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault
-     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault resource identifier. Fully qualified resource identifier of the
      * Key Vault.
      *
      * @param {string}
@@ -5452,7 +5452,7 @@ export interface Clusters {
      *
      * @param {object}
      * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault
-     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault resource identifier. Fully qualified resource identifier of the
      * Key Vault.
      *
      * @param {string}
@@ -5659,7 +5659,7 @@ export interface Clusters {
      *
      * @param {object}
      * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault
-     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault resource identifier. Fully qualified resource identifier of the
      * Key Vault.
      *
      * @param {string}
