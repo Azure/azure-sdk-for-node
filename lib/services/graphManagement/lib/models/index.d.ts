@@ -350,6 +350,14 @@ export interface Application extends DirectoryObject {
    * pre-configuration of required resource access drives the consent experience.
   */
   requiredResourceAccess?: RequiredResourceAccess[];
+  /**
+   * A collection of KeyCredential objects.
+  */
+  keyCredentials?: KeyCredential[];
+  /**
+   * A collection of PasswordCredential objects
+  */
+  passwordCredentials?: PasswordCredential[];
 }
 
 /**
