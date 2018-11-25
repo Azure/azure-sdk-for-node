@@ -82,7 +82,7 @@ export interface KeyCredential {
   /**
    * Custom Key Identifier
    */
-  customKeyIdentifier?: Buffer;
+  customKeyIdentifier?: string;
   /**
    * Describes unknown properties. The value of an unknown property can be of "any" type.
    */
