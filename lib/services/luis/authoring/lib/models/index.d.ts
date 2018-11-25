@@ -1335,6 +1335,10 @@ export interface EndpointInfo {
   */
   endpointRegion?: string;
   /**
+   * Regions where publishing failed.
+  */
+  failedRegions?: string;
+  /**
    * Timestamp when was last published.
   */
   publishedDateTime?: string;

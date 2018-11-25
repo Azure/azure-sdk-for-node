@@ -8847,11 +8847,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ProductionOrStagingEndpointInfo>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    publishWithHttpOperationResponse(appId: string, applicationPublishObject: models.ApplicationPublishObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProductionOrStagingEndpointInfo>>;
+    publishWithHttpOperationResponse(appId: string, applicationPublishObject: models.ApplicationPublishObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Publishes a specific version of the application.
@@ -8879,7 +8879,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ProductionOrStagingEndpointInfo} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8887,17 +8887,15 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ProductionOrStagingEndpointInfo} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ProductionOrStagingEndpointInfo} for more
-     *                      information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProductionOrStagingEndpointInfo>;
-    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, callback: ServiceCallback<models.ProductionOrStagingEndpointInfo>): void;
-    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProductionOrStagingEndpointInfo>): void;
+    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, callback: ServiceCallback<any>): void;
+    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
