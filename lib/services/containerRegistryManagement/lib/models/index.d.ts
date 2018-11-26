@@ -266,7 +266,7 @@ export interface StorageAccountProperties {
  * The virtual network rule for a container registry.
  *
  * @member {string} [id] Resource ID of a subnet, for example:
- * /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
+ * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
  */
 export interface VirtualNetworkRule {
   id?: string;
