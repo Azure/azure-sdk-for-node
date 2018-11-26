@@ -1484,7 +1484,7 @@ export interface StandardEncoderPreset extends Preset {
 export interface VideoAnalyzerPreset extends AudioAnalyzerPreset {
   /**
    * The type of insights to be extracted. If not set then based on the content the type will
-   * selected.  If the content is audi only then only audio insights are extraced and if it is
+   * selected.  If the content is audio only then only audio insights are extracted and if it is
    * video only. Possible values include: 'AudioInsightsOnly', 'VideoInsightsOnly', 'AllInsights'
   */
   insightsToExtract?: string;
@@ -1595,7 +1595,7 @@ export interface JobInputClip extends JobInput {
 }
 
 /**
- * Describes a list of of inputs to a Job.
+ * Describes a list of inputs to a Job.
 */
 export interface JobInputs extends JobInput {
   /**
