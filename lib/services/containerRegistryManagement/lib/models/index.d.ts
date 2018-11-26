@@ -281,7 +281,7 @@ export interface VirtualNetworkRule {
  * @member {string} defaultAction The default action of allow or deny when no
  * other rules match. Possible values include: 'Allow', 'Deny'. Default value:
  * 'Allow' .
- * @member {array} [virtualNetworkRules] The virtual network rules
+ * @member {array} [virtualNetworkRules] The virtual network rules.
  */
 export interface NetworkRuleSet {
   defaultAction: string;
@@ -345,7 +345,7 @@ export interface Resource extends BaseResource {
  * @member {string} [networkRuleSet.defaultAction] The default action of allow
  * or deny when no other rules match. Possible values include: 'Allow', 'Deny'
  * @member {array} [networkRuleSet.virtualNetworkRules] The virtual network
- * rules
+ * rules.
  */
 export interface Registry extends Resource {
   sku: Sku;
@@ -383,7 +383,7 @@ export interface Registry extends Resource {
  * @member {string} [networkRuleSet.defaultAction] The default action of allow
  * or deny when no other rules match. Possible values include: 'Allow', 'Deny'
  * @member {array} [networkRuleSet.virtualNetworkRules] The virtual network
- * rules
+ * rules.
  */
 export interface RegistryUpdateParameters {
   tags?: { [propertyName: string]: string };

@@ -324,7 +324,7 @@ export interface Registries {
      * 'Deny'
      *
      * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
-     * network rules
+     * network rules.
      *
      * @param {string} registry.location The location of the resource. This cannot
      * be changed after the resource is created.
@@ -377,7 +377,7 @@ export interface Registries {
      * 'Deny'
      *
      * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
-     * network rules
+     * network rules.
      *
      * @param {string} registry.location The location of the resource. This cannot
      * be changed after the resource is created.
@@ -516,7 +516,7 @@ export interface Registries {
      * include: 'Allow', 'Deny'
      *
      * @param {array} [registryUpdateParameters.networkRuleSet.virtualNetworkRules]
-     * The virtual network rules
+     * The virtual network rules.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -571,7 +571,7 @@ export interface Registries {
      * include: 'Allow', 'Deny'
      *
      * @param {array} [registryUpdateParameters.networkRuleSet.virtualNetworkRules]
-     * The virtual network rules
+     * The virtual network rules.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1391,7 +1391,7 @@ export interface Registries {
      * 'Deny'
      *
      * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
-     * network rules
+     * network rules.
      *
      * @param {string} registry.location The location of the resource. This cannot
      * be changed after the resource is created.
@@ -1444,7 +1444,7 @@ export interface Registries {
      * 'Deny'
      *
      * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
-     * network rules
+     * network rules.
      *
      * @param {string} registry.location The location of the resource. This cannot
      * be changed after the resource is created.
@@ -1583,7 +1583,7 @@ export interface Registries {
      * include: 'Allow', 'Deny'
      *
      * @param {array} [registryUpdateParameters.networkRuleSet.virtualNetworkRules]
-     * The virtual network rules
+     * The virtual network rules.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1638,7 +1638,7 @@ export interface Registries {
      * include: 'Allow', 'Deny'
      *
      * @param {array} [registryUpdateParameters.networkRuleSet.virtualNetworkRules]
-     * The virtual network rules
+     * The virtual network rules.
      *
      * @param {object} [options] Optional Parameters.
      *
