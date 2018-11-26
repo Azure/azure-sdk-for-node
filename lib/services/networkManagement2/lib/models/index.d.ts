@@ -329,31 +329,17 @@ export interface SubResource extends BaseResource {
  * @member {object}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ddosSettings]
  * The DDoS protection custom policy associated with the public IP address.
- * @member {string}
+ * @member {object}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
  * The DDoS custom policy associated with the public IP.
  * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy.id]
+ * Resource ID.
+ * @member {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
- * The type of the DDoS protection plan associated with the public IP. Possible
- * values include: 'Basic', 'Standard'
- * @member {string}
- * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ddosSettings.domainNameLabel]
- * Gets or sets the Domain name label.The concatenation of the domain name
- * label and the regionalized DNS zone make up the fully qualified domain name
- * associated with the public IP address. If a domain name label is specified,
- * an A DNS record is created for the public IP in the Microsoft Azure DNS
- * system.
- * @member {string}
- * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ddosSettings.fqdn]
- * Gets the FQDN, Fully qualified domain name of the A DNS record associated
- * with the public IP. This is the concatenation of the domainNameLabel and the
- * regionalized DNS zone.
- * @member {string}
- * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ddosSettings.reverseFqdn]
- * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
- * that resolves to this public IP address. If the reverseFqdn is specified,
- * then a PTR DNS record is created pointing from the IP address in the
- * in-addr.arpa domain to the reverse FQDN.
+ * The DDoS protection policy customizability of the public IP. Only standard
+ * coverage will have the ability to be customized. Possible values include:
+ * 'Basic', 'Standard'
  * @member {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipTags]
  * The list of tags associated with the public IP address.
@@ -674,31 +660,17 @@ export interface SubResource extends BaseResource {
  * @member {object}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
  * The DDoS protection custom policy associated with the public IP address.
- * @member {string}
+ * @member {object}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
  * The DDoS custom policy associated with the public IP.
  * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy.id]
+ * Resource ID.
+ * @member {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
- * The type of the DDoS protection plan associated with the public IP. Possible
- * values include: 'Basic', 'Standard'
- * @member {string}
- * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.domainNameLabel]
- * Gets or sets the Domain name label.The concatenation of the domain name
- * label and the regionalized DNS zone make up the fully qualified domain name
- * associated with the public IP address. If a domain name label is specified,
- * an A DNS record is created for the public IP in the Microsoft Azure DNS
- * system.
- * @member {string}
- * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.fqdn]
- * Gets the FQDN, Fully qualified domain name of the A DNS record associated
- * with the public IP. This is the concatenation of the domainNameLabel and the
- * regionalized DNS zone.
- * @member {string}
- * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.reverseFqdn]
- * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
- * that resolves to this public IP address. If the reverseFqdn is specified,
- * then a PTR DNS record is created pointing from the IP address in the
- * in-addr.arpa domain to the reverse FQDN.
+ * The DDoS protection policy customizability of the public IP. Only standard
+ * coverage will have the ability to be customized. Possible values include:
+ * 'Basic', 'Standard'
  * @member {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
  * The list of tags associated with the public IP address.
@@ -1377,31 +1349,18 @@ export interface PublicIPAddressDnsSettings {
  * @class
  * Initializes a new instance of the DdoSSettings class.
  * @constructor
- * Contains FQDN of the DNS record associated with the public IP address
+ * Contains the DDoS protection settings of the public IP.
  *
- * @member {string} [ddosCustomPolicy] The DDoS custom policy associated with
+ * @member {object} [ddosCustomPolicy] The DDoS custom policy associated with
  * the public IP.
- * @member {string} [protectionCoverage] The type of the DDoS protection plan
- * associated with the public IP. Possible values include: 'Basic', 'Standard'
- * @member {string} [domainNameLabel] Gets or sets the Domain name label.The
- * concatenation of the domain name label and the regionalized DNS zone make up
- * the fully qualified domain name associated with the public IP address. If a
- * domain name label is specified, an A DNS record is created for the public IP
- * in the Microsoft Azure DNS system.
- * @member {string} [fqdn] Gets the FQDN, Fully qualified domain name of the A
- * DNS record associated with the public IP. This is the concatenation of the
- * domainNameLabel and the regionalized DNS zone.
- * @member {string} [reverseFqdn] Gets or Sets the Reverse FQDN. A
- * user-visible, fully qualified domain name that resolves to this public IP
- * address. If the reverseFqdn is specified, then a PTR DNS record is created
- * pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
+ * @member {string} [ddosCustomPolicy.id] Resource ID.
+ * @member {string} [protectionCoverage] The DDoS protection policy
+ * customizability of the public IP. Only standard coverage will have the
+ * ability to be customized. Possible values include: 'Basic', 'Standard'
  */
 export interface DdoSSettings {
-  ddosCustomPolicy?: string;
+  ddosCustomPolicy?: SubResource;
   protectionCoverage?: string;
-  domainNameLabel?: string;
-  fqdn?: string;
-  reverseFqdn?: string;
 }
 
 /**
@@ -1535,23 +1494,12 @@ export interface IpTag {
  * pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
  * @member {object} [ddosSettings] The DDoS protection custom policy associated
  * with the public IP address.
- * @member {string} [ddosSettings.ddosCustomPolicy] The DDoS custom policy
+ * @member {object} [ddosSettings.ddosCustomPolicy] The DDoS custom policy
  * associated with the public IP.
- * @member {string} [ddosSettings.protectionCoverage] The type of the DDoS
- * protection plan associated with the public IP. Possible values include:
- * 'Basic', 'Standard'
- * @member {string} [ddosSettings.domainNameLabel] Gets or sets the Domain name
- * label.The concatenation of the domain name label and the regionalized DNS
- * zone make up the fully qualified domain name associated with the public IP
- * address. If a domain name label is specified, an A DNS record is created for
- * the public IP in the Microsoft Azure DNS system.
- * @member {string} [ddosSettings.fqdn] Gets the FQDN, Fully qualified domain
- * name of the A DNS record associated with the public IP. This is the
- * concatenation of the domainNameLabel and the regionalized DNS zone.
- * @member {string} [ddosSettings.reverseFqdn] Gets or Sets the Reverse FQDN. A
- * user-visible, fully qualified domain name that resolves to this public IP
- * address. If the reverseFqdn is specified, then a PTR DNS record is created
- * pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
+ * @member {string} [ddosSettings.ddosCustomPolicy.id] Resource ID.
+ * @member {string} [ddosSettings.protectionCoverage] The DDoS protection
+ * policy customizability of the public IP. Only standard coverage will have
+ * the ability to be customized. Possible values include: 'Basic', 'Standard'
  * @member {array} [ipTags] The list of tags associated with the public IP
  * address.
  * @member {string} [ipAddress] The IP address associated with the public IP
@@ -1687,25 +1635,14 @@ export interface PublicIPAddress extends Resource {
  * the reverse FQDN.
  * @member {object} [publicIPAddress.ddosSettings] The DDoS protection custom
  * policy associated with the public IP address.
- * @member {string} [publicIPAddress.ddosSettings.ddosCustomPolicy] The DDoS
+ * @member {object} [publicIPAddress.ddosSettings.ddosCustomPolicy] The DDoS
  * custom policy associated with the public IP.
- * @member {string} [publicIPAddress.ddosSettings.protectionCoverage] The type
- * of the DDoS protection plan associated with the public IP. Possible values
- * include: 'Basic', 'Standard'
- * @member {string} [publicIPAddress.ddosSettings.domainNameLabel] Gets or sets
- * the Domain name label.The concatenation of the domain name label and the
- * regionalized DNS zone make up the fully qualified domain name associated
- * with the public IP address. If a domain name label is specified, an A DNS
- * record is created for the public IP in the Microsoft Azure DNS system.
- * @member {string} [publicIPAddress.ddosSettings.fqdn] Gets the FQDN, Fully
- * qualified domain name of the A DNS record associated with the public IP.
- * This is the concatenation of the domainNameLabel and the regionalized DNS
- * zone.
- * @member {string} [publicIPAddress.ddosSettings.reverseFqdn] Gets or Sets the
- * Reverse FQDN. A user-visible, fully qualified domain name that resolves to
- * this public IP address. If the reverseFqdn is specified, then a PTR DNS
- * record is created pointing from the IP address in the in-addr.arpa domain to
- * the reverse FQDN.
+ * @member {string} [publicIPAddress.ddosSettings.ddosCustomPolicy.id] Resource
+ * ID.
+ * @member {string} [publicIPAddress.ddosSettings.protectionCoverage] The DDoS
+ * protection policy customizability of the public IP. Only standard coverage
+ * will have the ability to be customized. Possible values include: 'Basic',
+ * 'Standard'
  * @member {array} [publicIPAddress.ipTags] The list of tags associated with
  * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
@@ -2173,25 +2110,14 @@ export interface Subnet extends SubResource {
  * the reverse FQDN.
  * @member {object} [publicIPAddress.ddosSettings] The DDoS protection custom
  * policy associated with the public IP address.
- * @member {string} [publicIPAddress.ddosSettings.ddosCustomPolicy] The DDoS
+ * @member {object} [publicIPAddress.ddosSettings.ddosCustomPolicy] The DDoS
  * custom policy associated with the public IP.
- * @member {string} [publicIPAddress.ddosSettings.protectionCoverage] The type
- * of the DDoS protection plan associated with the public IP. Possible values
- * include: 'Basic', 'Standard'
- * @member {string} [publicIPAddress.ddosSettings.domainNameLabel] Gets or sets
- * the Domain name label.The concatenation of the domain name label and the
- * regionalized DNS zone make up the fully qualified domain name associated
- * with the public IP address. If a domain name label is specified, an A DNS
- * record is created for the public IP in the Microsoft Azure DNS system.
- * @member {string} [publicIPAddress.ddosSettings.fqdn] Gets the FQDN, Fully
- * qualified domain name of the A DNS record associated with the public IP.
- * This is the concatenation of the domainNameLabel and the regionalized DNS
- * zone.
- * @member {string} [publicIPAddress.ddosSettings.reverseFqdn] Gets or Sets the
- * Reverse FQDN. A user-visible, fully qualified domain name that resolves to
- * this public IP address. If the reverseFqdn is specified, then a PTR DNS
- * record is created pointing from the IP address in the in-addr.arpa domain to
- * the reverse FQDN.
+ * @member {string} [publicIPAddress.ddosSettings.ddosCustomPolicy.id] Resource
+ * ID.
+ * @member {string} [publicIPAddress.ddosSettings.protectionCoverage] The DDoS
+ * protection policy customizability of the public IP. Only standard coverage
+ * will have the ability to be customized. Possible values include: 'Basic',
+ * 'Standard'
  * @member {array} [publicIPAddress.ipTags] The list of tags associated with
  * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
@@ -2528,31 +2454,17 @@ export interface FrontendIPConfiguration extends SubResource {
  * @member {object}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ddosSettings]
  * The DDoS protection custom policy associated with the public IP address.
- * @member {string}
+ * @member {object}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
  * The DDoS custom policy associated with the public IP.
  * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy.id]
+ * Resource ID.
+ * @member {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
- * The type of the DDoS protection plan associated with the public IP. Possible
- * values include: 'Basic', 'Standard'
- * @member {string}
- * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ddosSettings.domainNameLabel]
- * Gets or sets the Domain name label.The concatenation of the domain name
- * label and the regionalized DNS zone make up the fully qualified domain name
- * associated with the public IP address. If a domain name label is specified,
- * an A DNS record is created for the public IP in the Microsoft Azure DNS
- * system.
- * @member {string}
- * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ddosSettings.fqdn]
- * Gets the FQDN, Fully qualified domain name of the A DNS record associated
- * with the public IP. This is the concatenation of the domainNameLabel and the
- * regionalized DNS zone.
- * @member {string}
- * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ddosSettings.reverseFqdn]
- * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
- * that resolves to this public IP address. If the reverseFqdn is specified,
- * then a PTR DNS record is created pointing from the IP address in the
- * in-addr.arpa domain to the reverse FQDN.
+ * The DDoS protection policy customizability of the public IP. Only standard
+ * coverage will have the ability to be customized. Possible values include:
+ * 'Basic', 'Standard'
  * @member {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipTags] The list
  * of tags associated with the public IP address.
@@ -2868,31 +2780,17 @@ export interface FrontendIPConfiguration extends SubResource {
  * @member {object}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
  * The DDoS protection custom policy associated with the public IP address.
- * @member {string}
+ * @member {object}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
  * The DDoS custom policy associated with the public IP.
  * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy.id]
+ * Resource ID.
+ * @member {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
- * The type of the DDoS protection plan associated with the public IP. Possible
- * values include: 'Basic', 'Standard'
- * @member {string}
- * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.domainNameLabel]
- * Gets or sets the Domain name label.The concatenation of the domain name
- * label and the regionalized DNS zone make up the fully qualified domain name
- * associated with the public IP address. If a domain name label is specified,
- * an A DNS record is created for the public IP in the Microsoft Azure DNS
- * system.
- * @member {string}
- * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.fqdn]
- * Gets the FQDN, Fully qualified domain name of the A DNS record associated
- * with the public IP. This is the concatenation of the domainNameLabel and the
- * regionalized DNS zone.
- * @member {string}
- * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.reverseFqdn]
- * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
- * that resolves to this public IP address. If the reverseFqdn is specified,
- * then a PTR DNS record is created pointing from the IP address in the
- * in-addr.arpa domain to the reverse FQDN.
+ * The DDoS protection policy customizability of the public IP. Only standard
+ * coverage will have the ability to be customized. Possible values include:
+ * 'Basic', 'Standard'
  * @member {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags] The
  * list of tags associated with the public IP address.
@@ -3238,29 +3136,17 @@ export interface BackendAddressPool extends SubResource {
  * domain to the reverse FQDN.
  * @member {object} [backendIPConfiguration.publicIPAddress.ddosSettings] The
  * DDoS protection custom policy associated with the public IP address.
- * @member {string}
+ * @member {object}
  * [backendIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy] The
  * DDoS custom policy associated with the public IP.
  * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy.id]
+ * Resource ID.
+ * @member {string}
  * [backendIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage] The
- * type of the DDoS protection plan associated with the public IP. Possible
- * values include: 'Basic', 'Standard'
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.ddosSettings.domainNameLabel] Gets
- * or sets the Domain name label.The concatenation of the domain name label and
- * the regionalized DNS zone make up the fully qualified domain name associated
- * with the public IP address. If a domain name label is specified, an A DNS
- * record is created for the public IP in the Microsoft Azure DNS system.
- * @member {string} [backendIPConfiguration.publicIPAddress.ddosSettings.fqdn]
- * Gets the FQDN, Fully qualified domain name of the A DNS record associated
- * with the public IP. This is the concatenation of the domainNameLabel and the
- * regionalized DNS zone.
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.ddosSettings.reverseFqdn] Gets or
- * Sets the Reverse FQDN. A user-visible, fully qualified domain name that
- * resolves to this public IP address. If the reverseFqdn is specified, then a
- * PTR DNS record is created pointing from the IP address in the in-addr.arpa
- * domain to the reverse FQDN.
+ * DDoS protection policy customizability of the public IP. Only standard
+ * coverage will have the ability to be customized. Possible values include:
+ * 'Basic', 'Standard'
  * @member {array} [backendIPConfiguration.publicIPAddress.ipTags] The list of
  * tags associated with the public IP address.
  * @member {string} [backendIPConfiguration.publicIPAddress.ipAddress] The IP
@@ -3539,25 +3425,14 @@ export interface InboundNatRule extends SubResource {
  * the reverse FQDN.
  * @member {object} [publicIPAddress.ddosSettings] The DDoS protection custom
  * policy associated with the public IP address.
- * @member {string} [publicIPAddress.ddosSettings.ddosCustomPolicy] The DDoS
+ * @member {object} [publicIPAddress.ddosSettings.ddosCustomPolicy] The DDoS
  * custom policy associated with the public IP.
- * @member {string} [publicIPAddress.ddosSettings.protectionCoverage] The type
- * of the DDoS protection plan associated with the public IP. Possible values
- * include: 'Basic', 'Standard'
- * @member {string} [publicIPAddress.ddosSettings.domainNameLabel] Gets or sets
- * the Domain name label.The concatenation of the domain name label and the
- * regionalized DNS zone make up the fully qualified domain name associated
- * with the public IP address. If a domain name label is specified, an A DNS
- * record is created for the public IP in the Microsoft Azure DNS system.
- * @member {string} [publicIPAddress.ddosSettings.fqdn] Gets the FQDN, Fully
- * qualified domain name of the A DNS record associated with the public IP.
- * This is the concatenation of the domainNameLabel and the regionalized DNS
- * zone.
- * @member {string} [publicIPAddress.ddosSettings.reverseFqdn] Gets or Sets the
- * Reverse FQDN. A user-visible, fully qualified domain name that resolves to
- * this public IP address. If the reverseFqdn is specified, then a PTR DNS
- * record is created pointing from the IP address in the in-addr.arpa domain to
- * the reverse FQDN.
+ * @member {string} [publicIPAddress.ddosSettings.ddosCustomPolicy.id] Resource
+ * ID.
+ * @member {string} [publicIPAddress.ddosSettings.protectionCoverage] The DDoS
+ * protection policy customizability of the public IP. Only standard coverage
+ * will have the ability to be customized. Possible values include: 'Basic',
+ * 'Standard'
  * @member {array} [publicIPAddress.ipTags] The list of tags associated with
  * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
@@ -3968,28 +3843,17 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * in-addr.arpa domain to the reverse FQDN.
  * @member {object} [ipConfiguration.publicIPAddress.ddosSettings] The DDoS
  * protection custom policy associated with the public IP address.
- * @member {string}
+ * @member {object}
  * [ipConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy] The DDoS
  * custom policy associated with the public IP.
  * @member {string}
- * [ipConfiguration.publicIPAddress.ddosSettings.protectionCoverage] The type
- * of the DDoS protection plan associated with the public IP. Possible values
- * include: 'Basic', 'Standard'
+ * [ipConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy.id] Resource
+ * ID.
  * @member {string}
- * [ipConfiguration.publicIPAddress.ddosSettings.domainNameLabel] Gets or sets
- * the Domain name label.The concatenation of the domain name label and the
- * regionalized DNS zone make up the fully qualified domain name associated
- * with the public IP address. If a domain name label is specified, an A DNS
- * record is created for the public IP in the Microsoft Azure DNS system.
- * @member {string} [ipConfiguration.publicIPAddress.ddosSettings.fqdn] Gets
- * the FQDN, Fully qualified domain name of the A DNS record associated with
- * the public IP. This is the concatenation of the domainNameLabel and the
- * regionalized DNS zone.
- * @member {string} [ipConfiguration.publicIPAddress.ddosSettings.reverseFqdn]
- * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
- * that resolves to this public IP address. If the reverseFqdn is specified,
- * then a PTR DNS record is created pointing from the IP address in the
- * in-addr.arpa domain to the reverse FQDN.
+ * [ipConfiguration.publicIPAddress.ddosSettings.protectionCoverage] The DDoS
+ * protection policy customizability of the public IP. Only standard coverage
+ * will have the ability to be customized. Possible values include: 'Basic',
+ * 'Standard'
  * @member {array} [ipConfiguration.publicIPAddress.ipTags] The list of tags
  * associated with the public IP address.
  * @member {string} [ipConfiguration.publicIPAddress.ipAddress] The IP address
@@ -4234,7 +4098,8 @@ export interface ApplicationGatewayAuthenticationCertificate extends SubResource
  * Trusted Root certificates of an application gateway.
  *
  * @member {string} [data] Certificate public data.
- * @member {string} [keyvaultSecretId] KeyVault Secret Id for certificate.
+ * @member {string} [keyVaultSecretId] Secret Id of (base-64 encoded
+ * unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
  * @member {string} [provisioningState] Provisioning state of the trusted root
  * certificate resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -4246,7 +4111,7 @@ export interface ApplicationGatewayAuthenticationCertificate extends SubResource
  */
 export interface ApplicationGatewayTrustedRootCertificate extends SubResource {
   data?: string;
-  keyvaultSecretId?: string;
+  keyVaultSecretId?: string;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -4265,6 +4130,8 @@ export interface ApplicationGatewayTrustedRootCertificate extends SubResource {
  * Only applicable in PUT request.
  * @member {string} [publicCertData] Base-64 encoded Public cert data
  * corresponding to pfx specified in data. Only applicable in GET request.
+ * @member {string} [keyVaultSecretId] Secret Id of (base-64 encoded
+ * unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
  * @member {string} [provisioningState] Provisioning state of the SSL
  * certificate resource Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -4278,6 +4145,7 @@ export interface ApplicationGatewaySslCertificate extends SubResource {
   data?: string;
   password?: string;
   publicCertData?: string;
+  keyVaultSecretId?: string;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -4579,22 +4447,14 @@ export interface ApplicationGatewayHeaderConfiguration {
  * @constructor
  * Set of actions in the Rewrite Rule in Application Gateway.
  *
- * @member {object} [requestHeaderConfigurations] Request Header Actions in the
+ * @member {array} [requestHeaderConfigurations] Request Header Actions in the
  * Action Set
- * @member {string} [requestHeaderConfigurations.headerName] Header name of the
- * header configuration
- * @member {string} [requestHeaderConfigurations.headerValue] Header value of
- * the header configuration
- * @member {object} [responseHeaderConfigurations] Response Header Actions in
+ * @member {array} [responseHeaderConfigurations] Response Header Actions in
  * the Action Set
- * @member {string} [responseHeaderConfigurations.headerName] Header name of
- * the header configuration
- * @member {string} [responseHeaderConfigurations.headerValue] Header value of
- * the header configuration
  */
 export interface ApplicationGatewayRewriteRuleActionSet {
-  requestHeaderConfigurations?: ApplicationGatewayHeaderConfiguration;
-  responseHeaderConfigurations?: ApplicationGatewayHeaderConfiguration;
+  requestHeaderConfigurations?: ApplicationGatewayHeaderConfiguration[];
+  responseHeaderConfigurations?: ApplicationGatewayHeaderConfiguration[];
 }
 
 /**
@@ -4607,18 +4467,10 @@ export interface ApplicationGatewayRewriteRuleActionSet {
  * Application Gateway.
  * @member {object} [actionSet] Set of actions to be done as part of the
  * rewrite Rule.
- * @member {object} [actionSet.requestHeaderConfigurations] Request Header
+ * @member {array} [actionSet.requestHeaderConfigurations] Request Header
  * Actions in the Action Set
- * @member {string} [actionSet.requestHeaderConfigurations.headerName] Header
- * name of the header configuration
- * @member {string} [actionSet.requestHeaderConfigurations.headerValue] Header
- * value of the header configuration
- * @member {object} [actionSet.responseHeaderConfigurations] Response Header
+ * @member {array} [actionSet.responseHeaderConfigurations] Response Header
  * Actions in the Action Set
- * @member {string} [actionSet.responseHeaderConfigurations.headerName] Header
- * name of the header configuration
- * @member {string} [actionSet.responseHeaderConfigurations.headerValue] Header
- * value of the header configuration
  */
 export interface ApplicationGatewayRewriteRule {
   name?: string;
@@ -4814,6 +4666,46 @@ export interface ApplicationGatewayAutoscaleConfiguration {
 
 /**
  * @class
+ * Initializes a new instance of the ManagedServiceIdentityUserAssignedIdentitiesValue class.
+ * @constructor
+ * @member {string} [principalId] The principal id of user assigned identity.
+ * @member {string} [clientId] The client id of user assigned identity.
+ */
+export interface ManagedServiceIdentityUserAssignedIdentitiesValue {
+  readonly principalId?: string;
+  readonly clientId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedServiceIdentity class.
+ * @constructor
+ * Identity for the resource.
+ *
+ * @member {string} [principalId] The principal id of the system assigned
+ * identity. This property will only be provided for a system assigned
+ * identity.
+ * @member {string} [tenantId] The tenant id of the system assigned identity.
+ * This property will only be provided for a system assigned identity.
+ * @member {string} [type] The type of identity used for the resource. The type
+ * 'SystemAssigned, UserAssigned' includes both an implicitly created identity
+ * and a set of user assigned identities. The type 'None' will remove any
+ * identities from the virtual machine. Possible values include:
+ * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+ * @member {object} [userAssignedIdentities] The list of user identities
+ * associated with resource. The user identity dictionary key references will
+ * be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+ */
+export interface ManagedServiceIdentity {
+  readonly principalId?: string;
+  readonly tenantId?: string;
+  type?: string;
+  userAssignedIdentities?: { [propertyName: string]: ManagedServiceIdentityUserAssignedIdentitiesValue };
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationGateway class.
  * @constructor
  * Application gateway resource
@@ -4910,6 +4802,23 @@ export interface ApplicationGatewayAutoscaleConfiguration {
  * resource is updated.
  * @member {array} [zones] A list of availability zones denoting where the
  * resource needs to come from.
+ * @member {object} [identity] The identity of the application gateway, if
+ * configured.
+ * @member {string} [identity.principalId] The principal id of the system
+ * assigned identity. This property will only be provided for a system assigned
+ * identity.
+ * @member {string} [identity.tenantId] The tenant id of the system assigned
+ * identity. This property will only be provided for a system assigned
+ * identity.
+ * @member {string} [identity.type] The type of identity used for the resource.
+ * The type 'SystemAssigned, UserAssigned' includes both an implicitly created
+ * identity and a set of user assigned identities. The type 'None' will remove
+ * any identities from the virtual machine. Possible values include:
+ * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+ * @member {object} [identity.userAssignedIdentities] The list of user
+ * identities associated with resource. The user identity dictionary key
+ * references will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
  */
 export interface ApplicationGateway extends Resource {
   sku?: ApplicationGatewaySku;
@@ -4938,6 +4847,7 @@ export interface ApplicationGateway extends Resource {
   customErrorConfigurations?: ApplicationGatewayCustomError[];
   etag?: string;
   zones?: string[];
+  identity?: ManagedServiceIdentity;
 }
 
 /**
