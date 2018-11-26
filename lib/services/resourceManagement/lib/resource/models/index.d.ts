@@ -425,6 +425,10 @@ export interface DeploymentExtended extends BaseResource {
   */
   readonly name?: string;
   /**
+   * The type of the deployment.
+  */
+  readonly type?: string;
+  /**
    * the location of the deployment.
   */
   location?: string;
@@ -604,6 +608,10 @@ export interface ResourceGroup extends BaseResource {
    * The name of the resource group.
   */
   readonly name?: string;
+  /**
+   * The type of the resource group.
+  */
+  readonly type?: string;
   properties?: ResourceGroupProperties;
   /**
    * The location of the resource group. It cannot be changed after the resource group has been
