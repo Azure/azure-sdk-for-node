@@ -24,8 +24,5 @@
   },
   "bugs": {
     "url": "http://github.com/Azure/azure-sdk-for-node/issues"
-  },
-  "scripts": {
-    "test": "npm -s run-script jshint"
   }
 }
