@@ -305,7 +305,7 @@ export interface ApplicationInsightsComponentExportConfiguration {
 }
 
 /**
- * An Application Insights component daily data volumne cap
+ * An Application Insights component daily data volume cap
 */
 export interface ApplicationInsightsComponentDataVolumeCap {
   /**
@@ -339,7 +339,7 @@ export interface ApplicationInsightsComponentDataVolumeCap {
 */
 export interface ApplicationInsightsComponentBillingFeatures {
   /**
-   * An Application Insights component daily data volumne cap
+   * An Application Insights component daily data volume cap
   */
   dataVolumeCap?: ApplicationInsightsComponentDataVolumeCap;
   /**
@@ -420,7 +420,7 @@ export interface ApplicationInsightsComponentFeatureCapabilities {
   */
   readonly apiAccessLevel?: string;
   /**
-   * The applciation insights component used tracking type.
+   * The application insights component used tracking type.
   */
   readonly trackingType?: string;
   /**
@@ -450,7 +450,7 @@ export interface ApplicationInsightsComponentFeatureCapability {
   */
   readonly description?: string;
   /**
-   * The vaule of the capability.
+   * The value of the capability.
   */
   readonly value?: string;
   /**
@@ -480,7 +480,7 @@ export interface ApplicationInsightsComponentFeature {
   */
   readonly meterId?: string;
   /**
-   * The meter meter rate for the feature's meter.
+   * The meter rate for the feature's meter.
   */
   readonly meterRateFrequency?: string;
   /**
@@ -492,11 +492,11 @@ export interface ApplicationInsightsComponentFeature {
   */
   readonly isHidden?: boolean;
   /**
-   * A list of Application Insigths component feature capability.
+   * A list of Application Insights component feature capability.
   */
   readonly capabilities?: ApplicationInsightsComponentFeatureCapability[];
   /**
-   * Desplay name of the feature.
+   * Display name of the feature.
   */
   readonly title?: string;
   /**
@@ -514,7 +514,7 @@ export interface ApplicationInsightsComponentFeature {
 */
 export interface ApplicationInsightsComponentAvailableFeatures {
   /**
-   * A list of Application Insigths component feature.
+   * A list of Application Insights component feature.
   */
   readonly result?: ApplicationInsightsComponentFeature[];
 }
