@@ -265,11 +265,11 @@ export interface StorageAccountProperties {
  * @constructor
  * The virtual network rule for a container registry.
  *
- * @member {string} [id] Resource ID of a subnet, for example:
+ * @member {string} id Resource ID of a subnet, for example:
  * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
  */
 export interface VirtualNetworkRule {
-  id?: string;
+  id: string;
 }
 
 /**
@@ -278,13 +278,13 @@ export interface VirtualNetworkRule {
  * @constructor
  * The network rule set for a container registry.
  *
- * @member {string} [defaultAction] The default action of allow or deny when no
+ * @member {string} defaultAction The default action of allow or deny when no
  * other rules match. Possible values include: 'Allow', 'Deny'. Default value:
  * 'Allow' .
  * @member {array} [virtualNetworkRules] The virtual network rules
  */
 export interface NetworkRuleSet {
-  defaultAction?: string;
+  defaultAction: string;
   virtualNetworkRules?: VirtualNetworkRule[];
 }
 
@@ -1130,6 +1130,8 @@ export interface ProxyResource extends BaseResource {
  * repository.
  * @member {string} [sourceTrigger.providerType] The source control provider
  * type.
+ * @member {boolean} [isArchiveEnabled] The value that indicates whether
+ * archiving is enabled or not. Default value: false .
  * @member {object} [platform] The platform properties against which the run
  * will happen.
  * @member {string} [platform.os] The operating system type required for the
@@ -1145,8 +1147,6 @@ export interface ProxyResource extends BaseResource {
  * @member {string} [provisioningState] The provisioning state of a run.
  * Possible values include: 'Creating', 'Updating', 'Deleting', 'Succeeded',
  * 'Failed', 'Canceled'
- * @member {boolean} [isArchiveEnabled] The value that indicates whether
- * archiving is enabled or not. Default value: false .
  */
 export interface Run extends ProxyResource {
   runId?: string;
@@ -1160,10 +1160,10 @@ export interface Run extends ProxyResource {
   task?: string;
   imageUpdateTrigger?: ImageUpdateTrigger;
   sourceTrigger?: SourceTriggerDescriptor;
+  isArchiveEnabled?: boolean;
   platform?: PlatformProperties;
   agentConfiguration?: AgentProperties;
   provisioningState?: string;
-  isArchiveEnabled?: boolean;
 }
 
 /**

@@ -319,9 +319,9 @@ export interface Registries {
      * @param {object} [registry.networkRuleSet] The network rule set for a
      * container registry.
      *
-     * @param {string} [registry.networkRuleSet.defaultAction] The default action
-     * of allow or deny when no other rules match. Possible values include:
-     * 'Allow', 'Deny'
+     * @param {string} registry.networkRuleSet.defaultAction The default action of
+     * allow or deny when no other rules match. Possible values include: 'Allow',
+     * 'Deny'
      *
      * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
      * network rules
@@ -372,9 +372,9 @@ export interface Registries {
      * @param {object} [registry.networkRuleSet] The network rule set for a
      * container registry.
      *
-     * @param {string} [registry.networkRuleSet.defaultAction] The default action
-     * of allow or deny when no other rules match. Possible values include:
-     * 'Allow', 'Deny'
+     * @param {string} registry.networkRuleSet.defaultAction The default action of
+     * allow or deny when no other rules match. Possible values include: 'Allow',
+     * 'Deny'
      *
      * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
      * network rules
@@ -511,7 +511,7 @@ export interface Registries {
      * @param {object} [registryUpdateParameters.networkRuleSet] The network rule
      * set for a container registry.
      *
-     * @param {string} [registryUpdateParameters.networkRuleSet.defaultAction] The
+     * @param {string} registryUpdateParameters.networkRuleSet.defaultAction The
      * default action of allow or deny when no other rules match. Possible values
      * include: 'Allow', 'Deny'
      *
@@ -566,7 +566,7 @@ export interface Registries {
      * @param {object} [registryUpdateParameters.networkRuleSet] The network rule
      * set for a container registry.
      *
-     * @param {string} [registryUpdateParameters.networkRuleSet.defaultAction] The
+     * @param {string} registryUpdateParameters.networkRuleSet.defaultAction The
      * default action of allow or deny when no other rules match. Possible values
      * include: 'Allow', 'Deny'
      *
@@ -1386,9 +1386,9 @@ export interface Registries {
      * @param {object} [registry.networkRuleSet] The network rule set for a
      * container registry.
      *
-     * @param {string} [registry.networkRuleSet.defaultAction] The default action
-     * of allow or deny when no other rules match. Possible values include:
-     * 'Allow', 'Deny'
+     * @param {string} registry.networkRuleSet.defaultAction The default action of
+     * allow or deny when no other rules match. Possible values include: 'Allow',
+     * 'Deny'
      *
      * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
      * network rules
@@ -1439,9 +1439,9 @@ export interface Registries {
      * @param {object} [registry.networkRuleSet] The network rule set for a
      * container registry.
      *
-     * @param {string} [registry.networkRuleSet.defaultAction] The default action
-     * of allow or deny when no other rules match. Possible values include:
-     * 'Allow', 'Deny'
+     * @param {string} registry.networkRuleSet.defaultAction The default action of
+     * allow or deny when no other rules match. Possible values include: 'Allow',
+     * 'Deny'
      *
      * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
      * network rules
@@ -1578,7 +1578,7 @@ export interface Registries {
      * @param {object} [registryUpdateParameters.networkRuleSet] The network rule
      * set for a container registry.
      *
-     * @param {string} [registryUpdateParameters.networkRuleSet.defaultAction] The
+     * @param {string} registryUpdateParameters.networkRuleSet.defaultAction The
      * default action of allow or deny when no other rules match. Possible values
      * include: 'Allow', 'Deny'
      *
@@ -1633,7 +1633,7 @@ export interface Registries {
      * @param {object} [registryUpdateParameters.networkRuleSet] The network rule
      * set for a container registry.
      *
-     * @param {string} [registryUpdateParameters.networkRuleSet.defaultAction] The
+     * @param {string} registryUpdateParameters.networkRuleSet.defaultAction The
      * default action of allow or deny when no other rules match. Possible values
      * include: 'Allow', 'Deny'
      *
