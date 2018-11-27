@@ -192,6 +192,50 @@ export interface ExampleLabelObject {
 }
 
 /**
+ * An intent to delete its disptch connected service.
+ */
+export interface DispatchConnectedServiceDeleteObject {
+  /**
+   * The name of the intent connected to the dispatch
+   */
+  intentName?: string;
+}
+
+/**
+ * A disptch connected service.
+ */
+export interface DispatchConnectedServiceObject {
+  /**
+   * The name of the intent connected to the dispatch
+   */
+  intentName?: string;
+  /**
+   * The type of the connected service [luis/qna]
+   */
+  type?: string;
+  /**
+   * The name of the connected LUIS app (only if type is luis)
+   */
+  name?: string;
+  /**
+   * The ID of the connected LUIS app (only if type is luis)
+   */
+  appId?: string;
+  /**
+   * The version ID of the connected LUIS app (only if type is luis)
+   */
+  version?: string;
+  /**
+   * The region of the connected LUIS app (only if type is luis)
+   */
+  region?: string;
+  /**
+   * The ID of the connected QnA app (only if type is qna)
+   */
+  kbId?: string;
+}
+
+/**
  * Object model for creating a phraselist model.
  */
 export interface PhraselistCreateObject {
@@ -1335,10 +1379,6 @@ export interface EndpointInfo {
   */
   endpointRegion?: string;
   /**
-   * Regions where publishing failed.
-  */
-  failedRegions?: string;
-  /**
    * Timestamp when was last published.
   */
   publishedDateTime?: string;
@@ -1759,24 +1799,6 @@ export interface AppVersionSettingObject {
    * The application version setting value.
   */
   value?: string;
-}
-
-/**
- * Defines the azure account information object.
-*/
-export interface AzureAccountInfoObject {
-  /**
-   * The id for the azure subscription.
-  */
-  azureSubscriptionId: string;
-  /**
-   * The azure resource group name.
-  */
-  resourceGroup: string;
-  /**
-   * The azure account name.
-  */
-  accountName: string;
 }
 
 export interface HierarchicalChildModelUpdateObject {
