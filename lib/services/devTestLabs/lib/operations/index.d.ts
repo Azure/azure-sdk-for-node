@@ -2986,7 +2986,7 @@ export interface GlobalSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -3065,7 +3065,7 @@ export interface GlobalSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -3221,7 +3221,7 @@ export interface GlobalSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -3298,7 +3298,7 @@ export interface GlobalSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -7886,7 +7886,7 @@ export interface NotificationChannels {
      * notifications to.
      *
      * @param {string} [notificationChannel.emailRecipient] The email recipient to
-     * send notifications to (can be a list of semi-colon seperated email
+     * send notifications to (can be a list of semi-colon separated email
      * addresses).
      *
      * @param {string} [notificationChannel.notificationLocale] The locale to use
@@ -7930,7 +7930,7 @@ export interface NotificationChannels {
      * notifications to.
      *
      * @param {string} [notificationChannel.emailRecipient] The email recipient to
-     * send notifications to (can be a list of semi-colon seperated email
+     * send notifications to (can be a list of semi-colon separated email
      * addresses).
      *
      * @param {string} [notificationChannel.notificationLocale] The locale to use
@@ -8055,7 +8055,7 @@ export interface NotificationChannels {
      * notifications to.
      *
      * @param {string} [notificationChannel.emailRecipient] The email recipient to
-     * send notifications to (can be a list of semi-colon seperated email
+     * send notifications to (can be a list of semi-colon separated email
      * addresses).
      *
      * @param {string} [notificationChannel.notificationLocale] The locale to use
@@ -8097,7 +8097,7 @@ export interface NotificationChannels {
      * notifications to.
      *
      * @param {string} [notificationChannel.emailRecipient] The email recipient to
-     * send notifications to (can be a list of semi-colon seperated email
+     * send notifications to (can be a list of semi-colon separated email
      * addresses).
      *
      * @param {string} [notificationChannel.notificationLocale] The locale to use
@@ -9111,7 +9111,7 @@ export interface Schedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -9192,7 +9192,7 @@ export interface Schedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -9354,7 +9354,7 @@ export interface Schedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -9433,7 +9433,7 @@ export interface Schedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -14316,7 +14316,7 @@ export interface ServiceFabricSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -14401,7 +14401,7 @@ export interface ServiceFabricSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -14575,7 +14575,7 @@ export interface ServiceFabricSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -14658,7 +14658,7 @@ export interface ServiceFabricSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -18277,7 +18277,7 @@ export interface VirtualMachineSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -18360,7 +18360,7 @@ export interface VirtualMachineSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -18528,7 +18528,7 @@ export interface VirtualMachineSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
@@ -18609,7 +18609,7 @@ export interface VirtualMachineSchedules {
      * to which the notification will be sent.
      *
      * @param {string} [schedule.notificationSettings.emailRecipient] The email
-     * recipient to send notifications to (can be a list of semi-colon seperated
+     * recipient to send notifications to (can be a list of semi-colon separated
      * email addresses).
      *
      * @param {string} [schedule.notificationSettings.notificationLocale] The
