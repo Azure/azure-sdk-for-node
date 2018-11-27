@@ -49,8 +49,8 @@ export interface Identity extends BaseResource {
   readonly clientId?: string;
   /**
    * The ManagedServiceIdentity DataPlane URL that can be queried to obtain the identity
-   * credentials. If identity is user assigned, the clientSecretUrl is null, otherwise the
-   * clientSecretUrl is not null
+   * credentials. If identity is user assigned, then the clientSecretUrl will not be present in the
+   * response, otherwise it will be present.
    */
   readonly clientSecretUrl?: string;
   /**
