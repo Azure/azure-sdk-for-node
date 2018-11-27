@@ -123,7 +123,7 @@ export interface Servers {
      * array of firewall rules.
      *
      * @param {string} [serverParameters.ipV4FirewallSettings.enablePowerBIService]
-     * The indicator of enableing PBI service.
+     * The indicator of enabling PBI service.
      *
      * @param {string} [serverParameters.querypoolConnectionMode] How the
      * read-write server's participation in the query pool is controlled.<br/>It
@@ -200,7 +200,7 @@ export interface Servers {
      * array of firewall rules.
      *
      * @param {string} [serverParameters.ipV4FirewallSettings.enablePowerBIService]
-     * The indicator of enableing PBI service.
+     * The indicator of enabling PBI service.
      *
      * @param {string} [serverParameters.querypoolConnectionMode] How the
      * read-write server's participation in the query pool is controlled.<br/>It
@@ -376,7 +376,7 @@ export interface Servers {
      *
      * @param {string}
      * [serverUpdateParameters.ipV4FirewallSettings.enablePowerBIService] The
-     * indicator of enableing PBI service.
+     * indicator of enabling PBI service.
      *
      * @param {string} [serverUpdateParameters.querypoolConnectionMode] How the
      * read-write server's participation in the query pool is controlled.<br/>It
@@ -450,7 +450,7 @@ export interface Servers {
      *
      * @param {string}
      * [serverUpdateParameters.ipV4FirewallSettings.enablePowerBIService] The
-     * indicator of enableing PBI service.
+     * indicator of enabling PBI service.
      *
      * @param {string} [serverUpdateParameters.querypoolConnectionMode] How the
      * read-write server's participation in the query pool is controlled.<br/>It
@@ -494,7 +494,7 @@ export interface Servers {
 
 
     /**
-     * Supends operation of the specified Analysis Services server instance.
+     * Suspends operation of the specified Analysis Services server instance.
      *
      * @param {string} resourceGroupName The name of the Azure Resource group of
      * which a given Analysis Services server is part. This name must be at least 1
@@ -517,7 +517,7 @@ export interface Servers {
     suspendWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Supends operation of the specified Analysis Services server instance.
+     * Suspends operation of the specified Analysis Services server instance.
      *
      * @param {string} resourceGroupName The name of the Azure Resource group of
      * which a given Analysis Services server is part. This name must be at least 1
@@ -1211,7 +1211,7 @@ export interface Servers {
      * array of firewall rules.
      *
      * @param {string} [serverParameters.ipV4FirewallSettings.enablePowerBIService]
-     * The indicator of enableing PBI service.
+     * The indicator of enabling PBI service.
      *
      * @param {string} [serverParameters.querypoolConnectionMode] How the
      * read-write server's participation in the query pool is controlled.<br/>It
@@ -1288,7 +1288,7 @@ export interface Servers {
      * array of firewall rules.
      *
      * @param {string} [serverParameters.ipV4FirewallSettings.enablePowerBIService]
-     * The indicator of enableing PBI service.
+     * The indicator of enabling PBI service.
      *
      * @param {string} [serverParameters.querypoolConnectionMode] How the
      * read-write server's participation in the query pool is controlled.<br/>It
@@ -1464,7 +1464,7 @@ export interface Servers {
      *
      * @param {string}
      * [serverUpdateParameters.ipV4FirewallSettings.enablePowerBIService] The
-     * indicator of enableing PBI service.
+     * indicator of enabling PBI service.
      *
      * @param {string} [serverUpdateParameters.querypoolConnectionMode] How the
      * read-write server's participation in the query pool is controlled.<br/>It
@@ -1538,7 +1538,7 @@ export interface Servers {
      *
      * @param {string}
      * [serverUpdateParameters.ipV4FirewallSettings.enablePowerBIService] The
-     * indicator of enableing PBI service.
+     * indicator of enabling PBI service.
      *
      * @param {string} [serverUpdateParameters.querypoolConnectionMode] How the
      * read-write server's participation in the query pool is controlled.<br/>It
@@ -1582,7 +1582,7 @@ export interface Servers {
 
 
     /**
-     * Supends operation of the specified Analysis Services server instance.
+     * Suspends operation of the specified Analysis Services server instance.
      *
      * @param {string} resourceGroupName The name of the Azure Resource group of
      * which a given Analysis Services server is part. This name must be at least 1
@@ -1605,7 +1605,7 @@ export interface Servers {
     beginSuspendWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Supends operation of the specified Analysis Services server instance.
+     * Suspends operation of the specified Analysis Services server instance.
      *
      * @param {string} resourceGroupName The name of the Azure Resource group of
      * which a given Analysis Services server is part. This name must be at least 1
