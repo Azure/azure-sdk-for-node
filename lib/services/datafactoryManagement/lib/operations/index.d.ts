@@ -206,7 +206,7 @@ export interface Factories {
      * name.
      *
      * @param {string} factoryRepoUpdate.repoConfiguration.repositoryName
-     * Rrepository name.
+     * Repository name.
      *
      * @param {string} factoryRepoUpdate.repoConfiguration.collaborationBranch
      * Collaboration branch.
@@ -249,7 +249,7 @@ export interface Factories {
      * name.
      *
      * @param {string} factoryRepoUpdate.repoConfiguration.repositoryName
-     * Rrepository name.
+     * Repository name.
      *
      * @param {string} factoryRepoUpdate.repoConfiguration.collaborationBranch
      * Collaboration branch.
@@ -365,7 +365,7 @@ export interface Factories {
      *
      * @param {string} factory.repoConfiguration.accountName Account name.
      *
-     * @param {string} factory.repoConfiguration.repositoryName Rrepository name.
+     * @param {string} factory.repoConfiguration.repositoryName Repository name.
      *
      * @param {string} factory.repoConfiguration.collaborationBranch Collaboration
      * branch.
@@ -413,7 +413,7 @@ export interface Factories {
      *
      * @param {string} factory.repoConfiguration.accountName Account name.
      *
-     * @param {string} factory.repoConfiguration.repositoryName Rrepository name.
+     * @param {string} factory.repoConfiguration.repositoryName Repository name.
      *
      * @param {string} factory.repoConfiguration.collaborationBranch Collaboration
      * branch.
@@ -1877,7 +1877,7 @@ export interface IntegrationRuntimes {
 
 
     /**
-     * Upgrade self-hosted integration runtime to latest version if availably.
+     * Upgrade self-hosted integration runtime to latest version if availability.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -1899,7 +1899,7 @@ export interface IntegrationRuntimes {
     upgradeWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Upgrade self-hosted integration runtime to latest version if availably.
+     * Upgrade self-hosted integration runtime to latest version if availability.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -3695,8 +3695,8 @@ export interface Pipelines {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.referencePipelineRunId] The pipeline run
-     * identifier. If run ID is specified the parameters of the the specified run
-     * will be used to create a new run.
+     * identifier. If run ID is specified the parameters of the specified run will
+     * be used to create a new run.
      *
      * @param {object} [options.parameters] Parameters of the pipeline run. These
      * parameters will be used only if the runId is not specified.
@@ -3724,8 +3724,8 @@ export interface Pipelines {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.referencePipelineRunId] The pipeline run
-     * identifier. If run ID is specified the parameters of the the specified run
-     * will be used to create a new run.
+     * identifier. If run ID is specified the parameters of the specified run will
+     * be used to create a new run.
      *
      * @param {object} [options.parameters] Parameters of the pipeline run. These
      * parameters will be used only if the runId is not specified.

@@ -155,7 +155,7 @@ export interface FactoryRepoConfiguration {
    */
   accountName: string;
   /**
-   * Rrepository name.
+   * Repository name.
    */
   repositoryName: string;
   /**
@@ -497,11 +497,11 @@ export interface ActivityDependency {
  */
 export interface UserProperty {
   /**
-   * User proprety name.
+   * User property name.
    */
   name: string;
   /**
-   * User proprety value. Type: string (or Expression with resultType string).
+   * User property value. Type: string (or Expression with resultType string).
    */
   value: any;
 }
@@ -1440,7 +1440,7 @@ export interface MultiplePipelineTrigger extends Trigger {
 }
 
 /**
- * Trigger that runs everytime a Blob event occurs.
+ * Trigger that runs every time a Blob event occurs.
  */
 export interface BlobEventsTrigger extends MultiplePipelineTrigger {
   /**
@@ -1467,7 +1467,7 @@ export interface BlobEventsTrigger extends MultiplePipelineTrigger {
 }
 
 /**
- * Trigger that runs everytime the selected Blob container changes.
+ * Trigger that runs every time the selected Blob container changes.
  */
 export interface BlobTrigger extends MultiplePipelineTrigger {
   /**
@@ -1485,7 +1485,7 @@ export interface BlobTrigger extends MultiplePipelineTrigger {
 }
 
 /**
- * The recurrence schedule occurence.
+ * The recurrence schedule occurrence.
  */
 export interface RecurrenceScheduleOccurrence {
   /**
@@ -4383,7 +4383,7 @@ export interface ZohoObjectDataset extends Dataset {
 }
 
 /**
- * Xero Serivce dataset.
+ * Xero Service dataset.
  */
 export interface XeroObjectDataset extends Dataset {
   /**
@@ -4393,7 +4393,7 @@ export interface XeroObjectDataset extends Dataset {
 }
 
 /**
- * Square Serivce dataset.
+ * Square Service dataset.
  */
 export interface SquareObjectDataset extends Dataset {
   /**
@@ -4413,7 +4413,7 @@ export interface SparkObjectDataset extends Dataset {
 }
 
 /**
- * Shopify Serivce dataset.
+ * Shopify Service dataset.
  */
 export interface ShopifyObjectDataset extends Dataset {
   /**
@@ -4463,7 +4463,7 @@ export interface PhoenixObjectDataset extends Dataset {
 }
 
 /**
- * Paypal Serivce dataset.
+ * Paypal Service dataset.
  */
 export interface PaypalObjectDataset extends Dataset {
   /**
@@ -4503,7 +4503,7 @@ export interface MagentoObjectDataset extends Dataset {
 }
 
 /**
- * Jira Serivce dataset.
+ * Jira Service dataset.
  */
 export interface JiraObjectDataset extends Dataset {
   /**
@@ -4523,7 +4523,7 @@ export interface ImpalaObjectDataset extends Dataset {
 }
 
 /**
- * Hubspot Serivce dataset.
+ * Hubspot Service dataset.
  */
 export interface HubspotObjectDataset extends Dataset {
   /**
@@ -4603,7 +4603,7 @@ export interface CouchbaseTableDataset extends Dataset {
 }
 
 /**
- * Concur Serivce dataset.
+ * Concur Service dataset.
  */
 export interface ConcurObjectDataset extends Dataset {
   /**
@@ -5539,7 +5539,7 @@ export interface ZohoSource extends CopySource {
 }
 
 /**
- * A copy activity Xero Serivce source.
+ * A copy activity Xero Service source.
  */
 export interface XeroSource extends CopySource {
   /**
@@ -5549,7 +5549,7 @@ export interface XeroSource extends CopySource {
 }
 
 /**
- * A copy activity Square Serivce source.
+ * A copy activity Square Service source.
  */
 export interface SquareSource extends CopySource {
   /**
@@ -5569,7 +5569,7 @@ export interface SparkSource extends CopySource {
 }
 
 /**
- * A copy activity Shopify Serivce source.
+ * A copy activity Shopify Service source.
  */
 export interface ShopifySource extends CopySource {
   /**
@@ -5619,7 +5619,7 @@ export interface PhoenixSource extends CopySource {
 }
 
 /**
- * A copy activity Paypal Serivce source.
+ * A copy activity Paypal Service source.
  */
 export interface PaypalSource extends CopySource {
   /**
@@ -5659,7 +5659,7 @@ export interface MagentoSource extends CopySource {
 }
 
 /**
- * A copy activity Jira Serivce source.
+ * A copy activity Jira Service source.
  */
 export interface JiraSource extends CopySource {
   /**
@@ -5679,7 +5679,7 @@ export interface ImpalaSource extends CopySource {
 }
 
 /**
- * A copy activity Hubspot Serivce source.
+ * A copy activity Hubspot Service source.
  */
 export interface HubspotSource extends CopySource {
   /**
@@ -5759,7 +5759,7 @@ export interface CouchbaseSource extends CopySource {
 }
 
 /**
- * A copy activity Concur Serivce source.
+ * A copy activity Concur Service source.
  */
 export interface ConcurSource extends CopySource {
   /**
@@ -6804,7 +6804,7 @@ export interface CopyActivity extends ExecutionActivity {
    */
   sink: CopySink;
   /**
-   * Copy activity translator. If not specificed, tabular translator is used.
+   * Copy activity translator. If not specified, tabular translator is used.
    */
   translator?: CopyTranslator;
   /**
