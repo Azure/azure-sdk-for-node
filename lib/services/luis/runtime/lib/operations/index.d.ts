@@ -51,11 +51,11 @@ export interface Prediction {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<LuisResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    resolveWithHttpOperationResponse(appId: string, query: string, options?: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LuisResult>>;
+    resolveWithHttpOperationResponse(appId: string, query: string, options?: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets predictions for a given utterance, in the form of intents and entities.
@@ -92,7 +92,7 @@ export interface Prediction {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {LuisResult} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -100,14 +100,13 @@ export interface Prediction {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {LuisResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LuisResult} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    resolve(appId: string, query: string, options?: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.LuisResult>;
-    resolve(appId: string, query: string, callback: ServiceCallback<models.LuisResult>): void;
-    resolve(appId: string, query: string, options: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LuisResult>): void;
+    resolve(appId: string, query: string, options?: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    resolve(appId: string, query: string, callback: ServiceCallback<any>): void;
+    resolve(appId: string, query: string, options: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 }

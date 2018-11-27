@@ -9,7 +9,6 @@
 */
 
 import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse } from 'ms-rest';
-import * as stream from 'stream';
 import * as models from '../models';
 
 
@@ -39,7 +38,7 @@ export interface Features {
      * @param {string} [phraselistCreateObject.name] The Phraselist name.
      *
      * @param {boolean} [phraselistCreateObject.isExchangeable] An exchangeable
-     * phrase list feature are serves as single feature to the LUIS underlying
+     * phrase list feature serves as a single feature to the LUIS underlying
      * training algorithm. It is used as a lexicon lookup feature where its value
      * is 1 if the lexicon contains a given word or 0 if it doesn’t. Think of an
      * exchangeable as a synonyms list. A non-exchangeable phrase list feature has
@@ -57,11 +56,11 @@ export interface Features {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Number>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addPhraseListWithHttpOperationResponse(appId: string, versionId: string, phraselistCreateObject: models.PhraselistCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<number>>;
+    addPhraseListWithHttpOperationResponse(appId: string, versionId: string, phraselistCreateObject: models.PhraselistCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Creates a new phraselist feature.
@@ -80,7 +79,7 @@ export interface Features {
      * @param {string} [phraselistCreateObject.name] The Phraselist name.
      *
      * @param {boolean} [phraselistCreateObject.isExchangeable] An exchangeable
-     * phrase list feature are serves as single feature to the LUIS underlying
+     * phrase list feature serves as a single feature to the LUIS underlying
      * training algorithm. It is used as a lexicon lookup feature where its value
      * is 1 if the lexicon contains a given word or 0 if it doesn’t. Think of an
      * exchangeable as a synonyms list. A non-exchangeable phrase list feature has
@@ -103,7 +102,7 @@ export interface Features {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Number} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -111,15 +110,15 @@ export interface Features {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Number} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addPhraseList(appId: string, versionId: string, phraselistCreateObject: models.PhraselistCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<number>;
-    addPhraseList(appId: string, versionId: string, phraselistCreateObject: models.PhraselistCreateObject, callback: ServiceCallback<number>): void;
-    addPhraseList(appId: string, versionId: string, phraselistCreateObject: models.PhraselistCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<number>): void;
+    addPhraseList(appId: string, versionId: string, phraselistCreateObject: models.PhraselistCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    addPhraseList(appId: string, versionId: string, phraselistCreateObject: models.PhraselistCreateObject, callback: ServiceCallback<any>): void;
+    addPhraseList(appId: string, versionId: string, phraselistCreateObject: models.PhraselistCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -142,11 +141,11 @@ export interface Features {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listPhraseListsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PhraseListFeatureInfo[]>>;
+    listPhraseListsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets all the phraselist features.
@@ -173,7 +172,7 @@ export interface Features {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -181,15 +180,15 @@ export interface Features {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listPhraseLists(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PhraseListFeatureInfo[]>;
-    listPhraseLists(appId: string, versionId: string, callback: ServiceCallback<models.PhraseListFeatureInfo[]>): void;
-    listPhraseLists(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PhraseListFeatureInfo[]>): void;
+    listPhraseLists(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    listPhraseLists(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    listPhraseLists(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -212,11 +211,11 @@ export interface Features {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<FeaturesResponseObject>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FeaturesResponseObject>>;
+    listWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets all the extraction features for the specified application version.
@@ -243,7 +242,7 @@ export interface Features {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {FeaturesResponseObject} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -251,17 +250,15 @@ export interface Features {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {FeaturesResponseObject} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link FeaturesResponseObject} for more
-     *                      information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.FeaturesResponseObject>;
-    list(appId: string, versionId: string, callback: ServiceCallback<models.FeaturesResponseObject>): void;
-    list(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FeaturesResponseObject>): void;
+    list(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    list(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    list(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -280,11 +277,11 @@ export interface Features {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<PhraseListFeatureInfo>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPhraseListWithHttpOperationResponse(appId: string, versionId: string, phraselistId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PhraseListFeatureInfo>>;
+    getPhraseListWithHttpOperationResponse(appId: string, versionId: string, phraselistId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets phraselist feature info.
@@ -307,7 +304,7 @@ export interface Features {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {PhraseListFeatureInfo} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -315,16 +312,15 @@ export interface Features {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {PhraseListFeatureInfo} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PhraseListFeatureInfo} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPhraseList(appId: string, versionId: string, phraselistId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PhraseListFeatureInfo>;
-    getPhraseList(appId: string, versionId: string, phraselistId: number, callback: ServiceCallback<models.PhraseListFeatureInfo>): void;
-    getPhraseList(appId: string, versionId: string, phraselistId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PhraseListFeatureInfo>): void;
+    getPhraseList(appId: string, versionId: string, phraselistId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getPhraseList(appId: string, versionId: string, phraselistId: number, callback: ServiceCallback<any>): void;
+    getPhraseList(appId: string, versionId: string, phraselistId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -368,11 +364,11 @@ export interface Features {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updatePhraseListWithHttpOperationResponse(appId: string, versionId: string, phraselistId: number, options?: { phraselistUpdateObject? : models.PhraselistUpdateObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updatePhraseListWithHttpOperationResponse(appId: string, versionId: string, phraselistId: number, options?: { phraselistUpdateObject? : models.PhraselistUpdateObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Updates the phrases, the state and the name of the phraselist feature.
@@ -420,7 +416,7 @@ export interface Features {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -428,16 +424,15 @@ export interface Features {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updatePhraseList(appId: string, versionId: string, phraselistId: number, options?: { phraselistUpdateObject? : models.PhraselistUpdateObject, customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updatePhraseList(appId: string, versionId: string, phraselistId: number, callback: ServiceCallback<models.OperationStatus>): void;
-    updatePhraseList(appId: string, versionId: string, phraselistId: number, options: { phraselistUpdateObject? : models.PhraselistUpdateObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updatePhraseList(appId: string, versionId: string, phraselistId: number, options?: { phraselistUpdateObject? : models.PhraselistUpdateObject, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updatePhraseList(appId: string, versionId: string, phraselistId: number, callback: ServiceCallback<any>): void;
+    updatePhraseList(appId: string, versionId: string, phraselistId: number, options: { phraselistUpdateObject? : models.PhraselistUpdateObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -456,11 +451,11 @@ export interface Features {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deletePhraseListWithHttpOperationResponse(appId: string, versionId: string, phraselistId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deletePhraseListWithHttpOperationResponse(appId: string, versionId: string, phraselistId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Deletes a phraselist feature.
@@ -483,7 +478,7 @@ export interface Features {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -491,16 +486,15 @@ export interface Features {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deletePhraseList(appId: string, versionId: string, phraselistId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deletePhraseList(appId: string, versionId: string, phraselistId: number, callback: ServiceCallback<models.OperationStatus>): void;
-    deletePhraseList(appId: string, versionId: string, phraselistId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deletePhraseList(appId: string, versionId: string, phraselistId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deletePhraseList(appId: string, versionId: string, phraselistId: number, callback: ServiceCallback<any>): void;
+    deletePhraseList(appId: string, versionId: string, phraselistId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 }
 
 /**
@@ -537,11 +531,11 @@ export interface Examples {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<LabelExampleResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addWithHttpOperationResponse(appId: string, versionId: string, exampleLabelObject: models.ExampleLabelObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabelExampleResponse>>;
+    addWithHttpOperationResponse(appId: string, versionId: string, exampleLabelObject: models.ExampleLabelObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Adds a labeled example to the application.
@@ -573,7 +567,7 @@ export interface Examples {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {LabelExampleResponse} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -581,16 +575,15 @@ export interface Examples {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {LabelExampleResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LabelExampleResponse} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    add(appId: string, versionId: string, exampleLabelObject: models.ExampleLabelObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LabelExampleResponse>;
-    add(appId: string, versionId: string, exampleLabelObject: models.ExampleLabelObject, callback: ServiceCallback<models.LabelExampleResponse>): void;
-    add(appId: string, versionId: string, exampleLabelObject: models.ExampleLabelObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabelExampleResponse>): void;
+    add(appId: string, versionId: string, exampleLabelObject: models.ExampleLabelObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    add(appId: string, versionId: string, exampleLabelObject: models.ExampleLabelObject, callback: ServiceCallback<any>): void;
+    add(appId: string, versionId: string, exampleLabelObject: models.ExampleLabelObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -609,11 +602,11 @@ export interface Examples {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    batchWithHttpOperationResponse(appId: string, versionId: string, exampleLabelObjectArray: models.ExampleLabelObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BatchLabelExample[]>>;
+    batchWithHttpOperationResponse(appId: string, versionId: string, exampleLabelObjectArray: models.ExampleLabelObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Adds a batch of labeled examples to the application.
@@ -636,7 +629,7 @@ export interface Examples {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -644,15 +637,15 @@ export interface Examples {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    batch(appId: string, versionId: string, exampleLabelObjectArray: models.ExampleLabelObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BatchLabelExample[]>;
-    batch(appId: string, versionId: string, exampleLabelObjectArray: models.ExampleLabelObject[], callback: ServiceCallback<models.BatchLabelExample[]>): void;
-    batch(appId: string, versionId: string, exampleLabelObjectArray: models.ExampleLabelObject[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchLabelExample[]>): void;
+    batch(appId: string, versionId: string, exampleLabelObjectArray: models.ExampleLabelObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    batch(appId: string, versionId: string, exampleLabelObjectArray: models.ExampleLabelObject[], callback: ServiceCallback<any>): void;
+    batch(appId: string, versionId: string, exampleLabelObjectArray: models.ExampleLabelObject[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -675,11 +668,11 @@ export interface Examples {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabeledUtterance[]>>;
+    listWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Returns examples to be reviewed.
@@ -706,7 +699,7 @@ export interface Examples {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -714,15 +707,15 @@ export interface Examples {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.LabeledUtterance[]>;
-    list(appId: string, versionId: string, callback: ServiceCallback<models.LabeledUtterance[]>): void;
-    list(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabeledUtterance[]>): void;
+    list(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    list(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    list(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -741,11 +734,11 @@ export interface Examples {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(appId: string, versionId: string, exampleId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteMethodWithHttpOperationResponse(appId: string, versionId: string, exampleId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Deletes the labeled example with the specified ID.
@@ -768,7 +761,7 @@ export interface Examples {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -776,16 +769,15 @@ export interface Examples {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(appId: string, versionId: string, exampleId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteMethod(appId: string, versionId: string, exampleId: number, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteMethod(appId: string, versionId: string, exampleId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteMethod(appId: string, versionId: string, exampleId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteMethod(appId: string, versionId: string, exampleId: number, callback: ServiceCallback<any>): void;
+    deleteMethod(appId: string, versionId: string, exampleId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 }
 
 /**
@@ -816,11 +808,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addIntentWithHttpOperationResponse(appId: string, versionId: string, intentCreateObject: models.ModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addIntentWithHttpOperationResponse(appId: string, versionId: string, intentCreateObject: models.ModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Adds an intent classifier to the application.
@@ -846,7 +838,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Uuid} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -854,15 +846,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addIntent(appId: string, versionId: string, intentCreateObject: models.ModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    addIntent(appId: string, versionId: string, intentCreateObject: models.ModelCreateObject, callback: ServiceCallback<string>): void;
-    addIntent(appId: string, versionId: string, intentCreateObject: models.ModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    addIntent(appId: string, versionId: string, intentCreateObject: models.ModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    addIntent(appId: string, versionId: string, intentCreateObject: models.ModelCreateObject, callback: ServiceCallback<any>): void;
+    addIntent(appId: string, versionId: string, intentCreateObject: models.ModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -885,11 +877,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listIntentsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntentClassifier[]>>;
+    listIntentsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets information about the intent models.
@@ -916,7 +908,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -924,15 +916,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listIntents(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntentClassifier[]>;
-    listIntents(appId: string, versionId: string, callback: ServiceCallback<models.IntentClassifier[]>): void;
-    listIntents(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntentClassifier[]>): void;
+    listIntents(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    listIntents(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    listIntents(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -954,11 +946,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addEntityWithHttpOperationResponse(appId: string, versionId: string, modelCreateObject: models.ModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addEntityWithHttpOperationResponse(appId: string, versionId: string, modelCreateObject: models.ModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Adds an entity extractor to the application.
@@ -984,7 +976,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Uuid} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -992,15 +984,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addEntity(appId: string, versionId: string, modelCreateObject: models.ModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    addEntity(appId: string, versionId: string, modelCreateObject: models.ModelCreateObject, callback: ServiceCallback<string>): void;
-    addEntity(appId: string, versionId: string, modelCreateObject: models.ModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    addEntity(appId: string, versionId: string, modelCreateObject: models.ModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    addEntity(appId: string, versionId: string, modelCreateObject: models.ModelCreateObject, callback: ServiceCallback<any>): void;
+    addEntity(appId: string, versionId: string, modelCreateObject: models.ModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -1023,11 +1015,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listEntitiesWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityExtractor[]>>;
+    listEntitiesWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets information about the entity models.
@@ -1054,7 +1046,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1062,15 +1054,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listEntities(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityExtractor[]>;
-    listEntities(appId: string, versionId: string, callback: ServiceCallback<models.EntityExtractor[]>): void;
-    listEntities(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityExtractor[]>): void;
+    listEntities(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    listEntities(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    listEntities(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -1094,11 +1086,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addHierarchicalEntityWithHttpOperationResponse(appId: string, versionId: string, hierarchicalModelCreateObject: models.HierarchicalEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addHierarchicalEntityWithHttpOperationResponse(appId: string, versionId: string, hierarchicalModelCreateObject: models.HierarchicalEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Adds a hierarchical entity extractor to the application version.
@@ -1126,7 +1118,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Uuid} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1134,15 +1126,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addHierarchicalEntity(appId: string, versionId: string, hierarchicalModelCreateObject: models.HierarchicalEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    addHierarchicalEntity(appId: string, versionId: string, hierarchicalModelCreateObject: models.HierarchicalEntityModel, callback: ServiceCallback<string>): void;
-    addHierarchicalEntity(appId: string, versionId: string, hierarchicalModelCreateObject: models.HierarchicalEntityModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    addHierarchicalEntity(appId: string, versionId: string, hierarchicalModelCreateObject: models.HierarchicalEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    addHierarchicalEntity(appId: string, versionId: string, hierarchicalModelCreateObject: models.HierarchicalEntityModel, callback: ServiceCallback<any>): void;
+    addHierarchicalEntity(appId: string, versionId: string, hierarchicalModelCreateObject: models.HierarchicalEntityModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -1165,11 +1157,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listHierarchicalEntitiesWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HierarchicalEntityExtractor[]>>;
+    listHierarchicalEntitiesWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets information about the hierarchical entity models.
@@ -1196,7 +1188,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1204,15 +1196,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listHierarchicalEntities(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.HierarchicalEntityExtractor[]>;
-    listHierarchicalEntities(appId: string, versionId: string, callback: ServiceCallback<models.HierarchicalEntityExtractor[]>): void;
-    listHierarchicalEntities(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HierarchicalEntityExtractor[]>): void;
+    listHierarchicalEntities(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    listHierarchicalEntities(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    listHierarchicalEntities(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -1236,11 +1228,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addCompositeEntityWithHttpOperationResponse(appId: string, versionId: string, compositeModelCreateObject: models.CompositeEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addCompositeEntityWithHttpOperationResponse(appId: string, versionId: string, compositeModelCreateObject: models.CompositeEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Adds a composite entity extractor to the application.
@@ -1268,7 +1260,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Uuid} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1276,15 +1268,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addCompositeEntity(appId: string, versionId: string, compositeModelCreateObject: models.CompositeEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    addCompositeEntity(appId: string, versionId: string, compositeModelCreateObject: models.CompositeEntityModel, callback: ServiceCallback<string>): void;
-    addCompositeEntity(appId: string, versionId: string, compositeModelCreateObject: models.CompositeEntityModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    addCompositeEntity(appId: string, versionId: string, compositeModelCreateObject: models.CompositeEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    addCompositeEntity(appId: string, versionId: string, compositeModelCreateObject: models.CompositeEntityModel, callback: ServiceCallback<any>): void;
+    addCompositeEntity(appId: string, versionId: string, compositeModelCreateObject: models.CompositeEntityModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -1307,11 +1299,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listCompositeEntitiesWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CompositeEntityExtractor[]>>;
+    listCompositeEntitiesWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets information about the composite entity models.
@@ -1338,7 +1330,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1346,15 +1338,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listCompositeEntities(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.CompositeEntityExtractor[]>;
-    listCompositeEntities(appId: string, versionId: string, callback: ServiceCallback<models.CompositeEntityExtractor[]>): void;
-    listCompositeEntities(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CompositeEntityExtractor[]>): void;
+    listCompositeEntities(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    listCompositeEntities(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    listCompositeEntities(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -1377,11 +1369,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listClosedListsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClosedListEntityExtractor[]>>;
+    listClosedListsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets information about the closedlist models.
@@ -1408,7 +1400,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1416,15 +1408,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listClosedLists(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ClosedListEntityExtractor[]>;
-    listClosedLists(appId: string, versionId: string, callback: ServiceCallback<models.ClosedListEntityExtractor[]>): void;
-    listClosedLists(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClosedListEntityExtractor[]>): void;
+    listClosedLists(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    listClosedLists(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    listClosedLists(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -1450,11 +1442,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addClosedListWithHttpOperationResponse(appId: string, versionId: string, closedListModelCreateObject: models.ClosedListModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addClosedListWithHttpOperationResponse(appId: string, versionId: string, closedListModelCreateObject: models.ClosedListModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Adds a closed list model to the application.
@@ -1484,7 +1476,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Uuid} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1492,15 +1484,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addClosedList(appId: string, versionId: string, closedListModelCreateObject: models.ClosedListModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    addClosedList(appId: string, versionId: string, closedListModelCreateObject: models.ClosedListModelCreateObject, callback: ServiceCallback<string>): void;
-    addClosedList(appId: string, versionId: string, closedListModelCreateObject: models.ClosedListModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    addClosedList(appId: string, versionId: string, closedListModelCreateObject: models.ClosedListModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    addClosedList(appId: string, versionId: string, closedListModelCreateObject: models.ClosedListModelCreateObject, callback: ServiceCallback<any>): void;
+    addClosedList(appId: string, versionId: string, closedListModelCreateObject: models.ClosedListModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -1520,11 +1512,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addPrebuiltWithHttpOperationResponse(appId: string, versionId: string, prebuiltExtractorNames: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrebuiltEntityExtractor[]>>;
+    addPrebuiltWithHttpOperationResponse(appId: string, versionId: string, prebuiltExtractorNames: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Adds a list of prebuilt entity extractors to the application.
@@ -1548,7 +1540,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1556,15 +1548,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addPrebuilt(appId: string, versionId: string, prebuiltExtractorNames: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrebuiltEntityExtractor[]>;
-    addPrebuilt(appId: string, versionId: string, prebuiltExtractorNames: string[], callback: ServiceCallback<models.PrebuiltEntityExtractor[]>): void;
-    addPrebuilt(appId: string, versionId: string, prebuiltExtractorNames: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrebuiltEntityExtractor[]>): void;
+    addPrebuilt(appId: string, versionId: string, prebuiltExtractorNames: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    addPrebuilt(appId: string, versionId: string, prebuiltExtractorNames: string[], callback: ServiceCallback<any>): void;
+    addPrebuilt(appId: string, versionId: string, prebuiltExtractorNames: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -1587,11 +1579,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listPrebuiltsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrebuiltEntityExtractor[]>>;
+    listPrebuiltsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets information about the prebuilt entity models.
@@ -1618,7 +1610,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1626,15 +1618,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listPrebuilts(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PrebuiltEntityExtractor[]>;
-    listPrebuilts(appId: string, versionId: string, callback: ServiceCallback<models.PrebuiltEntityExtractor[]>): void;
-    listPrebuilts(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrebuiltEntityExtractor[]>): void;
+    listPrebuilts(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    listPrebuilts(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    listPrebuilts(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -1651,11 +1643,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listPrebuiltEntitiesWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailablePrebuiltEntityModel[]>>;
+    listPrebuiltEntitiesWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets all the available prebuilt entity extractors for the application.
@@ -1676,7 +1668,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1684,15 +1676,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listPrebuiltEntities(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailablePrebuiltEntityModel[]>;
-    listPrebuiltEntities(appId: string, versionId: string, callback: ServiceCallback<models.AvailablePrebuiltEntityModel[]>): void;
-    listPrebuiltEntities(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailablePrebuiltEntityModel[]>): void;
+    listPrebuiltEntities(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    listPrebuiltEntities(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    listPrebuiltEntities(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -1715,11 +1707,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listModelsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ModelInfoResponse[]>>;
+    listModelsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets information about the application version models.
@@ -1746,7 +1738,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1754,15 +1746,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listModels(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ModelInfoResponse[]>;
-    listModels(appId: string, versionId: string, callback: ServiceCallback<models.ModelInfoResponse[]>): void;
-    listModels(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ModelInfoResponse[]>): void;
+    listModels(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    listModels(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    listModels(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -1787,11 +1779,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    examplesMethodWithHttpOperationResponse(appId: string, versionId: string, modelId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LabelTextObject[]>>;
+    examplesMethodWithHttpOperationResponse(appId: string, versionId: string, modelId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets the utterances for the given model in the given app version.
@@ -1820,7 +1812,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1828,15 +1820,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    examplesMethod(appId: string, versionId: string, modelId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.LabelTextObject[]>;
-    examplesMethod(appId: string, versionId: string, modelId: string, callback: ServiceCallback<models.LabelTextObject[]>): void;
-    examplesMethod(appId: string, versionId: string, modelId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabelTextObject[]>): void;
+    examplesMethod(appId: string, versionId: string, modelId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    examplesMethod(appId: string, versionId: string, modelId: string, callback: ServiceCallback<any>): void;
+    examplesMethod(appId: string, versionId: string, modelId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -1855,11 +1847,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<IntentClassifier>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getIntentWithHttpOperationResponse(appId: string, versionId: string, intentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntentClassifier>>;
+    getIntentWithHttpOperationResponse(appId: string, versionId: string, intentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets information about the intent model.
@@ -1882,7 +1874,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {IntentClassifier} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1890,16 +1882,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {IntentClassifier} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link IntentClassifier} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getIntent(appId: string, versionId: string, intentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntentClassifier>;
-    getIntent(appId: string, versionId: string, intentId: string, callback: ServiceCallback<models.IntentClassifier>): void;
-    getIntent(appId: string, versionId: string, intentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntentClassifier>): void;
+    getIntent(appId: string, versionId: string, intentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getIntent(appId: string, versionId: string, intentId: string, callback: ServiceCallback<any>): void;
+    getIntent(appId: string, versionId: string, intentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -1923,11 +1914,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateIntentWithHttpOperationResponse(appId: string, versionId: string, intentId: string, modelUpdateObject: models.ModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateIntentWithHttpOperationResponse(appId: string, versionId: string, intentId: string, modelUpdateObject: models.ModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Updates the name of an intent classifier.
@@ -1955,7 +1946,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1963,16 +1954,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateIntent(appId: string, versionId: string, intentId: string, modelUpdateObject: models.ModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateIntent(appId: string, versionId: string, intentId: string, modelUpdateObject: models.ModelUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateIntent(appId: string, versionId: string, intentId: string, modelUpdateObject: models.ModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateIntent(appId: string, versionId: string, intentId: string, modelUpdateObject: models.ModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updateIntent(appId: string, versionId: string, intentId: string, modelUpdateObject: models.ModelUpdateObject, callback: ServiceCallback<any>): void;
+    updateIntent(appId: string, versionId: string, intentId: string, modelUpdateObject: models.ModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -1995,11 +1985,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteIntentWithHttpOperationResponse(appId: string, versionId: string, intentId: string, options?: { deleteUtterances? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteIntentWithHttpOperationResponse(appId: string, versionId: string, intentId: string, options?: { deleteUtterances? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Deletes an intent classifier from the application.
@@ -2026,7 +2016,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2034,16 +2024,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteIntent(appId: string, versionId: string, intentId: string, options?: { deleteUtterances? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteIntent(appId: string, versionId: string, intentId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteIntent(appId: string, versionId: string, intentId: string, options: { deleteUtterances? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteIntent(appId: string, versionId: string, intentId: string, options?: { deleteUtterances? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteIntent(appId: string, versionId: string, intentId: string, callback: ServiceCallback<any>): void;
+    deleteIntent(appId: string, versionId: string, intentId: string, options: { deleteUtterances? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -2062,11 +2051,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<EntityExtractor>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getEntityWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityExtractor>>;
+    getEntityWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets information about the entity model.
@@ -2089,7 +2078,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {EntityExtractor} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2097,16 +2086,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {EntityExtractor} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link EntityExtractor} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getEntity(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityExtractor>;
-    getEntity(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityExtractor>): void;
-    getEntity(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityExtractor>): void;
+    getEntity(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getEntity(appId: string, versionId: string, entityId: string, callback: ServiceCallback<any>): void;
+    getEntity(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -2130,11 +2118,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateEntityWithHttpOperationResponse(appId: string, versionId: string, entityId: string, modelUpdateObject: models.ModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateEntityWithHttpOperationResponse(appId: string, versionId: string, entityId: string, modelUpdateObject: models.ModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Updates the name of an entity extractor.
@@ -2162,7 +2150,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2170,16 +2158,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateEntity(appId: string, versionId: string, entityId: string, modelUpdateObject: models.ModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateEntity(appId: string, versionId: string, entityId: string, modelUpdateObject: models.ModelUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateEntity(appId: string, versionId: string, entityId: string, modelUpdateObject: models.ModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateEntity(appId: string, versionId: string, entityId: string, modelUpdateObject: models.ModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updateEntity(appId: string, versionId: string, entityId: string, modelUpdateObject: models.ModelUpdateObject, callback: ServiceCallback<any>): void;
+    updateEntity(appId: string, versionId: string, entityId: string, modelUpdateObject: models.ModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -2198,11 +2185,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteEntityWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteEntityWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Deletes an entity extractor from the application.
@@ -2225,7 +2212,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2233,16 +2220,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteEntity(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteEntity(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteEntity(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteEntity(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteEntity(appId: string, versionId: string, entityId: string, callback: ServiceCallback<any>): void;
+    deleteEntity(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -2261,11 +2247,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<HierarchicalEntityExtractor>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getHierarchicalEntityWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HierarchicalEntityExtractor>>;
+    getHierarchicalEntityWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets information about the hierarchical entity model.
@@ -2288,7 +2274,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {HierarchicalEntityExtractor} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2296,17 +2282,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {HierarchicalEntityExtractor} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link HierarchicalEntityExtractor} for more
-     *                      information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getHierarchicalEntity(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HierarchicalEntityExtractor>;
-    getHierarchicalEntity(appId: string, versionId: string, hEntityId: string, callback: ServiceCallback<models.HierarchicalEntityExtractor>): void;
-    getHierarchicalEntity(appId: string, versionId: string, hEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HierarchicalEntityExtractor>): void;
+    getHierarchicalEntity(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getHierarchicalEntity(appId: string, versionId: string, hEntityId: string, callback: ServiceCallback<any>): void;
+    getHierarchicalEntity(appId: string, versionId: string, hEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -2332,11 +2316,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateHierarchicalEntityWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, hierarchicalModelUpdateObject: models.HierarchicalEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateHierarchicalEntityWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, hierarchicalModelUpdateObject: models.HierarchicalEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Updates the name and children of a hierarchical entity model.
@@ -2366,7 +2350,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2374,16 +2358,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateHierarchicalEntity(appId: string, versionId: string, hEntityId: string, hierarchicalModelUpdateObject: models.HierarchicalEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateHierarchicalEntity(appId: string, versionId: string, hEntityId: string, hierarchicalModelUpdateObject: models.HierarchicalEntityModel, callback: ServiceCallback<models.OperationStatus>): void;
-    updateHierarchicalEntity(appId: string, versionId: string, hEntityId: string, hierarchicalModelUpdateObject: models.HierarchicalEntityModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateHierarchicalEntity(appId: string, versionId: string, hEntityId: string, hierarchicalModelUpdateObject: models.HierarchicalEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updateHierarchicalEntity(appId: string, versionId: string, hEntityId: string, hierarchicalModelUpdateObject: models.HierarchicalEntityModel, callback: ServiceCallback<any>): void;
+    updateHierarchicalEntity(appId: string, versionId: string, hEntityId: string, hierarchicalModelUpdateObject: models.HierarchicalEntityModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -2402,11 +2385,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteHierarchicalEntityWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteHierarchicalEntityWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Deletes a hierarchical entity extractor from the application version.
@@ -2429,7 +2412,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2437,16 +2420,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteHierarchicalEntity(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteHierarchicalEntity(appId: string, versionId: string, hEntityId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteHierarchicalEntity(appId: string, versionId: string, hEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteHierarchicalEntity(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteHierarchicalEntity(appId: string, versionId: string, hEntityId: string, callback: ServiceCallback<any>): void;
+    deleteHierarchicalEntity(appId: string, versionId: string, hEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -2465,11 +2447,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<CompositeEntityExtractor>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getCompositeEntityWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CompositeEntityExtractor>>;
+    getCompositeEntityWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets information about the composite entity model.
@@ -2492,7 +2474,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {CompositeEntityExtractor} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2500,17 +2482,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {CompositeEntityExtractor} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CompositeEntityExtractor} for more
-     *                      information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getCompositeEntity(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CompositeEntityExtractor>;
-    getCompositeEntity(appId: string, versionId: string, cEntityId: string, callback: ServiceCallback<models.CompositeEntityExtractor>): void;
-    getCompositeEntity(appId: string, versionId: string, cEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CompositeEntityExtractor>): void;
+    getCompositeEntity(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getCompositeEntity(appId: string, versionId: string, cEntityId: string, callback: ServiceCallback<any>): void;
+    getCompositeEntity(appId: string, versionId: string, cEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -2536,11 +2516,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateCompositeEntityWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, compositeModelUpdateObject: models.CompositeEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateCompositeEntityWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, compositeModelUpdateObject: models.CompositeEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Updates the composite entity extractor.
@@ -2570,7 +2550,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2578,16 +2558,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateCompositeEntity(appId: string, versionId: string, cEntityId: string, compositeModelUpdateObject: models.CompositeEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateCompositeEntity(appId: string, versionId: string, cEntityId: string, compositeModelUpdateObject: models.CompositeEntityModel, callback: ServiceCallback<models.OperationStatus>): void;
-    updateCompositeEntity(appId: string, versionId: string, cEntityId: string, compositeModelUpdateObject: models.CompositeEntityModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateCompositeEntity(appId: string, versionId: string, cEntityId: string, compositeModelUpdateObject: models.CompositeEntityModel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updateCompositeEntity(appId: string, versionId: string, cEntityId: string, compositeModelUpdateObject: models.CompositeEntityModel, callback: ServiceCallback<any>): void;
+    updateCompositeEntity(appId: string, versionId: string, cEntityId: string, compositeModelUpdateObject: models.CompositeEntityModel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -2606,11 +2585,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteCompositeEntityWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteCompositeEntityWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Deletes a composite entity extractor from the application.
@@ -2633,7 +2612,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2641,16 +2620,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteCompositeEntity(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteCompositeEntity(appId: string, versionId: string, cEntityId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteCompositeEntity(appId: string, versionId: string, cEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteCompositeEntity(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteCompositeEntity(appId: string, versionId: string, cEntityId: string, callback: ServiceCallback<any>): void;
+    deleteCompositeEntity(appId: string, versionId: string, cEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -2669,11 +2647,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ClosedListEntityExtractor>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getClosedListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClosedListEntityExtractor>>;
+    getClosedListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets information of a closed list model.
@@ -2696,7 +2674,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ClosedListEntityExtractor} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2704,17 +2682,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ClosedListEntityExtractor} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ClosedListEntityExtractor} for more
-     *                      information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getClosedList(appId: string, versionId: string, clEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClosedListEntityExtractor>;
-    getClosedList(appId: string, versionId: string, clEntityId: string, callback: ServiceCallback<models.ClosedListEntityExtractor>): void;
-    getClosedList(appId: string, versionId: string, clEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClosedListEntityExtractor>): void;
+    getClosedList(appId: string, versionId: string, clEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getClosedList(appId: string, versionId: string, clEntityId: string, callback: ServiceCallback<any>): void;
+    getClosedList(appId: string, versionId: string, clEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -2742,11 +2718,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateClosedListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, closedListModelUpdateObject: models.ClosedListModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateClosedListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, closedListModelUpdateObject: models.ClosedListModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Updates the closed list model.
@@ -2778,7 +2754,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2786,16 +2762,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateClosedList(appId: string, versionId: string, clEntityId: string, closedListModelUpdateObject: models.ClosedListModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateClosedList(appId: string, versionId: string, clEntityId: string, closedListModelUpdateObject: models.ClosedListModelUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateClosedList(appId: string, versionId: string, clEntityId: string, closedListModelUpdateObject: models.ClosedListModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateClosedList(appId: string, versionId: string, clEntityId: string, closedListModelUpdateObject: models.ClosedListModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updateClosedList(appId: string, versionId: string, clEntityId: string, closedListModelUpdateObject: models.ClosedListModelUpdateObject, callback: ServiceCallback<any>): void;
+    updateClosedList(appId: string, versionId: string, clEntityId: string, closedListModelUpdateObject: models.ClosedListModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -2818,11 +2793,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    patchClosedListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, closedListModelPatchObject: models.ClosedListModelPatchObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    patchClosedListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, closedListModelPatchObject: models.ClosedListModelPatchObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Adds a batch of sublists to an existing closedlist.
@@ -2849,7 +2824,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2857,16 +2832,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    patchClosedList(appId: string, versionId: string, clEntityId: string, closedListModelPatchObject: models.ClosedListModelPatchObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    patchClosedList(appId: string, versionId: string, clEntityId: string, closedListModelPatchObject: models.ClosedListModelPatchObject, callback: ServiceCallback<models.OperationStatus>): void;
-    patchClosedList(appId: string, versionId: string, clEntityId: string, closedListModelPatchObject: models.ClosedListModelPatchObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    patchClosedList(appId: string, versionId: string, clEntityId: string, closedListModelPatchObject: models.ClosedListModelPatchObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    patchClosedList(appId: string, versionId: string, clEntityId: string, closedListModelPatchObject: models.ClosedListModelPatchObject, callback: ServiceCallback<any>): void;
+    patchClosedList(appId: string, versionId: string, clEntityId: string, closedListModelPatchObject: models.ClosedListModelPatchObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -2885,11 +2859,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteClosedListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteClosedListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Deletes a closed list model from the application.
@@ -2912,7 +2886,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2920,16 +2894,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteClosedList(appId: string, versionId: string, clEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteClosedList(appId: string, versionId: string, clEntityId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteClosedList(appId: string, versionId: string, clEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteClosedList(appId: string, versionId: string, clEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteClosedList(appId: string, versionId: string, clEntityId: string, callback: ServiceCallback<any>): void;
+    deleteClosedList(appId: string, versionId: string, clEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -2948,11 +2921,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<PrebuiltEntityExtractor>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPrebuiltWithHttpOperationResponse(appId: string, versionId: string, prebuiltId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrebuiltEntityExtractor>>;
+    getPrebuiltWithHttpOperationResponse(appId: string, versionId: string, prebuiltId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets information about the prebuilt entity model.
@@ -2975,7 +2948,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {PrebuiltEntityExtractor} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2983,17 +2956,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {PrebuiltEntityExtractor} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PrebuiltEntityExtractor} for more
-     *                      information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPrebuilt(appId: string, versionId: string, prebuiltId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrebuiltEntityExtractor>;
-    getPrebuilt(appId: string, versionId: string, prebuiltId: string, callback: ServiceCallback<models.PrebuiltEntityExtractor>): void;
-    getPrebuilt(appId: string, versionId: string, prebuiltId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrebuiltEntityExtractor>): void;
+    getPrebuilt(appId: string, versionId: string, prebuiltId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getPrebuilt(appId: string, versionId: string, prebuiltId: string, callback: ServiceCallback<any>): void;
+    getPrebuilt(appId: string, versionId: string, prebuiltId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -3012,11 +2983,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deletePrebuiltWithHttpOperationResponse(appId: string, versionId: string, prebuiltId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deletePrebuiltWithHttpOperationResponse(appId: string, versionId: string, prebuiltId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Deletes a prebuilt entity extractor from the application.
@@ -3039,7 +3010,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3047,16 +3018,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deletePrebuilt(appId: string, versionId: string, prebuiltId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deletePrebuilt(appId: string, versionId: string, prebuiltId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deletePrebuilt(appId: string, versionId: string, prebuiltId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deletePrebuilt(appId: string, versionId: string, prebuiltId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deletePrebuilt(appId: string, versionId: string, prebuiltId: string, callback: ServiceCallback<any>): void;
+    deletePrebuilt(appId: string, versionId: string, prebuiltId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -3077,11 +3047,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteSubListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, subListId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteSubListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, subListId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Deletes a sublist of a specific closed list model.
@@ -3106,7 +3076,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3114,16 +3084,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteSubList(appId: string, versionId: string, clEntityId: string, subListId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteSubList(appId: string, versionId: string, clEntityId: string, subListId: number, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteSubList(appId: string, versionId: string, clEntityId: string, subListId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteSubList(appId: string, versionId: string, clEntityId: string, subListId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteSubList(appId: string, versionId: string, clEntityId: string, subListId: number, callback: ServiceCallback<any>): void;
+    deleteSubList(appId: string, versionId: string, clEntityId: string, subListId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -3152,11 +3121,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateSubListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, subListId: number, wordListBaseUpdateObject: models.WordListBaseUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateSubListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, subListId: number, wordListBaseUpdateObject: models.WordListBaseUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Updates one of the closed list's sublists.
@@ -3189,7 +3158,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3197,16 +3166,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateSubList(appId: string, versionId: string, clEntityId: string, subListId: number, wordListBaseUpdateObject: models.WordListBaseUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateSubList(appId: string, versionId: string, clEntityId: string, subListId: number, wordListBaseUpdateObject: models.WordListBaseUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateSubList(appId: string, versionId: string, clEntityId: string, subListId: number, wordListBaseUpdateObject: models.WordListBaseUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateSubList(appId: string, versionId: string, clEntityId: string, subListId: number, wordListBaseUpdateObject: models.WordListBaseUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updateSubList(appId: string, versionId: string, clEntityId: string, subListId: number, wordListBaseUpdateObject: models.WordListBaseUpdateObject, callback: ServiceCallback<any>): void;
+    updateSubList(appId: string, versionId: string, clEntityId: string, subListId: number, wordListBaseUpdateObject: models.WordListBaseUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -3228,11 +3196,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getIntentSuggestionsWithHttpOperationResponse(appId: string, versionId: string, intentId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntentsSuggestionExample[]>>;
+    getIntentSuggestionsWithHttpOperationResponse(appId: string, versionId: string, intentId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Suggests examples that would improve the accuracy of the intent model.
@@ -3258,7 +3226,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3266,15 +3234,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getIntentSuggestions(appId: string, versionId: string, intentId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntentsSuggestionExample[]>;
-    getIntentSuggestions(appId: string, versionId: string, intentId: string, callback: ServiceCallback<models.IntentsSuggestionExample[]>): void;
-    getIntentSuggestions(appId: string, versionId: string, intentId: string, options: { take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntentsSuggestionExample[]>): void;
+    getIntentSuggestions(appId: string, versionId: string, intentId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getIntentSuggestions(appId: string, versionId: string, intentId: string, callback: ServiceCallback<any>): void;
+    getIntentSuggestions(appId: string, versionId: string, intentId: string, options: { take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -3296,11 +3264,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getEntitySuggestionsWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntitiesSuggestionExample[]>>;
+    getEntitySuggestionsWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Get suggestion examples that would improve the accuracy of the entity model.
@@ -3326,7 +3294,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3334,15 +3302,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getEntitySuggestions(appId: string, versionId: string, entityId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.EntitiesSuggestionExample[]>;
-    getEntitySuggestions(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntitiesSuggestionExample[]>): void;
-    getEntitySuggestions(appId: string, versionId: string, entityId: string, options: { take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntitiesSuggestionExample[]>): void;
+    getEntitySuggestions(appId: string, versionId: string, entityId: string, options?: { take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getEntitySuggestions(appId: string, versionId: string, entityId: string, callback: ServiceCallback<any>): void;
+    getEntitySuggestions(appId: string, versionId: string, entityId: string, options: { take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -3368,11 +3336,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Number>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addSubListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, wordListCreateObject: models.WordListObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<number>>;
+    addSubListWithHttpOperationResponse(appId: string, versionId: string, clEntityId: string, wordListCreateObject: models.WordListObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Adds a list to an existing closed list.
@@ -3402,7 +3370,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Number} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3410,15 +3378,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Number} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addSubList(appId: string, versionId: string, clEntityId: string, wordListCreateObject: models.WordListObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<number>;
-    addSubList(appId: string, versionId: string, clEntityId: string, wordListCreateObject: models.WordListObject, callback: ServiceCallback<number>): void;
-    addSubList(appId: string, versionId: string, clEntityId: string, wordListCreateObject: models.WordListObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<number>): void;
+    addSubList(appId: string, versionId: string, clEntityId: string, wordListCreateObject: models.WordListObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    addSubList(appId: string, versionId: string, clEntityId: string, wordListCreateObject: models.WordListObject, callback: ServiceCallback<any>): void;
+    addSubList(appId: string, versionId: string, clEntityId: string, wordListCreateObject: models.WordListObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -3441,11 +3409,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addCustomPrebuiltDomainWithHttpOperationResponse(appId: string, versionId: string, prebuiltDomainObject: models.PrebuiltDomainCreateBaseObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
+    addCustomPrebuiltDomainWithHttpOperationResponse(appId: string, versionId: string, prebuiltDomainObject: models.PrebuiltDomainCreateBaseObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Adds a customizable prebuilt domain along with all of its models to this
@@ -3472,7 +3440,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3480,15 +3448,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addCustomPrebuiltDomain(appId: string, versionId: string, prebuiltDomainObject: models.PrebuiltDomainCreateBaseObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
-    addCustomPrebuiltDomain(appId: string, versionId: string, prebuiltDomainObject: models.PrebuiltDomainCreateBaseObject, callback: ServiceCallback<string[]>): void;
-    addCustomPrebuiltDomain(appId: string, versionId: string, prebuiltDomainObject: models.PrebuiltDomainCreateBaseObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
+    addCustomPrebuiltDomain(appId: string, versionId: string, prebuiltDomainObject: models.PrebuiltDomainCreateBaseObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    addCustomPrebuiltDomain(appId: string, versionId: string, prebuiltDomainObject: models.PrebuiltDomainCreateBaseObject, callback: ServiceCallback<any>): void;
+    addCustomPrebuiltDomain(appId: string, versionId: string, prebuiltDomainObject: models.PrebuiltDomainCreateBaseObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -3515,11 +3483,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addCustomPrebuiltIntentWithHttpOperationResponse(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addCustomPrebuiltIntentWithHttpOperationResponse(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Adds a custom prebuilt intent model to the application.
@@ -3550,7 +3518,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Uuid} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3558,15 +3526,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addCustomPrebuiltIntent(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    addCustomPrebuiltIntent(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, callback: ServiceCallback<string>): void;
-    addCustomPrebuiltIntent(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    addCustomPrebuiltIntent(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    addCustomPrebuiltIntent(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, callback: ServiceCallback<any>): void;
+    addCustomPrebuiltIntent(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -3583,11 +3551,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listCustomPrebuiltIntentsWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntentClassifier[]>>;
+    listCustomPrebuiltIntentsWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets custom prebuilt intents information of this application.
@@ -3608,7 +3576,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3616,15 +3584,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listCustomPrebuiltIntents(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntentClassifier[]>;
-    listCustomPrebuiltIntents(appId: string, versionId: string, callback: ServiceCallback<models.IntentClassifier[]>): void;
-    listCustomPrebuiltIntents(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntentClassifier[]>): void;
+    listCustomPrebuiltIntents(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    listCustomPrebuiltIntents(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    listCustomPrebuiltIntents(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -3651,11 +3619,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addCustomPrebuiltEntityWithHttpOperationResponse(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addCustomPrebuiltEntityWithHttpOperationResponse(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Adds a custom prebuilt entity model to the application.
@@ -3686,7 +3654,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Uuid} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3694,15 +3662,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addCustomPrebuiltEntity(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    addCustomPrebuiltEntity(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, callback: ServiceCallback<string>): void;
-    addCustomPrebuiltEntity(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    addCustomPrebuiltEntity(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    addCustomPrebuiltEntity(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, callback: ServiceCallback<any>): void;
+    addCustomPrebuiltEntity(appId: string, versionId: string, prebuiltDomainModelCreateObject: models.PrebuiltDomainModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -3719,11 +3687,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listCustomPrebuiltEntitiesWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityExtractor[]>>;
+    listCustomPrebuiltEntitiesWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets all custom prebuilt entities information of this application.
@@ -3744,7 +3712,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3752,15 +3720,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listCustomPrebuiltEntities(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityExtractor[]>;
-    listCustomPrebuiltEntities(appId: string, versionId: string, callback: ServiceCallback<models.EntityExtractor[]>): void;
-    listCustomPrebuiltEntities(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityExtractor[]>): void;
+    listCustomPrebuiltEntities(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    listCustomPrebuiltEntities(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    listCustomPrebuiltEntities(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -3777,11 +3745,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listCustomPrebuiltModelsWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomPrebuiltModel[]>>;
+    listCustomPrebuiltModelsWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets all custom prebuilt models information of this application.
@@ -3802,7 +3770,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3810,15 +3778,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listCustomPrebuiltModels(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomPrebuiltModel[]>;
-    listCustomPrebuiltModels(appId: string, versionId: string, callback: ServiceCallback<models.CustomPrebuiltModel[]>): void;
-    listCustomPrebuiltModels(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomPrebuiltModel[]>): void;
+    listCustomPrebuiltModels(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    listCustomPrebuiltModels(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    listCustomPrebuiltModels(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -3837,11 +3805,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteCustomPrebuiltDomainWithHttpOperationResponse(appId: string, versionId: string, domainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteCustomPrebuiltDomainWithHttpOperationResponse(appId: string, versionId: string, domainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Deletes a prebuilt domain's models from the application.
@@ -3864,7 +3832,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3872,16 +3840,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteCustomPrebuiltDomain(appId: string, versionId: string, domainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteCustomPrebuiltDomain(appId: string, versionId: string, domainName: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteCustomPrebuiltDomain(appId: string, versionId: string, domainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteCustomPrebuiltDomain(appId: string, versionId: string, domainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteCustomPrebuiltDomain(appId: string, versionId: string, domainName: string, callback: ServiceCallback<any>): void;
+    deleteCustomPrebuiltDomain(appId: string, versionId: string, domainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -3902,11 +3869,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<HierarchicalChildEntity>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getHierarchicalEntityChildWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, hChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HierarchicalChildEntity>>;
+    getHierarchicalEntityChildWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, hChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets information about the hierarchical entity child model.
@@ -3931,7 +3898,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {HierarchicalChildEntity} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3939,17 +3906,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {HierarchicalChildEntity} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link HierarchicalChildEntity} for more
-     *                      information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HierarchicalChildEntity>;
-    getHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, callback: ServiceCallback<models.HierarchicalChildEntity>): void;
-    getHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HierarchicalChildEntity>): void;
+    getHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, callback: ServiceCallback<any>): void;
+    getHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -3975,11 +3940,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateHierarchicalEntityChildWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, hChildId: string, hierarchicalChildModelUpdateObject: models.HierarchicalChildModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateHierarchicalEntityChildWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, hChildId: string, hierarchicalChildModelUpdateObject: models.HierarchicalChildModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Renames a single child in an existing hierarchical entity model.
@@ -4009,7 +3974,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4017,16 +3982,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, hierarchicalChildModelUpdateObject: models.HierarchicalChildModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, hierarchicalChildModelUpdateObject: models.HierarchicalChildModelUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, hierarchicalChildModelUpdateObject: models.HierarchicalChildModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, hierarchicalChildModelUpdateObject: models.HierarchicalChildModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updateHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, hierarchicalChildModelUpdateObject: models.HierarchicalChildModelUpdateObject, callback: ServiceCallback<any>): void;
+    updateHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, hierarchicalChildModelUpdateObject: models.HierarchicalChildModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -4047,11 +4011,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteHierarchicalEntityChildWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, hChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteHierarchicalEntityChildWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, hChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Deletes a hierarchical entity extractor child from the application.
@@ -4076,7 +4040,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4084,16 +4048,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, callback: ServiceCallback<any>): void;
+    deleteHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hChildId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -4117,11 +4080,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addHierarchicalEntityChildWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, hierarchicalChildModelCreateObject: models.HierarchicalChildModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addHierarchicalEntityChildWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, hierarchicalChildModelCreateObject: models.HierarchicalChildModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Creates a single child in an existing hierarchical entity model.
@@ -4149,7 +4112,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Uuid} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4157,15 +4120,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hierarchicalChildModelCreateObject: models.HierarchicalChildModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    addHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hierarchicalChildModelCreateObject: models.HierarchicalChildModelCreateObject, callback: ServiceCallback<string>): void;
-    addHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hierarchicalChildModelCreateObject: models.HierarchicalChildModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    addHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hierarchicalChildModelCreateObject: models.HierarchicalChildModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    addHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hierarchicalChildModelCreateObject: models.HierarchicalChildModelCreateObject, callback: ServiceCallback<any>): void;
+    addHierarchicalEntityChild(appId: string, versionId: string, hEntityId: string, hierarchicalChildModelCreateObject: models.HierarchicalChildModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -4189,11 +4152,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addCompositeEntityChildWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, compositeChildModelCreateObject: models.CompositeChildModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addCompositeEntityChildWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, compositeChildModelCreateObject: models.CompositeChildModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Creates a single child in an existing composite entity model.
@@ -4221,7 +4184,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Uuid} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4229,15 +4192,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addCompositeEntityChild(appId: string, versionId: string, cEntityId: string, compositeChildModelCreateObject: models.CompositeChildModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    addCompositeEntityChild(appId: string, versionId: string, cEntityId: string, compositeChildModelCreateObject: models.CompositeChildModelCreateObject, callback: ServiceCallback<string>): void;
-    addCompositeEntityChild(appId: string, versionId: string, cEntityId: string, compositeChildModelCreateObject: models.CompositeChildModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    addCompositeEntityChild(appId: string, versionId: string, cEntityId: string, compositeChildModelCreateObject: models.CompositeChildModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    addCompositeEntityChild(appId: string, versionId: string, cEntityId: string, compositeChildModelCreateObject: models.CompositeChildModelCreateObject, callback: ServiceCallback<any>): void;
+    addCompositeEntityChild(appId: string, versionId: string, cEntityId: string, compositeChildModelCreateObject: models.CompositeChildModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -4258,11 +4221,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteCompositeEntityChildWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, cChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteCompositeEntityChildWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, cChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Deletes a composite entity extractor child from the application.
@@ -4287,7 +4250,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4295,16 +4258,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteCompositeEntityChild(appId: string, versionId: string, cEntityId: string, cChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteCompositeEntityChild(appId: string, versionId: string, cEntityId: string, cChildId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteCompositeEntityChild(appId: string, versionId: string, cEntityId: string, cChildId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteCompositeEntityChild(appId: string, versionId: string, cEntityId: string, cChildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteCompositeEntityChild(appId: string, versionId: string, cEntityId: string, cChildId: string, callback: ServiceCallback<any>): void;
+    deleteCompositeEntityChild(appId: string, versionId: string, cEntityId: string, cChildId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -4327,11 +4289,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getRegexEntityInfosWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegexEntityExtractor[]>>;
+    getRegexEntityInfosWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Gets information about the regex entity models.
@@ -4358,7 +4320,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4366,15 +4328,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getRegexEntityInfos(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.RegexEntityExtractor[]>;
-    getRegexEntityInfos(appId: string, versionId: string, callback: ServiceCallback<models.RegexEntityExtractor[]>): void;
-    getRegexEntityInfos(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegexEntityExtractor[]>): void;
+    getRegexEntityInfos(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getRegexEntityInfos(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    getRegexEntityInfos(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -4399,11 +4361,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createRegexEntityModelWithHttpOperationResponse(appId: string, versionId: string, regexEntityExtractorCreateObj: models.RegexModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    createRegexEntityModelWithHttpOperationResponse(appId: string, versionId: string, regexEntityExtractorCreateObj: models.RegexModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Adds a regex entity model to the application version.
@@ -4432,7 +4394,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Uuid} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4440,15 +4402,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createRegexEntityModel(appId: string, versionId: string, regexEntityExtractorCreateObj: models.RegexModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    createRegexEntityModel(appId: string, versionId: string, regexEntityExtractorCreateObj: models.RegexModelCreateObject, callback: ServiceCallback<string>): void;
-    createRegexEntityModel(appId: string, versionId: string, regexEntityExtractorCreateObj: models.RegexModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    createRegexEntityModel(appId: string, versionId: string, regexEntityExtractorCreateObj: models.RegexModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    createRegexEntityModel(appId: string, versionId: string, regexEntityExtractorCreateObj: models.RegexModelCreateObject, callback: ServiceCallback<any>): void;
+    createRegexEntityModel(appId: string, versionId: string, regexEntityExtractorCreateObj: models.RegexModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -4471,11 +4433,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPatternAnyEntityInfosWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternAnyEntityExtractor[]>>;
+    getPatternAnyEntityInfosWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Get information about the Pattern.Any entity models.
@@ -4502,7 +4464,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4510,15 +4472,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPatternAnyEntityInfos(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternAnyEntityExtractor[]>;
-    getPatternAnyEntityInfos(appId: string, versionId: string, callback: ServiceCallback<models.PatternAnyEntityExtractor[]>): void;
-    getPatternAnyEntityInfos(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternAnyEntityExtractor[]>): void;
+    getPatternAnyEntityInfos(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getPatternAnyEntityInfos(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    getPatternAnyEntityInfos(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -4543,11 +4505,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createPatternAnyEntityModelWithHttpOperationResponse(appId: string, versionId: string, extractorCreateObject: models.PatternAnyModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    createPatternAnyEntityModelWithHttpOperationResponse(appId: string, versionId: string, extractorCreateObject: models.PatternAnyModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Adds a pattern.any entity extractor to the application.
@@ -4576,7 +4538,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Uuid} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4584,15 +4546,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createPatternAnyEntityModel(appId: string, versionId: string, extractorCreateObject: models.PatternAnyModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    createPatternAnyEntityModel(appId: string, versionId: string, extractorCreateObject: models.PatternAnyModelCreateObject, callback: ServiceCallback<string>): void;
-    createPatternAnyEntityModel(appId: string, versionId: string, extractorCreateObject: models.PatternAnyModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    createPatternAnyEntityModel(appId: string, versionId: string, extractorCreateObject: models.PatternAnyModelCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    createPatternAnyEntityModel(appId: string, versionId: string, extractorCreateObject: models.PatternAnyModelCreateObject, callback: ServiceCallback<any>): void;
+    createPatternAnyEntityModel(appId: string, versionId: string, extractorCreateObject: models.PatternAnyModelCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -4611,11 +4573,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
+    getEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Get All Entity Roles for a given entity
@@ -4638,7 +4600,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4646,15 +4608,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
+    getEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<any>): void;
+    getEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -4678,145 +4640,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
-
-    /**
-     * @summary Create an entity role for an entity in the application.
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId The entity model ID.
-     *
-     * @param {object} entityRoleCreateObject An entity role object containing the
-     * name of role.
-     *
-     * @param {string} [entityRoleCreateObject.name] The entity role name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Uuid} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    createEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
-    createEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
-
-
-    /**
-     * @summary Get All Entity Roles for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId entity Id
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getPrebuiltEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
-
-    /**
-     * @summary Get All Entity Roles for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId entity Id
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Array} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
-
-
-    /**
-     * @summary Create an entity role for an entity in the application.
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId The entity model ID.
-     *
-     * @param {object} entityRoleCreateObject An entity role object containing the
-     * name of role.
-     *
-     * @param {string} [entityRoleCreateObject.name] The entity role name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createPrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    createEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Create an entity role for an entity in the application.
@@ -4844,7 +4672,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Uuid} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4852,15 +4680,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createPrebuiltEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    createPrebuiltEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
-    createPrebuiltEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    createEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    createEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<any>): void;
+    createEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -4879,11 +4707,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getClosedListEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
+    getPrebuiltEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Get All Entity Roles for a given entity
@@ -4906,7 +4734,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4914,15 +4742,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getClosedListEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getClosedListEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getClosedListEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
+    getPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<any>): void;
+    getPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -4946,145 +4774,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createClosedListEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
-
-    /**
-     * @summary Create an entity role for an entity in the application.
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId The entity model ID.
-     *
-     * @param {object} entityRoleCreateObject An entity role object containing the
-     * name of role.
-     *
-     * @param {string} [entityRoleCreateObject.name] The entity role name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Uuid} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createClosedListEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    createClosedListEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
-    createClosedListEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
-
-
-    /**
-     * @summary Get All Entity Roles for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId entity Id
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getRegexEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
-
-    /**
-     * @summary Get All Entity Roles for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId entity Id
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Array} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getRegexEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getRegexEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getRegexEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
-
-
-    /**
-     * @summary Create an entity role for an entity in the application.
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId The entity model ID.
-     *
-     * @param {object} entityRoleCreateObject An entity role object containing the
-     * name of role.
-     *
-     * @param {string} [entityRoleCreateObject.name] The entity role name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createRegexEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    createPrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Create an entity role for an entity in the application.
@@ -5112,7 +4806,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Uuid} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5120,15 +4814,283 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createRegexEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    createRegexEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
-    createRegexEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    createPrebuiltEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    createPrebuiltEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<any>): void;
+    createPrebuiltEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Get All Entity Roles for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId entity Id
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getClosedListEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Get All Entity Roles for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId entity Id
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getClosedListEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getClosedListEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<any>): void;
+    getClosedListEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Create an entity role for an entity in the application.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId The entity model ID.
+     *
+     * @param {object} entityRoleCreateObject An entity role object containing the
+     * name of role.
+     *
+     * @param {string} [entityRoleCreateObject.name] The entity role name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createClosedListEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Create an entity role for an entity in the application.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId The entity model ID.
+     *
+     * @param {object} entityRoleCreateObject An entity role object containing the
+     * name of role.
+     *
+     * @param {string} [entityRoleCreateObject.name] The entity role name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createClosedListEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    createClosedListEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<any>): void;
+    createClosedListEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Get All Entity Roles for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId entity Id
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getRegexEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Get All Entity Roles for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId entity Id
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getRegexEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getRegexEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<any>): void;
+    getRegexEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Create an entity role for an entity in the application.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId The entity model ID.
+     *
+     * @param {object} entityRoleCreateObject An entity role object containing the
+     * name of role.
+     *
+     * @param {string} [entityRoleCreateObject.name] The entity role name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createRegexEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Create an entity role for an entity in the application.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId The entity model ID.
+     *
+     * @param {object} entityRoleCreateObject An entity role object containing the
+     * name of role.
+     *
+     * @param {string} [entityRoleCreateObject.name] The entity role name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createRegexEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    createRegexEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<any>): void;
+    createRegexEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -5147,11 +5109,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getCompositeEntityRolesWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
+    getCompositeEntityRolesWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Get All Entity Roles for a given entity
@@ -5174,7 +5136,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5182,43 +5144,16 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getCompositeEntityRoles(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getCompositeEntityRoles(appId: string, versionId: string, cEntityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getCompositeEntityRoles(appId: string, versionId: string, cEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
+    getCompositeEntityRoles(appId: string, versionId: string, cEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getCompositeEntityRoles(appId: string, versionId: string, cEntityId: string, callback: ServiceCallback<any>): void;
+    getCompositeEntityRoles(appId: string, versionId: string, cEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
-
-    /**
-     * @summary Create an entity role for an entity in the application.
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} cEntityId The composite entity extractor ID.
-     *
-     * @param {object} entityRoleCreateObject An entity role object containing the
-     * name of role.
-     *
-     * @param {string} [entityRoleCreateObject.name] The entity role name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createCompositeEntityRoleWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
      * @summary Create an entity role for an entity in the application.
@@ -5239,6 +5174,33 @@ export interface Model {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createCompositeEntityRoleWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Create an entity role for an entity in the application.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} cEntityId The composite entity extractor ID.
+     *
+     * @param {object} entityRoleCreateObject An entity role object containing the
+     * name of role.
+     *
+     * @param {string} [entityRoleCreateObject.name] The entity role name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
      * @param {ServiceCallback} [optionalCallback] - The optional callback.
      *
      * @returns {ServiceCallback|Promise} If a callback was passed as the last
@@ -5246,7 +5208,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Uuid} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5254,15 +5216,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createCompositeEntityRole(appId: string, versionId: string, cEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    createCompositeEntityRole(appId: string, versionId: string, cEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
-    createCompositeEntityRole(appId: string, versionId: string, cEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    createCompositeEntityRole(appId: string, versionId: string, cEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    createCompositeEntityRole(appId: string, versionId: string, cEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<any>): void;
+    createCompositeEntityRole(appId: string, versionId: string, cEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -5281,11 +5243,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPatternAnyEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
+    getPatternAnyEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Get All Entity Roles for a given entity
@@ -5308,7 +5270,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5316,15 +5278,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPatternAnyEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getPatternAnyEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getPatternAnyEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
+    getPatternAnyEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getPatternAnyEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<any>): void;
+    getPatternAnyEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -5348,279 +5310,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createPatternAnyEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
-
-    /**
-     * @summary Create an entity role for an entity in the application.
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId The entity model ID.
-     *
-     * @param {object} entityRoleCreateObject An entity role object containing the
-     * name of role.
-     *
-     * @param {string} [entityRoleCreateObject.name] The entity role name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Uuid} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createPatternAnyEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    createPatternAnyEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
-    createPatternAnyEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
-
-
-    /**
-     * @summary Get All Entity Roles for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} hEntityId The hierarchical entity extractor ID.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getHierarchicalEntityRolesWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
-
-    /**
-     * @summary Get All Entity Roles for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} hEntityId The hierarchical entity extractor ID.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Array} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getHierarchicalEntityRoles(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getHierarchicalEntityRoles(appId: string, versionId: string, hEntityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getHierarchicalEntityRoles(appId: string, versionId: string, hEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
-
-
-    /**
-     * @summary Create an entity role for an entity in the application.
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} hEntityId The hierarchical entity extractor ID.
-     *
-     * @param {object} entityRoleCreateObject An entity role object containing the
-     * name of role.
-     *
-     * @param {string} [entityRoleCreateObject.name] The entity role name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createHierarchicalEntityRoleWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
-
-    /**
-     * @summary Create an entity role for an entity in the application.
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} hEntityId The hierarchical entity extractor ID.
-     *
-     * @param {object} entityRoleCreateObject An entity role object containing the
-     * name of role.
-     *
-     * @param {string} [entityRoleCreateObject.name] The entity role name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Uuid} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    createHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
-    createHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
-
-
-    /**
-     * @summary Get All Entity Roles for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId entity Id
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getCustomPrebuiltEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole[]>>;
-
-    /**
-     * @summary Get All Entity Roles for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId entity Id
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Array} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getCustomPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole[]>;
-    getCustomPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.EntityRole[]>): void;
-    getCustomPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole[]>): void;
-
-
-    /**
-     * @summary Create an entity role for an entity in the application.
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId The entity model ID.
-     *
-     * @param {object} entityRoleCreateObject An entity role object containing the
-     * name of role.
-     *
-     * @param {string} [entityRoleCreateObject.name] The entity role name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createCustomPrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    createPatternAnyEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Create an entity role for an entity in the application.
@@ -5648,7 +5342,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Uuid} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5656,15 +5350,283 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createCustomPrebuiltEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    createCustomPrebuiltEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<string>): void;
-    createCustomPrebuiltEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    createPatternAnyEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    createPatternAnyEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<any>): void;
+    createPatternAnyEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Get All Entity Roles for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} hEntityId The hierarchical entity extractor ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getHierarchicalEntityRolesWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Get All Entity Roles for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} hEntityId The hierarchical entity extractor ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getHierarchicalEntityRoles(appId: string, versionId: string, hEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getHierarchicalEntityRoles(appId: string, versionId: string, hEntityId: string, callback: ServiceCallback<any>): void;
+    getHierarchicalEntityRoles(appId: string, versionId: string, hEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Create an entity role for an entity in the application.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} hEntityId The hierarchical entity extractor ID.
+     *
+     * @param {object} entityRoleCreateObject An entity role object containing the
+     * name of role.
+     *
+     * @param {string} [entityRoleCreateObject.name] The entity role name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createHierarchicalEntityRoleWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Create an entity role for an entity in the application.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} hEntityId The hierarchical entity extractor ID.
+     *
+     * @param {object} entityRoleCreateObject An entity role object containing the
+     * name of role.
+     *
+     * @param {string} [entityRoleCreateObject.name] The entity role name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    createHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<any>): void;
+    createHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Get All Entity Roles for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId entity Id
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getCustomPrebuiltEntityRolesWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Get All Entity Roles for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId entity Id
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getCustomPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getCustomPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, callback: ServiceCallback<any>): void;
+    getCustomPrebuiltEntityRoles(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Create an entity role for an entity in the application.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId The entity model ID.
+     *
+     * @param {object} entityRoleCreateObject An entity role object containing the
+     * name of role.
+     *
+     * @param {string} [entityRoleCreateObject.name] The entity role name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createCustomPrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Create an entity role for an entity in the application.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId The entity model ID.
+     *
+     * @param {object} entityRoleCreateObject An entity role object containing the
+     * name of role.
+     *
+     * @param {string} [entityRoleCreateObject.name] The entity role name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createCustomPrebuiltEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    createCustomPrebuiltEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, callback: ServiceCallback<any>): void;
+    createCustomPrebuiltEntityRole(appId: string, versionId: string, entityId: string, entityRoleCreateObject: models.EntityRoleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -5683,11 +5645,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getExplicitListWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExplicitListItem[]>>;
+    getExplicitListWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Get the explicit list of the pattern.any entity.
@@ -5710,7 +5672,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5718,15 +5680,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getExplicitList(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExplicitListItem[]>;
-    getExplicitList(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.ExplicitListItem[]>): void;
-    getExplicitList(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExplicitListItem[]>): void;
+    getExplicitList(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getExplicitList(appId: string, versionId: string, entityId: string, callback: ServiceCallback<any>): void;
+    getExplicitList(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -5749,11 +5711,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Number>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addExplicitListItemWithHttpOperationResponse(appId: string, versionId: string, entityId: string, item: models.ExplicitListItemCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<number>>;
+    addExplicitListItemWithHttpOperationResponse(appId: string, versionId: string, entityId: string, item: models.ExplicitListItemCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Add a new item to the explicit list for the Pattern.Any entity.
@@ -5780,7 +5742,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Number} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5788,15 +5750,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Number} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addExplicitListItem(appId: string, versionId: string, entityId: string, item: models.ExplicitListItemCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<number>;
-    addExplicitListItem(appId: string, versionId: string, entityId: string, item: models.ExplicitListItemCreateObject, callback: ServiceCallback<number>): void;
-    addExplicitListItem(appId: string, versionId: string, entityId: string, item: models.ExplicitListItemCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<number>): void;
+    addExplicitListItem(appId: string, versionId: string, entityId: string, item: models.ExplicitListItemCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    addExplicitListItem(appId: string, versionId: string, entityId: string, item: models.ExplicitListItemCreateObject, callback: ServiceCallback<any>): void;
+    addExplicitListItem(appId: string, versionId: string, entityId: string, item: models.ExplicitListItemCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -5815,11 +5777,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<RegexEntityExtractor>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getRegexEntityEntityInfoWithHttpOperationResponse(appId: string, versionId: string, regexEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegexEntityExtractor>>;
+    getRegexEntityEntityInfoWithHttpOperationResponse(appId: string, versionId: string, regexEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Gets information of a regex entity model.
@@ -5842,7 +5804,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {RegexEntityExtractor} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5850,20 +5812,19 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {RegexEntityExtractor} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RegexEntityExtractor} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getRegexEntityEntityInfo(appId: string, versionId: string, regexEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegexEntityExtractor>;
-    getRegexEntityEntityInfo(appId: string, versionId: string, regexEntityId: string, callback: ServiceCallback<models.RegexEntityExtractor>): void;
-    getRegexEntityEntityInfo(appId: string, versionId: string, regexEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegexEntityExtractor>): void;
+    getRegexEntityEntityInfo(appId: string, versionId: string, regexEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getRegexEntityEntityInfo(appId: string, versionId: string, regexEntityId: string, callback: ServiceCallback<any>): void;
+    getRegexEntityEntityInfo(appId: string, versionId: string, regexEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
-     * @summary Updates the regex entity model .
+     * @summary Updates the regex entity model.
      *
      * @param {uuid} appId The application ID.
      *
@@ -5886,14 +5847,14 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateRegexEntityModelWithHttpOperationResponse(appId: string, versionId: string, regexEntityId: string, regexEntityUpdateObject: models.RegexModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateRegexEntityModelWithHttpOperationResponse(appId: string, versionId: string, regexEntityId: string, regexEntityUpdateObject: models.RegexModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
-     * @summary Updates the regex entity model .
+     * @summary Updates the regex entity model.
      *
      * @param {uuid} appId The application ID.
      *
@@ -5921,7 +5882,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5929,16 +5890,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateRegexEntityModel(appId: string, versionId: string, regexEntityId: string, regexEntityUpdateObject: models.RegexModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateRegexEntityModel(appId: string, versionId: string, regexEntityId: string, regexEntityUpdateObject: models.RegexModelUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateRegexEntityModel(appId: string, versionId: string, regexEntityId: string, regexEntityUpdateObject: models.RegexModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateRegexEntityModel(appId: string, versionId: string, regexEntityId: string, regexEntityUpdateObject: models.RegexModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updateRegexEntityModel(appId: string, versionId: string, regexEntityId: string, regexEntityUpdateObject: models.RegexModelUpdateObject, callback: ServiceCallback<any>): void;
+    updateRegexEntityModel(appId: string, versionId: string, regexEntityId: string, regexEntityUpdateObject: models.RegexModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -5957,11 +5917,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteRegexEntityModelWithHttpOperationResponse(appId: string, versionId: string, regexEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteRegexEntityModelWithHttpOperationResponse(appId: string, versionId: string, regexEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Deletes a regex entity model from the application.
@@ -5984,7 +5944,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5992,16 +5952,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteRegexEntityModel(appId: string, versionId: string, regexEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteRegexEntityModel(appId: string, versionId: string, regexEntityId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteRegexEntityModel(appId: string, versionId: string, regexEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteRegexEntityModel(appId: string, versionId: string, regexEntityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteRegexEntityModel(appId: string, versionId: string, regexEntityId: string, callback: ServiceCallback<any>): void;
+    deleteRegexEntityModel(appId: string, versionId: string, regexEntityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -6020,11 +5979,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<PatternAnyEntityExtractor>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPatternAnyEntityInfoWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternAnyEntityExtractor>>;
+    getPatternAnyEntityInfoWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Gets information about the application version's Pattern.Any model.
@@ -6047,7 +6006,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {PatternAnyEntityExtractor} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -6055,17 +6014,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {PatternAnyEntityExtractor} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PatternAnyEntityExtractor} for more
-     *                      information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPatternAnyEntityInfo(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternAnyEntityExtractor>;
-    getPatternAnyEntityInfo(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.PatternAnyEntityExtractor>): void;
-    getPatternAnyEntityInfo(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternAnyEntityExtractor>): void;
+    getPatternAnyEntityInfo(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getPatternAnyEntityInfo(appId: string, versionId: string, entityId: string, callback: ServiceCallback<any>): void;
+    getPatternAnyEntityInfo(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -6092,11 +6049,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updatePatternAnyEntityModelWithHttpOperationResponse(appId: string, versionId: string, entityId: string, patternAnyUpdateObject: models.PatternAnyModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updatePatternAnyEntityModelWithHttpOperationResponse(appId: string, versionId: string, entityId: string, patternAnyUpdateObject: models.PatternAnyModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Updates the name and explicit list of a Pattern.Any entity model.
@@ -6127,7 +6084,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -6135,16 +6092,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updatePatternAnyEntityModel(appId: string, versionId: string, entityId: string, patternAnyUpdateObject: models.PatternAnyModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updatePatternAnyEntityModel(appId: string, versionId: string, entityId: string, patternAnyUpdateObject: models.PatternAnyModelUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updatePatternAnyEntityModel(appId: string, versionId: string, entityId: string, patternAnyUpdateObject: models.PatternAnyModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updatePatternAnyEntityModel(appId: string, versionId: string, entityId: string, patternAnyUpdateObject: models.PatternAnyModelUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updatePatternAnyEntityModel(appId: string, versionId: string, entityId: string, patternAnyUpdateObject: models.PatternAnyModelUpdateObject, callback: ServiceCallback<any>): void;
+    updatePatternAnyEntityModel(appId: string, versionId: string, entityId: string, patternAnyUpdateObject: models.PatternAnyModelUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -6163,11 +6119,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deletePatternAnyEntityModelWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deletePatternAnyEntityModelWithHttpOperationResponse(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Deletes a Pattern.Any entity extractor from the application.
@@ -6190,7 +6146,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -6198,16 +6154,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deletePatternAnyEntityModel(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deletePatternAnyEntityModel(appId: string, versionId: string, entityId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deletePatternAnyEntityModel(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deletePatternAnyEntityModel(appId: string, versionId: string, entityId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deletePatternAnyEntityModel(appId: string, versionId: string, entityId: string, callback: ServiceCallback<any>): void;
+    deletePatternAnyEntityModel(appId: string, versionId: string, entityId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -6228,11 +6183,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<EntityRole>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
+    getEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Get one entity role for a given entity
@@ -6257,7 +6212,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {EntityRole} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -6265,16 +6220,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {EntityRole} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link EntityRole} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
-    getEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
-    getEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
+    getEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<any>): void;
+    getEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -6299,220 +6253,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
-
-    /**
-     * @summary Update an entity role for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId The entity ID.
-     *
-     * @param {uuid} roleId The entity role ID.
-     *
-     * @param {object} entityRoleUpdateObject The new entity role.
-     *
-     * @param {string} [entityRoleUpdateObject.name] The entity role name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatus} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    updateEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
-
-
-    /**
-     * @summary Delete an entity role.
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId The entity ID.
-     *
-     * @param {uuid} roleId The entity role Id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
-
-    /**
-     * @summary Delete an entity role.
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId The entity ID.
-     *
-     * @param {uuid} roleId The entity role Id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatus} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
-
-
-    /**
-     * @summary Get one entity role for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId entity ID.
-     *
-     * @param {uuid} roleId entity role ID.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<EntityRole>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getPrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
-
-    /**
-     * @summary Get one entity role for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId entity ID.
-     *
-     * @param {uuid} roleId entity role ID.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {EntityRole} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {EntityRole} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link EntityRole} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getPrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
-    getPrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
-    getPrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
-
-
-    /**
-     * @summary Update an entity role for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId The entity ID.
-     *
-     * @param {uuid} roleId The entity role ID.
-     *
-     * @param {object} entityRoleUpdateObject The new entity role.
-     *
-     * @param {string} [entityRoleUpdateObject.name] The entity role name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updatePrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Update an entity role for a given entity
@@ -6541,7 +6286,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -6549,16 +6294,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updatePrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updatePrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updatePrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updateEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<any>): void;
+    updateEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -6579,11 +6323,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deletePrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Delete an entity role.
@@ -6608,7 +6352,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -6616,16 +6360,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deletePrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deletePrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deletePrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<any>): void;
+    deleteEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -6646,11 +6389,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<EntityRole>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getClosedListEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
+    getPrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Get one entity role for a given entity
@@ -6675,7 +6418,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {EntityRole} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -6683,16 +6426,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {EntityRole} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link EntityRole} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
-    getClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
-    getClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
+    getPrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getPrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<any>): void;
+    getPrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -6717,220 +6459,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateClosedListEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
-
-    /**
-     * @summary Update an entity role for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId The entity ID.
-     *
-     * @param {uuid} roleId The entity role ID.
-     *
-     * @param {object} entityRoleUpdateObject The new entity role.
-     *
-     * @param {string} [entityRoleUpdateObject.name] The entity role name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatus} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    updateClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
-
-
-    /**
-     * @summary Delete an entity role.
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId The entity ID.
-     *
-     * @param {uuid} roleId The entity role Id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteClosedListEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
-
-    /**
-     * @summary Delete an entity role.
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId The entity ID.
-     *
-     * @param {uuid} roleId The entity role Id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatus} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
-
-
-    /**
-     * @summary Get one entity role for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId entity ID.
-     *
-     * @param {uuid} roleId entity role ID.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<EntityRole>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getRegexEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
-
-    /**
-     * @summary Get one entity role for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId entity ID.
-     *
-     * @param {uuid} roleId entity role ID.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {EntityRole} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {EntityRole} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link EntityRole} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
-    getRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
-    getRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
-
-
-    /**
-     * @summary Update an entity role for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId The entity ID.
-     *
-     * @param {uuid} roleId The entity role ID.
-     *
-     * @param {object} entityRoleUpdateObject The new entity role.
-     *
-     * @param {string} [entityRoleUpdateObject.name] The entity role name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateRegexEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updatePrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Update an entity role for a given entity
@@ -6959,7 +6492,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -6967,16 +6500,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updatePrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updatePrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<any>): void;
+    updatePrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -6997,11 +6529,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteRegexEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deletePrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Delete an entity role.
@@ -7026,7 +6558,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -7034,16 +6566,427 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deletePrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deletePrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<any>): void;
+    deletePrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Get one entity role for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId entity ID.
+     *
+     * @param {uuid} roleId entity role ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getClosedListEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Get one entity role for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId entity ID.
+     *
+     * @param {uuid} roleId entity role ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<any>): void;
+    getClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Update an entity role for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId The entity ID.
+     *
+     * @param {uuid} roleId The entity role ID.
+     *
+     * @param {object} entityRoleUpdateObject The new entity role.
+     *
+     * @param {string} [entityRoleUpdateObject.name] The entity role name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateClosedListEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Update an entity role for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId The entity ID.
+     *
+     * @param {uuid} roleId The entity role ID.
+     *
+     * @param {object} entityRoleUpdateObject The new entity role.
+     *
+     * @param {string} [entityRoleUpdateObject.name] The entity role name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updateClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<any>): void;
+    updateClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Delete an entity role.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId The entity ID.
+     *
+     * @param {uuid} roleId The entity role Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteClosedListEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Delete an entity role.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId The entity ID.
+     *
+     * @param {uuid} roleId The entity role Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<any>): void;
+    deleteClosedListEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Get one entity role for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId entity ID.
+     *
+     * @param {uuid} roleId entity role ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getRegexEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Get one entity role for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId entity ID.
+     *
+     * @param {uuid} roleId entity role ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<any>): void;
+    getRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Update an entity role for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId The entity ID.
+     *
+     * @param {uuid} roleId The entity role ID.
+     *
+     * @param {object} entityRoleUpdateObject The new entity role.
+     *
+     * @param {string} [entityRoleUpdateObject.name] The entity role name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateRegexEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Update an entity role for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId The entity ID.
+     *
+     * @param {uuid} roleId The entity role ID.
+     *
+     * @param {object} entityRoleUpdateObject The new entity role.
+     *
+     * @param {string} [entityRoleUpdateObject.name] The entity role name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updateRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<any>): void;
+    updateRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Delete an entity role.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId The entity ID.
+     *
+     * @param {uuid} roleId The entity role Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteRegexEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Delete an entity role.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId The entity ID.
+     *
+     * @param {uuid} roleId The entity role Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<any>): void;
+    deleteRegexEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -7064,11 +7007,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<EntityRole>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getCompositeEntityRoleWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
+    getCompositeEntityRoleWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Get one entity role for a given entity
@@ -7093,7 +7036,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {EntityRole} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -7101,16 +7044,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {EntityRole} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link EntityRole} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
-    getCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
-    getCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
+    getCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, callback: ServiceCallback<any>): void;
+    getCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -7135,11 +7077,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateCompositeEntityRoleWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateCompositeEntityRoleWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Update an entity role for a given entity
@@ -7168,7 +7110,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -7176,16 +7118,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updateCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<any>): void;
+    updateCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -7206,11 +7147,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteCompositeEntityRoleWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteCompositeEntityRoleWithHttpOperationResponse(appId: string, versionId: string, cEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Delete an entity role.
@@ -7235,7 +7176,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -7243,16 +7184,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, callback: ServiceCallback<any>): void;
+    deleteCompositeEntityRole(appId: string, versionId: string, cEntityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -7273,429 +7213,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<EntityRole>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPatternAnyEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
-
-    /**
-     * @summary Get one entity role for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId entity ID.
-     *
-     * @param {uuid} roleId entity role ID.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {EntityRole} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {EntityRole} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link EntityRole} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getPatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
-    getPatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
-    getPatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
-
-
-    /**
-     * @summary Update an entity role for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId The entity ID.
-     *
-     * @param {uuid} roleId The entity role ID.
-     *
-     * @param {object} entityRoleUpdateObject The new entity role.
-     *
-     * @param {string} [entityRoleUpdateObject.name] The entity role name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updatePatternAnyEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
-
-    /**
-     * @summary Update an entity role for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId The entity ID.
-     *
-     * @param {uuid} roleId The entity role ID.
-     *
-     * @param {object} entityRoleUpdateObject The new entity role.
-     *
-     * @param {string} [entityRoleUpdateObject.name] The entity role name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatus} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    updatePatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updatePatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updatePatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
-
-
-    /**
-     * @summary Delete an entity role.
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId The entity ID.
-     *
-     * @param {uuid} roleId The entity role Id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deletePatternAnyEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
-
-    /**
-     * @summary Delete an entity role.
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId The entity ID.
-     *
-     * @param {uuid} roleId The entity role Id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatus} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deletePatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deletePatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deletePatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
-
-
-    /**
-     * @summary Get one entity role for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} hEntityId The hierarchical entity extractor ID.
-     *
-     * @param {uuid} roleId entity role ID.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<EntityRole>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getHierarchicalEntityRoleWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
-
-    /**
-     * @summary Get one entity role for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} hEntityId The hierarchical entity extractor ID.
-     *
-     * @param {uuid} roleId entity role ID.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {EntityRole} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {EntityRole} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link EntityRole} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
-    getHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
-    getHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
-
-
-    /**
-     * @summary Update an entity role for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} hEntityId The hierarchical entity extractor ID.
-     *
-     * @param {uuid} roleId The entity role ID.
-     *
-     * @param {object} entityRoleUpdateObject The new entity role.
-     *
-     * @param {string} [entityRoleUpdateObject.name] The entity role name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateHierarchicalEntityRoleWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
-
-    /**
-     * @summary Update an entity role for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} hEntityId The hierarchical entity extractor ID.
-     *
-     * @param {uuid} roleId The entity role ID.
-     *
-     * @param {object} entityRoleUpdateObject The new entity role.
-     *
-     * @param {string} [entityRoleUpdateObject.name] The entity role name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatus} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    updateHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
-
-
-    /**
-     * @summary Delete an entity role.
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} hEntityId The hierarchical entity extractor ID.
-     *
-     * @param {uuid} roleId The entity role Id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteHierarchicalEntityRoleWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
-
-    /**
-     * @summary Delete an entity role.
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} hEntityId The hierarchical entity extractor ID.
-     *
-     * @param {uuid} roleId The entity role Id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatus} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
-
-
-    /**
-     * @summary Get one entity role for a given entity
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {uuid} entityId entity ID.
-     *
-     * @param {uuid} roleId entity role ID.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<EntityRole>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getCustomEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityRole>>;
+    getPatternAnyEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Get one entity role for a given entity
@@ -7720,7 +7242,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {EntityRole} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -7728,16 +7250,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {EntityRole} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link EntityRole} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getCustomEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityRole>;
-    getCustomEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.EntityRole>): void;
-    getCustomEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityRole>): void;
+    getPatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getPatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<any>): void;
+    getPatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -7762,11 +7283,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateCustomPrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updatePatternAnyEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Update an entity role for a given entity
@@ -7795,7 +7316,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -7803,16 +7324,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateCustomPrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateCustomPrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateCustomPrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updatePatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updatePatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<any>): void;
+    updatePatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -7833,11 +7353,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteCustomEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deletePatternAnyEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Delete an entity role.
@@ -7862,7 +7382,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -7870,16 +7390,427 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteCustomEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteCustomEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteCustomEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deletePatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deletePatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<any>): void;
+    deletePatternAnyEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Get one entity role for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} hEntityId The hierarchical entity extractor ID.
+     *
+     * @param {uuid} roleId entity role ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getHierarchicalEntityRoleWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Get one entity role for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} hEntityId The hierarchical entity extractor ID.
+     *
+     * @param {uuid} roleId entity role ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, callback: ServiceCallback<any>): void;
+    getHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Update an entity role for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} hEntityId The hierarchical entity extractor ID.
+     *
+     * @param {uuid} roleId The entity role ID.
+     *
+     * @param {object} entityRoleUpdateObject The new entity role.
+     *
+     * @param {string} [entityRoleUpdateObject.name] The entity role name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateHierarchicalEntityRoleWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Update an entity role for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} hEntityId The hierarchical entity extractor ID.
+     *
+     * @param {uuid} roleId The entity role ID.
+     *
+     * @param {object} entityRoleUpdateObject The new entity role.
+     *
+     * @param {string} [entityRoleUpdateObject.name] The entity role name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updateHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<any>): void;
+    updateHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Delete an entity role.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} hEntityId The hierarchical entity extractor ID.
+     *
+     * @param {uuid} roleId The entity role Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteHierarchicalEntityRoleWithHttpOperationResponse(appId: string, versionId: string, hEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Delete an entity role.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} hEntityId The hierarchical entity extractor ID.
+     *
+     * @param {uuid} roleId The entity role Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, callback: ServiceCallback<any>): void;
+    deleteHierarchicalEntityRole(appId: string, versionId: string, hEntityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Get one entity role for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId entity ID.
+     *
+     * @param {uuid} roleId entity role ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getCustomEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Get one entity role for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId entity ID.
+     *
+     * @param {uuid} roleId entity role ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getCustomEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getCustomEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<any>): void;
+    getCustomEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Update an entity role for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId The entity ID.
+     *
+     * @param {uuid} roleId The entity role ID.
+     *
+     * @param {object} entityRoleUpdateObject The new entity role.
+     *
+     * @param {string} [entityRoleUpdateObject.name] The entity role name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateCustomPrebuiltEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Update an entity role for a given entity
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId The entity ID.
+     *
+     * @param {uuid} roleId The entity role ID.
+     *
+     * @param {object} entityRoleUpdateObject The new entity role.
+     *
+     * @param {string} [entityRoleUpdateObject.name] The entity role name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateCustomPrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updateCustomPrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, callback: ServiceCallback<any>): void;
+    updateCustomPrebuiltEntityRole(appId: string, versionId: string, entityId: string, roleId: string, entityRoleUpdateObject: models.EntityRoleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Delete an entity role.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId The entity ID.
+     *
+     * @param {uuid} roleId The entity role Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteCustomEntityRoleWithHttpOperationResponse(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Delete an entity role.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {uuid} entityId The entity ID.
+     *
+     * @param {uuid} roleId The entity role Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteCustomEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteCustomEntityRole(appId: string, versionId: string, entityId: string, roleId: string, callback: ServiceCallback<any>): void;
+    deleteCustomEntityRole(appId: string, versionId: string, entityId: string, roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -7900,11 +7831,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ExplicitListItem>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getExplicitListItemWithHttpOperationResponse(appId: string, versionId: string, entityId: string, itemId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExplicitListItem>>;
+    getExplicitListItemWithHttpOperationResponse(appId: string, versionId: string, entityId: string, itemId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Get the explicit list of the pattern.any entity.
@@ -7929,7 +7860,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ExplicitListItem} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -7937,16 +7868,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ExplicitListItem} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ExplicitListItem} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExplicitListItem>;
-    getExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, callback: ServiceCallback<models.ExplicitListItem>): void;
-    getExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExplicitListItem>): void;
+    getExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, callback: ServiceCallback<any>): void;
+    getExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -7971,11 +7901,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateExplicitListItemWithHttpOperationResponse(appId: string, versionId: string, entityId: string, itemId: number, item: models.ExplicitListItemUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateExplicitListItemWithHttpOperationResponse(appId: string, versionId: string, entityId: string, itemId: number, item: models.ExplicitListItemUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Updates an explicit list item for a Pattern.Any entity.
@@ -8004,7 +7934,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8012,16 +7942,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, item: models.ExplicitListItemUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, item: models.ExplicitListItemUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, item: models.ExplicitListItemUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, item: models.ExplicitListItemUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updateExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, item: models.ExplicitListItemUpdateObject, callback: ServiceCallback<any>): void;
+    updateExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, item: models.ExplicitListItemUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -8042,11 +7971,11 @@ export interface Model {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteExplicitListItemWithHttpOperationResponse(appId: string, versionId: string, entityId: string, itemId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteExplicitListItemWithHttpOperationResponse(appId: string, versionId: string, entityId: string, itemId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Delete the explicit list item from the Pattern.any explicit list.
@@ -8071,7 +8000,7 @@ export interface Model {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8079,16 +8008,15 @@ export interface Model {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, callback: ServiceCallback<any>): void;
+    deleteExplicitListItem(appId: string, versionId: string, entityId: string, itemId: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 }
 
 /**
@@ -8135,11 +8063,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addWithHttpOperationResponse(applicationCreateObject: models.ApplicationCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addWithHttpOperationResponse(applicationCreateObject: models.ApplicationCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Creates a new LUIS app.
@@ -8181,7 +8109,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Uuid} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8189,15 +8117,15 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    add(applicationCreateObject: models.ApplicationCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    add(applicationCreateObject: models.ApplicationCreateObject, callback: ServiceCallback<string>): void;
-    add(applicationCreateObject: models.ApplicationCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    add(applicationCreateObject: models.ApplicationCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    add(applicationCreateObject: models.ApplicationCreateObject, callback: ServiceCallback<any>): void;
+    add(applicationCreateObject: models.ApplicationCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -8216,11 +8144,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInfoResponse[]>>;
+    listWithHttpOperationResponse(options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Lists all of the user applications.
@@ -8243,7 +8171,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8251,15 +8179,15 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInfoResponse[]>;
-    list(callback: ServiceCallback<models.ApplicationInfoResponse[]>): void;
-    list(options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInfoResponse[]>): void;
+    list(options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    list(callback: ServiceCallback<any>): void;
+    list(options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -8310,11 +8238,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    importMethodWithHttpOperationResponse(luisApp: models.LuisApp, options?: { appName? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    importMethodWithHttpOperationResponse(luisApp: models.LuisApp, options?: { appName? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Imports an application to LUIS, the application's structure should be
@@ -8369,7 +8297,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Uuid} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8377,15 +8305,15 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    importMethod(luisApp: models.LuisApp, options?: { appName? : string, customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    importMethod(luisApp: models.LuisApp, callback: ServiceCallback<string>): void;
-    importMethod(luisApp: models.LuisApp, options: { appName? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    importMethod(luisApp: models.LuisApp, options?: { appName? : string, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    importMethod(luisApp: models.LuisApp, callback: ServiceCallback<any>): void;
+    importMethod(luisApp: models.LuisApp, options: { appName? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -8398,11 +8326,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<PersonalAssistantsResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listCortanaEndpointsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersonalAssistantsResponse>>;
+    listCortanaEndpointsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets the endpoint URLs for the prebuilt Cortana applications.
@@ -8419,7 +8347,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {PersonalAssistantsResponse} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8427,17 +8355,15 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {PersonalAssistantsResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PersonalAssistantsResponse} for more
-     *                      information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listCortanaEndpoints(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PersonalAssistantsResponse>;
-    listCortanaEndpoints(callback: ServiceCallback<models.PersonalAssistantsResponse>): void;
-    listCortanaEndpoints(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersonalAssistantsResponse>): void;
+    listCortanaEndpoints(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    listCortanaEndpoints(callback: ServiceCallback<any>): void;
+    listCortanaEndpoints(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -8450,11 +8376,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listDomainsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
+    listDomainsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets the available application domains.
@@ -8471,7 +8397,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8479,15 +8405,15 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listDomains(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
-    listDomains(callback: ServiceCallback<string[]>): void;
-    listDomains(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
+    listDomains(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    listDomains(callback: ServiceCallback<any>): void;
+    listDomains(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -8500,11 +8426,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listUsageScenariosWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string[]>>;
+    listUsageScenariosWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets the application available usage scenarios.
@@ -8521,7 +8447,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8529,15 +8455,15 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listUsageScenarios(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string[]>;
-    listUsageScenarios(callback: ServiceCallback<string[]>): void;
-    listUsageScenarios(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string[]>): void;
+    listUsageScenarios(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    listUsageScenarios(callback: ServiceCallback<any>): void;
+    listUsageScenarios(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -8550,11 +8476,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listSupportedCulturesWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableCulture[]>>;
+    listSupportedCulturesWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets the supported application cultures.
@@ -8571,7 +8497,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8579,15 +8505,15 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listSupportedCultures(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableCulture[]>;
-    listSupportedCultures(callback: ServiceCallback<models.AvailableCulture[]>): void;
-    listSupportedCultures(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableCulture[]>): void;
+    listSupportedCultures(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    listSupportedCultures(callback: ServiceCallback<any>): void;
+    listSupportedCultures(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -8606,7 +8532,7 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    downloadQueryLogsWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+    downloadQueryLogsWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets the query logs of the past month for the application.
@@ -8639,9 +8565,9 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    downloadQueryLogs(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
-    downloadQueryLogs(appId: string, callback: ServiceCallback<stream.Readable>): void;
-    downloadQueryLogs(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+    downloadQueryLogs(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    downloadQueryLogs(appId: string, callback: ServiceCallback<any>): void;
+    downloadQueryLogs(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -8656,11 +8582,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplicationInfoResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInfoResponse>>;
+    getWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets the application info.
@@ -8679,7 +8605,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplicationInfoResponse} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8687,17 +8613,15 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplicationInfoResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationInfoResponse} for more
-     *                      information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInfoResponse>;
-    get(appId: string, callback: ServiceCallback<models.ApplicationInfoResponse>): void;
-    get(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInfoResponse>): void;
+    get(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    get(appId: string, callback: ServiceCallback<any>): void;
+    get(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -8720,11 +8644,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(appId: string, applicationUpdateObject: models.ApplicationUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateWithHttpOperationResponse(appId: string, applicationUpdateObject: models.ApplicationUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Updates the name or description of the application.
@@ -8751,7 +8675,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8759,16 +8683,15 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(appId: string, applicationUpdateObject: models.ApplicationUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    update(appId: string, applicationUpdateObject: models.ApplicationUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    update(appId: string, applicationUpdateObject: models.ApplicationUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    update(appId: string, applicationUpdateObject: models.ApplicationUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    update(appId: string, applicationUpdateObject: models.ApplicationUpdateObject, callback: ServiceCallback<any>): void;
+    update(appId: string, applicationUpdateObject: models.ApplicationUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -8783,11 +8706,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteMethodWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Deletes an application.
@@ -8806,7 +8729,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8814,16 +8737,15 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteMethod(appId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteMethod(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteMethod(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteMethod(appId: string, callback: ServiceCallback<any>): void;
+    deleteMethod(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -8839,9 +8761,6 @@ export interface Apps {
      *
      * @param {boolean} [applicationPublishObject.isStaging] Indicates if the
      * staging slot should be used, instead of the Production one.
-     *
-     * @param {string} [applicationPublishObject.region] The target region that the
-     * application is published to.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -8850,11 +8769,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ProductionOrStagingEndpointInfo>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    publishWithHttpOperationResponse(appId: string, applicationPublishObject: models.ApplicationPublishObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProductionOrStagingEndpointInfo>>;
+    publishWithHttpOperationResponse(appId: string, applicationPublishObject: models.ApplicationPublishObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Publishes a specific version of the application.
@@ -8869,9 +8788,6 @@ export interface Apps {
      *
      * @param {boolean} [applicationPublishObject.isStaging] Indicates if the
      * staging slot should be used, instead of the Production one.
-     *
-     * @param {string} [applicationPublishObject.region] The target region that the
-     * application is published to.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -8885,7 +8801,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ProductionOrStagingEndpointInfo} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8893,17 +8809,15 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ProductionOrStagingEndpointInfo} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ProductionOrStagingEndpointInfo} for more
-     *                      information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProductionOrStagingEndpointInfo>;
-    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, callback: ServiceCallback<models.ProductionOrStagingEndpointInfo>): void;
-    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProductionOrStagingEndpointInfo>): void;
+    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, callback: ServiceCallback<any>): void;
+    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -8918,11 +8832,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplicationSettings>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getSettingsWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationSettings>>;
+    getSettingsWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Get the application settings.
@@ -8941,7 +8855,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplicationSettings} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8949,16 +8863,15 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplicationSettings} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationSettings} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getSettings(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationSettings>;
-    getSettings(appId: string, callback: ServiceCallback<models.ApplicationSettings>): void;
-    getSettings(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationSettings>): void;
+    getSettings(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getSettings(appId: string, callback: ServiceCallback<any>): void;
+    getSettings(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -8980,11 +8893,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateSettingsWithHttpOperationResponse(appId: string, applicationSettingUpdateObject: models.ApplicationSettingUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateSettingsWithHttpOperationResponse(appId: string, applicationSettingUpdateObject: models.ApplicationSettingUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Updates the application settings.
@@ -9010,7 +8923,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -9018,16 +8931,15 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateSettings(appId: string, applicationSettingUpdateObject: models.ApplicationSettingUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updateSettings(appId: string, applicationSettingUpdateObject: models.ApplicationSettingUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updateSettings(appId: string, applicationSettingUpdateObject: models.ApplicationSettingUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updateSettings(appId: string, applicationSettingUpdateObject: models.ApplicationSettingUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updateSettings(appId: string, applicationSettingUpdateObject: models.ApplicationSettingUpdateObject, callback: ServiceCallback<any>): void;
+    updateSettings(appId: string, applicationSettingUpdateObject: models.ApplicationSettingUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -9042,11 +8954,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<PublishSettings>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPublishSettingsWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PublishSettings>>;
+    getPublishSettingsWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Get the application publish settings.
@@ -9065,7 +8977,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {PublishSettings} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -9073,16 +8985,15 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {PublishSettings} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PublishSettings} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPublishSettings(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublishSettings>;
-    getPublishSettings(appId: string, callback: ServiceCallback<models.PublishSettings>): void;
-    getPublishSettings(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublishSettings>): void;
+    getPublishSettings(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getPublishSettings(appId: string, callback: ServiceCallback<any>): void;
+    getPublishSettings(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -9110,11 +9021,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updatePublishSettingsWithHttpOperationResponse(appId: string, publishSettingUpdateObject: models.PublishSettingUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updatePublishSettingsWithHttpOperationResponse(appId: string, publishSettingUpdateObject: models.PublishSettingUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Updates the application publish settings.
@@ -9146,7 +9057,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -9154,16 +9065,15 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updatePublishSettings(appId: string, publishSettingUpdateObject: models.PublishSettingUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    updatePublishSettings(appId: string, publishSettingUpdateObject: models.PublishSettingUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    updatePublishSettings(appId: string, publishSettingUpdateObject: models.PublishSettingUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    updatePublishSettings(appId: string, publishSettingUpdateObject: models.PublishSettingUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updatePublishSettings(appId: string, publishSettingUpdateObject: models.PublishSettingUpdateObject, callback: ServiceCallback<any>): void;
+    updatePublishSettings(appId: string, publishSettingUpdateObject: models.PublishSettingUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -9182,7 +9092,7 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listEndpointsWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<{ [propertyName: string]: string }>>;
+    listEndpointsWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Returns the available endpoint deployment regions and URLs.
@@ -9215,9 +9125,9 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listEndpoints(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<{ [propertyName: string]: string }>;
-    listEndpoints(appId: string, callback: ServiceCallback<{ [propertyName: string]: string }>): void;
-    listEndpoints(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<{ [propertyName: string]: string }>): void;
+    listEndpoints(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    listEndpoints(appId: string, callback: ServiceCallback<any>): void;
+    listEndpoints(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -9230,11 +9140,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAvailableCustomPrebuiltDomainsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrebuiltDomain[]>>;
+    listAvailableCustomPrebuiltDomainsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets all the available custom prebuilt domains for all cultures.
@@ -9251,7 +9161,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -9259,15 +9169,15 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAvailableCustomPrebuiltDomains(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrebuiltDomain[]>;
-    listAvailableCustomPrebuiltDomains(callback: ServiceCallback<models.PrebuiltDomain[]>): void;
-    listAvailableCustomPrebuiltDomains(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrebuiltDomain[]>): void;
+    listAvailableCustomPrebuiltDomains(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    listAvailableCustomPrebuiltDomains(callback: ServiceCallback<any>): void;
+    listAvailableCustomPrebuiltDomains(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -9288,11 +9198,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Uuid>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addCustomPrebuiltDomainWithHttpOperationResponse(prebuiltDomainCreateObject: models.PrebuiltDomainCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    addCustomPrebuiltDomainWithHttpOperationResponse(prebuiltDomainCreateObject: models.PrebuiltDomainCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Adds a prebuilt domain along with its models as a new application.
@@ -9317,7 +9227,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Uuid} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -9325,15 +9235,15 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Uuid} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addCustomPrebuiltDomain(prebuiltDomainCreateObject: models.PrebuiltDomainCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    addCustomPrebuiltDomain(prebuiltDomainCreateObject: models.PrebuiltDomainCreateObject, callback: ServiceCallback<string>): void;
-    addCustomPrebuiltDomain(prebuiltDomainCreateObject: models.PrebuiltDomainCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    addCustomPrebuiltDomain(prebuiltDomainCreateObject: models.PrebuiltDomainCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    addCustomPrebuiltDomain(prebuiltDomainCreateObject: models.PrebuiltDomainCreateObject, callback: ServiceCallback<any>): void;
+    addCustomPrebuiltDomain(prebuiltDomainCreateObject: models.PrebuiltDomainCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -9348,11 +9258,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAvailableCustomPrebuiltDomainsForCultureWithHttpOperationResponse(culture: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrebuiltDomain[]>>;
+    listAvailableCustomPrebuiltDomainsForCultureWithHttpOperationResponse(culture: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets all the available custom prebuilt domains for a specific culture.
@@ -9371,7 +9281,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -9379,15 +9289,15 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAvailableCustomPrebuiltDomainsForCulture(culture: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrebuiltDomain[]>;
-    listAvailableCustomPrebuiltDomainsForCulture(culture: string, callback: ServiceCallback<models.PrebuiltDomain[]>): void;
-    listAvailableCustomPrebuiltDomainsForCulture(culture: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrebuiltDomain[]>): void;
+    listAvailableCustomPrebuiltDomainsForCulture(culture: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    listAvailableCustomPrebuiltDomainsForCulture(culture: string, callback: ServiceCallback<any>): void;
+    listAvailableCustomPrebuiltDomainsForCulture(culture: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 }
 
 /**
@@ -9420,11 +9330,11 @@ export interface Versions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    cloneWithHttpOperationResponse(appId: string, versionId: string, options?: { versionCloneObject? : models.TaskUpdateObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    cloneWithHttpOperationResponse(appId: string, versionId: string, options?: { versionCloneObject? : models.TaskUpdateObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Creates a new version using the current snapshot of the selected application
@@ -9452,7 +9362,7 @@ export interface Versions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {String} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -9460,15 +9370,15 @@ export interface Versions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {String} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    clone(appId: string, versionId: string, options?: { versionCloneObject? : models.TaskUpdateObject, customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    clone(appId: string, versionId: string, callback: ServiceCallback<string>): void;
-    clone(appId: string, versionId: string, options: { versionCloneObject? : models.TaskUpdateObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    clone(appId: string, versionId: string, options?: { versionCloneObject? : models.TaskUpdateObject, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    clone(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    clone(appId: string, versionId: string, options: { versionCloneObject? : models.TaskUpdateObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -9489,11 +9399,11 @@ export interface Versions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(appId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VersionInfo[]>>;
+    listWithHttpOperationResponse(appId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets the application versions info.
@@ -9518,7 +9428,7 @@ export interface Versions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -9526,15 +9436,15 @@ export interface Versions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(appId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.VersionInfo[]>;
-    list(appId: string, callback: ServiceCallback<models.VersionInfo[]>): void;
-    list(appId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VersionInfo[]>): void;
+    list(appId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    list(appId: string, callback: ServiceCallback<any>): void;
+    list(appId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -9551,11 +9461,11 @@ export interface Versions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<VersionInfo>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VersionInfo>>;
+    getWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets the version info.
@@ -9576,7 +9486,7 @@ export interface Versions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {VersionInfo} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -9584,16 +9494,15 @@ export interface Versions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {VersionInfo} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VersionInfo} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VersionInfo>;
-    get(appId: string, versionId: string, callback: ServiceCallback<models.VersionInfo>): void;
-    get(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VersionInfo>): void;
+    get(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    get(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    get(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -9616,11 +9525,11 @@ export interface Versions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(appId: string, versionId: string, versionUpdateObject: models.TaskUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateWithHttpOperationResponse(appId: string, versionId: string, versionUpdateObject: models.TaskUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Updates the name or description of the application version.
@@ -9647,7 +9556,7 @@ export interface Versions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -9655,16 +9564,15 @@ export interface Versions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(appId: string, versionId: string, versionUpdateObject: models.TaskUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    update(appId: string, versionId: string, versionUpdateObject: models.TaskUpdateObject, callback: ServiceCallback<models.OperationStatus>): void;
-    update(appId: string, versionId: string, versionUpdateObject: models.TaskUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    update(appId: string, versionId: string, versionUpdateObject: models.TaskUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    update(appId: string, versionId: string, versionUpdateObject: models.TaskUpdateObject, callback: ServiceCallback<any>): void;
+    update(appId: string, versionId: string, versionUpdateObject: models.TaskUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -9681,11 +9589,11 @@ export interface Versions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteMethodWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Deletes an application version.
@@ -9706,7 +9614,7 @@ export interface Versions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -9714,16 +9622,15 @@ export interface Versions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteMethod(appId: string, versionId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteMethod(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteMethod(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteMethod(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    deleteMethod(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -9740,11 +9647,11 @@ export interface Versions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<LuisApp>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    exportMethodWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LuisApp>>;
+    exportMethodWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Exports a LUIS application to JSON format.
@@ -9765,7 +9672,7 @@ export interface Versions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {LuisApp} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -9773,16 +9680,15 @@ export interface Versions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {LuisApp} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LuisApp} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    exportMethod(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LuisApp>;
-    exportMethod(appId: string, versionId: string, callback: ServiceCallback<models.LuisApp>): void;
-    exportMethod(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LuisApp>): void;
+    exportMethod(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    exportMethod(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    exportMethod(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -9834,11 +9740,11 @@ export interface Versions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    importMethodWithHttpOperationResponse(appId: string, luisApp: models.LuisApp, options?: { versionId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    importMethodWithHttpOperationResponse(appId: string, luisApp: models.LuisApp, options?: { versionId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Imports a new version into a LUIS application.
@@ -9894,7 +9800,7 @@ export interface Versions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {String} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -9902,15 +9808,15 @@ export interface Versions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {String} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    importMethod(appId: string, luisApp: models.LuisApp, options?: { versionId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    importMethod(appId: string, luisApp: models.LuisApp, callback: ServiceCallback<string>): void;
-    importMethod(appId: string, luisApp: models.LuisApp, options: { versionId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    importMethod(appId: string, luisApp: models.LuisApp, options?: { versionId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    importMethod(appId: string, luisApp: models.LuisApp, callback: ServiceCallback<any>): void;
+    importMethod(appId: string, luisApp: models.LuisApp, options: { versionId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -9929,11 +9835,11 @@ export interface Versions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteUnlabelledUtteranceWithHttpOperationResponse(appId: string, versionId: string, utterance: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteUnlabelledUtteranceWithHttpOperationResponse(appId: string, versionId: string, utterance: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Deleted an unlabelled utterance.
@@ -9956,7 +9862,7 @@ export interface Versions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -9964,16 +9870,15 @@ export interface Versions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteUnlabelledUtterance(appId: string, versionId: string, utterance: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteUnlabelledUtterance(appId: string, versionId: string, utterance: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteUnlabelledUtterance(appId: string, versionId: string, utterance: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteUnlabelledUtterance(appId: string, versionId: string, utterance: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteUnlabelledUtterance(appId: string, versionId: string, utterance: string, callback: ServiceCallback<any>): void;
+    deleteUnlabelledUtterance(appId: string, versionId: string, utterance: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 }
 
 /**
@@ -10005,11 +9910,11 @@ export interface Train {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<EnqueueTrainingResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    trainVersionWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EnqueueTrainingResponse>>;
+    trainVersionWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Sends a training request for a version of a specified LUIS app. This POST
@@ -10036,7 +9941,7 @@ export interface Train {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {EnqueueTrainingResponse} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10044,17 +9949,15 @@ export interface Train {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {EnqueueTrainingResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link EnqueueTrainingResponse} for more
-     *                      information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    trainVersion(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EnqueueTrainingResponse>;
-    trainVersion(appId: string, versionId: string, callback: ServiceCallback<models.EnqueueTrainingResponse>): void;
-    trainVersion(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EnqueueTrainingResponse>): void;
+    trainVersion(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    trainVersion(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    trainVersion(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -10075,11 +9978,11 @@ export interface Train {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getStatusWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ModelTrainingInfo[]>>;
+    getStatusWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets the training status of all models (intents and entities) for the
@@ -10104,7 +10007,7 @@ export interface Train {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10112,15 +10015,15 @@ export interface Train {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getStatus(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ModelTrainingInfo[]>;
-    getStatus(appId: string, versionId: string, callback: ServiceCallback<models.ModelTrainingInfo[]>): void;
-    getStatus(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ModelTrainingInfo[]>): void;
+    getStatus(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getStatus(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    getStatus(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 }
 
 /**
@@ -10145,11 +10048,11 @@ export interface Permissions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<UserAccessList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UserAccessList>>;
+    listWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets the list of user emails that have permissions to access your
@@ -10169,7 +10072,7 @@ export interface Permissions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {UserAccessList} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10177,16 +10080,15 @@ export interface Permissions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {UserAccessList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link UserAccessList} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UserAccessList>;
-    list(appId: string, callback: ServiceCallback<models.UserAccessList>): void;
-    list(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UserAccessList>): void;
+    list(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    list(appId: string, callback: ServiceCallback<any>): void;
+    list(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -10206,11 +10108,11 @@ export interface Permissions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addWithHttpOperationResponse(appId: string, userToAdd: models.UserCollaborator, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    addWithHttpOperationResponse(appId: string, userToAdd: models.UserCollaborator, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Adds a user to the allowed list of users to access this LUIS application.
@@ -10234,7 +10136,7 @@ export interface Permissions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10242,16 +10144,15 @@ export interface Permissions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    add(appId: string, userToAdd: models.UserCollaborator, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    add(appId: string, userToAdd: models.UserCollaborator, callback: ServiceCallback<models.OperationStatus>): void;
-    add(appId: string, userToAdd: models.UserCollaborator, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    add(appId: string, userToAdd: models.UserCollaborator, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    add(appId: string, userToAdd: models.UserCollaborator, callback: ServiceCallback<any>): void;
+    add(appId: string, userToAdd: models.UserCollaborator, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -10271,11 +10172,11 @@ export interface Permissions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(appId: string, userToDelete: models.UserCollaborator, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteMethodWithHttpOperationResponse(appId: string, userToDelete: models.UserCollaborator, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Removes a user from the allowed list of users to access this LUIS
@@ -10299,7 +10200,7 @@ export interface Permissions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10307,16 +10208,15 @@ export interface Permissions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(appId: string, userToDelete: models.UserCollaborator, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteMethod(appId: string, userToDelete: models.UserCollaborator, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteMethod(appId: string, userToDelete: models.UserCollaborator, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteMethod(appId: string, userToDelete: models.UserCollaborator, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deleteMethod(appId: string, userToDelete: models.UserCollaborator, callback: ServiceCallback<any>): void;
+    deleteMethod(appId: string, userToDelete: models.UserCollaborator, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -10337,11 +10237,11 @@ export interface Permissions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(appId: string, collaborators: models.CollaboratorsArray, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    updateWithHttpOperationResponse(appId: string, collaborators: models.CollaboratorsArray, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Replaces the current users access list with the one sent in the body. If an
@@ -10366,7 +10266,7 @@ export interface Permissions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10374,16 +10274,15 @@ export interface Permissions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(appId: string, collaborators: models.CollaboratorsArray, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    update(appId: string, collaborators: models.CollaboratorsArray, callback: ServiceCallback<models.OperationStatus>): void;
-    update(appId: string, collaborators: models.CollaboratorsArray, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    update(appId: string, collaborators: models.CollaboratorsArray, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    update(appId: string, collaborators: models.CollaboratorsArray, callback: ServiceCallback<any>): void;
+    update(appId: string, collaborators: models.CollaboratorsArray, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 }
 
 /**
@@ -10416,11 +10315,11 @@ export interface Pattern {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<PatternRuleInfo>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addPatternWithHttpOperationResponse(appId: string, versionId: string, pattern: models.PatternRuleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo>>;
+    addPatternWithHttpOperationResponse(appId: string, versionId: string, pattern: models.PatternRuleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Adds one pattern to the specified application.
@@ -10448,7 +10347,7 @@ export interface Pattern {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {PatternRuleInfo} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10456,16 +10355,15 @@ export interface Pattern {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {PatternRuleInfo} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PatternRuleInfo} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addPattern(appId: string, versionId: string, pattern: models.PatternRuleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo>;
-    addPattern(appId: string, versionId: string, pattern: models.PatternRuleCreateObject, callback: ServiceCallback<models.PatternRuleInfo>): void;
-    addPattern(appId: string, versionId: string, pattern: models.PatternRuleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo>): void;
+    addPattern(appId: string, versionId: string, pattern: models.PatternRuleCreateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    addPattern(appId: string, versionId: string, pattern: models.PatternRuleCreateObject, callback: ServiceCallback<any>): void;
+    addPattern(appId: string, versionId: string, pattern: models.PatternRuleCreateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -10488,11 +10386,11 @@ export interface Pattern {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPatternsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo[]>>;
+    getPatternsWithHttpOperationResponse(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Returns an application version's patterns.
@@ -10519,7 +10417,7 @@ export interface Pattern {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10527,15 +10425,15 @@ export interface Pattern {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPatterns(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo[]>;
-    getPatterns(appId: string, versionId: string, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
-    getPatterns(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
+    getPatterns(appId: string, versionId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getPatterns(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    getPatterns(appId: string, versionId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -10554,11 +10452,11 @@ export interface Pattern {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updatePatternsWithHttpOperationResponse(appId: string, versionId: string, patterns: models.PatternRuleUpdateObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo[]>>;
+    updatePatternsWithHttpOperationResponse(appId: string, versionId: string, patterns: models.PatternRuleUpdateObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Updates patterns
@@ -10581,7 +10479,7 @@ export interface Pattern {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10589,15 +10487,15 @@ export interface Pattern {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updatePatterns(appId: string, versionId: string, patterns: models.PatternRuleUpdateObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo[]>;
-    updatePatterns(appId: string, versionId: string, patterns: models.PatternRuleUpdateObject[], callback: ServiceCallback<models.PatternRuleInfo[]>): void;
-    updatePatterns(appId: string, versionId: string, patterns: models.PatternRuleUpdateObject[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
+    updatePatterns(appId: string, versionId: string, patterns: models.PatternRuleUpdateObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updatePatterns(appId: string, versionId: string, patterns: models.PatternRuleUpdateObject[], callback: ServiceCallback<any>): void;
+    updatePatterns(appId: string, versionId: string, patterns: models.PatternRuleUpdateObject[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -10616,11 +10514,11 @@ export interface Pattern {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    batchAddPatternsWithHttpOperationResponse(appId: string, versionId: string, patterns: models.PatternRuleCreateObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo[]>>;
+    batchAddPatternsWithHttpOperationResponse(appId: string, versionId: string, patterns: models.PatternRuleCreateObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Adds a batch of patterns to the specified application.
@@ -10643,7 +10541,7 @@ export interface Pattern {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10651,15 +10549,15 @@ export interface Pattern {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    batchAddPatterns(appId: string, versionId: string, patterns: models.PatternRuleCreateObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo[]>;
-    batchAddPatterns(appId: string, versionId: string, patterns: models.PatternRuleCreateObject[], callback: ServiceCallback<models.PatternRuleInfo[]>): void;
-    batchAddPatterns(appId: string, versionId: string, patterns: models.PatternRuleCreateObject[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
+    batchAddPatterns(appId: string, versionId: string, patterns: models.PatternRuleCreateObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    batchAddPatterns(appId: string, versionId: string, patterns: models.PatternRuleCreateObject[], callback: ServiceCallback<any>): void;
+    batchAddPatterns(appId: string, versionId: string, patterns: models.PatternRuleCreateObject[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -10678,11 +10576,11 @@ export interface Pattern {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deletePatternsWithHttpOperationResponse(appId: string, versionId: string, patternIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deletePatternsWithHttpOperationResponse(appId: string, versionId: string, patternIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Deletes the patterns with the specified IDs.
@@ -10705,7 +10603,7 @@ export interface Pattern {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10713,16 +10611,15 @@ export interface Pattern {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deletePatterns(appId: string, versionId: string, patternIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deletePatterns(appId: string, versionId: string, patternIds: string[], callback: ServiceCallback<models.OperationStatus>): void;
-    deletePatterns(appId: string, versionId: string, patternIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deletePatterns(appId: string, versionId: string, patternIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deletePatterns(appId: string, versionId: string, patternIds: string[], callback: ServiceCallback<any>): void;
+    deletePatterns(appId: string, versionId: string, patternIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -10750,11 +10647,11 @@ export interface Pattern {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<PatternRuleInfo>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updatePatternWithHttpOperationResponse(appId: string, versionId: string, patternId: string, pattern: models.PatternRuleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo>>;
+    updatePatternWithHttpOperationResponse(appId: string, versionId: string, patternId: string, pattern: models.PatternRuleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Updates a pattern
@@ -10786,7 +10683,7 @@ export interface Pattern {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {PatternRuleInfo} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10794,16 +10691,15 @@ export interface Pattern {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {PatternRuleInfo} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PatternRuleInfo} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updatePattern(appId: string, versionId: string, patternId: string, pattern: models.PatternRuleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo>;
-    updatePattern(appId: string, versionId: string, patternId: string, pattern: models.PatternRuleUpdateObject, callback: ServiceCallback<models.PatternRuleInfo>): void;
-    updatePattern(appId: string, versionId: string, patternId: string, pattern: models.PatternRuleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo>): void;
+    updatePattern(appId: string, versionId: string, patternId: string, pattern: models.PatternRuleUpdateObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    updatePattern(appId: string, versionId: string, patternId: string, pattern: models.PatternRuleUpdateObject, callback: ServiceCallback<any>): void;
+    updatePattern(appId: string, versionId: string, patternId: string, pattern: models.PatternRuleUpdateObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -10822,11 +10718,11 @@ export interface Pattern {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deletePatternWithHttpOperationResponse(appId: string, versionId: string, patternId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deletePatternWithHttpOperationResponse(appId: string, versionId: string, patternId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Deletes the pattern with the specified ID.
@@ -10849,7 +10745,7 @@ export interface Pattern {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatus} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10857,16 +10753,15 @@ export interface Pattern {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deletePattern(appId: string, versionId: string, patternId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deletePattern(appId: string, versionId: string, patternId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deletePattern(appId: string, versionId: string, patternId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deletePattern(appId: string, versionId: string, patternId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    deletePattern(appId: string, versionId: string, patternId: string, callback: ServiceCallback<any>): void;
+    deletePattern(appId: string, versionId: string, patternId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -10891,11 +10786,11 @@ export interface Pattern {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getIntentPatternsWithHttpOperationResponse(appId: string, versionId: string, intentId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PatternRuleInfo[]>>;
+    getIntentPatternsWithHttpOperationResponse(appId: string, versionId: string, intentId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Returns patterns to be retrieved for the specific intent.
@@ -10924,7 +10819,7 @@ export interface Pattern {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10932,13 +10827,156 @@ export interface Pattern {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getIntentPatterns(appId: string, versionId: string, intentId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo[]>;
-    getIntentPatterns(appId: string, versionId: string, intentId: string, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
-    getIntentPatterns(appId: string, versionId: string, intentId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
+    getIntentPatterns(appId: string, versionId: string, intentId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getIntentPatterns(appId: string, versionId: string, intentId: string, callback: ServiceCallback<any>): void;
+    getIntentPatterns(appId: string, versionId: string, intentId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+}
+
+/**
+ * @class
+ * Settings
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the LUISAuthoringClient.
+ */
+export interface Settings {
+
+
+    /**
+     * Gets the application version settings.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * Gets the application version settings.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    list(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    list(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * Updates the application version settings.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {object} listOfAppVersionSettingObject A list of the updated
+     * application version settings.
+     *
+     * @param {string} [listOfAppVersionSettingObject.name] The application version
+     * setting name.
+     *
+     * @param {string} [listOfAppVersionSettingObject.value] The application
+     * version setting value.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * Updates the application version settings.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {object} listOfAppVersionSettingObject A list of the updated
+     * application version settings.
+     *
+     * @param {string} [listOfAppVersionSettingObject.name] The application version
+     * setting name.
+     *
+     * @param {string} [listOfAppVersionSettingObject.value] The application
+     * version setting value.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, callback: ServiceCallback<any>): void;
+    update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 }

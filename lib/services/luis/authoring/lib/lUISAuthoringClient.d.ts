@@ -22,6 +22,8 @@ export default class LUISAuthoringClient extends ServiceClient {
    *
    * @param {string} endpoint - Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus.api.cognitive.microsoft.com).
    *
+   * @param {string} ocpApimSubscriptionKey - Subscription key which provides access to this API.
+   *
    * @param {object} [options] - The parameter options
    *
    * @param {Array} [options.filters] - Filters to be added to the request pipeline
@@ -32,11 +34,13 @@ export default class LUISAuthoringClient extends ServiceClient {
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
    */
-  constructor(credentials: ServiceClientCredentials, endpoint: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, endpoint: string, ocpApimSubscriptionKey: string, options?: ServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   endpoint: string;
+
+  ocpApimSubscriptionKey: string;
 
   // Operation groups
   features: operations.Features;
@@ -47,6 +51,7 @@ export default class LUISAuthoringClient extends ServiceClient {
   train: operations.Train;
   permissions: operations.Permissions;
   pattern: operations.Pattern;
+  settings: operations.Settings;
 }
 
 export { LUISAuthoringClient, models as LUISAuthoringModels };
