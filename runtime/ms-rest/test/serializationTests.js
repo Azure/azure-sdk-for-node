@@ -5,6 +5,7 @@ var assert = require('assert');
 var should = require('should');
 var moment = require('moment');
 var msRest = require('../lib/msRest');
+var getPropertyValue = require('../lib/serialization').getPropertyValue;
 var testClient = require('./data/TestClient/lib/testClient');
 
 var tokenCredentials = new msRest.TokenCredentials('dummy');
@@ -1213,6 +1214,56 @@ describe('msrest', function () {
       serializedSawshark.siblings[1].picture.should.equal('//////4=');
       serializedSawshark.picture.should.equal('//////4=');
       done();
+    });
+  });
+
+  describe('getPropertyValue', function () {
+    it('should return undefined when given an undefined value', function () {
+      assert.strictEqual(getPropertyValue(undefined, ["a"]), undefined);
+    });
+
+    it('should return undefined when given a null value', function () {
+      assert.strictEqual(getPropertyValue(null, ["a"]), undefined);
+    });
+
+    it('should return undefined when given undefined property path', function () {
+      assert.strictEqual(getPropertyValue("apples", undefined), undefined);
+    });
+
+    it('should return undefined when given null property path', function () {
+      assert.strictEqual(getPropertyValue("apples", null), undefined);
+    });
+
+    it('should return undefined when given empty property path', function () {
+      assert.strictEqual(getPropertyValue("apples", []), undefined);
+    });
+
+    it('should return undefined when given a property name that doesn\'t exist', function () {
+      assert.strictEqual(getPropertyValue("apples", ["spam"]), undefined);
+    });
+
+    it('should return property value when given a property name that exists', function () {
+      assert.strictEqual(getPropertyValue({ "a": 6 }, ["a"]), 6);
+    });
+
+    it('should return property value when given a property name that exists with the wrong case', function () {
+      assert.strictEqual(getPropertyValue({ "a": 6 }, ["A"]), 6);
+    });
+
+    it('should return original value when given an empty property name', function () {
+      assert.strictEqual(getPropertyValue("apples", [""]), "apples");
+    });
+
+    it('should return undefined when part of the property path doesn\'t exist', function () {
+      assert.strictEqual(getPropertyValue({ "a": { "beta": { "c": 7 } } }, ["a", "b", "c"]), undefined);
+    });
+
+    it('should return property value when part of the property path is in the wrong case', function () {
+      assert.strictEqual(getPropertyValue({ "a": { "b": { "c": 7 } } }, ["A", "b", "C"]), 7);
+    });
+
+    it('should return null when the property value is null', function () {
+      assert.strictEqual(getPropertyValue({ "a": { "b": null } }, ["A", "b"]), null);
     });
   });
 });
