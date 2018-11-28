@@ -8847,11 +8847,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ProductionOrStagingEndpointInfo>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    publishWithHttpOperationResponse(appId: string, applicationPublishObject: models.ApplicationPublishObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProductionOrStagingEndpointInfo>>;
+    publishWithHttpOperationResponse(appId: string, applicationPublishObject: models.ApplicationPublishObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Publishes a specific version of the application.
@@ -8879,7 +8879,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ProductionOrStagingEndpointInfo} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8887,17 +8887,15 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ProductionOrStagingEndpointInfo} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ProductionOrStagingEndpointInfo} for more
-     *                      information.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProductionOrStagingEndpointInfo>;
-    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, callback: ServiceCallback<models.ProductionOrStagingEndpointInfo>): void;
-    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProductionOrStagingEndpointInfo>): void;
+    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, callback: ServiceCallback<any>): void;
+    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -11079,202 +11077,4 @@ export interface Settings {
     update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
     update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, callback: ServiceCallback<models.OperationStatus>): void;
     update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
-}
-
-/**
- * @class
- * Dispatch
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the LUISAuthoringClient.
- */
-export interface Dispatch {
-
-
-    /**
-     * @summary Updates connected services
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {array} connectedServices A JSON array of service connections.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    batchUpdateConnectedServicesWithHttpOperationResponse(appId: string, versionId: string, connectedServices: models.DispatchConnectedServiceObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
-
-    /**
-     * @summary Updates connected services
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {array} connectedServices A JSON array of service connections.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatus} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    batchUpdateConnectedServices(appId: string, versionId: string, connectedServices: models.DispatchConnectedServiceObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    batchUpdateConnectedServices(appId: string, versionId: string, connectedServices: models.DispatchConnectedServiceObject[], callback: ServiceCallback<models.OperationStatus>): void;
-    batchUpdateConnectedServices(appId: string, versionId: string, connectedServices: models.DispatchConnectedServiceObject[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
-
-
-    /**
-     * @summary Adds connected services
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {array} connectedServices A JSON array of service connections.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    batchAddConnectedServicesWithHttpOperationResponse(appId: string, versionId: string, connectedServices: models.DispatchConnectedServiceObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
-
-    /**
-     * @summary Adds connected services
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {array} connectedServices A JSON array of service connections.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatus} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    batchAddConnectedServices(appId: string, versionId: string, connectedServices: models.DispatchConnectedServiceObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    batchAddConnectedServices(appId: string, versionId: string, connectedServices: models.DispatchConnectedServiceObject[], callback: ServiceCallback<models.OperationStatus>): void;
-    batchAddConnectedServices(appId: string, versionId: string, connectedServices: models.DispatchConnectedServiceObject[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
-
-
-    /**
-     * @summary Deletes the services connected to the specified intents
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {array} intentNames The intent names.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteConnectedServicesWithHttpOperationResponse(appId: string, versionId: string, intentNames: models.DispatchConnectedServiceDeleteObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
-
-    /**
-     * @summary Deletes the services connected to the specified intents
-     *
-     * @param {uuid} appId The application ID.
-     *
-     * @param {string} versionId The version ID.
-     *
-     * @param {array} intentNames The intent names.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatus} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatus} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteConnectedServices(appId: string, versionId: string, intentNames: models.DispatchConnectedServiceDeleteObject[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
-    deleteConnectedServices(appId: string, versionId: string, intentNames: models.DispatchConnectedServiceDeleteObject[], callback: ServiceCallback<models.OperationStatus>): void;
-    deleteConnectedServices(appId: string, versionId: string, intentNames: models.DispatchConnectedServiceDeleteObject[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 }
