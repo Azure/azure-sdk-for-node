@@ -1524,7 +1524,7 @@ export interface X509CertificateName {
  * @member {string} clientCertificatethumbprint The client certificate
  * thumbprint for the management endpoint.
  * @member {number} [maxPartitionResolutionRetries] Maximum number of retries
- * while attempting resolve the parition.
+ * while attempting resolve the partition.
  * @member {array} managementEndpoints The cluster management endpoint.
  * @member {array} [serverCertificateThumbprints] Thumbprints of certificates
  * cluster management service uses for tls communication
@@ -1549,7 +1549,7 @@ export interface BackendServiceFabricClusterProperties {
  * @member {string} [serviceFabricCluster.clientCertificatethumbprint] The
  * client certificate thumbprint for the management endpoint.
  * @member {number} [serviceFabricCluster.maxPartitionResolutionRetries]
- * Maximum number of retries while attempting resolve the parition.
+ * Maximum number of retries while attempting resolve the partition.
  * @member {array} [serviceFabricCluster.managementEndpoints] The cluster
  * management endpoint.
  * @member {array} [serviceFabricCluster.serverCertificateThumbprints]
@@ -1637,7 +1637,7 @@ export interface BackendTlsProperties {
  * certificate thumbprint for the management endpoint.
  * @member {number}
  * [properties.serviceFabricCluster.maxPartitionResolutionRetries] Maximum
- * number of retries while attempting resolve the parition.
+ * number of retries while attempting resolve the partition.
  * @member {array} [properties.serviceFabricCluster.managementEndpoints] The
  * cluster management endpoint.
  * @member {array}
@@ -1699,7 +1699,7 @@ export interface BackendBaseParameters {
  * certificate thumbprint for the management endpoint.
  * @member {number}
  * [properties.serviceFabricCluster.maxPartitionResolutionRetries] Maximum
- * number of retries while attempting resolve the parition.
+ * number of retries while attempting resolve the partition.
  * @member {array} [properties.serviceFabricCluster.managementEndpoints] The
  * cluster management endpoint.
  * @member {array}
@@ -1766,7 +1766,7 @@ export interface BackendContract extends Resource {
  * certificate thumbprint for the management endpoint.
  * @member {number}
  * [properties.serviceFabricCluster.maxPartitionResolutionRetries] Maximum
- * number of retries while attempting resolve the parition.
+ * number of retries while attempting resolve the partition.
  * @member {array} [properties.serviceFabricCluster.managementEndpoints] The
  * cluster management endpoint.
  * @member {array}
@@ -1821,7 +1821,7 @@ export interface BackendUpdateParameters {
  * Reconnect request parameters.
  *
  * @member {moment.duration} [after] Duration in ISO8601 format after which
- * reconnect will be initiated. Minimum duration of the Reconect is PT2M.
+ * reconnect will be initiated. Minimum duration of the Reconnect is PT2M.
  */
 export interface BackendReconnectContract extends Resource {
   after?: moment.Duration;
@@ -1888,7 +1888,7 @@ export interface CertificateInformation {
  * @member {string} [encodedCertificate] Base64 Encoded certificate.
  * @member {string} [certificatePassword] Certificate Password.
  * @member {string} storeName The
- * System.Security.Cryptography.x509certificates.Storename certificate store
+ * System.Security.Cryptography.x509certificates.StoreName certificate store
  * location. Only Root and CertificateAuthority are valid locations. Possible
  * values include: 'CertificateAuthority', 'Root'
  * @member {object} [certificate] Certificate information.
@@ -2103,10 +2103,10 @@ export interface ApiManagementServiceBackupRestoreParameters {
  * @member {array} [certificates] List of Certificates that need to be
  * installed in the API Management service. Max supported certificates that can
  * be installed is 10.
- * @member {string} [virtualNetworkType] The type of VPN in which API Managemet
- * service needs to be configured in. None (Default Value) means the API
- * Management service is not part of any Virtual Network, External means the
- * API Management deployment is set up inside a Virtual Network having an
+ * @member {string} [virtualNetworkType] The type of VPN in which API
+ * Management service needs to be configured in. None (Default Value) means the
+ * API Management service is not part of any Virtual Network, External means
+ * the API Management deployment is set up inside a Virtual Network having an
  * Internet Facing Endpoint, and Internal means that API Management deployment
  * is setup inside a Virtual Network having an Intranet Facing Endpoint only.
  * Possible values include: 'None', 'External', 'Internal'. Default value:
@@ -2222,10 +2222,10 @@ export interface ApimResource extends BaseResource {
  * @member {array} [certificates] List of Certificates that need to be
  * installed in the API Management service. Max supported certificates that can
  * be installed is 10.
- * @member {string} [virtualNetworkType] The type of VPN in which API Managemet
- * service needs to be configured in. None (Default Value) means the API
- * Management service is not part of any Virtual Network, External means the
- * API Management deployment is set up inside a Virtual Network having an
+ * @member {string} [virtualNetworkType] The type of VPN in which API
+ * Management service needs to be configured in. None (Default Value) means the
+ * API Management service is not part of any Virtual Network, External means
+ * the API Management deployment is set up inside a Virtual Network having an
  * Internet Facing Endpoint, and Internal means that API Management deployment
  * is setup inside a Virtual Network having an Intranet Facing Endpoint only.
  * Possible values include: 'None', 'External', 'Internal'. Default value:
@@ -2327,10 +2327,10 @@ export interface ApiManagementServiceResource extends ApimResource {
  * @member {array} [certificates] List of Certificates that need to be
  * installed in the API Management service. Max supported certificates that can
  * be installed is 10.
- * @member {string} [virtualNetworkType] The type of VPN in which API Managemet
- * service needs to be configured in. None (Default Value) means the API
- * Management service is not part of any Virtual Network, External means the
- * API Management deployment is set up inside a Virtual Network having an
+ * @member {string} [virtualNetworkType] The type of VPN in which API
+ * Management service needs to be configured in. None (Default Value) means the
+ * API Management service is not part of any Virtual Network, External means
+ * the API Management deployment is set up inside a Virtual Network having an
  * Internet Facing Endpoint, and Internal means that API Management deployment
  * is setup inside a Virtual Network having an Intranet Facing Endpoint only.
  * Possible values include: 'None', 'External', 'Internal'. Default value:
@@ -3423,7 +3423,7 @@ export interface QuotaCounterValueContract {
  * @member {date} [timestamp] Start of aggregation period. The date conforms to
  * the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601
  * standard.
- * @member {string} [interval] Length of agregation period.  Interval must be
+ * @member {string} [interval] Length of aggregation period.  Interval must be
  * multiple of 15 minutes and may not be zero. The value should be in ISO 8601
  * format (http://en.wikipedia.org/wiki/ISO_8601#Durations).
  * @member {string} [country] Country to which this record data is related.
@@ -3438,11 +3438,11 @@ export interface QuotaCounterValueContract {
  * @member {string} [apiRegion] API region identifier.
  * @member {string} [subscriptionId] Subscription identifier path.
  * /subscriptions/{subscriptionId}
- * @member {number} [callCountSuccess] Number of succesful calls. This includes
- * calls returning HttpStatusCode <= 301 and HttpStatusCode.NotModified and
- * HttpStatusCode.TemporaryRedirect
+ * @member {number} [callCountSuccess] Number of successful calls. This
+ * includes calls returning HttpStatusCode <= 301 and
+ * HttpStatusCode.NotModified and HttpStatusCode.TemporaryRedirect
  * @member {number} [callCountBlocked] Number of calls blocked due to invalid
- * credentials. This includes calls returning HttpStatusCode.Unauthorize and
+ * credentials. This includes calls returning HttpStatusCode.Unauthorized and
  * HttpStatusCode.Forbidden and HttpStatusCode.TooManyRequests
  * @member {number} [callCountFailed] Number of calls failed due to proxy or
  * backend errors. This includes calls returning HttpStatusCode.BadRequest(400)
@@ -3519,7 +3519,7 @@ export interface ReportRecordContract {
  * @member {string} [cache] Specifies if response cache was involved in
  * generating the response. If the value is none, the cache was not used. If
  * the value is hit, cached response was returned. If the value is miss, the
- * cache was used but lookup resulted in a miss and request was fullfilled by
+ * cache was used but lookup resulted in a miss and request was fulfilled by
  * the backend.
  * @member {number} [apiTime] The total time it took to process this request.
  * @member {number} [serviceTime] he time it took to forward this request to
@@ -3561,7 +3561,7 @@ export interface RequestReportRecordContract {
  * @member {string} userId User (user id path) for whom subscription is being
  * created in form /users/{uid}
  * @member {string} productId Product (product id path) for which subscription
- * is being created in form /products/{productid}
+ * is being created in form /products/{productId}
  * @member {string} displayName Subscription name.
  * @member {string} [primaryKey] Primary subscription key. If not specified
  * during request key will be generated automatically.
