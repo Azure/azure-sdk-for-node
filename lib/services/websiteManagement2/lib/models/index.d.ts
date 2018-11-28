@@ -520,7 +520,7 @@ export interface VnetGateway extends ProxyOnlyResource {
 }
 
 /**
- * User crendentials used for publishing activity.
+ * User credentials used for publishing activity.
  */
 export interface User extends ProxyOnlyResource {
   /**
@@ -749,7 +749,7 @@ export interface ManagedServiceIdentity {
 }
 
 /**
- * The status of the last successfull slot swap operation.
+ * The status of the last successful slot swap operation.
  */
 export interface SlotSwapStatus {
   /**
@@ -1060,16 +1060,16 @@ export interface RampUpRule {
    */
   reroutePercentage?: number;
   /**
-   * In auto ramp up scenario this is the step to to add/remove from <code>ReroutePercentage</code>
+   * In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code>
    * until it reaches
    * <code>MinReroutePercentage</code> or <code>MaxReroutePercentage</code>. Site metrics are
-   * checked every N minutes specificed in <code>ChangeIntervalInMinutes</code>.
+   * checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.
    * Custom decision algorithm can be provided in TiPCallback site extension which URL can be
    * specified in <code>ChangeDecisionCallbackUrl</code>.
    */
   changeStep?: number;
   /**
-   * Specifies interval in mimuntes to reevaluate ReroutePercentage.
+   * Specifies interval in minutes to reevaluate ReroutePercentage.
    */
   changeIntervalInMinutes?: number;
   /**
@@ -6633,7 +6633,7 @@ export interface AppServiceEnvironmentResource extends Resource {
 }
 
 /**
- * ARM resource for a app service enviroment.
+ * ARM resource for a app service environment.
 */
 export interface AppServiceEnvironmentPatchResource extends ProxyOnlyResource {
   /**
