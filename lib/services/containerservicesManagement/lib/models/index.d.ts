@@ -98,7 +98,7 @@ export interface NetworkProfile {
  * @member {string} [name] Unique name of the master pool profile in the
  * context of the subscription and resource group.
  * @member {number} count Number of masters (VMs) to host docker containers.
- * The default value is 3. Default value: 3 .
+ * The default value is 3.
  * @member {string} vmSize Size of agent VMs. Possible values include:
  * 'Standard_D2s_v3', 'Standard_D4s_v3', 'Standard_D8s_v3', 'Standard_D16s_v3',
  * 'Standard_D32s_v3', 'Standard_D64s_v3', 'Standard_DS4_v2',
@@ -132,7 +132,7 @@ export interface OpenShiftManagedClusterMasterPoolProfile {
  * subscription and resource group.
  * @member {number} count Number of agents (VMs) to host docker containers.
  * Allowed values must be in the range of 1 to 5 (inclusive). The default value
- * is 2. . Default value: 2 .
+ * is 2.
  * @member {string} vmSize Size of agent VMs. Possible values include:
  * 'Standard_D2s_v3', 'Standard_D4s_v3', 'Standard_D8s_v3', 'Standard_D16s_v3',
  * 'Standard_D32s_v3', 'Standard_D64s_v3', 'Standard_DS4_v2',
