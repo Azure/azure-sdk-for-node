@@ -712,7 +712,7 @@ export interface TagValue extends BaseResource {
 /**
  * Tag details.
 */
-export interface TagDetails {
+export interface TagDetails extends BaseResource {
   /**
    * The tag ID.
   */
