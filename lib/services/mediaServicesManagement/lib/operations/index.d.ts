@@ -4285,7 +4285,7 @@ export interface StreamingPolicies {
      * the number of items returned from a collection. The service returns the
      * number of available items up to but not greater than the specified value n.
      *
-     * @param {string} [options.orderby] Specifies the the key by which the result
+     * @param {string} [options.orderby] Specifies the key by which the result
      * collection should be ordered.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -4317,7 +4317,7 @@ export interface StreamingPolicies {
      * the number of items returned from a collection. The service returns the
      * number of available items up to but not greater than the specified value n.
      *
-     * @param {string} [options.orderby] Specifies the the key by which the result
+     * @param {string} [options.orderby] Specifies the key by which the result
      * collection should be ordered.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -4452,7 +4452,7 @@ export interface StreamingPolicies {
      *
      * @param {string}
      * [parameters.envelopeEncryption.customKeyAcquisitionUrlTemplate]
-     * KeyAcquistionUrlTemplate is used to point to user specified service to
+     * KeyAcquisitionUrlTemplate is used to point to user specified service to
      * delivery content keys
      *
      * @param {object} [parameters.commonEncryptionCenc] Configuration of
@@ -4602,7 +4602,7 @@ export interface StreamingPolicies {
      *
      * @param {string}
      * [parameters.envelopeEncryption.customKeyAcquisitionUrlTemplate]
-     * KeyAcquistionUrlTemplate is used to point to user specified service to
+     * KeyAcquisitionUrlTemplate is used to point to user specified service to
      * delivery content keys
      *
      * @param {object} [parameters.commonEncryptionCenc] Configuration of
@@ -4896,7 +4896,7 @@ export interface StreamingLocators {
      * the number of items returned from a collection. The service returns the
      * number of available items up to but not greater than the specified value n.
      *
-     * @param {string} [options.orderby] Specifies the the key by which the result
+     * @param {string} [options.orderby] Specifies the key by which the result
      * collection should be ordered.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -4928,7 +4928,7 @@ export interface StreamingLocators {
      * the number of items returned from a collection. The service returns the
      * number of available items up to but not greater than the specified value n.
      *
-     * @param {string} [options.orderby] Specifies the the key by which the result
+     * @param {string} [options.orderby] Specifies the key by which the result
      * collection should be ordered.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
