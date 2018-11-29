@@ -35,7 +35,7 @@ export interface Profiles {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProfileListResult>>;
+    arrayMethodWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProfileListResult>>;
 
     /**
      * Lists all of the CDN profiles within an Azure subscription.
@@ -67,9 +67,9 @@ export interface Profiles {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProfileListResult>;
-    list(callback: ServiceCallback<models.ProfileListResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
+    arrayMethod(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProfileListResult>;
+    arrayMethod(callback: ServiceCallback<models.ProfileListResult>): void;
+    arrayMethod(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
 
 
     /**
@@ -866,7 +866,7 @@ export interface Profiles {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProfileListResult>>;
+    arrayMethodNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProfileListResult>>;
 
     /**
      * Lists all of the CDN profiles within an Azure subscription.
@@ -901,9 +901,9 @@ export interface Profiles {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProfileListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ProfileListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
+    arrayMethodNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProfileListResult>;
+    arrayMethodNext(nextPageLink: string, callback: ServiceCallback<models.ProfileListResult>): void;
+    arrayMethodNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
 
 
     /**
