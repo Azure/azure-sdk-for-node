@@ -45,8 +45,6 @@ export default class DataMigrationServiceClient extends AzureServiceClient {
 
   credentials: ServiceClientCredentials;
 
-  apiVersion: string;
-
   subscriptionId: string;
 
   acceptLanguage: string;

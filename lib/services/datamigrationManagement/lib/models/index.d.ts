@@ -139,9 +139,9 @@ export interface ReportableException {
 }
 
 /**
- * Output for command that completes sync migration for a database.
+ * Output for command that completes sync migration for a managed instance database.
  */
-export interface MigrateSyncCompleteCommandOutput {
+export interface MigrateMISyncCompleteCommandOutput {
   /**
    * List of errors that happened during the command execution
    */
@@ -149,17 +149,13 @@ export interface MigrateSyncCompleteCommandOutput {
 }
 
 /**
- * Input for command that completes sync migration for a database.
+ * Input for command that completes sync migration for a managed instance database.
  */
-export interface MigrateSyncCompleteCommandInput {
+export interface MigrateMISyncCompleteCommandInput {
   /**
-   * Name of database
+   * Name of managed instance database
    */
-  databaseName: string;
-  /**
-   * Time stamp to complete
-   */
-  commitTimeStamp?: Date;
+  sourceDatabaseName: string;
 }
 
 /**
@@ -180,6 +176,48 @@ export interface CommandProperties {
    * Polymorphic Discriminator
    */
   commandType: string;
+}
+
+/**
+ * Properties for the command that completes sync migration for a managed instance database.
+ */
+export interface MigrateMISyncCompleteCommandProperties extends CommandProperties {
+  /**
+   * Command input
+   */
+  input?: MigrateMISyncCompleteCommandInput;
+  /**
+   * Command output. This is ignored if submitted.
+   */
+  readonly output?: MigrateMISyncCompleteCommandOutput;
+}
+
+/**
+ * Output for command that completes sync migration for a database.
+ */
+export interface MigrateSyncCompleteCommandOutput {
+  /**
+   * Result identifier
+   */
+  readonly id?: string;
+  /**
+   * List of errors that happened during the command execution
+   */
+  readonly errors?: ReportableException[];
+}
+
+/**
+ * Input for command that completes sync migration for a database.
+ */
+export interface MigrateSyncCompleteCommandInput {
+  /**
+   * Name of database
+   */
+  databaseName: string;
+  /**
+   * Time stamp to complete
+   */
+  commitTimeStamp?: Date;
 }
 
 /**
@@ -258,6 +296,16 @@ export interface ConnectionInfo {
    * Polymorphic Discriminator
    */
   type: string;
+}
+
+/**
+ * Properties required to create a connection to Azure SQL database Managed instance
+ */
+export interface MiSqlConnectionInfo extends ConnectionInfo {
+  /**
+   * Resource id for Azure SQL database Managed instance
+   */
+  managedInstanceResourceId: string;
 }
 
 /**
@@ -642,6 +690,121 @@ export interface ValidateMongoDbTaskProperties extends ProjectTaskProperties {
 }
 
 /**
+ * Output for task that validates migration input for Azure SQL Database Managed Instance online
+ * migration
+*/
+export interface ValidateMigrationInputSqlServerSqlMISyncTaskOutput {
+  /**
+   * Database identifier
+  */
+  readonly id?: string;
+  /**
+   * Name of database
+  */
+  readonly name?: string;
+  /**
+   * Errors associated with a selected database object
+  */
+  readonly validationErrors?: ReportableException[];
+}
+
+/**
+ * Azure Active Directory Application
+*/
+export interface AzureActiveDirectoryApp {
+  /**
+   * Application ID of the Azure Active Directory Application
+  */
+  applicationId: string;
+  /**
+   * Key used to authenticate to the Azure Active Directory Application
+  */
+  appKey: string;
+  /**
+   * Tenant id of the customer
+  */
+  tenantId: string;
+}
+
+/**
+ * Database specific information for SQL to Azure SQL DB Managed Instance migration task inputs
+*/
+export interface MigrateSqlServerSqlMIDatabaseInput {
+  /**
+   * Name of the database
+  */
+  name: string;
+  /**
+   * Name of the database at destination
+  */
+  restoreDatabaseName: string;
+  /**
+   * Backup file share information for backing up this database.
+  */
+  backupFileShare?: FileShare;
+  /**
+   * The list of backup files to be used in case of existing backups.
+  */
+  backupFilePaths?: string[];
+}
+
+/**
+ * Input for task that migrates SQL Server databases to Azure SQL Database Managed Instance online
+ * scenario.
+*/
+export interface SqlServerSqlMISyncTaskInput {
+  /**
+   * Databases to migrate
+  */
+  selectedDatabases: MigrateSqlServerSqlMIDatabaseInput[];
+  /**
+   * Backup file share information for all selected databases.
+  */
+  backupFileShare?: FileShare;
+  /**
+   * Fully qualified resourceId of storage
+  */
+  storageResourceId: string;
+  /**
+   * Connection information for source SQL Server
+  */
+  sourceConnectionInfo: SqlConnectionInfo;
+  /**
+   * Connection information for Azure SQL Database Managed Instance
+  */
+  targetConnectionInfo: MiSqlConnectionInfo;
+  /**
+   * Azure Active Directory Application the DMS instance will use to connect to the target instance
+   * of Azure SQL Database Managed Instance and the Azure Storage Account
+  */
+  azureApp: AzureActiveDirectoryApp;
+}
+
+/**
+ * Input for task that migrates SQL Server databases to Azure SQL Database Managed Instance online
+ * scenario.
+*/
+export interface ValidateMigrationInputSqlServerSqlMISyncTaskInput extends
+SqlServerSqlMISyncTaskInput {
+}
+
+/**
+ * Properties for task that validates migration input for SQL to Azure SQL Database Managed
+ * Instance sync scenario
+*/
+export interface ValidateMigrationInputSqlServerSqlMISyncTaskProperties extends
+ProjectTaskProperties {
+  /**
+   * Task input
+  */
+  input?: ValidateMigrationInputSqlServerSqlMISyncTaskInput;
+  /**
+   * Task output. This is ignored if submitted.
+  */
+  readonly output?: ValidateMigrationInputSqlServerSqlMISyncTaskOutput[];
+}
+
+/**
  * Information about backup files when existing backup mode is used.
 */
 export interface DatabaseBackupInfo {
@@ -727,28 +890,6 @@ export interface BlobShare {
    * SAS URI of Azure Storage Account Container.
   */
   sasUri: string;
-}
-
-/**
- * Database specific information for SQL to Azure SQL DB Managed Instance migration task inputs
-*/
-export interface MigrateSqlServerSqlMIDatabaseInput {
-  /**
-   * Name of the database
-  */
-  name: string;
-  /**
-   * Name of the database at destination
-  */
-  restoreDatabaseName: string;
-  /**
-   * Backup file share information for backing up this database.
-  */
-  backupFileShare?: FileShare;
-  /**
-   * The list of backup files to be used in case of existing backups.
-  */
-  backupFilePaths?: string[];
 }
 
 /**
@@ -1107,6 +1248,18 @@ export interface MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput {
    * Name of target database. Note: Target database will be truncated before starting migration.
   */
   targetDatabaseName?: string;
+  /**
+   * Migration settings which tune the migration behavior
+  */
+  migrationSetting?: { [propertyName: string]: string };
+  /**
+   * Source settings to tune source endpoint migration behavior
+  */
+  sourceSetting?: { [propertyName: string]: string };
+  /**
+   * Target settings to tune target endpoint migration behavior
+  */
+  targetSetting?: { [propertyName: string]: string };
 }
 
 /**
@@ -1342,6 +1495,18 @@ export interface MigrateMySqlAzureDbForMySqlSyncDatabaseInput {
    * Name of target database. Note: Target database will be truncated before starting migration.
   */
   targetDatabaseName?: string;
+  /**
+   * Migration settings which tune the migration behavior
+  */
+  migrationSetting?: { [propertyName: string]: string };
+  /**
+   * Source settings to tune source endpoint migration behavior
+  */
+  sourceSetting?: { [propertyName: string]: string };
+  /**
+   * Target settings to tune target endpoint migration behavior
+  */
+  targetSetting?: { [propertyName: string]: string };
 }
 
 /**
@@ -2211,6 +2376,216 @@ export interface MigrateSqlServerSqlDbTaskProperties extends ProjectTaskProperti
 }
 
 /**
+ * Output for task that migrates SQL Server databases to Azure SQL Database Managed Instance using
+ * Log Replay Service.
+*/
+export interface MigrateSqlServerSqlMISyncTaskOutput {
+  /**
+   * Result identifier
+  */
+  readonly id?: string;
+  /**
+   * Polymorphic Discriminator
+  */
+  resultType: string;
+}
+
+export interface MigrateSqlServerSqlMISyncTaskOutputError extends
+MigrateSqlServerSqlMISyncTaskOutput {
+  /**
+   * Migration error
+  */
+  readonly error?: ReportableException;
+}
+
+/**
+ * Information of the backup file
+*/
+export interface BackupFileInfo {
+  /**
+   * Location of the backup file in shared folder
+  */
+  fileLocation?: string;
+  /**
+   * Sequence number of the backup file in the backup set
+  */
+  familySequenceNumber?: number;
+  /**
+   * Status of the backup file during migration. Possible values include: 'Arrived', 'Queued',
+   * 'Uploading', 'Uploaded', 'Restoring', 'Restored', 'Cancelled'
+  */
+  status?: string;
+}
+
+/**
+ * Information of backup set
+*/
+export interface BackupSetInfo {
+  /**
+   * Id for the set of backup files
+  */
+  backupSetId?: string;
+  /**
+   * First log sequence number of the backup file
+  */
+  firstLsn?: string;
+  /**
+   * Last log sequence number of the backup file
+  */
+  lastLsn?: string;
+  /**
+   * Last modified time of the backup file in share location
+  */
+  lastModifiedTime?: Date;
+  /**
+   * Enum of the different backup types. Possible values include: 'Database', 'TransactionLog',
+   * 'File', 'DifferentialDatabase', 'DifferentialFile', 'Partial', 'DifferentialPartial'
+  */
+  backupType?: string;
+  /**
+   * List of files in the backup set
+  */
+  listOfBackupFiles?: BackupFileInfo[];
+  /**
+   * Name of the database to which the backup set belongs
+  */
+  databaseName?: string;
+  /**
+   * Date and time that the backup operation began
+  */
+  backupStartDate?: Date;
+  /**
+   * Date and time that the backup operation finished
+  */
+  backupFinishedDate?: Date;
+  /**
+   * Whether the backup set is restored or not
+  */
+  isBackupRestored?: boolean;
+}
+
+export interface MigrateSqlServerSqlMISyncTaskOutputDatabaseLevel extends
+MigrateSqlServerSqlMISyncTaskOutput {
+  /**
+   * Name of the database
+  */
+  readonly sourceDatabaseName?: string;
+  /**
+   * Current state of database. Possible values include: 'UNDEFINED', 'INITIAL',
+   * 'FULL_BACKUP_UPLOAD_START', 'LOG_SHIPPING_START', 'UPLOAD_LOG_FILES_START', 'CUTOVER_START',
+   * 'POST_CUTOVER_COMPLETE', 'COMPLETED', 'CANCELLED', 'FAILED'
+  */
+  readonly migrationState?: string;
+  /**
+   * Database migration start time
+  */
+  readonly startedOn?: Date;
+  /**
+   * Database migration end time
+  */
+  readonly endedOn?: Date;
+  /**
+   * Details of full backup set
+  */
+  readonly fullBackupSetInfo?: BackupSetInfo;
+  /**
+   * Last applied backup set information
+  */
+  readonly lastRestoredBackupSetInfo?: BackupSetInfo;
+  /**
+   * Backup sets that are currently active (Either being uploaded or getting restored)
+  */
+  readonly activeBackupSets?: BackupSetInfo[];
+  /**
+   * Name of container created in the Azure Storage account where backups are copied to
+  */
+  readonly containerName?: string;
+  /**
+   * prefix string to use for querying errors for this database
+  */
+  readonly errorPrefix?: string;
+  /**
+   * Whether full backup has been applied to the target database or not
+  */
+  readonly isFullBackupRestored?: boolean;
+  /**
+   * Migration exceptions and warnings
+  */
+  readonly exceptionsAndWarnings?: ReportableException[];
+}
+
+export interface MigrateSqlServerSqlMISyncTaskOutputMigrationLevel extends
+MigrateSqlServerSqlMISyncTaskOutput {
+  /**
+   * Count of databases
+  */
+  readonly databaseCount?: number;
+  /**
+   * Current state of migration. Possible values include: 'None', 'InProgress', 'Failed',
+   * 'Warning', 'Completed', 'Skipped', 'Stopped'
+  */
+  readonly state?: string;
+  /**
+   * Migration start time
+  */
+  readonly startedOn?: Date;
+  /**
+   * Migration end time
+  */
+  readonly endedOn?: Date;
+  /**
+   * Source server name
+  */
+  readonly sourceServerName?: string;
+  /**
+   * Source server version
+  */
+  readonly sourceServerVersion?: string;
+  /**
+   * Source server brand version
+  */
+  readonly sourceServerBrandVersion?: string;
+  /**
+   * Target server name
+  */
+  readonly targetServerName?: string;
+  /**
+   * Target server version
+  */
+  readonly targetServerVersion?: string;
+  /**
+   * Target server brand version
+  */
+  readonly targetServerBrandVersion?: string;
+  /**
+   * Number of database level errors
+  */
+  readonly databaseErrorCount?: number;
+}
+
+/**
+ * Input for task that migrates SQL Server databases to Azure SQL Database Managed Instance online
+ * scenario.
+*/
+export interface MigrateSqlServerSqlMISyncTaskInput extends SqlServerSqlMISyncTaskInput {
+}
+
+/**
+ * Properties for task that migrates SQL Server databases to Azure SQL Database Managed Instance
+ * sync scenario
+*/
+export interface MigrateSqlServerSqlMISyncTaskProperties extends ProjectTaskProperties {
+  /**
+   * Task input
+  */
+  input?: MigrateSqlServerSqlMISyncTaskInput;
+  /**
+   * Task output. This is ignored if submitted.
+  */
+  readonly output?: MigrateSqlServerSqlMISyncTaskOutput[];
+}
+
+/**
  * Output for task that migrates SQL Server databases to Azure SQL Database Managed Instance.
 */
 export interface MigrateSqlServerSqlMITaskOutput {
@@ -2537,6 +2912,54 @@ export interface ConnectToTargetAzureDbForMySqlTaskProperties extends ProjectTas
 /**
  * Output for the task that validates connection to Azure SQL Database Managed Instance.
 */
+export interface ConnectToTargetSqlMISyncTaskOutput {
+  /**
+   * Target server version
+  */
+  readonly targetServerVersion?: string;
+  /**
+   * Target server brand version
+  */
+  readonly targetServerBrandVersion?: string;
+  /**
+   * Validation errors
+  */
+  readonly validationErrors?: ReportableException[];
+}
+
+/**
+ * Input for the task that validates connection to Azure SQL Database Managed Instance online
+ * scenario.
+*/
+export interface ConnectToTargetSqlMISyncTaskInput {
+  /**
+   * Connection information for Azure SQL Database Managed Instance
+  */
+  targetConnectionInfo: MiSqlConnectionInfo;
+  /**
+   * Azure Active Directory Application the DMS instance will use to connect to the target instance
+   * of Azure SQL Database Managed Instance and the Azure Storage Account
+  */
+  azureApp: AzureActiveDirectoryApp;
+}
+
+/**
+ * Properties for the task that validates connection to Azure SQL Database Managed Instance
+*/
+export interface ConnectToTargetSqlMISyncTaskProperties extends ProjectTaskProperties {
+  /**
+   * Task input
+  */
+  input?: ConnectToTargetSqlMISyncTaskInput;
+  /**
+   * Task output. This is ignored if submitted.
+  */
+  readonly output?: ConnectToTargetSqlMISyncTaskOutput[];
+}
+
+/**
+ * Output for the task that validates connection to Azure SQL Database Managed Instance.
+*/
 export interface ConnectToTargetSqlMITaskOutput {
   /**
    * Result identifier
@@ -2707,6 +3130,64 @@ export interface GetUserTablesSqlTaskProperties extends ProjectTaskProperties {
 }
 
 /**
+ * Output for the task that validates connection to Azure Database for PostgreSQL and target server
+ * requirements
+*/
+export interface ConnectToTargetAzureDbForPostgreSqlSyncTaskOutput {
+  /**
+   * Result identifier
+  */
+  readonly id?: string;
+  /**
+   * Version of the target server
+  */
+  readonly targetServerVersion?: string;
+  /**
+   * List of databases on target server
+  */
+  readonly databases?: string[];
+  /**
+   * Target server brand version
+  */
+  readonly targetServerBrandVersion?: string;
+  /**
+   * Validation errors associated with the task
+  */
+  readonly validationErrors?: ReportableException[];
+}
+
+/**
+ * Input for the task that validates connection to Azure Database for PostgreSQL and target server
+ * requirements
+*/
+export interface ConnectToTargetAzureDbForPostgreSqlSyncTaskInput {
+  /**
+   * Connection information for source PostgreSQL server
+  */
+  sourceConnectionInfo: PostgreSqlConnectionInfo;
+  /**
+   * Connection information for target Azure Database for PostgreSQL server
+  */
+  targetConnectionInfo: PostgreSqlConnectionInfo;
+}
+
+/**
+ * Properties for the task that validates connection to Azure Db For PostgreSql server and target
+ * server requirements for online migration
+*/
+export interface ConnectToTargetAzureDbForPostgreSqlSyncTaskProperties extends
+ProjectTaskProperties {
+  /**
+   * Task input
+  */
+  input?: ConnectToTargetAzureDbForPostgreSqlSyncTaskInput;
+  /**
+   * Task output. This is ignored if submitted.
+  */
+  readonly output?: ConnectToTargetAzureDbForPostgreSqlSyncTaskOutput[];
+}
+
+/**
  * Output for the task that validates connection to SQL DB and target server requirements
 */
 export interface ConnectToTargetSqlDbTaskOutput {
@@ -2779,6 +3260,57 @@ export interface ConnectToTargetSqlDbTaskProperties extends ProjectTaskPropertie
    * Task output. This is ignored if submitted.
   */
   readonly output?: ConnectToTargetSqlDbTaskOutput[];
+}
+
+/**
+ * Output for the task that validates connection to PostgreSQL and source server requirements
+*/
+export interface ConnectToSourcePostgreSqlSyncTaskOutput {
+  /**
+   * Result identifier
+  */
+  readonly id?: string;
+  /**
+   * Version of the source server
+  */
+  readonly sourceServerVersion?: string;
+  /**
+   * List of databases on source server
+  */
+  readonly databases?: string[];
+  /**
+   * Source server brand version
+  */
+  readonly sourceServerBrandVersion?: string;
+  /**
+   * Validation errors associated with the task
+  */
+  readonly validationErrors?: ReportableException[];
+}
+
+/**
+ * Input for the task that validates connection to PostgreSQL and source server requirements
+*/
+export interface ConnectToSourcePostgreSqlSyncTaskInput {
+  /**
+   * Connection information for source PostgreSQL server
+  */
+  sourceConnectionInfo: PostgreSqlConnectionInfo;
+}
+
+/**
+ * Properties for the task that validates connection to PostgreSql server and source server
+ * requirements for online migration
+*/
+export interface ConnectToSourcePostgreSqlSyncTaskProperties extends ProjectTaskProperties {
+  /**
+   * Task input
+  */
+  input?: ConnectToSourcePostgreSqlSyncTaskInput;
+  /**
+   * Task output. This is ignored if submitted.
+  */
+  readonly output?: ConnectToSourcePostgreSqlSyncTaskOutput[];
 }
 
 /**
@@ -3639,7 +4171,7 @@ export interface ConnectToSourceMySqlTaskInput {
   */
   sourceConnectionInfo: MySqlConnectionInfo;
   /**
-   * Target Platform for the migration. Possible values include: 'AzureDbForMySQL'
+   * Target Platform for the migration. Possible values include: 'SqlServer', 'AzureDbForMySQL'
   */
   targetPlatform?: string;
   /**
