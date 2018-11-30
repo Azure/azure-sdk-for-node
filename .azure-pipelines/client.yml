@@ -51,12 +51,21 @@ jobs:
           versionSpec: '$(node.version)'
         displayName: 'Install Node.js $(node.version)'
 
-      - powershell: "cd $(build.path); npm audit --json | ConvertFrom-Json | Select-Object  -expandProperty 'metadata' | select-object -expandproperty 'vulnerabilities' | %{ if ($_.low + $_.moderate + $_.high + $_.critical -ne 0) { write-error 'FAILED! Your package has vulnerabilities. Check npm audit' }}"
+      - task: Npm@1
+        inputs:
+          command: 'custom'
+          customCommand: 'i --package-lock-only'
+          workingDir: '$(build.path)'
+        displayName: 'npm i --package-lock-only'
+
+      - powershell: "npm audit --json | ConvertFrom-Json | Select-Object  -expandProperty 'metadata' | select-object -expandproperty 'vulnerabilities' | %{ if ($_.low + $_.moderate + $_.high + $_.critical -ne 0) { write-error 'FAILED! Your package has vulnerabilities. Check npm audit' }}"
+        inputs:
+          workingDir: '$(build.path)'
         displayName: 'npm audit'
 
       - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
-        displayName: 'Component Detection'
         condition: succeededOrFailed()
+        displayName: 'Component Detection'
 
   - template: client.test.yml
     parameters:
