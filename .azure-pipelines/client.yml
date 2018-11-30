@@ -9,7 +9,7 @@ jobs:
 
     variables:
       node.version: '10.x'
-      path: 'lib/services/keyVault'
+      build.path: 'lib/services/keyVault'
 
     steps:
       - task: NodeTool@0
@@ -20,14 +20,14 @@ jobs:
       - task: Npm@1
         inputs:
           command: 'install'
-          workingDir: '$(path)'
+          workingDir: '$(build.path)'
         displayName: 'npm install'
 
       - task: Npm@1
         inputs:
           command: 'custom'
           customCommand: 'pack'
-          workingDir: '$(path)'
+          workingDir: '$(build.path)'
         displayName: 'npm pack'
 
       - task: CopyFiles@2
