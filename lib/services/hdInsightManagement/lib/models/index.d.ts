@@ -273,6 +273,33 @@ export interface StorageProfile {
 }
 
 /**
+ * The disk encryption properties
+ */
+export interface DiskEncryptionProperties {
+  /**
+   * Base key vault URI where the customers key is located eg. https://myvault.vault.azure.net
+   */
+  vaultUri?: string;
+  /**
+   * Key name that is used for enabling disk encryption.
+   */
+  keyName?: string;
+  /**
+   * Specific key version that is used for enabling disk encryption.
+   */
+  keyVersion?: string;
+  /**
+   * Algorithm identifier for encryption, default RSA-OAEP. Possible values include: 'RSA-OAEP',
+   * 'RSA-OAEP-256', 'RSA1_5'
+   */
+  encryptionAlgorithm?: string;
+  /**
+   * Resource ID of Managed Identity that is used to access the key vault.
+   */
+  msiResourceId?: string;
+}
+
+/**
  * The cluster create parameters.
  */
 export interface ClusterCreateProperties {
@@ -304,6 +331,10 @@ export interface ClusterCreateProperties {
    * The storage profile.
    */
   storageProfile?: StorageProfile;
+  /**
+   * The disk encryption properties.
+   */
+  diskEncryptionProperties?: DiskEncryptionProperties;
 }
 
 export interface ClusterIdentityUserAssignedIdentitiesValue {
@@ -476,6 +507,10 @@ export interface ClusterGetProperties {
    * The list of connectivity endpoints.
   */
   connectivityEndpoints?: ConnectivityEndpoint[];
+  /**
+   * The disk encryption properties.
+  */
+  diskEncryptionProperties?: DiskEncryptionProperties;
 }
 
 /**
@@ -652,6 +687,24 @@ export interface ClusterResizeParameters {
    * The target instance count for the operation.
   */
   targetInstanceCount?: number;
+}
+
+/**
+ * The Disk Encryption Cluster request parameters.
+*/
+export interface ClusterDiskEncryptionParameters {
+  /**
+   * Base key vault URI where the customers key is located eg. https://myvault.vault.azure.net
+  */
+  vaultUri?: string;
+  /**
+   * Key name that is used for enabling disk encryption.
+  */
+  keyName?: string;
+  /**
+   * Specific key version that is used for enabling disk encryption.
+  */
+  keyVersion?: string;
 }
 
 /**
