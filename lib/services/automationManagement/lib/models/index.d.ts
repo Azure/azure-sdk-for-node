@@ -594,7 +594,7 @@ export interface ContentSource {
  *
  * @member {string} [type] Gets or sets the type of the parameter.
  * @member {boolean} [isMandatory] Gets or sets a Boolean value to indicate
- * whether the parameter is madatory or not.
+ * whether the parameter is mandatory or not.
  * @member {number} [position] Get or sets the position of the parameter.
  * @member {string} [defaultValue] Gets or sets the default value of parameter.
  */
@@ -726,7 +726,7 @@ export interface DscConfigurationUpdateParameters {
  * @class
  * Initializes a new instance of the RunAsCredentialAssociationProperty class.
  * @constructor
- * Definition of runas credential to use for hybrid worker.
+ * Definition of RunAs credential to use for hybrid worker.
  *
  * @member {string} [name] Gets or sets the name of the credential.
  */
@@ -1354,7 +1354,7 @@ export interface VariableCreateOrUpdateParameters {
  * @class
  * Initializes a new instance of the Variable class.
  * @constructor
- * Definition of the varible.
+ * Definition of the variable.
  *
  * @member {string} [value] Gets or sets the value of the variable.
  * @member {boolean} [isEncrypted] Gets or sets the encrypted flag of the
@@ -1622,7 +1622,7 @@ export interface TargetProperties {
  * @class
  * Initializes a new instance of the UpdateConfiguration class.
  * @constructor
- * Update specifc properties of the software update configuration.
+ * Update specific properties of the software update configuration.
  *
  * @member {string} operatingSystem operating system of target machines.
  * Possible values include: 'Windows', 'Linux'
@@ -1972,7 +1972,7 @@ export interface SoftareUpdateConfigurationRunTasks {
  * @member {number} [computerCount] Number of computers in the software update
  * configuration run.
  * @member {number} [failedCount] Number of computers with failed status.
- * @member {date} [creationTime] Creation time of theresource, which only
+ * @member {date} [creationTime] Creation time of the resource, which only
  * appears in the response.
  * @member {string} [createdBy] CreatedBy property, which only appears in the
  * response.
@@ -2071,7 +2071,7 @@ export interface JobNavigation {
  * machine run
  * @member {string} [job.id] Id of the job associated with the software update
  * configuration run
- * @member {date} [creationTime] Creation time of theresource, which only
+ * @member {date} [creationTime] Creation time of the resource, which only
  * appears in the response.
  * @member {string} [createdBy] createdBy property, which only appears in the
  * response.
@@ -2079,7 +2079,7 @@ export interface JobNavigation {
  * only appears in the response.
  * @member {string} [lastModifiedBy] lastModifiedBy property, which only
  * appears in the response.
- * @member {object} [error] detailes of provisioning error
+ * @member {object} [error] Details of provisioning error
  * @member {string} [error.code] Error code
  * @member {string} [error.message] Error message indicating why the operation
  * failed.
@@ -2295,7 +2295,7 @@ export interface SourceControlSyncJobCreateParameters {
  * @member {date} [endTime] The end time of the job.
  * @member {string} [syncType] The sync type. Possible values include:
  * 'PartialSync', 'FullSync'
- * @member {string} [exception] The exceptions that occured while running the
+ * @member {string} [exception] The exceptions that occurred while running the
  * sync job.
  */
 export interface SourceControlSyncJobById {
@@ -2669,7 +2669,7 @@ export interface AgentRegistrationKeys {
  * @class
  * Initializes a new instance of the AgentRegistration class.
  * @constructor
- * Definition of the agent registration infomration type.
+ * Definition of the agent registration information type.
  *
  * @member {string} [dscMetaConfiguration] Gets or sets the dsc meta
  * configuration.
@@ -2712,8 +2712,8 @@ export interface DscNodeExtensionHandlerAssociationProperty {
  * node.
  * @member {string} [ip] Gets or sets the ip of the node.
  * @member {string} [accountId] Gets or sets the account id of the node.
- * @member {string} [dscNodeName] Gets or sets the name of the dsc
- * nodeconfiguration.
+ * @member {string} [dscNodeName] Gets or sets the name of the dsc node
+ * configuration.
  * @member {string} [status] Gets or sets the status of the node.
  * @member {string} [nodeId] Gets or sets the node id.
  * @member {string} [etag] Gets or sets the etag of the resource.
@@ -2752,7 +2752,7 @@ export interface AgentRegistrationRegenerateKeyParameter {
  * @class
  * Initializes a new instance of the DscNodeUpdateParametersProperties class.
  * @constructor
- * @member {string} [name] Gets or sets the name of the dsc nodeconfiguration.
+ * @member {string} [name] Gets or sets the name of the dsc node configuration.
  */
 export interface DscNodeUpdateParametersProperties {
   name?: string;
@@ -2766,8 +2766,8 @@ export interface DscNodeUpdateParametersProperties {
  *
  * @member {string} [nodeId] Gets or sets the id of the dsc node.
  * @member {object} [properties]
- * @member {string} [properties.name] Gets or sets the name of the dsc
- * nodeconfiguration.
+ * @member {string} [properties.name] Gets or sets the name of the dsc node
+ * configuration.
  */
 export interface DscNodeUpdateParameters {
   nodeId?: string;
@@ -2870,7 +2870,7 @@ export interface DscCompilationJobCreateParameters {
  * @member {string} [configuration.name] Gets or sets the name of the Dsc
  * configuration.
  * @member {string} [source] Source of node configuration.
- * @member {number} [nodeCount] Number of nodes with this nodeconfiguration
+ * @member {number} [nodeCount] Number of nodes with this node configuration
  * assigned
  * @member {boolean} [incrementNodeConfigurationBuild] If a new build version
  * of NodeConfiguration is required.
@@ -2966,7 +2966,7 @@ export interface NodeCounts {
  *
  * @member {string} [type] Gets or sets the type of the parameter.
  * @member {boolean} [isMandatory] Gets or sets a Boolean value to indicate
- * whether the parameter is madatory or not.
+ * whether the parameter is mandatory or not.
  * @member {number} [position] Get or sets the position of the parameter.
  * @member {string} [defaultValue] Gets or sets the default value of parameter.
  */
@@ -3178,7 +3178,7 @@ export interface RunbookUpdateParameters {
  * @class
  * Initializes a new instance of the RunbookDraftUndoEditResult class.
  * @constructor
- * The response model for the undoedit runbook operation.
+ * The response model for the undo edit runbook operation.
  *
  * @member {string} [statusCode] Possible values include: 'Continue',
  * 'SwitchingProtocols', 'OK', 'Created', 'Accepted',
@@ -3257,7 +3257,7 @@ export interface TestJob {
  * @class
  * Initializes a new instance of the RunbookCreateOrUpdateDraftProperties class.
  * @constructor
- * The parameters supplied to the create or update dratft runbook properties.
+ * The parameters supplied to the create or update draft runbook properties.
  *
  * @member {boolean} [logVerbose] Gets or sets verbose log option.
  * @member {boolean} [logProgress] Gets or sets progress log option.
