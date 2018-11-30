@@ -4946,7 +4946,7 @@ export interface ApiDiagnosticLogger {
 
 
     /**
-     * Lists all loggers assosiated with the specified Diagnostic of an API.
+     * Lists all loggers associated with the specified Diagnostic of an API.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -4982,7 +4982,7 @@ export interface ApiDiagnosticLogger {
     listByServiceWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, diagnosticId: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LoggerCollection>>;
 
     /**
-     * Lists all loggers assosiated with the specified Diagnostic of an API.
+     * Lists all loggers associated with the specified Diagnostic of an API.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -5115,7 +5115,7 @@ export interface ApiDiagnosticLogger {
 
 
     /**
-     * Attaches a logger to a dignostic for an API.
+     * Attaches a logger to a diagnostic for an API.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -5144,7 +5144,7 @@ export interface ApiDiagnosticLogger {
     createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, diagnosticId: string, loggerid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LoggerContract>>;
 
     /**
-     * Attaches a logger to a dignostic for an API.
+     * Attaches a logger to a diagnostic for an API.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -5268,7 +5268,7 @@ export interface ApiDiagnosticLogger {
 
 
     /**
-     * Lists all loggers assosiated with the specified Diagnostic of an API.
+     * Lists all loggers associated with the specified Diagnostic of an API.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -5287,7 +5287,7 @@ export interface ApiDiagnosticLogger {
     listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LoggerCollection>>;
 
     /**
-     * Lists all loggers assosiated with the specified Diagnostic of an API.
+     * Lists all loggers associated with the specified Diagnostic of an API.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -5334,7 +5334,7 @@ export interface ApiIssue {
 
 
     /**
-     * Lists all issues assosiated with the specified API.
+     * Lists all issues associated with the specified API.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -5370,7 +5370,7 @@ export interface ApiIssue {
     listByServiceWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueCollection>>;
 
     /**
-     * Lists all issues assosiated with the specified API.
+     * Lists all issues associated with the specified API.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -5875,7 +5875,7 @@ export interface ApiIssue {
 
 
     /**
-     * Lists all issues assosiated with the specified API.
+     * Lists all issues associated with the specified API.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -5894,7 +5894,7 @@ export interface ApiIssue {
     listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueCollection>>;
 
     /**
-     * Lists all issues assosiated with the specified API.
+     * Lists all issues associated with the specified API.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -5941,7 +5941,7 @@ export interface ApiIssueComment {
 
 
     /**
-     * Lists all comments for the Issue assosiated with the specified API.
+     * Lists all comments for the Issue associated with the specified API.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -5978,7 +5978,7 @@ export interface ApiIssueComment {
     listByServiceWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueCommentCollection>>;
 
     /**
-     * Lists all comments for the Issue assosiated with the specified API.
+     * Lists all comments for the Issue associated with the specified API.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -6381,7 +6381,7 @@ export interface ApiIssueComment {
 
 
     /**
-     * Lists all comments for the Issue assosiated with the specified API.
+     * Lists all comments for the Issue associated with the specified API.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -6400,7 +6400,7 @@ export interface ApiIssueComment {
     listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueCommentCollection>>;
 
     /**
-     * Lists all comments for the Issue assosiated with the specified API.
+     * Lists all comments for the Issue associated with the specified API.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -6448,7 +6448,7 @@ export interface ApiIssueAttachment {
 
 
     /**
-     * Lists all comments for the Issue assosiated with the specified API.
+     * Lists all comments for the Issue associated with the specified API.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -6485,7 +6485,7 @@ export interface ApiIssueAttachment {
     listByServiceWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueAttachmentCollection>>;
 
     /**
-     * Lists all comments for the Issue assosiated with the specified API.
+     * Lists all comments for the Issue associated with the specified API.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -6894,7 +6894,7 @@ export interface ApiIssueAttachment {
 
 
     /**
-     * Lists all comments for the Issue assosiated with the specified API.
+     * Lists all comments for the Issue associated with the specified API.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -6913,7 +6913,7 @@ export interface ApiIssueAttachment {
     listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueAttachmentCollection>>;
 
     /**
-     * Lists all comments for the Issue assosiated with the specified API.
+     * Lists all comments for the Issue associated with the specified API.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -8470,7 +8470,7 @@ export interface Backend {
      *
      * @param {moment.duration} [options.parameters.after] Duration in ISO8601
      * format after which reconnect will be initiated. Minimum duration of the
-     * Reconect is PT2M.
+     * Reconnect is PT2M.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -8501,7 +8501,7 @@ export interface Backend {
      *
      * @param {moment.duration} [options.parameters.after] Duration in ISO8601
      * format after which reconnect will be initiated. Minimum duration of the
-     * Reconect is PT2M.
+     * Reconnect is PT2M.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -9392,7 +9392,7 @@ export interface ApiManagementService {
      * can be installed is 10.
      *
      * @param {string} [parameters.virtualNetworkType] The type of VPN in which API
-     * Managemet service needs to be configured in. None (Default Value) means the
+     * Management service needs to be configured in. None (Default Value) means the
      * API Management service is not part of any Virtual Network, External means
      * the API Management deployment is set up inside a Virtual Network having an
      * Internet Facing Endpoint, and Internal means that API Management deployment
@@ -9473,7 +9473,7 @@ export interface ApiManagementService {
      * can be installed is 10.
      *
      * @param {string} [parameters.virtualNetworkType] The type of VPN in which API
-     * Managemet service needs to be configured in. None (Default Value) means the
+     * Management service needs to be configured in. None (Default Value) means the
      * API Management service is not part of any Virtual Network, External means
      * the API Management deployment is set up inside a Virtual Network having an
      * Internet Facing Endpoint, and Internal means that API Management deployment
@@ -9573,7 +9573,7 @@ export interface ApiManagementService {
      * can be installed is 10.
      *
      * @param {string} [parameters.virtualNetworkType] The type of VPN in which API
-     * Managemet service needs to be configured in. None (Default Value) means the
+     * Management service needs to be configured in. None (Default Value) means the
      * API Management service is not part of any Virtual Network, External means
      * the API Management deployment is set up inside a Virtual Network having an
      * Internet Facing Endpoint, and Internal means that API Management deployment
@@ -9652,7 +9652,7 @@ export interface ApiManagementService {
      * can be installed is 10.
      *
      * @param {string} [parameters.virtualNetworkType] The type of VPN in which API
-     * Managemet service needs to be configured in. None (Default Value) means the
+     * Management service needs to be configured in. None (Default Value) means the
      * API Management service is not part of any Virtual Network, External means
      * the API Management deployment is set up inside a Virtual Network having an
      * Internet Facing Endpoint, and Internal means that API Management deployment
@@ -10528,7 +10528,7 @@ export interface ApiManagementService {
      * can be installed is 10.
      *
      * @param {string} [parameters.virtualNetworkType] The type of VPN in which API
-     * Managemet service needs to be configured in. None (Default Value) means the
+     * Management service needs to be configured in. None (Default Value) means the
      * API Management service is not part of any Virtual Network, External means
      * the API Management deployment is set up inside a Virtual Network having an
      * Internet Facing Endpoint, and Internal means that API Management deployment
@@ -10609,7 +10609,7 @@ export interface ApiManagementService {
      * can be installed is 10.
      *
      * @param {string} [parameters.virtualNetworkType] The type of VPN in which API
-     * Managemet service needs to be configured in. None (Default Value) means the
+     * Management service needs to be configured in. None (Default Value) means the
      * API Management service is not part of any Virtual Network, External means
      * the API Management deployment is set up inside a Virtual Network having an
      * Internet Facing Endpoint, and Internal means that API Management deployment
@@ -10709,7 +10709,7 @@ export interface ApiManagementService {
      * can be installed is 10.
      *
      * @param {string} [parameters.virtualNetworkType] The type of VPN in which API
-     * Managemet service needs to be configured in. None (Default Value) means the
+     * Management service needs to be configured in. None (Default Value) means the
      * API Management service is not part of any Virtual Network, External means
      * the API Management deployment is set up inside a Virtual Network having an
      * Internet Facing Endpoint, and Internal means that API Management deployment
@@ -10788,7 +10788,7 @@ export interface ApiManagementService {
      * can be installed is 10.
      *
      * @param {string} [parameters.virtualNetworkType] The type of VPN in which API
-     * Managemet service needs to be configured in. None (Default Value) means the
+     * Management service needs to be configured in. None (Default Value) means the
      * API Management service is not part of any Virtual Network, External means
      * the API Management deployment is set up inside a Virtual Network having an
      * Internet Facing Endpoint, and Internal means that API Management deployment
@@ -11641,7 +11641,7 @@ export interface DiagnosticLogger {
 
 
     /**
-     * Lists all loggers assosiated with the specified Diagnostic of the API
+     * Lists all loggers associated with the specified Diagnostic of the API
      * Management service instance.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -11675,7 +11675,7 @@ export interface DiagnosticLogger {
     listByServiceWithHttpOperationResponse(resourceGroupName: string, serviceName: string, diagnosticId: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LoggerCollection>>;
 
     /**
-     * Lists all loggers assosiated with the specified Diagnostic of the API
+     * Lists all loggers associated with the specified Diagnostic of the API
      * Management service instance.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -11800,7 +11800,7 @@ export interface DiagnosticLogger {
 
 
     /**
-     * Attaches a logger to a dignostic.
+     * Attaches a logger to a diagnostic.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -11826,7 +11826,7 @@ export interface DiagnosticLogger {
     createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, diagnosticId: string, loggerid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LoggerContract>>;
 
     /**
-     * Attaches a logger to a dignostic.
+     * Attaches a logger to a diagnostic.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -11941,7 +11941,7 @@ export interface DiagnosticLogger {
 
 
     /**
-     * Lists all loggers assosiated with the specified Diagnostic of the API
+     * Lists all loggers associated with the specified Diagnostic of the API
      * Management service instance.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -11961,7 +11961,7 @@ export interface DiagnosticLogger {
     listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LoggerCollection>>;
 
     /**
-     * Lists all loggers assosiated with the specified Diagnostic of the API
+     * Lists all loggers associated with the specified Diagnostic of the API
      * Management service instance.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -19608,7 +19608,7 @@ export interface Property {
 
 
     /**
-     * Deletes specific property from the the API Management service instance.
+     * Deletes specific property from the API Management service instance.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -19634,7 +19634,7 @@ export interface Property {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceName: string, propId: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes specific property from the the API Management service instance.
+     * Deletes specific property from the API Management service instance.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -20375,7 +20375,7 @@ export interface Reports {
 
 
     /**
-     * Lists report records by GeoGraphy.
+     * Lists report records by geography.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -20401,7 +20401,7 @@ export interface Reports {
     listByGeoWithHttpOperationResponse(resourceGroupName: string, serviceName: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReportCollection>>;
 
     /**
-     * Lists report records by GeoGraphy.
+     * Lists report records by geography.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -20527,7 +20527,7 @@ export interface Reports {
      * multiple of 15 minutes and may not be zero. The value should be in ISO  8601
      * format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be
      * used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new
-     * TimeSpan(hours, minutes, secconds))
+     * TimeSpan(hours, minutes, seconds))
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -20559,7 +20559,7 @@ export interface Reports {
      * multiple of 15 minutes and may not be zero. The value should be in ISO  8601
      * format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be
      * used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new
-     * TimeSpan(hours, minutes, secconds))
+     * TimeSpan(hours, minutes, seconds))
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -20900,7 +20900,7 @@ export interface Reports {
 
 
     /**
-     * Lists report records by GeoGraphy.
+     * Lists report records by geography.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -20919,7 +20919,7 @@ export interface Reports {
     listByGeoNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReportCollection>>;
 
     /**
-     * Lists report records by GeoGraphy.
+     * Lists report records by geography.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -21327,7 +21327,7 @@ export interface Subscription {
      * is being created in form /users/{uid}
      *
      * @param {string} parameters.productId Product (product id path) for which
-     * subscription is being created in form /products/{productid}
+     * subscription is being created in form /products/{productId}
      *
      * @param {string} parameters.displayName Subscription name.
      *
@@ -21386,7 +21386,7 @@ export interface Subscription {
      * is being created in form /users/{uid}
      *
      * @param {string} parameters.productId Product (product id path) for which
-     * subscription is being created in form /products/{productid}
+     * subscription is being created in form /products/{productId}
      *
      * @param {string} parameters.displayName Subscription name.
      *
@@ -21448,7 +21448,7 @@ export interface Subscription {
 
 
     /**
-     * Updates the details of a subscription specificied by its identifier.
+     * Updates the details of a subscription specified by its identifier.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -21512,7 +21512,7 @@ export interface Subscription {
     updateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, sid: string, parameters: models.SubscriptionUpdateParameters, ifMatch: string, options?: { notify? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Updates the details of a subscription specificied by its identifier.
+     * Updates the details of a subscription specified by its identifier.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -24191,7 +24191,7 @@ export interface TagDescription {
 
 
     /**
-     * Create/Update tag fescription in scope of the Api.
+     * Create/Update tag description in scope of the Api.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -24231,7 +24231,7 @@ export interface TagDescription {
     createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, tagId: string, parameters: models.TagDescriptionCreateParameters, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TagDescriptionContract>>;
 
     /**
-     * Create/Update tag fescription in scope of the Api.
+     * Create/Update tag description in scope of the Api.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
