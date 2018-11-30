@@ -127,7 +127,7 @@ export interface ErrorResponse {
  * by the invoice.
  * @member {date} [invoicePeriodEndDate] The end of the date range covered by
  * the invoice.
- * @member {array} [billingPeriodIds] Array of billing perdiod ids that the
+ * @member {array} [billingPeriodIds] Array of billing period ids that the
  * invoice is attributed to.
  */
 export interface Invoice extends Resource {
