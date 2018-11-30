@@ -198,7 +198,7 @@ export interface Endpoint extends TrackedResource {
   deliveryPolicy?: EndpointPropertiesUpdateParametersDeliveryPolicy;
   /**
    * The host name of the endpoint structured as {endpointName}.{DNSZone}, e.g.
-   * consoto.azureedge.net
+   * contoso.azureedge.net
    */
   readonly hostName?: string;
   /**
@@ -505,7 +505,7 @@ export interface ProxyResource extends Resource {
 
 /**
  * Friendly domain name mapping to the endpoint hostname that the customer provides for branding
- * purposes, e.g. www.consoto.com.
+ * purposes, e.g. www.contoso.com.
  */
 export interface CustomDomain extends ProxyResource {
   /**
@@ -696,7 +696,7 @@ export interface Operation {
  */
 export interface CidrIpAddress {
   /**
-   * Ip adress itself.
+   * Ip address itself.
    */
   baseIpAddress?: string;
   /**
