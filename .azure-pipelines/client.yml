@@ -1,0 +1,56 @@
+trigger:
+  - master
+
+jobs:
+  - job: 'Publish'
+
+    pool:
+      vmImage: 'ubuntu-16.04'
+
+    variables:
+      node.version: '10.x'
+      path: 'lib/services/keyVault'
+
+    steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '$(node.version)'
+        displayName: 'Install Node.js $(node.version)'
+
+      - task: Npm@1
+        inputs:
+          command: 'install'
+          workingDir: '$(path)'
+        displayName: 'npm install'
+
+      - task: Npm@1
+        inputs:
+          command: 'custom'
+          customCommand: 'pack'
+          workingDir: '$(path)'
+        displayName: 'npm pack'
+
+      - task: CopyFiles@2
+        inputs:
+          sourceFolder: 'template'
+          contents: '*.tgz'
+          targetFolder: $(Build.ArtifactStagingDirectory)
+        displayName: 'Copy Package'
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Package'
+
+  - template: client.test.yml
+    parameters:
+      name: Linux
+      vmImage: 'ubuntu-16.04'
+
+  - template: client.test.yml
+    parameters:
+      name: macOS
+      vmImage: 'macOS-10.13'
+
+  - template: client.test.yml
+    parameters:
+      name: Windows
+      vmImage: 'vs2017-win2016'
