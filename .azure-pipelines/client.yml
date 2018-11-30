@@ -1,15 +1,15 @@
 trigger:
   - master
 
+variables:
+  node.version: '10.x'
+  build.path: 'lib/services/keyVault'
+
 jobs:
   - job: 'Publish'
 
     pool:
       vmImage: 'ubuntu-16.04'
-
-    variables:
-      node.version: '10.x'
-      build.path: 'lib/services/keyVault'
 
     steps:
       - task: NodeTool@0
@@ -40,6 +40,23 @@ jobs:
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Package'
 
+  - job: 'Audit'
+
+    pool:
+      vmImage: 'ubuntu-16.04'
+
+    steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '$(node.version)'
+        displayName: 'Install Node.js $(node.version)'
+
+      - powershell: "cd $(build.path); npm audit --json | ConvertFrom-Json | Select-Object  -expandProperty 'metadata' | select-object -expandproperty 'vulnerabilities' | %{ if ($_.low + $_.moderate + $_.high + $_.critical -ne 0) { write-error 'FAILED! Your package has vulnerabilities. Check npm audit' }}"
+        displayName: 'npm audit'
+
+      - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
+        displayName: 'Component Detection'
+
   - template: client.test.yml
     parameters:
       name: Linux
@@ -55,22 +72,3 @@ jobs:
       name: Windows
       vmImage: 'vs2017-win2016'
 
-  - job: 'Audit'
-
-    pool:
-      vmImage: 'ubuntu-16.04'
-
-    variables:
-      node.version: '10.x'
-
-    steps:
-      - task: NodeTool@0
-        inputs:
-          versionSpec: '$(node.version)'
-        displayName: 'Install Node.js $(node.version)'
-
-      - powershell: "cd template; npm audit --json | ConvertFrom-Json | Select-Object  -expandProperty 'metadata' | select-object -expandproperty 'vulnerabilities' | %{ if ($_.low + $_.moderate + $_.high + $_.critical -ne 0) { write-error 'FAILED! Your package has vulnerabilities. Check npm audit' }}"
-        displayName: 'npm audit'
-
-      - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
-        displayName: 'Component Detection'
