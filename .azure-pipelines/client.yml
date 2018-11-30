@@ -17,6 +17,9 @@ jobs:
           versionSpec: '$(node.version)'
         displayName: 'Install Node.js $(node.version)'
 
+      - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
+        displayName: 'Component Detection'
+        
       - task: Npm@1
         inputs:
           command: 'install'
