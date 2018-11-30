@@ -59,8 +59,7 @@ jobs:
         displayName: 'npm i --package-lock-only'
 
       - powershell: "npm audit --json | ConvertFrom-Json | Select-Object  -expandProperty 'metadata' | select-object -expandproperty 'vulnerabilities' | %{ if ($_.low + $_.moderate + $_.high + $_.critical -ne 0) { write-error 'FAILED! Your package has vulnerabilities. Check npm audit' }}"
-        inputs:
-          workingDirectory: '$(build.path)'
+        workingDirectory: '$(build.path)'
         displayName: 'npm audit'
 
       - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
