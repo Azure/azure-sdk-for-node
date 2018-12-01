@@ -153,8 +153,8 @@ export interface EventSubscriptionDestination {
  * Represents an advanced filter that can be used to filter events based on
  * various event envelope/data fields.
  *
- * @member {string} [key] The filter key. Represents an event property with
- * upto two levels of nesting.
+ * @member {string} [key] The filter key. Represents an event property with up
+ * to two levels of nesting.
  * @member {string} operatorType Polymorphic Discriminator
  */
 export interface AdvancedFilter {
@@ -616,7 +616,7 @@ export interface Operation {
  * @constructor
  * This is used to express the source of an input schema mapping for a single
  * target field in the Event Grid Event schema. This is currently used in the
- * mappings for the 'id','topic' and 'eventtime' properties. This represents a
+ * mappings for the 'id','topic' and 'eventTime' properties. This represents a
  * field in the input event schema.
  *
  * @member {string} [sourceField] Name of a field in the input event schema
@@ -632,7 +632,7 @@ export interface JsonField {
  * @constructor
  * This is used to express the source of an input schema mapping for a single
  * target field in the Event Grid Event schema. This is currently used in the
- * mappings for the 'subject','eventtype' and 'dataversion' properties. This
+ * mappings for the 'subject','eventType' and 'dataVersion' properties. This
  * represents a field in the input event schema along with a default value to
  * be used, and at least one of these two properties should be provided.
  *
