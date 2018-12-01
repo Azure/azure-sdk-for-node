@@ -430,7 +430,7 @@ export interface OCR {
  * @member {number} [adultClassificationScore] The adult classification score.
  * @member {boolean} [isImageAdultClassified] Indicates if an image is
  * classified as adult.
- * @member {number} [racyClassificationScore] The racy classication score.
+ * @member {number} [racyClassificationScore] The racy classification score.
  * @member {boolean} [isImageRacyClassified] Indicates if the image is
  * classified as racy.
  * @member {array} [advancedInfo] The advanced info.
