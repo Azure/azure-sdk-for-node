@@ -496,9 +496,10 @@ export interface Usage {
  * @class
  * Initializes a new instance of the VirtualMachineReimageParameters class.
  * @constructor
- * Paramaters for Reimaging Virtual Machine. Default value for OSDisk : true.
+ * Paramaters for Reimaging Virtual Machine. NOTE: Virtual Machine OS disk will
+ * always be reimaged
  *
- * @member {boolean} [tempDisk] Specified whether to reimage temp disk. Default
+ * @member {boolean} [tempDisk] Specifies whether to reimage temp disk. Default
  * value: false.
  */
 export interface VirtualMachineReimageParameters {
@@ -738,11 +739,11 @@ export interface VirtualHardDisk {
  * @class
  * Initializes a new instance of the DiffDiskSettings class.
  * @constructor
- * Describes the parameters of differencing disk settings that can be be
- * specified for operating system disk. <br><br> NOTE: The differencing disk
- * settings can only be specified for managed disk.
+ * Describes the parameters of ephemeral disk settings that can be be specified
+ * for operating system disk. <br><br> NOTE: The ephemeral disk settings can
+ * only be specified for managed disk.
  *
- * @member {string} [option] Specifies the differencing disk settings for
+ * @member {string} [option] Specifies the ephemeral disk settings for
  * operating system disk. Possible values include: 'Local'
  */
 export interface DiffDiskSettings {
@@ -811,9 +812,9 @@ export interface ManagedDiskParameters extends SubResource {
  * Premium storage**. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
  * @member {boolean} [writeAcceleratorEnabled] Specifies whether
  * writeAccelerator should be enabled or disabled on the disk.
- * @member {object} [diffDiskSettings] Specifies the differencing Disk Settings
+ * @member {object} [diffDiskSettings] Specifies the ephemeral Disk Settings
  * for the operating system disk used by the virtual machine.
- * @member {string} [diffDiskSettings.option] Specifies the differencing disk
+ * @member {string} [diffDiskSettings.option] Specifies the ephemeral disk
  * settings for operating system disk. Possible values include: 'Local'
  * @member {string} createOption Specifies how the virtual machine should be
  * created.<br><br> Possible values are:<br><br> **Attach** \u2013 This value
@@ -963,9 +964,9 @@ export interface DataDisk {
  * 'ReadWrite'
  * @member {boolean} [osDisk.writeAcceleratorEnabled] Specifies whether
  * writeAccelerator should be enabled or disabled on the disk.
- * @member {object} [osDisk.diffDiskSettings] Specifies the differencing Disk
+ * @member {object} [osDisk.diffDiskSettings] Specifies the ephemeral Disk
  * Settings for the operating system disk used by the virtual machine.
- * @member {string} [osDisk.diffDiskSettings.option] Specifies the differencing
+ * @member {string} [osDisk.diffDiskSettings.option] Specifies the ephemeral
  * disk settings for operating system disk. Possible values include: 'Local'
  * @member {string} [osDisk.createOption] Specifies how the virtual machine
  * should be created.<br><br> Possible values are:<br><br> **Attach** \u2013
@@ -1767,10 +1768,10 @@ export interface VirtualMachineInstanceView {
  * @member {boolean} [storageProfile.osDisk.writeAcceleratorEnabled] Specifies
  * whether writeAccelerator should be enabled or disabled on the disk.
  * @member {object} [storageProfile.osDisk.diffDiskSettings] Specifies the
- * differencing Disk Settings for the operating system disk used by the virtual
+ * ephemeral Disk Settings for the operating system disk used by the virtual
  * machine.
  * @member {string} [storageProfile.osDisk.diffDiskSettings.option] Specifies
- * the differencing disk settings for operating system disk. Possible values
+ * the ephemeral disk settings for operating system disk. Possible values
  * include: 'Local'
  * @member {string} [storageProfile.osDisk.createOption] Specifies how the
  * virtual machine should be created.<br><br> Possible values are:<br><br>
@@ -2188,10 +2189,10 @@ export interface VirtualMachine extends Resource {
  * @member {boolean} [storageProfile.osDisk.writeAcceleratorEnabled] Specifies
  * whether writeAccelerator should be enabled or disabled on the disk.
  * @member {object} [storageProfile.osDisk.diffDiskSettings] Specifies the
- * differencing Disk Settings for the operating system disk used by the virtual
+ * ephemeral Disk Settings for the operating system disk used by the virtual
  * machine.
  * @member {string} [storageProfile.osDisk.diffDiskSettings.option] Specifies
- * the differencing disk settings for operating system disk. Possible values
+ * the ephemeral disk settings for operating system disk. Possible values
  * include: 'Local'
  * @member {string} [storageProfile.osDisk.createOption] Specifies how the
  * virtual machine should be created.<br><br> Possible values are:<br><br>
@@ -3009,9 +3010,9 @@ export interface VirtualMachineScaleSetManagedDiskParameters {
  * the imageReference element described above. If you are using a marketplace
  * image, you  also use the plan element previously described. Possible values
  * include: 'FromImage', 'Empty', 'Attach'
- * @member {object} [diffDiskSettings] Specifies the differencing Disk Settings
+ * @member {object} [diffDiskSettings] Specifies the ephemeral disk Settings
  * for the operating system disk used by the virtual machine scale set.
- * @member {string} [diffDiskSettings.option] Specifies the differencing disk
+ * @member {string} [diffDiskSettings.option] Specifies the ephemeral disk
  * settings for operating system disk. Possible values include: 'Local'
  * @member {number} [diskSizeGB] Specifies the size of the operating system
  * disk in gigabytes. This element can be used to overwrite the size of the
@@ -3160,10 +3161,10 @@ export interface VirtualMachineScaleSetDataDisk {
  * the imageReference element described above. If you are using a marketplace
  * image, you  also use the plan element previously described. Possible values
  * include: 'FromImage', 'Empty', 'Attach'
- * @member {object} [osDisk.diffDiskSettings] Specifies the differencing Disk
+ * @member {object} [osDisk.diffDiskSettings] Specifies the ephemeral disk
  * Settings for the operating system disk used by the virtual machine scale
  * set.
- * @member {string} [osDisk.diffDiskSettings.option] Specifies the differencing
+ * @member {string} [osDisk.diffDiskSettings.option] Specifies the ephemeral
  * disk settings for operating system disk. Possible values include: 'Local'
  * @member {number} [osDisk.diskSizeGB] Specifies the size of the operating
  * system disk in gigabytes. This element can be used to overwrite the size of
@@ -3744,10 +3745,10 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * marketplace image, you  also use the plan element previously described.
  * Possible values include: 'FromImage', 'Empty', 'Attach'
  * @member {object} [storageProfile.osDisk.diffDiskSettings] Specifies the
- * differencing Disk Settings for the operating system disk used by the virtual
+ * ephemeral disk Settings for the operating system disk used by the virtual
  * machine scale set.
  * @member {string} [storageProfile.osDisk.diffDiskSettings.option] Specifies
- * the differencing disk settings for operating system disk. Possible values
+ * the ephemeral disk settings for operating system disk. Possible values
  * include: 'Local'
  * @member {number} [storageProfile.osDisk.diskSizeGB] Specifies the size of
  * the operating system disk in gigabytes. This element can be used to
@@ -4166,11 +4167,11 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * 'Empty', 'Attach'
  * @member {object}
  * [virtualMachineProfile.storageProfile.osDisk.diffDiskSettings] Specifies the
- * differencing Disk Settings for the operating system disk used by the virtual
+ * ephemeral disk Settings for the operating system disk used by the virtual
  * machine scale set.
  * @member {string}
  * [virtualMachineProfile.storageProfile.osDisk.diffDiskSettings.option]
- * Specifies the differencing disk settings for operating system disk. Possible
+ * Specifies the ephemeral disk settings for operating system disk. Possible
  * values include: 'Local'
  * @member {number} [virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
  * Specifies the size of the operating system disk in gigabytes. This element
@@ -5294,10 +5295,10 @@ export interface VirtualMachineScaleSetVMInstanceView {
  * @member {boolean} [storageProfile.osDisk.writeAcceleratorEnabled] Specifies
  * whether writeAccelerator should be enabled or disabled on the disk.
  * @member {object} [storageProfile.osDisk.diffDiskSettings] Specifies the
- * differencing Disk Settings for the operating system disk used by the virtual
+ * ephemeral Disk Settings for the operating system disk used by the virtual
  * machine.
  * @member {string} [storageProfile.osDisk.diffDiskSettings.option] Specifies
- * the differencing disk settings for operating system disk. Possible values
+ * the ephemeral disk settings for operating system disk. Possible values
  * include: 'Local'
  * @member {string} [storageProfile.osDisk.createOption] Specifies how the
  * virtual machine should be created.<br><br> Possible values are:<br><br>
