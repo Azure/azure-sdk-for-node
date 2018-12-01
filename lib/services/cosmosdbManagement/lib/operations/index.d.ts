@@ -1243,7 +1243,7 @@ export interface DatabaseAccounts {
 
 
     /**
-     * Retrieves metric defintions for the given database account.
+     * Retrieves metric definitions for the given database account.
      *
      * @param {string} resourceGroupName Name of an Azure resource group.
      *
@@ -1263,7 +1263,7 @@ export interface DatabaseAccounts {
     listMetricDefinitionsWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricDefinitionsListResult>>;
 
     /**
-     * Retrieves metric defintions for the given database account.
+     * Retrieves metric definitions for the given database account.
      *
      * @param {string} resourceGroupName Name of an Azure resource group.
      *
