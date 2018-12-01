@@ -538,18 +538,18 @@ export interface FileSystem {
      * @param {number} [options.listSize] Gets or sets the number of items to
      * return. Optional.
      *
-     * @param {string} [options.listAfter] Gets or sets the item or lexographical
+     * @param {string} [options.listAfter] Gets or sets the item or lexicographical
      * index after which to begin returning results. For example, a file list of
      * 'a','b','d' and listAfter='b' will return 'd', and a listAfter='c' will also
      * return 'd'. Optional.
      *
-     * @param {string} [options.listBefore] Gets or sets the item or lexographical
-     * index before which to begin returning results. For example, a file list of
-     * 'a','b','d' and listBefore='d' will return 'a','b', and a listBefore='c'
-     * will also return 'a','b'. Optional.
+     * @param {string} [options.listBefore] Gets or sets the item or
+     * lexicographical index before which to begin returning results. For example,
+     * a file list of 'a','b','d' and listBefore='d' will return 'a','b', and a
+     * listBefore='c' will also return 'a','b'. Optional.
      *
      * @param {boolean} [options.tooId] An optional switch to return friendly names
-     * in place of owner and group. tooid=false returns friendly names instead of
+     * in place of owner and group. tooId=false returns friendly names instead of
      * the AAD Object ID. Default value is true, returning AAD object IDs.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -578,18 +578,18 @@ export interface FileSystem {
      * @param {number} [options.listSize] Gets or sets the number of items to
      * return. Optional.
      *
-     * @param {string} [options.listAfter] Gets or sets the item or lexographical
+     * @param {string} [options.listAfter] Gets or sets the item or lexicographical
      * index after which to begin returning results. For example, a file list of
      * 'a','b','d' and listAfter='b' will return 'd', and a listAfter='c' will also
      * return 'd'. Optional.
      *
-     * @param {string} [options.listBefore] Gets or sets the item or lexographical
-     * index before which to begin returning results. For example, a file list of
-     * 'a','b','d' and listBefore='d' will return 'a','b', and a listBefore='c'
-     * will also return 'a','b'. Optional.
+     * @param {string} [options.listBefore] Gets or sets the item or
+     * lexicographical index before which to begin returning results. For example,
+     * a file list of 'a','b','d' and listBefore='d' will return 'a','b', and a
+     * listBefore='c' will also return 'a','b'. Optional.
      *
      * @param {boolean} [options.tooId] An optional switch to return friendly names
-     * in place of owner and group. tooid=false returns friendly names instead of
+     * in place of owner and group. tooId=false returns friendly names instead of
      * the AAD Object ID. Default value is true, returning AAD object IDs.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -697,7 +697,7 @@ export interface FileSystem {
      * @param {object} [options] Optional Parameters.
      *
      * @param {boolean} [options.tooId] An optional switch to return friendly names
-     * in place of owner and group. tooid=false returns friendly names instead of
+     * in place of owner and group. tooId=false returns friendly names instead of
      * the AAD Object ID. Default value is true, returning AAD object IDs.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -723,7 +723,7 @@ export interface FileSystem {
      * @param {object} [options] Optional Parameters.
      *
      * @param {boolean} [options.tooId] An optional switch to return friendly names
-     * in place of owner and group. tooid=false returns friendly names instead of
+     * in place of owner and group. tooId=false returns friendly names instead of
      * the AAD Object ID. Default value is true, returning AAD object IDs.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1418,7 +1418,7 @@ export interface FileSystem {
      * @param {object} [options] Optional Parameters.
      *
      * @param {boolean} [options.tooId] An optional switch to return friendly names
-     * in place of object ID for ACL entries. tooid=false returns friendly names
+     * in place of object ID for ACL entries. tooId=false returns friendly names
      * instead of the AAD Object ID. Default value is true, returning AAD object
      * IDs.
      *
@@ -1445,7 +1445,7 @@ export interface FileSystem {
      * @param {object} [options] Optional Parameters.
      *
      * @param {boolean} [options.tooId] An optional switch to return friendly names
-     * in place of object ID for ACL entries. tooid=false returns friendly names
+     * in place of object ID for ACL entries. tooId=false returns friendly names
      * instead of the AAD Object ID. Default value is true, returning AAD object
      * IDs.
      *
