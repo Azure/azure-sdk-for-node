@@ -64,7 +64,7 @@ export interface PurchasePlan {
  * Represents an OpenShift router
  *
  * @member {string} [name] Name of the router profile.
- * @member {string} [publicSubdomain] DNS subdomain for openshift router.
+ * @member {string} [publicSubdomain] DNS subdomain for OpenShift router.
  * @member {string} [fqdn] Auto-allocated FQDN for the OpenShift router.
  */
 export interface OpenShiftRouterProfile {
@@ -402,7 +402,7 @@ export interface ContainerServiceOrchestratorProfile {
  * @member {number} [osDiskSizeGB] OS Disk Size in GB to be used to specify the
  * disk size for every machine in this master/agent pool. If you specify 0, it
  * will apply the default osDisk size according to the vmSize specified.
- * @member {string} [vnetSubnetID] VNet SubnetID specifies the vnet's subnet
+ * @member {string} [vnetSubnetID] VNet SubnetID specifies the VNet's subnet
  * identifier.
  * @member {string} [firstConsecutiveStaticIP] FirstConsecutiveStaticIP used to
  * specify the first static ip of masters. Default value: '10.240.255.5' .
@@ -410,7 +410,7 @@ export interface ContainerServiceOrchestratorProfile {
  * storage used. Choose from StorageAccount and ManagedDisks. Leave it empty,
  * we will choose for you based on the orchestrator choice. Possible values
  * include: 'StorageAccount', 'ManagedDisks'
- * @member {string} [fqdn] FDQN for the master pool.
+ * @member {string} [fqdn] FQDN for the master pool.
  */
 export interface ContainerServiceMasterProfile {
   count?: number;
@@ -489,7 +489,7 @@ export interface ContainerServiceMasterProfile {
  * will apply the default osDisk size according to the vmSize specified.
  * @member {string} [dnsPrefix] DNS prefix to be used to create the FQDN for
  * the agent pool.
- * @member {string} [fqdn] FDQN for the agent pool.
+ * @member {string} [fqdn] FQDN for the agent pool.
  * @member {array} [ports] Ports number array used to expose on this agent
  * pool. The default opened ports are different based on your choice of
  * orchestrator.
@@ -497,7 +497,7 @@ export interface ContainerServiceMasterProfile {
  * storage used. Choose from StorageAccount and ManagedDisks. Leave it empty,
  * we will choose for you based on the orchestrator choice. Possible values
  * include: 'StorageAccount', 'ManagedDisks'
- * @member {string} [vnetSubnetID] VNet SubnetID specifies the vnet's subnet
+ * @member {string} [vnetSubnetID] VNet SubnetID specifies the VNet's subnet
  * identifier.
  * @member {string} [osType] OsType to be used to specify os type. Choose from
  * Linux and Windows. Default to Linux. Possible values include: 'Linux',
@@ -706,14 +706,14 @@ export interface ContainerServiceDiagnosticsProfile {
  * specify 0, it will apply the default osDisk size according to the vmSize
  * specified.
  * @member {string} [masterProfile.vnetSubnetID] VNet SubnetID specifies the
- * vnet's subnet identifier.
+ * VNet's subnet identifier.
  * @member {string} [masterProfile.firstConsecutiveStaticIP]
  * FirstConsecutiveStaticIP used to specify the first static ip of masters.
  * @member {string} [masterProfile.storageProfile] Storage profile specifies
  * what kind of storage used. Choose from StorageAccount and ManagedDisks.
  * Leave it empty, we will choose for you based on the orchestrator choice.
  * Possible values include: 'StorageAccount', 'ManagedDisks'
- * @member {string} [masterProfile.fqdn] FDQN for the master pool.
+ * @member {string} [masterProfile.fqdn] FQDN for the master pool.
  * @member {array} [agentPoolProfiles] Properties of the agent pool.
  * @member {object} [windowsProfile] Profile for Windows VMs in the container
  * service cluster.
@@ -853,7 +853,7 @@ export interface ManagedClusterServicePrincipalProfile {
  * @member {number} [osDiskSizeGB] OS Disk Size in GB to be used to specify the
  * disk size for every machine in this master/agent pool. If you specify 0, it
  * will apply the default osDisk size according to the vmSize specified.
- * @member {string} [vnetSubnetID] VNet SubnetID specifies the vnet's subnet
+ * @member {string} [vnetSubnetID] VNet SubnetID specifies the VNet's subnet
  * identifier.
  * @member {number} [maxPods] Maximum number of pods that can run on a node.
  * @member {string} [osType] OsType to be used to specify os type. Choose from
@@ -862,7 +862,7 @@ export interface ManagedClusterServicePrincipalProfile {
  * @member {number} [maxCount] Maximum number of nodes for auto-scaling
  * @member {number} [minCount] Minimum number of nodes for auto-scaling
  * @member {boolean} [enableAutoScaling] Whether to enable auto-scaler
- * @member {string} [type] AgentPoolType represents types of agentpool.
+ * @member {string} [type] AgentPoolType represents types of an agent pool.
  * Possible values include: 'VirtualMachineScaleSets', 'AvailabilitySet'
  */
 export interface ManagedClusterAgentPoolProfile {
@@ -956,7 +956,7 @@ export interface ManagedClusterAADProfile {
  * creating the managed cluster.
  * @member {string} [dnsPrefix] DNS prefix specified when creating the managed
  * cluster.
- * @member {string} [fqdn] FDQN for the master pool.
+ * @member {string} [fqdn] FQDN for the master pool.
  * @member {array} [agentPoolProfiles] Properties of the agent pool.
  * @member {object} [linuxProfile] Profile for Linux VMs in the container
  * service cluster.

@@ -22,14 +22,14 @@ export interface OpenShiftManagedClusters {
 
 
     /**
-     * @summary Gets a openshift managed cluster.
+     * @summary Gets a OpenShift managed cluster.
      *
-     * Gets the details of the managed openshift cluster with a specified resource
+     * Gets the details of the managed OpenShift cluster with a specified resource
      * group and name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -46,14 +46,14 @@ export interface OpenShiftManagedClusters {
     getWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
 
     /**
-     * @summary Gets a openshift managed cluster.
+     * @summary Gets a OpenShift managed cluster.
      *
-     * Gets the details of the managed openshift cluster with a specified resource
+     * Gets the details of the managed OpenShift cluster with a specified resource
      * group and name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -90,14 +90,14 @@ export interface OpenShiftManagedClusters {
 
 
     /**
-     * @summary Creates or updates an openshift managed cluster.
+     * @summary Creates or updates an OpenShift managed cluster.
      *
-     * Creates or updates a openshift managed cluster with the specified
+     * Creates or updates a OpenShift managed cluster with the specified
      * configuration for agents and OpenShift version.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} parameters Parameters supplied to the Create or Update an
@@ -183,14 +183,14 @@ export interface OpenShiftManagedClusters {
     createOrUpdateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
 
     /**
-     * @summary Creates or updates an openshift managed cluster.
+     * @summary Creates or updates an OpenShift managed cluster.
      *
-     * Creates or updates a openshift managed cluster with the specified
+     * Creates or updates a OpenShift managed cluster with the specified
      * configuration for agents and OpenShift version.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} parameters Parameters supplied to the Create or Update an
@@ -296,13 +296,13 @@ export interface OpenShiftManagedClusters {
 
 
     /**
-     * @summary Updates tags on an openshift managed cluster.
+     * @summary Updates tags on an OpenShift managed cluster.
      *
-     * Updates an openshift managed cluster with the specified tags.
+     * Updates an OpenShift managed cluster with the specified tags.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} parameters Parameters supplied to the Update OpenShift
@@ -324,13 +324,13 @@ export interface OpenShiftManagedClusters {
     updateTagsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
 
     /**
-     * @summary Updates tags on an openshift managed cluster.
+     * @summary Updates tags on an OpenShift managed cluster.
      *
-     * Updates an openshift managed cluster with the specified tags.
+     * Updates an OpenShift managed cluster with the specified tags.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} parameters Parameters supplied to the Update OpenShift
@@ -372,14 +372,14 @@ export interface OpenShiftManagedClusters {
 
 
     /**
-     * @summary Deletes an openshift managed cluster.
+     * @summary Deletes an OpenShift managed cluster.
      *
-     * Deletes the openshift managed cluster with a specified resource group and
+     * Deletes the OpenShift managed cluster with a specified resource group and
      * name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -396,14 +396,14 @@ export interface OpenShiftManagedClusters {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * @summary Deletes an openshift managed cluster.
+     * @summary Deletes an OpenShift managed cluster.
      *
-     * Deletes the openshift managed cluster with a specified resource group and
+     * Deletes the OpenShift managed cluster with a specified resource group and
      * name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -438,14 +438,14 @@ export interface OpenShiftManagedClusters {
 
 
     /**
-     * @summary Creates or updates an openshift managed cluster.
+     * @summary Creates or updates an OpenShift managed cluster.
      *
-     * Creates or updates a openshift managed cluster with the specified
+     * Creates or updates a OpenShift managed cluster with the specified
      * configuration for agents and OpenShift version.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} parameters Parameters supplied to the Create or Update an
@@ -531,14 +531,14 @@ export interface OpenShiftManagedClusters {
     beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
 
     /**
-     * @summary Creates or updates an openshift managed cluster.
+     * @summary Creates or updates an OpenShift managed cluster.
      *
-     * Creates or updates a openshift managed cluster with the specified
+     * Creates or updates a OpenShift managed cluster with the specified
      * configuration for agents and OpenShift version.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} parameters Parameters supplied to the Create or Update an
@@ -644,13 +644,13 @@ export interface OpenShiftManagedClusters {
 
 
     /**
-     * @summary Updates tags on an openshift managed cluster.
+     * @summary Updates tags on an OpenShift managed cluster.
      *
-     * Updates an openshift managed cluster with the specified tags.
+     * Updates an OpenShift managed cluster with the specified tags.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} parameters Parameters supplied to the Update OpenShift
@@ -672,13 +672,13 @@ export interface OpenShiftManagedClusters {
     beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
 
     /**
-     * @summary Updates tags on an openshift managed cluster.
+     * @summary Updates tags on an OpenShift managed cluster.
      *
-     * Updates an openshift managed cluster with the specified tags.
+     * Updates an OpenShift managed cluster with the specified tags.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} parameters Parameters supplied to the Update OpenShift
@@ -720,14 +720,14 @@ export interface OpenShiftManagedClusters {
 
 
     /**
-     * @summary Deletes an openshift managed cluster.
+     * @summary Deletes an OpenShift managed cluster.
      *
-     * Deletes the openshift managed cluster with a specified resource group and
+     * Deletes the OpenShift managed cluster with a specified resource group and
      * name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -744,14 +744,14 @@ export interface OpenShiftManagedClusters {
     beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * @summary Deletes an openshift managed cluster.
+     * @summary Deletes an OpenShift managed cluster.
      *
-     * Deletes the openshift managed cluster with a specified resource group and
+     * Deletes the OpenShift managed cluster with a specified resource group and
      * name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} resourceName The name of the openshift managed cluster
+     * @param {string} resourceName The name of the OpenShift managed cluster
      * resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -977,7 +977,7 @@ export interface ContainerServices {
      * the vmSize specified.
      *
      * @param {string} [parameters.masterProfile.vnetSubnetID] VNet SubnetID
-     * specifies the vnet's subnet identifier.
+     * specifies the VNet's subnet identifier.
      *
      * @param {string} [parameters.masterProfile.firstConsecutiveStaticIP]
      * FirstConsecutiveStaticIP used to specify the first static ip of masters.
@@ -1161,7 +1161,7 @@ export interface ContainerServices {
      * the vmSize specified.
      *
      * @param {string} [parameters.masterProfile.vnetSubnetID] VNet SubnetID
-     * specifies the vnet's subnet identifier.
+     * specifies the VNet's subnet identifier.
      *
      * @param {string} [parameters.masterProfile.firstConsecutiveStaticIP]
      * FirstConsecutiveStaticIP used to specify the first static ip of masters.
@@ -1455,7 +1455,7 @@ export interface ContainerServices {
      * subscription.
      *
      * Gets a list of supported orchestrators in the specified subscription. The
-     * operation returns properties of each orchestrator including verison and
+     * operation returns properties of each orchestrator including version and
      * available upgrades.
      *
      * @param {string} location The name of a supported Azure region.
@@ -1481,7 +1481,7 @@ export interface ContainerServices {
      * subscription.
      *
      * Gets a list of supported orchestrators in the specified subscription. The
-     * operation returns properties of each orchestrator including verison and
+     * operation returns properties of each orchestrator including version and
      * available upgrades.
      *
      * @param {string} location The name of a supported Azure region.
@@ -1645,7 +1645,7 @@ export interface ContainerServices {
      * the vmSize specified.
      *
      * @param {string} [parameters.masterProfile.vnetSubnetID] VNet SubnetID
-     * specifies the vnet's subnet identifier.
+     * specifies the VNet's subnet identifier.
      *
      * @param {string} [parameters.masterProfile.firstConsecutiveStaticIP]
      * FirstConsecutiveStaticIP used to specify the first static ip of masters.
@@ -1829,7 +1829,7 @@ export interface ContainerServices {
      * the vmSize specified.
      *
      * @param {string} [parameters.masterProfile.vnetSubnetID] VNet SubnetID
-     * specifies the vnet's subnet identifier.
+     * specifies the VNet's subnet identifier.
      *
      * @param {string} [parameters.masterProfile.firstConsecutiveStaticIP]
      * FirstConsecutiveStaticIP used to specify the first static ip of masters.
@@ -2445,9 +2445,9 @@ export interface ManagedClusters {
 
 
     /**
-     * @summary Gets clusteradmin credential of a managed cluster.
+     * @summary Gets cluster admin credential of a managed cluster.
      *
-     * Gets clusteradmin credential of the managed cluster with a specified
+     * Gets cluster admin credential of the managed cluster with a specified
      * resource group and name.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -2468,9 +2468,9 @@ export interface ManagedClusters {
     listClusterAdminCredentialsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CredentialResults>>;
 
     /**
-     * @summary Gets clusteradmin credential of a managed cluster.
+     * @summary Gets cluster admin credential of a managed cluster.
      *
-     * Gets clusteradmin credential of the managed cluster with a specified
+     * Gets cluster admin credential of the managed cluster with a specified
      * resource group and name.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -2510,10 +2510,10 @@ export interface ManagedClusters {
 
 
     /**
-     * @summary Gets clusteruser credential of a managed cluster.
+     * @summary Gets cluster user credential of a managed cluster.
      *
-     * Gets clusteruser credential of the managed cluster with a specified resource
-     * group and name.
+     * Gets cluster user credential of the managed cluster with a specified
+     * resource group and name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2533,10 +2533,10 @@ export interface ManagedClusters {
     listClusterUserCredentialsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CredentialResults>>;
 
     /**
-     * @summary Gets clusteruser credential of a managed cluster.
+     * @summary Gets cluster user credential of a managed cluster.
      *
-     * Gets clusteruser credential of the managed cluster with a specified resource
-     * group and name.
+     * Gets cluster user credential of the managed cluster with a specified
+     * resource group and name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
