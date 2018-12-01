@@ -22,10 +22,10 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * The SKU of the cognitive services account.
  *
- * @property {string} name Gets or sets the sku name. Required for account
+ * @member {string} name Gets or sets the sku name. Required for account
  * creation, optional for update. Possible values include: 'F0', 'P0', 'P1',
  * 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
- * @property {string} [tier] Gets the sku tier. This is based on the SKU name.
+ * @member {string} [tier] Gets the sku tier. This is based on the SKU name.
  * Possible values include: 'Free', 'Standard', 'Premium'
  */
 export interface Sku {
@@ -39,30 +39,30 @@ export interface Sku {
  * @constructor
  * The parameters to provide for the account.
  *
- * @property {object} sku Required. Gets or sets the SKU of the resource.
- * @property {string} [sku.name] Gets or sets the sku name. Required for
- * account creation, optional for update. Possible values include: 'F0', 'P0',
- * 'P1', 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
- * @property {string} [sku.tier] Gets the sku tier. This is based on the SKU
+ * @member {object} sku Required. Gets or sets the SKU of the resource.
+ * @member {string} [sku.name] Gets or sets the sku name. Required for account
+ * creation, optional for update. Possible values include: 'F0', 'P0', 'P1',
+ * 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
+ * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Free', 'Standard', 'Premium'
- * @property {string} kind Required. Gets or sets the Kind of the resource.
+ * @member {string} kind Required. Gets or sets the Kind of the resource.
  * Possible values include: 'Bing.Autosuggest.v7', 'Bing.CustomSearch',
  * 'Bing.Search.v7', 'Bing.Speech', 'Bing.SpellCheck.v7', 'ComputerVision',
  * 'ContentModerator', 'CustomSpeech', 'CustomVision.Prediction',
  * 'CustomVision.Training', 'Emotion', 'Face', 'LUIS', 'QnAMaker',
  * 'SpeakerRecognition', 'SpeechTranslation', 'TextAnalytics',
  * 'TextTranslation', 'WebLM'
- * @property {string} location Required. Gets or sets the location of the
+ * @member {string} location Required. Gets or sets the location of the
  * resource. This will be one of the supported and registered Azure Geo Regions
  * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
  * cannot be changed once it is created, but if an identical geo region is
  * specified on update the request will succeed.
- * @property {object} [tags] Gets or sets a list of key value pairs that
- * describe the resource. These tags can be used in viewing and grouping this
- * resource (across resource groups). A maximum of 15 tags can be provided for
- * a resource. Each tag must have a key no greater than 128 characters and
- * value no greater than 256 characters.
- * @property {object} properties Must exist in the request. Must be an empty
+ * @member {object} [tags] Gets or sets a list of key value pairs that describe
+ * the resource. These tags can be used in viewing and grouping this resource
+ * (across resource groups). A maximum of 15 tags can be provided for a
+ * resource. Each tag must have a key no greater than 128 characters and value
+ * no greater than 256 characters.
+ * @member {object} properties Must exist in the request. Must be an empty
  * object. Must not be null.
  */
 export interface CognitiveServicesAccountCreateParameters {
@@ -79,17 +79,17 @@ export interface CognitiveServicesAccountCreateParameters {
  * @constructor
  * The parameters to provide for the account.
  *
- * @property {object} [sku] Gets or sets the SKU of the resource.
- * @property {string} [sku.name] Gets or sets the sku name. Required for
- * account creation, optional for update. Possible values include: 'F0', 'P0',
- * 'P1', 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
- * @property {string} [sku.tier] Gets the sku tier. This is based on the SKU
+ * @member {object} [sku] Gets or sets the SKU of the resource.
+ * @member {string} [sku.name] Gets or sets the sku name. Required for account
+ * creation, optional for update. Possible values include: 'F0', 'P0', 'P1',
+ * 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
+ * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Free', 'Standard', 'Premium'
- * @property {object} [tags] Gets or sets a list of key value pairs that
- * describe the resource. These tags can be used in viewing and grouping this
- * resource (across resource groups). A maximum of 15 tags can be provided for
- * a resource. Each tag must have a key no greater than 128 characters and
- * value no greater than 256 characters.
+ * @member {object} [tags] Gets or sets a list of key value pairs that describe
+ * the resource. These tags can be used in viewing and grouping this resource
+ * (across resource groups). A maximum of 15 tags can be provided for a
+ * resource. Each tag must have a key no greater than 128 characters and value
+ * no greater than 256 characters.
  */
 export interface CognitiveServicesAccountUpdateParameters {
   sku?: Sku;
@@ -103,29 +103,29 @@ export interface CognitiveServicesAccountUpdateParameters {
  * Cognitive Services Account is an Azure resource representing the provisioned
  * account, its type, location and SKU.
  *
- * @property {string} [etag] Entity Tag
- * @property {string} [id] The id of the created account
- * @property {string} [kind] Type of cognitive service account.
- * @property {string} [location] The location of the resource
- * @property {string} [name] The name of the created account
- * @property {string} [provisioningState] Gets the status of the cognitive
+ * @member {string} [etag] Entity Tag
+ * @member {string} [id] The id of the created account
+ * @member {string} [kind] Type of cognitive service account.
+ * @member {string} [location] The location of the resource
+ * @member {string} [name] The name of the created account
+ * @member {string} [provisioningState] Gets the status of the cognitive
  * services account at the time the operation was called. Possible values
  * include: 'Creating', 'ResolvingDNS', 'Moving', 'Deleting', 'Succeeded',
  * 'Failed'
- * @property {string} [endpoint] Endpoint of the created account.
- * @property {string} [internalId] The internal identifier.
- * @property {object} [sku] The SKU of Cognitive Services account.
- * @property {string} [sku.name] Gets or sets the sku name. Required for
- * account creation, optional for update. Possible values include: 'F0', 'P0',
- * 'P1', 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
- * @property {string} [sku.tier] Gets the sku tier. This is based on the SKU
+ * @member {string} [endpoint] Endpoint of the created account.
+ * @member {string} [internalId] The internal identifier.
+ * @member {object} [sku] The SKU of Cognitive Services account.
+ * @member {string} [sku.name] Gets or sets the sku name. Required for account
+ * creation, optional for update. Possible values include: 'F0', 'P0', 'P1',
+ * 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
+ * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Free', 'Standard', 'Premium'
- * @property {object} [tags] Gets or sets a list of key value pairs that
- * describe the resource. These tags can be used in viewing and grouping this
- * resource (across resource groups). A maximum of 15 tags can be provided for
- * a resource. Each tag must have a key no greater than 128 characters and
- * value no greater than 256 characters.
- * @property {string} [type] Resource type
+ * @member {object} [tags] Gets or sets a list of key value pairs that describe
+ * the resource. These tags can be used in viewing and grouping this resource
+ * (across resource groups). A maximum of 15 tags can be provided for a
+ * resource. Each tag must have a key no greater than 128 characters and value
+ * no greater than 256 characters.
+ * @member {string} [type] Resource type
  */
 export interface CognitiveServicesAccount extends BaseResource {
   etag?: string;
@@ -147,8 +147,8 @@ export interface CognitiveServicesAccount extends BaseResource {
  * @constructor
  * The access keys for the cognitive services account.
  *
- * @property {string} [key1] Gets the value of key 1.
- * @property {string} [key2] Gets the value of key 2.
+ * @member {string} [key1] Gets the value of key 1.
+ * @member {string} [key2] Gets the value of key 2.
  */
 export interface CognitiveServicesAccountKeys {
   key1?: string;
@@ -161,7 +161,7 @@ export interface CognitiveServicesAccountKeys {
  * @constructor
  * Regenerate key parameters.
  *
- * @property {string} keyName key name to generate (Key1|Key2). Possible values
+ * @member {string} keyName key name to generate (Key1|Key2). Possible values
  * include: 'Key1', 'Key2'
  */
 export interface RegenerateKeyParameters {
@@ -174,12 +174,12 @@ export interface RegenerateKeyParameters {
  * @constructor
  * Cognitive Services resource type and SKU.
  *
- * @property {string} [resourceType] Resource Namespace and Type
- * @property {object} [sku] The SKU of Cognitive Services account.
- * @property {string} [sku.name] Gets or sets the sku name. Required for
- * account creation, optional for update. Possible values include: 'F0', 'P0',
- * 'P1', 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
- * @property {string} [sku.tier] Gets the sku tier. This is based on the SKU
+ * @member {string} [resourceType] Resource Namespace and Type
+ * @member {object} [sku] The SKU of Cognitive Services account.
+ * @member {string} [sku.name] Gets or sets the sku name. Required for account
+ * creation, optional for update. Possible values include: 'F0', 'P0', 'P1',
+ * 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
+ * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Free', 'Standard', 'Premium'
  */
 export interface CognitiveServicesResourceAndSku {
@@ -193,7 +193,7 @@ export interface CognitiveServicesResourceAndSku {
  * @constructor
  * The list of cognitive services accounts operation response.
  *
- * @property {array} [value] Gets the list of Cognitive Services accounts and
+ * @member {array} [value] Gets the list of Cognitive Services accounts and
  * their properties.
  */
 export interface CognitiveServicesAccountEnumerateSkusResult {
@@ -206,8 +206,8 @@ export interface CognitiveServicesAccountEnumerateSkusResult {
  * @constructor
  * A metric name.
  *
- * @property {string} [value] The name of the metric.
- * @property {string} [localizedValue] The friendly name of the metric.
+ * @member {string} [value] The name of the metric.
+ * @member {string} [localizedValue] The friendly name of the metric.
  */
 export interface MetricName {
   readonly value?: string;
@@ -220,18 +220,18 @@ export interface MetricName {
  * @constructor
  * The usage data for a usage request.
  *
- * @property {string} [unit] The unit of the metric. Possible values include:
+ * @member {string} [unit] The unit of the metric. Possible values include:
  * 'Count', 'Bytes', 'Seconds', 'Percent', 'CountPerSecond', 'BytesPerSecond',
  * 'Milliseconds'
- * @property {object} [name] The name information for the metric.
- * @property {string} [name.value] The name of the metric.
- * @property {string} [name.localizedValue] The friendly name of the metric.
- * @property {string} [quotaPeriod] The quota period used to summarize the
- * usage values.
- * @property {number} [limit] Maximum value for this metric.
- * @property {number} [currentValue] Current value for this metric.
- * @property {string} [nextResetTime] Next reset time for current quota.
- * @property {string} [status] Cognitive Services account quota usage status.
+ * @member {object} [name] The name information for the metric.
+ * @member {string} [name.value] The name of the metric.
+ * @member {string} [name.localizedValue] The friendly name of the metric.
+ * @member {string} [quotaPeriod] The quota period used to summarize the usage
+ * values.
+ * @member {number} [limit] Maximum value for this metric.
+ * @member {number} [currentValue] Current value for this metric.
+ * @member {string} [nextResetTime] Next reset time for current quota.
+ * @member {string} [status] Cognitive Services account quota usage status.
  * Possible values include: 'Included', 'Blocked', 'InOverage', 'Unknown'
  */
 export interface Usage {
@@ -250,7 +250,7 @@ export interface Usage {
  * @constructor
  * The response to a list usage request.
  *
- * @property {array} [value] The list of usages for Cognitive Service account.
+ * @member {array} [value] The list of usages for Cognitive Service account.
  */
 export interface UsagesResult {
   readonly value?: Usage[];
@@ -262,8 +262,8 @@ export interface UsagesResult {
  * @constructor
  * Cognitive Services error body.
  *
- * @property {string} code error code
- * @property {string} message error message
+ * @member {string} code error code
+ * @member {string} message error message
  */
 export interface ErrorBody {
   code: string;
@@ -276,9 +276,9 @@ export interface ErrorBody {
  * @constructor
  * Cognitive Services error object.
  *
- * @property {object} [error] The error body.
- * @property {string} [error.code] error code
- * @property {string} [error.message] error message
+ * @member {object} [error] The error body.
+ * @member {string} [error.code] error code
+ * @member {string} [error.message] error message
  */
 export interface ErrorModel {
   error?: ErrorBody;
@@ -290,12 +290,11 @@ export interface ErrorModel {
  * @constructor
  * The operation supported by Cognitive Services.
  *
- * @property {string} [description] The description of the operation.
- * @property {string} [operation] The action that users can perform, based on
+ * @member {string} [description] The description of the operation.
+ * @member {string} [operation] The action that users can perform, based on
  * their permission level.
- * @property {string} [provider] Service provider: Microsoft Cognitive
- * Services.
- * @property {string} [resource] Resource on which the operation is performed.
+ * @member {string} [provider] Service provider: Microsoft Cognitive Services.
+ * @member {string} [resource] Resource on which the operation is performed.
  */
 export interface OperationDisplayInfo {
   description?: string;
@@ -310,17 +309,17 @@ export interface OperationDisplayInfo {
  * @constructor
  * The operation supported by Cognitive Services.
  *
- * @property {string} [name] Operation name: {provider}/{resource}/{operation}.
- * @property {object} [display] The operation supported by Cognitive Services.
- * @property {string} [display.description] The description of the operation.
- * @property {string} [display.operation] The action that users can perform,
+ * @member {string} [name] Operation name: {provider}/{resource}/{operation}.
+ * @member {object} [display] The operation supported by Cognitive Services.
+ * @member {string} [display.description] The description of the operation.
+ * @member {string} [display.operation] The action that users can perform,
  * based on their permission level.
- * @property {string} [display.provider] Service provider: Microsoft Cognitive
+ * @member {string} [display.provider] Service provider: Microsoft Cognitive
  * Services.
- * @property {string} [display.resource] Resource on which the operation is
+ * @member {string} [display.resource] Resource on which the operation is
  * performed.
- * @property {string} [origin] The origin of the operation.
- * @property {object} [properties] Additional properties.
+ * @member {string} [origin] The origin of the operation.
+ * @member {object} [properties] Additional properties.
  */
 export interface OperationEntity {
   name?: string;
@@ -335,14 +334,14 @@ export interface OperationEntity {
  * @constructor
  * Check SKU availability parameter.
  *
- * @property {array} skus The SKU of the resource.
- * @property {string} kind The Kind of the resource. Possible values include:
+ * @member {array} skus The SKU of the resource.
+ * @member {string} kind The Kind of the resource. Possible values include:
  * 'Bing.Autosuggest.v7', 'Bing.CustomSearch', 'Bing.Search.v7', 'Bing.Speech',
  * 'Bing.SpellCheck.v7', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
  * 'CustomVision.Prediction', 'CustomVision.Training', 'Emotion', 'Face',
  * 'LUIS', 'QnAMaker', 'SpeakerRecognition', 'SpeechTranslation',
  * 'TextAnalytics', 'TextTranslation', 'WebLM'
- * @property {string} type The Type of the resource.
+ * @member {string} type The Type of the resource.
  */
 export interface CheckSkuAvailabilityParameter {
   skus: string[];
@@ -356,20 +355,20 @@ export interface CheckSkuAvailabilityParameter {
  * @constructor
  * Check SKU availability result.
  *
- * @property {string} [kind] The Kind of the resource. Possible values include:
+ * @member {string} [kind] The Kind of the resource. Possible values include:
  * 'Bing.Autosuggest.v7', 'Bing.CustomSearch', 'Bing.Search.v7', 'Bing.Speech',
  * 'Bing.SpellCheck.v7', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
  * 'CustomVision.Prediction', 'CustomVision.Training', 'Emotion', 'Face',
  * 'LUIS', 'QnAMaker', 'SpeakerRecognition', 'SpeechTranslation',
  * 'TextAnalytics', 'TextTranslation', 'WebLM'
- * @property {string} [type] The Type of the resource.
- * @property {string} [skuName] The SKU of Cognitive Services account. Possible
+ * @member {string} [type] The Type of the resource.
+ * @member {string} [skuName] The SKU of Cognitive Services account. Possible
  * values include: 'F0', 'P0', 'P1', 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5',
  * 'S6'
- * @property {boolean} [skuAvailable] Indicates the given SKU is available or
+ * @member {boolean} [skuAvailable] Indicates the given SKU is available or
  * not.
- * @property {string} [reason] Reason why the SKU is not available.
- * @property {string} [message] Additional error message.
+ * @member {string} [reason] Reason why the SKU is not available.
+ * @member {string} [message] Additional error message.
  */
 export interface CheckSkuAvailabilityResult {
   kind?: string;
@@ -386,7 +385,7 @@ export interface CheckSkuAvailabilityResult {
  * @constructor
  * Check SKU availability result list.
  *
- * @property {array} [value] Check SKU availability result list.
+ * @member {array} [value] Check SKU availability result list.
  */
 export interface CheckSkuAvailabilityResultList {
   value?: CheckSkuAvailabilityResult[];
@@ -396,8 +395,8 @@ export interface CheckSkuAvailabilityResultList {
  * @class
  * Initializes a new instance of the ResourceSkuRestrictionInfo class.
  * @constructor
- * @property {array} [locations] Locations where the SKU is restricted
- * @property {array} [zones] List of availability zones where the SKU is
+ * @member {array} [locations] Locations where the SKU is restricted
+ * @member {array} [zones] List of availability zones where the SKU is
  * restricted.
  */
 export interface ResourceSkuRestrictionInfo {
@@ -411,18 +410,18 @@ export interface ResourceSkuRestrictionInfo {
  * @constructor
  * Describes restrictions of a SKU.
  *
- * @property {string} [type] The type of restrictions. Possible values include:
+ * @member {string} [type] The type of restrictions. Possible values include:
  * 'Location', 'Zone'
- * @property {array} [values] The value of restrictions. If the restriction
- * type is set to location. This would be different locations where the SKU is
+ * @member {array} [values] The value of restrictions. If the restriction type
+ * is set to location. This would be different locations where the SKU is
  * restricted.
- * @property {object} [restrictionInfo] The information about the restriction
+ * @member {object} [restrictionInfo] The information about the restriction
  * where the SKU cannot be used.
- * @property {array} [restrictionInfo.locations] Locations where the SKU is
+ * @member {array} [restrictionInfo.locations] Locations where the SKU is
  * restricted
- * @property {array} [restrictionInfo.zones] List of availability zones where
- * the SKU is restricted.
- * @property {string} [reasonCode] The reason for restriction. Possible values
+ * @member {array} [restrictionInfo.zones] List of availability zones where the
+ * SKU is restricted.
+ * @member {string} [reasonCode] The reason for restriction. Possible values
  * include: 'QuotaId', 'NotAvailableForSubscription'
  */
 export interface ResourceSkuRestrictions {
@@ -438,15 +437,14 @@ export interface ResourceSkuRestrictions {
  * @constructor
  * Describes an available Cognitive Services SKU.
  *
- * @property {string} [resourceType] The type of resource the SKU applies to.
- * @property {string} [name] The name of SKU.
- * @property {string} [tier] Specifies the tier of Cognitive Services account.
- * @property {string} [kind] The Kind of resources that are supported in this
+ * @member {string} [resourceType] The type of resource the SKU applies to.
+ * @member {string} [name] The name of SKU.
+ * @member {string} [tier] Specifies the tier of Cognitive Services account.
+ * @member {string} [kind] The Kind of resources that are supported in this
  * SKU.
- * @property {array} [locations] The set of locations that the SKU is
- * available.
- * @property {array} [restrictions] The restrictions because of which SKU
- * cannot be used. This is empty if there are no restrictions.
+ * @member {array} [locations] The set of locations that the SKU is available.
+ * @member {array} [restrictions] The restrictions because of which SKU cannot
+ * be used. This is empty if there are no restrictions.
  */
 export interface ResourceSku {
   readonly resourceType?: string;
@@ -464,8 +462,7 @@ export interface ResourceSku {
  * @constructor
  * The list of cognitive services accounts operation response.
  *
- * @property {string} [nextLink] The link used to get the next page of
- * accounts.
+ * @member {string} [nextLink] The link used to get the next page of accounts.
  */
 export interface CognitiveServicesAccountListResult extends Array<CognitiveServicesAccount> {
   nextLink?: string;
@@ -477,7 +474,7 @@ export interface CognitiveServicesAccountListResult extends Array<CognitiveServi
  * @constructor
  * The Get Skus operation response.
  *
- * @property {string} [nextLink] The uri to fetch the next page of Skus.
+ * @member {string} [nextLink] The uri to fetch the next page of Skus.
  */
 export interface ResourceSkusResult extends Array<ResourceSku> {
   nextLink?: string;
@@ -489,7 +486,7 @@ export interface ResourceSkusResult extends Array<ResourceSku> {
  * @constructor
  * The list of cognitive services accounts operation response.
  *
- * @property {string} [nextLink] The link used to get the next page of
+ * @member {string} [nextLink] The link used to get the next page of
  * operations.
  */
 export interface OperationEntityListResult extends Array<OperationEntity> {
