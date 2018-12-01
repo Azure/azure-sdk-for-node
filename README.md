@@ -1,8 +1,7 @@
 # Azure SDK for Node.js
 
-| Component | Status |
+| Component | Build Status |
 | --------- | ------ |
-| Packages | [![NPM version](https://badge.fury.io/js/azure.png)](https://badge.fury.io/js/azure) |
 | Management Libraries | [![Build Status](https://travis-ci.org/Azure/azure-sdk-for-node.png?branch=master)](https://travis-ci.org/Azure/azure-sdk-for-node) |
 | Client Libraries | [![Build Status](https://dev.azure.com/azure-sdk/public/_apis/build/status/azure-sdk-for-node.client)](https://dev.azure.com/azure-sdk/public/_build/latest?definitionId=33) |
 
