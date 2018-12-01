@@ -123,7 +123,7 @@ export interface UpdateMetadataDTO {
    */
   deleteProperty?: MetadataDTO[];
   /**
-   * List of Metadat associated with answer to be added
+   * List of metadata associated with answer to be added
    */
   add?: MetadataDTO[];
 }
