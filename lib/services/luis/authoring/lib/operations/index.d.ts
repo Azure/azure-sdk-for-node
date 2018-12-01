@@ -524,10 +524,10 @@ export interface Examples {
      *
      * @param {string} [exampleLabelObject.text] The sample's utterance.
      *
-     * @param {array} [exampleLabelObject.entityLabels] The idenfied entities
+     * @param {array} [exampleLabelObject.entityLabels] The identified entities
      * within the utterance.
      *
-     * @param {string} [exampleLabelObject.intentName] The idenfitied intent
+     * @param {string} [exampleLabelObject.intentName] The identified intent
      * representing the utterance.
      *
      * @param {object} [options] Optional Parameters.
@@ -555,10 +555,10 @@ export interface Examples {
      *
      * @param {string} [exampleLabelObject.text] The sample's utterance.
      *
-     * @param {array} [exampleLabelObject.entityLabels] The idenfied entities
+     * @param {array} [exampleLabelObject.entityLabels] The identified entities
      * within the utterance.
      *
-     * @param {string} [exampleLabelObject.intentName] The idenfitied intent
+     * @param {string} [exampleLabelObject.intentName] The identified intent
      * representing the utterance.
      *
      * @param {object} [options] Optional Parameters.
@@ -8264,7 +8264,7 @@ export interface Apps {
 
     /**
      * Imports an application to LUIS, the application's structure should be
-     * included in in the request body.
+     * included in the request body.
      *
      * @param {object} luisApp A LUIS application structure.
      *
@@ -8318,7 +8318,7 @@ export interface Apps {
 
     /**
      * Imports an application to LUIS, the application's structure should be
-     * included in in the request body.
+     * included in the request body.
      *
      * @param {object} luisApp A LUIS application structure.
      *
@@ -8840,9 +8840,6 @@ export interface Apps {
      * @param {boolean} [applicationPublishObject.isStaging] Indicates if the
      * staging slot should be used, instead of the Production one.
      *
-     * @param {string} [applicationPublishObject.region] The target region that the
-     * application is published to.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -8869,9 +8866,6 @@ export interface Apps {
      *
      * @param {boolean} [applicationPublishObject.isStaging] Indicates if the
      * staging slot should be used, instead of the Production one.
-     *
-     * @param {string} [applicationPublishObject.region] The target region that the
-     * application is published to.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9095,7 +9089,7 @@ export interface Apps {
      *
      * @param {boolean} [publishSettingUpdateObject.sentimentAnalysis] Setting
      * sentiment analysis as true returns the Sentiment of the input utterance
-     * along with the resopnse
+     * along with the response
      *
      * @param {boolean} [publishSettingUpdateObject.speech] Setting speech as
      * public enables speech priming in your app
@@ -9126,7 +9120,7 @@ export interface Apps {
      *
      * @param {boolean} [publishSettingUpdateObject.sentimentAnalysis] Setting
      * sentiment analysis as true returns the Sentiment of the input utterance
-     * along with the resopnse
+     * along with the response
      *
      * @param {boolean} [publishSettingUpdateObject.speech] Setting speech as
      * public enables speech priming in your app
@@ -10941,4 +10935,148 @@ export interface Pattern {
     getIntentPatterns(appId: string, versionId: string, intentId: string, options?: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PatternRuleInfo[]>;
     getIntentPatterns(appId: string, versionId: string, intentId: string, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
     getIntentPatterns(appId: string, versionId: string, intentId: string, options: { skip? : number, take? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PatternRuleInfo[]>): void;
+}
+
+/**
+ * @class
+ * Settings
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the LUISAuthoringClient.
+ */
+export interface Settings {
+
+
+    /**
+     * Gets the application version settings.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AppVersionSettingObject[]>>;
+
+    /**
+     * Gets the application version settings.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AppVersionSettingObject[]>;
+    list(appId: string, versionId: string, callback: ServiceCallback<models.AppVersionSettingObject[]>): void;
+    list(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AppVersionSettingObject[]>): void;
+
+
+    /**
+     * Updates the application version settings.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {object} listOfAppVersionSettingObject A list of the updated
+     * application version settings.
+     *
+     * @param {string} [listOfAppVersionSettingObject.name] The application version
+     * setting name.
+     *
+     * @param {string} [listOfAppVersionSettingObject.value] The application
+     * version setting value.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+
+    /**
+     * Updates the application version settings.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {object} listOfAppVersionSettingObject A list of the updated
+     * application version settings.
+     *
+     * @param {string} [listOfAppVersionSettingObject.name] The application version
+     * setting name.
+     *
+     * @param {string} [listOfAppVersionSettingObject.value] The application
+     * version setting value.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatus} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatus} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, callback: ServiceCallback<models.OperationStatus>): void;
+    update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 }
