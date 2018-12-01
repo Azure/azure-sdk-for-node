@@ -312,7 +312,7 @@ export interface Balance extends Resource {
  * applying the benefit scope and also specifies the number of instances to
  * which the reservation benefit can be applied to.
  * @member {string} [skuName] This is the ARM Sku name. It can be used to join
- * with the servicetype field in additoinalinfo in usage records.
+ * with the serviceType field in additional info in usage records.
  * @member {number} [reservedHours] This is the total hours reserved. E.g. if
  * reservation for 1 instance was made on 1 PM, this will be 11 hours for that
  * day and 24 hours from subsequent days
@@ -357,7 +357,7 @@ export interface ReservationSummary extends Resource {
  * applying the benefit scope and also specifies the number of instances to
  * which the reservation benefit can be applied to.
  * @member {string} [skuName] This is the ARM Sku name. It can be used to join
- * with the servicetype field in additoinalinfo in usage records.
+ * with the serviceType field in additional info in usage records.
  * @member {number} [reservedHours] This is the total hours reserved for the
  * day. E.g. if reservation for 1 instance was made on 1 PM, this will be 11
  * hours for that day and 24 hours from subsequent days.
@@ -366,7 +366,7 @@ export interface ReservationSummary extends Resource {
  * @member {string} [instanceId] This identifier is the name of the resource or
  * the fully qualified Resource ID.
  * @member {number} [totalReservedQuantity] This is the total count of
- * instances that are reserved for the reservationid.
+ * instances that are reserved for the reservationId.
  */
 export interface ReservationDetail extends Resource {
   readonly reservationOrderId?: string;
@@ -397,7 +397,7 @@ export interface ReservationDetail extends Resource {
  * @member {string} [term] RI recommendations in one or three year terms.
  * @member {number} [costWithNoReservedInstances] The total amount of cost
  * without reserved instances.
- * @member {number} [recommendedQuantity] Recomended quality for reserved
+ * @member {number} [recommendedQuantity] Recommended quality for reserved
  * instances.
  * @member {number} [totalCostWithReservedInstances] The total amount of cost
  * with reserved instances.
@@ -446,7 +446,7 @@ export interface Tag {
  * @member {string} [name] Resource name.
  * @member {string} [type] Resource type.
  * @member {string} [eTag] eTag of the resource. To handle concurrent update
- * scenarion, this field will be used to determine whether the user is updating
+ * scenario, this field will be used to determine whether the user is updating
  * the latest version or not.
  */
 export interface ProxyResource extends BaseResource {
@@ -562,7 +562,7 @@ export interface Notification {
  * date must be first of the month and should be less than the end date. Budget
  * start date must be on or after June 1, 2017. Future start date should not be
  * more than three months. Past start date should  be selected within the
- * timegrain preiod. There are no restrictions on the end date.
+ * timegrain period. There are no restrictions on the end date.
  * @member {date} [timePeriod.startDate] The start date for the budget.
  * @member {date} [timePeriod.endDate] The end date for the budget. If not
  * provided, we default this to 10 years from the start date.
