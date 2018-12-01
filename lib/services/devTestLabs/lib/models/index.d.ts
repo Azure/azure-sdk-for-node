@@ -675,7 +675,7 @@ export interface AttachDiskProperties {
  */
 export interface AttachNewDataDiskOptions {
   /**
-   * Size of the disk to be attached in GibiBytes.
+   * Size of the disk to be attached in Gibibytes.
    */
   diskSizeGiB?: number;
   /**
@@ -694,7 +694,7 @@ export interface AttachNewDataDiskOptions {
  */
 export interface AttachNewDataDiskOptionsFragment {
   /**
-   * Size of the disk to be attached in GibiBytes.
+   * Size of the disk to be attached in Gibibytes.
    */
   diskSizeGiB?: number;
   /**
@@ -1262,7 +1262,7 @@ export interface Disk extends Resource {
    */
   diskType?: string;
   /**
-   * The size of the disk in GibiBytes.
+   * The size of the disk in Gibibytes.
    */
   diskSizeGiB?: number;
   /**
@@ -1309,7 +1309,7 @@ export interface DiskFragment extends UpdateResource {
    */
   diskType?: string;
   /**
-   * The size of the disk in GibiBytes.
+   * The size of the disk in Gibibytes.
    */
   diskSizeGiB?: number;
   /**
