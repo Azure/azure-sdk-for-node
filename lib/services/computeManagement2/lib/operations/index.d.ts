@@ -2584,11 +2584,11 @@ export interface VirtualMachines {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -3009,11 +3009,11 @@ export interface VirtualMachines {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -3453,11 +3453,11 @@ export interface VirtualMachines {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -3876,11 +3876,11 @@ export interface VirtualMachines {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -4907,8 +4907,8 @@ export interface VirtualMachines {
 
 
     /**
-     * Reimages (upgrade the operating system) virtual machine. This operation is
-     * only supported for differencing OS disks.
+     * Reimages the virtual machine which has an ephemeral OS disk back to its
+     * initial state.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -4916,7 +4916,7 @@ export interface VirtualMachines {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * @param {boolean} [options.tempDisk] Specifies whether to reimage temp disk.
      * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -4931,8 +4931,8 @@ export interface VirtualMachines {
     reimageWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { tempDisk? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Reimages (upgrade the operating system) virtual machine. This operation is
-     * only supported for differencing OS disks.
+     * Reimages the virtual machine which has an ephemeral OS disk back to its
+     * initial state.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -4940,7 +4940,7 @@ export interface VirtualMachines {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * @param {boolean} [options.tempDisk] Specifies whether to reimage temp disk.
      * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -5380,11 +5380,11 @@ export interface VirtualMachines {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -5805,11 +5805,11 @@ export interface VirtualMachines {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -6249,11 +6249,11 @@ export interface VirtualMachines {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -6672,11 +6672,11 @@ export interface VirtualMachines {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -7344,8 +7344,8 @@ export interface VirtualMachines {
 
 
     /**
-     * Reimages (upgrade the operating system) virtual machine. This operation is
-     * only supported for differencing OS disks.
+     * Reimages the virtual machine which has an ephemeral OS disk back to its
+     * initial state.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -7353,7 +7353,7 @@ export interface VirtualMachines {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * @param {boolean} [options.tempDisk] Specifies whether to reimage temp disk.
      * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -7368,8 +7368,8 @@ export interface VirtualMachines {
     beginReimageWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { tempDisk? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Reimages (upgrade the operating system) virtual machine. This operation is
-     * only supported for differencing OS disks.
+     * Reimages the virtual machine which has an ephemeral OS disk back to its
+     * initial state.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -7377,7 +7377,7 @@ export interface VirtualMachines {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * @param {boolean} [options.tempDisk] Specifies whether to reimage temp disk.
      * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -9236,12 +9236,12 @@ export interface VirtualMachineScaleSets {
      *
      * @param {object}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine scale set.
+     * Specifies the ephemeral disk Settings for the operating system disk used by
+     * the virtual machine scale set.
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {number}
@@ -9695,12 +9695,12 @@ export interface VirtualMachineScaleSets {
      *
      * @param {object}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine scale set.
+     * Specifies the ephemeral disk Settings for the operating system disk used by
+     * the virtual machine scale set.
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {number}
@@ -11496,7 +11496,8 @@ export interface VirtualMachineScaleSets {
 
     /**
      * Reimages (upgrade the operating system) one or more virtual machines in a VM
-     * scale set.
+     * scale set which don't have a ephemeral OS disk, for virtual machines who
+     * have a ephemeral OS disk the virtual machine is reset to initial state.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -11525,7 +11526,8 @@ export interface VirtualMachineScaleSets {
 
     /**
      * Reimages (upgrade the operating system) one or more virtual machines in a VM
-     * scale set.
+     * scale set which don't have a ephemeral OS disk, for virtual machines who
+     * have a ephemeral OS disk the virtual machine is reset to initial state.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -11989,12 +11991,12 @@ export interface VirtualMachineScaleSets {
      *
      * @param {object}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine scale set.
+     * Specifies the ephemeral disk Settings for the operating system disk used by
+     * the virtual machine scale set.
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {number}
@@ -12448,12 +12450,12 @@ export interface VirtualMachineScaleSets {
      *
      * @param {object}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine scale set.
+     * Specifies the ephemeral disk Settings for the operating system disk used by
+     * the virtual machine scale set.
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {number}
@@ -13893,7 +13895,8 @@ export interface VirtualMachineScaleSets {
 
     /**
      * Reimages (upgrade the operating system) one or more virtual machines in a VM
-     * scale set.
+     * scale set which don't have a ephemeral OS disk, for virtual machines who
+     * have a ephemeral OS disk the virtual machine is reset to initial state.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -13922,7 +13925,8 @@ export interface VirtualMachineScaleSets {
 
     /**
      * Reimages (upgrade the operating system) one or more virtual machines in a VM
-     * scale set.
+     * scale set which don't have a ephemeral OS disk, for virtual machines who
+     * have a ephemeral OS disk the virtual machine is reset to initial state.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -15312,7 +15316,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * @param {boolean} [options.tempDisk] Specifies whether to reimage temp disk.
      * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -15338,7 +15342,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * @param {boolean} [options.tempDisk] Specifies whether to reimage temp disk.
      * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -15672,11 +15676,11 @@ export interface VirtualMachineScaleSetVMs {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -16085,11 +16089,11 @@ export interface VirtualMachineScaleSetVMs {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -17021,7 +17025,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * @param {boolean} [options.tempDisk] Specifies whether to reimage temp disk.
      * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -17047,7 +17051,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * @param {boolean} [options.tempDisk] Specifies whether to reimage temp disk.
      * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -17381,11 +17385,11 @@ export interface VirtualMachineScaleSetVMs {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
@@ -17794,11 +17798,11 @@ export interface VirtualMachineScaleSetVMs {
      * disk.
      *
      * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
-     * Specifies the differencing Disk Settings for the operating system disk used
-     * by the virtual machine.
+     * Specifies the ephemeral Disk Settings for the operating system disk used by
+     * the virtual machine.
      *
      * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
-     * Specifies the differencing disk settings for operating system disk. Possible
+     * Specifies the ephemeral disk settings for operating system disk. Possible
      * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
