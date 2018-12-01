@@ -8,7 +8,7 @@
  * regenerated.
  */
 
-import { ServiceClientCredentials } from 'ms-rest';
+import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as models from "./models";
 import * as operations from "./operations";
@@ -61,6 +61,128 @@ export default class ContainerInstanceManagementClient extends AzureServiceClien
   containerGroupUsage: operations.ContainerGroupUsage;
   containerOperations: operations.ContainerOperations;
   serviceAssociationLink: operations.ServiceAssociationLink;
+
+
+  /**
+   * @summary Get the list of cached images.
+   *
+   * Get the list of cached images on specific OS type for a subscription in a
+   * region.
+   *
+   * @param {string} location The identifier for the physical azure location.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<CachedImagesListResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  listCachedImagesWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CachedImagesListResult>>;
+
+  /**
+   * @summary Get the list of cached images.
+   *
+   * Get the list of cached images on specific OS type for a subscription in a
+   * region.
+   *
+   * @param {string} location The identifier for the physical azure location.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {CachedImagesListResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {CachedImagesListResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link CachedImagesListResult} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  listCachedImages(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CachedImagesListResult>;
+  listCachedImages(location: string, callback: ServiceCallback<models.CachedImagesListResult>): void;
+  listCachedImages(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CachedImagesListResult>): void;
+
+
+  /**
+   * @summary Get the list of capabilities of the location.
+   *
+   * Get the list of CPU/memory/GPU capabilities of a region.
+   *
+   * @param {string} location The identifier for the physical azure location.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<CapabilitiesListResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  listCapabilitiesWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CapabilitiesListResult>>;
+
+  /**
+   * @summary Get the list of capabilities of the location.
+   *
+   * Get the list of CPU/memory/GPU capabilities of a region.
+   *
+   * @param {string} location The identifier for the physical azure location.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {CapabilitiesListResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {CapabilitiesListResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link CapabilitiesListResult} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  listCapabilities(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CapabilitiesListResult>;
+  listCapabilities(location: string, callback: ServiceCallback<models.CapabilitiesListResult>): void;
+  listCapabilities(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CapabilitiesListResult>): void;
 }
 
 export { ContainerInstanceManagementClient, models as ContainerInstanceManagementModels };
