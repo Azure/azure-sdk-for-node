@@ -19,7 +19,7 @@ npm install azure-cognitiveservices-luis-runtime
 
 ### How to use
 
-#### Authentication, client creation and resolve prediction as an example.
+#### Authentication, client creation and gET prediction as an example.
 
 ```javascript
 const msRest = require("ms-rest");
@@ -36,7 +36,7 @@ const staging = true;
 const spellCheck = true;
 const bingSpellCheckSubscriptionKey = "testbingSpellCheckSubscriptionKey";
 const log = true;
-client.prediction.resolve(appId, query, timezoneOffset, verbose, staging, spellCheck, bingSpellCheckSubscriptionKey, log).then((result) => {
+client.prediction.gET(appId, query, timezoneOffset, verbose, staging, spellCheck, bingSpellCheckSubscriptionKey, log).then((result) => {
   console.log("The result is:");
   console.log(result);
 }).catch((err) => {

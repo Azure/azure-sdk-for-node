@@ -25,6 +25,96 @@ export interface Prediction {
      * Gets predictions for a given utterance, in the form of intents and entities.
      * The current maximum query size is 500 characters.
      *
+     * @param {string} appId The LUIS application ID (guid).
+     *
+     * @param {string} query The utterance to predict.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.timezoneOffset] The timezone offset for the
+     * location of the request.
+     *
+     * @param {boolean} [options.verbose] If true, return all intents instead of
+     * just the top scoring intent.
+     *
+     * @param {boolean} [options.staging] Use the staging endpoint slot.
+     *
+     * @param {boolean} [options.spellCheck] Enable spell checking.
+     *
+     * @param {string} [options.bingSpellCheckSubscriptionKey] The subscription key
+     * to use when enabling bing spell check
+     *
+     * @param {boolean} [options.log] Log query (default is true)
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    gETWithHttpOperationResponse(appId: string, query: string, options?: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * Gets predictions for a given utterance, in the form of intents and entities.
+     * The current maximum query size is 500 characters.
+     *
+     * @param {string} appId The LUIS application ID (guid).
+     *
+     * @param {string} query The utterance to predict.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.timezoneOffset] The timezone offset for the
+     * location of the request.
+     *
+     * @param {boolean} [options.verbose] If true, return all intents instead of
+     * just the top scoring intent.
+     *
+     * @param {boolean} [options.staging] Use the staging endpoint slot.
+     *
+     * @param {boolean} [options.spellCheck] Enable spell checking.
+     *
+     * @param {string} [options.bingSpellCheckSubscriptionKey] The subscription key
+     * to use when enabling bing spell check
+     *
+     * @param {boolean} [options.log] Log query (default is true)
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    gET(appId: string, query: string, options?: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    gET(appId: string, query: string, callback: ServiceCallback<any>): void;
+    gET(appId: string, query: string, options: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * Gets predictions for a given utterance, in the form of intents and entities.
+     * The current maximum query size is 500 characters.
+     *
      * @param {string} appId The LUIS application ID (Guid).
      *
      * @param {string} query The utterance to predict.
@@ -55,7 +145,7 @@ export interface Prediction {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    resolveWithHttpOperationResponse(appId: string, query: string, options?: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    pOSTWithHttpOperationResponse(appId: string, query: string, options?: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * Gets predictions for a given utterance, in the form of intents and entities.
@@ -106,7 +196,7 @@ export interface Prediction {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    resolve(appId: string, query: string, options?: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    resolve(appId: string, query: string, callback: ServiceCallback<any>): void;
-    resolve(appId: string, query: string, options: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    pOST(appId: string, query: string, options?: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    pOST(appId: string, query: string, callback: ServiceCallback<any>): void;
+    pOST(appId: string, query: string, options: { timezoneOffset? : number, verbose? : boolean, staging? : boolean, spellCheck? : boolean, bingSpellCheckSubscriptionKey? : string, log? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 }
