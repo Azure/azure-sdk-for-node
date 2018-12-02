@@ -174,23 +174,24 @@ export interface AccountFilters {
      * @param {object} [parameters.presentationTimeRange] The presentation time
      * range.
      *
-     * @param {number} parameters.presentationTimeRange.startTimestamp The absolute
-     * start time boundary.
+     * @param {number} [parameters.presentationTimeRange.startTimestamp] The
+     * absolute start time boundary.
      *
-     * @param {number} parameters.presentationTimeRange.endTimestamp The absolute
+     * @param {number} [parameters.presentationTimeRange.endTimestamp] The absolute
      * end time boundary.
      *
-     * @param {number} parameters.presentationTimeRange.presentationWindowDuration
-     * The relative to end sliding window.
+     * @param {number}
+     * [parameters.presentationTimeRange.presentationWindowDuration] The relative
+     * to end sliding window.
      *
-     * @param {number} parameters.presentationTimeRange.liveBackoffDuration The
+     * @param {number} [parameters.presentationTimeRange.liveBackoffDuration] The
      * relative to end right edge.
      *
-     * @param {number} parameters.presentationTimeRange.timescale The time scale of
-     * time stamps.
+     * @param {number} [parameters.presentationTimeRange.timescale] The time scale
+     * of time stamps.
      *
-     * @param {boolean} parameters.presentationTimeRange.forceEndTimestamp The
-     * indicator of forcing exsiting of end time stamp.
+     * @param {boolean} [parameters.presentationTimeRange.forceEndTimestamp] The
+     * indicator of forcing existing of end time stamp.
      *
      * @param {object} [parameters.firstQuality] The first quality.
      *
@@ -228,23 +229,24 @@ export interface AccountFilters {
      * @param {object} [parameters.presentationTimeRange] The presentation time
      * range.
      *
-     * @param {number} parameters.presentationTimeRange.startTimestamp The absolute
-     * start time boundary.
+     * @param {number} [parameters.presentationTimeRange.startTimestamp] The
+     * absolute start time boundary.
      *
-     * @param {number} parameters.presentationTimeRange.endTimestamp The absolute
+     * @param {number} [parameters.presentationTimeRange.endTimestamp] The absolute
      * end time boundary.
      *
-     * @param {number} parameters.presentationTimeRange.presentationWindowDuration
-     * The relative to end sliding window.
+     * @param {number}
+     * [parameters.presentationTimeRange.presentationWindowDuration] The relative
+     * to end sliding window.
      *
-     * @param {number} parameters.presentationTimeRange.liveBackoffDuration The
+     * @param {number} [parameters.presentationTimeRange.liveBackoffDuration] The
      * relative to end right edge.
      *
-     * @param {number} parameters.presentationTimeRange.timescale The time scale of
-     * time stamps.
+     * @param {number} [parameters.presentationTimeRange.timescale] The time scale
+     * of time stamps.
      *
-     * @param {boolean} parameters.presentationTimeRange.forceEndTimestamp The
-     * indicator of forcing exsiting of end time stamp.
+     * @param {boolean} [parameters.presentationTimeRange.forceEndTimestamp] The
+     * indicator of forcing existing of end time stamp.
      *
      * @param {object} [parameters.firstQuality] The first quality.
      *
@@ -369,23 +371,24 @@ export interface AccountFilters {
      * @param {object} [parameters.presentationTimeRange] The presentation time
      * range.
      *
-     * @param {number} parameters.presentationTimeRange.startTimestamp The absolute
-     * start time boundary.
+     * @param {number} [parameters.presentationTimeRange.startTimestamp] The
+     * absolute start time boundary.
      *
-     * @param {number} parameters.presentationTimeRange.endTimestamp The absolute
+     * @param {number} [parameters.presentationTimeRange.endTimestamp] The absolute
      * end time boundary.
      *
-     * @param {number} parameters.presentationTimeRange.presentationWindowDuration
-     * The relative to end sliding window.
+     * @param {number}
+     * [parameters.presentationTimeRange.presentationWindowDuration] The relative
+     * to end sliding window.
      *
-     * @param {number} parameters.presentationTimeRange.liveBackoffDuration The
+     * @param {number} [parameters.presentationTimeRange.liveBackoffDuration] The
      * relative to end right edge.
      *
-     * @param {number} parameters.presentationTimeRange.timescale The time scale of
-     * time stamps.
+     * @param {number} [parameters.presentationTimeRange.timescale] The time scale
+     * of time stamps.
      *
-     * @param {boolean} parameters.presentationTimeRange.forceEndTimestamp The
-     * indicator of forcing exsiting of end time stamp.
+     * @param {boolean} [parameters.presentationTimeRange.forceEndTimestamp] The
+     * indicator of forcing existing of end time stamp.
      *
      * @param {object} [parameters.firstQuality] The first quality.
      *
@@ -423,23 +426,24 @@ export interface AccountFilters {
      * @param {object} [parameters.presentationTimeRange] The presentation time
      * range.
      *
-     * @param {number} parameters.presentationTimeRange.startTimestamp The absolute
-     * start time boundary.
+     * @param {number} [parameters.presentationTimeRange.startTimestamp] The
+     * absolute start time boundary.
      *
-     * @param {number} parameters.presentationTimeRange.endTimestamp The absolute
+     * @param {number} [parameters.presentationTimeRange.endTimestamp] The absolute
      * end time boundary.
      *
-     * @param {number} parameters.presentationTimeRange.presentationWindowDuration
-     * The relative to end sliding window.
+     * @param {number}
+     * [parameters.presentationTimeRange.presentationWindowDuration] The relative
+     * to end sliding window.
      *
-     * @param {number} parameters.presentationTimeRange.liveBackoffDuration The
+     * @param {number} [parameters.presentationTimeRange.liveBackoffDuration] The
      * relative to end right edge.
      *
-     * @param {number} parameters.presentationTimeRange.timescale The time scale of
-     * time stamps.
+     * @param {number} [parameters.presentationTimeRange.timescale] The time scale
+     * of time stamps.
      *
-     * @param {boolean} parameters.presentationTimeRange.forceEndTimestamp The
-     * indicator of forcing exsiting of end time stamp.
+     * @param {boolean} [parameters.presentationTimeRange.forceEndTimestamp] The
+     * indicator of forcing existing of end time stamp.
      *
      * @param {object} [parameters.firstQuality] The first quality.
      *
@@ -1457,7 +1461,7 @@ export interface Assets {
      * the number of items returned from a collection. The service returns the
      * number of available items up to but not greater than the specified value n.
      *
-     * @param {string} [options.orderby] Specifies the the key by which the result
+     * @param {string} [options.orderby] Specifies the key by which the result
      * collection should be ordered.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1490,7 +1494,7 @@ export interface Assets {
      * the number of items returned from a collection. The service returns the
      * number of available items up to but not greater than the specified value n.
      *
-     * @param {string} [options.orderby] Specifies the the key by which the result
+     * @param {string} [options.orderby] Specifies the key by which the result
      * collection should be ordered.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2306,23 +2310,24 @@ export interface AssetFilters {
      * @param {object} [parameters.presentationTimeRange] The presentation time
      * range.
      *
-     * @param {number} parameters.presentationTimeRange.startTimestamp The absolute
-     * start time boundary.
+     * @param {number} [parameters.presentationTimeRange.startTimestamp] The
+     * absolute start time boundary.
      *
-     * @param {number} parameters.presentationTimeRange.endTimestamp The absolute
+     * @param {number} [parameters.presentationTimeRange.endTimestamp] The absolute
      * end time boundary.
      *
-     * @param {number} parameters.presentationTimeRange.presentationWindowDuration
-     * The relative to end sliding window.
+     * @param {number}
+     * [parameters.presentationTimeRange.presentationWindowDuration] The relative
+     * to end sliding window.
      *
-     * @param {number} parameters.presentationTimeRange.liveBackoffDuration The
+     * @param {number} [parameters.presentationTimeRange.liveBackoffDuration] The
      * relative to end right edge.
      *
-     * @param {number} parameters.presentationTimeRange.timescale The time scale of
-     * time stamps.
+     * @param {number} [parameters.presentationTimeRange.timescale] The time scale
+     * of time stamps.
      *
-     * @param {boolean} parameters.presentationTimeRange.forceEndTimestamp The
-     * indicator of forcing exsiting of end time stamp.
+     * @param {boolean} [parameters.presentationTimeRange.forceEndTimestamp] The
+     * indicator of forcing existing of end time stamp.
      *
      * @param {object} [parameters.firstQuality] The first quality.
      *
@@ -2362,23 +2367,24 @@ export interface AssetFilters {
      * @param {object} [parameters.presentationTimeRange] The presentation time
      * range.
      *
-     * @param {number} parameters.presentationTimeRange.startTimestamp The absolute
-     * start time boundary.
+     * @param {number} [parameters.presentationTimeRange.startTimestamp] The
+     * absolute start time boundary.
      *
-     * @param {number} parameters.presentationTimeRange.endTimestamp The absolute
+     * @param {number} [parameters.presentationTimeRange.endTimestamp] The absolute
      * end time boundary.
      *
-     * @param {number} parameters.presentationTimeRange.presentationWindowDuration
-     * The relative to end sliding window.
+     * @param {number}
+     * [parameters.presentationTimeRange.presentationWindowDuration] The relative
+     * to end sliding window.
      *
-     * @param {number} parameters.presentationTimeRange.liveBackoffDuration The
+     * @param {number} [parameters.presentationTimeRange.liveBackoffDuration] The
      * relative to end right edge.
      *
-     * @param {number} parameters.presentationTimeRange.timescale The time scale of
-     * time stamps.
+     * @param {number} [parameters.presentationTimeRange.timescale] The time scale
+     * of time stamps.
      *
-     * @param {boolean} parameters.presentationTimeRange.forceEndTimestamp The
-     * indicator of forcing exsiting of end time stamp.
+     * @param {boolean} [parameters.presentationTimeRange.forceEndTimestamp] The
+     * indicator of forcing existing of end time stamp.
      *
      * @param {object} [parameters.firstQuality] The first quality.
      *
@@ -2509,23 +2515,24 @@ export interface AssetFilters {
      * @param {object} [parameters.presentationTimeRange] The presentation time
      * range.
      *
-     * @param {number} parameters.presentationTimeRange.startTimestamp The absolute
-     * start time boundary.
+     * @param {number} [parameters.presentationTimeRange.startTimestamp] The
+     * absolute start time boundary.
      *
-     * @param {number} parameters.presentationTimeRange.endTimestamp The absolute
+     * @param {number} [parameters.presentationTimeRange.endTimestamp] The absolute
      * end time boundary.
      *
-     * @param {number} parameters.presentationTimeRange.presentationWindowDuration
-     * The relative to end sliding window.
+     * @param {number}
+     * [parameters.presentationTimeRange.presentationWindowDuration] The relative
+     * to end sliding window.
      *
-     * @param {number} parameters.presentationTimeRange.liveBackoffDuration The
+     * @param {number} [parameters.presentationTimeRange.liveBackoffDuration] The
      * relative to end right edge.
      *
-     * @param {number} parameters.presentationTimeRange.timescale The time scale of
-     * time stamps.
+     * @param {number} [parameters.presentationTimeRange.timescale] The time scale
+     * of time stamps.
      *
-     * @param {boolean} parameters.presentationTimeRange.forceEndTimestamp The
-     * indicator of forcing exsiting of end time stamp.
+     * @param {boolean} [parameters.presentationTimeRange.forceEndTimestamp] The
+     * indicator of forcing existing of end time stamp.
      *
      * @param {object} [parameters.firstQuality] The first quality.
      *
@@ -2565,23 +2572,24 @@ export interface AssetFilters {
      * @param {object} [parameters.presentationTimeRange] The presentation time
      * range.
      *
-     * @param {number} parameters.presentationTimeRange.startTimestamp The absolute
-     * start time boundary.
+     * @param {number} [parameters.presentationTimeRange.startTimestamp] The
+     * absolute start time boundary.
      *
-     * @param {number} parameters.presentationTimeRange.endTimestamp The absolute
+     * @param {number} [parameters.presentationTimeRange.endTimestamp] The absolute
      * end time boundary.
      *
-     * @param {number} parameters.presentationTimeRange.presentationWindowDuration
-     * The relative to end sliding window.
+     * @param {number}
+     * [parameters.presentationTimeRange.presentationWindowDuration] The relative
+     * to end sliding window.
      *
-     * @param {number} parameters.presentationTimeRange.liveBackoffDuration The
+     * @param {number} [parameters.presentationTimeRange.liveBackoffDuration] The
      * relative to end right edge.
      *
-     * @param {number} parameters.presentationTimeRange.timescale The time scale of
-     * time stamps.
+     * @param {number} [parameters.presentationTimeRange.timescale] The time scale
+     * of time stamps.
      *
-     * @param {boolean} parameters.presentationTimeRange.forceEndTimestamp The
-     * indicator of forcing exsiting of end time stamp.
+     * @param {boolean} [parameters.presentationTimeRange.forceEndTimestamp] The
+     * indicator of forcing existing of end time stamp.
      *
      * @param {object} [parameters.firstQuality] The first quality.
      *
@@ -2709,7 +2717,7 @@ export interface ContentKeyPolicies {
      * the number of items returned from a collection. The service returns the
      * number of available items up to but not greater than the specified value n.
      *
-     * @param {string} [options.orderby] Specifies the the key by which the result
+     * @param {string} [options.orderby] Specifies the key by which the result
      * collection should be ordered.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2741,7 +2749,7 @@ export interface ContentKeyPolicies {
      * the number of items returned from a collection. The service returns the
      * number of available items up to but not greater than the specified value n.
      *
-     * @param {string} [options.orderby] Specifies the the key by which the result
+     * @param {string} [options.orderby] Specifies the key by which the result
      * collection should be ordered.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -3229,13 +3237,8 @@ export interface Transforms {
      *
      * @param {string} [options.filter] Restricts the set of items returned.
      *
-     * @param {number} [options.top] Specifies a non-negative integer n that limits
-     * the number of items returned from a collection. The service returns the
-     * number of available items up to but not greater than the specified value n.
-     *
-     * @param {number} [options.skip] Specifies a non-negative integer n that
-     * excludes the first n items of the queried collection from the result. The
-     * service returns items starting at position n+1.
+     * @param {string} [options.orderby] Specifies the key by which the result
+     * collection should be ordered.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3246,7 +3249,7 @@ export interface Transforms {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TransformCollection>>;
+    listWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { filter? : string, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TransformCollection>>;
 
     /**
      * @summary List Transforms
@@ -3262,13 +3265,8 @@ export interface Transforms {
      *
      * @param {string} [options.filter] Restricts the set of items returned.
      *
-     * @param {number} [options.top] Specifies a non-negative integer n that limits
-     * the number of items returned from a collection. The service returns the
-     * number of available items up to but not greater than the specified value n.
-     *
-     * @param {number} [options.skip] Specifies a non-negative integer n that
-     * excludes the first n items of the queried collection from the result. The
-     * service returns items starting at position n+1.
+     * @param {string} [options.orderby] Specifies the key by which the result
+     * collection should be ordered.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3295,9 +3293,9 @@ export interface Transforms {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, accountName: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.TransformCollection>;
+    list(resourceGroupName: string, accountName: string, options?: { filter? : string, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.TransformCollection>;
     list(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.TransformCollection>): void;
-    list(resourceGroupName: string, accountName: string, options: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TransformCollection>): void;
+    list(resourceGroupName: string, accountName: string, options: { filter? : string, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TransformCollection>): void;
 
 
     /**
@@ -3693,13 +3691,8 @@ export interface Jobs {
      *
      * @param {string} [options.filter] Restricts the set of items returned.
      *
-     * @param {number} [options.top] Specifies a non-negative integer n that limits
-     * the number of items returned from a collection. The service returns the
-     * number of available items up to but not greater than the specified value n.
-     *
-     * @param {number} [options.skip] Specifies a non-negative integer n that
-     * excludes the first n items of the queried collection from the result. The
-     * service returns items starting at position n+1.
+     * @param {string} [options.orderby] Specifies the key by which the result
+     * collection should be ordered.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3710,7 +3703,7 @@ export interface Jobs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, accountName: string, transformName: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobCollection>>;
+    listWithHttpOperationResponse(resourceGroupName: string, accountName: string, transformName: string, options?: { filter? : string, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobCollection>>;
 
     /**
      * @summary List Jobs
@@ -3728,13 +3721,8 @@ export interface Jobs {
      *
      * @param {string} [options.filter] Restricts the set of items returned.
      *
-     * @param {number} [options.top] Specifies a non-negative integer n that limits
-     * the number of items returned from a collection. The service returns the
-     * number of available items up to but not greater than the specified value n.
-     *
-     * @param {number} [options.skip] Specifies a non-negative integer n that
-     * excludes the first n items of the queried collection from the result. The
-     * service returns items starting at position n+1.
+     * @param {string} [options.orderby] Specifies the key by which the result
+     * collection should be ordered.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3761,9 +3749,9 @@ export interface Jobs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, accountName: string, transformName: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobCollection>;
+    list(resourceGroupName: string, accountName: string, transformName: string, options?: { filter? : string, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobCollection>;
     list(resourceGroupName: string, accountName: string, transformName: string, callback: ServiceCallback<models.JobCollection>): void;
-    list(resourceGroupName: string, accountName: string, transformName: string, options: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobCollection>): void;
+    list(resourceGroupName: string, accountName: string, transformName: string, options: { filter? : string, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobCollection>): void;
 
 
     /**
@@ -4025,7 +4013,9 @@ export interface Jobs {
     /**
      * @summary Update Job
      *
-     * Updates a Job.
+     * Update is only supported for description and priority. Updating Priority
+     * will take effect when the Job state is Queued or Scheduled and depending on
+     * the timing the priority update may be ignored.
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * Azure subscription.
@@ -4071,7 +4061,9 @@ export interface Jobs {
     /**
      * @summary Update Job
      *
-     * Updates a Job.
+     * Update is only supported for description and priority. Updating Priority
+     * will take effect when the Job state is Queued or Scheduled and depending on
+     * the timing the priority update may be ignored.
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * Azure subscription.
@@ -4293,7 +4285,7 @@ export interface StreamingPolicies {
      * the number of items returned from a collection. The service returns the
      * number of available items up to but not greater than the specified value n.
      *
-     * @param {string} [options.orderby] Specifies the the key by which the result
+     * @param {string} [options.orderby] Specifies the key by which the result
      * collection should be ordered.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -4325,7 +4317,7 @@ export interface StreamingPolicies {
      * the number of items returned from a collection. The service returns the
      * number of available items up to but not greater than the specified value n.
      *
-     * @param {string} [options.orderby] Specifies the the key by which the result
+     * @param {string} [options.orderby] Specifies the key by which the result
      * collection should be ordered.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -4460,7 +4452,7 @@ export interface StreamingPolicies {
      *
      * @param {string}
      * [parameters.envelopeEncryption.customKeyAcquisitionUrlTemplate]
-     * KeyAcquistionUrlTemplate is used to point to user specified service to
+     * KeyAcquisitionUrlTemplate is used to point to user specified service to
      * delivery content keys
      *
      * @param {object} [parameters.commonEncryptionCenc] Configuration of
@@ -4476,7 +4468,7 @@ export interface StreamingPolicies {
      * default content key for each encryption scheme and separate content keys for
      * specific tracks
      *
-     * @param {object} [parameters.commonEncryptionCenc.drm] Configuration of DRMs
+     * @param {object} [parameters.commonEncryptionCenc.drm] Configuration of DRM
      * for CommonEncryptionCenc encryption scheme
      *
      * @param {object} [parameters.commonEncryptionCenc.drm.playReady] PlayReady
@@ -4513,7 +4505,7 @@ export interface StreamingPolicies {
      * [parameters.commonEncryptionCbcs.contentKeys.keyToTrackMappings]
      * Representing tracks needs separate content key
      *
-     * @param {object} [parameters.commonEncryptionCbcs.drm] Configuration of DRMs
+     * @param {object} [parameters.commonEncryptionCbcs.drm] Configuration of DRM
      * for current encryption scheme
      *
      * @param {object} [parameters.commonEncryptionCbcs.drm.fairPlay] FairPlay
@@ -4610,7 +4602,7 @@ export interface StreamingPolicies {
      *
      * @param {string}
      * [parameters.envelopeEncryption.customKeyAcquisitionUrlTemplate]
-     * KeyAcquistionUrlTemplate is used to point to user specified service to
+     * KeyAcquisitionUrlTemplate is used to point to user specified service to
      * delivery content keys
      *
      * @param {object} [parameters.commonEncryptionCenc] Configuration of
@@ -4626,7 +4618,7 @@ export interface StreamingPolicies {
      * default content key for each encryption scheme and separate content keys for
      * specific tracks
      *
-     * @param {object} [parameters.commonEncryptionCenc.drm] Configuration of DRMs
+     * @param {object} [parameters.commonEncryptionCenc.drm] Configuration of DRM
      * for CommonEncryptionCenc encryption scheme
      *
      * @param {object} [parameters.commonEncryptionCenc.drm.playReady] PlayReady
@@ -4663,7 +4655,7 @@ export interface StreamingPolicies {
      * [parameters.commonEncryptionCbcs.contentKeys.keyToTrackMappings]
      * Representing tracks needs separate content key
      *
-     * @param {object} [parameters.commonEncryptionCbcs.drm] Configuration of DRMs
+     * @param {object} [parameters.commonEncryptionCbcs.drm] Configuration of DRM
      * for current encryption scheme
      *
      * @param {object} [parameters.commonEncryptionCbcs.drm.fairPlay] FairPlay
@@ -4904,7 +4896,7 @@ export interface StreamingLocators {
      * the number of items returned from a collection. The service returns the
      * number of available items up to but not greater than the specified value n.
      *
-     * @param {string} [options.orderby] Specifies the the key by which the result
+     * @param {string} [options.orderby] Specifies the key by which the result
      * collection should be ordered.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -4936,7 +4928,7 @@ export interface StreamingLocators {
      * the number of items returned from a collection. The service returns the
      * number of available items up to but not greater than the specified value n.
      *
-     * @param {string} [options.orderby] Specifies the the key by which the result
+     * @param {string} [options.orderby] Specifies the key by which the result
      * collection should be ordered.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -5650,7 +5642,7 @@ export interface LiveEvents {
      *
      * @param {string} [parameters.encoding.encodingType] The encoding type for
      * Live Event.  This value is specified at creation time and cannot be updated.
-     * Possible values include: 'None', 'Basic'
+     * Possible values include: 'None', 'Basic', 'Standard'
      *
      * @param {string} [parameters.encoding.presetName] The encoding preset name.
      * This value is specified at creation time and cannot be updated.
@@ -5763,7 +5755,7 @@ export interface LiveEvents {
      *
      * @param {string} [parameters.encoding.encodingType] The encoding type for
      * Live Event.  This value is specified at creation time and cannot be updated.
-     * Possible values include: 'None', 'Basic'
+     * Possible values include: 'None', 'Basic', 'Standard'
      *
      * @param {string} [parameters.encoding.presetName] The encoding preset name.
      * This value is specified at creation time and cannot be updated.
@@ -5893,7 +5885,7 @@ export interface LiveEvents {
      *
      * @param {string} [parameters.encoding.encodingType] The encoding type for
      * Live Event.  This value is specified at creation time and cannot be updated.
-     * Possible values include: 'None', 'Basic'
+     * Possible values include: 'None', 'Basic', 'Standard'
      *
      * @param {string} [parameters.encoding.presetName] The encoding preset name.
      * This value is specified at creation time and cannot be updated.
@@ -6001,7 +5993,7 @@ export interface LiveEvents {
      *
      * @param {string} [parameters.encoding.encodingType] The encoding type for
      * Live Event.  This value is specified at creation time and cannot be updated.
-     * Possible values include: 'None', 'Basic'
+     * Possible values include: 'None', 'Basic', 'Standard'
      *
      * @param {string} [parameters.encoding.presetName] The encoding preset name.
      * This value is specified at creation time and cannot be updated.
@@ -6412,7 +6404,7 @@ export interface LiveEvents {
      *
      * @param {string} [parameters.encoding.encodingType] The encoding type for
      * Live Event.  This value is specified at creation time and cannot be updated.
-     * Possible values include: 'None', 'Basic'
+     * Possible values include: 'None', 'Basic', 'Standard'
      *
      * @param {string} [parameters.encoding.presetName] The encoding preset name.
      * This value is specified at creation time and cannot be updated.
@@ -6525,7 +6517,7 @@ export interface LiveEvents {
      *
      * @param {string} [parameters.encoding.encodingType] The encoding type for
      * Live Event.  This value is specified at creation time and cannot be updated.
-     * Possible values include: 'None', 'Basic'
+     * Possible values include: 'None', 'Basic', 'Standard'
      *
      * @param {string} [parameters.encoding.presetName] The encoding preset name.
      * This value is specified at creation time and cannot be updated.
@@ -6655,7 +6647,7 @@ export interface LiveEvents {
      *
      * @param {string} [parameters.encoding.encodingType] The encoding type for
      * Live Event.  This value is specified at creation time and cannot be updated.
-     * Possible values include: 'None', 'Basic'
+     * Possible values include: 'None', 'Basic', 'Standard'
      *
      * @param {string} [parameters.encoding.presetName] The encoding preset name.
      * This value is specified at creation time and cannot be updated.
@@ -6763,7 +6755,7 @@ export interface LiveEvents {
      *
      * @param {string} [parameters.encoding.encodingType] The encoding type for
      * Live Event.  This value is specified at creation time and cannot be updated.
-     * Possible values include: 'None', 'Basic'
+     * Possible values include: 'None', 'Basic', 'Standard'
      *
      * @param {string} [parameters.encoding.presetName] The encoding preset name.
      * This value is specified at creation time and cannot be updated.
