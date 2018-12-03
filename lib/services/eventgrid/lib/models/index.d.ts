@@ -1462,7 +1462,7 @@ export interface MediaLiveEventIncomingVideoStreamsOutOfSyncEventData {
  * @class
  * Initializes a new instance of the MediaLiveEventIncomingDataChunkDroppedEventData class.
  * @constructor
- * Ingest fragment dropped event event data.
+ * Ingest fragment dropped event data.
  *
  * @member {string} [timestamp] Gets the timestamp of the data chunk dropped.
  * @member {string} [trackType] Gets the type of the track (Audio / Video).
@@ -1486,7 +1486,7 @@ export interface MediaLiveEventIncomingDataChunkDroppedEventData {
  * @class
  * Initializes a new instance of the MediaLiveEventIngestHeartbeatEventData class.
  * @constructor
- * Ingest fragment dropped event event data.
+ * Ingest fragment dropped event data.
  *
  * @member {string} [trackType] Gets the type of the track (Audio / Video).
  * @member {string} [trackName] Gets the track name.
