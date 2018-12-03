@@ -12,6 +12,16 @@ import { ServiceClient, ServiceClientOptions, ServiceClientCredentials } from 'm
 import * as models from "./models";
 import * as operations from "./operations";
 
+/**
+ * EntitySearchAPIClientOptions for EntitySearchAPIClient.
+ */
+declare interface EntitySearchAPIClientOptions extends ServiceClientOptions {
+  /**
+   * @property {string} [endpoint] - Supported Cognitive Services endpoints (protocol and hostname, for example: "https://westus.api.cognitive.microsoft.com", "https://api.cognitive.microsoft.com").
+   */
+  endpoint?: string;
+}
+
 export default class EntitySearchAPIClient extends ServiceClient {
   /**
    * @class
@@ -19,8 +29,6 @@ export default class EntitySearchAPIClient extends ServiceClient {
    * @constructor
    *
    * @param {credentials} credentials - Subscription credentials which uniquely identify client subscription.
-   *
-   * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
    *
@@ -31,10 +39,14 @@ export default class EntitySearchAPIClient extends ServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
+   * @param {string} [options.endpoint] - Supported Cognitive Services endpoints (protocol and hostname, for example: "https://westus.api.cognitive.microsoft.com", "https://api.cognitive.microsoft.com").
+   *
    */
-  constructor(credentials: ServiceClientCredentials, baseUri?: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, options?: EntitySearchAPIClientOptions);
 
   credentials: ServiceClientCredentials;
+
+  endpoint: string;
 
   // Operation groups
   entitiesOperations: operations.EntitiesOperations;
