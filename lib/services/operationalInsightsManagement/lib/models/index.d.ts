@@ -22,11 +22,11 @@ export { CloudError } from 'ms-rest-azure';
  * @constructor
  * Display metadata associated with the operation.
  *
- * @member {string} [provider] Service provider: Microsoft
+ * @property {string} [provider] Service provider: Microsoft
  * OperationsManagement.
- * @member {string} [resource] Resource on which the operation is performed
+ * @property {string} [resource] Resource on which the operation is performed
  * etc.
- * @member {string} [operation] Type of operation: get, read, delete, etc.
+ * @property {string} [operation] Type of operation: get, read, delete, etc.
  */
 export interface OperationDisplay {
   provider?: string;
@@ -40,13 +40,13 @@ export interface OperationDisplay {
  * @constructor
  * Supported operation of OperationalInsights resource provider.
  *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] Display metadata associated with the operation.
- * @member {string} [display.provider] Service provider: Microsoft
+ * @property {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @property {object} [display] Display metadata associated with the operation.
+ * @property {string} [display.provider] Service provider: Microsoft
  * OperationsManagement.
- * @member {string} [display.resource] Resource on which the operation is
+ * @property {string} [display.resource] Resource on which the operation is
  * performed etc.
- * @member {string} [display.operation] Type of operation: get, read, delete,
+ * @property {string} [display.operation] Type of operation: get, read, delete,
  * etc.
  */
 export interface Operation {
@@ -60,7 +60,7 @@ export interface Operation {
  * @constructor
  * The top level Linked service resource container.
  *
- * @member {string} resourceId The resource id of the resource that will be
+ * @property {string} resourceId The resource id of the resource that will be
  * linked to the workspace.
  */
 export interface LinkedService extends BaseResource {
@@ -73,10 +73,10 @@ export interface LinkedService extends BaseResource {
  * @constructor
  * Datasources under OMS Workspace.
  *
- * @member {object} properties The data source properties in raw json format,
+ * @property {object} properties The data source properties in raw json format,
  * each kind of data source have it's own schema.
- * @member {string} [eTag] The ETag of the data source.
- * @member {string} kind Possible values include: 'AzureActivityLog',
+ * @property {string} [eTag] The ETag of the data source.
+ * @property {string} kind Possible values include: 'AzureActivityLog',
  * 'ChangeTrackingPath', 'ChangeTrackingDefaultPath',
  * 'ChangeTrackingDefaultRegistry', 'ChangeTrackingCustomRegistry',
  * 'CustomLog', 'CustomLogCollection', 'GenericDataSource', 'IISLogs',
@@ -95,7 +95,7 @@ export interface DataSource extends BaseResource {
  * @constructor
  * DataSource filter. Right now, only filter by kind is supported.
  *
- * @member {string} [kind] Possible values include: 'AzureActivityLog',
+ * @property {string} [kind] Possible values include: 'AzureActivityLog',
  * 'ChangeTrackingPath', 'ChangeTrackingDefaultPath',
  * 'ChangeTrackingDefaultRegistry', 'ChangeTrackingCustomRegistry',
  * 'CustomLog', 'CustomLogCollection', 'GenericDataSource', 'IISLogs',
@@ -113,9 +113,9 @@ export interface DataSourceFilter {
  * Intelligence Pack containing a string name and boolean indicating if it's
  * enabled.
  *
- * @member {string} [name] The name of the intelligence pack.
- * @member {boolean} [enabled] The enabled boolean for the intelligence pack.
- * @member {string} [displayName] The display name of the intelligence pack.
+ * @property {string} [name] The name of the intelligence pack.
+ * @property {boolean} [enabled] The enabled boolean for the intelligence pack.
+ * @property {string} [displayName] The display name of the intelligence pack.
  */
 export interface IntelligencePack {
   name?: string;
@@ -129,8 +129,8 @@ export interface IntelligencePack {
  * @constructor
  * The shared keys for a workspace.
  *
- * @member {string} [primarySharedKey] The primary shared key of a workspace.
- * @member {string} [secondarySharedKey] The secondary shared key of a
+ * @property {string} [primarySharedKey] The primary shared key of a workspace.
+ * @property {string} [secondarySharedKey] The secondary shared key of a
  * workspace.
  */
 export interface SharedKeys {
@@ -144,8 +144,8 @@ export interface SharedKeys {
  * @constructor
  * The name of a metric.
  *
- * @member {string} [value] The system name of the metric.
- * @member {string} [localizedValue] The localized name of the metric.
+ * @property {string} [value] The system name of the metric.
+ * @property {string} [localizedValue] The localized name of the metric.
  */
 export interface MetricName {
   value?: string;
@@ -158,14 +158,15 @@ export interface MetricName {
  * @constructor
  * A metric describing the usage of a resource.
  *
- * @member {object} [name] The name of the metric.
- * @member {string} [name.value] The system name of the metric.
- * @member {string} [name.localizedValue] The localized name of the metric.
- * @member {string} [unit] The units used for the metric.
- * @member {number} [currentValue] The current value of the metric.
- * @member {number} [limit] The quota limit for the metric.
- * @member {date} [nextResetTime] The time that the metric's value will reset.
- * @member {string} [quotaPeriod] The quota period that determines the length
+ * @property {object} [name] The name of the metric.
+ * @property {string} [name.value] The system name of the metric.
+ * @property {string} [name.localizedValue] The localized name of the metric.
+ * @property {string} [unit] The units used for the metric.
+ * @property {number} [currentValue] The current value of the metric.
+ * @property {number} [limit] The quota limit for the metric.
+ * @property {date} [nextResetTime] The time that the metric's value will
+ * reset.
+ * @property {string} [quotaPeriod] The quota period that determines the length
  * of time between value resets.
  */
 export interface UsageMetric {
@@ -183,18 +184,19 @@ export interface UsageMetric {
  * @constructor
  * A management group that is connected to a workspace
  *
- * @member {number} [serverCount] The number of servers connected to the
+ * @property {number} [serverCount] The number of servers connected to the
  * management group.
- * @member {boolean} [isGateway] Gets or sets a value indicating whether the
+ * @property {boolean} [isGateway] Gets or sets a value indicating whether the
  * management group is a gateway.
- * @member {string} [name] The name of the management group.
- * @member {string} [id] The unique ID of the management group.
- * @member {date} [created] The datetime that the management group was created.
- * @member {date} [dataReceived] The last datetime that the management group
+ * @property {string} [name] The name of the management group.
+ * @property {string} [id] The unique ID of the management group.
+ * @property {date} [created] The datetime that the management group was
+ * created.
+ * @property {date} [dataReceived] The last datetime that the management group
  * received data.
- * @member {string} [version] The version of System Center that is managing the
- * management group.
- * @member {string} [sku] The SKU of System Center that is managing the
+ * @property {string} [version] The version of System Center that is managing
+ * the management group.
+ * @property {string} [sku] The SKU of System Center that is managing the
  * management group.
  */
 export interface ManagementGroup {
@@ -214,8 +216,9 @@ export interface ManagementGroup {
  * @constructor
  * The SKU (tier) of a workspace.
  *
- * @member {string} name The name of the SKU. Possible values include: 'Free',
- * 'Standard', 'Premium', 'Unlimited', 'PerNode', 'PerGB2018', 'Standalone'
+ * @property {string} name The name of the SKU. Possible values include:
+ * 'Free', 'Standard', 'Premium', 'Unlimited', 'PerNode', 'PerGB2018',
+ * 'Standalone'
  */
 export interface Sku {
   name: string;
@@ -227,27 +230,27 @@ export interface Sku {
  * @constructor
  * The top level Workspace resource container.
  *
- * @member {string} [provisioningState] The provisioning state of the
+ * @property {string} [provisioningState] The provisioning state of the
  * workspace. Possible values include: 'Creating', 'Succeeded', 'Failed',
  * 'Canceled', 'Deleting', 'ProvisioningAccount'
- * @member {string} [source] The source of the workspace.  Source defines where
- * the workspace was created. 'Azure' implies it was created in Azure.
+ * @property {string} [source] The source of the workspace.  Source defines
+ * where the workspace was created. 'Azure' implies it was created in Azure.
  * 'External' implies it was created via the Operational Insights Portal. This
  * value is set on the service side and read-only on the client side.
- * @member {string} [customerId] The ID associated with the workspace.  Setting
- * this value at creation time allows the workspace being created to be linked
- * to an existing workspace.
- * @member {string} [portalUrl] The URL of the Operational Insights portal for
- * this workspace.  This value is set on the service side and read-only on the
- * client side.
- * @member {object} [sku] The SKU of the workspace.
- * @member {string} [sku.name] The name of the SKU. Possible values include:
+ * @property {string} [customerId] The ID associated with the workspace.
+ * Setting this value at creation time allows the workspace being created to be
+ * linked to an existing workspace.
+ * @property {string} [portalUrl] The URL of the Operational Insights portal
+ * for this workspace.  This value is set on the service side and read-only on
+ * the client side.
+ * @property {object} [sku] The SKU of the workspace.
+ * @property {string} [sku.name] The name of the SKU. Possible values include:
  * 'Free', 'Standard', 'Premium', 'Unlimited', 'PerNode', 'PerGB2018',
  * 'Standalone'
- * @member {number} [retentionInDays] The workspace data retention in days. -1
- * means Unlimited retention for the Unlimited Sku. 730 days is the maximum
+ * @property {number} [retentionInDays] The workspace data retention in days.
+ * -1 means Unlimited retention for the Unlimited Sku. 730 days is the maximum
  * allowed for all other Skus.
- * @member {string} [eTag] The ETag of the workspace.
+ * @property {string} [eTag] The ETag of the workspace.
  */
 export interface Workspace extends BaseResource {
   provisioningState?: string;
@@ -265,11 +268,11 @@ export interface Workspace extends BaseResource {
  * @constructor
  * The resource definition.
  *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
- * @member {string} [location] Resource location
- * @member {object} [tags] Resource tags
+ * @property {string} [id] Resource Id
+ * @property {string} [name] Resource name
+ * @property {string} [type] Resource type
+ * @property {string} [location] Resource location
+ * @property {object} [tags] Resource tags
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -285,10 +288,10 @@ export interface Resource extends BaseResource {
  * @constructor
  * Common properties of proxy resource.
  *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
- * @member {object} [tags] Resource tags
+ * @property {string} [id] Resource ID.
+ * @property {string} [name] Resource name.
+ * @property {string} [type] Resource type.
+ * @property {object} [tags] Resource tags
  */
 export interface ProxyResource {
   readonly id?: string;
@@ -314,7 +317,8 @@ export interface LinkedServiceListResult extends Array<LinkedService> {
  * @constructor
  * The list data source by workspace operation response.
  *
- * @member {string} [nextLink] The link (url) to the next page of datasources.
+ * @property {string} [nextLink] The link (url) to the next page of
+ * datasources.
  */
 export interface DataSourceListResult extends Array<DataSource> {
   nextLink?: string;
@@ -334,7 +338,7 @@ export interface WorkspaceListUsagesResult extends Array<UsageMetric> {
  * @class
  * Initializes a new instance of the WorkspaceListManagementGroupsResult class.
  * @constructor
- * The list workspace managmement groups operation response.
+ * The list workspace management groups operation response.
  *
  */
 export interface WorkspaceListManagementGroupsResult extends Array<ManagementGroup> {
@@ -356,7 +360,7 @@ export interface WorkspaceListResult extends Array<Workspace> {
  * @constructor
  * Result of the request to list solution operations.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @property {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {
