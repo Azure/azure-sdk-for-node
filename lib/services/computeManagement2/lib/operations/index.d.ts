@@ -2772,7 +2772,7 @@ export interface VirtualMachines {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -3197,7 +3197,7 @@ export interface VirtualMachines {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -3641,7 +3641,7 @@ export interface VirtualMachines {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -4064,7 +4064,7 @@ export interface VirtualMachines {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -5568,7 +5568,7 @@ export interface VirtualMachines {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -5993,7 +5993,7 @@ export interface VirtualMachines {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -6437,7 +6437,7 @@ export interface VirtualMachines {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -6860,7 +6860,7 @@ export interface VirtualMachines {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -9313,7 +9313,7 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * [parameters.virtualMachineProfile.networkProfile.healthProbe.id] The ARM
      * resource id in the form of
-     * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+     * /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
      *
      * @param {array}
      * [parameters.virtualMachineProfile.networkProfile.networkInterfaceConfigurations]
@@ -9373,7 +9373,7 @@ export interface VirtualMachineScaleSets {
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
      *
-     * @param {boolean} [parameters.zoneBalance] Whether to force stictly even
+     * @param {boolean} [parameters.zoneBalance] Whether to force strictly even
      * Virtual Machine distribution cross x-zones in case there is zone outage.
      *
      * @param {number} [parameters.platformFaultDomainCount] Fault Domain count for
@@ -9772,7 +9772,7 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * [parameters.virtualMachineProfile.networkProfile.healthProbe.id] The ARM
      * resource id in the form of
-     * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+     * /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
      *
      * @param {array}
      * [parameters.virtualMachineProfile.networkProfile.networkInterfaceConfigurations]
@@ -9832,7 +9832,7 @@ export interface VirtualMachineScaleSets {
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
      *
-     * @param {boolean} [parameters.zoneBalance] Whether to force stictly even
+     * @param {boolean} [parameters.zoneBalance] Whether to force strictly even
      * Virtual Machine distribution cross x-zones in case there is zone outage.
      *
      * @param {number} [parameters.platformFaultDomainCount] Fault Domain count for
@@ -12068,7 +12068,7 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * [parameters.virtualMachineProfile.networkProfile.healthProbe.id] The ARM
      * resource id in the form of
-     * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+     * /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
      *
      * @param {array}
      * [parameters.virtualMachineProfile.networkProfile.networkInterfaceConfigurations]
@@ -12128,7 +12128,7 @@ export interface VirtualMachineScaleSets {
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
      *
-     * @param {boolean} [parameters.zoneBalance] Whether to force stictly even
+     * @param {boolean} [parameters.zoneBalance] Whether to force strictly even
      * Virtual Machine distribution cross x-zones in case there is zone outage.
      *
      * @param {number} [parameters.platformFaultDomainCount] Fault Domain count for
@@ -12527,7 +12527,7 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * [parameters.virtualMachineProfile.networkProfile.healthProbe.id] The ARM
      * resource id in the form of
-     * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+     * /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
      *
      * @param {array}
      * [parameters.virtualMachineProfile.networkProfile.networkInterfaceConfigurations]
@@ -12587,7 +12587,7 @@ export interface VirtualMachineScaleSets {
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
      *
-     * @param {boolean} [parameters.zoneBalance] Whether to force stictly even
+     * @param {boolean} [parameters.zoneBalance] Whether to force strictly even
      * Virtual Machine distribution cross x-zones in case there is zone outage.
      *
      * @param {number} [parameters.platformFaultDomainCount] Fault Domain count for
@@ -15866,7 +15866,7 @@ export interface VirtualMachineScaleSetVMs {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -16279,7 +16279,7 @@ export interface VirtualMachineScaleSetVMs {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -17575,7 +17575,7 @@ export interface VirtualMachineScaleSetVMs {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -17988,7 +17988,7 @@ export interface VirtualMachineScaleSetVMs {
      * nodes to maximize availability. For more information about availability
      * sets, see [Manage the availability of virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * <br><br> For more information on Azure planned maintenance, see [Planned
      * maintenance for virtual machines in
      * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
      * <br><br> Currently, a VM can only be added to availability set at creation
@@ -18608,7 +18608,7 @@ export interface LogAnalytics {
      * @param {boolean} [parameters.groupByThrottlePolicy] Group query result by
      * Throttle Policy applied.
      *
-     * @param {boolean} [parameters.groupByOperationName] Group query result by  by
+     * @param {boolean} [parameters.groupByOperationName] Group query result by
      * Operation Name.
      *
      * @param {boolean} [parameters.groupByResourceName] Group query result by
@@ -18651,7 +18651,7 @@ export interface LogAnalytics {
      * @param {boolean} [parameters.groupByThrottlePolicy] Group query result by
      * Throttle Policy applied.
      *
-     * @param {boolean} [parameters.groupByOperationName] Group query result by  by
+     * @param {boolean} [parameters.groupByOperationName] Group query result by
      * Operation Name.
      *
      * @param {boolean} [parameters.groupByResourceName] Group query result by
@@ -18710,7 +18710,7 @@ export interface LogAnalytics {
      * @param {boolean} [parameters.groupByThrottlePolicy] Group query result by
      * Throttle Policy applied.
      *
-     * @param {boolean} [parameters.groupByOperationName] Group query result by  by
+     * @param {boolean} [parameters.groupByOperationName] Group query result by
      * Operation Name.
      *
      * @param {boolean} [parameters.groupByResourceName] Group query result by
@@ -18749,7 +18749,7 @@ export interface LogAnalytics {
      * @param {boolean} [parameters.groupByThrottlePolicy] Group query result by
      * Throttle Policy applied.
      *
-     * @param {boolean} [parameters.groupByOperationName] Group query result by  by
+     * @param {boolean} [parameters.groupByOperationName] Group query result by
      * Operation Name.
      *
      * @param {boolean} [parameters.groupByResourceName] Group query result by
@@ -18812,7 +18812,7 @@ export interface LogAnalytics {
      * @param {boolean} [parameters.groupByThrottlePolicy] Group query result by
      * Throttle Policy applied.
      *
-     * @param {boolean} [parameters.groupByOperationName] Group query result by  by
+     * @param {boolean} [parameters.groupByOperationName] Group query result by
      * Operation Name.
      *
      * @param {boolean} [parameters.groupByResourceName] Group query result by
@@ -18855,7 +18855,7 @@ export interface LogAnalytics {
      * @param {boolean} [parameters.groupByThrottlePolicy] Group query result by
      * Throttle Policy applied.
      *
-     * @param {boolean} [parameters.groupByOperationName] Group query result by  by
+     * @param {boolean} [parameters.groupByOperationName] Group query result by
      * Operation Name.
      *
      * @param {boolean} [parameters.groupByResourceName] Group query result by
@@ -18914,7 +18914,7 @@ export interface LogAnalytics {
      * @param {boolean} [parameters.groupByThrottlePolicy] Group query result by
      * Throttle Policy applied.
      *
-     * @param {boolean} [parameters.groupByOperationName] Group query result by  by
+     * @param {boolean} [parameters.groupByOperationName] Group query result by
      * Operation Name.
      *
      * @param {boolean} [parameters.groupByResourceName] Group query result by
@@ -18953,7 +18953,7 @@ export interface LogAnalytics {
      * @param {boolean} [parameters.groupByThrottlePolicy] Group query result by
      * Throttle Policy applied.
      *
-     * @param {boolean} [parameters.groupByOperationName] Group query result by  by
+     * @param {boolean} [parameters.groupByOperationName] Group query result by
      * Operation Name.
      *
      * @param {boolean} [parameters.groupByResourceName] Group query result by
@@ -22358,7 +22358,7 @@ export interface Galleries {
      * Image Gallery operation.
      *
      * @param {string} [gallery.description] The description of this Shared Image
-     * Gallery resource. This property is updateable.
+     * Gallery resource. This property is updatable.
      *
      * @param {object} [gallery.identifier]
      *
@@ -22392,7 +22392,7 @@ export interface Galleries {
      * Image Gallery operation.
      *
      * @param {string} [gallery.description] The description of this Shared Image
-     * Gallery resource. This property is updateable.
+     * Gallery resource. This property is updatable.
      *
      * @param {object} [gallery.identifier]
      *
@@ -22670,7 +22670,7 @@ export interface Galleries {
      * Image Gallery operation.
      *
      * @param {string} [gallery.description] The description of this Shared Image
-     * Gallery resource. This property is updateable.
+     * Gallery resource. This property is updatable.
      *
      * @param {object} [gallery.identifier]
      *
@@ -22704,7 +22704,7 @@ export interface Galleries {
      * Image Gallery operation.
      *
      * @param {string} [gallery.description] The description of this Shared Image
-     * Gallery resource. This property is updateable.
+     * Gallery resource. This property is updatable.
      *
      * @param {object} [gallery.identifier]
      *
@@ -22944,7 +22944,7 @@ export interface GalleryImages {
      * gallery image operation.
      *
      * @param {string} [galleryImage.description] The description of this gallery
-     * Image Definition resource. This property is updateable.
+     * Image Definition resource. This property is updatable.
      *
      * @param {string} [galleryImage.eula] The Eula agreement for the gallery Image
      * Definition.
@@ -22964,7 +22964,7 @@ export interface GalleryImages {
      *
      * @param {date} [galleryImage.endOfLifeDate] The end of life date of the
      * gallery Image Definition. This property can be used for decommissioning
-     * purposes. This property is updateable.
+     * purposes. This property is updatable.
      *
      * @param {object} galleryImage.identifier
      *
@@ -23035,7 +23035,7 @@ export interface GalleryImages {
      * gallery image operation.
      *
      * @param {string} [galleryImage.description] The description of this gallery
-     * Image Definition resource. This property is updateable.
+     * Image Definition resource. This property is updatable.
      *
      * @param {string} [galleryImage.eula] The Eula agreement for the gallery Image
      * Definition.
@@ -23055,7 +23055,7 @@ export interface GalleryImages {
      *
      * @param {date} [galleryImage.endOfLifeDate] The end of life date of the
      * gallery Image Definition. This property can be used for decommissioning
-     * purposes. This property is updateable.
+     * purposes. This property is updatable.
      *
      * @param {object} galleryImage.identifier
      *
@@ -23339,7 +23339,7 @@ export interface GalleryImages {
      * gallery image operation.
      *
      * @param {string} [galleryImage.description] The description of this gallery
-     * Image Definition resource. This property is updateable.
+     * Image Definition resource. This property is updatable.
      *
      * @param {string} [galleryImage.eula] The Eula agreement for the gallery Image
      * Definition.
@@ -23359,7 +23359,7 @@ export interface GalleryImages {
      *
      * @param {date} [galleryImage.endOfLifeDate] The end of life date of the
      * gallery Image Definition. This property can be used for decommissioning
-     * purposes. This property is updateable.
+     * purposes. This property is updatable.
      *
      * @param {object} galleryImage.identifier
      *
@@ -23430,7 +23430,7 @@ export interface GalleryImages {
      * gallery image operation.
      *
      * @param {string} [galleryImage.description] The description of this gallery
-     * Image Definition resource. This property is updateable.
+     * Image Definition resource. This property is updatable.
      *
      * @param {string} [galleryImage.eula] The Eula agreement for the gallery Image
      * Definition.
@@ -23450,7 +23450,7 @@ export interface GalleryImages {
      *
      * @param {date} [galleryImage.endOfLifeDate] The end of life date of the
      * gallery Image Definition. This property can be used for decommissioning
-     * purposes. This property is updateable.
+     * purposes. This property is updatable.
      *
      * @param {object} galleryImage.identifier
      *
@@ -23679,7 +23679,7 @@ export interface GalleryImageVersions {
      * @param {number} [galleryImageVersion.publishingProfile.replicaCount] The
      * number of replicas of the Image Version to be created per region. This
      * property would take effect for a region when regionalReplicaCount is not
-     * specified. This property is updateable.
+     * specified. This property is updatable.
      *
      * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
      * If set to true, Virtual Machines deployed from the latest version of the
@@ -23687,11 +23687,11 @@ export interface GalleryImageVersions {
      *
      * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
      * of life date of the gallery Image Version. This property can be used for
-     * decommissioning purposes. This property is updateable.
+     * decommissioning purposes. This property is updatable.
      *
      * @param {array} [galleryImageVersion.publishingProfile.targetRegions] The
      * target regions where the Image Version is going to be replicated to. This
-     * property is updateable.
+     * property is updatable.
      *
      * @param {object} galleryImageVersion.publishingProfile.source
      *
@@ -23741,7 +23741,7 @@ export interface GalleryImageVersions {
      * @param {number} [galleryImageVersion.publishingProfile.replicaCount] The
      * number of replicas of the Image Version to be created per region. This
      * property would take effect for a region when regionalReplicaCount is not
-     * specified. This property is updateable.
+     * specified. This property is updatable.
      *
      * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
      * If set to true, Virtual Machines deployed from the latest version of the
@@ -23749,11 +23749,11 @@ export interface GalleryImageVersions {
      *
      * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
      * of life date of the gallery Image Version. This property can be used for
-     * decommissioning purposes. This property is updateable.
+     * decommissioning purposes. This property is updatable.
      *
      * @param {array} [galleryImageVersion.publishingProfile.targetRegions] The
      * target regions where the Image Version is going to be replicated to. This
-     * property is updateable.
+     * property is updatable.
      *
      * @param {object} galleryImageVersion.publishingProfile.source
      *
@@ -24041,7 +24041,7 @@ export interface GalleryImageVersions {
      * @param {number} [galleryImageVersion.publishingProfile.replicaCount] The
      * number of replicas of the Image Version to be created per region. This
      * property would take effect for a region when regionalReplicaCount is not
-     * specified. This property is updateable.
+     * specified. This property is updatable.
      *
      * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
      * If set to true, Virtual Machines deployed from the latest version of the
@@ -24049,11 +24049,11 @@ export interface GalleryImageVersions {
      *
      * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
      * of life date of the gallery Image Version. This property can be used for
-     * decommissioning purposes. This property is updateable.
+     * decommissioning purposes. This property is updatable.
      *
      * @param {array} [galleryImageVersion.publishingProfile.targetRegions] The
      * target regions where the Image Version is going to be replicated to. This
-     * property is updateable.
+     * property is updatable.
      *
      * @param {object} galleryImageVersion.publishingProfile.source
      *
@@ -24103,7 +24103,7 @@ export interface GalleryImageVersions {
      * @param {number} [galleryImageVersion.publishingProfile.replicaCount] The
      * number of replicas of the Image Version to be created per region. This
      * property would take effect for a region when regionalReplicaCount is not
-     * specified. This property is updateable.
+     * specified. This property is updatable.
      *
      * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
      * If set to true, Virtual Machines deployed from the latest version of the
@@ -24111,11 +24111,11 @@ export interface GalleryImageVersions {
      *
      * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
      * of life date of the gallery Image Version. This property can be used for
-     * decommissioning purposes. This property is updateable.
+     * decommissioning purposes. This property is updatable.
      *
      * @param {array} [galleryImageVersion.publishingProfile.targetRegions] The
      * target regions where the Image Version is going to be replicated to. This
-     * property is updateable.
+     * property is updatable.
      *
      * @param {object} galleryImageVersion.publishingProfile.source
      *

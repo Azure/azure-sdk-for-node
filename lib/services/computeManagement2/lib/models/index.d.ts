@@ -119,7 +119,7 @@ export interface Resource extends BaseResource {
  * set are allocated to different nodes to maximize availability. For more
  * information about availability sets, see [Manage the availability of virtual
  * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
- * <br><br> For more information on Azure planned maintainance, see [Planned
+ * <br><br> For more information on Azure planned maintenance, see [Planned
  * maintenance for virtual machines in
  * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
  * <br><br> Currently, a VM can only be added to availability set at creation
@@ -496,7 +496,7 @@ export interface Usage {
  * @class
  * Initializes a new instance of the VirtualMachineReimageParameters class.
  * @constructor
- * Paramaters for Reimaging Virtual Machine. NOTE: Virtual Machine OS disk will
+ * Parameters for Reimaging Virtual Machine. NOTE: Virtual Machine OS disk will
  * always be reimaged
  *
  * @member {boolean} [tempDisk] Specifies whether to reimage temp disk. Default
@@ -739,7 +739,7 @@ export interface VirtualHardDisk {
  * @class
  * Initializes a new instance of the DiffDiskSettings class.
  * @constructor
- * Describes the parameters of ephemeral disk settings that can be be specified
+ * Describes the parameters of ephemeral disk settings that can be specified
  * for operating system disk. <br><br> NOTE: The ephemeral disk settings can
  * only be specified for managed disk.
  *
@@ -1190,7 +1190,7 @@ export interface LinuxConfiguration {
  * added. The specified certificate store is implicitly in the LocalMachine
  * account. <br><br>For Linux VMs, the certificate file is placed under the
  * /var/lib/waagent directory, with the file name <UppercaseThumbprint>.crt for
- * the X509 certificate file and <UppercaseThumbpring>.prv for private key.
+ * the X509 certificate file and <UppercaseThumbprint>.prv for private key.
  * Both of these files are .pem formatted.
  */
 export interface VaultCertificate {
@@ -1911,7 +1911,7 @@ export interface VirtualMachineInstanceView {
  * nodes to maximize availability. For more information about availability
  * sets, see [Manage the availability of virtual
  * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
- * <br><br> For more information on Azure planned maintainance, see [Planned
+ * <br><br> For more information on Azure planned maintenance, see [Planned
  * maintenance for virtual machines in
  * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
  * <br><br> Currently, a VM can only be added to availability set at creation
@@ -2332,7 +2332,7 @@ export interface VirtualMachine extends Resource {
  * nodes to maximize availability. For more information about availability
  * sets, see [Manage the availability of virtual
  * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
- * <br><br> For more information on Azure planned maintainance, see [Planned
+ * <br><br> For more information on Azure planned maintenance, see [Planned
  * maintenance for virtual machines in
  * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
  * <br><br> Currently, a VM can only be added to availability set at creation
@@ -3249,7 +3249,7 @@ export interface VirtualMachineScaleSetUpdateStorageProfile {
  * The API entity reference.
  *
  * @member {string} [id] The ARM resource id in the form of
- * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+ * /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
  */
 export interface ApiEntityReference {
   id?: string;
@@ -3345,7 +3345,7 @@ export interface VirtualMachineScaleSetUpdatePublicIPAddressConfiguration {
  * @member {string} name The IP configuration name.
  * @member {object} [subnet] Specifies the identifier of the subnet.
  * @member {string} [subnet.id] The ARM resource id in the form of
- * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+ * /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
  * @member {boolean} [primary] Specifies the primary network interface in case
  * the virtual machine has more than 1 network interface.
  * @member {object} [publicIPAddressConfiguration] The
@@ -3406,7 +3406,7 @@ export interface VirtualMachineScaleSetIPConfiguration extends SubResource {
  * @member {string} [name] The IP configuration name.
  * @member {object} [subnet] The subnet.
  * @member {string} [subnet.id] The ARM resource id in the form of
- * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+ * /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
  * @member {boolean} [primary] Specifies the primary IP Configuration in case
  * the network interface has more than one IP Configuration.
  * @member {object} [publicIPAddressConfiguration] The
@@ -3534,7 +3534,7 @@ export interface VirtualMachineScaleSetUpdateNetworkConfiguration extends SubRes
  * reference will be in the form:
  * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
  * @member {string} [healthProbe.id] The ARM resource id in the form of
- * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+ * /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
  * @member {array} [networkInterfaceConfigurations] The list of network
  * configurations.
  */
@@ -3794,7 +3794,7 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
  * @member {string} [networkProfile.healthProbe.id] The ARM resource id in the
  * form of
- * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+ * /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
  * @member {array} [networkProfile.networkInterfaceConfigurations] The list of
  * network configurations.
  * @member {object} [diagnosticsProfile] Specifies the boot diagnostic settings
@@ -4222,7 +4222,7 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
  * @member {string} [virtualMachineProfile.networkProfile.healthProbe.id] The
  * ARM resource id in the form of
- * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+ * /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
  * @member {array}
  * [virtualMachineProfile.networkProfile.networkInterfaceConfigurations] The
  * list of network configurations.
@@ -4269,7 +4269,7 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * Virtual Machine Scale Set.
  * @member {boolean} [singlePlacementGroup] When true this limits the scale set
  * to a single placement group, of max size 100 virtual machines.
- * @member {boolean} [zoneBalance] Whether to force stictly even Virtual
+ * @member {boolean} [zoneBalance] Whether to force strictly even Virtual
  * Machine distribution cross x-zones in case there is zone outage.
  * @member {number} [platformFaultDomainCount] Fault Domain count for each
  * placement group.
@@ -4822,7 +4822,7 @@ export interface RollingUpgradeProgressInfo {
  * 'Completed', 'Faulted'
  * @member {date} [runningStatus.startTime] Start time of the upgrade.
  * @member {date} [runningStatus.endTime] End time of the upgrade.
- * @member {object} [progress] Counts of the VM's in each state.
+ * @member {object} [progress] Counts of the VMs in each state.
  * @member {number} [progress.successfulInstanceCount] The number of instances
  * that have been successfully upgraded.
  * @member {number} [progress.failedInstanceCount] The number of instances that
@@ -4897,7 +4897,7 @@ export interface UpgradeOperationHistoricalStatusInfoProperties {
  * @member {date} [properties.runningStatus.startTime] Start time of the
  * upgrade.
  * @member {date} [properties.runningStatus.endTime] End time of the upgrade.
- * @member {object} [properties.progress] Counts of the VM's in each state.
+ * @member {object} [properties.progress] Counts of the VMs in each state.
  * @member {number} [properties.progress.successfulInstanceCount] The number of
  * instances that have been successfully upgraded.
  * @member {number} [properties.progress.failedInstanceCount] The number of
@@ -5440,7 +5440,7 @@ export interface VirtualMachineScaleSetVMInstanceView {
  * nodes to maximize availability. For more information about availability
  * sets, see [Manage the availability of virtual
  * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
- * <br><br> For more information on Azure planned maintainance, see [Planned
+ * <br><br> For more information on Azure planned maintenance, see [Planned
  * maintenance for virtual machines in
  * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
  * <br><br> Currently, a VM can only be added to availability set at creation
@@ -5608,7 +5608,7 @@ export interface RecoveryWalkResponse {
  * @member {date} toTime To time of the query
  * @member {boolean} [groupByThrottlePolicy] Group query result by Throttle
  * Policy applied.
- * @member {boolean} [groupByOperationName] Group query result by  by Operation
+ * @member {boolean} [groupByOperationName] Group query result by Operation
  * Name.
  * @member {boolean} [groupByResourceName] Group query result by Resource Name.
  */
@@ -5806,7 +5806,7 @@ export interface ResourceSkuCosts {
  * @class
  * Initializes a new instance of the ResourceSkuCapabilities class.
  * @constructor
- * Describes The SKU capabilites object.
+ * Describes The SKU capabilities object.
  *
  * @member {string} [name] An invariant to describe the feature.
  * @member {string} [value] An invariant if the feature is measured by
@@ -5985,7 +5985,7 @@ export interface CreationData {
  * @class
  * Initializes a new instance of the SourceVault class.
  * @constructor
- * The vault id is an Azure Resource Manager Resoure id in the form
+ * The vault id is an Azure Resource Manager Resource id in the form
  * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}
  *
  * @member {string} [id] Resource Id
@@ -6389,7 +6389,7 @@ export interface GalleryIdentifier {
  * or update.
  *
  * @member {string} [description] The description of this Shared Image Gallery
- * resource. This property is updateable.
+ * resource. This property is updatable.
  * @member {object} [identifier]
  * @member {string} [identifier.uniqueName] The unique name of the Shared Image
  * Gallery. This name is generated automatically by Azure.
@@ -6440,7 +6440,7 @@ export interface ResourceRange {
  * Initializes a new instance of the RecommendedMachineConfiguration class.
  * @constructor
  * The properties describe the recommended machine configuration for this Image
- * Definition. These properties are updateable.
+ * Definition. These properties are updatable.
  *
  * @member {object} [vCPUs]
  * @member {number} [vCPUs.min] The minimum number of the resource.
@@ -6491,7 +6491,7 @@ export interface ImagePurchasePlan {
  * create or update.
  *
  * @member {string} [description] The description of this gallery Image
- * Definition resource. This property is updateable.
+ * Definition resource. This property is updatable.
  * @member {string} [eula] The Eula agreement for the gallery Image Definition.
  * @member {string} [privacyStatementUri] The privacy statement uri.
  * @member {string} [releaseNoteUri] The release note uri.
@@ -6503,7 +6503,7 @@ export interface ImagePurchasePlan {
  * Possible values include: 'Generalized', 'Specialized'
  * @member {date} [endOfLifeDate] The end of life date of the gallery Image
  * Definition. This property can be used for decommissioning purposes. This
- * property is updateable.
+ * property is updatable.
  * @member {object} identifier
  * @member {string} [identifier.publisher] The name of the gallery Image
  * Definition publisher.
@@ -6553,7 +6553,7 @@ export interface GalleryImage extends Resource {
  * Describes the basic gallery artifact publishing profile.
  *
  * @member {array} [targetRegions] The target regions where the Image Version
- * is going to be replicated to. This property is updateable.
+ * is going to be replicated to. This property is updatable.
  * @member {object} source
  * @member {object} [source.managedImage]
  * @member {string} [source.managedImage.id] The managed artifact id.
@@ -6571,7 +6571,7 @@ export interface GalleryArtifactPublishingProfileBase {
  *
  * @member {number} [replicaCount] The number of replicas of the Image Version
  * to be created per region. This property would take effect for a region when
- * regionalReplicaCount is not specified. This property is updateable.
+ * regionalReplicaCount is not specified. This property is updatable.
  * @member {boolean} [excludeFromLatest] If set to true, Virtual Machines
  * deployed from the latest version of the Image Definition won't use this
  * Image Version.
@@ -6579,7 +6579,7 @@ export interface GalleryArtifactPublishingProfileBase {
  * Version is published.
  * @member {date} [endOfLifeDate] The end of life date of the gallery Image
  * Version. This property can be used for decommissioning purposes. This
- * property is updateable.
+ * property is updatable.
  */
 export interface GalleryImageVersionPublishingProfile extends GalleryArtifactPublishingProfileBase {
   replicaCount?: number;
@@ -6692,7 +6692,7 @@ export interface ReplicationStatus {
  * @member {number} [publishingProfile.replicaCount] The number of replicas of
  * the Image Version to be created per region. This property would take effect
  * for a region when regionalReplicaCount is not specified. This property is
- * updateable.
+ * updatable.
  * @member {boolean} [publishingProfile.excludeFromLatest] If set to true,
  * Virtual Machines deployed from the latest version of the Image Definition
  * won't use this Image Version.
@@ -6700,7 +6700,7 @@ export interface ReplicationStatus {
  * gallery Image Version is published.
  * @member {date} [publishingProfile.endOfLifeDate] The end of life date of the
  * gallery Image Version. This property can be used for decommissioning
- * purposes. This property is updateable.
+ * purposes. This property is updatable.
  * @member {string} [provisioningState] The current state of the gallery Image
  * Version. The provisioning state, which only appears in the response.
  * Possible values include: 'Creating', 'Updating', 'Failed', 'Succeeded',
@@ -6730,7 +6730,7 @@ export interface GalleryImageVersion extends Resource {
  *
  * @member {string} name The name of the region.
  * @member {number} [regionalReplicaCount] The number of replicas of the Image
- * Version to be created per region. This property is updateable.
+ * Version to be created per region. This property is updatable.
  */
 export interface TargetRegion {
   name: string;
