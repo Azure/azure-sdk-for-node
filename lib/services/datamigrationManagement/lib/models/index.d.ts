@@ -66,7 +66,7 @@ export interface ProjectFileProperties {
    */
   readonly lastModified?: Date;
   /**
-   * File content type. This propery can be modified to reflect the file content type.
+   * File content type. This property can be modified to reflect the file content type.
    */
   mediaType?: string;
   /**
@@ -211,7 +211,7 @@ export interface GetTdeCertificatesSqlTaskOutput {
 }
 
 /**
- * Info for ertificate to be exported for TDE enabled databases.
+ * Info for certificate to be exported for TDE enabled databases.
  */
 export interface SelectedCertificateInput {
   /**
@@ -2841,7 +2841,7 @@ ConnectToSourceSqlServerTaskOutput {
   */
   readonly validationErrors?: ReportableException[];
   /**
-   * Information about eligiblity of agent job for migration.
+   * Information about eligibility of agent job for migration.
   */
   readonly migrationEligibility?: MigrationEligibilityInfo;
 }
@@ -2870,7 +2870,7 @@ ConnectToSourceSqlServerTaskOutput {
   */
   readonly isEnabled?: boolean;
   /**
-   * Information about eligiblity of login for migration.
+   * Information about eligibility of login for migration.
   */
   readonly migrationEligibility?: MigrationEligibilityInfo;
 }
@@ -3522,7 +3522,7 @@ export interface ResourceSkuRestrictions {
 }
 
 /**
- * Describes The SKU capabilites object.
+ * Describes The SKU capabilities object.
 */
 export interface ResourceSkuCapabilities {
   /**
