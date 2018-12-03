@@ -3914,7 +3914,7 @@ export interface MetricAlerts {
 
 
     /**
-     * Retrieve alert rule defintions in a resource group.
+     * Retrieve alert rule definitions in a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -3932,7 +3932,7 @@ export interface MetricAlerts {
     listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricAlertResourceCollection>>;
 
     /**
-     * Retrieve alert rule defintions in a resource group.
+     * Retrieve alert rule definitions in a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -3970,7 +3970,7 @@ export interface MetricAlerts {
 
 
     /**
-     * Retrieve an alert rule definiton.
+     * Retrieve an alert rule definition.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -3990,7 +3990,7 @@ export interface MetricAlerts {
     getWithHttpOperationResponse(resourceGroupName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricAlertResource>>;
 
     /**
-     * Retrieve an alert rule definiton.
+     * Retrieve an alert rule definition.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -4315,7 +4315,7 @@ export interface MetricAlerts {
 
 
     /**
-     * Delete an alert rule defitiniton.
+     * Delete an alert rule definition.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -4335,7 +4335,7 @@ export interface MetricAlerts {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Delete an alert rule defitiniton.
+     * Delete an alert rule definition.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -4545,7 +4545,7 @@ export interface ScheduledQueryRules {
      * @param {string} [parameters.source.queryType] Set value to 'ResultCount'.
      * Possible values include: 'ResultCount'
      *
-     * @param {object} [parameters.schedule] Schedule (Frequnecy, Time Window) for
+     * @param {object} [parameters.schedule] Schedule (Frequency, Time Window) for
      * rule. Required for action type - AlertingAction
      *
      * @param {number} parameters.schedule.frequencyInMinutes frequency (in
@@ -4608,7 +4608,7 @@ export interface ScheduledQueryRules {
      * @param {string} [parameters.source.queryType] Set value to 'ResultCount'.
      * Possible values include: 'ResultCount'
      *
-     * @param {object} [parameters.schedule] Schedule (Frequnecy, Time Window) for
+     * @param {object} [parameters.schedule] Schedule (Frequency, Time Window) for
      * rule. Required for action type - AlertingAction
      *
      * @param {number} parameters.schedule.frequencyInMinutes frequency (in
