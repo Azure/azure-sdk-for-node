@@ -399,7 +399,7 @@ export interface DataBoxDiskCopyProgress {
  * Job details.
  *
  * @member {number} [expectedDataSizeInTeraBytes] The expected size of the
- * data, which needs to be transfered in this job, in tera bytes.
+ * data, which needs to be transferred in this job, in terabytes.
  * @member {array} [jobStages] List of stages that run in the job.
  * @member {object} contactDetails Contact details for notification and
  * shipping.
@@ -535,7 +535,7 @@ export interface DataBoxDiskJobSecrets extends JobSecrets {
  * @class
  * Initializes a new instance of the DataBoxHeavyAccountCopyLogDetails class.
  * @constructor
- * Copy log details for a storage account for Databox heavy
+ * Copy log details for a storage account for DataBoxHeavy
  *
  * @member {string} [accountName] Destination account name.
  * @member {array} [copyLogLink] Link for copy logs.
@@ -549,7 +549,7 @@ export interface DataBoxHeavyAccountCopyLogDetails extends CopyLogDetails {
  * @class
  * Initializes a new instance of the DataBoxHeavyJobDetails class.
  * @constructor
- * Databox Heavy Device Job Details
+ * DataBoxHeavy Device Job Details
  *
  * @member {array} [copyProgress] Copy progress per account.
  */
@@ -561,7 +561,7 @@ export interface DataBoxHeavyJobDetails extends JobDetails {
  * @class
  * Initializes a new instance of the DataBoxHeavySecret class.
  * @constructor
- * The secrets related to a databox heavy.
+ * The secrets related to a DataBoxHeavy.
  *
  * @member {string} [deviceSerialNumber] Serial number of the assigned device.
  * @member {string} [devicePassword] Password for out of the box experience on
@@ -585,10 +585,10 @@ export interface DataBoxHeavySecret {
  * @class
  * Initializes a new instance of the DataBoxHeavyJobSecrets class.
  * @constructor
- * The secrets related to a databox heavy job.
+ * The secrets related to a DataBoxHeavy job.
  *
  * @member {array} [cabinetPodSecrets] Contains the list of secret objects for
- * a databox heavy job.
+ * a DataBoxHeavy job.
  */
 export interface DataBoxHeavyJobSecrets extends JobSecrets {
   readonly cabinetPodSecrets?: DataBoxHeavySecret[];
@@ -598,7 +598,7 @@ export interface DataBoxHeavyJobSecrets extends JobSecrets {
  * @class
  * Initializes a new instance of the DataBoxJobDetails class.
  * @constructor
- * Databox Job Details
+ * DataBox Job Details
  *
  * @member {array} [copyProgress] Copy progress per storage account.
  */
@@ -634,7 +634,7 @@ export interface DataBoxSecret {
  * @class
  * Initializes a new instance of the DataboxJobSecrets class.
  * @constructor
- * The secrets related to a databox job.
+ * The secrets related to a DataBox job.
  *
  * @member {array} [podSecrets] Contains the list of secret objects for a job.
  */
@@ -827,7 +827,7 @@ export interface Resource extends BaseResource {
  * @member {object} [details] Details of a job run. This field will only be
  * sent for expand details filter.
  * @member {number} [details.expectedDataSizeInTeraBytes] The expected size of
- * the data, which needs to be transfered in this job, in tera bytes.
+ * the data, which needs to be transferred in this job, in terabytes.
  * @member {array} [details.jobStages] List of stages that run in the job.
  * @member {object} [details.contactDetails] Contact details for notification
  * and shipping.
