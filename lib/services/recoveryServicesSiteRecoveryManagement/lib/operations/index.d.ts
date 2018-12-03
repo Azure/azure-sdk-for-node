@@ -4116,6 +4116,1537 @@ export interface ReplicationProtectionContainers {
 
 /**
  * @class
+ * ReplicationMigrationItems
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SiteRecoveryManagementClient.
+ */
+export interface ReplicationMigrationItems {
+
+
+    /**
+     * @summary Gets the list of migration items in the protection container.
+     *
+     * Gets the list of ASR migration items in the protection container.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationItemCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByReplicationProtectionContainersWithHttpOperationResponse(fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationItemCollection>>;
+
+    /**
+     * @summary Gets the list of migration items in the protection container.
+     *
+     * Gets the list of ASR migration items in the protection container.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationItemCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationItemCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationItemCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByReplicationProtectionContainers(fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationItemCollection>;
+    listByReplicationProtectionContainers(fabricName: string, protectionContainerName: string, callback: ServiceCallback<models.MigrationItemCollection>): void;
+    listByReplicationProtectionContainers(fabricName: string, protectionContainerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationItemCollection>): void;
+
+
+    /**
+     * @summary Gets the details of a migration item.
+     *
+     * @param {string} fabricName Fabric unique name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationItem>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationItem>>;
+
+    /**
+     * @summary Gets the details of a migration item.
+     *
+     * @param {string} fabricName Fabric unique name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationItem} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationItem} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationItem} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationItem>;
+    get(fabricName: string, protectionContainerName: string, migrationItemName: string, callback: ServiceCallback<models.MigrationItem>): void;
+    get(fabricName: string, protectionContainerName: string, migrationItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationItem>): void;
+
+
+    /**
+     * @summary Enables migration.
+     *
+     * The operation to create an ASR migration item (enable migration).
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} input Enable migration input.
+     *
+     * @param {object} input.properties Enable migration input properties.
+     *
+     * @param {string} input.properties.policyId The policy Id.
+     *
+     * @param {object} input.properties.providerSpecificDetails The provider
+     * specific details.
+     *
+     * @param {string} input.properties.providerSpecificDetails.instanceType
+     * Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationItem>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, input: models.EnableMigrationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationItem>>;
+
+    /**
+     * @summary Enables migration.
+     *
+     * The operation to create an ASR migration item (enable migration).
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} input Enable migration input.
+     *
+     * @param {object} input.properties Enable migration input properties.
+     *
+     * @param {string} input.properties.policyId The policy Id.
+     *
+     * @param {object} input.properties.providerSpecificDetails The provider
+     * specific details.
+     *
+     * @param {string} input.properties.providerSpecificDetails.instanceType
+     * Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationItem} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationItem} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationItem} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(fabricName: string, protectionContainerName: string, migrationItemName: string, input: models.EnableMigrationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationItem>;
+    create(fabricName: string, protectionContainerName: string, migrationItemName: string, input: models.EnableMigrationInput, callback: ServiceCallback<models.MigrationItem>): void;
+    create(fabricName: string, protectionContainerName: string, migrationItemName: string, input: models.EnableMigrationInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationItem>): void;
+
+
+    /**
+     * @summary Delete the migration item.
+     *
+     * The operation to delete an ASR migration item.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.deleteOption] The delete option.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { deleteOption? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Delete the migration item.
+     *
+     * The operation to delete an ASR migration item.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.deleteOption] The delete option.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { deleteOption? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(fabricName: string, protectionContainerName: string, migrationItemName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(fabricName: string, protectionContainerName: string, migrationItemName: string, options: { deleteOption? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Updates migration item.
+     *
+     * The operation to update the recovery settings of an ASR migration item.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} input Update migration item input.
+     *
+     * @param {object} [input.properties] Update migration item input properties.
+     *
+     * @param {object} input.properties.providerSpecificDetails The provider
+     * specific input to update migration item.
+     *
+     * @param {string} input.properties.providerSpecificDetails.instanceType
+     * Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationItem>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, input: models.UpdateMigrationItemInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationItem>>;
+
+    /**
+     * @summary Updates migration item.
+     *
+     * The operation to update the recovery settings of an ASR migration item.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} input Update migration item input.
+     *
+     * @param {object} [input.properties] Update migration item input properties.
+     *
+     * @param {object} input.properties.providerSpecificDetails The provider
+     * specific input to update migration item.
+     *
+     * @param {string} input.properties.providerSpecificDetails.instanceType
+     * Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationItem} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationItem} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationItem} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(fabricName: string, protectionContainerName: string, migrationItemName: string, input: models.UpdateMigrationItemInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationItem>;
+    update(fabricName: string, protectionContainerName: string, migrationItemName: string, input: models.UpdateMigrationItemInput, callback: ServiceCallback<models.MigrationItem>): void;
+    update(fabricName: string, protectionContainerName: string, migrationItemName: string, input: models.UpdateMigrationItemInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationItem>): void;
+
+
+    /**
+     * @summary Migrate item.
+     *
+     * The operation to initiate migration of the item.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} migrateInput Migrate input.
+     *
+     * @param {object} migrateInput.properties Migrate input properties.
+     *
+     * @param {object} migrateInput.properties.providerSpecificDetails The provider
+     * specific details.
+     *
+     * @param {string} migrateInput.properties.providerSpecificDetails.instanceType
+     * Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationItem>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    migrateWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, migrateInput: models.MigrateInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationItem>>;
+
+    /**
+     * @summary Migrate item.
+     *
+     * The operation to initiate migration of the item.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} migrateInput Migrate input.
+     *
+     * @param {object} migrateInput.properties Migrate input properties.
+     *
+     * @param {object} migrateInput.properties.providerSpecificDetails The provider
+     * specific details.
+     *
+     * @param {string} migrateInput.properties.providerSpecificDetails.instanceType
+     * Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationItem} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationItem} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationItem} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    migrate(fabricName: string, protectionContainerName: string, migrationItemName: string, migrateInput: models.MigrateInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationItem>;
+    migrate(fabricName: string, protectionContainerName: string, migrationItemName: string, migrateInput: models.MigrateInput, callback: ServiceCallback<models.MigrationItem>): void;
+    migrate(fabricName: string, protectionContainerName: string, migrationItemName: string, migrateInput: models.MigrateInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationItem>): void;
+
+
+    /**
+     * @summary Test migrate item.
+     *
+     * The operation to initiate test migration of the item.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} testMigrateInput Test migrate input.
+     *
+     * @param {object} testMigrateInput.properties Test migrate input properties.
+     *
+     * @param {object} testMigrateInput.properties.providerSpecificDetails The
+     * provider specific details.
+     *
+     * @param {string}
+     * testMigrateInput.properties.providerSpecificDetails.instanceType Polymorphic
+     * Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationItem>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    testMigrateWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, testMigrateInput: models.TestMigrateInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationItem>>;
+
+    /**
+     * @summary Test migrate item.
+     *
+     * The operation to initiate test migration of the item.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} testMigrateInput Test migrate input.
+     *
+     * @param {object} testMigrateInput.properties Test migrate input properties.
+     *
+     * @param {object} testMigrateInput.properties.providerSpecificDetails The
+     * provider specific details.
+     *
+     * @param {string}
+     * testMigrateInput.properties.providerSpecificDetails.instanceType Polymorphic
+     * Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationItem} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationItem} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationItem} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    testMigrate(fabricName: string, protectionContainerName: string, migrationItemName: string, testMigrateInput: models.TestMigrateInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationItem>;
+    testMigrate(fabricName: string, protectionContainerName: string, migrationItemName: string, testMigrateInput: models.TestMigrateInput, callback: ServiceCallback<models.MigrationItem>): void;
+    testMigrate(fabricName: string, protectionContainerName: string, migrationItemName: string, testMigrateInput: models.TestMigrateInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationItem>): void;
+
+
+    /**
+     * @summary Test migrate cleanup.
+     *
+     * The operation to initiate test migrate cleanup.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} testMigrateCleanupInput Test migrate cleanup input.
+     *
+     * @param {object} testMigrateCleanupInput.properties Test migrate cleanup
+     * input properties.
+     *
+     * @param {string} [testMigrateCleanupInput.properties.comments] Test migrate
+     * cleanup comments.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationItem>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    testMigrateCleanupWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, testMigrateCleanupInput: models.TestMigrateCleanupInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationItem>>;
+
+    /**
+     * @summary Test migrate cleanup.
+     *
+     * The operation to initiate test migrate cleanup.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} testMigrateCleanupInput Test migrate cleanup input.
+     *
+     * @param {object} testMigrateCleanupInput.properties Test migrate cleanup
+     * input properties.
+     *
+     * @param {string} [testMigrateCleanupInput.properties.comments] Test migrate
+     * cleanup comments.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationItem} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationItem} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationItem} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    testMigrateCleanup(fabricName: string, protectionContainerName: string, migrationItemName: string, testMigrateCleanupInput: models.TestMigrateCleanupInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationItem>;
+    testMigrateCleanup(fabricName: string, protectionContainerName: string, migrationItemName: string, testMigrateCleanupInput: models.TestMigrateCleanupInput, callback: ServiceCallback<models.MigrationItem>): void;
+    testMigrateCleanup(fabricName: string, protectionContainerName: string, migrationItemName: string, testMigrateCleanupInput: models.TestMigrateCleanupInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationItem>): void;
+
+
+    /**
+     * @summary Gets the list of migration items in the vault.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.skipToken] The pagination token.
+     *
+     * @param {string} [options.filter] OData filter options.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationItemCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationItemCollection>>;
+
+    /**
+     * @summary Gets the list of migration items in the vault.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.skipToken] The pagination token.
+     *
+     * @param {string} [options.filter] OData filter options.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationItemCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationItemCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationItemCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationItemCollection>;
+    list(callback: ServiceCallback<models.MigrationItemCollection>): void;
+    list(options: { skipToken? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationItemCollection>): void;
+
+
+    /**
+     * @summary Enables migration.
+     *
+     * The operation to create an ASR migration item (enable migration).
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} input Enable migration input.
+     *
+     * @param {object} input.properties Enable migration input properties.
+     *
+     * @param {string} input.properties.policyId The policy Id.
+     *
+     * @param {object} input.properties.providerSpecificDetails The provider
+     * specific details.
+     *
+     * @param {string} input.properties.providerSpecificDetails.instanceType
+     * Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationItem>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, input: models.EnableMigrationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationItem>>;
+
+    /**
+     * @summary Enables migration.
+     *
+     * The operation to create an ASR migration item (enable migration).
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} input Enable migration input.
+     *
+     * @param {object} input.properties Enable migration input properties.
+     *
+     * @param {string} input.properties.policyId The policy Id.
+     *
+     * @param {object} input.properties.providerSpecificDetails The provider
+     * specific details.
+     *
+     * @param {string} input.properties.providerSpecificDetails.instanceType
+     * Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationItem} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationItem} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationItem} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(fabricName: string, protectionContainerName: string, migrationItemName: string, input: models.EnableMigrationInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationItem>;
+    beginCreate(fabricName: string, protectionContainerName: string, migrationItemName: string, input: models.EnableMigrationInput, callback: ServiceCallback<models.MigrationItem>): void;
+    beginCreate(fabricName: string, protectionContainerName: string, migrationItemName: string, input: models.EnableMigrationInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationItem>): void;
+
+
+    /**
+     * @summary Delete the migration item.
+     *
+     * The operation to delete an ASR migration item.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.deleteOption] The delete option.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { deleteOption? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Delete the migration item.
+     *
+     * The operation to delete an ASR migration item.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.deleteOption] The delete option.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { deleteOption? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(fabricName: string, protectionContainerName: string, migrationItemName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(fabricName: string, protectionContainerName: string, migrationItemName: string, options: { deleteOption? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Updates migration item.
+     *
+     * The operation to update the recovery settings of an ASR migration item.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} input Update migration item input.
+     *
+     * @param {object} [input.properties] Update migration item input properties.
+     *
+     * @param {object} input.properties.providerSpecificDetails The provider
+     * specific input to update migration item.
+     *
+     * @param {string} input.properties.providerSpecificDetails.instanceType
+     * Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationItem>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, input: models.UpdateMigrationItemInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationItem>>;
+
+    /**
+     * @summary Updates migration item.
+     *
+     * The operation to update the recovery settings of an ASR migration item.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} input Update migration item input.
+     *
+     * @param {object} [input.properties] Update migration item input properties.
+     *
+     * @param {object} input.properties.providerSpecificDetails The provider
+     * specific input to update migration item.
+     *
+     * @param {string} input.properties.providerSpecificDetails.instanceType
+     * Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationItem} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationItem} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationItem} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(fabricName: string, protectionContainerName: string, migrationItemName: string, input: models.UpdateMigrationItemInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationItem>;
+    beginUpdate(fabricName: string, protectionContainerName: string, migrationItemName: string, input: models.UpdateMigrationItemInput, callback: ServiceCallback<models.MigrationItem>): void;
+    beginUpdate(fabricName: string, protectionContainerName: string, migrationItemName: string, input: models.UpdateMigrationItemInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationItem>): void;
+
+
+    /**
+     * @summary Migrate item.
+     *
+     * The operation to initiate migration of the item.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} migrateInput Migrate input.
+     *
+     * @param {object} migrateInput.properties Migrate input properties.
+     *
+     * @param {object} migrateInput.properties.providerSpecificDetails The provider
+     * specific details.
+     *
+     * @param {string} migrateInput.properties.providerSpecificDetails.instanceType
+     * Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationItem>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginMigrateWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, migrateInput: models.MigrateInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationItem>>;
+
+    /**
+     * @summary Migrate item.
+     *
+     * The operation to initiate migration of the item.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} migrateInput Migrate input.
+     *
+     * @param {object} migrateInput.properties Migrate input properties.
+     *
+     * @param {object} migrateInput.properties.providerSpecificDetails The provider
+     * specific details.
+     *
+     * @param {string} migrateInput.properties.providerSpecificDetails.instanceType
+     * Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationItem} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationItem} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationItem} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginMigrate(fabricName: string, protectionContainerName: string, migrationItemName: string, migrateInput: models.MigrateInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationItem>;
+    beginMigrate(fabricName: string, protectionContainerName: string, migrationItemName: string, migrateInput: models.MigrateInput, callback: ServiceCallback<models.MigrationItem>): void;
+    beginMigrate(fabricName: string, protectionContainerName: string, migrationItemName: string, migrateInput: models.MigrateInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationItem>): void;
+
+
+    /**
+     * @summary Test migrate item.
+     *
+     * The operation to initiate test migration of the item.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} testMigrateInput Test migrate input.
+     *
+     * @param {object} testMigrateInput.properties Test migrate input properties.
+     *
+     * @param {object} testMigrateInput.properties.providerSpecificDetails The
+     * provider specific details.
+     *
+     * @param {string}
+     * testMigrateInput.properties.providerSpecificDetails.instanceType Polymorphic
+     * Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationItem>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginTestMigrateWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, testMigrateInput: models.TestMigrateInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationItem>>;
+
+    /**
+     * @summary Test migrate item.
+     *
+     * The operation to initiate test migration of the item.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} testMigrateInput Test migrate input.
+     *
+     * @param {object} testMigrateInput.properties Test migrate input properties.
+     *
+     * @param {object} testMigrateInput.properties.providerSpecificDetails The
+     * provider specific details.
+     *
+     * @param {string}
+     * testMigrateInput.properties.providerSpecificDetails.instanceType Polymorphic
+     * Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationItem} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationItem} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationItem} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginTestMigrate(fabricName: string, protectionContainerName: string, migrationItemName: string, testMigrateInput: models.TestMigrateInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationItem>;
+    beginTestMigrate(fabricName: string, protectionContainerName: string, migrationItemName: string, testMigrateInput: models.TestMigrateInput, callback: ServiceCallback<models.MigrationItem>): void;
+    beginTestMigrate(fabricName: string, protectionContainerName: string, migrationItemName: string, testMigrateInput: models.TestMigrateInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationItem>): void;
+
+
+    /**
+     * @summary Test migrate cleanup.
+     *
+     * The operation to initiate test migrate cleanup.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} testMigrateCleanupInput Test migrate cleanup input.
+     *
+     * @param {object} testMigrateCleanupInput.properties Test migrate cleanup
+     * input properties.
+     *
+     * @param {string} [testMigrateCleanupInput.properties.comments] Test migrate
+     * cleanup comments.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationItem>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginTestMigrateCleanupWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, testMigrateCleanupInput: models.TestMigrateCleanupInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationItem>>;
+
+    /**
+     * @summary Test migrate cleanup.
+     *
+     * The operation to initiate test migrate cleanup.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} testMigrateCleanupInput Test migrate cleanup input.
+     *
+     * @param {object} testMigrateCleanupInput.properties Test migrate cleanup
+     * input properties.
+     *
+     * @param {string} [testMigrateCleanupInput.properties.comments] Test migrate
+     * cleanup comments.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationItem} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationItem} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationItem} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginTestMigrateCleanup(fabricName: string, protectionContainerName: string, migrationItemName: string, testMigrateCleanupInput: models.TestMigrateCleanupInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationItem>;
+    beginTestMigrateCleanup(fabricName: string, protectionContainerName: string, migrationItemName: string, testMigrateCleanupInput: models.TestMigrateCleanupInput, callback: ServiceCallback<models.MigrationItem>): void;
+    beginTestMigrateCleanup(fabricName: string, protectionContainerName: string, migrationItemName: string, testMigrateCleanupInput: models.TestMigrateCleanupInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationItem>): void;
+
+
+    /**
+     * @summary Gets the list of migration items in the protection container.
+     *
+     * Gets the list of ASR migration items in the protection container.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationItemCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByReplicationProtectionContainersNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationItemCollection>>;
+
+    /**
+     * @summary Gets the list of migration items in the protection container.
+     *
+     * Gets the list of ASR migration items in the protection container.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationItemCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationItemCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationItemCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByReplicationProtectionContainersNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationItemCollection>;
+    listByReplicationProtectionContainersNext(nextPageLink: string, callback: ServiceCallback<models.MigrationItemCollection>): void;
+    listByReplicationProtectionContainersNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationItemCollection>): void;
+
+
+    /**
+     * @summary Gets the list of migration items in the vault.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationItemCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationItemCollection>>;
+
+    /**
+     * @summary Gets the list of migration items in the vault.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationItemCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationItemCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationItemCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationItemCollection>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.MigrationItemCollection>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationItemCollection>): void;
+}
+
+/**
+ * @class
+ * MigrationRecoveryPoints
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SiteRecoveryManagementClient.
+ */
+export interface MigrationRecoveryPoints {
+
+
+    /**
+     * @summary Gets the recovery points for a migration item.
+     *
+     * @param {string} fabricName Fabric unique name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationRecoveryPointCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByReplicationMigrationItemsWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationRecoveryPointCollection>>;
+
+    /**
+     * @summary Gets the recovery points for a migration item.
+     *
+     * @param {string} fabricName Fabric unique name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationRecoveryPointCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationRecoveryPointCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationRecoveryPointCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByReplicationMigrationItems(fabricName: string, protectionContainerName: string, migrationItemName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationRecoveryPointCollection>;
+    listByReplicationMigrationItems(fabricName: string, protectionContainerName: string, migrationItemName: string, callback: ServiceCallback<models.MigrationRecoveryPointCollection>): void;
+    listByReplicationMigrationItems(fabricName: string, protectionContainerName: string, migrationItemName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationRecoveryPointCollection>): void;
+
+
+    /**
+     * @summary Gets a recovery point for a migration item.
+     *
+     * @param {string} fabricName Fabric unique name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {string} migrationRecoveryPointName The migration recovery point
+     * name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationRecoveryPoint>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(fabricName: string, protectionContainerName: string, migrationItemName: string, migrationRecoveryPointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationRecoveryPoint>>;
+
+    /**
+     * @summary Gets a recovery point for a migration item.
+     *
+     * @param {string} fabricName Fabric unique name.
+     *
+     * @param {string} protectionContainerName Protection container name.
+     *
+     * @param {string} migrationItemName Migration item name.
+     *
+     * @param {string} migrationRecoveryPointName The migration recovery point
+     * name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationRecoveryPoint} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationRecoveryPoint} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationRecoveryPoint} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(fabricName: string, protectionContainerName: string, migrationItemName: string, migrationRecoveryPointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationRecoveryPoint>;
+    get(fabricName: string, protectionContainerName: string, migrationItemName: string, migrationRecoveryPointName: string, callback: ServiceCallback<models.MigrationRecoveryPoint>): void;
+    get(fabricName: string, protectionContainerName: string, migrationItemName: string, migrationRecoveryPointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationRecoveryPoint>): void;
+
+
+    /**
+     * @summary Gets the recovery points for a migration item.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationRecoveryPointCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByReplicationMigrationItemsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationRecoveryPointCollection>>;
+
+    /**
+     * @summary Gets the recovery points for a migration item.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationRecoveryPointCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationRecoveryPointCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationRecoveryPointCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByReplicationMigrationItemsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationRecoveryPointCollection>;
+    listByReplicationMigrationItemsNext(nextPageLink: string, callback: ServiceCallback<models.MigrationRecoveryPointCollection>): void;
+    listByReplicationMigrationItemsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationRecoveryPointCollection>): void;
+}
+
+/**
+ * @class
  * ReplicationProtectableItems
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SiteRecoveryManagementClient.
@@ -8673,6 +10204,146 @@ export interface ReplicationRecoveryServicesProviders {
 
 
     /**
+     * @summary Adds a recovery services provider.
+     *
+     * The operation to add a recovery services provider.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} providerName Recovery services provider name.
+     *
+     * @param {object} addProviderInput Add provider input.
+     *
+     * @param {object} addProviderInput.properties The properties of an add
+     * provider request.
+     *
+     * @param {string} addProviderInput.properties.machineName The name of the
+     * machine where the provider is getting added.
+     *
+     * @param {object} addProviderInput.properties.authenticationIdentityInput The
+     * identity provider input for DRA authentication.
+     *
+     * @param {object} addProviderInput.properties.resourceAccessIdentityInput The
+     * identity provider input for resource access.
+     *
+     * @param {string}
+     * addProviderInput.properties.resourceAccessIdentityInput.tenantId The tenant
+     * Id for the service principal with which the on-premise management/data plane
+     * components would communicate with our Azure services.
+     *
+     * @param {string}
+     * addProviderInput.properties.resourceAccessIdentityInput.applicationId The
+     * application/client Id for the service principal with which the on-premise
+     * management/data plane components would communicate with our Azure services.
+     *
+     * @param {string}
+     * addProviderInput.properties.resourceAccessIdentityInput.objectId The object
+     * Id of the service principal with which the on-premise management/data plane
+     * components would communicate with our Azure services.
+     *
+     * @param {string}
+     * addProviderInput.properties.resourceAccessIdentityInput.audience The
+     * intended Audience of the service principal with which the on-premise
+     * management/data plane components would communicate with our Azure services.
+     *
+     * @param {string}
+     * addProviderInput.properties.resourceAccessIdentityInput.aadAuthority The
+     * base authority for Azure Active Directory authentication.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RecoveryServicesProvider>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(fabricName: string, providerName: string, addProviderInput: models.AddRecoveryServicesProviderInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryServicesProvider>>;
+
+    /**
+     * @summary Adds a recovery services provider.
+     *
+     * The operation to add a recovery services provider.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} providerName Recovery services provider name.
+     *
+     * @param {object} addProviderInput Add provider input.
+     *
+     * @param {object} addProviderInput.properties The properties of an add
+     * provider request.
+     *
+     * @param {string} addProviderInput.properties.machineName The name of the
+     * machine where the provider is getting added.
+     *
+     * @param {object} addProviderInput.properties.authenticationIdentityInput The
+     * identity provider input for DRA authentication.
+     *
+     * @param {object} addProviderInput.properties.resourceAccessIdentityInput The
+     * identity provider input for resource access.
+     *
+     * @param {string}
+     * addProviderInput.properties.resourceAccessIdentityInput.tenantId The tenant
+     * Id for the service principal with which the on-premise management/data plane
+     * components would communicate with our Azure services.
+     *
+     * @param {string}
+     * addProviderInput.properties.resourceAccessIdentityInput.applicationId The
+     * application/client Id for the service principal with which the on-premise
+     * management/data plane components would communicate with our Azure services.
+     *
+     * @param {string}
+     * addProviderInput.properties.resourceAccessIdentityInput.objectId The object
+     * Id of the service principal with which the on-premise management/data plane
+     * components would communicate with our Azure services.
+     *
+     * @param {string}
+     * addProviderInput.properties.resourceAccessIdentityInput.audience The
+     * intended Audience of the service principal with which the on-premise
+     * management/data plane components would communicate with our Azure services.
+     *
+     * @param {string}
+     * addProviderInput.properties.resourceAccessIdentityInput.aadAuthority The
+     * base authority for Azure Active Directory authentication.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RecoveryServicesProvider} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RecoveryServicesProvider} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RecoveryServicesProvider} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(fabricName: string, providerName: string, addProviderInput: models.AddRecoveryServicesProviderInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryServicesProvider>;
+    create(fabricName: string, providerName: string, addProviderInput: models.AddRecoveryServicesProviderInput, callback: ServiceCallback<models.RecoveryServicesProvider>): void;
+    create(fabricName: string, providerName: string, addProviderInput: models.AddRecoveryServicesProviderInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryServicesProvider>): void;
+
+
+    /**
      * @summary Purges recovery service provider from fabric
      *
      * The operation to purge(force delete) a recovery services provider from the
@@ -8930,6 +10601,146 @@ export interface ReplicationRecoveryServicesProviders {
     list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryServicesProviderCollection>;
     list(callback: ServiceCallback<models.RecoveryServicesProviderCollection>): void;
     list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryServicesProviderCollection>): void;
+
+
+    /**
+     * @summary Adds a recovery services provider.
+     *
+     * The operation to add a recovery services provider.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} providerName Recovery services provider name.
+     *
+     * @param {object} addProviderInput Add provider input.
+     *
+     * @param {object} addProviderInput.properties The properties of an add
+     * provider request.
+     *
+     * @param {string} addProviderInput.properties.machineName The name of the
+     * machine where the provider is getting added.
+     *
+     * @param {object} addProviderInput.properties.authenticationIdentityInput The
+     * identity provider input for DRA authentication.
+     *
+     * @param {object} addProviderInput.properties.resourceAccessIdentityInput The
+     * identity provider input for resource access.
+     *
+     * @param {string}
+     * addProviderInput.properties.resourceAccessIdentityInput.tenantId The tenant
+     * Id for the service principal with which the on-premise management/data plane
+     * components would communicate with our Azure services.
+     *
+     * @param {string}
+     * addProviderInput.properties.resourceAccessIdentityInput.applicationId The
+     * application/client Id for the service principal with which the on-premise
+     * management/data plane components would communicate with our Azure services.
+     *
+     * @param {string}
+     * addProviderInput.properties.resourceAccessIdentityInput.objectId The object
+     * Id of the service principal with which the on-premise management/data plane
+     * components would communicate with our Azure services.
+     *
+     * @param {string}
+     * addProviderInput.properties.resourceAccessIdentityInput.audience The
+     * intended Audience of the service principal with which the on-premise
+     * management/data plane components would communicate with our Azure services.
+     *
+     * @param {string}
+     * addProviderInput.properties.resourceAccessIdentityInput.aadAuthority The
+     * base authority for Azure Active Directory authentication.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RecoveryServicesProvider>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateWithHttpOperationResponse(fabricName: string, providerName: string, addProviderInput: models.AddRecoveryServicesProviderInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoveryServicesProvider>>;
+
+    /**
+     * @summary Adds a recovery services provider.
+     *
+     * The operation to add a recovery services provider.
+     *
+     * @param {string} fabricName Fabric name.
+     *
+     * @param {string} providerName Recovery services provider name.
+     *
+     * @param {object} addProviderInput Add provider input.
+     *
+     * @param {object} addProviderInput.properties The properties of an add
+     * provider request.
+     *
+     * @param {string} addProviderInput.properties.machineName The name of the
+     * machine where the provider is getting added.
+     *
+     * @param {object} addProviderInput.properties.authenticationIdentityInput The
+     * identity provider input for DRA authentication.
+     *
+     * @param {object} addProviderInput.properties.resourceAccessIdentityInput The
+     * identity provider input for resource access.
+     *
+     * @param {string}
+     * addProviderInput.properties.resourceAccessIdentityInput.tenantId The tenant
+     * Id for the service principal with which the on-premise management/data plane
+     * components would communicate with our Azure services.
+     *
+     * @param {string}
+     * addProviderInput.properties.resourceAccessIdentityInput.applicationId The
+     * application/client Id for the service principal with which the on-premise
+     * management/data plane components would communicate with our Azure services.
+     *
+     * @param {string}
+     * addProviderInput.properties.resourceAccessIdentityInput.objectId The object
+     * Id of the service principal with which the on-premise management/data plane
+     * components would communicate with our Azure services.
+     *
+     * @param {string}
+     * addProviderInput.properties.resourceAccessIdentityInput.audience The
+     * intended Audience of the service principal with which the on-premise
+     * management/data plane components would communicate with our Azure services.
+     *
+     * @param {string}
+     * addProviderInput.properties.resourceAccessIdentityInput.aadAuthority The
+     * base authority for Azure Active Directory authentication.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RecoveryServicesProvider} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RecoveryServicesProvider} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RecoveryServicesProvider} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(fabricName: string, providerName: string, addProviderInput: models.AddRecoveryServicesProviderInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoveryServicesProvider>;
+    beginCreate(fabricName: string, providerName: string, addProviderInput: models.AddRecoveryServicesProviderInput, callback: ServiceCallback<models.RecoveryServicesProvider>): void;
+    beginCreate(fabricName: string, providerName: string, addProviderInput: models.AddRecoveryServicesProviderInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoveryServicesProvider>): void;
 
 
     /**
