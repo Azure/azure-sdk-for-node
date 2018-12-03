@@ -252,7 +252,7 @@ export interface ServerForCreate {
  * @class
  * Initializes a new instance of the ServerUpdateParameters class.
  * @constructor
- * Parameters allowd to update for a server.
+ * Parameters allowed to update for a server.
  *
  * @member {object} [sku] The SKU (pricing tier) of the server.
  * @member {string} [sku.name] The name of the sku, typically, tier + family +
