@@ -2296,6 +2296,215 @@ export interface IntegrationRuntimes {
 
 /**
  * @class
+ * IntegrationRuntimeObjectMetadata
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DataFactoryManagementClient.
+ */
+export interface IntegrationRuntimeObjectMetadata {
+
+
+    /**
+     * Refresh a ssis integration runtime object metadata.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    refreshWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Refresh a ssis integration runtime object metadata.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    refresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    refresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, callback: ServiceCallback<void>): void;
+    refresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Get a ssis integration runtime object metadata by specified path. The return
+     * is pageable metadata list.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.getMetadataRequest] The parameters for getting a
+     * ssis object metadata.
+     *
+     * @param {string} [options.getMetadataRequest.metadataPath] Metadata path
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SsisObjectMetadataListResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { getMetadataRequest? : models.GetSsisObjectMetadataRequest, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SsisObjectMetadataListResponse>>;
+
+    /**
+     * Get a ssis integration runtime object metadata by specified path. The return
+     * is pageable metadata list.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.getMetadataRequest] The parameters for getting a
+     * ssis object metadata.
+     *
+     * @param {string} [options.getMetadataRequest.metadataPath] Metadata path
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SsisObjectMetadataListResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SsisObjectMetadataListResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SsisObjectMetadataListResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { getMetadataRequest? : models.GetSsisObjectMetadataRequest, customHeaders? : { [headerName: string]: string; } }): Promise<models.SsisObjectMetadataListResponse>;
+    get(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, callback: ServiceCallback<models.SsisObjectMetadataListResponse>): void;
+    get(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options: { getMetadataRequest? : models.GetSsisObjectMetadataRequest, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SsisObjectMetadataListResponse>): void;
+
+
+    /**
+     * Refresh a ssis integration runtime object metadata.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginRefreshWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Refresh a ssis integration runtime object metadata.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRefresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRefresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, callback: ServiceCallback<void>): void;
+    beginRefresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
  * IntegrationRuntimeNodes
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DataFactoryManagementClient.
