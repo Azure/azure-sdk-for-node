@@ -1937,7 +1937,7 @@ export interface Tasks {
      * The tasks resource is a nested, proxy-only resource representing work
      * performed by a DMS instance. The PUT method creates a new task or updates an
      * existing one, although since tasks have no mutable custom properties, there
-     * is little reason to update an exising one.
+     * is little reason to update an existing one.
      *
      * @param {object} parameters Information about the task
      *
@@ -1978,7 +1978,7 @@ export interface Tasks {
      * The tasks resource is a nested, proxy-only resource representing work
      * performed by a DMS instance. The PUT method creates a new task or updates an
      * existing one, although since tasks have no mutable custom properties, there
-     * is little reason to update an exising one.
+     * is little reason to update an existing one.
      *
      * @param {object} parameters Information about the task
      *
@@ -3487,7 +3487,7 @@ export interface Files {
      * resource.
      *
      * @param {string} [parameters.properties.mediaType] File content type. This
-     * propery can be modified to reflect the file content type.
+     * property can be modified to reflect the file content type.
      *
      * @param {string} groupName Name of the resource group
      *
@@ -3531,7 +3531,7 @@ export interface Files {
      * resource.
      *
      * @param {string} [parameters.properties.mediaType] File content type. This
-     * propery can be modified to reflect the file content type.
+     * property can be modified to reflect the file content type.
      *
      * @param {string} groupName Name of the resource group
      *
@@ -3664,7 +3664,7 @@ export interface Files {
      * resource.
      *
      * @param {string} [parameters.properties.mediaType] File content type. This
-     * propery can be modified to reflect the file content type.
+     * property can be modified to reflect the file content type.
      *
      * @param {string} groupName Name of the resource group
      *
@@ -3708,7 +3708,7 @@ export interface Files {
      * resource.
      *
      * @param {string} [parameters.properties.mediaType] File content type. This
-     * propery can be modified to reflect the file content type.
+     * property can be modified to reflect the file content type.
      *
      * @param {string} groupName Name of the resource group
      *

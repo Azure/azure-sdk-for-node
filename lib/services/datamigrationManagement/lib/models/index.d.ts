@@ -66,7 +66,7 @@ export interface ProjectFileProperties {
    */
   readonly lastModified?: Date;
   /**
-   * File content type. This propery can be modified to reflect the file content type.
+   * File content type. This property can be modified to reflect the file content type.
    */
   mediaType?: string;
   /**
@@ -139,7 +139,7 @@ export interface ReportableException {
 }
 
 /**
- * Output for command that completes sync migration for a managed instance database.
+ * Output for command that completes online migration for an Azure SQL Database Managed Instance.
  */
 export interface MigrateMISyncCompleteCommandOutput {
   /**
@@ -149,7 +149,7 @@ export interface MigrateMISyncCompleteCommandOutput {
 }
 
 /**
- * Input for command that completes sync migration for a managed instance database.
+ * Input for command that completes online migration for an Azure SQL Database Managed Instance.
  */
 export interface MigrateMISyncCompleteCommandInput {
   /**
@@ -179,7 +179,8 @@ export interface CommandProperties {
 }
 
 /**
- * Properties for the command that completes sync migration for a managed instance database.
+ * Properties for the command that completes online migration for an Azure SQL Database Managed
+ * Instance.
  */
 export interface MigrateMISyncCompleteCommandProperties extends CommandProperties {
   /**
@@ -249,7 +250,7 @@ export interface GetTdeCertificatesSqlTaskOutput {
 }
 
 /**
- * Info for ertificate to be exported for TDE enabled databases.
+ * Info for certificate to be exported for TDE enabled databases.
  */
 export interface SelectedCertificateInput {
   /**
@@ -3172,8 +3173,8 @@ export interface ConnectToTargetAzureDbForPostgreSqlSyncTaskInput {
 }
 
 /**
- * Properties for the task that validates connection to Azure Db For PostgreSql server and target
- * server requirements for online migration
+ * Properties for the task that validates connection to Azure Database For PostgreSQL server and
+ * target server requirements for online migration
 */
 export interface ConnectToTargetAzureDbForPostgreSqlSyncTaskProperties extends
 ProjectTaskProperties {
@@ -3299,7 +3300,7 @@ export interface ConnectToSourcePostgreSqlSyncTaskInput {
 }
 
 /**
- * Properties for the task that validates connection to PostgreSql server and source server
+ * Properties for the task that validates connection to PostgreSQL server and source server
  * requirements for online migration
 */
 export interface ConnectToSourcePostgreSqlSyncTaskProperties extends ProjectTaskProperties {
@@ -3373,7 +3374,7 @@ ConnectToSourceSqlServerTaskOutput {
   */
   readonly validationErrors?: ReportableException[];
   /**
-   * Information about eligiblity of agent job for migration.
+   * Information about eligibility of agent job for migration.
   */
   readonly migrationEligibility?: MigrationEligibilityInfo;
 }
@@ -3402,7 +3403,7 @@ ConnectToSourceSqlServerTaskOutput {
   */
   readonly isEnabled?: boolean;
   /**
-   * Information about eligiblity of login for migration.
+   * Information about eligibility of login for migration.
   */
   readonly migrationEligibility?: MigrationEligibilityInfo;
 }
@@ -4054,7 +4055,7 @@ export interface ResourceSkuRestrictions {
 }
 
 /**
- * Describes The SKU capabilites object.
+ * Describes The SKU capabilities object.
 */
 export interface ResourceSkuCapabilities {
   /**
