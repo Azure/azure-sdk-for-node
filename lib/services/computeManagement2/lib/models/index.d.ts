@@ -6815,7 +6815,7 @@ export interface ContainerServiceOrchestratorProfile {
  * value: 1 .
  * @member {string} dnsPrefix DNS prefix to be used to create the FQDN for
  * master.
- * @member {string} [fqdn] FDQN for the master.
+ * @member {string} [fqdn] FQDN for the master.
  */
 export interface ContainerServiceMasterProfile {
   count?: number;
@@ -6848,7 +6848,7 @@ export interface ContainerServiceMasterProfile {
  * 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'
  * @member {string} dnsPrefix DNS prefix to be used to create the FQDN for the
  * agent pool.
- * @member {string} [fqdn] FDQN for the agent pool.
+ * @member {string} [fqdn] FQDN for the agent pool.
  */
 export interface ContainerServiceAgentPoolProfile {
   name: string;
@@ -6977,7 +6977,7 @@ export interface ContainerServiceDiagnosticsProfile {
  * is 1.
  * @member {string} [masterProfile.dnsPrefix] DNS prefix to be used to create
  * the FQDN for master.
- * @member {string} [masterProfile.fqdn] FDQN for the master.
+ * @member {string} [masterProfile.fqdn] FQDN for the master.
  * @member {array} agentPoolProfiles Properties of the agent pool.
  * @member {object} [windowsProfile] Properties of Windows VMs.
  * @member {string} [windowsProfile.adminUsername] The administrator username
