@@ -1024,7 +1024,7 @@ export interface Remediations {
      * will be remediated.
      *
      * @param {object} [parameters.deploymentStatus] The deployment status summary
-     * for all deplyoments created by the remediation.
+     * for all deployments created by the remediation.
      *
      * @param {number} [parameters.deploymentStatus.totalDeployments] The number of
      * deployments required by the remediation.
@@ -1072,7 +1072,7 @@ export interface Remediations {
      * will be remediated.
      *
      * @param {object} [parameters.deploymentStatus] The deployment status summary
-     * for all deplyoments created by the remediation.
+     * for all deployments created by the remediation.
      *
      * @param {number} [parameters.deploymentStatus.totalDeployments] The number of
      * deployments required by the remediation.
@@ -1543,7 +1543,7 @@ export interface Remediations {
      * will be remediated.
      *
      * @param {object} [parameters.deploymentStatus] The deployment status summary
-     * for all deplyoments created by the remediation.
+     * for all deployments created by the remediation.
      *
      * @param {number} [parameters.deploymentStatus.totalDeployments] The number of
      * deployments required by the remediation.
@@ -1591,7 +1591,7 @@ export interface Remediations {
      * will be remediated.
      *
      * @param {object} [parameters.deploymentStatus] The deployment status summary
-     * for all deplyoments created by the remediation.
+     * for all deployments created by the remediation.
      *
      * @param {number} [parameters.deploymentStatus.totalDeployments] The number of
      * deployments required by the remediation.
@@ -2076,7 +2076,7 @@ export interface Remediations {
      * will be remediated.
      *
      * @param {object} [parameters.deploymentStatus] The deployment status summary
-     * for all deplyoments created by the remediation.
+     * for all deployments created by the remediation.
      *
      * @param {number} [parameters.deploymentStatus.totalDeployments] The number of
      * deployments required by the remediation.
@@ -2126,7 +2126,7 @@ export interface Remediations {
      * will be remediated.
      *
      * @param {object} [parameters.deploymentStatus] The deployment status summary
-     * for all deplyoments created by the remediation.
+     * for all deployments created by the remediation.
      *
      * @param {number} [parameters.deploymentStatus.totalDeployments] The number of
      * deployments required by the remediation.
@@ -2605,7 +2605,7 @@ export interface Remediations {
      * will be remediated.
      *
      * @param {object} [parameters.deploymentStatus] The deployment status summary
-     * for all deplyoments created by the remediation.
+     * for all deployments created by the remediation.
      *
      * @param {number} [parameters.deploymentStatus.totalDeployments] The number of
      * deployments required by the remediation.
@@ -2653,7 +2653,7 @@ export interface Remediations {
      * will be remediated.
      *
      * @param {object} [parameters.deploymentStatus] The deployment status summary
-     * for all deplyoments created by the remediation.
+     * for all deployments created by the remediation.
      *
      * @param {number} [parameters.deploymentStatus.totalDeployments] The number of
      * deployments required by the remediation.

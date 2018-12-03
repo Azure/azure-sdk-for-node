@@ -124,7 +124,7 @@ export interface RemediationFilters {
 }
 
 /**
- * The deployment status summary for all deplyoments created by the remediation.
+ * The deployment status summary for all deployments created by the remediation.
  */
 export interface RemediationDeploymentSummary {
   /**
@@ -171,7 +171,7 @@ export interface Remediation extends BaseResource {
    */
   filters?: RemediationFilters;
   /**
-   * The deployment status summary for all deplyoments created by the remediation.
+   * The deployment status summary for all deployments created by the remediation.
    */
   deploymentStatus?: RemediationDeploymentSummary;
   /**
