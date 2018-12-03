@@ -258,7 +258,7 @@ export interface Metrics {
 
 
     /**
-     * @summary Retrieve metric metatadata
+     * @summary Retrieve metric metadata
      *
      * Gets metadata describing the available metrics
      *
@@ -279,7 +279,7 @@ export interface Metrics {
     getMetadataWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
-     * @summary Retrieve metric metatadata
+     * @summary Retrieve metric metadata
      *
      * Gets metadata describing the available metrics
      *
