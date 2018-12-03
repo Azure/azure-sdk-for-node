@@ -61,6 +61,10 @@ jobs:
         workingDirectory: '$(source.path)'
         displayName: 'npm audit'
 
+      - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
+        condition: succeededOrFailed()
+        displayName: 'Component Detection'
+
   - template: client.test.yml
     parameters:
       name: Linux
