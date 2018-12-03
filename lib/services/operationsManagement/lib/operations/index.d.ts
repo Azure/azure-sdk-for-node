@@ -620,9 +620,9 @@ export interface ManagementAssociations {
 
 
     /**
-     * @summary Retrieves the ManagementAssociatons list for the subscription
+     * @summary Retrieves the ManagementAssociations list for the subscription
      *
-     * Retrieves the ManagementAssociatons list.
+     * Retrieves the ManagementAssociations list.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -638,9 +638,9 @@ export interface ManagementAssociations {
     listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementAssociationPropertiesList>>;
 
     /**
-     * @summary Retrieves the ManagementAssociatons list for the subscription
+     * @summary Retrieves the ManagementAssociations list for the subscription
      *
-     * Retrieves the ManagementAssociatons list.
+     * Retrieves the ManagementAssociations list.
      *
      * @param {object} [options] Optional Parameters.
      *
