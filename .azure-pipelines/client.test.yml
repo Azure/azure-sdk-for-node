@@ -10,9 +10,6 @@ jobs:
     pool:
       vmImage: ${{ parameters.vmImage }}
 
-    variables:
-      build.path: 'test/services/keyVault'
-
     strategy:
       matrix:
         Node6:
@@ -38,7 +35,7 @@ jobs:
       - task: Npm@1
         inputs:
           command: 'custom'
-          customCommand: 'run mocha -- $(build.path) --reporter mocha-junit-reporter'
+          customCommand: 'run mocha -- $(test.path) --reporter mocha-junit-reporter'
         displayName: 'npm run mocha'
 
       - task: PublishTestResults@2
