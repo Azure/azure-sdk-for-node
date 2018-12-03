@@ -642,7 +642,7 @@ export interface Namespaces {
      *
      * @param {string} namespaceName The namespace name.
      *
-     * @param {string} authorizationRuleName Aauthorization Rule Name.
+     * @param {string} authorizationRuleName Authorization Rule Name.
      *
      * @param {object} parameters The shared access authorization rule.
      *
@@ -672,7 +672,7 @@ export interface Namespaces {
      *
      * @param {string} namespaceName The namespace name.
      *
-     * @param {string} authorizationRuleName Aauthorization Rule Name.
+     * @param {string} authorizationRuleName Authorization Rule Name.
      *
      * @param {object} parameters The shared access authorization rule.
      *
@@ -1542,7 +1542,7 @@ export interface NotificationHubs {
      * @param {string} [parameters.apnsCredential.endpoint] The endpoint of this
      * credential.
      *
-     * @param {string} [parameters.apnsCredential.thumbprint] The Apns certificate
+     * @param {string} [parameters.apnsCredential.thumbprint] The APNS certificate
      * Thumbprint
      *
      * @param {string} [parameters.apnsCredential.keyId] A 10-character key
@@ -1585,7 +1585,7 @@ export interface NotificationHubs {
      * @param {string} [parameters.mpnsCredential.certificateKey] The certificate
      * key for this credential.
      *
-     * @param {string} [parameters.mpnsCredential.thumbprint] The Mpns certificate
+     * @param {string} [parameters.mpnsCredential.thumbprint] The MPNS certificate
      * Thumbprint
      *
      * @param {object} [parameters.admCredential] The AdmCredential of the created
@@ -1671,7 +1671,7 @@ export interface NotificationHubs {
      * @param {string} [parameters.apnsCredential.endpoint] The endpoint of this
      * credential.
      *
-     * @param {string} [parameters.apnsCredential.thumbprint] The Apns certificate
+     * @param {string} [parameters.apnsCredential.thumbprint] The APNS certificate
      * Thumbprint
      *
      * @param {string} [parameters.apnsCredential.keyId] A 10-character key
@@ -1714,7 +1714,7 @@ export interface NotificationHubs {
      * @param {string} [parameters.mpnsCredential.certificateKey] The certificate
      * key for this credential.
      *
-     * @param {string} [parameters.mpnsCredential.thumbprint] The Mpns certificate
+     * @param {string} [parameters.mpnsCredential.thumbprint] The MPNS certificate
      * Thumbprint
      *
      * @param {object} [parameters.admCredential] The AdmCredential of the created
@@ -1822,7 +1822,7 @@ export interface NotificationHubs {
      * @param {string} [options.parameters.apnsCredential.endpoint] The endpoint of
      * this credential.
      *
-     * @param {string} [options.parameters.apnsCredential.thumbprint] The Apns
+     * @param {string} [options.parameters.apnsCredential.thumbprint] The APNS
      * certificate Thumbprint
      *
      * @param {string} [options.parameters.apnsCredential.keyId] A 10-character key
@@ -1867,7 +1867,7 @@ export interface NotificationHubs {
      * @param {string} [options.parameters.mpnsCredential.certificateKey] The
      * certificate key for this credential.
      *
-     * @param {string} [options.parameters.mpnsCredential.thumbprint] The Mpns
+     * @param {string} [options.parameters.mpnsCredential.thumbprint] The MPNS
      * certificate Thumbprint
      *
      * @param {object} [options.parameters.admCredential] The AdmCredential of the
@@ -1958,7 +1958,7 @@ export interface NotificationHubs {
      * @param {string} [options.parameters.apnsCredential.endpoint] The endpoint of
      * this credential.
      *
-     * @param {string} [options.parameters.apnsCredential.thumbprint] The Apns
+     * @param {string} [options.parameters.apnsCredential.thumbprint] The APNS
      * certificate Thumbprint
      *
      * @param {string} [options.parameters.apnsCredential.keyId] A 10-character key
@@ -2003,7 +2003,7 @@ export interface NotificationHubs {
      * @param {string} [options.parameters.mpnsCredential.certificateKey] The
      * certificate key for this credential.
      *
-     * @param {string} [options.parameters.mpnsCredential.thumbprint] The Mpns
+     * @param {string} [options.parameters.mpnsCredential.thumbprint] The MPNS
      * certificate Thumbprint
      *
      * @param {object} [options.parameters.admCredential] The AdmCredential of the

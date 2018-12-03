@@ -57,7 +57,7 @@ export interface Operation {
  * @class
  * Initializes a new instance of the ErrorResponse class.
  * @constructor
- * Error reponse indicates NotificationHubs service is not able to process the
+ * Error response indicates NotificationHubs service is not able to process the
  * incoming request. The reason is provided in the error message.
  *
  * @member {string} [code] Error code.
@@ -152,7 +152,7 @@ export interface Resource extends BaseResource {
  * @class
  * Initializes a new instance of the CheckAvailabilityResult class.
  * @constructor
- * Description of a CheckAvailibility resource.
+ * Description of a CheckAvailability resource.
  *
  * @member {boolean} [isAvailiable] True if the name is available and can be
  * used to create new Namespace/NotificationHub. Otherwise false.
@@ -411,7 +411,7 @@ export interface PolicykeyResource {
  * @member {string} [apnsCertificate] The APNS certificate.
  * @member {string} [certificateKey] The certificate key.
  * @member {string} [endpoint] The endpoint of this credential.
- * @member {string} [thumbprint] The Apns certificate Thumbprint
+ * @member {string} [thumbprint] The APNS certificate Thumbprint
  * @member {string} [keyId] A 10-character key identifier (kid) key, obtained
  * from your developer account
  * @member {string} [appName] The name of the application
@@ -469,7 +469,7 @@ export interface GcmCredential {
  *
  * @member {string} [mpnsCertificate] The MPNS certificate.
  * @member {string} [certificateKey] The certificate key for this credential.
- * @member {string} [thumbprint] The Mpns certificate Thumbprint
+ * @member {string} [thumbprint] The MPNS certificate Thumbprint
  */
 export interface MpnsCredential {
   mpnsCertificate?: string;
@@ -526,7 +526,7 @@ export interface BaiduCredential {
  * @member {string} [apnsCredential.apnsCertificate] The APNS certificate.
  * @member {string} [apnsCredential.certificateKey] The certificate key.
  * @member {string} [apnsCredential.endpoint] The endpoint of this credential.
- * @member {string} [apnsCredential.thumbprint] The Apns certificate Thumbprint
+ * @member {string} [apnsCredential.thumbprint] The APNS certificate Thumbprint
  * @member {string} [apnsCredential.keyId] A 10-character key identifier (kid)
  * key, obtained from your developer account
  * @member {string} [apnsCredential.appName] The name of the application
@@ -551,7 +551,7 @@ export interface BaiduCredential {
  * @member {string} [mpnsCredential.mpnsCertificate] The MPNS certificate.
  * @member {string} [mpnsCredential.certificateKey] The certificate key for
  * this credential.
- * @member {string} [mpnsCredential.thumbprint] The Mpns certificate Thumbprint
+ * @member {string} [mpnsCredential.thumbprint] The MPNS certificate Thumbprint
  * @member {object} [admCredential] The AdmCredential of the created
  * NotificationHub
  * @member {string} [admCredential.clientId] The client identifier.
@@ -594,7 +594,7 @@ export interface NotificationHubCreateOrUpdateParameters extends Resource {
  * @member {string} [apnsCredential.apnsCertificate] The APNS certificate.
  * @member {string} [apnsCredential.certificateKey] The certificate key.
  * @member {string} [apnsCredential.endpoint] The endpoint of this credential.
- * @member {string} [apnsCredential.thumbprint] The Apns certificate Thumbprint
+ * @member {string} [apnsCredential.thumbprint] The APNS certificate Thumbprint
  * @member {string} [apnsCredential.keyId] A 10-character key identifier (kid)
  * key, obtained from your developer account
  * @member {string} [apnsCredential.appName] The name of the application
@@ -619,7 +619,7 @@ export interface NotificationHubCreateOrUpdateParameters extends Resource {
  * @member {string} [mpnsCredential.mpnsCertificate] The MPNS certificate.
  * @member {string} [mpnsCredential.certificateKey] The certificate key for
  * this credential.
- * @member {string} [mpnsCredential.thumbprint] The Mpns certificate Thumbprint
+ * @member {string} [mpnsCredential.thumbprint] The MPNS certificate Thumbprint
  * @member {object} [admCredential] The AdmCredential of the created
  * NotificationHub
  * @member {string} [admCredential.clientId] The client identifier.
@@ -661,7 +661,7 @@ export interface NotificationHubPatchParameters extends Resource {
  * @member {string} [apnsCredential.apnsCertificate] The APNS certificate.
  * @member {string} [apnsCredential.certificateKey] The certificate key.
  * @member {string} [apnsCredential.endpoint] The endpoint of this credential.
- * @member {string} [apnsCredential.thumbprint] The Apns certificate Thumbprint
+ * @member {string} [apnsCredential.thumbprint] The APNS certificate Thumbprint
  * @member {string} [apnsCredential.keyId] A 10-character key identifier (kid)
  * key, obtained from your developer account
  * @member {string} [apnsCredential.appName] The name of the application
@@ -686,7 +686,7 @@ export interface NotificationHubPatchParameters extends Resource {
  * @member {string} [mpnsCredential.mpnsCertificate] The MPNS certificate.
  * @member {string} [mpnsCredential.certificateKey] The certificate key for
  * this credential.
- * @member {string} [mpnsCredential.thumbprint] The Mpns certificate Thumbprint
+ * @member {string} [mpnsCredential.thumbprint] The MPNS certificate Thumbprint
  * @member {object} [admCredential] The AdmCredential of the created
  * NotificationHub
  * @member {string} [admCredential.clientId] The client identifier.
@@ -739,7 +739,7 @@ export interface DebugSendResponse extends Resource {
  * @member {string} [apnsCredential.apnsCertificate] The APNS certificate.
  * @member {string} [apnsCredential.certificateKey] The certificate key.
  * @member {string} [apnsCredential.endpoint] The endpoint of this credential.
- * @member {string} [apnsCredential.thumbprint] The Apns certificate Thumbprint
+ * @member {string} [apnsCredential.thumbprint] The APNS certificate Thumbprint
  * @member {string} [apnsCredential.keyId] A 10-character key identifier (kid)
  * key, obtained from your developer account
  * @member {string} [apnsCredential.appName] The name of the application
@@ -764,7 +764,7 @@ export interface DebugSendResponse extends Resource {
  * @member {string} [mpnsCredential.mpnsCertificate] The MPNS certificate.
  * @member {string} [mpnsCredential.certificateKey] The certificate key for
  * this credential.
- * @member {string} [mpnsCredential.thumbprint] The Mpns certificate Thumbprint
+ * @member {string} [mpnsCredential.thumbprint] The MPNS certificate Thumbprint
  * @member {object} [admCredential] The AdmCredential of the created
  * NotificationHub
  * @member {string} [admCredential.clientId] The client identifier.
