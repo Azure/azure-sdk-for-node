@@ -656,7 +656,7 @@ export interface ApplicationHealthEvaluation extends HealthEvaluation {
  * over the total number of replicas in the partition.
  * The computation rounds up to tolerate one failure on small numbers of
  * replicas. Default percentage is zero. Default value: 0 .
- * @member {number} [maxPercentUnhealthyServices] The maximum maximum allowed
+ * @member {number} [maxPercentUnhealthyServices] The maximum allowed
  * percentage of unhealthy services. Allowed values are Byte values from zero
  * to 100.
  *
@@ -710,9 +710,9 @@ export interface ServiceTypeHealthPolicy {
  * over the total number of replicas in the partition.
  * The computation rounds up to tolerate one failure on small numbers of
  * replicas. Default percentage is zero.
- * @member {number} [value.maxPercentUnhealthyServices] The maximum maximum
- * allowed percentage of unhealthy services. Allowed values are Byte values
- * from zero to 100.
+ * @member {number} [value.maxPercentUnhealthyServices] The maximum allowed
+ * percentage of unhealthy services. Allowed values are Byte values from zero
+ * to 100.
  *
  * The percentage represents the maximum tolerated percentage of services that
  * can be unhealthy before the application is considered in error.
@@ -779,8 +779,8 @@ export interface ServiceTypeHealthPolicyMapItem {
  * replicas. Default percentage is zero.
  * @member {number}
  * [defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices] The maximum
- * maximum allowed percentage of unhealthy services. Allowed values are Byte
- * values from zero to 100.
+ * allowed percentage of unhealthy services. Allowed values are Byte values
+ * from zero to 100.
  *
  * The percentage represents the maximum tolerated percentage of services that
  * can be unhealthy before the application is considered in error.
@@ -854,8 +854,8 @@ export interface ApplicationHealthPolicy {
  * replicas. Default percentage is zero.
  * @member {number}
  * [value.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices] The
- * maximum maximum allowed percentage of unhealthy services. Allowed values are
- * Byte values from zero to 100.
+ * maximum allowed percentage of unhealthy services. Allowed values are Byte
+ * values from zero to 100.
  *
  * The percentage represents the maximum tolerated percentage of services that
  * can be unhealthy before the application is considered in error.
@@ -2021,8 +2021,8 @@ export interface MonitoringPolicyDescription {
  * replicas. Default percentage is zero.
  * @member {number}
  * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
- * The maximum maximum allowed percentage of unhealthy services. Allowed values
- * are Byte values from zero to 100.
+ * The maximum allowed percentage of unhealthy services. Allowed values are
+ * Byte values from zero to 100.
  *
  * The percentage represents the maximum tolerated percentage of services that
  * can be unhealthy before the application is considered in error.
@@ -2290,8 +2290,8 @@ export interface FailureUpgradeDomainProgressInfo {
  * replicas. Default percentage is zero.
  * @member {number}
  * [upgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
- * The maximum maximum allowed percentage of unhealthy services. Allowed values
- * are Byte values from zero to 100.
+ * The maximum allowed percentage of unhealthy services. Allowed values are
+ * Byte values from zero to 100.
  *
  * The percentage represents the maximum tolerated percentage of services that
  * can be unhealthy before the application is considered in error.
@@ -7652,8 +7652,8 @@ export interface RegistryCredential {
  * replicas. Default percentage is zero.
  * @member {number}
  * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
- * The maximum maximum allowed percentage of unhealthy services. Allowed values
- * are Byte values from zero to 100.
+ * The maximum allowed percentage of unhealthy services. Allowed values are
+ * Byte values from zero to 100.
  *
  * The percentage represents the maximum tolerated percentage of services that
  * can be unhealthy before the application is considered in error.
@@ -7794,8 +7794,8 @@ export interface ComposeDeploymentUpgradeDescription {
  * replicas. Default percentage is zero.
  * @member {number}
  * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
- * The maximum maximum allowed percentage of unhealthy services. Allowed values
- * are Byte values from zero to 100.
+ * The maximum allowed percentage of unhealthy services. Allowed values are
+ * Byte values from zero to 100.
  *
  * The percentage represents the maximum tolerated percentage of services that
  * can be unhealthy before the application is considered in error.
@@ -9435,8 +9435,8 @@ export interface ResumeApplicationUpgradeDescription {
  * replicas. Default percentage is zero.
  * @member {number}
  * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
- * The maximum maximum allowed percentage of unhealthy services. Allowed values
- * are Byte values from zero to 100.
+ * The maximum allowed percentage of unhealthy services. Allowed values are
+ * Byte values from zero to 100.
  *
  * The percentage represents the maximum tolerated percentage of services that
  * can be unhealthy before the application is considered in error.

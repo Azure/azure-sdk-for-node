@@ -5362,7 +5362,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the information about a specific service type that is supported by a
    * provisioned application type in a Service Fabric cluster. The provided
    * application type must exist. Otherwise, a 404 status is returned. A 204
-   * response is returned if the specificed service type is not found in the
+   * response is returned if the specified service type is not found in the
    * cluster.
    *
    * @param {string} applicationTypeName The name of the application type.
@@ -5397,7 +5397,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the information about a specific service type that is supported by a
    * provisioned application type in a Service Fabric cluster. The provided
    * application type must exist. Otherwise, a 404 status is returned. A 204
-   * response is returned if the specificed service type is not found in the
+   * response is returned if the specified service type is not found in the
    * cluster.
    *
    * @param {string} applicationTypeName The name of the application type.
@@ -6720,8 +6720,8 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-   * The maximum maximum allowed percentage of unhealthy services. Allowed values
-   * are Byte values from zero to 100.
+   * The maximum allowed percentage of unhealthy services. Allowed values are
+   * Byte values from zero to 100.
    *
    * The percentage represents the maximum tolerated percentage of services that
    * can be unhealthy before the application is considered in error.
@@ -6905,8 +6905,8 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-   * The maximum maximum allowed percentage of unhealthy services. Allowed values
-   * are Byte values from zero to 100.
+   * The maximum allowed percentage of unhealthy services. Allowed values are
+   * Byte values from zero to 100.
    *
    * The percentage represents the maximum tolerated percentage of services that
    * can be unhealthy before the application is considered in error.
@@ -7389,8 +7389,8 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {number}
    * [applicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-   * The maximum maximum allowed percentage of unhealthy services. Allowed values
-   * are Byte values from zero to 100.
+   * The maximum allowed percentage of unhealthy services. Allowed values are
+   * Byte values from zero to 100.
    *
    * The percentage represents the maximum tolerated percentage of services that
    * can be unhealthy before the application is considered in error.
@@ -7579,8 +7579,8 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {number}
    * [applicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-   * The maximum maximum allowed percentage of unhealthy services. Allowed values
-   * are Byte values from zero to 100.
+   * The maximum allowed percentage of unhealthy services. Allowed values are
+   * Byte values from zero to 100.
    *
    * The percentage represents the maximum tolerated percentage of services that
    * can be unhealthy before the application is considered in error.
@@ -7800,8 +7800,8 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {number}
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-   * The maximum maximum allowed percentage of unhealthy services. Allowed values
-   * are Byte values from zero to 100.
+   * The maximum allowed percentage of unhealthy services. Allowed values are
+   * Byte values from zero to 100.
    *
    * The percentage represents the maximum tolerated percentage of services that
    * can be unhealthy before the application is considered in error.
@@ -7990,8 +7990,8 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {number}
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-   * The maximum maximum allowed percentage of unhealthy services. Allowed values
-   * are Byte values from zero to 100.
+   * The maximum allowed percentage of unhealthy services. Allowed values are
+   * Byte values from zero to 100.
    *
    * The percentage represents the maximum tolerated percentage of services that
    * can be unhealthy before the application is considered in error.
@@ -8882,8 +8882,8 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-   * The maximum maximum allowed percentage of unhealthy services. Allowed values
-   * are Byte values from zero to 100.
+   * The maximum allowed percentage of unhealthy services. Allowed values are
+   * Byte values from zero to 100.
    *
    * The percentage represents the maximum tolerated percentage of services that
    * can be unhealthy before the application is considered in error.
@@ -9052,8 +9052,8 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-   * The maximum maximum allowed percentage of unhealthy services. Allowed values
-   * are Byte values from zero to 100.
+   * The maximum allowed percentage of unhealthy services. Allowed values are
+   * Byte values from zero to 100.
    *
    * The percentage represents the maximum tolerated percentage of services that
    * can be unhealthy before the application is considered in error.
@@ -10836,8 +10836,8 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-   * The maximum maximum allowed percentage of unhealthy services. Allowed values
-   * are Byte values from zero to 100.
+   * The maximum allowed percentage of unhealthy services. Allowed values are
+   * Byte values from zero to 100.
    *
    * The percentage represents the maximum tolerated percentage of services that
    * can be unhealthy before the application is considered in error.
@@ -11005,8 +11005,8 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-   * The maximum maximum allowed percentage of unhealthy services. Allowed values
-   * are Byte values from zero to 100.
+   * The maximum allowed percentage of unhealthy services. Allowed values are
+   * Byte values from zero to 100.
    *
    * The percentage represents the maximum tolerated percentage of services that
    * can be unhealthy before the application is considered in error.
@@ -12030,8 +12030,8 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-   * The maximum maximum allowed percentage of unhealthy services. Allowed values
-   * are Byte values from zero to 100.
+   * The maximum allowed percentage of unhealthy services. Allowed values are
+   * Byte values from zero to 100.
    *
    * The percentage represents the maximum tolerated percentage of services that
    * can be unhealthy before the application is considered in error.
@@ -12193,8 +12193,8 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-   * The maximum maximum allowed percentage of unhealthy services. Allowed values
-   * are Byte values from zero to 100.
+   * The maximum allowed percentage of unhealthy services. Allowed values are
+   * Byte values from zero to 100.
    *
    * The percentage represents the maximum tolerated percentage of services that
    * can be unhealthy before the application is considered in error.
@@ -14439,8 +14439,8 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-   * The maximum maximum allowed percentage of unhealthy services. Allowed values
-   * are Byte values from zero to 100.
+   * The maximum allowed percentage of unhealthy services. Allowed values are
+   * Byte values from zero to 100.
    *
    * The percentage represents the maximum tolerated percentage of services that
    * can be unhealthy before the application is considered in error.
@@ -14570,8 +14570,8 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-   * The maximum maximum allowed percentage of unhealthy services. Allowed values
-   * are Byte values from zero to 100.
+   * The maximum allowed percentage of unhealthy services. Allowed values are
+   * Byte values from zero to 100.
    *
    * The percentage represents the maximum tolerated percentage of services that
    * can be unhealthy before the application is considered in error.
@@ -15791,8 +15791,8 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-   * The maximum maximum allowed percentage of unhealthy services. Allowed values
-   * are Byte values from zero to 100.
+   * The maximum allowed percentage of unhealthy services. Allowed values are
+   * Byte values from zero to 100.
    *
    * The percentage represents the maximum tolerated percentage of services that
    * can be unhealthy before the application is considered in error.
@@ -15931,8 +15931,8 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-   * The maximum maximum allowed percentage of unhealthy services. Allowed values
-   * are Byte values from zero to 100.
+   * The maximum allowed percentage of unhealthy services. Allowed values are
+   * Byte values from zero to 100.
    *
    * The percentage represents the maximum tolerated percentage of services that
    * can be unhealthy before the application is considered in error.
@@ -17498,8 +17498,8 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {number}
    * [composeDeploymentUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-   * The maximum maximum allowed percentage of unhealthy services. Allowed values
-   * are Byte values from zero to 100.
+   * The maximum allowed percentage of unhealthy services. Allowed values are
+   * Byte values from zero to 100.
    *
    * The percentage represents the maximum tolerated percentage of services that
    * can be unhealthy before the application is considered in error.
@@ -17694,8 +17694,8 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {number}
    * [composeDeploymentUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-   * The maximum maximum allowed percentage of unhealthy services. Allowed values
-   * are Byte values from zero to 100.
+   * The maximum allowed percentage of unhealthy services. Allowed values are
+   * Byte values from zero to 100.
    *
    * The percentage represents the maximum tolerated percentage of services that
    * can be unhealthy before the application is considered in error.
