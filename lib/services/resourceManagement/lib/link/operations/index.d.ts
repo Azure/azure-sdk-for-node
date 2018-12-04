@@ -348,8 +348,8 @@ export interface ResourceLinks {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] The filter to apply on the list resource
-     * links operation. The supported filter for list resource links is targetid.
-     * For example, $filter=targetid eq {value}
+     * links operation. The supported filter for list resource links is targetId.
+     * For example, $filter=targetId eq {value}
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -368,8 +368,8 @@ export interface ResourceLinks {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] The filter to apply on the list resource
-     * links operation. The supported filter for list resource links is targetid.
-     * For example, $filter=targetid eq {value}
+     * links operation. The supported filter for list resource links is targetId.
+     * For example, $filter=targetId eq {value}
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
