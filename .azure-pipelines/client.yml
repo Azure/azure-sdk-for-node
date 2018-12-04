@@ -8,7 +8,7 @@ jobs:
   - job: 'Publish'
 
     pool:
-      vmImage: 'ubuntu-16.04'
+      vmImage: 'vs2017-win2016'
 
     steps:
       - task: NodeTool@0
@@ -42,7 +42,7 @@ jobs:
   - job: 'Audit'
 
     pool:
-      vmImage: 'ubuntu-16.04'
+      vmImage: 'vs2017-win2016'
 
     steps:
       - task: NodeTool@0
