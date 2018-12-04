@@ -13,7 +13,7 @@
   "license": "MIT",
   "main": "./lib/predictionAPIClient.js",
   "types": "./lib/predictionAPIClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node/lib/services/customVision/prediction",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/customVision/prediction",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
