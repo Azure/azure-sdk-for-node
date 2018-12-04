@@ -3312,7 +3312,7 @@ export interface Alerts {
 
 
     /**
-     * List all the alerts alerts that are associated with the resource group
+     * List all the alerts that are associated with the resource group
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
@@ -3337,7 +3337,7 @@ export interface Alerts {
     listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { filter? : string, select? : string, expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertList>>;
 
     /**
-     * List all the alerts alerts that are associated with the resource group
+     * List all the alerts that are associated with the resource group
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription. The name is case insensitive.
@@ -3818,7 +3818,7 @@ export interface Alerts {
 
 
     /**
-     * List all the alerts alerts that are associated with the resource group
+     * List all the alerts that are associated with the resource group
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -3837,7 +3837,7 @@ export interface Alerts {
     listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertList>>;
 
     /**
-     * List all the alerts alerts that are associated with the resource group
+     * List all the alerts that are associated with the resource group
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
