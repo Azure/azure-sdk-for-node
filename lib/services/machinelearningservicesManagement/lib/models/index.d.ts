@@ -333,9 +333,9 @@ export interface SystemService {
  * @class
  * Initializes a new instance of the SslConfiguration class.
  * @constructor
- * The ssl configugation for scoring
+ * The SSL configuration for scoring
  *
- * @member {string} [status] Enable or disable ssl for scoring. Possible values
+ * @member {string} [status] Enable or disable SSL for scoring. Possible values
  * include: 'Disabled', 'Enabled'
  * @member {string} [cert] Cert data
  * @member {string} [key] Key data
@@ -359,7 +359,7 @@ export interface SslConfiguration {
  * @member {number} [agentCount] Number of agents
  * @member {string} [agentVMSize] Agent virtual machine size
  * @member {object} [sslConfiguration] SSL configuration
- * @member {string} [sslConfiguration.status] Enable or disable ssl for
+ * @member {string} [sslConfiguration.status] Enable or disable SSL for
  * scoring. Possible values include: 'Disabled', 'Enabled'
  * @member {string} [sslConfiguration.cert] Cert data
  * @member {string} [sslConfiguration.key] Key data
@@ -385,7 +385,7 @@ export interface AKSProperties {
  * @member {number} [properties.agentCount] Number of agents
  * @member {string} [properties.agentVMSize] Agent virtual machine size
  * @member {object} [properties.sslConfiguration] SSL configuration
- * @member {string} [properties.sslConfiguration.status] Enable or disable ssl
+ * @member {string} [properties.sslConfiguration.status] Enable or disable SSL
  * for scoring. Possible values include: 'Disabled', 'Enabled'
  * @member {string} [properties.sslConfiguration.cert] Cert data
  * @member {string} [properties.sslConfiguration.key] Key data
@@ -625,7 +625,7 @@ export interface AksComputeSecrets extends ComputeSecrets {
  * @constructor
  * Secrets related to a Machine Learning compute based on AKS.
  *
- * @member {object} [administratorAccount] Admin creadentials for virtual
+ * @member {object} [administratorAccount] Admin credentials for virtual
  * machine.
  * @member {string} [administratorAccount.username] Username of admin account
  * @member {string} [administratorAccount.password] Password of admin account
