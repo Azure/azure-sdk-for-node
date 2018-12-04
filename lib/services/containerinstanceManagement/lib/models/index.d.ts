@@ -800,6 +800,10 @@ export interface ContainerExecResponse {
 */
 export interface CachedImages {
   /**
+   * The resource Id of the cached image.
+  */
+  id?: string;
+  /**
    * The OS type of the cached image.
   */
   osType: string;
