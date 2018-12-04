@@ -299,7 +299,7 @@ export interface DpsCertificate {
     /**
      * @summary Delete the Provisioning Service Certificate.
      *
-     * Deletes the specified certificate assosciated with the Provisioning Service
+     * Deletes the specified certificate associated with the Provisioning Service
      *
      * @param {string} resourceGroupName Resource group identifier.
      *
@@ -352,7 +352,7 @@ export interface DpsCertificate {
     /**
      * @summary Delete the Provisioning Service Certificate.
      *
-     * Deletes the specified certificate assosciated with the Provisioning Service
+     * Deletes the specified certificate associated with the Provisioning Service
      *
      * @param {string} resourceGroupName Resource group identifier.
      *
@@ -835,7 +835,7 @@ export interface IotDpsResource {
      * provisioning state of the provisioning service.
      *
      * @param {array} [iotDpsDescription.properties.iotHubs] List of IoT hubs
-     * assosciated with this provisioning service.
+     * associated with this provisioning service.
      *
      * @param {string} [iotDpsDescription.properties.allocationPolicy] Allocation
      * policy to be used by this provisioning service. Possible values include:
@@ -902,7 +902,7 @@ export interface IotDpsResource {
      * provisioning state of the provisioning service.
      *
      * @param {array} [iotDpsDescription.properties.iotHubs] List of IoT hubs
-     * assosciated with this provisioning service.
+     * associated with this provisioning service.
      *
      * @param {string} [iotDpsDescription.properties.allocationPolicy] Allocation
      * policy to be used by this provisioning service. Possible values include:
@@ -1589,7 +1589,7 @@ export interface IotDpsResource {
      * provisioning state of the provisioning service.
      *
      * @param {array} [iotDpsDescription.properties.iotHubs] List of IoT hubs
-     * assosciated with this provisioning service.
+     * associated with this provisioning service.
      *
      * @param {string} [iotDpsDescription.properties.allocationPolicy] Allocation
      * policy to be used by this provisioning service. Possible values include:
@@ -1656,7 +1656,7 @@ export interface IotDpsResource {
      * provisioning state of the provisioning service.
      *
      * @param {array} [iotDpsDescription.properties.iotHubs] List of IoT hubs
-     * assosciated with this provisioning service.
+     * associated with this provisioning service.
      *
      * @param {string} [iotDpsDescription.properties.allocationPolicy] Allocation
      * policy to be used by this provisioning service. Possible values include:
