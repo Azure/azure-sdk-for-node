@@ -3592,6 +3592,8 @@ export interface SubResourceReadOnly extends BaseResource {
  * at all.
  * @member {string} [provisioningState] The provisioning state, which only
  * appears in the response.
+ * @member {array} [provisionAfterExtensions] Collection of extension names
+ * after which this extension needs to be provisioned.
  */
 export interface VirtualMachineScaleSetExtension extends SubResourceReadOnly {
   name?: string;
@@ -3603,6 +3605,7 @@ export interface VirtualMachineScaleSetExtension extends SubResourceReadOnly {
   settings?: any;
   protectedSettings?: any;
   readonly provisioningState?: string;
+  provisionAfterExtensions?: string[];
 }
 
 /**

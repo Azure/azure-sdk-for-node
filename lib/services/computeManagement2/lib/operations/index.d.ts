@@ -14330,6 +14330,9 @@ export interface VirtualMachineScaleSetExtensions {
      * contain either protectedSettings or protectedSettingsFromKeyVault or no
      * protected settings at all.
      *
+     * @param {array} [extensionParameters.provisionAfterExtensions] Collection of
+     * extension names after which this extension needs to be provisioned.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -14382,6 +14385,9 @@ export interface VirtualMachineScaleSetExtensions {
      * @param {object} [extensionParameters.protectedSettings] The extension can
      * contain either protectedSettings or protectedSettingsFromKeyVault or no
      * protected settings at all.
+     *
+     * @param {array} [extensionParameters.provisionAfterExtensions] Collection of
+     * extension names after which this extension needs to be provisioned.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -14654,6 +14660,9 @@ export interface VirtualMachineScaleSetExtensions {
      * contain either protectedSettings or protectedSettingsFromKeyVault or no
      * protected settings at all.
      *
+     * @param {array} [extensionParameters.provisionAfterExtensions] Collection of
+     * extension names after which this extension needs to be provisioned.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -14706,6 +14715,9 @@ export interface VirtualMachineScaleSetExtensions {
      * @param {object} [extensionParameters.protectedSettings] The extension can
      * contain either protectedSettings or protectedSettingsFromKeyVault or no
      * protected settings at all.
+     *
+     * @param {array} [extensionParameters.provisionAfterExtensions] Collection of
+     * extension names after which this extension needs to be provisioned.
      *
      * @param {object} [options] Optional Parameters.
      *
