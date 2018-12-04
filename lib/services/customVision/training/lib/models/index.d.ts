@@ -32,6 +32,120 @@ export interface Domain {
 
 /**
  * @class
+ * Initializes a new instance of the ImageTagCreateEntry class.
+ * @constructor
+ * Entry associating a tag to an image.
+ *
+ * @member {uuid} [imageId] Id of the image.
+ * @member {uuid} [tagId] Id of the tag.
+ */
+export interface ImageTagCreateEntry {
+  imageId?: string;
+  tagId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImageTagCreateBatch class.
+ * @constructor
+ * Batch of image tags.
+ *
+ * @member {array} [tags] Image Tag entries to include in this batch.
+ */
+export interface ImageTagCreateBatch {
+  tags?: ImageTagCreateEntry[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImageTagCreateSummary class.
+ * @constructor
+ * @member {array} [created]
+ * @member {array} [duplicated]
+ * @member {array} [exceeded]
+ */
+export interface ImageTagCreateSummary {
+  created?: ImageTagCreateEntry[];
+  duplicated?: ImageTagCreateEntry[];
+  exceeded?: ImageTagCreateEntry[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImageRegionCreateEntry class.
+ * @constructor
+ * Entry associating a region to an image.
+ *
+ * @member {uuid} [imageId] Id of the image.
+ * @member {uuid} [tagId] Id of the tag associated with this region.
+ * @member {number} [left]
+ * @member {number} [top]
+ * @member {number} [width]
+ * @member {number} [height]
+ */
+export interface ImageRegionCreateEntry {
+  imageId?: string;
+  tagId?: string;
+  left?: number;
+  top?: number;
+  width?: number;
+  height?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImageRegionCreateBatch class.
+ * @constructor
+ * Batch of image region information to create.
+ *
+ * @member {array} [regions]
+ */
+export interface ImageRegionCreateBatch {
+  regions?: ImageRegionCreateEntry[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImageRegionCreateResult class.
+ * @constructor
+ * @member {uuid} [imageId]
+ * @member {uuid} [regionId]
+ * @member {string} [tagName]
+ * @member {date} [created]
+ * @member {uuid} [tagId] Id of the tag associated with this region.
+ * @member {number} [left]
+ * @member {number} [top]
+ * @member {number} [width]
+ * @member {number} [height]
+ */
+export interface ImageRegionCreateResult {
+  readonly imageId?: string;
+  readonly regionId?: string;
+  readonly tagName?: string;
+  readonly created?: Date;
+  tagId?: string;
+  left?: number;
+  top?: number;
+  width?: number;
+  height?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImageRegionCreateSummary class.
+ * @constructor
+ * @member {array} [created]
+ * @member {array} [duplicated]
+ * @member {array} [exceeded]
+ */
+export interface ImageRegionCreateSummary {
+  created?: ImageRegionCreateResult[];
+  duplicated?: ImageRegionCreateEntry[];
+  exceeded?: ImageRegionCreateEntry[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the ImageTag class.
  * @constructor
  * @member {uuid} [tagId]
@@ -51,7 +165,7 @@ export interface ImageTag {
  * @member {uuid} [regionId]
  * @member {string} [tagName]
  * @member {date} [created]
- * @member {uuid} [tagId]
+ * @member {uuid} [tagId] Id of the tag associated with this region.
  * @member {number} [left]
  * @member {number} [top]
  * @member {number} [width]
@@ -72,24 +186,28 @@ export interface ImageRegion {
  * @class
  * Initializes a new instance of the Image class.
  * @constructor
- * Image model to be sent as JSON
+ * Image model to be sent as JSON.
  *
- * @member {uuid} [id]
- * @member {date} [created]
- * @member {number} [width]
- * @member {number} [height]
- * @member {string} [imageUri]
- * @member {string} [thumbnailUri]
- * @member {array} [tags]
- * @member {array} [regions]
+ * @member {uuid} [id] Id of the image.
+ * @member {date} [created] Date the image was created.
+ * @member {number} [width] Width of the image.
+ * @member {number} [height] Height of the image.
+ * @member {string} [resizedImageUri] The URI to the (resized) image used for
+ * training.
+ * @member {string} [thumbnailUri] The URI to the thumbnail of the original
+ * image.
+ * @member {string} [originalImageUri] The URI to the original uploaded image.
+ * @member {array} [tags] Tags associated with this image.
+ * @member {array} [regions] Regions associated with this image.
  */
 export interface Image {
   readonly id?: string;
   readonly created?: Date;
   readonly width?: number;
   readonly height?: number;
-  readonly imageUri?: string;
+  readonly resizedImageUri?: string;
   readonly thumbnailUri?: string;
+  readonly originalImageUri?: string;
   readonly tags?: ImageTag[];
   readonly regions?: ImageRegion[];
 }
@@ -98,20 +216,25 @@ export interface Image {
  * @class
  * Initializes a new instance of the ImageCreateResult class.
  * @constructor
- * @member {string} [sourceUrl]
- * @member {string} [status] Possible values include: 'OK', 'OKDuplicate',
- * 'ErrorSource', 'ErrorImageFormat', 'ErrorImageSize', 'ErrorStorage',
- * 'ErrorLimitExceed', 'ErrorTagLimitExceed', 'ErrorRegionLimitExceed',
- * 'ErrorUnknown'
- * @member {object} [image]
- * @member {uuid} [image.id]
- * @member {date} [image.created]
- * @member {number} [image.width]
- * @member {number} [image.height]
- * @member {string} [image.imageUri]
- * @member {string} [image.thumbnailUri]
- * @member {array} [image.tags]
- * @member {array} [image.regions]
+ * @member {string} [sourceUrl] Source URL of the image.
+ * @member {string} [status] Status of the image creation. Possible values
+ * include: 'OK', 'OKDuplicate', 'ErrorSource', 'ErrorImageFormat',
+ * 'ErrorImageSize', 'ErrorStorage', 'ErrorLimitExceed', 'ErrorTagLimitExceed',
+ * 'ErrorRegionLimitExceed', 'ErrorUnknown',
+ * 'ErrorNegativeAndRegularTagOnSameImage'
+ * @member {object} [image] The image.
+ * @member {uuid} [image.id] Id of the image.
+ * @member {date} [image.created] Date the image was created.
+ * @member {number} [image.width] Width of the image.
+ * @member {number} [image.height] Height of the image.
+ * @member {string} [image.resizedImageUri] The URI to the (resized) image used
+ * for training.
+ * @member {string} [image.thumbnailUri] The URI to the thumbnail of the
+ * original image.
+ * @member {string} [image.originalImageUri] The URI to the original uploaded
+ * image.
+ * @member {array} [image.tags] Tags associated with this image.
+ * @member {array} [image.regions] Regions associated with this image.
  */
 export interface ImageCreateResult {
   readonly sourceUrl?: string;
@@ -123,8 +246,9 @@ export interface ImageCreateResult {
  * @class
  * Initializes a new instance of the ImageCreateSummary class.
  * @constructor
- * @member {boolean} [isBatchSuccessful]
- * @member {array} [images]
+ * @member {boolean} [isBatchSuccessful] True if all of the images in the batch
+ * were created successfully, otherwise false.
+ * @member {array} [images] List of the image creation results.
  */
 export interface ImageCreateSummary {
   readonly isBatchSuccessful?: boolean;
@@ -135,7 +259,7 @@ export interface ImageCreateSummary {
  * @class
  * Initializes a new instance of the Region class.
  * @constructor
- * @member {uuid} [tagId]
+ * @member {uuid} [tagId] Id of the tag associated with this region.
  * @member {number} [left]
  * @member {number} [top]
  * @member {number} [width]
@@ -231,114 +355,6 @@ export interface ImageIdCreateBatch {
 
 /**
  * @class
- * Initializes a new instance of the ImageTagCreateEntry class.
- * @constructor
- * @member {uuid} [imageId]
- * @member {uuid} [tagId]
- */
-export interface ImageTagCreateEntry {
-  imageId?: string;
-  tagId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ImageTagCreateBatch class.
- * @constructor
- * @member {array} [tags]
- */
-export interface ImageTagCreateBatch {
-  tags?: ImageTagCreateEntry[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ImageTagCreateSummary class.
- * @constructor
- * @member {array} [created]
- * @member {array} [duplicated]
- * @member {array} [exceeded]
- */
-export interface ImageTagCreateSummary {
-  created?: ImageTagCreateEntry[];
-  duplicated?: ImageTagCreateEntry[];
-  exceeded?: ImageTagCreateEntry[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ImageRegionCreateEntry class.
- * @constructor
- * @member {uuid} [imageId]
- * @member {uuid} [tagId]
- * @member {number} [left]
- * @member {number} [top]
- * @member {number} [width]
- * @member {number} [height]
- */
-export interface ImageRegionCreateEntry {
-  imageId?: string;
-  tagId?: string;
-  left?: number;
-  top?: number;
-  width?: number;
-  height?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the ImageRegionCreateBatch class.
- * @constructor
- * Batch of image region information to create.
- *
- * @member {array} [regions]
- */
-export interface ImageRegionCreateBatch {
-  regions?: ImageRegionCreateEntry[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ImageRegionCreateResult class.
- * @constructor
- * @member {uuid} [imageId]
- * @member {uuid} [regionId]
- * @member {string} [tagName]
- * @member {date} [created]
- * @member {uuid} [tagId]
- * @member {number} [left]
- * @member {number} [top]
- * @member {number} [width]
- * @member {number} [height]
- */
-export interface ImageRegionCreateResult {
-  readonly imageId?: string;
-  readonly regionId?: string;
-  readonly tagName?: string;
-  readonly created?: Date;
-  tagId?: string;
-  left?: number;
-  top?: number;
-  width?: number;
-  height?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the ImageRegionCreateSummary class.
- * @constructor
- * @member {array} [created]
- * @member {array} [duplicated]
- * @member {array} [exceeded]
- */
-export interface ImageRegionCreateSummary {
-  created?: ImageRegionCreateResult[];
-  duplicated?: ImageRegionCreateEntry[];
-  exceeded?: ImageRegionCreateEntry[];
-}
-
-/**
- * @class
  * Initializes a new instance of the BoundingBox class.
  * @constructor
  * @member {number} [left]
@@ -385,6 +401,54 @@ export interface ImageRegionProposal {
 
 /**
  * @class
+ * Initializes a new instance of the ImageUrl class.
+ * @constructor
+ * @member {string} [url]
+ */
+export interface ImageUrl {
+  url?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Prediction class.
+ * @constructor
+ * @member {number} [probability]
+ * @member {uuid} [tagId]
+ * @member {string} [tagName]
+ * @member {object} [boundingBox]
+ * @member {number} [boundingBox.left]
+ * @member {number} [boundingBox.top]
+ * @member {number} [boundingBox.width]
+ * @member {number} [boundingBox.height]
+ */
+export interface Prediction {
+  readonly probability?: number;
+  readonly tagId?: string;
+  readonly tagName?: string;
+  readonly boundingBox?: BoundingBox;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImagePrediction class.
+ * @constructor
+ * @member {uuid} [id]
+ * @member {uuid} [project]
+ * @member {uuid} [iteration]
+ * @member {date} [created]
+ * @member {array} [predictions]
+ */
+export interface ImagePrediction {
+  readonly id?: string;
+  readonly project?: string;
+  readonly iteration?: string;
+  readonly created?: Date;
+  readonly predictions?: Prediction[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the PredictionQueryTag class.
  * @constructor
  * @member {uuid} [id]
@@ -426,33 +490,17 @@ export interface PredictionQueryToken {
 
 /**
  * @class
- * Initializes a new instance of the Prediction class.
- * @constructor
- * @member {number} [probability]
- * @member {uuid} [tagId]
- * @member {string} [tagName]
- * @member {object} [boundingBox]
- * @member {number} [boundingBox.left]
- * @member {number} [boundingBox.top]
- * @member {number} [boundingBox.width]
- * @member {number} [boundingBox.height]
- */
-export interface Prediction {
-  readonly probability?: number;
-  readonly tagId?: string;
-  readonly tagName?: string;
-  readonly boundingBox?: BoundingBox;
-}
-
-/**
- * @class
  * Initializes a new instance of the StoredImagePrediction class.
  * @constructor
- * result of an image classification request
+ * result of an image classification request.
  *
- * @member {string} [imageUri]
- * @member {string} [thumbnailUri]
- * @member {uuid} [domain]
+ * @member {string} [resizedImageUri] The URI to the (resized) prediction
+ * image.
+ * @member {string} [thumbnailUri] The URI to the thumbnail of the original
+ * prediction image.
+ * @member {string} [originalImageUri] The URI to the original prediction
+ * image.
+ * @member {uuid} [domain] Domain used for the prediction.
  * @member {uuid} [id]
  * @member {uuid} [project]
  * @member {uuid} [iteration]
@@ -460,8 +508,9 @@ export interface Prediction {
  * @member {array} [predictions]
  */
 export interface StoredImagePrediction {
-  readonly imageUri?: string;
+  readonly resizedImageUri?: string;
   readonly thumbnailUri?: string;
+  readonly originalImageUri?: string;
   readonly domain?: string;
   readonly id?: string;
   readonly project?: string;
@@ -494,130 +543,20 @@ export interface PredictionQueryResult {
 
 /**
  * @class
- * Initializes a new instance of the ImageUrl class.
- * @constructor
- * @member {string} [url]
- */
-export interface ImageUrl {
-  url?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ImagePrediction class.
- * @constructor
- * @member {uuid} [id]
- * @member {uuid} [project]
- * @member {uuid} [iteration]
- * @member {date} [created]
- * @member {array} [predictions]
- */
-export interface ImagePrediction {
-  readonly id?: string;
-  readonly project?: string;
-  readonly iteration?: string;
-  readonly created?: Date;
-  readonly predictions?: Prediction[];
-}
-
-/**
- * @class
- * Initializes a new instance of the Iteration class.
- * @constructor
- * Iteration model to be sent over JSON
- *
- * @member {uuid} [id] Gets the id of the iteration
- * @member {string} [name] Gets or sets the name of the iteration
- * @member {boolean} [isDefault] Gets or sets a value indicating whether the
- * iteration is the default iteration for the project
- * @member {string} [status] Gets the current iteration status
- * @member {date} [created] Gets the time this iteration was completed
- * @member {date} [lastModified] Gets the time this iteration was last modified
- * @member {date} [trainedAt] Gets the time this iteration was last modified
- * @member {uuid} [projectId] Gets the project id of the iteration
- * @member {boolean} [exportable] Whether the iteration can be exported to
- * another format for download
- * @member {uuid} [domainId] Get or sets a guid of the domain the iteration has
- * been trained on
- * @member {string} [classificationType] Gets the classification type of the
- * project. Possible values include: 'Multiclass', 'Multilabel'
- */
-export interface Iteration {
-  readonly id?: string;
-  name?: string;
-  isDefault?: boolean;
-  readonly status?: string;
-  readonly created?: Date;
-  readonly lastModified?: Date;
-  readonly trainedAt?: Date;
-  readonly projectId?: string;
-  readonly exportable?: boolean;
-  readonly domainId?: string;
-  readonly classificationType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ProjectSettings class.
- * @constructor
- * Represents settings associated with a project
- *
- * @member {uuid} [domainId] Gets or sets the id of the Domain to use with this
- * project
- * @member {string} [classificationType] Gets or sets the classification type
- * of the project. Possible values include: 'Multiclass', 'Multilabel'
- */
-export interface ProjectSettings {
-  domainId?: string;
-  classificationType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Project class.
- * @constructor
- * Represents a project
- *
- * @member {uuid} [id] Gets the project id
- * @member {string} [name] Gets or sets the name of the project
- * @member {string} [description] Gets or sets the description of the project
- * @member {object} [settings] Gets or sets the project settings
- * @member {uuid} [settings.domainId] Gets or sets the id of the Domain to use
- * with this project
- * @member {string} [settings.classificationType] Gets or sets the
- * classification type of the project. Possible values include: 'Multiclass',
- * 'Multilabel'
- * @member {date} [created] Gets the date this project was created
- * @member {date} [lastModified] Gets the date this project was last modifed
- * @member {string} [thumbnailUri] Gets the thumbnail url representing the
- * project
- */
-export interface Project {
-  readonly id?: string;
-  name?: string;
-  description?: string;
-  settings?: ProjectSettings;
-  readonly created?: Date;
-  readonly lastModified?: Date;
-  readonly thumbnailUri?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the TagPerformance class.
  * @constructor
- * Represents performance data for a particular tag in a trained iteration
+ * Represents performance data for a particular tag in a trained iteration.
  *
  * @member {uuid} [id]
  * @member {string} [name]
- * @member {number} [precision] Gets the precision
+ * @member {number} [precision] Gets the precision.
  * @member {number} [precisionStdDeviation] Gets the standard deviation for the
- * precision
- * @member {number} [recall] Gets the recall
+ * precision.
+ * @member {number} [recall] Gets the recall.
  * @member {number} [recallStdDeviation] Gets the standard deviation for the
- * recall
+ * recall.
  * @member {number} [averagePrecision] Gets the average precision when
- * applicable
+ * applicable.
  */
 export interface TagPerformance {
   readonly id?: string;
@@ -633,18 +572,18 @@ export interface TagPerformance {
  * @class
  * Initializes a new instance of the IterationPerformance class.
  * @constructor
- * Represents the detailed performance data for a trained iteration
+ * Represents the detailed performance data for a trained iteration.
  *
  * @member {array} [perTagPerformance] Gets the per-tag performance details for
- * this iteration
- * @member {number} [precision] Gets the precision
+ * this iteration.
+ * @member {number} [precision] Gets the precision.
  * @member {number} [precisionStdDeviation] Gets the standard deviation for the
- * precision
- * @member {number} [recall] Gets the recall
+ * precision.
+ * @member {number} [recall] Gets the recall.
  * @member {number} [recallStdDeviation] Gets the standard deviation for the
- * recall
+ * recall.
  * @member {number} [averagePrecision] Gets the average precision when
- * applicable
+ * applicable.
  */
 export interface IterationPerformance {
   readonly perTagPerformance?: TagPerformance[];
@@ -659,7 +598,7 @@ export interface IterationPerformance {
  * @class
  * Initializes a new instance of the ImagePerformance class.
  * @constructor
- * Image performance model
+ * Image performance model.
  *
  * @member {array} [predictions]
  * @member {uuid} [id]
@@ -685,15 +624,101 @@ export interface ImagePerformance {
 
 /**
  * @class
+ * Initializes a new instance of the ProjectSettings class.
+ * @constructor
+ * Represents settings associated with a project.
+ *
+ * @member {uuid} [domainId] Gets or sets the id of the Domain to use with this
+ * project.
+ * @member {string} [classificationType] Gets or sets the classification type
+ * of the project. Possible values include: 'Multiclass', 'Multilabel'
+ */
+export interface ProjectSettings {
+  domainId?: string;
+  classificationType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Project class.
+ * @constructor
+ * Represents a project.
+ *
+ * @member {uuid} [id] Gets The project id.
+ * @member {string} [name] Gets or sets the name of the project.
+ * @member {string} [description] Gets or sets the description of the project.
+ * @member {object} [settings] Gets or sets the project settings.
+ * @member {uuid} [settings.domainId] Gets or sets the id of the Domain to use
+ * with this project.
+ * @member {string} [settings.classificationType] Gets or sets the
+ * classification type of the project. Possible values include: 'Multiclass',
+ * 'Multilabel'
+ * @member {date} [created] Gets the date this project was created.
+ * @member {date} [lastModified] Gets the date this project was last modifed.
+ * @member {string} [thumbnailUri] Gets the thumbnail url representing the
+ * project.
+ */
+export interface Project {
+  readonly id?: string;
+  name?: string;
+  description?: string;
+  settings?: ProjectSettings;
+  readonly created?: Date;
+  readonly lastModified?: Date;
+  readonly thumbnailUri?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Iteration class.
+ * @constructor
+ * Iteration model to be sent over JSON.
+ *
+ * @member {uuid} [id] Gets the id of the iteration.
+ * @member {string} [name] Gets or sets the name of the iteration.
+ * @member {boolean} [isDefault] Gets or sets a value indicating whether the
+ * iteration is the default iteration for the project.
+ * @member {string} [status] Gets the current iteration status.
+ * @member {date} [created] Gets the time this iteration was completed.
+ * @member {date} [lastModified] Gets the time this iteration was last
+ * modified.
+ * @member {date} [trainedAt] Gets the time this iteration was last modified.
+ * @member {uuid} [projectId] Gets The project id. of the iteration.
+ * @member {boolean} [exportable] Whether the iteration can be exported to
+ * another format for download.
+ * @member {uuid} [domainId] Get or sets a guid of the domain the iteration has
+ * been trained on.
+ * @member {string} [classificationType] Gets the classification type of the
+ * project. Possible values include: 'Multiclass', 'Multilabel'
+ */
+export interface Iteration {
+  readonly id?: string;
+  name?: string;
+  isDefault?: boolean;
+  readonly status?: string;
+  readonly created?: Date;
+  readonly lastModified?: Date;
+  readonly trainedAt?: Date;
+  readonly projectId?: string;
+  readonly exportable?: boolean;
+  readonly domainId?: string;
+  readonly classificationType?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ExportModel class.
  * @constructor
- * @member {string} [platform] Possible values include: 'CoreML', 'TensorFlow',
- * 'DockerFile', 'ONNX'
- * @member {string} [status] Possible values include: 'Exporting', 'Failed',
- * 'Done'
- * @member {string} [downloadUri]
- * @member {string} [flavor] Possible values include: 'Linux', 'Windows'
- * @member {boolean} [newerVersionAvailable]
+ * @member {string} [platform] Platform of the export. Possible values include:
+ * 'CoreML', 'TensorFlow', 'DockerFile', 'ONNX'
+ * @member {string} [status] Status of the export. Possible values include:
+ * 'Exporting', 'Failed', 'Done'
+ * @member {string} [downloadUri] URI used to download the model.
+ * @member {string} [flavor] Flavor of the export. Possible values include:
+ * 'Linux', 'Windows', 'ONNX10', 'ONNX12'
+ * @member {boolean} [newerVersionAvailable] Indicates an updated version of
+ * the export package is available and should be re-exported for the latest
+ * changes.
  */
 export interface ExportModel {
   readonly platform?: string;
@@ -707,16 +732,19 @@ export interface ExportModel {
  * @class
  * Initializes a new instance of the Tag class.
  * @constructor
- * Represents a Tag
+ * Represents a Tag.
  *
- * @member {uuid} [id] Gets the Tag ID
- * @member {string} [name] Gets or sets the name of the tag
- * @member {string} [description] Gets or sets the description of the tag
- * @member {number} [imageCount] Gets the number of images with this tag
+ * @member {uuid} [id] Gets the Tag ID.
+ * @member {string} [name] Gets or sets the name of the tag.
+ * @member {string} [description] Gets or sets the description of the tag.
+ * @member {string} [type] Gets or sets the type of the tag. Possible values
+ * include: 'Regular', 'Negative'
+ * @member {number} [imageCount] Gets the number of images with this tag.
  */
 export interface Tag {
   readonly id?: string;
   name?: string;
   description?: string;
+  type?: string;
   readonly imageCount?: number;
 }
