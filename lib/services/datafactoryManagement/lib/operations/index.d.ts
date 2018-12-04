@@ -206,7 +206,7 @@ export interface Factories {
      * name.
      *
      * @param {string} factoryRepoUpdate.repoConfiguration.repositoryName
-     * Repository name.
+     * Rrepository name.
      *
      * @param {string} factoryRepoUpdate.repoConfiguration.collaborationBranch
      * Collaboration branch.
@@ -249,7 +249,7 @@ export interface Factories {
      * name.
      *
      * @param {string} factoryRepoUpdate.repoConfiguration.repositoryName
-     * Repository name.
+     * Rrepository name.
      *
      * @param {string} factoryRepoUpdate.repoConfiguration.collaborationBranch
      * Collaboration branch.
@@ -365,7 +365,7 @@ export interface Factories {
      *
      * @param {string} factory.repoConfiguration.accountName Account name.
      *
-     * @param {string} factory.repoConfiguration.repositoryName Repository name.
+     * @param {string} factory.repoConfiguration.repositoryName Rrepository name.
      *
      * @param {string} factory.repoConfiguration.collaborationBranch Collaboration
      * branch.
@@ -413,7 +413,7 @@ export interface Factories {
      *
      * @param {string} factory.repoConfiguration.accountName Account name.
      *
-     * @param {string} factory.repoConfiguration.repositoryName Repository name.
+     * @param {string} factory.repoConfiguration.repositoryName Rrepository name.
      *
      * @param {string} factory.repoConfiguration.collaborationBranch Collaboration
      * branch.
@@ -746,103 +746,6 @@ export interface Factories {
     getGitHubAccessToken(resourceGroupName: string, factoryName: string, gitHubAccessTokenRequest: models.GitHubAccessTokenRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GitHubAccessTokenResponse>;
     getGitHubAccessToken(resourceGroupName: string, factoryName: string, gitHubAccessTokenRequest: models.GitHubAccessTokenRequest, callback: ServiceCallback<models.GitHubAccessTokenResponse>): void;
     getGitHubAccessToken(resourceGroupName: string, factoryName: string, gitHubAccessTokenRequest: models.GitHubAccessTokenRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GitHubAccessTokenResponse>): void;
-
-
-    /**
-     * Get Data Plane access.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} factoryName The factory name.
-     *
-     * @param {object} policy Data Plane user access policy definition.
-     *
-     * @param {string} [policy.permissions] The string with permissions for Data
-     * Plane access. Currently only 'r' is supported which grants read only access.
-     *
-     * @param {string} [policy.accessResourcePath] The resource path to get access
-     * relative to factory. Currently only empty string is supported which
-     * corresponds to the factory resource.
-     *
-     * @param {string} [policy.profileName] The name of the profile. Currently only
-     * the default is supported. The default value is DefaultProfile.
-     *
-     * @param {string} [policy.startTime] Start time for the token. If not
-     * specified the current time will be used.
-     *
-     * @param {string} [policy.expireTime] Expiration time for the token. Maximum
-     * duration for the token is eight hours and by default the token will expire
-     * in eight hours.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<AccessPolicyResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getDataPlaneAccessWithHttpOperationResponse(resourceGroupName: string, factoryName: string, policy: models.UserAccessPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessPolicyResponse>>;
-
-    /**
-     * Get Data Plane access.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} factoryName The factory name.
-     *
-     * @param {object} policy Data Plane user access policy definition.
-     *
-     * @param {string} [policy.permissions] The string with permissions for Data
-     * Plane access. Currently only 'r' is supported which grants read only access.
-     *
-     * @param {string} [policy.accessResourcePath] The resource path to get access
-     * relative to factory. Currently only empty string is supported which
-     * corresponds to the factory resource.
-     *
-     * @param {string} [policy.profileName] The name of the profile. Currently only
-     * the default is supported. The default value is DefaultProfile.
-     *
-     * @param {string} [policy.startTime] Start time for the token. If not
-     * specified the current time will be used.
-     *
-     * @param {string} [policy.expireTime] Expiration time for the token. Maximum
-     * duration for the token is eight hours and by default the token will expire
-     * in eight hours.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {AccessPolicyResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {AccessPolicyResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link AccessPolicyResponse} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getDataPlaneAccess(resourceGroupName: string, factoryName: string, policy: models.UserAccessPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessPolicyResponse>;
-    getDataPlaneAccess(resourceGroupName: string, factoryName: string, policy: models.UserAccessPolicy, callback: ServiceCallback<models.AccessPolicyResponse>): void;
-    getDataPlaneAccess(resourceGroupName: string, factoryName: string, policy: models.UserAccessPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessPolicyResponse>): void;
 
 
     /**
@@ -1877,7 +1780,7 @@ export interface IntegrationRuntimes {
 
 
     /**
-     * Upgrade self-hosted integration runtime to latest version if availability.
+     * Upgrade self-hosted integration runtime to latest version if availably.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -1899,7 +1802,7 @@ export interface IntegrationRuntimes {
     upgradeWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Upgrade self-hosted integration runtime to latest version if availability.
+     * Upgrade self-hosted integration runtime to latest version if availably.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -3695,8 +3598,8 @@ export interface Pipelines {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.referencePipelineRunId] The pipeline run
-     * identifier. If run ID is specified the parameters of the specified run will
-     * be used to create a new run.
+     * identifier. If run ID is specified the parameters of the the specified run
+     * will be used to create a new run.
      *
      * @param {object} [options.parameters] Parameters of the pipeline run. These
      * parameters will be used only if the runId is not specified.
@@ -3724,8 +3627,8 @@ export interface Pipelines {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.referencePipelineRunId] The pipeline run
-     * identifier. If run ID is specified the parameters of the specified run will
-     * be used to create a new run.
+     * identifier. If run ID is specified the parameters of the the specified run
+     * will be used to create a new run.
      *
      * @param {object} [options.parameters] Parameters of the pipeline run. These
      * parameters will be used only if the runId is not specified.

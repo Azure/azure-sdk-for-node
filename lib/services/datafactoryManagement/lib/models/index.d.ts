@@ -155,7 +155,7 @@ export interface FactoryRepoConfiguration {
    */
   accountName: string;
   /**
-   * Repository name.
+   * Rrepository name.
    */
   repositoryName: string;
   /**
@@ -497,11 +497,11 @@ export interface ActivityDependency {
  */
 export interface UserProperty {
   /**
-   * User property name.
+   * User proprety name.
    */
   name: string;
   /**
-   * User property value. Type: string (or Expression with resultType string).
+   * User proprety value. Type: string (or Expression with resultType string).
    */
   value: any;
 }
@@ -705,54 +705,6 @@ export interface GitHubAccessTokenResponse {
    * GitHub access token.
    */
   gitHubAccessToken?: string;
-}
-
-/**
- * Get Data Plane read only token request definition.
- */
-export interface UserAccessPolicy {
-  /**
-   * The string with permissions for Data Plane access. Currently only 'r' is supported which
-   * grants read only access.
-   */
-  permissions?: string;
-  /**
-   * The resource path to get access relative to factory. Currently only empty string is supported
-   * which corresponds to the factory resource.
-   */
-  accessResourcePath?: string;
-  /**
-   * The name of the profile. Currently only the default is supported. The default value is
-   * DefaultProfile.
-   */
-  profileName?: string;
-  /**
-   * Start time for the token. If not specified the current time will be used.
-   */
-  startTime?: string;
-  /**
-   * Expiration time for the token. Maximum duration for the token is eight hours and by default
-   * the token will expire in eight hours.
-   */
-  expireTime?: string;
-}
-
-/**
- * Get Data Plane read only token response definition.
- */
-export interface AccessPolicyResponse {
-  /**
-   * The user access policy.
-   */
-  policy?: UserAccessPolicy;
-  /**
-   * Data Plane read only access token.
-   */
-  accessToken?: string;
-  /**
-   * Data Plane service base URL.
-   */
-  dataPlaneUrl?: string;
 }
 
 /**
@@ -1440,7 +1392,7 @@ export interface MultiplePipelineTrigger extends Trigger {
 }
 
 /**
- * Trigger that runs every time a Blob event occurs.
+ * Trigger that runs everytime a Blob event occurs.
  */
 export interface BlobEventsTrigger extends MultiplePipelineTrigger {
   /**
@@ -1467,7 +1419,7 @@ export interface BlobEventsTrigger extends MultiplePipelineTrigger {
 }
 
 /**
- * Trigger that runs every time the selected Blob container changes.
+ * Trigger that runs everytime the selected Blob container changes.
  */
 export interface BlobTrigger extends MultiplePipelineTrigger {
   /**
@@ -1485,7 +1437,7 @@ export interface BlobTrigger extends MultiplePipelineTrigger {
 }
 
 /**
- * The recurrence schedule occurrence.
+ * The recurrence schedule occurence.
  */
 export interface RecurrenceScheduleOccurrence {
   /**
@@ -1931,10 +1883,6 @@ export interface NetezzaLinkedService extends LinkedService {
    */
   connectionString?: any;
   /**
-   * The Azure key vault secret reference of password in connection string.
-   */
-  pwd?: AzureKeyVaultSecretReference;
-  /**
    * The encrypted credential used for authentication. Credentials are encrypted using the
    * integration runtime credential manager. Type: string (or Expression with resultType string).
    */
@@ -1949,10 +1897,6 @@ export interface VerticaLinkedService extends LinkedService {
    * An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
    */
   connectionString?: any;
-  /**
-   * The Azure key vault secret reference of password in connection string.
-   */
-  pwd?: AzureKeyVaultSecretReference;
   /**
    * The encrypted credential used for authentication. Credentials are encrypted using the
    * integration runtime credential manager. Type: string (or Expression with resultType string).
@@ -1995,7 +1939,7 @@ export interface ZohoLinkedService extends LinkedService {
 }
 
 /**
- * Xero Service linked service.
+ * Xero Serivce linked service.
  */
 export interface XeroLinkedService extends LinkedService {
   /**
@@ -2035,7 +1979,7 @@ export interface XeroLinkedService extends LinkedService {
 }
 
 /**
- * Square Service linked service.
+ * Square Serivce linked service.
  */
 export interface SquareLinkedService extends LinkedService {
   /**
@@ -2149,7 +2093,7 @@ export interface SparkLinkedService extends LinkedService {
 }
 
 /**
- * Shopify Service linked service.
+ * Shopify Serivce linked service.
  */
 export interface ShopifyLinkedService extends LinkedService {
   /**
@@ -2410,7 +2354,7 @@ export interface PhoenixLinkedService extends LinkedService {
 }
 
 /**
- * Paypal Service linked service.
+ * Paypal Serivce linked service.
  */
 export interface PaypalLinkedService extends LinkedService {
   /**
@@ -2494,10 +2438,6 @@ export interface MariaDBLinkedService extends LinkedService {
    */
   connectionString?: any;
   /**
-   * The Azure key vault secret reference of password in connection string.
-   */
-  pwd?: AzureKeyVaultSecretReference;
-  /**
    * The encrypted credential used for authentication. Credentials are encrypted using the
    * integration runtime credential manager. Type: string (or Expression with resultType string).
    */
@@ -2539,7 +2479,7 @@ export interface MagentoLinkedService extends LinkedService {
 }
 
 /**
- * Jira Service linked service.
+ * Jira Serivce linked service.
  */
 export interface JiraLinkedService extends LinkedService {
   /**
@@ -2642,7 +2582,7 @@ export interface ImpalaLinkedService extends LinkedService {
 }
 
 /**
- * Hubspot Service linked service.
+ * Hubspot Serivce linked service.
  */
 export interface HubspotLinkedService extends LinkedService {
   /**
@@ -2836,10 +2776,6 @@ export interface GreenplumLinkedService extends LinkedService {
    */
   connectionString?: any;
   /**
-   * The Azure key vault secret reference of password in connection string.
-   */
-  pwd?: AzureKeyVaultSecretReference;
-  /**
    * The encrypted credential used for authentication. Credentials are encrypted using the
    * integration runtime credential manager. Type: string (or Expression with resultType string).
    */
@@ -2959,10 +2895,6 @@ export interface DrillLinkedService extends LinkedService {
    */
   connectionString?: any;
   /**
-   * The Azure key vault secret reference of password in connection string.
-   */
-  pwd?: AzureKeyVaultSecretReference;
-  /**
    * The encrypted credential used for authentication. Credentials are encrypted using the
    * integration runtime credential manager. Type: string (or Expression with resultType string).
    */
@@ -2978,10 +2910,6 @@ export interface CouchbaseLinkedService extends LinkedService {
    */
   connectionString?: any;
   /**
-   * The Azure key vault secret reference of credString in connection string.
-   */
-  credString?: AzureKeyVaultSecretReference;
-  /**
    * The encrypted credential used for authentication. Credentials are encrypted using the
    * integration runtime credential manager. Type: string (or Expression with resultType string).
    */
@@ -2989,7 +2917,7 @@ export interface CouchbaseLinkedService extends LinkedService {
 }
 
 /**
- * Concur Service linked service.
+ * Concur Serivce linked service.
  */
 export interface ConcurLinkedService extends LinkedService {
   /**
@@ -3035,10 +2963,6 @@ export interface AzurePostgreSqlLinkedService extends LinkedService {
    */
   connectionString?: any;
   /**
-   * The Azure key vault secret reference of password in connection string.
-   */
-  password?: AzureKeyVaultSecretReference;
-  /**
    * The encrypted credential used for authentication. Credentials are encrypted using the
    * integration runtime credential manager. Type: string (or Expression with resultType string).
    */
@@ -3054,8 +2978,8 @@ export interface AmazonMWSLinkedService extends LinkedService {
    */
   endpoint: any;
   /**
-   * The Amazon Marketplace ID you want to retrieve data from. To retrieve data from multiple
-   * Marketplace IDs, separate them with a comma (,). (i.e. A2EUQ1WTGCTBG2)
+   * The Amazon Marketplace ID you want to retrieve data from. To retrive data from multiple
+   * Marketplace IDs, seperate them with a comma (,). (i.e. A2EUQ1WTGCTBG2)
    */
   marketplaceID: any;
   /**
@@ -3901,10 +3825,6 @@ export interface PostgreSqlLinkedService extends LinkedService {
    */
   connectionString: SecretBase;
   /**
-   * The Azure key vault secret reference of password in connection string.
-   */
-  password?: AzureKeyVaultSecretReference;
-  /**
    * The encrypted credential used for authentication. Credentials are encrypted using the
    * integration runtime credential manager. Type: string (or Expression with resultType string).
    */
@@ -3919,10 +3839,6 @@ export interface MySqlLinkedService extends LinkedService {
    * The connection string.
    */
   connectionString: SecretBase;
-  /**
-   * The Azure key vault secret reference of password in connection string.
-   */
-  password?: AzureKeyVaultSecretReference;
   /**
    * The encrypted credential used for authentication. Credentials are encrypted using the
    * integration runtime credential manager. Type: string (or Expression with resultType string).
@@ -3939,10 +3855,6 @@ export interface AzureMySqlLinkedService extends LinkedService {
    */
   connectionString: any;
   /**
-   * The Azure key vault secret reference of password in connection string.
-   */
-  password?: AzureKeyVaultSecretReference;
-  /**
    * The encrypted credential used for authentication. Credentials are encrypted using the
    * integration runtime credential manager. Type: string (or Expression with resultType string).
    */
@@ -3957,10 +3869,6 @@ export interface OracleLinkedService extends LinkedService {
    * The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
    */
   connectionString: any;
-  /**
-   * The Azure key vault secret reference of password in connection string.
-   */
-  password?: AzureKeyVaultSecretReference;
   /**
    * The encrypted credential used for authentication. Credentials are encrypted using the
    * integration runtime credential manager. Type: string (or Expression with resultType string).
@@ -4083,10 +3991,6 @@ export interface CosmosDbLinkedService extends LinkedService {
    */
   connectionString: any;
   /**
-   * The Azure key vault secret reference of accountKey in connection string.
-   */
-  accountKey?: AzureKeyVaultSecretReference;
-  /**
    * The encrypted credential used for authentication. Credentials are encrypted using the
    * integration runtime credential manager. Type: string (or Expression with resultType string).
    */
@@ -4144,10 +4048,6 @@ export interface AzureSqlDatabaseLinkedService extends LinkedService {
    */
   connectionString: any;
   /**
-   * The Azure key vault secret reference of password in connection string.
-   */
-  password?: AzureKeyVaultSecretReference;
-  /**
    * The ID of the service principal used to authenticate against Azure SQL Database. Type: string
    * (or Expression with resultType string).
    */
@@ -4202,10 +4102,6 @@ export interface AzureSqlDWLinkedService extends LinkedService {
    */
   connectionString: any;
   /**
-   * The Azure key vault secret reference of password in connection string.
-   */
-  password?: AzureKeyVaultSecretReference;
-  /**
    * The ID of the service principal used to authenticate against Azure SQL Data Warehouse. Type:
    * string (or Expression with resultType string).
    */
@@ -4236,18 +4132,10 @@ export interface AzureTableStorageLinkedService extends LinkedService {
    */
   connectionString?: any;
   /**
-   * The Azure key vault secret reference of accountKey in connection string.
-   */
-  accountKey?: AzureKeyVaultSecretReference;
-  /**
    * SAS URI of the Azure Storage resource. It is mutually exclusive with connectionString
-   * property. Type: string, SecureString or AzureKeyVaultSecretReference.
+   * property.
    */
-  sasUri?: any;
-  /**
-   * The Azure key vault secret reference of sasToken in sas uri.
-   */
-  sasToken?: AzureKeyVaultSecretReference;
+  sasUri?: SecretBase;
   /**
    * The encrypted credential used for authentication. Credentials are encrypted using the
    * integration runtime credential manager. Type: string (or Expression with resultType string).
@@ -4265,18 +4153,10 @@ export interface AzureBlobStorageLinkedService extends LinkedService {
    */
   connectionString?: any;
   /**
-   * The Azure key vault secret reference of accountKey in connection string.
-   */
-  accountKey?: AzureKeyVaultSecretReference;
-  /**
    * SAS URI of the Azure Blob Storage resource. It is mutually exclusive with connectionString,
-   * serviceEndpoint property. Type: string, SecureString or AzureKeyVaultSecretReference.
+   * serviceEndpoint property.
    */
-  sasUri?: any;
-  /**
-   * The Azure key vault secret reference of sasToken in sas uri.
-   */
-  sasToken?: AzureKeyVaultSecretReference;
+  sasUri?: SecretBase;
   /**
    * Blob service endpoint of the Azure Blob Storage resource. It is mutually exclusive with
    * connectionString, sasUri property.
@@ -4313,18 +4193,10 @@ export interface AzureStorageLinkedService extends LinkedService {
    */
   connectionString?: any;
   /**
-   * The Azure key vault secret reference of accountKey in connection string.
-   */
-  accountKey?: AzureKeyVaultSecretReference;
-  /**
    * SAS URI of the Azure Storage resource. It is mutually exclusive with connectionString
-   * property. Type: string, SecureString or AzureKeyVaultSecretReference.
+   * property.
    */
-  sasUri?: any;
-  /**
-   * The Azure key vault secret reference of sasToken in sas uri.
-   */
-  sasToken?: AzureKeyVaultSecretReference;
+  sasUri?: SecretBase;
   /**
    * The encrypted credential used for authentication. Credentials are encrypted using the
    * integration runtime credential manager. Type: string (or Expression with resultType string).
@@ -4336,300 +4208,180 @@ export interface AzureStorageLinkedService extends LinkedService {
  * Responsys dataset.
  */
 export interface ResponsysObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * Salesforce Marketing Cloud dataset.
  */
 export interface SalesforceMarketingCloudObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * Vertica dataset.
  */
 export interface VerticaTableDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * Netezza dataset.
  */
 export interface NetezzaTableDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * Zoho server dataset.
  */
 export interface ZohoObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
- * Xero Service dataset.
+ * Xero Serivce dataset.
  */
 export interface XeroObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
- * Square Service dataset.
+ * Square Serivce dataset.
  */
 export interface SquareObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * Spark Server dataset.
  */
 export interface SparkObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
- * Shopify Service dataset.
+ * Shopify Serivce dataset.
  */
 export interface ShopifyObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * ServiceNow server dataset.
  */
 export interface ServiceNowObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * QuickBooks server dataset.
  */
 export interface QuickBooksObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * Presto server dataset.
  */
 export interface PrestoObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * Phoenix server dataset.
  */
 export interface PhoenixObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
- * Paypal Service dataset.
+ * Paypal Serivce dataset.
  */
 export interface PaypalObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * Marketo server dataset.
  */
 export interface MarketoObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * MariaDB server dataset.
  */
 export interface MariaDBTableDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * Magento server dataset.
  */
 export interface MagentoObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
- * Jira Service dataset.
+ * Jira Serivce dataset.
  */
 export interface JiraObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * Impala server dataset.
  */
 export interface ImpalaObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
- * Hubspot Service dataset.
+ * Hubspot Serivce dataset.
  */
 export interface HubspotObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * Hive Server dataset.
  */
 export interface HiveObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * HBase server dataset.
  */
 export interface HBaseObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * Greenplum Database dataset.
  */
 export interface GreenplumTableDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * Google BigQuery service dataset.
  */
 export interface GoogleBigQueryObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * Eloqua server dataset.
  */
 export interface EloquaObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * Drill server dataset.
  */
 export interface DrillTableDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * Couchbase server dataset.
  */
 export interface CouchbaseTableDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
- * Concur Service dataset.
+ * Concur Serivce dataset.
  */
 export interface ConcurObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * Azure PostgreSQL dataset.
  */
 export interface AzurePostgreSqlTableDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
  * Amazon Marketplace Web Service dataset.
  */
 export interface AmazonMWSObjectDataset extends Dataset {
-  /**
-   * The table name. Type: string (or Expression with resultType string).
-   */
-  tableName?: any;
 }
 
 /**
@@ -5539,7 +5291,7 @@ export interface ZohoSource extends CopySource {
 }
 
 /**
- * A copy activity Xero Service source.
+ * A copy activity Xero Serivce source.
  */
 export interface XeroSource extends CopySource {
   /**
@@ -5549,7 +5301,7 @@ export interface XeroSource extends CopySource {
 }
 
 /**
- * A copy activity Square Service source.
+ * A copy activity Square Serivce source.
  */
 export interface SquareSource extends CopySource {
   /**
@@ -5569,7 +5321,7 @@ export interface SparkSource extends CopySource {
 }
 
 /**
- * A copy activity Shopify Service source.
+ * A copy activity Shopify Serivce source.
  */
 export interface ShopifySource extends CopySource {
   /**
@@ -5619,7 +5371,7 @@ export interface PhoenixSource extends CopySource {
 }
 
 /**
- * A copy activity Paypal Service source.
+ * A copy activity Paypal Serivce source.
  */
 export interface PaypalSource extends CopySource {
   /**
@@ -5659,7 +5411,7 @@ export interface MagentoSource extends CopySource {
 }
 
 /**
- * A copy activity Jira Service source.
+ * A copy activity Jira Serivce source.
  */
 export interface JiraSource extends CopySource {
   /**
@@ -5679,7 +5431,7 @@ export interface ImpalaSource extends CopySource {
 }
 
 /**
- * A copy activity Hubspot Service source.
+ * A copy activity Hubspot Serivce source.
  */
 export interface HubspotSource extends CopySource {
   /**
@@ -5759,7 +5511,7 @@ export interface CouchbaseSource extends CopySource {
 }
 
 /**
- * A copy activity Concur Service source.
+ * A copy activity Concur Serivce source.
  */
 export interface ConcurSource extends CopySource {
   /**
@@ -5948,7 +5700,7 @@ export interface StoredProcedureParameter {
   /**
    * Stored procedure parameter value. Type: string (or Expression with resultType string).
    */
-  value?: any;
+  value: any;
   /**
    * Stored procedure parameter type. Possible values include: 'String', 'Int', 'Decimal', 'Guid',
    * 'Boolean', 'Date'
@@ -6103,14 +5855,46 @@ export interface LookupActivity extends ExecutionActivity {
 }
 
 /**
+ * Log storage settings.
+ */
+export interface LogStorageSettings {
+  /**
+   * Log storage linked service reference.
+   */
+  linkedServiceName: LinkedServiceReference;
+  /**
+   * The path to storage for storing detailed logs of activity execution. Type: string (or
+   * Expression with resultType string).
+   */
+  path?: any;
+  /**
+   * Describes unknown properties. The value of an unknown property can be of "any" type.
+   */
+  [additionalPropertyName: string]: any;
+}
+
+/**
  * Delete activity.
  */
 export interface DeleteActivity extends ExecutionActivity {
   /**
-   * If true, files under the folder path will be deleted recursively. Default is true. Type:
-   * boolean (or Expression with resultType boolean).
+   * If true, files or sub-folders under current folder path will be deleted recursively. Default
+   * is false. Type: boolean (or Expression with resultType boolean).
    */
   recursive?: any;
+  /**
+   * The max concurrent connections to connect data source at the same time.
+   */
+  maxConcurrentConnections?: number;
+  /**
+   * Whether to record detailed logs of delete-activity execution. Default value is false. Type:
+   * boolean (or Expression with resultType boolean).
+   */
+  enableLogging?: any;
+  /**
+   * Log storage settings customer need to provide when enableLogging is true.
+   */
+  logStorageSettings?: LogStorageSettings;
   /**
    * Delete activity dataset reference.
    */
@@ -6804,7 +6588,7 @@ export interface CopyActivity extends ExecutionActivity {
    */
   sink: CopySink;
   /**
-   * Copy activity translator. If not specified, tabular translator is used.
+   * Copy activity translator. If not specificed, tabular translator is used.
    */
   translator?: CopyTranslator;
   /**
