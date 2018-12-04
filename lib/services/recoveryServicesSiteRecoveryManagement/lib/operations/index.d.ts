@@ -11402,7 +11402,7 @@ export interface ReplicationStorageClassificationMappings {
      *
      * @param {string} fabricName Fabric name.
      *
-     * @param {string} storageClassificationName Storage classfication name.
+     * @param {string} storageClassificationName Storage classification name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11425,7 +11425,7 @@ export interface ReplicationStorageClassificationMappings {
      *
      * @param {string} fabricName Fabric name.
      *
-     * @param {string} storageClassificationName Storage classfication name.
+     * @param {string} storageClassificationName Storage classification name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -12325,7 +12325,7 @@ export interface ReplicationvCenters {
      *
      * @param {string} fabricName Fabric name.
      *
-     * @param {string} vCenterName vCeneter name
+     * @param {string} vCenterName vCenter name
      *
      * @param {object} updateVCenterRequest The input to the update vCenter
      * operation.
@@ -12346,7 +12346,7 @@ export interface ReplicationvCenters {
      * discovery.
      *
      * @param {string} [updateVCenterRequest.properties.runAsAccountId] The CS
-     * account Id which has priviliges to update the vCenter.
+     * account Id which has privileges to update the vCenter.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -12368,7 +12368,7 @@ export interface ReplicationvCenters {
      *
      * @param {string} fabricName Fabric name.
      *
-     * @param {string} vCenterName vCeneter name
+     * @param {string} vCenterName vCenter name
      *
      * @param {object} updateVCenterRequest The input to the update vCenter
      * operation.
@@ -12389,7 +12389,7 @@ export interface ReplicationvCenters {
      * discovery.
      *
      * @param {string} [updateVCenterRequest.properties.runAsAccountId] The CS
-     * account Id which has priviliges to update the vCenter.
+     * account Id which has privileges to update the vCenter.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -12652,7 +12652,7 @@ export interface ReplicationvCenters {
      *
      * @param {string} fabricName Fabric name.
      *
-     * @param {string} vCenterName vCeneter name
+     * @param {string} vCenterName vCenter name
      *
      * @param {object} updateVCenterRequest The input to the update vCenter
      * operation.
@@ -12673,7 +12673,7 @@ export interface ReplicationvCenters {
      * discovery.
      *
      * @param {string} [updateVCenterRequest.properties.runAsAccountId] The CS
-     * account Id which has priviliges to update the vCenter.
+     * account Id which has privileges to update the vCenter.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -12695,7 +12695,7 @@ export interface ReplicationvCenters {
      *
      * @param {string} fabricName Fabric name.
      *
-     * @param {string} vCenterName vCeneter name
+     * @param {string} vCenterName vCenter name
      *
      * @param {object} updateVCenterRequest The input to the update vCenter
      * operation.
@@ -12716,7 +12716,7 @@ export interface ReplicationvCenters {
      * discovery.
      *
      * @param {string} [updateVCenterRequest.properties.runAsAccountId] The CS
-     * account Id which has priviliges to update the vCenter.
+     * account Id which has privileges to update the vCenter.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -13004,7 +13004,7 @@ export interface ReplicationJobs {
      *
      * The operation to cancel an Azure Site Recovery job.
      *
-     * @param {string} jobName Job indentifier.
+     * @param {string} jobName Job identifier.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -13024,7 +13024,7 @@ export interface ReplicationJobs {
      *
      * The operation to cancel an Azure Site Recovery job.
      *
-     * @param {string} jobName Job indentifier.
+     * @param {string} jobName Job identifier.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -13198,7 +13198,7 @@ export interface ReplicationJobs {
      *
      * @param {string} [jobQueryParameter.startTime] Date time to get jobs from.
      *
-     * @param {string} [jobQueryParameter.endTime] Date time to get jobs upto.
+     * @param {string} [jobQueryParameter.endTime] Date time to get jobs up to.
      *
      * @param {string} [jobQueryParameter.fabricId] The Id of the fabric to search
      * jobs under.
@@ -13231,7 +13231,7 @@ export interface ReplicationJobs {
      *
      * @param {string} [jobQueryParameter.startTime] Date time to get jobs from.
      *
-     * @param {string} [jobQueryParameter.endTime] Date time to get jobs upto.
+     * @param {string} [jobQueryParameter.endTime] Date time to get jobs up to.
      *
      * @param {string} [jobQueryParameter.fabricId] The Id of the fabric to search
      * jobs under.
@@ -13278,7 +13278,7 @@ export interface ReplicationJobs {
      *
      * The operation to cancel an Azure Site Recovery job.
      *
-     * @param {string} jobName Job indentifier.
+     * @param {string} jobName Job identifier.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -13298,7 +13298,7 @@ export interface ReplicationJobs {
      *
      * The operation to cancel an Azure Site Recovery job.
      *
-     * @param {string} jobName Job indentifier.
+     * @param {string} jobName Job identifier.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -13472,7 +13472,7 @@ export interface ReplicationJobs {
      *
      * @param {string} [jobQueryParameter.startTime] Date time to get jobs from.
      *
-     * @param {string} [jobQueryParameter.endTime] Date time to get jobs upto.
+     * @param {string} [jobQueryParameter.endTime] Date time to get jobs up to.
      *
      * @param {string} [jobQueryParameter.fabricId] The Id of the fabric to search
      * jobs under.
@@ -13505,7 +13505,7 @@ export interface ReplicationJobs {
      *
      * @param {string} [jobQueryParameter.startTime] Date time to get jobs from.
      *
-     * @param {string} [jobQueryParameter.endTime] Date time to get jobs upto.
+     * @param {string} [jobQueryParameter.endTime] Date time to get jobs up to.
      *
      * @param {string} [jobQueryParameter.fabricId] The Id of the fabric to search
      * jobs under.
