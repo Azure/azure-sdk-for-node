@@ -1862,6 +1862,61 @@ export interface CertificateCreateOrUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the ResourceSku class.
+ * @constructor
+ * Describes an available API Management SKU.
+ *
+ * @member {string} [name] Name of the Sku. Possible values include:
+ * 'Developer', 'Standard', 'Premium', 'Basic'
+ */
+export interface ResourceSku {
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkuCapacity class.
+ * @constructor
+ * Describes scaling information of a SKU.
+ *
+ * @member {number} [minimum] The minimum capacity.
+ * @member {number} [maximum] The maximum capacity that can be set.
+ * @member {number} [default] The default capacity.
+ * @member {string} [scaleType] The scale type applicable to the sku. Possible
+ * values include: 'automatic', 'manual', 'none'
+ */
+export interface ResourceSkuCapacity {
+  readonly minimum?: number;
+  readonly maximum?: number;
+  readonly default?: number;
+  readonly scaleType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkuResult class.
+ * @constructor
+ * Describes an available API Management service SKU.
+ *
+ * @member {string} [resourceType] The type of resource the SKU applies to.
+ * @member {object} [sku] Specifies API Management SKU.
+ * @member {string} [sku.name] Name of the Sku. Possible values include:
+ * 'Developer', 'Standard', 'Premium', 'Basic'
+ * @member {object} [capacity] Specifies the number of API Management units.
+ * @member {number} [capacity.minimum] The minimum capacity.
+ * @member {number} [capacity.maximum] The maximum capacity that can be set.
+ * @member {number} [capacity.default] The default capacity.
+ * @member {string} [capacity.scaleType] The scale type applicable to the sku.
+ * Possible values include: 'automatic', 'manual', 'none'
+ */
+export interface ResourceSkuResult {
+  readonly resourceType?: string;
+  readonly sku?: ResourceSku;
+  readonly capacity?: ResourceSkuCapacity;
+}
+
+/**
+ * @class
  * Initializes a new instance of the CertificateInformation class.
  * @constructor
  * SSL certificate information.
@@ -4226,6 +4281,19 @@ export interface CertificateCollection extends Array<CertificateContract> {
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkuResults class.
+ * @constructor
+ * The API Management service SKUs operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of API Management
+ * service Skus.
+ */
+export interface ResourceSkuResults extends Array<ResourceSkuResult> {
   nextLink?: string;
 }
 

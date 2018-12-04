@@ -9159,6 +9159,139 @@ export interface ApiManagementOperations {
 
 /**
  * @class
+ * ApiManagementServiceSkus
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ApiManagementClient.
+ */
+export interface ApiManagementServiceSkus {
+
+
+    /**
+     * @summary Gets available SKUs for API Management service
+     *
+     * Gets all available SKU for a given API Management service
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceSkuResults>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAvailableServiceSkusWithHttpOperationResponse(resourceGroupName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceSkuResults>>;
+
+    /**
+     * @summary Gets available SKUs for API Management service
+     *
+     * Gets all available SKU for a given API Management service
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceSkuResults} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceSkuResults} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceSkuResults} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAvailableServiceSkus(resourceGroupName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceSkuResults>;
+    listAvailableServiceSkus(resourceGroupName: string, serviceName: string, callback: ServiceCallback<models.ResourceSkuResults>): void;
+    listAvailableServiceSkus(resourceGroupName: string, serviceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceSkuResults>): void;
+
+
+    /**
+     * @summary Gets available SKUs for API Management service
+     *
+     * Gets all available SKU for a given API Management service
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceSkuResults>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAvailableServiceSkusNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceSkuResults>>;
+
+    /**
+     * @summary Gets available SKUs for API Management service
+     *
+     * Gets all available SKU for a given API Management service
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceSkuResults} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceSkuResults} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceSkuResults} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAvailableServiceSkusNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceSkuResults>;
+    listAvailableServiceSkusNext(nextPageLink: string, callback: ServiceCallback<models.ResourceSkuResults>): void;
+    listAvailableServiceSkusNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceSkuResults>): void;
+}
+
+/**
+ * @class
  * ApiManagementService
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ApiManagementClient.
