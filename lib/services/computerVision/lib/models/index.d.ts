@@ -17,11 +17,14 @@ import * as moment from "moment";
  * @constructor
  * An object describing face rectangle.
  *
- * @member {number} [left] X-coordinate of the top left point of the face.
- * @member {number} [top] Y-coordinate of the top left point of the face.
- * @member {number} [width] Width measured from the top-left point of the face.
+ * @member {number} [left] X-coordinate of the top left point of the face, in
+ * pixels.
+ * @member {number} [top] Y-coordinate of the top left point of the face, in
+ * pixels.
+ * @member {number} [width] Width measured from the top-left point of the face,
+ * in pixels.
  * @member {number} [height] Height measured from the top-left point of the
- * face.
+ * face, in pixels.
  */
 export interface FaceRectangle {
   left?: number;
@@ -37,16 +40,18 @@ export interface FaceRectangle {
  * An object describing possible celebrity identification.
  *
  * @member {string} [name] Name of the celebrity.
- * @member {number} [confidence] Level of confidence ranging from 0 to 1.
- * @member {object} [faceRectangle]
+ * @member {number} [confidence] Confidence level for the celebrity recognition
+ * as a value ranging from 0 to 1.
+ * @member {object} [faceRectangle] Location of the identified face in the
+ * image.
  * @member {number} [faceRectangle.left] X-coordinate of the top left point of
- * the face.
+ * the face, in pixels.
  * @member {number} [faceRectangle.top] Y-coordinate of the top left point of
- * the face.
+ * the face, in pixels.
  * @member {number} [faceRectangle.width] Width measured from the top-left
- * point of the face.
+ * point of the face, in pixels.
  * @member {number} [faceRectangle.height] Height measured from the top-left
- * point of the face.
+ * point of the face, in pixels.
  */
 export interface CelebritiesModel {
   name?: string;
@@ -58,10 +63,11 @@ export interface CelebritiesModel {
  * @class
  * Initializes a new instance of the LandmarksModel class.
  * @constructor
- * A landmark recognized in the image
+ * A landmark recognized in the image.
  *
  * @member {string} [name] Name of the landmark.
- * @member {number} [confidence] Confidence level for the landmark recognition.
+ * @member {number} [confidence] Confidence level for the landmark recognition
+ * as a value ranging from 0 to 1.
  */
 export interface LandmarksModel {
   name?: string;
@@ -90,7 +96,7 @@ export interface CategoryDetail {
  *
  * @member {string} [name] Name of the category.
  * @member {number} [score] Scoring of the category.
- * @member {object} [detail]
+ * @member {object} [detail] Details of the identified category.
  * @member {array} [detail.celebrities] An array of celebrities if any
  * identified.
  * @member {array} [detail.landmarks] An array of landmarks if any identified.
@@ -110,9 +116,9 @@ export interface Category {
  *
  * @member {boolean} [isAdultContent] A value indicating if the image contains
  * adult-oriented content.
- * @member {boolean} [isRacyContent] A value indicating if the image is race.
- * @member {number} [adultScore] Score from 0 to 1 that indicates how much of
- * adult content is within the image.
+ * @member {boolean} [isRacyContent] A value indicating if the image is racy.
+ * @member {number} [adultScore] Score from 0 to 1 that indicates how much the
+ * content is considered adult-oriented within the image.
  * @member {number} [racyScore] Score from 0 to 1 that indicates how suggestive
  * is the image.
  */
@@ -166,12 +172,12 @@ export interface ImageType {
  * @class
  * Initializes a new instance of the ImageTag class.
  * @constructor
- * An image caption, i.e. a brief description of what the image depicts.
+ * An entity observation in the image, along with the confidence score.
  *
- * @member {string} [name] The tag value
- * @member {number} [confidence] The level of confidence the service has in the
- * caption
- * @member {string} [hint] Optional categorization for the tag
+ * @member {string} [name] Name of the entity.
+ * @member {number} [confidence] The level of confidence that the entity was
+ * observed.
+ * @member {string} [hint] Optional hint/details for this tag.
  */
 export interface ImageTag {
   name?: string;
@@ -185,9 +191,9 @@ export interface ImageTag {
  * @constructor
  * An image caption, i.e. a brief description of what the image depicts.
  *
- * @member {string} [text] The text of the caption
+ * @member {string} [text] The text of the caption.
  * @member {number} [confidence] The level of confidence the service has in the
- * caption
+ * caption.
  */
 export interface ImageCaption {
   text?: string;
@@ -218,15 +224,16 @@ export interface ImageDescriptionDetails {
  * @member {number} [age] Possible age of the face.
  * @member {string} [gender] Possible gender of the face. Possible values
  * include: 'Male', 'Female'
- * @member {object} [faceRectangle]
+ * @member {object} [faceRectangle] Rectangle in the image containing the
+ * identified face.
  * @member {number} [faceRectangle.left] X-coordinate of the top left point of
- * the face.
+ * the face, in pixels.
  * @member {number} [faceRectangle.top] Y-coordinate of the top left point of
- * the face.
+ * the face, in pixels.
  * @member {number} [faceRectangle.width] Width measured from the top-left
- * point of the face.
+ * point of the face, in pixels.
  * @member {number} [faceRectangle.height] Height measured from the top-left
- * point of the face.
+ * point of the face, in pixels.
  */
 export interface FaceDescription {
   age?: number;
@@ -236,13 +243,90 @@ export interface FaceDescription {
 
 /**
  * @class
+ * Initializes a new instance of the BoundingRect class.
+ * @constructor
+ * A bounding box for an area inside an image.
+ *
+ * @member {number} [x] X-coordinate of the top left point of the area, in
+ * pixels.
+ * @member {number} [y] Y-coordinate of the top left point of the area, in
+ * pixels.
+ * @member {number} [w] Width measured from the top-left point of the area, in
+ * pixels.
+ * @member {number} [h] Height measured from the top-left point of the area, in
+ * pixels.
+ */
+export interface BoundingRect {
+  x?: number;
+  y?: number;
+  w?: number;
+  h?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ObjectHierarchy class.
+ * @constructor
+ * An object detected inside an image.
+ *
+ * @member {string} [object] Label for the object.
+ * @member {number} [confidence] Confidence score of having observed the object
+ * in the image, as a value ranging from 0 to 1.
+ * @member {object} [parent] The parent object, from a taxonomy perspective.
+ * The parent object is a more generic form of this object.  For example, a
+ * 'bulldog' would have a parent of 'dog'.
+ */
+export interface ObjectHierarchy {
+  object?: string;
+  confidence?: number;
+  parent?: ObjectHierarchy;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DetectedObject class.
+ * @constructor
+ * An object detected in an image.
+ *
+ * @member {object} [rectangle] Approximate location of the detected object.
+ * @member {number} [rectangle.x] X-coordinate of the top left point of the
+ * area, in pixels.
+ * @member {number} [rectangle.y] Y-coordinate of the top left point of the
+ * area, in pixels.
+ * @member {number} [rectangle.w] Width measured from the top-left point of the
+ * area, in pixels.
+ * @member {number} [rectangle.h] Height measured from the top-left point of
+ * the area, in pixels.
+ * @member {string} [object] Label for the object.
+ * @member {number} [confidence] Confidence score of having observed the object
+ * in the image, as a value ranging from 0 to 1.
+ * @member {object} [parent] The parent object, from a taxonomy perspective.
+ * The parent object is a more generic form of this object.  For example, a
+ * 'bulldog' would have a parent of 'dog'.
+ * @member {string} [parent.object] Label for the object.
+ * @member {number} [parent.confidence] Confidence score of having observed the
+ * object in the image, as a value ranging from 0 to 1.
+ * @member {object} [parent.parent] The parent object, from a taxonomy
+ * perspective.
+ * The parent object is a more generic form of this object.  For example, a
+ * 'bulldog' would have a parent of 'dog'.
+ */
+export interface DetectedObject {
+  readonly rectangle?: BoundingRect;
+  object?: string;
+  confidence?: number;
+  parent?: ObjectHierarchy;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ImageMetadata class.
  * @constructor
- * Image metadata
+ * Image metadata.
  *
- * @member {number} [width] Image width
- * @member {number} [height] Image height
- * @member {string} [format] Image format
+ * @member {number} [width] Image width, in pixels.
+ * @member {number} [height] Image height, in pixels.
+ * @member {string} [format] Image format.
  */
 export interface ImageMetadata {
   width?: number;
@@ -257,16 +341,18 @@ export interface ImageMetadata {
  * Result of AnalyzeImage operation.
  *
  * @member {array} [categories] An array indicating identified categories.
- * @member {object} [adult]
+ * @member {object} [adult] An object describing whether the image contains
+ * adult-oriented content and/or is racy.
  * @member {boolean} [adult.isAdultContent] A value indicating if the image
  * contains adult-oriented content.
  * @member {boolean} [adult.isRacyContent] A value indicating if the image is
- * race.
+ * racy.
  * @member {number} [adult.adultScore] Score from 0 to 1 that indicates how
- * much of adult content is within the image.
+ * much the content is considered adult-oriented within the image.
  * @member {number} [adult.racyScore] Score from 0 to 1 that indicates how
  * suggestive is the image.
- * @member {object} [color]
+ * @member {object} [color] An object providing additional metadata describing
+ * color attributes.
  * @member {string} [color.dominantColorForeground] Possible dominant
  * foreground color.
  * @member {string} [color.dominantColorBackground] Possible dominant
@@ -275,22 +361,26 @@ export interface ImageMetadata {
  * @member {string} [color.accentColor] Possible accent color.
  * @member {boolean} [color.isBWImg] A value indicating if the image is black
  * and white.
- * @member {object} [imageType]
+ * @member {object} [imageType] An object providing possible image types and
+ * matching confidence levels.
  * @member {number} [imageType.clipArtType] Confidence level that the image is
  * a clip art.
  * @member {number} [imageType.lineDrawingType] Confidence level that the image
  * is a line drawing.
  * @member {array} [tags] A list of tags with confidence level.
- * @member {object} [description]
+ * @member {object} [description] A collection of content tags, along with a
+ * list of captions sorted by confidence level, and image metadata.
  * @member {array} [description.tags] A collection of image tags.
  * @member {array} [description.captions] A list of captions, sorted by
  * confidence level.
  * @member {array} [faces] An array of possible faces within the image.
- * @member {string} [requestId] Id of the request for tracking purposes.
+ * @member {array} [objects] Array of objects describing what was detected in
+ * the image.
+ * @member {string} [requestId] Id of the REST API request.
  * @member {object} [metadata]
- * @member {number} [metadata.width] Image width
- * @member {number} [metadata.height] Image height
- * @member {string} [metadata.format] Image format
+ * @member {number} [metadata.width] Image width, in pixels.
+ * @member {number} [metadata.height] Image height, in pixels.
+ * @member {string} [metadata.format] Image format.
  */
 export interface ImageAnalysis {
   categories?: Category[];
@@ -300,6 +390,94 @@ export interface ImageAnalysis {
   tags?: ImageTag[];
   description?: ImageDescriptionDetails;
   faces?: FaceDescription[];
+  objects?: DetectedObject[];
+  requestId?: string;
+  metadata?: ImageMetadata;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImageDescription class.
+ * @constructor
+ * A collection of content tags, along with a list of captions sorted by
+ * confidence level, and image metadata.
+ *
+ * @member {array} [tags] A collection of image tags.
+ * @member {array} [captions] A list of captions, sorted by confidence level.
+ * @member {string} [requestId] Id of the REST API request.
+ * @member {object} [metadata]
+ * @member {number} [metadata.width] Image width, in pixels.
+ * @member {number} [metadata.height] Image height, in pixels.
+ * @member {string} [metadata.format] Image format.
+ */
+export interface ImageDescription {
+  tags?: string[];
+  captions?: ImageCaption[];
+  requestId?: string;
+  metadata?: ImageMetadata;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DetectResult class.
+ * @constructor
+ * Result of a DetectImage call.
+ *
+ * @member {array} [objects] An array of detected objects.
+ * @member {string} [requestId] Id of the REST API request.
+ * @member {object} [metadata]
+ * @member {number} [metadata.width] Image width, in pixels.
+ * @member {number} [metadata.height] Image height, in pixels.
+ * @member {string} [metadata.format] Image format.
+ */
+export interface DetectResult {
+  readonly objects?: DetectedObject[];
+  requestId?: string;
+  metadata?: ImageMetadata;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ModelDescription class.
+ * @constructor
+ * An object describing supported model by name and categories.
+ *
+ * @member {string} [name] The name of the model.
+ * @member {array} [categories] Categories of the model.
+ */
+export interface ModelDescription {
+  name?: string;
+  categories?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListModelsResult class.
+ * @constructor
+ * Result of the List Domain Models operation.
+ *
+ * @member {array} [modelsProperty] An array of supported models.
+ */
+export interface ListModelsResult {
+  readonly modelsProperty?: ModelDescription[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DomainModelResults class.
+ * @constructor
+ * Result of image analysis using a specific domain model including additional
+ * metadata.
+ *
+ * @member {object} [result] Model-specific response.
+ * @member {string} [requestId] Id of the REST API request.
+ * @member {object} [metadata]
+ * @member {number} [metadata.width] Image width, in pixels.
+ * @member {number} [metadata.height] Image height, in pixels.
+ * @member {string} [metadata.format] Image format.
+ */
+export interface DomainModelResults {
+  result?: any;
   requestId?: string;
   metadata?: ImageMetadata;
 }
@@ -356,7 +534,7 @@ export interface OcrLine {
  * system of the input image, after it has been rotated around its center
  * according to the detected text angle (see textAngle property), with the
  * origin at the top-left corner, and the y-axis pointing down.
- * @member {array} [lines]
+ * @member {array} [lines] An array of recognized lines of text.
  */
 export interface OcrRegion {
   boundingBox?: string;
@@ -380,7 +558,7 @@ export interface OcrRegion {
  * text at different angles, only part of the text will be recognized
  * correctly.
  * @member {string} [orientation] Orientation of the text recognized in the
- * image. The value (up,down,left, or right) refers to the direction that the
+ * image. The value (up, down, left, or right) refers to the direction that the
  * top of the recognized text is facing, after the image has been rotated
  * around its center according to the detected text angle (see textAngle
  * property).
@@ -396,112 +574,6 @@ export interface OcrResult {
 
 /**
  * @class
- * Initializes a new instance of the ModelDescription class.
- * @constructor
- * An object describing supported model by name and categories.
- *
- * @member {string} [name]
- * @member {array} [categories]
- */
-export interface ModelDescription {
-  name?: string;
-  categories?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ListModelsResult class.
- * @constructor
- * Result of the List Domain Models operation.
- *
- * @member {array} [modelsProperty] An array of supported models.
- */
-export interface ListModelsResult {
-  readonly modelsProperty?: ModelDescription[];
-}
-
-/**
- * @class
- * Initializes a new instance of the DomainModelResults class.
- * @constructor
- * Result of image analysis using a specific domain model including additional
- * metadata.
- *
- * @member {object} [result] Model-specific response
- * @member {string} [requestId] Id of the REST API request.
- * @member {object} [metadata]
- * @member {number} [metadata.width] Image width
- * @member {number} [metadata.height] Image height
- * @member {string} [metadata.format] Image format
- */
-export interface DomainModelResults {
-  result?: any;
-  requestId?: string;
-  metadata?: ImageMetadata;
-}
-
-/**
- * @class
- * Initializes a new instance of the CelebrityResults class.
- * @constructor
- * List of celebrities recognized in the image.
- *
- * @member {array} [celebrities]
- * @member {string} [requestId] Id of the REST API request.
- * @member {object} [metadata]
- * @member {number} [metadata.width] Image width
- * @member {number} [metadata.height] Image height
- * @member {string} [metadata.format] Image format
- */
-export interface CelebrityResults {
-  celebrities?: CelebritiesModel[];
-  requestId?: string;
-  metadata?: ImageMetadata;
-}
-
-/**
- * @class
- * Initializes a new instance of the LandmarkResults class.
- * @constructor
- * List of landmarks recognized in the image.
- *
- * @member {array} [landmarks]
- * @member {string} [requestId] Id of the REST API request.
- * @member {object} [metadata]
- * @member {number} [metadata.width] Image width
- * @member {number} [metadata.height] Image height
- * @member {string} [metadata.format] Image format
- */
-export interface LandmarkResults {
-  landmarks?: LandmarksModel[];
-  requestId?: string;
-  metadata?: ImageMetadata;
-}
-
-/**
- * @class
- * Initializes a new instance of the ImageDescription class.
- * @constructor
- * A collection of content tags, along with a list of captions sorted by
- * confidence level, and image metadata.
- *
- * @member {array} [tags] A collection of image tags.
- * @member {array} [captions] A list of captions, sorted by confidence level.
- * @member {string} [requestId] Id of the REST API request.
- * @member {object} [metadata]
- * @member {number} [metadata.width] Image width
- * @member {number} [metadata.height] Image height
- * @member {string} [metadata.format] Image format
- */
-export interface ImageDescription {
-  tags?: string[];
-  captions?: ImageCaption[];
-  requestId?: string;
-  metadata?: ImageMetadata;
-}
-
-/**
- * @class
  * Initializes a new instance of the TagResult class.
  * @constructor
  * The results of a image tag operation, including any tags and image metadata.
@@ -509,9 +581,9 @@ export interface ImageDescription {
  * @member {array} [tags] A list of tags with confidence level.
  * @member {string} [requestId] Id of the REST API request.
  * @member {object} [metadata]
- * @member {number} [metadata.width] Image width
- * @member {number} [metadata.height] Image height
- * @member {string} [metadata.format] Image format
+ * @member {number} [metadata.width] Image width, in pixels.
+ * @member {number} [metadata.height] Image height, in pixels.
+ * @member {string} [metadata.format] Image format.
  */
 export interface TagResult {
   tags?: ImageTag[];
@@ -521,31 +593,95 @@ export interface TagResult {
 
 /**
  * @class
- * Initializes a new instance of the ComputerVisionError class.
+ * Initializes a new instance of the AreaOfInterestResult class.
  * @constructor
- * @member {string} code The error code. Possible values include:
- * 'InvalidImageUrl', 'InvalidImageFormat', 'InvalidImageSize',
- * 'NotSupportedVisualFeature', 'NotSupportedImage', 'InvalidDetails',
- * 'NotSupportedLanguage', 'BadArgument', 'FailedToProcess', 'Timeout',
- * 'InternalServerError', 'Unspecified', 'StorageException'
- * @member {string} message A message explaining the error reported by the
- * service.
- * @member {string} [requestId] A unique request identifier.
+ * Result of AreaOfInterest operation.
+ *
+ * @member {object} [areaOfInterest] A bounding box for an area of interest
+ * inside an image.
+ * @member {number} [areaOfInterest.x] X-coordinate of the top left point of
+ * the area, in pixels.
+ * @member {number} [areaOfInterest.y] Y-coordinate of the top left point of
+ * the area, in pixels.
+ * @member {number} [areaOfInterest.w] Width measured from the top-left point
+ * of the area, in pixels.
+ * @member {number} [areaOfInterest.h] Height measured from the top-left point
+ * of the area, in pixels.
+ * @member {string} [requestId] Id of the REST API request.
+ * @member {object} [metadata]
+ * @member {number} [metadata.width] Image width, in pixels.
+ * @member {number} [metadata.height] Image height, in pixels.
+ * @member {string} [metadata.format] Image format.
  */
-export interface ComputerVisionError {
-  code: string;
-  message: string;
+export interface AreaOfInterestResult {
+  readonly areaOfInterest?: BoundingRect;
   requestId?: string;
+  metadata?: ImageMetadata;
 }
 
 /**
  * @class
  * Initializes a new instance of the ImageUrl class.
  * @constructor
- * @member {string} url Publicly reachable URL of an image
+ * @member {string} url Publicly reachable URL of an image.
  */
 export interface ImageUrl {
   url: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ComputerVisionError class.
+ * @constructor
+ * Details about the API request error.
+ *
+ * @member {object} code The error code.
+ * @member {string} message A message explaining the error reported by the
+ * service.
+ * @member {string} [requestId] A unique request identifier.
+ */
+export interface ComputerVisionError {
+  code: any;
+  message: string;
+  requestId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LandmarkResults class.
+ * @constructor
+ * Result of domain-specific classifications for the domain of landmarks.
+ *
+ * @member {array} [landmarks] List of landmarks recognized in the image.
+ * @member {string} [requestId] Id of the REST API request.
+ * @member {object} [metadata]
+ * @member {number} [metadata.width] Image width, in pixels.
+ * @member {number} [metadata.height] Image height, in pixels.
+ * @member {string} [metadata.format] Image format.
+ */
+export interface LandmarkResults {
+  landmarks?: LandmarksModel[];
+  requestId?: string;
+  metadata?: ImageMetadata;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CelebrityResults class.
+ * @constructor
+ * Result of domain-specific classifications for the domain of celebrities.
+ *
+ * @member {array} [celebrities] List of celebrities recognized in the image.
+ * @member {string} [requestId] Id of the REST API request.
+ * @member {object} [metadata]
+ * @member {number} [metadata.width] Image width, in pixels.
+ * @member {number} [metadata.height] Image height, in pixels.
+ * @member {string} [metadata.format] Image format.
+ */
+export interface CelebrityResults {
+  celebrities?: CelebritiesModel[];
+  requestId?: string;
+  metadata?: ImageMetadata;
 }
 
 /**
