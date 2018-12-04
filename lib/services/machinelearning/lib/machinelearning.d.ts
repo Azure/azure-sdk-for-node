@@ -8,5 +8,7 @@ import CommitmentPlansManagementClient = require('./commitmentPlan/azureMLCommit
 import * as CommitmentPlansModels from './commitmentPlan/models';
 import WebServicesManagementClient = require('./webservices/azureMLWebServicesManagementClient');
 import * as WebServicesModels from './webservices/models';
+import WorkspacesManagementClient = require('./workspaces/machineLearningWorkspacesManagementClient');
+import * as WorkspacesModels from './webservices/models';
 
-export { CommitmentPlansManagementClient, CommitmentPlansModels, WebServicesManagementClient, WebServicesModels };
+export { CommitmentPlansManagementClient, CommitmentPlansModels, WebServicesManagementClient, WebServicesModels, WorkspacesManagementClient, WorkspacesModels };
