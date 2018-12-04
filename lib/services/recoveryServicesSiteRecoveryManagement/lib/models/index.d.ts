@@ -583,7 +583,7 @@ export interface A2ARecoveryPointDetails extends ProviderSpecificRecoveryPointDe
  * @member {string} [recoveryNicIpAddressType] IP allocation type for recovery
  * VM.
  * @member {boolean} [enableAcceleratedNetworkingOnRecovery] A value indicating
- * whether the NIC has accerated networking enabled.
+ * whether the NIC has accelerated networking enabled.
  */
 export interface VMNicDetails {
   nicId?: string;
@@ -1118,7 +1118,7 @@ export interface AddVCenterRequest {
  * @class
  * Initializes a new instance of the AlertProperties class.
  * @constructor
- * The proprties of an alert.
+ * The properties of an alert.
  *
  * @member {string} [sendToOwners] A value indicating whether to send email to
  * subscription administrator.
@@ -1471,8 +1471,8 @@ export interface FabricSpecificCreateNetworkMappingInput {
  * @class
  * Initializes a new instance of the AzureToAzureCreateNetworkMappingInput class.
  * @constructor
- * Create network mappings input properties/behaviour specific to Azure to
- * Azure Network mapping.
+ * Create network mappings input properties/behavior specific to Azure to Azure
+ * Network mapping.
  *
  * @member {string} [primaryNetworkId] The primary azure vnet Id.
  */
@@ -1641,7 +1641,7 @@ export interface InconsistentVmDetails {
  * Initializes a new instance of the ConsistencyCheckTaskDetails class.
  * @constructor
  * This class contains monitoring details of all the inconsistent Protected
- * Entites in Vmm.
+ * Entities in Vmm.
  *
  * @member {array} [vmDetails] The list of inconsistent Vm details.
  */
@@ -1886,7 +1886,7 @@ export interface CreateRecoveryPlanInput {
  * @class
  * Initializes a new instance of the CurrentJobDetails class.
  * @constructor
- * Current job details of the migraton item.
+ * Current job details of the migration item.
  *
  * @member {string} [jobName] The job name.
  * @member {string} [jobId] The ARM Id of the job being executed.
@@ -1918,7 +1918,7 @@ export interface CurrentScenarioDetails {
  * @class
  * Initializes a new instance of the DataStore class.
  * @constructor
- * The datastore details of the MT.
+ * The data store details of the MT.
  *
  * @member {string} [symbolicName] The symbolic name of data store.
  * @member {string} [uuid] The uuid of data store.
@@ -2023,7 +2023,7 @@ export interface DiscoverProtectableItemRequest {
  * @class
  * Initializes a new instance of the DiskDetails class.
  * @constructor
- * Onprem disk details data.
+ * On-prem disk details data.
  *
  * @member {number} [maxSizeMB] The hard disk max size in MB.
  * @member {string} [vhdType] The type of the volume.
@@ -2303,7 +2303,7 @@ export interface HealthError {
  * @member {string} [affectedObjectFriendlyName] The friendly name of the
  * source of the event on which it is raised (for example, VM, VMM etc).
  * @member {string} [severity] The severity of the event.
- * @member {date} [timeOfOccurrence] The time of occurence of the event.
+ * @member {date} [timeOfOccurrence] The time of occurrence of the event.
  * @member {string} [fabricId] The ARM ID of the fabric.
  * @member {object} [providerSpecificDetails] The provider specific settings.
  * @member {string} [providerSpecificDetails.instanceType] Polymorphic
@@ -2341,7 +2341,7 @@ export interface EventProperties {
  * @member {string} [properties.affectedObjectFriendlyName] The friendly name
  * of the source of the event on which it is raised (for example, VM, VMM etc).
  * @member {string} [properties.severity] The severity of the event.
- * @member {date} [properties.timeOfOccurrence] The time of occurence of the
+ * @member {date} [properties.timeOfOccurrence] The time of occurrence of the
  * event.
  * @member {string} [properties.fabricId] The ARM ID of the fabric.
  * @member {object} [properties.providerSpecificDetails] The provider specific
@@ -3753,8 +3753,8 @@ export interface InMageAzureV2RecoveryPointDetails extends ProviderSpecificRecov
  * @member {string} [enableRdpOnTargetOption] The selected option to enable
  * RDP\SSH on target vm after failover. String value of
  * {SrsDataContract.EnableRDPOnTargetOption} enum.
- * @member {array} [datastores] The datastores of the on-premise machine. Value
- * can be list of strings that contain datastore names.
+ * @member {array} [datastores] The data stores of the on-premise machine.
+ * Value can be list of strings that contain data store names.
  * @member {string} [targetVmId] The ARM Id of the target Azure VM. This value
  * will be null until the VM is failed over. Only after failure it will be
  * populated with the ARM Id of the Azure VM.
@@ -3990,7 +3990,7 @@ export interface InMageDiskExclusionInput {
  * @member {string} [runAsAccountId] The CS account Id.
  * @member {string} multiVmGroupId The multi vm group Id.
  * @member {string} multiVmGroupName The multi vm group name.
- * @member {string} [datastoreName] The target datastore name.
+ * @member {string} [datastoreName] The target data store name.
  * @member {object} [diskExclusionInput] The enable disk exclusion input.
  * @member {array} [diskExclusionInput.volumeOptions] The volume label based
  * option for disk exclusion.
@@ -4199,8 +4199,8 @@ export interface OSDiskDetails {
  * @member {string} [azureStorageAccountId] A value indicating the underlying
  * Azure storage account. If the VM is not running in Azure, this value shall
  * be set to null.
- * @member {array} [datastores] The datastores of the on-premise machine Value
- * can be list of strings that contain datastore names
+ * @member {array} [datastores] The data stores of the on-premise machine Value
+ * can be list of strings that contain data store names
  * @member {array} [validationErrors] The validation errors of the on-premise
  * machine Value can be list of validation errors
  * @member {date} [lastRpoCalculatedTime] The last RPO calculated time.
@@ -4259,7 +4259,7 @@ export interface InMageReplicationDetails extends ReplicationProviderSpecificSet
  * @member {string} processServerId The Process Server Id.
  * @member {string} retentionDrive The retention drive to use on the MT.
  * @member {string} [runAsAccountId] The CS account Id.
- * @member {string} [datastoreName] The target datastore name.
+ * @member {string} [datastoreName] The target data store name.
  * @member {object} [diskExclusionInput] The enable disk exclusion input.
  * @member {array} [diskExclusionInput.volumeOptions] The volume label based
  * option for disk exclusion.
@@ -4372,7 +4372,7 @@ export interface Job extends Resource {
  * Query parameter to enumerate jobs.
  *
  * @member {string} [startTime] Date time to get jobs from.
- * @member {string} [endTime] Date time to get jobs upto.
+ * @member {string} [endTime] Date time to get jobs up to.
  * @member {string} [fabricId] The Id of the fabric to search jobs under.
  * @member {string} [affectedObjectTypes] The type of objects.
  * @member {string} [jobStatus] The states of the job to be filtered can be in.
@@ -4885,7 +4885,7 @@ export interface NetworkMappingProperties {
  * in structure or method signature. Since there were no base Models for
  * certain fields and methods viz NetworkMappingProperties and Load with
  * required return type, the class has been introduced in its entirety with
- * references to base models to facilitate exensions in subsequent versions.
+ * references to base models to facilitate extensions in subsequent versions.
  *
  * @member {object} [properties] The Network Mapping Properties.
  * @member {string} [properties.state] The pairing state for network mapping.
@@ -5210,7 +5210,7 @@ export interface ProtectedItemsQueryParameter {
  * @constructor
  * Base class for fabric specific details of container.
  *
- * @member {string} [instanceType] Gets the class type. Overriden in derived
+ * @member {string} [instanceType] Gets the class type. Overridden in derived
  * classes.
  */
 export interface ProtectionContainerFabricSpecificDetails {
@@ -5231,7 +5231,7 @@ export interface ProtectionContainerFabricSpecificDetails {
  * @member {string} [role] The role of this cloud.
  * @member {object} [fabricSpecificDetails] Fabric specific details.
  * @member {string} [fabricSpecificDetails.instanceType] Gets the class type.
- * Overriden in derived classes.
+ * Overridden in derived classes.
  */
 export interface ProtectionContainerProperties {
   fabricFriendlyName?: string;
@@ -5259,7 +5259,7 @@ export interface ProtectionContainerProperties {
  * @member {string} [properties.role] The role of this cloud.
  * @member {object} [properties.fabricSpecificDetails] Fabric specific details.
  * @member {string} [properties.fabricSpecificDetails.instanceType] Gets the
- * class type. Overriden in derived classes.
+ * class type. Overridden in derived classes.
  */
 export interface ProtectionContainer extends Resource {
   properties?: ProtectionContainerProperties;
@@ -6202,7 +6202,7 @@ export interface ReplicationProtectedItem extends Resource {
  * Base class to define the health summary of the resources contained under an
  * Arm resource.
  *
- * @member {number} [resourceCount] The count of total resources umder the
+ * @member {number} [resourceCount] The count of total resources under the
  * container.
  * @member {array} [issues] The list of summary of health errors across the
  * resources under the container.
@@ -6332,7 +6332,7 @@ export interface StorageClassificationProperties {
  * @constructor
  * Storage object definition.
  *
- * @member {object} [properties] Proprties of the storage object.
+ * @member {object} [properties] Properties of the storage object.
  * @member {string} [properties.friendlyName] Friendly name of the Storage
  * classification.
  */
@@ -6358,7 +6358,7 @@ export interface StorageClassificationMappingProperties {
  * @constructor
  * Storage mapping object.
  *
- * @member {object} [properties] Proprties of the storage mappping object.
+ * @member {object} [properties] Properties of the storage mapping object.
  * @member {string} [properties.targetStorageClassificationId] Target storage
  * object Id.
  */
@@ -6878,7 +6878,7 @@ export interface UpdateProtectionContainerMappingInput {
  * @class
  * Initializes a new instance of the UpdateRecoveryPlanInputProperties class.
  * @constructor
- * Recovery plan updation properties.
+ * Recovery plan update properties.
  *
  * @member {array} [groups] The recovery plan groups.
  */
@@ -6910,7 +6910,7 @@ export interface UpdateRecoveryPlanInput {
  * @member {string} [replicaNicStaticIPAddress] Replica nic static IP address.
  * @member {string} [selectionType] Selection type for failover.
  * @member {boolean} [enableAcceleratedNetworkingOnRecovery] Whether the NIC
- * has accerated networking enabled.
+ * has accelerated networking enabled.
  */
 export interface VMNicInputDetails {
   nicId?: string;
@@ -6998,7 +6998,7 @@ export interface UpdateReplicationProtectedItemInput {
  * @member {string} [processServerId] The process server Id from where the
  * update can be orchestrated.
  * @member {string} [port] The port number for discovery.
- * @member {string} [runAsAccountId] The CS account Id which has priviliges to
+ * @member {string} [runAsAccountId] The CS account Id which has privileges to
  * update the vCenter.
  */
 export interface UpdateVCenterRequestProperties {
@@ -7023,7 +7023,7 @@ export interface UpdateVCenterRequestProperties {
  * where the update can be orchestrated.
  * @member {string} [properties.port] The port number for discovery.
  * @member {string} [properties.runAsAccountId] The CS account Id which has
- * priviliges to update the vCenter.
+ * privileges to update the vCenter.
  */
 export interface UpdateVCenterRequest {
   properties?: UpdateVCenterRequestProperties;
@@ -7039,19 +7039,19 @@ export interface UpdateVCenterRequest {
  * @member {object} [protectedItemsHealth] The list of the health detail of the
  * protected items in the vault.
  * @member {number} [protectedItemsHealth.resourceCount] The count of total
- * resources umder the container.
+ * resources under the container.
  * @member {array} [protectedItemsHealth.issues] The list of summary of health
  * errors across the resources under the container.
  * @member {object} [fabricsHealth] The list of the health detail of the
  * fabrics in the vault.
  * @member {number} [fabricsHealth.resourceCount] The count of total resources
- * umder the container.
+ * under the container.
  * @member {array} [fabricsHealth.issues] The list of summary of health errors
  * across the resources under the container.
  * @member {object} [containersHealth] The list of the health detail of the
  * containers in the vault.
  * @member {number} [containersHealth.resourceCount] The count of total
- * resources umder the container.
+ * resources under the container.
  * @member {array} [containersHealth.issues] The list of summary of health
  * errors across the resources under the container.
  */
@@ -7073,19 +7073,19 @@ export interface VaultHealthProperties {
  * @member {object} [properties.protectedItemsHealth] The list of the health
  * detail of the protected items in the vault.
  * @member {number} [properties.protectedItemsHealth.resourceCount] The count
- * of total resources umder the container.
+ * of total resources under the container.
  * @member {array} [properties.protectedItemsHealth.issues] The list of summary
  * of health errors across the resources under the container.
  * @member {object} [properties.fabricsHealth] The list of the health detail of
  * the fabrics in the vault.
  * @member {number} [properties.fabricsHealth.resourceCount] The count of total
- * resources umder the container.
+ * resources under the container.
  * @member {array} [properties.fabricsHealth.issues] The list of summary of
  * health errors across the resources under the container.
  * @member {object} [properties.containersHealth] The list of the health detail
  * of the containers in the vault.
  * @member {number} [properties.containersHealth.resourceCount] The count of
- * total resources umder the container.
+ * total resources under the container.
  * @member {array} [properties.containersHealth.issues] The list of summary of
  * health errors across the resources under the container.
  */
@@ -7101,7 +7101,7 @@ export interface VaultHealthDetails extends Resource {
  *
  * @member {string} [friendlyName] Friendly name of the vCenter.
  * @member {string} [internalId] VCenter internal ID.
- * @member {date} [lastHeartbeat] The time when the last heartbeat was reveived
+ * @member {date} [lastHeartbeat] The time when the last heartbeat was received
  * by vCenter.
  * @member {string} [discoveryStatus] The VCenter discovery status.
  * @member {string} [processServerId] The process server Id.
@@ -7138,7 +7138,7 @@ export interface VCenterProperties {
  * @member {string} [properties.friendlyName] Friendly name of the vCenter.
  * @member {string} [properties.internalId] VCenter internal ID.
  * @member {date} [properties.lastHeartbeat] The time when the last heartbeat
- * was reveived by vCenter.
+ * was received by vCenter.
  * @member {string} [properties.discoveryStatus] The VCenter discovery status.
  * @member {string} [properties.processServerId] The process server Id.
  * @member {string} [properties.ipAddress] The IP address of the vCenter.
@@ -7194,7 +7194,7 @@ export interface VmmDetails extends FabricSpecificDetails {
  * @class
  * Initializes a new instance of the VmmToAzureCreateNetworkMappingInput class.
  * @constructor
- * Create network mappings input properties/behaviour specific to Vmm to Azure
+ * Create network mappings input properties/behavior specific to Vmm to Azure
  * Network mapping.
  *
  */
@@ -7215,7 +7215,7 @@ export interface VmmToAzureNetworkMappingSettings extends NetworkMappingFabricSp
  * @class
  * Initializes a new instance of the VmmToAzureUpdateNetworkMappingInput class.
  * @constructor
- * Update network mappings input properties/behaviour specific to vmm to azure.
+ * Update network mappings input properties/behavior specific to vmm to azure.
  *
  */
 export interface VmmToAzureUpdateNetworkMappingInput extends FabricSpecificUpdateNetworkMappingInput {
@@ -7225,7 +7225,7 @@ export interface VmmToAzureUpdateNetworkMappingInput extends FabricSpecificUpdat
  * @class
  * Initializes a new instance of the VmmToVmmCreateNetworkMappingInput class.
  * @constructor
- * Create network mappings input properties/behaviour specific to vmm to vmm
+ * Create network mappings input properties/behavior specific to vmm to vmm
  * Network mapping.
  *
  */
@@ -7246,7 +7246,7 @@ export interface VmmToVmmNetworkMappingSettings extends NetworkMappingFabricSpec
  * @class
  * Initializes a new instance of the VmmToVmmUpdateNetworkMappingInput class.
  * @constructor
- * Update network mappings input properties/behaviour specific to vmm to vmm.
+ * Update network mappings input properties/behavior specific to vmm to vmm.
  *
  */
 export interface VmmToVmmUpdateNetworkMappingInput extends FabricSpecificUpdateNetworkMappingInput {
@@ -7372,8 +7372,8 @@ export interface VMwareCbtDiskInput {
  * @member {array} disksToInclude The disks to include list.
  * @member {string} [licenseType] License type. Possible values include:
  * 'NotSpecified', 'NoLicenseType', 'WindowsServer'
- * @member {string} dataMoverRunAsAccountId The data mover runas account Id.
- * @member {string} snapshotRunAsAccountId The snapshot runas account Id.
+ * @member {string} dataMoverRunAsAccountId The data mover RunAs account Id.
+ * @member {string} snapshotRunAsAccountId The snapshot RunAs account Id.
  * @member {string} [targetVmName] The target VM name.
  * @member {string} [targetVmSize] The target VM size.
  * @member {string} targetResourceGroupId The target resource group ARM Id.
@@ -7488,8 +7488,8 @@ export interface VMwareCbtNicDetails {
  * VMware.
  * @member {string} [osType] The type of the OS on the VM.
  * @member {string} [licenseType] License Type of the VM to be used.
- * @member {string} [dataMoverRunAsAccountId] The data mover runas account Id.
- * @member {string} [snapshotRunAsAccountId] The snapshot runas account Id.
+ * @member {string} [dataMoverRunAsAccountId] The data mover RunAs account Id.
+ * @member {string} [snapshotRunAsAccountId] The snapshot RunAs account Id.
  * @member {string} [targetVmName] Target VM name.
  * @member {string} [targetVmSize] The target VM size.
  * @member {string} [targetLocation] The target location.
