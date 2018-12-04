@@ -1375,11 +1375,11 @@ export interface X12ValidationSettings {
   /**
    * The value indicating whether to Whether to validate EDI types.
    */
-  validateEdiTypes: boolean;
+  validateEDITypes: boolean;
   /**
    * The value indicating whether to Whether to validate XSD types.
    */
-  validateXsdTypes: boolean;
+  validateXSDTypes: boolean;
   /**
    * The value indicating whether to allow leading and trailing spaces and zeroes.
    */
@@ -1720,11 +1720,11 @@ export interface X12ValidationOverride {
   /**
    * The value indicating whether to validate EDI types.
    */
-  validateEdiTypes: boolean;
+  validateEDITypes: boolean;
   /**
    * The value indicating whether to validate XSD types.
    */
-  validateXsdTypes: boolean;
+  validateXSDTypes: boolean;
   /**
    * The value indicating whether to allow leading and trailing spaces and zeroes.
    */
@@ -1932,11 +1932,11 @@ export interface EdifactValidationSettings {
   /**
    * The value indicating whether to Whether to validate EDI types.
    */
-  validateEdiTypes: boolean;
+  validateEDITypes: boolean;
   /**
    * The value indicating whether to Whether to validate XSD types.
    */
-  validateXsdTypes: boolean;
+  validateXSDTypes: boolean;
   /**
    * The value indicating whether to allow leading and trailing spaces and zeroes.
    */
@@ -2387,11 +2387,11 @@ export interface EdifactValidationOverride {
   /**
    * The value indicating whether to validate EDI types.
    */
-  validateEdiTypes: boolean;
+  validateEDITypes: boolean;
   /**
    * The value indicating whether to validate XSD types.
    */
-  validateXsdTypes: boolean;
+  validateXSDTypes: boolean;
   /**
    * The value indicating whether to allow leading and trailing spaces and zeroes.
    */
