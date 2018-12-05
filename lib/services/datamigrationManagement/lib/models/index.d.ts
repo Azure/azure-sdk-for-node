@@ -2722,7 +2722,7 @@ export interface OrphanedUserInfo {
   */
   name?: string;
   /**
-   * Parent DB of the user
+   * Parent database of the user
   */
   databaseName?: string;
 }
