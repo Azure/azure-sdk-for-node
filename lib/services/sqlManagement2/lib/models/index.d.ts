@@ -550,7 +550,7 @@ export interface MetricAvailability {
  * @property {string} [unit] The unit of the metric. Possible values include:
  * 'Count', 'Bytes', 'Seconds', 'Percent', 'CountPerSecond', 'BytesPerSecond'
  * @property {array} [metricAvailabilities] The list of database metric
- * availabities for the metric.
+ * availabilities for the metric.
  */
 export interface MetricDefinition {
   readonly name?: MetricName;
@@ -582,7 +582,7 @@ export interface RecommendedElasticPoolMetric {
  * @class
  * Initializes a new instance of the RecommendedElasticPool class.
  * @constructor
- * Represents a recommented elastic pool.
+ * Represents a recommended elastic pool.
  *
  * @property {string} [databaseEdition] The edition of the recommended elastic
  * pool. The ElasticPoolEdition enumeration contains all the valid editions.
@@ -2606,7 +2606,7 @@ export interface JobExecution extends ProxyResource {
  * 'Once', 'Recurring'. Default value: 'Once' .
  * @property {boolean} [enabled] Whether or not the schedule is enabled.
  * @property {string} [interval] Value of the schedule's recurring interval, if
- * the scheduletype is recurring. ISO8601 duration format.
+ * the schedule type is recurring. ISO8601 duration format.
  */
 export interface JobSchedule {
   startTime?: Date;
@@ -2633,7 +2633,7 @@ export interface JobSchedule {
  * @property {boolean} [schedule.enabled] Whether or not the schedule is
  * enabled.
  * @property {string} [schedule.interval] Value of the schedule's recurring
- * interval, if the scheduletype is recurring. ISO8601 duration format.
+ * interval, if the schedule type is recurring. ISO8601 duration format.
  */
 export interface Job extends ProxyResource {
   description?: string;
@@ -4902,7 +4902,7 @@ export interface JobVersionListResult extends Array<JobVersion> {
  * @class
  * Initializes a new instance of the LongTermRetentionBackupListResult class.
  * @constructor
- * A list of long term retention bacukps.
+ * A list of long term retention backups.
  *
  * @property {string} [nextLink] Link to retrieve next page of results.
  */
@@ -4950,7 +4950,7 @@ export interface ServerDnsAliasListResult extends Array<ServerDnsAlias> {
  * @class
  * Initializes a new instance of the RestorePointListResult class.
  * @constructor
- * A list of long term retention bacukps.
+ * A list of long term retention backups.
  *
  * @property {string} [nextLink] Link to retrieve next page of results.
  */

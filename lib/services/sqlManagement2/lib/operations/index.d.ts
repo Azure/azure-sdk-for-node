@@ -6570,7 +6570,7 @@ export interface RecommendedElasticPools {
 
 
     /**
-     * Gets a recommented elastic pool.
+     * Gets a recommended elastic pool.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
@@ -6595,7 +6595,7 @@ export interface RecommendedElasticPools {
     getWithHttpOperationResponse(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecommendedElasticPool>>;
 
     /**
-     * Gets a recommented elastic pool.
+     * Gets a recommended elastic pool.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
@@ -6704,7 +6704,7 @@ export interface RecommendedElasticPools {
 
 
     /**
-     * Returns recommented elastic pool metrics.
+     * Returns recommended elastic pool metrics.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
@@ -6729,7 +6729,7 @@ export interface RecommendedElasticPools {
     listMetricsWithHttpOperationResponse(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecommendedElasticPoolListMetricsResult>>;
 
     /**
-     * Returns recommented elastic pool metrics.
+     * Returns recommended elastic pool metrics.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
@@ -20765,7 +20765,7 @@ export interface JobExecutions {
 
 
     /**
-     * Creates or updatess a job execution.
+     * Creates or updates a job execution.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
@@ -20794,7 +20794,7 @@ export interface JobExecutions {
     createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobExecution>>;
 
     /**
-     * Creates or updatess a job execution.
+     * Creates or updates a job execution.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
@@ -20913,7 +20913,7 @@ export interface JobExecutions {
 
 
     /**
-     * Creates or updatess a job execution.
+     * Creates or updates a job execution.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
@@ -20942,7 +20942,7 @@ export interface JobExecutions {
     beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobExecution>>;
 
     /**
-     * Creates or updatess a job execution.
+     * Creates or updates a job execution.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
@@ -21283,7 +21283,7 @@ export interface Jobs {
      * is enabled.
      *
      * @param {string} [parameters.schedule.interval] Value of the schedule's
-     * recurring interval, if the scheduletype is recurring. ISO8601 duration
+     * recurring interval, if the schedule type is recurring. ISO8601 duration
      * format.
      *
      * @param {object} [options] Optional Parameters.
@@ -21330,7 +21330,7 @@ export interface Jobs {
      * is enabled.
      *
      * @param {string} [parameters.schedule.interval] Value of the schedule's
-     * recurring interval, if the scheduletype is recurring. ISO8601 duration
+     * recurring interval, if the schedule type is recurring. ISO8601 duration
      * format.
      *
      * @param {object} [options] Optional Parameters.
