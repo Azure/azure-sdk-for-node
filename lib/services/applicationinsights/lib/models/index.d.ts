@@ -20,8 +20,8 @@ export { CloudError } from 'ms-rest-azure';
  * @class
  * Initializes a new instance of the ErrorResponse class.
  * @constructor
- * Error reponse indicates Insights service is not able to process the incoming
- * request. The reason is provided in the error message.
+ * Error response indicates Insights service is not able to process the
+ * incoming request. The reason is provided in the error message.
  *
  * @member {string} [code] Error code.
  * @member {string} [message] Error message indicating why the operation
@@ -128,7 +128,7 @@ export interface AnnotationError {
  * @class
  * Initializes a new instance of the APIKeyRequest class.
  * @constructor
- * An Application Insights component API Key createion request definition.
+ * An Application Insights component API Key creation request definition.
  *
  * @member {string} [name] The name of the API Key.
  * @member {array} [linkedReadProperties] The read access rights of this API
@@ -148,7 +148,7 @@ export interface APIKeyRequest {
  * @constructor
  * Properties that define an API key of an Application Insights Component.
  *
- * @member {string} [id] The unique ID of the API key inside an Applciation
+ * @member {string} [id] The unique ID of the API key inside an Application
  * Insights component. It is auto generated when the API key is created.
  * @member {string} [apiKey] The API key value. It will be only return once
  * when the API Key was created.
@@ -213,7 +213,7 @@ export interface ApplicationInsightsComponentExportRequest {
  * Properties that define a Continuous Export configuration.
  *
  * @member {string} [exportId] The unique ID of the export configuration inside
- * an Applciation Insights component. It is auto generated when the Continuous
+ * an Application Insights component. It is auto generated when the Continuous
  * Export configuration is created.
  * @member {string} [instrumentationKey] The instrumentation key of the
  * Application Insights component.
@@ -468,7 +468,7 @@ export interface ApplicationInsightsComponentAvailableFeatures {
  * @member {string} [name] The rule name
  * @member {string} [displayName] The rule name as it is displayed in UI
  * @member {string} [description] The rule description
- * @member {string} [helpUrl] URL which displays aditional info about the
+ * @member {string} [helpUrl] URL which displays additional info about the
  * proactive detection rule
  * @member {boolean} [isHidden] A flag indicating whether the rule is hidden
  * (from the UI)
@@ -510,8 +510,8 @@ export interface ApplicationInsightsComponentProactiveDetectionConfigurationRule
  * @member {string} [ruleDefinitions.displayName] The rule name as it is
  * displayed in UI
  * @member {string} [ruleDefinitions.description] The rule description
- * @member {string} [ruleDefinitions.helpUrl] URL which displays aditional info
- * about the proactive detection rule
+ * @member {string} [ruleDefinitions.helpUrl] URL which displays additional
+ * info about the proactive detection rule
  * @member {boolean} [ruleDefinitions.isHidden] A flag indicating whether the
  * rule is hidden (from the UI)
  * @member {boolean} [ruleDefinitions.isEnabledByDefault] A flag indicating
@@ -716,7 +716,7 @@ export interface WorkItemConfiguration {
  *
  * @member {string} [connectorId] Unique connector id
  * @member {string} [connectorDataConfiguration] Serialized JSON object for
- * detaile d properties
+ * detailed properties
  * @member {boolean} [validateOnly] Boolean indicating validate only
  * @member {string} [workItemProperties] Custom work item properties
  */
@@ -1111,7 +1111,7 @@ export interface ApplicationInsightsComponentAPIKeyListResult extends Array<Appl
  * Describes the list of Application Insights Resources.
  *
  * @member {string} [nextLink] The URI to get the next set of Application
- * Insights component defintions if too many components where returned in the
+ * Insights component definitions if too many components where returned in the
  * result set.
  */
 export interface ApplicationInsightsComponentListResult extends Array<ApplicationInsightsComponent> {
