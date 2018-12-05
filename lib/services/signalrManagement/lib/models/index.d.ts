@@ -218,7 +218,7 @@ export interface ResourceSku {
  * The core properties of ARM resources.
  *
  * @member {string} [id] Fully qualified resource Id for the resource.
- * @member {string} [name] The name of the resouce.
+ * @member {string} [name] The name of the resource.
  * @member {string} [type] The type of the service - e.g.
  * "Microsoft.SignalRService/SignalR"
  */
@@ -396,7 +396,7 @@ export interface SignalRCreateParameters extends SignalRUpdateParameters {
  * @constructor
  * Localizable String object containing the name and a localized value.
  *
- * @member {string} [value] The indentifier of the usage.
+ * @member {string} [value] The identifier of the usage.
  * @member {string} [localizedValue] Localized name of the usage.
  */
 export interface SignalRUsageName {
@@ -416,7 +416,7 @@ export interface SignalRUsageName {
  * there is no limit, this value will be -1.
  * @member {object} [name] Localizable String object containing the name and a
  * localized value.
- * @member {string} [name.value] The indentifier of the usage.
+ * @member {string} [name.value] The identifier of the usage.
  * @member {string} [name.localizedValue] Localized name of the usage.
  * @member {string} [unit] Representing the units of the usage quota. Possible
  * values are: Count, Bytes, Seconds, Percent, CountPerSecond, BytesPerSecond.
