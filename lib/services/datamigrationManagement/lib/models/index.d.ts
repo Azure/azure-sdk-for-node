@@ -2714,6 +2714,20 @@ MigrateSqlServerSqlMITaskOutput {
 }
 
 /**
+ * Information of orphaned users on the SQL server database.
+*/
+export interface OrphanedUserInfo {
+  /**
+   * Name of the orphaned user
+  */
+  name?: string;
+  /**
+   * Parent DB of the user
+  */
+  databaseName?: string;
+}
+
+/**
  * Server role migration result
 */
 export interface StartMigrationScenarioServerRoleResult {
@@ -2770,9 +2784,9 @@ MigrateSqlServerSqlMITaskOutput {
   */
   readonly serverRoleResults?: { [propertyName: string]: StartMigrationScenarioServerRoleResult };
   /**
-   * Map of users to database name of orphaned users.
+   * List of orphaned users.
   */
-  readonly orphanedUsers?: { [propertyName: string]: string };
+  readonly orphanedUsers?: OrphanedUserInfo[];
   /**
    * Selected databases as a map from database name to database id
   */
