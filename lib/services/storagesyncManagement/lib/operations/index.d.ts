@@ -2640,7 +2640,7 @@ export interface ServerEndpoints {
 
 
     /**
-     * Recall a serverendpoint.
+     * Recall a server endpoint.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -2672,7 +2672,7 @@ export interface ServerEndpoints {
     recallActionWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.RecallActionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Recall a serverendpoint.
+     * Recall a server endpoint.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -2992,7 +2992,7 @@ export interface ServerEndpoints {
 
 
     /**
-     * Recall a serverendpoint.
+     * Recall a server endpoint.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -3024,7 +3024,7 @@ export interface ServerEndpoints {
     beginRecallActionWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.RecallActionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Recall a serverendpoint.
+     * Recall a server endpoint.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
