@@ -4020,6 +4020,10 @@ export interface HDInsightLinkedService extends LinkedService {
    * integration runtime credential manager. Type: string (or Expression with resultType string).
    */
   encryptedCredential?: any;
+  /**
+   * Specify if the HDInsight is created with ESP (Enterprise Security Package). Type: Boolean.
+   */
+  isEspEnabled?: any;
 }
 
 /**
@@ -6447,6 +6451,15 @@ export interface HDInsightHiveActivity extends ExecutionActivity {
    * Allows user to specify defines for Hive job request.
    */
   defines?: { [propertyName: string]: any };
+  /**
+   * User specified arguments under hivevar namespace.
+   */
+  variables?: any[];
+  /**
+   * Query timeout value (in minutes).  Effective when the HDInsight culster is with ESP
+   * (Enterprise Security Package)
+   */
+  queryTimeout?: number;
 }
 
 /**
