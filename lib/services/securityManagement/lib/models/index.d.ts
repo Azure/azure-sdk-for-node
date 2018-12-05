@@ -742,7 +742,7 @@ export interface JitNetworkAccessPolicyInitiateRequest {
 
 /**
  * Represents a security solution external to Azure Security Center which sends information to an
- * OMS workspace and whos data is displayed by Azure Security Center.
+ * OMS workspace and whose data is displayed by Azure Security Center.
 */
 export interface ExternalSecuritySolution {
   /**
