@@ -1148,7 +1148,7 @@ export interface OperationStatusResponse {
 /**
  * Represents payload for any Environment operations like get, start, stop, connect
  */
-export interface PersonalPerferencesOperationsPayload {
+export interface PersonalPreferencesOperationsPayload {
   /**
    * Resource Id of the lab account
    */
