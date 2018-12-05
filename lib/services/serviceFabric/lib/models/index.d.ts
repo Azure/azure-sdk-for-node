@@ -3089,7 +3089,7 @@ export interface HealthStatistics {
  * @member {string} [configurationVersion] The current configuration number of
  * this Epoch. The configuration number is an increasing value that is updated
  * whenever the configuration of this replica set changes.
- * @member {string} [dataLossVersion] The current dataloss number of this
+ * @member {string} [dataLossVersion] The current data loss number of this
  * Epoch. The data loss number property is an increasing value which is updated
  * whenever data loss is suspected, as when loss of a quorum of replicas in the
  * replica set that includes the Primary replica.
@@ -3112,8 +3112,8 @@ export interface Epoch {
  * @member {string} [configurationNumber] The current configuration number of
  * this Epoch. The configuration number is an increasing value that is updated
  * whenever the configuration of this replica set changes.
- * @member {string} [dataLossNumber] The current dataloss number of this Epoch.
- * The data loss number property is an increasing value which is updated
+ * @member {string} [dataLossNumber] The current data loss number of this
+ * Epoch. The data loss number property is an increasing value which is updated
  * whenever data loss is suspected, as when loss of a quorum of replicas in the
  * replica set that includes the Primary replica.
  */
@@ -3303,7 +3303,7 @@ export interface FabricConfigVersionInfo {
  * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_ALREADY_EXISTS"
  * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_NOT_FOUND"
  * - "FABRIC_E_VOLUME_ALREADY_EXISTS"
- * - "ABRIC_E_VOLUME_NOT_FOUND"
+ * - "FABRIC_E_VOLUME_NOT_FOUND"
  * - "SerializationError"
  *
  * - Possible values of the error code for HTTP status code 503 (Service
@@ -3476,7 +3476,7 @@ export interface FabricErrorError {
  * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_ALREADY_EXISTS"
  * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_NOT_FOUND"
  * - "FABRIC_E_VOLUME_ALREADY_EXISTS"
- * - "ABRIC_E_VOLUME_NOT_FOUND"
+ * - "FABRIC_E_VOLUME_NOT_FOUND"
  * - "SerializationError"
  *
  * - Possible values of the error code for HTTP status code 503 (Service
@@ -5310,7 +5310,7 @@ export interface StatefulServiceInfo extends ServiceInfo {
  * increasing value that is updated whenever the configuration of this replica
  * set changes.
  * @member {string} [currentConfigurationEpoch.dataLossVersion] The current
- * dataloss number of this Epoch. The data loss number property is an
+ * data loss number of this Epoch. The data loss number property is an
  * increasing value which is updated whenever data loss is suspected, as when
  * loss of a quorum of replicas in the replica set that includes the Primary
  * replica.
@@ -10105,7 +10105,7 @@ export interface RestorePartitionDescription {
  * configuration number of this Epoch. The configuration number is an
  * increasing value that is updated whenever the configuration of this replica
  * set changes.
- * @member {string} [restoredEpoch.dataLossNumber] The current dataloss number
+ * @member {string} [restoredEpoch.dataLossNumber] The current data loss number
  * of this Epoch. The data loss number property is an increasing value which is
  * updated whenever data loss is suspected, as when loss of a quorum of
  * replicas in the replica set that includes the Primary replica.
@@ -10200,7 +10200,7 @@ export interface RestorePartitionDescription {
  * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_ALREADY_EXISTS"
  * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_NOT_FOUND"
  * - "FABRIC_E_VOLUME_ALREADY_EXISTS"
- * - "ABRIC_E_VOLUME_NOT_FOUND"
+ * - "FABRIC_E_VOLUME_NOT_FOUND"
  * - "SerializationError"
  *
  * - Possible values of the error code for HTTP status code 503 (Service
@@ -10328,11 +10328,10 @@ export interface BackupPartitionDescription {
  * configuration number of this Epoch. The configuration number is an
  * increasing value that is updated whenever the configuration of this replica
  * set changes.
- * @member {string} [epochOfLastBackupRecord.dataLossNumber] The current
- * dataloss number of this Epoch. The data loss number property is an
- * increasing value which is updated whenever data loss is suspected, as when
- * loss of a quorum of replicas in the replica set that includes the Primary
- * replica.
+ * @member {string} [epochOfLastBackupRecord.dataLossNumber] The current data
+ * loss number of this Epoch. The data loss number property is an increasing
+ * value which is updated whenever data loss is suspected, as when loss of a
+ * quorum of replicas in the replica set that includes the Primary replica.
  * @member {string} [lsnOfLastBackupRecord] LSN of the last record in this
  * backup.
  * @member {date} [creationTimeUtc] The date time when this backup was taken.
@@ -10426,7 +10425,7 @@ export interface BackupPartitionDescription {
  * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_ALREADY_EXISTS"
  * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_NOT_FOUND"
  * - "FABRIC_E_VOLUME_ALREADY_EXISTS"
- * - "ABRIC_E_VOLUME_NOT_FOUND"
+ * - "FABRIC_E_VOLUME_NOT_FOUND"
  * - "SerializationError"
  *
  * - Possible values of the error code for HTTP status code 503 (Service
@@ -10631,11 +10630,10 @@ export interface TimeBasedBackupScheduleDescription extends BackupScheduleDescri
  * configuration number of this Epoch. The configuration number is an
  * increasing value that is updated whenever the configuration of this replica
  * set changes.
- * @member {string} [epochOfLastBackupRecord.dataLossNumber] The current
- * dataloss number of this Epoch. The data loss number property is an
- * increasing value which is updated whenever data loss is suspected, as when
- * loss of a quorum of replicas in the replica set that includes the Primary
- * replica.
+ * @member {string} [epochOfLastBackupRecord.dataLossNumber] The current data
+ * loss number of this Epoch. The data loss number property is an increasing
+ * value which is updated whenever data loss is suspected, as when loss of a
+ * quorum of replicas in the replica set that includes the Primary replica.
  * @member {string} [lsnOfLastBackupRecord] The LSN of last record included in
  * backup.
  * @member {object} [failureError] Denotes the failure encountered in
@@ -10728,7 +10726,7 @@ export interface TimeBasedBackupScheduleDescription extends BackupScheduleDescri
  * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_ALREADY_EXISTS"
  * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_NOT_FOUND"
  * - "FABRIC_E_VOLUME_ALREADY_EXISTS"
- * - "ABRIC_E_VOLUME_NOT_FOUND"
+ * - "FABRIC_E_VOLUME_NOT_FOUND"
  * - "SerializationError"
  *
  * - Possible values of the error code for HTTP status code 503 (Service
