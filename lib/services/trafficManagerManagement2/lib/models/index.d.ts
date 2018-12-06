@@ -126,7 +126,7 @@ export interface TrafficFlow {
  * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
  * @member {string} [name] The name of the resource
  * @member {string} [type] The type of the resource. Ex-
- * Microsoft.Network/trafficmanagerProfiles.
+ * Microsoft.Network/trafficManagerProfiles.
  */
 export interface Resource extends BaseResource {
   id?: string;
