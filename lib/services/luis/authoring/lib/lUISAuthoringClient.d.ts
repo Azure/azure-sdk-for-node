@@ -51,7 +51,7 @@ export default class LUISAuthoringClient extends ServiceClient {
 
 
   /**
-   * @summary apps - Assign a LUIS azure accounts to an application
+   * @summary apps - Assign a LUIS azure account to an application
    *
    * Assigns an azure account to the application.
    *
@@ -83,7 +83,7 @@ export default class LUISAuthoringClient extends ServiceClient {
   5be32228e8473de116325515WithHttpOperationResponse(appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
   /**
-   * @summary apps - Assign a LUIS azure accounts to an application
+   * @summary apps - Assign a LUIS azure account to an application
    *
    * Assigns an azure account to the application.
    *
@@ -326,6 +326,134 @@ export default class LUISAuthoringClient extends ServiceClient {
   5be313cec181ae720aa2b26c(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
   5be313cec181ae720aa2b26c(callback: ServiceCallback<any>): void;
   5be313cec181ae720aa2b26c(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+  /**
+   * @summary package - Gets published LUIS application package in binary stream
+   * GZip format
+   *
+   * Packages published LUIS application as GZip.
+   *
+   * @param {uuid} appId The application ID.
+   *
+   * @param {uuid} slotName The publishing slot name.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  appsPackagepublishedapplicationasgzipWithHttpOperationResponse(appId: string, slotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+  /**
+   * @summary package - Gets published LUIS application package in binary stream
+   * GZip format
+   *
+   * Packages published LUIS application as GZip.
+   *
+   * @param {uuid} appId The application ID.
+   *
+   * @param {uuid} slotName The publishing slot name.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Object} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Object} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  appsPackagepublishedapplicationasgzip(appId: string, slotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+  appsPackagepublishedapplicationasgzip(appId: string, slotName: string, callback: ServiceCallback<any>): void;
+  appsPackagepublishedapplicationasgzip(appId: string, slotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+  /**
+   * @summary package - Gets trained LUIS application package in binary stream
+   * GZip format
+   *
+   * Packages trained LUIS application as GZip.
+   *
+   * @param {uuid} appId The application ID.
+   *
+   * @param {string} versionId The version ID.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  appsPackagetrainedapplicationasgzipWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+  /**
+   * @summary package - Gets trained LUIS application package in binary stream
+   * GZip format
+   *
+   * Packages trained LUIS application as GZip.
+   *
+   * @param {uuid} appId The application ID.
+   *
+   * @param {string} versionId The version ID.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Object} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Object} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  appsPackagetrainedapplicationasgzip(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+  appsPackagetrainedapplicationasgzip(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+  appsPackagetrainedapplicationasgzip(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 }
 
 export { LUISAuthoringClient, models as LUISAuthoringModels };
