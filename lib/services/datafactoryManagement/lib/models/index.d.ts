@@ -6107,14 +6107,46 @@ export interface LookupActivity extends ExecutionActivity {
 }
 
 /**
+ * Log storage settings.
+ */
+export interface LogStorageSettings {
+  /**
+   * Log storage linked service reference.
+   */
+  linkedServiceName: LinkedServiceReference;
+  /**
+   * The path to storage for storing detailed logs of activity execution. Type: string (or
+   * Expression with resultType string).
+   */
+  path?: any;
+  /**
+   * Describes unknown properties. The value of an unknown property can be of "any" type.
+   */
+  [additionalPropertyName: string]: any;
+}
+
+/**
  * Delete activity.
  */
 export interface DeleteActivity extends ExecutionActivity {
   /**
-   * If true, files under the folder path will be deleted recursively. Default is true. Type:
-   * boolean (or Expression with resultType boolean).
+   * If true, files or sub-folders under current folder path will be deleted recursively. Default
+   * is false. Type: boolean (or Expression with resultType boolean).
    */
   recursive?: any;
+  /**
+   * The max concurrent connections to connect data source at the same time.
+   */
+  maxConcurrentConnections?: number;
+  /**
+   * Whether to record detailed logs of delete-activity execution. Default value is false. Type:
+   * boolean (or Expression with resultType boolean).
+   */
+  enableLogging?: any;
+  /**
+   * Log storage settings customer need to provide when enableLogging is true.
+   */
+  logStorageSettings?: LogStorageSettings;
   /**
    * Delete activity dataset reference.
    */
