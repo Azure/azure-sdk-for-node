@@ -2,7 +2,7 @@
   "name": "azure-cognitiveservices-customimagesearch",
   "author": "Microsoft Corporation",
   "description": "CustomImageSearchClient Library with typescript type definitions for node",
-  "version": "0.2.0-preview",
+  "version": "1.0.0",
   "dependencies": {
     "ms-rest": "^2.3.3"
   },
