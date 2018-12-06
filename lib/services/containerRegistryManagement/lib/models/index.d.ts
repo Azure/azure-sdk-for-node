@@ -1314,7 +1314,7 @@ export interface AuthInfo {
  *
  * @member {string} sourceControlType The type of source control service.
  * Possible values include: 'Github', 'VisualStudioTeamService'
- * @member {string} repositoryUrl The full URL to the source code respository
+ * @member {string} repositoryUrl The full URL to the source code repository
  * @member {string} [branch] The branch name of the source code.
  * @member {object} [sourceControlAuthProperties] The authorization properties
  * for accessing the source code repository and to set up
@@ -1349,7 +1349,7 @@ export interface SourceProperties {
  * control service. Possible values include: 'Github',
  * 'VisualStudioTeamService'
  * @member {string} [sourceRepository.repositoryUrl] The full URL to the source
- * code respository
+ * code repository
  * @member {string} [sourceRepository.branch] The branch name of the source
  * code.
  * @member {object} [sourceRepository.sourceControlAuthProperties] The
@@ -1545,7 +1545,7 @@ export interface AuthInfoUpdateParameters {
  *
  * @member {string} [sourceControlType] The type of source control service.
  * Possible values include: 'Github', 'VisualStudioTeamService'
- * @member {string} [repositoryUrl] The full URL to the source code respository
+ * @member {string} [repositoryUrl] The full URL to the source code repository
  * @member {string} [branch] The branch name of the source code.
  * @member {object} [sourceControlAuthProperties] The authorization properties
  * for accessing the source code repository and to set up
@@ -1580,7 +1580,7 @@ export interface SourceUpdateParameters {
  * control service. Possible values include: 'Github',
  * 'VisualStudioTeamService'
  * @member {string} [sourceRepository.repositoryUrl] The full URL to the source
- * code respository
+ * code repository
  * @member {string} [sourceRepository.branch] The branch name of the source
  * code.
  * @member {object} [sourceRepository.sourceControlAuthProperties] The
@@ -1749,7 +1749,7 @@ export interface Argument {
  * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
  * number of cores required for the run.
  * @member {string} [sourceLocation] The URL(absolute or relative) of the
- * source context. It can be an URL to a tar or git repoistory.
+ * source context. It can be an URL to a tar or git repository.
  * If it is relative URL, the relative path should be obtained from calling
  * listBuildSourceUploadUrl API.
  */
@@ -1808,7 +1808,7 @@ export interface SetValue {
  * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
  * number of cores required for the run.
  * @member {string} [sourceLocation] The URL(absolute or relative) of the
- * source context. It can be an URL to a tar or git repoistory.
+ * source context. It can be an URL to a tar or git repository.
  * If it is relative URL, the relative path should be obtained from calling
  * listBuildSourceUploadUrl API.
  */
@@ -1864,7 +1864,7 @@ export interface TaskRunRequest extends RunRequest {
  * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
  * number of cores required for the run.
  * @member {string} [sourceLocation] The URL(absolute or relative) of the
- * source context. It can be an URL to a tar or git repoistory.
+ * source context. It can be an URL to a tar or git repository.
  * If it is relative URL, the relative path should be obtained from calling
  * listBuildSourceUploadUrl API.
  */
