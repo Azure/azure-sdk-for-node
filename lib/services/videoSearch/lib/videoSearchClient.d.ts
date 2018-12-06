@@ -12,15 +12,23 @@ import { ServiceClient, ServiceClientOptions, ServiceClientCredentials } from 'm
 import * as models from "./models";
 import * as operations from "./operations";
 
-export default class VideoSearchAPIClient extends ServiceClient {
+/**
+ * VideoSearchClientOptions for VideoSearchClient.
+ */
+declare interface VideoSearchClientOptions extends ServiceClientOptions {
+  /**
+   * @property {string} [endpoint] - Supported Cognitive Services endpoints (protocol and hostname, for example: "https://westus.api.cognitive.microsoft.com", "https://api.cognitive.microsoft.com").
+   */
+  endpoint?: string;
+}
+
+export default class VideoSearchClient extends ServiceClient {
   /**
    * @class
-   * Initializes a new instance of the VideoSearchAPIClient class.
+   * Initializes a new instance of the VideoSearchClient class.
    * @constructor
    *
    * @param {credentials} credentials - Subscription credentials which uniquely identify client subscription.
-   *
-   * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
    *
@@ -31,13 +39,17 @@ export default class VideoSearchAPIClient extends ServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
+   * @param {string} [options.endpoint] - Supported Cognitive Services endpoints (protocol and hostname, for example: "https://westus.api.cognitive.microsoft.com", "https://api.cognitive.microsoft.com").
+   *
    */
-  constructor(credentials: ServiceClientCredentials, baseUri?: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, options?: VideoSearchClientOptions);
 
   credentials: ServiceClientCredentials;
+
+  endpoint: string;
 
   // Operation groups
   videosOperations: operations.VideosOperations;
 }
 
-export { VideoSearchAPIClient, models as VideoSearchAPIModels };
+export { VideoSearchClient, models as VideoSearchModels };
