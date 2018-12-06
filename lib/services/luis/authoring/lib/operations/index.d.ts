@@ -518,10 +518,10 @@ export interface Examples {
      *
      * @param {string} [exampleLabelObject.text] The sample's utterance.
      *
-     * @param {array} [exampleLabelObject.entityLabels] The idenfied entities
+     * @param {array} [exampleLabelObject.entityLabels] The identified entities
      * within the utterance.
      *
-     * @param {string} [exampleLabelObject.intentName] The idenfitied intent
+     * @param {string} [exampleLabelObject.intentName] The identified intent
      * representing the utterance.
      *
      * @param {object} [options] Optional Parameters.
@@ -549,10 +549,10 @@ export interface Examples {
      *
      * @param {string} [exampleLabelObject.text] The sample's utterance.
      *
-     * @param {array} [exampleLabelObject.entityLabels] The idenfied entities
+     * @param {array} [exampleLabelObject.entityLabels] The identified entities
      * within the utterance.
      *
-     * @param {string} [exampleLabelObject.intentName] The idenfitied intent
+     * @param {string} [exampleLabelObject.intentName] The identified intent
      * representing the utterance.
      *
      * @param {object} [options] Optional Parameters.
@@ -8192,7 +8192,7 @@ export interface Apps {
 
     /**
      * Imports an application to LUIS, the application's structure should be
-     * included in in the request body.
+     * included in the request body.
      *
      * @param {object} luisApp A LUIS application structure.
      *
@@ -8246,7 +8246,7 @@ export interface Apps {
 
     /**
      * Imports an application to LUIS, the application's structure should be
-     * included in in the request body.
+     * included in the request body.
      *
      * @param {object} luisApp A LUIS application structure.
      *
@@ -9006,7 +9006,7 @@ export interface Apps {
      *
      * @param {boolean} [publishSettingUpdateObject.sentimentAnalysis] Setting
      * sentiment analysis as true returns the Sentiment of the input utterance
-     * along with the resopnse
+     * along with the response
      *
      * @param {boolean} [publishSettingUpdateObject.speech] Setting speech as
      * public enables speech priming in your app
@@ -9037,7 +9037,7 @@ export interface Apps {
      *
      * @param {boolean} [publishSettingUpdateObject.sentimentAnalysis] Setting
      * sentiment analysis as true returns the Sentiment of the input utterance
-     * along with the resopnse
+     * along with the response
      *
      * @param {boolean} [publishSettingUpdateObject.speech] Setting speech as
      * public enables speech priming in your app

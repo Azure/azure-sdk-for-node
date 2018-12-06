@@ -22,8 +22,6 @@ export default class LUISRuntimeClient extends ServiceClient {
    *
    * @param {string} endpoint - Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus.api.cognitive.microsoft.com).
    *
-   * @param {string} ocpApimSubscriptionKey - Subscription key which provides access to this API.
-   *
    * @param {object} [options] - The parameter options
    *
    * @param {Array} [options.filters] - Filters to be added to the request pipeline
@@ -34,13 +32,11 @@ export default class LUISRuntimeClient extends ServiceClient {
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
    */
-  constructor(credentials: ServiceClientCredentials, endpoint: string, ocpApimSubscriptionKey: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, endpoint: string, options?: ServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   endpoint: string;
-
-  ocpApimSubscriptionKey: string;
 
   // Operation groups
   prediction: operations.Prediction;

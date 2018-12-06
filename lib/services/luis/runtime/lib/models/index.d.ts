@@ -99,7 +99,7 @@ export interface Sentiment {
  */
 export interface LuisResult {
   /**
-   * The input utterance that was analized.
+   * The input utterance that was analyzed.
    */
   query?: string;
   /**
