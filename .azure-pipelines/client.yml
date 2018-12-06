@@ -62,7 +62,7 @@ jobs:
         displayName: 'npm audit'
 
       - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
-        # 12/5/18: ComponentGovernance is currently unable to run on pull requests of public projects. Running on non-PR
+        # ComponentGovernance is currently unable to run on pull requests of public projects. Running on non-PR
         # builds should be sufficient.
         condition: and(succeededOrFailed(), ne(variables['Build.Reason'], 'PullRequest'))
         displayName: 'Component Detection'
