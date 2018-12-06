@@ -356,17 +356,17 @@ export interface GlobalUsers {
      *
      * @param {string} userName The name of the user.
      *
-     * @param {object} personalPerferencesOperationsPayload Represents payload for
+     * @param {object} personalPreferencesOperationsPayload Represents payload for
      * any Environment operations like get, start, stop, connect
      *
-     * @param {string} [personalPerferencesOperationsPayload.labAccountResourceId]
+     * @param {string} [personalPreferencesOperationsPayload.labAccountResourceId]
      * Resource Id of the lab account
      *
-     * @param {string} [personalPerferencesOperationsPayload.addRemove] Enum
+     * @param {string} [personalPreferencesOperationsPayload.addRemove] Enum
      * indicating if user is adding or removing a favorite lab. Possible values
      * include: 'Add', 'Remove'
      *
-     * @param {string} [personalPerferencesOperationsPayload.labResourceId]
+     * @param {string} [personalPreferencesOperationsPayload.labResourceId]
      * Resource Id of the lab to add/remove from the favorites list
      *
      * @param {object} [options] Optional Parameters.
@@ -380,24 +380,24 @@ export interface GlobalUsers {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPersonalPreferencesWithHttpOperationResponse(userName: string, personalPerferencesOperationsPayload: models.PersonalPerferencesOperationsPayload, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GetPersonalPreferencesResponse>>;
+    getPersonalPreferencesWithHttpOperationResponse(userName: string, personalPreferencesOperationsPayload: models.PersonalPreferencesOperationsPayload, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GetPersonalPreferencesResponse>>;
 
     /**
      * Get personal preferences for a user
      *
      * @param {string} userName The name of the user.
      *
-     * @param {object} personalPerferencesOperationsPayload Represents payload for
+     * @param {object} personalPreferencesOperationsPayload Represents payload for
      * any Environment operations like get, start, stop, connect
      *
-     * @param {string} [personalPerferencesOperationsPayload.labAccountResourceId]
+     * @param {string} [personalPreferencesOperationsPayload.labAccountResourceId]
      * Resource Id of the lab account
      *
-     * @param {string} [personalPerferencesOperationsPayload.addRemove] Enum
+     * @param {string} [personalPreferencesOperationsPayload.addRemove] Enum
      * indicating if user is adding or removing a favorite lab. Possible values
      * include: 'Add', 'Remove'
      *
-     * @param {string} [personalPerferencesOperationsPayload.labResourceId]
+     * @param {string} [personalPreferencesOperationsPayload.labResourceId]
      * Resource Id of the lab to add/remove from the favorites list
      *
      * @param {object} [options] Optional Parameters.
@@ -428,9 +428,9 @@ export interface GlobalUsers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getPersonalPreferences(userName: string, personalPerferencesOperationsPayload: models.PersonalPerferencesOperationsPayload, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GetPersonalPreferencesResponse>;
-    getPersonalPreferences(userName: string, personalPerferencesOperationsPayload: models.PersonalPerferencesOperationsPayload, callback: ServiceCallback<models.GetPersonalPreferencesResponse>): void;
-    getPersonalPreferences(userName: string, personalPerferencesOperationsPayload: models.PersonalPerferencesOperationsPayload, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GetPersonalPreferencesResponse>): void;
+    getPersonalPreferences(userName: string, personalPreferencesOperationsPayload: models.PersonalPreferencesOperationsPayload, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GetPersonalPreferencesResponse>;
+    getPersonalPreferences(userName: string, personalPreferencesOperationsPayload: models.PersonalPreferencesOperationsPayload, callback: ServiceCallback<models.GetPersonalPreferencesResponse>): void;
+    getPersonalPreferences(userName: string, personalPreferencesOperationsPayload: models.PersonalPreferencesOperationsPayload, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GetPersonalPreferencesResponse>): void;
 
 
     /**
