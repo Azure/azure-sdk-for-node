@@ -332,8 +332,8 @@ export interface AppServiceCertificateOrders {
      *
      * @param {string} certificateOrderName Name of the certificate order.
      *
-     * @param {object} certificateDistinguishedName Distinguished name to to use
-     * for the certificate order.
+     * @param {object} certificateDistinguishedName Distinguished name to use for
+     * the certificate order.
      *
      * @param {object} [certificateDistinguishedName.certificates] State of the Key
      * Vault secret.
@@ -386,8 +386,8 @@ export interface AppServiceCertificateOrders {
      *
      * @param {string} certificateOrderName Name of the certificate order.
      *
-     * @param {object} certificateDistinguishedName Distinguished name to to use
-     * for the certificate order.
+     * @param {object} certificateDistinguishedName Distinguished name to use for
+     * the certificate order.
      *
      * @param {object} [certificateDistinguishedName.certificates] State of the Key
      * Vault secret.
@@ -524,8 +524,8 @@ export interface AppServiceCertificateOrders {
      *
      * @param {string} certificateOrderName Name of the certificate order.
      *
-     * @param {object} certificateDistinguishedName Distinguished name to to use
-     * for the certificate order.
+     * @param {object} certificateDistinguishedName Distinguished name to use for
+     * the certificate order.
      *
      * @param {object} [certificateDistinguishedName.certificates] State of the Key
      * Vault secret.
@@ -574,8 +574,8 @@ export interface AppServiceCertificateOrders {
      *
      * @param {string} certificateOrderName Name of the certificate order.
      *
-     * @param {object} certificateDistinguishedName Distinguished name to to use
-     * for the certificate order.
+     * @param {object} certificateDistinguishedName Distinguished name to use for
+     * the certificate order.
      *
      * @param {object} [certificateDistinguishedName.certificates] State of the Key
      * Vault secret.
@@ -1629,8 +1629,8 @@ export interface AppServiceCertificateOrders {
      *
      * @param {string} certificateOrderName Name of the certificate order.
      *
-     * @param {object} certificateDistinguishedName Distinguished name to to use
-     * for the certificate order.
+     * @param {object} certificateDistinguishedName Distinguished name to use for
+     * the certificate order.
      *
      * @param {object} [certificateDistinguishedName.certificates] State of the Key
      * Vault secret.
@@ -1683,8 +1683,8 @@ export interface AppServiceCertificateOrders {
      *
      * @param {string} certificateOrderName Name of the certificate order.
      *
-     * @param {object} certificateDistinguishedName Distinguished name to to use
-     * for the certificate order.
+     * @param {object} certificateDistinguishedName Distinguished name to use for
+     * the certificate order.
      *
      * @param {object} [certificateDistinguishedName.certificates] State of the Key
      * Vault secret.

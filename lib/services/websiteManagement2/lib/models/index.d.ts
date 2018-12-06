@@ -2179,7 +2179,7 @@ export interface Domain extends Resource {
 }
 
 /**
- * Domain availablility check result.
+ * Domain availability check result.
 */
 export interface DomainAvailablilityCheckResult {
   /**
@@ -7054,7 +7054,7 @@ export interface ResourceHealthMetadata extends ProxyOnlyResource {
 }
 
 /**
- * Collection of certitificate orders.
+ * Collection of certificate orders.
 */
 export interface AppServiceCertificateOrderCollection extends Array<AppServiceCertificateOrder> {
   /**
