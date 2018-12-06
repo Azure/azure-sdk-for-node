@@ -647,7 +647,7 @@ export interface HttpRouteConfig {
  * @member {string} name http hostname config name.
  * @member {array} routes Route information to use for routing. Routes are
  * processed in the order they are specified. Specify routes that are more
- * specific before routes that can hamdle general cases.
+ * specific before routes that can handle general cases.
  */
 export interface HttpHostConfig {
   name: string;
@@ -1042,7 +1042,7 @@ export interface ContainerInstanceView {
  * References the list of sinks in DiagnosticsDescription.
  * @member {array} [reliableCollectionsRefs] A list of ReliableCollection
  * resources used by this particular code package. Please refer to
- * ReliablecollectionsRef for more details.
+ * ReliableCollectionsRef for more details.
  * @member {object} [instanceView] Runtime information of a container instance.
  * @member {number} [instanceView.restartCount] The number of times the
  * container has been restarted.
@@ -1519,7 +1519,7 @@ export interface SecretResourceDescriptionList extends Array<SecretResourceDescr
  * Initializes a new instance of the SecretValueResourceDescriptionList class.
  * @constructor
  * A pageable list of values of a secret resource. The information does not
- * include only the name of the value and not the actual unecrypted value.
+ * include only the name of the value and not the actual unencrypted value.
  *
  * @member {string} [nextLink] URI to fetch the next page of the list.
  */

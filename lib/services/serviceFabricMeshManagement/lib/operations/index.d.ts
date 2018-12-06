@@ -890,7 +890,7 @@ export interface SecretValueOperations {
 
 
     /**
-     * @summary List names of all values of the the specified secret resource.
+     * @summary List names of all values of the specified secret resource.
      *
      * Gets information about all secret value resources of the specified secret
      * resource. The information includes the names of the secret value resources,
@@ -914,7 +914,7 @@ export interface SecretValueOperations {
     listWithHttpOperationResponse(resourceGroupName: string, secretResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretValueResourceDescriptionList>>;
 
     /**
-     * @summary List names of all values of the the specified secret resource.
+     * @summary List names of all values of the specified secret resource.
      *
      * Gets information about all secret value resources of the specified secret
      * resource. The information includes the names of the secret value resources,
@@ -1029,7 +1029,7 @@ export interface SecretValueOperations {
 
 
     /**
-     * @summary List names of all values of the the specified secret resource.
+     * @summary List names of all values of the specified secret resource.
      *
      * Gets information about all secret value resources of the specified secret
      * resource. The information includes the names of the secret value resources,
@@ -1052,7 +1052,7 @@ export interface SecretValueOperations {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretValueResourceDescriptionList>>;
 
     /**
-     * @summary List names of all values of the the specified secret resource.
+     * @summary List names of all values of the specified secret resource.
      *
      * Gets information about all secret value resources of the specified secret
      * resource. The information includes the names of the secret value resources,
