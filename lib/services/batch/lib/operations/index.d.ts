@@ -673,9 +673,8 @@ export interface Pool {
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
      * This property is mutually exclusive with other ImageReference properties.
      * The virtual machine image must be in the same region and subscription as the
-     * Azure Batch account. For information about the firewall settings for the
-     * Batch node agent to communicate with the Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Azure Batch account. For more details, see
+     * https://docs.microsoft.com/azure/batch/batch-custom-images.
      *
      * @param {string} pool.virtualMachineConfiguration.nodeAgentSKUId The SKU of
      * the Batch node agent to be provisioned on compute nodes in the pool. The
@@ -1072,9 +1071,8 @@ export interface Pool {
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
      * This property is mutually exclusive with other ImageReference properties.
      * The virtual machine image must be in the same region and subscription as the
-     * Azure Batch account. For information about the firewall settings for the
-     * Batch node agent to communicate with the Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Azure Batch account. For more details, see
+     * https://docs.microsoft.com/azure/batch/batch-custom-images.
      *
      * @param {string} pool.virtualMachineConfiguration.nodeAgentSKUId The SKU of
      * the Batch node agent to be provisioned on compute nodes in the pool. The
@@ -4823,9 +4821,8 @@ export interface Job {
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
      * This property is mutually exclusive with other ImageReference properties.
      * The virtual machine image must be in the same region and subscription as the
-     * Azure Batch account. For information about the firewall settings for the
-     * Batch node agent to communicate with the Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Azure Batch account. For more details, see
+     * https://docs.microsoft.com/azure/batch/batch-custom-images.
      *
      * @param {string}
      * jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
@@ -5392,9 +5389,8 @@ export interface Job {
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
      * This property is mutually exclusive with other ImageReference properties.
      * The virtual machine image must be in the same region and subscription as the
-     * Azure Batch account. For information about the firewall settings for the
-     * Batch node agent to communicate with the Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Azure Batch account. For more details, see
+     * https://docs.microsoft.com/azure/batch/batch-custom-images.
      *
      * @param {string}
      * jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
@@ -5971,9 +5967,8 @@ export interface Job {
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
      * This property is mutually exclusive with other ImageReference properties.
      * The virtual machine image must be in the same region and subscription as the
-     * Azure Batch account. For information about the firewall settings for the
-     * Batch node agent to communicate with the Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Azure Batch account. For more details, see
+     * https://docs.microsoft.com/azure/batch/batch-custom-images.
      *
      * @param {string}
      * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
@@ -6545,9 +6540,8 @@ export interface Job {
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
      * This property is mutually exclusive with other ImageReference properties.
      * The virtual machine image must be in the same region and subscription as the
-     * Azure Batch account. For information about the firewall settings for the
-     * Batch node agent to communicate with the Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Azure Batch account. For more details, see
+     * https://docs.microsoft.com/azure/batch/batch-custom-images.
      *
      * @param {string}
      * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
@@ -7873,9 +7867,8 @@ export interface Job {
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
      * This property is mutually exclusive with other ImageReference properties.
      * The virtual machine image must be in the same region and subscription as the
-     * Azure Batch account. For information about the firewall settings for the
-     * Batch node agent to communicate with the Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Azure Batch account. For more details, see
+     * https://docs.microsoft.com/azure/batch/batch-custom-images.
      *
      * @param {string}
      * job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
@@ -8724,9 +8717,8 @@ export interface Job {
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
      * This property is mutually exclusive with other ImageReference properties.
      * The virtual machine image must be in the same region and subscription as the
-     * Azure Batch account. For information about the firewall settings for the
-     * Batch node agent to communicate with the Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Azure Batch account. For more details, see
+     * https://docs.microsoft.com/azure/batch/batch-custom-images.
      *
      * @param {string}
      * job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
@@ -12801,9 +12793,8 @@ export interface JobSchedule {
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
      * This property is mutually exclusive with other ImageReference properties.
      * The virtual machine image must be in the same region and subscription as the
-     * Azure Batch account. For information about the firewall settings for the
-     * Batch node agent to communicate with the Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Azure Batch account. For more details, see
+     * https://docs.microsoft.com/azure/batch/batch-custom-images.
      *
      * @param {string}
      * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
@@ -13801,9 +13792,8 @@ export interface JobSchedule {
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
      * This property is mutually exclusive with other ImageReference properties.
      * The virtual machine image must be in the same region and subscription as the
-     * Azure Batch account. For information about the firewall settings for the
-     * Batch node agent to communicate with the Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Azure Batch account. For more details, see
+     * https://docs.microsoft.com/azure/batch/batch-custom-images.
      *
      * @param {string}
      * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
@@ -14823,9 +14813,8 @@ export interface JobSchedule {
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
      * This property is mutually exclusive with other ImageReference properties.
      * The virtual machine image must be in the same region and subscription as the
-     * Azure Batch account. For information about the firewall settings for the
-     * Batch node agent to communicate with the Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Azure Batch account. For more details, see
+     * https://docs.microsoft.com/azure/batch/batch-custom-images.
      *
      * @param {string}
      * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
@@ -15829,9 +15818,8 @@ export interface JobSchedule {
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
      * This property is mutually exclusive with other ImageReference properties.
      * The virtual machine image must be in the same region and subscription as the
-     * Azure Batch account. For information about the firewall settings for the
-     * Batch node agent to communicate with the Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Azure Batch account. For more details, see
+     * https://docs.microsoft.com/azure/batch/batch-custom-images.
      *
      * @param {string}
      * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
@@ -17234,9 +17222,8 @@ export interface JobSchedule {
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
      * This property is mutually exclusive with other ImageReference properties.
      * The virtual machine image must be in the same region and subscription as the
-     * Azure Batch account. For information about the firewall settings for the
-     * Batch node agent to communicate with the Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Azure Batch account. For more details, see
+     * https://docs.microsoft.com/azure/batch/batch-custom-images.
      *
      * @param {string}
      * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
@@ -18199,9 +18186,8 @@ export interface JobSchedule {
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
      * This property is mutually exclusive with other ImageReference properties.
      * The virtual machine image must be in the same region and subscription as the
-     * Azure Batch account. For information about the firewall settings for the
-     * Batch node agent to communicate with the Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Azure Batch account. For more details, see
+     * https://docs.microsoft.com/azure/batch/batch-custom-images.
      *
      * @param {string}
      * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId

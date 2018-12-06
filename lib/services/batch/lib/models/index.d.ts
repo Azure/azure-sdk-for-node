@@ -77,9 +77,7 @@ export interface ImageReference {
    * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
    * @description This property is mutually exclusive with other ImageReference properties. The
    * virtual machine image must be in the same region and subscription as the Azure Batch account.
-   * For information about the firewall settings for the Batch node agent to communicate with the
-   * Batch service see
-   * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+   * For more details, see https://docs.microsoft.com/azure/batch/batch-custom-images.
    */
   virtualMachineImageId?: string;
 }
@@ -883,8 +881,9 @@ export interface LinuxUserConfiguration {
 export interface WindowsUserConfiguration {
   /**
    * @summary The login mode for the user.
-   * @description The default value for VirtualMachineConfiguration pools is interactive and for
-   * CloudServiceConfiguration pools is batch. Possible values include: 'batch', 'interactive'
+   * @description The default value for VirtualMachineConfiguration pools is batch and for
+   * CloudServiceConfiguration pools is interactive. Possible values include: 'batch',
+   * 'interactive'
    */
   loginMode?: string;
 }
