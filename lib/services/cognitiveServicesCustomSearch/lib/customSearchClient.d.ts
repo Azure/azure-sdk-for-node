@@ -12,15 +12,23 @@ import { ServiceClient, ServiceClientOptions, ServiceClientCredentials } from 'm
 import * as models from "./models";
 import * as operations from "./operations";
 
-export default class CustomSearchAPIClient extends ServiceClient {
+/**
+ * CustomSearchClientOptions for CustomSearchClient.
+ */
+declare interface CustomSearchClientOptions extends ServiceClientOptions {
+  /**
+   * @property {string} [endpoint] - Supported Cognitive Services endpoints (protocol and hostname, for example: "https://westus.api.cognitive.microsoft.com", "https://api.cognitive.microsoft.com").
+   */
+  endpoint?: string;
+}
+
+export default class CustomSearchClient extends ServiceClient {
   /**
    * @class
-   * Initializes a new instance of the CustomSearchAPIClient class.
+   * Initializes a new instance of the CustomSearchClient class.
    * @constructor
    *
    * @param {credentials} credentials - Subscription credentials which uniquely identify client subscription.
-   *
-   * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
    *
@@ -31,13 +39,17 @@ export default class CustomSearchAPIClient extends ServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
+   * @param {string} [options.endpoint] - Supported Cognitive Services endpoints (protocol and hostname, for example: "https://westus.api.cognitive.microsoft.com", "https://api.cognitive.microsoft.com").
+   *
    */
-  constructor(credentials: ServiceClientCredentials, baseUri?: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, options?: CustomSearchClientOptions);
 
   credentials: ServiceClientCredentials;
+
+  endpoint: string;
 
   // Operation groups
   customInstance: operations.CustomInstance;
 }
 
-export { CustomSearchAPIClient, models as CustomSearchAPIModels };
+export { CustomSearchClient, models as CustomSearchModels };

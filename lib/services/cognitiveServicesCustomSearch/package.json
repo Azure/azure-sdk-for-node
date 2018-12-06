@@ -1,8 +1,8 @@
 {
   "name": "azure-cognitiveservices-customsearch",
   "author": "Microsoft Corporation",
-  "description": "CustomSearchAPIClient Library with typescript type definitions for node",
-  "version": "1.3.0-preview",
+  "description": "CustomSearchClient Library with typescript type definitions for node",
+  "version": "2.0.0",
   "dependencies": {
     "ms-rest": "^2.3.3"
   },
@@ -11,8 +11,8 @@
     "azure"
   ],
   "license": "MIT",
-  "main": "./lib/customSearchAPIClient.js",
-  "types": "./lib/customSearchAPIClient.d.ts",
+  "main": "./lib/customSearchClient.js",
+  "types": "./lib/customSearchClient.d.ts",
   "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesCustomSearch",
   "repository": {
     "type": "git",
