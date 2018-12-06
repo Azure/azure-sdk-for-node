@@ -7054,7 +7054,7 @@ export interface ResourceHealthMetadata extends ProxyOnlyResource {
 }
 
 /**
- * Collection of certitificate orders.
+ * Collection of certificate orders.
 */
 export interface AppServiceCertificateOrderCollection extends Array<AppServiceCertificateOrder> {
   /**
@@ -7064,7 +7064,7 @@ export interface AppServiceCertificateOrderCollection extends Array<AppServiceCe
 }
 
 /**
- * Collection of certitificateorder certificates.
+ * Collection of certificate order certificates.
 */
 export interface AppServiceCertificateCollection extends Array<AppServiceCertificateResource> {
   /**
