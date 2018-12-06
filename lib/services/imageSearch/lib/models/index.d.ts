@@ -72,7 +72,7 @@ export interface Response extends Identifiable {
  * the number of websites where you can buy an apple pie. To indicate the
  * number of offers in your UX, include badging such as a shopping cart icon
  * that contains the count. When the user clicks on the icon, use
- * imageInisghtsToken to get the list of websites.
+ * imageInsightsToken to get the list of websites.
  * @member {number} [image.insightsMetadata.shoppingSourcesCount] The number of
  * websites that offer goods of the products seen in the image.
  * @member {number} [image.insightsMetadata.recipeSourcesCount] The number of
@@ -304,7 +304,7 @@ export interface MediaObject extends CreativeWork {
  * the image is of an apple pie, this object includes a count of the number of
  * websites where you can buy an apple pie. To indicate the number of offers in
  * your UX, include badging such as a shopping cart icon that contains the
- * count. When the user clicks on the icon, use imageInisghtsToken to get the
+ * count. When the user clicks on the icon, use imageInsightsToken to get the
  * list of websites.
  * @member {number} [insightsMetadata.shoppingSourcesCount] The number of
  * websites that offer goods of the products seen in the image.
@@ -366,7 +366,7 @@ export interface ImageObject extends MediaObject {
  * of the number of websites where you can buy an apple pie. To indicate the
  * number of offers in your UX, include badging such as a shopping cart icon
  * that contains the count. When the user clicks on the icon, use
- * imageInisghtsToken to get the list of websites.
+ * imageInsightsToken to get the list of websites.
  * @member {number} [thumbnail.insightsMetadata.shoppingSourcesCount] The
  * number of websites that offer goods of the products seen in the image.
  * @member {number} [thumbnail.insightsMetadata.recipeSourcesCount] The number
@@ -703,7 +703,7 @@ export interface NormalizedRectangle extends StructuredValue {
  * of the number of websites where you can buy an apple pie. To indicate the
  * number of offers in your UX, include badging such as a shopping cart icon
  * that contains the count. When the user clicks on the icon, use
- * imageInisghtsToken to get the list of websites.
+ * imageInsightsToken to get the list of websites.
  * @member {number} [entity.image.insightsMetadata.shoppingSourcesCount] The
  * number of websites that offer goods of the products seen in the image.
  * @member {number} [entity.image.insightsMetadata.recipeSourcesCount] The
@@ -868,7 +868,7 @@ export interface ImageTagsModule {
  * object includes a count of the number of websites where you can buy an apple
  * pie. To indicate the number of offers in your UX, include badging such as a
  * shopping cart icon that contains the count. When the user clicks on the
- * icon, use imageInisghtsToken to get the list of websites.
+ * icon, use imageInsightsToken to get the list of websites.
  * @member {number}
  * [bestRepresentativeQuery.thumbnail.insightsMetadata.shoppingSourcesCount]
  * The number of websites that offer goods of the products seen in the image.
@@ -1000,7 +1000,7 @@ export interface ImageInsights extends Response {
  * of the number of websites where you can buy an apple pie. To indicate the
  * number of offers in your UX, include badging such as a shopping cart icon
  * that contains the count. When the user clicks on the icon, use
- * imageInisghtsToken to get the list of websites.
+ * imageInsightsToken to get the list of websites.
  * @member {number} [query.thumbnail.insightsMetadata.shoppingSourcesCount] The
  * number of websites that offer goods of the products seen in the image.
  * @member {number} [query.thumbnail.insightsMetadata.recipeSourcesCount] The
@@ -1031,7 +1031,7 @@ export interface ImageInsights extends Response {
  * the number of websites where you can buy an apple pie. To indicate the
  * number of offers in your UX, include badging such as a shopping cart icon
  * that contains the count. When the user clicks on the icon, use
- * imageInisghtsToken to get the list of websites.
+ * imageInsightsToken to get the list of websites.
  * @member {number} [image.insightsMetadata.shoppingSourcesCount] The number of
  * websites that offer goods of the products seen in the image.
  * @member {number} [image.insightsMetadata.recipeSourcesCount] The number of

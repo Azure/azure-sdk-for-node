@@ -425,7 +425,7 @@ export interface StructuredValue extends Intangible {
  * @member {string} [addressCountry] The country/region where the street
  * address is located. This could be the two-letter ISO code. For example, US,
  * or the full name, United States.
- * @member {string} [countryIso] The two letter ISO code of this countr. For
+ * @member {string} [countryIso] The two letter ISO code of this country. For
  * example, US.
  * @member {string} [neighborhood] The neighborhood where the street address is
  * located. For example, Westlake.
@@ -469,7 +469,7 @@ export interface PostalAddress extends StructuredValue {
  * street address is located. This could be the two-letter ISO code. For
  * example, US, or the full name, United States.
  * @member {string} [address.countryIso] The two letter ISO code of this
- * countr. For example, US.
+ * country. For example, US.
  * @member {string} [address.neighborhood] The neighborhood where the street
  * address is located. For example, Westlake.
  * @member {string} [address.addressRegionAbbreviation] Region Abbreviation.
