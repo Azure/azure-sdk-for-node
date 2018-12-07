@@ -761,7 +761,7 @@ export interface SqlVirtualMachineGroups {
      * include SQL2016-WS2016, SQL2017-WS2016.
      *
      * @param {string} [parameters.sqlImageSku] SQL image sku. Possible values
-     * include: 'Developer', 'Express', 'Standard', 'Enterprise', 'Web'
+     * include: 'Developer', 'Enterprise'
      *
      * @param {object} [parameters.wsfcDomainProfile] Cluster Active Directory
      * domain profile.
@@ -826,7 +826,7 @@ export interface SqlVirtualMachineGroups {
      * include SQL2016-WS2016, SQL2017-WS2016.
      *
      * @param {string} [parameters.sqlImageSku] SQL image sku. Possible values
-     * include: 'Developer', 'Express', 'Standard', 'Enterprise', 'Web'
+     * include: 'Developer', 'Enterprise'
      *
      * @param {object} [parameters.wsfcDomainProfile] Cluster Active Directory
      * domain profile.
@@ -1161,7 +1161,7 @@ export interface SqlVirtualMachineGroups {
      * include SQL2016-WS2016, SQL2017-WS2016.
      *
      * @param {string} [parameters.sqlImageSku] SQL image sku. Possible values
-     * include: 'Developer', 'Express', 'Standard', 'Enterprise', 'Web'
+     * include: 'Developer', 'Enterprise'
      *
      * @param {object} [parameters.wsfcDomainProfile] Cluster Active Directory
      * domain profile.
@@ -1226,7 +1226,7 @@ export interface SqlVirtualMachineGroups {
      * include SQL2016-WS2016, SQL2017-WS2016.
      *
      * @param {string} [parameters.sqlImageSku] SQL image sku. Possible values
-     * include: 'Developer', 'Express', 'Standard', 'Enterprise', 'Web'
+     * include: 'Developer', 'Enterprise'
      *
      * @param {object} [parameters.wsfcDomainProfile] Cluster Active Directory
      * domain profile.
@@ -1792,6 +1792,10 @@ export interface SqlVirtualMachines {
      * Disk configuration to apply to SQL Server. Possible values include: 'NEW',
      * 'EXTEND', 'ADD'
      *
+     * @param {number}
+     * [parameters.serverConfigurationsManagementSettings.sqlStorageUpdateSettings.startingDeviceId]
+     * Device id of the first disk to be updated.
+     *
      * @param {object}
      * [parameters.serverConfigurationsManagementSettings.additionalFeaturesServerConfigurations]
      * Additional SQL feature settings.
@@ -1799,10 +1803,6 @@ export interface SqlVirtualMachines {
      * @param {boolean}
      * [parameters.serverConfigurationsManagementSettings.additionalFeaturesServerConfigurations.isRServicesEnabled]
      * Enable or disable R services (SQL 2016 onwards).
-     *
-     * @param {boolean}
-     * [parameters.serverConfigurationsManagementSettings.additionalFeaturesServerConfigurations.backupPermissionsForAzureBackupSvc]
-     * Enable or disable Azure Backup service.
      *
      * @param {string} parameters.location Resource location.
      *
@@ -1986,6 +1986,10 @@ export interface SqlVirtualMachines {
      * Disk configuration to apply to SQL Server. Possible values include: 'NEW',
      * 'EXTEND', 'ADD'
      *
+     * @param {number}
+     * [parameters.serverConfigurationsManagementSettings.sqlStorageUpdateSettings.startingDeviceId]
+     * Device id of the first disk to be updated.
+     *
      * @param {object}
      * [parameters.serverConfigurationsManagementSettings.additionalFeaturesServerConfigurations]
      * Additional SQL feature settings.
@@ -1993,10 +1997,6 @@ export interface SqlVirtualMachines {
      * @param {boolean}
      * [parameters.serverConfigurationsManagementSettings.additionalFeaturesServerConfigurations.isRServicesEnabled]
      * Enable or disable R services (SQL 2016 onwards).
-     *
-     * @param {boolean}
-     * [parameters.serverConfigurationsManagementSettings.additionalFeaturesServerConfigurations.backupPermissionsForAzureBackupSvc]
-     * Enable or disable Azure Backup service.
      *
      * @param {string} parameters.location Resource location.
      *
@@ -2444,6 +2444,10 @@ export interface SqlVirtualMachines {
      * Disk configuration to apply to SQL Server. Possible values include: 'NEW',
      * 'EXTEND', 'ADD'
      *
+     * @param {number}
+     * [parameters.serverConfigurationsManagementSettings.sqlStorageUpdateSettings.startingDeviceId]
+     * Device id of the first disk to be updated.
+     *
      * @param {object}
      * [parameters.serverConfigurationsManagementSettings.additionalFeaturesServerConfigurations]
      * Additional SQL feature settings.
@@ -2451,10 +2455,6 @@ export interface SqlVirtualMachines {
      * @param {boolean}
      * [parameters.serverConfigurationsManagementSettings.additionalFeaturesServerConfigurations.isRServicesEnabled]
      * Enable or disable R services (SQL 2016 onwards).
-     *
-     * @param {boolean}
-     * [parameters.serverConfigurationsManagementSettings.additionalFeaturesServerConfigurations.backupPermissionsForAzureBackupSvc]
-     * Enable or disable Azure Backup service.
      *
      * @param {string} parameters.location Resource location.
      *
@@ -2638,6 +2638,10 @@ export interface SqlVirtualMachines {
      * Disk configuration to apply to SQL Server. Possible values include: 'NEW',
      * 'EXTEND', 'ADD'
      *
+     * @param {number}
+     * [parameters.serverConfigurationsManagementSettings.sqlStorageUpdateSettings.startingDeviceId]
+     * Device id of the first disk to be updated.
+     *
      * @param {object}
      * [parameters.serverConfigurationsManagementSettings.additionalFeaturesServerConfigurations]
      * Additional SQL feature settings.
@@ -2645,10 +2649,6 @@ export interface SqlVirtualMachines {
      * @param {boolean}
      * [parameters.serverConfigurationsManagementSettings.additionalFeaturesServerConfigurations.isRServicesEnabled]
      * Enable or disable R services (SQL 2016 onwards).
-     *
-     * @param {boolean}
-     * [parameters.serverConfigurationsManagementSettings.additionalFeaturesServerConfigurations.backupPermissionsForAzureBackupSvc]
-     * Enable or disable Azure Backup service.
      *
      * @param {string} parameters.location Resource location.
      *
