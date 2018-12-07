@@ -17,7 +17,7 @@ import * as models from '../models';
  * @class
  * Images
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the VisualSearchAPIClient.
+ * instance of the VisualSearchClient.
  */
 export interface Images {
 
