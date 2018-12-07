@@ -2304,7 +2304,7 @@ export interface IntegrationRuntimeObjectMetadata {
 
 
     /**
-     * Refresh a ssis integration runtime object metadata.
+     * Refresh a SSIS integration runtime object metadata.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -2326,7 +2326,7 @@ export interface IntegrationRuntimeObjectMetadata {
     refreshWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Refresh a ssis integration runtime object metadata.
+     * Refresh a SSIS integration runtime object metadata.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -2366,7 +2366,7 @@ export interface IntegrationRuntimeObjectMetadata {
 
 
     /**
-     * Get a ssis integration runtime object metadata by specified path. The return
+     * Get a SSIS integration runtime object metadata by specified path. The return
      * is pageable metadata list.
      *
      * @param {string} resourceGroupName The resource group name.
@@ -2378,9 +2378,9 @@ export interface IntegrationRuntimeObjectMetadata {
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.getMetadataRequest] The parameters for getting a
-     * ssis object metadata.
+     * SSIS object metadata.
      *
-     * @param {string} [options.getMetadataRequest.metadataPath] Metadata path
+     * @param {string} [options.getMetadataRequest.metadataPath] Metadata path.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2394,7 +2394,7 @@ export interface IntegrationRuntimeObjectMetadata {
     getWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { getMetadataRequest? : models.GetSsisObjectMetadataRequest, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SsisObjectMetadataListResponse>>;
 
     /**
-     * Get a ssis integration runtime object metadata by specified path. The return
+     * Get a SSIS integration runtime object metadata by specified path. The return
      * is pageable metadata list.
      *
      * @param {string} resourceGroupName The resource group name.
@@ -2406,9 +2406,9 @@ export interface IntegrationRuntimeObjectMetadata {
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.getMetadataRequest] The parameters for getting a
-     * ssis object metadata.
+     * SSIS object metadata.
      *
-     * @param {string} [options.getMetadataRequest.metadataPath] Metadata path
+     * @param {string} [options.getMetadataRequest.metadataPath] Metadata path.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2442,7 +2442,7 @@ export interface IntegrationRuntimeObjectMetadata {
 
 
     /**
-     * Refresh a ssis integration runtime object metadata.
+     * Refresh a SSIS integration runtime object metadata.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -2464,7 +2464,7 @@ export interface IntegrationRuntimeObjectMetadata {
     beginRefreshWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Refresh a ssis integration runtime object metadata.
+     * Refresh a SSIS integration runtime object metadata.
      *
      * @param {string} resourceGroupName The resource group name.
      *

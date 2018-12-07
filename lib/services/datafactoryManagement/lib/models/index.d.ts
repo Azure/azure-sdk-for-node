@@ -1307,11 +1307,11 @@ export interface Operation {
 }
 
 /**
- * The request payload of get ssis object metadata.
+ * The request payload of get SSIS object metadata.
  */
 export interface GetSsisObjectMetadataRequest {
   /**
-   * Metadata path
+   * Metadata path.
    */
   metadataPath?: string;
 }
@@ -4030,6 +4030,10 @@ export interface HDInsightLinkedService extends LinkedService {
    * integration runtime credential manager. Type: string (or Expression with resultType string).
    */
   encryptedCredential?: any;
+  /**
+   * Specify if the HDInsight is created with ESP (Enterprise Security Package). Type: Boolean.
+   */
+  isEspEnabled?: any;
 }
 
 /**
@@ -6113,14 +6117,46 @@ export interface LookupActivity extends ExecutionActivity {
 }
 
 /**
+ * Log storage settings.
+ */
+export interface LogStorageSettings {
+  /**
+   * Log storage linked service reference.
+   */
+  linkedServiceName: LinkedServiceReference;
+  /**
+   * The path to storage for storing detailed logs of activity execution. Type: string (or
+   * Expression with resultType string).
+   */
+  path?: any;
+  /**
+   * Describes unknown properties. The value of an unknown property can be of "any" type.
+   */
+  [additionalPropertyName: string]: any;
+}
+
+/**
  * Delete activity.
  */
 export interface DeleteActivity extends ExecutionActivity {
   /**
-   * If true, files under the folder path will be deleted recursively. Default is true. Type:
-   * boolean (or Expression with resultType boolean).
+   * If true, files or sub-folders under current folder path will be deleted recursively. Default
+   * is false. Type: boolean (or Expression with resultType boolean).
    */
   recursive?: any;
+  /**
+   * The max concurrent connections to connect data source at the same time.
+   */
+  maxConcurrentConnections?: number;
+  /**
+   * Whether to record detailed logs of delete-activity execution. Default value is false. Type:
+   * boolean (or Expression with resultType boolean).
+   */
+  enableLogging?: any;
+  /**
+   * Log storage settings customer need to provide when enableLogging is true.
+   */
+  logStorageSettings?: LogStorageSettings;
   /**
    * Delete activity dataset reference.
    */
@@ -6457,6 +6493,15 @@ export interface HDInsightHiveActivity extends ExecutionActivity {
    * Allows user to specify defines for Hive job request.
    */
   defines?: { [propertyName: string]: any };
+  /**
+   * User specified arguments under hivevar namespace.
+   */
+  variables?: any[];
+  /**
+   * Query timeout value (in minutes).  Effective when the HDInsight culster is with ESP
+   * (Enterprise Security Package)
+   */
+  queryTimeout?: number;
 }
 
 /**
@@ -7480,7 +7525,7 @@ export interface IntegrationRuntimeNodeIpAddress {
 }
 
 /**
- * Ssis object metadata.
+ * SSIS object metadata.
 */
 export interface SsisObjectMetadata {
   /**
@@ -7502,11 +7547,11 @@ export interface SsisObjectMetadata {
 }
 
 /**
- * A list of Ssis object metadata.
+ * A list of SSIS object metadata.
 */
 export interface SsisObjectMetadataListResponse {
   /**
-   * List of Ssis object metadata
+   * List of SSIS object metadata.
   */
   value?: SsisObjectMetadata[];
   /**
