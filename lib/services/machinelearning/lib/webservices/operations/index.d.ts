@@ -226,7 +226,7 @@ export interface WebServices {
      * ExampleRequest.
      *
      * @param {object} [createOrUpdatePayload.properties.payloadsLocation] The URI
-     * of the payload blob. This paramater contains a value only if the
+     * of the payload blob. This parameter contains a value only if the
      * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
      *
      * @param {string} createOrUpdatePayload.properties.payloadsLocation.uri The
@@ -404,7 +404,7 @@ export interface WebServices {
      * ExampleRequest.
      *
      * @param {object} [createOrUpdatePayload.properties.payloadsLocation] The URI
-     * of the payload blob. This paramater contains a value only if the
+     * of the payload blob. This parameter contains a value only if the
      * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
      *
      * @param {string} createOrUpdatePayload.properties.payloadsLocation.uri The
@@ -671,7 +671,7 @@ export interface WebServices {
      * ExampleRequest.
      *
      * @param {object} [patchPayload.properties.payloadsLocation] The URI of the
-     * payload blob. This paramater contains a value only if the
+     * payload blob. This parameter contains a value only if the
      * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
      *
      * @param {string} patchPayload.properties.payloadsLocation.uri The URI from
@@ -845,7 +845,7 @@ export interface WebServices {
      * ExampleRequest.
      *
      * @param {object} [patchPayload.properties.payloadsLocation] The URI of the
-     * payload blob. This paramater contains a value only if the
+     * payload blob. This parameter contains a value only if the
      * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
      *
      * @param {string} patchPayload.properties.payloadsLocation.uri The URI from
@@ -1357,7 +1357,7 @@ export interface WebServices {
      * ExampleRequest.
      *
      * @param {object} [createOrUpdatePayload.properties.payloadsLocation] The URI
-     * of the payload blob. This paramater contains a value only if the
+     * of the payload blob. This parameter contains a value only if the
      * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
      *
      * @param {string} createOrUpdatePayload.properties.payloadsLocation.uri The
@@ -1535,7 +1535,7 @@ export interface WebServices {
      * ExampleRequest.
      *
      * @param {object} [createOrUpdatePayload.properties.payloadsLocation] The URI
-     * of the payload blob. This paramater contains a value only if the
+     * of the payload blob. This parameter contains a value only if the
      * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
      *
      * @param {string} createOrUpdatePayload.properties.payloadsLocation.uri The
@@ -1729,7 +1729,7 @@ export interface WebServices {
      * ExampleRequest.
      *
      * @param {object} [patchPayload.properties.payloadsLocation] The URI of the
-     * payload blob. This paramater contains a value only if the
+     * payload blob. This parameter contains a value only if the
      * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
      *
      * @param {string} patchPayload.properties.payloadsLocation.uri The URI from
@@ -1903,7 +1903,7 @@ export interface WebServices {
      * ExampleRequest.
      *
      * @param {object} [patchPayload.properties.payloadsLocation] The URI of the
-     * payload blob. This paramater contains a value only if the
+     * payload blob. This parameter contains a value only if the
      * payloadsInBlobStorage parameter is set to true. Otherwise is set to null.
      *
      * @param {string} patchPayload.properties.payloadsLocation.uri The URI from
