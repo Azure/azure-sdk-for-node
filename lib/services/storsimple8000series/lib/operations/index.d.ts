@@ -22,7 +22,7 @@ export interface Operations {
 
 
     /**
-     * Lists all of the available REST API operations of the Microsoft.Storsimple
+     * Lists all of the available REST API operations of the Microsoft.StorSimple
      * provider
      *
      * @param {object} [options] Optional Parameters.
@@ -39,7 +39,7 @@ export interface Operations {
     listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableProviderOperationList>>;
 
     /**
-     * Lists all of the available REST API operations of the Microsoft.Storsimple
+     * Lists all of the available REST API operations of the Microsoft.StorSimple
      * provider
      *
      * @param {object} [options] Optional Parameters.
@@ -76,7 +76,7 @@ export interface Operations {
 
 
     /**
-     * Lists all of the available REST API operations of the Microsoft.Storsimple
+     * Lists all of the available REST API operations of the Microsoft.StorSimple
      * provider
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -96,7 +96,7 @@ export interface Operations {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableProviderOperationList>>;
 
     /**
-     * Lists all of the available REST API operations of the Microsoft.Storsimple
+     * Lists all of the available REST API operations of the Microsoft.StorSimple
      * provider
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
