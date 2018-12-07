@@ -42,7 +42,7 @@ export interface LoadBalancerConfiguration {
    */
   publicIpAddressResourceId?: string;
   /**
-   * Subnet used to include private IP.
+   * Resource id of the load balancer.
    */
   loadBalancerResourceId?: string;
   /**
@@ -218,8 +218,7 @@ export interface SqlVirtualMachineGroup extends TrackedResource {
    */
   sqlImageOffer?: string;
   /**
-   * SQL image sku. Possible values include: 'Developer', 'Express', 'Standard', 'Enterprise',
-   * 'Web'
+   * SQL image sku. Possible values include: 'Developer', 'Enterprise'
    */
   sqlImageSku?: string;
   /**
@@ -437,6 +436,10 @@ export interface SqlStorageUpdateSettings {
    * Disk configuration to apply to SQL Server. Possible values include: 'NEW', 'EXTEND', 'ADD'
    */
   diskConfigurationType?: string;
+  /**
+   * Device id of the first disk to be updated.
+   */
+  startingDeviceId?: number;
 }
 
 /**
@@ -447,10 +450,6 @@ export interface AdditionalFeaturesServerConfigurations {
    * Enable or disable R services (SQL 2016 onwards).
    */
   isRServicesEnabled?: boolean;
-  /**
-   * Enable or disable Azure Backup service.
-   */
-  backupPermissionsForAzureBackupSvc?: boolean;
 }
 
 /**
