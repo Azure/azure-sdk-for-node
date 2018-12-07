@@ -11,15 +11,23 @@
 import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
 import * as models from "./models";
 
-export default class SpellCheckAPIClient extends ServiceClient {
+/**
+ * SpellCheckClientOptions for SpellCheckClient.
+ */
+declare interface SpellCheckClientOptions extends ServiceClientOptions {
+  /**
+   * @property {string} [endpoint] - Supported Cognitive Services endpoints (protocol and hostname, for example: "https://westus.api.cognitive.microsoft.com", "https://api.cognitive.microsoft.com").
+   */
+  endpoint?: string;
+}
+
+export default class SpellCheckClient extends ServiceClient {
   /**
    * @class
-   * Initializes a new instance of the SpellCheckAPIClient class.
+   * Initializes a new instance of the SpellCheckClient class.
    * @constructor
    *
    * @param {credentials} credentials - Subscription credentials which uniquely identify client subscription.
-   *
-   * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
    *
@@ -30,10 +38,14 @@ export default class SpellCheckAPIClient extends ServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
+   * @param {string} [options.endpoint] - Supported Cognitive Services endpoints (protocol and hostname, for example: "https://westus.api.cognitive.microsoft.com", "https://api.cognitive.microsoft.com").
+   *
    */
-  constructor(credentials: ServiceClientCredentials, baseUri?: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, options?: SpellCheckClientOptions);
 
   credentials: ServiceClientCredentials;
+
+  endpoint: string;
 
 
   /**
@@ -499,4 +511,4 @@ export default class SpellCheckAPIClient extends ServiceClient {
   spellChecker(text: string, options: { acceptLanguage? : string, pragma? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, actionType? : string, appName? : string, countryCode? : string, clientMachineName? : string, docId? : string, market? : string, sessionId? : string, setLang? : string, userId? : string, mode? : string, preContextText? : string, postContextText? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SpellCheck>): void;
 }
 
-export { SpellCheckAPIClient, models as SpellCheckAPIModels };
+export { SpellCheckClient, models as SpellCheckModels };
