@@ -1855,7 +1855,7 @@ export interface Marketplaces {
 
 
     /**
-     * Lists the marketplaces for a scope by billing period and subscripotionId.
+     * Lists the marketplaces for a scope by billing period and subscriptionId.
      * Marketplaces are available via this API only for May 1, 2014 or later.
      *
      * @param {string} billingPeriodName Billing Period Name.
@@ -1888,7 +1888,7 @@ export interface Marketplaces {
     listByBillingPeriodWithHttpOperationResponse(billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
 
     /**
-     * Lists the marketplaces for a scope by billing period and subscripotionId.
+     * Lists the marketplaces for a scope by billing period and subscriptionId.
      * Marketplaces are available via this API only for May 1, 2014 or later.
      *
      * @param {string} billingPeriodName Billing Period Name.
@@ -2719,7 +2719,7 @@ export interface Marketplaces {
 
 
     /**
-     * Lists the marketplaces for a scope by billing period and subscripotionId.
+     * Lists the marketplaces for a scope by billing period and subscriptionId.
      * Marketplaces are available via this API only for May 1, 2014 or later.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -2739,7 +2739,7 @@ export interface Marketplaces {
     listByBillingPeriodNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
 
     /**
-     * Lists the marketplaces for a scope by billing period and subscripotionId.
+     * Lists the marketplaces for a scope by billing period and subscriptionId.
      * Marketplaces are available via this API only for May 1, 2014 or later.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -3933,7 +3933,7 @@ export interface ReservationRecommendations {
 
 
     /**
-     * List of recomendations for purchasing reserved instances.
+     * List of recommendations for purchasing reserved instances.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3953,7 +3953,7 @@ export interface ReservationRecommendations {
     listWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationRecommendationsListResult>>;
 
     /**
-     * List of recomendations for purchasing reserved instances.
+     * List of recommendations for purchasing reserved instances.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3993,7 +3993,7 @@ export interface ReservationRecommendations {
 
 
     /**
-     * List of recomendations for purchasing reserved instances.
+     * List of recommendations for purchasing reserved instances.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -4012,7 +4012,7 @@ export interface ReservationRecommendations {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReservationRecommendationsListResult>>;
 
     /**
-     * List of recomendations for purchasing reserved instances.
+     * List of recommendations for purchasing reserved instances.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -4244,7 +4244,7 @@ export interface Budgets {
      * The start date must be first of the month and should be less than the end
      * date. Budget start date must be on or after June 1, 2017. Future start date
      * should not be more than three months. Past start date should  be selected
-     * within the timegrain preiod. There are no restrictions on the end date.
+     * within the timegrain period. There are no restrictions on the end date.
      *
      * @param {date} parameters.timePeriod.startDate The start date for the budget.
      *
@@ -4269,7 +4269,7 @@ export interface Budgets {
      * associated with the budget. Budget can have up to five notifications.
      *
      * @param {string} [parameters.eTag] eTag of the resource. To handle concurrent
-     * update scenarion, this field will be used to determine whether the user is
+     * update scenario, this field will be used to determine whether the user is
      * updating the latest version or not.
      *
      * @param {object} [options] Optional Parameters.
@@ -4309,7 +4309,7 @@ export interface Budgets {
      * The start date must be first of the month and should be less than the end
      * date. Budget start date must be on or after June 1, 2017. Future start date
      * should not be more than three months. Past start date should  be selected
-     * within the timegrain preiod. There are no restrictions on the end date.
+     * within the timegrain period. There are no restrictions on the end date.
      *
      * @param {date} parameters.timePeriod.startDate The start date for the budget.
      *
@@ -4334,7 +4334,7 @@ export interface Budgets {
      * associated with the budget. Budget can have up to five notifications.
      *
      * @param {string} [parameters.eTag] eTag of the resource. To handle concurrent
-     * update scenarion, this field will be used to determine whether the user is
+     * update scenario, this field will be used to determine whether the user is
      * updating the latest version or not.
      *
      * @param {object} [options] Optional Parameters.
@@ -4508,7 +4508,7 @@ export interface Budgets {
      * The start date must be first of the month and should be less than the end
      * date. Budget start date must be on or after June 1, 2017. Future start date
      * should not be more than three months. Past start date should  be selected
-     * within the timegrain preiod. There are no restrictions on the end date.
+     * within the timegrain period. There are no restrictions on the end date.
      *
      * @param {date} parameters.timePeriod.startDate The start date for the budget.
      *
@@ -4533,7 +4533,7 @@ export interface Budgets {
      * associated with the budget. Budget can have up to five notifications.
      *
      * @param {string} [parameters.eTag] eTag of the resource. To handle concurrent
-     * update scenarion, this field will be used to determine whether the user is
+     * update scenario, this field will be used to determine whether the user is
      * updating the latest version or not.
      *
      * @param {object} [options] Optional Parameters.
@@ -4575,7 +4575,7 @@ export interface Budgets {
      * The start date must be first of the month and should be less than the end
      * date. Budget start date must be on or after June 1, 2017. Future start date
      * should not be more than three months. Past start date should  be selected
-     * within the timegrain preiod. There are no restrictions on the end date.
+     * within the timegrain period. There are no restrictions on the end date.
      *
      * @param {date} parameters.timePeriod.startDate The start date for the budget.
      *
@@ -4600,7 +4600,7 @@ export interface Budgets {
      * associated with the budget. Budget can have up to five notifications.
      *
      * @param {string} [parameters.eTag] eTag of the resource. To handle concurrent
-     * update scenarion, this field will be used to determine whether the user is
+     * update scenario, this field will be used to determine whether the user is
      * updating the latest version or not.
      *
      * @param {object} [options] Optional Parameters.
