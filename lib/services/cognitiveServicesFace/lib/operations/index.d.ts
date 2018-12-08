@@ -2021,7 +2021,7 @@ export interface FaceListOperations {
 
 
     /**
-     * Delete an existing face from a face list (given by a persisitedFaceId and a
+     * Delete an existing face from a face list (given by a persistedFaceId and a
      * faceListId). Persisted image related to the face will also be deleted.
      *
      * @param {string} faceListId Id referencing a particular face list.
@@ -2043,7 +2043,7 @@ export interface FaceListOperations {
     deleteFaceWithHttpOperationResponse(faceListId: string, persistedFaceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Delete an existing face from a face list (given by a persisitedFaceId and a
+     * Delete an existing face from a face list (given by a persistedFaceId and a
      * faceListId). Persisted image related to the face will also be deleted.
      *
      * @param {string} faceListId Id referencing a particular face list.
@@ -3825,7 +3825,7 @@ export interface LargeFaceListOperations {
 
 
     /**
-     * Delete an existing face from a large face list (given by a persisitedFaceId
+     * Delete an existing face from a large face list (given by a persistedFaceId
      * and a largeFaceListId). Persisted image related to the face will also be
      * deleted.
      *
@@ -3848,7 +3848,7 @@ export interface LargeFaceListOperations {
     deleteFaceWithHttpOperationResponse(largeFaceListId: string, persistedFaceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Delete an existing face from a large face list (given by a persisitedFaceId
+     * Delete an existing face from a large face list (given by a persistedFaceId
      * and a largeFaceListId). Persisted image related to the face will also be
      * deleted.
      *
