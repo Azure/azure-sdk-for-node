@@ -6501,7 +6501,7 @@ export interface ChaosContext {
  * At most 100 node type names can be included in this list, to increase this
  * number, a config upgrade is required for
  * MaxNumberOfNodeTypesInChaosEntityFilter configuration.
- * @member {array} [applicationInclusionList] A list of application URI's to
+ * @member {array} [applicationInclusionList] A list of application URIs to
  * include in Chaos faults.
  * All replicas belonging to services of these applications are amenable to
  * replica faults (restart replica, remove replica, move primary, and move
@@ -6650,7 +6650,7 @@ export interface ChaosTargetFilter {
  * number, a config upgrade is required for
  * MaxNumberOfNodeTypesInChaosEntityFilter configuration.
  * @member {array} [chaosTargetFilter.applicationInclusionList] A list of
- * application URI's to include in Chaos faults.
+ * application URIs to include in Chaos faults.
  * All replicas belonging to services of these applications are amenable to
  * replica faults (restart replica, remove replica, move primary, and move
  * secondary) by Chaos.
@@ -6810,7 +6810,7 @@ export interface ChaosParameters {
  * number, a config upgrade is required for
  * MaxNumberOfNodeTypesInChaosEntityFilter configuration.
  * @member {array} [chaosParameters.chaosTargetFilter.applicationInclusionList]
- * A list of application URI's to include in Chaos faults.
+ * A list of application URIs to include in Chaos faults.
  * All replicas belonging to services of these applications are amenable to
  * replica faults (restart replica, remove replica, move primary, and move
  * secondary) by Chaos.
@@ -6965,7 +6965,7 @@ export interface Chaos {
  * number, a config upgrade is required for
  * MaxNumberOfNodeTypesInChaosEntityFilter configuration.
  * @member {array} [value.chaosTargetFilter.applicationInclusionList] A list of
- * application URI's to include in Chaos faults.
+ * application URIs to include in Chaos faults.
  * All replicas belonging to services of these applications are amenable to
  * replica faults (restart replica, remove replica, move primary, and move
  * secondary) by Chaos.
@@ -7335,7 +7335,7 @@ export interface ExecutingFaultsChaosEvent extends ChaosEvent {
  * number, a config upgrade is required for
  * MaxNumberOfNodeTypesInChaosEntityFilter configuration.
  * @member {array} [chaosParameters.chaosTargetFilter.applicationInclusionList]
- * A list of application URI's to include in Chaos faults.
+ * A list of application URIs to include in Chaos faults.
  * All replicas belonging to services of these applications are amenable to
  * replica faults (restart replica, remove replica, move primary, and move
  * secondary) by Chaos.
