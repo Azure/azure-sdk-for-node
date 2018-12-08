@@ -1317,6 +1317,28 @@ export interface GetSsisObjectMetadataRequest {
 }
 
 /**
+ * The status of the operation.
+ */
+export interface SsisObjectMetadataStatusResponse {
+  /**
+   * The status of the operation.
+   */
+  status?: string;
+  /**
+   * The operation name.
+   */
+  name?: string;
+  /**
+   * The operation properties.
+   */
+  properties?: string;
+  /**
+   * The operation error message.
+   */
+  error?: string;
+}
+
+/**
  * Referenced dependency.
  */
 export interface DependencyReference {

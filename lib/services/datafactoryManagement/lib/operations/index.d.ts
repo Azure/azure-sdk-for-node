@@ -2319,11 +2319,11 @@ export interface IntegrationRuntimeObjectMetadata {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SsisObjectMetadataStatusResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    refreshWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    refreshWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SsisObjectMetadataStatusResponse>>;
 
     /**
      * Refresh a SSIS integration runtime object metadata.
@@ -2346,7 +2346,7 @@ export interface IntegrationRuntimeObjectMetadata {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {SsisObjectMetadataStatusResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2354,15 +2354,17 @@ export interface IntegrationRuntimeObjectMetadata {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {SsisObjectMetadataStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SsisObjectMetadataStatusResponse} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    refresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    refresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, callback: ServiceCallback<void>): void;
-    refresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    refresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SsisObjectMetadataStatusResponse>;
+    refresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, callback: ServiceCallback<models.SsisObjectMetadataStatusResponse>): void;
+    refresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SsisObjectMetadataStatusResponse>): void;
 
 
     /**
@@ -2457,11 +2459,11 @@ export interface IntegrationRuntimeObjectMetadata {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SsisObjectMetadataStatusResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRefreshWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginRefreshWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SsisObjectMetadataStatusResponse>>;
 
     /**
      * Refresh a SSIS integration runtime object metadata.
@@ -2484,7 +2486,7 @@ export interface IntegrationRuntimeObjectMetadata {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {SsisObjectMetadataStatusResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2492,15 +2494,17 @@ export interface IntegrationRuntimeObjectMetadata {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {SsisObjectMetadataStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SsisObjectMetadataStatusResponse} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRefresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginRefresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, callback: ServiceCallback<void>): void;
-    beginRefresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginRefresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SsisObjectMetadataStatusResponse>;
+    beginRefresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, callback: ServiceCallback<models.SsisObjectMetadataStatusResponse>): void;
+    beginRefresh(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SsisObjectMetadataStatusResponse>): void;
 }
 
 /**
