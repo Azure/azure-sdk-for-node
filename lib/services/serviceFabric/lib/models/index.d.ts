@@ -13704,7 +13704,7 @@ export interface ContainerInstanceView {
  * References the list of sinks in DiagnosticsDescription.
  * @member {array} [reliableCollectionsRefs] A list of ReliableCollection
  * resources used by this particular code package. Please refer to
- * ReliablecollectionsRef for more details.
+ * ReliableCollectionsRef for more details.
  * @member {object} [instanceView] Runtime information of a container instance.
  * @member {number} [instanceView.restartCount] The number of times the
  * container has been restarted.
