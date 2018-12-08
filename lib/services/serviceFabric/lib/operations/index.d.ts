@@ -539,7 +539,7 @@ export interface MeshSecretValue {
 
 
     /**
-     * @summary List names of all values of the the specified secret resource.
+     * @summary List names of all values of the specified secret resource.
      *
      * Gets information about all secret value resources of the specified secret
      * resource. The information includes the names of the secret value resources,
@@ -561,7 +561,7 @@ export interface MeshSecretValue {
     listWithHttpOperationResponse(secretResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedSecretValueResourceDescriptionList>>;
 
     /**
-     * @summary List names of all values of the the specified secret resource.
+     * @summary List names of all values of the specified secret resource.
      *
      * Gets information about all secret value resources of the specified secret
      * resource. The information includes the names of the secret value resources,
