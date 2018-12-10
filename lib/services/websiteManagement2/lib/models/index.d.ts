@@ -2179,7 +2179,7 @@ export interface Domain extends Resource {
 }
 
 /**
- * Domain availablility check result.
+ * Domain availability check result.
 */
 export interface DomainAvailablilityCheckResult {
   /**
