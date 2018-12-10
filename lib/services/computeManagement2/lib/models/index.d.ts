@@ -5089,6 +5089,8 @@ export interface VirtualMachineScaleSetVMInstanceView {
  * the scale set.
  * @member {boolean} [latestModelApplied] Specifies whether the latest model
  * has been applied to the virtual machine.
+ * @member {boolean} [protectFromScaleIn] Specifies whether the virtual machine
+ * instance shouldn't be considered for deletion during a scale-in operation
  * @member {string} [vmId] Azure VM unique ID.
  * @member {object} [instanceView] The virtual machine instance view.
  * @member {number} [instanceView.platformUpdateDomain] The Update Domain
@@ -5480,6 +5482,7 @@ export interface VirtualMachineScaleSetVM extends Resource {
   readonly instanceId?: string;
   readonly sku?: Sku;
   readonly latestModelApplied?: boolean;
+  protectFromScaleIn?: boolean;
   readonly vmId?: string;
   readonly instanceView?: VirtualMachineScaleSetVMInstanceView;
   hardwareProfile?: HardwareProfile;
