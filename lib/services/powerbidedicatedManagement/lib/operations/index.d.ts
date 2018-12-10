@@ -734,7 +734,7 @@ export interface Capacities {
      *
      * @param {string} [capacityParameters.name] Name for checking availability.
      *
-     * @param {string} [capacityParameters.type] The resource type of powerbi
+     * @param {string} [capacityParameters.type] The resource type of PowerBI
      * dedicated.
      *
      * @param {object} [options] Optional Parameters.
@@ -760,7 +760,7 @@ export interface Capacities {
      *
      * @param {string} [capacityParameters.name] Name for checking availability.
      *
-     * @param {string} [capacityParameters.type] The resource type of powerbi
+     * @param {string} [capacityParameters.type] The resource type of PowerBI
      * dedicated.
      *
      * @param {object} [options] Optional Parameters.
