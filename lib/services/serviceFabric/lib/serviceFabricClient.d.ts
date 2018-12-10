@@ -18040,7 +18040,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * MaxNumberOfNodeTypesInChaosEntityFilter configuration.
    *
    * @param {array} [chaosParameters.chaosTargetFilter.applicationInclusionList]
-   * A list of application URI's to include in Chaos faults.
+   * A list of application URIs to include in Chaos faults.
    * All replicas belonging to services of these applications are amenable to
    * replica faults (restart replica, remove replica, move primary, and move
    * secondary) by Chaos.
@@ -18227,7 +18227,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * MaxNumberOfNodeTypesInChaosEntityFilter configuration.
    *
    * @param {array} [chaosParameters.chaosTargetFilter.applicationInclusionList]
-   * A list of application URI's to include in Chaos faults.
+   * A list of application URIs to include in Chaos faults.
    * All replicas belonging to services of these applications are amenable to
    * replica faults (restart replica, remove replica, move primary, and move
    * secondary) by Chaos.
