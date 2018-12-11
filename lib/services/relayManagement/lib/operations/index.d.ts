@@ -681,7 +681,7 @@ export interface Namespaces {
      *
      * @param {object} parameters The authorization rule parameters.
      *
-     * @param {array} [parameters.rights] The rights associated with the rule.
+     * @param {array} parameters.rights The rights associated with the rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -708,7 +708,7 @@ export interface Namespaces {
      *
      * @param {object} parameters The authorization rule parameters.
      *
-     * @param {array} [parameters.rights] The rights associated with the rule.
+     * @param {array} parameters.rights The rights associated with the rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1430,7 +1430,7 @@ export interface HybridConnections {
      * @param {boolean} [parameters.requiresClientAuthorization] Returns true if
      * client authorization is needed for this hybrid connection; otherwise, false.
      *
-     * @param {string} [parameters.userMetadata] The usermetadata is a placeholder
+     * @param {string} [parameters.userMetadata] The userMetadata is a placeholder
      * to store user-defined string data for the hybrid connection endpoint. For
      * example, it can be used to store descriptive data, such as a list of teams
      * and their contact information. Also, user-defined configuration settings can
@@ -1466,7 +1466,7 @@ export interface HybridConnections {
      * @param {boolean} [parameters.requiresClientAuthorization] Returns true if
      * client authorization is needed for this hybrid connection; otherwise, false.
      *
-     * @param {string} [parameters.userMetadata] The usermetadata is a placeholder
+     * @param {string} [parameters.userMetadata] The userMetadata is a placeholder
      * to store user-defined string data for the hybrid connection endpoint. For
      * example, it can be used to store descriptive data, such as a list of teams
      * and their contact information. Also, user-defined configuration settings can
@@ -1713,7 +1713,7 @@ export interface HybridConnections {
      *
      * @param {object} parameters The authorization rule parameters.
      *
-     * @param {array} [parameters.rights] The rights associated with the rule.
+     * @param {array} parameters.rights The rights associated with the rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1742,7 +1742,7 @@ export interface HybridConnections {
      *
      * @param {object} parameters The authorization rule parameters.
      *
-     * @param {array} [parameters.rights] The rights associated with the rule.
+     * @param {array} parameters.rights The rights associated with the rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2278,7 +2278,7 @@ export interface WCFRelays {
      * @param {boolean} [parameters.requiresTransportSecurity] Returns true if
      * transport security is needed for this relay; otherwise, false.
      *
-     * @param {string} [parameters.userMetadata] The usermetadata is a placeholder
+     * @param {string} [parameters.userMetadata] The userMetadata is a placeholder
      * to store user-defined string data for the WCF Relay endpoint. For example,
      * it can be used to store descriptive data, such as list of teams and their
      * contact information. Also, user-defined configuration settings can be
@@ -2318,7 +2318,7 @@ export interface WCFRelays {
      * @param {boolean} [parameters.requiresTransportSecurity] Returns true if
      * transport security is needed for this relay; otherwise, false.
      *
-     * @param {string} [parameters.userMetadata] The usermetadata is a placeholder
+     * @param {string} [parameters.userMetadata] The userMetadata is a placeholder
      * to store user-defined string data for the WCF Relay endpoint. For example,
      * it can be used to store descriptive data, such as list of teams and their
      * contact information. Also, user-defined configuration settings can be
@@ -2565,7 +2565,7 @@ export interface WCFRelays {
      *
      * @param {object} parameters The authorization rule parameters.
      *
-     * @param {array} [parameters.rights] The rights associated with the rule.
+     * @param {array} parameters.rights The rights associated with the rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2594,7 +2594,7 @@ export interface WCFRelays {
      *
      * @param {object} parameters The authorization rule parameters.
      *
-     * @param {array} [parameters.rights] The rights associated with the rule.
+     * @param {array} parameters.rights The rights associated with the rule.
      *
      * @param {object} [options] Optional Parameters.
      *
