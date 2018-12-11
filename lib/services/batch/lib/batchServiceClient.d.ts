@@ -21,7 +21,7 @@ export default class BatchServiceClient extends AzureServiceClient {
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} [baseUri] - The base URI of the service.
+   * @param {string} batchUrl - The base URL for all Azure Batch service requests.
    *
    * @param {object} [options] - The parameter options
    *
@@ -39,11 +39,13 @@ export default class BatchServiceClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, batchUrl: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   apiVersion: string;
+
+  batchUrl: string;
 
   acceptLanguage: string;
 

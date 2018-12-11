@@ -34,10 +34,6 @@ export { CloudError } from 'ms-rest-azure';
  * pool (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {number} totalCoreHours The total core hours used in the pool during
  * this aggregation interval.
- * @member {number} dataIngressGiB The cross data center network ingress to the
- * pool during this interval, in GiB.
- * @member {number} dataEgressGiB The cross data center network egress from the
- * pool during this interval, in GiB.
  */
 export interface PoolUsageMetrics {
   poolId: string;
@@ -45,8 +41,6 @@ export interface PoolUsageMetrics {
   endTime: Date;
   vmSize: string;
   totalCoreHours: number;
-  dataIngressGiB: number;
-  dataEgressGiB: number;
 }
 
 /**
@@ -73,9 +67,8 @@ export interface PoolUsageMetrics {
  * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}.
  * This property is mutually exclusive with other ImageReference properties.
  * The virtual machine image must be in the same region and subscription as the
- * Azure Batch account. For information about the firewall settings for the
- * Batch node agent to communicate with the Batch service see
- * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+ * Azure Batch account. For more details, see
+ * https://docs.microsoft.com/azure/batch/batch-custom-images.
  */
 export interface ImageReference {
   publisher?: string;
@@ -581,6 +574,27 @@ export interface JobConstraints {
 
 /**
  * @class
+ * Initializes a new instance of the JobNetworkConfiguration class.
+ * @constructor
+ * @summary The network configuration for the job.
+ *
+ * @member {string} subnetId The ARM resource identifier of the virtual network
+ * subnet which nodes running tasks from the job will join for the duration of
+ * the task. This is only supported for jobs running on
+ * VirtualMachineConfiguration pools. This is of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+ * The virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes which will run tasks from the job. For more
+ * details, see
+ * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+ */
+export interface JobNetworkConfiguration {
+  subnetId: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ContainerRegistry class.
  * @constructor
  * @summary A private container registry.
@@ -628,16 +642,45 @@ export interface TaskContainerSettings {
  * @class
  * Initializes a new instance of the ResourceFile class.
  * @constructor
- * @summary A file to be downloaded from Azure blob storage to a compute node.
+ * @summary A single file or multiple files to be downloaded to a compute node.
  *
- * @member {string} blobSource The URL of the file within Azure Blob Storage.
- * This URL must be readable using anonymous access; that is, the Batch service
- * does not present any credentials when downloading the blob. There are two
- * ways to get such a URL for a blob in Azure storage: include a Shared Access
- * Signature (SAS) granting read permissions on the blob, or set the ACL for
- * the blob or its container to allow public access.
- * @member {string} filePath The location on the compute node to which to
- * download the file, relative to the task's working directory.
+ * @member {string} [autoStorageContainerName] The storage container name in
+ * the auto storage account. The autoStorageContainerName, storageContainerUrl
+ * and httpUrl properties are mutually exclusive and one of them must be
+ * specified.
+ * @member {string} [storageContainerUrl] The URL of the blob container within
+ * Azure Blob Storage. The autoStorageContainerName, storageContainerUrl and
+ * httpUrl properties are mutually exclusive and one of them must be specified.
+ * This URL must be readable and listable using anonymous access; that is, the
+ * Batch service does not present any credentials when downloading blobs from
+ * the container. There are two ways to get such a URL for a container in Azure
+ * storage: include a Shared Access Signature (SAS) granting read permissions
+ * on the container, or set the ACL for the container to allow public access.
+ * @member {string} [httpUrl] The URL of the file to download. The
+ * autoStorageContainerName, storageContainerUrl and httpUrl properties are
+ * mutually exclusive and one of them must be specified. If the URL points to
+ * Azure Blob Storage, it must be readable using anonymous access; that is, the
+ * Batch service does not present any credentials when downloading the blob.
+ * There are two ways to get such a URL for a blob in Azure storage: include a
+ * Shared Access Signature (SAS) granting read permissions on the blob, or set
+ * the ACL for the blob or its container to allow public access.
+ * @member {string} [blobPrefix] The blob prefix to use when downloading blobs
+ * from an Azure Storage container. Only the blobs whose names begin with the
+ * specified prefix will be downloaded. The property is valid only when
+ * autoStorageContainerName or storageContainerUrl is used. This prefix can be
+ * a partial filename or a subdirectory. If a prefix is not specified, all the
+ * files in the container will be downloaded.
+ * @member {string} [filePath] The location on the compute node to which to
+ * download the file(s), relative to the task's working directory. If the
+ * httpUrl property is specified, the filePath is required and describes the
+ * path which the file will be downloaded to, including the filename.
+ * Otherwise, if the autoStorageContainerName or storageContainerUrl property
+ * is specified, filePath is optional and is the directory to download the
+ * files to. In the case where filePath is used as a directory, any directory
+ * structure already associated with the input data will be retained in full
+ * and appended to the specified filePath directory. The specified relative
+ * path cannot break out of the task's working directory (for example by using
+ * '..').
  * @member {string} [fileMode] The file permission mode attribute in octal
  * format. This property applies only to files being downloaded to Linux
  * compute nodes. It will be ignored if it is specified for a resourceFile
@@ -646,8 +689,11 @@ export interface TaskContainerSettings {
  * file.
  */
 export interface ResourceFile {
-  blobSource: string;
-  filePath: string;
+  autoStorageContainerName?: string;
+  storageContainerUrl?: string;
+  httpUrl?: string;
+  blobPrefix?: string;
+  filePath?: string;
   fileMode?: string;
 }
 
@@ -803,7 +849,7 @@ export interface ExitCodeRangeMapping {
  * in the exitCodes or exitCodeRanges collection, with a pre-processing error
  * if the preProcessingError property is not present, or with a file upload
  * error if the fileUploadError property is not present. If you want
- * non-default behaviour on exit code 0, you must list it explicitly using the
+ * non-default behavior on exit code 0, you must list it explicitly using the
  * exitCodes or exitCodeRanges collection.
  * @member {string} [default.jobAction] The default is none for exit code 0 and
  * terminate for all other exit conditions. If the job's onTaskFailed property
@@ -850,10 +896,7 @@ export interface AutoUserSpecification {
  * @constructor
  * @summary The definition of the user identity under which the task is run.
  *
- * Specify either the userName or autoUser property, but not both. On
- * CloudServiceConfiguration pools, this user is logged in with the INTERACTIVE
- * flag. On Windows VirtualMachineConfiguration pools, this user is logged in
- * with the BATCH flag.
+ * Specify either the userName or autoUser property, but not both.
  *
  * @member {string} [userName] The name of the user identity under which the
  * task is run. The userName and autoUser properties are mutually exclusive;
@@ -900,6 +943,21 @@ export interface LinuxUserConfiguration {
 
 /**
  * @class
+ * Initializes a new instance of the WindowsUserConfiguration class.
+ * @constructor
+ * @summary Properties used to create a user account on a Windows node.
+ *
+ * @member {string} [loginMode] The login mode for the user. The default value
+ * for VirtualMachineConfiguration pools is batch and for
+ * CloudServiceConfiguration pools is interactive. Possible values include:
+ * 'batch', 'interactive'
+ */
+export interface WindowsUserConfiguration {
+  loginMode?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the UserAccount class.
  * @constructor
  * @summary Properties used to create a user used to execute tasks on an Azure
@@ -927,12 +985,20 @@ export interface LinuxUserConfiguration {
  * placing the key pair into the user's .ssh directory. If not specified,
  * password-less SSH is not configured between nodes (no modification of the
  * user's .ssh directory is done).
+ * @member {object} [windowsUserConfiguration] The Windows-specific user
+ * configuration for the user account. This property can only be specified if
+ * the user is on a Windows pool. If not specified and on a Windows pool, the
+ * user is created with the default options.
+ * @member {string} [windowsUserConfiguration.loginMode] The default value for
+ * VirtualMachineConfiguration pools is batch and for CloudServiceConfiguration
+ * pools is interactive. Possible values include: 'batch', 'interactive'
  */
 export interface UserAccount {
   name: string;
   password: string;
   elevationLevel?: string;
   linuxUserConfiguration?: LinuxUserConfiguration;
+  windowsUserConfiguration?: WindowsUserConfiguration;
 }
 
 /**
@@ -948,8 +1014,9 @@ export interface UserAccount {
  * @member {moment.duration} [retentionTime] The minimum time to retain the
  * task directory on the compute node where it ran, from the time it completes
  * execution. After this time, the Batch service may delete the task directory
- * and all its contents. The default is infinite, i.e. the task directory will
- * be retained until the compute node is removed or reimaged.
+ * and all its contents. The default is 7 days, i.e. the task directory will be
+ * retained for 7 days unless the compute node is removed or the job is
+ * deleted.
  * @member {number} [maxTaskRetryCount] The maximum number of times the task
  * may be retried. The Batch service retries a task if its exit code is
  * nonzero. Note that this value specifically controls the number of retries
@@ -958,9 +1025,7 @@ export interface UserAccount {
  * maximum retry count is 3, Batch tries the task up to 4 times (one initial
  * try and 3 retries). If the maximum retry count is 0, the Batch service does
  * not retry the task after the first attempt. If the maximum retry count is
- * -1, the Batch service retries the task without limit. Resource files and
- * application packages are only downloaded again if the task is retried on a
- * new compute node.
+ * -1, the Batch service retries the task without limit.
  */
 export interface TaskConstraints {
   maxWallClockTime?: moment.Duration;
@@ -1161,9 +1226,9 @@ export interface OutputFile {
  * task.
  * @member {moment.duration} [constraints.maxWallClockTime] If this is not
  * specified, there is no time limit on how long the task may run.
- * @member {moment.duration} [constraints.retentionTime] The default is
- * infinite, i.e. the task directory will be retained until the compute node is
- * removed or reimaged.
+ * @member {moment.duration} [constraints.retentionTime] The default is 7 days,
+ * i.e. the task directory will be retained for 7 days unless the compute node
+ * is removed or the job is deleted.
  * @member {number} [constraints.maxTaskRetryCount] Note that this value
  * specifically controls the number of retries for the task executable due to a
  * nonzero exit code. The Batch service will try the task once, and may then
@@ -1171,8 +1236,7 @@ export interface OutputFile {
  * tries the task up to 4 times (one initial try and 3 retries). If the maximum
  * retry count is 0, the Batch service does not retry the task after the first
  * attempt. If the maximum retry count is -1, the Batch service retries the
- * task without limit. Resource files and application packages are only
- * downloaded again if the task is retried on a new compute node.
+ * task without limit.
  * @member {boolean} [killJobOnCompletion] Whether completion of the Job
  * Manager task signifies completion of the entire job. If true, when the Job
  * Manager task completes, the Batch service marks the job as complete. If any
@@ -1330,9 +1394,9 @@ export interface JobManagerTask {
  * task.
  * @member {moment.duration} [constraints.maxWallClockTime] If this is not
  * specified, there is no time limit on how long the task may run.
- * @member {moment.duration} [constraints.retentionTime] The default is
- * infinite, i.e. the task directory will be retained until the compute node is
- * removed or reimaged.
+ * @member {moment.duration} [constraints.retentionTime] The default is 7 days,
+ * i.e. the task directory will be retained for 7 days unless the compute node
+ * is removed or the job is deleted.
  * @member {number} [constraints.maxTaskRetryCount] Note that this value
  * specifically controls the number of retries for the task executable due to a
  * nonzero exit code. The Batch service will try the task once, and may then
@@ -1340,8 +1404,7 @@ export interface JobManagerTask {
  * tries the task up to 4 times (one initial try and 3 retries). If the maximum
  * retry count is 0, the Batch service does not retry the task after the first
  * attempt. If the maximum retry count is -1, the Batch service retries the
- * task without limit. Resource files and application packages are only
- * downloaded again if the task is retried on a new compute node.
+ * task without limit.
  * @member {boolean} [waitForSuccess] Whether the Batch service should wait for
  * the Job Preparation task to complete successfully before scheduling any
  * other tasks of the job on the compute node. A Job Preparation task has
@@ -1468,8 +1531,8 @@ export interface JobPreparationTask {
  * @member {moment.duration} [retentionTime] The minimum time to retain the
  * task directory for the Job Release task on the compute node. After this
  * time, the Batch service may delete the task directory and all its contents.
- * The default is infinite, i.e. the task directory will be retained until the
- * compute node is removed or reimaged.
+ * The default is 7 days, i.e. the task directory will be retained for 7 days
+ * unless the compute node is removed or the job is deleted.
  * @member {object} [userIdentity] The user identity under which the Job
  * Release task runs. If omitted, the task runs as a non-administrative user
  * unique to the task.
@@ -1675,36 +1738,13 @@ export interface MetadataItem {
  * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
  * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
- * @member {string} [targetOSVersion] The Azure Guest OS version to be
- * installed on the virtual machines in the pool. The default value is * which
- * specifies the latest operating system version for the specified OS family.
- * @member {string} [currentOSVersion] The Azure Guest OS Version currently
- * installed on the virtual machines in the pool. This may differ from
- * targetOSVersion if the pool state is Upgrading. In this case some virtual
- * machines may be on the targetOSVersion and some may be on the
- * currentOSVersion during the upgrade process. Once all virtual machines have
- * upgraded, currentOSVersion is updated to be the same as targetOSVersion.
+ * @member {string} [osVersion] The Azure Guest OS version to be installed on
+ * the virtual machines in the pool. The default value is * which specifies the
+ * latest operating system version for the specified OS family.
  */
 export interface CloudServiceConfiguration {
   osFamily: string;
-  targetOSVersion?: string;
-  readonly currentOSVersion?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OSDisk class.
- * @constructor
- * @summary Settings for the operating system disk of the virtual machine.
- *
- * @member {string} [caching] The type of caching to enable for the OS disk.
- * The default value for caching is readwrite. For information about the
- * caching options see:
- * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
- * Possible values include: 'none', 'readOnly', 'readWrite'
- */
-export interface OSDisk {
-  caching?: string;
+  osVersion?: string;
 }
 
 /**
@@ -1788,15 +1828,8 @@ export interface ContainerConfiguration {
  * @member {string} [imageReference.virtualMachineImageId] This property is
  * mutually exclusive with other ImageReference properties. The virtual machine
  * image must be in the same region and subscription as the Azure Batch
- * account. For information about the firewall settings for the Batch node
- * agent to communicate with the Batch service see
- * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
- * @member {object} [osDisk] Settings for the operating system disk of the
- * Virtual Machine.
- * @member {string} [osDisk.caching] The default value for caching is
- * readwrite. For information about the caching options see:
- * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
- * Possible values include: 'none', 'readOnly', 'readWrite'
+ * account. For more details, see
+ * https://docs.microsoft.com/azure/batch/batch-custom-images.
  * @member {string} nodeAgentSKUId The SKU of the Batch node agent to be
  * provisioned on compute nodes in the pool. The Batch node agent is a program
  * that runs on each node in the pool, and provides the command-and-control
@@ -1808,7 +1841,7 @@ export interface ContainerConfiguration {
  * operation.
  * @member {object} [windowsConfiguration] Windows operating system settings on
  * the virtual machine. This property must not be specified if the
- * imageReference or osDisk property specifies a Linux OS image.
+ * imageReference property specifies a Linux OS image.
  * @member {boolean} [windowsConfiguration.enableAutomaticUpdates] If omitted,
  * the default value is true.
  * @member {array} [dataDisks] The configuration for data disks attached to the
@@ -1845,7 +1878,6 @@ export interface ContainerConfiguration {
  */
 export interface VirtualMachineConfiguration {
   imageReference: ImageReference;
-  osDisk?: OSDisk;
   nodeAgentSKUId: string;
   windowsConfiguration?: WindowsConfiguration;
   dataDisks?: DataDisk[];
@@ -1958,25 +1990,14 @@ export interface PoolEndpointConfiguration {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. For pools
- * created with virtualMachineConfiguration only ARM virtual networks
+ * and a resize error will occur. For pools created with
+ * virtualMachineConfiguration only ARM virtual networks
  * ('Microsoft.Network/virtualNetworks') are supported, but for pools created
  * with cloudServiceConfiguration both ARM and classic virtual networks are
- * supported. If the specified VNet has any associated Network Security Groups
- * (NSG), then a few reserved system ports must be enabled for inbound
- * communication. For pools created with a virtual machine configuration,
- * enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for
- * Windows. For pools created with a cloud service configuration, enable ports
- * 10100, 20100, and 30100. Also enable outbound connections to Azure Storage
- * on port 443. For more details see:
+ * supported. For more details, see:
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * @member {string} [dynamicVNetAssignmentScope] The scope of dynamic vnet
+ * assignment. Possible values include: 'none', 'job'
  * @member {object} [endpointConfiguration] The configuration for endpoints on
  * compute nodes in the Batch pool. Pool endpoint configuration is only
  * supported on pools with the virtualMachineConfiguration property.
@@ -1986,6 +2007,7 @@ export interface PoolEndpointConfiguration {
  */
 export interface NetworkConfiguration {
   subnetId?: string;
+  dynamicVNetAssignmentScope?: string;
   endpointConfiguration?: PoolEndpointConfiguration;
 }
 
@@ -2018,14 +2040,9 @@ export interface NetworkConfiguration {
  * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
  * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
- * @member {string} [cloudServiceConfiguration.targetOSVersion] The default
- * value is * which specifies the latest operating system version for the
- * specified OS family.
- * @member {string} [cloudServiceConfiguration.currentOSVersion] This may
- * differ from targetOSVersion if the pool state is Upgrading. In this case
- * some virtual machines may be on the targetOSVersion and some may be on the
- * currentOSVersion during the upgrade process. Once all virtual machines have
- * upgraded, currentOSVersion is updated to be the same as targetOSVersion.
+ * @member {string} [cloudServiceConfiguration.osVersion] The default value is
+ * * which specifies the latest operating system version for the specified OS
+ * family.
  * @member {object} [virtualMachineConfiguration] The virtual machine
  * configuration for the pool. This property must be specified if the pool
  * needs to be created with Azure IaaS VMs. This property and
@@ -2047,15 +2064,8 @@ export interface NetworkConfiguration {
  * [virtualMachineConfiguration.imageReference.virtualMachineImageId] This
  * property is mutually exclusive with other ImageReference properties. The
  * virtual machine image must be in the same region and subscription as the
- * Azure Batch account. For information about the firewall settings for the
- * Batch node agent to communicate with the Batch service see
- * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
- * @member {object} [virtualMachineConfiguration.osDisk]
- * @member {string} [virtualMachineConfiguration.osDisk.caching] The default
- * value for caching is readwrite. For information about the caching options
- * see:
- * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
- * Possible values include: 'none', 'readOnly', 'readWrite'
+ * Azure Batch account. For more details, see
+ * https://docs.microsoft.com/azure/batch/batch-custom-images.
  * @member {string} [virtualMachineConfiguration.nodeAgentSKUId] The Batch node
  * agent is a program that runs on each node in the pool, and provides the
  * command-and-control interface between the node and the Batch service. There
@@ -2065,8 +2075,8 @@ export interface NetworkConfiguration {
  * along with their list of verified image references, see the 'List supported
  * node agent SKUs' operation.
  * @member {object} [virtualMachineConfiguration.windowsConfiguration] This
- * property must not be specified if the imageReference or osDisk property
- * specifies a Linux OS image.
+ * property must not be specified if the imageReference property specifies a
+ * Linux OS image.
  * @member {boolean}
  * [virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates] If
  * omitted, the default value is true.
@@ -2148,30 +2158,20 @@ export interface NetworkConfiguration {
  * default value is false.
  * @member {object} [networkConfiguration] The network configuration for the
  * pool.
- * @member {string} [networkConfiguration.subnetId] The virtual network must be
- * in the same region and subscription as the Azure Batch account. The
- * specified subnet should have enough free IP addresses to accommodate the
- * number of nodes in the pool. If the subnet doesn't have enough free IP
- * addresses, the pool will partially allocate compute nodes, and a resize
- * error will occur. The 'MicrosoftAzureBatch' service principal must have the
- * 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role
- * for the specified VNet. The specified subnet must allow communication from
- * the Azure Batch service to be able to schedule tasks on the compute nodes.
- * This can be verified by checking if the specified VNet has any associated
- * Network Security Groups (NSG). If communication to the compute nodes in the
- * specified subnet is denied by an NSG, then the Batch service will set the
- * state of the compute nodes to unusable. For pools created with
+ * @member {string} [networkConfiguration.subnetId] This is of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+ * The virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes in the pool. If the subnet doesn't have
+ * enough free IP addresses, the pool will partially allocate compute nodes,
+ * and a resize error will occur. For pools created with
  * virtualMachineConfiguration only ARM virtual networks
  * ('Microsoft.Network/virtualNetworks') are supported, but for pools created
  * with cloudServiceConfiguration both ARM and classic virtual networks are
- * supported. If the specified VNet has any associated Network Security Groups
- * (NSG), then a few reserved system ports must be enabled for inbound
- * communication. For pools created with a virtual machine configuration,
- * enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for
- * Windows. For pools created with a cloud service configuration, enable ports
- * 10100, 20100, and 30100. Also enable outbound connections to Azure Storage
- * on port 443. For more details see:
+ * supported. For more details, see:
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * @member {string} [networkConfiguration.dynamicVNetAssignmentScope] Possible
+ * values include: 'none', 'job'
  * @member {object} [networkConfiguration.endpointConfiguration] Pool endpoint
  * configuration is only supported on pools with the
  * virtualMachineConfiguration property.
@@ -2329,14 +2329,9 @@ export interface PoolSpecification {
  * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
  * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
- * @member {string} [pool.cloudServiceConfiguration.targetOSVersion] The
- * default value is * which specifies the latest operating system version for
- * the specified OS family.
- * @member {string} [pool.cloudServiceConfiguration.currentOSVersion] This may
- * differ from targetOSVersion if the pool state is Upgrading. In this case
- * some virtual machines may be on the targetOSVersion and some may be on the
- * currentOSVersion during the upgrade process. Once all virtual machines have
- * upgraded, currentOSVersion is updated to be the same as targetOSVersion.
+ * @member {string} [pool.cloudServiceConfiguration.osVersion] The default
+ * value is * which specifies the latest operating system version for the
+ * specified OS family.
  * @member {object} [pool.virtualMachineConfiguration] This property must be
  * specified if the pool needs to be created with Azure IaaS VMs. This property
  * and cloudServiceConfiguration are mutually exclusive and one of the
@@ -2357,15 +2352,8 @@ export interface PoolSpecification {
  * [pool.virtualMachineConfiguration.imageReference.virtualMachineImageId] This
  * property is mutually exclusive with other ImageReference properties. The
  * virtual machine image must be in the same region and subscription as the
- * Azure Batch account. For information about the firewall settings for the
- * Batch node agent to communicate with the Batch service see
- * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
- * @member {object} [pool.virtualMachineConfiguration.osDisk]
- * @member {string} [pool.virtualMachineConfiguration.osDisk.caching] The
- * default value for caching is readwrite. For information about the caching
- * options see:
- * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
- * Possible values include: 'none', 'readOnly', 'readWrite'
+ * Azure Batch account. For more details, see
+ * https://docs.microsoft.com/azure/batch/batch-custom-images.
  * @member {string} [pool.virtualMachineConfiguration.nodeAgentSKUId] The Batch
  * node agent is a program that runs on each node in the pool, and provides the
  * command-and-control interface between the node and the Batch service. There
@@ -2375,8 +2363,8 @@ export interface PoolSpecification {
  * along with their list of verified image references, see the 'List supported
  * node agent SKUs' operation.
  * @member {object} [pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference or osDisk property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * @member {boolean}
  * [pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
@@ -2452,30 +2440,20 @@ export interface PoolSpecification {
  * restrictions on the nodes of the pool. This may result in the pool not
  * reaching its desired size. The default value is false.
  * @member {object} [pool.networkConfiguration]
- * @member {string} [pool.networkConfiguration.subnetId] The virtual network
- * must be in the same region and subscription as the Azure Batch account. The
- * specified subnet should have enough free IP addresses to accommodate the
- * number of nodes in the pool. If the subnet doesn't have enough free IP
- * addresses, the pool will partially allocate compute nodes, and a resize
- * error will occur. The 'MicrosoftAzureBatch' service principal must have the
- * 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role
- * for the specified VNet. The specified subnet must allow communication from
- * the Azure Batch service to be able to schedule tasks on the compute nodes.
- * This can be verified by checking if the specified VNet has any associated
- * Network Security Groups (NSG). If communication to the compute nodes in the
- * specified subnet is denied by an NSG, then the Batch service will set the
- * state of the compute nodes to unusable. For pools created with
+ * @member {string} [pool.networkConfiguration.subnetId] This is of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+ * The virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes in the pool. If the subnet doesn't have
+ * enough free IP addresses, the pool will partially allocate compute nodes,
+ * and a resize error will occur. For pools created with
  * virtualMachineConfiguration only ARM virtual networks
  * ('Microsoft.Network/virtualNetworks') are supported, but for pools created
  * with cloudServiceConfiguration both ARM and classic virtual networks are
- * supported. If the specified VNet has any associated Network Security Groups
- * (NSG), then a few reserved system ports must be enabled for inbound
- * communication. For pools created with a virtual machine configuration,
- * enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for
- * Windows. For pools created with a cloud service configuration, enable ports
- * 10100, 20100, and 30100. Also enable outbound connections to Azure Storage
- * on port 443. For more details see:
+ * supported. For more details, see:
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * @member {string} [pool.networkConfiguration.dynamicVNetAssignmentScope]
+ * Possible values include: 'none', 'job'
  * @member {object} [pool.networkConfiguration.endpointConfiguration] Pool
  * endpoint configuration is only supported on pools with the
  * virtualMachineConfiguration property.
@@ -2631,15 +2609,9 @@ export interface AutoPoolSpecification {
  * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
- * [autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion] The
- * default value is * which specifies the latest operating system version for
- * the specified OS family.
- * @member {string}
- * [autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion] This
- * may differ from targetOSVersion if the pool state is Upgrading. In this case
- * some virtual machines may be on the targetOSVersion and some may be on the
- * currentOSVersion during the upgrade process. Once all virtual machines have
- * upgraded, currentOSVersion is updated to be the same as targetOSVersion.
+ * [autoPoolSpecification.pool.cloudServiceConfiguration.osVersion] The default
+ * value is * which specifies the latest operating system version for the
+ * specified OS family.
  * @member {object} [autoPoolSpecification.pool.virtualMachineConfiguration]
  * This property must be specified if the pool needs to be created with Azure
  * IaaS VMs. This property and cloudServiceConfiguration are mutually exclusive
@@ -2665,17 +2637,8 @@ export interface AutoPoolSpecification {
  * [autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
  * This property is mutually exclusive with other ImageReference properties.
  * The virtual machine image must be in the same region and subscription as the
- * Azure Batch account. For information about the firewall settings for the
- * Batch node agent to communicate with the Batch service see
- * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
- * @member {object}
- * [autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
- * @member {string}
- * [autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching] The
- * default value for caching is readwrite. For information about the caching
- * options see:
- * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
- * Possible values include: 'none', 'readOnly', 'readWrite'
+ * Azure Batch account. For more details, see
+ * https://docs.microsoft.com/azure/batch/batch-custom-images.
  * @member {string}
  * [autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId] The
  * Batch node agent is a program that runs on each node in the pool, and
@@ -2687,8 +2650,8 @@ export interface AutoPoolSpecification {
  * 'List supported node agent SKUs' operation.
  * @member {object}
  * [autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference or osDisk property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * @member {boolean}
  * [autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
@@ -2771,29 +2734,21 @@ export interface AutoPoolSpecification {
  * pool not reaching its desired size. The default value is false.
  * @member {object} [autoPoolSpecification.pool.networkConfiguration]
  * @member {string} [autoPoolSpecification.pool.networkConfiguration.subnetId]
+ * This is of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
  * The virtual network must be in the same region and subscription as the Azure
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. For pools
- * created with virtualMachineConfiguration only ARM virtual networks
+ * and a resize error will occur. For pools created with
+ * virtualMachineConfiguration only ARM virtual networks
  * ('Microsoft.Network/virtualNetworks') are supported, but for pools created
  * with cloudServiceConfiguration both ARM and classic virtual networks are
- * supported. If the specified VNet has any associated Network Security Groups
- * (NSG), then a few reserved system ports must be enabled for inbound
- * communication. For pools created with a virtual machine configuration,
- * enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for
- * Windows. For pools created with a cloud service configuration, enable ports
- * 10100, 20100, and 30100. Also enable outbound connections to Azure Storage
- * on port 443. For more details see:
+ * supported. For more details, see:
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * @member {string}
+ * [autoPoolSpecification.pool.networkConfiguration.dynamicVNetAssignmentScope]
+ * Possible values include: 'none', 'job'
  * @member {object}
  * [autoPoolSpecification.pool.networkConfiguration.endpointConfiguration] Pool
  * endpoint configuration is only supported on pools with the
@@ -2931,6 +2886,16 @@ export interface PoolInformation {
  * exhausting its retry count, or if there was an error starting the task, for
  * example due to a resource file download error. The default is noaction.
  * Possible values include: 'noAction', 'performExitOptionsJobAction'
+ * @member {object} [networkConfiguration] The network configuration for the
+ * job.
+ * @member {string} [networkConfiguration.subnetId] This is only supported for
+ * jobs running on VirtualMachineConfiguration pools. This is of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+ * The virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes which will run tasks from the job. For more
+ * details, see
+ * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {object} [constraints] The execution constraints for jobs created
  * under this schedule.
  * @member {moment.duration} [constraints.maxWallClockTime] If the job does not
@@ -2999,8 +2964,8 @@ export interface PoolInformation {
  * @member {moment.duration} [jobManagerTask.constraints.maxWallClockTime] If
  * this is not specified, there is no time limit on how long the task may run.
  * @member {moment.duration} [jobManagerTask.constraints.retentionTime] The
- * default is infinite, i.e. the task directory will be retained until the
- * compute node is removed or reimaged.
+ * default is 7 days, i.e. the task directory will be retained for 7 days
+ * unless the compute node is removed or the job is deleted.
  * @member {number} [jobManagerTask.constraints.maxTaskRetryCount] Note that
  * this value specifically controls the number of retries for the task
  * executable due to a nonzero exit code. The Batch service will try the task
@@ -3008,9 +2973,7 @@ export interface PoolInformation {
  * count is 3, Batch tries the task up to 4 times (one initial try and 3
  * retries). If the maximum retry count is 0, the Batch service does not retry
  * the task after the first attempt. If the maximum retry count is -1, the
- * Batch service retries the task without limit. Resource files and application
- * packages are only downloaded again if the task is retried on a new compute
- * node.
+ * Batch service retries the task without limit.
  * @member {boolean} [jobManagerTask.killJobOnCompletion] If true, when the Job
  * Manager task completes, the Batch service marks the job as complete. If any
  * tasks are still running at this time (other than Job Release), those tasks
@@ -3116,8 +3079,8 @@ export interface PoolInformation {
  * If this is not specified, there is no time limit on how long the task may
  * run.
  * @member {moment.duration} [jobPreparationTask.constraints.retentionTime] The
- * default is infinite, i.e. the task directory will be retained until the
- * compute node is removed or reimaged.
+ * default is 7 days, i.e. the task directory will be retained for 7 days
+ * unless the compute node is removed or the job is deleted.
  * @member {number} [jobPreparationTask.constraints.maxTaskRetryCount] Note
  * that this value specifically controls the number of retries for the task
  * executable due to a nonzero exit code. The Batch service will try the task
@@ -3125,9 +3088,7 @@ export interface PoolInformation {
  * count is 3, Batch tries the task up to 4 times (one initial try and 3
  * retries). If the maximum retry count is 0, the Batch service does not retry
  * the task after the first attempt. If the maximum retry count is -1, the
- * Batch service retries the task without limit. Resource files and application
- * packages are only downloaded again if the task is retried on a new compute
- * node.
+ * Batch service retries the task without limit.
  * @member {boolean} [jobPreparationTask.waitForSuccess] If true and the Job
  * Preparation task fails on a compute node, the Batch service retries the Job
  * Preparation task up to its maximum retry count (as specified in the
@@ -3204,9 +3165,9 @@ export interface PoolInformation {
  * element are located in the task's working directory.
  * @member {array} [jobReleaseTask.environmentSettings]
  * @member {moment.duration} [jobReleaseTask.maxWallClockTime]
- * @member {moment.duration} [jobReleaseTask.retentionTime] The default is
- * infinite, i.e. the task directory will be retained until the compute node is
- * removed or reimaged.
+ * @member {moment.duration} [jobReleaseTask.retentionTime] The default is 7
+ * days, i.e. the task directory will be retained for 7 days unless the compute
+ * node is removed or the job is deleted.
  * @member {object} [jobReleaseTask.userIdentity] If omitted, the task runs as
  * a non-administrative user unique to the task.
  * @member {string} [jobReleaseTask.userIdentity.userName] The userName and
@@ -3280,16 +3241,9 @@ export interface PoolInformation {
  * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
- * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
+ * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osVersion]
  * The default value is * which specifies the latest operating system version
  * for the specified OS family.
- * @member {string}
- * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
- * This may differ from targetOSVersion if the pool state is Upgrading. In this
- * case some virtual machines may be on the targetOSVersion and some may be on
- * the currentOSVersion during the upgrade process. Once all virtual machines
- * have upgraded, currentOSVersion is updated to be the same as
- * targetOSVersion.
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration] This
  * property must be specified if the pool needs to be created with Azure IaaS
@@ -3316,17 +3270,8 @@ export interface PoolInformation {
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
  * This property is mutually exclusive with other ImageReference properties.
  * The virtual machine image must be in the same region and subscription as the
- * Azure Batch account. For information about the firewall settings for the
- * Batch node agent to communicate with the Batch service see
- * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
- * @member {object}
- * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
- * @member {string}
- * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is readwrite. For information about the
- * caching options see:
- * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
- * Possible values include: 'none', 'readOnly', 'readWrite'
+ * Azure Batch account. For more details, see
+ * https://docs.microsoft.com/azure/batch/batch-custom-images.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
  * The Batch node agent is a program that runs on each node in the pool, and
@@ -3338,8 +3283,8 @@ export interface PoolInformation {
  * 'List supported node agent SKUs' operation.
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference or osDisk property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * @member {boolean}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
@@ -3425,30 +3370,22 @@ export interface PoolInformation {
  * pool not reaching its desired size. The default value is false.
  * @member {object} [poolInfo.autoPoolSpecification.pool.networkConfiguration]
  * @member {string}
- * [poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId] The
- * virtual network must be in the same region and subscription as the Azure
+ * [poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId] This is
+ * of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+ * The virtual network must be in the same region and subscription as the Azure
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. For pools
- * created with virtualMachineConfiguration only ARM virtual networks
+ * and a resize error will occur. For pools created with
+ * virtualMachineConfiguration only ARM virtual networks
  * ('Microsoft.Network/virtualNetworks') are supported, but for pools created
  * with cloudServiceConfiguration both ARM and classic virtual networks are
- * supported. If the specified VNet has any associated Network Security Groups
- * (NSG), then a few reserved system ports must be enabled for inbound
- * communication. For pools created with a virtual machine configuration,
- * enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for
- * Windows. For pools created with a cloud service configuration, enable ports
- * 10100, 20100, and 30100. Also enable outbound connections to Azure Storage
- * on port 443. For more details see:
+ * supported. For more details, see:
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * @member {string}
+ * [poolInfo.autoPoolSpecification.pool.networkConfiguration.dynamicVNetAssignmentScope]
+ * Possible values include: 'none', 'job'
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration]
  * Pool endpoint configuration is only supported on pools with the
@@ -3565,6 +3502,7 @@ export interface JobSpecification {
   usesTaskDependencies?: boolean;
   onAllTasksComplete?: string;
   onTaskFailure?: string;
+  networkConfiguration?: JobNetworkConfiguration;
   constraints?: JobConstraints;
   jobManagerTask?: JobManagerTask;
   jobPreparationTask?: JobPreparationTask;
@@ -3763,6 +3701,16 @@ export interface JobScheduleStatistics {
  * default is noaction. Possible values include: 'noAction', 'terminateJob'
  * @member {string} [jobSpecification.onTaskFailure] The default is noaction.
  * Possible values include: 'noAction', 'performExitOptionsJobAction'
+ * @member {object} [jobSpecification.networkConfiguration]
+ * @member {string} [jobSpecification.networkConfiguration.subnetId] This is
+ * only supported for jobs running on VirtualMachineConfiguration pools. This
+ * is of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+ * The virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes which will run tasks from the job. For more
+ * details, see
+ * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {object} [jobSpecification.constraints]
  * @member {moment.duration} [jobSpecification.constraints.maxWallClockTime] If
  * the job does not complete within the time limit, the Batch service
@@ -3838,9 +3786,9 @@ export interface JobScheduleStatistics {
  * [jobSpecification.jobManagerTask.constraints.maxWallClockTime] If this is
  * not specified, there is no time limit on how long the task may run.
  * @member {moment.duration}
- * [jobSpecification.jobManagerTask.constraints.retentionTime] The default is
- * infinite, i.e. the task directory will be retained until the compute node is
- * removed or reimaged.
+ * [jobSpecification.jobManagerTask.constraints.retentionTime] The default is 7
+ * days, i.e. the task directory will be retained for 7 days unless the compute
+ * node is removed or the job is deleted.
  * @member {number}
  * [jobSpecification.jobManagerTask.constraints.maxTaskRetryCount] Note that
  * this value specifically controls the number of retries for the task
@@ -3849,9 +3797,7 @@ export interface JobScheduleStatistics {
  * count is 3, Batch tries the task up to 4 times (one initial try and 3
  * retries). If the maximum retry count is 0, the Batch service does not retry
  * the task after the first attempt. If the maximum retry count is -1, the
- * Batch service retries the task without limit. Resource files and application
- * packages are only downloaded again if the task is retried on a new compute
- * node.
+ * Batch service retries the task without limit.
  * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion] If
  * true, when the Job Manager task completes, the Batch service marks the job
  * as complete. If any tasks are still running at this time (other than Job
@@ -3967,8 +3913,8 @@ export interface JobScheduleStatistics {
  * is not specified, there is no time limit on how long the task may run.
  * @member {moment.duration}
  * [jobSpecification.jobPreparationTask.constraints.retentionTime] The default
- * is infinite, i.e. the task directory will be retained until the compute node
- * is removed or reimaged.
+ * is 7 days, i.e. the task directory will be retained for 7 days unless the
+ * compute node is removed or the job is deleted.
  * @member {number}
  * [jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount] Note
  * that this value specifically controls the number of retries for the task
@@ -3977,9 +3923,7 @@ export interface JobScheduleStatistics {
  * count is 3, Batch tries the task up to 4 times (one initial try and 3
  * retries). If the maximum retry count is 0, the Batch service does not retry
  * the task after the first attempt. If the maximum retry count is -1, the
- * Batch service retries the task without limit. Resource files and application
- * packages are only downloaded again if the task is retried on a new compute
- * node.
+ * Batch service retries the task without limit.
  * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess] If
  * true and the Job Preparation task fails on a compute node, the Batch service
  * retries the Job Preparation task up to its maximum retry count (as specified
@@ -4066,8 +4010,8 @@ export interface JobScheduleStatistics {
  * @member {array} [jobSpecification.jobReleaseTask.environmentSettings]
  * @member {moment.duration} [jobSpecification.jobReleaseTask.maxWallClockTime]
  * @member {moment.duration} [jobSpecification.jobReleaseTask.retentionTime]
- * The default is infinite, i.e. the task directory will be retained until the
- * compute node is removed or reimaged.
+ * The default is 7 days, i.e. the task directory will be retained for 7 days
+ * unless the compute node is removed or the job is deleted.
  * @member {object} [jobSpecification.jobReleaseTask.userIdentity] If omitted,
  * the task runs as a non-administrative user unique to the task.
  * @member {string} [jobSpecification.jobReleaseTask.userIdentity.userName] The
@@ -4146,16 +4090,9 @@ export interface JobScheduleStatistics {
  * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osVersion]
  * The default value is * which specifies the latest operating system version
  * for the specified OS family.
- * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
- * This may differ from targetOSVersion if the pool state is Upgrading. In this
- * case some virtual machines may be on the targetOSVersion and some may be on
- * the currentOSVersion during the upgrade process. Once all virtual machines
- * have upgraded, currentOSVersion is updated to be the same as
- * targetOSVersion.
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration]
  * This property must be specified if the pool needs to be created with Azure
@@ -4182,17 +4119,8 @@ export interface JobScheduleStatistics {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
  * This property is mutually exclusive with other ImageReference properties.
  * The virtual machine image must be in the same region and subscription as the
- * Azure Batch account. For information about the firewall settings for the
- * Batch node agent to communicate with the Batch service see
- * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
- * @member {object}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
- * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is readwrite. For information about the
- * caching options see:
- * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
- * Possible values include: 'none', 'readOnly', 'readWrite'
+ * Azure Batch account. For more details, see
+ * https://docs.microsoft.com/azure/batch/batch-custom-images.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
  * The Batch node agent is a program that runs on each node in the pool, and
@@ -4204,8 +4132,8 @@ export interface JobScheduleStatistics {
  * 'List supported node agent SKUs' operation.
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference or osDisk property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
@@ -4298,29 +4226,21 @@ export interface JobScheduleStatistics {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration]
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId]
+ * This is of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
  * The virtual network must be in the same region and subscription as the Azure
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. For pools
- * created with virtualMachineConfiguration only ARM virtual networks
+ * and a resize error will occur. For pools created with
+ * virtualMachineConfiguration only ARM virtual networks
  * ('Microsoft.Network/virtualNetworks') are supported, but for pools created
  * with cloudServiceConfiguration both ARM and classic virtual networks are
- * supported. If the specified VNet has any associated Network Security Groups
- * (NSG), then a few reserved system ports must be enabled for inbound
- * communication. For pools created with a virtual machine configuration,
- * enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for
- * Windows. For pools created with a cloud service configuration, enable ports
- * 10100, 20100, and 30100. Also enable outbound connections to Azure Storage
- * on port 443. For more details see:
+ * supported. For more details, see:
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * @member {string}
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.dynamicVNetAssignmentScope]
+ * Possible values include: 'none', 'job'
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration]
  * Pool endpoint configuration is only supported on pools with the
@@ -4559,6 +4479,16 @@ export interface CloudJobSchedule {
  * default is noaction. Possible values include: 'noAction', 'terminateJob'
  * @member {string} [jobSpecification.onTaskFailure] The default is noaction.
  * Possible values include: 'noAction', 'performExitOptionsJobAction'
+ * @member {object} [jobSpecification.networkConfiguration]
+ * @member {string} [jobSpecification.networkConfiguration.subnetId] This is
+ * only supported for jobs running on VirtualMachineConfiguration pools. This
+ * is of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+ * The virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes which will run tasks from the job. For more
+ * details, see
+ * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {object} [jobSpecification.constraints]
  * @member {moment.duration} [jobSpecification.constraints.maxWallClockTime] If
  * the job does not complete within the time limit, the Batch service
@@ -4634,9 +4564,9 @@ export interface CloudJobSchedule {
  * [jobSpecification.jobManagerTask.constraints.maxWallClockTime] If this is
  * not specified, there is no time limit on how long the task may run.
  * @member {moment.duration}
- * [jobSpecification.jobManagerTask.constraints.retentionTime] The default is
- * infinite, i.e. the task directory will be retained until the compute node is
- * removed or reimaged.
+ * [jobSpecification.jobManagerTask.constraints.retentionTime] The default is 7
+ * days, i.e. the task directory will be retained for 7 days unless the compute
+ * node is removed or the job is deleted.
  * @member {number}
  * [jobSpecification.jobManagerTask.constraints.maxTaskRetryCount] Note that
  * this value specifically controls the number of retries for the task
@@ -4645,9 +4575,7 @@ export interface CloudJobSchedule {
  * count is 3, Batch tries the task up to 4 times (one initial try and 3
  * retries). If the maximum retry count is 0, the Batch service does not retry
  * the task after the first attempt. If the maximum retry count is -1, the
- * Batch service retries the task without limit. Resource files and application
- * packages are only downloaded again if the task is retried on a new compute
- * node.
+ * Batch service retries the task without limit.
  * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion] If
  * true, when the Job Manager task completes, the Batch service marks the job
  * as complete. If any tasks are still running at this time (other than Job
@@ -4763,8 +4691,8 @@ export interface CloudJobSchedule {
  * is not specified, there is no time limit on how long the task may run.
  * @member {moment.duration}
  * [jobSpecification.jobPreparationTask.constraints.retentionTime] The default
- * is infinite, i.e. the task directory will be retained until the compute node
- * is removed or reimaged.
+ * is 7 days, i.e. the task directory will be retained for 7 days unless the
+ * compute node is removed or the job is deleted.
  * @member {number}
  * [jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount] Note
  * that this value specifically controls the number of retries for the task
@@ -4773,9 +4701,7 @@ export interface CloudJobSchedule {
  * count is 3, Batch tries the task up to 4 times (one initial try and 3
  * retries). If the maximum retry count is 0, the Batch service does not retry
  * the task after the first attempt. If the maximum retry count is -1, the
- * Batch service retries the task without limit. Resource files and application
- * packages are only downloaded again if the task is retried on a new compute
- * node.
+ * Batch service retries the task without limit.
  * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess] If
  * true and the Job Preparation task fails on a compute node, the Batch service
  * retries the Job Preparation task up to its maximum retry count (as specified
@@ -4862,8 +4788,8 @@ export interface CloudJobSchedule {
  * @member {array} [jobSpecification.jobReleaseTask.environmentSettings]
  * @member {moment.duration} [jobSpecification.jobReleaseTask.maxWallClockTime]
  * @member {moment.duration} [jobSpecification.jobReleaseTask.retentionTime]
- * The default is infinite, i.e. the task directory will be retained until the
- * compute node is removed or reimaged.
+ * The default is 7 days, i.e. the task directory will be retained for 7 days
+ * unless the compute node is removed or the job is deleted.
  * @member {object} [jobSpecification.jobReleaseTask.userIdentity] If omitted,
  * the task runs as a non-administrative user unique to the task.
  * @member {string} [jobSpecification.jobReleaseTask.userIdentity.userName] The
@@ -4942,16 +4868,9 @@ export interface CloudJobSchedule {
  * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osVersion]
  * The default value is * which specifies the latest operating system version
  * for the specified OS family.
- * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
- * This may differ from targetOSVersion if the pool state is Upgrading. In this
- * case some virtual machines may be on the targetOSVersion and some may be on
- * the currentOSVersion during the upgrade process. Once all virtual machines
- * have upgraded, currentOSVersion is updated to be the same as
- * targetOSVersion.
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration]
  * This property must be specified if the pool needs to be created with Azure
@@ -4978,17 +4897,8 @@ export interface CloudJobSchedule {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
  * This property is mutually exclusive with other ImageReference properties.
  * The virtual machine image must be in the same region and subscription as the
- * Azure Batch account. For information about the firewall settings for the
- * Batch node agent to communicate with the Batch service see
- * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
- * @member {object}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
- * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is readwrite. For information about the
- * caching options see:
- * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
- * Possible values include: 'none', 'readOnly', 'readWrite'
+ * Azure Batch account. For more details, see
+ * https://docs.microsoft.com/azure/batch/batch-custom-images.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
  * The Batch node agent is a program that runs on each node in the pool, and
@@ -5000,8 +4910,8 @@ export interface CloudJobSchedule {
  * 'List supported node agent SKUs' operation.
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference or osDisk property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
@@ -5094,29 +5004,21 @@ export interface CloudJobSchedule {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration]
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId]
+ * This is of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
  * The virtual network must be in the same region and subscription as the Azure
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. For pools
- * created with virtualMachineConfiguration only ARM virtual networks
+ * and a resize error will occur. For pools created with
+ * virtualMachineConfiguration only ARM virtual networks
  * ('Microsoft.Network/virtualNetworks') are supported, but for pools created
  * with cloudServiceConfiguration both ARM and classic virtual networks are
- * supported. If the specified VNet has any associated Network Security Groups
- * (NSG), then a few reserved system ports must be enabled for inbound
- * communication. For pools created with a virtual machine configuration,
- * enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for
- * Windows. For pools created with a cloud service configuration, enable ports
- * 10100, 20100, and 30100. Also enable outbound connections to Azure Storage
- * on port 443. For more details see:
+ * supported. For more details, see:
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * @member {string}
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.dynamicVNetAssignmentScope]
+ * Possible values include: 'none', 'job'
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration]
  * Pool endpoint configuration is only supported on pools with the
@@ -5413,8 +5315,8 @@ export interface JobExecutionInformation {
  * @member {moment.duration} [jobManagerTask.constraints.maxWallClockTime] If
  * this is not specified, there is no time limit on how long the task may run.
  * @member {moment.duration} [jobManagerTask.constraints.retentionTime] The
- * default is infinite, i.e. the task directory will be retained until the
- * compute node is removed or reimaged.
+ * default is 7 days, i.e. the task directory will be retained for 7 days
+ * unless the compute node is removed or the job is deleted.
  * @member {number} [jobManagerTask.constraints.maxTaskRetryCount] Note that
  * this value specifically controls the number of retries for the task
  * executable due to a nonzero exit code. The Batch service will try the task
@@ -5422,9 +5324,7 @@ export interface JobExecutionInformation {
  * count is 3, Batch tries the task up to 4 times (one initial try and 3
  * retries). If the maximum retry count is 0, the Batch service does not retry
  * the task after the first attempt. If the maximum retry count is -1, the
- * Batch service retries the task without limit. Resource files and application
- * packages are only downloaded again if the task is retried on a new compute
- * node.
+ * Batch service retries the task without limit.
  * @member {boolean} [jobManagerTask.killJobOnCompletion] If true, when the Job
  * Manager task completes, the Batch service marks the job as complete. If any
  * tasks are still running at this time (other than Job Release), those tasks
@@ -5529,8 +5429,8 @@ export interface JobExecutionInformation {
  * If this is not specified, there is no time limit on how long the task may
  * run.
  * @member {moment.duration} [jobPreparationTask.constraints.retentionTime] The
- * default is infinite, i.e. the task directory will be retained until the
- * compute node is removed or reimaged.
+ * default is 7 days, i.e. the task directory will be retained for 7 days
+ * unless the compute node is removed or the job is deleted.
  * @member {number} [jobPreparationTask.constraints.maxTaskRetryCount] Note
  * that this value specifically controls the number of retries for the task
  * executable due to a nonzero exit code. The Batch service will try the task
@@ -5538,9 +5438,7 @@ export interface JobExecutionInformation {
  * count is 3, Batch tries the task up to 4 times (one initial try and 3
  * retries). If the maximum retry count is 0, the Batch service does not retry
  * the task after the first attempt. If the maximum retry count is -1, the
- * Batch service retries the task without limit. Resource files and application
- * packages are only downloaded again if the task is retried on a new compute
- * node.
+ * Batch service retries the task without limit.
  * @member {boolean} [jobPreparationTask.waitForSuccess] If true and the Job
  * Preparation task fails on a compute node, the Batch service retries the Job
  * Preparation task up to its maximum retry count (as specified in the
@@ -5612,9 +5510,9 @@ export interface JobExecutionInformation {
  * element are located in the task's working directory.
  * @member {array} [jobReleaseTask.environmentSettings]
  * @member {moment.duration} [jobReleaseTask.maxWallClockTime]
- * @member {moment.duration} [jobReleaseTask.retentionTime] The default is
- * infinite, i.e. the task directory will be retained until the compute node is
- * removed or reimaged.
+ * @member {moment.duration} [jobReleaseTask.retentionTime] The default is 7
+ * days, i.e. the task directory will be retained for 7 days unless the compute
+ * node is removed or the job is deleted.
  * @member {object} [jobReleaseTask.userIdentity] If omitted, the task runs as
  * a non-administrative user unique to the task.
  * @member {string} [jobReleaseTask.userIdentity.userName] The userName and
@@ -5687,16 +5585,9 @@ export interface JobExecutionInformation {
  * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
- * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
+ * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osVersion]
  * The default value is * which specifies the latest operating system version
  * for the specified OS family.
- * @member {string}
- * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
- * This may differ from targetOSVersion if the pool state is Upgrading. In this
- * case some virtual machines may be on the targetOSVersion and some may be on
- * the currentOSVersion during the upgrade process. Once all virtual machines
- * have upgraded, currentOSVersion is updated to be the same as
- * targetOSVersion.
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration] This
  * property must be specified if the pool needs to be created with Azure IaaS
@@ -5723,17 +5614,8 @@ export interface JobExecutionInformation {
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
  * This property is mutually exclusive with other ImageReference properties.
  * The virtual machine image must be in the same region and subscription as the
- * Azure Batch account. For information about the firewall settings for the
- * Batch node agent to communicate with the Batch service see
- * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
- * @member {object}
- * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
- * @member {string}
- * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is readwrite. For information about the
- * caching options see:
- * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
- * Possible values include: 'none', 'readOnly', 'readWrite'
+ * Azure Batch account. For more details, see
+ * https://docs.microsoft.com/azure/batch/batch-custom-images.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
  * The Batch node agent is a program that runs on each node in the pool, and
@@ -5745,8 +5627,8 @@ export interface JobExecutionInformation {
  * 'List supported node agent SKUs' operation.
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference or osDisk property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * @member {boolean}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
@@ -5832,30 +5714,22 @@ export interface JobExecutionInformation {
  * pool not reaching its desired size. The default value is false.
  * @member {object} [poolInfo.autoPoolSpecification.pool.networkConfiguration]
  * @member {string}
- * [poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId] The
- * virtual network must be in the same region and subscription as the Azure
+ * [poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId] This is
+ * of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+ * The virtual network must be in the same region and subscription as the Azure
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. For pools
- * created with virtualMachineConfiguration only ARM virtual networks
+ * and a resize error will occur. For pools created with
+ * virtualMachineConfiguration only ARM virtual networks
  * ('Microsoft.Network/virtualNetworks') are supported, but for pools created
  * with cloudServiceConfiguration both ARM and classic virtual networks are
- * supported. If the specified VNet has any associated Network Security Groups
- * (NSG), then a few reserved system ports must be enabled for inbound
- * communication. For pools created with a virtual machine configuration,
- * enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for
- * Windows. For pools created with a cloud service configuration, enable ports
- * 10100, 20100, and 30100. Also enable outbound connections to Azure Storage
- * on port 443. For more details see:
+ * supported. For more details, see:
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * @member {string}
+ * [poolInfo.autoPoolSpecification.pool.networkConfiguration.dynamicVNetAssignmentScope]
+ * Possible values include: 'none', 'job'
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration]
  * Pool endpoint configuration is only supported on pools with the
@@ -5971,6 +5845,16 @@ export interface JobExecutionInformation {
  * code after exhausting its retry count, or if there was an error starting the
  * task, for example due to a resource file download error. The default is
  * noaction. Possible values include: 'noAction', 'performExitOptionsJobAction'
+ * @member {object} [networkConfiguration] The network configuration for the
+ * job.
+ * @member {string} [networkConfiguration.subnetId] This is only supported for
+ * jobs running on VirtualMachineConfiguration pools. This is of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+ * The virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes which will run tasks from the job. For more
+ * details, see
+ * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {array} [metadata] A list of name-value pairs associated with the
  * job as metadata. The Batch service does not assign any meaning to metadata;
  * it is solely for the use of user code.
@@ -6055,6 +5939,7 @@ export interface CloudJob {
   poolInfo?: PoolInformation;
   onAllTasksComplete?: string;
   onTaskFailure?: string;
+  networkConfiguration?: JobNetworkConfiguration;
   metadata?: MetadataItem[];
   executionInfo?: JobExecutionInformation;
   stats?: JobStatistics;
@@ -6151,8 +6036,8 @@ export interface CloudJob {
  * @member {moment.duration} [jobManagerTask.constraints.maxWallClockTime] If
  * this is not specified, there is no time limit on how long the task may run.
  * @member {moment.duration} [jobManagerTask.constraints.retentionTime] The
- * default is infinite, i.e. the task directory will be retained until the
- * compute node is removed or reimaged.
+ * default is 7 days, i.e. the task directory will be retained for 7 days
+ * unless the compute node is removed or the job is deleted.
  * @member {number} [jobManagerTask.constraints.maxTaskRetryCount] Note that
  * this value specifically controls the number of retries for the task
  * executable due to a nonzero exit code. The Batch service will try the task
@@ -6160,9 +6045,7 @@ export interface CloudJob {
  * count is 3, Batch tries the task up to 4 times (one initial try and 3
  * retries). If the maximum retry count is 0, the Batch service does not retry
  * the task after the first attempt. If the maximum retry count is -1, the
- * Batch service retries the task without limit. Resource files and application
- * packages are only downloaded again if the task is retried on a new compute
- * node.
+ * Batch service retries the task without limit.
  * @member {boolean} [jobManagerTask.killJobOnCompletion] If true, when the Job
  * Manager task completes, the Batch service marks the job as complete. If any
  * tasks are still running at this time (other than Job Release), those tasks
@@ -6268,8 +6151,8 @@ export interface CloudJob {
  * If this is not specified, there is no time limit on how long the task may
  * run.
  * @member {moment.duration} [jobPreparationTask.constraints.retentionTime] The
- * default is infinite, i.e. the task directory will be retained until the
- * compute node is removed or reimaged.
+ * default is 7 days, i.e. the task directory will be retained for 7 days
+ * unless the compute node is removed or the job is deleted.
  * @member {number} [jobPreparationTask.constraints.maxTaskRetryCount] Note
  * that this value specifically controls the number of retries for the task
  * executable due to a nonzero exit code. The Batch service will try the task
@@ -6277,9 +6160,7 @@ export interface CloudJob {
  * count is 3, Batch tries the task up to 4 times (one initial try and 3
  * retries). If the maximum retry count is 0, the Batch service does not retry
  * the task after the first attempt. If the maximum retry count is -1, the
- * Batch service retries the task without limit. Resource files and application
- * packages are only downloaded again if the task is retried on a new compute
- * node.
+ * Batch service retries the task without limit.
  * @member {boolean} [jobPreparationTask.waitForSuccess] If true and the Job
  * Preparation task fails on a compute node, the Batch service retries the Job
  * Preparation task up to its maximum retry count (as specified in the
@@ -6355,9 +6236,9 @@ export interface CloudJob {
  * element are located in the task's working directory.
  * @member {array} [jobReleaseTask.environmentSettings]
  * @member {moment.duration} [jobReleaseTask.maxWallClockTime]
- * @member {moment.duration} [jobReleaseTask.retentionTime] The default is
- * infinite, i.e. the task directory will be retained until the compute node is
- * removed or reimaged.
+ * @member {moment.duration} [jobReleaseTask.retentionTime] The default is 7
+ * days, i.e. the task directory will be retained for 7 days unless the compute
+ * node is removed or the job is deleted.
  * @member {object} [jobReleaseTask.userIdentity] If omitted, the task runs as
  * a non-administrative user unique to the task.
  * @member {string} [jobReleaseTask.userIdentity.userName] The userName and
@@ -6431,16 +6312,9 @@ export interface CloudJob {
  * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
- * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
+ * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osVersion]
  * The default value is * which specifies the latest operating system version
  * for the specified OS family.
- * @member {string}
- * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
- * This may differ from targetOSVersion if the pool state is Upgrading. In this
- * case some virtual machines may be on the targetOSVersion and some may be on
- * the currentOSVersion during the upgrade process. Once all virtual machines
- * have upgraded, currentOSVersion is updated to be the same as
- * targetOSVersion.
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration] This
  * property must be specified if the pool needs to be created with Azure IaaS
@@ -6467,17 +6341,8 @@ export interface CloudJob {
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
  * This property is mutually exclusive with other ImageReference properties.
  * The virtual machine image must be in the same region and subscription as the
- * Azure Batch account. For information about the firewall settings for the
- * Batch node agent to communicate with the Batch service see
- * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
- * @member {object}
- * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
- * @member {string}
- * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is readwrite. For information about the
- * caching options see:
- * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
- * Possible values include: 'none', 'readOnly', 'readWrite'
+ * Azure Batch account. For more details, see
+ * https://docs.microsoft.com/azure/batch/batch-custom-images.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
  * The Batch node agent is a program that runs on each node in the pool, and
@@ -6489,8 +6354,8 @@ export interface CloudJob {
  * 'List supported node agent SKUs' operation.
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference or osDisk property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * @member {boolean}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
@@ -6576,30 +6441,22 @@ export interface CloudJob {
  * pool not reaching its desired size. The default value is false.
  * @member {object} [poolInfo.autoPoolSpecification.pool.networkConfiguration]
  * @member {string}
- * [poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId] The
- * virtual network must be in the same region and subscription as the Azure
+ * [poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId] This is
+ * of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+ * The virtual network must be in the same region and subscription as the Azure
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. For pools
- * created with virtualMachineConfiguration only ARM virtual networks
+ * and a resize error will occur. For pools created with
+ * virtualMachineConfiguration only ARM virtual networks
  * ('Microsoft.Network/virtualNetworks') are supported, but for pools created
  * with cloudServiceConfiguration both ARM and classic virtual networks are
- * supported. If the specified VNet has any associated Network Security Groups
- * (NSG), then a few reserved system ports must be enabled for inbound
- * communication. For pools created with a virtual machine configuration,
- * enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for
- * Windows. For pools created with a cloud service configuration, enable ports
- * 10100, 20100, and 30100. Also enable outbound connections to Azure Storage
- * on port 443. For more details see:
+ * supported. For more details, see:
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * @member {string}
+ * [poolInfo.autoPoolSpecification.pool.networkConfiguration.dynamicVNetAssignmentScope]
+ * Possible values include: 'none', 'job'
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration]
  * Pool endpoint configuration is only supported on pools with the
@@ -6725,6 +6582,16 @@ export interface CloudJob {
  * it is solely for the use of user code.
  * @member {boolean} [usesTaskDependencies] Whether tasks in the job can define
  * dependencies on each other. The default is false.
+ * @member {object} [networkConfiguration] The network configuration for the
+ * job.
+ * @member {string} [networkConfiguration.subnetId] This is only supported for
+ * jobs running on VirtualMachineConfiguration pools. This is of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+ * The virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes which will run tasks from the job. For more
+ * details, see
+ * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  */
 export interface JobAddParameter {
   id: string;
@@ -6740,6 +6607,7 @@ export interface JobAddParameter {
   onTaskFailure?: string;
   metadata?: MetadataItem[];
   usesTaskDependencies?: boolean;
+  networkConfiguration?: JobNetworkConfiguration;
 }
 
 /**
@@ -7143,7 +7011,7 @@ export interface ResizeError {
  * changes such as a compute node changing state.
  * @member {date} [creationTime] The creation time of the pool.
  * @member {string} [state] The current state of the pool. Possible values
- * include: 'active', 'deleting', 'upgrading'
+ * include: 'active', 'deleting'
  * @member {date} [stateTransitionTime] The time at which the pool entered its
  * current state.
  * @member {string} [allocationState] Whether the pool is resizing. Possible
@@ -7167,14 +7035,9 @@ export interface ResizeError {
  * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
  * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
- * @member {string} [cloudServiceConfiguration.targetOSVersion] The default
- * value is * which specifies the latest operating system version for the
- * specified OS family.
- * @member {string} [cloudServiceConfiguration.currentOSVersion] This may
- * differ from targetOSVersion if the pool state is Upgrading. In this case
- * some virtual machines may be on the targetOSVersion and some may be on the
- * currentOSVersion during the upgrade process. Once all virtual machines have
- * upgraded, currentOSVersion is updated to be the same as targetOSVersion.
+ * @member {string} [cloudServiceConfiguration.osVersion] The default value is
+ * * which specifies the latest operating system version for the specified OS
+ * family.
  * @member {object} [virtualMachineConfiguration] The virtual machine
  * configuration for the pool. This property and cloudServiceConfiguration are
  * mutually exclusive and one of the properties must be specified.
@@ -7192,15 +7055,8 @@ export interface ResizeError {
  * [virtualMachineConfiguration.imageReference.virtualMachineImageId] This
  * property is mutually exclusive with other ImageReference properties. The
  * virtual machine image must be in the same region and subscription as the
- * Azure Batch account. For information about the firewall settings for the
- * Batch node agent to communicate with the Batch service see
- * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
- * @member {object} [virtualMachineConfiguration.osDisk]
- * @member {string} [virtualMachineConfiguration.osDisk.caching] The default
- * value for caching is readwrite. For information about the caching options
- * see:
- * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
- * Possible values include: 'none', 'readOnly', 'readWrite'
+ * Azure Batch account. For more details, see
+ * https://docs.microsoft.com/azure/batch/batch-custom-images.
  * @member {string} [virtualMachineConfiguration.nodeAgentSKUId] The Batch node
  * agent is a program that runs on each node in the pool, and provides the
  * command-and-control interface between the node and the Batch service. There
@@ -7210,8 +7066,8 @@ export interface ResizeError {
  * along with their list of verified image references, see the 'List supported
  * node agent SKUs' operation.
  * @member {object} [virtualMachineConfiguration.windowsConfiguration] This
- * property must not be specified if the imageReference or osDisk property
- * specifies a Linux OS image.
+ * property must not be specified if the imageReference property specifies a
+ * Linux OS image.
  * @member {boolean}
  * [virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates] If
  * omitted, the default value is true.
@@ -7291,30 +7147,20 @@ export interface ResizeError {
  * the requested number of nodes to be allocated in the pool.
  * @member {object} [networkConfiguration] The network configuration for the
  * pool.
- * @member {string} [networkConfiguration.subnetId] The virtual network must be
- * in the same region and subscription as the Azure Batch account. The
- * specified subnet should have enough free IP addresses to accommodate the
- * number of nodes in the pool. If the subnet doesn't have enough free IP
- * addresses, the pool will partially allocate compute nodes, and a resize
- * error will occur. The 'MicrosoftAzureBatch' service principal must have the
- * 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role
- * for the specified VNet. The specified subnet must allow communication from
- * the Azure Batch service to be able to schedule tasks on the compute nodes.
- * This can be verified by checking if the specified VNet has any associated
- * Network Security Groups (NSG). If communication to the compute nodes in the
- * specified subnet is denied by an NSG, then the Batch service will set the
- * state of the compute nodes to unusable. For pools created with
+ * @member {string} [networkConfiguration.subnetId] This is of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+ * The virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes in the pool. If the subnet doesn't have
+ * enough free IP addresses, the pool will partially allocate compute nodes,
+ * and a resize error will occur. For pools created with
  * virtualMachineConfiguration only ARM virtual networks
  * ('Microsoft.Network/virtualNetworks') are supported, but for pools created
  * with cloudServiceConfiguration both ARM and classic virtual networks are
- * supported. If the specified VNet has any associated Network Security Groups
- * (NSG), then a few reserved system ports must be enabled for inbound
- * communication. For pools created with a virtual machine configuration,
- * enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for
- * Windows. For pools created with a cloud service configuration, enable ports
- * 10100, 20100, and 30100. Also enable outbound connections to Azure Storage
- * on port 443. For more details see:
+ * supported. For more details, see:
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * @member {string} [networkConfiguration.dynamicVNetAssignmentScope] Possible
+ * values include: 'none', 'job'
  * @member {object} [networkConfiguration.endpointConfiguration] Pool endpoint
  * configuration is only supported on pools with the
  * virtualMachineConfiguration property.
@@ -7509,14 +7355,9 @@ export interface CloudPool {
  * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
  * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
- * @member {string} [cloudServiceConfiguration.targetOSVersion] The default
- * value is * which specifies the latest operating system version for the
- * specified OS family.
- * @member {string} [cloudServiceConfiguration.currentOSVersion] This may
- * differ from targetOSVersion if the pool state is Upgrading. In this case
- * some virtual machines may be on the targetOSVersion and some may be on the
- * currentOSVersion during the upgrade process. Once all virtual machines have
- * upgraded, currentOSVersion is updated to be the same as targetOSVersion.
+ * @member {string} [cloudServiceConfiguration.osVersion] The default value is
+ * * which specifies the latest operating system version for the specified OS
+ * family.
  * @member {object} [virtualMachineConfiguration] The virtual machine
  * configuration for the pool. This property and cloudServiceConfiguration are
  * mutually exclusive and one of the properties must be specified.
@@ -7534,15 +7375,8 @@ export interface CloudPool {
  * [virtualMachineConfiguration.imageReference.virtualMachineImageId] This
  * property is mutually exclusive with other ImageReference properties. The
  * virtual machine image must be in the same region and subscription as the
- * Azure Batch account. For information about the firewall settings for the
- * Batch node agent to communicate with the Batch service see
- * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
- * @member {object} [virtualMachineConfiguration.osDisk]
- * @member {string} [virtualMachineConfiguration.osDisk.caching] The default
- * value for caching is readwrite. For information about the caching options
- * see:
- * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
- * Possible values include: 'none', 'readOnly', 'readWrite'
+ * Azure Batch account. For more details, see
+ * https://docs.microsoft.com/azure/batch/batch-custom-images.
  * @member {string} [virtualMachineConfiguration.nodeAgentSKUId] The Batch node
  * agent is a program that runs on each node in the pool, and provides the
  * command-and-control interface between the node and the Batch service. There
@@ -7552,8 +7386,8 @@ export interface CloudPool {
  * along with their list of verified image references, see the 'List supported
  * node agent SKUs' operation.
  * @member {object} [virtualMachineConfiguration.windowsConfiguration] This
- * property must not be specified if the imageReference or osDisk property
- * specifies a Linux OS image.
+ * property must not be specified if the imageReference property specifies a
+ * Linux OS image.
  * @member {boolean}
  * [virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates] If
  * omitted, the default value is true.
@@ -7629,30 +7463,20 @@ export interface CloudPool {
  * default value is false.
  * @member {object} [networkConfiguration] The network configuration for the
  * pool.
- * @member {string} [networkConfiguration.subnetId] The virtual network must be
- * in the same region and subscription as the Azure Batch account. The
- * specified subnet should have enough free IP addresses to accommodate the
- * number of nodes in the pool. If the subnet doesn't have enough free IP
- * addresses, the pool will partially allocate compute nodes, and a resize
- * error will occur. The 'MicrosoftAzureBatch' service principal must have the
- * 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role
- * for the specified VNet. The specified subnet must allow communication from
- * the Azure Batch service to be able to schedule tasks on the compute nodes.
- * This can be verified by checking if the specified VNet has any associated
- * Network Security Groups (NSG). If communication to the compute nodes in the
- * specified subnet is denied by an NSG, then the Batch service will set the
- * state of the compute nodes to unusable. For pools created with
+ * @member {string} [networkConfiguration.subnetId] This is of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+ * The virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes in the pool. If the subnet doesn't have
+ * enough free IP addresses, the pool will partially allocate compute nodes,
+ * and a resize error will occur. For pools created with
  * virtualMachineConfiguration only ARM virtual networks
  * ('Microsoft.Network/virtualNetworks') are supported, but for pools created
  * with cloudServiceConfiguration both ARM and classic virtual networks are
- * supported. If the specified VNet has any associated Network Security Groups
- * (NSG), then a few reserved system ports must be enabled for inbound
- * communication. For pools created with a virtual machine configuration,
- * enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for
- * Windows. For pools created with a cloud service configuration, enable ports
- * 10100, 20100, and 30100. Also enable outbound connections to Azure Storage
- * on port 443. For more details see:
+ * supported. For more details, see:
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * @member {string} [networkConfiguration.dynamicVNetAssignmentScope] Possible
+ * values include: 'none', 'job'
  * @member {object} [networkConfiguration.endpointConfiguration] Pool endpoint
  * configuration is only supported on pools with the
  * virtualMachineConfiguration property.
@@ -8113,7 +7937,7 @@ export interface TaskDependencies {
  * exitCodeRanges collection, with a pre-processing error if the
  * preProcessingError property is not present, or with a file upload error if
  * the fileUploadError property is not present. If you want non-default
- * behaviour on exit code 0, you must list it explicitly using the exitCodes or
+ * behavior on exit code 0, you must list it explicitly using the exitCodes or
  * exitCodeRanges collection.
  * @member {string} [exitConditions.default.jobAction] The default is none for
  * exit code 0 and terminate for all other exit conditions. If the job's
@@ -8194,9 +8018,9 @@ export interface TaskDependencies {
  * task.
  * @member {moment.duration} [constraints.maxWallClockTime] If this is not
  * specified, there is no time limit on how long the task may run.
- * @member {moment.duration} [constraints.retentionTime] The default is
- * infinite, i.e. the task directory will be retained until the compute node is
- * removed or reimaged.
+ * @member {moment.duration} [constraints.retentionTime] The default is 7 days,
+ * i.e. the task directory will be retained for 7 days unless the compute node
+ * is removed or the job is deleted.
  * @member {number} [constraints.maxTaskRetryCount] Note that this value
  * specifically controls the number of retries for the task executable due to a
  * nonzero exit code. The Batch service will try the task once, and may then
@@ -8204,8 +8028,7 @@ export interface TaskDependencies {
  * tries the task up to 4 times (one initial try and 3 retries). If the maximum
  * retry count is 0, the Batch service does not retry the task after the first
  * attempt. If the maximum retry count is -1, the Batch service retries the
- * task without limit. Resource files and application packages are only
- * downloaded again if the task is retried on a new compute node.
+ * task without limit.
  * @member {object} [userIdentity] The user identity under which the task runs.
  * If omitted, the task runs as a non-administrative user unique to the task.
  * @member {string} [userIdentity.userName] The userName and autoUser
@@ -8473,7 +8296,7 @@ export interface CloudTask {
  * exitCodeRanges collection, with a pre-processing error if the
  * preProcessingError property is not present, or with a file upload error if
  * the fileUploadError property is not present. If you want non-default
- * behaviour on exit code 0, you must list it explicitly using the exitCodes or
+ * behavior on exit code 0, you must list it explicitly using the exitCodes or
  * exitCodeRanges collection.
  * @member {string} [exitConditions.default.jobAction] The default is none for
  * exit code 0 and terminate for all other exit conditions. If the job's
@@ -8511,13 +8334,13 @@ export interface CloudTask {
  * scheduled elsewhere.
  * @member {object} [constraints] The execution constraints that apply to this
  * task. If you do not specify constraints, the maxTaskRetryCount is the
- * maxTaskRetryCount specified for the job, and the maxWallClockTime and
- * retentionTime are infinite.
+ * maxTaskRetryCount specified for the job, the maxWallClockTime is infinite,
+ * and the retentionTime is 7 days.
  * @member {moment.duration} [constraints.maxWallClockTime] If this is not
  * specified, there is no time limit on how long the task may run.
- * @member {moment.duration} [constraints.retentionTime] The default is
- * infinite, i.e. the task directory will be retained until the compute node is
- * removed or reimaged.
+ * @member {moment.duration} [constraints.retentionTime] The default is 7 days,
+ * i.e. the task directory will be retained for 7 days unless the compute node
+ * is removed or the job is deleted.
  * @member {number} [constraints.maxTaskRetryCount] Note that this value
  * specifically controls the number of retries for the task executable due to a
  * nonzero exit code. The Batch service will try the task once, and may then
@@ -8525,8 +8348,7 @@ export interface CloudTask {
  * tries the task up to 4 times (one initial try and 3 retries). If the maximum
  * retry count is 0, the Batch service does not retry the task after the first
  * attempt. If the maximum retry count is -1, the Batch service retries the
- * task without limit. Resource files and application packages are only
- * downloaded again if the task is retried on a new compute node.
+ * task without limit.
  * @member {object} [userIdentity] The user identity under which the task runs.
  * If omitted, the task runs as a non-administrative user unique to the task.
  * @member {string} [userIdentity.userName] The userName and autoUser
@@ -9035,10 +8857,12 @@ export interface ComputeNodeEndpointConfiguration {
  * task scheduling. Possible values include: 'enabled', 'disabled'
  * @member {date} [stateTransitionTime] The time at which the compute node
  * entered its current state.
- * @member {date} [lastBootTime] The time at which the compute node was
+ * @member {date} [lastBootTime] The last time at which the compute node was
  * started. This property may not be present if the node state is unusable.
  * @member {date} [allocationTime] The time at which this compute node was
- * allocated to the pool.
+ * allocated to the pool. This is the time when the node was initially
+ * allocated and doesn't change once set. It is not updated when the node is
+ * service healed or preempted.
  * @member {string} [ipAddress] The IP address that other compute nodes can use
  * to communicate with this compute node. Every node that is added to a pool is
  * assigned a unique IP address. Whenever a node is removed from a pool, all of
@@ -9328,6 +9152,16 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * default is noaction. Possible values include: 'noAction', 'terminateJob'
  * @member {string} [jobSpecification.onTaskFailure] The default is noaction.
  * Possible values include: 'noAction', 'performExitOptionsJobAction'
+ * @member {object} [jobSpecification.networkConfiguration]
+ * @member {string} [jobSpecification.networkConfiguration.subnetId] This is
+ * only supported for jobs running on VirtualMachineConfiguration pools. This
+ * is of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+ * The virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes which will run tasks from the job. For more
+ * details, see
+ * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {object} [jobSpecification.constraints]
  * @member {moment.duration} [jobSpecification.constraints.maxWallClockTime] If
  * the job does not complete within the time limit, the Batch service
@@ -9403,9 +9237,9 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * [jobSpecification.jobManagerTask.constraints.maxWallClockTime] If this is
  * not specified, there is no time limit on how long the task may run.
  * @member {moment.duration}
- * [jobSpecification.jobManagerTask.constraints.retentionTime] The default is
- * infinite, i.e. the task directory will be retained until the compute node is
- * removed or reimaged.
+ * [jobSpecification.jobManagerTask.constraints.retentionTime] The default is 7
+ * days, i.e. the task directory will be retained for 7 days unless the compute
+ * node is removed or the job is deleted.
  * @member {number}
  * [jobSpecification.jobManagerTask.constraints.maxTaskRetryCount] Note that
  * this value specifically controls the number of retries for the task
@@ -9414,9 +9248,7 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * count is 3, Batch tries the task up to 4 times (one initial try and 3
  * retries). If the maximum retry count is 0, the Batch service does not retry
  * the task after the first attempt. If the maximum retry count is -1, the
- * Batch service retries the task without limit. Resource files and application
- * packages are only downloaded again if the task is retried on a new compute
- * node.
+ * Batch service retries the task without limit.
  * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion] If
  * true, when the Job Manager task completes, the Batch service marks the job
  * as complete. If any tasks are still running at this time (other than Job
@@ -9532,8 +9364,8 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * is not specified, there is no time limit on how long the task may run.
  * @member {moment.duration}
  * [jobSpecification.jobPreparationTask.constraints.retentionTime] The default
- * is infinite, i.e. the task directory will be retained until the compute node
- * is removed or reimaged.
+ * is 7 days, i.e. the task directory will be retained for 7 days unless the
+ * compute node is removed or the job is deleted.
  * @member {number}
  * [jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount] Note
  * that this value specifically controls the number of retries for the task
@@ -9542,9 +9374,7 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * count is 3, Batch tries the task up to 4 times (one initial try and 3
  * retries). If the maximum retry count is 0, the Batch service does not retry
  * the task after the first attempt. If the maximum retry count is -1, the
- * Batch service retries the task without limit. Resource files and application
- * packages are only downloaded again if the task is retried on a new compute
- * node.
+ * Batch service retries the task without limit.
  * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess] If
  * true and the Job Preparation task fails on a compute node, the Batch service
  * retries the Job Preparation task up to its maximum retry count (as specified
@@ -9631,8 +9461,8 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * @member {array} [jobSpecification.jobReleaseTask.environmentSettings]
  * @member {moment.duration} [jobSpecification.jobReleaseTask.maxWallClockTime]
  * @member {moment.duration} [jobSpecification.jobReleaseTask.retentionTime]
- * The default is infinite, i.e. the task directory will be retained until the
- * compute node is removed or reimaged.
+ * The default is 7 days, i.e. the task directory will be retained for 7 days
+ * unless the compute node is removed or the job is deleted.
  * @member {object} [jobSpecification.jobReleaseTask.userIdentity] If omitted,
  * the task runs as a non-administrative user unique to the task.
  * @member {string} [jobSpecification.jobReleaseTask.userIdentity.userName] The
@@ -9711,16 +9541,9 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osVersion]
  * The default value is * which specifies the latest operating system version
  * for the specified OS family.
- * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
- * This may differ from targetOSVersion if the pool state is Upgrading. In this
- * case some virtual machines may be on the targetOSVersion and some may be on
- * the currentOSVersion during the upgrade process. Once all virtual machines
- * have upgraded, currentOSVersion is updated to be the same as
- * targetOSVersion.
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration]
  * This property must be specified if the pool needs to be created with Azure
@@ -9747,17 +9570,8 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
  * This property is mutually exclusive with other ImageReference properties.
  * The virtual machine image must be in the same region and subscription as the
- * Azure Batch account. For information about the firewall settings for the
- * Batch node agent to communicate with the Batch service see
- * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
- * @member {object}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
- * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is readwrite. For information about the
- * caching options see:
- * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
- * Possible values include: 'none', 'readOnly', 'readWrite'
+ * Azure Batch account. For more details, see
+ * https://docs.microsoft.com/azure/batch/batch-custom-images.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
  * The Batch node agent is a program that runs on each node in the pool, and
@@ -9769,8 +9583,8 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * 'List supported node agent SKUs' operation.
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference or osDisk property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
@@ -9863,29 +9677,21 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration]
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId]
+ * This is of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
  * The virtual network must be in the same region and subscription as the Azure
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. For pools
- * created with virtualMachineConfiguration only ARM virtual networks
+ * and a resize error will occur. For pools created with
+ * virtualMachineConfiguration only ARM virtual networks
  * ('Microsoft.Network/virtualNetworks') are supported, but for pools created
  * with cloudServiceConfiguration both ARM and classic virtual networks are
- * supported. If the specified VNet has any associated Network Security Groups
- * (NSG), then a few reserved system ports must be enabled for inbound
- * communication. For pools created with a virtual machine configuration,
- * enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for
- * Windows. For pools created with a cloud service configuration, enable ports
- * 10100, 20100, and 30100. Also enable outbound connections to Azure Storage
- * on port 443. For more details see:
+ * supported. For more details, see:
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * @member {string}
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.dynamicVNetAssignmentScope]
+ * Possible values include: 'none', 'job'
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration]
  * Pool endpoint configuration is only supported on pools with the
@@ -10071,6 +9877,16 @@ export interface JobSchedulePatchParameter {
  * default is noaction. Possible values include: 'noAction', 'terminateJob'
  * @member {string} [jobSpecification.onTaskFailure] The default is noaction.
  * Possible values include: 'noAction', 'performExitOptionsJobAction'
+ * @member {object} [jobSpecification.networkConfiguration]
+ * @member {string} [jobSpecification.networkConfiguration.subnetId] This is
+ * only supported for jobs running on VirtualMachineConfiguration pools. This
+ * is of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+ * The virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes which will run tasks from the job. For more
+ * details, see
+ * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {object} [jobSpecification.constraints]
  * @member {moment.duration} [jobSpecification.constraints.maxWallClockTime] If
  * the job does not complete within the time limit, the Batch service
@@ -10146,9 +9962,9 @@ export interface JobSchedulePatchParameter {
  * [jobSpecification.jobManagerTask.constraints.maxWallClockTime] If this is
  * not specified, there is no time limit on how long the task may run.
  * @member {moment.duration}
- * [jobSpecification.jobManagerTask.constraints.retentionTime] The default is
- * infinite, i.e. the task directory will be retained until the compute node is
- * removed or reimaged.
+ * [jobSpecification.jobManagerTask.constraints.retentionTime] The default is 7
+ * days, i.e. the task directory will be retained for 7 days unless the compute
+ * node is removed or the job is deleted.
  * @member {number}
  * [jobSpecification.jobManagerTask.constraints.maxTaskRetryCount] Note that
  * this value specifically controls the number of retries for the task
@@ -10157,9 +9973,7 @@ export interface JobSchedulePatchParameter {
  * count is 3, Batch tries the task up to 4 times (one initial try and 3
  * retries). If the maximum retry count is 0, the Batch service does not retry
  * the task after the first attempt. If the maximum retry count is -1, the
- * Batch service retries the task without limit. Resource files and application
- * packages are only downloaded again if the task is retried on a new compute
- * node.
+ * Batch service retries the task without limit.
  * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion] If
  * true, when the Job Manager task completes, the Batch service marks the job
  * as complete. If any tasks are still running at this time (other than Job
@@ -10275,8 +10089,8 @@ export interface JobSchedulePatchParameter {
  * is not specified, there is no time limit on how long the task may run.
  * @member {moment.duration}
  * [jobSpecification.jobPreparationTask.constraints.retentionTime] The default
- * is infinite, i.e. the task directory will be retained until the compute node
- * is removed or reimaged.
+ * is 7 days, i.e. the task directory will be retained for 7 days unless the
+ * compute node is removed or the job is deleted.
  * @member {number}
  * [jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount] Note
  * that this value specifically controls the number of retries for the task
@@ -10285,9 +10099,7 @@ export interface JobSchedulePatchParameter {
  * count is 3, Batch tries the task up to 4 times (one initial try and 3
  * retries). If the maximum retry count is 0, the Batch service does not retry
  * the task after the first attempt. If the maximum retry count is -1, the
- * Batch service retries the task without limit. Resource files and application
- * packages are only downloaded again if the task is retried on a new compute
- * node.
+ * Batch service retries the task without limit.
  * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess] If
  * true and the Job Preparation task fails on a compute node, the Batch service
  * retries the Job Preparation task up to its maximum retry count (as specified
@@ -10374,8 +10186,8 @@ export interface JobSchedulePatchParameter {
  * @member {array} [jobSpecification.jobReleaseTask.environmentSettings]
  * @member {moment.duration} [jobSpecification.jobReleaseTask.maxWallClockTime]
  * @member {moment.duration} [jobSpecification.jobReleaseTask.retentionTime]
- * The default is infinite, i.e. the task directory will be retained until the
- * compute node is removed or reimaged.
+ * The default is 7 days, i.e. the task directory will be retained for 7 days
+ * unless the compute node is removed or the job is deleted.
  * @member {object} [jobSpecification.jobReleaseTask.userIdentity] If omitted,
  * the task runs as a non-administrative user unique to the task.
  * @member {string} [jobSpecification.jobReleaseTask.userIdentity.userName] The
@@ -10454,16 +10266,9 @@ export interface JobSchedulePatchParameter {
  * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osVersion]
  * The default value is * which specifies the latest operating system version
  * for the specified OS family.
- * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
- * This may differ from targetOSVersion if the pool state is Upgrading. In this
- * case some virtual machines may be on the targetOSVersion and some may be on
- * the currentOSVersion during the upgrade process. Once all virtual machines
- * have upgraded, currentOSVersion is updated to be the same as
- * targetOSVersion.
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration]
  * This property must be specified if the pool needs to be created with Azure
@@ -10490,17 +10295,8 @@ export interface JobSchedulePatchParameter {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
  * This property is mutually exclusive with other ImageReference properties.
  * The virtual machine image must be in the same region and subscription as the
- * Azure Batch account. For information about the firewall settings for the
- * Batch node agent to communicate with the Batch service see
- * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
- * @member {object}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
- * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is readwrite. For information about the
- * caching options see:
- * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
- * Possible values include: 'none', 'readOnly', 'readWrite'
+ * Azure Batch account. For more details, see
+ * https://docs.microsoft.com/azure/batch/batch-custom-images.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
  * The Batch node agent is a program that runs on each node in the pool, and
@@ -10512,8 +10308,8 @@ export interface JobSchedulePatchParameter {
  * 'List supported node agent SKUs' operation.
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference or osDisk property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
@@ -10606,29 +10402,21 @@ export interface JobSchedulePatchParameter {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration]
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId]
+ * This is of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
  * The virtual network must be in the same region and subscription as the Azure
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. For pools
- * created with virtualMachineConfiguration only ARM virtual networks
+ * and a resize error will occur. For pools created with
+ * virtualMachineConfiguration only ARM virtual networks
  * ('Microsoft.Network/virtualNetworks') are supported, but for pools created
  * with cloudServiceConfiguration both ARM and classic virtual networks are
- * supported. If the specified VNet has any associated Network Security Groups
- * (NSG), then a few reserved system ports must be enabled for inbound
- * communication. For pools created with a virtual machine configuration,
- * enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for
- * Windows. For pools created with a cloud service configuration, enable ports
- * 10100, 20100, and 30100. Also enable outbound connections to Azure Storage
- * on port 443. For more details see:
+ * supported. For more details, see:
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * @member {string}
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.dynamicVNetAssignmentScope]
+ * Possible values include: 'none', 'job'
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration]
  * Pool endpoint configuration is only supported on pools with the
@@ -10872,16 +10660,9 @@ export interface JobTerminateParameter {
  * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
- * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
+ * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osVersion]
  * The default value is * which specifies the latest operating system version
  * for the specified OS family.
- * @member {string}
- * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
- * This may differ from targetOSVersion if the pool state is Upgrading. In this
- * case some virtual machines may be on the targetOSVersion and some may be on
- * the currentOSVersion during the upgrade process. Once all virtual machines
- * have upgraded, currentOSVersion is updated to be the same as
- * targetOSVersion.
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration] This
  * property must be specified if the pool needs to be created with Azure IaaS
@@ -10908,17 +10689,8 @@ export interface JobTerminateParameter {
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
  * This property is mutually exclusive with other ImageReference properties.
  * The virtual machine image must be in the same region and subscription as the
- * Azure Batch account. For information about the firewall settings for the
- * Batch node agent to communicate with the Batch service see
- * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
- * @member {object}
- * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
- * @member {string}
- * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is readwrite. For information about the
- * caching options see:
- * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
- * Possible values include: 'none', 'readOnly', 'readWrite'
+ * Azure Batch account. For more details, see
+ * https://docs.microsoft.com/azure/batch/batch-custom-images.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
  * The Batch node agent is a program that runs on each node in the pool, and
@@ -10930,8 +10702,8 @@ export interface JobTerminateParameter {
  * 'List supported node agent SKUs' operation.
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference or osDisk property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * @member {boolean}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
@@ -11017,30 +10789,22 @@ export interface JobTerminateParameter {
  * pool not reaching its desired size. The default value is false.
  * @member {object} [poolInfo.autoPoolSpecification.pool.networkConfiguration]
  * @member {string}
- * [poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId] The
- * virtual network must be in the same region and subscription as the Azure
+ * [poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId] This is
+ * of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+ * The virtual network must be in the same region and subscription as the Azure
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. For pools
- * created with virtualMachineConfiguration only ARM virtual networks
+ * and a resize error will occur. For pools created with
+ * virtualMachineConfiguration only ARM virtual networks
  * ('Microsoft.Network/virtualNetworks') are supported, but for pools created
  * with cloudServiceConfiguration both ARM and classic virtual networks are
- * supported. If the specified VNet has any associated Network Security Groups
- * (NSG), then a few reserved system ports must be enabled for inbound
- * communication. For pools created with a virtual machine configuration,
- * enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for
- * Windows. For pools created with a cloud service configuration, enable ports
- * 10100, 20100, and 30100. Also enable outbound connections to Azure Storage
- * on port 443. For more details see:
+ * supported. For more details, see:
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * @member {string}
+ * [poolInfo.autoPoolSpecification.pool.networkConfiguration.dynamicVNetAssignmentScope]
+ * Possible values include: 'none', 'job'
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration]
  * Pool endpoint configuration is only supported on pools with the
@@ -11241,16 +11005,9 @@ export interface JobPatchParameter {
  * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
- * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
+ * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osVersion]
  * The default value is * which specifies the latest operating system version
  * for the specified OS family.
- * @member {string}
- * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
- * This may differ from targetOSVersion if the pool state is Upgrading. In this
- * case some virtual machines may be on the targetOSVersion and some may be on
- * the currentOSVersion during the upgrade process. Once all virtual machines
- * have upgraded, currentOSVersion is updated to be the same as
- * targetOSVersion.
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration] This
  * property must be specified if the pool needs to be created with Azure IaaS
@@ -11277,17 +11034,8 @@ export interface JobPatchParameter {
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.virtualMachineImageId]
  * This property is mutually exclusive with other ImageReference properties.
  * The virtual machine image must be in the same region and subscription as the
- * Azure Batch account. For information about the firewall settings for the
- * Batch node agent to communicate with the Batch service see
- * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
- * @member {object}
- * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
- * @member {string}
- * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is readwrite. For information about the
- * caching options see:
- * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
- * Possible values include: 'none', 'readOnly', 'readWrite'
+ * Azure Batch account. For more details, see
+ * https://docs.microsoft.com/azure/batch/batch-custom-images.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
  * The Batch node agent is a program that runs on each node in the pool, and
@@ -11299,8 +11047,8 @@ export interface JobPatchParameter {
  * 'List supported node agent SKUs' operation.
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference or osDisk property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * @member {boolean}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
@@ -11386,30 +11134,22 @@ export interface JobPatchParameter {
  * pool not reaching its desired size. The default value is false.
  * @member {object} [poolInfo.autoPoolSpecification.pool.networkConfiguration]
  * @member {string}
- * [poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId] The
- * virtual network must be in the same region and subscription as the Azure
+ * [poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId] This is
+ * of the form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+ * The virtual network must be in the same region and subscription as the Azure
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. For pools
- * created with virtualMachineConfiguration only ARM virtual networks
+ * and a resize error will occur. For pools created with
+ * virtualMachineConfiguration only ARM virtual networks
  * ('Microsoft.Network/virtualNetworks') are supported, but for pools created
  * with cloudServiceConfiguration both ARM and classic virtual networks are
- * supported. If the specified VNet has any associated Network Security Groups
- * (NSG), then a few reserved system ports must be enabled for inbound
- * communication. For pools created with a virtual machine configuration,
- * enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for
- * Windows. For pools created with a cloud service configuration, enable ports
- * 10100, 20100, and 30100. Also enable outbound connections to Azure Storage
- * on port 443. For more details see:
+ * supported. For more details, see:
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+ * @member {string}
+ * [poolInfo.autoPoolSpecification.pool.networkConfiguration.dynamicVNetAssignmentScope]
+ * Possible values include: 'none', 'job'
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration]
  * Pool endpoint configuration is only supported on pools with the
@@ -11712,20 +11452,6 @@ export interface PoolUpdatePropertiesParameter {
 
 /**
  * @class
- * Initializes a new instance of the PoolUpgradeOSParameter class.
- * @constructor
- * @summary Options for upgrading the operating system of compute nodes in a
- * pool.
- *
- * @member {string} targetOSVersion The Azure Guest OS version to be installed
- * on the virtual machines in the pool.
- */
-export interface PoolUpgradeOSParameter {
-  targetOSVersion: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the PoolPatchParameter class.
  * @constructor
  * @summary The set of changes to be made to a pool.
@@ -11834,9 +11560,9 @@ export interface PoolPatchParameter {
  * subtasks.
  * @member {moment.duration} [constraints.maxWallClockTime] If this is not
  * specified, there is no time limit on how long the task may run.
- * @member {moment.duration} [constraints.retentionTime] The default is
- * infinite, i.e. the task directory will be retained until the compute node is
- * removed or reimaged.
+ * @member {moment.duration} [constraints.retentionTime] The default is 7 days,
+ * i.e. the task directory will be retained for 7 days unless the compute node
+ * is removed or the job is deleted.
  * @member {number} [constraints.maxTaskRetryCount] Note that this value
  * specifically controls the number of retries for the task executable due to a
  * nonzero exit code. The Batch service will try the task once, and may then
@@ -11844,8 +11570,7 @@ export interface PoolPatchParameter {
  * tries the task up to 4 times (one initial try and 3 retries). If the maximum
  * retry count is 0, the Batch service does not retry the task after the first
  * attempt. If the maximum retry count is -1, the Batch service retries the
- * task without limit. Resource files and application packages are only
- * downloaded again if the task is retried on a new compute node.
+ * task without limit.
  */
 export interface TaskUpdateParameter {
   constraints?: TaskConstraints;
@@ -12656,51 +12381,6 @@ export interface PoolUpdatePropertiesOptions {
   clientRequestId?: string;
   returnClientRequestId?: boolean;
   ocpDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the PoolUpgradeOSOptions class.
- * @constructor
- * Additional parameters for upgradeOS operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * @member {uuid} [clientRequestId] The caller-generated request identity, in
- * the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id in the response. Default value: false .
- * @member {date} [ocpDate] The time the request was issued. Client libraries
- * typically set this to the current system clock time; set it explicitly if
- * you are calling the REST API directly.
- * @member {string} [ifMatch] An ETag value associated with the version of the
- * resource known to the client. The operation will be performed only if the
- * resource's current ETag on the service exactly matches the value specified
- * by the client.
- * @member {string} [ifNoneMatch] An ETag value associated with the version of
- * the resource known to the client. The operation will be performed only if
- * the resource's current ETag on the service does not match the value
- * specified by the client.
- * @member {date} [ifModifiedSince] A timestamp indicating the last modified
- * time of the resource known to the client. The operation will be performed
- * only if the resource on the service has been modified since the specified
- * time.
- * @member {date} [ifUnmodifiedSince] A timestamp indicating the last modified
- * time of the resource known to the client. The operation will be performed
- * only if the resource on the service has not been modified since the
- * specified time.
- */
-export interface PoolUpgradeOSOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-  ifMatch?: string;
-  ifNoneMatch?: string;
-  ifModifiedSince?: Date;
-  ifUnmodifiedSince?: Date;
 }
 
 /**
