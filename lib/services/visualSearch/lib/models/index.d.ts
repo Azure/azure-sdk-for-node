@@ -387,7 +387,7 @@ export interface ImageObject extends MediaObject {
    * image. For example, if the image is of an apple pie, this object includes a count of the
    * number of websites where you can buy an apple pie. To indicate the number of offers in your
    * UX, include badging such as a shopping cart icon that contains the count. When the user clicks
-   * on the icon, use imageInisghtsToken in a subsequent Visual Search API call to get the list of
+   * on the icon, use imageInsightsToken in a subsequent Visual Search API call to get the list of
    * shopping websites.
   */
   readonly insightsMetadata?: ImagesImageMetadata;
@@ -401,7 +401,7 @@ export interface ImageObject extends MediaObject {
   */
   readonly accentColor?: string;
   /**
-   * For interal use only.
+   * For internal use only.
   */
   readonly visualWords?: string;
 }
