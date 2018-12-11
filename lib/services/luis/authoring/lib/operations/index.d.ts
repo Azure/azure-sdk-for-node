@@ -8778,6 +8778,9 @@ export interface Apps {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {boolean} [options.force] A flag to indicate whether to force an
+     * operation.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -8787,7 +8790,7 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+    deleteMethodWithHttpOperationResponse(appId: string, options?: { force? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
      * Deletes an application.
@@ -8795,6 +8798,9 @@ export interface Apps {
      * @param {uuid} appId The application ID.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.force] A flag to indicate whether to force an
+     * operation.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -8821,9 +8827,9 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    deleteMethod(appId: string, options?: { force? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
     deleteMethod(appId: string, callback: ServiceCallback<models.OperationStatus>): void;
-    deleteMethod(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+    deleteMethod(appId: string, options: { force? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
@@ -9380,6 +9386,134 @@ export interface Apps {
     listAvailableCustomPrebuiltDomainsForCulture(culture: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrebuiltDomain[]>;
     listAvailableCustomPrebuiltDomainsForCulture(culture: string, callback: ServiceCallback<models.PrebuiltDomain[]>): void;
     listAvailableCustomPrebuiltDomainsForCulture(culture: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrebuiltDomain[]>): void;
+
+
+    /**
+     * @summary package - Gets published LUIS application package in binary stream
+     * GZip format
+     *
+     * Packages published LUIS application as GZip.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {uuid} slotName The publishing slot name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    packagePublishedApplicationAsGzipWithHttpOperationResponse(appId: string, slotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary package - Gets published LUIS application package in binary stream
+     * GZip format
+     *
+     * Packages published LUIS application as GZip.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {uuid} slotName The publishing slot name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    packagePublishedApplicationAsGzip(appId: string, slotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    packagePublishedApplicationAsGzip(appId: string, slotName: string, callback: ServiceCallback<any>): void;
+    packagePublishedApplicationAsGzip(appId: string, slotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary package - Gets trained LUIS application package in binary stream
+     * GZip format
+     *
+     * Packages trained LUIS application as GZip.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    packageTrainedApplicationAsGzipWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary package - Gets trained LUIS application package in binary stream
+     * GZip format
+     *
+     * Packages trained LUIS application as GZip.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {string} versionId The version ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    packageTrainedApplicationAsGzip(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    packageTrainedApplicationAsGzip(appId: string, versionId: string, callback: ServiceCallback<any>): void;
+    packageTrainedApplicationAsGzip(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 }
 
 /**
@@ -11077,4 +11211,291 @@ export interface Settings {
     update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
     update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, callback: ServiceCallback<models.OperationStatus>): void;
     update(appId: string, versionId: string, listOfAppVersionSettingObject: models.AppVersionSettingObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+}
+
+/**
+ * @class
+ * AzureAccounts
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the LUISAuthoringClient.
+ */
+export interface AzureAccounts {
+
+
+    /**
+     * @summary apps - Assign a LUIS azure account to an application
+     *
+     * Assigns an azure account to the application.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.azureAccountInfoObject] The azure account
+     * information object.
+     *
+     * @param {string} options.azureAccountInfoObject.azureSubscriptionId The id
+     * for the azure subscription.
+     *
+     * @param {string} options.azureAccountInfoObject.resourceGroup The azure
+     * resource group name.
+     *
+     * @param {string} options.azureAccountInfoObject.accountName The azure account
+     * name.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    assignToAppWithHttpOperationResponse(appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary apps - Assign a LUIS azure account to an application
+     *
+     * Assigns an azure account to the application.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.azureAccountInfoObject] The azure account
+     * information object.
+     *
+     * @param {string} options.azureAccountInfoObject.azureSubscriptionId The id
+     * for the azure subscription.
+     *
+     * @param {string} options.azureAccountInfoObject.resourceGroup The azure
+     * resource group name.
+     *
+     * @param {string} options.azureAccountInfoObject.accountName The azure account
+     * name.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    assignToApp(appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    assignToApp(appId: string, callback: ServiceCallback<any>): void;
+    assignToApp(appId: string, options: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary apps - Get LUIS azure accounts assigned to the application
+     *
+     * Gets the LUIS azure accounts assigned to the application for the user using
+     * his ARM token.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getAssignedWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary apps - Get LUIS azure accounts assigned to the application
+     *
+     * Gets the LUIS azure accounts assigned to the application for the user using
+     * his ARM token.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getAssigned(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getAssigned(appId: string, callback: ServiceCallback<any>): void;
+    getAssigned(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary apps - Removes an assigned LUIS azure account from an application
+     *
+     * Removes assigned azure account from the application.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.azureAccountInfoObject] The azure account
+     * information object.
+     *
+     * @param {string} options.azureAccountInfoObject.azureSubscriptionId The id
+     * for the azure subscription.
+     *
+     * @param {string} options.azureAccountInfoObject.resourceGroup The azure
+     * resource group name.
+     *
+     * @param {string} options.azureAccountInfoObject.accountName The azure account
+     * name.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    removeFromAppWithHttpOperationResponse(appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary apps - Removes an assigned LUIS azure account from an application
+     *
+     * Removes assigned azure account from the application.
+     *
+     * @param {uuid} appId The application ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.azureAccountInfoObject] The azure account
+     * information object.
+     *
+     * @param {string} options.azureAccountInfoObject.azureSubscriptionId The id
+     * for the azure subscription.
+     *
+     * @param {string} options.azureAccountInfoObject.resourceGroup The azure
+     * resource group name.
+     *
+     * @param {string} options.azureAccountInfoObject.accountName The azure account
+     * name.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    removeFromApp(appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    removeFromApp(appId: string, callback: ServiceCallback<any>): void;
+    removeFromApp(appId: string, options: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary user - Get LUIS azure accounts
+     *
+     * Gets the LUIS azure accounts for the user using his ARM token.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getUserLUISAccountsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary user - Get LUIS azure accounts
+     *
+     * Gets the LUIS azure accounts for the user using his ARM token.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getUserLUISAccounts(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getUserLUISAccounts(callback: ServiceCallback<any>): void;
+    getUserLUISAccounts(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 }
