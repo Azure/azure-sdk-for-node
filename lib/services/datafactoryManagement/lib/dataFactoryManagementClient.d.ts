@@ -59,6 +59,7 @@ export default class DataFactoryManagementClient extends AzureServiceClient {
   operations: operations.Operations;
   factories: operations.Factories;
   integrationRuntimes: operations.IntegrationRuntimes;
+  integrationRuntimeObjectMetadata: operations.IntegrationRuntimeObjectMetadata;
   integrationRuntimeNodes: operations.IntegrationRuntimeNodes;
   linkedServices: operations.LinkedServices;
   datasets: operations.Datasets;

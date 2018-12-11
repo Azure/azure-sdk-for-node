@@ -1307,6 +1307,38 @@ export interface Operation {
 }
 
 /**
+ * The request payload of get SSIS object metadata.
+ */
+export interface GetSsisObjectMetadataRequest {
+  /**
+   * Metadata path.
+   */
+  metadataPath?: string;
+}
+
+/**
+ * The status of the operation.
+ */
+export interface SsisObjectMetadataStatusResponse {
+  /**
+   * The status of the operation.
+   */
+  status?: string;
+  /**
+   * The operation name.
+   */
+  name?: string;
+  /**
+   * The operation properties.
+   */
+  properties?: string;
+  /**
+   * The operation error message.
+   */
+  error?: string;
+}
+
+/**
  * Referenced dependency.
  */
 export interface DependencyReference {
@@ -7512,6 +7544,42 @@ export interface IntegrationRuntimeNodeIpAddress {
    * The IP address of self-hosted integration runtime node.
   */
   readonly ipAddress?: string;
+}
+
+/**
+ * SSIS object metadata.
+*/
+export interface SsisObjectMetadata {
+  /**
+   * Metadata id.
+  */
+  id?: number;
+  /**
+   * Metadata name.
+  */
+  name?: string;
+  /**
+   * Metadata description.
+  */
+  description?: string;
+  /**
+   * Polymorphic Discriminator
+  */
+  type: string;
+}
+
+/**
+ * A list of SSIS object metadata.
+*/
+export interface SsisObjectMetadataListResponse {
+  /**
+   * List of SSIS object metadata.
+  */
+  value?: SsisObjectMetadata[];
+  /**
+   * The link to the next page of results, if any remaining results exist.
+  */
+  nextLink?: string;
 }
 
 /**
