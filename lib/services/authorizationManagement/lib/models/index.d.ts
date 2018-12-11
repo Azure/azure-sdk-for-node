@@ -128,7 +128,7 @@ export interface RoleAssignmentFilter {
    */
   principalId?: string;
   /**
-   * The Delegation flag for the roleassignment
+   * The Delegation flag for the role assignment
    */
   canDelegate?: boolean;
 }
@@ -168,7 +168,7 @@ export interface RoleAssignment {
    */
   principalType?: string;
   /**
-   * The Delegation flag for the roleassignment
+   * The Delegation flag for the role assignment
    */
   canDelegate?: boolean;
 }
@@ -193,7 +193,7 @@ export interface RoleAssignmentCreateParameters {
    */
   principalType?: string;
   /**
-   * The delgation flag used for creating a role assignment
+   * The delegation flag used for creating a role assignment
    */
   canDelegate?: boolean;
 }
