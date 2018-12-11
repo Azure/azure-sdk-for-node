@@ -742,11 +742,11 @@ export interface ChildAvailabilityStatuses {
 
 /**
  * @class
- * Children
+ * ChildResources
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the MicrosoftResourceHealth.
  */
-export interface Children {
+export interface ChildResources {
 
 
     /**
