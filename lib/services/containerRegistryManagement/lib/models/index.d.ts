@@ -267,12 +267,13 @@ export interface StorageAccountProperties {
  *
  * @member {string} [action] The action of virtual network rule. Possible
  * values include: 'Allow'. Default value: 'Allow' .
- * @member {string} id Resource ID of a subnet, for example:
+ * @member {string} virtualNetworkResourceId Resource ID of a subnet, for
+ * example:
  * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
  */
 export interface VirtualNetworkRule {
   action?: string;
-  id: string;
+  virtualNetworkResourceId: string;
 }
 
 /**
@@ -283,12 +284,12 @@ export interface VirtualNetworkRule {
  *
  * @member {string} [action] The action of IP ACL rule. Possible values
  * include: 'Allow'. Default value: 'Allow' .
- * @member {string} value Specifies the IP or IP range in CIDR format. Only
- * IPV4 address is allowed.
+ * @member {string} iPAddressOrRange Specifies the IP or IP range in CIDR
+ * format. Only IPV4 address is allowed.
  */
 export interface IPRule {
   action?: string;
-  value: string;
+  iPAddressOrRange: string;
 }
 
 /**
