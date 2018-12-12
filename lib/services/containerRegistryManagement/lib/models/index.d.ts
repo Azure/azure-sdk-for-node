@@ -263,13 +263,33 @@ export interface StorageAccountProperties {
  * @class
  * Initializes a new instance of the VirtualNetworkRule class.
  * @constructor
- * The virtual network rule for a container registry.
+ * Virtual network rule.
  *
- * @member {string} id Resource ID of a subnet, for example:
+ * @member {string} [action] The action of virtual network rule. Possible
+ * values include: 'Allow'. Default value: 'Allow' .
+ * @member {string} virtualNetworkResourceId Resource ID of a subnet, for
+ * example:
  * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
  */
 export interface VirtualNetworkRule {
-  id: string;
+  action?: string;
+  virtualNetworkResourceId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IPRule class.
+ * @constructor
+ * IP rule with specific IP or IP range in CIDR format.
+ *
+ * @member {string} [action] The action of IP ACL rule. Possible values
+ * include: 'Allow'. Default value: 'Allow' .
+ * @member {string} iPAddressOrRange Specifies the IP or IP range in CIDR
+ * format. Only IPV4 address is allowed.
+ */
+export interface IPRule {
+  action?: string;
+  iPAddressOrRange: string;
 }
 
 /**
@@ -282,10 +302,12 @@ export interface VirtualNetworkRule {
  * other rules match. Possible values include: 'Allow', 'Deny'. Default value:
  * 'Allow' .
  * @member {array} [virtualNetworkRules] The virtual network rules.
+ * @member {array} [ipRules] The IP ACL rules.
  */
 export interface NetworkRuleSet {
   defaultAction: string;
   virtualNetworkRules?: VirtualNetworkRule[];
+  ipRules?: IPRule[];
 }
 
 /**
@@ -346,6 +368,7 @@ export interface Resource extends BaseResource {
  * or deny when no other rules match. Possible values include: 'Allow', 'Deny'
  * @member {array} [networkRuleSet.virtualNetworkRules] The virtual network
  * rules.
+ * @member {array} [networkRuleSet.ipRules] The IP ACL rules.
  */
 export interface Registry extends Resource {
   sku: Sku;
@@ -384,6 +407,7 @@ export interface Registry extends Resource {
  * or deny when no other rules match. Possible values include: 'Allow', 'Deny'
  * @member {array} [networkRuleSet.virtualNetworkRules] The virtual network
  * rules.
+ * @member {array} [networkRuleSet.ipRules] The IP ACL rules.
  */
 export interface RegistryUpdateParameters {
   tags?: { [propertyName: string]: string };
@@ -1314,7 +1338,7 @@ export interface AuthInfo {
  *
  * @member {string} sourceControlType The type of source control service.
  * Possible values include: 'Github', 'VisualStudioTeamService'
- * @member {string} repositoryUrl The full URL to the source code respository
+ * @member {string} repositoryUrl The full URL to the source code repository
  * @member {string} [branch] The branch name of the source code.
  * @member {object} [sourceControlAuthProperties] The authorization properties
  * for accessing the source code repository and to set up
@@ -1349,7 +1373,7 @@ export interface SourceProperties {
  * control service. Possible values include: 'Github',
  * 'VisualStudioTeamService'
  * @member {string} [sourceRepository.repositoryUrl] The full URL to the source
- * code respository
+ * code repository
  * @member {string} [sourceRepository.branch] The branch name of the source
  * code.
  * @member {object} [sourceRepository.sourceControlAuthProperties] The
@@ -1545,7 +1569,7 @@ export interface AuthInfoUpdateParameters {
  *
  * @member {string} [sourceControlType] The type of source control service.
  * Possible values include: 'Github', 'VisualStudioTeamService'
- * @member {string} [repositoryUrl] The full URL to the source code respository
+ * @member {string} [repositoryUrl] The full URL to the source code repository
  * @member {string} [branch] The branch name of the source code.
  * @member {object} [sourceControlAuthProperties] The authorization properties
  * for accessing the source code repository and to set up
@@ -1580,7 +1604,7 @@ export interface SourceUpdateParameters {
  * control service. Possible values include: 'Github',
  * 'VisualStudioTeamService'
  * @member {string} [sourceRepository.repositoryUrl] The full URL to the source
- * code respository
+ * code repository
  * @member {string} [sourceRepository.branch] The branch name of the source
  * code.
  * @member {object} [sourceRepository.sourceControlAuthProperties] The
@@ -1749,7 +1773,7 @@ export interface Argument {
  * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
  * number of cores required for the run.
  * @member {string} [sourceLocation] The URL(absolute or relative) of the
- * source context. It can be an URL to a tar or git repoistory.
+ * source context. It can be an URL to a tar or git repository.
  * If it is relative URL, the relative path should be obtained from calling
  * listBuildSourceUploadUrl API.
  */
@@ -1808,7 +1832,7 @@ export interface SetValue {
  * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
  * number of cores required for the run.
  * @member {string} [sourceLocation] The URL(absolute or relative) of the
- * source context. It can be an URL to a tar or git repoistory.
+ * source context. It can be an URL to a tar or git repository.
  * If it is relative URL, the relative path should be obtained from calling
  * listBuildSourceUploadUrl API.
  */
@@ -1864,7 +1888,7 @@ export interface TaskRunRequest extends RunRequest {
  * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
  * number of cores required for the run.
  * @member {string} [sourceLocation] The URL(absolute or relative) of the
- * source context. It can be an URL to a tar or git repoistory.
+ * source context. It can be an URL to a tar or git repository.
  * If it is relative URL, the relative path should be obtained from calling
  * listBuildSourceUploadUrl API.
  */

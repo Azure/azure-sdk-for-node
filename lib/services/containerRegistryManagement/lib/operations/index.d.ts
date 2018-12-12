@@ -326,6 +326,8 @@ export interface Registries {
      * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
      * network rules.
      *
+     * @param {array} [registry.networkRuleSet.ipRules] The IP ACL rules.
+     *
      * @param {string} registry.location The location of the resource. This cannot
      * be changed after the resource is created.
      *
@@ -378,6 +380,8 @@ export interface Registries {
      *
      * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
      * network rules.
+     *
+     * @param {array} [registry.networkRuleSet.ipRules] The IP ACL rules.
      *
      * @param {string} registry.location The location of the resource. This cannot
      * be changed after the resource is created.
@@ -518,6 +522,9 @@ export interface Registries {
      * @param {array} [registryUpdateParameters.networkRuleSet.virtualNetworkRules]
      * The virtual network rules.
      *
+     * @param {array} [registryUpdateParameters.networkRuleSet.ipRules] The IP ACL
+     * rules.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -572,6 +579,9 @@ export interface Registries {
      *
      * @param {array} [registryUpdateParameters.networkRuleSet.virtualNetworkRules]
      * The virtual network rules.
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.ipRules] The IP ACL
+     * rules.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1393,6 +1403,8 @@ export interface Registries {
      * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
      * network rules.
      *
+     * @param {array} [registry.networkRuleSet.ipRules] The IP ACL rules.
+     *
      * @param {string} registry.location The location of the resource. This cannot
      * be changed after the resource is created.
      *
@@ -1445,6 +1457,8 @@ export interface Registries {
      *
      * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
      * network rules.
+     *
+     * @param {array} [registry.networkRuleSet.ipRules] The IP ACL rules.
      *
      * @param {string} registry.location The location of the resource. This cannot
      * be changed after the resource is created.
@@ -1585,6 +1599,9 @@ export interface Registries {
      * @param {array} [registryUpdateParameters.networkRuleSet.virtualNetworkRules]
      * The virtual network rules.
      *
+     * @param {array} [registryUpdateParameters.networkRuleSet.ipRules] The IP ACL
+     * rules.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1639,6 +1656,9 @@ export interface Registries {
      *
      * @param {array} [registryUpdateParameters.networkRuleSet.virtualNetworkRules]
      * The virtual network rules.
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.ipRules] The IP ACL
+     * rules.
      *
      * @param {object} [options] Optional Parameters.
      *
