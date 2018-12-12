@@ -59,6 +59,7 @@ export default class RecoveryServicesClient extends AzureServiceClient {
   vaultCertificates: operations.VaultCertificates;
   registeredIdentities: operations.RegisteredIdentities;
   replicationUsages: operations.ReplicationUsages;
+  checkResourceNameAvailability: operations.CheckResourceNameAvailability;
   vaults: operations.Vaults;
   operations: operations.Operations;
   vaultExtendedInfoOperations: operations.VaultExtendedInfoOperations;

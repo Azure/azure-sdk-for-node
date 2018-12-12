@@ -327,6 +327,35 @@ export interface Resource extends BaseResource {
 }
 
 /**
+ * Resource information, as sent to the regional resource provider from Global RP.
+*/
+export interface ResourceNameAvailabilityInput {
+  type?: string;
+  name?: string;
+}
+
+/**
+ * Response for check name availability API. Resource provider will set availability as true |
+ * false.
+*/
+export interface ResourceNameAvailabilityResponse {
+  nameAvailable?: boolean;
+  reason?: string;
+  message?: string;
+}
+
+/**
+ * Response for check name availability API. Resource provider will set availability as true |
+ * false.
+*/
+export interface ResourceNameAvailabilityResponseResource extends Resource {
+  /**
+   * ResourceNameAvailabilityResponseResource properties
+  */
+  properties?: ResourceNameAvailabilityResponse;
+}
+
+/**
  * Identifies the unique system identifier for each Azure resource.
 */
 export interface Sku {

@@ -256,6 +256,93 @@ export interface ReplicationUsages {
 
 /**
  * @class
+ * CheckResourceNameAvailability
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the RecoveryServicesClient.
+ */
+export interface CheckResourceNameAvailability {
+
+
+    /**
+     * @summary API to check for resource name availability.
+     * A name is available if no other resource exists that has the same
+     * SubscriptionId, Resource Name and Type
+     * or if one or more such resources exist, each of these must be GCed and their
+     * time of deletion be more than 24 Hours Ago
+     *
+     * @param {string} location Location of the resource
+     *
+     * @param {object} input Contains information about Resource type and Resource
+     * name
+     *
+     * @param {string} [input.type]
+     *
+     * @param {string} [input.name]
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceNameAvailabilityResponseResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    postWithHttpOperationResponse(location: string, input: models.ResourceNameAvailabilityInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceNameAvailabilityResponseResource>>;
+
+    /**
+     * @summary API to check for resource name availability.
+     * A name is available if no other resource exists that has the same
+     * SubscriptionId, Resource Name and Type
+     * or if one or more such resources exist, each of these must be GCed and their
+     * time of deletion be more than 24 Hours Ago
+     *
+     * @param {string} location Location of the resource
+     *
+     * @param {object} input Contains information about Resource type and Resource
+     * name
+     *
+     * @param {string} [input.type]
+     *
+     * @param {string} [input.name]
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceNameAvailabilityResponseResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceNameAvailabilityResponseResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceNameAvailabilityResponseResource}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    post(location: string, input: models.ResourceNameAvailabilityInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceNameAvailabilityResponseResource>;
+    post(location: string, input: models.ResourceNameAvailabilityInput, callback: ServiceCallback<models.ResourceNameAvailabilityResponseResource>): void;
+    post(location: string, input: models.ResourceNameAvailabilityInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceNameAvailabilityResponseResource>): void;
+}
+
+/**
+ * @class
  * Vaults
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the RecoveryServicesClient.
