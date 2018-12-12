@@ -545,6 +545,21 @@ export interface PublicIPAddressDnsSettings {
 }
 
 /**
+ * Contains the DDoS protection settings of the public IP.
+ */
+export interface DdosSettings {
+  /**
+   * The DDoS custom policy associated with the public IP.
+   */
+  ddosCustomPolicy?: SubResource;
+  /**
+   * The DDoS protection policy customizability of the public IP. Only standard coverage will have
+   * the ability to be customized. Possible values include: 'Basic', 'Standard'
+   */
+  protectionCoverage?: string;
+}
+
+/**
  * Contains the IpTag associated with the object
  */
 export interface IpTag {
@@ -584,6 +599,10 @@ export interface PublicIPAddress extends Resource {
    * The FQDN of the DNS record associated with the public IP address.
    */
   dnsSettings?: PublicIPAddressDnsSettings;
+  /**
+   * The DDoS protection custom policy associated with the public IP address.
+   */
+  ddosSettings?: DdosSettings;
   /**
    * The list of tags associated with the public IP address.
    */

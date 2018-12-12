@@ -18209,6 +18209,20 @@ export interface NetworkInterfaceTapConfigurations {
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
      *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
+     *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
      * The list of tags associated with the public IP address.
@@ -18592,6 +18606,20 @@ export interface NetworkInterfaceTapConfigurations {
      * that resolves to this public IP address. If the reverseFqdn is specified,
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
@@ -19119,6 +19147,20 @@ export interface NetworkInterfaceTapConfigurations {
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
      *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
+     *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
      * The list of tags associated with the public IP address.
@@ -19502,6 +19544,20 @@ export interface NetworkInterfaceTapConfigurations {
      * that resolves to this public IP address. If the reverseFqdn is specified,
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
@@ -26657,6 +26713,17 @@ export interface PublicIPAddresses {
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
      *
+     * @param {object} [parameters.ddosSettings] The DDoS protection custom policy
+     * associated with the public IP address.
+     *
+     * @param {object} [parameters.ddosSettings.ddosCustomPolicy] The DDoS custom
+     * policy associated with the public IP.
+     *
+     * @param {string} [parameters.ddosSettings.protectionCoverage] The DDoS
+     * protection policy customizability of the public IP. Only standard coverage
+     * will have the ability to be customized. Possible values include: 'Basic',
+     * 'Standard'
+     *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP address.
      *
@@ -26744,6 +26811,17 @@ export interface PublicIPAddresses {
      * this public IP address. If the reverseFqdn is specified, then a PTR DNS
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
+     *
+     * @param {object} [parameters.ddosSettings] The DDoS protection custom policy
+     * associated with the public IP address.
+     *
+     * @param {object} [parameters.ddosSettings.ddosCustomPolicy] The DDoS custom
+     * policy associated with the public IP.
+     *
+     * @param {string} [parameters.ddosSettings.protectionCoverage] The DDoS
+     * protection policy customizability of the public IP. Only standard coverage
+     * will have the ability to be customized. Possible values include: 'Basic',
+     * 'Standard'
      *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP address.
@@ -27308,6 +27386,17 @@ export interface PublicIPAddresses {
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
      *
+     * @param {object} [parameters.ddosSettings] The DDoS protection custom policy
+     * associated with the public IP address.
+     *
+     * @param {object} [parameters.ddosSettings.ddosCustomPolicy] The DDoS custom
+     * policy associated with the public IP.
+     *
+     * @param {string} [parameters.ddosSettings.protectionCoverage] The DDoS
+     * protection policy customizability of the public IP. Only standard coverage
+     * will have the ability to be customized. Possible values include: 'Basic',
+     * 'Standard'
+     *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP address.
      *
@@ -27395,6 +27484,17 @@ export interface PublicIPAddresses {
      * this public IP address. If the reverseFqdn is specified, then a PTR DNS
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
+     *
+     * @param {object} [parameters.ddosSettings] The DDoS protection custom policy
+     * associated with the public IP address.
+     *
+     * @param {object} [parameters.ddosSettings.ddosCustomPolicy] The DDoS custom
+     * policy associated with the public IP.
+     *
+     * @param {string} [parameters.ddosSettings.protectionCoverage] The DDoS
+     * protection policy customizability of the public IP. Only standard coverage
+     * will have the ability to be customized. Possible values include: 'Basic',
+     * 'Standard'
      *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP address.
@@ -40984,6 +41084,20 @@ export interface VirtualNetworkTaps {
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
      *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
+     *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
      * The list of tags associated with the public IP address.
@@ -41343,6 +41457,20 @@ export interface VirtualNetworkTaps {
      * that resolves to this public IP address. If the reverseFqdn is specified,
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
      *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
@@ -41958,6 +42086,20 @@ export interface VirtualNetworkTaps {
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
      *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
+     *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
      * The list of tags associated with the public IP address.
@@ -42317,6 +42459,20 @@ export interface VirtualNetworkTaps {
      * that resolves to this public IP address. If the reverseFqdn is specified,
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
      *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
