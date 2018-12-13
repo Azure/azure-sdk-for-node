@@ -436,7 +436,8 @@ export interface Alert extends Resource {
   */
   readonly actionTaken?: string;
   /**
-   * Estimated severity of this alert
+   * Estimated severity of this alert. Possible values include: 'Silent', 'Information', 'Low',
+   * 'High'
   */
   readonly reportedSeverity?: string;
   /**
@@ -456,6 +457,10 @@ export interface Alert extends Resource {
    * Whether this alert can be investigated with Azure Security Center
   */
   readonly canBeInvestigated?: boolean;
+  /**
+   * Whether this alert is for incident type or not (otherwise - single alert)
+  */
+  readonly isIncident?: boolean;
   /**
    * objects that are related to this alerts
   */
