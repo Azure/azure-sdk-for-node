@@ -110,8 +110,8 @@ export interface Resource extends BaseResource {
  * @constructor
  * Information about the storage blob based dead letter destination.
  *
- * @member {string} [resourceId] The Azure Resource ID of the storage blob
- * container that is the destination of the deadletter events. For example:
+ * @member {string} [resourceId] The Azure Resource ID of the storage account
+ * that is the destination of the deadletter events. For example:
  * /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/microsoft.Storage/storageAccounts/{StorageAccountName}
  * @member {string} [blobContainerName] The name of the Storage blob container
  * that is the destination of the deadletter events
