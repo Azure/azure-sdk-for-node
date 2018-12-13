@@ -2786,7 +2786,7 @@ MigrateSqlServerSqlMITaskOutput {
   /**
    * List of orphaned users.
   */
-  readonly orphanedUsers?: OrphanedUserInfo[];
+  readonly orphanedUsersInfo?: OrphanedUserInfo[];
   /**
    * Selected databases as a map from database name to database id
   */
