@@ -201,7 +201,7 @@ export interface StreamingJobs {
      * number of streaming units to use for the streaming job. The name property of
      * the transformation is required when specifying this property in a PUT
      * request. This property cannot be modify via a PATCH operation. You must use
-     * the PATCH API available for the individual tranformation.
+     * the PATCH API available for the individual transformation.
      *
      * @param {number} [streamingJob.transformation.streamingUnits] Specifies the
      * number of streaming units that the streaming job uses.
@@ -240,7 +240,7 @@ export interface StreamingJobs {
      *
      * @param {string} [options.ifMatch] The ETag of the streaming job. Omit this
      * value to always overwrite the current record set. Specify the last-seen ETag
-     * value to prevent accidentally overwritting concurrent changes.
+     * value to prevent accidentally overwriting concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new streaming
      * job to be created, but to prevent updating an existing record set. Other
@@ -320,7 +320,7 @@ export interface StreamingJobs {
      * number of streaming units to use for the streaming job. The name property of
      * the transformation is required when specifying this property in a PUT
      * request. This property cannot be modify via a PATCH operation. You must use
-     * the PATCH API available for the individual tranformation.
+     * the PATCH API available for the individual transformation.
      *
      * @param {number} [streamingJob.transformation.streamingUnits] Specifies the
      * number of streaming units that the streaming job uses.
@@ -359,7 +359,7 @@ export interface StreamingJobs {
      *
      * @param {string} [options.ifMatch] The ETag of the streaming job. Omit this
      * value to always overwrite the current record set. Specify the last-seen ETag
-     * value to prevent accidentally overwritting concurrent changes.
+     * value to prevent accidentally overwriting concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new streaming
      * job to be created, but to prevent updating an existing record set. Other
@@ -464,7 +464,7 @@ export interface StreamingJobs {
      * number of streaming units to use for the streaming job. The name property of
      * the transformation is required when specifying this property in a PUT
      * request. This property cannot be modify via a PATCH operation. You must use
-     * the PATCH API available for the individual tranformation.
+     * the PATCH API available for the individual transformation.
      *
      * @param {number} [streamingJob.transformation.streamingUnits] Specifies the
      * number of streaming units that the streaming job uses.
@@ -503,7 +503,7 @@ export interface StreamingJobs {
      *
      * @param {string} [options.ifMatch] The ETag of the streaming job. Omit this
      * value to always overwrite the current record set. Specify the last-seen ETag
-     * value to prevent accidentally overwritting concurrent changes.
+     * value to prevent accidentally overwriting concurrent changes.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -585,7 +585,7 @@ export interface StreamingJobs {
      * number of streaming units to use for the streaming job. The name property of
      * the transformation is required when specifying this property in a PUT
      * request. This property cannot be modify via a PATCH operation. You must use
-     * the PATCH API available for the individual tranformation.
+     * the PATCH API available for the individual transformation.
      *
      * @param {number} [streamingJob.transformation.streamingUnits] Specifies the
      * number of streaming units that the streaming job uses.
@@ -624,7 +624,7 @@ export interface StreamingJobs {
      *
      * @param {string} [options.ifMatch] The ETag of the streaming job. Omit this
      * value to always overwrite the current record set. Specify the last-seen ETag
-     * value to prevent accidentally overwritting concurrent changes.
+     * value to prevent accidentally overwriting concurrent changes.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1152,7 +1152,7 @@ export interface StreamingJobs {
      * number of streaming units to use for the streaming job. The name property of
      * the transformation is required when specifying this property in a PUT
      * request. This property cannot be modify via a PATCH operation. You must use
-     * the PATCH API available for the individual tranformation.
+     * the PATCH API available for the individual transformation.
      *
      * @param {number} [streamingJob.transformation.streamingUnits] Specifies the
      * number of streaming units that the streaming job uses.
@@ -1191,7 +1191,7 @@ export interface StreamingJobs {
      *
      * @param {string} [options.ifMatch] The ETag of the streaming job. Omit this
      * value to always overwrite the current record set. Specify the last-seen ETag
-     * value to prevent accidentally overwritting concurrent changes.
+     * value to prevent accidentally overwriting concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new streaming
      * job to be created, but to prevent updating an existing record set. Other
@@ -1271,7 +1271,7 @@ export interface StreamingJobs {
      * number of streaming units to use for the streaming job. The name property of
      * the transformation is required when specifying this property in a PUT
      * request. This property cannot be modify via a PATCH operation. You must use
-     * the PATCH API available for the individual tranformation.
+     * the PATCH API available for the individual transformation.
      *
      * @param {number} [streamingJob.transformation.streamingUnits] Specifies the
      * number of streaming units that the streaming job uses.
@@ -1310,7 +1310,7 @@ export interface StreamingJobs {
      *
      * @param {string} [options.ifMatch] The ETag of the streaming job. Omit this
      * value to always overwrite the current record set. Specify the last-seen ETag
-     * value to prevent accidentally overwritting concurrent changes.
+     * value to prevent accidentally overwriting concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new streaming
      * job to be created, but to prevent updating an existing record set. Other
@@ -1726,7 +1726,7 @@ export interface Inputs {
      *
      * @param {string} [options.ifMatch] The ETag of the input. Omit this value to
      * always overwrite the current input. Specify the last-seen ETag value to
-     * prevent accidentally overwritting concurrent changes.
+     * prevent accidentally overwriting concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new input to be
      * created, but to prevent updating an existing input. Other values will result
@@ -1776,7 +1776,7 @@ export interface Inputs {
      *
      * @param {string} [options.ifMatch] The ETag of the input. Omit this value to
      * always overwrite the current input. Specify the last-seen ETag value to
-     * prevent accidentally overwritting concurrent changes.
+     * prevent accidentally overwriting concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new input to be
      * created, but to prevent updating an existing input. Other values will result
@@ -1849,7 +1849,7 @@ export interface Inputs {
      *
      * @param {string} [options.ifMatch] The ETag of the input. Omit this value to
      * always overwrite the current input. Specify the last-seen ETag value to
-     * prevent accidentally overwritting concurrent changes.
+     * prevent accidentally overwriting concurrent changes.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1899,7 +1899,7 @@ export interface Inputs {
      *
      * @param {string} [options.ifMatch] The ETag of the input. Omit this value to
      * always overwrite the current input. Specify the last-seen ETag value to
-     * prevent accidentally overwritting concurrent changes.
+     * prevent accidentally overwriting concurrent changes.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2077,7 +2077,7 @@ export interface Inputs {
      *
      * @param {string} [options.select] The $select OData query parameter. This is
      * a comma-separated list of structural properties to include in the response,
-     * or “*” to include all properties. By default, all properties are returned
+     * or "*" to include all properties. By default, all properties are returned
      * except diagnostics. Currently only accepts '*' as a valid value.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2104,7 +2104,7 @@ export interface Inputs {
      *
      * @param {string} [options.select] The $select OData query parameter. This is
      * a comma-separated list of structural properties to include in the response,
-     * or “*” to include all properties. By default, all properties are returned
+     * or "*" to include all properties. By default, all properties are returned
      * except diagnostics. Currently only accepts '*' as a valid value.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2457,7 +2457,7 @@ export interface Outputs {
      *
      * @param {string} [options.ifMatch] The ETag of the output. Omit this value to
      * always overwrite the current output. Specify the last-seen ETag value to
-     * prevent accidentally overwritting concurrent changes.
+     * prevent accidentally overwriting concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new output to be
      * created, but to prevent updating an existing output. Other values will
@@ -2506,7 +2506,7 @@ export interface Outputs {
      *
      * @param {string} [options.ifMatch] The ETag of the output. Omit this value to
      * always overwrite the current output. Specify the last-seen ETag value to
-     * prevent accidentally overwritting concurrent changes.
+     * prevent accidentally overwriting concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new output to be
      * created, but to prevent updating an existing output. Other values will
@@ -2578,7 +2578,7 @@ export interface Outputs {
      *
      * @param {string} [options.ifMatch] The ETag of the output. Omit this value to
      * always overwrite the current output. Specify the last-seen ETag value to
-     * prevent accidentally overwritting concurrent changes.
+     * prevent accidentally overwriting concurrent changes.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2627,7 +2627,7 @@ export interface Outputs {
      *
      * @param {string} [options.ifMatch] The ETag of the output. Omit this value to
      * always overwrite the current output. Specify the last-seen ETag value to
-     * prevent accidentally overwritting concurrent changes.
+     * prevent accidentally overwriting concurrent changes.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2805,7 +2805,7 @@ export interface Outputs {
      *
      * @param {string} [options.select] The $select OData query parameter. This is
      * a comma-separated list of structural properties to include in the response,
-     * or “*” to include all properties. By default, all properties are returned
+     * or "*" to include all properties. By default, all properties are returned
      * except diagnostics. Currently only accepts '*' as a valid value.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2832,7 +2832,7 @@ export interface Outputs {
      *
      * @param {string} [options.select] The $select OData query parameter. This is
      * a comma-separated list of structural properties to include in the response,
-     * or “*” to include all properties. By default, all properties are returned
+     * or "*" to include all properties. By default, all properties are returned
      * except diagnostics. Currently only accepts '*' as a valid value.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -3179,7 +3179,7 @@ export interface Transformations {
      *
      * @param {string} [options.ifMatch] The ETag of the transformation. Omit this
      * value to always overwrite the current transformation. Specify the last-seen
-     * ETag value to prevent accidentally overwritting concurrent changes.
+     * ETag value to prevent accidentally overwriting concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new
      * transformation to be created, but to prevent updating an existing
@@ -3227,7 +3227,7 @@ export interface Transformations {
      *
      * @param {string} [options.ifMatch] The ETag of the transformation. Omit this
      * value to always overwrite the current transformation. Specify the last-seen
-     * ETag value to prevent accidentally overwritting concurrent changes.
+     * ETag value to prevent accidentally overwriting concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new
      * transformation to be created, but to prevent updating an existing
@@ -3299,7 +3299,7 @@ export interface Transformations {
      *
      * @param {string} [options.ifMatch] The ETag of the transformation. Omit this
      * value to always overwrite the current transformation. Specify the last-seen
-     * ETag value to prevent accidentally overwritting concurrent changes.
+     * ETag value to prevent accidentally overwriting concurrent changes.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3347,7 +3347,7 @@ export interface Transformations {
      *
      * @param {string} [options.ifMatch] The ETag of the transformation. Omit this
      * value to always overwrite the current transformation. Specify the last-seen
-     * ETag value to prevent accidentally overwritting concurrent changes.
+     * ETag value to prevent accidentally overwriting concurrent changes.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3482,7 +3482,7 @@ export interface Functions {
      *
      * @param {string} [options.ifMatch] The ETag of the function. Omit this value
      * to always overwrite the current function. Specify the last-seen ETag value
-     * to prevent accidentally overwritting concurrent changes.
+     * to prevent accidentally overwriting concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new function to
      * be created, but to prevent updating an existing function. Other values will
@@ -3526,7 +3526,7 @@ export interface Functions {
      *
      * @param {string} [options.ifMatch] The ETag of the function. Omit this value
      * to always overwrite the current function. Specify the last-seen ETag value
-     * to prevent accidentally overwritting concurrent changes.
+     * to prevent accidentally overwriting concurrent changes.
      *
      * @param {string} [options.ifNoneMatch] Set to '*' to allow a new function to
      * be created, but to prevent updating an existing function. Other values will
@@ -3593,7 +3593,7 @@ export interface Functions {
      *
      * @param {string} [options.ifMatch] The ETag of the function. Omit this value
      * to always overwrite the current function. Specify the last-seen ETag value
-     * to prevent accidentally overwritting concurrent changes.
+     * to prevent accidentally overwriting concurrent changes.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3637,7 +3637,7 @@ export interface Functions {
      *
      * @param {string} [options.ifMatch] The ETag of the function. Omit this value
      * to always overwrite the current function. Specify the last-seen ETag value
-     * to prevent accidentally overwritting concurrent changes.
+     * to prevent accidentally overwriting concurrent changes.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3815,7 +3815,7 @@ export interface Functions {
      *
      * @param {string} [options.select] The $select OData query parameter. This is
      * a comma-separated list of structural properties to include in the response,
-     * or “*” to include all properties. By default, all properties are returned
+     * or "*" to include all properties. By default, all properties are returned
      * except diagnostics. Currently only accepts '*' as a valid value.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -3842,7 +3842,7 @@ export interface Functions {
      *
      * @param {string} [options.select] The $select OData query parameter. This is
      * a comma-separated list of structural properties to include in the response,
-     * or “*” to include all properties. By default, all properties are returned
+     * or "*" to include all properties. By default, all properties are returned
      * except diagnostics. Currently only accepts '*' as a valid value.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
