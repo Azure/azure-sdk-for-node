@@ -3092,7 +3092,7 @@ export interface Pool {
     /**
      * @summary Updates the properties of the specified pool.
      *
-     * This fully replaces all the updateable properties of the pool. For example,
+     * This fully replaces all the updatable properties of the pool. For example,
      * if the pool has a start task associated with it and if start task is not
      * specified with this request, then the Batch service will remove the existing
      * start task.
@@ -3276,7 +3276,7 @@ export interface Pool {
     /**
      * @summary Updates the properties of the specified pool.
      *
-     * This fully replaces all the updateable properties of the pool. For example,
+     * This fully replaces all the updatable properties of the pool. For example,
      * if the pool has a start task associated with it and if start task is not
      * specified with this request, then the Batch service will remove the existing
      * start task.
@@ -5797,8 +5797,8 @@ export interface Job {
     /**
      * @summary Updates the properties of the specified job.
      *
-     * This fully replaces all the updateable properties of the job. For example,
-     * if the job has constraints associated with it and if constraints is not
+     * This fully replaces all the updatable properties of the job. For example, if
+     * the job has constraints associated with it and if constraints is not
      * specified with this request, then the Batch service will remove the existing
      * constraints.
      *
@@ -6370,8 +6370,8 @@ export interface Job {
     /**
      * @summary Updates the properties of the specified job.
      *
-     * This fully replaces all the updateable properties of the job. For example,
-     * if the job has constraints associated with it and if constraints is not
+     * This fully replaces all the updatable properties of the job. For example, if
+     * the job has constraints associated with it and if constraints is not
      * specified with this request, then the Batch service will remove the existing
      * constraints.
      *
@@ -7662,7 +7662,7 @@ export interface Job {
      *
      * @param {object} [job.jobPreparationTask.userIdentity] The user identity
      * under which the Job Preparation task runs. If omitted, the task runs as a
-     * non-administrative user unique to the task on Windows nodes, or a a
+     * non-administrative user unique to the task on Windows nodes, or a
      * non-administrative user unique to the pool on Linux nodes.
      *
      * @param {boolean} [job.jobPreparationTask.rerunOnNodeRebootAfterSuccess]
@@ -8512,7 +8512,7 @@ export interface Job {
      *
      * @param {object} [job.jobPreparationTask.userIdentity] The user identity
      * under which the Job Preparation task runs. If omitted, the task runs as a
-     * non-administrative user unique to the task on Windows nodes, or a a
+     * non-administrative user unique to the task on Windows nodes, or a
      * non-administrative user unique to the pool on Linux nodes.
      *
      * @param {boolean} [job.jobPreparationTask.rerunOnNodeRebootAfterSuccess]
@@ -12564,7 +12564,7 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.userIdentity]
      * The user identity under which the Job Preparation task runs. If omitted, the
      * task runs as a non-administrative user unique to the task on Windows nodes,
-     * or a a non-administrative user unique to the pool on Linux nodes.
+     * or a non-administrative user unique to the pool on Linux nodes.
      *
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess]
@@ -13563,7 +13563,7 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.userIdentity]
      * The user identity under which the Job Preparation task runs. If omitted, the
      * task runs as a non-administrative user unique to the task on Windows nodes,
-     * or a a non-administrative user unique to the pool on Linux nodes.
+     * or a non-administrative user unique to the pool on Linux nodes.
      *
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess]
@@ -14205,7 +14205,7 @@ export interface JobSchedule {
     /**
      * @summary Updates the properties of the specified job schedule.
      *
-     * This fully replaces all the updateable properties of the job schedule. For
+     * This fully replaces all the updatable properties of the job schedule. For
      * example, if the schedule property is not specified with this request, then
      * the Batch service will remove the existing schedule. Changes to a job
      * schedule only impact jobs created by the schedule after the update has taken
@@ -14582,7 +14582,7 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.userIdentity]
      * The user identity under which the Job Preparation task runs. If omitted, the
      * task runs as a non-administrative user unique to the task on Windows nodes,
-     * or a a non-administrative user unique to the pool on Linux nodes.
+     * or a non-administrative user unique to the pool on Linux nodes.
      *
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess]
@@ -15210,7 +15210,7 @@ export interface JobSchedule {
     /**
      * @summary Updates the properties of the specified job schedule.
      *
-     * This fully replaces all the updateable properties of the job schedule. For
+     * This fully replaces all the updatable properties of the job schedule. For
      * example, if the schedule property is not specified with this request, then
      * the Batch service will remove the existing schedule. Changes to a job
      * schedule only impact jobs created by the schedule after the update has taken
@@ -15587,7 +15587,7 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.userIdentity]
      * The user identity under which the Job Preparation task runs. If omitted, the
      * task runs as a non-administrative user unique to the task on Windows nodes,
-     * or a a non-administrative user unique to the pool on Linux nodes.
+     * or a non-administrative user unique to the pool on Linux nodes.
      *
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess]
@@ -16996,7 +16996,7 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.userIdentity] The user
      * identity under which the Job Preparation task runs. If omitted, the task
      * runs as a non-administrative user unique to the task on Windows nodes, or a
-     * a non-administrative user unique to the pool on Linux nodes.
+     * non-administrative user unique to the pool on Linux nodes.
      *
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess]
@@ -17960,7 +17960,7 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.userIdentity] The user
      * identity under which the Job Preparation task runs. If omitted, the task
      * runs as a non-administrative user unique to the task on Windows nodes, or a
-     * a non-administrative user unique to the pool on Linux nodes.
+     * non-administrative user unique to the pool on Linux nodes.
      *
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess]
@@ -20905,7 +20905,7 @@ export interface ComputeNodeOperations {
      * @summary Updates the password and expiration time of a user account on the
      * specified compute node.
      *
-     * This operation replaces of all the updateable properties of the account. For
+     * This operation replaces of all the updatable properties of the account. For
      * example, if the expiryTime element is not specified, the current value is
      * replaced with the default value, not left unmodified. You can update a user
      * account on a node only when it is in the idle or running state.
@@ -20975,7 +20975,7 @@ export interface ComputeNodeOperations {
      * @summary Updates the password and expiration time of a user account on the
      * specified compute node.
      *
-     * This operation replaces of all the updateable properties of the account. For
+     * This operation replaces of all the updatable properties of the account. For
      * example, if the expiryTime element is not specified, the current value is
      * replaced with the default value, not left unmodified. You can update a user
      * account on a node only when it is in the idle or running state.
