@@ -139,6 +139,7 @@
     "json-stable-stringify": "^1.0.1",
     "minami": "devigned/minami#master",
     "mocha": "^5.2.0",
+    "mocha-junit-reporter": "^1.18.0",
     "nock": "0.16",
     "node-forge": "0.6.30",
     "nyc": "^11.2.1",
@@ -168,6 +169,7 @@
     "ci": "node scripts/unit.js testlist.txt",
     "runtime-install": "node scripts/runtime-install.js",
     "coverage": "node scripts/unit-coverage.js testlistarm.txt testlist.txt",
-    "debug": "node --inspect scripts/unit-arm.js testlistarm.txt"
+    "debug": "node --inspect scripts/unit-arm.js testlistarm.txt",
+    "mocha": "mocha"
   }
 }

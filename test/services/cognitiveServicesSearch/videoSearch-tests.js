@@ -4,11 +4,10 @@
  * license information.
  */
 
-const VideoSearchAPIClient = require('../../../lib/services/videoSearch/lib/videoSearchAPIClient');
+const VideoSearchClient = require('../../../lib/services/videoSearch/lib/videoSearchClient');
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 
 const SuiteBase = require('../../framework/suite-base');
-const should = require('should');
 
 let requiredEnvironment = [
   { name: 'AZURE_VIDEO_SEARCH_KEY', secure: true }
@@ -23,7 +22,7 @@ describe('Cognitive Services Search', function () {
     suite = new SuiteBase(this, testPrefix, requiredEnvironment);
     suite.setupSuite(function () {
       let credentials = new CognitiveServicesCredentials(process.env["AZURE_VIDEO_SEARCH_KEY"]);
-      client = new VideoSearchAPIClient(credentials);
+      client = new VideoSearchClient(credentials);
       done();
     });
   });
