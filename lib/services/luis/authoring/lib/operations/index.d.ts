@@ -8853,11 +8853,11 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ProductionOrStagingEndpointInfo>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    publishWithHttpOperationResponse(appId: string, applicationPublishObject: models.ApplicationPublishObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    publishWithHttpOperationResponse(appId: string, applicationPublishObject: models.ApplicationPublishObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProductionOrStagingEndpointInfo>>;
 
     /**
      * Publishes a specific version of the application.
@@ -8885,7 +8885,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Object} - The deserialized result object.
+     *                      @resolve {ProductionOrStagingEndpointInfo} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8893,15 +8893,17 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *                      {ProductionOrStagingEndpointInfo} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ProductionOrStagingEndpointInfo} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, callback: ServiceCallback<any>): void;
-    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProductionOrStagingEndpointInfo>;
+    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, callback: ServiceCallback<models.ProductionOrStagingEndpointInfo>): void;
+    publish(appId: string, applicationPublishObject: models.ApplicationPublishObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProductionOrStagingEndpointInfo>): void;
 
 
     /**
@@ -9409,7 +9411,7 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    packagePublishedApplicationAsGzipWithHttpOperationResponse(appId: string, slotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    packagePublishedApplicationAsGzipWithHttpOperationResponse(appId: string, slotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
      * @summary package - Gets published LUIS application package in binary stream
@@ -9447,9 +9449,9 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    packagePublishedApplicationAsGzip(appId: string, slotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    packagePublishedApplicationAsGzip(appId: string, slotName: string, callback: ServiceCallback<any>): void;
-    packagePublishedApplicationAsGzip(appId: string, slotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    packagePublishedApplicationAsGzip(appId: string, slotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    packagePublishedApplicationAsGzip(appId: string, slotName: string, callback: ServiceCallback<stream.Readable>): void;
+    packagePublishedApplicationAsGzip(appId: string, slotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 
 
     /**
@@ -9473,7 +9475,7 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    packageTrainedApplicationAsGzipWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    packageTrainedApplicationAsGzipWithHttpOperationResponse(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
      * @summary package - Gets trained LUIS application package in binary stream
@@ -9511,9 +9513,9 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    packageTrainedApplicationAsGzip(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    packageTrainedApplicationAsGzip(appId: string, versionId: string, callback: ServiceCallback<any>): void;
-    packageTrainedApplicationAsGzip(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    packageTrainedApplicationAsGzip(appId: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    packageTrainedApplicationAsGzip(appId: string, versionId: string, callback: ServiceCallback<stream.Readable>): void;
+    packageTrainedApplicationAsGzip(appId: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 }
 
 /**
@@ -11248,11 +11250,11 @@ export interface AzureAccounts {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    assignToAppWithHttpOperationResponse(appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    assignToAppWithHttpOperationResponse(appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
      * @summary apps - Assign a LUIS azure account to an application
@@ -11285,7 +11287,7 @@ export interface AzureAccounts {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Object} - The deserialized result object.
+     *                      @resolve {OperationStatus} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -11293,15 +11295,16 @@ export interface AzureAccounts {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatus} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    assignToApp(appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    assignToApp(appId: string, callback: ServiceCallback<any>): void;
-    assignToApp(appId: string, options: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    assignToApp(appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    assignToApp(appId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    assignToApp(appId: string, options: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
@@ -11319,11 +11322,11 @@ export interface AzureAccounts {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getAssignedWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    getAssignedWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureAccountInfoObject[]>>;
 
     /**
      * @summary apps - Get LUIS azure accounts assigned to the application
@@ -11345,7 +11348,7 @@ export interface AzureAccounts {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Object} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -11353,15 +11356,15 @@ export interface AzureAccounts {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getAssigned(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    getAssigned(appId: string, callback: ServiceCallback<any>): void;
-    getAssigned(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    getAssigned(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureAccountInfoObject[]>;
+    getAssigned(appId: string, callback: ServiceCallback<models.AzureAccountInfoObject[]>): void;
+    getAssigned(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureAccountInfoObject[]>): void;
 
 
     /**
@@ -11390,11 +11393,11 @@ export interface AzureAccounts {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    removeFromAppWithHttpOperationResponse(appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    removeFromAppWithHttpOperationResponse(appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
      * @summary apps - Removes an assigned LUIS azure account from an application
@@ -11427,7 +11430,7 @@ export interface AzureAccounts {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Object} - The deserialized result object.
+     *                      @resolve {OperationStatus} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -11435,15 +11438,16 @@ export interface AzureAccounts {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatus} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    removeFromApp(appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    removeFromApp(appId: string, callback: ServiceCallback<any>): void;
-    removeFromApp(appId: string, options: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    removeFromApp(appId: string, options?: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    removeFromApp(appId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    removeFromApp(appId: string, options: { azureAccountInfoObject? : models.AzureAccountInfoObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 
 
     /**
@@ -11458,11 +11462,11 @@ export interface AzureAccounts {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getUserLUISAccountsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    getUserLUISAccountsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureAccountInfoObject[]>>;
 
     /**
      * @summary user - Get LUIS azure accounts
@@ -11481,7 +11485,7 @@ export interface AzureAccounts {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Object} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -11489,13 +11493,13 @@ export interface AzureAccounts {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getUserLUISAccounts(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    getUserLUISAccounts(callback: ServiceCallback<any>): void;
-    getUserLUISAccounts(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    getUserLUISAccounts(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureAccountInfoObject[]>;
+    getUserLUISAccounts(callback: ServiceCallback<models.AzureAccountInfoObject[]>): void;
+    getUserLUISAccounts(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureAccountInfoObject[]>): void;
 }
