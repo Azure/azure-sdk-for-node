@@ -2901,8 +2901,8 @@ export interface CompleteDatabaseRestoreDefinition {
  * A managed database resource.
  *
  * @property {string} [collation] Collation of the managed database.
- * @property {string} [status] Status for the database. Possible values
- * include: 'Online', 'Offline', 'Shutdown', 'Creating', 'Inaccessible'
+ * @property {string} [status] Status of the database. Possible values include:
+ * 'Online', 'Offline', 'Shutdown', 'Creating', 'Inaccessible', 'Updating'
  * @property {date} [creationDate] Creation date of the database.
  * @property {date} [earliestRestorePoint] Earliest restore point in time for
  * point in time restore.
@@ -2918,18 +2918,24 @@ export interface CompleteDatabaseRestoreDefinition {
  * an existing database. SourceDatabaseName, SourceManagedInstanceName and
  * PointInTime must be specified. RestoreExternalBackup: Create a database by
  * restoring from external backup files. Collation, StorageContainerUri and
- * StorageContainerSasToken must be specified. Possible values include:
- * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+ * StorageContainerSasToken must be specified. Recovery: Creates a database by
+ * restoring a geo-replicated backup. RecoverableDatabaseId must be specified
+ * as the recoverable database resource ID to restore. Possible values include:
+ * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore', 'Recovery'
  * @property {string} [storageContainerUri] Conditional. If createMode is
  * RestoreExternalBackup, this value is required. Specifies the uri of the
  * storage container where backups for this restore are stored.
  * @property {string} [sourceDatabaseId] The resource identifier of the source
  * database associated with create operation of this database.
+ * @property {string} [restorableDroppedDatabaseId] The restorable dropped
+ * database resource id to restore when creating this database.
  * @property {string} [storageContainerSasToken] Conditional. If createMode is
  * RestoreExternalBackup, this value is required. Specifies the storage
  * container sas token.
  * @property {string} [failoverGroupId] Instance Failover Group resource
  * identifier that this managed database belongs to.
+ * @property {string} [recoverableDatabaseId] The resource identifier of the
+ * recoverable database associated with create operation of this database.
  */
 export interface ManagedDatabase extends TrackedResource {
   collation?: string;
@@ -2942,8 +2948,10 @@ export interface ManagedDatabase extends TrackedResource {
   createMode?: string;
   storageContainerUri?: string;
   sourceDatabaseId?: string;
+  restorableDroppedDatabaseId?: string;
   storageContainerSasToken?: string;
   readonly failoverGroupId?: string;
+  recoverableDatabaseId?: string;
 }
 
 /**
@@ -2953,8 +2961,8 @@ export interface ManagedDatabase extends TrackedResource {
  * An managed database update.
  *
  * @property {string} [collation] Collation of the managed database.
- * @property {string} [status] Status for the database. Possible values
- * include: 'Online', 'Offline', 'Shutdown', 'Creating', 'Inaccessible'
+ * @property {string} [status] Status of the database. Possible values include:
+ * 'Online', 'Offline', 'Shutdown', 'Creating', 'Inaccessible', 'Updating'
  * @property {date} [creationDate] Creation date of the database.
  * @property {date} [earliestRestorePoint] Earliest restore point in time for
  * point in time restore.
@@ -2970,18 +2978,24 @@ export interface ManagedDatabase extends TrackedResource {
  * an existing database. SourceDatabaseName, SourceManagedInstanceName and
  * PointInTime must be specified. RestoreExternalBackup: Create a database by
  * restoring from external backup files. Collation, StorageContainerUri and
- * StorageContainerSasToken must be specified. Possible values include:
- * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+ * StorageContainerSasToken must be specified. Recovery: Creates a database by
+ * restoring a geo-replicated backup. RecoverableDatabaseId must be specified
+ * as the recoverable database resource ID to restore. Possible values include:
+ * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore', 'Recovery'
  * @property {string} [storageContainerUri] Conditional. If createMode is
  * RestoreExternalBackup, this value is required. Specifies the uri of the
  * storage container where backups for this restore are stored.
  * @property {string} [sourceDatabaseId] The resource identifier of the source
  * database associated with create operation of this database.
+ * @property {string} [restorableDroppedDatabaseId] The restorable dropped
+ * database resource id to restore when creating this database.
  * @property {string} [storageContainerSasToken] Conditional. If createMode is
  * RestoreExternalBackup, this value is required. Specifies the storage
  * container sas token.
  * @property {string} [failoverGroupId] Instance Failover Group resource
  * identifier that this managed database belongs to.
+ * @property {string} [recoverableDatabaseId] The resource identifier of the
+ * recoverable database associated with create operation of this database.
  * @property {object} [tags] Resource tags.
  */
 export interface ManagedDatabaseUpdate {
@@ -2995,8 +3009,10 @@ export interface ManagedDatabaseUpdate {
   createMode?: string;
   storageContainerUri?: string;
   sourceDatabaseId?: string;
+  restorableDroppedDatabaseId?: string;
   storageContainerSasToken?: string;
   readonly failoverGroupId?: string;
+  recoverableDatabaseId?: string;
   tags?: { [propertyName: string]: string };
 }
 

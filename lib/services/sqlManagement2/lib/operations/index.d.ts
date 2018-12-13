@@ -25181,8 +25181,10 @@ export interface ManagedDatabases {
      * an existing database. SourceDatabaseName, SourceManagedInstanceName and
      * PointInTime must be specified. RestoreExternalBackup: Create a database by
      * restoring from external backup files. Collation, StorageContainerUri and
-     * StorageContainerSasToken must be specified. Possible values include:
-     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+     * StorageContainerSasToken must be specified. Recovery: Creates a database by
+     * restoring a geo-replicated backup. RecoverableDatabaseId must be specified
+     * as the recoverable database resource ID to restore. Possible values include:
+     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore', 'Recovery'
      *
      * @param {string} [parameters.storageContainerUri] Conditional. If createMode
      * is RestoreExternalBackup, this value is required. Specifies the uri of the
@@ -25191,9 +25193,16 @@ export interface ManagedDatabases {
      * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
      * source database associated with create operation of this database.
      *
+     * @param {string} [parameters.restorableDroppedDatabaseId] The restorable
+     * dropped database resource id to restore when creating this database.
+     *
      * @param {string} [parameters.storageContainerSasToken] Conditional. If
      * createMode is RestoreExternalBackup, this value is required. Specifies the
      * storage container sas token.
+     *
+     * @param {string} [parameters.recoverableDatabaseId] The resource identifier
+     * of the recoverable database associated with create operation of this
+     * database.
      *
      * @param {string} parameters.location Resource location.
      *
@@ -25241,8 +25250,10 @@ export interface ManagedDatabases {
      * an existing database. SourceDatabaseName, SourceManagedInstanceName and
      * PointInTime must be specified. RestoreExternalBackup: Create a database by
      * restoring from external backup files. Collation, StorageContainerUri and
-     * StorageContainerSasToken must be specified. Possible values include:
-     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+     * StorageContainerSasToken must be specified. Recovery: Creates a database by
+     * restoring a geo-replicated backup. RecoverableDatabaseId must be specified
+     * as the recoverable database resource ID to restore. Possible values include:
+     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore', 'Recovery'
      *
      * @param {string} [parameters.storageContainerUri] Conditional. If createMode
      * is RestoreExternalBackup, this value is required. Specifies the uri of the
@@ -25251,9 +25262,16 @@ export interface ManagedDatabases {
      * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
      * source database associated with create operation of this database.
      *
+     * @param {string} [parameters.restorableDroppedDatabaseId] The restorable
+     * dropped database resource id to restore when creating this database.
+     *
      * @param {string} [parameters.storageContainerSasToken] Conditional. If
      * createMode is RestoreExternalBackup, this value is required. Specifies the
      * storage container sas token.
+     *
+     * @param {string} [parameters.recoverableDatabaseId] The resource identifier
+     * of the recoverable database associated with create operation of this
+     * database.
      *
      * @param {string} parameters.location Resource location.
      *
@@ -25292,7 +25310,7 @@ export interface ManagedDatabases {
 
 
     /**
-     * Deletes the managed database.
+     * Deletes a managed database.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
@@ -25316,7 +25334,7 @@ export interface ManagedDatabases {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes the managed database.
+     * Deletes a managed database.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
@@ -25386,8 +25404,10 @@ export interface ManagedDatabases {
      * an existing database. SourceDatabaseName, SourceManagedInstanceName and
      * PointInTime must be specified. RestoreExternalBackup: Create a database by
      * restoring from external backup files. Collation, StorageContainerUri and
-     * StorageContainerSasToken must be specified. Possible values include:
-     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+     * StorageContainerSasToken must be specified. Recovery: Creates a database by
+     * restoring a geo-replicated backup. RecoverableDatabaseId must be specified
+     * as the recoverable database resource ID to restore. Possible values include:
+     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore', 'Recovery'
      *
      * @param {string} [parameters.storageContainerUri] Conditional. If createMode
      * is RestoreExternalBackup, this value is required. Specifies the uri of the
@@ -25396,9 +25416,16 @@ export interface ManagedDatabases {
      * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
      * source database associated with create operation of this database.
      *
+     * @param {string} [parameters.restorableDroppedDatabaseId] The restorable
+     * dropped database resource id to restore when creating this database.
+     *
      * @param {string} [parameters.storageContainerSasToken] Conditional. If
      * createMode is RestoreExternalBackup, this value is required. Specifies the
      * storage container sas token.
+     *
+     * @param {string} [parameters.recoverableDatabaseId] The resource identifier
+     * of the recoverable database associated with create operation of this
+     * database.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -25444,8 +25471,10 @@ export interface ManagedDatabases {
      * an existing database. SourceDatabaseName, SourceManagedInstanceName and
      * PointInTime must be specified. RestoreExternalBackup: Create a database by
      * restoring from external backup files. Collation, StorageContainerUri and
-     * StorageContainerSasToken must be specified. Possible values include:
-     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+     * StorageContainerSasToken must be specified. Recovery: Creates a database by
+     * restoring a geo-replicated backup. RecoverableDatabaseId must be specified
+     * as the recoverable database resource ID to restore. Possible values include:
+     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore', 'Recovery'
      *
      * @param {string} [parameters.storageContainerUri] Conditional. If createMode
      * is RestoreExternalBackup, this value is required. Specifies the uri of the
@@ -25454,9 +25483,16 @@ export interface ManagedDatabases {
      * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
      * source database associated with create operation of this database.
      *
+     * @param {string} [parameters.restorableDroppedDatabaseId] The restorable
+     * dropped database resource id to restore when creating this database.
+     *
      * @param {string} [parameters.storageContainerSasToken] Conditional. If
      * createMode is RestoreExternalBackup, this value is required. Specifies the
      * storage container sas token.
+     *
+     * @param {string} [parameters.recoverableDatabaseId] The resource identifier
+     * of the recoverable database associated with create operation of this
+     * database.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -25593,8 +25629,10 @@ export interface ManagedDatabases {
      * an existing database. SourceDatabaseName, SourceManagedInstanceName and
      * PointInTime must be specified. RestoreExternalBackup: Create a database by
      * restoring from external backup files. Collation, StorageContainerUri and
-     * StorageContainerSasToken must be specified. Possible values include:
-     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+     * StorageContainerSasToken must be specified. Recovery: Creates a database by
+     * restoring a geo-replicated backup. RecoverableDatabaseId must be specified
+     * as the recoverable database resource ID to restore. Possible values include:
+     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore', 'Recovery'
      *
      * @param {string} [parameters.storageContainerUri] Conditional. If createMode
      * is RestoreExternalBackup, this value is required. Specifies the uri of the
@@ -25603,9 +25641,16 @@ export interface ManagedDatabases {
      * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
      * source database associated with create operation of this database.
      *
+     * @param {string} [parameters.restorableDroppedDatabaseId] The restorable
+     * dropped database resource id to restore when creating this database.
+     *
      * @param {string} [parameters.storageContainerSasToken] Conditional. If
      * createMode is RestoreExternalBackup, this value is required. Specifies the
      * storage container sas token.
+     *
+     * @param {string} [parameters.recoverableDatabaseId] The resource identifier
+     * of the recoverable database associated with create operation of this
+     * database.
      *
      * @param {string} parameters.location Resource location.
      *
@@ -25653,8 +25698,10 @@ export interface ManagedDatabases {
      * an existing database. SourceDatabaseName, SourceManagedInstanceName and
      * PointInTime must be specified. RestoreExternalBackup: Create a database by
      * restoring from external backup files. Collation, StorageContainerUri and
-     * StorageContainerSasToken must be specified. Possible values include:
-     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+     * StorageContainerSasToken must be specified. Recovery: Creates a database by
+     * restoring a geo-replicated backup. RecoverableDatabaseId must be specified
+     * as the recoverable database resource ID to restore. Possible values include:
+     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore', 'Recovery'
      *
      * @param {string} [parameters.storageContainerUri] Conditional. If createMode
      * is RestoreExternalBackup, this value is required. Specifies the uri of the
@@ -25663,9 +25710,16 @@ export interface ManagedDatabases {
      * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
      * source database associated with create operation of this database.
      *
+     * @param {string} [parameters.restorableDroppedDatabaseId] The restorable
+     * dropped database resource id to restore when creating this database.
+     *
      * @param {string} [parameters.storageContainerSasToken] Conditional. If
      * createMode is RestoreExternalBackup, this value is required. Specifies the
      * storage container sas token.
+     *
+     * @param {string} [parameters.recoverableDatabaseId] The resource identifier
+     * of the recoverable database associated with create operation of this
+     * database.
      *
      * @param {string} parameters.location Resource location.
      *
@@ -25704,7 +25758,7 @@ export interface ManagedDatabases {
 
 
     /**
-     * Deletes the managed database.
+     * Deletes a managed database.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
@@ -25728,7 +25782,7 @@ export interface ManagedDatabases {
     beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes the managed database.
+     * Deletes a managed database.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
@@ -25798,8 +25852,10 @@ export interface ManagedDatabases {
      * an existing database. SourceDatabaseName, SourceManagedInstanceName and
      * PointInTime must be specified. RestoreExternalBackup: Create a database by
      * restoring from external backup files. Collation, StorageContainerUri and
-     * StorageContainerSasToken must be specified. Possible values include:
-     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+     * StorageContainerSasToken must be specified. Recovery: Creates a database by
+     * restoring a geo-replicated backup. RecoverableDatabaseId must be specified
+     * as the recoverable database resource ID to restore. Possible values include:
+     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore', 'Recovery'
      *
      * @param {string} [parameters.storageContainerUri] Conditional. If createMode
      * is RestoreExternalBackup, this value is required. Specifies the uri of the
@@ -25808,9 +25864,16 @@ export interface ManagedDatabases {
      * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
      * source database associated with create operation of this database.
      *
+     * @param {string} [parameters.restorableDroppedDatabaseId] The restorable
+     * dropped database resource id to restore when creating this database.
+     *
      * @param {string} [parameters.storageContainerSasToken] Conditional. If
      * createMode is RestoreExternalBackup, this value is required. Specifies the
      * storage container sas token.
+     *
+     * @param {string} [parameters.recoverableDatabaseId] The resource identifier
+     * of the recoverable database associated with create operation of this
+     * database.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -25856,8 +25919,10 @@ export interface ManagedDatabases {
      * an existing database. SourceDatabaseName, SourceManagedInstanceName and
      * PointInTime must be specified. RestoreExternalBackup: Create a database by
      * restoring from external backup files. Collation, StorageContainerUri and
-     * StorageContainerSasToken must be specified. Possible values include:
-     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+     * StorageContainerSasToken must be specified. Recovery: Creates a database by
+     * restoring a geo-replicated backup. RecoverableDatabaseId must be specified
+     * as the recoverable database resource ID to restore. Possible values include:
+     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore', 'Recovery'
      *
      * @param {string} [parameters.storageContainerUri] Conditional. If createMode
      * is RestoreExternalBackup, this value is required. Specifies the uri of the
@@ -25866,9 +25931,16 @@ export interface ManagedDatabases {
      * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
      * source database associated with create operation of this database.
      *
+     * @param {string} [parameters.restorableDroppedDatabaseId] The restorable
+     * dropped database resource id to restore when creating this database.
+     *
      * @param {string} [parameters.storageContainerSasToken] Conditional. If
      * createMode is RestoreExternalBackup, this value is required. Specifies the
      * storage container sas token.
+     *
+     * @param {string} [parameters.recoverableDatabaseId] The resource identifier
+     * of the recoverable database associated with create operation of this
+     * database.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
