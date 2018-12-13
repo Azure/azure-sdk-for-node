@@ -570,7 +570,7 @@ export interface RoleAssignments {
      * 'ServicePrincipal', 'Unknown', 'DirectoryRoleTemplate', 'ForeignGroup',
      * 'Application', 'MSI', 'DirectoryObjectOrGroup', 'Everyone'
      *
-     * @param {boolean} [parameters.canDelegate] The delgation flag used for
+     * @param {boolean} [parameters.canDelegate] The delegation flag used for
      * creating a role assignment
      *
      * @param {object} [options] Optional Parameters.
@@ -614,7 +614,7 @@ export interface RoleAssignments {
      * 'ServicePrincipal', 'Unknown', 'DirectoryRoleTemplate', 'ForeignGroup',
      * 'Application', 'MSI', 'DirectoryObjectOrGroup', 'Everyone'
      *
-     * @param {boolean} [parameters.canDelegate] The delgation flag used for
+     * @param {boolean} [parameters.canDelegate] The delegation flag used for
      * creating a role assignment
      *
      * @param {object} [options] Optional Parameters.
@@ -782,7 +782,7 @@ export interface RoleAssignments {
      * 'ServicePrincipal', 'Unknown', 'DirectoryRoleTemplate', 'ForeignGroup',
      * 'Application', 'MSI', 'DirectoryObjectOrGroup', 'Everyone'
      *
-     * @param {boolean} [parameters.canDelegate] The delgation flag used for
+     * @param {boolean} [parameters.canDelegate] The delegation flag used for
      * creating a role assignment
      *
      * @param {object} [options] Optional Parameters.
@@ -817,7 +817,7 @@ export interface RoleAssignments {
      * 'ServicePrincipal', 'Unknown', 'DirectoryRoleTemplate', 'ForeignGroup',
      * 'Application', 'MSI', 'DirectoryObjectOrGroup', 'Everyone'
      *
-     * @param {boolean} [parameters.canDelegate] The delgation flag used for
+     * @param {boolean} [parameters.canDelegate] The delegation flag used for
      * creating a role assignment
      *
      * @param {object} [options] Optional Parameters.
