@@ -19768,7 +19768,7 @@ export interface NetworkProfiles {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} networkProfileName The name of the Public IP Prefix.
+     * @param {string} networkProfileName The name of the PublicIPPrefix.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -19790,7 +19790,7 @@ export interface NetworkProfiles {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} networkProfileName The name of the Public IP Prefix.
+     * @param {string} networkProfileName The name of the PublicIPPrefix.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -21155,15 +21155,15 @@ export interface SecurityRules {
      * include: 'Tcp', 'Udp', '*'
      *
      * @param {string} [securityRuleParameters.sourcePortRange] The source port or
-     * range. Integer or range between 0 and 65535. Asterisk '*' can also be used
+     * range. Integer or range between 0 and 65535. Asterisks '*' can also be used
      * to match all ports.
      *
      * @param {string} [securityRuleParameters.destinationPortRange] The
-     * destination port or range. Integer or range between 0 and 65535. Asterisk
+     * destination port or range. Integer or range between 0 and 65535. Asterisks
      * '*' can also be used to match all ports.
      *
      * @param {string} [securityRuleParameters.sourceAddressPrefix] The CIDR or
-     * source IP range. Asterisk '*' can also be used to match all source IPs.
+     * source IP range. Asterisks '*' can also be used to match all source IPs.
      * Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      * can also be used. If this is an ingress rule, specifies where network
      * traffic originates from.
@@ -21175,7 +21175,7 @@ export interface SecurityRules {
      * application security group specified as source.
      *
      * @param {string} [securityRuleParameters.destinationAddressPrefix] The
-     * destination address prefix. CIDR or destination IP range. Asterisk '*' can
+     * destination address prefix. CIDR or destination IP range. Asterisks '*' can
      * also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used.
      *
@@ -21252,15 +21252,15 @@ export interface SecurityRules {
      * include: 'Tcp', 'Udp', '*'
      *
      * @param {string} [securityRuleParameters.sourcePortRange] The source port or
-     * range. Integer or range between 0 and 65535. Asterisk '*' can also be used
+     * range. Integer or range between 0 and 65535. Asterisks '*' can also be used
      * to match all ports.
      *
      * @param {string} [securityRuleParameters.destinationPortRange] The
-     * destination port or range. Integer or range between 0 and 65535. Asterisk
+     * destination port or range. Integer or range between 0 and 65535. Asterisks
      * '*' can also be used to match all ports.
      *
      * @param {string} [securityRuleParameters.sourceAddressPrefix] The CIDR or
-     * source IP range. Asterisk '*' can also be used to match all source IPs.
+     * source IP range. Asterisks '*' can also be used to match all source IPs.
      * Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      * can also be used. If this is an ingress rule, specifies where network
      * traffic originates from.
@@ -21272,7 +21272,7 @@ export interface SecurityRules {
      * application security group specified as source.
      *
      * @param {string} [securityRuleParameters.destinationAddressPrefix] The
-     * destination address prefix. CIDR or destination IP range. Asterisk '*' can
+     * destination address prefix. CIDR or destination IP range. Asterisks '*' can
      * also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used.
      *
@@ -21494,15 +21494,15 @@ export interface SecurityRules {
      * include: 'Tcp', 'Udp', '*'
      *
      * @param {string} [securityRuleParameters.sourcePortRange] The source port or
-     * range. Integer or range between 0 and 65535. Asterisk '*' can also be used
+     * range. Integer or range between 0 and 65535. Asterisks '*' can also be used
      * to match all ports.
      *
      * @param {string} [securityRuleParameters.destinationPortRange] The
-     * destination port or range. Integer or range between 0 and 65535. Asterisk
+     * destination port or range. Integer or range between 0 and 65535. Asterisks
      * '*' can also be used to match all ports.
      *
      * @param {string} [securityRuleParameters.sourceAddressPrefix] The CIDR or
-     * source IP range. Asterisk '*' can also be used to match all source IPs.
+     * source IP range. Asterisks '*' can also be used to match all source IPs.
      * Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      * can also be used. If this is an ingress rule, specifies where network
      * traffic originates from.
@@ -21514,7 +21514,7 @@ export interface SecurityRules {
      * application security group specified as source.
      *
      * @param {string} [securityRuleParameters.destinationAddressPrefix] The
-     * destination address prefix. CIDR or destination IP range. Asterisk '*' can
+     * destination address prefix. CIDR or destination IP range. Asterisks '*' can
      * also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used.
      *
@@ -21591,15 +21591,15 @@ export interface SecurityRules {
      * include: 'Tcp', 'Udp', '*'
      *
      * @param {string} [securityRuleParameters.sourcePortRange] The source port or
-     * range. Integer or range between 0 and 65535. Asterisk '*' can also be used
+     * range. Integer or range between 0 and 65535. Asterisks '*' can also be used
      * to match all ports.
      *
      * @param {string} [securityRuleParameters.destinationPortRange] The
-     * destination port or range. Integer or range between 0 and 65535. Asterisk
+     * destination port or range. Integer or range between 0 and 65535. Asterisks
      * '*' can also be used to match all ports.
      *
      * @param {string} [securityRuleParameters.sourceAddressPrefix] The CIDR or
-     * source IP range. Asterisk '*' can also be used to match all source IPs.
+     * source IP range. Asterisks '*' can also be used to match all source IPs.
      * Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      * can also be used. If this is an ingress rule, specifies where network
      * traffic originates from.
@@ -21611,7 +21611,7 @@ export interface SecurityRules {
      * application security group specified as source.
      *
      * @param {string} [securityRuleParameters.destinationAddressPrefix] The
-     * destination address prefix. CIDR or destination IP range. Asterisk '*' can
+     * destination address prefix. CIDR or destination IP range. Asterisks '*' can
      * also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used.
      *
@@ -27838,7 +27838,7 @@ export interface PublicIPPrefixes {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} publicIpPrefixName The name of the Public IP Prefix.
+     * @param {string} publicIpPrefixName The name of the PublicIPPrefix.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -27860,7 +27860,7 @@ export interface PublicIPPrefixes {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} publicIpPrefixName The name of the Public IP Prefix.
+     * @param {string} publicIpPrefixName The name of the PublicIPPrefix.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -46998,7 +46998,7 @@ export interface P2sVpnServerConfigurations {
      * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesName]
      * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
      * in a resource group. This name can be used to access the resource along with
-     * Parent VirtualWan resource name.
+     * Paren VirtualWan resource name.
      *
      * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
@@ -47071,7 +47071,7 @@ export interface P2sVpnServerConfigurations {
      * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesName]
      * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
      * in a resource group. This name can be used to access the resource along with
-     * Parent VirtualWan resource name.
+     * Paren VirtualWan resource name.
      *
      * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
@@ -47290,7 +47290,7 @@ export interface P2sVpnServerConfigurations {
      * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesName]
      * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
      * in a resource group. This name can be used to access the resource along with
-     * Parent VirtualWan resource name.
+     * Paren VirtualWan resource name.
      *
      * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
@@ -47363,7 +47363,7 @@ export interface P2sVpnServerConfigurations {
      * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesName]
      * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
      * in a resource group. This name can be used to access the resource along with
-     * Parent VirtualWan resource name.
+     * Paren VirtualWan resource name.
      *
      * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.

@@ -114,17 +114,17 @@ export interface SecurityRule extends SubResource {
    */
   protocol: string;
   /**
-   * The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used
+   * The source port or range. Integer or range between 0 and 65535. Asterisks '*' can also be used
    * to match all ports.
    */
   sourcePortRange?: string;
   /**
-   * The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be
+   * The destination port or range. Integer or range between 0 and 65535. Asterisks '*' can also be
    * used to match all ports.
    */
   destinationPortRange?: string;
   /**
-   * The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default
+   * The CIDR or source IP range. Asterisks '*' can also be used to match all source IPs. Default
    * tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is
    * an ingress rule, specifies where network traffic originates from.
    */
@@ -138,8 +138,8 @@ export interface SecurityRule extends SubResource {
    */
   sourceApplicationSecurityGroups?: ApplicationSecurityGroup[];
   /**
-   * The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to
-   * match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and
+   * The destination address prefix. CIDR or destination IP range. Asterisks '*' can also be used
+   * to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and
    * 'Internet' can also be used.
    */
   destinationAddressPrefix?: string;
@@ -6834,7 +6834,7 @@ export interface VirtualNetworkGatewayConnectionListEntity extends Resource {
   */
   localNetworkGateway2?: VirtualNetworkConnectionGatewayReference;
   /**
-   * Gateway connection type. Possible values are: 'IPsec','Vnet2Vnet','ExpressRoute', and
+   * Gateway connection type. Possible values are: 'Ipsec','Vnet2Vnet','ExpressRoute', and
    * 'VPNClient. Possible values include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
   */
   connectionType: string;
@@ -7023,8 +7023,7 @@ export interface P2SVpnServerConfigRadiusClientRootCertificate extends SubResour
 export interface P2SVpnServerConfiguration extends SubResource {
   /**
    * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan in a resource
-   * group. This name can be used to access the resource along with Parent VirtualWan resource
-   * name.
+   * group. This name can be used to access the resource along with Paren VirtualWan resource name.
   */
   p2SVpnServerConfigurationPropertiesName?: string;
   /**
