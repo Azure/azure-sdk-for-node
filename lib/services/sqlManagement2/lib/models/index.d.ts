@@ -550,7 +550,7 @@ export interface MetricAvailability {
  * @property {string} [unit] The unit of the metric. Possible values include:
  * 'Count', 'Bytes', 'Seconds', 'Percent', 'CountPerSecond', 'BytesPerSecond'
  * @property {array} [metricAvailabilities] The list of database metric
- * availabities for the metric.
+ * availabilities for the metric.
  */
 export interface MetricDefinition {
   readonly name?: MetricName;
@@ -582,7 +582,7 @@ export interface RecommendedElasticPoolMetric {
  * @class
  * Initializes a new instance of the RecommendedElasticPool class.
  * @constructor
- * Represents a recommented elastic pool.
+ * Represents a recommended elastic pool.
  *
  * @property {string} [databaseEdition] The edition of the recommended elastic
  * pool. The ElasticPoolEdition enumeration contains all the valid editions.
@@ -2606,7 +2606,7 @@ export interface JobExecution extends ProxyResource {
  * 'Once', 'Recurring'. Default value: 'Once' .
  * @property {boolean} [enabled] Whether or not the schedule is enabled.
  * @property {string} [interval] Value of the schedule's recurring interval, if
- * the scheduletype is recurring. ISO8601 duration format.
+ * the schedule type is recurring. ISO8601 duration format.
  */
 export interface JobSchedule {
   startTime?: Date;
@@ -2633,7 +2633,7 @@ export interface JobSchedule {
  * @property {boolean} [schedule.enabled] Whether or not the schedule is
  * enabled.
  * @property {string} [schedule.interval] Value of the schedule's recurring
- * interval, if the scheduletype is recurring. ISO8601 duration format.
+ * interval, if the schedule type is recurring. ISO8601 duration format.
  */
 export interface Job extends ProxyResource {
   description?: string;
@@ -3104,6 +3104,8 @@ export interface ServerDnsAliasAcquisition {
  * the Threat Detection audit storage account.
  * @property {number} [retentionDays] Specifies the number of days to keep in
  * the Threat Detection audit logs.
+ * @property {date} [creationTime] Specifies the UTC creation time of the
+ * policy.
  */
 export interface ServerSecurityAlertPolicy extends ProxyResource {
   state: string;
@@ -3113,6 +3115,7 @@ export interface ServerSecurityAlertPolicy extends ProxyResource {
   storageEndpoint?: string;
   storageAccountAccessKey?: string;
   retentionDays?: number;
+  readonly creationTime?: Date;
 }
 
 /**
@@ -3149,6 +3152,78 @@ export interface RestorePoint extends ProxyResource {
  */
 export interface CreateDatabaseRestorePointDefinition {
   restorePointLabel: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedDatabaseSecurityAlertPolicy class.
+ * @constructor
+ * A managed database security alert policy.
+ *
+ * @property {string} state Specifies the state of the policy, whether it is
+ * enabled or disabled. Possible values include: 'New', 'Enabled', 'Disabled'
+ * @property {array} [disabledAlerts] Specifies an array of alerts that are
+ * disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability,
+ * Access_Anomaly, Data_Exfiltration, Unsafe_Action
+ * @property {array} [emailAddresses] Specifies an array of e-mail addresses to
+ * which the alert is sent.
+ * @property {boolean} [emailAccountAdmins] Specifies that the alert is sent to
+ * the account administrators.
+ * @property {string} [storageEndpoint] Specifies the blob storage endpoint
+ * (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold
+ * all Threat Detection audit logs.
+ * @property {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the Threat Detection audit storage account.
+ * @property {number} [retentionDays] Specifies the number of days to keep in
+ * the Threat Detection audit logs.
+ * @property {date} [creationTime] Specifies the UTC creation time of the
+ * policy.
+ */
+export interface ManagedDatabaseSecurityAlertPolicy extends ProxyResource {
+  state: string;
+  disabledAlerts?: string[];
+  emailAddresses?: string[];
+  emailAccountAdmins?: boolean;
+  storageEndpoint?: string;
+  storageAccountAccessKey?: string;
+  retentionDays?: number;
+  readonly creationTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedServerSecurityAlertPolicy class.
+ * @constructor
+ * A managed server security alert policy.
+ *
+ * @property {string} state Specifies the state of the policy, whether it is
+ * enabled or disabled. Possible values include: 'New', 'Enabled', 'Disabled'
+ * @property {array} [disabledAlerts] Specifies an array of alerts that are
+ * disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability,
+ * Access_Anomaly, Data_Exfiltration, Unsafe_Action
+ * @property {array} [emailAddresses] Specifies an array of e-mail addresses to
+ * which the alert is sent.
+ * @property {boolean} [emailAccountAdmins] Specifies that the alert is sent to
+ * the account administrators.
+ * @property {string} [storageEndpoint] Specifies the blob storage endpoint
+ * (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold
+ * all Threat Detection audit logs.
+ * @property {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the Threat Detection audit storage account.
+ * @property {number} [retentionDays] Specifies the number of days to keep in
+ * the Threat Detection audit logs.
+ * @property {date} [creationTime] Specifies the UTC creation time of the
+ * policy.
+ */
+export interface ManagedServerSecurityAlertPolicy extends ProxyResource {
+  state: string;
+  disabledAlerts?: string[];
+  emailAddresses?: string[];
+  emailAccountAdmins?: boolean;
+  storageEndpoint?: string;
+  storageAccountAccessKey?: string;
+  retentionDays?: number;
+  readonly creationTime?: Date;
 }
 
 /**
@@ -4918,7 +4993,7 @@ export interface JobVersionListResult extends Array<JobVersion> {
  * @class
  * Initializes a new instance of the LongTermRetentionBackupListResult class.
  * @constructor
- * A list of long term retention bacukps.
+ * A list of long term retention backups.
  *
  * @property {string} [nextLink] Link to retrieve next page of results.
  */
@@ -4966,7 +5041,7 @@ export interface ServerDnsAliasListResult extends Array<ServerDnsAlias> {
  * @class
  * Initializes a new instance of the RestorePointListResult class.
  * @constructor
- * A list of long term retention bacukps.
+ * A list of long term retention backups.
  *
  * @property {string} [nextLink] Link to retrieve next page of results.
  */
