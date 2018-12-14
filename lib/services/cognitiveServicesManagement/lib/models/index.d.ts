@@ -23,8 +23,7 @@ export { CloudError } from 'ms-rest-azure';
  * The SKU of the cognitive services account.
  *
  * @member {string} name Gets or sets the sku name. Required for account
- * creation, optional for update. Possible values include: 'F0', 'P0', 'P1',
- * 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
+ * creation, optional for update.
  * @member {string} [tier] Gets the sku tier. This is based on the SKU name.
  * Possible values include: 'Free', 'Standard', 'Premium'
  */
@@ -41,17 +40,10 @@ export interface Sku {
  *
  * @member {object} sku Required. Gets or sets the SKU of the resource.
  * @member {string} [sku.name] Gets or sets the sku name. Required for account
- * creation, optional for update. Possible values include: 'F0', 'P0', 'P1',
- * 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
+ * creation, optional for update.
  * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Free', 'Standard', 'Premium'
  * @member {string} kind Required. Gets or sets the Kind of the resource.
- * Possible values include: 'Bing.Autosuggest.v7', 'Bing.CustomSearch',
- * 'Bing.Search.v7', 'Bing.Speech', 'Bing.SpellCheck.v7', 'ComputerVision',
- * 'ContentModerator', 'CustomSpeech', 'CustomVision.Prediction',
- * 'CustomVision.Training', 'Emotion', 'Face', 'LUIS', 'QnAMaker',
- * 'SpeakerRecognition', 'SpeechTranslation', 'TextAnalytics',
- * 'TextTranslation', 'WebLM'
  * @member {string} location Required. Gets or sets the location of the
  * resource. This will be one of the supported and registered Azure Geo Regions
  * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
@@ -81,8 +73,7 @@ export interface CognitiveServicesAccountCreateParameters {
  *
  * @member {object} [sku] Gets or sets the SKU of the resource.
  * @member {string} [sku.name] Gets or sets the sku name. Required for account
- * creation, optional for update. Possible values include: 'F0', 'P0', 'P1',
- * 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
+ * creation, optional for update.
  * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Free', 'Standard', 'Premium'
  * @member {object} [tags] Gets or sets a list of key value pairs that describe
@@ -116,8 +107,7 @@ export interface CognitiveServicesAccountUpdateParameters {
  * @member {string} [internalId] The internal identifier.
  * @member {object} [sku] The SKU of Cognitive Services account.
  * @member {string} [sku.name] Gets or sets the sku name. Required for account
- * creation, optional for update. Possible values include: 'F0', 'P0', 'P1',
- * 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
+ * creation, optional for update.
  * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Free', 'Standard', 'Premium'
  * @member {object} [tags] Gets or sets a list of key value pairs that describe
@@ -177,8 +167,7 @@ export interface RegenerateKeyParameters {
  * @member {string} [resourceType] Resource Namespace and Type
  * @member {object} [sku] The SKU of Cognitive Services account.
  * @member {string} [sku.name] Gets or sets the sku name. Required for account
- * creation, optional for update. Possible values include: 'F0', 'P0', 'P1',
- * 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
+ * creation, optional for update.
  * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Free', 'Standard', 'Premium'
  */
@@ -335,12 +324,7 @@ export interface OperationEntity {
  * Check SKU availability parameter.
  *
  * @member {array} skus The SKU of the resource.
- * @member {string} kind The Kind of the resource. Possible values include:
- * 'Bing.Autosuggest.v7', 'Bing.CustomSearch', 'Bing.Search.v7', 'Bing.Speech',
- * 'Bing.SpellCheck.v7', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
- * 'CustomVision.Prediction', 'CustomVision.Training', 'Emotion', 'Face',
- * 'LUIS', 'QnAMaker', 'SpeakerRecognition', 'SpeechTranslation',
- * 'TextAnalytics', 'TextTranslation', 'WebLM'
+ * @member {string} kind The Kind of the resource.
  * @member {string} type The Type of the resource.
  */
 export interface CheckSkuAvailabilityParameter {
@@ -355,16 +339,9 @@ export interface CheckSkuAvailabilityParameter {
  * @constructor
  * Check SKU availability result.
  *
- * @member {string} [kind] The Kind of the resource. Possible values include:
- * 'Bing.Autosuggest.v7', 'Bing.CustomSearch', 'Bing.Search.v7', 'Bing.Speech',
- * 'Bing.SpellCheck.v7', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
- * 'CustomVision.Prediction', 'CustomVision.Training', 'Emotion', 'Face',
- * 'LUIS', 'QnAMaker', 'SpeakerRecognition', 'SpeechTranslation',
- * 'TextAnalytics', 'TextTranslation', 'WebLM'
+ * @member {string} [kind] The Kind of the resource.
  * @member {string} [type] The Type of the resource.
- * @member {string} [skuName] The SKU of Cognitive Services account. Possible
- * values include: 'F0', 'P0', 'P1', 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5',
- * 'S6'
+ * @member {string} [skuName] The SKU of Cognitive Services account.
  * @member {boolean} [skuAvailable] Indicates the given SKU is available or
  * not.
  * @member {string} [reason] Reason why the SKU is not available.
