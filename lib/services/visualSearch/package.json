@@ -1,8 +1,8 @@
 {
   "name": "azure-cognitiveservices-visualsearch",
   "author": "Microsoft Corporation",
-  "description": "VisualSearchAPIClient Library with typescript type definitions for node",
-  "version": "1.3.0-preview",
+  "description": "VisualSearchClient Library with typescript type definitions for node",
+  "version": "2.0.0",
   "dependencies": {
     "ms-rest": "^2.3.3"
   },
@@ -11,8 +11,8 @@
     "azure"
   ],
   "license": "MIT",
-  "main": "./lib/visualSearchAPIClient.js",
-  "types": "./lib/visualSearchAPIClient.d.ts",
+  "main": "./lib/visualSearchClient.js",
+  "types": "./lib/visualSearchClient.d.ts",
   "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/visualSearch",
   "repository": {
     "type": "git",
