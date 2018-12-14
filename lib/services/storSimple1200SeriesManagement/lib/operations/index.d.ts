@@ -2095,7 +2095,7 @@ export interface Backups {
      * @param {string} cloneRequest.targetDeviceId DeviceId of the device which
      * will act as the Clone target
      *
-     * @param {string} cloneRequest.targetAccessPointId Accesspoint Id on which
+     * @param {string} cloneRequest.targetAccessPointId Access point Id on which
      * clone job will performed.
      *
      * @param {string} cloneRequest.newEndpointName Name of new endpoint which will
@@ -2171,7 +2171,7 @@ export interface Backups {
      * @param {string} cloneRequest.targetDeviceId DeviceId of the device which
      * will act as the Clone target
      *
-     * @param {string} cloneRequest.targetAccessPointId Accesspoint Id on which
+     * @param {string} cloneRequest.targetAccessPointId Access point Id on which
      * clone job will performed.
      *
      * @param {string} cloneRequest.newEndpointName Name of new endpoint which will
@@ -2331,7 +2331,7 @@ export interface Backups {
      * @param {string} cloneRequest.targetDeviceId DeviceId of the device which
      * will act as the Clone target
      *
-     * @param {string} cloneRequest.targetAccessPointId Accesspoint Id on which
+     * @param {string} cloneRequest.targetAccessPointId Access point Id on which
      * clone job will performed.
      *
      * @param {string} cloneRequest.newEndpointName Name of new endpoint which will
@@ -2407,7 +2407,7 @@ export interface Backups {
      * @param {string} cloneRequest.targetDeviceId DeviceId of the device which
      * will act as the Clone target
      *
-     * @param {string} cloneRequest.targetAccessPointId Accesspoint Id on which
+     * @param {string} cloneRequest.targetAccessPointId Access point Id on which
      * clone job will performed.
      *
      * @param {string} cloneRequest.newEndpointName Name of new endpoint which will
@@ -2964,7 +2964,7 @@ export interface Devices {
      * used while building alert emails. For eg: "en-US"
      *
      * @param {array} [alertSettings.additionalRecipientEmailList] List of email
-     * addresses (apart from admin/coadmin of subscription) to whom the alert
+     * addresses (apart from admin/co-admin of subscription) to whom the alert
      * emails need to be sent
      *
      * @param {string} resourceGroupName The resource group name
@@ -3004,7 +3004,7 @@ export interface Devices {
      * used while building alert emails. For eg: "en-US"
      *
      * @param {array} [alertSettings.additionalRecipientEmailList] List of email
-     * addresses (apart from admin/coadmin of subscription) to whom the alert
+     * addresses (apart from admin/co-admin of subscription) to whom the alert
      * emails need to be sent
      *
      * @param {string} resourceGroupName The resource group name
@@ -3106,7 +3106,7 @@ export interface Devices {
 
 
     /**
-     * Downloads udpates on the device.
+     * Downloads updates on the device.
      *
      * @param {string} deviceName The device name.
      *
@@ -3128,7 +3128,7 @@ export interface Devices {
     downloadUpdatesWithHttpOperationResponse(deviceName: string, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Downloads udpates on the device.
+     * Downloads updates on the device.
      *
      * @param {string} deviceName The device name.
      *
@@ -4020,7 +4020,7 @@ export interface Devices {
      * used while building alert emails. For eg: "en-US"
      *
      * @param {array} [alertSettings.additionalRecipientEmailList] List of email
-     * addresses (apart from admin/coadmin of subscription) to whom the alert
+     * addresses (apart from admin/co-admin of subscription) to whom the alert
      * emails need to be sent
      *
      * @param {string} resourceGroupName The resource group name
@@ -4060,7 +4060,7 @@ export interface Devices {
      * used while building alert emails. For eg: "en-US"
      *
      * @param {array} [alertSettings.additionalRecipientEmailList] List of email
-     * addresses (apart from admin/coadmin of subscription) to whom the alert
+     * addresses (apart from admin/co-admin of subscription) to whom the alert
      * emails need to be sent
      *
      * @param {string} resourceGroupName The resource group name
@@ -4162,7 +4162,7 @@ export interface Devices {
 
 
     /**
-     * Downloads udpates on the device.
+     * Downloads updates on the device.
      *
      * @param {string} deviceName The device name.
      *
@@ -4184,7 +4184,7 @@ export interface Devices {
     beginDownloadUpdatesWithHttpOperationResponse(deviceName: string, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Downloads udpates on the device.
+     * Downloads updates on the device.
      *
      * @param {string} deviceName The device name.
      *
@@ -5448,7 +5448,7 @@ export interface IscsiDisks {
 
 
     /**
-     * Retrieves all the iscsi disks in a device.
+     * Retrieves all the iSCSI disks in a device.
      *
      * @param {string} deviceName The device name.
      *
@@ -5470,7 +5470,7 @@ export interface IscsiDisks {
     listByDeviceWithHttpOperationResponse(deviceName: string, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ISCSIDiskList>>;
 
     /**
-     * Retrieves all the iscsi disks in a device.
+     * Retrieves all the iSCSI disks in a device.
      *
      * @param {string} deviceName The device name.
      *
@@ -5511,11 +5511,11 @@ export interface IscsiDisks {
 
 
     /**
-     * Retrieves all the disks in a iscsi server.
+     * Retrieves all the disks in a iSCSI server.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -5535,11 +5535,11 @@ export interface IscsiDisks {
     listByIscsiServerWithHttpOperationResponse(deviceName: string, iscsiServerName: string, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ISCSIDiskList>>;
 
     /**
-     * Retrieves all the disks in a iscsi server.
+     * Retrieves all the disks in a iSCSI server.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -5578,11 +5578,11 @@ export interface IscsiDisks {
 
 
     /**
-     * Returns the properties of the specified iscsi disk name.
+     * Returns the properties of the specified iSCSI disk name.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} diskName The disk name.
      *
@@ -5604,11 +5604,11 @@ export interface IscsiDisks {
     getWithHttpOperationResponse(deviceName: string, iscsiServerName: string, diskName: string, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ISCSIDisk>>;
 
     /**
-     * Returns the properties of the specified iscsi disk name.
+     * Returns the properties of the specified iSCSI disk name.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} diskName The disk name.
      *
@@ -5649,15 +5649,15 @@ export interface IscsiDisks {
 
 
     /**
-     * Creates or updates the iscsi disk.
+     * Creates or updates the iSCSI disk.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} diskName The disk name.
      *
-     * @param {object} iscsiDisk The iscsi disk.
+     * @param {object} iscsiDisk The iSCSI disk.
      *
      * @param {string} [iscsiDisk.description] The description.
      *
@@ -5693,15 +5693,15 @@ export interface IscsiDisks {
     createOrUpdateWithHttpOperationResponse(deviceName: string, iscsiServerName: string, diskName: string, iscsiDisk: models.ISCSIDisk, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ISCSIDisk>>;
 
     /**
-     * Creates or updates the iscsi disk.
+     * Creates or updates the iSCSI disk.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} diskName The disk name.
      *
-     * @param {object} iscsiDisk The iscsi disk.
+     * @param {object} iscsiDisk The iSCSI disk.
      *
      * @param {string} [iscsiDisk.description] The description.
      *
@@ -5756,11 +5756,11 @@ export interface IscsiDisks {
 
 
     /**
-     * Deletes the iscsi disk.
+     * Deletes the iSCSI disk.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} diskName The disk name.
      *
@@ -5782,11 +5782,11 @@ export interface IscsiDisks {
     deleteMethodWithHttpOperationResponse(deviceName: string, iscsiServerName: string, diskName: string, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes the iscsi disk.
+     * Deletes the iSCSI disk.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} diskName The disk name.
      *
@@ -5826,13 +5826,13 @@ export interface IscsiDisks {
 
 
     /**
-     * Gets the iscsi disk metrics
+     * Gets the iSCSI disk metrics
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
-     * @param {string} diskName The iscsi disk name.
+     * @param {string} diskName The iSCSI disk name.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -5854,13 +5854,13 @@ export interface IscsiDisks {
     listMetricsWithHttpOperationResponse(deviceName: string, iscsiServerName: string, diskName: string, resourceGroupName: string, managerName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricList>>;
 
     /**
-     * Gets the iscsi disk metrics
+     * Gets the iSCSI disk metrics
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
-     * @param {string} diskName The iscsi disk name.
+     * @param {string} diskName The iSCSI disk name.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -5901,13 +5901,13 @@ export interface IscsiDisks {
 
 
     /**
-     * Retrieves metric definitions for all metric aggregated at the iscsi disk.
+     * Retrieves metric definitions for all metric aggregated at the iSCSI disk.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
-     * @param {string} diskName The iscsi disk name.
+     * @param {string} diskName The iSCSI disk name.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -5927,13 +5927,13 @@ export interface IscsiDisks {
     listMetricDefinitionWithHttpOperationResponse(deviceName: string, iscsiServerName: string, diskName: string, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricDefinitionList>>;
 
     /**
-     * Retrieves metric definitions for all metric aggregated at the iscsi disk.
+     * Retrieves metric definitions for all metric aggregated at the iSCSI disk.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
-     * @param {string} diskName The iscsi disk name.
+     * @param {string} diskName The iSCSI disk name.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -5972,15 +5972,15 @@ export interface IscsiDisks {
 
 
     /**
-     * Creates or updates the iscsi disk.
+     * Creates or updates the iSCSI disk.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} diskName The disk name.
      *
-     * @param {object} iscsiDisk The iscsi disk.
+     * @param {object} iscsiDisk The iSCSI disk.
      *
      * @param {string} [iscsiDisk.description] The description.
      *
@@ -6016,15 +6016,15 @@ export interface IscsiDisks {
     beginCreateOrUpdateWithHttpOperationResponse(deviceName: string, iscsiServerName: string, diskName: string, iscsiDisk: models.ISCSIDisk, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ISCSIDisk>>;
 
     /**
-     * Creates or updates the iscsi disk.
+     * Creates or updates the iSCSI disk.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} diskName The disk name.
      *
-     * @param {object} iscsiDisk The iscsi disk.
+     * @param {object} iscsiDisk The iSCSI disk.
      *
      * @param {string} [iscsiDisk.description] The description.
      *
@@ -6079,11 +6079,11 @@ export interface IscsiDisks {
 
 
     /**
-     * Deletes the iscsi disk.
+     * Deletes the iSCSI disk.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} diskName The disk name.
      *
@@ -6105,11 +6105,11 @@ export interface IscsiDisks {
     beginDeleteMethodWithHttpOperationResponse(deviceName: string, iscsiServerName: string, diskName: string, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes the iscsi disk.
+     * Deletes the iSCSI disk.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} diskName The disk name.
      *
@@ -7650,7 +7650,7 @@ export interface IscsiServers {
 
 
     /**
-     * Retrieves all the iscsi in a device.
+     * Retrieves all the iSCSI in a device.
      *
      * @param {string} deviceName The device name.
      *
@@ -7672,7 +7672,7 @@ export interface IscsiServers {
     listByDeviceWithHttpOperationResponse(deviceName: string, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ISCSIServerList>>;
 
     /**
-     * Retrieves all the iscsi in a device.
+     * Retrieves all the iSCSI in a device.
      *
      * @param {string} deviceName The device name.
      *
@@ -7713,11 +7713,11 @@ export interface IscsiServers {
 
 
     /**
-     * Returns the properties of the specified iscsi server name.
+     * Returns the properties of the specified iSCSI server name.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -7737,11 +7737,11 @@ export interface IscsiServers {
     getWithHttpOperationResponse(deviceName: string, iscsiServerName: string, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ISCSIServer>>;
 
     /**
-     * Returns the properties of the specified iscsi server name.
+     * Returns the properties of the specified iSCSI server name.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -7780,13 +7780,13 @@ export interface IscsiServers {
 
 
     /**
-     * Creates or updates the iscsi server.
+     * Creates or updates the iSCSI server.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
-     * @param {object} iscsiServer The iscsi server.
+     * @param {object} iscsiServer The iSCSI server.
      *
      * @param {string} iscsiServer.storageDomainId The storage domain id.
      *
@@ -7816,13 +7816,13 @@ export interface IscsiServers {
     createOrUpdateWithHttpOperationResponse(deviceName: string, iscsiServerName: string, iscsiServer: models.ISCSIServer, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ISCSIServer>>;
 
     /**
-     * Creates or updates the iscsi server.
+     * Creates or updates the iSCSI server.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
-     * @param {object} iscsiServer The iscsi server.
+     * @param {object} iscsiServer The iSCSI server.
      *
      * @param {string} iscsiServer.storageDomainId The storage domain id.
      *
@@ -7871,11 +7871,11 @@ export interface IscsiServers {
 
 
     /**
-     * Deletes the iscsi server.
+     * Deletes the iSCSI server.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -7895,11 +7895,11 @@ export interface IscsiServers {
     deleteMethodWithHttpOperationResponse(deviceName: string, iscsiServerName: string, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes the iscsi server.
+     * Deletes the iSCSI server.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -7937,11 +7937,11 @@ export interface IscsiServers {
 
 
     /**
-     * Backup the iscsi server now.
+     * Backup the iSCSI server now.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -7961,11 +7961,11 @@ export interface IscsiServers {
     backupNowWithHttpOperationResponse(deviceName: string, iscsiServerName: string, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Backup the iscsi server now.
+     * Backup the iSCSI server now.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -8003,11 +8003,11 @@ export interface IscsiServers {
 
 
     /**
-     * Gets the iscsi server metrics
+     * Gets the iSCSI server metrics
      *
-     * @param {string} deviceName The devie name.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -8029,11 +8029,11 @@ export interface IscsiServers {
     listMetricsWithHttpOperationResponse(deviceName: string, iscsiServerName: string, resourceGroupName: string, managerName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricList>>;
 
     /**
-     * Gets the iscsi server metrics
+     * Gets the iSCSI server metrics
      *
-     * @param {string} deviceName The devie name.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -8074,11 +8074,11 @@ export interface IscsiServers {
 
 
     /**
-     * Retrieves metric definitions for all metrics aggregated at iscsi server.
+     * Retrieves metric definitions for all metrics aggregated at iSCSI server.
      *
-     * @param {string} deviceName The devie name.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -8098,11 +8098,11 @@ export interface IscsiServers {
     listMetricDefinitionWithHttpOperationResponse(deviceName: string, iscsiServerName: string, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricDefinitionList>>;
 
     /**
-     * Retrieves metric definitions for all metrics aggregated at iscsi server.
+     * Retrieves metric definitions for all metrics aggregated at iSCSI server.
      *
-     * @param {string} deviceName The devie name.
+     * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -8141,7 +8141,7 @@ export interface IscsiServers {
 
 
     /**
-     * Retrieves all the iscsi servers in a manager.
+     * Retrieves all the iSCSI servers in a manager.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -8161,7 +8161,7 @@ export interface IscsiServers {
     listByManagerWithHttpOperationResponse(resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ISCSIServerList>>;
 
     /**
-     * Retrieves all the iscsi servers in a manager.
+     * Retrieves all the iSCSI servers in a manager.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -8200,13 +8200,13 @@ export interface IscsiServers {
 
 
     /**
-     * Creates or updates the iscsi server.
+     * Creates or updates the iSCSI server.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
-     * @param {object} iscsiServer The iscsi server.
+     * @param {object} iscsiServer The iSCSI server.
      *
      * @param {string} iscsiServer.storageDomainId The storage domain id.
      *
@@ -8236,13 +8236,13 @@ export interface IscsiServers {
     beginCreateOrUpdateWithHttpOperationResponse(deviceName: string, iscsiServerName: string, iscsiServer: models.ISCSIServer, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ISCSIServer>>;
 
     /**
-     * Creates or updates the iscsi server.
+     * Creates or updates the iSCSI server.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
-     * @param {object} iscsiServer The iscsi server.
+     * @param {object} iscsiServer The iSCSI server.
      *
      * @param {string} iscsiServer.storageDomainId The storage domain id.
      *
@@ -8291,11 +8291,11 @@ export interface IscsiServers {
 
 
     /**
-     * Deletes the iscsi server.
+     * Deletes the iSCSI server.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -8315,11 +8315,11 @@ export interface IscsiServers {
     beginDeleteMethodWithHttpOperationResponse(deviceName: string, iscsiServerName: string, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes the iscsi server.
+     * Deletes the iSCSI server.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -8357,11 +8357,11 @@ export interface IscsiServers {
 
 
     /**
-     * Backup the iscsi server now.
+     * Backup the iSCSI server now.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -8381,11 +8381,11 @@ export interface IscsiServers {
     beginBackupNowWithHttpOperationResponse(deviceName: string, iscsiServerName: string, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Backup the iscsi server now.
+     * Backup the iSCSI server now.
      *
      * @param {string} deviceName The device name.
      *
-     * @param {string} iscsiServerName The iscsi server name.
+     * @param {string} iscsiServerName The iSCSI server name.
      *
      * @param {string} resourceGroupName The resource group name
      *
