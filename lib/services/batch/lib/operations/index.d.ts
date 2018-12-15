@@ -696,7 +696,7 @@ export interface Pool {
      * the default value is true.
      *
      * @param {array} [pool.virtualMachineConfiguration.dataDisks] The
-     * configuration for data disks attached to the comptue nodes in the pool. This
+     * configuration for data disks attached to the compute nodes in the pool. This
      * property must be specified if the compute nodes in the pool need to have
      * empty data disks attached to them. This cannot be updated. Each node gets
      * its own disk (the disk is not a file share). Existing disks cannot be
@@ -1094,7 +1094,7 @@ export interface Pool {
      * the default value is true.
      *
      * @param {array} [pool.virtualMachineConfiguration.dataDisks] The
-     * configuration for data disks attached to the comptue nodes in the pool. This
+     * configuration for data disks attached to the compute nodes in the pool. This
      * property must be specified if the compute nodes in the pool need to have
      * empty data disks attached to them. This cannot be updated. Each node gets
      * its own disk (the disk is not a file share). Existing disks cannot be
@@ -4847,7 +4847,7 @@ export interface Job {
      *
      * @param {array}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them. This cannot be updated. Each node
      * gets its own disk (the disk is not a file share). Existing disks cannot be
@@ -5415,7 +5415,7 @@ export interface Job {
      *
      * @param {array}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them. This cannot be updated. Each node
      * gets its own disk (the disk is not a file share). Existing disks cannot be
@@ -5993,7 +5993,7 @@ export interface Job {
      *
      * @param {array}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them. This cannot be updated. Each node
      * gets its own disk (the disk is not a file share). Existing disks cannot be
@@ -6566,7 +6566,7 @@ export interface Job {
      *
      * @param {array}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them. This cannot be updated. Each node
      * gets its own disk (the disk is not a file share). Existing disks cannot be
@@ -7893,7 +7893,7 @@ export interface Job {
      *
      * @param {array}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them. This cannot be updated. Each node
      * gets its own disk (the disk is not a file share). Existing disks cannot be
@@ -8743,7 +8743,7 @@ export interface Job {
      *
      * @param {array}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them. This cannot be updated. Each node
      * gets its own disk (the disk is not a file share). Existing disks cannot be
@@ -12819,7 +12819,7 @@ export interface JobSchedule {
      *
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them. This cannot be updated. Each node
      * gets its own disk (the disk is not a file share). Existing disks cannot be
@@ -13818,7 +13818,7 @@ export interface JobSchedule {
      *
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them. This cannot be updated. Each node
      * gets its own disk (the disk is not a file share). Existing disks cannot be
@@ -14839,7 +14839,7 @@ export interface JobSchedule {
      *
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them. This cannot be updated. Each node
      * gets its own disk (the disk is not a file share). Existing disks cannot be
@@ -15844,7 +15844,7 @@ export interface JobSchedule {
      *
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them. This cannot be updated. Each node
      * gets its own disk (the disk is not a file share). Existing disks cannot be
@@ -17248,7 +17248,7 @@ export interface JobSchedule {
      *
      * @param {array}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them. This cannot be updated. Each node
      * gets its own disk (the disk is not a file share). Existing disks cannot be
@@ -18212,7 +18212,7 @@ export interface JobSchedule {
      *
      * @param {array}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them. This cannot be updated. Each node
      * gets its own disk (the disk is not a file share). Existing disks cannot be
