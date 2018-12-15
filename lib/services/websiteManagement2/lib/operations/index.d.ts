@@ -8424,7 +8424,7 @@ export interface Recommendations {
      * @param {boolean} [options.updateSeen] Specify <code>true</code> to update
      * the last-seen timestamp of the recommendation object.
      *
-     * @param {string} [options.recommendationId] The GUID of the recommedation
+     * @param {string} [options.recommendationId] The GUID of the recommendation
      * object if you query an expired one. You don't need to specify it to query an
      * active entry.
      *
@@ -8456,7 +8456,7 @@ export interface Recommendations {
      * @param {boolean} [options.updateSeen] Specify <code>true</code> to update
      * the last-seen timestamp of the recommendation object.
      *
-     * @param {string} [options.recommendationId] The GUID of the recommedation
+     * @param {string} [options.recommendationId] The GUID of the recommendation
      * object if you query an expired one. You don't need to specify it to query an
      * active entry.
      *
@@ -9074,7 +9074,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -9459,7 +9459,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -9943,7 +9943,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -10316,7 +10316,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -13912,7 +13912,7 @@ export interface WebApps {
      * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
      * 'WeightedTotalTraffic', 'RequestHash'
      *
-     * @param {object} [siteConfig.experiments] This is work around for polymophic
+     * @param {object} [siteConfig.experiments] This is work around for polymorphic
      * types.
      *
      * @param {array} [siteConfig.experiments.rampUpRules] List of ramp-up rules.
@@ -14159,7 +14159,7 @@ export interface WebApps {
      * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
      * 'WeightedTotalTraffic', 'RequestHash'
      *
-     * @param {object} [siteConfig.experiments] This is work around for polymophic
+     * @param {object} [siteConfig.experiments] This is work around for polymorphic
      * types.
      *
      * @param {array} [siteConfig.experiments.rampUpRules] List of ramp-up rules.
@@ -14425,7 +14425,7 @@ export interface WebApps {
      * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
      * 'WeightedTotalTraffic', 'RequestHash'
      *
-     * @param {object} [siteConfig.experiments] This is work around for polymophic
+     * @param {object} [siteConfig.experiments] This is work around for polymorphic
      * types.
      *
      * @param {array} [siteConfig.experiments.rampUpRules] List of ramp-up rules.
@@ -14672,7 +14672,7 @@ export interface WebApps {
      * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
      * 'WeightedTotalTraffic', 'RequestHash'
      *
-     * @param {object} [siteConfig.experiments] This is work around for polymophic
+     * @param {object} [siteConfig.experiments] This is work around for polymorphic
      * types.
      *
      * @param {array} [siteConfig.experiments.rampUpRules] List of ramp-up rules.
@@ -23412,7 +23412,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -23800,7 +23800,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -24293,7 +24293,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -24669,7 +24669,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -28316,7 +28316,7 @@ export interface WebApps {
      * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
      * 'WeightedTotalTraffic', 'RequestHash'
      *
-     * @param {object} [siteConfig.experiments] This is work around for polymophic
+     * @param {object} [siteConfig.experiments] This is work around for polymorphic
      * types.
      *
      * @param {array} [siteConfig.experiments.rampUpRules] List of ramp-up rules.
@@ -28566,7 +28566,7 @@ export interface WebApps {
      * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
      * 'WeightedTotalTraffic', 'RequestHash'
      *
-     * @param {object} [siteConfig.experiments] This is work around for polymophic
+     * @param {object} [siteConfig.experiments] This is work around for polymorphic
      * types.
      *
      * @param {array} [siteConfig.experiments.rampUpRules] List of ramp-up rules.
@@ -28835,7 +28835,7 @@ export interface WebApps {
      * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
      * 'WeightedTotalTraffic', 'RequestHash'
      *
-     * @param {object} [siteConfig.experiments] This is work around for polymophic
+     * @param {object} [siteConfig.experiments] This is work around for polymorphic
      * types.
      *
      * @param {array} [siteConfig.experiments.rampUpRules] List of ramp-up rules.
@@ -29085,7 +29085,7 @@ export interface WebApps {
      * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
      * 'WeightedTotalTraffic', 'RequestHash'
      *
-     * @param {object} [siteConfig.experiments] This is work around for polymophic
+     * @param {object} [siteConfig.experiments] This is work around for polymorphic
      * types.
      *
      * @param {array} [siteConfig.experiments.rampUpRules] List of ramp-up rules.
@@ -43027,7 +43027,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -43412,7 +43412,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -45116,7 +45116,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -45504,7 +45504,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -57258,9 +57258,9 @@ export interface AppServicePlans {
 
 
     /**
-     * @summary Get all App Service plans for a subcription.
+     * @summary Get all App Service plans for a subscription.
      *
-     * Get all App Service plans for a subcription.
+     * Get all App Service plans for a subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -57281,9 +57281,9 @@ export interface AppServicePlans {
     listWithHttpOperationResponse(options?: { detailed? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AppServicePlanCollection>>;
 
     /**
-     * @summary Get all App Service plans for a subcription.
+     * @summary Get all App Service plans for a subscription.
      *
-     * Get all App Service plans for a subcription.
+     * Get all App Service plans for a subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -58464,9 +58464,9 @@ export interface AppServicePlans {
 
 
     /**
-     * @summary Get metrics for an App Serice plan.
+     * @summary Get metrics for an App Service plan.
      *
-     * Get metrics for an App Serice plan.
+     * Get metrics for an App Service plan.
      *
      * @param {string} resourceGroupName Name of the resource group to which the
      * resource belongs.
@@ -58496,9 +58496,9 @@ export interface AppServicePlans {
     listMetricsWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { details? : boolean, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceMetricCollection>>;
 
     /**
-     * @summary Get metrics for an App Serice plan.
+     * @summary Get metrics for an App Service plan.
      *
-     * Get metrics for an App Serice plan.
+     * Get metrics for an App Service plan.
      *
      * @param {string} resourceGroupName Name of the resource group to which the
      * resource belongs.
@@ -58559,7 +58559,7 @@ export interface AppServicePlans {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.softRestart] Specify <code>true</code> to performa
+     * @param {boolean} [options.softRestart] Specify <code>true</code> to perform
      * a soft restart, applies the configuration settings and restarts the apps if
      * necessary. The default is <code>false</code>, which always restarts and
      * reprovisions the apps
@@ -58587,7 +58587,7 @@ export interface AppServicePlans {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.softRestart] Specify <code>true</code> to performa
+     * @param {boolean} [options.softRestart] Specify <code>true</code> to perform
      * a soft restart, applies the configuration settings and restarts the apps if
      * necessary. The default is <code>false</code>, which always restarts and
      * reprovisions the apps
@@ -58709,9 +58709,9 @@ export interface AppServicePlans {
 
 
     /**
-     * @summary Gets all selectable sku's for a given App Service Plan
+     * @summary Gets all selectable SKUs for a given App Service Plan
      *
-     * Gets all selectable sku's for a given App Service Plan
+     * Gets all selectable SKUs for a given App Service Plan
      *
      * @param {string} resourceGroupName Name of the resource group to which the
      * resource belongs.
@@ -58732,9 +58732,9 @@ export interface AppServicePlans {
     getServerFarmSkusWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
-     * @summary Gets all selectable sku's for a given App Service Plan
+     * @summary Gets all selectable SKUs for a given App Service Plan
      *
-     * Gets all selectable sku's for a given App Service Plan
+     * Gets all selectable SKUs for a given App Service Plan
      *
      * @param {string} resourceGroupName Name of the resource group to which the
      * resource belongs.
@@ -59893,9 +59893,9 @@ export interface AppServicePlans {
 
 
     /**
-     * @summary Get all App Service plans for a subcription.
+     * @summary Get all App Service plans for a subscription.
      *
-     * Get all App Service plans for a subcription.
+     * Get all App Service plans for a subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -59914,9 +59914,9 @@ export interface AppServicePlans {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AppServicePlanCollection>>;
 
     /**
-     * @summary Get all App Service plans for a subcription.
+     * @summary Get all App Service plans for a subscription.
      *
-     * Get all App Service plans for a subcription.
+     * Get all App Service plans for a subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -60206,9 +60206,9 @@ export interface AppServicePlans {
 
 
     /**
-     * @summary Get metrics for an App Serice plan.
+     * @summary Get metrics for an App Service plan.
      *
-     * Get metrics for an App Serice plan.
+     * Get metrics for an App Service plan.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -60227,9 +60227,9 @@ export interface AppServicePlans {
     listMetricsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceMetricCollection>>;
 
     /**
-     * @summary Get metrics for an App Serice plan.
+     * @summary Get metrics for an App Service plan.
      *
-     * Get metrics for an App Serice plan.
+     * Get metrics for an App Service plan.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.

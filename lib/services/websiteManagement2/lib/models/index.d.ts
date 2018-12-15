@@ -1386,7 +1386,7 @@ export interface SiteConfig {
    */
   loadBalancing?: string;
   /**
-   * This is work around for polymophic types.
+   * This is work around for polymorphic types.
    */
   experiments?: Experiments;
   /**
@@ -2420,7 +2420,7 @@ export interface Certificate extends Resource {
   */
   readonly issueDate?: Date;
   /**
-   * Certificate expriration date.
+   * Certificate expiration date.
   */
   readonly expirationDate?: Date;
   /**
@@ -2507,7 +2507,7 @@ export interface CertificatePatchResource extends ProxyOnlyResource {
   */
   readonly issueDate?: Date;
   /**
-   * Certificate expriration date.
+   * Certificate expiration date.
   */
   readonly expirationDate?: Date;
   /**
@@ -2893,7 +2893,7 @@ export interface LocalizableString {
 */
 export interface CsmUsageQuota {
   /**
-   * Units of measurement for the quota resourse.
+   * Units of measurement for the quota resource.
   */
   unit?: string;
   /**
@@ -3127,11 +3127,11 @@ export interface Solution {
 */
 export interface DetectorAbnormalTimePeriod {
   /**
-   * Start time of the corelated event
+   * Start time of the correlated event
   */
   startTime?: Date;
   /**
-   * End time of the corelated event
+   * End time of the correlated event
   */
   endTime?: Date;
   /**
@@ -3275,7 +3275,7 @@ export interface DiagnosticMetricSet {
 */
 export interface DataSource {
   /**
-   * Instrunctions if any for the data source
+   * Instructions if any for the data source
   */
   instructions?: string[];
   /**
@@ -3469,7 +3469,7 @@ export interface DiagnosticCategory extends ProxyOnlyResource {
 }
 
 /**
- * Class representing Reponse from Diagnostic Detectors
+ * Class representing Response from Diagnostic Detectors
 */
 export interface DiagnosticDetectorResponse extends ProxyOnlyResource {
   /**
@@ -3628,7 +3628,7 @@ export interface Recommendation extends ProxyOnlyResource {
   */
   enabled?: number;
   /**
-   * The list of states of this recommendation. If it's null then it shoud be considered "Active".
+   * The list of states of this recommendation. If it's null then it should be considered "Active".
   */
   states?: string[];
   /**
@@ -3906,7 +3906,7 @@ export interface PremierAddOnOffer extends ProxyOnlyResource {
 }
 
 /**
- * Information regarding availbility of a resource name.
+ * Information regarding availability of a resource name.
 */
 export interface ResourceNameAvailability {
   /**
@@ -4018,7 +4018,7 @@ export interface ValidateRequest {
   */
   isSpot?: boolean;
   /**
-   * Target capacity of the App Service plan (number of VM's).
+   * Target capacity of the App Service plan (number of VMs).
   */
   capacity?: number;
   /**
@@ -4471,7 +4471,7 @@ export interface CustomHostnameAnalysisResult extends ProxyOnlyResource {
   */
   readonly hasConflictOnScaleUnit?: boolean;
   /**
-   * <code>true</code> if htere is a conflict across subscriptions; otherwise, <code>false</code>.
+   * <code>true</code> if there is a conflict across subscriptions; otherwise, <code>false</code>.
   */
   readonly hasConflictAcrossSubscription?: boolean;
   /**
@@ -4525,7 +4525,7 @@ export interface DeletedAppRestoreRequest extends ProxyOnlyResource {
 }
 
 /**
- * User crendentials used for publishing activity.
+ * User credentials used for publishing activity.
 */
 export interface Deployment extends ProxyOnlyResource {
   /**
@@ -5103,7 +5103,7 @@ export interface ProcessThreadInfo extends ProxyOnlyResource {
   */
   userProcessorTime?: string;
   /**
-   * Priviledged processor time.
+   * Privileged processor time.
   */
   priviledgedProcessorTime?: string;
   /**
@@ -5730,7 +5730,7 @@ export interface SiteConfigResource extends ProxyOnlyResource {
   */
   loadBalancing?: string;
   /**
-   * This is work around for polymophic types.
+   * This is work around for polymorphic types.
   */
   experiments?: Experiments;
   /**
