@@ -1012,7 +1012,7 @@ export interface ListEnvironmentsPayload {
  */
 export interface ListEnvironmentsResponse {
   /**
-   * List of all the evironments
+   * List of all the environments
    */
   environments?: EnvironmentDetails[];
 }
