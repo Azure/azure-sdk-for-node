@@ -6492,7 +6492,7 @@ export interface ChaosContext {
  * All types of faults (restart node, restart code package, remove replica,
  * restart replica, move primary, and move secondary) are enabled for the nodes
  * of these node types.
- * If a nodetype (say NodeTypeX) does not appear in the NodeTypeInclusionList,
+ * If a node type (say NodeTypeX) does not appear in the NodeTypeInclusionList,
  * then node level faults (like NodeRestart) will never be enabled for the
  * nodes of
  * NodeTypeX, but code package and replica faults can still be enabled for
@@ -6640,7 +6640,7 @@ export interface ChaosTargetFilter {
  * All types of faults (restart node, restart code package, remove replica,
  * restart replica, move primary, and move secondary) are enabled for the nodes
  * of these node types.
- * If a nodetype (say NodeTypeX) does not appear in the NodeTypeInclusionList,
+ * If a node type (say NodeTypeX) does not appear in the NodeTypeInclusionList,
  * then node level faults (like NodeRestart) will never be enabled for the
  * nodes of
  * NodeTypeX, but code package and replica faults can still be enabled for
@@ -6800,7 +6800,7 @@ export interface ChaosParameters {
  * All types of faults (restart node, restart code package, remove replica,
  * restart replica, move primary, and move secondary) are enabled for the nodes
  * of these node types.
- * If a nodetype (say NodeTypeX) does not appear in the NodeTypeInclusionList,
+ * If a node type (say NodeTypeX) does not appear in the NodeTypeInclusionList,
  * then node level faults (like NodeRestart) will never be enabled for the
  * nodes of
  * NodeTypeX, but code package and replica faults can still be enabled for
@@ -6955,7 +6955,7 @@ export interface Chaos {
  * All types of faults (restart node, restart code package, remove replica,
  * restart replica, move primary, and move secondary) are enabled for the nodes
  * of these node types.
- * If a nodetype (say NodeTypeX) does not appear in the NodeTypeInclusionList,
+ * If a node type (say NodeTypeX) does not appear in the NodeTypeInclusionList,
  * then node level faults (like NodeRestart) will never be enabled for the
  * nodes of
  * NodeTypeX, but code package and replica faults can still be enabled for
@@ -7325,7 +7325,7 @@ export interface ExecutingFaultsChaosEvent extends ChaosEvent {
  * All types of faults (restart node, restart code package, remove replica,
  * restart replica, move primary, and move secondary) are enabled for the nodes
  * of these node types.
- * If a nodetype (say NodeTypeX) does not appear in the NodeTypeInclusionList,
+ * If a node type (say NodeTypeX) does not appear in the NodeTypeInclusionList,
  * then node level faults (like NodeRestart) will never be enabled for the
  * nodes of
  * NodeTypeX, but code package and replica faults can still be enabled for
