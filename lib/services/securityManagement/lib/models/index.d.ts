@@ -863,6 +863,90 @@ export interface AadConnectivityState1 {
 }
 
 /**
+ * A north-south traffic hardening rule
+*/
+export interface TrafficHardeningRule {
+  /**
+   * The name of the rule
+  */
+  name?: string;
+  /**
+   * The rule;s traffic direction. Possible values include: 'Inbound', 'Outbound'
+  */
+  direction?: string;
+  /**
+   * The rule's destination port
+  */
+  destinationPort?: number;
+  /**
+   * The rule's transport protocol
+  */
+  protocols?: string[];
+  /**
+   * The remote addresses that should be able to communicate with the Azure resource on the rule's
+   * destination port and protocol
+  */
+  allowRemoteAddresses?: string[];
+}
+
+export interface TrafficAlertTrafficItem {
+  /**
+   * The IP address of the remote host that is associated with the traffic
+  */
+  remoteAddress?: string;
+  /**
+   * The detected number of packets sent to or from the remote address (depends on the direction of
+   * the traffic)
+  */
+  attempts?: number;
+}
+
+/**
+ * A north-south traffic hardening alert
+*/
+export interface TrafficAlert {
+  /**
+   * the date (UTC) that the traffic was detected
+  */
+  detectionDate?: Date;
+  /**
+   * The alert's traffic direction. Possible values include: 'Inbound', 'Outbound'
+  */
+  direction?: string;
+  /**
+   * The alert's deStination port
+  */
+  destinationPort?: number;
+  /**
+   * The alert's transport protocol. Possible values include: 'TCP', 'UDP'
+  */
+  protocol?: string;
+  /**
+   * The traffic that was detected and raised the alert
+  */
+  traffic?: TrafficAlertTrafficItem[];
+}
+
+/**
+ * The resource whose properties describes the North-south hardening settings for some Azure
+ * resource
+*/
+export interface NorthSouthHardenings extends Resource {
+  /**
+   * The set of North-south traffic hardening rules
+  */
+  trafficHardeningRules?: TrafficHardeningRule[];
+  /**
+   * The set of North-south hardening alerts associated with the Azure resource
+  */
+  trafficAlerts?: TrafficAlert[];
+  /**
+   * The UTC time on which the traffic hardening rules were calculated
+  */
+  rulesCalculationTime?: Date;
+}
+
+/**
  * Describes properties of a connected resource
 */
 export interface ConnectedResource {
@@ -1057,6 +1141,16 @@ export interface ExternalSecuritySolutionList extends Array<ExternalSecuritySolu
    * The URI to fetch the next page.
   */
   readonly nextLink?: string;
+}
+
+/**
+ * Response for ListNorthSouthHardenings API service call
+*/
+export interface NorthSouthHardeningsList extends Array<NorthSouthHardenings> {
+  /**
+   * The URL to get the next set of results
+  */
+  nextLink?: string;
 }
 
 export interface TopologyList extends Array<TopologyResource> {

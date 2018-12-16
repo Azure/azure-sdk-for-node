@@ -5345,6 +5345,316 @@ export interface ExternalSecuritySolutions {
 
 /**
  * @class
+ * NorthSouthHardeningsOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SecurityCenter.
+ */
+export interface NorthSouthHardeningsOperations {
+
+
+    /**
+     * Gets a list of north-south hardening resources for the subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NorthSouthHardeningsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NorthSouthHardeningsList>>;
+
+    /**
+     * Gets a list of north-south hardening resources for the subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NorthSouthHardeningsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NorthSouthHardeningsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NorthSouthHardeningsList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NorthSouthHardeningsList>;
+    list(callback: ServiceCallback<models.NorthSouthHardeningsList>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NorthSouthHardeningsList>): void;
+
+
+    /**
+     * Gets a list of north-south hardening resources for the resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NorthSouthHardeningsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NorthSouthHardeningsList>>;
+
+    /**
+     * Gets a list of north-south hardening resources for the resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NorthSouthHardeningsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NorthSouthHardeningsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NorthSouthHardeningsList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NorthSouthHardeningsList>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.NorthSouthHardeningsList>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NorthSouthHardeningsList>): void;
+
+
+    /**
+     * Gets the north-south traffic hardening for the specified resource
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} extendedResourceProvider Resource provider name of the base
+     * resource
+     *
+     * @param {string} extendedResourceType Type of the base resource
+     *
+     * @param {string} extendedResourceName The name of the base resource
+     *
+     * @param {string} northSouthResourceName Name of a north-south resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NorthSouthHardenings>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, extendedResourceProvider: string, extendedResourceType: string, extendedResourceName: string, northSouthResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NorthSouthHardenings>>;
+
+    /**
+     * Gets the north-south traffic hardening for the specified resource
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} extendedResourceProvider Resource provider name of the base
+     * resource
+     *
+     * @param {string} extendedResourceType Type of the base resource
+     *
+     * @param {string} extendedResourceName The name of the base resource
+     *
+     * @param {string} northSouthResourceName Name of a north-south resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NorthSouthHardenings} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NorthSouthHardenings} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NorthSouthHardenings} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, extendedResourceProvider: string, extendedResourceType: string, extendedResourceName: string, northSouthResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NorthSouthHardenings>;
+    get(resourceGroupName: string, extendedResourceProvider: string, extendedResourceType: string, extendedResourceName: string, northSouthResourceName: string, callback: ServiceCallback<models.NorthSouthHardenings>): void;
+    get(resourceGroupName: string, extendedResourceProvider: string, extendedResourceType: string, extendedResourceName: string, northSouthResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NorthSouthHardenings>): void;
+
+
+    /**
+     * Gets a list of north-south hardening resources for the subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NorthSouthHardeningsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NorthSouthHardeningsList>>;
+
+    /**
+     * Gets a list of north-south hardening resources for the subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NorthSouthHardeningsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NorthSouthHardeningsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NorthSouthHardeningsList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NorthSouthHardeningsList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.NorthSouthHardeningsList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NorthSouthHardeningsList>): void;
+
+
+    /**
+     * Gets a list of north-south hardening resources for the resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NorthSouthHardeningsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NorthSouthHardeningsList>>;
+
+    /**
+     * Gets a list of north-south hardening resources for the resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NorthSouthHardeningsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NorthSouthHardeningsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NorthSouthHardeningsList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NorthSouthHardeningsList>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.NorthSouthHardeningsList>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NorthSouthHardeningsList>): void;
+}
+
+/**
+ * @class
  * Topology
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SecurityCenter.
