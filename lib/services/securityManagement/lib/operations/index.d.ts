@@ -5538,6 +5538,80 @@ export interface NorthSouthHardeningsOperations {
 
 
     /**
+     * Enforces the given collections of traffic hardenings rule's on the VM's NSG
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} extendedResourceProvider Resource provider name of the base
+     * resource
+     *
+     * @param {string} extendedResourceType Type of the base resource
+     *
+     * @param {string} extendedResourceName The name of the base resource
+     *
+     * @param {string} northSouthResourceName Name of a north-south resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    enforceWithHttpOperationResponse(resourceGroupName: string, extendedResourceProvider: string, extendedResourceType: string, extendedResourceName: string, northSouthResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Enforces the given collections of traffic hardenings rule's on the VM's NSG
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} extendedResourceProvider Resource provider name of the base
+     * resource
+     *
+     * @param {string} extendedResourceType Type of the base resource
+     *
+     * @param {string} extendedResourceName The name of the base resource
+     *
+     * @param {string} northSouthResourceName Name of a north-south resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    enforce(resourceGroupName: string, extendedResourceProvider: string, extendedResourceType: string, extendedResourceName: string, northSouthResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    enforce(resourceGroupName: string, extendedResourceProvider: string, extendedResourceType: string, extendedResourceName: string, northSouthResourceName: string, callback: ServiceCallback<void>): void;
+    enforce(resourceGroupName: string, extendedResourceProvider: string, extendedResourceType: string, extendedResourceName: string, northSouthResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Gets a list of north-south hardening resources for the subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
