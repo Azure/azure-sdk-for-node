@@ -6520,7 +6520,7 @@ export interface HDInsightHiveActivity extends ExecutionActivity {
    */
   variables?: any[];
   /**
-   * Query timeout value (in minutes).  Effective when the HDInsight culster is with ESP
+   * Query timeout value (in minutes).  Effective when the HDInsight cluster is with ESP
    * (Enterprise Security Package)
    */
   queryTimeout?: number;
