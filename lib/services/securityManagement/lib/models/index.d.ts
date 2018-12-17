@@ -914,7 +914,7 @@ export interface TrafficAlert {
   */
   direction?: string;
   /**
-   * The alert's deStination port
+   * The alert's destination port
   */
   destinationPort?: number;
   /**
