@@ -1654,3 +1654,447 @@ export interface Operations {
     listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
 }
+
+/**
+ * @class
+ * Secrets
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the KeyVaultManagementClient.
+ */
+export interface Secrets {
+
+
+    /**
+     * Create or update a secret in a key vault in the specified subscription.
+     * NOTE: This API is intended for internal use in ARM deployments. Users should
+     * use the data-plane REST service for interaction with vault secrets.
+     *
+     * @param {string} resourceGroupName The name of the Resource Group to which
+     * the vault belongs.
+     *
+     * @param {string} vaultName Name of the vault
+     *
+     * @param {string} secretName Name of the secret
+     *
+     * @param {object} parameters Parameters to create or update the secret
+     *
+     * @param {object} [parameters.tags] The tags that will be assigned to the
+     * secret.
+     *
+     * @param {object} parameters.properties Properties of the secret
+     *
+     * @param {string} [parameters.properties.value] The value of the secret. NOTE:
+     * 'value' will never be returned from the service, as APIs using this model
+     * are is intended for internal use in ARM deployments. Users should use the
+     * data-plane REST service for interaction with vault secrets.
+     *
+     * @param {string} [parameters.properties.contentType] The content type of the
+     * secret.
+     *
+     * @param {object} [parameters.properties.attributes] The attributes of the
+     * secret.
+     *
+     * @param {boolean} [parameters.properties.attributes.enabled] Determines
+     * whether the object is enabled.
+     *
+     * @param {date} [parameters.properties.attributes.notBefore] Not before date
+     * in UTC.
+     *
+     * @param {date} [parameters.properties.attributes.expires] Expiry date in UTC.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Secret>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, vaultName: string, secretName: string, parameters: models.SecretCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Secret>>;
+
+    /**
+     * Create or update a secret in a key vault in the specified subscription.
+     * NOTE: This API is intended for internal use in ARM deployments. Users should
+     * use the data-plane REST service for interaction with vault secrets.
+     *
+     * @param {string} resourceGroupName The name of the Resource Group to which
+     * the vault belongs.
+     *
+     * @param {string} vaultName Name of the vault
+     *
+     * @param {string} secretName Name of the secret
+     *
+     * @param {object} parameters Parameters to create or update the secret
+     *
+     * @param {object} [parameters.tags] The tags that will be assigned to the
+     * secret.
+     *
+     * @param {object} parameters.properties Properties of the secret
+     *
+     * @param {string} [parameters.properties.value] The value of the secret. NOTE:
+     * 'value' will never be returned from the service, as APIs using this model
+     * are is intended for internal use in ARM deployments. Users should use the
+     * data-plane REST service for interaction with vault secrets.
+     *
+     * @param {string} [parameters.properties.contentType] The content type of the
+     * secret.
+     *
+     * @param {object} [parameters.properties.attributes] The attributes of the
+     * secret.
+     *
+     * @param {boolean} [parameters.properties.attributes.enabled] Determines
+     * whether the object is enabled.
+     *
+     * @param {date} [parameters.properties.attributes.notBefore] Not before date
+     * in UTC.
+     *
+     * @param {date} [parameters.properties.attributes.expires] Expiry date in UTC.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Secret} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Secret} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Secret} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, vaultName: string, secretName: string, parameters: models.SecretCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Secret>;
+    createOrUpdate(resourceGroupName: string, vaultName: string, secretName: string, parameters: models.SecretCreateOrUpdateParameters, callback: ServiceCallback<models.Secret>): void;
+    createOrUpdate(resourceGroupName: string, vaultName: string, secretName: string, parameters: models.SecretCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Secret>): void;
+
+
+    /**
+     * Update a secret in the specified subscription.  NOTE: This API is intended
+     * for internal use in ARM deployments.  Users should use the data-plane REST
+     * service for interaction with vault secrets.
+     *
+     * @param {string} resourceGroupName The name of the Resource Group to which
+     * the vault belongs.
+     *
+     * @param {string} vaultName Name of the vault
+     *
+     * @param {string} secretName Name of the secret
+     *
+     * @param {object} parameters Parameters to patch the secret
+     *
+     * @param {object} [parameters.tags] The tags that will be assigned to the
+     * secret.
+     *
+     * @param {object} [parameters.properties] Properties of the secret
+     *
+     * @param {string} [parameters.properties.value] The value of the secret.
+     *
+     * @param {string} [parameters.properties.contentType] The content type of the
+     * secret.
+     *
+     * @param {object} [parameters.properties.attributes] The attributes of the
+     * secret.
+     *
+     * @param {boolean} [parameters.properties.attributes.enabled] Determines
+     * whether the object is enabled.
+     *
+     * @param {date} [parameters.properties.attributes.notBefore] Not before date
+     * in UTC.
+     *
+     * @param {date} [parameters.properties.attributes.expires] Expiry date in UTC.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Secret>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, vaultName: string, secretName: string, parameters: models.SecretPatchParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Secret>>;
+
+    /**
+     * Update a secret in the specified subscription.  NOTE: This API is intended
+     * for internal use in ARM deployments.  Users should use the data-plane REST
+     * service for interaction with vault secrets.
+     *
+     * @param {string} resourceGroupName The name of the Resource Group to which
+     * the vault belongs.
+     *
+     * @param {string} vaultName Name of the vault
+     *
+     * @param {string} secretName Name of the secret
+     *
+     * @param {object} parameters Parameters to patch the secret
+     *
+     * @param {object} [parameters.tags] The tags that will be assigned to the
+     * secret.
+     *
+     * @param {object} [parameters.properties] Properties of the secret
+     *
+     * @param {string} [parameters.properties.value] The value of the secret.
+     *
+     * @param {string} [parameters.properties.contentType] The content type of the
+     * secret.
+     *
+     * @param {object} [parameters.properties.attributes] The attributes of the
+     * secret.
+     *
+     * @param {boolean} [parameters.properties.attributes.enabled] Determines
+     * whether the object is enabled.
+     *
+     * @param {date} [parameters.properties.attributes.notBefore] Not before date
+     * in UTC.
+     *
+     * @param {date} [parameters.properties.attributes.expires] Expiry date in UTC.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Secret} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Secret} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Secret} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, vaultName: string, secretName: string, parameters: models.SecretPatchParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Secret>;
+    update(resourceGroupName: string, vaultName: string, secretName: string, parameters: models.SecretPatchParameters, callback: ServiceCallback<models.Secret>): void;
+    update(resourceGroupName: string, vaultName: string, secretName: string, parameters: models.SecretPatchParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Secret>): void;
+
+
+    /**
+     * Gets the specified secret.  NOTE: This API is intended for internal use in
+     * ARM deployments. Users should use the data-plane REST service for
+     * interaction with vault secrets.
+     *
+     * @param {string} resourceGroupName The name of the Resource Group to which
+     * the vault belongs.
+     *
+     * @param {string} vaultName The name of the vault.
+     *
+     * @param {string} secretName The name of the secret.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Secret>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, vaultName: string, secretName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Secret>>;
+
+    /**
+     * Gets the specified secret.  NOTE: This API is intended for internal use in
+     * ARM deployments. Users should use the data-plane REST service for
+     * interaction with vault secrets.
+     *
+     * @param {string} resourceGroupName The name of the Resource Group to which
+     * the vault belongs.
+     *
+     * @param {string} vaultName The name of the vault.
+     *
+     * @param {string} secretName The name of the secret.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Secret} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Secret} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Secret} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, vaultName: string, secretName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Secret>;
+    get(resourceGroupName: string, vaultName: string, secretName: string, callback: ServiceCallback<models.Secret>): void;
+    get(resourceGroupName: string, vaultName: string, secretName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Secret>): void;
+
+
+    /**
+     * The List operation gets information about the secrets in a vault.  NOTE:
+     * This API is intended for internal use in ARM deployments. Users should use
+     * the data-plane REST service for interaction with vault secrets.
+     *
+     * @param {string} resourceGroupName The name of the Resource Group to which
+     * the vault belongs.
+     *
+     * @param {string} vaultName The name of the vault.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.top] Maximum number of results to return.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SecretListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, vaultName: string, options?: { top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretListResult>>;
+
+    /**
+     * The List operation gets information about the secrets in a vault.  NOTE:
+     * This API is intended for internal use in ARM deployments. Users should use
+     * the data-plane REST service for interaction with vault secrets.
+     *
+     * @param {string} resourceGroupName The name of the Resource Group to which
+     * the vault belongs.
+     *
+     * @param {string} vaultName The name of the vault.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.top] Maximum number of results to return.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SecretListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SecretListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SecretListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, vaultName: string, options?: { top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.SecretListResult>;
+    list(resourceGroupName: string, vaultName: string, callback: ServiceCallback<models.SecretListResult>): void;
+    list(resourceGroupName: string, vaultName: string, options: { top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecretListResult>): void;
+
+
+    /**
+     * The List operation gets information about the secrets in a vault.  NOTE:
+     * This API is intended for internal use in ARM deployments. Users should use
+     * the data-plane REST service for interaction with vault secrets.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SecretListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretListResult>>;
+
+    /**
+     * The List operation gets information about the secrets in a vault.  NOTE:
+     * This API is intended for internal use in ARM deployments. Users should use
+     * the data-plane REST service for interaction with vault secrets.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SecretListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SecretListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SecretListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecretListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.SecretListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecretListResult>): void;
+}

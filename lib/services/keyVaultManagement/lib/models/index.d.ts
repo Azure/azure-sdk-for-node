@@ -495,6 +495,122 @@ export interface Operation {
 }
 
 /**
+ * The object attributes managed by the KeyVault service.
+ */
+export interface Attributes {
+  /**
+   * Determines whether the object is enabled.
+   */
+  enabled?: boolean;
+  /**
+   * Not before date in UTC.
+   */
+  notBefore?: Date;
+  /**
+   * Expiry date in UTC.
+   */
+  expires?: Date;
+  /**
+   * Creation time in UTC.
+   */
+  readonly created?: Date;
+  /**
+   * Last updated time in UTC.
+   */
+  readonly updated?: Date;
+}
+
+/**
+ * The secret management attributes.
+ */
+export interface SecretAttributes extends Attributes {
+}
+
+/**
+ * Properties of the secret
+ */
+export interface SecretProperties {
+  /**
+   * The value of the secret. NOTE: 'value' will never be returned from the service, as APIs using
+   * this model are is intended for internal use in ARM deployments. Users should use the
+   * data-plane REST service for interaction with vault secrets.
+   */
+  value?: string;
+  /**
+   * The content type of the secret.
+   */
+  contentType?: string;
+  /**
+   * The attributes of the secret.
+   */
+  attributes?: SecretAttributes;
+  /**
+   * The URI to retrieve the current version of the secret.
+   */
+  readonly secretUri?: string;
+  /**
+   * The URI to retrieve the specific version of the secret.
+   */
+  readonly secretUriWithVersion?: string;
+}
+
+/**
+ * Properties of the secret
+ */
+export interface SecretPatchProperties {
+  /**
+   * The value of the secret.
+   */
+  value?: string;
+  /**
+   * The content type of the secret.
+   */
+  contentType?: string;
+  /**
+   * The attributes of the secret.
+   */
+  attributes?: SecretAttributes;
+}
+
+/**
+ * Parameters for creating or updating a secret
+ */
+export interface SecretCreateOrUpdateParameters extends BaseResource {
+  /**
+   * The tags that will be assigned to the secret.
+   */
+  tags?: { [propertyName: string]: string };
+  /**
+   * Properties of the secret
+   */
+  properties: SecretProperties;
+}
+
+/**
+ * Parameters for patching a secret
+ */
+export interface SecretPatchParameters extends BaseResource {
+  /**
+   * The tags that will be assigned to the secret.
+   */
+  tags?: { [propertyName: string]: string };
+  /**
+   * Properties of the secret
+   */
+  properties?: SecretPatchProperties;
+}
+
+/**
+ * Resource information with extended details.
+ */
+export interface Secret extends Resource {
+  /**
+   * Properties of the secret
+   */
+  properties: SecretProperties;
+}
+
+/**
  * List of vaults
  */
 export interface VaultListResult extends Array<Vault> {
@@ -531,6 +647,16 @@ export interface ResourceListResult extends Array<Resource> {
 export interface OperationListResult extends Array<Operation> {
   /**
    * The URL to get the next set of operations.
+   */
+  nextLink?: string;
+}
+
+/**
+ * List of secrets
+ */
+export interface SecretListResult extends Array<Secret> {
+  /**
+   * The URL to get the next set of secrets.
    */
   nextLink?: string;
 }

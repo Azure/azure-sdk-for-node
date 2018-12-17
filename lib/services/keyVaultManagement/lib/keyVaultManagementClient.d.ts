@@ -58,6 +58,7 @@ export default class KeyVaultManagementClient extends AzureServiceClient {
   // Operation groups
   vaults: operations.Vaults;
   operations: operations.Operations;
+  secrets: operations.Secrets;
 }
 
 export { KeyVaultManagementClient, models as KeyVaultManagementModels };
