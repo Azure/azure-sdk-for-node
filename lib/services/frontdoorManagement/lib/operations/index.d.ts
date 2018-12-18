@@ -968,11 +968,51 @@ export interface RoutingRules {
      * of this rule. Permitted values are 'Enabled' or 'Disabled'. Possible values
      * include: 'Enabled', 'Disabled'
      *
+     * @param {object} [routingRuleParameters.redirectConfiguration] A reference to
+     * the redirect routing configuration.
+     *
+     * @param {string} [routingRuleParameters.redirectConfiguration.redirectType]
+     * The redirect type the rule will use when redirecting traffic. Possible
+     * values include: 'Moved(301)', 'Found(302)', 'TemporaryRedirect(307)',
+     * 'PermanentRedirect(308)'
+     *
+     * @param {string}
+     * [routingRuleParameters.redirectConfiguration.destinationProtocol] The
+     * protocol of the destination where the traffic is forwarded to. Possible
+     * values include: 'MatchRequest', 'Htt', 'Https'
+     *
+     * @param {string}
+     * [routingRuleParameters.redirectConfiguration.destinationHost] If left blank,
+     * then we will use the incoming host as the destination host.
+     *
+     * @param {string}
+     * [routingRuleParameters.redirectConfiguration.destinationPath] Path cannot be
+     * empty and must start with /.
+     *
+     * @param {string}
+     * [routingRuleParameters.redirectConfiguration.destinationFragment] Fragment
+     * is the part of the URL that comes after #. Do not include the #.
+     *
+     * @param {boolean} [routingRuleParameters.redirectConfiguration.preservePath]
+     * Indicates whether the path is preserved.
+     *
+     * @param {boolean}
+     * [routingRuleParameters.redirectConfiguration.preserveQueryString] Indicates
+     * whether the query string is preserved.
+     *
+     * @param {string}
+     * [routingRuleParameters.redirectConfiguration.extraQueryString] Any string to
+     * be added to the query string in the destination URL. ? and & will be added
+     * automatically so do not include them.
+     *
      * @param {string} [routingRuleParameters.resourceState] Resource status.
      * Possible values include: 'Creating', 'Enabling', 'Enabled', 'Disabling',
      * 'Disabled', 'Deleting'
      *
      * @param {string} [routingRuleParameters.name] Resource name.
+     *
+     * @param {string} [routingRuleParameters.type] Resource type. Possible values
+     * include: 'Forward', 'Redirect'
      *
      * @param {string} [routingRuleParameters.id] Resource ID.
      *
@@ -1044,11 +1084,51 @@ export interface RoutingRules {
      * of this rule. Permitted values are 'Enabled' or 'Disabled'. Possible values
      * include: 'Enabled', 'Disabled'
      *
+     * @param {object} [routingRuleParameters.redirectConfiguration] A reference to
+     * the redirect routing configuration.
+     *
+     * @param {string} [routingRuleParameters.redirectConfiguration.redirectType]
+     * The redirect type the rule will use when redirecting traffic. Possible
+     * values include: 'Moved(301)', 'Found(302)', 'TemporaryRedirect(307)',
+     * 'PermanentRedirect(308)'
+     *
+     * @param {string}
+     * [routingRuleParameters.redirectConfiguration.destinationProtocol] The
+     * protocol of the destination where the traffic is forwarded to. Possible
+     * values include: 'MatchRequest', 'Htt', 'Https'
+     *
+     * @param {string}
+     * [routingRuleParameters.redirectConfiguration.destinationHost] If left blank,
+     * then we will use the incoming host as the destination host.
+     *
+     * @param {string}
+     * [routingRuleParameters.redirectConfiguration.destinationPath] Path cannot be
+     * empty and must start with /.
+     *
+     * @param {string}
+     * [routingRuleParameters.redirectConfiguration.destinationFragment] Fragment
+     * is the part of the URL that comes after #. Do not include the #.
+     *
+     * @param {boolean} [routingRuleParameters.redirectConfiguration.preservePath]
+     * Indicates whether the path is preserved.
+     *
+     * @param {boolean}
+     * [routingRuleParameters.redirectConfiguration.preserveQueryString] Indicates
+     * whether the query string is preserved.
+     *
+     * @param {string}
+     * [routingRuleParameters.redirectConfiguration.extraQueryString] Any string to
+     * be added to the query string in the destination URL. ? and & will be added
+     * automatically so do not include them.
+     *
      * @param {string} [routingRuleParameters.resourceState] Resource status.
      * Possible values include: 'Creating', 'Enabling', 'Enabled', 'Disabling',
      * 'Disabled', 'Deleting'
      *
      * @param {string} [routingRuleParameters.name] Resource name.
+     *
+     * @param {string} [routingRuleParameters.type] Resource type. Possible values
+     * include: 'Forward', 'Redirect'
      *
      * @param {string} [routingRuleParameters.id] Resource ID.
      *
@@ -1207,11 +1287,51 @@ export interface RoutingRules {
      * of this rule. Permitted values are 'Enabled' or 'Disabled'. Possible values
      * include: 'Enabled', 'Disabled'
      *
+     * @param {object} [routingRuleParameters.redirectConfiguration] A reference to
+     * the redirect routing configuration.
+     *
+     * @param {string} [routingRuleParameters.redirectConfiguration.redirectType]
+     * The redirect type the rule will use when redirecting traffic. Possible
+     * values include: 'Moved(301)', 'Found(302)', 'TemporaryRedirect(307)',
+     * 'PermanentRedirect(308)'
+     *
+     * @param {string}
+     * [routingRuleParameters.redirectConfiguration.destinationProtocol] The
+     * protocol of the destination where the traffic is forwarded to. Possible
+     * values include: 'MatchRequest', 'Htt', 'Https'
+     *
+     * @param {string}
+     * [routingRuleParameters.redirectConfiguration.destinationHost] If left blank,
+     * then we will use the incoming host as the destination host.
+     *
+     * @param {string}
+     * [routingRuleParameters.redirectConfiguration.destinationPath] Path cannot be
+     * empty and must start with /.
+     *
+     * @param {string}
+     * [routingRuleParameters.redirectConfiguration.destinationFragment] Fragment
+     * is the part of the URL that comes after #. Do not include the #.
+     *
+     * @param {boolean} [routingRuleParameters.redirectConfiguration.preservePath]
+     * Indicates whether the path is preserved.
+     *
+     * @param {boolean}
+     * [routingRuleParameters.redirectConfiguration.preserveQueryString] Indicates
+     * whether the query string is preserved.
+     *
+     * @param {string}
+     * [routingRuleParameters.redirectConfiguration.extraQueryString] Any string to
+     * be added to the query string in the destination URL. ? and & will be added
+     * automatically so do not include them.
+     *
      * @param {string} [routingRuleParameters.resourceState] Resource status.
      * Possible values include: 'Creating', 'Enabling', 'Enabled', 'Disabling',
      * 'Disabled', 'Deleting'
      *
      * @param {string} [routingRuleParameters.name] Resource name.
+     *
+     * @param {string} [routingRuleParameters.type] Resource type. Possible values
+     * include: 'Forward', 'Redirect'
      *
      * @param {string} [routingRuleParameters.id] Resource ID.
      *
@@ -1283,11 +1403,51 @@ export interface RoutingRules {
      * of this rule. Permitted values are 'Enabled' or 'Disabled'. Possible values
      * include: 'Enabled', 'Disabled'
      *
+     * @param {object} [routingRuleParameters.redirectConfiguration] A reference to
+     * the redirect routing configuration.
+     *
+     * @param {string} [routingRuleParameters.redirectConfiguration.redirectType]
+     * The redirect type the rule will use when redirecting traffic. Possible
+     * values include: 'Moved(301)', 'Found(302)', 'TemporaryRedirect(307)',
+     * 'PermanentRedirect(308)'
+     *
+     * @param {string}
+     * [routingRuleParameters.redirectConfiguration.destinationProtocol] The
+     * protocol of the destination where the traffic is forwarded to. Possible
+     * values include: 'MatchRequest', 'Htt', 'Https'
+     *
+     * @param {string}
+     * [routingRuleParameters.redirectConfiguration.destinationHost] If left blank,
+     * then we will use the incoming host as the destination host.
+     *
+     * @param {string}
+     * [routingRuleParameters.redirectConfiguration.destinationPath] Path cannot be
+     * empty and must start with /.
+     *
+     * @param {string}
+     * [routingRuleParameters.redirectConfiguration.destinationFragment] Fragment
+     * is the part of the URL that comes after #. Do not include the #.
+     *
+     * @param {boolean} [routingRuleParameters.redirectConfiguration.preservePath]
+     * Indicates whether the path is preserved.
+     *
+     * @param {boolean}
+     * [routingRuleParameters.redirectConfiguration.preserveQueryString] Indicates
+     * whether the query string is preserved.
+     *
+     * @param {string}
+     * [routingRuleParameters.redirectConfiguration.extraQueryString] Any string to
+     * be added to the query string in the destination URL. ? and & will be added
+     * automatically so do not include them.
+     *
      * @param {string} [routingRuleParameters.resourceState] Resource status.
      * Possible values include: 'Creating', 'Enabling', 'Enabled', 'Disabling',
      * 'Disabled', 'Deleting'
      *
      * @param {string} [routingRuleParameters.name] Resource name.
+     *
+     * @param {string} [routingRuleParameters.type] Resource type. Possible values
+     * include: 'Forward', 'Redirect'
      *
      * @param {string} [routingRuleParameters.id] Resource ID.
      *

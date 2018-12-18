@@ -141,6 +141,10 @@ export interface RoutingRule extends SubResource {
    */
   enabledState?: string;
   /**
+   * A reference to the redirect routing configuration.
+   */
+  redirectConfiguration?: RedirectConfiguration;
+  /**
    * Resource status. Possible values include: 'Creating', 'Enabling', 'Enabled', 'Disabling',
    * 'Disabled', 'Deleting'
    */
@@ -150,9 +154,9 @@ export interface RoutingRule extends SubResource {
    */
   name?: string;
   /**
-   * Resource type.
+   * Resource type. Possible values include: 'Forward', 'Redirect'
    */
-  readonly type?: string;
+  type?: string;
 }
 
 /**
@@ -409,6 +413,48 @@ export interface CacheConfiguration {
 }
 
 /**
+ * The configuration for a redirect routing rule. This object is needed only if the type property
+ * of RoutingRule is set to Redirect.
+ */
+export interface RedirectConfiguration {
+  /**
+   * The redirect type the rule will use when redirecting traffic. Possible values include:
+   * 'Moved(301)', 'Found(302)', 'TemporaryRedirect(307)', 'PermanentRedirect(308)'
+   */
+  redirectType?: string;
+  /**
+   * The protocol of the destination where the traffic is forwarded to. Possible values include:
+   * 'MatchRequest', 'Htt', 'Https'
+   */
+  destinationProtocol?: string;
+  /**
+   * If left blank, then we will use the incoming host as the destination host.
+   */
+  destinationHost?: string;
+  /**
+   * Path cannot be empty and must start with /.
+   */
+  destinationPath?: string;
+  /**
+   * Fragment is the part of the URL that comes after #. Do not include the #.
+   */
+  destinationFragment?: string;
+  /**
+   * Indicates whether the path is preserved.
+   */
+  preservePath?: boolean;
+  /**
+   * Indicates whether the query string is preserved.
+   */
+  preserveQueryString?: boolean;
+  /**
+   * Any string to be added to the query string in the destination URL. ? and & will be added
+   * automatically so do not include them.
+   */
+  extraQueryString?: string;
+}
+
+/**
  * Routing rules to apply to an endpoint
  */
 export interface RoutingRuleUpdateParameters {
@@ -447,6 +493,10 @@ export interface RoutingRuleUpdateParameters {
    * values include: 'Enabled', 'Disabled'
    */
   enabledState?: string;
+  /**
+   * A reference to the redirect routing configuration.
+   */
+  redirectConfiguration?: RedirectConfiguration;
 }
 
 /**
