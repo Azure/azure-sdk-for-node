@@ -22,27 +22,27 @@ export interface PresentationTimeRange {
   /**
    * The absolute start time boundary.
    */
-  startTimestamp: number;
+  startTimestamp?: number;
   /**
    * The absolute end time boundary.
    */
-  endTimestamp: number;
+  endTimestamp?: number;
   /**
    * The relative to end sliding window.
    */
-  presentationWindowDuration: number;
+  presentationWindowDuration?: number;
   /**
    * The relative to end right edge.
    */
-  liveBackoffDuration: number;
+  liveBackoffDuration?: number;
   /**
    * The time scale of time stamps.
    */
-  timescale: number;
+  timescale?: number;
   /**
    * The indicator of forcing exsiting of end time stamp.
    */
-  forceEndTimestamp: boolean;
+  forceEndTimestamp?: boolean;
 }
 
 /**
@@ -1957,7 +1957,7 @@ export interface EnvelopeEncryption {
   */
   contentKeys?: StreamingPolicyContentKeys;
   /**
-   * KeyAcquistionUrlTemplate is used to point to user specified service to delivery content keys
+   * KeyAcquisitionUrlTemplate is used to point to user specified service to delivery content keys
   */
   customKeyAcquisitionUrlTemplate?: string;
 }
@@ -2056,7 +2056,7 @@ export interface StreamingLocatorContentKey {
   */
   labelReferenceInStreamingPolicy?: string;
   /**
-   * Value of  of Content Key
+   * Value of Content Key
   */
   value?: string;
   /**
@@ -2345,7 +2345,7 @@ export interface LiveEventPreview {
 export interface LiveEventEncoding {
   /**
    * The encoding type for Live Event.  This value is specified at creation time and cannot be
-   * updated. Possible values include: 'None', 'Basic'
+   * updated. Possible values include: 'None', 'Basic', 'Standard'
   */
   encodingType?: string;
   /**
