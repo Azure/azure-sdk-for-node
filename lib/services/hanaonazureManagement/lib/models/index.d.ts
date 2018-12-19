@@ -228,6 +228,16 @@ export interface ErrorResponse {
 }
 
 /**
+ * Tags field of the HANA instance.
+ */
+export interface Tags {
+  /**
+   * Tags field of the HANA instance.
+   */
+  tags?: { [propertyName: string]: string };
+}
+
+/**
  * List of HANA operations
  */
 export interface OperationList extends Array<Operation> {
