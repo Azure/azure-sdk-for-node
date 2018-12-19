@@ -929,6 +929,9 @@ export interface RoutingRules {
      * @param {object} routingRuleParameters Routing Rule properties needed to
      * create a new Front Door.
      *
+     * @param {string} [routingRuleParameters.routeType] Route type. Possible
+     * values include: 'Forward', 'Redirect'
+     *
      * @param {array} [routingRuleParameters.frontendEndpoints] Frontend endpoints
      * associated with this rule
      *
@@ -979,7 +982,7 @@ export interface RoutingRules {
      * @param {string}
      * [routingRuleParameters.redirectConfiguration.destinationProtocol] The
      * protocol of the destination where the traffic is forwarded to. Possible
-     * values include: 'MatchRequest', 'Htt', 'Https'
+     * values include: 'MatchRequest', 'Http', 'Https'
      *
      * @param {string}
      * [routingRuleParameters.redirectConfiguration.destinationHost] If left blank,
@@ -1010,9 +1013,6 @@ export interface RoutingRules {
      * 'Disabled', 'Deleting'
      *
      * @param {string} [routingRuleParameters.name] Resource name.
-     *
-     * @param {string} [routingRuleParameters.type] Resource type. Possible values
-     * include: 'Forward', 'Redirect'
      *
      * @param {string} [routingRuleParameters.id] Resource ID.
      *
@@ -1045,6 +1045,9 @@ export interface RoutingRules {
      * @param {object} routingRuleParameters Routing Rule properties needed to
      * create a new Front Door.
      *
+     * @param {string} [routingRuleParameters.routeType] Route type. Possible
+     * values include: 'Forward', 'Redirect'
+     *
      * @param {array} [routingRuleParameters.frontendEndpoints] Frontend endpoints
      * associated with this rule
      *
@@ -1095,7 +1098,7 @@ export interface RoutingRules {
      * @param {string}
      * [routingRuleParameters.redirectConfiguration.destinationProtocol] The
      * protocol of the destination where the traffic is forwarded to. Possible
-     * values include: 'MatchRequest', 'Htt', 'Https'
+     * values include: 'MatchRequest', 'Http', 'Https'
      *
      * @param {string}
      * [routingRuleParameters.redirectConfiguration.destinationHost] If left blank,
@@ -1126,9 +1129,6 @@ export interface RoutingRules {
      * 'Disabled', 'Deleting'
      *
      * @param {string} [routingRuleParameters.name] Resource name.
-     *
-     * @param {string} [routingRuleParameters.type] Resource type. Possible values
-     * include: 'Forward', 'Redirect'
      *
      * @param {string} [routingRuleParameters.id] Resource ID.
      *
@@ -1248,6 +1248,9 @@ export interface RoutingRules {
      * @param {object} routingRuleParameters Routing Rule properties needed to
      * create a new Front Door.
      *
+     * @param {string} [routingRuleParameters.routeType] Route type. Possible
+     * values include: 'Forward', 'Redirect'
+     *
      * @param {array} [routingRuleParameters.frontendEndpoints] Frontend endpoints
      * associated with this rule
      *
@@ -1298,7 +1301,7 @@ export interface RoutingRules {
      * @param {string}
      * [routingRuleParameters.redirectConfiguration.destinationProtocol] The
      * protocol of the destination where the traffic is forwarded to. Possible
-     * values include: 'MatchRequest', 'Htt', 'Https'
+     * values include: 'MatchRequest', 'Http', 'Https'
      *
      * @param {string}
      * [routingRuleParameters.redirectConfiguration.destinationHost] If left blank,
@@ -1329,9 +1332,6 @@ export interface RoutingRules {
      * 'Disabled', 'Deleting'
      *
      * @param {string} [routingRuleParameters.name] Resource name.
-     *
-     * @param {string} [routingRuleParameters.type] Resource type. Possible values
-     * include: 'Forward', 'Redirect'
      *
      * @param {string} [routingRuleParameters.id] Resource ID.
      *
@@ -1364,6 +1364,9 @@ export interface RoutingRules {
      * @param {object} routingRuleParameters Routing Rule properties needed to
      * create a new Front Door.
      *
+     * @param {string} [routingRuleParameters.routeType] Route type. Possible
+     * values include: 'Forward', 'Redirect'
+     *
      * @param {array} [routingRuleParameters.frontendEndpoints] Frontend endpoints
      * associated with this rule
      *
@@ -1414,7 +1417,7 @@ export interface RoutingRules {
      * @param {string}
      * [routingRuleParameters.redirectConfiguration.destinationProtocol] The
      * protocol of the destination where the traffic is forwarded to. Possible
-     * values include: 'MatchRequest', 'Htt', 'Https'
+     * values include: 'MatchRequest', 'Http', 'Https'
      *
      * @param {string}
      * [routingRuleParameters.redirectConfiguration.destinationHost] If left blank,
@@ -1445,9 +1448,6 @@ export interface RoutingRules {
      * 'Disabled', 'Deleting'
      *
      * @param {string} [routingRuleParameters.name] Resource name.
-     *
-     * @param {string} [routingRuleParameters.type] Resource type. Possible values
-     * include: 'Forward', 'Redirect'
      *
      * @param {string} [routingRuleParameters.id] Resource ID.
      *

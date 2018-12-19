@@ -106,6 +106,10 @@ export interface SubResource extends BaseResource {
  */
 export interface RoutingRule extends SubResource {
   /**
+   * Route type. Possible values include: 'Forward', 'Redirect'
+   */
+  routeType?: string;
+  /**
    * Frontend endpoints associated with this rule
    */
   frontendEndpoints?: SubResource[];
@@ -154,9 +158,9 @@ export interface RoutingRule extends SubResource {
    */
   name?: string;
   /**
-   * Resource type. Possible values include: 'Forward', 'Redirect'
+   * Resource type.
    */
-  type?: string;
+  readonly type?: string;
 }
 
 /**
@@ -424,7 +428,7 @@ export interface RedirectConfiguration {
   redirectType?: string;
   /**
    * The protocol of the destination where the traffic is forwarded to. Possible values include:
-   * 'MatchRequest', 'Htt', 'Https'
+   * 'MatchRequest', 'Http', 'Https'
    */
   destinationProtocol?: string;
   /**
@@ -458,6 +462,10 @@ export interface RedirectConfiguration {
  * Routing rules to apply to an endpoint
  */
 export interface RoutingRuleUpdateParameters {
+  /**
+   * Route type. Possible values include: 'Forward', 'Redirect'
+   */
+  routeType?: string;
   /**
    * Frontend endpoints associated with this rule
    */
