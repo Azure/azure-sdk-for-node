@@ -3410,11 +3410,11 @@ export interface ManagedClusters {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ManagedCluster>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    resetAADProfileWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedCluster>>;
+    resetAADProfileWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Reset AAD Profile of a managed cluster.
@@ -3451,7 +3451,7 @@ export interface ManagedClusters {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ManagedCluster} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3459,16 +3459,15 @@ export interface ManagedClusters {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ManagedCluster} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ManagedCluster} for more information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    resetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedCluster>;
-    resetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, callback: ServiceCallback<models.ManagedCluster>): void;
-    resetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedCluster>): void;
+    resetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    resetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, callback: ServiceCallback<void>): void;
+    resetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -3950,11 +3949,11 @@ export interface ManagedClusters {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ManagedCluster>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginResetAADProfileWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedCluster>>;
+    beginResetAADProfileWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Reset AAD Profile of a managed cluster.
@@ -3991,7 +3990,7 @@ export interface ManagedClusters {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ManagedCluster} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3999,16 +3998,15 @@ export interface ManagedClusters {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ManagedCluster} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ManagedCluster} for more information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginResetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedCluster>;
-    beginResetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, callback: ServiceCallback<models.ManagedCluster>): void;
-    beginResetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedCluster>): void;
+    beginResetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginResetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, callback: ServiceCallback<void>): void;
+    beginResetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
