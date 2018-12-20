@@ -3842,6 +3842,176 @@ export interface ManagedClusters {
 
 
     /**
+     * @summary Reset Service Principal Profile of a managed cluster.
+     *
+     * Update the service principal Profile for a managed cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Reset Service
+     * Principal Profile operation for a Managed Cluster.
+     *
+     * @param {string} parameters.clientId The ID for the service principal.
+     *
+     * @param {string} [parameters.secret] The secret password associated with the
+     * service principal in plain text.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedCluster>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginResetServicePrincipalProfileWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedCluster>>;
+
+    /**
+     * @summary Reset Service Principal Profile of a managed cluster.
+     *
+     * Update the service principal Profile for a managed cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Reset Service
+     * Principal Profile operation for a Managed Cluster.
+     *
+     * @param {string} parameters.clientId The ID for the service principal.
+     *
+     * @param {string} [parameters.secret] The secret password associated with the
+     * service principal in plain text.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedCluster} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedCluster} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedCluster} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginResetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedCluster>;
+    beginResetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, callback: ServiceCallback<models.ManagedCluster>): void;
+    beginResetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedCluster>): void;
+
+
+    /**
+     * @summary Reset AAD Profile of a managed cluster.
+     *
+     * Update the AAD Profile for a managed cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Reset AAD Profile
+     * operation for a Managed Cluster.
+     *
+     * @param {string} parameters.clientAppID The client AAD application ID.
+     *
+     * @param {string} parameters.serverAppID The server AAD application ID.
+     *
+     * @param {string} [parameters.serverAppSecret] The server AAD application
+     * secret.
+     *
+     * @param {string} [parameters.tenantID] The AAD tenant ID to use for
+     * authentication. If not specified, will use the tenant of the deployment
+     * subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedCluster>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginResetAADProfileWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedCluster>>;
+
+    /**
+     * @summary Reset AAD Profile of a managed cluster.
+     *
+     * Update the AAD Profile for a managed cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Reset AAD Profile
+     * operation for a Managed Cluster.
+     *
+     * @param {string} parameters.clientAppID The client AAD application ID.
+     *
+     * @param {string} parameters.serverAppID The server AAD application ID.
+     *
+     * @param {string} [parameters.serverAppSecret] The server AAD application
+     * secret.
+     *
+     * @param {string} [parameters.tenantID] The AAD tenant ID to use for
+     * authentication. If not specified, will use the tenant of the deployment
+     * subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedCluster} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedCluster} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedCluster} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginResetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedCluster>;
+    beginResetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, callback: ServiceCallback<models.ManagedCluster>): void;
+    beginResetAADProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterAADProfile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedCluster>): void;
+
+
+    /**
      * @summary Gets a list of managed clusters in the specified subscription.
      *
      * Gets a list of managed clusters in the specified subscription. The operation
