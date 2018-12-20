@@ -2311,6 +2311,20 @@ export interface ApplicationGatewaySslPredefinedPolicy extends SubResource {
   minProtocolVersion?: string;
 }
 
+export interface ErrorDetails {
+  code?: string;
+  target?: string;
+  message?: string;
+}
+
+export interface ErrorModel {
+  code?: string;
+  message?: string;
+  target?: string;
+  details?: ErrorDetails[];
+  innerError?: string;
+}
+
 /**
  * Tags object for patch operations.
 */
@@ -4036,20 +4050,6 @@ export interface LoadBalancer extends Resource {
    * A unique read-only string that changes whenever the resource is updated.
   */
   etag?: string;
-}
-
-export interface ErrorDetails {
-  code?: string;
-  target?: string;
-  message?: string;
-}
-
-export interface ErrorModel {
-  code?: string;
-  message?: string;
-  target?: string;
-  details?: ErrorDetails[];
-  innerError?: string;
 }
 
 /**
