@@ -929,8 +929,10 @@ export interface RoutingRules {
      * @param {object} routingRuleParameters Routing Rule properties needed to
      * create a new Front Door.
      *
-     * @param {string} [routingRuleParameters.routeType] Route type. Possible
-     * values include: 'Forward', 'Redirect'
+     * @param {string} [routingRuleParameters.routeType] The type of a routing
+     * rule. It must be set to Redirect for a redirect routing rule. To be
+     * backwards-compatible, it is not needed for a forwarding routing rule.
+     * Possible values include: 'Forwarding', 'Redirect'
      *
      * @param {array} [routingRuleParameters.frontendEndpoints] Frontend endpoints
      * associated with this rule
@@ -972,12 +974,12 @@ export interface RoutingRules {
      * include: 'Enabled', 'Disabled'
      *
      * @param {object} [routingRuleParameters.redirectConfiguration] A reference to
-     * the redirect routing configuration.
+     * the redirect routing configuration. It is null for a forward-routing rule.
+     * But it must not be null if the routeType property is set to Redirect.
      *
      * @param {string} [routingRuleParameters.redirectConfiguration.redirectType]
      * The redirect type the rule will use when redirecting traffic. Possible
-     * values include: 'Moved(301)', 'Found(302)', 'TemporaryRedirect(307)',
-     * 'PermanentRedirect(308)'
+     * values include: 'Moved', 'Found', 'TemporaryRedirect', 'PermanentRedirect'
      *
      * @param {string}
      * [routingRuleParameters.redirectConfiguration.destinationProtocol] The
@@ -996,12 +998,13 @@ export interface RoutingRules {
      * [routingRuleParameters.redirectConfiguration.destinationFragment] Fragment
      * is the part of the URL that comes after #. Do not include the #.
      *
-     * @param {boolean} [routingRuleParameters.redirectConfiguration.preservePath]
-     * Indicates whether the path is preserved.
+     * @param {string} [routingRuleParameters.redirectConfiguration.preservePath]
+     * Indicates whether the path is preserved. Possible values include: 'Yes',
+     * 'No'
      *
-     * @param {boolean}
+     * @param {string}
      * [routingRuleParameters.redirectConfiguration.preserveQueryString] Indicates
-     * whether the query string is preserved.
+     * whether the query string is preserved. Possible values include: 'Yes', 'No'
      *
      * @param {string}
      * [routingRuleParameters.redirectConfiguration.extraQueryString] Any string to
@@ -1045,8 +1048,10 @@ export interface RoutingRules {
      * @param {object} routingRuleParameters Routing Rule properties needed to
      * create a new Front Door.
      *
-     * @param {string} [routingRuleParameters.routeType] Route type. Possible
-     * values include: 'Forward', 'Redirect'
+     * @param {string} [routingRuleParameters.routeType] The type of a routing
+     * rule. It must be set to Redirect for a redirect routing rule. To be
+     * backwards-compatible, it is not needed for a forwarding routing rule.
+     * Possible values include: 'Forwarding', 'Redirect'
      *
      * @param {array} [routingRuleParameters.frontendEndpoints] Frontend endpoints
      * associated with this rule
@@ -1088,12 +1093,12 @@ export interface RoutingRules {
      * include: 'Enabled', 'Disabled'
      *
      * @param {object} [routingRuleParameters.redirectConfiguration] A reference to
-     * the redirect routing configuration.
+     * the redirect routing configuration. It is null for a forward-routing rule.
+     * But it must not be null if the routeType property is set to Redirect.
      *
      * @param {string} [routingRuleParameters.redirectConfiguration.redirectType]
      * The redirect type the rule will use when redirecting traffic. Possible
-     * values include: 'Moved(301)', 'Found(302)', 'TemporaryRedirect(307)',
-     * 'PermanentRedirect(308)'
+     * values include: 'Moved', 'Found', 'TemporaryRedirect', 'PermanentRedirect'
      *
      * @param {string}
      * [routingRuleParameters.redirectConfiguration.destinationProtocol] The
@@ -1112,12 +1117,13 @@ export interface RoutingRules {
      * [routingRuleParameters.redirectConfiguration.destinationFragment] Fragment
      * is the part of the URL that comes after #. Do not include the #.
      *
-     * @param {boolean} [routingRuleParameters.redirectConfiguration.preservePath]
-     * Indicates whether the path is preserved.
+     * @param {string} [routingRuleParameters.redirectConfiguration.preservePath]
+     * Indicates whether the path is preserved. Possible values include: 'Yes',
+     * 'No'
      *
-     * @param {boolean}
+     * @param {string}
      * [routingRuleParameters.redirectConfiguration.preserveQueryString] Indicates
-     * whether the query string is preserved.
+     * whether the query string is preserved. Possible values include: 'Yes', 'No'
      *
      * @param {string}
      * [routingRuleParameters.redirectConfiguration.extraQueryString] Any string to
@@ -1248,8 +1254,10 @@ export interface RoutingRules {
      * @param {object} routingRuleParameters Routing Rule properties needed to
      * create a new Front Door.
      *
-     * @param {string} [routingRuleParameters.routeType] Route type. Possible
-     * values include: 'Forward', 'Redirect'
+     * @param {string} [routingRuleParameters.routeType] The type of a routing
+     * rule. It must be set to Redirect for a redirect routing rule. To be
+     * backwards-compatible, it is not needed for a forwarding routing rule.
+     * Possible values include: 'Forwarding', 'Redirect'
      *
      * @param {array} [routingRuleParameters.frontendEndpoints] Frontend endpoints
      * associated with this rule
@@ -1291,12 +1299,12 @@ export interface RoutingRules {
      * include: 'Enabled', 'Disabled'
      *
      * @param {object} [routingRuleParameters.redirectConfiguration] A reference to
-     * the redirect routing configuration.
+     * the redirect routing configuration. It is null for a forward-routing rule.
+     * But it must not be null if the routeType property is set to Redirect.
      *
      * @param {string} [routingRuleParameters.redirectConfiguration.redirectType]
      * The redirect type the rule will use when redirecting traffic. Possible
-     * values include: 'Moved(301)', 'Found(302)', 'TemporaryRedirect(307)',
-     * 'PermanentRedirect(308)'
+     * values include: 'Moved', 'Found', 'TemporaryRedirect', 'PermanentRedirect'
      *
      * @param {string}
      * [routingRuleParameters.redirectConfiguration.destinationProtocol] The
@@ -1315,12 +1323,13 @@ export interface RoutingRules {
      * [routingRuleParameters.redirectConfiguration.destinationFragment] Fragment
      * is the part of the URL that comes after #. Do not include the #.
      *
-     * @param {boolean} [routingRuleParameters.redirectConfiguration.preservePath]
-     * Indicates whether the path is preserved.
+     * @param {string} [routingRuleParameters.redirectConfiguration.preservePath]
+     * Indicates whether the path is preserved. Possible values include: 'Yes',
+     * 'No'
      *
-     * @param {boolean}
+     * @param {string}
      * [routingRuleParameters.redirectConfiguration.preserveQueryString] Indicates
-     * whether the query string is preserved.
+     * whether the query string is preserved. Possible values include: 'Yes', 'No'
      *
      * @param {string}
      * [routingRuleParameters.redirectConfiguration.extraQueryString] Any string to
@@ -1364,8 +1373,10 @@ export interface RoutingRules {
      * @param {object} routingRuleParameters Routing Rule properties needed to
      * create a new Front Door.
      *
-     * @param {string} [routingRuleParameters.routeType] Route type. Possible
-     * values include: 'Forward', 'Redirect'
+     * @param {string} [routingRuleParameters.routeType] The type of a routing
+     * rule. It must be set to Redirect for a redirect routing rule. To be
+     * backwards-compatible, it is not needed for a forwarding routing rule.
+     * Possible values include: 'Forwarding', 'Redirect'
      *
      * @param {array} [routingRuleParameters.frontendEndpoints] Frontend endpoints
      * associated with this rule
@@ -1407,12 +1418,12 @@ export interface RoutingRules {
      * include: 'Enabled', 'Disabled'
      *
      * @param {object} [routingRuleParameters.redirectConfiguration] A reference to
-     * the redirect routing configuration.
+     * the redirect routing configuration. It is null for a forward-routing rule.
+     * But it must not be null if the routeType property is set to Redirect.
      *
      * @param {string} [routingRuleParameters.redirectConfiguration.redirectType]
      * The redirect type the rule will use when redirecting traffic. Possible
-     * values include: 'Moved(301)', 'Found(302)', 'TemporaryRedirect(307)',
-     * 'PermanentRedirect(308)'
+     * values include: 'Moved', 'Found', 'TemporaryRedirect', 'PermanentRedirect'
      *
      * @param {string}
      * [routingRuleParameters.redirectConfiguration.destinationProtocol] The
@@ -1431,12 +1442,13 @@ export interface RoutingRules {
      * [routingRuleParameters.redirectConfiguration.destinationFragment] Fragment
      * is the part of the URL that comes after #. Do not include the #.
      *
-     * @param {boolean} [routingRuleParameters.redirectConfiguration.preservePath]
-     * Indicates whether the path is preserved.
+     * @param {string} [routingRuleParameters.redirectConfiguration.preservePath]
+     * Indicates whether the path is preserved. Possible values include: 'Yes',
+     * 'No'
      *
-     * @param {boolean}
+     * @param {string}
      * [routingRuleParameters.redirectConfiguration.preserveQueryString] Indicates
-     * whether the query string is preserved.
+     * whether the query string is preserved. Possible values include: 'Yes', 'No'
      *
      * @param {string}
      * [routingRuleParameters.redirectConfiguration.extraQueryString] Any string to

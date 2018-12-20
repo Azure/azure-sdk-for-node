@@ -106,7 +106,9 @@ export interface SubResource extends BaseResource {
  */
 export interface RoutingRule extends SubResource {
   /**
-   * Route type. Possible values include: 'Forward', 'Redirect'
+   * The type of a routing rule. It must be set to Redirect for a redirect routing rule. To be
+   * backwards-compatible, it is not needed for a forwarding routing rule. Possible values include:
+   * 'Forwarding', 'Redirect'
    */
   routeType?: string;
   /**
@@ -145,7 +147,8 @@ export interface RoutingRule extends SubResource {
    */
   enabledState?: string;
   /**
-   * A reference to the redirect routing configuration.
+   * A reference to the redirect routing configuration. It is null for a forward-routing rule. But
+   * it must not be null if the routeType property is set to Redirect.
    */
   redirectConfiguration?: RedirectConfiguration;
   /**
@@ -423,7 +426,7 @@ export interface CacheConfiguration {
 export interface RedirectConfiguration {
   /**
    * The redirect type the rule will use when redirecting traffic. Possible values include:
-   * 'Moved(301)', 'Found(302)', 'TemporaryRedirect(307)', 'PermanentRedirect(308)'
+   * 'Moved', 'Found', 'TemporaryRedirect', 'PermanentRedirect'
    */
   redirectType?: string;
   /**
@@ -444,13 +447,13 @@ export interface RedirectConfiguration {
    */
   destinationFragment?: string;
   /**
-   * Indicates whether the path is preserved.
+   * Indicates whether the path is preserved. Possible values include: 'Yes', 'No'
    */
-  preservePath?: boolean;
+  preservePath?: string;
   /**
-   * Indicates whether the query string is preserved.
+   * Indicates whether the query string is preserved. Possible values include: 'Yes', 'No'
    */
-  preserveQueryString?: boolean;
+  preserveQueryString?: string;
   /**
    * Any string to be added to the query string in the destination URL. ? and & will be added
    * automatically so do not include them.
@@ -463,7 +466,9 @@ export interface RedirectConfiguration {
  */
 export interface RoutingRuleUpdateParameters {
   /**
-   * Route type. Possible values include: 'Forward', 'Redirect'
+   * The type of a routing rule. It must be set to Redirect for a redirect routing rule. To be
+   * backwards-compatible, it is not needed for a forwarding routing rule. Possible values include:
+   * 'Forwarding', 'Redirect'
    */
   routeType?: string;
   /**
@@ -502,7 +507,8 @@ export interface RoutingRuleUpdateParameters {
    */
   enabledState?: string;
   /**
-   * A reference to the redirect routing configuration.
+   * A reference to the redirect routing configuration. It is null for a forward-routing rule. But
+   * it must not be null if the routeType property is set to Redirect.
    */
   redirectConfiguration?: RedirectConfiguration;
 }
