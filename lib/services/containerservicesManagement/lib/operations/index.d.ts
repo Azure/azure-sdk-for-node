@@ -3325,11 +3325,11 @@ export interface ManagedClusters {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ManagedCluster>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    resetServicePrincipalProfileWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedCluster>>;
+    resetServicePrincipalProfileWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Reset Service Principal Profile of a managed cluster.
@@ -3360,7 +3360,7 @@ export interface ManagedClusters {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ManagedCluster} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3368,16 +3368,15 @@ export interface ManagedClusters {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ManagedCluster} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ManagedCluster} for more information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    resetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedCluster>;
-    resetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, callback: ServiceCallback<models.ManagedCluster>): void;
-    resetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedCluster>): void;
+    resetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    resetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, callback: ServiceCallback<void>): void;
+    resetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -3864,11 +3863,11 @@ export interface ManagedClusters {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ManagedCluster>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginResetServicePrincipalProfileWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedCluster>>;
+    beginResetServicePrincipalProfileWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Reset Service Principal Profile of a managed cluster.
@@ -3899,7 +3898,7 @@ export interface ManagedClusters {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ManagedCluster} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3907,16 +3906,15 @@ export interface ManagedClusters {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ManagedCluster} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ManagedCluster} for more information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginResetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedCluster>;
-    beginResetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, callback: ServiceCallback<models.ManagedCluster>): void;
-    beginResetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedCluster>): void;
+    beginResetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginResetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, callback: ServiceCallback<void>): void;
+    beginResetServicePrincipalProfile(resourceGroupName: string, resourceName: string, parameters: models.ManagedClusterServicePrincipalProfile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
