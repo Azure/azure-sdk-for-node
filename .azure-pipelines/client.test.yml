@@ -27,6 +27,7 @@ jobs:
           versionSpec: '$(node.version)'
         displayName: 'Install Node.js $(node.version)'
 
+      # Tests depend on running "npm install" in repo root
       - task: Npm@1
         inputs:
           command: 'install'
@@ -35,8 +36,8 @@ jobs:
       - task: Npm@1
         inputs:
           command: 'custom'
-          customCommand: 'run mocha -- $(test.path) --reporter mocha-junit-reporter'
-        displayName: 'npm run mocha'
+          customCommand: 'run test-client -- -- --reporter mocha-junit-reporter'
+        displayName: 'npm run test-client'
 
       - task: PublishTestResults@2
         inputs:
