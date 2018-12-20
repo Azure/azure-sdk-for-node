@@ -38,7 +38,7 @@ jobs:
 
       - task: CopyFiles@2
         inputs:
-          sourceFolder: 'lib/**/*.tgz'
+          contents: 'lib/**/*.tgz'
           targetFolder: $(Build.ArtifactStagingDirectory)
           flattenFolders: true
         displayName: 'Copy Package'
