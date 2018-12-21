@@ -253,9 +253,9 @@ export interface StorageAccounts {
      * @param {string} parameters.customDomain.name Gets or sets the custom domain
      * name assigned to the storage account. Name is the CNAME source.
      *
-     * @param {boolean} [parameters.customDomain.useSubDomain] Indicates whether
-     * indirect CName validation is enabled. Default value is false. This should
-     * only be set on updates.
+     * @param {boolean} [parameters.customDomain.useSubDomainName] Indicates
+     * whether indirect CName validation is enabled. Default value is false. This
+     * should only be set on updates.
      *
      * @param {object} [parameters.encryption] Provides the encryption settings on
      * the account. If left unspecified the account encryption settings will remain
@@ -387,9 +387,9 @@ export interface StorageAccounts {
      * @param {string} parameters.customDomain.name Gets or sets the custom domain
      * name assigned to the storage account. Name is the CNAME source.
      *
-     * @param {boolean} [parameters.customDomain.useSubDomain] Indicates whether
-     * indirect CName validation is enabled. Default value is false. This should
-     * only be set on updates.
+     * @param {boolean} [parameters.customDomain.useSubDomainName] Indicates
+     * whether indirect CName validation is enabled. Default value is false. This
+     * should only be set on updates.
      *
      * @param {object} [parameters.encryption] Provides the encryption settings on
      * the account. If left unspecified the account encryption settings will remain
@@ -679,9 +679,9 @@ export interface StorageAccounts {
      * @param {string} parameters.customDomain.name Gets or sets the custom domain
      * name assigned to the storage account. Name is the CNAME source.
      *
-     * @param {boolean} [parameters.customDomain.useSubDomain] Indicates whether
-     * indirect CName validation is enabled. Default value is false. This should
-     * only be set on updates.
+     * @param {boolean} [parameters.customDomain.useSubDomainName] Indicates
+     * whether indirect CName validation is enabled. Default value is false. This
+     * should only be set on updates.
      *
      * @param {object} [parameters.encryption] Provides the encryption settings on
      * the account. The default setting is unencrypted.
@@ -810,9 +810,9 @@ export interface StorageAccounts {
      * @param {string} parameters.customDomain.name Gets or sets the custom domain
      * name assigned to the storage account. Name is the CNAME source.
      *
-     * @param {boolean} [parameters.customDomain.useSubDomain] Indicates whether
-     * indirect CName validation is enabled. Default value is false. This should
-     * only be set on updates.
+     * @param {boolean} [parameters.customDomain.useSubDomainName] Indicates
+     * whether indirect CName validation is enabled. Default value is false. This
+     * should only be set on updates.
      *
      * @param {object} [parameters.encryption] Provides the encryption settings on
      * the account. The default setting is unencrypted.
@@ -1600,9 +1600,9 @@ export interface StorageAccounts {
      * @param {string} parameters.customDomain.name Gets or sets the custom domain
      * name assigned to the storage account. Name is the CNAME source.
      *
-     * @param {boolean} [parameters.customDomain.useSubDomain] Indicates whether
-     * indirect CName validation is enabled. Default value is false. This should
-     * only be set on updates.
+     * @param {boolean} [parameters.customDomain.useSubDomainName] Indicates
+     * whether indirect CName validation is enabled. Default value is false. This
+     * should only be set on updates.
      *
      * @param {object} [parameters.encryption] Provides the encryption settings on
      * the account. If left unspecified the account encryption settings will remain
@@ -1734,9 +1734,9 @@ export interface StorageAccounts {
      * @param {string} parameters.customDomain.name Gets or sets the custom domain
      * name assigned to the storage account. Name is the CNAME source.
      *
-     * @param {boolean} [parameters.customDomain.useSubDomain] Indicates whether
-     * indirect CName validation is enabled. Default value is false. This should
-     * only be set on updates.
+     * @param {boolean} [parameters.customDomain.useSubDomainName] Indicates
+     * whether indirect CName validation is enabled. Default value is false. This
+     * should only be set on updates.
      *
      * @param {object} [parameters.encryption] Provides the encryption settings on
      * the account. If left unspecified the account encryption settings will remain
