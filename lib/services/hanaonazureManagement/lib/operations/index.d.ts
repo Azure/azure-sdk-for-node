@@ -296,7 +296,7 @@ export interface HanaInstances {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateTagsWithHttpOperationResponse(resourceGroupName: string, hanaInstanceName: string, tagsParameter: models.Tags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HanaInstance>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, hanaInstanceName: string, tagsParameter: models.Tags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HanaInstance>>;
 
     /**
      * @summary Patches the Tags field of a SAP HANA instance.
@@ -340,9 +340,9 @@ export interface HanaInstances {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateTags(resourceGroupName: string, hanaInstanceName: string, tagsParameter: models.Tags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HanaInstance>;
-    updateTags(resourceGroupName: string, hanaInstanceName: string, tagsParameter: models.Tags, callback: ServiceCallback<models.HanaInstance>): void;
-    updateTags(resourceGroupName: string, hanaInstanceName: string, tagsParameter: models.Tags, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HanaInstance>): void;
+    update(resourceGroupName: string, hanaInstanceName: string, tagsParameter: models.Tags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HanaInstance>;
+    update(resourceGroupName: string, hanaInstanceName: string, tagsParameter: models.Tags, callback: ServiceCallback<models.HanaInstance>): void;
+    update(resourceGroupName: string, hanaInstanceName: string, tagsParameter: models.Tags, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HanaInstance>): void;
 
 
     /**
