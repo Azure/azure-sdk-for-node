@@ -1339,6 +1339,34 @@ export interface SsisObjectMetadataStatusResponse {
 }
 
 /**
+ * The exposure control request.
+ */
+export interface ExposureControlRequest {
+  /**
+   * The feature name.
+   */
+  featureName?: string;
+  /**
+   * The feature type.
+   */
+  featureType?: string;
+}
+
+/**
+ * The exposure control response.
+ */
+export interface ExposureControlResponse {
+  /**
+   * The feature name.
+   */
+  featureName?: string;
+  /**
+   * The feature value.
+   */
+  value?: string;
+}
+
+/**
  * Referenced dependency.
  */
 export interface DependencyReference {
