@@ -271,6 +271,81 @@ export interface HanaInstances {
 
 
     /**
+     * @summary Patches the Tags field of a SAP HANA instance.
+     *
+     * Patches the Tags field of a SAP HANA instance for the specified
+     * subscription, resource group, and instance name.
+     *
+     * @param {string} resourceGroupName Name of the resource group.
+     *
+     * @param {string} hanaInstanceName Name of the SAP HANA on Azure instance.
+     *
+     * @param {object} tagsParameter Request body that only contains the new Tags
+     * field
+     *
+     * @param {object} [tagsParameter.tags] Tags field of the HANA instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<HanaInstance>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, hanaInstanceName: string, tagsParameter: models.Tags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HanaInstance>>;
+
+    /**
+     * @summary Patches the Tags field of a SAP HANA instance.
+     *
+     * Patches the Tags field of a SAP HANA instance for the specified
+     * subscription, resource group, and instance name.
+     *
+     * @param {string} resourceGroupName Name of the resource group.
+     *
+     * @param {string} hanaInstanceName Name of the SAP HANA on Azure instance.
+     *
+     * @param {object} tagsParameter Request body that only contains the new Tags
+     * field
+     *
+     * @param {object} [tagsParameter.tags] Tags field of the HANA instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {HanaInstance} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {HanaInstance} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link HanaInstance} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, hanaInstanceName: string, tagsParameter: models.Tags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HanaInstance>;
+    update(resourceGroupName: string, hanaInstanceName: string, tagsParameter: models.Tags, callback: ServiceCallback<models.HanaInstance>): void;
+    update(resourceGroupName: string, hanaInstanceName: string, tagsParameter: models.Tags, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HanaInstance>): void;
+
+
+    /**
      * The operation to restart a SAP HANA instance.
      *
      * @param {string} resourceGroupName Name of the resource group.
