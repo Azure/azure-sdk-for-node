@@ -594,7 +594,7 @@ export interface ContentSource {
  *
  * @member {string} [type] Gets or sets the type of the parameter.
  * @member {boolean} [isMandatory] Gets or sets a Boolean value to indicate
- * whether the parameter is madatory or not.
+ * whether the parameter is mandatory or not.
  * @member {number} [position] Get or sets the position of the parameter.
  * @member {string} [defaultValue] Gets or sets the default value of parameter.
  */
@@ -726,7 +726,7 @@ export interface DscConfigurationUpdateParameters {
  * @class
  * Initializes a new instance of the RunAsCredentialAssociationProperty class.
  * @constructor
- * Definition of runas credential to use for hybrid worker.
+ * Definition of RunAs credential to use for hybrid worker.
  *
  * @member {string} [name] Gets or sets the name of the credential.
  */
@@ -1354,7 +1354,7 @@ export interface VariableCreateOrUpdateParameters {
  * @class
  * Initializes a new instance of the Variable class.
  * @constructor
- * Definition of the varible.
+ * Definition of the variable.
  *
  * @member {string} [value] Gets or sets the value of the variable.
  * @member {boolean} [isEncrypted] Gets or sets the encrypted flag of the
@@ -1592,7 +1592,7 @@ export interface TagSettingsProperties {
  * Azure query for the update configuration.
  *
  * @member {array} [scope] List of Subscription or Resource Group ARM Ids.
- * @member {array} [location] List of locations to scope the query to.
+ * @member {array} [locations] List of locations to scope the query to.
  * @member {object} [tagSettings] Tag settings for the VM.
  * @member {object} [tagSettings.tags] Dictionary of tags with its list of
  * values.
@@ -1601,7 +1601,7 @@ export interface TagSettingsProperties {
  */
 export interface AzureQueryProperties {
   scope?: string[];
-  location?: string[];
+  locations?: string[];
   tagSettings?: TagSettingsProperties;
 }
 
@@ -1640,7 +1640,7 @@ export interface TargetProperties {
  * @class
  * Initializes a new instance of the UpdateConfiguration class.
  * @constructor
- * Update specifc properties of the software update configuration.
+ * Update specific properties of the software update configuration.
  *
  * @member {string} operatingSystem operating system of target machines.
  * Possible values include: 'Windows', 'Linux'
@@ -1688,6 +1688,40 @@ export interface UpdateConfiguration {
   azureVirtualMachines?: string[];
   nonAzureComputerNames?: string[];
   targets?: TargetProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TaskProperties class.
+ * @constructor
+ * Task properties of the software update configuration.
+ *
+ * @member {object} [parameters] Gets or sets the parameters of the task.
+ * @member {string} [source] Gets or sets the name of the runbook.
+ */
+export interface TaskProperties {
+  parameters?: { [propertyName: string]: string };
+  source?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SoftwareUpdateConfigurationTasks class.
+ * @constructor
+ * Task properties of the software update configuration.
+ *
+ * @member {object} [preTask] Pre task properties.
+ * @member {object} [preTask.parameters] Gets or sets the parameters of the
+ * task.
+ * @member {string} [preTask.source] Gets or sets the name of the runbook.
+ * @member {object} [postTask] Post task properties.
+ * @member {object} [postTask.parameters] Gets or sets the parameters of the
+ * task.
+ * @member {string} [postTask.source] Gets or sets the name of the runbook.
+ */
+export interface SoftwareUpdateConfigurationTasks {
+  preTask?: TaskProperties;
+  postTask?: TaskProperties;
 }
 
 /**
@@ -1777,18 +1811,30 @@ export interface UpdateConfiguration {
  * @member {string} [scheduleInfo.description] Gets or sets the description.
  * @member {string} [provisioningState] Provisioning state for the software
  * update configuration, which only appears in the response.
- * @member {object} [error] detailes of provisioning error
+ * @member {object} [error] Details of provisioning error
  * @member {string} [error.code] Error code
  * @member {string} [error.message] Error message indicating why the operation
  * failed.
- * @member {date} [creationTime] Creation time of theresource, which only
+ * @member {date} [creationTime] Creation time of the resource, which only
  * appears in the response.
- * @member {string} [createdBy] createdBy property, which only appears in the
+ * @member {string} [createdBy] CreatedBy property, which only appears in the
  * response.
  * @member {date} [lastModifiedTime] Last time resource was modified, which
  * only appears in the response.
- * @member {string} [lastModifiedBy] lastModifiedBy property, which only
+ * @member {string} [lastModifiedBy] LastModifiedBy property, which only
  * appears in the response.
+ * @member {object} [tasks] Tasks information for the Software update
+ * configuration.
+ * @member {object} [tasks.preTask] Pre task properties.
+ * @member {object} [tasks.preTask.parameters] Gets or sets the parameters of
+ * the task.
+ * @member {string} [tasks.preTask.source] Gets or sets the name of the
+ * runbook.
+ * @member {object} [tasks.postTask] Post task properties.
+ * @member {object} [tasks.postTask.parameters] Gets or sets the parameters of
+ * the task.
+ * @member {string} [tasks.postTask.source] Gets or sets the name of the
+ * runbook.
  */
 export interface SoftwareUpdateConfiguration extends BaseResource {
   readonly name?: string;
@@ -1802,6 +1848,7 @@ export interface SoftwareUpdateConfiguration extends BaseResource {
   readonly createdBy?: string;
   readonly lastModifiedTime?: Date;
   readonly lastModifiedBy?: string;
+  tasks?: SoftwareUpdateConfigurationTasks;
 }
 
 /**
@@ -1890,6 +1937,42 @@ export interface UpdateConfigurationNavigation {
 
 /**
  * @class
+ * Initializes a new instance of the SoftareUpdateConfigurationRunTaskProperties class.
+ * @constructor
+ * Task properties of the software update configuration.
+ *
+ * @member {string} [status] The status of the task.
+ * @member {string} [source] The name of the source of the task.
+ * @member {string} [jobId] The job id of the task.
+ */
+export interface SoftareUpdateConfigurationRunTaskProperties {
+  status?: string;
+  source?: string;
+  jobId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SoftareUpdateConfigurationRunTasks class.
+ * @constructor
+ * Software update configuration run tasks model.
+ *
+ * @member {object} [preTask] Pre task properties.
+ * @member {string} [preTask.status] The status of the task.
+ * @member {string} [preTask.source] The name of the source of the task.
+ * @member {string} [preTask.jobId] The job id of the task.
+ * @member {object} [postTask] Post task properties.
+ * @member {string} [postTask.status] The status of the task.
+ * @member {string} [postTask.source] The name of the source of the task.
+ * @member {string} [postTask.jobId] The job id of the task.
+ */
+export interface SoftareUpdateConfigurationRunTasks {
+  preTask?: SoftareUpdateConfigurationRunTaskProperties;
+  postTask?: SoftareUpdateConfigurationRunTaskProperties;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SoftwareUpdateConfigurationRun class.
  * @constructor
  * Software update configuration Run properties.
@@ -1901,24 +1984,34 @@ export interface UpdateConfigurationNavigation {
  * @member {string} [softwareUpdateConfiguration.name] Name of the software
  * update configuration triggered the software update configuration run
  * @member {string} [status] Status of the software update configuration run.
- * @member {string} [configuredDuration] configured duration for the software
+ * @member {string} [configuredDuration] Configured duration for the software
  * update configuration run.
  * @member {string} [osType] Operating system target of the software update
  * configuration triggered this run
- * @member {date} [startTime] Etart time of the software update configuration
+ * @member {date} [startTime] Start time of the software update configuration
  * run.
  * @member {date} [endTime] End time of the software update configuration run.
  * @member {number} [computerCount] Number of computers in the software update
  * configuration run.
  * @member {number} [failedCount] Number of computers with failed status.
- * @member {date} [creationTime] Creation time of theresource, which only
+ * @member {date} [creationTime] Creation time of the resource, which only
  * appears in the response.
- * @member {string} [createdBy] createdBy property, which only appears in the
+ * @member {string} [createdBy] CreatedBy property, which only appears in the
  * response.
  * @member {date} [lastModifiedTime] Last time resource was modified, which
  * only appears in the response.
- * @member {string} [lastModifiedBy] lastModifiedBy property, which only
+ * @member {string} [lastModifiedBy] LastModifiedBy property, which only
  * appears in the response.
+ * @member {object} [tasks] Software update configuration tasks triggered in
+ * this run
+ * @member {object} [tasks.preTask] Pre task properties.
+ * @member {string} [tasks.preTask.status] The status of the task.
+ * @member {string} [tasks.preTask.source] The name of the source of the task.
+ * @member {string} [tasks.preTask.jobId] The job id of the task.
+ * @member {object} [tasks.postTask] Post task properties.
+ * @member {string} [tasks.postTask.status] The status of the task.
+ * @member {string} [tasks.postTask.source] The name of the source of the task.
+ * @member {string} [tasks.postTask.jobId] The job id of the task.
  */
 export interface SoftwareUpdateConfigurationRun {
   readonly name?: string;
@@ -1935,6 +2028,7 @@ export interface SoftwareUpdateConfigurationRun {
   readonly createdBy?: string;
   readonly lastModifiedTime?: Date;
   readonly lastModifiedBy?: string;
+  tasks?: SoftareUpdateConfigurationRunTasks;
 }
 
 /**
@@ -1999,7 +2093,7 @@ export interface JobNavigation {
  * machine run
  * @member {string} [job.id] Id of the job associated with the software update
  * configuration run
- * @member {date} [creationTime] Creation time of theresource, which only
+ * @member {date} [creationTime] Creation time of the resource, which only
  * appears in the response.
  * @member {string} [createdBy] createdBy property, which only appears in the
  * response.
@@ -2007,6 +2101,10 @@ export interface JobNavigation {
  * only appears in the response.
  * @member {string} [lastModifiedBy] lastModifiedBy property, which only
  * appears in the response.
+ * @member {object} [error] Details of provisioning error
+ * @member {string} [error.code] Error code
+ * @member {string} [error.message] Error message indicating why the operation
+ * failed.
  */
 export interface SoftwareUpdateConfigurationMachineRun {
   readonly name?: string;
@@ -2026,6 +2124,7 @@ export interface SoftwareUpdateConfigurationMachineRun {
   readonly createdBy?: string;
   readonly lastModifiedTime?: Date;
   readonly lastModifiedBy?: string;
+  error?: ErrorResponse;
 }
 
 /**
@@ -2176,7 +2275,7 @@ export interface SourceControlCreateOrUpdateParameters {
  * @member {date} [startTime] The start time of the job.
  * @member {date} [endTime] The end time of the job.
  * @member {string} [syncType] The sync type. Possible values include:
- * 'IncrementalSync', 'FullSync'
+ * 'PartialSync', 'FullSync'
  */
 export interface SourceControlSyncJob {
   readonly name?: string;
@@ -2217,8 +2316,8 @@ export interface SourceControlSyncJobCreateParameters {
  * @member {date} [startTime] The start time of the job.
  * @member {date} [endTime] The end time of the job.
  * @member {string} [syncType] The sync type. Possible values include:
- * 'IncrementalSync', 'FullSync'
- * @member {string} [exception] The exceptions that occured while running the
+ * 'PartialSync', 'FullSync'
+ * @member {string} [exception] The exceptions that occurred while running the
  * sync job.
  */
 export interface SourceControlSyncJobById {
@@ -2592,7 +2691,7 @@ export interface AgentRegistrationKeys {
  * @class
  * Initializes a new instance of the AgentRegistration class.
  * @constructor
- * Definition of the agent registration infomration type.
+ * Definition of the agent registration information type.
  *
  * @member {string} [dscMetaConfiguration] Gets or sets the dsc meta
  * configuration.
@@ -2635,8 +2734,8 @@ export interface DscNodeExtensionHandlerAssociationProperty {
  * node.
  * @member {string} [ip] Gets or sets the ip of the node.
  * @member {string} [accountId] Gets or sets the account id of the node.
- * @member {string} [dscNodeName] Gets or sets the name of the dsc
- * nodeconfiguration.
+ * @member {string} [dscNodeName] Gets or sets the name of the dsc node
+ * configuration.
  * @member {string} [status] Gets or sets the status of the node.
  * @member {string} [nodeId] Gets or sets the node id.
  * @member {string} [etag] Gets or sets the etag of the resource.
@@ -2675,7 +2774,7 @@ export interface AgentRegistrationRegenerateKeyParameter {
  * @class
  * Initializes a new instance of the DscNodeUpdateParametersProperties class.
  * @constructor
- * @member {string} [name] Gets or sets the name of the dsc nodeconfiguration.
+ * @member {string} [name] Gets or sets the name of the dsc node configuration.
  */
 export interface DscNodeUpdateParametersProperties {
   name?: string;
@@ -2689,8 +2788,8 @@ export interface DscNodeUpdateParametersProperties {
  *
  * @member {string} [nodeId] Gets or sets the id of the dsc node.
  * @member {object} [properties]
- * @member {string} [properties.name] Gets or sets the name of the dsc
- * nodeconfiguration.
+ * @member {string} [properties.name] Gets or sets the name of the dsc node
+ * configuration.
  */
 export interface DscNodeUpdateParameters {
   nodeId?: string;
@@ -2793,7 +2892,7 @@ export interface DscCompilationJobCreateParameters {
  * @member {string} [configuration.name] Gets or sets the name of the Dsc
  * configuration.
  * @member {string} [source] Source of node configuration.
- * @member {number} [nodeCount] Number of nodes with this nodeconfiguration
+ * @member {number} [nodeCount] Number of nodes with this node configuration
  * assigned
  * @member {boolean} [incrementNodeConfigurationBuild] If a new build version
  * of NodeConfiguration is required.
@@ -2889,7 +2988,7 @@ export interface NodeCounts {
  *
  * @member {string} [type] Gets or sets the type of the parameter.
  * @member {boolean} [isMandatory] Gets or sets a Boolean value to indicate
- * whether the parameter is madatory or not.
+ * whether the parameter is mandatory or not.
  * @member {number} [position] Get or sets the position of the parameter.
  * @member {string} [defaultValue] Gets or sets the default value of parameter.
  */
@@ -3101,7 +3200,7 @@ export interface RunbookUpdateParameters {
  * @class
  * Initializes a new instance of the RunbookDraftUndoEditResult class.
  * @constructor
- * The response model for the undoedit runbook operation.
+ * The response model for the undo edit runbook operation.
  *
  * @member {string} [statusCode] Possible values include: 'Continue',
  * 'SwitchingProtocols', 'OK', 'Created', 'Accepted',
@@ -3180,7 +3279,7 @@ export interface TestJob {
  * @class
  * Initializes a new instance of the RunbookCreateOrUpdateDraftProperties class.
  * @constructor
- * The parameters supplied to the create or update dratft runbook properties.
+ * The parameters supplied to the create or update draft runbook properties.
  *
  * @member {boolean} [logVerbose] Gets or sets verbose log option.
  * @member {boolean} [logProgress] Gets or sets progress log option.
