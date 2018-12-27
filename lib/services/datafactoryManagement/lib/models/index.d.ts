@@ -1359,11 +1359,11 @@ export interface ExposureControlResponse {
   /**
    * The feature name.
    */
-  featureName?: string;
+  readonly featureName?: string;
   /**
    * The feature value.
    */
-  value?: string;
+  readonly value?: string;
 }
 
 /**

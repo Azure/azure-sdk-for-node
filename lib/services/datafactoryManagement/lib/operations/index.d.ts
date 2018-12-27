@@ -1060,7 +1060,7 @@ export interface ExposureControl {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getFeatureForSubscriptionWithHttpOperationResponse(resourceGroupName: string, factoryName: string, exposureControlRequest: models.ExposureControlRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExposureControlResponse>>;
+    getFeatureBySubscriptionWithHttpOperationResponse(resourceGroupName: string, factoryName: string, exposureControlRequest: models.ExposureControlRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExposureControlResponse>>;
 
     /**
      * Get exposure control feature for specific data factory.
@@ -1103,9 +1103,9 @@ export interface ExposureControl {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getFeatureForSubscription(resourceGroupName: string, factoryName: string, exposureControlRequest: models.ExposureControlRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExposureControlResponse>;
-    getFeatureForSubscription(resourceGroupName: string, factoryName: string, exposureControlRequest: models.ExposureControlRequest, callback: ServiceCallback<models.ExposureControlResponse>): void;
-    getFeatureForSubscription(resourceGroupName: string, factoryName: string, exposureControlRequest: models.ExposureControlRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExposureControlResponse>): void;
+    getFeatureBySubscription(resourceGroupName: string, factoryName: string, exposureControlRequest: models.ExposureControlRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExposureControlResponse>;
+    getFeatureBySubscription(resourceGroupName: string, factoryName: string, exposureControlRequest: models.ExposureControlRequest, callback: ServiceCallback<models.ExposureControlResponse>): void;
+    getFeatureBySubscription(resourceGroupName: string, factoryName: string, exposureControlRequest: models.ExposureControlRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExposureControlResponse>): void;
 }
 
 /**
