@@ -6811,6 +6811,9 @@ export interface SoftwareUpdateConfigurations {
      * @param {array} [parameters.updateConfiguration.targets.azureQueries] List of
      * Azure queries in the software update configuration.
      *
+     * @param {array} [parameters.updateConfiguration.targets.nonAzureQueries] List
+     * of non Azure queries in the software update configuration.
+     *
      * @param {object} parameters.scheduleInfo Schedule information for the
      * Software update configuration
      *
@@ -6972,6 +6975,9 @@ export interface SoftwareUpdateConfigurations {
      *
      * @param {array} [parameters.updateConfiguration.targets.azureQueries] List of
      * Azure queries in the software update configuration.
+     *
+     * @param {array} [parameters.updateConfiguration.targets.nonAzureQueries] List
+     * of non Azure queries in the software update configuration.
      *
      * @param {object} parameters.scheduleInfo Schedule information for the
      * Software update configuration

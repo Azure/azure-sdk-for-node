@@ -1607,15 +1607,33 @@ export interface AzureQueryProperties {
 
 /**
  * @class
+ * Initializes a new instance of the NonAzureQueryProperties class.
+ * @constructor
+ * Non Azure query for the update configuration.
+ *
+ * @member {string} [functionAlias] Log Analytics Saved Search name.
+ * @member {string} [workspaceId] Workspace Id for Log Analytics in which the
+ * saved Search is resided.
+ */
+export interface NonAzureQueryProperties {
+  functionAlias?: string;
+  workspaceId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the TargetProperties class.
  * @constructor
  * Group specific to the update configuration.
  *
  * @member {array} [azureQueries] List of Azure queries in the software update
  * configuration.
+ * @member {array} [nonAzureQueries] List of non Azure queries in the software
+ * update configuration.
  */
 export interface TargetProperties {
   azureQueries?: AzureQueryProperties[];
+  nonAzureQueries?: NonAzureQueryProperties[];
 }
 
 /**
@@ -1659,6 +1677,8 @@ export interface TargetProperties {
  * configuration.
  * @member {array} [targets.azureQueries] List of Azure queries in the software
  * update configuration.
+ * @member {array} [targets.nonAzureQueries] List of non Azure queries in the
+ * software update configuration.
  */
 export interface UpdateConfiguration {
   operatingSystem: string;
@@ -1753,6 +1773,8 @@ export interface SoftwareUpdateConfigurationTasks {
  * software update configuration.
  * @member {array} [updateConfiguration.targets.azureQueries] List of Azure
  * queries in the software update configuration.
+ * @member {array} [updateConfiguration.targets.nonAzureQueries] List of non
+ * Azure queries in the software update configuration.
  * @member {object} scheduleInfo Schedule information for the Software update
  * configuration
  * @member {date} [scheduleInfo.startTime] Gets or sets the start time of the
