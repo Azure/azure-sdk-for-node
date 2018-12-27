@@ -1714,13 +1714,13 @@ export interface ConnectionTypeOperations {
 
 
     /**
-     * Delete the connection type.
+     * Delete the connectiontype.
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
-     * @param {string} connectionTypeName The name of connection type.
+     * @param {string} connectionTypeName The name of connectiontype.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1736,13 +1736,13 @@ export interface ConnectionTypeOperations {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Delete the connection type.
+     * Delete the connectiontype.
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
-     * @param {string} connectionTypeName The name of connection type.
+     * @param {string} connectionTypeName The name of connectiontype.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1776,13 +1776,13 @@ export interface ConnectionTypeOperations {
 
 
     /**
-     * Retrieve the connection type identified by connection type name.
+     * Retrieve the connectiontype identified by connectiontype name.
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
-     * @param {string} connectionTypeName The name of connection type.
+     * @param {string} connectionTypeName The name of connectiontype.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1798,13 +1798,13 @@ export interface ConnectionTypeOperations {
     getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionType>>;
 
     /**
-     * Retrieve the connection type identified by connection type name.
+     * Retrieve the connectiontype identified by connectiontype name.
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
-     * @param {string} connectionTypeName The name of connection type.
+     * @param {string} connectionTypeName The name of connectiontype.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1839,17 +1839,17 @@ export interface ConnectionTypeOperations {
 
 
     /**
-     * Create a connection type.
+     * Create a connectiontype.
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} connectionTypeName The parameters supplied to the create or
-     * update connection type operation.
+     * update connectiontype operation.
      *
      * @param {object} parameters The parameters supplied to the create or update
-     * connection type operation.
+     * connectiontype operation.
      *
      * @param {string} parameters.name Gets or sets the name of the connection
      * type.
@@ -1874,17 +1874,17 @@ export interface ConnectionTypeOperations {
     createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, parameters: models.ConnectionTypeCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionType>>;
 
     /**
-     * Create a connection type.
+     * Create a connectiontype.
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} connectionTypeName The parameters supplied to the create or
-     * update connection type operation.
+     * update connectiontype operation.
      *
      * @param {object} parameters The parameters supplied to the create or update
-     * connection type operation.
+     * connectiontype operation.
      *
      * @param {string} parameters.name Gets or sets the name of the connection
      * type.
@@ -1928,7 +1928,7 @@ export interface ConnectionTypeOperations {
 
 
     /**
-     * Retrieve a list of connection types.
+     * Retrieve a list of connectiontypes.
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
@@ -1948,7 +1948,7 @@ export interface ConnectionTypeOperations {
     listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionTypeListResult>>;
 
     /**
-     * Retrieve a list of connection types.
+     * Retrieve a list of connectiontypes.
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
@@ -1988,7 +1988,7 @@ export interface ConnectionTypeOperations {
 
 
     /**
-     * Retrieve a list of connection types.
+     * Retrieve a list of connectiontypes.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2007,7 +2007,7 @@ export interface ConnectionTypeOperations {
     listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionTypeListResult>>;
 
     /**
-     * Retrieve a list of connection types.
+     * Retrieve a list of connectiontypes.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -6811,6 +6811,9 @@ export interface SoftwareUpdateConfigurations {
      * @param {array} [parameters.updateConfiguration.targets.azureQueries] List of
      * Azure queries in the software update configuration.
      *
+     * @param {array} [parameters.updateConfiguration.targets.nonAzureQueries] List
+     * of non Azure queries in the software update configuration.
+     *
      * @param {object} parameters.scheduleInfo Schedule information for the
      * Software update configuration
      *
@@ -6863,25 +6866,12 @@ export interface SoftwareUpdateConfigurations {
      * @param {string} [parameters.scheduleInfo.description] Gets or sets the
      * description.
      *
-     * @param {object} [parameters.error] Details of provisioning error
+     * @param {object} [parameters.error] detailes of provisioning error
      *
      * @param {string} [parameters.error.code] Error code
      *
      * @param {string} [parameters.error.message] Error message indicating why the
      * operation failed.
-     *
-     * @param {object} [parameters.tasks] Tasks information for the Software update
-     * configuration.
-     *
-     * @param {object} [parameters.tasks.preTask] Pre task properties.
-     *
-     * @param {object} [parameters.tasks.postTask] Post task properties.
-     *
-     * @param {object} [parameters.tasks.postTask.parameters] Gets or sets the
-     * parameters of the task.
-     *
-     * @param {string} [parameters.tasks.postTask.source] Gets or sets the name of
-     * the runbook.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6973,6 +6963,9 @@ export interface SoftwareUpdateConfigurations {
      * @param {array} [parameters.updateConfiguration.targets.azureQueries] List of
      * Azure queries in the software update configuration.
      *
+     * @param {array} [parameters.updateConfiguration.targets.nonAzureQueries] List
+     * of non Azure queries in the software update configuration.
+     *
      * @param {object} parameters.scheduleInfo Schedule information for the
      * Software update configuration
      *
@@ -7025,25 +7018,12 @@ export interface SoftwareUpdateConfigurations {
      * @param {string} [parameters.scheduleInfo.description] Gets or sets the
      * description.
      *
-     * @param {object} [parameters.error] Details of provisioning error
+     * @param {object} [parameters.error] detailes of provisioning error
      *
      * @param {string} [parameters.error.code] Error code
      *
      * @param {string} [parameters.error.message] Error message indicating why the
      * operation failed.
-     *
-     * @param {object} [parameters.tasks] Tasks information for the Software update
-     * configuration.
-     *
-     * @param {object} [parameters.tasks.preTask] Pre task properties.
-     *
-     * @param {object} [parameters.tasks.postTask] Post task properties.
-     *
-     * @param {object} [parameters.tasks.postTask.parameters] Gets or sets the
-     * parameters of the task.
-     *
-     * @param {string} [parameters.tasks.postTask.source] Gets or sets the name of
-     * the runbook.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -7390,7 +7370,7 @@ export interface SoftwareUpdateConfigurationRuns {
      * can use the following filters: 'properties/osType', 'properties/status',
      * 'properties/startTime', and 'properties/softwareUpdateConfiguration/name'
      *
-     * @param {string} [options.skip] Number of entries you skip before returning
+     * @param {string} [options.skip] number of entries you skip before returning
      * results
      *
      * @param {string} [options.top] Maximum number of entries returned in the
@@ -7423,7 +7403,7 @@ export interface SoftwareUpdateConfigurationRuns {
      * can use the following filters: 'properties/osType', 'properties/status',
      * 'properties/startTime', and 'properties/softwareUpdateConfiguration/name'
      *
-     * @param {string} [options.skip] Number of entries you skip before returning
+     * @param {string} [options.skip] number of entries you skip before returning
      * results
      *
      * @param {string} [options.top] Maximum number of entries returned in the
@@ -9786,7 +9766,7 @@ export interface DscNodeOperations {
      * @param {object} [dscNodeUpdateParameters.properties]
      *
      * @param {string} [dscNodeUpdateParameters.properties.name] Gets or sets the
-     * name of the dsc node configuration.
+     * name of the dsc nodeconfiguration.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9819,7 +9799,7 @@ export interface DscNodeOperations {
      * @param {object} [dscNodeUpdateParameters.properties]
      *
      * @param {string} [dscNodeUpdateParameters.properties.name] Gets or sets the
-     * name of the dsc node configuration.
+     * name of the dsc nodeconfiguration.
      *
      * @param {object} [options] Optional Parameters.
      *
