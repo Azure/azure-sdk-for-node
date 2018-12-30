@@ -277,6 +277,130 @@ export interface InformationProtectionPolicy extends Resource {
 }
 
 /**
+ * A custom alert rule
+ */
+export interface CustomAlertRule {
+  /**
+   * The display name of the custom alert.
+   */
+  readonly displayName?: string;
+  /**
+   * The description of the custom alert.
+   */
+  readonly description?: string;
+  /**
+   * Whether the custom alert is enabled.
+   */
+  isEnabled: boolean;
+  /**
+   * The type of the custom alert rule.
+   */
+  ruleType: string;
+}
+
+/**
+ * A custom alert rule that checks if a value (depends on the custom alert type) is within the
+ * given range.
+ */
+export interface ThresholdCustomAlertRule extends CustomAlertRule {
+  /**
+   * The minimum threshold.
+   */
+  minThreshold: number;
+  /**
+   * The maximum threshold.
+   */
+  maxThreshold: number;
+}
+
+/**
+ * A custom alert rule that checks if the number of activities (depends on the custom alert type)
+ * in a time window is within the given range.
+ */
+export interface TimeWindowCustomAlertRule {
+  /**
+   * The display name of the custom alert.
+   */
+  readonly displayName?: string;
+  /**
+   * The description of the custom alert.
+   */
+  readonly description?: string;
+  /**
+   * Whether the custom alert is enabled.
+   */
+  isEnabled: boolean;
+  /**
+   * The type of the custom alert rule.
+   */
+  ruleType: string;
+  /**
+   * The minimum threshold.
+   */
+  minThreshold: number;
+  /**
+   * The maximum threshold.
+   */
+  maxThreshold: number;
+  /**
+   * The time window size in iso8601 format.
+   */
+  timeWindowSize: moment.Duration;
+}
+
+/**
+ * A custom alert rule that checks if a value (depends on the custom alert type) is allowed
+ */
+export interface AllowlistCustomAlertRule extends CustomAlertRule {
+  /**
+   * The values to allow. The format of the values depends on the rule type.
+   */
+  allowlistValues: string[];
+}
+
+/**
+ * A custom alert rule that checks if a value (depends on the custom alert type) is denied
+ */
+export interface DenylistCustomAlertRule extends CustomAlertRule {
+  /**
+   * The values to deny. The format of the values depends on the rule type.
+   */
+  denylistValues: string[];
+}
+
+/**
+ * The IoT security group resource
+ */
+export interface IotSecurityGroup extends Resource {
+  /**
+   * A list of threshold custom alert rules.
+   */
+  thresholdRules?: ThresholdCustomAlertRule[];
+  /**
+   * A list of time window custom alert rules.
+   */
+  timeWindowRules?: TimeWindowCustomAlertRule[];
+  /**
+   * A list of allow-list custom alert rules.
+   */
+  allowlistRules?: AllowlistCustomAlertRule[];
+  /**
+   * A list of deny-list custom alert rules.
+   */
+  denylistRules?: DenylistCustomAlertRule[];
+}
+
+/**
+ * List of IoT security groups
+ */
+export interface IotSecurityGroupList {
+  /**
+   * List of IoT security group objects
+   */
+  value?: IotSecurityGroup[];
+}
+
+/**
  * Describes an Azure resource with location
  */
 export interface Location {
