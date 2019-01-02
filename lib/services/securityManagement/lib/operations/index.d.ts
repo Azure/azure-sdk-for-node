@@ -1894,8 +1894,8 @@ export interface Settings {
     /**
      * Settings of different configurations in security center
      *
-     * @param {string} settingName Name of setting. Possible values include:
-     * 'MCAS', 'WDATP'
+     * @param {string} settingName Name of setting: (MCAS/WDATP). Possible values
+     * include: 'MCAS', 'WDATP'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1913,8 +1913,8 @@ export interface Settings {
     /**
      * Settings of different configurations in security center
      *
-     * @param {string} settingName Name of setting. Possible values include:
-     * 'MCAS', 'WDATP'
+     * @param {string} settingName Name of setting: (MCAS/WDATP). Possible values
+     * include: 'MCAS', 'WDATP'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1951,12 +1951,14 @@ export interface Settings {
     /**
      * updating settings about different configurations in security center
      *
-     * @param {string} settingName Name of setting. Possible values include:
-     * 'MCAS', 'WDATP'
+     * @param {string} settingName Name of setting: (MCAS/WDATP). Possible values
+     * include: 'MCAS', 'WDATP'
      *
      * @param {object} setting Setting object
      *
-     * @param {string} setting.kind Polymorphic Discriminator
+     * @param {string} setting.kind the kind of the settings string
+     * (DataExportSetting). Possible values include: 'DataExportSetting',
+     * 'AlertSuppressionSetting'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1974,12 +1976,14 @@ export interface Settings {
     /**
      * updating settings about different configurations in security center
      *
-     * @param {string} settingName Name of setting. Possible values include:
-     * 'MCAS', 'WDATP'
+     * @param {string} settingName Name of setting: (MCAS/WDATP). Possible values
+     * include: 'MCAS', 'WDATP'
      *
      * @param {object} setting Setting object
      *
-     * @param {string} setting.kind Polymorphic Discriminator
+     * @param {string} setting.kind the kind of the settings string
+     * (DataExportSetting). Possible values include: 'DataExportSetting',
+     * 'AlertSuppressionSetting'
      *
      * @param {object} [options] Optional Parameters.
      *
