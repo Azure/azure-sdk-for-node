@@ -2176,6 +2176,36 @@ export interface ApplicationGateway extends Resource {
 }
 
 /**
+ * Response for ApplicationGatewayAvailableServerVariables API service call.
+*/
+export interface ApplicationGatewayAvailableServerVariablesResult {
+  /**
+   * The list of supported server variables in application gateway.
+  */
+  value?: string[];
+}
+
+/**
+ * Response for ApplicationGatewayAvailableRequestHeaders API service call.
+*/
+export interface ApplicationGatewayAvailableRequestHeadersResult {
+  /**
+   * The list of supported request headers in application gateway.
+  */
+  value?: string[];
+}
+
+/**
+ * Response for ApplicationGatewayAvailableResponeHeaders API service call.
+*/
+export interface ApplicationGatewayAvailableResponseHeadersResult {
+  /**
+   * The list of supported response header in application gateway.
+  */
+  value?: string[];
+}
+
+/**
  * A web application firewall rule.
 */
 export interface ApplicationGatewayFirewallRule {
@@ -2279,6 +2309,20 @@ export interface ApplicationGatewaySslPredefinedPolicy extends SubResource {
    * include: 'TLSv1_0', 'TLSv1_1', 'TLSv1_2'
   */
   minProtocolVersion?: string;
+}
+
+export interface ErrorDetails {
+  code?: string;
+  target?: string;
+  message?: string;
+}
+
+export interface ErrorModel {
+  code?: string;
+  message?: string;
+  target?: string;
+  details?: ErrorDetails[];
+  innerError?: string;
 }
 
 /**
@@ -4006,20 +4050,6 @@ export interface LoadBalancer extends Resource {
    * A unique read-only string that changes whenever the resource is updated.
   */
   etag?: string;
-}
-
-export interface ErrorDetails {
-  code?: string;
-  target?: string;
-  message?: string;
-}
-
-export interface ErrorModel {
-  code?: string;
-  message?: string;
-  target?: string;
-  details?: ErrorDetails[];
-  innerError?: string;
 }
 
 /**
