@@ -58,6 +58,8 @@ export default class AzureMachineLearningWorkspaces extends AzureServiceClient {
   // Operation groups
   operations: operations.Operations;
   workspaces: operations.Workspaces;
+  usages: operations.Usages;
+  virtualMachineSizes: operations.VirtualMachineSizes;
   machineLearningCompute: operations.MachineLearningCompute;
 }
 

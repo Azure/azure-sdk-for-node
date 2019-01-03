@@ -160,10 +160,6 @@ export interface Workspaces {
      * @param {string} [parameters.friendlyName] The friendly name for this
      * workspace. This name in mutable
      *
-     * @param {string} [parameters.batchaiWorkspace] ARM id of the Batch AI
-     * workspace associated with this workspace. This cannot be changed once the
-     * workspace has been created
-     *
      * @param {string} [parameters.keyVault] ARM id of the key vault associated
      * with this workspace. This cannot be changed once the workspace has been
      * created
@@ -217,10 +213,6 @@ export interface Workspaces {
      *
      * @param {string} [parameters.friendlyName] The friendly name for this
      * workspace. This name in mutable
-     *
-     * @param {string} [parameters.batchaiWorkspace] ARM id of the Batch AI
-     * workspace associated with this workspace. This cannot be changed once the
-     * workspace has been created
      *
      * @param {string} [parameters.keyVault] ARM id of the key vault associated
      * with this workspace. This cannot be changed once the workspace has been
@@ -788,6 +780,198 @@ export interface Workspaces {
 
 /**
  * @class
+ * Usages
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AzureMachineLearningWorkspaces.
+ */
+export interface Usages {
+
+
+    /**
+     * Gets the current usage information as well as limits for AML resources for
+     * given subscription and location.
+     *
+     * @param {string} location The location for which resource usage is queried.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListUsagesResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListUsagesResult>>;
+
+    /**
+     * Gets the current usage information as well as limits for AML resources for
+     * given subscription and location.
+     *
+     * @param {string} location The location for which resource usage is queried.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListUsagesResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListUsagesResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListUsagesResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListUsagesResult>;
+    list(location: string, callback: ServiceCallback<models.ListUsagesResult>): void;
+    list(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListUsagesResult>): void;
+
+
+    /**
+     * Gets the current usage information as well as limits for AML resources for
+     * given subscription and location.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListUsagesResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListUsagesResult>>;
+
+    /**
+     * Gets the current usage information as well as limits for AML resources for
+     * given subscription and location.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListUsagesResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListUsagesResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListUsagesResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListUsagesResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ListUsagesResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListUsagesResult>): void;
+}
+
+/**
+ * @class
+ * VirtualMachineSizes
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AzureMachineLearningWorkspaces.
+ */
+export interface VirtualMachineSizes {
+
+
+    /**
+     * Returns supported VM Sizes in a location
+     *
+     * @param {string} location The location upon which virtual-machine-sizes is
+     * queried.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineSizeListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineSizeListResult>>;
+
+    /**
+     * Returns supported VM Sizes in a location
+     *
+     * @param {string} location The location upon which virtual-machine-sizes is
+     * queried.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineSizeListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineSizeListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineSizeListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineSizeListResult>;
+    list(location: string, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
+    list(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
+}
+
+/**
+ * @class
  * MachineLearningCompute
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the AzureMachineLearningWorkspaces.
@@ -951,7 +1135,7 @@ export interface MachineLearningCompute {
      * Machine Learning compute.
      *
      * @param {string} [parameters.properties.resourceId] ARM resource id of the
-     * compute
+     * underlying compute
      *
      * @param {string} parameters.properties.computeType Polymorphic Discriminator
      *
@@ -997,7 +1181,7 @@ export interface MachineLearningCompute {
      * Machine Learning compute.
      *
      * @param {string} [parameters.properties.resourceId] ARM resource id of the
-     * compute
+     * underlying compute
      *
      * @param {string} parameters.properties.computeType Polymorphic Discriminator
      *
@@ -1040,6 +1224,103 @@ export interface MachineLearningCompute {
 
 
     /**
+     * Updates properties of a compute. This call will overwrite a compute if it
+     * exists. This is a nonrecoverable operation.
+     *
+     * @param {string} resourceGroupName Name of the resource group in which
+     * workspace is located.
+     *
+     * @param {string} workspaceName Name of Azure Machine Learning workspace.
+     *
+     * @param {string} computeName Name of the Azure Machine Learning compute.
+     *
+     * @param {object} parameters Additional parameters for cluster update.
+     *
+     * @param {object} [parameters.scaleSettings] Scale settings. Desired scale
+     * settings for the amlCompute.
+     *
+     * @param {number} parameters.scaleSettings.maxNodeCount Max number of nodes to
+     * use
+     *
+     * @param {number} [parameters.scaleSettings.minNodeCount] Min number of nodes
+     * to use
+     *
+     * @param {moment.duration}
+     * [parameters.scaleSettings.nodeIdleTimeBeforeScaleDown] Node Idle Time before
+     * scaling down amlCompute
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ComputeResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, computeName: string, parameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComputeResource>>;
+
+    /**
+     * Updates properties of a compute. This call will overwrite a compute if it
+     * exists. This is a nonrecoverable operation.
+     *
+     * @param {string} resourceGroupName Name of the resource group in which
+     * workspace is located.
+     *
+     * @param {string} workspaceName Name of Azure Machine Learning workspace.
+     *
+     * @param {string} computeName Name of the Azure Machine Learning compute.
+     *
+     * @param {object} parameters Additional parameters for cluster update.
+     *
+     * @param {object} [parameters.scaleSettings] Scale settings. Desired scale
+     * settings for the amlCompute.
+     *
+     * @param {number} parameters.scaleSettings.maxNodeCount Max number of nodes to
+     * use
+     *
+     * @param {number} [parameters.scaleSettings.minNodeCount] Min number of nodes
+     * to use
+     *
+     * @param {moment.duration}
+     * [parameters.scaleSettings.nodeIdleTimeBeforeScaleDown] Node Idle Time before
+     * scaling down amlCompute
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ComputeResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ComputeResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ComputeResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, workspaceName: string, computeName: string, parameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ComputeResource>;
+    update(resourceGroupName: string, workspaceName: string, computeName: string, parameters: models.ClusterUpdateParameters, callback: ServiceCallback<models.ComputeResource>): void;
+    update(resourceGroupName: string, workspaceName: string, computeName: string, parameters: models.ClusterUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComputeResource>): void;
+
+
+    /**
      * Deletes specified Machine Learning compute.
      *
      * @param {string} resourceGroupName Name of the resource group in which
@@ -1048,6 +1329,10 @@ export interface MachineLearningCompute {
      * @param {string} workspaceName Name of Azure Machine Learning workspace.
      *
      * @param {string} computeName Name of the Azure Machine Learning compute.
+     *
+     * @param {string} underlyingResourceAction Delete the underlying compute if
+     * 'Delete', or detach the underlying compute from workspace if 'Detach'.
+     * Possible values include: 'Delete', 'Detach'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1060,7 +1345,7 @@ export interface MachineLearningCompute {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, computeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, computeName: string, underlyingResourceAction: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes specified Machine Learning compute.
@@ -1071,6 +1356,10 @@ export interface MachineLearningCompute {
      * @param {string} workspaceName Name of Azure Machine Learning workspace.
      *
      * @param {string} computeName Name of the Azure Machine Learning compute.
+     *
+     * @param {string} underlyingResourceAction Delete the underlying compute if
+     * 'Delete', or detach the underlying compute from workspace if 'Detach'.
+     * Possible values include: 'Delete', 'Detach'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1098,13 +1387,14 @@ export interface MachineLearningCompute {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, workspaceName: string, computeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, workspaceName: string, computeName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, workspaceName: string, computeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, workspaceName: string, computeName: string, underlyingResourceAction: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, workspaceName: string, computeName: string, underlyingResourceAction: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, workspaceName: string, computeName: string, underlyingResourceAction: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * System Update On Machine Learning compute.
+     * Get the details (e.g IP address, port etc) of all the compute nodes in the
+     * compute.
      *
      * @param {string} resourceGroupName Name of the resource group in which
      * workspace is located.
@@ -1120,14 +1410,15 @@ export interface MachineLearningCompute {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ComputeNodesInformation>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    systemUpdateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, computeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    listNodesWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, computeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComputeNodesInformation>>;
 
     /**
-     * System Update On Machine Learning compute.
+     * Get the details (e.g IP address, port etc) of all the compute nodes in the
+     * compute.
      *
      * @param {string} resourceGroupName Name of the resource group in which
      * workspace is located.
@@ -1148,7 +1439,7 @@ export interface MachineLearningCompute {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {ComputeNodesInformation} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1156,15 +1447,17 @@ export interface MachineLearningCompute {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {ComputeNodesInformation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ComputeNodesInformation} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    systemUpdate(resourceGroupName: string, workspaceName: string, computeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    systemUpdate(resourceGroupName: string, workspaceName: string, computeName: string, callback: ServiceCallback<void>): void;
-    systemUpdate(resourceGroupName: string, workspaceName: string, computeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    listNodes(resourceGroupName: string, workspaceName: string, computeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ComputeNodesInformation>;
+    listNodes(resourceGroupName: string, workspaceName: string, computeName: string, callback: ServiceCallback<models.ComputeNodesInformation>): void;
+    listNodes(resourceGroupName: string, workspaceName: string, computeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComputeNodesInformation>): void;
 
 
     /**
@@ -1257,7 +1550,7 @@ export interface MachineLearningCompute {
      * Machine Learning compute.
      *
      * @param {string} [parameters.properties.resourceId] ARM resource id of the
-     * compute
+     * underlying compute
      *
      * @param {string} parameters.properties.computeType Polymorphic Discriminator
      *
@@ -1303,7 +1596,7 @@ export interface MachineLearningCompute {
      * Machine Learning compute.
      *
      * @param {string} [parameters.properties.resourceId] ARM resource id of the
-     * compute
+     * underlying compute
      *
      * @param {string} parameters.properties.computeType Polymorphic Discriminator
      *
@@ -1346,6 +1639,103 @@ export interface MachineLearningCompute {
 
 
     /**
+     * Updates properties of a compute. This call will overwrite a compute if it
+     * exists. This is a nonrecoverable operation.
+     *
+     * @param {string} resourceGroupName Name of the resource group in which
+     * workspace is located.
+     *
+     * @param {string} workspaceName Name of Azure Machine Learning workspace.
+     *
+     * @param {string} computeName Name of the Azure Machine Learning compute.
+     *
+     * @param {object} parameters Additional parameters for cluster update.
+     *
+     * @param {object} [parameters.scaleSettings] Scale settings. Desired scale
+     * settings for the amlCompute.
+     *
+     * @param {number} parameters.scaleSettings.maxNodeCount Max number of nodes to
+     * use
+     *
+     * @param {number} [parameters.scaleSettings.minNodeCount] Min number of nodes
+     * to use
+     *
+     * @param {moment.duration}
+     * [parameters.scaleSettings.nodeIdleTimeBeforeScaleDown] Node Idle Time before
+     * scaling down amlCompute
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ComputeResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, computeName: string, parameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComputeResource>>;
+
+    /**
+     * Updates properties of a compute. This call will overwrite a compute if it
+     * exists. This is a nonrecoverable operation.
+     *
+     * @param {string} resourceGroupName Name of the resource group in which
+     * workspace is located.
+     *
+     * @param {string} workspaceName Name of Azure Machine Learning workspace.
+     *
+     * @param {string} computeName Name of the Azure Machine Learning compute.
+     *
+     * @param {object} parameters Additional parameters for cluster update.
+     *
+     * @param {object} [parameters.scaleSettings] Scale settings. Desired scale
+     * settings for the amlCompute.
+     *
+     * @param {number} parameters.scaleSettings.maxNodeCount Max number of nodes to
+     * use
+     *
+     * @param {number} [parameters.scaleSettings.minNodeCount] Min number of nodes
+     * to use
+     *
+     * @param {moment.duration}
+     * [parameters.scaleSettings.nodeIdleTimeBeforeScaleDown] Node Idle Time before
+     * scaling down amlCompute
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ComputeResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ComputeResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ComputeResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, workspaceName: string, computeName: string, parameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ComputeResource>;
+    beginUpdate(resourceGroupName: string, workspaceName: string, computeName: string, parameters: models.ClusterUpdateParameters, callback: ServiceCallback<models.ComputeResource>): void;
+    beginUpdate(resourceGroupName: string, workspaceName: string, computeName: string, parameters: models.ClusterUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComputeResource>): void;
+
+
+    /**
      * Deletes specified Machine Learning compute.
      *
      * @param {string} resourceGroupName Name of the resource group in which
@@ -1354,6 +1744,10 @@ export interface MachineLearningCompute {
      * @param {string} workspaceName Name of Azure Machine Learning workspace.
      *
      * @param {string} computeName Name of the Azure Machine Learning compute.
+     *
+     * @param {string} underlyingResourceAction Delete the underlying compute if
+     * 'Delete', or detach the underlying compute from workspace if 'Detach'.
+     * Possible values include: 'Delete', 'Detach'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1366,7 +1760,7 @@ export interface MachineLearningCompute {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, computeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, computeName: string, underlyingResourceAction: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes specified Machine Learning compute.
@@ -1377,6 +1771,10 @@ export interface MachineLearningCompute {
      * @param {string} workspaceName Name of Azure Machine Learning workspace.
      *
      * @param {string} computeName Name of the Azure Machine Learning compute.
+     *
+     * @param {string} underlyingResourceAction Delete the underlying compute if
+     * 'Delete', or detach the underlying compute from workspace if 'Detach'.
+     * Possible values include: 'Delete', 'Detach'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1404,73 +1802,9 @@ export interface MachineLearningCompute {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, workspaceName: string, computeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, workspaceName: string, computeName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, workspaceName: string, computeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * System Update On Machine Learning compute.
-     *
-     * @param {string} resourceGroupName Name of the resource group in which
-     * workspace is located.
-     *
-     * @param {string} workspaceName Name of Azure Machine Learning workspace.
-     *
-     * @param {string} computeName Name of the Azure Machine Learning compute.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginSystemUpdateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, computeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * System Update On Machine Learning compute.
-     *
-     * @param {string} resourceGroupName Name of the resource group in which
-     * workspace is located.
-     *
-     * @param {string} workspaceName Name of Azure Machine Learning workspace.
-     *
-     * @param {string} computeName Name of the Azure Machine Learning compute.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginSystemUpdate(resourceGroupName: string, workspaceName: string, computeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginSystemUpdate(resourceGroupName: string, workspaceName: string, computeName: string, callback: ServiceCallback<void>): void;
-    beginSystemUpdate(resourceGroupName: string, workspaceName: string, computeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, workspaceName: string, computeName: string, underlyingResourceAction: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, workspaceName: string, computeName: string, underlyingResourceAction: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, workspaceName: string, computeName: string, underlyingResourceAction: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1529,4 +1863,64 @@ export interface MachineLearningCompute {
     listByWorkspaceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PaginatedComputeResourcesList>;
     listByWorkspaceNext(nextPageLink: string, callback: ServiceCallback<models.PaginatedComputeResourcesList>): void;
     listByWorkspaceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PaginatedComputeResourcesList>): void;
+
+
+    /**
+     * Get the details (e.g IP address, port etc) of all the compute nodes in the
+     * compute.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ComputeNodesInformation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNodesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComputeNodesInformation>>;
+
+    /**
+     * Get the details (e.g IP address, port etc) of all the compute nodes in the
+     * compute.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ComputeNodesInformation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ComputeNodesInformation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ComputeNodesInformation} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNodesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ComputeNodesInformation>;
+    listNodesNext(nextPageLink: string, callback: ServiceCallback<models.ComputeNodesInformation>): void;
+    listNodesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComputeNodesInformation>): void;
 }

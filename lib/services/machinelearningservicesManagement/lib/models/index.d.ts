@@ -96,9 +96,6 @@ export interface Resource extends BaseResource {
  * name in mutable
  * @member {date} [creationTime] The creation time of the machine learning
  * workspace in ISO8601 format.
- * @member {string} [batchaiWorkspace] ARM id of the Batch AI workspace
- * associated with this workspace. This cannot be changed once the workspace
- * has been created
  * @member {string} [keyVault] ARM id of the key vault associated with this
  * workspace. This cannot be changed once the workspace has been created
  * @member {string} [applicationInsights] ARM id of the application insights
@@ -122,7 +119,6 @@ export interface Workspace extends Resource {
   description?: string;
   friendlyName?: string;
   readonly creationTime?: Date;
-  batchaiWorkspace?: string;
   keyVault?: string;
   applicationInsights?: string;
   containerRegistry?: string;
@@ -150,6 +146,75 @@ export interface WorkspaceUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the UsageName class.
+ * @constructor
+ * The Usage Names.
+ *
+ * @member {string} [value] The name of the resource.
+ * @member {string} [localizedValue] The localized name of the resource.
+ */
+export interface UsageName {
+  readonly value?: string;
+  readonly localizedValue?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Usage class.
+ * @constructor
+ * Describes AML Resource Usage.
+ *
+ * @member {string} [unit] An enum describing the unit of usage measurement.
+ * Possible values include: 'Count'
+ * @member {number} [currentValue] The current usage of the resource.
+ * @member {number} [limit] The maximum permitted usage of the resource.
+ * @member {object} [name] The name of the type of usage.
+ * @member {string} [name.value] The name of the resource.
+ * @member {string} [name.localizedValue] The localized name of the resource.
+ */
+export interface Usage {
+  readonly unit?: string;
+  readonly currentValue?: number;
+  readonly limit?: number;
+  readonly name?: UsageName;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineSize class.
+ * @constructor
+ * Describes the properties of a VM size.
+ *
+ * @member {string} [name] Virtual Machine size name. The name of the virtual
+ * machine size.
+ * @member {string} [family] Virtual Machine family name. The family name of
+ * the virtual machine size.
+ * @member {number} [vCPUs] Number of vPUs. The number of vCPUs supported by
+ * the virtual machine size.
+ * @member {number} [osVhdSizeMB] OS VHD Disk size. The OS VHD disk size, in
+ * MB, allowed by the virtual machine size.
+ * @member {number} [maxResourceVolumeMB] Resource volume size. The resource
+ * volume size, in MB, allowed by the virtual machine size.
+ * @member {number} [memoryGB] Memory size. The amount of memory, in GB,
+ * supported by the virtual machine size.
+ * @member {boolean} [lowPriorityCapable] Low priority capable. Specifies if
+ * the virtual machine size supports low priority VMs.
+ * @member {boolean} [premiumIO] Premium IO supported. Specifies if the virtual
+ * machine size supports premium IO.
+ */
+export interface VirtualMachineSize {
+  readonly name?: string;
+  readonly family?: string;
+  readonly vCPUs?: number;
+  readonly osVhdSizeMB?: number;
+  readonly maxResourceVolumeMB?: number;
+  readonly memoryGB?: number;
+  readonly lowPriorityCapable?: boolean;
+  readonly premiumIO?: boolean;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Identity class.
  * @constructor
  * Identity for the resource.
@@ -163,6 +228,19 @@ export interface Identity {
   readonly principalId?: string;
   readonly tenantId?: string;
   type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceId class.
+ * @constructor
+ * Represents a resource ID. For example, for a subnet, it is the resource URL
+ * for the subnet.
+ *
+ * @member {string} id The ID of the resource
+ */
+export interface ResourceId extends BaseResource {
+  id: string;
 }
 
 /**
@@ -230,14 +308,14 @@ export interface ErrorDetail {
  * @constructor
  * Error response information.
  *
- * @member {string} code Error code.
- * @member {string} message Error message.
+ * @member {string} [code] Error code.
+ * @member {string} [message] Error message.
  * @member {array} [details] An array of error detail objects.
  */
 export interface ErrorResponse {
-  code: string;
-  message: string;
-  details?: ErrorDetail[];
+  readonly code?: string;
+  readonly message?: string;
+  readonly details?: ErrorDetail[];
 }
 
 /**
@@ -252,7 +330,7 @@ export interface ErrorResponse {
  * @member {array} [error.details] An array of error detail objects.
  */
 export interface MachineLearningServiceError {
-  error?: ErrorResponse;
+  readonly error?: ErrorResponse;
 }
 
 /**
@@ -271,8 +349,11 @@ export interface MachineLearningServiceError {
  * @member {date} [createdOn] The date and time when the compute was created.
  * @member {date} [modifiedOn] The date and time when the compute was last
  * modified.
- * @member {string} [resourceId] ARM resource id of the compute
+ * @member {string} [resourceId] ARM resource id of the underlying compute
  * @member {array} [provisioningErrors] Errors during provisioning
+ * @member {boolean} [isAttachedCompute] Indicating whether the compute was
+ * provisioned by user and brought from outside if true, or machine learning
+ * service provisioned it if false.
  * @member {string} computeType Polymorphic Discriminator
  */
 export interface Compute {
@@ -283,6 +364,7 @@ export interface Compute {
   readonly modifiedOn?: Date;
   resourceId?: string;
   readonly provisioningErrors?: MachineLearningServiceError[];
+  readonly isAttachedCompute?: boolean;
   computeType: string;
 }
 
@@ -305,8 +387,12 @@ export interface Compute {
  * created.
  * @member {date} [properties.modifiedOn] The date and time when the compute
  * was last modified.
- * @member {string} [properties.resourceId] ARM resource id of the compute
+ * @member {string} [properties.resourceId] ARM resource id of the underlying
+ * compute
  * @member {array} [properties.provisioningErrors] Errors during provisioning
+ * @member {boolean} [properties.isAttachedCompute] Indicating whether the
+ * compute was provisioned by user and brought from outside if true, or machine
+ * learning service provisioned it if false.
  * @member {string} [properties.computeType] Polymorphic Discriminator
  */
 export interface ComputeResource extends Resource {
@@ -333,9 +419,9 @@ export interface SystemService {
  * @class
  * Initializes a new instance of the SslConfiguration class.
  * @constructor
- * The SSL configuration for scoring
+ * The ssl configuration for scoring
  *
- * @member {string} [status] Enable or disable SSL for scoring. Possible values
+ * @member {string} [status] Enable or disable ssl for scoring. Possible values
  * include: 'Disabled', 'Enabled'
  * @member {string} [cert] Cert data
  * @member {string} [key] Key data
@@ -350,6 +436,30 @@ export interface SslConfiguration {
 
 /**
  * @class
+ * Initializes a new instance of the AksNetworkingConfiguration class.
+ * @constructor
+ * Advance configuration for AKS networking
+ *
+ * @member {string} [subnetId] Virtual network subnet resource ID the compute
+ * nodes belong to
+ * @member {string} [serviceCidr] A CIDR notation IP range from which to assign
+ * service cluster IPs. It must not overlap with any Subnet IP ranges.
+ * @member {string} [dnsServiceIP] An IP address assigned to the Kubernetes DNS
+ * service. It must be within the Kubernetes service address range specified in
+ * serviceCidr.
+ * @member {string} [dockerBridgeCidr] A CIDR notation IP range assigned to the
+ * Docker bridge network. It must not overlap with any Subnet IP ranges or the
+ * Kubernetes service address range.
+ */
+export interface AksNetworkingConfiguration {
+  subnetId?: string;
+  serviceCidr?: string;
+  dnsServiceIP?: string;
+  dockerBridgeCidr?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the AKSProperties class.
  * @constructor
  * AKS properties
@@ -359,18 +469,32 @@ export interface SslConfiguration {
  * @member {number} [agentCount] Number of agents
  * @member {string} [agentVMSize] Agent virtual machine size
  * @member {object} [sslConfiguration] SSL configuration
- * @member {string} [sslConfiguration.status] Enable or disable SSL for
+ * @member {string} [sslConfiguration.status] Enable or disable ssl for
  * scoring. Possible values include: 'Disabled', 'Enabled'
  * @member {string} [sslConfiguration.cert] Cert data
  * @member {string} [sslConfiguration.key] Key data
  * @member {string} [sslConfiguration.cname] CNAME of the cert
+ * @member {object} [aksNetworkingConfiguration] AKS networking configuration
+ * for vnet
+ * @member {string} [aksNetworkingConfiguration.subnetId] Virtual network
+ * subnet resource ID the compute nodes belong to
+ * @member {string} [aksNetworkingConfiguration.serviceCidr] A CIDR notation IP
+ * range from which to assign service cluster IPs. It must not overlap with any
+ * Subnet IP ranges.
+ * @member {string} [aksNetworkingConfiguration.dnsServiceIP] An IP address
+ * assigned to the Kubernetes DNS service. It must be within the Kubernetes
+ * service address range specified in serviceCidr.
+ * @member {string} [aksNetworkingConfiguration.dockerBridgeCidr] A CIDR
+ * notation IP range assigned to the Docker bridge network. It must not overlap
+ * with any Subnet IP ranges or the Kubernetes service address range.
  */
 export interface AKSProperties {
   clusterFqdn?: string;
-  systemServices?: SystemService[];
+  readonly systemServices?: SystemService[];
   agentCount?: number;
   agentVMSize?: string;
   sslConfiguration?: SslConfiguration;
+  aksNetworkingConfiguration?: AksNetworkingConfiguration;
 }
 
 /**
@@ -385,11 +509,24 @@ export interface AKSProperties {
  * @member {number} [properties.agentCount] Number of agents
  * @member {string} [properties.agentVMSize] Agent virtual machine size
  * @member {object} [properties.sslConfiguration] SSL configuration
- * @member {string} [properties.sslConfiguration.status] Enable or disable SSL
+ * @member {string} [properties.sslConfiguration.status] Enable or disable ssl
  * for scoring. Possible values include: 'Disabled', 'Enabled'
  * @member {string} [properties.sslConfiguration.cert] Cert data
  * @member {string} [properties.sslConfiguration.key] Key data
  * @member {string} [properties.sslConfiguration.cname] CNAME of the cert
+ * @member {object} [properties.aksNetworkingConfiguration] AKS networking
+ * configuration for vnet
+ * @member {string} [properties.aksNetworkingConfiguration.subnetId] Virtual
+ * network subnet resource ID the compute nodes belong to
+ * @member {string} [properties.aksNetworkingConfiguration.serviceCidr] A CIDR
+ * notation IP range from which to assign service cluster IPs. It must not
+ * overlap with any Subnet IP ranges.
+ * @member {string} [properties.aksNetworkingConfiguration.dnsServiceIP] An IP
+ * address assigned to the Kubernetes DNS service. It must be within the
+ * Kubernetes service address range specified in serviceCidr.
+ * @member {string} [properties.aksNetworkingConfiguration.dockerBridgeCidr] A
+ * CIDR notation IP range assigned to the Docker bridge network. It must not
+ * overlap with any Subnet IP ranges or the Kubernetes service address range.
  */
 export interface AKS extends Compute {
   properties?: AKSProperties;
@@ -399,57 +536,207 @@ export interface AKS extends Compute {
  * @class
  * Initializes a new instance of the ScaleSettings class.
  * @constructor
- * scale settings for BatchAI Compute
+ * scale settings for AML Compute
  *
- * @member {number} [maxNodeCount] Max number of nodes to use
- * @member {number} [minNodeCount] Min number of nodes to use
- * @member {boolean} [autoScaleEnabled] Enable or disable auto scale
+ * @member {number} maxNodeCount Max number of nodes to use
+ * @member {number} [minNodeCount] Min number of nodes to use. Default value: 0
+ * .
+ * @member {moment.duration} [nodeIdleTimeBeforeScaleDown] Node Idle Time
+ * before scaling down amlCompute
  */
 export interface ScaleSettings {
-  maxNodeCount?: number;
+  maxNodeCount: number;
   minNodeCount?: number;
-  autoScaleEnabled?: boolean;
+  nodeIdleTimeBeforeScaleDown?: moment.Duration;
 }
 
 /**
  * @class
- * Initializes a new instance of the BatchAIProperties class.
+ * Initializes a new instance of the UserAccountCredentials class.
  * @constructor
- * BatchAI properties
+ * Settings for user account that gets created on each on the nodes of a
+ * compute.
+ *
+ * @member {string} adminUserName User name. Name of the administrator user
+ * account which can be used to SSH to nodes.
+ * @member {string} [adminUserSshPublicKey] SSH public key. SSH public key of
+ * the administrator user account.
+ * @member {string} [adminUserPassword] Password. Password of the administrator
+ * user account.
+ */
+export interface UserAccountCredentials {
+  adminUserName: string;
+  adminUserSshPublicKey?: string;
+  adminUserPassword?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeStateCounts class.
+ * @constructor
+ * Counts of various compute node states on the amlCompute.
+ *
+ * @member {number} [idleNodeCount] Idle node count. Number of compute nodes in
+ * idle state.
+ * @member {number} [runningNodeCount] Running node count. Number of compute
+ * nodes which are running jobs.
+ * @member {number} [preparingNodeCount] Preparing node count. Number of
+ * compute nodes which are being prepared.
+ * @member {number} [unusableNodeCount] Unusable node count. Number of compute
+ * nodes which are in unusable state.
+ * @member {number} [leavingNodeCount] Leaving node count. Number of compute
+ * nodes which are leaving the amlCompute.
+ * @member {number} [preemptedNodeCount] Preempted node count. Number of
+ * compute nodes which are in preempted state.
+ */
+export interface NodeStateCounts {
+  readonly idleNodeCount?: number;
+  readonly runningNodeCount?: number;
+  readonly preparingNodeCount?: number;
+  readonly unusableNodeCount?: number;
+  readonly leavingNodeCount?: number;
+  readonly preemptedNodeCount?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AmlComputeProperties class.
+ * @constructor
+ * AML Compute properties
  *
  * @member {string} [vmSize] Virtual Machine Size
- * @member {string} [vmPriority] Virtual Machine priority
- * @member {object} [scaleSettings] Scale settings for BatchAI
+ * @member {string} [vmPriority] Virtual Machine priority. Possible values
+ * include: 'Dedicated', 'LowPriority'
+ * @member {object} [scaleSettings] Scale settings for AML Compute
  * @member {number} [scaleSettings.maxNodeCount] Max number of nodes to use
  * @member {number} [scaleSettings.minNodeCount] Min number of nodes to use
- * @member {boolean} [scaleSettings.autoScaleEnabled] Enable or disable auto
- * scale
+ * @member {moment.duration} [scaleSettings.nodeIdleTimeBeforeScaleDown] Node
+ * Idle Time before scaling down amlCompute
+ * @member {object} [userAccountCredentials] User account credentials.
+ * Credentials for an administrator user account that will be created on each
+ * compute node.
+ * @member {string} [userAccountCredentials.adminUserName] Name of the
+ * administrator user account which can be used to SSH to nodes.
+ * @member {string} [userAccountCredentials.adminUserSshPublicKey] SSH public
+ * key of the administrator user account.
+ * @member {string} [userAccountCredentials.adminUserPassword] Password of the
+ * administrator user account.
+ * @member {object} [subnet] Subnet. Virtual network subnet resource ID the
+ * compute nodes belong to.
+ * @member {string} [subnet.id] The ID of the resource
+ * @member {string} [allocationState] Allocation state. Allocation state of the
+ * compute. Possible values are: steady - Indicates that the compute is not
+ * resizing. There are no changes to the number of compute nodes in the compute
+ * in progress. A compute enters this state when it is created and when no
+ * operations are being performed on the compute to change the number of
+ * compute nodes. resizing - Indicates that the compute is resizing; that is,
+ * compute nodes are being added to or removed from the compute. Possible
+ * values include: 'Steady', 'Resizing'
+ * @member {date} [allocationStateTransitionTime] Allocation state transition
+ * time. The time at which the compute entered its current allocation state.
+ * @member {array} [errors] Errors. Collection of errors encountered by various
+ * compute nodes during node setup.
+ * @member {number} [currentNodeCount] Current node count. The number of
+ * compute nodes currently assigned to the compute.
+ * @member {number} [targetNodeCount] Target node count. The target number of
+ * compute nodes for the compute. If the allocationState is resizing, this
+ * property denotes the target node count for the ongoing resize operation. If
+ * the allocationState is steady, this property denotes the target node count
+ * for the previous resize operation.
+ * @member {object} [nodeStateCounts] Node state counts. Counts of various node
+ * states on the compute.
+ * @member {number} [nodeStateCounts.idleNodeCount] Number of compute nodes in
+ * idle state.
+ * @member {number} [nodeStateCounts.runningNodeCount] Number of compute nodes
+ * which are running jobs.
+ * @member {number} [nodeStateCounts.preparingNodeCount] Number of compute
+ * nodes which are being prepared.
+ * @member {number} [nodeStateCounts.unusableNodeCount] Number of compute nodes
+ * which are in unusable state.
+ * @member {number} [nodeStateCounts.leavingNodeCount] Number of compute nodes
+ * which are leaving the amlCompute.
+ * @member {number} [nodeStateCounts.preemptedNodeCount] Number of compute
+ * nodes which are in preempted state.
  */
-export interface BatchAIProperties {
+export interface AmlComputeProperties {
   vmSize?: string;
   vmPriority?: string;
   scaleSettings?: ScaleSettings;
+  userAccountCredentials?: UserAccountCredentials;
+  subnet?: ResourceId;
+  readonly allocationState?: string;
+  readonly allocationStateTransitionTime?: Date;
+  readonly errors?: MachineLearningServiceError[];
+  readonly currentNodeCount?: number;
+  readonly targetNodeCount?: number;
+  readonly nodeStateCounts?: NodeStateCounts;
 }
 
 /**
  * @class
- * Initializes a new instance of the BatchAI class.
+ * Initializes a new instance of the AmlCompute class.
  * @constructor
- * A Machine Learning compute based on Azure BatchAI.
+ * An Azure Machine Learning compute.
  *
- * @member {object} [properties] BatchAI properties
+ * @member {object} [properties] AML Compute properties
  * @member {string} [properties.vmSize] Virtual Machine Size
- * @member {string} [properties.vmPriority] Virtual Machine priority
- * @member {object} [properties.scaleSettings] Scale settings for BatchAI
+ * @member {string} [properties.vmPriority] Virtual Machine priority. Possible
+ * values include: 'Dedicated', 'LowPriority'
+ * @member {object} [properties.scaleSettings] Scale settings for AML Compute
  * @member {number} [properties.scaleSettings.maxNodeCount] Max number of nodes
  * to use
  * @member {number} [properties.scaleSettings.minNodeCount] Min number of nodes
  * to use
- * @member {boolean} [properties.scaleSettings.autoScaleEnabled] Enable or
- * disable auto scale
+ * @member {moment.duration}
+ * [properties.scaleSettings.nodeIdleTimeBeforeScaleDown] Node Idle Time before
+ * scaling down amlCompute
+ * @member {object} [properties.userAccountCredentials] Credentials for an
+ * administrator user account that will be created on each compute node.
+ * @member {string} [properties.userAccountCredentials.adminUserName] Name of
+ * the administrator user account which can be used to SSH to nodes.
+ * @member {string} [properties.userAccountCredentials.adminUserSshPublicKey]
+ * SSH public key of the administrator user account.
+ * @member {string} [properties.userAccountCredentials.adminUserPassword]
+ * Password of the administrator user account.
+ * @member {object} [properties.subnet] Virtual network subnet resource ID the
+ * compute nodes belong to.
+ * @member {string} [properties.subnet.id] The ID of the resource
+ * @member {string} [properties.allocationState] Allocation state of the
+ * compute. Possible values are: steady - Indicates that the compute is not
+ * resizing. There are no changes to the number of compute nodes in the compute
+ * in progress. A compute enters this state when it is created and when no
+ * operations are being performed on the compute to change the number of
+ * compute nodes. resizing - Indicates that the compute is resizing; that is,
+ * compute nodes are being added to or removed from the compute. Possible
+ * values include: 'Steady', 'Resizing'
+ * @member {date} [properties.allocationStateTransitionTime] The time at which
+ * the compute entered its current allocation state.
+ * @member {array} [properties.errors] Collection of errors encountered by
+ * various compute nodes during node setup.
+ * @member {number} [properties.currentNodeCount] The number of compute nodes
+ * currently assigned to the compute.
+ * @member {number} [properties.targetNodeCount] The target number of compute
+ * nodes for the compute. If the allocationState is resizing, this property
+ * denotes the target node count for the ongoing resize operation. If the
+ * allocationState is steady, this property denotes the target node count for
+ * the previous resize operation.
+ * @member {object} [properties.nodeStateCounts] Counts of various node states
+ * on the compute.
+ * @member {number} [properties.nodeStateCounts.idleNodeCount] Number of
+ * compute nodes in idle state.
+ * @member {number} [properties.nodeStateCounts.runningNodeCount] Number of
+ * compute nodes which are running jobs.
+ * @member {number} [properties.nodeStateCounts.preparingNodeCount] Number of
+ * compute nodes which are being prepared.
+ * @member {number} [properties.nodeStateCounts.unusableNodeCount] Number of
+ * compute nodes which are in unusable state.
+ * @member {number} [properties.nodeStateCounts.leavingNodeCount] Number of
+ * compute nodes which are leaving the amlCompute.
+ * @member {number} [properties.nodeStateCounts.preemptedNodeCount] Number of
+ * compute nodes which are in preempted state.
  */
-export interface BatchAI extends Compute {
-  properties?: BatchAIProperties;
+export interface AmlCompute extends Compute {
+  properties?: AmlComputeProperties;
 }
 
 /**
@@ -576,6 +863,53 @@ export interface DataFactory extends Compute {
 
 /**
  * @class
+ * Initializes a new instance of the DatabricksProperties class.
+ * @constructor
+ * @member {string} [databricksAccessToken] Databricks access token
+ */
+export interface DatabricksProperties {
+  databricksAccessToken?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Databricks class.
+ * @constructor
+ * A DataFactory compute.
+ *
+ * @member {object} [properties]
+ * @member {string} [properties.databricksAccessToken] Databricks access token
+ */
+export interface Databricks extends Compute {
+  properties?: DatabricksProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataLakeAnalyticsProperties class.
+ * @constructor
+ * @member {string} [dataLakeStoreAccountName] DataLake Store Account Name
+ */
+export interface DataLakeAnalyticsProperties {
+  dataLakeStoreAccountName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataLakeAnalytics class.
+ * @constructor
+ * A DataLakeAnalytics compute.
+ *
+ * @member {object} [properties]
+ * @member {string} [properties.dataLakeStoreAccountName] DataLake Store
+ * Account Name
+ */
+export interface DataLakeAnalytics extends Compute {
+  properties?: DataLakeAnalyticsProperties;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ServicePrincipalCredentials class.
  * @constructor
  * Service principal credentials.
@@ -586,6 +920,67 @@ export interface DataFactory extends Compute {
 export interface ServicePrincipalCredentials {
   clientId: string;
   clientSecret: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClusterUpdateParameters class.
+ * @constructor
+ * AmlCompute update parameters.
+ *
+ * @member {object} [scaleSettings] Scale settings. Desired scale settings for
+ * the amlCompute.
+ * @member {number} [scaleSettings.maxNodeCount] Max number of nodes to use
+ * @member {number} [scaleSettings.minNodeCount] Min number of nodes to use
+ * @member {moment.duration} [scaleSettings.nodeIdleTimeBeforeScaleDown] Node
+ * Idle Time before scaling down amlCompute
+ */
+export interface ClusterUpdateParameters {
+  scaleSettings?: ScaleSettings;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ComputeNodesInformation class.
+ * @constructor
+ * Compute nodes information related to a Machine Learning compute. Might
+ * differ for every type of compute.
+ *
+ * @member {string} [nextLink] The continuation token.
+ * @member {string} computeType Polymorphic Discriminator
+ */
+export interface ComputeNodesInformation {
+  readonly nextLink?: string;
+  computeType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AmlComputeNodeInformation class.
+ * @constructor
+ * Compute node information related to a AmlCompute.
+ *
+ * @member {string} [nodeId] Node ID. ID of the compute node.
+ * @member {string} [ipAddress] IP address. Public IP address of the compute
+ * node.
+ * @member {number} [port] Port. SSH port number of the node.
+ */
+export interface AmlComputeNodeInformation {
+  readonly nodeId?: string;
+  readonly ipAddress?: string;
+  readonly port?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AmlComputeNodesInformation class.
+ * @constructor
+ * Compute node information related to a AmlCompute.
+ *
+ * @member {array} [nodes] The collection of returned AmlCompute nodes details.
+ */
+export interface AmlComputeNodesInformation extends ComputeNodesInformation {
+  readonly nodes?: AmlComputeNodeInformation[];
 }
 
 /**
@@ -636,6 +1031,19 @@ export interface VirtualMachineSecrets extends ComputeSecrets {
   administratorAccount?: VirtualMachineSshCredentials;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the DatabricksComputeSecrets class.
+ * @constructor
+ * Secrets related to a Machine Learning compute based on Databricks.
+ *
+ * @member {string} [databricksAccessToken] access token for databricks
+ * account.
+ */
+export interface DatabricksComputeSecrets extends ComputeSecrets {
+  databricksAccessToken?: string;
+}
+
 
 /**
  * @class
@@ -658,6 +1066,32 @@ export interface OperationListResult extends Array<Operation> {
  */
 export interface WorkspaceListResult extends Array<Workspace> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListUsagesResult class.
+ * @constructor
+ * The List Usages operation response.
+ *
+ * @member {string} [nextLink] The URI to fetch the next page of AML resource
+ * usage information. Call ListNext() with this to fetch the next page of AML
+ * resource usage information.
+ */
+export interface ListUsagesResult extends Array<Usage> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineSizeListResult class.
+ * @constructor
+ * The List Virtual Machine size operation response.
+ *
+ * @member {array} [amlCompute] The list of virtual machine sizes supported by
+ * AmlCompute.
+ */
+export interface VirtualMachineSizeListResult extends Array<VirtualMachineSize> {
 }
 
 /**
