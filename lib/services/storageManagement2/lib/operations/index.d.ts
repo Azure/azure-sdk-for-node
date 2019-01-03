@@ -216,10 +216,10 @@ export interface StorageAccounts {
      * @param {object} parameters The parameters to provide for the created
      * account.
      *
-     * @param {object} parameters.sku Required. Gets or sets the sku name.
+     * @param {object} parameters.sku Required. Gets or sets the SKU name.
      *
-     * @param {string} parameters.sku.name Gets or sets the sku name. Required for
-     * account creation; optional for update. Note that in older versions, sku name
+     * @param {string} parameters.sku.name Gets or sets the SKU name. Required for
+     * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
      * 'Premium_ZRS'
@@ -253,9 +253,9 @@ export interface StorageAccounts {
      * @param {string} parameters.customDomain.name Gets or sets the custom domain
      * name assigned to the storage account. Name is the CNAME source.
      *
-     * @param {boolean} [parameters.customDomain.useSubDomain] Indicates whether
-     * indirect CName validation is enabled. Default value is false. This should
-     * only be set on updates.
+     * @param {boolean} [parameters.customDomain.useSubDomainName] Indicates
+     * whether indirect CName validation is enabled. Default value is false. This
+     * should only be set on updates.
      *
      * @param {object} [parameters.encryption] Provides the encryption settings on
      * the account. If left unspecified the account encryption settings will remain
@@ -350,10 +350,10 @@ export interface StorageAccounts {
      * @param {object} parameters The parameters to provide for the created
      * account.
      *
-     * @param {object} parameters.sku Required. Gets or sets the sku name.
+     * @param {object} parameters.sku Required. Gets or sets the SKU name.
      *
-     * @param {string} parameters.sku.name Gets or sets the sku name. Required for
-     * account creation; optional for update. Note that in older versions, sku name
+     * @param {string} parameters.sku.name Gets or sets the SKU name. Required for
+     * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
      * 'Premium_ZRS'
@@ -387,9 +387,9 @@ export interface StorageAccounts {
      * @param {string} parameters.customDomain.name Gets or sets the custom domain
      * name assigned to the storage account. Name is the CNAME source.
      *
-     * @param {boolean} [parameters.customDomain.useSubDomain] Indicates whether
-     * indirect CName validation is enabled. Default value is false. This should
-     * only be set on updates.
+     * @param {boolean} [parameters.customDomain.useSubDomainName] Indicates
+     * whether indirect CName validation is enabled. Default value is false. This
+     * should only be set on updates.
      *
      * @param {object} [parameters.encryption] Provides the encryption settings on
      * the account. If left unspecified the account encryption settings will remain
@@ -564,6 +564,11 @@ export interface StorageAccounts {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.expand] May be used to expand the properties within
+     * account's properties. By default, data is not included when fetching
+     * properties. Currently we only support geoReplicationStats. Possible values
+     * include: 'geoReplicationStats'
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -573,7 +578,7 @@ export interface StorageAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getPropertiesWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageAccount>>;
+    getPropertiesWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageAccount>>;
 
     /**
      * Returns the properties for the specified storage account including but not
@@ -588,6 +593,11 @@ export interface StorageAccounts {
      * characters in length and use numbers and lower-case letters only.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the properties within
+     * account's properties. By default, data is not included when fetching
+     * properties. Currently we only support geoReplicationStats. Possible values
+     * include: 'geoReplicationStats'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -614,9 +624,9 @@ export interface StorageAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getProperties(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageAccount>;
+    getProperties(resourceGroupName: string, accountName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageAccount>;
     getProperties(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.StorageAccount>): void;
-    getProperties(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageAccount>): void;
+    getProperties(resourceGroupName: string, accountName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageAccount>): void;
 
 
     /**
@@ -642,10 +652,10 @@ export interface StorageAccounts {
      *
      * @param {object} [parameters.sku] Gets or sets the SKU name. Note that the
      * SKU name cannot be updated to Standard_ZRS, Premium_LRS or Premium_ZRS, nor
-     * can accounts of those sku names be updated to any other value.
+     * can accounts of those SKU names be updated to any other value.
      *
-     * @param {string} parameters.sku.name Gets or sets the sku name. Required for
-     * account creation; optional for update. Note that in older versions, sku name
+     * @param {string} parameters.sku.name Gets or sets the SKU name. Required for
+     * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
      * 'Premium_ZRS'
@@ -669,9 +679,9 @@ export interface StorageAccounts {
      * @param {string} parameters.customDomain.name Gets or sets the custom domain
      * name assigned to the storage account. Name is the CNAME source.
      *
-     * @param {boolean} [parameters.customDomain.useSubDomain] Indicates whether
-     * indirect CName validation is enabled. Default value is false. This should
-     * only be set on updates.
+     * @param {boolean} [parameters.customDomain.useSubDomainName] Indicates
+     * whether indirect CName validation is enabled. Default value is false. This
+     * should only be set on updates.
      *
      * @param {object} [parameters.encryption] Provides the encryption settings on
      * the account. The default setting is unencrypted.
@@ -773,10 +783,10 @@ export interface StorageAccounts {
      *
      * @param {object} [parameters.sku] Gets or sets the SKU name. Note that the
      * SKU name cannot be updated to Standard_ZRS, Premium_LRS or Premium_ZRS, nor
-     * can accounts of those sku names be updated to any other value.
+     * can accounts of those SKU names be updated to any other value.
      *
-     * @param {string} parameters.sku.name Gets or sets the sku name. Required for
-     * account creation; optional for update. Note that in older versions, sku name
+     * @param {string} parameters.sku.name Gets or sets the SKU name. Required for
+     * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
      * 'Premium_ZRS'
@@ -800,9 +810,9 @@ export interface StorageAccounts {
      * @param {string} parameters.customDomain.name Gets or sets the custom domain
      * name assigned to the storage account. Name is the CNAME source.
      *
-     * @param {boolean} [parameters.customDomain.useSubDomain] Indicates whether
-     * indirect CName validation is enabled. Default value is false. This should
-     * only be set on updates.
+     * @param {boolean} [parameters.customDomain.useSubDomainName] Indicates
+     * whether indirect CName validation is enabled. Default value is false. This
+     * should only be set on updates.
      *
      * @param {object} [parameters.encryption] Provides the encryption settings on
      * the account. The default setting is unencrypted.
@@ -1093,7 +1103,7 @@ export interface StorageAccounts {
      * characters in length and use numbers and lower-case letters only.
      *
      * @param {string} keyName The name of storage keys that want to be
-     * regenerated, possible vaules are key1, key2.
+     * regenerated, possible values are key1, key2.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1119,7 +1129,7 @@ export interface StorageAccounts {
      * characters in length and use numbers and lower-case letters only.
      *
      * @param {string} keyName The name of storage keys that want to be
-     * regenerated, possible vaules are key1, key2.
+     * regenerated, possible values are key1, key2.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1553,10 +1563,10 @@ export interface StorageAccounts {
      * @param {object} parameters The parameters to provide for the created
      * account.
      *
-     * @param {object} parameters.sku Required. Gets or sets the sku name.
+     * @param {object} parameters.sku Required. Gets or sets the SKU name.
      *
-     * @param {string} parameters.sku.name Gets or sets the sku name. Required for
-     * account creation; optional for update. Note that in older versions, sku name
+     * @param {string} parameters.sku.name Gets or sets the SKU name. Required for
+     * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
      * 'Premium_ZRS'
@@ -1590,9 +1600,9 @@ export interface StorageAccounts {
      * @param {string} parameters.customDomain.name Gets or sets the custom domain
      * name assigned to the storage account. Name is the CNAME source.
      *
-     * @param {boolean} [parameters.customDomain.useSubDomain] Indicates whether
-     * indirect CName validation is enabled. Default value is false. This should
-     * only be set on updates.
+     * @param {boolean} [parameters.customDomain.useSubDomainName] Indicates
+     * whether indirect CName validation is enabled. Default value is false. This
+     * should only be set on updates.
      *
      * @param {object} [parameters.encryption] Provides the encryption settings on
      * the account. If left unspecified the account encryption settings will remain
@@ -1687,10 +1697,10 @@ export interface StorageAccounts {
      * @param {object} parameters The parameters to provide for the created
      * account.
      *
-     * @param {object} parameters.sku Required. Gets or sets the sku name.
+     * @param {object} parameters.sku Required. Gets or sets the SKU name.
      *
-     * @param {string} parameters.sku.name Gets or sets the sku name. Required for
-     * account creation; optional for update. Note that in older versions, sku name
+     * @param {string} parameters.sku.name Gets or sets the SKU name. Required for
+     * account creation; optional for update. Note that in older versions, SKU name
      * was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
      * 'Premium_ZRS'
@@ -1724,9 +1734,9 @@ export interface StorageAccounts {
      * @param {string} parameters.customDomain.name Gets or sets the custom domain
      * name assigned to the storage account. Name is the CNAME source.
      *
-     * @param {boolean} [parameters.customDomain.useSubDomain] Indicates whether
-     * indirect CName validation is enabled. Default value is false. This should
-     * only be set on updates.
+     * @param {boolean} [parameters.customDomain.useSubDomainName] Indicates
+     * whether indirect CName validation is enabled. Default value is false. This
+     * should only be set on updates.
      *
      * @param {object} [parameters.encryption] Provides the encryption settings on
      * the account. If left unspecified the account encryption settings will remain
