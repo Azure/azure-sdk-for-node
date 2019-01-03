@@ -1138,7 +1138,7 @@ export interface CredentialResult {
  * @constructor
  * The list of credential result response.
  *
- * @member {array} [kubeconfigs]
+ * @member {array} [kubeconfigs] Base64-encoded Kubernetes configuration file.
  */
 export interface CredentialResults {
   readonly kubeconfigs?: CredentialResult[];
