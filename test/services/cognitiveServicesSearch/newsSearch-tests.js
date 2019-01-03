@@ -4,7 +4,7 @@
  * license information.
  */
 
-const NewsSearchAPIClient = require('../../../lib/services/newsSearch/lib/newsSearchAPIClient');
+const NewsSearchClient = require('../../../lib/services/newsSearch/lib/newsSearchClient');
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 
 const SuiteBase = require('../../framework/suite-base');
@@ -23,7 +23,7 @@ describe('Cognitive Services Search', function () {
     suite = new SuiteBase(this, testPrefix, requiredEnvironment);
     suite.setupSuite(function () {
       let credentials = new CognitiveServicesCredentials(process.env["AZURE_NEWS_SEARCH_KEY"]);
-      client = new NewsSearchAPIClient(credentials);
+      client = new NewsSearchClient(credentials);
       done();
     });
   });

@@ -19,7 +19,7 @@ export default class PredictionAPIClient extends ServiceClient {
    *
    * @param {string} apiKey -
    *
-   * @param {string} [baseUri] - The base URI of the service.
+   * @param {string} endpoint - Supported Cognitive Services endpoints
    *
    * @param {object} [options] - The parameter options
    *
@@ -31,9 +31,11 @@ export default class PredictionAPIClient extends ServiceClient {
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
    */
-  constructor(apiKey: string, baseUri?: string, options?: ServiceClientOptions);
+  constructor(apiKey: string, endpoint: string, options?: ServiceClientOptions);
 
   apiKey: string;
+
+  endpoint: string;
 
 
   /**
