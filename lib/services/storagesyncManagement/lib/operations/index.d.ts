@@ -2261,6 +2261,12 @@ export interface ServerEndpoints {
      *
      * @param {string} [parameters.serverResourceId] Server Resource Id.
      *
+     * @param {string} [parameters.offlineDataTransfer] Offline data transfer.
+     * Possible values include: 'on', 'off'
+     *
+     * @param {string} [parameters.offlineDataTransferShareName] Offline data
+     * transfer share name
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2303,6 +2309,12 @@ export interface ServerEndpoints {
      * @param {string} [parameters.friendlyName] Friendly Name
      *
      * @param {string} [parameters.serverResourceId] Server Resource Id.
+     *
+     * @param {string} [parameters.offlineDataTransfer] Offline data transfer.
+     * Possible values include: 'on', 'off'
+     *
+     * @param {string} [parameters.offlineDataTransferShareName] Offline data
+     * transfer share name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2363,6 +2375,12 @@ export interface ServerEndpoints {
      * @param {number} [options.parameters.tierFilesOlderThanDays] Tier files older
      * than days.
      *
+     * @param {string} [options.parameters.offlineDataTransfer] Offline data
+     * transfer. Possible values include: 'on', 'off'
+     *
+     * @param {string} [options.parameters.offlineDataTransferShareName] Offline
+     * data transfer share name
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -2400,6 +2418,12 @@ export interface ServerEndpoints {
      *
      * @param {number} [options.parameters.tierFilesOlderThanDays] Tier files older
      * than days.
+     *
+     * @param {string} [options.parameters.offlineDataTransfer] Offline data
+     * transfer. Possible values include: 'on', 'off'
+     *
+     * @param {string} [options.parameters.offlineDataTransferShareName] Offline
+     * data transfer share name
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2751,6 +2775,12 @@ export interface ServerEndpoints {
      *
      * @param {string} [parameters.serverResourceId] Server Resource Id.
      *
+     * @param {string} [parameters.offlineDataTransfer] Offline data transfer.
+     * Possible values include: 'on', 'off'
+     *
+     * @param {string} [parameters.offlineDataTransferShareName] Offline data
+     * transfer share name
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2793,6 +2823,12 @@ export interface ServerEndpoints {
      * @param {string} [parameters.friendlyName] Friendly Name
      *
      * @param {string} [parameters.serverResourceId] Server Resource Id.
+     *
+     * @param {string} [parameters.offlineDataTransfer] Offline data transfer.
+     * Possible values include: 'on', 'off'
+     *
+     * @param {string} [parameters.offlineDataTransferShareName] Offline data
+     * transfer share name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2853,6 +2889,12 @@ export interface ServerEndpoints {
      * @param {number} [options.parameters.tierFilesOlderThanDays] Tier files older
      * than days.
      *
+     * @param {string} [options.parameters.offlineDataTransfer] Offline data
+     * transfer. Possible values include: 'on', 'off'
+     *
+     * @param {string} [options.parameters.offlineDataTransferShareName] Offline
+     * data transfer share name
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -2890,6 +2932,12 @@ export interface ServerEndpoints {
      *
      * @param {number} [options.parameters.tierFilesOlderThanDays] Tier files older
      * than days.
+     *
+     * @param {string} [options.parameters.offlineDataTransfer] Offline data
+     * transfer. Possible values include: 'on', 'off'
+     *
+     * @param {string} [options.parameters.offlineDataTransferShareName] Offline
+     * data transfer share name
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
