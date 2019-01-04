@@ -181,7 +181,7 @@ export interface CloudEndpoint extends ProxyResource {
   /**
    * Backup Enabled
   */
-  readonly backupEnabled?: boolean;
+  readonly backupEnabled?: string;
   /**
    * CloudEndpoint Provisioning State
   */
@@ -287,6 +287,14 @@ export interface ServerEndpointCreateParameters extends ProxyResource {
    * Server Resource Id.
   */
   serverResourceId?: string;
+  /**
+   * Offline data transfer. Possible values include: 'on', 'off'
+  */
+  offlineDataTransfer?: string;
+  /**
+   * Offline data transfer share name
+  */
+  offlineDataTransferShareName?: string;
 }
 
 /**
@@ -357,6 +365,112 @@ export interface ServerEndpointUpdateParameters {
    * Tier files older than days.
   */
   tierFilesOlderThanDays?: number;
+  /**
+   * Offline data transfer. Possible values include: 'on', 'off'
+  */
+  offlineDataTransfer?: string;
+  /**
+   * Offline data transfer share name
+  */
+  offlineDataTransferShareName?: string;
+}
+
+/**
+ * Sync Session status object.
+*/
+export interface SyncSessionStatus {
+  /**
+   * Last sync status
+  */
+  lastSyncResult?: number;
+  /**
+   * Last sync timestamp
+  */
+  lastSyncTimestamp?: Date;
+  /**
+   * Last sync success timestamp
+  */
+  lastSyncSuccessTimestamp?: Date;
+  /**
+   * Last sync per item error count.
+  */
+  lastSyncPerItemErrorCount?: number;
+}
+
+/**
+ * Sync Session status object.
+*/
+export interface SyncProgressStatus {
+  /**
+   * Progress timestamp
+  */
+  progressTimestamp?: Date;
+  /**
+   * Sync direction. Possible values include: 'none', 'initialize', 'download', 'upload', 'recall'
+  */
+  syncDirection?: string;
+  /**
+   * Per item error count
+  */
+  perItemErrorCount?: number;
+  /**
+   * Applied item count.
+  */
+  appliedItemCount?: number;
+  /**
+   * Total item count
+  */
+  totalItemCount?: number;
+  /**
+   * Applied bytes
+  */
+  appliedBytes?: number;
+  /**
+   * Total bytes
+  */
+  totalBytes?: number;
+}
+
+/**
+ * ServerEndpoint Health object.
+*/
+export interface ServerEndpointHealth {
+  /**
+   * Download Health Status. Possible values include: 'Healthy', 'Error', 'SyncBlockedForRestore',
+   * 'SyncBlockedForChangeDetectionPostRestore', 'NoActivity'
+  */
+  downloadHealth?: string;
+  /**
+   * Upload Health Status. Possible values include: 'Healthy', 'Error', 'SyncBlockedForRestore',
+   * 'SyncBlockedForChangeDetectionPostRestore', 'NoActivity'
+  */
+  uploadHealth?: string;
+  /**
+   * Combined Health Status. Possible values include: 'Healthy', 'Error', 'SyncBlockedForRestore',
+   * 'SyncBlockedForChangeDetectionPostRestore', 'NoActivity'
+  */
+  combinedHealth?: string;
+  /**
+   * Last Updated Timestamp
+  */
+  lastUpdatedTimestamp?: Date;
+  /**
+   * Upload Status
+  */
+  uploadStatus?: SyncSessionStatus;
+  /**
+   * Download Status
+  */
+  downloadStatus?: SyncSessionStatus;
+  /**
+   * Current progress
+  */
+  currentProgress?: SyncProgressStatus;
+  /**
+   * Offline Data Transfer State. Possible values include: 'InProgress', 'Stopping', 'NotRunning',
+   * 'Complete'
+  */
+  offlineDataTransferStatus?: string;
 }
 
 /**
@@ -400,9 +514,25 @@ export interface ServerEndpoint extends ProxyResource {
   */
   lastOperationName?: string;
   /**
-   * Sync Health Status
+   * Server Endpoint properties.
   */
-  syncStatus?: any;
+  syncStatus?: ServerEndpointHealth;
+  /**
+   * Offline data transfer. Possible values include: 'on', 'off'
+  */
+  offlineDataTransfer?: string;
+  /**
+   * Offline data transfer storage account resource ID
+  */
+  readonly offlineDataTransferStorageAccountResourceId?: string;
+  /**
+   * Offline data transfer storage account tenant ID
+  */
+  readonly offlineDataTransferStorageAccountTenantId?: string;
+  /**
+   * Offline data transfer share name
+  */
+  offlineDataTransferShareName?: string;
 }
 
 /**
@@ -424,7 +554,7 @@ export interface RegisteredServer extends ProxyResource {
   /**
    * Registered Server Management Error Code
   */
-  serverManagementtErrorCode?: number;
+  serverManagementErrorCode?: number;
   /**
    * Registered Server last heart beat
   */
