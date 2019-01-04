@@ -6272,9 +6272,9 @@ export interface SSISExecutionParameter {
  */
 export interface SSISPackageLocation {
   /**
-   * The SSIS package path.
+   * The SSIS package path. Type: string (or Expression with resultType string).
    */
-  packagePath: string;
+  packagePath: any;
 }
 
 /**
@@ -6286,17 +6286,20 @@ export interface ExecuteSSISPackageActivity extends ExecutionActivity {
    */
   packageLocation: SSISPackageLocation;
   /**
-   * Specifies the runtime to execute SSIS package. Possible values include: 'x64', 'x86'
+   * Specifies the runtime to execute SSIS package. The value should be "x86" or "x64". Type:
+   * string (or Expression with resultType string).
    */
-  runtime?: string;
+  runtime?: any;
   /**
-   * The logging level of SSIS package execution.
+   * The logging level of SSIS package execution. Type: string (or Expression with resultType
+   * string).
    */
-  loggingLevel?: string;
+  loggingLevel?: any;
   /**
-   * The environment path to execute the SSIS package.
+   * The environment path to execute the SSIS package. Type: string (or Expression with resultType
+   * string).
    */
-  environmentPath?: string;
+  environmentPath?: any;
   /**
    * The integration runtime reference.
    */
