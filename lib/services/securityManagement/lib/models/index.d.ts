@@ -147,25 +147,20 @@ export interface AdvancedThreatProtectionSetting extends Resource {
 }
 
 /**
- * Represents a security setting in Azure Security Center.
+ * The kind of the security setting
  */
-export interface Setting {
+export interface SettingResource extends Resource {
   /**
-   * Resource Id
-   */
-  readonly id?: string;
-  /**
-   * Resource name
-   */
-  readonly name?: string;
-  /**
-   * Resource type
-   */
-  readonly type?: string;
-  /**
-   * Polymorphic Discriminator
+   * the kind of the settings string (DataExportSetting). Possible values include:
+   * 'DataExportSetting', 'AlertSuppressionSetting'
    */
   kind: string;
+}
+
+/**
+ * Represents a security setting in Azure Security Center.
+ */
+export interface Setting extends SettingResource {
 }
 
 /**
@@ -176,16 +171,6 @@ export interface DataExportSetting extends Setting {
    * Is the data export setting is enabled
    */
   enabled: boolean;
-}
-
-/**
- * The kind of the security setting
- */
-export interface SettingKind1 {
-  /**
-   * the kind of the settings string. Possible values include: 'DataExportSetting'
-   */
-  kind?: string;
 }
 
 /**
