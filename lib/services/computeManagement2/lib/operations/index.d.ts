@@ -2637,10 +2637,10 @@ export interface VirtualMachines {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -3062,10 +3062,10 @@ export interface VirtualMachines {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -3506,10 +3506,10 @@ export interface VirtualMachines {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -3929,10 +3929,10 @@ export interface VirtualMachines {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -5433,10 +5433,10 @@ export interface VirtualMachines {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -5858,10 +5858,10 @@ export interface VirtualMachines {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -6302,10 +6302,10 @@ export interface VirtualMachines {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -6725,10 +6725,10 @@ export interface VirtualMachines {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -15743,10 +15743,10 @@ export interface VirtualMachineScaleSetVMs {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -16156,10 +16156,10 @@ export interface VirtualMachineScaleSetVMs {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -17452,10 +17452,10 @@ export interface VirtualMachineScaleSetVMs {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
@@ -17865,10 +17865,10 @@ export interface VirtualMachineScaleSetVMs {
      * settings for the virtual machine.
      *
      * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
+     * name of the virtual machine. <br><br> This name cannot be updated after the
+     * VM is created. <br><br> **Max-length (Windows):** 15 characters <br><br>
+     * **Max-length (Linux):** 64 characters. <br><br> For naming conventions and
+     * restrictions see [Azure infrastructure services implementation
      * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
      *
      * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
