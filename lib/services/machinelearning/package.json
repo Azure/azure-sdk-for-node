@@ -1,16 +1,12 @@
 {
   "name": "azure-arm-machinelearning",
   "author": "Microsoft Corporation",
-  "contributors": [
-    "Krishnan, Balaji <balajik@microsoft.com>",
-    "Zavery, Amar <amzavery@microsoft.com>"
-  ],
-  "version": "1.1.0-preview",
+  "version": "1.2.0-preview",
   "description": "Microsoft Azure MachineLearning Management Client Library for node",
-  "tags": [
-    "azure",
-    "sdk"
-  ],
+  "dependencies": {
+    "ms-rest": "^2.3.8",
+    "ms-rest-azure": "^2.5.9"
+  },
   "keywords": [
     "node",
     "azure"
@@ -18,19 +14,12 @@
   "main": "./lib/machinelearning.js",
   "types": "./lib/machinelearning.d.ts",
   "license": "MIT",
-  "dependencies": {
-    "ms-rest": "^2.2.2",
-    "ms-rest-azure": "^2.3.3"
-  },
-  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "homepage": "http://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/machinelearning",
   "repository": {
     "type": "git",
     "url": "git@github.com:Azure/azure-sdk-for-node.git"
   },
   "bugs": {
     "url": "http://github.com/Azure/azure-sdk-for-node/issues"
-  },
-  "scripts": {
-    "test": "npm -s run-script jshint"
   }
 }

@@ -74,6 +74,7 @@ export default class SecurityCenter extends AzureServiceClient {
   jitNetworkAccessPolicies: operations.JitNetworkAccessPolicies;
   externalSecuritySolutions: operations.ExternalSecuritySolutions;
   topology: operations.Topology;
+  allowedConnections: operations.AllowedConnections;
 }
 
 export { SecurityCenter, models as SecurityCenterModels };

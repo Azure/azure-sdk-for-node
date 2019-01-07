@@ -5,7 +5,7 @@
     "Krishnan, Balaji <balajik@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com"
   ],
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Microsoft Advisor Management Client Library for node",
   "tags": [
     "azure",

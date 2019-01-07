@@ -1,8 +1,8 @@
 {
   "name": "azure-cognitiveservices-spellcheck",
   "author": "Microsoft Corporation",
-  "description": "SpellCheckAPIClient Library with typescript type definitions for node",
-  "version": "1.0.1",
+  "description": "SpellCheckClient Library with typescript type definitions for node",
+  "version": "2.0.0",
   "dependencies": {
     "ms-rest": "^2.3.3"
   },
@@ -11,9 +11,9 @@
     "azure"
   ],
   "license": "MIT",
-  "main": "./lib/spellCheckAPIClient.js",
-  "types": "./lib/spellCheckAPIClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node/lib/services/spellCheck",
+  "main": "./lib/spellCheckClient.js",
+  "types": "./lib/spellCheckClient.d.ts",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/spellCheck",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"

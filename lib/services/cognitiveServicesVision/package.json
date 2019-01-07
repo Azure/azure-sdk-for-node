@@ -1,38 +1,28 @@
 {
   "name": "azure-cognitiveservices-vision",
   "author": "Microsoft Corporation",
-  "contributors": [
-    "Xu, Willie <wilx@microsoft.com>"
-  ],
-  "version": "1.0.0-preview",
   "description": "Microsoft Azure Cognitive Services Vision API Client Library for Node.js",
-  "tags": [
-    "azure",
-    "sdk"
-  ],
+  "version": "2.0.0",
+  "dependencies": {
+    "ms-rest": "^2.3.3",
+    "ms-rest-azure": "^2.5.6",
+    "azure-cognitiveservices-face": "^2.2.0-preview",
+    "azure-cognitiveservices-computervision": "^3.2.0",
+    "azure-cognitiveservices-contentmoderator": "^4.1.0"
+  },
   "keywords": [
     "node",
     "azure"
   ],
+  "license": "MIT",
   "main": "./lib/cognitiveServicesVision.js",
   "types": "./lib/cognitiveServicesVision.d.ts",
-  "license": "MIT",
-  "dependencies": {
-    "ms-rest": "^2.2.5",
-    "ms-rest-azure": "^2.5.0",
-    "azure-cognitiveservices-face": "^1.0.0-preview",
-    "azure-cognitiveservices-computervision": "^1.0.0-preview",
-    "azure-cognitiveservices-contentmoderator": "^1.0.0-preview"
-  },
-  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "homepage": "http://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesVision",
   "repository": {
     "type": "git",
     "url": "git@github.com:Azure/azure-sdk-for-node.git"
   },
   "bugs": {
     "url": "http://github.com/Azure/azure-sdk-for-node/issues"
-  },
-  "scripts": {
-    "test": "npm -s run-script jshint"
   }
 }

@@ -231,6 +231,8 @@ export interface Workflows {
      *
      * @param {object} [workflow.integrationAccount] The integration account.
      *
+     * @param {string} [workflow.integrationAccount.id] The resource id.
+     *
      * @param {object} [workflow.definition] The definition.
      *
      * @param {object} [workflow.parameters] The parameters.
@@ -272,6 +274,8 @@ export interface Workflows {
      * @param {object} [workflow.sku.plan] The reference to plan.
      *
      * @param {object} [workflow.integrationAccount] The integration account.
+     *
+     * @param {string} [workflow.integrationAccount.id] The resource id.
      *
      * @param {object} [workflow.definition] The definition.
      *
@@ -334,6 +338,8 @@ export interface Workflows {
      *
      * @param {object} [workflow.integrationAccount] The integration account.
      *
+     * @param {string} [workflow.integrationAccount.id] The resource id.
+     *
      * @param {object} [workflow.definition] The definition.
      *
      * @param {object} [workflow.parameters] The parameters.
@@ -375,6 +381,8 @@ export interface Workflows {
      * @param {object} [workflow.sku.plan] The reference to plan.
      *
      * @param {object} [workflow.integrationAccount] The integration account.
+     *
+     * @param {string} [workflow.integrationAccount.id] The resource id.
      *
      * @param {object} [workflow.definition] The definition.
      *
@@ -809,6 +817,8 @@ export interface Workflows {
      *
      * @param {object} [moveParameter.integrationAccount] The integration account.
      *
+     * @param {string} [moveParameter.integrationAccount.id] The resource id.
+     *
      * @param {object} [moveParameter.definition] The definition.
      *
      * @param {object} [moveParameter.parameters] The parameters.
@@ -850,6 +860,8 @@ export interface Workflows {
      * @param {object} [moveParameter.sku.plan] The reference to plan.
      *
      * @param {object} [moveParameter.integrationAccount] The integration account.
+     *
+     * @param {string} [moveParameter.integrationAccount.id] The resource id.
      *
      * @param {object} [moveParameter.definition] The definition.
      *
@@ -979,6 +991,8 @@ export interface Workflows {
      *
      * @param {object} [validate.integrationAccount] The integration account.
      *
+     * @param {string} [validate.integrationAccount.id] The resource id.
+     *
      * @param {object} [validate.definition] The definition.
      *
      * @param {object} [validate.parameters] The parameters.
@@ -1020,6 +1034,8 @@ export interface Workflows {
      * @param {object} [validate.sku.plan] The reference to plan.
      *
      * @param {object} [validate.integrationAccount] The integration account.
+     *
+     * @param {string} [validate.integrationAccount.id] The resource id.
      *
      * @param {object} [validate.definition] The definition.
      *
@@ -1083,6 +1099,8 @@ export interface Workflows {
      *
      * @param {object} [workflow.integrationAccount] The integration account.
      *
+     * @param {string} [workflow.integrationAccount.id] The resource id.
+     *
      * @param {object} [workflow.definition] The definition.
      *
      * @param {object} [workflow.parameters] The parameters.
@@ -1126,6 +1144,8 @@ export interface Workflows {
      * @param {object} [workflow.sku.plan] The reference to plan.
      *
      * @param {object} [workflow.integrationAccount] The integration account.
+     *
+     * @param {string} [workflow.integrationAccount.id] The resource id.
      *
      * @param {object} [workflow.definition] The definition.
      *
@@ -3131,6 +3151,426 @@ export interface WorkflowRunActionRepetitions {
 
 /**
  * @class
+ * WorkflowRunActionRepetitionsRequestHistories
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the LogicManagementClient.
+ */
+export interface WorkflowRunActionRepetitionsRequestHistories {
+
+
+    /**
+     * List a workflow run repetition request history.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} actionName The workflow action name.
+     *
+     * @param {string} repetitionName The workflow repetition.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RequestHistoryListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RequestHistoryListResult>>;
+
+    /**
+     * List a workflow run repetition request history.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} actionName The workflow action name.
+     *
+     * @param {string} repetitionName The workflow repetition.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RequestHistoryListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RequestHistoryListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RequestHistoryListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RequestHistoryListResult>;
+    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, callback: ServiceCallback<models.RequestHistoryListResult>): void;
+    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RequestHistoryListResult>): void;
+
+
+    /**
+     * Gets a workflow run repetition request history.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} actionName The workflow action name.
+     *
+     * @param {string} repetitionName The workflow repetition.
+     *
+     * @param {string} requestHistoryName The request history name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RequestHistory>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, requestHistoryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RequestHistory>>;
+
+    /**
+     * Gets a workflow run repetition request history.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} actionName The workflow action name.
+     *
+     * @param {string} repetitionName The workflow repetition.
+     *
+     * @param {string} requestHistoryName The request history name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RequestHistory} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RequestHistory} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RequestHistory} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, requestHistoryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RequestHistory>;
+    get(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, requestHistoryName: string, callback: ServiceCallback<models.RequestHistory>): void;
+    get(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, requestHistoryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RequestHistory>): void;
+
+
+    /**
+     * List a workflow run repetition request history.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RequestHistoryListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RequestHistoryListResult>>;
+
+    /**
+     * List a workflow run repetition request history.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RequestHistoryListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RequestHistoryListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RequestHistoryListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RequestHistoryListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.RequestHistoryListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RequestHistoryListResult>): void;
+}
+
+/**
+ * @class
+ * WorkflowRunActionRequestHistories
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the LogicManagementClient.
+ */
+export interface WorkflowRunActionRequestHistories {
+
+
+    /**
+     * List a workflow run request history.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} actionName The workflow action name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RequestHistoryListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RequestHistoryListResult>>;
+
+    /**
+     * List a workflow run request history.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} actionName The workflow action name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RequestHistoryListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RequestHistoryListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RequestHistoryListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RequestHistoryListResult>;
+    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, callback: ServiceCallback<models.RequestHistoryListResult>): void;
+    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RequestHistoryListResult>): void;
+
+
+    /**
+     * Gets a workflow run request history.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} actionName The workflow action name.
+     *
+     * @param {string} requestHistoryName The request history name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RequestHistory>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, actionName: string, requestHistoryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RequestHistory>>;
+
+    /**
+     * Gets a workflow run request history.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} actionName The workflow action name.
+     *
+     * @param {string} requestHistoryName The request history name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RequestHistory} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RequestHistory} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RequestHistory} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, workflowName: string, runName: string, actionName: string, requestHistoryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RequestHistory>;
+    get(resourceGroupName: string, workflowName: string, runName: string, actionName: string, requestHistoryName: string, callback: ServiceCallback<models.RequestHistory>): void;
+    get(resourceGroupName: string, workflowName: string, runName: string, actionName: string, requestHistoryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RequestHistory>): void;
+
+
+    /**
+     * List a workflow run request history.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RequestHistoryListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RequestHistoryListResult>>;
+
+    /**
+     * List a workflow run request history.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RequestHistoryListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RequestHistoryListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RequestHistoryListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RequestHistoryListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.RequestHistoryListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RequestHistoryListResult>): void;
+}
+
+/**
+ * @class
  * WorkflowRunActionScopeRepetitions
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the LogicManagementClient.
@@ -3859,6 +4299,8 @@ export interface IntegrationAccounts {
      *
      * @param {object} listKeyVaultKeysParameter.keyVault The key vault reference.
      *
+     * @param {string} [listKeyVaultKeysParameter.keyVault.id] The resource id.
+     *
      * @param {string} [listKeyVaultKeysParameter.skipToken] The skip token.
      *
      * @param {object} [options] Optional Parameters.
@@ -3884,6 +4326,8 @@ export interface IntegrationAccounts {
      * @param {object} listKeyVaultKeysParameter The key vault parameters.
      *
      * @param {object} listKeyVaultKeysParameter.keyVault The key vault reference.
+     *
+     * @param {string} [listKeyVaultKeysParameter.keyVault.id] The resource id.
      *
      * @param {string} [listKeyVaultKeysParameter.skipToken] The skip token.
      *
