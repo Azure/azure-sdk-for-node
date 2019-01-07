@@ -4415,7 +4415,7 @@ export interface Policies {
 
 
     /**
-     * Creates or update policy with specified ruleset name within a resource
+     * Creates or update policy with specified rule set name within a resource
      * group.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -4466,7 +4466,7 @@ export interface Policies {
     createOrUpdateWithHttpOperationResponse(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy1, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebApplicationFirewallPolicy1>>;
 
     /**
-     * Creates or update policy with specified ruleset name within a resource
+     * Creates or update policy with specified rule set name within a resource
      * group.
      *
      * @param {string} resourceGroupName The name of the resource group.
