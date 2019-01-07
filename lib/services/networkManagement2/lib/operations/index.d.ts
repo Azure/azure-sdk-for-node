@@ -891,6 +891,165 @@ export interface ApplicationGateways {
 
 
     /**
+     * Lists all available server variables.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationGatewayAvailableServerVariablesResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAvailableServerVariablesWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayAvailableServerVariablesResult>>;
+
+    /**
+     * Lists all available server variables.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationGatewayAvailableServerVariablesResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationGatewayAvailableServerVariablesResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ApplicationGatewayAvailableServerVariablesResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAvailableServerVariables(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayAvailableServerVariablesResult>;
+    listAvailableServerVariables(callback: ServiceCallback<models.ApplicationGatewayAvailableServerVariablesResult>): void;
+    listAvailableServerVariables(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayAvailableServerVariablesResult>): void;
+
+
+    /**
+     * Lists all available request headers.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationGatewayAvailableRequestHeadersResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAvailableRequestHeadersWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayAvailableRequestHeadersResult>>;
+
+    /**
+     * Lists all available request headers.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationGatewayAvailableRequestHeadersResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationGatewayAvailableRequestHeadersResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ApplicationGatewayAvailableRequestHeadersResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAvailableRequestHeaders(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayAvailableRequestHeadersResult>;
+    listAvailableRequestHeaders(callback: ServiceCallback<models.ApplicationGatewayAvailableRequestHeadersResult>): void;
+    listAvailableRequestHeaders(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayAvailableRequestHeadersResult>): void;
+
+
+    /**
+     * Lists all available response headers.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationGatewayAvailableResponseHeadersResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAvailableResponseHeadersWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayAvailableResponseHeadersResult>>;
+
+    /**
+     * Lists all available response headers.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationGatewayAvailableResponseHeadersResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationGatewayAvailableResponseHeadersResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ApplicationGatewayAvailableResponseHeadersResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAvailableResponseHeaders(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayAvailableResponseHeadersResult>;
+    listAvailableResponseHeaders(callback: ServiceCallback<models.ApplicationGatewayAvailableResponseHeadersResult>): void;
+    listAvailableResponseHeaders(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayAvailableResponseHeadersResult>): void;
+
+
+    /**
      * Lists all available web application firewall rule sets.
      *
      * @param {object} [options] Optional Parameters.
@@ -2193,6 +2352,78 @@ export interface ApplicationSecurityGroups {
 
 
     /**
+     * Updates an application security group's tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} applicationSecurityGroupName The name of the application
+     * security group.
+     *
+     * @param {object} parameters Parameters supplied to update application
+     * security group tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationSecurityGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationSecurityGroup>>;
+
+    /**
+     * Updates an application security group's tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} applicationSecurityGroupName The name of the application
+     * security group.
+     *
+     * @param {object} parameters Parameters supplied to update application
+     * security group tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationSecurityGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationSecurityGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationSecurityGroup} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationSecurityGroup>;
+    updateTags(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ApplicationSecurityGroup>): void;
+    updateTags(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationSecurityGroup>): void;
+
+
+    /**
      * Gets all application security groups in a subscription.
      *
      * @param {object} [options] Optional Parameters.
@@ -2438,6 +2669,78 @@ export interface ApplicationSecurityGroups {
     beginCreateOrUpdate(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.ApplicationSecurityGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationSecurityGroup>;
     beginCreateOrUpdate(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.ApplicationSecurityGroup, callback: ServiceCallback<models.ApplicationSecurityGroup>): void;
     beginCreateOrUpdate(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.ApplicationSecurityGroup, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationSecurityGroup>): void;
+
+
+    /**
+     * Updates an application security group's tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} applicationSecurityGroupName The name of the application
+     * security group.
+     *
+     * @param {object} parameters Parameters supplied to update application
+     * security group tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationSecurityGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationSecurityGroup>>;
+
+    /**
+     * Updates an application security group's tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} applicationSecurityGroupName The name of the application
+     * security group.
+     *
+     * @param {object} parameters Parameters supplied to update application
+     * security group tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationSecurityGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationSecurityGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationSecurityGroup} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationSecurityGroup>;
+    beginUpdateTags(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ApplicationSecurityGroup>): void;
+    beginUpdateTags(resourceGroupName: string, applicationSecurityGroupName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationSecurityGroup>): void;
 
 
     /**
@@ -18209,6 +18512,20 @@ export interface NetworkInterfaceTapConfigurations {
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
      *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
+     *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
      * The list of tags associated with the public IP address.
@@ -18592,6 +18909,20 @@ export interface NetworkInterfaceTapConfigurations {
      * that resolves to this public IP address. If the reverseFqdn is specified,
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
@@ -19119,6 +19450,20 @@ export interface NetworkInterfaceTapConfigurations {
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
      *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
+     *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
      * The list of tags associated with the public IP address.
@@ -19502,6 +19847,20 @@ export interface NetworkInterfaceTapConfigurations {
      * that resolves to this public IP address. If the reverseFqdn is specified,
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
@@ -26657,6 +27016,17 @@ export interface PublicIPAddresses {
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
      *
+     * @param {object} [parameters.ddosSettings] The DDoS protection custom policy
+     * associated with the public IP address.
+     *
+     * @param {object} [parameters.ddosSettings.ddosCustomPolicy] The DDoS custom
+     * policy associated with the public IP.
+     *
+     * @param {string} [parameters.ddosSettings.protectionCoverage] The DDoS
+     * protection policy customizability of the public IP. Only standard coverage
+     * will have the ability to be customized. Possible values include: 'Basic',
+     * 'Standard'
+     *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP address.
      *
@@ -26744,6 +27114,17 @@ export interface PublicIPAddresses {
      * this public IP address. If the reverseFqdn is specified, then a PTR DNS
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
+     *
+     * @param {object} [parameters.ddosSettings] The DDoS protection custom policy
+     * associated with the public IP address.
+     *
+     * @param {object} [parameters.ddosSettings.ddosCustomPolicy] The DDoS custom
+     * policy associated with the public IP.
+     *
+     * @param {string} [parameters.ddosSettings.protectionCoverage] The DDoS
+     * protection policy customizability of the public IP. Only standard coverage
+     * will have the ability to be customized. Possible values include: 'Basic',
+     * 'Standard'
      *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP address.
@@ -27308,6 +27689,17 @@ export interface PublicIPAddresses {
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
      *
+     * @param {object} [parameters.ddosSettings] The DDoS protection custom policy
+     * associated with the public IP address.
+     *
+     * @param {object} [parameters.ddosSettings.ddosCustomPolicy] The DDoS custom
+     * policy associated with the public IP.
+     *
+     * @param {string} [parameters.ddosSettings.protectionCoverage] The DDoS
+     * protection policy customizability of the public IP. Only standard coverage
+     * will have the ability to be customized. Possible values include: 'Basic',
+     * 'Standard'
+     *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP address.
      *
@@ -27395,6 +27787,17 @@ export interface PublicIPAddresses {
      * this public IP address. If the reverseFqdn is specified, then a PTR DNS
      * record is created pointing from the IP address in the in-addr.arpa domain to
      * the reverse FQDN.
+     *
+     * @param {object} [parameters.ddosSettings] The DDoS protection custom policy
+     * associated with the public IP address.
+     *
+     * @param {object} [parameters.ddosSettings.ddosCustomPolicy] The DDoS custom
+     * policy associated with the public IP.
+     *
+     * @param {string} [parameters.ddosSettings.protectionCoverage] The DDoS
+     * protection policy customizability of the public IP. Only standard coverage
+     * will have the ability to be customized. Possible values include: 'Basic',
+     * 'Standard'
      *
      * @param {array} [parameters.ipTags] The list of tags associated with the
      * public IP address.
@@ -40984,6 +41387,20 @@ export interface VirtualNetworkTaps {
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
      *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
+     *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
      * The list of tags associated with the public IP address.
@@ -41343,6 +41760,20 @@ export interface VirtualNetworkTaps {
      * that resolves to this public IP address. If the reverseFqdn is specified,
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
      *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
@@ -41958,6 +42389,20 @@ export interface VirtualNetworkTaps {
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
      *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
+     *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
      * The list of tags associated with the public IP address.
@@ -42317,6 +42762,20 @@ export interface VirtualNetworkTaps {
      * that resolves to this public IP address. If the reverseFqdn is specified,
      * then a PTR DNS record is created pointing from the IP address in the
      * in-addr.arpa domain to the reverse FQDN.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings]
+     * The DDoS protection custom policy associated with the public IP address.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.ddosCustomPolicy]
+     * The DDoS custom policy associated with the public IP.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ddosSettings.protectionCoverage]
+     * The DDoS protection policy customizability of the public IP. Only standard
+     * coverage will have the ability to be customized. Possible values include:
+     * 'Basic', 'Standard'
      *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
