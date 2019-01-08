@@ -6628,6 +6628,15 @@ export interface BackupResourceStorageConfigs {
     update(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupResourceConfigResource>;
     update(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, callback: ServiceCallback<models.BackupResourceConfigResource>): void;
     update(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupResourceConfigResource>): void;
+}
+
+/**
+ * @class
+ * BackupResourceStorageConfig
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the RecoveryServicesBackupClient.
+ */
+export interface BackupResourceStorageConfig {
 
 
     /**
@@ -6670,7 +6679,7 @@ export interface BackupResourceStorageConfigs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    update1WithHttpOperationResponse(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    updateWithHttpOperationResponse(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Updates vault storage model type.
@@ -6727,9 +6736,9 @@ export interface BackupResourceStorageConfigs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update1(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    update1(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, callback: ServiceCallback<void>): void;
-    update1(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    update(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    update(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, callback: ServiceCallback<void>): void;
+    update(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
