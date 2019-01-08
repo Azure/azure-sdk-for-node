@@ -4435,6 +4435,18 @@ export interface ManagedInstanceEncryptionProtector extends ProxyResource {
 
 /**
  * @class
+ * Initializes a new instance of the RecoverableManagedDatabase class.
+ * @constructor
+ * A recoverable managed database resource.
+ *
+ * @property {string} [lastAvailableBackupDate] The last available backup date.
+ */
+export interface RecoverableManagedDatabase extends ProxyResource {
+  readonly lastAvailableBackupDate?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ManagedInstanceVulnerabilityAssessment class.
  * @constructor
  * A managed instance vulnerability assessment.
@@ -5130,6 +5142,18 @@ export interface ManagedInstanceKeyListResult extends Array<ManagedInstanceKey> 
  * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ManagedInstanceEncryptionProtectorListResult extends Array<ManagedInstanceEncryptionProtector> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecoverableManagedDatabaseListResult class.
+ * @constructor
+ * A list of recoverable managed databases.
+ *
+ * @property {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface RecoverableManagedDatabaseListResult extends Array<RecoverableManagedDatabase> {
   readonly nextLink?: string;
 }
 
