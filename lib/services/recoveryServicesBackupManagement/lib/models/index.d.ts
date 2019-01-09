@@ -16,76 +16,19 @@ export {
 };
 
 /**
- * Base class for container with backup items. Containers with specific workloads are derived from
- * this class.
+ * Base class for feature request
  */
-export interface ProtectionContainer {
-  /**
-   * Friendly name of the container.
-   */
-  friendlyName?: string;
-  /**
-   * Type of backup managemenent for the container. Possible values include: 'Invalid',
-   * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
-   * 'DefaultBackup'
-   */
-  backupManagementType?: string;
-  /**
-   * Status of registration of the container with the Recovery Services Vault.
-   */
-  registrationStatus?: string;
-  /**
-   * Status of health of the container.
-   */
-  healthStatus?: string;
+export interface FeatureSupportRequest {
   /**
    * Polymorphic Discriminator
    */
-  containerType: string;
+  featureType: string;
 }
 
 /**
- * DPM workload-specific protection container.
+ * Azure backup goal feature specific request.
  */
-export interface DpmContainer extends ProtectionContainer {
-  /**
-   * Specifies whether the container is re-registrable.
-   */
-  canReRegister?: boolean;
-  /**
-   * ID of container.
-   */
-  containerId?: string;
-  /**
-   * Number of protected items in the BackupEngine
-   */
-  protectedItemCount?: number;
-  /**
-   * Backup engine Agent version
-   */
-  dpmAgentVersion?: string;
-  /**
-   * List of BackupEngines protecting the container
-   */
-  dpmServers?: string[];
-  /**
-   * To check if upgrade available
-   */
-  upgradeAvailable?: boolean;
-  /**
-   * Protection status of the container.
-   */
-  protectionStatus?: string;
-  /**
-   * Extended Info of the container.
-   */
-  extendedInfo?: DPMContainerExtendedInfo;
-}
-
-/**
- * AzureBackupServer (DPMVenus) workload-specific protection container.
- */
-export interface AzureBackupServerContainer extends DpmContainer {
+export interface AzureBackupGoalFeatureSupportRequest extends FeatureSupportRequest {
 }
 
 /**
@@ -249,27 +192,78 @@ export interface AzureFileShareProtectionPolicy extends ProtectionPolicy {
 }
 
 /**
- * IaaS VM workload-specific container.
+ * Restore file specs like file path, type and target folder path info.
  */
-export interface IaaSVMContainer extends ProtectionContainer {
+export interface RestoreFileSpecs {
   /**
-   * Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+   * Source File/Folder path
    */
-  virtualMachineId?: string;
+  path?: string;
   /**
-   * Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+   * Indicates what the Path variable stands for
    */
-  virtualMachineVersion?: string;
+  fileSpecType?: string;
   /**
-   * Resource group name of Recovery Services Vault.
+   * Destination folder path in target FileShare
    */
-  resourceGroup?: string;
+  targetFolderPath?: string;
 }
 
 /**
- * IaaS VM workload-specific backup item representing a classic virtual machine.
+ * Target Azure File Share Info.
  */
-export interface AzureIaaSClassicComputeVMContainer extends IaaSVMContainer {
+export interface TargetAFSRestoreInfo {
+  /**
+   * File share name
+   */
+  name?: string;
+  /**
+   * Target file share resource ARM ID
+   */
+  targetResourceId?: string;
+}
+
+/**
+ * Base class for restore request. Workload-specific restore requests are derived from this class.
+ */
+export interface RestoreRequest {
+  /**
+   * Polymorphic Discriminator
+   */
+  objectType: string;
+}
+
+/**
+ * AzureFileShare Restore Request
+ */
+export interface AzureFileShareRestoreRequest extends RestoreRequest {
+  /**
+   * Type of this recovery. Possible values include: 'Invalid', 'OriginalLocation',
+   * 'AlternateLocation', 'RestoreDisks'
+   */
+  recoveryType?: string;
+  /**
+   * Source storage account ARM Id
+   */
+  sourceResourceId?: string;
+  /**
+   * Options to resolve copy conflicts. Possible values include: 'Invalid', 'CreateCopy', 'Skip',
+   * 'Overwrite', 'FailOnConflict'
+   */
+  copyOptions?: string;
+  /**
+   * Restore Type (FullShareRestore or ItemLevelRestore). Possible values include: 'Invalid',
+   * 'FullShareRestore', 'ItemLevelRestore'
+   */
+  restoreRequestType?: string;
+  /**
+   * List of Source Files/Folders(which need to recover) and TargetFolderPath details
+   */
+  restoreFileSpecs?: RestoreFileSpecs[];
+  /**
+   * Target File Share Details
+   */
+  targetDetails?: TargetAFSRestoreInfo;
 }
 
 /**
@@ -327,15 +321,31 @@ export interface AzureIaaSClassicComputeVMProtectedItem extends AzureIaaSVMProte
 }
 
 /**
- * IaaS VM workload-specific backup item representing an Azure Resource Manager virtual machine.
- */
-export interface AzureIaaSComputeVMContainer extends IaaSVMContainer {
-}
-
-/**
  * IaaS VM workload-specific backup item representing the Azure Resource Manager VM.
  */
 export interface AzureIaaSComputeVMProtectedItem extends AzureIaaSVMProtectedItem {
+}
+
+/**
+ * Azure IaaS VM workload-specific error information.
+ */
+export interface AzureIaaSVMErrorInfo {
+  /**
+   * Error code.
+   */
+  errorCode?: number;
+  /**
+   * Title: Typically, the entity that the error pertains to.
+   */
+  errorTitle?: string;
+  /**
+   * Localized error string.
+   */
+  errorString?: string;
+  /**
+   * List of localized recommendations for above error code.
+   */
+  recommendations?: string[];
 }
 
 /**
@@ -358,6 +368,141 @@ export interface AzureIaaSVMHealthDetails {
    * Health Recommended Actions
    */
   recommendations?: string[];
+}
+
+/**
+ * Azure IaaS VM workload-specific job task details.
+ */
+export interface AzureIaaSVMJobTaskDetails {
+  /**
+   * The task display name.
+   */
+  taskId?: string;
+  /**
+   * The start time.
+   */
+  startTime?: Date;
+  /**
+   * The end time.
+   */
+  endTime?: Date;
+  /**
+   * The instanceId.
+   */
+  instanceId?: string;
+  /**
+   * Time elapsed for task.
+   */
+  duration?: moment.Duration;
+  /**
+   * The status.
+   */
+  status?: string;
+  /**
+   * Progress of the task.
+   */
+  progressPercentage?: number;
+  /**
+   * Details about execution of the task.
+   * eg: number of bytes transfered etc
+   */
+  taskExecutionDetails?: string;
+}
+
+/**
+ * Azure IaaS VM workload-specific additional information for job.
+ */
+export interface AzureIaaSVMJobExtendedInfo {
+  /**
+   * List of tasks associated with this job.
+   */
+  tasksList?: AzureIaaSVMJobTaskDetails[];
+  /**
+   * Job properties.
+   */
+  propertyBag?: { [propertyName: string]: string };
+  /**
+   * Job internal properties.
+   */
+  internalPropertyBag?: { [propertyName: string]: string };
+  /**
+   * Indicates progress of the job. Null if it has not started or completed.
+   */
+  progressPercentage?: number;
+  /**
+   * Time remaining for execution of this job.
+   */
+  estimatedRemainingDuration?: string;
+  /**
+   * Non localized error message on job execution.
+   */
+  dynamicErrorMessage?: string;
+}
+
+/**
+ * Defines workload agnostic properties for a job.
+ */
+export interface Job {
+  /**
+   * Friendly name of the entity on which the current job is executing.
+   */
+  entityFriendlyName?: string;
+  /**
+   * Backup management type to execute the current job. Possible values include: 'Invalid',
+   * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
+   * 'DefaultBackup'
+   */
+  backupManagementType?: string;
+  /**
+   * The operation name.
+   */
+  operation?: string;
+  /**
+   * Job status.
+   */
+  status?: string;
+  /**
+   * The start time.
+   */
+  startTime?: Date;
+  /**
+   * The end time.
+   */
+  endTime?: Date;
+  /**
+   * ActivityId of job.
+   */
+  activityId?: string;
+  /**
+   * Polymorphic Discriminator
+   */
+  jobType: string;
+}
+
+/**
+ * Azure IaaS VM workload-specifc job object.
+ */
+export interface AzureIaaSVMJob extends Job {
+  /**
+   * Time elapsed during the execution of this job.
+   */
+  duration?: moment.Duration;
+  /**
+   * Gets or sets the state/actions applicable on this job like cancel/retry.
+   */
+  actionsInfo?: string[];
+  /**
+   * Error details on execution of this job.
+   */
+  errorDetails?: AzureIaaSVMErrorInfo[];
+  /**
+   * Specifies whether the backup item is a Classic or an Azure Resource Manager VM.
+   */
+  virtualMachineVersion?: string;
+  /**
+   * Additional information for this job.
+   */
+  extendedInfo?: AzureIaaSVMJobExtendedInfo;
 }
 
 /**
@@ -401,44 +546,52 @@ export interface AzureIaaSVMProtectionPolicy extends ProtectionPolicy {
 }
 
 /**
- * Container for the workloads running inside Azure Compute or Classic Compute.
+ * Base class for backup ProtectionIntent.
  */
-export interface AzureWorkloadContainer extends ProtectionContainer {
+export interface ProtectionIntent {
   /**
-   * ARM ID of the virtual machine represented by this Azure Workload Container
+   * Type of backup managemenent for the backed up item. Possible values include: 'Invalid',
+   * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
+   * 'DefaultBackup'
+   */
+  backupManagementType?: string;
+  /**
+   * ARM ID of the resource to be backed up.
    */
   sourceResourceId?: string;
   /**
-   * Time stamp when this container was updated.
+   * ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
    */
-  lastUpdatedTime?: Date;
+  itemId?: string;
   /**
-   * Additional details of a workload container.
+   * ID of the backup policy with which this item is backed up.
    */
-  extendedInfo?: AzureWorkloadContainerExtendedInfo;
+  policyId?: string;
   /**
-   * Workload type for which registration was sent. Possible values include: 'Invalid', 'VM',
-   * 'FileFolder', 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState',
-   * 'Client', 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase',
-   * 'SAPAseDatabase'
+   * Backup state of this backup item. Possible values include: 'Invalid', 'NotProtected',
+   * 'Protecting', 'Protected', 'ProtectionFailed'
    */
-  workloadType?: string;
+  protectionState?: string;
   /**
-   * Re-Do Operation. Possible values include: 'Invalid', 'Register', 'Reregister'
+   * Polymorphic Discriminator
    */
-  operationType?: string;
+  protectionIntentItemType: string;
 }
 
 /**
- * Container for SQL workloads under SQL Availability Group.
+ * Azure Recovery Services Vault specific protection intent item.
  */
-export interface AzureSQLAGWorkloadContainerProtectionContainer extends AzureWorkloadContainer {
+export interface AzureRecoveryServiceVaultProtectionIntent extends ProtectionIntent {
 }
 
 /**
- * Azure Sql workload-specific container.
+ * IaaS VM specific backup protection intent item.
  */
-export interface AzureSqlContainer extends ProtectionContainer {
+export interface AzureResourceProtectionIntent extends ProtectionIntent {
+  /**
+   * Friendly name of the VM represented by this backup item.
+   */
+  friendlyName?: string;
 }
 
 /**
@@ -489,31 +642,109 @@ export interface AzureSqlProtectionPolicy extends ProtectionPolicy {
 }
 
 /**
- * Azure Storage Account workload-specific container.
+ * Azure storage specific error information
  */
-export interface AzureStorageContainer extends ProtectionContainer {
+export interface AzureStorageErrorInfo {
   /**
-   * Fully qualified ARM url.
+   * Error code.
    */
-  sourceResourceId?: string;
+  errorCode?: number;
   /**
-   * Storage account version.
+   * Localized error string.
    */
-  storageAccountVersion?: string;
+  errorString?: string;
   /**
-   * Resource group name of Recovery Services Vault.
+   * List of localized recommendations for above error code.
    */
-  resourceGroup?: string;
-  /**
-   * Number of items backed up in this container.
-   */
-  protectedItemCount?: number;
+  recommendations?: string[];
 }
 
 /**
- * Container for SQL workloads under Azure Virtual Machines.
+ * Azure storage workload specific job task details.
  */
-export interface AzureVMAppContainerProtectionContainer extends AzureWorkloadContainer {
+export interface AzureStorageJobTaskDetails {
+  /**
+   * The task display name.
+   */
+  taskId?: string;
+  /**
+   * The status.
+   */
+  status?: string;
+}
+
+/**
+ * Azure Storage workload-specific additional information for job.
+ */
+export interface AzureStorageJobExtendedInfo {
+  /**
+   * List of tasks for this job
+   */
+  tasksList?: AzureStorageJobTaskDetails[];
+  /**
+   * Job properties.
+   */
+  propertyBag?: { [propertyName: string]: string };
+  /**
+   * Non localized error message on job execution.
+   */
+  dynamicErrorMessage?: string;
+}
+
+/**
+ * Azure storage specific job.
+ */
+export interface AzureStorageJob extends Job {
+  /**
+   * Time elapsed during the execution of this job.
+   */
+  duration?: moment.Duration;
+  /**
+   * Gets or sets the state/actions applicable on this job like cancel/retry.
+   */
+  actionsInfo?: string[];
+  /**
+   * Error details on execution of this job.
+   */
+  errorDetails?: AzureStorageErrorInfo[];
+  /**
+   * Specifies friendly name of the storage account.
+   */
+  storageAccountName?: string;
+  /**
+   * Specifies whether the Storage account is a Classic or an Azure Resource Manager Storage
+   * account.
+   */
+  storageAccountVersion?: string;
+  /**
+   * Additional information about the job.
+   */
+  extendedInfo?: AzureStorageJobExtendedInfo;
+}
+
+/**
+ * AzureResource(IaaS VM) Specific feature support request
+ */
+export interface AzureVMResourceFeatureSupportRequest extends FeatureSupportRequest {
+  /**
+   * Size of the resource: VM size(A/D series etc) in case of IaasVM
+   */
+  vmSize?: string;
+  /**
+   * SKUs (Premium/Managed etc) in case of IaasVM
+   */
+  vmSku?: string;
+}
+
+/**
+ * Response for feature support requests for Azure IaasVm
+ */
+export interface AzureVMResourceFeatureSupportResponse {
+  /**
+   * Support status of feature. Possible values include: 'Invalid', 'Supported', 'DefaultOFF',
+   * 'DefaultON', 'NotSupported'
+   */
+  supportStatus?: string;
 }
 
 /**
@@ -684,1457 +915,6 @@ export interface AzureVmWorkloadSAPHanaDatabaseProtectedItem extends AzureVmWork
  * Azure VM workload-specific protected item representing SQL Database.
  */
 export interface AzureVmWorkloadSQLDatabaseProtectedItem extends AzureVmWorkloadProtectedItem {
-}
-
-/**
- * Validation for inquired protectable items under a given container.
- */
-export interface InquiryValidation {
-  /**
-   * Status for the Inquiry Validation.
-   */
-  status?: string;
-  /**
-   * Error Detail in case the status is non-success.
-   */
-  errorDetail?: ErrorDetail;
-}
-
-/**
- * Details of an inquired protectable item.
- */
-export interface WorkloadInquiryDetails {
-  /**
-   * Type of the Workload such as SQL, Oracle etc.
-   */
-  type?: string;
-  /**
-   * Contains the protectable item Count inside this Container.
-   */
-  itemCount?: number;
-  /**
-   * Inquiry validation such as permissions and other backup validations.
-   */
-  inquiryValidation?: InquiryValidation;
-}
-
-/**
- * Details about inquired protectable items under a given container.
- */
-export interface InquiryInfo {
-  /**
-   * Inquiry Status for this container such as
-   * InProgress | Failed | Succeeded
-   */
-  status?: string;
-  /**
-   * Error Details if the Status is non-success.
-   */
-  errorDetail?: ErrorDetail;
-  /**
-   * Inquiry Details which will have workload specific details.
-   * For e.g. - For SQL and oracle this will contain different details.
-   */
-  inquiryDetails?: WorkloadInquiryDetails[];
-}
-
-/**
- * This is used to represent the various nodes of the distributed container.
- */
-export interface DistributedNodesInfo {
-  /**
-   * Name of the node under a distributed container.
-   */
-  nodeName?: string;
-  /**
-   * Status of this Node.
-   * Failed | Succeeded
-   */
-  status?: string;
-  /**
-   * Error Details if the Status is non-success.
-   */
-  errorDetail?: ErrorDetail;
-}
-
-/**
- * Extended information of the container.
- */
-export interface AzureWorkloadContainerExtendedInfo {
-  /**
-   * Host Os Name in case of Stand Alone and Cluster Name in case of distributed container.
-   */
-  hostServerName?: string;
-  /**
-   * Inquiry Status for the container.
-   */
-  inquiryInfo?: InquiryInfo;
-  /**
-   * List of the nodes in case of distributed container.
-   */
-  nodesList?: DistributedNodesInfo[];
-}
-
-/**
- * Query parameters to fetch list of backup fabric.
- */
-export interface BMSBackupFabricQueryObject {
-  /**
-   * attribute to add extended info
-   */
-  expand?: string;
-}
-
-/**
- * Query parameters to fetch list of backup fabrics.
- */
-export interface BMSBackupFabricsQueryObject {
-  /**
-   * Backup management type for the backup fabric.
-   */
-  backupManagementType?: string;
-  /**
-   * Friendly name of the backup fabric.
-   */
-  friendlyName?: string;
-  /**
-   * Attribute to add extended info.
-   */
-  expand?: string;
-}
-
-/**
- * The query filters that can be used with the list containers API.
- */
-export interface BMSContainerQueryObject {
-  /**
-   * Backup management type for this container. Possible values include: 'Invalid', 'AzureIaasVM',
-   * 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
-   * 'DefaultBackup'
-   */
-  backupManagementType: string;
-  /**
-   * Type of container for filter. Possible values include: 'Invalid', 'Unknown',
-   * 'IaasVMContainer', 'IaasVMServiceContainer', 'DPMContainer', 'AzureBackupServerContainer',
-   * 'MABContainer', 'Cluster', 'AzureSqlContainer', 'Windows', 'VCenter', 'VMAppContainer',
-   * 'SQLAGWorkLoadContainer', 'StorageContainer', 'GenericContainer'
-   */
-  containerType?: string;
-  /**
-   * Backup engine name
-   */
-  backupEngineName?: string;
-  /**
-   * Fabric name for filter
-   */
-  fabricName?: string;
-  /**
-   * Status of registration of this container with the Recovery Services Vault.
-   */
-  status?: string;
-  /**
-   * Friendly name of this container.
-   */
-  friendlyName?: string;
-}
-
-/**
- * Client script details for file / folder restore.
- */
-export interface ClientScriptForConnect {
-  /**
-   * File content of the client script for file / folder restore.
-   */
-  scriptContent?: string;
-  /**
-   * File extension of the client script for file / folder restore - .ps1 , .sh , etc.
-   */
-  scriptExtension?: string;
-  /**
-   * OS type - Windows, Linux etc. for which this file / folder restore client script works.
-   */
-  osType?: string;
-  /**
-   * URL of Executable from where to source the content. If this is not null then ScriptContent
-   * should not be used
-   */
-  url?: string;
-  /**
-   * Mandator suffix that should be added to the name of script that is given for download to user.
-   * If its null or empty then , ignore it.
-   */
-  scriptNameSuffix?: string;
-}
-
-/**
- * Container identity information
- */
-export interface ContainerIdentityInfo {
-  /**
-   * Unique name of the container
-   */
-  uniqueName?: string;
-  /**
-   * Protection container identity - AAD Tenant
-   */
-  aadTenantId?: string;
-  /**
-   * Protection container identity - AAD Service Principal
-   */
-  servicePrincipalClientId?: string;
-  /**
-   * Protection container identity - Audience
-   */
-  audience?: string;
-}
-
-/**
- * Day of the week.
- */
-export interface Day {
-  /**
-   * Date of the month
-   */
-  date?: number;
-  /**
-   * Whether Date is last date of month
-   */
-  isLast?: boolean;
-}
-
-/**
- * Daily retention format.
- */
-export interface DailyRetentionFormat {
-  /**
-   * List of days of the month.
-   */
-  daysOfTheMonth?: Day[];
-}
-
-/**
- * Retention duration.
- */
-export interface RetentionDuration {
-  /**
-   * Count of duration types. Retention duration is obtained by the counting the duration type
-   * Count times.
-   * For example, when Count = 3 and DurationType = Weeks, retention duration will be three weeks.
-   */
-  count?: number;
-  /**
-   * Retention duration type of retention policy. Possible values include: 'Invalid', 'Days',
-   * 'Weeks', 'Months', 'Years'
-   */
-  durationType?: string;
-}
-
-/**
- * Daily retention schedule.
- */
-export interface DailyRetentionSchedule {
-  /**
-   * Retention times of retention policy.
-   */
-  retentionTimes?: Date[];
-  /**
-   * Retention duration of retention Policy.
-   */
-  retentionDuration?: RetentionDuration;
-}
-
-/**
- * Additional information of the DPMContainer.
- */
-export interface DPMContainerExtendedInfo {
-  /**
-   * Last refresh time of the DPMContainer.
-   */
-  lastRefreshedAt?: Date;
-}
-
-/**
- * Additional information of DPM Protected item.
- */
-export interface DPMProtectedItemExtendedInfo {
-  /**
-   * Attribute to provide information on various DBs.
-   */
-  protectableObjectLoadPath?: { [propertyName: string]: string };
-  /**
-   * To check if backup item is disk protected.
-   */
-  protectedProperty?: boolean;
-  /**
-   * To check if backup item is cloud protected.
-   */
-  isPresentOnCloud?: boolean;
-  /**
-   * Last backup status information on backup item.
-   */
-  lastBackupStatus?: string;
-  /**
-   * Last refresh time on backup item.
-   */
-  lastRefreshedAt?: Date;
-  /**
-   * Oldest cloud recovery point time.
-   */
-  oldestRecoveryPoint?: Date;
-  /**
-   * cloud recovery point count.
-   */
-  recoveryPointCount?: number;
-  /**
-   * Oldest disk recovery point time.
-   */
-  onPremiseOldestRecoveryPoint?: Date;
-  /**
-   * latest disk recovery point time.
-   */
-  onPremiseLatestRecoveryPoint?: Date;
-  /**
-   * disk recovery point count.
-   */
-  onPremiseRecoveryPointCount?: number;
-  /**
-   * To check if backup item is collocated.
-   */
-  isCollocated?: boolean;
-  /**
-   * Protection group name of the backup item.
-   */
-  protectionGroupName?: string;
-  /**
-   * Used Disk storage in bytes.
-   */
-  diskStorageUsedInBytes?: string;
-  /**
-   * total Disk storage in bytes.
-   */
-  totalDiskStorageSizeInBytes?: string;
-}
-
-/**
- * Additional information on Backup engine specific backup item.
- */
-export interface DPMProtectedItem extends ProtectedItem {
-  /**
-   * Friendly name of the managed item
-   */
-  friendlyName?: string;
-  /**
-   * Backup Management server protecting this backup item
-   */
-  backupEngineName?: string;
-  /**
-   * Protection state of the backupengine. Possible values include: 'Invalid', 'IRPending',
-   * 'Protected', 'ProtectionError', 'ProtectionStopped', 'ProtectionPaused'
-   */
-  protectionState?: string;
-  /**
-   * To check if backup item is scheduled for deferred delete
-   */
-  isScheduledForDeferredDelete?: boolean;
-  /**
-   * Extended info of the backup item.
-   */
-  extendedInfo?: DPMProtectedItemExtendedInfo;
-}
-
-/**
- * The generic backup fabric class.
- */
-export interface GenericBackupFabric {
-  /**
-   * Friendly name of the backup fabric.
-   */
-  friendlyName?: string;
-  /**
-   * Version of the backup fabric.
-   */
-  version?: string;
-  /**
-   * Polymorphic Discriminator
-   */
-  backupManagementType: string;
-}
-
-/**
- * ARM Resource.
- */
-export interface Resource extends BaseResource {
-  /**
-   * Resource Id represents the complete path to the resource.
-   */
-  readonly id?: string;
-  /**
-   * Resource name associated with the resource.
-   */
-  readonly name?: string;
-  /**
-   * Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
-   */
-  readonly type?: string;
-  /**
-   * Resource location.
-   */
-  location?: string;
-  /**
-   * Resource tags.
-   */
-  tags?: { [propertyName: string]: string };
-  /**
-   * Optional ETag.
-   */
-  eTag?: string;
-}
-
-/**
- * The generic backup fabric class.
- */
-export interface GenericBackupFabricResource extends Resource {
-  /**
-   * GenericBackupFabricResource properties
-   */
-  properties?: GenericBackupFabric;
-}
-
-/**
- * Container extended information
- */
-export interface GenericContainerExtendedInfo {
-  /**
-   * Public key of container cert
-   */
-  rawCertData?: string;
-  /**
-   * Container identity information
-   */
-  containerIdentityInfo?: ContainerIdentityInfo;
-  /**
-   * Azure Backup Service Endpoints for the container
-   */
-  serviceEndpoints?: { [propertyName: string]: string };
-}
-
-/**
- * Base class for generic container of backup items
- */
-export interface GenericContainer extends ProtectionContainer {
-  /**
-   * Name of the container's fabric
-   */
-  fabricName?: string;
-  /**
-   * Extended information (not returned in List container API calls)
-   */
-  extendedInformation?: GenericContainerExtendedInfo;
-}
-
-/**
- * Base class for backup items.
- */
-export interface GenericProtectedItem extends ProtectedItem {
-  /**
-   * Friendly name of the container.
-   */
-  friendlyName?: string;
-  /**
-   * Indicates consistency of policy object and policy applied to this backup item.
-   */
-  policyState?: string;
-  /**
-   * Backup state of this backup item. Possible values include: 'Invalid', 'IRPending',
-   * 'Protected', 'ProtectionError', 'ProtectionStopped', 'ProtectionPaused'
-   */
-  protectionState?: string;
-  /**
-   * Data Plane Service ID of the protected item.
-   */
-  protectedItemId?: number;
-  /**
-   * Loosely coupled (type, value) associations (example - parent of a protected item)
-   */
-  sourceAssociations?: { [propertyName: string]: string };
-  /**
-   * Name of this backup item's fabric.
-   */
-  fabricName?: string;
-}
-
-/**
- * Azure VM (Mercury) workload-specific backup policy.
- */
-export interface GenericProtectionPolicy extends ProtectionPolicy {
-  /**
-   * List of sub-protection policies which includes schedule and retention
-   */
-  subProtectionPolicy?: SubProtectionPolicy[];
-  /**
-   * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
-   */
-  timeZone?: string;
-  /**
-   * Name of this policy's fabric.
-   */
-  fabricName?: string;
-}
-
-/**
- * Generic class for restore access request.
- */
-export interface GenericRestoreAccessRequest {
-  /**
-   * ARM ResourceId of container that will gain access to container request in uri.
-   */
-  protectionContainerId?: string;
-  /**
-   * Duration for which the access has been requested.
-   */
-  duration?: moment.Duration;
-}
-
-/**
- * Generic class for restore access response.
- */
-export interface GenericRestoreAccessResponse {
-  /**
-   * Azure Backup Service Endpoints of the container in grant access request URL
-   */
-  serviceEndpoints?: { [propertyName: string]: string };
-  /**
-   * Time till which access has been granted.
-   */
-  expiryTime?: Date;
-}
-
-/**
- * Target details for file / folder restore.
- */
-export interface InstantItemRecoveryTarget {
-  /**
-   * List of client scripts.
-   */
-  clientScripts?: ClientScriptForConnect[];
-}
-
-/**
- * Log policy schedule.
- */
-export interface LogSchedulePolicy extends SchedulePolicy {
-  /**
-   * Frequency of the log schedule operation of this policy in minutes.
-   */
-  scheduleFrequencyInMins?: number;
-}
-
-/**
- * Weekly retention schedule.
- */
-export interface WeeklyRetentionSchedule {
-  /**
-   * List of days of week for weekly retention policy.
-   */
-  daysOfTheWeek?: string[];
-  /**
-   * Retention times of retention policy.
-   */
-  retentionTimes?: Date[];
-  /**
-   * Retention duration of retention Policy.
-   */
-  retentionDuration?: RetentionDuration;
-}
-
-/**
- * Weekly retention format.
- */
-export interface WeeklyRetentionFormat {
-  /**
-   * List of days of the week.
-   */
-  daysOfTheWeek?: string[];
-  /**
-   * List of weeks of month.
-   */
-  weeksOfTheMonth?: string[];
-}
-
-/**
- * Monthly retention schedule.
- */
-export interface MonthlyRetentionSchedule {
-  /**
-   * Retention schedule format type for monthly retention policy. Possible values include:
-   * 'Invalid', 'Daily', 'Weekly'
-   */
-  retentionScheduleFormatType?: string;
-  /**
-   * Daily retention format for monthly retention policy.
-   */
-  retentionScheduleDaily?: DailyRetentionFormat;
-  /**
-   * Weekly retention format for monthly retention policy.
-   */
-  retentionScheduleWeekly?: WeeklyRetentionFormat;
-  /**
-   * Retention times of retention policy.
-   */
-  retentionTimes?: Date[];
-  /**
-   * Retention duration of retention Policy.
-   */
-  retentionDuration?: RetentionDuration;
-}
-
-/**
- * Yearly retention schedule.
- */
-export interface YearlyRetentionSchedule {
-  /**
-   * Retention schedule format for yearly retention policy. Possible values include: 'Invalid',
-   * 'Daily', 'Weekly'
-   */
-  retentionScheduleFormatType?: string;
-  /**
-   * List of months of year of yearly retention policy.
-   */
-  monthsOfYear?: string[];
-  /**
-   * Daily retention format for yearly retention policy.
-   */
-  retentionScheduleDaily?: DailyRetentionFormat;
-  /**
-   * Weekly retention format for yearly retention policy.
-   */
-  retentionScheduleWeekly?: WeeklyRetentionFormat;
-  /**
-   * Retention times of retention policy.
-   */
-  retentionTimes?: Date[];
-  /**
-   * Retention duration of retention Policy.
-   */
-  retentionDuration?: RetentionDuration;
-}
-
-/**
- * Long term retention policy.
- */
-export interface LongTermRetentionPolicy extends RetentionPolicy {
-  /**
-   * Daily retention schedule of the protection policy.
-   */
-  dailySchedule?: DailyRetentionSchedule;
-  /**
-   * Weekly retention schedule of the protection policy.
-   */
-  weeklySchedule?: WeeklyRetentionSchedule;
-  /**
-   * Monthly retention schedule of the protection policy.
-   */
-  monthlySchedule?: MonthlyRetentionSchedule;
-  /**
-   * Yearly retention schedule of the protection policy.
-   */
-  yearlySchedule?: YearlyRetentionSchedule;
-}
-
-/**
- * Long term policy schedule.
- */
-export interface LongTermSchedulePolicy extends SchedulePolicy {
-}
-
-/**
- * Additional information of the container.
- */
-export interface MabContainerExtendedInfo {
-  /**
-   * Time stamp when this container was refreshed.
-   */
-  lastRefreshedAt?: Date;
-  /**
-   * Type of backup items associated with this container. Possible values include: 'Invalid', 'VM',
-   * 'FileFolder', 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState',
-   * 'Client', 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase',
-   * 'SAPAseDatabase'
-   */
-  backupItemType?: string;
-  /**
-   * List of backup items associated with this container.
-   */
-  backupItems?: string[];
-  /**
-   * Backup policy associated with this container.
-   */
-  policyName?: string;
-  /**
-   * Latest backup status of this container.
-   */
-  lastBackupStatus?: string;
-}
-
-/**
- * MAB workload-specific Health Details.
- */
-export interface MABContainerHealthDetails {
-  /**
-   * Health Code
-   */
-  code?: number;
-  /**
-   * Health Title
-   */
-  title?: string;
-  /**
-   * Health Message
-   */
-  message?: string;
-  /**
-   * Health Recommended Actions
-   */
-  recommendations?: string[];
-}
-
-/**
- * Container with items backed up using MAB backup engine.
- */
-export interface MabContainer extends ProtectionContainer {
-  /**
-   * Can the container be registered one more time.
-   */
-  canReRegister?: boolean;
-  /**
-   * ContainerID represents the container.
-   */
-  containerId?: number;
-  /**
-   * Number of items backed up in this container.
-   */
-  protectedItemCount?: number;
-  /**
-   * Agent version of this container.
-   */
-  agentVersion?: string;
-  /**
-   * Additional information for this container
-   */
-  extendedInfo?: MabContainerExtendedInfo;
-  /**
-   * Health details on this mab container.
-   */
-  mabContainerHealthDetails?: MABContainerHealthDetails[];
-  /**
-   * Health state of mab container.
-   */
-  containerHealthState?: string;
-}
-
-/**
- * Additional information on the backed up item.
- */
-export interface MabFileFolderProtectedItemExtendedInfo {
-  /**
-   * Last time when the agent data synced to service.
-   */
-  lastRefreshedAt?: Date;
-  /**
-   * The oldest backup copy available.
-   */
-  oldestRecoveryPoint?: Date;
-  /**
-   * Number of backup copies associated with the backup item.
-   */
-  recoveryPointCount?: number;
-}
-
-/**
- * MAB workload-specific backup item.
- */
-export interface MabFileFolderProtectedItem extends ProtectedItem {
-  /**
-   * Friendly name of this backup item.
-   */
-  friendlyName?: string;
-  /**
-   * Name of the computer associated with this backup item.
-   */
-  computerName?: string;
-  /**
-   * Status of last backup operation.
-   */
-  lastBackupStatus?: string;
-  /**
-   * Protected, ProtectionStopped, IRPending or ProtectionError
-   */
-  protectionState?: string;
-  /**
-   * Specifies if the item is scheduled for deferred deletion.
-   */
-  isScheduledForDeferredDelete?: boolean;
-  /**
-   * Sync time for deferred deletion.
-   */
-  deferredDeleteSyncTimeInUTC?: number;
-  /**
-   * Additional information with this backup item.
-   */
-  extendedInfo?: MabFileFolderProtectedItemExtendedInfo;
-}
-
-/**
- * Mab container-specific backup policy.
- */
-export interface MabProtectionPolicy extends ProtectionPolicy {
-  /**
-   * Backup schedule of backup policy.
-   */
-  schedulePolicy?: SchedulePolicy;
-  /**
-   * Retention policy details.
-   */
-  retentionPolicy?: RetentionPolicy;
-}
-
-/**
- * Error information associated with operation status call.
- */
-export interface OperationStatusError {
-  /**
-   * Error code of the operation failure.
-   */
-  code?: string;
-  /**
-   * Error message displayed if the operation failure.
-   */
-  message?: string;
-}
-
-/**
- * Base class for additional information of operation status.
- */
-export interface OperationStatusExtendedInfo {
-  /**
-   * Polymorphic Discriminator
-   */
-  objectType: string;
-}
-
-/**
- * Operation status.
- */
-export interface OperationStatus {
-  /**
-   * ID of the operation.
-   */
-  id?: string;
-  /**
-   * Name of the operation.
-   */
-  name?: string;
-  /**
-   * Operation status. Possible values include: 'Invalid', 'InProgress', 'Succeeded', 'Failed',
-   * 'Canceled'
-   */
-  status?: string;
-  /**
-   * Operation start time. Format: ISO-8601.
-   */
-  startTime?: Date;
-  /**
-   * Operation end time. Format: ISO-8601.
-   */
-  endTime?: Date;
-  /**
-   * Error information related to this operation.
-   */
-  error?: OperationStatusError;
-  /**
-   * Additional information associated with this operation.
-   */
-  properties?: OperationStatusExtendedInfo;
-}
-
-/**
- * Operation status job extended info.
- */
-export interface OperationStatusJobExtendedInfo extends OperationStatusExtendedInfo {
-  /**
-   * ID of the job created for this protected item.
-   */
-  jobId?: string;
-}
-
-/**
- * Operation status extended info for list of jobs.
- */
-export interface OperationStatusJobsExtendedInfo extends OperationStatusExtendedInfo {
-  /**
-   * IDs of the jobs created for the protected item.
-   */
-  jobIds?: string[];
-  /**
-   * Stores all the failed jobs along with the corresponding error codes.
-   */
-  failedJobsError?: { [propertyName: string]: string };
-}
-
-/**
- * Operation status extended info for ILR provision action.
- */
-export interface OperationStatusProvisionILRExtendedInfo extends OperationStatusExtendedInfo {
-  /**
-   * Target details for file / folder restore.
-   */
-  recoveryTarget?: InstantItemRecoveryTarget;
-}
-
-/**
- * Filters to list backup items.
- */
-export interface ProtectedItemQueryObject {
-  /**
-   * Health State for the backed up item. Possible values include: 'Passed', 'ActionRequired',
-   * 'ActionSuggested', 'Invalid'
-   */
-  healthState?: string;
-  /**
-   * Backup management type for the backed up item. Possible values include: 'Invalid',
-   * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
-   * 'DefaultBackup'
-   */
-  backupManagementType?: string;
-  /**
-   * Type of workload this item represents. Possible values include: 'Invalid', 'VM', 'FileFolder',
-   * 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
-   * 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase', 'SAPAseDatabase'
-   */
-  itemType?: string;
-  /**
-   * Backup policy name associated with the backup item.
-   */
-  policyName?: string;
-  /**
-   * Name of the container.
-   */
-  containerName?: string;
-  /**
-   * Backup Engine name
-   */
-  backupEngineName?: string;
-  /**
-   * Friendly name of protected item
-   */
-  friendlyName?: string;
-  /**
-   * Name of the fabric.
-   */
-  fabricName?: string;
-  /**
-   * Name of the backup set.
-   */
-  backupSetName?: string;
-}
-
-/**
- * Base class for backup items.
- */
-export interface ProtectedItemResource extends Resource {
-  /**
-   * ProtectedItemResource properties
-   */
-  properties?: ProtectedItem;
-}
-
-/**
- * Base class for container with backup items. Containers with specific workloads are derived from
- * this class.
- */
-export interface ProtectionContainerResource extends Resource {
-  /**
-   * ProtectionContainerResource properties
-   */
-  properties?: ProtectionContainer;
-}
-
-/**
- * Filters the list backup policies API.
- */
-export interface ProtectionPolicyQueryObject {
-  /**
-   * Backup management type for the backup policy. Possible values include: 'Invalid',
-   * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
-   * 'DefaultBackup'
-   */
-  backupManagementType?: string;
-  /**
-   * Fabric name for filter
-   */
-  fabricName?: string;
-  /**
-   * Workload type for the backup policy. Possible values include: 'Invalid', 'VM', 'FileFolder',
-   * 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
-   * 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase', 'SAPAseDatabase'
-   */
-  workloadType?: string;
-}
-
-/**
- * Base class for backup policy. Workload-specific backup policies are derived from this class.
- */
-export interface ProtectionPolicyResource extends Resource {
-  /**
-   * ProtectionPolicyResource properties
-   */
-  properties?: ProtectionPolicy;
-}
-
-/**
- * Base for all lists of resources.
- */
-export interface ResourceList {
-  /**
-   * The uri to fetch the next page of resources. Call ListNext() fetches next page of resources.
-   */
-  nextLink?: string;
-}
-
-/**
- * Simple policy retention.
- */
-export interface SimpleRetentionPolicy extends RetentionPolicy {
-  /**
-   * Retention duration of the protection policy.
-   */
-  retentionDuration?: RetentionDuration;
-}
-
-/**
- * Simple policy schedule.
- */
-export interface SimpleSchedulePolicy extends SchedulePolicy {
-  /**
-   * Frequency of the schedule operation of this policy. Possible values include: 'Invalid',
-   * 'Daily', 'Weekly'
-   */
-  scheduleRunFrequency?: string;
-  /**
-   * List of days of week this schedule has to be run.
-   */
-  scheduleRunDays?: string[];
-  /**
-   * List of times of day this schedule has to be run.
-   */
-  scheduleRunTimes?: Date[];
-  /**
-   * At every number weeks this schedule has to be run.
-   */
-  scheduleWeeklyFrequency?: number;
-}
-
-/**
- * Base class for feature request
- */
-export interface FeatureSupportRequest {
-  /**
-   * Polymorphic Discriminator
-   */
-  featureType: string;
-}
-
-/**
- * Azure backup goal feature specific request.
- */
-export interface AzureBackupGoalFeatureSupportRequest extends FeatureSupportRequest {
-}
-
-/**
- * Restore file specs like file path, type and target folder path info.
- */
-export interface RestoreFileSpecs {
-  /**
-   * Source File/Folder path
-   */
-  path?: string;
-  /**
-   * Indicates what the Path variable stands for
-   */
-  fileSpecType?: string;
-  /**
-   * Destination folder path in target FileShare
-   */
-  targetFolderPath?: string;
-}
-
-/**
- * Target Azure File Share Info.
- */
-export interface TargetAFSRestoreInfo {
-  /**
-   * File share name
-   */
-  name?: string;
-  /**
-   * Target file share resource ARM ID
-   */
-  targetResourceId?: string;
-}
-
-/**
- * Base class for restore request. Workload-specific restore requests are derived from this class.
- */
-export interface RestoreRequest {
-  /**
-   * Polymorphic Discriminator
-   */
-  objectType: string;
-}
-
-/**
- * AzureFileShare Restore Request
- */
-export interface AzureFileShareRestoreRequest extends RestoreRequest {
-  /**
-   * Type of this recovery. Possible values include: 'Invalid', 'OriginalLocation',
-   * 'AlternateLocation', 'RestoreDisks'
-   */
-  recoveryType?: string;
-  /**
-   * Source storage account ARM Id
-   */
-  sourceResourceId?: string;
-  /**
-   * Options to resolve copy conflicts. Possible values include: 'Invalid', 'CreateCopy', 'Skip',
-   * 'Overwrite', 'FailOnConflict'
-   */
-  copyOptions?: string;
-  /**
-   * Restore Type (FullShareRestore or ItemLevelRestore). Possible values include: 'Invalid',
-   * 'FullShareRestore', 'ItemLevelRestore'
-   */
-  restoreRequestType?: string;
-  /**
-   * List of Source Files/Folders(which need to recover) and TargetFolderPath details
-   */
-  restoreFileSpecs?: RestoreFileSpecs[];
-  /**
-   * Target File Share Details
-   */
-  targetDetails?: TargetAFSRestoreInfo;
-}
-
-/**
- * Azure IaaS VM workload-specific error information.
- */
-export interface AzureIaaSVMErrorInfo {
-  /**
-   * Error code.
-   */
-  errorCode?: number;
-  /**
-   * Title: Typically, the entity that the error pertains to.
-   */
-  errorTitle?: string;
-  /**
-   * Localized error string.
-   */
-  errorString?: string;
-  /**
-   * List of localized recommendations for above error code.
-   */
-  recommendations?: string[];
-}
-
-/**
- * Azure IaaS VM workload-specific job task details.
- */
-export interface AzureIaaSVMJobTaskDetails {
-  /**
-   * The task display name.
-   */
-  taskId?: string;
-  /**
-   * The start time.
-   */
-  startTime?: Date;
-  /**
-   * The end time.
-   */
-  endTime?: Date;
-  /**
-   * The instanceId.
-   */
-  instanceId?: string;
-  /**
-   * Time elapsed for task.
-   */
-  duration?: moment.Duration;
-  /**
-   * The status.
-   */
-  status?: string;
-  /**
-   * Progress of the task.
-   */
-  progressPercentage?: number;
-  /**
-   * Details about execution of the task.
-   * eg: number of bytes transfered etc
-   */
-  taskExecutionDetails?: string;
-}
-
-/**
- * Azure IaaS VM workload-specific additional information for job.
- */
-export interface AzureIaaSVMJobExtendedInfo {
-  /**
-   * List of tasks associated with this job.
-   */
-  tasksList?: AzureIaaSVMJobTaskDetails[];
-  /**
-   * Job properties.
-   */
-  propertyBag?: { [propertyName: string]: string };
-  /**
-   * Job internal properties.
-   */
-  internalPropertyBag?: { [propertyName: string]: string };
-  /**
-   * Indicates progress of the job. Null if it has not started or completed.
-   */
-  progressPercentage?: number;
-  /**
-   * Time remaining for execution of this job.
-   */
-  estimatedRemainingDuration?: string;
-  /**
-   * Non localized error message on job execution.
-   */
-  dynamicErrorMessage?: string;
-}
-
-/**
- * Defines workload agnostic properties for a job.
- */
-export interface Job {
-  /**
-   * Friendly name of the entity on which the current job is executing.
-   */
-  entityFriendlyName?: string;
-  /**
-   * Backup management type to execute the current job. Possible values include: 'Invalid',
-   * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
-   * 'DefaultBackup'
-   */
-  backupManagementType?: string;
-  /**
-   * The operation name.
-   */
-  operation?: string;
-  /**
-   * Job status.
-   */
-  status?: string;
-  /**
-   * The start time.
-   */
-  startTime?: Date;
-  /**
-   * The end time.
-   */
-  endTime?: Date;
-  /**
-   * ActivityId of job.
-   */
-  activityId?: string;
-  /**
-   * Polymorphic Discriminator
-   */
-  jobType: string;
-}
-
-/**
- * Azure IaaS VM workload-specifc job object.
- */
-export interface AzureIaaSVMJob extends Job {
-  /**
-   * Time elapsed during the execution of this job.
-   */
-  duration?: moment.Duration;
-  /**
-   * Gets or sets the state/actions applicable on this job like cancel/retry.
-   */
-  actionsInfo?: string[];
-  /**
-   * Error details on execution of this job.
-   */
-  errorDetails?: AzureIaaSVMErrorInfo[];
-  /**
-   * Specifies whether the backup item is a Classic or an Azure Resource Manager VM.
-   */
-  virtualMachineVersion?: string;
-  /**
-   * Additional information for this job.
-   */
-  extendedInfo?: AzureIaaSVMJobExtendedInfo;
-}
-
-/**
- * Base class for backup ProtectionIntent.
- */
-export interface ProtectionIntent {
-  /**
-   * Type of backup managemenent for the backed up item. Possible values include: 'Invalid',
-   * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
-   * 'DefaultBackup'
-   */
-  backupManagementType?: string;
-  /**
-   * ARM ID of the resource to be backed up.
-   */
-  sourceResourceId?: string;
-  /**
-   * ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
-   */
-  itemId?: string;
-  /**
-   * ID of the backup policy with which this item is backed up.
-   */
-  policyId?: string;
-  /**
-   * Backup state of this backup item. Possible values include: 'Invalid', 'NotProtected',
-   * 'Protecting', 'Protected', 'ProtectionFailed'
-   */
-  protectionState?: string;
-  /**
-   * Polymorphic Discriminator
-   */
-  protectionIntentItemType: string;
-}
-
-/**
- * Azure Recovery Services Vault specific protection intent item.
- */
-export interface AzureRecoveryServiceVaultProtectionIntent extends ProtectionIntent {
-}
-
-/**
- * IaaS VM specific backup protection intent item.
- */
-export interface AzureResourceProtectionIntent extends ProtectionIntent {
-  /**
-   * Friendly name of the VM represented by this backup item.
-   */
-  friendlyName?: string;
-}
-
-/**
- * Azure storage specific error information
- */
-export interface AzureStorageErrorInfo {
-  /**
-   * Error code.
-   */
-  errorCode?: number;
-  /**
-   * Localized error string.
-   */
-  errorString?: string;
-  /**
-   * List of localized recommendations for above error code.
-   */
-  recommendations?: string[];
-}
-
-/**
- * Azure storage workload specific job task details.
- */
-export interface AzureStorageJobTaskDetails {
-  /**
-   * The task display name.
-   */
-  taskId?: string;
-  /**
-   * The status.
-   */
-  status?: string;
-}
-
-/**
- * Azure Storage workload-specific additional information for job.
- */
-export interface AzureStorageJobExtendedInfo {
-  /**
-   * List of tasks for this job
-   */
-  tasksList?: AzureStorageJobTaskDetails[];
-  /**
-   * Job properties.
-   */
-  propertyBag?: { [propertyName: string]: string };
-  /**
-   * Non localized error message on job execution.
-   */
-  dynamicErrorMessage?: string;
-}
-
-/**
- * Azure storage specific job.
- */
-export interface AzureStorageJob extends Job {
-  /**
-   * Time elapsed during the execution of this job.
-   */
-  duration?: moment.Duration;
-  /**
-   * Gets or sets the state/actions applicable on this job like cancel/retry.
-   */
-  actionsInfo?: string[];
-  /**
-   * Error details on execution of this job.
-   */
-  errorDetails?: AzureStorageErrorInfo[];
-  /**
-   * Specifies friendly name of the storage account.
-   */
-  storageAccountName?: string;
-  /**
-   * Specifies whether the Storage account is a Classic or an Azure Resource Manager Storage
-   * account.
-   */
-  storageAccountVersion?: string;
-  /**
-   * Additional information about the job.
-   */
-  extendedInfo?: AzureStorageJobExtendedInfo;
-}
-
-/**
- * AzureResource(IaaS VM) Specific feature support request
- */
-export interface AzureVMResourceFeatureSupportRequest extends FeatureSupportRequest {
-  /**
-   * Size of the resource: VM size(A/D series etc) in case of IaasVM
-   */
-  vmSize?: string;
-  /**
-   * SKUs (Premium/Managed etc) in case of IaasVM
-   */
-  vmSku?: string;
-}
-
-/**
- * Response for feature support requests for Azure IaasVm
- */
-export interface AzureVMResourceFeatureSupportResponse {
-  /**
-   * Support status of feature. Possible values include: 'Invalid', 'Supported', 'DefaultOFF',
-   * 'DefaultON', 'NotSupported'
-   */
-  supportStatus?: string;
 }
 
 /**
@@ -2475,6 +1255,61 @@ export interface BMSBackupSummariesQueryObject {
 }
 
 /**
+ * Day of the week.
+ */
+export interface Day {
+  /**
+   * Date of the month
+   */
+  date?: number;
+  /**
+   * Whether Date is last date of month
+   */
+  isLast?: boolean;
+}
+
+/**
+ * Daily retention format.
+ */
+export interface DailyRetentionFormat {
+  /**
+   * List of days of the month.
+   */
+  daysOfTheMonth?: Day[];
+}
+
+/**
+ * Retention duration.
+ */
+export interface RetentionDuration {
+  /**
+   * Count of duration types. Retention duration is obtained by the counting the duration type
+   * Count times.
+   * For example, when Count = 3 and DurationType = Weeks, retention duration will be three weeks.
+   */
+  count?: number;
+  /**
+   * Retention duration type of retention policy. Possible values include: 'Invalid', 'Days',
+   * 'Weeks', 'Months', 'Years'
+   */
+  durationType?: string;
+}
+
+/**
+ * Daily retention schedule.
+ */
+export interface DailyRetentionSchedule {
+  /**
+   * Retention times of retention policy.
+   */
+  retentionTimes?: Date[];
+  /**
+   * Retention duration of retention Policy.
+   */
+  retentionDuration?: RetentionDuration;
+}
+
+/**
  * DPM workload-specific error information.
  */
 export interface DpmErrorInfo {
@@ -2571,6 +1406,95 @@ export interface DpmJob extends Job {
 }
 
 /**
+ * Additional information of DPM Protected item.
+ */
+export interface DPMProtectedItemExtendedInfo {
+  /**
+   * Attribute to provide information on various DBs.
+   */
+  protectableObjectLoadPath?: { [propertyName: string]: string };
+  /**
+   * To check if backup item is disk protected.
+   */
+  protectedProperty?: boolean;
+  /**
+   * To check if backup item is cloud protected.
+   */
+  isPresentOnCloud?: boolean;
+  /**
+   * Last backup status information on backup item.
+   */
+  lastBackupStatus?: string;
+  /**
+   * Last refresh time on backup item.
+   */
+  lastRefreshedAt?: Date;
+  /**
+   * Oldest cloud recovery point time.
+   */
+  oldestRecoveryPoint?: Date;
+  /**
+   * cloud recovery point count.
+   */
+  recoveryPointCount?: number;
+  /**
+   * Oldest disk recovery point time.
+   */
+  onPremiseOldestRecoveryPoint?: Date;
+  /**
+   * latest disk recovery point time.
+   */
+  onPremiseLatestRecoveryPoint?: Date;
+  /**
+   * disk recovery point count.
+   */
+  onPremiseRecoveryPointCount?: number;
+  /**
+   * To check if backup item is collocated.
+   */
+  isCollocated?: boolean;
+  /**
+   * Protection group name of the backup item.
+   */
+  protectionGroupName?: string;
+  /**
+   * Used Disk storage in bytes.
+   */
+  diskStorageUsedInBytes?: string;
+  /**
+   * total Disk storage in bytes.
+   */
+  totalDiskStorageSizeInBytes?: string;
+}
+
+/**
+ * Additional information on Backup engine specific backup item.
+ */
+export interface DPMProtectedItem extends ProtectedItem {
+  /**
+   * Friendly name of the managed item
+   */
+  friendlyName?: string;
+  /**
+   * Backup Management server protecting this backup item
+   */
+  backupEngineName?: string;
+  /**
+   * Protection state of the backupengine. Possible values include: 'Invalid', 'IRPending',
+   * 'Protected', 'ProtectionError', 'ProtectionStopped', 'ProtectionPaused'
+   */
+  protectionState?: string;
+  /**
+   * To check if backup item is scheduled for deferred delete
+   */
+  isScheduledForDeferredDelete?: boolean;
+  /**
+   * Extended info of the backup item.
+   */
+  extendedInfo?: DPMProtectedItemExtendedInfo;
+}
+
+/**
  * Details needed if the VM was encrypted at the time of backup.
  */
 export interface EncryptionDetails {
@@ -2618,6 +1542,55 @@ export interface ExportJobsOperationResultInfo extends OperationResultInfoBase {
    * SAS key to access the blob. It expires in 15 mins.
    */
   blobSasKey?: string;
+}
+
+/**
+ * Base class for backup items.
+ */
+export interface GenericProtectedItem extends ProtectedItem {
+  /**
+   * Friendly name of the container.
+   */
+  friendlyName?: string;
+  /**
+   * Indicates consistency of policy object and policy applied to this backup item.
+   */
+  policyState?: string;
+  /**
+   * Backup state of this backup item. Possible values include: 'Invalid', 'IRPending',
+   * 'Protected', 'ProtectionError', 'ProtectionStopped', 'ProtectionPaused'
+   */
+  protectionState?: string;
+  /**
+   * Data Plane Service ID of the protected item.
+   */
+  protectedItemId?: number;
+  /**
+   * Loosely coupled (type, value) associations (example - parent of a protected item)
+   */
+  sourceAssociations?: { [propertyName: string]: string };
+  /**
+   * Name of this backup item's fabric.
+   */
+  fabricName?: string;
+}
+
+/**
+ * Azure VM (Mercury) workload-specific backup policy.
+ */
+export interface GenericProtectionPolicy extends ProtectionPolicy {
+  /**
+   * List of sub-protection policies which includes schedule and retention
+   */
+  subProtectionPolicy?: SubProtectionPolicy[];
+  /**
+   * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+   */
+  timeZone?: string;
+  /**
+   * Name of this policy's fabric.
+   */
+  fabricName?: string;
 }
 
 /**
@@ -2731,6 +1704,36 @@ export interface JobQueryObject {
 }
 
 /**
+ * ARM Resource.
+ */
+export interface Resource extends BaseResource {
+  /**
+   * Resource Id represents the complete path to the resource.
+   */
+  readonly id?: string;
+  /**
+   * Resource name associated with the resource.
+   */
+  readonly name?: string;
+  /**
+   * Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
+   */
+  readonly type?: string;
+  /**
+   * Resource location.
+   */
+  location?: string;
+  /**
+   * Resource tags.
+   */
+  tags?: { [propertyName: string]: string };
+  /**
+   * Optional ETag.
+   */
+  eTag?: string;
+}
+
+/**
  * Defines workload agnostic properties for a job.
  */
 export interface JobResource extends Resource {
@@ -2738,6 +1741,134 @@ export interface JobResource extends Resource {
    * JobResource properties
    */
   properties?: Job;
+}
+
+/**
+ * Log policy schedule.
+ */
+export interface LogSchedulePolicy extends SchedulePolicy {
+  /**
+   * Frequency of the log schedule operation of this policy in minutes.
+   */
+  scheduleFrequencyInMins?: number;
+}
+
+/**
+ * Weekly retention schedule.
+ */
+export interface WeeklyRetentionSchedule {
+  /**
+   * List of days of week for weekly retention policy.
+   */
+  daysOfTheWeek?: string[];
+  /**
+   * Retention times of retention policy.
+   */
+  retentionTimes?: Date[];
+  /**
+   * Retention duration of retention Policy.
+   */
+  retentionDuration?: RetentionDuration;
+}
+
+/**
+ * Weekly retention format.
+ */
+export interface WeeklyRetentionFormat {
+  /**
+   * List of days of the week.
+   */
+  daysOfTheWeek?: string[];
+  /**
+   * List of weeks of month.
+   */
+  weeksOfTheMonth?: string[];
+}
+
+/**
+ * Monthly retention schedule.
+ */
+export interface MonthlyRetentionSchedule {
+  /**
+   * Retention schedule format type for monthly retention policy. Possible values include:
+   * 'Invalid', 'Daily', 'Weekly'
+   */
+  retentionScheduleFormatType?: string;
+  /**
+   * Daily retention format for monthly retention policy.
+   */
+  retentionScheduleDaily?: DailyRetentionFormat;
+  /**
+   * Weekly retention format for monthly retention policy.
+   */
+  retentionScheduleWeekly?: WeeklyRetentionFormat;
+  /**
+   * Retention times of retention policy.
+   */
+  retentionTimes?: Date[];
+  /**
+   * Retention duration of retention Policy.
+   */
+  retentionDuration?: RetentionDuration;
+}
+
+/**
+ * Yearly retention schedule.
+ */
+export interface YearlyRetentionSchedule {
+  /**
+   * Retention schedule format for yearly retention policy. Possible values include: 'Invalid',
+   * 'Daily', 'Weekly'
+   */
+  retentionScheduleFormatType?: string;
+  /**
+   * List of months of year of yearly retention policy.
+   */
+  monthsOfYear?: string[];
+  /**
+   * Daily retention format for yearly retention policy.
+   */
+  retentionScheduleDaily?: DailyRetentionFormat;
+  /**
+   * Weekly retention format for yearly retention policy.
+   */
+  retentionScheduleWeekly?: WeeklyRetentionFormat;
+  /**
+   * Retention times of retention policy.
+   */
+  retentionTimes?: Date[];
+  /**
+   * Retention duration of retention Policy.
+   */
+  retentionDuration?: RetentionDuration;
+}
+
+/**
+ * Long term retention policy.
+ */
+export interface LongTermRetentionPolicy extends RetentionPolicy {
+  /**
+   * Daily retention schedule of the protection policy.
+   */
+  dailySchedule?: DailyRetentionSchedule;
+  /**
+   * Weekly retention schedule of the protection policy.
+   */
+  weeklySchedule?: WeeklyRetentionSchedule;
+  /**
+   * Monthly retention schedule of the protection policy.
+   */
+  monthlySchedule?: MonthlyRetentionSchedule;
+  /**
+   * Yearly retention schedule of the protection policy.
+   */
+  yearlySchedule?: YearlyRetentionSchedule;
+}
+
+/**
+ * Long term policy schedule.
+ */
+export interface LongTermSchedulePolicy extends SchedulePolicy {
 }
 
 /**
@@ -2752,6 +1883,58 @@ export interface MabErrorInfo {
    * List of localized recommendations.
    */
   recommendations?: string[];
+}
+
+/**
+ * Additional information on the backed up item.
+ */
+export interface MabFileFolderProtectedItemExtendedInfo {
+  /**
+   * Last time when the agent data synced to service.
+   */
+  lastRefreshedAt?: Date;
+  /**
+   * The oldest backup copy available.
+   */
+  oldestRecoveryPoint?: Date;
+  /**
+   * Number of backup copies associated with the backup item.
+   */
+  recoveryPointCount?: number;
+}
+
+/**
+ * MAB workload-specific backup item.
+ */
+export interface MabFileFolderProtectedItem extends ProtectedItem {
+  /**
+   * Friendly name of this backup item.
+   */
+  friendlyName?: string;
+  /**
+   * Name of the computer associated with this backup item.
+   */
+  computerName?: string;
+  /**
+   * Status of last backup operation.
+   */
+  lastBackupStatus?: string;
+  /**
+   * Protected, ProtectionStopped, IRPending or ProtectionError
+   */
+  protectionState?: string;
+  /**
+   * Specifies if the item is scheduled for deferred deletion.
+   */
+  isScheduledForDeferredDelete?: boolean;
+  /**
+   * Sync time for deferred deletion.
+   */
+  deferredDeleteSyncTimeInUTC?: number;
+  /**
+   * Additional information with this backup item.
+   */
+  extendedInfo?: MabFileFolderProtectedItemExtendedInfo;
 }
 
 /**
@@ -2835,6 +2018,20 @@ export interface MabJob extends Job {
    * Additional information on the job.
    */
   extendedInfo?: MabJobExtendedInfo;
+}
+
+/**
+ * Mab container-specific backup policy.
+ */
+export interface MabProtectionPolicy extends ProtectionPolicy {
+  /**
+   * Backup schedule of backup policy.
+   */
+  schedulePolicy?: SchedulePolicy;
+  /**
+   * Retention policy details.
+   */
+  retentionPolicy?: RetentionPolicy;
 }
 
 /**
@@ -2941,6 +2138,63 @@ export interface PreValidateEnableBackupResponse {
 }
 
 /**
+ * Filters to list backup items.
+ */
+export interface ProtectedItemQueryObject {
+  /**
+   * Health State for the backed up item. Possible values include: 'Passed', 'ActionRequired',
+   * 'ActionSuggested', 'Invalid'
+   */
+  healthState?: string;
+  /**
+   * Backup management type for the backed up item. Possible values include: 'Invalid',
+   * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
+   * 'DefaultBackup'
+   */
+  backupManagementType?: string;
+  /**
+   * Type of workload this item represents. Possible values include: 'Invalid', 'VM', 'FileFolder',
+   * 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
+   * 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase', 'SAPAseDatabase'
+   */
+  itemType?: string;
+  /**
+   * Backup policy name associated with the backup item.
+   */
+  policyName?: string;
+  /**
+   * Name of the container.
+   */
+  containerName?: string;
+  /**
+   * Backup Engine name
+   */
+  backupEngineName?: string;
+  /**
+   * Friendly name of protected item
+   */
+  friendlyName?: string;
+  /**
+   * Name of the fabric.
+   */
+  fabricName?: string;
+  /**
+   * Name of the backup set.
+   */
+  backupSetName?: string;
+}
+
+/**
+ * Base class for backup items.
+ */
+export interface ProtectedItemResource extends Resource {
+  /**
+   * ProtectedItemResource properties
+   */
+  properties?: ProtectedItem;
+}
+
+/**
  * Filters to list protection intent.
  */
 export interface ProtectionIntentQueryObject {
@@ -2973,6 +2227,81 @@ export interface ProtectionIntentResource extends Resource {
    * ProtectionIntentResource properties
    */
   properties?: ProtectionIntent;
+}
+
+/**
+ * Filters the list backup policies API.
+ */
+export interface ProtectionPolicyQueryObject {
+  /**
+   * Backup management type for the backup policy. Possible values include: 'Invalid',
+   * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
+   * 'DefaultBackup'
+   */
+  backupManagementType?: string;
+  /**
+   * Fabric name for filter
+   */
+  fabricName?: string;
+  /**
+   * Workload type for the backup policy. Possible values include: 'Invalid', 'VM', 'FileFolder',
+   * 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
+   * 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase', 'SAPAseDatabase'
+   */
+  workloadType?: string;
+}
+
+/**
+ * Base class for backup policy. Workload-specific backup policies are derived from this class.
+ */
+export interface ProtectionPolicyResource extends Resource {
+  /**
+   * ProtectionPolicyResource properties
+   */
+  properties?: ProtectionPolicy;
+}
+
+/**
+ * Base for all lists of resources.
+ */
+export interface ResourceList {
+  /**
+   * The uri to fetch the next page of resources. Call ListNext() fetches next page of resources.
+   */
+  nextLink?: string;
+}
+
+/**
+ * Simple policy retention.
+ */
+export interface SimpleRetentionPolicy extends RetentionPolicy {
+  /**
+   * Retention duration of the protection policy.
+   */
+  retentionDuration?: RetentionDuration;
+}
+
+/**
+ * Simple policy schedule.
+ */
+export interface SimpleSchedulePolicy extends SchedulePolicy {
+  /**
+   * Frequency of the schedule operation of this policy. Possible values include: 'Invalid',
+   * 'Daily', 'Weekly'
+   */
+  scheduleRunFrequency?: string;
+  /**
+   * List of days of week this schedule has to be run.
+   */
+  scheduleRunDays?: string[];
+  /**
+   * List of times of day this schedule has to be run.
+   */
+  scheduleRunTimes?: Date[];
+  /**
+   * At every number weeks this schedule has to be run.
+   */
+  scheduleWeeklyFrequency?: number;
 }
 
 /**
@@ -3013,6 +2342,79 @@ export interface ValidateOperationResponse {
 
 export interface ValidateOperationsResponse {
   validateOperationResponse?: ValidateOperationResponse;
+}
+
+/**
+ * Base class for container with backup items. Containers with specific workloads are derived from
+ * this class.
+*/
+export interface ProtectionContainer {
+  /**
+   * Friendly name of the container.
+  */
+  friendlyName?: string;
+  /**
+   * Type of backup managemenent for the container. Possible values include: 'Invalid',
+   * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
+   * 'DefaultBackup'
+  */
+  backupManagementType?: string;
+  /**
+   * Status of registration of the container with the Recovery Services Vault.
+  */
+  registrationStatus?: string;
+  /**
+   * Status of health of the container.
+  */
+  healthStatus?: string;
+  /**
+   * Polymorphic Discriminator
+  */
+  containerType: string;
+}
+
+/**
+ * DPM workload-specific protection container.
+*/
+export interface DpmContainer extends ProtectionContainer {
+  /**
+   * Specifies whether the container is re-registrable.
+  */
+  canReRegister?: boolean;
+  /**
+   * ID of container.
+  */
+  containerId?: string;
+  /**
+   * Number of protected items in the BackupEngine
+  */
+  protectedItemCount?: number;
+  /**
+   * Backup engine Agent version
+  */
+  dpmAgentVersion?: string;
+  /**
+   * List of BackupEngines protecting the container
+  */
+  dpmServers?: string[];
+  /**
+   * To check if upgrade available
+  */
+  upgradeAvailable?: boolean;
+  /**
+   * Protection status of the container.
+  */
+  protectionStatus?: string;
+  /**
+   * Extended Info of the container.
+  */
+  extendedInfo?: DPMContainerExtendedInfo;
+}
+
+/**
+ * AzureBackupServer (DPMVenus) workload-specific protection container.
+*/
+export interface AzureBackupServerContainer extends DpmContainer {
 }
 
 /**
@@ -3175,6 +2577,30 @@ export interface AzureFileShareRecoveryPoint extends RecoveryPoint {
 }
 
 /**
+ * IaaS VM workload-specific container.
+*/
+export interface IaaSVMContainer extends ProtectionContainer {
+  /**
+   * Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+  */
+  virtualMachineId?: string;
+  /**
+   * Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+  */
+  virtualMachineVersion?: string;
+  /**
+   * Resource group name of Recovery Services Vault.
+  */
+  resourceGroup?: string;
+}
+
+/**
+ * IaaS VM workload-specific backup item representing a classic virtual machine.
+*/
+export interface AzureIaaSClassicComputeVMContainer extends IaaSVMContainer {
+}
+
+/**
  * IaaS VM workload-specific backup item.
 */
 export interface IaaSVMProtectableItem extends WorkloadProtectableItem {
@@ -3191,9 +2617,78 @@ export interface AzureIaaSClassicComputeVMProtectableItem extends IaaSVMProtecta
 }
 
 /**
+ * IaaS VM workload-specific backup item representing an Azure Resource Manager virtual machine.
+*/
+export interface AzureIaaSComputeVMContainer extends IaaSVMContainer {
+}
+
+/**
  * IaaS VM workload-specific backup item representing the Azure Resource Manager VM.
 */
 export interface AzureIaaSComputeVMProtectableItem extends IaaSVMProtectableItem {
+}
+
+/**
+ * Container for the workloads running inside Azure Compute or Classic Compute.
+*/
+export interface AzureWorkloadContainer extends ProtectionContainer {
+  /**
+   * ARM ID of the virtual machine represented by this Azure Workload Container
+  */
+  sourceResourceId?: string;
+  /**
+   * Time stamp when this container was updated.
+  */
+  lastUpdatedTime?: Date;
+  /**
+   * Additional details of a workload container.
+  */
+  extendedInfo?: AzureWorkloadContainerExtendedInfo;
+  /**
+   * Workload type for which registration was sent. Possible values include: 'Invalid', 'VM',
+   * 'FileFolder', 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState',
+   * 'Client', 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase',
+   * 'SAPAseDatabase'
+  */
+  workloadType?: string;
+  /**
+   * Re-Do Operation. Possible values include: 'Invalid', 'Register', 'Reregister'
+  */
+  operationType?: string;
+}
+
+/**
+ * Container for SQL workloads under SQL Availability Group.
+*/
+export interface AzureSQLAGWorkloadContainerProtectionContainer extends AzureWorkloadContainer {
+}
+
+/**
+ * Azure Sql workload-specific container.
+*/
+export interface AzureSqlContainer extends ProtectionContainer {
+}
+
+/**
+ * Azure Storage Account workload-specific container.
+*/
+export interface AzureStorageContainer extends ProtectionContainer {
+  /**
+   * Fully qualified ARM url.
+  */
+  sourceResourceId?: string;
+  /**
+   * Storage account version.
+  */
+  storageAccountVersion?: string;
+  /**
+   * Resource group name of Recovery Services Vault.
+  */
+  resourceGroup?: string;
+  /**
+   * Number of items backed up in this container.
+  */
+  protectedItemCount?: number;
 }
 
 /**
@@ -3234,6 +2729,12 @@ export interface AzureStorageProtectableContainer extends ProtectableContainer {
  * Azure workload-specific container
 */
 export interface AzureVMAppContainerProtectableContainer extends ProtectableContainer {
+}
+
+/**
+ * Container for SQL workloads under Azure Virtual Machines.
+*/
+export interface AzureVMAppContainerProtectionContainer extends AzureWorkloadContainer {
 }
 
 /**
@@ -3469,6 +2970,95 @@ export interface AzureWorkloadBackupRequest extends BackupRequest {
    * Backup copy will expire after the time specified (UTC).
   */
   recoveryPointExpiryTimeInUTC?: Date;
+}
+
+/**
+ * Validation for inquired protectable items under a given container.
+*/
+export interface InquiryValidation {
+  /**
+   * Status for the Inquiry Validation.
+  */
+  status?: string;
+  /**
+   * Error Detail in case the status is non-success.
+  */
+  errorDetail?: ErrorDetail;
+}
+
+/**
+ * Details of an inquired protectable item.
+*/
+export interface WorkloadInquiryDetails {
+  /**
+   * Type of the Workload such as SQL, Oracle etc.
+  */
+  type?: string;
+  /**
+   * Contains the protectable item Count inside this Container.
+  */
+  itemCount?: number;
+  /**
+   * Inquiry validation such as permissions and other backup validations.
+  */
+  inquiryValidation?: InquiryValidation;
+}
+
+/**
+ * Details about inquired protectable items under a given container.
+*/
+export interface InquiryInfo {
+  /**
+   * Inquiry Status for this container such as
+   * InProgress | Failed | Succeeded
+  */
+  status?: string;
+  /**
+   * Error Details if the Status is non-success.
+  */
+  errorDetail?: ErrorDetail;
+  /**
+   * Inquiry Details which will have workload specific details.
+   * For e.g. - For SQL and oracle this will contain different details.
+  */
+  inquiryDetails?: WorkloadInquiryDetails[];
+}
+
+/**
+ * This is used to represent the various nodes of the distributed container.
+*/
+export interface DistributedNodesInfo {
+  /**
+   * Name of the node under a distributed container.
+  */
+  nodeName?: string;
+  /**
+   * Status of this Node.
+   * Failed | Succeeded
+  */
+  status?: string;
+  /**
+   * Error Details if the Status is non-success.
+  */
+  errorDetail?: ErrorDetail;
+}
+
+/**
+ * Extended information of the container.
+*/
+export interface AzureWorkloadContainerExtendedInfo {
+  /**
+   * Host Os Name in case of Stand Alone and Cluster Name in case of distributed container.
+  */
+  hostServerName?: string;
+  /**
+   * Inquiry Status for the container.
+  */
+  inquiryInfo?: InquiryInfo;
+  /**
+   * List of the nodes in case of distributed container.
+  */
+  nodesList?: DistributedNodesInfo[];
 }
 
 /**
@@ -3728,6 +3318,41 @@ export interface BMSBackupEnginesQueryObject {
 }
 
 /**
+ * The query filters that can be used with the list containers API.
+*/
+export interface BMSContainerQueryObject {
+  /**
+   * Backup management type for this container. Possible values include: 'Invalid', 'AzureIaasVM',
+   * 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
+   * 'DefaultBackup'
+  */
+  backupManagementType: string;
+  /**
+   * Type of container for filter. Possible values include: 'Invalid', 'Unknown',
+   * 'IaasVMContainer', 'IaasVMServiceContainer', 'DPMContainer', 'AzureBackupServerContainer',
+   * 'MABContainer', 'Cluster', 'AzureSqlContainer', 'Windows', 'VCenter', 'VMAppContainer',
+   * 'SQLAGWorkLoadContainer', 'StorageContainer', 'GenericContainer'
+  */
+  containerType?: string;
+  /**
+   * Backup engine name
+  */
+  backupEngineName?: string;
+  /**
+   * Fabric name for filter
+  */
+  fabricName?: string;
+  /**
+   * Status of registration of this container with the Recovery Services Vault.
+  */
+  status?: string;
+  /**
+   * Friendly name of this container.
+  */
+  friendlyName?: string;
+}
+
+/**
  * The query filters that can be used with the inquire container API.
 */
 export interface BMSContainersInquiryQueryObject {
@@ -3837,9 +3462,101 @@ export interface BMSWorkloadItemQueryObject {
 }
 
 /**
+ * Client script details for file / folder restore.
+*/
+export interface ClientScriptForConnect {
+  /**
+   * File content of the client script for file / folder restore.
+  */
+  scriptContent?: string;
+  /**
+   * File extension of the client script for file / folder restore - .ps1 , .sh , etc.
+  */
+  scriptExtension?: string;
+  /**
+   * OS type - Windows, Linux etc. for which this file / folder restore client script works.
+  */
+  osType?: string;
+  /**
+   * URL of Executable from where to source the content. If this is not null then ScriptContent
+   * should not be used
+  */
+  url?: string;
+  /**
+   * Mandator suffix that should be added to the name of script that is given for download to user.
+   * If its null or empty then , ignore it.
+  */
+  scriptNameSuffix?: string;
+}
+
+/**
+ * Container identity information
+*/
+export interface ContainerIdentityInfo {
+  /**
+   * Unique name of the container
+  */
+  uniqueName?: string;
+  /**
+   * Protection container identity - AAD Tenant
+  */
+  aadTenantId?: string;
+  /**
+   * Protection container identity - AAD Service Principal
+  */
+  servicePrincipalClientId?: string;
+  /**
+   * Protection container identity - Audience
+  */
+  audience?: string;
+}
+
+/**
  * Data Protection Manager (DPM) specific backup engine.
 */
 export interface DpmBackupEngine extends BackupEngineBase {
+}
+
+/**
+ * Additional information of the DPMContainer.
+*/
+export interface DPMContainerExtendedInfo {
+  /**
+   * Last refresh time of the DPMContainer.
+  */
+  lastRefreshedAt?: Date;
+}
+
+/**
+ * Container extended information
+*/
+export interface GenericContainerExtendedInfo {
+  /**
+   * Public key of container cert
+  */
+  rawCertData?: string;
+  /**
+   * Container identity information
+  */
+  containerIdentityInfo?: ContainerIdentityInfo;
+  /**
+   * Azure Backup Service Endpoints for the container
+  */
+  serviceEndpoints?: { [propertyName: string]: string };
+}
+
+/**
+ * Base class for generic container of backup items
+*/
+export interface GenericContainer extends ProtectionContainer {
+  /**
+   * Name of the container's fabric
+  */
+  fabricName?: string;
+  /**
+   * Extended information (not returned in List container API calls)
+  */
+  extendedInformation?: GenericContainerExtendedInfo;
 }
 
 /**
@@ -4038,6 +3755,194 @@ export interface ILRRequestResource extends Resource {
 }
 
 /**
+ * Target details for file / folder restore.
+*/
+export interface InstantItemRecoveryTarget {
+  /**
+   * List of client scripts.
+  */
+  clientScripts?: ClientScriptForConnect[];
+}
+
+/**
+ * Additional information of the container.
+*/
+export interface MabContainerExtendedInfo {
+  /**
+   * Time stamp when this container was refreshed.
+  */
+  lastRefreshedAt?: Date;
+  /**
+   * Type of backup items associated with this container. Possible values include: 'Invalid', 'VM',
+   * 'FileFolder', 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState',
+   * 'Client', 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase',
+   * 'SAPAseDatabase'
+  */
+  backupItemType?: string;
+  /**
+   * List of backup items associated with this container.
+  */
+  backupItems?: string[];
+  /**
+   * Backup policy associated with this container.
+  */
+  policyName?: string;
+  /**
+   * Latest backup status of this container.
+  */
+  lastBackupStatus?: string;
+}
+
+/**
+ * MAB workload-specific Health Details.
+*/
+export interface MABContainerHealthDetails {
+  /**
+   * Health Code
+  */
+  code?: number;
+  /**
+   * Health Title
+  */
+  title?: string;
+  /**
+   * Health Message
+  */
+  message?: string;
+  /**
+   * Health Recommended Actions
+  */
+  recommendations?: string[];
+}
+
+/**
+ * Container with items backed up using MAB backup engine.
+*/
+export interface MabContainer extends ProtectionContainer {
+  /**
+   * Can the container be registered one more time.
+  */
+  canReRegister?: boolean;
+  /**
+   * ContainerID represents the container.
+  */
+  containerId?: number;
+  /**
+   * Number of items backed up in this container.
+  */
+  protectedItemCount?: number;
+  /**
+   * Agent version of this container.
+  */
+  agentVersion?: string;
+  /**
+   * Additional information for this container
+  */
+  extendedInfo?: MabContainerExtendedInfo;
+  /**
+   * Health details on this mab container.
+  */
+  mabContainerHealthDetails?: MABContainerHealthDetails[];
+  /**
+   * Health state of mab container.
+  */
+  containerHealthState?: string;
+}
+
+/**
+ * Error information associated with operation status call.
+*/
+export interface OperationStatusError {
+  /**
+   * Error code of the operation failure.
+  */
+  code?: string;
+  /**
+   * Error message displayed if the operation failure.
+  */
+  message?: string;
+}
+
+/**
+ * Base class for additional information of operation status.
+*/
+export interface OperationStatusExtendedInfo {
+  /**
+   * Polymorphic Discriminator
+  */
+  objectType: string;
+}
+
+/**
+ * Operation status.
+*/
+export interface OperationStatus {
+  /**
+   * ID of the operation.
+  */
+  id?: string;
+  /**
+   * Name of the operation.
+  */
+  name?: string;
+  /**
+   * Operation status. Possible values include: 'Invalid', 'InProgress', 'Succeeded', 'Failed',
+   * 'Canceled'
+  */
+  status?: string;
+  /**
+   * Operation start time. Format: ISO-8601.
+  */
+  startTime?: Date;
+  /**
+   * Operation end time. Format: ISO-8601.
+  */
+  endTime?: Date;
+  /**
+   * Error information related to this operation.
+  */
+  error?: OperationStatusError;
+  /**
+   * Additional information associated with this operation.
+  */
+  properties?: OperationStatusExtendedInfo;
+}
+
+/**
+ * Operation status job extended info.
+*/
+export interface OperationStatusJobExtendedInfo extends OperationStatusExtendedInfo {
+  /**
+   * ID of the job created for this protected item.
+  */
+  jobId?: string;
+}
+
+/**
+ * Operation status extended info for list of jobs.
+*/
+export interface OperationStatusJobsExtendedInfo extends OperationStatusExtendedInfo {
+  /**
+   * IDs of the jobs created for the protected item.
+  */
+  jobIds?: string[];
+  /**
+   * Stores all the failed jobs along with the corresponding error codes.
+  */
+  failedJobsError?: { [propertyName: string]: string };
+}
+
+/**
+ * Operation status extended info for ILR provision action.
+*/
+export interface OperationStatusProvisionILRExtendedInfo extends OperationStatusExtendedInfo {
+  /**
+   * Target details for file / folder restore.
+  */
+  recoveryTarget?: InstantItemRecoveryTarget;
+}
+
+/**
  * Protectable Container Class.
 */
 export interface ProtectableContainerResource extends Resource {
@@ -4045,6 +3950,17 @@ export interface ProtectableContainerResource extends Resource {
    * ProtectableContainerResource properties
   */
   properties?: ProtectableContainer;
+}
+
+/**
+ * Base class for container with backup items. Containers with specific workloads are derived from
+ * this class.
+*/
+export interface ProtectionContainerResource extends Resource {
+  /**
+   * ProtectionContainerResource properties
+  */
+  properties?: ProtectionContainer;
 }
 
 /**
@@ -4189,9 +4105,9 @@ export interface ClientDiscoveryValueForSingleApi {
 }
 
 /**
- * List of GenericBackupFabric resources
+ * List of Job resources
 */
-export interface GenericBackupFabricResourceList extends Array<GenericBackupFabricResource> {
+export interface JobResourceList extends Array<JobResource> {
 }
 
 /**
@@ -4201,21 +4117,9 @@ export interface ProtectionPolicyResourceList extends Array<ProtectionPolicyReso
 }
 
 /**
- * List of ProtectionContainer resources
-*/
-export interface ProtectionContainerResourceList extends Array<ProtectionContainerResource> {
-}
-
-/**
  * List of ProtectedItem resources
 */
 export interface ProtectedItemResourceList extends Array<ProtectedItemResource> {
-}
-
-/**
- * List of Job resources
-*/
-export interface JobResourceList extends Array<JobResource> {
 }
 
 /**
@@ -4259,6 +4163,12 @@ export interface RecoveryPointResourceList extends Array<RecoveryPointResource> 
 */
 export interface WorkloadProtectableItemResourceList extends Array<WorkloadProtectableItemResource>
 {
+}
+
+/**
+ * List of ProtectionContainer resources
+*/
+export interface ProtectionContainerResourceList extends Array<ProtectionContainerResource> {
 }
 
 /**

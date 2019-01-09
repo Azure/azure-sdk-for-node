@@ -54,14 +54,6 @@ export default class RecoveryServicesBackupClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  backupFabrics: operations.BackupFabrics;
-  scopedBackupPolicies: operations.ScopedBackupPolicies;
-  scopedProtectionPolicies: operations.ScopedProtectionPolicies;
-  scopedProtectionPolicyOperationResults: operations.ScopedProtectionPolicyOperationResults;
-  scopedProtectionPolicyOperationStatuses: operations.ScopedProtectionPolicyOperationStatuses;
-  backupProtectionContainersInFabric: operations.BackupProtectionContainersInFabric;
-  backupProtectedItemsInContainer: operations.BackupProtectedItemsInContainer;
-  protectionContainers: operations.ProtectionContainers;
   protectionIntentOperations: operations.ProtectionIntentOperations;
   backupStatus: operations.BackupStatus;
   featureSupport: operations.FeatureSupport;
@@ -78,6 +70,7 @@ export default class RecoveryServicesBackupClient extends AzureServiceClient {
   backupEngines: operations.BackupEngines;
   protectionContainerRefreshOperationResults: operations.ProtectionContainerRefreshOperationResults;
   protectableContainers: operations.ProtectableContainers;
+  protectionContainers: operations.ProtectionContainers;
   backupWorkloadItems: operations.BackupWorkloadItems;
   protectionContainerOperationResults: operations.ProtectionContainerOperationResults;
   protectedItems: operations.ProtectedItems;
