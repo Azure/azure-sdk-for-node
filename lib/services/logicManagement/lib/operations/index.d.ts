@@ -7234,11 +7234,11 @@ export interface IntegrationAccountAgreements {
      * number.
      *
      * @param {boolean}
-     * agreement.content.x12.sendAgreement.protocolSettings.validationSettings.validateEdiTypes
+     * agreement.content.x12.sendAgreement.protocolSettings.validationSettings.validateEDITypes
      * The value indicating whether to Whether to validate EDI types.
      *
      * @param {boolean}
-     * agreement.content.x12.sendAgreement.protocolSettings.validationSettings.validateXsdTypes
+     * agreement.content.x12.sendAgreement.protocolSettings.validationSettings.validateXSDTypes
      * The value indicating whether to Whether to validate XSD types.
      *
      * @param {boolean}
@@ -7590,11 +7590,11 @@ export interface IntegrationAccountAgreements {
      * number.
      *
      * @param {boolean}
-     * agreement.content.edifact.sendAgreement.protocolSettings.validationSettings.validateEdiTypes
+     * agreement.content.edifact.sendAgreement.protocolSettings.validationSettings.validateEDITypes
      * The value indicating whether to Whether to validate EDI types.
      *
      * @param {boolean}
-     * agreement.content.edifact.sendAgreement.protocolSettings.validationSettings.validateXsdTypes
+     * agreement.content.edifact.sendAgreement.protocolSettings.validationSettings.validateXSDTypes
      * The value indicating whether to Whether to validate XSD types.
      *
      * @param {boolean}
@@ -8254,11 +8254,11 @@ export interface IntegrationAccountAgreements {
      * number.
      *
      * @param {boolean}
-     * agreement.content.x12.sendAgreement.protocolSettings.validationSettings.validateEdiTypes
+     * agreement.content.x12.sendAgreement.protocolSettings.validationSettings.validateEDITypes
      * The value indicating whether to Whether to validate EDI types.
      *
      * @param {boolean}
-     * agreement.content.x12.sendAgreement.protocolSettings.validationSettings.validateXsdTypes
+     * agreement.content.x12.sendAgreement.protocolSettings.validationSettings.validateXSDTypes
      * The value indicating whether to Whether to validate XSD types.
      *
      * @param {boolean}
@@ -8610,11 +8610,11 @@ export interface IntegrationAccountAgreements {
      * number.
      *
      * @param {boolean}
-     * agreement.content.edifact.sendAgreement.protocolSettings.validationSettings.validateEdiTypes
+     * agreement.content.edifact.sendAgreement.protocolSettings.validationSettings.validateEDITypes
      * The value indicating whether to Whether to validate EDI types.
      *
      * @param {boolean}
-     * agreement.content.edifact.sendAgreement.protocolSettings.validationSettings.validateXsdTypes
+     * agreement.content.edifact.sendAgreement.protocolSettings.validationSettings.validateXSDTypes
      * The value indicating whether to Whether to validate XSD types.
      *
      * @param {boolean}
