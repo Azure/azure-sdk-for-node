@@ -2729,7 +2729,7 @@ export interface ProtocolCustomSettingsFormat {
 /**
  * A DDoS custom policy in a resource group.
 */
-export interface DdosCustomPolicy extends BaseResource {
+export interface DdosCustomPolicy extends Resource {
   /**
    * The resource GUID property of the DDoS custom policy resource. It uniquely identifies the
    * resource, even if the user changes its name or migrate the resource across subscriptions or

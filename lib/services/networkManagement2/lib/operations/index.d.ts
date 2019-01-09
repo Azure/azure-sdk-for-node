@@ -4001,6 +4001,12 @@ export interface DdosCustomPolicies {
      * @param {array} [parameters.protocolCustomSettings] The protocol-specific
      * DDoS policy customization parameters.
      *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -4026,6 +4032,12 @@ export interface DdosCustomPolicies {
      *
      * @param {array} [parameters.protocolCustomSettings] The protocol-specific
      * DDoS policy customization parameters.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4199,6 +4211,12 @@ export interface DdosCustomPolicies {
      * @param {array} [parameters.protocolCustomSettings] The protocol-specific
      * DDoS policy customization parameters.
      *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -4224,6 +4242,12 @@ export interface DdosCustomPolicies {
      *
      * @param {array} [parameters.protocolCustomSettings] The protocol-specific
      * DDoS policy customization parameters.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
