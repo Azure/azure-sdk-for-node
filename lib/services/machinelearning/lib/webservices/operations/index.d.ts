@@ -14,6 +14,67 @@ import * as models from '../models';
 
 /**
  * @class
+ * Operations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AzureMLWebServicesManagementClient.
+ */
+export interface Operations {
+
+
+    /**
+     * Lists all the available REST API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationEntityListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationEntityListResult>>;
+
+    /**
+     * Lists all the available REST API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationEntityListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationEntityListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationEntityListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationEntityListResult>;
+    list(callback: ServiceCallback<models.OperationEntityListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationEntityListResult>): void;
+}
+
+/**
+ * @class
  * WebServices
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the AzureMLWebServicesManagementClient.

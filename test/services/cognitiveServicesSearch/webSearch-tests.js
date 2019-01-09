@@ -4,11 +4,10 @@
  * license information.
  */
 
-const WebSearchAPIClient = require('../../../lib/services/cognitiveServicesWebSearch/lib/webSearchAPIClient');
+const WebSearchClient = require('../../../lib/services/cognitiveServicesWebSearch/lib/webSearchClient');
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 
 const SuiteBase = require('../../framework/suite-base');
-const should = require('should');
 
 let requiredEnvironment = [
   { name: 'AZURE_WEB_SEARCH_KEY', secure: true }
@@ -23,7 +22,7 @@ describe('Cognitive Services Search', () => {
     suite = new SuiteBase(this, testPrefix, requiredEnvironment);
     suite.setupSuite(function () {
       let credentials = new CognitiveServicesCredentials(process.env["AZURE_WEB_SEARCH_KEY"]);
-      client = new WebSearchAPIClient(credentials);
+      client = new WebSearchClient(credentials);
       done();
     });
   });

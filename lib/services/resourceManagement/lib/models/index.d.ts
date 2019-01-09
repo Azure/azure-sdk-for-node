@@ -306,8 +306,8 @@ export interface Identity {
 }
 
 /**
- * Error reponse indicates ARM appliance is not able to process the incoming request. The reason is
- * provided in the error message.
+ * Error response indicates ARM appliance is not able to process the incoming request. The reason
+ * is provided in the error message.
  */
 export interface ErrorResponse {
   /**
