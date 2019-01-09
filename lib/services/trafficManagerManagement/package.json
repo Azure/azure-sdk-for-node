@@ -9,9 +9,9 @@
     "Janczuk, Tomasz <tjanczuk@microsoft.com>",
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>",
-	"Guerra, Alberto <alguerra@microsoft.com>"
+    "Guerra, Alberto <alguerra@microsoft.com>"
   ],
-  "version": "0.10.4",
+  "version": "0.11.0",
   "description": "Microsoft Azure Traffic Manager Management Client Library for node",
   "tags": [
     "azure",

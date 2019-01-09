@@ -120,7 +120,7 @@
     "azure-storage-legacy": "^0.10.3",
     "mime": "^1.6.0",
     "moment": "^2.22.2",
-    "ms-rest": "^2.3.0",
+    "ms-rest": "^2.3.8",
     "ms-rest-azure": "^2.5.0",
     "request": "^2.81.0",
     "underscore": "1.8.3",
@@ -139,8 +139,10 @@
     "json-stable-stringify": "^1.0.1",
     "minami": "devigned/minami#master",
     "mocha": "^5.2.0",
+    "mocha-junit-reporter": "^1.18.0",
     "nock": "0.16",
     "node-forge": "0.6.30",
+    "npm-run-all": "^4.1.5",
     "nyc": "^11.2.1",
     "promise": "^7.1.1",
     "random-js": "1.0.4",
@@ -168,6 +170,14 @@
     "ci": "node scripts/unit.js testlist.txt",
     "runtime-install": "node scripts/runtime-install.js",
     "coverage": "node scripts/unit-coverage.js testlistarm.txt testlist.txt",
-    "debug": "node --inspect scripts/unit-arm.js testlistarm.txt"
+    "debug": "node --inspect scripts/unit-arm.js testlistarm.txt",
+    "install-client-keyvault": "cd lib/services/keyVault && npm install",
+    "install-client": "npm-run-all -p -l install-client-*",
+    "pack-client-keyvault": "cd lib/services/keyVault && npm pack",
+    "pack-client": "npm-run-all -p -l pack-client-*",
+    "test-client-keyvault": "mocha test/services/keyVault",
+    "test-client": "npm-run-all -p -l \"test-client-* -- {@}\"",
+    "audit-client-keyvault": "cd lib/services/keyVault && npm i --package-lock-only && npm audit",
+    "audit-client": "npm-run-all -p -l audit-client-*"
   }
 }

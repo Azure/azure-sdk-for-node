@@ -16,7 +16,7 @@ import * as models from '../models';
  * @class
  * NewsOperations
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the NewsSearchAPIClient.
+ * instance of the NewsSearchClient.
  */
 export interface NewsOperations {
 
@@ -575,11 +575,11 @@ export interface NewsOperations {
 
 
     /**
-     * @summary The News Category API lets lets you search on Bing and get back a
-     * list of top news articles by category. This section provides technical
-     * details about the query parameters and headers that you use to request news
-     * and the JSON response objects that contain them.  For examples that show how
-     * to make requests, see [Searching the web for
+     * @summary The News Category API lets you search on Bing and get back a list
+     * of top news articles by category. This section provides technical details
+     * about the query parameters and headers that you use to request news and the
+     * JSON response objects that contain them.  For examples that show how to make
+     * requests, see [Searching the web for
      * news](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-news-search/search-the-web).
      *
      * @param {object} [options] Optional Parameters.
@@ -843,11 +843,11 @@ export interface NewsOperations {
     categoryWithHttpOperationResponse(options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, countryCode? : string, category? : string, count? : number, headlineCount? : number, market? : string, offset? : number, originalImage? : boolean, safeSearch? : string, setLang? : string, textDecorations? : boolean, textFormat? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.News>>;
 
     /**
-     * @summary The News Category API lets lets you search on Bing and get back a
-     * list of top news articles by category. This section provides technical
-     * details about the query parameters and headers that you use to request news
-     * and the JSON response objects that contain them.  For examples that show how
-     * to make requests, see [Searching the web for
+     * @summary The News Category API lets you search on Bing and get back a list
+     * of top news articles by category. This section provides technical details
+     * about the query parameters and headers that you use to request news and the
+     * JSON response objects that contain them.  For examples that show how to make
+     * requests, see [Searching the web for
      * news](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-news-search/search-the-web).
      *
      * @param {object} [options] Optional Parameters.
@@ -1130,12 +1130,12 @@ export interface NewsOperations {
 
 
     /**
-     * @summary The News Trending Topics API lets lets you search on Bing and get
-     * back a list of trending news topics that are currently trending on Bing.
-     * This section provides technical details about the query parameters and
-     * headers that you use to request news and the JSON response objects that
-     * contain them.  For examples that show how to make requests, see [Searching
-     * the web for
+     * @summary The News Trending Topics API lets you search on Bing and get back a
+     * list of trending news topics that are currently trending on Bing. This
+     * section provides technical details about the query parameters and headers
+     * that you use to request news and the JSON response objects that contain
+     * them.  For examples that show how to make requests, see [Searching the web
+     * for
      * news](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-news-search/search-the-web).
      *
      * @param {object} [options] Optional Parameters.
@@ -1380,12 +1380,12 @@ export interface NewsOperations {
     trendingWithHttpOperationResponse(options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, countryCode? : string, count? : number, market? : string, offset? : number, safeSearch? : string, setLang? : string, since? : number, sortBy? : string, textDecorations? : boolean, textFormat? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TrendingTopics>>;
 
     /**
-     * @summary The News Trending Topics API lets lets you search on Bing and get
-     * back a list of trending news topics that are currently trending on Bing.
-     * This section provides technical details about the query parameters and
-     * headers that you use to request news and the JSON response objects that
-     * contain them.  For examples that show how to make requests, see [Searching
-     * the web for
+     * @summary The News Trending Topics API lets you search on Bing and get back a
+     * list of trending news topics that are currently trending on Bing. This
+     * section provides technical details about the query parameters and headers
+     * that you use to request news and the JSON response objects that contain
+     * them.  For examples that show how to make requests, see [Searching the web
+     * for
      * news](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-news-search/search-the-web).
      *
      * @param {object} [options] Optional Parameters.

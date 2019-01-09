@@ -1,8 +1,8 @@
 {
   "name": "azure-cognitiveservices-autosuggest",
   "author": "Microsoft Corporation",
-  "description": "AutoSuggestAPIClient Library with typescript type definitions for node",
-  "version": "0.1.1-preview",
+  "description": "AutoSuggestClient Library with typescript type definitions for node",
+  "version": "1.0.0",
   "dependencies": {
     "ms-rest": "^2.3.3"
   },
@@ -11,8 +11,8 @@
     "azure"
   ],
   "license": "MIT",
-  "main": "./lib/autoSuggestAPIClient.js",
-  "types": "./lib/autoSuggestAPIClient.d.ts",
+  "main": "./lib/autoSuggestClient.js",
+  "types": "./lib/autoSuggestClient.d.ts",
   "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesAutoSuggest",
   "repository": {
     "type": "git",

@@ -4,7 +4,7 @@
   "contributors": [
     "Jin, Tony <toji@microsoft.com>"
   ],
-  "version": "1.1.0-preview",
+  "version": "1.2.0-preview",
   "description": "Microsoft Azure Cognitive Services Search API Client Library for Node.js",
   "tags": [
     "azure",

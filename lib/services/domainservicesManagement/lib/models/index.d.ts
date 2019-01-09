@@ -25,7 +25,7 @@ export { CloudError } from 'ms-rest-azure';
  * @member {string} [id] Resource Id
  * @member {string} [name] Resource name
  * @member {string} [type] Resource type
- * @member {string} location Resource location
+ * @member {string} [location] Resource location
  * @member {object} [tags] Resource tags
  * @member {string} [etag] Resource etag
  */
@@ -33,7 +33,7 @@ export interface Resource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
-  location: string;
+  location?: string;
   tags?: { [propertyName: string]: string };
   etag?: string;
 }
@@ -153,85 +153,6 @@ export interface DomainSecuritySettings {
 
 /**
  * @class
- * Initializes a new instance of the DomainServiceProperties class.
- * @constructor
- * Properties of the Domain Service.
- *
- * @member {string} [tenantId] Azure Active Directory tenant id
- * @member {string} [domainName] The name of the Azure domain that the user
- * would like to deploy Domain Services to.
- * @member {string} [vnetSiteId] Virtual network site id
- * @member {string} [subnetId] The name of the virtual network that Domain
- * Services will be deployed on. The id of the subnet that Domain Services will
- * be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
- * @member {object} [ldapsSettings] Secure LDAP Settings
- * @member {string} [ldapsSettings.ldaps] A flag to determine whether or not
- * Secure LDAP is enabled or disabled. Possible values include: 'Enabled',
- * 'Disabled'
- * @member {string} [ldapsSettings.pfxCertificate] The certificate required to
- * configure Secure LDAP. The parameter passed here should be a base64encoded
- * representation of the certificate pfx file.
- * @member {string} [ldapsSettings.pfxCertificatePassword] The password to
- * decrypt the provided Secure LDAP certificate pfx file.
- * @member {string} [ldapsSettings.publicCertificate] Public certificate used
- * to configure secure ldap.
- * @member {string} [ldapsSettings.certificateThumbprint] Thumbprint of
- * configure ldaps certificate.
- * @member {date} [ldapsSettings.certificateNotAfter] NotAfter DateTime of
- * configure ldaps certificate.
- * @member {string} [ldapsSettings.externalAccess] A flag to determine whether
- * or not Secure LDAP access over the internet is enabled or disabled. Possible
- * values include: 'Enabled', 'Disabled'
- * @member {string} [ldapsSettings.externalAccessIpAddress] External access ip
- * address.
- * @member {date} [healthLastEvaluated] Last domain evaluation run DateTime
- * @member {array} [healthMonitors] List of Domain Health Monitors
- * @member {array} [healthAlerts] List of Domain Health Alerts
- * @member {object} [notificationSettings] Notification Settings
- * @member {string} [notificationSettings.notifyGlobalAdmins] Should global
- * admins be notified. Possible values include: 'Enabled', 'Disabled'
- * @member {string} [notificationSettings.notifyDcAdmins] Should domain
- * controller admins be notified. Possible values include: 'Enabled',
- * 'Disabled'
- * @member {array} [notificationSettings.additionalRecipients] The list of
- * additional recipients
- * @member {object} [domainSecuritySettings] DomainSecurity Settings
- * @member {string} [domainSecuritySettings.ntlmV1] A flag to determine whether
- * or not NtlmV1 is enabled or disabled. Possible values include: 'Enabled',
- * 'Disabled'
- * @member {string} [domainSecuritySettings.tlsV1] A flag to determine whether
- * or not TlsV1 is enabled or disabled. Possible values include: 'Enabled',
- * 'Disabled'
- * @member {string} [domainSecuritySettings.syncNtlmPasswords] A flag to
- * determine whether or not SyncNtlmPasswords is enabled or disabled. Possible
- * values include: 'Enabled', 'Disabled'
- * @member {string} [filteredSync] Enabled or Disabled flag to turn on
- * Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
- * @member {array} [domainControllerIpAddress] List of Domain Controller IP
- * Address
- * @member {string} [serviceStatus] Status of Domain Service instance
- * @member {string} [provisioningState] the current deployment or provisioning
- * state, which only appears in the response.
- */
-export interface DomainServiceProperties {
-  readonly tenantId?: string;
-  domainName?: string;
-  readonly vnetSiteId?: string;
-  subnetId?: string;
-  ldapsSettings?: LdapsSettings;
-  readonly healthLastEvaluated?: Date;
-  readonly healthMonitors?: HealthMonitor[];
-  readonly healthAlerts?: HealthAlert[];
-  notificationSettings?: NotificationSettings;
-  domainSecuritySettings?: DomainSecuritySettings;
-  filteredSync?: string;
-  readonly domainControllerIpAddress?: string[];
-  readonly serviceStatus?: string;
-  readonly provisioningState?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the DomainService class.
  * @constructor
  * Domain service.
@@ -307,60 +228,6 @@ export interface DomainService extends Resource {
   readonly domainControllerIpAddress?: string[];
   readonly serviceStatus?: string;
   readonly provisioningState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DomainServicePatchProperties class.
- * @constructor
- * Update Properties of the Domain Service.
- *
- * @member {object} [ldapsSettings] Secure LDAP Settings
- * @member {string} [ldapsSettings.ldaps] A flag to determine whether or not
- * Secure LDAP is enabled or disabled. Possible values include: 'Enabled',
- * 'Disabled'
- * @member {string} [ldapsSettings.pfxCertificate] The certificate required to
- * configure Secure LDAP. The parameter passed here should be a base64encoded
- * representation of the certificate pfx file.
- * @member {string} [ldapsSettings.pfxCertificatePassword] The password to
- * decrypt the provided Secure LDAP certificate pfx file.
- * @member {string} [ldapsSettings.publicCertificate] Public certificate used
- * to configure secure ldap.
- * @member {string} [ldapsSettings.certificateThumbprint] Thumbprint of
- * configure ldaps certificate.
- * @member {date} [ldapsSettings.certificateNotAfter] NotAfter DateTime of
- * configure ldaps certificate.
- * @member {string} [ldapsSettings.externalAccess] A flag to determine whether
- * or not Secure LDAP access over the internet is enabled or disabled. Possible
- * values include: 'Enabled', 'Disabled'
- * @member {string} [ldapsSettings.externalAccessIpAddress] External access ip
- * address.
- * @member {object} [notificationSettings] Notification Settings
- * @member {string} [notificationSettings.notifyGlobalAdmins] Should global
- * admins be notified. Possible values include: 'Enabled', 'Disabled'
- * @member {string} [notificationSettings.notifyDcAdmins] Should domain
- * controller admins be notified. Possible values include: 'Enabled',
- * 'Disabled'
- * @member {array} [notificationSettings.additionalRecipients] The list of
- * additional recipients
- * @member {object} [domainSecuritySettings] DomainSecurity Settings
- * @member {string} [domainSecuritySettings.ntlmV1] A flag to determine whether
- * or not NtlmV1 is enabled or disabled. Possible values include: 'Enabled',
- * 'Disabled'
- * @member {string} [domainSecuritySettings.tlsV1] A flag to determine whether
- * or not TlsV1 is enabled or disabled. Possible values include: 'Enabled',
- * 'Disabled'
- * @member {string} [domainSecuritySettings.syncNtlmPasswords] A flag to
- * determine whether or not SyncNtlmPasswords is enabled or disabled. Possible
- * values include: 'Enabled', 'Disabled'
- * @member {string} [filteredSync] Enabled or Disabled flag to turn on
- * Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
- */
-export interface DomainServicePatchProperties {
-  ldapsSettings?: LdapsSettings;
-  notificationSettings?: NotificationSettings;
-  domainSecuritySettings?: DomainSecuritySettings;
-  filteredSync?: string;
 }
 
 /**
