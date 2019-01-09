@@ -2700,6 +2700,63 @@ export interface DnsNameAvailabilityResult {
 }
 
 /**
+ * DDoS custom policy properties.
+*/
+export interface ProtocolCustomSettingsFormat {
+  /**
+   * The protocol for which the DDoS protection policy is being customized. Possible values
+   * include: 'Tcp', 'Udp', 'Syn'
+  */
+  protocol?: string;
+  /**
+   * The customized DDoS protection trigger rate.
+  */
+  triggerRateOverride?: string;
+  /**
+   * The customized DDoS protection source rate.
+  */
+  sourceRateOverride?: string;
+  /**
+   * The customized DDoS protection trigger rate sensitivity degrees. High: Trigger rate set with
+   * most sensitivity w.r.t. normal traffic. Default: Trigger rate set with moderate sensitivity
+   * w.r.t. normal traffic. Low: Trigger rate set with less sensitivity w.r.t. normal traffic.
+   * Relaxed: Trigger rate set with least sensitivity w.r.t. normal traffic. Possible values
+   * include: 'Relaxed', 'Low', 'Default', 'High'
+  */
+  triggerSensitivityOverride?: string;
+}
+
+/**
+ * A DDoS custom policy in a resource group.
+*/
+export interface DdosCustomPolicy extends BaseResource {
+  /**
+   * The resource GUID property of the DDoS custom policy resource. It uniquely identifies the
+   * resource, even if the user changes its name or migrate the resource across subscriptions or
+   * resource groups.
+  */
+  readonly resourceGuid?: string;
+  /**
+   * The provisioning state of the DDoS custom policy resource. Possible values are: 'Succeeded',
+   * 'Updating', 'Deleting', and 'Failed'.
+  */
+  readonly provisioningState?: string;
+  /**
+   * The list of public IPs associated with the DDoS custom policy resource. This list is
+   * read-only.
+  */
+  readonly publicIPAddresses?: SubResource[];
+  /**
+   * The protocol-specific DDoS policy customization parameters.
+  */
+  protocolCustomSettings?: ProtocolCustomSettingsFormat[];
+  /**
+   * A unique read-only string that changes whenever the resource is updated.
+  */
+  readonly etag?: string;
+}
+
+/**
  * A DDoS protection plan in a resource group.
 */
 export interface DdosProtectionPlan extends BaseResource {

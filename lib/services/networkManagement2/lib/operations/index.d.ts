@@ -3864,6 +3864,470 @@ export interface AzureFirewallFqdnTags {
 
 /**
  * @class
+ * DdosCustomPolicies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface DdosCustomPolicies {
+
+
+    /**
+     * Deletes the specified DDoS custom policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified DDoS custom policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, ddosCustomPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, ddosCustomPolicyName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, ddosCustomPolicyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets information about the specified DDoS custom policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DdosCustomPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DdosCustomPolicy>>;
+
+    /**
+     * Gets information about the specified DDoS custom policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DdosCustomPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DdosCustomPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DdosCustomPolicy} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, ddosCustomPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosCustomPolicy>;
+    get(resourceGroupName: string, ddosCustomPolicyName: string, callback: ServiceCallback<models.DdosCustomPolicy>): void;
+    get(resourceGroupName: string, ddosCustomPolicyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosCustomPolicy>): void;
+
+
+    /**
+     * Creates or updates a DDoS custom policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * operation.
+     *
+     * @param {array} [parameters.protocolCustomSettings] The protocol-specific
+     * DDoS policy customization parameters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DdosCustomPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DdosCustomPolicy>>;
+
+    /**
+     * Creates or updates a DDoS custom policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * operation.
+     *
+     * @param {array} [parameters.protocolCustomSettings] The protocol-specific
+     * DDoS policy customization parameters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DdosCustomPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DdosCustomPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DdosCustomPolicy} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosCustomPolicy>;
+    createOrUpdate(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, callback: ServiceCallback<models.DdosCustomPolicy>): void;
+    createOrUpdate(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosCustomPolicy>): void;
+
+
+    /**
+     * Update a DDoS custom policy tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} parameters Parameters supplied to the update DDoS custom
+     * policy resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DdosCustomPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DdosCustomPolicy>>;
+
+    /**
+     * Update a DDoS custom policy tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} parameters Parameters supplied to the update DDoS custom
+     * policy resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DdosCustomPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DdosCustomPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DdosCustomPolicy} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosCustomPolicy>;
+    updateTags(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, callback: ServiceCallback<models.DdosCustomPolicy>): void;
+    updateTags(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosCustomPolicy>): void;
+
+
+    /**
+     * Deletes the specified DDoS custom policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified DDoS custom policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, ddosCustomPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, ddosCustomPolicyName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, ddosCustomPolicyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates or updates a DDoS custom policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * operation.
+     *
+     * @param {array} [parameters.protocolCustomSettings] The protocol-specific
+     * DDoS policy customization parameters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DdosCustomPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DdosCustomPolicy>>;
+
+    /**
+     * Creates or updates a DDoS custom policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * operation.
+     *
+     * @param {array} [parameters.protocolCustomSettings] The protocol-specific
+     * DDoS policy customization parameters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DdosCustomPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DdosCustomPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DdosCustomPolicy} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosCustomPolicy>;
+    beginCreateOrUpdate(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, callback: ServiceCallback<models.DdosCustomPolicy>): void;
+    beginCreateOrUpdate(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.DdosCustomPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosCustomPolicy>): void;
+
+
+    /**
+     * Update a DDoS custom policy tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} parameters Parameters supplied to the update DDoS custom
+     * policy resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DdosCustomPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DdosCustomPolicy>>;
+
+    /**
+     * Update a DDoS custom policy tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ddosCustomPolicyName The name of the DDoS custom policy.
+     *
+     * @param {object} parameters Parameters supplied to the update DDoS custom
+     * policy resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DdosCustomPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DdosCustomPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DdosCustomPolicy} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DdosCustomPolicy>;
+    beginUpdateTags(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, callback: ServiceCallback<models.DdosCustomPolicy>): void;
+    beginUpdateTags(resourceGroupName: string, ddosCustomPolicyName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DdosCustomPolicy>): void;
+}
+
+/**
+ * @class
  * DdosProtectionPlans
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the NetworkManagementClient.
