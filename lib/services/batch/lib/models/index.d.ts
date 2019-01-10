@@ -659,8 +659,8 @@ export interface ResourceFile {
    * mutually exclusive and one of them must be specified. This URL must be readable and listable
    * using anonymous access; that is, the Batch service does not present any credentials when
    * downloading blobs from the container. There are two ways to get such a URL for a container in
-   * Azure storage: include a Shared Access Signature (SAS) granting read permissions on the
-   * container, or set the ACL for the container to allow public access.
+   * Azure storage: include a Shared Access Signature (SAS) granting read and list permissions on
+   * the container, or set the ACL for the container to allow public access.
    */
   storageContainerUrl?: string;
   /**
@@ -1604,7 +1604,7 @@ export interface VirtualMachineConfiguration {
    */
   windowsConfiguration?: WindowsConfiguration;
   /**
-   * @summary The configuration for data disks attached to the comptue nodes in the pool.
+   * @summary The configuration for data disks attached to the compute nodes in the pool.
    * @description This property must be specified if the compute nodes in the pool need to have
    * empty data disks attached to them. This cannot be updated. Each node gets its own disk (the
    * disk is not a file share). Existing disks cannot be attached, each attached disk is empty.
@@ -4186,10 +4186,9 @@ export interface ComputeNode {
   /**
    * @summary The current state of the compute node.
    * @description The low-priority node has been preempted. Tasks which were running on the node
-   * when it was pre-empted will be rescheduled when another node becomes available. Possible
-   * values include: 'idle', 'rebooting', 'reimaging', 'running', 'unusable', 'creating',
-   * 'starting', 'waitingForStartTask', 'startTaskFailed', 'unknown', 'leavingPool', 'offline',
-   * 'preempted'
+   * when it was preempted will be rescheduled when another node becomes available. Possible values
+   * include: 'idle', 'rebooting', 'reimaging', 'running', 'unusable', 'creating', 'starting',
+   * 'waitingForStartTask', 'startTaskFailed', 'unknown', 'leavingPool', 'offline', 'preempted'
    */
   state?: string;
   /**
