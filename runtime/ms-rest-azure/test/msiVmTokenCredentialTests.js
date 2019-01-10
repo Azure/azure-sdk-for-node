@@ -36,13 +36,12 @@ describe('MSI Vm Authentication', function () {
     done();
   });
 
-  function setupNockResponse(port, requestBodyToMatch, response, error) {
-
-    if (!port) {
-      port = 50342;
+  function setupNockResponse(msiEndpoint, requestBodyToMatch, response, error) {
+    if (!msiEndpoint) {
+      msiEndpoint = "http://169.254.169.254/metadata/identity";
     }
 
-    let basePath = `http://localhost:${port}`;
+    let basePath = msiEndpoint;
     let interceptor = nock(basePath).post("/oauth2/token", function (body) { return JSON.stringify(body) === JSON.stringify(requestBodyToMatch); });
 
     if (!error) {
@@ -52,7 +51,7 @@ describe('MSI Vm Authentication', function () {
     }
   }
 
-  it('should get token from the virtual machine with MSI service running at default port', function (done) {
+  it('should get token from the virtual machine with MSI service running at default endpoint', function (done) {
     let response = {
       access_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d',
       refresh_token: '',
@@ -79,7 +78,7 @@ describe('MSI Vm Authentication', function () {
     });
   });
 
-  it('should get token from the virtual machine with MSI service running at custom port', function (done) {
+  it('should get token from the virtual machine with MSI service running at custom endpoint', function (done) {
     let response = {
       access_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d',
       refresh_token: '',
@@ -94,10 +93,10 @@ describe('MSI Vm Authentication', function () {
       "resource": "https://management.azure.com/"
     };
 
-    let customPort = 50341;
-    setupNockResponse(customPort, requestBodyToMatch, response);
+    let customMsiEndpoint = "http://localhost:50342";
+    setupNockResponse(customMsiEndpoint, requestBodyToMatch, response);
 
-    let msiCredsObj = new MSIVmTokenCredentials({ port: customPort });
+    let msiCredsObj = new MSIVmTokenCredentials({ msiEndpoint: `${customMsiEndpoint}/oauth2/token`});
     msiCredsObj.getToken((err, response) => {
       should.not.exist(err);
       should.exist(response);
