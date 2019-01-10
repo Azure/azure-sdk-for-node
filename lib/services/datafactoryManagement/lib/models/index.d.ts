@@ -5408,7 +5408,8 @@ export interface GetMetadataActivity extends ExecutionActivity {
  */
 export interface WebActivityAuthentication {
   /**
-   * Web activity authentication (Basic/ClientCertificate/MSI)
+   * Web activity authentication (Basic/ClientCertificate/MSI). Possible values include: 'Basic',
+   * 'ClientCertificate', 'MSI'
    */
   type: string;
   /**
@@ -7054,32 +7055,6 @@ export interface IfConditionActivity extends ControlActivity {
 }
 
 /**
- * WebHook activity authentication properties.
- */
-export interface WebHookActivityAuthentication {
-  /**
-   * WebHook activity authentication (Basic/ClientCertificate/MSI)
-   */
-  type: string;
-  /**
-   * Base64-encoded contents of a PFX file.
-   */
-  pfx?: SecureString;
-  /**
-   * WebHook activity authentication user name for basic authentication.
-   */
-  username?: string;
-  /**
-   * Password for the PFX file or basic authentication.
-   */
-  password?: SecureString;
-  /**
-   * Resource for which Azure Auth token will be requested when using MSI Authentication.
-   */
-  resource?: string;
-}
-
-/**
  * WebHook activity.
  */
 export interface WebHookActivity extends ControlActivity {
@@ -7109,7 +7084,7 @@ export interface WebHookActivity extends ControlActivity {
   /**
    * Authentication method used for calling the endpoint.
    */
-  authentication?: WebHookActivityAuthentication;
+  authentication?: WebActivityAuthentication;
 }
 
 /**
