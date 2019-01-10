@@ -7054,6 +7054,39 @@ export interface IfConditionActivity extends ControlActivity {
 }
 
 /**
+ * WebHook activity.
+ */
+export interface WebHookActivity extends ControlActivity {
+  /**
+   * WebHook activity target endpoint and path. Type: string (or Expression with resultType
+   * string).
+   */
+  url: any;
+  /**
+   * Specifies the timeout within which the webhook should be called back. If there is no value
+   * specified, it takes the value of TimeSpan.FromMinutes(10) which is 10 minutes as default.
+   * Type: string (or Expression with resultType string), pattern:
+   * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+   */
+  timeout?: any;
+  /**
+   * Represents the headers that will be sent to the request. For example, to set the language and
+   * type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type":
+   * "application/json" }. Type: string (or Expression with resultType string).
+   */
+  headers?: any;
+  /**
+   * Represents the payload that will be sent to the endpoint. Required for POST/PUT method, not
+   * allowed for GET method Type: string (or Expression with resultType string).
+   */
+  body?: any;
+  /**
+   * Authentication method used for calling the endpoint.
+   */
+  authentication?: WebActivityAuthentication;
+}
+
+/**
  * Execute pipeline activity.
  */
 export interface ExecutePipelineActivity extends ControlActivity {
