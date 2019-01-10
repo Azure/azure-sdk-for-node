@@ -1111,15 +1111,15 @@ export interface AS2MdnSettings {
   /**
    * The value indicating whether to send or request a MDN.
    */
-  needMdn: boolean;
+  needMDN: boolean;
   /**
    * The value indicating whether the MDN needs to be signed or not.
    */
-  signMdn: boolean;
+  signMDN: boolean;
   /**
    * The value indicating whether to send the asynchronous MDN.
    */
-  sendMdnAsynchronously: boolean;
+  sendMDNAsynchronously: boolean;
   /**
    * The receipt delivery URL.
    */
@@ -1131,7 +1131,7 @@ export interface AS2MdnSettings {
   /**
    * The value indicating whether to sign the outbound MDN if optional.
    */
-  signOutboundMdnIfOptional: boolean;
+  signOutboundMDNIfOptional: boolean;
   /**
    * The MDN text.
    */
@@ -1139,7 +1139,7 @@ export interface AS2MdnSettings {
   /**
    * The value indicating whether to send inbound MDN to message box.
    */
-  sendInboundMdnToMessageBox: boolean;
+  sendInboundMDNToMessageBox: boolean;
   /**
    * The signing or hashing algorithm. Possible values include: 'NotSpecified', 'None', 'MD5',
    * 'SHA1', 'SHA2256', 'SHA2384', 'SHA2512'
@@ -1166,27 +1166,27 @@ export interface AS2SecuritySettings {
   /**
    * The value indicating whether to enable NRR for inbound encoded messages.
    */
-  enableNrrForInboundEncodedMessages: boolean;
+  enableNRRForInboundEncodedMessages: boolean;
   /**
    * The value indicating whether to enable NRR for inbound decoded messages.
    */
-  enableNrrForInboundDecodedMessages: boolean;
+  enableNRRForInboundDecodedMessages: boolean;
   /**
    * The value indicating whether to enable NRR for outbound MDN.
    */
-  enableNrrForOutboundMdn: boolean;
+  enableNRRForOutboundMDN: boolean;
   /**
    * The value indicating whether to enable NRR for outbound encoded messages.
    */
-  enableNrrForOutboundEncodedMessages: boolean;
+  enableNRRForOutboundEncodedMessages: boolean;
   /**
    * The value indicating whether to enable NRR for outbound decoded messages.
    */
-  enableNrrForOutboundDecodedMessages: boolean;
+  enableNRRForOutboundDecodedMessages: boolean;
   /**
    * The value indicating whether to enable NRR for inbound MDN.
    */
-  enableNrrForInboundMdn: boolean;
+  enableNRRForInboundMDN: boolean;
   /**
    * The Sha2 algorithm format. Valid values are Sha2, ShaHashSize, ShaHyphenHashSize,
    * Sha2UnderscoreHashSize.
@@ -1279,7 +1279,7 @@ export interface AS2ErrorSettings {
   /**
    * The value indicating whether to resend message If MDN is not received.
    */
-  resendIfMdnNotReceived: boolean;
+  resendIfMDNNotReceived: boolean;
 }
 
 /**
