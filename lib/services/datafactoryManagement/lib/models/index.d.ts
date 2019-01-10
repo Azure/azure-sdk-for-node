@@ -5408,8 +5408,7 @@ export interface GetMetadataActivity extends ExecutionActivity {
  */
 export interface WebActivityAuthentication {
   /**
-   * Web activity authentication (Basic/ClientCertificate/MSI). Possible values include: 'Basic',
-   * 'ClientCertificate', 'MSI'
+   * Web activity authentication (Basic/ClientCertificate/MSI)
    */
   type: string;
   /**
