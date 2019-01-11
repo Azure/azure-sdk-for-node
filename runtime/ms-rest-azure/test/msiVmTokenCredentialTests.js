@@ -19,7 +19,7 @@ var nock = require('nock');
 var MSIVmTokenCredentials = require('../lib/credentials/msiVmTokenCredentials');
 
 
-describe.only('MSI Vm Authentication', function () {
+describe('MSI Vm Authentication', function () {
   before(function (done) {
     done();
   });
