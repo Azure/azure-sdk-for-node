@@ -3,46 +3,27 @@
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'japaneast';
   process.env['AZURE_AUTOSTORAGE'] = 'nodesdkteststorage';
-  process.env['AZURE_SUBSCRIPTION_ID'] = '00000000-0000-0000-0000-000000000000';
+  process.env['AZURE_SUBSCRIPTION_ID'] = 'f30ef677-64a9-4768-934f-5fbbc0e1ad27';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://management.azure.com:443')
-  .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2017-09-01', '*')
-  .reply(409, "{\"error\":{\"code\":\"RequestedDefaultVersionNotActive\",\"message\":\"The application package corresponding to the requested default version is not active.\\nRequestId:b87dad34-89d1-40cd-8622-f9952a9d9e6c\\nTime:2017-11-08T22:01:36.1136105Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '258',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-request-id': 'b87dad34-89d1-40cd-8622-f9952a9d9e6c',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-content-type-options': 'nosniff',
-  server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '3a482cd1-b794-40a1-96b3-20a2f3e40082',
-  'x-ms-routing-request-id': 'WESTUS2:20171108T220135Z:3a482cd1-b794-40a1-96b3-20a2f3e40082',
-  date: 'Wed, 08 Nov 2017 22:01:35 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2017-09-01', '*')
-  .reply(409, "{\"error\":{\"code\":\"RequestedDefaultVersionNotActive\",\"message\":\"The application package corresponding to the requested default version is not active.\\nRequestId:b87dad34-89d1-40cd-8622-f9952a9d9e6c\\nTime:2017-11-08T22:01:36.1136105Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
+.patch('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id?api-version=2018-12-01', '*')
+  .reply(409, "{\"error\":{\"code\":\"RequestedDefaultVersionNotActive\",\"message\":\"The application package corresponding to the requested default version is not active.\\nRequestId:c02aa83e-20fe-4392-adcc-6179ae1a00c6\\nTime:2019-01-11T00:15:54.9182717Z\",\"target\":\"BatchAccount\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '258',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-request-id': 'b87dad34-89d1-40cd-8622-f9952a9d9e6c',
+  'x-ms-correlation-request-id': '08689415-498d-4bbd-85d6-bc6ebef32a34',
+  'x-ms-request-id': 'c02aa83e-20fe-4392-adcc-6179ae1a00c6',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '3a482cd1-b794-40a1-96b3-20a2f3e40082',
-  'x-ms-routing-request-id': 'WESTUS2:20171108T220135Z:3a482cd1-b794-40a1-96b3-20a2f3e40082',
-  date: 'Wed, 08 Nov 2017 22:01:35 GMT',
+  'x-ms-routing-request-id':
+   'WESTUS2:20190111T001554Z:08689415-498d-4bbd-85d6-bc6ebef32a34',
+  date: 'Fri, 11 Jan 2019 00:15:54 GMT',
   connection: 'close' });
  return result; }]];
