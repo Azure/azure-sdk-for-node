@@ -19,7 +19,7 @@ var nock = require('nock');
 var MSIVmTokenCredentials = require('../lib/credentials/msiVmTokenCredentials');
 
 
-describe('MSI Vm Authentication', function () {
+describe.only('MSI Vm Authentication', function () {
   before(function (done) {
     done();
   });
@@ -36,13 +36,24 @@ describe('MSI Vm Authentication', function () {
     done();
   });
 
-  function setupNockResponse(msiEndpoint, requestBodyToMatch, response, error) {
+  function setupNockResponse(msiEndpoint, requestBodyToMatch, response, error, apiVersion, resource) {
     if (!msiEndpoint) {
       msiEndpoint = "http://169.254.169.254/metadata/identity";
     }
 
+    if (!apiVersion) {
+      apiVersion = "2018-02-01";
+    }
+
+    if (!resource) {
+      resource = "https%3A%2F%2Fmanagement.azure.com%2F";
+    }
+
     let basePath = msiEndpoint;
-    let interceptor = nock(basePath).post("/oauth2/token", function (body) { return JSON.stringify(body) === JSON.stringify(requestBodyToMatch); });
+    let interceptor = nock(basePath).get(`/oauth2/token?api-version=${apiVersion}&resource=${resource}`, function (body) {
+      console.log(JSON.stringify(body));
+      return true;
+    });
 
     if (!error) {
       interceptor.reply(200, response);
@@ -66,7 +77,7 @@ describe('MSI Vm Authentication', function () {
       "resource": "https://management.azure.com/"
     };
 
-    setupNockResponse(null, requestBodyToMatch, response);
+    setupNockResponse(undefined, requestBodyToMatch, response);
 
     let msiCredsObj = new MSIVmTokenCredentials();
     msiCredsObj.getToken((err, response) => {
@@ -116,7 +127,7 @@ describe('MSI Vm Authentication', function () {
       "resource": "badvalue"
     };
 
-    setupNockResponse(null, requestBodyToMatch, null, errorResponse);
+    setupNockResponse(undefined, requestBodyToMatch, undefined, errorResponse);
 
     let msiCredsObj = new MSIVmTokenCredentials({ "resource": "badvalue" });
     msiCredsObj.getToken((err, response) => {
@@ -133,7 +144,7 @@ describe('MSI Vm Authentication', function () {
       "resource": "  "
     };
 
-    setupNockResponse(null, requestBodyToMatch, null, errorResponse);
+    setupNockResponse(undefined, requestBodyToMatch, undefined, errorResponse);
 
     let msiCredsObj = new MSIVmTokenCredentials({ "resource": "  " });
     msiCredsObj.getToken((err, response) => {

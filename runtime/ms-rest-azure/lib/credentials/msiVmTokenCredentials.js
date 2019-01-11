@@ -22,7 +22,14 @@ class MSIVmTokenCredentials extends MSITokenCredentials {
       throw new Error('msiEndpoint must be a string.');
     }
 
+    if (!options.apiVersion) {
+      options.apiVersion = "2018-02-01";
+    } else if (typeof options.apiVersion.valueOf() !== 'string') {
+      throw new Error('apiVersion must be a string.');
+    }
+
     this.msiEndpoint = options.msiEndpoint;
+    this.apiVersion = options.apiVersion;
   }
 
   /**
@@ -33,9 +40,9 @@ class MSIVmTokenCredentials extends MSITokenCredentials {
    *                       {object} [tokenResponse] The tokenResponse (tokenType and accessToken are the two important properties).
    */
   getToken(callback) {
-    const postUrl = this.msiEndpoint;
+    const getUrl = `${this.msiEndpoint}?api-version=${this.apiVersion}&resource=${encodeURIComponent(this.resource)}`;
     const reqOptions = this.prepareRequestOptions();
-    request.post(postUrl, reqOptions, (err, response, body) => {
+    request.get(getUrl, reqOptions, (err, response, body) => {
       if (err) {
         return callback(err);
       }
@@ -55,15 +62,12 @@ class MSIVmTokenCredentials extends MSITokenCredentials {
   }
 
   prepareRequestOptions() {
-    const resource = encodeURIComponent(this.resource);
     let reqOptions = {
       headers: {},
-      body: ''
     };
 
     reqOptions.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
     reqOptions.headers['Metadata'] = 'true';
-    reqOptions.body = `resource=${resource}`;
 
     return reqOptions;
   }
