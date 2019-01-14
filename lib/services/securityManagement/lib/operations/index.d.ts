@@ -1833,15 +1833,15 @@ export interface AdvancedThreatProtection {
 
 /**
  * @class
- * IotSecurityGroups
+ * DeviceSecurityGroups
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SecurityCenter.
  */
-export interface IotSecurityGroups {
+export interface DeviceSecurityGroups {
 
 
     /**
-     * Gets the list of security groups for the specified IoT hub resource.
+     * Gets the list of device security groups for the specified IoT hub resource.
      *
      * @param {string} resourceId The identifier of the resource.
      *
@@ -1852,14 +1852,14 @@ export interface IotSecurityGroups {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<IotSecurityGroupList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<DeviceSecurityGroupList>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotSecurityGroupList>>;
+    listWithHttpOperationResponse(resourceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeviceSecurityGroupList>>;
 
     /**
-     * Gets the list of security groups for the specified IoT hub resource.
+     * Gets the list of device security groups for the specified IoT hub resource.
      *
      * @param {string} resourceId The identifier of the resource.
      *
@@ -1875,7 +1875,7 @@ export interface IotSecurityGroups {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {IotSecurityGroupList} - The deserialized result object.
+     *                      @resolve {DeviceSecurityGroupList} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1883,25 +1883,26 @@ export interface IotSecurityGroups {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {IotSecurityGroupList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link IotSecurityGroupList} for more information.
+     *                      {DeviceSecurityGroupList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeviceSecurityGroupList} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IotSecurityGroupList>;
-    list(resourceId: string, callback: ServiceCallback<models.IotSecurityGroupList>): void;
-    list(resourceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotSecurityGroupList>): void;
+    list(resourceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeviceSecurityGroupList>;
+    list(resourceId: string, callback: ServiceCallback<models.DeviceSecurityGroupList>): void;
+    list(resourceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeviceSecurityGroupList>): void;
 
 
     /**
-     * Gets the security group for the specified IoT hub resource.
+     * Gets the device security group for the specified IoT hub resource.
      *
      * @param {string} resourceId The identifier of the resource.
      *
-     * @param {string} iotSecurityGroupName The name of the security group. Please
-     * notice that the name is case insensitive.
+     * @param {string} deviceSecurityGroupName The name of the security group.
+     * Please notice that the name is case insensitive.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1910,19 +1911,19 @@ export interface IotSecurityGroups {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<IotSecurityGroup>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<DeviceSecurityGroup>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceId: string, iotSecurityGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotSecurityGroup>>;
+    getWithHttpOperationResponse(resourceId: string, deviceSecurityGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeviceSecurityGroup>>;
 
     /**
-     * Gets the security group for the specified IoT hub resource.
+     * Gets the device security group for the specified IoT hub resource.
      *
      * @param {string} resourceId The identifier of the resource.
      *
-     * @param {string} iotSecurityGroupName The name of the security group. Please
-     * notice that the name is case insensitive.
+     * @param {string} deviceSecurityGroupName The name of the security group.
+     * Please notice that the name is case insensitive.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1936,7 +1937,7 @@ export interface IotSecurityGroups {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {IotSecurityGroup} - The deserialized result object.
+     *                      @resolve {DeviceSecurityGroup} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1944,39 +1945,40 @@ export interface IotSecurityGroups {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {IotSecurityGroup} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link IotSecurityGroup} for more information.
+     *                      {DeviceSecurityGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeviceSecurityGroup} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceId: string, iotSecurityGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IotSecurityGroup>;
-    get(resourceId: string, iotSecurityGroupName: string, callback: ServiceCallback<models.IotSecurityGroup>): void;
-    get(resourceId: string, iotSecurityGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotSecurityGroup>): void;
+    get(resourceId: string, deviceSecurityGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeviceSecurityGroup>;
+    get(resourceId: string, deviceSecurityGroupName: string, callback: ServiceCallback<models.DeviceSecurityGroup>): void;
+    get(resourceId: string, deviceSecurityGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeviceSecurityGroup>): void;
 
 
     /**
-     * Creates or updates the security group on a specified IoT hub resource.
+     * Creates or updates the device security group on a specified IoT hub
+     * resource.
      *
      * @param {string} resourceId The identifier of the resource.
      *
-     * @param {string} iotSecurityGroupName The name of the security group. Please
-     * notice that the name is case insensitive.
+     * @param {string} deviceSecurityGroupName The name of the security group.
+     * Please notice that the name is case insensitive.
      *
-     * @param {object} iotSecurityGroup Security group object.
+     * @param {object} deviceSecurityGroup Security group object.
      *
-     * @param {array} [iotSecurityGroup.thresholdRules] A list of threshold custom
-     * alert rules.
-     *
-     * @param {array} [iotSecurityGroup.timeWindowRules] A list of time window
+     * @param {array} [deviceSecurityGroup.thresholdRules] A list of threshold
      * custom alert rules.
      *
-     * @param {array} [iotSecurityGroup.allowlistRules] A list of allow-list custom
-     * alert rules.
+     * @param {array} [deviceSecurityGroup.timeWindowRules] A list of time window
+     * custom alert rules.
      *
-     * @param {array} [iotSecurityGroup.denylistRules] A list of deny-list custom
-     * alert rules.
+     * @param {array} [deviceSecurityGroup.allowlistRules] A list of allow-list
+     * custom alert rules.
+     *
+     * @param {array} [deviceSecurityGroup.denylistRules] A list of deny-list
+     * custom alert rules.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1985,33 +1987,34 @@ export interface IotSecurityGroups {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<IotSecurityGroup>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<DeviceSecurityGroup>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceId: string, iotSecurityGroupName: string, iotSecurityGroup: models.IotSecurityGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotSecurityGroup>>;
+    createOrUpdateWithHttpOperationResponse(resourceId: string, deviceSecurityGroupName: string, deviceSecurityGroup: models.DeviceSecurityGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeviceSecurityGroup>>;
 
     /**
-     * Creates or updates the security group on a specified IoT hub resource.
+     * Creates or updates the device security group on a specified IoT hub
+     * resource.
      *
      * @param {string} resourceId The identifier of the resource.
      *
-     * @param {string} iotSecurityGroupName The name of the security group. Please
-     * notice that the name is case insensitive.
+     * @param {string} deviceSecurityGroupName The name of the security group.
+     * Please notice that the name is case insensitive.
      *
-     * @param {object} iotSecurityGroup Security group object.
+     * @param {object} deviceSecurityGroup Security group object.
      *
-     * @param {array} [iotSecurityGroup.thresholdRules] A list of threshold custom
-     * alert rules.
-     *
-     * @param {array} [iotSecurityGroup.timeWindowRules] A list of time window
+     * @param {array} [deviceSecurityGroup.thresholdRules] A list of threshold
      * custom alert rules.
      *
-     * @param {array} [iotSecurityGroup.allowlistRules] A list of allow-list custom
-     * alert rules.
+     * @param {array} [deviceSecurityGroup.timeWindowRules] A list of time window
+     * custom alert rules.
      *
-     * @param {array} [iotSecurityGroup.denylistRules] A list of deny-list custom
-     * alert rules.
+     * @param {array} [deviceSecurityGroup.allowlistRules] A list of allow-list
+     * custom alert rules.
+     *
+     * @param {array} [deviceSecurityGroup.denylistRules] A list of deny-list
+     * custom alert rules.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2025,7 +2028,7 @@ export interface IotSecurityGroups {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {IotSecurityGroup} - The deserialized result object.
+     *                      @resolve {DeviceSecurityGroup} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2033,16 +2036,16 @@ export interface IotSecurityGroups {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {IotSecurityGroup} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link IotSecurityGroup} for more information.
+     *                      {DeviceSecurityGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeviceSecurityGroup} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceId: string, iotSecurityGroupName: string, iotSecurityGroup: models.IotSecurityGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IotSecurityGroup>;
-    createOrUpdate(resourceId: string, iotSecurityGroupName: string, iotSecurityGroup: models.IotSecurityGroup, callback: ServiceCallback<models.IotSecurityGroup>): void;
-    createOrUpdate(resourceId: string, iotSecurityGroupName: string, iotSecurityGroup: models.IotSecurityGroup, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotSecurityGroup>): void;
+    createOrUpdate(resourceId: string, deviceSecurityGroupName: string, deviceSecurityGroup: models.DeviceSecurityGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeviceSecurityGroup>;
+    createOrUpdate(resourceId: string, deviceSecurityGroupName: string, deviceSecurityGroup: models.DeviceSecurityGroup, callback: ServiceCallback<models.DeviceSecurityGroup>): void;
+    createOrUpdate(resourceId: string, deviceSecurityGroupName: string, deviceSecurityGroup: models.DeviceSecurityGroup, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeviceSecurityGroup>): void;
 
 
     /**
@@ -2050,8 +2053,8 @@ export interface IotSecurityGroups {
      *
      * @param {string} resourceId The identifier of the resource.
      *
-     * @param {string} iotSecurityGroupName The name of the security group. Please
-     * notice that the name is case insensitive.
+     * @param {string} deviceSecurityGroupName The name of the security group.
+     * Please notice that the name is case insensitive.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2064,15 +2067,15 @@ export interface IotSecurityGroups {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceId: string, iotSecurityGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceId: string, deviceSecurityGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes the security group
      *
      * @param {string} resourceId The identifier of the resource.
      *
-     * @param {string} iotSecurityGroupName The name of the security group. Please
-     * notice that the name is case insensitive.
+     * @param {string} deviceSecurityGroupName The name of the security group.
+     * Please notice that the name is case insensitive.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2100,9 +2103,67 @@ export interface IotSecurityGroups {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceId: string, iotSecurityGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceId: string, iotSecurityGroupName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceId: string, iotSecurityGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceId: string, deviceSecurityGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceId: string, deviceSecurityGroupName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceId: string, deviceSecurityGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the list of device security groups for the specified IoT hub resource.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DeviceSecurityGroupList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeviceSecurityGroupList>>;
+
+    /**
+     * Gets the list of device security groups for the specified IoT hub resource.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DeviceSecurityGroupList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DeviceSecurityGroupList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeviceSecurityGroupList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeviceSecurityGroupList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.DeviceSecurityGroupList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeviceSecurityGroupList>): void;
 }
 
 /**
@@ -2168,8 +2229,8 @@ export interface Settings {
     /**
      * Settings of different configurations in security center
      *
-     * @param {string} settingName Name of setting. Possible values include:
-     * 'MCAS', 'WDATP'
+     * @param {string} settingName Name of setting: (MCAS/WDATP). Possible values
+     * include: 'MCAS', 'WDATP'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2187,8 +2248,8 @@ export interface Settings {
     /**
      * Settings of different configurations in security center
      *
-     * @param {string} settingName Name of setting. Possible values include:
-     * 'MCAS', 'WDATP'
+     * @param {string} settingName Name of setting: (MCAS/WDATP). Possible values
+     * include: 'MCAS', 'WDATP'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2225,12 +2286,14 @@ export interface Settings {
     /**
      * updating settings about different configurations in security center
      *
-     * @param {string} settingName Name of setting. Possible values include:
-     * 'MCAS', 'WDATP'
+     * @param {string} settingName Name of setting: (MCAS/WDATP). Possible values
+     * include: 'MCAS', 'WDATP'
      *
      * @param {object} setting Setting object
      *
-     * @param {string} setting.kind Polymorphic Discriminator
+     * @param {string} setting.kind the kind of the settings string
+     * (DataExportSetting). Possible values include: 'DataExportSetting',
+     * 'AlertSuppressionSetting'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2248,12 +2311,14 @@ export interface Settings {
     /**
      * updating settings about different configurations in security center
      *
-     * @param {string} settingName Name of setting. Possible values include:
-     * 'MCAS', 'WDATP'
+     * @param {string} settingName Name of setting: (MCAS/WDATP). Possible values
+     * include: 'MCAS', 'WDATP'
      *
      * @param {object} setting Setting object
      *
-     * @param {string} setting.kind Polymorphic Discriminator
+     * @param {string} setting.kind the kind of the settings string
+     * (DataExportSetting). Possible values include: 'DataExportSetting',
+     * 'AlertSuppressionSetting'
      *
      * @param {object} [options] Optional Parameters.
      *

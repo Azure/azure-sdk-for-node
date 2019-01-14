@@ -147,25 +147,20 @@ export interface AdvancedThreatProtectionSetting extends Resource {
 }
 
 /**
- * Represents a security setting in Azure Security Center.
+ * The kind of the security setting
  */
-export interface Setting {
+export interface SettingResource extends Resource {
   /**
-   * Resource Id
-   */
-  readonly id?: string;
-  /**
-   * Resource name
-   */
-  readonly name?: string;
-  /**
-   * Resource type
-   */
-  readonly type?: string;
-  /**
-   * Polymorphic Discriminator
+   * the kind of the settings string (DataExportSetting). Possible values include:
+   * 'DataExportSetting', 'AlertSuppressionSetting'
    */
   kind: string;
+}
+
+/**
+ * Represents a security setting in Azure Security Center.
+ */
+export interface Setting extends SettingResource {
 }
 
 /**
@@ -176,16 +171,6 @@ export interface DataExportSetting extends Setting {
    * Is the data export setting is enabled
    */
   enabled: boolean;
-}
-
-/**
- * The kind of the security setting
- */
-export interface SettingKind1 {
-  /**
-   * the kind of the settings string. Possible values include: 'DataExportSetting'
-   */
-  kind?: string;
 }
 
 /**
@@ -369,9 +354,9 @@ export interface DenylistCustomAlertRule extends CustomAlertRule {
 }
 
 /**
- * The IoT security group resource
+ * The device security group resource
  */
-export interface IotSecurityGroup extends Resource {
+export interface DeviceSecurityGroup extends Resource {
   /**
    * A list of threshold custom alert rules.
    */
@@ -388,16 +373,6 @@ export interface IotSecurityGroup extends Resource {
    * A list of deny-list custom alert rules.
    */
   denylistRules?: DenylistCustomAlertRule[];
-}
-
-/**
- * List of IoT security groups
- */
-export interface IotSecurityGroupList {
-  /**
-   * List of IoT security group objects
-   */
-  value?: IotSecurityGroup[];
 }
 
 /**
@@ -1096,6 +1071,16 @@ export interface AutoProvisioningSettingList extends Array<AutoProvisioningSetti
  * List of Compliance objects response
 */
 export interface ComplianceList extends Array<Compliance> {
+  /**
+   * The URI to fetch the next page.
+  */
+  readonly nextLink?: string;
+}
+
+/**
+ * List of device security groups
+*/
+export interface DeviceSecurityGroupList extends Array<DeviceSecurityGroup> {
   /**
    * The URI to fetch the next page.
   */
