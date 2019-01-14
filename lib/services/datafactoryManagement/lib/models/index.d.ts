@@ -6268,6 +6268,24 @@ export interface SSISExecutionParameter {
 }
 
 /**
+ * SSIS package execution credential.
+ */
+export interface SSISExecutionCredential {
+  /**
+   * Domain for windows authentication.
+   */
+  domain: any;
+  /**
+   * UseName for windows authentication.
+   */
+  userName: any;
+  /**
+   * Password for windows authentication.
+   */
+  password: SecureString;
+}
+
+/**
  * SSIS package location.
  */
 export interface SSISPackageLocation {
@@ -6300,6 +6318,10 @@ export interface ExecuteSSISPackageActivity extends ExecutionActivity {
    * string).
    */
   environmentPath?: any;
+  /**
+   * The package execution credential.
+   */
+  executionCredential?: { [propertyName: string]: SSISExecutionCredential };
   /**
    * The integration runtime reference.
    */
