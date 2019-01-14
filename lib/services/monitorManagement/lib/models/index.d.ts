@@ -2373,6 +2373,103 @@ export interface MetricNamespace {
 }
 
 /**
+ * An azure resource object
+ */
+export interface ProxyResource extends BaseResource {
+  /**
+   * Azure resource Id
+   */
+  readonly id?: string;
+  /**
+   * Azure resource name
+   */
+  readonly name?: string;
+  /**
+   * Azure resource type
+   */
+  readonly type?: string;
+}
+
+/**
+ * Error details.
+ */
+export interface ErrorModel {
+  /**
+   * Error code identifying the specific error.
+   */
+  code: string;
+  /**
+   * Error message in the caller's locale.
+   */
+  message?: string;
+}
+
+/**
+ * An error response from the API.
+ */
+export interface ResponseWithError {
+  /**
+   * Error information.
+   */
+  error: ErrorModel;
+}
+
+/**
+ * Information about a Log Analytics Workspace.
+ */
+export interface WorkspaceInfo {
+  /**
+   * Azure Resource Manager identifier of the Log Analytics Workspace.
+   */
+  id: string;
+  /**
+   * Location of the Log Analytics workspace.
+   */
+  location: string;
+  /**
+   * Log Analytics workspace identifier.
+   */
+  customerId: string;
+}
+
+/**
+ * Information about a container with data for a given resource.
+ */
+export interface DataContainer {
+  /**
+   * Log Analytics workspace information.
+   */
+  workspace: WorkspaceInfo;
+}
+
+/**
+ * VM Insights onboarding status for a resource.
+ */
+export interface VMInsightsOnboardingStatus extends ProxyResource {
+  /**
+   * Azure Resource Manager identifier of the resource whose onboarding status is being
+   * represented.
+   */
+  resourceId: string;
+  /**
+   * The onboarding status for the resource. Note that, a higher level scope, e.g., resource group
+   * or subscription, is considered onboarded if at least one resource under it is onboarded.
+   * Possible values include: 'onboarded', 'notOnboarded', 'unknown'
+   */
+  onboardingStatus: string;
+  /**
+   * The status of VM Insights data from the resource. When reported as `present` the data array
+   * will contain information about the data containers to which data for the specified resource is
+   * being routed. Possible values include: 'present', 'notPresent'
+   */
+  dataStatus: string;
+  /**
+   * Containers that currently store VM Insights data for the specified resource.
+   */
+  data?: DataContainer[];
+}
+
+/**
  * Represents a collection of autoscale setting resources.
  */
 export interface AutoscaleSettingResourceCollection extends Array<AutoscaleSettingResource> {
