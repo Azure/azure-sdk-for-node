@@ -46,7 +46,7 @@ export interface EnrollmentAccount extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the TenantProperties class.
+ * Initializes a new instance of the DiscoverTenants class.
  * @constructor
  * A Tenant properties Resource
  *
@@ -54,7 +54,7 @@ export interface EnrollmentAccount extends Resource {
  * @member {string} [billingAccountId] The Billing AccountId.
  * @member {string} [tenantId] The TenantId.
  */
-export interface TenantProperties {
+export interface DiscoverTenants {
   readonly billingProfileName?: string;
   readonly billingAccountId?: string;
   readonly tenantId?: string;
