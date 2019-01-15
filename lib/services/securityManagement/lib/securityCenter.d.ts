@@ -73,7 +73,7 @@ export default class SecurityCenter extends AzureServiceClient {
   discoveredSecuritySolutions: operations.DiscoveredSecuritySolutions;
   jitNetworkAccessPolicies: operations.JitNetworkAccessPolicies;
   externalSecuritySolutions: operations.ExternalSecuritySolutions;
-  northSouthHardeningsOperations: operations.NorthSouthHardeningsOperations;
+  adaptiveNetworkControlsOperations: operations.AdaptiveNetworkControlsOperations;
   topology: operations.Topology;
   allowedConnections: operations.AllowedConnections;
 }

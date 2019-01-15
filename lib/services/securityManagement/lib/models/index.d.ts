@@ -147,25 +147,20 @@ export interface AdvancedThreatProtectionSetting extends Resource {
 }
 
 /**
- * Represents a security setting in Azure Security Center.
+ * The kind of the security setting
  */
-export interface Setting {
+export interface SettingResource extends Resource {
   /**
-   * Resource Id
-   */
-  readonly id?: string;
-  /**
-   * Resource name
-   */
-  readonly name?: string;
-  /**
-   * Resource type
-   */
-  readonly type?: string;
-  /**
-   * Polymorphic Discriminator
+   * the kind of the settings string (DataExportSetting). Possible values include:
+   * 'DataExportSetting', 'AlertSuppressionSetting'
    */
   kind: string;
+}
+
+/**
+ * Represents a security setting in Azure Security Center.
+ */
+export interface Setting extends SettingResource {
 }
 
 /**
@@ -176,16 +171,6 @@ export interface DataExportSetting extends Setting {
    * Is the data export setting is enabled
    */
   enabled: boolean;
-}
-
-/**
- * The kind of the security setting
- */
-export interface SettingKind1 {
-  /**
-   * the kind of the settings string. Possible values include: 'DataExportSetting'
-   */
-  kind?: string;
 }
 
 /**
@@ -863,15 +848,16 @@ export interface AadConnectivityState1 {
 }
 
 /**
- * A north-south traffic hardening rule
+ * Describes remote addresses that is recommended to communicate with the Azure resource on some
+ * (Protocol, Port, Direction). All other remote addresses are recommended to be blocked
 */
-export interface TrafficHardeningRule {
+export interface AdaptiveNetworkControlsRule {
   /**
    * The name of the rule
   */
   name?: string;
   /**
-   * The rule;s traffic direction. Possible values include: 'Inbound', 'Outbound'
+   * The rule's direction. Possible values include: 'Inbound', 'Outbound'
   */
   direction?: string;
   /**
@@ -879,71 +865,47 @@ export interface TrafficHardeningRule {
   */
   destinationPort?: number;
   /**
-   * The rule's transport protocol
+   * The rule's transport protocols
   */
   protocols?: string[];
   /**
-   * The remote addresses that should be able to communicate with the Azure resource on the rule's
-   * destination port and protocol
+   * The remote IP addresses that should be able to communicate with the Azure resource on the
+   * rule's destination port and protocol
   */
-  allowRemoteAddresses?: string[];
-}
-
-export interface TrafficAlertTrafficItem {
-  /**
-   * The IP address of the remote host that is associated with the traffic
-  */
-  remoteAddress?: string;
-  /**
-   * The detected number of packets sent to or from the remote address (depends on the direction of
-   * the traffic)
-  */
-  attempts?: number;
+  ipAddresses?: string[];
 }
 
 /**
- * A north-south traffic hardening alert
+ * Describes the Network Security Groups effective on a network interface
 */
-export interface TrafficAlert {
+export interface AdaptiveNetworkControlsEffectiveNetworkSecurityGroups {
   /**
-   * the date (UTC) that the traffic was detected
+   * The Azure resource ID of the network interface
   */
-  detectionDate?: Date;
+  networkInterface?: string;
   /**
-   * The alert's traffic direction. Possible values include: 'Inbound', 'Outbound'
+   * The Network Security Groups effective on the network interface
   */
-  direction?: string;
-  /**
-   * The alert's destination port
-  */
-  destinationPort?: number;
-  /**
-   * The alert's transport protocol. Possible values include: 'TCP', 'UDP'
-  */
-  protocol?: string;
-  /**
-   * The traffic that was detected and raised the alert
-  */
-  traffic?: TrafficAlertTrafficItem[];
+  networkSecurityGroups?: string[];
 }
 
 /**
- * The resource whose properties describes the North-south hardening settings for some Azure
+ * The resource whose properties describes the Adaptive Network Controls settings for some Azure
  * resource
 */
-export interface NorthSouthHardenings extends Resource {
+export interface AdaptiveNetworkControls extends Resource {
   /**
-   * The set of North-south traffic hardening rules
+   * The security rules which are recommended to be effective on the VM
   */
-  trafficHardeningRules?: TrafficHardeningRule[];
+  rules?: AdaptiveNetworkControlsRule[];
   /**
-   * The set of North-south hardening alerts associated with the Azure resource
-  */
-  trafficAlerts?: TrafficAlert[];
-  /**
-   * The UTC time on which the traffic hardening rules were calculated
+   * The UTC time on which the rules were calculated
   */
   rulesCalculationTime?: Date;
+  /**
+   * The Network Security Groups effective on the network interfaces of the protected resource
+  */
+  effectiveNetworkSecurityGroups?: AdaptiveNetworkControlsEffectiveNetworkSecurityGroups[];
 }
 
 /**
@@ -1144,9 +1106,9 @@ export interface ExternalSecuritySolutionList extends Array<ExternalSecuritySolu
 }
 
 /**
- * Response for ListNorthSouthHardenings API service call
+ * Response for ListAdaptiveNetworkControls API service call
 */
-export interface NorthSouthHardeningsList extends Array<NorthSouthHardenings> {
+export interface AdaptiveNetworkControlsList extends Array<AdaptiveNetworkControls> {
   /**
    * The URL to get the next set of results
   */
