@@ -2111,6 +2111,144 @@ export interface IntegrationRuntimes {
 
 
     /**
+     * Enable interactive query for an Auzre-VNet integration runtime.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} enableInteractiveQueryForIntegrationRuntimeRequest The
+     * request parameter for enabling interactive query of a integration runtime.
+     *
+     * @param {number}
+     * [enableInteractiveQueryForIntegrationRuntimeRequest.autoTerminationMinutes]
+     * the number of minutes that the resource will be reserved.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    enableIntegrationRuntimeInteractiveQueryWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, enableInteractiveQueryForIntegrationRuntimeRequest: models.EnableInteractiveQueryForIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Enable interactive query for an Auzre-VNet integration runtime.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} enableInteractiveQueryForIntegrationRuntimeRequest The
+     * request parameter for enabling interactive query of a integration runtime.
+     *
+     * @param {number}
+     * [enableInteractiveQueryForIntegrationRuntimeRequest.autoTerminationMinutes]
+     * the number of minutes that the resource will be reserved.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    enableIntegrationRuntimeInteractiveQuery(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, enableInteractiveQueryForIntegrationRuntimeRequest: models.EnableInteractiveQueryForIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    enableIntegrationRuntimeInteractiveQuery(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, enableInteractiveQueryForIntegrationRuntimeRequest: models.EnableInteractiveQueryForIntegrationRuntimeRequest, callback: ServiceCallback<void>): void;
+    enableIntegrationRuntimeInteractiveQuery(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, enableInteractiveQueryForIntegrationRuntimeRequest: models.EnableInteractiveQueryForIntegrationRuntimeRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Disable interactive query for an Azure-VNet integration runtime.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    disableIntegrationRuntimeInteractiveQueryWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Disable interactive query for an Azure-VNet integration runtime.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    disableIntegrationRuntimeInteractiveQuery(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    disableIntegrationRuntimeInteractiveQuery(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, callback: ServiceCallback<void>): void;
+    disableIntegrationRuntimeInteractiveQuery(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Starts a ManagedReserved type integration runtime.
      *
      * @param {string} resourceGroupName The resource group name.
