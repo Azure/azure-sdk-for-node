@@ -7001,6 +7001,34 @@ export interface FilterActivity extends ControlActivity {
 }
 
 /**
+ * This activity blocks execution until a file has been validated to exist, with an optional
+ * minimum size, or the timeout is reached, whichever is earlier.
+ */
+export interface ValidationActivity extends ControlActivity {
+  /**
+   * Specifies the timeout for the activity to run. If there is no value specified, it takes the
+   * value of TimeSpan.FromDays(7) which is 1 week as default. Type: string (or Expression with
+   * resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])). Type:
+   * string (or Expression with resultType string), pattern:
+   * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+   */
+  timeout?: any;
+  /**
+   * A delay in seconds between validation attempts. If no value is specified, 10 seconds will be
+   * used as the default.
+   */
+  sleep?: number;
+  /**
+   * Minimum size of a file in byte. If no value is specified, 0 byte will be used as the default.
+   */
+  minimumSize?: number;
+  /**
+   * Validation activity dataset reference.
+   */
+  dataset: DatasetReference;
+}
+
+/**
  * This activity executes inner activities until the specified boolean expression results to true
  * or timeout is reached, whichever is earlier.
  */
