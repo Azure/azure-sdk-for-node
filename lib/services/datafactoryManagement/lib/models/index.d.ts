@@ -6321,7 +6321,7 @@ export interface ExecuteSSISPackageActivity extends ExecutionActivity {
   /**
    * The package execution credential.
    */
-  executionCredential?: { [propertyName: string]: SSISExecutionCredential };
+  executionCredential?: SSISExecutionCredential;
   /**
    * The integration runtime reference.
    */
