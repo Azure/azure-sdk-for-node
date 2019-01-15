@@ -439,6 +439,11 @@ export interface Dataset {
    */
   structure?: any;
   /**
+   * Columns that define the physical type schema of the dataset. Type: array (or Expression with
+   * resultType array), itemType: DatasetSchemaDataElement.
+   */
+  schema?: any;
+  /**
    * Linked service reference.
    */
   linkedServiceName: LinkedServiceReference;

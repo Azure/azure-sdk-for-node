@@ -3266,6 +3266,10 @@ export interface Datasets {
      * structure of the dataset. Type: array (or Expression with resultType array),
      * itemType: DatasetDataElement.
      *
+     * @param {object} [dataset.properties.schema] Columns that define the physical
+     * type schema of the dataset. Type: array (or Expression with resultType
+     * array), itemType: DatasetSchemaDataElement.
+     *
      * @param {object} dataset.properties.linkedServiceName Linked service
      * reference.
      *
@@ -3323,6 +3327,10 @@ export interface Datasets {
      * @param {object} [dataset.properties.structure] Columns that define the
      * structure of the dataset. Type: array (or Expression with resultType array),
      * itemType: DatasetDataElement.
+     *
+     * @param {object} [dataset.properties.schema] Columns that define the physical
+     * type schema of the dataset. Type: array (or Expression with resultType
+     * array), itemType: DatasetSchemaDataElement.
      *
      * @param {object} dataset.properties.linkedServiceName Linked service
      * reference.
