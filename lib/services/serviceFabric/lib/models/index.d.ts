@@ -9,6 +9,182 @@
 import * as moment from "moment";
 
 /**
+ * Error object containing error code and error message.
+ */
+export interface FabricErrorError {
+  /**
+   * Defines the fabric error codes that be returned as part of the error object in response to
+   * Service Fabric API operations that are not successful. Following are the error code values
+   * that can be returned for a specific HTTP status code.
+   *
+   * - Possible values of the error code for HTTP status code 400 (Bad Request)
+   * - "FABRIC_E_INVALID_PARTITION_KEY"
+   * - "FABRIC_E_IMAGEBUILDER_VALIDATION_ERROR"
+   * - "FABRIC_E_INVALID_ADDRESS"
+   * - "FABRIC_E_APPLICATION_NOT_UPGRADING"
+   * - "FABRIC_E_APPLICATION_UPGRADE_VALIDATION_ERROR"
+   * - "FABRIC_E_FABRIC_NOT_UPGRADING"
+   * - "FABRIC_E_FABRIC_UPGRADE_VALIDATION_ERROR"
+   * - "FABRIC_E_INVALID_CONFIGURATION"
+   * - "FABRIC_E_INVALID_NAME_URI"
+   * - "FABRIC_E_PATH_TOO_LONG"
+   * - "FABRIC_E_KEY_TOO_LARGE"
+   * - "FABRIC_E_SERVICE_AFFINITY_CHAIN_NOT_SUPPORTED"
+   * - "FABRIC_E_INVALID_ATOMIC_GROUP"
+   * - "FABRIC_E_VALUE_EMPTY"
+   * - "FABRIC_E_BACKUP_IS_ENABLED"
+   * - "FABRIC_E_RESTORE_SOURCE_TARGET_PARTITION_MISMATCH"
+   * - "FABRIC_E_INVALID_FOR_STATELESS_SERVICES"
+   * - "FABRIC_E_INVALID_SERVICE_SCALING_POLICY"
+   * - "E_INVALIDARG"
+   *
+   * - Possible values of the error code for HTTP status code 404 (Not Found)
+   * - "FABRIC_E_NODE_NOT_FOUND"
+   * - "FABRIC_E_APPLICATION_TYPE_NOT_FOUND"
+   * - "FABRIC_E_APPLICATION_NOT_FOUND"
+   * - "FABRIC_E_SERVICE_TYPE_NOT_FOUND"
+   * - "FABRIC_E_SERVICE_DOES_NOT_EXIST"
+   * - "FABRIC_E_SERVICE_TYPE_TEMPLATE_NOT_FOUND"
+   * - "FABRIC_E_CONFIGURATION_SECTION_NOT_FOUND"
+   * - "FABRIC_E_PARTITION_NOT_FOUND"
+   * - "FABRIC_E_REPLICA_DOES_NOT_EXIST"
+   * - "FABRIC_E_SERVICE_GROUP_DOES_NOT_EXIST"
+   * - "FABRIC_E_CONFIGURATION_PARAMETER_NOT_FOUND"
+   * - "FABRIC_E_DIRECTORY_NOT_FOUND"
+   * - "FABRIC_E_FABRIC_VERSION_NOT_FOUND"
+   * - "FABRIC_E_FILE_NOT_FOUND"
+   * - "FABRIC_E_NAME_DOES_NOT_EXIST"
+   * - "FABRIC_E_PROPERTY_DOES_NOT_EXIST"
+   * - "FABRIC_E_ENUMERATION_COMPLETED"
+   * - "FABRIC_E_SERVICE_MANIFEST_NOT_FOUND"
+   * - "FABRIC_E_KEY_NOT_FOUND"
+   * - "FABRIC_E_HEALTH_ENTITY_NOT_FOUND"
+   * - "FABRIC_E_BACKUP_NOT_ENABLED"
+   * - "FABRIC_E_BACKUP_POLICY_NOT_EXISTING"
+   * - "FABRIC_E_FAULT_ANALYSIS_SERVICE_NOT_EXISTING"
+   * - "FABRIC_E_IMAGEBUILDER_RESERVED_DIRECTORY_ERROR"
+   *
+   * - Possible values of the error code for HTTP status code 409 (Conflict)
+   * - "FABRIC_E_APPLICATION_TYPE_ALREADY_EXISTS"
+   * - "FABRIC_E_APPLICATION_ALREADY_EXISTS"
+   * - "FABRIC_E_APPLICATION_ALREADY_IN_TARGET_VERSION"
+   * - "FABRIC_E_APPLICATION_TYPE_PROVISION_IN_PROGRESS"
+   * - "FABRIC_E_APPLICATION_UPGRADE_IN_PROGRESS"
+   * - "FABRIC_E_SERVICE_ALREADY_EXISTS"
+   * - "FABRIC_E_SERVICE_GROUP_ALREADY_EXISTS"
+   * - "FABRIC_E_APPLICATION_TYPE_IN_USE"
+   * - "FABRIC_E_FABRIC_ALREADY_IN_TARGET_VERSION"
+   * - "FABRIC_E_FABRIC_VERSION_ALREADY_EXISTS"
+   * - "FABRIC_E_FABRIC_VERSION_IN_USE"
+   * - "FABRIC_E_FABRIC_UPGRADE_IN_PROGRESS"
+   * - "FABRIC_E_NAME_ALREADY_EXISTS"
+   * - "FABRIC_E_NAME_NOT_EMPTY"
+   * - "FABRIC_E_PROPERTY_CHECK_FAILED"
+   * - "FABRIC_E_SERVICE_METADATA_MISMATCH"
+   * - "FABRIC_E_SERVICE_TYPE_MISMATCH"
+   * - "FABRIC_E_HEALTH_STALE_REPORT"
+   * - "FABRIC_E_SEQUENCE_NUMBER_CHECK_FAILED"
+   * - "FABRIC_E_NODE_HAS_NOT_STOPPED_YET"
+   * - "FABRIC_E_INSTANCE_ID_MISMATCH"
+   * - "FABRIC_E_BACKUP_IN_PROGRESS"
+   * - "FABRIC_E_RESTORE_IN_PROGRESS"
+   * - "FABRIC_E_BACKUP_POLICY_ALREADY_EXISTING"
+   *
+   * - Possible values of the error code for HTTP status code 413 (Request Entity Too Large)
+   * - "FABRIC_E_VALUE_TOO_LARGE"
+   *
+   * - Possible values of the error code for HTTP status code 500 (Internal Server Error)
+   * - "FABRIC_E_NODE_IS_UP"
+   * - "E_FAIL"
+   * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_ALREADY_EXISTS"
+   * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_NOT_FOUND"
+   * - "FABRIC_E_VOLUME_ALREADY_EXISTS"
+   * - "ABRIC_E_VOLUME_NOT_FOUND"
+   * - "SerializationError"
+   *
+   * - Possible values of the error code for HTTP status code 503 (Service Unavailable)
+   * - "FABRIC_E_NO_WRITE_QUORUM"
+   * - "FABRIC_E_NOT_PRIMARY"
+   * - "FABRIC_E_NOT_READY"
+   * - "FABRIC_E_RECONFIGURATION_PENDING"
+   * - "FABRIC_E_SERVICE_OFFLINE"
+   * - "E_ABORT"
+   * - "FABRIC_E_VALUE_TOO_LARGE"
+   *
+   * - Possible values of the error code for HTTP status code 504 (Gateway Timeout)
+   * - "FABRIC_E_COMMUNICATION_ERROR"
+   * - "FABRIC_E_OPERATION_NOT_COMPLETE"
+   * - "FABRIC_E_TIMEOUT". Possible values include: 'FABRIC_E_INVALID_PARTITION_KEY',
+   * 'FABRIC_E_IMAGEBUILDER_VALIDATION_ERROR', 'FABRIC_E_INVALID_ADDRESS',
+   * 'FABRIC_E_APPLICATION_NOT_UPGRADING', 'FABRIC_E_APPLICATION_UPGRADE_VALIDATION_ERROR',
+   * 'FABRIC_E_FABRIC_NOT_UPGRADING', 'FABRIC_E_FABRIC_UPGRADE_VALIDATION_ERROR',
+   * 'FABRIC_E_INVALID_CONFIGURATION', 'FABRIC_E_INVALID_NAME_URI', 'FABRIC_E_PATH_TOO_LONG',
+   * 'FABRIC_E_KEY_TOO_LARGE', 'FABRIC_E_SERVICE_AFFINITY_CHAIN_NOT_SUPPORTED',
+   * 'FABRIC_E_INVALID_ATOMIC_GROUP', 'FABRIC_E_VALUE_EMPTY', 'FABRIC_E_NODE_NOT_FOUND',
+   * 'FABRIC_E_APPLICATION_TYPE_NOT_FOUND', 'FABRIC_E_APPLICATION_NOT_FOUND',
+   * 'FABRIC_E_SERVICE_TYPE_NOT_FOUND', 'FABRIC_E_SERVICE_DOES_NOT_EXIST',
+   * 'FABRIC_E_SERVICE_TYPE_TEMPLATE_NOT_FOUND', 'FABRIC_E_CONFIGURATION_SECTION_NOT_FOUND',
+   * 'FABRIC_E_PARTITION_NOT_FOUND', 'FABRIC_E_REPLICA_DOES_NOT_EXIST',
+   * 'FABRIC_E_SERVICE_GROUP_DOES_NOT_EXIST', 'FABRIC_E_CONFIGURATION_PARAMETER_NOT_FOUND',
+   * 'FABRIC_E_DIRECTORY_NOT_FOUND', 'FABRIC_E_FABRIC_VERSION_NOT_FOUND',
+   * 'FABRIC_E_FILE_NOT_FOUND', 'FABRIC_E_NAME_DOES_NOT_EXIST', 'FABRIC_E_PROPERTY_DOES_NOT_EXIST',
+   * 'FABRIC_E_ENUMERATION_COMPLETED', 'FABRIC_E_SERVICE_MANIFEST_NOT_FOUND',
+   * 'FABRIC_E_KEY_NOT_FOUND', 'FABRIC_E_HEALTH_ENTITY_NOT_FOUND',
+   * 'FABRIC_E_APPLICATION_TYPE_ALREADY_EXISTS', 'FABRIC_E_APPLICATION_ALREADY_EXISTS',
+   * 'FABRIC_E_APPLICATION_ALREADY_IN_TARGET_VERSION',
+   * 'FABRIC_E_APPLICATION_TYPE_PROVISION_IN_PROGRESS', 'FABRIC_E_APPLICATION_UPGRADE_IN_PROGRESS',
+   * 'FABRIC_E_SERVICE_ALREADY_EXISTS', 'FABRIC_E_SERVICE_GROUP_ALREADY_EXISTS',
+   * 'FABRIC_E_APPLICATION_TYPE_IN_USE', 'FABRIC_E_FABRIC_ALREADY_IN_TARGET_VERSION',
+   * 'FABRIC_E_FABRIC_VERSION_ALREADY_EXISTS', 'FABRIC_E_FABRIC_VERSION_IN_USE',
+   * 'FABRIC_E_FABRIC_UPGRADE_IN_PROGRESS', 'FABRIC_E_NAME_ALREADY_EXISTS',
+   * 'FABRIC_E_NAME_NOT_EMPTY', 'FABRIC_E_PROPERTY_CHECK_FAILED',
+   * 'FABRIC_E_SERVICE_METADATA_MISMATCH', 'FABRIC_E_SERVICE_TYPE_MISMATCH',
+   * 'FABRIC_E_HEALTH_STALE_REPORT', 'FABRIC_E_SEQUENCE_NUMBER_CHECK_FAILED',
+   * 'FABRIC_E_NODE_HAS_NOT_STOPPED_YET', 'FABRIC_E_INSTANCE_ID_MISMATCH',
+   * 'FABRIC_E_VALUE_TOO_LARGE', 'FABRIC_E_NO_WRITE_QUORUM', 'FABRIC_E_NOT_PRIMARY',
+   * 'FABRIC_E_NOT_READY', 'FABRIC_E_RECONFIGURATION_PENDING', 'FABRIC_E_SERVICE_OFFLINE',
+   * 'E_ABORT', 'FABRIC_E_COMMUNICATION_ERROR', 'FABRIC_E_OPERATION_NOT_COMPLETE',
+   * 'FABRIC_E_TIMEOUT', 'FABRIC_E_NODE_IS_UP', 'E_FAIL', 'FABRIC_E_BACKUP_IS_ENABLED',
+   * 'FABRIC_E_RESTORE_SOURCE_TARGET_PARTITION_MISMATCH',
+   * 'FABRIC_E_INVALID_FOR_STATELESS_SERVICES', 'FABRIC_E_BACKUP_NOT_ENABLED',
+   * 'FABRIC_E_BACKUP_POLICY_NOT_EXISTING', 'FABRIC_E_FAULT_ANALYSIS_SERVICE_NOT_EXISTING',
+   * 'FABRIC_E_BACKUP_IN_PROGRESS', 'FABRIC_E_RESTORE_IN_PROGRESS',
+   * 'FABRIC_E_BACKUP_POLICY_ALREADY_EXISTING', 'FABRIC_E_INVALID_SERVICE_SCALING_POLICY',
+   * 'E_INVALIDARG', 'FABRIC_E_SINGLE_INSTANCE_APPLICATION_ALREADY_EXISTS',
+   * 'FABRIC_E_SINGLE_INSTANCE_APPLICATION_NOT_FOUND', 'FABRIC_E_VOLUME_ALREADY_EXISTS',
+   * 'FABRIC_E_VOLUME_NOT_FOUND', 'SerializationError',
+   * 'FABRIC_E_IMAGEBUILDER_RESERVED_DIRECTORY_ERROR'
+   */
+  code: string;
+  /**
+   * Error message.
+   */
+  message?: string;
+}
+
+/**
+ * The REST API operations for Service Fabric return standard HTTP status codes. This type defines
+ * the additional information returned from the Service Fabric API operations that are not
+ * successful.
+ */
+export interface FabricError {
+  /**
+   * Error object containing error code and error message.
+   */
+  error: FabricErrorError;
+}
+
+/**
+ * Container logs.
+ */
+export interface ContainerLogs {
+  /**
+   * Container logs.
+   */
+  content?: string;
+}
+
+/**
  * Azure Active Directory metadata used for secured connection to cluster.
  */
 export interface AadMetadata {
@@ -74,6 +250,10 @@ export interface FabricEvent {
    * The identifier for the FabricEvent instance.
    */
   eventInstanceId: string;
+  /**
+   * The category of event.
+   */
+  category?: string;
   /**
    * The time event was logged.
    */
@@ -272,8 +452,8 @@ export interface ServiceTypeHealthPolicy {
    */
   maxPercentUnhealthyReplicasPerPartition?: number;
   /**
-   * The maximum maximum allowed percentage of unhealthy services. Allowed values are Byte values
-   * from zero to 100.
+   * The maximum allowed percentage of unhealthy services. Allowed values are Byte values from zero
+   * to 100.
    *
    * The percentage represents the maximum tolerated percentage of services that can be unhealthy
    * before the application is considered in error.
@@ -1767,6 +1947,16 @@ export interface ClusterManifest {
 }
 
 /**
+ * The cluster version.
+ */
+export interface ClusterVersion {
+  /**
+   * The Service Fabric cluster runtime version.
+   */
+  version?: string;
+}
+
+/**
  * parameters for making container API call.
  */
 export interface ContainerApiRequestBody {
@@ -2261,7 +2451,7 @@ export interface HealthInformation {
    * If set to false, the report is treated as an error when expired. The value of this property is
    * false by default.
    * When clients report periodically, they should set RemoveWhenExpired false (default).
-   * This way, is the reporter has issues (eg. deadlock) and can't report, the entity is evaluated
+   * This way, if the reporter has issues (e.g. deadlock) and can't report, the entity is evaluated
    * at error when the health report expires.
    * This flags the entity as being in Error health state.
    */
@@ -2395,26 +2585,6 @@ export interface Epoch {
 }
 
 /**
- * An Epoch is a configuration number for the partition as a whole. When the configuration of the
- * replica set changes, for example when the Primary replica changes, the operations that are
- * replicated from the new Primary replica are said to be a new Epoch from the ones which were sent
- * by the old Primary replica.
- */
-export interface BackupEpoch {
-  /**
-   * The current configuration number of this Epoch. The configuration number is an increasing
-   * value that is updated whenever the configuration of this replica set changes.
-   */
-  configurationNumber?: string;
-  /**
-   * The current dataloss number of this Epoch. The data loss number property is an increasing
-   * value which is updated whenever data loss is suspected, as when loss of a quorum of replicas
-   * in the replica set that includes the Primary replica.
-   */
-  dataLossNumber?: string;
-}
-
-/**
  * Represents health evaluation of a HealthEvent that was reported on the entity.
  * The health evaluation is returned when evaluating health of an entity results in Error or
  * Warning.
@@ -2450,170 +2620,6 @@ export interface FabricConfigVersionInfo {
    * The config version of Service Fabric.
    */
   configVersion?: string;
-}
-
-/**
- * Error object containing error code and error message.
- */
-export interface FabricErrorError {
-  /**
-   * Defines the fabric error codes that be returned as part of the error object in response to
-   * Service Fabric API operations that are not successful. Following are the error code values
-   * that can be returned for a specific HTTP status code.
-   *
-   * - Possible values of the error code for HTTP status code 400 (Bad Request)
-   * - "FABRIC_E_INVALID_PARTITION_KEY"
-   * - "FABRIC_E_IMAGEBUILDER_VALIDATION_ERROR"
-   * - "FABRIC_E_INVALID_ADDRESS"
-   * - "FABRIC_E_APPLICATION_NOT_UPGRADING"
-   * - "FABRIC_E_APPLICATION_UPGRADE_VALIDATION_ERROR"
-   * - "FABRIC_E_FABRIC_NOT_UPGRADING"
-   * - "FABRIC_E_FABRIC_UPGRADE_VALIDATION_ERROR"
-   * - "FABRIC_E_INVALID_CONFIGURATION"
-   * - "FABRIC_E_INVALID_NAME_URI"
-   * - "FABRIC_E_PATH_TOO_LONG"
-   * - "FABRIC_E_KEY_TOO_LARGE"
-   * - "FABRIC_E_SERVICE_AFFINITY_CHAIN_NOT_SUPPORTED"
-   * - "FABRIC_E_INVALID_ATOMIC_GROUP"
-   * - "FABRIC_E_VALUE_EMPTY"
-   * - "FABRIC_E_BACKUP_IS_ENABLED"
-   * - "FABRIC_E_RESTORE_SOURCE_TARGET_PARTITION_MISMATCH"
-   * - "FABRIC_E_INVALID_FOR_STATELESS_SERVICES"
-   * - "FABRIC_E_INVALID_SERVICE_SCALING_POLICY"
-   * - "E_INVALIDARG"
-   *
-   * - Possible values of the error code for HTTP status code 404 (Not Found)
-   * - "FABRIC_E_NODE_NOT_FOUND"
-   * - "FABRIC_E_APPLICATION_TYPE_NOT_FOUND"
-   * - "FABRIC_E_APPLICATION_NOT_FOUND"
-   * - "FABRIC_E_SERVICE_TYPE_NOT_FOUND"
-   * - "FABRIC_E_SERVICE_DOES_NOT_EXIST"
-   * - "FABRIC_E_SERVICE_TYPE_TEMPLATE_NOT_FOUND"
-   * - "FABRIC_E_CONFIGURATION_SECTION_NOT_FOUND"
-   * - "FABRIC_E_PARTITION_NOT_FOUND"
-   * - "FABRIC_E_REPLICA_DOES_NOT_EXIST"
-   * - "FABRIC_E_SERVICE_GROUP_DOES_NOT_EXIST"
-   * - "FABRIC_E_CONFIGURATION_PARAMETER_NOT_FOUND"
-   * - "FABRIC_E_DIRECTORY_NOT_FOUND"
-   * - "FABRIC_E_FABRIC_VERSION_NOT_FOUND"
-   * - "FABRIC_E_FILE_NOT_FOUND"
-   * - "FABRIC_E_NAME_DOES_NOT_EXIST"
-   * - "FABRIC_E_PROPERTY_DOES_NOT_EXIST"
-   * - "FABRIC_E_ENUMERATION_COMPLETED"
-   * - "FABRIC_E_SERVICE_MANIFEST_NOT_FOUND"
-   * - "FABRIC_E_KEY_NOT_FOUND"
-   * - "FABRIC_E_HEALTH_ENTITY_NOT_FOUND"
-   * - "FABRIC_E_BACKUP_NOT_ENABLED"
-   * - "FABRIC_E_BACKUP_POLICY_NOT_EXISTING"
-   * - "FABRIC_E_FAULT_ANALYSIS_SERVICE_NOT_EXISTING"
-   *
-   * - Possible values of the error code for HTTP status code 409 (Conflict)
-   * - "FABRIC_E_APPLICATION_TYPE_ALREADY_EXISTS"
-   * - "FABRIC_E_APPLICATION_ALREADY_EXISTS"
-   * - "FABRIC_E_APPLICATION_ALREADY_IN_TARGET_VERSION"
-   * - "FABRIC_E_APPLICATION_TYPE_PROVISION_IN_PROGRESS"
-   * - "FABRIC_E_APPLICATION_UPGRADE_IN_PROGRESS"
-   * - "FABRIC_E_SERVICE_ALREADY_EXISTS"
-   * - "FABRIC_E_SERVICE_GROUP_ALREADY_EXISTS"
-   * - "FABRIC_E_APPLICATION_TYPE_IN_USE"
-   * - "FABRIC_E_FABRIC_ALREADY_IN_TARGET_VERSION"
-   * - "FABRIC_E_FABRIC_VERSION_ALREADY_EXISTS"
-   * - "FABRIC_E_FABRIC_VERSION_IN_USE"
-   * - "FABRIC_E_FABRIC_UPGRADE_IN_PROGRESS"
-   * - "FABRIC_E_NAME_ALREADY_EXISTS"
-   * - "FABRIC_E_NAME_NOT_EMPTY"
-   * - "FABRIC_E_PROPERTY_CHECK_FAILED"
-   * - "FABRIC_E_SERVICE_METADATA_MISMATCH"
-   * - "FABRIC_E_SERVICE_TYPE_MISMATCH"
-   * - "FABRIC_E_HEALTH_STALE_REPORT"
-   * - "FABRIC_E_SEQUENCE_NUMBER_CHECK_FAILED"
-   * - "FABRIC_E_NODE_HAS_NOT_STOPPED_YET"
-   * - "FABRIC_E_INSTANCE_ID_MISMATCH"
-   * - "FABRIC_E_BACKUP_IN_PROGRESS"
-   * - "FABRIC_E_RESTORE_IN_PROGRESS"
-   * - "FABRIC_E_BACKUP_POLICY_ALREADY_EXISTING"
-   *
-   * - Possible values of the error code for HTTP status code 413 (Request Entity Too Large)
-   * - "FABRIC_E_VALUE_TOO_LARGE"
-   *
-   * - Possible values of the error code for HTTP status code 500 (Internal Server Error)
-   * - "FABRIC_E_NODE_IS_UP"
-   * - "E_FAIL"
-   * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_ALREADY_EXISTS"
-   * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_NOT_FOUND"
-   * - "FABRIC_E_VOLUME_ALREADY_EXISTS"
-   * - "ABRIC_E_VOLUME_NOT_FOUND"
-   * - "SerializationError"
-   *
-   * - Possible values of the error code for HTTP status code 503 (Service Unavailable)
-   * - "FABRIC_E_NO_WRITE_QUORUM"
-   * - "FABRIC_E_NOT_PRIMARY"
-   * - "FABRIC_E_NOT_READY"
-   * - "FABRIC_E_RECONFIGURATION_PENDING"
-   * - "FABRIC_E_SERVICE_OFFLINE"
-   * - "E_ABORT"
-   * - "FABRIC_E_VALUE_TOO_LARGE"
-   *
-   * - Possible values of the error code for HTTP status code 504 (Gateway Timeout)
-   * - "FABRIC_E_COMMUNICATION_ERROR"
-   * - "FABRIC_E_OPERATION_NOT_COMPLETE"
-   * - "FABRIC_E_TIMEOUT". Possible values include: 'FABRIC_E_INVALID_PARTITION_KEY',
-   * 'FABRIC_E_IMAGEBUILDER_VALIDATION_ERROR', 'FABRIC_E_INVALID_ADDRESS',
-   * 'FABRIC_E_APPLICATION_NOT_UPGRADING', 'FABRIC_E_APPLICATION_UPGRADE_VALIDATION_ERROR',
-   * 'FABRIC_E_FABRIC_NOT_UPGRADING', 'FABRIC_E_FABRIC_UPGRADE_VALIDATION_ERROR',
-   * 'FABRIC_E_INVALID_CONFIGURATION', 'FABRIC_E_INVALID_NAME_URI', 'FABRIC_E_PATH_TOO_LONG',
-   * 'FABRIC_E_KEY_TOO_LARGE', 'FABRIC_E_SERVICE_AFFINITY_CHAIN_NOT_SUPPORTED',
-   * 'FABRIC_E_INVALID_ATOMIC_GROUP', 'FABRIC_E_VALUE_EMPTY', 'FABRIC_E_NODE_NOT_FOUND',
-   * 'FABRIC_E_APPLICATION_TYPE_NOT_FOUND', 'FABRIC_E_APPLICATION_NOT_FOUND',
-   * 'FABRIC_E_SERVICE_TYPE_NOT_FOUND', 'FABRIC_E_SERVICE_DOES_NOT_EXIST',
-   * 'FABRIC_E_SERVICE_TYPE_TEMPLATE_NOT_FOUND', 'FABRIC_E_CONFIGURATION_SECTION_NOT_FOUND',
-   * 'FABRIC_E_PARTITION_NOT_FOUND', 'FABRIC_E_REPLICA_DOES_NOT_EXIST',
-   * 'FABRIC_E_SERVICE_GROUP_DOES_NOT_EXIST', 'FABRIC_E_CONFIGURATION_PARAMETER_NOT_FOUND',
-   * 'FABRIC_E_DIRECTORY_NOT_FOUND', 'FABRIC_E_FABRIC_VERSION_NOT_FOUND',
-   * 'FABRIC_E_FILE_NOT_FOUND', 'FABRIC_E_NAME_DOES_NOT_EXIST', 'FABRIC_E_PROPERTY_DOES_NOT_EXIST',
-   * 'FABRIC_E_ENUMERATION_COMPLETED', 'FABRIC_E_SERVICE_MANIFEST_NOT_FOUND',
-   * 'FABRIC_E_KEY_NOT_FOUND', 'FABRIC_E_HEALTH_ENTITY_NOT_FOUND',
-   * 'FABRIC_E_APPLICATION_TYPE_ALREADY_EXISTS', 'FABRIC_E_APPLICATION_ALREADY_EXISTS',
-   * 'FABRIC_E_APPLICATION_ALREADY_IN_TARGET_VERSION',
-   * 'FABRIC_E_APPLICATION_TYPE_PROVISION_IN_PROGRESS', 'FABRIC_E_APPLICATION_UPGRADE_IN_PROGRESS',
-   * 'FABRIC_E_SERVICE_ALREADY_EXISTS', 'FABRIC_E_SERVICE_GROUP_ALREADY_EXISTS',
-   * 'FABRIC_E_APPLICATION_TYPE_IN_USE', 'FABRIC_E_FABRIC_ALREADY_IN_TARGET_VERSION',
-   * 'FABRIC_E_FABRIC_VERSION_ALREADY_EXISTS', 'FABRIC_E_FABRIC_VERSION_IN_USE',
-   * 'FABRIC_E_FABRIC_UPGRADE_IN_PROGRESS', 'FABRIC_E_NAME_ALREADY_EXISTS',
-   * 'FABRIC_E_NAME_NOT_EMPTY', 'FABRIC_E_PROPERTY_CHECK_FAILED',
-   * 'FABRIC_E_SERVICE_METADATA_MISMATCH', 'FABRIC_E_SERVICE_TYPE_MISMATCH',
-   * 'FABRIC_E_HEALTH_STALE_REPORT', 'FABRIC_E_SEQUENCE_NUMBER_CHECK_FAILED',
-   * 'FABRIC_E_NODE_HAS_NOT_STOPPED_YET', 'FABRIC_E_INSTANCE_ID_MISMATCH',
-   * 'FABRIC_E_VALUE_TOO_LARGE', 'FABRIC_E_NO_WRITE_QUORUM', 'FABRIC_E_NOT_PRIMARY',
-   * 'FABRIC_E_NOT_READY', 'FABRIC_E_RECONFIGURATION_PENDING', 'FABRIC_E_SERVICE_OFFLINE',
-   * 'E_ABORT', 'FABRIC_E_COMMUNICATION_ERROR', 'FABRIC_E_OPERATION_NOT_COMPLETE',
-   * 'FABRIC_E_TIMEOUT', 'FABRIC_E_NODE_IS_UP', 'E_FAIL', 'FABRIC_E_BACKUP_IS_ENABLED',
-   * 'FABRIC_E_RESTORE_SOURCE_TARGET_PARTITION_MISMATCH',
-   * 'FABRIC_E_INVALID_FOR_STATELESS_SERVICES', 'FABRIC_E_BACKUP_NOT_ENABLED',
-   * 'FABRIC_E_BACKUP_POLICY_NOT_EXISTING', 'FABRIC_E_FAULT_ANALYSIS_SERVICE_NOT_EXISTING',
-   * 'FABRIC_E_BACKUP_IN_PROGRESS', 'FABRIC_E_RESTORE_IN_PROGRESS',
-   * 'FABRIC_E_BACKUP_POLICY_ALREADY_EXISTING', 'FABRIC_E_INVALID_SERVICE_SCALING_POLICY',
-   * 'E_INVALIDARG', 'FABRIC_E_SINGLE_INSTANCE_APPLICATION_ALREADY_EXISTS',
-   * 'FABRIC_E_SINGLE_INSTANCE_APPLICATION_NOT_FOUND', 'FABRIC_E_VOLUME_ALREADY_EXISTS',
-   * 'FABRIC_E_VOLUME_NOT_FOUND', 'SerializationError'
-   */
-  code: string;
-  /**
-   * Error message.
-   */
-  message?: string;
-}
-
-/**
- * The REST API operations for Service Fabric return standard HTTP status codes. This type defines
- * the additional information returned from the Service Fabric API operations that are not
- * successful.
- */
-export interface FabricError {
-  /**
-   * Error object containing error code and error message.
-   */
-  error: FabricErrorError;
 }
 
 /**
@@ -4033,7 +4039,7 @@ export interface StatefulServicePartitionInfo extends ServicePartitionInfo {
    * replicated from the new Primary replica are said to be a new Epoch from the ones which were
    * sent by the old Primary replica.
    */
-  currentConfigurationEpoch?: Epoch;
+  primaryEpoch?: Epoch;
 }
 
 /**
@@ -4252,9 +4258,14 @@ export interface LoadMetricReport {
    */
   name?: string;
   /**
-   * The value of the load metric.
+   * The value of the load metric. In future releases of Service Fabric this parameter will be
+   * deprecated in favor of CurrentValue.
    */
   value?: string;
+  /**
+   * The value of the load metric.
+   */
+  currentValue?: string;
 }
 
 /**
@@ -4469,12 +4480,15 @@ export interface ClusterUpgradeProgressObject {
  */
 export interface ClusterConfigurationUpgradeDescription {
   /**
-   * The cluster configuration.
+   * The cluster configuration as a JSON string. For example, [this
+   * file](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/blob/master/Samples/ClusterConfig.Unsecure.DevCluster.json)
+   * contains JSON describing the [nodes and other properties of the
+   * cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest).
    */
   clusterConfig: string;
   /**
-   * The length of time between attempts to perform a health checks if the application or cluster
-   * is not healthy.
+   * The length of time between attempts to perform health checks if the application or cluster is
+   * not healthy.
    */
   healthCheckRetryTimeout?: moment.Duration;
   /**
@@ -4483,7 +4497,8 @@ export interface ClusterConfigurationUpgradeDescription {
    */
   healthCheckWaitDurationInSeconds?: moment.Duration;
   /**
-   * The length of time that the application or cluster must remain healthy.
+   * The length of time that the application or cluster must remain healthy before the upgrade
+   * proceeds to the next upgrade domain.
    */
   healthCheckStableDurationInSeconds?: moment.Duration;
   /**
@@ -5891,9 +5906,14 @@ export interface LoadMetricReportInfo {
    */
   name?: string;
   /**
-   * The value of the load for the metric..
+   * The value of the load for the metric. In future releases of Service Fabric this parameter will
+   * be deprecated in favor of CurrentValue.
    */
   value?: number;
+  /**
+   * The double value of the load for the metric.
+   */
+  currentValue?: string;
   /**
    * The UTC time when the load is reported.
    */
@@ -6961,6 +6981,16 @@ export interface BackupStorageDescription {
 }
 
 /**
+ * Describes the retention policy configured.
+ */
+export interface RetentionPolicyDescription {
+  /**
+   * Polymorphic Discriminator
+   */
+  retentionPolicyType: string;
+}
+
+/**
  * Describes a backup policy for configuring periodic backup.
  */
 export interface BackupPolicyDescription {
@@ -6990,6 +7020,10 @@ export interface BackupPolicyDescription {
    * Describes the details of backup storage where to store the periodic backups.
    */
   storage: BackupStorageDescription;
+  /**
+   * Describes the policy to retain backups in storage.
+   */
+  retentionPolicy?: RetentionPolicyDescription;
 }
 
 /**
@@ -7009,6 +7043,35 @@ export interface PagedBackupPolicyDescriptionList {
    * The list of backup policies information.
    */
   items?: BackupPolicyDescription[];
+}
+
+/**
+ * Describes basic retention policy.
+ */
+export interface BasicRetentionPolicyDescription extends RetentionPolicyDescription {
+  /**
+   * It is the minimum duration for which a backup created, will remain stored in the storage and
+   * might get deleted after that span of time. It should be specified in ISO8601 format.
+   */
+  retentionDuration: moment.Duration;
+  /**
+   * It is the minimum number of backups to be retained at any point of time. If specified with a
+   * non zero value, backups will not be deleted even if the backups have gone past retention
+   * duration and have number of backups less than or equal to it.
+   */
+  minimumNumberOfBackups?: number;
+}
+
+/**
+ * It describes the body parameters while disabling backup of a backup
+ * entity(Application/Service/Partition).
+ */
+export interface DisableBackupDescription {
+  /**
+   * Boolean flag to delete backups. It can be set to true for deleting all the backups which were
+   * created for the backup entity that is getting disabled for backup.
+   */
+  cleanBackup: boolean;
 }
 
 /**
@@ -7125,7 +7188,7 @@ export interface RestoreProgressInfo {
   /**
    * Describes the epoch at which the partition is restored.
    */
-  restoredEpoch?: BackupEpoch;
+  restoredEpoch?: Epoch;
   /**
    * Restored LSN.
    */
@@ -7183,7 +7246,7 @@ export interface BackupInfo {
   /**
    * Epoch of the last record in this backup.
    */
-  epochOfLastBackupRecord?: BackupEpoch;
+  epochOfLastBackupRecord?: Epoch;
   /**
    * LSN of the last record in this backup.
    */
@@ -7192,6 +7255,10 @@ export interface BackupInfo {
    * The date time when this backup was taken.
    */
   creationTimeUtc?: Date;
+  /**
+   * Manifest Version of the service this partition backup belongs to.
+   */
+  serviceManifestVersion?: string;
   /**
    * Denotes the failure encountered in getting backup point information.
    */
@@ -7314,7 +7381,7 @@ export interface BackupProgressInfo {
   /**
    * Specifies the epoch of the last record included in backup.
    */
-  epochOfLastBackupRecord?: BackupEpoch;
+  epochOfLastBackupRecord?: Epoch;
   /**
    * The LSN of last record included in backup.
    */
@@ -7335,10 +7402,7 @@ export interface PartitionBackupConfigurationInfo extends BackupConfigurationInf
    */
   serviceName?: string;
   /**
-   * An internal ID used by Service Fabric to uniquely identify a partition. This is a randomly
-   * generated GUID when the service was created. The partition ID is unique and does not change
-   * for the lifetime of the service. If the same service was deleted and recreated the IDs of its
-   * partitions would be different.
+   * The partition ID indentifying the partition.
    */
   partitionId?: string;
 }
@@ -7382,10 +7446,7 @@ export interface PartitionBackupEntity extends BackupEntity {
    */
   serviceName?: string;
   /**
-   * An internal ID used by Service Fabric to uniquely identify a partition. This is a randomly
-   * generated GUID when the service was created. The partition ID is unique and does not change
-   * for the lifetime of the service. If the same service was deleted and recreated the IDs of its
-   * partitions would be different.
+   * The partition ID indentifying the partition.
    */
   partitionId?: string;
 }
@@ -7847,16 +7908,6 @@ export interface UploadSession {
 }
 
 /**
- * Container logs.
- */
-export interface ContainerLogs {
-  /**
-   * Container logs.
-   */
-  content?: string;
-}
-
-/**
  * Represents a scaling trigger related to an average load of a metric/resource of a partition.
  */
 export interface AveragePartitionLoadScalingTrigger extends ScalingTriggerDescription {
@@ -7972,7 +8023,7 @@ export interface ApplicationDeletedEvent extends ApplicationEvent {
 /**
  * Application Health Report Created event.
  */
-export interface ApplicationHealthReportCreatedEvent extends ApplicationEvent {
+export interface ApplicationNewHealthReportEvent extends ApplicationEvent {
   /**
    * Id of Application instance.
    */
@@ -8054,9 +8105,9 @@ export interface ApplicationHealthReportExpiredEvent extends ApplicationEvent {
 }
 
 /**
- * Application Upgrade Complete event.
+ * Application Upgrade Completed event.
  */
-export interface ApplicationUpgradeCompleteEvent extends ApplicationEvent {
+export interface ApplicationUpgradeCompletedEvent extends ApplicationEvent {
   /**
    * Application type name.
    */
@@ -8072,9 +8123,9 @@ export interface ApplicationUpgradeCompleteEvent extends ApplicationEvent {
 }
 
 /**
- * Application Upgrade Domain Complete event.
+ * Application Upgrade Domain Completed event.
  */
-export interface ApplicationUpgradeDomainCompleteEvent extends ApplicationEvent {
+export interface ApplicationUpgradeDomainCompletedEvent extends ApplicationEvent {
   /**
    * Application type name.
    */
@@ -8102,9 +8153,9 @@ export interface ApplicationUpgradeDomainCompleteEvent extends ApplicationEvent 
 }
 
 /**
- * Application Upgrade Rollback Complete event.
+ * Application Upgrade Rollback Completed event.
  */
-export interface ApplicationUpgradeRollbackCompleteEvent extends ApplicationEvent {
+export interface ApplicationUpgradeRollbackCompletedEvent extends ApplicationEvent {
   /**
    * Application type name.
    */
@@ -8124,9 +8175,9 @@ export interface ApplicationUpgradeRollbackCompleteEvent extends ApplicationEven
 }
 
 /**
- * Application Upgrade Rollback Start event.
+ * Application Upgrade Rollback Started event.
  */
-export interface ApplicationUpgradeRollbackStartEvent extends ApplicationEvent {
+export interface ApplicationUpgradeRollbackStartedEvent extends ApplicationEvent {
   /**
    * Application type name.
    */
@@ -8150,9 +8201,9 @@ export interface ApplicationUpgradeRollbackStartEvent extends ApplicationEvent {
 }
 
 /**
- * Application Upgrade Start event.
+ * Application Upgrade Started event.
  */
-export interface ApplicationUpgradeStartEvent extends ApplicationEvent {
+export interface ApplicationUpgradeStartedEvent extends ApplicationEvent {
   /**
    * Application type name.
    */
@@ -8182,7 +8233,7 @@ export interface ApplicationUpgradeStartEvent extends ApplicationEvent {
 /**
  * Deployed Application Health Report Created event.
  */
-export interface DeployedApplicationHealthReportCreatedEvent extends ApplicationEvent {
+export interface DeployedApplicationNewHealthReportEvent extends ApplicationEvent {
   /**
    * Id of Application instance.
    */
@@ -8272,9 +8323,9 @@ export interface DeployedApplicationHealthReportExpiredEvent extends Application
 }
 
 /**
- * Process Deactivated event.
+ * Process Exited event.
  */
-export interface ProcessDeactivatedEvent extends ApplicationEvent {
+export interface ApplicationProcessExitedEvent extends ApplicationEvent {
   /**
    * Name of Service.
    */
@@ -8326,9 +8377,9 @@ export interface ProcessDeactivatedEvent extends ApplicationEvent {
 }
 
 /**
- * Container Deactivated event.
+ * Container Exited event.
  */
-export interface ContainerDeactivatedEvent extends ApplicationEvent {
+export interface ApplicationContainerInstanceExitedEvent extends ApplicationEvent {
   /**
    * Name of Service.
    */
@@ -8418,47 +8469,9 @@ export interface NodeAbortedEvent extends NodeEvent {
 }
 
 /**
- * Node Aborting event.
- */
-export interface NodeAbortingEvent extends NodeEvent {
-  /**
-   * Id of Node instance.
-   */
-  nodeInstance: number;
-  /**
-   * Id of Node.
-   */
-  nodeId: string;
-  /**
-   * Upgrade domain of Node.
-   */
-  upgradeDomain: string;
-  /**
-   * Fault domain of Node.
-   */
-  faultDomain: string;
-  /**
-   * IP address or FQDN.
-   */
-  ipAddressOrFQDN: string;
-  /**
-   * Name of Host.
-   */
-  hostname: string;
-  /**
-   * Indicates if it is seed node.
-   */
-  isSeedNode: boolean;
-  /**
-   * Version of Node.
-   */
-  nodeVersion: string;
-}
-
-/**
  * Node Added event.
  */
-export interface NodeAddedEvent extends NodeEvent {
+export interface NodeAddedToClusterEvent extends NodeEvent {
   /**
    * Id of Node.
    */
@@ -8486,9 +8499,9 @@ export interface NodeAddedEvent extends NodeEvent {
 }
 
 /**
- * Node Close event.
+ * Node Closed event.
  */
-export interface NodeCloseEvent extends NodeEvent {
+export interface NodeClosedEvent extends NodeEvent {
   /**
    * Id of Node.
    */
@@ -8496,7 +8509,7 @@ export interface NodeCloseEvent extends NodeEvent {
   /**
    * Id of Node instance.
    */
-  nodeInstance: string;
+  nodeInstance: number;
   /**
    * Describes error.
    */
@@ -8504,47 +8517,9 @@ export interface NodeCloseEvent extends NodeEvent {
 }
 
 /**
- * Node Closing event.
+ * Node Deactivate Completed event.
  */
-export interface NodeClosingEvent extends NodeEvent {
-  /**
-   * Id of Node instance.
-   */
-  nodeInstance: number;
-  /**
-   * Id of Node.
-   */
-  nodeId: string;
-  /**
-   * Upgrade domain of Node.
-   */
-  upgradeDomain: string;
-  /**
-   * Fault domain of Node.
-   */
-  faultDomain: string;
-  /**
-   * IP address or FQDN.
-   */
-  ipAddressOrFQDN: string;
-  /**
-   * Name of Host.
-   */
-  hostname: string;
-  /**
-   * Indicates if it is seed node.
-   */
-  isSeedNode: boolean;
-  /**
-   * Version of Node.
-   */
-  nodeVersion: string;
-}
-
-/**
- * Node Deactivate Complete event.
- */
-export interface NodeDeactivateCompleteEvent extends NodeEvent {
+export interface NodeDeactivateCompletedEvent extends NodeEvent {
   /**
    * Id of Node instance.
    */
@@ -8564,9 +8539,9 @@ export interface NodeDeactivateCompleteEvent extends NodeEvent {
 }
 
 /**
- * Node Deactivate Start event.
+ * Node Deactivate Started event.
  */
-export interface NodeDeactivateStartEvent extends NodeEvent {
+export interface NodeDeactivateStartedEvent extends NodeEvent {
   /**
    * Id of Node instance.
    */
@@ -8598,7 +8573,7 @@ export interface NodeDownEvent extends NodeEvent {
 /**
  * Node Health Report Created event.
  */
-export interface NodeHealthReportCreatedEvent extends NodeEvent {
+export interface NodeNewHealthReportEvent extends NodeEvent {
   /**
    * Id of Node instance.
    */
@@ -8680,9 +8655,9 @@ export interface NodeHealthReportExpiredEvent extends NodeEvent {
 }
 
 /**
- * Node Opened Success event.
+ * Node Opened Succeeded event.
  */
-export interface NodeOpenedSuccessEvent extends NodeEvent {
+export interface NodeOpenSucceededEvent extends NodeEvent {
   /**
    * Id of Node instance.
    */
@@ -8760,47 +8735,9 @@ export interface NodeOpenFailedEvent extends NodeEvent {
 }
 
 /**
- * Node Opening event.
- */
-export interface NodeOpeningEvent extends NodeEvent {
-  /**
-   * Id of Node instance.
-   */
-  nodeInstance: number;
-  /**
-   * Id of Node.
-   */
-  nodeId: string;
-  /**
-   * Upgrade domain of Node.
-   */
-  upgradeDomain: string;
-  /**
-   * Fault domain of Node.
-   */
-  faultDomain: string;
-  /**
-   * IP address or FQDN.
-   */
-  ipAddressOrFQDN: string;
-  /**
-   * Name of Host.
-   */
-  hostname: string;
-  /**
-   * Indicates if it is seed node.
-   */
-  isSeedNode: boolean;
-  /**
-   * Version of Node.
-   */
-  nodeVersion: string;
-}
-
-/**
  * Node Removed event.
  */
-export interface NodeRemovedEvent extends NodeEvent {
+export interface NodeRemovedFromClusterEvent extends NodeEvent {
   /**
    * Id of Node.
    */
@@ -8844,7 +8781,7 @@ export interface NodeUpEvent extends NodeEvent {
 /**
  * Partition Health Report Created event.
  */
-export interface PartitionHealthReportCreatedEvent extends PartitionEvent {
+export interface PartitionNewHealthReportEvent extends PartitionEvent {
   /**
    * Id of report source.
    */
@@ -8918,9 +8855,9 @@ export interface PartitionHealthReportExpiredEvent extends PartitionEvent {
 }
 
 /**
- * Partition Reconfiguration Completed event.
+ * Partition Reconfiguration event.
  */
-export interface PartitionReconfigurationCompletedEvent extends PartitionEvent {
+export interface PartitionReconfiguredEvent extends PartitionEvent {
   /**
    * The name of a Service Fabric node.
    */
@@ -9095,7 +9032,7 @@ export interface ServiceDeletedEvent extends ServiceEvent {
 /**
  * Service Health Report Created event.
  */
-export interface ServiceHealthReportCreatedEvent extends ServiceEvent {
+export interface ServiceNewHealthReportEvent extends ServiceEvent {
   /**
    * Id of Service instance.
    */
@@ -9179,7 +9116,7 @@ export interface ServiceHealthReportExpiredEvent extends ServiceEvent {
 /**
  * Deployed Service Health Report Created event.
  */
-export interface DeployedServiceHealthReportCreatedEvent extends ApplicationEvent {
+export interface DeployedServicePackageNewHealthReportEvent extends ApplicationEvent {
   /**
    * Service manifest name.
    */
@@ -9211,7 +9148,7 @@ export interface DeployedServiceHealthReportCreatedEvent extends ApplicationEven
   /**
    * Time to live in milli-seconds.
    */
-  tTLTimespan: number;
+  timeToLiveMs: number;
   /**
    * Sequence number of report.
    */
@@ -9233,7 +9170,7 @@ export interface DeployedServiceHealthReportCreatedEvent extends ApplicationEven
 /**
  * Deployed Service Health Report Expired event.
  */
-export interface DeployedServiceHealthReportExpiredEvent extends ApplicationEvent {
+export interface DeployedServicePackageHealthReportExpiredEvent extends ApplicationEvent {
   /**
    * Service manifest name.
    */
@@ -9265,7 +9202,7 @@ export interface DeployedServiceHealthReportExpiredEvent extends ApplicationEven
   /**
    * Time to live in milli-seconds.
    */
-  tTLTimespan: number;
+  timeToLiveMs: number;
   /**
    * Sequence number of report.
    */
@@ -9287,7 +9224,7 @@ export interface DeployedServiceHealthReportExpiredEvent extends ApplicationEven
 /**
  * Stateful Replica Health Report Created event.
  */
-export interface StatefulReplicaHealthReportCreatedEvent extends ReplicaEvent {
+export interface StatefulReplicaNewHealthReportEvent extends ReplicaEvent {
   /**
    * Id of Replica instance.
    */
@@ -9371,7 +9308,7 @@ export interface StatefulReplicaHealthReportExpiredEvent extends ReplicaEvent {
 /**
  * Stateless Replica Health Report Created event.
  */
-export interface StatelessReplicaHealthReportCreatedEvent extends ReplicaEvent {
+export interface StatelessReplicaNewHealthReportEvent extends ReplicaEvent {
   /**
    * Id of report source.
    */
@@ -9447,7 +9384,7 @@ export interface StatelessReplicaHealthReportExpiredEvent extends ReplicaEvent {
 /**
  * Cluster Health Report Created event.
  */
-export interface ClusterHealthReportCreatedEvent extends ClusterEvent {
+export interface ClusterNewHealthReportEvent extends ClusterEvent {
   /**
    * Id of report source.
    */
@@ -9521,9 +9458,9 @@ export interface ClusterHealthReportExpiredEvent extends ClusterEvent {
 }
 
 /**
- * Cluster Upgrade Complete event.
+ * Cluster Upgrade Completed event.
  */
-export interface ClusterUpgradeCompleteEvent extends ClusterEvent {
+export interface ClusterUpgradeCompletedEvent extends ClusterEvent {
   /**
    * Target Cluster version.
    */
@@ -9535,9 +9472,9 @@ export interface ClusterUpgradeCompleteEvent extends ClusterEvent {
 }
 
 /**
- * Cluster Upgrade Domain Complete event.
+ * Cluster Upgrade Domain Completed event.
  */
-export interface ClusterUpgradeDomainCompleteEvent extends ClusterEvent {
+export interface ClusterUpgradeDomainCompletedEvent extends ClusterEvent {
   /**
    * Target Cluster version.
    */
@@ -9557,9 +9494,9 @@ export interface ClusterUpgradeDomainCompleteEvent extends ClusterEvent {
 }
 
 /**
- * Cluster Upgrade Rollback Complete event.
+ * Cluster Upgrade Rollback Completed event.
  */
-export interface ClusterUpgradeRollbackCompleteEvent extends ClusterEvent {
+export interface ClusterUpgradeRollbackCompletedEvent extends ClusterEvent {
   /**
    * Target Cluster version.
    */
@@ -9575,9 +9512,9 @@ export interface ClusterUpgradeRollbackCompleteEvent extends ClusterEvent {
 }
 
 /**
- * Cluster Upgrade Rollback Start event.
+ * Cluster Upgrade Rollback Started event.
  */
-export interface ClusterUpgradeRollbackStartEvent extends ClusterEvent {
+export interface ClusterUpgradeRollbackStartedEvent extends ClusterEvent {
   /**
    * Target Cluster version.
    */
@@ -9593,9 +9530,9 @@ export interface ClusterUpgradeRollbackStartEvent extends ClusterEvent {
 }
 
 /**
- * Cluster Upgrade Start event.
+ * Cluster Upgrade Started event.
  */
-export interface ClusterUpgradeStartEvent extends ClusterEvent {
+export interface ClusterUpgradeStartedEvent extends ClusterEvent {
   /**
    * Current Cluster version.
    */
@@ -9675,57 +9612,9 @@ export interface ChaosStartedEvent extends ClusterEvent {
 }
 
 /**
- * Chaos Restart Node Fault Completed event.
- */
-export interface ChaosRestartNodeFaultCompletedEvent extends NodeEvent {
-  /**
-   * Id of Node instance.
-   */
-  nodeInstanceId: number;
-  /**
-   * Id of fault group.
-   */
-  faultGroupId: string;
-  /**
-   * Id of fault.
-   */
-  faultId: string;
-}
-
-/**
  * Chaos Restart Code Package Fault Scheduled event.
  */
-export interface ChaosRestartCodePackageFaultScheduledEvent extends ApplicationEvent {
-  /**
-   * Id of fault group.
-   */
-  faultGroupId: string;
-  /**
-   * Id of fault.
-   */
-  faultId: string;
-  /**
-   * The name of a Service Fabric node.
-   */
-  nodeName: string;
-  /**
-   * Service manifest name.
-   */
-  serviceManifestName: string;
-  /**
-   * Code package name.
-   */
-  codePackageName: string;
-  /**
-   * Id of Service package activation.
-   */
-  servicePackageActivationId: string;
-}
-
-/**
- * Chaos Restart Code Package Fault Completed event.
- */
-export interface ChaosRestartCodePackageFaultCompletedEvent extends ApplicationEvent {
+export interface ChaosCodePackageRestartScheduledEvent extends ApplicationEvent {
   /**
    * Id of fault group.
    */
@@ -9755,25 +9644,7 @@ export interface ChaosRestartCodePackageFaultCompletedEvent extends ApplicationE
 /**
  * Chaos Remove Replica Fault Scheduled event.
  */
-export interface ChaosRemoveReplicaFaultScheduledEvent extends ReplicaEvent {
-  /**
-   * Id of fault group.
-   */
-  faultGroupId: string;
-  /**
-   * Id of fault.
-   */
-  faultId: string;
-  /**
-   * Service name.
-   */
-  serviceUri: string;
-}
-
-/**
- * Chaos Remove Replica Fault Completed event.
- */
-export interface ChaosRemoveReplicaFaultCompletedEvent extends ReplicaEvent {
+export interface ChaosReplicaRemovalScheduledEvent extends ReplicaEvent {
   /**
    * Id of fault group.
    */
@@ -9791,7 +9662,7 @@ export interface ChaosRemoveReplicaFaultCompletedEvent extends ReplicaEvent {
 /**
  * Chaos Move Secondary Fault Scheduled event.
  */
-export interface ChaosMoveSecondaryFaultScheduledEvent extends PartitionEvent {
+export interface ChaosPartitionSecondaryMoveScheduledEvent extends PartitionEvent {
   /**
    * Id of fault group.
    */
@@ -9821,7 +9692,7 @@ export interface ChaosMoveSecondaryFaultScheduledEvent extends PartitionEvent {
 /**
  * Chaos Move Primary Fault Scheduled event.
  */
-export interface ChaosMovePrimaryFaultScheduledEvent extends PartitionEvent {
+export interface ChaosPartitionPrimaryMoveScheduledEvent extends PartitionEvent {
   /**
    * Id of fault group.
    */
@@ -9847,7 +9718,7 @@ export interface ChaosMovePrimaryFaultScheduledEvent extends PartitionEvent {
 /**
  * Chaos Restart Replica Fault Scheduled event.
  */
-export interface ChaosRestartReplicaFaultScheduledEvent extends ReplicaEvent {
+export interface ChaosReplicaRestartScheduledEvent extends ReplicaEvent {
   /**
    * Id of fault group.
    */
@@ -9865,7 +9736,7 @@ export interface ChaosRestartReplicaFaultScheduledEvent extends ReplicaEvent {
 /**
  * Chaos Restart Node Fault Scheduled event.
  */
-export interface ChaosRestartNodeFaultScheduledEvent extends NodeEvent {
+export interface ChaosNodeRestartScheduledEvent extends NodeEvent {
   /**
    * Id of Node instance.
    */
@@ -9881,65 +9752,9 @@ export interface ChaosRestartNodeFaultScheduledEvent extends NodeEvent {
 }
 
 /**
- * Describes a service fabric service resource.
+ * This type describes the properties of a secret resource, including its kind.
  */
-export interface ServiceResourceDescription {
-  /**
-   * The Operating system type required by the code in service. Possible values include: 'Linux',
-   * 'Windows'
-   */
-  osType: string;
-  /**
-   * Describes the set of code packages that forms the service. A code package describes the
-   * container and the properties for running it. All the code packages are started together on the
-   * same host and share the same context (network, process etc.).
-   */
-  codePackages: ContainerCodePackageProperties[];
-  /**
-   * The names of the private networks that this service needs to be part of.
-   */
-  networkRefs?: NetworkRef[];
-  /**
-   * Reference to sinks in DiagnosticsDescription.
-   */
-  diagnostics?: DiagnosticsRef;
-  /**
-   * User readable description of the service.
-   */
-  description?: string;
-  /**
-   * The number of replicas of the service to create. Defaults to 1 if not specified.
-   */
-  replicaCount?: number;
-  /**
-   * The health state of a Service Fabric entity such as Cluster, Node, Application, Service,
-   * Partition, Replica etc. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
-   * 'Unknown'
-   */
-  healthState?: string;
-  /**
-   * Represents the status of the service. Possible values include: 'Unknown', 'Active',
-   * 'Upgrading', 'Deleting', 'Creating', 'Failed'
-   */
-  readonly status?: string;
-  /**
-   * Service resource name.
-   */
-  name: string;
-}
-
-/**
- * Properties of a DiagnosticsSink.
- */
-export interface DiagnosticsSinkProperties {
-  /**
-   * Name of the sink. This value is referenced by DiagnosticsReferenceDescription
-   */
-  name?: string;
-  /**
-   * A description of the sink.
-   */
-  description?: string;
+export interface SecretResourcePropertiesBase {
   /**
    * Polymorphic Discriminator
    */
@@ -9947,79 +9762,58 @@ export interface DiagnosticsSinkProperties {
 }
 
 /**
- * Describes the diagnostics options available
+ * Describes the properties of a secret resource.
  */
-export interface DiagnosticsDescription {
+export interface SecretResourceProperties extends SecretResourcePropertiesBase {
   /**
-   * List of supported sinks that can be referenced.
-   */
-  sinks?: DiagnosticsSinkProperties[];
-  /**
-   * Status of whether or not sinks are enabled.
-   */
-  enabled?: boolean;
-  /**
-   * The sinks to be used if diagnostics is enabled. Sink choices can be overridden at the service
-   * and code package level.
-   */
-  defaultSinkRefs?: string[];
-}
-
-/**
- * Describes a service fabric application resource.
- */
-export interface ApplicationResourceDescription {
-  /**
-   * User readable description of the application.
+   * User readable description of the secret.
    */
   description?: string;
   /**
-   * Internal use.
-   */
-  debugParams?: string;
-  /**
-   * describes the services in the application.
-   */
-  services?: ServiceResourceDescription[];
-  /**
-   * Describes the health state of an application resource. Possible values include: 'Invalid',
-   * 'Ok', 'Warning', 'Error', 'Unknown'
-   */
-  readonly healthState?: string;
-  /**
-   * When the application's health state is not 'Ok', this additional details from service fabric
-   * Health Manager for the user to know why the application is marked unhealthy.
-   */
-  readonly unhealthyEvaluation?: string;
-  /**
-   * Status of the application resource. Possible values include: 'Invalid', 'Ready', 'Upgrading',
-   * 'Creating', 'Deleting', 'Failed'
+   * Status of the resource. Possible values include: 'Unknown', 'Ready', 'Upgrading', 'Creating',
+   * 'Deleting', 'Failed'
    */
   readonly status?: string;
   /**
-   * Gives additional information about the current status of the application deployment.
+   * Gives additional information about the current status of the secret.
    */
   readonly statusDetails?: string;
   /**
-   * Names of the services in the application.
+   * The type of the content stored in the secret value. The value of this property is opaque to
+   * Service Fabric. Once set, the value of this property cannot be changed.
    */
-  readonly serviceNames?: string[];
+  contentType?: string;
+}
+
+/**
+ * Describes the properties of a secret resource whose value is provided explicitly as plaintext.
+ * The secret resource may have multiple values, each being uniquely versioned. The secret value of
+ * each version is stored encrypted, and delivered as plaintext into the context of applications
+ * referencing it.
+ */
+export interface InlinedValueSecretResourceProperties extends SecretResourceProperties {
+}
+
+/**
+ * This type describes a secret resource.
+ */
+export interface SecretResourceDescription {
   /**
-   * Describes the diagnostics definition and usage for an application resource.
+   * Describes the properties of a secret resource.
    */
-  diagnostics?: DiagnosticsDescription;
+  properties: SecretResourceProperties;
   /**
-   * Application resource name.
+   * Name of the Secret resource.
    */
   name: string;
 }
 
 /**
- * The list of service resources in the cluster. The list is paged when all of the results cannot
- * fit in a single message. The next set of results can be obtained by executing the same query
- * with the continuation token provided in this list.
+ * The list of secret resources. The list is paged when all of the results cannot fit in a single
+ * message. The next set of results can be obtained by executing the same query with the
+ * continuation token provided in this list.
  */
-export interface PagedServiceResourceDescriptionList {
+export interface PagedSecretResourceDescriptionList {
   /**
    * The continuation token parameter is used to obtain next set of results. The continuation token
    * is included in the response of the API when the results from the system do not fit in a single
@@ -10028,52 +9822,52 @@ export interface PagedServiceResourceDescriptionList {
    */
   continuationToken?: string;
   /**
-   * List of service resource description.
+   * One page of the list.
    */
-  items?: ServiceResourceDescription[];
+  items?: SecretResourceDescription[];
 }
 
 /**
- * Describes the properties of a service replica.
+ * This type represents the unencrypted value of the secret.
  */
-export interface ServiceReplicaProperties {
+export interface SecretValue {
   /**
-   * The Operating system type required by the code in service. Possible values include: 'Linux',
-   * 'Windows'
+   * The actual value of the secret.
    */
-  osType: string;
-  /**
-   * Describes the set of code packages that forms the service. A code package describes the
-   * container and the properties for running it. All the code packages are started together on the
-   * same host and share the same context (network, process etc.).
-   */
-  codePackages: ContainerCodePackageProperties[];
-  /**
-   * The names of the private networks that this service needs to be part of.
-   */
-  networkRefs?: NetworkRef[];
-  /**
-   * Reference to sinks in DiagnosticsDescription.
-   */
-  diagnostics?: DiagnosticsRef;
+  value?: string;
 }
 
 /**
- * Describes a replica of a service resource.
+ * This type describes properties of secret value resource.
  */
-export interface ServiceResourceReplicaDescription extends ServiceReplicaProperties {
+export interface SecretValueProperties {
   /**
-   * Name of the replica.
+   * The actual value of the secret.
    */
-  replicaName: string;
+  value?: string;
 }
 
 /**
- * The list of service resources in the cluster. The list is paged when all of the results cannot
- * fit in a single message. The next set of results can be obtained by executing the same query
- * with the continuation token provided in this list.
+ * This type describes a value of a secret resource. The name of this resource is the version
+ * identifier corresponding to this secret value.
  */
-export interface PagedServiceResourceReplicaDescriptionList {
+export interface SecretValueResourceDescription {
+  /**
+   * Version identifier of the secret value.
+   */
+  name: string;
+  /**
+   * The actual value of the secret.
+   */
+  value?: string;
+}
+
+/**
+ * The list of values of a secret resource, paged if the number of results exceeds the limits of a
+ * single message. The next set of results can be obtained by executing the same query with the
+ * continuation token provided in the previous page.
+ */
+export interface PagedSecretValueResourceDescriptionList {
   /**
    * The continuation token parameter is used to obtain next set of results. The continuation token
    * is included in the response of the API when the results from the system do not fit in a single
@@ -10082,9 +9876,9 @@ export interface PagedServiceResourceReplicaDescriptionList {
    */
   continuationToken?: string;
   /**
-   * List of service resource description.
+   * One page of the list.
    */
-  items?: ServiceResourceReplicaDescription[];
+  items?: SecretValueResourceDescription[];
 }
 
 /**
@@ -10106,21 +9900,395 @@ export interface VolumeProviderParametersAzureFile {
 }
 
 /**
- * Describes a service fabric volume resource.
+ * Describes a reference to a volume resource.
  */
-export interface VolumeResourceDescription {
+export interface VolumeReference {
+  /**
+   * Name of the volume being referenced.
+   */
+  name: string;
+  /**
+   * The flag indicating whether the volume is read only. Default is 'false'.
+   */
+  readOnly?: boolean;
+  /**
+   * The path within the container at which the volume should be mounted. Only valid path
+   * characters are allowed.
+   */
+  destinationPath: string;
+}
+
+/**
+ * Describes parameters for creating application-scoped volumes.
+ */
+export interface ApplicationScopedVolumeCreationParameters {
   /**
    * User readable description of the volume.
    */
   description?: string;
   /**
+   * Polymorphic Discriminator
+   */
+  kind: string;
+}
+
+/**
+ * Describes a volume whose lifetime is scoped to the application's lifetime.
+ */
+export interface ApplicationScopedVolume extends VolumeReference {
+  /**
+   * Describes parameters for creating application-scoped volumes.
+   */
+  creationParameters: ApplicationScopedVolumeCreationParameters;
+}
+
+/**
+ * Describes parameters for creating application-scoped volumes provided by Service Fabric Volume
+ * Disks
+ */
+export interface ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk extends ApplicationScopedVolumeCreationParameters {
+  /**
+   * Volume size. Possible values include: 'Small', 'Medium', 'Large'
+   */
+  sizeDisk: string;
+}
+
+/**
+ * This type describes a volume resource.
+ */
+export interface VolumeResourceDescription {
+  /**
+   * Name of the Volume resource.
+   */
+  name: string;
+  /**
+   * User readable description of the volume.
+   */
+  description?: string;
+  /**
+   * Status of the volume. Possible values include: 'Unknown', 'Ready', 'Upgrading', 'Creating',
+   * 'Deleting', 'Failed'
+   */
+  readonly status?: string;
+  /**
+   * Gives additional information about the current status of the volume.
+   */
+  readonly statusDetails?: string;
+  /**
    * This type describes a volume provided by an Azure Files file share.
    */
   azureFileParameters?: VolumeProviderParametersAzureFile;
+}
+
+/**
+ * The list of volume resources. The list is paged when all of the results cannot fit in a single
+ * message. The next set of results can be obtained by executing the same query with the
+ * continuation token provided in this list.
+ */
+export interface PagedVolumeResourceDescriptionList {
   /**
-   * Volume resource name.
+   * The continuation token parameter is used to obtain next set of results. The continuation token
+   * is included in the response of the API when the results from the system do not fit in a single
+   * response. When this value is passed to the next API call, the API returns next set of results.
+   * If there are no further results, then the continuation token is not included in the response.
+   */
+  continuationToken?: string;
+  /**
+   * One page of the list.
+   */
+  items?: VolumeResourceDescription[];
+}
+
+/**
+ * This type describes the properties of a network resource, including its kind.
+ */
+export interface NetworkResourcePropertiesBase {
+  /**
+   * Polymorphic Discriminator
+   */
+  kind: string;
+}
+
+/**
+ * Describes properties of a network resource.
+ */
+export interface NetworkResourceProperties extends NetworkResourcePropertiesBase {
+  /**
+   * User readable description of the network.
+   */
+  description?: string;
+  /**
+   * Status of the network. Possible values include: 'Unknown', 'Ready', 'Upgrading', 'Creating',
+   * 'Deleting', 'Failed'
+   */
+  readonly status?: string;
+  /**
+   * Gives additional information about the current status of the network.
+   */
+  readonly statusDetails?: string;
+}
+
+/**
+ * Information about a Service Fabric container network local to a single Service Fabric cluster.
+ */
+export interface LocalNetworkResourceProperties extends NetworkResourceProperties {
+  /**
+   * Address space for the local container network.
+   */
+  networkAddressPrefix?: string;
+}
+
+/**
+ * Describes a reference to a service endpoint.
+ */
+export interface EndpointRef {
+  /**
+   * Name of the endpoint.
+   */
+  name?: string;
+}
+
+/**
+ * Describes a network reference in a service.
+ */
+export interface NetworkRef {
+  /**
+   * Name of the network
+   */
+  name?: string;
+  /**
+   * A list of endpoints that are exposed on this network.
+   */
+  endpointRefs?: EndpointRef[];
+}
+
+/**
+ * This type describes a network resource.
+ */
+export interface NetworkResourceDescription {
+  /**
+   * Name of the Network resource.
    */
   name: string;
+  /**
+   * Describes properties of a network resource.
+   */
+  properties: NetworkResourceProperties;
+}
+
+/**
+ * The list of network resources. The list is paged when all of the results cannot fit in a single
+ * message. The next set of results can be obtained by executing the same query with the
+ * continuation token provided in this list.
+ */
+export interface PagedNetworkResourceDescriptionList {
+  /**
+   * The continuation token parameter is used to obtain next set of results. The continuation token
+   * is included in the response of the API when the results from the system do not fit in a single
+   * response. When this value is passed to the next API call, the API returns next set of results.
+   * If there are no further results, then the continuation token is not included in the response.
+   */
+  continuationToken?: string;
+  /**
+   * One page of the list.
+   */
+  items?: NetworkResourceDescription[];
+}
+
+/**
+ * Describes destination endpoint for routing traffic.
+ */
+export interface GatewayDestination {
+  /**
+   * Name of the service fabric Mesh application.
+   */
+  applicationName: string;
+  /**
+   * service that contains the endpoint.
+   */
+  serviceName: string;
+  /**
+   * name of the endpoint in the service.
+   */
+  endpointName: string;
+}
+
+/**
+ * Describes the tcp configuration for external connectivity for this network.
+ */
+export interface TcpConfig {
+  /**
+   * tcp gateway config name.
+   */
+  name: string;
+  /**
+   * Specifies the port at which the service endpoint below needs to be exposed.
+   */
+  port: number;
+  /**
+   * Describes destination endpoint for routing traffic.
+   */
+  destination: GatewayDestination;
+}
+
+/**
+ * Path to match for routing.
+ */
+export interface HttpRouteMatchPath {
+  /**
+   * Uri path to match for request.
+   */
+  value: string;
+  /**
+   * replacement string for matched part of the Uri.
+   */
+  rewrite?: string;
+}
+
+/**
+ * Describes header information for http route matching.
+ */
+export interface HttpRouteMatchHeader {
+  /**
+   * Name of header to match in request.
+   */
+  name: string;
+  /**
+   * Value of header to match in request.
+   */
+  value?: string;
+  /**
+   * how to match header value. Possible values include: 'exact'
+   */
+  type?: string;
+}
+
+/**
+ * Describes a rule for http route matching.
+ */
+export interface HttpRouteMatchRule {
+  /**
+   * Path to match for routing.
+   */
+  path: HttpRouteMatchPath;
+  /**
+   * headers and their values to match in request.
+   */
+  headers?: HttpRouteMatchHeader[];
+}
+
+/**
+ * Describes the hostname properties for http routing.
+ */
+export interface HttpRouteConfig {
+  /**
+   * http route name.
+   */
+  name: string;
+  /**
+   * Describes a rule for http route matching.
+   */
+  match: HttpRouteMatchRule;
+  /**
+   * Describes destination endpoint for routing traffic.
+   */
+  destination: GatewayDestination;
+}
+
+/**
+ * Describes the hostname properties for http routing.
+ */
+export interface HttpHostConfig {
+  /**
+   * http hostname config name.
+   */
+  name: string;
+  /**
+   * Route information to use for routing. Routes are processed in the order they are specified.
+   * Specify routes that are more specific before routes that can hamdle general cases.
+   */
+  routes: HttpRouteConfig[];
+}
+
+/**
+ * Describes the http configuration for external connectivity for this network.
+ */
+export interface HttpConfig {
+  /**
+   * http gateway config name.
+   */
+  name: string;
+  /**
+   * Specifies the port at which the service endpoint below needs to be exposed.
+   */
+  port: number;
+  /**
+   * description for routing.
+   */
+  hosts: HttpHostConfig[];
+}
+
+/**
+ * This type describes a gateway resource.
+ */
+export interface GatewayResourceDescription {
+  /**
+   * Name of the Gateway resource.
+   */
+  name: string;
+  /**
+   * User readable description of the gateway.
+   */
+  description?: string;
+  /**
+   * Network the gateway should listen on for requests.
+   */
+  sourceNetwork: NetworkRef;
+  /**
+   * Network that the Application is using.
+   */
+  destinationNetwork: NetworkRef;
+  /**
+   * Configuration for tcp connectivity for this gateway.
+   */
+  tcp?: TcpConfig[];
+  /**
+   * Configuration for http connectivity for this gateway.
+   */
+  http?: HttpConfig[];
+  /**
+   * Status of the resource. Possible values include: 'Unknown', 'Ready', 'Upgrading', 'Creating',
+   * 'Deleting', 'Failed'
+   */
+  readonly status?: string;
+  /**
+   * Gives additional information about the current status of the gateway.
+   */
+  readonly statusDetails?: string;
+  /**
+   * IP address of the gateway. This is populated in the response and is ignored for incoming
+   * requests.
+   */
+  readonly ipAddress?: string;
+}
+
+/**
+ * The list of gateway resources. The list is paged when all of the results cannot fit in a single
+ * message. The next set of results can be obtained by executing the same query with the
+ * continuation token provided in this list.
+ */
+export interface PagedGatewayResourceDescriptionList {
+  /**
+   * The continuation token parameter is used to obtain next set of results. The continuation token
+   * is included in the response of the API when the results from the system do not fit in a single
+   * response. When this value is passed to the next API call, the API returns next set of results.
+   * If there are no further results, then the continuation token is not included in the response.
+   */
+  continuationToken?: string;
+  /**
+   * One page of the list.
+   */
+  items?: GatewayResourceDescription[];
 }
 
 /**
@@ -10136,7 +10304,8 @@ export interface ImageRegistryCredential {
    */
   username: string;
   /**
-   * The password for the private registry.
+   * The password for the private registry. The password is required for create or update
+   * operations, however it is not returned in the get or list operations.
    */
   password?: string;
 }
@@ -10156,7 +10325,9 @@ export interface EnvironmentVariable {
 }
 
 /**
- * Describes a setting for the container.
+ * Describes a setting for the container. The setting file path can be fetched from environment
+ * variable "Fabric_SettingPath". The path for Windows container is "C:\\secrets". The path for
+ * Linux container is "/var/secrets".
  */
 export interface Setting {
   /**
@@ -10244,22 +10415,33 @@ export interface ResourceRequirements {
 }
 
 /**
- * Describes how a volume is attached to a container.
+ * Reference to sinks in DiagnosticsDescription.
  */
-export interface ContainerVolume {
+export interface DiagnosticsRef {
   /**
-   * Name of the volume.
+   * Status of whether or not sinks are enabled.
+   */
+  enabled?: boolean;
+  /**
+   * List of sinks to be used if enabled. References the list of sinks in DiagnosticsDescription.
+   */
+  sinkRefs?: string[];
+}
+
+/**
+ * Specifying this parameter adds support for reliable collections
+ */
+export interface ReliableCollectionsRef {
+  /**
+   * Name of ReliableCollection resource. Right now it's not used and you can use any string.
    */
   name: string;
   /**
-   * The flag indicating whether the volume is read only. Default is 'false'.
+   * False (the default) if ReliableCollections state is persisted to disk as usual. True if you do
+   * not want to persist state, in which case replication is still enabled and you can use
+   * ReliableCollections as distributed cache.
    */
-  readOnly?: boolean;
-  /**
-   * The path within the container at which the volume should be mounted. Only valid path
-   * characters are allowed.
-   */
-  destinationPath: string;
+  doNotPersistState?: boolean;
 }
 
 /**
@@ -10341,20 +10523,6 @@ export interface ContainerInstanceView {
 }
 
 /**
- * Reference to sinks in DiagnosticsDescription.
- */
-export interface DiagnosticsRef {
-  /**
-   * Status of whether or not sinks are enabled.
-   */
-  enabled?: boolean;
-  /**
-   * List of sinks to be used if enabled. References the list of sinks in DiagnosticsDescription.
-   */
-  sinkRefs?: string[];
-}
-
-/**
  * Describes a container and its runtime properties.
  */
 export interface ContainerCodePackageProperties {
@@ -10397,17 +10565,292 @@ export interface ContainerCodePackageProperties {
    */
   endpoints?: EndpointProperties[];
   /**
-   * This type describes the resource requirements for a container or a service.
+   * The resources required by this container.
    */
   resources: ResourceRequirements;
   /**
-   * The volumes to be attached to the container.
+   * Volumes to be attached to the container. The lifetime of these volumes is independent of the
+   * application's lifetime.
    */
-  volumeRefs?: ContainerVolume[];
+  volumeRefs?: VolumeReference[];
+  /**
+   * Volumes to be attached to the container. The lifetime of these volumes is scoped to the
+   * application's lifetime.
+   */
+  volumes?: ApplicationScopedVolume[];
+  /**
+   * Reference to sinks in DiagnosticsDescription.
+   */
+  diagnostics?: DiagnosticsRef;
+  /**
+   * A list of ReliableCollection resources used by this particular code package. Please refer to
+   * ReliablecollectionsRef for more details.
+   */
+  reliableCollectionsRefs?: ReliableCollectionsRef[];
   /**
    * Runtime information of a container instance.
    */
   readonly instanceView?: ContainerInstanceView;
+}
+
+/**
+ * Describes the trigger for performing auto scaling operation.
+ */
+export interface AutoScalingTrigger {
+  /**
+   * Polymorphic Discriminator
+   */
+  kind: string;
+}
+
+/**
+ * Describes the mechanism for performing auto scaling operation. Derived classes will describe the
+ * actual mechanism.
+ */
+export interface AutoScalingMechanism {
+  /**
+   * Polymorphic Discriminator
+   */
+  kind: string;
+}
+
+/**
+ * Describes the auto scaling policy
+ */
+export interface AutoScalingPolicy {
+  /**
+   * The name of the auto scaling policy.
+   */
+  name: string;
+  /**
+   * Determines when auto scaling operation will be invoked.
+   */
+  trigger: AutoScalingTrigger;
+  /**
+   * The mechanism that is used to scale when auto scaling operation is invoked.
+   */
+  mechanism: AutoScalingMechanism;
+}
+
+/**
+ * This type describes a service resource.
+ */
+export interface ServiceResourceDescription {
+  /**
+   * Name of the Service resource.
+   */
+  name: string;
+  /**
+   * The operation system required by the code in service. Possible values include: 'Linux',
+   * 'Windows'
+   */
+  osType: string;
+  /**
+   * Describes the set of code packages that forms the service. A code package describes the
+   * container and the properties for running it. All the code packages are started together on the
+   * same host and share the same context (network, process etc.).
+   */
+  codePackages: ContainerCodePackageProperties[];
+  /**
+   * The names of the private networks that this service needs to be part of.
+   */
+  networkRefs?: NetworkRef[];
+  /**
+   * Reference to sinks in DiagnosticsDescription.
+   */
+  diagnostics?: DiagnosticsRef;
+  /**
+   * User readable description of the service.
+   */
+  description?: string;
+  /**
+   * The number of replicas of the service to create. Defaults to 1 if not specified.
+   */
+  replicaCount?: number;
+  /**
+   * Auto scaling policies
+   */
+  autoScalingPolicies?: AutoScalingPolicy[];
+  /**
+   * Status of the service. Possible values include: 'Unknown', 'Ready', 'Upgrading', 'Creating',
+   * 'Deleting', 'Failed'
+   */
+  readonly status?: string;
+  /**
+   * Gives additional information about the current status of the service.
+   */
+  readonly statusDetails?: string;
+  /**
+   * Describes the health state of an application resource. Possible values include: 'Invalid',
+   * 'Ok', 'Warning', 'Error', 'Unknown'
+   */
+  readonly healthState?: string;
+  /**
+   * When the service's health state is not 'Ok', this additional details from service fabric
+   * Health Manager for the user to know why the service is marked unhealthy.
+   */
+  readonly unhealthyEvaluation?: string;
+}
+
+/**
+ * Properties of a DiagnosticsSink.
+ */
+export interface DiagnosticsSinkProperties {
+  /**
+   * Name of the sink. This value is referenced by DiagnosticsReferenceDescription
+   */
+  name?: string;
+  /**
+   * A description of the sink.
+   */
+  description?: string;
+  /**
+   * Polymorphic Discriminator
+   */
+  kind: string;
+}
+
+/**
+ * Describes the diagnostics options available
+ */
+export interface DiagnosticsDescription {
+  /**
+   * List of supported sinks that can be referenced.
+   */
+  sinks?: DiagnosticsSinkProperties[];
+  /**
+   * Status of whether or not sinks are enabled.
+   */
+  enabled?: boolean;
+  /**
+   * The sinks to be used if diagnostics is enabled. Sink choices can be overridden at the service
+   * and code package level.
+   */
+  defaultSinkRefs?: string[];
+}
+
+/**
+ * Diagnostics settings for Geneva.
+ */
+export interface AzureInternalMonitoringPipelineSinkDescription extends DiagnosticsSinkProperties {
+  /**
+   * Azure Internal monitoring pipeline account.
+   */
+  accountName?: string;
+  /**
+   * Azure Internal monitoring pipeline account namespace.
+   */
+  namespace?: string;
+  /**
+   * Azure Internal monitoring agent configuration.
+   */
+  maConfigUrl?: string;
+  /**
+   * Azure Internal monitoring agent fluentd configuration.
+   */
+  fluentdConfigUrl?: any;
+  /**
+   * Azure Internal monitoring pipeline autokey associated with the certificate.
+   */
+  autoKeyConfigUrl?: string;
+}
+
+/**
+ * Describes the horizontal auto scaling mechanism that adds or removes replicas (containers or
+ * container groups).
+ */
+export interface AddRemoveReplicaScalingMechanism extends AutoScalingMechanism {
+  /**
+   * Minimum number of containers (scale down won't be performed below this number).
+   */
+  minCount: number;
+  /**
+   * Maximum number of containers (scale up won't be performed above this number).
+   */
+  maxCount: number;
+  /**
+   * Each time auto scaling is performed, this number of containers will be added or removed.
+   */
+  scaleIncrement: number;
+}
+
+/**
+ * Describes the metric that is used for triggering auto scaling operation. Derived classes will
+ * describe resources or metrics.
+ */
+export interface AutoScalingMetric {
+  /**
+   * Polymorphic Discriminator
+   */
+  kind: string;
+}
+
+/**
+ * Describes the resource that is used for triggering auto scaling.
+ */
+export interface AutoScalingResourceMetric extends AutoScalingMetric {
+  /**
+   * Name of the resource. Possible values include: 'cpu', 'memoryInGB'
+   */
+  name: string;
+}
+
+/**
+ * Describes properties of a service resource.
+ */
+export interface ServiceProperties {
+  /**
+   * User readable description of the service.
+   */
+  description?: string;
+  /**
+   * The number of replicas of the service to create. Defaults to 1 if not specified.
+   */
+  replicaCount?: number;
+  /**
+   * Auto scaling policies
+   */
+  autoScalingPolicies?: AutoScalingPolicy[];
+  /**
+   * Status of the service. Possible values include: 'Unknown', 'Ready', 'Upgrading', 'Creating',
+   * 'Deleting', 'Failed'
+   */
+  readonly status?: string;
+  /**
+   * Gives additional information about the current status of the service.
+   */
+  readonly statusDetails?: string;
+  /**
+   * Describes the health state of an application resource. Possible values include: 'Invalid',
+   * 'Ok', 'Warning', 'Error', 'Unknown'
+   */
+  readonly healthState?: string;
+  /**
+   * When the service's health state is not 'Ok', this additional details from service fabric
+   * Health Manager for the user to know why the service is marked unhealthy.
+   */
+  readonly unhealthyEvaluation?: string;
+}
+
+/**
+ * Describes the properties of a service replica.
+ */
+export interface ServiceReplicaProperties {
+  /**
+   * The operation system required by the code in service. Possible values include: 'Linux',
+   * 'Windows'
+   */
+  osType: string;
+  /**
+   * Describes the set of code packages that forms the service. A code package describes the
+   * container and the properties for running it. All the code packages are started together on the
+   * same host and share the same context (network, process etc.).
+   */
+  codePackages: ContainerCodePackageProperties[];
+  /**
+   * The names of the private networks that this service needs to be part of.
+   */
+  networkRefs?: NetworkRef[];
   /**
    * Reference to sinks in DiagnosticsDescription.
    */
@@ -10415,11 +10858,142 @@ export interface ContainerCodePackageProperties {
 }
 
 /**
- * Describes a network reference in a service.
+ * Describes a replica of a service resource.
  */
-export interface NetworkRef {
+export interface ServiceReplicaDescription extends ServiceReplicaProperties {
   /**
-   * Name of the network.
+   * Name of the replica.
    */
-  name?: string;
+  replicaName: string;
+}
+
+/**
+ * Describes the average load trigger used for auto scaling.
+ */
+export interface AverageLoadScalingTrigger extends AutoScalingTrigger {
+  /**
+   * Description of the metric that is used for scaling.
+   */
+  metric: AutoScalingMetric;
+  /**
+   * Lower load threshold (if average load is below this threshold, service will scale down).
+   */
+  lowerLoadThreshold: number;
+  /**
+   * Upper load threshold (if average load is above this threshold, service will scale up).
+   */
+  upperLoadThreshold: number;
+  /**
+   * Scale interval that indicates how often will this trigger be checked.
+   */
+  scaleIntervalInSeconds: number;
+}
+
+/**
+ * The list of service resources. The list is paged when all of the results cannot fit in a single
+ * message. The next set of results can be obtained by executing the same query with the
+ * continuation token provided in this list.
+ */
+export interface PagedServiceResourceDescriptionList {
+  /**
+   * The continuation token parameter is used to obtain next set of results. The continuation token
+   * is included in the response of the API when the results from the system do not fit in a single
+   * response. When this value is passed to the next API call, the API returns next set of results.
+   * If there are no further results, then the continuation token is not included in the response.
+   */
+  continuationToken?: string;
+  /**
+   * One page of the list.
+   */
+  items?: ServiceResourceDescription[];
+}
+
+/**
+ * The list of service resource replicas in the cluster. The list is paged when all of the results
+ * cannot fit in a single message. The next set of results can be obtained by executing the same
+ * query with the continuation token provided in this list.
+ */
+export interface PagedServiceReplicaDescriptionList {
+  /**
+   * The continuation token parameter is used to obtain next set of results. The continuation token
+   * is included in the response of the API when the results from the system do not fit in a single
+   * response. When this value is passed to the next API call, the API returns next set of results.
+   * If there are no further results, then the continuation token is not included in the response.
+   */
+  continuationToken?: string;
+  /**
+   * List of service resource replica description.
+   */
+  items?: ServiceReplicaDescription[];
+}
+
+/**
+ * This type describes a application resource.
+ */
+export interface ApplicationResourceDescription {
+  /**
+   * Name of the Application resource.
+   */
+  name: string;
+  /**
+   * User readable description of the application.
+   */
+  description?: string;
+  /**
+   * Describes the services in the application. This property is used to create or modify services
+   * of the application. On get only the name of the service is returned. The service description
+   * can be obtained by querying for the service resource.
+   */
+  services?: ServiceResourceDescription[];
+  /**
+   * Describes the diagnostics definition and usage for an application resource.
+   */
+  diagnostics?: DiagnosticsDescription;
+  /**
+   * Internal - used by Visual Studio to setup the debugging session on the local development
+   * environment.
+   */
+  debugParams?: string;
+  /**
+   * Names of the services in the application.
+   */
+  readonly serviceNames?: string[];
+  /**
+   * Status of the application. Possible values include: 'Unknown', 'Ready', 'Upgrading',
+   * 'Creating', 'Deleting', 'Failed'
+   */
+  readonly status?: string;
+  /**
+   * Gives additional information about the current status of the application.
+   */
+  readonly statusDetails?: string;
+  /**
+   * Describes the health state of an application resource. Possible values include: 'Invalid',
+   * 'Ok', 'Warning', 'Error', 'Unknown'
+   */
+  readonly healthState?: string;
+  /**
+   * When the application's health state is not 'Ok', this additional details from service fabric
+   * Health Manager for the user to know why the application is marked unhealthy.
+   */
+  readonly unhealthyEvaluation?: string;
+}
+
+/**
+ * The list of application resources. The list is paged when all of the results cannot fit in a
+ * single message. The next set of results can be obtained by executing the same query with the
+ * continuation token provided in this list.
+ */
+export interface PagedApplicationResourceDescriptionList {
+  /**
+   * The continuation token parameter is used to obtain next set of results. The continuation token
+   * is included in the response of the API when the results from the system do not fit in a single
+   * response. When this value is passed to the next API call, the API returns next set of results.
+   * If there are no further results, then the continuation token is not included in the response.
+   */
+  continuationToken?: string;
+  /**
+   * One page of the list.
+   */
+  items?: ApplicationResourceDescription[];
 }

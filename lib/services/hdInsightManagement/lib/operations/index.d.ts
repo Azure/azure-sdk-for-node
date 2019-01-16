@@ -102,6 +102,28 @@ export interface Clusters {
      * @param {array} [parameters.properties.storageProfile.storageaccounts] The
      * list of storage accounts in the cluster.
      *
+     * @param {object} [parameters.properties.diskEncryptionProperties] The disk
+     * encryption properties.
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.vaultUri]
+     * Base key vault URI where the customers key is located eg.
+     * https://myvault.vault.azure.net
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.keyName] Key
+     * name that is used for enabling disk encryption.
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.keyVersion]
+     * Specific key version that is used for enabling disk encryption.
+     *
+     * @param {string}
+     * [parameters.properties.diskEncryptionProperties.encryptionAlgorithm]
+     * Algorithm identifier for encryption, default RSA-OAEP. Possible values
+     * include: 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
+     *
+     * @param {string}
+     * [parameters.properties.diskEncryptionProperties.msiResourceId] Resource ID
+     * of Managed Identity that is used to access the key vault.
+     *
      * @param {object} [parameters.identity] The identity of the cluster, if
      * configured.
      *
@@ -209,6 +231,28 @@ export interface Clusters {
      *
      * @param {array} [parameters.properties.storageProfile.storageaccounts] The
      * list of storage accounts in the cluster.
+     *
+     * @param {object} [parameters.properties.diskEncryptionProperties] The disk
+     * encryption properties.
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.vaultUri]
+     * Base key vault URI where the customers key is located eg.
+     * https://myvault.vault.azure.net
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.keyName] Key
+     * name that is used for enabling disk encryption.
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.keyVersion]
+     * Specific key version that is used for enabling disk encryption.
+     *
+     * @param {string}
+     * [parameters.properties.diskEncryptionProperties.encryptionAlgorithm]
+     * Algorithm identifier for encryption, default RSA-OAEP. Possible values
+     * include: 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
+     *
+     * @param {string}
+     * [parameters.properties.diskEncryptionProperties.msiResourceId] Resource ID
+     * of Managed Identity that is used to access the key vault.
      *
      * @param {object} [parameters.identity] The identity of the cluster, if
      * configured.
@@ -615,6 +659,86 @@ export interface Clusters {
 
 
     /**
+     * Rotate disk encryption key of the specified HDInsight cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} parameters The parameters for the disk encryption operation.
+     *
+     * @param {string} [parameters.vaultUri] Base key vault URI where the customers
+     * key is located eg. https://myvault.vault.azure.net
+     *
+     * @param {string} [parameters.keyName] Key name that is used for enabling disk
+     * encryption.
+     *
+     * @param {string} [parameters.keyVersion] Specific key version that is used
+     * for enabling disk encryption.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    rotateDiskEncryptionKeyWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ClusterDiskEncryptionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Rotate disk encryption key of the specified HDInsight cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} parameters The parameters for the disk encryption operation.
+     *
+     * @param {string} [parameters.vaultUri] Base key vault URI where the customers
+     * key is located eg. https://myvault.vault.azure.net
+     *
+     * @param {string} [parameters.keyName] Key name that is used for enabling disk
+     * encryption.
+     *
+     * @param {string} [parameters.keyVersion] Specific key version that is used
+     * for enabling disk encryption.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    rotateDiskEncryptionKey(resourceGroupName: string, clusterName: string, parameters: models.ClusterDiskEncryptionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    rotateDiskEncryptionKey(resourceGroupName: string, clusterName: string, parameters: models.ClusterDiskEncryptionParameters, callback: ServiceCallback<void>): void;
+    rotateDiskEncryptionKey(resourceGroupName: string, clusterName: string, parameters: models.ClusterDiskEncryptionParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Executes script actions on the specified HDInsight cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -769,6 +893,28 @@ export interface Clusters {
      * @param {array} [parameters.properties.storageProfile.storageaccounts] The
      * list of storage accounts in the cluster.
      *
+     * @param {object} [parameters.properties.diskEncryptionProperties] The disk
+     * encryption properties.
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.vaultUri]
+     * Base key vault URI where the customers key is located eg.
+     * https://myvault.vault.azure.net
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.keyName] Key
+     * name that is used for enabling disk encryption.
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.keyVersion]
+     * Specific key version that is used for enabling disk encryption.
+     *
+     * @param {string}
+     * [parameters.properties.diskEncryptionProperties.encryptionAlgorithm]
+     * Algorithm identifier for encryption, default RSA-OAEP. Possible values
+     * include: 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
+     *
+     * @param {string}
+     * [parameters.properties.diskEncryptionProperties.msiResourceId] Resource ID
+     * of Managed Identity that is used to access the key vault.
+     *
      * @param {object} [parameters.identity] The identity of the cluster, if
      * configured.
      *
@@ -876,6 +1022,28 @@ export interface Clusters {
      *
      * @param {array} [parameters.properties.storageProfile.storageaccounts] The
      * list of storage accounts in the cluster.
+     *
+     * @param {object} [parameters.properties.diskEncryptionProperties] The disk
+     * encryption properties.
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.vaultUri]
+     * Base key vault URI where the customers key is located eg.
+     * https://myvault.vault.azure.net
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.keyName] Key
+     * name that is used for enabling disk encryption.
+     *
+     * @param {string} [parameters.properties.diskEncryptionProperties.keyVersion]
+     * Specific key version that is used for enabling disk encryption.
+     *
+     * @param {string}
+     * [parameters.properties.diskEncryptionProperties.encryptionAlgorithm]
+     * Algorithm identifier for encryption, default RSA-OAEP. Possible values
+     * include: 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
+     *
+     * @param {string}
+     * [parameters.properties.diskEncryptionProperties.msiResourceId] Resource ID
+     * of Managed Identity that is used to access the key vault.
      *
      * @param {object} [parameters.identity] The identity of the cluster, if
      * configured.
@@ -1047,6 +1215,86 @@ export interface Clusters {
     beginResize(resourceGroupName: string, clusterName: string, parameters: models.ClusterResizeParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginResize(resourceGroupName: string, clusterName: string, parameters: models.ClusterResizeParameters, callback: ServiceCallback<void>): void;
     beginResize(resourceGroupName: string, clusterName: string, parameters: models.ClusterResizeParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Rotate disk encryption key of the specified HDInsight cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} parameters The parameters for the disk encryption operation.
+     *
+     * @param {string} [parameters.vaultUri] Base key vault URI where the customers
+     * key is located eg. https://myvault.vault.azure.net
+     *
+     * @param {string} [parameters.keyName] Key name that is used for enabling disk
+     * encryption.
+     *
+     * @param {string} [parameters.keyVersion] Specific key version that is used
+     * for enabling disk encryption.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginRotateDiskEncryptionKeyWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ClusterDiskEncryptionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Rotate disk encryption key of the specified HDInsight cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {object} parameters The parameters for the disk encryption operation.
+     *
+     * @param {string} [parameters.vaultUri] Base key vault URI where the customers
+     * key is located eg. https://myvault.vault.azure.net
+     *
+     * @param {string} [parameters.keyName] Key name that is used for enabling disk
+     * encryption.
+     *
+     * @param {string} [parameters.keyVersion] Specific key version that is used
+     * for enabling disk encryption.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRotateDiskEncryptionKey(resourceGroupName: string, clusterName: string, parameters: models.ClusterDiskEncryptionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRotateDiskEncryptionKey(resourceGroupName: string, clusterName: string, parameters: models.ClusterDiskEncryptionParameters, callback: ServiceCallback<void>): void;
+    beginRotateDiskEncryptionKey(resourceGroupName: string, clusterName: string, parameters: models.ClusterDiskEncryptionParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**

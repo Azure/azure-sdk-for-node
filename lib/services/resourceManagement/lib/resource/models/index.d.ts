@@ -72,7 +72,7 @@ export interface TemplateLink {
 }
 
 /**
- * Entity representing the reference to the deployment paramaters.
+ * Entity representing the reference to the deployment parameters.
  */
 export interface ParametersLink {
   /**
@@ -356,7 +356,7 @@ export interface DeploymentPropertiesExtended {
   */
   readonly timestamp?: Date;
   /**
-   * Key/value pairs that represent deploymentoutput.
+   * Key/value pairs that represent deployment output.
   */
   outputs?: any;
   /**
@@ -424,6 +424,10 @@ export interface DeploymentExtended extends BaseResource {
    * The name of the deployment.
   */
   readonly name?: string;
+  /**
+   * The type of the deployment.
+  */
+  readonly type?: string;
   /**
    * the location of the deployment.
   */
@@ -604,6 +608,10 @@ export interface ResourceGroup extends BaseResource {
    * The name of the resource group.
   */
   readonly name?: string;
+  /**
+   * The type of the resource group.
+  */
+  readonly type?: string;
   properties?: ResourceGroupProperties;
   /**
    * The location of the resource group. It cannot be changed after the resource group has been

@@ -545,21 +545,9 @@ export interface PublicIPAddressDnsSettings {
 }
 
 /**
- * Contains the DDoS protection settings of the public IP.
- */
-export interface DdosSettings {
-  /**
-   * The DDoS custom policy associated with the public IP.
-   */
-  ddosCustomPolicy?: SubResource;
-  /**
-   * The DDoS protection policy customizability of the public IP. Only standard coverage will have
-   * the ability to be customized. Possible values include: 'Basic', 'Standard'
-   */
-  protectionCoverage?: string;
-}
-
-/**
+ * @class
+ * Initializes a new instance of the IpTag class.
+ * @constructor
  * Contains the IpTag associated with the object
  */
 export interface IpTag {
@@ -2195,36 +2183,6 @@ export interface ApplicationGateway extends Resource {
 }
 
 /**
- * Response for ApplicationGatewayAvailableServerVariables API service call.
-*/
-export interface ApplicationGatewayAvailableServerVariablesResult {
-  /**
-   * The list of supported server variables in application gateway.
-  */
-  value?: string[];
-}
-
-/**
- * Response for ApplicationGatewayAvailableRequestHeaders API service call.
-*/
-export interface ApplicationGatewayAvailableRequestHeadersResult {
-  /**
-   * The list of supported request headers in application gateway.
-  */
-  value?: string[];
-}
-
-/**
- * Response for ApplicationGatewayAvailableResponeHeaders API service call.
-*/
-export interface ApplicationGatewayAvailableResponseHeadersResult {
-  /**
-   * The list of supported response header in application gateway.
-  */
-  value?: string[];
-}
-
-/**
  * A web application firewall rule.
 */
 export interface ApplicationGatewayFirewallRule {
@@ -2700,63 +2658,9 @@ export interface DnsNameAvailabilityResult {
 }
 
 /**
- * DDoS custom policy properties.
-*/
-export interface ProtocolCustomSettingsFormat {
-  /**
-   * The protocol for which the DDoS protection policy is being customized. Possible values
-   * include: 'Tcp', 'Udp', 'Syn'
-  */
-  protocol?: string;
-  /**
-   * The customized DDoS protection trigger rate.
-  */
-  triggerRateOverride?: string;
-  /**
-   * The customized DDoS protection source rate.
-  */
-  sourceRateOverride?: string;
-  /**
-   * The customized DDoS protection trigger rate sensitivity degrees. High: Trigger rate set with
-   * most sensitivity w.r.t. normal traffic. Default: Trigger rate set with moderate sensitivity
-   * w.r.t. normal traffic. Low: Trigger rate set with less sensitivity w.r.t. normal traffic.
-   * Relaxed: Trigger rate set with least sensitivity w.r.t. normal traffic. Possible values
-   * include: 'Relaxed', 'Low', 'Default', 'High'
-  */
-  triggerSensitivityOverride?: string;
-}
-
-/**
- * A DDoS custom policy in a resource group.
-*/
-export interface DdosCustomPolicy extends Resource {
-  /**
-   * The resource GUID property of the DDoS custom policy resource. It uniquely identifies the
-   * resource, even if the user changes its name or migrate the resource across subscriptions or
-   * resource groups.
-  */
-  readonly resourceGuid?: string;
-  /**
-   * The provisioning state of the DDoS custom policy resource. Possible values are: 'Succeeded',
-   * 'Updating', 'Deleting', and 'Failed'.
-  */
-  readonly provisioningState?: string;
-  /**
-   * The list of public IPs associated with the DDoS custom policy resource. This list is
-   * read-only.
-  */
-  readonly publicIPAddresses?: SubResource[];
-  /**
-   * The protocol-specific DDoS policy customization parameters.
-  */
-  protocolCustomSettings?: ProtocolCustomSettingsFormat[];
-  /**
-   * A unique read-only string that changes whenever the resource is updated.
-  */
-  readonly etag?: string;
-}
-
-/**
+ * @class
+ * Initializes a new instance of the DdosProtectionPlan class.
+ * @constructor
  * A DDoS protection plan in a resource group.
 */
 export interface DdosProtectionPlan extends BaseResource {
@@ -4128,7 +4032,6 @@ export interface LoadBalancer extends Resource {
   etag?: string;
 }
 
-/**
  * The response body contains the status of the specified asynchronous operation, indicating
  * whether it has succeeded, is in progress, or has failed. Note that this status is distinct from
  * the HTTP status code returned for the Get Operation Status operation itself. If the asynchronous

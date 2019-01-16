@@ -36,23 +36,33 @@ describe('MSI Vm Authentication', function () {
     done();
   });
 
-  function setupNockResponse(port, requestBodyToMatch, response, error) {
-
-    if (!port) {
-      port = 50342;
+  function setupNockResponse(msiEndpoint, response, error, apiVersion, resource) {
+    if (!msiEndpoint) {
+      msiEndpoint = "http://169.254.169.254/metadata/identity";
     }
 
-    let basePath = `http://localhost:${port}`;
-    let interceptor = nock(basePath).post("/oauth2/token", function (body) { return JSON.stringify(body) === JSON.stringify(requestBodyToMatch); });
-
-    if (!error) {
-      interceptor.reply(200, response);
-    } else {
-      interceptor.replyWithError(error);
+    if (!apiVersion) {
+      apiVersion = "2018-02-01";
     }
+
+    if (!resource) {
+      resource = "https://management.azure.com/";
+    }
+
+    nock(`${msiEndpoint}`)
+      .matchHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
+      .matchHeader('Metadata', 'true')
+      .get(`/oauth2/token`)
+      .query({
+        'api-version': apiVersion,
+        'resource': resource
+      })
+      .reply((error ? 400 : 200), function (body) {
+        return error || response;
+      });
   }
 
-  it('should get token from the virtual machine with MSI service running at default port', function (done) {
+  it('should get token from the virtual machine with MSI service running at default endpoint', function (done) {
     let response = {
       access_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d',
       refresh_token: '',
@@ -63,11 +73,7 @@ describe('MSI Vm Authentication', function () {
       token_type: 'Bearer'
     };
 
-    let requestBodyToMatch = {
-      "resource": "https://management.azure.com/"
-    };
-
-    setupNockResponse(null, requestBodyToMatch, response);
+    setupNockResponse(undefined, response);
 
     let msiCredsObj = new MSIVmTokenCredentials();
     msiCredsObj.getToken((err, response) => {
@@ -79,7 +85,7 @@ describe('MSI Vm Authentication', function () {
     });
   });
 
-  it('should get token from the virtual machine with MSI service running at custom port', function (done) {
+  it('should get token from the virtual machine with MSI service running at custom endpoint', function (done) {
     let response = {
       access_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d',
       refresh_token: '',
@@ -90,14 +96,12 @@ describe('MSI Vm Authentication', function () {
       token_type: 'Bearer'
     };
 
-    let requestBodyToMatch = {
-      "resource": "https://management.azure.com/"
-    };
+    let customMsiEndpoint = "http://localhost:50342";
+    setupNockResponse(customMsiEndpoint, response);
 
-    let customPort = 50341;
-    setupNockResponse(customPort, requestBodyToMatch, response);
-
-    let msiCredsObj = new MSIVmTokenCredentials({ port: customPort });
+    let msiCredsObj = new MSIVmTokenCredentials({
+      msiEndpoint: `${customMsiEndpoint}/oauth2/token`
+    });
     msiCredsObj.getToken((err, response) => {
       should.not.exist(err);
       should.exist(response);
@@ -113,13 +117,11 @@ describe('MSI Vm Authentication', function () {
       "error_description": "Failed to retrieve token from the Active directory. For details see logs in C:\\User1\\Logs\\Plugins\\Microsoft.Identity.MSI\\1.0\\service_identity_0.log"
     };
 
-    let requestBodyToMatch = {
+    setupNockResponse(undefined, undefined, errorResponse);
+
+    let msiCredsObj = new MSIVmTokenCredentials({
       "resource": "badvalue"
-    };
-
-    setupNockResponse(null, requestBodyToMatch, null, errorResponse);
-
-    let msiCredsObj = new MSIVmTokenCredentials({ "resource": "badvalue" });
+    });
     msiCredsObj.getToken((err, response) => {
       should.exist(err);
       should.not.exist(response);
@@ -127,21 +129,15 @@ describe('MSI Vm Authentication', function () {
     });
   });
 
-  it('should throw on request with empty resource', function (done) {
-    let errorResponse = { "error": "bad_resource_200", "error_description": "Invalid Resource" };
+  it('should set default MSI endpoint', function(done) {
+    const msiCredsObj = new MSIVmTokenCredentials();
+    should.exist(msiCredsObj.msiEndpoint);
+    done();
+  });
 
-    let requestBodyToMatch = {
-      "resource": "  "
-    };
-
-    setupNockResponse(null, requestBodyToMatch, null, errorResponse);
-
-    let msiCredsObj = new MSIVmTokenCredentials({ "resource": "  " });
-    msiCredsObj.getToken((err, response) => {
-      should.exist(err);
-      should.equal(err.error, "bad_resource_200");
-      should.not.exist(response);
-      done();
-    });
+  it('should set default api-version header', function(done) {
+    const msiCredsObj = new MSIVmTokenCredentials();
+    should.exist(msiCredsObj.apiVersion);
+    done();
   });
 });

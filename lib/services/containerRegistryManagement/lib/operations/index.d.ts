@@ -316,6 +316,18 @@ export interface Registries {
      * @param {string} registry.storageAccount.id The resource ID of the storage
      * account.
      *
+     * @param {object} [registry.networkRuleSet] The network rule set for a
+     * container registry.
+     *
+     * @param {string} registry.networkRuleSet.defaultAction The default action of
+     * allow or deny when no other rules match. Possible values include: 'Allow',
+     * 'Deny'
+     *
+     * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
+     * network rules.
+     *
+     * @param {array} [registry.networkRuleSet.ipRules] The IP ACL rules.
+     *
      * @param {string} registry.location The location of the resource. This cannot
      * be changed after the resource is created.
      *
@@ -358,6 +370,18 @@ export interface Registries {
      *
      * @param {string} registry.storageAccount.id The resource ID of the storage
      * account.
+     *
+     * @param {object} [registry.networkRuleSet] The network rule set for a
+     * container registry.
+     *
+     * @param {string} registry.networkRuleSet.defaultAction The default action of
+     * allow or deny when no other rules match. Possible values include: 'Allow',
+     * 'Deny'
+     *
+     * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
+     * network rules.
+     *
+     * @param {array} [registry.networkRuleSet.ipRules] The IP ACL rules.
      *
      * @param {string} registry.location The location of the resource. This cannot
      * be changed after the resource is created.
@@ -488,6 +512,19 @@ export interface Registries {
      * @param {string} registryUpdateParameters.storageAccount.id The resource ID
      * of the storage account.
      *
+     * @param {object} [registryUpdateParameters.networkRuleSet] The network rule
+     * set for a container registry.
+     *
+     * @param {string} registryUpdateParameters.networkRuleSet.defaultAction The
+     * default action of allow or deny when no other rules match. Possible values
+     * include: 'Allow', 'Deny'
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.virtualNetworkRules]
+     * The virtual network rules.
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.ipRules] The IP ACL
+     * rules.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -532,6 +569,19 @@ export interface Registries {
      *
      * @param {string} registryUpdateParameters.storageAccount.id The resource ID
      * of the storage account.
+     *
+     * @param {object} [registryUpdateParameters.networkRuleSet] The network rule
+     * set for a container registry.
+     *
+     * @param {string} registryUpdateParameters.networkRuleSet.defaultAction The
+     * default action of allow or deny when no other rules match. Possible values
+     * include: 'Allow', 'Deny'
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.virtualNetworkRules]
+     * The virtual network rules.
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.ipRules] The IP ACL
+     * rules.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1343,6 +1393,18 @@ export interface Registries {
      * @param {string} registry.storageAccount.id The resource ID of the storage
      * account.
      *
+     * @param {object} [registry.networkRuleSet] The network rule set for a
+     * container registry.
+     *
+     * @param {string} registry.networkRuleSet.defaultAction The default action of
+     * allow or deny when no other rules match. Possible values include: 'Allow',
+     * 'Deny'
+     *
+     * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
+     * network rules.
+     *
+     * @param {array} [registry.networkRuleSet.ipRules] The IP ACL rules.
+     *
      * @param {string} registry.location The location of the resource. This cannot
      * be changed after the resource is created.
      *
@@ -1385,6 +1447,18 @@ export interface Registries {
      *
      * @param {string} registry.storageAccount.id The resource ID of the storage
      * account.
+     *
+     * @param {object} [registry.networkRuleSet] The network rule set for a
+     * container registry.
+     *
+     * @param {string} registry.networkRuleSet.defaultAction The default action of
+     * allow or deny when no other rules match. Possible values include: 'Allow',
+     * 'Deny'
+     *
+     * @param {array} [registry.networkRuleSet.virtualNetworkRules] The virtual
+     * network rules.
+     *
+     * @param {array} [registry.networkRuleSet.ipRules] The IP ACL rules.
      *
      * @param {string} registry.location The location of the resource. This cannot
      * be changed after the resource is created.
@@ -1515,6 +1589,19 @@ export interface Registries {
      * @param {string} registryUpdateParameters.storageAccount.id The resource ID
      * of the storage account.
      *
+     * @param {object} [registryUpdateParameters.networkRuleSet] The network rule
+     * set for a container registry.
+     *
+     * @param {string} registryUpdateParameters.networkRuleSet.defaultAction The
+     * default action of allow or deny when no other rules match. Possible values
+     * include: 'Allow', 'Deny'
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.virtualNetworkRules]
+     * The virtual network rules.
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.ipRules] The IP ACL
+     * rules.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1559,6 +1646,19 @@ export interface Registries {
      *
      * @param {string} registryUpdateParameters.storageAccount.id The resource ID
      * of the storage account.
+     *
+     * @param {object} [registryUpdateParameters.networkRuleSet] The network rule
+     * set for a container registry.
+     *
+     * @param {string} registryUpdateParameters.networkRuleSet.defaultAction The
+     * default action of allow or deny when no other rules match. Possible values
+     * include: 'Allow', 'Deny'
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.virtualNetworkRules]
+     * The virtual network rules.
+     *
+     * @param {array} [registryUpdateParameters.networkRuleSet.ipRules] The IP ACL
+     * rules.
      *
      * @param {object} [options] Optional Parameters.
      *
