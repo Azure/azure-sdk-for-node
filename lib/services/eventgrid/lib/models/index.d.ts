@@ -1152,6 +1152,22 @@ export interface MediaJobOutputAsset extends MediaJobOutput {
 
 /**
  * @class
+ * Initializes a new instance of the MediaJobOutputProgressEventData class.
+ * @constructor
+ * Job Output Progress Event Data.
+ *
+ * @member {string} [label] Gets the Job output label.
+ * @member {number} [progress] Gets the Job output progress.
+ * @member {object} [jobCorrelationData] Gets the Job correlation data.
+ */
+export interface MediaJobOutputProgressEventData {
+  label?: string;
+  progress?: number;
+  jobCorrelationData?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
  * Initializes a new instance of the MediaJobOutputStateChangeEventData class.
  * @constructor
  * Schema of the Data property of an EventGridEvent for a
