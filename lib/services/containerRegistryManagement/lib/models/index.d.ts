@@ -1003,10 +1003,6 @@ export interface Run extends ProxyResource {
   */
   sourceTrigger?: SourceTriggerDescriptor;
   /**
-   * The value that indicates whether archiving is enabled or not.
-  */
-  isArchiveEnabled?: boolean;
-  /**
    * The platform properties against which the run will happen.
   */
   platform?: PlatformProperties;
@@ -1015,10 +1011,22 @@ export interface Run extends ProxyResource {
   */
   agentConfiguration?: AgentProperties;
   /**
+   * The scope of the credentials that were used to login to the source registry during this run.
+  */
+  sourceRegistryAuth?: string;
+  /**
+   * The list of custom registries that were logged in during this run.
+  */
+  customRegistries?: string[];
+  /**
    * The provisioning state of a run. Possible values include: 'Creating', 'Updating', 'Deleting',
    * 'Succeeded', 'Failed', 'Canceled'
   */
   provisioningState?: string;
+  /**
+   * The value that indicates whether archiving is enabled or not.
+  */
+  isArchiveEnabled?: boolean;
 }
 
 /**
@@ -1181,7 +1189,7 @@ export interface SourceProperties {
   */
   sourceControlType: string;
   /**
-   * The full URL to the source code repository
+   * The full URL to the source code respository
   */
   repositoryUrl: string;
   /**
@@ -1251,8 +1259,70 @@ export interface TriggerProperties {
 }
 
 /**
+ * Describes the credential parameters for accessing the source registry.
+*/
+export interface SourceRegistryCredentials {
+  /**
+   * The authentication mode which determines the source registry login scope. The credentials for
+   * the source registry
+   * will be generated using the given scope. These credentials will be used to login to
+   * the source registry during the run. Possible values include: 'None', 'Default'
+  */
+  loginMode?: string;
+}
+
+/**
+ * Describes the properties of a secret object value.
+*/
+export interface SecretObject {
+  /**
+   * The value of the secret. The format of this value will be determined
+   * based on the type of the secret object. For example, if the type is of vault secret,
+   * the value will be the URL to the vault secret. If the type is Opaque, the vaule will be
+   * used as is without any modification.
+  */
+  value?: string;
+  /**
+   * The type of the secret object which determines how the value of the secret object has to be
+   * interpreted. Possible values include: 'Opaque'
+  */
+  type?: string;
+}
+
+/**
+ * Describes the credentials that will be used to access a custom registry during a run.
+*/
+export interface CustomRegistryCredentials {
+  /**
+   * The username for logging into the custom registry.
+  */
+  userName?: SecretObject;
+  /**
+   * The password for logging into the custom registry. The password is a secret
+   * object that allows multiple ways of providing the value for it.
+  */
+  password?: SecretObject;
+}
+
+/**
+ * The parameters that describes a set of credentials that will be used when a run is invoked.
+*/
+export interface Credentials {
+  /**
+   * Describes the credential parameters for accessing the source registry.
+  */
+  sourceRegistry?: SourceRegistryCredentials;
+  /**
+   * Describes the credential parameters for accessing other custom registries. The key
+   * for the dictionary item will be the registry login server (myregistry.azurecr.io) and
+   * the value of the item will be the registry credentials for accessing the registry.
+  */
+  customRegistries?: { [propertyName: string]: CustomRegistryCredentials };
+}
+
+/**
  * The task that has the ARM resource and task properties.
- * The task will have all information to schedule a run against it.
+ * The  task will have all information to schedule a run against it.
 */
 export interface Task extends Resource {
   /**
@@ -1288,6 +1358,10 @@ export interface Task extends Resource {
    * The properties that describe all triggers for the task.
   */
   trigger?: TriggerProperties;
+  /**
+   * The properties that describes a set of credentials that will be used when this run is invoked.
+  */
+  credentials?: Credentials;
 }
 
 /**
@@ -1363,7 +1437,7 @@ export interface SourceUpdateParameters {
   */
   sourceControlType?: string;
   /**
-   * The full URL to the source code repository
+   * The full URL to the source code respository
   */
   repositoryUrl?: string;
   /**
@@ -1461,6 +1535,10 @@ export interface TaskUpdateParameters {
   */
   trigger?: TriggerUpdateParameters;
   /**
+   * The parameters that describes a set of credentials that will be used when this run is invoked.
+  */
+  credentials?: Credentials;
+  /**
    * The ARM resource tags.
   */
   tags?: { [propertyName: string]: string };
@@ -1507,6 +1585,10 @@ export interface DockerBuildRequest extends RunRequest {
   */
   dockerFilePath: string;
   /**
+   * Gets or sets the name of the target build stage for the docker build.
+  */
+  target?: string;
+  /**
    * The collection of override arguments to be used when executing the run.
   */
   argumentsProperty?: Argument[];
@@ -1524,11 +1606,15 @@ export interface DockerBuildRequest extends RunRequest {
   agentConfiguration?: AgentProperties;
   /**
    * The URL(absolute or relative) of the source context. It can be an URL to a tar or git
-   * repository.
+   * repoistory.
    * If it is relative URL, the relative path should be obtained from calling
    * listBuildSourceUploadUrl API.
   */
   sourceLocation?: string;
+  /**
+   * The properties that describes a set of credentials that will be used when this run is invoked.
+  */
+  credentials?: Credentials;
 }
 
 /**
@@ -1579,11 +1665,15 @@ export interface FileTaskRunRequest extends RunRequest {
   agentConfiguration?: AgentProperties;
   /**
    * The URL(absolute or relative) of the source context. It can be an URL to a tar or git
-   * repository.
+   * repoistory.
    * If it is relative URL, the relative path should be obtained from calling
    * listBuildSourceUploadUrl API.
   */
   sourceLocation?: string;
+  /**
+   * The properties that describes a set of credentials that will be used when this run is invoked.
+  */
+  credentials?: Credentials;
 }
 
 /**
@@ -1630,11 +1720,15 @@ export interface EncodedTaskRunRequest extends RunRequest {
   agentConfiguration?: AgentProperties;
   /**
    * The URL(absolute or relative) of the source context. It can be an URL to a tar or git
-   * repository.
+   * repoistory.
    * If it is relative URL, the relative path should be obtained from calling
    * listBuildSourceUploadUrl API.
   */
   sourceLocation?: string;
+  /**
+   * The properties that describes a set of credentials that will be used when this run is invoked.
+  */
+  credentials?: Credentials;
 }
 
 /**
@@ -1658,6 +1752,10 @@ export interface DockerBuildStep extends TaskStepProperties {
    * The Docker file path relative to the source context.
   */
   dockerFilePath: string;
+  /**
+   * Gets or sets the name of the target build stage for the docker build.
+  */
+  target?: string;
   /**
    * The collection of override arguments to be used when executing this build step.
   */
@@ -1725,6 +1823,10 @@ export interface DockerBuildStepUpdateParameters extends TaskStepUpdateParameter
    * The collection of override arguments to be used when executing this build step.
   */
   argumentsProperty?: Argument[];
+  /**
+   * Gets or sets the name of the target build stage for the docker build.
+  */
+  target?: string;
 }
 
 /**
