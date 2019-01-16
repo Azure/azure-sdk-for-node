@@ -1344,6 +1344,34 @@ export interface SsisObjectMetadataStatusResponse {
 }
 
 /**
+ * The exposure control request.
+ */
+export interface ExposureControlRequest {
+  /**
+   * The feature name.
+   */
+  featureName?: string;
+  /**
+   * The feature type.
+   */
+  featureType?: string;
+}
+
+/**
+ * The exposure control response.
+ */
+export interface ExposureControlResponse {
+  /**
+   * The feature name.
+   */
+  readonly featureName?: string;
+  /**
+   * The feature value.
+   */
+  readonly value?: string;
+}
+
+/**
  * Referenced dependency.
  */
 export interface DependencyReference {
@@ -6326,7 +6354,7 @@ export interface ExecuteSSISPackageActivity extends ExecutionActivity {
   /**
    * The package execution credential.
    */
-  executionCredential?: { [propertyName: string]: SSISExecutionCredential };
+  executionCredential?: SSISExecutionCredential;
   /**
    * The integration runtime reference.
    */
