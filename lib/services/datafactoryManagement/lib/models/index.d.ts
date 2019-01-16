@@ -439,6 +439,11 @@ export interface Dataset {
    */
   structure?: any;
   /**
+   * Columns that define the physical type schema of the dataset. Type: array (or Expression with
+   * resultType array), itemType: DatasetSchemaDataElement.
+   */
+  schema?: any;
+  /**
    * Linked service reference.
    */
   linkedServiceName: LinkedServiceReference;
@@ -1336,6 +1341,34 @@ export interface SsisObjectMetadataStatusResponse {
    * The operation error message.
    */
   error?: string;
+}
+
+/**
+ * The exposure control request.
+ */
+export interface ExposureControlRequest {
+  /**
+   * The feature name.
+   */
+  featureName?: string;
+  /**
+   * The feature type.
+   */
+  featureType?: string;
+}
+
+/**
+ * The exposure control response.
+ */
+export interface ExposureControlResponse {
+  /**
+   * The feature name.
+   */
+  readonly featureName?: string;
+  /**
+   * The feature value.
+   */
+  readonly value?: string;
 }
 
 /**
@@ -6993,6 +7026,34 @@ export interface FilterActivity extends ControlActivity {
    * Condition to be used for filtering the input.
    */
   condition: Expression;
+}
+
+/**
+ * This activity blocks execution until a file has been validated to exist, with an optional
+ * minimum size, or the timeout is reached, whichever is earlier.
+ */
+export interface ValidationActivity extends ControlActivity {
+  /**
+   * Specifies the timeout for the activity to run. If there is no value specified, it takes the
+   * value of TimeSpan.FromDays(7) which is 1 week as default. Type: string (or Expression with
+   * resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])). Type:
+   * string (or Expression with resultType string), pattern:
+   * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+   */
+  timeout?: any;
+  /**
+   * A delay in seconds between validation attempts. If no value is specified, 10 seconds will be
+   * used as the default.
+   */
+  sleep?: number;
+  /**
+   * Minimum size of a file in byte. If no value is specified, 0 byte will be used as the default.
+   */
+  minimumSize?: number;
+  /**
+   * Validation activity dataset reference.
+   */
+  dataset: DatasetReference;
 }
 
 /**
