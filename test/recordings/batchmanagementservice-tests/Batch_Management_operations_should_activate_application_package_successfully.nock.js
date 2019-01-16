@@ -3,46 +3,29 @@
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'japaneast';
   process.env['AZURE_AUTOSTORAGE'] = 'nodesdkteststorage';
-  process.env['AZURE_SUBSCRIPTION_ID'] = '00000000-0000-0000-0000-000000000000';
+  process.env['AZURE_SUBSCRIPTION_ID'] = 'f30ef677-64a9-4768-934f-5fbbc0e1ad27';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://management.azure.com:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v1.0/activate?api-version=2017-09-01', '*')
-  .reply(204, "", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  expires: '-1',
-  'last-modified': 'Wed, 08 Nov 2017 22:01:30 GMT',
-  etag: '"0x8D526F444460EE9"',
-  'x-ms-request-id': '9c2cadad-59c4-4c6f-9df2-60fff0084972',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-content-type-options': 'nosniff',
-  server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': '2a0cc3d1-0ead-44f3-969c-a582b3e9f26e',
-  'x-ms-routing-request-id': 'WESTUS2:20171108T220134Z:2a0cc3d1-0ead-44f3-969c-a582b3e9f26e',
-  date: 'Wed, 08 Nov 2017 22:01:33 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v1.0/activate?api-version=2017-09-01', '*')
-  .reply(204, "", { 'cache-control': 'no-cache',
+.post('/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/v1.0/activate?api-version=2018-12-01', '*')
+  .reply(200, "{\"type\":\"Microsoft.Batch/batchAccounts/applications/versions\",\"id\":\"/subscriptions/f30ef677-64a9-4768-934f-5fbbc0e1ad27/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/applications/my_application_id/versions/my_application_id\",\"name\":\"my_application_id\",\"etag\":\"W/\\\"0x8D67759F29CBAD0\\\"\",\"properties\":{\"storageUrl\":\"https://nodesdkteststorage.blob.core.windows.net/app-my-application-id-b9dfc2b75e089960a922be9b4180a01f29ca0c78/my_application_id-v1.0-7bcd0797-a896-4626-9e7e-57f5fda3d58f?sv=2018-03-28&sr=b&sig=vrcuFEyj9lB28QoJxir3Q4MM%2FgCwijhxmzMmQ8Te0kY%3D&st=2019-01-11T00%3A10%3A52Z&se=2019-01-11T04%3A15%3A52Z&sp=rw\",\"storageUrlExpiry\":\"2019-01-11T04:15:52.603954Z\",\"state\":\"Active\",\"format\":\"zip\",\"lastActivationTime\":\"2019-01-11T00:15:52.5569153Z\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
+  'content-length': '809',
+  'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'last-modified': 'Wed, 08 Nov 2017 22:01:30 GMT',
-  etag: '"0x8D526F444460EE9"',
-  'x-ms-request-id': '9c2cadad-59c4-4c6f-9df2-60fff0084972',
+  'last-modified': 'Fri, 11 Jan 2019 00:15:52 GMT',
+  etag: 'W/"0x8D67759F29CBAD0"',
+  'x-ms-correlation-request-id': 'f51426bd-1ad5-43f4-833d-dc8d45f8a927',
+  'x-ms-request-id': '99ce7568-5959-4e07-8d1e-943985fe5e97',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': '2a0cc3d1-0ead-44f3-969c-a582b3e9f26e',
-  'x-ms-routing-request-id': 'WESTUS2:20171108T220134Z:2a0cc3d1-0ead-44f3-969c-a582b3e9f26e',
-  date: 'Wed, 08 Nov 2017 22:01:33 GMT',
+  'x-ms-routing-request-id':
+   'WESTUS2:20190111T001552Z:f51426bd-1ad5-43f4-833d-dc8d45f8a927',
+  date: 'Fri, 11 Jan 2019 00:15:52 GMT',
   connection: 'close' });
  return result; }]];
