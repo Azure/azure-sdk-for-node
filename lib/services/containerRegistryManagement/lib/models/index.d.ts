@@ -1189,7 +1189,7 @@ export interface SourceProperties {
   */
   sourceControlType: string;
   /**
-   * The full URL to the source code respository
+   * The full URL to the source code repository
   */
   repositoryUrl: string;
   /**
@@ -1436,7 +1436,7 @@ export interface SourceUpdateParameters {
   */
   sourceControlType?: string;
   /**
-   * The full URL to the source code respository
+   * The full URL to the source code repository
   */
   repositoryUrl?: string;
   /**
@@ -1605,7 +1605,7 @@ export interface DockerBuildRequest extends RunRequest {
   agentConfiguration?: AgentProperties;
   /**
    * The URL(absolute or relative) of the source context. It can be an URL to a tar or git
-   * repoistory.
+   * repository.
    * If it is relative URL, the relative path should be obtained from calling
    * listBuildSourceUploadUrl API.
   */
@@ -1664,7 +1664,7 @@ export interface FileTaskRunRequest extends RunRequest {
   agentConfiguration?: AgentProperties;
   /**
    * The URL(absolute or relative) of the source context. It can be an URL to a tar or git
-   * repoistory.
+   * repository.
    * If it is relative URL, the relative path should be obtained from calling
    * listBuildSourceUploadUrl API.
   */
@@ -1719,7 +1719,7 @@ export interface EncodedTaskRunRequest extends RunRequest {
   agentConfiguration?: AgentProperties;
   /**
    * The URL(absolute or relative) of the source context. It can be an URL to a tar or git
-   * repoistory.
+   * repository.
    * If it is relative URL, the relative path should be obtained from calling
    * listBuildSourceUploadUrl API.
   */
