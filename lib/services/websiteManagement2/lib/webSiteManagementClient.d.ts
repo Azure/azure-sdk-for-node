@@ -1048,7 +1048,7 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    * plan is for Spot instances; otherwise, <code>false</code>.
    *
    * @param {number} [validateRequest.capacity] Target capacity of the App
-   * Service plan (number of VM's).
+   * Service plan (number of VMs).
    *
    * @param {string} [validateRequest.hostingEnvironment] Name of App Service
    * Environment where app or App Service plan should be created.
@@ -1099,7 +1099,7 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    * plan is for Spot instances; otherwise, <code>false</code>.
    *
    * @param {number} [validateRequest.capacity] Target capacity of the App
-   * Service plan (number of VM's).
+   * Service plan (number of VMs).
    *
    * @param {string} [validateRequest.hostingEnvironment] Name of App Service
    * Environment where app or App Service plan should be created.

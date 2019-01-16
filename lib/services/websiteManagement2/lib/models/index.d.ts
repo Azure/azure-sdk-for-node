@@ -507,7 +507,7 @@ export interface VnetGateway extends ProxyOnlyResource {
  * @class
  * Initializes a new instance of the User class.
  * @constructor
- * User crendentials used for publishing activity.
+ * User credentials used for publishing activity.
  *
  * @property {string} publishingUserName Username used for publishing.
  * @property {string} [publishingPassword] Password used for publishing.
@@ -709,7 +709,7 @@ export interface ManagedServiceIdentity {
  * @class
  * Initializes a new instance of the SlotSwapStatus class.
  * @constructor
- * The status of the last successfull slot swap operation.
+ * The status of the last successful slot swap operation.
  *
  * @property {date} [timestampUtc] The time the last successful slot swap
  * completed.
@@ -1024,13 +1024,13 @@ export interface SiteLimits {
  * @property {number} [reroutePercentage] Percentage of the traffic which will
  * be redirected to <code>ActionHostName</code>.
  * @property {number} [changeStep] In auto ramp up scenario this is the step to
- * to add/remove from <code>ReroutePercentage</code> until it reaches
+ * add/remove from <code>ReroutePercentage</code> until it reaches
  * <code>MinReroutePercentage</code> or <code>MaxReroutePercentage</code>. Site
- * metrics are checked every N minutes specificed in
+ * metrics are checked every N minutes specified in
  * <code>ChangeIntervalInMinutes</code>.
  * Custom decision algorithm can be provided in TiPCallback site extension
  * which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
- * @property {number} [changeIntervalInMinutes] Specifies interval in mimuntes
+ * @property {number} [changeIntervalInMinutes] Specifies interval in minutes
  * to reevaluate ReroutePercentage.
  * @property {number} [minReroutePercentage] Specifies lower boundary above
  * which ReroutePercentage will stay.
@@ -1258,7 +1258,7 @@ export interface NameValuePair {
  * @property {string} [loadBalancing] Site load balancing. Possible values
  * include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
  * 'WeightedTotalTraffic', 'RequestHash'
- * @property {object} [experiments] This is work around for polymophic types.
+ * @property {object} [experiments] This is work around for polymorphic types.
  * @property {array} [experiments.rampUpRules] List of ramp-up rules.
  * @property {object} [limits] Site limits.
  * @property {number} [limits.maxPercentageCpu] Maximum allowed CPU usage
@@ -1527,7 +1527,7 @@ export interface HostNameSslState {
  * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
  * 'WeightedTotalTraffic', 'RequestHash'
  * @property {object} [siteConfig.experiments] This is work around for
- * polymophic types.
+ * polymorphic types.
  * @property {array} [siteConfig.experiments.rampUpRules] List of ramp-up
  * rules.
  * @property {object} [siteConfig.limits] Site limits.
@@ -2441,7 +2441,7 @@ export interface Domain extends Resource {
  * @class
  * Initializes a new instance of the DomainAvailablilityCheckResult class.
  * @constructor
- * Domain availablility check result.
+ * Domain availability check result.
  *
  * @property {string} [name] Name of the domain.
  * @property {boolean} [available] <code>true</code> if domain can be purchased
@@ -2726,7 +2726,7 @@ export interface TopLevelDomainAgreementOption {
  * @property {string} [selfLink] Self link.
  * @property {string} [issuer] Certificate issuer.
  * @property {date} [issueDate] Certificate issue Date.
- * @property {date} [expirationDate] Certificate expriration date.
+ * @property {date} [expirationDate] Certificate expiration date.
  * @property {string} password Certificate password.
  * @property {string} [thumbprint] Certificate thumbprint.
  * @property {boolean} [valid] Is the certificate valid?.
@@ -2788,7 +2788,7 @@ export interface Certificate extends Resource {
  * @property {string} [selfLink] Self link.
  * @property {string} [issuer] Certificate issuer.
  * @property {date} [issueDate] Certificate issue Date.
- * @property {date} [expirationDate] Certificate expriration date.
+ * @property {date} [expirationDate] Certificate expiration date.
  * @property {string} password Certificate password.
  * @property {string} [thumbprint] Certificate thumbprint.
  * @property {boolean} [valid] Is the certificate valid?.
@@ -3110,7 +3110,7 @@ export interface LocalizableString {
  * @constructor
  * Usage of the quota resource.
  *
- * @property {string} [unit] Units of measurement for the quota resourse.
+ * @property {string} [unit] Units of measurement for the quota resource.
  * @property {date} [nextResetTime] Next reset time for the resource counter.
  * @property {number} [currentValue] The current value of the resource counter.
  * @property {number} [limit] The resource limit.
@@ -3289,8 +3289,8 @@ export interface Solution {
  * @constructor
  * Class representing Abnormal Time Period detected.
  *
- * @property {date} [startTime] Start time of the corelated event
- * @property {date} [endTime] End time of the corelated event
+ * @property {date} [startTime] Start time of the correlated event
+ * @property {date} [endTime] End time of the correlated event
  * @property {string} [message] Message describing the event
  * @property {string} [source] Represents the name of the Detector
  * @property {number} [priority] Represents the rank of the Detector
@@ -3412,7 +3412,7 @@ export interface DiagnosticMetricSet {
  * @constructor
  * Class representing data source used by the detectors
  *
- * @property {array} [instructions] Instrunctions if any for the data source
+ * @property {array} [instructions] Instructions if any for the data source
  * @property {array} [dataSourceUri] Datasource Uri Links
  */
 export interface DataSource {
@@ -3425,8 +3425,8 @@ export interface DataSource {
  * Initializes a new instance of the ResponseMetaData class.
  * @constructor
  * @property {object} [dataSource] Source of the Data
- * @property {array} [dataSource.instructions] Instrunctions if any for the
- * data source
+ * @property {array} [dataSource.instructions] Instructions if any for the data
+ * source
  * @property {array} [dataSource.dataSourceUri] Datasource Uri Links
  */
 export interface ResponseMetaData {
@@ -3452,8 +3452,8 @@ export interface ResponseMetaData {
  * @property {array} [data] Additional Source Data
  * @property {object} [detectorMetaData] Detector Meta Data
  * @property {object} [detectorMetaData.dataSource] Source of the Data
- * @property {array} [detectorMetaData.dataSource.instructions] Instrunctions
- * if any for the data source
+ * @property {array} [detectorMetaData.dataSource.instructions] Instructions if
+ * any for the data source
  * @property {array} [detectorMetaData.dataSource.dataSourceUri] Datasource Uri
  * Links
  */
@@ -3626,7 +3626,7 @@ export interface DiagnosticCategory extends ProxyOnlyResource {
  * @class
  * Initializes a new instance of the DiagnosticDetectorResponse class.
  * @constructor
- * Class representing Reponse from Diagnostic Detectors
+ * Class representing Response from Diagnostic Detectors
  *
  * @property {date} [startTime] Start time of the period
  * @property {date} [endTime] End time of the period
@@ -3645,8 +3645,8 @@ export interface DiagnosticCategory extends ProxyOnlyResource {
  * @property {array} [data] Additional Data that detector wants to send.
  * @property {object} [responseMetaData] Meta Data
  * @property {object} [responseMetaData.dataSource] Source of the Data
- * @property {array} [responseMetaData.dataSource.instructions] Instrunctions
- * if any for the data source
+ * @property {array} [responseMetaData.dataSource.instructions] Instructions if
+ * any for the data source
  * @property {array} [responseMetaData.dataSource.dataSourceUri] Datasource Uri
  * Links
  */
@@ -3756,7 +3756,7 @@ export interface ApplicationStack {
  * @property {number} [enabled] True if this recommendation is still valid
  * (i.e. "actionable"). False if it is invalid.
  * @property {array} [states] The list of states of this recommendation. If
- * it's null then it shoud be considered "Active".
+ * it's null then it should be considered "Active".
  * @property {date} [startTime] The beginning time in UTC of a range that the
  * recommendation refers to.
  * @property {date} [endTime] The end time in UTC of a range that the
@@ -4006,7 +4006,7 @@ export interface PremierAddOnOffer extends ProxyOnlyResource {
  * @class
  * Initializes a new instance of the ResourceNameAvailability class.
  * @constructor
- * Information regarding availbility of a resource name.
+ * Information regarding availability of a resource name.
  *
  * @property {boolean} [nameAvailable] <code>true</code> indicates name is
  * valid and available. <code>false</code> indicates the name is invalid,
@@ -4097,7 +4097,7 @@ export interface SourceControl extends ProxyOnlyResource {
  * @property {boolean} [isSpot] <code>true</code> if App Service plan is for
  * Spot instances; otherwise, <code>false</code>.
  * @property {number} [capacity] Target capacity of the App Service plan
- * (number of VM's).
+ * (number of VMs).
  * @property {string} [hostingEnvironment] Name of App Service Environment
  * where app or App Service plan should be created.
  * @property {boolean} [isXenon] <code>true</code> if App Service plan is
@@ -4568,7 +4568,7 @@ export interface CsmSlotEntity {
  * @property {boolean} [hasConflictOnScaleUnit] <code>true</code> if there is a
  * conflict on a scale unit; otherwise, <code>false</code>.
  * @property {boolean} [hasConflictAcrossSubscription] <code>true</code> if
- * htere is a conflict across subscriptions; otherwise, <code>false</code>.
+ * there is a conflict across subscriptions; otherwise, <code>false</code>.
  * @property {string} [conflictingAppResourceId] Name of the conflicting app on
  * scale unit if it's within the same subscription.
  * @property {array} [cNameRecords] CName records controller can see for this
@@ -4623,7 +4623,7 @@ export interface DeletedAppRestoreRequest extends ProxyOnlyResource {
  * @class
  * Initializes a new instance of the Deployment class.
  * @constructor
- * User crendentials used for publishing activity.
+ * User credentials used for publishing activity.
  *
  * @property {number} [status] Deployment status.
  * @property {string} [message] Details about deployment status.
@@ -5159,7 +5159,7 @@ export interface PrivateAccess extends ProxyOnlyResource {
  * @property {date} [startTime] Start time.
  * @property {string} [totalProcessorTime] Total processor time.
  * @property {string} [userProcessorTime] User processor time.
- * @property {string} [priviledgedProcessorTime] Priviledged processor time.
+ * @property {string} [priviledgedProcessorTime] Privileged processor time.
  * @property {string} [state] Thread state.
  * @property {string} [waitReason] Wait reason.
  */
@@ -5612,7 +5612,7 @@ export interface SiteCloneability {
  * @property {string} [loadBalancing] Site load balancing. Possible values
  * include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
  * 'WeightedTotalTraffic', 'RequestHash'
- * @property {object} [experiments] This is work around for polymophic types.
+ * @property {object} [experiments] This is work around for polymorphic types.
  * @property {array} [experiments.rampUpRules] List of ramp-up rules.
  * @property {object} [limits] Site limits.
  * @property {number} [limits.maxPercentageCpu] Maximum allowed CPU usage
@@ -6000,7 +6000,7 @@ export interface SiteLogsConfig extends ProxyOnlyResource {
  * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
  * 'WeightedTotalTraffic', 'RequestHash'
  * @property {object} [siteConfig.experiments] This is work around for
- * polymophic types.
+ * polymorphic types.
  * @property {array} [siteConfig.experiments.rampUpRules] List of ramp-up
  * rules.
  * @property {object} [siteConfig.limits] Site limits.
@@ -6709,7 +6709,7 @@ export interface AppServiceEnvironmentResource extends Resource {
  * @class
  * Initializes a new instance of the AppServiceEnvironmentPatchResource class.
  * @constructor
- * ARM resource for a app service enviroment.
+ * ARM resource for a app service environment.
  *
  * @property {string} appServiceEnvironmentPatchResourceName Name of the App
  * Service Environment.
@@ -7111,7 +7111,7 @@ export interface ResourceHealthMetadata extends ProxyOnlyResource {
  * @class
  * Initializes a new instance of the AppServiceCertificateOrderCollection class.
  * @constructor
- * Collection of certitificate orders.
+ * Collection of certificate orders.
  *
  * @property {string} [nextLink] Link to next page of resources.
  */
@@ -7123,7 +7123,7 @@ export interface AppServiceCertificateOrderCollection extends Array<AppServiceCe
  * @class
  * Initializes a new instance of the AppServiceCertificateCollection class.
  * @constructor
- * Collection of certitificateorder certificates.
+ * Collection of certificate order certificates.
  *
  * @property {string} [nextLink] Link to next page of resources.
  */
