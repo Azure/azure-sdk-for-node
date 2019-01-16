@@ -512,6 +512,18 @@ export interface LifetimeAction {
   action?: Action;
 }
 
+export interface ValidationEmail {
+  /**
+   * Validation emails will be sent for certificate requests with this dns name as subject name or
+   * subject alternative name.
+  */
+  dnsName?: string;
+  /**
+   * Email address where validation emails will be sent.
+  */
+  email?: string;
+}
+
 /**
  * Parameters for the issuer of the X509 component of a certificate.
 */
@@ -529,6 +541,15 @@ export interface IssuerParameters {
    * transparency logs.
   */
   certificateTransparency?: boolean;
+  /**
+   * The method the issuer will use to validate certificate creation and renewal requests. Possible
+   * values include: 'email', 'dns-txt-token', 'http-token'
+  */
+  validationMethod?: string;
+  /**
+   * A list of email addresses where validation emails should be sent for specific DNS names.
+  */
+  validationEmails?: ValidationEmail[];
 }
 
 /**

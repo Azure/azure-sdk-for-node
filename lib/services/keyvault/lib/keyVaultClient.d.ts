@@ -3588,6 +3588,15 @@ export default class KeyVaultClient extends AzureServiceClient {
    * Indicates if the certificates generated under this policy should be
    * published to certificate transparency logs.
    *
+   * @param {string}
+   * [options.certificatePolicy.issuerParameters.validationMethod] The method the
+   * issuer will use to validate certificate creation and renewal requests.
+   * Possible values include: 'email', 'dns-txt-token', 'http-token'
+   *
+   * @param {array} [options.certificatePolicy.issuerParameters.validationEmails]
+   * A list of email addresses where validation emails should be sent for
+   * specific DNS names.
+   *
    * @param {object} [options.certificatePolicy.attributes] The certificate
    * attributes.
    *
@@ -3709,6 +3718,15 @@ export default class KeyVaultClient extends AzureServiceClient {
    * [options.certificatePolicy.issuerParameters.certificateTransparency]
    * Indicates if the certificates generated under this policy should be
    * published to certificate transparency logs.
+   *
+   * @param {string}
+   * [options.certificatePolicy.issuerParameters.validationMethod] The method the
+   * issuer will use to validate certificate creation and renewal requests.
+   * Possible values include: 'email', 'dns-txt-token', 'http-token'
+   *
+   * @param {array} [options.certificatePolicy.issuerParameters.validationEmails]
+   * A list of email addresses where validation emails should be sent for
+   * specific DNS names.
    *
    * @param {object} [options.certificatePolicy.attributes] The certificate
    * attributes.
@@ -3861,6 +3879,15 @@ export default class KeyVaultClient extends AzureServiceClient {
    * Indicates if the certificates generated under this policy should be
    * published to certificate transparency logs.
    *
+   * @param {string}
+   * [options.certificatePolicy.issuerParameters.validationMethod] The method the
+   * issuer will use to validate certificate creation and renewal requests.
+   * Possible values include: 'email', 'dns-txt-token', 'http-token'
+   *
+   * @param {array} [options.certificatePolicy.issuerParameters.validationEmails]
+   * A list of email addresses where validation emails should be sent for
+   * specific DNS names.
+   *
    * @param {object} [options.certificatePolicy.attributes] The certificate
    * attributes.
    *
@@ -3992,6 +4019,15 @@ export default class KeyVaultClient extends AzureServiceClient {
    * [options.certificatePolicy.issuerParameters.certificateTransparency]
    * Indicates if the certificates generated under this policy should be
    * published to certificate transparency logs.
+   *
+   * @param {string}
+   * [options.certificatePolicy.issuerParameters.validationMethod] The method the
+   * issuer will use to validate certificate creation and renewal requests.
+   * Possible values include: 'email', 'dns-txt-token', 'http-token'
+   *
+   * @param {array} [options.certificatePolicy.issuerParameters.validationEmails]
+   * A list of email addresses where validation emails should be sent for
+   * specific DNS names.
    *
    * @param {object} [options.certificatePolicy.attributes] The certificate
    * attributes.
@@ -4276,6 +4312,14 @@ export default class KeyVaultClient extends AzureServiceClient {
    * the certificates generated under this policy should be published to
    * certificate transparency logs.
    *
+   * @param {string} [certificatePolicy.issuerParameters.validationMethod] The
+   * method the issuer will use to validate certificate creation and renewal
+   * requests. Possible values include: 'email', 'dns-txt-token', 'http-token'
+   *
+   * @param {array} [certificatePolicy.issuerParameters.validationEmails] A list
+   * of email addresses where validation emails should be sent for specific DNS
+   * names.
+   *
    * @param {object} [certificatePolicy.attributes] The certificate attributes.
    *
    * @param {boolean} [certificatePolicy.attributes.enabled] Determines whether
@@ -4388,6 +4432,14 @@ export default class KeyVaultClient extends AzureServiceClient {
    * [certificatePolicy.issuerParameters.certificateTransparency] Indicates if
    * the certificates generated under this policy should be published to
    * certificate transparency logs.
+   *
+   * @param {string} [certificatePolicy.issuerParameters.validationMethod] The
+   * method the issuer will use to validate certificate creation and renewal
+   * requests. Possible values include: 'email', 'dns-txt-token', 'http-token'
+   *
+   * @param {array} [certificatePolicy.issuerParameters.validationEmails] A list
+   * of email addresses where validation emails should be sent for specific DNS
+   * names.
    *
    * @param {object} [certificatePolicy.attributes] The certificate attributes.
    *
@@ -4530,6 +4582,15 @@ export default class KeyVaultClient extends AzureServiceClient {
    * Indicates if the certificates generated under this policy should be
    * published to certificate transparency logs.
    *
+   * @param {string}
+   * [options.certificatePolicy.issuerParameters.validationMethod] The method the
+   * issuer will use to validate certificate creation and renewal requests.
+   * Possible values include: 'email', 'dns-txt-token', 'http-token'
+   *
+   * @param {array} [options.certificatePolicy.issuerParameters.validationEmails]
+   * A list of email addresses where validation emails should be sent for
+   * specific DNS names.
+   *
    * @param {object} [options.certificatePolicy.attributes] The certificate
    * attributes.
    *
@@ -4656,6 +4717,15 @@ export default class KeyVaultClient extends AzureServiceClient {
    * [options.certificatePolicy.issuerParameters.certificateTransparency]
    * Indicates if the certificates generated under this policy should be
    * published to certificate transparency logs.
+   *
+   * @param {string}
+   * [options.certificatePolicy.issuerParameters.validationMethod] The method the
+   * issuer will use to validate certificate creation and renewal requests.
+   * Possible values include: 'email', 'dns-txt-token', 'http-token'
+   *
+   * @param {array} [options.certificatePolicy.issuerParameters.validationEmails]
+   * A list of email addresses where validation emails should be sent for
+   * specific DNS names.
    *
    * @param {object} [options.certificatePolicy.attributes] The certificate
    * attributes.
