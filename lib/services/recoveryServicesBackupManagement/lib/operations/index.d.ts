@@ -205,7 +205,7 @@ export interface ProtectionIntentOperations {
      * @param {object} [parameters.properties] ProtectionIntentResource properties
      *
      * @param {string} [parameters.properties.backupManagementType] Type of backup
-     * managemenent for the backed up item. Possible values include: 'Invalid',
+     * management for the backed up item. Possible values include: 'Invalid',
      * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql',
      * 'AzureStorage', 'AzureWorkload', 'DefaultBackup'
      *
@@ -262,7 +262,7 @@ export interface ProtectionIntentOperations {
      * @param {object} [parameters.properties] ProtectionIntentResource properties
      *
      * @param {string} [parameters.properties.backupManagementType] Type of backup
-     * managemenent for the backed up item. Possible values include: 'Invalid',
+     * management for the backed up item. Possible values include: 'Invalid',
      * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql',
      * 'AzureStorage', 'AzureWorkload', 'DefaultBackup'
      *
@@ -699,7 +699,7 @@ export interface JobDetails {
 
 
     /**
-     * Gets exteded information associated with the job.
+     * Gets extended information associated with the job.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -722,7 +722,7 @@ export interface JobDetails {
     getWithHttpOperationResponse(vaultName: string, resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobResource>>;
 
     /**
-     * Gets exteded information associated with the job.
+     * Gets extended information associated with the job.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -2215,7 +2215,7 @@ export interface ProtectionContainers {
      * container.
      *
      * @param {string} [parameters.properties.backupManagementType] Type of backup
-     * managemenent for the container. Possible values include: 'Invalid',
+     * management for the container. Possible values include: 'Invalid',
      * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql',
      * 'AzureStorage', 'AzureWorkload', 'DefaultBackup'
      *
@@ -2271,7 +2271,7 @@ export interface ProtectionContainers {
      * container.
      *
      * @param {string} [parameters.properties.backupManagementType] Type of backup
-     * managemenent for the container. Possible values include: 'Invalid',
+     * management for the container. Possible values include: 'Invalid',
      * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql',
      * 'AzureStorage', 'AzureWorkload', 'DefaultBackup'
      *
@@ -2910,7 +2910,7 @@ export interface ProtectedItems {
      * @param {object} [parameters.properties] ProtectedItemResource properties
      *
      * @param {string} [parameters.properties.backupManagementType] Type of backup
-     * managemenent for the backed up item. Possible values include: 'Invalid',
+     * management for the backed up item. Possible values include: 'Invalid',
      * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql',
      * 'AzureStorage', 'AzureWorkload', 'DefaultBackup'
      *
@@ -2984,7 +2984,7 @@ export interface ProtectedItems {
      * @param {object} [parameters.properties] ProtectedItemResource properties
      *
      * @param {string} [parameters.properties.backupManagementType] Type of backup
-     * managemenent for the backed up item. Possible values include: 'Invalid',
+     * management for the backed up item. Possible values include: 'Invalid',
      * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql',
      * 'AzureStorage', 'AzureWorkload', 'DefaultBackup'
      *
@@ -5321,7 +5321,7 @@ export interface BackupResourceStorageConfigs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    patchWithHttpOperationResponse(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    update1WithHttpOperationResponse(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Updates vault storage model type.
@@ -5378,9 +5378,9 @@ export interface BackupResourceStorageConfigs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    patch(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    patch(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, callback: ServiceCallback<void>): void;
-    patch(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    update1(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    update1(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, callback: ServiceCallback<void>): void;
+    update1(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**

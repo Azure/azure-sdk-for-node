@@ -54,7 +54,7 @@ export interface AzureFileshareProtectedItemExtendedInfo {
  */
 export interface ProtectedItem {
   /**
-   * Type of backup managemenent for the backed up item. Possible values include: 'Invalid',
+   * Type of backup management for the backed up item. Possible values include: 'Invalid',
    * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
    * 'DefaultBackup'
    */
@@ -480,7 +480,7 @@ export interface Job {
 }
 
 /**
- * Azure IaaS VM workload-specifc job object.
+ * Azure IaaS VM workload-specific job object.
  */
 export interface AzureIaaSVMJob extends Job {
   /**
@@ -550,7 +550,7 @@ export interface AzureIaaSVMProtectionPolicy extends ProtectionPolicy {
  */
 export interface ProtectionIntent {
   /**
-   * Type of backup managemenent for the backed up item. Possible values include: 'Invalid',
+   * Type of backup management for the backed up item. Possible values include: 'Invalid',
    * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
    * 'DefaultBackup'
    */
@@ -1368,7 +1368,7 @@ export interface DpmJobExtendedInfo {
 }
 
 /**
- * DPM workload-specifc job object.
+ * DPM workload-specific job object.
  */
 export interface DpmJob extends Job {
   /**
@@ -1679,7 +1679,7 @@ export interface JobQueryObject {
    */
   status?: string;
   /**
-   * Type of backup managmenent for the job. Possible values include: 'Invalid', 'AzureIaasVM',
+   * Type of backup management for the job. Possible values include: 'Invalid', 'AzureIaasVM',
    * 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
    * 'DefaultBackup'
    */
@@ -2354,7 +2354,7 @@ export interface ProtectionContainer {
   */
   friendlyName?: string;
   /**
-   * Type of backup managemenent for the container. Possible values include: 'Invalid',
+   * Type of backup management for the container. Possible values include: 'Invalid',
    * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
    * 'DefaultBackup'
   */
@@ -2508,7 +2508,7 @@ export interface AzureFileShareBackupRequest extends BackupRequest {
 */
 export interface WorkloadProtectableItem {
   /**
-   * Type of backup managemenent to backup an item.
+   * Type of backup management to backup an item.
   */
   backupManagementType?: string;
   /**
@@ -2700,7 +2700,7 @@ export interface ProtectableContainer {
   */
   friendlyName?: string;
   /**
-   * Type of backup managemenent for the container. Possible values include: 'Invalid',
+   * Type of backup management for the container. Possible values include: 'Invalid',
    * 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
    * 'DefaultBackup'
   */
@@ -2742,7 +2742,7 @@ export interface AzureVMAppContainerProtectionContainer extends AzureWorkloadCon
 */
 export interface WorkloadItem {
   /**
-   * Type of backup managemenent to backup an item.
+   * Type of backup management to backup an item.
   */
   backupManagementType?: string;
   /**
@@ -3076,7 +3076,7 @@ export interface PointInTimeRange {
 }
 
 /**
- * Workload specific recoverypoint, specifcally encaspulates full/diff recoverypoint
+ * Workload specific recovery point, specifically encapsulates full/diff recovery point
 */
 export interface AzureWorkloadRecoveryPoint extends RecoveryPoint {
   /**
@@ -3107,13 +3107,13 @@ AzureWorkloadPointInTimeRecoveryPoint {
 }
 
 /**
- * SAPHana specific recoverypoint, specifcally encaspulates full/diff recoverypoints
+ * SAPHana specific recoverypoint, specifically encapsulates full/diff recoverypoints
 */
 export interface AzureWorkloadSAPHanaRecoveryPoint extends AzureWorkloadRecoveryPoint {
 }
 
 /**
- * SQL specific recoverypoint, specifcally encaspulates full/diff recoverypoint alongwith extended
+ * SQL specific recoverypoint, specifically encapsulates full/diff recoverypoint alongwith extended
  * info
 */
 export interface AzureWorkloadSQLRecoveryPoint extends AzureWorkloadRecoveryPoint {
@@ -3270,7 +3270,7 @@ export interface BackupResourceVaultConfigResource extends Resource {
 }
 
 /**
- * BEK is bitlocker encrpytion key.
+ * BEK is bitlocker encryption key.
 */
 export interface BEKDetails {
   /**
@@ -3483,7 +3483,8 @@ export interface ClientScriptForConnect {
   */
   url?: string;
   /**
-   * Mandator suffix that should be added to the name of script that is given for download to user.
+   * Mandatory suffix that should be added to the name of script that is given for download to
+   * user.
    * If its null or empty then , ignore it.
   */
   scriptNameSuffix?: string;
@@ -3654,7 +3655,7 @@ export interface KEKDetails {
 /**
  * BEK is bitlocker key.
  * KEK is encryption key for BEK
- * If the VM was encrypted then we will store follwing details :
+ * If the VM was encrypted then we will store following details :
  * 1. Secret(BEK) - Url + Backup Data + vaultId.
  * 2. Key(KEK) - Url + Backup Data + vaultId.
  * 3. EncryptionMechanism
@@ -3666,7 +3667,7 @@ export interface KeyAndSecretDetails {
   */
   kekDetails?: KEKDetails;
   /**
-   * BEK is bitlocker encrpytion key.
+   * BEK is bitlocker encryption key.
   */
   bekDetails?: BEKDetails;
   /**
