@@ -249,15 +249,15 @@ export interface ApplicationGateways {
      * allow WAF to check request Body.
      *
      * @param {number}
-     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maxium
+     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maximum
      * request body size for WAF.
      *
      * @param {number}
      * [parameters.webApplicationFirewallConfiguration.maxRequestBodySizeInKb]
-     * Maxium request body size in Kb for WAF.
+     * Maximum request body size in Kb for WAF.
      *
      * @param {number}
-     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maxium
+     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maximum
      * file upload size in Mb for WAF.
      *
      * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
@@ -435,15 +435,15 @@ export interface ApplicationGateways {
      * allow WAF to check request Body.
      *
      * @param {number}
-     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maxium
+     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maximum
      * request body size for WAF.
      *
      * @param {number}
      * [parameters.webApplicationFirewallConfiguration.maxRequestBodySizeInKb]
-     * Maxium request body size in Kb for WAF.
+     * Maximum request body size in Kb for WAF.
      *
      * @param {number}
-     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maxium
+     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maximum
      * file upload size in Mb for WAF.
      *
      * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
@@ -1432,15 +1432,15 @@ export interface ApplicationGateways {
      * allow WAF to check request Body.
      *
      * @param {number}
-     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maxium
+     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maximum
      * request body size for WAF.
      *
      * @param {number}
      * [parameters.webApplicationFirewallConfiguration.maxRequestBodySizeInKb]
-     * Maxium request body size in Kb for WAF.
+     * Maximum request body size in Kb for WAF.
      *
      * @param {number}
-     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maxium
+     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maximum
      * file upload size in Mb for WAF.
      *
      * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
@@ -1618,15 +1618,15 @@ export interface ApplicationGateways {
      * allow WAF to check request Body.
      *
      * @param {number}
-     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maxium
+     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maximum
      * request body size for WAF.
      *
      * @param {number}
      * [parameters.webApplicationFirewallConfiguration.maxRequestBodySizeInKb]
-     * Maxium request body size in Kb for WAF.
+     * Maximum request body size in Kb for WAF.
      *
      * @param {number}
-     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maxium
+     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maximum
      * file upload size in Mb for WAF.
      *
      * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
@@ -5776,7 +5776,7 @@ export interface ExpressRouteCircuitPeerings {
      *
      * @param {array}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities]
-     * The communities of bgp peering. Spepcified for microsoft peering
+     * The communities of bgp peering. Specified for microsoft peering
      *
      * @param {string}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
@@ -5931,7 +5931,7 @@ export interface ExpressRouteCircuitPeerings {
      *
      * @param {array}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities]
-     * The communities of bgp peering. Spepcified for microsoft peering
+     * The communities of bgp peering. Specified for microsoft peering
      *
      * @param {string}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
@@ -6228,7 +6228,7 @@ export interface ExpressRouteCircuitPeerings {
      *
      * @param {array}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities]
-     * The communities of bgp peering. Spepcified for microsoft peering
+     * The communities of bgp peering. Specified for microsoft peering
      *
      * @param {string}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
@@ -6383,7 +6383,7 @@ export interface ExpressRouteCircuitPeerings {
      *
      * @param {array}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities]
-     * The communities of bgp peering. Spepcified for microsoft peering
+     * The communities of bgp peering. Specified for microsoft peering
      *
      * @param {string}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
@@ -6694,7 +6694,7 @@ export interface ExpressRouteCircuitConnections {
      * connection.
      *
      * @param {object} expressRouteCircuitConnectionParameters Parameters supplied
-     * to the create or update express route circuit circuit connection operation.
+     * to the create or update express route circuit connection operation.
      *
      * @param {object}
      * [expressRouteCircuitConnectionParameters.expressRouteCircuitPeering]
@@ -6749,7 +6749,7 @@ export interface ExpressRouteCircuitConnections {
      * connection.
      *
      * @param {object} expressRouteCircuitConnectionParameters Parameters supplied
-     * to the create or update express route circuit circuit connection operation.
+     * to the create or update express route circuit connection operation.
      *
      * @param {object}
      * [expressRouteCircuitConnectionParameters.expressRouteCircuitPeering]
@@ -6960,7 +6960,7 @@ export interface ExpressRouteCircuitConnections {
      * connection.
      *
      * @param {object} expressRouteCircuitConnectionParameters Parameters supplied
-     * to the create or update express route circuit circuit connection operation.
+     * to the create or update express route circuit connection operation.
      *
      * @param {object}
      * [expressRouteCircuitConnectionParameters.expressRouteCircuitPeering]
@@ -7015,7 +7015,7 @@ export interface ExpressRouteCircuitConnections {
      * connection.
      *
      * @param {object} expressRouteCircuitConnectionParameters Parameters supplied
-     * to the create or update express route circuit circuit connection operation.
+     * to the create or update express route circuit connection operation.
      *
      * @param {object}
      * [expressRouteCircuitConnectionParameters.expressRouteCircuitPeering]
@@ -10126,7 +10126,7 @@ export interface ExpressRouteCrossConnectionPeerings {
      *
      * @param {array}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities]
-     * The communities of bgp peering. Spepcified for microsoft peering
+     * The communities of bgp peering. Specified for microsoft peering
      *
      * @param {string}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
@@ -10249,7 +10249,7 @@ export interface ExpressRouteCrossConnectionPeerings {
      *
      * @param {array}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities]
-     * The communities of bgp peering. Spepcified for microsoft peering
+     * The communities of bgp peering. Specified for microsoft peering
      *
      * @param {string}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
@@ -10456,7 +10456,7 @@ export interface ExpressRouteCrossConnectionPeerings {
      *
      * @param {array}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities]
-     * The communities of bgp peering. Spepcified for microsoft peering
+     * The communities of bgp peering. Specified for microsoft peering
      *
      * @param {string}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
@@ -10579,7 +10579,7 @@ export interface ExpressRouteCrossConnectionPeerings {
      *
      * @param {array}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities]
-     * The communities of bgp peering. Spepcified for microsoft peering
+     * The communities of bgp peering. Specified for microsoft peering
      *
      * @param {string}
      * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
@@ -11780,7 +11780,7 @@ export interface ExpressRoutePortsLocations {
     /**
      * Retrieves all ExpressRoutePort peering locations. Does not return available
      * bandwidths for each location. Available bandwidths can only be obtained when
-     * retriving a specific peering location.
+     * retrieving a specific peering location.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11798,7 +11798,7 @@ export interface ExpressRoutePortsLocations {
     /**
      * Retrieves all ExpressRoutePort peering locations. Does not return available
      * bandwidths for each location. Available bandwidths can only be obtained when
-     * retriving a specific peering location.
+     * retrieving a specific peering location.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11896,7 +11896,7 @@ export interface ExpressRoutePortsLocations {
     /**
      * Retrieves all ExpressRoutePort peering locations. Does not return available
      * bandwidths for each location. Available bandwidths can only be obtained when
-     * retriving a specific peering location.
+     * retrieving a specific peering location.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -11917,7 +11917,7 @@ export interface ExpressRoutePortsLocations {
     /**
      * Retrieves all ExpressRoutePort peering locations. Does not return available
      * bandwidths for each location. Available bandwidths can only be obtained when
-     * retriving a specific peering location.
+     * retrieving a specific peering location.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -20615,7 +20615,7 @@ export interface NetworkProfiles {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} networkProfileName The name of the PublicIPPrefx.
+     * @param {string} networkProfileName The name of the PublicIPPrefix.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -20637,7 +20637,7 @@ export interface NetworkProfiles {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} networkProfileName The name of the PublicIPPrefx.
+     * @param {string} networkProfileName The name of the PublicIPPrefix.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22002,15 +22002,15 @@ export interface SecurityRules {
      * include: 'Tcp', 'Udp', '*'
      *
      * @param {string} [securityRuleParameters.sourcePortRange] The source port or
-     * range. Integer or range between 0 and 65535. Asterix '*' can also be used to
-     * match all ports.
+     * range. Integer or range between 0 and 65535. Asterisks '*' can also be used
+     * to match all ports.
      *
      * @param {string} [securityRuleParameters.destinationPortRange] The
-     * destination port or range. Integer or range between 0 and 65535. Asterix '*'
-     * can also be used to match all ports.
+     * destination port or range. Integer or range between 0 and 65535. Asterisks
+     * '*' can also be used to match all ports.
      *
      * @param {string} [securityRuleParameters.sourceAddressPrefix] The CIDR or
-     * source IP range. Asterix '*' can also be used to match all source IPs.
+     * source IP range. Asterisks '*' can also be used to match all source IPs.
      * Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      * can also be used. If this is an ingress rule, specifies where network
      * traffic originates from.
@@ -22022,7 +22022,7 @@ export interface SecurityRules {
      * application security group specified as source.
      *
      * @param {string} [securityRuleParameters.destinationAddressPrefix] The
-     * destination address prefix. CIDR or destination IP range. Asterix '*' can
+     * destination address prefix. CIDR or destination IP range. Asterisks '*' can
      * also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used.
      *
@@ -22048,7 +22048,7 @@ export interface SecurityRules {
      * the priority of the rule.
      *
      * @param {string} securityRuleParameters.direction The direction of the rule.
-     * The direction specifies if rule will be evaluated on incoming or outcoming
+     * The direction specifies if rule will be evaluated on incoming or outgoing
      * traffic. Possible values are: 'Inbound' and 'Outbound'. Possible values
      * include: 'Inbound', 'Outbound'
      *
@@ -22099,15 +22099,15 @@ export interface SecurityRules {
      * include: 'Tcp', 'Udp', '*'
      *
      * @param {string} [securityRuleParameters.sourcePortRange] The source port or
-     * range. Integer or range between 0 and 65535. Asterix '*' can also be used to
-     * match all ports.
+     * range. Integer or range between 0 and 65535. Asterisks '*' can also be used
+     * to match all ports.
      *
      * @param {string} [securityRuleParameters.destinationPortRange] The
-     * destination port or range. Integer or range between 0 and 65535. Asterix '*'
-     * can also be used to match all ports.
+     * destination port or range. Integer or range between 0 and 65535. Asterisks
+     * '*' can also be used to match all ports.
      *
      * @param {string} [securityRuleParameters.sourceAddressPrefix] The CIDR or
-     * source IP range. Asterix '*' can also be used to match all source IPs.
+     * source IP range. Asterisks '*' can also be used to match all source IPs.
      * Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      * can also be used. If this is an ingress rule, specifies where network
      * traffic originates from.
@@ -22119,7 +22119,7 @@ export interface SecurityRules {
      * application security group specified as source.
      *
      * @param {string} [securityRuleParameters.destinationAddressPrefix] The
-     * destination address prefix. CIDR or destination IP range. Asterix '*' can
+     * destination address prefix. CIDR or destination IP range. Asterisks '*' can
      * also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used.
      *
@@ -22145,7 +22145,7 @@ export interface SecurityRules {
      * the priority of the rule.
      *
      * @param {string} securityRuleParameters.direction The direction of the rule.
-     * The direction specifies if rule will be evaluated on incoming or outcoming
+     * The direction specifies if rule will be evaluated on incoming or outgoing
      * traffic. Possible values are: 'Inbound' and 'Outbound'. Possible values
      * include: 'Inbound', 'Outbound'
      *
@@ -22341,15 +22341,15 @@ export interface SecurityRules {
      * include: 'Tcp', 'Udp', '*'
      *
      * @param {string} [securityRuleParameters.sourcePortRange] The source port or
-     * range. Integer or range between 0 and 65535. Asterix '*' can also be used to
-     * match all ports.
+     * range. Integer or range between 0 and 65535. Asterisks '*' can also be used
+     * to match all ports.
      *
      * @param {string} [securityRuleParameters.destinationPortRange] The
-     * destination port or range. Integer or range between 0 and 65535. Asterix '*'
-     * can also be used to match all ports.
+     * destination port or range. Integer or range between 0 and 65535. Asterisks
+     * '*' can also be used to match all ports.
      *
      * @param {string} [securityRuleParameters.sourceAddressPrefix] The CIDR or
-     * source IP range. Asterix '*' can also be used to match all source IPs.
+     * source IP range. Asterisks '*' can also be used to match all source IPs.
      * Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      * can also be used. If this is an ingress rule, specifies where network
      * traffic originates from.
@@ -22361,7 +22361,7 @@ export interface SecurityRules {
      * application security group specified as source.
      *
      * @param {string} [securityRuleParameters.destinationAddressPrefix] The
-     * destination address prefix. CIDR or destination IP range. Asterix '*' can
+     * destination address prefix. CIDR or destination IP range. Asterisks '*' can
      * also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used.
      *
@@ -22387,7 +22387,7 @@ export interface SecurityRules {
      * the priority of the rule.
      *
      * @param {string} securityRuleParameters.direction The direction of the rule.
-     * The direction specifies if rule will be evaluated on incoming or outcoming
+     * The direction specifies if rule will be evaluated on incoming or outgoing
      * traffic. Possible values are: 'Inbound' and 'Outbound'. Possible values
      * include: 'Inbound', 'Outbound'
      *
@@ -22438,15 +22438,15 @@ export interface SecurityRules {
      * include: 'Tcp', 'Udp', '*'
      *
      * @param {string} [securityRuleParameters.sourcePortRange] The source port or
-     * range. Integer or range between 0 and 65535. Asterix '*' can also be used to
-     * match all ports.
+     * range. Integer or range between 0 and 65535. Asterisks '*' can also be used
+     * to match all ports.
      *
      * @param {string} [securityRuleParameters.destinationPortRange] The
-     * destination port or range. Integer or range between 0 and 65535. Asterix '*'
-     * can also be used to match all ports.
+     * destination port or range. Integer or range between 0 and 65535. Asterisks
+     * '*' can also be used to match all ports.
      *
      * @param {string} [securityRuleParameters.sourceAddressPrefix] The CIDR or
-     * source IP range. Asterix '*' can also be used to match all source IPs.
+     * source IP range. Asterisks '*' can also be used to match all source IPs.
      * Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet'
      * can also be used. If this is an ingress rule, specifies where network
      * traffic originates from.
@@ -22458,7 +22458,7 @@ export interface SecurityRules {
      * application security group specified as source.
      *
      * @param {string} [securityRuleParameters.destinationAddressPrefix] The
-     * destination address prefix. CIDR or destination IP range. Asterix '*' can
+     * destination address prefix. CIDR or destination IP range. Asterisks '*' can
      * also be used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used.
      *
@@ -22484,7 +22484,7 @@ export interface SecurityRules {
      * the priority of the rule.
      *
      * @param {string} securityRuleParameters.direction The direction of the rule.
-     * The direction specifies if rule will be evaluated on incoming or outcoming
+     * The direction specifies if rule will be evaluated on incoming or outgoing
      * traffic. Possible values are: 'Inbound' and 'Outbound'. Possible values
      * include: 'Inbound', 'Outbound'
      *
@@ -28729,7 +28729,7 @@ export interface PublicIPPrefixes {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} publicIpPrefixName The name of the PublicIPPrefx.
+     * @param {string} publicIpPrefixName The name of the PublicIPPrefix.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -28751,7 +28751,7 @@ export interface PublicIPPrefixes {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} publicIpPrefixName The name of the PublicIPPrefx.
+     * @param {string} publicIpPrefixName The name of the PublicIPPrefix.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -44372,7 +44372,7 @@ export interface VpnSites {
 
 
     /**
-     * Retrieves the details of a VPNsite.
+     * Retrieves the details of a VPN site.
      *
      * @param {string} resourceGroupName The resource group name of the VpnSite.
      *
@@ -44392,7 +44392,7 @@ export interface VpnSites {
     getWithHttpOperationResponse(resourceGroupName: string, vpnSiteName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnSite>>;
 
     /**
-     * Retrieves the details of a VPNsite.
+     * Retrieves the details of a VPN site.
      *
      * @param {string} resourceGroupName The resource group name of the VpnSite.
      *
@@ -47974,8 +47974,8 @@ export interface P2sVpnServerConfigurations {
      * for point to site client connection.
      *
      * @param {string} [p2SVpnServerConfigurationParameters.radiusServerSecret] The
-     * radius secret property of the P2SVpnServerConfiguration resource for for
-     * point to site client connection.
+     * radius secret property of the P2SVpnServerConfiguration resource for point
+     * to site client connection.
      *
      * @param {string}
      * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesEtag]
@@ -48047,8 +48047,8 @@ export interface P2sVpnServerConfigurations {
      * for point to site client connection.
      *
      * @param {string} [p2SVpnServerConfigurationParameters.radiusServerSecret] The
-     * radius secret property of the P2SVpnServerConfiguration resource for for
-     * point to site client connection.
+     * radius secret property of the P2SVpnServerConfiguration resource for point
+     * to site client connection.
      *
      * @param {string}
      * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesEtag]
@@ -48266,8 +48266,8 @@ export interface P2sVpnServerConfigurations {
      * for point to site client connection.
      *
      * @param {string} [p2SVpnServerConfigurationParameters.radiusServerSecret] The
-     * radius secret property of the P2SVpnServerConfiguration resource for for
-     * point to site client connection.
+     * radius secret property of the P2SVpnServerConfiguration resource for point
+     * to site client connection.
      *
      * @param {string}
      * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesEtag]
@@ -48339,8 +48339,8 @@ export interface P2sVpnServerConfigurations {
      * for point to site client connection.
      *
      * @param {string} [p2SVpnServerConfigurationParameters.radiusServerSecret] The
-     * radius secret property of the P2SVpnServerConfiguration resource for for
-     * point to site client connection.
+     * radius secret property of the P2SVpnServerConfiguration resource for point
+     * to site client connection.
      *
      * @param {string}
      * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesEtag]
