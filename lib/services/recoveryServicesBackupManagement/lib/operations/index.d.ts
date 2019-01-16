@@ -5321,7 +5321,7 @@ export interface BackupResourceStorageConfigs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    update1WithHttpOperationResponse(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    patchWithHttpOperationResponse(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Updates vault storage model type.
@@ -5378,9 +5378,9 @@ export interface BackupResourceStorageConfigs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update1(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    update1(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, callback: ServiceCallback<void>): void;
-    update1(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    patch(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    patch(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, callback: ServiceCallback<void>): void;
+    patch(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
