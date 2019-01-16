@@ -14,6 +14,218 @@ import * as models from '../models';
 
 /**
  * @class
+ * ContainerHostMappings
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DevSpacesManagementClient.
+ */
+export interface ContainerHostMappings {
+
+
+    /**
+     * @summary Returns container host mapping object for a container host resource
+     * ID if an associated controller exists.
+     *
+     * @param {object} containerHostMapping
+     *
+     * @param {string} [containerHostMapping.containerHostResourceId] ARM ID of the
+     * Container Host resource
+     *
+     * @param {string} resourceGroupName Resource group to which the resource
+     * belongs.
+     *
+     * @param {string} location Location of the container host.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getContainerHostMappingWithHttpOperationResponse(containerHostMapping: models.ContainerHostMapping, resourceGroupName: string, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Returns container host mapping object for a container host resource
+     * ID if an associated controller exists.
+     *
+     * @param {object} containerHostMapping
+     *
+     * @param {string} [containerHostMapping.containerHostResourceId] ARM ID of the
+     * Container Host resource
+     *
+     * @param {string} resourceGroupName Resource group to which the resource
+     * belongs.
+     *
+     * @param {string} location Location of the container host.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getContainerHostMapping(containerHostMapping: models.ContainerHostMapping, resourceGroupName: string, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getContainerHostMapping(containerHostMapping: models.ContainerHostMapping, resourceGroupName: string, location: string, callback: ServiceCallback<any>): void;
+    getContainerHostMapping(containerHostMapping: models.ContainerHostMapping, resourceGroupName: string, location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+}
+
+/**
+ * @class
+ * Operations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DevSpacesManagementClient.
+ */
+export interface Operations {
+
+
+    /**
+     * @summary Lists operations for the resource provider.
+     *
+     * Lists all the supported operations by the Microsoft.DevSpaces resource
+     * provider along with their description.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceProviderOperationList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceProviderOperationList>>;
+
+    /**
+     * @summary Lists operations for the resource provider.
+     *
+     * Lists all the supported operations by the Microsoft.DevSpaces resource
+     * provider along with their description.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceProviderOperationList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceProviderOperationList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceProviderOperationList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceProviderOperationList>;
+    list(callback: ServiceCallback<models.ResourceProviderOperationList>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceProviderOperationList>): void;
+
+
+    /**
+     * @summary Lists operations for the resource provider.
+     *
+     * Lists all the supported operations by the Microsoft.DevSpaces resource
+     * provider along with their description.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceProviderOperationList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceProviderOperationList>>;
+
+    /**
+     * @summary Lists operations for the resource provider.
+     *
+     * Lists all the supported operations by the Microsoft.DevSpaces resource
+     * provider along with their description.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceProviderOperationList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceProviderOperationList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceProviderOperationList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceProviderOperationList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ResourceProviderOperationList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceProviderOperationList>): void;
+}
+
+/**
+ * @class
  * Controllers
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DevSpacesManagementClient.
@@ -98,9 +310,6 @@ export interface Controllers {
      *
      * @param {object} controller Controller create parameters.
      *
-     * @param {string} controller.hostSuffix DNS suffix for public endpoints
-     * running in the Azure Dev Spaces Controller.
-     *
      * @param {string} controller.targetContainerHostResourceId Resource ID of the
      * target container host
      *
@@ -141,9 +350,6 @@ export interface Controllers {
      * @param {string} name Name of the resource.
      *
      * @param {object} controller Controller create parameters.
-     *
-     * @param {string} controller.hostSuffix DNS suffix for public endpoints
-     * running in the Azure Dev Spaces Controller.
      *
      * @param {string} controller.targetContainerHostResourceId Resource ID of the
      * target container host
@@ -268,7 +474,8 @@ export interface Controllers {
      *
      * @param {string} name Name of the resource.
      *
-     * @param {object} controllerUpdateParameters
+     * @param {object} controllerUpdateParameters Parameters for updating the Azure
+     * Dev Spaces Controller.
      *
      * @param {object} [controllerUpdateParameters.tags] Tags for the Azure Dev
      * Spaces Controller.
@@ -297,7 +504,8 @@ export interface Controllers {
      *
      * @param {string} name Name of the resource.
      *
-     * @param {object} controllerUpdateParameters
+     * @param {object} controllerUpdateParameters Parameters for updating the Azure
+     * Dev Spaces Controller.
      *
      * @param {object} [controllerUpdateParameters.tags] Tags for the Azure Dev
      * Spaces Controller.
@@ -534,9 +742,6 @@ export interface Controllers {
      *
      * @param {object} controller Controller create parameters.
      *
-     * @param {string} controller.hostSuffix DNS suffix for public endpoints
-     * running in the Azure Dev Spaces Controller.
-     *
      * @param {string} controller.targetContainerHostResourceId Resource ID of the
      * target container host
      *
@@ -577,9 +782,6 @@ export interface Controllers {
      * @param {string} name Name of the resource.
      *
      * @param {object} controller Controller create parameters.
-     *
-     * @param {string} controller.hostSuffix DNS suffix for public endpoints
-     * running in the Azure Dev Spaces Controller.
      *
      * @param {string} controller.targetContainerHostResourceId Resource ID of the
      * target container host
@@ -817,135 +1019,4 @@ export interface Controllers {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ControllerList>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.ControllerList>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ControllerList>): void;
-}
-
-/**
- * @class
- * Operations
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the DevSpacesManagementClient.
- */
-export interface Operations {
-
-
-    /**
-     * @summary Lists operations for the resource provider.
-     *
-     * Lists all the supported operations by the Microsoft.DevSpaces resource
-     * provider along with their description.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ResourceProviderOperationList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceProviderOperationList>>;
-
-    /**
-     * @summary Lists operations for the resource provider.
-     *
-     * Lists all the supported operations by the Microsoft.DevSpaces resource
-     * provider along with their description.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ResourceProviderOperationList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ResourceProviderOperationList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceProviderOperationList} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceProviderOperationList>;
-    list(callback: ServiceCallback<models.ResourceProviderOperationList>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceProviderOperationList>): void;
-
-
-    /**
-     * @summary Lists operations for the resource provider.
-     *
-     * Lists all the supported operations by the Microsoft.DevSpaces resource
-     * provider along with their description.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ResourceProviderOperationList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceProviderOperationList>>;
-
-    /**
-     * @summary Lists operations for the resource provider.
-     *
-     * Lists all the supported operations by the Microsoft.DevSpaces resource
-     * provider along with their description.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ResourceProviderOperationList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ResourceProviderOperationList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceProviderOperationList} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceProviderOperationList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ResourceProviderOperationList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceProviderOperationList>): void;
 }
