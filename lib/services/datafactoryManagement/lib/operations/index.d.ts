@@ -961,6 +961,83 @@ export interface Factories {
 
 /**
  * @class
+ * ExposureControl
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DataFactoryManagementClient.
+ */
+export interface ExposureControl {
+
+
+    /**
+     * Get exposure control feature for specific location.
+     *
+     * @param {string} locationId The location identifier.
+     *
+     * @param {object} exposureControlRequest The exposure control request.
+     *
+     * @param {string} [exposureControlRequest.featureName] The feature name.
+     *
+     * @param {string} [exposureControlRequest.featureType] The feature type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExposureControlResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getFeatureValueWithHttpOperationResponse(locationId: string, exposureControlRequest: models.ExposureControlRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExposureControlResponse>>;
+
+    /**
+     * Get exposure control feature for specific location.
+     *
+     * @param {string} locationId The location identifier.
+     *
+     * @param {object} exposureControlRequest The exposure control request.
+     *
+     * @param {string} [exposureControlRequest.featureName] The feature name.
+     *
+     * @param {string} [exposureControlRequest.featureType] The feature type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExposureControlResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExposureControlResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExposureControlResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getFeatureValue(locationId: string, exposureControlRequest: models.ExposureControlRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExposureControlResponse>;
+    getFeatureValue(locationId: string, exposureControlRequest: models.ExposureControlRequest, callback: ServiceCallback<models.ExposureControlResponse>): void;
+    getFeatureValue(locationId: string, exposureControlRequest: models.ExposureControlRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExposureControlResponse>): void;
+}
+
+/**
+ * @class
  * IntegrationRuntimes
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DataFactoryManagementClient.
@@ -3266,6 +3343,10 @@ export interface Datasets {
      * structure of the dataset. Type: array (or Expression with resultType array),
      * itemType: DatasetDataElement.
      *
+     * @param {object} [dataset.properties.schema] Columns that define the physical
+     * type schema of the dataset. Type: array (or Expression with resultType
+     * array), itemType: DatasetSchemaDataElement.
+     *
      * @param {object} dataset.properties.linkedServiceName Linked service
      * reference.
      *
@@ -3323,6 +3404,10 @@ export interface Datasets {
      * @param {object} [dataset.properties.structure] Columns that define the
      * structure of the dataset. Type: array (or Expression with resultType array),
      * itemType: DatasetDataElement.
+     *
+     * @param {object} [dataset.properties.schema] Columns that define the physical
+     * type schema of the dataset. Type: array (or Expression with resultType
+     * array), itemType: DatasetSchemaDataElement.
      *
      * @param {object} dataset.properties.linkedServiceName Linked service
      * reference.
