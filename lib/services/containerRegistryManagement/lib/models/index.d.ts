@@ -1321,7 +1321,7 @@ export interface Credentials {
 
 /**
  * The task that has the ARM resource and task properties.
- * The  task will have all information to schedule a run against it.
+ * The task will have all information to schedule a run against it.
 */
 export interface Task extends Resource {
   /**
