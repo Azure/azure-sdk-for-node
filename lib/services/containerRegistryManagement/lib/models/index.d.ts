@@ -1584,7 +1584,7 @@ export interface DockerBuildRequest extends RunRequest {
   */
   dockerFilePath: string;
   /**
-   * Gets or sets the name of the target build stage for the docker build.
+   * The name of the target build stage for the docker build.
   */
   target?: string;
   /**
@@ -1752,7 +1752,7 @@ export interface DockerBuildStep extends TaskStepProperties {
   */
   dockerFilePath: string;
   /**
-   * Gets or sets the name of the target build stage for the docker build.
+   * The name of the target build stage for the docker build.
   */
   target?: string;
   /**
@@ -1823,7 +1823,7 @@ export interface DockerBuildStepUpdateParameters extends TaskStepUpdateParameter
   */
   argumentsProperty?: Argument[];
   /**
-   * Gets or sets the name of the target build stage for the docker build.
+   * The name of the target build stage for the docker build.
   */
   target?: string;
 }
