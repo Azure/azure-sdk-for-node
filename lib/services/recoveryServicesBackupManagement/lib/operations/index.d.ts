@@ -36,7 +36,7 @@ export interface ProtectionIntentOperations {
      * SqlDataBase, AzureFileShare etc. Possible values include: 'Invalid', 'VM',
      * 'FileFolder', 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM',
      * 'SystemState', 'Client', 'GenericDataSource', 'SQLDataBase',
-     * 'AzureFileShare', 'SAPHanaDatabase'
+     * 'AzureFileShare', 'SAPHanaDatabase', 'SAPAseDatabase'
      *
      * @param {string} [parameters.resourceId] ARM Virtual Machine Id
      *
@@ -71,7 +71,7 @@ export interface ProtectionIntentOperations {
      * SqlDataBase, AzureFileShare etc. Possible values include: 'Invalid', 'VM',
      * 'FileFolder', 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM',
      * 'SystemState', 'Client', 'GenericDataSource', 'SQLDataBase',
-     * 'AzureFileShare', 'SAPHanaDatabase'
+     * 'AzureFileShare', 'SAPHanaDatabase', 'SAPAseDatabase'
      *
      * @param {string} [parameters.resourceId] ARM Virtual Machine Id
      *
@@ -409,7 +409,7 @@ export interface BackupStatus {
      * AzureFileShare. Possible values include: 'Invalid', 'VM', 'FileFolder',
      * 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState',
      * 'Client', 'GenericDataSource', 'SQLDataBase', 'AzureFileShare',
-     * 'SAPHanaDatabase'
+     * 'SAPHanaDatabase', 'SAPAseDatabase'
      *
      * @param {string} [parameters.resourceId] Entire ARM resource id of the
      * resource
@@ -440,7 +440,7 @@ export interface BackupStatus {
      * AzureFileShare. Possible values include: 'Invalid', 'VM', 'FileFolder',
      * 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState',
      * 'Client', 'GenericDataSource', 'SQLDataBase', 'AzureFileShare',
-     * 'SAPHanaDatabase'
+     * 'SAPHanaDatabase', 'SAPAseDatabase'
      *
      * @param {string} [parameters.resourceId] Entire ARM resource id of the
      * resource
@@ -1988,7 +1988,7 @@ export interface ProtectableContainers {
      * @param {string} resourceGroupName The name of the resource group where the
      * recovery services vault is present.
      *
-     * @param {string} fabricName Fabric name associated with the container.
+     * @param {string} fabricName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2013,7 +2013,7 @@ export interface ProtectableContainers {
      * @param {string} resourceGroupName The name of the resource group where the
      * recovery services vault is present.
      *
-     * @param {string} fabricName Fabric name associated with the container.
+     * @param {string} fabricName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2918,7 +2918,7 @@ export interface ProtectedItems {
      * item represents. Possible values include: 'Invalid', 'VM', 'FileFolder',
      * 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState',
      * 'Client', 'GenericDataSource', 'SQLDataBase', 'AzureFileShare',
-     * 'SAPHanaDatabase'
+     * 'SAPHanaDatabase', 'SAPAseDatabase'
      *
      * @param {string} [parameters.properties.containerName] Unique name of
      * container
@@ -2992,7 +2992,7 @@ export interface ProtectedItems {
      * item represents. Possible values include: 'Invalid', 'VM', 'FileFolder',
      * 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState',
      * 'Client', 'GenericDataSource', 'SQLDataBase', 'AzureFileShare',
-     * 'SAPHanaDatabase'
+     * 'SAPHanaDatabase', 'SAPAseDatabase'
      *
      * @param {string} [parameters.properties.containerName] Unique name of
      * container
@@ -5213,11 +5213,115 @@ export interface BackupResourceStorageConfigs {
      *
      * @returns {Promise} A promise is returned
      *
+     * @resolve {HttpOperationResponse<BackupResourceConfigResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupResourceConfigResource>>;
+
+    /**
+     * Updates vault storage model type.
+     *
+     * @param {string} vaultName The name of the recovery services vault.
+     *
+     * @param {string} resourceGroupName The name of the resource group where the
+     * recovery services vault is present.
+     *
+     * @param {object} parameters Vault storage config request
+     *
+     * @param {object} [parameters.properties] BackupResourceConfigResource
+     * properties
+     *
+     * @param {string} [parameters.properties.storageModelType] Storage type.
+     * Possible values include: 'Invalid', 'GeoRedundant', 'LocallyRedundant'
+     *
+     * @param {string} [parameters.properties.storageType] Storage type. Possible
+     * values include: 'Invalid', 'GeoRedundant', 'LocallyRedundant'
+     *
+     * @param {string} [parameters.properties.storageTypeState] Locked or Unlocked.
+     * Once a machine is registered against a resource, the storageTypeState is
+     * always Locked. Possible values include: 'Invalid', 'Locked', 'Unlocked'
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} [parameters.eTag] Optional ETag.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BackupResourceConfigResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BackupResourceConfigResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BackupResourceConfigResource} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupResourceConfigResource>;
+    update(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, callback: ServiceCallback<models.BackupResourceConfigResource>): void;
+    update(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupResourceConfigResource>): void;
+
+
+    /**
+     * Updates vault storage model type.
+     *
+     * @param {string} vaultName The name of the recovery services vault.
+     *
+     * @param {string} resourceGroupName The name of the resource group where the
+     * recovery services vault is present.
+     *
+     * @param {object} parameters Vault storage config request
+     *
+     * @param {object} [parameters.properties] BackupResourceConfigResource
+     * properties
+     *
+     * @param {string} [parameters.properties.storageModelType] Storage type.
+     * Possible values include: 'Invalid', 'GeoRedundant', 'LocallyRedundant'
+     *
+     * @param {string} [parameters.properties.storageType] Storage type. Possible
+     * values include: 'Invalid', 'GeoRedundant', 'LocallyRedundant'
+     *
+     * @param {string} [parameters.properties.storageTypeState] Locked or Unlocked.
+     * Once a machine is registered against a resource, the storageTypeState is
+     * always Locked. Possible values include: 'Invalid', 'Locked', 'Unlocked'
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} [parameters.eTag] Optional ETag.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
      * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    patchWithHttpOperationResponse(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Updates vault storage model type.
@@ -5274,9 +5378,9 @@ export interface BackupResourceStorageConfigs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    update(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, callback: ServiceCallback<void>): void;
-    update(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    patch(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    patch(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, callback: ServiceCallback<void>): void;
+    patch(vaultName: string, resourceGroupName: string, parameters: models.BackupResourceConfigResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
