@@ -332,8 +332,8 @@ export interface AppServiceCertificateOrders {
      *
      * @param {string} certificateOrderName Name of the certificate order.
      *
-     * @param {object} certificateDistinguishedName Distinguished name to to use
-     * for the certificate order.
+     * @param {object} certificateDistinguishedName Distinguished name to use for
+     * the certificate order.
      *
      * @param {object} [certificateDistinguishedName.certificates] State of the Key
      * Vault secret.
@@ -386,8 +386,8 @@ export interface AppServiceCertificateOrders {
      *
      * @param {string} certificateOrderName Name of the certificate order.
      *
-     * @param {object} certificateDistinguishedName Distinguished name to to use
-     * for the certificate order.
+     * @param {object} certificateDistinguishedName Distinguished name to use for
+     * the certificate order.
      *
      * @param {object} [certificateDistinguishedName.certificates] State of the Key
      * Vault secret.
@@ -524,8 +524,8 @@ export interface AppServiceCertificateOrders {
      *
      * @param {string} certificateOrderName Name of the certificate order.
      *
-     * @param {object} certificateDistinguishedName Distinguished name to to use
-     * for the certificate order.
+     * @param {object} certificateDistinguishedName Distinguished name to use for
+     * the certificate order.
      *
      * @param {object} [certificateDistinguishedName.certificates] State of the Key
      * Vault secret.
@@ -574,8 +574,8 @@ export interface AppServiceCertificateOrders {
      *
      * @param {string} certificateOrderName Name of the certificate order.
      *
-     * @param {object} certificateDistinguishedName Distinguished name to to use
-     * for the certificate order.
+     * @param {object} certificateDistinguishedName Distinguished name to use for
+     * the certificate order.
      *
      * @param {object} [certificateDistinguishedName.certificates] State of the Key
      * Vault secret.
@@ -1629,8 +1629,8 @@ export interface AppServiceCertificateOrders {
      *
      * @param {string} certificateOrderName Name of the certificate order.
      *
-     * @param {object} certificateDistinguishedName Distinguished name to to use
-     * for the certificate order.
+     * @param {object} certificateDistinguishedName Distinguished name to use for
+     * the certificate order.
      *
      * @param {object} [certificateDistinguishedName.certificates] State of the Key
      * Vault secret.
@@ -1683,8 +1683,8 @@ export interface AppServiceCertificateOrders {
      *
      * @param {string} certificateOrderName Name of the certificate order.
      *
-     * @param {object} certificateDistinguishedName Distinguished name to to use
-     * for the certificate order.
+     * @param {object} certificateDistinguishedName Distinguished name to use for
+     * the certificate order.
      *
      * @param {object} [certificateDistinguishedName.certificates] State of the Key
      * Vault secret.
@@ -8424,7 +8424,7 @@ export interface Recommendations {
      * @param {boolean} [options.updateSeen] Specify <code>true</code> to update
      * the last-seen timestamp of the recommendation object.
      *
-     * @param {string} [options.recommendationId] The GUID of the recommedation
+     * @param {string} [options.recommendationId] The GUID of the recommendation
      * object if you query an expired one. You don't need to specify it to query an
      * active entry.
      *
@@ -8456,7 +8456,7 @@ export interface Recommendations {
      * @param {boolean} [options.updateSeen] Specify <code>true</code> to update
      * the last-seen timestamp of the recommendation object.
      *
-     * @param {string} [options.recommendationId] The GUID of the recommedation
+     * @param {string} [options.recommendationId] The GUID of the recommendation
      * object if you query an expired one. You don't need to specify it to query an
      * active entry.
      *
@@ -9074,7 +9074,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -9459,7 +9459,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -9943,7 +9943,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -10316,7 +10316,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -13912,7 +13912,7 @@ export interface WebApps {
      * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
      * 'WeightedTotalTraffic', 'RequestHash'
      *
-     * @param {object} [siteConfig.experiments] This is work around for polymophic
+     * @param {object} [siteConfig.experiments] This is work around for polymorphic
      * types.
      *
      * @param {array} [siteConfig.experiments.rampUpRules] List of ramp-up rules.
@@ -14159,7 +14159,7 @@ export interface WebApps {
      * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
      * 'WeightedTotalTraffic', 'RequestHash'
      *
-     * @param {object} [siteConfig.experiments] This is work around for polymophic
+     * @param {object} [siteConfig.experiments] This is work around for polymorphic
      * types.
      *
      * @param {array} [siteConfig.experiments.rampUpRules] List of ramp-up rules.
@@ -14425,7 +14425,7 @@ export interface WebApps {
      * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
      * 'WeightedTotalTraffic', 'RequestHash'
      *
-     * @param {object} [siteConfig.experiments] This is work around for polymophic
+     * @param {object} [siteConfig.experiments] This is work around for polymorphic
      * types.
      *
      * @param {array} [siteConfig.experiments.rampUpRules] List of ramp-up rules.
@@ -14672,7 +14672,7 @@ export interface WebApps {
      * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
      * 'WeightedTotalTraffic', 'RequestHash'
      *
-     * @param {object} [siteConfig.experiments] This is work around for polymophic
+     * @param {object} [siteConfig.experiments] This is work around for polymorphic
      * types.
      *
      * @param {array} [siteConfig.experiments.rampUpRules] List of ramp-up rules.
@@ -22657,6 +22657,9 @@ export interface WebApps {
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -22694,6 +22697,9 @@ export interface WebApps {
      * @param {string} [restoreRequest.snapshotTime] Point in time to restore the
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -22769,6 +22775,9 @@ export interface WebApps {
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -22824,6 +22833,9 @@ export interface WebApps {
      * @param {boolean} [restoreRequest.ignoreConflictingHostNames] If true, custom
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -23400,7 +23412,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -23788,7 +23800,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -24281,7 +24293,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -24657,7 +24669,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -28304,7 +28316,7 @@ export interface WebApps {
      * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
      * 'WeightedTotalTraffic', 'RequestHash'
      *
-     * @param {object} [siteConfig.experiments] This is work around for polymophic
+     * @param {object} [siteConfig.experiments] This is work around for polymorphic
      * types.
      *
      * @param {array} [siteConfig.experiments.rampUpRules] List of ramp-up rules.
@@ -28554,7 +28566,7 @@ export interface WebApps {
      * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
      * 'WeightedTotalTraffic', 'RequestHash'
      *
-     * @param {object} [siteConfig.experiments] This is work around for polymophic
+     * @param {object} [siteConfig.experiments] This is work around for polymorphic
      * types.
      *
      * @param {array} [siteConfig.experiments.rampUpRules] List of ramp-up rules.
@@ -28823,7 +28835,7 @@ export interface WebApps {
      * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
      * 'WeightedTotalTraffic', 'RequestHash'
      *
-     * @param {object} [siteConfig.experiments] This is work around for polymophic
+     * @param {object} [siteConfig.experiments] This is work around for polymorphic
      * types.
      *
      * @param {array} [siteConfig.experiments.rampUpRules] List of ramp-up rules.
@@ -29073,7 +29085,7 @@ export interface WebApps {
      * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
      * 'WeightedTotalTraffic', 'RequestHash'
      *
-     * @param {object} [siteConfig.experiments] This is work around for polymophic
+     * @param {object} [siteConfig.experiments] This is work around for polymorphic
      * types.
      *
      * @param {array} [siteConfig.experiments.rampUpRules] List of ramp-up rules.
@@ -37426,6 +37438,9 @@ export interface WebApps {
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {string} slot Name of web app slot. If not specified then will
@@ -37466,6 +37481,9 @@ export interface WebApps {
      * @param {string} [restoreRequest.snapshotTime] Point in time to restore the
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -37544,6 +37562,9 @@ export interface WebApps {
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {string} slot Name of web app slot. If not specified then will
@@ -37602,6 +37623,9 @@ export interface WebApps {
      * @param {boolean} [restoreRequest.ignoreConflictingHostNames] If true, custom
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -38186,6 +38210,75 @@ export interface WebApps {
     listSnapshotsSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotCollection>;
     listSnapshotsSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.SnapshotCollection>): void;
     listSnapshotsSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotCollection>): void;
+
+
+    /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Website Name.
+     *
+     * @param {string} slot Website Slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SnapshotCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSnapshotsFromDRSecondarySlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotCollection>>;
+
+    /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Website Name.
+     *
+     * @param {string} slot Website Slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SnapshotCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SnapshotCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SnapshotCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSnapshotsFromDRSecondarySlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotCollection>;
+    listSnapshotsFromDRSecondarySlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.SnapshotCollection>): void;
+    listSnapshotsFromDRSecondarySlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotCollection>): void;
 
 
     /**
@@ -40669,6 +40762,71 @@ export interface WebApps {
 
 
     /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Website Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SnapshotCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSnapshotsFromDRSecondaryWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotCollection>>;
+
+    /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Website Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SnapshotCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SnapshotCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SnapshotCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSnapshotsFromDRSecondary(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotCollection>;
+    listSnapshotsFromDRSecondary(resourceGroupName: string, name: string, callback: ServiceCallback<models.SnapshotCollection>): void;
+    listSnapshotsFromDRSecondary(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotCollection>): void;
+
+
+    /**
      * @summary Gets the source control configuration of an app.
      *
      * Gets the source control configuration of an app.
@@ -42869,7 +43027,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -43254,7 +43412,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -44546,6 +44704,9 @@ export interface WebApps {
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -44583,6 +44744,9 @@ export interface WebApps {
      * @param {string} [restoreRequest.snapshotTime] Point in time to restore the
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -44658,6 +44822,9 @@ export interface WebApps {
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -44713,6 +44880,9 @@ export interface WebApps {
      * @param {boolean} [restoreRequest.ignoreConflictingHostNames] If true, custom
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -44946,7 +45116,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -45334,7 +45504,7 @@ export interface WebApps {
      * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
      *
      * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types.
+     * for polymorphic types.
      *
      * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
      * ramp-up rules.
@@ -46478,6 +46648,9 @@ export interface WebApps {
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {string} slot Name of web app slot. If not specified then will
@@ -46518,6 +46691,9 @@ export interface WebApps {
      * @param {string} [restoreRequest.snapshotTime] Point in time to restore the
      * deleted app from, formatted as a DateTime string.
      * If unspecified, default value is the time that the app was deleted.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -46596,6 +46772,9 @@ export interface WebApps {
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
      *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
+     *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {string} slot Name of web app slot. If not specified then will
@@ -46654,6 +46833,9 @@ export interface WebApps {
      * @param {boolean} [restoreRequest.ignoreConflictingHostNames] If true, custom
      * hostname conflicts will be ignored when recovering to a target web app.
      * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {boolean} [restoreRequest.useDRSecondary] If true, the snapshot is
+     * retrieved from DRSecondary endpoint.
      *
      * @param {string} [restoreRequest.kind] Kind of resource.
      *
@@ -50169,6 +50351,67 @@ export interface WebApps {
 
 
     /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SnapshotCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSnapshotsFromDRSecondarySlotNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotCollection>>;
+
+    /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SnapshotCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SnapshotCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SnapshotCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSnapshotsFromDRSecondarySlotNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotCollection>;
+    listSnapshotsFromDRSecondarySlotNext(nextPageLink: string, callback: ServiceCallback<models.SnapshotCollection>): void;
+    listSnapshotsFromDRSecondarySlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotCollection>): void;
+
+
+    /**
      * @summary List triggered web jobs for an app, or a deployment slot.
      *
      * List triggered web jobs for an app, or a deployment slot.
@@ -50544,6 +50787,67 @@ export interface WebApps {
     listSnapshotsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotCollection>;
     listSnapshotsNext(nextPageLink: string, callback: ServiceCallback<models.SnapshotCollection>): void;
     listSnapshotsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotCollection>): void;
+
+
+    /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SnapshotCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSnapshotsFromDRSecondaryNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotCollection>>;
+
+    /**
+     * @summary Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * Returns all Snapshots to the user from DRSecondary endpoint.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SnapshotCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SnapshotCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SnapshotCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSnapshotsFromDRSecondaryNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotCollection>;
+    listSnapshotsFromDRSecondaryNext(nextPageLink: string, callback: ServiceCallback<models.SnapshotCollection>): void;
+    listSnapshotsFromDRSecondaryNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotCollection>): void;
 
 
     /**
@@ -56954,9 +57258,9 @@ export interface AppServicePlans {
 
 
     /**
-     * @summary Get all App Service plans for a subcription.
+     * @summary Get all App Service plans for a subscription.
      *
-     * Get all App Service plans for a subcription.
+     * Get all App Service plans for a subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -56977,9 +57281,9 @@ export interface AppServicePlans {
     listWithHttpOperationResponse(options?: { detailed? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AppServicePlanCollection>>;
 
     /**
-     * @summary Get all App Service plans for a subcription.
+     * @summary Get all App Service plans for a subscription.
      *
-     * Get all App Service plans for a subcription.
+     * Get all App Service plans for a subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -58160,9 +58464,9 @@ export interface AppServicePlans {
 
 
     /**
-     * @summary Get metrics for an App Serice plan.
+     * @summary Get metrics for an App Service plan.
      *
-     * Get metrics for an App Serice plan.
+     * Get metrics for an App Service plan.
      *
      * @param {string} resourceGroupName Name of the resource group to which the
      * resource belongs.
@@ -58192,9 +58496,9 @@ export interface AppServicePlans {
     listMetricsWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { details? : boolean, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceMetricCollection>>;
 
     /**
-     * @summary Get metrics for an App Serice plan.
+     * @summary Get metrics for an App Service plan.
      *
-     * Get metrics for an App Serice plan.
+     * Get metrics for an App Service plan.
      *
      * @param {string} resourceGroupName Name of the resource group to which the
      * resource belongs.
@@ -58255,7 +58559,7 @@ export interface AppServicePlans {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.softRestart] Specify <code>true</code> to performa
+     * @param {boolean} [options.softRestart] Specify <code>true</code> to perform
      * a soft restart, applies the configuration settings and restarts the apps if
      * necessary. The default is <code>false</code>, which always restarts and
      * reprovisions the apps
@@ -58283,7 +58587,7 @@ export interface AppServicePlans {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.softRestart] Specify <code>true</code> to performa
+     * @param {boolean} [options.softRestart] Specify <code>true</code> to perform
      * a soft restart, applies the configuration settings and restarts the apps if
      * necessary. The default is <code>false</code>, which always restarts and
      * reprovisions the apps
@@ -58405,9 +58709,9 @@ export interface AppServicePlans {
 
 
     /**
-     * @summary Gets all selectable sku's for a given App Service Plan
+     * @summary Gets all selectable SKUs for a given App Service Plan
      *
-     * Gets all selectable sku's for a given App Service Plan
+     * Gets all selectable SKUs for a given App Service Plan
      *
      * @param {string} resourceGroupName Name of the resource group to which the
      * resource belongs.
@@ -58428,9 +58732,9 @@ export interface AppServicePlans {
     getServerFarmSkusWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
-     * @summary Gets all selectable sku's for a given App Service Plan
+     * @summary Gets all selectable SKUs for a given App Service Plan
      *
-     * Gets all selectable sku's for a given App Service Plan
+     * Gets all selectable SKUs for a given App Service Plan
      *
      * @param {string} resourceGroupName Name of the resource group to which the
      * resource belongs.
@@ -59589,9 +59893,9 @@ export interface AppServicePlans {
 
 
     /**
-     * @summary Get all App Service plans for a subcription.
+     * @summary Get all App Service plans for a subscription.
      *
-     * Get all App Service plans for a subcription.
+     * Get all App Service plans for a subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -59610,9 +59914,9 @@ export interface AppServicePlans {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AppServicePlanCollection>>;
 
     /**
-     * @summary Get all App Service plans for a subcription.
+     * @summary Get all App Service plans for a subscription.
      *
-     * Get all App Service plans for a subcription.
+     * Get all App Service plans for a subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -59902,9 +60206,9 @@ export interface AppServicePlans {
 
 
     /**
-     * @summary Get metrics for an App Serice plan.
+     * @summary Get metrics for an App Service plan.
      *
-     * Get metrics for an App Serice plan.
+     * Get metrics for an App Service plan.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -59923,9 +60227,9 @@ export interface AppServicePlans {
     listMetricsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceMetricCollection>>;
 
     /**
-     * @summary Get metrics for an App Serice plan.
+     * @summary Get metrics for an App Service plan.
      *
-     * Get metrics for an App Serice plan.
+     * Get metrics for an App Service plan.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
