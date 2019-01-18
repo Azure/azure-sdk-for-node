@@ -3120,6 +3120,27 @@ export interface ServerSecurityAlertPolicy extends ProxyResource {
 
 /**
  * @class
+ * Initializes a new instance of the RestorableDroppedManagedDatabase class.
+ * @constructor
+ * A restorable dropped managed database resource.
+ *
+ * @property {string} [databaseName] The name of the database.
+ * @property {date} [creationDate] The creation date of the database (ISO8601
+ * format).
+ * @property {date} [deletionDate] The deletion date of the database (ISO8601
+ * format).
+ * @property {date} [earliestRestoreDate] The earliest restore date of the
+ * database (ISO8601 format).
+ */
+export interface RestorableDroppedManagedDatabase extends TrackedResource {
+  readonly databaseName?: string;
+  readonly creationDate?: Date;
+  readonly deletionDate?: Date;
+  readonly earliestRestoreDate?: Date;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RestorePoint class.
  * @constructor
  * Database restore points.
@@ -5034,6 +5055,18 @@ export interface ManagedDatabaseListResult extends Array<ManagedDatabase> {
  * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ServerDnsAliasListResult extends Array<ServerDnsAlias> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RestorableDroppedManagedDatabaseListResult class.
+ * @constructor
+ * A list of restorable dropped managed databases.
+ *
+ * @property {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface RestorableDroppedManagedDatabaseListResult extends Array<RestorableDroppedManagedDatabase> {
   readonly nextLink?: string;
 }
 
