@@ -23495,9 +23495,9 @@ export interface LongTermRetentionBackups {
      *
      * @param {string} locationName The location of the database.
      *
-     * @param {string} longTermRetentionServerName
+     * @param {string} longTermRetentionServerName The name of the server
      *
-     * @param {string} longTermRetentionDatabaseName
+     * @param {string} longTermRetentionDatabaseName The name of the database
      *
      * @param {string} backupName The backup name.
      *
@@ -23519,9 +23519,9 @@ export interface LongTermRetentionBackups {
      *
      * @param {string} locationName The location of the database.
      *
-     * @param {string} longTermRetentionServerName
+     * @param {string} longTermRetentionServerName The name of the server
      *
-     * @param {string} longTermRetentionDatabaseName
+     * @param {string} longTermRetentionDatabaseName The name of the database
      *
      * @param {string} backupName The backup name.
      *
@@ -23563,9 +23563,9 @@ export interface LongTermRetentionBackups {
      *
      * @param {string} locationName The location of the database
      *
-     * @param {string} longTermRetentionServerName
+     * @param {string} longTermRetentionServerName The name of the server
      *
-     * @param {string} longTermRetentionDatabaseName
+     * @param {string} longTermRetentionDatabaseName The name of the database
      *
      * @param {string} backupName The backup name.
      *
@@ -23587,9 +23587,9 @@ export interface LongTermRetentionBackups {
      *
      * @param {string} locationName The location of the database
      *
-     * @param {string} longTermRetentionServerName
+     * @param {string} longTermRetentionServerName The name of the server
      *
-     * @param {string} longTermRetentionDatabaseName
+     * @param {string} longTermRetentionDatabaseName The name of the database
      *
      * @param {string} backupName The backup name.
      *
@@ -23629,9 +23629,9 @@ export interface LongTermRetentionBackups {
      *
      * @param {string} locationName The location of the database
      *
-     * @param {string} longTermRetentionServerName
+     * @param {string} longTermRetentionServerName The name of the server
      *
-     * @param {string} longTermRetentionDatabaseName
+     * @param {string} longTermRetentionDatabaseName The name of the database
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -23658,9 +23658,9 @@ export interface LongTermRetentionBackups {
      *
      * @param {string} locationName The location of the database
      *
-     * @param {string} longTermRetentionServerName
+     * @param {string} longTermRetentionServerName The name of the server
      *
-     * @param {string} longTermRetentionDatabaseName
+     * @param {string} longTermRetentionDatabaseName The name of the database
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -23777,7 +23777,7 @@ export interface LongTermRetentionBackups {
      *
      * @param {string} locationName The location of the database
      *
-     * @param {string} longTermRetentionServerName
+     * @param {string} longTermRetentionServerName The name of the server
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -23804,7 +23804,7 @@ export interface LongTermRetentionBackups {
      *
      * @param {string} locationName The location of the database
      *
-     * @param {string} longTermRetentionServerName
+     * @param {string} longTermRetentionServerName The name of the server
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -23851,9 +23851,9 @@ export interface LongTermRetentionBackups {
      *
      * @param {string} locationName The location of the database
      *
-     * @param {string} longTermRetentionServerName
+     * @param {string} longTermRetentionServerName The name of the server
      *
-     * @param {string} longTermRetentionDatabaseName
+     * @param {string} longTermRetentionDatabaseName The name of the database
      *
      * @param {string} backupName The backup name.
      *
@@ -23875,9 +23875,9 @@ export interface LongTermRetentionBackups {
      *
      * @param {string} locationName The location of the database
      *
-     * @param {string} longTermRetentionServerName
+     * @param {string} longTermRetentionServerName The name of the server
      *
-     * @param {string} longTermRetentionDatabaseName
+     * @param {string} longTermRetentionDatabaseName The name of the database
      *
      * @param {string} backupName The backup name.
      *
