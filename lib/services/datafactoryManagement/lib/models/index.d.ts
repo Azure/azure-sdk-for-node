@@ -1644,6 +1644,26 @@ export interface ScheduleTrigger extends MultiplePipelineTrigger {
 }
 
 /**
+ * Azure Function linked service.
+ */
+export interface AzureFunctionLinkedService extends LinkedService {
+  /**
+   * The endpoint of the Azure Function App. URL will be in the format
+   * https://<accountName>.azurewebsites.net.
+   */
+  functionAppUrl: any;
+  /**
+   * Function or Host key for Azure Function App.
+   */
+  functionKey?: SecretBase;
+  /**
+   * The encrypted credential used for authentication. Credentials are encrypted using the
+   * integration runtime credential manager. Type: string (or Expression with resultType string).
+   */
+  encryptedCredential?: any;
+}
+
+/**
  * Responsys linked service.
  */
 export interface ResponsysLinkedService extends LinkedService {
@@ -5261,6 +5281,33 @@ export interface ExecutionActivity extends Activity {
    * Activity policy.
    */
   policy?: ActivityPolicy;
+}
+
+/**
+ * Azure Function activity.
+ */
+export interface AzureFunctionActivity extends ExecutionActivity {
+  /**
+   * Rest API method for target endpoint. Possible values include: 'GET', 'POST', 'PUT', 'DELETE',
+   * 'OPTIONS', 'HEAD', 'TRACE'
+   */
+  method: string;
+  /**
+   * Name of the Function that the Azure Function Activity will call. Type: string (or Expression
+   * with resultType string)
+   */
+  functionName: any;
+  /**
+   * Represents the headers that will be sent to the request. For example, to set the language and
+   * type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type":
+   * "application/json" }. Type: string (or Expression with resultType string).
+   */
+  headers?: any;
+  /**
+   * Represents the payload that will be sent to the endpoint. Required for POST/PUT method, not
+   * allowed for GET method Type: string (or Expression with resultType string).
+   */
+  body?: any;
 }
 
 /**
