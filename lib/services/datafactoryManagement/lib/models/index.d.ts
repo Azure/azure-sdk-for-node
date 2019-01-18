@@ -1655,7 +1655,7 @@ export interface AzureFunctionLinkedService extends LinkedService {
   /**
    * Function or Host key for Azure Function App.
    */
-  functionKey?: any;
+  functionKey?: SecretBase;
   /**
    * The encrypted credential used for authentication. Credentials are encrypted using the
    * integration runtime credential manager. Type: string (or Expression with resultType string).
@@ -7076,34 +7076,6 @@ export interface FilterActivity extends ControlActivity {
 }
 
 /**
- * This activity blocks execution until a file has been validated to exist, with an optional
- * minimum size, or the timeout is reached, whichever is earlier.
- */
-export interface ValidationActivity extends ControlActivity {
-  /**
-   * Specifies the timeout for the activity to run. If there is no value specified, it takes the
-   * value of TimeSpan.FromDays(7) which is 1 week as default. Type: string (or Expression with
-   * resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])). Type:
-   * string (or Expression with resultType string), pattern:
-   * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-   */
-  timeout?: any;
-  /**
-   * A delay in seconds between validation attempts. If no value is specified, 10 seconds will be
-   * used as the default.
-   */
-  sleep?: number;
-  /**
-   * Minimum size of a file in byte. If no value is specified, 0 byte will be used as the default.
-   */
-  minimumSize?: number;
-  /**
-   * Validation activity dataset reference.
-   */
-  dataset: DatasetReference;
-}
-
-/**
  * This activity executes inner activities until the specified boolean expression results to true
  * or timeout is reached, whichever is earlier.
  */
@@ -7181,39 +7153,6 @@ export interface IfConditionActivity extends ControlActivity {
    * property and if not provided, the activity will exit without any action.
    */
   ifFalseActivities?: Activity[];
-}
-
-/**
- * WebHook activity.
- */
-export interface WebHookActivity extends ControlActivity {
-  /**
-   * WebHook activity target endpoint and path. Type: string (or Expression with resultType
-   * string).
-   */
-  url: any;
-  /**
-   * Specifies the timeout within which the webhook should be called back. If there is no value
-   * specified, it takes the value of TimeSpan.FromMinutes(10) which is 10 minutes as default.
-   * Type: string (or Expression with resultType string), pattern:
-   * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-   */
-  timeout?: any;
-  /**
-   * Represents the headers that will be sent to the request. For example, to set the language and
-   * type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type":
-   * "application/json" }. Type: string (or Expression with resultType string).
-   */
-  headers?: any;
-  /**
-   * Represents the payload that will be sent to the endpoint. Required for POST/PUT method, not
-   * allowed for GET method Type: string (or Expression with resultType string).
-   */
-  body?: any;
-  /**
-   * Authentication method used for calling the endpoint.
-   */
-  authentication?: WebActivityAuthentication;
 }
 
 /**
