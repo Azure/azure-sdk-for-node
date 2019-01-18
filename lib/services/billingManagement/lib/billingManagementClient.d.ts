@@ -58,7 +58,6 @@ export default class BillingManagementClient extends AzureServiceClient {
   // Operation groups
   enrollmentAccounts: operations.EnrollmentAccounts;
   billingPeriods: operations.BillingPeriods;
-  discoverTenants: operations.DiscoverTenants;
   invoices: operations.Invoices;
   operations: operations.Operations;
 }
