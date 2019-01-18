@@ -347,8 +347,8 @@ export interface RoutingEventHubProperties {
  * written to storage. Value should be between 10485760(10MB) and
  * 524288000(500MB). Default value is 314572800(300MB).
  * @member {string} [encoding] Encoding that is used to serialize messages to
- * blobs. Supported values are 'avro' and 'avrodeflate'. Default value is
- * 'avro'.
+ * blobs. Supported values are 'avro', 'avrodeflate', and 'JSON'. Default value
+ * is 'avro'. Possible values include: 'Avro', 'AvroDeflate', 'JSON'
  */
 export interface RoutingStorageContainerProperties {
   connectionString: string;
