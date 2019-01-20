@@ -27418,7 +27418,7 @@ export interface ServerSecurityAlertPolicies {
      *
      * @param {string} parameters.state Specifies the state of the policy, whether
      * it is enabled or disabled or a policy has not been applied yet on the
-     * specific resource. Possible values include: 'New', 'Enabled', 'Disabled'
+     * specific database. Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
@@ -27467,7 +27467,7 @@ export interface ServerSecurityAlertPolicies {
      *
      * @param {string} parameters.state Specifies the state of the policy, whether
      * it is enabled or disabled or a policy has not been applied yet on the
-     * specific resource. Possible values include: 'New', 'Enabled', 'Disabled'
+     * specific database. Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
@@ -27600,7 +27600,7 @@ export interface ServerSecurityAlertPolicies {
      *
      * @param {string} parameters.state Specifies the state of the policy, whether
      * it is enabled or disabled or a policy has not been applied yet on the
-     * specific resource. Possible values include: 'New', 'Enabled', 'Disabled'
+     * specific database. Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
@@ -27649,7 +27649,7 @@ export interface ServerSecurityAlertPolicies {
      *
      * @param {string} parameters.state Specifies the state of the policy, whether
      * it is enabled or disabled or a policy has not been applied yet on the
-     * specific resource. Possible values include: 'New', 'Enabled', 'Disabled'
+     * specific database. Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
@@ -28433,7 +28433,7 @@ export interface ManagedDatabaseSecurityAlertPolicies {
      *
      * @param {string} parameters.state Specifies the state of the policy, whether
      * it is enabled or disabled or a policy has not been applied yet on the
-     * specific resource. Possible values include: 'New', 'Enabled', 'Disabled'
+     * specific database. Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
@@ -28485,7 +28485,7 @@ export interface ManagedDatabaseSecurityAlertPolicies {
      *
      * @param {string} parameters.state Specifies the state of the policy, whether
      * it is enabled or disabled or a policy has not been applied yet on the
-     * specific resource. Possible values include: 'New', 'Enabled', 'Disabled'
+     * specific database. Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
@@ -28757,7 +28757,7 @@ export interface ManagedServerSecurityAlertPolicies {
      *
      * @param {string} parameters.state Specifies the state of the policy, whether
      * it is enabled or disabled or a policy has not been applied yet on the
-     * specific resource. Possible values include: 'New', 'Enabled', 'Disabled'
+     * specific database. Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
@@ -28806,7 +28806,7 @@ export interface ManagedServerSecurityAlertPolicies {
      *
      * @param {string} parameters.state Specifies the state of the policy, whether
      * it is enabled or disabled or a policy has not been applied yet on the
-     * specific resource. Possible values include: 'New', 'Enabled', 'Disabled'
+     * specific database. Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
@@ -28939,7 +28939,7 @@ export interface ManagedServerSecurityAlertPolicies {
      *
      * @param {string} parameters.state Specifies the state of the policy, whether
      * it is enabled or disabled or a policy has not been applied yet on the
-     * specific resource. Possible values include: 'New', 'Enabled', 'Disabled'
+     * specific database. Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
@@ -28988,7 +28988,7 @@ export interface ManagedServerSecurityAlertPolicies {
      *
      * @param {string} parameters.state Specifies the state of the policy, whether
      * it is enabled or disabled or a policy has not been applied yet on the
-     * specific resource. Possible values include: 'New', 'Enabled', 'Disabled'
+     * specific database. Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
