@@ -903,7 +903,8 @@ export interface WorkspaceSettings {
 
 
     /**
-     * Settings about where we should store your security data and logs
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -919,7 +920,8 @@ export interface WorkspaceSettings {
     listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkspaceSettingList>>;
 
     /**
-     * Settings about where we should store your security data and logs
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -954,7 +956,8 @@ export interface WorkspaceSettings {
 
 
     /**
-     * Settings about where we should store your security data and logs
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
      *
      * @param {string} workspaceSettingName Name of the security setting
      *
@@ -972,7 +975,8 @@ export interface WorkspaceSettings {
     getWithHttpOperationResponse(workspaceSettingName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkspaceSetting>>;
 
     /**
-     * Settings about where we should store your security data and logs
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
      *
      * @param {string} workspaceSettingName Name of the security setting
      *
@@ -1211,7 +1215,8 @@ export interface WorkspaceSettings {
 
 
     /**
-     * Settings about where we should store your security data and logs
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1230,7 +1235,8 @@ export interface WorkspaceSettings {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkspaceSettingList>>;
 
     /**
-     * Settings about where we should store your security data and logs
+     * Settings about where we should store your security data and logs. If the
+     * result is empty, it means that no custom-workspace configuration was set
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
