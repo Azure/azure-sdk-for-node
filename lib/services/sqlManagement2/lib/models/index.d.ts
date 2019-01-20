@@ -3089,7 +3089,8 @@ export interface ServerDnsAliasAcquisition {
  * A server security alert policy.
  *
  * @property {string} state Specifies the state of the policy, whether it is
- * enabled or disabled. Possible values include: 'New', 'Enabled', 'Disabled'
+ * enabled or disabled or a policy has not been applied yet on the specific
+ * resource. Possible values include: 'New', 'Enabled', 'Disabled'
  * @property {array} [disabledAlerts] Specifies an array of alerts that are
  * disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability,
  * Access_Anomaly, Data_Exfiltration, Unsafe_Action
@@ -3182,7 +3183,8 @@ export interface CreateDatabaseRestorePointDefinition {
  * A managed database security alert policy.
  *
  * @property {string} state Specifies the state of the policy, whether it is
- * enabled or disabled. Possible values include: 'New', 'Enabled', 'Disabled'
+ * enabled or disabled or a policy has not been applied yet on the specific
+ * resource. Possible values include: 'New', 'Enabled', 'Disabled'
  * @property {array} [disabledAlerts] Specifies an array of alerts that are
  * disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability,
  * Access_Anomaly, Data_Exfiltration, Unsafe_Action
@@ -3218,7 +3220,8 @@ export interface ManagedDatabaseSecurityAlertPolicy extends ProxyResource {
  * A managed server security alert policy.
  *
  * @property {string} state Specifies the state of the policy, whether it is
- * enabled or disabled. Possible values include: 'New', 'Enabled', 'Disabled'
+ * enabled or disabled or a policy has not been applied yet on the specific
+ * resource. Possible values include: 'New', 'Enabled', 'Disabled'
  * @property {array} [disabledAlerts] Specifies an array of alerts that are
  * disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability,
  * Access_Anomaly, Data_Exfiltration, Unsafe_Action
@@ -5060,6 +5063,18 @@ export interface ServerDnsAliasListResult extends Array<ServerDnsAlias> {
 
 /**
  * @class
+ * Initializes a new instance of the LogicalServerSecurityAlertPolicyListResult class.
+ * @constructor
+ * A list of the server's security alert policies.
+ *
+ * @property {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface LogicalServerSecurityAlertPolicyListResult extends Array<ServerSecurityAlertPolicy> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RestorableDroppedManagedDatabaseListResult class.
  * @constructor
  * A list of restorable dropped managed databases.
@@ -5079,6 +5094,30 @@ export interface RestorableDroppedManagedDatabaseListResult extends Array<Restor
  * @property {string} [nextLink] Link to retrieve next page of results.
  */
 export interface RestorePointListResult extends Array<RestorePoint> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedDatabaseSecurityAlertPolicyListResult class.
+ * @constructor
+ * A list of the managed database's security alert policies.
+ *
+ * @property {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ManagedDatabaseSecurityAlertPolicyListResult extends Array<ManagedDatabaseSecurityAlertPolicy> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedServerSecurityAlertPolicyListResult class.
+ * @constructor
+ * A list of the managed Server's security alert policies.
+ *
+ * @property {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ManagedServerSecurityAlertPolicyListResult extends Array<ManagedServerSecurityAlertPolicy> {
   readonly nextLink?: string;
 }
 

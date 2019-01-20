@@ -27417,8 +27417,8 @@ export interface ServerSecurityAlertPolicies {
      * @param {object} parameters The server security alert policy.
      *
      * @param {string} parameters.state Specifies the state of the policy, whether
-     * it is enabled or disabled. Possible values include: 'New', 'Enabled',
-     * 'Disabled'
+     * it is enabled or disabled or a policy has not been applied yet on the
+     * specific resource. Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
@@ -27466,8 +27466,8 @@ export interface ServerSecurityAlertPolicies {
      * @param {object} parameters The server security alert policy.
      *
      * @param {string} parameters.state Specifies the state of the policy, whether
-     * it is enabled or disabled. Possible values include: 'New', 'Enabled',
-     * 'Disabled'
+     * it is enabled or disabled or a policy has not been applied yet on the
+     * specific resource. Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
@@ -27524,6 +27524,70 @@ export interface ServerSecurityAlertPolicies {
 
 
     /**
+     * Get the server's threat detection policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<LogicalServerSecurityAlertPolicyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServerWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LogicalServerSecurityAlertPolicyListResult>>;
+
+    /**
+     * Get the server's threat detection policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {LogicalServerSecurityAlertPolicyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {LogicalServerSecurityAlertPolicyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LogicalServerSecurityAlertPolicyListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServer(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LogicalServerSecurityAlertPolicyListResult>;
+    listByServer(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.LogicalServerSecurityAlertPolicyListResult>): void;
+    listByServer(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogicalServerSecurityAlertPolicyListResult>): void;
+
+
+    /**
      * Creates or updates a threat detection policy.
      *
      * @param {string} resourceGroupName The name of the resource group that
@@ -27535,8 +27599,8 @@ export interface ServerSecurityAlertPolicies {
      * @param {object} parameters The server security alert policy.
      *
      * @param {string} parameters.state Specifies the state of the policy, whether
-     * it is enabled or disabled. Possible values include: 'New', 'Enabled',
-     * 'Disabled'
+     * it is enabled or disabled or a policy has not been applied yet on the
+     * specific resource. Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
@@ -27584,8 +27648,8 @@ export interface ServerSecurityAlertPolicies {
      * @param {object} parameters The server security alert policy.
      *
      * @param {string} parameters.state Specifies the state of the policy, whether
-     * it is enabled or disabled. Possible values include: 'New', 'Enabled',
-     * 'Disabled'
+     * it is enabled or disabled or a policy has not been applied yet on the
+     * specific resource. Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
@@ -27639,6 +27703,64 @@ export interface ServerSecurityAlertPolicies {
     beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerSecurityAlertPolicy>;
     beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
     beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
+
+
+    /**
+     * Get the server's threat detection policies.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<LogicalServerSecurityAlertPolicyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServerNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LogicalServerSecurityAlertPolicyListResult>>;
+
+    /**
+     * Get the server's threat detection policies.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {LogicalServerSecurityAlertPolicyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {LogicalServerSecurityAlertPolicyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LogicalServerSecurityAlertPolicyListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServerNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LogicalServerSecurityAlertPolicyListResult>;
+    listByServerNext(nextPageLink: string, callback: ServiceCallback<models.LogicalServerSecurityAlertPolicyListResult>): void;
+    listByServerNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogicalServerSecurityAlertPolicyListResult>): void;
 }
 
 /**
@@ -28310,8 +28432,8 @@ export interface ManagedDatabaseSecurityAlertPolicies {
      * @param {object} parameters The database security alert policy.
      *
      * @param {string} parameters.state Specifies the state of the policy, whether
-     * it is enabled or disabled. Possible values include: 'New', 'Enabled',
-     * 'Disabled'
+     * it is enabled or disabled or a policy has not been applied yet on the
+     * specific resource. Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
@@ -28362,8 +28484,8 @@ export interface ManagedDatabaseSecurityAlertPolicies {
      * @param {object} parameters The database security alert policy.
      *
      * @param {string} parameters.state Specifies the state of the policy, whether
-     * it is enabled or disabled. Possible values include: 'New', 'Enabled',
-     * 'Disabled'
+     * it is enabled or disabled or a policy has not been applied yet on the
+     * specific resource. Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
@@ -28417,6 +28539,136 @@ export interface ManagedDatabaseSecurityAlertPolicies {
     createOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedDatabaseSecurityAlertPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedDatabaseSecurityAlertPolicy>;
     createOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedDatabaseSecurityAlertPolicy, callback: ServiceCallback<models.ManagedDatabaseSecurityAlertPolicy>): void;
     createOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedDatabaseSecurityAlertPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedDatabaseSecurityAlertPolicy>): void;
+
+
+    /**
+     * Gets a list of managed database's security alert policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the managed database for which the
+     * security alert policies are defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedDatabaseSecurityAlertPolicyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedDatabaseSecurityAlertPolicyListResult>>;
+
+    /**
+     * Gets a list of managed database's security alert policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the managed database for which the
+     * security alert policies are defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedDatabaseSecurityAlertPolicyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedDatabaseSecurityAlertPolicyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ManagedDatabaseSecurityAlertPolicyListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabase(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedDatabaseSecurityAlertPolicyListResult>;
+    listByDatabase(resourceGroupName: string, managedInstanceName: string, databaseName: string, callback: ServiceCallback<models.ManagedDatabaseSecurityAlertPolicyListResult>): void;
+    listByDatabase(resourceGroupName: string, managedInstanceName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedDatabaseSecurityAlertPolicyListResult>): void;
+
+
+    /**
+     * Gets a list of managed database's security alert policies.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedDatabaseSecurityAlertPolicyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedDatabaseSecurityAlertPolicyListResult>>;
+
+    /**
+     * Gets a list of managed database's security alert policies.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedDatabaseSecurityAlertPolicyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedDatabaseSecurityAlertPolicyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ManagedDatabaseSecurityAlertPolicyListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabaseNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedDatabaseSecurityAlertPolicyListResult>;
+    listByDatabaseNext(nextPageLink: string, callback: ServiceCallback<models.ManagedDatabaseSecurityAlertPolicyListResult>): void;
+    listByDatabaseNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedDatabaseSecurityAlertPolicyListResult>): void;
 }
 
 /**
@@ -28504,8 +28756,8 @@ export interface ManagedServerSecurityAlertPolicies {
      * @param {object} parameters The managed server security alert policy.
      *
      * @param {string} parameters.state Specifies the state of the policy, whether
-     * it is enabled or disabled. Possible values include: 'New', 'Enabled',
-     * 'Disabled'
+     * it is enabled or disabled or a policy has not been applied yet on the
+     * specific resource. Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
@@ -28553,8 +28805,8 @@ export interface ManagedServerSecurityAlertPolicies {
      * @param {object} parameters The managed server security alert policy.
      *
      * @param {string} parameters.state Specifies the state of the policy, whether
-     * it is enabled or disabled. Possible values include: 'New', 'Enabled',
-     * 'Disabled'
+     * it is enabled or disabled or a policy has not been applied yet on the
+     * specific resource. Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
@@ -28611,6 +28863,70 @@ export interface ManagedServerSecurityAlertPolicies {
 
 
     /**
+     * Get the managed server's threat detection policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedServerSecurityAlertPolicyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByInstanceWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedServerSecurityAlertPolicyListResult>>;
+
+    /**
+     * Get the managed server's threat detection policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedServerSecurityAlertPolicyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedServerSecurityAlertPolicyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedServerSecurityAlertPolicyListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByInstance(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedServerSecurityAlertPolicyListResult>;
+    listByInstance(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<models.ManagedServerSecurityAlertPolicyListResult>): void;
+    listByInstance(resourceGroupName: string, managedInstanceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedServerSecurityAlertPolicyListResult>): void;
+
+
+    /**
      * Creates or updates a threat detection policy.
      *
      * @param {string} resourceGroupName The name of the resource group that
@@ -28622,8 +28938,8 @@ export interface ManagedServerSecurityAlertPolicies {
      * @param {object} parameters The managed server security alert policy.
      *
      * @param {string} parameters.state Specifies the state of the policy, whether
-     * it is enabled or disabled. Possible values include: 'New', 'Enabled',
-     * 'Disabled'
+     * it is enabled or disabled or a policy has not been applied yet on the
+     * specific resource. Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
@@ -28671,8 +28987,8 @@ export interface ManagedServerSecurityAlertPolicies {
      * @param {object} parameters The managed server security alert policy.
      *
      * @param {string} parameters.state Specifies the state of the policy, whether
-     * it is enabled or disabled. Possible values include: 'New', 'Enabled',
-     * 'Disabled'
+     * it is enabled or disabled or a policy has not been applied yet on the
+     * specific resource. Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
@@ -28726,6 +29042,64 @@ export interface ManagedServerSecurityAlertPolicies {
     beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedServerSecurityAlertPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedServerSecurityAlertPolicy>;
     beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedServerSecurityAlertPolicy, callback: ServiceCallback<models.ManagedServerSecurityAlertPolicy>): void;
     beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedServerSecurityAlertPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedServerSecurityAlertPolicy>): void;
+
+
+    /**
+     * Get the managed server's threat detection policies.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedServerSecurityAlertPolicyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByInstanceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedServerSecurityAlertPolicyListResult>>;
+
+    /**
+     * Get the managed server's threat detection policies.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedServerSecurityAlertPolicyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedServerSecurityAlertPolicyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedServerSecurityAlertPolicyListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByInstanceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedServerSecurityAlertPolicyListResult>;
+    listByInstanceNext(nextPageLink: string, callback: ServiceCallback<models.ManagedServerSecurityAlertPolicyListResult>): void;
+    listByInstanceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedServerSecurityAlertPolicyListResult>): void;
 }
 
 /**
