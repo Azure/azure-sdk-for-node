@@ -274,6 +274,9 @@ export interface ApplicationGateways {
      * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
      * number of Application Gateway instances
      *
+     * @param {number} [parameters.autoscaleConfiguration.maxCapacity] Upper bound
+     * on number of Application Gateway capacity
+     *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
      *
@@ -459,6 +462,9 @@ export interface ApplicationGateways {
      *
      * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
      * number of Application Gateway instances
+     *
+     * @param {number} [parameters.autoscaleConfiguration.maxCapacity] Upper bound
+     * on number of Application Gateway capacity
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -1457,6 +1463,9 @@ export interface ApplicationGateways {
      * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
      * number of Application Gateway instances
      *
+     * @param {number} [parameters.autoscaleConfiguration.maxCapacity] Upper bound
+     * on number of Application Gateway capacity
+     *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
      *
@@ -1642,6 +1651,9 @@ export interface ApplicationGateways {
      *
      * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
      * number of Application Gateway instances
+     *
+     * @param {number} [parameters.autoscaleConfiguration.maxCapacity] Upper bound
+     * on number of Application Gateway capacity
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
