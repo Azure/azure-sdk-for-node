@@ -35186,6 +35186,96 @@ export interface Subnets {
 
 
     /**
+     * Prepares a subnet by applying network intent policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkName The name of the virtual network.
+     *
+     * @param {string} subnetName The name of the subnet.
+     *
+     * @param {object} prepareNetworkPoliciesRequestParameters Parameters supplied
+     * to prepare subnet by applying network intent policies.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.serviceName] The
+     * name of the service for which subnet is being prepared for.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.resourceGroupName]
+     * The name of the resource group where the Network Intent Policy will be
+     * stored.
+     *
+     * @param {array}
+     * [prepareNetworkPoliciesRequestParameters.networkIntentPolicyConfigurations]
+     * A list of NetworkIntentPolicyConfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    prepareNetworkPoliciesWithHttpOperationResponse(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Prepares a subnet by applying network intent policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkName The name of the virtual network.
+     *
+     * @param {string} subnetName The name of the subnet.
+     *
+     * @param {object} prepareNetworkPoliciesRequestParameters Parameters supplied
+     * to prepare subnet by applying network intent policies.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.serviceName] The
+     * name of the service for which subnet is being prepared for.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.resourceGroupName]
+     * The name of the resource group where the Network Intent Policy will be
+     * stored.
+     *
+     * @param {array}
+     * [prepareNetworkPoliciesRequestParameters.networkIntentPolicyConfigurations]
+     * A list of NetworkIntentPolicyConfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    prepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    prepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, callback: ServiceCallback<void>): void;
+    prepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Gets all subnets in a virtual network.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -35537,6 +35627,96 @@ export interface Subnets {
     beginCreateOrUpdate(resourceGroupName: string, virtualNetworkName: string, subnetName: string, subnetParameters: models.Subnet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Subnet>;
     beginCreateOrUpdate(resourceGroupName: string, virtualNetworkName: string, subnetName: string, subnetParameters: models.Subnet, callback: ServiceCallback<models.Subnet>): void;
     beginCreateOrUpdate(resourceGroupName: string, virtualNetworkName: string, subnetName: string, subnetParameters: models.Subnet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Subnet>): void;
+
+
+    /**
+     * Prepares a subnet by applying network intent policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkName The name of the virtual network.
+     *
+     * @param {string} subnetName The name of the subnet.
+     *
+     * @param {object} prepareNetworkPoliciesRequestParameters Parameters supplied
+     * to prepare subnet by applying network intent policies.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.serviceName] The
+     * name of the service for which subnet is being prepared for.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.resourceGroupName]
+     * The name of the resource group where the Network Intent Policy will be
+     * stored.
+     *
+     * @param {array}
+     * [prepareNetworkPoliciesRequestParameters.networkIntentPolicyConfigurations]
+     * A list of NetworkIntentPolicyConfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginPrepareNetworkPoliciesWithHttpOperationResponse(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Prepares a subnet by applying network intent policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkName The name of the virtual network.
+     *
+     * @param {string} subnetName The name of the subnet.
+     *
+     * @param {object} prepareNetworkPoliciesRequestParameters Parameters supplied
+     * to prepare subnet by applying network intent policies.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.serviceName] The
+     * name of the service for which subnet is being prepared for.
+     *
+     * @param {string} [prepareNetworkPoliciesRequestParameters.resourceGroupName]
+     * The name of the resource group where the Network Intent Policy will be
+     * stored.
+     *
+     * @param {array}
+     * [prepareNetworkPoliciesRequestParameters.networkIntentPolicyConfigurations]
+     * A list of NetworkIntentPolicyConfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginPrepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPrepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, callback: ServiceCallback<void>): void;
+    beginPrepareNetworkPolicies(resourceGroupName: string, virtualNetworkName: string, subnetName: string, prepareNetworkPoliciesRequestParameters: models.PrepareNetworkPoliciesRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**

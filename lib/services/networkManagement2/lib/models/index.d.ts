@@ -6315,6 +6315,39 @@ export interface VirtualNetworkUsage {
 }
 
 /**
+ * Network Intent Policy resource.
+*/
+export interface NetworkIntentPolicy extends Resource {
+  /**
+   * Gets a unique read-only string that changes whenever the resource is updated.
+  */
+  etag?: string;
+}
+
+export interface NetworkIntentPolicyConfiguration {
+  /**
+   * The name of the Network Intent Policy for storing in target subscription.
+  */
+  networkIntentPolicyName?: string;
+  sourceNetworkIntentPolicy?: NetworkIntentPolicy;
+}
+
+export interface PrepareNetworkPoliciesRequest {
+  /**
+   * The name of the service for which subnet is being prepared for.
+  */
+  serviceName?: string;
+  /**
+   * The name of the resource group where the Network Intent Policy will be stored.
+  */
+  resourceGroupName?: string;
+  /**
+   * A list of NetworkIntentPolicyConfiguration.
+  */
+  networkIntentPolicyConfigurations?: NetworkIntentPolicyConfiguration[];
+}
+
+/**
  * IP configuration for virtual network gateway
 */
 export interface VirtualNetworkGatewayIPConfiguration extends SubResource {
