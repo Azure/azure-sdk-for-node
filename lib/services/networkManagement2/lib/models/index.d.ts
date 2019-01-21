@@ -1788,6 +1788,31 @@ export interface ApplicationGatewayRequestRoutingRule extends SubResource {
 }
 
 /**
+ * Set of conditions in the Rewrite Rule in Application Gateway.
+*/
+export interface ApplicationGatewayRewriteRuleCondition {
+  /**
+   * The condition parameter of the RewriteRuleCondition.
+  */
+  variable?: string;
+  /**
+   * The pattern, either fixed string or regular expression, that evaluates the truthfulness of the
+   * condition
+  */
+  pattern?: string;
+  /**
+   * Setting this paramter to truth value with force the pattern to do a case in-sensitive
+   * comparison.
+  */
+  ignoreCase?: boolean;
+  /**
+   * Setting this value as truth will force to check the negation of the condition given by the
+   * user.
+  */
+  negate?: boolean;
+}
+
+/**
  * Header configuration of the Actions set in Application Gateway.
 */
 export interface ApplicationGatewayHeaderConfiguration {
@@ -1823,6 +1848,15 @@ export interface ApplicationGatewayRewriteRule {
    * Name of the rewrite rule that is unique within an Application Gateway.
   */
   name?: string;
+  /**
+   * Rule Sequence of the rewrite rule that determines the order of execution of a particular rule
+   * in a RewriteRuleSet.
+  */
+  ruleSequence?: number;
+  /**
+   * Conditions based on which the action set execution will be evaluated.
+  */
+  conditions?: ApplicationGatewayRewriteRuleCondition[];
   /**
    * Set of actions to be done as part of the rewrite Rule.
   */
