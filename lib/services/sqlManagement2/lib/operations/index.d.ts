@@ -27842,6 +27842,205 @@ export interface RestorableDroppedManagedDatabases {
 
 /**
  * @class
+ * RestorableDroppedManagedDatabases
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface RestorableDroppedManagedDatabases {
+
+
+    /**
+     * Gets a list of restorable dropped managed databases.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RestorableDroppedManagedDatabaseListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByInstanceWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RestorableDroppedManagedDatabaseListResult>>;
+
+    /**
+     * Gets a list of restorable dropped managed databases.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RestorableDroppedManagedDatabaseListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RestorableDroppedManagedDatabaseListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RestorableDroppedManagedDatabaseListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByInstance(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RestorableDroppedManagedDatabaseListResult>;
+    listByInstance(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<models.RestorableDroppedManagedDatabaseListResult>): void;
+    listByInstance(resourceGroupName: string, managedInstanceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RestorableDroppedManagedDatabaseListResult>): void;
+
+
+    /**
+     * Gets a restorable dropped managed database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} restorableDroppedDatabaseId
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RestorableDroppedManagedDatabase>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, restorableDroppedDatabaseId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RestorableDroppedManagedDatabase>>;
+
+    /**
+     * Gets a restorable dropped managed database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} restorableDroppedDatabaseId
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RestorableDroppedManagedDatabase} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RestorableDroppedManagedDatabase} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RestorableDroppedManagedDatabase} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, managedInstanceName: string, restorableDroppedDatabaseId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RestorableDroppedManagedDatabase>;
+    get(resourceGroupName: string, managedInstanceName: string, restorableDroppedDatabaseId: string, callback: ServiceCallback<models.RestorableDroppedManagedDatabase>): void;
+    get(resourceGroupName: string, managedInstanceName: string, restorableDroppedDatabaseId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RestorableDroppedManagedDatabase>): void;
+
+
+    /**
+     * Gets a list of restorable dropped managed databases.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RestorableDroppedManagedDatabaseListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByInstanceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RestorableDroppedManagedDatabaseListResult>>;
+
+    /**
+     * Gets a list of restorable dropped managed databases.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RestorableDroppedManagedDatabaseListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RestorableDroppedManagedDatabaseListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RestorableDroppedManagedDatabaseListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByInstanceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RestorableDroppedManagedDatabaseListResult>;
+    listByInstanceNext(nextPageLink: string, callback: ServiceCallback<models.RestorableDroppedManagedDatabaseListResult>): void;
+    listByInstanceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RestorableDroppedManagedDatabaseListResult>): void;
+}
+
+/**
+ * @class
  * RestorePoints
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SqlManagementClient.
@@ -33328,6 +33527,205 @@ export interface ManagedInstanceEncryptionProtectors {
     listByInstanceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceEncryptionProtectorListResult>;
     listByInstanceNext(nextPageLink: string, callback: ServiceCallback<models.ManagedInstanceEncryptionProtectorListResult>): void;
     listByInstanceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceEncryptionProtectorListResult>): void;
+}
+
+/**
+ * @class
+ * RecoverableManagedDatabases
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface RecoverableManagedDatabases {
+
+
+    /**
+     * Gets a list of recoverable managed databases.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RecoverableManagedDatabaseListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByInstanceWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoverableManagedDatabaseListResult>>;
+
+    /**
+     * Gets a list of recoverable managed databases.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RecoverableManagedDatabaseListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RecoverableManagedDatabaseListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RecoverableManagedDatabaseListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByInstance(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoverableManagedDatabaseListResult>;
+    listByInstance(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<models.RecoverableManagedDatabaseListResult>): void;
+    listByInstance(resourceGroupName: string, managedInstanceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoverableManagedDatabaseListResult>): void;
+
+
+    /**
+     * Gets a recoverable managed database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} recoverableDatabaseName
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RecoverableManagedDatabase>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, recoverableDatabaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoverableManagedDatabase>>;
+
+    /**
+     * Gets a recoverable managed database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} recoverableDatabaseName
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RecoverableManagedDatabase} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RecoverableManagedDatabase} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RecoverableManagedDatabase} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, managedInstanceName: string, recoverableDatabaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoverableManagedDatabase>;
+    get(resourceGroupName: string, managedInstanceName: string, recoverableDatabaseName: string, callback: ServiceCallback<models.RecoverableManagedDatabase>): void;
+    get(resourceGroupName: string, managedInstanceName: string, recoverableDatabaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoverableManagedDatabase>): void;
+
+
+    /**
+     * Gets a list of recoverable managed databases.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RecoverableManagedDatabaseListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByInstanceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecoverableManagedDatabaseListResult>>;
+
+    /**
+     * Gets a list of recoverable managed databases.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RecoverableManagedDatabaseListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RecoverableManagedDatabaseListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RecoverableManagedDatabaseListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByInstanceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecoverableManagedDatabaseListResult>;
+    listByInstanceNext(nextPageLink: string, callback: ServiceCallback<models.RecoverableManagedDatabaseListResult>): void;
+    listByInstanceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecoverableManagedDatabaseListResult>): void;
 }
 
 /**
