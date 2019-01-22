@@ -2035,6 +2035,10 @@ export interface ApplicationGatewayAutoscaleConfiguration {
    * Lower bound on number of Application Gateway instances
   */
   minCapacity: number;
+  /**
+   * Upper bound on number of Application Gateway capacity
+  */
+  maxCapacity?: number;
 }
 
 export interface ManagedServiceIdentityUserAssignedIdentitiesValue {
