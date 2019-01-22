@@ -662,6 +662,147 @@ export interface TrainingStatus {
   message?: string;
 }
 
+/**
+ * Request body for applying snapshot operation.
+*/
+export interface ApplySnapshotRequest {
+  /**
+   * User specified target object id to be created from the snapshot.
+  */
+  objectId: string;
+  /**
+   * Snapshot applying mode. Currently only CreateNew is supported, which means the apply operation
+   * will fail if target subscription already contains an object of same type and using the same
+   * objectId. Users can specify the "objectId" in request body to avoid such conflicts. Possible
+   * values include: 'CreateNew'
+  */
+  mode?: string;
+}
+
+/**
+ * Snapshot object.
+*/
+export interface Snapshot {
+  /**
+   * Snapshot id.
+  */
+  id: string;
+  /**
+   * Azure Cognitive Service Face account id of the subscriber who created the snapshot by Snapshot
+   * - Take.
+  */
+  account: string;
+  /**
+   * Type of the source object in the snapshot, specified by the subscriber who created the
+   * snapshot when calling Snapshot - Take. Currently FaceList, PersonGroup, LargeFaceList and
+   * LargePersonGroup are supported. Possible values include: 'FaceList', 'LargeFaceList',
+   * 'LargePersonGroup', 'PersonGroup'
+  */
+  type: string;
+  /**
+   * Array of the target Face subscription ids for the snapshot, specified by the user who created
+   * the snapshot when calling Snapshot - Take. For each snapshot, only subscriptions included in
+   * the applyScope of Snapshot - Take can apply it.
+  */
+  applyScope: string[];
+  /**
+   * User specified data about the snapshot for any purpose. Length should not exceed 16KB.
+  */
+  userData?: string;
+  /**
+   * A combined UTC date and time string that describes the created time of the snapshot. E.g.
+   * 2018-12-25T11:41:02.2331413Z.
+  */
+  createdTime: Date;
+  /**
+   * A combined UTC date and time string that describes the last time when the snapshot was created
+   * or updated by Snapshot - Update. E.g. 2018-12-25T11:51:27.8705696Z.
+  */
+  lastUpdateTime: Date;
+}
+
+/**
+ * Request body for taking snapshot operation.
+*/
+export interface TakeSnapshotRequest {
+  /**
+   * User specified type for the source object to take snapshot from. Currently FaceList,
+   * PersonGroup, LargeFaceList and LargePersonGroup are supported. Possible values include:
+   * 'FaceList', 'LargeFaceList', 'LargePersonGroup', 'PersonGroup'
+  */
+  type: string;
+  /**
+   * User specified source object id to take snapshot from.
+  */
+  objectId: string;
+  /**
+   * User specified array of target Face subscription ids for the snapshot. For each snapshot, only
+   * subscriptions included in the applyScope of Snapshot - Take can apply it.
+  */
+  applyScope: string[];
+  /**
+   * User specified data about the snapshot for any purpose. Length should not exceed 16KB.
+  */
+  userData?: string;
+}
+
+/**
+ * Request body for updating a snapshot, with a combination of user defined apply scope and user
+ * specified data.
+*/
+export interface UpdateSnapshotRequest {
+  /**
+   * Array of the target Face subscription ids for the snapshot, specified by the user who created
+   * the snapshot when calling Snapshot - Take. For each snapshot, only subscriptions included in
+   * the applyScope of Snapshot - Take can apply it.
+  */
+  applyScope?: string[];
+  /**
+   * User specified data about the snapshot for any purpose. Length should not exceed 16KB.
+  */
+  userData?: string;
+}
+
+/**
+ * Operation status object. Operation refers to the asynchronous backend task including taking a
+ * snapshot and applying a snapshot.
+*/
+export interface OperationStatus {
+  /**
+   * Operation status: notstarted, running, succeeded, failed. If the operation is requested and
+   * waiting to perform, the status is notstarted. If the operation is ongoing in backend, the
+   * status is running. Status succeeded means the operation is completed successfully,
+   * specifically for snapshot taking operation, it illustrates the snapshot is well taken and
+   * ready to apply, and for snapshot applying operation, it presents the target object has
+   * finished creating by the snapshot and ready to be used. Status failed is often caused by
+   * editing the source object while taking the snapshot or editing the target object while
+   * applying the snapshot before completion, see the field "message" to check the failure reason.
+   * Possible values include: 'notstarted', 'running', 'succeeded', 'failed'
+  */
+  status: string;
+  /**
+   * A combined UTC date and time string that describes the time when the operation (take or apply
+   * a snapshot) is requested. E.g. 2018-12-25T11:41:02.2331413Z.
+  */
+  createdTime: Date;
+  /**
+   * A combined UTC date and time string that describes the last time the operation (take or apply
+   * a snapshot) is actively migrating data. The lastActionTime will keep increasing until the
+   * operation finishes. E.g. 2018-12-25T11:51:27.8705696Z.
+  */
+  lastActionTime?: Date;
+  /**
+   * When the operation succeeds successfully, for snapshot taking operation the snapshot id will
+   * be included in this field, and for snapshot applying operation, the path to get the target
+   * object will be returned in this field.
+  */
+  resourceLocation?: string;
+  /**
+   * Show failure message when operation fails (omitted when operation succeeds).
+  */
+  message?: string;
+}
+
 export interface ImageUrl {
   /**
    * Publicly reachable URL of an image

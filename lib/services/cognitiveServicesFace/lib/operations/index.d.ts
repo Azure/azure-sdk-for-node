@@ -4250,3 +4250,610 @@ export interface LargeFaceListOperations {
     addFaceFromStream(largeFaceListId: string, image: stream.Readable, callback: ServiceCallback<models.PersistedFace>): void;
     addFaceFromStream(largeFaceListId: string, image: stream.Readable, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
 }
+
+/**
+ * @class
+ * SnapshotOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the FaceClient.
+ */
+export interface SnapshotOperations {
+
+
+    /**
+     * Submit an operation to take a snapshot of face list, large face list, person
+     * group or large person group, with user-specified snapshot type, source
+     * object id, apply scope and an optional user data.
+     * The snapshot interfaces are for users to backup and restore their face data
+     * from one face subscription to another, inside same region or across regions.
+     * The workflow contains two phases, user first calls Snapshot - Take to create
+     * a copy of the source object and store it as a snapshot, then calls Snapshot
+     * - Apply to paste the snapshot to target subscription. The snapshots are
+     * stored in a centralized location (per Azure instance), so that they can be
+     * applied cross accounts and regions.
+     * Taking snapshot is an asynchronous operation. An operation id can be
+     * obtained from the "Operation-Location" field in response header, to be used
+     * in OperationStatus - Get for tracking the progress of creating the snapshot.
+     * The snapshot id will be included in the "resourceLocation" field in
+     * OperationStatus - Get response when the operation status is "succeeded".
+     * Snapshot taking time depends on the number of person and face entries in the
+     * source object. It could be in seconds, or up to several hours for 1,000,000
+     * persons with multiple faces.
+     * Snapshots will be automatically expired and cleaned in 48 hours after it is
+     * created by Snapshot - Take. User can delete the snapshot using Snapshot -
+     * Delete by themselves any time before expiration.
+     * Taking snapshot for a certain object will not block any other operations
+     * against the object. All read-only operations (Get/List and
+     * Identify/FindSimilar/Verify) can be conducted as usual. For all writable
+     * operations, including Add/Update/Delete the source object or its
+     * persons/faces and Train, they are not blocked but not recommended because
+     * writable updates may not be reflected on the snapshot during its taking.
+     * After snapshot taking is completed, all readable and writable operations can
+     * work as normal. Snapshot will also include the training results of the
+     * source object, which means target subscription the snapshot applied to does
+     * not need re-train the target object before calling Identify/FindSimilar.
+     *
+     * @param {string} type User specified type for the source object to take
+     * snapshot from. Currently FaceList, PersonGroup, LargeFaceList and
+     * LargePersonGroup are supported. Possible values include: 'FaceList',
+     * 'LargeFaceList', 'LargePersonGroup', 'PersonGroup'
+     *
+     * @param {string} objectId User specified source object id to take snapshot
+     * from.
+     *
+     * @param {array} applyScope User specified array of target Face subscription
+     * ids for the snapshot. For each snapshot, only subscriptions included in the
+     * applyScope of Snapshot - Take can apply it.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.userData] User specified data about the snapshot
+     * for any purpose. Length should not exceed 16KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    takeWithHttpOperationResponse(type: string, objectId: string, applyScope: string[], options?: { userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Submit an operation to take a snapshot of face list, large face list, person
+     * group or large person group, with user-specified snapshot type, source
+     * object id, apply scope and an optional user data.
+     * The snapshot interfaces are for users to backup and restore their face data
+     * from one face subscription to another, inside same region or across regions.
+     * The workflow contains two phases, user first calls Snapshot - Take to create
+     * a copy of the source object and store it as a snapshot, then calls Snapshot
+     * - Apply to paste the snapshot to target subscription. The snapshots are
+     * stored in a centralized location (per Azure instance), so that they can be
+     * applied cross accounts and regions.
+     * Taking snapshot is an asynchronous operation. An operation id can be
+     * obtained from the "Operation-Location" field in response header, to be used
+     * in OperationStatus - Get for tracking the progress of creating the snapshot.
+     * The snapshot id will be included in the "resourceLocation" field in
+     * OperationStatus - Get response when the operation status is "succeeded".
+     * Snapshot taking time depends on the number of person and face entries in the
+     * source object. It could be in seconds, or up to several hours for 1,000,000
+     * persons with multiple faces.
+     * Snapshots will be automatically expired and cleaned in 48 hours after it is
+     * created by Snapshot - Take. User can delete the snapshot using Snapshot -
+     * Delete by themselves any time before expiration.
+     * Taking snapshot for a certain object will not block any other operations
+     * against the object. All read-only operations (Get/List and
+     * Identify/FindSimilar/Verify) can be conducted as usual. For all writable
+     * operations, including Add/Update/Delete the source object or its
+     * persons/faces and Train, they are not blocked but not recommended because
+     * writable updates may not be reflected on the snapshot during its taking.
+     * After snapshot taking is completed, all readable and writable operations can
+     * work as normal. Snapshot will also include the training results of the
+     * source object, which means target subscription the snapshot applied to does
+     * not need re-train the target object before calling Identify/FindSimilar.
+     *
+     * @param {string} type User specified type for the source object to take
+     * snapshot from. Currently FaceList, PersonGroup, LargeFaceList and
+     * LargePersonGroup are supported. Possible values include: 'FaceList',
+     * 'LargeFaceList', 'LargePersonGroup', 'PersonGroup'
+     *
+     * @param {string} objectId User specified source object id to take snapshot
+     * from.
+     *
+     * @param {array} applyScope User specified array of target Face subscription
+     * ids for the snapshot. For each snapshot, only subscriptions included in the
+     * applyScope of Snapshot - Take can apply it.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.userData] User specified data about the snapshot
+     * for any purpose. Length should not exceed 16KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    take(type: string, objectId: string, applyScope: string[], options?: { userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    take(type: string, objectId: string, applyScope: string[], callback: ServiceCallback<void>): void;
+    take(type: string, objectId: string, applyScope: string[], options: { userData? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List all accessible snapshots with related information, including snapshots
+     * that were taken by the user, or snapshots to be applied to the user
+     * (subscription id was included in the applyScope in Snapshot - Take).
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.type] User specified object type as a search
+     * filter. Possible values include: 'FaceList', 'LargeFaceList',
+     * 'LargePersonGroup', 'PersonGroup'
+     *
+     * @param {array} [options.applyScope] User specified snapshot apply scopes as
+     * a search filter. ApplyScope is an array of the target Azure subscription ids
+     * for the snapshot, specified by the user who created the snapshot by Snapshot
+     * - Take.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { type? : string, applyScope? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot[]>>;
+
+    /**
+     * List all accessible snapshots with related information, including snapshots
+     * that were taken by the user, or snapshots to be applied to the user
+     * (subscription id was included in the applyScope in Snapshot - Take).
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.type] User specified object type as a search
+     * filter. Possible values include: 'FaceList', 'LargeFaceList',
+     * 'LargePersonGroup', 'PersonGroup'
+     *
+     * @param {array} [options.applyScope] User specified snapshot apply scopes as
+     * a search filter. ApplyScope is an array of the target Azure subscription ids
+     * for the snapshot, specified by the user who created the snapshot by Snapshot
+     * - Take.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { type? : string, applyScope? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot[]>;
+    list(callback: ServiceCallback<models.Snapshot[]>): void;
+    list(options: { type? : string, applyScope? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot[]>): void;
+
+
+    /**
+     * Retrieve information about a snapshot. Snapshot is only accessible to the
+     * source subscription who took it, and target subscriptions included in the
+     * applyScope in Snapshot - Take.
+     *
+     * @param {uuid} snapshotId Id referencing a particular snapshot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Snapshot>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(snapshotId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
+
+    /**
+     * Retrieve information about a snapshot. Snapshot is only accessible to the
+     * source subscription who took it, and target subscriptions included in the
+     * applyScope in Snapshot - Take.
+     *
+     * @param {uuid} snapshotId Id referencing a particular snapshot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Snapshot} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Snapshot} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Snapshot} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(snapshotId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
+    get(snapshotId: string, callback: ServiceCallback<models.Snapshot>): void;
+    get(snapshotId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+
+
+    /**
+     * Update the information of a snapshot. Only the source subscription who took
+     * the snapshot can update the snapshot.
+     *
+     * @param {uuid} snapshotId Id referencing a particular snapshot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.applyScope] Array of the target Face subscription
+     * ids for the snapshot, specified by the user who created the snapshot when
+     * calling Snapshot - Take. For each snapshot, only subscriptions included in
+     * the applyScope of Snapshot - Take can apply it.
+     *
+     * @param {string} [options.userData] User specified data about the snapshot
+     * for any purpose. Length should not exceed 16KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(snapshotId: string, options?: { applyScope? : string[], userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Update the information of a snapshot. Only the source subscription who took
+     * the snapshot can update the snapshot.
+     *
+     * @param {uuid} snapshotId Id referencing a particular snapshot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.applyScope] Array of the target Face subscription
+     * ids for the snapshot, specified by the user who created the snapshot when
+     * calling Snapshot - Take. For each snapshot, only subscriptions included in
+     * the applyScope of Snapshot - Take can apply it.
+     *
+     * @param {string} [options.userData] User specified data about the snapshot
+     * for any purpose. Length should not exceed 16KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(snapshotId: string, options?: { applyScope? : string[], userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    update(snapshotId: string, callback: ServiceCallback<void>): void;
+    update(snapshotId: string, options: { applyScope? : string[], userData? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Delete an existing snapshot according to the snapshotId. All object data and
+     * information in the snapshot will also be deleted. Only the source
+     * subscription who took the snapshot can delete the snapshot. If the user does
+     * not delete a snapshot with this API, the snapshot will still be
+     * automatically deleted in 48 hours after creation.
+     *
+     * @param {uuid} snapshotId Id referencing a particular snapshot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(snapshotId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete an existing snapshot according to the snapshotId. All object data and
+     * information in the snapshot will also be deleted. Only the source
+     * subscription who took the snapshot can delete the snapshot. If the user does
+     * not delete a snapshot with this API, the snapshot will still be
+     * automatically deleted in 48 hours after creation.
+     *
+     * @param {uuid} snapshotId Id referencing a particular snapshot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(snapshotId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(snapshotId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(snapshotId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Submit an operation to apply a snapshot to current subscription. For each
+     * snapshot, only subscriptions included in the applyScope of Snapshot - Take
+     * can apply it.
+     * The snapshot interfaces are for users to backup and restore their face data
+     * from one face subscription to another, inside same region or across regions.
+     * The workflow contains two phases, user first calls Snapshot - Take to create
+     * a copy of the source object and store it as a snapshot, then calls Snapshot
+     * - Apply to paste the snapshot to target subscription. The snapshots are
+     * stored in a centralized location (per Azure instance), so that they can be
+     * applied cross accounts and regions.
+     * Applying snapshot is an asynchronous operation. An operation id can be
+     * obtained from the "Operation-Location" field in response header, to be used
+     * in OperationStatus - Get for tracking the progress of applying the snapshot.
+     * The target object id will be included in the "resourceLocation" field in
+     * OperationStatus - Get response when the operation status is "succeeded".
+     * Snapshot applying time depends on the number of person and face entries in
+     * the snapshot object. It could be in seconds, or up to 1 hour for 1,000,000
+     * persons with multiple faces.
+     * Snapshots will be automatically expired and cleaned in 48 hours after it is
+     * created by Snapshot - Take. So the target subscription is required to apply
+     * the snapshot in 48 hours since its creation.
+     * Applying a snapshot will not block any other operations against the target
+     * object, however it is not recommended because the correctness cannot be
+     * guaranteed during snapshot applying. After snapshot applying is completed,
+     * all operations towards the target object can work as normal. Snapshot also
+     * includes the training results of the source object, which means target
+     * subscription the snapshot applied to does not need re-train the target
+     * object before calling Identify/FindSimilar.
+     * One snapshot can be applied multiple times in parallel, while currently only
+     * CreateNew apply mode is supported, which means the apply operation will fail
+     * if target subscription already contains an object of same type and using the
+     * same objectId. Users can specify the "objectId" in request body to avoid
+     * such conflicts.
+     *
+     * @param {uuid} snapshotId Id referencing a particular snapshot.
+     *
+     * @param {string} objectId User specified target object id to be created from
+     * the snapshot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.mode] Snapshot applying mode. Currently only
+     * CreateNew is supported, which means the apply operation will fail if target
+     * subscription already contains an object of same type and using the same
+     * objectId. Users can specify the "objectId" in request body to avoid such
+     * conflicts. Possible values include: 'CreateNew'
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    applyWithHttpOperationResponse(snapshotId: string, objectId: string, options?: { mode? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Submit an operation to apply a snapshot to current subscription. For each
+     * snapshot, only subscriptions included in the applyScope of Snapshot - Take
+     * can apply it.
+     * The snapshot interfaces are for users to backup and restore their face data
+     * from one face subscription to another, inside same region or across regions.
+     * The workflow contains two phases, user first calls Snapshot - Take to create
+     * a copy of the source object and store it as a snapshot, then calls Snapshot
+     * - Apply to paste the snapshot to target subscription. The snapshots are
+     * stored in a centralized location (per Azure instance), so that they can be
+     * applied cross accounts and regions.
+     * Applying snapshot is an asynchronous operation. An operation id can be
+     * obtained from the "Operation-Location" field in response header, to be used
+     * in OperationStatus - Get for tracking the progress of applying the snapshot.
+     * The target object id will be included in the "resourceLocation" field in
+     * OperationStatus - Get response when the operation status is "succeeded".
+     * Snapshot applying time depends on the number of person and face entries in
+     * the snapshot object. It could be in seconds, or up to 1 hour for 1,000,000
+     * persons with multiple faces.
+     * Snapshots will be automatically expired and cleaned in 48 hours after it is
+     * created by Snapshot - Take. So the target subscription is required to apply
+     * the snapshot in 48 hours since its creation.
+     * Applying a snapshot will not block any other operations against the target
+     * object, however it is not recommended because the correctness cannot be
+     * guaranteed during snapshot applying. After snapshot applying is completed,
+     * all operations towards the target object can work as normal. Snapshot also
+     * includes the training results of the source object, which means target
+     * subscription the snapshot applied to does not need re-train the target
+     * object before calling Identify/FindSimilar.
+     * One snapshot can be applied multiple times in parallel, while currently only
+     * CreateNew apply mode is supported, which means the apply operation will fail
+     * if target subscription already contains an object of same type and using the
+     * same objectId. Users can specify the "objectId" in request body to avoid
+     * such conflicts.
+     *
+     * @param {uuid} snapshotId Id referencing a particular snapshot.
+     *
+     * @param {string} objectId User specified target object id to be created from
+     * the snapshot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.mode] Snapshot applying mode. Currently only
+     * CreateNew is supported, which means the apply operation will fail if target
+     * subscription already contains an object of same type and using the same
+     * objectId. Users can specify the "objectId" in request body to avoid such
+     * conflicts. Possible values include: 'CreateNew'
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    apply(snapshotId: string, objectId: string, options?: { mode? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    apply(snapshotId: string, objectId: string, callback: ServiceCallback<void>): void;
+    apply(snapshotId: string, objectId: string, options: { mode? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve the status of a take/apply snapshot operation.
+     *
+     * @param {uuid} operationId Id referencing a particular take/apply snapshot
+     * operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getOperationStatusWithHttpOperationResponse(operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+
+    /**
+     * Retrieve the status of a take/apply snapshot operation.
+     *
+     * @param {uuid} operationId Id referencing a particular take/apply snapshot
+     * operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatus} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatus} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getOperationStatus(operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    getOperationStatus(operationId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    getOperationStatus(operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+}
