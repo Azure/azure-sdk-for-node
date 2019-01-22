@@ -85,7 +85,7 @@ export interface SBSku {
  * @constructor
  * Description of a namespace resource.
  *
- * @member {object} [sku] Porperties of Sku
+ * @member {object} [sku] Properties of Sku
  * @member {string} [sku.name] Name of this SKU. Possible values include:
  * 'Basic', 'Standard', 'Premium'
  * @member {string} [sku.tier] The billing tier of this particular SKU.
@@ -114,7 +114,7 @@ export interface SBNamespace extends TrackedResource {
  * @constructor
  * Description of a namespace resource.
  *
- * @member {object} [sku] Porperties of Sku
+ * @member {object} [sku] Properties of Sku
  * @member {string} [sku.name] Name of this SKU. Possible values include:
  * 'Basic', 'Standard', 'Premium'
  * @member {string} [sku.tier] The billing tier of this particular SKU.
@@ -209,7 +209,7 @@ export interface AccessKeys {
  * Initializes a new instance of the RegenerateAccessKeyParameters class.
  * @constructor
  * Parameters supplied to the Regenerate Authorization Rule operation,
- * specifies which key neeeds to be reset.
+ * specifies which key needs to be reset.
  *
  * @member {string} keyType The access key to regenerate. Possible values
  * include: 'PrimaryKey', 'SecondaryKey'
@@ -345,7 +345,7 @@ export interface SBQueue extends Resource {
  * @member {date} [accessedAt] Last time the message was sent, or a request was
  * received, for this topic.
  * @member {number} [subscriptionCount] Number of subscriptions.
- * @member {object} [countDetails] Message count deatils
+ * @member {object} [countDetails] Message count details
  * @member {number} [countDetails.activeMessageCount] Number of active messages
  * in the queue, topic, or subscription.
  * @member {number} [countDetails.deadLetterMessageCount] Number of messages
@@ -482,7 +482,7 @@ export interface SBSubscription extends Resource {
  * @constructor
  * Description of a Check Name availability request properties.
  *
- * @member {string} name The Name to check the namespce name availability and
+ * @member {string} name The Name to check the namespace name availability and
  * The namespace name can contain only letters, numbers, and hyphens. The
  * namespace must start with a letter, and it must end with a letter or number.
  */
@@ -550,7 +550,7 @@ export interface Operation {
  * @class
  * Initializes a new instance of the ErrorResponse class.
  * @constructor
- * Error reponse indicates ServiceBus service is not able to process the
+ * Error response indicates ServiceBus service is not able to process the
  * incoming request. The reason is provided in the error message.
  *
  * @member {string} [code] Error code.
@@ -847,9 +847,9 @@ export interface Eventhub extends Resource {
  * @member {number} [pendingReplicationOperationsCount] Number of entities
  * pending to be replicated.
  * @member {string} [partnerNamespace] ARM Id of the Primary/Secondary eventhub
- * namespace name, which is part of GEO DR pairning
+ * namespace name, which is part of GEO DR pairing
  * @member {string} [alternateName] Primary/Secondary eventhub namespace name,
- * which is part of GEO DR pairning
+ * which is part of GEO DR pairing
  * @member {string} [role] role of namespace in GEO DR - possible values
  * 'Primary' or 'PrimaryNotReplicating' or 'Secondary'. Possible values
  * include: 'Primary', 'PrimaryNotReplicating', 'Secondary'
